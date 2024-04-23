@@ -1,0 +1,94 @@
+---
+id: whatIsServerlessElastic
+slug: /serverless/general/what-is-serverless-elastic
+title: What is serverless Elastic?
+tags: ['serverless']
+---
+
+Serverless projects use the core components of the ((stack)), such as ((es)) and ((kib)), and are based on [an architecture that 
+decouples compute and storage](https://www.elastic.co/blog/elastic-serverless-architecture). Search and indexing operations are separated, which offers high flexibility for scaling your workloads while ensuring 
+a high level of performance.
+
+**Management free.** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, 
+and business continuity.
+
+**Autoscaled.** To meet your performance requirements, the system automatically adjusts to your workloads. For example, when you have a short time spike on the 
+data you ingest, more resources are allocated for that period of time. When the spike is over, the system uses less resources, without any action 
+on your end.
+
+**Optimized data storage.** Your data is stored in the Search Data Lake of your project, which serves as a cost-efficient and performant storage. 
+A high performance cache layer is available on top of the Search Data Lake for your most queried data. The size of the cache depends on performance settings 
+that you configure for each project.
+
+**Dedicated experiences.** Each serverless solution includes navigation and functionality that helps you focus on your data, goals, and use cases.
+
+**Pay per usage.** Each serverless project type includes product-specific and usage-based pricing.
+
+<DocCallOut title="Elastic serverless products are currently in preview. You will not be charged for usage for serverless projects during the preview. Detailed pricing information will be made available in the near future." />
+
+# Control your data and performance 
+
+Control your project data and query performance against your project data.  
+
+**Data.** Choose the data you want to ingest, and the method to ingest it. By default, data is stored indefinitely in your project, 
+and you define the retention settings for your data streams.
+
+**Performance.** For granular control over query performance against your project data, serverless projects include the following settings:
+
+<DocCallOut title="Some or all of these settings may not be available for all types of serverless projects." />
+
+    - **Search Power** &mdash; Control the search speed for your project data.
+      When ingested, a certain amount of data is loaded into a cache to increase query performance. 
+      With Search Power, you can add replicas or reduce the amount of cached data by a static factor to increase search performance.
+
+    - **Search Boost Window** &mdash; Determine the amount of data that benefits from faster search.
+      The system dynamically adjusts the cache allocated to your project based on how much data you ingest during a specified period of time.
+
+# Differences between serverless projects and hosted deployments on ((ecloud))
+
+You can run [hosted deployments](https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html) of the ((stack)) on ((ecloud)). These hosted deployments provide more provisioning and advanced configuration options.
+
+| Option                 | Serverless                                                | Hosted                                                                            |
+|------------------------|:----------------------------------------------------------|:----------------------------------------------------------------------------------|
+| **Cluster management** | Fully managed by Elastic.                                 | You provision and manage your hosted clusters. Shared responsibility with Elastic.|
+| **Scaling**            | Autoscales out of the box.                                | Manual scaling or autoscaling available for you to enable.                        |
+| **Upgrades**           | Automatically performed by Elastic.                       | You choose when to upgrade.                                                       |
+| **Pricing**            | Individual per project type and based on your usage.      | Based on deployment size and subscription level.                                  |
+| **Performance**        | Autoscales based on your usage.                           | Manual scaling.                                                                   |
+| **Solutions**          | Single solution per project.                              | Full Elastic Stack per deployment.                                                |
+| **User management**    | Elastic Cloud-managed users.                              | Elastic Cloud-managed users and native Kibana users.                              |
+| **API support**        | Subset of [APIs](https://docs.elastic.co/api-reference).  | All Elastic APIs.                                                                 |
+| **Backups**            | Projects automatically backed up by Elastic.              | Your responsibility with Snapshot & Restore.                                      |
+| **Data retention**     |                                                           | Index Lifecycle Management.                                                       |
+
+# Answers to common serverless questions
+
+**What Support is available for the serverless preview?**
+
+There is no official SLA for Support in Serverless until General Availability (GA). We’ll do our best to service customers and inquiries as we would any pre-GA product - at a Platinum/Enterprise Severity 3 (1 business day) SLA target.
+
+**Is there migration support between ESS and serverless, and serverless and ESS?**
+
+Migration paths between ESS and serverless, and serverless and ESS are currently unsupported. 
+
+**How does serverless ensure compatibility between software versions?**
+
+Connections and configurations are unaffected by upgrades. To ensure compatibility between software versions, quality testing and API versioning are used.
+
+**Can I convert a serverless project into a hosted deployment, or a hosted deployment into a serverless project?**
+
+Projects and deployments are based on different architectures, and you are unable to convert. 
+
+**Can I convert a serverless project into a project of a different type?**
+
+You are unable to convert projects into different project types, but you can create as many projects as you’d like. You will be charged only for your usage.
+
+**How can I create serverless service accounts?**
+
+Create API keys for service accounts in your serverless projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future. 
+
+To raise a Support case with Elastic, raise a case for your subscription the same way you do today. In the body of the case, make sure to mention you are working in serverless to ensure we can provide the appropriate support. 
+
+**When will pricing information be available for serverless?**
+
+Pricing will be available through account representatives and published at a later date.

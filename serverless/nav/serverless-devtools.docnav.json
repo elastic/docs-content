@@ -1,0 +1,29 @@
+{
+    "mission": "Dev tools",
+    "id": "serverless-Devtools",
+    "landingPageId": "serverlessDevtoolsDeveloperTools",
+    "icon": "logoElastic",
+    "description": "Description to be written",
+    "items": [
+      {
+        "pageId": "serverlessDevtoolsRunApiRequestsInTheConsole",
+        "classic-sources": ["enKibanaConsoleKibana"]
+      },
+      {
+        "pageId": "serverlessDevtoolsProfileQueriesAndAggregations",
+        "classic-sources": ["enKibanaXpackProfiler"]
+      },
+      {
+        "pageId": "serverlessDevtoolsDebugGrokExpressions",
+        "classic-sources": ["enKibanaXpackGrokdebugger"]
+      },
+      {
+        "pageId": "serverlessDevtoolsDebugPainlessScripts",
+        "classic-sources": ["enKibanaPainlesslab"]
+      },
+      {
+        "pageId": "serverlessDevtoolsTroubleshooting",
+        "classic-sources": ["enElasticsearchReferenceTroubleshootingSearches"]
+      }
+    ]
+  }

@@ -1,0 +1,83 @@
+---
+id: serverlessGeneralWelcomeToServerless
+slug: /serverless
+title: Welcome to Elastic serverless
+tags: ['serverless']
+layout: landing
+---
+
+# Elastic serverless documentation <DocBadge template="technical preview" />
+
+Elastic serverless products allow you to deploy and use Elastic for your use cases without managing the underlying Elastic cluster, 
+such as nodes, data tiers, and scaling. Serverless instances are fully-managed, autoscaled, and automatically upgraded by Elastic so you can 
+focus more on gaining value and insight from your data.
+
+Elastic provides three serverless solutions available on ((ecloud)):
+
+- **((es))** &mdash; Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
+- **Elastic ((observability))** &mdash; Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
+- **Elastic ((security))** &mdash; Detect, investigate, and respond to threats, with SIEM, endpoint protection, and AI-powered analytics capabilities.
+
+Serverless instances of the Elastic Stack that you create in ((ecloud)) are called **serverless projects**.
+
+Elastic serverless products are currently in preview. [Learn more about serverless in our blog](https://www.elastic.co/blog/elastic-serverless-architecture).
+
+<div className="spacing-div" style={{ blockSize: 5 }} />
+
+## Get started
+
+Choose the type of project that matches your needs and we’ll help you get started with our solution guides.
+
+<DocRelatedArticles
+  items={[
+    {
+      template: 'elasticsearchServerless',
+      title: 'Elasticsearch',
+      pageId: 'serverlessElasticsearchWhatIsElasticsearchServerless',
+    },
+    {
+      template: 'observability',
+      pageId: 'serverlessObservabilityWhatIsObservabilityServerless',
+    },
+    {
+      template: 'security',
+      pageId: 'serverlessSecurityWhatIsSecurityServerless',
+    },
+  ]}
+/>
+
+<DocRelatedArticles
+  sectionTitle="Featured topics"
+  items={[
+    {
+      title: 'Invite your team',
+      description: 'Invite new members to your organization.',
+      pageId: 'serverlessGeneralManageAccessToOrganization',
+    },
+    {
+      title: 'Assign user roles and privileges ',
+      description: 'Assign user roles and privileges to members in your organization.',
+      pageId: 'serverlessGeneralAssignUserRoles',
+    },
+    {
+      title: 'Manage your projects',
+      description: 'Manage your project data, search power, and more.',
+      pageId: 'serverlessGeneralManageProject',
+    },
+    {
+      title: 'Check your subscription overview',
+      description: 'View the details about your subscription.',
+      pageId: 'serverlessGeneralCheckSubscription',
+    },
+    {
+      title: 'Monitor and analyze your account usage',
+      description: 'Check past and current usage for your projects.',
+      pageId: 'serverlessGeneralMonitorUsage',
+    },
+    {
+      title: `Manage your project settings`,
+      description: 'Manage your indices, data views, and more.',
+      pageId: 'serverlessProjectSettings',
+    },
+  ]}
+/>

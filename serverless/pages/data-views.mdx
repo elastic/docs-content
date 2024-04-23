@@ -1,0 +1,165 @@
+---
+id: serverlessDataViews
+slug: /serverless/data-views
+title: ((data-views-app))
+description: Elastic requires a ((data-source)) to access the ((es)) data that you want to explore.
+tags: [ 'serverless', 'Elasticsearch', 'Observability', 'Security' ]
+---
+
+<DocBadge template="technical preview" />
+This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+
+A ((data-source)) can point to one or more indices, [data streams](((ref))/data-streams.html), or [index aliases](((ref))/alias.html).
+For example, a ((data-source)) can point to your log data from yesterday or all indices that contain your data.
+
+{/*
+
+## Required permissions
+
+* Access to **Data Views** requires the <DocLink id="enKibanaKibanaRoleManagement">((kib)) privilege</DocLink>
+    `Data View Management`.
+
+* To create a ((data-source)), you must have the <DocLink id="enKibanaKibanaRoleManagement">((es)) privilege</DocLink>
+    `view_index_metadata`.
+
+* If a read-only indicator appears, you have insufficient privileges
+    to create or save ((data-sources)). In addition, the buttons to create ((data-sources)) or
+    save existing ((data-sources)) are not visible. For more information,
+    refer to <DocLink id="enKibanaXpackSecurityAuthorization">Granting access to ((kib))</DocLink>.
+*/}
+
+## Create a data view
+
+After you've loaded your data, follow these steps to create a ((data-source)):
+
+{/* <DocImage size="m" url="../images/discover-find-data-view.png" alt="How to set the ((data-source)) in Discover" /> */}
+
+ 1. Open {/***Lens** or*/}**Discover** then open the data view menu.
+    <DocImage size="l" url="../images/discover-find-data-view.png" alt="How to set the ((data-source)) in Discover" />
+    Alternatively, go to **((project-settings)) → ((manage-app)) → ((data-views-app))**.
+
+1. Click **Create a ((data-source))**.
+
+1. Give your ((data-source)) a name.
+
+1. Start typing in the **Index pattern** field, and Elastic looks for the names of
+    indices, data streams, and aliases that match your input. You can
+    view all available sources or only the sources that the data view targets.
+    !["Create data view"](../images/discover-create-data-view.png)
+
+        * To match multiple sources, use a wildcard (*). `filebeat-*` matches
+            `filebeat-apache-a`, `filebeat-apache-b`, and so on.
+
+        * To match multiple single sources, enter their names,
+            separated by a comma.  Do not include a space after the comma.
+            `filebeat-a,filebeat-b` matches two indices.
+
+        * To exclude a source, use a minus sign (-), for example, `-test3`.
+
+1. Open the **Timestamp field** dropdown,
+    and then select the default field for filtering your data by time.
+
+        * If you don't set a default time field, you can't use
+            global time filters on your dashboards. This is useful if
+            you have multiple time fields and want to create dashboards that combine visualizations
+            based on different timestamps.
+
+        * If your index doesn't have time-based data, choose **I don't want to use the time filter**.
+
+1. Click **Show advanced settings** to:
+    * Display hidden and system indices.
+    * Specify your own ((data-source)) name. For example, enter your ((es)) index alias name.
+
+1.  Click **Save ((data-source)) to Elastic**.
+
+You can manage your data views in **((project-settings)) → ((manage-app)) → ((data-views-app))**.
+
+### Create a temporary ((data-source))
+
+Want to explore your data or create a visualization without saving it as a data view?
+Select **Use without saving** in the **Create ((data-source))** form in **Discover**.
+With a temporary ((data-source)), you can add fields and create an ((es)) query alert, just like you would a regular ((data-source)).
+Your work won't be visible to others in your space.
+
+A temporary ((data-source)) remains in your space until you change apps, or until you save it.
+
+{/* ![how to create an ad-hoc data view](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte3a4f3994c44c0cc/637eb0c95834861044c21a25/ad-hoc-data-view.gif) */}
+
+<DocCallOut title="Temporary ((data-sources)) are not available in the ((data-views-app)) app." />
+
+{/*
+
+### Use ((data-sources)) with rolled up data
+
+A ((data-source)) can match one rollup index.  For a combination rollup
+((data-source)) with both raw and rolled up data, use the standard notation:
+
+```ts
+rollup_logstash,kibana_sample_data_logs
+```
+For an example, refer to <DocLink id="enKibanaDataRollups" section="try-it-create-and-visualize-rolled-up-data">Create and visualize rolled up data</DocLink>. */}
+
+{/*
+
+### Use ((data-sources)) with ((ccs))
+
+If your ((es)) clusters are configured for [((ccs))](((ref))/modules-cross-cluster-search.html),
+you can create a ((data-source)) to search across the clusters of your choosing.
+Specify data streams, indices, and aliases in a remote cluster using the
+following syntax:
+
+```ts
+<remote_cluster_name>:<target>
+```
+
+To query ((ls)) indices across two ((es)) clusters
+that you set up for ((ccs)), named `cluster_one` and `cluster_two`:
+
+```ts
+ cluster_one:logstash-*,cluster_two:logstash-*
+```
+
+Use wildcards in your cluster names
+to match any number of clusters. To search ((ls)) indices across
+clusters named `cluster_foo`, `cluster_bar`, and so on:
+
+```ts
+cluster_*:logstash-*
+```
+
+To query across all ((es)) clusters that have been configured for ((ccs)),
+use a standalone wildcard for your cluster name:
+
+```ts
+*:logstash-*
+```
+
+To match indices starting with `logstash-`, but exclude those starting with `logstash-old`, from
+all clusters having a name starting with `cluster_`:
+
+```ts
+`cluster_*:logstash-*,cluster_*:-logstash-old*`
+```
+
+To exclude a cluster having a name starting with `cluster_`:
+
+```ts
+`cluster_*:logstash-*,cluster_one:-*`
+```
+
+Once you configure a ((data-source)) to use the ((ccs)) syntax, all searches and
+aggregations using that ((data-source)) in Elastic take advantage of ((ccs)). */}
+
+## Delete a ((data-source))
+
+When you delete a ((data-source)), you cannot recover the associated field formatters, runtime fields, source filters,
+and field popularity data.
+Deleting a ((data-source)) does not remove any indices or data documents from ((es)).
+
+<DocCallOut color="warning" title="Deleting a ((data-source)) breaks all visualizations, saved searches, and other saved objects that reference the data view." />
+
+1. Go to **((project-settings)) → ((manage-app)) → ((data-views-app))**.
+
+1. Find the ((data-source)) that you want to delete, and then
+    click <DocIcon type="trash" title="Delete" /> in the **Actions** column.
+

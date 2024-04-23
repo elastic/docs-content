@@ -1,0 +1,88 @@
+---
+id: serverlessSavedObjects
+slug: /serverless/saved-objects
+title: ((saved-objects-app))
+description: Manage your saved objects, including dashboards, visualizations, maps, ((data-sources)), and more.
+tags: [ 'serverless', 'Elasticsearch', 'Observability', 'Security' ]
+---
+
+<DocBadge template="technical preview" />
+This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+
+To get started, go to **((project-settings)) → ((manage-app)) → ((saved-objects-app))**:
+
+![((saved-objects-app))](../images/saved-object-management.png)
+{/* TO-DO: This screenshot needs to be refreshed and automated. */}
+
+{/*
+TBD: Need serverless-specific RBAC requirements
+## Required permissions
+
+To access **Saved Objects**, you must have the required `Saved Objects Management` ((kib)) privilege.
+
+To add the privilege, open the main menu, and then click **Stack Management → Roles**.
+
+<DocCallOut title="Note">
+Granting access to `Saved Objects Management` authorizes users to
+manage all saved objects in ((kib)), including objects that are managed by
+applications they may not otherwise be authorized to access.
+</DocCallOut> */}
+
+## View and delete
+
+* To view and edit a saved object in its associated application, click the object title.
+
+* To show objects that use this object, so you know the impact of deleting it, click the actions icon <DocIcon type="boxesHorizontal" title="More actions" /> and then select **Relationships**.
+
+* To delete one or more objects, select their checkboxes, and then click **Delete**.
+
+## Import and export
+
+Use import and export to move objects between different ((kib)) instances.
+These actions are useful when you have multiple environments for development and production.
+Import and export also work well when you have a large number of objects to update and want to batch the process.
+
+{/*
+TBD: Do these APIs exist for serverless?
+((kib)) also provides <DocLink id="enKibanaSavedObjectsApiImport">import</DocLink> and
+<DocLink id="enKibanaSavedObjectsApiExport">export</DocLink> APIs to automate this process.
+*/}
+
+### Import
+
+Import multiple objects in a single operation.
+
+1. In the toolbar, click **Import**.
+1. Select the NDJSON file that includes the objects you want to import.
+
+1. Select the import options. By default, saved objects already in ((kib)) are overwritten.
+
+1. Click **Import**.
+
+{/*
+TBD: Are these settings configurable in serverless?
+<DocCallOut title="Note">
+The <DocLink id="enKibanaSettings" section="savedObjects-maxImportExportSize">`savedObjects.maxImportExportSize`</DocLink> configuration setting
+limits the number of saved objects to include in the file. The
+<DocLink id="enKibanaSettings" section="savedObjects-maxImportPayloadBytes">`savedObjects.maxImportPayloadBytes`</DocLink> setting limits the overall
+size of the file that you can import.
+</DocCallOut>
+*/}
+
+### Export
+
+Export objects by selection or type.
+
+* To export specific objects, select them in the table, and then click **Export**.
+* To export objects by type, click **Export objects** in the toolbar.
+
+((kib)) creates an NDJSON with all your saved objects.
+By default, the NDJSON includes child objects related to the saved objects.
+Exported dashboards include their associated ((data-sources)).
+
+{/*
+TBD: Are these settings configurable in serverless?
+<DocCallOut title="Note">
+The <DocLink id="enKibanaSettings" section="savedObjects-maxImportExportSize">`savedObjects.maxImportExportSize`</DocLink> configuration setting limits the number of saved objects that you can export.
+</DocCallOut> */}
+

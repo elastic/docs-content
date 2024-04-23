@@ -1,0 +1,131 @@
+---
+id: serverlessGeneralManageProject
+slug: /serverless/elasticsearch/manage-project
+title: Manage your projects
+description: Configure project-wide features and usage.
+tags: [ 'serverless', 'elasticsearch', 'project', 'manage' ]
+---
+
+<DocBadge template="technical preview" />
+To manage a project:
+
+1. Navigate to [cloud.elastic.co](https://cloud.elastic.co/).
+
+2. Log in to your Elastic Cloud account.
+
+3. Select your project from the **Serverless projects** panel and click **Manage**.
+
+From the project page, you can:
+
+- **Rename your project**. In the **Overview** section, click **Edit** next to the project's name.
+
+- **Manage data and integrations**. Update your project data, including storage settings, indices, and data views, directly in your project.
+
+- **Manage API keys**. Access your project and interact with its data programmatically using Elasticsearch APIs.
+
+- **Manage members**. Add members and manage their access to this project or other resources of your organization.
+
+## Features and usage
+
+You can also edit the features and usage for your project. Available features vary by project type.
+
+<DocTable columns={[
+  {
+    "title": "Feature",
+    "width": "25%"
+  },
+  {
+    "title": "Description",
+    "width": "50%"
+  },
+  {
+    "title": "Available in",
+    "width": "25%"
+  }
+]}>
+  <DocRow>
+    <DocCell>
+      **Search Power**
+    </DocCell>
+    <DocCell>
+      Controls the number of VCUs (Virtual Compute Units) allocated per GB of data to your project.
+
+      Each VCU adds a combination of CPU, RAM, and data storage to your project, resulting in performance gains.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      **Project features**
+    </DocCell>
+    <DocCell>
+      Controls <DocLink id="serverlessGeneralManageProject" section="project-features-add-ons">feature tiers and add-on options</DocLink> for your ((elastic-sec)) project.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>  <DocRow>
+    <DocCell>
+      **Search Data Lake**
+    </DocCell>
+    <DocCell>
+      Provides cost-optimized storage for your data. By default, all data is stored indefinitely in the Search Data Lake and remains searchable.
+
+      You can specify different retention periods for each data source configured in your project.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      **Search Boost Window**
+    </DocCell>
+    <DocCell>
+      Provides accelerated query speed for data residing on data streams. Increasing the boost window results in improved search and analytics performance for more data.
+
+      The default Search Boost window size is 7 days.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+    </DocCell>
+  </DocRow>
+</DocTable>
+
+<div id="project-features-add-ons"></div>
+
+### Project features and add-ons
+
+<DocBadge template="security" slug="/serverless/security/what-is-security-serverless" /> For ((elastic-sec)) projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
+
+<DocTable columns={[
+  {
+    "title": "Feature tier",
+    "width":"25%"
+  },
+  {
+    "title": "Description and add-ons",
+    "width":"75%"
+  }
+]}>
+  <DocRow>
+    <DocCell>**Security Analytics Essentials**</DocCell>
+    <DocCell>
+      Standard security analytics, detections, investigations, and collaborations. Allows these add-ons:
+      * **Endpoint Protection Essentials**: Endpoint protections with ((elastic-defend)).
+      * **Cloud Protection Essentials**: Cloud native security features.
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>**Security Analytics Complete**</DocCell>
+    <DocCell>
+      Everything in **Security Analytics Essentials** plus advanced features such as entity analytics, threat intelligence, and more. Allows these add-ons:
+        * **Endpoint Protection Complete**: Everything in **Endpoint Protection Essentials** plus advanced endpoint detection and response features.
+        * **Cloud Protection Complete**: Everything in **Cloud Protection Essentials** plus advanced cloud security features.
+    </DocCell>
+  </DocRow>
+</DocTable>

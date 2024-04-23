@@ -1,0 +1,100 @@
+---
+id: serverlessApiKeys
+slug: /serverless/api-keys
+title: ((api-keys-app))
+description: API keys allow access to the ((stack)) on behalf of a user.
+tags: ["serverless", "Elasticsearch", "Observability", "Security"]
+---
+
+<DocBadge template="technical preview" />
+This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+
+API keys are security mechanisms used to authenticate and authorize access to ((stack)) resources,
+and ensure that only authorized users or applications are able to interact with the ((stack)).
+
+For example, if you extract data from an ((es)) cluster on a daily basis, you might create an API key tied to your credentials, configure it with minimum access, and then put the API credentials into a cron job.
+Or, you might create API keys to automate ingestion of new data from remote sources, without a live user interaction.
+
+You can manage your keys in **((project-settings)) → ((manage-app)) → ((api-keys-app))**:
+
+!["API keys UI"](../images/api-key-management.png)
+{/* TBD: This image was refreshed but should be automated */}
+
+A _personal API key_ allows external services to access the ((stack)) on behalf of a user.
+{/* Cross-Cluster API key: allows remote clusters to connect to your local cluster. */}
+A _managed API key_ is created and managed by ((kib)) to correctly run background tasks.
+
+{/* TBD (accurate?) Secondary credentials have the same or lower access rights. */}
+
+{/* ## Security privileges
+
+You must have the `manage_security`, `manage_api_key`, or the `manage_own_api_key`
+cluster privileges to use API keys in Elastic.  API keys can also be seen in a readonly view with access to the page and the `read_security` cluster privilege. To manage roles, open the main menu, then click
+**Stack Management → Roles**, or use the <DocLink id="enKibanaRoleManagementApi">Role Management API</DocLink>.  */}
+
+## Create an API key
+
+In **((api-keys-app))**, click **Create API key**:
+
+!["Create API key UI"](../images/create-personal-api-key.png)
+
+Once created, you can copy the encoded API key and use it to send requests to the ((es)) HTTP API. For example:
+
+```bash
+curl "${ES_URL}" \
+-H "Authorization: ApiKey ${API_KEY}"
+```
+
+<DocCallOut title="Important" color="warning">
+  API keys are intended for programmatic access. Don't use API keys to
+  authenticate access using a web browser.
+</DocCallOut>
+
+### Restrict privileges
+
+When you create or update an API key, use **Restrict privileges** to limit the permissions. Define the permissions using a JSON `role_descriptors` object, where you specify one or more roles and the associated privileges.
+
+For example, the following `role_descriptors` object defines a `books-read-only` role that limits the API key to `read` privileges on the `books` index.
+
+```json
+{
+  "books-read-only": {
+    "cluster": [],
+    "indices": [
+      {
+        "names": ["books"],
+        "privileges": ["read"]
+      }
+    ],
+    "applications": [],
+    "run_as": [],
+    "metadata": {},
+    "transient_metadata": {
+      "enabled": true
+    }
+  }
+}
+```
+
+For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](((ref))/security-api-create-api-key.html#security-api-create-api-key-request-body) docs. For supported privileges, check [Security privileges](((ref))/security-privileges.html#privileges-list-indices).
+
+## Update an API key
+
+In **((api-keys-app))**, click on the name of the key.
+You can update only **Restrict privileges** and **Include metadata**.
+
+{/* TBD: Refer to the update API key documentation to learn more about updating personal API keys. */}
+
+## View and delete API keys
+
+The **((api-keys-app))** app lists your API keys, including the name, date created, and status.
+When API keys expire, the status changes from `Active` to `Expired`.
+
+{/*
+TBD: RBAC requirements for serverless?
+If you have `manage_security` or `manage_api_key` permissions,
+you can view the API keys of all users, and see which API key was
+created by which user in which realm.
+If you have only the `manage_own_api_key` permission, you see only a list of your own keys. */}
+
+You can delete API keys individually or in bulk.

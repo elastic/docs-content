@@ -1,0 +1,47 @@
+{
+  "mission": "Welcome to Elastic serverless",
+  "id": "serverless-general",
+  "landingPageId": "serverlessGeneralWelcomeToServerless",
+  "icon": "logoElastic",
+  "description": "Create and manage serverless projects on Elastic Cloud",
+  "items": [
+    {
+      "pageId": "whatIsServerlessElastic"
+    },
+    {
+      "pageId": "serverlessGeneralManageOrganization",
+      "items": [
+        {
+          "id": "serverlessGeneralManageAccessToOrganization"
+        },
+        {
+          "id": "serverlessGeneralAssignUserRoles"
+        },
+        {
+          "id": "serverlessGeneralJoinOrganizationFromExistingCloudAccount"
+        }
+      ]
+    },
+    {
+      "pageId": "serverlessGeneralManageProject"
+    },
+    {
+      "label": "Manage billing",
+      "pageId": "serverlessGeneralManageBilling",
+      "items": [
+        {
+          "id": "serverlessGeneralCheckSubscription"
+        },
+        {
+          "id": "serverlessGeneralMonitorUsage"
+        },
+        {
+          "id": "serverlessGeneralBillingHistory"
+        }
+      ]
+    },
+    {
+      "pageId": "serverlessGeneralUserProfile"
+    }
+  ]
+}

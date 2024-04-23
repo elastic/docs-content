@@ -1,0 +1,162 @@
+---
+id: serverlessDevtoolsRunApiRequestsInTheConsole
+slug: /serverless/devtools/run-api-requests-in-the-console
+title: Console
+description: Use the Console to interact with Elastic REST APIs.
+tags: [ 'serverless', 'dev tools', 'how-to' ]
+---
+
+<DocBadge template="technical preview" />
+This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+
+{/* TODO: This content is copied verbatim from the serverless ES docs. We need to decide whether to
+transclude this content so that we don't have to maintain to copies of identical content. */}
+
+Use **Console** to run API requests against ((es)), and view the responses.
+Console is available in your Elastic UI under **Dev Tools**.
+
+Requests are made in the left pane, and responses are displayed in the right pane.
+
+![Console request/response pair](../images/console-request-response.png)
+
+Console keeps a request history, making it easy to find and repeat requests.
+It also provides links to API documentation.
+
+## Write requests
+
+**Console** understands commands in a cURL-like syntax.
+For example, the following is a `GET` request to the ((es)) `_search` API.
+
+```js
+GET /_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+```
+
+Here is the equivalent command in cURL:
+
+```bash
+curl "${ES_URL}/_search" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "query": {
+    "match_all": {}
+  }
+}'
+```
+
+When you paste a cURL command into **Console**, it is automatically converted to **Console** syntax.
+To convert **Console** syntax into cURL syntax, select the action icon (<DocIcon type="wrench" title="Wrench" />) and choose **Copy as cURL**.
+Once copied, an API key will need to be provided for the calls to work from external environments.
+
+### Autocomplete
+
+When you're typing a command, **Console** makes context-sensitive suggestions.
+These suggestions show you the parameters for each API and speed up your typing.
+To configure your preferences for autocomplete, go to [Settings](#configure-console-settings).
+
+### Comments
+
+You can write comments or temporarily disable parts of a request by using double forward slashes (`//`) or pound (`#`) signs to create single-line comments.
+
+```js
+# This request searches all of your indices.
+GET /_search
+{
+  // The query parameter indicates query context.
+  "query": {
+    "match_all": {} // Matches all documents.
+  }
+}
+```
+
+You can also use a forward slash followed by an asterisk (`/*`) to mark the beginning of multi-line
+comments.
+An asterisk followed by a forward slash (`*/`) marks the end.
+
+```js
+GET /_search
+{
+  "query": {
+    /*"match_all": {
+      "boost": 1.2
+    }*/
+    "match_none": {}
+  }
+}
+```
+### Variables
+
+Select **Variables** to create, edit, and delete variables.
+
+![Variables](../images/console-variables.png)
+
+You can refer to these variables in the paths and bodies of your requests.
+Each variable can be referenced multiple times.
+
+```js
+GET ${pathVariable}
+{
+  "query": {
+    "match": {
+      "${bodyNameVariable}": "${bodyValueVariable}"
+    }
+  }
+}
+```
+
+### Auto-formatting
+
+The auto-formatting
+capability can help you format requests. Select one or more requests that you
+want to format, select the action icon (<DocIcon type="wrench" title="Wrench" />),
+and then select **Auto indent**.
+
+For example, you might have a request formatted like this:
+
+![Unformatted request](../images/console-unformatted-request.png)
+
+**Console** adjusts the JSON body of the request to apply the indents.
+
+![Formatted request](../images/console-formatted-request.png)
+
+If you select **Auto indent** on a request that is already well formatted,
+**Console** collapses the request body to a single line per document.
+This is helpful when working with the ((es)) [bulk APIs](((ref))/docs-bulk.html).
+
+## Submit requests
+
+When you're ready to submit the request to ((es)), select the green triangle.
+
+You can select multiple requests and submit them together.
+**Console** sends the requests to ((es)) one by one and shows the output
+in the response pane. Submitting multiple requests is helpful
+when you're debugging an issue or trying query
+combinations in multiple scenarios.
+
+## View API docs
+
+To view the documentation for an API endpoint, select
+the action icon (<DocIcon type="wrench" title="Wrench" />) and select
+**Open documentation**.
+
+## Get your request history
+
+**Console** maintains a list of the last 500 requests that ((es)) successfully executed.
+To view your most recent requests, select **History**.
+If you select a request and select **Apply**, it is added to the editor at the current cursor position.
+
+## Configure Console settings
+
+You can configure the **Console** font size, JSON syntax, and autocomplete suggestions in **Settings**.
+
+<DocImage size="l" url="../images/console-settings.png" alt="Console Settings" />
+
+## Get keyboard shortcuts
+
+For a list of available keyboard shortcuts, select **Help**.

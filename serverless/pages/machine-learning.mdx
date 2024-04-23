@@ -1,0 +1,44 @@
+---
+id: serverlessMachineLearning
+slug: /serverless/machine-learning
+title: ((ml-app))
+description: View, export, and import ((ml)) jobs and models.
+tags: [ 'serverless', 'Elasticsearch', 'Observability', 'Security' ]
+---
+
+<DocBadge template="technical preview" />
+This content applies to:  <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+
+To view your ((ml)) resources, go to **((project-settings)) → ((manage-app)) → ((ml-app))**:
+
+!["Anomaly detection job management"](../images/ml-security-management.png)
+{/* TO-DO: This screenshot should be automated. */}
+
+The ((ml-features)) that are available vary by project type:
+
+- ((es-serverless)) projects have trained models.
+- ((observability)) projects have ((anomaly-jobs)).
+- ((security)) projects have ((anomaly-jobs)), ((dfanalytics-jobs)), and trained models.
+
+For more information, go to [((anomaly-detect-cap))](((ml-docs))/ml-ad-overview.html), [((dfanalytics-cap))](((ml-docs))/ml-dfanalytics.html) and [Natural language processing](((ml-docs))/ml-nlp.html).
+
+## Synchronize saved objects
+
+Before you can view your ((ml)) ((dfeeds)), jobs, and trained models in ((kib)), they must have saved objects.
+For example, if you used APIs to create your jobs, wait for automatic synchronization or go to the **((ml-app))** page and click **Synchronize saved objects**.
+
+## Export and import jobs
+
+You can export and import your ((ml)) job and ((dfeed)) configuration details on the **((ml-app))** page.
+For example, you can export jobs from your test environment and import them in your production environment.
+
+The exported file contains configuration details; it does not contain the ((ml)) models.
+For ((anomaly-detect)), you must import and run the job to build a model that is accurate for the new environment.
+For ((dfanalytics)), trained models are portable; you can import the job then transfer the model to the new cluster.
+Refer to [Exporting and importing ((dfanalytics)) trained models](((ml-docs))/ml-trained-models.html#export-import).
+
+There are some additional actions that you must take before you can successfully import and run your jobs:
+
+- The ((data-sources)) that are used by ((anomaly-detect)) ((dfeeds)) and ((dfanalytics)) source indices must exist; otherwise, the import fails.
+- If your ((anomaly-jobs)) use custom rules with filter lists, the filter lists must exist; otherwise, the import fails.
+- If your ((anomaly-jobs)) were associated with calendars, you must create the calendar in the new environment and add your imported jobs to the calendar.

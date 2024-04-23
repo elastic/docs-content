@@ -1,0 +1,288 @@
+---
+id: serverlessActionConnectors
+slug: /serverless/action-connectors
+title: ((connectors-app))
+description: Configure connections to third party systems for use in cases and rules.
+tags: [ 'serverless' ]
+---
+
+<DocBadge template="technical preview" />
+This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+
+The list of available connectors varies by project type.
+
+<DocRelatedArticles
+  items={
+    [
+      {
+        "title": "Amazon Bedrock",
+        "description": "Send a request to Amazon Bedrock.",
+        "href": "hhttps://www.elastic.co/guide/en/kibana/8.11/bedrock-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "D3 Security",
+        "description": "Create an event or trigger playbook workflow actions in D3 SOAR.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/d3security-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Email",
+        "description": "Send email from your server.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/email-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "IBM Resilient",
+        "description": "Create an incident in IBM Resilient.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Index",
+        "description": "Index data into Elasticsearch.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/index-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Jira",
+        "description": "Create an incident in Jira.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/jira-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Microsoft Teams",
+        "description": "Send a message to a Microsoft Teams channel.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/teams-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "OpenAI",
+        "description": "Send a request to OpenAI.",
+        "href": "https://www.elastic.co/guide/en/kibana/8.11/openai-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Opsgenie",
+        "description": "Create or close an alert in Opsgenie.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/opsgenie-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "PagerDuty",
+        "description": "Send an event in PagerDuty.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/pagerduty-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "SentinelOne",
+        "description": "Perform response actions on SentinelOne-protected hosts.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/sentinelone-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "ServerLog",
+        "description": "Add a message to a Kibana log.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/server-log-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "ServiceNow ITOM",
+        "description": "Create an event in ServiceNow ITOM.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/servicenow-itom-action-type.html",
+        "target": "_blank"
+        },
+      {
+        "title": "ServiceNow ITSM",
+        "description": "Create an incident in ServiceNow ITSM.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "ServiceNow SecOps",
+        "description": "Create a security incident in ServiceNow SecOps.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Slack",
+        "description": "Send messages to Slack channels.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/slack-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Swimlane",
+        "description": "Create records in Swimlane.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Tines",
+        "description": "Send events to a story.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/tines-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Torq",
+        "description": "Trigger a Torq workflow.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/torq-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Webhook",
+        "description": "Send a request to a web service.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html",
+        "target": "_blank"
+      },
+      {
+        "title": "Webhook - Case Management",
+        "description": "Send a request to a Case Management web service.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/cases-webhook-action-type.html",
+        "target": "_blank"
+        },
+      {
+        "title": "xMatters",
+        "description": "Trigger an xMatters workflow.",
+        "href": "https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html",
+        "target": "_blank"
+      },
+    ]
+  }
+/>
+
+{/* Connectors provide a central place to store connection information for services and integrations with third party systems.
+Actions are instantiations of a connector that are linked to rules and run as background tasks on the ((kib)) server when rule conditions are met. */}
+{/* ((kib)) provides the following types of connectors for use with ((alert-features)) :
+
+- [D3 Security](((kibana-ref))/d3security-action-type.html)
+- [Email](((kibana-ref))/email-action-type.html)
+- [Generative AI](((kibana-ref))/gen-ai-action-type.html)
+- [IBM Resilient](((kibana-ref))/resilient-action-type.html)
+- [Index](((kibana-ref))/index-action-type.html)
+- [Jira](((kibana-ref))/jira-action-type.html)
+- [Microsoft Teams](((kibana-ref))/teams-action-type.html)
+- [Opsgenie](((kibana-ref))/opsgenie-action-type.html)
+- [PagerDuty](((kibana-ref))/pagerduty-action-type.html)
+- [ServerLog](((kibana-ref))/server-log-action-type.html)
+- [ServiceNow ITSM](((kibana-ref))/servicenow-action-type.html)
+- [ServiceNow SecOps](((kibana-ref))/servicenow-sir-action-type.html)
+- [ServiceNow ITOM](((kibana-ref))/servicenow-itom-action-type.html)
+- [Slack](((kibana-ref))/slack-action-type.html)
+- [Swimlane](((kibana-ref))/swimlane-action-type.html)
+- [Tines](((kibana-ref))/tines-action-type.html)
+- [Torq](((kibana-ref))/torq-action-type.html)
+- [Webhook](((kibana-ref))/webhook-action-type.html)
+- [Webhook - Case Management](((kibana-ref))/cases-webhook-action-type.html)
+- [xMatters](((kibana-ref))/xmatters-action-type.html) */}
+
+{/* [cols="2"] */}
+{/* |  |  |
+|---|---|
+| <DocLink id="enKibanaEmailActionType">Email</DocLink> | Send email from your server. |
+| <DocLink id="enKibanaResilientActionType">((ibm-r))</DocLink> | Create an incident in ((ibm-r)). |
+| <DocLink id="enKibanaIndexActionType">Index</DocLink> | Index data into Elasticsearch. |
+| <DocLink id="enKibanaJiraActionType">Jira</DocLink> | Create an incident in Jira. |
+| <DocLink id="enKibanaTeamsActionType">Microsoft Teams</DocLink> | Send a message to a Microsoft Teams channel. |
+| <DocLink id="enKibanaOpsgenieActionType">Opsgenie</DocLink> | Create or close an alert in Opsgenie. |
+| <DocLink id="enKibanaPagerdutyActionType">PagerDuty</DocLink> | Send an event in PagerDuty. |
+| <DocLink id="enKibanaServerLogActionType">ServerLog</DocLink> | Add a message to a Kibana log. |
+| <DocLink id="enKibanaServicenowActionType">((sn-itsm))</DocLink> | Create an incident in ((sn)). |
+| <DocLink id="enKibanaServicenowSirActionType">((sn-sir))</DocLink> | Create a security incident in ((sn)). |
+| <DocLink id="enKibanaServicenowItomActionType">((sn-itom))</DocLink> | Create an event in ((sn)). |
+| <DocLink id="enKibanaSlackActionType">Slack</DocLink> | Send a message to a Slack channel or user. |
+| <DocLink id="enKibanaSwimlaneActionType">((swimlane))</DocLink> | Create an incident in ((swimlane)). |
+| <DocLink id="enKibanaTinesActionType">Tines</DocLink> | Send events to a Tines Story. |
+| <DocLink id="enKibanaWebhookActionType">((webhook))</DocLink> | Send a request to a web service. |
+| <DocLink id="enKibanaCasesWebhookActionType">((webhook-cm))</DocLink> | Send a request to a Case Management web service. |
+| <DocLink id="enKibanaXmattersActionType">xMatters</DocLink> | Send actionable alerts to on-call xMatters resources. |
+| <DocLink id="enKibanaTorqActionType">Torq</DocLink> |
+| <DocLink id="enKibanaGenAiActionType">Generative AI</DocLink> |
+| <DocLink id="enKibanaD3securityActionType">D3 Security</DocLink> | */}
+
+{/* <DocCallOut title="Note">
+
+Some connector types are paid commercial features, while others are free.
+For a comparison of the Elastic subscription levels, go to
+[the subscription page](((subscriptions))).
+
+</DocCallOut> */}
+
+{/*
+## Managing connectors
+
+Rules use connectors to route actions to different destinations like log files, ticketing systems, and messaging tools. While each ((kib)) app can offer their own types of rules, they typically share connectors. **((stack-manage-app)) → ((connectors-ui))** offers a central place to view and manage all the connectors in the current space.
+
+![Example connector listing in the ((rules-ui)) UI](../images/action-types/management-connectors-connector-listing.png) */}
+{/* NOTE: This is an autogenerated screenshot. Do not edit it directly. */}
+{/*
+## Required permissions
+
+Access to connectors is granted based on your privileges to alerting-enabled
+features. For more information, go to <DocLink id="enKibanaAlertingSetup" section="security">Security</DocLink>.
+
+## Connector networking configuration
+
+Use the <DocLink id="enKibanaAlertActionSettingsKb" section="action-settings">action configuration settings</DocLink> to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
+
+## Connector list
+
+In **((stack-manage-app)) → ((connectors-ui))**, you can find a list of the connectors
+in the current space. You can use the search bar to find specific connectors by
+name and type. The **Type** dropdown also enables you to filter to a subset of
+connector types.
+
+![Filtering the connector list by types of connectors](../images/action-types/management-connectors-connector-filter-by-type.png) */}
+{/* NOTE: This is an autogenerated screenshot. Do not edit it directly. */}
+{/*
+You can delete individual connectors using the trash icon. Alternatively, select
+multiple connectors and delete them in bulk using the **Delete** button.
+
+![Deleting connectors individually or in bulk](../images/action-types/management-connectors-connector-delete.png) */}
+{/* NOTE: This is an autogenerated screenshot. Do not edit it directly. */}
+{/*
+<DocCallOut title="Note">
+
+You can delete a connector even if there are still actions referencing it.
+When this happens the action will fail to run and errors appear in the ((kib)) logs.
+
+</DocCallOut>
+
+## Creating a new connector
+
+New connectors can be created with the **Create connector** button, which guides
+you to select the type of connector and configure its properties.
+
+![Connector select type](../images/action-types/management-connectors-connector-select-type.png)
+
+After you create a connector, it is available for use any time you set up an
+action in the current space.
+
+For out-of-the-box and standardized connectors, refer to
+<DocLink id="enKibanaPreConfiguredConnectors">preconfigured connectors</DocLink>.
+
+<DocCallOut title="Tip">
+You can also manage connectors as resources with the [Elasticstack provider](https://registry.terraform.io/providers/elastic/elasticstack/latest) for Terraform.
+For more details, refer to the [elasticstack_kibana_action_connector](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_action_connector) resource.
+</DocCallOut>
+
+## Importing and exporting connectors
+
+To import and export connectors, use the
+<DocLink id="enKibanaManagingSavedObjects">Saved Objects Management UI</DocLink>.
+
+<DocImage size="l" url="../images/action-types/management-connectors-connectors-import-banner.png" alt="Connectors import banner" />
+
+If a connector is missing sensitive information after the import, a **Fix**
+button appears in **((connectors-ui))**.
+
+![Connectors with missing secrets](../images/action-types/management-connectors-connectors-with-missing-secrets.png)
+
+## Monitoring connectors
+
+The <DocLink id="enKibanaTaskManagerHealthMonitoring">Task Manager health API</DocLink> helps you understand the performance of all tasks in your environment.
+However, if connectors fail to run, they will report as successful to Task Manager. The failure stats will not
+accurately depict the performance of connectors.
+
+For more information on connector successes and failures, refer to the <DocLink id="enKibanaEventLogIndex">Event log index</DocLink>.
+
+The include that was here is another page */}

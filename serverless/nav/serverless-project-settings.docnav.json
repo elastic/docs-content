@@ -1,0 +1,76 @@
+{
+  "mission": "Project and management settings",
+  "id": "serverless-project-settings",
+  "landingPageId": "serverlessProjectAndManagementSettings",
+  "icon": "logoElastic",
+  "description": "Description to be written",
+  "items": [
+    {
+      "pageId": "serverlessProjectSettings",
+      "classic-sources": ["enKibanaManagement"],
+      "label": "Management",
+      "items": [
+        {
+          "id": "serverlessApiKeys",
+          "classic-sources": ["enKibanaApiKeys"]
+        },
+        {
+          "id": "serverlessActionConnectors",
+          "classic-sources": ["enKibanaActionTypes"]
+        },
+        {
+          "id": "serverlessDataViews",
+          "classic-sources": ["enKibanaDataViews"]
+        },
+        {
+          "id": "serverlessFiles"
+        },
+        {
+          "id": "serverlessIndexManagement",
+          "classic-sources": ["enElasticsearchReferenceIndexMgmt"]
+        },
+        {
+          "id": "serverlessIngestPipelines"
+        },
+        {
+          "id": "serverlessLogstashPipelines"
+        },
+        {
+          "id": "serverlessMachineLearning"
+        },
+        {
+          "id": "serverlessMaintenanceWindows",
+          "classic-sources": ["enKibanaMaintenanceWindows"]
+        },
+        {
+          "id": "serverlessMaps"
+        },
+        {
+          "id": "serverlessReports"
+        },
+        {
+          "id": "serverlessRules",
+          "classic-sources": [ "enKibanaAlertingGettingStarted" ]
+        },
+        {
+          "id": "serverlessSavedObjects",
+          "classic-sources": ["enKibanaManagingSavedObjects"]
+        },
+        {
+          "id": "serverlessTags",
+          "classic-sources": ["enKibanaManagingTags"]
+        },
+        {
+          "id": "serverlessTransforms",
+          "classic-sources": ["enElasticsearchReferenceTransforms"]
+        }
+      ]
+    },
+    {
+      "pageId": "serverlessIntegrations"
+    },
+    {
+      "pageId": "serverlessFleetAndElasticAgent"
+    }
+  ]
+}

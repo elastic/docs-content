@@ -1,0 +1,232 @@
+---
+id: serverlessProjectSettings
+slug: /serverless/project-settings
+title: Management settings
+description: Manage your indices, data views, saved objects, settings, and more from a central location in Elastic.
+tags: [ 'serverless', 'management', 'overview' ]
+---
+
+<DocBadge template="technical preview" />
+Go to **Project Settings** to manage your indices, data views, saved objects, settings, and more.
+
+Access to individual features is governed by Elastic user roles.
+Consult your administrator if you do not have the appropriate access.
+To learn more about roles, refer to <DocLink id="serverlessGeneralAssignUserRoles"/>.
+
+<DocTable columns={[
+  {
+    "title": "Feature",
+    "width": "25%"
+  },
+  {
+    "title": "Description",
+    "width": "50%"
+  },
+  {
+    "title": "Availabile in",
+    "width": "25%"
+  }
+]}>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessApiKeys">API keys</DocLink>
+    </DocCell>
+    <DocCell>
+      Create and manage keys that can send requests on behalf of users.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessActionConnectors"/>
+    </DocCell>
+    <DocCell>
+      Create and manage reusable connectors for triggering actions.
+    </DocCell>
+      <DocCell>
+        <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+        <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+        <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessDataViews"/>
+    </DocCell>
+    <DocCell>
+      Manage the fields in the data views that retrieve your data from ((es)).
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+    </DocRow>
+    <DocRow>
+    <DocCell>
+      <DocLink id="serverlessSecurityEntityRiskScoring">Entity Risk Score</DocLink>
+    </DocCell>
+    <DocCell>
+      Manage entity risk scoring, and preview risky entities.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+    </DocRow>  
+    <DocRow>
+    <DocCell>
+      <DocLink id="serverlessFiles"/>
+    </DocCell>
+    <DocCell>
+      Manage files that are stored in ((kib)).
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessIndexManagement"/>
+    </DocCell>
+    <DocCell>
+      View index settings, mappings, and statistics and perform operations on indices.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessIngestPipelines"/>
+    </DocCell>
+    <DocCell>
+      Create and manage ingest pipelines that parse, transform, and enrich your data.
+    </DocCell>
+      <DocCell>
+        <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+        <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+        <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessLogstashPipelines"/>
+    </DocCell>
+    <DocCell>
+      Create and manage ((ls)) pipelines that parse, transform, and enrich your data.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessMachineLearning"/>
+    </DocCell>
+    <DocCell>
+    View, export, and import your ((anomaly-detect)) and ((dfanalytics)) jobs and trained models.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessMaintenanceWindows"/>
+    </DocCell>
+    <DocCell>
+      Suppress rule notifications for scheduled periods of time.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+    <DocRow>
+    <DocCell>
+      <DocLink id="serverlessMaps"/>
+    </DocCell>
+    <DocCell>
+      Create maps from your geographical data.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessReports"/>
+    </DocCell>
+    <DocCell>
+      Manage and download reports such as CSV files generated from saved searches.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+   <DocRow>
+    <DocCell>
+      <DocLink id="serverlessRules"/>
+    </DocCell>
+    <DocCell>
+     Create and manage rules that generate alerts.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessSavedObjects"/>
+    </DocCell>
+    <DocCell>
+      Copy, edit, delete, import, and export your saved objects.
+      These include dashboards, visualizations, maps, ((data-sources)), and more.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessTags"/>
+    </DocCell>
+    <DocCell>
+      Create, manage, and assign tags to your saved objects.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+  <DocRow>
+    <DocCell>
+      <DocLink id="serverlessTransforms"/>
+    </DocCell>
+    <DocCell>
+      Use transforms to pivot existing ((es)) indices into summarized or entity-centric indices.
+    </DocCell>
+    <DocCell>
+      <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" />
+      <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" />
+      <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+    </DocCell>
+  </DocRow>
+</DocTable>
