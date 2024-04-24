@@ -1,6 +1,9 @@
 name: Staging Docs
 
 on:
+  push:
+    branches:
+      - "test"
   pull_request_target:
     paths:
       - '**.mdx'
