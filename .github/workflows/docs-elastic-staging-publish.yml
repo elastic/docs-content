@@ -1,9 +1,6 @@
-name: Staging Docs
+name: Elastic docs
 
 on:
-  push:
-    branches:
-      - "test"
   pull_request_target:
     paths:
       - '**.mdx'
@@ -19,7 +16,7 @@ on:
 
 jobs:
   publish:
-    name: Vercel Build Check
+    if: contains(github.event.pull_request.labels.*.name, 'ci:doc-build')
     uses: elastic/workflows/.github/workflows/docs-elastic-co-publish.yml@main
     secrets:
       VERCEL_GITHUB_TOKEN: ${{ secrets.VERCEL_GITHUB_TOKEN }}
