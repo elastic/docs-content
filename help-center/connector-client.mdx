@@ -1,0 +1,161 @@
+---
+id: hcEsSetupConnectorClient
+slug: /help-center/elasticsearch/setup-connector-client
+title: Run self-managed Elastic connectors
+description: Learn how to set up and run self-managed connectors with Docker
+tags: [ 'helpcenter', 'serverless', 'how-to', 'elasticsearch', 'ingest', 'connector']
+---
+
+_Connectors_ sync data from an original data source to ((es)).
+Use them to create searchable mirrors of your third-party data.
+Connectors are written in Python and the source code is available in the [`elastic/connectors`](https://github.com/elastic/connectors/tree/main/connectors/sources) repo.
+
+_Connector clients_ are **self-managed** connectors.
+To use them, you must run the **connector service** on your own infrastructure.
+
+Use this guide to learn how to:
+
+- Set up a connector in your ((es)) project's UI
+- Run the connector service with Docker
+
+## Available connectors
+
+Connector clients are available for the following third-party data sources:
+
+<DocAccordion buttonContent="Click to expand">
+
+{/* TODO: Update links if these references move*/}
+- [Azure Blob Storage](https://www.elastic.co/guide/en/enterprise-search/master/connectors-azure-blob.html)
+- [Box](https://www.elastic.co/guide/en/enterprise-search/master/connectors-box.html)
+- [Confluence](https://www.elastic.co/guide/en/enterprise-search/master/connectors-confluence.html)
+- [Dropbox](https://www.elastic.co/guide/en/enterprise-search/master/connectors-dropbox.html)
+- [GitHub](https://www.elastic.co/guide/en/enterprise-search/master/connectors-github.html)
+- [Gmail](https://www.elastic.co/guide/en/enterprise-search/master/connectors-gmail.html)
+- [Google Cloud Storage](https://www.elastic.co/guide/en/enterprise-search/master/connectors-google-cloud.html)
+- [Google Drive](https://www.elastic.co/guide/en/enterprise-search/master/connectors-google-drive.html)
+- [GraphQL](https://www.elastic.co/guide/en/enterprise-search/master/connectors-graphql.html)
+- [Jira](https://www.elastic.co/guide/en/enterprise-search/master/connectors-jira.html)
+- [MicrosoftSQL](https://www.elastic.co/guide/en/enterprise-search/master/connectors-ms-sql.html)
+- [MongoDB](https://www.elastic.co/guide/en/enterprise-search/master/connectors-mongodb.html)
+- [MySQL](https://www.elastic.co/guide/en/enterprise-search/master/connectors-mysql.html)
+- [Network drive](https://www.elastic.co/guide/en/enterprise-search/master/connectors-network-drive.html)
+- [Notion](https://www.elastic.co/guide/en/enterprise-search/master/connectors-notion.html)
+- [OneDrive](https://www.elastic.co/guide/en/enterprise-search/master/connectors-onedrive.html)
+- [OpenText Documentum](https://www.elastic.co/guide/en/enterprise-search/master/connectors-opentext.html)
+- [Oracle](https://www.elastic.co/guide/en/enterprise-search/master/connectors-oracle.html)
+- [Outlook](https://www.elastic.co/guide/en/enterprise-search/master/connectors-outlook.html)
+- [PostgreSQL](https://www.elastic.co/guide/en/enterprise-search/master/connectors-postgresql.html)
+- [Redis](https://www.elastic.co/guide/en/enterprise-search/master/connectors-redis.html)
+- [S3](https://www.elastic.co/guide/en/enterprise-search/master/connectors-s3.html)
+- [Salesforce](https://www.elastic.co/guide/en/enterprise-search/master/connectors-salesforce.html)
+- [ServiceNow](https://www.elastic.co/guide/en/enterprise-search/master/connectors-servicenow.html)
+- [SharePoint Online](https://www.elastic.co/guide/en/enterprise-search/master/connectors-sharepoint-online.html)
+- [SharePoint Server](https://www.elastic.co/guide/en/enterprise-search/master/connectors-sharepoint.html)
+- [Slack](https://www.elastic.co/guide/en/enterprise-search/master/connectors-slack.html)
+- [Teams](https://www.elastic.co/guide/en/enterprise-search/master/connectors-teams.html)
+- [Zoom](https://www.elastic.co/guide/en/enterprise-search/master/connectors-zoom.html)
+</DocAccordion>
+
+<DocCallOut color="warning" title="Data source prerequisites">
+Each data source has specific prerequisites to authorize the connector to access its data.
+For example, certain data sources may need you to create an OAuth application, or create a service account.
+You'll need to check the [individual connector documentation](#available-connectors) for these details.
+</DocCallOut>
+
+## Create an API key
+
+The connector service needs an API key to authenticate with ((es)).
+If you already have one you're good to go.
+If not you can create a key in your ((es)) project's UI.
+
+Search for **API keys** in the top-level search bar and follow the instructions.
+Copy the `encoded` value of the API key, which you'll need in the next steps.
+
+## Initial setup in UI
+
+In your project's UI, go to **((es)) → Content → Connectors**.
+Follow these steps:
+
+1. Select **Create a connector**.
+2. Choose a third-party service from the list of **Connector types**.
+3. Add a **name** and _optional_ description to identify the connector.
+4. Copy the `connector_id`, `service_type`, and `elasticsearch.host` values printed to the screen.
+You'll need to update these values in your `config.yml` file later.
+
+Now you're ready to run the connector service, so your connector can talk to your ((es)) instance.
+
+## Run connector service with Docker
+
+To run the connector service with Docker, you'll be working in your terminal.
+
+Follow these steps.
+
+**Step 1: Create configuration file**
+
+Here you'll create a new `config.yml` file in the `connectors-config` directory. 
+Run the following commands:
+
+```shell
+mkdir connectors-config && cd connectors-config 
+touch config.yml
+```
+**Step 2: Add configuration settings**
+
+Copy the following configuration file template into your `config.yml` file.
+
+```yaml
+elasticsearch.host: <ELASTICSEARCH_HOST>
+elasticsearch.api_key: <ELASTICSEARCH_API_KEY>
+
+connectors:
+  -
+    connector_id: <CONNECTOR_ID>
+    service_type: <SERVICE_TYPE> # sharepoint_online (example)
+    api_key: <CONNECTOR_API_KEY> # Optional. If not provided, the connector will use the elasticsearch.api_key instead
+```
+
+Replace the placeholders with the values you copied from the UI.
+Refer to our [example config file](https://github.com/elastic/connectors/blob/main/config.yml.example) if needed.
+
+**Step 3: Run the Docker image**
+
+Use the following command, replacing `{version}` with a specific version number, such as `8.14.0`.
+
+```shell
+docker run \
+-v ~/connectors-config:/config \
+--network "elastic" \
+--tty \
+--rm \
+docker.elastic.co/enterprise-search/elastic-connectors:{version}.0 \
+/app/bin/elastic-ingest \
+-c /config/config.yml
+```
+
+Find all available Docker images and version numbers in the [official Elastic Docker registry](https://www.docker.elastic.co/r/enterprise-search/elastic-connectors).
+
+<DocCallOut title="🧰 Run from source">
+  If you're comfortable working with Python and want to iterate quickly locally, you can run the connector service from source.
+  Refer to the [docs](https://docs.elastic.co/serverless/elasticsearch/ingest-data-through-integrations-connector-client#run-from-source) for details.
+</DocCallOut>
+
+## Enter data source details in UI
+
+Once the connector service is running, go back to the UI to finalize the connector configuration.
+The **Configure your connector** step should now be available.
+
+Here you need to add the specific connection details about your data source instance, such as URLs, authorization credentials, etc.
+Remember, these **details vary** by data source.
+
+## Connect to an index
+
+After entering the data source details, connect to an ((es)) index.
+This is the final step before you can run a sync.
+The simplest option is to create a *new index* for your connector's data.
+
+<DocCallOut color= "warning" title="Using existing index">
+  Syncing data to an existing index is more complex than using a new index.
+  You'll need to ensure **mappings** are defined for the incoming data. 
+  If not done correctly, syncs will fail.  
+</DocCallOut>
+
