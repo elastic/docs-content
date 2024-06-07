@@ -42,9 +42,9 @@ Set the value to port `:443` instead.
 
 To use ((ls)) to send data to ((es3)), you must be using:
 - ((ls)) 8.10.1 or later
-- ((ls)) [Elasticsearch output plugin](((logstash-ref))/plugins-outputs-elasticsearch.html) 11.18.0 or later
-- ((ls)) [Elasticsearch input plugin](((logstash-ref))/plugins-inputs-elasticsearch.html) 4.18.0 or later
-- ((ls)) [Elasticsearch filter plugin](((logstash-ref))/plugins-filters-elasticsearch.html) 3.16.0 or later
+- ((ls)) [((es)) output plugin](((logstash-ref))/plugins-outputs-elasticsearch.html) 11.18.0 or later
+- ((ls)) [((es)) input plugin](((logstash-ref))/plugins-inputs-elasticsearch.html) 4.18.0 or later
+- ((ls)) [((es)) filter plugin](((logstash-ref))/plugins-filters-elasticsearch.html) 3.16.0 or later
 
 
 ## Secure connection
@@ -64,7 +64,7 @@ You can create as many API keys as necessary.
 When you set up your API keys, use the metadata option to tag each API key with details that are meaningful to you.
 This step makes managing multiple API keys easier.
 
-After you generate an API key, add it to your ((ls)) [Elasticsearch output plugin](((logstash-ref))/plugins-outputs-elasticsearch.html) config file's `api_key` setting.
+After you generate an API key, add it to your ((ls)) [((es)) output plugin](((logstash-ref))/plugins-outputs-elasticsearch.html) config file's `api_key` setting.
 Here's an example:
 
 ```bash
@@ -74,6 +74,18 @@ output {
   }
 }
 ```
+
+## Migrating Elasticsearch data using ((ls))
+
+You can also use ((ls)) to migrate data into and out of ((es3)) environments with the ((es)) [input plugin](((logstash-ref))/plugins-inputs-elasticsearch.html) and [output plugin](((logstash-ref))/plugins-outputs-elasticsearch.html). 
+
+For each index to be migrated, do the following:
+
+1. Create the index in the destination environment.
+2. Add the desired [settings](((ref))/indices-get-settings.html) and [mappings](((ref))/indices-get-mapping.html) to the destination index based on the origin index. 
+    
+    If you're migrating into an ((es3)) environment, then you might need to adjust your index settings if your origin index is using <DocLink id="serverlessDifferences">settings that aren't supported in Serverless</DocLink>.
+3. Run your ((ls)) pipeline to migrate from the origin index to the destination index.
 
 ## Next steps
 

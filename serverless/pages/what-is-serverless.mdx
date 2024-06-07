@@ -65,6 +65,10 @@ There is no official SLA for Support in Serverless until General Availability (G
 
 Migration paths between hosted deployments and serverless projects are currently unsupported. 
 
+**How can I move data to or from serverless projects?**
+
+We are working on data migration tools! In the interim, you can <DocLink id="serverlessElasticsearchIngestDataThroughLogstash" section="migrating-elasticsearch-data-using-logstash">use Logstash</DocLink> with Elasticsearch input and output plugins to move data to and from serverless projects. 
+
 **How does serverless ensure compatibility between software versions?**
 
 Connections and configurations are unaffected by upgrades. To ensure compatibility between software versions, quality testing and API versioning are used.
@@ -83,6 +87,10 @@ Create API keys for service accounts in your serverless projects. Options to aut
 
 To raise a Support case with Elastic, raise a case for your subscription the same way you do today. In the body of the case, make sure to mention you are working in serverless to ensure we can provide the appropriate support. 
 
-**When will pricing information be available for serverless?**
+**Where can I learn about pricing for serverless?**
 
-Pricing will be available through account representatives and published at a later date.
+See serverless pricing information for [Search](https://www.elastic.co/pricing/serverless-search), [Observability](https://www.elastic.co/pricing/serverless-observability), and [Security](https://www.elastic.co/pricing/serverless-security).
+
+**Can I request backups or restores for my projects?**
+
+It is not currently possible to request backups or restores for projects, but we are working on data migration tools to better support this. 
