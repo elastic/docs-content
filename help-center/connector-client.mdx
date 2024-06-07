@@ -2,7 +2,7 @@
 id: hcEsSetupConnectorClient
 slug: /help-center/elasticsearch/setup-connector-client
 title: Run self-managed Elastic connectors
-description: Learn how to set up and run self-managed connectors with Docker
+description: Learn how to set up and run self-managed connectors with Docker.
 tags: [ 'helpcenter', 'serverless', 'how-to', 'elasticsearch', 'ingest', 'connector']
 ---
 
@@ -15,7 +15,7 @@ To use them, you must run the **connector service** on your own infrastructure.
 
 Use this guide to learn how to:
 
-- Set up a connector in your ((es)) project's UI
+- Set up a connector in your ((es)) project
 - Run the connector service with Docker
 
 ## Available connectors
@@ -66,23 +66,23 @@ You'll need to check the [individual connector documentation](#available-connect
 
 The connector service needs an API key to authenticate with ((es)).
 If you already have one you're good to go.
-If not you can create a key in your ((es)) project's UI.
+If not, you can create a key in your ((es)) project.
 
-Search for **API keys** in the top-level search bar and follow the instructions.
+In the search field in the global header, search for **API keys**, then follow the instructions.
 Copy the `encoded` value of the API key, which you'll need in the next steps.
 
-## Initial setup in UI
+## Initial setup
 
-In your project's UI, go to **((es)) → Content → Connectors**.
+In the main menu, click ** Connectors**.
 Follow these steps:
 
-1. Select **Create a connector**.
-2. Choose a third-party service from the list of **Connector types**.
+1. Select **Create connector**.
+2. To choose a third-party service, select the **Connector type**.
 3. Add a **name** and _optional_ description to identify the connector.
-4. Copy the `connector_id`, `service_type`, and `elasticsearch.host` values printed to the screen.
+4. Copy the `connector_id`, `service_type`, and `elasticsearch.host` values.
 You'll need to update these values in your `config.yml` file later.
 
-Now you're ready to run the connector service, so your connector can talk to your ((es)) instance.
+Now you're ready to run the connector service so your connector can talk to your ((es)) instance.
 
 ## Run connector service with Docker
 
@@ -90,18 +90,17 @@ To run the connector service with Docker, you'll be working in your terminal.
 
 Follow these steps.
 
-**Step 1: Create configuration file**
+1. In the `connectors-config` directory, create a `config.yml` file.
 
-Here you'll create a new `config.yml` file in the `connectors-config` directory. 
 Run the following commands:
 
 ```shell
 mkdir connectors-config && cd connectors-config 
 touch config.yml
 ```
-**Step 2: Add configuration settings**
+2.  Add the configuration settings.
 
-Copy the following configuration file template into your `config.yml` file.
+Copy the following configuration file template into your `config.yml` file:
 
 ```yaml
 elasticsearch.host: <ELASTICSEARCH_HOST>
@@ -114,12 +113,12 @@ connectors:
     api_key: <CONNECTOR_API_KEY> # Optional. If not provided, the connector will use the elasticsearch.api_key instead
 ```
 
-Replace the placeholders with the values you copied from the UI.
+Replace the placeholders with the `connector_id`, `service_type`, and `elasticsearch.host` values.
 Refer to our [example config file](https://github.com/elastic/connectors/blob/main/config.yml.example) if needed.
 
-**Step 3: Run the Docker image**
+3. Run the Docker image.
 
-Use the following command, replacing `{version}` with a specific version number, such as `8.14.0`.
+Use the following command, replacing `{version}` with a specific version number, such as `8.14.0`:
 
 ```shell
 docker run \
@@ -135,13 +134,13 @@ docker.elastic.co/enterprise-search/elastic-connectors:{version}.0 \
 Find all available Docker images and version numbers in the [official Elastic Docker registry](https://www.docker.elastic.co/r/enterprise-search/elastic-connectors).
 
 <DocCallOut title="🧰 Run from source">
-  If you're comfortable working with Python and want to iterate quickly locally, you can run the connector service from source.
+  If you're comfortable working with Python and want to quickly iterate locally, you can run the connector service from source.
   Refer to the [docs](https://docs.elastic.co/serverless/elasticsearch/ingest-data-through-integrations-connector-client#run-from-source) for details.
 </DocCallOut>
 
 ## Enter data source details in UI
 
-Once the connector service is running, go back to the UI to finalize the connector configuration.
+Once the connector service is running, finalize the connector configuration in your ((es)) project.
 The **Configure your connector** step should now be available.
 
 Here you need to add the specific connection details about your data source instance, such as URLs, authorization credentials, etc.
