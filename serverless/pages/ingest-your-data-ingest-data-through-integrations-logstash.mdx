@@ -1,5 +1,4 @@
 ---
-id: serverlessElasticsearchIngestDataThroughLogstash
 slug: /serverless/elasticsearch/ingest-data-through-logstash
 title: Logstash
 description: Use ((ls)) to ship data to ((es)).
@@ -13,7 +12,7 @@ It supports a wide variety of data sources, and can dynamically unify data from 
 ((ls)) can collect data using a variety of ((ls)) [input plugins](((logstash-ref))/input-plugins.html), enrich and transform the data with ((ls)) [filter plugins](((logstash-ref))/filter-plugins.html),
 and output the data to ((es)) using the ((ls)) [Elasticsearch output plugin](((logstash-ref))/plugins-outputs-elasticsearch.html).
 
-You can use ((ls)) to extend <DocLink id="serverlessElasticsearchIngestDataThroughBeats" text="Beats"/> for advanced use cases,
+You can use ((ls)) to extend <DocLink slug="/serverless/elasticsearch/ingest-data-through-beats" text="Beats"/> for advanced use cases,
 such as data routed to multiple destinations or when you need to make your data persistent.
 
 
@@ -29,7 +28,7 @@ Some differences to note between ((es3)) and self-managed ((es)):
 User-based security settings are ignored and may cause errors.
 - ((es3)) uses **((dlm)) (((dlm-init)))** instead of ((ilm)) (((ilm-init))).
 If you add ((ilm-init)) settings to your ((es)) output configuration, they are ignored and may cause errors.
-- **((ls)) monitoring** for ((serverless-short)) is available through the [((ls)) Integration](https://github.com/elastic/integrations/blob/main/packages/logstash/_dev/build/docs/README.md) in <DocLink id="serverlessObservabilityWhatIsObservabilityServerless" text="Elastic Observability"/>.
+- **((ls)) monitoring** for ((serverless-short)) is available through the [((ls)) Integration](https://github.com/elastic/integrations/blob/main/packages/logstash/_dev/build/docs/README.md) in <DocLink slug="/serverless/observability/what-is-observability-serverless" text="Elastic Observability"/>.
 
 **Known issue**
 
@@ -56,7 +55,7 @@ No additional SSL configuration steps are needed.
 
 ## API keys for connecting ((ls)) to ((es3))
 
-Use the **Security: API key** section in the UI to <DocLink id="serverlessApiKeys">create an API key</DocLink>
+Use the **Security: API key** section in the UI to <DocLink slug="/serverless/api-keys">create an API key</DocLink>
 for securely connecting the ((ls)) ((es)) output to ((es3)).
 We recommend creating a unique API key per ((ls)) instance.
 You can create as many API keys as necessary.

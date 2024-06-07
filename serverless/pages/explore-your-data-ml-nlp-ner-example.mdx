@@ -1,5 +1,4 @@
 ---
-id: serverlessElasticsearchExploreYourDataMachineLearningNlpNerExample
 # slug: /serverless/elasticsearch/explore-your-data-ml-nlp/examples/ner
 title: How to deploy named entity recognition
 description: Description to be written
@@ -8,7 +7,7 @@ tags: []
 
 <DocBadge template="technical preview" />
 You can use these instructions to deploy a 
-<DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlppExtractInfo" section="named-entity-recognition">named entity recognition (NER)</DocLink> 
+<DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/extract-info" section="named-entity-recognition">named entity recognition (NER)</DocLink> 
 model in ((es)), test the model, and add it to an ((infer)) ingest pipeline. The 
 model that is used in the example is publicly available on 
 [HuggingFace](https://huggingface.co/).
@@ -37,7 +36,7 @@ docker build -t elastic/eland .
 After the script finishes, your Eland Docker client is ready to use.
 
 Select a NER model from the 
-<DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlpModelRef" section="third-party-named-entity-recognition-models">third-party model reference list</DocLink> 
+<DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/model-reference" section="third-party-named-entity-recognition-models">third-party model reference list</DocLink> 
 This example uses an 
 [uncased NER model](https://huggingface.co/elastic/distilbert-base-uncased-finetuned-conll03-english).
 

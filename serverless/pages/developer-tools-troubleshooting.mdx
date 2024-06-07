@@ -1,5 +1,4 @@
 ---
-id: serverlessDevtoolsTroubleshooting
 slug: /serverless/devtools/dev-tools-troubleshooting
 title: Troubleshooting
 description: Troubleshoot searches.
@@ -150,7 +149,7 @@ GET /my-index-000001/_count
 }
 ```
 
-If the field is aggregatable, you can use <DocLink id="serverlessElasticsearchExploreYourDataAggregations" text="aggregations" /> 
+If the field is aggregatable, you can use <DocLink slug="/serverless/elasticsearch/explore-your-data-aggregations" text="aggregations" /> 
 to check the field's values. For `keyword` fields, you can use a `terms` 
 aggregation to retrieve the field's most common values:
 
@@ -238,7 +237,7 @@ GET /my-index-000001/_explain/0
 The [**Profile API**](((ref))/search-profile.html)
 provides detailed timing information about a search request.
 For a visual representation of the results, use the 
-<DocLink id="serverlessDevtoolsProfileQueriesAndAggregations" text="Search Profiler"/>.
+<DocLink slug="/serverless/devtools/profile-queries-and-aggregations" text="Search Profiler"/>.
 
 <DocCallOut title="Note">
 To troubleshoot queries, select **Inspect** in the toolbar.

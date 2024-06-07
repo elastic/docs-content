@@ -1,5 +1,4 @@
 ---
-id: serverlessElasticsearchExploreYourDataMachineLearningNlpTextEmbVectorSearchExample
 # slug: /serverless/elasticsearch/explore-your-data-ml-nlp/examples/text-embedding-vector-search
 title: How to deploy a text embedding model and use it for semantic search
 description: Description to be written
@@ -8,7 +7,7 @@ tags: []
 
 <DocBadge template="technical preview" />
 You can use these instructions to deploy a 
-<DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlpSearchCompare" section="text-embedding">text embedding</DocLink> 
+<DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/search-compare-text" section="text-embedding">text embedding</DocLink> 
 model in ((es)), test the model, and add it to an ((infer)) ingest pipeline. It 
 enables you to generate vector representations of text and perform vector 
 similarity search on the generated vectors. The model that is used in the 
@@ -44,7 +43,7 @@ docker build -t elastic/eland .
 After the script finishes, your Eland Docker client is ready to use.
 
 Select a text embedding model from the 
-<DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlpModelRef" section="third-party-text-embedding-models">third-party model reference list</DocLink> 
+<DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/model-reference" section="third-party-text-embedding-models">third-party model reference list</DocLink> 
 This example uses the 
 [msmarco-MiniLM-L-12-v3](https://huggingface.co/sentence-transformers/msmarco-MiniLM-L-12-v3)
 sentence-transformer model.

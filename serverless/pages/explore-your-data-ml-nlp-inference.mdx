@@ -1,5 +1,4 @@
 ---
-id: serverlessElasticsearchExploreYourDataMachineLearningNlpInference
 # slug: /serverless/elasticsearch/explore-your-data-ml-nlp/inference
 title: Add NLP ((infer)) to ingest pipelines
 description: You can import trained models into your cluster and configure them for specific NLP tasks.
@@ -7,16 +6,16 @@ tags: [ 'serverless', 'elasticsearch', 'tbd' ]
 ---
 
 <DocBadge template="technical preview" />
-After you <DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlpDeployTrainedModels">deploy a trained model in your cluster</DocLink>, 
+After you <DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/deploy-trained-models">deploy a trained model in your cluster</DocLink>, 
 you can use it to perform ((nlp)) tasks in ingest pipelines.
 
 1. Verify that all of the
     [ingest pipeline prerequisites](((ref))/ingest.html#ingest-prerequisites) 
     are met.
 
-1. <DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlpInference" section="add-an-((infer))-processor-to-an-ingest-pipeline">Add an ((infer)) processor to an ingest pipeline</DocLink>.
-1. <DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlpInference" section="ingest-documents">Ingest documents</DocLink>.
-1. <DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlpInference" section="view-the-results">View the results</DocLink>.
+1. <DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/inference" section="add-an-((infer))-processor-to-an-ingest-pipeline">Add an ((infer)) processor to an ingest pipeline</DocLink>.
+1. <DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/inference" section="ingest-documents">Ingest documents</DocLink>.
+1. <DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/inference" section="view-the-results">View the results</DocLink>.
 
 
 ## Add an ((infer)) processor to an ingest pipeline
@@ -269,7 +268,7 @@ check the following possible causes:
     [get trained models statistics API](((ref))/get-trained-models-stats.html). 
     Unless you are using the built-in `lang_ident_model_1` model, you must 
     ensure your model is successfully deployed. Refer to 
-    <DocLink id="serverlessElasticsearchExploreYourDataMachineLearningNlpDeployTrainedModels">Deploy the model in your cluster</DocLink>.
+    <DocLink slug="/serverless/elasticsearch/explore-your-data-ml-nlp/deploy-trained-models">Deploy the model in your cluster</DocLink>.
 
 1. The default input field name expected by your trained model is not present in
     your source document. Use the **Field Map** option in your ((infer)) 

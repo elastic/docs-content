@@ -1,5 +1,4 @@
 ---
-id: serverlessElasticsearchApiConventions
 slug: /serverless/elasticsearch/api-conventions
 title: Elasticsearch API conventions
 description: The ((es)) REST APIs have conventions for headers and request bodies.
@@ -14,7 +13,7 @@ For example:
 GET _cat/indices?v=true
 ```
 
-Check out <DocLink id="serverlessDevtoolsRunApiRequestsInTheConsole" />.
+Check out <DocLink slug="/serverless/devtools/run-api-requests-in-the-console" />.
 
 ## Request headers
 
@@ -32,7 +31,7 @@ curl -X GET "${ES_URL}/_cat/indices?v=true" \
   -H "Authorization: ApiKey ${API_KEY}"
 ```
 
-To get API keys or the Elasticsearch Endpoint (`${ES_URL}`) for a project, refer to <DocLink id="serverlessElasticsearchGetStarted" />.
+To get API keys or the Elasticsearch Endpoint (`${ES_URL}`) for a project, refer to <DocLink slug="/serverless/elasticsearch/get-started" />.
 
 ### Content-type
 

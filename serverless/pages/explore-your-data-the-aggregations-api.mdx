@@ -1,5 +1,4 @@
 ---
-id: serverlessElasticsearchExploreYourDataAggregations
 slug: /serverless/elasticsearch/explore-your-data-aggregations
 title: Aggregations
 description: Aggregate and summarize your ((es)) data.
@@ -362,7 +361,7 @@ for using a runtime field varies from aggregation to aggregation.
 For faster responses, ((es)) caches the results of frequently run aggregations in
 the [shard request cache](((ref))/shard-request-cache.html). To get cached results, use the
 same [`preference` string](((ref))/search-shard-routing.html#shard-and-node-preference) for each search. If you
-don't need search hits, <DocLink id="serverlessElasticsearchExploreYourDataAggregations" section="return-only-aggregation-results">set `size` to `0`</DocLink> to avoid
+don't need search hits, <DocLink slug="/serverless/elasticsearch/explore-your-data-aggregations" section="return-only-aggregation-results">set `size` to `0`</DocLink> to avoid
 filling the cache.
 
 ((es)) routes searches with the same preference string to the same shards. If the

@@ -1,5 +1,4 @@
 ---
-id: serverlessGeneralManageProjectRestAPI
 slug: /serverless/general/manage-project-with-api
 title: Using the Project Management REST API
 description: Manage your organization's serverless projects using the REST API.
@@ -73,7 +72,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
      }'
 ```
 [^1]: Replace **`My project`** with a more descriptive name in this call.
-[^2]: You can <DocLink id="serverlessGeneralManageProjectRestAPI" text="obtain a list of available regions" section="list-available-regions" />.
+[^2]: You can <DocLink slug="/serverless/general/manage-project-with-api" text="obtain a list of available regions" section="list-available-regions" />.
 
 The response from the create project request will include the created project details, such as the project ID,
 the credentials to access the project, and the endpoints to access different apps such as Elasticsearch and Kibana.
