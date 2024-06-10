@@ -15,7 +15,7 @@ This repo contains most of our Elastic Serverless documentation, including:
 
 ## Reviews
 
-All documentation pull requests automatically add the [@platform-docs](https://github.com/orgs/elastic/teams/platform-docs) team as a reviewer.
+All documentation pull requests automatically add the [@platform-docs](https://github.com/orgs/elastic/teams/platform-docs) team as a reviewer. test
 
 ## Contribute
 
