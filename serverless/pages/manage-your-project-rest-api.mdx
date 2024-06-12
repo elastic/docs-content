@@ -1,5 +1,4 @@
 ---
-id: serverlessGeneralManageProjectRestAPI
 slug: /serverless/general/manage-project-with-api
 title: Using the Project Management REST API
 description: Manage your organization's serverless projects using the REST API.
@@ -8,7 +7,7 @@ tags: [ 'serverless', 'project', 'manage', 'rest', 'api']
 
 <DocBadge template="technical preview" />
 
-You can manage serverless projects using the [Elastic Cloud Serverless REST API](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless). This API allows you to create, update, and delete projects, as well as manage project features and usage.
+You can manage serverless projects using Elastic Cloud's [Project Management](https://docs.elastic.co/api-reference/project-management) REST API. This API allows you to create, update, and delete projects, as well as manage project features and usage.
 
 <DocCallOut color="success" title="Tip">
     More APIs let you interact with data, capabilities, and settings inside of specific projects. Refer to the [Serverless API reference page](https://docs.elastic.co/api-reference).
@@ -44,7 +43,7 @@ curl -H "Authorization: ApiKey essu_..." https://api.elastic-cloud.com/api/v1/se
 
 The Project Management API is documented using the [OpenAPI Specification](https://en.wikipedia.org/wiki/OpenAPI_Specification). The current supported version of the specification is `3.0`.
 
-For details, check the [API reference](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless) or download the [OpenAPI Specification](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless.yaml).
+For details, check the [API reference](https://docs.elastic.co/api-reference) or download the [OpenAPI Specification](https://docs.elastic.co/api-reference/openapi/serverless-project-api.yml).
 
 This specification can be used to generate client SDKs, or on tools that support it, such as the [Swagger Editor](https://editor.swagger.io).
 
@@ -73,7 +72,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
      }'
 ```
 [^1]: Replace **`My project`** with a more descriptive name in this call.
-[^2]: You can <DocLink id="serverlessGeneralManageProjectRestAPI" text="obtain a list of available regions" section="list-available-regions" />.
+[^2]: You can <DocLink slug="/serverless/general/manage-project-with-api" text="obtain a list of available regions" section="list-available-regions" />.
 
 The response from the create project request will include the created project details, such as the project ID,
 the credentials to access the project, and the endpoints to access different apps such as Elasticsearch and Kibana.

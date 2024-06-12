@@ -1,5 +1,4 @@
 ---
-id: serverlessDifferences
 slug: /serverless/elasticsearch/differences
 title: Differences from other Elasticsearch offerings
 description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
@@ -11,7 +10,7 @@ tags: [ 'serverless', 'elasticsearch']
 Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in serverless ((es)). 
 These features have either been replaced by a new feature, or are not applicable in the new Serverless architecture:
 
-- **Index lifecycle management (((ilm-init)))** is not available, in favor of **<DocLink id="serverlessIndexManagement" section="manage-data-streams" 
+- **Index lifecycle management (((ilm-init)))** is not available, in favor of **<DocLink slug="/serverless/index-management" section="manage-data-streams" 
 text="data stream lifecycle"/>**. 
 
   In an Elastic Cloud Hosted or self-managed environment, ((ilm-init)) lets you automatically transition indices through data tiers according to your 
@@ -21,19 +20,19 @@ text="data stream lifecycle"/>**.
   Data stream lifecycle is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary 
   hardware-centric concepts like data tiers.
   <br/>
-- **Watcher** is not available, in favor of **<DocLink id="serverlessElasticsearchExploreYourDataAlerting" text="Kibana Alerts"/>**. 
+- **Watcher** is not available, in favor of **<DocLink slug="/serverless/elasticsearch/explore-your-data-alerting" text="Kibana Alerts"/>**. 
 
   Kibana Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and 
   hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
   <br/>
 - Certain APIs, API parameters, index, cluster and node level settings are not available. Refer to our 
-  <DocLink id="serverlessElasticsearchHttpApis" text="REST API references"/> for a list of available APIs.
+  <DocLink slug="/serverless/elasticsearch/http-apis" text="REST API references"/> for a list of available APIs.
 
   Serverless Elasticsearch manages the underlying Elastic cluster for you, optimizing nodes, shards, and replicas for your use case. 
   Because of this, various management and monitoring APIs, API parameters and settings are not available on Serverless.
 
 <DocCallOut title="Other limitations" color="warning">
 
-For serverless technical preview limitations, refer to <DocLink id="serverlessTechnicalPreviewLimitations" text="Technical preview limitations"/>. 
+For serverless technical preview limitations, refer to <DocLink slug="/serverless/elasticsearch/technical-preview-limitations" text="Technical preview limitations"/>. 
 
 </DocCallOut>

@@ -1,5 +1,4 @@
 ---
-id: serverlessElasticsearchKnnSearch
 slug: /serverless/elasticsearch/knn-search
 title: k-nearest neighbor (kNN) search
 description: Vector search with k-nearest neighbor (kNN).
@@ -336,7 +335,7 @@ each score in the sum. In the example above, the scores will be calculated as
 score = 0.9 * match_score + 0.1 * knn_score
 ```
 
-The `knn` option can also be used with <DocLink id="serverlessElasticsearchExploreYourDataAggregations">`aggregations`</DocLink>.
+The `knn` option can also be used with <DocLink slug="/serverless/elasticsearch/explore-your-data-aggregations">`aggregations`</DocLink>.
 In general, ((es)) computes aggregations over all documents that match the search.
 So for approximate kNN search, aggregations are calculated on the top `k`
 nearest documents. If the search also includes a `query`, then aggregations are

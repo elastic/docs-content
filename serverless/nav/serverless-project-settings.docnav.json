@@ -1,76 +1,76 @@
 {
   "mission": "Project and management settings",
   "id": "serverless-project-settings",
-  "landingPageId": "serverlessProjectAndManagementSettings",
+  "landingPageSlug": "/serverless/project-and-management-settings",
   "icon": "logoElastic",
   "description": "Description to be written",
   "items": [
     {
-      "pageId": "serverlessProjectSettings",
+      "slug": "/serverless/project-settings",
       "classic-sources": ["enKibanaManagement"],
       "label": "Management",
       "items": [
         {
-          "id": "serverlessApiKeys",
+          "slug": "/serverless/api-keys",
           "classic-sources": ["enKibanaApiKeys"]
         },
         {
-          "id": "serverlessActionConnectors",
+          "slug": "/serverless/action-connectors",
           "classic-sources": ["enKibanaActionTypes"]
         },
         {
-          "id": "serverlessDataViews",
+          "slug": "/serverless/data-views",
           "classic-sources": ["enKibanaDataViews"]
         },
         {
-          "id": "serverlessFiles"
+          "slug": "/serverless/files"
         },
         {
-          "id": "serverlessIndexManagement",
+          "slug": "/serverless/index-management",
           "classic-sources": ["enElasticsearchReferenceIndexMgmt"]
         },
         {
-          "id": "serverlessIngestPipelines"
+          "slug": "/serverless/ingest-pipelines"
         },
         {
-          "id": "serverlessLogstashPipelines"
+          "slug": "/serverless/logstash-pipelines"
         },
         {
-          "id": "serverlessMachineLearning"
+          "slug": "/serverless/machine-learning"
         },
         {
-          "id": "serverlessMaintenanceWindows",
+          "slug": "/serverless/maintenance-windows",
           "classic-sources": ["enKibanaMaintenanceWindows"]
         },
         {
-          "id": "serverlessMaps"
+          "slug": "/serverless/maps"
         },
         {
-          "id": "serverlessReports"
+          "slug": "/serverless/reports"
         },
         {
-          "id": "serverlessRules",
+          "slug": "/serverless/rules",
           "classic-sources": [ "enKibanaAlertingGettingStarted" ]
         },
         {
-          "id": "serverlessSavedObjects",
+          "slug": "/serverless/saved-objects",
           "classic-sources": ["enKibanaManagingSavedObjects"]
         },
         {
-          "id": "serverlessTags",
+          "slug": "/serverless/tags",
           "classic-sources": ["enKibanaManagingTags"]
         },
         {
-          "id": "serverlessTransforms",
+          "slug": "/serverless/transforms",
           "classic-sources": ["enElasticsearchReferenceTransforms"]
         }
       ]
     },
     {
-      "pageId": "serverlessIntegrations"
+      "slug": "/serverless/integrations"
     },
     {
-      "pageId": "serverlessFleetAndElasticAgent"
+      "slug": "/serverless/fleet-and-elastic-agent"
     }
   ]
 }

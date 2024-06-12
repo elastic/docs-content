@@ -1,5 +1,4 @@
 ---
-id: serverlessElasticsearchSearchYourData
 slug: /serverless/elasticsearch/search-your-data
 title: Search your data
 description: Use the search API to run queries on your data.
@@ -15,15 +14,15 @@ You can think of a query as a question, written in a way ((es)) understands. Dep
 - What users on my network ran regsvr32.exe within the last week?
 - What pages on my website contain a specific word or phrase?
 
-You run search queries using the <DocLink id="serverlessElasticsearchSearchYourDataTheSearchApi">search API</DocLink>. The API supports several query types and search methods:
+You run search queries using the <DocLink slug="/serverless/elasticsearch/search-your-data-the-search-api">search API</DocLink>. The API supports several query types and search methods:
 
 **Search for exact values.**
 Use [term-level queries](((ref))/term-level-queries.html) to filter numbers, dates, IPs, or strings based on exact values or ranges.
 
 **Full-text search.**
-Use [full-text queries](((ref))/full-text-queries.html) to query [unstructured text](((ref))/analysis.html#analysis) and find documents that best match query terms. Use <DocLink id="serverlessElasticsearchSearchWithSynonyms" text="synonyms" /> to search for words or phrases that have the same or similar meaning.
+Use [full-text queries](((ref))/full-text-queries.html) to query [unstructured text](((ref))/analysis.html#analysis) and find documents that best match query terms. Use <DocLink slug="/serverless/elasticsearch/elasticsearch/reference/search-with-synonyms" text="synonyms" /> to search for words or phrases that have the same or similar meaning.
 
 **Vector search.**
-Store dense vectors in ((es)) and use <DocLink id="serverlessElasticsearchKnnSearch">approximate nearest neighbor (ANN) or k-nearest neighbor (kNN) search</DocLink> to find similar vectors.
+Store dense vectors in ((es)) and use <DocLink slug="/serverless/elasticsearch/knn-search">approximate nearest neighbor (ANN) or k-nearest neighbor (kNN) search</DocLink> to find similar vectors.
 
-You can also use Elastic's natural language processing (NLP) model to encode text as sparse or dense vectors. Then use <DocLink id="serverlessElasticsearchSemanticSearch" text="semantic search" /> to find data based on the intent and contextual meaning rather than matching keywords.
+You can also use Elastic's natural language processing (NLP) model to encode text as sparse or dense vectors. Then use <DocLink slug="/serverless/elasticsearch/elasticsearch/reference/semantic-search" text="semantic search" /> to find data based on the intent and contextual meaning rather than matching keywords.

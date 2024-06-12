@@ -1,134 +1,134 @@
 {
   "mission": "Elasticsearch",
   "id": "serverless-elasticsearch",
-  "landingPageId": "serverlessElasticsearchWhatIsElasticsearchServerless",
+  "landingPageSlug": "/serverless/elasticsearch/what-is-elasticsearch-serverless",
   "icon": "logoElasticsearch",
   "description": "Description to be written",
   "items": [
     {
-      "pageId": "serverlessElasticsearchWhatIsElasticsearchServerless"
+      "slug": "/serverless/elasticsearch/what-is-elasticsearch-serverless"
     },
     {
-      "pageId": "serverlessElasticsearchBilling"
+      "slug": "/serverless/elasticsearch/elasticsearch-billing"
     },
     {
-      "pageId": "serverlessElasticsearchGetStarted"
+      "slug": "/serverless/elasticsearch/get-started"
     },
     {
-      "pageId": "serverlessElasticsearchClients",
+      "slug": "/serverless/elasticsearch/clients",
       "items": [
         {
-          "id": "serverlessElasticsearchGoGettingStarted"
+          "slug": "/serverless/elasticsearch/go-client-getting-started"
         },
         {
-          "id": "serverlessElasticsearchJavaGettingStarted"
+          "slug": "/serverless/elasticsearch/java-client-getting-started"
         },
         {
-          "id": "serverlessElasticsearchDotNetGettingStarted"
+          "slug": "/serverless/elasticsearch/dot-net-client-getting-started"
         },
         {
-          "id": "serverlessElasticsearchNodejsGettingStarted"
+          "slug": "/serverless/elasticsearch/nodejs-client-getting-started"
         },
         {
-          "id": "serverlessElasticsearchPhpGettingStarted"
+          "slug": "/serverless/elasticsearch/php-client-getting-started"
         },
         {
-          "id": "serverlessElasticsearchPythonGettingStarted"
+          "slug": "/serverless/elasticsearch/python-client-getting-started"
         },
         {
-          "id": "serverlessElasticsearchRubyGettingStarted"
+          "slug": "/serverless/elasticsearch/ruby-client-getting-started"
         }
       ]
     },
     {
-      "pageId": "serverlessElasticsearchHttpApis",
+      "slug": "/serverless/elasticsearch/http-apis",
       "items": [
         {
-          "id": "serverlessElasticsearchApiConventions",
+          "slug": "/serverless/elasticsearch/api-conventions",
           "classic-sources": [ "enElasticsearchReferenceApiConventions" ]
         },
         {
-          "id": "serverlessElasticsearchKibanaApiConventions",
+          "slug": "/serverless/elasticsearch/kibana-api-conventions",
           "classic-sources": [ "enKibanaApi" ]
         }
       ]
     },
     {
-      "pageId": "serverlessElasticsearchDevTools"
+      "slug": "/serverless/elasticsearch/dev-tools"
     },
     {
-      "pageId": "serverlessElasticsearchIngestYourData",
+      "slug": "/serverless/elasticsearch/ingest-your-data",
       "items": [
         {
-          "id": "serverlessElasticsearchIngestDataThroughApi"
+          "slug": "/serverless/elasticsearch/ingest-data-through-api"
         },
         {
-          "id":"serverlessElasticsearchIngestDataThroughIntegrationsConnectorClient"
+          "slug": "/serverless/elasticsearch/ingest-data-through-integrations-connector-client"
         },
         {
-          "id":"serverlessElasticsearchIngestDataFileUpload"
+          "slug": "/serverless/elasticsearch/ingest-data-file-upload"
         },
         {
-          "id": "serverlessElasticsearchIngestDataThroughLogstash"
+          "slug": "/serverless/elasticsearch/ingest-data-through-logstash"
         },
         {
-          "id": "serverlessElasticsearchIngestDataThroughBeats",
+          "slug": "/serverless/elasticsearch/ingest-data-through-beats",
               "classic-sources": [ "enFleetBeatsAgentComparison" ]
         }
       ]
     },
     {
-      "pageId": "serverlessElasticsearchSearchYourData",
+      "slug": "/serverless/elasticsearch/search-your-data",
       "items": [
         {
-          "id": "serverlessElasticsearchSearchYourDataTheSearchApi"
+          "slug": "/serverless/elasticsearch/search-your-data-the-search-api"
         },
         {
-          "id": "serverlessElasticsearchSearchWithSynonyms"
+          "slug": "/serverless/elasticsearch/elasticsearch/reference/search-with-synonyms"
         },
         {
-          "id": "serverlessElasticsearchKnnSearch"
+          "slug": "/serverless/elasticsearch/knn-search"
         },
         {
-          "id": "serverlessElasticsearchSemanticSearch",
+          "slug": "/serverless/elasticsearch/elasticsearch/reference/semantic-search",
           "items": [
             {
-            "id": "serverlessElasticsearchSemanticSearchElser"
+            "slug": "/serverless/elasticsearch/elasticsearch/reference/semantic-search-elser"
             }
           ]
         }
       ]
     },
     {
-      "pageId": "serverlessElasticsearchExploreYourData",
+      "slug": "/serverless/elasticsearch/explore-your-data",
       "items": [
         {
-          "id": "serverlessElasticsearchExploreYourDataAggregations"
+          "slug": "/serverless/elasticsearch/explore-your-data-aggregations"
         },
         {
-          "id": "serverlessElasticsearchExploreYourDataDiscoverYourData",
+          "slug": "/serverless/elasticsearch/explore-your-data-discover-your-data",
           "classic-sources": [ "enKibanaDiscover" ]
         },
         {
-          "id": "serverlessElasticsearchExploreYourDataVisualizeYourData",
+          "slug": "/serverless/elasticsearch/explore-your-data-visualize-your-data",
           "classic-sources": [ "enKibanaDashboard" ]
         },
         {
-          "id": "serverlessElasticsearchExploreYourDataAlerting",
+          "slug": "/serverless/elasticsearch/explore-your-data-alerting",
           "classic-sources": [ "enKibanaCreateAndManageRules" ],
           "label": "Alerts"
         }
       ]
     },
     {
-      "pageId": "serverlessPlayground"
+      "slug": "/serverless/elasticsearch/playground"
     },
     {
-      "pageId": "serverlessDifferences",
+      "slug": "/serverless/elasticsearch/differences",
       "label": "Serverless differences"
     },  
     {
-      "pageId": "serverlessTechnicalPreviewLimitations"
+      "slug": "/serverless/elasticsearch/technical-preview-limitations"
     }
   ]
 }

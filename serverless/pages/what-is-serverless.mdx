@@ -1,23 +1,22 @@
 ---
-id: whatIsServerlessElastic
 slug: /serverless/general/what-is-serverless-elastic
 title: What is serverless Elastic?
 tags: ['serverless']
 ---
 
-Serverless projects use the core components of the ((stack)), such as ((es)) and ((kib)), and are based on [an architecture that 
-decouples compute and storage](https://www.elastic.co/blog/elastic-serverless-architecture). Search and indexing operations are separated, which offers high flexibility for scaling your workloads while ensuring 
+Serverless projects use the core components of the ((stack)), such as ((es)) and ((kib)), and are based on [an architecture that
+decouples compute and storage](https://www.elastic.co/blog/elastic-serverless-architecture). Search and indexing operations are separated, which offers high flexibility for scaling your workloads while ensuring
 a high level of performance.
 
-**Management free.** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups, 
+**Management free.** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups,
 and business continuity.
 
-**Autoscaled.** To meet your performance requirements, the system automatically adjusts to your workloads. For example, when you have a short time spike on the 
-data you ingest, more resources are allocated for that period of time. When the spike is over, the system uses less resources, without any action 
+**Autoscaled.** To meet your performance requirements, the system automatically adjusts to your workloads. For example, when you have a short time spike on the
+data you ingest, more resources are allocated for that period of time. When the spike is over, the system uses less resources, without any action
 on your end.
 
-**Optimized data storage.** Your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. 
-The size of the cache layer and the volume of data it holds depend on <DocLink id="serverlessGeneralManageProject" text="settings"/> that you can configure for each project.
+**Optimized data storage.** Your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed.
+The size of the cache layer and the volume of data it holds depend on <DocLink slug="/serverless/elasticsearch/manage-project" text="settings"/> that you can configure for each project.
 
 **Dedicated experiences.** All serverless solutions are built on the Elastic Search Platform and include the core capabilities of the Elastic Stack. They also each offer a distinct experience and specific capabilities that help you focus on your data, goals, and use cases.
 
@@ -27,14 +26,14 @@ The size of the cache layer and the volume of data it holds depend on <DocLink i
   Until May 31, 2024, your serverless consumption will not incur any charges, but will be visible along with your total Elastic Cloud consumption on the [Billing Usage page](https://cloud.elastic.co/billing/usage?). Unless you are in a trial period, usage on or after June 1, 2024 will be deducted from your existing Elastic Cloud credits or be billed to your active payment method.
 </DocCallOut>
 
-## Control your data and performance 
+## Control your data and performance
 
-Control your project data and query performance against your project data.  
+Control your project data and query performance against your project data.
 
-**Data.** Choose the data you want to ingest, and the method to ingest it. By default, data is stored indefinitely in your project, 
+**Data.** Choose the data you want to ingest, and the method to ingest it. By default, data is stored indefinitely in your project,
 and you define the retention settings for your data streams.
 
-**Performance.** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined <DocLink id="serverlessGeneralManageProject" text="settings"/> that you can edit.
+**Performance.** For granular control over costs and query performance against your project data, serverless projects come with a set of predefined <DocLink slug="/serverless/elasticsearch/manage-project" text="settings"/> that you can edit.
 
 <DocCallOut title="Some or all of these settings may not be available for all types of serverless projects." />
 
@@ -63,7 +62,7 @@ There is no official SLA for Support in Serverless until General Availability (G
 
 **Is there migration support between hosted deployments and serverless projects?**
 
-Migration paths between hosted deployments and serverless projects are currently unsupported. 
+Migration paths between hosted deployments and serverless projects are currently unsupported.
 
 **How does serverless ensure compatibility between software versions?**
 
@@ -71,7 +70,7 @@ Connections and configurations are unaffected by upgrades. To ensure compatibili
 
 **Can I convert a serverless project into a hosted deployment, or a hosted deployment into a serverless project?**
 
-Projects and deployments are based on different architectures, and you are unable to convert. 
+Projects and deployments are based on different architectures, and you are unable to convert.
 
 **Can I convert a serverless project into a project of a different type?**
 
@@ -79,9 +78,9 @@ You are unable to convert projects into different project types, but you can cre
 
 **How can I create serverless service accounts?**
 
-Create API keys for service accounts in your serverless projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future. 
+Create API keys for service accounts in your serverless projects. Options to automate the creation of API keys with tools such as Terraform will be available in the future.
 
-To raise a Support case with Elastic, raise a case for your subscription the same way you do today. In the body of the case, make sure to mention you are working in serverless to ensure we can provide the appropriate support. 
+To raise a Support case with Elastic, raise a case for your subscription the same way you do today. In the body of the case, make sure to mention you are working in serverless to ensure we can provide the appropriate support.
 
 **When will pricing information be available for serverless?**
 
