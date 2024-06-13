@@ -76,16 +76,13 @@ output {
 
 ## Migrating Elasticsearch data using ((ls))
 
-You can also use ((ls)) to migrate data into and out of ((es3)) environments with the ((es)) [input plugin](((logstash-ref))/plugins-inputs-elasticsearch.html) and [output plugin](((logstash-ref))/plugins-outputs-elasticsearch.html). 
+You can use ((ls)) to migrate data from self-managed ((es)) or ((ess)) to ((es3)), or to migrate data from one ((es3)) deployment to another. 
 
-For each index to be migrated, do the following:
+Create a [((ls)) pipeline](((logstash-ref))/configuration.html) that includes the ((es)) [input plugin](((logstash-ref))/plugins-inputs-elasticsearch.html) and [output plugin](((logstash-ref))/plugins-outputs-elasticsearch.html).
 
-1. Create the index in the destination environment.
-2. Add the desired [settings](((ref))/indices-get-settings.html) and [mappings](((ref))/indices-get-mapping.html) to the destination index based on the origin index. 
-    
-    If you're migrating into an ((es3)) environment, then you might need to adjust your index settings if your origin index is using <DocLink id="serverlessDifferences">settings that aren't supported in Serverless</DocLink>.
-3. Run your ((ls)) pipeline to migrate from the origin index to the destination index.
+Configure the ((es)) input to point to your source deployment or instance, and configure the ((es)) output with the `cloud_id` and `api_key` settings for your target ((es3)) instance. 
 
+If your origin index is using <DocLink id="serverlessDifferences">settings that aren't supported in Serverless</DocLink>, then you might need to adjust your index settings. 
 ## Next steps
 
 Check out the [Logstash product page](https://www.elastic.co/logstash) to see what ((ls)) can do for you.
