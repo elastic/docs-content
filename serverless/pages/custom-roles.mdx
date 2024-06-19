@@ -19,6 +19,10 @@ The built-in <DocLink slug="/serverless/general/assign-user-roles" section="orga
 This is where custom roles come in. */}
 {/* Derived from https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html#_roles */}
 
+{/*
+TBD: Accurate for serverless? Which types of users have access to this UI?
+The `manage_security` cluster privilege is required to manage custom roles.
+*/}
 As an administrator, however, you have the ability to create your own roles to describe exactly the kind of access your users should have.
 For example, you might create a marketing_user role, which you then assign to all users in your marketing department.
 This role would grant access to all of the necessary data and features for this team to be successful, without granting them access they don't require.
@@ -28,10 +32,6 @@ By default, custom roles grant the same access as the `Viewer` instance access r
 If you want to change this behavior, you must create your custom role by using the ((es)) create role API.
 {/* TBD: Is it the Elasticsearch or Kibana role management API in this case? Add link when API docs are available. */}
 
-{/*
-TBD: Accurate for serverless?
-The `manage_security` cluster privilege is required to manage custom roles.
-*/}
 You can manage custom roles in **((project-settings)) → ((manage-app)) →((custom-roles-app))**.
 To clone, delete, or edit a role, open the actions menu:
 
