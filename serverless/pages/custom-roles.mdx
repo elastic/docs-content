@@ -5,28 +5,104 @@ description: Create and manage roles that grant privileges within your project.
 tags: [ 'serverless', 'Elasticsearch', 'Observability', 'Security' ]
 ---
 
+<DocIf condition={"((serverlessCustomRoles))" === "false"}>
+<DocBadgeComingSoon>Coming soon</DocBadgeComingSoon>
+</DocIf>
+
+{/* TO-DO: Change feature flag before merging */}
+<DocIf condition={"((serverlessCustomRoles))" === "true"}>
 <DocBadge template="technical preview" />
 This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
 
-The built-in organization-level roles and instance access roles are great for getting started with ((serverless-full)), and for system administrators who do not need more restrictive access.
-With so many features, it's not possible to ship built-in roles that accommodate everyone's needs.
-This is where custom roles come in.
+The built-in <DocLink slug="/serverless/general/assign-user-roles" section="organization-level-roles">organization-level roles</DocLink> and <DocLink slug="/serverless/general/assign-user-roles" section="instance-access-roles">instance access roles</DocLink> are great for getting started with ((serverless-full)), and for system administrators who do not need more restrictive access.
+{/* With so many features, it's not possible to ship built-in roles that accommodate everyone's needs.
+This is where custom roles come in. */}
 {/* Derived from https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html#_roles */}
+
+As an administrator, however, you have the ability to create your own roles to describe exactly the kind of access your users should have.
+For example, you might create a marketing_user role, which you then assign to all users in your marketing department.
+This role would grant access to all of the necessary data and features for this team to be successful, without granting them access they don't require.
+{/* Derived from https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html */}
+
+By default, custom roles grant the same access as the `Viewer` instance access role with regards to ((ecloud)) privileges.
+If you want to change this behavior, you must create your custom role by using the ((es)) create role API.
+{/* TBD: Is it the Elasticsearch or Kibana role management API in this case? Add link when API docs are available. */}
 
 {/*
 TBD: Accurate for serverless?
-When you assign a user multiple roles, the user receives a union of the roles’ privileges. This means that you cannot reduce the privileges of a user by assigning them an additional role. You must instead remove or edit one of their existing roles.
-
-The `manage_security` cluster privilege is required to access role management.
+The `manage_security` cluster privilege is required to manage custom roles.
 */}
-You can manage custom roles in **((project-settings)) → ((manage-app)) → Custom Roles**:
+You can manage custom roles in **((project-settings)) → ((manage-app)) →((custom-roles-app))**.
+To clone, delete, or edit a role, open the actions menu:
 
 ![Custom Roles app](../images/custom-roles-ui.png)
 {/* TO-DO: This screenshot needs to be refreshed and automated. */}
 
-{/* ## Create a custom role */}
+Roles are a collection of privileges that enable users to access project features and data.
+For example, when you create a custom role, you can assign ((es)) cluster and index privileges and ((kib)) privileges.
 
-{/* After your roles are set up, the next step to securing access is to assign roles to your users. */}
+<DocCallOut>
+  You cannot assign [run as privileges](((ref))/security-privileges.html#_run_as_privilege) in ((serverless-full)) custom roles.
+</DocCallOut>
 
-{/* ## View and delete custom roles */}
+## ((es)) cluster privileges
 
+Cluster privileges grant access to monitoring and management features in ((es)).
+They also enable some ((stack-manage-app)) capabilities in your project.
+
+![Create a custom role and define ((es)) cluster privileges](../images/custom-roles-cluster-privileges.png)
+{/* TO-DO: This screenshot needs to be refreshed and automated. */}
+
+Refer to [cluster privileges](((ref))/security-privileges.html#privileges-list-cluster) for a complete description of available options.
+
+{/* Derived from https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html#adding_cluster_privileges */}
+
+## ((es)) index privileges
+
+Each role can grant access to multiple data indices, and each index can have a different set of privileges.
+Typically, you will grant the `read` and `view_index_metadata` privileges to each index that you expect your users to work with.
+For example, grant access to indices that match an `acme-marketing-*` pattern:
+
+![Create a custom role and define ((es)) index privileges](../images/custom-roles-index-privileges.png)
+{/* TO-DO: This screenshot needs to be refreshed and automated. */}
+
+Refer to [index privileges](((ref))/security-privileges.html#privileges-list-indices) for a complete description of available options.
+
+Document-level and field-level security affords you even more granularity when it comes to granting access to your data.
+With document-level security (DLS), you can write an ((es)) query to describe which documents this role grants access to.
+With field-level security (FLS), you can instruct ((es)) to grant or deny access to specific fields within each document.
+{/* Derived from https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html#adding_cluster_privileges */}
+
+## ((kib)) privileges
+
+When you create a custom role, click **Add Kibana privilege** to grant access to specific features.
+The features that are available vary depending on the project type.
+For example, in ((es-serverless)):
+
+![Create a custom role and define ((kib)) privileges](../images/custom-roles-kibana-privileges.png)
+{/* TO-DO: This screenshot needs to be refreshed and automated. */}
+
+Open the **Spaces** selection control to specify whether to grant the role access to all spaces or one or more individual spaces.
+When using the **Customize by feature** option, you can choose either **All**, **Read** or **None** for access to each feature.
+
+All
+: Grants full read-write access.
+
+Read
+: Grants read-only access.
+
+None
+: Does not grant any access.
+
+Some features have finer access control and you can optionally enable sub-feature privileges. 
+{/* TBD: This additional level of control is a subscription feature. */}
+
+<DocCallOut title="New features">
+As new features are added to ((serverless-full)), roles that use the custom option do not automatically get access to the new features. You must manually update the roles.
+</DocCallOut>
+
+{/* Derived from https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html#adding_kibana_privileges and https://www.elastic.co/guide/en/kibana/current/kibana-privileges.html */}
+
+After your roles are set up, the next step to securing access is to assign roles to your users.
+Learn more in <DocLink slug="/serverless/general/assign-user-roles" /> 
+</DocIf>
