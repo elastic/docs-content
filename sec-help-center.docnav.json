@@ -1,0 +1,29 @@
+{
+    "mission": "Help Center",
+    "id": "sec-help-center",
+    "landingPageId": "secHelpCenter",
+    "description": "Elastic Security combines threat detection analytics, cloud native security, and endpoint protection in a single solution, so you can quickly detect, investigate, and respond to threats and vulnerabilities across your environment.",
+    "items": [
+     {
+        "pageId": "hcSecKibanaSearch"
+     },
+     {
+        "pageId": "hcSecNavigationAndInteractions"
+     }, 
+     {
+        "pageId": "hcSecDiscover"
+     },
+     {
+        "pageId": "hcSecDevtoolsConsoleOverview"
+     },
+     {
+        "pageId": "hcSecDevtoolsSearchProfilerOverview"
+     },
+     {
+        "pageId": "hcSecIndexMapping"
+     },
+     {
+        "pageId": "hcSecPreprocessDataBeforeIndexing"
+     }    
+    ]
+}

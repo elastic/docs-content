@@ -1,0 +1,29 @@
+{
+    "mission": "Help Center",
+    "id": "es-help-center",
+    "landingPageId": "esHelpCenter",
+    "description": "Elasticsearch allows you to build custom applications. Whether you have structured or unstructured text, numerical data, or geospatial data, Elasticsearch can efficiently store and index it in a way that supports fast searches.",
+    "items": [
+      {
+        "pageId": "hcEsKibanaSearch"
+      },
+      {
+        "pageId": "hcEsDiscover"
+      },
+      {
+        "pageId": "hcEsDevtoolsConsoleOverview"
+      },
+      {
+        "pageId": "hcEsDevtoolsSearchProfilerOverview"
+      },
+      {
+        "pageId": "hcEsIndexMapping"
+      }, 
+      {
+        "pageId": "hcEsPreprocessDataBeforeIndexing"
+      },    
+      {
+        "pageId": "hcEsSetupConnectorClient"
+      }
+    ]
+  }
