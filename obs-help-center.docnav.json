@@ -1,0 +1,29 @@
+{
+    "mission": "Help Center",
+    "id": "obs-help-center",
+    "landingPageId": "serverlessDevtoolsDeveloperTools",
+    "description": "Elastic Observability accelerates problem resolution with open, flexible, and unified observability powered by advanced machine learning and analytics. Elastic ingests all operational and business telemetry and correlates for faster root cause detection.",
+    "items": [
+      {
+        "pageId": "hcObsKibanaSearch"
+      },
+      {
+        "pageId": "hcObsDiscover"
+      },
+      {
+        "pageId": "hcObsDevtoolsConsoleOverview"
+      },
+      {
+        "pageId": "hcObsDevtoolsSearchProfilerOverview"
+      },
+      {
+        "pageId": "hcObsIndexMapping"
+      },
+      {
+        "pageId": "hcObsPreprocessDataBeforeIndexing"
+      },
+      {
+        "pageId": "hcObsCreateAnSlo"
+      }
+    ]
+  }
