@@ -2,10 +2,10 @@
 
 This repo contains most of our Elastic Serverless documentation, including: 
 
-- [Overview content](https://docs.elastic.co/serverless)
-- [Elasticsearch](https://docs.elastic.co/serverless/elasticsearch/what-is-elasticsearch-serverless)
-- [Dev tools](https://docs.elastic.co/serverless/devtools/developer-tools)
-- [Project and management settings](https://docs.elastic.co/serverless/project-and-management-settings)
+- [Overview content](https://www.elastic.co/docs/current/serverless)
+- [Elasticsearch](https://www.elastic.co/docs/current/serverless/elasticsearch/what-is-elasticsearch-serverless)
+- [Dev tools](https://www.elastic.co/docs/current/serverless/devtools/developer-tools)
+- [Project and management settings](https://www.elastic.co/docs/current/serverless/project-and-management-settings)
 
 > Not the docs you're looking for? Try the following:
 > 
