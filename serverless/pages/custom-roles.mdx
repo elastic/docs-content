@@ -15,8 +15,6 @@ tags: [ 'serverless', 'Elasticsearch', 'Observability', 'Security' ]
 This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
 
 The built-in <DocLink slug="/serverless/general/assign-user-roles" section="organization-level-roles">organization-level roles</DocLink> and <DocLink slug="/serverless/general/assign-user-roles" section="instance-access-roles">instance access roles</DocLink> are great for getting started with ((serverless-full)), and for system administrators who do not need more restrictive access.
-{/* With so many features, it's not possible to ship built-in roles that accommodate everyone's needs.
-This is where custom roles come in. */}
 {/* Derived from https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html#_roles */}
 
 {/*
@@ -28,9 +26,9 @@ For example, you might create a marketing_user role, which you then assign to al
 This role would grant access to all of the necessary data and features for this team to be successful, without granting them access they don't require.
 {/* Derived from https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html */}
 
-By default, custom roles grant the same access as the `Viewer` instance access role with regards to ((ecloud)) privileges.
-If you want to change this behavior, you must create your custom role by using the ((es)) create role API.
-{/* TBD: Is it the Elasticsearch or Kibana role management API in this case? Add link when API docs are available. */}
+All custom roles grant the same access as the `Viewer` instance access role with regards to ((ecloud)) privileges.
+To grant more ((ecloud)) privileges, assign more roles.
+Users receive a union of all their roles' privileges.
 
 You can manage custom roles in **((project-settings)) → ((manage-app)) →((custom-roles-app))**.
 To clone, delete, or edit a role, open the actions menu:
