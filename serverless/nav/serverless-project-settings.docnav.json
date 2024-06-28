@@ -19,6 +19,9 @@
           "classic-sources": ["enKibanaActionTypes"]
         },
         {
+          "slug": "/serverless/custom-roles"
+        },
+        {
           "slug": "/serverless/data-views",
           "classic-sources": ["enKibanaDataViews"]
         },
