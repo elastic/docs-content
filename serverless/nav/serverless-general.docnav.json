@@ -49,6 +49,9 @@
         },
         {
           "slug": "/serverless/general/serverless-billing"
+        },
+        {
+          "slug": "/serverless/general/billing-stop-project"
         }
       ]
     },
