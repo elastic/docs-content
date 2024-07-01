@@ -1,10 +1,9 @@
 
 
 
-ELSER text embeddings can be queried using a 
-[text expansion query](((ref))/query-dsl-text-expansion-query.html). The text expansion 
-query enables you to query a rank features field or a sparse vector field, by 
-providing the model ID of the NLP model, and the query text:
+ELSER text embeddings can be queried using a
+[sparse vector query](((ref))/query-dsl-sparse-vector-query.html). The sparse vector
+query enables you to query a sparse vector field, by providing an inference ID, and the query text:
 
 ```bash
 curl -X GET "${ES_URL}/my-index/_search" \
@@ -13,10 +12,10 @@ curl -X GET "${ES_URL}/my-index/_search" \
 -d'
 {
    "query":{
-      "text_expansion":{
-         "my_tokens":{  [^1]
-            "model_id":".elser_model_2",
-            "model_text":"the query string"
+      "sparse_vector":{
+         "field": "my_tokens",  [^1]
+         "inference_id": "my-elser-endpoint",
+         "query": "the query string"
          }
       }
    }
