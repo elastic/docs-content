@@ -5,22 +5,16 @@ description: Create and manage roles that grant privileges within your project.
 tags: [ 'serverless', 'Elasticsearch', 'Observability', 'Security' ]
 ---
 
-{/* <DocIf condition={"((serverlessCustomRoles))" === "false"}>
+<DocIf condition={"((serverlessCustomRoles))" === "false"}>
 <DocBadgeComingSoon>Coming soon</DocBadgeComingSoon>
-</DocIf> */}
+</DocIf>
 
-{/* TO-DO: Change feature flag before merging */}
-{/* <DocIf condition={"((serverlessCustomRoles))" === "true"}> */}
+<DocIf condition={"((serverlessCustomRoles))" === "true"}>
 <DocBadge template="technical preview" />
 This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
 
 The built-in <DocLink slug="/serverless/general/assign-user-roles" section="organization-level-roles">organization-level roles</DocLink> and <DocLink slug="/serverless/general/assign-user-roles" section="instance-access-roles">instance access roles</DocLink> are great for getting started with ((serverless-full)), and for system administrators who do not need more restrictive access.
-{/* Derived from https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html#_roles */}
 
-{/*
-TBD: Accurate for serverless? Which types of users have access to this UI?
-The `manage_security` cluster privilege is required to manage custom roles.
-*/}
 As an administrator, however, you have the ability to create your own roles to describe exactly the kind of access your users should have within a specific project.
 For example, you might create a marketing_user role, which you then assign to all users in your marketing department.
 This role would grant access to all of the necessary data and features for this team to be successful, without granting them access they don't require.
@@ -30,7 +24,9 @@ All custom roles grant the same access as the `Viewer` instance access role with
 To grant more ((ecloud)) privileges, assign more roles.
 Users receive a union of all their roles' privileges.
 
-You can manage custom roles in **((project-settings)) → ((manage-app)) →((custom-roles-app))**. To create a new custom role, click the `Create role` button. To clone, delete, or edit a role, open the actions menu:
+You can manage custom roles in **((project-settings)) → ((manage-app)) →((custom-roles-app))**.
+To create a new custom role, click the **Create role** button.
+To clone, delete, or edit a role, open the actions menu:
 
 ![Custom Roles app](../images/custom-roles-ui.png)
 {/* TO-DO: This screenshot needs to be refreshed and automated. */}
@@ -51,8 +47,6 @@ They also enable some ((stack-manage-app)) capabilities in your project.
 {/* TO-DO: This screenshot needs to be refreshed and automated. */}
 
 Refer to [cluster privileges](((ref))/security-privileges.html#privileges-list-cluster) for a complete description of available options.
-
-{/* Derived from https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html#adding_cluster_privileges */}
 
 ## ((es)) index privileges
 
@@ -97,8 +91,7 @@ Some features have finer access control and you can optionally enable sub-featur
 As new features are added to ((serverless-full)), roles that use the custom option do not automatically get access to the new features. You must manually update the roles.
 </DocCallOut>
 
-{/* Derived from https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html#adding_kibana_privileges and https://www.elastic.co/guide/en/kibana/current/kibana-privileges.html */}
-
 After your roles are set up, the next step to securing access is to assign roles to your users.
+{/* Click the **Assign roles** link... */}
 Learn more in <DocLink slug="/serverless/general/assign-user-roles" /> 
-{/* </DocIf> */}
+</DocIf>

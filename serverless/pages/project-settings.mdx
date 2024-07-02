@@ -63,8 +63,7 @@ To learn more about roles, refer to <DocLink slug="/serverless/general/assign-us
         <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
     </DocCell>
   </DocRow>
-  {/* TO-DO: Uncomment feature flag when it exists in docs-site */}
-  {/* <DocIf condition={"((serverlessCustomRoles))" === "true"}> */}
+  <DocIf condition={"((serverlessCustomRoles))" === "true"}>
     <DocRow>
       <DocCell><DocLink slug="/serverless/custom-roles"/></DocCell>
       <DocCell>Create and manage roles that grant privileges within your project.</DocCell>
@@ -74,7 +73,7 @@ To learn more about roles, refer to <DocLink slug="/serverless/general/assign-us
         <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
       </DocCell>
     </DocRow>
-  {/* </DocIf> */}
+  </DocIf>
   <DocRow>
     <DocCell>
       <DocLink slug="/serverless/data-views"/>
