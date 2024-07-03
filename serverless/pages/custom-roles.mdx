@@ -2,16 +2,15 @@
 slug: /serverless/custom-roles
 title: Custom roles
 description: Create and manage roles that grant privileges within your project.
-tags: [ 'serverless', 'Elasticsearch', 'Observability', 'Security' ]
+tags: [ 'serverless', 'Elasticsearch', 'Security' ]
 ---
-
 <DocIf condition={"((serverlessCustomRoles))" === "false"}>
 <DocBadgeComingSoon>Coming soon</DocBadgeComingSoon>
 </DocIf>
 
 <DocIf condition={"((serverlessCustomRoles))" === "true"}>
 <DocBadge template="technical preview" />
-This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
+This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
 
 The built-in <DocLink slug="/serverless/general/assign-user-roles" section="organization-level-roles">organization-level roles</DocLink> and <DocLink slug="/serverless/general/assign-user-roles" section="instance-access-roles">instance access roles</DocLink> are great for getting started with ((serverless-full)), and for system administrators who do not need more restrictive access.
 
@@ -92,6 +91,6 @@ As new features are added to ((serverless-full)), roles that use the custom opti
 </DocCallOut>
 
 After your roles are set up, the next step to securing access is to assign roles to your users.
-{/* Click the **Assign roles** link... */}
-Learn more in <DocLink slug="/serverless/general/assign-user-roles" /> 
+Click the **Assign roles** link to go to the **Members** tab of the **Organization** page. 
+Learn more in <DocLink slug="/serverless/general/assign-user-roles" />.
 </DocIf>
