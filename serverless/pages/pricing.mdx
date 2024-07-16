@@ -5,6 +5,8 @@ description: Learn about how Elasticsearch usage affects pricing.
 tags: [ 'serverless', 'elasticsearch', 'overview' ]
 ---
 
+import MinimumVcusDetail from '../partials/minimum-vcus-detail.mdx'
+
 <p><DocBadge template="technical preview" /></p>
 
 Elasticsearch is priced based on the consumption of the underlying 
@@ -15,6 +17,8 @@ depend on the amount and the rate of data sent to Elasticsearch and retained,
 and the number of searches and latency you require for Searches. In addition, if 
 you required ((ml)) for inference or NLP tasks, those VCUs are also 
 metered and billed.
+
+<MinimumVcusDetail />
 
 ## Information about the VCU types (Search, Ingest, and ML)
 
