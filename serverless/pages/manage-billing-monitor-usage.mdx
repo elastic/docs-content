@@ -5,8 +5,6 @@ description: Check the usage breakdown of your account.
 tags: [ 'serverless', 'general', 'billing', 'usage' ]
 ---
 
-import MinimumVcus from '../partials/minimum-vcus.mdx'
-
 <DocBadge template="technical preview" />
 To find more details about your account usage:
 
@@ -23,4 +21,6 @@ On the **Usage** page you can:
 The usage breakdown information is an estimate. To get the exact amount you owe for a given month, check your invoices in the <DocLink slug="/serverless/general/billing-history" text="billing history"/>.
 </DocCallOut>
 
-<MinimumVcus />
+<DocCallOut color="warning" title="Elasticsearch minimum runtime VCUs">
+    When you create an Elasticsearch Serverless project, to maintain basic ingest and search capabilities, a minimum number of VCUs are always allocated and billed to your project, incurring a minimum cost even with no active usage. Learn more about [minimum VCUs on Elasticsearch Serverless](https://www.elastic.co/pricing/serverless-search#what-are-the-minimum-compute-resource-vcus-on-elasticsearch-serverless).
+</DocCallOut>
