@@ -60,6 +60,9 @@
     },
     {
       "slug": "/serverless/general/user-profile"
+    },
+    {
+      "slug": "/serverless/regions"
     }
   ]
 }
