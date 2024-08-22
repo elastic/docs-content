@@ -1,0 +1,38 @@
+name: "API docs feedback"
+description: Tell us about your experience with Elastic API documentation.
+title: "[Feedback]: "
+labels: ["feedback", "community"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hi 👋. Thanks for taking the time to fill out this feedback!
+        This form will create an issue that Elastic's docs team will triage and prioritize.
+  - type: dropdown
+    id: was-this-helpful
+    attributes:
+      label: Was the documentation helpful?
+      options:
+        - Yes
+        - No
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: link
+    attributes:
+      label: What documentation page is affected
+      description: Include a link to the page that you have feedback about.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: (Optional) Describe your experience with Elastic API documentation.
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping us improve the Elastic API documentation.
