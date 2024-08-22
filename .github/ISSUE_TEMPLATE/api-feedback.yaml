@@ -13,8 +13,8 @@ body:
     attributes:
       label: Was the documentation helpful?
       options:
-        - Yes
-        - No
+        - "Yes"
+        - "No"
       default: 0
     validations:
       required: true
