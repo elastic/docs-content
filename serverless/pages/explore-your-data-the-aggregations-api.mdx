@@ -17,7 +17,9 @@ Aggregations help you answer questions like:
 ((es)) organizes aggregations into three categories:
 
 * [Metric](((ref))/search-aggregations-metrics.html) aggregations that calculate metrics,
-    such as a sum or average, from field values.
+    such as a sum or an average, from field values. Note that
+    [scripted metric aggregations](((ref))/search-aggregations-metrics-scripted-metric-aggregation.html) 
+    are not available in serverless ((es)).
 
 * [Bucket](((ref))/search-aggregations-bucket.html) aggregations that
     group documents into buckets, also called bins, based on field values, ranges,
