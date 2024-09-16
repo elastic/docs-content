@@ -60,7 +60,7 @@
           "classic-sources": ["enKibanaManagingSavedObjects"]
         },
         {
-          "slug": "/serverless/spaces",
+          "slug": "/serverless/spaces"
         },
         {
           "slug": "/serverless/tags",
