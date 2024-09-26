@@ -1,7 +1,7 @@
 name: "Serverless UX bug bash issue"
 description: Issues found in the Serverless Docs as part of the Serverless UX bug bash.
-title: "[REQUEST]: "
-labels: ["request", "Team:Docs"]
+title: "[Serverless]: "
+labels: ["Serverless bug bash :bug:"]
 body:
   - type: markdown
     attributes:
