@@ -8,18 +8,17 @@ tags: [ 'serverless', 'dev tools', 'how-to' ]
 <DocBadge template="technical preview" />
 This content applies to: <DocBadge template="elasticsearch" slug="/serverless/elasticsearch/what-is-elasticsearch-serverless" /> <DocBadge template="observability" slug="/serverless/observability/what-is-observability-serverless" /> <DocBadge template="security" slug="/serverless/security/what-is-security-serverless" />
 
-{/* TODO: This content is copied verbatim from the serverless ES docs. We need to decide whether to
-transclude this content so that we don't have to maintain to copies of identical content. */}
-
-Use **Console** to run API requests against ((es)), and view the responses.
-Console is available in your Elastic UI under **Dev Tools**.
+**Console** lets you interact with [Elasticsearch and Kibana serverless APIs](https://www.elastic.co/docs/api) from your project.
 
 Requests are made in the left pane, and responses are displayed in the right pane.
 
-![Console request/response pair](../images/console-request-response.png)
+![Console request/response pair](../images/console.png)
 
-Console keeps a request history, making it easy to find and repeat requests.
-It also provides links to API documentation.
+To go to **Console**, find **Dev Tools** in the navigation menu or use the global search bar.
+
+You can also find Console directly on your Elasticsearch serverless project pages, where you can expand it from the footer. This Console, called **Persistent Console**, has the same capabilities and shares the same history as the Console in **Dev Tools**.
+
+![Persistent Console](../images/persistent-console.png)
 
 ## Write requests
 
@@ -49,15 +48,12 @@ curl "${ES_URL}/_search" \
 }'
 ```
 
-When you paste a cURL command into **Console**, it is automatically converted to **Console** syntax.
-To convert **Console** syntax into cURL syntax, select the action icon (<DocIcon type="wrench" title="Wrench" />) and choose **Copy as cURL**.
-Once copied, an API key will need to be provided for the calls to work from external environments.
-
 ### Autocomplete
 
 When you're typing a command, **Console** makes context-sensitive suggestions.
 These suggestions show you the parameters for each API and speed up your typing.
-To configure your preferences for autocomplete, go to [Settings](#configure-console-settings).
+
+You can configure your preferences for autocomplete in the [Console settings](#configure-console-settings).
 
 ### Comments
 
@@ -93,7 +89,7 @@ GET /_search
 
 Select **Variables** to create, edit, and delete variables.
 
-![Variables](../images/console-variables.png)
+![Variables](../images/variables.png)
 
 You can refer to these variables in the paths and bodies of your requests.
 Each variable can be referenced multiple times.
@@ -109,53 +105,84 @@ GET ${pathVariable}
 }
 ```
 
+By default, variables in the body may be substituted as a boolean, number, array, or
+object by removing nearby quotes instead of a string with surrounding quotes. Triple
+quotes overwrite this default behavior and enforce simple replacement as a string.
+
 ### Auto-formatting
 
 The auto-formatting
-capability can help you format requests. Select one or more requests that you
-want to format, select the action icon (<DocIcon type="wrench" title="Wrench" />),
-and then select **Auto indent**.
+capability can help you format requests to be more readable. Select one or more requests that you
+want to format, open the contextual menu, and then select **Auto indent**.
 
-For example, you might have a request formatted like this:
+### Keyboard shortcuts
 
-![Unformatted request](../images/console-unformatted-request.png)
+**Go to line number**: `Ctrl/Cmd` + `L`
 
-**Console** adjusts the JSON body of the request to apply the indents.
+**Auto-indent current request**: `Ctrl/Cmd` + `I`
 
-![Formatted request](../images/console-formatted-request.png)
+**Jump to next request end**: `Ctrl/Cmd` + `↓`
 
-If you select **Auto indent** on a request that is already well formatted,
-**Console** collapses the request body to a single line per document.
-This is helpful when working with the ((es)) [bulk APIs](((ref))/docs-bulk.html).
+**Jump to previous request end**: `Ctrl/Cmd` + `↑`
 
-## Submit requests
+**Open documentation for current request**: `Ctrl/Cmd` + `/`
 
-When you're ready to submit the request to ((es)), select the green triangle.
+**Run current request**: `Ctrl/Cmd` + `Enter`
+
+**Apply current or topmost term in autocomplete menu**: `Enter` or `Tab`
+
+**Close autocomplete menu**: `Esc`
+
+**Navigate items in autocomplete menu**: `↓` + `↑`
+
+
+### View API docs
+
+To view the documentation for an API endpoint, select the request, then open the contextual menu and select
+*Open API reference*.
+
+## Run requests
+
+When you're ready to submit the request, select the play button.
+
+The result of the request execution is displayed in the response panel, where you can see:
+
+- the JSON response
+- the HTTP status code corresponding to the request
+- The execution time, in ms.
+
 
 You can select multiple requests and submit them together.
-**Console** sends the requests to ((es)) one by one and shows the output
-in the response pane. Submitting multiple requests is helpful
+**Console** executes the requests one by one. Submitting multiple requests is helpful
 when you're debugging an issue or trying query
 combinations in multiple scenarios.
 
-## View API docs
 
-To view the documentation for an API endpoint, select
-the action icon (<DocIcon type="wrench" title="Wrench" />) and select
-**Open documentation**.
+## Import and export requests
+
+You can export requests:
+
+- **to a TXT file**, by using the **Export requests** button. When using this method, all content of the input panel is copied, including comments, requests, and payloads. All of the formatting is preserved and allows you to re-import the file later, or to a different environment, using the **Import requests** button. 
+
+  <DocCallOut title="Tip">
+    When importing a TXT file containing Console requests, the current content of the input panel is replaced. Export it first if you don't want to lose it, or find it in the **History** tab if you already ran the requests.
+  </DocCallOut>
+
+- by copying them individually as **curl**, **JavaScript**, or **Python**. To do this, select a request, then open the contextual menu and select **Copy as**. When using this action, requests are copied individually to your clipboard. You can save your favorite language to make the copy action faster the next time you use it.
+
+  When running copied requests from an external environment, you'll need to add [authentication information](https://www.elastic.co/docs/api/doc/serverless/authentication) to the request.
 
 ## Get your request history
 
-**Console** maintains a list of the last 500 requests that ((es)) successfully executed.
-To view your most recent requests, select **History**.
-If you select a request and select **Apply**, it is added to the editor at the current cursor position.
+*Console* maintains a list of the last 500 requests that you tried to execute.
+To view them, open the *History* tab. 
+
+You can run a request from your history again by selecting the request and clicking **Add and run**. If you want to add it back to the Console input panel without running it yet, click **Add** instead. It is added to the editor at the current cursor position.
 
 ## Configure Console settings
 
-You can configure the **Console** font size, JSON syntax, and autocomplete suggestions in **Settings**.
+Go to the **Config** tab of **Console** to customize its display, autocomplete, and accessibility settings.
 
-<DocImage size="l" url="../images/console-settings.png" alt="Console Settings" />
+## Disable Console
 
-## Get keyboard shortcuts
-
-For a list of available keyboard shortcuts, select **Help**.
+You can disable the persistent console that shows in the footer of your ((es)) project pages. To do that, go to **Management** > **Advanced Settings**, and turn off the `devTools:enablePersistentConsole` setting.
