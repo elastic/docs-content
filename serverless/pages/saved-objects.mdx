@@ -85,3 +85,16 @@ TBD: Are these settings configurable in serverless?
 The <DocLink id="enKibanaSettings" section="savedObjects-maxImportExportSize">`savedObjects.maxImportExportSize`</DocLink> configuration setting limits the number of saved objects that you can export.
 </DocCallOut> */}
 
+### Copy to other spaces
+
+Copy saved objects and their related objects between spaces.
+
+1. Click the actions icon image:images/actions_icon.png[Actions icon].
+1. Click *Copy to spaces*.
+1. Specify whether to automatically overwrite any objects that already exist
+in the target spaces, or resolve them on a per-object basis.
+1. Select the spaces in which to copy the object.
+
+The copy operation automatically includes child objects that are related to
+the saved object. If you don't want this behavior, use
+the [copy saved objects to space API](https://www.elastic.co/docs/api/doc/serverless)) instead.
