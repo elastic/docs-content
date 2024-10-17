@@ -98,8 +98,8 @@ To use connector clients, you must deploy the connector service so your connecto
 The source code is hosted in the `elastic/connectors` repository.
 
 You have two deployment options:
+- Run with [Docker](#run-with-docker) (recommended)
 - Run from [source](#run-from-source)
-- Run with [Docker](#run-with-docker)
 
 <DocCallOut title="">
   You'll need the following values handy to update your `config.yml` file:
@@ -109,63 +109,9 @@ You have two deployment options:
   - `service_type`: Original data source type. Printed to the screen when you create a new connector.
 </DocCallOut>
 
-### Run from source
-
-This is a good option if you're comfortable working with Python and want to iterate quickly locally.
-First, you need to clone the `elastic/connectors` repository.
-
-Follow these steps:
-
-- Clone or fork the repository locally with the following command:
-  ```shell
-  git clone https://github.com/elastic/connectors
-  ```
-- Open the `config.yml.example` file in the `connectors` repository and rename it to `config.yml`.
-- Update the following settings to match your environment:
-
-* `elasticsearch.host`
-* `elasticsearch.api_key`
-* `connector id`
-* `service_type`
-
-Your configuration file should look like this:
-
-```yaml
-elasticsearch.host: <ELASTICSEARCH_ENDPOINT>
-elasticsearch.api_key: <ELASTICSEARCH_API_KEY>
-
-connectors:
-  -
-    connector_id: <CONNECTOR_ID_FROM_UI>
-    service_type: <SERVICE-NAME> # sharepoint_online (example)
-    api_key: <CONNECTOR_API_KEY> # Optional. If not provided, the connector will use the elasticsearch.api_key instead
-```
-
-  <DocCallOut title="Tip">
-  Learn more about the `config.yml` file in the [repo docs](https://github.com/elastic/connectors/blob/main/docs/CONFIG.md).
-  </DocCallOut>
-
-**Run the connector service**
-
-Once you've configured the connector code, you can run the connector service.
-
-In your terminal or IDE:
-
-- `cd` into the root of your `elastic/connectors` clone/fork.
-- Run the following commands to compile and run the connector service:
-
-  ```shell
-  make install
-  make run
-  ```
-
-The connector service should now be running in your terminal. If the connection to your ((es)) instance was successful, the **Configure your connector** step will be activated in the project's UI.
-
-Here we're working locally. In a production setup, you'll deploy the connector service to your own infrastructure.
-
 ### Run with Docker
 
-You can also deploy connector clients using Docker.
+You can deploy connector clients using Docker.
 Follow these instructions.
 
 **Step 1: Download sample configuration file**
@@ -220,7 +166,61 @@ Find all available Docker images in the [official Elastic Docker registry](https
   Each individual connector client reference contain instructions for deploying specific connectors using Docker.
 </DocCallOut>
 
-## Enter data source details in UI
+### Run from source
+
+Running from source requires cloning the repository and running the code locally. 
+Use this approach if you're actively customizing connectors.
+
+Follow these steps:
+
+- Clone or fork the repository locally with the following command:
+  ```shell
+  git clone https://github.com/elastic/connectors
+  ```
+- Open the `config.yml.example` file in the `connectors` repository and rename it to `config.yml`.
+- Update the following settings to match your environment:
+
+* `elasticsearch.host`
+* `elasticsearch.api_key`
+* `connector id`
+* `service_type`
+
+Your configuration file should look like this:
+
+```yaml
+elasticsearch.host: <ELASTICSEARCH_ENDPOINT>
+elasticsearch.api_key: <ELASTICSEARCH_API_KEY>
+
+connectors:
+  -
+    connector_id: <CONNECTOR_ID_FROM_UI>
+    service_type: <SERVICE-NAME> # sharepoint_online (example)
+    api_key: <CONNECTOR_API_KEY> # Optional. If not provided, the connector will use the elasticsearch.api_key instead
+```
+
+  <DocCallOut title="Tip">
+  Learn more about the `config.yml` file in the [repo docs](https://github.com/elastic/connectors/blob/main/docs/CONFIG.md).
+  </DocCallOut>
+
+**Run the connector service**
+
+Once you've configured the connector code, you can run the connector service.
+
+In your terminal or IDE:
+
+- `cd` into the root of your `elastic/connectors` clone/fork.
+- Run the following commands to compile and run the connector service:
+
+  ```shell
+  make install
+  make run
+  ```
+
+The connector service should now be running in your terminal. If the connection to your ((es)) instance was successful, the **Configure your connector** step will be activated in the project's UI.
+
+Here we're working locally. In a production setup, you'll deploy the connector service to your own infrastructure.
+
+## Step 3: Enter data source details in UI
 
 Once the connector service is running, it's time to head back to the UI to finalize the connector configuration.
 You should now see the **Configure your connector** step in your project's UI.
@@ -235,7 +235,7 @@ For example, the Sharepoint Online connector requires the following details abou
 - **Secret value**
 - **Comma-separated list of tables**
 
-## Connect to an index
+## Step 4: Connect to an index
 
 Once you've entered the data source details, you need to connect to an index.
 This is the final step in your project's UI, before you can run a sync.
