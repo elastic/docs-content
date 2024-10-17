@@ -1,5 +1,5 @@
-name: "Serverless UX bug bash issue"
-description: Issues found in the Serverless Docs as part of the Serverless UX bug bash.
+name: "Serverless bug bash issue"
+description: Issues found in the Serverless Docs as part of the Serverless Docs bug bash.
 title: "[Serverless]: "
 labels: ["Serverless bug bash :bug:"]
 body:
@@ -21,6 +21,10 @@ body:
         - Elastic Security
         - Dev tools
         - Project and management settings
+        - Elastic Cloud Serverless API
+        - Elasticsearch Serverless API
+        - Kibana Serverless API
+        - Observability Intake Serverless API
       default: 0
     validations:
       required: true
