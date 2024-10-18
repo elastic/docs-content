@@ -19,7 +19,7 @@ TBD: Need serverless-specific RBAC requirements
 
 To access **Saved Objects**, you must have the required `Saved Objects Management` ((kib)) privilege.
 
-To add the privilege, open the main menu, and then click **Stack Management → Roles**.
+To add the privilege, open the main menu, and then click **Management → Roles**.
 
 <DocCallOut title="Note">
 Granting access to `Saved Objects Management` authorizes users to
@@ -85,3 +85,15 @@ TBD: Are these settings configurable in serverless?
 The <DocLink id="enKibanaSettings" section="savedObjects-maxImportExportSize">`savedObjects.maxImportExportSize`</DocLink> configuration setting limits the number of saved objects that you can export.
 </DocCallOut> */}
 
+## Copy to other spaces
+
+Copy saved objects and their related objects between spaces.
+
+1. Click the actions icon <DocIcon type="boxesHorizontal" title="Actions" />.
+1. Click **Copy to spaces**.
+1. Specify whether to automatically overwrite any objects that already exist
+in the target spaces, or resolve them on a per-object basis.
+1. Select the spaces in which to copy the object.
+
+The copy operation automatically includes child objects that are related to
+the saved object.
