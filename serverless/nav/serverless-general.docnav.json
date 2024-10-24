@@ -63,6 +63,9 @@
     },
     {
       "slug": "/serverless/regions"
+    },
+    {
+      "slug": "/serverless/general/ml-nlp-auto-scale"
     }
   ]
 }
