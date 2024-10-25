@@ -20,7 +20,7 @@ Trained model autoscaling is available for Search, Observability, and Security p
 
 Security and Observability projects are only charged for data collection (ingest) and storage (retention). They are not charged for processing power (vCPU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
 
-Because vCPU processing is costly, Search projects are given access to more processing resources, while Security and Observability projects have lower limits on their processing power. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
+Search projects are given access to more processing resources, while Security and Observability projects have lower limits. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
 
 On serverless, adaptive allocations are automatically enabled for all project types.
 However, the "Adaptive resources" control is not displayed in Kibana for Observability and Security projects.
