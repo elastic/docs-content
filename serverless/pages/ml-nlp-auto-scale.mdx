@@ -18,7 +18,7 @@ There are two ways to enable autoscaling:
 
 Trained model autoscaling is available for Search, Observability, and Security projects on serverless deployments. However, these projects handle processing power differently, which impacts their costs and resource limits.
 
-Security and Observability projects are only charged for data collection (ingest) and storage (retention). They are not charged for processing power (vCPU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
+Security and Observability projects are only charged for data ingestion and retention. They are not charged for processing power (vCU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
 
 Search projects are given access to more processing resources, while Security and Observability projects have lower limits. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
 
