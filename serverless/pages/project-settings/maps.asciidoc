@@ -1,4 +1,4 @@
-[[-serverless-maps]]
+[[maps]]
 = {maps-app}
 
 :description: Create maps from your geographical data.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {sec-badge}
 
 In **{project-settings} → {maps-app}** you can:
 
@@ -23,7 +23,7 @@ In **{project-settings} → {maps-app}** you can:
 ////
 
 [discrete]
-[[-serverless-maps-build-maps-with-multiple-layers-and-indices]]
+[[maps-build-maps-with-multiple-layers-and-indices]]
 == Build maps with multiple layers and indices
 
 Use multiple layers and indices to show all your data in a single map.
@@ -37,7 +37,7 @@ Go to **{project-settings} → {maps-app}** and click **Add layer**.
 To learn about specific types of layers, check out {kibana-ref}/heatmap-layer.html[Heat map layer], {kibana-ref}/tile-layer.html[Tile layer], and {kibana-ref}/vector-layer.html[Vector layer].
 
 [discrete]
-[[-serverless-maps-animate-spatial-temporal-data]]
+[[maps-animate-spatial-temporal-data]]
 == Animate spatial temporal data
 
 Data comes to life with animation.
@@ -53,19 +53,19 @@ image::images/timeslider_map.gif[An animated city map of Portland with changing 
 To create this type of map, check out {kibana-ref}/asset-tracking-tutorial.html[Track, visualize, and alert assets in real time].
 
 [discrete]
-[[-serverless-maps-upload-geojson-files-and-shapefiles]]
+[[maps-upload-geojson-files-and-shapefiles]]
 == Upload GeoJSON files and shapefiles
 
 Use **{maps-app}** to drag and drop your GeoJSON and shapefile data and then use them as layers in your map.
 Check out {kibana-ref}/import-geospatial-data.html[Import geospatial data].
 
 [discrete]
-[[-serverless-maps-embed-your-map-in-dashboards]]
+[[maps-embed-your-map-in-dashboards]]
 == Embed your map in dashboards
 
 Viewing data from different angles provides better insights.
 Dimensions that are obscured in one visualization might be illuminated in another.
-Add your map to a https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-dashboards[dashboard] and view your geospatial data alongside bar charts, pie charts, tag clouds, and more.
+Add your map to a <<explore-your-data-dashboards,dashboard>> and view your geospatial data alongside bar charts, pie charts, tag clouds, and more.
 
 This choropleth map shows the density of non-emergency service requests in San Diego by council district.
 The map is embedded in a dashboard, so users can better understand when services are requested and gain insight into the top requested services.
@@ -86,7 +86,7 @@ For example, use dark colors to symbolize areas with more web log traffic, and l
 ////
 
 [discrete]
-[[-serverless-maps-focus-on-only-the-data-thats-important-to-you]]
+[[maps-focus-on-only-the-data-thats-important-to-you]]
 == Focus on only the data that's important to you
 
 Search across the layers in your map to focus on just the data you want.

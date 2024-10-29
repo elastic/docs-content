@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 ////
 /* TODO: The following content was copied verbatim from the ES docs on Oct 5, 2023. It should be included through

@@ -1,4 +1,4 @@
-[[-serverless-ingest-pipelines]]
+[[ingest-pipelines]]
 = {ingest-pipelines-cap}
 
 :description: Create and manage {ingest-pipelines} to perform common transformations and enrichments on your data.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 {ref}/ingest.html[{ingest-pipelines-cap}] let you perform common transformations on your data before indexing.
 For example, you can use pipelines to remove fields, extract values from text, and enrich your data.
@@ -27,7 +27,7 @@ TBD: Do these requirements apply in serverless?
 ////
 
 [discrete]
-[[-serverless-ingest-pipelines-create-and-manage-pipelines]]
+[[ingest-pipelines-create-and-manage-pipelines]]
 == Create and manage pipelines
 
 In **{project-settings} → {manage-app} → {ingest-pipelines-app}**, you can:
@@ -47,7 +47,7 @@ Mapping your custom data to ECS makes the data easier to search and lets you reu
 To get started, check {ecs-ref}/ecs-converting.html[Map custom data to ECS].
 
 [discrete]
-[[-serverless-ingest-pipelines-test-pipelines]]
+[[ingest-pipelines-test-pipelines]]
 == Test pipelines
 
 Before you use a pipeline in production, you should test it using sample documents.

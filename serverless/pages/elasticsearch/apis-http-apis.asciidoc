@@ -6,20 +6,6 @@
 
 preview:[]
 
-<DocRelatedArticles
-  items={
-  [
-    {
-      slug: "/serverless/elasticsearch/api-conventions"
-    },
-    {
-      slug: "/serverless/elasticsearch/kibana-api-conventions"
-    },
-    {
-      "title": "API Reference",
-      "description": "Explore the reference information for Elastic Serverless REST APIs.",
-      "href": "https://www.elastic.co/docs/api/"
-    }
-  ]
-}
-/>
+* <<api-conventions>>
+* <<kibana-api-conventions>>
+* https://www.elastic.co/docs/api/[API Reference]: Explore the reference information for Elastic Serverless REST APIs

@@ -1,4 +1,4 @@
-[[explore-your-data-visualizations]]
+[role="exclude",id="explore-your-data-visualizations"]
 = Create visualizations
 
 :description: Create charts, graphs, maps, and more from your {es} data.

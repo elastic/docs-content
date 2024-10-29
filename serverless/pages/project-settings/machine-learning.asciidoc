@@ -1,4 +1,4 @@
-[[-serverless-machine-learning]]
+[[machine-learning]]
 = {ml-cap}
 
 :description: View, export, and import {ml} jobs and models.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to:  {es-badge} {obs-badge} {sec-badge}
 
 To view your {ml} resources, go to **{project-settings} → {manage-app} → {ml-app}**:
 
@@ -24,14 +24,14 @@ The {ml-features} that are available vary by project type:
 For more information, go to {ml-docs}/ml-ad-overview.html[{anomaly-detect-cap}], {ml-docs}/ml-dfanalytics.html[{dfanalytics-cap}] and {ml-docs}/ml-nlp.html[Natural language processing].
 
 [discrete]
-[[-serverless-machine-learning-synchronize-saved-objects]]
+[[machine-learning-synchronize-saved-objects]]
 == Synchronize saved objects
 
 Before you can view your {ml} {dfeeds}, jobs, and trained models in {kib}, they must have saved objects.
 For example, if you used APIs to create your jobs, wait for automatic synchronization or go to the **{ml-app}** page and click **Synchronize saved objects**.
 
 [discrete]
-[[-serverless-machine-learning-export-and-import-jobs]]
+[[machine-learning-export-and-import-jobs]]
 == Export and import jobs
 
 You can export and import your {ml} job and {dfeed} configuration details on the **{ml-app}** page.

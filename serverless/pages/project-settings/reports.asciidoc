@@ -1,4 +1,4 @@
-[[-serverless-reports]]
+[[reports]]
 = {reports-app}
 
 :description: View and manage generated reports.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 {kib} provides you with several options to share saved searches, dashboards, and visualizations.
 

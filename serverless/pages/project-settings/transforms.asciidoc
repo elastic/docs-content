@@ -1,4 +1,4 @@
-[[-serverless-transforms]]
+[[transforms]]
 = {transforms-app}
 
 :description: Use transforms to pivot existing indices into summarized or entity-centric indices.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 {transforms-cap} enable you to convert existing {es} indices into summarized
 indices, which provide opportunities for new insights and analytics.
@@ -28,7 +28,7 @@ For more information, check out:
 * {ref}/transform-limitations.html[Limitations]
 
 [discrete]
-[[-serverless-transforms-create-and-manage-transforms]]
+[[transforms-create-and-manage-transforms]]
 == Create and manage {transforms}
 
 In **{project-settings} → {manage-app} → {transforms-app}**, you can

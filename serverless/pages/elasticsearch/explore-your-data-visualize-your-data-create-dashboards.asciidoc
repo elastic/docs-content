@@ -1,4 +1,4 @@
-[[explore-your-data-dashboards]]
+[role="exclude",id="explore-your-data-dashboards"]
 = Create dashboards
 
 :description: Create dashboards to visualize and monitor your {es} data.

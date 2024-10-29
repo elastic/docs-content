@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {obs-badge} {sec-badge}
 
 beta::[]
 

@@ -1,9 +1,9 @@
-[[-serverless-spaces]]
+[[spaces]]
 = Spaces
 
 :description: Organize your project and objects into multiple spaces.
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 Spaces enable you to organize your dashboards and other saved
 objects into meaningful categories. Once inside a space, you see only
@@ -19,13 +19,13 @@ image::images/space-breadcrumb.png[Space breadcrumb]
 You can view and manage the spaces of a project from the **Spaces** page in **Management**.
 
 [discrete]
-[[-serverless-spaces-required-permissions]]
+[[spaces-required-permissions]]
 == Required permissions
 
 You must have an admin role on the project to manage its **Spaces**.
 
 [discrete]
-[[-serverless-spaces-create-or-edit-a-space]]
+[[spaces-create-or-edit-a-space]]
 == Create or edit a space
 
 You can have up to 100 spaces in a project.
@@ -43,16 +43,16 @@ if you prefer to create spaces programmatically.
 
 ifeval::["{serverlessCustomRoles}" == "true"]
 [discrete]
-[[-serverless-spaces-customize-access-to-space]]
+[[spaces-customize-access-to-space]]
 == Customize access to space
 
-Customizing access to a space is available for the following project types only:
+Customizing access to a space is available for the following project types only: {es-badge} {sec-badge}
 
-As an administrator, you can define custom roles with specific access to certain spaces and features in a project. Refer to https://www.elastic.co/docs/current/serverless/custom-roles[].
+As an administrator, you can define custom roles with specific access to certain spaces and features in a project. Refer to <<custom-roles>>.
 endif::[]
 
 [discrete]
-[[-serverless-spaces-delete-a-space]]
+[[spaces-delete-a-space]]
 == Delete a space
 
 Deleting a space permanently removes the space and all of its contents.
@@ -61,7 +61,7 @@ Find the space on the _Spaces_ page and click the trash icon in the Actions colu
 You can't delete the default space, but you can customize it to your liking.
 
 [discrete]
-[[-serverless-spaces-move-saved-objects-between-spaces]]
+[[spaces-move-saved-objects-between-spaces]]
 == Move saved objects between spaces
 
-To move saved objects between spaces, you can https://www.elastic.co/docs/current/serverless/saved-objects[copy objects] or https://www.elastic.co/docs/current/serverless/saved-objects[export and import objects].
+To move saved objects between spaces, you can <<saved-objects-copy-to-other-spaces,copy objects>> or <<saved-objects-import-and-export,export and import objects>>.

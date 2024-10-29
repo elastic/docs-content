@@ -3,11 +3,16 @@
 include::{asciidoc-dir}/../../shared/versions/stack/master.asciidoc[]
 include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 
-:security-serverless:       {security-docs-root}/docs/serverless
-:observability-serverless:  {observability-docs-root}/docs/en/serverless
-:elasticsearch-serverless:  {docs-content-root}/serverless/pages/elasticsearch
-:general-serverless:        {docs-content-root}/serverless/pages/general
-:devtools-serverless:       {docs-content-root}/serverless/pages/devtools
+:security-serverless:         {security-docs-root}/docs/serverless
+:observability-serverless:    {observability-docs-root}/docs/en/serverless
+:elasticsearch-serverless:    {docs-content-root}/serverless/pages/elasticsearch
+:general-serverless:          {docs-content-root}/serverless/pages/general
+:devtools-serverless:         {docs-content-root}/serverless/pages/devtools
+:project-settings-serverless: {docs-content-root}/serverless/pages/project-settings
+
+:es-badge: <<what-is-elasticsearch-serverless,image:images/es-badge.svg[Elasticsearch]>>
+:obs-badge: <<what-is-observability-serverless,image:images/obs-badge.svg[Observability]>>
+:sec-badge: <<what-is-security-serverless,image:images/sec-badge.svg[Security]>>
 
 = Serverless
 
@@ -42,7 +47,11 @@ include::{general-serverless}/user-profile.asciidoc[leveloffset=+2]
 include::{general-serverless}/cloud-regions.asciidoc[leveloffset=+2]
 
 [[what-is-elasticsearch-serverless]]
-== Elasticsearch
+== Elasticsearch serverless
+
+++++
+<titleabbrev>Elasticsearch</titleabbrev>
+++++
 
 include::{elasticsearch-serverless}/what-is-elasticsearch-serverless.asciidoc[leveloffset=+2]
 
@@ -92,9 +101,13 @@ include::{elasticsearch-serverless}/serverless-differences.asciidoc[leveloffset=
 include::{elasticsearch-serverless}/technical-preview-limitations.asciidoc[leveloffset=+2]
 
 [[what-is-observability-serverless]]
-== Elastic Observability
+== Elastic Observability serverless
 
-Hello world
+++++
+<titleabbrev>Elastic Observability</titleabbrev>
+++++
+
+include::{observability-serverless}/what-is-observability-serverless.asciidoc[leveloffset=+2]
 
 include::{observability-serverless}/observability-overview.asciidoc[leveloffset=+2]
 
@@ -243,9 +256,13 @@ include::{observability-serverless}/elastic-entity-model.asciidoc[leveloffset=+2
 include::{observability-serverless}/technical-preview-limitations.asciidoc[leveloffset=+2]
 
 [[what-is-security-serverless]]
-== Elastic Security
+== Elastic Security serverless
 
-Hello world
+++++
+<titleabbrev>Elastic Security</titleabbrev>
+++++
+
+include::{security-serverless}/what-is-security-serverless.asciidoc[leveloffset=+2]
 
 include::{security-serverless}/security-overview.asciidoc[leveloffset=+2]
 
@@ -430,9 +447,10 @@ include::{security-serverless}/troubleshooting/troubleshoot-endpoints.asciidoc[l
 
 include::{security-serverless}/technical-preview-limitations.asciidoc[leveloffset=+2]
 
+[[developer-tools]]
 == Dev tools
 
-Hello world
+include::{devtools-serverless}/general-developer-tools.asciidoc[leveloffset=+2]
 
 include::{devtools-serverless}/run-api-requests-in-the-console.asciidoc[leveloffset=+2]
 
@@ -444,6 +462,34 @@ include::{devtools-serverless}/debug-painless-scripts.asciidoc[leveloffset=+2]
 
 include::{devtools-serverless}/developer-tools-troubleshooting.asciidoc[leveloffset=+2]
 
+[[project-and-management-settings]]
 == Project and management settings
 
-Hello world
+include::{project-settings-serverless}/project-and-management-settings.asciidoc[leveloffset=+2]
+
+include::{project-settings-serverless}/project-settings.asciidoc[leveloffset=+2]
+include::{project-settings-serverless}/api-keys.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/action-connectors.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/custom-roles.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/data-views.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/files.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/index-management.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/ingest-pipelines.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/logstash-pipelines.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/machine-learning.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/maintenance-windows.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/maps.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/reports.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/rules.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/saved-objects.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/spaces.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/tags.asciidoc[leveloffset=+3]
+include::{project-settings-serverless}/transforms.asciidoc[leveloffset=+3]
+
+include::{project-settings-serverless}/integrations.asciidoc[leveloffset=+2]
+
+include::{project-settings-serverless}/fleet-and-elastic-agent.asciidoc[leveloffset=+2]
+
+// Hidden pages
+include::{elasticsearch-serverless}/explore-your-data-visualize-your-data-create-dashboards.asciidoc[leveloffset=+1]
+include::{elasticsearch-serverless}/explore-your-data-visualize-your-data-create-visualizations.asciidoc[leveloffset=+1]

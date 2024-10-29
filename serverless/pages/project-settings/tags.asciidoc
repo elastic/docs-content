@@ -1,4 +1,4 @@
-[[-serverless-tags]]
+[[tags]]
 = {tags-app}
 
 :description: Use tags to categorize your saved objects, then filter for related objects based on shared tags.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 To get started, go to **{project-settings} → {manage-app} → {tags-app}**:
 
@@ -35,7 +35,7 @@ from the global search.
 ////
 
 [discrete]
-[[-serverless-tags-create-a-tag]]
+[[tags-create-a-tag]]
 == Create a tag
 
 Create a tag to assign to your saved objects.
@@ -47,7 +47,7 @@ The name cannot be longer than 50 characters.
 . Click **Create tag**.
 
 [discrete]
-[[-serverless-tags-assign-a-tag-to-an-object]]
+[[tags-assign-a-tag-to-an-object]]
 == Assign a tag to an object
 
 ////
@@ -65,7 +65,7 @@ image::images/tag-assignment.png[Assign tags to saved objects]
 . Click **Save tag assignments**.
 
 [discrete]
-[[-serverless-tags-delete-a-tag]]
+[[tags-delete-a-tag]]
 == Delete a tag
 
 When you delete a tag, you remove it from all saved objects that use it.

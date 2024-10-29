@@ -1,4 +1,4 @@
-[[-serverless-saved-objects]]
+[[saved-objects]]
 = Saved objects
 
 :description: Manage your saved objects, including dashboards, visualizations, maps, {data-sources}, and more.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 To get started, go to **{project-settings} → {manage-app} → {saved-objects-app}**:
 
@@ -32,7 +32,7 @@ applications they may not otherwise be authorized to access.
 ////
 
 [discrete]
-[[-serverless-saved-objects-view-and-delete]]
+[[saved-objects-view-and-delete]]
 == View and delete
 
 * To view and edit a saved object in its associated application, click the object title.
@@ -40,7 +40,7 @@ applications they may not otherwise be authorized to access.
 * To delete one or more objects, select their checkboxes, and then click **Delete**.
 
 [discrete]
-[[-serverless-saved-objects-import-and-export]]
+[[saved-objects-import-and-export]]
 == Import and export
 
 Use import and export to move objects between different {kib} instances.
@@ -56,7 +56,7 @@ TBD: Do these APIs exist for serverless?
 ////
 
 [discrete]
-[[-serverless-saved-objects-import]]
+[[saved-objects-import]]
 === Import
 
 Import multiple objects in a single operation.
@@ -79,7 +79,7 @@ size of the file that you can import.
 ////
 
 [discrete]
-[[-serverless-saved-objects-export]]
+[[saved-objects-export]]
 === Export
 
 Export objects by selection or type.
@@ -100,7 +100,7 @@ The <DocLink id="enKibanaSettings" section="savedObjects-maxImportExportSize">`s
 ////
 
 [discrete]
-[[-serverless-saved-objects-copy-to-other-spaces]]
+[[saved-objects-copy-to-other-spaces]]
 == Copy to other spaces
 
 Copy saved objects and their related objects between spaces.

@@ -1,4 +1,4 @@
-[[-serverless-integrations]]
+[[integrations]]
 = Integrations
 
 :description: Use our pre-built integrations to connect your data to Elastic.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {obs-badge} {sec-badge}
 
 Elastic integrations are a streamlined way to connect your data to Elastic.
 Integrations are available for popular services and platforms, like Nginx, AWS, and MongoDB,

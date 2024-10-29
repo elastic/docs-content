@@ -1,6 +1,3 @@
-[[-serverless-project-and-management-settings]]
-= Project and management settings
-
 :description: Learn about capabilities available in multiple serverless solutions.
 :keywords: serverless, observability, security, elasticsearch, overview
 
@@ -9,16 +6,16 @@ preview:[]
 The documentation in this section describes shared capabilities that are available in multiple solutions.
 Look for the doc badge on each page to see if the page is valid for your solution:
 
-*  for the {es} solution
-*  for the {observability} solution
-*  for the {security} solution
+* {es-badge} for the {es} solution
+* {obs-badge} for the {observability} solution
+* {sec-badge} for the {security} solution
 
 [IMPORTANT]
 ====
 Some solutions provide versions of these capabilities tailored to your use case.
 Read the main solution docs to learn how to use those capabilities:
 
-* https://www.elastic.co/docs/current/serverless/elasticsearch/what-is-elasticsearch-serverless[{es-serverless} docs]
-* https://www.elastic.co/docs/current/serverless/observability/what-is-observability-serverless[{observability} serverless docs]
-* https://www.elastic.co/docs/current/serverless/security/what-is-security-serverless[{security} serverless docs]
+* <<what-is-elasticsearch-serverless,{es-serverless} docs>>
+* <<what-is-observability-serverless,{observability} serverless docs>>
+* <<what-is-security-serverless,{security} serverless docs>>
 ====

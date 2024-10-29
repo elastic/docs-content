@@ -1,4 +1,4 @@
-[[-serverless-data-views]]
+[[data-views]]
 = {data-sources-cap}
 
 :description: Elastic requires a {data-source} to access the {es} data that you want to explore.
@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 A {data-source} can point to one or more indices, {ref}/data-streams.html[data streams], or {ref}/alias.html[index aliases].
 For example, a {data-source} can point to your log data from yesterday or all indices that contain your data.
@@ -30,7 +30,7 @@ For example, a {data-source} can point to your log data from yesterday or all in
 ////
 
 [discrete]
-[[-serverless-data-views-create-a-data-view]]
+[[data-views-create-a-data-view]]
 == Create a data view
 
 After you've loaded your data, follow these steps to create a {data-source}:
@@ -74,7 +74,7 @@ based on different timestamps.
 You can manage your data views in **{project-settings} → {manage-app} → {data-views-app}**.
 
 [discrete]
-[[-serverless-data-views-create-a-temporary-data-source]]
+[[data-views-create-a-temporary-data-source]]
 === Create a temporary {data-source}
 
 Want to explore your data or create a visualization without saving it as a data view?
@@ -160,7 +160,7 @@ aggregations using that {data-source} in Elastic take advantage of {ccs}. */
 ////
 
 [discrete]
-[[-serverless-data-views-delete-a-data-source]]
+[[data-views-delete-a-data-source]]
 == Delete a {data-source}
 
 When you delete a {data-source}, you cannot recover the associated field formatters, runtime fields, source filters,

@@ -1,8 +1,12 @@
-[[-serverless-project-settings]]
+[[project-settings]]
 = Management settings
 
 :description: Manage your indices, data views, saved objects, settings, and more from a central location in Elastic.
 :keywords: serverless, management, overview
+
+++++
+<titleabbrev>Management</titleabbrev>
+++++
 
 preview:[]
 
@@ -15,76 +19,76 @@ To learn more about roles, refer to <<assign-user-roles>>.
 |===
 | Feature | Description | Available in
 
-| https://www.elastic.co/docs/current/serverless/api-keys[API keys]
+| <<api-keys,API keys>>
 | Create and manage keys that can send requests on behalf of users.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/security/asset-criticality[Asset criticality]
+| <<asset-criticality,Asset criticality>>
 | Bulk assign asset criticality to multiple entities by importing a text file.
-|
+| {sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/action-connectors[]
+| <<action-connectors>>
 | Create and manage reusable connectors for triggering actions.
-|
+| {es-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/data-views[]
+| <<data-views>>
 | Manage the fields in the data views that retrieve your data from {es}.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/security/entity-risk-scoring[Entity Risk Score]
+| <<entity-risk-scoring,Entity Risk Score>>
 | Manage entity risk scoring, and preview risky entities.
-|
+| {sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/files[]
+| <<files>>
 | Manage files that are stored in {kib}.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/index-management[]
+| <<index-management>>
 | View index settings, mappings, and statistics and perform operations on indices.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/ingest-pipelines[]
+| <<ingest-pipelines>>
 | Create and manage ingest pipelines that parse, transform, and enrich your data.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/logstash-pipelines[]
+| <<logstash-pipelines>>
 | Create and manage {ls} pipelines that parse, transform, and enrich your data.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/machine-learning[]
+| <<machine-learning>>
 | View, export, and import your {anomaly-detect} and {dfanalytics} jobs and trained models.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/maintenance-windows[]
+| <<maintenance-windows>>
 | Suppress rule notifications for scheduled periods of time.
-|
+| {obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/maps[]
+| <<maps>>
 | Create maps from your geographical data.
-|
+| {sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/reports[]
+| <<reports>>
 | Manage and download reports such as CSV files generated from saved searches.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/rules[]
+| <<rules>>
 | Create and manage rules that generate alerts.
-|
+| {es-badge}
 
-| https://www.elastic.co/docs/current/serverless/saved-objects[]
+| <<saved-objects>>
 | Copy, edit, delete, import, and export your saved objects.
 These include dashboards, visualizations, maps, {data-sources}, and more.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/spaces[]
+| <<spaces>>
 | Organize your project and objects into multiple spaces.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/tags[]
+| <<tags>>
 | Create, manage, and assign tags to your saved objects.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
-| https://www.elastic.co/docs/current/serverless/transforms[]
+| <<transforms>>
 | Use transforms to pivot existing {es} indices into summarized or entity-centric indices.
-|
+| {es-badge}{obs-badge}{sec-badge}
 |===

@@ -6,7 +6,7 @@
 
 preview:[]
 
-This content applies to:
+This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 You can build and debug grok patterns in the **Grok Debugger** before you use them in your data processing pipelines.
 Grok is a pattern-matching syntax that you can use to parse and structure arbitrary text.
