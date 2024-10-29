@@ -1,0 +1,2 @@
+To deploy ELSER, refer to
+{ml-docs}/ml-nlp-elser.html#download-deploy-elser[Download and deploy ELSER].

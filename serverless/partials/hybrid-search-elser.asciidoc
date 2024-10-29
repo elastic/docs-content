@@ -1,0 +1,41 @@
+Hybrid search between a semantic and lexical query can be achieved by using retrievers in your search request.
+The following example uses retrievers to perform a match query and a sparse vector query, and rank them using RRF.
+
+[source,bash]
+----
+curl -X GET "${ES_URL}/my-index/_search" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "retriever": {
+    "rrf": {
+      "retrievers": [
+        {
+          "standard": {
+            "query": {
+              "match": {
+                "my_text_field": "the query string"
+              }
+            }
+          }
+        },
+        {
+          "standard": {
+            "query": {
+              "sparse_vector": {
+                "field": "my_tokens",
+                "inference_id": "my-elser-endpoint",
+                "query": "the query string"
+              }
+            }
+          }
+        }
+      ],
+      "window_size": 50,
+      "rank_constant": 20
+    }
+  }
+}
+'
+----

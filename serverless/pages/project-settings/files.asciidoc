@@ -1,0 +1,16 @@
+[[-serverless-files]]
+= {files-app}
+
+:description: Manage files that are stored in Elastic.
+:keywords: serverless, Elasticsearch, Observability, Security
+
+preview:[]
+
+This content applies to:
+
+Several {serverless-full} features let you upload files. For example, you can add files to https://www.elastic.co/docs/current/serverless/observability/cases[cases] or upload a logo to an **Image** panel in a https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-dashboards[dashboard].
+
+You can access these uploaded files in **{project-settings} → {manage-app} → {files-app}**.
+
+[role="screenshot"]
+image::images/file-management.png["Files UI"]

@@ -1,0 +1,36 @@
+Hybrid search between a semantic and lexical query can be achieved by providing:
+
+* a `query` clause for the full-text query;
+* a `knn` clause with the kNN search that queries the dense vector field;
+* and a `rank` clause with the `rrf` parameter to rank documents using
+reciprocal rank fusion.
+
+[source,bash]
+----
+curl -X GET "${ES_URL}/my-index/_search" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "query": {
+    "match": {
+      "my_text_field": "the query string"
+    }
+  },
+  "knn": {
+    "field": "text_embedding.predicted_value",
+    "k": 10,
+    "num_candidates": 100,
+    "query_vector_builder": {
+      "text_embedding": {
+        "model_id": "sentence-transformers__msmarco-minilm-l-12-v3",
+        "model_text": "the query string"
+      }
+    }
+  },
+  "rank": {
+    "rrf": {}
+  }
+}
+'
+----
