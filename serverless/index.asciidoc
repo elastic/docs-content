@@ -1,6 +1,6 @@
 :doctype: book
 
-include::{docs-root}/shared/versions/stack/{source_branch}.asciidoc[]
+include::{docs-root}/shared/versions/stack/master.asciidoc[]
 include::{docs-root}/shared/attributes.asciidoc[]
 
 :security-serverless:       {security-docs-root}/docs/serverless
