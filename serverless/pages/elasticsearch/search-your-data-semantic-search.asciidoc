@@ -16,6 +16,8 @@ enables it to extract text embeddings out of text. Embeddings are vectors that
 provide a numeric representation of a text. Pieces of content with similar
 meaning have similar representations.
 
+image::images/vector-search-oversimplification.png[A simplified representation of encoding textual concepts as vectors]
+
 _A simplified representation of encoding textual concepts as vectors_
 
 At query time, {es} can use the same NLP model to convert a query into

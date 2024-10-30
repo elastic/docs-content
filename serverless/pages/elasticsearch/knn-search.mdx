@@ -331,7 +331,7 @@ shards.
 The score of each hit is the sum of the `knn` and `query` scores. You can specify a `boost` value to give a weight to
 each score in the sum. In the example above, the scores will be calculated as
 
-```
+```txt
 score = 0.9 * match_score + 0.1 * knn_score
 ```
 
@@ -446,7 +446,7 @@ all index shards.
 
 The scoring for a doc with the above configured boosts would be:
 
-```
+```txt
 score = 0.9 * match_score + 0.1 * knn_score_image-vector + 0.5 * knn_score_title-vector
 ```
 

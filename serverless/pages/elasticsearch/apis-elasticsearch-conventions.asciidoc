@@ -14,7 +14,7 @@ For example:
 GET _cat/indices?v=true
 ----
 
-Check out https://www.elastic.co/docs/current/serverless/devtools/run-api-requests-in-the-console[].
+Check out <<devtools-run-api-requests-in-the-console>>.
 
 [discrete]
 [[elasticsearch-api-conventions-request-headers]]

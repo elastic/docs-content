@@ -36,29 +36,29 @@ Tell {kib} where to find the data you want to explore, and then specify the time
 
 . Once the book sample data has been ingested, navigate to **Explore → Discover** and click **Create data view**.
 . Give your data view a name.
-
++
 [role="screenshot"]
 image::images/create-data-view.png[Create a data view]
-
++
 . Start typing in the **Index pattern** field, and the names of indices, data streams, and aliases that match your input will be displayed.
-
++
 * To match multiple sources, use a wildcard (*), for example, `b*` and any indices starting with the letter `b` display.
 * To match multiple sources, enter their names separated by a comma. Do not include a space after the comma. For example `books,magazines` would match two indices: `books` and `magazines`.
 * To exclude a source, use a minus sign (-), for example `-books`.
-
++
 . In the **Timestamp** field dropdown, and then select `release_date`.
-
++
 * If you don't set a time field, you can't use global time filters on your dashboards. Leaving the time field unset might be useful if you have multiple time fields and want to create dashboards that combine visualizations based on different timestamps.
 * If your index doesn't have time-based data, choose **I don't want to use the time filter**.
-
++
 . Click **Show advanced settings** to:
-
++
 * Display hidden and system indices.
 * Specify your own data view name. For example, enter your Elasticsearch index alias name.
-
++
 . Click **Save data view to {kib}**.
 . Adjust the time range to view data for the **Last 40 years** to view all your book data.
-
++
 [role="screenshot"]
 image::images/book-data.png[Your book data displayed]
 
@@ -70,9 +70,9 @@ image::images/book-data.png[Your book data displayed]
 
 . In the sidebar, enter `au` in the search field to find the `author` field.
 . In the **Available fields** list, click `author` to view its most popular values.
-
++
 **Discover** shows the top 10 values and the number of records used to calculate those values.
-
++
 . Click image:images/icons/plusInCircleFilled.svg[Add] to toggle the field into the document table. You can also drag the field from the **Available fields** list into the document table.
 
 [discrete]
@@ -169,12 +169,12 @@ If a field can be {ref}/search-aggregations.html[aggregated], you can quickly vi
 
 . In the sidebar, find and then click `release_date`.
 . In the popup, click **Visualize**.
-
++
 [NOTE]
 ====
 {kib} creates a visualization best suited for this field.
 ====
-
++
 . From the **Available fields** list, drag and drop `page_count` onto the workspace.
 . Save your visualization for use on a dashboard.
 

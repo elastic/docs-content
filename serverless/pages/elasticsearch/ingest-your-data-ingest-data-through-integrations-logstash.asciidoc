@@ -28,7 +28,7 @@ Some differences to note between {es3} and self-managed {es}:
 User-based security settings are ignored and may cause errors.
 * {es3} uses **{dlm} ({dlm-init})** instead of {ilm} ({ilm-init}).
 If you add {ilm-init} settings to your {es} output configuration, they are ignored and may cause errors.
-* **{ls} monitoring** for {serverless-short} is available through the https://github.com/elastic/integrations/blob/main/packages/logstash/_dev/build/docs/README.md[{ls} Integration] in https://www.elastic.co/docs/current/serverless/observability/what-is-observability-serverless[Elastic Observability].
+* **{ls} monitoring** for {serverless-short} is available through the https://github.com/elastic/integrations/blob/main/packages/logstash/_dev/build/docs/README.md[{ls} Integration] in <<what-is-observability-serverless,Elastic Observability>>.
 
 **Known issue**
 
@@ -61,7 +61,7 @@ No additional SSL configuration steps are needed.
 [[elasticsearch-ingest-data-through-logstash-api-keys-for-connecting-ls-to-es3]]
 == API keys for connecting {ls} to {es3}
 
-Use the **Security: API key** section in the UI to https://www.elastic.co/docs/current/serverless/api-keys[create an API key]
+Use the **Security: API key** section in the UI to <<api-keys,create an API key>>
 for securely connecting the {ls} {es} output to {es3}.
 We recommend creating a unique API key per {ls} instance.
 You can create as many API keys as necessary.

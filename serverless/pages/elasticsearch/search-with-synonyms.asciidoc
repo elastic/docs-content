@@ -70,7 +70,7 @@ Check each synonym token filter documentation for configuration details and inst
 === Test your analyzer
 
 You can test an analyzer configuration without modifying your index settings.
-Use the ((ref)/indices-analyze.html)[analyze API] to test your analyzer chain:
+Use the {ref}/indices-analyze.html[analyze API] to test your analyzer chain:
 
 [source,bash]
 ----

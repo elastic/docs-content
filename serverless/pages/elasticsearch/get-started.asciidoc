@@ -22,7 +22,7 @@ Use your {ecloud} account to create a fully-managed {es} project:
 +
 ** **General purpose**. For general search use cases across various data types.
 ** **Optimized for Vectors**. For search use cases using vectors and near real-time retrieval.
-. Provide a name for the project and optionally edit the project settings, such as the cloud platform https://www.elastic.co/docs/current/serverless/regions[region].
+. Provide a name for the project and optionally edit the project settings, such as the cloud platform <<regions,region>>.
 Select **Create project** to continue.
 . Once the project is ready, select **Continue**.
 

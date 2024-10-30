@@ -29,7 +29,7 @@ For example:
 GET kbn:/api/data_views
 ----
 
-Check out https://www.elastic.co/docs/current/serverless/devtools/run-api-requests-in-the-console[].
+Check out <<devtools-run-api-requests-in-the-console>>.
 
 [discrete]
 [[elasticsearch-kibana-api-conventions-request-headers]]
@@ -42,7 +42,7 @@ The Management APIs support the `Authorization`, `Content-Type`, and  `kbn-xsrf`
 
 Management APIs use key-based authentication.
 You must create an API key and use the encoded value in the request header.
-To learn about creating keys, go to https://www.elastic.co/docs/current/serverless/api-keys[].
+To learn about creating keys, go to <<api-keys>>.
 
 `Content-Type: application/json`::
 

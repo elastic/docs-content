@@ -35,15 +35,15 @@ The following snippets use these imports:
 
 ```go
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"log"
-	"strconv"
+  "context"
+  "encoding/json"
+  "fmt"
+  "log"
+  "strconv"
 
-	"github.com/elastic/elasticsearch-serverless-go"
-	"github.com/elastic/elasticsearch-serverless-go/typedapi/types"
-	"github.com/elastic/elasticsearch-serverless-go/typedapi/types/enums/result"
+  "github.com/elastic/elasticsearch-serverless-go"
+  "github.com/elastic/elasticsearch-serverless-go/typedapi/types"
+  "github.com/elastic/elasticsearch-serverless-go/typedapi/types/enums/result"
 )
 ```
 
@@ -54,8 +54,8 @@ Initialize the client using your API key and Elasticsearch Endpoint:
 
 ```go
 client, err := elasticsearch.NewClient(elasticsearch.Config{
-	APIKey: "you_api_key",
-	Address: "https://my-project-url",
+  APIKey: "you_api_key",
+  Address: "https://my-project-url",
 })
 if err != nil {
     log.Fatal(err)

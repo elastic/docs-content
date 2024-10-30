@@ -32,34 +32,31 @@ Tell ((kib)) where to find the data you want to explore, and then specify the ti
 
 1. Once the book sample data has been ingested, navigate to **Explore → Discover** and click **Create data view**.
 
-2. Give your data view a name.
+1. Give your data view a name.
 
-<DocImage size="xxl" url="../images/create-data-view.png" alt="Create a data view" />
+    <DocImage size="xxl" url="../images/create-data-view.png" alt="Create a data view" />
 
-3. Start typing in the **Index pattern** field, and the names of indices, data streams, and aliases that match your input will be displayed.
+1. Start typing in the **Index pattern** field, and the names of indices, data streams, and aliases that match your input will be displayed.
 
-- To match multiple sources, use a wildcard (*), for example, `b*` and any indices starting with the letter `b` display.
+    - To match multiple sources, use a wildcard (*), for example, `b*` and any indices starting with the letter `b` display.
+    - To match multiple sources, enter their names separated by a comma. Do not include a space after the comma. For example `books,magazines` would match two indices: `books` and `magazines`.
+    - To exclude a source, use a minus sign (-), for example `-books`.
 
-- To match multiple sources, enter their names separated by a comma. Do not include a space after the comma. For example `books,magazines` would match two indices: `books` and `magazines`.
+1. In the **Timestamp** field dropdown, and then select `release_date`.
 
-- To exclude a source, use a minus sign (-), for example `-books`.
+    - If you don't set a time field, you can't use global time filters on your dashboards. Leaving the time field unset might be useful if you have multiple time fields and want to create dashboards that combine visualizations based on different timestamps.
+    - If your index doesn't have time-based data, choose **I don't want to use the time filter**.
 
-4. In the **Timestamp** field dropdown, and then select `release_date`.
+1. Click **Show advanced settings** to:
 
-- If you don't set a time field, you can't use global time filters on your dashboards. Leaving the time field unset might be useful if you have multiple time fields and want to create dashboards that combine visualizations based on different timestamps.
+    - Display hidden and system indices.
+    - Specify your own data view name. For example, enter your Elasticsearch index alias name.
 
-- If your index doesn't have time-based data, choose **I don't want to use the time filter**.
+1. Click **Save data view to ((kib))**.
 
-5. Click **Show advanced settings** to:
+1. Adjust the time range to view data for the **Last 40 years** to view all your book data.
 
-- Display hidden and system indices.
-- Specify your own data view name. For example, enter your Elasticsearch index alias name.
-
-6. Click **Save data view to ((kib))**.
-
-7. Adjust the time range to view data for the **Last 40 years** to view all your book data.
-
- <DocImage size="xxl" url="../images/book-data.png" alt="Your book data displayed" />
+    <DocImage size="xxl" url="../images/book-data.png" alt="Your book data displayed" />
 
 <div id="explore-fields-in-your-data"></div>
 
@@ -69,11 +66,11 @@ Tell ((kib)) where to find the data you want to explore, and then specify the ti
 
 1. In the sidebar, enter `au` in the search field to find the `author` field.
 
-2. In the **Available fields** list, click `author` to view its most popular values.
+1. In the **Available fields** list, click `author` to view its most popular values.
 
-**Discover** shows the top 10 values and the number of records used to calculate those values.
+    **Discover** shows the top 10 values and the number of records used to calculate those values.
 
-3. Click <DocIcon type="plusInCircleFilled" title="Add" /> to toggle the field into the document table. You can also drag the field from the **Available fields** list into the document table.
+1. Click <DocIcon type="plusInCircleFilled" title="Add" /> to toggle the field into the document table. You can also drag the field from the **Available fields** list into the document table.
 
 ## Add a field to your ((data-source))
 
@@ -85,21 +82,21 @@ the same way you do with other fields.
 
 1. In the sidebar, click **Add a field**.
 
-2. In the **Create field** form, enter `hello` for the name.
+1. In the **Create field** form, enter `hello` for the name.
 
-3. Turn on **Set value**.
+1. Turn on **Set value**.
 
-4. Define the script using the Painless scripting language.  Runtime fields require an `emit()`.
+1. Define the script using the Painless scripting language.  Runtime fields require an `emit()`.
 
     ```ts
     emit("Hello World!");
     ```
 
-5. Click **Save**.
+1. Click **Save**.
 
-6. In the sidebar, search for the **hello** field, and then add it to the document table.
+1. In the sidebar, search for the **hello** field, and then add it to the document table.
 
-7. Create a second field named `authorabbrev` that combines the authors last name and first initial.
+1. Create a second field named `authorabbrev` that combines the authors last name and first initial.
 
     ```ts
     String str = doc['author.keyword'].value;
@@ -107,7 +104,7 @@ the same way you do with other fields.
     emit(doc['author.keyword'].value + ", " + ch1);
     ```
 
-8. Add `authorabbrev` to the document table.
+1. Add `authorabbrev` to the document table.
 
 <DocImage size="xxl" url="../images/add-fields.png" alt="How the fields you just created should display" />
 
@@ -122,7 +119,7 @@ To search particular fields and build more complex queries, use the ((kib)) Quer
 Search the book data to find out which books have more than 500 pages:
 
 1. Enter `p`, and then select **page_count**.
-2. Select **>** for greater than and enter **500**, then click the refresh button or press the Enter key to see which books have more than 500 pages.
+1. Select **>** for greater than and enter **500**, then click the refresh button or press the Enter key to see which books have more than 500 pages.
 
 <div id="filter-in-discover"></div>
 
@@ -136,10 +133,10 @@ and more.
 Exclude documents where the author is not Terry Pratchett:
 
 1. Click <DocIcon type="plusInCircleFilled" title="Add" /> next to the query bar.
-2. In the **Add filter** pop-up, set the field to **author**, the operator to **is not**, and the value to **Terry Pratchett**.
-3. Click **Add filter**.
-4. Continue your exploration by adding more filters.
-5. To remove a filter, click the close icon (x) next to its name in the filter bar.
+1. In the **Add filter** pop-up, set the field to **author**, the operator to **is not**, and the value to **Terry Pratchett**.
+1. Click **Add filter**.
+1. Continue your exploration by adding more filters.
+1. To remove a filter, click the close icon (x) next to its name in the filter bar.
 
 <div id="look-inside-a-document"></div>
 
@@ -149,11 +146,11 @@ Dive into an individual document to view its fields and the documents that occur
 
 1. In the document table, click the expand icon <DocIcon type="expand" title="View details" /> to show document details.
 
-2. Scan through the fields and their values. If you find a field of interest, hover your mouse over the **Actions** column for filters and other options.
+1. Scan through the fields and their values. If you find a field of interest, hover your mouse over the **Actions** column for filters and other options.
 
-3. To create a view of the document that you can bookmark and share, click **Single document**.
+1. To create a view of the document that you can bookmark and share, click **Single document**.
 
-4. To view documents that occurred before or after the event you are looking at, click **Surrounding documents**.
+1. To view documents that occurred before or after the event you are looking at, click **Surrounding documents**.
 
 <div id="save-your-search"></div>
 
@@ -163,26 +160,26 @@ Save your search so you can use it later to generate a CSV report, create visual
 
 1. In the upper right toolbar, click **Save**.
 
-2. Give your search a title.
+1. Give your search a title.
 
-3. Optionally store tags and the time range with the search.
+1. Optionally store tags and the time range with the search.
 
-4. Click **Save**.
+1. Click **Save**.
 
 ## Visualize your findings
 If a field can be [aggregated](((ref))/search-aggregations.html), you can quickly visualize it from **Discover**.
 
 1. In the sidebar, find and then click `release_date`.
 
-2. In the popup, click **Visualize**.
+1. In the popup, click **Visualize**.
 
-<DocCallOut title="Note">
-    ((kib)) creates a visualization best suited for this field.
-</DocCallOut>
+    <DocCallOut title="Note">
+        ((kib)) creates a visualization best suited for this field.
+    </DocCallOut>
 
-3. From the **Available fields** list, drag and drop `page_count` onto the workspace.
+1. From the **Available fields** list, drag and drop `page_count` onto the workspace.
 
-4. Save your visualization for use on a dashboard.
+1. Save your visualization for use on a dashboard.
 
 For geographical point fields, if you click **Visualize**, your data appears in a map.
 
@@ -201,12 +198,12 @@ From **Discover**, you can create a rule to periodically check when data goes ab
 1. Ensure that your data view,
     query, and filters fetch the data for which you want an alert.
 
-2. In the toolbar, click **Alerts → Create search threshold rule**.
+1. In the toolbar, click **Alerts → Create search threshold rule**.
 
     The **Create rule** form is pre-filled with the latest query sent to ((es)).
 
-3. Configure your ((es)) query and select a connector type.
+1. Configure your ((es)) query and select a connector type.
 
-4. Click **Save**.
+1. Click **Save**.
 
 For more about this and other rules provided in ((alert-features)), go to <DocLink slug="/serverless/elasticsearch/explore-your-data-alerting">Alerting</DocLink>.

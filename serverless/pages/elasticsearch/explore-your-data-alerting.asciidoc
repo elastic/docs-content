@@ -20,7 +20,7 @@ In **{alerts-app}** or **{project-settings} → {manage-app} → {rules-app}** y
 [role="screenshot"]
 image::images/rules-ui.png[Example rule listing in {rules-ui}]
 
-For an overview of alerting concepts, go to https://www.elastic.co/docs/current/serverless/rules[].
+For an overview of alerting concepts, go to <<rules>>.
 
 ////
 /* ## Required permissions
@@ -80,7 +80,7 @@ When a rule is in a snoozed state, you can cancel or change the duration of this
 [[elasticsearch-explore-your-data-alerting-import-and-export-rules]]
 == Import and export rules
 
-To import and export rules, use https://www.elastic.co/docs/current/serverless/saved-objects[saved objects].
+To import and export rules, use <<saved-objects,saved objects>>.
 
 ////
 /*

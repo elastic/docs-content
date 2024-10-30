@@ -16,7 +16,6 @@ client for {es3}, shows you how to initialize the client, and how to perform bas
 
 * Ruby 3.0 or higher installed on your system.
 * To use the `elasticsearch-serverless` gem, you must have an API key and Elasticsearch Endpoint for an {es3} project.
-*
 
 [discrete]
 [[elasticsearch-ruby-client-getting-started-installation]]
@@ -126,7 +125,7 @@ index:
 [source,ruby]
 ----
 # First, build your data:
-\> body = [
+> body = [
   { index: { _index: 'books', data: {name: "Snow Crash", author: "Neal Stephenson", release_date: "1992-06-01", page_count: 470} } },
   { index: { _index: 'books', data: {name: "Revelation Space", author: "Alastair Reynolds", release_date: "2000-03-15", page_count: 585} } },
   { index: { _index: 'books', data: {name: "1984", author: "George Orwell", release_date: "1949-06-08", page_count: 328} } },
@@ -135,9 +134,9 @@ index:
   { index: { _index: 'books', data: {name: "The Handmaid's Tale", author: "Margaret Atwood", release_date: "1985-06-01", page_count: 311} } }
 ]
 # Then ingest the data via the bulk API:
-\> response = client.bulk(body: body)
+> response = client.bulk(body: body)
 # You can check the response if the items are indexed and have a document (doc) ID:
-\> response['items']
+> response['items']
 # Returns:
 #  =>
 # [{"index"=>{"_index"=>"books", "_id"=>"Pdink4cBmDx329iqhzM2", "_version"=>1, "result"=>"created", "_shards"=>{"total"=>2, "successful"=>1, "failed"=>0}, "_seq_no"=>0, "_primary_term"=>1, "status"=>201}},
@@ -162,7 +161,7 @@ You can get documents by using the following code:
 
 [source,ruby]
 ----
-\> client.get(index: 'books', id: 'id') # Replace 'id' with a valid doc ID
+> client.get(index: 'books', id: 'id') # Replace 'id' with a valid doc ID
 ----
 
 [discrete]
@@ -174,8 +173,8 @@ Now that some data is available, you can search your documents using the
 
 [source,ruby]
 ----
-\> response = client.search(index: 'books', q: 'snow')
-\> response['hits']['hits']
+> response = client.search(index: 'books', q: 'snow')
+> response['hits']['hits']
 # Returns:
 # => [{"_index"=>"books", "_id"=>"Pdink4cBmDx329iqhzM2", "_score"=>1.5904956, "_source"=>{"name"=>"Snow Crash", "author"=>"Neal Stephenson", "release_date"=>"1992-06-01", "page_count"=>470}}]
 ----
@@ -188,7 +187,7 @@ You can call the `update` API to update a document:
 
 [source,ruby]
 ----
-\> response = client.update(
+> response = client.update(
   index: 'books',
   id: 'id',  # Replace 'id' with a valid doc ID
   body: { doc: { page_count: 312 } }
@@ -203,7 +202,7 @@ You can call the `delete` API to delete a document:
 
 [source,ruby]
 ----
-\> client.delete(index: 'books', id: 'id')  # Replace 'id' with a valid doc ID
+> client.delete(index: 'books', id: 'id')  # Replace 'id' with a valid doc ID
 ----
 
 [discrete]
@@ -212,5 +211,5 @@ You can call the `delete` API to delete a document:
 
 [source,ruby]
 ----
-\> client.indices.delete(index: 'books')
+> client.indices.delete(index: 'books')
 ----
