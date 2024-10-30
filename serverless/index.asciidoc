@@ -511,3 +511,4 @@ include::{project-settings-serverless}/fleet-and-elastic-agent.asciidoc[leveloff
 // Hidden pages
 include::{elasticsearch-serverless}/explore-your-data-visualize-your-data-create-dashboards.asciidoc[leveloffset=+1]
 include::{elasticsearch-serverless}/explore-your-data-visualize-your-data-create-visualizations.asciidoc[leveloffset=+1]
+include::{general-serverless}/visualize-library.asciidoc[leveloffset=+1]

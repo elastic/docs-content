@@ -1,4 +1,4 @@
-[[-serverless-regions]]
+[[regions]]
 = Serverless regions
 
 :description: Index, search, and manage {es} data in your preferred language.
@@ -14,7 +14,7 @@ Currently, a limited number of Amazon Web Services (AWS) regions are available. 
 ====
 
 [discrete]
-[[-serverless-regions-amazon-web-services-aws-regions]]
+[[regions-amazon-web-services-aws-regions]]
 == Amazon Web Services (AWS) regions
 
 The following AWS regions are currently available:
