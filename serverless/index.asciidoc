@@ -348,7 +348,7 @@ include::{security-serverless}/endpoint-response-actions/third-party-actions.asc
 include::{security-serverless}/endpoint-response-actions/response-actions-config.asciidoc[leveloffset=+3]
 
 include::{security-serverless}/cloud-native-security/cloud-native-security-overview.asciidoc[leveloffset=+2]
-// include::{security-serverless}/cloud-native-security/security-posture-management.asciidoc[leveloffset=+3]
+include::{security-serverless}/cloud-native-security/security-posture-management.asciidoc[leveloffset=+3]
 include::{security-serverless}/cloud-native-security/enable-cloudsec.asciidoc[leveloffset=+3]
 include::{security-serverless}/cloud-native-security/cspm.asciidoc[leveloffset=+3]
 include::{security-serverless}/cloud-native-security/cspm-get-started.asciidoc[leveloffset=+4]
@@ -357,7 +357,7 @@ include::{security-serverless}/cloud-native-security/cspm-get-started-azure.asci
 // include::{security-serverless}/cloud-native-security/cspm-findings-page.asciidoc[leveloffset=+4]
 // include::{security-serverless}/cloud-native-security/benchmark-rules.asciidoc[leveloffset=+4]
 // include::{security-serverless}/dashboards/cloud-posture-dashboard-dash.asciidoc[leveloffset=+4]
-// include::{security-serverless}/cloud-native-security/cspm-security-posture-faq.asciidoc[leveloffset=+4]
+include::{security-serverless}/cloud-native-security/cspm-security-posture-faq.asciidoc[leveloffset=+4]
 include::{security-serverless}/cloud-native-security/kspm.asciidoc[leveloffset=+3]
 include::{security-serverless}/cloud-native-security/get-started-with-kspm.asciidoc[leveloffset=+4]
 include::{security-serverless}/cloud-native-security/cspm-findings-page.asciidoc[leveloffset=+4]
