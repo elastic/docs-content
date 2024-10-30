@@ -14,6 +14,23 @@ include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 :obs-badge: <<what-is-observability-serverless,image:images/obs-badge.svg[Observability]>>
 :sec-badge: <<what-is-security-serverless,image:images/sec-badge.svg[Security]>>
 
+:es3: Elasticsearch Serverless
+:project-settings: Project settings
+:manage-app: Management
+:index-manage-app: Index Management
+:data-views-app: Data Views
+:rules-app: Rules
+:saved-objects-app: Saved Objects
+:tags-app: Tags
+:api-keys-app: API keys
+:transforms-app: Transforms
+:connectors-app: Connectors
+:files-app: Files
+:reports-app: Reports
+:maps-app: Maps
+:alerts-app: Alerts
+:serverlessCustomRoles: true
+
 = Serverless
 
 [[intro]]
