@@ -111,7 +111,7 @@ For an example, refer to <DocLink id="enKibanaDataRollups" section="try-it-creat
 
 ### Use {data-sources} with {ccs}
 
-If your {es} clusters are configured for [{ccs}]{(ref}/modules-cross-cluster-search.html),
+If your {es} clusters are configured for [{ccs}]({ref}/modules-cross-cluster-search.html),
 you can create a {data-source} to search across the clusters of your choosing.
 Specify data streams, indices, and aliases in a remote cluster using the
 following syntax:

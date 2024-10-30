@@ -187,26 +187,26 @@ Actions are instantiations of a connector that are linked to rules and run as ba
 ////
 /* {kib} provides the following types of connectors for use with {alert-features} :
 
-- [D3 Security]{(kibana-ref}/d3security-action-type.html)
-- [Email]{(kibana-ref}/email-action-type.html)
-- [Generative AI]{(kibana-ref}/gen-ai-action-type.html)
-- [IBM Resilient]{(kibana-ref}/resilient-action-type.html)
-- [Index]{(kibana-ref}/index-action-type.html)
-- [Jira]{(kibana-ref}/jira-action-type.html)
-- [Microsoft Teams]{(kibana-ref}/teams-action-type.html)
-- [Opsgenie]{(kibana-ref}/opsgenie-action-type.html)
-- [PagerDuty]{(kibana-ref}/pagerduty-action-type.html)
-- [ServerLog]{(kibana-ref}/server-log-action-type.html)
-- [ServiceNow ITSM]{(kibana-ref}/servicenow-action-type.html)
-- [ServiceNow SecOps]{(kibana-ref}/servicenow-sir-action-type.html)
-- [ServiceNow ITOM]{(kibana-ref}/servicenow-itom-action-type.html)
-- [Slack]{(kibana-ref}/slack-action-type.html)
-- [Swimlane]{(kibana-ref}/swimlane-action-type.html)
-- [Tines]{(kibana-ref}/tines-action-type.html)
-- [Torq]{(kibana-ref}/torq-action-type.html)
-- [Webhook]{(kibana-ref}/webhook-action-type.html)
-- [Webhook - Case Management]{(kibana-ref}/cases-webhook-action-type.html)
-- [xMatters]{(kibana-ref}/xmatters-action-type.html) */
+- [D3 Security]({kibana-ref}/d3security-action-type.html)
+- [Email]({kibana-ref}/email-action-type.html)
+- [Generative AI]({kibana-ref}/gen-ai-action-type.html)
+- [IBM Resilient]({kibana-ref}/resilient-action-type.html)
+- [Index]({kibana-ref}/index-action-type.html)
+- [Jira]({kibana-ref}/jira-action-type.html)
+- [Microsoft Teams]({kibana-ref}/teams-action-type.html)
+- [Opsgenie]({kibana-ref}/opsgenie-action-type.html)
+- [PagerDuty]({kibana-ref}/pagerduty-action-type.html)
+- [ServerLog]({kibana-ref}/server-log-action-type.html)
+- [ServiceNow ITSM]({kibana-ref}/servicenow-action-type.html)
+- [ServiceNow SecOps]({kibana-ref}/servicenow-sir-action-type.html)
+- [ServiceNow ITOM]({kibana-ref}/servicenow-itom-action-type.html)
+- [Slack]({kibana-ref}/slack-action-type.html)
+- [Swimlane]({kibana-ref}/swimlane-action-type.html)
+- [Tines]({kibana-ref}/tines-action-type.html)
+- [Torq]({kibana-ref}/torq-action-type.html)
+- [Webhook]({kibana-ref}/webhook-action-type.html)
+- [Webhook - Case Management]({kibana-ref}/cases-webhook-action-type.html)
+- [xMatters]({kibana-ref}/xmatters-action-type.html) */
 ////
 
 // [cols="2"]
@@ -241,7 +241,7 @@ Actions are instantiations of a connector that are linked to rules and run as ba
 
 Some connector types are paid commercial features, while others are free.
 For a comparison of the Elastic subscription levels, go to
-[the subscription page]{(subscriptions}).
+[the subscription page]({subscriptions}).
 
 </DocCallOut> */
 ////

@@ -24,7 +24,7 @@ When the alert recovers, there are no notifications--even if the recovery occurs
 TBD: What RBAC requirements exist in serverless?
 ## Configure access to maintenance windows
 
-To use maintenance windows, you must have the appropriate [subscription]{(subscriptions}) and {kib} feature privileges.
+To use maintenance windows, you must have the appropriate [subscription]({subscriptions}) and {kib} feature privileges.
 
 - To have full access to maintenance windows, you must have `All` privileges for the **Management → Maintenance Windows*** feature.
 - To have view-only access to maintenance windows, you must have `Read` privileges for the **Management → Maintenance Windows* feature.

@@ -26,7 +26,7 @@ Some differences to note between {es3} and self-managed {es}:
 
 * Your logstash-output-elasticsearch configuration uses **API keys** to access {es} from {ls}.
 User-based security settings are ignored and may cause errors.
-* {es3} uses **{dlm} {(dlm-init})** instead of {ilm} {(ilm-init}).
+* {es3} uses **{dlm} ({dlm-init})** instead of {ilm} ({ilm-init}).
 If you add {ilm-init} settings to your {es} output configuration, they are ignored and may cause errors.
 * **{ls} monitoring** for {serverless-short} is available through the https://github.com/elastic/integrations/blob/main/packages/logstash/_dev/build/docs/README.md[{ls} Integration] in https://www.elastic.co/docs/current/serverless/observability/what-is-observability-serverless[Elastic Observability].
 

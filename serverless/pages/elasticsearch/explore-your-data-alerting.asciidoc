@@ -54,7 +54,7 @@ After a rule is created, you can open the action menu (…) and select **Edit ru
 You can also manage rules as resources with the https://registry.terraform.io/providers/elastic/elasticstack/latest[Elasticstack provider] for Terraform.
 For more details, refer to the https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_alerting_rule[elasticstack_kibana_alerting_rule] resource.
 
-// For details on what types of rules are available and how to configure them, refer to [Rule types]{(kibana-ref}/rule-types.html).
+// For details on what types of rules are available and how to configure them, refer to [Rule types]({kibana-ref}/rule-types.html).
 
 // <DocBadge><DocIcon size="s" type="unlink" title="missing link"/> missing link</DocBadge>
 
