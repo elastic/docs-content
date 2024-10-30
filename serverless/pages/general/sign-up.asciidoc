@@ -24,9 +24,9 @@ Each deployment includes Elastic features such as Maps, SIEM, machine learning, 
 
 Serverless projects package Elastic Stack features by type of solution:
 
-* https://www.elastic.co/docs/current/serverless/elasticsearch/what-is-elasticsearch-serverless[Elasticsearch]
-* https://www.elastic.co/docs/current/serverless/observability/what-is-observability-serverless[Observability]
-* https://www.elastic.co/docs/current/serverless/security/what-is-security-serverless[Security]
+* <<what-is-elasticsearch-serverless,Elasticsearch>>
+* <<what-is-observability-serverless,Observability>>
+* <<what-is-security-serverless,Security>>
 
 When you create a project, you select the project type applicable to your use case, so only the relevant and impactful applications and features are easily accessible to you.
 
@@ -63,7 +63,7 @@ To remove limitations, subscribe to https://www.elastic.co/guide/en/cloud/curren
 * Third availability zone for your deployments.
 * Access to additional features, such as cross-cluster search and cross-cluster replication.
 
-You can subscribe to Elastic Cloud at any time during your trial. /serverless/general/serverless-billing[Billing] starts when you subscribe. To maximize the benefits of your trial, subscribe at the end of the free period. To monitor charges, anticipate future costs, and adjust your usage, check your https://www.elastic.co/guide/en/cloud/current/ec-account-usage.html[account usage] and https://www.elastic.co/guide/en/cloud/current/ec-billing-history.html[billing history].
+You can subscribe to Elastic Cloud at any time during your trial. <<general-serverless-billing,Billing>> starts when you subscribe. To maximize the benefits of your trial, subscribe at the end of the free period. To monitor charges, anticipate future costs, and adjust your usage, check your https://www.elastic.co/guide/en/cloud/current/ec-account-usage.html[account usage] and https://www.elastic.co/guide/en/cloud/current/ec-billing-history.html[billing history].
 
 [discrete]
 [[general-sign-up-trial-how-do-i-get-started-with-my-trial]]

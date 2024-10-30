@@ -36,9 +36,11 @@ For example, you can assign a user the developer role for a specific {es-serverl
 [role="screenshot"]
 image::images/individual-role.png[Individual role]
 
-ifeval::["{serverlessCustomRoles}" == "true"]
-You can also optionally https://www.elastic.co/docs/current/serverless/custom-roles[create custom roles in a project].
+ifdef::serverlessCustomRoles[]
+
+You can also optionally <<custom-roles,create custom roles in a project>>.
 To assign a custom role to users, go to "Instance access roles" and select it from the list under the specific project it was created in.
+
 endif::[]
 
 [discrete]

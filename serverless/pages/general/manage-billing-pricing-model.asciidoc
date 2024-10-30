@@ -17,9 +17,9 @@ Elastic Cloud serverless billing is based on your usage across these dimensions:
 
 To learn about billing dimensions for specific offerings, refer to:
 
-* https://www.elastic.co/docs/current/serverless/elasticsearch/elasticsearch-billing[]
-* https://www.elastic.co/docs/current/serverless/observability/observability-billing[]
-* https://www.elastic.co/docs/current/serverless/security/security-billing[]
+* <<elasticsearch-billing>>
+* <<observability-billing>>
+* <<security-billing>>
 
 [discrete]
 [[add-ons]]
