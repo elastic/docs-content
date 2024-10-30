@@ -1,17 +1,19 @@
-[[-serverless-custom-roles]]
+[[custom-roles]]
 = Custom roles
 
 :description: Create and manage roles that grant privileges within your project.
 :keywords: serverless, Elasticsearch, Security
 
-ifeval::["{serverlessCustomRoles}" == "false"]
-coming:[Coming soonundefinedundefined]
-endif::[]
+// ifndef::serverlessCustomRoles[]
+// coming:[]
+// endif::[]
 
-ifeval::["{serverlessCustomRoles}" == "true"]
-preview:[]This content applies to:
+// ifdef::serverlessCustomRoles[]
+preview:[]
 
-The built-in <<assign-user-roles-organization-level-roles,organization-level roles>> and <<assign-user-roles-instance-access-roles,instance access roles>> are great for getting started with {serverless-full}, and for system administrators who do not need more restrictive access.
+This content applies to: {es-badge} {sec-badge}
+
+The built-in <<general-assign-user-roles,organization-level roles>> and <<general-assign-user-roles,instance access roles>> are great for getting started with {serverless-full}, and for system administrators who do not need more restrictive access.
 
 As an administrator, however, you have the ability to create your own roles to describe exactly the kind of access your users should have within a specific project.
 For example, you might create a marketing_user role, which you then assign to all users in your marketing department.
@@ -41,7 +43,7 @@ You cannot assign {ref}/security-privileges.html#_run_as_privilege[run as privil
 ====
 
 [discrete]
-[[-serverless-custom-roles-es-cluster-privileges]]
+[[custom-roles-es-cluster-privileges]]
 == {es} cluster privileges
 
 Cluster privileges grant access to monitoring and management features in {es}.
@@ -55,7 +57,7 @@ image::images/custom-roles-cluster-privileges.png[Create a custom role and defin
 Refer to {ref}/security-privileges.html#privileges-list-cluster[cluster privileges] for a complete description of available options.
 
 [discrete]
-[[-serverless-custom-roles-es-index-privileges]]
+[[custom-roles-es-index-privileges]]
 == {es} index privileges
 
 Each role can grant access to multiple data indices, and each index can have a different set of privileges.
@@ -76,7 +78,7 @@ With field-level security (FLS), you can instruct {es} to grant or deny access t
 // Derived from https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html#adding_cluster_privileges
 
 [discrete]
-[[-serverless-custom-roles-kib-privileges]]
+[[custom-roles-kib-privileges]]
 == {kib} privileges
 
 When you create a custom role, click **Add Kibana privilege** to grant access to specific features.
@@ -110,5 +112,5 @@ As new features are added to {serverless-full}, roles that use the custom option
 
 After your roles are set up, the next step to securing access is to assign roles to your users.
 Click the **Assign roles** link to go to the **Members** tab of the **Organization** page.
-Learn more in <<assign-user-roles>>.
-endif::[]
+Learn more in <<general-assign-user-roles>>.
+// endif::[]

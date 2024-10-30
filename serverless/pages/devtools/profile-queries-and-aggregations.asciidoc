@@ -1,4 +1,4 @@
-[[profile-queries-and-aggregations]]
+[[devtools-profile-queries-and-aggregations]]
 = Search Profiler
 
 :description: Diagnose and debug poorly performing search queries.
@@ -59,7 +59,7 @@ breakdown of low-level methods.
 For more information, refer to {ref}/search-profile.html#profiling-queries[Profiling queries] in the {es} documentation.
 
 [discrete]
-[[profile-queries-and-aggregations-filter-for-an-index-or-type]]
+[[devtools-profile-queries-and-aggregations-filter-for-an-index-or-type]]
 == Filter for an index or type
 
 By default, all queries executed by the **{searchprofiler}** are sent

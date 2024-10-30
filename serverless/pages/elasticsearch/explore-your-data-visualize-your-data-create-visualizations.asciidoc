@@ -1,4 +1,4 @@
-[role="exclude",id="explore-your-data-visualizations"]
+[role="exclude",id="elasticsearch-explore-your-data-visualizations"]
 = Create visualizations
 
 :description: Create charts, graphs, maps, and more from your {es} data.
@@ -7,10 +7,10 @@
 preview:[]
 
 Learn how to create some visualization panels to add to your dashboard.
-This tutorial uses the same web logs sample data from <<explore-your-data-dashboards,Create dashboards>>.
+This tutorial uses the same web logs sample data from <<elasticsearch-explore-your-data-dashboards,Create dashboards>>.
 
 [discrete]
-[[explore-your-data-visualizations-open-the-visualization-editor-and-get-familiar-with-the-data]]
+[[elasticsearch-explore-your-data-visualizations-open-the-visualization-editor-and-get-familiar-with-the-data]]
 == Open the visualization editor and get familiar with the data
 
 Once you have loaded the web logs sample data into your dashboard lets open the visualization editor, to ensure the correct fields appear.
@@ -29,7 +29,7 @@ To create the visualizations in this tutorial, you'll use the following fields:
 To see the most frequent values in a field, hover over the field name, then click _i_.
 
 [discrete]
-[[explore-your-data-visualizations-create-your-first-visualization]]
+[[elasticsearch-explore-your-data-visualizations-create-your-first-visualization]]
 == Create your first visualization
 
 Pick a field you want to analyze, such as **clientip**. To analyze only the **clientip** field, use the **Metric** visualization to display the field as a number.
@@ -50,7 +50,7 @@ b. Click **Close**.
 **[No Title]** appears in the visualization panel header. Since the visualization has its own `Unique visitors` label, you do not need to add a panel title.
 
 [discrete]
-[[explore-your-data-visualizations-view-a-metric-over-time]]
+[[elasticsearch-explore-your-data-visualizations-view-a-metric-over-time]]
 == View a metric over time
 
 There are two shortcuts you can use to view metrics over time.
@@ -90,7 +90,7 @@ Since you removed the axis labels, add a panel title:
 . In the **Title** field, enter `Median of bytes`, then click **Apply**.
 
 [discrete]
-[[explore-your-data-visualizations-view-the-top-values-of-a-field]]
+[[elasticsearch-explore-your-data-visualizations-view-the-top-values-of-a-field]]
 == View the top values of a field
 
 Create a visualization that displays the most frequent values of **request.keyword** on your website, ranked by the unique visitors. To create the visualization, use **Top values of request.keyword** ranked by **Unique count of clientip**, instead of being ranked by **Count of records**.
@@ -121,7 +121,7 @@ c. Click **Close**.
 Since the table columns are labeled, you do not need to add a panel title.
 
 [discrete]
-[[explore-your-data-visualizations-compare-a-subset-of-documents-to-all-documents]]
+[[elasticsearch-explore-your-data-visualizations-compare-a-subset-of-documents-to-all-documents]]
 == Compare a subset of documents to all documents
 
 Create a proportional visualization that helps you determine if your users transfer more bytes from documents under 10KB versus documents over 10KB.
@@ -161,7 +161,7 @@ Add a panel title:
 . In the **Title** field, enter `Sum of bytes from large requests`, then click **Apply**.
 
 [discrete]
-[[explore-your-data-visualizations-view-the-distribution-of-a-number-field]]
+[[elasticsearch-explore-your-data-visualizations-view-the-distribution-of-a-number-field]]
 == View the distribution of a number field
 
 The distribution of a number can help you find patterns. For example, you can analyze the website traffic per hour to find the best time for routine maintenance.
@@ -185,7 +185,7 @@ Add a panel title:
 . In the **Title** field, enter `Website traffic`, then click **Apply**.
 
 [discrete]
-[[explore-your-data-visualizations-create-a-multi-level-chart]]
+[[elasticsearch-explore-your-data-visualizations-create-a-multi-level-chart]]
 == Create a multi-level chart
 
 **Table** and **Proportion** visualizations support multiple functions. For example, to create visualizations that break down the data by website traffic sources and user geography, apply the **Filters** and **Top values** functions.
@@ -232,13 +232,13 @@ Add a panel title:
 . In the **Title** field, enter `Page views by location and referrer`, then click **Apply**.
 
 [discrete]
-[[explore-your-data-visualizations-visualization-panels]]
+[[elasticsearch-explore-your-data-visualizations-visualization-panels]]
 == Visualization panels
 
 Visualization panels are how you display visualizations of your data and what make Kibana such a useful tool. Panels are designed to build interactive dashboards.
 
 [discrete]
-[[explore-your-data-visualizations-create-and-add-panels]]
+[[elasticsearch-explore-your-data-visualizations-create-and-add-panels]]
 === Create and add panels
 
 Create new panels, which can be accessed from the dashboard toolbar or the **Visualize Library**, or add panels that are saved in the **Visualize Library**, or search results from <<save-your-search,**Discover**>>.
@@ -268,13 +268,13 @@ To add existing panels from the **Visualize Library**:
 . Click the panel you want to add to the dashboard, then click _X_.
 
 [discrete]
-[[explore-your-data-visualizations-save-panels]]
+[[elasticsearch-explore-your-data-visualizations-save-panels]]
 === Save panels
 
 Consider where you want to save and add the panel in {kib}.
 
 [discrete]
-[[explore-your-data-visualizations-save-to-the-visualize-library]]
+[[elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library]]
 ==== Save to the Visualize Library
 
 To use the panel on other dashboards, save the panel to the **Visualize Library**. When panels are saved in the **Visualize Library**, image:images/icons/folderCheck.svg[Visualize Library] appears in the panel header.
@@ -292,7 +292,7 @@ If you created the panel from the **Visualize Library**:
 . Click **Save**.
 
 [discrete]
-[[explore-your-data-visualizations-save-to-the-dashboard]]
+[[elasticsearch-explore-your-data-visualizations-save-to-the-dashboard]]
 ==== Save to the dashboard
 
 Return to the dashboard and add the panel without specifying the save options or adding the panel to the **Visualize Library**.
@@ -315,7 +315,7 @@ To add unsaved panels to the **Visualize Library**:
 . Enter the panel title, then click **Save**.
 
 [discrete]
-[[explore-your-data-visualizations-arrange-panels]]
+[[elasticsearch-explore-your-data-visualizations-arrange-panels]]
 === Arrange panels
 
 Compare the data in your panels side-by-side, organize panels by priority, resize the panels so they all appear on the dashboard without scrolling down, and more.
@@ -327,7 +327,7 @@ In the toolbar, click **Edit**, then use the following options:
 * To maximize to fullscreen, open the panel menu, then click **More → Maximize panel**.
 
 [discrete]
-[[explore-your-data-visualizations-add-text-panels]]
+[[elasticsearch-explore-your-data-visualizations-add-text-panels]]
 === Add text panels
 
 Add **Text** panels to your dashboard that display important information, instructions, and more. You create **Text** panels using https://github.github.com/gfm/[GitHub-flavored Markdown] text.
@@ -338,7 +338,7 @@ Add **Text** panels to your dashboard that display important information, instru
 . To save the new text panel to your dashboard click **Save**.
 
 [discrete]
-[[explore-your-data-visualizations-add-image-panels]]
+[[elasticsearch-explore-your-data-visualizations-add-image-panels]]
 === Add image panels
 
 To personalize your dashboards, add your own logos and graphics with the **Image** panel. You can upload images from your computer, or add images from an external link.

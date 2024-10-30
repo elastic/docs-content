@@ -1,4 +1,4 @@
-[[knn-search]]
+[[elasticsearch-knn-search]]
 = k-nearest neighbor (kNN) search
 
 :description: Vector search with k-nearest neighbor (kNN).
@@ -16,7 +16,7 @@ Common use cases for kNN include:
 * Similarity search for images or videos
 
 [discrete]
-[[knn-search-prerequisites]]
+[[elasticsearch-knn-search-prerequisites]]
 == Prerequisites
 
 * To run a kNN search, you must be able to convert your data into meaningful
@@ -36,7 +36,7 @@ based on a similarity metric, the better its match.
 ** `read` to search the index
 
 [discrete]
-[[knn-search-knn-methods]]
+[[elasticsearch-knn-search-knn-methods]]
 == kNN methods
 
 {es} supports two methods for kNN search:
@@ -58,7 +58,7 @@ filter your data to a small subset of documents, you can get good search
 performance using this approach.
 
 [discrete]
-[[knn-search-approximate-knn]]
+[[elasticsearch-knn-search-approximate-knn]]
 == Approximate kNN
 
 To run an approximate kNN search, use the {ref}/knn-search.html#approximate-knn[`knn` option]
@@ -162,7 +162,7 @@ the similarity between the query and document vector. See
 search scores are computed.
 
 [discrete]
-[[knn-search-tune-approximate-knn-for-speed-or-accuracy]]
+[[elasticsearch-knn-search-tune-approximate-knn-for-speed-or-accuracy]]
 === Tune approximate kNN for speed or accuracy
 
 To gather results, the kNN search API finds a `num_candidates` number of
@@ -268,7 +268,7 @@ curl -X POST "${ES_URL}/byte-image-index/_search" \
 // TEST[s/"num_candidates": 100/"num_candidates": 3/]
 
 [discrete]
-[[knn-search-filtered-knn-search]]
+[[elasticsearch-knn-search-filtered-knn-search]]
 === Filtered kNN search
 
 The kNN search API supports restricting the search using a filter. The search
@@ -313,7 +313,7 @@ returns fewer than k results, even when there are enough matching documents.
 ====
 
 [discrete]
-[[knn-search-combine-approximate-knn-with-other-features]]
+[[elasticsearch-knn-search-combine-approximate-knn-with-other-features]]
 === Combine approximate kNN with other features
 
 You can perform 'hybrid retrieval' by providing both the
@@ -361,14 +361,14 @@ each score in the sum. In the example above, the scores will be calculated as
 score = 0.9 * match_score + 0.1 * knn_score
 ----
 
-The `knn` option can also be used with <<explore-your-data-aggregations,`aggregations`>>.
+The `knn` option can also be used with <<elasticsearch-explore-your-data-aggregations,`aggregations`>>.
 In general, {es} computes aggregations over all documents that match the search.
 So for approximate kNN search, aggregations are calculated on the top `k`
 nearest documents. If the search also includes a `query`, then aggregations are
 calculated on the combined set of `knn` and `query` matches.
 
 [discrete]
-[[knn-search-perform-semantic-search]]
+[[elasticsearch-knn-search-perform-semantic-search]]
 === Perform semantic search
 
 kNN search enables you to perform semantic search by using a previously deployed
@@ -431,7 +431,7 @@ embeddings, refer to this
 {ml-docs}/ml-nlp-text-emb-vector-search-example.html[end-to-end example].
 
 [discrete]
-[[knn-search-search-multiple-knn-fields]]
+[[elasticsearch-knn-search-search-multiple-knn-fields]]
 === Search multiple kNN fields
 
 In addition to 'hybrid retrieval', you can search more than one kNN vector field at a time:
@@ -486,7 +486,7 @@ score = 0.9 * match_score + 0.1 * knn_score_image-vector + 0.5 * knn_score_title
 ----
 
 [discrete]
-[[knn-search-search-knn-with-expected-similarity]]
+[[elasticsearch-knn-search-search-knn-with-expected-similarity]]
 === Search kNN with expected similarity
 
 While kNN is a powerful tool, it always tries to return `k` nearest neighbors. Consequently, when using `knn` with
@@ -973,7 +973,7 @@ curl -X PUT "${ES_URL}/image-index" \
 ----
 
 [discrete]
-[[knn-search-limitations-for-approximate-knn-search]]
+[[elasticsearch-knn-search-limitations-for-approximate-knn-search]]
 === Limitations for approximate kNN search
 
 {es} uses the https://arxiv.org/abs/1603.09320[HNSW algorithm] to support

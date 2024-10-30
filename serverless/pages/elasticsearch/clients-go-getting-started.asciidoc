@@ -1,4 +1,4 @@
-[[go-client-getting-started]]
+[[elasticsearch-go-client-getting-started]]
 = Get started with the serverless Go Client
 
 :description: Set up and use the Go client for {es3}.
@@ -11,17 +11,17 @@ client for {es3}, shows you how to initialize the client, and how to perform bas
 {es} operations with it.
 
 [discrete]
-[[go-client-getting-started-requirements]]
+[[elasticsearch-go-client-getting-started-requirements]]
 == Requirements
 
 * Go 1.20 or higher installed on your system.
 
 [discrete]
-[[go-client-getting-started-installation]]
+[[elasticsearch-go-client-getting-started-installation]]
 == Installation
 
 [discrete]
-[[go-client-getting-started-using-the-command-line]]
+[[elasticsearch-go-client-getting-started-using-the-command-line]]
 === Using the command line
 
 You can install the Go client with the following
@@ -33,7 +33,7 @@ go get -u github.com/elastic/elasticsearch-serverless-go@latest
 ----
 
 [discrete]
-[[go-client-getting-started-imports]]
+[[elasticsearch-go-client-getting-started-imports]]
 == Imports
 
 The following snippets use these imports:
@@ -54,7 +54,7 @@ import (
 ----
 
 [discrete]
-[[go-client-getting-started-initialize-the-client]]
+[[elasticsearch-go-client-getting-started-initialize-the-client]]
 == Initialize the client
 
 Initialize the client using your API key and Elasticsearch Endpoint:
@@ -70,10 +70,10 @@ if err != nil {
 }
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<get-started>>.
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
-[[go-client-getting-started-using-the-api]]
+[[elasticsearch-go-client-getting-started-using-the-api]]
 == Using the API
 
 After you've initialized the client, you can start ingesting documents. You can
@@ -81,7 +81,7 @@ use the `bulk` API for this. This API enables you to index, update, and delete
 several documents in one request.
 
 [discrete]
-[[go-client-getting-started-creating-an-index-and-ingesting-documents]]
+[[elasticsearch-go-client-getting-started-creating-an-index-and-ingesting-documents]]
 === Creating an index and ingesting documents
 
 You can call the `bulk` API with a body parameter, an array of hashes that
@@ -130,7 +130,7 @@ response object. You can access the body values directly as seen on
 the previous example with `bulkRes`.
 
 [discrete]
-[[go-client-getting-started-getting-documents]]
+[[elasticsearch-go-client-getting-started-getting-documents]]
 === Getting documents
 
 You can get documents by using the following code:
@@ -149,7 +149,7 @@ fmt.Printf("Get book: %#v\n", book)
 ----
 
 [discrete]
-[[go-client-getting-started-searching]]
+[[elasticsearch-go-client-getting-started-searching]]
 === Searching
 
 Now that some data is available, you can search your documents using the
@@ -177,7 +177,7 @@ fmt.Printf("Search books: %#v\n", bookSearch)
 ----
 
 [discrete]
-[[go-client-getting-started-updating-a-document]]
+[[elasticsearch-go-client-getting-started-updating-a-document]]
 === Updating a document
 
 You can call the `Update` API to update a document, in this example updating the
@@ -202,7 +202,7 @@ if updateRes.Result == result.Updated {
 ----
 
 [discrete]
-[[go-client-getting-started-deleting-a-document]]
+[[elasticsearch-go-client-getting-started-deleting-a-document]]
 === Deleting a document
 
 You can call the `Delete` API to delete a document:
@@ -220,7 +220,7 @@ if deleteRes.Result == result.Deleted {
 ----
 
 [discrete]
-[[go-client-getting-started-deleting-an-index]]
+[[elasticsearch-go-client-getting-started-deleting-an-index]]
 === Deleting an index
 
 [source,go]

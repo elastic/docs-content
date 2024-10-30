@@ -1,4 +1,4 @@
-[[manage-billing]]
+[[general-manage-billing]]
 = Manage billing of your organization
 
 :description: Configure the billing details of your organization.
@@ -23,10 +23,10 @@ You can manage the billing details of your organization directly from the Elasti
 
 From the **Billing pages**, you can perform the following tasks:
 
-* <<check-subscription,Check your subscription overview>>
-* <<monitor-usage,Monitor and analyze your account usage>>
-* <<billing-history,Check your billing history>>
+* <<general-check-subscription,Check your subscription overview>>
+* <<general-monitor-usage,Monitor and analyze your account usage>>
+* <<general-billing-history,Check your billing history>>
 
-If you have a project that you're no longer using, refer to <<billing-stop-project,Stop charges for a project>>.
+If you have a project that you're no longer using, refer to <<general-billing-stop-project,Stop charges for a project>>.
 
-To learn about the serverless pricing model, refer to <<serverless-billing,Serverless billing dimensions>> and our https://www.elastic.co/pricing/serverless-search[pricing page].
+To learn about the serverless pricing model, refer to <<general-serverless-billing,Serverless billing dimensions>> and our https://www.elastic.co/pricing/serverless-search[pricing page].

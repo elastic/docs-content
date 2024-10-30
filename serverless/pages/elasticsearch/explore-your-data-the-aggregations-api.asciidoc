@@ -1,4 +1,4 @@
-[[explore-your-data-aggregations]]
+[[elasticsearch-explore-your-data-aggregations]]
 = Aggregations
 
 :description: Aggregate and summarize your {es} data.
@@ -27,7 +27,7 @@ or other criteria.
 other aggregations instead of documents or fields.
 
 [discrete]
-[[explore-your-data-aggregations-run-an-aggregation]]
+[[elasticsearch-explore-your-data-aggregations-run-an-aggregation]]
 == Run an aggregation
 
 You can run aggregations as part of a search by specifying the search API's `aggs` parameter. The
@@ -86,7 +86,7 @@ Aggregation results are in the response's `aggregations` object:
 <1> Results for the `my-agg-name` aggregation.
 
 [discrete]
-[[explore-your-data-aggregations-change-an-aggregations-scope]]
+[[elasticsearch-explore-your-data-aggregations-change-an-aggregations-scope]]
 == Change an aggregation's scope
 
 Use the `query` parameter to limit the documents on which an aggregation runs:
@@ -122,7 +122,7 @@ curl "${ES_URL}/my-index/_search?pretty" \
 // TEST[s/my-field/http.request.method/]
 
 [discrete]
-[[explore-your-data-aggregations-return-only-aggregation-results]]
+[[elasticsearch-explore-your-data-aggregations-return-only-aggregation-results]]
 == Return only aggregation results
 
 By default, searches containing an aggregation return both search hits and
@@ -152,7 +152,7 @@ curl "${ES_URL}/my-index/_search?pretty" \
 // TEST[s/my-field/http.request.method/]
 
 [discrete]
-[[explore-your-data-aggregations-run-multiple-aggregations]]
+[[elasticsearch-explore-your-data-aggregations-run-multiple-aggregations]]
 == Run multiple aggregations
 
 You can specify multiple aggregations in the same request:
@@ -187,7 +187,7 @@ curl "${ES_URL}/my-index/_search?pretty" \
 // TEST[s/my-other-field/http.response.bytes/]
 
 [discrete]
-[[explore-your-data-aggregations-run-sub-aggregations]]
+[[elasticsearch-explore-your-data-aggregations-run-sub-aggregations]]
 == Run sub-aggregations
 
 Bucket aggregations support bucket or metric sub-aggregations. For example, a
@@ -263,7 +263,7 @@ The response nests sub-aggregation results under their parent aggregation:
 <2> Results for `my-agg-name`'s sub-aggregation, `my-sub-agg-name`.
 
 [discrete]
-[[explore-your-data-aggregations-add-custom-metadata]]
+[[elasticsearch-explore-your-data-aggregations-add-custom-metadata]]
 == Add custom metadata
 
 Use the `meta` object to associate custom metadata with an aggregation:
@@ -315,7 +315,7 @@ The response returns the `meta` object in place:
 // TESTRESPONSE[s/\.\.\./"took": "$body.took", "timed_out": false, "_shards": "$body._shards", "hits": "$body.hits",/]
 
 [discrete]
-[[explore-your-data-aggregations-return-the-aggregation-type]]
+[[elasticsearch-explore-your-data-aggregations-return-the-aggregation-type]]
 == Return the aggregation type
 
 By default, aggregation results include the aggregation's name but not its type.
@@ -377,7 +377,7 @@ the aggregated field.
 <1> The aggregation type, `histogram`, followed by a `#` separator and the aggregation's name, `my-agg-name`.
 
 [discrete]
-[[explore-your-data-aggregations-use-scripts-in-an-aggregation]]
+[[elasticsearch-explore-your-data-aggregations-use-scripts-in-an-aggregation]]
 == Use scripts in an aggregation
 
 When a field doesn't exactly match the aggregation you need, you
@@ -417,13 +417,13 @@ some of their optimizations with runtime fields. In total, performance costs
 for using a runtime field varies from aggregation to aggregation.
 
 [discrete]
-[[explore-your-data-aggregations-aggregation-caches]]
+[[elasticsearch-explore-your-data-aggregations-aggregation-caches]]
 == Aggregation caches
 
 For faster responses, {es} caches the results of frequently run aggregations in
 the {ref}/shard-request-cache.html[shard request cache]. To get cached results, use the
 same {ref}/search-shard-routing.html#shard-and-node-preference[`preference` string] for each search. If you
-don't need search hits, <<explore-your-data-aggregations-return-only-aggregation-results,set `size` to `0`>> to avoid
+don't need search hits, <<elasticsearch-explore-your-data-aggregations-return-only-aggregation-results,set `size` to `0`>> to avoid
 filling the cache.
 
 {es} routes searches with the same preference string to the same shards. If the
@@ -431,7 +431,7 @@ shards' data doesn't change between searches, the shards return cached
 aggregation results.
 
 [discrete]
-[[explore-your-data-aggregations-limits-for-long-values]]
+[[elasticsearch-explore-your-data-aggregations-limits-for-long-values]]
 == Limits for `long` values
 
 When running aggregations, {es} uses {ref}/number.html[`double`] values to hold and

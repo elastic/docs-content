@@ -1,4 +1,4 @@
-[[manage-project-with-api]]
+[[general-manage-project-with-api]]
 = Using the Project Management REST API
 
 :description: Manage your organization's serverless projects using the REST API.
@@ -14,7 +14,7 @@ More APIs let you interact with data, capabilities, and settings inside of speci
 ====
 
 [discrete]
-[[manage-project-with-api-api-principles]]
+[[general-manage-project-with-api-api-principles]]
 == API Principles
 
 * The Elastic Cloud REST API is built following REST principles:
@@ -25,7 +25,7 @@ More APIs let you interact with data, capabilities, and settings inside of speci
 * JSON is the data interchange format.
 
 [discrete]
-[[manage-project-with-api-authentication]]
+[[general-manage-project-with-api-authentication]]
 == Authentication
 
 API keys are used to authenticate requests to the Elastic Cloud REST API.
@@ -46,7 +46,7 @@ curl -H "Authorization: ApiKey essu_..." https://api.elastic-cloud.com/api/v1/se
 ----
 
 [discrete]
-[[manage-project-with-api-open-api-specification]]
+[[general-manage-project-with-api-open-api-specification]]
 == Open API Specification
 
 The Project Management API is documented using the https://en.wikipedia.org/wiki/OpenAPI_Specification[OpenAPI Specification]. The current supported version of the specification is `3.0`.
@@ -56,7 +56,7 @@ For details, check the https://www.elastic.co/docs/api/doc/elastic-cloud-serverl
 This specification can be used to generate client SDKs, or on tools that support it, such as the https://editor.swagger.io[Swagger Editor].
 
 [discrete]
-[[manage-project-with-api-examples]]
+[[general-manage-project-with-api-examples]]
 == Examples
 
 To try the examples in this section:
@@ -70,7 +70,7 @@ export API_KEY="YOUR_GENERATED_API_KEY"
 ----
 
 [discrete]
-[[manage-project-with-api-create-a-serverless-elasticsearch-project]]
+[[general-manage-project-with-api-create-a-serverless-elasticsearch-project]]
 === Create a serverless Elasticsearch project
 
 [source,bash]
@@ -86,7 +86,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
 
 <1> Replace **`My project`** with a more descriptive name in this call.
 
-<2> You can <<manage-project-with-api-list-available-regions,obtain a list of available regions>>.
+<2> You can <<general-manage-project-with-api-list-available-regions,obtain a list of available regions>>.
 
 The response from the create project request will include the created project details, such as the project ID,
 the credentials to access the project, and the endpoints to access different apps such as Elasticsearch and Kibana.
@@ -117,7 +117,7 @@ export PROJECT_ID=cace8e65457043698ed3d99da2f053f6
 ----
 
 [discrete]
-[[manage-project-with-api-get-project]]
+[[general-manage-project-with-api-get-project]]
 === Get project
 
 You can retrieve your project details through an API call:
@@ -129,7 +129,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
 ----
 
 [discrete]
-[[manage-project-with-api-get-project-status]]
+[[general-manage-project-with-api-get-project-status]]
 === Get project status
 
 The 'status' endpoint indicates whether the project is initialized and ready to be used. In the response, the project's `phase` will change from "initializing" to "initialized" when it is ready:
@@ -150,7 +150,7 @@ Example response:
 ----
 
 [discrete]
-[[manage-project-with-api-reset-credentials]]
+[[general-manage-project-with-api-reset-credentials]]
 === Reset Credentials
 
 If you lose the credentials provided at the time of the project creation, you can reset the credentials by using the following endpoint:
@@ -163,7 +163,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
 ----
 
 [discrete]
-[[manage-project-with-api-delete-project]]
+[[general-manage-project-with-api-delete-project]]
 === Delete Project
 
 You can delete your project via the API:
@@ -175,7 +175,7 @@ curl -XDELETE -H "Authorization: ApiKey $API_KEY" \
 ----
 
 [discrete]
-[[manage-project-with-api-update-project]]
+[[general-manage-project-with-api-update-project]]
 === Update Project
 
 You can update your project using a PATCH request. Only the fields included in the body of the request will be updated.
@@ -192,7 +192,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
 ----
 
 [discrete]
-[[manage-project-with-api-list-available-regions]]
+[[general-manage-project-with-api-list-available-regions]]
 === List available regions
 
 You can obtain the list of regions where projects can be created using the API:

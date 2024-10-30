@@ -1,4 +1,4 @@
-[[assign-user-roles]]
+[[general-assign-user-roles]]
 = Assign user roles and privileges
 
 :description: Manage the predefined set of roles and privileges for all your projects.
@@ -8,21 +8,21 @@ preview:[]
 
 Within an organization, users can have one or more roles and each role grants specific privileges.
 
-You must assign user roles when you <<manage-access-to-organization,invite users to join your organization>>.
+You must assign user roles when you <<general-manage-access-to-organization,invite users to join your organization>>.
 To subsequently edit the roles assigned to a user:
 
 . Go to the user icon on the header bar and select **Organization**.
 . Find the user on the **Members** tab of the **Organization** page. Click the member name to view and edit its roles.
 
 [discrete]
-[[assign-user-roles-organization-level-roles]]
+[[general-assign-user-roles-organization-level-roles]]
 == Organization-level roles
 
 * **Organization owner**. Can manage all roles under the organization and has full access to all serverless projects, organization-level details, billing details, and subscription levels. This role is assigned by default to the person who created the organization.
 * **Billing admin**. Has access to all invoices and payment methods. Can make subscription changes.
 
 [discrete]
-[[assign-user-roles-instance-access-roles]]
+[[general-assign-user-roles-instance-access-roles]]
 == Instance access roles
 
 Each serverless project type has a set of predefined roles that you can assign to your organization members.
@@ -42,7 +42,7 @@ To assign a custom role to users, go to "Instance access roles" and select it fr
 endif::[]
 
 [discrete]
-[[assign-user-roles-es]]
+[[general-assign-user-roles-es]]
 === {es}
 
 * **Admin**. Has full access to project management, properties, and security privileges. Admins log into projects with superuser role privileges.
@@ -50,7 +50,7 @@ endif::[]
 * **Viewer**. Has read-only access to project details, data, and features.
 
 [discrete]
-[[assign-user-roles-observability]]
+[[general-assign-user-roles-observability]]
 === {observability}
 
 * **Admin**. Has full access to project management, properties, and security privileges. Admins log into projects with superuser role privileges.
@@ -58,7 +58,7 @@ endif::[]
 * **Viewer**. Has read-only access to project details, data, and features.
 
 [discrete]
-[[assign-user-roles-security]]
+[[general-assign-user-roles-security]]
 === {security}
 
 * **Admin**. Has full access to project management, properties, and security privileges. Admins log into projects with superuser role privileges.

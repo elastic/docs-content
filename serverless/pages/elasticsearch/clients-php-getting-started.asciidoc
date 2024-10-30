@@ -1,4 +1,4 @@
-[[php-client-getting-started]]
+[[elasticsearch-php-client-getting-started]]
 = Get started with the serverless PHP client
 
 :description: Set up and use the PHP client for {es3}.
@@ -11,17 +11,17 @@ PHP client for {es3}, shows you how to initialize the client, and how to perform
 {es} operations with it.
 
 [discrete]
-[[php-client-getting-started-requirements]]
+[[elasticsearch-php-client-getting-started-requirements]]
 == Requirements
 
 * PHP 8.0 or higher installed on your system.
 
 [discrete]
-[[php-client-getting-started-installation]]
+[[elasticsearch-php-client-getting-started-installation]]
 == Installation
 
 [discrete]
-[[php-client-getting-started-using-the-command-line]]
+[[elasticsearch-php-client-getting-started-using-the-command-line]]
 === Using the command line
 
 You can install the PHP client using
@@ -33,7 +33,7 @@ composer require elastic/elasticsearch-serverless
 ----
 
 [discrete]
-[[php-client-getting-started-initialize-the-client]]
+[[elasticsearch-php-client-getting-started-initialize-the-client]]
 == Initialize the client
 
 Initialize the client using your API key and Elasticsearch Endpoint:
@@ -50,10 +50,10 @@ $client = ClientBuilder::create()
   ->build();
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<get-started>>.
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
-[[php-client-getting-started-using-the-api]]
+[[elasticsearch-php-client-getting-started-using-the-api]]
 == Using the API
 
 After you've initialized the client, you can start ingesting documents. You can
@@ -61,7 +61,7 @@ use the `bulk` API for this. This API enables you to index, update, and delete
 several documents in one request.
 
 [discrete]
-[[php-client-getting-started-creating-an-index-and-ingesting-documents]]
+[[elasticsearch-php-client-getting-started-creating-an-index-and-ingesting-documents]]
 === Creating an index and ingesting documents
 
 You can call the `bulk` API with a body parameter, an array of actions (index)
@@ -138,7 +138,7 @@ var_dump($response->asBool());   // true if HTTP response code between 200 and 3
 ----
 
 [discrete]
-[[php-client-getting-started-getting-documents]]
+[[elasticsearch-php-client-getting-started-getting-documents]]
 === Getting documents
 
 You can get documents by using the following code:
@@ -149,7 +149,7 @@ $response = $client->get(index: "books", id: $id);
 ----
 
 [discrete]
-[[php-client-getting-started-searching]]
+[[elasticsearch-php-client-getting-started-searching]]
 === Searching
 
 You can search your documents using the `search` API:
@@ -170,7 +170,7 @@ https://www.elastic.co/docs/api/doc/elasticsearch-serverless/group/endpoint-sear
 docs.
 
 [discrete]
-[[php-client-getting-started-updating-documents]]
+[[elasticsearch-php-client-getting-started-updating-documents]]
 === Updating documents
 
 You can call the `update` API to update a document:
@@ -185,7 +185,7 @@ printf("Operation result: %s\n", $response['result']); # You get 'updated' as a 
 ----
 
 [discrete]
-[[php-client-getting-started-deleting-documents]]
+[[elasticsearch-php-client-getting-started-deleting-documents]]
 === Deleting documents
 
 You can call the `delete` API to delete a document:
@@ -198,7 +198,7 @@ printf("Operation result: %s\n", $response['result']); # You get "deleted" a as 
 ----
 
 [discrete]
-[[php-client-getting-started-deleting-an-index]]
+[[elasticsearch-php-client-getting-started-deleting-an-index]]
 === Deleting an index
 
 You can delete an entire index as follows:

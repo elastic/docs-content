@@ -1,4 +1,4 @@
-[[kibana-api-conventions]]
+[[elasticsearch-kibana-api-conventions]]
 = Management API conventions
 
 :description: The Management APIs for {serverless-short} have request header conventions.
@@ -32,7 +32,7 @@ GET kbn:/api/data_views
 Check out https://www.elastic.co/docs/current/serverless/devtools/run-api-requests-in-the-console[].
 
 [discrete]
-[[kibana-api-conventions-request-headers]]
+[[elasticsearch-kibana-api-conventions-request-headers]]
 == Request headers
 
 When you call Management APIs outside of the Console, you must provide a request header.

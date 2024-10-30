@@ -1,4 +1,4 @@
-[[billing-stop-project]]
+[[general-billing-stop-project]]
 = Stop charges for a project
 
 :description: How to stop charges for a project.

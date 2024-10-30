@@ -66,19 +66,19 @@ Detect, investigate, and respond to threats with Elastic Security.
 |===
 |
 
-a| <<manage-access-to-organization,*Invite your team*>>
+a| <<general-manage-access-to-organization,*Invite your team*>>
 Invite new members to your organization.
 
-a| <<assign-user-roles,*Assign user roles and privileges*>>
+a| <<general-assign-user-roles,*Assign user roles and privileges*>>
 Assign user roles and privileges to members in your organization.
 
-a| <<manage-project,*Manage your projects*>>
+a| <<elasticsearch-manage-project,*Manage your projects*>>
 Manage your project data, search power, and more.
 
-a| <<check-subscription,*Check your subscription overview*>>
+a| <<general-check-subscription,*Check your subscription overview*>>
 View the details about your subscription.
 
-a| <<monitor-usage,*Monitor and analyze your account usage*>>
+a| <<general-monitor-usage,*Monitor and analyze your account usage*>>
 Check past and current usage for your projects.
 
 a| <<project-settings,*Manage your project settings*>>

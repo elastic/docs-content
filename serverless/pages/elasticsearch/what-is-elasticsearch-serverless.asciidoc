@@ -12,21 +12,21 @@ Elasticsearch allows you to build custom applications. Whether you have structur
 .Understanding Elasticsearch on serverless
 [IMPORTANT]
 ====
-Refer to <<differences,Serverless differences>> and <<technical-preview-limitations,Technical preview limitations>> for important details, including features and limitations specific to {es} on serverless.
+Refer to <<elasticsearch-differences,Serverless differences>> and <<elasticsearch-technical-preview-limitations,Technical preview limitations>> for important details, including features and limitations specific to {es} on serverless.
 ====
 
 [discrete]
 == Get started
 
-* <<get-started,*Create your Elasticsearch project*>>: Create your first Elasticsearch project.
-* <<ingest-your-data,*Ingest your data*>>: Learn how to get your data into Elasticsearch.
+* <<elasticsearch-get-started,*Create your Elasticsearch project*>>: Create your first Elasticsearch project.
+* <<elasticsearch-ingest-your-data,*Ingest your data*>>: Learn how to get your data into Elasticsearch.
 
 [discrete]
 == How to
 
-* <<search-your-data,*Search your data*>>: Build your queries to perform and combine many types of searches.
-* <<explore-your-data,*Explore your data*>>: Search, filter your data, and display your findings.
-* <<explore-your-data-alerting,*Manage alerts*>>: Create rules to detect complex conditions and trigger alerts.
-* <<dev-tools,*Use developer tools*>>: Send requests with Console and profile queries with Search Profiler.
-* <<manage-project,*Manage your project*>>: Manage user access, billing, and check performance metrics.
+* <<elasticsearch-search-your-data,*Search your data*>>: Build your queries to perform and combine many types of searches.
+* <<elasticsearch-explore-your-data,*Explore your data*>>: Search, filter your data, and display your findings.
+* <<elasticsearch-explore-your-data-alerting,*Manage alerts*>>: Create rules to detect complex conditions and trigger alerts.
+* <<elasticsearch-dev-tools,*Use developer tools*>>: Send requests with Console and profile queries with Search Profiler.
+* <<elasticsearch-manage-project,*Manage your project*>>: Manage user access, billing, and check performance metrics.
 

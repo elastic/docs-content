@@ -1,4 +1,4 @@
-[[explore-your-data-alerting]]
+[[elasticsearch-explore-your-data-alerting]]
 = Manage alerting rules
 
 :description: Define when to generate alerts and notifications with alerting rules.
@@ -34,7 +34,7 @@ For more information, go to <DocBadge><DocIcon size="s" type="unlink" title="mis
 ////
 
 [discrete]
-[[explore-your-data-alerting-create-and-edit-rules]]
+[[elasticsearch-explore-your-data-alerting-create-and-edit-rules]]
 == Create and edit rules
 
 When you click the **Create rule** button, it launches a flyout that guides you through selecting a rule type and configuring its conditions and actions.
@@ -59,7 +59,7 @@ For more details, refer to the https://registry.terraform.io/providers/elastic/e
 // <DocBadge><DocIcon size="s" type="unlink" title="missing link"/> missing link</DocBadge>
 
 [discrete]
-[[explore-your-data-alerting-snooze-and-disable-rules]]
+[[elasticsearch-explore-your-data-alerting-snooze-and-disable-rules]]
 == Snooze and disable rules
 
 The rule listing enables you to quickly snooze, disable, enable, or delete individual rules.
@@ -77,7 +77,7 @@ image::images/rule-snooze-panel.png[Snooze notifications for a rule]
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
 [discrete]
-[[explore-your-data-alerting-import-and-export-rules]]
+[[elasticsearch-explore-your-data-alerting-import-and-export-rules]]
 == Import and export rules
 
 To import and export rules, use https://www.elastic.co/docs/current/serverless/saved-objects[saved objects].
@@ -95,7 +95,7 @@ Rules are disabled on export. You are prompted to re-enable the rule on successf
 image::images/rules-imported-banner.png[Rules import banner]
 
 [discrete]
-[[explore-your-data-alerting-view-rule-details]]
+[[elasticsearch-explore-your-data-alerting-view-rule-details]]
 == View rule details
 
 You can determine the health of a rule by looking at its **Last response**.

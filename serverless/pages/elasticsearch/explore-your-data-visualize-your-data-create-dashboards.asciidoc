@@ -1,4 +1,4 @@
-[role="exclude",id="explore-your-data-dashboards"]
+[role="exclude",id="elasticsearch-explore-your-data-dashboards"]
 = Create dashboards
 
 :description: Create dashboards to visualize and monitor your {es} data.
@@ -25,7 +25,7 @@ When you create a dashboard, you are automatically in edit mode and can make cha
 When you open an existing dashboard, you are in view mode. To make changes, click **Edit** in the toolbar.
 
 [discrete]
-[[explore-your-data-dashboards-add-data-and-create-a-dashboard]]
+[[elasticsearch-explore-your-data-dashboards-add-data-and-create-a-dashboard]]
 == Add data and create a dashboard
 
 Add the sample web logs data, and create and set up the dashboard.
@@ -39,13 +39,13 @@ Create the dashboard where you'll display the visualization panels.
 . Open the main menu, then click **Dashboard**.
 . Click **[Logs] Web Traffic**.
 
-By default some visualization panels have been created for you using the sample data. Go to <<explore-your-data-visualizations,Create visualization>> to learn about the different visualizations.
+By default some visualization panels have been created for you using the sample data. Go to <<elasticsearch-explore-your-data-visualizations,Create visualization>> to learn about the different visualizations.
 
 [role="screenshot"]
 image::images/dashboard-example.png[dashboard with default visualizations using sample data]
 
 [discrete]
-[[explore-your-data-dashboards-reset-the-dashboard]]
+[[elasticsearch-explore-your-data-dashboards-reset-the-dashboard]]
 == Reset the dashboard
 
 To remove any changes you've made, reset the dashboard to the last saved changes.
@@ -54,7 +54,7 @@ To remove any changes you've made, reset the dashboard to the last saved changes
 . Click **Reset dashboard**.
 
 [discrete]
-[[explore-your-data-dashboards-save-dashboards]]
+[[elasticsearch-explore-your-data-dashboards-save-dashboards]]
 == Save dashboards
 
 When you've finished making changes to the dashboard, save it.
@@ -63,7 +63,7 @@ When you've finished making changes to the dashboard, save it.
 . To exit **Edit** mode, click **Switch to view mode**.
 
 [discrete]
-[[explore-your-data-dashboards-add-dashboard-settings]]
+[[elasticsearch-explore-your-data-dashboards-add-dashboard-settings]]
 == Add dashboard settings
 
 When creating a new dashboard you can add the title, tags, design options, and more to the dashboard.
@@ -83,13 +83,13 @@ When creating a new dashboard you can add the title, tags, design options, and m
 . Click **Apply**.
 
 [discrete]
-[[explore-your-data-dashboards-share-dashboards]]
+[[elasticsearch-explore-your-data-dashboards-share-dashboards]]
 == Share dashboards
 
 To share the dashboard with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to {kibana-ref}/reporting-getting-started.html[Reporting].
 
 [discrete]
-[[explore-your-data-dashboards-export-dashboards]]
+[[elasticsearch-explore-your-data-dashboards-export-dashboards]]
 == Export dashboards
 
 To automate {kib}, you can export dashboards as JSON using the {kibana-ref}/saved-objects-api-export.html[Export objects API]. It is important to export dashboards with all necessary references.

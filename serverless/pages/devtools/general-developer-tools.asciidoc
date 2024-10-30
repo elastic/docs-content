@@ -6,19 +6,19 @@ preview:[]
 |===
 | Feature | Description | Available in
 
-| <<run-api-requests-in-the-console,Console>>
+| <<devtools-run-api-requests-in-the-console,Console>>
 | Interact with Elastic REST APIs.
 | {es-badge}{obs-badge}{sec-badge}
 
-| <<profile-queries-and-aggregations,{searchprofiler}>>
+| <<devtools-profile-queries-and-aggregations,{searchprofiler}>>
 | Inspect and analyze your search queries.
 | {es-badge}{obs-badge}{sec-badge}
 
-| <<debug-grok-expressions,Grok Debugger>>
+| <<devtools-debug-grok-expressions,Grok Debugger>>
 | Build and debug grok patterns before you use them in your data processing pipelines.
 | {es-badge}{obs-badge}{sec-badge}
 
-| <<debug-painless-scripts,Painless Lab>>
+| <<devtools-debug-painless-scripts,Painless Lab>>
 | Use an interactive code editor to test and debug Painless scripts in real time.
 | {obs-badge}{sec-badge}
 |===

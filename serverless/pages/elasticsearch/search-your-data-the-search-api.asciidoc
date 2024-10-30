@@ -1,4 +1,4 @@
-[[search-your-data-the-search-api]]
+[[elasticsearch-search-your-data-the-search-api]]
 = The search API
 
 :description: Run queries and aggregations with the search API.

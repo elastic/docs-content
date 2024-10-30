@@ -1,4 +1,4 @@
-[[dev-tools]]
+[[elasticsearch-dev-tools]]
 = Developer tools
 
 :description: Elastic tools for developers.
@@ -7,7 +7,7 @@
 preview:[]
 
 [discrete]
-[[dev-tools-developer-tools]]
+[[elasticsearch-dev-tools-developer-tools]]
 == Developer tools
 
 A number of developer tools are available in your project's UI under the **Dev Tools** section.

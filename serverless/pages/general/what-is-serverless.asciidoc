@@ -1,4 +1,4 @@
-[[what-is-serverless-elastic]]
+[[general-what-is-serverless-elastic]]
 = What is serverless Elastic?
 
 :keywords: serverless
@@ -28,7 +28,7 @@ Until May 31, 2024, your serverless consumption will not incur any charges, but 
 ====
 
 [discrete]
-[[what-is-serverless-elastic-control-your-data-and-performance]]
+[[general-what-is-serverless-elastic-control-your-data-and-performance]]
 == Control your data and performance
 
 Control your project data and query performance against your project data.
@@ -45,7 +45,7 @@ and you define the retention settings for your data streams.
 ====
 
 [discrete]
-[[what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]]
+[[general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]]
 == Differences between serverless projects and hosted deployments on {ecloud}
 
 You can run https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html[hosted deployments] of the {stack} on {ecloud}. These hosted deployments provide more provisioning and advanced configuration options.
@@ -95,7 +95,7 @@ You can run https://www.elastic.co/guide/en/cloud/current/ec-getting-started.htm
 |===
 
 [discrete]
-[[what-is-serverless-elastic-answers-to-common-serverless-questions]]
+[[general-what-is-serverless-elastic-answers-to-common-serverless-questions]]
 == Answers to common serverless questions
 
 **What Support is available for the serverless preview?**

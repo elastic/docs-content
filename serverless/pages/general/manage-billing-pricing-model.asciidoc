@@ -1,4 +1,4 @@
-[[serverless-billing]]
+[[general-serverless-billing]]
 = Serverless billing dimensions
 
 :description: Understand how usage affects serverless pricing.
@@ -26,7 +26,7 @@ To learn about billing dimensions for specific offerings, refer to:
 == Add-ons
 
 [discrete]
-[[serverless-billing-data-out]]
+[[general-serverless-billing-data-out]]
 === Data out
 
 _Data out_ accounts for all of the traffic coming out of a serverless project.
@@ -37,7 +37,7 @@ Data coming out of the project through AWS PrivateLink, GCP Private Service Conn
 or Azure Private Link is also considered data out.
 
 [discrete]
-[[serverless-billing-support]]
+[[general-serverless-billing-support]]
 === Support
 
 If your subscription level is Standard, there is no separate charge for Support reflected on your bill.

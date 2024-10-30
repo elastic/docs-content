@@ -1,4 +1,4 @@
-[[clients]]
+[[elasticsearch-clients]]
 = Client libraries
 
 :description: Index, search, and manage {es} data in your preferred language.
@@ -9,10 +9,10 @@ preview:[]
 {es3} provides official language clients to use {es} REST APIs.
 Currently, the following language clients are supported:
 
-* <<go-client-getting-started,Go>> | https://github.com/elastic/elasticsearch-serverless-go[Repository]
-* <<java-client-getting-started,Java>> | https://github.com/elastic/elasticsearch-java/tree/main/java-client-serverless[Repository]
-* <<dot-net-client-getting-started,.NET>> | https://github.com/elastic/elasticsearch-net[Repository]
-* <<nodejs-client-getting-started,Node.JS>> | https://github.com/elastic/elasticsearch-serverless-js[Repository]
-* <<php-client-getting-started,PHP>> | https://github.com/elastic/elasticsearch-serverless-php[Repository]
-* <<python-client-getting-started,Python>> | https://github.com/elastic/elasticsearch-serverless-python[Repository]
-* <<ruby-client-getting-started,Ruby>> | https://github.com/elastic/elasticsearch-serverless-ruby[Repository]
+* <<elasticsearch-go-client-getting-started,Go>> | https://github.com/elastic/elasticsearch-serverless-go[Repository]
+* <<elasticsearch-java-client-getting-started,Java>> | https://github.com/elastic/elasticsearch-java/tree/main/java-client-serverless[Repository]
+* <<elasticsearch-dot-net-client-getting-started,.NET>> | https://github.com/elastic/elasticsearch-net[Repository]
+* <<elasticsearch-nodejs-client-getting-started,Node.JS>> | https://github.com/elastic/elasticsearch-serverless-js[Repository]
+* <<elasticsearch-php-client-getting-started,PHP>> | https://github.com/elastic/elasticsearch-serverless-php[Repository]
+* <<elasticsearch-python-client-getting-started,Python>> | https://github.com/elastic/elasticsearch-serverless-python[Repository]
+* <<elasticsearch-ruby-client-getting-started,Ruby>> | https://github.com/elastic/elasticsearch-serverless-ruby[Repository]

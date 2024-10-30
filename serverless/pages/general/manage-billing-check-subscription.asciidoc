@@ -1,4 +1,4 @@
-[[check-subscription]]
+[[general-check-subscription]]
 = Check your subscription
 
 :description: Manage your account details and subscription level.

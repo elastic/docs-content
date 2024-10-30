@@ -1,4 +1,4 @@
-[[serverless-status]]
+[[general-serverless-status]]
 = Monitor serverless status
 
 :keywords: serverless
@@ -9,7 +9,7 @@ When availability changes, Elastic makes sure to provide you with a current serv
 To check current and past service availability, go to the Elastic serverless https://serverless-preview-status.statuspage.io/[service status] page.
 
 [discrete]
-[[serverless-status-subscribe-to-updates]]
+[[general-serverless-status-subscribe-to-updates]]
 == Subscribe to updates
 
 You can be notified about changes to the service status automatically.

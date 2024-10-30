@@ -1,4 +1,4 @@
-[[ruby-client-getting-started]]
+[[elasticsearch-ruby-client-getting-started]]
 = Get started with the serverless Ruby client
 
 :description: Set up and use the Ruby client for {es3}.
@@ -11,7 +11,7 @@ client for {es3}, shows you how to initialize the client, and how to perform bas
 {es} operations with it.
 
 [discrete]
-[[ruby-client-getting-started-requirements]]
+[[elasticsearch-ruby-client-getting-started-requirements]]
 == Requirements
 
 * Ruby 3.0 or higher installed on your system.
@@ -19,11 +19,11 @@ client for {es3}, shows you how to initialize the client, and how to perform bas
 *
 
 [discrete]
-[[ruby-client-getting-started-installation]]
+[[elasticsearch-ruby-client-getting-started-installation]]
 == Installation
 
 [discrete]
-[[ruby-client-getting-started-from-githubs-releases]]
+[[elasticsearch-ruby-client-getting-started-from-githubs-releases]]
 === From GitHub's releases
 
 You can install the Ruby Client from RubyGems:
@@ -37,7 +37,7 @@ Check https://github.com/elastic/elasticsearch-serverless-ruby/releases[releases
 for the latest available versions.
 
 [discrete]
-[[ruby-client-getting-started-from-the-source-code]]
+[[elasticsearch-ruby-client-getting-started-from-the-source-code]]
 === From the source code
 
 You can install the Ruby client from the client's https://github.com/elastic/elasticsearch-serverless-ruby[source
@@ -52,7 +52,7 @@ gem install elasticsearch-serverless-x.x.x.gem
 ----
 
 [discrete]
-[[ruby-client-getting-started-using-the-gemfile]]
+[[elasticsearch-ruby-client-getting-started-using-the-gemfile]]
 === Using the Gemfile
 
 Alternatively, you can include the client gem in your Ruby project's Gemfile:
@@ -70,7 +70,7 @@ require 'elasticsearch-serverless'
 ----
 
 [discrete]
-[[ruby-client-getting-started-running-a-ruby-console]]
+[[elasticsearch-ruby-client-getting-started-running-a-ruby-console]]
 === Running a Ruby console
 
 You can also run the client from a Ruby console using the client's https://github.com/elastic/elasticsearch-serverless-ruby[source
@@ -85,7 +85,7 @@ bundle exec rake console
 ----
 
 [discrete]
-[[ruby-client-getting-started-initialize-the-client]]
+[[elasticsearch-ruby-client-getting-started-initialize-the-client]]
 == Initialize the client
 
 Initialize the client using your API key and Elasticsearch Endpoint:
@@ -98,10 +98,10 @@ client = ElasticsearchServerless::Client.new(
 )
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<get-started>>.
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
-[[ruby-client-getting-started-using-the-api]]
+[[elasticsearch-ruby-client-getting-started-using-the-api]]
 == Using the API
 
 After you've initialized the client, you can start ingesting documents. You can use
@@ -110,11 +110,11 @@ documents in one request.
 
 [NOTE]
 ====
-The code examples in this section use the Ruby console. To set up the console, <<ruby-client-getting-started-running-a-ruby-console,Running a Ruby console>>.
+The code examples in this section use the Ruby console. To set up the console, <<elasticsearch-ruby-client-getting-started-running-a-ruby-console,Running a Ruby console>>.
 ====
 
 [discrete]
-[[ruby-client-getting-started-creating-an-index-and-ingesting-documents]]
+[[elasticsearch-ruby-client-getting-started-creating-an-index-and-ingesting-documents]]
 === Creating an index and ingesting documents
 
 You can call the `bulk` API with a body parameter, an array of hashes that
@@ -155,7 +155,7 @@ also behaves as a Hash, so you can access the body values directly as seen on
 the previous example with `response['items']`.
 
 [discrete]
-[[ruby-client-getting-started-getting-documents]]
+[[elasticsearch-ruby-client-getting-started-getting-documents]]
 === Getting documents
 
 You can get documents by using the following code:
@@ -166,7 +166,7 @@ You can get documents by using the following code:
 ----
 
 [discrete]
-[[ruby-client-getting-started-searching]]
+[[elasticsearch-ruby-client-getting-started-searching]]
 === Searching
 
 Now that some data is available, you can search your documents using the
@@ -181,7 +181,7 @@ Now that some data is available, you can search your documents using the
 ----
 
 [discrete]
-[[ruby-client-getting-started-updating-a-document]]
+[[elasticsearch-ruby-client-getting-started-updating-a-document]]
 === Updating a document
 
 You can call the `update` API to update a document:
@@ -196,7 +196,7 @@ You can call the `update` API to update a document:
 ----
 
 [discrete]
-[[ruby-client-getting-started-deleting-a-document]]
+[[elasticsearch-ruby-client-getting-started-deleting-a-document]]
 === Deleting a document
 
 You can call the `delete` API to delete a document:
@@ -207,7 +207,7 @@ You can call the `delete` API to delete a document:
 ----
 
 [discrete]
-[[ruby-client-getting-started-deleting-an-index]]
+[[elasticsearch-ruby-client-getting-started-deleting-an-index]]
 === Deleting an index
 
 [source,ruby]

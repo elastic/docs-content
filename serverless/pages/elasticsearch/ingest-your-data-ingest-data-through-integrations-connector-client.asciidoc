@@ -1,5 +1,8 @@
-[[ingest-data-through-integrations-connector-client]]
+[[elasticsearch-ingest-data-through-integrations-connector-client]]
 = Connector clients
+
+:description: Set up and deploy self-managed connectors that run on your own infrastructure.
+:keywords: serverless, elasticsearch, ingest, connector, how to
 
 [NOTE]
 ====
@@ -7,20 +10,20 @@ This page contains high-level instructions about setting up connector clients in
 Because prerequisites and configuration details vary by data source, you'll need to refer to the individual connector documentation for specific details.
 ====
 
-A *connector* is a type of https://www.elastic.co/integrations/data-integrations[Elastic integration] that syncs data from an original data source to {es}.
+A _connector_ is a type of https://www.elastic.co/integrations/data-integrations[Elastic integration] that syncs data from an original data source to {es}.
 Each connector extracts the original files, records, or objects; and transforms them into documents within {es}.
 
-*Connector clients* are **self-managed** connectors that you run on your own infrastructure.
+_Connector clients_ are **self-managed** connectors that you run on your own infrastructure.
 These connectors are written in Python and the source code is available in the https://github.com/elastic/connectors/tree/main/connectors/sources[`elastic/connectors`] repo.
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-available-connectors]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-available-connectors]]
 == Available connectors
 
 Connector clients are available for the following third-party data sources:
 
-[%collapsible]
 .Click to expand
+[%collapsible]
 =====
 // TODO: Update links if these references move
 
@@ -56,7 +59,7 @@ Connector clients are available for the following third-party data sources:
 =====
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-overview]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-overview]]
 == Overview
 
 Because connector clients are self-managed on your own infrastructure, they run outside of your {es} serverless project.
@@ -76,18 +79,18 @@ At a high-level, the workflow looks like this:
 ====
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-data-source-prerequisites]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-data-source-prerequisites]]
 === Data source prerequisites
 
 The first decision you need to make before deploying a connector is which third party service (data source) you want to sync to {es}.
-See the list of <<ingest-data-through-integrations-connector-client-available-connectors,available connectors>>.
+See the list of <<elasticsearch-ingest-data-through-integrations-connector-client-available-connectors,available connectors>>.
 
 Note that each data source will have specific prerequisites you'll need to meet to authorize the connector to access its data.
 For example, certain data sources may require you to create an OAuth application, or create a service account.
-You'll need to check the <<ingest-data-through-integrations-connector-client-available-connectors,individual connector documentation>> for these details.
+You'll need to check the <<elasticsearch-ingest-data-through-integrations-connector-client-available-connectors,individual connector documentation>> for these details.
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-step-1-initial-setup-in-ui]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-step-1-initial-setup-in-ui]]
 == Step 1: Initial setup in UI
 
 In your project's UI, go to **{es} → Connectors**.
@@ -102,7 +105,7 @@ You'll need to update these values in your https://github.com/elastic/connectors
 . Run the connector code either from source or with Docker, following the instructions below.
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-step-2-deploy-your-self-managed-connector]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-step-2-deploy-your-self-managed-connector]]
 == Step 2: Deploy your self-managed connector
 
 To use connector clients, you must deploy the connector service so your connector can talk to your {es} instance.
@@ -110,8 +113,8 @@ The source code is hosted in the `elastic/connectors` repository.
 
 You have two deployment options:
 
-* Run with <<ingest-data-through-integrations-connector-client-run-with-docker,Docker>> (recommended)
-* Run from <<ingest-data-through-integrations-connector-client-run-from-source,source>>
+* Run with <<elasticsearch-ingest-data-through-integrations-connector-client-run-with-docker,Docker>> (recommended)
+* Run from <<elasticsearch-ingest-data-through-integrations-connector-client-run-from-source,source>>
 
 [NOTE]
 ====
@@ -124,7 +127,7 @@ You'll need the following values handy to update your `config.yml` file:
 ====
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-run-with-docker]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-run-with-docker]]
 === Run with Docker
 
 You can deploy connector clients using Docker.
@@ -187,7 +190,7 @@ Each individual connector client reference contain instructions for deploying sp
 ====
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-run-from-source]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-run-from-source]]
 === Run from source
 
 Running from source requires cloning the repository and running the code locally.
@@ -248,7 +251,7 @@ The connector service should now be running in your terminal. If the connection 
 Here we're working locally. In a production setup, you'll deploy the connector service to your own infrastructure.
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-step-3-enter-data-source-details-in-ui]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-step-3-enter-data-source-details-in-ui]]
 == Step 3: Enter data source details in UI
 
 Once the connector service is running, it's time to head back to the UI to finalize the connector configuration.
@@ -266,7 +269,7 @@ For example, the Sharepoint Online connector requires the following details abou
 * **Comma-separated list of tables**
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-step-4-connect-to-an-index]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-step-4-connect-to-an-index]]
 == Step 4: Connect to an index
 
 Once you've entered the data source details, you need to connect to an index.
@@ -293,7 +296,7 @@ When a sync is launched you'll start to see documents being added to your {es} i
 Learn https://github.com/elastic/connectors/blob/main/docs/DEVELOPING.md#syncing[how syncing works] in the `elastic/connectors` repo docs.
 
 [discrete]
-[[ingest-data-through-integrations-connector-client-learn-more]]
+[[elasticsearch-ingest-data-through-integrations-connector-client-learn-more]]
 == Learn more
 
 * Read the main https://www.elastic.co/guide/en/elasticsearch/reference/master/es-connectors.html[Elastic connectors documentation]

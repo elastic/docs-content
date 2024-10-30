@@ -1,4 +1,4 @@
-[[billing-history]]
+[[general-billing-history]]
 = Check your billing history
 
 :description: Monitor payments and billing receipts.

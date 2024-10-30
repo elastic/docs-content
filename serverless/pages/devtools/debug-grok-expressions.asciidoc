@@ -1,4 +1,4 @@
-[[debug-grok-expressions]]
+[[devtools-debug-grok-expressions]]
 = Grok Debugger
 
 :description: Build and debug grok patterns before you use them in your data processing pipelines.

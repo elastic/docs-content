@@ -1,4 +1,4 @@
-[[dev-tools-troubleshooting]]
+[[devtools-dev-tools-troubleshooting]]
 = Troubleshooting
 
 :description: Troubleshoot searches.
@@ -11,7 +11,7 @@ or results in an unexpected order. This guide describes how to troubleshoot
 searches.
 
 [discrete]
-[[dev-tools-troubleshooting-ensure-the-data-stream-index-or-alias-exists]]
+[[devtools-dev-tools-troubleshooting-ensure-the-data-stream-index-or-alias-exists]]
 == Ensure the data stream, index, or alias exists
 
 Elasticsearch returns an `index_not_found_exception` when the data stream, index
@@ -44,7 +44,7 @@ GET /my-alias/_search?ignore_unavailable=true
 ----
 
 [discrete]
-[[dev-tools-troubleshooting-ensure-the-data-stream-or-index-contains-data]]
+[[devtools-dev-tools-troubleshooting-ensure-the-data-stream-or-index-contains-data]]
 == Ensure the data stream or index contains data
 
 When a search request returns no hits, the data stream or index may contain no
@@ -71,7 +71,7 @@ configured with the correct time field.
 ====
 
 [discrete]
-[[dev-tools-troubleshooting-check-that-the-field-exists-and-its-capabilities]]
+[[devtools-dev-tools-troubleshooting-check-that-the-field-exists-and-its-capabilities]]
 == Check that the field exists and its capabilities
 
 Querying a field that does not exist will not return any results.
@@ -115,7 +115,7 @@ searchable and aggregatable.
 <3> The field is aggregatable in this index.
 
 [discrete]
-[[dev-tools-troubleshooting-check-the-fields-mappings]]
+[[devtools-dev-tools-troubleshooting-check-the-fields-mappings]]
 == Check the field's mappings
 
 A field's capabilities are determined by its {ref}/mapping.html[mapping].
@@ -143,7 +143,7 @@ GET /my-index-000001/_analyze
 To change the mapping of an existing field use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-mapping-1[**Update mapping API**].
 
 [discrete]
-[[dev-tools-troubleshooting-check-the-fields-values]]
+[[devtools-dev-tools-troubleshooting-check-the-fields-values]]
 == Check the field's values
 
 Use the `exists` query to check whether there are
@@ -203,7 +203,7 @@ If the field does not return any values, check the data ingestion process.
 The field may have a different name.
 
 [discrete]
-[[dev-tools-troubleshooting-check-the-latest-value]]
+[[devtools-dev-tools-troubleshooting-check-the-latest-value]]
 == Check the latest value
 
 For time-series data, confirm there is non-filtered data within the attempted
@@ -218,7 +218,7 @@ GET /my-index-000001/_search?sort=@timestamp:desc&size=1
 ----
 
 [discrete]
-[[dev-tools-troubleshooting-validate-explain-and-profile-queries]]
+[[devtools-dev-tools-troubleshooting-validate-explain-and-profile-queries]]
 == Validate, explain, and profile queries
 
 When a query returns unexpected results, Elasticsearch offers several tools to
@@ -260,7 +260,7 @@ GET /my-index-000001/_explain/0
 The {ref}/search-profile.html[**Profile API**]
 provides detailed timing information about a search request.
 For a visual representation of the results, use the
-<<profile-queries-and-aggregations,Search Profiler>>.
+<<devtools-profile-queries-and-aggregations,Search Profiler>>.
 
 [NOTE]
 ====
@@ -270,7 +270,7 @@ You can now copy the query sent to {es} for further analysis in Console.
 ====
 
 [discrete]
-[[dev-tools-troubleshooting-check-index-settings]]
+[[devtools-dev-tools-troubleshooting-check-index-settings]]
 == Check index settings
 
 Index settings

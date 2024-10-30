@@ -1,4 +1,4 @@
-[[differences]]
+[[elasticsearch-differences]]
 = Differences from other Elasticsearch offerings
 
 :description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
@@ -22,13 +22,13 @@ complexity by optimizing your cluster performance for you.
 Data stream lifecycle is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary
 hardware-centric concepts like data tiers.
 +
-* **Watcher** is not available, in favor of **<<explore-your-data-alerting,Kibana Alerts>>**.
+* **Watcher** is not available, in favor of **<<elasticsearch-explore-your-data-alerting,Kibana Alerts>>**.
 +
 Kibana Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and
 hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
 +
 * Certain APIs, API parameters, index, cluster and node level settings are not available. Refer to our
-<<http-apis,REST API references>> for a list of available APIs.
+<<elasticsearch-http-apis,REST API references>> for a list of available APIs.
 +
 Serverless Elasticsearch manages the underlying Elastic cluster for you, optimizing nodes, shards, and replicas for your use case.
 Because of this, various management and monitoring APIs, API parameters and settings are not available on Serverless.
@@ -38,5 +38,5 @@ Because of this, various management and monitoring APIs, API parameters and sett
 .Other limitations
 [IMPORTANT]
 ====
-For serverless technical preview limitations, refer to <<technical-preview-limitations,Technical preview limitations>>.
+For serverless technical preview limitations, refer to <<elasticsearch-technical-preview-limitations,Technical preview limitations>>.
 ====

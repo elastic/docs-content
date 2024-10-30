@@ -227,6 +227,7 @@ include::{observability-serverless}/alerting/create-failed-transaction-rate-thre
 include::{observability-serverless}/alerting/create-inventory-threshold-alert-rule.asciidoc[leveloffset=+4]
 include::{observability-serverless}/alerting/create-latency-threshold-alert-rule.asciidoc[leveloffset=+4]
 include::{observability-serverless}/alerting/create-slo-burn-rate-alert-rule.asciidoc[leveloffset=+4]
+include::{observability-serverless}/alerting/synthetic-monitor-status-alert.asciidoc[leveloffset=+4]
 include::{observability-serverless}/alerting/aggregation-options.asciidoc[leveloffset=+3]
 include::{observability-serverless}/alerting/rate-aggregation.asciidoc[leveloffset=+4]
 include::{observability-serverless}/alerting/view-alerts.asciidoc[leveloffset=+3]

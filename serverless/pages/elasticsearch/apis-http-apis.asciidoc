@@ -1,4 +1,4 @@
-[[http-apis]]
+[[elasticsearch-http-apis]]
 = REST APIs
 
 :description: {es} and {kib} expose REST APIs that can be called directly to configure and access {stack} features.
@@ -6,6 +6,6 @@
 
 preview:[]
 
-* <<api-conventions>>
-* <<kibana-api-conventions>>
+* <<elasticsearch-api-conventions>>
+* <<elasticsearch-kibana-api-conventions>>
 * https://www.elastic.co/docs/api/[API Reference]: Explore the reference information for Elastic Serverless REST APIs

@@ -1,4 +1,4 @@
-[[explore-your-data-visualize-your-data]]
+[[elasticsearch-explore-your-data-visualize-your-data]]
 = Visualize your data
 
 :description: Build dynamic dashboards and visualizations for your {es} data.
@@ -22,7 +22,7 @@ Notice you can filter the list of dashboards:
 * Click a dashboard's tags to toggle filtering for each tag.
 
 [discrete]
-[[explore-your-data-visualize-your-data-create-new-dashboards]]
+[[elasticsearch-explore-your-data-visualize-your-data-create-new-dashboards]]
 == Create new dashboards
 
 To create a new dashboard, click **Create dashboard** and begin adding visualizations.

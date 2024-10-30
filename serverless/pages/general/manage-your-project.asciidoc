@@ -1,4 +1,4 @@
-[[manage-project]]
+[[elasticsearch-manage-project]]
 = Manage your projects
 
 :description: Configure project-wide features and usage.
@@ -20,7 +20,7 @@ From the project page, you can:
 * **Manage members**. Add members and manage their access to this project or other resources of your organization.
 
 [discrete]
-[[manage-project-search-ai-lake-settings]]
+[[elasticsearch-manage-project-search-ai-lake-settings]]
 == Search AI Lake settings
 
 Once ingested, your data is stored in cost-efficient, general storage. A cache layer is available on top of the general storage for recent and frequently queried data that provides faster search speed. Data in this cache layer is considered **search-ready**.
@@ -45,19 +45,19 @@ The **Cost-efficient** Search Power setting limits the available cache size, and
 The **Balanced** Search Power setting ensures that there is sufficient cache for all search-ready data, in order to respond quickly to queries.
 
 The **Performance** Search Power setting provides more computing resources in addition to the searchable data cache, in order to respond quickly to higher query volumes and more complex queries.
-|
+| {es-badge}
 
 | **Search Boost Window**
 a| Non-time series data is always considered search-ready. The **Search Boost Window** determines the volume of time series project data that will be considered search-ready.
 
 Increasing the window results in a bigger portion of time series project data included in the total search-ready data volume.
-|
+| {es-badge}
 
 | **Data Retention**
 a| Data retention policies determine how long your project data is retained.
 
 You can specify different retention periods for specific data streams in your project.
-|
+| {es-badge}{obs-badge}{sec-badge}
 
 |
 a| **Maximum data retention period**
@@ -65,24 +65,24 @@ a| **Maximum data retention period**
 When enabled, this setting determines the maximum length of time that data can be retained in any data streams of this project.
 
 Editing this setting replaces the data retention set for all data streams of the project that have a longer data retention defined. Data older than the new maximum retention period that you set is permanently deleted.
-|
+| {sec-badge}
 
 |
 a| **Default data retention period**
 
 When enabled, this setting determines the default retention period that is automatically applied to all data streams in your project that do not have a custom retention period already set.
-|
+| {sec-badge}
 
 | **Project features**
 | Controls <<project-features-add-ons,feature tiers and add-on options>> for your {elastic-sec} project.
-|
+| {sec-badge}
 |===
 
 [discrete]
 [[project-features-add-ons]]
 == Project features and add-ons
 
- For {elastic-sec} projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
+{sec-badge} For {elastic-sec} projects, edit the **Project features** to select a feature tier and enable add-on options for specific use cases.
 
 |===
 | Feature tier | Description and add-ons
@@ -101,7 +101,7 @@ a| Everything in **Security Analytics Essentials** plus advanced features such a
 |===
 
 [discrete]
-[[manage-project-downgrading-the-feature-tier]]
+[[elasticsearch-manage-project-downgrading-the-feature-tier]]
 === Downgrading the feature tier
 
 When you downgrade your Security project features selection from **Security Analytics Complete** to **Security Analytics Essentials**, the following features become unavailable:

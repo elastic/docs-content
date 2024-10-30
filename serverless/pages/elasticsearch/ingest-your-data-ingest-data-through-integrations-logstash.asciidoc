@@ -1,4 +1,4 @@
-[[ingest-data-through-logstash]]
+[[elasticsearch-ingest-data-through-logstash]]
 = Logstash
 
 :description: Use {ls} to ship data to {es}.
@@ -12,7 +12,7 @@ It supports a wide variety of data sources, and can dynamically unify data from 
 {ls} can collect data using a variety of {ls} {logstash-ref}/input-plugins.html[input plugins], enrich and transform the data with {ls} {logstash-ref}/filter-plugins.html[filter plugins],
 and output the data to {es} using the {ls} {logstash-ref}/plugins-outputs-elasticsearch.html[Elasticsearch output plugin].
 
-You can use {ls} to extend <<ingest-data-through-beats,Beats>> for advanced use cases,
+You can use {ls} to extend <<elasticsearch-ingest-data-through-beats,Beats>> for advanced use cases,
 such as data routed to multiple destinations or when you need to make your data persistent.
 
 .Logstash for Elasticsearch on serverless
@@ -37,7 +37,7 @@ Set the value to port `:443` instead.
 ====
 
 [discrete]
-[[ingest-data-through-logstash-requirements]]
+[[elasticsearch-ingest-data-through-logstash-requirements]]
 == Requirements
 
 To use {ls} to send data to {es3}, you must be using:
@@ -48,7 +48,7 @@ To use {ls} to send data to {es3}, you must be using:
 * {ls} {logstash-ref}/plugins-filters-elasticsearch.html[{es} filter plugin] 3.16.0 or later
 
 [discrete]
-[[ingest-data-through-logstash-secure-connection]]
+[[elasticsearch-ingest-data-through-logstash-secure-connection]]
 == Secure connection
 
 Serverless Elasticsearch simplifies secure communication between {ls} and {es}.
@@ -58,7 +58,7 @@ Configure the {logstash-ref}/plugins-outputs-elasticsearch.html[Elasticsearch ou
 No additional SSL configuration steps are needed.
 
 [discrete]
-[[ingest-data-through-logstash-api-keys-for-connecting-ls-to-es3]]
+[[elasticsearch-ingest-data-through-logstash-api-keys-for-connecting-ls-to-es3]]
 == API keys for connecting {ls} to {es3}
 
 Use the **Security: API key** section in the UI to https://www.elastic.co/docs/current/serverless/api-keys[create an API key]
@@ -82,7 +82,7 @@ output {
 ----
 
 [discrete]
-[[ingest-data-through-logstash-migrating-elasticsearch-data-using-ls]]
+[[elasticsearch-ingest-data-through-logstash-migrating-elasticsearch-data-using-ls]]
 == Migrating Elasticsearch data using {ls}
 
 You can use {ls} to migrate data from self-managed {es} or {ess} to {es3}, or to migrate data from one {es3} deployment to another.
@@ -91,10 +91,10 @@ Create a {logstash-ref}/configuration.html[{ls} pipeline] that includes the {es}
 
 Configure the {es} input to point to your source deployment or instance, and configure the {es} output with the `cloud_id` and `api_key` settings for your target {es3} instance.
 
-If your origin index is using <<differences,settings that aren't supported in Serverless>>, then you might need to adjust your index settings.
+If your origin index is using <<elasticsearch-differences,settings that aren't supported in Serverless>>, then you might need to adjust your index settings.
 
 [discrete]
-[[ingest-data-through-logstash-next-steps]]
+[[elasticsearch-ingest-data-through-logstash-next-steps]]
 == Next steps
 
 Check out the https://www.elastic.co/logstash[Logstash product page] to see what {ls} can do for you.

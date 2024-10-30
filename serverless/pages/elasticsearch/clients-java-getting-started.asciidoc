@@ -1,4 +1,4 @@
-[[java-client-getting-started]]
+[[elasticsearch-java-client-getting-started]]
 = Get started with the serverless Java client
 
 :description: Set up and use the Java client for {es3}.
@@ -11,7 +11,7 @@ client for {es3}, shows you how to initialize the client, and how to perform bas
 {es} operations with it.
 
 [discrete]
-[[java-client-getting-started-requirements]]
+[[elasticsearch-java-client-getting-started-requirements]]
 == Requirements
 
 * Java 8 or later.
@@ -20,14 +20,14 @@ your application classes with the {es} API. The examples below
 show usage with Jackson.
 
 [discrete]
-[[java-client-getting-started-installation]]
+[[elasticsearch-java-client-getting-started-installation]]
 == Installation
 
 You can add the Java client to your Java project using
 either Gradle or Maven.
 
 [discrete]
-[[java-client-getting-started-using-gradle]]
+[[elasticsearch-java-client-getting-started-using-gradle]]
 === Using Gradle
 
 You can install the Java client as a Gradle dependency:
@@ -41,7 +41,7 @@ dependencies {
 ----
 
 [discrete]
-[[java-client-getting-started-using-maven]]
+[[elasticsearch-java-client-getting-started-using-maven]]
 === Using Maven
 
 You can install the Java client as a Maven dependency, add
@@ -69,7 +69,7 @@ the following to the `pom.xml` of your project:
 ----
 
 [discrete]
-[[java-client-getting-started-initialize-the-client]]
+[[elasticsearch-java-client-getting-started-initialize-the-client]]
 == Initialize the client
 
 Initialize the client using your API key and Elasticsearch Endpoint:
@@ -96,16 +96,16 @@ ElasticsearchTransport transport = new RestClientTransport(
 ElasticsearchClient esClient = new ElasticsearchClient(transport);
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<get-started>>.
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
-[[java-client-getting-started-using-the-api]]
+[[elasticsearch-java-client-getting-started-using-the-api]]
 == Using the API
 
 After you initialized the client, you can start ingesting documents.
 
 [discrete]
-[[java-client-getting-started-creating-an-index-and-ingesting-documents]]
+[[elasticsearch-java-client-getting-started-creating-an-index-and-ingesting-documents]]
 === Creating an index and ingesting documents
 
 The following is an example of indexing a document, here a `Product` application
@@ -125,7 +125,7 @@ logger.info("Indexed with version " + response.version());
 ----
 
 [discrete]
-[[java-client-getting-started-searching]]
+[[elasticsearch-java-client-getting-started-searching]]
 === Searching
 
 Now that some data is available, you can search your documents using the
@@ -157,7 +157,7 @@ actual classes representing a query.
 `Product` application objects instead of raw JSON.
 
 [discrete]
-[[java-client-getting-started-updating]]
+[[elasticsearch-java-client-getting-started-updating]]
 === Updating
 
 You can update your documents using the `update` API:
@@ -175,7 +175,7 @@ esClient.update(u -> u
 ----
 
 [discrete]
-[[java-client-getting-started-delete]]
+[[elasticsearch-java-client-getting-started-delete]]
 === Delete
 
 You can also delete documents:
@@ -186,7 +186,7 @@ esClient.delete(d -> d.index("products").id("bk-1"));
 ----
 
 [discrete]
-[[java-client-getting-started-deleting-an-index]]
+[[elasticsearch-java-client-getting-started-deleting-an-index]]
 === Deleting an index
 
 [source,java]

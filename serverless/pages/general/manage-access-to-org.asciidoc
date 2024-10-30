@@ -1,4 +1,4 @@
-[[manage-access-to-organization]]
+[[general-manage-access-to-organization]]
 = Invite your team
 
 :description: Add members to your organization and projects.
@@ -14,7 +14,7 @@ Alternatively, {cloud}/ec-saml-sso.html[configure {ecloud} SAML SSO] to enable y
 You can add multiple members by entering their email addresses separated by a space.
 +
 You can grant access to all projects of the same type with a unique role, or select individual roles for specific projects.
-For more details about roles, refer to <<assign-user-roles>>.
+For more details about roles, refer to <<general-assign-user-roles>>.
 . Click **Send invites**.
 +
 Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation. If they do not join within that period, you will have to send a new invitation.
@@ -24,7 +24,7 @@ On the **Members** tab of the **Organization** page, you can view the list of cu
 In the **Actions** column, click the three dots to edit a member’s role or revoke the invite.
 
 [discrete]
-[[manage-access-to-organization-leave-an-organization]]
+[[general-manage-access-to-organization-leave-an-organization]]
 == Leave an organization
 
 On the **Organization** page, click **Leave organization**.

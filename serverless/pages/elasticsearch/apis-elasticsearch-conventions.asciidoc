@@ -1,4 +1,4 @@
-[[api-conventions]]
+[[elasticsearch-api-conventions]]
 = Elasticsearch API conventions
 
 :description: The {es} REST APIs have conventions for headers and request bodies.
@@ -17,14 +17,14 @@ GET _cat/indices?v=true
 Check out https://www.elastic.co/docs/current/serverless/devtools/run-api-requests-in-the-console[].
 
 [discrete]
-[[api-conventions-request-headers]]
+[[elasticsearch-api-conventions-request-headers]]
 == Request headers
 
 When you call {es} APIs outside of the Console, you must provide a request header.
 The {es} APIs support the `Authorization`, `Content-Type`, and `X-Opaque-Id` headers.
 
 [discrete]
-[[api-conventions-authorization]]
+[[elasticsearch-api-conventions-authorization]]
 === Authorization
 
 {es} APIs use key-based authentication.
@@ -37,10 +37,10 @@ curl -X GET "${ES_URL}/_cat/indices?v=true" \
   -H "Authorization: ApiKey ${API_KEY}"
 ----
 
-To get API keys or the Elasticsearch Endpoint (`${ES_URL}`) for a project, refer to <<get-started>>.
+To get API keys or the Elasticsearch Endpoint (`${ES_URL}`) for a project, refer to <<elasticsearch-get-started>>.
 
 [discrete]
-[[api-conventions-content-type]]
+[[elasticsearch-api-conventions-content-type]]
 === Content-type
 
 The type of the content sent in a request body must be specified using the `Content-Type` header.
@@ -91,7 +91,7 @@ For example, a `traceparent` value of `00-0af7651916cd43dd8448eb211c80319c-b7ad6
 ////
 
 [discrete]
-[[api-conventions-x-opaque-id]]
+[[elasticsearch-api-conventions-x-opaque-id]]
 === X-Opaque-Id
 
 You can pass an `X-Opaque-Id` HTTP header to track the origin of a request in {es} logs and tasks.
@@ -142,7 +142,7 @@ Don't generate a unique `X-Opaque-Id` header for every request.
 Too many unique `X-Opaque-Id` values can prevent {es} from deduplicating warnings in the deprecation logs.
 
 [discrete]
-[[api-conventions-request-bodies]]
+[[elasticsearch-api-conventions-request-bodies]]
 == Request bodies
 
 A number of {es} APIs with GET operations--most notably the search API--support a request body.

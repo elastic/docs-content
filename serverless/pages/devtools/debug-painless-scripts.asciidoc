@@ -1,4 +1,4 @@
-[[debug-painless-scripts]]
+[[devtools-debug-painless-scripts]]
 = Painless Lab
 
 :description: Use our interactive code editor to test and debug Painless scripts in real-time.

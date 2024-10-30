@@ -1,4 +1,4 @@
-[[ingest-data-through-beats]]
+[[elasticsearch-ingest-data-through-beats]]
 = Beats
 
 :description: Use {beats} to ship operational data to {es}.
@@ -42,7 +42,7 @@ can further process and enhance the data before visualizing it in {kib}.
 [NOTE]
 ====
 When you use {beats} to export data to an {es} project, the {beats} require an API key to authenticate with {es}.
-Refer to <<get-started-create-api-key,Create API key>> for the steps to set up your API key,
+Refer to <<elasticsearch-get-started-create-api-key,Create API key>> for the steps to set up your API key,
 and to https://www.elastic.co/guide/en/beats/filebeat/current/beats-api-keys.html[Grant access using API keys] in the Filebeat documentation for an example of how to configure your {beats} to use the key.
 ====
 

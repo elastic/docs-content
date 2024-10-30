@@ -1,4 +1,4 @@
-[[ingest-data-through-api]]
+[[elasticsearch-ingest-data-through-api]]
 = Ingest data through API
 
 :description: Add data to {es} using HTTP APIs or a language client.
@@ -8,21 +8,21 @@ preview:[]
 
 The {es} APIs enable you to ingest data through code.
 You can use the APIs of one of the
-<<clients,language clients>> or the
+<<elasticsearch-clients,language clients>> or the
 {es} HTTP APIs. The examples
 on this page use the HTTP APIs to demonstrate how ingesting works in
 {es} through APIs.
 If you want to ingest timestamped data or have a
 more complex ingestion use case, check out
-<<ingest-data-through-beats>> or
-<<ingest-data-through-logstash>>.
+<<elasticsearch-ingest-data-through-beats>> or
+<<elasticsearch-ingest-data-through-logstash>>.
 
 // <DocLink slug="/serverless/elasticsearch/ingest-data-through-integrations-connector-client" />.
 
 // ^^^^Page temporarily removed
 
 [discrete]
-[[ingest-data-through-api-using-the-bulk-api]]
+[[elasticsearch-ingest-data-through-api-using-the-bulk-api]]
 == Using the bulk API
 
 You can index multiple JSON documents to an index and make it searchable using
@@ -115,7 +115,7 @@ matches the query. The response contains the whole document. Only one document
 matches this query.
 
 [discrete]
-[[ingest-data-through-api-using-the-index-api]]
+[[elasticsearch-ingest-data-through-api-using-the-index-api]]
 == Using the index API
 
 Use the index API to ingest a single document to an index. Following the

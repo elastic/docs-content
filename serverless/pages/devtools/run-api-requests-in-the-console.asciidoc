@@ -1,4 +1,4 @@
-[[run-api-requests-in-the-console]]
+[[devtools-run-api-requests-in-the-console]]
 = Console
 
 :description: Use the Console to interact with Elastic REST APIs.
@@ -20,7 +20,7 @@ To go to **Console**, find **Dev Tools** in the navigation menu or use the globa
 You can also find Console directly on your Elasticsearch serverless project pages, where you can expand it from the footer. This Console, called **Persistent Console**, has the same capabilities and shares the same history as the Console in **Dev Tools**.
 
 [discrete]
-[[run-api-requests-in-the-console-write-requests]]
+[[devtools-run-api-requests-in-the-console-write-requests]]
 == Write requests
 
 **Console** understands commands in a cURL-like syntax.
@@ -52,16 +52,16 @@ curl "${ES_URL}/_search" \
 ----
 
 [discrete]
-[[run-api-requests-in-the-console-autocomplete]]
+[[devtools-run-api-requests-in-the-console-autocomplete]]
 === Autocomplete
 
 When you're typing a command, **Console** makes context-sensitive suggestions.
 These suggestions show you the parameters for each API and speed up your typing.
 
-You can configure your preferences for autocomplete in the <<run-api-requests-in-the-console-configure-console-settings,Console settings>>.
+You can configure your preferences for autocomplete in the <<devtools-run-api-requests-in-the-console-configure-console-settings,Console settings>>.
 
 [discrete]
-[[run-api-requests-in-the-console-comments]]
+[[devtools-run-api-requests-in-the-console-comments]]
 === Comments
 
 You can write comments or temporarily disable parts of a request by using double forward slashes (`//`) or pound (`#`) signs to create single-line comments.
@@ -96,7 +96,7 @@ GET /_search
 ----
 
 [discrete]
-[[run-api-requests-in-the-console-variables]]
+[[devtools-run-api-requests-in-the-console-variables]]
 === Variables
 
 Select **Variables** to create, edit, and delete variables.
@@ -124,7 +124,7 @@ object by removing nearby quotes instead of a string with surrounding quotes. Tr
 quotes overwrite this default behavior and enforce simple replacement as a string.
 
 [discrete]
-[[run-api-requests-in-the-console-auto-formatting]]
+[[devtools-run-api-requests-in-the-console-auto-formatting]]
 === Auto-formatting
 
 The auto-formatting
@@ -132,7 +132,7 @@ capability can help you format requests to be more readable. Select one or more 
 want to format, open the contextual menu, and then select **Auto indent**.
 
 [discrete]
-[[run-api-requests-in-the-console-keyboard-shortcuts]]
+[[devtools-run-api-requests-in-the-console-keyboard-shortcuts]]
 === Keyboard shortcuts
 
 **Go to line number**: `Ctrl/Cmd` + `L`
@@ -154,14 +154,14 @@ want to format, open the contextual menu, and then select **Auto indent**.
 **Navigate items in autocomplete menu**: `↓` + `↑`
 
 [discrete]
-[[run-api-requests-in-the-console-view-api-docs]]
+[[devtools-run-api-requests-in-the-console-view-api-docs]]
 === View API docs
 
 To view the documentation for an API endpoint, select the request, then open the contextual menu and select
 _Open API reference_.
 
 [discrete]
-[[run-api-requests-in-the-console-run-requests]]
+[[devtools-run-api-requests-in-the-console-run-requests]]
 == Run requests
 
 When you're ready to submit the request, select the play button.
@@ -178,7 +178,7 @@ when you're debugging an issue or trying query
 combinations in multiple scenarios.
 
 [discrete]
-[[run-api-requests-in-the-console-import-and-export-requests]]
+[[devtools-run-api-requests-in-the-console-import-and-export-requests]]
 == Import and export requests
 
 You can export requests:
@@ -194,7 +194,7 @@ When importing a TXT file containing Console requests, the current content of th
 When running copied requests from an external environment, you'll need to add https://www.elastic.co/docs/api/doc/serverless/authentication[authentication information] to the request.
 
 [discrete]
-[[run-api-requests-in-the-console-get-your-request-history]]
+[[devtools-run-api-requests-in-the-console-get-your-request-history]]
 == Get your request history
 
 _Console_ maintains a list of the last 500 requests that you tried to execute.
@@ -203,13 +203,13 @@ To view them, open the _History_ tab.
 You can run a request from your history again by selecting the request and clicking **Add and run**. If you want to add it back to the Console input panel without running it yet, click **Add** instead. It is added to the editor at the current cursor position.
 
 [discrete]
-[[run-api-requests-in-the-console-configure-console-settings]]
+[[devtools-run-api-requests-in-the-console-configure-console-settings]]
 == Configure Console settings
 
 Go to the **Config** tab of **Console** to customize its display, autocomplete, and accessibility settings.
 
 [discrete]
-[[run-api-requests-in-the-console-disable-console]]
+[[devtools-run-api-requests-in-the-console-disable-console]]
 == Disable Console
 
 You can disable the persistent console that shows in the footer of your {es} project pages. To do that, go to **Management** > **Advanced Settings**, and turn off the `devTools:enablePersistentConsole` setting.

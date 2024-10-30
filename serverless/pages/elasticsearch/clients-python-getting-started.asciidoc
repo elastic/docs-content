@@ -1,4 +1,4 @@
-[[python-client-getting-started]]
+[[elasticsearch-python-client-getting-started]]
 = Get started with the serverless Python client
 
 :description: Set up and use the Python client for {es3}.
@@ -11,24 +11,24 @@ client for {es3}, shows you how to initialize the client, and how to perform bas
 {es} operations with it.
 
 [discrete]
-[[python-client-getting-started-requirements]]
+[[elasticsearch-python-client-getting-started-requirements]]
 == Requirements
 
 * Python 3.7 or higher
 * https://pip.pypa.io/en/stable/[`pip`]
 
 [discrete]
-[[python-client-getting-started-documentation]]
+[[elasticsearch-python-client-getting-started-documentation]]
 == Documentation
 
 Find the full documentation for the Python client on https://elasticsearch-serverless-python.readthedocs.io/en/latest/[readthedocs].
 
 [discrete]
-[[python-client-getting-started-installation]]
+[[elasticsearch-python-client-getting-started-installation]]
 == Installation
 
 [discrete]
-[[python-client-getting-started-using-the-command-line]]
+[[elasticsearch-python-client-getting-started-using-the-command-line]]
 === Using the command line
 
 You can install the Python client with the following
@@ -40,7 +40,7 @@ python -m pip install elasticsearch-serverless
 ----
 
 [discrete]
-[[python-client-getting-started-initialize-the-client]]
+[[elasticsearch-python-client-getting-started-initialize-the-client]]
 == Initialize the client
 
 Initialize the client using your API key and Elasticsearch Endpoint:
@@ -55,10 +55,10 @@ client = Elasticsearch(
 )
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<get-started>>.
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
-[[python-client-getting-started-using-the-api]]
+[[elasticsearch-python-client-getting-started-using-the-api]]
 == Using the API
 
 After you've initialized the client, you can start ingesting documents. You can use
@@ -66,7 +66,7 @@ the `bulk` API for this. This API enables you to index, update, and delete sever
 documents in one request.
 
 [discrete]
-[[python-client-getting-started-creating-an-index-and-ingesting-documents]]
+[[elasticsearch-python-client-getting-started-creating-an-index-and-ingesting-documents]]
 === Creating an index and ingesting documents
 
 You can call the `bulk` API with a body parameter, an array of hashes that
@@ -92,7 +92,7 @@ client.bulk(
 ----
 
 [discrete]
-[[python-client-getting-started-getting-documents]]
+[[elasticsearch-python-client-getting-started-getting-documents]]
 === Getting documents
 
 You can get documents by using the following code:
@@ -104,7 +104,7 @@ print(response.body)
 ----
 
 [discrete]
-[[python-client-getting-started-searching]]
+[[elasticsearch-python-client-getting-started-searching]]
 === Searching
 
 Now that some data is available, you can search your documents using the
@@ -123,7 +123,7 @@ for hit in response["hits"]["hits"]:
 ----
 
 [discrete]
-[[python-client-getting-started-updating-a-document]]
+[[elasticsearch-python-client-getting-started-updating-a-document]]
 === Updating a document
 
 You can call the `update` API to update a document:
@@ -137,7 +137,7 @@ client.update(index="books", id="2", doc={
 ----
 
 [discrete]
-[[python-client-getting-started-deleting-a-document]]
+[[elasticsearch-python-client-getting-started-deleting-a-document]]
 === Deleting a document
 
 You can call the `delete` API to delete a document:
@@ -148,7 +148,7 @@ client.delete(index="books", id="3")
 ----
 
 [discrete]
-[[python-client-getting-started-deleting-an-index]]
+[[elasticsearch-python-client-getting-started-deleting-an-index]]
 === Deleting an index
 
 [source,python]
