@@ -60,6 +60,7 @@ To assign and remove tags, you must have `write` permission on the objects to wh
 . Find the tag you want to assign.
 . Click the actions icon and then select **Manage assignments**.
 . Select the objects to which you want to assign or remove tags.
++
 [role="screenshot"]
 image::images/tag-assignment.png[Assign tags to saved objects]
 . Click **Save tag assignments**.

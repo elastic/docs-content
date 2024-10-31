@@ -41,7 +41,8 @@ You can have up to 100 spaces in a project.
 {kib} also has an https://www.elastic.co/docs/api/doc/serverless/group/endpoint-spaces[API]
 if you prefer to create spaces programmatically.
 
-ifeval::["{serverlessCustomRoles}" == "true"]
+ifdef::serverlessCustomRoles[]
+
 [discrete]
 [[spaces-customize-access-to-space]]
 == Customize access to space
@@ -49,6 +50,7 @@ ifeval::["{serverlessCustomRoles}" == "true"]
 Customizing access to a space is available for the following project types only: {es-badge} {sec-badge}
 
 As an administrator, you can define custom roles with specific access to certain spaces and features in a project. Refer to <<custom-roles>>.
+
 endif::[]
 
 [discrete]
