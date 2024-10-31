@@ -142,17 +142,21 @@ components and includes a simple aggregation:
 [role="screenshot"]
 image::images/profiler-gs8.png[Profiling the more complicated query]
 +
+--
 ** The top `BooleanQuery` component corresponds to the `bool` in the query.
 ** The second `BooleanQuery` corresponds to the `terms` query, which is internally
 converted to a `Boolean` of `should` clauses. It has two child queries that correspond
 to "sally" and "sue from the `terms` query.
 ** The `TermQuery` that's labeled with "name:fred" corresponds to `match: fred` in the query.
+--
 +
 In the time columns, the **Self time** and **Total time** are no longer
 identical on all rows:
 +
+--
 ** **Self time** represents how long the query component took to execute.
 ** **Total time** is the time a query component and all its children took to execute.
+--
 +
 Therefore, queries like the Boolean queries often have a larger total time than self time.
 . Select **Aggregation Profile** to view aggregation profiling statistics.

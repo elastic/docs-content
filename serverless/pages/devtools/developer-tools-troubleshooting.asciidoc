@@ -163,7 +163,7 @@ GET /my-index-000001/_count
 }
 ----
 
-If the field is aggregatable, you can use https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-aggregations[aggregations]
+If the field is aggregatable, you can use <<elasticsearch-explore-your-data-aggregations,aggregations>>
 to check the field's values. For `keyword` fields, you can use a `terms`
 aggregation to retrieve the field's most common values:
 
@@ -288,7 +288,7 @@ GET /my-index-000001/_settings
 You can update dynamic index settings with the
 https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-settings[**Update index settings API**].
 Changing dynamic index settings for a data stream
- requires changing the index template used by the data stream.
+requires changing the index template used by the data stream.
 
 For static settings, you need to create a new index with the correct settings.
 Next, you can reindex the data into that index.
