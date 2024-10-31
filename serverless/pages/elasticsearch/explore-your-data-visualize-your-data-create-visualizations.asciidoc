@@ -349,7 +349,7 @@ To personalize your dashboards, add your own logos and graphics with the **Image
 . Click **Save**.
 . To save the new image panel to your dashboard click **Save**.
 
-To manage your uploaded image files, open the main menu, then click ** Management → Files**.
+To manage your uploaded image files, open the main menu, then click **Management → Files**.
 
 [WARNING]
 ====
