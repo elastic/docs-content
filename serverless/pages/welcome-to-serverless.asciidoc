@@ -31,27 +31,25 @@ Elastic serverless products are currently in preview. https://www.elastic.co/blo
 
 Choose the type of project that matches your needs and we’ll help you get started with our solution guides.
 
-:hardbreaks-option:
-
 [cols="1,1"]
 |===
 |
 |
 
 | image:https://www.elastic.co/docs/assets/images/elasticsearch.png[width=150]
-a| [.card-title]#Elasticsearch#
+a| [.card-title]#Elasticsearch# +
 Build custom search applications with Elasticsearch.
 
 <<what-is-elasticsearch-serverless,*View guide →*>>
 
 | image:https://www.elastic.co/docs/assets/images/observability.png[width=150]
-a| [.card-title]#Observability#
+a| [.card-title]#Observability# +
 Monitor applications and systems with Elastic Observability.
 
 <<what-is-observability-serverless,*View guide →*>>
 
 | image:https://www.elastic.co/docs/assets/images/security.png[width=150]
-a| [.card-title]#Security#
+a| [.card-title]#Security# +
 Detect, investigate, and respond to threats with Elastic Security.
 
 <<what-is-security-serverless,*View guide →*>>
@@ -63,26 +61,15 @@ Detect, investigate, and respond to threats with Elastic Security.
 [discrete]
 == Featured topics
 
-|===
-|
-
-a| <<general-manage-access-to-organization,*Invite your team*>>
+* <<general-manage-access-to-organization,*Invite your team*>>:
 Invite new members to your organization.
-
-a| <<general-assign-user-roles,*Assign user roles and privileges*>>
+* <<general-assign-user-roles,*Assign user roles and privileges*>>:
 Assign user roles and privileges to members in your organization.
-
-a| <<elasticsearch-manage-project,*Manage your projects*>>
+* <<elasticsearch-manage-project,*Manage your projects*>>:
 Manage your project data, search power, and more.
-
-a| <<general-check-subscription,*Check your subscription overview*>>
+* <<general-check-subscription,*Check your subscription overview*>>:
 View the details about your subscription.
-
-a| <<general-monitor-usage,*Monitor and analyze your account usage*>>
+* <<general-monitor-usage,*Monitor and analyze your account usage*>>:
 Check past and current usage for your projects.
-
-a| <<project-settings,*Manage your project settings*>>
+* <<project-settings,*Manage your project settings*>>:
 Manage your indices, data views, and more.
-|===
-
-:hardbreaks-option!:
