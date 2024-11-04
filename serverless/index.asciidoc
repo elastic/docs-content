@@ -3,12 +3,8 @@
 include::{asciidoc-dir}/../../shared/versions/stack/master.asciidoc[]
 include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 
-:general-serverless:          {docs-content-root}/serverless/pages/general
-:elasticsearch-serverless:    {docs-content-root}/serverless/pages/elasticsearch
 :security-serverless:         {security-docs-root}/docs/serverless
 :observability-serverless:    {observability-docs-root}/docs/en/serverless
-:devtools-serverless:         {docs-content-root}/serverless/pages/devtools
-:project-settings-serverless: {docs-content-root}/serverless/pages/project-settings
 
 :es-badge: <<what-is-elasticsearch-serverless,image:images/es-badge.svg[Elasticsearch]>>
 :obs-badge: <<what-is-observability-serverless,image:images/obs-badge.svg[Observability]>>
@@ -42,14 +38,14 @@ include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 
 = Serverless
 
-include::{general-serverless}/index.asciidoc[]
-include::{elasticsearch-serverless}/index.asciidoc[]
+include::./index-serverless-general.asciidoc[]
+include::./index-serverless-elasticsearch.asciidoc[]
 include::{observability-serverless}/index.asciidoc[]
 include::{security-serverless}/index.asciidoc[]
-include::{devtools-serverless}/index.asciidoc[]
-include::{project-settings-serverless}/index.asciidoc[]
+include::./index-serverless-devtools.asciidoc[]
+include::./index-serverless-project-settings.asciidoc[]
 
 // Hidden pages
-include::{elasticsearch-serverless}/explore-your-data-visualize-your-data-create-dashboards.asciidoc[leveloffset=+1]
-include::{elasticsearch-serverless}/explore-your-data-visualize-your-data-create-visualizations.asciidoc[leveloffset=+1]
-include::{general-serverless}/visualize-library.asciidoc[leveloffset=+1]
+include::./pages/explore-your-data-visualize-your-data-create-dashboards.asciidoc[leveloffset=+1]
+include::./pages/explore-your-data-visualize-your-data-create-visualizations.asciidoc[leveloffset=+1]
+include::./pages/visualize-library.asciidoc[leveloffset=+1]

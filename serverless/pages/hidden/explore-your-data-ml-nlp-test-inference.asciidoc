@@ -64,4 +64,4 @@ recognized entities:
 // NOTCONSOLE
 
 If you are satisfied with the results, you can add these NLP tasks in your
-https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/inference[ingestion pipelines].
+<<elasticsearch-explore-your-data-ml-nlp-inference,ingestion pipelines>>.

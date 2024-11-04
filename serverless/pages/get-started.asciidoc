@@ -28,7 +28,7 @@ Select **Create project** to continue.
 
 You should now see **Get started with {es}**, and you're ready to continue.
 
-include::../../partials/minimum-vcus-detail.asciidoc[]
+include::../partials/minimum-vcus-detail.asciidoc[]
 
 [discrete]
 [[elasticsearch-get-started-create-api-key]]

@@ -15,7 +15,7 @@ and the number of searches and latency you require for searches. In addition, if
 you required {ml} for inference or NLP tasks, those VCUs are also
 metered and billed.
 
-include::../../partials/minimum-vcus-detail.asciidoc[]
+include::../partials/minimum-vcus-detail.asciidoc[]
 
 [discrete]
 [[elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]]

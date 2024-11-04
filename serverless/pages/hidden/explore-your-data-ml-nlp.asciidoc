@@ -20,7 +20,7 @@ techniques. The {stack} {ml} features are structured around BERT and
 transformer models. These features support BERT’s tokenization scheme (called
 WordPiece) and transformer models that conform to the standard BERT model
 interface. For the current list of supported architectures, refer to
-https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/model-reference[Compatible third party NLP models].
+<<elasticsearch-explore-your-data-ml-nlp-model-reference,Compatible third party NLP models>>.
 
 To incorporate transformer models and make predictions, {es} uses libtorch,
 which is an underlying native library for PyTorch. Trained models must be in a
@@ -28,6 +28,6 @@ TorchScript representation for use with {stack} {ml} features.
 
 You can perform the following NLP operations:
 
-* https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/extract-info[Extract information]
-* https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/classify-text[Classify text]
-* https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/search-compare-text[Search and compare text]
+* <<elasticsearch-explore-your-data-ml-nlp-extract-info,Extract information>>
+* <<elasticsearch-explore-your-data-ml-nlp-classify-text,Classify text>>
+* <<elasticsearch-explore-your-data-ml-nlp-search-compare-text,Search and compare text>>

@@ -7,5 +7,5 @@ preview:[]
 The following pages contain end-to-end examples of how to use the different
 {nlp} tasks in the {stack}.
 
-* https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/examples/ner[How to deploy named entity recognition]
-* https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/examples/text-embedding-vector-search[How to deploy a text embedding model and use it for semantic search]
+* <<elasticsearch-explore-your-data-ml-nlp-examples-ner,How to deploy named entity recognition>>
+* <<elasticsearch-explore-your-data-ml-nlp-examples-text-embedding-vector-search,How to deploy a text embedding model and use it for semantic search>>
