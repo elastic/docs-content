@@ -3,14 +3,17 @@
 include::{docs-root}/shared/versions/stack/{source_branch}.asciidoc[]
 include::{docs-root}/shared/attributes.asciidoc[]
 
-= Dev tools
+[[developer-tools]]
+== Dev tools
 
-include::./run-api-requests-in-the-console.asciidoc[leveloffset=+1]
+include::./general-developer-tools.asciidoc[leveloffset=+2]
 
-include::./profile-queries-and-aggregations.asciidoc[leveloffset=+1]
+include::./run-api-requests-in-the-console.asciidoc[leveloffset=+2]
 
-include::./debug-grok-expressions.asciidoc[leveloffset=+1]
+include::./profile-queries-and-aggregations.asciidoc[leveloffset=+2]
 
-include::./debug-painless-scripts.asciidoc[leveloffset=+1]
+include::./debug-grok-expressions.asciidoc[leveloffset=+2]
 
-include::./developer-tools-troubleshooting.asciidoc[leveloffset=+1]
+include::./debug-painless-scripts.asciidoc[leveloffset=+2]
+
+include::./developer-tools-troubleshooting.asciidoc[leveloffset=+2]
