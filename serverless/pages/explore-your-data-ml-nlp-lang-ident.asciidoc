@@ -1,7 +1,7 @@
 = Language identification
 
-:description: Language identification is an NLP task and a model that enables you to determine the language of text.
-:keywords: serverless, elasticsearch, tbd
+// :description: Language identification is an NLP task and a model that enables you to determine the language of text.
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

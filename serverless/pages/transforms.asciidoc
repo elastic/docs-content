@@ -1,8 +1,8 @@
 [[transforms]]
 = {transforms-app}
 
-:description: Use transforms to pivot existing indices into summarized or entity-centric indices.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: Use transforms to pivot existing indices into summarized or entity-centric indices.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

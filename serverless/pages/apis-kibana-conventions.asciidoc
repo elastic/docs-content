@@ -1,8 +1,8 @@
 [[elasticsearch-kibana-api-conventions]]
 = Management API conventions
 
-:description: The Management APIs for {serverless-short} have request header conventions.
-:keywords: serverless, kibana, API, reference
+// :description: The Management APIs for {serverless-short} have request header conventions.
+// :keywords: serverless, kibana, API, reference
 
 preview:[]
 

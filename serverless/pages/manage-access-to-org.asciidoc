@@ -1,8 +1,8 @@
 [[general-manage-access-to-organization]]
 = Invite your team
 
-:description: Add members to your organization and projects.
-:keywords: serverless, general, organization, overview
+// :description: Add members to your organization and projects.
+// :keywords: serverless, general, organization, overview
 
 To allow other users to interact with your projects, you must invite them to join your organization and grant them access to your organization resources and instances.
 

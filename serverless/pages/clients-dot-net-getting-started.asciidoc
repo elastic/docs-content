@@ -1,8 +1,8 @@
 [[elasticsearch-dot-net-client-getting-started]]
 = Get started with the serverless .NET client
 
-:description: Set up and use the .NET client for {es3}.
-:keywords: serverless, elasticsearch, .net, how to
+// :description: Set up and use the .NET client for {es3}.
+// :keywords: serverless, elasticsearch, .net, how to
 
 preview:[]
 

@@ -1,6 +1,6 @@
 = Import the trained model and vocabulary
 
-:keywords: serverless, elasticsearch, tbd
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

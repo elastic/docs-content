@@ -1,8 +1,8 @@
 [[files]]
 = {files-app}
 
-:description: Manage files that are stored in Elastic.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: Manage files that are stored in Elastic.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

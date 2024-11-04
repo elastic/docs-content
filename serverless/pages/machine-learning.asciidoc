@@ -1,8 +1,8 @@
 [[machine-learning]]
 = {ml-cap}
 
-:description: View, export, and import {ml} jobs and models.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: View, export, and import {ml} jobs and models.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

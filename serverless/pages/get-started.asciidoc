@@ -1,8 +1,8 @@
 [[elasticsearch-get-started]]
 = Get started
 
-:description: Get started with {es3} in a few steps
-:keywords: serverless, elasticsearch, getstarted, overview
+// :description: Get started with {es3} in a few steps
+// :keywords: serverless, elasticsearch, getstarted, overview
 
 preview:[]
 

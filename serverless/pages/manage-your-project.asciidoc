@@ -1,8 +1,8 @@
 [[elasticsearch-manage-project]]
 = Manage your projects
 
-:description: Configure project-wide features and usage.
-:keywords: serverless, elasticsearch, project, manage
+// :description: Configure project-wide features and usage.
+// :keywords: serverless, elasticsearch, project, manage
 
 preview:[]
 

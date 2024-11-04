@@ -1,8 +1,8 @@
 [[elasticsearch-ingest-data-through-logstash]]
 = Logstash
 
-:description: Use {ls} to ship data to {es}.
-:keywords: serverless, elasticsearch, ingest, logstash, how to
+// :description: Use {ls} to ship data to {es}.
+// :keywords: serverless, elasticsearch, ingest, logstash, how to
 
 preview:[]
 

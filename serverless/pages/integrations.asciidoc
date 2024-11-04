@@ -1,8 +1,8 @@
 [[integrations]]
 = Integrations
 
-:description: Use our pre-built integrations to connect your data to Elastic.
-:keywords: serverless, ingest, integration
+// :description: Use our pre-built integrations to connect your data to Elastic.
+// :keywords: serverless, ingest, integration
 
 preview:[]
 

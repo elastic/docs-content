@@ -1,8 +1,8 @@
 [[general-user-profile]]
 = Update your user profile
 
-:description: Manage your profile settings.
-:keywords: serverless, general, profile, update
+// :description: Manage your profile settings.
+// :keywords: serverless, general, profile, update
 
 preview:[]
 

@@ -1,8 +1,8 @@
 [[general-manage-project-with-api]]
 = Using the Project Management REST API
 
-:description: Manage your organization's serverless projects using the REST API.
-:keywords: serverless, project, manage, rest, api
+// :description: Manage your organization's serverless projects using the REST API.
+// :keywords: serverless, project, manage, rest, api
 
 preview:[]
 

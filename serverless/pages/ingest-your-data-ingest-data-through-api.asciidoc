@@ -1,8 +1,8 @@
 [[elasticsearch-ingest-data-through-api]]
 = Ingest data through API
 
-:description: Add data to {es} using HTTP APIs or a language client.
-:keywords: serverless, elasticsearch, ingest, api, how to
+// :description: Add data to {es} using HTTP APIs or a language client.
+// :keywords: serverless, elasticsearch, ingest, api, how to
 
 preview:[]
 

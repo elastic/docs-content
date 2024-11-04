@@ -1,6 +1,6 @@
 = Deploy the model in your cluster
 
-:description: Description to be written
+// :description: Description to be written
 
 preview:[]
 

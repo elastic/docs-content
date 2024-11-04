@@ -1,8 +1,8 @@
 [[reports]]
 = {reports-app}
 
-:description: View and manage generated reports.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: View and manage generated reports.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

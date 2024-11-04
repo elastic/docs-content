@@ -1,8 +1,8 @@
 [[action-connectors]]
 = {connectors-app}
 
-:description: Configure connections to third party systems for use in cases and rules.
-:keywords: serverless
+// :description: Configure connections to third party systems for use in cases and rules.
+// :keywords: serverless
 
 preview:[]
 

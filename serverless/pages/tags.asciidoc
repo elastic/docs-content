@@ -1,8 +1,8 @@
 [[tags]]
 = {tags-app}
 
-:description: Use tags to categorize your saved objects, then filter for related objects based on shared tags.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: Use tags to categorize your saved objects, then filter for related objects based on shared tags.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

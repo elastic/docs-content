@@ -1,8 +1,8 @@
 [[data-views]]
 = {data-sources-cap}
 
-:description: Elastic requires a {data-source} to access the {es} data that you want to explore.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: Elastic requires a {data-source} to access the {es} data that you want to explore.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

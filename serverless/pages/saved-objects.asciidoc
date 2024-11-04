@@ -1,8 +1,8 @@
 [[saved-objects]]
 = Saved objects
 
-:description: Manage your saved objects, including dashboards, visualizations, maps, {data-sources}, and more.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: Manage your saved objects, including dashboards, visualizations, maps, {data-sources}, and more.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

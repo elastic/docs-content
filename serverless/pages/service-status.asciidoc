@@ -1,7 +1,7 @@
 [[general-serverless-status]]
 = Monitor serverless status
 
-:keywords: serverless
+// :keywords: serverless
 
 Serverless projects run on cloud platforms, which may undergo changes in availability.
 When availability changes, Elastic makes sure to provide you with a current service status.

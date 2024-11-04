@@ -1,8 +1,8 @@
 [[elasticsearch-explore-your-data-discover-your-data]]
 = Discover your data
 
-:description: Learn how to use Discover to gain insights into your data.
-:keywords: serverless, elasticsearch, discover data, how to
+// :description: Learn how to use Discover to gain insights into your data.
+// :keywords: serverless, elasticsearch, discover data, how to
 
 preview:[]
 

@@ -1,8 +1,8 @@
 [[general-manage-billing]]
 = Manage billing of your organization
 
-:description: Configure the billing details of your organization.
-:keywords: serverless, general, billing, overview
+// :description: Configure the billing details of your organization.
+// :keywords: serverless, general, billing, overview
 
 ++++
 <titleabbrev>Manage billing</titleabbrev>

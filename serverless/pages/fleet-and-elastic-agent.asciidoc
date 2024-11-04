@@ -1,8 +1,8 @@
 [[fleet-and-elastic-agent]]
 = Fleet and Elastic Agent
 
-:description: Centrally manage your Elastic Agents in Fleet
-:keywords: serverless, ingest, fleet, elastic agent
+// :description: Centrally manage your Elastic Agents in Fleet
+// :keywords: serverless, ingest, fleet, elastic agent
 
 preview:[]
 

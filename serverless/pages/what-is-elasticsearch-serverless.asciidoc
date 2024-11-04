@@ -2,8 +2,8 @@
 To be rewritten/refined
 ////
 
-:description: Build search solutions and applications with {es}.
-:keywords: serverless, elasticsearch, overview
+// :description: Build search solutions and applications with {es}.
+// :keywords: serverless, elasticsearch, overview
 
 preview:[]
 

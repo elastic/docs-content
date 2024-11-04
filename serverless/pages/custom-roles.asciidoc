@@ -1,8 +1,8 @@
 [[custom-roles]]
 = Custom roles
 
-:description: Create and manage roles that grant privileges within your project.
-:keywords: serverless, Elasticsearch, Security
+// :description: Create and manage roles that grant privileges within your project.
+// :keywords: serverless, Elasticsearch, Security
 
 ifndef::serverlessCustomRoles[]
 coming:[]

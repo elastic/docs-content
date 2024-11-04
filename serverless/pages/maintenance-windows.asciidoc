@@ -1,8 +1,8 @@
 [[maintenance-windows]]
 = {maint-windows-cap}
 
-:description: Suppress rule notifications for scheduled periods of time.
-:keywords: serverless, Observability, Security
+// :description: Suppress rule notifications for scheduled periods of time.
+// :keywords: serverless, Observability, Security
 
 preview:[]
 

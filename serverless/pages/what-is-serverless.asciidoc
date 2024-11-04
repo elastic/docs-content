@@ -1,7 +1,7 @@
 [[general-what-is-serverless-elastic]]
 = What is serverless Elastic?
 
-:keywords: serverless
+// :keywords: serverless
 
 Serverless projects use the core components of the {stack}, such as {es} and {kib}, and are based on https://www.elastic.co/blog/elastic-serverless-architecture[an architecture that
 decouples compute and storage]. Search and indexing operations are separated, which offers high flexibility for scaling your workloads while ensuring

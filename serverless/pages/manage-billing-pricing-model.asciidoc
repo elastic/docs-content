@@ -1,8 +1,8 @@
 [[general-serverless-billing]]
 = Serverless billing dimensions
 
-:description: Understand how usage affects serverless pricing.
-:keywords: serverless, general, billing, pricing model
+// :description: Understand how usage affects serverless pricing.
+// :keywords: serverless, general, billing, pricing model
 
 preview:[]
 

@@ -1,8 +1,8 @@
 [[general-check-subscription]]
 = Check your subscription
 
-:description: Manage your account details and subscription level.
-:keywords: serverless, general, billing, subscription
+// :description: Manage your account details and subscription level.
+// :keywords: serverless, general, billing, subscription
 
 preview:[]
 

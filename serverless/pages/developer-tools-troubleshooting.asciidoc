@@ -1,8 +1,8 @@
 [[devtools-dev-tools-troubleshooting]]
 = Troubleshooting
 
-:description: Troubleshoot searches.
-:keywords: serverless, troubleshooting
+// :description: Troubleshoot searches.
+// :keywords: serverless, troubleshooting
 
 preview:[]
 

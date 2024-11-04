@@ -1,8 +1,8 @@
 [[project-settings]]
 = Management settings
 
-:description: Manage your indices, data views, saved objects, settings, and more from a central location in Elastic.
-:keywords: serverless, management, overview
+// :description: Manage your indices, data views, saved objects, settings, and more from a central location in Elastic.
+// :keywords: serverless, management, overview
 
 ++++
 <titleabbrev>Management</titleabbrev>

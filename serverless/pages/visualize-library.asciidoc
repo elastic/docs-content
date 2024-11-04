@@ -1,7 +1,7 @@
 [role="exclude",id="visualize-library"]
 = Visualize Library
 
-:keywords: serverless, Elasticsearch, Observability, Security
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 ////
 /* TODO: Figure out best way to deal with inconsistent location of these capabilities in different solutions.

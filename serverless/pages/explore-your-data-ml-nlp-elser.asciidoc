@@ -1,7 +1,7 @@
 = ELSER – Elastic Learned Sparse EncodeR
 
-:description: ELSER is a learned sparse ranking model trained by Elastic.
-:keywords: serverless, elasticsearch, tbd
+// :description: ELSER is a learned sparse ranking model trained by Elastic.
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

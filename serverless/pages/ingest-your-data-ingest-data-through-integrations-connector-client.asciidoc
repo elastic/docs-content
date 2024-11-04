@@ -1,8 +1,8 @@
 [[elasticsearch-ingest-data-through-integrations-connector-client]]
 = Connector clients
 
-:description: Set up and deploy self-managed connectors that run on your own infrastructure.
-:keywords: serverless, elasticsearch, ingest, connector, how to
+// :description: Set up and deploy self-managed connectors that run on your own infrastructure.
+// :keywords: serverless, elasticsearch, ingest, connector, how to
 
 [NOTE]
 ====

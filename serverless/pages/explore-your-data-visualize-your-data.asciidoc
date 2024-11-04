@@ -1,8 +1,8 @@
 [[elasticsearch-explore-your-data-visualize-your-data]]
 = Visualize your data
 
-:description: Build dynamic dashboards and visualizations for your {es} data.
-:keywords: serverless, elasticsearch, visualize, how to
+// :description: Build dynamic dashboards and visualizations for your {es} data.
+// :keywords: serverless, elasticsearch, visualize, how to
 
 preview:[]
 

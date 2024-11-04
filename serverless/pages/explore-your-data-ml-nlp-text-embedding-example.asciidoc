@@ -1,6 +1,6 @@
 = How to deploy a text embedding model and use it for semantic search
 
-:description: Description to be written
+// :description: Description to be written
 
 preview:[]
 

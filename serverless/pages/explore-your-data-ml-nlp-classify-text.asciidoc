@@ -1,7 +1,7 @@
 = Classify text
 
-:description: NLP tasks that classify input text or determine the language of text.
-:keywords: serverless, elasticsearch, tbd
+// :description: NLP tasks that classify input text or determine the language of text.
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

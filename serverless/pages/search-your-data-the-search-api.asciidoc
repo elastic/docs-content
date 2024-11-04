@@ -1,8 +1,8 @@
 [[elasticsearch-search-your-data-the-search-api]]
 = The search API
 
-:description: Run queries and aggregations with the search API.
-:keywords: serverless, elasticsearch, API
+// :description: Run queries and aggregations with the search API.
+// :keywords: serverless, elasticsearch, API
 
 preview:[]
 

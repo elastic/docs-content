@@ -1,8 +1,8 @@
 [[elasticsearch-nodejs-client-getting-started]]
 = Get started with the serverless Node.js client
 
-:description: Set up and use the Node.js client for {es3}.
-:keywords: serverless, elasticsearch, nodejs, how to
+// :description: Set up and use the Node.js client for {es3}.
+// :keywords: serverless, elasticsearch, nodejs, how to
 
 preview:[]
 

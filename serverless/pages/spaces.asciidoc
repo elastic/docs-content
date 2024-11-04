@@ -1,7 +1,7 @@
 [[spaces]]
 = Spaces
 
-:description: Organize your project and objects into multiple spaces.
+// :description: Organize your project and objects into multiple spaces.
 
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 

@@ -1,8 +1,8 @@
 [[logstash-pipelines]]
 = {ls-pipelines}
 
-:description: Create, edit, and delete your {ls} pipeline configurations.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: Create, edit, and delete your {ls} pipeline configurations.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

@@ -1,8 +1,8 @@
 [[elasticsearch-reference-semantic-search]]
 = Semantic search
 
-:description: Find data based on the intent and contextual meaning of a search query with semantic search
-:keywords: elasticsearch, elser, semantic search
+// :description: Find data based on the intent and contextual meaning of a search query with semantic search
+// :keywords: elasticsearch, elser, semantic search
 
 preview:[]
 

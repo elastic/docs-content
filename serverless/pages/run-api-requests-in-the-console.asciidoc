@@ -1,8 +1,8 @@
 [[devtools-run-api-requests-in-the-console]]
 = Console
 
-:description: Use the Console to interact with Elastic REST APIs.
-:keywords: serverless, dev tools, how-to
+// :description: Use the Console to interact with Elastic REST APIs.
+// :keywords: serverless, dev tools, how-to
 
 preview:[]
 

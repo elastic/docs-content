@@ -1,6 +1,6 @@
 = Examples
 
-:description: Description to be written
+// :description: Description to be written
 
 preview:[]
 

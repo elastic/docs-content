@@ -1,8 +1,8 @@
 [role="exclude",id="elasticsearch-explore-your-data-visualizations"]
 = Create visualizations
 
-:description: Create charts, graphs, maps, and more from your {es} data.
-:keywords: serverless, elasticsearch, visualize, how to
+// :description: Create charts, graphs, maps, and more from your {es} data.
+// :keywords: serverless, elasticsearch, visualize, how to
 
 preview:[]
 

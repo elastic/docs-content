@@ -1,8 +1,8 @@
 [[maps]]
 = {maps-app}
 
-:description: Create maps from your geographical data.
-:keywords: serverless, Security
+// :description: Create maps from your geographical data.
+// :keywords: serverless, Security
 
 preview:[]
 

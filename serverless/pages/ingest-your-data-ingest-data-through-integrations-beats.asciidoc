@@ -1,8 +1,8 @@
 [[elasticsearch-ingest-data-through-beats]]
 = Beats
 
-:description: Use {beats} to ship operational data to {es}.
-:keywords: serverless, elasticsearch, ingest, beats, how to
+// :description: Use {beats} to ship operational data to {es}.
+// :keywords: serverless, elasticsearch, ingest, beats, how to
 
 preview:[]
 

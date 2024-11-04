@@ -1,6 +1,6 @@
 = Select a trained model
 
-:keywords: serverless, elasticsearch, tbd
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

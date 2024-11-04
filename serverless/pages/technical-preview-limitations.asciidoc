@@ -1,8 +1,8 @@
 [[elasticsearch-technical-preview-limitations]]
 = Technical preview limitations
 
-:description: Review the limitations that apply to Elasticsearch projects.
-:keywords: serverless, elasticsearch
+// :description: Review the limitations that apply to Elasticsearch projects.
+// :keywords: serverless, elasticsearch
 
 preview:[]
 

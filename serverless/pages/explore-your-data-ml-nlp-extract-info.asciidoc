@@ -1,7 +1,7 @@
 = Extract information
 
-:description: NLP tasks that extract information from unstructured text.
-:keywords: serverless, elasticsearch, tbd
+// :description: NLP tasks that extract information from unstructured text.
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

@@ -1,8 +1,8 @@
 [[elasticsearch-explore-your-data-alerting]]
 = Manage alerting rules
 
-:description: Define when to generate alerts and notifications with alerting rules.
-:keywords: serverless, elasticsearch, alerting, how-to
+// :description: Define when to generate alerts and notifications with alerting rules.
+// :keywords: serverless, elasticsearch, alerting, how-to
 
 ++++
 <titleabbrev>Alerts</titleabbrev>

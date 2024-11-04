@@ -1,8 +1,8 @@
 [[ingest-pipelines]]
 = {ingest-pipelines-cap}
 
-:description: Create and manage {ingest-pipelines} to perform common transformations and enrichments on your data.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: Create and manage {ingest-pipelines} to perform common transformations and enrichments on your data.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

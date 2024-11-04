@@ -1,8 +1,8 @@
 [[elasticsearch-differences]]
 = Differences from other Elasticsearch offerings
 
-:description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
-:keywords: serverless, elasticsearch
+// :description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
+// :keywords: serverless, elasticsearch
 
 ++++
 <titleabbrev>Serverless differences</titleabbrev>

@@ -1,8 +1,8 @@
 [[devtools-profile-queries-and-aggregations]]
 = Search Profiler
 
-:description: Diagnose and debug poorly performing search queries.
-:keywords: serverless, dev tools, how-to
+// :description: Diagnose and debug poorly performing search queries.
+// :keywords: serverless, dev tools, how-to
 
 preview:[]
 

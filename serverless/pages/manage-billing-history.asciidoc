@@ -1,8 +1,8 @@
 [[general-billing-history]]
 = Check your billing history
 
-:description: Monitor payments and billing receipts.
-:keywords: serverless, general, billing, history
+// :description: Monitor payments and billing receipts.
+// :keywords: serverless, general, billing, history
 
 preview:[]
 

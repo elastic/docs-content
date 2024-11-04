@@ -1,8 +1,8 @@
 [[elasticsearch-reference-search-with-synonyms]]
 = Full-text search with synonyms
 
-:description: Use synonyms to search for words or phrases that have the same or similar meaning.
-:keywords: serverless, elasticsearch, search, synonyms
+// :description: Use synonyms to search for words or phrases that have the same or similar meaning.
+// :keywords: serverless, elasticsearch, search, synonyms
 
 preview:[]
 

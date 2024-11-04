@@ -1,7 +1,7 @@
 = Compatible third party NLP models
 
-:description: The list of compatible third party NLP models.
-:keywords: ml, reference, analyze
+// :description: The list of compatible third party NLP models.
+// :keywords: ml, reference, analyze
 
 preview:[]
 

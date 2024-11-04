@@ -1,8 +1,8 @@
 [[index-management]]
 = Index management
 
-:description: Perform CRUD operations on indices and data streams. View index settings, mappings, and statistics.
-:keywords: serverless, Elasticsearch, Observability, Security
+// :description: Perform CRUD operations on indices and data streams. View index settings, mappings, and statistics.
+// :keywords: serverless, Elasticsearch, Observability, Security
 
 preview:[]
 

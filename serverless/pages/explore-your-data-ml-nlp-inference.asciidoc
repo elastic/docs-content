@@ -1,7 +1,7 @@
 = Add NLP {infer} to ingest pipelines
 
-:description: You can import trained models into your cluster and configure them for specific NLP tasks.
-:keywords: serverless, elasticsearch, tbd
+// :description: You can import trained models into your cluster and configure them for specific NLP tasks.
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

@@ -1,8 +1,8 @@
 [[elasticsearch-explore-your-data-aggregations]]
 = Aggregations
 
-:description: Aggregate and summarize your {es} data.
-:keywords: serverless, elasticsearch, aggregations, reference
+// :description: Aggregate and summarize your {es} data.
+// :keywords: serverless, elasticsearch, aggregations, reference
 
 preview:[]
 

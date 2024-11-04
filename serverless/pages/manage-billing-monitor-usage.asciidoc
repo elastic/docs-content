@@ -1,8 +1,8 @@
 [[general-monitor-usage]]
 = Monitor your account usage
 
-:description: Check the usage breakdown of your account.
-:keywords: serverless, general, billing, usage
+// :description: Check the usage breakdown of your account.
+// :keywords: serverless, general, billing, usage
 
 preview:[]
 

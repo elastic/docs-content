@@ -1,6 +1,6 @@
 = How to deploy named entity recognition
 
-:description: Description to be written
+// :description: Description to be written
 
 preview:[]
 

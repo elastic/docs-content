@@ -1,6 +1,6 @@
 = Machine Learning - Natural Language Processing
 
-:keywords: serverless, elasticsearch, tbd
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

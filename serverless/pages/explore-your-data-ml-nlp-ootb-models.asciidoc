@@ -1,7 +1,7 @@
 = Elastic trained models
 
-:description: Models trained and provided by Elastic
-:keywords: serverless, elasticsearch, tbd
+// :description: Models trained and provided by Elastic
+// :keywords: serverless, elasticsearch, tbd
 
 preview:[]
 

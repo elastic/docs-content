@@ -1,8 +1,8 @@
 [[elasticsearch-search-your-data]]
 = Search your data
 
-:description: Use the search API to run queries on your data.
-:keywords: serverless, elasticsearch, search
+// :description: Use the search API to run queries on your data.
+// :keywords: serverless, elasticsearch, search
 
 preview:[]
 

@@ -1,8 +1,8 @@
 [[elasticsearch-api-conventions]]
 = Elasticsearch API conventions
 
-:description: The {es} REST APIs have conventions for headers and request bodies.
-:keywords: serverless, elasticsearch, API, reference
+// :description: The {es} REST APIs have conventions for headers and request bodies.
+// :keywords: serverless, elasticsearch, API, reference
 
 preview:[]
 

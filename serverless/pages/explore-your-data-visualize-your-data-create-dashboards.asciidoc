@@ -1,8 +1,8 @@
 [role="exclude",id="elasticsearch-explore-your-data-dashboards"]
 = Create dashboards
 
-:description: Create dashboards to visualize and monitor your {es} data.
-:keywords: serverless, elasticsearch, dashboards, how to
+// :description: Create dashboards to visualize and monitor your {es} data.
+// :keywords: serverless, elasticsearch, dashboards, how to
 
 preview:[]
 

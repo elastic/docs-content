@@ -1,8 +1,8 @@
 [[elasticsearch-billing]]
 = Elasticsearch billing dimensions
 
-:description: Learn about how Elasticsearch usage affects pricing.
-:keywords: serverless, elasticsearch, overview
+// :description: Learn about how Elasticsearch usage affects pricing.
+// :keywords: serverless, elasticsearch, overview
 
 preview:[]
 

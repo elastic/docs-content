@@ -1,8 +1,8 @@
 [[general-manage-organization]]
 = Manage your organization
 
-:description: Manage your instances, users, and settings.
-:keywords: serverless, general, organization, overview
+// :description: Manage your instances, users, and settings.
+// :keywords: serverless, general, organization, overview
 
 preview:[]
 

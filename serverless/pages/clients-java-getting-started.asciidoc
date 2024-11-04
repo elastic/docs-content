@@ -1,8 +1,8 @@
 [[elasticsearch-java-client-getting-started]]
 = Get started with the serverless Java client
 
-:description: Set up and use the Java client for {es3}.
-:keywords: serverless, elasticsearch, java, how to
+// :description: Set up and use the Java client for {es3}.
+// :keywords: serverless, elasticsearch, java, how to
 
 preview:[]
 

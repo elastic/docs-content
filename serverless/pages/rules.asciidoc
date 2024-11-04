@@ -1,8 +1,8 @@
 [[rules]]
 = {rules-app}
 
-:description: Alerting works by running checks on a schedule to detect conditions defined by a rule.
-:keywords: serverless, Elasticsearch, alerting, learn
+// :description: Alerting works by running checks on a schedule to detect conditions defined by a rule.
+// :keywords: serverless, Elasticsearch, alerting, learn
 
 preview:[]
 

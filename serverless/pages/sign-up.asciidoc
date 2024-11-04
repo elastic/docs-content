@@ -1,8 +1,8 @@
 [[general-sign-up-trial]]
 = Get started with serverless
 
-:description: Information about signing up for a serverless Elastic Cloud trial
-:keywords: serverless, general, signup
+// :description: Information about signing up for a serverless Elastic Cloud trial
+// :keywords: serverless, general, signup
 
 There are two options to create serverless projects:
 

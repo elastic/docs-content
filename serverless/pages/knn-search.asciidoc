@@ -1,8 +1,8 @@
 [[elasticsearch-knn-search]]
 = k-nearest neighbor (kNN) search
 
-:description: Vector search with k-nearest neighbor (kNN).
-:keywords: serverless, elasticsearch, search, vector, knn, ann
+// :description: Vector search with k-nearest neighbor (kNN).
+// :keywords: serverless, elasticsearch, search, vector, knn, ann
 
 preview:[]
 

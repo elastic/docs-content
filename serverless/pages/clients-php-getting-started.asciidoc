@@ -1,8 +1,8 @@
 [[elasticsearch-php-client-getting-started]]
 = Get started with the serverless PHP client
 
-:description: Set up and use the PHP client for {es3}.
-:keywords: serverless, elasticsearch, php, how to
+// :description: Set up and use the PHP client for {es3}.
+// :keywords: serverless, elasticsearch, php, how to
 
 preview:[]
 

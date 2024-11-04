@@ -1,8 +1,8 @@
 [[general-assign-user-roles]]
 = Assign user roles and privileges
 
-:description: Manage the predefined set of roles and privileges for all your projects.
-:keywords: serverless, general, organization, roles, how to
+// :description: Manage the predefined set of roles and privileges for all your projects.
+// :keywords: serverless, general, organization, roles, how to
 
 preview:[]
 
