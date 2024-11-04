@@ -3,7 +3,7 @@
 include::{asciidoc-dir}/../../shared/versions/stack/master.asciidoc[]
 include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 
-[[developer-tools]]
+[[devtools-developer-tools]]
 == Dev tools
 
 include::./pages/general-developer-tools.asciidoc[leveloffset=+2]
