@@ -16,11 +16,11 @@ Elasticsearch returns an `index_not_found_exception` when the data stream, index
 or alias you try to query does not exist. This can happen when you misspell the
 name or when the data has been indexed to a different data stream or index.
 
-Use the [**Exists API**](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists-index-template) to check whether 
+Use the [**Exists API**](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists-index-template) to check whether
 a data stream, index, or alias exists:
 
 ```js
-HEAD my-index 
+HEAD my-index
 ```
 
 Use the [**Get index API**](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get)
@@ -43,7 +43,7 @@ GET /my-alias/_search?ignore_unavailable=true
 When a search request returns no hits, the data stream or index may contain no
 data.
 This can happen when there is a data ingestion issue.
-For example, the data may have been indexed to a data stream or index with 
+For example, the data may have been indexed to a data stream or index with
 another name.
 
 Use the [**Count API**](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-count-1)
@@ -142,8 +142,8 @@ GET /my-index-000001/_count
 }
 ```
 
-If the field is aggregatable, you can use <DocLink slug="/serverless/elasticsearch/explore-your-data-aggregations" text="aggregations" /> 
-to check the field's values. For `keyword` fields, you can use a `terms` 
+If the field is aggregatable, you can use <DocLink slug="/serverless/elasticsearch/explore-your-data-aggregations" text="aggregations" />
+to check the field's values. For `keyword` fields, you can use a `terms`
 aggregation to retrieve the field's most common values:
 
 ```js
@@ -215,7 +215,7 @@ GET /my-index-000001/_validate/query?rewrite=true
 }
 ```
 
-Use the [**Explain API**](((ref))/search-explain.html) to find out why a 
+Use the [**Explain API**](((ref))/search-explain.html) to find out why a
 specific document matches or doesn’t match a query:
 
 ```js
@@ -229,7 +229,7 @@ GET /my-index-000001/_explain/0
 
 The [**Profile API**](((ref))/search-profile.html)
 provides detailed timing information about a search request.
-For a visual representation of the results, use the 
+For a visual representation of the results, use the
 <DocLink slug="/serverless/devtools/profile-queries-and-aggregations" text="Search Profiler"/>.
 
 <DocCallOut title="Note">
@@ -240,7 +240,7 @@ You can now copy the query sent to ((es)) for further analysis in Console.
 
 ## Check index settings
 
-Index settings {/* <DocLink id="enElasticsearchReferenceIndexModules" section="index-settings">Index settings</DocLink> */} 
+Index settings {/* <DocLink id="enElasticsearchReferenceIndexModules" section="index-settings">Index settings</DocLink> */}
 can influence search results.
 For example, the `index.query.default_field` setting, which determines the field
 that is queried when a query specifies no explicit field.
@@ -251,10 +251,11 @@ to retrieve the settings for an index:
 GET /my-index-000001/_settings
 ```
 
-You can update dynamic index settings with the 
-[**Update index settings API**](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-settings). 
-Changing dynamic index settings for a data stream 
-{/*  <DocLink id="enElasticsearchReferenceModifyDataStreams" section="change-a-dynamic-index-setting-for-a-data-stream">Changing dynamic index settings for a data stream</DocLink> */} requires changing the index template used by the data stream.
+You can update dynamic index settings with the
+[**Update index settings API**](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-settings).
+Changing dynamic index settings for a data stream
+{/*  <DocLink id="enElasticsearchReferenceModifyDataStreams" section="change-a-dynamic-index-setting-for-a-data-stream">Changing dynamic index settings for a data stream</DocLink> */}
+requires changing the index template used by the data stream.
 
 For static settings, you need to create a new index with the correct settings.
 Next, you can reindex the data into that index.

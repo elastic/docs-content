@@ -300,6 +300,7 @@ include::{security-serverless}/projects-create/create-project.asciidoc[leveloffs
 include::{security-serverless}/sec-requirements.asciidoc[leveloffset=+2]
 
 include::{security-serverless}/security-ui.asciidoc[leveloffset=+2]
+include::{security-serverless}/security-spaces.asciidoc[leveloffset=+3]
 
 include::{security-serverless}/AI-for-security/ai-for-security-landing-pg.asciidoc[leveloffset=+2]
 include::{security-serverless}/AI-for-security/ai-assistant.asciidoc[leveloffset=+3]

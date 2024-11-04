@@ -288,6 +288,7 @@ GET /my-index-000001/_settings
 You can update dynamic index settings with the
 https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-settings[**Update index settings API**].
 Changing dynamic index settings for a data stream
+// <DocLink id="enElasticsearchReferenceModifyDataStreams" section="change-a-dynamic-index-setting-for-a-data-stream">Changing dynamic index settings for a data stream</DocLink>
 requires changing the index template used by the data stream.
 
 For static settings, you need to create a new index with the correct settings.
