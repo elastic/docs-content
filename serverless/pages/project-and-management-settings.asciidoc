@@ -8,7 +8,7 @@ Look for the doc badge on each page to see if the page is valid for your solutio
 
 * {es-badge} for the {es} solution
 * {obs-badge} for the {observability} solution
-* {sec-badge} for the {security} solution
+* {sec-badge} for the {elastic-sec} solution
 
 [IMPORTANT]
 ====
@@ -17,5 +17,5 @@ Read the main solution docs to learn how to use those capabilities:
 
 * <<what-is-elasticsearch-serverless,{es-serverless} docs>>
 * <<what-is-observability-serverless,{observability} serverless docs>>
-* <<what-is-security-serverless,{security} serverless docs>>
+* <<what-is-security-serverless,{elastic-sec} serverless docs>>
 ====
