@@ -20,7 +20,7 @@ Elastic provides three serverless solutions available on {ecloud}:
 
 * **{es}**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
 * **Elastic {observability}**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
-* **Elastic Security**: Detect, investigate, and respond to threats, with SIEM, endpoint protection, and AI-powered analytics capabilities.
+* **{elastic-sec}**: Detect, investigate, and respond to threats, with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 Serverless instances of the Elastic Stack that you create in {ecloud} are called **serverless projects**.
 

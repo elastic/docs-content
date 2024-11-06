@@ -28,7 +28,7 @@ To subsequently edit the roles assigned to a user:
 Each serverless project type has a set of predefined roles that you can assign to your organization members.
 You can assign the predefined roles:
 
-* globally, for all projects of the same type ({es-serverless}, {observability}, or {security}). In this case, the role will also apply to new projects created later.
+* globally, for all projects of the same type ({es-serverless}, {observability}, or {elastic-sec}). In this case, the role will also apply to new projects created later.
 * individually, for specific projects only. To do that, you have to set the **Role for all** field of that specific project type to **None**.
 
 For example, you can assign a user the developer role for a specific {es-serverless} project:
@@ -61,7 +61,7 @@ endif::[]
 
 [discrete]
 [[general-assign-user-roles-security]]
-=== {security}
+=== {elastic-sec}
 
 * **Admin**. Has full access to project management, properties, and security privileges. Admins log into projects with superuser role privileges.
 * **Editor**. Configures all Security projects. Has read-only access to data indices. Has full access to all project features.
