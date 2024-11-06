@@ -19,7 +19,7 @@ The {ml-features} that are available vary by project type:
 
 * {es-serverless} projects have trained models.
 * {observability} projects have {anomaly-jobs}.
-* {security} projects have {anomaly-jobs}, {dfanalytics-jobs}, and trained models.
+* {elastic-sec} projects have {anomaly-jobs}, {dfanalytics-jobs}, and trained models.
 
 For more information, go to {ml-docs}/ml-ad-overview.html[{anomaly-detect-cap}], {ml-docs}/ml-dfanalytics.html[{dfanalytics-cap}] and {ml-docs}/ml-nlp.html[Natural language processing].
 
