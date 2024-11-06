@@ -32,3 +32,5 @@ include::./pages/service-status.asciidoc[leveloffset=+2]
 include::./pages/user-profile.asciidoc[leveloffset=+2]
 
 include::./pages/cloud-regions.asciidoc[leveloffset=+2]
+
+include::./pages/ml-nlp-auto-scale.asciidoc[leveloffset=+2]
