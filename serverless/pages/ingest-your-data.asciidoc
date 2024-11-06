@@ -13,6 +13,7 @@ You have many options for ingesting, or indexing, data into {es}:
 * <<elasticsearch-ingest-data-file-upload,File Uploader>>
 * <<elasticsearch-ingest-data-through-beats,{beats}>>
 * <<elasticsearch-ingest-data-through-logstash,{ls}>>
+* https://github.com/elastic/crawler[Elastic Open Web Crawler]
 
 The best ingest option(s) for your use case depends on whether you are indexing general content or time series (timestamped) data.
 
