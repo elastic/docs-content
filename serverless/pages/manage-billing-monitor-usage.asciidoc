@@ -1,0 +1,28 @@
+[[general-monitor-usage]]
+= Monitor your account usage
+
+// :description: Check the usage breakdown of your account.
+// :keywords: serverless, general, billing, usage
+
+preview:[]
+
+To find more details about your account usage:
+
+. Navigate to https://cloud.elastic.co/[cloud.elastic.co] and log in to your {ecloud} account.
+. Go to the user icon on the header bar and select **Billing**.
+
+On the **Usage** page you can:
+
+* Monitor the usage for the current month, including total hourly rate and month-to-date usage
+* Check the usage breakdown for a selected time range
+
+[IMPORTANT]
+====
+The usage breakdown information is an estimate. To get the exact amount you owe for a given month, check your invoices in the <<general-billing-history,billing history>>.
+====
+
+.Elasticsearch minimum runtime VCUs
+[IMPORTANT]
+====
+When you create an Elasticsearch Serverless project, a minimum number of VCUs are always allocated to your project to maintain basic ingest and search capabilities. These VCUs incur a minimum cost even with no active usage. Learn more about https://www.elastic.co/pricing/serverless-search#what-are-the-minimum-compute-resource-vcus-on-elasticsearch-serverless[minimum VCUs on Elasticsearch Serverless].
+====

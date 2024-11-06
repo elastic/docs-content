@@ -1,0 +1,15 @@
+[[general-billing-history]]
+= Check your billing history
+
+// :description: Monitor payments and billing receipts.
+// :keywords: serverless, general, billing, history
+
+preview:[]
+
+Information about outstanding payments and billing receipts is available from the {ess-console}[{ess-console-name}].
+
+To check your billing history:
+
+. Log in to the {ess-console}[{ess-console-name}].
+. Select the user icon on the header bar and choose **Billing** from the menu.
+. Under the **History** tab, select the invoice number for a detailed PDF.

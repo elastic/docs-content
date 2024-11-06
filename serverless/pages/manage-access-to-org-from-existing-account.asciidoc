@@ -1,0 +1,17 @@
+[[general-join-organization-from-existing-cloud-account]]
+= Join an organization from an existing Elastic Cloud account
+
+// :description: Join a new organization and bring over your projects.
+// :keywords: serverless, general, organization, join, how to
+
+preview:[]
+
+If you already belong to an organization, and you want to join a new one, it is currently not possible to bring your projects over to the new organization.
+
+If you want to join a new project, follow these steps:
+
+. Make sure you do not have active projects before you leave your current organization.
+. Delete your projects and clear any bills.
+. Leave your current organization.
+. Ask the administrator to invite you to the organization you want to join.
+. Accept the invitation that you will get by email.

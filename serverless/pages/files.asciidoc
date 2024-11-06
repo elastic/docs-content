@@ -1,0 +1,16 @@
+[[files]]
+= {files-app}
+
+// :description: Manage files that are stored in Elastic.
+// :keywords: serverless, Elasticsearch, Observability, Security
+
+preview:[]
+
+This content applies to: {es-badge} {obs-badge} {sec-badge}
+
+Several {serverless-full} features let you upload files. For example, you can add files to <<observability-cases,cases>> or upload a logo to an **Image** panel in a <<elasticsearch-explore-your-data-dashboards,dashboard>>.
+
+You can access these uploaded files in **{project-settings} → {manage-app} → {files-app}**.
+
+[role="screenshot"]
+image::images/file-management.png["Files UI"]

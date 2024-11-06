@@ -1,0 +1,32 @@
+[[general-manage-billing]]
+= Manage billing of your organization
+
+// :description: Configure the billing details of your organization.
+// :keywords: serverless, general, billing, overview
+
+++++
+<titleabbrev>Manage billing</titleabbrev>
+++++
+
+preview:[]
+
+.Serverless billing starts June 1, 2024
+[IMPORTANT]
+====
+Until May 31, 2024, your serverless consumption will not incur any charges, but will be visible along with your total Elastic Cloud consumption on the https://cloud.elastic.co/billing/usage[Billing Usage page]. Unless you are in a trial period, usage on or after June 1, 2024 will be deducted from your existing Elastic Cloud credits or be billed to your active payment method.
+====
+
+You can manage the billing details of your organization directly from the Elastic Cloud console.
+
+. Navigate to https://cloud.elastic.co/[cloud.elastic.co] and log in to your Elastic Cloud account.
+. Go to the user icon on the header bar and select **Billing**.
+
+From the **Billing pages**, you can perform the following tasks:
+
+* <<general-check-subscription,Check your subscription overview>>
+* <<general-monitor-usage,Monitor and analyze your account usage>>
+* <<general-billing-history,Check your billing history>>
+
+If you have a project that you're no longer using, refer to <<general-billing-stop-project,Stop charges for a project>>.
+
+To learn about the serverless pricing model, refer to <<general-serverless-billing,Serverless billing dimensions>> and our https://www.elastic.co/pricing/serverless-search[pricing page].

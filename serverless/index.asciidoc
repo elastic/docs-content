@@ -1,0 +1,51 @@
+:doctype: book
+
+include::{asciidoc-dir}/../../shared/versions/stack/master.asciidoc[]
+include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
+
+:security-serverless:         {security-docs-root}/docs/serverless
+:observability-serverless:    {observability-docs-root}/docs/en/serverless
+
+:es-badge: <<what-is-elasticsearch-serverless,image:images/es-badge.svg[Elasticsearch]>>
+:obs-badge: <<what-is-observability-serverless,image:images/obs-badge.svg[Observability]>>
+:sec-badge: <<what-is-security-serverless,image:images/sec-badge.svg[Security]>>
+
+// These are only available in serverless
+:es3: Elasticsearch Serverless
+:project-settings: Project settings
+:manage-app: Management
+:index-manage-app: Index Management
+:data-views-app: Data Views
+:rules-app: Rules
+:saved-objects-app: Saved Objects
+:tags-app: Tags
+:api-keys-app: API keys
+:transforms-app: Transforms
+:connectors-app: Connectors
+:files-app: Files
+:reports-app: Reports
+:maps-app: Maps
+:alerts-app: Alerts
+:serverlessCustomRoles: true
+
+// The values of these attributes are different in stateful vs serverless
+:serverless-full: Elastic Cloud Serverless
+:serverless-short: Serverless
+:es: Elasticsearch Serverless
+:es-serverless: Elasticsearch Serverless
+:observability: Elastic Observability Serverless
+:security: Elastic Security Serverless
+
+= Serverless
+
+include::./index-serverless-general.asciidoc[]
+include::./index-serverless-elasticsearch.asciidoc[]
+include::{observability-serverless}/index.asciidoc[]
+include::{security-serverless}/index.asciidoc[]
+include::./index-serverless-devtools.asciidoc[]
+include::./index-serverless-project-settings.asciidoc[]
+
+// Hidden pages
+include::./pages/explore-your-data-visualize-your-data-create-dashboards.asciidoc[leveloffset=+1]
+include::./pages/explore-your-data-visualize-your-data-create-visualizations.asciidoc[leveloffset=+1]
+include::./pages/visualize-library.asciidoc[leveloffset=+1]

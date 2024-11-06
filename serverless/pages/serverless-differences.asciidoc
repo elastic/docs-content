@@ -1,0 +1,42 @@
+[[elasticsearch-differences]]
+= Differences from other Elasticsearch offerings
+
+// :description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
+// :keywords: serverless, elasticsearch
+
+++++
+<titleabbrev>Serverless differences</titleabbrev>
+++++
+
+preview:[]
+
+Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in serverless {es}.
+These features have either been replaced by a new feature, or are not applicable in the new Serverless architecture:
+
+* **Index lifecycle management ({ilm-init})** is not available, in favor of <<index-management,**data stream lifecycle**>>.
++
+In an Elastic Cloud Hosted or self-managed environment, {ilm-init} lets you automatically transition indices through data tiers according to your
+performance needs and retention requirements. This allows you to balance hardware costs with performance. Serverless Elasticsearch eliminates this
+complexity by optimizing your cluster performance for you.
++
+Data stream lifecycle is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary
+hardware-centric concepts like data tiers.
++
+* **Watcher** is not available, in favor of **<<elasticsearch-explore-your-data-alerting,Kibana Alerts>>**.
++
+Kibana Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and
+hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
++
+* Certain APIs, API parameters, index, cluster and node level settings are not available. Refer to our
+<<elasticsearch-http-apis,REST API references>> for a list of available APIs.
++
+Serverless Elasticsearch manages the underlying Elastic cluster for you, optimizing nodes, shards, and replicas for your use case.
+Because of this, various management and monitoring APIs, API parameters and settings are not available on Serverless.
++
+* {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[Scripted metric aggregations] are not available.
+
+.Other limitations
+[IMPORTANT]
+====
+For serverless technical preview limitations, refer to <<elasticsearch-technical-preview-limitations,Technical preview limitations>>.
+====

@@ -1,0 +1,215 @@
+[[devtools-run-api-requests-in-the-console]]
+= Console
+
+// :description: Use the Console to interact with Elastic REST APIs.
+// :keywords: serverless, dev tools, how-to
+
+preview:[]
+
+This content applies to: {es-badge} {obs-badge} {sec-badge}
+
+**Console** lets you interact with https://www.elastic.co/docs/api[Elasticsearch and Kibana serverless APIs] from your project.
+
+Requests are made in the left pane, and responses are displayed in the right pane.
+
+[role="screenshot"]
+image::images/console.png[Console request/response pair]
+
+To go to **Console**, find **Dev Tools** in the navigation menu or use the global search bar.
+
+You can also find Console directly on your Elasticsearch serverless project pages, where you can expand it from the footer. This Console, called **Persistent Console**, has the same capabilities and shares the same history as the Console in **Dev Tools**.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-write-requests]]
+== Write requests
+
+**Console** understands commands in a cURL-like syntax.
+For example, the following is a `GET` request to the {es} `_search` API.
+
+[source,js]
+----
+GET /_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+----
+
+Here is the equivalent command in cURL:
+
+[source,bash]
+----
+curl "${ES_URL}/_search" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "query": {
+    "match_all": {}
+  }
+}'
+----
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-autocomplete]]
+=== Autocomplete
+
+When you're typing a command, **Console** makes context-sensitive suggestions.
+These suggestions show you the parameters for each API and speed up your typing.
+
+You can configure your preferences for autocomplete in the <<devtools-run-api-requests-in-the-console-configure-console-settings,Console settings>>.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-comments]]
+=== Comments
+
+You can write comments or temporarily disable parts of a request by using double forward slashes (`//`) or pound (`#`) signs to create single-line comments.
+
+[source,js]
+----
+# This request searches all of your indices.
+GET /_search
+{
+  // The query parameter indicates query context.
+  "query": {
+    "match_all": {} // Matches all documents.
+  }
+}
+----
+
+You can also use a forward slash followed by an asterisk (`/*`) to mark the beginning of multi-line
+comments.
+An asterisk followed by a forward slash (`*/`) marks the end.
+
+[source,js]
+----
+GET /_search
+{
+  "query": {
+    /*"match_all": {
+      "boost": 1.2
+    }*/
+    "match_none": {}
+  }
+}
+----
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-variables]]
+=== Variables
+
+Select **Variables** to create, edit, and delete variables.
+
+[role="screenshot"]
+image::images/variables.png[Variables]
+
+You can refer to these variables in the paths and bodies of your requests.
+Each variable can be referenced multiple times.
+
+[source,js]
+----
+GET ${pathVariable}
+{
+  "query": {
+    "match": {
+      "${bodyNameVariable}": "${bodyValueVariable}"
+    }
+  }
+}
+----
+
+By default, variables in the body may be substituted as a boolean, number, array, or
+object by removing nearby quotes instead of a string with surrounding quotes. Triple
+quotes overwrite this default behavior and enforce simple replacement as a string.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-auto-formatting]]
+=== Auto-formatting
+
+The auto-formatting
+capability can help you format requests to be more readable. Select one or more requests that you
+want to format, open the contextual menu, and then select **Auto indent**.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-keyboard-shortcuts]]
+=== Keyboard shortcuts
+
+**Go to line number**: `Ctrl/Cmd` + `L`
+
+**Auto-indent current request**: `Ctrl/Cmd` + `I`
+
+**Jump to next request end**: `Ctrl/Cmd` + `↓`
+
+**Jump to previous request end**: `Ctrl/Cmd` + `↑`
+
+**Open documentation for current request**: `Ctrl/Cmd` + `/`
+
+**Run current request**: `Ctrl/Cmd` + `Enter`
+
+**Apply current or topmost term in autocomplete menu**: `Enter` or `Tab`
+
+**Close autocomplete menu**: `Esc`
+
+**Navigate items in autocomplete menu**: `↓` + `↑`
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-view-api-docs]]
+=== View API docs
+
+To view the documentation for an API endpoint, select the request, then open the contextual menu and select
+_Open API reference_.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-run-requests]]
+== Run requests
+
+When you're ready to submit the request, select the play button.
+
+The result of the request execution is displayed in the response panel, where you can see:
+
+* the JSON response
+* the HTTP status code corresponding to the request
+* The execution time, in ms.
+
+You can select multiple requests and submit them together.
+**Console** executes the requests one by one. Submitting multiple requests is helpful
+when you're debugging an issue or trying query
+combinations in multiple scenarios.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-import-and-export-requests]]
+== Import and export requests
+
+You can export requests:
+
+* **to a TXT file**, by using the **Export requests** button. When using this method, all content of the input panel is copied, including comments, requests, and payloads. All of the formatting is preserved and allows you to re-import the file later, or to a different environment, using the **Import requests** button.
++
+[TIP]
+====
+When importing a TXT file containing Console requests, the current content of the input panel is replaced. Export it first if you don't want to lose it, or find it in the **History** tab if you already ran the requests.
+====
+* by copying them individually as **curl**, **JavaScript**, or **Python**. To do this, select a request, then open the contextual menu and select **Copy as**. When using this action, requests are copied individually to your clipboard. You can save your favorite language to make the copy action faster the next time you use it.
++
+When running copied requests from an external environment, you'll need to add https://www.elastic.co/docs/api/doc/serverless/authentication[authentication information] to the request.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-get-your-request-history]]
+== Get your request history
+
+_Console_ maintains a list of the last 500 requests that you tried to execute.
+To view them, open the _History_ tab.
+
+You can run a request from your history again by selecting the request and clicking **Add and run**. If you want to add it back to the Console input panel without running it yet, click **Add** instead. It is added to the editor at the current cursor position.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-configure-console-settings]]
+== Configure Console settings
+
+Go to the **Config** tab of **Console** to customize its display, autocomplete, and accessibility settings.
+
+[discrete]
+[[devtools-run-api-requests-in-the-console-disable-console]]
+== Disable Console
+
+You can disable the persistent console that shows in the footer of your {es} project pages. To do that, go to **Management** > **Advanced Settings**, and turn off the `devTools:enablePersistentConsole` setting.

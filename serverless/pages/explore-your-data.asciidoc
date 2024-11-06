@@ -1,0 +1,14 @@
+[[elasticsearch-explore-your-data]]
+= Explore your data
+
+// :description: Turn {es} data into actionable insights with aggregations, visualizations, and alerts
+// :keywords: serverless, elasticsearch, explore, overview
+
+preview:[]
+
+In addition to search, {es3} offers several options for analyzing and visualizing your data.
+
+* <<elasticsearch-explore-your-data-aggregations,Aggregations>>: Use the {es} REST API to summarize your data as metrics, statistics, or other analytics.
+* <<elasticsearch-explore-your-data-discover-your-data,Discover>>: Use the **Discover** UI to filter your data or learn about its structure.
+* <<elasticsearch-explore-your-data-visualize-your-data,Visualizations>>: Build dynamic dashboards that visualize your data as charts, gauges, graphs, maps, and more.
+* <<elasticsearch-explore-your-data-alerting,Alerts>>: Create rules that trigger notifications based on your data.

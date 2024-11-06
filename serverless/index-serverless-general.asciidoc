@@ -1,0 +1,34 @@
+:doctype: book
+
+include::{asciidoc-dir}/../../shared/versions/stack/master.asciidoc[]
+include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
+
+[[intro]]
+== Welcome to Elastic serverless
+
+include::{docs-content-root}/serverless/pages/welcome-to-serverless.asciidoc[leveloffset=+2]
+
+include::./pages/what-is-serverless.asciidoc[leveloffset=+2]
+
+include::./pages/sign-up.asciidoc[leveloffset=+2]
+
+include::./pages/manage-org.asciidoc[leveloffset=+2]
+include::./pages/manage-access-to-org.asciidoc[leveloffset=+3]
+include::./pages/manage-access-to-org-user-roles.asciidoc[leveloffset=+3]
+include::./pages/manage-access-to-org-from-existing-account.asciidoc[leveloffset=+3]
+
+include::./pages/manage-your-project.asciidoc[leveloffset=+2]
+include::./pages/manage-your-project-rest-api.asciidoc[leveloffset=+3]
+
+include::./pages/manage-billing.asciidoc[leveloffset=+2]
+include::./pages/manage-billing-check-subscription.asciidoc[leveloffset=+3]
+include::./pages/manage-billing-monitor-usage.asciidoc[leveloffset=+3]
+include::./pages/manage-billing-history.asciidoc[leveloffset=+3]
+include::./pages/manage-billing-pricing-model.asciidoc[leveloffset=+3]
+include::./pages/manage-billing-stop-project.asciidoc[leveloffset=+3]
+
+include::./pages/service-status.asciidoc[leveloffset=+2]
+
+include::./pages/user-profile.asciidoc[leveloffset=+2]
+
+include::./pages/cloud-regions.asciidoc[leveloffset=+2]

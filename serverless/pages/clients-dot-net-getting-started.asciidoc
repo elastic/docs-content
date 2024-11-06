@@ -1,0 +1,144 @@
+[[elasticsearch-dot-net-client-getting-started]]
+= Get started with the serverless .NET client
+
+// :description: Set up and use the .NET client for {es3}.
+// :keywords: serverless, elasticsearch, .net, how to
+
+preview:[]
+
+This page guides you through the installation process of the
+.NET client for {es3}, shows you how to initialize the client, and how to perform basic
+{es} operations with it.
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-requirements]]
+== Requirements
+
+* .NET Core, .NET 5+ or .NET Framework (4.6.1 and higher).
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-installation]]
+== Installation
+
+You can install the .NET client with the following command:
+
+[source,bash]
+----
+dotnet add package Elastic.Clients.Elasticsearch.Serverless
+----
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-initialize-the-client]]
+== Initialize the client
+
+Initialize the client using your API key and Elasticsearch Endpoint:
+
+[source,net]
+----
+var client = new ElasticsearchClient("<CLOUD_ID>", new ApiKey("<API_KEY>"));
+----
+
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-using-the-api]]
+== Using the API
+
+After you've initialized the client, you can create an index and start ingesting
+documents.
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-creating-an-index-and-ingesting-documents]]
+=== Creating an index and ingesting documents
+
+The following is an example of creating a `my_index` index:
+
+[source,net]
+----
+var response = await client.Indices.CreateAsync("my_index");
+----
+
+This is a simple way of indexing a document into `my_index`:
+
+[source,net]
+----
+var doc = new MyDoc
+{
+    Id = 1,
+    User = "xyz_user",
+    Message = "Trying out the client, so far so good?"
+};
+
+var response = await client.IndexAsync(doc, "my_index");
+----
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-getting-documents]]
+=== Getting documents
+
+You can get documents by using the following code:
+
+[source,net]
+----
+var response = await client.GetAsync<MyDoc>(id, idx => idx.Index("my_index"));
+
+if (response.IsValidResponse)
+{
+    var doc = response.Source;
+}
+----
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-searching]]
+=== Searching
+
+This is how you can create a single match query with the .NET client:
+
+[source,net]
+----
+var response = await client.SearchAsync<MyDoc>(s => s
+    .Index("my_index")
+    .From(0)
+    .Size(10)
+    .Query(q => q
+        .Term(t => t.User, "flobernd")
+    )
+);
+
+if (response.IsValidResponse)
+{
+    var doc = response.Documents.FirstOrDefault();
+}
+----
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-updating-a-document]]
+=== Updating a document
+
+This is how you can update a document, for example to add a new field:
+
+[source,net]
+----
+doc.Message = "This is a new message";
+
+var response = await client.UpdateAsync<MyDoc, MyDoc>("my_index", 1, u => u
+    .Doc(doc));
+----
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-deleting-a-document]]
+=== Deleting a document
+
+[source,net]
+----
+var response = await client.DeleteAsync("my_index", 1);
+----
+
+[discrete]
+[[elasticsearch-dot-net-client-getting-started-deleting-an-index]]
+=== Deleting an index
+
+[source,net]
+----
+var response = await client.Indices.DeleteAsync("my_index");
+----

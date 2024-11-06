@@ -1,0 +1,88 @@
+[[elasticsearch-kibana-api-conventions]]
+= Management API conventions
+
+// :description: The Management APIs for {serverless-short} have request header conventions.
+// :keywords: serverless, kibana, API, reference
+
+preview:[]
+
+The Management REST APIs for {serverless-full} let you manage resources that are available in multiple solutions.
+These resources include connectors, data views, and saved objects.
+If you've previously used the {stack}, the Management APIs are similar to {kib} APIs.
+
+Management API calls are stateless.
+Each request that you make happens in isolation from other calls and must include all of the necessary information for {kib} to fulfill the request.
+API requests return JSON output, which is a format that is machine-readable and works well for automation.
+
+To interact with Management APIs, use the following operations:
+
+* GET: Fetches the information.
+* POST: Adds new information.
+* PUT: Updates the existing information.
+* DELETE: Removes the information.
+
+You can prepend any Management API endpoint with `kbn:` and run the request in **{dev-tools-app} → Console**.
+For example:
+
+[source,shell]
+----
+GET kbn:/api/data_views
+----
+
+Check out <<devtools-run-api-requests-in-the-console>>.
+
+[discrete]
+[[elasticsearch-kibana-api-conventions-request-headers]]
+== Request headers
+
+When you call Management APIs outside of the Console, you must provide a request header.
+The Management APIs support the `Authorization`, `Content-Type`, and  `kbn-xsrf` headers.
+
+`Authorization: ApiKey`::
+
+Management APIs use key-based authentication.
+You must create an API key and use the encoded value in the request header.
+To learn about creating keys, go to <<api-keys>>.
+
+`Content-Type: application/json`::
+
+You must use this header when you send a payload in the API request.
+Typically, if you include the `kbn-xsrf` header, you must also include the `Content-Type` header.
+
+`kbn-xsrf: true`::
+
+You must use this header for all API calls except `GET` or `HEAD` operations.
+
+////
+/*
+TBD: Are these settings accessible to users in serverless projects?
+
+This header is also not required when:
+* The path is allowed using the `server.xsrf.allowlist` setting
+* XSRF protections are disabled using the `server.xsrf.disableProtection` setting
+*/
+////
+
+For example:
+
+[source,bash]
+----
+curl -X POST \
+  "${KIBANA_URL}/api/data_views/data_view" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H 'Content-Type: application/json' \
+  -H 'kbn-xsrf: true' \
+  -d '{
+    "data_view": {
+      "title": "books*",
+      "name": "My Books Data View"
+      }
+    }
+'
+----
+
+////
+/*
+TBD: Add instructions for how to obtain the KIBANA_URL
+*/
+////

@@ -1,0 +1,159 @@
+[[elasticsearch-explore-your-data-alerting]]
+= Manage alerting rules
+
+// :description: Define when to generate alerts and notifications with alerting rules.
+// :keywords: serverless, elasticsearch, alerting, how-to
+
+++++
+<titleabbrev>Alerts</titleabbrev>
+++++
+
+preview:[]
+
+In **{alerts-app}** or **{project-settings} → {manage-app} → {rules-app}** you can:
+
+* Create and edit rules
+* Manage rules including enabling/disabling, muting/unmuting, and deleting
+* Drill down to rule details
+* Configure rule settings
+
+[role="screenshot"]
+image::images/rules-ui.png[Example rule listing in {rules-ui}]
+
+For an overview of alerting concepts, go to <<rules>>.
+
+////
+/* ## Required permissions
+
+Access to rules is granted based on your {alert-features} privileges. */
+////
+
+////
+/* MISSING LINK:
+For more information, go to <DocBadge><DocIcon size="s" type="unlink" title="missing link"/> missing link</DocBadge><DocLink id="enKibanaAlertingSetup" section="security">Security</DocLink>s. */
+////
+
+[discrete]
+[[elasticsearch-explore-your-data-alerting-create-and-edit-rules]]
+== Create and edit rules
+
+When you click the **Create rule** button, it launches a flyout that guides you through selecting a rule type and configuring its conditions and actions.
+
+[role="screenshot"]
+image::images/alerting-overview.png[{rules-ui} app]
+
+The rule types available in an {es} project are:
+
+* {kibana-ref}/rule-type-es-query.html[{es} query]
+* {kibana-ref}/rule-type-index-threshold.html[Index threshold]
+* {kibana-ref}/geo-alerting.html[Tracking containement]
+* {ref}/transform-alerts.html[Transform health]
+
+After a rule is created, you can open the action menu (…) and select **Edit rule** to re-open the flyout and change the rule properties.
+
+You can also manage rules as resources with the https://registry.terraform.io/providers/elastic/elasticstack/latest[Elasticstack provider] for Terraform.
+For more details, refer to the https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_alerting_rule[elasticstack_kibana_alerting_rule] resource.
+
+// For details on what types of rules are available and how to configure them, refer to [Rule types]({kibana-ref}/rule-types.html).
+
+// <DocBadge><DocIcon size="s" type="unlink" title="missing link"/> missing link</DocBadge>
+
+[discrete]
+[[elasticsearch-explore-your-data-alerting-snooze-and-disable-rules]]
+== Snooze and disable rules
+
+The rule listing enables you to quickly snooze, disable, enable, or delete individual rules.
+For example, you can change the state of a rule:
+
+[role="screenshot"]
+image::images/rule-enable-disable.png[Use the rule status dropdown to enable or disable an individual rule]
+
+When you snooze a rule, the rule checks continue to run on a schedule but the alert will not trigger any actions.
+You can snooze for a specified period of time, indefinitely, or schedule single or recurring downtimes:
+
+[role="screenshot"]
+image::images/rule-snooze-panel.png[Snooze notifications for a rule]
+
+When a rule is in a snoozed state, you can cancel or change the duration of this state.
+
+[discrete]
+[[elasticsearch-explore-your-data-alerting-import-and-export-rules]]
+== Import and export rules
+
+To import and export rules, use <<saved-objects,saved objects>>.
+
+////
+/*
+TBD: Do stack monitoring rules exist in serverless?
+Stack monitoring rules are automatically created for you and therefore cannot be managed in **Saved Objects**.
+*/
+////
+
+Rules are disabled on export. You are prompted to re-enable the rule on successful import.
+
+[role="screenshot"]
+image::images/rules-imported-banner.png[Rules import banner]
+
+[discrete]
+[[elasticsearch-explore-your-data-alerting-view-rule-details]]
+== View rule details
+
+You can determine the health of a rule by looking at its **Last response**.
+A rule can have one of the following responses:
+
+`failed`::
+The rule ran with errors.
+
+`succeeded`::
+The rule ran without errors.
+
+`warning`::
+The rule ran with some non-critical errors.
+
+Click the rule name to access a rule details page:
+
+[role="screenshot"]
+image::images/rule-details-alerts-active.png[Rule details page with multiple alerts]
+
+In this example, the rule detects when a site serves more than a threshold number of bytes in a 24 hour period. Four sites are above the threshold. These are called alerts - occurrences of the condition being detected - and the alert name, status, time of detection, and duration of the condition are shown in this view. Alerts come and go from the list depending on whether the rule conditions are met.
+
+When an alert is created, it generates actions. If the conditions that caused the alert persist, the actions run again according to the rule notification settings. There are three common alert statuses:
+
+`active`::
+The conditions for the rule are met and actions should be generated according to the notification settings.
+
+`flapping`::
+The alert is switching repeatedly between active and recovered states.
+
+`recovered`::
+The conditions for the rule are no longer met and recovery actions should be generated.
+
+.Flapping alerts
+[NOTE]
+====
+The `flapping` state is possible only if you have enabled alert flapping detection in **{rules-ui}** → **Settings**. A look back window and threshold are used to determine whether alerts are flapping. For example, you can specify that the alert must change status at least 6 times in the last 10 runs. If the rule has actions that run when the alert status changes, those actions are suppressed while the alert is flapping.
+====
+
+If there are rule actions that failed to run successfully, you can see the details on the **History** tab.
+In the **Message** column, click the warning or expand icon or click the number in the **Errored actions** column to open the **Errored Actions** panel.
+
+// <DocImage flatImage alt="double arrow icon to open a flyout with the document details" url="../images/alerting/discover-expand-icon-2.png" />
+
+////
+/*
+TBD: Is this setting still feasible in serverless?
+In this example, the action failed because the `xpack.actions.email.domain_allowlist` setting was updated and the action's email recipient is no longer included in the allowlist:
+
+![Rule history page with alerts that have errored actions](../images/rule-details-errored-actions.png)
+*/
+////
+
+// If an alert was affected by a maintenance window, its identifier appears in the **Maintenance windows** column.
+
+You can suppress future actions for a specific alert by turning on the **Mute** toggle.
+If a muted alert no longer meets the rule conditions, it stays in the list to avoid generating actions if the conditions recur.
+You can also disable a rule, which stops it from running checks and clears any alerts it was tracking.
+You may want to disable rules that are not currently needed to reduce the load on your cluster.
+
+[role="screenshot"]
+image::images/rule-details-disabling.png[Use the disable toggle to turn off rule checks and clear alerts tracked]

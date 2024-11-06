@@ -1,0 +1,215 @@
+[[elasticsearch-ruby-client-getting-started]]
+= Get started with the serverless Ruby client
+
+// :description: Set up and use the Ruby client for {es3}.
+// :keywords: serverless, elasticsearch, ruby, how to
+
+preview:[]
+
+This page guides you through the installation process Ruby
+client for {es3}, shows you how to initialize the client, and how to perform basic
+{es} operations with it.
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-requirements]]
+== Requirements
+
+* Ruby 3.0 or higher installed on your system.
+* To use the `elasticsearch-serverless` gem, you must have an API key and Elasticsearch Endpoint for an {es3} project.
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-installation]]
+== Installation
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-from-githubs-releases]]
+=== From GitHub's releases
+
+You can install the Ruby Client from RubyGems:
+
+[source,bash]
+----
+gem install elasticsearch-serverless --pre
+----
+
+Check https://github.com/elastic/elasticsearch-serverless-ruby/releases[releases]
+for the latest available versions.
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-from-the-source-code]]
+=== From the source code
+
+You can install the Ruby client from the client's https://github.com/elastic/elasticsearch-serverless-ruby[source
+code] with the
+following commands:
+
+[source,bash]
+----
+# From the project's root directory:
+gem build elasticsearch-serverless.gemspec
+gem install elasticsearch-serverless-x.x.x.gem
+----
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-using-the-gemfile]]
+=== Using the Gemfile
+
+Alternatively, you can include the client gem in your Ruby project's Gemfile:
+
+[source,ruby]
+----
+gem 'elasticsearch-serverless'
+----
+
+Once installed, require it in your code:
+
+[source,ruby]
+----
+require 'elasticsearch-serverless'
+----
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-running-a-ruby-console]]
+=== Running a Ruby console
+
+You can also run the client from a Ruby console using the client's https://github.com/elastic/elasticsearch-serverless-ruby[source
+code]. To start the
+console, run the following commands:
+
+[source,bash]
+----
+# From the project's root directory:
+bundle install
+bundle exec rake console
+----
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-initialize-the-client]]
+== Initialize the client
+
+Initialize the client using your API key and Elasticsearch Endpoint:
+
+[source,ruby]
+----
+client = ElasticsearchServerless::Client.new(
+  api_key: 'your_api_key',
+  url: 'https://...'
+)
+----
+
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-using-the-api]]
+== Using the API
+
+After you've initialized the client, you can start ingesting documents. You can use
+the `bulk` API for this. This API enables you to index, update, and delete several
+documents in one request.
+
+[NOTE]
+====
+The code examples in this section use the Ruby console. To set up the console, <<elasticsearch-ruby-client-getting-started-running-a-ruby-console,Running a Ruby console>>.
+====
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-creating-an-index-and-ingesting-documents]]
+=== Creating an index and ingesting documents
+
+You can call the `bulk` API with a body parameter, an array of hashes that
+define the action, and a document.
+
+The following is an example of indexing some classic books into the `books`
+index:
+
+[source,ruby]
+----
+# First, build your data:
+> body = [
+  { index: { _index: 'books', data: {name: "Snow Crash", author: "Neal Stephenson", release_date: "1992-06-01", page_count: 470} } },
+  { index: { _index: 'books', data: {name: "Revelation Space", author: "Alastair Reynolds", release_date: "2000-03-15", page_count: 585} } },
+  { index: { _index: 'books', data: {name: "1984", author: "George Orwell", release_date: "1949-06-08", page_count: 328} } },
+  { index: { _index: 'books', data: {name: "Fahrenheit 451", author: "Ray Bradbury", release_date: "1953-10-15", page_count: 227} } },
+  { index: { _index: 'books', data: {name: "Brave New World", author: "Aldous Huxley", release_date: "1932-06-01", page_count: 268} } },
+  { index: { _index: 'books', data: {name: "The Handmaid's Tale", author: "Margaret Atwood", release_date: "1985-06-01", page_count: 311} } }
+]
+# Then ingest the data via the bulk API:
+> response = client.bulk(body: body)
+# You can check the response if the items are indexed and have a document (doc) ID:
+> response['items']
+# Returns:
+#  =>
+# [{"index"=>{"_index"=>"books", "_id"=>"Pdink4cBmDx329iqhzM2", "_version"=>1, "result"=>"created", "_shards"=>{"total"=>2, "successful"=>1, "failed"=>0}, "_seq_no"=>0, "_primary_term"=>1, "status"=>201}},
+#  {"index"=>{"_index"=>"books", "_id"=>"Ptink4cBmDx329iqhzM2", "_version"=>1, "result"=>"created", "_shards"=>{"total"=>2, "successful"=>1, "failed"=>0}, "_seq_no"=>1, "_primary_term"=>1, "status"=>201}},
+#  {"index"=>{"_index"=>"books", "_id"=>"P9ink4cBmDx329iqhzM2", "_version"=>1, "result"=>"created", "_shards"=>{"total"=>2, "successful"=>1, "failed"=>0}, "_seq_no"=>2, "_primary_term"=>1, "status"=>201}},
+#  {"index"=>{"_index"=>"books", "_id"=>"QNink4cBmDx329iqhzM2", "_version"=>1, "result"=>"created", "_shards"=>{"total"=>2, "successful"=>1, "failed"=>0}, "_seq_no"=>3, "_primary_term"=>1, "status"=>201}},
+#  {"index"=>{"_index"=>"books", "_id"=>"Qdink4cBmDx329iqhzM2", "_version"=>1, "result"=>"created", "_shards"=>{"total"=>2, "successful"=>1, "failed"=>0}, "_seq_no"=>4, "_primary_term"=>1, "status"=>201}},
+#  {"index"=>{"_index"=>"books", "_id"=>"Qtink4cBmDx329iqhzM2", "_version"=>1, "result"=>"created", "_shards"=>{"total"=>2, "successful"=>1, "failed"=>0}, "_seq_no"=>5, "_primary_term"=>1, "status"=>201}}]
+----
+
+When you use the client to make a request to Elasticsearch, it returns an API
+response object. You can check the HTTP return code by calling `status` and the
+HTTP headers by calling `headers` on the response object. The response object
+also behaves as a Hash, so you can access the body values directly as seen on
+the previous example with `response['items']`.
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-getting-documents]]
+=== Getting documents
+
+You can get documents by using the following code:
+
+[source,ruby]
+----
+> client.get(index: 'books', id: 'id') # Replace 'id' with a valid doc ID
+----
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-searching]]
+=== Searching
+
+Now that some data is available, you can search your documents using the
+`search` API:
+
+[source,ruby]
+----
+> response = client.search(index: 'books', q: 'snow')
+> response['hits']['hits']
+# Returns:
+# => [{"_index"=>"books", "_id"=>"Pdink4cBmDx329iqhzM2", "_score"=>1.5904956, "_source"=>{"name"=>"Snow Crash", "author"=>"Neal Stephenson", "release_date"=>"1992-06-01", "page_count"=>470}}]
+----
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-updating-a-document]]
+=== Updating a document
+
+You can call the `update` API to update a document:
+
+[source,ruby]
+----
+> response = client.update(
+  index: 'books',
+  id: 'id',  # Replace 'id' with a valid doc ID
+  body: { doc: { page_count: 312 } }
+)
+----
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-deleting-a-document]]
+=== Deleting a document
+
+You can call the `delete` API to delete a document:
+
+[source,ruby]
+----
+> client.delete(index: 'books', id: 'id')  # Replace 'id' with a valid doc ID
+----
+
+[discrete]
+[[elasticsearch-ruby-client-getting-started-deleting-an-index]]
+=== Deleting an index
+
+[source,ruby]
+----
+> client.indices.delete(index: 'books')
+----

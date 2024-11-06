@@ -1,0 +1,19 @@
+:doctype: book
+
+include::{asciidoc-dir}/../../shared/versions/stack/master.asciidoc[]
+include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
+
+[[devtools-developer-tools]]
+== Dev tools
+
+include::./pages/general-developer-tools.asciidoc[leveloffset=+2]
+
+include::./pages/run-api-requests-in-the-console.asciidoc[leveloffset=+2]
+
+include::./pages/profile-queries-and-aggregations.asciidoc[leveloffset=+2]
+
+include::./pages/debug-grok-expressions.asciidoc[leveloffset=+2]
+
+include::./pages/debug-painless-scripts.asciidoc[leveloffset=+2]
+
+include::./pages/developer-tools-troubleshooting.asciidoc[leveloffset=+2]

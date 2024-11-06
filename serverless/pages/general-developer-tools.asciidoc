@@ -1,0 +1,31 @@
+// :description: Use our developer tools to interact with your data.
+// :keywords: serverless, dev tools, overview
+
+preview:[]
+
+|===
+| Feature | Description | Available in
+
+| <<devtools-run-api-requests-in-the-console,Console>>
+| Interact with Elastic REST APIs.
+| {es-badge} +
+{obs-badge} +
+{sec-badge}
+
+| <<devtools-profile-queries-and-aggregations,{searchprofiler}>>
+| Inspect and analyze your search queries.
+| {es-badge} +
+{obs-badge} +
+{sec-badge}
+
+| <<devtools-debug-grok-expressions,Grok Debugger>>
+| Build and debug grok patterns before you use them in your data processing pipelines.
+| {es-badge} +
+{obs-badge} +
+{sec-badge}
+
+| <<devtools-debug-painless-scripts,Painless Lab>>
+| Use an interactive code editor to test and debug Painless scripts in real time.
+| {obs-badge} +
+{sec-badge}
+|===

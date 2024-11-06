@@ -1,0 +1,195 @@
+[[elasticsearch-java-client-getting-started]]
+= Get started with the serverless Java client
+
+// :description: Set up and use the Java client for {es3}.
+// :keywords: serverless, elasticsearch, java, how to
+
+preview:[]
+
+This page guides you through the installation process of the Java
+client for {es3}, shows you how to initialize the client, and how to perform basic
+{es} operations with it.
+
+[discrete]
+[[elasticsearch-java-client-getting-started-requirements]]
+== Requirements
+
+* Java 8 or later.
+* A JSON object mapping library to allow seamless integration of
+your application classes with the {es} API. The examples below
+show usage with Jackson.
+
+[discrete]
+[[elasticsearch-java-client-getting-started-installation]]
+== Installation
+
+You can add the Java client to your Java project using
+either Gradle or Maven.
+
+[discrete]
+[[elasticsearch-java-client-getting-started-using-gradle]]
+=== Using Gradle
+
+You can install the Java client as a Gradle dependency:
+
+[source,groovy]
+----
+dependencies {
+    implementation 'co.elastic.clients:elasticsearch-java-serverless:1.0.0-20231031'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
+}
+----
+
+[discrete]
+[[elasticsearch-java-client-getting-started-using-maven]]
+=== Using Maven
+
+You can install the Java client as a Maven dependency, add
+the following to the `pom.xml` of your project:
+
+[source,xml]
+----
+<project>
+    <dependencies>
+
+        <dependency>
+            <groupId>co.elastic.clients</groupId>
+            <artifactId>elasticsearch-java-serverless</artifactId>
+            <version>1.0.0-20231031</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.0</version>
+        </dependency>
+
+    </dependencies>
+</project>
+----
+
+[discrete]
+[[elasticsearch-java-client-getting-started-initialize-the-client]]
+== Initialize the client
+
+Initialize the client using your API key and Elasticsearch Endpoint:
+
+[source,java]
+----
+// URL and API key
+String serverUrl = "https://...elastic.cloud";
+String apiKey = "VnVhQ2ZHY0JDZGJrU...";
+
+// Create the low-level client
+RestClient restClient = RestClient
+    .builder(HttpHost.create(serverUrl))
+    .setDefaultHeaders(new Header[]{
+        new BasicHeader("Authorization", "ApiKey " + apiKey)
+    })
+    .build();
+
+// Create the transport with a Jackson mapper
+ElasticsearchTransport transport = new RestClientTransport(
+    restClient, new JacksonJsonpMapper());
+
+// And create the API client
+ElasticsearchClient esClient = new ElasticsearchClient(transport);
+----
+
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+
+[discrete]
+[[elasticsearch-java-client-getting-started-using-the-api]]
+== Using the API
+
+After you initialized the client, you can start ingesting documents.
+
+[discrete]
+[[elasticsearch-java-client-getting-started-creating-an-index-and-ingesting-documents]]
+=== Creating an index and ingesting documents
+
+The following is an example of indexing a document, here a `Product` application
+object in the `products` index:
+
+[source,java]
+----
+Product product = new Product("bk-1", "City bike", 123.0);
+
+IndexResponse response = esClient.index(i -> i
+    .index("products")
+    .id(product.getSku())
+    .document(product)
+);
+
+logger.info("Indexed with version " + response.version());
+----
+
+[discrete]
+[[elasticsearch-java-client-getting-started-searching]]
+=== Searching
+
+Now that some data is available, you can search your documents using the
+`search` API:
+
+[source,java]
+----
+String searchText = "bike";
+
+SearchResponse<Product> response = esClient.search(s -> s
+    .index("products")
+    .query(q -> q
+        .match(t -> t
+            .field("name")
+            .query(searchText)
+        )
+    ),
+    Product.class
+);
+----
+
+A few things to note in the above example:
+
+* The search query is built using a hierarchy of lambda expressions that closely
+follows the {es} HTTP API. Lambda expressions allows you to be guided
+by your IDE's autocompletion, without having to import (or even know!) the
+actual classes representing a query.
+* The last parameter `Product.class` instructs the client to return results as
+`Product` application objects instead of raw JSON.
+
+[discrete]
+[[elasticsearch-java-client-getting-started-updating]]
+=== Updating
+
+You can update your documents using the `update` API:
+
+[source,java]
+----
+Product product = new Product("bk-1", "City bike", 123.0);
+
+esClient.update(u -> u
+        .index("products")
+        .id("bk-1")
+        .upsert(product),
+    Product.class
+);
+----
+
+[discrete]
+[[elasticsearch-java-client-getting-started-delete]]
+=== Delete
+
+You can also delete documents:
+
+[source,java]
+----
+esClient.delete(d -> d.index("products").id("bk-1"));
+----
+
+[discrete]
+[[elasticsearch-java-client-getting-started-deleting-an-index]]
+=== Deleting an index
+
+[source,java]
+----
+esClient.indices().delete(d -> d.index("products"));
+----

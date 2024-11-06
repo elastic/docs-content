@@ -1,0 +1,384 @@
+[role="exclude",id="elasticsearch-explore-your-data-visualizations"]
+= Create visualizations
+
+// :description: Create charts, graphs, maps, and more from your {es} data.
+// :keywords: serverless, elasticsearch, visualize, how to
+
+preview:[]
+
+Learn how to create some visualization panels to add to your dashboard.
+This tutorial uses the same web logs sample data from <<elasticsearch-explore-your-data-dashboards,Create dashboards>>.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-open-the-visualization-editor-and-get-familiar-with-the-data]]
+== Open the visualization editor and get familiar with the data
+
+Once you have loaded the web logs sample data into your dashboard lets open the visualization editor, to ensure the correct fields appear.
+
+. On the dashboard, click **Create visualization**.
+. Make sure the **{kib} Sample Data Logs** {data-source} appears.
+
+To create the visualizations in this tutorial, you'll use the following fields:
+
+* **Records**
+* **timestamp**
+* **bytes**
+* **clientip**
+* **referer.keyword**
+
+To see the most frequent values in a field, hover over the field name, then click _i_.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-create-your-first-visualization]]
+== Create your first visualization
+
+Pick a field you want to analyze, such as **clientip**. To analyze only the **clientip** field, use the **Metric** visualization to display the field as a number.
+
+The only number function that you can use with **clientip** is **Unique count**, also referred to as cardinality, which approximates the number of unique values.
+
+. Open the **Visualization type** dropdown, then select **Metric**.
+. From the **Available fields** list, drag **clientip** to the workspace or layer pane.
++
+In the layer pane, **Unique count of clientip** appears because the editor automatically applies the **Unique count** function to the **clientip** field. **Unique count** is the only numeric function that works with IP addresses.
+. In the layer pane, click **Unique count of clientip**.
++
+a. In the **Name** field, enter `Unique visitors`.
++
+b. Click **Close**.
+. Click **Save and return**.
++
+**[No Title]** appears in the visualization panel header. Since the visualization has its own `Unique visitors` label, you do not need to add a panel title.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-view-a-metric-over-time]]
+== View a metric over time
+
+There are two shortcuts you can use to view metrics over time.
+When you drag a numeric field to the workspace, the visualization editor adds the default
+time field from the {data-source}. When you use the **Date histogram** function, you can
+replace the time field by dragging the field to the workspace.
+
+To visualize the **bytes** field over time:
+
+. On the dashboard, click **Create visualization**.
+. From the **Available fields** list, drag **bytes** to the workspace.
++
+The visualization editor creates a bar chart with the **timestamp** and **Median of bytes** fields.
+. To zoom in on the data, click and drag your cursor across the bars.
+
+To emphasize the change in **Median of bytes** over time, change the visualization type to **Line** with one of the following options:
+
+* In the **Suggestions**, click the line chart.
+* In the editor toolbar, open the **Visualization type** dropdown, then select **Line**.
+
+To increase the minimum time interval:
+
+. In the layer pane, click **timestamp**.
+. Change the **Minimum interval** to **1d**, then click **Close**.
++
+You can increase and decrease the minimum interval, but you are unable to decrease the interval below the configured **Advanced Settings**.
+
+To save space on the dashboard, hide the axis labels.
+
+. Open the **Left axis** menu, then select **None** from the **Axis title** dropdown.
+. Open the **Bottom axis** menu, then select **None** from the **Axis title** dropdown.
+. Click **Save and return**
+
+Since you removed the axis labels, add a panel title:
+
+. Open the panel menu, then select **Panel settings**.
+. In the **Title** field, enter `Median of bytes`, then click **Apply**.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-view-the-top-values-of-a-field]]
+== View the top values of a field
+
+Create a visualization that displays the most frequent values of **request.keyword** on your website, ranked by the unique visitors. To create the visualization, use **Top values of request.keyword** ranked by **Unique count of clientip**, instead of being ranked by **Count of records**.
+
+The **Top values** function ranks the unique values of a field by another function.
+The values are the most frequent when ranked by a **Count** function, and the largest when ranked by the **Sum** function.
+
+. On the dashboard, click **Create visualization**.
+. From the **Available fields** list, drag **clientip** to the **Vertical axis** field in the layer pane.
++
+The visualization editor automatically applies the **Unique count** function. If you drag **clientip** to the workspace, the editor adds the field to the incorrect axis.
+. Drag **request.keyword** to the workspace.
++
+When you drag a text or IP address field to the workspace, the editor adds the **Top values** function ranked by **Count of records** to show the most frequent values.
+
+The chart labels are unable to display because the **request.keyword** field contains long text fields. You could use one of the **Suggestions**, but the suggestions also have issues with long text. The best way to display long text fields is with the **Table** visualization.
+
+. Open the **Visualization type** dropdown, then select **Table**.
+. In the layer pane, click **Top 5 values of request.keyword**.
++
+a. In the **Number of values** field, enter `10`.
++
+b. In the **Name** field, enter `Page URL`.
++
+c. Click **Close**.
+. Click **Save and return**.
++
+Since the table columns are labeled, you do not need to add a panel title.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-compare-a-subset-of-documents-to-all-documents]]
+== Compare a subset of documents to all documents
+
+Create a proportional visualization that helps you determine if your users transfer more bytes from documents under 10KB versus documents over 10KB.
+
+. On the dashboard, click **Create visualization**.
+. From the **Available fields** list, drag **bytes** to the **Vertical axis** field in the layer pane.
+. In the layer pane, click **Median of bytes**.
+. Click the **Sum** quick function, then click **Close**.
+. From the **Available fields** list, drag **bytes** to the **Break down by** field in the layer pane.
+
+To select documents based on the number range of a field, use the **Intervals** function.
+When the ranges are non numeric, or the query requires multiple clauses, you could use the **Filters** function.
+
+Specify the file size ranges:
+
+. In the layer pane, click **bytes**.
+. Click **Create custom ranges**, enter the following in the **Ranges** field, then press Return:
+
+* **Ranges** — `0` -> `10240`
+* **Label** — `Below 10KB`
+
+. Click **Add range**, enter the following, then press Return:
+
+* **Ranges** — `10240` -> `+∞`
+* **Label** — `Above 10KB`
+
+. From the **Value format** dropdown, select **Bytes (1024)**, then click **Close**.
+
+To display the values as a percentage of the sum of all values, use the **Pie** chart.
+
+. Open the **Visualization Type** dropdown, then select **Pie**.
+. Click **Save and return**.
+
+Add a panel title:
+
+. Open the panel menu, then select **Panel settings**.
+. In the **Title** field, enter `Sum of bytes from large requests`, then click **Apply**.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-view-the-distribution-of-a-number-field]]
+== View the distribution of a number field
+
+The distribution of a number can help you find patterns. For example, you can analyze the website traffic per hour to find the best time for routine maintenance.
+
+. On the dashboard, click **Create visualization**.
+. From the **Available fields** list, drag **bytes** to **Vertical axis** field in the layer pane.
+. In the layer pane, click **Median of bytes**.
++
+a. Click the **Sum** quick function.
++
+b. In the **Name** field, enter `Transferred bytes`.
++
+c. From the **Value format** dropdown, select **Bytes (1024)**, then click **Close**.
+. From the **Available fields** list, drag **hour_of_day** to **Horizontal axis** field in the layer pane.
+. In the layer pane, click **hour_of_day**, then slide the **Intervals granularity** slider until the horizontal axis displays hourly intervals.
+. Click **Save and return**.
+
+Add a panel title:
+
+. Open the panel menu, then select **Panel settings**.
+. In the **Title** field, enter `Website traffic`, then click **Apply**.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-create-a-multi-level-chart]]
+== Create a multi-level chart
+
+**Table** and **Proportion** visualizations support multiple functions. For example, to create visualizations that break down the data by website traffic sources and user geography, apply the **Filters** and **Top values** functions.
+
+. On the dashboard, click **Create visualization**.
+. Open the **Visualization type** dropdown, then select **Treemap**.
+. From the **Available fields** list, drag **Records** to the **Metric** field in the layer pane.
+. In the layer pane, click **Add or drag-and-drop a field** for **Group by**.
+
+Create a filter for each website traffic source:
+
+. Click **Filters**.
+. Click **All records**, enter the following in the query bar, then press Return:
+
+* **KQL** — `referer : **facebook.com**`
+* **Label** — `Facebook`
+
+. Click **Add a filter**, enter the following in the query bar, then press Return:
+
+* **KQL** — `referer : **twitter.com**`
+* **Label** — `Twitter`
+
+. Click **Add a filter**, enter the following in the query bar, then press Return:
+
+* **KQL** — `NOT referer : **twitter.com** OR NOT referer: **facebook.com**`
+* **Label** — `Other`
+
+. Click **Close**.
+
+Add the user geography grouping:
+
+. From the **Available fields** list, drag **geo.srcdest** to the workspace.
+. To change the **Group by** order, drag **Top 3 values of geo.srcdest** in the layer pane so that appears first.
+
+Remove the documents that do not match the filter criteria:
+
+. In the layer pane, click **Top 3 values of geo.srcdest**.
+. Click **Advanced**, deselect **Group other values as "Other"**, then click **Close**.
+. Click **Save and return**.
+
+Add a panel title:
+
+. Open the panel menu, then select **Panel settings**.
+. In the **Title** field, enter `Page views by location and referrer`, then click **Apply**.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-visualization-panels]]
+== Visualization panels
+
+Visualization panels are how you display visualizations of your data and what make Kibana such a useful tool. Panels are designed to build interactive dashboards.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-create-and-add-panels]]
+=== Create and add panels
+
+Create new panels, which can be accessed from the dashboard toolbar or the **Visualize Library**, or add panels that are saved in the **Visualize Library**, or search results from <<save-your-search,**Discover**>>.
+
+Panels added to the **Visualize Library** are available to all dashboards.
+
+To create panels from the dashboard:
+
+. From the main menu, click **Dashboard** and select **[Logs] Web Traffic**.
+. Click **Edit** then click **Create visualization**.
+. From the **Available fields** drag and drop the data you want to visualize.
+. Click **Save and return**.
+. Click **Save** to add the new panel to your dashboard.
+
+To create panels from the **Visualize Library**:
+
+. From the main menu, click **Visualize Library**.
+. Click **Create visualization**, then select an editor from the options.
+. Click **Save** once you have created your new visualization.
+. In the modal, enter a **Title**, **Description**, and decide if you want to save the new panel to an existing dashboard, a new dashboard, or to the **Visualize Library**.
+. Save the panel.
+
+To add existing panels from the **Visualize Library**:
+
+. From the main menu, click **Dashboard** and select **[Logs] Web Traffic**.
+. Click **Edit** then in the dashboard toolbar, click **Add from library**.
+. Click the panel you want to add to the dashboard, then click _X_.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-save-panels]]
+=== Save panels
+
+Consider where you want to save and add the panel in {kib}.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-save-to-the-visualize-library]]
+==== Save to the Visualize Library
+
+To use the panel on other dashboards, save the panel to the **Visualize Library**. When panels are saved in the **Visualize Library**, image:images/icons/folderCheck.svg[Visualize Library] appears in the panel header.
+
+If you created the panel from the dashboard:
+
+. Open the panel menu and click **More → Save to library**.
+. Enter the **Title** and click **Save**.
+
+If you created the panel from the **Visualize Library**:
+
+. In the editor, click **Save**.
+. Under **Save visualization** enter a **Title**, **Description**, and decide if you want to save the new panel to an existing dashboard, a new dashboard, or to the **Visualize Library**.
+. Click **Save and go to Dashboard**.
+. Click **Save**.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-save-to-the-dashboard]]
+==== Save to the dashboard
+
+Return to the dashboard and add the panel without specifying the save options or adding the panel to the **Visualize Library**.
+
+If you created the panel from the dashboard:
+
+. In the editor, click **Save and return**.
+. Click **Save**.
+
+If you created the panel from the **Visualize Library**:
+
+. Click **Save**.
+. Under **Save visualization** enter a **Title**, **Description**, and decide if you want to save the new panel to an existing dashboard, a new dashboard, or to the **Visualize Library**.
+. Click **Save and go to Dashboard**.
+. Click **Save**.
+
+To add unsaved panels to the **Visualize Library**:
+
+. Open the panel menu, then select **More → Save to library**.
+. Enter the panel title, then click **Save**.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-arrange-panels]]
+=== Arrange panels
+
+Compare the data in your panels side-by-side, organize panels by priority, resize the panels so they all appear on the dashboard without scrolling down, and more.
+
+In the toolbar, click **Edit**, then use the following options:
+
+* To move, click and hold the panel header, then drag to the new location.
+* To resize, click the resize control, then drag to the new dimensions.
+* To maximize to fullscreen, open the panel menu, then click **More → Maximize panel**.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-add-text-panels]]
+=== Add text panels
+
+Add **Text** panels to your dashboard that display important information, instructions, and more. You create **Text** panels using https://github.github.com/gfm/[GitHub-flavored Markdown] text.
+
+. On the dashboard, click **Edit**.
+. Click **Add panel** and select **image:images/icons/visText.svg[Create new text] Text**.
+. Check the rendered text, then click **Save and return**.
+. To save the new text panel to your dashboard click **Save**.
+
+[discrete]
+[[elasticsearch-explore-your-data-visualizations-add-image-panels]]
+=== Add image panels
+
+To personalize your dashboards, add your own logos and graphics with the **Image** panel. You can upload images from your computer, or add images from an external link.
+
+. On the dashboard, click **Edit**.
+. Click **Add panel** and select **image:images/icons/image.svg[Add image] Image**.
+. Use the editor to add an image.
+. Click **Save**.
+. To save the new image panel to your dashboard click **Save**.
+
+To manage your uploaded image files, open the main menu, then click **Management → Files**.
+
+[WARNING]
+====
+When you export a dashboard, the uploaded image files are not exported.
+When importing a dashboard with an image panel, and the image file is unavailable, the image panel displays a `not found` warning. Such panels have to be fixed manually by re-uploading the image using the panel's image editor.
+====
+
+[discrete]
+[[edit-panels]]
+=== Edit panels
+
+To make changes to the panel, use the panel menu options.
+
+. In the toolbar, click **Edit**.
+. Open the panel menu, then use the following options:
+
+* **Edit Lens** — Opens **Lens** so you can make changes to the visualization.
+* **Edit visualization** — Opens the editor so you can make changes to the panel.
+* **Edit map** — Opens the editor so you can make changes to the map panel.
++
+The above options display in accordance to the type of visualization the panel is made up of.
+* **Edit Lens** — Opens aggregation-based visualizations in **Lens**.
+* **Clone panel** — Opens a copy of the panel on your dashboard.
+* **Panel settings** — Opens the **Panel settings** window to change the **title**, **description**, and **time range**.
+* **More → Inspect** — Opens an editor so you can view the data and the requests that collect that data.
+* **More → Explore data in Discover** — Opens that panels data in **Discover**.
+* **More → Save to library** — Saves the panel to the **Visualize Library**.
+* **More → Maximize panel** — Maximizes the panel to full screen.
+* **More → Download as CSV** — Downloads the data as a CSV file.
+* **More → Replace panel** — Opens the **Visualize Library** so you can select a new panel to replace the existing panel.
+* **More → Copy to dashboard** — Copy the panel to a different dashboard.
+* **More → Delete from dashboard** — Removes the panel from the dashboard.

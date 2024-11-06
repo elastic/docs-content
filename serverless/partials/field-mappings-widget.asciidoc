@@ -1,0 +1,26 @@
+
+
+++++
+<div class="tabs" data-tab-group="partials-field-mappings-widget">
+  <div role="tablist" aria-label="partials-field-mappings-widget">
+    <button role="tab" aria-selected="true" aria-controls="partials-field-mappings-widget-elser-panel" id="partials-field-mappings-widget-elser-button">
+      ELSER
+    </button>
+    <button role="tab" aria-selected="false" aria-controls="partials-field-mappings-widget-dense-vector-models-panel" id="partials-field-mappings-widget-dense-vector-models-button" tabindex="-1">
+      Dense vector models
+    </button>
+  </div>
+  <div tabindex="0" role="tabpanel" id="partials-field-mappings-widget-elser-panel" aria-labelledby="partials-field-mappings-widget-elser-button">
+++++
+include::./field-mappings-elser.asciidoc[]
+
+++++
+  </div>
+  <div tabindex="0" role="tabpanel" id="partials-field-mappings-widget-dense-vector-models-panel" aria-labelledby="partials-field-mappings-widget-dense-vector-models-button" hidden="">
+++++
+include::./field-mappings-dense-vector.asciidoc[]
+
+++++
+  </div>
+</div>
+++++

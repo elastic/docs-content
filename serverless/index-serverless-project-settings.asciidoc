@@ -1,0 +1,32 @@
+:doctype: book
+
+include::{asciidoc-dir}/../../shared/versions/stack/master.asciidoc[]
+include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
+
+[[project-and-management-settings]]
+== Project and management settings
+
+include::./pages/project-and-management-settings.asciidoc[leveloffset=+2]
+
+include::./pages/project-settings.asciidoc[leveloffset=+2]
+include::./pages/api-keys.asciidoc[leveloffset=+3]
+include::./pages/action-connectors.asciidoc[leveloffset=+3]
+include::./pages/custom-roles.asciidoc[leveloffset=+3]
+include::./pages/data-views.asciidoc[leveloffset=+3]
+include::./pages/files.asciidoc[leveloffset=+3]
+include::./pages/index-management.asciidoc[leveloffset=+3]
+include::./pages/ingest-pipelines.asciidoc[leveloffset=+3]
+include::./pages/logstash-pipelines.asciidoc[leveloffset=+3]
+include::./pages/machine-learning.asciidoc[leveloffset=+3]
+include::./pages/maintenance-windows.asciidoc[leveloffset=+3]
+include::./pages/maps.asciidoc[leveloffset=+3]
+include::./pages/reports.asciidoc[leveloffset=+3]
+include::./pages/rules.asciidoc[leveloffset=+3]
+include::./pages/saved-objects.asciidoc[leveloffset=+3]
+include::./pages/spaces.asciidoc[leveloffset=+3]
+include::./pages/tags.asciidoc[leveloffset=+3]
+include::./pages/transforms.asciidoc[leveloffset=+3]
+
+include::./pages/integrations.asciidoc[leveloffset=+2]
+
+include::./pages/fleet-and-elastic-agent.asciidoc[leveloffset=+2]

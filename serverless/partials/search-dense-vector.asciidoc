@@ -1,0 +1,29 @@
+Text embeddings produced by dense vector models can be queried using a
+<<elasticsearch-knn-search,kNN search>>.
+In the `knn` clause, provide the name of the
+dense vector field, and a `query_vector_builder` clause with the model ID and
+the query text.
+
+[source,bash]
+----
+curl -X GET "${ES_URL}/my-index/_search" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "knn": {
+    "field": "my_embeddings.predicted_value",
+    "k": 10,
+    "num_candidates": 100,
+    "query_vector_builder": {
+      "text_embedding": {
+        "model_id": "sentence-transformers__msmarco-minilm-l-12-v3",
+        "model_text": "the query string"
+      }
+    }
+  }
+}
+'
+----
+
+// TEST[skip:TBD]

@@ -1,0 +1,15 @@
+[[general-manage-organization]]
+= Manage your organization
+
+// :description: Manage your instances, users, and settings.
+// :keywords: serverless, general, organization, overview
+
+preview:[]
+
+When you sign up to Elastic Cloud, you create an **organization**.
+
+This organization is the umbrella for all of your Elastic Cloud resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization.
+
+* <<general-manage-access-to-organization>>: Add members to your organization and projects.
+* <<general-manage-billing>>: Configure the billing details of your organization.
+* <<elasticsearch-manage-project>>: Configure project-wide features and usage.

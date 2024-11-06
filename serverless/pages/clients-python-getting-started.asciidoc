@@ -1,0 +1,157 @@
+[[elasticsearch-python-client-getting-started]]
+= Get started with the serverless Python client
+
+// :description: Set up and use the Python client for {es3}.
+// :keywords: serverless, elasticsearch, python, how to
+
+preview:[]
+
+This page guides you through the installation process of the Python
+client for {es3}, shows you how to initialize the client, and how to perform basic
+{es} operations with it.
+
+[discrete]
+[[elasticsearch-python-client-getting-started-requirements]]
+== Requirements
+
+* Python 3.7 or higher
+* https://pip.pypa.io/en/stable/[`pip`]
+
+[discrete]
+[[elasticsearch-python-client-getting-started-documentation]]
+== Documentation
+
+Find the full documentation for the Python client on https://elasticsearch-serverless-python.readthedocs.io/en/latest/[readthedocs].
+
+[discrete]
+[[elasticsearch-python-client-getting-started-installation]]
+== Installation
+
+[discrete]
+[[elasticsearch-python-client-getting-started-using-the-command-line]]
+=== Using the command line
+
+You can install the Python client with the following
+commands:
+
+[source,bash]
+----
+python -m pip install elasticsearch-serverless
+----
+
+[discrete]
+[[elasticsearch-python-client-getting-started-initialize-the-client]]
+== Initialize the client
+
+Initialize the client using your API key and Elasticsearch Endpoint:
+
+[source,python]
+----
+from elasticsearch_serverless import Elasticsearch
+
+client = Elasticsearch(
+    "https://...",  # Your project's Elasticsearch Endpoint
+    api_key='api-key',  # API key for your project
+)
+----
+
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+
+[discrete]
+[[elasticsearch-python-client-getting-started-using-the-api]]
+== Using the API
+
+After you've initialized the client, you can start ingesting documents. You can use
+the `bulk` API for this. This API enables you to index, update, and delete several
+documents in one request.
+
+[discrete]
+[[elasticsearch-python-client-getting-started-creating-an-index-and-ingesting-documents]]
+=== Creating an index and ingesting documents
+
+You can call the `bulk` API with a body parameter, an array of hashes that
+define the action, and a document.
+
+The following is an example of indexing some classic books into the `books`
+index:
+
+[source,python]
+----
+from datetime import datetime
+
+client.bulk(
+    body=[
+        {"index": {"_index": "books", "_id": "1"}},
+        {"title": "Infinite Jest", "author": "David Foster Wallace", "published_on": datetime(1996, 2, 1)},
+        {"index": {"_index": "books", "_id": "2"}},
+        {"title": "Ulysses", "author": "James Joyce", "published_on": datetime(1922, 2, 2)},
+        {"index": {"_index": "books", "_id": "3"}},
+        {"title": "Just Kids", "author": "Patti Smith", "published_on": datetime(2010, 1, 19)},
+    ],
+)
+----
+
+[discrete]
+[[elasticsearch-python-client-getting-started-getting-documents]]
+=== Getting documents
+
+You can get documents by using the following code:
+
+[source,python]
+----
+response = client.get(index="books", id="1")
+print(response.body)
+----
+
+[discrete]
+[[elasticsearch-python-client-getting-started-searching]]
+=== Searching
+
+Now that some data is available, you can search your documents using the
+`search` API:
+
+[source,python]
+----
+response = client.search(index="books", query={
+    "match": {
+        "title": "infinite"
+    }
+})
+
+for hit in response["hits"]["hits"]:
+    print(hit["_source"])
+----
+
+[discrete]
+[[elasticsearch-python-client-getting-started-updating-a-document]]
+=== Updating a document
+
+You can call the `update` API to update a document:
+
+[source,python]
+----
+client.update(index="books", id="2", doc={
+    "author": "James Augustine Aloysius Joyce",
+    "pages": 732,
+})
+----
+
+[discrete]
+[[elasticsearch-python-client-getting-started-deleting-a-document]]
+=== Deleting a document
+
+You can call the `delete` API to delete a document:
+
+[source,python]
+----
+client.delete(index="books", id="3")
+----
+
+[discrete]
+[[elasticsearch-python-client-getting-started-deleting-an-index]]
+=== Deleting an index
+
+[source,python]
+----
+client.indices.delete(index="books")
+----

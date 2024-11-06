@@ -1,0 +1,26 @@
+
+
+++++
+<div class="tabs" data-tab-group="partials-generate-embeddings-widget">
+  <div role="tablist" aria-label="partials-generate-embeddings-widget">
+    <button role="tab" aria-selected="true" aria-controls="partials-generate-embeddings-widget-elser-panel" id="partials-generate-embeddings-widget-elser-button">
+      ELSER
+    </button>
+    <button role="tab" aria-selected="false" aria-controls="partials-generate-embeddings-widget-dense-vector-models-panel" id="partials-generate-embeddings-widget-dense-vector-models-button" tabindex="-1">
+      Dense vector models
+    </button>
+  </div>
+  <div tabindex="0" role="tabpanel" id="partials-generate-embeddings-widget-elser-panel" aria-labelledby="partials-generate-embeddings-widget-elser-button">
+++++
+include::./generate-embeddings-elser.asciidoc[]
+
+++++
+  </div>
+  <div tabindex="0" role="tabpanel" id="partials-generate-embeddings-widget-dense-vector-models-panel" aria-labelledby="partials-generate-embeddings-widget-dense-vector-models-button" hidden="">
+++++
+include::./generate-embeddings-dense-vector.asciidoc[]
+
+++++
+  </div>
+</div>
+++++

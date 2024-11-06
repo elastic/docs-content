@@ -1,0 +1,212 @@
+[[elasticsearch-php-client-getting-started]]
+= Get started with the serverless PHP client
+
+// :description: Set up and use the PHP client for {es3}.
+// :keywords: serverless, elasticsearch, php, how to
+
+preview:[]
+
+This page guides you through the installation process of the
+PHP client for {es3}, shows you how to initialize the client, and how to perform basic
+{es} operations with it.
+
+[discrete]
+[[elasticsearch-php-client-getting-started-requirements]]
+== Requirements
+
+* PHP 8.0 or higher installed on your system.
+
+[discrete]
+[[elasticsearch-php-client-getting-started-installation]]
+== Installation
+
+[discrete]
+[[elasticsearch-php-client-getting-started-using-the-command-line]]
+=== Using the command line
+
+You can install the PHP client using
+https://getcomposer.org/[composer] with the following commands:
+
+[source,bash]
+----
+composer require elastic/elasticsearch-serverless
+----
+
+[discrete]
+[[elasticsearch-php-client-getting-started-initialize-the-client]]
+== Initialize the client
+
+Initialize the client using your API key and Elasticsearch Endpoint:
+
+[source,php]
+----
+require 'vendor/autoload.php';
+
+use Elastic\Elasticsearch\Serverless\ClientBuilder;
+
+$client = ClientBuilder::create()
+  ->setEndpoint('<elasticsearch-endpoint>')
+  ->setApiKey('<api-key>')
+  ->build();
+----
+
+To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+
+[discrete]
+[[elasticsearch-php-client-getting-started-using-the-api]]
+== Using the API
+
+After you've initialized the client, you can start ingesting documents. You can
+use the `bulk` API for this. This API enables you to index, update, and delete
+several documents in one request.
+
+[discrete]
+[[elasticsearch-php-client-getting-started-creating-an-index-and-ingesting-documents]]
+=== Creating an index and ingesting documents
+
+You can call the `bulk` API with a body parameter, an array of actions (index)
+and documents.
+
+The following is an example of indexing some classic books into the `books`
+index:
+
+[source,php]
+----
+$body = [
+    [ "index" => [ "_index" => "books" ]],
+    [ "name" => "Snow Crash", "author" => "Neal Stephenson", "release_date" => "1992-06-01", "page_count" => 470],
+    [ "index" => [ "_index" => "books" ]],
+    [ "name" => "Revelation Space", "author" => "Alastair Reynolds", "release_date" => "2000-03-15", "page_count" => 585],
+    [ "index" => [ "_index" => "books" ]],
+    [ "name" => "1984", "author" => "George Orwell", "release_date" => "1949-06-08", "page_count" => 328],
+    [ "index" => [ "_index" => "books" ]],
+    [ "name" => "Fahrenheit 451", "author" => "Ray Bradbury", "release_date" => "1953-10-15", "page_count" => 227],
+    [ "index" => [ "_index" => "books" ]],
+    [ "name" => "Brave New World", "author" => "Aldous Huxley", "release_date" => "1932-06-01", "page_count" => 268],
+    [ "index" => [ "_index" => "books" ]],
+    [ "name" => "The Handmaid's Tale", "author" => "Margaret Atwood", "release_date" => "1985-06-01", "page_count" => 311]
+];
+
+$response = $client->bulk(body: $body);
+# You can check the response if the items are indexed and have an ID
+print_r($response['items']);
+----
+
+When you use the client to make a request to {es}, it returns an API response
+object. This object implements the https://www.php-fig.org/psr/psr-7/[PSR-7]
+interface, that means you can check the for the HTTP status using the following
+method:
+
+[source,php]
+----
+print($response->getStatusCode());
+----
+
+or get the HTTP response headers using the following:
+
+[source,php]
+----
+print_r($response->getHeaders());
+----
+
+or reading the HTTP response body as follows:
+
+[source,php]
+----
+print($response->getBody()->getContents());
+# or using the asString() dedicated method
+print($response->asString());
+----
+
+The response body can be accessed as associative array or as object.
+
+[source,php]
+----
+var_dump($response['items']); # associative array
+var_dump($response->items);   # object
+----
+
+There are also methods to render the response as array, object, string and
+boolean values.
+
+[source,php]
+----
+var_dump($response->asArray());  // response body content as array
+var_dump($response->asObject()); // response body content as object
+var_dump($response->asString()); // response body as string (JSON)
+var_dump($response->asBool());   // true if HTTP response code between 200 and 300
+----
+
+[discrete]
+[[elasticsearch-php-client-getting-started-getting-documents]]
+=== Getting documents
+
+You can get documents by using the following code:
+
+[source,php]
+----
+$response = $client->get(index: "books", id: $id);
+----
+
+[discrete]
+[[elasticsearch-php-client-getting-started-searching]]
+=== Searching
+
+You can search your documents using the `search` API:
+
+[source,php]
+----
+# Search for all the books written by Ray Bradbury
+$query = [ 'query' => [ 'match' => [ 'author' => 'Ray Bradbury' ]]];
+$response = $client->search(index: "books", body: $query);
+
+printf("Documents found: %d\n", $response['hits']['total']['value']); # total documents found
+print_r($response['hits']['hits']); # list of books
+----
+
+For more information about the `search` API's query parameters and the response type,
+refer to the
+https://www.elastic.co/docs/api/doc/elasticsearch-serverless/group/endpoint-search[Search API]
+docs.
+
+[discrete]
+[[elasticsearch-php-client-getting-started-updating-documents]]
+=== Updating documents
+
+You can call the `update` API to update a document:
+
+[source,php]
+----
+$id = '<insert the document ID>';
+# update the "page_count" value to 300
+$body = [ "doc" => [ "page_count" => 300 ]];
+$response = $client->update(index: "books", id: $id, body: $body);
+printf("Operation result: %s\n", $response['result']); # You get 'updated' as a result.
+----
+
+[discrete]
+[[elasticsearch-php-client-getting-started-deleting-documents]]
+=== Deleting documents
+
+You can call the `delete` API to delete a document:
+
+[source,php]
+----
+$id = '<insert the document ID>';
+$response = $client->delete(index: "books", id: $id);
+printf("Operation result: %s\n", $response['result']); # You get "deleted" a as result.
+----
+
+[discrete]
+[[elasticsearch-php-client-getting-started-deleting-an-index]]
+=== Deleting an index
+
+You can delete an entire index as follows:
+
+[source,php]
+----
+$response = $client->indices()->delete(index: "books");
+if ($response['acknowledged']) {
+    print("Index successfully removed!");
+}
+----

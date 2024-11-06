@@ -1,0 +1,26 @@
+
+
+++++
+<div class="tabs" data-tab-group="partials-search-widget">
+  <div role="tablist" aria-label="partials-search-widget">
+    <button role="tab" aria-selected="true" aria-controls="partials-search-widget-elser-panel" id="partials-search-widget-elser-button">
+      ELSER
+    </button>
+    <button role="tab" aria-selected="false" aria-controls="partials-search-widget-dense-vector-models-panel" id="partials-search-widget-dense-vector-models-button" tabindex="-1">
+      Dense vector models
+    </button>
+  </div>
+  <div tabindex="0" role="tabpanel" id="partials-search-widget-elser-panel" aria-labelledby="partials-search-widget-elser-button">
+++++
+include::./search-elser.asciidoc[]
+
+++++
+  </div>
+  <div tabindex="0" role="tabpanel" id="partials-search-widget-dense-vector-models-panel" aria-labelledby="partials-search-widget-dense-vector-models-button" hidden="">
+++++
+include::./search-dense-vector.asciidoc[]
+
+++++
+  </div>
+</div>
+++++

@@ -1,0 +1,19 @@
+[[devtools-debug-painless-scripts]]
+= Painless Lab
+
+// :description: Use our interactive code editor to test and debug Painless scripts in real-time.
+// :keywords: serverless, dev tools, how-to
+
+preview:[]
+
+This content applies to: {obs-badge} {sec-badge}
+
+beta::[]
+
+The **Painless Lab** is an interactive code editor that lets you test and debug {ref}/modules-scripting-painless.html[Painless scripts] in real-time.
+You can use Painless to safely write inline and stored scripts anywhere scripts are supported.
+
+To get started, open the main menu, click **Developer Tools**, and then click **Painless Lab**.
+
+[role="screenshot"]
+image::images/painless-lab.png[Painless Lab]

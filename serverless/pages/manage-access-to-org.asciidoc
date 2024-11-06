@@ -1,0 +1,32 @@
+[[general-manage-access-to-organization]]
+= Invite your team
+
+// :description: Add members to your organization and projects.
+// :keywords: serverless, general, organization, overview
+
+To allow other users to interact with your projects, you must invite them to join your organization and grant them access to your organization resources and instances.
+
+Alternatively, {cloud}/ec-saml-sso.html[configure {ecloud} SAML SSO] to enable your organization members to join the {ecloud} organization automatically. preview:[]
+
+. Go to the user icon on the header bar and select **Organization**.
+. Click **Invite members**.
++
+You can add multiple members by entering their email addresses separated by a space.
++
+You can grant access to all projects of the same type with a unique role, or select individual roles for specific projects.
+For more details about roles, refer to <<general-assign-user-roles>>.
+. Click **Send invites**.
++
+Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation. If they do not join within that period, you will have to send a new invitation.
+
+On the **Members** tab of the **Organization** page, you can view the list of current members, their status and role.
+
+In the **Actions** column, click the three dots to edit a member’s role or revoke the invite.
+
+[discrete]
+[[general-manage-access-to-organization-leave-an-organization]]
+== Leave an organization
+
+On the **Organization** page, click **Leave organization**.
+
+If you're the only user in the organization, you can only leave if you have deleted all your projects and don't have any pending bills.

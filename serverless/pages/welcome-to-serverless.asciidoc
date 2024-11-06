@@ -1,0 +1,75 @@
+++++
+<style>
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+</style>
+++++
+
+preview:[]
+
+Elastic serverless products allow you to deploy and use Elastic for your use cases without managing the underlying Elastic cluster,
+such as nodes, data tiers, and scaling. Serverless instances are fully-managed, autoscaled, and automatically upgraded by Elastic so you can
+focus more on gaining value and insight from your data.
+
+Elastic provides three serverless solutions available on {ecloud}:
+
+* **{es}**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
+* **Elastic {observability}**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
+* **Elastic {security}**: Detect, investigate, and respond to threats, with SIEM, endpoint protection, and AI-powered analytics capabilities.
+
+Serverless instances of the Elastic Stack that you create in {ecloud} are called **serverless projects**.
+
+Elastic serverless products are currently in preview. https://www.elastic.co/blog/elastic-serverless-architecture[Learn more about serverless in our blog].
+
+[discrete]
+== Get started
+
+Choose the type of project that matches your needs and we’ll help you get started with our solution guides.
+
+[cols="1,1"]
+|===
+|
+|
+
+| image:https://www.elastic.co/docs/assets/images/elasticsearch.png[width=150]
+a| [.card-title]#Elasticsearch# +
+Build custom search applications with Elasticsearch.
+
+<<what-is-elasticsearch-serverless,*View guide →*>>
+
+| image:https://www.elastic.co/docs/assets/images/observability.png[width=150]
+a| [.card-title]#Observability# +
+Monitor applications and systems with Elastic Observability.
+
+<<what-is-observability-serverless,*View guide →*>>
+
+| image:https://www.elastic.co/docs/assets/images/security.png[width=150]
+a| [.card-title]#Security# +
+Detect, investigate, and respond to threats with Elastic Security.
+
+<<what-is-security-serverless,*View guide →*>>
+
+|
+|
+|===
+
+[discrete]
+== Featured topics
+
+* <<general-manage-access-to-organization,*Invite your team*>>:
+Invite new members to your organization.
+* <<general-assign-user-roles,*Assign user roles and privileges*>>:
+Assign user roles and privileges to members in your organization.
+* <<elasticsearch-manage-project,*Manage your projects*>>:
+Manage your project data, search power, and more.
+* <<general-check-subscription,*Check your subscription overview*>>:
+View the details about your subscription.
+* <<general-monitor-usage,*Monitor and analyze your account usage*>>:
+Check past and current usage for your projects.
+* <<project-settings,*Manage your project settings*>>:
+Manage your indices, data views, and more.

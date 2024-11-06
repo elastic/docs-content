@@ -1,0 +1,251 @@
+[[elasticsearch-get-started]]
+= Get started
+
+// :description: Get started with {es3} in a few steps
+// :keywords: serverless, elasticsearch, getstarted, overview
+
+preview:[]
+
+Follow along to set up your {es} project and get started with some sample documents.
+Then, choose how to continue with your own data.
+
+[discrete]
+[[elasticsearch-get-started-create-project]]
+== Create project
+
+Use your {ecloud} account to create a fully-managed {es} project:
+
+. Navigate to {ess-console}[cloud.elastic.co] and create a new account or log in to your existing account.
+. Within **Serverless Projects**, choose **Create project**.
+. Choose the {es} project type.
+. Select a **configuration** for your project, based on your use case.
++
+** **General purpose**. For general search use cases across various data types.
+** **Optimized for Vectors**. For search use cases using vectors and near real-time retrieval.
+. Provide a name for the project and optionally edit the project settings, such as the cloud platform <<regions,region>>.
+Select **Create project** to continue.
+. Once the project is ready, select **Continue**.
+
+You should now see **Get started with {es}**, and you're ready to continue.
+
+include::../partials/minimum-vcus-detail.asciidoc[]
+
+[discrete]
+[[elasticsearch-get-started-create-api-key]]
+== Create API key
+
+Create an API key, which will enable you to access the {es} API to ingest and search data.
+
+. Scroll to **Add an API Key** and select **New**.
+. In **Create API Key**, enter a name for your key and (optionally) set an expiration date.
+. (Optional) Under **Control Security privileges**, you can set specific access permissions for this API key. By default, it has full access to all APIs.
+. (Optional) The **Add metadata** section allows you to add custom key-value pairs to help identify and organize your API keys.
+. Select **Create API Key** to finish.
+
+After creation, you'll see your API key displayed as an encoded string.
+Store this encoded API key securely. It is displayed only once and cannot be retrieved later.
+You will use this encoded API key when sending API requests.
+
+[NOTE]
+====
+You can't recover or retrieve a lost API key. Instead, you must delete the key and create a new one.
+====
+
+[discrete]
+[[elasticsearch-get-started-copy-url]]
+== Copy URL
+
+Next, copy the URL of your API endpoint.
+You'll send all {es} API requests to this URL.
+
+. Scroll to **Copy your connection details**.
+. Find the value for **Elasticsearch Endpoint**.
+
+Store this value along with your `encoded` API key.
+You'll use both values in the next step.
+
+[discrete]
+[[elasticsearch-get-started-test-connection]]
+== Test connection
+
+We'll use the `curl` command to test your connection and make additional API requests.
+(See https://everything.curl.dev/get[Install curl] if you need to install this program.)
+
+`curl` will need access to your Elasticsearch Endpoint and `encoded` API key.
+Within your terminal, assign these values to the `ES_URL` and `API_KEY` environment variables.
+
+For example:
+
+[source,bash]
+----
+export ES_URL="https://dda7de7f1d264286a8fc9741c7741690.es.us-east-1.aws.elastic.cloud:443"
+export API_KEY="ZFZRbF9Jb0JDMEoxaVhoR2pSa3Q6dExwdmJSaldRTHFXWEp4TFFlR19Hdw=="
+----
+
+Then run the following command to test your connection:
+
+[source,bash]
+----
+curl "${ES_URL}" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "Content-Type: application/json"
+----
+
+You should receive a response similar to the following:
+
+[source,json]
+----
+{
+  "name" : "serverless",
+  "cluster_name" : "dda7de7f1d264286a8fc9741c7741690",
+  "cluster_uuid" : "ws0IbTBUQfigmYAVMztkZQ",
+  "version" : { ... },
+  "tagline" : "You Know, for Search"
+}
+----
+
+Now you're ready to ingest and search some sample documents.
+
+[discrete]
+[[elasticsearch-get-started-ingest-data]]
+== Ingest data
+
+[NOTE]
+====
+This example uses {es} APIs to ingest data. If you'd prefer to upload a file using the UI, refer to <<elasticsearch-ingest-data-file-upload>>.
+====
+
+To ingest data, you must create an index and store some documents.
+This process is also called "indexing".
+
+You can index multiple documents using a single `POST` request to the `_bulk` API endpoint.
+The request body specifies the documents to store and the indices in which to store them.
+
+{es} will automatically create the index and map each document value to one of its data types.
+Include the `?pretty` option to receive a human-readable response.
+
+Run the following command to index some sample documents into the `books` index:
+
+[source,bash]
+----
+curl -X POST "${ES_URL}/_bulk?pretty" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '
+{ "index" : { "_index" : "books" } }
+{"name": "Snow Crash", "author": "Neal Stephenson", "release_date": "1992-06-01", "page_count": 470}
+{ "index" : { "_index" : "books" } }
+{"name": "Revelation Space", "author": "Alastair Reynolds", "release_date": "2000-03-15", "page_count": 585}
+{ "index" : { "_index" : "books" } }
+{"name": "1984", "author": "George Orwell", "release_date": "1985-06-01", "page_count": 328}
+{ "index" : { "_index" : "books" } }
+{"name": "Fahrenheit 451", "author": "Ray Bradbury", "release_date": "1953-10-15", "page_count": 227}
+{ "index" : { "_index" : "books" } }
+{"name": "Brave New World", "author": "Aldous Huxley", "release_date": "1932-06-01", "page_count": 268}
+{ "index" : { "_index" : "books" } }
+{"name": "The Handmaids Tale", "author": "Margaret Atwood", "release_date": "1985-06-01", "page_count": 311}
+'
+----
+
+You should receive a response indicating there were no errors:
+
+[source,json]
+----
+{
+  "errors" : false,
+  "took" : 1260,
+  "items" : [ ... ]
+}
+----
+
+[discrete]
+[[elasticsearch-get-started-search-data]]
+== Search data
+
+To search, send a `POST` request to the `_search` endpoint, specifying the index to search.
+Use the {es} query DSL to construct your request body.
+
+Run the following command to search the `books` index for documents containing `snow`:
+
+[source,bash]
+----
+curl -X POST "${ES_URL}/books/_search?pretty" \
+  -H "Authorization: ApiKey ${API_KEY}" \
+  -H "Content-Type: application/json" \
+  -d '
+{
+  "query": {
+    "query_string": {
+      "query": "snow"
+    }
+  }
+}
+'
+----
+
+You should receive a response with the results:
+
+[source,json]
+----
+{
+  "took" : 24,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 1,
+    "successful" : 1,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : {
+      "value" : 1,
+      "relation" : "eq"
+    },
+    "max_score" : 1.5904956,
+    "hits" : [
+      {
+        "_index" : "books",
+        "_id" : "Z3hf_IoBONQ5TXnpLdlY",
+        "_score" : 1.5904956,
+        "_source" : {
+          "name" : "Snow Crash",
+          "author" : "Neal Stephenson",
+          "release_date" : "1992-06-01",
+          "page_count" : 470
+        }
+      }
+    ]
+  }
+}
+----
+
+[discrete]
+[[elasticsearch-get-started-continue-on-your-own]]
+== Continue on your own
+
+Congratulations!
+You've set up an {es} project, and you've ingested and searched some sample data.
+Now you're ready to continue on your own.
+
+[discrete]
+[[elasticsearch-get-started-explore]]
+=== Explore
+
+Want to explore the sample documents or your own data?
+
+By creating a data view, you can explore data using several UI tools, such as Discover or Dashboards. Or, use {es} aggregations to explore your data using the API. Find more information in <<elasticsearch-explore-your-data>>.
+
+[discrete]
+[[elasticsearch-get-started-build]]
+=== Build
+
+Ready to build your own solution?
+
+To learn more about sending and syncing data to {es}, or the search API and its query DSL, check <<elasticsearch-ingest-your-data>> and <<elasticsearch-http-apis>>.
+
+////
+/*
+- <DocLink slug="/serverless/elasticsearch/search-your-data" />
+- <DocLink slug="/serverless/elasticsearch/search-your-data-the-search-api" />
+*/
+////

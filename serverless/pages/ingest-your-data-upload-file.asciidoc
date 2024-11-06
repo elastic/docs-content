@@ -1,0 +1,47 @@
+[[elasticsearch-ingest-data-file-upload]]
+= Upload a file
+
+// :description: Add data to {es} using the File Uploader.
+// :keywords: serverless, elasticsearch, ingest, how to
+
+preview:[]
+
+You can upload files to {es} using the File Uploader.
+Use the visualizer to inspect the data before importing it.
+
+You can upload different file formats for analysis:
+
+File formats supported up to 500 MB:
+
+* CSV
+* TSV
+* NDJSON
+* Log files
+
+File formats supported up to 60 MB:
+
+* PDF
+* Microsoft Office files (Word, Excel, PowerPoint)
+* Plain Text (TXT)
+* Rich Text (RTF)
+* Open Document Format (ODF)
+
+[discrete]
+[[elasticsearch-ingest-data-file-upload-how-to-upload-a-file]]
+== How to upload a file
+
+You'll find a link to the File Uploader on the {es} **Home** page.
+
+[role="screenshot"]
+image::images/file-uploader-homepage-link.png[File upload link]
+
+Clicking **Upload a file** opens the File Uploader UI.
+
+[role="screenshot"]
+image::images/file-uploader-UI.png[File upload UI]
+
+[IMPORTANT]
+====
+The upload feature is not intended for use as part of a repeated production
+process, but rather for the initial exploration of your data.
+====

@@ -1,0 +1,28 @@
+[[elasticsearch-search-your-data]]
+= Search your data
+
+// :description: Use the search API to run queries on your data.
+// :keywords: serverless, elasticsearch, search
+
+preview:[]
+
+A search query, or query, is a request for information about data in {es} data streams or indices.
+
+You can think of a query as a question, written in a way {es} understands. Depending on your data, you can use a query to get answers to questions like:
+
+* What processes on my server take longer than 500 milliseconds to respond?
+* What users on my network ran regsvr32.exe within the last week?
+* What pages on my website contain a specific word or phrase?
+
+You run search queries using the <<elasticsearch-search-your-data-the-search-api,search API>>. The API supports several query types and search methods:
+
+**Search for exact values.**
+Use {ref}/term-level-queries.html[term-level queries] to filter numbers, dates, IPs, or strings based on exact values or ranges.
+
+**Full-text search.**
+Use {ref}/full-text-queries.html[full-text queries] to query {ref}/analysis.html#analysis[unstructured text] and find documents that best match query terms. Use <<elasticsearch-reference-search-with-synonyms,synonyms>> to search for words or phrases that have the same or similar meaning.
+
+**Vector search.**
+Store dense vectors in {es} and use <<elasticsearch-knn-search,approximate nearest neighbor (ANN) or k-nearest neighbor (kNN) search>> to find similar vectors.
+
+You can also use Elastic's natural language processing (NLP) model to encode text as sparse or dense vectors. Then use <<elasticsearch-reference-semantic-search,semantic search>> to find data based on the intent and contextual meaning rather than matching keywords.

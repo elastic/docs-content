@@ -1,0 +1,169 @@
+= ELSER – Elastic Learned Sparse EncodeR
+
+// :description: ELSER is a learned sparse ranking model trained by Elastic.
+// :keywords: serverless, elasticsearch, tbd
+
+preview:[]
+
+Elastic Learned Sparse EncodeR - or ELSER - is a retrieval model trained by
+Elastic that enables you to perform
+{ref}/semantic-search-elser.html[semantic search] to retrieve more relevant
+search results. This search type provides you search results based on contextual
+meaning and user intent, rather than exact keyword matches.
+
+ELSER is an out-of-domain model which means it does not require fine-tuning on
+your own data, making it adaptable for various use cases out of the box.
+
+ELSER expands the indexed and searched passages into collections of terms that
+are learned to co-occur frequently within a diverse set of training data. The
+terms that the text is expanded into by the model _are not_ synonyms for the
+search terms; they are learned associations. These expanded terms are weighted
+as some of them are more significant than others. Then the {es}
+{ref}/rank-feature.html[rank-feature field type] is used to store the terms
+and weights at index time, and to search against later.
+
+[discrete]
+[[requirements]]
+== Requirements
+
+To use ELSER, you must have the {subscriptions}[appropriate subscription] level
+for semantic search or the trial period activated.
+
+[discrete]
+[[benchmarks]]
+== Benchmarks
+
+The following sections provide information about how ELSER performs on different
+hardwares and compares the model performance to {es} BM25 and other strong
+baselines such as Splade or OpenAI.
+
+[discrete]
+[[hardware-benchmarks]]
+=== Hardware benchmarks
+
+Two data sets were utilized to evaluate the performance of ELSER in different
+hardware configurations: `msmarco-long-light` and `arguana`.
+
+|===
+| | | |
+
+| **Data set**
+| **Data set size**
+| **Average count of tokens / query**
+| **Average count of tokens / document**
+
+| `msmarco-long-light`
+| 37367 documents
+| 9
+| 1640
+
+| `arguana`
+| 8674 documents
+| 238
+| 202
+|===
+
+The `msmarco-long-light` data set contains long documents with an average of
+over 512 tokens, which provides insights into the performance implications
+of indexing and {infer} time for long documents. This is a subset of the
+"msmarco" dataset specifically designed for document retrieval (it shouldn't be
+confused with the "msmarco" dataset used for passage retrieval, which primarily
+consists of shorter spans of text).
+
+The `arguana` data set is a https://github.com/beir-cellar/beir[BEIR] data set.
+It consists of long queries with an average of 200 tokens per query. It can
+represent an upper limit for query slowness.
+
+The table below present benchmarking results for ELSER using various hardware
+configurations.
+
+[discrete]
+[[qualitative-benchmarks]]
+=== Qualitative benchmarks
+
+The metric that is used to evaluate ELSER's ranking ability is the Normalized
+Discounted Cumulative Gain (NDCG) which can handle multiple relevant documents
+and fine-grained document ratings. The metric is applied to a fixed-sized list
+of retrieved documents which, in this case, is the top 10 documents (NDCG@10).
+
+The table below shows the performance of ELSER compared to {es} BM25 with an
+English analyzer broken down by the 12 data sets used for the evaluation. ELSER
+has 10 wins, 1 draw, 1 loss and an average improvement in NDCG@10 of 17%.
+
+_NDCG@10 for BEIR data sets for BM25 and ELSER  - higher values are better)_
+
+The following table compares the average performance of ELSER to some other
+strong baselines. The OpenAI results are separated out because they use a
+different subset of the BEIR suite.
+
+_Average NDCG@10 for BEIR data sets vs. various high quality baselines (higher_
+_is better). OpenAI chose a different subset, ELSER results on this set_
+_reported separately._
+
+To read more about the evaluation details, refer to
+https://www.elastic.co/blog/may-2023-launch-information-retrieval-elasticsearch-ai-model[this blog post].
+
+[discrete]
+[[download-and-deploy-elser]]
+== Download and deploy ELSER
+
+You can download and deploy ELSER either from **Trained Models** or by using the
+Dev Console.
+
+[discrete]
+[[using-the-trained-models-page]]
+=== Using the Trained Models page
+
+. In {kib}, navigate to **Trained Models**. ELSER can be found
+in the list of trained models.
+. Click the **Download model** button under **Actions**. You can check the
+download status on the **Notifications** page.
++
+
+. After the download is finished, start the deployment by clicking the
+**Start deployment** button.
+. Provide a deployment ID, select the priority, and set the number of
+allocations and threads per allocation values.
++
+
+. Click Start.
+
+[discrete]
+[[using-the-dev-console]]
+=== Using the Dev Console
+
+. Navigate to the **Dev Console**.
+. Create the ELSER model configuration by running the following API call:
++
+[source,console]
+----
+PUT _ml/trained_models/.elser_model_1
+{
+"input": {
+&#x9;"field_names": ["text_field"]
+}
+
+----
++
+The API call automatically initiates the model download if the model is not
+downloaded yet.
+. Deploy the model by using the
+{ref}/start-trained-model-deployment.html[start trained model deployment API]
+with a delpoyment ID:
++
+[source,console]
+----
+POST _ml/trained_models/.elser_model_1/deployment/_start?deployment_id=for_search
+----
++
+You can deploy the model multiple times with different deployment IDs.
+
+After the deployment is complete, ELSER is ready to use either in an ingest
+pipeline or in a `sparse_vector` query to perform semantic search.
+
+[discrete]
+[[further-reading]]
+== Further reading
+
+* {ref}/semantic-search-elser.html[Perform semantic search with ELSER]
+* https://www.elastic.co/blog/may-2023-launch-information-retrieval-elasticsearch-ai-model[Improving information retrieval in the Elastic Stack: Introducing Elastic Learned Sparse Encoder, our new retrieval model]

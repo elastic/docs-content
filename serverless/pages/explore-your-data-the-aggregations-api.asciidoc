@@ -1,0 +1,439 @@
+[[elasticsearch-explore-your-data-aggregations]]
+= Aggregations
+
+// :description: Aggregate and summarize your {es} data.
+// :keywords: serverless, elasticsearch, aggregations, reference
+
+preview:[]
+
+An aggregation summarizes your data as metrics, statistics, or other analytics.
+Aggregations help you answer questions like:
+
+* What's the average load time for my website?
+* Who are my most valuable customers based on transaction volume?
+* What would be considered a large file on my network?
+* How many products are in each product category?
+
+{es} organizes aggregations into three categories:
+
+* {ref}/search-aggregations-metrics.html[Metric] aggregations that calculate metrics,
+such as a sum or an average, from field values. Note that
+{ref}/search-aggregations-metrics-scripted-metric-aggregation.html[scripted metric aggregations]
+are not available in serverless {es}.
+* {ref}/search-aggregations-bucket.html[Bucket] aggregations that
+group documents into buckets, also called bins, based on field values, ranges,
+or other criteria.
+* {ref}/search-aggregations-pipeline.html[Pipeline] aggregations that take input from
+other aggregations instead of documents or fields.
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-run-an-aggregation]]
+== Run an aggregation
+
+You can run aggregations as part of a search by specifying the search API's `aggs` parameter. The
+following search runs a {ref}/search-aggregations-bucket-terms-aggregation.html[terms aggregation] on
+`my-field`:
+
+[source,bash]
+----
+curl "${ES_URL}/my-index/_search?pretty" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "aggs": {
+    "my-agg-name": {
+      "terms": {
+        "field": "my-field"
+      }
+    }
+  }
+}
+'
+----
+
+// TEST[setup:my_index]
+
+// TEST[s/my-field/http.request.method/]
+
+Aggregation results are in the response's `aggregations` object:
+
+// TESTRESPONSE[s/"took": 78/"took": "$body.took"/]
+
+// TESTRESPONSE[s/\.\.\.$/"took": "$body.took", "timed_out": false, "_shards": "$body._shards", /]
+
+// TESTRESPONSE[s/"hits": \[\.\.\.\]/"hits": "$body.hits.hits"/]
+
+// TESTRESPONSE[s/"buckets": \[\]/"buckets":\[\{"key":"get","doc_count":5\}\]/]
+
+[source,json]
+----
+{
+  "took": 78,
+  "timed_out": false,
+  "_shards": {...},
+  "hits": {...},
+  "aggregations": {
+    "my-agg-name": {                             <1>
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [...]
+    }
+  }
+}
+----
+
+<1> Results for the `my-agg-name` aggregation.
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-change-an-aggregations-scope]]
+== Change an aggregation's scope
+
+Use the `query` parameter to limit the documents on which an aggregation runs:
+
+[source,bash]
+----
+curl "${ES_URL}/my-index/_search?pretty" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "query": {
+    "range": {
+      "@timestamp": {
+        "gte": "now-1d/d",
+        "lt": "now/d"
+      }
+    }
+  },
+  "aggs": {
+    "my-agg-name": {
+      "terms": {
+        "field": "my-field"
+      }
+    }
+  }
+}
+'
+----
+
+// TEST[setup:my_index]
+
+// TEST[s/my-field/http.request.method/]
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-return-only-aggregation-results]]
+== Return only aggregation results
+
+By default, searches containing an aggregation return both search hits and
+aggregation results. To return only aggregation results, set `size` to `0`:
+
+[source,bash]
+----
+curl "${ES_URL}/my-index/_search?pretty" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "size": 0,
+  "aggs": {
+    "my-agg-name": {
+      "terms": {
+        "field": "my-field"
+      }
+    }
+  }
+}
+'
+----
+
+// TEST[setup:my_index]
+
+// TEST[s/my-field/http.request.method/]
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-run-multiple-aggregations]]
+== Run multiple aggregations
+
+You can specify multiple aggregations in the same request:
+
+[source,bash]
+----
+curl "${ES_URL}/my-index/_search?pretty" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "aggs": {
+    "my-first-agg-name": {
+      "terms": {
+        "field": "my-field"
+      }
+    },
+    "my-second-agg-name": {
+      "avg": {
+        "field": "my-other-field"
+      }
+    }
+  }
+}
+'
+----
+
+// TEST[setup:my_index]
+
+// TEST[s/my-field/http.request.method/]
+
+// TEST[s/my-other-field/http.response.bytes/]
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-run-sub-aggregations]]
+== Run sub-aggregations
+
+Bucket aggregations support bucket or metric sub-aggregations. For example, a
+terms aggregation with an {ref}/search-aggregations-metrics-avg-aggregation.html[avg]
+sub-aggregation calculates an average value for each bucket of documents. There
+is no level or depth limit for nesting sub-aggregations.
+
+[source,bash]
+----
+curl "${ES_URL}/my-index/_search?pretty" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "aggs": {
+    "my-agg-name": {
+      "terms": {
+        "field": "my-field"
+      },
+      "aggs": {
+        "my-sub-agg-name": {
+          "avg": {
+            "field": "my-other-field"
+          }
+        }
+      }
+    }
+  }
+}
+'
+----
+
+// TEST[setup:my_index]
+
+// TEST[s/_search/_search?size=0/]
+
+// TEST[s/my-field/http.request.method/]
+
+// TEST[s/my-other-field/http.response.bytes/]
+
+The response nests sub-aggregation results under their parent aggregation:
+
+// TESTRESPONSE[s/\.\.\./"took": "$body.took", "timed_out": false, "_shards": "$body._shards", "hits": "$body.hits",/]
+
+// TESTRESPONSE[s/"key": "foo"/"key": "get"/]
+
+// TESTRESPONSE[s/"value": 75.0/"value": $body.aggregations.my-agg-name.buckets.0.my-sub-agg-name.value/]
+
+[source,json]
+----
+{
+  ...
+  "aggregations": {
+    "my-agg-name": {                             <1>
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": [
+        {
+          "key": "foo",
+          "doc_count": 5,
+          "my-sub-agg-name": {                   <2>
+            "value": 75.0
+          }
+        }
+      ]
+    }
+  }
+}
+----
+
+<1> Results for the parent aggregation, `my-agg-name`.
+
+<2> Results for `my-agg-name`'s sub-aggregation, `my-sub-agg-name`.
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-add-custom-metadata]]
+== Add custom metadata
+
+Use the `meta` object to associate custom metadata with an aggregation:
+
+[source,bash]
+----
+curl "${ES_URL}/my-index/_search?pretty" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "aggs": {
+    "my-agg-name": {
+      "terms": {
+        "field": "my-field"
+      },
+      "meta": {
+        "my-metadata-field": "foo"
+      }
+    }
+  }
+}
+'
+----
+
+// TEST[setup:my_index]
+
+// TEST[s/_search/_search?size=0/]
+
+The response returns the `meta` object in place:
+
+[source,json]
+----
+{
+  ...
+  "aggregations": {
+    "my-agg-name": {
+      "meta": {
+        "my-metadata-field": "foo"
+      },
+      "doc_count_error_upper_bound": 0,
+      "sum_other_doc_count": 0,
+      "buckets": []
+    }
+  }
+}
+----
+
+// TESTRESPONSE[s/\.\.\./"took": "$body.took", "timed_out": false, "_shards": "$body._shards", "hits": "$body.hits",/]
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-return-the-aggregation-type]]
+== Return the aggregation type
+
+By default, aggregation results include the aggregation's name but not its type.
+To return the aggregation type, use the `typed_keys` query parameter.
+
+[source,bash]
+----
+curl "${ES_URL}/my-index/_search?typed_keys&pretty" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "aggs": {
+    "my-agg-name": {
+      "histogram": {
+        "field": "my-field",
+        "interval": 1000
+      }
+    }
+  }
+}
+'
+
+----
+
+// TEST[setup:my_index]
+
+// TEST[s/typed_keys/typed_keys&size=0/]
+
+// TEST[s/my-field/http.response.bytes/]
+
+The response returns the aggregation type as a prefix to the aggregation's name.
+
+[IMPORTANT]
+====
+Some aggregations return a different aggregation type from the
+type in the request. For example, the terms, {ref}/search-aggregations-bucket-significantterms-aggregation.html[significant terms],
+and {ref}/search-aggregations-metrics-percentile-aggregation.html[percentiles]
+aggregations return different aggregations types depending on the data type of
+the aggregated field.
+====
+
+// TESTRESPONSE[s/\.\.\./"took": "$body.took", "timed_out": false, "_shards": "$body._shards", "hits": "$body.hits",/]
+
+// TESTRESPONSE[s/"buckets": \[\]/"buckets":\[\{"key":1070000.0,"doc_count":5\}\]/]
+
+[source,json]
+----
+{
+  ...
+  "aggregations": {
+    "histogram#my-agg-name": {                   <1>
+      "buckets": []
+    }
+  }
+}
+----
+
+<1> The aggregation type, `histogram`, followed by a `#` separator and the aggregation's name, `my-agg-name`.
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-use-scripts-in-an-aggregation]]
+== Use scripts in an aggregation
+
+When a field doesn't exactly match the aggregation you need, you
+should aggregate on a {ref}/runtime.html[runtime field]:
+
+[source,bash]
+----
+curl "${ES_URL}/my-index/_search?pretty" \
+-H "Authorization: ApiKey ${API_KEY}" \
+-H "Content-Type: application/json" \
+-d'
+{
+  "size": 0,
+  "runtime_mappings": {
+    "message.length": {
+      "type": "long",
+      "script": "emit(doc[\u0027message.keyword\u0027].value.length())"
+    }
+  },
+  "aggs": {
+    "message_length": {
+      "histogram": {
+        "interval": 10,
+        "field": "message.length"
+      }
+    }
+  }
+}
+'
+----
+
+Scripts calculate field values dynamically, which adds a little
+overhead to the aggregation. In addition to the time spent calculating,
+some aggregations like {ref}/search-aggregations-bucket-terms-aggregation.html[`terms`]
+and {ref}/search-aggregations-bucket-filters-aggregation.html[`filters`] can't use
+some of their optimizations with runtime fields. In total, performance costs
+for using a runtime field varies from aggregation to aggregation.
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-aggregation-caches]]
+== Aggregation caches
+
+For faster responses, {es} caches the results of frequently run aggregations in
+the {ref}/shard-request-cache.html[shard request cache]. To get cached results, use the
+same {ref}/search-shard-routing.html#shard-and-node-preference[`preference` string] for each search. If you
+don't need search hits, <<elasticsearch-explore-your-data-aggregations-return-only-aggregation-results,set `size` to `0`>> to avoid
+filling the cache.
+
+{es} routes searches with the same preference string to the same shards. If the
+shards' data doesn't change between searches, the shards return cached
+aggregation results.
+
+[discrete]
+[[elasticsearch-explore-your-data-aggregations-limits-for-long-values]]
+== Limits for `long` values
+
+When running aggregations, {es} uses {ref}/number.html[`double`] values to hold and
+represent numeric data. As a result, aggregations on `long` numbers
+greater than 2^53 are approximate.

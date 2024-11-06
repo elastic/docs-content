@@ -1,0 +1,18 @@
+[[general-check-subscription]]
+= Check your subscription
+
+// :description: Manage your account details and subscription level.
+// :keywords: serverless, general, billing, subscription
+
+preview:[]
+
+To find more details about your subscription:
+
+. Navigate to https://cloud.elastic.co/[cloud.elastic.co] and log in to your Elastic Cloud account.
+. Go to the user icon on the header bar and select **Billing**.
+
+On the **Overview** page you can:
+
+* Update your subscription level
+* Check the date when your next bill will be issued and update the payment method
+* Check your account details and add Elastic Consumption Units (ECU) credits

@@ -1,0 +1,49 @@
+[[elasticsearch-ingest-data-through-beats]]
+= Beats
+
+// :description: Use {beats} to ship operational data to {es}.
+// :keywords: serverless, elasticsearch, ingest, beats, how to
+
+preview:[]
+
+{beats} are lightweight data shippers that send operational data to {es}.
+Elastic provides separate {beats} for different types of data, such as logs, metrics, and uptime.
+Depending on what data you want to collect, you may need to install multiple shippers on a single host.
+
+|===
+| Data| {beats}
+
+| Audit data
+| https://www.elastic.co/products/beats/auditbeat[Auditbeat]
+
+| Log files and journals
+| https://www.elastic.co/products/beats/filebeat[Filebeat]
+
+| Cloud data
+| https://www.elastic.co/products/beats/functionbeat[Functionbeat]
+
+| Availability
+| https://www.elastic.co/products/beats/heartbeat[Heartbeat]
+
+| Metrics
+| https://www.elastic.co/products/beats/metricbeat[Metricbeat]
+
+| Network traffic
+| https://www.elastic.co/products/beats/packetbeat[Packetbeat]
+
+| Windows event logs
+| https://www.elastic.co/products/beats/winlogbeat[Winlogbeat]
+|===
+
+{beats} can send data to {es} directly or through {ls}, where you
+can further process and enhance the data before visualizing it in {kib}.
+
+.Authenticating with Elasticsearch
+[NOTE]
+====
+When you use {beats} to export data to an {es} project, the {beats} require an API key to authenticate with {es}.
+Refer to <<elasticsearch-get-started-create-api-key,Create API key>> for the steps to set up your API key,
+and to https://www.elastic.co/guide/en/beats/filebeat/current/beats-api-keys.html[Grant access using API keys] in the Filebeat documentation for an example of how to configure your {beats} to use the key.
+====
+
+Check out {beats-ref}/getting-started.html[Get started with Beats] for some next steps.

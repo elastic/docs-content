@@ -1,0 +1,17 @@
+[[elasticsearch-dev-tools]]
+= Developer tools
+
+// :description: Elastic tools for developers.
+// :keywords: serverless, elasticsearch, overview
+
+preview:[]
+
+A number of developer tools are available in your project's UI under the **Dev Tools** section.
+
+* <<devtools-run-api-requests-in-the-console,Console>>: Make API calls to your Elasticsearch instance using the Query DSL and view the responses.
+* <<devtools-profile-queries-and-aggregations,Search Profiler>>: Inspect and analyze your search queries to identify performance bottlenecks.
+* <<devtools-debug-grok-expressions,Grok Debugger>>: Build and debug grok patterns before you use them in your data processing pipelines.
+
+// ## Troubleshooting
+
+// - <DocLink id="serverlessDevtools" text="Troubleshooting"/>: Debug your searches using various Elasticsearch APIs.

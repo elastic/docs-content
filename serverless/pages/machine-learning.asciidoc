@@ -1,0 +1,49 @@
+[[machine-learning]]
+= {ml-cap}
+
+// :description: View, export, and import {ml} jobs and models.
+// :keywords: serverless, Elasticsearch, Observability, Security
+
+preview:[]
+
+This content applies to:  {es-badge} {obs-badge} {sec-badge}
+
+To view your {ml} resources, go to **{project-settings} → {manage-app} → {ml-app}**:
+
+[role="screenshot"]
+image::images/ml-security-management.png["Anomaly detection job management"]
+
+// TO-DO: This screenshot should be automated.
+
+The {ml-features} that are available vary by project type:
+
+* {es-serverless} projects have trained models.
+* {observability} projects have {anomaly-jobs}.
+* {security} projects have {anomaly-jobs}, {dfanalytics-jobs}, and trained models.
+
+For more information, go to {ml-docs}/ml-ad-overview.html[{anomaly-detect-cap}], {ml-docs}/ml-dfanalytics.html[{dfanalytics-cap}] and {ml-docs}/ml-nlp.html[Natural language processing].
+
+[discrete]
+[[machine-learning-synchronize-saved-objects]]
+== Synchronize saved objects
+
+Before you can view your {ml} {dfeeds}, jobs, and trained models in {kib}, they must have saved objects.
+For example, if you used APIs to create your jobs, wait for automatic synchronization or go to the **{ml-app}** page and click **Synchronize saved objects**.
+
+[discrete]
+[[machine-learning-export-and-import-jobs]]
+== Export and import jobs
+
+You can export and import your {ml} job and {dfeed} configuration details on the **{ml-app}** page.
+For example, you can export jobs from your test environment and import them in your production environment.
+
+The exported file contains configuration details; it does not contain the {ml} models.
+For {anomaly-detect}, you must import and run the job to build a model that is accurate for the new environment.
+For {dfanalytics}, trained models are portable; you can import the job then transfer the model to the new cluster.
+Refer to {ml-docs}/ml-trained-models.html#export-import[Exporting and importing {dfanalytics} trained models].
+
+There are some additional actions that you must take before you can successfully import and run your jobs:
+
+* The {data-sources} that are used by {anomaly-detect} {dfeeds} and {dfanalytics} source indices must exist; otherwise, the import fails.
+* If your {anomaly-jobs} use custom rules with filter lists, the filter lists must exist; otherwise, the import fails.
+* If your {anomaly-jobs} were associated with calendars, you must create the calendar in the new environment and add your imported jobs to the calendar.

@@ -1,0 +1,44 @@
+[[transforms]]
+= {transforms-app}
+
+// :description: Use transforms to pivot existing indices into summarized or entity-centric indices.
+// :keywords: serverless, Elasticsearch, Observability, Security
+
+preview:[]
+
+This content applies to: {es-badge} {obs-badge} {sec-badge}
+
+{transforms-cap} enable you to convert existing {es} indices into summarized
+indices, which provide opportunities for new insights and analytics.
+
+For example, you can use {transforms} to pivot your data into entity-centric
+indices that summarize the behavior of users or sessions or other entities in
+your data. Or you can use {transforms} to find the latest document among all the
+documents that have a certain unique key.
+
+For more information, check out:
+
+* {ref}/transform-usage.html[When to use transforms]
+* {ref}/transform-alerts.html[Generating alerts for transforms]
+* {ref}/transform-scale.html[Transforms at scale]
+* {ref}/transform-checkpoints.html[How checkpoints work]
+* {ref}/transform-examples.html[Examples]
+* {ref}/transform-painless-examples.html[Painless examples]
+* {ref}/transform-troubleshooting.html[Troubleshooting transforms]
+* {ref}/transform-limitations.html[Limitations]
+
+[discrete]
+[[transforms-create-and-manage-transforms]]
+== Create and manage {transforms}
+
+In **{project-settings} → {manage-app} → {transforms-app}**, you can
+create, edit, stop, start, reset, and delete {transforms}:
+
+[role="screenshot"]
+image::images/transform-management.png["{transforms-app} app"]
+
+When you create a {transform}, you must choose between two types: _pivot_ and _latest_.
+You must also decide whether you want the {transform} to run once or continuously.
+For more information, go to {ref}/transform-overview.html[{transforms-cap} overview].
+
+// To stop, start, or delete multiple {transforms}, select their checkboxes then click....

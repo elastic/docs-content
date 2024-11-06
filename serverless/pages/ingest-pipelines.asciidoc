@@ -1,0 +1,58 @@
+[[ingest-pipelines]]
+= {ingest-pipelines-cap}
+
+// :description: Create and manage {ingest-pipelines} to perform common transformations and enrichments on your data.
+// :keywords: serverless, Elasticsearch, Observability, Security
+
+preview:[]
+
+This content applies to: {es-badge} {obs-badge} {sec-badge}
+
+{ref}/ingest.html[{ingest-pipelines-cap}] let you perform common transformations on your data before indexing.
+For example, you can use pipelines to remove fields, extract values from text, and enrich your data.
+
+A pipeline consists of a series of configurable tasks called processors.
+Each processor runs sequentially, making specific changes to incoming documents.
+After the processors have run, {es} adds the transformed documents to your data stream or index.
+
+////
+/*
+TBD: Do these requirements apply in serverless?
+## Prerequisites
+
+- Nodes with the ingest node role handle pipeline processing. To use ingest pipelines, your cluster must have at least one node with the ingest role. For heavy ingest loads, we recommend creating dedicated ingest nodes.
+- If the Elasticsearch security features are enabled, you must have the manage_pipeline cluster privilege to manage ingest pipelines. To use Kibana’s Ingest Pipelines feature, you also need the cluster:monitor/nodes/info cluster privileges.
+- Pipelines including the enrich processor require additional setup. See Enrich your data.
+*/
+////
+
+[discrete]
+[[ingest-pipelines-create-and-manage-pipelines]]
+== Create and manage pipelines
+
+In **{project-settings} → {manage-app} → {ingest-pipelines-app}**, you can:
+
+* View a list of your pipelines and drill down into details
+* Edit or clone existing pipelines
+* Delete pipelines
+
+[role="screenshot"]
+image::images/ingest-pipelines-management.png["{ingest-pipelines-app}"]
+
+To create a pipeline, click **Create pipeline → New pipeline**.
+For an example tutorial, see {ref}/common-log-format-example.html[Example: Parse logs].
+
+The **New pipeline from CSV** option lets you use a file with comma-separated values (CSV) to create an ingest pipeline that maps custom data to the Elastic Common Schema (ECS).
+Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other data sets.
+To get started, check {ecs-ref}/ecs-converting.html[Map custom data to ECS].
+
+[discrete]
+[[ingest-pipelines-test-pipelines]]
+== Test pipelines
+
+Before you use a pipeline in production, you should test it using sample documents.
+When creating or editing a pipeline in **{ingest-pipelines-app}**, click **Add documents**.
+In the **Documents** tab, provide sample documents and click **Run the pipeline**:
+
+[role="screenshot"]
+image::images/ingest-pipelines-test.png["Test a pipeline in {ingest-pipelines-app}"]
