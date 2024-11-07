@@ -36,7 +36,7 @@ include::../partials/minimum-vcus-detail.asciidoc[]
 
 Create an API key, which will enable you to access the {es} API to ingest and search data.
 
-. Scroll to **Add an API Key** and select **New**.
+. On the **Getting Started** page, scroll to **Add an API Key** and select **New**.
 . In **Create API Key**, enter a name for your key and (optionally) set an expiration date.
 . (Optional) Under **Control Security privileges**, you can set specific access permissions for this API key. By default, it has full access to all APIs.
 . (Optional) The **Add metadata** section allows you to add custom key-value pairs to help identify and organize your API keys.
@@ -58,8 +58,8 @@ You can't recover or retrieve a lost API key. Instead, you must delete the key a
 Next, copy the URL of your API endpoint.
 You'll send all {es} API requests to this URL.
 
-. Scroll to **Copy your connection details**.
-. Find the value for **Elasticsearch Endpoint**.
+. On the **Getting Started** page, scroll to **Copy your connection details** section, and find the **Elasticsearch endpoint** field.
+. Copy the URL for the Elasticsearch endpoint.
 
 Store this value along with your `encoded` API key.
 You'll use both values in the next step.
