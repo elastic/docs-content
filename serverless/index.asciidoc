@@ -10,29 +10,8 @@ include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 :obs-badge: <<what-is-observability-serverless,image:images/obs-badge.svg[Observability]>>
 :sec-badge: <<what-is-security-serverless,image:images/sec-badge.svg[Security]>>
 
-// These are only available in serverless
-:es3: Elasticsearch Serverless
-:project-settings: Project settings
-:manage-app: Management
-:index-manage-app: Index Management
-:data-views-app: Data Views
-:rules-app: Rules
-:saved-objects-app: Saved Objects
-:tags-app: Tags
-:api-keys-app: API keys
-:transforms-app: Transforms
-:connectors-app: Connectors
-:files-app: Files
-:reports-app: Reports
-:maps-app: Maps
-:alerts-app: Alerts
-:serverlessCustomRoles: true
-
 // The values of these attributes are different in stateful vs serverless
-:serverless-full: Elastic Cloud Serverless
-:serverless-short: Serverless
 :es: Elasticsearch Serverless
-:es-serverless: Elasticsearch Serverless
 :observability: Elastic Observability Serverless
 :security: Elastic Security Serverless
 
