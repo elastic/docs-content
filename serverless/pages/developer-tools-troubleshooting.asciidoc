@@ -18,7 +18,7 @@ Elasticsearch returns an `index_not_found_exception` when the data stream, index
 or alias you try to query does not exist. This can happen when you misspell the
 name or when the data has been indexed to a different data stream or index.
 
-Use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists-index-template[**Exists API**] to check whether
+Use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists[**Exists API**] to check whether
 a data stream, index, or alias exists:
 
 [source,js]

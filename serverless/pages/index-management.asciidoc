@@ -97,7 +97,7 @@ To view information about the stream's backing indices, click the number in the 
 * To view more information about a data stream, such as its generation or its
 current index lifecycle policy, click the stream's name. From this view, you can navigate to **Discover** to
 further explore data within the data stream.
-* preview:[] To edit the data retention value, open the **Manage** menu, and then click **Edit data retention**.
+* preview:[] To modify the data retention value, select an index, open the **Manage**  menu, and click **Edit data retention**.
 
 ////
 /*
