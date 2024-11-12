@@ -1,0 +1,19 @@
+[[elasticsearch-create-new-api-key]]
+= Create a new API key
+
+Create an API key, which will enable you to access the {es} API to ingest and search data.
+
+. On the **Getting Started** page, scroll to **Add an API Key** and select **New**.
+. In **Create API Key**, enter a name for your key and (optionally) set an expiration date.
+. (Optional) Under **Control Security privileges**, you can set specific access permissions for this API key. By default, it has full access to all APIs.
+. (Optional) The **Add metadata** section allows you to add custom key-value pairs to help identify and organize your API keys.
+. Select **Create API Key** to finish.
+
+After creation, you'll see your API key displayed as an encoded string.
+Store this encoded API key securely. It is displayed only once and cannot be retrieved later.
+You will use this encoded API key when sending API requests.
+
+[NOTE]
+====
+You can't recover or retrieve a lost API key. Instead, you must delete the key and create a new one.
+====
