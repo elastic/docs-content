@@ -53,7 +53,11 @@ You won’t be able to view this API key again. If needed, refer to <<elasticsea
 [[elasticsearch-get-started-ingest-data]]
 == Ingest data
 
-You can now ingest data in several ways: using Python, cURL, JavaScript, or Run in Console directly in Elasticsearch.
+The UI provides ready-to-use code examples for ingesting data via the REST API. Choose your preferred tool for making these requests:
+* Elastic Console in your project's UI
+* Python 
+* JavaScript 
+* cURL
 If you'd prefer to upload a file using the UI, refer to <<elasticsearch-ingest-data-file-upload>>.
 
 In this section, we walk you through the ingest process using the Console.
