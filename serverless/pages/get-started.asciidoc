@@ -61,7 +61,7 @@ In this section, we walk you through the ingest process using the Console.
 . Click *Run in Console*.
 . Run the first API call to create the index mapping.
 +
-[source,json]
+[source,console]
 ----
 PUT /search-test/_mapping
 {
