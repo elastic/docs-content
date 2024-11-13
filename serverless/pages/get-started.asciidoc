@@ -83,7 +83,7 @@ PUT /search-test/_mapping
 
 . Run the second API call to ingest documents.
 
-[source,json]
+[source,console]
 ----
 POST /_bulk?pretty
 { "index": { "_index": "search-test" } }
@@ -119,7 +119,7 @@ This query will use the match query, which is designed to search for full-text f
 You should receive a response that includes the documents matching your search term. 
 Here’s an example of what the response might look like:
 
-[source,json]
+[source,console]
 ----
 {
   "took": 6,
