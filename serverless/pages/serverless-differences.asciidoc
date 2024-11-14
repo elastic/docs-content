@@ -4,6 +4,10 @@
 <titleabbrev>Serverless differences</titleabbrev>
 ++++
 
+
+// :description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
+// :keywords: serverless, elasticsearch
+
 Elasticsearch Serverless abstracts away infrastructure management from users, providing a fully managed Elasticsearch service.
 If you've used Elasticsearch before, you'll notice some differences in how you work with the service on serverless, because a number of APIs and settings are not required for serverless projects.
 This guide helps you understand what's different, what's available, and how to work effectively when running Elasticsearch on Elastic Cloud Serverless.
