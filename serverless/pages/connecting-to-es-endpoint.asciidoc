@@ -45,7 +45,6 @@ image::images/copy-connection-details.png[Copy your Elasticsearch endpoint.]
 == Test connection
 
 We'll use the `curl` command to test your connection and make additional API requests.
-(See https://everything.curl.dev/install/index.html[Install curl] if you need to install this program.)
 
 `curl` will need access to your Elasticsearch endpoint and `encoded` API key.
 Within your terminal, assign these values to the `ES_URL` and `API_KEY` environment variables.
