@@ -44,7 +44,7 @@ image::images/copy-connection-details.png[Copy your Elasticsearch endpoint.]
 [[elasticsearch-get-started-test-connection]]
 == Test connection
 
-We'll use the `curl` command to test your connection and make additional API requests.
+Use https://curl.se[`curl`] to verify your connection to {es}.
 
 `curl` will need access to your Elasticsearch endpoint and `encoded` API key.
 Within your terminal, assign these values to the `ES_URL` and `API_KEY` environment variables.
