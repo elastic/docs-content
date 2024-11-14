@@ -25,11 +25,13 @@ You can't recover or retrieve a lost API key. Instead, you must delete the key a
 ====
 
 [discrete]
-[[elasticsearch-get-started-copy-url]]
-== Copy your {es} endpoint
+[[elasticsearch-get-started-endpoint]]
+== Get your {es} endpoint URL
 
-Copy the URL of your {es} API endpoint.
-You'll send all {es} API requests to this URL.
+The endpoint URL is the address for your {es} instance.
+You'll use this URL together with your API key to make requests to the {es} APIs.
+To find the endpoint URL:
+
 
 . On the **Getting Started** page, scroll to **Copy your connection details** section, and find the **Elasticsearch endpoint** field.
 . Copy the URL for the Elasticsearch endpoint.
