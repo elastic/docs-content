@@ -150,13 +150,3 @@ The following features are not available in {es-serverless} and are not planned 
 * https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html[Custom plugins and bundles]
 * https://www.elastic.co/guide/en/elasticsearch/hadoop/current/reference.html[{es} for Apache Hadoop]
 * {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[Scripted metric aggregations] are not available.
-
-[discrete]
-[[elasticsearch-differences-serverless-workloads]]
-== Workloads
-
-Currently, workloads outside of the following ranges may experience higher latencies (greater than sub-second):
-
-* Search queries on indices greater than 150GB
-* Index queries per second (QPS) greater than 1000
-* Search queries per second (QPS) greater than 1800
