@@ -8,14 +8,14 @@ preview:[]
 
 [TIP]
 ====
-If you haven't used Elasticsearch before, you might want to learn the basics in the https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html[main Elasticsearch documentation].
+If you haven't used {es} before, you might want to learn the basics in the https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html[main {es} documentation].
 ====
 
-Elasticsearch is an open source distributed search and analytics engine, scalable data store, and vector database. It’s optimized for speed and relevance on production-scale workloads. Use Elasticsearch to search, index, store, and analyze data of all shapes and sizes.
+{es} is an open source distributed search and analytics engine, scalable data store, and vector database. It’s optimized for speed and relevance on production-scale workloads. Use {es} to search, index, store, and analyze data of all shapes and sizes.
 
-Elasticsearch is one of the three available project types on <<intro,Elastic Cloud Serverless>>.
+{es} is one of the three available project types on <<intro,{serverless-full}>>.
 
-When using Elasticsearch on Elastic Cloud Serverless you don’t need to worry about managing the infrastructure that keeps Elasticsearch distributed and available: nodes, shards, and replicas. These resources are 100% automated on the serverless platform, which is designed to scale up and down with your workload.
+When using {es} on {serverless-full} you don’t need to worry about managing the infrastructure that keeps {es} distributed and available: nodes, shards, and replicas. These resources are 100% automated on the serverless platform, which is designed to scale up and down with your workload.
 
 This allows you to focus on building your search applications and solutions, without worrying about the underlying infrastructure.
 
@@ -27,22 +27,22 @@ This allows you to focus on building your search applications and solutions, wit
 |===
 | 🚀
 a| [.card-title]#<<elasticsearch-get-started,*Create project →*>># +
-Get started by creating your first Elasticsearch project on serverless.
+Get started by creating your first {es} project on serverless.
 
 | 🔌
-a| [.card-title]#<<elasticsearch-get-started,*Connect to Elasticsearch →*>># +
-Learn how to connect your applications to your serverless Elasticsearch endpoint.
+a| [.card-title]#<<elasticsearch-get-started,*Connect to {es} →*>># +
+Learn how to connect your applications to your {es-serverless} endpoint.
 
 // TODO add coming link to new page about connecting to your serverless endpoint
 // <<elasticsearch-connecting-to-es-serverless-endpoint,*Connect your application →*>>
 
 | 🔄
 a| [.card-title]#<<elasticsearch-ingest-your-data,*Ingest data →*>># +
-Learn how to get your data into Elasticsearch and start building your search application.
+Learn how to get your data into {es} and start building your search application.
 
 | 🛝
 a| [.card-title]#https://www.elastic.co/guide/en/kibana/master/playground.html[*Try Search Playground →*]# +
-Once you've added some data, use the Search Playground to test out queries and combine Elasticsearch with the power of Generative AI in your applications.
+Once you've added some data, use the Search Playground to test out queries and combine {es} with the power of Generative AI in your applications.
 |===
 
 [discrete]
@@ -53,9 +53,9 @@ Once you've added some data, use the Search Playground to test out queries and c
 |===
 | ❓
 a| [.card-title]#<<elasticsearch-differences,*What's different on serverless? →*>># +
-Understand the differences between Elasticsearch on Elastic Cloud Serverless and other deployment types.
+Understand the differences between {es} on {serverless-full} and other deployment types.
 
 | 🧾
 a| [.card-title]#<<elasticsearch-billing,*Billing →*>># +
-Learn about the billing model for Elasticsearch on Elastic Cloud Serverless.
+Learn about the billing model for {es} on {serverless-full}.
 |===
