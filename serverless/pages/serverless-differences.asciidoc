@@ -4,19 +4,18 @@
 <titleabbrev>Serverless differences</titleabbrev>
 ++++
 
-
 // :description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
 // :keywords: serverless, elasticsearch
 
-Elasticsearch Serverless abstracts away infrastructure management from users, providing a fully managed Elasticsearch service.
+{es-serverless} abstracts away infrastructure management from users, providing a fully managed Elasticsearch service.
 If you've used Elasticsearch before, you'll notice some differences in how you work with the service on serverless, because a number of APIs and settings are not required for serverless projects.
-This guide helps you understand what's different, what's available, and how to work effectively when running Elasticsearch on Elastic Cloud Serverless.
+This guide helps you understand what's different, what's available, and how to work effectively when running Elasticsearch on {serverless-full}.
 
 [discrete]
 [[elasticsearch-differences-serverless-infrastructure-management]]
 == Infrastructure management overview
 
-Elasticsearch Serverless handles infrastructure management automatically, including:
+{es-serverless} handles infrastructure management automatically, including:
 
 * Cluster scaling and optimization
 * Node management and allocation
@@ -27,11 +26,11 @@ Elasticsearch Serverless handles infrastructure management automatically, includ
 [[elasticsearch-differences-serverless-aps-settings]]
 == APIs and settings
 
-Because Elasticsearch Serverless manages infrastructure automatically, certain APIs and settings are not available, while others remain fully accessible.
+Because {es-serverless} manages infrastructure automatically, certain APIs and settings are not available, while others remain fully accessible.
 
 [TIP]
 ====
-Refer to the Elasticsearch Serverless https://www.elastic.co/docs/api/[API Reference] for a complete list of available APIs.
+Refer to the {es-serverless} https://www.elastic.co/docs/api/[API Reference] for a complete list of available APIs.
 ====
 
 [discrete] 
@@ -59,7 +58,7 @@ Index management::
 [[elasticsearch-differences-serverless-settings-availability]]  
 === Settings availability
 
-In Elasticsearch Serverless, you can only configure index-level settings.
+In {es-serverless}, you can only configure index-level settings.
 Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
 
 Available settings::
@@ -101,7 +100,7 @@ When attempting to use an unavailable API or setting, you'll receive a clear err
 [[elasticsearch-differences-serverless-feature-categories]]
 == Feature availability
 
-Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in serverless {es}, while others are planned for future support.
+Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in {es-serverless}, while others are planned for future support.
 
 The following features have been replaced by a new feature:
 
@@ -146,7 +145,7 @@ The following Search features are planned for future support:
 [[elasticsearch-differences-serverless-feature-unavailable]]
 === Permanently unavailable features
 
-The following features are not available in Elasticsearch Serverless and are not planned for future support:
+The following features are not available in {es-serverless} and are not planned for future support:
 
 * https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html[Custom plugins and bundles]
 * https://www.elastic.co/guide/en/elasticsearch/hadoop/current/reference.html[Elasticsearch for Apache Hadoop]
