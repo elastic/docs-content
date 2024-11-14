@@ -32,7 +32,7 @@ To learn more about roles, refer to <<general-assign-user-roles>>.
 | {es-badge}{sec-badge}
 
 | <<data-views>>
-| Manage the fields in the data views that retrieve your data from {es}.
+| Manage the fields in the data views that retrieve your data from {es-serverless}.
 | {es-badge}{obs-badge}{sec-badge}
 
 | <<security-entity-risk-scoring,Entity Risk Score>>

@@ -52,7 +52,7 @@ image::images/create-data-view.png[Create a data view]
 . Click **Show advanced settings** to:
 +
 ** Display hidden and system indices.
-** Specify your own data view name. For example, enter your Elasticsearch index alias name.
+** Specify your own data view name. For example, enter your {es} index alias name.
 . Click **Save data view to {kib}**.
 . Adjust the time range to view data for the **Last 40 years** to view all your book data.
 +

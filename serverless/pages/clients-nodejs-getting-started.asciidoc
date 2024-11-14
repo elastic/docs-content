@@ -36,7 +36,7 @@ npm install @elastic/elasticsearch-serverless
 [[elasticsearch-nodejs-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and Elasticsearch Endpoint:
+Initialize the client using your API key and {es} Endpoint:
 
 [source,js]
 ----
