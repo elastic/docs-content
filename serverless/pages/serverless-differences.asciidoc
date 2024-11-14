@@ -1,17 +1,105 @@
 [[elasticsearch-differences]]
 = Differences from other Elasticsearch offerings
-
-// :description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
-// :keywords: serverless, elasticsearch
-
 ++++
 <titleabbrev>Serverless differences</titleabbrev>
 ++++
 
-preview:[]
+Elasticsearch Serverless abstracts away infrastructure management from users, providing a fully managed Elasticsearch service.
+If you've used Elasticsearch before, you'll notice some differences in how you work with the service on serverless, because a number of APIs and settings are not required for serverless projects.
+This guide helps you understand what's different, what's available, and how to work effectively when running Elasticsearch on Elastic Cloud Serverless.
 
-Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in serverless {es}.
-These features have either been replaced by a new feature, or are not applicable in the new Serverless architecture:
+[discrete]
+[[elasticsearch-differences-serverless-infrastructure-management]]
+== Infrastructure management overview
+
+Elasticsearch Serverless handles infrastructure management automatically, including:
+
+* Cluster scaling and optimization
+* Node management and allocation
+* Shard distribution and replication
+* Resource utilization and monitoring
+
+[discrete]
+[[elasticsearch-differences-serverless-aps-settings]]
+== APIs and settings
+
+Because Elasticsearch Serverless manages infrastructure automatically, certain APIs and settings are not available, while others remain fully accessible.
+
+[TIP]
+====
+Refer to the Elasticsearch Serverless https://www.elastic.co/docs/api/[API Reference] for a complete list of available APIs.
+====
+
+[discrete] 
+[[elasticsearch-differences-serverless-api-availability]]
+=== API availability
+
+The following categories of operations are *unavailable* since they are managed by the serverless platform:
+
+Infrastructure operations::
+* All `_nodes/*` operations 
+* All `_cluster/*` operations
+* Most `_cat/*` operations, except for index-related operations such as `/_cat/indices` and `/_cat/aliases`
+
+Storage and backup::
+* All `_snapshot/*` operations
+* Repository management operations
+
+Index management:: 
+* `indices/close` operations
+* `indices/open` operations
+* Recovery and stats operations
+* Force merge operations
+
+[discrete]
+[[elasticsearch-differences-serverless-settings-availability]]  
+=== Settings availability
+
+In Elasticsearch Serverless, you can only configure index-level settings.
+Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
+
+Available settings::
+* *Index-level settings*. Settings that control how Elasticsearch documents are processed, stored, and searched are available to end users, including:
+** Analysis configuration
+** Mapping parameters
+** Search/query settings
+** Indexing settings such as `refresh_interval`
+
+Managed settings::
+* *Infrastructure-related settings*. Settings that affect cluster resources or data distribution are not available to end users, including:
+** Node configurations
+** Cluster topology
+** Shard allocation
+** Resource management
+
+[discrete]
+[[elasticsearch-differences-serverless-api-errors]]
+=== API error handling
+
+When attempting to use an unavailable API or setting, you'll receive a clear error message:
+
+[source,json]
+----
+{
+ "error": {
+   "root_cause": [
+     {
+       "type": "api_not_available_exception",
+       "reason": "Request for uri [/<API_ENDPOINT>] with method [<METHOD>] exists but is not available when running in serverless mode"
+     }
+   ],
+   "status": 410
+ }
+}
+----
+
+[discrete]
+[[elasticsearch-differences-serverless-feature-categories]]
+== Feature availability
+
+Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in serverless {es}, while others are planned for future support.
+
+The following features have been replaced by a new feature:
 
 * **Index lifecycle management ({ilm-init})** is not available, in favor of <<index-management,**data stream lifecycle**>>.
 +
@@ -26,17 +114,46 @@ hardware-centric concepts like data tiers.
 +
 Kibana Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and
 hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
-+
-* Certain APIs, API parameters, index, cluster and node level settings are not available. Refer to our
-<<elasticsearch-http-apis,REST API references>> for a list of available APIs.
-+
-Serverless Elasticsearch manages the underlying Elastic cluster for you, optimizing nodes, shards, and replicas for your use case.
-Because of this, various management and monitoring APIs, API parameters and settings are not available on Serverless.
-+
+
+[discrete]
+[[elasticsearch-differences-serverless-feature-planned]]
+=== Planned features
+
+The following core features are planned for future support:
+
+* Reindexing from remote clusters 
+* Cross-cluster search and replication
+* Snapshot and restore
+* Migrations from non-serverless deployments
+* Audit logging
+* Authentication realms (native/SAML/OIDC/Kerberos/JWT)
+* Clone index API
+
+The following Search features are planned for future support:
+
+* {ref}/behavioral-analytics-overview.html[Behavioral Analytics]
+* {ref}/search-application-overview.html[Search Applications]
+* {enterprise-search-ref}/crawler.html[Managed web crawler]
+** You can use the https://github.com/elastic/crawler[self-managed web crawler] in the meantime.
+* {ref}/es-native-connectors.html[Elastic managed Search connectors]
+** You can use the {ref}/es-build-connector.html[self-managed Search connectors] in the meantime.
+
+[discrete]
+[[elasticsearch-differences-serverless-feature-unavailable]]
+=== Permanently unavailable features
+
+The following features are not available in Elasticsearch Serverless and are not planned for future support:
+
+* https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html[Custom plugins and bundles]
+* https://www.elastic.co/guide/en/elasticsearch/hadoop/current/reference.html[Elasticsearch for Apache Hadoop]
 * {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[Scripted metric aggregations] are not available.
 
-.Other limitations
-[IMPORTANT]
-====
-For serverless technical preview limitations, refer to <<elasticsearch-technical-preview-limitations,Technical preview limitations>>.
-====
+[discrete]
+[[elasticsearch-differences-serverless-workloads]]
+== Workloads
+
+Currently, workloads outside of the following ranges may experience higher latencies (greater than sub-second):
+
+* Search queries on indices greater than 150GB
+* Index queries per second (QPS) greater than 1000
+* Search queries per second (QPS) greater than 1800

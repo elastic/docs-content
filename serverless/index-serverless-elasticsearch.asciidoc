@@ -11,6 +11,7 @@ include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 ++++
 
 include::./pages/what-is-elasticsearch-serverless.asciidoc[leveloffset=+2]
+include::./pages/serverless-differences.asciidoc[leveloffset=+2]
 
 include::./pages/pricing.asciidoc[leveloffset=+2]
 
@@ -52,7 +53,3 @@ include::./pages/explore-your-data-visualize-your-data.asciidoc[leveloffset=+3]
 include::./pages/explore-your-data-alerting.asciidoc[leveloffset=+3]
 
 include::./pages/search-playground.asciidoc[leveloffset=+2]
-
-include::./pages/serverless-differences.asciidoc[leveloffset=+2]
-
-include::./pages/technical-preview-limitations.asciidoc[leveloffset=+2]
