@@ -70,7 +70,7 @@ if err != nil {
 }
 ----
 
-To get API keys or the {es} Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} Endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-go-client-getting-started-using-the-api]]

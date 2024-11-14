@@ -97,7 +97,7 @@ client = ElasticsearchServerless::Client.new(
 )
 ----
 
-To get API keys or the {es} Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} Endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-ruby-client-getting-started-using-the-api]]

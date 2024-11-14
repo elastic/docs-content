@@ -37,7 +37,7 @@ curl -X GET "${ES_URL}/_cat/indices?v=true" \
   -H "Authorization: ApiKey ${API_KEY}"
 ----
 
-To get API keys or the {es} Endpoint (`${ES_URL}`) for a project, refer to <<elasticsearch-get-started>>.
+To get API keys for the {es} Endpoint (`${ES_URL}`) for a project, refer to <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-api-conventions-content-type]]

@@ -47,7 +47,7 @@ const client = new Client({
 })
 ----
 
-To get API keys or the URL for a project, see <<elasticsearch-get-started>>.
+To get API keys for the URL for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-nodejs-client-getting-started-using-the-api]]
