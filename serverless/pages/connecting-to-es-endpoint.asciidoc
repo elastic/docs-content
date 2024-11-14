@@ -7,6 +7,8 @@
 
 Create an API key to authenticate your requests to the {es} APIs. You'll need an API key for all API requests and client connections.
 
+To create a new API key:
+
 . On the **Getting Started** page, scroll to **Add an API Key** and select **New**.
 +
 image::images/create-an-api-key.png[Create an API key.]
