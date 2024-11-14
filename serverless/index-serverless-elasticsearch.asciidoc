@@ -16,7 +16,7 @@ include::./pages/pricing.asciidoc[leveloffset=+2]
 
 include::./pages/get-started.asciidoc[leveloffset=+2]
 
-include::./pages/create-new-api-key.asciidoc[leveloffset=+2]
+include::./pages/connecting-to-es-endpoint.asciidoc[leveloffset=+2]
 
 include::./pages/clients.asciidoc[leveloffset=+2]
 include::./pages/clients-go-getting-started.asciidoc[leveloffset=+3]
