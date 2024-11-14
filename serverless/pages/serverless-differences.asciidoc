@@ -1,5 +1,5 @@
 [[elasticsearch-differences]]
-= Differences from other Elasticsearch offerings
+= Differences from other {es} offerings
 ++++
 <titleabbrev>Serverless differences</titleabbrev>
 ++++
@@ -7,9 +7,9 @@
 // :description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
 // :keywords: serverless, elasticsearch
 
-{es-serverless} abstracts away infrastructure management from users, providing a fully managed Elasticsearch service.
-If you've used Elasticsearch before, you'll notice some differences in how you work with the service on serverless, because a number of APIs and settings are not required for serverless projects.
-This guide helps you understand what's different, what's available, and how to work effectively when running Elasticsearch on {serverless-full}.
+{es-serverless} abstracts away infrastructure management from users, providing a fully managed {es} service.
+If you've used {es} before, you'll notice some differences in how you work with the service on serverless, because a number of APIs and settings are not required for serverless projects.
+This guide helps you understand what's different, what's available, and how to work effectively when running {es} on {serverless-full}.
 
 [discrete]
 [[elasticsearch-differences-serverless-infrastructure-management]]
@@ -62,7 +62,7 @@ In {es-serverless}, you can only configure index-level settings.
 Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
 
 Available settings::
-* *Index-level settings*. Settings that control how Elasticsearch documents are processed, stored, and searched are available to end users, including:
+* *Index-level settings*. Settings that control how {es} documents are processed, stored, and searched are available to end users, including:
 ** Analysis configuration
 ** Mapping parameters
 ** Search/query settings
@@ -107,7 +107,7 @@ The following features have been replaced by a new feature:
 * **Index lifecycle management ({ilm-init})** is not available, in favor of <<index-management,**data stream lifecycle**>>.
 +
 In an Elastic Cloud Hosted or self-managed environment, {ilm-init} lets you automatically transition indices through data tiers according to your
-performance needs and retention requirements. This allows you to balance hardware costs with performance. Serverless Elasticsearch eliminates this
+performance needs and retention requirements. This allows you to balance hardware costs with performance. {es-serverless} eliminates this
 complexity by optimizing your cluster performance for you.
 +
 Data stream lifecycle is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary
@@ -148,7 +148,7 @@ The following Search features are planned for future support:
 The following features are not available in {es-serverless} and are not planned for future support:
 
 * https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html[Custom plugins and bundles]
-* https://www.elastic.co/guide/en/elasticsearch/hadoop/current/reference.html[Elasticsearch for Apache Hadoop]
+* https://www.elastic.co/guide/en/elasticsearch/hadoop/current/reference.html[{es} for Apache Hadoop]
 * {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[Scripted metric aggregations] are not available.
 
 [discrete]
