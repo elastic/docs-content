@@ -71,7 +71,7 @@ You'll use both values in the next step.
 We'll use the `curl` command to test your connection and make additional API requests.
 (See https://everything.curl.dev/get[Install curl] if you need to install this program.)
 
-`curl` will need access to your {es} Endpoint and `encoded` API key.
+`curl` will need access to your {es} endpoint and `encoded` API key.
 Within your terminal, assign these values to the `ES_URL` and `API_KEY` environment variables.
 
 For example:

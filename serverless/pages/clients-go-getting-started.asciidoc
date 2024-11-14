@@ -57,7 +57,7 @@ import (
 [[elasticsearch-go-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and {es} Endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,go]
 ----
@@ -70,7 +70,7 @@ if err != nil {
 }
 ----
 
-To get API keys for the {es} Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-go-client-getting-started-using-the-api]]
