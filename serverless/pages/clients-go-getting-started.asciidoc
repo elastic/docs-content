@@ -1,10 +1,15 @@
 [[elasticsearch-go-client-getting-started]]
-= Get started with the serverless Go Client
+= Get started with the serverless Go client
 
 // :description: Set up and use the Go client for {es3}.
 // :keywords: serverless, elasticsearch, go, how to
 
 preview:[]
+
+[NOTE]
+====
+This client is for use with {es-serverless} only. See also the https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es} clients]. 
+====
 
 This page guides you through the installation process of the Go
 client for {es3}, shows you how to initialize the client, and how to perform basic
