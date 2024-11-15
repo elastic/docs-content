@@ -71,7 +71,7 @@ export API_KEY="YOUR_GENERATED_API_KEY"
 
 [discrete]
 [[general-manage-project-with-api-create-a-serverless-elasticsearch-project]]
-=== Create a {es-serverless} project
+=== Create an {es-serverless} project
 
 [source,bash]
 ----
