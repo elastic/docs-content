@@ -24,6 +24,8 @@ This data can be updated, but the value of the content remains relatively consta
 Use connector clients to sync data from a range of popular data sources to {es}.
 You can also send data directly to {es} from your application using the API.
 
+[discrete]
+[[elasticsearch-ingest-time-series-data]]
 **Times series (timestamped) data**
 
 Time series, or timestamped data, describes data that changes frequently and "flows" over time, such as stock quotes, system metrics, and network traffic data.

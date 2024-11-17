@@ -34,17 +34,20 @@ The total volume of search-ready data is the sum of the following:
 
 Each project type offers different settings that let you adjust the performance and volume of search-ready data, as well as the features available in your projects.
 
+[discrete]
+[[elasticsearch-manage-project-search-power-settings]]
 |===
 | Setting | Description | Available in
 
 | **Search Power**
-a| Search Power affects search speed by controlling the number of VCUs (Virtual Compute Units) allocated to search-ready data in the project. Additional VCUs provide more compute resources and result in performance gains.
+a| Search Power controls the speed of searches against your data. With Search Power, you can improve search performance by adding more resources for querying, or you can reduce provisioned resources to cut costs.
+Choose from three Search Power settings:
 
-The **Cost-efficient** Search Power setting limits the available cache size, and generates cost savings by reducing search performance.
+**On-demand:** Autoscales based on data and search load, with a lower minimum baseline for resource use. This flexibility results in more variable query latency and reduced maximum throughput.
 
-The **Balanced** Search Power setting ensures that there is sufficient cache for all search-ready data, in order to respond quickly to queries.
+**Performant:** Delivers consistently low latency and autoscales to accommodate moderately high query throughput.
 
-The **Performance** Search Power setting provides more computing resources in addition to the searchable data cache, in order to respond quickly to higher query volumes and more complex queries.
+**High-throughput:** Optimized for high-throughput scenarios, autoscaling to maintain query latency even at very high query volumes.
 | {es-badge}
 
 | **Search Boost Window**
