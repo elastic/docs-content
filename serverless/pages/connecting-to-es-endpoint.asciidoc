@@ -4,8 +4,9 @@
 Learn how to securely connect to your Elasticsearch Serverless instance.
 
 To connect to your Elasticsearch instance from your applications, client libraries, or tools like `curl`, you'll need two key pieces of information: an API key and your endpoint URL. This guide shows you how to get these connection details and verify they work.
+
 [discrete]
-[[elasticsearch-create-new-api-key]]
+[[elasticsearch-get-started-create-api-key]]
 == Create a new API key
 
 Create an API key to authenticate your requests to the {es} APIs. You'll need an API key for all API requests and client connections.
