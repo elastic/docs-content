@@ -11,9 +11,10 @@ preview:[]
 If you haven't used {es} before, first learn the basics in the https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html[core {es} documentation].
 ====
 
-{es} is an open source distributed search and analytics engine, scalable data store, and vector database. It’s optimized for speed and relevance on production-scale workloads. Use {es} to search, index, store, and analyze data of all shapes and sizes.
 
 {es} is one of the three available project types on <<intro,{serverless-full}>>.
+
+This project type enables you to use the core functionality of {es}: searching, indexing, storing, and analyzing data of all shapes and sizes.
 
 When using {es} on {serverless-full} you don’t need to worry about managing the infrastructure that keeps {es} distributed and available: nodes, shards, and replicas. These resources are completely automated on the serverless platform, which is designed to scale up and down with your workload.
 
