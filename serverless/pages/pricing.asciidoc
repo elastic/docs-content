@@ -32,10 +32,7 @@ queries per second (QPS) you require.
 [[elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]]
 == Search AI Lake dimension (GB)
 
-Elasticsearch stores and retains data in the <<elasticsearch-manage-project-search-ai-lake-settings,Search AI Lake>>, 
-which is charged in GB for the size of data at rest. Depending on enrichment,
-vectorization, and other activities during ingest, this size may be different
-from the original size of the source data.
+{es-serverless} projects store data in the <<elasticsearch-manage-project-search-ai-lake-settings,Search AI Lake>>. You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
 [discrete]
 [[elasticsearch-billing-managing-elasticsearch-costs]]
