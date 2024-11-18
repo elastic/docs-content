@@ -31,14 +31,14 @@ dotnet add package Elastic.Clients.Elasticsearch.Serverless
 [[elasticsearch-dot-net-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and Elasticsearch Endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,net]
 ----
 var client = new ElasticsearchClient("<CLOUD_ID>", new ApiKey("<API_KEY>"));
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-dot-net-client-getting-started-using-the-api]]

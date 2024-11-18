@@ -72,7 +72,7 @@ the following to the `pom.xml` of your project:
 [[elasticsearch-java-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and Elasticsearch Endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,java]
 ----
@@ -96,7 +96,7 @@ ElasticsearchTransport transport = new RestClientTransport(
 ElasticsearchClient esClient = new ElasticsearchClient(transport);
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-java-client-getting-started-using-the-api]]

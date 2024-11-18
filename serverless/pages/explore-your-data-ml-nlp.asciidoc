@@ -22,7 +22,7 @@ WordPiece) and transformer models that conform to the standard BERT model
 interface. For the current list of supported architectures, refer to
 <<elasticsearch-explore-your-data-ml-nlp-model-reference,Compatible third party NLP models>>.
 
-To incorporate transformer models and make predictions, {es} uses libtorch,
+To incorporate transformer models and make predictions, {es-serverless} uses libtorch,
 which is an underlying native library for PyTorch. Trained models must be in a
 TorchScript representation for use with {stack} {ml} features.
 

@@ -6,7 +6,7 @@ preview:[]
 The documentation in this section describes shared capabilities that are available in multiple solutions.
 Look for the doc badge on each page to see if the page is valid for your solution:
 
-* {es-badge} for the {es} solution
+* {es-badge} for the {es-serverless} solution
 * {obs-badge} for the {observability} solution
 * {sec-badge} for the {elastic-sec} solution
 

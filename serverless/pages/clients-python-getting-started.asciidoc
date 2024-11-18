@@ -43,19 +43,19 @@ python -m pip install elasticsearch-serverless
 [[elasticsearch-python-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and Elasticsearch Endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,python]
 ----
 from elasticsearch_serverless import Elasticsearch
 
 client = Elasticsearch(
-    "https://...",  # Your project's Elasticsearch Endpoint
+    "https://...",  # Your project's Elasticsearch endpoint
     api_key='api-key',  # API key for your project
 )
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-python-client-getting-started-using-the-api]]

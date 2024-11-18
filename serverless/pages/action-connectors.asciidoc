@@ -17,7 +17,7 @@ The list of available connectors varies by project type.
 * {kibana-ref}/email-action-type.html[*Email*^]: Send email from your server.
 * {kibana-ref}/gemini-action-type.html[*Google Gemini*^]: Send a request to Google Gemini.
 * {kibana-ref}/resilient-action-type.html[*IBM Resilient*^]: Create an incident in IBM Resilient.
-* {kibana-ref}/index-action-type.html[*Index*^]: Index data into Elasticsearch.
+* {kibana-ref}/index-action-type.html[*Index*^]: Index data into {es}.
 * {kibana-ref}/jira-action-type.html[*Jira*^]: Create an incident in Jira.
 * {kibana-ref}/teams-action-type.html[*Microsoft Teams*^]: Send a message to a Microsoft Teams channel.
 * {kibana-ref}/obs-ai-assistant-action-type.html[*Observability AI Assistant*^]: Add AI-driven insights and custom actions to your workflow.
@@ -75,7 +75,7 @@ Actions are instantiations of a connector that are linked to rules and run as ba
 |---|---|
 | <DocLink id="enKibanaEmailActionType">Email</DocLink> | Send email from your server. |
 | <DocLink id="enKibanaResilientActionType">{ibm-r}</DocLink> | Create an incident in {ibm-r}. |
-| <DocLink id="enKibanaIndexActionType">Index</DocLink> | Index data into Elasticsearch. |
+| <DocLink id="enKibanaIndexActionType">Index</DocLink> | Index data into {es}. |
 | <DocLink id="enKibanaJiraActionType">Jira</DocLink> | Create an incident in Jira. |
 | <DocLink id="enKibanaTeamsActionType">Microsoft Teams</DocLink> | Send a message to a Microsoft Teams channel. |
 | <DocLink id="enKibanaOpsgenieActionType">Opsgenie</DocLink> | Create or close an alert in Opsgenie. |
