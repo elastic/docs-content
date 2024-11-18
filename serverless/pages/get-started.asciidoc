@@ -31,7 +31,7 @@ Now your project is ready to start creating indices, adding data, and performing
 
 [discrete]
 [[elasticsearch-follow-guided-index-flowt]]
-== Option 1 - Follow the guided index flow
+== Option 1: Follow the guided index flow
 
 Once your project is set up, you'll be directed to a page where you can create your first index. 
 An index is where documents are stored and organized, making it possible to search and retrieve data.
