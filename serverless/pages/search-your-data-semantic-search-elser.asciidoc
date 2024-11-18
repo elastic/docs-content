@@ -35,7 +35,7 @@ deploy the model.
 [NOTE]
 ====
 The minimum dedicated ML node size for deploying and using the ELSER model
-is 4 GB in Elasticsearch Service if
+is 4 GB in {es} Service if
 {cloud}/ec-autoscaling.html[deployment autoscaling] is turned off. Turning on
 autoscaling is recommended because it allows your deployment to dynamically
 adjust resources based on demand. Better performance can be achieved by using

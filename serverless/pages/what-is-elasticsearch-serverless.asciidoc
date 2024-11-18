@@ -2,24 +2,24 @@
 To be rewritten/refined
 ////
 
-// :description: Build search solutions and applications with {es}.
+// :description: Build search solutions and applications with {es-serverless}.
 // :keywords: serverless, elasticsearch, overview
 
 preview:[]
 
-Elasticsearch allows you to build custom applications. Whether you have structured or unstructured text, numerical data, or geospatial data, Elasticsearch can efficiently store and index it in a way that supports fast searches.
+{es} allows you to build custom applications. Whether you have structured or unstructured text, numerical data, or geospatial data, {es} can efficiently store and index it in a way that supports fast searches.
 
-.Understanding Elasticsearch on serverless
+.Understanding {es-serverless}
 [IMPORTANT]
 ====
-Refer to <<elasticsearch-differences,Serverless differences>> and <<elasticsearch-technical-preview-limitations,Technical preview limitations>> for important details, including features and limitations specific to {es} on serverless.
+Refer to <<elasticsearch-differences,Serverless differences>> and <<elasticsearch-technical-preview-limitations,Technical preview limitations>> for important details, including features and limitations specific to {es-serverless}.
 ====
 
 [discrete]
 == Get started
 
-* <<elasticsearch-get-started,*Create your Elasticsearch project*>>: Create your first Elasticsearch project.
-* <<elasticsearch-ingest-your-data,*Ingest your data*>>: Learn how to get your data into Elasticsearch.
+* <<elasticsearch-get-started,*Create your {es} project*>>: Create your first {es} project.
+* <<elasticsearch-ingest-your-data,*Ingest your data*>>: Learn how to get your data into {es}.
 
 [discrete]
 == How to

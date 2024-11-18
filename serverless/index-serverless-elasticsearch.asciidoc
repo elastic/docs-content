@@ -1,8 +1,8 @@
 [[what-is-elasticsearch-serverless]]
-== Elasticsearch
+== {es}
 
 ++++
-<titleabbrev>Elasticsearch</titleabbrev>
+<titleabbrev>{es}</titleabbrev>
 ++++
 
 include::./pages/what-is-elasticsearch-serverless.asciidoc[leveloffset=+2]

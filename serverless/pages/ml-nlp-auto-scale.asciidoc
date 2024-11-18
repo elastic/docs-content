@@ -4,7 +4,7 @@
 // :keywords: serverless
 
 You can enable autoscaling for each of your trained model deployments.
-Autoscaling allows Elasticsearch to automatically adjust the resources the model deployment can use based on the workload demand.
+Autoscaling allows {es} to automatically adjust the resources the model deployment can use based on the workload demand.
 
 There are two ways to enable autoscaling:
 
@@ -66,7 +66,7 @@ Increasing the number of threads will make the search processes more performant.
 == Enabling autoscaling in Kibana - adaptive resources
 
 You can enable adaptive resources for your models when starting or updating the model deployment.
-Adaptive resources make it possible for Elasticsearch to scale up or down the available resources based on the load on the process.
+Adaptive resources make it possible for {es} to scale up or down the available resources based on the load on the process.
 This can help you to manage performance and cost more easily.
 When adaptive resources are enabled, the number of VCUs that the model deployment uses is set automatically based on the current load.
 When the load is high, the number of VCUs that the process can use is automatically increased.

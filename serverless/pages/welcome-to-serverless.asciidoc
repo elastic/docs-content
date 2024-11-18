@@ -18,8 +18,8 @@ focus more on gaining value and insight from your data.
 
 Elastic provides three serverless solutions available on {ecloud}:
 
-* **{es}**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
-* **Elastic {observability}**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
+* **{es-serverless}**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
+* **{observability}**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
 * **{elastic-sec}**: Detect, investigate, and respond to threats, with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 Serverless instances of the Elastic Stack that you create in {ecloud} are called **serverless projects**.
@@ -37,8 +37,8 @@ Choose the type of project that matches your needs and we’ll help you get star
 |
 
 | image:https://www.elastic.co/docs/assets/images/elasticsearch.png[width=150]
-a| [.card-title]#Elasticsearch# +
-Build custom search applications with Elasticsearch.
+a| [.card-title]#{es}# +
+Build custom search applications with {es}.
 
 <<what-is-elasticsearch-serverless,*View guide →*>>
 
