@@ -68,7 +68,7 @@ image::images/getting-started-page.png[Getting Started page.]
 
 [discrete]
 [[elasticsearch-explore-on-your-own]]
-== Option 3 - Explore on your own
+== Option 3: Explore on your own
 
 . Retrieve your <<elasticsearch-connecting-to-es-serverless-endpoint,connection details>>.
 . Ingest your data. Elasticsearch provides several methods for ingesting data:
