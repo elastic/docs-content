@@ -8,7 +8,9 @@
 // :keywords: serverless, elasticsearch
 
 {es-serverless} abstracts away infrastructure management from users, providing a fully managed {es} service.
+
 If you've used {es} before, you'll notice some differences in how you work with the service on serverless, because a number of APIs and settings are not required for serverless projects.
+
 This guide helps you understand what's different, what's available, and how to work effectively when running {es} on {serverless-full}.
 
 [discrete]
@@ -122,17 +124,18 @@ hide the details of complex, domain-specific detections, while providing a consi
 [[elasticsearch-differences-serverless-feature-planned]]
 === Planned features
 
-The following core features are planned for future support:
+The following features shared by all projects are planned for future support:
 
 * Reindexing from remote clusters 
-* Cross-cluster search and replication
+* Cross-project search and replication
 * Snapshot and restore
 * Migrations from non-serverless deployments
 * Audit logging
 * Authentication realms (native/SAML/OIDC/Kerberos/JWT)
 * Clone index API
+* Traffic filtering and VPCs
 
-The following Search features are planned for future support:
+The following {es-serverless} project-specific features are planned for future support:
 
 * {ref}/behavioral-analytics-overview.html[Behavioral Analytics]
 * {ref}/search-application-overview.html[Search Applications]
@@ -143,7 +146,7 @@ The following Search features are planned for future support:
 
 [discrete]
 [[elasticsearch-differences-serverless-feature-unavailable]]
-=== Permanently unavailable features
+=== Unplanned features
 
 The following features are not available in {es-serverless} and are not planned for future support:
 
