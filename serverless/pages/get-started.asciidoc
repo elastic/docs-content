@@ -7,7 +7,6 @@
 preview:[]
 
 Follow along to set up your {es} project and get started with some sample documents.
-Then, choose how to continue with your own data.
 
 [discrete]
 [[elasticsearch-get-started-create-project]]
@@ -20,26 +19,19 @@ Use your {ecloud} account to create a fully-managed {es} project:
 . Choose the {es} project type.
 . Select a **configuration** for your project, based on your use case.
 +
-** **General purpose**. For general search use cases across various data types.
-** **Optimized for Vectors**. For search use cases using vectors and near real-time retrieval.
+** **General purpose**: For general search use cases across various data types.
+** **Optimized for Vectors**: For search use cases using vectors and near real-time retrieval.
 . Provide a name for the project and optionally edit the project settings, such as the cloud platform <<regions,region>>.
 Select **Create project** to continue.
 . Once the project is ready, select **Continue**.
 
 include::../partials/minimum-vcus-detail.asciidoc[]
 
-Now your project is ready to start creating indices, adding data, and performing searches. You can choose one of the following options to proceed:
-
-. *Follow the guided index flow*: Continue with the steps displayed on the UI. This includes <<elasticsearch-get-started-create-index,creating an index>> and using the provided code examples to ingest data.
-. *Follow the in-product Getting Started tutorial*: Use the in-product guide to learn how to ingest data and perform searches.
-. *Explore on your own*:
-- Get your <<elasticsearch-connecting-to-es-serverless-endpoint,connection details>>.
-- Choose an <<elasticsearch-ingest-your-data,ingestion option>>.
-- Once your data is ingested, experiment with <<elasticsearch-playground,Playground>> to test queries and explore features.
+Now your project is ready to start creating indices, adding data, and performing searches. You can choose one of the following options to proceed.
 
 [discrete]
-[[elasticsearch-get-started-create-index]]
-== Create an index
+[[elasticsearch-follow-guided-index-flowt]]
+== Option 1 - Follow the guided index flow
 
 Once your project is set up, you'll be directed to a page where you can create your first index. 
 An index is where documents are stored and organized, making it possible to search and retrieve data.
@@ -67,11 +59,19 @@ Choose your preferred tool for making these requests:
 * cURL
 
 [discrete]
-[[elasticsearch-get-started-continue-on-your-own]]
-== Ingest data
+[[elasticsearch-follow-in-product-getting-started]]
+== Option 2 - Follow the in-product Getting Started guide
 
-Elasticsearch provides several methods for ingesting data:
+Navigate to the *Getting Started* page and follow the steps provided on the UI.
 
+image::images/getting-started-page.png[Getting Started page.]
+
+[discrete]
+[[elasticsearch-explore-on-your-own]]
+== Option 3 - Explore on your own
+
+. Retrieve your <<elasticsearch-connecting-to-es-serverless-endpoint,connection details>>.
+. Ingest your data. Elasticsearch provides several methods for ingesting data:
 * <<elasticsearch-ingest-data-through-api,{es} API>>
 * <<elasticsearch-ingest-data-through-integrations-connector-client,Connector clients>>
 * <<elasticsearch-ingest-data-file-upload,File Uploader>>
@@ -81,6 +81,9 @@ Elasticsearch provides several methods for ingesting data:
 
 For more information on data ingestion and synchronization, 
 see <<elasticsearch-ingest-your-data>>. 
+
+Once your data is ingested, experiment with <<elasticsearch-playground,Playground>> to test queries and explore features.
+
 To learn about the search API and query DSL, refer to <<elasticsearch-http-apis>>.
 
 ////
@@ -89,19 +92,3 @@ To learn about the search API and query DSL, refer to <<elasticsearch-http-apis>
 - <DocLink slug="/serverless/elasticsearch/search-your-data-the-search-api" />
 */
 ////
-
-[discrete]
-[[elasticsearch-get-started-explore]]
-== Next steps
-
-*Create a data view*: You can explore data using UI tools like Discover or Dashboards by creating a data view. 
-Or, you can use {es} aggregations to explore data through the API. Find more information in <<elasticsearch-explore-your-data>>.
-
-*Try Playground*: You can test {es} queries and combine {es} data with LLMs for retrieval augmented generation (RAG) in the 
-<<elasticsearch-playground>>.
-
-*Search your data*: You can perform search queries in {es} to filter by exact values, 
-conduct full-text searches, or use vector search. Learn more in <<elasticsearch-search-your-data>>.
-
-*Use semantic search*: You can retrieve data based on intent and context using NLP and vector embeddings with 
-<<elasticsearch-reference-semantic-search>>.
