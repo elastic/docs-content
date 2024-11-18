@@ -12,7 +12,7 @@ Create an API key to authenticate your requests to the {es} APIs. You'll need an
 
 To create a new API key:
 
-. On the **Getting Started** page, scroll to **Add an API Key** and select **New**.
+. On the **Getting Started** page, scroll to **Add an API Key** and select **New**. You can also search for *API keys* in the https://www.elastic.co/guide/en/kibana/current/kibana-concepts-analysts.html#_finding_your_apps_and_objects[global search field].
 +
 image::images/create-an-api-key.png[Create an API key.]
 . In **Create API Key**, enter a name for your key and (optionally) set an expiration date.

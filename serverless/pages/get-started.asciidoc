@@ -28,6 +28,15 @@ Select **Create project** to continue.
 
 include::../partials/minimum-vcus-detail.asciidoc[]
 
+Now your project is ready to start creating indices, adding data, and performing searches. You can choose one of the following options to proceed:
+
+. *Follow the guided index flow*: Continue with the steps displayed on the UI. This includes <<elasticsearch-get-started-create-index,creating an index>> and using the provided code examples to ingest data.
+. *Follow the in-product Getting Started tutorial*: Use the in-product guide to learn how to ingest data and perform searches.
+. *Explore on your own*:
+- Get your <<elasticsearch-connecting-to-es-serverless-endpoint,connection details>>.
+- Choose an <<elasticsearch-ingest-your-data,ingestion option>>.
+- Once your data is ingested, experiment with <<elasticsearch-playground,Playground>> to test queries and explore features.
+
 [discrete]
 [[elasticsearch-get-started-create-index]]
 == Create an index
@@ -83,7 +92,7 @@ To learn about the search API and query DSL, refer to <<elasticsearch-http-apis>
 
 [discrete]
 [[elasticsearch-get-started-explore]]
-== Explore
+== Next steps
 
 *Create a data view*: You can explore data using UI tools like Discover or Dashboards by creating a data view. 
 Or, you can use {es} aggregations to explore data through the API. Find more information in <<elasticsearch-explore-your-data>>.
