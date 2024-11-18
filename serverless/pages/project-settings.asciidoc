@@ -10,7 +10,7 @@
 
 preview:[]
 
-Go to **Project Settings** to manage your indices, data views, saved objects, settings, and more.
+Go to **Project settings**, then ** Management** to manage your indices, data views, saved objects, settings, and more.
 
 Access to individual features is governed by Elastic user roles.
 Consult your administrator if you do not have the appropriate access.
