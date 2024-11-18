@@ -47,7 +47,7 @@ of retained data.
 * **Search Power setting:** <<elasticsearch-manage-project-search-power-settings,Search Power>> controls the speed of searches against your data. With Search Power, you can 
 improve search performance by adding more resources for querying, or you can reduce provisioned 
 resources to cut costs.
-* **Time series data:** By limiting the number of days of <<elasticsearch-ingest-time-series-data,time series data>> that are available for caching, 
+* **Time series data retention:** By limiting the number of days of <<elasticsearch-ingest-time-series-data,time series data>> that are available for caching, 
 you can reduce the number of search VCUs required. 
 
 For detailed {es-serverless} project rates, see the https://www.elastic.co/pricing/serverless-search[{es-serverless} pricing page].
