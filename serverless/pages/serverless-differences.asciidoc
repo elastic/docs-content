@@ -15,14 +15,16 @@ This guide helps you understand what's different, what's available, and how to w
 
 [discrete]
 [[elasticsearch-differences-serverless-infrastructure-management]]
-== Infrastructure management overview
+== Fully managed infrastructure
 
-{es-serverless} handles infrastructure management automatically, including:
+{es-serverless} manages all infrastructure automatically, including:
 
 * Cluster scaling and optimization
 * Node management and allocation
 * Shard distribution and replication
 * Resource utilization and monitoring
+
+This fully managed approach means many traditional {es} infrastructure APIs and settings are not available to end users, as detailed in the following sections.
 
 [discrete]
 [[elasticsearch-differences-serverless-aps-settings]]
@@ -123,7 +125,7 @@ hide the details of complex, domain-specific detections, while providing a consi
 [[elasticsearch-differences-serverless-feature-planned]]
 === Planned features
 
-The following features shared by all projects are planned for future support:
+The following features are planned for future support in all {serverless-full} projects:
 
 * Reindexing from remote clusters 
 * Cross-project search and replication
@@ -134,7 +136,7 @@ The following features shared by all projects are planned for future support:
 * Clone index API
 * Traffic filtering and VPCs
 
-The following {es-serverless} project-specific features are planned for future support:
+The following _{es-serverless}_ project-specific features are planned for future support:
 
 * {ref}/behavioral-analytics-overview.html[Behavioral Analytics]
 * {ref}/search-application-overview.html[Search Applications]
