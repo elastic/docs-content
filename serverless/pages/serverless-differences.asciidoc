@@ -27,21 +27,17 @@ This guide helps you understand what's different, what's available, and how to w
 This fully managed approach means many traditional {es} infrastructure APIs and settings are not available to end users, as detailed in the following sections.
 
 [discrete]
-[[elasticsearch-differences-serverless-aps-settings]]
-== APIs and settings
+[[elasticsearch-differences-serverless-apis-availability]]
+== API availability
 
-Because {es-serverless} manages infrastructure automatically, certain APIs and settings are not available, while others remain fully accessible.
+Because {es-serverless} manages infrastructure automatically, certain APIs are not available, while others remain fully accessible.
 
 [TIP]
 ====
 Refer to the https://www.elastic.co/docs/api/doc/elasticsearch-serverless[{es-serverless} API reference] for a complete list of available APIs.
 ====
 
-[discrete] 
-[[elasticsearch-differences-serverless-api-availability]]
-=== API availability
-
-The following categories of operations are unavailable, because they are managed by the {serverless-full} platform:
+The following categories of operations are unavailable:
 
 Infrastructure operations::
 * All `_nodes/*` operations 
@@ -57,31 +53,6 @@ Index management::
 * `indices/open` operations
 * Recovery and stats operations
 * Force merge operations
-
-[discrete]
-[[elasticsearch-differences-serverless-settings-availability]]  
-=== Settings availability
-
-In {es-serverless}, you can only configure index-level settings.
-Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
-
-Available settings::
-{ref}/index-modules.html#index-modules-settings[*Index-level settings*]: Settings that control how {es} documents are processed, stored, and searched are available to end users, including:
-** Analysis configuration
-** Mapping parameters
-** Search/query settings
-** Indexing settings such as `refresh_interval`
-
-Managed settings::
-*Infrastructure-related settings*: Settings that affect cluster resources or data distribution are not available to end users, including:
-** Node configurations
-** Cluster topology
-** Shard allocation
-** Resource management
-
-[discrete]
-[[elasticsearch-differences-serverless-api-errors]]
-=== API error handling
 
 When attempting to use an unavailable API, you'll receive a clear error message:
 
@@ -101,11 +72,38 @@ When attempting to use an unavailable API, you'll receive a clear error message:
 ----
 
 [discrete]
+[[elasticsearch-differences-serverless-settings-availability]]  
+== Settings availability
+
+In {es-serverless}, you can only configure index-level settings.
+Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
+
+Available settings::
+{ref}/index-modules.html#index-modules-settings[*Index-level settings*]: Settings that control how {es} documents are processed, stored, and searched are available to end users. These include:
+* Analysis configuration
+* Mapping parameters
+* Search/query settings
+* Indexing settings such as `refresh_interval`
+
+Managed settings::
+*Infrastructure-related settings*: Settings that affect cluster resources or data distribution are not available to end users. These include:
+* Node configurations
+* Cluster topology
+* Shard allocation
+* Resource management
+
+[discrete]
 [[elasticsearch-differences-serverless-feature-categories]]
 == Feature availability
 
 Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in {es-serverless}.
-These features have either been replaced by a new feature, or are not applicable in the new serverless architecture:
+These features have either been replaced by a new feature, or are not applicable in the new serverless architecture.
+
+[discrete]
+[[elasticsearch-differences-serverless-features-replaced]]
+=== Replaced features
+
+These features have been replaced by a new feature and are therefore not available on {es-serverless}:
 
 * **Index lifecycle management ({ilm-init})** is not available, in favor of <<index-management,**data stream lifecycle**>>.
 +
@@ -141,9 +139,12 @@ The following {es-serverless} project-specific features are planned for future s
 * {ref}/behavioral-analytics-overview.html[Behavioral Analytics]
 * {ref}/search-application-overview.html[Search Applications]
 * {enterprise-search-ref}/crawler.html[Managed web crawler]
-** You can use the https://github.com/elastic/crawler[self-managed web crawler] in the meantime.
++ 
+You can use the https://github.com/elastic/crawler[self-managed web crawler] in the meantime.
++
 * {ref}/es-native-connectors.html[Elastic managed Search connectors]
-** You can use {ref}/es-build-connector.html[self-managed Search connectors] in the meantime.
++ 
+You can use {ref}/es-build-connector.html[self-managed Search connectors] in the meantime.
 
 [discrete]
 [[elasticsearch-differences-serverless-feature-unavailable]]
