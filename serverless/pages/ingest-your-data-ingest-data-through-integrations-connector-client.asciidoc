@@ -62,14 +62,14 @@ Connector clients are available for the following third-party data sources:
 [[elasticsearch-ingest-data-through-integrations-connector-client-overview]]
 == Overview
 
-Because connector clients are self-managed on your own infrastructure, they run outside of your {es} serverless project.
+Because connector clients are self-managed on your own infrastructure, they run outside of your {es-serverless} project.
 
 You can run them from source or in a Docker container.
 
 .Workflow
 [NOTE]
 ====
-In order to set up, configure, and run a connector you'll be moving between your third-party service, the {es} Serverless UI, and your terminal.
+In order to set up, configure, and run a connector you'll be moving between your third-party service, the {es-serverless} Serverless UI, and your terminal.
 At a high-level, the workflow looks like this:
 
 . Satisfy any data source prerequisites (e.g., create an OAuth application).
@@ -101,7 +101,7 @@ Follow these steps:
 . Add a name and optional description to identify the connector.
 . Copy the `connector_id`, `service_type`, and `elasticsearch.host` values printed to the screen.
 You'll need to update these values in your https://github.com/elastic/connectors/blob/main/config.yml[`config.yml`] file.
-. Navigate to  **Elasticsearch → Home**, and make a note of your **{es} endpoint** and **API key** values. You can create a new API key by clicking on **New** in the **API key** section.
+. Navigate to  **{es} → Home**, and make a note of your **{es} endpoint** and **API key** values. You can create a new API key by clicking on **New** in the **API key** section.
 . Run the connector code either from source or with Docker, following the instructions below.
 
 [discrete]

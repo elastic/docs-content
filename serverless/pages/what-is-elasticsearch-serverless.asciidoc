@@ -1,7 +1,7 @@
 // ℹ️ THIS CONTENT IS RENDERERED ON THE index-serverless-elasticsearch.asciidoc PAGE
 // Use the id <<what-is-elasticsearch-serverless>> to link to this page
 
-// :description: Build search solutions and applications with {es}.
+// :description: Build search solutions and applications with {es-serverless}.
 // :keywords: serverless, elasticsearch, overview
 
 preview:[]
@@ -9,7 +9,8 @@ preview:[]
 [TIP]
 ====
 If you haven't used {es} before, you might want to learn the basics in the https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html[main {es} documentation].
-====
+=======
+{es} allows you to build custom applications. Whether you have structured or unstructured text, numerical data, or geospatial data, {es} can efficiently store and index it in a way that supports fast searches.
 
 {es} is an open source distributed search and analytics engine, scalable data store, and vector database. It’s optimized for speed and relevance on production-scale workloads. Use {es} to search, index, store, and analyze data of all shapes and sizes.
 
@@ -18,6 +19,7 @@ If you haven't used {es} before, you might want to learn the basics in the https
 When using {es} on {serverless-full} you don’t need to worry about managing the infrastructure that keeps {es} distributed and available: nodes, shards, and replicas. These resources are 100% automated on the serverless platform, which is designed to scale up and down with your workload.
 
 This allows you to focus on building your search applications and solutions, without worrying about the underlying infrastructure.
+
 
 [discrete]
 [[elasticsearch-overview-get-started]]

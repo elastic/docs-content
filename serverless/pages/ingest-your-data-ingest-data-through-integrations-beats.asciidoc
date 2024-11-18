@@ -38,10 +38,10 @@ Depending on what data you want to collect, you may need to install multiple shi
 {beats} can send data to {es} directly or through {ls}, where you
 can further process and enhance the data before visualizing it in {kib}.
 
-.Authenticating with Elasticsearch
+.Authenticating with {es}
 [NOTE]
 ====
-When you use {beats} to export data to an {es} project, the {beats} require an API key to authenticate with {es}.
+When you use {beats} to export data to an {es-serverless} project, the {beats} require an API key to authenticate with {es}.
 Refer to <<elasticsearch-get-started-create-api-key,Create API key>> for the steps to set up your API key,
 and to https://www.elastic.co/guide/en/beats/filebeat/current/beats-api-keys.html[Grant access using API keys] in the Filebeat documentation for an example of how to configure your {beats} to use the key.
 ====

@@ -8,14 +8,14 @@ preview:[]
 
 This page guides you through the installation process Ruby
 client for {es3}, shows you how to initialize the client, and how to perform basic
-{es} operations with it.
+{es-serverless} operations with it.
 
 [discrete]
 [[elasticsearch-ruby-client-getting-started-requirements]]
 == Requirements
 
 * Ruby 3.0 or higher installed on your system.
-* To use the `elasticsearch-serverless` gem, you must have an API key and Elasticsearch Endpoint for an {es3} project.
+* To use the `elasticsearch-serverless` gem, you must have an API key and {es} endpoint for an {es3} project.
 
 [discrete]
 [[elasticsearch-ruby-client-getting-started-installation]]
@@ -87,7 +87,7 @@ bundle exec rake console
 [[elasticsearch-ruby-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and Elasticsearch Endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,ruby]
 ----
@@ -97,7 +97,7 @@ client = ElasticsearchServerless::Client.new(
 )
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-ruby-client-getting-started-using-the-api]]
@@ -147,7 +147,7 @@ index:
 #  {"index"=>{"_index"=>"books", "_id"=>"Qtink4cBmDx329iqhzM2", "_version"=>1, "result"=>"created", "_shards"=>{"total"=>2, "successful"=>1, "failed"=>0}, "_seq_no"=>5, "_primary_term"=>1, "status"=>201}}]
 ----
 
-When you use the client to make a request to Elasticsearch, it returns an API
+When you use the client to make a request to {es}, it returns an API
 response object. You can check the HTTP return code by calling `status` and the
 HTTP headers by calling `headers` on the response object. The response object
 also behaves as a Hash, so you can access the body values directly as seen on

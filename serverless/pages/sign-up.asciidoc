@@ -24,7 +24,7 @@ Each deployment includes Elastic features such as Maps, SIEM, machine learning, 
 
 Serverless projects package Elastic Stack features by type of solution:
 
-* <<what-is-elasticsearch-serverless,Elasticsearch>>
+* <<what-is-elasticsearch-serverless,{es}>>
 * <<what-is-observability-serverless,Observability>>
 * <<what-is-security-serverless,Security>>
 
@@ -46,19 +46,19 @@ During the free 14 day trial, Elastic provides access to one hosted deployment a
 * You can have one active deployment at a time
 * The deployment size is limited to 8GB RAM and approximately 360GB of storage, depending on the specified hardware profile
 * Machine learning nodes are available up to 4GB RAM
-* Custom Elasticsearch plugins are not enabled
+* Custom {es} plugins are not enabled
 
 **Serverless projects**
 
 * You can have one active serverless project at a time.
-* Search Power is limited to 100. This setting only exists in Elasticsearch projects
-* Search Boost Window is limited to 7 days. This setting only exists in Elasticsearch projects
+* Search Power is limited to 100. This setting only exists in {es-serverless} projects
+* Search Boost Window is limited to 7 days. This setting only exists in {es-serverless} projects
 
 **How to remove restrictions?**
 
 To remove limitations, subscribe to https://www.elastic.co/guide/en/cloud/current/ec-billing-details.html[Elastic Cloud]. Elastic Cloud subscriptions include the following benefits:
 
-* Increased memory or storage for deployment components, such as Elasticsearch clusters, machine learning nodes, and APM server.
+* Increased memory or storage for deployment components, such as {es} clusters, machine learning nodes, and APM server.
 * As many deployments and projects as you need.
 * Third availability zone for your deployments.
 * Access to additional features, such as cross-cluster search and cross-cluster replication.

@@ -6,7 +6,7 @@
 
 preview:[]
 
-When you query your data, Elasticsearch may return an error, no search results,
+When you query your data, {es} may return an error, no search results,
 or results in an unexpected order. This guide describes how to troubleshoot
 searches.
 
@@ -14,7 +14,7 @@ searches.
 [[devtools-dev-tools-troubleshooting-ensure-the-data-stream-index-or-alias-exists]]
 == Ensure the data stream, index, or alias exists
 
-Elasticsearch returns an `index_not_found_exception` when the data stream, index
+{es} returns an `index_not_found_exception` when the data stream, index
 or alias you try to query does not exist. This can happen when you misspell the
 name or when the data has been indexed to a different data stream or index.
 
@@ -221,12 +221,12 @@ GET /my-index-000001/_search?sort=@timestamp:desc&size=1
 [[devtools-dev-tools-troubleshooting-validate-explain-and-profile-queries]]
 == Validate, explain, and profile queries
 
-When a query returns unexpected results, Elasticsearch offers several tools to
+When a query returns unexpected results, {es} offers several tools to
 investigate why.
 
 The https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-validate-query[**Validate API**]
 enables you to validate a query.
-Use the `rewrite` parameter to return the Lucene query an Elasticsearch query is
+Use the `rewrite` parameter to return the Lucene query an {es} query is
 rewritten into:
 
 [source,js]

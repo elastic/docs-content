@@ -71,7 +71,7 @@ export API_KEY="YOUR_GENERATED_API_KEY"
 
 [discrete]
 [[general-manage-project-with-api-create-a-serverless-elasticsearch-project]]
-=== Create a serverless Elasticsearch project
+=== Create an {es-serverless} project
 
 [source,bash]
 ----
@@ -89,7 +89,7 @@ curl -H "Authorization: ApiKey $API_KEY" \
 <2> You can <<general-manage-project-with-api-list-available-regions,obtain a list of available regions>>.
 
 The response from the create project request will include the created project details, such as the project ID,
-the credentials to access the project, and the endpoints to access different apps such as Elasticsearch and Kibana.
+the credentials to access the project, and the endpoints to access different apps such as {es} and Kibana.
 
 Example of `Create project` response:
 

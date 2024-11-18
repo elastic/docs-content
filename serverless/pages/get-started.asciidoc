@@ -6,18 +6,18 @@
 
 preview:[]
 
-Follow along to set up your {es} project and get started with some sample documents.
+Follow along to set up your {es-serverless} project and get started with some sample documents.
 Then, choose how to continue with your own data.
 
 [discrete]
 [[elasticsearch-get-started-create-project]]
 == Create project
 
-Use your {ecloud} account to create a fully-managed {es} project:
+Use your {ecloud} account to create a fully-managed {es-serverless} project:
 
 . Navigate to {ess-console}[cloud.elastic.co] and create a new account or log in to your existing account.
 . Within **Serverless Projects**, choose **Create project**.
-. Choose the {es} project type.
+. Choose the {es-serverless} project type.
 . Select a **configuration** for your project, based on your use case.
 +
 ** **General purpose**. For general search use cases across various data types.
@@ -26,7 +26,7 @@ Use your {ecloud} account to create a fully-managed {es} project:
 Select **Create project** to continue.
 . Once the project is ready, select **Continue**.
 
-You should now see **Get started with {es}**, and you're ready to continue.
+You should now see **Get started with {es-serverless}**, and you're ready to continue.
 
 include::../partials/minimum-vcus-detail.asciidoc[]
 
@@ -34,7 +34,7 @@ include::../partials/minimum-vcus-detail.asciidoc[]
 [[elasticsearch-get-started-create-api-key]]
 == Create API key
 
-Create an API key, which will enable you to access the {es} API to ingest and search data.
+Create an API key, which will enable you to access the {es-serverless} API to ingest and search data.
 
 . On the **Getting Started** page, scroll to **Add an API Key** and select **New**.
 . In **Create API Key**, enter a name for your key and (optionally) set an expiration date.
@@ -56,10 +56,10 @@ You can't recover or retrieve a lost API key. Instead, you must delete the key a
 == Copy URL
 
 Next, copy the URL of your API endpoint.
-You'll send all {es} API requests to this URL.
+You'll send all {es-serverless} API requests to this URL.
 
-. On the **Getting Started** page, scroll to **Copy your connection details** section, and find the **Elasticsearch endpoint** field.
-. Copy the URL for the Elasticsearch endpoint.
+. On the **Getting Started** page, scroll to **Copy your connection details** section, and find the **{es} endpoint** field.
+. Copy the URL for the {es} endpoint.
 
 Store this value along with your `encoded` API key.
 You'll use both values in the next step.
@@ -71,7 +71,7 @@ You'll use both values in the next step.
 We'll use the `curl` command to test your connection and make additional API requests.
 (See https://everything.curl.dev/get[Install curl] if you need to install this program.)
 
-`curl` will need access to your Elasticsearch Endpoint and `encoded` API key.
+`curl` will need access to your {es} endpoint and `encoded` API key.
 Within your terminal, assign these values to the `ES_URL` and `API_KEY` environment variables.
 
 For example:
@@ -224,7 +224,7 @@ You should receive a response with the results:
 == Continue on your own
 
 Congratulations!
-You've set up an {es} project, and you've ingested and searched some sample data.
+You've set up an {es-serverless} project, and you've ingested and searched some sample data.
 Now you're ready to continue on your own.
 
 [discrete]
@@ -241,7 +241,7 @@ By creating a data view, you can explore data using several UI tools, such as Di
 
 Ready to build your own solution?
 
-To learn more about sending and syncing data to {es}, or the search API and its query DSL, check <<elasticsearch-ingest-your-data>> and <<elasticsearch-http-apis>>.
+To learn more about sending and syncing data to {es-serverless}, or the search API and its query DSL, check <<elasticsearch-ingest-your-data>> and <<elasticsearch-http-apis>>.
 
 ////
 /*
