@@ -60,7 +60,7 @@ Choose your preferred tool for making these requests:
 
 [discrete]
 [[elasticsearch-follow-in-product-getting-started]]
-== Option 2 - Follow the in-product Getting Started guide
+== Option 2: Follow the in-product Getting Started guide
 
 To get started using the in-product tutorial, navigate to the *Getting Started* page and follow the on-screen steps.
 
