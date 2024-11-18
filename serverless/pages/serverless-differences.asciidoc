@@ -7,7 +7,7 @@
 // :description: Understand how {es-serverless} differs from Elastic Cloud Hosted and self-managed offerings.
 // :keywords: serverless, elasticsearch
 
-{es-serverless} abstracts away infrastructure management from users, providing a fully managed {es} service.
+<<what-is-elasticsearch-serverless,{es-serverless}>> abstracts away infrastructure management from users, providing a fully managed {es} service.
 
 If you've used {es} before, you'll notice some differences in how you work with the service on serverless, because a number of APIs and settings are not required for serverless projects.
 
