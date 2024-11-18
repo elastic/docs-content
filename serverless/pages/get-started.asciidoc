@@ -47,7 +47,7 @@ image::images/get-started-create-an-index.png[Create an index.]
 
 [NOTE]
 ====
-You won’t be able to view this API key again. If needed, refer to <<elasticsearch-create-new-api-key,Create a new API key>> to generate a new one.
+You won’t be able to view this API key again. If needed, refer to <<elasticsearch-get-started-create-api-key,Create a new API key>> to generate a new one.
 ====
 
 The UI provides ready-to-use code examples for ingesting data via the REST API. 
