@@ -75,11 +75,11 @@ When attempting to use an unavailable API, you'll receive a clear error message:
 [[elasticsearch-differences-serverless-settings-availability]]  
 == Settings availability
 
-In {es-serverless}, you can only configure index-level settings.
+In {es-serverless}, you can only configure {ref}/index-modules.html#index-modules-settings[index-level settings].
 Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
 
 Available settings::
-{ref}/index-modules.html#index-modules-settings[*Index-level settings*]: Settings that control how {es} documents are processed, stored, and searched are available to end users. These include:
+*Index-level settings*: Settings that control how {es} documents are processed, stored, and searched are available to end users. These include:
 * Analysis configuration
 * Mapping parameters
 * Search/query settings
