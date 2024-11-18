@@ -19,7 +19,7 @@ metered and billed.
 
 [discrete]
 [[elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]]
-== VCU types: Search, Ingest, and ML
+== VCU types: Search, Indexing, and ML
 
 Elasticsearch uses three VCU types:
 
