@@ -1,6 +1,5 @@
 [[what-is-elasticsearch-serverless]]
-== {es}
-
+== {es-serverless}
 ++++
 <titleabbrev>{es}</titleabbrev>
 ++++
