@@ -9,7 +9,7 @@ preview:[]
 Elasticsearch is priced based on consumption of the underlying
 infrastructure that supports your use case, with the performance
 characteristics you need. Measurements are in Virtual Compute Units (VCUs).
-Each VCU represents a slice of RAM, CPU, and local disk for caching. 
+Each VCU represents a fraction of RAM, CPU, and local disk for caching.
 
 The number of VCUs required 
 depends on the amount and rate of data sent to Elasticsearch and retained,
