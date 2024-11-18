@@ -66,7 +66,7 @@ In {es-serverless}, you can only configure index-level settings.
 Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
 
 Available settings::
-* *Index-level settings*. Settings that control how {es} documents are processed, stored, and searched are available to end users, including:
+{ref}/index-modules.html#index-modules-settings[*Index-level settings*]: Settings that control how {es} documents are processed, stored, and searched are available to end users, including:
 ** Analysis configuration
 ** Mapping parameters
 ** Search/query settings
