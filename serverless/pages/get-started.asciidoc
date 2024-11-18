@@ -62,7 +62,7 @@ Choose your preferred tool for making these requests:
 [[elasticsearch-follow-in-product-getting-started]]
 == Option 2 - Follow the in-product Getting Started guide
 
-Navigate to the *Getting Started* page and follow the steps provided on the UI.
+To get started using the in-product tutorial, navigate to the *Getting Started* page and follow the on-screen steps.
 
 image::images/getting-started-page.png[Getting Started page.]
 
