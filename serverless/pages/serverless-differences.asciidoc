@@ -4,7 +4,7 @@
 <titleabbrev>Serverless differences</titleabbrev>
 ++++
 
-// :description: Understand how serverless Elasticsearch differs from Elastic Cloud Hosted and self-managed offerings.
+// :description: Understand how {es-serverless} differs from Elastic Cloud Hosted and self-managed offerings.
 // :keywords: serverless, elasticsearch
 
 {es-serverless} abstracts away infrastructure management from users, providing a fully managed {es} service.
@@ -102,9 +102,8 @@ When attempting to use an unavailable API or setting, you'll receive a clear err
 [[elasticsearch-differences-serverless-feature-categories]]
 == Feature availability
 
-Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in {es-serverless}, while others are planned for future support.
-
-The following features have been replaced by a new feature:
+Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in {es-serverless}.
+These features have either been replaced by a new feature, or are not applicable in the new Serverless architecture:
 
 * **Index lifecycle management ({ilm-init})** is not available, in favor of <<index-management,**data stream lifecycle**>>.
 +

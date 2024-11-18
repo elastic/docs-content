@@ -146,7 +146,7 @@ Using `DPREncoderWrapper`:
 == Expected model output
 
 Models used for each NLP task type must output tensors of a specific format to
-be used in the Elasticsearch NLP pipelines.
+be used in the {es} NLP pipelines.
 
 Here are the expected outputs for each task type.
 

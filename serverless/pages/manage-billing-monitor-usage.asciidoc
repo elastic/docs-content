@@ -21,8 +21,8 @@ On the **Usage** page you can:
 The usage breakdown information is an estimate. To get the exact amount you owe for a given month, check your invoices in the <<general-billing-history,billing history>>.
 ====
 
-.Elasticsearch minimum runtime VCUs
+.{es} minimum runtime VCUs
 [IMPORTANT]
 ====
-When you create an Elasticsearch Serverless project, a minimum number of VCUs are always allocated to your project to maintain basic ingest and search capabilities. These VCUs incur a minimum cost even with no active usage. Learn more about https://www.elastic.co/pricing/serverless-search#what-are-the-minimum-compute-resource-vcus-on-elasticsearch-serverless[minimum VCUs on Elasticsearch Serverless].
+When you create an {es-serverless} project, a minimum number of VCUs are always allocated to your project to maintain basic ingest and search capabilities. These VCUs incur a minimum cost even with no active usage. Learn more about https://www.elastic.co/pricing/serverless-search#what-are-the-minimum-compute-resource-vcus-on-elasticsearch-serverless[minimum VCUs on {es-serverless}].
 ====

@@ -6,6 +6,6 @@
 
 preview:[]
 
-* <<elasticsearch-api-conventions>>: The {es} REST APIs have conventions for headers and request bodies.
+* <<elasticsearch-api-conventions>>: The {es-serverless} REST APIs have conventions for headers and request bodies.
 * <<elasticsearch-kibana-api-conventions>>: The Management APIs for {serverless-short} have request header conventions.
 * https://www.elastic.co/docs/api/[API Reference]: Explore the reference information for Elastic Serverless REST APIs

@@ -1,13 +1,8 @@
-:doctype: book
-
-include::{asciidoc-dir}/../../shared/versions/stack/master.asciidoc[]
-include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
-
 [[what-is-elasticsearch-serverless]]
-== Elasticsearch
+== {es}
 
 ++++
-<titleabbrev>Elasticsearch</titleabbrev>
+<titleabbrev>{es}</titleabbrev>
 ++++
 
 include::./pages/what-is-elasticsearch-serverless.asciidoc[leveloffset=+2]

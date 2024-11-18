@@ -16,7 +16,7 @@ From the project page, you can:
 
 * **Rename your project**. In the **Overview** section, click **Edit** next to the project's name.
 * **Manage data and integrations**. Update your project data, including storage settings, indices, and data views, directly in your project.
-* **Manage API keys**. Access your project and interact with its data programmatically using Elasticsearch APIs.
+* **Manage API keys**. Access your project and interact with its data programmatically using {es} APIs.
 * **Manage members**. Add members and manage their access to this project or other resources of your organization.
 
 [discrete]
@@ -90,7 +90,7 @@ When enabled, this setting determines the default retention period that is autom
 | **Security Analytics Essentials**
 a| Standard security analytics, detections, investigations, and collaborations. Allows these add-ons:
 
-* **Endpoint Protection Essentials**: Endpoint protections with {elastic-defend}.
+* **Endpoint Protection Essentials**: endpoint protections with {elastic-defend}.
 * **Cloud Protection Essentials**: Cloud native security features.
 
 | **Security Analytics Complete**

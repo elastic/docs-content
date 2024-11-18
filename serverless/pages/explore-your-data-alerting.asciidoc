@@ -42,7 +42,7 @@ When you click the **Create rule** button, it launches a flyout that guides you 
 [role="screenshot"]
 image::images/alerting-overview.png[{rules-ui} app]
 
-The rule types available in an {es} project are:
+The rule types available in an {es-serverless} project are:
 
 * {kibana-ref}/rule-type-es-query.html[{es} query]
 * {kibana-ref}/rule-type-index-threshold.html[Index threshold]

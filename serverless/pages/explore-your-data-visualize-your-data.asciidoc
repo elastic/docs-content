@@ -13,7 +13,7 @@ These dashboards are loaded automatically when you install https://www.elastic.c
 
 You can also create new dashboards and visualizations based on your data views to get a full picture of your data.
 
-In your {es} project, go to **Dashboards** to see existing dashboards or create your own.
+In your {es-serverless} project, go to **Dashboards** to see existing dashboards or create your own.
 
 Notice you can filter the list of dashboards:
 

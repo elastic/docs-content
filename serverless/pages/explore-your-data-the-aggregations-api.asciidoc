@@ -19,7 +19,7 @@ Aggregations help you answer questions like:
 * {ref}/search-aggregations-metrics.html[Metric] aggregations that calculate metrics,
 such as a sum or an average, from field values. Note that
 {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[scripted metric aggregations]
-are not available in serverless {es}.
+are not available in {es-serverless}.
 * {ref}/search-aggregations-bucket.html[Bucket] aggregations that
 group documents into buckets, also called bins, based on field values, ranges,
 or other criteria.
