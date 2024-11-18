@@ -153,4 +153,4 @@ The following features are not available in {es-serverless} and are not planned 
 
 * https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html[Custom plugins and bundles]
 * https://www.elastic.co/guide/en/elasticsearch/hadoop/current/reference.html[{es} for Apache Hadoop]
-* {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[Scripted metric aggregations] are not available.
+* {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[Scripted metric aggregations].
