@@ -1,6 +1,9 @@
 [[elasticsearch-explore-your-data]]
 = Explore your data
 
+// :description: Turn {es} data into actionable insights with aggregations, visualizations, and alerts
+// :keywords: serverless, elasticsearch, explore, overview
+
 preview:[]
 
 In addition to search, {es-serverless} offers several options for analyzing and visualizing your data.
