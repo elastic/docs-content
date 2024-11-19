@@ -39,7 +39,7 @@ Select **Create project** to continue.
 
 [TIP]
 ====
-Learn more about minimum VCUs and their costs in <<elasticsearch-billing,Elasticsearch billing dimensions>>.
+Learn how billing works for your project in <<elasticsearch-billing,Elasticsearch billing dimensions>>.
 ====
 
 Now your project is ready to start creating indices, adding data, and performing searches. You can choose one of the following options to proceed.
