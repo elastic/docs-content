@@ -7,6 +7,19 @@
 preview:[]
 
 Follow along to set up your {es} project and get started with some sample documents.
+In this tutorial, you will learn how to:
+
+- <<elasticsearch-get-started-create-project,Create a project>>.
+
+- Get started with {es}:
+  * <<elasticsearch-follow-guided-index-flow,Option 1: Guided index flow>>: 
+    Follow the step-by-step tutorial provided in the UI to create an index and ingest data.
+
+  * <<elasticsearch-follow-in-product-getting-started,Option 2: In-product Getting Started guide>>: 
+    Use the Getting Started page's instructions to ingest data and perform your first search.
+
+  * <<elasticsearch-explore-on-your-own,Option 3: Explore on your own>>: 
+    If you're already familiar with Elasticsearch, retrieve your connection details, select an ingest method that suits your needs, and start searching.
 
 [discrete]
 [[elasticsearch-get-started-create-project]]
@@ -25,12 +38,15 @@ Use your {ecloud} account to create a fully-managed {es} project:
 Select **Create project** to continue.
 . Once the project is ready, select **Continue**.
 
-include::../partials/minimum-vcus-detail.asciidoc[]
+[TIP]
+====
+Learn more about minimum VCUs and their costs in <<elasticsearch-billing,Elasticsearch billing dimensions>>.
+====
 
 Now your project is ready to start creating indices, adding data, and performing searches. You can choose one of the following options to proceed.
 
 [discrete]
-[[elasticsearch-follow-guided-index-flowt]]
+[[elasticsearch-follow-guided-index-flow]]
 == Option 1: Follow the guided index flow
 
 Once your project is set up, you'll be directed to a page where you can create your first index. 
@@ -70,6 +86,8 @@ image::images/getting-started-page.png[Getting Started page.]
 [[elasticsearch-explore-on-your-own]]
 == Option 3: Explore on your own
 
+If you're already familiar with Elasticsearch, you can jump right into setting up a connection and ingesting data as per your needs.
+
 . Retrieve your <<elasticsearch-connecting-to-es-serverless-endpoint,connection details>>.
 . Ingest your data. Elasticsearch provides several methods for ingesting data:
 * <<elasticsearch-ingest-data-through-api,{es} API>>
@@ -82,7 +100,7 @@ image::images/getting-started-page.png[Getting Started page.]
 For more information on data ingestion and synchronization, 
 see <<elasticsearch-ingest-your-data>>. 
 
-Once your data is ingested, experiment with <<elasticsearch-playground,Playground>> to test queries and explore features.
+Once your data is ingested, you can experiment with <<elasticsearch-playground,Playground>> to test queries and explore features.
 
 To learn about the search API and query DSL, refer to <<elasticsearch-http-apis>>.
 
