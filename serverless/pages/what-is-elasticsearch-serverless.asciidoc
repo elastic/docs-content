@@ -43,7 +43,7 @@ Learn how to get your data into {es} and start building your search application.
 
 | 🛝
 a| [.card-title]#https://www.elastic.co/guide/en/kibana/master/playground.html[*Try Playground →*]# +
-After you've added some data, use the Search Playground to test out queries and combine {es} with the power of Generative AI in your applications.
+After you've added some data, use Playground to test out queries and combine {es} with the power of Generative AI in your applications.
 |===
 
 [discrete]
