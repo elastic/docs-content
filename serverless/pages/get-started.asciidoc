@@ -23,7 +23,7 @@ In this tutorial, you will learn how to:
 
 [discrete]
 [[elasticsearch-get-started-create-project]]
-== Create project
+== Create an {es-serverless} project
 
 Use your {ecloud} account to create a fully-managed {es} project:
 
