@@ -18,7 +18,7 @@ On this page, you will learn how to:
     Use the Getting Started page's instructions to ingest data and perform your first search.
 
   * <<elasticsearch-explore-on-your-own,Option 3: Explore on your own>>: 
-    If you're already familiar with Elasticsearch, retrieve your connection details, select an ingest method that suits your needs, and start searching.
+    If you're already familiar with {es}, retrieve your connection details, select an ingest method that suits your needs, and start searching.
 
 [discrete]
 [[elasticsearch-get-started-create-project]]
