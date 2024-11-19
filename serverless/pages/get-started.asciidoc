@@ -6,8 +6,7 @@
 
 preview:[]
 
-Follow along to set up your {es} project and get started with some sample documents.
-In this tutorial, you will learn how to:
+On this page, you will learn how to:
 
 - <<elasticsearch-get-started-create-project,Create a project>>.
 
