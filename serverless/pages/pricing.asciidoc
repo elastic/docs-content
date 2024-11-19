@@ -11,11 +11,13 @@ infrastructure that supports your use case, with the performance
 characteristics you need. Measurements are in Virtual Compute Units (VCUs).
 Each VCU represents a fraction of RAM, CPU, and local disk for caching.
 
-The number of VCUs required 
-depends on the amount and rate of data sent to Elasticsearch and retained,
-as well as the number of searches and the latency you require for searches. In addition, if
-you use {ml} for inference or NLP tasks, those VCUs are also
-metered and billed.
+The number of VCUs you need is determined by:
+
+* Volume and ingestion rate of your data
+* Data retention requirements 
+* Search query volume
+* Search Power setting
+* Machine learning usage
 
 [discrete]
 [[elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]]
