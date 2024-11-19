@@ -1,0 +1,52 @@
+[[serverless-changelog]]
+= Serverless changelog
+
+[discrete]
+[[serverless-changelog-november-18-2024]]
+== November 18, 2024
+
+[discrete]
+[[deprecations-november-18-2024]]
+=== Deprecations
+*Remove `metrics:allowCheckingForFailedShards` Advanced Setting*
+
+!!TODO!!
+
+See ({kibana-pull}197227[#197227]) for details.
+
+*Remove deprecated API's*
+
+!!TODO!!
+
+See ({kibana-pull}199598[#199598]) for details.
+
+
+[discrete]
+[[features-and-enhancements-november-18-2024]]
+=== Features and enhancements
+* Adds the ability to attach files to cases directly via API ({kibana-pull}198377[#198377])
+* Adds the ability to use `semantic_text` for internal Observability AI Assistant knowledge base ({kibana-pull}186499[#186499])
+* Adds retry statements as an attempt to resolve flaky tests in Observability AI Assistant({kibana-pull}200022[#200022])
+* Adds autocomplete and validation to ES|QL to support MATCH and QSRT ({kibana-pull}199032[#199032])
+* Adds deployment initialization step to Machine Learning File upload ({kibana-pull}198446[#198446])
+* Adds spacer below split card chart in Anomaly detection job wizard ({kibana-pull}199708[#199708])
+* Adds action for adding Log Pattern embeddable to a dashboard and case ({kibana-pull}199478[#199478])
+
+[discrete]
+[[fixes-november-18-2024]]
+=== Fixes
+* Fixes an issue where Lens allowed identical include and exclude values ({kibana-pull}197628[#197628])
+* Fixes Time slider control to better sync with dashboard time range ({kibana-pull}199544[#199544])
+* Fixes Upgraded maps panel displays Cannot create AbstractESSourceDescriptor when indexPatternId is not provided error and no data ({kibana-pull}199690[#199690])
+* Fix(slo): remove extra field from synthetics indicator params ({kibana-pull}199542[#199542])
+* Include an AdHoc instruction about the slack connector to avoid executing a loop ({kibana-pull}199531[#199531])
+* Remove the copy button if there is no content to copy ({kibana-pull}199064[#199064])
+* Remove borders from presentation panel and CSS clean up for hover actions ({kibana-pull}198454[#198454])
+* Fixes the summary calculation for a calendar aligned and occurrences based SLO ({kibana-pull}199873[#199873])
+* Fixes kustomize command ({kibana-pull}199758[#199758])
+* Fixes Asset Criticality index issue when setting up entity engines concurrently ({kibana-pull}199486[#199486])
+* Improves asset criticality bulk error when entities are duplicated ({kibana-pull}199651[#199651])
+* Update file validation because the file type is empty on windows ({kibana-pull}199791[#199791])
+* Fixes `required_fields` being removed after rule `PATCH` calls ({kibana-pull}199901[#199901])
+* Added `eventIngestedEnabled` flag ({kibana-pull}199733[#199733])
+* AIOps: fixing time range filter in change point chart ({kibana-pull}200183[#200183])
