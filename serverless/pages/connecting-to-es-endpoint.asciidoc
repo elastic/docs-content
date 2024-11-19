@@ -88,4 +88,4 @@ You should receive a response similar to the following:
 }
 ----
 
-Now you're ready to ingest and search some sample documents.
+Now you're ready to start adding data to your {es-serverless} project.
