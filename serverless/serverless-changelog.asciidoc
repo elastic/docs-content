@@ -1,52 +1,64 @@
 [[serverless-changelog]]
 = Serverless changelog
 
+For serverless API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
+For serverless changes in Cloud Console, refer to [Elasticsearch Service Documentation: Release notes](https://www.elastic.co/guide/en/cloud/current/ec-release-notes.html).
+
 [discrete]
 [[serverless-changelog-november-18-2024]]
 == November 18, 2024
 
 [discrete]
 [[deprecations-november-18-2024]]
-=== Deprecations
+=== Deprecation
 *Remove `metrics:allowCheckingForFailedShards` Advanced Setting*
 
-!!TODO!!
+The `metrics:allowCheckingForFailedShards` Advanced Setting in TSVB has been removed. This change eliminates the ability to suppress warnings about failed shards in TSVB visualizations. Users are encouraged to address shard issues directly rather than relying on suppression mechanisms. For more information, refer to ({kibana-pull}197227[#197227]).
 
-See ({kibana-pull}197227[#197227]) for details.
+Impact:
 
-*Remove deprecated API's*
+* TSVB will no longer suppress warnings for failed shards in visualizations.
+* You may encounter shard-related warnings more prominently when misconfigurations or data inconsistencies arise.
 
-!!TODO!!
+To test and adjust for this deprecation:
 
-See ({kibana-pull}199598[#199598]) for details.
-
+1. Create a TSVB visualization, such as one using the *Kibana Ecommerce* data view, and include a field (e.g., `day_of_week_i``).
+2. Modify the data view pattern to match multiple indices (e.g., change `kibana_sample_data_ecommerce` to `kibana_sample_data_ecommerce`).
+3. Add an index with mismatched mappings via the Dev Console:
++
+POST /kibana_sample_data_ecommerce_2/_doc  
+{  
+  "order_date": "2024-10-22",  
+  "day_of_week_i": "Hello"  
+}  
+4. Refresh your TSVB visualization and observe shard warnings for misconfigured or inconsistent data.
 
 [discrete]
 [[features-and-enhancements-november-18-2024]]
 === Features and enhancements
-* Adds the ability to attach files to cases directly via API ({kibana-pull}198377[#198377])
-* Adds the ability to use `semantic_text` for internal Observability AI Assistant knowledge base ({kibana-pull}186499[#186499])
-* Adds retry statements as an attempt to resolve flaky tests in Observability AI Assistant({kibana-pull}200022[#200022])
-* Adds autocomplete and validation to ES|QL to support MATCH and QSRT ({kibana-pull}199032[#199032])
-* Adds deployment initialization step to Machine Learning File upload ({kibana-pull}198446[#198446])
-* Adds spacer below split card chart in Anomaly detection job wizard ({kibana-pull}199708[#199708])
-* Adds action for adding Log Pattern embeddable to a dashboard and case ({kibana-pull}199478[#199478])
+* Files can now be attached to cases directly via API ({kibana-pull}198377[#198377])
+* Elastic Observability Serverless now uses `semantic_text` for its internal knowledge base ({kibana-pull}186499[#186499])
+* Retry statements have been added to resolve flaky tests in Elastic Observability Serverless ({kibana-pull}200022[#200022])
+* S|QL adds autocomplete and validation to support `MATCH`` and `QSRT` queries ({kibana-pull}199032[#199032])
+* Machine Learning file upload workflows now include a deployment initialization step ({kibana-pull}198446[#198446])
+* Anomaly detection in Machine Learning adds a spacer below the split card chart in the job wizard ({kibana-pull}199708[#199708])
+* AIOps introduces an action to add Log Pattern embeddables to dashboards and cases ({kibana-pull}199478[#199478])
 
 [discrete]
 [[fixes-november-18-2024]]
 === Fixes
-* Fixes an issue where Lens allowed identical include and exclude values ({kibana-pull}197628[#197628])
-* Fixes Time slider control to better sync with dashboard time range ({kibana-pull}199544[#199544])
-* Fixes Upgraded maps panel displays Cannot create AbstractESSourceDescriptor when indexPatternId is not provided error and no data ({kibana-pull}199690[#199690])
-* Fix(slo): remove extra field from synthetics indicator params ({kibana-pull}199542[#199542])
-* Include an AdHoc instruction about the slack connector to avoid executing a loop ({kibana-pull}199531[#199531])
-* Remove the copy button if there is no content to copy ({kibana-pull}199064[#199064])
-* Remove borders from presentation panel and CSS clean up for hover actions ({kibana-pull}198454[#198454])
-* Fixes the summary calculation for a calendar aligned and occurrences based SLO ({kibana-pull}199873[#199873])
-* Fixes kustomize command ({kibana-pull}199758[#199758])
-* Fixes Asset Criticality index issue when setting up entity engines concurrently ({kibana-pull}199486[#199486])
-* Improves asset criticality bulk error when entities are duplicated ({kibana-pull}199651[#199651])
-* Update file validation because the file type is empty on windows ({kibana-pull}199791[#199791])
-* Fixes `required_fields` being removed after rule `PATCH` calls ({kibana-pull}199901[#199901])
-* Added `eventIngestedEnabled` flag ({kibana-pull}199733[#199733])
-* AIOps: fixing time range filter in change point chart ({kibana-pull}200183[#200183])
+* Dashboards and visualizations now prevent identical include and exclude values in filters ({kibana-pull}197628[#197628])
+* Fixed Time slider control to better sync with dashboard time ranges ({kibana-pull}199544[#199544])
+* Resolved the "Cannot create AbstractESSourceDescriptor" error in maps panels when `indexPatternId` is not provided ({kibana-pull}199690[#199690])
+* Fixed Elastic Observability Serverless to remove extra fields from synthetics indicator parameters in SLOs ({kibana-pull}199542[#199542])
+* Added AdHoc instructions for Slack connectors in Elastic Observability Serverless to avoid execution loops ({kibana-pull}199531[#199531])
+* Removed the copy button in Elastic Observability Serverless when there is no content to copy ({kibana-pull}199064[#199064])
+* Presentation panel borders have been removed, with hover action styles cleaned up in Elastic Observability Serverless ({kibana-pull}198454[#198454])
+* Fixed summary calculations for calendar-aligned and occurrence-based SLOs in Elastic Observability Serverless ({kibana-pull}199873[#199873])
+* Fixed the `kustomize` command functionality in Elastic Observability Serverless ({kibana-pull}199758[#199758])
+* Resolved Asset Criticality index issues when setting up entity engines concurrently in Elastic Security Serverless ({kibana-pull}199486[#199486])
+* Improved bulk error handling for duplicated entities in Elastic Security Serverless asset criticality ({kibana-pull}199651[#199651])
+* Updated file validation in Elastic Security Serverless to handle empty file types on Windows systems ({kibana-pull}199791[#199791])
+* Fixed removal of `required_fields` after rule `PATCH` calls in Elastic Security Serverless ({kibana-pull}199901[#199901])
+* Added the `eventIngestedEnabled` flag to Fleet configurations ({kibana-pull}199733[#199733])
+* Fixed time range filtering issues in the AIOps change point chart within Machine Learning ({kibana-pull}200183[#200183])
