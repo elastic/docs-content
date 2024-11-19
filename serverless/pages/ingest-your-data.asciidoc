@@ -1,7 +1,7 @@
 [[elasticsearch-ingest-your-data]]
 = Ingest your data
 
-// :description: Add data to your {es} project.
+// :description: Add data to your {es-serverless} project.
 // :keywords: serverless, elasticsearch, ingest, overview
 
 preview:[]

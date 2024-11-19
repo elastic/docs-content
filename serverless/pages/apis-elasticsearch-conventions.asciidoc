@@ -1,7 +1,7 @@
 [[elasticsearch-api-conventions]]
-= Elasticsearch API conventions
+= {es} API conventions
 
-// :description: The {es} REST APIs have conventions for headers and request bodies.
+// :description: The {es-serverless} REST APIs have conventions for headers and request bodies.
 // :keywords: serverless, elasticsearch, API, reference
 
 preview:[]
@@ -37,7 +37,7 @@ curl -X GET "${ES_URL}/_cat/indices?v=true" \
   -H "Authorization: ApiKey ${API_KEY}"
 ----
 
-To get API keys or the Elasticsearch Endpoint (`${ES_URL}`) for a project, refer to <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint (`${ES_URL}`) for a project, refer to <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-api-conventions-content-type]]

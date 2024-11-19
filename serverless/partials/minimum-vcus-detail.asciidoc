@@ -1,11 +1,11 @@
 .Minimum runtime VCUs
 [IMPORTANT]
 ====
-When you create an Elasticsearch Serverless project, a minimum number of VCUs are always allocated to your project to maintain basic capabilities. These VCUs are used for the following purposes:
+When you create an {es-serverless} project, a minimum number of VCUs are always allocated to your project to maintain basic capabilities. These VCUs are used for the following purposes:
 
 * **Ingest**: Ensure constant availability for ingesting data into your project (4 VCUs).
 * **Search**: Maintain a data cache and support low latency searches (8 VCUs).
 
 These minimum VCUs are billed at the standard rate per VCU hour, incurring a minimum cost even when you're not actively using your project.
-Learn more about https://www.elastic.co/pricing/serverless-search#what-are-the-minimum-compute-resource-vcus-on-elasticsearch-serverless[minimum VCUs on Elasticsearch Serverless].
+Learn more about https://www.elastic.co/pricing/serverless-search#what-are-the-minimum-compute-resource-vcus-on-elasticsearch-serverless[minimum VCUs on {es-serverless}].
 ====

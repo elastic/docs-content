@@ -8,7 +8,7 @@ preview:[]
 
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
-**Console** lets you interact with https://www.elastic.co/docs/api[Elasticsearch and Kibana serverless APIs] from your project.
+**Console** lets you interact with https://www.elastic.co/docs/api[{es} and Kibana serverless APIs] from your project.
 
 Requests are made in the left pane, and responses are displayed in the right pane.
 
@@ -17,7 +17,7 @@ image::images/console.png[Console request/response pair]
 
 To go to **Console**, find **Dev Tools** in the navigation menu or use the global search bar.
 
-You can also find Console directly on your Elasticsearch serverless project pages, where you can expand it from the footer. This Console, called **Persistent Console**, has the same capabilities and shares the same history as the Console in **Dev Tools**.
+You can also find Console directly on your {es-serverless} project pages, where you can expand it from the footer. This Console, called **Persistent Console**, has the same capabilities and shares the same history as the Console in **Dev Tools**.
 
 [discrete]
 [[devtools-run-api-requests-in-the-console-write-requests]]
@@ -212,4 +212,4 @@ Go to the **Config** tab of **Console** to customize its display, autocomplete, 
 [[devtools-run-api-requests-in-the-console-disable-console]]
 == Disable Console
 
-You can disable the persistent console that shows in the footer of your {es} project pages. To do that, go to **Management** > **Advanced Settings**, and turn off the `devTools:enablePersistentConsole` setting.
+You can disable the persistent console that shows in the footer of your {es-serverless} project pages. To do that, go to **Management** > **Advanced Settings**, and turn off the `devTools:enablePersistentConsole` setting.
