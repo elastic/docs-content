@@ -8,7 +8,7 @@ preview:[]
 
 On this page, you will learn how to:
 
-- <<elasticsearch-get-started-create-project,Create a project>>.
+- <<elasticsearch-get-started-create-project,Create an {es-serverless} project>>.
 
 - Get started with {es}:
   * <<elasticsearch-follow-guided-index-flow,Option 1: Guided index flow>>: 
