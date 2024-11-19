@@ -96,16 +96,8 @@ If you're already familiar with Elasticsearch, you can jump right into setting u
 * <<elasticsearch-ingest-data-through-logstash,{ls}>>
 * https://github.com/elastic/crawler[Elastic Open Web Crawler]
 
-For more information on data ingestion and synchronization, 
-see <<elasticsearch-ingest-your-data>>. 
+[discrete]
+[[elasticsearch-next-steps]]
+== Next steps
 
-Once your data is ingested, you can experiment with <<elasticsearch-playground,Playground>> to test queries and explore features.
-
-To learn about the search API and query DSL, refer to <<elasticsearch-http-apis>>.
-
-////
-/*
-- <DocLink slug="/serverless/elasticsearch/search-your-data" />
-- <DocLink slug="/serverless/elasticsearch/search-your-data-the-search-api" />
-*/
-////
+Once you've added data to your {es-serverless} project, you can use {kibana-ref}/playground.html[Playground] to test and tweak {es} queries and chat with your data, using GenAI.
