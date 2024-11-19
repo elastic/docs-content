@@ -40,10 +40,6 @@ include::./pages/search-your-data-semantic-search.asciidoc[leveloffset=+3]
 include::./pages/search-your-data-semantic-search-elser.asciidoc[leveloffset=+4]
 
 include::./pages/explore-your-data.asciidoc[leveloffset=+2]
-include::./pages/explore-your-data-the-aggregations-api.asciidoc[leveloffset=+3]
-include::./pages/explore-your-data-discover-your-data.asciidoc[leveloffset=+3]
-include::./pages/explore-your-data-visualize-your-data.asciidoc[leveloffset=+3]
-include::./pages/explore-your-data-alerting.asciidoc[leveloffset=+3]
 
 include::./pages/search-playground.asciidoc[leveloffset=+2]
 

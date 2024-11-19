@@ -65,7 +65,7 @@ Check out {kibana-ref}/import-geospatial-data.html[Import geospatial data].
 
 Viewing data from different angles provides better insights.
 Dimensions that are obscured in one visualization might be illuminated in another.
-Add your map to a <<elasticsearch-explore-your-data-dashboards,dashboard>> and view your geospatial data alongside bar charts, pie charts, tag clouds, and more.
+Add your map to a {kibana-ref}/dashboard.html[Dashboard] and view your geospatial data alongside bar charts, pie charts, tag clouds, and more.
 
 This choropleth map shows the density of non-emergency service requests in San Diego by council district.
 The map is embedded in a dashboard, so users can better understand when services are requested and gain insight into the top requested services.

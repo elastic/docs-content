@@ -163,7 +163,7 @@ GET /my-index-000001/_count
 }
 ----
 
-If the field is aggregatable, you can use <<elasticsearch-explore-your-data-aggregations,aggregations>>
+If the field is aggregatable, you can use {ref}/search-aggregations.html[aggregations]
 to check the field's values. For `keyword` fields, you can use a `terms`
 aggregation to retrieve the field's most common values:
 
