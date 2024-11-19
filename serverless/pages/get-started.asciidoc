@@ -68,7 +68,7 @@ You won’t be able to view this API key again. If needed, refer to <<elasticsea
 The UI provides ready-to-use code examples for ingesting data via the REST API. 
 Choose your preferred tool for making these requests:
 
-* Elastic Console in your project's UI
+* <<devtools-run-api-requests-in-the-console, Console>> in your project's UI
 * Python 
 * JavaScript 
 * cURL
