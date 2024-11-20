@@ -23,10 +23,7 @@ Semantic search is available on all Elastic deployment types: self-managed clust
 
 The inference API workflow enables you to perform semantic search using models from a variety of services, such as Cohere, OpenAI, HuggingFace, Azure AI Studio, and more. 
 
-[NOTE]
-====
-ℹ️ The Semantic search with the inference API documentation currently lives in the https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-inference.html[Elasticsearch docs].
-====
+Learn how to implement semantic search with the inference API in the {ref}/semantic-search-inference.html[Elasticsearch docs →].
 
 [discrete]
 [[elasticsearch-reference-semantic-search-semantic-text]]
