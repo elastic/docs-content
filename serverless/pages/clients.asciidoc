@@ -6,7 +6,13 @@
 
 preview:[]
 
-{es3} provides official language clients to use {es-serverless} REST APIs.
+{es3} provides official language clients for {es} REST APIs.
+
+[NOTE]
+====
+These clients are for use with {es-serverless} only. See also the https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es} clients]. 
+====
+
 Currently, the following language clients are supported:
 
 * <<elasticsearch-go-client-getting-started,Go>> | https://github.com/elastic/elasticsearch-serverless-go[Repository]

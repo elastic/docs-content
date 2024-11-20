@@ -1,6 +1,5 @@
 [[what-is-elasticsearch-serverless]]
-== {es}
-
+== {es-serverless}
 ++++
 <titleabbrev>{es}</titleabbrev>
 ++++
@@ -11,6 +10,8 @@ include::./pages/serverless-differences.asciidoc[leveloffset=+2]
 include::./pages/pricing.asciidoc[leveloffset=+2]
 
 include::./pages/get-started.asciidoc[leveloffset=+2]
+
+include::./pages/connecting-to-es-endpoint.asciidoc[leveloffset=+2]
 
 include::./pages/clients.asciidoc[leveloffset=+2]
 include::./pages/clients-go-getting-started.asciidoc[leveloffset=+3]
@@ -42,9 +43,5 @@ include::./pages/search-your-data-semantic-search.asciidoc[leveloffset=+3]
 include::./pages/search-your-data-semantic-search-elser.asciidoc[leveloffset=+4]
 
 include::./pages/explore-your-data.asciidoc[leveloffset=+2]
-include::./pages/explore-your-data-the-aggregations-api.asciidoc[leveloffset=+3]
-include::./pages/explore-your-data-discover-your-data.asciidoc[leveloffset=+3]
-include::./pages/explore-your-data-visualize-your-data.asciidoc[leveloffset=+3]
-include::./pages/explore-your-data-alerting.asciidoc[leveloffset=+3]
 
 include::./pages/search-playground.asciidoc[leveloffset=+2]

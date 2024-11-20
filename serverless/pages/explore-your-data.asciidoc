@@ -6,9 +6,43 @@
 
 preview:[]
 
-In addition to search, {es3} offers several options for analyzing and visualizing your data.
+In addition to search, {es-serverless} offers several options for analyzing and visualizing your data.
 
-* <<elasticsearch-explore-your-data-aggregations,Aggregations>>: Use the {es-serverless} REST API to summarize your data as metrics, statistics, or other analytics.
-* <<elasticsearch-explore-your-data-discover-your-data,Discover>>: Use the **Discover** UI to filter your data or learn about its structure.
-* <<elasticsearch-explore-your-data-visualize-your-data,Visualizations>>: Build dynamic dashboards that visualize your data as charts, gauges, graphs, maps, and more.
-* <<elasticsearch-explore-your-data-alerting,Alerts>>: Create rules that trigger notifications based on your data.
+[NOTE]
+====
+These features are available on all Elastic deployment types: self-managed clusters, Elastic Cloud Hosted deployments, and {es-serverless} projects.
+They are documented in the {es} and {kib} core documentation.
+====
+
+[discrete]
+== Data analysis
+
+{ref}/search-aggregations.html[Aggregations]::
+Use aggregations in your https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search#operation-search-body-application-json-aggregations[`_search` API] requests to summarize your data as metrics, statistics, or other analytics.
+
+{kibana-ref}/discover.html[Discover]::
+Use the **Discover** UI to quickly search and filter your data, get information about the structure of the fields, and display your findings in a visualization.
++
+🔍 Find **Discover** in your {es-serverless} project's UI under *Analyze / Discover*.
+[discrete]
+
+[discrete]
+== Visualization
+
+{kibana-ref}/dashboard.html[Dashboards]::
+Build dynamic dashboards that visualize your data as charts, graphs, maps, and more.
++
+🔍 Find **Dashboards** in your {es-serverless} project's UI under *Analyze / Dashboard*.
+
+{kibana-ref}/maps.html[Maps]::
+Visualize your geospatial data on a map.
++
+🔍 Find **Maps** in your {es-serverless} project's UI under *Other tools / Maps*.
+
+[discrete]
+== Monitoring
+
+{kibana-ref}/alerting-getting-started.html[Rules]:: 
+Create rules that trigger notifications when certain conditions are met in your data.
++
+🔍 Find **Rules** in your {es-serverless} project's UI under *Project settings > Alerts and insights > Rules*.

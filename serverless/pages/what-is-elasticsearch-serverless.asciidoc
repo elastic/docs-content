@@ -1,26 +1,59 @@
-////
-To be rewritten/refined
-////
+// ℹ️ THIS CONTENT IS RENDERERED ON THE index-serverless-elasticsearch.asciidoc PAGE
+// Use the id <<what-is-elasticsearch-serverless>> to link to this page
 
 // :description: Build search solutions and applications with {es-serverless}.
 // :keywords: serverless, elasticsearch, overview
 
 preview:[]
 
-{es} allows you to build custom applications. Whether you have structured or unstructured text, numerical data, or geospatial data, {es} can efficiently store and index it in a way that supports fast searches.
+
+[TIP]
+====
+If you haven't used {es} before, first learn the basics in the https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html[core {es} documentation].
+====
+
+{es} is one of the three available project types on <<intro,{serverless-full}>>.
+
+This project type enables you to use the core functionality of {es}: searching, indexing, storing, and analyzing data of all shapes and sizes.
+
+When using {es} on {serverless-full} you don’t need to worry about managing the infrastructure that keeps {es} distributed and available: nodes, shards, and replicas. These resources are completely automated on the serverless platform, which is designed to scale up and down with your workload.
+
+This automation allows you to focus on building your search applications and solutions.
 
 [discrete]
-== Get started
+[[elasticsearch-overview-get-started]]
+== Get started 
 
-* <<elasticsearch-get-started,*Create your {es} project*>>: Create your first {es} project.
-* <<elasticsearch-ingest-your-data,*Ingest your data*>>: Learn how to get your data into {es}.
+[cols="2"]
+|===
+| 🚀
+a| [.card-title]#<<elasticsearch-get-started,*Create a project →*>># +
+Get started by creating your first {es} project on serverless.
+
+| 🔌
+a| [.card-title]#<<elasticsearch-connecting-to-es-serverless-endpoint,*Connect to {es} →*>># +
+Learn how to connect your applications to your {es-serverless} endpoint.
+
+| ⤵️
+a| [.card-title]#<<elasticsearch-ingest-your-data,*Ingest data →*>># +
+Learn how to get your data into {es} and start building your search application.
+
+| 🛝
+a| [.card-title]#https://www.elastic.co/guide/en/kibana/master/playground.html[*Try Playground →*]# +
+After you've added some data, use Playground to test out queries and combine {es} with the power of Generative AI in your applications.
+|===
 
 [discrete]
-== How to
+[[elasticsearch-overview-learn-more]]
+== Learn more
 
-* <<elasticsearch-search-your-data,*Search your data*>>: Build your queries to perform and combine many types of searches.
-* <<elasticsearch-explore-your-data,*Explore your data*>>: Search, filter your data, and display your findings.
-* <<elasticsearch-explore-your-data-alerting,*Manage alerts*>>: Create rules to detect complex conditions and trigger alerts.
-* <<elasticsearch-dev-tools,*Use developer tools*>>: Send requests with Console and profile queries with Search Profiler.
-* <<elasticsearch-manage-project,*Manage your project*>>: Manage user access, billing, and check performance metrics.
+[cols="2"]
+|===
+| ❓
+a| [.card-title]#<<elasticsearch-differences,*What's different on serverless? →*>># +
+Understand the differences between {es} on {serverless-full} and other deployment types.
 
+| 🧾
+a| [.card-title]#<<elasticsearch-billing,*Billing →*>># +
+Learn about the billing model for {es} on {serverless-full}.
+|===
