@@ -20,4 +20,5 @@ On the **Usage** tab of the **Billing** page, you can:
 [IMPORTANT]
 ====
 The usage breakdown information is an estimate. To get the exact amount you owe for a given month, check your invoices in the <<general-billing-history,billing history>>.
+====
 
