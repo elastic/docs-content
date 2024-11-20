@@ -22,3 +22,8 @@ Currently, the following language clients are supported:
 * <<elasticsearch-php-client-getting-started,PHP>> | https://github.com/elastic/elasticsearch-serverless-php[Repository]
 * <<elasticsearch-python-client-getting-started,Python>> | https://github.com/elastic/elasticsearch-serverless-python[Repository]
 * <<elasticsearch-ruby-client-getting-started,Ruby>> | https://github.com/elastic/elasticsearch-serverless-ruby[Repository]
+
+[TIP]
+====
+Learn how to <<elasticsearch-connecting-to-es-serverless-endpoint,connect to your {es-serverless} endpoint>>.
+====
