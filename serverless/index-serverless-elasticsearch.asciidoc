@@ -39,7 +39,6 @@ include::./pages/search-your-data-the-search-api.asciidoc[leveloffset=+3]
 include::./pages/search-with-synonyms.asciidoc[leveloffset=+3]
 include::./pages/knn-search.asciidoc[leveloffset=+3]
 include::./pages/search-your-data-semantic-search.asciidoc[leveloffset=+3]
-include::./pages/search-your-data-semantic-search-elser.asciidoc[leveloffset=+4]
 
 include::./pages/explore-your-data.asciidoc[leveloffset=+2]
 
