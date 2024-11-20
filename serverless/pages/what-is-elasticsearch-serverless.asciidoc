@@ -6,7 +6,6 @@
 
 preview:[]
 
-
 [TIP]
 ====
 If you haven't used {es} before, first learn the basics in the https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html[core {es} documentation].
