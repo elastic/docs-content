@@ -19,9 +19,6 @@ Depending on what data you want to collect, you may need to install multiple shi
 | Log files and journals
 | https://www.elastic.co/products/beats/filebeat[Filebeat]
 
-| Cloud data
-| https://www.elastic.co/products/beats/functionbeat[Functionbeat]
-
 | Availability
 | https://www.elastic.co/products/beats/heartbeat[Heartbeat]
 
