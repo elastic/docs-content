@@ -10,6 +10,12 @@ Semantic search is a search method that helps you find data based on the intent 
 
 Elasticsearch provides various semantic search capabilities using natural language processing (NLP) and vector search. Using an NLP model enables you to extract text embeddings out of text. Embeddings are vectors that provide a numeric representation of a text. Pieces of content with similar meaning have similar representations.
 
+There are three main workflows for implementing semantic search with {es}, arranged in order of increasing complexity:
+
+- <<elasticsearch-reference-semantic-search-semantic-text,The `semantic text` workflow>>
+- <<elasticsearch-reference-semantic-search-inference-api,Inference API workflow>>
+- https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-deployed-nlp-model.html[Model deployment workflow]
+
 image::images/semantic-options.svg[Overview of semantic search workflows in {es}]
 
 [NOTE]
@@ -18,23 +24,21 @@ Semantic search is available on all Elastic deployment types: self-managed clust
 ====
 
 [discrete]
-[[lasticsearch-reference-semantic-search-inference-api]]
+[[elasticsearch-reference-semantic-search-semantic-text]]
+== Semantic search with `semantic text`
+
+The `semantic_text` field simplifies semantic search by providing inference at ingestion time with sensible default values, eliminating the need for complex configurations. 
+
+Learn how to implement semantic search with `semantic text` in the https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html[Elasticsearch docs →].
+
+[discrete]
+[[elasticsearch-reference-semantic-search-inference-api]]
 == Semantic search with the inference API
 
 The inference API workflow enables you to perform semantic search using models from a variety of services, such as Cohere, OpenAI, HuggingFace, Azure AI Studio, and more. 
 
 Learn how to implement semantic search with the inference API in the {ref}/semantic-search-inference.html[Elasticsearch docs →].
 
-[discrete]
-[[elasticsearch-reference-semantic-search-semantic-text]]
-== Semantic search with `semantic text`
-
-The `semantic_text` field simplifies semantic search by providing inference at ingestion time with sensible default values, eliminating the need for complex configurations. 
-
-[NOTE]
-====
-ℹ️ The Semantic search with `semantic text` documentation currently lives in the https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html[Elasticsearch docs].
-====
 
 [discrete]
 [[elasticsearch-reference-semantic-search-elser]]
@@ -46,7 +50,4 @@ representation. Instead of literal matching on search terms, semantic search
 retrieves results based on the intent and the contextual meaning of a search
 query.
 
-[NOTE]
-====
-ℹ️ The Semantic search with ELSER documentation currently lives in the https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-elser.html[Elasticsearch docs].
-====
+Learn how to implement semantic search with ELSER in the https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-elser.html[Elasticsearch docs →].
