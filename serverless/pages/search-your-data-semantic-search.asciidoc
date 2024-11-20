@@ -14,7 +14,7 @@ image::images/semantic-options.svg[Overview of semantic search workflows in {es}
 
 [NOTE]
 ====
-ℹ️ The Semantic search documentation currently lives in the https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search.html[Elasticsearch docs].
+Semantic search is available on all Elastic deployment types: self-managed clusters, Elastic Cloud Hosted deployments, and {es-serverless} projects. The links on this page will take you to the {ref}/semantic-search.html[{es} core documentation].
 ====
 
 [discrete]
