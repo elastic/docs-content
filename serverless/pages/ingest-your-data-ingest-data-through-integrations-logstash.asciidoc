@@ -21,7 +21,7 @@ such as data routed to multiple destinations or when you need to make your data 
 {ls} is a powerful, versatile ETL (Extract, Transform, Load) engine that can play an important role in organizations of all sizes.
 Some capabilities and features for large, self-managed users aren't appropriate for {serverless-short}.
 
-You'll use the {ls} {logstash-ref}/plugins-outputs-elasticsearch.html[`((es)) output plugin`] to send data to {es3}.
+You'll use the {ls} {logstash-ref}/plugins-outputs-elasticsearch.html[{es} output plugin] to send data to {es3}.
 Some differences to note between {es3} and self-managed {es}:
 
 * Your logstash-output-elasticsearch configuration uses **API keys** to access {es} from {ls}.

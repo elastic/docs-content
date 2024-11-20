@@ -43,7 +43,7 @@ The **Admin** role is required to use the Grok Debugger.
 For more information, refer to <<general-assign-user-roles>>
 ====
 
-. From the main menu, click **Developer Tools**, then click **Grok Debugger**.
+. In the main menu, go to **Developer Tools** under *Build*, then click **Grok Debugger**.
 . In **Sample Data**, enter a message that is representative of the data you want to parse.
 For example:
 +
