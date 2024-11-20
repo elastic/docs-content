@@ -97,7 +97,7 @@ Managed settings::
 == Feature availability
 
 Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in {es-serverless}.
-These features have either been replaced by a new feature, or are not applicable in the new serverless architecture.
+These features have either been replaced by a new feature, are planned to be released in future, or are not applicable in the new serverless architecture.
 
 [discrete]
 [[elasticsearch-differences-serverless-features-replaced]]
