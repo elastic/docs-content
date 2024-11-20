@@ -1,5 +1,8 @@
 [[elasticsearch-connecting-to-es-serverless-endpoint]]
-= Connecting to your Elasticsearch Serverless endpoint
+= Connect to your Elasticsearch Serverless endpoint
+++++
+<titleabbrev>Connect to your endpoint</titleabbrev>
+++++
 
 [TIP]
 ====
