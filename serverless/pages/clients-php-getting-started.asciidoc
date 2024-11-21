@@ -4,8 +4,6 @@
 // :description: Set up and use the PHP client for {es3}.
 // :keywords: serverless, elasticsearch, php, how to
 
-preview:[]
-
 [NOTE]
 ====
 This client is for use with {es-serverless} only. See also the https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es} clients]. 

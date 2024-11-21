@@ -4,8 +4,6 @@
 // :description: Elastic tools for developers.
 // :keywords: serverless, elasticsearch, overview
 
-preview:[]
-
 A number of developer tools are available in your project's UI under the **Dev Tools** section.
 
 * <<devtools-run-api-requests-in-the-console,Console>>: Make API calls to your {es} instance using the Query DSL and view the responses.

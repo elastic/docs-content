@@ -4,53 +4,48 @@
 // :description: Learn about how Elasticsearch usage affects pricing.
 // :keywords: serverless, elasticsearch, overview
 
-preview:[]
+Elasticsearch is priced based on consumption of the underlying
+infrastructure that supports your use case, with the performance
+characteristics you need. Measurements are in Virtual Compute Units (VCUs).
+Each VCU represents a fraction of RAM, CPU, and local disk for caching.
 
-{es} is priced based on the consumption of the underlying
-infrastructure used to support your use case, with the performance
-characteristics you need. We measure by Virtual Compute Units (VCUs), which is a
-slice of RAM, CPU and local disk for caching. The number of VCUs required will
-depend on the amount and the rate of data sent to {es} and retained,
-and the number of searches and latency you require for searches. In addition, if
-you required {ml} for inference or NLP tasks, those VCUs are also
-metered and billed.
+The number of VCUs you need is determined by:
 
-include::../partials/minimum-vcus-detail.asciidoc[]
+* Volume and ingestion rate of your data
+* Data retention requirements 
+* Search query volume
+* Search Power setting
+* Machine learning usage
 
 [discrete]
 [[elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]]
-== Information about the VCU types (Search, Ingest, and ML)
+== VCU types: Search, Indexing, and ML
 
-There are three VCU types in {es}:
+Elasticsearch uses three VCU types:
 
-* **Indexing** — The VCUs used to index the incoming documents to be
-stored in {es}.
-* **Search** — The VCUs used to return search results with the latency and
-Queries per Second (QPS) you require.
-* **Machine Learning** — The VCUs used to perform inference, NLP tasks, and other ML activities.
+* **Indexing:** The VCUs used to index incoming documents.
+* **Search:** The VCUs used to return search results, with the latency and
+queries per second (QPS) you require.
+* **Machine learning:** The VCUs used to perform inference, NLP tasks, and other ML activities.
 
 [discrete]
 [[elasticsearch-billing-information-about-the-search-ai-lake-dimension-gb]]
-== Information about the Search AI Lake dimension (GB)
+== Data storage and billing
 
-For {es}, the Search AI Lake is where data is stored and retained. This is
-charged in GBs for the size of data at rest. Depending on the enrichment,
-vectorization and other activities during ingest, this size may be different
-from the original size of the source data.
+
+{es-serverless} projects store data in the <<elasticsearch-manage-project-search-ai-lake-settings,Search AI Lake>>. You are charged per GB of stored data at rest. Note that if you perform operations at ingest such as vectorization or enrichment, the size of your stored data will differ from the size of the original source data.
 
 [discrete]
 [[elasticsearch-billing-managing-elasticsearch-costs]]
 == Managing {es} costs
 
-You can control costs in a number of ways. Firstly there is the amount of
-data that is retained. {es} will ensure that the most recent data is
-cached, allowing for fast retrieval. Reducing the amount of data means fewer
-Search VCUs may be required. If you need lower latency, then more Search VCUs
-can be added by adjusting the Search Power. A further refinement is for data streams that can be used to store
-time series data. For that type of data, you can further define the number of
-days of data you want cacheable, which will affect the number of Search VCUs and
-therefore the cost. Note that {es-serverless} maintains and bills for
-https://www.elastic.co/pricing/serverless-search#what-are-the-minimum-compute-resource-vcus-on-elasticsearch-serverless[minimum compute resource Ingest and Search VCUs].
+You can control costs by using a lower Search Power setting or reducing the amount 
+of retained data. 
 
-For detailed {es-serverless} project rates, check the
-https://www.elastic.co/pricing/serverless-search[{es-serverless} pricing page].
+* **Search Power setting:** <<elasticsearch-manage-project-search-power-settings,Search Power>> controls the speed of searches against your data. With Search Power, you can 
+improve search performance by adding more resources for querying, or you can reduce provisioned 
+resources to cut costs.
+* **Time series data retention:** By limiting the number of days of <<elasticsearch-ingest-time-series-data,time series data>> that are available for caching, 
+you can reduce the number of search VCUs required. 
+
+For detailed {es-serverless} project rates, see the https://www.elastic.co/pricing/serverless-search[{es-serverless} pricing page].

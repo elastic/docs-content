@@ -4,8 +4,6 @@
 // :description: Perform semantic search using ELSER, an NLP model trained by Elastic.
 // :keywords: elasticsearch, elser, semantic search
 
-preview:[]
-
 Elastic Learned Sparse EncodeR - or ELSER - is an NLP model trained by Elastic
 that enables you to perform semantic search by using sparse vector
 representation. Instead of literal matching on search terms, semantic search

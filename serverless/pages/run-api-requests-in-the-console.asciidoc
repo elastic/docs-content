@@ -4,8 +4,6 @@
 // :description: Use the Console to interact with Elastic REST APIs.
 // :keywords: serverless, dev tools, how-to
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 **Console** lets you interact with https://www.elastic.co/docs/api[{es} and Kibana serverless APIs] from your project.

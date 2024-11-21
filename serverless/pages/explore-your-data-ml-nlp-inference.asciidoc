@@ -3,8 +3,6 @@
 // :description: You can import trained models into your cluster and configure them for specific NLP tasks.
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 After you https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/deploy-trained-models[deploy a trained model in your cluster],
 you can use it to perform {nlp} tasks in ingest pipelines.
 

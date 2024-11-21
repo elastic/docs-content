@@ -4,8 +4,6 @@
 // :description: Use tags to categorize your saved objects, then filter for related objects based on shared tags.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 To get started, go to **{project-settings} → {manage-app} → {tags-app}**:

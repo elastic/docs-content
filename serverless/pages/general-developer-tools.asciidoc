@@ -1,8 +1,6 @@
 // :description: Use our developer tools to interact with your data.
 // :keywords: serverless, dev tools, overview
 
-preview:[]
-
 |===
 | Feature | Description | Available in
 

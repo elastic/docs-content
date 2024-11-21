@@ -4,8 +4,6 @@
 // :description: {es} and {kib} expose REST APIs that can be called directly to configure and access {stack} features.
 // :keywords: serverless, elasticsearch, http, rest, overview
 
-preview:[]
-
 [discrete]
 [[elasticsearch-api-references-links]]
 == API references

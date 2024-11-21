@@ -4,8 +4,6 @@
 // :description: Troubleshoot searches.
 // :keywords: serverless, troubleshooting
 
-preview:[]
-
 When you query your data, {es} may return an error, no search results,
 or results in an unexpected order. This guide describes how to troubleshoot
 searches.

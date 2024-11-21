@@ -4,8 +4,6 @@
 // :description: Create and manage {ingest-pipelines} to perform common transformations and enrichments on your data.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 {ref}/ingest.html[{ingest-pipelines-cap}] let you perform common transformations on your data before indexing.

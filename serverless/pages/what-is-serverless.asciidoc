@@ -3,8 +3,8 @@
 
 // :keywords: serverless
 
-Serverless projects use the core components of the {stack}, such as {es} and {kib}, and are based on https://www.elastic.co/blog/elastic-serverless-architecture[an architecture that
-decouples compute and storage]. Search and indexing operations are separated, which offers high flexibility for scaling your workloads while ensuring
+Serverless projects use the core components of the {stack}, such as {es} and {kib}, and are based on an architecture that
+decouples compute and storage. Search and indexing operations are separated, which offers high flexibility for scaling your workloads while ensuring
 a high level of performance.
 
 **Management free.** Elastic manages the underlying Elastic cluster, so you can focus on your data. With serverless projects, Elastic is responsible for automatic upgrades, data backups,
@@ -20,12 +20,6 @@ The size of the cache layer and the volume of data it holds depend on <<elastics
 **Dedicated experiences.** All serverless solutions are built on the Elastic Search Platform and include the core capabilities of the Elastic Stack. They also each offer a distinct experience and specific capabilities that help you focus on your data, goals, and use cases.
 
 **Pay per usage.** Each serverless project type includes product-specific and usage-based pricing.
-
-.Serverless billing starts June 1, 2024
-[IMPORTANT]
-====
-Until May 31, 2024, your serverless consumption will not incur any charges, but will be visible along with your total Elastic Cloud consumption on the https://cloud.elastic.co/billing/usage[Billing Usage page]. Unless you are in a trial period, usage on or after June 1, 2024 will be deducted from your existing Elastic Cloud credits or be billed to your active payment method.
-====
 
 [discrete]
 [[general-what-is-serverless-elastic-control-your-data-and-performance]]
@@ -98,10 +92,6 @@ You can run https://www.elastic.co/guide/en/cloud/current/ec-getting-started.htm
 [[general-what-is-serverless-elastic-answers-to-common-serverless-questions]]
 == Answers to common serverless questions
 
-**What Support is available for the serverless preview?**
-
-There is no official SLA for Support in Serverless until General Availability (GA). We’ll do our best to service customers and inquiries as we would any pre-GA product - at a Platinum/Enterprise Severity 3 (1 business day) SLA target.
-
 **Is there migration support between hosted deployments and serverless projects?**
 
 Migration paths between hosted deployments and serverless projects are currently unsupported.
@@ -120,7 +110,7 @@ Projects and deployments are based on different architectures, and you are unabl
 
 **Can I convert a serverless project into a project of a different type?**
 
-You are unable to convert projects into different project types, but you can create as many projects as you’d like. You will be charged only for your usage.
+You are unable to convert projects into different project types, but you can create as many projects as you'd like. You will be charged only for your usage.
 
 **How can I create serverless service accounts?**
 

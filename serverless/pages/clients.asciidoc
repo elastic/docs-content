@@ -4,8 +4,6 @@
 // :description: Index, search, and manage {es} data in your preferred language.
 // :keywords: serverless, elasticsearch, clients, overview
 
-preview:[]
-
 {es3} provides official language clients for {es} REST APIs.
 
 [NOTE]

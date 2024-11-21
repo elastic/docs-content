@@ -3,8 +3,6 @@
 // :description: ELSER is a learned sparse ranking model trained by Elastic.
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 Elastic Learned Sparse EncodeR - or ELSER - is a retrieval model trained by
 Elastic that enables you to perform
 {ref}/semantic-search-elser.html[semantic search] to retrieve more relevant

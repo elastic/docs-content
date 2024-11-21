@@ -4,8 +4,6 @@
 // :description: Use synonyms to search for words or phrases that have the same or similar meaning.
 // :keywords: serverless, elasticsearch, search, synonyms
 
-preview:[]
-
 Synonyms are words or phrases that have the same or similar meaning.
 They are an important aspect of search, as they can improve the search experience and increase the scope of search results.
 

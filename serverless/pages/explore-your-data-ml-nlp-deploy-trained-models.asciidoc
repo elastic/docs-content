@@ -3,8 +3,6 @@
 // :description: You can import trained models into your cluster and configure them for specific NLP tasks.
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 If you want to perform {nlp} tasks in your cluster, you must deploy an
 appropriate trained model. There is tooling support in
 https://github.com/elastic/eland[Eland] and {kib} to help you prepare and

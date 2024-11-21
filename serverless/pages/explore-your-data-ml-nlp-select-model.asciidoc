@@ -2,8 +2,6 @@
 
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 Per the
 <<elasticsearch-explore-your-data-ml-nlp,Overview>>,
 there are multiple ways that you can use NLP features within the {stack}.

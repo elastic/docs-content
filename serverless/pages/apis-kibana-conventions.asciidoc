@@ -4,8 +4,6 @@
 // :description: The Management APIs for {serverless-short} have request header conventions.
 // :keywords: serverless, kibana, API, reference
 
-preview:[]
-
 The Management REST APIs for {serverless-full} let you manage resources that are available in multiple solutions.
 These resources include connectors, data views, and saved objects.
 If you've previously used the {stack}, the Management APIs are similar to {kib} APIs.

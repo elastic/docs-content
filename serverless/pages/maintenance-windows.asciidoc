@@ -4,8 +4,6 @@
 // :description: Suppress rule notifications for scheduled periods of time.
 // :keywords: serverless, Observability, Security
 
-preview:[]
-
 This content applies to: {obs-badge} {sec-badge}
 
 preview::[]

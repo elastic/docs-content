@@ -4,8 +4,6 @@
 // :description: Vector search with k-nearest neighbor (kNN).
 // :keywords: serverless, elasticsearch, search, vector, knn, ann
 
-preview:[]
-
 A _k-nearest neighbor_ (kNN) search finds the _k_ nearest vectors to a query
 vector, as measured by a similarity metric.
 

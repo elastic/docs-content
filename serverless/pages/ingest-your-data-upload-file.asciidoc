@@ -4,8 +4,6 @@
 // :description: Add data to {es} using the File Uploader.
 // :keywords: serverless, elasticsearch, ingest, how to
 
-preview:[]
-
 You can upload files to {es} using the File Uploader.
 Use the visualizer to inspect the data before importing it.
 
