@@ -4,7 +4,7 @@
 // :description: Build search solutions and applications with {es-serverless}.
 // :keywords: serverless, elasticsearch, overview
 
-Elasticsearch allows you to build custom applications. Whether you have structured or unstructured text, numerical data, or geospatial data, Elasticsearch can efficiently store and index it in a way that supports fast searches.
+{es} is an open source distributed search and analytics engine, scalable data store, and vector database. It’s optimized for speed and relevance on production-scale workloads.
 
 .Understanding Elasticsearch on serverless
 [IMPORTANT]
