@@ -1,22 +1,10 @@
 [[elasticsearch-technical-preview-limitations]]
-= Technical preview limitations
+= Limitations
 
 // :description: Review the limitations that apply to {es-serverless} projects.
 // :keywords: serverless, elasticsearch
 
-The following are currently not available:
 
-* Custom plugins and custom bundles
-* Reindexing from remote clusters
-* Cross-cluster search and cross-cluster replication
-* Snapshot and restore
-* Clone index API
-* Migrations from non-serverless {es} deployments. In the interim, you can <<elasticsearch-ingest-data-through-logstash,use Logstash>> to move data to and from serverless projects.
-* Audit logging
-* {es} for Apache Hadoop
+// This page is not included in the index file, so it is not visible in the navigation menu anymore. HTTP redirects will be set up.
 
-Currently, workloads outside of the following ranges may experience higher latencies (greater than sub-second):
-
-* Search queries on indices greater than 150GB
-* Index queries per second (QPS) greater than 1000
-* Search queries per second (QPS) greater than 1800
+Refer to <<serverless-differences,{es-serverless} differences>> for a comparison of {es-serverless} with other Elastic Cloud offerings.
