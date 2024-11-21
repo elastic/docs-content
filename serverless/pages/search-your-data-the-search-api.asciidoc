@@ -14,7 +14,24 @@ a specific number of results.
 
 You can use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless/group/endpoint-search[search API] to search and
 aggregate data stored in {es} data streams or indices.
-The API's `query` request body parameter accepts queries written in
-{ref}/query-dsl.html[Query DSL].
 
-For more information, refer to {ref}/search-your-data.html[the search API overview] in the classic {es} docs.
+For more information, refer to {ref}/search-your-data.html[the search API overview] in the core {es} docs.
+
+[discrete]
+[[elasticsearch-search-your-data-the-query-dsl]]
+== Query DSL
+
+{ref}/query-dsl.html[Query DSL] is full-featured JSON-style query language that enables complex searching, filtering, and aggregations.
+
+The `_search` API's `query` request body parameter accepts queries written in
+Query DSL.
+
+[discrete]
+[[elasticsearch-search-your-data-the-retrievers]]
+== Retrievers
+
+Retrievers are an alternative to the Query DSL that allow you to configure complex retrieval pipelines using a simplified syntax.
+Retrievers simplify the user experience by allowing entire retrieval pipelines to be configured in a single `_search` API call.
+
+Learn more in the {ref}/retrievers-overview.html[Retrievers overview] in the core {es} docs.
+
