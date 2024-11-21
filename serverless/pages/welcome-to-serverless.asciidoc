@@ -22,8 +22,6 @@ Elastic provides three serverless solutions available on {ecloud}:
 
 Serverless instances of the Elastic Stack that you create in {ecloud} are called **serverless projects**.
 
-Elastic serverless products are currently in preview. https://www.elastic.co/blog/elastic-serverless-architecture[Learn more about serverless in our blog].
-
 [discrete]
 == Get started
 
