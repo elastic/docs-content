@@ -3,8 +3,6 @@
 // :description: You can import trained models into your cluster and configure them for specific NLP tasks.
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 When the model is deployed on at least one node in the cluster, you can begin to
 perform inference. _{infer-cap}_ is a {ml} feature that enables you to use
 your trained models to perform NLP tasks (such as text extraction,

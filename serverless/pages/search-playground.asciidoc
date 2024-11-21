@@ -4,8 +4,6 @@
 // :description: Test and edit Elasticsearch queries and chat with your data using LLMs.
 // :keywords: serverless, elasticsearch, search, playground, GenAI, LLMs
 
-preview:[]
-
 Use the Search Playground to test and edit {es} queries visually in the UI. Then use the Chat Playground to combine your {es} data with large language models (LLMs) for retrieval augmented generation (RAG).
 You can also view the underlying Python code that powers the chat interface, and use it in your own application.
 

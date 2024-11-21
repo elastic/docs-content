@@ -4,8 +4,6 @@
 // :description: Alerting works by running checks on a schedule to detect conditions defined by a rule.
 // :keywords: serverless, Elasticsearch, alerting, learn
 
-preview:[]
-
 This content applies to: {es-badge}
 
 In general, a rule consists of three parts:

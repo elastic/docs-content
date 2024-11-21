@@ -4,8 +4,6 @@
 // :description: Diagnose and debug poorly performing search queries.
 // :keywords: serverless, dev tools, how-to
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 ////

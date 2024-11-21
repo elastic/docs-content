@@ -4,8 +4,6 @@
 // :description: Add data to {es} using HTTP APIs or a language client.
 // :keywords: serverless, elasticsearch, ingest, api, how to
 
-preview:[]
-
 The {es} APIs enable you to ingest data through code.
 You can use the APIs of one of the
 <<elasticsearch-clients,language clients>> or the

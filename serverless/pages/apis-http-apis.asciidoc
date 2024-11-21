@@ -4,8 +4,6 @@
 // :description: {es} and {kib} expose REST APIs that can be called directly to configure and access {stack} features.
 // :keywords: serverless, elasticsearch, http, rest, overview
 
-preview:[]
-
 * <<elasticsearch-api-conventions>>: The {es-serverless} REST APIs have conventions for headers and request bodies.
 * <<elasticsearch-kibana-api-conventions>>: The Management APIs for {serverless-short} have request header conventions.
 * https://www.elastic.co/docs/api/[API Reference]: Explore the reference information for Elastic Serverless REST APIs

@@ -4,8 +4,6 @@
 // :description: Find data based on the intent and contextual meaning of a search query with semantic search
 // :keywords: elasticsearch, elser, semantic search
 
-preview:[]
-
 Semantic search is a search method that helps you find data based on the intent
 and contextual meaning of a search query, instead of a match on query terms
 (lexical search).

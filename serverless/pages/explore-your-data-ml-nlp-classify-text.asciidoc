@@ -3,8 +3,6 @@
 // :description: NLP tasks that classify input text or determine the language of text.
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 These NLP tasks enable you to identify the language of text and classify or
 label unstructured input text:
 

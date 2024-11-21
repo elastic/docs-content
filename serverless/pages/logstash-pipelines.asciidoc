@@ -4,8 +4,6 @@
 // :description: Create, edit, and delete your {ls} pipeline configurations.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 In **{project-settings} → {manage-app} → {ls-pipelines-app}**, you can control multiple {ls} instances and pipeline configurations.

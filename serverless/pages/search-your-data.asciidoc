@@ -4,8 +4,6 @@
 // :description: Use the search API to run queries on your data.
 // :keywords: serverless, elasticsearch, search
 
-preview:[]
-
 A search query, or query, is a request for information about data in {es} data streams or indices.
 
 You can think of a query as a question, written in a way {es} understands. Depending on your data, you can use a query to get answers to questions like:

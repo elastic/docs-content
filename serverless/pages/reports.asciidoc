@@ -4,8 +4,6 @@
 // :description: View and manage generated reports.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 {kib} provides you with several options to share saved searches, dashboards, and visualizations.
