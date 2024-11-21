@@ -14,7 +14,7 @@ There are three main workflows for implementing semantic search with {es}, arran
 
 - <<elasticsearch-reference-semantic-search-semantic-text,The `semantic text` workflow>>
 - <<elasticsearch-reference-semantic-search-inference-api,Inference API workflow>>
-- https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-deployed-nlp-model.html[Model deployment workflow]
+- <<elasticsearch-reference-semantic-search-model-deployment,Model deployment workflow>>
 
 image::images/semantic-options.svg[Overview of semantic search workflows in {es}]
 
@@ -29,7 +29,7 @@ Semantic search is available on all Elastic deployment types: self-managed clust
 
 The `semantic_text` field simplifies semantic search by providing inference at ingestion time with sensible default values, eliminating the need for complex configurations. 
 
-Learn how to implement semantic search with `semantic text` in the https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html[Elasticsearch docs →].
+Learn how to implement semantic search with `semantic text` in the {ref}/semantic-search-semantic-text.html[Elasticsearch docs →].
 
 [discrete]
 [[elasticsearch-reference-semantic-search-inference-api]]
@@ -41,13 +41,9 @@ Learn how to implement semantic search with the inference API in the {ref}/seman
 
 
 [discrete]
-[[elasticsearch-reference-semantic-search-elser]]
-== Semantic search with ELSER
+[[elasticsearch-reference-semantic-search-model-deployment]]
+== Semantic search with the model deployment workflow
 
-Elastic Learned Sparse EncodeR - or ELSER - is an NLP model trained by Elastic
-that enables you to perform semantic search by using sparse vector
-representation. Instead of literal matching on search terms, semantic search
-retrieves results based on the intent and the contextual meaning of a search
-query.
+The model deployment workflow enables you to deploy custom NLP models in Elasticsearch, giving you full control over text embedding generation and vector search. While this workflow offers advanced flexibility, it requires expertise in NLP and machine learning.
 
-Learn how to implement semantic search with ELSER in the {ref}/semantic-search-elser.html[Elasticsearch docs →].
+Learn how to implement semantic search with the model deployment workflow in the {ref}/semantic-search-deployed-nlp-model.html[Elasticsearch docs →].
