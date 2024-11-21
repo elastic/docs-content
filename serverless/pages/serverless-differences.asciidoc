@@ -138,11 +138,11 @@ The following {es-serverless} project-specific features are planned for future s
 
 * {ref}/behavioral-analytics-overview.html[Behavioral Analytics]
 * {ref}/search-application-overview.html[Search Applications]
-* {enterprise-search-ref}/crawler.html[Managed web crawler]
+* Managed web crawler
 + 
 You can use the https://github.com/elastic/crawler[self-managed web crawler] in the meantime.
 +
-* {ref}/es-native-connectors.html[Elastic managed Search connectors]
+* Managed Search connectors
 + 
 You can use {ref}/es-build-connector.html[self-managed Search connectors] in the meantime.
 
