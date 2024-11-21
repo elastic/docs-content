@@ -50,4 +50,4 @@ representation. Instead of literal matching on search terms, semantic search
 retrieves results based on the intent and the contextual meaning of a search
 query.
 
-Learn how to implement semantic search with ELSER in the https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-elser.html[Elasticsearch docs →].
+Learn how to implement semantic search with ELSER in the {ref}/semantic-search-elser.html[Elasticsearch docs →].
