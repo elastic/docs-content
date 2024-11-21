@@ -8,9 +8,8 @@
 <titleabbrev>Management</titleabbrev>
 ++++
 
-preview:[]
-
 Go to **Project settings**, then ** Management** to manage your indices, data views, saved objects, settings, and more.
+You can also open Management by using the {kibana-ref}/kibana-concepts-analysts.html#_finding_your_apps_and_objects[global search field].
 
 Access to individual features is governed by Elastic user roles.
 Consult your administrator if you do not have the appropriate access.
@@ -32,7 +31,7 @@ To learn more about roles, refer to <<general-assign-user-roles>>.
 | {es-badge}{sec-badge}
 
 | <<data-views>>
-| Manage the fields in the data views that retrieve your data from {es}.
+| Manage the fields in the data views that retrieve your data from {es-serverless}.
 | {es-badge}{obs-badge}{sec-badge}
 
 | <<security-entity-risk-scoring,Entity Risk Score>>

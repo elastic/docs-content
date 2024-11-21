@@ -4,8 +4,6 @@
 // :description: API keys allow access to the {stack} on behalf of a user.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 API keys are security mechanisms used to authenticate and authorize access to {stack} resources,

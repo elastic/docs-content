@@ -4,8 +4,6 @@
 // :description: Manage the predefined set of roles and privileges for all your projects.
 // :keywords: serverless, general, organization, roles, how to
 
-preview:[]
-
 Within an organization, users can have one or more roles and each role grants specific privileges.
 
 You must assign user roles when you <<general-manage-access-to-organization,invite users to join your organization>>.

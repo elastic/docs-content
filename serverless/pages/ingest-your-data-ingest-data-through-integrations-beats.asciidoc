@@ -4,8 +4,6 @@
 // :description: Use {beats} to ship operational data to {es}.
 // :keywords: serverless, elasticsearch, ingest, beats, how to
 
-preview:[]
-
 {beats} are lightweight data shippers that send operational data to {es}.
 Elastic provides separate {beats} for different types of data, such as logs, metrics, and uptime.
 Depending on what data you want to collect, you may need to install multiple shippers on a single host.
@@ -18,9 +16,6 @@ Depending on what data you want to collect, you may need to install multiple shi
 
 | Log files and journals
 | https://www.elastic.co/products/beats/filebeat[Filebeat]
-
-| Cloud data
-| https://www.elastic.co/products/beats/functionbeat[Functionbeat]
 
 | Availability
 | https://www.elastic.co/products/beats/heartbeat[Heartbeat]
@@ -38,10 +33,10 @@ Depending on what data you want to collect, you may need to install multiple shi
 {beats} can send data to {es} directly or through {ls}, where you
 can further process and enhance the data before visualizing it in {kib}.
 
-.Authenticating with Elasticsearch
+.Authenticating with {es}
 [NOTE]
 ====
-When you use {beats} to export data to an {es} project, the {beats} require an API key to authenticate with {es}.
+When you use {beats} to export data to an {es-serverless} project, the {beats} require an API key to authenticate with {es}.
 Refer to <<elasticsearch-get-started-create-api-key,Create API key>> for the steps to set up your API key,
 and to https://www.elastic.co/guide/en/beats/filebeat/current/beats-api-keys.html[Grant access using API keys] in the Filebeat documentation for an example of how to configure your {beats} to use the key.
 ====

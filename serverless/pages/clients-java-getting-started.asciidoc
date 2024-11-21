@@ -4,7 +4,10 @@
 // :description: Set up and use the Java client for {es3}.
 // :keywords: serverless, elasticsearch, java, how to
 
-preview:[]
+[NOTE]
+====
+This client is for use with {es-serverless} only. See also the https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es} clients]. 
+====
 
 This page guides you through the installation process of the Java
 client for {es3}, shows you how to initialize the client, and how to perform basic
@@ -72,7 +75,7 @@ the following to the `pom.xml` of your project:
 [[elasticsearch-java-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and Elasticsearch Endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,java]
 ----
@@ -96,7 +99,7 @@ ElasticsearchTransport transport = new RestClientTransport(
 ElasticsearchClient esClient = new ElasticsearchClient(transport);
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-java-client-getting-started-using-the-api]]

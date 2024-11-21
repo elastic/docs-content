@@ -3,8 +3,6 @@
 // :description: NLP tasks that extract information from unstructured text.
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 These NLP tasks enable you to extract information from your unstructured text:
 
 * https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/extract-info[Named entity recognition]

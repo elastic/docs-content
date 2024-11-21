@@ -3,8 +3,6 @@
 // :description: The list of compatible third party NLP models.
 // :keywords: ml, reference, analyze
 
-preview:[]
-
 The {stack-ml-features} support transformer models that conform to the
 standard BERT model interface and use the WordPiece tokenization algorithm.
 
@@ -146,7 +144,7 @@ Using `DPREncoderWrapper`:
 == Expected model output
 
 Models used for each NLP task type must output tensors of a specific format to
-be used in the Elasticsearch NLP pipelines.
+be used in the {es} NLP pipelines.
 
 Here are the expected outputs for each task type.
 

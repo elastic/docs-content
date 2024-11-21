@@ -4,8 +4,6 @@
 // :description: Manage your profile settings.
 // :keywords: serverless, general, profile, update
 
-preview:[]
-
 To edit your user profile, go to the user icon on the header bar and select **Profile**.
 
 [discrete]

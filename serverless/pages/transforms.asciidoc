@@ -4,8 +4,6 @@
 // :description: Use transforms to pivot existing indices into summarized or entity-centric indices.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 {transforms-cap} enable you to convert existing {es} indices into summarized

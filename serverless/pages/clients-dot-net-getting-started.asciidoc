@@ -4,7 +4,10 @@
 // :description: Set up and use the .NET client for {es3}.
 // :keywords: serverless, elasticsearch, .net, how to
 
-preview:[]
+[NOTE]
+====
+This client is for use with {es-serverless} only. See also the https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es} clients]. 
+====
 
 This page guides you through the installation process of the
 .NET client for {es3}, shows you how to initialize the client, and how to perform basic
@@ -31,14 +34,14 @@ dotnet add package Elastic.Clients.Elasticsearch.Serverless
 [[elasticsearch-dot-net-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and Elasticsearch Endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,net]
 ----
 var client = new ElasticsearchClient("<CLOUD_ID>", new ApiKey("<API_KEY>"));
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-dot-net-client-getting-started-using-the-api]]

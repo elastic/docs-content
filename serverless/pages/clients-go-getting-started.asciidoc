@@ -1,10 +1,13 @@
 [[elasticsearch-go-client-getting-started]]
-= Get started with the serverless Go Client
+= Get started with the serverless Go client
 
 // :description: Set up and use the Go client for {es3}.
 // :keywords: serverless, elasticsearch, go, how to
 
-preview:[]
+[NOTE]
+====
+This client is for use with {es-serverless} only. See also the https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es} clients]. 
+====
 
 This page guides you through the installation process of the Go
 client for {es3}, shows you how to initialize the client, and how to perform basic
@@ -57,7 +60,7 @@ import (
 [[elasticsearch-go-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and Elasticsearch Endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,go]
 ----
@@ -70,7 +73,7 @@ if err != nil {
 }
 ----
 
-To get API keys or the Elasticsearch Endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-go-client-getting-started-using-the-api]]
@@ -125,7 +128,7 @@ if err != nil {
 fmt.Printf("Bulk: %#v\n", bulkRes.Items)
 ----
 
-When you use the client to make a request to {es}, it returns an API
+When you use the client to make a request to {es-serverless}, it returns an API
 response object. You can access the body values directly as seen on
 the previous example with `bulkRes`.
 
