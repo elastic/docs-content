@@ -2,8 +2,6 @@
 
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 {nlp-cap} (NLP) refers to the way in which we can use software to understand
 natural language in spoken word or written text.
 

@@ -4,8 +4,6 @@
 // :description: Perform CRUD operations on indices and data streams. View index settings, mappings, and statistics.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 Elastic's index management features are an easy, convenient way to manage your cluster's indices, data streams, index templates, and enrich policies.

@@ -4,8 +4,6 @@
 // :description: Use {beats} to ship operational data to {es}.
 // :keywords: serverless, elasticsearch, ingest, beats, how to
 
-preview:[]
-
 {beats} are lightweight data shippers that send operational data to {es}.
 Elastic provides separate {beats} for different types of data, such as logs, metrics, and uptime.
 Depending on what data you want to collect, you may need to install multiple shippers on a single host.
@@ -18,9 +16,6 @@ Depending on what data you want to collect, you may need to install multiple shi
 
 | Log files and journals
 | https://www.elastic.co/products/beats/filebeat[Filebeat]
-
-| Cloud data
-| https://www.elastic.co/products/beats/functionbeat[Functionbeat]
 
 | Availability
 | https://www.elastic.co/products/beats/heartbeat[Heartbeat]

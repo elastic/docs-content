@@ -4,8 +4,6 @@
 // :description: Create maps from your geographical data.
 // :keywords: serverless, Security
 
-preview:[]
-
 This content applies to: {sec-badge}
 
 In **{project-settings} → {maps-app}** you can:

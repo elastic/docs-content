@@ -4,8 +4,6 @@
 // :description: Use our interactive code editor to test and debug Painless scripts in real-time.
 // :keywords: serverless, dev tools, how-to
 
-preview:[]
-
 This content applies to: {obs-badge} {sec-badge}
 
 beta::[]

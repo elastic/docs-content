@@ -4,8 +4,6 @@
 // :description: Elastic requires a {data-source} to access the {es} data that you want to explore.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 A {data-source} can point to one or more indices, {ref}/data-streams.html[data streams], or {ref}/alias.html[index aliases].

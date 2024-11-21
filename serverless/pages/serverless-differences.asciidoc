@@ -8,8 +8,6 @@
 <titleabbrev>Serverless differences</titleabbrev>
 ++++
 
-preview:[]
-
 Some features that are available in Elastic Cloud Hosted and self-managed offerings are not available in {es-serverless}.
 These features have either been replaced by a new feature, or are not applicable in the new Serverless architecture:
 

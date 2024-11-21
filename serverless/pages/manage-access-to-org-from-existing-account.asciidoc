@@ -4,8 +4,6 @@
 // :description: Join a new organization and bring over your projects.
 // :keywords: serverless, general, organization, join, how to
 
-preview:[]
-
 If you already belong to an organization, and you want to join a new one, it is currently not possible to bring your projects over to the new organization.
 
 If you want to join a new project, follow these steps:

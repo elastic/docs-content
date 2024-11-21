@@ -9,7 +9,6 @@ coming:[]
 endif::[]
 
 ifdef::serverlessCustomRoles[]
-preview:[]
 
 This content applies to: {es-badge} {sec-badge}
 

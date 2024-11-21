@@ -4,8 +4,6 @@
 // :description: Configure connections to third party systems for use in cases and rules.
 // :keywords: serverless
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 The list of available connectors varies by project type.

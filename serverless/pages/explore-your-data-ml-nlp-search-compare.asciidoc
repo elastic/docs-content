@@ -3,8 +3,6 @@
 // :description: NLP tasks for generate embeddings which can be used to search in text or compare different peieces of text.
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 The {stack-ml-features} can generate embeddings, which you can use to search in
 unstructured text or compare different pieces of text.
 

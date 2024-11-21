@@ -4,8 +4,6 @@
 // :description: The {es-serverless} REST APIs have conventions for headers and request bodies.
 // :keywords: serverless, elasticsearch, API, reference
 
-preview:[]
-
 You can run {es} API requests in **{dev-tools-app} → Console**.
 For example:
 

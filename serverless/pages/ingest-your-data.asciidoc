@@ -4,10 +4,6 @@
 // :description: Add data to your {es-serverless} project.
 // :keywords: serverless, elasticsearch, ingest, overview
 
-preview:[]
-
-You have many options for ingesting data into your {es} project on {serverless-full}.
-
 The best ingest option(s) for your use case depends on whether you are indexing general content or time series (timestamped) data.
 
 [discrete]

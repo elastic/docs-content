@@ -4,8 +4,6 @@
 // :description: Manage your account details and subscription level.
 // :keywords: serverless, general, billing, subscription
 
-preview:[]
-
 To find more details about your subscription:
 
 . Navigate to https://cloud.elastic.co/[cloud.elastic.co] and log in to your Elastic Cloud account.

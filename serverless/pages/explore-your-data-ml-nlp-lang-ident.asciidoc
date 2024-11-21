@@ -3,8 +3,6 @@
 // :description: Language identification is an NLP task and a model that enables you to determine the language of text.
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 {lang-ident-cap} enables you to determine the language of text.
 
 A {lang-ident} model is provided in your cluster, which you can use in an

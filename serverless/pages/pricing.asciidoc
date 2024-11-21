@@ -4,8 +4,6 @@
 // :description: Learn about how Elasticsearch usage affects pricing.
 // :keywords: serverless, elasticsearch, overview
 
-preview:[]
-
 Elasticsearch is priced based on consumption of the underlying
 infrastructure that supports your use case, with the performance
 characteristics you need. Measurements are in Virtual Compute Units (VCUs).

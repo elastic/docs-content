@@ -4,8 +4,6 @@
 // :description: Configure project-wide features and usage.
 // :keywords: serverless, elasticsearch, project, manage
 
-preview:[]
-
 To manage a project:
 
 . Navigate to https://cloud.elastic.co/[cloud.elastic.co].

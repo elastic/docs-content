@@ -4,8 +4,6 @@
 // :description: Manage your saved objects, including dashboards, visualizations, maps, {data-sources}, and more.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 To get started, go to **{project-settings} → {manage-app} → {saved-objects-app}**:

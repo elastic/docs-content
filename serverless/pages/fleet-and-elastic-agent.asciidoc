@@ -4,8 +4,6 @@
 // :description: Centrally manage your Elastic Agents in Fleet
 // :keywords: serverless, ingest, fleet, elastic agent
 
-preview:[]
-
 This content applies to: {obs-badge} {sec-badge}
 
 {agent} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host.

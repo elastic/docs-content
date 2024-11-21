@@ -3,8 +3,6 @@
 // :description: The list of compatible third party NLP models.
 // :keywords: ml, reference, analyze
 
-preview:[]
-
 The {stack-ml-features} support transformer models that conform to the
 standard BERT model interface and use the WordPiece tokenization algorithm.
 

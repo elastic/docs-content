@@ -4,8 +4,6 @@
 // :description: Understand how usage affects serverless pricing.
 // :keywords: serverless, general, billing, pricing model
 
-preview:[]
-
 Elastic Cloud serverless billing is based on your usage across these dimensions:
 
 * <<offerings,Offerings>>

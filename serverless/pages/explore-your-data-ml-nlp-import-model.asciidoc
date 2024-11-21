@@ -2,8 +2,6 @@
 
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 [IMPORTANT]
 ====
 If you want to install a trained model in a restricted or closed

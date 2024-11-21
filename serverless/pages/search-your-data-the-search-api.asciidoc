@@ -4,8 +4,6 @@
 // :description: Run queries and aggregations with the search API.
 // :keywords: serverless, elasticsearch, API
 
-preview:[]
-
 A _search_ consists of one or more queries that are combined and sent to {es}.
 Documents that match a search's queries are returned in the _hits_, or
 _search results_, of the response.
