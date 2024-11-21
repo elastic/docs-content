@@ -4,8 +4,6 @@
 // :description: Manage your organization's serverless projects using the REST API.
 // :keywords: serverless, project, manage, rest, api
 
-preview:[]
-
 You can manage serverless projects using the https://www.elastic.co/docs/api/doc/elastic-cloud-serverless[Elastic Cloud Serverless REST API]. This API allows you to create, update, and delete projects, as well as manage project features and usage.
 
 [TIP]

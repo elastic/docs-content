@@ -4,8 +4,6 @@
 // :description: Use our pre-built integrations to connect your data to Elastic.
 // :keywords: serverless, ingest, integration
 
-preview:[]
-
 This content applies to: {obs-badge} {sec-badge}
 
 Elastic integrations are a streamlined way to connect your data to Elastic.

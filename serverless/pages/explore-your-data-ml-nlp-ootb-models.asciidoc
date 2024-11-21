@@ -3,8 +3,6 @@
 // :description: Models trained and provided by Elastic
 // :keywords: serverless, elasticsearch, tbd
 
-preview:[]
-
 You can use models that are trained and provided by Elastic that are available
 within the {stack} with a click of a button.
 

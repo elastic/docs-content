@@ -2,8 +2,6 @@
 
 // :description: Description to be written
 
-preview:[]
-
 You can use these instructions to deploy a
 https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/extract-info[named entity recognition (NER)]
 model in {es}, test the model, and add it to an {infer} ingest pipeline. The

@@ -10,8 +10,6 @@
 </style>
 ++++
 
-preview:[]
-
 Elastic serverless products allow you to deploy and use Elastic for your use cases without managing the underlying Elastic cluster,
 such as nodes, data tiers, and scaling. Serverless instances are fully-managed, autoscaled, and automatically upgraded by Elastic so you can
 focus more on gaining value and insight from your data.

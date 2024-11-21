@@ -4,9 +4,9 @@
 // :description: Find data based on the intent and contextual meaning of a search query with semantic search
 // :keywords: elasticsearch, elser, semantic search
 
-preview:[]
-
-Semantic search is a search method that helps you find data based on the intent and contextual meaning of a search query, instead of a match on query terms (lexical search).
+Semantic search is a search method that helps you find data based on the intent
+and contextual meaning of a search query, instead of a match on query terms
+(lexical search).
 
 Elasticsearch provides various semantic search capabilities using natural language processing (NLP) and vector search. Using an NLP model enables you to extract text embeddings out of text. Embeddings are vectors that provide a numeric representation of a text. Pieces of content with similar meaning have similar representations.
 

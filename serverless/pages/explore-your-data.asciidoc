@@ -4,9 +4,7 @@
 // :description: Turn {es} data into actionable insights with aggregations, visualizations, and alerts
 // :keywords: serverless, elasticsearch, explore, overview
 
-preview:[]
-
-In addition to search, {es-serverless} offers several options for analyzing and visualizing your data.
+In addition to search, {es3} offers several options for analyzing and visualizing your data.
 
 [NOTE]
 ====

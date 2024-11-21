@@ -8,8 +8,6 @@
 <titleabbrev>Management</titleabbrev>
 ++++
 
-preview:[]
-
 Go to **Project settings**, then ** Management** to manage your indices, data views, saved objects, settings, and more.
 You can also open Management by using the {kibana-ref}/kibana-concepts-analysts.html#_finding_your_apps_and_objects[global search field].
 

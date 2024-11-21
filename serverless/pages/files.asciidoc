@@ -4,8 +4,6 @@
 // :description: Manage files that are stored in Elastic.
 // :keywords: serverless, Elasticsearch, Observability, Security
 
-preview:[]
-
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 Several {serverless-full} features let you upload files. For example, you can add files to <<observability-cases,cases>> or upload a logo to an **Image** panel in a {kibana-ref}/dashboard.html[Dashboard].
