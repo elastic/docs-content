@@ -35,12 +35,11 @@ After you've loaded your data, follow these steps to create a {data-source}:
 
 // <DocImage size="m" url="../images/discover-find-data-view.png" alt="How to set the {data-source} in Discover" />
 
-. Open **Discover** then open the data view menu.
+. Go to **{project-settings} → {manage-app} → {data-views-app}**. Alternatively, go to **Discover** and open the data view menu.
 +
 [role="screenshot"]
 image:images/discover-find-data-view.png[How to set the {data-source} in Discover]
 +
-Alternatively, go to **{project-settings} → {manage-app} → {data-views-app}**.
 . Click **Create a {data-source}**.
 . Give your {data-source} a name.
 . Start typing in the **Index pattern** field, and Elastic looks for the names of
