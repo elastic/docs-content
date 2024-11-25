@@ -30,7 +30,7 @@ Query DSL.
 [[elasticsearch-search-your-data-the-retrievers]]
 == Retrievers
 
-Retrievers are an alternative to the Query DSL that allow you to configure complex retrieval pipelines using a simplified syntax.
+Retrievers are an alternative to Query DSL that allow you to configure complex retrieval pipelines using a simplified syntax.
 Retrievers simplify the user experience by allowing entire retrieval pipelines to be configured in a single `_search` API call.
 
 Learn more in the {ref}/retrievers-overview.html[Retrievers overview] in the core {es} docs.
