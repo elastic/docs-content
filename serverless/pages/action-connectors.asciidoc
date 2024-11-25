@@ -6,7 +6,7 @@
 
 [NOTE]
 ====
-This page is about Kibana connectors that integrate with services like generative AI model providers. If you're looking for Search connectors that synchronize third-party data into {es}, see <<elasticsearch-ingest-data-through-integrations-connector-client,Connector clients>>.
+This page is about Kibana connectors that integrate with services like generative AI model providers. If you're looking for Search connectors that synchronize third-party data into {es}, refer to <<elasticsearch-ingest-data-through-integrations-connector-client,Connector clients>>.
 ====
 
 This content applies to: {es-badge} {obs-badge} {sec-badge}
