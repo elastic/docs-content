@@ -6,7 +6,7 @@
 
 [NOTE]
 ====
-This page is about Search connectors that synchronize third-party data into {es}. If you're looking for Kibana connectors to integrate with services like generative AI model providers, see <<action-connectors,Kibana Connectors>>.
+This page is about Search connectors that synchronize third-party data into {es}. If you're looking for Kibana connectors to integrate with services like generative AI model providers, refer to <<action-connectors,Kibana Connectors>>.
 ====
 
 [NOTE]
