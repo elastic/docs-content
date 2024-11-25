@@ -4,6 +4,11 @@
 // :description: Configure connections to third party systems for use in cases and rules.
 // :keywords: serverless
 
+[NOTE]
+====
+This page is about Kibana connectors that integrate with services like generative AI model providers. If you're looking for Search connectors that synchronize third-party data into {es}, see <<elasticsearch-ingest-data-through-integrations-connector-client,Connector clients>>.
+====
+
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
 The list of available connectors varies by project type.

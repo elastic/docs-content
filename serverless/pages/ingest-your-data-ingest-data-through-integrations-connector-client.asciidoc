@@ -6,6 +6,11 @@
 
 [NOTE]
 ====
+This page is about Search connectors that synchronize third-party data into {es}. If you're looking for Kibana connectors to integrate with services like generative AI model providers, see <<action-connectors,Kibana Connectors>>.
+====
+
+[NOTE]
+====
 This page contains high-level instructions about setting up connector clients in your project's UI.
 Because prerequisites and configuration details vary by data source, you'll need to refer to the individual connector documentation for specific details.
 ====
