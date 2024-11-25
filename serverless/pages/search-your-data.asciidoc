@@ -9,7 +9,7 @@ If you haven't used {es} before, you can learn the basics in the {ref}/elasticse
 
 You can use the https://www.elastic.co/docs/api/doc/elasticsearch-serverless[{es-serverless} REST APIs] to search your data using any HTTP client, including the <<elasticsearch-clients,{es} client libraries>>, or directly in the Dev Tools <<devtools-run-api-requests-in-the-console, Console>>.
 
-You can also run searches using *Discover* in your project's UI.
+You can also run searches using {kibana-ref}/discover.html[Discover] in your project's UI.
 
 [TIP]
 ====
@@ -21,3 +21,13 @@ Try our hands-on {ref}/quickstart.html#quickstart-list[quick start tutorials] in
 == Query languages
 
 Learn about the various query languages you can use to search your data in the {ref}/search-analyze.html[core {es} documentation].
+
+[discrete]
+[[elasticsearch-search-your-data-learn-more]]
+== Learn more
+
+The subpages in this section provide some high-level information about three important search-related topics:
+
+* <<elasticsearch-search-your-data-the-search-api, The search API>>
+* <<elasticsearch-knn-search,K-Nearest Neighbors (KNN) search>>
+* <<elasticsearch-reference-semantic-search, Semantic search>>
