@@ -80,6 +80,8 @@ on multiple indices, select their checkboxes and then open the **Manage** menu.
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 
+In {es-serverless}, indices matching the `logs-*-*` pattern use the logsDB index mode by default. The logsDB index mode creates a {ref}/logs-data-stream.html[logs data stream]. 
+
 The value in the **Indices** column indicates the number of backing indices. Click this number to drill down into details.
 
 A value in the data retention column indicates that the data stream is managed by a data stream lifecycle policy.
@@ -114,6 +116,8 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 image::images/index-management-index-templates.png[Index templates]
 
 // TO-DO: This screenshot is missing some tabs that exist in serverless
+
+The default *logs* template uses the logsDB index mode to create a {ref}/logs-data-stream.html[logs data stream].
 
 If you don't have any templates, you can create one using the **Create template** wizard.
 
