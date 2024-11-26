@@ -11,8 +11,6 @@ include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 :sec-badge: <<what-is-security-serverless,image:images/sec-badge.svg[Security]>>
 
 // The values of these attributes are different in stateful vs serverless
-:observability: Elastic Observability Serverless
-:security: Elastic Security Serverless
 
 = Serverless
 
