@@ -10,15 +10,15 @@
 </style>
 ++++
 
-Elastic serverless products allow you to deploy and use Elastic for your use cases without managing the underlying Elastic cluster,
+{serverless-full} products allow you to deploy and use Elastic for your use cases without managing the underlying Elastic cluster,
 such as nodes, data tiers, and scaling. Serverless instances are fully-managed, autoscaled, and automatically upgraded by Elastic so you can
 focus more on gaining value and insight from your data.
 
 Elastic provides three serverless solutions available on {ecloud}:
 
 * **{es-serverless}**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
-* **{observability}**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
-* **{elastic-sec}**: Detect, investigate, and respond to threats, with SIEM, endpoint protection, and AI-powered analytics capabilities.
+* **{obs-serverless}**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
+* **{sec-serverless}**: Detect, investigate, and respond to threats, with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 Serverless instances of the Elastic Stack that you create in {ecloud} are called **serverless projects**.
 

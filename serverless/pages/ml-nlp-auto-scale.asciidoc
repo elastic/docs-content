@@ -63,7 +63,7 @@ Increasing the number of threads will make the search processes more performant.
 
 [discrete]
 [[enabling-autoscaling-in-kibana-adaptive-resources]]
-== Enabling autoscaling in Kibana - adaptive resources
+== Enabling autoscaling in {kib} - adaptive resources
 
 You can enable adaptive resources for your models when starting or updating the model deployment.
 Adaptive resources make it possible for {es} to scale up or down the available resources based on the load on the process.
@@ -74,7 +74,7 @@ When the load is low, the number of VCUs that the process can use is automatical
 
 You can choose from three levels of resource usage for your trained model deployment; autoscaling will occur within the selected level's range.
 
-Refer to the tables in the auto-scaling-matrix section to find out the setings for the level you selected.
+Refer to the tables in the auto-scaling-matrix section to find out the settings for the level you selected.
 
 image::images/ml-nlp-deployment.png[ML model deployment with adaptive resources enabled.]
 
@@ -154,7 +154,7 @@ No static allocations for Security and Observability
 
 [discrete]
 [[deployments-on-serverless-optimized-for-search]]
-=== Deployments on serverless optimized for search
+=== Deployments on serverless optimized for Search
 
 [discrete]
 [[adaptive-resources-enabled-for-search]]

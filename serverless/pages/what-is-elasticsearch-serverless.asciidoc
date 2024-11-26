@@ -12,7 +12,7 @@
 If you haven't used {es} before, first learn the basics in the https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html[core {es} documentation].
 ====
 
-{es} is one of the three available project types on <<intro,{serverless-full}>>.
+{es-serverless} is one of the three available project types on <<intro,{serverless-full}>>.
 
 This project type enables you to use the core functionality of {es}: searching, indexing, storing, and analyzing data of all shapes and sizes.
 
