@@ -6,7 +6,7 @@
 
 Got a project you no longer need and don't want to be charged for? Simply delete it.
 
-Warning: All data is lost. Billing for usage is by the hour and any outstanding charges for usage before you deleted the project will still appear on your next bill.
+WARNING: All data is lost. Billing for usage is by the hour and any outstanding charges for usage before you deleted the project will still appear on your next bill.
 
 To stop being charged for a project:
 

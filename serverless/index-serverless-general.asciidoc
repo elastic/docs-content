@@ -1,5 +1,5 @@
 [[intro]]
-== Welcome to Elastic serverless
+== Welcome to {serverless-full}
 
 include::{docs-content-root}/serverless/pages/welcome-to-serverless.asciidoc[leveloffset=+2]
 
