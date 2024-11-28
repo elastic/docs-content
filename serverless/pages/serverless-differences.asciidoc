@@ -30,7 +30,7 @@ This fully managed approach means many traditional {es} infrastructure APIs and 
 [[elasticsearch-differences-serverless-index-size]]
 == Index size guidelines
 
-Please note the following recommendations for sizing individual indices for optimal performance on {es-serverless}:
+To ensure optimal performance, follow these recommendations for sizing individual indices on {es-serverless}:
 
 |===
 |Use case |Maximum index size |Project configuration
@@ -50,7 +50,7 @@ Please note the following recommendations for sizing individual indices for opti
 
 For large datasets that exceed the recommended maximum size for a single index, consider splitting your data across smaller indices and using an alias to search them collectively.
 
-NOTE: These recommendations do not apply to indices using Better binary quantization (BBQ). Refer to {ref}/dense-vector.html#dense-vector-quantization[vector quantization] in the core {es} docs for more information.
+These recommendations do not apply to indices using better binary quantization (BBQ). Refer to {ref}/dense-vector.html#dense-vector-quantization[vector quantization] in the core {es} docs for more information.
 
 [discrete]
 [[elasticsearch-differences-serverless-apis-availability]]
