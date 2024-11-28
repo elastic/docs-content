@@ -53,6 +53,7 @@ During the free 14 day trial, Elastic provides access to one hosted deployment a
 * You can have one active serverless project at a time.
 * Search Power is limited to 100. This setting only exists in {es-serverless} projects
 * Search Boost Window is limited to 7 days. This setting only exists in {es-serverless} projects
+* Scaling is limited for serverless projects in trials. Failures might occur if the workload requires memory or compute beyond what the above search power and search boost window setting limits can provide.
 
 **How to remove restrictions?**
 
