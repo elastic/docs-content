@@ -6,7 +6,7 @@
 Serverless projects run on cloud platforms, which may undergo changes in availability.
 When availability changes, Elastic makes sure to provide you with a current service status.
 
-To check current and past service availability, go to the Elastic https://status.elastic.co/[service status] page.
+To check current and past service availability, go to the Elastic https://status.elastic.co/?section=serverless[service status] page.
 
 [discrete]
 [[general-serverless-status-subscribe-to-updates]]
@@ -16,7 +16,7 @@ You can be notified about changes to the service status automatically.
 
 To receive service status updates:
 
-. Go to the Elastic https://status.elastic.co/[service status] page.
+. Go to the Elastic https://status.elastic.co/?section=serverless[service status] page.
 . Select **SUBSCRIBE TO UPDATES**.
 . You can be notified in the following ways:
 +
