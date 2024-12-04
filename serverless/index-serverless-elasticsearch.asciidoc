@@ -4,6 +4,8 @@
 <titleabbrev>{es}</titleabbrev>
 ++++
 
+include::./pages/what-is-elasticsearch-serverless.asciidoc[leveloffset=+2]
+
 include::./pages/get-started.asciidoc[leveloffset=+2]
 
 include::./pages/connecting-to-es-endpoint.asciidoc[leveloffset=+2]

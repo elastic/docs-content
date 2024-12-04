@@ -48,9 +48,7 @@ You can run https://www.elastic.co/guide/en/cloud/current/ec-getting-started.htm
 | **Cluster management**
 | Fully managed by Elastic.
 | You provision and manage your hosted clusters. Shared responsibility with Elastic.
-| **Cluster management**
-| Fully managed by Elastic.
-| You provision and manage your hosted clusters. Shared responsibility with Elastic.
+
 | **Scaling**
 | Autoscales out of the box.
 | Manual scaling or autoscaling available for you to enable.
