@@ -35,7 +35,7 @@ Time series, or timestamped data, describes data that changes frequently and "fl
 
 [NOTE]
 ====
-Time series data refers to any document in standard indices or data streams that include the `@timestamp` field.
+Time series data refers to any document in standard indices or data streams that includes the `@timestamp` field.
 ====
 
 You can use these specialized tools to add timestamped data to {es} data streams:
