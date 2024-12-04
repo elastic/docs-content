@@ -5,11 +5,11 @@
 For serverless API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 For serverless changes in Cloud Console, refer to [Elasticsearch Service Documentation: Release notes](https://www.elastic.co/guide/en/cloud/current/ec-release-notes.html).
 
-[[serverless-changelog-deploy@1733120035]]
+[[serverless-changelog-12032024]]
 == December 3, 2024
 
 [discrete]
-[[features-deploy@1733120035]]
+[[features-enhancements-12032024]]
 === Features and enhancements
 * Adds tabs for Import Entities and Engine Status to the Entity Store ({kibana-pull}201235[#201235]).
 * Adds status tracking for agentless integrations to {fleet} ({kibana-pull}199567[#199567]).
@@ -21,7 +21,7 @@ For serverless changes in Cloud Console, refer to [Elasticsearch Service Documen
 * Displays visualization descriptions under their titles ({kibana-pull}198816[#198816]).
 
 [discrete]
-[[fixes-deploy@1733120035]]
+[[fixes-12032024]]
 === Fixes
 * Hides the *Clear* button when no filters are selected ({kibana-pull}200177[#200177]).
 * Fixes a mismatch between how wildcards were handled in previews versus actual rule executions ({kibana-pull}201553[#201553]).
