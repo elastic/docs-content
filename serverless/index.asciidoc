@@ -19,4 +19,4 @@ include::./index-serverless-elasticsearch.asciidoc[]
 include::{observability-serverless}/index.asciidoc[]
 include::{security-serverless}/index.asciidoc[]
 include::./index-serverless-project-settings.asciidoc[]
-
+include::./serverless-changelog.asciidoc[]

@@ -1,0 +1,39 @@
+[[serverless-changelog]]
+[chapter]
+= Serverless changelog
+
+For serverless API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
+For serverless changes in Cloud Console, refer to [Elasticsearch Service Documentation: Release notes](https://www.elastic.co/guide/en/cloud/current/ec-release-notes.html).
+
+[[serverless-changelog-deploy@1733120035]]
+== December 3, 2024
+
+[discrete]
+[[features-deploy@1733120035]]
+=== Features and enhancements
+* Adds tabs for Import Entities and Engine Status to the Entity Store ({kibana-pull}201235[#201235]).
+* Adds status tracking for agentless integrations to {fleet} ({kibana-pull}199567[#199567]).
+* Adds a new machine learning module that can detect anomalous activity in host-based logs ({kibana-pull}195582[#195582]).
+* Allows custom Mapbox Vector Tile sources to style map layers and provide custom legends ({kibana-pull}200656[#200656]).
+* Excludes stale SLOs from counts of healthy and violated SLOs ({kibana-pull}201027[#201027]).
+* Adds a "continue without adding integrations" button to the {elastic-sec} Dashboards page that takes you to the Entity Analytics dashboard ({kibana-pull}201363[#201363]).
+* Sets a minimum width for the DistributionBar EUI component ({kibana-pull}202247[#202247]).
+* Displays visualization descriptions under their titles ({kibana-pull}198816[#198816]).
+
+[discrete]
+[[fixes-deploy@1733120035]]
+=== Fixes
+* Hides the *Clear* button when no filters are selected ({kibana-pull}200177[#200177]).
+* Fixes a mismatch between how wildcards were handled in previews versus actual rule executions ({kibana-pull}201553[#201553]).
+* Fixes incorrect Y-axis and hover values in the Service Inventory's Log rate chart ({kibana-pull}201361[#201361]).
+* Disables the *Add note* button in the alert details flyout for users who lack privileges ({kibana-pull}201707[#201707]).
+* Fixes descriptions of Threshold rules that use cardinality ({kibana-pull}201162[#201162]).
+* Disables the *Install All* button on the Add Elastic Rules page when rule installation is in progress ({kibana-pull}201731[#201731]).
+* Reintroduces a data usage warning on the Entity Analytics Enablement modal ({kibana-pull}201920[#201920]).
+* Improves accessibility for the Create a connector page ({kibana-pull}201590[#201590]).
+* Fixes a bug that could cause {agent}s to get stuck updating during scheduled upgrades ({kibana-pull}202126[#202126]).
+* Fixes a bug related to starting {ml} deployments with autoscaling and 0 active nodes ({kibana-pull}201256[#201256]).
+* Initializes saved objects upon Trained Model page load ({kibana-pull}201426[#201426]).
+* Fixes the display of deployment stats for unallocated deployments of {ml} models ({kibana-pull}202005[#202005]).
+* Enables the solution type "search" for instant deployments ({kibana-pull}201688[#201688]).
+* Improves consistency of alert counts across different views ({kibana-pull}202188[#202188]).
