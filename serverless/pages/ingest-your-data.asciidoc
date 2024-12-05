@@ -33,6 +33,11 @@ You can use these specialized tools to add general content to {es} indices:
 
 Time series, or timestamped data, describes data that changes frequently and "flows" over time, such as stock quotes, system metrics, and network traffic data.
 
+[NOTE]
+====
+Time series data refers to any document in standard indices or data streams that includes the `@timestamp` field.
+====
+
 You can use these specialized tools to add timestamped data to {es} data streams:
 
 * <<elasticsearch-ingest-data-through-beats,{beats}>>

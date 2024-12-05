@@ -36,6 +36,11 @@ The total volume of search-ready data is the sum of the following:
 . The volume of non-time series project data
 . The volume of time series project data included in the Search Boost Window
 
+[NOTE]
+====
+Time series data refers to any document in standard indices or data streams that includes the `@timestamp` field. This field must be present for data to be subject to the Search Boost Window setting.
+====
+
 Each project type offers different settings that let you adjust the performance and volume of search-ready data, as well as the features available in your projects.
 
 [discrete]
