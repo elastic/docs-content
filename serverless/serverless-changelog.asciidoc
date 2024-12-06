@@ -15,7 +15,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 // tag::known-issue[201820]
 [discrete]
-. In {sec-serverless}, the **Exceptions** tab won't properly load if exceptions contain comments with newline characters (`\n`)  
+.In {sec-serverless}, the **Exceptions** tab won't properly load if exceptions contain comments with newline characters (`\n`)  
 [%collapsible]
 ====
 *Details* +
