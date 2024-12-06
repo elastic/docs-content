@@ -37,7 +37,7 @@ For prebuilt rules:
 +
 [source,console]
 ----
-curl -H 'kbn-xsrf: true' -H 'elastic-api-version: 2023-10-31' http://localhost:5601/api/detection_engine/rules?id=167a5f6f-2148-4792-8226-b5e7a58ef46e -u elastic:changeme
+curl -H 'Authorization: ApiKey $API_KEY' -H 'kbn-xsrf: true' -H 'elastic-api-version: 2023-10-31' http://localhost:5601/api/detection_engine/rules?id=167a5f6f-2148-4792-8226-b5e7a58ef46e
 ----
 +
 .. The JSON response will contain the `id`, `list_id`, and `namespace_type` values within the `exceptions_list` key (as shown below). You will need these values to retrieve the exception list using the Exception list API. 
