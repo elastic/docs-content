@@ -15,7 +15,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 // tag::known-issue[201820]
 [discrete]
-.The **Exceptions** tab won't properly load if exceptions contain comments with the newline character (`\n`)  
+. In {sec-serverless}, the **Exceptions** tab won't properly load if exceptions contain comments with newline characters (`\n`)  
 [%collapsible]
 ====
 *Details* +
@@ -25,14 +25,14 @@ On December 5, 2024, it was discovered that the **Exceptions** tab will not load
 
 For custom rules:
 
-. From the {security-app}, <<import-export-rules-ui,export>> the rule or rules with the affected exception lists. 
+. From your {sec-serverless} project, <<import-export-rules-ui,export>> the rule or rules with the affected exception lists. 
 . Modify the `.ndjson` file so `comments` no longer contain newline characters.
-. Return to the {security-app} and <<import-export-rules-ui,re-import>> the rules. Make sure to select the **Overwrite existing exception lists with conflicting "list_id"** option.
+. Return to your project and <<import-export-rules-ui,re-import>> the rules. Make sure to select the **Overwrite existing exception lists with conflicting "list_id"** option.
 
 For prebuilt rules: 
 
 . Fetch the affected exception list ID or IDs that are associated with the rule. 
-.. Find the affected rule's ID (`id`). From the {security-app}, open rule's details page, go to the page's URL, and copy the string at the end. For example, the string `167a5f6f-2148-4792-8226-b5e7a58ef46e` at the end of the URL http://host.name/app/security/rules/id/167a5f6f-2148-4792-8226-b5e7a58ef46e is a rule `id`.
+.. Find the affected rule's ID (`id`). From your {sec-serverless} project, open the rule's details page, go to the page URL, and copy the string at the end. For example, the URL http://host.name/app/security/rules/id/167a5f6f-2148-4792-8226-b5e7a58ef46e contains the `id` `167a5f6f-2148-4792-8226-b5e7a58ef46e` at the end.
 .. Use the `id` to fetch the rule's details using the {api-kibana}/operation/operation-readrule[Retrieve a detection rule API]. Here is an example request that includes the rule ID:
 +
 [source,console]
@@ -64,7 +64,7 @@ curl -XPOST -u elastic:changeme -H 'kbn-xsrf: true' -H 'elastic-api-version: 202
 ----
 +
 . Modify the exception list's `.ndjson` file to ensure that no `comments[].comment` values contain newline characters (`\n`).
-. From the {security-app}, re-import the modified exception list using **Import exception lists** option on the **Shared Exception Lists** page (find the page in the navigation menu or by using the {kibana-ref}/introduction.html#kibana-navigation-search[global search field]).
+. From your {sec-serverless} project, re-import the modified exception list using **Import exception lists** option on the **Shared Exception Lists** page (find the page in the navigation menu or by using the {kibana-ref}/introduction.html#kibana-navigation-search[global search field]).
 +
 The import will initially fail because the exception list already exists. After the failure, an option to overwrite the existing list appears. Select the option, then resubmit the request to import the updated exception list.
 ====
