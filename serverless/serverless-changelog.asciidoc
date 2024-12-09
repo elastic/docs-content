@@ -19,7 +19,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 [%collapsible]
 ====
 *Details* +
-On December 5, 2024, it was discovered that the **Exceptions** tab won't load properly if any exceptions contain comments with newline characters (`\n`) ({kibana-issue}[#201820]). 
+On December 5, 2024, it was discovered that the **Exceptions** tab won't load properly if any exceptions contain comments with newline characters (`\n`) ({kibana-issue}201820[#201820]).
 
 *Workaround* + 
 
