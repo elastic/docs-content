@@ -1,9 +1,54 @@
 [[serverless-changelog]]
 [chapter]
 = Serverless changelog
+++++
+<titleabbrev>Changelog</titleabbrev>
+++++
 
 For serverless API changes, refer to https://www.elastic.co/docs/api/changes[APIs Changelog].
+
 For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/en/cloud/current/ec-release-notes.html[Elasticsearch Service Documentation: Release notes].
+
+[discrete]
+[[serverless-changelog-12092024]]
+== December 9, 2024
+
+[discrete]
+[[features-enhancements-12092024]]
+==== Features and enhancements
+* Elastic Observability Serverless adds a new sub-feature for managing private locations ({kibana-pull}201100[#201100]).
+* Elastic Observability Serverless adds the ability to configure SLO advanced settings from the UI ({kibana-pull}200822[#200822]).
+* Elastic Security Serverless adds support for suppressing EQL sequence alerts ({kibana-pull}189725[#189725]).
+* Elastic Security Serverless adds a `/trained_models_list` endpoint to retrieve complete data for the Trained Model UI ({kibana-pull}200977[#200977]).
+* Machine Learning adds an action to include log rate analysis in a case ({kibana-pull}199694[#199694]).
+* Machine Learning enhances the Kibana API to optimize trained models ({kibana-pull}201549[#201549]).
+
+[discrete]
+[[fixes-deploy@1733724770]]
+==== Fixes
+* Fixes Slack API connectors not being displayed under the Slack connector type when adding a new connector to a rule in Alerting ({kibana-pull}202315[#202315]).
+* Fixes point visibility regression in dashboard visualizations ({kibana-pull}202358[#202358]).
+* Improves help text for creator and view count features on the Dashboard listing page ({kibana-pull}202488[#202488]).
+* Highlights matching field values when performing a KQL search on a keyword field in Discover ({kibana-pull}201952[#201952]).
+* Adds support for the *Inspect* option in saved search embeddables in Discover ({kibana-pull}202947[#202947]).
+* Enables the ability to clear user-specific system prompts in Elastic Observability Serverless ({kibana-pull}202279[#202279]).
+* Fixes an error when opening the rule flyout in Elastic Observability Serverless ({kibana-pull}202386[#202386]).
+* Improves handling of Opsgenie as the default connector in Elastic Observability Serverless ({kibana-pull}201923[#201923]).
+* Fixes issues with actions on charts in Elastic Observability Serverless ({kibana-pull}202443[#202443]).
+* Adds a flyout to the table view in Infrastructure Inventory in Elastic Observability Serverless ({kibana-pull}202646[#202646]).
+* Fixes service names with spaces not being URL-encoded properly for {{context.viewInAppUrl}} in Elastic Observability Serverless ({kibana-pull}202890[#202890]).
+* Enhances access query logic to handle user ID and name conditions in Elastic Observability Serverless ({kibana-pull}202833[#202833]).
+* Fixes an APM rule error message when a KQL filter is invalid in Elastic Observability Serverless ({kibana-pull}203096[#203096]).
+* Restricts and rejects CEF logs in automatic import and redirects them to the CEF integration in Elastic Security Serverless ({kibana-pull}201792[#201792]).
+* Updates the copy of the install rules title and message in Elastic Security Serverless ({kibana-pull}202226[#202226]).
+* Clears errors on the second entity engine initialization API call in Elastic Security Serverless ({kibana-pull}202903[#202903]).
+* Restricts unsupported log formats in Elastic Security Serverless ({kibana-pull}202994[#202994]).
+* Removes errors related to Enterprise Search nodes in Elasticsearch Serverless ({kibana-pull}202437[#202437]).
+* Ensures consistency in web crawler naming in Elasticsearch Serverless ({kibana-pull}202738[#202738]).
+* Fixes editor cursor jumpiness in ES|QL ({kibana-pull}202389[#202389]).
+* Implements rollover of data streams on subobject mapper exceptions in Fleet ({kibana-pull}202689[#202689]).
+* Fixes trained models to retrieve up to 10,000 models when spaces are synced in Machine Learning ({kibana-pull}202712[#202712]).
+* Fixes a Log Rate Analysis embeddable error on the Alerts page in AiOps ({kibana-pull}203093[#203093]).
 
 [discrete]
 [[serverless-changelog-12032024]]
