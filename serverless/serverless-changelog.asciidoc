@@ -19,7 +19,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 [%collapsible]
 ====
 *Details* +
-On December 5, 2024, it was discovered that the **Exceptions** tab won't load properly if any exceptions contain comments with newline characters (`\n`). 
+On December 5, 2024, it was discovered that the **Exceptions** tab won't load properly if any exceptions contain comments with newline characters (`\n`) ({kibana-issue}[#201820]). 
 
 *Workaround* + 
 
@@ -35,7 +35,7 @@ NOTE: If you only need to fix exceptions for the Elastic Endpoint rule, you can 
 
 . Follow these steps to fetch the affected exception list ID or IDs that are associated with the rule: 
 .. Find the affected rule's ID (`id`). From the **Rules** page, open the details of a rule, go to the page URL, and copy the string at the end. For example, in the URL http://host.name/app/security/rules/id/167a5f6f-2148-4792-8226-b5e7a58ef46e, the string at the end (`167a5f6f-2148-4792-8226-b5e7a58ef46e`) is the `id`.
-.. Specify the `id` when fetching the rule's details using the {api-kibana}/operation/operation-readrule[Retrieve a detection rule API]. Here is an example request that includes the `id`:
+.. Specify the `id` when fetching the rule's details using the {api-kibana-serverless}/operation/operation-readrule[Retrieve a detection rule API]. Here is an example request that includes the `id`:
 +
 [source,console]
 ----
@@ -66,9 +66,7 @@ curl -XPOST -H 'Authorization: ApiKey API_KEY_HERE' -H 'kbn-xsrf: true' -H 'elas
 ----
 +
 . Modify the exception list's `.ndjson` file to ensure `comments[].comment` values don't contain newline characters (`\n`).
-. Re-import the modified exception list using **Import exception lists** option on the <<security-shared-exception-lists,**Shared Exception Lists**>> page.
-+
-Note that the import will initially fail because the exception list already exists. After the initial failure, an option to overwrite the existing list will appear. Select the option, then resubmit the request to import the corrected exception list.
+. Re-import the modified exception list using **Import exception lists** option on the <<security-shared-exception-lists,**Shared Exception Lists**>> page. The import will initially fail because the exception list already exists and an option to overwrite the existing list will appear. Select the option, then resubmit the request to import the corrected exception list.
 ====
 // end::known-issue[201820]
 
