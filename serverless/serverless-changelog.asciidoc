@@ -15,7 +15,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[features-enhancements-12092024]]
-==== Features and enhancements
+=== Features and enhancements
 * Elastic Observability Serverless adds a new sub-feature for managing private locations ({kibana-pull}201100[#201100]).
 * Elastic Observability Serverless adds the ability to configure SLO advanced settings from the UI ({kibana-pull}200822[#200822]).
 * Elastic Security Serverless adds support for suppressing EQL sequence alerts ({kibana-pull}189725[#189725]).
@@ -24,8 +24,8 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 * Machine Learning enhances the Kibana API to optimize trained models ({kibana-pull}201549[#201549]).
 
 [discrete]
-[[fixes-deploy@1733724770]]
-==== Fixes
+[[fixes-12092020]]
+=== Fixes
 * Fixes Slack API connectors not being displayed under the Slack connector type when adding a new connector to a rule in Alerting ({kibana-pull}202315[#202315]).
 * Fixes point visibility regression in dashboard visualizations ({kibana-pull}202358[#202358]).
 * Improves help text for creator and view count features on the Dashboard listing page ({kibana-pull}202488[#202488]).
