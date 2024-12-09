@@ -1,2 +1,3 @@
 * @elastic/platform-docs
 /.github/workflows/co-docs-builder.yml @elastic/docs-engineering
+/serverless/serverless-changelog.asciidoc @elastic/docs 
