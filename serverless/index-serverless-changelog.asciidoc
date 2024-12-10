@@ -1,0 +1,10 @@
+[[serverless-changelog]]
+== Serverless changelog
+++++
+<titleabbrev>Changelog</titleabbrev>
+++++
+
+include::./pages/serverless-changelog.asciidoc[leveloffset=+2]
+
+include::./pages/serverless-known-issues.asciidoc[leveloffset=+2]
+
