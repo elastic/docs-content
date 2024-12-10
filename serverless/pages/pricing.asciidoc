@@ -17,6 +17,8 @@ The number of VCUs you need is determined by:
 * Search Power setting
 * Machine learning usage
 
+For detailed {es-serverless} project rates, see the https://www.elastic.co/pricing/serverless-search[{es-serverless} pricing page].
+
 [discrete]
 [[elasticsearch-billing-information-about-the-vcu-types-search-ingest-and-ml]]
 == VCU types: Search, Indexing, and ML
@@ -39,13 +41,13 @@ queries per second (QPS) you require.
 [[elasticsearch-billing-managing-elasticsearch-costs]]
 == Managing {es} costs
 
-You can control costs by using a lower Search Power setting or reducing the amount 
-of retained data. 
+You can control costs using the following strategies:
 
 * **Search Power setting:** <<elasticsearch-manage-project-search-power-settings,Search Power>> controls the speed of searches against your data. With Search Power, you can 
 improve search performance by adding more resources for querying, or you can reduce provisioned 
 resources to cut costs.
 * **Time series data retention:** By limiting the number of days of <<elasticsearch-ingest-time-series-data,time series data>> that are available for caching, 
 you can reduce the number of search VCUs required. 
-
-For detailed {es-serverless} project rates, see the https://www.elastic.co/pricing/serverless-search[{es-serverless} pricing page].
+* **Machine learning trained model autoscaling:** Configure your trained model deployment to allow it to scale down to zero allocations when there are no active inference requests:
+** When starting or updating a trained model deployment, <<enabling-autoscaling-in-kibana-adaptive-resources,Enable adaptive resources>> and set the VCU usage level to *Low*.
+** When using the inference API for Elasticsearch or ELSER, <<enabling-autoscaling-through-apis-adaptive-allocations,enable `adaptive_allocations`>>.
