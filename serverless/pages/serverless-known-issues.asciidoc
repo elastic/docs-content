@@ -6,9 +6,9 @@
 
 [discrete]
 [[known-issues-201820]]
-== The {sec-serverless} Exceptions tab fails to load with newline characters in comments 
+== Exceptions tab fails to load
 
-On December 5, 2024, it was discovered the **Exceptions** tab fails to load when exceptions contain comments with newline characters (`\n`). For details, refer to ({kibana-issue}201820[#201820]).
+On December 5, 2024, it was discovered the {sec-serverless} **Exceptions** tab fails to load when exceptions contain comments with newline characters (`\n`). For details, refer to ({kibana-issue}201820[#201820]).
 
 *Custom rules workaround* + 
 
@@ -21,8 +21,10 @@ On December 5, 2024, it was discovered the **Exceptions** tab fails to load when
 . For the exception lists with newline characters, fetch the IDs associated with the rule.
 .. Go to the **Rules** page.
 .. Open the rule details, then go to the page URL.
-.. Copy the URL `id`. For example, in the http://host.name/app/security/rules/id/167a5f6f-2148-4792-8226-b5e7a58ef46e URL, copy the `167a5f6f-2148-4792-8226-b5e7a58ef46e` `id`.
-.. To specify the `id` when fetching the rule details, use the {api-kibana-serverless}/operation/operation-readrule[retrieve a detection rule API]. For example:
+.. Copy the URL id string. 
++
+For example, in the http://host.name/app/security/rules/id/167a5f6f-2148-4792-8226-b5e7a58ef46e URL, copy the `167a5f6f-2148-4792-8226-b5e7a58ef46e` id string.
+.. To specify the `id` when fetching the rule details, use the {api-kibana-serverless}/operation/operation-readrule[retrieve a detection rule API]:
 +
 [source,console]
 ----
