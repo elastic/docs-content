@@ -4,20 +4,24 @@
 // :description: Set up and use the Python client for {es3}.
 // :keywords: serverless, elasticsearch, python, how to
 
+This page guides you through the installation process of the Python
+client, shows you how to initialize the client, and how to perform basic
+{es} operations with it.
+
+See the
+https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/index.html[Python
+client] documentation for more detailed usage instructions.
+
 [NOTE]
 ====
-This client is for use with {es-serverless} only. See also the https://www.elastic.co/guide/en/elasticsearch/client/index.html[{es} clients]. 
+The same client is used for {es3}, on-premise and managed Elasticsearch. Some API endpoints are however not available in {es3}.
 ====
-
-This page guides you through the installation process of the Python
-client for {es3}, shows you how to initialize the client, and how to perform basic
-{es} operations with it.
 
 [discrete]
 [[elasticsearch-python-client-getting-started-requirements]]
 == Requirements
 
-* Python 3.7 or higher
+* Python 3.9 or higher
 * https://pip.pypa.io/en/stable/[`pip`]
 
 [discrete]
@@ -39,7 +43,7 @@ commands:
 
 [source,bash]
 ----
-python -m pip install elasticsearch-serverless
+python -m pip install elasticsearch
 ----
 
 [discrete]
@@ -50,7 +54,7 @@ Initialize the client using your API key and {es} endpoint:
 
 [source,python]
 ----
-from elasticsearch_serverless import Elasticsearch
+from elasticsearch import Elasticsearch
 
 client = Elasticsearch(
     "https://...",  # Your project's Elasticsearch endpoint
