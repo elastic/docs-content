@@ -10,14 +10,13 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[breaking-changes-12162024]]
-=== Breaking changes
+=== Deprecations
 * Deprecates the `discover:searchFieldsFromSource` setting ({kibana-pull}202679[#202679]).
 * Disables scripted field creation in the Data Views management page ({kibana-pull}202250[#202250]).
 * Removes all logic based on the following settings: `xpack.reporting.roles.enabled`,
 `xpack.reporting.roles.allow` ({kibana-pull}200834[#200834]).
 * Removes the legacy table from Discover ({kibana-pull}201254[#201254]).
-* Adds a new sub-feature privilege under **Synthetics and Uptime** `Can manage private locations` ({kibana-pull}201100[#201100]).
-* Removes ephemeral tasks from action and alerting plugins ({kibana-pull}197421[#197421]).
+* Deprecates ephemeral tasks from action and alerting plugins ({kibana-pull}197421[#197421]).
 
 [discrete]
 [[features-enhancements-12162024]]
@@ -27,6 +26,8 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 * Improves AI Assistant's response quality by giving it access to Elastic's product documentation ({kibana-pull}199694[#199694]).
 * Adds support for suppressing EQL sequence alerts ({kibana-pull}189725[#189725]).
 * Adds an *Advanced settings* section to the SLO form ({kibana-pull}200822[#200822]). 
+* Adds a new sub-feature privilege under **Synthetics and Uptime** `Can manage private locations` ({kibana-pull}201100[#201100]).
+
 
 [discrete]
 [[fixes-12162024]]
