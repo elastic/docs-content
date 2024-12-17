@@ -9,7 +9,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 == December 16, 2024
 
 [discrete]
-[[breaking-changes-12162024]]
+[[deprecations-12162024]]
 === Deprecations
 * Deprecates the `discover:searchFieldsFromSource` setting ({kibana-pull}202679[#202679]).
 * Disables scripted field creation in the Data Views management page ({kibana-pull}202250[#202250]).
