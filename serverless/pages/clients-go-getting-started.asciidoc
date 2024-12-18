@@ -1,7 +1,7 @@
 [[elasticsearch-go-client-getting-started]]
-= Get started with the serverless Go client
+= Get started with the Elasticsearch Go client
 
-// :description: Set up and use the Go client for {es3}.
+// :description: Set up and use the Go client.
 // :keywords: serverless, elasticsearch, go, how to
 
 [NOTE]
@@ -17,7 +17,7 @@ client for {es3}, shows you how to initialize the client, and how to perform bas
 [[elasticsearch-go-client-getting-started-requirements]]
 == Requirements
 
-* Go 1.20 or higher installed on your system.
+* Go 1.22 or higher installed on your system.
 
 [discrete]
 [[elasticsearch-go-client-getting-started-installation]]
@@ -32,7 +32,7 @@ commands:
 
 [source,bash]
 ----
-go get -u github.com/elastic/elasticsearch-serverless-go@latest
+go get -u github.com/elastic/go-elasticsearch/v8@latest
 ----
 
 [discrete]
@@ -50,9 +50,9 @@ import (
   "log"
   "strconv"
 
-  "github.com/elastic/elasticsearch-serverless-go"
-  "github.com/elastic/elasticsearch-serverless-go/typedapi/types"
-  "github.com/elastic/elasticsearch-serverless-go/typedapi/types/enums/result"
+  "github.com/elastic/go-elasticsearch/v8"
+  "github.com/elastic/go-elasticsearch/v8/typedapi/types"
+  "github.com/elastic/go-elasticsearch/v8/typedapi/types/enums/result"
 )
 ----
 
@@ -64,12 +64,12 @@ Initialize the client using your API key and {es} endpoint:
 
 [source,go]
 ----
-client, err := elasticsearch.NewClient(elasticsearch.Config{
-  APIKey: "you_api_key",
-  Address: "https://my-project-url",
+client, err := elasticsearch.NewTypedClient(elasticsearch.Config{
+    Addresses: []string{"https://my-project-url"},
+    APIKey:    "your-api-key",
 })
 if err != nil {
-    log.Fatal(err)
+    log.Fatalf("Error creating the client: %s", err)
 }
 ----
 
