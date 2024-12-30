@@ -156,7 +156,6 @@ The following features are planned for future support in all {serverless-full} p
 * Snapshot and restore
 * Migrations from non-serverless deployments
 * Audit logging
-* Authentication realms (native/SAML/OIDC/Kerberos/JWT)
 * Clone index API
 * Traffic filtering and VPCs
 
