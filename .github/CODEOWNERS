@@ -1,4 +1,4 @@
-/.github/ @elastic/docs-leads
+/.github/ @elastic/doc-leads
 /.github/workflows/co-docs-builder.yml @elastic/docs-engineering
 
 /serverless/ @elastic/platform-docs
