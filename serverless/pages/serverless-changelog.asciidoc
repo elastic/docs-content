@@ -11,40 +11,39 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 [discrete]
 [[deprecations-01062025]]
 ==== Deprecations
-* Disables log stream and settings pages ({kibana-pull}203996[#203996]). 
-* Removes Logs Explorer ({kibana-pull}203685[#203685]). 
+* Disables Elastic Observability Serverless log stream and settings pages ({kibana-pull}203996[#203996]). 
+* Removes Logs Explorer in Elastic Observability Serverless ({kibana-pull}203685[#203685]). 
 
 
 [discrete]
 [[features-01062025]]
 ==== New features
-* Introduces case observables (phase 0 & 1) ({kibana-pull}190237[#190237]).
+* Introduces case observables in Elastic Security Serverless ({kibana-pull}190237[#190237]).
 
 [discrete]
 [[enhancements-01062025]]
 ==== Enhancements
-* Passes any field to ServiceNow using the ServiceNow SecOps connector with a JSON field called "additional fields" ({kibana-pull}201948[#201948]).
-* Configures appearance color mode to sync dark mode with the system value ({kibana-pull}203406[#203406]).
-* Makes the "Copy" action visible on cell hover ({kibana-pull}204744[#204744]).
-* Updates `EnablementModalCallout`` name to `AdditionalChargesMessage` ({kibana-pull}203061[#203061]).
-* Provides users additional control over which alerts in Attack Discovery are included as context to the large language model (LLM) ({kibana-pull}205070[#205070]).
+* Adds the ability to pass any field to ServiceNow using the ServiceNow SecOps connector with a JSON field called "additional fields" ({kibana-pull}201948[#201948]).
+* Adds the ability to configure the appearance color mode to sync dark mode with the system value ({kibana-pull}203406[#203406]).
+* Makes the "Copy" action visible on cell hover in Discover ({kibana-pull}204744[#204744]).
+* Updates the `EnablementModalCallout` name to `AdditionalChargesMessage` in Elastic Security Serverless ({kibana-pull}203061[#203061]).
+* Adds more control over which Elastic Security Serverless alerts in Attack Discovery are included as context to the large language model ({kibana-pull}205070[#205070]).
 * Adds a consistent layout and other UI enhancements for {ml} pages ({kibana-pull}203813[#203813]).
-* Sets HTTP2 as the default if SSL is enabled, and adds a deprecation log if SSL is not enabled or protocol is set to HTTP1 ({kibana-pull}204384[#204384]).
 
 [discrete]
 [[fixes-01062025]]
 ==== Fixes
 * Fixes an issue that caused dashboards to lag when dragging the time slider ({kibana-pull}201885[#201885]).
-* Switches to the latest CloudFormation template ({kibana-pull}204185[#204185]).
-* Fixes Integration and Datastream name validation ({kibana-pull}204943[#204943]).
-* Ensures that the field mapping for Automatic Import contains the `@timestamp` field whenever possible ({kibana-pull}204931[#204931]).
-* Fixes how Automatic Import generates accesses for the field names that are not valid Painless identifiers ({kibana-pull}205220[#205220]).
-* Aligns native box connector configurations ({kibana-pull}203241[#203241]).
-* Fixes the "Show all agent tags" option when the agent list is filtered ({kibana-pull}205163[#205163]).
-* Data frame analytics: Updates Results Explorer flyout footer buttons alignment ({kibana-pull}204735[#204735]).
-* Data frame analytics: Adds a missing space between lines in delete job modal ({kibana-pull}204732[#204732]).
-* Anomaly Detection: Fixes an issue where the Refresh button in the Datafeed counts table was unresponsive ({kibana-pull}204625[#204625]).
-* Fixes an inference timeout check in File Upload ({kibana-pull}204722[#204722]).
+* Updates the CloudFormation template to the latest version and adjusts the documentation to reflect the use of a single Firehose stream created by the new template ({kibana-pull}204185[#204185]).
+* Fixes Integration and Datastream name validation in Elastic Security Serverless ({kibana-pull}204943[#204943]).
+* Fixes an issue in the Automatic Import process where there is now inclusion of the `@timestamp` field in ECS field mappings whenever possible ({kibana-pull}204931[#204931]).
+* Fixes an Automatic Import issue to safely generate access for field names that are not valid Painless identifiers in `if` contexts ({kibana-pull}205220[#205220]).
+* Aligns the Box Native Connector configuration fields with the source of truth in the connectors codebase, correcting mismatches and removing unused configurations ({kibana-pull}203241[#203241]).
+* Fixes the "Show all agent tags" option in Fleet when the agent list is filtered ({kibana-pull}205163[#205163]).
+* Updates the Results Explorer flyout footer buttons alignment in Data Frame Analytics ({kibana-pull}204735[#204735]).
+* Adds a missing space between lines in the Data Frame Analytics delete job modal ({kibana-pull}204732[#204732]).
+* Fixes an issue where the Refresh button in the Anomaly Detection Datafeed counts table was unresponsive ({kibana-pull}204625[#204625]).
+* Fixes the inference timeout check in File Upload ({kibana-pull}204722[#204722]).
 * Fixes the side bar navigation for the Data Visualizer ({kibana-pull}205170[#205170]).
 
 [discrete]
