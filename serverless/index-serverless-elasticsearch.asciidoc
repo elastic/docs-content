@@ -11,13 +11,6 @@ include::./pages/get-started.asciidoc[leveloffset=+2]
 include::./pages/connecting-to-es-endpoint.asciidoc[leveloffset=+2]
 
 include::./pages/clients.asciidoc[leveloffset=+2]
-include::./pages/clients-go-getting-started.asciidoc[leveloffset=+3]
-include::./pages/clients-java-getting-started.asciidoc[leveloffset=+3]
-include::./pages/clients-dot-net-getting-started.asciidoc[leveloffset=+3]
-include::./pages/clients-nodejs-getting-started.asciidoc[leveloffset=+3]
-include::./pages/clients-php-getting-started.asciidoc[leveloffset=+3]
-include::./pages/clients-python-getting-started.asciidoc[leveloffset=+3]
-include::./pages/clients-ruby-getting-started.asciidoc[leveloffset=+3]
 
 include::./pages/apis-http-apis.asciidoc[leveloffset=+2]
 include::./pages/apis-elasticsearch-conventions.asciidoc[leveloffset=+3]
