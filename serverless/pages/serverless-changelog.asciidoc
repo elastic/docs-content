@@ -16,7 +16,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[features-enhancements-01062025]]
-=== Features and enhancements
+==== Features and enhancements
 * Introduces case observables in Elastic Security Serverless ({kibana-pull}190237[#190237]).
 * Adds a JSON field called "additional fields" to ServiceNow cases when sent using connector, containing the internal names of the ServiceNow table columns ({kibana-pull}201948[#201948]).
 * Adds the ability to configure the appearance color mode to sync dark mode with the system value ({kibana-pull}203406[#203406]).
@@ -43,11 +43,11 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[serverless-changelog-12162024]]
-== December 16, 2024
+=== December 16, 2024
 
 [discrete]
 [[deprecations-12162024]]
-=== Deprecations
+==== Deprecations
 * Deprecates the `discover:searchFieldsFromSource` setting ({kibana-pull}202679[#202679]).
 * Disables scripted field creation in the Data Views management page ({kibana-pull}202250[#202250]).
 * Removes all logic based on the following settings: `xpack.reporting.roles.enabled`,
@@ -57,7 +57,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[features-enhancements-12162024]]
-=== Features and enhancements
+==== Features and enhancements
 * Optimizes the Kibana Trained Models API ({kibana-pull}200977[#200977]).
 * Adds a *Create Case* action to the *Log rate analysis* page ({kibana-pull}201549[#201549]).
 * Improves AI Assistant's response quality by giving it access to Elastic's product documentation ({kibana-pull}199694[#199694]).
@@ -68,7 +68,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[fixes-12162024]]
-=== Fixes
+==== Fixes
 * Fixes point visibility regression ({kibana-pull}202358[#202358]).
 * Improves help text of creator and view count features on dashboard listing page ({kibana-pull}202488[#202488]).
 * Highlights matching field values when performing a KQL search on a keyword field ({kibana-pull}201952[#201952]).
@@ -96,11 +96,11 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[serverless-changelog-12092024]]
-== December 9, 2024
+=== December 9, 2024
 
 [discrete]
 [[features-enhancements-12092024]]
-=== Features and enhancements
+==== Features and enhancements
 * Elastic Observability Serverless adds a new sub-feature for managing private locations ({kibana-pull}201100[#201100]).
 * Elastic Observability Serverless adds the ability to configure SLO advanced settings from the UI ({kibana-pull}200822[#200822]).
 * Elastic Security Serverless adds support for suppressing EQL sequence alerts ({kibana-pull}189725[#189725]).
@@ -110,7 +110,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[fixes-12092020]]
-=== Fixes
+==== Fixes
 * Fixes Slack API connectors not being displayed under the Slack connector type when adding a new connector to a rule in Alerting ({kibana-pull}202315[#202315]).
 * Fixes point visibility regression in dashboard visualizations ({kibana-pull}202358[#202358]).
 * Improves help text for creator and view count features on the Dashboard listing page ({kibana-pull}202488[#202488]).
@@ -137,11 +137,11 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[serverless-changelog-12032024]]
-== December 3, 2024
+=== December 3, 2024
 
 [discrete]
 [[features-enhancements-12032024]]
-=== Features and enhancements
+==== Features and enhancements
 * Adds tabs for Import Entities and Engine Status to the Entity Store ({kibana-pull}201235[#201235]).
 * Adds status tracking for agentless integrations to {fleet} ({kibana-pull}199567[#199567]).
 * Adds a new {ml} module that can detect anomalous activity in host-based logs ({kibana-pull}195582[#195582]).
@@ -152,7 +152,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[fixes-12032024]]
-=== Fixes
+==== Fixes
 * Hides the *Clear* button when no filters are selected ({kibana-pull}200177[#200177]).
 * Fixes a mismatch between how wildcards were handled in previews versus actual rule executions ({kibana-pull}201553[#201553]).
 * Fixes incorrect Y-axis and hover values in the Service Inventory's Log rate chart ({kibana-pull}201361[#201361]).
