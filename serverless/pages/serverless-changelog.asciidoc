@@ -6,11 +6,11 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[serverless-changelog-01062025]]
-=== January 6, 2025
+== January 6, 2025
 
 [discrete]
 [[deprecations-01062025]]
-==== Deprecations
+=== Deprecations
 * Disables Elastic Observability Serverless log stream and settings pages ({kibana-pull}203996[#203996]). 
 * Removes Logs Explorer in Elastic Observability Serverless ({kibana-pull}203685[#203685]). 
 
@@ -27,7 +27,7 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 
 [discrete]
 [[fixes-01062025]]
-==== Fixes
+=== Fixes
 * Fixes an issue that caused dashboards to lag when dragging the time slider ({kibana-pull}201885[#201885]).
 * Updates the CloudFormation template to the latest version and adjusts the documentation to reflect the use of a single Firehose stream created by the new template ({kibana-pull}204185[#204185]).
 * Fixes Integration and Datastream name validation in Elastic Security Serverless ({kibana-pull}204943[#204943]).
