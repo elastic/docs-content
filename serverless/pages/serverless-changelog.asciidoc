@@ -14,15 +14,10 @@ For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/e
 * Disables Elastic Observability Serverless log stream and settings pages ({kibana-pull}203996[#203996]). 
 * Removes Logs Explorer in Elastic Observability Serverless ({kibana-pull}203685[#203685]). 
 
-
 [discrete]
-[[features-01062025]]
-==== New features
+[[features-enhancements-01062025]]
+=== Features and enhancements
 * Introduces case observables in Elastic Security Serverless ({kibana-pull}190237[#190237]).
-
-[discrete]
-[[enhancements-01062025]]
-==== Enhancements
 * Adds a JSON field called "additional fields" to ServiceNow cases when sent using connector, containing the internal names of the ServiceNow table columns ({kibana-pull}201948[#201948]).
 * Adds the ability to configure the appearance color mode to sync dark mode with the system value ({kibana-pull}203406[#203406]).
 * Makes the "Copy" action visible on cell hover in Discover ({kibana-pull}204744[#204744]).
