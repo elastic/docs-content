@@ -1,5 +1,5 @@
 [[elasticsearch-python-client-getting-started]]
-= Get started with the Elasticsearch Python client
+= Get started with the Python client
 
 // :description: Set up and use the Python client for {es3}.
 // :keywords: serverless, elasticsearch, python, how to
