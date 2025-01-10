@@ -1,6 +1,9 @@
 # vscode stuff
 .vscode/
 
+# docs-builder default output
+.artifacts
+
 # vs stuff
 .vs/
 
