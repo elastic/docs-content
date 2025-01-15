@@ -1,0 +1,15 @@
+project: "docs-content"
+exclude:
+  - '_*.md'
+  - 'README.md'
+toc:
+  - file: index.md
+  - toc: elastic-basics
+  - toc: solutions
+  - toc: manage-data
+  - toc: explore-analyze
+  - toc: deploy-manage
+  - toc: troubleshoot
+  - toc: extend
+  - toc: whats-new
+  - toc: reference

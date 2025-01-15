@@ -1,5 +1,9 @@
 # vscode stuff
-.vscode/
+.vscode/*
+!.vscode/tasks.json
+
+# docs-builder default output
+.artifacts
 
 # vs stuff
 .vs/
