@@ -5,6 +5,49 @@ For serverless API changes, refer to https://www.elastic.co/docs/api/changes[API
 For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/en/cloud/current/ec-release-notes.html[Elasticsearch Service Documentation: Release notes].
 
 [discrete]
+[[serverless-changelog-01132025]]
+=== January 13, 2025
+
+[discrete]
+[[deprecations-01132025]]
+==== Deprecations
+* Remove all legacy risk engine code and features ({kibana-pull}201810[#201810]).
+
+[discrete]
+[[features-enhancements-01132025]]
+==== Features and enhancements
+* Adds last alert status change to Elastic Security Serverless flyout ({kibana-pull}205224[#205224]).
+* Case templates are now GA ({kibana-pull}205940[#205940]).
+* Adds format to JSON messages in Elastic Observability Serverless Logs profile ({kibana-pull}205666[#205666]).
+* Adds inference connector in Elastic Security Serverless AI features ({kibana-pull}204505[#204505]).
+* Adds inference connector for Auto Import in Elastic Security Serverless ({kibana-pull}206111[#206111]).
+* Adds Feature Flag Support for Cloud Security Posture Plugin in Elastic Security Serverless ({kibana-pull}205438[#205438]).
+* Adds the ability to sync Machine Learning saved objects to all spaces ({kibana-pull}202175[#202175]).
+* Improves messages for recovered alerts in Machine Learning Transforms ({kibana-pull}205721[#205721]).
+
+[discrete]
+[[fixes-01132025]]
+==== Fixes
+* Fixes an issue where "KEEP" columns are not applied after an Elasticsearch error in Discover ({kibana-pull}205833[#205833]).
+* Resolves padding issues in the document comparison table in Discover ({kibana-pull}205984[#205984]).
+* Fixes a bug affecting bulk imports for the knowledge base in Elastic Observability Serverless ({kibana-pull}205075[#205075]).
+* Enhances the Find API by adding cursor-based pagination (search_after) as an alternative to offset-based pagination ({kibana-pull}203712[#203712]).
+* Updates Elastic Observability Serverless to use architecture-specific Elser models ({kibana-pull}205851[#205851]).
+* Fixes dynamic batching in the timeline for Elastic Security Serverless ({kibana-pull}204034[#204034]).
+* Resolves a race condition bug in Elastic Security Serverless related to OpenAI errors ({kibana-pull}205665[#205665]).
+* Improves the integration display by ensuring all policies are listed in Elastic Security Serverless ({kibana-pull}205103[#205103]).
+* Renames color variables in the user interface for better clarity and consistency  ({kibana-pull}204908[#204908]).
+* Allows editor suggestions to remain visible when the inline documentation flyout is open in ES|QL ({kibana-pull}206064[#206064]).
+* Ensures the same time range is applied to documents and the histogram in ES|QL ({kibana-pull}204694[#204694]).
+* Fixes validation for the "required" field in multi-text input fields in Fleet ({kibana-pull}205768[#205768]).
+* Fixes timeout issues for bulk actions in Fleet ({kibana-pull}205735[#205735]).
+* Handles invalid RRule parameters to prevent infinite loops in alerts ({kibana-pull}205650[#205650]).
+* Fixes privileges display for features and sub-features requiring "All Spaces" permissions in Fleet ({kibana-pull}204402[#204402]).
+* Prevents password managers from modifying disabled input fields ({kibana-pull}204269[#204269]).
+* Updates the listing control in the user interface ({kibana-pull}205914[#205914]).
+* Improves consistency in the help dropdown design ({kibana-pull}206280[#206280]).
+
+[discrete]
 [[serverless-changelog-01062025]]
 === January 6, 2025
 
