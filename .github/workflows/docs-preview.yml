@@ -17,9 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: elastic/docs-builder@main
-        with:
-          strict: false
       - uses: elastic/docs-builder/actions/preview@feature/consumer-preview-action
         with:
           strict: false
