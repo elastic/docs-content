@@ -1,23 +1,20 @@
-name: docs-preview
+name: PR
+
 on:
-  pull_request_target:
-    types: [opened]
-    paths:
-      - '**.asciidoc'
-      - '**.jpg'
-      - '**.png'
-      - '**.gif'
+  pull_request:
 
 permissions:
-  pull-requests: write
+  contents: read
+  id-token: write
+  deployments: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  doc-preview-pr:
+  docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: elastic/docs/.github/actions/docs-preview@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          repo: ${{ github.event.repository.name }}
-          preview-path: 'guide/index.html'
-          pr: ${{ github.event.pull_request.number }}
+      - uses: actions/checkout@v4
+      - uses: elastic/docs-builder/actions/preview@feature/consumer-preview-action
