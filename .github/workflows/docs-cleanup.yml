@@ -1,0 +1,14 @@
+name: docs
+
+on:
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  docs-preview:
+    uses: elastic/docs-builder/.github/workflows/preview-cleanup.yml@feature/consumer-preview-action
+    permissions:
+      contents: read
+      id-token: write
+      deployments: write
