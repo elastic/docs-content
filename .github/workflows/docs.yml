@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   docs-preview:
-    uses: elastic/docs-builder/.github/workflows/preview.yml@feature/consumer-preview-action
+    uses: elastic/docs-builder/.github/workflows/preview.yml@main
     permissions:
       contents: read
       id-token: write
