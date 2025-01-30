@@ -11,5 +11,5 @@ Find Playground in the {es-serverless} UI under **{es} > Build > Playground**.
 
 [NOTE]
 ====
-ℹ️ The Playground documentation currently lives in the https://www.elastic.co/guide/en/kibana/master/playground.html[{kib} docs].
+ℹ️ The Playground documentation currently lives in the {kibana-ref}/playground.html[{kib} docs].
 ====
