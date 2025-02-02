@@ -1,7 +1,6 @@
 project: 'Elastic documentation'
 exclude:
   - 'README.md'
-  - 'raw-migrated-files/*'
 toc:
   - file: index.md
   - toc: get-started
