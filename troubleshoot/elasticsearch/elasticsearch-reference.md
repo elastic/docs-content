@@ -74,7 +74,7 @@ If none of these guides relate to your issue, or you need further assistance, th
 
     * Go directly to the [Support Portal](http://support.elastic.co)
     * From the {{ess}} Console, go to the [Support page](https://cloud.elastic.co/support?page=docs&placement=docs-body), or select the support icon that looks like a life preserver on any page.
-    * Contact us by email: [support@elastic.co](mailto:support@elastic.co)
+    * Contact us by email: `support@elastic.co`
 
         ::::{tip}
         If you contact us by email, use the email address that you registered with so that we can help you more quickly. If you are using a distribution list as your registered email, you can also register a second email address with us. Just open a case to let us know the name and email address you want to add.
@@ -82,4 +82,3 @@ If none of these guides relate to your issue, or you need further assistance, th
         ::::
 
 * For users without an active subscription, visit the [Elastic community forums](https://discuss.elastic.co/) and get answers from the experts in the community, including people from Elastic.
-

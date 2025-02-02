@@ -14,5 +14,4 @@ You can now use the email address from Step 1 to do the following:
 * Sign up for a new account.
 * [Join an existing organization](../../../deploy-manage/cloud-organization.md).
 
-For questions or any problems, contact us at [support@elastic.co](mailto:support@elastic.co).
-
+For questions or any problems, contact us at `support@elastic.co`.

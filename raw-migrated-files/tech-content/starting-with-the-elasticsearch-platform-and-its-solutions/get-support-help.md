@@ -20,7 +20,7 @@ There are three ways you can reach out to get support:
     ::::
 
 * **From the {{ecloud}} Console.** Go to the [Support page](https://cloud.elastic.co/support?page=docs&placement=docs-body) or select the support icon, that looks like a life preserver, on any page in the console.
-* **By email: [support@elastic.co](mailto:support@elastic.co)**. If you contact us by email, please use the email address that you registered with, so that we can help you more quickly. If you are using a distribution list as your registered email, you can also register a second email address with us. Just open a case to let us know the name and email address you would like to be added.
+* **By email: `support@elastic.co`**. If you contact us by email, please use the email address that you registered with, so that we can help you more quickly. If you are using a distribution list as your registered email, you can also register a second email address with us. Just open a case to let us know the name and email address you would like to be added.
 
 When opening a case, there are a few things you can do to get help faster:
 

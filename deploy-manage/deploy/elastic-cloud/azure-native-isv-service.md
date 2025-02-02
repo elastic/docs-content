@@ -182,7 +182,7 @@ $$$azure-integration-azure-rbac$$$Does {{ecloud}} Azure Native ISV Service suppo
 :   Yes. Currently [{{ecloud}} RBAC capability](../../users-roles/cloud-organization/user-roles.md) is available only from the {{ecloud}} Console and is not integrated with Azure Portal. This means that the users who will interact with Elastic resources from Azure Portal will not be recognized by the {{ecloud}} RBAC policies.
 
 $$$azure-integration-prior-cloud-account$$$I already have an {{ecloud}} account, can I use this service?
-:   Yes. If you already have an {{ecloud}} account with the same email address as your Azure account you may need to contact [support@elastic.co](mailto:support@elastic.co).
+:   Yes. If you already have an {{ecloud}} account with the same email address as your Azure account you may need to contact `support@elastic.co`.
 
 $$$azure-integration-convert-trial$$$Can I sign up for an {{ecloud}} trial account and then convert to the {{ecloud}} Azure Native ISV Service?
 :   Yes. You can start a [free Elasticsearch Service trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and then convert your account over to Azure. There are a few requirements:
@@ -528,7 +528,7 @@ $$$azure-integration-support$$$How do I get support?
         :::
 
 
-    In case your {{ecloud}} resource is not fully set up and you’re not able to access the Support page, you can always send an email to [support@elastic.co](mailto:support@elastic.co).
+    In case your {{ecloud}} resource is not fully set up and you’re not able to access the Support page, you can always send an email to `support@elastic.co`.
 
 
 $$$azure-integration-change-level$$$How can I change my subscription level / support level?

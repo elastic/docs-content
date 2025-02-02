@@ -55,7 +55,7 @@ To subscribe to Elasticsearch Service through the AWS Marketplace:
 
 ## Troubleshooting [ec-billing-aws-troubleshooting]
 
-This section describes some scenarios that you may experience onboarding onto the marketplace offer. If you’re running into issues with your marketplace subscription or are encountering technical issues, create a support case or contact [support@elastic.co](mailto:support@elastic.co).
+This section describes some scenarios that you may experience onboarding onto the marketplace offer. If you’re running into issues with your marketplace subscription or are encountering technical issues, create a support case or contact `support@elastic.co`.
 
 * [I receive an error message telling me that I’m already signed up using an Elastic Cloud email address.](#ec-awsmp-account-collision01)
 * [When I try to configure a new account from the AWS console, I get the Elastic Cloud login page, not the sign-up page. If I sign up to a new account it is not connected to the marketplace.](#ec-awsmp-account-collision02)
@@ -74,7 +74,7 @@ This occurs when you attempt to sign up to the marketplace offer using an email 
 
 If the Elastic Cloud login page displays when coming from the AWS console, then an Elastic Cloud account is already connected to your marketplace subscription. Log into Elastic Cloud with that account to continue. If you can’t remember your password, use the **Forgot password?** link to reset your password.
 
-If you can’t remember which email address you used to sign up to Elastic Cloud, or you need more help, contact [support@elastic.co](mailto:support@elastic.co).
+If you can’t remember which email address you used to sign up to Elastic Cloud, or you need more help, contact `support@elastic.co`.
 
 
 ### When I try to configure an account from the AWS console I get an error that an active AWS subscription already exists. [ec-awsmp-account-collision03]

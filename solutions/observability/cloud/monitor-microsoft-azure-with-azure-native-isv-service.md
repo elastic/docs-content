@@ -29,7 +29,7 @@ The full product name in the Azure integrated marketplace is `Elastic Cloud (Ela
 ## Step 1: Create an {{es}} resource in the Azure portal [azure-create-resource]
 
 ::::{important}
-These steps will not work if you have an active GCP or AWS deployment in {{ecloud}} that is already associated with the email address used for your Azure account. To avoid this problem, delete your GCP and AWS deployments in {{ecloud}}, or use a different Azure account. If this does not resolve your issue, reach out to us at [support@elastic.co](mailto:support@elastic.co).
+These steps will not work if you have an active GCP or AWS deployment in {{ecloud}} that is already associated with the email address used for your Azure account. To avoid this problem, delete your GCP and AWS deployments in {{ecloud}}, or use a different Azure account. If this does not resolve your issue, reach out to us at `support@elastic.co`.
 ::::
 
 

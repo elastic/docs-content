@@ -11,7 +11,7 @@ mapped_pages:
 
 Use the `always` condition to perform the watch actions whenever the watch is triggered, unless they are [throttled](actions.md#actions-ack-throttle).
 
-The `always` condition enables you to perform watch actions on a fixed schedule, such as, *"Every Friday at noon, send a status report email to [sys.admin@example.com](mailto:sys.admin@example.com)."*
+The `always` condition enables you to perform watch actions on a fixed schedule, such as, *"Every Friday at noon, send a status report email to `sys.admin@example.com`"*
 
 ## Using the always condition [_using_the_always_condition]
 
@@ -24,5 +24,3 @@ There are no attributes to specify for the `always` condition. To explicitly use
   "always" : {}
 }
 ```
-
-
