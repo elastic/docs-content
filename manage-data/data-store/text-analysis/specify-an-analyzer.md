@@ -79,10 +79,10 @@ PUT my-index-000001
 
 ## How {{es}} determines the search analyzer [specify-search-analyzer]
 
-::::{warning} 
+::::{warning}
 In most cases, specifying a different search analyzer is unnecessary. Doing so could negatively impact relevancy and result in unexpected search results.
 
-If you choose to specify a separate search analyzer, we recommend you thoroughly [test your analysis configuration](test-https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) before deploying in production.
+If you choose to specify a separate search analyzer, we recommend you thoroughly [test your analysis configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) before deploying in production.
 
 ::::
 
@@ -90,7 +90,7 @@ If you choose to specify a separate search analyzer, we recommend you thoroughly
 At search time, {{es}} determines which analyzer to use by checking the following parameters in order:
 
 1. The [`analyzer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) parameter in the search query. See [Specify the search analyzer for a query](#specify-search-query-analyzer).
-2. The [`search_analyzer`](search-https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) mapping parameter for the field. See [Specify the search analyzer for a field](#specify-search-field-analyzer).
+2. The [`search_analyzer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) mapping parameter for the field. See [Specify the search analyzer for a field](#specify-search-field-analyzer).
 3. The `analysis.analyzer.default_search` index setting. See [Specify the default search analyzer for an index](#specify-search-default-analyzer).
 4. The [`analyzer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) mapping parameter for the field. See [Specify the analyzer for a field](#specify-index-field-analyzer).
 
