@@ -1,0 +1,21 @@
+---
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/painlesslab.html
+---
+
+# Painless lab [painlesslab]
+
+::::{warning}
+This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
+::::
+
+
+The **Painless Lab** is an interactive code editor that lets you test and debug [Painless scripts](modules-scripting-painless.md) in real-time. You can use the Painless scripting language to create [{{kib}} runtime fields](../find-and-organize/data-views.md#runtime-fields), process [reindexed data](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html), define complex [Watcher conditions](../alerts/watcher.md#watcher-create-advanced-watch), and work with data in other contexts.
+
+Find **Painless Lab** by navigating to the **Developer tools** page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+
+:::{image} ../../images/kibana-painless-lab.png
+:alt: Painless Lab
+:class: screenshot
+:::
+

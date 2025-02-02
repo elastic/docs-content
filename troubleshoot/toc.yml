@@ -1,3 +1,196 @@
 project: 'Troubleshoot'
 toc:
-  - file: index.md
+  - file: troubleshoot/index.md
+  - file: troubleshoot/cloud.md
+  - file: elasticsearch/elasticsearch-reference.md
+    children:
+      - file: elasticsearch/fix-common-cluster-issues.md
+        children:
+          - file: elasticsearch/fix-watermark-errors.md
+          - file: elasticsearch/circuit-breaker-errors.md
+          - file: elasticsearch/high-cpu-usage.md
+          - file: elasticsearch/high-jvm-memory-pressure.md
+          - file: elasticsearch/red-yellow-cluster-status.md
+          - file: elasticsearch/rejected-requests.md
+          - file: elasticsearch/task-queue-backlog.md
+          - file: elasticsearch/mapping-explosion.md
+          - file: elasticsearch/hotspotting.md
+      - file: elasticsearch/diagnose-unassigned-shards.md
+      - file: elasticsearch/add-tier.md
+      - file: elasticsearch/allow-all-cluster-allocation.md
+      - file: elasticsearch/allow-all-index-allocation.md
+      - file: elasticsearch/troubleshoot-migrate-to-tiers.md
+      - file: elasticsearch/increase-tier-capacity.md
+      - file: elasticsearch/increase-shard-limit.md
+      - file: elasticsearch/increase-cluster-shard-limit.md
+      - file: elasticsearch/corruption-troubleshooting.md
+      - file: elasticsearch/fix-data-node-out-of-disk.md
+        children:
+          - file: elasticsearch/increase-capacity-data-node.md
+          - file: elasticsearch/decrease-disk-usage-data-node.md
+      - file: elasticsearch/fix-master-node-out-of-disk.md
+      - file: elasticsearch/fix-other-node-out-of-disk.md
+      - file: elasticsearch/start-ilm.md
+      - file: elasticsearch/start-slm.md
+      - file: elasticsearch/restore-from-snapshot.md
+      - file: elasticsearch/add-repository.md
+        children:
+          - file: elasticsearch/diagnosing-corrupted-repositories.md
+          - file: elasticsearch/diagnosing-unknown-repositories.md
+          - file: elasticsearch/diagnosing-invalid-repositories.md
+      - file: elasticsearch/repeated-snapshot-failures.md
+      - file: elasticsearch/troubleshooting-unstable-cluster.md
+      - file: elasticsearch/discovery-troubleshooting.md
+      - file: elasticsearch/monitoring-troubleshooting.md
+      - file: elasticsearch/transform-troubleshooting.md
+      - file: elasticsearch/watcher-troubleshooting.md
+      - file: elasticsearch/troubleshooting-searches.md
+      - file: elasticsearch/troubleshooting-shards-capacity-issues.md
+      - file: elasticsearch/troubleshooting-unbalanced-cluster.md
+      - file: elasticsearch/diagnostic.md
+      - file: elasticsearch/elasticsearch-reference/security.md
+        children:
+          - file: elasticsearch/security/security-trb-settings.md
+          - file: elasticsearch/security/security-trb-roles.md
+          - file: elasticsearch/security/security-trb-extraargs.md
+          - file: elasticsearch/security/trouble-shoot-active-directory.md
+          - file: elasticsearch/security/trb-security-maccurl.md
+          - file: elasticsearch/security/trb-security-sslhandshake.md
+          - file: elasticsearch/security/trb-security-ssl.md
+          - file: elasticsearch/security/trb-security-kerberos.md
+          - file: elasticsearch/security/trb-security-saml.md
+          - file: elasticsearch/security/trb-security-internalserver.md
+          - file: elasticsearch/security/trb-security-setup.md
+          - file: elasticsearch/security/trb-security-path.md
+      - file: elasticsearch/elasticsearch-reference/remote-clusters.md
+      - file: elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md
+      - file: elasticsearch/clients.md
+        children:
+          - file: elasticsearch/elasticsearch-client-java-api-client/java.md
+            children:
+              - file: elasticsearch/elasticsearch-client-java-api-client/missing-required-property.md
+              - file: elasticsearch/elasticsearch-client-java-api-client/error-no-such-method.md
+              - file: elasticsearch/elasticsearch-client-java-api-client/apache-errors.md
+              - file: elasticsearch/elasticsearch-client-java-api-client/typed-keys-serialization.md
+          - file: elasticsearch/elasticsearch-client-net-api/net.md
+            children:
+              - file: elasticsearch/elasticsearch-client-net-api/logging.md
+              - file: elasticsearch/elasticsearch-client-net-api/logging-with-onrequestcompleted.md
+              - file: elasticsearch/elasticsearch-client-net-api/logging-with-fiddler.md
+              - file: elasticsearch/elasticsearch-client-net-api/debugging.md
+                children:
+                  - file: elasticsearch/elasticsearch-client-net-api/audit-trail.md
+                  - file: elasticsearch/elasticsearch-client-net-api/debug-information.md
+                  - file: elasticsearch/elasticsearch-client-net-api/debug-mode.md
+          - file: elasticsearch/elasticsearch-client-javascript-api/nodejs.md
+          - file: elasticsearch/elasticsearch-client-ruby-api/ruby.md
+      - file: elasticsearch/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md
+  - file: kibana.md
+    children:
+      - file: kibana/using-kibana-server-logs.md
+      - file: kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md
+      - file: kibana/capturing-diagnostics.md
+      - file: kibana/access.md
+      - file: kibana/error-server-not-ready.md
+      - file: kibana/migration-failures.md
+      - file: kibana/task-manager.md
+      - file: kibana/maps.md
+      - file: kibana/reporting.md
+      - file: kibana/graph.md
+      - file: kibana/alerts.md
+      - file: kibana/monitoring.md
+  - file: deployments.md
+    children:
+      - file: deployments/serverless.md
+      - file: deployments/elastic-cloud.md
+        children:
+          - file: deployments/elastic-cloud/monitoring.md
+      - file: deployments/cloud-enterprise/cloud-enterprise.md
+        children:
+          - file: deployments/cloud-enterprise/common-issues.md
+          - file: deployments/cloud-enterprise/use-emergency-roles-token.md
+          - file: deployments/cloud-enterprise/remove-cloud-enterprise.md
+          - file: deployments/cloud-enterprise/verify-zookeeper-sync-status.md
+          - file: deployments/cloud-enterprise/rebuilding-broken-zookeeper-quorum.md
+          - file: deployments/cloud-enterprise/troubleshooting-container-engines.md
+          - file: deployments/cloud-enterprise/run-ece-diagnostics-tool.md
+          - file: deployments/cloud-enterprise/ask-for-help.md
+          - file: deployments/cloud-enterprise/finding-deployments-finding-problems.md
+          - file: deployments/cloud-enterprise/heap-dumps.md
+          - file: deployments/cloud-enterprise/thread-dumps.md
+      - file: deployments/cloud-on-k8s/kubernetes.md
+        children:
+          - file: deployments/cloud-on-k8s/common-problems.md
+          - file: deployments/cloud-on-k8s/troubleshooting-methods.md
+          - file: deployments/cloud-on-k8s/run-eck-diagnostics.md
+          - file: deployments/cloud-on-k8s/jvm-heap-dumps.md
+      - file: deployments/esf/elastic-serverless-forwarder.md
+  - file: monitoring/cloud.md
+    children:
+      - file: monitoring/autoops.md
+      - file: monitoring/unavailable-nodes.md
+      - file: monitoring/unavailable-shards.md
+      - file: monitoring/performance.md
+      - file: monitoring/high-memory-pressure.md
+      - file: monitoring/high-availability.md
+      - file: monitoring/cluster-response-time.md
+      - file: monitoring/node-moves-outages.md
+      - file: monitoring/deployment-health-warnings.md
+      - file: monitoring/node-bootlooping.md
+  - file: ingest.md
+    children:
+      # - file: ingest/enterprise-search/crawls.md
+      - file: ingest/logstash.md
+        children:
+          - file: ingest/logstash/plugins.md
+            children:
+              - file: ingest/logstash/kafka.md
+              - file: ingest/logstash/azure-event-hub.md
+          - file: ingest/logstash/health-report-pipelines.md
+      - file: ingest/fleet/fleet-elastic-agent.md
+        children:
+          - file: ingest/fleet/common-problems.md
+          - file: ingest/fleet/frequently-asked-questions.md
+      - file: ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md
+  - file: security.md
+    children:
+      - file: security/detection-rules.md
+      - file: security/elastic-defend.md
+      - file: security/indicators-of-compromise.md
+      - file: security/agentless-integrations.md
+  - file: observability.md
+    children:
+      - file: observability/explore-data.md
+      - file: observability/inspect.md
+      - file: observability/troubleshooting-synthetics.md
+      - file: observability/troubleshoot-mapping-issues.md
+      - file: observability/troubleshoot-logs.md
+      - file: observability/apm.md
+        children:
+          - file: observability/apm/common-problems.md
+          - file: observability/apm/what-happens-when-apm-server-elasticsearch-is-down.md
+          - file: observability/apm/apm-server-response-codes.md
+          - file: observability/apm/processing-performance.md
+          - file: observability/apm/enable-apm-server-binary-debugging.md
+          - file: observability/apm/apm-server-performance-diagnostic.md
+          - file: observability/apm-agent-go/apm-go-agent.md
+          - file: observability/apm-agent-swift/apm-ios-agent.md
+          - file: observability/apm-agent-java/apm-java-agent.md
+          - file: observability/apm-agent-dotnet/apm-net-agent.md
+          - file: observability/apm-agent-nodejs/apm-nodejs-agent.md
+          - file: observability/apm-agent-php/apm-php-agent.md
+            children:
+              - file: observability/apm/_agent_is_not_instrumenting_code.md
+              - file: observability/apm/_collection_of_diagnostic_information.md
+          - file: observability/apm-agent-python/apm-python-agent.md
+          - file: observability/apm-agent-ruby/apm-ruby-agent.md
+          - file: observability/apm-agent-rum-js/apm-real-user-monitoring-javascript-agent.md
+          - file: observability/apm/known-issues.md
+      - file: observability/amazon-data-firehose.md
+      - file: observability/troubleshoot-your-universal-profiling-agent-deployment.md
+        children:
+          - file: observability/troubleshoot-your-universal-profiling-agent-deployment/troubleshoot-universal-profiling-backend.md
+      - file: observability/troubleshooting-infrastructure-monitoring.md
+        children:
+          - file: observability/troubleshooting-infrastructure-monitoring/understanding-no-results-found-message.md
+      - file: observability/troubleshoot-service-level-objectives-slos.md

@@ -1,0 +1,7 @@
+project: 'Get started'
+toc:
+  - file: index.md
+  - file: the-stack.md
+  - file: deployment-options.md
+  - file: use-cases.md
+  - file: contribute.md
