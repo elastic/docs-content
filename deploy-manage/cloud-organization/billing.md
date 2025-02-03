@@ -19,7 +19,7 @@ Elastic Cloud pricing and billing is based on your usage across a number of dime
 * [Elastic Cloud Serverless](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
   * [Elasticsearch projects](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md)
   * [Elastic Observability projects](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
-  * [Elastic Security projects](deploy-manage/cloud-organization/billing/security-billing-dimensions.md)
+  * [Elastic Security projects](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md)
   
 For more information, you can also refer to our [Elastic Cloud Hosted](https://www.elastic.co/pricing) and [Elastic Cloud Serverless](https://www.elastic.co/pricing/serverless-search) pricing pages.
 
@@ -43,6 +43,6 @@ For any other questions that you have about billing, refer to our [billing FAQ](
 
 ## Stop charges for a deployment or project
 
-To stop charges for an Elastic Cloud deployment or project, you need to [delete it](deploy-manage/uninstall/delete-a-cloud-deployment.md).
+To stop charges for an Elastic Cloud deployment or project, you need to [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md).
 
 When a deployment or project is deleted, all data is lost. Billing for usage is by the hour and any outstanding charges for usage before you deleted the deployment or project will still appear on your next bill.
