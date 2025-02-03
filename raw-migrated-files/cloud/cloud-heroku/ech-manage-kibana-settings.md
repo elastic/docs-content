@@ -634,6 +634,9 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 `csp.report_only.form_action`
 :   Add sources for the [Content Security Policy `form-action` directive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/form-action) in reporting mode.
 
+`csp.report_only.object_src`
+:   Add sources for the [Content Security Policy `object-src` directive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/object-src) in reporting mode.
+
 $$$csp-strict$$$ `csp.strict`
 :   Blocks Kibana access to any browser that does not enforce even rudimentary CSP rules. In practice, this disables support for older, less safe browsers like Internet Explorer. **Default: `true`** To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html)].
 
