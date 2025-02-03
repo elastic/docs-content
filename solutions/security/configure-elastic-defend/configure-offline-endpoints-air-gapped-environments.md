@@ -30,7 +30,7 @@ The entity tag (`Etag`) header is a mandatory HTTP response header that you *mus
 ::::
 
 
-:::::{dropdown} *Example: Nginx*
+:::::{dropdown} Example: Nginx
 This example script starts an Nginx Docker image and configures it to proxy artifacts:
 
 ```sh
@@ -52,7 +52,7 @@ This example script is not appropriate for production environments. We recommend
 :::::
 
 
-:::::{dropdown} *Example: Apache HTTPD*
+:::::{dropdown} Example: Apache HTTPD
 This example script starts an Apache httpd Docker image and configures it to proxy artifacts:
 
 ```sh
@@ -113,7 +113,7 @@ The entity tag (`Etag`) header is a mandatory HTTP response header that you *mus
 ::::
 
 
-:::::{dropdown} *Example: Nginx*
+:::::{dropdown} Example: Nginx
 This example script starts an Nginx Docker image and configures it as a file server:
 
 ```sh
@@ -140,7 +140,7 @@ This example script is not appropriate for production environments. We recommend
 :::::
 
 
-:::::{dropdown} *Example: Apache HTTPD*
+:::::{dropdown} Example: Apache HTTPD
 This example script starts an Apache httpd Docker image and configures it as a file server:
 
 ```sh
