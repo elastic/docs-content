@@ -1031,6 +1031,10 @@ toc:
       - file: stack-docs/elastic-stack/upgrading-elastic-stack.md
       - file: stack-docs/elastic-stack/upgrading-elasticsearch.md
       - file: stack-docs/elastic-stack/upgrading-kibana.md
+  - file: stack-docs/machine-learning/index.md
+    children:
+      - file: stack-docs/machine-learning/ml-ad-overview.md
+      - file: stack-docs/machine-learning/ml-dfanalytics.md
   - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/index.md
     children:
       - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md
