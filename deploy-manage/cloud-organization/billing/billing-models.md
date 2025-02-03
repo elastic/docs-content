@@ -19,21 +19,21 @@ Regardless of your billing model, all Elastic Cloud usage is metered and billed 
 
 ## Monthly, billed by Elastic [ec-monthly-direct] 
 
-When you sign up for Elastic Cloud by [adding your credit card details](../../../deploy-manage/cloud-organization/billing/add-billing-details.md) in the Elastic Cloud console, you are billed on a monthly basis.
+When you sign up for Elastic Cloud by [adding your credit card details](/deploy-manage/cloud-organization/billing/add-billing-details.md) in the Elastic Cloud console, you are billed on a monthly basis.
 
 At each billing cycle, on the first of each month, all usage for the previous month is aggregated, invoiced, and charged in arrears on the credit card used to sign up for the service.
 
 All usage is expressed and charged in US dollars only.
 
-Refer to our [Billing FAQ](../../../deploy-manage/cloud-organization/billing/billing-faq.md) for more details about monthly invoicing.
+Refer to our [Billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq.md) for more details about monthly invoicing.
 
 ## Monthly, billed through a marketplace [ec-monthly-marketplace] 
 
-You can sign up for Elastic Cloud [from a marketplace](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md). In this case, all usage is reported hourly to the marketplace.
+You can sign up for Elastic Cloud [from a marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md). In this case, all usage is reported hourly to the marketplace.
 
 At the marketplace’s billing cycle, all usage is aggregated and charged as part of your cloud provider bill.
 
-Elastic Cloud usage appears as a single invoice line with the total amount charged. For a detailed breakdown of your usage, visit the [Usage page](../../../deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) in the Elastic Cloud console.
+Elastic Cloud usage appears as a single invoice line with the total amount charged. For a detailed breakdown of your usage, visit the [Usage page](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) in the Elastic Cloud console.
 
 ::::{note} 
 Marketplaces typically invoice you in arrears on the first of each month. There are exceptions, however, such as in the case of the [GCP billing cycle](https://cloud.google.com/billing/docs/how-to/billing-cycle).
@@ -93,7 +93,7 @@ Elastic Consumption Units measure the value of your usage, as opposed to measuri
 Elastic Consumption Unit metering, billing and quoting is currently only available for customers on the prepaid consumption billing model. We will gradually extend ECU metering for other types of customers.
 ::::
 
-Refer to our [Billing FAQ](../../../deploy-manage/cloud-organization/billing/billing-faq.md) for more details about prepaid consumption.
+Refer to our [Billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq.md) for more details about prepaid consumption.
 
 ## Elastic Consumption Units [ec-billing-ecu]
 
