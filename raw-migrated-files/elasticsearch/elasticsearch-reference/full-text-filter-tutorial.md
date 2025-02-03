@@ -196,7 +196,7 @@ At search time, {{es}} defaults to the analyzer defined in the field mapping. In
 }
 ```
 
-1. The `hits` object contains the total number of matching documents and their relation to the total. Refer to [Track total hits](../../../solutions/search/querying-for-search-searching-with-the-search-api.md#track-total-hits) for more details about the `hits` object.
+1. The `hits` object contains the total number of matching documents and their relation to the total. Refer to [Track total hits](../../../solutions/search/querying-for-search.md#track-total-hits) for more details about the `hits` object.
 2. `max_score` is the highest relevance score among all matching documents. In this example, we only have one matching document.
 3. `_score` is the relevance score for a specific document, indicating how well it matches the query. Higher scores indicate better matches. In this example the `max_score` is the same as the `_score`, as there is only one matching document.
 4. The title contains both "Fluffy" and "Pancakes", matching our search terms exactly.
