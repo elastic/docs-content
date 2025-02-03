@@ -18,6 +18,8 @@ mapped_pages:
 
 ::::
 
+% test
+
 
 ::::{admonition} What is the Elastic Stack?
 :name: elasticsearch-intro-elastic-stack
