@@ -5,12 +5,14 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/machine-learning.html
 ---
 
-# What is Elastic Machine Learning? [machine-learning-intro]
+# Machine learning
+
+## What is Elastic machine learning? [machine-learning-intro]
 
 {{ml-cap}} features analyze your data and generate models for its patterns of behavior.
 The type of analysis that you choose depends on the questions or problems you want to address and the type of data you have available.
 
-## Unsupervised {{ml}} [machine-learning-unsupervised]
+### Unsupervised {{ml}} [machine-learning-unsupervised]
 
 There are two types of analysis that can deduce the patterns and relationships within your data without training or intervention: *{{anomaly-detect}}* and *{{oldetection}}*.
 
@@ -22,7 +24,7 @@ It is a type of {{dfanalytics}} that identifies unusual points in a data set by 
 It does not run continuously; it generates a copy of your data set where each data point is annotated with an {{olscore}}.
 The score indicates the extent to which a data point is an outlier compared to other data points.
 
-## Supervised {{ml}} [machine-learning-supervised]
+### Supervised {{ml}} [machine-learning-supervised]
 
 There are two types of {{dfanalytics}} that require training data sets: *{{classification}}* and *{{regression}}*.
 
@@ -33,7 +35,7 @@ For more information, refer to [Introduction to supervised learning](machine-lea
 
 [{{regression-cap}}](machine-learning/data-frame-analytics/ml-dfa-regression.md) learns relationships between your data points in order to predict continuous numerical values, such as the response time for a web request.
 
-## Feature availability by project type [machine-learning-serverless-availability]
+### Feature availability by project type [machine-learning-serverless-availability]
 
 The {{ml-features}} that are available vary by project type:
 
@@ -41,12 +43,12 @@ The {{ml-features}} that are available vary by project type:
 * {{observability}} projects have {{anomaly-jobs}}.
 * {{elastic-sec}} projects have {{anomaly-jobs}}, {{dfanalytics-jobs}}, and trained models.
 
-## Synchronize saved objects [machine-learning-synchronize-saved-objects]
+### Synchronize saved objects [machine-learning-synchronize-saved-objects]
 
 Before you can view your {{ml}} {dfeeds}, jobs, and trained models in {{kib}}, they must have saved objects.
 For example, if you used APIs to create your jobs, wait for automatic synchronization or go to the **{{ml-app}}** page and click **Synchronize saved objects**.
 
-## Export and import jobs [machine-learning-export-and-import-jobs]
+### Export and import jobs [machine-learning-export-and-import-jobs]
 
 You can export and import your {{ml}} job and {{dfeed}} configuration details on the **{{ml-app}}** page.
 For example, you can export jobs from your test environment and import them in your production environment.
