@@ -19,4 +19,4 @@ The following table provides an overview of the fundamental search techniques av
 
 ## Next step
 
-Once you've chosen your search approach(es), you'll need to select a query language to implement them. Refer to [query languages for search use cases]() to learn about the available options.
+Once you've chosen your search approach(es), you'll need to select a query language to implement them. Refer to [query languages for search use cases](querying-for-search.md) to learn about the available options.
