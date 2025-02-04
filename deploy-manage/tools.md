@@ -5,7 +5,7 @@ mapped_pages:
 
 # Backup, high availability, and resilience tools [high-availability]
 
-Elasticsearch provides comprehensive tools to safeguard data, ensure continuous availability, and maintain resilience. These tools are designed to support disaster recovery strategies, enabling businesses to protect critical information and minimize downtime, and maintain high availability in case of unexpected failures.
+Elasticsearch provides comprehensive tools to safeguard data, ensure continuous availability, and maintain resilience. These tools are designed to support disaster recovery strategies, enabling businesses to protect critical information and minimize downtime, and maintain high availability in case of unexpected failures. 
 
 For strategies to design resilient clusters, see **[Availability and resilience](production-guidance/availability-and-resilience.md)**.
 
