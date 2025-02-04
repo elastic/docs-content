@@ -5,7 +5,7 @@ on:
 
 jobs:
   preview:
-    uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
+    uses: elastic/docs-builder/.github/workflows/preview-build.yml@feature/optimize-preview
     with:
       continue-on-error: true
       strict: false
