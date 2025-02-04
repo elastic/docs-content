@@ -7,7 +7,7 @@ jobs:
   preview:
     uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
     with:
-      continue-on-error: true
+      continue-on-error: false
       strict: false
     permissions:
       contents: read
