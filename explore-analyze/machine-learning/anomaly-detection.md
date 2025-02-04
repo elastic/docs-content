@@ -9,7 +9,7 @@ mapped_urls:
 You can use {{stack}} {{ml-features}} to analyze time series data and identify anomalous patterns in your data set.
 
 * [Finding anomalies](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-finding-anomalies.md)
-* [Tutorial: Getting started with {{anomaly-detect}}](/../../explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md)
+* [Tutorial: Getting started with {{anomaly-detect}}](../../explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md)
 * [*Advanced concepts*](../../explore-analyze/machine-learning/anomaly-detection/ml-ad-concepts.md)
 * [*API quick reference*](../../explore-analyze/machine-learning/anomaly-detection/ml-api-quickref.md)
 * [How-tos](../../explore-analyze/machine-learning/anomaly-detection/anomaly-how-tos.md)
