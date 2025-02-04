@@ -26,7 +26,7 @@ To edit a member’s roles, in the **Actions** column click the three dots and s
 
 
 ## Accept an invitation [ec-accept-invitation]
-(This section has been already added by @eedugon to the cloud-account section)
+<!-- This section has been already added by @eedugon to the cloud-account section) -->
 
 Invitations to join an organization are sent by email. Invited users have 72 hours to accept the invitation. If they do not join within that period, you will have to send a new invitation.
 
@@ -52,7 +52,7 @@ If you want to join a new one, but leave your deployments, follow these steps:
 
 
 ## Leave an organization [ec-leave-organization]
-(This section has been already added by @eedugon to the cloud-account section)
+<!-- This section has been already added by @eedugon to the cloud-account section) -->
 
 On the **Members** tab of the **Organization** page, click the three dots corresponding to your email address and select **Leave organization**.
 
