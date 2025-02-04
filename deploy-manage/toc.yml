@@ -762,10 +762,6 @@ toc:
                 children:
                   - file: monitor/monitoring-data/ec-memory-pressure.md
                   - file: monitor/monitoring-data/ec-vcpu-boost-instance.md
-              - file: monitor/monitoring-data/ech-saas-metrics-accessing.md
-                children:
-                  - file: monitor/monitoring-data/ech-memory-pressure.md
-                  - file: monitor/monitoring-data/ech-vcpu-boost-instance.md
           - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
           - file: monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md
             children:
