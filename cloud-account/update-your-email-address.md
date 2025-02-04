@@ -1,17 +1,20 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-update-email-address.html
+applies:
+  serverless: all
+  hosted: all
 ---
 
 # Update your email address [ec-update-email-address]
 
 Each Elasticsearch Service account has a primary email associated with it. By default, the primary email address is used to sign up for Elasticsearch Service and to log in. If needed, you can change this primary email address:
 
-1. By **Email address**, select **edit**.
-2. Enter a new email address and your current password.
+1. To edit your account settings, select the user icon on the header bar and select **Settings**.
+2. In the **Email address** section, select **edit**.
+3. Enter a new email address and your current password.
 
     An email is sent to the new address with a link to confirm the change. If you don’t get the email after a few minutes, check your spam folder.
-
 
 If you are using Google or Microsoft Sign-In and would like to change your email address, you will need to:
 
