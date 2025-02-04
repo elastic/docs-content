@@ -1,6 +1,5 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-analyze.html
+
 ---
 
 # Query languages [search-analyze-query-languages]
