@@ -605,10 +605,7 @@ toc:
       - file: elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
       - file: elasticsearch/elasticsearch-reference/es-ingestion-overview.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
-      - file: elasticsearch/elasticsearch-reference/esql-examples.md
-      - file: elasticsearch/elasticsearch-reference/esql-getting-started.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
-      - file: elasticsearch/elasticsearch-reference/esql.md
       - file: elasticsearch/elasticsearch-reference/field-and-document-access-control.md
       - file: elasticsearch/elasticsearch-reference/field-level-security.md
       - file: elasticsearch/elasticsearch-reference/file-realm.md
@@ -638,8 +635,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/oidc-guide.md
       - file: elasticsearch/elasticsearch-reference/oidc-realm.md
       - file: elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
-      - file: elasticsearch/elasticsearch-reference/query-dsl.md
-      - file: elasticsearch/elasticsearch-reference/query-filter-context.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
       - file: elasticsearch/elasticsearch-reference/retrievers-overview.md
       - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
