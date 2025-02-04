@@ -4,7 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitoring-kibana.html
 applies:
   stack: deprecated 7.16.0
-  stack: removed 9.0.0
 ---
 
 

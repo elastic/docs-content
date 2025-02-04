@@ -4,7 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/collecting-monitoring-data.html
 applies:
   stack: deprecated 7.16.0
-  stack: removed 9.0.0
 ---
 
 
