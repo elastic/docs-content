@@ -4,12 +4,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
 ---
 
-
-
 # Using ES|QL in Kibana [esql-kibana]
 
-
 You can use {{esql}} in {{kib}} to query and aggregate your data, create visualizations, and set up alerts.
+
+More specifically, {{esql}} is a powerful tool in Kibana that can help you with specific solution use cases. For example:
+
+- {{observability}}: {{esql}} makes it much easier to analyze metrics, logs and traces from a single query. Find performance issues fast by defining fields on the fly, enriching data with lookups, and using simultaneous query processing. Combining {{esql}} with {{ml}} and AiOps can improve detection accuracy and use aggregated value thresholds.
+- Security: Use {{esql}} to retrieve important information for investigation by using lookups. Enrich data and create new fields on the go to gain valuable insight for faster decision-making and actions. For example, perform a lookup on an IP address to identify its geographical location, its association with known malicious entities, or whether it belongs to a known cloud service provider all from one search bar. {{esql}} ensures more accurate alerts by incorporating aggregated values in detection rules.
 
 This guide shows you how to use {{esql}} in Kibana. To follow along with the queries, load the "Sample web logs" sample data set by selecting **Sample Data** from the **Integrations** page in {{kib}}, selecting **Other sample data sets**, and clicking **Add data** on the **Sample web logs** card.
 
@@ -21,12 +23,12 @@ This guide shows you how to use {{esql}} in Kibana. To follow along with the que
 This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
 
 
-## Get started with {{esql}} [esql-kibana-get-started]
+## The {{esql}} editor [esql-kibana-get-started]
 
-To get started with {{esql}} in Discover, open the main menu and select **Discover**. Next, select **Try ES|QL** from the application menu bar.
+To get started with {{esql}}, go to **Discover**. Next, select **Try ES|QL** from the application menu bar.
 
 
-## The query bar [esql-kibana-query-bar]
+### The query bar [esql-kibana-query-bar]
 
 After switching to {{esql}} mode, the query bar shows a sample query. For example:
 
@@ -45,7 +47,7 @@ Click the **ES|QL help** button to open the in-product reference documentation f
 
 To make it easier to write queries, auto-complete offers suggestions with possible commands and functions:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-auto-complete.png
+:::{image} /images/elasticsearch-reference-esql-kibana-auto-complete.png
 :alt: esql kibana auto complete
 :::
 
@@ -89,9 +91,15 @@ You can reuse your recent {{esql}} queries in the query bar. In the query bar, c
 
 You can then scroll through your recent queries:
 
-:::{image} ../../../images/elasticsearch-reference-esql-discover-query-history.png
+:::{image} /images/elasticsearch-reference-esql-discover-query-history.png
 :alt: esql discover query history
 :::
+
+### Query help
+
+{{esql}} features in-app help and suggestions, so you can get started faster and don’t have to leave the application to check syntax.
+
+![The ES|QL syntax reference and the autocomplete menu](/images/kibana-esql-in-app-help.png "")
 
 
 ### Starred queries [esql-kibana-starred-queries]
@@ -104,12 +112,12 @@ From the **Recent** tab, you can star any queries you want.
 
 In the **Starred** tab, find all the queries you have previously starred.
 
-:::{image} ../../../images/elasticsearch-reference-esql-discover-query-starred.png
+:::{image} /images/elasticsearch-reference-esql-discover-query-starred.png
 :alt: esql discover query starred
 :::
 
 
-## The results table [esql-kibana-results-table]
+### Organizing the query results [esql-kibana-results-table]
 
 For the example query, the results table shows 10 rows. Omitting the `LIMIT` command, the results table defaults to up to 1000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
@@ -149,17 +157,17 @@ FROM kibana_sample_data_logs
 ```
 
 
-## Time filtering [esql-kibana-time-filter]
+### Time filtering [esql-kibana-time-filter]
 
 To display data within a specified time range, you can use the standard time filter, custom time parameters, or a WHERE command.
 
 
-### Standard time filter [_standard_time_filter]
+#### Standard time filter [_standard_time_filter]
 
 The standard [time filter](../filtering.md) is enabled when the indices you’re querying have a field named `@timestamp`.
 
 
-### Custom time parameters [_custom_time_parameters]
+#### Custom time parameters [_custom_time_parameters]
 
 If your indices do not have a field named `@timestamp`, you can use the `?_tstart` and `?_tend` parameters to specify a time range. These parameters work with any timestamp field and automatically sync with the [time filter](../filtering.md).
 
@@ -178,7 +186,7 @@ FROM kibana_sample_data_logs
 This example uses `50` buckets, which is the maximum number of buckets.
 
 
-### WHERE command [_where_command]
+#### WHERE command [_where_command]
 
 You can also limit the time range using the [`WHERE`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-where) command and the [`NOW`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
 
@@ -203,19 +211,19 @@ FROM kibana_sample_data_logs
 
 The resulting visualization is a bar chart showing the top 3 countries:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-bar-chart.png
+:::{image} /images/elasticsearch-reference-esql-kibana-bar-chart.png
 :alt: esql kibana bar chart
 :::
 
-To make changes to the visualization, like changing the visualization type, axes and colors, click the pencil button (![esql icon edit visualization](../../../images/elasticsearch-reference-esql-icon-edit-visualization.svg "")). This opens an in-line editor:
+To make changes to the visualization, like changing the visualization type, axes and colors, click the pencil button (![esql icon edit visualization](/images/elasticsearch-reference-esql-icon-edit-visualization.svg "")). This opens an in-line editor:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-in-line-editor.png
+:::{image} /images/elasticsearch-reference-esql-kibana-in-line-editor.png
 :alt: esql kibana in line editor
 :::
 
-You can save the visualization to a new or existing dashboard by clicking the save button (![esql icon save visualization](../../../images/elasticsearch-reference-esql-icon-save-visualization.svg "")). Once saved to a dashboard, you’ll be taken to the Dashboards page. You can continue to make changes to the visualization. Click the options button in the top-right (![esql icon options](../../../images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ES|QL visualization** to open the in-line editor:
+You can save the visualization to a new or existing dashboard by clicking the save button (![esql icon save visualization](/images/elasticsearch-reference-esql-icon-save-visualization.svg "")). Once saved to a dashboard, you’ll be taken to the Dashboards page. You can continue to make changes to the visualization. Click the options button in the top-right (![esql icon options](/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ES|QL visualization** to open the in-line editor:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-edit-on-dashboard.png
+:::{image} /images/elasticsearch-reference-esql-kibana-edit-on-dashboard.png
 :alt: esql kibana edit on dashboard
 :::
 
@@ -224,19 +232,19 @@ You can save the visualization to a new or existing dashboard by clicking the sa
 
 You can use {{esql}} queries to create panels on your dashboards. To add a panel to a dashboard, under **Dashboards**, click the **Add panel** button and select {{esql}}.
 
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel.png
+:::{image} /images/elasticsearch-reference-esql-dashboard-panel.png
 :alt: esql dashboard panel
 :::
 
-Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](../../../images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
+Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](/images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
 
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel-query.png
+:::{image} /images/elasticsearch-reference-esql-dashboard-panel-query.png
 :alt: esql dashboard panel query
 :::
 
-You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](../../../images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
+You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
 
-:::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel-edit-visualization.png
+:::{image} /images/elasticsearch-reference-esql-dashboard-panel-edit-visualization.png
 :alt: esql dashboard panel edit visualization
 :::
 
@@ -245,19 +253,19 @@ You can also edit the {{esql}} visualization from here. Click the options button
 
 The {{esql}} [`ENRICH`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich) command enables you to [enrich](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
+:::{image} /images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete
 :::
 
 Next, you can enter a policy name, the policy type, source indices, and optionally a query:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-step-1.png
+:::{image} /images/elasticsearch-reference-esql-kibana-enrich-step-1.png
 :alt: esql kibana enrich step 1
 :::
 
 Click **Next** to select the match field and enrich fields:
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-step-2.png
+:::{image} /images/elasticsearch-reference-esql-kibana-enrich-step-2.png
 :alt: esql kibana enrich step 2
 :::
 
@@ -278,7 +286,7 @@ FROM kibana_sample_data_logs
 
 You can use {{esql}} queries to create alerts. From Discover, click **Alerts** and select **Create search threshold rule**. This opens a panel that enables you to create a rule using an {{esql}} query. Next, you can test the query, add a connector, and save the rule.
 
-:::{image} ../../../images/elasticsearch-reference-esql-kibana-create-rule.png
+:::{image} /images/elasticsearch-reference-esql-kibana-create-rule.png
 :alt: esql kibana create rule
 :::
 

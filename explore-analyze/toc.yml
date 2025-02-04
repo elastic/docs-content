@@ -9,14 +9,16 @@ toc:
       - file: query-filter/languages.md
         children:
           - file: query-filter/languages/querydsl.md
-          - file: query-filter/languages/esorql.md
+          - file: query-filter/languages/esql.md
             children:
+              - file: query-filter/languages/esql-getting-started.md
               - file: query-filter/languages/esql-rest.md
               - file: query-filter/languages/esql-kibana.md
               - file: query-filter/languages/esql-elastic-security.md
               - file: query-filter/languages/esql-multi-index.md
               - file: query-filter/languages/esql-cross-clusters.md
               - file: query-filter/languages/esql-task-management.md
+              - file: query-filter/languages/esql-examples.md
           - file: query-filter/languages/sql.md
             children:
               - file: query-filter/languages/sql-overview.md
