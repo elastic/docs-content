@@ -1,12 +1,12 @@
 ---
-navigation_title: "REST API"
+navigation_title: "{{esql}} query API"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-rest.html
 ---
 
 
 
-# REST API [esql-rest]
+# {{esql}} query API [esql-rest]
 
 
 
@@ -36,7 +36,7 @@ James S.A. Corey |Leviathan Wakes     |561            |2011-06-02T00:00:00.000Z
 
 ### Kibana Console [esql-kibana-console]
 
-If you are using [Kibana Console](../tools/console.md) (which is highly recommended), take advantage of the triple quotes `"""` when creating the query. This not only automatically escapes double quotes (`"`) inside the query string but also supports multi-line requests:
+If you are using [Kibana Console](/explore-analyze/query-filter/tools/console.md) (which is highly recommended), take advantage of the triple quotes `"""` when creating the query. This not only automatically escapes double quotes (`"`) inside the query string but also supports multi-line requests:
 
 ```console
 POST /_query?format=txt
@@ -72,7 +72,7 @@ The URL parameter takes precedence over the HTTP headers. If neither is specifie
 | Binary |
 | `cbor` | `application/cbor` | [Concise Binary Object Representation](https://cbor.io/) |
 | `smile` | `application/smile` | [Smile](https://en.wikipedia.org/wiki/Smile_(data_interchange_format)) binary data format similarto CBOR |
-| `arrow` | `application/vnd.apache.arrow.stream` | **Experimental.** [Apache Arrow](https://arrow.apache.org/) dataframes, [IPC streaming format](https://arrow.apache.org/docs/format/Columnar.md#ipc-streaming-format) |
+| `arrow` | `application/vnd.apache.arrow.stream` | **Experimental.** [Apache Arrow](https://arrow.apache.org/) dataframes, [IPC streaming format](https://arrow.apache.org/docs/format/Columnar.html#ipc-streaming-format) |
 
 The `csv` format accepts a formatting URL query attribute, `delimiter`, which indicates which character should be used to separate the CSV values. It defaults to comma (`,`) and cannot take any of the following values: double quote (`"`), carriage-return (`\r`) and new-line (`\n`). The tab (`\t`) can also not be used. Use the `tsv` format instead.
 
@@ -151,7 +151,7 @@ Which returns:
 
 ### Returning localized results [esql-locale-param]
 
-Use the `locale` parameter in the request body to return results (especially dates) formatted per the conventions of the locale. If `locale` is not specified, defaults to `en-US` (English). Refer to [JDK Supported Locales](https://www.oracle.com/java/technologies/javase/jdk17-suported-locales.md).
+Use the `locale` parameter in the request body to return results (especially dates) formatted per the conventions of the locale. If `locale` is not specified, defaults to `en-US` (English). Refer to [JDK Supported Locales](https://www.oracle.com/java/technologies/javase/jdk17-suported-locales.html).
 
 Syntax: the `locale` parameter accepts language tags in the (case-insensitive) format `xy` and `xy-XY`.
 

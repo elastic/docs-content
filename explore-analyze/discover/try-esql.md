@@ -10,7 +10,7 @@ The Elasticsearch Query Language, {{esql}}, makes it easier to explore your data
 In this tutorial we’ll use the {{kib}} sample web logs in Discover and Lens to explore the data and create visualizations.
 
 ::::{tip}
-For the complete {{esql}} documentation, including tutorials, examples and the full syntax reference, refer to the [{{es}} documentation](../query-filter/languages/esorql.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
+For the complete {{esql}} documentation, including tutorials, examples and the full syntax reference, refer to the [{{es}} documentation](../query-filter/languages/esql.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
 
 ::::
 
