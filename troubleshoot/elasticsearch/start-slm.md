@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-slm.html
 ---
 
-# Start Snapshot Lifecycle Management [start-slm]
+# Start snapshot lifecycle management [start-slm]
 
 Automatic snapshot lifecycle management is currently disabled. New backup snapshots will not be created automatically.
 

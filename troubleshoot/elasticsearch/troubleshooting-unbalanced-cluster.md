@@ -1,9 +1,10 @@
 ---
+navigation_title: Unbalanced cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unbalanced-cluster.html
 ---
 
-# Troubleshooting an unbalanced cluster [troubleshooting-unbalanced-cluster]
+# Troubleshoot an unbalanced cluster [troubleshooting-unbalanced-cluster]
 
 Elasticsearch balances shards across data tiers to achieve a good compromise between:
 

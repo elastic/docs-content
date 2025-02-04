@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-invalid-repositories.html
 ---
 
-# Diagnosing invalid repositories [diagnosing-invalid-repositories]
+# Diagnose invalid repositories [diagnosing-invalid-repositories]
 
 When an {{es}} node faces an unexpected exception when trying to instantiate a snapshot repository, it will mark the repository as "invalid" and write a warning to the log file. Use the following steps to diagnose the underlying cause of this issue:
 
