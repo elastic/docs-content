@@ -68,7 +68,7 @@ $$$faq-payment$$$What are the available payment methods on Elastic Cloud?
 :   For month-to-month payments only credit cards are accepted. We also allow payments by bank transfer for annual subscriptions.
 
 $$$faq-contact$$$Who can I contact for more information?
-:   If you have any further questions about your credit card statement, billing, or receipts, send an email to [ar@elastic.co](mailto:ar@elastic.co) or open a [Support case](../../../troubleshoot/troubleshoot/cloud.md) using the *Billing issue* category.
+:   If you have any further questions about your credit card statement, billing, or receipts, send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/troubleshoot/cloud.md) using the *Billing issue* category.
 
 $$$faq-charge$$$Why is my credit card charged?
 :   If you are on a monthly plan, the charge is a recurring fee for using Elastic Cloud. The fee is normally charged at the start of each month, but it can also be charged at other times during the month. If a charge is unsuccessful, we will try to charge your card again at a later date.
@@ -149,7 +149,7 @@ $$$faq-on-demand$$$How can I pay for on-demand usage?
 :   We only support PO (invoicing) for on-demand usage, for prepaid consumption customers. The issued invoices include tax.
 
 $$$faq-lapse$$$What happens when a prepaid consumption contract expires and is not renewed?
-:   Your Elastic Cloud account will automatically change into a monthly account, paid through PO (invoicing). You will continue to incur costs, as we will not delete any of your deployments. You will not benefit from any discount because monthly customers are billed at list prices.  To switch your account to credit card payment, you must first send an email to [CloudBillingOps@elastic.co](mailto:CloudBillingOps@elastic.co) to indicate that this is your new preferred payment method. Once your email processed, Elastic will inform you that you can update your credit card information accordingly.
+:   Your Elastic Cloud account will automatically change into a monthly account, paid through PO (invoicing). You will continue to incur costs, as we will not delete any of your deployments. You will not benefit from any discount because monthly customers are billed at list prices.  To switch your account to credit card payment, you must first send an email to `CloudBillingOps@elastic.co` to indicate that this is your new preferred payment method. Once your email processed, Elastic will inform you that you can update your credit card information accordingly.
 
 $$$faq-credits$$$If credits are purchased through multiple orders, which ones get used first?
 :   Credits get consumed in the order of expiration (first expired - first used). If two or more order lines have the same expiration date, the one with the highest discount is consumed first. If there are two or more order lines with the same discount, then the one with the lower balance is consumed first.
