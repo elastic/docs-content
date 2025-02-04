@@ -28,11 +28,7 @@ Finally, you can adjust how text fields are shaped inside {{es}} so as to ensure
 
 :   You can try out the [Parse logs](transform-enrich/example-parse-logs.md) example which shows you how to set up in ingest pipeline to transform incoming server logs into a standard format.
 
-
 :   The {{es}} enrich processor enables you to add data from existing indices to your incoming data, based on an enrich policy. The enrich policy contains a set of rules to match incoming documents to the fields containing the data to add. Refer to [Data enrichment](transform-enrich/data-enrichment.md) to learn how to set up an enrich processor. You can also try out a few examples that show how to enrich data based on geographic location, on exact values such as email addresses or IDs, or to a range of values such as a date or set of IP addresses.
-
-{{es}} runtime fields
-:   You can use {{es}} [runtime fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime.html) to define or alter the schema at query time. You can start working with your data without needing to understand how it is structured, add fields to existing documents without reindexing your data, override the value returned from an indexed field, and/or define fields for a specific use without modifying the underlying schema.
 
 {{ls}} and the {{ls}} `elastic_integration filter`
 :   If you're using {{ls}} as your primary ingest tool, you can take advantage of its built-in pipeline capabilities to transform your data. You configure a pipeline by stringing together a series of input, output, filtering, and optional codec plugins to manipulate all incoming data.
@@ -42,11 +38,13 @@ Finally, you can adjust how text fields are shaped inside {{es}} so as to ensure
 Index mapping
 :   Index mapping lets you control the structure that incoming data has within an Elasticsearch index. You can define all of the fields that are included in the index and their respective data types. For example, you can set fields for dates, numbers, or geolocations, and define the fields to have specific formats. 
 
-:   Ingested data can be mapped dynamically, where Elasticsearch adds all fields automatically based on the detected data types, or explicitly, where Elasticsearch maps the incoming data to fields based on your custom rules.
+:   Ingested data can be mapped dynamically, where Elasticsearch adds all fields automatically based on the detected data types, or explicitly, where {{es}} maps the incoming data to fields based on your custom rules.
 
-:   Refer to Index mapping to learn about the dynamic mapping rules that Elasticsearch runs by default, and which you can customize, and also how to configure your own explicit data to field mappings.
+:   You can use {{es}} [runtime fields](../data-store/mapping/runtime-fields.md) to define or alter the schema at query time. You can start working with your data without needing to understand how it is structured, add fields to existing documents without reindexing your data, override the value returned from an indexed field, and/or define fields for a specific use without modifying the underlying schema.
+
+:   Refer to the [Index mapping](../data-store/mapping.md) pages to learn about the dynamic mapping rules that {{es}} runs by default, and which you can customize, and also how to configure your own explicit data to field mappings.
 
 Text analysis
 :   Like index mapping, text analysis is another form of data transformation that runs on data as it's being ingested. This process analyzes incoming, unstructured text and organizes it in a way to ensure that all relevant documents are matched for a given text query, and not just exact string matches.
 
-:   Refer to Text analysis to learn how to configure an analyzer to run on incoming text. You can opt to use one of several built-in analyzers, or create a custom analyzer for specific use cases. 
+:   Refer to the [Text analysis](../data-store/text-analysis.md) pages to learn how to configure an analyzer to run on incoming text. You can opt to use one of several built-in analyzers, or create a custom analyzer for specific use cases. 
