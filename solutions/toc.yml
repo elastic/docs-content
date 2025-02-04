@@ -584,6 +584,14 @@ toc:
   - file: search.md
     children:
       - file: search/get-started.md
+        children:
+          - file: search/run-elasticsearch-locally.md
+          - file: search/serverless-elasticsearch-get-started.md
+          - file: search/search-connection-details.md
+          - file: search/api-quickstarts.md
+            children:
+              - file: search/elasticsearch-basics-quickstart.md
+              - file: search/querydsl-full-text-filter-tutorial.md
       - file: search/search-approaches.md
         children:
           - file: search/search-approaches/long-running-searches.md
