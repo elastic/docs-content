@@ -1,7 +1,3 @@
----
-
----
-
 # Query languages [search-analyze-query-languages]
 
 {{es}} provides a number of query languages for interacting with your data.
