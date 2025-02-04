@@ -6,7 +6,7 @@ A search may also contain additional information used to better process its quer
 
 You can use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/group/endpoint-search) to search and aggregate data stored in {{es}} data streams or indices.
 
-For more information, refer to [the search API overview](../../../solutions/search/querying-for-search-searching-with-the-search-api.md) in the core {{es}} docs.
+For more information, refer to [the search API overview](../../../solutions/search/querying-for-search.md) in the core {{es}} docs.
 
 
 ## Query DSL [elasticsearch-search-your-data-the-query-dsl] 
@@ -20,5 +20,5 @@ The `_search` API’s `query` request body parameter accepts queries written in 
 
 Retrievers are an alternative to Query DSL that allow you to configure complex retrieval pipelines using a simplified syntax. Retrievers simplify the user experience by allowing entire retrieval pipelines to be configured in a single `_search` API call.
 
-Learn more in the [Retrievers overview](../../../solutions/search/querying-for-search-searching-with-the-search-api.md) in the core {{es}} docs.
+Learn more in the [Retrievers overview](../../../solutions/search/querying-for-search.md) in the core {{es}} docs.
 

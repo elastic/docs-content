@@ -25,7 +25,7 @@ Vector search
 
 To run a search request, you can use the search API or Search Applications.
 
-[Search API](../../../solutions/search/querying-for-search-searching-with-the-search-api.md)
+[Search API](../../../solutions/search/querying-for-search.md)
 :   The [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) enables you to search and [aggregate](../../../explore-analyze/aggregations.md) data stored in {{es}} using a query language called the [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md).
 
 [Search Applications](../../../solutions/search/applications.md)

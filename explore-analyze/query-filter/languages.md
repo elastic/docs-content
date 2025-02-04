@@ -34,7 +34,7 @@ Refer to [Query languages](../query-filter.md#search-analyze-query-languages) fo
 
 [Query DSL](languages/querydsl.md) is a full-featured JSON-style query language that enables complex searching, filtering, and aggregations. It is the original and most powerful query language for {{es}} today.
 
-The [`_search` endpoint](../../solutions/search/querying-for-search-searching-with-the-search-api.md) accepts queries written in Query DSL syntax.
+The [`_search` endpoint](../../solutions/search/querying-for-search.md) accepts queries written in Query DSL syntax.
 
 
 #### Search and filter with Query DSL [search-analyze-query-dsl-search-filter]
