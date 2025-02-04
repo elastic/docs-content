@@ -1,13 +1,13 @@
-# Get started [elasticsearch-get-started]
+# Get started with {{es}} Serverless [elasticsearch-get-started]
 
 On this page, you will learn how to:
 
-* [Create an {{es-serverless}} project](../../../solutions/search/get-started.md#elasticsearch-get-started-create-project).
+* [Create an {{es-serverless}} project](get-started.md#elasticsearch-get-started-create-project).
 * Get started with {{es}}:
 
-    * [Option 1: Guided index flow](../../../solutions/search/get-started.md#elasticsearch-follow-guided-index-flow): Follow the step-by-step tutorial provided in the UI to create an index and ingest data.
-    * [Option 2: In-product Getting Started guide](../../../solutions/search/get-started.md#elasticsearch-follow-in-product-getting-started): Use the Getting Started page’s instructions to ingest data and perform your first search.
-    * [Option 3: Explore on your own](../../../solutions/search/get-started.md#elasticsearch-explore-on-your-own): If you’re already familiar with {{es}}, retrieve your connection details, select an ingest method that suits your needs, and start searching.
+    * [Option 1: Guided index flow](get-started.md#elasticsearch-follow-guided-index-flow): Follow the step-by-step tutorial provided in the UI to create an index and ingest data.
+    * [Option 2: In-product Getting Started guide](get-started.md#elasticsearch-follow-in-product-getting-started): Use the Getting Started page’s instructions to ingest data and perform your first search.
+    * [Option 3: Explore on your own](get-started.md#elasticsearch-explore-on-your-own): If you’re already familiar with {{es}}, retrieve your connection details, select an ingest method that suits your needs, and start searching.
 
 
 
@@ -23,11 +23,11 @@ Use your {{ecloud}} account to create a fully-managed {{es}} project:
     * **General purpose**: For general search use cases across various data types.
     * **Optimized for Vectors**: For search use cases using vectors and near real-time retrieval.
 
-5. Provide a name for the project and optionally edit the project settings, such as the cloud platform [region](../../../deploy-manage/deploy/elastic-cloud/regions.md). Select **Create project** to continue.
+5. Provide a name for the project and optionally edit the project settings, such as the cloud platform [region](../../deploy-manage/deploy/elastic-cloud/regions.md). Select **Create project** to continue.
 6. Once the project is ready, select **Continue**.
 
 ::::{tip}
-Learn how billing works for your project in [Elasticsearch billing dimensions](../../../deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
+Learn how billing works for your project in [Elasticsearch billing dimensions](../../deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md).
 
 ::::
 
@@ -53,7 +53,7 @@ Once your project is set up, you’ll be directed to a page where you can create
 
 
 ::::{note}
-You won’t be able to view this API key again. If needed, refer to [Create a new API key](../../../solutions/search/get-started.md#elasticsearch-get-started-create-api-key) to generate a new one.
+You won’t be able to view this API key again. If needed, refer to [Create a new API key](get-started.md#elasticsearch-get-started-create-api-key) to generate a new one.
 
 ::::
 
@@ -79,12 +79,12 @@ To get started using the in-product tutorial, navigate to the **Getting Started*
 
 If you’re already familiar with Elasticsearch, you can jump right into setting up a connection and ingesting data as per your needs.
 
-1. Retrieve your [connection details](../../../solutions/search/get-started.md).
+1. Retrieve your [connection details](get-started.md).
 2. Ingest your data. Elasticsearch provides several methods for ingesting data:
 
-    * [{{es}} API](../../../solutions/search/ingest-for-search.md)
+    * [{{es}} API](ingest-for-search.md)
     * [Connector clients](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-integrations-connector-client.html)
-    * [File Uploader](../../../manage-data/ingest/tools/upload-data-files.md)
+    * [File Uploader](../../manage-data/ingest/tools/upload-data-files.md)
     * [{{beats}}](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-beats.html)
     * [{{ls}}](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-logstash.html)
     * [Elastic Open Web Crawler](https://github.com/elastic/crawler)
@@ -93,5 +93,5 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
 
 ## Next steps [elasticsearch-next-steps]
 
-* Once you’ve added data to your {{es-serverless}} project, you can use [Playground](../../../solutions/search/rag/playground.md) to test and tweak {{es}} queries and chat with your data, using GenAI.
+* Once you’ve added data to your {{es-serverless}} project, you can use [Playground](rag/playground.md) to test and tweak {{es}} queries and chat with your data, using GenAI.
 * You can also try our hands-on [quick start tutorials](https://www.elastic.co/guide/en/elasticsearch/reference/current/quickstart.html#quickstart-list) in the core {{es}} documentation.
