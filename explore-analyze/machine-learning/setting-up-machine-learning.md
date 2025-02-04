@@ -4,11 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/setup.html
 ---
 
-
-
 # Setting up machine learning [setup]
-
-
 
 ## Requirements overview [requirements-overview]
 
@@ -20,15 +16,12 @@ To use the {{stack}} {ml-features}, you must have:
 * {{ml}} features visible in the {{kib}} space
 * security privileges assigned to the user that:
 
-    * grant use of {{ml-features}}, and
-    * grant access to source and destination indices.
-
+  * grant use of {{ml-features}}, and
+  * grant access to source and destination indices.
 
 ::::{tip}
 The fastest way to get started with {{ml-features}} is to [start a free 14-day trial of {{ess}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) in the cloud.
 ::::
-
-
 
 ## Security privileges [setup-privileges]
 
@@ -41,7 +34,6 @@ You can configure these privileges
 
 * under **Security**. To open Security, find **{{stack-manage-app}}** in the main menu or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
 * via the respective {{es}} security APIs.
-
 
 ### {{es}} API user [es-security-privileges]
 
@@ -63,34 +55,29 @@ For read-only access:
 The `machine_learning_admin` and `machine_learning_user` built-in roles give access to the results of *all* {{anomaly-jobs}}, irrespective of whether the user has access to the source indices. You must carefully consider who is given these roles, as {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results.
 ::::
 
-
-
 ### {{kib}} security [kib-security]
 
 ::::{important}
 Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also grant the role the equivalent feature privileges to certain types of {{kib}} saved objects, namely index patterns, dashboards, saved searches, and visualizations as well as {{ml}} job, trained model and module saved objects.
 ::::
 
-
-
 #### Feature visibility in Spaces [kib-visibility-spaces]
 
-In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}*** > ***Spaces** or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects) to locate **Spaces** directly.
+In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects) to locate **Spaces** directly.
 
 :::{image} ../../images/machine-learning-spaces.jpg
 :alt: Manage spaces in {kib}
 :class: screenshot
 :::
 
-In addition to index privileges, source {{data-sources}} must also exist in the same space as your {{ml}} jobs. You can configure these under **{{data-sources-caps}}**. To open **{{data-sources-caps}}***, find ***{{stack-manage-app}}** > **{{kib}}** in the main menu, or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+In addition to index privileges, source {{data-sources}} must also exist in the same space as your {{ml}} jobs. You can configure these under **{{data-sources-caps}}**. To open **{{data-sources-caps}}**, find **{{stack-manage-app}}** > **{{kib}}** in the main menu, or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
 
-Each {{ml}} job and trained model can be assigned to all, one, or multiple spaces. This can be configured in **Machine Learning**. To open **Machine Learning***, find ***{{stack-manage-app}} > Alerts and Insights** in the main menu, or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects). You can edit the spaces that a job or model is assigned to by clicking the icons in the **Spaces** column.
+Each {{ml}} job and trained model can be assigned to all, one, or multiple spaces. This can be configured in **Machine Learning**. To open **Machine Learning**, find **{{stack-manage-app}} > Alerts and Insights** in the main menu, or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects). You can edit the spaces that a job or model is assigned to by clicking the icons in the **Spaces** column.
 
 :::{image} ../../images/machine-learning-assign-job-spaces.jpg
 :alt: Assign machine learning jobs to spaces
 :class: screenshot
 :::
-
 
 #### {{kib}} user [kib-security-privileges]
 
@@ -113,14 +100,11 @@ Within a {{kib}} space, for read-only access to the {{ml-features}}, you must ha
 A user who has full or read-only access to {{ml-features}} within a given {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}, as {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results.
 ::::
 
-
 ::::{note}
 {{data-sources-cap}} can be automatically created when creating a {{dfanalytics-job}}.
 ::::
 
-
 For access to use {{ml}} APIs via *Dev Tools* in {{kib}}, set the {{es}} security privileges and grant access to `machine_learning_admin` or `machine_learning_user` built-in roles.
-
 
 #### {{data-viz}} feature [upload-file-security-privileges]
 

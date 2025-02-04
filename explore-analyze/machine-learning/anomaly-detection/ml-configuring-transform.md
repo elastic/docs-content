@@ -16,7 +16,6 @@ Some of these examples use regular expressions. By default, regular expressions 
 
 ::::
 
-
 * [Example 1: Adding two numerical fields](#ml-configuring-transform1)
 * [Example 2: Concatenating strings](#ml-configuring-transform2)
 * [Example 3: Trimming strings](#ml-configuring-transform3)
@@ -110,7 +109,6 @@ PUT _ml/anomaly_detectors/test1
 1. A runtime field named `total_error_count` is referenced in the detector within the job.
 2. The runtime field is defined in the {{dfeed}}.
 
-
 This `test1` {{anomaly-job}} contains a detector that uses a runtime field in a mean analysis function. The `datafeed-test1` {{dfeed}} defines the runtime field. It contains a script that adds two fields in the document to produce a "total" error count.
 
 The syntax for the `runtime_mappings` property is identical to that used by {{es}}. For more information, see [Runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md).
@@ -135,7 +133,6 @@ In this example, the API returns the following results, which contain a sum of t
 ::::{note}
 This example demonstrates how to use runtime fields, but it contains insufficient data to generate meaningful results.
 ::::
-
 
 You can alternatively use {{kib}} to create an advanced {{anomaly-job}} that uses runtime fields. To add the `runtime_mappings` property to your {{dfeed}}, you must use the **Edit JSON** tab. For example:
 
@@ -181,7 +178,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 1. The runtime field has a generic name in this case, since it is used for various tests in the examples.
 2. The runtime field uses the plus (+) operator to concatenate strings.
 
-
 The preview {{dfeed}} API returns the following results, which show that "JOE" and "SMITH  " have been concatenated and an underscore was added:
 
 ```js
@@ -212,7 +208,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 ```
 
 1. This runtime field uses the `trim()` function to trim extra white space from a string.
-
 
 The preview {{dfeed}} API returns the following results, which show that "SMITH  " has been trimmed to "SMITH":
 
@@ -245,7 +240,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 
 1. This runtime field uses the `toLowerCase` function to convert a string to all lowercase letters. Likewise, you can use the `toUpperCase` function to convert a string to uppercase letters.
 
-
 The preview {{dfeed}} API returns the following results, which show that "JOE" has been converted to "joe":
 
 ```js
@@ -276,7 +270,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 ```
 
 1. This runtime field is a more complicated example of case manipulation. It uses the `subString()` function to capitalize the first letter of a string and converts the remaining characters to lowercase.
-
 
 The preview {{dfeed}} API returns the following results, which show that "JOE" has been converted to "Joe":
 
@@ -309,7 +302,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 
 1. This script uses regular expressions to replace white space with underscores.
 
-
 The preview {{dfeed}} API returns the following results, which show that "foo bar baz" has been converted to "foo_bar_baz":
 
 ```js
@@ -341,7 +333,6 @@ GET _ml/datafeeds/datafeed-test2/_preview
 
 1. This script looks for a specific regular expression pattern and emits the matched groups as a concatenated string. If no match is found, it emits an empty string.
 
-
 The preview {{dfeed}} API returns the following results, which show that "foo-bar-19" has been converted to "foo_19":
 
 ```js
@@ -353,7 +344,6 @@ The preview {{dfeed}} API returns the following results, which show that "foo-ba
 ]
 ```
 
-$$$ml-configuring-transform8$$$
 
 ```console
 PUT _ml/anomaly_detectors/test3

@@ -352,7 +352,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
 ## Create an {{esql}} rule [create-esql-rule]
 
-Use [{{esql}}](../../../explore-analyze/query-filter/languages/esorql.md) to query your source events and aggregate event data. Query results are returned in a table with rows and columns. Each row becomes an alert.
+Use [{{esql}}](../../../explore-analyze/query-filter/languages/esql.md) to query your source events and aggregate event data. Query results are returned in a table with rows and columns. Each row becomes an alert.
 
 To create an {{esql}} rule:
 

@@ -21,4 +21,3 @@ The main resources can be accessed with a variety of endpoints:
 * [`/model_snapshots/`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-ad-apis.html#ml-api-snapshot-endpoint): Manage model snapshots
 
 For a full list, see [{{ml-cap}} {anomaly-detect} APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-ad-apis.html).
-

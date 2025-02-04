@@ -1,2 +1,3 @@
 # docs-builder default output
 .artifacts
+.DS_store

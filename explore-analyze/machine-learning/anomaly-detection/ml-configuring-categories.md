@@ -13,12 +13,10 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 "type":"logs"}
 ```
 
-
 ## Recommendations [categ-recommendations]
 
 * Categorization is tuned to work best on data like log messages by taking token order into account, including stop words, and not considering synonyms in its analysis. Use machine-written messages for categorization analysis.
 * Complete sentences in human communication or literary text (for example email, wiki pages, prose, or other human-generated content) can be extremely diverse in structure. Since categorization is tuned for machine data, it gives poor results for human-generated data. It would create so many categories that they couldn’t be handled effectively. Avoid using human-generated data for categorization analysis.
-
 
 ## Creating categorization jobs [creating-categorization-jobs]
 
@@ -40,6 +38,7 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 This example job generates categories from the contents of the `message` field and uses the `count` function to determine when certain categories are occurring at anomalous rates.
 
 ::::{dropdown} API example
+
 ```console
 PUT _ml/anomaly_detectors/it_ops_app_logs
 {
@@ -61,10 +60,7 @@ PUT _ml/anomaly_detectors/it_ops_app_logs
 1. This field is used to derive categories.
 2. The categories are used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`. If you do not specify this keyword in one of those properties, the API request fails.
 
-
 ::::
-
-
 
 ### Viewing the job results [categorization-job-results]
 
@@ -77,13 +73,11 @@ Use the **Anomaly Explorer** in {{kib}} to view the analysis results:
 
 For this type of job, the results contain extra information for each anomaly: the name of the category (for example, `mlcategory 2`) and examples of the messages in that category. You can use these details to investigate occurrences of unusually high message counts.
 
-
 ### Advanced configuration options [advanced-categorization-options]
 
 If you use the advanced {{anomaly-job}} wizard in {{kib}} or the [create {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html), there are additional configuration options. For example, the optional `categorization_examples_limit` property specifies the maximum number of examples that are stored in memory and in the results data store for each category. The default value is `4`. Note that this setting does not affect the categorization; it just affects the list of visible examples. If you increase this value, more examples are available, but you must have more storage available. If you set this value to `0`, no examples are stored.
 
 Another advanced option is the `categorization_filters` property, which can contain an array of regular expressions. If a categorization field value matches the regular expression, the portion of the field that is matched is not taken into consideration when defining categories. The categorization filters are applied in the order they are listed in the job configuration, which enables you to disregard multiple sections of the categorization field value. In this example, you might create a filter like `[ "\\[statement:.*\\]"]` to remove the SQL statement from the categorization algorithm.
-
 
 ## Per-partition categorization [ml-per-partition-categorization]
 
@@ -92,7 +86,6 @@ If you enable per-partition categorization, categories are determined independen
 If your job has multiple detectors, every detector that uses the `mlcategory` keyword must also define a `partition_field_name`. You must use the same `partition_field_name` value in all of these detectors. Otherwise, when you create or update a job and enable per-partition categorization, it fails.
 
 When per-partition categorization is enabled, you can also take advantage of a `stop_on_warn` configuration option. If the categorization status for a partition changes to `warn`, it doesn’t categorize well and can cause unnecessary resource usage. When you set `stop_on_warn` to `true`, the job stops analyzing these problematic partitions. You can thus avoid an ongoing performance cost for partitions that are unsuitable for categorization.
-
 
 ## Customizing the categorization analyzer [ml-configuring-analyzer]
 
@@ -195,7 +188,6 @@ PUT _ml/anomaly_detectors/it_ops_new_logs
 4. By default, categorization ignores tokens that are hexadecimal numbers.
 5. Underscores, hyphens, and dots are removed from the beginning of tokens.
 6. Underscores, hyphens, and dots are also removed from the end of tokens.
-
 
 The key difference between the default `categorization_analyzer` and this example analyzer is that using the `ml_standard` tokenizer is several times faster. The `ml_standard` tokenizer also tries to preserve URLs, Windows paths and email addresses as single tokens. Another difference in behavior is that the custom analyzer does not include accented letters in tokens whereas the `ml_standard` tokenizer does. This could be fixed by using more complex regular expressions.
 

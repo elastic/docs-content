@@ -11,6 +11,3 @@ This section contains further resources for using {{anomaly-detect}}.
 * [*Function reference*](ml-functions.md)
 * [Supplied configurations](ootb-ml-jobs.md)
 * [Troubleshooting and FAQ](ml-ad-troubleshooting.md)
-
-
-
