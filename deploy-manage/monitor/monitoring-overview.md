@@ -1,3 +1,10 @@
+---
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
+---
 # Monitoring overview
 
 % What needs to be done: Write from scratch

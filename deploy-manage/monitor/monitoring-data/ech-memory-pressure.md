@@ -3,6 +3,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-memory-pressure.html
 ---
 
+% FILE TO REMOVE (HEROKU IT COMES FROM A LIFT AND SHIFT WITH MULTIPLE URLS)
+
 # JVM memory pressure indicator [ech-memory-pressure]
 
 In addition to the more detailed [cluster performance metrics](../stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md), the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) also includes a JVM memory pressure indicator for each node in your cluster. This indicator can help you to determine when you need to upgrade to a larger cluster.

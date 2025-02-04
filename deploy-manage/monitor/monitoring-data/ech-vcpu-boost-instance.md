@@ -1,7 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-vcpu-boost-instance.html
+applies:
+  hosted: all
 ---
+
+% FILE TO REMOVE (HEROKU IT COMES FROM A LIFT AND SHIFT WITH MULTIPLE URLS)
 
 # vCPU boosting and credits [ech-vcpu-boost-instance]
 

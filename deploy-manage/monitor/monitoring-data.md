@@ -1,4 +1,13 @@
+---
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
+---
 # Managing monitoring data
+
+% Probably ALL THIS NEEDS TO BE UNDER STACK MONITORING
 
 % What needs to be done: Write from scratch
 

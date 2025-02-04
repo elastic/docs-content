@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-how-to-access.html
+applies:
+  hosted: all
 ---
 
 # How to access AutoOps [ec-autoops-how-to-access]

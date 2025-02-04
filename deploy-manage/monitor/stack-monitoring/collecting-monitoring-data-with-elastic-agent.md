@@ -2,6 +2,8 @@
 navigation_title: "Collecting monitoring data with {{agent}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-elastic-agent.html
+applies:
+  stack: ga 8.5.0
 ---
 
 

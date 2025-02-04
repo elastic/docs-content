@@ -1,7 +1,9 @@
 ---
-navigation_title: "Configure monitoring"
+navigation_title: "Kibana monitoring self-managed"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/configuring-monitoring.html
+applies:
+  stack: all
 ---
 
 

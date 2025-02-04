@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-monitoring-exporters.html
+applies:
+  stack: deprecated 7.16.0
 ---
 
 # Exporters [es-monitoring-exporters]

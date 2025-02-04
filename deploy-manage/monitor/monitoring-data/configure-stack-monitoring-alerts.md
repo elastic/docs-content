@@ -1,7 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cluster-health-notifications.html
+applies:
+  hosted: all
 ---
+
+% NEEDS MERGING WITH kibana-alerts.md
+% this one is written for Elastic Cloud but needs to be generic, except if it's really about Elastic cloud.
 
 # Configure Stack monitoring alerts [ec-cluster-health-notifications]
 

@@ -1,7 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/logging-configuration.html
+applies:
+  stack: all
 ---
+
+% this might not be valid for all deployment types. needs review.
+% certain topics like LEVELS are valid for all deployment types, but not all
 
 # Kibana logging [logging-configuration]
 

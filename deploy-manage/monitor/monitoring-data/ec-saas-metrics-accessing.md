@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saas-metrics-accessing.html
+applies:
+  hosted: all
 ---
 
 # Access performance metrics [ec-saas-metrics-accessing]
