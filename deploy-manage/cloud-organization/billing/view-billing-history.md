@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-history.html
   - https://www.elastic.co/guide/en/serverless/current/general-billing-history.html
+applies:
+  hosted: all
+  serverless: all
 ---
 
 # View your billing history [ec-billing-history]

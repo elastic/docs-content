@@ -35,9 +35,10 @@ You can explore and manage billing from the **Billing** section of the Elastic C
 
 * [Add your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md)
 * [View your billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md)
-* [Update billing and operational contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md)
 * [Manage your subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md)
 * [Monitor and analyze your account usage](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md)
+
+You might also want to [update the contacts that receive billing emails](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md)
 
 For any other questions that you have about billing, refer to our [billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq.md).
 
