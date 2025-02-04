@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html
 ---
 
-
-
 # How-tos [anomaly-how-tos]
-
 
 Though it is quite simple to analyze your data and provide quick {{ml}} results, gaining deep insights might require some additional planning and configuration. The guides in this section describe some best practices for generating useful {{ml}} results and insights from your data.
 
@@ -24,8 +21,7 @@ Though it is quite simple to analyze your data and provide quick {{ml}} results,
 * [{{anomaly-jobs-cap}} from visualizations](ml-jobs-from-lens.md)
 * [Exporting and importing {{ml}} jobs](move-jobs.md)
 
-
-## {{anomaly-detect-cap}} examples in blog posts [anomaly-examples-blog-posts] 
+## {{anomaly-detect-cap}} examples in blog posts [anomaly-examples-blog-posts]
 
 The blog posts listed below show how to get the most out of Elastic {{ml}} {anomaly-detect}.
 
@@ -41,16 +37,3 @@ The blog posts listed below show how to get the most out of Elastic {{ml}} {anom
 * [Interpretability in {{ml}}: Identifying anomalies, influencers, and root causes](https://www.elastic.co/blog/interpretability-in-ml-identifying-anomalies-influencers-root-causes)
 
 There are also some examples in the {{ml}} folder in the [examples repository](https://github.com/elastic/examples).
-
-
-
-
-
-
-
-
-
-
-
-
-

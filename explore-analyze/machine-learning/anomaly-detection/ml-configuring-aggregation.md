@@ -7,11 +7,9 @@ mapped_pages:
 
 When you aggregate data, {{es}} automatically distributes the calculations across your cluster. Then you can feed this aggregated data into the {{ml-features}} instead of raw results. It reduces the volume of data that must be analyzed.
 
-
 ## Requirements [aggs-requs-dfeeds]
 
 There are a number of requirements for using aggregations in {{dfeeds}}.
-
 
 ### Aggregations [aggs-aggs]
 
@@ -23,20 +21,17 @@ There are a number of requirements for using aggregations in {{dfeeds}}.
 * If you set the `summary_count_field_name` property to a non-null value, the {{anomaly-job}} expects to receive aggregated input. The property must be set to the name of the field that contains the count of raw data points that have been aggregated. It applies to all detectors in the job.
 * The influencers or the partition fields must be included in the aggregation of your {{dfeed}}, otherwise they are not included in the job analysis. For more information on influencers, refer to [Influencers](ml-ad-run-jobs.md#ml-ad-influencers).
 
-
 ### Intervals [aggs-interval]
 
 * The bucket span of your {{anomaly-job}} must be divisible by the value of the `calendar_interval` or `fixed_interval` in your aggregation (with no remainder).
 * If you specify a `frequency` for your {{dfeed}}, it must be divisible by the `calendar_interval` or the `fixed_interval`.
 * {{anomaly-jobs-cap}} cannot use `date_histogram` or `composite` aggregations with an interval measured in months because the length of the month is not fixed; they can use weeks or smaller units.
 
-
 ## Limitations [aggs-limits-dfeeds]
 
 * If your [{{dfeed}} uses aggregations with nested `terms` aggs](#aggs-dfeeds) and model plot is not enabled for the {{anomaly-job}}, neither the **Single Metric Viewer** nor the **Anomaly Explorer** can plot and display an anomaly chart. In these cases, an explanatory message is shown instead of the chart.
 * Your {{dfeed}} can contain multiple aggregations, but only the ones with names that match values in the job configuration are fed to the job.
 * Using [scripted metric](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-scripted-metric-aggregation.html) aggregations is not supported in {{dfeeds}}.
-
 
 ## Recommendations [aggs-recommendations-dfeeds]
 
@@ -58,8 +53,6 @@ There are a number of requirements for using aggregations in {{dfeeds}}.
       }
     }
     ```
-
-
 
 ## Including aggregations in {{anomaly-jobs}} [aggs-using-date-histogram]
 
@@ -119,7 +112,6 @@ PUT _ml/anomaly_detectors/kibana-sample-data-flights
 4. The `term` aggregation is named `airline` and its field is also named `airline`.
 5. The `avg` aggregation is named `responsetime` and its field is also named `responsetime`.
 
-
 Use the following format to define a `date_histogram` aggregation to bucket by time in your {{dfeed}}:
 
 ```js
@@ -152,7 +144,6 @@ Use the following format to define a `date_histogram` aggregation to bucket by t
   }
 }
 ```
-
 
 ## Composite aggregations [aggs-using-composite]
 
@@ -224,7 +215,6 @@ PUT _ml/anomaly_detectors/kibana-sample-data-flights-composite
 4. The required `max` aggregation whose name is the time field in the job analysis config.
 5. The `avg` aggregation is named `responsetime` and its field is also named `responsetime`.
 
-
 Use the following format to define a composite aggregation in your {{dfeed}}:
 
 ```js
@@ -257,7 +247,6 @@ Use the following format to define a composite aggregation in your {{dfeed}}:
 }
 ```
 
-
 ## Nested aggregations [aggs-dfeeds]
 
 You can also use complex nested aggregations in {{dfeeds}}.
@@ -267,7 +256,6 @@ The next example uses the [`derivative` pipeline aggregation](https://www.elasti
 ::::{note}
 `derivative` or other pipeline aggregations may not work within `composite` aggregations. See [composite aggregations and pipeline aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html#search-aggregations-bucket-composite-aggregation-pipeline-aggregations).
 ::::
-
 
 ```js
 "aggregations": {
@@ -303,7 +291,6 @@ The next example uses the [`derivative` pipeline aggregation](https://www.elasti
   }
 }
 ```
-
 
 ## Single bucket aggregations [aggs-single-dfeeds]
 
@@ -350,13 +337,11 @@ You can also use single bucket aggregations in {{dfeeds}}. The following example
 }
 ```
 
-
 ## Using `aggregate_metric_double` field type in {{dfeeds}} [aggs-amd-dfeeds]
 
 ::::{note}
 It is not currently possible to use `aggregate_metric_double` type fields in {{dfeeds}} without aggregations.
 ::::
-
 
 You can use fields with the [`aggregate_metric_double`](https://www.elastic.co/guide/en/elasticsearch/reference/current/aggregate-metric-double.html) field type in a {{dfeed}} with aggregations. It is required to retrieve the `value_count` of the `aggregate_metric_double` filed in an aggregation and then use it as the `summary_count_field_name` to provide the correct count that represents the aggregation value.
 
