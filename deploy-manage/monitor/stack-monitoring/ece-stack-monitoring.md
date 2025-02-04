@@ -7,7 +7,7 @@ applies:
 
 # Enable stack monitoring on ECE deployments [ece-enable-logging-and-monitoring]
 
-The deployment logging and monitoring feature lets you monitor your deployment in [Kibana](../../../get-started/the-stack.md) by shipping logs and metrics to a monitoring deployment. You can:
+The deployment logging and monitoring feature lets you monitor your deployment in [Kibana](/get-started/the-stack.md) by shipping logs and metrics to a monitoring deployment. You can:
 
 * View your deployment’s health and performance in real time and analyze past cluster, index, and node metrics.
 * View your deployment’s logs to debug issues, discover slow queries, surface deprecations, and analyze access to your deployment.
@@ -112,7 +112,7 @@ An ILM policy is pre-configured to manage log retention. The policy can be adjus
 
 ### Index management [ece-logging-and-monitoring-index-management-ilm] 
 
-When sending monitoring data to a deployment, you can configure [Index Lifecycle Management (ILM)](../manage-data/lifecycle/index-lifecycle-management.md) to manage retention of your monitoring and logging indices. When sending logs to a deployment, an ILM policy is pre-configured to manage log retention and the policy can be customized to your needs.
+When sending monitoring data to a deployment, you can configure [Index Lifecycle Management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md) to manage retention of your monitoring and logging indices. When sending logs to a deployment, an ILM policy is pre-configured to manage log retention and the policy can be customized to your needs.
 
 
 ### Enable logging and monitoring [ece-enable-logging-and-monitoring-steps] 

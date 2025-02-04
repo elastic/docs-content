@@ -780,8 +780,8 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
-              - file: monitor/logging-configuration/log-settings-examples.md
-              - file: monitor/logging-configuration/_cli_configuration.md
+              - file: monitor/logging-configuration/kibana-log-settings-examples.md
+              - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
           - file: monitor/logging-configuration/security-event-audit-logging.md
             children:
               - file: monitor/logging-configuration/enabling-elasticsearch-audit-logs.md
