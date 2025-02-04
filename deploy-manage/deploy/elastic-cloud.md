@@ -14,6 +14,7 @@ Serverless projects use the core components of the {{stack}}, such as {{es}} and
 Elastic provides three serverless solutions available on {{ecloud}}:
 
 * **https://www.elastic.co/guide/en/serverless/current/what-is-elasticsearch-serverless.html[{{es-serverless}}]**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
+% See solutions/search/serverless-elasticsearch-get-started.md
 * **https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html[{{obs-serverless}}]**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
 * **https://www.elastic.co/guide/en/serverless/current/what-is-security-serverless.html[{{sec-serverless}}]**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
