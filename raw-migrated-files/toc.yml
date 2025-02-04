@@ -550,7 +550,6 @@ toc:
       - file: docs-content/serverless/security-timeline-templates-ui.md
       - file: docs-content/serverless/security-timelines-ui.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
-      - file: docs-content/serverless/security-troubleshoot-endpoints.md
       - file: docs-content/serverless/security-trusted-applications.md
       - file: docs-content/serverless/security-ts-detection-rules.md
       - file: docs-content/serverless/security-tune-detection-signals.md
@@ -995,7 +994,6 @@ toc:
       - file: security-docs/security/timelines-ui.md
       - file: security-docs/security/trusted-apps-ov.md
       - file: security-docs/security/ts-detection-rules.md
-      - file: security-docs/security/ts-management.md
       - file: security-docs/security/tuning-anomaly-results.md
       - file: security-docs/security/tuning-detection-signals.md
       - file: security-docs/security/turn-on-risk-engine.md
