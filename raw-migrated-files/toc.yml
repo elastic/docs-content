@@ -175,7 +175,6 @@ toc:
       - file: cloud/cloud/ec-api-deployment-other.md
       - file: cloud/cloud/ec-api-organizations.md
       - file: cloud/cloud/ec-autoscaling.md
-      - file: cloud/cloud/ec-billing-history.md
       - file: cloud/cloud/ec-billing-stop.md
       - file: cloud/cloud/ec-cloud-ingest-data.md
       - file: cloud/cloud/ec-config-change-errors.md
@@ -285,7 +284,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-search-your-data-the-search-api.md
       - file: docs-content/serverless/elasticsearch-search-your-data.md
       - file: docs-content/serverless/endpoint-protection-rules.md
-      - file: docs-content/serverless/general-billing-history.md
       - file: docs-content/serverless/general-billing-stop-project.md
       - file: docs-content/serverless/general-check-subscription.md
       - file: docs-content/serverless/general-manage-organization.md

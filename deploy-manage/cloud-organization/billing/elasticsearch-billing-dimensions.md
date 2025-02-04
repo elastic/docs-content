@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-billing.html
+applies:
+  serverless: all
 ---
 
 # Elasticsearch billing dimensions [elasticsearch-billing]

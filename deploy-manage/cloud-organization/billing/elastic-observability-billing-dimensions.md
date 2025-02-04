@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-billing.html
+applies:
+  serverless: all
 ---
 
 # Elastic Observability billing dimensions [observability-billing]

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/security-billing.html
+applies:
+  serverless: all
 ---
 
 # Security billing dimensions [security-billing]

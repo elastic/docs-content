@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-billing.html
+applies:
+  serverless: all
 ---
 
 # Serverless project billing dimensions [general-serverless-billing]
 
-Elastic Cloud serverless billing is based on your usage across these dimensions:
+Elastic Cloud Serverless billing is based on your usage across these dimensions:
 
 * [Offerings](#offerings)
 * [Add-ons](#add-ons)
