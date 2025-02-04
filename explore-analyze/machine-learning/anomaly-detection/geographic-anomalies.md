@@ -7,7 +7,6 @@ mapped_pages:
 
 If your data includes geographic fields, you can use {{ml-features}} to detect anomalous behavior, such as a credit card transaction that occurs in an unusual location or a web request that has an unusual source location.
 
-
 ## Prerequisites [geographic-anomalies-prereqs]
 
 To run this type of {{anomaly-job}}, you must have [{{ml-features}} set up](../setting-up-machine-learning.md). You must also have time series data that contains spatial data types. In particular, you must have:
@@ -21,7 +20,6 @@ The latitude and longitude must be in the range -180 to 180 and represent a poin
 
 This example uses the sample eCommerce orders and sample web logs data sets. For more information, see [Add the sample data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
 
-
 ## Explore your geographic data [geographic-anomalies-visualize]
 
 To get the best results from {{ml}} analytics, you must understand your data. You can use the **{{data-viz}}** in the **{{ml-app}}** app for this purpose. Search for specific fields or field types, such as geo-point fields in the sample data sets. You can see how many documents contain those fields within a specific time period and sample size. You can also see the number of distinct values, a list of example values, and preview them on a map. For example:
@@ -30,7 +28,6 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 :alt: A screenshot of a geo_point field in {data-viz}
 :class: screenshot
 :::
-
 
 ## Create an {{anomaly-job}} [geographic-anomalies-jobs]
 
@@ -51,6 +48,7 @@ For example, create a job that analyzes the sample eCommerce orders data set to 
 :::
 
 ::::{dropdown} API example
+
 ```console
 PUT _ml/anomaly_detectors/ecommerce-geo <1>
 {
@@ -101,9 +99,7 @@ POST _ml/datafeeds/datafeed-ecommerce-geo/_start <4>
 3. Open the job.
 4. Start the {{dfeed}}. Since the sample data sets often contain timestamps that are later than the current date, it is a good idea to specify the appropriate end date for the {{dfeed}}.
 
-
 ::::
-
 
 Alternatively, create a job that analyzes the sample web logs data set to detect events with unusual coordinates (`geo.coordinates` values) or unusually high sums of transferred data (`bytes` values):
 
@@ -113,6 +109,7 @@ Alternatively, create a job that analyzes the sample web logs data set to detect
 :::
 
 ::::{dropdown} API example
+
 ```console
 PUT _ml/anomaly_detectors/weblogs-geo <1>
 {
@@ -167,10 +164,7 @@ POST _ml/datafeeds/datafeed-weblogs-geo/_start <4>
 3. Open the job.
 4. Start the {{dfeed}}. Since the sample data sets often contain timestamps that are later than the current date, it is a good idea to specify the appropriate end date for the {{dfeed}}.
 
-
 ::::
-
-
 
 ## Analyze the results [geographic-anomalies-results]
 
@@ -179,7 +173,6 @@ After the {{anomaly-jobs}} have processed some data, you can view the results in
 ::::{tip}
 If you used APIs to create the jobs and {{dfeeds}}, you cannot see them in {{kib}} until you follow the prompts to synchronize the necessary saved objects.
 ::::
-
 
 When you select a period that contains an anomaly in the **Anomaly Explorer** swim lane results, you can see a map of the typical and actual coordinates. For example, in the eCommerce sample data there is a user with anomalous shopping behavior:
 
@@ -210,7 +203,6 @@ When you try this type of {{anomaly-job}} with your own data, it might take some
 
 For more information about {{anomaly-detect}} concepts, see [Concepts](https://www.elastic.co/guide/en/machine-learning/current/ml-concepts.html). For the full list of functions that you can use in {{anomaly-jobs}}, see [*Function reference*](ml-functions.md). For more {{anomaly-detect}} examples, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-examples.html).
 
-
 ## Add anomaly layers to your maps [geographic-anomalies-map-layer]
 
 To integrate the results from your {{anomaly-job}} in **Maps**, click **Add layer**, then select **ML Anomalies**. You must then select or create an {{anomaly-job}} that uses the `lat_long` function.
@@ -221,7 +213,6 @@ For example, you can extend the map example from [Build a map to compare metrics
 :alt: A screenshot of an anomaly within the Maps app
 :class: screenshot
 :::
-
 
 ## What’s next [geographic-anomalies-next]
 

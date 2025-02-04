@@ -139,11 +139,6 @@ toc:
   - file: machine-learning.md
     children:
       - file: machine-learning/setting-up-machine-learning.md
-      - file: machine-learning/machine-learning-in-kibana.md
-        children:
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
-          - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
       - file: machine-learning/anomaly-detection.md
         children:
           - file: machine-learning/anomaly-detection/ml-ad-finding-anomalies.md
@@ -232,6 +227,11 @@ toc:
           - file: machine-learning/nlp/inference-processing.md
             children:
               - file: machine-learning/nlp/nlp-example.md
+      - file: machine-learning/machine-learning-in-kibana.md
+        children:
+          - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
+          - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
+          - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
       - file: machine-learning/aiops-labs.md
         children:
           - file: machine-learning/aiops-labs/observability-aiops-detect-anomalies.md
