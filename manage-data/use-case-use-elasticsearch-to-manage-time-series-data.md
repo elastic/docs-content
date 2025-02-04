@@ -409,7 +409,7 @@ GET my-data-stream/_search
 }
 ```
 
-{{es}} searches are synchronous by default. Searches across frozen data, long time ranges, or large datasets may take longer. Use the [async search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html#submit-async-search) to run searches in the background. For more search options, see [*The search API*](../solutions/search/querying-for-search-searching-with-the-search-api.md).
+{{es}} searches are synchronous by default. Searches across frozen data, long time ranges, or large datasets may take longer. Use the [async search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html#submit-async-search) to run searches in the background. For more search options, see [*The search API*](../solutions/search/querying-for-search.md).
 
 ```console
 POST my-data-stream/_async_search
