@@ -31,7 +31,7 @@ Depending on your organization's needs, you can use one of several billing model
 
 ## Manage your subscription and billing in Elastic Cloud
 
-You can explore and manage billing from the **Billing** section of the Elastic Cloud console.
+You can explore and manage billing, as well as your Elastic Cloud subscription, from the **Billing** section of the Elastic Cloud console.
 
 * [Add your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md)
 * [View your billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md)

@@ -13,7 +13,7 @@ If different persons from your organization are involved in billing and operatio
 These additional contacts only receive billing or operational emails. You can also set a specific email address to receive monitoring alerts. Members of the account still receive both types of emails.
 
 ::::{note} 
-Operational contacts can only receive operational notifications, such as out-of-memory alerts. Operational and billing contacts can’t log in to Elastic Cloud. To log in to the [Elastic Cloud console](https://cloud.elastic.co?page=docs&placement=docs-body),   you must log in as the [organization owner](deploy-manage/users-roles/cloud-organization/user-roles.md), or be [a member](/deploy-manage/users-roles/cloud-organization.md) of the organization.
+Operational contacts can only receive operational notifications, such as out-of-memory alerts. Operational and billing contacts can’t log in to Elastic Cloud. To log in to the [Elastic Cloud console](https://cloud.elastic.co?page=docs&placement=docs-body),   you must log in as the [organization owner](/deploy-manage/users-roles/cloud-organization/user-roles.md), or be [a member](/deploy-manage/users-roles/cloud-organization.md) of the organization.
 ::::
 
 

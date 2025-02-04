@@ -24,3 +24,6 @@ You can perform the following tasks to manage your Cloud organization:
 
 Several aspects of your organization can also be managed using tools provided by Elastic. For a list of tools, refer to [Elastic Cloud organization tools and APIs](/deploy-manage/cloud-organization/tools-and-apis.md).
 
+::::{tip} 
+To learn how to manage your Elastic Cloud account as a user, refer to [Manage your Cloud account](/cloud-account/index.md).
+::::
