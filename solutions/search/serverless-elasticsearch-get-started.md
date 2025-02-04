@@ -88,7 +88,7 @@ The UI provides ready-to-use code examples for ingesting data via the REST API. 
 
 To get started using the in-product tutorial, navigate to the **Getting Started** page and follow the on-screen steps.
 
-:::{image} ../../../images/serverless-getting-started-page.png
+:::{image} ../../images/serverless-getting-started-page.png
 :alt: Getting Started page.
 :::
 
