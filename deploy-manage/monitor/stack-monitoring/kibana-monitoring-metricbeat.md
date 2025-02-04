@@ -11,7 +11,7 @@ applies:
 # Collect monitoring data with Metricbeat [monitoring-metricbeat]
 
 
-In 6.4 and later, you can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster, rather than routing it through the production cluster as described in [Legacy collection methods](monitoring-kibana.md).
+In 6.4 and later, you can use {{metricbeat}} to collect data about {{kib}} and ship it to the monitoring cluster, rather than routing it through the production cluster as described in [Legacy collection methods](kibana-monitoring-legacy.md).
 
 :::{image} ../../../images/kibana-metricbeat.png
 :alt: Example monitoring architecture

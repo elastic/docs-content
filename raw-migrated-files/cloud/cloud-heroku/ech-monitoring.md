@@ -8,12 +8,12 @@ The most important of these is the {{es}} cluster, because it is the heart of th
 
 This section provides some best practices to help you monitor and understand the ongoing state of your deployments and their resources.
 
-* [{{es}} cluster health](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-es-cluster-health)
-* [{{es}} cluster performance](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-es-cluster-performance)
-* [Health warnings](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-es-health-warnings)
-* [Preconfigured logs and metrics](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-es-health-preconfigured)
-* [Dedicated logs and metrics](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-es-health-dedicated)
-* [Understanding deployment health](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-health-best-practices)
+* [{{es}} cluster health](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-es-cluster-health)
+* [{{es}} cluster performance](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-es-cluster-performance)
+* [Health warnings](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-es-health-warnings)
+* [Preconfigured logs and metrics](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-es-health-preconfigured)
+* [Dedicated logs and metrics](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-es-health-dedicated)
+* [Understanding deployment health](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-health-best-practices)
 
 
 ## {{es}} cluster health [ech-es-cluster-health]
@@ -56,7 +56,7 @@ For each issue you can either use a troubleshooting link or get a suggestion to 
 
 ## {{es}} cluster performance [ech-es-cluster-performance]
 
-The deployment **Health** page does not include information on cluster performance. If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability. The performance page and the out-of-the-box logs allow you to monitor your cluster performance, but for production applications we strongly recommend setting up a dedicated monitoring cluster. Check [Understanding deployment health](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-health-best-practices), for more guidelines on how to monitor you cluster performance.
+The deployment **Health** page does not include information on cluster performance. If you observe issues on search and ingest operations in terms of increased latency or throughput for queries, these might not be directly reported on the **Health** page, unless they are related to shard health or master node availability. The performance page and the out-of-the-box logs allow you to monitor your cluster performance, but for production applications we strongly recommend setting up a dedicated monitoring cluster. Check [Understanding deployment health](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-health-best-practices), for more guidelines on how to monitor you cluster performance.
 
 
 ## Health warnings [ech-es-health-warnings]
@@ -94,7 +94,7 @@ In a production environment, it’s important set up dedicated health monitoring
 
 You have the option of sending logs and metrics to a separate, specialized monitoring deployment, which ensures that they’re available in the event of a deployment outage. The monitoring deployment also gives you access to Kibana’s stack monitoring features, through which you can view health and performance data for all of your deployment resources.
 
-Check the guide on [how to set up monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) to learn more.
+Check the guide on [how to set up monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to learn more.
 
 
 ## Understanding deployment health [ech-health-best-practices]

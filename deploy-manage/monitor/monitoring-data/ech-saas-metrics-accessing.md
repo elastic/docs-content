@@ -9,7 +9,7 @@ mapped_pages:
 
 Cluster performance metrics are available directly in the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body). The graphs on this page include a subset of Elasticsearch Add-On for Heroku-specific performance metrics.
 
-For advanced views or production monitoring, [enable logging and monitoring](../stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md). The monitoring application provides more advanced views for Elasticsearch and JVM metrics, and includes a configurable retention period.
+For advanced views or production monitoring, [enable logging and monitoring](../stack-monitoring/elastic-cloud-stack-monitoring.md). The monitoring application provides more advanced views for Elasticsearch and JVM metrics, and includes a configurable retention period.
 
 To access cluster performance metrics:
 

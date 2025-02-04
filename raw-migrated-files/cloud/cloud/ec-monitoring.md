@@ -102,7 +102,7 @@ You have the option of sending logs and metrics to a separate, specialized monit
 
 As part of health monitoring, it’s also a best practice to [configure alerting](../../../deploy-manage/monitor/monitoring-data/configure-stack-monitoring-alerts.md), so that you can be notified right away about any deployment health issues.
 
-Check the guide on [how to set up monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) to learn more.
+Check the guide on [how to set up monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to learn more.
 
 
 ## Understanding deployment health [ec-health-best-practices]

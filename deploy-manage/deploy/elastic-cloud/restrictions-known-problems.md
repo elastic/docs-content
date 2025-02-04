@@ -21,7 +21,7 @@ When using Elasticsearch Service, there are some limitations you should be aware
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
 * [Known problems](#ec-known-problems)
 
-For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ec-restrictions-monitoring) section of the logging and monitoring page.
+For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-restrictions-monitoring) section of the logging and monitoring page.
 
 Occasionally, we also publish information about [Known problems](#ec-known-problems) with our Elasticsearch Service or the Elastic Stack.
 

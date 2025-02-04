@@ -6,7 +6,7 @@ When you attempt to apply a configuration change to a deployment, the attempt ma
 :alt: A screen capture of the deployment page showing an error: Latest change to {{es}} configuration failed.
 :::
 
-To help diagnose these and any other types of issues in your deployments, we recommend [setting up monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md). Then, you can easily view your deployment health and access log files to troubleshoot this configuration failure.
+To help diagnose these and any other types of issues in your deployments, we recommend [setting up monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). Then, you can easily view your deployment health and access log files to troubleshoot this configuration failure.
 
 To confirm if your Elasticsearch cluster is bootlooping, you can check the most recent plan under your [Deployment Activity page](../../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) for the error:
 

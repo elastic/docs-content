@@ -11,7 +11,7 @@ applies:
 # Collect monitoring data with Elastic Agent [monitoring-elastic-agent]
 
 
-In 8.5 and later, you can use {{agent}} to collect data about {{kib}} and ship it to the monitoring cluster, rather than [using {{metricbeat}}](monitoring-metricbeat.md) or routing data through the production cluster as described in [Legacy collection methods](monitoring-kibana.md).
+In 8.5 and later, you can use {{agent}} to collect data about {{kib}} and ship it to the monitoring cluster, rather than [using {{metricbeat}}](monitoring-metricbeat.md) or routing data through the production cluster as described in [Legacy collection methods](kibana-monitoring-legacy.md).
 
 To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
