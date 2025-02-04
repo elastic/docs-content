@@ -32,16 +32,17 @@ Display data within a specified time range when your index contains time-based e
     * **Commonly used**. Select a time range from options such as **Last 15 minutes**, **Today**, and **Week to date**.
     * **Recently used date ranges**. Use a previously selected data range.
     * **Refresh every**. Specify an automatic refresh rate.
-        :::{image} /images/kibana-time-filter.png
-        :alt: Time filter menu
-        :width: 300px
-        :::
+        
+:::{image} ../../images/kibana-time-filter.png
+:alt: Time filter menu
+:width: 300px
+:::
 
 3. To set start and end times, click the bar next to the time filter. In the popup, select **Absolute**, **Relative** or **Now**, then specify the required options.
-    :::{image} /images/kibana-time-relative.png
-    :alt: Time filter showing relative time
-    :class: screenshot
-    :::
+    
+:::{image} ../../images/kibana-time-relative.png
+:alt: Time filter showing relative time
+:::
 
 The global time filter limits the time range of data displayed. In most cases, the time filter applies to the time field in the data view, but some apps allow you to use a different time field.
 
