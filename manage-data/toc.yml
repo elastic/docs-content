@@ -1,3 +1,152 @@
 project: 'Manage data'
 toc:
   - file: index.md
+  - file: data-store.md
+    children:
+      - file: data-store/index-basics.md
+      - file: data-store/index-types.md
+        children:
+          - file: data-store/index-types/data-streams.md
+            children:
+              - file: data-store/index-types/set-up-data-stream.md
+              - file: data-store/index-types/use-data-stream.md
+              - file: data-store/index-types/modify-data-stream.md
+              - file: data-store/index-types/time-series-data-stream-tsds.md
+                children:
+                  - file: data-store/index-types/set-up-tsds.md
+                  - file: data-store/index-types/downsampling-time-series-data-stream.md
+                  - file: data-store/index-types/run-downsampling-with-ilm.md
+                  - file: data-store/index-types/run-downsampling-manually.md
+                  - file: data-store/index-types/run-downsampling-using-data-stream-lifecycle.md
+                  - file: data-store/index-types/reindex-tsds.md
+              - file: data-store/index-types/logs-data-stream.md
+          - file: data-store/index-types/logsdb.md
+          - file: data-store/index-types/tsdb.md
+          - file: data-store/index-types/vectordb.md
+      - file: data-store/mapping.md
+        children:
+          - file: data-store/mapping/dynamic-mapping.md
+            children:
+              - file: data-store/mapping/dynamic-field-mapping.md
+              - file: data-store/mapping/dynamic-templates.md
+          - file: data-store/mapping/explicit-mapping.md
+          - file: data-store/mapping/runtime-fields.md
+            children:
+              - file: data-store/mapping/map-runtime-field.md
+              - file: data-store/mapping/define-runtime-fields-in-search-request.md
+              - file: data-store/mapping/override-field-values-at-query-time.md
+              - file: data-store/mapping/retrieve-runtime-field.md
+              - file: data-store/mapping/index-runtime-field.md
+              - file: data-store/mapping/explore-data-with-runtime-fields.md
+          - file: data-store/mapping/removal-of-mapping-types.md
+      - file: data-store/text-analysis.md
+        children:
+          - file: data-store/text-analysis/concepts.md
+            children:
+              - file: data-store/text-analysis/anatomy-of-an-analyzer.md
+              - file: data-store/text-analysis/index-search-analysis.md
+              - file: data-store/text-analysis/stemming.md
+              - file: data-store/text-analysis/token-graphs.md
+          - file: data-store/text-analysis/configure-text-analysis.md
+            children:
+              - file: data-store/text-analysis/test-an-analyzer.md
+              - file: data-store/text-analysis/configuring-built-in-analyzers.md
+              - file: data-store/text-analysis/create-custom-analyzer.md
+              - file: data-store/text-analysis/specify-an-analyzer.md
+      - file: data-store/templates.md
+        children:
+          - file: data-store/templates/simulate-multi-component-templates.md
+          - file: data-store/templates/config-ignoremissingcomponenttemplates.md
+          - file: data-store/templates/index-management-in-ui.md
+      - file: data-store/aliases.md
+      - file: data-store/manage-data-from-the-command-line.md
+  - file: ingest.md
+    children:
+      - file: ingest/ingesting-timeseries-data.md
+      - file: ingest/ingesting-data-for-elastic-solutions.md
+      - file: ingest/ingesting-data-from-applications.md
+        children:
+          - file: ingest/ingesting-data-from-applications/ingest-data-with-nodejs-on-elasticsearch-service.md
+          - file: ingest/ingesting-data-from-applications/ingest-data-with-python-on-elasticsearch-service.md
+          - file: ingest/ingesting-data-from-applications/ingest-data-from-beats-to-elasticsearch-service-with-logstash-as-proxy.md
+          - file: ingest/ingesting-data-from-applications/ingest-data-from-relational-database-into-elasticsearch-service.md
+          - file: ingest/ingesting-data-from-applications/ingest-logs-from-python-application-using-filebeat.md
+          - file: ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md
+      - file: ingest/ingest-reference-architectures.md
+        children:
+          - file: ingest/ingest-reference-architectures/use-case-arch.md
+          - file: ingest/ingest-reference-architectures/agent-to-es.md
+            children:
+              - file: ingest/ingest-reference-architectures/agent-installed.md
+              - file: ingest/ingest-reference-architectures/agent-apis.md
+          - file: ingest/ingest-reference-architectures/agent-ls.md
+            children:
+              - file: ingest/ingest-reference-architectures/ls-enrich.md
+              - file: ingest/ingest-reference-architectures/lspq.md
+              - file: ingest/ingest-reference-architectures/ls-networkbridge.md
+              - file: ingest/ingest-reference-architectures/ls-multi.md
+          - file: ingest/ingest-reference-architectures/agent-proxy.md
+          - file: ingest/ingest-reference-architectures/agent-kafka-es.md
+            children:
+              - file: ingest/ingest-reference-architectures/agent-kafka-ls.md
+              - file: ingest/ingest-reference-architectures/agent-kafka-essink.md
+          - file: ingest/ingest-reference-architectures/ls-for-input.md
+          - file: ingest/ingest-reference-architectures/airgapped-env.md
+            children:
+              - file: ingest/ingest-reference-architectures/agent-es-airgapped.md
+              - file: ingest/ingest-reference-architectures/agent-ls-airgapped.md
+      - file: ingest/sample-data.md
+      - file: ingest/transform-enrich.md
+        children:
+          - file: ingest/transform-enrich/ingest-pipelines.md
+            children:
+              - file: ingest/transform-enrich/example-parse-logs.md
+          - file: ingest/transform-enrich/logstash-pipelines.md
+          - file: ingest/transform-enrich/data-enrichment.md
+            children:
+              - file: ingest/transform-enrich/set-up-an-enrich-processor.md
+              - file: ingest/transform-enrich/example-enrich-data-based-on-geolocation.md
+              - file: ingest/transform-enrich/example-enrich-data-based-on-exact-values.md
+              - file: ingest/transform-enrich/example-enrich-data-by-matching-value-to-range.md
+          - file: ingest/transform-enrich/index-mapping-text-analysis.md
+      - file: ingest/tools.md
+        children:
+          - file: ingest/tools/upload-data-files.md
+  - file: lifecycle.md
+    children:
+      - file: lifecycle/data-tiers.md
+      - file: lifecycle/index-lifecycle-management.md
+        children:
+          - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
+          - file: lifecycle/index-lifecycle-management/tutorial-automate-rollover.md
+          - file: lifecycle/index-lifecycle-management/index-management-in-kibana.md
+          - file: lifecycle/index-lifecycle-management/concepts.md
+            children:
+              - file: lifecycle/index-lifecycle-management/index-lifecycle.md
+              - file: lifecycle/index-lifecycle-management/rollover.md
+              - file: lifecycle/index-lifecycle-management/policy-updates.md
+          - file: lifecycle/index-lifecycle-management/configure-lifecycle-policy.md
+          - file: lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md
+          - file: lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md
+          - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
+          - file: lifecycle/index-lifecycle-management/skip-rollover.md
+          - file: lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md
+      - file: lifecycle/data-stream.md
+        children:
+          - file: lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md
+          - file: lifecycle/data-stream/tutorial-update-existing-data-stream.md
+          - file: lifecycle/data-stream/tutorial-data-stream-retention.md
+          - file: lifecycle/data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md
+      - file: lifecycle/rollup.md
+        children:
+          - file: lifecycle/rollup/getting-started-with-rollups.md
+          - file: lifecycle/rollup/understanding-groups.md
+          - file: lifecycle/rollup/rollup-aggregation-limitations.md
+          - file: lifecycle/rollup/rollup-search-limitations.md
+          - file: lifecycle/rollup/migrating-from-rollup-to-downsampling.md
+      - file: lifecycle/curator.md
+  - file: migrate.md
+    children:
+      - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md
+      - file: migrate/migrate-internal-indices.md
+  - file: use-case-use-elasticsearch-to-manage-time-series-data.md

@@ -1,16 +1,2 @@
-# vscode stuff
-.vscode/*
-!.vscode/tasks.json
-
 # docs-builder default output
 .artifacts
-
-# vs stuff
-.vs/
-
-# osx stuff
-.DS_Store
-
-# jetbrains
-*.iml
-.idea

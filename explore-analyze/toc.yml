@@ -1,3 +1,408 @@
 project: 'Explore and analyze'
 toc:
   - file: index.md
+  - file: overview/kibana-quickstart.md
+    children:
+      - file: overview/kibana-quickstart/accessibility-in-kibana.md
+  - file: query-filter.md
+    children:
+      - file: query-filter/languages.md
+        children:
+          - file: query-filter/languages/querydsl.md
+          - file: query-filter/languages/esorql.md
+            children:
+              - file: query-filter/languages/esql-rest.md
+              - file: query-filter/languages/esql-kibana.md
+              - file: query-filter/languages/esql-elastic-security.md
+              - file: query-filter/languages/esql-multi-index.md
+              - file: query-filter/languages/esql-cross-clusters.md
+              - file: query-filter/languages/esql-task-management.md
+          - file: query-filter/languages/sql.md
+            children:
+              - file: query-filter/languages/sql-overview.md
+              - file: query-filter/languages/sql-getting-started.md
+              - file: query-filter/languages/sql-concepts.md
+                children:
+                  - file: query-filter/languages/_mapping_concepts_across_sql_and_elasticsearch.md
+              - file: query-filter/languages/sql-security.md
+              - file: query-filter/languages/sql-rest.md
+                children:
+                  - file: query-filter/languages/sql-rest-overview.md
+                  - file: query-filter/languages/sql-rest-format.md
+                  - file: query-filter/languages/sql-pagination.md
+                  - file: query-filter/languages/sql-rest-filtering.md
+                  - file: query-filter/languages/sql-rest-columnar.md
+                  - file: query-filter/languages/sql-rest-params.md
+                  - file: query-filter/languages/sql-runtime-fields.md
+                  - file: query-filter/languages/sql-async.md
+              - file: query-filter/languages/sql-translate.md
+              - file: query-filter/languages/sql-cli.md
+              - file: query-filter/languages/sql-jdbc.md
+                children:
+                  - file: query-filter/languages/_api_usage.md
+              - file: query-filter/languages/sql-odbc.md
+                children:
+                  - file: query-filter/languages/sql-odbc-installation.md
+                  - file: query-filter/languages/sql-odbc-setup.md
+              - file: query-filter/languages/sql-client-apps.md
+                children:
+                  - file: query-filter/languages/sql-client-apps-dbeaver.md
+                  - file: query-filter/languages/sql-client-apps-dbvis.md
+                  - file: query-filter/languages/sql-client-apps-excel.md
+                  - file: query-filter/languages/sql-client-apps-powerbi.md
+                  - file: query-filter/languages/sql-client-apps-ps1.md
+                  - file: query-filter/languages/sql-client-apps-microstrat.md
+                  - file: query-filter/languages/sql-client-apps-qlik.md
+                  - file: query-filter/languages/sql-client-apps-squirrel.md
+                  - file: query-filter/languages/sql-client-apps-workbench.md
+                  - file: query-filter/languages/sql-client-apps-tableau-desktop.md
+                  - file: query-filter/languages/sql-client-apps-tableau-server.md
+              - file: query-filter/languages/sql-spec.md
+                children:
+                  - file: query-filter/languages/sql-lexical-structure.md
+                  - file: query-filter/languages/sql-commands.md
+                  - file: query-filter/languages/sql-syntax-describe-table.md
+                  - file: query-filter/languages/sql-syntax-select.md
+                  - file: query-filter/languages/sql-syntax-show-catalogs.md
+                  - file: query-filter/languages/sql-syntax-show-columns.md
+                  - file: query-filter/languages/sql-syntax-show-functions.md
+                  - file: query-filter/languages/sql-syntax-show-tables.md
+                  - file: query-filter/languages/sql-data-types.md
+                  - file: query-filter/languages/sql-index-patterns.md
+                  - file: query-filter/languages/sql-index-frozen.md
+              - file: query-filter/languages/sql-functions.md
+                children:
+                  - file: query-filter/languages/sql-operators.md
+                  - file: query-filter/languages/sql-operators-logical.md
+                  - file: query-filter/languages/sql-operators-math.md
+                  - file: query-filter/languages/sql-operators-cast.md
+                  - file: query-filter/languages/sql-like-rlike-operators.md
+                  - file: query-filter/languages/sql-functions-aggs.md
+                  - file: query-filter/languages/sql-functions-grouping.md
+                  - file: query-filter/languages/sql-functions-datetime.md
+                  - file: query-filter/languages/sql-functions-search.md
+                  - file: query-filter/languages/sql-functions-math.md
+                  - file: query-filter/languages/sql-functions-string.md
+                  - file: query-filter/languages/sql-functions-type-conversion.md
+                  - file: query-filter/languages/sql-functions-geo.md
+                  - file: query-filter/languages/sql-functions-conditional.md
+                  - file: query-filter/languages/sql-functions-system.md
+              - file: query-filter/languages/sql-syntax-reserved.md
+              - file: query-filter/languages/sql-limitations.md
+          - file: query-filter/languages/eql.md
+            children:
+              - file: query-filter/languages/example-detect-threats-with-eql.md
+          - file: query-filter/languages/kql.md
+          - file: query-filter/languages/lucene-query-syntax.md
+      - file: query-filter/tools.md
+        children:
+          - file: query-filter/tools/saved-queries.md
+          - file: query-filter/tools/console.md
+          - file: query-filter/tools/search-profiler.md
+          - file: query-filter/tools/grok-debugger.md
+          - file: query-filter/tools/playground.md
+      - file: query-filter/filtering.md
+  - file: scripting.md
+    children:
+      - file: scripting/modules-scripting-painless.md
+      - file: scripting/modules-scripting-using.md
+        children:
+          - file: scripting/scripts-search-speed.md
+          - file: scripting/dissect.md
+          - file: scripting/grok.md
+      - file: scripting/script-fields-api.md
+      - file: scripting/common-script-uses.md
+        children:
+          - file: scripting/scripting-field-extraction.md
+      - file: scripting/modules-scripting-fields.md
+      - file: scripting/modules-scripting-security.md
+      - file: scripting/modules-scripting-expression.md
+      - file: scripting/modules-scripting-engine.md
+      - file: scripting/painless-lab.md
+  - file: aggregations.md
+    children:
+      - file: aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
+  - file: geospatial-analysis.md
+  - file: transforms.md
+    children:
+      - file: transforms/transform-overview.md
+      - file: transforms/transform-setup.md
+      - file: transforms/transform-usage.md
+      - file: transforms/transform-alerts.md
+      - file: transforms/transform-scale.md
+      - file: transforms/transform-checkpoints.md
+      - file: transforms/transform-api-quickref.md
+      - file: transforms/ecommerce-transforms.md
+      - file: transforms/transform-examples.md
+      - file: transforms/transform-painless-examples.md
+      - file: transforms/transform-limitations.md
+  - file: machine-learning.md
+    children:
+      - file: machine-learning/setting-up-machine-learning.md
+      - file: machine-learning/machine-learning-in-kibana.md
+        children:
+          - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
+          - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
+          - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
+      - file: machine-learning/anomaly-detection.md
+        children:
+          - file: machine-learning/anomaly-detection/ml-ad-finding-anomalies.md
+            children:
+              - file: machine-learning/anomaly-detection/ml-ad-plan.md
+              - file: machine-learning/anomaly-detection/ml-ad-run-jobs.md
+              - file: machine-learning/anomaly-detection/ml-ad-view-results.md
+              - file: machine-learning/anomaly-detection/ml-ad-forecast.md
+          - file: machine-learning/anomaly-detection/ml-getting-started.md
+          - file: machine-learning/anomaly-detection/ml-ad-concepts.md
+            children:
+              - file: machine-learning/anomaly-detection/ml-ad-algorithms.md
+              - file: machine-learning/anomaly-detection/ml-ad-explain.md
+              - file: machine-learning/anomaly-detection/ml-anomaly-detection-job-types.md
+              - file: machine-learning/anomaly-detection/anomaly-detection-scale.md
+              - file: machine-learning/anomaly-detection/ml-delayed-data-detection.md
+          - file: machine-learning/anomaly-detection/ml-api-quickref.md
+          - file: machine-learning/anomaly-detection/anomaly-how-tos.md
+            children:
+              - file: machine-learning/anomaly-detection/ml-configuring-alerts.md
+              - file: machine-learning/anomaly-detection/ml-configuring-aggregation.md
+              - file: machine-learning/anomaly-detection/ml-configuring-transform.md
+              - file: machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md
+              - file: machine-learning/anomaly-detection/ml-configuring-categories.md
+              - file: machine-learning/anomaly-detection/ml-reverting-model-snapshot.md
+              - file: machine-learning/anomaly-detection/geographic-anomalies.md
+              - file: machine-learning/anomaly-detection/mapping-anomalies.md
+              - file: machine-learning/anomaly-detection/ml-configuring-url.md
+              - file: machine-learning/anomaly-detection/ml-jobs-from-lens.md
+              - file: machine-learning/anomaly-detection/move-jobs.md
+          - file: machine-learning/anomaly-detection/ml-ad-resources.md
+            children:
+              - file: machine-learning/anomaly-detection/ml-limitations.md
+              - file: machine-learning/anomaly-detection/ml-functions.md
+              - file: machine-learning/anomaly-detection/ootb-ml-jobs.md
+              - file: machine-learning/anomaly-detection/ml-ad-troubleshooting.md
+      - file: machine-learning/data-frame-analytics.md
+        children:
+          - file: machine-learning/data-frame-analytics/ml-dfa-overview.md
+          - file: machine-learning/data-frame-analytics/ml-dfa-finding-outliers.md
+          - file: machine-learning/data-frame-analytics/ml-dfa-regression.md
+          - file: machine-learning/data-frame-analytics/ml-dfa-classification.md
+          - file: machine-learning/data-frame-analytics/ml-dfa-concepts.md
+            children:
+              - file: machine-learning/data-frame-analytics/ml-dfa-phases.md
+              - file: machine-learning/data-frame-analytics/ml-dfa-scale.md
+              - file: machine-learning/data-frame-analytics/ml-dfa-custom-urls.md
+              - file: machine-learning/data-frame-analytics/ml-feature-encoding.md
+              - file: machine-learning/data-frame-analytics/ml-feature-processors.md
+              - file: machine-learning/data-frame-analytics/ml-feature-importance.md
+              - file: machine-learning/data-frame-analytics/dfa-regression-lossfunction.md
+              - file: machine-learning/data-frame-analytics/hyperparameters.md
+              - file: machine-learning/data-frame-analytics/ml-trained-models.md
+          - file: machine-learning/data-frame-analytics/ml-dfanalytics-apis.md
+          - file: machine-learning/data-frame-analytics/ml-dfa-resources.md
+            children:
+              - file: machine-learning/data-frame-analytics/ml-dfa-limitations.md
+      - file: machine-learning/nlp.md
+        children:
+          - file: machine-learning/nlp/ml-nlp-overview.md
+            children:
+              - file: machine-learning/nlp/ml-nlp-extract-info.md
+              - file: machine-learning/nlp/ml-nlp-classify-text.md
+              - file: machine-learning/nlp/ml-nlp-search-compare.md
+          - file: machine-learning/nlp/ml-nlp-deploy-models.md
+            children:
+              - file: machine-learning/nlp/ml-nlp-select-model.md
+              - file: machine-learning/nlp/ml-nlp-import-model.md
+              - file: machine-learning/nlp/ml-nlp-deploy-model.md
+              - file: machine-learning/nlp/ml-nlp-test-inference.md
+          - file: machine-learning/nlp/ml-nlp-auto-scale.md
+          - file: machine-learning/nlp/ml-nlp-inference.md
+          - file: machine-learning/nlp/ml-nlp-apis.md
+          - file: machine-learning/nlp/ml-nlp-built-in-models.md
+            children:
+              - file: machine-learning/nlp/ml-nlp-elser.md
+              - file: machine-learning/nlp/ml-nlp-rerank.md
+              - file: machine-learning/nlp/ml-nlp-e5.md
+              - file: machine-learning/nlp/ml-nlp-lang-ident.md
+          - file: machine-learning/nlp/ml-nlp-model-ref.md
+          - file: machine-learning/nlp/ml-nlp-examples.md
+            children:
+              - file: machine-learning/nlp/ml-nlp-ner-example.md
+              - file: machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md
+          - file: machine-learning/nlp/ml-nlp-limitations.md
+          - file: machine-learning/nlp/inference-processing.md
+            children:
+              - file: machine-learning/nlp/nlp-example.md
+      - file: machine-learning/aiops-labs.md
+        children:
+          - file: machine-learning/aiops-labs/observability-aiops-detect-anomalies.md
+            children:
+              - file: machine-learning/aiops-labs/observability-aiops-tune-anomaly-detection-job.md
+              - file: machine-learning/aiops-labs/observability-aiops-forecast-anomalies.md
+          - file: machine-learning/aiops-labs/observability-aiops-analyze-spikes.md
+          - file: machine-learning/aiops-labs/observability-aiops-detect-change-points.md
+  - file: ai-assistant.md
+  - file: discover.md
+    children:
+      - file: discover/discover-get-started.md
+      - file: discover/document-explorer.md
+      - file: discover/discover-search-for-relevance.md
+      - file: discover/save-open-search.md
+      - file: discover/show-field-statistics.md
+      - file: discover/run-pattern-analysis-discover.md
+      - file: discover/search-sessions.md
+      - file: discover/try-esql.md
+  - file: dashboards.md
+    children:
+      - file: dashboards/using.md
+      - file: dashboards/building.md
+        children:
+          - file: dashboards/create-dashboard.md
+          - file: dashboards/open-dashboard.md
+          - file: dashboards/add-controls.md
+          - file: dashboards/drilldowns.md
+          - file: dashboards/arrange-panels.md
+          - file: dashboards/duplicate-dashboards.md
+          - file: dashboards/_import_dashboards.md
+      - file: dashboards/managing.md
+      - file: dashboards/sharing.md
+      - file: dashboards/tutorials.md
+        children:
+          - file: dashboards/create-dashboard-of-panels-with-web-server-data.md
+          - file: dashboards/create-dashboard-of-panels-with-ecommerce-data.md
+  - file: visualize.md
+    children:
+      - file: visualize/supported-chart-types.md
+      - file: visualize/manage-panels.md
+      - file: visualize/visualize-library.md
+      - file: visualize/lens.md
+      - file: visualize/esorql.md
+      - file: visualize/field-statistics.md
+      - file: visualize/custom-visualizations-with-vega.md
+      - file: visualize/text-panels.md
+      - file: visualize/image-panels.md
+      - file: visualize/link-panels.md
+      - file: visualize/canvas.md
+        children:
+          - file: visualize/canvas/edit-workpads.md
+          - file: visualize/canvas/canvas-present-workpad.md
+          - file: visualize/canvas/canvas-tutorial.md
+          - file: visualize/canvas/canvas-function-reference.md
+            children:
+              - file: visualize/canvas/canvas-tinymath-functions.md
+      - file: visualize/maps.md
+        children:
+          - file: visualize/maps/maps-getting-started.md
+          - file: visualize/maps/asset-tracking-tutorial.md
+          - file: visualize/maps/reverse-geocoding-tutorial.md
+          - file: visualize/maps/heatmap-layer.md
+          - file: visualize/maps/tile-layer.md
+          - file: visualize/maps/vector-layer.md
+            children:
+              - file: visualize/maps/vector-style.md
+              - file: visualize/maps/maps-vector-style-properties.md
+              - file: visualize/maps/vector-tooltip.md
+          - file: visualize/maps/maps-aggregations.md
+            children:
+              - file: visualize/maps/maps-grid-aggregation.md
+              - file: visualize/maps/maps-top-hits-aggregation.md
+              - file: visualize/maps/point-to-point.md
+              - file: visualize/maps/terms-join.md
+          - file: visualize/maps/maps-search.md
+            children:
+              - file: visualize/maps/maps-create-filter-from-map.md
+              - file: visualize/maps/maps-layer-based-filtering.md
+              - file: visualize/maps/maps-search-across-multiple-indices.md
+          - file: visualize/maps/maps-settings.md
+          - file: visualize/maps/maps-connect-to-ems.md
+          - file: visualize/maps/import-geospatial-data.md
+            children:
+              - file: visualize/maps/maps-clean-data.md
+              - file: visualize/maps/indexing-geojson-data-tutorial.md
+          - file: visualize/maps/maps-troubleshooting.md
+      - file: visualize/graph.md
+        children:
+          - file: visualize/graph/graph-configuration.md
+          - file: visualize/graph/graph-troubleshooting.md
+      - file: visualize/legacy-editors.md
+  - file: find-and-organize.md
+    children:
+      - file: find-and-organize/data-views.md
+      - file: find-and-organize/saved-objects.md
+      - file: find-and-organize/files.md
+      - file: find-and-organize/reports.md
+      - file: find-and-organize/tags.md
+      - file: find-and-organize/find-apps-and-objects.md
+  - file: report-and-share.md
+    children:
+      - file: report-and-share/automating-report-generation.md
+      - file: report-and-share/reporting-troubleshooting.md
+        children:
+          - file: report-and-share/reporting-troubleshooting-csv.md
+          - file: report-and-share/reporting-troubleshooting-pdf.md
+  - file: alerts.md
+    children:
+      - file: alerts/kibana.md
+        children:
+          - file: alerts/kibana/alerting-setup.md
+          - file: alerts/kibana/create-manage-rules.md
+          - file: alerts/kibana/view-alerts.md
+          - file: alerts/kibana/rule-types.md
+            children:
+              - file: alerts/kibana/rule-type-index-threshold.md
+              - file: alerts/kibana/rule-type-es-query.md
+              - file: alerts/kibana/geo-alerting.md
+          - file: alerts/kibana/rule-action-variables.md
+          - file: alerts/kibana/alerting-troubleshooting.md
+            children:
+              - file: alerts/kibana/alerting-common-issues.md
+              - file: alerts/kibana/event-log-index.md
+              - file: alerts/kibana/testing-connectors.md
+          - file: alerts/kibana/maintenance-windows.md
+      - file: alerts/watcher.md
+        children:
+          - file: alerts/watcher/watcher-getting-started.md
+          - file: alerts/watcher/how-watcher-works.md
+          - file: alerts/watcher/encrypting-data.md
+          - file: alerts/watcher/input.md
+            children:
+              - file: alerts/watcher/input-simple.md
+              - file: alerts/watcher/input-search.md
+              - file: alerts/watcher/input-http.md
+              - file: alerts/watcher/input-chain.md
+          - file: alerts/watcher/trigger.md
+            children:
+              - file: alerts/watcher/trigger-schedule.md
+          - file: alerts/watcher/condition.md
+            children:
+              - file: alerts/watcher/condition-always.md
+              - file: alerts/watcher/condition-never.md
+              - file: alerts/watcher/condition-compare.md
+              - file: alerts/watcher/condition-array-compare.md
+              - file: alerts/watcher/condition-script.md
+          - file: alerts/watcher/actions.md
+            children:
+              - file: alerts/watcher/action-foreach.md
+              - file: alerts/watcher/action-conditions.md
+              - file: alerts/watcher/actions-email.md
+              - file: alerts/watcher/actions-webhook.md
+              - file: alerts/watcher/actions-index.md
+              - file: alerts/watcher/actions-logging.md
+              - file: alerts/watcher/actions-slack.md
+              - file: alerts/watcher/actions-pagerduty.md
+              - file: alerts/watcher/actions-jira.md
+          - file: alerts/watcher/transform.md
+            children:
+              - file: alerts/watcher/transform-search.md
+              - file: alerts/watcher/transform-script.md
+              - file: alerts/watcher/transform-chain.md
+          - file: alerts/watcher/managing-watches.md
+          - file: alerts/watcher/example-watches.md
+            children:
+              - file: alerts/watcher/watch-cluster-status.md
+          - file: alerts/watcher/watcher-limitations.md
+      - file: alerts/cases.md
+        children:
+          - file: alerts/cases/setup-cases.md
+          - file: alerts/cases/manage-cases.md
+          - file: alerts/cases/manage-cases-settings.md
+  - file: numeral-formatting.md

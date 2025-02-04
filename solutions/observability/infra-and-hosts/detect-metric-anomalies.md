@@ -1,0 +1,14 @@
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/observability/current/inspect-metric-anomalies.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-detect-metric-anomalies.html
+---
+
+# Detect metric anomalies
+
+% What needs to be done: Align serverless/stateful
+
+% Use migrated content from existing pages that map to this page:
+
+% - [ ] ./raw-migrated-files/observability-docs/observability/inspect-metric-anomalies.md
+% - [ ] ./raw-migrated-files/docs-content/serverless/observability-detect-metric-anomalies.md

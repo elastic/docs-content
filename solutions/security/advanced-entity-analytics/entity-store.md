@@ -1,0 +1,61 @@
+---
+mapped_pages:
+  - https://www.elastic.co/guide/en/security/current/entity-store.html
+---
+
+# Entity store [entity-store]
+
+::::{warning}
+This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
+::::
+
+
+::::{admonition} Requirements
+To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity risk scoring requirements](entity-risk-scoring-requirements.md).
+
+::::
+
+
+The entity store allows you to query, reconcile, maintain, and persist entity metadata such as:
+
+* Ingested log data
+* Data from integrated identity providers (such as Active Directory, EntraID, and Okta)
+* Data from internal and external alerts
+* External asset repository data
+* Asset criticality data
+* Entity risk score data
+
+The entity store can hold any entity type observed by {{elastic-sec}}. It allows you to view and query select entities represented in your indices  without needing to perform real-time searches of observable data. The entity store extracts entities from all indices in the {{elastic-sec}} [default data view](../get-started/data-views-elastic-security.md#default-data-view-security).
+
+When the entity store is enabled, the following resources are generated for each entity type (hosts and users):
+
+* {{es}} resources, such as transforms, ingest pipelines, and enrich policies.
+* Data and fields for each entity.
+* The `.entities.v1.latest.security_user_<space-id>` and `.entities.v1.latest.security_host_<space-id>` indices, which contain field mappings for hosts and users respectively. You can query these indices to see a list of fields that are mapped in the entity store.
+
+
+## Enable entity store [enable-entity-store]
+
+To enable the entity store:
+
+1. Find **Entity Store** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+2. On the **Entity Store** page, turn the toggle on.
+
+Once you enable the entity store, the Entity Analytics dashboard displays the [**Entities**](../dashboards/entity-analytics-dashboard.md#entity-entities) section.
+
+
+## Clear entity store data [clear-entity-store]
+
+Once the entity store is enabled, you may want to clear the stored data and start fresh. For example, if you normalized the `user.name` or `host.name` fields, clearing the entity store data would allow you to repopulate the entity store with the updated, normalized values. This action removes all previously extracted entity information, enabling new data extraction and analysis.
+
+Clearing entity store data does not delete your source data, assigned entity risk scores, or asset criticality assignments.
+
+::::{warning}
+Clearing entity store data permanently deletes persisted user and host records, and data is no longer available for analysis. Proceed with caution, as this cannot be undone.
+::::
+
+
+To clear entity data:
+
+1. Find **Entity Store** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+2. On the **Entity Store** page, select **Clear**.

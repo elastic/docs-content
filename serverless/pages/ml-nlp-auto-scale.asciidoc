@@ -40,14 +40,14 @@ If you set the minimum number of allocations to 1, you will be charged even if t
 
 You can enable adaptive allocations by using:
 
-* the create inference endpoint API for https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-service-elser.html[ELSER], https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-service-elasticsearch.html[E5 and models uploaded through Eland] that are used as inference services.
-* the https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html[start trained model deployment] or https://www.elastic.co/guide/en/elasticsearch/reference/master/update-trained-model-deployment.html[update trained model deployment] APIs for trained models that are deployed on machine learning nodes.
+* the create inference endpoint API for {ref}/infer-service-elser.html[ELSER], {ref}/infer-service-elasticsearch.html[E5 and models uploaded through Eland] that are used as inference services.
+* the {ref}/start-trained-model-deployment.html[start trained model deployment] or {ref}/update-trained-model-deployment.html[update trained model deployment] APIs for trained models that are deployed on machine learning nodes.
 
 If the new allocations fit on the current machine learning nodes, they are immediately started.
 If more resource capacity is needed for creating new model allocations, then your machine learning node will be scaled up if machine learning autoscaling is enabled to provide enough resources for the new allocation.
 The number of model allocations can be scaled down to 0.
 They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more.
-Adaptive allocations must be set up independently for each deployment and https://www.elastic.co/guide/en/elasticsearch/reference/master/put-inference-api.html[inference endpoint].
+Adaptive allocations must be set up independently for each deployment and {ref}/put-inference-api.html[inference endpoint].
 
 When you create inference endpoints on Serverless using Kibana, adaptive allocations are automatically turned on, and there is no option to disable them.
 

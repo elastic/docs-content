@@ -5,6 +5,52 @@ For serverless API changes, refer to https://www.elastic.co/docs/api/changes[API
 For serverless changes in Cloud Console, refer to https://www.elastic.co/guide/en/cloud/current/ec-release-notes.html[Elasticsearch Service Documentation: Release notes].
 
 [discrete]
+[[serverless-changelog-01272025]]
+=== January 27, 2025
+
+[discrete]
+[[deprecations-01272025]]
+==== Deprecation
+* Deprecates a subset of Elastic Security Serverless endpoint management APIs ({kibana-pull}206903[#206903]).
+
+[discrete]
+[[features-enhancements-01272025]]
+==== Features and enhancements
+* Breaks out timeline and note privileges in Elastic Security Serverless ({kibana-pull}201780[#201780]).
+* Adds service enrichment to the detection engine in Elastic Security Serverless ({kibana-pull}206582[#206582]).
+* Updates the Entity Store Dashboard to prompt for the Service Entity Type in Elastic Security Serverless ({kibana-pull}207336[#207336]).
+* Adds `enrichPolicyExecutionInterval` to entity enablement and initialization APIs in Elastic Security Serverless ({kibana-pull}207374[#207374]).
+* Introduces a lookback period configuration for the Entity Store in Elastic Security Serverless ({kibana-pull}206421[#206421]).
+* Allows pre-configured connectors to opt into exposing their configurations by setting `exposeConfig` in Alerting ({kibana-pull}207654[#207654]).
+* Adds selector syntax support to log source profiles in Elastic Observability Serverless ({kibana-pull}206937[#206937]).
+* Displays stack traces in the logs overview tab in Elastic Observability Serverless ({kibana-pull}204521[#204521]).
+* Enables the use of the rule form to create rules in Elastic Observability Serverless ({kibana-pull}206774[#206774]).
+* Checks only read privileges of existing indices during rule execution in Elastic Security Serverless ({kibana-pull}177658[#177658]).
+* Updates KNN search and query template autocompletion in Elasticsearch Serverless ({kibana-pull}207187[#207187]).
+* Updates JSON schemas for code editors in Machine Learning ({kibana-pull}207706[#207706]).
+* Reindexes the `.kibana_security_session_1` index to the 8.x format in Security ({kibana-pull}204097[#204097]).
+
+[discrete]
+[[fixes-01272025]]
+==== Fixes
+* Fixes editing alerts filters for multi-consumer rule types in Alerting ({kibana-pull}206848[#206848]).
+* Resolves an issue where Chrome was no longer hidden for reports in Dashboards and Visualizations ({kibana-pull}206988[#206988]).
+* Updates library transforms and duplicate functionality in Dashboards and Visualizations ({kibana-pull}206140[#206140]).
+* Fixes an issue where drag previews are now absolutely positioned in Dashboards and Visualizations ({kibana-pull}208247[#208247]).
+* Fixes an issue where an accessible label now appears on the range slider in Dashboards and Visualizations ({kibana-pull}205308[#205308]).
+* Fixes a dropdown label sync issue when sorting by "Type" ({kibana-pull}206424[#206424]).
+* Fixes an access bug related to user instructions in Elastic Observability Serverless ({kibana-pull}207069[#207069]).
+* Fixes the Open Explore in Discover link to open in a new tab in Elastic Observability Serverless ({kibana-pull}207346[#207346]).
+* Returns an empty object for tool arguments when none are provided in Elastic Observability Serverless ({kibana-pull}207943[#207943]).
+* Ensures similar cases count is not fetched without the proper license in Elastic Security Serverless ({kibana-pull}207220[#207220]).
+* Fixes table leading actions to use standardized colors in Elastic Security Serverless ({kibana-pull}207743[#207743]).
+* Adds missing fields to the AWS S3 manifest in Elastic Security Serverless ({kibana-pull}208080[#208080]).
+* Prevents redundant requests when loading Discover sessions and toggling chart visibility in ES|QL ({kibana-pull}206699[#206699]).
+* Fixes a UI error when agents move to an orphaned state in Fleet ({kibana-pull}207746[#207746]).
+* Restricts non-local Elasticsearch output types for agentless integrations and policies in Fleet ({kibana-pull}207296[#207296]).
+* Fixes table responsiveness in the Notifications feature of Machine Learning ({kibana-pull}206956[#206956]).
+
+[discrete]
 [[serverless-changelog-01132025]]
 === January 13, 2025
 
