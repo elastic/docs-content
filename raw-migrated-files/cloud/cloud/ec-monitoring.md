@@ -96,7 +96,7 @@ In a production environment, we highly recommend storing your logs and metrics i
 
 ## Dedicated logs and metrics [ec-es-health-dedicated]
 
-In a production environment, it’s important set up dedicated health monitoring in order to retain the logs and metrics that can be used to troubleshoot any health issues in your deployments. In the event of that you need to [contact our support team](../../../troubleshoot/troubleshoot/cloud.md), they can use the retained data to help diagnose any problems that you may encounter.
+In a production environment, it’s important set up dedicated health monitoring in order to retain the logs and metrics that can be used to troubleshoot any health issues in your deployments. In the event of that you need to [contact our support team](../../../troubleshoot/troubleshoot/index.md), they can use the retained data to help diagnose any problems that you may encounter.
 
 You have the option of sending logs and metrics to a separate, specialized monitoring deployment, which ensures that they’re available in the event of a deployment outage. The monitoring deployment also gives you access to Kibana’s stack monitoring features, through which you can view health and performance data for all of your deployment resources.
 

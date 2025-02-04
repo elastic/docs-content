@@ -23,7 +23,7 @@ Some actions described here, such as stopping indexing or Machine Learning jobs,
 
 For production deployments, we recommend setting up a dedicated monitoring cluster to collect metrics and logs, troubleshooting views, and cluster alerts.
 
-If your issue is not addressed here, then [contact Elastic support for help](../../../troubleshoot/troubleshoot/cloud.md).
+If your issue is not addressed here, then [contact Elastic support for help](../../../troubleshoot/troubleshoot/index.md).
 
 ## Full disk on single-node deployment [ec-single-node-deployment-disk-used]
 
@@ -53,7 +53,7 @@ If your issue is not addressed here, then [contact Elastic support for help](../
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}
-If your {{es}} cluster is unhealthy and reports a status of red, then increasing the disk size of your Hot data and Content tier may fail. You might need to delete some data so the configuration can be edited. If you want to increase your disk size without deleting data, then [reach out to Elastic support](../../../troubleshoot/troubleshoot/cloud.md) and we will assist you with scaling up.
+If your {{es}} cluster is unhealthy and reports a status of red, then increasing the disk size of your Hot data and Content tier may fail. You might need to delete some data so the configuration can be edited. If you want to increase your disk size without deleting data, then [reach out to Elastic support](../../../troubleshoot/troubleshoot/index.md) and we will assist you with scaling up.
 ::::
 
 
@@ -100,7 +100,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 * Increase the disk size (scale up).
 
 ::::{note}
-If your {{es}} cluster is unhealthy and reports a status of red, the scale up configuration change to increasing disk size on the affected data tiers may fail. You might need to delete some data so the configuration can be edited. If you want to increase your disk size without deleting data, then [reach out to Elastic support](../../../troubleshoot/troubleshoot/cloud.md) and we will assist you with scaling up.
+If your {{es}} cluster is unhealthy and reports a status of red, the scale up configuration change to increasing disk size on the affected data tiers may fail. You might need to delete some data so the configuration can be edited. If you want to increase your disk size without deleting data, then [reach out to Elastic support](../../../troubleshoot/troubleshoot/index.md) and we will assist you with scaling up.
 ::::
 
 
