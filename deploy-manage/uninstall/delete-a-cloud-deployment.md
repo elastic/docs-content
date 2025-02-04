@@ -19,6 +19,7 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-delete-deployment.md
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-terminate-deployment.md
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-billing-stop.html
+% - [ ] ./raw-migrated-files/cloud/cloud/ec-delete-deployment.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/general-billing-stop-project.html
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-restore-deployment.md
 %      Notes: if you need to restore a deleted deployment ...
