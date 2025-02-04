@@ -571,7 +571,6 @@ toc:
       - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/tags.md
       - file: docs-content/serverless/transforms.md
-      - file: docs-content/serverless/what-is-elasticsearch-serverless.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
@@ -649,7 +648,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/saml-realm.md
       - file: elasticsearch/elasticsearch-reference/scalability.md
       - file: elasticsearch/elasticsearch-reference/search-analyze.md
-      - file: elasticsearch/elasticsearch-reference/search-with-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/search-with-synonyms.md
       - file: elasticsearch/elasticsearch-reference/search-your-data.md
       - file: elasticsearch/elasticsearch-reference/secure-cluster.md

@@ -1,5 +1,24 @@
 # Get started with {{es}} Serverless [elasticsearch-get-started]
 
+::::{tip}
+Not sure whether {{es}} on {{serverless-full}} is the right deployment choice for you?
+
+Check out the following resources to help you decide:
+- [What’s different?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md): Understand the differences between {{serverless-full}} and other deployment types.
+- [Billing](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md): Learn about the billing model for {{es}} on {{serverless-full}}.
+::::
+
+## What is {{es-serverless}}? [what-is-elasticsearch-serverless]
+
+
+{{es-serverless}} is one of the three available project types on [{{serverless-full}}](/deploy-manage/deploy.md).
+
+This project type enables you to use the core functionality of {{es}}: searching, indexing, storing, and analyzing data of all shapes and sizes.
+
+When using {{es}} on {{serverless-full}} you don’t need to worry about managing the infrastructure that keeps {{es}} distributed and available: nodes, shards, and replicas. These resources are completely automated on the serverless platform, which is designed to scale up and down with your workload.
+
+This automation allows you to focus on building your search applications and solutions.
+
 On this page, you will learn how to:
 
 * [Create an {{es-serverless}} project](get-started.md#elasticsearch-get-started-create-project).
@@ -8,7 +27,6 @@ On this page, you will learn how to:
     * [Option 1: Guided index flow](get-started.md#elasticsearch-follow-guided-index-flow): Follow the step-by-step tutorial provided in the UI to create an index and ingest data.
     * [Option 2: In-product Getting Started guide](get-started.md#elasticsearch-follow-in-product-getting-started): Use the Getting Started page’s instructions to ingest data and perform your first search.
     * [Option 3: Explore on your own](get-started.md#elasticsearch-explore-on-your-own): If you’re already familiar with {{es}}, retrieve your connection details, select an ingest method that suits your needs, and start searching.
-
 
 
 ## Create an {{es-serverless}} project [elasticsearch-get-started-create-project]
