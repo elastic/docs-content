@@ -1,16 +1,12 @@
 ---
-navigation_title: "{{anomaly-jobs-cap}} from visualizations"
+navigation_title: "Anomaly detection jobs from visualizations"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-jobs-from-lens.html
 ---
 
-
-
 # Anomaly detection jobs from visualizations [ml-jobs-from-lens]
 
-
 You can create {{anomaly-jobs}} from the compatible Lens charts on **Dashboard**.
-
 
 ## Prerequisites and limitations [prereqs]
 
@@ -20,13 +16,11 @@ You can create {{anomaly-jobs}} from the compatible Lens charts on **Dashboard**
 * In case of a multi-layered chart, only the compatible layers can be used to create an {{anomaly-job}}.
 * Chart layers which contain a field that uses a [time shift](../../dashboards/create-dashboard-of-panels-with-ecommerce-data.md#compare-time-ranges) or a field that has a `filter by` setting applied cannot be used to create an {{anomaly-job}}.
 
-
 ## Creating the job [create-job]
 
 ::::{note}
 You need to have a compatible visualization on **Dashboard** to create an {{anomaly-job}}. If you don’t have one but you want to try the feature out, go to **Analytics > Dashboard** and select the `[Flight] Global Flight Dashboard` which is based on the {{kib}} sample flight data set. Select the `Flight count` visualization from the dashboard.
 ::::
-
 
 1. Go to **Analytics > Dashboard** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects). Select a dashboard with a compatible visualization.
 2. Open the **Options (…​) menu** for the panel, then select **More**.
@@ -48,7 +42,6 @@ If the visualization has multiple compatible layers, you can select which layer 
 If multiple fields are added to the chart or you selected a `Break down by` field, the multi metric job wizard is used for creating the job. For a single metric chart, the single metric wizard is used.
 
 If the configured time range of the chart is relative, it is converted to absolute start and end times in the job configuration. If the conversion of these times fails, the whole time range from the index is used.
-
 
 ## What’s next [ml-job-lens-next]
 
