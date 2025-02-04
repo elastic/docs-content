@@ -32,7 +32,7 @@ Invitations to join an organization are sent by email. Invited users have 72 hou
 
 
 ## Join an organization from an existing {{ecloud}} account [ec-join-invitation]
-(This section has been already added by @eedugon to the cloud-account section)
+<!-- This section has been already added by @eedugon to the cloud-account section) -->
 
 You already belong to an organization. If you want to join a new one and bring your deployments over, follow these steps:
 
