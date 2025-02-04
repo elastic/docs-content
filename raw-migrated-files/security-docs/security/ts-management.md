@@ -96,7 +96,7 @@ To restart a transform that’s not running:
 :::::
 
 
-::::{dropdown} {agent} and Endpoint connection issues
+:::::{dropdown} {agent} and Endpoint connection issues
 :name: ts-agent-connection
 
 After {{agent}} installs Endpoint, Endpoint connects to {{agent}} over a local relay connection to report its health status and receive policy updates and response action requests. If that connection cannot be established, the {{elastic-defend}} integration will cause {{agent}} to be in an `Unhealthy` status, and Endpoint won’t operate properly.
@@ -159,7 +159,7 @@ To debug and resolve the issue, follow these steps:
     * `ping -4 localhost` (Windows)
 
 
-::::
+:::::
 
 
 ::::{dropdown} {elastic-defend} deployment issues
