@@ -309,10 +309,9 @@ for document in response.documents:
 
 The response will look similar to this:
 
-```consol-result
+```console-result
 Query: What is biosimilarity?
 Response: Biosimilarity is based on the comparability concept, which has been used successfully for several decades to ensure close similarity of a biological product before and after a manufacturing change. Over the last 10 years, experience with biosimilars has shown that even complex biotechnology-derived proteins can be copied successfully.
 Sources:
 Interchangeability of Biosimilars: A European Perspective: (...)
 ```
-

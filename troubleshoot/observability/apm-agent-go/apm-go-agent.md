@@ -28,7 +28,7 @@ With logging enabled, use [`ELASTIC_APM_LOG_LEVEL`](https://www.elastic.co/guide
 
 Be sure to execute a few requests to your application before posting your log files. Each request should add lines similar to these in the logs:
 
-```log
+```txt
 {"level":"debug","time":"2020-07-23T11:46:32+08:00","message":"sent request with 100 transactions, 0 spans, 0 errors, 0 metricsets"}
 ```
 
@@ -42,4 +42,3 @@ In the unlikely event the agent causes disruptions to a production application, 
 If you have access to [dynamic configuration](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#dynamic-configuration), you can disable the recording of events by setting [`ELASTIC_APM_RECORDING`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-recording) to `false`. When changed at runtime from a supported source, there’s no need to restart your application.
 
 If that doesn’t work, or you don’t have access to dynamic configuration, you can disable the agent by setting [`ELASTIC_APM_ACTIVE`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-active) to `false`. Restart your application for the changes to apply.
-
