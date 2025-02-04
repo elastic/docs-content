@@ -31,7 +31,7 @@ Shows the maximum usage of the CPU resources assigned to your Elasticsearch clus
 :alt: Graph showing available CPU credits
 :::
 
-Shows your remaining CPU credits, measured in seconds of CPU time. CPU credits enable the boosting of CPU resources assigned to your cluster to improve performance temporarily when it is needed most. For more details check [How to use vCPU to boost your instance](../../../deploy-manage/monitor/monitoring-data/ech-vcpu-boost-instance.md).
+Shows your remaining CPU credits, measured in seconds of CPU time. CPU credits enable the boosting of CPU resources assigned to your cluster to improve performance temporarily when it is needed most. For more details check [How to use vCPU to boost your instance](/deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md).
 
 
 ### Number of requests [echnumber_of_requests]

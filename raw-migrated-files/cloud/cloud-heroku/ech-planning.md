@@ -44,7 +44,7 @@ Clusters that only have one master node are not highly available and are at risk
 
 ## Do you know when to scale? [ech-workloads] 
 
-Knowing how to scale your deployment is critical, especially when unexpected workloads hits. Don’t forget to [check your performance metrics](../../../deploy-manage/monitor/monitoring-data/ech-saas-metrics-accessing.md) to make sure your deployments are healthy and can cope with your workloads.
+Knowing how to scale your deployment is critical, especially when unexpected workloads hits. Don’t forget to [check your performance metrics](/deploy-manage/monitor/monitoring-data/access-performance-metrics-on-elastic-cloud.md) to make sure your deployments are healthy and can cope with your workloads.
 
 Scaling with Elasticsearch Add-On for Heroku is easy:
 

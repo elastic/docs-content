@@ -75,7 +75,7 @@ Configuration change failures
 Out of memory errors
 :   Out of memory errors (OOMs) may occur during your deployment’s normal operations, and these can have a very negative impact on performance. Common causes of memory shortages are oversharding, data retention oversights, and the overall request volume.
 
-    On your deployment page, you can check the [JVM memory pressure indicator](../../../deploy-manage/monitor/monitoring-data/ech-memory-pressure.md) to get the current memory usage of each node of your deployment. You can also review the [common causes of high JVM memory usage](../../../deploy-manage/monitor/monitoring-data/ech-memory-pressure.md#ech-memory-pressure-causes) to help diagnose the source of unexpectedly high memory pressure levels. To learn more, check [How does high memory pressure affect performance?](../../../troubleshoot/monitoring/high-memory-pressure.md).
+    On your deployment page, you can check the [JVM memory pressure indicator]/deploy-manage/monitor/monitoring-data/ec-memory-pressure.md) to get the current memory usage of each node of your deployment. You can also review the [common causes of high JVM memory usage](/deploy-manage/monitor/monitoring-data/ec-memory-pressure.md#ech-memory-pressure-causes) to help diagnose the source of unexpectedly high memory pressure levels. To learn more, check [How does high memory pressure affect performance?](../../../troubleshoot/monitoring/high-memory-pressure.md).
 
 
 
