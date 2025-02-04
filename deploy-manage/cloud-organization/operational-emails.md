@@ -18,4 +18,4 @@ We also send an email alert if one of the nodes in your cluster is restarted due
 
 These alerts are sent to all users within an Elastic Cloud organization, as well as to the email addresses listed as operational email contacts. This means that an external distribution list or automated service can receive notifications without the need to be added to the organization directly.
 
-To configure recipients external to an Elastic Cloud organization for these notifications Elasticsearch Service, update the list of [operational email contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.html).
+To configure recipients external to an Elastic Cloud organization for these notifications Elasticsearch Service, update the list of [operational email contacts](/deploy-manage/cloud-organization/billing/update-billing-operational-contacts.md).

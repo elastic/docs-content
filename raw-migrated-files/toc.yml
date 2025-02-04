@@ -237,7 +237,6 @@ toc:
       - file: cloud/cloud/ec-service-status.md
       - file: cloud/cloud/ec-sign-outgoing-saml-message.md
       - file: cloud/cloud/ec-snapshot-restore.md
-      - file: cloud/cloud/ec-subscription-overview.md
       - file: cloud/cloud/ec-traffic-filtering-deployment-configuration.md
       - file: cloud/cloud/ec-traffic-filtering-ip.md
       - file: cloud/cloud/ec-traffic-filtering-psc.md
@@ -282,7 +281,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-search-your-data.md
       - file: docs-content/serverless/endpoint-protection-rules.md
       - file: docs-content/serverless/general-billing-stop-project.md
-      - file: docs-content/serverless/general-check-subscription.md
       - file: docs-content/serverless/general-manage-organization.md
       - file: docs-content/serverless/general-ml-nlp-auto-scale.md
       - file: docs-content/serverless/general-serverless-status.md
