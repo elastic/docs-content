@@ -732,7 +732,6 @@ toc:
       - file: kibana/kibana/using-kibana-with-security.md
       - file: kibana/kibana/watcher-ui.md
       - file: kibana/kibana/xpack-ml-aiops.md
-      - file: kibana/kibana/xpack-ml-anomalies.md
       - file: kibana/kibana/xpack-ml-dfanalytics.md
       - file: kibana/kibana/xpack-security-authorization.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
@@ -1033,7 +1032,6 @@ toc:
       - file: stack-docs/elastic-stack/upgrading-kibana.md
   - file: stack-docs/machine-learning/index.md
     children:
-      - file: stack-docs/machine-learning/ml-ad-overview.md
       - file: stack-docs/machine-learning/ml-dfanalytics.md
   - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/index.md
     children:
