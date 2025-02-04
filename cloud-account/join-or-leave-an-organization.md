@@ -20,7 +20,7 @@ If you’re the only user in the organization, you can only leave if you deleted
 
 You already belong to an organization. If you want to join a new one and bring your deployments over, follow these steps:
 
-1. Backup your deployments to any private repository so that you can restore them to your new organization.
+1. Back up your deployments to any private repository so that you can restore them to your new organization.
 2. Leave your current organization.
 3. Ask the administrator to invite you to the organization you want to join.
 4. Accept the invitation that you will get by email.
