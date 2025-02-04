@@ -26,4 +26,3 @@ To add your billing details:
 4. If prompted, complete the multifactor authentication (MFA) required by your bank.
 
 If you want, you can stop new charges by [deleting your project or deployment](/deploy-manage/uninstall/delete-a-cloud-deployment.md).
-
