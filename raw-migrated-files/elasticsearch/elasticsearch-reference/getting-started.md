@@ -353,7 +353,7 @@ This allows you to combine explicit and dynamic mappings. Learn more about [mana
 
 ## Step 4: Search your index [getting-started-search-data]
 
-Indexed documents are available for search in near real-time, using the [`_search` API](../../../solutions/search/querying-for-search-searching-with-the-search-api.md).
+Indexed documents are available for search in near real-time, using the [`_search` API](../../../solutions/search/querying-for-search.md).
 
 
 ### Search all documents [getting-started-search-all-documents]

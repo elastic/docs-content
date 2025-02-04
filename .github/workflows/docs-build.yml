@@ -1,0 +1,13 @@
+name: docs-build
+
+on:
+  pull_request: ~
+
+jobs:
+  preview:
+    uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
+    with:
+      continue-on-error: true
+      strict: false
+    permissions:
+      contents: read
