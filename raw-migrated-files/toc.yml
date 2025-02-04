@@ -169,7 +169,6 @@ toc:
       - file: cloud/cloud/ec-about.md
       - file: cloud/cloud/ec-access-kibana.md
       - file: cloud/cloud/ec-account-usage.md
-      - file: cloud/cloud/ec-account-user-settings.md
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
       - file: cloud/cloud/ec-api-deployment-other.md
@@ -295,7 +294,6 @@ toc:
       - file: docs-content/serverless/general-monitor-usage.md
       - file: docs-content/serverless/general-serverless-status.md
       - file: docs-content/serverless/general-sign-up-trial.md
-      - file: docs-content/serverless/general-user-profile.md
       - file: docs-content/serverless/incident-management.md
       - file: docs-content/serverless/index-management.md
       - file: docs-content/serverless/infrastructure-and-host-monitoring-intro.md
