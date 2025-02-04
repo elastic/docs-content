@@ -588,7 +588,7 @@ toc:
         children:
           - file: search/search-approaches/long-running-searches.md
           - file: search/search-approaches/near-real-time-search.md
-      - file: search/querying-for-search-searching-with-the-search-api.md
+      - file: search/querying-for-search.md
       - file: search/inference-api.md
         children:
           - file: search/inference-api/elastic-inference-service-eis.md

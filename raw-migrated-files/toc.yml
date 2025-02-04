@@ -307,7 +307,6 @@ toc:
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/machine-learning.md
       - file: docs-content/serverless/maintenance-windows.md
       - file: docs-content/serverless/maps.md
       - file: docs-content/serverless/monitor-k8s-otel-edot.md
@@ -1034,8 +1033,6 @@ toc:
       - file: stack-docs/elastic-stack/upgrading-kibana.md
   - file: stack-docs/machine-learning/index.md
     children:
-      - file: stack-docs/machine-learning/index.md
-      - file: stack-docs/machine-learning/machine-learning-intro.md
       - file: stack-docs/machine-learning/ml-ad-overview.md
       - file: stack-docs/machine-learning/ml-dfanalytics.md
   - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/index.md
