@@ -272,11 +272,9 @@ toc:
       - file: docs-content/serverless/data-views.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
       - file: docs-content/serverless/elasticsearch-clients.md
-      - file: docs-content/serverless/elasticsearch-connecting-to-es-serverless-endpoint.md
       - file: docs-content/serverless/elasticsearch-dev-tools.md
       - file: docs-content/serverless/elasticsearch-differences.md
       - file: docs-content/serverless/elasticsearch-explore-your-data.md
-      - file: docs-content/serverless/elasticsearch-get-started.md
       - file: docs-content/serverless/elasticsearch-http-apis.md
       - file: docs-content/serverless/elasticsearch-ingest-data-file-upload.md
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
@@ -616,8 +614,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/field-level-security.md
       - file: elasticsearch/elasticsearch-reference/file-realm.md
       - file: elasticsearch/elasticsearch-reference/fips-140-compliance.md
-      - file: elasticsearch/elasticsearch-reference/full-text-filter-tutorial.md
-      - file: elasticsearch/elasticsearch-reference/getting-started.md
       - file: elasticsearch/elasticsearch-reference/how-monitoring-works.md
       - file: elasticsearch/elasticsearch-reference/ignore_missing_component_templates.md
       - file: elasticsearch/elasticsearch-reference/index-lifecycle-management.md
@@ -649,7 +645,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/retrievers-overview.md
       - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
       - file: elasticsearch/elasticsearch-reference/rollup-overview.md
-      - file: elasticsearch/elasticsearch-reference/run-elasticsearch-locally.md
       - file: elasticsearch/elasticsearch-reference/saml-guide-stack.md
       - file: elasticsearch/elasticsearch-reference/saml-realm.md
       - file: elasticsearch/elasticsearch-reference/scalability.md
@@ -720,7 +715,6 @@ toc:
       - file: kibana/kibana/save-load-delete-query.md
       - file: kibana/kibana/saved-object-ids.md
       - file: kibana/kibana/search-ai-assistant.md
-      - file: kibana/kibana/search-space-connection-details.md
       - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/secure-settings.md
       - file: kibana/kibana/Security-production-considerations.md
