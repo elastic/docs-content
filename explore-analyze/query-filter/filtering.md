@@ -42,6 +42,7 @@ Display data within a specified time range when your index contains time-based e
     
 :::{image} ../../images/kibana-time-relative.png
 :alt: Time filter showing relative time
+:width: 350px
 :::
 
 The global time filter limits the time range of data displayed. In most cases, the time filter applies to the time field in the data view, but some apps allow you to use a different time field.
