@@ -5,7 +5,7 @@ mapped_pages:
 
 # Backup, high availability, and resilience tools [high-availability]
 
-Elasticsearch provides comprehensive tools to safeguard data, ensure continuous availability, and maintain resilience. These tools are designed to support disaster recovery strategies, enabling businesses to protect critical information and minimize downtime, and maintain high availability in case of unexpected failures. 
+Elasticsearch provides comprehensive tools to safeguard data, ensure continuous availability, and maintain resilience. These tools are designed to support disaster recovery strategies, enabling businesses to protect critical information and minimize downtime, and maintain high availability in case of unexpected failures.
 
 For strategies to design resilient clusters, see **[Availability and resilience](production-guidance/availability-and-resilience.md)**.
 
@@ -45,7 +45,7 @@ CCR relies on **[Remote clusters](remote-clusters.md)** functionality to establi
 
 You can perform the following tasks to manage cross-cluster replication:
 
-- **[Set up CCR](tools/cross-cluster-replication/set-up-cross-cluster-replication.md):** Configure leader and follower clusters for data replication. To enable CCR, you need to configure **[Remote clusters](LINK)**.
+- **[Set up CCR](tools/cross-cluster-replication/set-up-cross-cluster-replication.md):** Configure leader and follower clusters for data replication. To enable CCR, you need to configure **[Remote clusters](remote-clusters.md)**.
 - **[Manage CCR](tools/cross-cluster-replication/manage-cross-cluster-replication.md):** Monitor and manage replicated indices.
 - **[Automate replication](tools/cross-cluster-replication/manage-auto-follow-patterns.md):** Use auto-follow patterns to automatically replicate newly created indices.
 - **Failover clusters:** Configure **[uni-directional](tools/cross-cluster-replication/uni-directional-disaster-recovery.md)** or **[bi-directional](tools/cross-cluster-replication/bi-directional-disaster-recovery.md)** CCR for redundancy and disaster recovery.
