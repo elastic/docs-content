@@ -133,7 +133,7 @@ POST _search
 ## Learn more [semantic-reranking-learn-more] 
 
 * Read the [retriever reference documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html) for syntax and implementation details
-* Learn more about the [retrievers](../querying-for-search-searching-with-the-search-api.md) abstraction
+* Learn more about the [retrievers](../querying-for-search.md) abstraction
 * Learn more about the Elastic [Inference APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html)
 * Check out our [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb) for using Cohere with {es}
 
