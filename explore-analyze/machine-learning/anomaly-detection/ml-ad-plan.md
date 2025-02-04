@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-plan.html
 ---
 
-
-
 # Plan your analysis [ml-ad-plan]
-
 
 The {{ml-features}} in {{stack}} enable you to seek anomalies in your data in many different ways. Using [proprietary {{ml}} algorithms](ml-ad-algorithms.md), the following circumstances are detected:
 
@@ -23,4 +20,3 @@ When you are deciding which type of {{anomaly-detect}} to use, the most importan
 If you are uncertain where to begin, {{kib}} can recognize certain types of data and suggest useful {{anomaly-jobs}}. Likewise, some {{agent}} integrations include {{anomaly-job}} configuration information, dashboards, searches, and visualizations that are customized to help you analyze your data.
 
 For the full list of functions that you can use in your {{anomaly-jobs}}, see [*Function reference*](ml-functions.md). For a list of the preconfigured jobs, see [Supplied configurations](ootb-ml-jobs.md).
-

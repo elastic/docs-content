@@ -268,11 +268,9 @@ toc:
       - file: docs-content/serverless/data-views.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
       - file: docs-content/serverless/elasticsearch-clients.md
-      - file: docs-content/serverless/elasticsearch-connecting-to-es-serverless-endpoint.md
       - file: docs-content/serverless/elasticsearch-dev-tools.md
       - file: docs-content/serverless/elasticsearch-differences.md
       - file: docs-content/serverless/elasticsearch-explore-your-data.md
-      - file: docs-content/serverless/elasticsearch-get-started.md
       - file: docs-content/serverless/elasticsearch-http-apis.md
       - file: docs-content/serverless/elasticsearch-ingest-data-file-upload.md
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
@@ -301,7 +299,6 @@ toc:
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/machine-learning.md
       - file: docs-content/serverless/maintenance-windows.md
       - file: docs-content/serverless/maps.md
       - file: docs-content/serverless/monitor-k8s-otel-edot.md
@@ -568,7 +565,6 @@ toc:
       - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/tags.md
       - file: docs-content/serverless/transforms.md
-      - file: docs-content/serverless/what-is-elasticsearch-serverless.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
@@ -603,16 +599,11 @@ toc:
       - file: elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
       - file: elasticsearch/elasticsearch-reference/es-ingestion-overview.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
-      - file: elasticsearch/elasticsearch-reference/esql-examples.md
-      - file: elasticsearch/elasticsearch-reference/esql-getting-started.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
-      - file: elasticsearch/elasticsearch-reference/esql.md
       - file: elasticsearch/elasticsearch-reference/field-and-document-access-control.md
       - file: elasticsearch/elasticsearch-reference/field-level-security.md
       - file: elasticsearch/elasticsearch-reference/file-realm.md
       - file: elasticsearch/elasticsearch-reference/fips-140-compliance.md
-      - file: elasticsearch/elasticsearch-reference/full-text-filter-tutorial.md
-      - file: elasticsearch/elasticsearch-reference/getting-started.md
       - file: elasticsearch/elasticsearch-reference/how-monitoring-works.md
       - file: elasticsearch/elasticsearch-reference/ignore_missing_component_templates.md
       - file: elasticsearch/elasticsearch-reference/index-lifecycle-management.md
@@ -638,18 +629,14 @@ toc:
       - file: elasticsearch/elasticsearch-reference/oidc-guide.md
       - file: elasticsearch/elasticsearch-reference/oidc-realm.md
       - file: elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
-      - file: elasticsearch/elasticsearch-reference/query-dsl.md
-      - file: elasticsearch/elasticsearch-reference/query-filter-context.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
       - file: elasticsearch/elasticsearch-reference/retrievers-overview.md
       - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
       - file: elasticsearch/elasticsearch-reference/rollup-overview.md
-      - file: elasticsearch/elasticsearch-reference/run-elasticsearch-locally.md
       - file: elasticsearch/elasticsearch-reference/saml-guide-stack.md
       - file: elasticsearch/elasticsearch-reference/saml-realm.md
       - file: elasticsearch/elasticsearch-reference/scalability.md
       - file: elasticsearch/elasticsearch-reference/search-analyze.md
-      - file: elasticsearch/elasticsearch-reference/search-with-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/search-with-synonyms.md
       - file: elasticsearch/elasticsearch-reference/search-your-data.md
       - file: elasticsearch/elasticsearch-reference/secure-cluster.md
@@ -715,7 +702,6 @@ toc:
       - file: kibana/kibana/save-load-delete-query.md
       - file: kibana/kibana/saved-object-ids.md
       - file: kibana/kibana/search-ai-assistant.md
-      - file: kibana/kibana/search-space-connection-details.md
       - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/secure-settings.md
       - file: kibana/kibana/Security-production-considerations.md
@@ -727,7 +713,6 @@ toc:
       - file: kibana/kibana/using-kibana-with-security.md
       - file: kibana/kibana/watcher-ui.md
       - file: kibana/kibana/xpack-ml-aiops.md
-      - file: kibana/kibana/xpack-ml-anomalies.md
       - file: kibana/kibana/xpack-ml-dfanalytics.md
       - file: kibana/kibana/xpack-security-authorization.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
@@ -1028,9 +1013,6 @@ toc:
       - file: stack-docs/elastic-stack/upgrading-kibana.md
   - file: stack-docs/machine-learning/index.md
     children:
-      - file: stack-docs/machine-learning/index.md
-      - file: stack-docs/machine-learning/machine-learning-intro.md
-      - file: stack-docs/machine-learning/ml-ad-overview.md
       - file: stack-docs/machine-learning/ml-dfanalytics.md
   - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/index.md
     children:

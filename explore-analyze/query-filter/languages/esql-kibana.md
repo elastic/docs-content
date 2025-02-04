@@ -4,12 +4,14 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
 ---
 
-
-
 # Using ES|QL in Kibana [esql-kibana]
 
-
 You can use {{esql}} in {{kib}} to query and aggregate your data, create visualizations, and set up alerts.
+
+More specifically, {{esql}} is a powerful tool in Kibana that can help you with specific solution use cases. For example:
+
+- {{observability}}: {{esql}} makes it much easier to analyze metrics, logs and traces from a single query. Find performance issues fast by defining fields on the fly, enriching data with lookups, and using simultaneous query processing. Combining {{esql}} with {{ml}} and AiOps can improve detection accuracy and use aggregated value thresholds.
+- Security: Use {{esql}} to retrieve important information for investigation by using lookups. Enrich data and create new fields on the go to gain valuable insight for faster decision-making and actions. For example, perform a lookup on an IP address to identify its geographical location, its association with known malicious entities, or whether it belongs to a known cloud service provider all from one search bar. {{esql}} ensures more accurate alerts by incorporating aggregated values in detection rules.
 
 This guide shows you how to use {{esql}} in Kibana. To follow along with the queries, load the "Sample web logs" sample data set by selecting **Sample Data** from the **Integrations** page in {{kib}}, selecting **Other sample data sets**, and clicking **Add data** on the **Sample web logs** card.
 
@@ -21,12 +23,12 @@ This guide shows you how to use {{esql}} in Kibana. To follow along with the que
 This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
 
 
-## Get started with {{esql}} [esql-kibana-get-started]
+## The {{esql}} editor [esql-kibana-get-started]
 
-To get started with {{esql}} in Discover, open the main menu and select **Discover**. Next, select **Try ES|QL** from the application menu bar.
+To get started with {{esql}}, go to **Discover**. Next, select **Try ES|QL** from the application menu bar.
 
 
-## The query bar [esql-kibana-query-bar]
+### The query bar [esql-kibana-query-bar]
 
 After switching to {{esql}} mode, the query bar shows a sample query. For example:
 
@@ -93,6 +95,12 @@ You can then scroll through your recent queries:
 :alt: esql discover query history
 :::
 
+### Query help
+
+{{esql}} features in-app help and suggestions, so you can get started faster and don’t have to leave the application to check syntax.
+
+![The ES|QL syntax reference and the autocomplete menu](../../../images/kibana-esql-in-app-help.png "")
+
 
 ### Starred queries [esql-kibana-starred-queries]
 
@@ -109,7 +117,7 @@ In the **Starred** tab, find all the queries you have previously starred.
 :::
 
 
-## The results table [esql-kibana-results-table]
+### Organizing the query results [esql-kibana-results-table]
 
 For the example query, the results table shows 10 rows. Omitting the `LIMIT` command, the results table defaults to up to 1000 rows. Using `LIMIT`, you can increase the limit to up to 10,000 rows.
 
@@ -149,17 +157,17 @@ FROM kibana_sample_data_logs
 ```
 
 
-## Time filtering [esql-kibana-time-filter]
+### Time filtering [esql-kibana-time-filter]
 
 To display data within a specified time range, you can use the standard time filter, custom time parameters, or a WHERE command.
 
 
-### Standard time filter [_standard_time_filter]
+#### Standard time filter [_standard_time_filter]
 
 The standard [time filter](../filtering.md) is enabled when the indices you’re querying have a field named `@timestamp`.
 
 
-### Custom time parameters [_custom_time_parameters]
+#### Custom time parameters [_custom_time_parameters]
 
 If your indices do not have a field named `@timestamp`, you can use the `?_tstart` and `?_tend` parameters to specify a time range. These parameters work with any timestamp field and automatically sync with the [time filter](../filtering.md).
 
@@ -178,7 +186,7 @@ FROM kibana_sample_data_logs
 This example uses `50` buckets, which is the maximum number of buckets.
 
 
-### WHERE command [_where_command]
+#### WHERE command [_where_command]
 
 You can also limit the time range using the [`WHERE`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-where) command and the [`NOW`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
 

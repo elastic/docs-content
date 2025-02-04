@@ -34,7 +34,7 @@ Data is often messy and incomplete. [Ingest pipelines](../manage-data/ingest/tra
 
 ## ES|QL [esql-query]
 
-[ES|QL](query-filter/languages/esorql.md) has support for [Geospatial Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-spatial-functions) functions, enabling efficient index searching for documents that intersect with, are within, are contained by, or are disjoint from a query geometry. In addition, the `ST_DISTANCE` function calculates the distance between two points.
+[ES|QL](query-filter/languages/esql.md) has support for [Geospatial Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-spatial-functions) functions, enabling efficient index searching for documents that intersect with, are within, are contained by, or are disjoint from a query geometry. In addition, the `ST_DISTANCE` function calculates the distance between two points.
 
 * [`ST_INTERSECTS`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-st_intersects)
 * [`ST_DISJOINT`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-st_disjoint)
