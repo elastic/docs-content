@@ -99,7 +99,7 @@ You can then scroll through your recent queries:
 
 {{esql}} features in-app help and suggestions, so you can get started faster and don’t have to leave the application to check syntax.
 
-![The ES|QL syntax reference and the autocomplete menu](/images/kibana-esql-in-app-help.png "")
+![The ES|QL syntax reference and the autocomplete menu](../../../images/kibana-esql-in-app-help.png "")
 
 
 ### Starred queries [esql-kibana-starred-queries]
@@ -215,13 +215,13 @@ The resulting visualization is a bar chart showing the top 3 countries:
 :alt: esql kibana bar chart
 :::
 
-To make changes to the visualization, like changing the visualization type, axes and colors, click the pencil button (![esql icon edit visualization](/images/elasticsearch-reference-esql-icon-edit-visualization.svg "")). This opens an in-line editor:
+To make changes to the visualization, like changing the visualization type, axes and colors, click the pencil button (![esql icon edit visualization](../../../images/elasticsearch-reference-esql-icon-edit-visualization.svg "")). This opens an in-line editor:
 
 :::{image} ../../../images/elasticsearch-reference-esql-kibana-in-line-editor.png
 :alt: esql kibana in line editor
 :::
 
-You can save the visualization to a new or existing dashboard by clicking the save button (![esql icon save visualization](/images/elasticsearch-reference-esql-icon-save-visualization.svg "")). Once saved to a dashboard, you’ll be taken to the Dashboards page. You can continue to make changes to the visualization. Click the options button in the top-right (![esql icon options](/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ES|QL visualization** to open the in-line editor:
+You can save the visualization to a new or existing dashboard by clicking the save button (![esql icon save visualization](../../../images/elasticsearch-reference-esql-icon-save-visualization.svg "")). Once saved to a dashboard, you’ll be taken to the Dashboards page. You can continue to make changes to the visualization. Click the options button in the top-right (![esql icon options](../../../images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ES|QL visualization** to open the in-line editor:
 
 :::{image} ../../../images/elasticsearch-reference-esql-kibana-edit-on-dashboard.png
 :alt: esql kibana edit on dashboard
@@ -236,13 +236,13 @@ You can use {{esql}} queries to create panels on your dashboards. To add a panel
 :alt: esql dashboard panel
 :::
 
-Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](/images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
+Check the {{esql}} query by clicking the Panel filters button (![Panel filters button on panel header](../../../images/elasticsearch-reference-dashboard_panel_filter_button.png "")):
 
 :::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel-query.png
 :alt: esql dashboard panel query
 :::
 
-You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](/images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
+You can also edit the {{esql}} visualization from here. Click the options button in the top-right (![esql icon options](../../../images/elasticsearch-reference-esql-icon-options.svg "")) and select **Edit ESQL visualization** to open the in-line editor.
 
 :::{image} ../../../images/elasticsearch-reference-esql-dashboard-panel-edit-visualization.png
 :alt: esql dashboard panel edit visualization
