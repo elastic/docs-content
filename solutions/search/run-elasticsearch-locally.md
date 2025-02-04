@@ -8,23 +8,20 @@ navigation_title: "Run {{es}} locally"
 ::::{warning}
 **DO NOT USE THESE INSTRUCTIONS FOR PRODUCTION DEPLOYMENTS**
 
-The instructions on this page are for **local development only**. Do not use this configuration for production deployments, because it is not secure. Refer to [deployment options](../../../get-started/deployment-options.md) for a list of production deployment options.
+The instructions on this page are for **local development only**. Do not use this configuration for production deployments, because it is not secure. Refer to [deployment options](../../get-started/deployment-options.md) for a list of production deployment options.
 
 ::::
-
 
 Quickly set up {{es}} and {{kib}} in Docker for local development or testing, using the [`start-local` script](https://github.com/elastic/start-local?tab=readme-ov-file#-try-elasticsearch-and-kibana-locally).
 
 This setup comes with a one-month trial license that includes all Elastic features. After the trial period, the license reverts to **Free and open - Basic**. Refer to [Elastic subscriptions](https://www.elastic.co/subscriptions) for more information.
-
 
 ## Prerequisites [local-dev-prerequisites]
 
 * If you don’t have Docker installed, [download and install Docker Desktop](https://www.docker.com/products/docker-desktop) for your operating system.
 * If you’re using Microsoft Windows, then install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install).
 
-
-## Run `start-local` [local-dev-quick-start]
+## Run `start-local` script [local-dev-quick-start]
 
 To set up {{es}} and {{kib}} locally, run the `start-local` script:
 

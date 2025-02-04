@@ -22,7 +22,7 @@ Refer to the [Observability documentation](../../../solutions/observability/obse
 4. **Using Elasticsearch APIs**: Calls Elasticsearch APIs on your behalf if you need specific operations performed.
 5. **Generating Sample Data**: Helps you create sample data for testing and development purposes.
 6. **Visualizing and Analyzing Data**: Assists you in creating visualizations and analyzing your data using Kibana.
-7. **Explaining ES|QL**: Explains how ES|QL works and help you convert queries from other languages to [ES|QL.](../../../explore-analyze/query-filter/languages/esorql.md)
+7. **Explaining ES|QL**: Explains how ES|QL works and help you convert queries from other languages to [ES|QL.](../../../explore-analyze/query-filter/languages/esql.md)
 
 
 ## Requirements [ai-assistant-requirements]

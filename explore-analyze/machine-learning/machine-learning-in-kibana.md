@@ -1,4 +1,5 @@
 ---
+navigation_title: ML in Kibana
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml.html
 ---
@@ -39,14 +40,11 @@ If {{stack-security-features}} are enabled, users must have the necessary privil
 There are limitations in {{ml-features}} that affect {{kib}}. For more information, refer to [{{ml-cap}}](anomaly-detection/ml-limitations.md).
 ::::
 
-
-
 ## Data drift [data-drift-view]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
-
 
 You can find the data drift view in **{{ml-app}}** > **{{data-viz}}** in {{kib}} or by using the [global search field](../../get-started/the-stack.md#kibana-navigation-search). The data drift view shows you the differences in each field for two different time ranges in a given {{data-source}}. The view helps you to visualize the changes in your data over time and enables you to understand its behavior better.
 
