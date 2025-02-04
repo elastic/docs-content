@@ -24,3 +24,4 @@ If you're just getting started with Elasticsearch, try the hands-on [API quickst
 
 When querying your data in Kibana, additional options let you filter the results to just the subset you need. Some of these options are common to most Elastic apps. Check [Filtering in Kibana](/explore-analyze/query-filter/filtering.md) for more details on how to recognize and use them in the UI.
 
+$$$search-analyze-query-languages$$$
