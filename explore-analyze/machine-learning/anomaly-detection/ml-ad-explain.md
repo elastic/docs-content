@@ -7,7 +7,6 @@ mapped_pages:
 
 Every anomaly has an anomaly score assigned to it. That score indicates how anomalous the data point is, which makes it possible to define its severity compared to other anomalies. This page gives you a high-level explanation of the critical factors considered for calculating anomaly scores, how the scores are calculated, and how renormalization works.
 
-
 ## Anomaly score impact factors [score-impact-factors]
 
 {{anomaly-jobs-cap}} split the time series data into time buckets. The data within a bucket is aggregated using functions. Anomaly detection is happening on the bucket values. Three factors can affect the initial anomaly score of a record:
@@ -16,11 +15,9 @@ Every anomaly has an anomaly score assigned to it. That score indicates how anom
 * multi-bucket impact,
 * anomaly characteristics impact.
 
-
 ### Single bucket impact [single-bucket-impact]
 
 The probability of the actual value in the bucket is calculated first. This probability depends on how many similar values were seen in the past. It often relates to the difference between actual and typical values. The typical value is the median value of the probability distribution for the bucket. This probability leads to the single bucket impact. It usually dominates the initial anomaly score of a short spike or dip.
-
 
 ### Multi-bucket impact [multi-bucket-impact]
 
@@ -28,13 +25,11 @@ The probabilities of the values in the current bucket and the preceding 11 bucke
 
 Different signs mark the anomalies with high multi-bucket impact to highlight the distinction. A cross sign "+" represents these anomalies in {{kib}}, instead of a circle.
 
-
 ### Anomaly characteristics impact [anomaly-characteristics-impact]
 
 The impact of the anomaly characteristics considers the different features of the anomaly, such as its length and size. The total duration of the anomaly is considered, and not a fixed interval as in the case of the multi-bucket impact calculation. The length might be only one bucket or thirty (or more) buckets. Comparing the length and size of the anomaly to the historical averages makes it possible to adapt to your domain and the patterns in data. The default behavior of the algorithm is to score longer anomalies higher than short-lived spikes. In practice, short anomalies often turn out to be errors in data, while long anomalies are something you might need to react to.
 
 Combining multi-bucket impact and anomaly characteristics impact leads to more reliable detection of abnormal behavior over various domains.
-
 
 ## Record score reduction (renormalization) [record-score-reduction]
 
@@ -46,7 +41,6 @@ The process when the anomaly detection algorithm adjusts the anomaly scores of p
 :alt: Example of a record score reduction in {kib}
 :class: screenshot
 :::
-
 
 ## Other factors for score reduction [other-factors]
 
