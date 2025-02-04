@@ -8,7 +8,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrievers_examples.html
 ---
 
-# Querying for search / searching with the search API
+# Query languages for search
 
 % What needs to be done: Lift-and-shift
 

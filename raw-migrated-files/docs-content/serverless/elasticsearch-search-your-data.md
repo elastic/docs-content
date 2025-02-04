@@ -22,7 +22,7 @@ Learn about the various query languages you can use to search your data in the [
 
 The subpages in this section provide some high-level information about selected important search-related topics:
 
-* [The search API](../../../solutions/search/querying-for-search-searching-with-the-search-api.md)
+* [The search API](../../../solutions/search/querying-for-search.md)
 * [K-Nearest Neighbors (KNN) search](../../../solutions/search/vector/knn.md)
 * [Semantic search](../../../solutions/search/semantic-search.md)
 
