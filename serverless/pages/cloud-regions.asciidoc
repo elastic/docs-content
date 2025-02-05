@@ -10,7 +10,7 @@ Elastic Cloud Serverless handles all hosting details for you. You are unable to 
 
 [NOTE]
 ====
-Currently, a limited number of Amazon Web Services (AWS) and Microsoft Azure regions are available. More regions for AWS and Azure, as well Google Cloud Platform (GCP), will be added in the future.
+Currently, a limited number of Amazon Web Services (AWS) and Microsoft Azure regions are available. More regions for AWS and Azure, as well as Google Cloud Platform (GCP), will be added in the future.
 ====
 
 [discrete]
