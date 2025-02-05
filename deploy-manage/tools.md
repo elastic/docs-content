@@ -10,7 +10,7 @@ Elastic provides comprehensive tools to safeguard data, ensure continuous availa
 For strategies to design resilient clusters, see **[Availability and resilience](production-guidance/availability-and-resilience.md)**.
 
 ::::{note} 
-Snapshot and restore, as well as cross-cluster replication, are not currently available in serverless deployments, but they are planned for future releases. For more information, see **[LINK-TODO]**.
+The snapshot and restore and cross-cluster replication features are currently not available for Elastic Cloud Serverless projects. These features will be introduced in the future. For more information, refer to [Serverless differences](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-categories).
 ::::
 
 ## Snapshots
