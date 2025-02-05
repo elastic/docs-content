@@ -21,5 +21,5 @@ This example uses the [sample web logs data](../overview/kibana-quickstart.md#gs
 :class: screenshot
 :::
 
-1. (optional) Apply filters to one or more patterns. **Discover** only displays documents that match the selected patterns. Additionally, you can remove selected patterns from **Discover**, resulting in the display of only those documents that don’t match the selected pattern. These options enable you to remove unimportant messages and focus on the more important, actionable data during troubleshooting. You can also create a categorization {{anomaly-job}} directly from the **Patterns** tab to find anomalous behavior in the selected pattern.
+5. (optional) Apply filters to one or more patterns. **Discover** only displays documents that match the selected patterns. Additionally, you can remove selected patterns from **Discover**, resulting in the display of only those documents that don’t match the selected pattern. These options enable you to remove unimportant messages and focus on the more important, actionable data during troubleshooting. You can also create a categorization {{anomaly-job}} directly from the **Patterns** tab to find anomalous behavior in the selected pattern.
 
