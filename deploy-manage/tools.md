@@ -4,7 +4,6 @@ mapped_pages:
 
 applies:
   stack: all
-  serverless: all
   hosted: all
   ece: all
   eck: all
