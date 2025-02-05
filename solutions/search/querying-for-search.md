@@ -16,8 +16,6 @@ This page is focused on the search use case. For an overview of Elastic query la
 
 Once you know which [search approaches](search-approaches.md) you need to use, you can start building and testing your search queries. {{es}} provides several query languages to help you express your search logic.
 
-I'll help add the endpoint column. Since ESQL uses `_query` while the others use `_search`, I'll reflect that in the table:
-
 | Interface | Endpoint | Description | Best for |
 |-----------|----------|-------------|----------|
 | [**Query DSL**](/explore-analyze/query-filter/languages/querydsl.md) | `_search` | Original, JSON-based query language native to Elasticsearch. Powerful but complex syntax. | Full-text and semantic search queries |
