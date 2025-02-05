@@ -2,6 +2,8 @@
 navigation_title: "Collect monitoring data with {{agent}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitoring-elastic-agent.html
+applies:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Collect monitoring data with Elastic Agent [monitoring-elastic-agent]
 
 
-In 8.5 and later, you can use {{agent}} to collect data about {{kib}} and ship it to the monitoring cluster, rather than [using {{metricbeat}}](monitoring-metricbeat.md) or routing data through the production cluster as described in [Legacy collection methods](monitoring-kibana.md).
+In 8.5 and later, you can use {{agent}} to collect data about {{kib}} and ship it to the monitoring cluster, rather than [using {{metricbeat}}](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-metricbeat.md) or routing data through the production cluster as described in [Legacy collection methods](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md).
 
 To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
@@ -52,4 +54,4 @@ To collect {{kib}} monitoring data, add a {{kib}} integration to an {{agent}} an
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}. Make sure you choose the agent policy you created earlier.
 
 9. Wait a minute or two until incoming data is confirmed.
-10. [View the monitoring data in {{kib}}](monitoring-data.md).
+10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/monitoring-data.md).

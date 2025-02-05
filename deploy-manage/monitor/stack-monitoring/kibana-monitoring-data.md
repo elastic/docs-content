@@ -2,9 +2,15 @@
 navigation_title: "View monitoring data"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitoring-data.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
-
+<!-- This doc needs to be moved somewhere else, it's not specific about self-managed, it's about Stack Monitoring in general -->
+% hola
 
 # View monitoring data [monitoring-data]
 

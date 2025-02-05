@@ -2,6 +2,8 @@
 navigation_title: "Collecting log data with {{filebeat}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-filebeat.html
+applies:
+  stack: all
 ---
 
 
@@ -116,5 +118,5 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
     If you want to use the **Monitoring** UI in {{kib}}, there must also be `.monitoring-*` indices. Those indices are generated when you collect metrics about {{stack}} products. For example, see [Collecting monitoring data with {{metricbeat}}](collecting-monitoring-data-with-metricbeat.md).
     ::::
 
-10. [View the monitoring data in {{kib}}](monitoring-data.md).
+10. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 

@@ -1,7 +1,9 @@
 ---
-navigation_title: "Health monitoring"
+navigation_title: "Kibana task manager monitoring"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-health-monitoring.html
+applies:
+  stack: preview
 ---
 
 

@@ -7,6 +7,6 @@
 * [*Traffic Splitting*](../../../deploy-manage/deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md)
 * [*Network policies*](../../../deploy-manage/deploy/cloud-on-k8s/network-policies.md)
 * [*Webhook namespace selectors*](../../../deploy-manage/deploy/cloud-on-k8s/webhook-namespace-selectors.md)
-* [*Stack Monitoring*](../../../deploy-manage/monitor/stack-monitoring/enable-stack-monitoring-on-eck-deployments.md)
+* [*Stack Monitoring*](../../../deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md)
 * [*Deploy a FIPS compatible version of ECK*](../../../deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md)
 
