@@ -2,23 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started-node-js.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-node-js.html
-applies:
-  serverless: all
-  hosted: all
 ---
 
 # Ingest data with Node.js
-
-% What needs to be done: Refine
-
-% Scope notes: Merge ESS and ECE versions (should be pretty much identical)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-getting-started-node-js.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-getting-started-node-js.md
-
-
 
 This guide tells you how to get started with:
 
@@ -34,7 +20,7 @@ If you are an Node.js application programmer who is new to the Elastic Stack, th
 
 ::::{tab-set}
 
-:::{tab-item} {{ess}}
+:::{tab-item} Elastic Cloud Hosted
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
 3. Select **Create deployment**.
@@ -45,7 +31,7 @@ If you are an Node.js application programmer who is new to the Elastic Stack, th
 Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 :::
 
-:::{tab-item} {{ece}}
+:::{tab-item} Elastic Cloud Enterprise
 1. Log into the Elastic Cloud Enterprise admin console.
 2. Select **Create deployment**.
 3. Give your deployment a name. You can leave all other settings at their default values.
@@ -54,24 +40,6 @@ Prefer not to subscribe to yet another service? You can also get Elasticsearch S
 :::
 
 ::::
-
-
-
-
-
-
-
-
-
-1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
-3. Select **Create deployment**.
-4. Give your deployment a name. You can leave all other settings at their default values.
-5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
-6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
-
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
-
 
 ## Set up your application [ec_set_up_your_application]
 
