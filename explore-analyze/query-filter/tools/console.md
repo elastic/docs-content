@@ -218,9 +218,9 @@ You can export requests:
 
 * **to a TXT file**, by using the **Export requests** button. When using this method, all content of the input panel is copied, including comments, requests, and payloads. All of the formatting is preserved and allows you to re-import the file later, or to a different environment, using the **Import requests** button.
 
-    ::::{tip}
-    When importing a TXT file containing Console requests, the current content of the input panel is replaced. Export it first if you don’t want to lose it, or find it in the **History** tab if you already ran the requests.
-    ::::
+  ::::{tip}
+  When importing a TXT file containing Console requests, the current content of the input panel is replaced. Export it first if you don’t want to lose it, or find it in the **History** tab if you already ran the requests.
+  ::::
 
 * by copying them individually as **curl**, **JavaScript**, or **Python**. To do this, select a request, then open the contextual menu and select **Copy as**. When using this action, requests are copied individually to your clipboard. You can save your favorite language to make the copy action faster the next time you use it.
 
