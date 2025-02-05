@@ -5,7 +5,7 @@ applies:
   stack: all
 ---
 
-# Elasticsearch log4j configuration (self-managed) [logging]
+# Elasticsearch log4j configuration [logging]
 
 You can use {{es}}'s application logs to monitor your cluster and diagnose issues. If you run {{es}} as a service, the default location of the logs varies based on your platform and installation method:
 

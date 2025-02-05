@@ -1,4 +1,5 @@
 ---
+navigation_title: "Elastic Cloud Hosted (ECH)"
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-monitoring.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring-setup.html

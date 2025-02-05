@@ -1,4 +1,5 @@
 ---
+navigation_title: "Elastic Cloud Enterprise (ECE)"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-logging-and-monitoring.html
 applies:

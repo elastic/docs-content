@@ -1,4 +1,5 @@
 ---
+navigation_title: "Elastic Cloud on Kubernetes (ECK)"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html
 applies:

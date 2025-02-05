@@ -1,4 +1,5 @@
 ---
+navigation_title: "Elasticsearch self-managed"
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-production.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-monitoring.html
