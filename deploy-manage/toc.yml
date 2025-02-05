@@ -687,7 +687,6 @@ toc:
   - file: manage-connectors.md
   - file: monitor.md
     children:
-      - file: monitor/monitoring-overview.md
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
