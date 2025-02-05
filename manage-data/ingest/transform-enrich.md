@@ -28,7 +28,7 @@ Finally, to help ensure optimal query results, you may want to customize how tex
 
 :   You can try out the [Parse logs](transform-enrich/example-parse-logs.md) example which shows you how to set up in ingest pipeline to transform incoming server logs into a standard format.
 
-:   The {{es}} enrich processor enables you to add data from existing indices to your incoming data, based on an enrich policy. The enrich policy contains a set of rules to match incoming documents to the fields containing the data to add. Refer to [Data enrichment](transform-enrich/data-enrichment.md) to learn how to set up an enrich processor. You can also try out a few examples that show how to enrich data based on geographic location, based on exact values such as email addresses or IDs, or to a range of values such as a date or set of IP addresses.
+:   The {{es}} enrich processor enables you to add data from existing indices to your incoming data, based on an enrich policy. The enrich policy contains a set of rules to match incoming documents to the fields containing the data to add. Refer to [Data enrichment](transform-enrich/data-enrichment.md) to learn how to set up an enrich processor. You can also try out a few examples that show how to enrich data based on geographic location, exact values such as email addresses or IDs, or a range of values such as a date or set of IP addresses.
 
 {{ls}} and the {{ls}} `elastic_integration filter`
 :   If you're using {{ls}} as your primary ingest tool, you can take advantage of its built-in pipeline capabilities to transform your data. You configure a pipeline by stringing together a series of input, output, filtering, and optional codec plugins to manipulate all incoming data.
