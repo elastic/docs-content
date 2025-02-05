@@ -5,9 +5,10 @@ on:
 
 jobs:
   preview:
-    uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
+    uses: elastic/docs-builder/.github/workflows/preview-build.yml@feature/compression-level-test
     with:
       continue-on-error: false
       strict: false
+      compression-level: 9
     permissions:
       contents: read
