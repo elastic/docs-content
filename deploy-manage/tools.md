@@ -40,7 +40,7 @@ Snapshot configurations vary across Elastic Cloud Hosted, Elastic Cloud Enterpri
 CCR provides a way to automatically synchronize indices from a leader cluster to a follower cluster. This cluster could be in a different data center or even a different continent from the leader cluster. If the primary cluster fails, the secondary cluster can take over.
 
 ::::{note}
-CCR relies on **[Remote clusters](remote-clusters.md)** functionality to establish and manage connections between the leader and the follower clusters.
+CCR relies on **[remote clusters](remote-clusters.md)** functionality to establish and manage connections between the leader and the follower clusters.
 ::::
 
 You can perform the following tasks to manage cross-cluster replication:
