@@ -7,19 +7,19 @@ mapped_pages:
 
 % You can start with {{agent}} and Elastic [integrations](https://docs.elastic.co/en/integrations), and still take advantage of additional processing options if you need them.
 
-For many use cases you'll want to enhance your data as it's being ingested into {{es}}. Your goal might be as straightforward as filtering out unwanted parts of the data before it gets indexed. Another goal might be to reshape the data, such as processing incoming log files to conform to a standard logging format.
+For many use cases you'll want to enhance your data as it's being ingested into {{es}}. Your goal might be to filter out unwanted parts of the data before it gets indexed. Another goal might be to reshape the data, such as to process incoming log files to conform to a standard format.
 
-You might want to enrich your data with additional information, for example to append product information based on product IDs, or vendor information based on known IP addresses.
+You might also want to enrich your data with additional information, for example to append product information based on product IDs or vendor information based on a set of known IP addresses.
 
-You can control the structure of your ingested data by customizing how {{es}} maps an incoming document to fields and data types.
+According to your use case, you may want to control the structure of your ingested data by customizing how {{es}} maps an incoming document to fields and data types.
 
-Finally, you can adjust how text fields are shaped inside {{es}} so as to ensure optimal query results.
+Finally, to help ensure optimal query results, you may want to customize how text is analyzed and how text fields are defined inside {{es}}.
 
 {{agent}} processors
 :   You can use [{{agent}} processors](https://www.elastic.co/guide/en/fleet/current/elastic-agent-processor-configuration.html) to sanitize or enrich raw data at the source. Use {{agent}} processors if you need to control what data is sent across the wire, or if you need to enrich the raw data with information available on the host.
 
 {{es}} ingest pipelines
-:   You can use {{es}} [ingest pipelines](transform-enrich/ingest-pipelines.md) to enrich incoming data or normalize field data before the data is indexed. {{es}} ingest pipelines enable you to manipulate the data as it comes in. This approach helps you avoid adding processing overhead to the hosts from which you’re collecting data.
+:   You can use [{{es}} ingest pipelines](transform-enrich/ingest-pipelines.md) to enrich incoming data or normalize field data before the data is indexed. {{es}} ingest pipelines enable you to manipulate the data as it comes in. This approach helps you avoid adding processing overhead to the hosts from which you’re collecting data.
 
 :   When you define a pipeline you can configure one or more processors to operate on the incoming data. A typical use case is to transform specific strings to lowercase, or to sort the elements of incoming arrays into a given order. This section describes:
  - How to create, view, edit, and delete an ingest pipeline
@@ -28,12 +28,12 @@ Finally, you can adjust how text fields are shaped inside {{es}} so as to ensure
 
 :   You can try out the [Parse logs](transform-enrich/example-parse-logs.md) example which shows you how to set up in ingest pipeline to transform incoming server logs into a standard format.
 
-:   The {{es}} enrich processor enables you to add data from existing indices to your incoming data, based on an enrich policy. The enrich policy contains a set of rules to match incoming documents to the fields containing the data to add. Refer to [Data enrichment](transform-enrich/data-enrichment.md) to learn how to set up an enrich processor. You can also try out a few examples that show how to enrich data based on geographic location, on exact values such as email addresses or IDs, or to a range of values such as a date or set of IP addresses.
+:   The {{es}} enrich processor enables you to add data from existing indices to your incoming data, based on an enrich policy. The enrich policy contains a set of rules to match incoming documents to the fields containing the data to add. Refer to [Data enrichment](transform-enrich/data-enrichment.md) to learn how to set up an enrich processor. You can also try out a few examples that show how to enrich data based on geographic location, based on exact values such as email addresses or IDs, or to a range of values such as a date or set of IP addresses.
 
 {{ls}} and the {{ls}} `elastic_integration filter`
 :   If you're using {{ls}} as your primary ingest tool, you can take advantage of its built-in pipeline capabilities to transform your data. You configure a pipeline by stringing together a series of input, output, filtering, and optional codec plugins to manipulate all incoming data.
 
-:   If you're ingesting using {agent} with Elastic {integrations}, you can use the {{ls}} [`elastic_integration filter`](https://www.elastic.co/guide/en/logstash/current/) and other [{{ls}} filters](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html) to [extend Elastic integrations](https://www.elastic.co/guide/en/logstash/current/ea-integrations.html) by transforming data before it goes to {{es}}.
+:   If you're ingesting using {{agent}} with Elastic {{integrations}}, you can use the {{ls}} [`elastic_integration filter`](https://www.elastic.co/guide/en/logstash/current/) and other [{{ls}} filters](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html) to [extend Elastic integrations](https://www.elastic.co/guide/en/logstash/current/ea-integrations.html) by transforming data before it goes to {{es}}.
 
 Index mapping
 :   Index mapping lets you control the structure that incoming data has within an Elasticsearch index. You can define all of the fields that are included in the index and their respective data types. For example, you can set fields for dates, numbers, or geolocations, and define the fields to have specific formats. 
