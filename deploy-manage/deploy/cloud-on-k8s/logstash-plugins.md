@@ -396,7 +396,7 @@ The [`elasticsearch output`](https://www.elastic.co/guide/en/logstash/current/pl
 
 You can customize roles in {{es}}. Check out [creating custom roles](../../users-roles/cluster-or-deployment-auth/native.md)
 
-```logstash
+```yaml
 kind: Secret
 apiVersion: v1
 metadata:
@@ -418,7 +418,7 @@ stringData:
 
 The [`elastic_integration filter`](https://www.elastic.co/guide/en/logstash/current/plugins-filters-elastic_integration.html) plugin allows the use of [`ElasticsearchRef`](configuration-logstash.md#k8s-logstash-esref) and environment variables.
 
-```logstash
+```json
   elastic_integration {
             pipeline_name => "logstash-pipeline"
             hosts => [ "${ECK_ES_HOSTS}" ]

@@ -37,6 +37,6 @@ Use {{esql}} to retrieve important information for investigation by using lookup
 
 ## What’s next? [esql-whats-next]
 
-The main documentation for {{esql}} lives in the [{{es}} docs](../../../explore-analyze/query-filter/languages/esorql.md).
+The main documentation for {{esql}} lives in the [{{es}} docs](../../../explore-analyze/query-filter/languages/esql.md).
 
 We also have a short tutorial in the **Discover** docs: [Using {{esql}}](../../../explore-analyze/discover/try-esql.md).

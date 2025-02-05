@@ -12,7 +12,7 @@ The **{{searchprofiler}}** tool can transform this JSON output into a visualizat
 
 ## Get started [search-profiler-getting-started]
 
-1. Find the **{{searchprofiler}}** by navigating to the **Developer tools** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Find the **{{searchprofiler}}** by navigating to the **Developer tools** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
 
 **{{searchprofiler}}** displays the names of the indices searched, the shards in each index, and how long it took for the query to complete. To try it out, replace the default `match_all` query with the query you want to profile, and then click **Profile**.
 

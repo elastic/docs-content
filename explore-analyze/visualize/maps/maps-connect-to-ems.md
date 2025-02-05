@@ -47,7 +47,7 @@ curl -I 'https://tiles.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=ag
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 server: BaseHTTP/0.6 Python/3.11.4
 date: Mon, 20 Nov 2023 15:08:46 GMT
@@ -71,7 +71,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: tiles.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: */*
@@ -90,7 +90,7 @@ TE: trailers
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 server: BaseHTTP/0.6 Python/3.11.4
 date: Mon, 20 Nov 2023 17:53:10 GMT
 content-type: application/json; charset=utf-8
@@ -127,7 +127,7 @@ $ curl -I 'https://tiles.maps.elastic.co/data/v3/1/1/0.pbf?elastic_tile_service_
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 content-encoding: gzip
 content-length: 144075
@@ -153,7 +153,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: tiles.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: */*
@@ -170,7 +170,7 @@ TE: trailers
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 content-encoding: gzip
 content-length: 101691
 access-control-allow-origin: *
@@ -208,7 +208,7 @@ curl -I 'https://tiles.maps.elastic.co/styles/osm-bright-desaturated/sprite.png'
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 content-length: 17181
 access-control-allow-origin: *
@@ -231,7 +231,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: tiles.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: image/avif,image/webp,*/*
@@ -250,7 +250,7 @@ TE: trailers
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 content-length: 17181
 access-control-allow-origin: *
 access-control-allow-methods: GET, OPTIONS, HEAD
@@ -290,7 +290,7 @@ curl -I 'https://vector.maps.elastic.co/v9.0/manifest?elastic_tile_service_tos=a
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 x-guploader-uploadid: ABPtcPp_BvMdBDO5jVlutETVHmvpOachwjilw4AkIKwMrOQJ4exR9Eln4g0LkW3V_LLSEpvjYLtUtFmO0Uwr61XXUhoP_A
 x-goog-generation: 1689593295246576
@@ -320,7 +320,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: vector.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: */*
@@ -338,7 +338,7 @@ Cache-Control: no-cache
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 x-guploader-uploadid: ABPtcPoUFrCmjBeebnfRxSZp44ZHsZ-_iQg7794RU1Z7Lb2cNNxXsMRkIDa5s7VBEfyehvo-_9rcm1A3HfYW8geguUxKrw
 x-goog-generation: 1689593295246576
 x-goog-metageneration: 1
@@ -381,7 +381,7 @@ curl -I 'https://vector.maps.elastic.co/files/world_countries_v7.topo.json?elast
 
 Server response
 
-```regex
+```txt
 HTTP/2 200
 x-guploader-uploadid: ABPtcPpmMffchVgfHIr-SSC00WORo145oV-1q0asjqRvjLV_7cIgyfLRfofXV-BG7huMYABFypblcgdgXRBARhpo2c88ow
 x-goog-generation: 1689593325442971
@@ -411,7 +411,7 @@ alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
 ::::::
 
 ::::::{tab-item} Request
-```regex
+```txt
 Host: vector.maps.elastic.co
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
 Accept: */*
@@ -429,7 +429,7 @@ Cache-Control: no-cache
 ::::::
 
 ::::::{tab-item} Response
-```regex
+```txt
 x-guploader-uploadid: ABPtcPqIDSg5tyavvwwtJQa8a8iycoXOCkHBp_2YJbJJnQgb5XMD7nFwRUogg00Ou27VFIs95v7L99OMnvXR1bcb9RW-xQ
 x-goog-generation: 1689593325442971
 x-goog-metageneration: 1
@@ -556,7 +556,7 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 | `ssl.certificateAuthorities` | Paths to one or more PEM-encoded X.509 certificate authority (CA) certificates that make up a trusted certificate chain for {{hosted-ems}}. This chain is used by the {{hosted-ems}} to establish trust when receiving inbound SSL/TLS connections from end users. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-certificateAuthorities). |
 | `ssl.key`, `ssl.certificate`, and `ssl.keyPassphrase` | Location of yor SSL key and certificate files and the password that decrypts the private key that is specified via `ssl.key`. This password is optional, as the key may not be encrypted. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-cert-key). |
 | `ssl.supportedProtocols` | An array of supported protocols with versions.Valid protocols: `TLSv1`, `TLSv1.1`, `TLSv1.2`. **Default: `TLSv1.1`, `TLSv1.2`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-supportedProtocols). |
-| `ssl.cipherSuites` | Details on the format, and the valid options, are available via the[OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.1/man1/ciphers.md#CIPHER-LIST-FORMAT).**Default: `TLS_AES_256_GCM_SHA384 TLS_CHACHA20_POLY1305_SHA256 TLS_AES_128_GCM_SHA256 ECDHE-RSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES256-GCM-SHA384, DHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES128-SHA256, DHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, DHE-RSA-AES256-SHA384, ECDHE-RSA-AES256-SHA256, DHE-RSA-AES256-SHA256, HIGH,!aNULL, !eNULL, !EXPORT, !DES, !RC4, !MD5, !PSK, !SRP, !CAMELLIA`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-cipherSuites). |
+| `ssl.cipherSuites` | Details on the format, and the valid options, are available via the[OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html#CIPHER-LIST-FORMAT).**Default: `TLS_AES_256_GCM_SHA384 TLS_CHACHA20_POLY1305_SHA256 TLS_AES_128_GCM_SHA256 ECDHE-RSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES256-GCM-SHA384, DHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES128-SHA256, DHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, DHE-RSA-AES256-SHA384, ECDHE-RSA-AES256-SHA256, DHE-RSA-AES256-SHA256, HIGH,!aNULL, !eNULL, !EXPORT, !DES, !RC4, !MD5, !PSK, !SRP, !CAMELLIA`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-cipherSuites). |
 
 
 #### Bind-mounted configuration [elastic-maps-server-bind-mount-config]
@@ -631,4 +631,3 @@ With {{hosted-ems}} running, add the `map.emsUrl` configuration key in your [kib
 ### Logging [elastic-maps-server-logging]
 
 Logs are generated in [ECS JSON format](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) and emitted to the standard output and to `/var/log/elastic-maps-server/elastic-maps-server.log`. The server won’t rotate the logs automatically but the `logrotate` tool is installed in the image. Mount `/dev/null` to the default log path if you want to disable the output to that file.
-
