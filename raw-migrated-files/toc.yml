@@ -603,7 +603,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/document-level-security.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
       - file: elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
-      - file: elasticsearch/elasticsearch-reference/es-ingestion-overview.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
       - file: elasticsearch/elasticsearch-reference/esql-examples.md
       - file: elasticsearch/elasticsearch-reference/esql-getting-started.md
@@ -621,7 +620,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/index-modules-analysis.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/ingest-enriching-data.md
-      - file: elasticsearch/elasticsearch-reference/ingest-pipeline-search.md
       - file: elasticsearch/elasticsearch-reference/ingest.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
