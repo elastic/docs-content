@@ -23,7 +23,7 @@ $$$configuring-console$$$
 $$$import-export-console-requests$$$
 
 
-**Console** lets you interact with [{{es}} APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html) and [{{kib}} APIs](https://www.elastic.co/docs/api) from within {{kib}}.
+**Console** is an interactive UI for sending requests to [{{es}} APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html) and [{{kib}} APIs](https://www.elastic.co/docs/api) and viewing their responses.
 
 :::{image} ../../../images/kibana-console.png
 :alt: Console
@@ -42,7 +42,7 @@ You can also find Console directly on certain Search solution and Elasticsearch 
 
 ## Write requests [console-api]
 
-**Console** understands commands in a cURL-like syntax. For example, the following is a `GET` request to the {{es}} `_search` API.
+**Console** accepts commands in a simplified HTTP request syntax. For example, the following `GET` request calls the {es} `_search` API:
 
 ```js
 GET /_search
