@@ -1,4 +1,5 @@
 ---
+navigation_title: Getting started
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-getting-started.html
 ---
