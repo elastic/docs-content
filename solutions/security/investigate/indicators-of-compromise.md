@@ -15,8 +15,6 @@ The Indicators page collects data from enabled threat intelligence feeds and pro
 
     * **{{agent}}** - Install a [{{fleet}}-managed {{agent}}](https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html) and ensure the agent’s status is `Healthy`. Refer to [{{fleet}} Troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
     * **{{filebeat}}** - Install [{{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html) version 8.x or later. Earlier {{filebeat}} versions are incompatible with ECS and will prevent indicator data from displaying in the Indicators table.
-
-
 ::::
 
 
@@ -41,9 +39,9 @@ Install a threat intelligence integration to add indicators to the Indicators pa
 2. In the search bar, search for `Threat Intelligence` to get a list of threat intelligence integrations.
 3. Select a threat intelligence integration, then complete the integration’s guided installation.
 
-    ::::{note}
-    For more information about available fields, go to the [Elastic integration documentation](https://docs.elastic.co/integrations) and search for a specific threat intelligence integration.
-    ::::
+   ::::{note}
+   For more information about available fields, go to the [Elastic integration documentation](https://docs.elastic.co/integrations) and search for a specific threat intelligence integration.
+   ::::
 
 4. Return to the Indicators page in {{elastic-sec}}. Refresh the page if indicator data isn’t displaying.
 
@@ -64,17 +62,17 @@ Learn more about an indicator by clicking **View details**, then opening the Ind
 
 * **Overview**: A summary of the indicator, including the indicator’s name, the threat intelligence feed it came from, the indicator type, and additional relevant data.
 
-    ::::{note}
-    Some threat intelligence feeds provide  [Traffic Light Protocol (TLP) markings](https://www.cisa.gov/tlp#:~:text=Introduction,shared%20with%20the%20appropriate%20audience). The `TLP Marking` and `Confidence` fields will be empty if the feed doesn’t provide that data.
-    ::::
+  ::::{note}
+  Some threat intelligence feeds provide  [Traffic Light Protocol (TLP) markings](https://www.cisa.gov/tlp#:~:text=Introduction,shared%20with%20the%20appropriate%20audience). The `TLP Marking` and `Confidence` fields will be empty if the feed doesn’t provide that data.
+  ::::
 
 * **Table**: The indicator data in table format.
 * **JSON**: The indicator data in JSON format.
 
-    :::{image} ../../../images/security-indicator-details-flyout.png
-    :alt: Shows the Indicator details flyout
-    :class: screenshot
-    :::
+  :::{image} ../../../images/security-indicator-details-flyout.png
+  :alt: Shows the Indicator details flyout
+  :class: screenshot
+  :::
 
 
 
@@ -137,9 +135,9 @@ When you attach an indicator to a case, the indicator is added as a new comment 
 
     * **Overview**: A summary of the threat indicator, including its name and type, which threat intelligence feed it came from, and additional relevant data.
 
-        ::::{note}
-        Some threat intelligence feeds provide  [Traffic Light Protocol (TLP) markings](https://www.cisa.gov/tlp#:~:text=Introduction,shared%20with%20the%20appropriate%20audience). The `TLP Marking` and `Confidence` fields will be empty if the feed doesn’t provide that data.
-        ::::
+      ::::{note}
+      Some threat intelligence feeds provide  [Traffic Light Protocol (TLP) markings](https://www.cisa.gov/tlp#:~:text=Introduction,shared%20with%20the%20appropriate%20audience). The `TLP Marking` and `Confidence` fields will be empty if the feed doesn’t provide that data.
+      ::::
 
     * **Table**: The indicator data in table format.
     * **JSON**: The indicator data in JSON format.
