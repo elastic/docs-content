@@ -9,6 +9,6 @@ jobs:
     with:
       continue-on-error: false
       strict: false
-      compression-level: 9
+      compression-level: 0
     permissions:
       contents: read
