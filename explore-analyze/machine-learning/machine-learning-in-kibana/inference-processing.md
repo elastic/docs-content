@@ -5,7 +5,7 @@ mapped_pages:
 
 # {{infer-cap}} processing [ingest-pipeline-search-inference]
 
-When you create an index through the **Content** UI, a set of default ingest pipelines are also created, including a {{ml}} {{infer}} pipeline. The [ML {{infer}} pipeline](/solutions/search/search-pipelines.md#ingest-pipeline-search-details-specific-ml-reference) uses {{infer}} processors to analyze fields and enrich documents with the output. Inference processors use ML trained models, so you need to use a built-in model or [deploy a trained model in your cluster](ml-nlp-deploy-models.md) to use this feature.
+When you create an index through the **Content** UI, a set of default ingest pipelines are also created, including a {{ml}} {{infer}} pipeline. The [ML {{infer}} pipeline](/solutions/search/search-pipelines.md#ingest-pipeline-search-details-specific-ml-reference) uses {{infer}} processors to analyze fields and enrich documents with the output. Inference processors use ML trained models, so you need to use a built-in model or [deploy a trained model in your cluster](../nlp/ml-nlp-deploy-models.md) to use this feature.
 
 This guide focuses on the ML {{infer}} pipeline, its use, and how to manage it.
 
@@ -16,23 +16,23 @@ This feature is not available at all Elastic subscription levels. Refer to the E
 
 ## NLP use cases [ingest-pipeline-search-inference-nlp-use-cases]
 
-[Natural Language Processing (NLP)](ml-nlp-overview.md) enables developers to create rich search experiences that go beyond the standards of lexical search. A few examples of ways to improve search experiences through the use of NLP models:
+[Natural Language Processing (NLP)](../nlp/ml-nlp-overview.md) enables developers to create rich search experiences that go beyond the standards of lexical search. A few examples of ways to improve search experiences through the use of NLP models:
 
 ### ELSER text expansion [ingest-pipeline-search-inference-elser]
 
-Using Elastic’s [ELSER machine learning model](ml-nlp-elser.md) you can easily incorporate text expansion for your queries. This works by using ELSER to provide semantic enrichments to your documents upon ingestion, combined with the power of [Elastic Search Application templates](../../../solutions/search/applications.md) to provide automated text expansion at query time.
+Using Elastic’s [ELSER machine learning model](../nlp/ml-nlp-elser.md) you can easily incorporate text expansion for your queries. This works by using ELSER to provide semantic enrichments to your documents upon ingestion, combined with the power of [Elastic Search Application templates](../../../solutions/search/applications.md) to provide automated text expansion at query time.
 
 ### Named entity recognition (NER) [ingest-pipeline-search-inference-ner]
 
-Most commonly used to detect entities such as People, Places, and Organization information from text, [NER](ml-nlp-extract-info.md#ml-nlp-ner) can be used to extract key information from text and group results based on that information. A sports news media site could use NER to automatically extract names of professional athletes, stadiums, and sports teams in their articles and link to season stats or schedules.
+Most commonly used to detect entities such as People, Places, and Organization information from text, [NER](../nlp/ml-nlp-extract-info.md#ml-nlp-ner) can be used to extract key information from text and group results based on that information. A sports news media site could use NER to automatically extract names of professional athletes, stadiums, and sports teams in their articles and link to season stats or schedules.
 
 ### Text classification [ingest-pipeline-search-inference-text-classification]
 
-[Text classification](ml-nlp-classify-text.md#ml-nlp-text-classification) is commonly used for sentiment analysis and can be used for similar tasks, such as labeling content as containing hate speech in public forums, or triaging and labeling support tickets so they reach the correct level of escalation automatically.
+[Text classification](../nlp/ml-nlp-classify-text.md#ml-nlp-text-classification) is commonly used for sentiment analysis and can be used for similar tasks, such as labeling content as containing hate speech in public forums, or triaging and labeling support tickets so they reach the correct level of escalation automatically.
 
 ### Text embedding [ingest-pipeline-search-inference-text-embedding]
 
-Analyzing a text field using a [Text embedding](ml-nlp-search-compare.md#ml-nlp-text-embedding) model will generate a [dense vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) representation of the text. This array of numeric values encodes the semantic *meaning* of the text. Using the same model with a user’s search query will produce a vector that can then be used to search, ranking results based on vector similarity - semantic similarity - as opposed to traditional word or text similarity.
+Analyzing a text field using a [Text embedding](../nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding) model will generate a [dense vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) representation of the text. This array of numeric values encodes the semantic *meaning* of the text. Using the same model with a user’s search query will produce a vector that can then be used to search, ranking results based on vector similarity - semantic similarity - as opposed to traditional word or text similarity.
 
 A common use case is a user searching FAQs, or a support agent searching a knowledge base, where semantically similar content may be indexed with little similarity in phrasing.
 
@@ -54,7 +54,7 @@ The diagram below shows how documents are processed during ingestion.
 
 ## Find, deploy, and manage trained models [ingest-pipeline-search-inference-find-deploy-manage-trained-models]
 
-This feature is intended to make it easier to use your ML trained models. First, you need to figure out which model works best for your data. Make sure to use a [compatible third party NLP model](ml-nlp-model-ref.md). Since these are publicly available, it is not possible to fine-tune models before [deploying them](ml-nlp-deploy-models.md).
+This feature is intended to make it easier to use your ML trained models. First, you need to figure out which model works best for your data. Make sure to use a [compatible third party NLP model](../nlp/ml-nlp-model-ref.md). Since these are publicly available, it is not possible to fine-tune models before [deploying them](../nlp/ml-nlp-deploy-models.md).
 
 Trained models must be available in the current [Kibana Space](../../../deploy-manage/manage-spaces.md) and running in order to use them. By default, models should be available in all Kibana Spaces that have the **Analytics** > **Machine Learning** feature enabled. To manage your trained models, use the Kibana UI and navigate to **Stack Management → Machine Learning → Trained Models**. Spaces can be controlled in the **spaces** column. To stop or start a model, go to the **Machine Learning** tab in the **Analytics** menu of Kibana and click **Trained Models** in the **Model Management** section.
 

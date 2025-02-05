@@ -193,4 +193,4 @@ In this guide, we covered how to:
 * [Docker section of Eland readme](https://github.com/elastic/eland#docker)
 * [Deploying a model ML guide](ml-nlp-deploy-models.md)
 * [Eland Authentication methods](ml-nlp-import-model.md#ml-nlp-authentication)
-* [Adding inference pipelines](inference-processing.md#ingest-pipeline-search-inference-add-inference-processors)
+* [Adding inference pipelines](../machine-learning-in-kibana/inference-processing.md#ingest-pipeline-search-inference-add-inference-processors)
