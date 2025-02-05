@@ -19,7 +19,7 @@ When sharing a dashboard with a link while a panel is in maximized view, the gen
 
 ## Export dashboards [export-dashboards]
 
-You can export dashboards from **Stack Management*** > ***Saved Objects**. To configure and start the export:
+You can export dashboards from **Stack Management** > **Saved Objects**. To configure and start the export:
 
 1. Select the dashboard that you want, then click **Export**.
 2. Enable **Include related objects** if you want that objects associated to the selected dashboard, such as data views and visualizations, also get exported. This option is enabled by default and recommended if you plan to import that dashboard again in a different space or cluster.

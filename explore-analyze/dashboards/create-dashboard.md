@@ -12,9 +12,9 @@ mapped_pages:
 
 3. Add content to the dashboard. You have several options covered in more detail in the [Visualizations section](../visualize.md#panels-editors):
 
-    * [**Create visualization***](../visualize/lens.md). This option is a shortcut to create a chart using ***Lens**, the default visualization editor in {{kib}}.
+    * [**Create visualization**](../visualize/lens.md). This option is a shortcut to create a chart using **Lens**, the default visualization editor in {{kib}}.
     * [**Add panel**](../visualize.md#panels-editors). Choose one of the available panels to add and configure content to your dashboard.
-    * **Add from library***. Select existing content that has already been configured and saved to the ***Visualize Library**.
+    * **Add from library**. Select existing content that has already been configured and saved to the **Visualize Library**.
     * [**Controls**](add-controls.md). Add controls to help filter the content of your dashboard.
 
         :::{image} images/add_content_to_dashboard_8.15.0.png

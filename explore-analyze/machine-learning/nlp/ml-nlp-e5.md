@@ -54,7 +54,7 @@ After you created the E5 {{infer}} endpoint, it’s ready to be used for semanti
 
 ### Alternative methods to download and deploy E5 [alternative-download-deploy-e5]
 
-You can also download and deploy the E5 model either from **{{ml-app}}** > **Trained Models***, from ***Search** > **Indices**, or by using the trained models API in Dev Console.
+You can also download and deploy the E5 model either from **{{ml-app}}** > **Trained Models**, from **Search** > **Indices**, or by using the trained models API in Dev Console.
 
 ::::{note}
 For most cases, the preferred version is the **Intel and Linux optimized** model, it is recommended to download and deploy that version.

@@ -5,7 +5,7 @@ mapped_pages:
 
 # Adding custom URLs to data frame analytics jobs [ml-dfa-custom-urls]
 
-You can optionally attach one or more custom URLs to your {{dfanalytics-jobs}}. These links can direct you to dashboards, the **Discover** app, or external websites. For example, you can define a custom URL that provides a way for users to drill down to the source data from a {{regression}} job. You can create a custom URL during job creation under **Additional settings** in the **Job details*** step. Alternatively, you can edit or add new custom URLs in the job list by clicking ***Edit** in the **Actions** menu.
+You can optionally attach one or more custom URLs to your {{dfanalytics-jobs}}. These links can direct you to dashboards, the **Discover** app, or external websites. For example, you can define a custom URL that provides a way for users to drill down to the source data from a {{regression}} job. You can create a custom URL during job creation under **Additional settings** in the **Job details** step. Alternatively, you can edit or add new custom URLs in the job list by clicking **Edit** in the **Actions** menu.
 
 :::{image} ../../../images/machine-learning-ml-dfa-custom-url.png
 :alt: Creating a custom URL during job creation
