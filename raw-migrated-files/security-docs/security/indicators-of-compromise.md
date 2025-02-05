@@ -41,23 +41,6 @@ Install a threat intelligence integration to add indicators to the Indicators pa
 4. Return to the Indicators page in {{elastic-sec}}. Refresh the page if indicator data isn’t displaying.
 
 
-### Troubleshooting [troubleshoot-indicators-page]
-
-If indicator data is not appearing in the Indicators table after you installed a threat intelligence integration:
-
-* Verify that the index storing indicator documents is included in the [default {{elastic-sec}} indices](../../../solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) (`securitySolution:defaultIndex`). The index storing indicator documents will differ based on the way you’re collecting indicator data:
-
-    * **{{agent}} integrations** - `logs_ti*`
-    * **{{filebeat}} integrations** - `filebeat-*`
-
-* Ensure the indicator data you’re ingesting is mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}).
-
-::::{note}
-These troubleshooting steps also apply to the [Threat Intelligence view](../../../solutions/security/get-started/enable-threat-intelligence-integrations.md).
-::::
-
-
-
 ## Indicators page UI [intelligence-page-ui]
 
 After you add indicators to the Indicators page, you can [examine](../../../troubleshoot/security/indicators-of-compromise.md#examine-indicator-details), search, filter, and take action on indicator data. Indicators also appear in the Trend view, which shows the total values in the legend.
