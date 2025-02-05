@@ -13,7 +13,6 @@ toc:
       - file: apm-agent-ruby/apm-agent-ruby/release-notes-4.x.md
   - file: cloud-on-k8s/cloud-on-k8s/index.md
     children:
-      - file: cloud-on-k8s/cloud-on-k8s/k8s_audit_logging.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s_installation.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s_learn_more_about_eck.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-accessing-elastic-services.md
@@ -56,7 +55,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-delete-deployment.md
       - file: cloud/cloud-enterprise/ece-deployment-no-op.md
       - file: cloud/cloud-enterprise/ece-disable-data-tier.md
-      - file: cloud/cloud-enterprise/ece-enable-auditing.md
       - file: cloud/cloud-enterprise/ece-find.md
       - file: cloud/cloud-enterprise/ece-generate-roles-token.md
       - file: cloud/cloud-enterprise/ece-getting-started-node-js.md

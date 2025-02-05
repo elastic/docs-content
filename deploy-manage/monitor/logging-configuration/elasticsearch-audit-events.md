@@ -8,9 +8,11 @@ applies:
   stack: all
 ---
 
+% Part of this doc should probably go to reference content at a later stage
+
 # Elasticsearch audit events [audit-event-types]
 
-When you are [auditing security events](enabling-elasticsearch-audit-logs.md), a single client request might generate multiple audit events, across multiple cluster nodes. The common `request.id` attribute can be used to correlate the associated events.
+When you are [auditing security events](enabling-audit-logs.md), a single client request might generate multiple audit events, across multiple cluster nodes. The common `request.id` attribute can be used to correlate the associated events.
 
 Use the [`xpack.security.audit.logfile.events.include`](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include) setting in `elasticsearch.yml` to specify the kind of events you want to include in the auditing output.
 

@@ -224,6 +224,7 @@ With logging and monitoring enabled for a deployment, metrics are collected for 
 
 
 #### Enabling Elasticsearch/Kibana audit logs on your deployment [ec-enable-audit-logs] 
+% Added by eedugon to audit logging in deploy and manage -> monitoring -> logging section
 
 Audit logs are useful for tracking security events on your {{es}} and/or {{kib}} clusters. To enable {{es}} audit logs on your deployment:
 
