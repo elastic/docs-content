@@ -61,7 +61,7 @@ Refer to
 
 % - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/es-ingestion-overview.md
 % - [x] ./raw-migrated-files/docs-content/serverless/elasticsearch-ingest-data-through-api.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/ingest-pipeline-search.md
+% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/ingest-pipeline-search.md
 % - [x] ./raw-migrated-files/docs-content/serverless/elasticsearch-ingest-your-data.md
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
