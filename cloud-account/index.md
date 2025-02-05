@@ -7,7 +7,7 @@ applies:
   hosted: all
 ---
 
-# Cloud account
+# Manage your Cloud account
 
 Your {{ecloud}} account allows you to manage your personal settings, including your email address, password, and authentication methods. You can perform the following tasks at any time from your user profile:
 
