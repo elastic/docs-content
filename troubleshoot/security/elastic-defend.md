@@ -8,7 +8,7 @@ applies:
   hosted: all
 ---
 
-# {{elastic-defend}} [ts-management]
+# Troubleshoot {{elastic-defend}} [ts-management]
 
 
 This topic covers common troubleshooting issues when using {{elastic-defend}}'s [endpoint management tools](../../solutions/security/manage-elastic-defend.md).
@@ -128,9 +128,9 @@ You can identify if this issue is happening in the following ways:
 
     If the value of `fleet.agent.id` is `00000000-0000-0000-0000-000000000000`, this indicates this problem is occurring.
 
-::::{note}
-If this problem starts happening after Endpoint has already been installed and working properly, then this value will have changed even though the problem is happening.
-::::
+  ::::{note}
+  If this problem starts happening after Endpoint has already been installed and working properly, then this value will have changed even though the problem is happening.
+  ::::
 
 
 
