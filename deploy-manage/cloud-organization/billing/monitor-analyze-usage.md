@@ -9,7 +9,7 @@ applies:
 
 # Monitor and analyze usage
 
-Information about your current Elastic Cloud subscription usage is available directly from the [Elastic Cloud Console](https://cloud.elastic.co?page=docs&placement=docs-body) and includes:
+Information about your current {{ecloud}} subscription usage is available directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and includes:
 
 * Monitor usage for the current month, including month-to-date usage
 * For customers with annual prepaid credits, the total value of credits to be applied in the current billing cycle
@@ -21,7 +21,7 @@ You can check the detailed usage for a selected time range grouped either by pro
 
 To access your account usage:
 
-1. Log in to the [Elastic Cloud Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Open the user menu in the header bar.
 3. Select **Billing** under the user menu.
 4. Go to the **Usage** page.

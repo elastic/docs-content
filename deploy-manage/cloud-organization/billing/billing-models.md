@@ -8,17 +8,17 @@ applies:
 
 # Billing models [ec-billing-models]
 
-You can be billed for Elastic Cloud using one of the following billing models:
+You can be billed for {{ecloud}} using one of the following billing models:
 
 * [Monthly, billed by Elastic](#ec-monthly-direct)
 * [Monthly, billed through a marketplace](#ec-monthly-marketplace)
 * [Prepaid](#ec-prepaid-consumption)
 
-Regardless of your billing model, all Elastic Cloud usage is metered and billed in [Elastic Consumption Units (ECU)](/deploy-manage/cloud-organization/billing/ecu.md).
+Regardless of your billing model, all {{ecloud}} usage is metered and billed in [Elastic Consumption Units (ECU)](/deploy-manage/cloud-organization/billing/ecu.md).
 
 ## Monthly, billed by Elastic [ec-monthly-direct] 
 
-When you sign up for Elastic Cloud by [adding your credit card details](/deploy-manage/cloud-organization/billing/add-billing-details.md) in the Elastic Cloud console, you are billed on a monthly basis.
+When you sign up for {{ecloud}} by [adding your credit card details](/deploy-manage/cloud-organization/billing/add-billing-details.md) in the {{ecloud}} Console, you are billed on a monthly basis.
 
 At each billing cycle, on the first of each month, all usage for the previous month is aggregated, invoiced, and charged in arrears on the credit card used to sign up for the service.
 
@@ -28,11 +28,11 @@ Refer to our [Billing FAQ](/deploy-manage/cloud-organization/billing/billing-faq
 
 ## Monthly, billed through a marketplace [ec-monthly-marketplace] 
 
-You can sign up for Elastic Cloud [from a marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md). In this case, all usage is reported hourly to the marketplace.
+You can sign up for {{ecloud}} [from a marketplace](/deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md). In this case, all usage is reported hourly to the marketplace.
 
 At the marketplace’s billing cycle, all usage is aggregated and charged as part of your cloud provider bill.
 
-Elastic Cloud usage appears as a single invoice line with the total amount charged. For a detailed breakdown of your usage, visit the [Usage page](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) in the Elastic Cloud console.
+{{ecloud}} usage appears as a single invoice line with the total amount charged. For a detailed breakdown of your usage, visit the [Usage page](/deploy-manage/cloud-organization/billing/monitor-analyze-usage.md) in the {{ecloud}} Console.
 
 ::::{note} 
 Marketplaces typically invoice you in arrears on the first of each month. There are exceptions, however, such as in the case of the [GCP billing cycle](https://cloud.google.com/billing/docs/how-to/billing-cycle).
@@ -40,7 +40,7 @@ Marketplaces typically invoice you in arrears on the first of each month. There 
 
 ## Prepaid consumption [ec-prepaid-consumption] 
 
-All new and renewing Elastic Cloud annual customers are automatically enrolled into the prepaid consumption billing model.
+All new and renewing {{ecloud}} annual customers are automatically enrolled into the prepaid consumption billing model.
 
 Prepaid consumption is built on four key concepts:
 
@@ -68,7 +68,7 @@ Credits
 Based on these four key concepts, the prepaid consumption lifecycle is as follows:
 
 1. You purchase credits expressed in ECU, typically at a discount.
-2. You begin using Elastic Cloud resources.
+2. You begin using {{ecloud}} resources.
 3. At every billing cycle (which takes place on the first of each month), the previous month's usage, expressed in ECU, is deducted from your ECU balance.
 4. If your ECU balance is depleted before the credit expiration date, you are invoiced for on-demand usage in arrears at list price. On-demand usage is expressed in ECU, and is converted to currency amounts for invoicing purposes.¹
 5. At the end of the contract period, any credits remaining in your balance are forfeited.

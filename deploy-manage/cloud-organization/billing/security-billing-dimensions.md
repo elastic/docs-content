@@ -37,7 +37,7 @@ Cloud Protection is an *optional* add-on to Security Analytics that provides val
 * **Cloud Protection Essentials** — Protects your cloud workloads, continuously tracks posture of your cloud assets, and helps you manage risks by detecting configuration issues per CIS benchmarks.
 * **Cloud Protection Complete** — Adds response capabilities.
 
-Your total cost depends on the number of protected cloud workloads and other billable cloud assets you configure for use with Elastic Cloud Security.
+Your total cost depends on the number of protected cloud workloads and other billable cloud assets you configure for use with {{ecloud}} Security.
 
 For [CSPM](../../../solutions/security/cloud/cloud-security-posture-management.md), billing is based on how many billable resources (`resource.id` s) you monitor. The following types of assets are considered billable:
 
@@ -66,4 +66,4 @@ For [CNVM](../../../solutions/security/cloud/cloud-native-vulnerability-manageme
 
 Logs, events, alerts, and configuration data ingested into your security project are billed using the **Ingest** and **Retention** pricing described above.
 
-For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [Elastic Cloud pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).
+For more details about {{elastic-sec}} serverless project rates and billable assets, refer to Cloud Protection in the [{{ecloud}} pricing table](https://cloud.elastic.co/cloud-pricing-table?productType=serverless&project=security).

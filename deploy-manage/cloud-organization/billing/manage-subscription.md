@@ -12,21 +12,21 @@ applies:
 
 When you decide to add your credit card and become a paying customer, you can choose a subscription level. 
 
-Depending on whether you're using Elastic Cloud Hosted deployment or Elastic Cloud Serverless projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
+Depending on whether you're using {{ecloud}} Hosted deployment or {{serverless-full}} projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
 
-* [Elastic Cloud Hosted](https://www.elastic.co/cloud/elasticsearch-service/pricing)
-* [Elastic Cloud Serverless](https://www.elastic.co/pricing/serverless-search)
+* [{{ecloud}} Hosted](https://www.elastic.co/cloud/elasticsearch-service/pricing)
+* [{{serverless-full}}](https://www.elastic.co/pricing/serverless-search)
 
 You can find more details about your subscription in the [Billing overview page](https://cloud.elastic.co/billing/overview), in the **Subscription level** section. 
 
 
 ## Change your subscription level [ec-select-subscription-level]
 
-If, at any time during your monthly subscription with Elastic Cloud, you decide you need to upgrade to a higher subscription level, you can easily make changes. You can both upgrade to a higher subscription level, or downgrade to a lower one.
+If, at any time during your monthly subscription with {{ecloud}}, you decide you need to upgrade to a higher subscription level, you can easily make changes. You can both upgrade to a higher subscription level, or downgrade to a lower one.
 
 To change your subscription level:
 
-1. Log in to the [Elastic Cloud Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Select the user icon on the header bar and select **Billing** from the menu.
 3. On the **Overview** page, select **Update subscription**.
 4. Choose a new subscription level.

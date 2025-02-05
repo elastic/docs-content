@@ -7,7 +7,7 @@ applies:
 
 # Serverless project billing dimensions [general-serverless-billing]
 
-Elastic Cloud Serverless billing is based on your usage across these dimensions:
+{{serverless-full}} billing is based on your usage across these dimensions:
 
 * [Offerings](#offerings)
 * [Add-ons](#add-ons)

@@ -9,19 +9,19 @@ applies:
 
 # Billing
 
-Elastic charges a recurring fee for using our offerings on Elastic Cloud. In this section, you'll learn how to about the dimensions used to calculate your bill, how to monitor account usage, how to manage billing, and more.
+Elastic charges a recurring fee for using our offerings on {{ecloud}}. In this section, you'll learn how to about the dimensions used to calculate your bill, how to monitor account usage, how to manage billing, and more.
 
 ## Pricing model
 
-Elastic Cloud pricing and billing is based on your usage across a number of dimensions. These dimensions are different for Elastic Cloud Hosted deployments and Elastic Cloud Serverless projects. Each Elastic Cloud Serverless project type also has its own billing dimensions.
+{{ecloud}} pricing and billing is based on your usage across a number of dimensions. These dimensions are different for {{ecloud}} Hosted deployments and {{serverless-full}} projects. Each {{serverless-full}} project type also has its own billing dimensions.
 
-* [Elastic Cloud Hosted deployments](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md)
-* [Elastic Cloud Serverless](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
+* [{{ecloud}} Hosted deployments](/deploy-manage/cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md)
+* [{{serverless-full}}](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md)
   * [Elasticsearch projects](/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions.md)
   * [Elastic Observability projects](/deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
   * [Elastic Security projects](/deploy-manage/cloud-organization/billing/security-billing-dimensions.md)
   
-For more information, you can also refer to our [Elastic Cloud Hosted](https://www.elastic.co/pricing) and [Elastic Cloud Serverless](https://www.elastic.co/pricing/serverless-search) pricing pages.
+For more information, you can also refer to our [{{ecloud}} Hosted](https://www.elastic.co/pricing) and [{{serverless-full}}](https://www.elastic.co/pricing/serverless-search) pricing pages.
 
 ## Billing models
 
@@ -29,9 +29,9 @@ Depending on your organization's needs, you can use one of several billing model
 
 [Learn more](/deploy-manage/cloud-organization/billing/billing-models.md).
 
-## Manage your subscription and billing in Elastic Cloud
+## Manage your subscription and billing in {{ecloud}}
 
-You can explore and manage billing, as well as your Elastic Cloud subscription, from the **Billing** section of the Elastic Cloud console.
+You can explore and manage billing, as well as your {{ecloud}} subscription, from the **Billing** section of the {{ecloud}} Console.
 
 * [Add your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md)
 * [View your billing history](/deploy-manage/cloud-organization/billing/view-billing-history.md)
@@ -44,6 +44,6 @@ For any other questions that you have about billing, refer to our [billing FAQ](
 
 ## Stop charges for a deployment or project
 
-To stop charges for an Elastic Cloud deployment or project, you need to [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md).
+To stop charges for an {{ecloud}} deployment or project, you need to [delete it](/deploy-manage/uninstall/delete-a-cloud-deployment.md).
 
 When a deployment or project is deleted, all data is lost. Billing for usage is by the hour and any outstanding charges for usage before you deleted the deployment or project will still appear on your next bill.

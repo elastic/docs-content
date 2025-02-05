@@ -11,9 +11,9 @@ applies:
 
 # Service status
 
-Elastic Cloud hosted deployments and Serverless projects run on different cloud platforms, such as Amazon Web Services (AWS),  Google Cloud Platform (GCP), and Microsoft Azure. Like any service, it might undergo availability changes from time to time. When availability changes, Elastic makes sure to provide you with a current service status.
+{{ecloud}} hosted deployments and Serverless projects run on different cloud platforms, such as Amazon Web Services (AWS),  Google Cloud Platform (GCP), and Microsoft Azure. Like any service, it might undergo availability changes from time to time. When availability changes, Elastic makes sure to provide you with a current service status.
 
-To check current and past service availability, go to to the [Cloud Status](https://cloud-status.elastic.co/) page. Services are separated into Elastic Cloud Hosted services and [Serverless services](https://status.elastic.co/?section=serverless).
+To check current and past service availability, go to to the [Cloud Status](https://cloud-status.elastic.co/) page. Services are separated into {{ecloud}} Hosted services and [Serverless services](https://status.elastic.co/?section=serverless).
 
 ## Subscribe to updates [ec_subscribe_to_updates] 
 
