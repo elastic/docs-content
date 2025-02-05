@@ -60,4 +60,26 @@ docker run -it --rm docker.elastic.co/eland/eland \
       --start
 ```
 
-Replace the `$ELASTICSEARCH_URL` with the URL for your {{es}} cluster. Refer to [Authentication methods](https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-authentication.html) to learn more.
+Replace the `$ELASTICSEARCH_URL` with the URL for your {{es}} cluster. Refer to [Authentication methods](#ml-nlp-authentication) to learn more.
+
+## Authentication methods [ml-nlp-authentication]
+
+The following authentication options are available when using the import script:
+
+* username/password authentication (specified with the `-u` and `-p` options):
+  
+```bash
+eland_import_hub_model --url https://<hostname>:<port> -u <username> -p <password> ...
+```
+
+* username/password authentication (embedded in the URL):
+
+```bash
+eland_import_hub_model --url https://<user>:<password>@<hostname>:<port> ...
+```
+
+* API key authentication:
+
+```bash
+eland_import_hub_model --url https://<hostname>:<port> --es-api-key <api-key> ...
+```
