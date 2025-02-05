@@ -3,11 +3,11 @@ navigation_title: "Users and roles"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-settings-access.html
 applies:
-  - hosted: all
-  - serverless: all
-  - eck: all
-  - ece: all
-  - stack: all
+  serverless: all
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
 # Manage users and roles
@@ -43,7 +43,7 @@ If you’re using {{ecloud}}, then you can perform the following tasks to contro
 * Configure [SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) for your organization
 
 ::::{tip}
-For {{ecloud}} Hosted deployments, you can configure SSO at the organization level, the deployment level, or both. Refer to [Cloud organization users](/deploy-manage/users-roles/cloud-organization.md) for more information.
+For {{ecloud}} Hosted deployments, you can configure SSO at the organization level, the deployment level, or both. Refer to [Cloud organization users](/deploy-manage/users-roles/cloud-organization.md#organization-deployment-sso) for more information.
 ::::
 
 {{ecloud}} Hosted deployments can also use [cluster-level authentication and authorization](/deploy-manage/users-roles/cluster-or-deployment-auth.md). Cluster-level auth features are not available for {{serverless-full}}.
@@ -65,9 +65,9 @@ Control access to your {{ece}} [orchestrator](/deploy-manage/deploy/cloud-enterp
     * [SAML](/deploy-manage/users-roles/cloud-enterprise-orchestrator/saml.html)
 * [Configure single sign-on to deployments](/deploy-manage/users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.html) for orchestrator users
 
-::::{tip}
-For {{ece}} deployments, you can configure SSO at the orchestrator level, the deployment level, or both.
-::::
+  ::::{tip}
+  For {{ece}} deployments, you can configure SSO at the orchestrator level, the deployment level, or both.
+  ::::
 
 {{ece}} deployments can also use [cluster-level authentication and authorization](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
 
