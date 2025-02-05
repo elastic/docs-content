@@ -1,4 +1,7 @@
 ---
+applies:
+  stack: ga 9.0
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-getting-started.html

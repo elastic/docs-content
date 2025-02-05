@@ -1,4 +1,7 @@
 ---
+applies:
+  stack: ga 9.0
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/tags.html
   - https://www.elastic.co/guide/en/kibana/current/managing-tags.html
