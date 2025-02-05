@@ -9,7 +9,7 @@ There are many advanced configuration options for {{anomaly-jobs}}, some of them
 
 In this guide, you’ll learn how to:
 
-* Understand the impact of configuration options on the performance of {anomaly-jobs}
+* Understand the impact of configuration options on the performance of {{anomaly-jobs}}
 
 Prerequisites:
 

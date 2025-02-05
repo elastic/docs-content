@@ -361,7 +361,7 @@ Allow anonymous access only for specified agents and/or services. This is primar
 :   The period after which to log the internal metrics. Defaults to *30s*.
 
 ::::{note}
-To change logging settings you must first [enable deployment logging](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md).
+To change logging settings you must first [enable deployment logging](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md).
 ::::
 
 

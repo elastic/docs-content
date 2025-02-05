@@ -1,7 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/logging-configuration.html
+applies:
+  stack: all
 ---
+
+% this might not be valid for all deployment types. needs review.
+% certain topics like LEVELS are valid for all deployment types, but not all
 
 # Kibana logging [logging-configuration]
 
@@ -32,7 +37,7 @@ A log record will be logged by the logger if its level is higher than or equal t
 
 Logging set at a plugin level is always respected, regardless of the `root` logger level. In other words, if root logger is set to fatal and pluginA logging is set to `debug`, debug logs are only shown for pluginA, with other logs only reporting on `fatal`.
 
-The *all* and *off* levels can only be used in configuration and are handy shortcuts that allow you to log every log record or disable logging entirely for a specific logger. These levels can also be specified using [cli arguments](_cli_configuration.md#logging-cli-migration).
+The *all* and *off* levels can only be used in configuration and are handy shortcuts that allow you to log every log record or disable logging entirely for a specific logger. These levels can also be specified using [cli arguments](kibana-logging-cli-configuration.md#logging-cli-migration).
 
 
 ## Layouts [logging-layouts]

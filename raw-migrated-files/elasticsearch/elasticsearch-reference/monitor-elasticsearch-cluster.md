@@ -10,6 +10,6 @@ The {{stack}} {monitor-features} provide a way to keep a pulse on the health and
 * [Collecting monitoring data with {{metricbeat}}](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
 * [Collecting log data with {{filebeat}}](../../../deploy-manage/monitor/stack-monitoring/collecting-log-data-with-filebeat.md)
 * [*Configuring data streams/indices for monitoring*](../../../deploy-manage/monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md)
-* [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/legacy-collection-methods.md)
+* [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
 * [*Troubleshooting monitoring*](../../../troubleshoot/elasticsearch/monitoring-troubleshooting.md)
 

@@ -13,7 +13,7 @@ mapped_pages:
     ::::
 
 3. Click the dashboard **Title** you want to open.
-4. Make sure that you are in **Edit*** mode to be able to make changes to the dashboard. You can switch between ***Edit*** and ***View** modes from the toolbar.
+4. Make sure that you are in **Edit** mode to be able to make changes to the dashboard. You can switch between **Edit** and **View** modes from the toolbar.
 
     :::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt619b284e92c2be27/6750f3a512a5eae780936fe3/switch-to-view-mode-8.17.0.gif
     :alt: Switch between Edit and View modes

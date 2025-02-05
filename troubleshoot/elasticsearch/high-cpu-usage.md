@@ -35,7 +35,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 :::::::{tab-set}
 
 ::::::{tab-item} Elasticsearch Service
-* (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
+* (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
     You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
 

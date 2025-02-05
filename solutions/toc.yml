@@ -619,6 +619,8 @@ toc:
       - file: search/building-search-in-your-app-or-site.md
       - file: search/search-templates.md
       - file: search/ingest-for-search.md
+        children:
+          - file: search/search-pipelines.md
       - file: search/full-text.md
         children:
           - file: search/full-text/search-with-synonyms.md

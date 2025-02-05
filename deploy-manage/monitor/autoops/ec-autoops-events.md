@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-events.html
+applies:
+  hosted: all
 ---
 
 # AutoOps events [ec-autoops-events]

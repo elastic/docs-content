@@ -52,9 +52,9 @@ Available icons
 
 Custom Icons
 
-You can also use your own SVG icon to style Point features in your map. In **Layer settings*** open the **icon** dropdown, and click the ***Add custom icon** button. For best results, your SVG icon should be monochrome and have limited details.
+You can also use your own SVG icon to style Point features in your map. In **Layer settings** open the **icon** dropdown, and click the **Add custom icon** button. For best results, your SVG icon should be monochrome and have limited details.
 
-Dynamic styling in **Elastic Maps*** requires rendering SVG icons as PNGs using a [signed distance function](https://en.wikipedia.org/wiki/Signed_distance_function). As a result, sharp corners and intricate details may not render correctly. Modifying the settings under ***Advanced Options*** in the ***Add custom icon** modal may improve rendering.
+Dynamic styling in **Elastic Maps** requires rendering SVG icons as PNGs using a [signed distance function](https://en.wikipedia.org/wiki/Signed_distance_function). As a result, sharp corners and intricate details may not render correctly. Modifying the settings under **Advanced Options** in the **Add custom icon** modal may improve rendering.
 
 Manage your custom icons in [settings](maps-settings.md).
 

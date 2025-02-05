@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/nlp-example.html
 ---
 
-
-
 # NLP example [nlp-example]
-
 
 This guide focuses on a concrete task: getting a machine learning trained model loaded into Elasticsearch and set up to enrich your documents.
 
@@ -32,8 +29,7 @@ Follow the instructions to load a text classification model and set it up to enr
 * [Summary](#nlp-example-summary)
 * [Learn more](#nlp-example-learn-more)
 
-
-## Create an {{ecloud}} deployment [nlp-example-cloud-deployment] 
+## Create an {{ecloud}} deployment [nlp-example-cloud-deployment]
 
 Your deployment will need a machine learning instance to upload and deploy trained models.
 
@@ -44,7 +40,6 @@ If your team does not have an Elastic Cloud deployment, start by signing up for 
 Follow the steps to **Create** a new deployment. Make sure to add capacity to the **Machine Learning instances** under the **Advanced settings** before creating the deployment. To simplify scaling, turn on the **Autoscale this deployment** feature. If you use autoscaling, you should increase the minimum RAM for the machine learning instance. For this tutorial, we’ll need at least 2GB of RAM. For more details, refer to [Create a deployment^](../../../deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) in the Elastic Cloud documentation.
 
 Enriching documents using machine learning was introduced in Enterprise Search **8.5.0**, so be sure to use version **8.5.0 or later**.
-
 
 ## Clone Eland [nlp-example-clone-eland] 
 
@@ -60,8 +55,7 @@ cd eland
 docker build -t elastic/eland .
 ```
 
-
-## Deploy the trained model [nlp-example-deploy-model] 
+## Deploy the trained model [nlp-example-deploy-model]
 
 Now that you have a deployment and a way to upload models, you will need to choose a trained model that fits your data. [Hugging Face](https://huggingface.co/) has a large repository of publicly available trained models. The model you choose will depend on your data and what you would like to do with it.
 
@@ -89,8 +83,7 @@ docker run -it --rm --network host \
 
 This script should take roughly 2-3 minutes to run. Once your model has been successfully deployed to your Elastic deployment, navigate to Kibana’s **Trained Models** page to verify it is ready. You can find this page under **Machine Learning > Analytics** menu and then **Trained Models > Model Management**. If you do not see your model in the list, you may need to click **Synchronize your jobs and trained models**. Your model is now ready to be used.
 
-
-## Create an index and define an ML inference pipeline [nlp-example-create-index-and-define-ml-inference-pipeline] 
+## Create an index and define an ML inference pipeline [nlp-example-create-index-and-define-ml-inference-pipeline]
 
 We are now ready to use Kibana’s **Content** UI to enrich our documents with inference data. Before we ingest photo comments into Elasticsearch, we will first create an ML inference pipeline. The pipeline will enrich the incoming photo comments with inference data indicating if the comments are positive.
 
@@ -136,8 +129,7 @@ Next, we’ll add an inference pipeline.
 
 You can also run example documents through a simulator and review the pipeline before creating it.
 
-
-## Index documents [nlp-example-index-documents] 
+## Index documents [nlp-example-index-documents]
 
 At this point, everything is ready to enrich documents at index time.
 
@@ -184,8 +176,7 @@ The document has new fields with the enriched data. The `ml.inference.positivity
 
 From here, we can write search queries to boost on `ml.inference.positivity_result.predicted_value`. This field will also be stored in a top-level `positivity_result` field if the model was confident enough.
 
-
-## Summary [nlp-example-summary] 
+## Summary [nlp-example-summary]
 
 In this guide, we covered how to:
 
@@ -195,8 +186,7 @@ In this guide, we covered how to:
 * Enrich documents with inference results from the trained model at ingest time.
 * Query your search engine and sort by `positivity_result`.
 
-
-## Learn more [nlp-example-learn-more] 
+## Learn more [nlp-example-learn-more]
 
 * [Compatible third party models^](ml-nlp-model-ref.md)
 * [NLP Overview^](ml-nlp-overview.md)
@@ -204,4 +194,3 @@ In this guide, we covered how to:
 * [Deploying a model ML guide^](ml-nlp-deploy-models.md)
 * [Eland Authentication methods^](ml-nlp-import-model.md#ml-nlp-authentication)
 * [Adding inference pipelines](inference-processing.md#ingest-pipeline-search-inference-add-inference-processors)
-

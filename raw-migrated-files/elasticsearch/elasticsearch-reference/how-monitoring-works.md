@@ -17,7 +17,7 @@ To learn how to collect monitoring data, refer to:
 
     * [Collecting monitoring data with {{agent}}](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md): Uses a single agent to gather logs and metrics. Can be managed from a central location in {{fleet}}.
     * [Collecting monitoring data with {{metricbeat}}](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md): Uses a lightweight {{beats}} shipper to gather metrics. May be preferred if you have an existing investment in {{beats}} or are not yet ready to use {{agent}}.
-    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/legacy-collection-methods.md): Uses internal exporters to gather metrics. Not recommended. If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}}.
+    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md): Uses internal exporters to gather metrics. Not recommended. If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}}.
 
 * [Monitoring {{kib}}](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md)
 * [Monitoring {{ls}}](https://www.elastic.co/guide/en/logstash/current/configuring-logstash.html)

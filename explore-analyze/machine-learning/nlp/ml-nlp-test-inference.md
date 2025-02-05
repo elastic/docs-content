@@ -52,4 +52,3 @@ In this example, the response contains the annotated text output and the recogni
 ```
 
 If you are satisfied with the results, you can add these NLP tasks in your [ingestion pipelines](ml-nlp-inference.md).
-

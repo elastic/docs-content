@@ -2,7 +2,7 @@
 
 Cluster performance metrics are available directly in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body). The graphs on this page include a subset of Elasticsearch Service-specific performance metrics.
 
-For advanced views or production monitoring, [enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md). The monitoring application provides more advanced views for Elasticsearch and JVM metrics, and includes a configurable retention period.
+For advanced views or production monitoring, [enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). The monitoring application provides more advanced views for Elasticsearch and JVM metrics, and includes a configurable retention period.
 
 To access cluster performance metrics:
 
@@ -25,7 +25,7 @@ The following metrics are available:
 Shows the maximum usage of the CPU resources assigned to your Elasticsearch cluster, as a percentage. CPU resources are relative to the size of your cluster, so that a cluster with 32GB of RAM gets assigned twice as many CPU resources as a cluster with 16GB of RAM. All clusters are guaranteed their share of CPU resources, as Elasticsearch Service infrastructure does not overcommit any resources. CPU credits permit boosting the performance of smaller clusters temporarily, so that CPU usage can exceed 100%.
 
 ::::{tip}
-This chart reports the maximum CPU values over the sampling period. [Logs and Metrics](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) ingested into [Stack Monitoring](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md)'s "CPU Usage" instead reflects the average CPU over the sampling period. Therefore, you should not expect the two graphs to look exactly the same. When investigating [CPU-related performance issues](../../../troubleshoot/monitoring/performance.md), you should default to [Stack Monitoring](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md).
+This chart reports the maximum CPU values over the sampling period. [Logs and Metrics](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) ingested into [Stack Monitoring](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md)'s "CPU Usage" instead reflects the average CPU over the sampling period. Therefore, you should not expect the two graphs to look exactly the same. When investigating [CPU-related performance issues](../../../troubleshoot/monitoring/performance.md), you should default to [Stack Monitoring](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md).
 ::::
 
 

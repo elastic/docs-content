@@ -18,5 +18,5 @@ Select your deployment method to get started:
 
 {{ecloud}} manages the installation and configuration of a monitoring agent for you — so all you have to do is flip a switch and watch the data pour in.
 
-* **{{ess}}** user? See [ESS: Enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md).
+* **{{ess}}** user? See [ESS: Enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md).
 * **{{ece}}** user? See [ECE: Enable logging and monitoring](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-enable-logging-and-monitoring.html).

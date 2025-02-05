@@ -1,7 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/audit-log-output.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
+
+% evaluate the applies section
 
 # Logfile audit output [audit-log-output]
 

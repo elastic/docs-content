@@ -127,7 +127,7 @@ I/O Timeouts can occur when your timeout settings across the stack are not confi
 
 You may see an error like the one below in the {{apm-agent}} logs, and/or a similar error on the APM Server side:
 
-```logs
+```txt
 [ElasticAPM] APM Server responded with an error:
 "read tcp 123.34.22.313:8200->123.34.22.40:41602: i/o timeout"
 ```
@@ -156,7 +156,7 @@ The symptom of a mapping explosion is that transactions and spans are not indexe
 
 In the agent logs, you won’t see a sign of failures as the APM server asynchronously sends the data it received from the agents to {{es}}. However, the APM server and {{es}} log a warning like this:
 
-```logs
+```txt
 {\"type\":\"illegal_argument_exception\",\"reason\":\"Limit of total fields [1000] in [INDEX_NAME] has been exceeded\"}
 ```
 

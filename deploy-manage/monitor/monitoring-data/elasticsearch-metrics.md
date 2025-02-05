@@ -2,6 +2,11 @@
 navigation_title: "{{es}} Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-metrics.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
 

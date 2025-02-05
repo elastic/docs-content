@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-vcpu-boost-instance.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-vcpu-boost-instance.html
+applies:
+  hosted: all
 ---
 
 # vCPU boosting and credits [ec-vcpu-boost-instance]

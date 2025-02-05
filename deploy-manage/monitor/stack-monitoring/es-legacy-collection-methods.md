@@ -2,6 +2,8 @@
 navigation_title: "Legacy collection methods"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/collecting-monitoring-data.html
+applies:
+  stack: deprecated 7.16.0
 ---
 
 
@@ -73,7 +75,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
 2. Identify where to store monitoring data.
 
-    By default, the data is stored on the same cluster by using a [`local` exporter](local-exporter.md). Alternatively, you can use an [`http` exporter](http-exporter.md) to send data to a separate *monitoring cluster*.
+    By default, the data is stored on the same cluster by using a [`local` exporter](es-local-exporter.md). Alternatively, you can use an [`http` exporter](es-http-exporter.md) to send data to a separate *monitoring cluster*.
 
     ::::{important} 
     The {{es}} {monitor-features} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one [ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).
@@ -148,7 +150,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     ::::
 
 6. Optional: [Configure the indices that store the monitoring data](../monitoring-data/configuring-data-streamsindices-for-monitoring.md).
-7. [View the monitoring data in {{kib}}](monitoring-data.md).
+7. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 
 
 

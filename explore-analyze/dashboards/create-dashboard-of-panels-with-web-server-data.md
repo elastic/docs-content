@@ -356,7 +356,7 @@ Now that you have a complete overview of your web server data, save the dashboar
 1. In the toolbar, click **Save**.
 2. On the **Save dashboard** window, enter `Logs dashboard` in the **Title** field.
 3. Select **Store time with dashboard**.
-4. Click **Save**. You will be identified as the **creator*** of the dashboard. If you or another user edit the dashboard, you can also view the ***last editor** when checking the dashboard information.
+4. Click **Save**. You will be identified as the **creator** of the dashboard. If you or another user edit the dashboard, you can also view the **last editor** when checking the dashboard information.
 
 :::{image} ../../images/kibana-dashboard-creator-editor.png
 :alt: Information panel of a dashboard showing its creator and last editor

@@ -3,6 +3,11 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/how-monitoring-works.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
 # Stack Monitoring
