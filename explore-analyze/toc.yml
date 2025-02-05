@@ -250,6 +250,7 @@ toc:
       - file: discover/show-field-statistics.md
       - file: discover/run-pattern-analysis-discover.md
       - file: discover/search-sessions.md
+      - file: discover/search-sessions2.md
       - file: discover/try-esql.md
   - file: dashboards.md
     children:
