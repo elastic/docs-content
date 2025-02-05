@@ -42,7 +42,7 @@ Index mapping
 
 :   You can use {{es}} [runtime fields](../data-store/mapping/runtime-fields.md) to define or alter the schema at query time. You can start working with your data without needing to understand how it is structured, add fields to existing documents without reindexing your data, override the value returned from an indexed field, and/or define fields for a specific use without modifying the underlying schema.
 
-:   Refer to the [Index mapping](../data-store/mapping.md) pages to learn about the dynamic mapping rules that {{es}} runs by default, and which you can customize, and also how to configure your own explicit data to field mappings.
+:   Refer to the [Index mapping](../data-store/mapping.md) pages to learn about the dynamic mapping rules that {{es}} runs by default, which ones you can customize, and how to configure your own explicit data to field mappings.
 
 Text analysis
 :   Like index mapping, text analysis is another form of data transformation that runs on data as it's being ingested. This process analyzes incoming, unstructured text and organizes it in a way to ensure that all relevant documents are matched for a given text query, and not just exact string matches.
