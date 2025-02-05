@@ -48,5 +48,5 @@ You can perform the following tasks to manage cross-cluster replication:
 - **[Set up CCR](tools/cross-cluster-replication/set-up-cross-cluster-replication.md):** Configure leader and follower clusters for data replication.
 - **[Manage CCR](tools/cross-cluster-replication/manage-cross-cluster-replication.md):** Monitor and manage replicated indices.
 - **[Automate replication](tools/cross-cluster-replication/manage-auto-follow-patterns.md):** Use auto-follow patterns to automatically replicate newly created indices.
-- **Failover clusters:** Configure **[uni-directional](tools/cross-cluster-replication/uni-directional-disaster-recovery.md)** or **[bi-directional](tools/cross-cluster-replication/bi-directional-disaster-recovery.md)** CCR for redundancy and disaster recovery.
+- **Set up failover clusters:** Configure **[uni-directional](tools/cross-cluster-replication/uni-directional-disaster-recovery.md)** or **[bi-directional](tools/cross-cluster-replication/bi-directional-disaster-recovery.md)** CCR for redundancy and disaster recovery.
 - **[Cluster upgrade considerations when using CCR](upgrade.md):** Maintain cluster performance and security by upgrading your Elasticsearch clusters. Use the tools and procedures suited to your deployment type: Elastic Cloud Hosted, ECE, ECK, or self-managed.
