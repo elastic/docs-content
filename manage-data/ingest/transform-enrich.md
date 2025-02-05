@@ -36,7 +36,7 @@ Finally, to help ensure optimal query results, you may want to customize how tex
 :   If you're ingesting using {{agent}} with Elastic {{integrations}}, you can use the {{ls}} [`elastic_integration filter`](https://www.elastic.co/guide/en/logstash/current/) and other [{{ls}} filters](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html) to [extend Elastic integrations](https://www.elastic.co/guide/en/logstash/current/ea-integrations.html) by transforming data before it goes to {{es}}.
 
 Index mapping
-:   Index mapping lets you control the structure that incoming data has within an Elasticsearch index. You can define all of the fields that are included in the index and their respective data types. For example, you can set fields for dates, numbers, or geolocations, and define the fields to have specific formats. 
+:   Index mapping lets you control the structure that incoming data has within an {{es}} index. You can define all of the fields that are included in the index and their respective data types. For example, you can set fields for dates, numbers, or geolocations, and define the fields to have specific formats. 
 
 :   Ingested data can be mapped dynamically, where {{es}} adds all fields automatically based on the detected data types, or explicitly, where {{es}} maps the incoming data to fields based on your custom rules.
 
