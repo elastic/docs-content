@@ -2,7 +2,7 @@
 = Serverless regions
 
 // :description: Index, search, and manage {es} data in your preferred language.
-// :keywords: serverless, regions, aws, cloud
+// :keywords: serverless, regions, aws, azure, cloud
 
 A region is the geographic area where the data center of the cloud provider that hosts your project is located. Review the available Elastic Cloud Serverless regions to decide which region to use. If you aren't sure which region to pick, choose one that is geographically close to you to reduce latency.
 
@@ -10,7 +10,7 @@ Elastic Cloud Serverless handles all hosting details for you. You are unable to 
 
 [NOTE]
 ====
-Currently, a limited number of Amazon Web Services (AWS) regions are available. More regions for AWS, as well as Microsoft Azure and Google Cloud Platform (GCP), will be added in the future.
+Currently, a limited number of Amazon Web Services (AWS) and Microsoft Azure regions are available. More regions for AWS and Azure, as well Google Cloud Platform (GCP), will be added in the future.
 ====
 
 [discrete]
@@ -33,4 +33,17 @@ The following AWS regions are currently available:
 
 | us-west-2
 | US West (Oregon)
+|===
+
+[discrete]
+[[regions-azure-regions]]
+== Microsoft Azure regions
+
+The following Azure regions are currently available:
+
+|===
+| Region| Name
+
+| eastus
+| East US preview:[]
 |===
