@@ -33,7 +33,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
     ::::
 
 3. Select an {{agent}} integration, then complete the installation steps.
-4. Return to the Threat Intelligence view on the Overview dashboard. If indicator data isn’t displaying, refresh the page or refer to these [troubleshooting steps](../../../troubleshoot/security/indicators-of-compromise.md#troubleshoot-indicators-page).
+4. Return to the Threat Intelligence view on the Overview dashboard. If indicator data isn’t displaying, refresh the page or refer to these [troubleshooting steps](../../../troubleshoot/security/indicators-of-compromise.md).
 
 
 ## Add a {{filebeat}} Threat Intel module integration [ti-mod-integration]
