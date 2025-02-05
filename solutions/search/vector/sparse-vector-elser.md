@@ -164,7 +164,7 @@ GET my-index/_search
 
 The result is the top 10 documents that are closest in meaning to your query text from the `my-index` index sorted by their relevancy. The result also contains the extracted tokens for each of the relevant search results with their weights. Tokens are learned associations capturing relevance, they are not synonyms. To learn more about what tokens are, refer to [this page](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-tokens). It is possible to exclude tokens from source, refer to [this section](#save-space) to learn more.
 
-```consol-result
+```console-result
 "hits": {
   "total": {
     "value": 10000,

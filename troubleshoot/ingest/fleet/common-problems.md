@@ -248,7 +248,7 @@ You will also need to set `ssl.verification_mode: none` in the Output settings i
 
 To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance. If the agent is unable to connect, you see the following failure:
 
-```output
+```txt
 fail to enroll: fail to execute request to {fleet-server}:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
 
