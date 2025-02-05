@@ -21,8 +21,10 @@ If you use password-based login, then you can perform the following additional t
 
 Additionally, you can manage your organization membership, including joining or leaving an organization. Refer to [Join or leave an organization](/cloud-account/join-or-leave-an-organization.md) for more information.
 
+::::{tip} 
 This section focuses on the actions you can take as an individual user to manage your own account. It does not cover organization-wide settings, such as managing user permissions or configuring organization-level access controls, which are handled by the organization administrators.
 
 For information on organization and access management, refer to:
 - [Manage your Cloud organization](/deploy-manage/cloud-organization.md)
 - [Manage user roles and permissions](/deploy-manage/users-roles/cloud-organization/user-roles.md)
+::::
