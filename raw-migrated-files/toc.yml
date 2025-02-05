@@ -261,7 +261,6 @@ toc:
     children:
       - file: docs-content/serverless/_cloud_native_vulnerability_management_dashboard.md
       - file: docs-content/serverless/action-connectors.md
-      - file: docs-content/serverless/agentless-integration-troubleshooting.md
       - file: docs-content/serverless/ai-assistant-knowledge-base.md
       - file: docs-content/serverless/application-and-service-monitoring.md
       - file: docs-content/serverless/attack-discovery.md
@@ -433,7 +432,6 @@ toc:
       - file: docs-content/serverless/security-advanced-entity-analytics.md
       - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-agent-tamper-protection.md
-      - file: docs-content/serverless/security-agentless-integrations.md
       - file: docs-content/serverless/security-ai-assistant-esql-queries.md
       - file: docs-content/serverless/security-ai-assistant.md
       - file: docs-content/serverless/security-ai-for-security.md
@@ -859,7 +857,6 @@ toc:
       - file: security-docs/security/advanced-entity-analytics-overview.md
       - file: security-docs/security/advanced-settings.md
       - file: security-docs/security/agent-tamper-protection.md
-      - file: security-docs/security/agentless-integrations.md
       - file: security-docs/security/ai-assistant-knowledge-base.md
       - file: security-docs/security/ai-for-security.md
       - file: security-docs/security/alert-suppression.md
