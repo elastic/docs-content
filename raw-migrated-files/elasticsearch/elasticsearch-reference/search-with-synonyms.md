@@ -16,19 +16,19 @@ In order to use synonyms sets in {{es}}, you need to:
 * [Configure synonyms token filters and analyzers](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-synonym-token-filters)
 
 
-## Store your synonyms set [synonyms-store-synonyms] 
+## Store your synonyms set [synonyms-store-synonyms]
 
 Your synonyms sets need to be stored in {{es}} so your analyzers can refer to them. There are three ways to store your synonyms sets:
 
 
-### Synonyms API [synonyms-store-synonyms-api] 
+### Synonyms API [synonyms-store-synonyms-api]
 
 You can use the [synonyms APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/synonyms-apis.html) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
 
 
-### Synonyms File [synonyms-store-synonyms-file] 
+### Synonyms File [synonyms-store-synonyms-file]
 
 You can store your synonyms set in a file.
 
@@ -36,7 +36,7 @@ A synonyms set file needs to be uploaded to all your cluster nodes, and be locat
 
 An example synonyms file:
 
-```synonyms
+```markdown
 # Blank lines and lines starting with pound are comments.
 
 # Explicit mappings match any token sequence on the left hand side of "=>"
@@ -77,28 +77,28 @@ When a synonyms set is updated, search analyzers that use it need to be refreshe
 This manual syncing and reloading makes this approach less flexible than using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api).
 
 
-### Inline [synonyms-store-synonyms-inline] 
+### Inline [synonyms-store-synonyms-inline]
 
 You can test your synonyms by adding them directly inline in your token filter definition.
 
-::::{warning} 
+::::{warning}
 Inline synonyms are not recommended for production usage. A large number of inline synonyms increases cluster size unnecessarily and can lead to performance issues.
 
 ::::
 
 
 
-### Configure synonyms token filters and analyzers [synonyms-synonym-token-filters] 
+### Configure synonyms token filters and analyzers [synonyms-synonym-token-filters]
 
 Once your synonyms sets are created, you can start configuring your token filters and analyzers to use them.
 
-::::{warning} 
+::::{warning}
 Synonyms sets must exist before they can be added to indices. If an index is created referencing a nonexistent synonyms set, the index will remain in a partially created and inoperable state. The only way to recover from this scenario is to ensure the synonyms set exists then either delete and re-create the index, or close and re-open the index.
 
 ::::
 
 
-::::{warning} 
+::::{warning}
 Invalid synonym rules can cause errors when applying analyzer changes. For reloadable analyzers, this prevents reloading and applying changes. You must correct errors in the synonym rules and reload the analyzer.
 
 An index with invalid synonym rules cannot be reopened, making it inoperable when:
@@ -118,7 +118,7 @@ An index with invalid synonym rules cannot be reopened, making it inoperable whe
 Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
 
 
-### Test your analyzer [synonyms-test-analyzer] 
+### Test your analyzer [synonyms-test-analyzer]
 
 You can test an analyzer configuration without modifying your index settings. Use the [analyze API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html) to test your analyzer chain:
 
@@ -138,7 +138,7 @@ GET /_analyze
 ```
 
 
-### Apply synonyms at index or search time [synonyms-apply-synonyms] 
+### Apply synonyms at index or search time [synonyms-apply-synonyms]
 
 Analyzers can be applied at [index time or search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md).
 
@@ -184,4 +184,3 @@ The following example adds `my_analyzer` as a search analyzer to the `title` fie
   }
 }
 ```
-

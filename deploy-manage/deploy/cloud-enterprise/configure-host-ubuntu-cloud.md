@@ -13,16 +13,16 @@ The following instructions show you how to prepare your hosts on 20.04 LTS (Foca
 * [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu-cloud)
 
 
-## Install Docker [ece-install-docker-ubuntu-cloud] 
+## Install Docker [ece-install-docker-ubuntu-cloud]
 
 Install Docker LTS version 24.0 for Ubuntu 20.04 or 22.04.
 
-::::{important} 
+::::{important}
 Make sure to use a combination of Linux distribution and Docker version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
 ::::
 
 
-::::{note} 
+::::{note}
 Docker 25 and higher are not compatible with ECE 3.7.
 ::::
 
@@ -56,18 +56,18 @@ Docker 25 and higher are not compatible with ECE 3.7.
 
 
 
-## Set up XFS quotas [ece-xfs-setup-ubuntu-cloud] 
+## Set up XFS quotas [ece-xfs-setup-ubuntu-cloud]
 
 XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On Ubuntu, you need to set up an XFS file system and have quotas enabled.
 
 Disk space quotas set a limit on the amount of disk space an Elasticsearch cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
-::::{note} 
+::::{note}
 Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, and it is not supported by Elastic Cloud Enterprise.
 ::::
 
 
-::::{important} 
+::::{important}
 You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
 ::::
 
@@ -101,7 +101,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 
 
-## Update the configurations settings [ece-update-config-ubuntu-cloud] 
+## Update the configurations settings [ece-update-config-ubuntu-cloud]
 
 1. Stop the Docker service:
 
@@ -139,7 +139,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     EOF
     ```
 
-    ::::{important} 
+    ::::{important}
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than Elasticsearch clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
 
@@ -154,7 +154,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
     Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the Elastic Cloud hosted offering and should be used for Elastic Cloud Enterprise as well.
 
-    ::::{tip} 
+    ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
     ::::
 
@@ -219,14 +219,14 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 
 
-## Configure the Docker daemon options [ece-configure-docker-daemon-ubuntu-cloud] 
+## Configure the Docker daemon options [ece-configure-docker-daemon-ubuntu-cloud]
 
-::::{tip} 
+::::{tip}
 Docker creates a bridge IP address that can conflict with IP addresses on your internal network. To avoid an IP address conflict, change the `--bip=172.17.42.1/16` parameter in our examples to something that you know will work. If there is no conflict, you can omit the `--bip` parameter. The `--bip` parameter is internal to the host and can be set to the same IP for each host in the cluster. More information on Docker daemon options can be found in the  [dockerd command line reference](https://docs.docker.com/engine/reference/commandline/dockerd/).
 ::::
 
 
-::::{tip} 
+::::{tip}
 You can specify `--log-opt max-size` and `--log-opt max-file` to define the Docker daemon containers log rotation.
 ::::
 
@@ -292,13 +292,13 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
 
 6. Reboot your system to ensure that all configuration changes take effect:
 
-    ```literal
+    ```sh
     sudo reboot
     ```
 
 7. After rebooting, verify that your Docker settings persist as expected:
 
-    ```literal
+    ```sh
     sudo docker info | grep Root
     ```
 
@@ -307,4 +307,3 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
 
 8. Repeat these steps on other hosts that you want to use with Elastic Cloud Enterprise or follow the steps in the next section to start installing Elastic Cloud Enterprise.
-

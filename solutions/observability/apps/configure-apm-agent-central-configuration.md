@@ -58,13 +58,13 @@ You may see either of the following HTTP 403 errors from APM Server when it atte
 
 APM agent log:
 
-```log
+```txt
 "Your Elasticsearch configuration does not support agent config queries. Check your configurations at `output.elasticsearch` or `apm-server.agent.config.elasticsearch`."
 ```
 
 APM Server log:
 
-```log
+```txt
 rejecting fetch request: no valid elasticsearch config
 ```
 
@@ -76,4 +76,3 @@ To fix this error, ensure that APM Server has all the required privileges. For m
 #### HTTP 401 errors [_http_401_errors]
 
 If you get an HTTP 401 error from APM Server, make sure that you’re using an API key that is configured to **Beats**. For details on how to create and configure a compatible API key, refer to [Create an API key for writing events](grant-access-using-api-keys.md#apm-beats-api-key-publish).
-
