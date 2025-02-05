@@ -21,7 +21,7 @@ Finally, to help ensure optimal query results, you may want to customize how tex
 {{es}} ingest pipelines
 :   You can use [{{es}} ingest pipelines](transform-enrich/ingest-pipelines.md) to enrich incoming data or normalize field data before the data is indexed. {{es}} ingest pipelines enable you to manipulate the data as it comes in. This approach helps you avoid adding processing overhead to the hosts from which you’re collecting data.
 
-:   When you define a pipeline you can configure one or more processors to operate on the incoming data. A typical use case is to transform specific strings to lowercase, or to sort the elements of incoming arrays into a given order. This section describes:
+:   When you define a pipeline, you can configure one or more processors to operate on the incoming data. A typical use case is to transform specific strings to lowercase, or to sort the elements of incoming arrays into a given order. This section describes:
 * How to create, view, edit, and delete an ingest pipeline
 * How to set up processors to transform the data
 * How to test a pipeline before putting it into production. 
