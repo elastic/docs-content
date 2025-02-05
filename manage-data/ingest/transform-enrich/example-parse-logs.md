@@ -13,7 +13,7 @@ In this example tutorial, you’ll use an [ingest pipeline](ingest-pipelines.md)
 
 The logs you want to parse look similar to this:
 
-```log
+```txt
 212.87.37.154 - - [05/May/2099:16:21:15 +0000] "GET /favicon.ico HTTP/1.1" 200 3638 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
 ```
 

@@ -70,7 +70,7 @@ In the case of the `admin-console-elasticsearch` and `security` system deploymen
 The `logging-and-metrics` cluster is different since, as an ECE admin, you likely want to provide users with access to the cluster in order to troubleshoot issues without your assistance, for example. In order to manage access to that cluster, you can configure roles that will provide access to the relevant indices, map those to users, and manage access to Kibana by leveraging the Elastic security integration with your authentication provider, such as LDAP, SAML, or AD. To configure one of those security realms, check [LDAP](../../users-roles/cluster-or-deployment-auth/ldap.md), [Active Directory](../../users-roles/cluster-or-deployment-auth/active-directory.md) or [SAML](../../users-roles/cluster-or-deployment-auth/saml.md).
 
 ::::{note} 
-The `logging-and-metrics` cluster is only intended for troubleshooting ECE deployment issues. If your use case involves modifying or normalizing logs from {{es}} or {{kib}}, use a separate [dedicated monitoring deployment](../../monitor/stack-monitoring/enable-stack-monitoring-on-ece-deployments.md) instead.
+The `logging-and-metrics` cluster is only intended for troubleshooting ECE deployment issues. If your use case involves modifying or normalizing logs from {{es}} or {{kib}}, use a separate [dedicated monitoring deployment](../../monitor/stack-monitoring/ece-stack-monitoring.md) instead.
 ::::
 
 

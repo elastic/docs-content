@@ -2,6 +2,8 @@
 navigation_title: "Legacy collection methods"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitoring-kibana.html
+applies:
+  stack: deprecated 7.16.0
 ---
 
 
@@ -16,7 +18,7 @@ If you enable the Elastic {{monitor-features}} in your cluster, you can optional
 
 If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}} collection. Do not use legacy collection alongside other collection methods.
 
-For more information, refer to [Collect monitoring data with {{agent}}](monitoring-elastic-agent.md) and [Collect monitoring data with {{metricbeat}}](monitoring-metricbeat.md).
+For more information, refer to [Collect monitoring data with {{agent}}](kibana-monitoring-elastic-agent.md) and [Collect monitoring data with {{metricbeat}}](kibana-monitoring-metricbeat.md).
 
 ::::
 
@@ -75,5 +77,5 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     2. [Configure encryption for traffic between {{kib}} and {{es}}](https://www.elastic.co/guide/en/kibana/current/configuring-tls.html#configuring-tls-kib-es).
 
 5. [Start {{kib}}](../../maintenance/start-stop-services/start-stop-kibana.md).
-6. [View the monitoring data in {{kib}}](monitoring-data.md).
+6. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 

@@ -30,7 +30,7 @@ Move the {{es}} Connector for Tableau to the Tableau Server connectors directory
 
 Restart Tableau Server.
 
-To load data into a workbook, add a **New Data Source** from the **Data*** menu or using the icon. In the ***Connectors*** tab of the ***Connect to Data** modal, select **Elasticsearch by Elastic**.
+To load data into a workbook, add a **New Data Source** from the **Data** menu or using the icon. In the **Connectors** tab of the **Connect to Data** modal, select **Elasticsearch by Elastic**.
 
 $$$apps_tableau_server_from_connector$$$
 ![Select Elasticsearch as the data source](../../../images/elasticsearch-reference-apps_tableau_server_from_connector.png "")

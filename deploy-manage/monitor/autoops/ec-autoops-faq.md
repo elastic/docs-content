@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-faq.html
+applies:
+  hosted: all
 ---
 
 # AutoOps FAQ [ec-autoops-faq]

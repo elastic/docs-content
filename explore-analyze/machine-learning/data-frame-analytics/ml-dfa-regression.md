@@ -9,23 +9,19 @@ mapped_pages:
 
 When you perform {{reganalysis}}, you must identify a subset of fields that you want to use to create a model for predicting other fields. *Feature variables* are the fields that are used to create the model. The *dependent variable* is the field you want to predict.
 
-
 ## {{regression-cap}} algorithms [dfa-regression-algorithm]
 
 {{regression-cap}} uses an ensemble learning technique that is similar to extreme gradient boosting (XGBoost) which combines decision trees with gradient boosting methodologies. XGBoost trains a sequence of decision trees and every decision tree learns from the mistakes of the forest so far. In each iteration, the trees added to the forest improve the decision quality of the combined decision forest. By default, the regression algorithm optimizes for a [loss function](dfa-regression-lossfunction.md) called mean-squared error loss.
 
 There are three types of {{feature-vars}} that you can use with these algorithms: numerical, categorical, or Boolean. Arrays are not supported.
 
-
 ## 1. Define the problem [dfa-regression-problem]
 
 {{regression-cap}} can be useful in cases where a continuous quantity needs to be predicted. The values that {{reganalysis}} can predict are numerical values. If your use case requires predicting continuous, numerical values, then {{regression}} might be the suitable choice for you.
 
-
 ## 2. Set up the environment [dfa-regression-environment]
 
 Before you can use the {{stack-ml-features}}, there are some configuration requirements (such as security privileges) that must be addressed. Refer to [Setup and security](../setting-up-machine-learning.md).
-
 
 ## 3. Prepare and transform data [dfa-regression-prepare-data]
 
@@ -35,10 +31,9 @@ You might also need to [{{transform}}](../../transforms.md) your data to create 
 
 To learn more about how to prepare your data, refer to [the relevant section](ml-dfa-overview.md#prepare-transform-data) of the supervised learning overview.
 
-
 ## 4. Create a job [dfa-regression-create-job]
 
-{{dfanalytics-jobs-cap}} contain the configuration information and metadata necessary to perform an analytics task. You can create {{dfanalytics-jobs}} via {{kib}} or using the [create {{dfanalytics-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html).
+{{dfanalytics-cap}} jobs contain the configuration information and metadata necessary to perform an analytics task. You can create {{dfanalytics}} jobs via {{kib}} or using the [create {{dfanalytics}} jobs API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html).
 
 Select {{regression}} as the analytics type for the job, then select the field that you want to predict (the {{depvar}}). You can also include and exclude fields to/from the analysis.
 
@@ -46,11 +41,9 @@ Select {{regression}} as the analytics type for the job, then select the field t
 You can view the statistics of the selectable fields in the {{dfanalytics}} wizard. The field statistics displayed in a flyout provide more meaningful context to help you select relevant fields.
 ::::
 
-
-
 ## 5. Start the job [dfa-regression-start]
 
-You can start the job via {{kib}} or using the [start {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) API. A {{regression}} job has the following phases:
+You can start the job via {{kib}} or using the [start {{dfanalytics}} jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) API. A {{regression}} job has the following phases:
 
 * `reindexing`: Documents are copied from the source index to the destination index.
 * `loading_data`: The job fetches the necessary data from the destination index.
@@ -67,11 +60,9 @@ After the last phase is finished, the job stops and the results are ready for ev
 When you create a {{dfanalytics-job}}, the inference step of the process might fail if the model is too large to fit into JVM. For a workaround, refer to [this GitHub issue](https://github.com/elastic/elasticsearch/issues/76093).
 ::::
 
-
-
 ## 6. Evaluate the result [ml-dfanalytics-regression-evaluation]
 
-Using the {{dfanalytics}} features to gain insights from a data set is an iterative process. After you defined the problem you want to solve, and chose the analytics type that can help you to do so, you need to produce a high-quality data set and create the appropriate {{dfanalytics-job}}. You might need to experiment with different configurations, parameters, and ways to transform data before you arrive at a result that satisfies your use case. A valuable companion to this process is the [{{evaluatedf-api}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html), which enables you to evaluate the {{dfanalytics}} performance. It helps you understand error distributions and identifies the points where the {{dfanalytics}} model performs well or less trustworthily.
+Using the {{dfanalytics}} features to gain insights from a data set is an iterative process. After you defined the problem you want to solve, and chose the analytics type that can help you to do so, you need to produce a high-quality data set and create the appropriate {{dfanalytics}} job. You might need to experiment with different configurations, parameters, and ways to transform data before you arrive at a result that satisfies your use case. A valuable companion to this process is the [evaluate {{dfanalytics}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html), which enables you to evaluate the {{dfanalytics}} performance. It helps you understand error distributions and identifies the points where the {{dfanalytics}} model performs well or less trustworthily.
 
 To evaluate the analysis with this API, you need to annotate your index that contains the results of the analysis with a field that marks each document with the ground truth. The {{evaluatedf-api}} evaluates the performance of the {{dfanalytics}} against this manually provided ground truth.
 
@@ -84,33 +75,27 @@ The {{regression}} evaluation type offers the following metrics to evaluate the 
 * Mean squared error (MSE)
 * Mean squared logarithmic error (MSLE)
 * Pseudo-Huber loss
-* R-squared (R2)
-
+* R-squared (R^2^)
 
 ### Mean squared error [ml-dfanalytics-mse]
 
 MSE is the average squared sum of the difference between the true value and the predicted value. (Avg (predicted value-actual value)2).
 
-
 ### Mean squared logarithmic error [ml-dfanalytics-msle]
 
 MSLE is a variation of mean squared error. It can be used for cases when the target values are positive and distributed with a long tail such as data on prices or population. Consult the [Loss functions for {{regression}} analyses](dfa-regression-lossfunction.md) page to learn more about loss functions.
-
 
 ### Pseudo-Huber loss [ml-dfanalytics-huber]
 
 [Pseudo-Huber loss metric](https://en.wikipedia.org/wiki/Huber_loss#Pseudo-Huber_loss_function) behaves as mean absolute error (MAE) for errors larger than a predefined value (defaults to `1`) and as mean squared error (MSE) for errors smaller than the predefined value. This loss function uses the `delta` parameter to define the transition point between MAE and MSE. Consult the [Loss functions for {{regression}} analyses](dfa-regression-lossfunction.md) page to learn more about loss functions.
 
-
 ### R-squared [ml-dfanalytics-r-squared]
 
-R-squared (R2) represents the goodness of fit and measures how much of the variation in the data the predictions are able to explain. The value of R2 are less than or equal to 1, where 1 indicates that the predictions and true values are equal. A value of 0 is obtained when all the predictions are set to the mean of the true values. A value of 0.5 for R2 would indicate that the predictions are 1 - 0.5(1/2) (about 30%) closer to true values than their mean.
-
+R-squared (R^2^) represents the goodness of fit and measures how much of the variation in the data the predictions are able to explain. The value of R^2^ are less than or equal to 1, where 1 indicates that the predictions and true values are equal. A value of 0 is obtained when all the predictions are set to the mean of the true values. A value of 0.5 for R^2^ would indicate that the predictions are 1 - 0.5 ^(1/2)^ (about 30%) closer to true values than their mean.
 
 ### {{feat-imp-cap}} [dfa-regression-feature-importance]
 
 {{feat-imp-cap}} provides further information about the results of an analysis and helps to interpret the results in a more subtle way. If you want to learn more about {{feat-imp}}, [click here](ml-feature-importance.md).
-
 
 ## 7. Deploy the model [dfa-regression-deploy]
 
@@ -119,24 +104,24 @@ The model that you created is stored as {{es}} documents in internal indices. In
 1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
 
-    :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
-    :alt: The trained models UI in {kib}
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
+:alt: The trained models UI in {kib}
+:class: screenshot
+:::
 
 3. Create an {{infer}} pipeline to be able to use the model against new data through the pipeline. Add a name and a description or use the default values.
 
-    :::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
-    :alt: Creating an inference pipeline
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
+:alt: Creating an inference pipeline
+:class: screenshot
+:::
 
 4. Configure the pipeline processors or use the default settings.
 
-    :::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
-    :alt: Configuring an inference processor
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
+:alt: Configuring an inference processor
+:class: screenshot
+:::
 
 5. Configure to handle ingest failures or use the default settings.
 6. (Optional) Test your pipeline by running a simulation of the pipeline to confirm it produces the anticipated results.
@@ -144,20 +129,17 @@ The model that you created is stored as {{es}} documents in internal indices. In
 
 The model is deployed and ready to use through the {{infer}} pipeline.
 
-
 ### {{infer-cap}} [ml-inference-reg]
 
 {{infer-cap}} enables you to use [trained {{ml}} models](ml-trained-models.md) against incoming data in a continuous fashion.
 
 For instance, suppose you have an online service and you would like to predict whether a customer is likely to churn. You have an index with historical data – information on the customer behavior throughout the years in your business – and a {{classification}} model that is trained on this data. The new information comes into a destination index of a {{ctransform}}. With {{infer}}, you can perform the {{classanalysis}} against the new data with the same input fields that you’ve trained the model on, and get a prediction.
 
-
 #### {{infer-cap}} processor [ml-inference-processor-reg]
 
 {{infer-cap}} can be used as a processor specified in an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md). It uses a trained model to infer against the data that is being ingested in the pipeline. The model is used on the ingest node. {{infer-cap}} pre-processes the data by using the model and provides a prediction. After the process, the pipeline continues executing (if there is any other processor in the pipeline), finally the new data together with the results are indexed into the destination index.
 
-Check the [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) and [the {{ml}} {dfanalytics} API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-df-analytics-apis.html) to learn more.
-
+Check the [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-df-analytics-apis.html) to learn more.
 
 #### {{infer-cap}} aggregation [ml-inference-aggregation-reg]
 
@@ -169,12 +151,9 @@ Check the [{{infer}} bucket aggregation](https://www.elastic.co/guide/en/elastic
 If you use trained model aliases to reference your trained model in an {{infer}} processor or {{infer}} aggregation, you can replace your trained model with a new one without the need of updating the processor or the aggregation. Reassign the alias you used to a new trained model ID by using the [Create or update trained model aliases API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html). The new trained model needs to use the same type of {{dfanalytics}} as the old one.
 ::::
 
-
-
 ## Performing {{reganalysis}} in the sample flight data set [performing-regression]
 
 Let’s try to predict flight delays by using the [sample flight data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana). The data set contains information such as weather conditions, flight destinations and origins, flight distances, carriers, and the number of minutes each flight was delayed. When you create a {{regression}} job, it learns the relationships between the fields in your data to predict the value of a *{{depvar}}*, which - in this case - is the numeric `FlightDelayMins` field. For an overview of these concepts, see [*Predicting numerical values with {{regression}}*]() and [Introduction to supervised learning](ml-dfa-overview.md#ml-supervised-workflow).
-
 
 ### Preparing your data [flightdata-regression-data]
 
@@ -232,12 +211,9 @@ To be analyzed, a document must contain at least one field with a supported data
 
 ::::
 
-
 ::::{note}
 The sample flight data is used in this example because it is easily accessible. However, the data contains some inconsistencies. For example, a flight can be both delayed and canceled. This is a good reminder that the quality of your input data affects the quality of your results.
 ::::
-
-
 
 ### Creating a {{regression}} model [flightdata-regression-model]
 
@@ -248,10 +224,10 @@ To predict the number of minutes delayed for each flight:
 
     You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html) API.
 
-    :::{image} ../../../images/machine-learning-flights-regression-job-1.jpg
-    :alt: Creating a {{dfanalytics-job}} in {kib}
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-flights-regression-job-1.jpg
+:alt: Creating a {{dfanalytics-job}} in {kib}
+:class: screenshot
+:::
 
     1. Choose `kibana_sample_data_flights` as the source index.
     2. Choose `regression` as the job type.
@@ -261,10 +237,10 @@ To predict the number of minutes delayed for each flight:
 
         The wizard includes a scatterplot matrix, which enables you to explore the relationships between the numeric fields. The color of each point is affected by the value of the {{depvar}} for that document, as shown in the legend. You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the chart. You can use this matrix to help you decide which fields to include or exclude from the analysis.
 
-        :::{image} ../../../images/machine-learning-flightdata-regression-scatterplot.png
-        :alt: A scatterplot matrix for three fields in {kib}
-        :class: screenshot
-        :::
+:::{image} ../../../images/machine-learning-flightdata-regression-scatterplot.png
+:alt: A scatterplot matrix for three fields in {kib}
+:class: screenshot
+:::
 
         If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
 
@@ -274,9 +250,9 @@ To predict the number of minutes delayed for each flight:
     9. Add a job ID (such as `model-flight-delay-regression`) and optionally a job description.
     10. Add the name of the destination index that will contain the results of the analysis. In {{kib}}, the index name matches the job ID by default. It will contain a copy of the source index data where each document is annotated with the results. If the index does not exist, it will be created automatically.
 
-        ::::{dropdown} API example
-        ```console
-        PUT _ml/data_frame/analytics/model-flight-delays-regression
+::::{dropdown} API example
+```console
+PUT _ml/data_frame/analytics/model-flight-delays-regression
         {
           "source": {
             "index": [
@@ -311,9 +287,9 @@ To predict the number of minutes delayed for each flight:
             ]
           }
         }
-        ```
+```
 
-        ::::
+::::
 
 
         After you configured your job, the configuration details are automatically validated. If the checks are successful, you can proceed and start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
@@ -322,30 +298,30 @@ To predict the number of minutes delayed for each flight:
 
     The job takes a few minutes to run. Runtime depends on the local hardware and also on the number of documents and fields that are analyzed. The more fields and documents, the longer the job runs. It stops automatically when the analysis is complete.
 
-    ::::{dropdown} API example
-    ```console
-    POST _ml/data_frame/analytics/model-flight-delays-regression/_start
-    ```
+::::{dropdown} API example
+```console
+POST _ml/data_frame/analytics/model-flight-delays-regression/_start
+```
 
-    ::::
+::::
 
 4. Check the job stats to follow the progress in {{kib}} or use the [get {{dfanalytics-jobs}} statistics API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html).
 
-    :::{image} ../../../images/machine-learning-flights-regression-details.jpg
-    :alt: Statistics for a {{dfanalytics-job}} in {kib}
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-flights-regression-details.jpg
+:alt: Statistics for a {{dfanalytics-job}} in {kib}
+:class: screenshot
+:::
 
     When the job stops, the results are ready to view and evaluate. To learn more about the job phases, see [How {{dfanalytics-jobs}} work](ml-dfa-phases.md).
 
-    ::::{dropdown} API example
-    ```console
-    GET _ml/data_frame/analytics/model-flight-delays-regression/_stats
-    ```
+::::{dropdown} API example
+```console
+GET _ml/data_frame/analytics/model-flight-delays-regression/_stats
+```
 
-    The API call returns the following response:
+The API call returns the following response:
 
-    ```console-result
+```console-result
     {
       "count" : 1,
       "data_frame_analytics" : [
@@ -428,11 +404,9 @@ To predict the number of minutes delayed for each flight:
         }
       ]
     }
-    ```
+```
 
-    ::::
-
-
+::::
 
 ### Viewing {{regression}} results [flightdata-regression-results]
 
@@ -508,7 +482,6 @@ The snippet below shows an example of the total feature importance details in th
 3. The minimum {{feat-imp}} value across all the training data for this field.
 4. The maximum {{feat-imp}} value across all the training data for this field.
 
-
 To see the top {{feat-imp}} values for each prediction, search the destination index. For example:
 
 ```console
@@ -554,9 +527,7 @@ The snippet below shows a part of a document with the annotated results:
 
 ::::
 
-
 Lastly, {{kib}} provides a scatterplot matrix in the results. It has the same functionality as the matrix that you saw in the job wizard. Its purpose is to likewise help you visualize and explore the relationships between the numeric fields and the {{depvar}} in your data.
-
 
 ### Evaluating {{regression}} results [flightdata-regression-evaluate]
 
@@ -654,14 +625,11 @@ POST _ml/data_frame/_evaluate
 
 1. Evaluates only the documents that are not part of the training data.
 
-
 ::::
-
 
 When you have trained a satisfactory model, you can [deploy it](#dfa-regression-deploy) to make predictions about new data.
 
 If you don’t want to keep the {{dfanalytics-job}}, you can delete it. For example, use {{kib}} or the [delete {{dfanalytics-job}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html). When you delete {{dfanalytics-jobs}} in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
-
 
 ## Further reading [dfa-regression-reading]
 

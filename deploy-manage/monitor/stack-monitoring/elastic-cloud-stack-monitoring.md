@@ -1,4 +1,5 @@
 ---
+navigation_title: "Elastic Cloud Hosted (ECH)"
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-monitoring.html
   - https://www.elastic.co/guide/en/cloud/current/ec-monitoring-setup.html
@@ -6,6 +7,8 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-enable-logging-and-monitoring.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-monitoring-setup.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restrictions-monitoring.html
+applies:
+  hosted: all
 ---
 
 # Stack Monitoring on Elastic Cloud deployments

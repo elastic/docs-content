@@ -2,6 +2,11 @@
 navigation_title: "Logstash Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/logstash-page.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
 
