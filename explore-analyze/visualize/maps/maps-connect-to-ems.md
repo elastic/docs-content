@@ -531,7 +531,7 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 |     |     |
 | --- | --- |
-| $$$ems-host$$$`host` | Specifies the host of the backend server. To allow remote users to connect, set the value to the IP address or DNS name of the {{hosted-ems}} container. **Default: *your-hostname**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-host). |
+| $$$ems-host$$$`host` | Specifies the host of the backend server. To allow remote users to connect, set the value to the IP address or DNS name of the {{hosted-ems}} container. **Default: *your-hostname***. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-host). |
 | `port` | Specifies the port used by the backend server. Default: **`8080`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-port). |
 | `basePath` | Specify a path at which to mount the server if you are running behind a proxy. This setting cannot end in a slash (`/`). [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-basePath). |
 | `ui` | Controls the display of the status page and the layer preview. **Default: `true`** |
