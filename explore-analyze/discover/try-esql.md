@@ -10,7 +10,7 @@ The Elasticsearch Query Language, {{esql}}, makes it easier to explore your data
 In this tutorial we’ll use the {{kib}} sample web logs in Discover and Lens to explore the data and create visualizations.
 
 ::::{tip}
-For the complete {{esql}} documentation, including tutorials, examples and the full syntax reference, refer to the [{{es}} documentation](../query-filter/languages/esql.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
+For the complete {{esql}} documentation, refer to the [{{esql}} documentation](../query-filter/languages/esql.md). For a more detailed overview of {{esql}} in {{kib}}, refer to [Use {{esql}} in Kibana](../query-filter/languages/esql-kibana.md).
 
 ::::
 
@@ -42,19 +42,15 @@ Let’s say we want to find out what operating system users have and how much RA
     1. We’re specifically looking for data from the sample web logs we just installed.
     2. We’re only keeping the `machine.os` and `machine.ram` fields in the results table.
 
-
-    ::::{tip}
-    Put each processing command on a new line for better readability.
-    ::::
+   ::::{tip}
+   Put each processing command on a new line for better readability.
+   ::::
 
 3. Click **▶Run**.
-
-    ![An image of the query result](../../images/kibana-esql-machine-os-ram.png "")
-
-    ::::{note}
-    {{esql}} keywords are not case sensitive.
-
-    ::::
+   ![An image of the query result](../../images/kibana-esql-machine-os-ram.png "")
+   ::::{note}
+   {{esql}} keywords are not case sensitive.
+   ::::
 
 
 Let’s add `geo.dest` to our query, to find out the geographical destination of the visits, and limit the results.
@@ -68,13 +64,10 @@ Let’s add `geo.dest` to our query, to find out the geographical destination of
     ```
 
 2. Click **▶Run** again. You can notice that the table is now limited to 10 results. The visualization also updated automatically based on the query, and broke down the data for you.
-
-    ::::{note}
-    When you don’t specify any specific fields to retain using `KEEP`, the visualization isn’t broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
-    ::::
-
-
-    ![An image of the extended query result](../../images/kibana-esql-limit.png "")
+   ::::{note}
+   When you don’t specify any specific fields to retain using `KEEP`, the visualization isn’t broken down automatically. Instead, an additional option appears above the visualization and lets you select a field manually.
+   ::::
+   ![An image of the extended query result](../../images/kibana-esql-limit.png "")
 
 
 We will now take it a step further to sort the data by machine ram and filter out the `GB` destination.
