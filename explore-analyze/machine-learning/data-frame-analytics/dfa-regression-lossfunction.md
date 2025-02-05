@@ -19,8 +19,6 @@ You can specify the loss function to be used during {{reganalysis}} when you cre
 
 Consult [the Jupyter notebook on regression loss functions](https://github.com/elastic/examples/tree/master/Machine%20Learning/Regression%20Loss%20Functions) to learn more.
 
-::::{tip} 
+::::{tip}
 The default loss function parameter values work fine for most of the cases. It is highly recommended to use the default values, unless you fully understand the impact of the different loss function parameters.
 ::::
-
-
