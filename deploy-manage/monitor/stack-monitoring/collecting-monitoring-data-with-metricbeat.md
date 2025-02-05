@@ -3,7 +3,7 @@ navigation_title: "Collecting monitoring data with {{metricbeat}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-metricbeat.html
 applies:
-  stack: ga 6.5.0
+  stack: all
 ---
 
 

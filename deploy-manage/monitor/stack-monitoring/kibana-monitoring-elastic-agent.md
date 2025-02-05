@@ -3,7 +3,7 @@ navigation_title: "Collect monitoring data with {{agent}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitoring-elastic-agent.html
 applies:
-  stack: ga 8.5.0
+  stack: all
 ---
 
 
