@@ -95,7 +95,7 @@ If the pipeline is not specified, the underscore-prefixed fields will actually b
 
 ### `search-default-ingestion` Reference [ingest-pipeline-search-details-generic-reference]
 
-You can access this pipeline with the [Elasticsearch Ingest Pipelines API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-pipeline-api.html) or via Kibana’s [Stack Management > Ingest Pipelines](/manage-data//ingest/transform-enrich/ingest-pipelines.md#create-manage-ingest-pipelines) UI.
+You can access this pipeline with the [Elasticsearch Ingest Pipelines API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-pipeline-api.html) or via Kibana’s [Stack Management > Ingest Pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md#create-manage-ingest-pipelines) UI.
 
 ::::{warning}
 This pipeline is a "managed" pipeline. That means that it is not intended to be edited. Editing/updating this pipeline manually could result in unintended behaviors, or difficulty in upgrading in the future. If you want to make customizations, we recommend you utilize index-specific pipelines (see below), specifically [the `<index-name>@custom` pipeline](#ingest-pipeline-search-details-specific-custom-reference).
@@ -116,7 +116,7 @@ This pipeline is a "managed" pipeline. That means that it is not intended to be 
 
 #### Control flow parameters [ingest-pipeline-search-details-generic-reference-params]
 
-The `search-default-ingestion` pipeline does not always run all processors. It utilizes a feature of ingest pipelines to [conditionally run processors](/manage-data//ingest/transform-enrich/ingest-pipelines.md#conditionally-run-processor) based on the contents of each individual document.
+The `search-default-ingestion` pipeline does not always run all processors. It utilizes a feature of ingest pipelines to [conditionally run processors](/manage-data/ingest/transform-enrich/ingest-pipelines.md#conditionally-run-processor) based on the contents of each individual document.
 
 * `_extract_binary_content` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `attachment`, `set_body`, and `remove_replacement_chars` processors. Note that the document will also need an `_attachment` field populated with base64-encoded binary data in order for the `attachment` processor to have any output. If the `_extract_binary_content` field is missing or `false` on a source document, these processors will be skipped.
 * `_reduce_whitespace` - if this field is present and has a value of `true` on a source document, the pipeline will attempt to run the `remove_extra_whitespace` and `trim` processors. These processors only apply to the `body` field. If the `_reduce_whitespace` field is missing or `false` on a source document, these processors will be skipped.
@@ -192,7 +192,7 @@ The `monitor_ml` Elasticsearch cluster permission is required in order to manage
 
 This pipeline is empty to start (no processors), but can be added to via the Kibana UI either through the Pipelines tab of your index, or from the **Stack Management > Ingest Pipelines** page. Unlike the `search-default-ingestion` pipeline and the `<index-name>` pipeline, this pipeline is NOT "managed".
 
-You are encouraged to make additions and edits to this pipeline, provided its name remains the same. This provides a convenient hook from which to add custom processing and transformations for your data. Be sure to read the [docs for ingest pipelines](/manage-data//ingest/transform-enrich/ingest-pipelines.md) to see what options are available.
+You are encouraged to make additions and edits to this pipeline, provided its name remains the same. This provides a convenient hook from which to add custom processing and transformations for your data. Be sure to read the [docs for ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) to see what options are available.
 
 ::::{warning}
 You should not rename this pipeline.
