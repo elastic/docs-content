@@ -70,7 +70,7 @@ Use internal collectors to send {{beats}} monitoring data directly to your monit
     You must specify the `username` as `""` explicitly so that the username from the client certificate (`CN`) is used. See [SSL/TLS output settings](ssltls-output-settings.md) for more information about SSL settings.
 
 3. Start APM Server.
-4. [View the monitoring data in {{kib}}](../../../deploy-manage/monitor/stack-monitoring/monitoring-data.md).
+4. [View the monitoring data in {{kib}}](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 
 
 ## Settings for internal collection [apm-configuration-monitor] 

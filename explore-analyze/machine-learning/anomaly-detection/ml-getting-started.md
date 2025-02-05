@@ -266,7 +266,7 @@ In addition to detecting anomalous behavior in your data, you can use the {{ml-f
 
 To create a forecast in {{kib}}:
 
-1. View your job results (for example, for the `low_request_rate` job) in the **Single Metric Viewer**. To find that view, click the **View series*** button in the ***Actions** column on the **Anomaly Detection** page.
+1. View your job results (for example, for the `low_request_rate` job) in the **Single Metric Viewer**. To find that view, click the **View series** button in the **Actions** column on the **Anomaly Detection** page.
 2. Click **Forecast**.
 
 :::{image} ../../../images/machine-learning-ml-gs-forecast.png

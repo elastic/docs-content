@@ -603,12 +603,8 @@ toc:
       - file: elasticsearch/elasticsearch-reference/document-level-security.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
       - file: elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
-      - file: elasticsearch/elasticsearch-reference/es-ingestion-overview.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
-      - file: elasticsearch/elasticsearch-reference/esql-examples.md
-      - file: elasticsearch/elasticsearch-reference/esql-getting-started.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
-      - file: elasticsearch/elasticsearch-reference/esql.md
       - file: elasticsearch/elasticsearch-reference/field-and-document-access-control.md
       - file: elasticsearch/elasticsearch-reference/field-level-security.md
       - file: elasticsearch/elasticsearch-reference/file-realm.md
@@ -621,7 +617,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/index-modules-analysis.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/ingest-enriching-data.md
-      - file: elasticsearch/elasticsearch-reference/ingest-pipeline-search.md
       - file: elasticsearch/elasticsearch-reference/ingest.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
@@ -638,8 +633,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/oidc-guide.md
       - file: elasticsearch/elasticsearch-reference/oidc-realm.md
       - file: elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
-      - file: elasticsearch/elasticsearch-reference/query-dsl.md
-      - file: elasticsearch/elasticsearch-reference/query-filter-context.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
       - file: elasticsearch/elasticsearch-reference/retrievers-overview.md
       - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
@@ -709,7 +702,6 @@ toc:
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
       - file: kibana/kibana/sample-data.md
-      - file: kibana/kibana/save-load-delete-query.md
       - file: kibana/kibana/saved-object-ids.md
       - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md
@@ -723,7 +715,6 @@ toc:
       - file: kibana/kibana/using-kibana-with-security.md
       - file: kibana/kibana/watcher-ui.md
       - file: kibana/kibana/xpack-ml-aiops.md
-      - file: kibana/kibana/xpack-ml-dfanalytics.md
       - file: kibana/kibana/xpack-security-authorization.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
       - file: kibana/kibana/xpack-security.md
@@ -1020,9 +1011,6 @@ toc:
       - file: stack-docs/elastic-stack/upgrading-elastic-stack.md
       - file: stack-docs/elastic-stack/upgrading-elasticsearch.md
       - file: stack-docs/elastic-stack/upgrading-kibana.md
-  - file: stack-docs/machine-learning/index.md
-    children:
-      - file: stack-docs/machine-learning/ml-dfanalytics.md
   - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/index.md
     children:
       - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md

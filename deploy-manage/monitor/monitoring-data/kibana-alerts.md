@@ -1,7 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
+
+% NEEDS TO BE MERGED WITH configure-stack-monitoring-alerts.md
 
 # Kibana alerts [kibana-alerts]
 

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-monitoring-exporters.html
+applies:
+  stack: deprecated 7.16.0
 ---
 
 # Exporters [es-monitoring-exporters]
@@ -18,10 +20,10 @@ The purpose of exporters is to take data collected from any Elastic Stack source
 There are two types of exporters in {{es}}:
 
 `local`
-:   The default exporter used by {{es}} {monitor-features}. This exporter routes data back into the *same* cluster. See [Local exporters](local-exporter.md).
+:   The default exporter used by {{es}} {monitor-features}. This exporter routes data back into the *same* cluster. See [Local exporters](es-local-exporter.md).
 
 `http`
-:   The preferred exporter, which you can use to route data into any supported {{es}} cluster accessible via HTTP. Production environments should always use a separate monitoring cluster. See [HTTP exporters](http-exporter.md).
+:   The preferred exporter, which you can use to route data into any supported {{es}} cluster accessible via HTTP. Production environments should always use a separate monitoring cluster. See [HTTP exporters](es-http-exporter.md).
 
 Both exporters serve the same purpose: to set up the monitoring cluster and route monitoring data. However, they perform these tasks in very different ways. Even though things happen differently, both exporters are capable of sending all of the same data.
 
@@ -37,7 +39,7 @@ When the exporters route monitoring data into the monitoring cluster, they use `
 Routing monitoring data involves indexing it into the appropriate monitoring indices. Once the data is indexed, it exists in a monitoring index that, by default, is named with a daily index pattern. For {{es}} monitoring data, this is an index that matches `.monitoring-es-6-*`. From there, the data lives inside the monitoring cluster and must be curated or cleaned up as necessary. If you do not curate the monitoring data, it eventually fills up the nodes and the cluster might fail due to lack of disk space.
 
 ::::{tip} 
-You are strongly recommended to manage the curation of indices and particularly the monitoring indices. To do so, you can take advantage of the [cleaner service](local-exporter.md#local-exporter-cleaner) or [Elastic Curator](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html).
+You are strongly recommended to manage the curation of indices and particularly the monitoring indices. To do so, you can take advantage of the [cleaner service](es-local-exporter.md#local-exporter-cleaner) or [Elastic Curator](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html).
 ::::
 
 

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-overview-view.html
+applies:
+  hosted: all
 ---
 
 # Overview [ec-autoops-overview-view]

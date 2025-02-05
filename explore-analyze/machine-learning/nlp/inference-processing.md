@@ -5,7 +5,7 @@ mapped_pages:
 
 # Inference processing [ingest-pipeline-search-inference]
 
-When you create an index through the **Content** UI, a set of default ingest pipelines are also created, including a ML inference pipeline. The [ML inference pipeline](../../../solutions/search/ingest-for-search.md#ingest-pipeline-search-details-specific-ml-reference) uses inference processors to analyze fields and enrich documents with the output. Inference processors use ML trained models, so you need to use a built-in model or [deploy a trained model in your cluster^](ml-nlp-deploy-models.md) to use this feature.
+When you create an index through the **Content** UI, a set of default ingest pipelines are also created, including a ML inference pipeline. The [ML inference pipeline](/solutions/search/search-pipelines.md#ingest-pipeline-search-details-specific-ml-reference) uses inference processors to analyze fields and enrich documents with the output. Inference processors use ML trained models, so you need to use a built-in model or [deploy a trained model in your cluster^](ml-nlp-deploy-models.md) to use this feature.
 
 This guide focuses on the ML inference pipeline, its use, and how to manage it.
 
@@ -129,7 +129,7 @@ To ensure the ML inference pipeline will be run when ingesting documents, you mu
 
 ## Learn More [ingest-pipeline-search-inference-learn-more]
 
-* See [Overview](../../../solutions/search/ingest-for-search.md#ingest-pipeline-search-in-enterprise-search) for information on the various pipelines that are created.
+* See [Overview](/solutions/search/search-pipelines.md#ingest-pipeline-search-in-enterprise-search) for information on the various pipelines that are created.
 * Learn about [ELSER](ml-nlp-elser.md), Elastic’s proprietary retrieval model for semantic search with sparse vectors.
 * [NER HuggingFace Models](https://huggingface.co/models?library=pytorch&pipeline_tag=token-classification&sort=downloads)
 * [Text Classification HuggingFace Models](https://huggingface.co/models?library=pytorch&pipeline_tag=text-classification&sort=downloads)

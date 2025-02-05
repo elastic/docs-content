@@ -13,7 +13,6 @@ The longer the text passed into the {{lang-ident}} model, the more accurately th
 
 {{lang-ident-cap}} takes into account Unicode boundaries when the feature set is built. If the text has diacritical marks, then the model uses that information for identifying the language of the text. In certain cases, the model can detect the source language even if it is not written in the script that the language traditionally uses. These languages are marked in the supported languages table (see below) with the `Latn` subtag. {{lang-ident-cap}} supports Unicode input.
 
-
 ## Supported languages [ml-lang-ident-supported-languages] 
 
 The table below contains the ISO codes and the English names of the languages that {{lang-ident}} supports. If a language has a 2-letter `ISO 639-1` code, the table contains that identifier. Otherwise, the 3-letter `ISO 639-2` code is used. The `Latn` subtag indicates that the language is transliterated into Latin script.
@@ -59,8 +58,7 @@ The table below contains the ISO codes and the English names of the languages th
 | hi-Latn | Hindi | no | Norwegian |  |  |
 | hmn | Hmong | ny | Chichewa |  |  |
 
-
-## Example of {{lang-ident}} [ml-lang-ident-example] 
+## Example of {{lang-ident}} [ml-lang-ident-example]
 
 In the following example, we feed the {{lang-ident}} trained model a short Hungarian text that contains diacritics and a couple of English words. The model identifies the text correctly as Hungarian with high probability.
 
@@ -96,7 +94,6 @@ POST _ingest/pipeline/_simulate
 1. ID of the {{lang-ident}} trained model.
 2. Specifies the number of languages to report by descending order of probability.
 3. The source object that contains the text to identify.
-
 
 In the example above, the `num_top_classes` value indicates that only the top five languages (that is to say, the ones with the highest probability) are reported.
 
@@ -158,9 +155,6 @@ The request returns the following response:
 1. Contains scores for the most probable languages.
 2. The ISO identifier of the language with the highest probability.
 
-
-
 ## Further reading [ml-lang-ident-readings] 
 
 * [Multilingual search using {{lang-ident}} in {{es}}](https://www.elastic.co/blog/multilingual-search-using-language-identification-in-elasticsearch)
-

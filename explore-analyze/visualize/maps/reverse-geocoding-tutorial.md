@@ -44,7 +44,7 @@ CSAs generally share the same telecom providers and ad networks. New fast food f
 
 To get the CSA boundary data:
 
-1. Go to the [Census Bureau’s website](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.md) and download the `cb_2018_us_csa_500k.zip` file.
+1. Go to the [Census Bureau’s website](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html) and download the `cb_2018_us_csa_500k.zip` file.
 2. Uncompress the zip file.
 3. In Kibana, go to **Maps**.
 4. Click **Create map**.

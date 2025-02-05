@@ -22,7 +22,7 @@ If a cluster has unassigned shards, you might see an error message such as this 
 :alt: Unhealthy deployment error message
 :::
 
-If your issue is not addressed here, then [contact Elastic support for help](../../../troubleshoot/troubleshoot/cloud.md).
+If your issue is not addressed here, then [contact Elastic support for help](../../../troubleshoot/troubleshoot/index.md).
 
 ## Analyze unassigned shards using the {{es}} API [ec-analyze_shards_with-api]
 
@@ -150,7 +150,7 @@ The response is as follows:
 
 #### Check {{es}} cluster logs [ec-check-es-cluster-logs]
 
-To determine the allocation issue, you can [check the logs](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ec-check-logs). This is easier if you have set up a dedicated monitoring deployment.
+To determine the allocation issue, you can [check the logs](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-check-logs). This is easier if you have set up a dedicated monitoring deployment.
 
 
 ## Analyze unassigned shards using the Kibana UI [ec-analyze_shards_with-kibana]
@@ -186,7 +186,7 @@ Here’s how to resolve the most common causes of unassigned shards reported by 
 * [Maximum retry times exceeded](../../../troubleshoot/monitoring/unavailable-shards.md#ec-max-retry-exceeded)
 * [Max shard per node reached the limit](../../../troubleshoot/monitoring/unavailable-shards.md#ec-max-shard-per-node)
 
-If your issue is not addressed here, then [contact Elastic support for help](../../../troubleshoot/troubleshoot/cloud.md).
+If your issue is not addressed here, then [contact Elastic support for help](../../../troubleshoot/troubleshoot/index.md).
 
 ### Disk is full [ec-disk-full]
 
