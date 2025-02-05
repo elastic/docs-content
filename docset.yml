@@ -153,7 +153,7 @@ subs:
   apm-php-ref-v:   "https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}"
   ecloud:   "Elastic Cloud"
   esf:   "Elastic Serverless Forwarder"
-  ess:   "Elasticsearch Service"
+  ess:   "Elastic Cloud Hosted"
   ece:   "Elastic Cloud Enterprise"
   eck:   "Elastic Cloud on Kubernetes"
   serverless-full:   "Elastic Cloud Serverless"
