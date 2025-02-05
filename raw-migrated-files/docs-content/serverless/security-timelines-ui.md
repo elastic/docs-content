@@ -219,7 +219,7 @@ From the **Correlation** tab, you can also do the following:
 
 ## Use {{esql}} to investigate events [esql-in-timeline]
 
-The [Elasticsearch Query Language ({{esql}})](../../../explore-analyze/query-filter/languages/esorql.md) provides a powerful way to filter, transform, and analyze event data stored in {{es}}. {{esql}} queries use "pipes" to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
+The [Elasticsearch Query Language ({{esql}})](../../../explore-analyze/query-filter/languages/esql.md) provides a powerful way to filter, transform, and analyze event data stored in {{es}}. {{esql}} queries use "pipes" to manipulate and transform data in a step-by-step fashion. This approach allows you to compose a series of operations, where the output of one operation becomes the input for the next, enabling complex data transformations and analysis.
 
 You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, you can:
 

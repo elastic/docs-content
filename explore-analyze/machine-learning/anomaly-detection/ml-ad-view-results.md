@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-view-results.html
 ---
 
-
-
 # View the results [ml-ad-view-results]
-
 
 After the {{anomaly-job}} has processed some data, you can view the results in {{kib}}.
 
@@ -15,9 +12,7 @@ After the {{anomaly-job}} has processed some data, you can view the results in {
 Depending on the capacity of your machine, you might need to wait a few seconds for the {{ml}} analysis to generate initial results.
 ::::
 
-
 There are two tools for examining the results from {{anomaly-jobs}} in {{kib}}: the **Anomaly Explorer** and the **Single Metric Viewer**.
-
 
 ## Bucket results [ml-ad-bucket-results]
 
@@ -32,9 +27,9 @@ The {{ml}} analytics enhance the anomaly score for each bucket by considering co
 
 In this example, you can see that some of the anomalies fall within the shaded blue area, which represents the bounds for the expected values. The bounds are calculated per bucket, but multi-bucket analysis is not limited by that scope.
 
-Both the **Anomaly Explorer** and the **Single Metric Viewer*** contain an ***Anomalies** table that shows key details about each anomaly such as time, typical and actual values, and probability. The **Anomaly explanation** section helps you to interpret a given anomaly by providing further insights about its type, impact, and score.
+Both the **Anomaly Explorer** and the **Single Metric Viewer** contain an **Anomalies** table that shows key details about each anomaly such as time, typical and actual values, and probability. The **Anomaly explanation** section helps you to interpret a given anomaly by providing further insights about its type, impact, and score.
 
-If you have [{{anomaly-detect-cap}} alert rules](https://www.elastic.co/guide/en/machine-learning/current/creating-anomaly-alert-rules.html) applied to an {{anomaly-job}} and an alert has occured for the rule, you can view how the alert correlates with the {{anomaly-detect}} results in the **Anomaly Explorer** by using the **Anomaly timeline*** swimlane and the ***Alerts** panel. The **Alerts** panel contains a line chart with the alerts count over time. The cursor on the line chart is in sync with the anomaly swimlane making it easier to review anomalous buckets with the spike produced by the alerts. The panel also contains aggregated information for each alert rule associated with the job selection such as the total number of active, recovered, and untracked alerts for the selected job and time range. An alert context menu is displayed when an anomaly swimlane cell is selected with alerts in the chosen time range. The context menu contains the alert counters for the selected time buckets.
+If you have [{{anomaly-detect-cap}} alert rules](https://www.elastic.co/guide/en/machine-learning/current/creating-anomaly-alert-rules.html) applied to an {{anomaly-job}} and an alert has occured for the rule, you can view how the alert correlates with the {{anomaly-detect}} results in the **Anomaly Explorer** by using the **Anomaly timeline** swimlane and the **Alerts** panel. The **Alerts** panel contains a line chart with the alerts count over time. The cursor on the line chart is in sync with the anomaly swimlane making it easier to review anomalous buckets with the spike produced by the alerts. The panel also contains aggregated information for each alert rule associated with the job selection such as the total number of active, recovered, and untracked alerts for the selected job and time range. An alert context menu is displayed when an anomaly swimlane cell is selected with alerts in the chosen time range. The context menu contains the alert counters for the selected time buckets.
 
 :::{image} ../../../images/machine-learning-anomaly-explorer-alerts.png
 :alt: Alerts table in the Anomaly Explorer
@@ -44,7 +39,6 @@ If you have [{{anomaly-detect-cap}} alert rules](https://www.elastic.co/guide/en
 If you have more than one {{anomaly-job}}, you can also obtain *overall bucket* results, which combine and correlate anomalies from multiple jobs into an overall score. When you view the results for job groups in {{kib}}, it provides the overall bucket scores. For more information, see [Get overall buckets API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-overall-buckets.html).
 
 Bucket results provide the top level, overall view of the {{anomaly-job}} and are ideal for alerts. For example, the bucket results might indicate that at 16:05 the system was unusual. This information is a summary of all the anomalies, pinpointing when they occurred. When you identify an anomalous bucket, you can investigate further by examining the pertinent records.
-
 
 ## Influencer results [ml-ad-influencer-results]
 

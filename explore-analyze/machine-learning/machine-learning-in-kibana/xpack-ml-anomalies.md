@@ -5,7 +5,7 @@ mapped_pages:
 
 # Anomaly detection [xpack-ml-anomalies]
 
-The Elastic {{ml}} {anomaly-detect} feature automatically models the normal behavior of your time series data — learning trends, periodicity, and more — in real time to identify anomalies, streamline root cause analysis, and reduce false positives. {{anomaly-detect-cap}} runs in and scales with {{es}}, and includes an intuitive UI on the {{kib}} **Machine Learning** page for creating {{anomaly-jobs}} and understanding results.
+The Elastic {{ml}} {{anomaly-detect}} feature automatically models the normal behavior of your time series data — learning trends, periodicity, and more — in real time to identify anomalies, streamline root cause analysis, and reduce false positives. {{anomaly-detect-cap}} runs in and scales with {{es}}, and includes an intuitive UI on the {{kib}} **Machine Learning** page for creating {{anomaly-jobs}} and understanding results.
 
 If you have a license that includes the {{ml-features}}, you can create {{anomaly-jobs}} and manage jobs and {{dfeeds}} from the **Job Management** pane:
 
@@ -38,9 +38,7 @@ You can optionally add annotations by drag-selecting a period of time in the **S
 In some circumstances, annotations are also added automatically. For example, if the {{anomaly-job}} detects that there is missing data, it annotates the affected time period. For more information, see [Handling delayed data](../anomaly-detection/ml-delayed-data-detection.md). The **Job Management** pane shows the full list of annotations for each job.
 
 ::::{note}
-The {{kib}} {ml-features} use pop-ups. You must configure your web browser so that it does not block pop-up windows or create an exception for your {{kib}} URL.
+The {{kib}} {{ml-features}} use pop-ups. You must configure your web browser so that it does not block pop-up windows or create an exception for your {{kib}} URL.
 ::::
 
-
-For more information about the {{anomaly-detect}} feature, see [{{ml-cap}} in the {{stack}}](https://www.elastic.co/what-is/elastic-stack-machine-learning) and [{{ml-cap}} {anomaly-detect}](../anomaly-detection.md).
-
+For more information about the {{anomaly-detect}} feature, see [{{ml-cap}} in the {{stack}}](https://www.elastic.co/what-is/elastic-stack-machine-learning) and [{{ml-cap}} {{anomaly-detect}}](../anomaly-detection.md).

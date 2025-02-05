@@ -421,5 +421,5 @@ For more about data processing with {{esql}}, refer to [Data processing with DIS
 
 ## Learn more [esql-getting-learn-more]
 
-To learn more about {{esql}}, refer to [{{esql}} reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-language.html) and [*Using {{esql}}*](../../../explore-analyze/query-filter/languages/esorql.md).
+To learn more about {{esql}}, refer to [{{esql}} reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-language.html).
 

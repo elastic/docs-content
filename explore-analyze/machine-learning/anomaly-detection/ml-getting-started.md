@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
 ---
 
-
-
 # Tutorial: Getting started with anomaly detection [ml-getting-started]
-
 
 Ready to take {{anomaly-detect}} for a test drive? Follow this tutorial to:
 
@@ -19,25 +16,22 @@ At the end of this tutorial, you should have a good idea of what {{ml}} is and w
 
 Need more context? Check out the [{{es}} introduction](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html) to learn the lingo and understand the basics of how {{es}} works.
 
-
 ## Try it out [get-started-prereqs]
 
 1. Before you can play with the {{ml-features}}, you must install {{es}} and {{kib}}. {{es}} stores the data and the analysis results. {{kib}} provides a helpful user interface for creating and viewing jobs.
 
-    ::::{tip}
+::::{tip}
     You can run {{es}} and {{kib}} on your own hardware, or use our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service) on {{ecloud}}. The {{ess}} is available on both AWS and GCP. [Try out the {{ess}} for free](https://www.elastic.co/cloud/elasticsearch-service/signup).
 
-    ::::
+::::
 
-2. Verify that your environment is set up properly to use the {{ml-features}}. If the {{es}} {security-features} are enabled, to complete this tutorial you need a user that has authority to manage {{anomaly-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
+2. Verify that your environment is set up properly to use the {{ml-features}}. If the {{es}} {{security-features}} are enabled, to complete this tutorial you need a user that has authority to manage {{anomaly-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
 3. [Add the sample data sets that ship with {{kib}}](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
 
     1. From the {{kib}} home page, click **Try sample data**, then open the **Other sample data sets** section.
     2. Pick a data set. In this tutorial, you’ll use the **Sample web logs**. While you’re here, feel free to click **Add data** on all of the available sample data sets.
 
-
 These data sets are now ready be analyzed in {{ml}} jobs in {{kib}}.
-
 
 ## Explore the data in {{kib}} [sample-data-visualizer]
 
@@ -45,9 +39,9 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 
 1. Open {{kib}} in your web browser. If you are running {{kib}} locally, go to `http://localhost:5601/`.
 
-    ::::{tip}
-    The {{kib}} {ml-features} use pop-ups. You must configure your web browser so that it does not block pop-up windows or create an exception for your {{kib}} URL.
-    ::::
+::::{tip}
+    The {{kib}} {{ml-features}} use pop-ups. You must configure your web browser so that it does not block pop-up windows or create an exception for your {{kib}} URL.
+::::
 
 2. Open **Machine Learning** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
 3. Select the **{{data-viz}}** tab.
@@ -60,22 +54,21 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 
     In particular, look at the `clientip`, `response.keyword`, and `url.keyword` fields, since we’ll use them in our {{anomaly-jobs}}. For these fields, the {{data-viz}} provides the number of distinct values, a list of the top values, and the number and percentage of documents that contain the field. For example:
 
-    :::{image} ../../../images/machine-learning-ml-gs-data-keyword.jpg
-    :alt: {{data-viz}} output for ip and keyword fields
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-gs-data-keyword.jpg
+:alt: {{data-viz}} output for ip and keyword fields
+:class: screenshot
+:::
 
     For numeric fields, the {{data-viz}} provides information about the minimum, median, maximum, and top values, the number of distinct values, and their distribution. You can use the distribution chart to get a better idea of how the values in the data are clustered. For example:
 
-    :::{image} ../../../images/machine-learning-ml-gs-data-metric.jpg
-    :alt: {{data-viz}} for sample web logs
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-gs-data-metric.jpg
+:alt: {{data-viz}} for sample web logs
+:class: screenshot
+:::
 
-    ::::{tip}
-    Make note of the range of dates in the `@timestamp` field. They are relative to when you added the sample data and you’ll need that information later in the tutorial.
-    ::::
-
+::::{tip}
+Make note of the range of dates in the `@timestamp` field. They are relative to when you added the sample data and you’ll need that information later in the tutorial.
+::::
 
 Now that you’re familiar with the data in the `kibana_sample_data_logs` index, you can create some {{anomaly-jobs}} to analyze it.
 
@@ -83,14 +76,11 @@ Now that you’re familiar with the data in the `kibana_sample_data_logs` index,
 You can view the statistics of the selectable fields in the {{anomaly-detect}} wizard. The field statistics displayed in a flyout provide more meaningful context to help you select relevant fields.
 ::::
 
-
-
 ## Create sample {{anomaly-jobs}} in {{kib}} [sample-data-jobs]
 
 ::::{important}
 The results on this page might be different than the actual values you get when using the sample data sets. This behavior is expected as the data points in the data sets might change over time.
 ::::
-
 
 The {{kib}} sample data sets include some pre-configured {{anomaly-jobs}} for you to play with. You can use either of the following methods to add the jobs:
 
@@ -111,7 +101,6 @@ For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [
 
 ::::
 
-
 If you want to see all of the configuration details for your jobs and {{dfeeds}}, you can do so on the **Machine Learning** > **Anomaly Detection** > **Jobs** page. Alternatively, you can see the configuration files in [GitHub ](https://github.com/elastic/kibana/tree/master/x-pack/plugins/ml/server/models/data_recognizer/modules/sample_data_weblogs). For the purposes of this tutorial, however, here’s a quick overview of the goal of each job:
 
 * `low_request_rate` uses the `low_count` function to find unusually low request rates
@@ -119,7 +108,6 @@ If you want to see all of the configuration details for your jobs and {{dfeeds}}
 * `url_scanning` uses the `high_distinct_count` function and performs population analysis on the `clientip` field to find client IPs accessing an unusually high distinct count of URLs
 
 The next step is to view the results and see what types of insights these jobs have generated!
-
 
 ## View {{anomaly-detect}} results [sample-data-results]
 
@@ -129,7 +117,6 @@ After the {{dfeeds}} are started and the {{anomaly-jobs}} have processed some da
 Depending on the capacity of your machine, you might need to wait a few seconds for the {{ml}} analysis to generate initial results.
 ::::
 
-
 :::{image} ../../../images/machine-learning-ml-gs-web-results.jpg
 :alt: Create jobs for the sample web logs
 :class: screenshot
@@ -138,7 +125,6 @@ Depending on the capacity of your machine, you might need to wait a few seconds 
 The {{ml-features}} analyze the input stream of data, model its behavior, and perform analysis based on the detectors in each job. When an event occurs outside of the model, that event is identified as an anomaly. You can immediately see that all three jobs have found anomalies, which are indicated by red blocks in the swim lanes for each job.
 
 There are two tools for examining the results from {{anomaly-jobs}} in {{kib}}: the **Anomaly Explorer** and the **Single Metric Viewer**. You can switch between these tools by clicking the icons in the top left corner. You can also edit the job selection to examine a different subset of {{anomaly-jobs}}.
-
 
 ### Single metric job results [ml-gs-results-smv]
 
@@ -166,13 +152,11 @@ Any data points outside the range that was predicted by the model are marked as 
 
 ::::
 
-
 Slide the time selector to a section of the time series that contains a red anomaly data point. If you hover over the point, you can see more information.
 
 ::::{note}
 You might notice a high spike in the time series. It’s not highlighted as an anomaly, however, since this job looks for low counts only.
 ::::
-
 
 For each anomaly, you can see key details such as the time, the actual and expected ("typical") values, and their probability in the **Anomalies** section of the viewer. For example:
 
@@ -196,7 +180,6 @@ You can optionally annotate your job results by drag-selecting a period of time 
 
 After you have identified anomalies, often the next step is to try to determine the context of those situations. For example, are there other factors that are contributing to the problem? Are the anomalies confined to particular applications or servers? You can begin to troubleshoot these situations by layering additional jobs or creating multi-metric jobs.
 
-
 ### Advanced or multi-metric job results [ml-gs-results-ae]
 
 Conceptually, you can think of *multi-metric {{anomaly-jobs}}* as running multiple independent single metric jobs. By bundling them together in a multi-metric job, however, you can see an overall score and shared influencers for all the metrics and all the entities in the job. Multi-metric jobs therefore scale better than having many independent single metric jobs. They also provide better results when you have influencers that are shared across the detectors.
@@ -207,7 +190,6 @@ When you create an {{anomaly-job}}, you can identify fields as *influencers*. Th
 As a best practice, do not pick too many influencers. For example, you generally do not need more than three. If you pick many influencers, the results can be overwhelming and there is a small overhead to the analysis. For more details, see [Influencers](ml-ad-run-jobs.md#ml-ad-influencers).
 
 ::::
-
 
 You can also configure your {{anomaly-jobs}} to split a single time series into multiple time series based on a categorical field. For example, the `response_code_rates` job has a single detector that splits the data based on the `response.keyword` and then uses the `count` function to determine when the number of events is anomalous. You might use a job like this if you want to look at both high and low request rates partitioned by response code.
 
@@ -258,8 +240,6 @@ In this sample data, the spike in the 404 response codes is influenced by a spec
 The anomaly scores that you see in each section of the **Anomaly Explorer** might differ slightly. This disparity occurs because for each job there are bucket results, influencer results, and record results. Anomaly scores are generated for each type of result. The anomaly timeline uses the bucket-level anomaly scores. The list of top influencers uses the influencer-level anomaly scores. The list of anomalies uses the record-level anomaly scores.
 ::::
 
-
-
 ### Population job results [ml-gs-results-population]
 
 The final sample job (`url_scanning`) is a *population {{anomaly-job}}*. As we saw in the `response_code_rates` job results, there are some clients that seem to be accessing unusually high numbers of URLs. The `url_scanning` sample job provides another method for investigating that type of problem. It has a single detector that uses the `high_distinct_count` function on the `url.keyword` to detect unusually high numbers of distinct values in that field. It then analyzes whether that behavior differs over the population of clients, as defined by the `clientip` field.
@@ -280,7 +260,6 @@ If you want to play with another example of a population {{anomaly-job}}, add th
 :class: screenshot
 :::
 
-
 ## Create forecasts [sample-data-forecasts]
 
 In addition to detecting anomalous behavior in your data, you can use the {{ml-features}} to predict future behavior.
@@ -290,45 +269,43 @@ To create a forecast in {{kib}}:
 1. View your job results (for example, for the `low_request_rate` job) in the **Single Metric Viewer**. To find that view, click the **View series*** button in the ***Actions** column on the **Anomaly Detection** page.
 2. Click **Forecast**.
 
-    :::{image} ../../../images/machine-learning-ml-gs-forecast.png
-    :alt: Create a forecast from the Single Metric Viewer
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-gs-forecast.png
+:alt: Create a forecast from the Single Metric Viewer
+:class: screenshot
+:::
 
-3. Specify a duration for your forecast. This value indicates how far to extrapolate beyond the last record that was processed. You must use [time units](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units). In this example, the duration is one week (`1w`):<br>
+3. Specify a duration for your forecast. This value indicates how far to extrapolate beyond the last record that was processed. You must use [time units](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units). In this example, the duration is one week (`1w`):
 
-    :::{image} ../../../images/machine-learning-ml-gs-duration.png
-    :alt: Specify a duration of 1w
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-gs-duration.png
+:alt: Specify a duration of 1w
+:class: screenshot
+:::
 
-4. View the forecast in the **Single Metric Viewer**:<br>
+4. View the forecast in the **Single Metric Viewer**:
 
-    :::{image} ../../../images/machine-learning-ml-gs-forecast-results.png
-    :alt: View a forecast from the Single Metric Viewer
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-gs-forecast-results.png
+:alt: View a forecast from the Single Metric Viewer
+:class: screenshot
+:::
 
-    The yellow line in the chart represents the predicted data values. The shaded yellow area represents the bounds for the predicted values, which also gives an indication of the confidence of the predictions. Note that the bounds generally increase with time (that is to say, the confidence levels decrease), since you are forecasting further into the future. Eventually if the confidence levels are too low, the forecast stops.
+The yellow line in the chart represents the predicted data values. The shaded yellow area represents the bounds for the predicted values, which also gives an indication of the confidence of the predictions. Note that the bounds generally increase with time (that is to say, the confidence levels decrease), since you are forecasting further into the future. Eventually if the confidence levels are too low, the forecast stops.
 
-5. Optional: Compare the forecast to actual data.<br>
+5. Optional: Compare the forecast to actual data.
 
-    :::{image} ../../../images/machine-learning-ml-gs-forecast-actual.png
-    :alt: View a forecast over actual data in the Single Metric Viewer
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-ml-gs-forecast-actual.png
+:alt: View a forecast over actual data in the Single Metric Viewer
+:class: screenshot
+:::
 
-    As the job processes more data, you can click the **Forecast** button again and choose to see one of your forecasts overlaid on the actual data. The chart then contains the actual data values, the bounds for the expected values, the anomalies, the forecast data values, and the bounds for the forecast. This combination of actual and forecast data gives you an indication of how well the {{ml-features}} can extrapolate the future behavior of the data.
+As the job processes more data, you can click the **Forecast** button again and choose to see one of your forecasts overlaid on the actual data. The chart then contains the actual data values, the bounds for the expected values, the anomalies, the forecast data values, and the bounds for the forecast. This combination of actual and forecast data gives you an indication of how well the {{ml-features}} can extrapolate the future behavior of the data.
 
-    If you want to see this type of comparison for the {{kib}} sample data, which has a finite number of documents, you can reset the job and analyze only a subset of the data before you create a forecast. For example, reset one of your {{anomaly-jobs}} from the **Job Management** page in {{kib}} or use the [reset {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html). When you restart the {{dfeed}} for this job, choose a date part way through your sample data as the search end date. By default, the {{dfeed}} stops and the {{anomaly-job}} closes when it reaches that date. Create the forecast. You can then restart the {{dfeed}} to process the remaining data and generate the type of results shown here.
+If you want to see this type of comparison for the {{kib}} sample data, which has a finite number of documents, you can reset the job and analyze only a subset of the data before you create a forecast. For example, reset one of your {{anomaly-jobs}} from the **Job Management** page in {{kib}} or use the [reset {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html). When you restart the {{dfeed}} for this job, choose a date part way through your sample data as the search end date. By default, the {{dfeed}} stops and the {{anomaly-job}} closes when it reaches that date. Create the forecast. You can then restart the {{dfeed}} to process the remaining data and generate the type of results shown here.
 
-    ::::{tip}
-    The {{kib}} sample data sets have timestamps that are relative to when you added the data sets. However, some of these dates are in the future. Therefore, for the purposes of this tutorial, when you restart your {{dfeed}} do not use the **No end time (Real-time search)** option. Specify the appropriate end dates so that it processes all of the data immediately.
-    ::::
-
+::::{tip}
+The {{kib}} sample data sets have timestamps that are relative to when you added the data sets. However, some of these dates are in the future. Therefore, for the purposes of this tutorial, when you restart your {{dfeed}} do not use the **No end time (Real-time search)** option. Specify the appropriate end dates so that it processes all of the data immediately.
+::::
 
 Now that you have seen how easy it is to create forecasts with the sample data, consider what type of events you might want to predict in your own data. For more information and ideas, see [Forecast future behavior](ml-ad-forecast.md).
-
 
 ## Next steps [sample-data-next]
 

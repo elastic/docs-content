@@ -5,7 +5,7 @@ navigation_title: "Basics: Full-text search and filtering"
 # Basic full-text search and filtering in {{es}} [full-text-filter-tutorial]
 
 
-This is a hands-on introduction to the basics of [full-text search](../../../solutions/search/full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) and [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
+This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
 
 In this scenario, we’re implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
@@ -21,7 +21,7 @@ To achieve these goals we’ll use different Elasticsearch queries to perform fu
 
 ## Requirements [full-text-filter-tutorial-requirements] 
 
-You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Run the following command in your terminal to set up a [single-node local cluster in Docker](../../../solutions/search/get-started.md):
+You’ll need a running {{es}} cluster, together with {{kib}} to use the Dev Tools API Console. Run the following command in your terminal to set up a [single-node local cluster in Docker](get-started.md):
 
 ```sh
 curl -fsSL https://elastic.co/start-local | sh
@@ -96,12 +96,12 @@ PUT /cooking_blog/_mapping
 ```
 
 1. The `standard` analyzer is used by default for `text` fields if an `analyzer` isn’t specified. It’s included here for demonstration purposes.
-2. [Multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html) are used here to index `text` fields as both `text` and `keyword` [data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
+2. [Multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html) are used here to index `text` fields as both `text` and `keyword` [data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). This enables both full-text search and exact matching/filtering on the same field. Note that if you used [dynamic mapping](../../manage-data/data-store/mapping/dynamic-field-mapping.md), these multi-fields would be created automatically.
 3. The [`ignore_above` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-above.html) prevents indexing values longer than 256 characters in the `keyword` field. Again this is the default value, but it’s included here for demonstration purposes. It helps to save disk space and avoid potential issues with Lucene’s term byte-length limit.
 
 
 ::::{tip} 
-Full-text search is powered by [text analysis](../../../solutions/search/full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](../../../manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won’t cover analysis in detail, but it’s important to understand how text is processed to create effective search queries.
+Full-text search is powered by [text analysis](full-text/text-analysis-during-search.md). Text analysis normalizes and standardizes text data so it can be efficiently stored in an inverted index and searched in near real-time. Analysis happens at both [index and search time](../../manage-data/data-store/text-analysis/index-search-analysis.md). This tutorial won’t cover analysis in detail, but it’s important to understand how text is processed to create effective search queries.
 
 ::::
 
@@ -128,7 +128,7 @@ POST /cooking_blog/_bulk?refresh=wait_for
 
 ## Step 3: Perform basic full-text searches [full-text-filter-tutorial-match-query] 
 
-Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document’s content aligns with the search terms. {{es}} offers various query types, each with its own method for matching text and [relevance scoring](../../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores).
+Full-text search involves executing text-based queries across one or more document fields. These queries calculate a relevance score for each matching document, based on how closely the document’s content aligns with the search terms. {{es}} offers various query types, each with its own method for matching text and [relevance scoring](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores).
 
 
 ### `match` query [_match_query] 
@@ -153,7 +153,7 @@ GET /cooking_blog/_search
 1. By default, the `match` query uses `OR` logic between the resulting tokens. This means it will match documents that contain either "fluffy" or "pancakes", or both, in the description field.
 
 
-At search time, {{es}} defaults to the analyzer defined in the field mapping. In this example, we’re using the `standard` analyzer. Using a different analyzer at search time is an [advanced use case](../../../manage-data/data-store/text-analysis/index-search-analysis.md#different-analyzers).
+At search time, {{es}} defaults to the analyzer defined in the field mapping. In this example, we’re using the `standard` analyzer. Using a different analyzer at search time is an [advanced use case](../../manage-data/data-store/text-analysis/index-search-analysis.md#different-analyzers).
 
 ::::{dropdown} Example response
 ```console-result
@@ -196,7 +196,7 @@ At search time, {{es}} defaults to the analyzer defined in the field mapping. In
 }
 ```
 
-1. The `hits` object contains the total number of matching documents and their relation to the total. Refer to [Track total hits](../../../solutions/search/querying-for-search.md#track-total-hits) for more details about the `hits` object.
+1. The `hits` object contains the total number of matching documents and their relation to the total. Refer to [Track total hits](querying-for-search.md#track-total-hits) for more details about the `hits` object.
 2. `max_score` is the highest relevance score among all matching documents. In this example, we only have one matching document.
 3. `_score` is the relevance score for a specific document, indicating how well it matches the query. Higher scores indicate better matches. In this example the `max_score` is the same as the `_score`, as there is only one matching document.
 4. The title contains both "Fluffy" and "Pancakes", matching our search terms exactly.
@@ -378,7 +378,7 @@ The `multi_match` query is often recommended over a single `match` query for mos
 
 ## Step 5: Filter and find exact matches [full-text-filter-tutorial-filtering] 
 
-[Filtering](../../../explore-analyze/query-filter/languages/querydsl.md#filter-context) allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don’t need to be scored.
+[Filtering](../../explore-analyze/query-filter/languages/querydsl.md#filter-context) allows you to narrow down your search results based on exact criteria. Unlike full-text searches, filters are binary (yes/no) and do not affect the relevance score. Filters execute faster than queries because excluded results don’t need to be scored.
 
 This [`bool`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) query will return only blog posts in the "Breakfast" category.
 
@@ -402,7 +402,7 @@ GET /cooking_blog/_search
 The `.keyword` suffix accesses the unanalyzed version of a field, enabling exact, case-sensitive matching. This works in two scenarios:
 
 1. **When using dynamic mapping for text fields**. Elasticsearch automatically creates a `.keyword` sub-field.
-2. **When text fields are explicitly mapped with a `.keyword` sub-field**. For example, we explicitly mapped the `category` field in [Step 1](../../../solutions/search/get-started.md#full-text-filter-tutorial-create-index) of this tutorial.
+2. **When text fields are explicitly mapped with a `.keyword` sub-field**. For example, we explicitly mapped the `category` field in [Step 1](get-started.md#full-text-filter-tutorial-create-index) of this tutorial.
 
 ::::
 
@@ -582,8 +582,8 @@ GET /cooking_blog/_search
 
 This tutorial introduced the basics of full-text search and filtering in {{es}}. Building a real-world search experience requires understanding many more advanced concepts and techniques. Here are some resources once you’re ready to dive deeper:
 
-* [Full-text search](../../../solutions/search/full-text.md): Learn about the core components of full-text search in {{es}}.
-* [Elasticsearch basics — Search and analyze data](../../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}}.
-* [Text analysis](../../../solutions/search/full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
-* [Search your data](../../../solutions/search.md): Learn about more advanced search techniques using the `_search` API, including semantic search.
+* [Full-text search](full-text.md): Learn about the core components of full-text search in {{es}}.
+* [Elasticsearch basics — Search and analyze data](../../explore-analyze/query-filter.md): Understand all your options for searching and analyzing data in {{es}}.
+* [Text analysis](full-text/text-analysis-during-search.md): Understand how text is processed for full-text search.
+* [Search your data](../search.md): Learn about more advanced search techniques using the `_search` API, including semantic search.
 

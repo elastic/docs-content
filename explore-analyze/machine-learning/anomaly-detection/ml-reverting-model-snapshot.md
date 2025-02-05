@@ -11,10 +11,10 @@ mapped_pages:
 2. Locate the {{anomaly-job}} whose model you want to revert in the job table.
 3. Open the job details and navigate to the **Model Snapshots** tab.
 
-    :::{image} ../../../images/machine-learning-anomaly-job-model-snapshots.jpg
-    :alt: A screenshot of a job with the Model Snapshots tab opened
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-anomaly-job-model-snapshots.jpg
+:alt: A screenshot of a job with the Model Snapshots tab opened
+:class: screenshot
+:::
 
 4. Select a snapshot from the list and click the **Revert** icon under **Actions**.
 5. Optional: Select if you want to replay the analysis based on the data in your index after the revert has been applied. If you don’t select this option, there will be no {{anomaly-detect}} results after the snapshot was taken and the job results end at the point in time of the snapshot. If you select this option, you can then optionally select one or both of the next two options:
@@ -22,10 +22,10 @@ mapped_pages:
     * You can select whether you want the job to continue running in real time after the replay, or to just replay existing data after the snapshot.
     * You can select a time range you want to avoid during the replay by declaring a calendar event. This way, you can skip any problematic time frame that you want the {{anomaly-job}} to avoid.
 
-    :::{image} ../../../images/machine-learning-revert-model-snapshot.jpg
-    :alt: A screenshot of a revert model snapshot flyout
-    :class: screenshot
-    :::
+:::{image} ../../../images/machine-learning-revert-model-snapshot.jpg
+:alt: A screenshot of a revert model snapshot flyout
+:class: screenshot
+:::
 
 6. Click **Apply**.
 
@@ -33,10 +33,10 @@ mapped_pages:
 You can use [custom rules](ml-ad-run-jobs.md#ml-ad-rules) to avoid a model being updated in case of a known event you want to exclude from the analysis. Using custom rules might help you to avoid situations where you need to revert to a snapshot.
 ::::
 
-
 Alternatively, you can use the [revert model snapshots](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html) API. In this case, you need to manually close the corresponding job before reverting to the saved snapshot.
 
 ::::{note}
+
 * By default, when you revert to a snapshot, all {{anomaly-detect}} results are deleted for the corresponding job after the point when the snapshot was saved. If you replay the analysis, results will be re-generated based on your configuration.
 * Reverting to a snapshot does not change the `data_counts` values of the {{anomaly-job}}, these values are not reverted to the earlier state.
 
