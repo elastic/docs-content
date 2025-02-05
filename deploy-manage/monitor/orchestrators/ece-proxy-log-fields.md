@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-proxy-log-fields.html
+applies:
+  ece: all
 ---
 
 # Proxy Log Fields [ece-proxy-log-fields]

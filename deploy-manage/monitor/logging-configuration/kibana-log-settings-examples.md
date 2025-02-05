@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/log-settings-examples.html
+applies:
+  stack: all
 ---
 
 # Examples [log-settings-examples]

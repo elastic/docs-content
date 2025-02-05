@@ -22,7 +22,7 @@ After you have created a new deployment, you should enable shipping logs and met
 4. Choose where to send your logs and metrics.
 
     ::::{important}
-    Anything used for production should go to a separate deployment you create only for monitoring. For development or testing, you can send monitoring data to the same deployment. Check [Enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ec-logging-and-monitoring-production).
+    Anything used for production should go to a separate deployment you create only for monitoring. For development or testing, you can send monitoring data to the same deployment. Check [Enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-logging-and-monitoring-production).
     ::::
 
 5. Select **Save**.

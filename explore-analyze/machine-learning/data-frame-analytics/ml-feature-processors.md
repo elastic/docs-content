@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-feature-processors.html
 ---
 
-
-
 # Feature processors [ml-feature-processors]
-
 
 {{dfanalytics-cap}} automatically includes a [Feature encoding](ml-feature-encoding.md) phase, which transforms categorical features into numerical ones. If you want to have more control over the encoding methods that are used for specific fields, however, you can define  feature processors. If there are any remaining categorical features after your processors run, they are addressed in the automatic feature encoding phase.
 
@@ -22,9 +19,3 @@ Available feature processors:
 * [n-gram encoding](https://www.elastic.co/guide/en/machine-learning/current/ngram-encoding.html)
 * [One hot encoding](https://www.elastic.co/guide/en/machine-learning/current/one-hot-encoding.html)
 * [Target mean encoding](https://www.elastic.co/guide/en/machine-learning/current/target-mean-encoding.html)
-
-
-
-
-
-

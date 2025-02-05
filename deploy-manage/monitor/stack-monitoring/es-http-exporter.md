@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/http-exporter.html
+applies:
+  stack: deprecated 7.16.0
 ---
 
 # HTTP exporters [http-exporter]

@@ -11,7 +11,7 @@ Use one of the editors to create visualizations of your data. Each editor offers
 
 $$$panels-editors$$$
 
-| **Content*** | ***Panel type*** | ***Description** |
+| **Content** | **Panel type** | **Description** |
 | --- | --- | --- |
 | Visualizations | [Lens](visualize/lens.md) | The default editor for creating powerful [charts](visualize/supported-chart-types.md) in {{kib}} |
 | [ES&#124;QL](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.md) | Create visualizations from ES&#124;QL queries |

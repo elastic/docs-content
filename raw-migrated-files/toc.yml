@@ -705,7 +705,6 @@ toc:
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
       - file: kibana/kibana/sample-data.md
-      - file: kibana/kibana/save-load-delete-query.md
       - file: kibana/kibana/saved-object-ids.md
       - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md
@@ -719,7 +718,6 @@ toc:
       - file: kibana/kibana/using-kibana-with-security.md
       - file: kibana/kibana/watcher-ui.md
       - file: kibana/kibana/xpack-ml-aiops.md
-      - file: kibana/kibana/xpack-ml-dfanalytics.md
       - file: kibana/kibana/xpack-security-authorization.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
       - file: kibana/kibana/xpack-security.md
@@ -1017,9 +1015,6 @@ toc:
       - file: stack-docs/elastic-stack/upgrading-elastic-stack.md
       - file: stack-docs/elastic-stack/upgrading-elasticsearch.md
       - file: stack-docs/elastic-stack/upgrading-kibana.md
-  - file: stack-docs/machine-learning/index.md
-    children:
-      - file: stack-docs/machine-learning/ml-dfanalytics.md
   - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/index.md
     children:
       - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md

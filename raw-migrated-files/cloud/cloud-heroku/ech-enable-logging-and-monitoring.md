@@ -15,7 +15,7 @@ The steps in this section cover only the enablement of the monitoring and loggin
 
 ### Before you begin [ech-logging-and-monitoring-limitations] 
 
-Some limitations apply when you use monitoring on Elasticsearch Add-On for Heroku. To learn more, check the monitoring [restrictions and limitations](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md).
+Some limitations apply when you use monitoring on Elasticsearch Add-On for Heroku. To learn more, check the monitoring [restrictions and limitations](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md).
 
 
 ### Monitoring for production use [ech-logging-and-monitoring-production] 
@@ -32,7 +32,7 @@ How many monitoring deployments you use depends on your requirements:
     * If you need to silo {{es}} data for different business departments. Deployments that have been configured to ship logs and metrics to a target monitoring deployment have access to indexing data and can manage monitoring index templates, which is addressed by creating separate monitoring deployments.
 
 
-Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may not be cleaned up automatically](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-logging-and-monitoring-retention) and might require some additional steps to remove excess data periodically.
+Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may not be cleaned up automatically](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-logging-and-monitoring-retention) and might require some additional steps to remove excess data periodically.
 
 
 ### Retention of monitoring daily indices [ech-logging-and-monitoring-retention] 
@@ -48,7 +48,7 @@ When you enable monitoring in Elasticsearch Add-On for Heroku, your monitoring i
 $$$ech-logging-and-monitoring-retention-7$$$
 When you enable self-monitoring in Elasticsearch Add-On for Heroku, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. Monitoring data is retained for three days by default or as specified by the [`xpack.monitoring.history.duration` user setting](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#xpack-monitoring-history-duration).
 
-To retain monitoring indices as is without deleting them automatically, you must disable the [cleaner service](../../../deploy-manage/monitor/stack-monitoring/local-exporter.md#local-exporter-cleaner) by adding a disabled local exporter in your cluster settings.
+To retain monitoring indices as is without deleting them automatically, you must disable the [cleaner service](../../../deploy-manage/monitor/stack-monitoring/es-local-exporter.md#local-exporter-cleaner) by adding a disabled local exporter in your cluster settings.
 
 For example
 
@@ -67,9 +67,9 @@ PUT /_cluster/settings
 
 ### Sending monitoring data to a dedicated monitoring deployment [ech-logging-and-monitoring-retention-dedicated-monitoring] 
 
-When [monitoring for production use](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-logging-and-monitoring-production), where you configure your deployments **to send monitoring data to a dedicated monitoring deployment** for indexing, this retention period does not apply. Monitoring indices on a dedicated monitoring deployment are retained until you remove them. There are three options open to you:
+When [monitoring for production use](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-logging-and-monitoring-production), where you configure your deployments **to send monitoring data to a dedicated monitoring deployment** for indexing, this retention period does not apply. Monitoring indices on a dedicated monitoring deployment are retained until you remove them. There are three options open to you:
 
-* To enable the automatic deletion of monitoring indices from dedicated monitoring deployments, [enable monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md#ech-enable-logging-and-monitoring-steps) on your dedicated monitoring deployment in Elasticsearch Add-On for Heroku to send monitoring data to itself. When an {{es}} deployment sends monitoring data to itself, all monitoring indices are deleted automatically after the retention period, regardless of the origin of the monitoring data.
+* To enable the automatic deletion of monitoring indices from dedicated monitoring deployments, [enable monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ech-enable-logging-and-monitoring-steps) on your dedicated monitoring deployment in Elasticsearch Add-On for Heroku to send monitoring data to itself. When an {{es}} deployment sends monitoring data to itself, all monitoring indices are deleted automatically after the retention period, regardless of the origin of the monitoring data.
 * Alternatively, you can enable the cleaner service on the monitoring deployment by creating a local exporter. You can define the retention period at the same time.
 
     For example

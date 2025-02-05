@@ -67,7 +67,7 @@ Troubleshoot the `Kibana Server is not Ready yet` error.
     These {{kib}}-backing indices must also not have [index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) flagging `read_only_allow_delete` or `write` [index blocks](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html).
 
 3. [Shut down all {{kib}} nodes](../../maintenance/start-stop-services/start-stop-kibana.md).
-4. Choose any {{kib}} node, then update the config to set the [debug logging](../../monitor/logging-configuration/log-settings-examples.md#change-overall-log-level).
+4. Choose any {{kib}} node, then update the config to set the [debug logging](../../monitor/logging-configuration/kibana-log-settings-examples.md#change-overall-log-level).
 5. [Start the node](../../maintenance/start-stop-services/start-stop-kibana.md), then check the start-up debug logs for `ERROR` messages or other start-up issues.
 
     For example:

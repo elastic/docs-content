@@ -66,7 +66,7 @@ To store monitoring data in a separate cluster:
 
     * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md)
     * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
-    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/legacy-collection-methods.md)
+    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
 
 3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](https://www.elastic.co/guide/en/logstash/current/configuring-logstash.html).
 4. (Optional) [Configure {{ents}} monitoring](https://www.elastic.co/guide/en/enterprise-search/current/monitoring.html).
@@ -82,9 +82,9 @@ To store monitoring data in a separate cluster:
 6. (Optional) [Configure APM Server monitoring](https://www.elastic.co/guide/en/apm/guide/current/monitor-apm.html)
 7. (Optional) Configure {{kib}} to collect data and send it to the monitoring cluster:
 
-    * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/monitoring-elastic-agent.md)
-    * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/monitoring-metricbeat.md)
-    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/monitoring-kibana.md)
+    * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-elastic-agent.md)
+    * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-metricbeat.md)
+    * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md)
 
 8. (Optional) Create a dedicated {{kib}} instance for monitoring, rather than using a single {{kib}} instance to access both your production cluster and monitoring cluster.
 
@@ -95,5 +95,5 @@ To store monitoring data in a separate cluster:
 
     1. (Optional) Disable the collection of monitoring data in this {{kib}} instance. Set the `xpack.monitoring.kibana.collection.enabled` setting to `false` in the `kibana.yml` file. For more information about this setting, see [Monitoring settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/monitoring-settings-kb.html).
 
-9. [Configure {{kib}} to retrieve and display the monitoring data](../../../deploy-manage/monitor/stack-monitoring/monitoring-data.md).
+9. [Configure {{kib}} to retrieve and display the monitoring data](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 

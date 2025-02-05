@@ -1,11 +1,14 @@
 ---
+navigation_title: "Elastic Cloud Enterprise (ECE)"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-logging-and-monitoring.html
+applies:
+  ece: all
 ---
 
 # Enable stack monitoring on ECE deployments [ece-enable-logging-and-monitoring]
 
-The deployment logging and monitoring feature lets you monitor your deployment in [Kibana](../../../get-started/the-stack.md) by shipping logs and metrics to a monitoring deployment. You can:
+The deployment logging and monitoring feature lets you monitor your deployment in [Kibana](/get-started/the-stack.md) by shipping logs and metrics to a monitoring deployment. You can:
 
 * View your deployment’s health and performance in real time and analyze past cluster, index, and node metrics.
 * View your deployment’s logs to debug issues, discover slow queries, surface deprecations, and analyze access to your deployment.
@@ -53,7 +56,7 @@ When you enable monitoring in Elastic Cloud Enterprise, your monitoring indices 
 $$$ece-logging-and-monitoring-retention-7$$$
 When you enable self-monitoring in Elastic Cloud Enterprise, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. Monitoring data is retained for three days by default or as specified by the [`xpack.monitoring.history.duration` user setting](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-change-user-settings-examples.html#xpack-monitoring-history-duration).
 
-To retain monitoring indices as is without deleting them automatically, you must disable the [cleaner service](local-exporter.md#local-exporter-cleaner) by adding a disabled local exporter in your cluster settings.
+To retain monitoring indices as is without deleting them automatically, you must disable the [cleaner service](es-local-exporter.md#local-exporter-cleaner) by adding a disabled local exporter in your cluster settings.
 
 For example
 
@@ -110,7 +113,7 @@ An ILM policy is pre-configured to manage log retention. The policy can be adjus
 
 ### Index management [ece-logging-and-monitoring-index-management-ilm] 
 
-When sending monitoring data to a deployment, you can configure [Index Lifecycle Management (ILM)](../../../manage-data/lifecycle/index-lifecycle-management.md) to manage retention of your monitoring and logging indices. When sending logs to a deployment, an ILM policy is pre-configured to manage log retention and the policy can be customized to your needs.
+When sending monitoring data to a deployment, you can configure [Index Lifecycle Management (ILM)](/manage-data/lifecycle/index-lifecycle-management.md) to manage retention of your monitoring and logging indices. When sending logs to a deployment, an ILM policy is pre-configured to manage log retention and the policy can be customized to your needs.
 
 
 ### Enable logging and monitoring [ece-enable-logging-and-monitoring-steps] 

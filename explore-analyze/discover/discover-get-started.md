@@ -7,7 +7,7 @@ mapped_pages:
 
 Learn how to use **Discover** to:
 
-* **Select*** and ***filter** your {{es}} data.
+* **Select** and **filter** your {{es}} data.
 * **Explore** the fields and content of your data in depth.
 * **Present** your findings in a visualization.
 
@@ -132,7 +132,7 @@ In the following example, we’re adding 2 fields: A simple "Hello world" field,
 
 ### Visualize aggregated fields [_visualize_aggregated_fields]
 
-If a field can be [aggregated](../aggregations.md), you can quickly visualize it in detail by opening it in **Lens*** from ***Discover***. ***Lens** is the default visualization editor in {{kib}}.
+If a field can be [aggregated](../aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
 
 1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
 
@@ -158,7 +158,7 @@ For geo point fields (![Geo point field icon](../../images/kibana-geoip-icon.png
 You can use **Discover** to compare and diff the field values of multiple results or documents in the table.
 
 1. Select the results you want to compare from the Documents or Results tab in Discover.
-2. From the **Selected*** menu in the table toolbar, choose ***Compare selected**. The comparison view opens and shows the selected results next to each other.
+2. From the **Selected** menu in the table toolbar, choose **Compare selected**. The comparison view opens and shows the selected results next to each other.
 3. Compare the values of each field. By default the first result selected shows as the reference for displaying differences in the other results. When the value remains the same for a given field, it’s displayed in green. When the value differs, it’s displayed in red.
 
     ::::{tip}
@@ -177,7 +177,7 @@ You can use **Discover** to compare and diff the field values of multiple result
 You can quickly copy the content currently displayed in the table for one or several results to your clipboard.
 
 1. Select the results you want to copy.
-2. Open the **Selected*** menu in the table toolbar, and select ***Copy selection as text*** or ***Copy documents as JSON**.
+2. Open the **Selected** menu in the table toolbar, and select **Copy selection as text** or **Copy documents as JSON**.
 
 The content is copied to your clipboard in the selected format. Fields that are not currently added to the table are ignored.
 
@@ -198,7 +198,7 @@ Dive into an individual document to view its fields and the documents that occur
     * You can pin some fields by clicking the left column to keep them displayed even if you filter the table.
 
         ::::{tip}
-        You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover*** table, using the ***Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values.
+        You can restrict the fields listed in the detailed view to just the fields that you explicitly added to the **Discover** table, using the **Selected only** toggle. In ES|QL mode, you also have an option to hide fields with null values.
         ::::
 
 3. To navigate to a view of the document that you can bookmark and share, select ** View single document**.
@@ -248,7 +248,7 @@ You can use **Discover** with the Elasticsearch Query Language, ES|QL. When usin
 
 You can switch to the ES|QL mode of Discover from the application menu bar.
 
-Note that in ES|QL mode, the **Documents*** tab is named ***Results**.
+Note that in ES|QL mode, the **Documents** tab is named **Results**.
 
 Learn more about how to use ES|QL queries in [Using ES|QL](try-esql.md).
 

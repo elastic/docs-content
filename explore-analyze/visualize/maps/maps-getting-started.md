@@ -41,12 +41,12 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 The first layer you’ll add is a choropleth layer to shade world countries by web log traffic. Darker shades will symbolize countries with more web log traffic, and lighter shades will symbolize countries with less traffic.
 
-1. Click **Add layer***, and then click ***Choropleth**.
-2. From the **EMS boundaries*** dropdown menu, select ***World Countries**.
+1. Click **Add layer**, and then click **Choropleth**.
+2. From the **EMS boundaries** dropdown menu, select **World Countries**.
 3. In **Statistics source**, set:
 
-    * **Data view*** to ***kibana_sample_data_logs**
-    * **Join field*** to ***geo.dest**
+    * **Data view** to **kibana_sample_data_logs**
+    * **Join field** to **geo.dest**
 
 4. Click **Add and continue**.
 5. In **Layer settings**, set:
@@ -64,7 +64,7 @@ The first layer you’ll add is a choropleth layer to shade world countries by w
 
     * Set **Fill color > As number** to the grey color ramp.
     * Set **Border color** to white.
-    * Under **Label***, change ***By value*** to ***Fixed**.
+    * Under **Label**, change **By value** to **Fixed**.
 
 8. Click **Keep changes**.
 
@@ -86,8 +86,8 @@ To avoid overwhelming the user with too much data at once, you’ll add two laye
 
 This layer displays web log documents as points. The layer is only visible when users zoom in.
 
-1. Click **Add layer***, and then click ***Documents**.
-2. Set **Data view*** to ***kibana_sample_data_logs**.
+1. Click **Add layer**, and then click **Documents**.
+2. Set **Data view** to **kibana_sample_data_logs**.
 3. Click **Add and continue**.
 4. In **Layer settings**, set:
 
@@ -95,9 +95,9 @@ This layer displays web log documents as points. The layer is only visible when 
     * **Visibility** to the range [9, 24]
     * **Opacity** to 100%
 
-5. Add a tooltip field and select **agent***, ***bytes***, ***clientip***, ***host***, ***machine.os***, ***request***, ***response***, and ***timestamp**.
+5. Add a tooltip field and select **agent**, **bytes**, **clientip**, **host**, **machine.os**, **request**, **response**, and **timestamp**.
 6. In **Scaling**, enable **Limit results to 10,000.**
-7. In **Layer style***, set ***Fill color*** to ***#2200FF**.
+7. In **Layer style**, set **Fill color** to **#2200FF**.
 8. Click **Keep changes**.
 
     Your map will look like this from zoom level 9 to 24:
@@ -113,8 +113,8 @@ This layer displays web log documents as points. The layer is only visible when 
 
 You’ll create a layer for [aggregated data](../../aggregations.md) and make it visible only when the map is zoomed out. Darker colors will symbolize grids with more web log traffic, and lighter colors will symbolize grids with less traffic. Larger circles will symbolize grids with more total bytes transferred, and smaller circles will symbolize grids with less bytes transferred.
 
-1. Click **Add layer***, and select ***Clusters**.
-2. Set **Data view*** to ***kibana_sample_data_logs**.
+1. Click **Add layer**, and select **Clusters**.
+2. Set **Data view** to **kibana_sample_data_logs**.
 3. Click **Add and continue**.
 4. In **Layer settings**, set:
 
@@ -124,11 +124,11 @@ You’ll create a layer for [aggregated data](../../aggregations.md) and make it
 
 5. In **Metrics**:
 
-    * Set **Aggregation*** to ***Count**.
+    * Set **Aggregation** to **Count**.
     * Click **Add metric**.
-    * Set **Aggregation*** to ***Sum*** with ***Field*** set to ***bytes**.
+    * Set **Aggregation** to **Sum** with **Field** set to **bytes**.
 
-6. In **Layer style***, change ***Symbol size**:
+6. In **Layer style**, change **Symbol size**:
 
     * Set **By value** to **sum bytes**.
     * Set the min size to 7 and the max size to 25 px.
@@ -156,7 +156,7 @@ Now that your map is complete, save it and return to the dashboard.
 View your geospatial data alongside a heat map and pie chart, and then filter the data. When you apply a filter in one panel, it is applied to all panels on the dashboard.
 
 1. Click **Add from library** to open a list of panels that you can add to the dashboard.
-2. Add **[Logs] Unique Destination Heatmap*** and ***[Logs] Bytes distribution** to the dashboard.
+2. Add **[Logs] Unique Destination Heatmap** and **[Logs] Bytes distribution** to the dashboard.
 
     :::{image} ../../../images/kibana-gs_dashboard_with_map.png
     :alt: Map in a dashboard with 2 other panels
@@ -168,7 +168,7 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
 5. Set a filter from the map:
 
     1. Open a tooltip by clicking anywhere in the United States vector.
-    2. To show only documents where **geo.src*** is ***US***, click the filter icon ![filter icon](../../../images/kibana-gs-filter-icon.png "")in the row for ***ISO 3066-1 alpha-2**.
+    2. To show only documents where **geo.src** is **US**, click the filter icon ![filter icon](../../../images/kibana-gs-filter-icon.png "")in the row for **ISO 3066-1 alpha-2**.
 
         :::{image} ../../../images/kibana-gs_tooltip_filter.png
         :alt: Tooltip on map

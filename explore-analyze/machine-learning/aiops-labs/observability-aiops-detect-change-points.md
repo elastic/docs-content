@@ -18,7 +18,7 @@ To detect change points:
 
 1. In your {{obs-serverless}} project, go to **Machine learning** → **Change point detection**.
 2. Choose a data view or saved search to access the data you want to analyze.
-3. Select a function: **avg**, **max***, ***min**, or **sum**.
+3. Select a function: **avg**, **max**, **min**, or **sum**.
 4. In the time filter, specify a time range over which you want to detect change points.
 5. From the **Metric field** list, select a field you want to check for change points.
 6. (Optional) From the **Split field** list, select a field to split the data by. If the cardinality of the split field exceeds 10,000, only the first 10,000 values, sorted by document count, are analyzed. Use this option when you want to investigate the change point across multiple instances, pods, clusters, and so on. For example, you may want to view CPU utilization split across multiple instances without having to jump across multiple dashboards and visualizations.

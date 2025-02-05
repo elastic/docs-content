@@ -166,4 +166,4 @@ See the [{{agent}} command reference](https://www.elastic.co/guide/en/fleet/curr
     For more information about these configuration options, see [Configure the {{es}} output](https://www.elastic.co/guide/en/beats/metricbeat/current/elasticsearch-output.html).
 
 6. [Start {{metricbeat}}](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-starting.html) to begin collecting APM monitoring data.
-7. [View the monitoring data in {{kib}}](../../../deploy-manage/monitor/stack-monitoring/monitoring-data.md).
+7. [View the monitoring data in {{kib}}](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).

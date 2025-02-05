@@ -104,7 +104,7 @@ When you create a rule in {{kib}}, an API key is created that captures a snapsho
 
 When you disable a rule, it retains the associated API key which is reused when the rule is enabled. If the API key is missing when you enable the rule, a new key is generated that has your current security privileges. When you import a rule, you must enable it before you can use it and a new API key is generated at that time.
 
-You can generate a new API key at any time in **{{stack-manage-app}} > {{rules-ui}}*** or in the rule details page by selecting ***Update API key** in the actions menu.
+You can generate a new API key at any time in **{{stack-manage-app}} > {{rules-ui}}** or in the rule details page by selecting **Update API key** in the actions menu.
 
 If you manage your rules by using {{kib}} APIs, they support support both key- and token-based authentication as described in [Authentication](https://www.elastic.co/guide/en/kibana/current/api.html#api-authentication). To use key-based authentication, create API keys and use them in the header of your API calls as described in [API Keys](../../../deploy-manage/api-keys/elasticsearch-api-keys.md). To use token-based authentication, provide a username and password; an API key that matches the current privileges of the user is created automatically. In both cases, the API key is subsequently associated with the rule and used when it runs.
 

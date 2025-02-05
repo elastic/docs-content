@@ -89,7 +89,7 @@ After you created the ELSER {{infer}} endpoint, it’s ready to be used for sema
 
 ### Alternative methods to download and deploy ELSER [alternative-download-deploy]
 
-You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Models***, from ***Search** > **Indices**, or by using the trained models API in Dev Console.
+You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Models**, from **Search** > **Indices**, or by using the trained models API in Dev Console.
 
 ::::{note}
 * For most cases, the preferred version is the **Intel and Linux optimized** model, it is recommended to download and deploy that version.

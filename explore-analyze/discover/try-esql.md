@@ -18,7 +18,7 @@ For the complete {{esql}} documentation, including tutorials, examples and the f
 
 ## Prerequisite [prerequisite]
 
-To view the {{esql}} option in **Discover***, the `enableESQL` setting must be enabled from Kibana’s ***Advanced Settings**. It is enabled by default.
+To view the {{esql}} option in **Discover**, the `enableESQL` setting must be enabled from Kibana’s **Advanced Settings**. It is enabled by default.
 
 
 ## Use {{esql}} [tutorial-try-esql]
