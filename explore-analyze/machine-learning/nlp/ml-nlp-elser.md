@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-elser.html
 ---
 
-
-
 # ELSER [ml-nlp-elser]
-
 
 Elastic Learned Sparse EncodeR - or ELSER - is a retrieval model trained by Elastic that enables you to perform [semantic search](../../../solutions/search/vector/sparse-vector-elser.md) to retrieve more relevant search results. This search type provides you search results based on contextual meaning and user intent, rather than exact keyword matches.
 
@@ -19,14 +16,11 @@ This model is recommended for English language documents and queries. If you wan
 While ELSER V2 is generally available, ELSER V1 is in [preview] and will remain in technical preview.
 ::::
 
-
-
 ## Tokens - not synonyms [elser-tokens]
 
 ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) (or [rank features](https://www.elastic.co/guide/en/elasticsearch/reference/current/rank-features.html)) field type is used to store the terms and weights at index time, and to search against later.
 
 This approach provides a more understandable search experience compared to vector embeddings. However, attempting to directly interpret the tokens and weights can be misleading, as the expansion essentially results in a vector in a very high-dimensional space. Consequently, certain tokens, especially those with low weight, contain information that is intertwined with other low-weight tokens in the representation. In this regard, they function similarly to a dense vector representation, making it challenging to separate their individual contributions. This complexity can potentially lead to misinterpretations if not carefully considered during analysis.
-
 
 ## Requirements [elser-req]
 
@@ -36,9 +30,7 @@ To use ELSER, you must have the [appropriate subscription](https://www.elastic.c
 The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in Elasticsearch Service if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
-
 Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](ml-nlp-auto-scale.md) to learn more.
-
 
 ## ELSER v2 [elser-v2]
 
@@ -48,13 +40,11 @@ ELSER v2 has two versions: one cross-platform version which runs on any hardware
 
 If you want to learn more about the ELSER V2 improvements, refer to [this blog post](https://www.elastic.co/search-labs/blog/introducing-elser-v2-part-1).
 
-
 ### Upgrading to ELSER v2 [upgrade-elser-v2]
 
 ELSER v2 is not backward compatible. If you indexed your data with ELSER v1, you need to reindex it with an ingest pipeline referencing ELSER v2 to be able to use v2 for search. This [tutorial](../../../solutions/search/vector/sparse-vector-elser.md) shows you how to create an ingest pipeline with an {{infer}} processor that uses ELSER v2, and how to reindex your data through the pipeline.
 
 Additionally, the `elasticearch-labs` GitHub repository contains an interactive [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/model-upgrades/upgrading-index-to-use-elser.ipynb) that walks through upgrading an index to ELSER V2.
-
 
 ## Download and deploy ELSER [download-deploy-elser]
 
@@ -63,8 +53,8 @@ The easiest and recommended way to download and deploy ELSER is to use the [{{in
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create an {{infer}} endpoint with the ELSER service by running the following API request:
 
-    ```console
-    PUT _inference/sparse_embedding/my-elser-model
+```console
+PUT _inference/sparse_embedding/my-elser-model
     {
       "service": "elasticsearch",
       "service_settings": {
@@ -77,15 +67,13 @@ The easiest and recommended way to download and deploy ELSER is to use the [{{in
         "model_id": ".elser_model_2_linux-x86_64"
       }
     }
-    ```
+```
 
-    The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
+The API request automatically initiates the model download and then deploy the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
 
-
-Refer to the [ELSER {{infer}} service documentation](../../../solutions/search/inference-api/elser-inference-integration.md) to learn more about the available settings.
+Refer to the [ELSER {{infer}} integration documentation](../../../solutions/search/inference-api/elser-inference-integration.md) to learn more about the available settings.
 
 After you created the ELSER {{infer}} endpoint, it’s ready to be used for semantic search. The easiest way to perform semantic search in the {{stack}} is to [follow the `semantic_text` workflow](../../../solutions/search/semantic-search/semantic-search-semantic-text.md).
-
 
 ### Alternative methods to download and deploy ELSER [alternative-download-deploy]
 
@@ -96,7 +84,6 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 * You can deploy the model multiple times by assigning a unique deployment ID when starting the deployment. It enables you to have dedicated deployments for different purposes, such as search and ingest. By doing so, you ensure that the search speed remains unaffected by ingest workloads, and vice versa. Having separate deployments for search and ingest mitigates performance issues resulting from interactions between the two, which can be hard to diagnose.
 
 ::::
-
 
 ::::{dropdown} Using the Trained Models page
 
@@ -124,7 +111,6 @@ You can also download and deploy ELSER either from **{{ml-app}}** > **Trained Mo
 
 ::::
 
-
 ::::{dropdown} Using the search indices UI
 
 #### Using the search indices UI [elasticsearch]
@@ -148,9 +134,7 @@ Alternatively, you can download and deploy ELSER to an {{infer}} pipeline using 
     :class: screenshot
     :::
 
-
 ::::
-
 
 ::::{dropdown} Using the trained models API in Dev Console
 
@@ -159,29 +143,26 @@ Alternatively, you can download and deploy ELSER to an {{infer}} pipeline using 
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create the ELSER model configuration by running the following API call:
 
-    ```console
-    PUT _ml/trained_models/.elser_model_2
+```console
+PUT _ml/trained_models/.elser_model_2
     {
       "input": {
     	"field_names": ["text_field"]
       }
     }
-    ```
+```
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
 3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-trained-model-deployment.html) with a delpoyment ID:
 
-    ```console
-    POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_search
-    ```
+```console
+POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_search
+```
 
     You can deploy the model multiple times with different deployment IDs.
 
-
 ::::
-
-
 
 ## Deploy ELSER in an air-gapped environment [air-gapped-install]
 
@@ -190,12 +171,11 @@ If you want to deploy ELSER in a restricted or closed network, you have two opti
 * create your own HTTP/HTTPS endpoint with the model artifacts on it,
 * put the model artifacts into a directory inside the config directory on all [master-eligible nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#master-node).
 
-
 ### Model artifact files [elser-model-artifacts]
 
 For the cross-platform verison, you need the following files in your system:
 
-```
+```url
 https://ml-models.elastic.co/elser_model_2.metadata.json
 https://ml-models.elastic.co/elser_model_2.pt
 https://ml-models.elastic.co/elser_model_2.vocab.json
@@ -203,12 +183,11 @@ https://ml-models.elastic.co/elser_model_2.vocab.json
 
 For the optimized version, you need the following files in your system:
 
-```
+```url
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.metadata.json
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.pt
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.vocab.json
 ```
-
 
 ### Using an HTTP server [_using_an_http_server]
 
@@ -231,7 +210,7 @@ You can use any HTTP service to deploy ELSER. This example uses the official Ngi
 
 4. Verify that Nginx runs properly by visiting the following URL in your browser:
 
-    ```
+    ```url
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/elser_model_2.metadata.json
     ```
 
@@ -239,7 +218,7 @@ You can use any HTTP service to deploy ELSER. This example uses the official Ngi
 
 5. Point your Elasticsearch deployment to the model artifacts on the HTTP server by adding the following line to the `config/elasticsearch.yml` file:
 
-    ```
+    ```yml
     xpack.ml.model_repository: http://{IP_ADDRESS_OR_HOSTNAME}:8080
     ```
 
@@ -259,7 +238,6 @@ The HTTP server is only required for downloading the model. After the download h
 docker stop ml-models
 ```
 
-
 ### Using file-based access [_using_file_based_access]
 
 For a file-based access, follow these steps:
@@ -268,7 +246,7 @@ For a file-based access, follow these steps:
 2. Put the files into a `models` subdirectory inside the `config` directory of your Elasticsearch deployment.
 3. Point your Elasticsearch deployment to the model directory by adding the following line to the `config/elasticsearch.yml` file:
 
-    ```
+    ```yml
     xpack.ml.model_repository: file://${path.home}/config/models/
     ```
 
@@ -279,7 +257,6 @@ For a file-based access, follow these steps:
 8. After the download is finished, start the deployment by clicking the **Start deployment** button.
 9. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.
 10. Click **Start**.
-
 
 ## Testing ELSER [_testing_elser]
 
@@ -294,7 +271,6 @@ The results contain a list of ten random values for the selected field along wit
 :class: screenshot
 :::
 
-
 ## Performance considerations [performance]
 
 * ELSER works best on small-to-medium sized fields that contain natural language. For connector or web crawler use cases, this aligns best with fields like *title*, *description*, *summary*, or *abstract*. As ELSER encodes the first 512 tokens of a field, it may not provide as relevant of results for large fields. For example, `body_content` on web crawler documents, or body fields resulting from extracting text from office documents with connectors. For larger fields like these, consider "chunking" the content into multiple values, where each chunk can be under 512 tokens.
@@ -303,11 +279,9 @@ The results contain a list of ten random values for the selected field along wit
 
 To learn more about ELSER performance, refer to the [Benchmark information](#elser-benchmarks).
 
-
 ## Pre-cleaning input text [pre-cleaning]
 
 The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/htmlstrip-processor.html) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
-
 
 ## Recommendations for using ELSER [elser-recommendations]
 
@@ -317,18 +291,14 @@ To gain the biggest value out of ELSER trained models, consider to follow this l
 * Setting `min_allocations` to `0` can save on costs for non-critical use cases or testing environments.
 * Enabling [autoscaling](ml-nlp-auto-scale.md) through adaptive allocations or adaptive resources makes it possible for {{es}} to scale up or down the available resources of your ELSER deployment based on the load on the process.
 * Use dedicated, optimized ELSER {{infer}} endpoints for ingest and search use cases.
-
-    * When deploying a trained model in {{kib}}, you can select for which case you want to optimize your ELSER deployment.
-    * If you use the trained model or {{infer}} APIs and want to optimize your ELSER trained model deployment or {{infer}} endpoint for ingest, set the number of threads to `1` (`"num_threads": 1`).
-    * If you use the trained model or {{infer}} APIs and want to optimize your ELSER trained model deployment or {{infer}} endpoint for search, set the number of threads to greater than `1`.
-
-
+  * When deploying a trained model in {{kib}}, you can select for which case you want to optimize your ELSER deployment.
+  * If you use the trained model or {{infer}} APIs and want to optimize your ELSER trained model deployment or {{infer}} endpoint for ingest, set the number of threads to `1` (`"num_threads": 1`).
+  * If you use the trained model or {{infer}} APIs and want to optimize your ELSER trained model deployment or {{infer}} endpoint for search, set the number of threads to greater than `1`.
 
 ## Further reading [further-readings]
 
 * [Perform semantic search with `semantic_text` using the ELSER endpoint](../../../solutions/search/semantic-search/semantic-search-semantic-text.md)
 * [Perform semantic search with ELSER](../../../solutions/search/vector/sparse-vector-elser.md)
-
 
 ## Benchmark information [elser-benchmarks]
 
@@ -336,19 +306,15 @@ To gain the biggest value out of ELSER trained models, consider to follow this l
 The recommended way to use ELSER is through the [{{infer}} API](../../../solutions/search/inference-api/elser-inference-integration.md) as a service.
 ::::
 
-
 The following sections provide information about how ELSER performs on different hardwares and compares the model performance to {{es}} BM25 and other strong baselines.
-
 
 ### Version overview [version-overview]
 
 ELSER V2 has a **optimized** version that is designed to run only on Linux with an x86-64 CPU architecture and a **cross-platform** version that can be run on any platform.
 
-
 #### ELSER V2 [version-overview-v2]
 
 Besides the performance improvements, the biggest change in ELSER V2 is the introduction of the first platform specific ELSER model - that is, a model optimized to run only on Linux with an x86-64 CPU architecture. The optimized model is designed to work best on newer Intel CPUs, but it works on AMD CPUs as well. It is recommended to use the new optimized Linux-x86-64 model for all new users of ELSER as it is significantly faster than the cross-platform model which can be run on any platform. ELSER V2 produces significantly higher quality embeddings than ELSER V1. Regardless of which ELSER V2 model you use (optimized or cross-platform), the particular embeddings produced are the same.
-
 
 ### Qualitative benchmarks [elser-qualitative-benchmarks]
 
@@ -359,17 +325,13 @@ The table below shows the performance of ELSER V2 compared to BM 25. ELSER V2 ha
 :::{image} ../../../images/machine-learning-ml-nlp-bm25-elser-v2.png
 :alt: ELSER V2 benchmarks compared to BM25
 :::
-
-*NDCG@10 for BEIR data sets for BM25 and ELSER V2  - higher values are better)*
-
+*NDCG@10 for BEIR data sets for BM25 and ELSER V2  - higher values are better*
 
 ### Hardware benchmarks [elser-hw-benchmarks]
 
 ::::{important}
 While the goal is to create a model that is as performant as possible, retrieval accuracy always take precedence over speed, this is one of the design principles of ELSER. Consult with the tables below to learn more about the expected model performance. The values refer to operations performed on two data sets and different hardware configurations. Your data set has an impact on the model performance. Run tests on your own data to have a more realistic view on the model performance for your use case.
 ::::
-
-
 
 #### ELSER V2 [_elser_v2]
 
@@ -380,7 +342,6 @@ The performance of virtual cores (that is, when the number of allocations is gre
 ::::{important}
 The length of the documents in your particular dataset will have a significant impact on your throughput numbers.
 ::::
-
 
 Refer to [this blog post](https://www.elastic.co/search-labs/blog/introducing-elser-v2-part-1) to learn more about ELSER V2 improved performance.
 

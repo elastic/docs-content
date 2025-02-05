@@ -31,9 +31,9 @@ Customize the appearance of the document table and its contents to your liking.
 * To move a single column, drag its header and drop it to the position you want. You can also open the column’s contextual options, and select **Move left** or **Move right** in the available options.
 * To move multiple columns, click **Columns**. In the pop-up, drag the column names to their new order.
 * To resize a column, drag the right edge of the column header until the column is the width that you want.
-
-    Column widths are stored with a Discover session. When you add a Discover session as a dashboard panel, it appears the same as in **Discover**.
-
+  ::::{tip}
+  Column widths are stored with a Discover session. When you add a Discover session as a dashboard panel, it appears the same as in **Discover**.
+  ::::
 
 
 ### Customize the table density [document-explorer-density]
@@ -54,7 +54,7 @@ When the number of results returned by your search query (displayed at the top o
 
 On the last page of the table, a message indicates that you’ve reached the end of the loaded search results. From that message, you can choose to load more results to continue exploring.
 
-![Limit sample size in Discover](../../images/kibana-discover-limit-sample-size.png "")
+![Limit sample size in Discover](../../images/kibana-discover-limit-sample-size.png "title =50%")
 
 
 ### Sort the fields [document-explorer-sort-data]
@@ -66,20 +66,15 @@ To add or remove a sort on a single field, click the column header, and then sel
 To sort by multiple fields:
 
 1. Click the **Sort fields** option.
-
-    :::{image} ../../images/kibana-document-explorer-sort-data.png
-    :alt: Pop-up in document table for sorting columns
-    :class: screenshot
-    :::
+   ![Pop-up in document table for sorting columns](../../images/kibana-document-explorer-sort-data.png "title =50%")
 
 2. To add fields to the sort, select their names from the dropdown menu.
-
-    By default, columns are sorted in the order they are added.
-
-    :::{image} ../../images/kibana-document-explorer-multi-field.png
-    :alt: Multi field sort in the document table
-    :class: screenshot
-    :::
+   By default, columns are sorted in the order they are added.
+   :::{image} ../../images/kibana-document-explorer-multi-field.png
+   :alt: Multi field sort in the document table
+   :class: screenshot
+   :width: 50%
+   :::
 
 3. To change the sort order, select a field in the pop-up, and then drag it to the new location.
 
@@ -90,8 +85,7 @@ Change how {{kib}} displays a field.
 
 1. Click the column header for the field, and then select **Edit data view field.**
 2. In the **Edit field** form, change the field name and format.
-
-    For detailed information on formatting options, refer to [Format data fields](../find-and-organize/data-views.md#managing-fields).
+   For detailed information on formatting options, refer to [Format data fields](../find-and-organize/data-views.md#managing-fields).
 
 
 
@@ -101,11 +95,11 @@ Narrow your results to a subset of documents so you’re comparing just the data
 
 1. Select the documents you want to compare.
 2. Click the **Selected** option, and then select **Show selected documents only**.
-
-    :::{image} ../../images/kibana-document-explorer-compare-data.png
-    :alt: Compare data in the document table
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-document-explorer-compare-data.png
+   :alt: Compare data in the document table
+   :class: screenshot
+   :width: 50%
+   :::
 
 
 You can also compare individual field values using the [**Compare selected** option](discover-get-started.md#compare-documents-in-discover).

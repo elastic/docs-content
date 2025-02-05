@@ -29,4 +29,3 @@ The evaluation API endpoint has the following base:
 * [Update {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html)
 
 For information about the APIs related to trained models, refer to [*API quick reference*](../nlp/ml-nlp-apis.md).
-

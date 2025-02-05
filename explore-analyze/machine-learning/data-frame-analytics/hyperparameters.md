@@ -13,8 +13,6 @@ You can view the hyperparameter values that were ultimately chosen by expanding 
 
 Different hyperparameters may affect the model performance to a different degree. To estimate the importance of the optimized hyperparameters, analysis of variance decomposition is used. The resulting `absolute importance` shows how much the variation of a hyperparameter impacts the variation in the validation loss. Additionally, `relative importance` is also computed which gives the importance of the hyperparameter compared to the rest of the tuneable hyperparameters. The sum of all relative importances is 1. You can check these results in the response of the [get {{dfanalytics-job}} stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html).
 
-::::{tip} 
+::::{tip}
 Unless you fully understand the purpose of a hyperparameter, it is highly recommended that you leave it unset and allow hyperparameter optimization to occur.
 ::::
-
-

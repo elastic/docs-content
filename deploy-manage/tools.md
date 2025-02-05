@@ -1,32 +1,59 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability.html
+
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
+
 
 # Backup, high availability, and resilience tools [high-availability]
 
-Your data is important to you. Keeping it safe and available is important to Elastic. Sometimes your cluster may experience hardware failure or a power loss. To help you plan for this, {{es}} offers a number of features to achieve high availability despite failures. Depending on your deployment type, you might need to provision servers in different zones or configure external repositories to meet your organization’s availability needs.
+Elastic provides comprehensive tools to safeguard data, ensure continuous availability, and maintain resilience. These tools are designed to support disaster recovery strategies, enabling businesses to protect critical information and minimize downtime, and maintain high availability in case of unexpected failures. In this section, you'll learn about these tools and how to implement them in your environment.
 
-* **[Design for resilience](production-guidance/availability-and-resilience.md)**
+For strategies to design resilient clusters, see **[Availability and resilience](production-guidance/availability-and-resilience.md)**.
 
-    Distributed systems like Elasticsearch are designed to keep working even if some of their components have failed. An Elasticsearch cluster can continue operating normally if some of its nodes are unavailable or disconnected, as long as there are enough well-connected nodes to take over the unavailable node’s responsibilities.
+::::{note} 
+The snapshot and restore and cross-cluster replication features are currently not available for Elastic Cloud Serverless projects. These features will be introduced in the future. For more information, refer to [Serverless differences](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-categories).
+::::
 
-    If you’re designing a smaller cluster, you might focus on making your cluster resilient to single-node failures. Designers of larger clusters must also consider cases where multiple nodes fail at the same time.
+## Snapshot and restore
 
-* **[Cross-cluster replication](tools/cross-cluster-replication.md)**
+Snapshots in Elasticsearch are point-in-time backups that include your cluster's data, settings, and overall state. They capture all the information necessary to restore your cluster to a specific moment in time, making them essential for protecting data, recovering from unexpected issues, and transferring data between clusters. Snapshots are a reliable way to ensure the safety of your data and maintain the continuity of your operations.
 
-    To effectively distribute read and write operations across nodes, the nodes in a cluster need good, reliable connections to each other. To provide better connections, you typically co-locate the nodes in the same data center or nearby data centers.
+You can perform the following tasks to manage snapshots and snapshot repositories:
 
-    Co-locating nodes in a single location exposes you to the risk of a single outage taking your entire cluster offline. To maintain high availability, you can prepare a second cluster that can take over in case of disaster by implementing {{ccr}} (CCR).
+- **[Register a repository](tools/snapshot-and-restore/manage-snapshot-repositories.md):** Configure storage repositories (for example, S3, Azure, Google Cloud) to store snapshots. The way that you register repositories differs depending on your deployment method:
+  - **[Elastic Cloud Hosted](tools/snapshot-and-restore/elastic-cloud-hosted.md):** Deployments come with a preconfigured S3 repository for automatic backups, simplifying the setup process. You can also register external repositories, such as Azure, and Google Cloud, for more flexibility.
+  - **[Elastic Cloud Enterprise](tools/snapshot-and-restore/cloud-enterprise.md):** Repository configuration is managed through the Elastic Cloud Enterprise user interface and automatically linked to deployments.
+  - **[Elastic Cloud on Kubernetes](tools/snapshot-and-restore/cloud-on-k8s.md) and [self-managed](tools/snapshot-and-restore/self-managed.md) deployments:** Repositories must be configured manually.
 
-    CCR provides a way to automatically synchronize indices from a leader cluster to a follower cluster. This cluster could be in a different data center or even a different content from the leader cluster. If the primary cluster fails, the secondary cluster can take over.
+- **[Create snapshots](tools/snapshot-and-restore/create-snapshots.md):** Manually or automatically create backups of your cluster.
+- **[Restore a snapshot](tools/snapshot-and-restore/restore-snapshot.md):** Recover indices, data streams, or the entire cluster to revert to a previous state. You can choose to restore specific parts of a snapshot, such as a single index, or perform a full restore.
 
-    ::::{tip} 
-    You can also use CCR to create secondary clusters to serve read requests in geo-proximity to your users.
-    ::::
+To reduce storage costs for infrequently accessed data while maintaining access, you can also create **[searchable snapshots](tools/snapshot-and-restore/searchable-snapshots.md)**.
 
-* **[Snapshots](tools/snapshot-and-restore.md)**
+::::{note}
+Snapshot configurations vary across Elastic Cloud Hosted, Elastic Cloud Enterprise (ECE), Elastic Cloud on Kubernetes (ECK), and self-managed deployments.
+::::
 
-    Take snapshots of your cluster that can be restored in case of failure.
+## Cross-cluster replication (CCR)
 
+**[Cross-cluster replication (CCR)](tools/cross-cluster-replication.md)** is a feature in Elasticsearch that allows you to replicate data in real time from a leader cluster to one or more follower clusters. This replication ensures that data is synchronized across clusters, providing continuity, redundancy, and enhanced data accessibility. 
 
+CCR provides a way to automatically synchronize indices from a leader cluster to a follower cluster. This cluster could be in a different data center or even a different continent from the leader cluster. If the primary cluster fails, the secondary cluster can take over.
+
+::::{note}
+CCR relies on **[remote clusters](remote-clusters.md)** functionality to establish and manage connections between the leader and the follower clusters.
+::::
+
+You can perform the following tasks to manage cross-cluster replication:
+
+- **[Set up CCR](tools/cross-cluster-replication/set-up-cross-cluster-replication.md):** Configure leader and follower clusters for data replication.
+- **[Manage CCR](tools/cross-cluster-replication/manage-cross-cluster-replication.md):** Monitor and manage replicated indices.
+- **[Automate replication](tools/cross-cluster-replication/manage-auto-follow-patterns.md):** Use auto-follow patterns to automatically replicate newly created indices.
+- **Set up failover clusters:** Configure **[uni-directional](tools/cross-cluster-replication/uni-directional-disaster-recovery.md)** or **[bi-directional](tools/cross-cluster-replication/bi-directional-disaster-recovery.md)** CCR for redundancy and disaster recovery.
+- **[Review cluster upgrade considerations when using CCR](upgrade.md):** If you're using CCR, then you might need to upgrade your clusters in a specific order to prevent errors. Review the considerations and recommended procedures for performing upgrades on CCR leaders and followers.
