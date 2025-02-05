@@ -24,7 +24,6 @@ xpack.security.audit.logfile.events.emit_request_body: true
 No filtering is performed when auditing, so sensitive data might be audited in plain text when audit events include the request body. Also, the request body can contain malicious content that can break a parser consuming the audit logs.
 ::::
 
-
 The request body is printed as an escaped JSON string value (RFC 4627) to the `request.body` event attribute.
 
 Not all events contain the `request.body` attribute, even when the above setting is toggled. The ones that do are: `authentication_success`, `authentication_failed`, `realm_authentication_failed`, `tampered_request`, `run_as_denied`, and `anonymous_access_denied`. The `request.body` attribute is printed on the coordinating node only (the node that handles the REST request). Most of these event types are [not included by default](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include).

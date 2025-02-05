@@ -1,4 +1,5 @@
 ---
+navigation_title: Elasticsearch audit output
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/audit-log-output.html
 applies:
@@ -8,9 +9,7 @@ applies:
   stack: all
 ---
 
-% evaluate the applies section
-
-# Logfile audit output [audit-log-output]
+# Elasticsearch logfile audit output [audit-log-output]
 
 The `logfile` audit output is the only output for auditing. It writes data to the `<clustername>_audit.json` file in the logs directory.
 

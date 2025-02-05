@@ -12,26 +12,13 @@ applies:
 
 # Elasticsearch audit events [elasticsearch-audit-events]
 
-When you are [auditing security events](/deploy-manage/monitor/logging-configuration/enabling-audit-logs.md), a single client request might generate multiple audit events, across multiple cluster nodes. The common `request.id` attribute can be used to correlate the associated events.
+When you are [auditing security events](/deploy-manage/monitor/logging-configuration/enabling-audit-logs.md), a single client request might generate multiple audit events across multiple cluster nodes. The common `request.id` attribute can be used to correlate the associated events.
 
-This document provides a reference for all audit event types and their associated attributes in {{es}}. These types and attributes can be used to filter audit logs using inclusion and exclusion rules or to define [ignore policies](/deploy-manage/monitor/logging-configuration/logfile-audit-events-ignore-policies.md).
+This document provides a reference for all audit event [types](#audit-event-types) and their associated [attributes](#audit-event-attributes) in {{es}}. Types and attributes can be used to control what gets logged through [audit event settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#event-audit-settings) and [ignore policies](/deploy-manage/monitor/logging-configuration/logfile-audit-events-ignore-policies.md).
 
 ::::{note}
 Certain audit events require the `security_config_change` event type to log the related event action. The event descriptions in this document indicate whether this requirement is applicable.
 ::::
-
-# Elasticsearch Audit Events [elasticsearch-audit-events]
-
-When [auditing security events](enabling-audit-logs.md), a single client request may generate multiple audit events across different cluster nodes. The `request.id` attribute is a common identifier that can be used to correlate related events.
-
-
-To control which events are logged, use the [`xpack.security.audit.logfile.events.include`](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include) setting in `elasticsearch.yml` to specify the event types to include in the audit output.
-
-::::{note}
-Some audit events require the `security_config_change` event type to log specific event actions. The event descriptions in this document indicate when this requirement applies.
-Some audit events require the `security_config_change` event type to log specific event actions. The event descriptions in this document indicate when this requirement applies.
-::::
-
 
 ## Audit event types [audit-event-types]
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Elasticsearch audit events ignore policies
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/audit-log-ignore-policy.html
 applies:
@@ -8,7 +9,7 @@ applies:
   stack: all
 ---
 
-# Logfile audit events ignore policies [audit-log-ignore-policy]
+# Elasticsearch logfile audit events ignore policies [audit-log-ignore-policy]
 
 The comprehensive audit trail is necessary to ensure accountability. It offers tremendous value during incident response and can even be required for demonstrating compliance.
 

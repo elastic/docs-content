@@ -1,4 +1,5 @@
 ---
+navigation_title: Correlate audit events
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html
 applies:
@@ -13,7 +14,7 @@ applies:
 Audit events can be correlated in two ways:
 
 1. Multiple {{kib}} audit events that resulted from the same request can be correlated together.
-2. If [{{es}} audit logging](enabling-elasticsearch-audit-logs.md) is enabled, {{kib}} audit events from one request can be correlated with backend calls that create {{es}} audit events.
+2. If [{{es}} audit logging](enabling-audit-logs.md) is enabled, {{kib}} audit events from one request can be correlated with backend calls that create {{es}} audit events.
 
 ::::{note}
 The examples below are simplified, many fields have been omitted and values have been shortened for clarity.
