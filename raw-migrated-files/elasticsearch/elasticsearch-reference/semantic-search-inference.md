@@ -1082,7 +1082,7 @@ GET cohere-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `cohere-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "cohere-embeddings",
@@ -1145,7 +1145,7 @@ GET elser-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `cohere-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "elser-embeddings",
@@ -1203,7 +1203,7 @@ GET hugging-face-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `hugging-face-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "hugging-face-embeddings",
@@ -1270,7 +1270,7 @@ GET openai-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `openai-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "openai-embeddings",
@@ -1328,7 +1328,7 @@ GET azure-openai-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `azure-openai-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "azure-openai-embeddings",
@@ -1386,7 +1386,7 @@ GET azure-ai-studio-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `azure-ai-studio-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "azure-ai-studio-embeddings",
@@ -1502,7 +1502,7 @@ GET mistral-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `mistral-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "mistral-embeddings",
@@ -1560,7 +1560,7 @@ GET amazon-bedrock-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `amazon-bedrock-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "amazon-bedrock-embeddings",
@@ -1618,7 +1618,7 @@ GET alibabacloud-ai-search-embeddings/_search
 
 As a result, you receive the top 10 documents that are closest in meaning to the query from the `alibabacloud-ai-search-embeddings` index sorted by their proximity to the query:
 
-```consol-result
+```console-result
 "hits": [
       {
         "_index": "alibabacloud-ai-search-embeddings",
