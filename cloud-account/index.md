@@ -11,8 +11,8 @@ applies:
 
 Your {{ecloud}} account allows you to manage your personal settings, including your email address, password, and authentication methods. You can perform the following tasks at any time from your user profile:
 
-* [Update your email address](/cloud-account/update-your-email-address.md).
-* [Add an additional login method](/cloud-account/add-a-login-method.md): choose from password-based login, Google sign-in, and Microsoft sign-in.
+* [Update your email address](/cloud-account/update-your-email-address.md)
+* [Add an additional login method](/cloud-account/add-a-login-method.md): Choose from password-based login, Google sign-in, and Microsoft sign-in.
 
 If you use password-based login, then you can perform the following additional tasks:
 
