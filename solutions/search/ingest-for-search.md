@@ -54,12 +54,6 @@ You can also transform and enrich your content at ingest time with ingest pipeli
 
 You can manage ingest pipelines through Elasticsearch APIs or Kibana UIs.
 
-The Content UI under Search has a set of tools for creating and managing indices optimized for search use cases (non time series data). You can also manage your ingest pipelines in this UI.
-Refer to 
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/es-ingestion-overview.md
-% - [x] ./raw-migrated-files/docs-content/serverless/elasticsearch-ingest-data-through-api.md
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/ingest-pipeline-search.md
-% - [x] ./raw-migrated-files/docs-content/serverless/elasticsearch-ingest-your-data.md
+::::{tip}
+The UI also has a set of tools for creating and managing indices optimized for search use cases. You can also manage your ingest pipelines in this UI. Learn more in [](search-pipelines.md)
+::::
