@@ -1,6 +1,6 @@
 # Enable threat intelligence integrations [es-threat-intel-integrations]
 
-The Threat Intelligence view provides a streamlined way to collect threat intelligence data that you can use for threat detection and matching. Threat intelligence data consists of  [threat indicators](../../../troubleshoot/security/indicators-of-compromise.md#ti-indicators) ingested from third-party threat intelligence sources.
+The Threat Intelligence view provides a streamlined way to collect threat intelligence data that you can use for threat detection and matching. Threat intelligence data consists of  [threat indicators](../../../solutions/security/investigate/indicators-of-compromise.md#ti-indicators) ingested from third-party threat intelligence sources.
 
 Threat indicators describe potential threats, unusual behavior, or malicious activity on a network or in an environment. They are commonly used in indicator match rules to detect and match known threats. When an indicator match rule generates an alert, it includes information about the matched threat indicator.
 
