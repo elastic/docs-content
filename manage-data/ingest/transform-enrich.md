@@ -38,7 +38,7 @@ Finally, to help ensure optimal query results, you may want to customize how tex
 Index mapping
 :   Index mapping lets you control the structure that incoming data has within an Elasticsearch index. You can define all of the fields that are included in the index and their respective data types. For example, you can set fields for dates, numbers, or geolocations, and define the fields to have specific formats. 
 
-:   Ingested data can be mapped dynamically, where Elasticsearch adds all fields automatically based on the detected data types, or explicitly, where {{es}} maps the incoming data to fields based on your custom rules.
+:   Ingested data can be mapped dynamically, where {{es}} adds all fields automatically based on the detected data types, or explicitly, where {{es}} maps the incoming data to fields based on your custom rules.
 
 :   You can use {{es}} [runtime fields](../data-store/mapping/runtime-fields.md) to define or alter the schema at query time. You can start working with your data without needing to understand how it is structured, add fields to existing documents without reindexing your data, override the value returned from an indexed field, and/or define fields for a specific use without modifying the underlying schema.
 
