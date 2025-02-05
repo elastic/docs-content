@@ -16,8 +16,8 @@ Your {{ecloud}} account allows you to manage your personal settings, including y
 
 If you use password-based login, then you can perform the following additional tasks:
 
-* [Change your password](/cloud-account/change-your-password.md).
-* [Configure multifactor authentication](/cloud-account/multifactor-authentication.md).
+* [Change your password](/cloud-account/change-your-password.md)
+* [Configure multifactor authentication](/cloud-account/multifactor-authentication.md)
 
 Additionally, you can manage your organization membership, including joining or leaving an organization. Refer to [Join or leave an organization](/cloud-account/join-or-leave-an-organization.md) for more information.
 
