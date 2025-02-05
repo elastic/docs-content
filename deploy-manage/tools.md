@@ -13,7 +13,7 @@ For strategies to design resilient clusters, see **[Availability and resilience]
 The snapshot and restore and cross-cluster replication features are currently not available for Elastic Cloud Serverless projects. These features will be introduced in the future. For more information, refer to [Serverless differences](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-categories).
 ::::
 
-## Snapshots
+## Snapshot and restore
 
 Snapshots in Elasticsearch are point-in-time backups that include your cluster's data, settings, and overall state. They capture all the information necessary to restore your cluster to a specific moment in time, making them essential for protecting data, recovering from unexpected issues, and transferring data between clusters. Snapshots are a reliable way to ensure the safety of your data and maintain the continuity of your operations.
 
