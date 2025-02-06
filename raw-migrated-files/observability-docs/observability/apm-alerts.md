@@ -63,7 +63,7 @@ From the Applications UI, select **Alerts and rules** → **Manage rules** to be
 
 ### More information [apm-alert-more-info]
 
-See [Alerting](../../../explore-analyze/alerts.md) for more information.
+See [Alerting](../../../explore-analyze/alerts-cases.md) for more information.
 
 ::::{note}
 If you are using an **on-premise** Elastic Stack deployment with security, communication between Elasticsearch and Kibana must have TLS configured. More information is in the alerting [prerequisites](../../../explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-prerequisites).
