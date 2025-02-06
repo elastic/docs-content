@@ -91,10 +91,10 @@ To restart a transform that’s not running:
     * `stopped`: Select **Start** to restart the transform.
     * `failed`: Select **Stop** to first stop the transform, and then select **Start** to restart it.
 
-        :::{image} ../../images/security-transforms-start.png
-        :alt: Transforms page with Start option selected
-        :class: screenshot
-        :::
+      :::{image} ../../images/security-transforms-start.png
+      :alt: Transforms page with Start option selected
+      :class: screenshot
+      :::
 
 4. On the confirmation message that displays, click **Start** to restart the transform.
 5. The transform’s status changes to `started`. If it doesn’t change, refresh the page.
