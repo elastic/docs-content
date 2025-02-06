@@ -329,7 +329,7 @@ To avoid this, explicitly define the requests and limits mandated by your enviro
 
 #### Monitoring Elasticsearch CPU using Stack Monitoring [k8s-monitor-compute-resources-stack-monitoring]
 
-If [Stack Monitoring](../../monitor/stack-monitoring/enable-stack-monitoring-on-eck-deployments.md) is enabled, the pressure applied by the CPU cgroup controller to an Elasticsearch node can be evaluated from the **Stack Monitoring** page in Kibana.
+If [Stack Monitoring](../../monitor/stack-monitoring/eck-stack-monitoring.md) is enabled, the pressure applied by the CPU cgroup controller to an Elasticsearch node can be evaluated from the **Stack Monitoring** page in Kibana.
 
 1. On the **Stack Monitoring** page select the Elasticsearch node you want to monitor.
 2. Select the **Advanced** tab.

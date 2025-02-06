@@ -4,17 +4,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
 ---
 
-
-
 # Text embedding and semantic search [ml-nlp-text-emb-vector-search-example]
-
 
 You can use these instructions to deploy a [text embedding](ml-nlp-search-compare.md#ml-nlp-text-embedding) model in {{es}}, test the model, and add it to an {{infer}} ingest pipeline. It enables you to generate vector representations of text and perform vector similarity search on the generated vectors. The model that is used in the example is publicly available on [HuggingFace](https://huggingface.co/).
 
 The example uses a public data set from the [MS MARCO Passage Ranking Task](https://microsoft.github.io/msmarco/#ranking). It consists of real questions from the Microsoft Bing search engine and human generated answers for them. The example works with a sample of this data set, uses a model to produce text embeddings, and then runs vector search on it.
 
 You can find [this example as a Jupyter notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/hugging-face/loading-model-from-hugging-face.ipynb) using the Python client in the `elasticsearch-labs` repo.
-
 
 ## Requirements [ex-te-vs-requirements]
 
@@ -23,7 +19,6 @@ To follow along the process on this page, you must have:
 * an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
 * The [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated.
 * [Docker](https://docs.docker.com/get-docker/) installed.
-
 
 ## Deploy a text embedding model [ex-te-vs-deploy]
 
@@ -54,7 +49,6 @@ You need to provide an administrator username and password and replace the `$CLO
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
 Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/guide/en/kibana/current/ml-sync.html).
-
 
 ## Test the text embedding model [ex-text-emb-test]
 
@@ -98,9 +92,7 @@ The API returns a response similar to the following:
 
 ::::
 
-
 The result is the predicted dense vector transformed from the example text.
-
 
 ## Load data [ex-text-emb-data]
 
@@ -114,7 +106,6 @@ Upload the file by using the [Data Visualizer](../../../manage-data/ingest.md#up
 :alt: Importing the data
 :class: screenshot
 :::
-
 
 ## Add the text embedding model to an {{infer}} ingest pipeline [ex-text-emb-ingest]
 
@@ -195,7 +186,6 @@ POST _reindex?wait_for_completion=false
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 
-
 The API call returns a task ID that can be used to monitor the progress:
 
 ```js
@@ -210,7 +200,6 @@ You can also open the model stat UI to follow the progress.
 :::
 
 After the reindexing is finished, the documents in the new index contain the {{infer}} results – the vector embeddings.
-
 
 ## Semantic search [ex-text-emb-vect-search]
 

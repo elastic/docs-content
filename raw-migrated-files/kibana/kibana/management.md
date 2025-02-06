@@ -30,13 +30,13 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 
 |     |     |
 | --- | --- |
-| [{{rules-ui}}](../../../explore-analyze/alerts.md) | Centrally [manage your rules](../../../explore-analyze/alerts/kibana/create-manage-rules.md) across {{kib}}. |
-| [Cases](../../../explore-analyze/alerts/cases.md) | Create and manage cases to investigate issues. |
+| [{{rules-ui}}](../../../explore-analyze/alerts-cases.md) | Centrally [manage your rules](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md) across {{kib}}. |
+| [Cases](../../../explore-analyze/alerts-cases/cases.md) | Create and manage cases to investigate issues. |
 | [{{connectors-ui}}](../../../deploy-manage/manage-connectors.md) | Create and [manage reusable connectors](../../../deploy-manage/manage-connectors.md#connector-management) for triggering actions. |
 | [Reporting](../../../explore-analyze/report-and-share.md) | Monitor the generation of reports—PDF, PNG, and CSV—and download reports that you previously generated.A report can contain a dashboard, visualization, table with Discover search results, or Canvas workpad. |
 | Machine Learning Jobs | View, export, and import your [{{anomaly-detect}}](../../../explore-analyze/machine-learning/anomaly-detection.md) and[{{dfanalytics}}](../../../explore-analyze/machine-learning/data-frame-analytics.md) jobs. Open the Single MetricViewer or Anomaly Explorer to see your {{anomaly-detect}} results. |
-| [Watcher](../../../explore-analyze/alerts/watcher.md) | Detect changes in your data by creating, managing, and monitoring alerts.For example, you might create an alert when the maximum total CPU usage on a machine goesabove a certain percentage. |
-| [Maintenance windows](../../../explore-analyze/alerts/kibana/maintenance-windows.md) | Suppress rule notifications for scheduled periods of time. |
+| [Watcher](../../../explore-analyze/alerts-cases/watcher.md) | Detect changes in your data by creating, managing, and monitoring alerts.For example, you might create an alert when the maximum total CPU usage on a machine goesabove a certain percentage. |
+| [Maintenance windows](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md) | Suppress rule notifications for scheduled periods of time. |
 
 
 ## Security [manage-security] 

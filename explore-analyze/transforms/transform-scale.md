@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-scale.html
 ---
 
-
-
 # Transforms at scale [transform-scale]
-
 
 {{transforms-cap}} convert existing {{es}} indices into summarized indices, which provide opportunities for new insights and analytics. The search and index operations performed by {{transforms}} use standard {{es}} features so similar considerations for working with {{es}} at scale are often applicable to {{transforms}}. If you experience performance issues, start by identifying the bottleneck areas (search, indexing, processing, or storage) then review the relevant considerations in this guide to improve performance. It also helps to understand how {{transforms}} work as different considerations apply depending on whether or not your transform is running in continuous mode or in batch.
 
@@ -27,16 +24,13 @@ The following considerations are not sequential – the numbers help to navigate
 
 The keywords in parenthesis at the end of each recommendation title indicates the bottleneck area that may be improved by following the given recommendation.
 
-
 ## Measure {{transforms}} performance [measure-performance]
 
 In order to optimize {{transform}} performance, start by identifying the areas where most work is being done. The **Stats** interface of the **{{transforms-cap}}** page in {{kib}} contains information that covers three main areas: indexing, searching, and processing time (alternatively, you can use the [{{transforms}} stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html)). If, for example, the results show that the highest proportion of time is spent on search, then prioritize efforts on optimizing the search query of the {{transform}}. {{transforms-cap}} also has [Rally support](https://esrally.readthedocs.io) that makes it possible to run performance checks on {{transforms}} configurations if it is required. If you optimized the crucial factors and you still experience performance issues, you may also want to consider improving your hardware.
 
-
 ## 1. Optimize `frequency` (index) [frequency]
 
 In a {{ctransform}}, the `frequency` configuration option sets the interval between checks for changes in the source indices. If changes are detected, then the source data is searched and the changes are applied to the destination index. Depending on your use case, you may wish to reduce the frequency at which changes are applied. By setting `frequency` to a higher value (maximum is one hour), the workload can be spread over time at the cost of less up-to-date data.
-
 
 ## 2. Increase the number of shards of the destination index (index) [increase-shards-dest-index]
 
@@ -46,14 +40,11 @@ Depending on the size of the destination index, you may consider increasing its 
 Use the [Preview {{transform}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html) to check the settings that the {{transform}} would use to create the destination index. You can copy and adjust these in order to create the destination index prior to starting the {{transform}}.
 ::::
 
-
-
 ## 3. Profile and optimize your search queries (search) [search-queries]
 
 If you have defined a {{transform}} source index `query`, ensure it is as efficient as possible. Use the **Search Profiler** under **Dev Tools** in {{kib}} to get detailed timing information about the execution of individual components in the search request. Alternatively, you can use the [Profile](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-profile.html). The results give you insight into how search requests are executed at a low level so that you can understand why certain requests are slow, and take steps to improve them.
 
 {{transforms-cap}} execute standard {{es}} search requests. There are different ways to write {{es}} queries, and some of them are more efficient than others. Consult [*Tune for search speed*](../../deploy-manage/production-guidance/optimize-performance/search-speed.md) to learn more about {{es}} performance tuning.
-
 
 ## 4. Limit the scope of the source query (search) [limit-source-query]
 
@@ -72,13 +63,11 @@ Consider using [date math](https://www.elastic.co/guide/en/elasticsearch/referen
   },
 ```
 
-
 ## 5. Optimize the sharding strategy for the source index (search) [optimize-shading-strategy]
 
 There is no one-size-fits-all sharding strategy. A strategy that works in one environment may not scale in another. A good sharding strategy must account for your infrastructure, use case, and performance expectations.
 
 Too few shards may mean that the benefits of distributing the workload cannot be realised; however too many shards may impact your cluster health. To learn more about sizing your shards, read this [guide](../../deploy-manage/production-guidance/optimize-performance/size-shards.md).
-
 
 ## 6. Tune `max_page_search_size` (search) [tune-max-page-search-size]
 
@@ -86,16 +75,13 @@ The `max_page_search_size` {{transform}} configuration option defines the number
 
 The ideal value of this parameter is highly dependent on your use case. If your {{transform}} executes memory-intensive aggregations – for example, cardinality or percentiles – then increasing `max_page_search_size` requires more available memory. If memory limits are exceeded, a circuit breaker exception occurs.
 
-
 ## 7. Use indexed fields in your source indices (search) [indexed-fields-in-source]
 
 Runtime fields and scripted fields are not indexed fields; their values are only extracted or computed at search time. While these fields provide flexibility in how you access your data, they increase performance costs at search time. If {{transform}} performance using runtime fields or scripted fields is a concern, you may wish to consider using indexed fields instead. For performance reasons, we do not recommend using a runtime field as the time field that synchronizes a {{ctransform}}.
 
-
 ## 8. Use index sorting (search, process) [index-sorting-group-by-ordering]
 
 Index sorting enables you to store documents on disk in a specific order which can improve query efficiency. The ideal sorting logic depends on your use case, but the rule of thumb may be to sort the fields in descending order (high to low cardinality) starting with the time-based fields. Index sorting can be defined only once at index creation. If you don’t already have index sorting on the index that you want to use as a source, consider reindexing it to a new, sorted index.
-
 
 ## 9. Disable the `_source` field on the destination index (storage) [disable-source-dest]
 
@@ -104,8 +90,6 @@ The [`_source` field](https://www.elastic.co/guide/en/elasticsearch/reference/cu
 ::::{note}
 When the `_source` field is disabled, a number of features are not supported. Consult [Disabling the `_source` field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#disable-source-field) to understand the consequences before disabling it.
 ::::
-
-
 
 ## Further reading [_further_reading]
 

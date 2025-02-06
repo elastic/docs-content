@@ -9,7 +9,7 @@ The format of your logs (structured or plaintext) influences your log ingestion 
 
 Logs are typically produced as either plaintext or structured. Plaintext logs contain only text and have no special formatting, for example:
 
-```log
+```txt
 2019-08-06T12:09:12.375Z INFO:spring-petclinic: Tomcat started on port(s): 8080 (http) with context path, org.springframework.boot.web.embedded.tomcat.TomcatWebServer
 2019-08-06T12:09:12.379Z INFO:spring-petclinic: Started PetClinicApplication in 7.095 seconds (JVM running for 9.082), org.springframework.samples.petclinic.PetClinicApplication
 2019-08-06T14:08:40.199Z DEBUG:spring-petclinic: init find form, org.springframework.samples.petclinic.owner.OwnerController

@@ -20,9 +20,9 @@ If you want to install Elastic Cloud Enterprise on your own hosts, the steps for
 Regardless of which approach you take, the steps in this section need to be performed on every host that you want to use with Elastic Cloud Enterprise.
 
 
-## Install Docker [ece-install-docker-sles12-onprem] 
+## Install Docker [ece-install-docker-sles12-onprem]
 
-::::{important} 
+::::{important}
 Make sure to use a combination of Linux distribution and Docker version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
 ::::
 
@@ -63,7 +63,7 @@ Make sure to use a combination of Linux distribution and Docker version that is 
 
 
 
-## Set up OS groups and user [ece_set_up_os_groups_and_user_2] 
+## Set up OS groups and user [ece_set_up_os_groups_and_user_2]
 
 1. If they don’t already exist, create the following OS groups:
 
@@ -80,18 +80,18 @@ Make sure to use a combination of Linux distribution and Docker version that is 
 
 
 
-## Set up XFS on SLES [ece-xfs-setup-sles12-onprem] 
+## Set up XFS on SLES [ece-xfs-setup-sles12-onprem]
 
 XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 12 and 15, you need to set up an XFS file system and have quotas enabled.
 
 Disk space quotas set a limit on the amount of disk space an Elasticsearch cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
-::::{note} 
+::::{note}
 Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, nor is it provided as part of supporting Elastic Cloud Enterprise.
 ::::
 
 
-::::{important} 
+::::{important}
 You must use XFS and have quotas enabled on all allocators, otherwise disk usage won’t display correctly.
 ::::
 
@@ -124,7 +124,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 
 
-## Update the configurations settings [ece-update-config-sles-onprem] 
+## Update the configurations settings [ece-update-config-sles-onprem]
 
 1. Stop the Docker service:
 
@@ -162,7 +162,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     EOF
     ```
 
-    ::::{important} 
+    ::::{important}
     The `net.ipv4.tcp_retries2` setting applies to all TCP connections and affects the reliability of communication with systems other than Elasticsearch clusters too. If your clusters communicate with external systems over a low quality network then you may need to select a higher value for `net.ipv4.tcp_retries2`.
     ::::
 
@@ -178,7 +178,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
     Add the following configuration values to the `/etc/security/limits.conf` file. These values are derived from our experience with the Elastic Cloud hosted offering and should be used for Elastic Cloud Enterprise as well.
 
-    ::::{tip} 
+    ::::{tip}
     If you are using a user name other than `elastic`, adjust the configuration values accordingly.
     ::::
 
@@ -243,7 +243,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 
 
-## Configure the Docker daemon [ece-configure-docker-daemon-sles12-onprem] 
+## Configure the Docker daemon [ece-configure-docker-daemon-sles12-onprem]
 
 1. Edit `/etc/docker/daemon.json`, and make sure that the following configuration values are present:<br>
 
@@ -321,7 +321,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 5. Reboot your system to ensure that all configuration changes take effect:
 
-    ```literal
+    ```sh
     sudo reboot
     ```
 
@@ -333,7 +333,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
 7. After rebooting, verify that your Docker settings persist as expected:
 
-    ```literal
+    ```sh
     sudo docker info | grep Root
     ```
 
@@ -342,4 +342,3 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     If the command returns `Docker Root Dir: /var/lib/docker`, then you need to troubleshoot the previous configuration steps until the Docker settings are applied successfully before continuing with the installation process. For more information, check [Custom Docker daemon options](https://docs.docker.com/engine/admin/systemd/#/custom-docker-daemon-options) in the Docker documentation.
 
 8. Repeat these steps on other hosts that you want to use with Elastic Cloud Enterprise or follow the steps in the next section to start installing Elastic Cloud Enterprise.
-

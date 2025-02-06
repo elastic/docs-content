@@ -19,7 +19,7 @@ When using Elasticsearch Add-On for Heroku, there are some limitations you shoul
 * [Regions and Availability Zones](#ech-regions-and-availability-zone)
 * [Known problems](#ech-known-problems)
 
-For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) section of the logging and monitoring page.
+For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) section of the logging and monitoring page.
 
 Occasionally, we also publish information about [Known problems](#ech-known-problems) with our Elasticsearch Add-On for Heroku or the Elastic Stack.
 
@@ -53,7 +53,7 @@ Generally, if a feature is shown as available in the [Elasticsearch Add-On for H
 * Elasticsearch plugins, are not enabled by default for security purposes. Please reach out to support if you would like to enable Elasticsearch plugins support on your account.
 * Some Elasticsearch plugins do not apply to Elasticsearch Add-On for Heroku. For example, you won’t ever need to change discovery, as Elasticsearch Add-On for Heroku handles how nodes discover one another.
 * In Elasticsearch 5.0 and later, site plugins are no longer supported. This change does not affect the site plugins Elasticsearch Add-On for Heroku might provide out of the box, such as Kopf or Head, since these site plugins are serviced by our proxies and not Elasticsearch itself.
-* In Elasticsearch 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md), [X-Pack monitoring features](../../monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) and Kibana’s (6.3+) [Index Management UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html) if you want more detailed information or perform index management actions.
+* In Elasticsearch 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html) if you want more detailed information or perform index management actions.
 
 
 ## Private Link and SSO to Kibana URLs [ech-restrictions-traffic-filters-kibana-sso]
@@ -70,7 +70,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 ## Kibana [ech-restrictions-kibana]
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
-* Running an external Kibana in parallel to Elasticsearch Add-On for Heroku’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts/kibana/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-encrypted-saved-objects-settings) as Elasticsearch Add-On for Heroku does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Running an external Kibana in parallel to Elasticsearch Add-On for Heroku’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-encrypted-saved-objects-settings) as Elasticsearch Add-On for Heroku does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
 
 ## APM Agent central configuration with PrivateLink or traffic filters [ech-restrictions-apm-traffic-filters]

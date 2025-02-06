@@ -29,7 +29,7 @@ Rule and action tasks can run late or at an inconsistent schedule. This is typic
 
 You can address such issues by tweaking the [Task Manager settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) or scaling the deployment to better suit your use case.
 
-For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/alerts/kibana/alerting-troubleshooting.md).
+For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/alerts-cases/alerts/alerting-troubleshooting.md).
 
 ::::
 

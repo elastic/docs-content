@@ -2,7 +2,7 @@
 
 Cluster performance metrics are available directly in the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body). The graphs on this page include a subset of Elasticsearch Add-On for Heroku-specific performance metrics.
 
-For advanced views or production monitoring, [enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md). The monitoring application provides more advanced views for Elasticsearch and JVM metrics, and includes a configurable retention period.
+For advanced views or production monitoring, [enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). The monitoring application provides more advanced views for Elasticsearch and JVM metrics, and includes a configurable retention period.
 
 To access cluster performance metrics:
 
@@ -31,7 +31,7 @@ Shows the maximum usage of the CPU resources assigned to your Elasticsearch clus
 :alt: Graph showing available CPU credits
 :::
 
-Shows your remaining CPU credits, measured in seconds of CPU time. CPU credits enable the boosting of CPU resources assigned to your cluster to improve performance temporarily when it is needed most. For more details check [How to use vCPU to boost your instance](../../../deploy-manage/monitor/monitoring-data/ech-vcpu-boost-instance.md).
+Shows your remaining CPU credits, measured in seconds of CPU time. CPU credits enable the boosting of CPU resources assigned to your cluster to improve performance temporarily when it is needed most. For more details check [How to use vCPU to boost your instance](/deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md).
 
 
 ### Number of requests [echnumber_of_requests]

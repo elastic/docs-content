@@ -4,15 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-model-ref.html
 ---
 
-
-
 # Compatible third party models [ml-nlp-model-ref]
-
 
 ::::{note}
 The minimum dedicated ML node size for deploying and using the {{nlp}} models is 16 GB in Elasticsearch Service if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
-
 
 The {{stack-ml-features}} support transformer models that conform to the standard BERT model interface and use the WordPiece tokenization algorithm.
 
@@ -37,14 +33,12 @@ These models are listed by NLP task; for more information about those tasks, ref
 
 **Models highlighted in bold** in the list below are recommended for evaluation purposes and to get started with the Elastic {{nlp}} features.
 
-
 ## Third party fill-mask models [ml-nlp-model-ref-mask]
 
 * [BERT base model](https://huggingface.co/bert-base-uncased)
 * [DistilRoBERTa base model](https://huggingface.co/distilroberta-base)
 * [MPNet base model](https://huggingface.co/microsoft/mpnet-base)
 * [RoBERTa large model](https://huggingface.co/roberta-large)
-
 
 ## Third party named entity recognition models [ml-nlp-model-ref-ner]
 
@@ -54,14 +48,12 @@ These models are listed by NLP task; for more information about those tasks, ref
 * [**DistilBERT base uncased finetuned conll03 English**](https://huggingface.co/elastic/distilbert-base-uncased-finetuned-conll03-english)
 * [DistilBERT fa zwnj base NER](https://huggingface.co/HooshvareLab/distilbert-fa-zwnj-base-ner)
 
-
 ## Third party question answering models [ml-nlp-model-ref-question-answering]
 
 * [BERT large model (uncased) whole word masking finetuned on SQuAD](https://huggingface.co/bert-large-uncased-whole-word-masking-finetuned-squad)
 * [DistilBERT base cased distilled SQuAD](https://huggingface.co/distilbert-base-cased-distilled-squad)
 * [Electra base squad2](https://huggingface.co/deepset/electra-base-squad2)
 * [TinyRoBERTa squad2](https://huggingface.co/deepset/tinyroberta-squad2)
-
 
 ## Third party sparse embedding models [ml-nlp-model-ref-sparse-embedding]
 
@@ -70,7 +62,6 @@ Sparse embedding models should be configured with the `text_expansion` task type
 * [SPLADE-v3-DistilBERT](https://huggingface.co/naver/splade-v3-distilbert)
 * [aken12/splade-japanese-v3](https://huggingface.co/aken12/splade-japanese-v3)
 * [hotchpotch/japanese-splade-v2](https://huggingface.co/hotchpotch/japanese-splade-v2)
-
 
 ## Third party text embedding models [ml-nlp-model-ref-text-embedding]
 
@@ -103,7 +94,6 @@ Using `DPREncoderWrapper`:
 * [dpr-question_encoder single nq base](https://huggingface.co/facebook/dpr-question_encoder-single-nq-base)
 * [dpr-question_encoder multiset base](https://huggingface.co/facebook/dpr-question_encoder-multiset-base)
 
-
 ## Third party text classification models [ml-nlp-model-ref-text-classification]
 
 * [BERT base uncased emotion](https://huggingface.co/nateraw/bert-base-uncased-emotion)
@@ -113,7 +103,6 @@ Using `DPREncoderWrapper`:
 * [FinBERT](https://huggingface.co/ProsusAI/finbert)
 * [Twitter roBERTa base for Sentiment Analysis](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment)
 
-
 ## Third party text similarity models [ml-nlp-model-ref-text-similarity]
 
 You can use these text similarity models for [semantic re-ranking](../../../solutions/search/ranking/semantic-reranking.md#semantic-reranking-in-es).
@@ -121,7 +110,6 @@ You can use these text similarity models for [semantic re-ranking](../../../solu
 * [ms marco TinyBERT L2 v2](https://huggingface.co/cross-encoder/ms-marco-TinyBERT-L-2-v2)
 * [ms marco MiniLM L6 v2](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L-6-v2)
 * [BAAI/bge-reranker-base](https://huggingface.co/BAAI/bge-reranker-base)
-
 
 ## Third party zero-shot text classification models [ml-nlp-model-ref-zero-shot]
 
@@ -133,13 +121,11 @@ You can use these text similarity models for [semantic re-ranking](../../../solu
 * [NLI RoBERTa base](https://huggingface.co/cross-encoder/nli-roberta-base)
 * [SqueezeBERT](https://huggingface.co/typeform/squeezebert-mnli)
 
-
 ## Expected model output [_expected_model_output]
 
 Models used for each NLP task type must output tensors of a specific format to be used in the Elasticsearch NLP pipelines.
 
 Here are the expected outputs for each task type.
-
 
 ### Fill mask expected model output [_fill_mask_expected_model_output]
 
@@ -151,7 +137,7 @@ Here is an example with a single sequence `"The capital of [MASK] is Paris"` and
 
 Should output:
 
-```
+```json
  [
    [
      [ 0, 0, 0, 0, 0, 0, 0 ], // The
@@ -166,7 +152,6 @@ Should output:
 
 The predicted value here for `[MASK]` is `"France"` with a score of 1.2.
 
-
 ### Named entity recognition expected model output [_named_entity_recognition_expected_model_output]
 
 Named entity recognition is a specific token classification task. Each token in the sequence is scored related to a specific set of classification labels. For the Elastic Stack, we use Inside-Outside-Beginning (IOB) tagging. Elastic supports any NER entities as long as they are IOB tagged. The default values are: "O", "B_MISC", "I_MISC", "B_PER", "I_PER", "B_ORG", "I_ORG", "B_LOC", "I_LOC".
@@ -177,7 +162,7 @@ The response format must be a float tensor with `shape(<number of sequences>, <n
 
 Here is an example with a single sequence `"Waldo is in Paris"`:
 
-```
+```json
  [
    [
 //    "O", "B_MISC", "I_MISC", "B_PER", "I_PER", "B_ORG", "I_ORG", "B_LOC", "I_LOC"
@@ -189,7 +174,6 @@ Here is an example with a single sequence `"Waldo is in Paris"`:
 ]
 ```
 
-
 ### Text embedding expected model output [_text_embedding_expected_model_output]
 
 Text embedding allows for semantic embedding of text for dense information retrieval.
@@ -198,14 +182,13 @@ The output of the model must be the specific embedding directly without any addi
 
 Eland does this wrapping for the aforementioned models. But if supplying your own, the model must output the embedding for each inferred sequence.
 
-
 ### Text classification expected model output [_text_classification_expected_model_output]
 
 With text classification (for example, in tasks like sentiment analysis), the entire sequence is classified. The output of the model must be a float tensor with `shape(<number of sequences>, <number of classification labels>)`.
 
 Here is an example with two sequences for a binary classification model of "happy" and "sad":
 
-```
+```json
  [
    [
 //     happy, sad
@@ -215,14 +198,13 @@ Here is an example with two sequences for a binary classification model of "happ
 ]
 ```
 
-
 ### Zero-shot text classification expected model output [_zero_shot_text_classification_expected_model_output]
 
 Zero-shot text classification allows text to be classified for arbitrary labels not necessarily part of the original training. Each sequence is combined with the label given some hypothesis template. The model then scores each of these combinations according to `[entailment, neutral, contradiction]`. The output of the model must be a float tensor with `shape(<number of sequences>, <number of labels>, 3)`.
 
 Here is an example with a single sequence classified against 4 labels:
 
-```
+```json
  [
    [
 //     entailment, neutral, contradiction

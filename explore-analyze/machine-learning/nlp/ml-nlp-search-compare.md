@@ -10,7 +10,6 @@ The {{stack-ml-features}} can generate embeddings, which you can use to search i
 * [Text embedding](#ml-nlp-text-embedding)
 * [Text similarity](#ml-nlp-text-similarity)
 
-
 ## Text embedding [ml-nlp-text-embedding] 
 
 Text embedding is a task which produces a mathematical representation of text called an embedding. The {{ml}} model turns the text into an array of numerical values (also known as a *vector*). Pieces of content with similar meaning have similar representations. This means it is possible to determine whether different pieces of text are either semantically similar, different, or even opposite by using a mathematical similarity function.
@@ -36,7 +35,6 @@ The task returns the following result:
 }
 ...
 ```
-
 
 ## Text similarity [ml-nlp-text-similarity] 
 
@@ -67,4 +65,3 @@ In the example above, every string in the `docs` array is compared individually 
 }
 ...
 ```
-

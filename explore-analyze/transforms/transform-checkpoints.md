@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-checkpoints.html
 ---
 
-
-
 # How checkpoints work [transform-checkpoints]
-
 
 Each time a {{transform}} examines the source indices and creates or updates the destination index, it generates a *checkpoint*.
 
@@ -31,14 +28,11 @@ To create a checkpoint, the {{ctransform}}:
 
     The {{transform}} applies changes related to either new or changed entities or time buckets to the destination index. The set of changes can be paginated. The {{transform}} performs a composite aggregation similarly to the batch {{transform}} operation, however it also injects query filters based on the previous step to reduce the amount of work. After all changes have been applied, the checkpoint is complete.
 
-
 This checkpoint process involves both search and indexing activity on the cluster. We have attempted to favor control over performance while developing {{transforms}}. We decided it was preferable for the {{transform}} to take longer to complete, rather than to finish quickly and take precedence in resource consumption. That being said, the cluster still requires enough resources to support both the composite aggregation search and the indexing of its results.
 
 ::::{tip}
 If the cluster experiences unsuitable performance degradation due to the {{transform}}, stop the {{transform}} and refer to [Performance considerations](transform-overview.md#transform-performance).
 ::::
-
-
 
 ## Using the ingest timestamp for syncing the {{transform}} [sync-field-ingest-timestamp]
 
@@ -65,7 +59,6 @@ After you created the ingest pipeline, apply it to the source indices of your {{
 
 Refer to [Add a pipeline to an indexing request](../../manage-data/ingest/transform-enrich/ingest-pipelines.md#add-pipeline-to-indexing-request) and [Ingest pipelines](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) to learn more about how to use an ingest pipeline.
 
-
 ## Change detection heuristics [ml-transform-checkpoint-heuristics]
 
 When the {{transform}} runs in continuous mode, it updates the documents in the destination index as new data comes in. The {{transform}} uses a set of heuristics called change detection to update the destination index with fewer operations.
@@ -73,7 +66,6 @@ When the {{transform}} runs in continuous mode, it updates the documents in the 
 In this example, the data is grouped by host names. Change detection detects which host names have changed,  for example, host `A`, `C` and `G` and only updates documents with those hosts but does not update documents that store information about host `B`, `D`, or any other host that are not changed.
 
 Another heuristic can be applied for time buckets when a `date_histogram` is used to group by time buckets. Change detection detects which time buckets have changed and only update those.
-
 
 ## Error handling [ml-transform-checkpoint-errors]
 

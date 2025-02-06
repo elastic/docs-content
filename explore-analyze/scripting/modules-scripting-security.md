@@ -9,7 +9,7 @@ Painless and {{es}} implement layers of security to build a defense in depth str
 
 Painless uses a fine-grained allowlist. Anything that is not part of the allowlist results in a compilation error. This capability is the first layer of security in a defense in depth strategy for scripting.
 
-The second layer of security is the [Java Security Manager](https://www.oracle.com/java/technologies/javase/seccodeguide.md). As part of its startup sequence, {{es}} enables the Java Security Manager to limit the actions that portions of the code can take. [Painless](modules-scripting-painless.md) uses the Java Security Manager as an additional layer of defense to prevent scripts from doing things like writing files and listening to sockets.
+The second layer of security is the [Java Security Manager](https://www.oracle.com/java/technologies/javase/seccodeguide.html). As part of its startup sequence, {{es}} enables the Java Security Manager to limit the actions that portions of the code can take. [Painless](modules-scripting-painless.md) uses the Java Security Manager as an additional layer of defense to prevent scripts from doing things like writing files and listening to sockets.
 
 {{es}} uses [seccomp](https://en.wikipedia.org/wiki/Seccomp) in Linux, [Seatbelt](https://www.chromium.org/developers/design-documents/sandbox/osx-sandboxing-design) in macOS, and [ActiveProcessLimit](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684147) on Windows as additional security layers to prevent {{es}} from forking or running other processes.
 

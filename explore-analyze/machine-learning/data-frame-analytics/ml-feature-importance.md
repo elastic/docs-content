@@ -40,5 +40,3 @@ For {{classanalysis}}, the sum of the {{feat-imp}} values approximates the predi
 By default, {{feat-imp}} values are not calculated. To generate this information, when you create a {{dfanalytics-job}} you must specify the `num_top_feature_importance_values` property. For example, see [Performing {{reganalysis}} in the sample flight data set](ml-dfa-regression.md#performing-regression) and [Performing {{classanalysis}} in the sample flight data set](ml-dfa-classification.md#performing-classification).
 
 The {{feat-imp}} values are stored in the {{ml}} results field for each document in the destination index. The number of {{feat-imp}} values for each document might be less than the `num_top_feature_importance_values` property value. For example, it returns only features that had a positive or negative effect on the prediction.
-
-

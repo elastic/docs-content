@@ -34,4 +34,3 @@ The {{infer}} APIs have the following base:
 * [Delete inference endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-inference-api.html)
 * [Get inference endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-inference-api.html)
 * [Perform inference](https://www.elastic.co/guide/en/elasticsearch/reference/current/post-inference-api.html)
-

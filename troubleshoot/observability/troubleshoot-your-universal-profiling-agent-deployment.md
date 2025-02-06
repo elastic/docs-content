@@ -13,7 +13,7 @@ You can use the Universal Profiling Agent logs to find errors.
 
 The following is an example of a *healthy* Universal Profiling Agent output:
 
-```logs
+```txt
 time="..." level=info msg="Starting Prodfiler Host Agent v2.4.0 (revision develop-5cce978a, build timestamp 12345678910)"
 time="..." level=info msg="Interpreter tracers: perl,php,python,hotspot,ruby,v8"
 time="..." level=info msg="Automatically determining environment and machine ID ..."
@@ -34,7 +34,7 @@ time="..." level=info msg="Attached sched monitor"
 
 A Universal Profiling Agent deployment is working if the output of the following command is empty:
 
-```logs
+```txt
 head host-agent.log -n 15 | grep "level=error"
 ```
 
@@ -44,25 +44,25 @@ If running this command outputs error-level logs, the following are possible cau
 
     If the Universal Profiling Agent is running on an unsupported kernel version, the following is logged:
 
-    ```logs
+    ```txt
     Universal Profiling Agent requires kernel version 4.19 or newer but got 3.10.0
     ```
 
     If eBPF features are not available in the kernel, the Universal Profiling Agent fails to start, and one of the following is logged:
 
-    ```logs
+    ```txt
     Failed to probe eBPF syscall
     ```
 
     or
 
-    ```logs
+    ```txt
     Failed to probe tracepoint
     ```
 
 * The Universal Profiling Agent is not able to connect to {{ecloud}}. In this case, a similar message to the following is logged:
 
-    ```logs
+    ```txt
     Failed to setup gRPC connection (retrying...): context deadline exceeded
     ```
 
@@ -70,13 +70,13 @@ If running this command outputs error-level logs, the following are possible cau
 
 * The secret token is not valid, or it has been changed. In this case, the Universal Profiling Agent gent shuts down, and logs a similar message to the following:
 
-    ```logs
+    ```txt
     rpc error: code = Unauthenticated desc = authentication failed
     ```
 
 * The Universal Profiling Agent is unable to send data to your deployment. In this case, a similar message to the following is logged:
 
-    ```logs
+    ```txt
     Failed to report hostinfo (retrying...): rpc error: code = Unimplemented desc = unknown service collectionagent.CollectionAgent"
     ```
 
@@ -84,7 +84,7 @@ If running this command outputs error-level logs, the following are possible cau
 
 * The collector (part of the backend in {{ecloud}} that receives data from the Universal Profiling Agent) ran out of memory. In this case, a similar message to the following is logged:
 
-    ```logs
+    ```txt
     Error: failed to invoke XXX(): Unavailable rpc error: code = Unavailable desc = unexpected HTTP status code received from server: 502 (Bad Gateway); transport: received unexpected content-type "application/json; charset=UTF-8"
     ```
 
@@ -94,7 +94,7 @@ If running this command outputs error-level logs, the following are possible cau
 
 * The Universal Profiling Agent is incompatible with the {{stack}} version. In this case, the following message is logged:
 
-    ```logs
+    ```txt
     rpc error: code = FailedPrecondition desc= HostAgent version is unsupported, please upgrade to the latest version
     ```
 
@@ -102,7 +102,7 @@ If running this command outputs error-level logs, the following are possible cau
 
 * You are using a Universal Profling Agent from a newer {{stack}} version, configured to connect to an older {{stack}} version cluster. In this case, the following message is logged:
 
-    ```logs
+    ```txt
     rpc error: code = FailedPrecondition desc= Backend is incompatible with HostAgent, please check your configuration
     ```
 
@@ -230,4 +230,3 @@ In the support request, specify if your issue deals with the Universal Profiling
 ## Send feedback [profiling-send-feedback]
 
 If troubleshooting and support are not fixing your issues, or you have any other feedback that you want to share about the product, send the Universal Profiling team an email at `profiling-feedback@elastic.co`.
-

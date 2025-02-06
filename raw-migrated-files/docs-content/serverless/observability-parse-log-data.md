@@ -24,7 +24,7 @@ Make your logs more useful by extracting structured fields from your unstructure
 
 Follow the steps below to see how the following unstructured log data is indexed by default:
 
-```log
+```txt
 2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 ```
 
@@ -306,7 +306,7 @@ Check the following common issues and solutions with timestamps:
 
 Extracting the `log.level` field lets you filter by severity and focus on critical issues. This section shows you how to extract the `log.level` field from this example log:
 
-```log
+```txt
 2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 ```
 
@@ -393,7 +393,7 @@ Once you’ve extracted the `log.level` field, you can query for high-severity l
 
 Let’s say you have the following logs with varying severities:
 
-```log
+```txt
 2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
 2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
@@ -474,7 +474,7 @@ The `host.ip` field is part of the [Elastic Common Schema (ECS)](https://www.ela
 
 This section shows you how to extract the `host.ip` field from the following example logs and query based on the extracted fields:
 
-```log
+```txt
 2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
 2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
@@ -742,7 +742,7 @@ By default, an ingest pipeline sends your log data to a single data stream. To s
 
 This section shows you how to use a reroute processor to send the high-severity logs (`WARN` or `ERROR`) from the following example logs to a specific data stream and keep the regular logs (`DEBUG` and `INFO`) in the default data stream:
 
-```log
+```txt
 2023-08-08T13:45:12.123Z WARN 192.168.1.101 Disk usage exceeds 90%.
 2023-08-08T13:45:14.003Z ERROR 192.168.1.103 Database connection failed.
 2023-08-08T13:45:15.004Z DEBUG 192.168.1.104 Debugging connection issue.
