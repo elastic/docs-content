@@ -1,11 +1,12 @@
 ---
+navigation_title: "Elastic for Observability"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-billing.html
 applies:
   serverless: all
 ---
 
-# Elastic Observability billing dimensions [observability-billing]
+# Elastic for Observability billing dimensions [observability-billing]
 
 {{obs-serverless}} projects provide you with all the capabilities of Elastic Observability to monitor critical applications. Projects are provided using a Software as a Service (SaaS) model, and pricing is entirely consumption-based.
 

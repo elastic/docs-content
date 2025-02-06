@@ -12,9 +12,9 @@ applies:
 
 When you decide to add your credit card and become a paying customer, you can choose a subscription level. 
 
-Depending on whether you're using {{ecloud}} Hosted deployment or {{serverless-full}} projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
+Depending on whether you're using {{ech}} deployment or {{serverless-full}} projects, your subscription level might dictate what features you can access or what level of support you receive. On the following pricing pages, you can review additional details about what you get at each subscription level:
 
-* [{{ecloud}} Hosted](https://www.elastic.co/cloud/elasticsearch-service/pricing)
+* [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service/pricing)
 * [{{serverless-full}}](https://www.elastic.co/pricing/serverless-search)
 
 You can find more details about your subscription in the [Billing overview page](https://cloud.elastic.co/billing/overview), in the **Subscription level** section. 

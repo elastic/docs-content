@@ -10,7 +10,7 @@ applies:
 
 All {{ecloud}} usage is metered and billed in Elastic Consumption Units (ECU). An Elastic Consumption Unit is a unit of measure for {{ecloud}} resources (capacity, data transfer, or snapshot storage).
 
-The nominal value of one Elastic Consumption Unit is $1.00. You can use our [{{ecloud}} Hosted pricing calculator](https://cloud.elastic.co/pricing) or our [public pricing table](https://ela.st/esspricelist) to estimate your costs in USD, and then apply the conversion rate of 1 ECU = $1.00 to calculate the ECU equivalent.
+The nominal value of one Elastic Consumption Unit is $1.00. You can use our [{{ech}} pricing calculator](https://cloud.elastic.co/pricing) or our [public pricing table](https://ela.st/esspricelist) to estimate your costs in USD, and then apply the conversion rate of 1 ECU = $1.00 to calculate the ECU equivalent.
 
 Your monthly usage statement is issued in ECU, though it also includes the currency equivalent of your consumption. The **Usage** page in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) also shows usage information in ECU.
 

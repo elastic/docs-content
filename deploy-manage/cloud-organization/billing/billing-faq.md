@@ -48,7 +48,7 @@ This frequently-asked-questions list answers some of your more common questions 
 ## General billing FAQ [ec-faq-billing-general]
 
 $$$faq-cost$$$Is there a way for me to estimate how much {{ecloud}} will cost?
-:   Yes, there is: If you plan to use {{ecloud}} Hosted deployments, try our [pricing calculator](https://www.elastic.co/cloud/elasticsearch-service/pricing?page=docs&placement=docs-body). You can also use the [{{ecloud}} pricing table](https://ela.st/esspricelist).
+:   Yes, there is: If you plan to use {{ech}} deployments, try our [pricing calculator](https://www.elastic.co/cloud/elasticsearch-service/pricing?page=docs&placement=docs-body). You can also use the [{{ecloud}} pricing table](https://ela.st/esspricelist).
 
 $$$faq-consumption$$$Where can I find a detailed view of my consumption?
 :   To make it easy to track the ongoing cost of {{ecloud}}, we’ve added line items to the downloadable [invoices](https://cloud.elastic.co/billing/overview?page=docs&placement=docs-body).
@@ -91,8 +91,8 @@ $$$faq-deleteaccount$$$How can I delete my {{ecloud}} account?
 $$$faq-refund$$$Can I get a refund?
 :   Charges are non-refundable, but once you delete a deployment we’ll stop charging you for that deployment immediately. You only pay for what you use and you can stop using the service at any time. For any special considerations warranting a potential refund, please use the {{ecloud}} Console [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) to open a support case and select *Billing issue* as the category. To ensure quick processing, be sure to provide detail about the reasons for the refund request as well as other matters pertaining to the issue. For other ways to open a Support case, check [Contact us](../../../troubleshoot/troubleshoot/index.md).
 
-$$$faq-included$$$What is included in my paid {{ecloud}} Hosted deployment?
-:   All subscription tiers for {{ecloud}} Hosted include the following free allowance:
+$$$faq-included$$$What is included in my paid {{ech}} deployment?
+:   All subscription tiers for {{ech}} include the following free allowance:
 
     * Free 1GB RAM Kibana instance
     * Free 1GB RAM Machine Learning node

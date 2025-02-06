@@ -1,4 +1,5 @@
 ---
+navigation_title: "Serverless billing dimensions"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-billing.html
 applies:
@@ -18,8 +19,8 @@ applies:
 To learn about billing dimensions for specific offerings, refer to:
 
 * [{{es}} billing dimensions](elasticsearch-billing-dimensions.md)
-* [{{obs-serverless}} billing dimensions](elastic-observability-billing-dimensions.md)
-* [Security billing dimensions](security-billing-dimensions.md)
+* [Elastic for Observability billing dimensions](elastic-observability-billing-dimensions.md)
+* [Elastic for Security dimensions](security-billing-dimensions.md)
 
 
 ## Add-ons [add-ons] 

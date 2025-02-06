@@ -1,13 +1,14 @@
 ---
+navigation_title: "Hosted billing dimensions"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-dimensions.html
 applies:
   hosted: all
 ---
 
-# Cloud hosted deployment billing dimensions [ec-billing-dimensions]
+# Cloud Hosted deployment billing dimensions [ec-billing-dimensions]
 
-{{ecloud}} Hosted billing is based on your actual usage across a number of dimensions, as follows:
+{{ech}} billing is based on your actual usage across a number of dimensions, as follows:
 
 1. [Deployment capacity](#ram-hours)
 2. [Data Transfer](#data-transfer)

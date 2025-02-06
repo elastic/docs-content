@@ -800,8 +800,8 @@ toc:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md
           - file: cloud-organization/billing/serverless-project-billing-dimensions.md
             children:
-              - file: cloud-organization/billing/elastic-observability-billing-dimensions.md
               - file: cloud-organization/billing/elasticsearch-billing-dimensions.md
+              - file: cloud-organization/billing/elastic-observability-billing-dimensions.md
               - file: cloud-organization/billing/security-billing-dimensions.md
           - file: cloud-organization/billing/billing-models.md
           - file: cloud-organization/billing/add-billing-details.md

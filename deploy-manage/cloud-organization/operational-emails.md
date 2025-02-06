@@ -7,7 +7,7 @@ applies:
 
 # Operational emails [ec-operational-emails]
 
-To help keep you aware of potential performance issues in your {{ecloud}} Hosted clusters, we send email alerts based on certain types of activity. These alerts let you know about:
+To help keep you aware of potential performance issues in your {{ech}} clusters, we send email alerts based on certain types of activity. These alerts let you know about:
 
 * High disk usage
 * A node out-of-memory restart
