@@ -23,14 +23,14 @@ Create beautiful maps from your geographical data. With **Maps**, you can:
 * Symbolize features using data values.
 * Focus on only the data that’s important to you.
 
-On Elastic Cloud Serverless, Maps is only available for Security projects [![Security](../../../images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md).
+On Elastic Cloud Serverless, Maps is only available for Security projects [![Security](../../images/serverless-sec-badge.svg "")](../../solutions/security/elastic-security-serverless.md).
 
 
 ## Build maps with multiple layers and indices [_build_maps_with_multiple_layers_and_indices]
 
 Use multiple layers and indices to show all your data in a single map. Show how data sits relative to physical features like weather patterns, human-made features like international borders, and business-specific features like sales regions. Plot individual documents or use aggregations to plot any data set, no matter how large.
 
-:::{image} ../../../images/kibana-sample_data_ecommerce.png
+:::{image} ../../images/kibana-sample_data_ecommerce.png
 :alt: sample data ecommerce
 :class: screenshot
 :::
@@ -44,7 +44,7 @@ Data comes to life with animation. Hard to detect patterns in static data pop ou
 
 This animated map uses the time slider to show Portland buses over a period of 15 minutes. The routes come alive as the bus locations update with time.
 
-:::{image} ../../../images/kibana-timeslider.gif
+:::{image} ../../images/kibana-timeslider.gif
 :alt: timeslider
 :class: screenshot
 :::
@@ -62,7 +62,7 @@ Viewing data from different angles provides better insights. Dimensions that are
 
 This choropleth map shows the density of non-emergency service requests in San Diego by council district. The map is embedded in a dashboard, so users can better understand when services are requested and gain insight into the top requested services.
 
-:::{image} ../../../images/kibana-embed_in_dashboard.jpeg
+:::{image} ../../images/kibana-embed_in_dashboard.jpeg
 :alt: embed in dashboard
 :class: screenshot
 :::
