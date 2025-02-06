@@ -30,7 +30,7 @@ You can have up to 1,000 spaces by default. The maximum number of spaces can be 
 3. If you selected the **Classic*** solution view, you can customize the ***Feature visibility** as you need it to be for that space.
 
    ::::{note}
-   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
    ::::
 
 4. Customize the avatar of the space to your liking.
@@ -47,7 +47,7 @@ You can edit all of the space settings you just defined at any time, except for 
 Users can access spaces based on the roles that they have.
 
 * Certain reserved roles can view and access all spaces by default. You can’t prevent those roles from accessing a space. Instead, you can grant different roles to your users.
-* When [creating or editing a role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md), you can define which existing spaces that role can access, and with which permissions.
+* When [creating or editing a role](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md), you can define which existing spaces that role can access, and with which permissions.
 * When editing a space, you can assign roles to the space and define the permissions within the space for these roles. To do that, go to the **Permissions** tab of the space you’re editing.
 
     When a role is assigned to *All Spaces*, you can’t remove its access from the space settings. You must instead edit the role to give it more granular access to individual spaces.
@@ -61,7 +61,7 @@ Deleting a space permanently removes the space and all of its contents. Find the
 
 ## Move saved objects between spaces [spaces-moving-objects]
 
-To move saved objects between spaces, you can [copy objects](../../../explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space), or [export and import objects](../../../explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-export-objects).
+To move saved objects between spaces, you can [copy objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space), or [export and import objects](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-export-objects).
 
 
 ## Configure a space-level landing page [spaces-default-route]
@@ -70,7 +70,7 @@ You can create a custom experience for users by configuring the {{kib}} landing 
 
 To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
 
-:::{image} ../../../images/kibana-spaces-configure-landing-page.png
+:::{image} ../../images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page
 :class: screenshot
 :::

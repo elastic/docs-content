@@ -36,12 +36,12 @@ $$$spaces-managing$$$
 
 {{kib}} creates a default space for you. When you create more spaces, users are asked to choose a space when they log in, and can change their current space at any time from the top menu.
 
-:::{image} ../../../images/kibana-change-space.png
+:::{image} ../images/kibana-change-space.png
 :alt: Change current space menu
 :class: screenshot
 :::
 
-To go to **Spaces**, find **Stack Management** in the navigation menu or use the [global search bar](../../../get-started/the-stack.md#kibana-navigation-search).
+To go to **Spaces**, find **Stack Management** in the navigation menu or use the [global search bar](/get-started/the-stack.md#kibana-navigation-search).
 
 Spaces provide different capabilities depending on the type of environment you're running:
 - [Managing spaces in Kibana version 9.0.0 or later](manage-spaces/manage-spaces-stack.md)

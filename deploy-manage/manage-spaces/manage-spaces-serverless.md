@@ -6,7 +6,7 @@ applies:
 # Manage spaces in serverless projects [spaces]
 
 
-This content applies to: [![Elasticsearch](../../../images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Observability](../../../images/serverless-obs-badge.svg "")](../../../solutions/observability.md) [![Security](../../../images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+This content applies to: [![Elasticsearch](../../images/serverless-es-badge.svg "")](/solutions/search.md) [![Observability](../../images/serverless-obs-badge.svg "")](/solutions/observability.md) [![Security](../../images/serverless-sec-badge.svg "")](/solutions/security/elastic-security-serverless.md)
 
 
 
@@ -33,9 +33,9 @@ You can have up to 100 spaces in a project.
 
 ## Customize access to space [spaces-customize-access-to-space]
 
-Customizing access to a space is available for the following project types only: [![Elasticsearch](../../../images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Security](../../../images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
+Customizing access to a space is available for the following project types only: [![Elasticsearch](../../images/serverless-es-badge.svg "")](/solutions/search.md) [![Security](../../images/serverless-sec-badge.svg "")](/solutions/security/elastic-security-serverless.md)
 
-As an administrator, you can define custom roles with specific access to certain spaces and features in a project. Refer to [Custom roles](../../../deploy-manage/users-roles/cloud-organization/user-roles.md).
+As an administrator, you can define custom roles with specific access to certain spaces and features in a project. Refer to [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md).
 
 
 ## Delete a space [spaces-delete-a-space]
@@ -47,4 +47,4 @@ You can’t delete the default space, but you can customize it to your liking.
 
 ## Move saved objects between spaces [spaces-move-saved-objects-between-spaces]
 
-To move saved objects between spaces, you can [copy objects](../../../explore-analyze/find-and-organize.md#saved-objects-copy-to-other-spaces) or [export and import objects](../../../explore-analyze/find-and-organize.md#saved-objects-import-and-export).
+To move saved objects between spaces, you can [copy objects](/explore-analyze/find-and-organize.md#saved-objects-copy-to-other-spaces) or [export and import objects](/explore-analyze/find-and-organize.md#saved-objects-import-and-export).
