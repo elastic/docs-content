@@ -20,9 +20,3 @@ mapped_urls:
 * [Painless examples](transforms/transform-painless-examples.md)
 * [Troubleshooting {{transforms}}](../troubleshoot/elasticsearch/transform-troubleshooting.md)
 * [Limitations](transforms/transform-limitations.md)
-
-% Scope notes: views in last 6 months: ~90/week
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/data-rollup-transform.md
