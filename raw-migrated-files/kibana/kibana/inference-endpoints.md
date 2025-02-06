@@ -9,6 +9,6 @@ Inference endpoints streamline the deployment and management of machine learning
 
 Available actions:
 
+* View endpoint details
 * Copy the inference endpoint ID
 * Delete endpoints
-
