@@ -15,17 +15,19 @@ There are three types of drilldowns you can add to dashboards:
 
 Third-party developers can create drilldowns. To learn how to code drilldowns, refer to [this example plugin](https://github.com/elastic/kibana/blob/master/x-pack/examples/ui_actions_enhanced_examples).
 
-<script type="text/javascript" async
-src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-style="width: 100%; margin: auto; display: block;"
-class="vidyard-player-embed"
-src="https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg"
-data-uuid="UhGkdJGC32HRn3oS5ZYJL1"
-data-v="4"
-data-type="inline"
-/>
-</br>
+[![Drilldowns video](https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg)](https://videos.elastic.co/watch/UhGkdJGC32HRn3oS5ZYJL1?)
+
+%<script type="text/javascript" async
+%src="https://play.vidyard.com/embed/v4.js"></script>
+%<img
+%style="width: 100%; margin: auto; display: block;"
+%class="vidyard-player-embed"
+%src="https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg"
+%data-uuid="UhGkdJGC32HRn3oS5ZYJL1"
+%data-v="4"
+%data-type="inline"
+%/>
+%</br>
 
 ## Create dashboard drilldowns [dashboard-drilldowns]
 
