@@ -18,7 +18,7 @@ You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rul
 * Drill down to [rule details](#rule-details)
 * Configure rule settings
 
-For more information on alerting concepts and the types of rules and connectors available, go to [Alerting](../kibana.md).
+For more information on alerting concepts and the types of rules and connectors available, go to [Alerting](../alerts.md).
 
 
 ## Required permissions [_required_permissions]

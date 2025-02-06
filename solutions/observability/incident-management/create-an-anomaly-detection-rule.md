@@ -137,7 +137,7 @@ Use the default notification message or customize it. You can add more context t
 :class: screenshot
 :::
 
-The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts/kibana/rule-action-variables.md).
+The following variables are specific to this rule type. You can also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.anomalyExplorerUrl`
 :   URL to open in the Anomaly Explorer.

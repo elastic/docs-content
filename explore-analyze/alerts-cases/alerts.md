@@ -5,7 +5,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations-notifications-domain-allowlist.html
 ---
 
-# Kibana alerts
+# Alerts
 
 % What needs to be done: Align serverless/stateful
 

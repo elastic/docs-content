@@ -27,7 +27,7 @@ To add user settings:
 
 ## Enable email notifications from Gmail [ece_enable_email_notifications_from_gmail]
 
-You can configure email notifications to Gmail for a user that you specify. For details, refer to [Configuring email actions](../../../explore-analyze/alerts/watcher/actions-email.md).
+You can configure email notifications to Gmail for a user that you specify. For details, refer to [Configuring email actions](../../../explore-analyze/alerts-cases/watcher/actions-email.md).
 
 ::::{warning}
 Before you add the `xpack.notification.email*` setting in Elasticsearch user settings, make sure you add the account SMTP password to the keystore as a [secret value](../../../deploy-manage/security/secure-settings.md).

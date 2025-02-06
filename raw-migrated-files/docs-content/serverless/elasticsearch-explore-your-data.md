@@ -40,7 +40,7 @@ $$$elasticsearch-explore-your-data-discover-your-data$$$
 
 ## Monitoring [_monitoring]
 
-[Rules](../../../explore-analyze/alerts.md)
+[Rules](../../../explore-analyze/alerts-cases.md)
 :   Create rules that trigger notifications when certain conditions are met in your data.
 
     🔍 Find **Rules** in your {{es-serverless}} project’s UI under **Project settings > Alerts and insights > Rules**.

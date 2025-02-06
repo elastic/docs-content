@@ -28,7 +28,7 @@ You can configure email notifications that occur when users are assigned to case
 
 For hosted {{kib}} on {{ess}}:
 
-1. Add the email domains to the [notifications domain allowlist](../../../explore-analyze/alerts/kibana.md).
+1. Add the email domains to the [notifications domain allowlist](../../../explore-analyze/alerts-cases/alerts.md).
 
     You do not need to take any more steps to configure an email connector or update {{kib}} user settings, since the preconfigured Elastic-Cloud-SMTP connector is used by default.
 

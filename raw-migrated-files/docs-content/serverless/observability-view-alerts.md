@@ -77,7 +77,7 @@ Use the toolbar buttons in the upper-left of the alerts table to customize the c
 * ***x* fields sorted**: Sort the table by one or more columns.
 * **Fields**: Select the fields to display in the table.
 
-For example, click **Fields** and choose the `Maintenance Windows` field. If an alert was affected by a maintenance window, its identifier appears in the new column. For more information about their impact on alert notifications, refer to [{{maint-windows-cap}}](../../../explore-analyze/alerts/kibana/maintenance-windows.md).
+For example, click **Fields** and choose the `Maintenance Windows` field. If an alert was affected by a maintenance window, its identifier appears in the new column. For more information about their impact on alert notifications, refer to [{{maint-windows-cap}}](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md).
 
 You can also use the toolbar buttons in the upper-right to customize the display options or view the table in full-screen mode.
 
