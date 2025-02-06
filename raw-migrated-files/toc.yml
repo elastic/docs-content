@@ -634,7 +634,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/oidc-realm.md
       - file: elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
-      - file: elasticsearch/elasticsearch-reference/retrievers-overview.md
       - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
       - file: elasticsearch/elasticsearch-reference/rollup-overview.md
       - file: elasticsearch/elasticsearch-reference/saml-guide-stack.md

@@ -221,17 +221,16 @@ toc:
           - file: machine-learning/nlp/ml-nlp-model-ref.md
           - file: machine-learning/nlp/ml-nlp-examples.md
             children:
+              - file: machine-learning/nlp/nlp-end-to-end-tutorial.md
               - file: machine-learning/nlp/ml-nlp-ner-example.md
               - file: machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md
           - file: machine-learning/nlp/ml-nlp-limitations.md
-          - file: machine-learning/nlp/inference-processing.md
-            children:
-              - file: machine-learning/nlp/nlp-example.md
       - file: machine-learning/machine-learning-in-kibana.md
         children:
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
+          - file: machine-learning/machine-learning-in-kibana/inference-processing.md
       - file: machine-learning/aiops-labs.md
         children:
           - file: machine-learning/aiops-labs/observability-aiops-detect-anomalies.md

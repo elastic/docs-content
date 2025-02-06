@@ -14,7 +14,7 @@ Retrievers come in various types, each tailored for different search operations.
 * [**Linear Retriever**](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#linear-retriever). Combines the top results from multiple sub-retrievers using a weighted sum of their scores. Allows to specify different weights for each retriever, as well as independently normalize the scores from each result set.
 * [**RRF Retriever**](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#rrf-retriever). Combines and ranks multiple first-stage retrievers using the reciprocal rank fusion (RRF) algorithm. Allows you to combine multiple result sets with different relevance indicators into a single result set. An RRF retriever is a **compound retriever**, where its `filter` element is propagated to its sub retrievers.
 * [**Rule Retriever**](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#rule-retriever). Applies [query rules](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-using-query-rules.html#query-rules) to the query before returning results.
-* [**Text Similarity Re-ranker Retriever**](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#text-similarity-reranker-retriever). Used for [semantic reranking](../../../solutions/search/ranking/semantic-reranking.md). Requires first creating a `rerank` task using the [{{es}} Inference API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-inference-api.html).
+* [**Text Similarity Re-ranker Retriever**](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#text-similarity-reranker-retriever). Used for [semantic reranking](ranking/semantic-reranking.md). Requires first creating a `rerank` task using the [{{es}} Inference API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-inference-api.html).
 
 
 ## What makes retrievers useful? [retrievers-overview-why-are-they-useful]
@@ -126,7 +126,7 @@ The Search Playground builds Elasticsearch queries using the retriever abstracti
 
 You can use the Playground to experiment with different retriever configurations and see how they affect search results.
 
-Refer to the [Playground documentation](../../../solutions/search/rag/playground.md) for more information.
+Refer to the [Playground documentation](rag/playground.md) for more information.
 
 
 ## API reference [retrievers-overview-api-reference]

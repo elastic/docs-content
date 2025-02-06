@@ -1,10 +1,10 @@
 ---
-navigation_title: "NLP tutorial"
+navigation_title: "End-to-end tutorial"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/nlp-example.html
 ---
 
-# NLP example [nlp-example]
+# An NLP end-to-end tutorial [nlp-example]
 
 This guide focuses on a concrete task: getting a machine learning trained model loaded into Elasticsearch and set up to enrich your documents.
 
@@ -41,7 +41,7 @@ Follow the steps to **Create** a new deployment. Make sure to add capacity to th
 
 Enriching documents using machine learning was introduced in Enterprise Search **8.5.0**, so be sure to use version **8.5.0 or later**.
 
-## Clone Eland [nlp-example-clone-eland] 
+## Clone Eland [nlp-example-clone-eland]
 
 Elastic’s [Eland](https://github.com/elastic/eland) tool makes it easy to upload trained models to your deployment via Docker.
 
@@ -188,9 +188,9 @@ In this guide, we covered how to:
 
 ## Learn more [nlp-example-learn-more]
 
-* [Compatible third party models^](ml-nlp-model-ref.md)
-* [NLP Overview^](ml-nlp-overview.md)
+* [Compatible third party models](ml-nlp-model-ref.md)
+* [NLP Overview](ml-nlp-overview.md)
 * [Docker section of Eland readme](https://github.com/elastic/eland#docker)
-* [Deploying a model ML guide^](ml-nlp-deploy-models.md)
-* [Eland Authentication methods^](ml-nlp-import-model.md#ml-nlp-authentication)
-* [Adding inference pipelines](inference-processing.md#ingest-pipeline-search-inference-add-inference-processors)
+* [Deploying a model ML guide](ml-nlp-deploy-models.md)
+* [Eland Authentication methods](ml-nlp-import-model.md#ml-nlp-authentication)
+* [Adding inference pipelines](../machine-learning-in-kibana/inference-processing.md#ingest-pipeline-search-inference-add-inference-processors)
