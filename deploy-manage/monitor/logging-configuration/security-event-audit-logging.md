@@ -32,7 +32,8 @@ By following these guidelines, you can effectively audit system behavior, enhanc
 When auditing security events, a single client request might generate multiple audit events across multiple cluster nodes, potentially leading to a high volume of log data. To maintain clarity and ensure logs remain actionable, {{es}} and {{kib}} provide configuration mechanisms to control what events are logged and which can be ignored.
 
 To make audit logs useful and manageable to your use case, we recommend:
-  * Spending some time **analyzing what gets logged**.
+  * Spending some time **analyzing what gets logged** to ensure relevant events are captured.
+  * **Measuring the performance impact** of audit logging on your environment, as I/O activity can be significant depending on your use case. Refer to [](./logfile-audit-events-ignore-policies.md) for more details.
   * **Tuning the audit logging configuration** by using include/exclude filters, ignore policies, and query auditing options, to reduce unnecessary noise. Refer to [](./enabling-audit-logs.md#audit-logging-configuration) for more information.
   * **Balancing verbosity with security requirements**, to ensure relevant events are captured without excessive log volume.
 

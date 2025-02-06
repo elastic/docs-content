@@ -198,8 +198,9 @@ In {{es}}, the only auditing setting that must be added individually to all node
 ::::
 
 Configuration suggestions:
+
 * Use [`xpack.security.audit.logfile.events.include`](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include) or the corresponding `exclude` setting to specify the type of events you want to include or exclude in the {{es}} auditing output.
-* Refer to [logfile ignore policies](./logfile-audit-events-ignore-policies.md) for an example of how to tune the verbosity of the {{es}} audit trail.
+* If you need a more granular control, refer to [{{es}} audit events ignore policies](./logfile-audit-events-ignore-policies.md) to better understand how ignore policies work and when they are beneficial.
 * Refer to [auditing search queries](./auditing-search-queries.md) for details on logging request bodies in the {{es}} audit logs.
 
   ::::{important}
