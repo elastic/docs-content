@@ -16,7 +16,7 @@ Available actions:
 
 ## Add new inference endpoint
 
-To add a new interference endpoint on the UI:
+To add a new interference endpoint using the UI:
 
 1. Select the **Add endpoint** button.
 1. Select a service from the drop down menu.
