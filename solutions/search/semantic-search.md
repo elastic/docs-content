@@ -1,3 +1,9 @@
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search.html
+  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-reference-semantic-search.html
+---
+
 # Semantic search [semantic-search]
 
 :::{note}
