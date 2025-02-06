@@ -40,7 +40,7 @@ $$$ece-db-logstash-pipeline$$$
 
 $$$ece-db-logstash-prerequisites$$$
 
-This guide explains how to ingest data from a relational database into {{ess}} through [{ls}}](https://www.elastic.co/guide/en/logstash/current/introduction.html), using the Logstash [JDBC input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an Elasticsearch Service deployment.
+This guide explains how to ingest data from a relational database into {{ess}} through [{{ls}}](https://www.elastic.co/guide/en/logstash/current/introduction.html), using the Logstash [JDBC input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an Elasticsearch Service deployment.
 
 The code and methods presented here have been tested with MySQL. They should work with other relational databases.
 
