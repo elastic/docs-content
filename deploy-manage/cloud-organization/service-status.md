@@ -30,7 +30,7 @@ To receive service status updates:
 
 After you subscribe to updates, you are notified whenever a service status update is posted.
 
-# Subscribe to individual regions or components
+## Subscribe to individual regions or components
 
 If you want to know about specific status updates, rather than all of them, you can adjust your preferences by using the following steps. These steps apply to both new signups and adjustments to an existing subscription. 
 
@@ -38,7 +38,7 @@ Go to the [Cloud Status](https://cloud-status.elastic.co/) page and select **SUB
 
 Here, you can customize your selections as needed, and then click **Save**.
 
-# Service Status API [ec_service_status_api]
+## Service Status API [ec_service_status_api]
 
 If you want a programmatic method of ingesting our service status updates, then you can consume updates using the Service Status API.
 
