@@ -569,7 +569,6 @@ toc:
       - file: docs-content/serverless/slo-troubleshoot-slos.md
       - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/tags.md
-      - file: docs-content/serverless/transforms.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
@@ -595,7 +594,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
-      - file: elasticsearch/elasticsearch-reference/data-rollup-transform.md
       - file: elasticsearch/elasticsearch-reference/data-streams.md
       - file: elasticsearch/elasticsearch-reference/data-tiers.md
       - file: elasticsearch/elasticsearch-reference/defining-roles.md
@@ -658,7 +656,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
       - file: elasticsearch/elasticsearch-reference/starting-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/stopping-elasticsearch.md
-      - file: elasticsearch/elasticsearch-reference/transforms.md
       - file: elasticsearch/elasticsearch-reference/xpack-alerting.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
       - file: elasticsearch/elasticsearch-reference/xpack-rollup.md
