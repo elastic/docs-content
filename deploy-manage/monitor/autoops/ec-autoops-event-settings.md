@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-event-settings.html
+applies:
+  hosted: all
 ---
 
 # Events Settings [ec-autoops-event-settings]

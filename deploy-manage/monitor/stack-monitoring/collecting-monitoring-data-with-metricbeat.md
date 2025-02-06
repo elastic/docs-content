@@ -2,6 +2,8 @@
 navigation_title: "Collecting monitoring data with {{metricbeat}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-metricbeat.html
+applies:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Collecting monitoring data with Metricbeat [configuring-metricbeat]
 
 
-In 6.5 and later, you can use {{metricbeat}} to collect data about {{es}} and ship it to the monitoring cluster, rather than routing it through exporters as described in [Legacy collection methods](legacy-collection-methods.md).
+In 6.5 and later, you can use {{metricbeat}} to collect data about {{es}} and ship it to the monitoring cluster, rather than routing it through exporters as described in [Legacy collection methods](es-legacy-collection-methods.md).
 
 Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent}}](collecting-monitoring-data-with-elastic-agent.md).
 
@@ -103,5 +105,5 @@ Want to use {{agent}} instead? Refer to [Collecting monitoring data with {{agent
     For more information about these configuration options, see [Configure the {{es}} output](https://www.elastic.co/guide/en/beats/metricbeat/current/elasticsearch-output.html).
 
 6. [Start {{metricbeat}}](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-starting.html) on each node.
-7. [View the monitoring data in {{kib}}](monitoring-data.md).
+7. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).
 

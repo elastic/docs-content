@@ -45,14 +45,14 @@ To add interactive Options list and Range slider controls, create the controls, 
 1. Open or create a new dashboard.
 2. In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
-    :::{image} images/dashboard-add-control-8.15.0.png
+    :::{image} ../../images/kibana-dashboard-add-control-8.15.0.png
     :alt: Controls button in the toolbar with the Add Control option selected
     :class: screenshot
     :::
 
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the **Control**.
 4. In the **Field** list, select the field you want to filter on.
-5. Under **Control type**, select whether the control should be an **Options list*** or a ***Range slider**.
+5. Under **Control type**, select whether the control should be an **Options list** or a **Range slider**.
 
     ::::{tip}
     Range sliders are for Number type fields only.
@@ -95,7 +95,7 @@ You can add one interactive time slider control to a dashboard.
 1. Open or create a new dashboard.
 2. In **Edit** mode, select **Controls** > **Add time slider control**.
 
-    :::{image} images/dashboard-add-time-slider-control-8.15.0.png
+    :::{image} ../../images/kibana-dashboard-add-time-slider-control-8.15.0.png
     :alt: Controls button in the toolbar with the Add a time slider option selected
     :class: screenshot
     :::
@@ -110,7 +110,7 @@ Several settings that apply to all controls of the same dashboard are available.
 
 1. In **Edit** mode, select **Controls** > **Settings**.
 
-    :::{image} images/dashboard-controls-settings-8.15.0.png
+    :::{image} ../../images/kibana-dashboard-controls-settings-8.15.0.png
     :alt: Controls button in the toolbar with the Settings option selected
     :class: screenshot
     :::
@@ -127,7 +127,7 @@ Several settings that apply to all controls of the same dashboard are available.
 
         * **Validate user selections** — When selected, any selected option that results in no data is ignored.
         * **Chain controls** — When selected, controls are applied sequentially from left to right, and line by line. Any selected options in one control narrows the available options in the next control.
-        * **Apply selections automatically*** — The dashboard is updated dynamically when options are selected in controls. When this option is disabled, users first need to ***Apply** their control selection before they are applied to the dashboard.
+        * **Apply selections automatically** — The dashboard is updated dynamically when options are selected in controls. When this option is disabled, users first need to **Apply** their control selection before they are applied to the dashboard.
 
     * To remove all controls from the dashboard, click **Delete all**.
 

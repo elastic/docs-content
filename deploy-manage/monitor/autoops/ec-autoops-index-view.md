@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-index-view.html
+applies:
+  hosted: all
 ---
 
 # Indices [ec-autoops-index-view]

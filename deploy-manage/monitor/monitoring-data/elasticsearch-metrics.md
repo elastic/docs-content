@@ -2,6 +2,11 @@
 navigation_title: "{{es}} Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-metrics.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
 
@@ -24,7 +29,7 @@ For more information, refer to [Monitor a cluster](../../monitor.md).
 To view the key metrics that indicate the overall health of an {{es}} cluster, click **Overview** in the {{es}} section. Anything that needs your attention is highlighted in yellow or red.
 
 ::::{tip}
-Conditions that require your attention are listed at the top of the Clusters page. You can also set up watches to alert you when the status of your cluster changes. To learn how, see [Watching the status of an {{es}} cluster](../../../explore-analyze/alerts/watcher/watch-cluster-status.md).
+Conditions that require your attention are listed at the top of the Clusters page. You can also set up watches to alert you when the status of your cluster changes. To learn how, see [Watching the status of an {{es}} cluster](../../../explore-analyze/alerts-cases/watcher/watch-cluster-status.md).
 ::::
 
 

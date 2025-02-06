@@ -66,7 +66,7 @@ On a highly available deployment, autoscaling events are always applied to insta
 
 In the event that a data tier or machine learning node scales up to its maximum possible size, a notice appears on the deployment overview page prompting you to adjust your autoscaling settings in order to ensure optimal performance.
 
-A warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../../../explore-analyze/alerts/watcher/actions-email.md).
+A warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../../../explore-analyze/alerts-cases/watcher/actions-email.md).
 
 
 ## Restrictions and limitations [ece-autoscaling-restrictions]

@@ -21,7 +21,7 @@ You can use a PUT request to update your deployment, changing both the deploymen
 
     You can also find the template in the [list of templates available for each region](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html).
 
-    :::{image} images/cloud-ec-migrate-deployment-template(2).png
+    :::{image} ../../images/cloud-ec-migrate-deployment-template(2).png
     :alt: Deployment Template ID
     :class: screenshot
     :::

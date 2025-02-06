@@ -1,11 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
+
+% NEEDS TO BE MERGED WITH configure-stack-monitoring-alerts.md
 
 # Kibana alerts [kibana-alerts]
 
-The {{stack}} {monitor-features} provide [Alerting rules](../../../explore-analyze/alerts/kibana.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
+The {{stack}} {monitor-features} provide [Alerting rules](../../../explore-analyze/alerts-cases/alerts.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
 
 :::{image} ../../../images/kibana-monitoring-kibana-alerting-notification.png
 :alt: {{kib}} alerting notifications in {stack-monitor-app}

@@ -1,13 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cluster-health-notifications.html
+applies:
+  hosted: all
 ---
+
+% NEEDS MERGING WITH kibana-alerts.md
+% this one is written for Elastic Cloud but needs to be generic, except if it's really about Elastic cloud.
 
 # Configure Stack monitoring alerts [ec-cluster-health-notifications]
 
 You can configure Stack monitoring alerts to be sent to you by email when health related events occur in your deployments. To set up email notifications:
 
-1. [Enable logging and monitoring](../stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) on deployments for which you want to receive notifications. You need to enable only metrics data being shipped for the notifications to work.
+1. [Enable logging and monitoring](../stack-monitoring/elastic-cloud-stack-monitoring.md) on deployments for which you want to receive notifications. You need to enable only metrics data being shipped for the notifications to work.
 2. In Kibana, configure the email connector to [send email from Elastic Cloud](https://www.elastic.co/guide/en/kibana/current/email-action-type.html#elasticcloud). If you want to use the preconfigured `Elastic-Cloud-SMTP` connector in Elastic Cloud, then you can skip this step.
 3. From the Kibana main menu, go to **Stack Monitoring**. On this page you can find a summary of monitoring metrics for your deployment as well as any alerts.
 4. Select **Enter setup mode**.

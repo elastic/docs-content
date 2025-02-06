@@ -6,7 +6,7 @@ When you attempt to apply a configuration change to a deployment, the attempt ma
 :alt: A screen capture of the deployment page showing an error: Latest change to {{es}} configuration failed.
 :::
 
-To help diagnose these and any other types of issues in your deployments, we recommend [setting up monitoring](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md). Then, you can easily view your deployment health and access log files to troubleshoot this configuration failure.
+To help diagnose these and any other types of issues in your deployments, we recommend [setting up monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). Then, you can easily view your deployment health and access log files to troubleshoot this configuration failure.
 
 To confirm if your Elasticsearch cluster is bootlooping, you can check the most recent plan under your [Deployment Activity page](../../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) for the error:
 
@@ -114,7 +114,7 @@ To view any added plugins or bundles:
 
 Configuration change errors can occur when there is insufficient RAM configured for a data tier. In this case, the cluster typically also shows OOM (out of memory) errors. To resolve these, you need to increase the amount of heap memory, which is half of the amount of memory allocated to a cluster. You might also detect OOM in plan changes via their [related exit codes](https://www.elastic.co/guide/en/elasticsearch/reference/current/stopping-elasticsearch.html#fatal-errors) `127`, `137`, and `158`.
 
-Check the [{{es}} cluster size](../../../deploy-manage/deploy/elastic-cloud/ech-customize-deployment-components.md#ech-cluster-size) and the [JVM memory pressure indicator](../../../deploy-manage/monitor/monitoring-data/ech-memory-pressure.md) documentation to learn more.
+Check the [{{es}} cluster size](../../../deploy-manage/deploy/elastic-cloud/ech-customize-deployment-components.md#ech-cluster-size) and the [JVM memory pressure indicator](/deploy-manage/monitor/monitoring-data/ec-memory-pressure.md) documentation to learn more.
 
 As well, you can read our detailed blog [Managing and troubleshooting {{es}} memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 

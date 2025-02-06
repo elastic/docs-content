@@ -8,5 +8,3 @@ mapped_pages:
 This section contains further resources for using {{dfanalytics}}.
 
 * [Limitations](ml-dfa-limitations.md)
-
-

@@ -2,6 +2,8 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-saas-metrics-accessing.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-saas-metrics-accessing.html
+applies:
+  hosted: all
 ---
 
 # Access performance metrics on Elastic Cloud

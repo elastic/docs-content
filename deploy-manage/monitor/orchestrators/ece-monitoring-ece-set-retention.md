@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-monitoring-ece-set-retention.html
+applies:
+  ece: all
 ---
 
 # Set the retention period for logging and metrics indices [ece-monitoring-ece-set-retention]

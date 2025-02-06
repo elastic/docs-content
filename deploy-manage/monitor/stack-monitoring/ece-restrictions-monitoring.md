@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restrictions-monitoring.html
+applies:
+  ece: all
 ---
 
 # Restrictions and limitations [ece-restrictions-monitoring]

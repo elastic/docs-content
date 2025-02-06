@@ -4,17 +4,17 @@ Watcher is an {{es}} feature that you can use to create actions based on conditi
 
 Go to the **Watcher** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). With this UI, you can:
 
-* [Create a simple threshold watch](../../../explore-analyze/alerts/watcher.md#watcher-create-threshold-alert)
-* [View your watch history and action status](../../../explore-analyze/alerts/watcher.md#watcher-getting-started)
-* [Deactivate and delete a watch](../../../explore-analyze/alerts/watcher.md#watcher-deactivate)
-* [Create an advanced watch using API syntax](../../../explore-analyze/alerts/watcher.md#watcher-create-advanced-watch)
+* [Create a simple threshold watch](../../../explore-analyze/alerts-cases/watcher.md#watcher-create-threshold-alert)
+* [View your watch history and action status](../../../explore-analyze/alerts-cases/watcher.md#watcher-getting-started)
+* [Deactivate and delete a watch](../../../explore-analyze/alerts-cases/watcher.md#watcher-deactivate)
+* [Create an advanced watch using API syntax](../../../explore-analyze/alerts-cases/watcher.md#watcher-create-advanced-watch)
 
 ![Watcher list](../../../images/kibana-watches.png "")
 
-[Alerting on cluster and index events](../../../explore-analyze/alerts/watcher.md) is a good source for detailed information on how watches work. If you are using the UI to create a threshold watch, take a look at the different watcher actions. If you are creating an advanced watch, you should be familiar with the parts of a watch—input, schedule, condition, and actions.
+[Alerting on cluster and index events](../../../explore-analyze/alerts-cases/watcher.md) is a good source for detailed information on how watches work. If you are using the UI to create a threshold watch, take a look at the different watcher actions. If you are creating an advanced watch, you should be familiar with the parts of a watch—input, schedule, condition, and actions.
 
 ::::{note}
-There are limitations in **Watcher** that affect {{kib}}. For information, refer to [Alerting](../../../explore-analyze/alerts/watcher/watcher-limitations.md).
+There are limitations in **Watcher** that affect {{kib}}. For information, refer to [Alerting](../../../explore-analyze/alerts-cases/watcher/watcher-limitations.md).
 ::::
 
 
@@ -74,9 +74,9 @@ You should now see a panel with default conditions and a visualization of the da
 
 ### Add an action [_add_an_action]
 
-Now that the condition is set, you must add an action. The action triggers when the watch condition is met. For a complete list of actions and how to configure them, see [Adding conditions to actions](../../../explore-analyze/alerts/watcher/action-conditions.md).
+Now that the condition is set, you must add an action. The action triggers when the watch condition is met. For a complete list of actions and how to configure them, see [Adding conditions to actions](../../../explore-analyze/alerts-cases/watcher/action-conditions.md).
 
-In this example, you’ll configure an email action. You must have an [email account configured](../../../explore-analyze/alerts/watcher/actions-email.md#configuring-email) in {{es}} for this example to work.
+In this example, you’ll configure an email action. You must have an [email account configured](../../../explore-analyze/alerts-cases/watcher/actions-email.md#configuring-email) in {{es}} for this example to work.
 
 1. Click **Add action** and select **Email**.
 2. In the **To email address** field, enter one or more email addresses to whom you want to send the message when the condition is met.
@@ -121,7 +121,7 @@ The **Execution history** tab shows each time the watch is triggered and the res
 
 ### Acknowledge action status [_acknowledge_action_status]
 
-The **Action statuses** tab lists all actions associated with the watch and the state of each action. Some actions can be acknowledged, which will prevent too many executions of that action for the relevant watch. See [Acknowledgement and throttling](../../../explore-analyze/alerts/watcher/actions.md#actions-ack-throttle) for details.
+The **Action statuses** tab lists all actions associated with the watch and the state of each action. Some actions can be acknowledged, which will prevent too many executions of that action for the relevant watch. See [Acknowledgement and throttling](../../../explore-analyze/alerts-cases/watcher/actions.md#actions-ack-throttle) for details.
 
 ![Action status tab](../../../images/kibana-alerts-status.png "")
 
@@ -141,7 +141,7 @@ Advanced watches are for users who are more familiar with {{es}} query syntax an
 
 ### Create the watch [_create_the_watch]
 
-On the Watch overview page, click **Create** and choose **Create advanced watch**. An advanced watch requires a name and ID.  Name is a user-friendly way to identify the watch, and ID refers to the identifier used by {{es}}.  Refer to [Watch definition](../../../explore-analyze/alerts/watcher/how-watcher-works.md#watch-definition) for how to input the watch JSON.
+On the Watch overview page, click **Create** and choose **Create advanced watch**. An advanced watch requires a name and ID.  Name is a user-friendly way to identify the watch, and ID refers to the identifier used by {{es}}.  Refer to [Watch definition](../../../explore-analyze/alerts-cases/watcher/how-watcher-works.md#watch-definition) for how to input the watch JSON.
 
 ![Create advanced watch](../../../images/kibana-advanced-watch-create.png "")
 
@@ -166,6 +166,6 @@ After starting the simulation, you’ll see a results screen. For more informati
 
 Refer to these examples for creating an advanced watch:
 
-* [Watch the status of an {{es}} cluster](../../../explore-analyze/alerts/watcher/watch-cluster-status.md)
+* [Watch the status of an {{es}} cluster](../../../explore-analyze/alerts-cases/watcher/watch-cluster-status.md)
 * [Watch event data](https://www.elastic.co/guide/en/elasticsearch/reference/current/watching-meetup-data.html)
 

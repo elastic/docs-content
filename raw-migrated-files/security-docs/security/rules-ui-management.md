@@ -80,7 +80,7 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
 
 
     ::::{note}
-    Rule actions won’t run during a [maintenance window](../../../explore-analyze/alerts/kibana/maintenance-windows.md). They’ll resume running after the maintenance window ends.
+    Rule actions won’t run during a [maintenance window](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md). They’ll resume running after the maintenance window ends.
     ::::
 
 

@@ -4,15 +4,19 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/transforms.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-rollup-transform.html
 ---
+# Transforming data [transforms]
 
-# Transforms
+{{transforms-cap}} enable you to convert existing {{es}} indices into summarized indices, which provide opportunities for new insights and analytics. For example, you can use {{transforms}} to pivot your data into entity-centric indices that summarize the behavior of users or sessions or other entities in your data. Or you can use {{transforms}} to find the latest document among all the documents that have a certain unique key.
 
-% What needs to be done: Align serverless/stateful
-
-% Scope notes: views in last 6 months: ~90/week
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/transforms.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/transforms.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/data-rollup-transform.md
+* [Overview](transforms/transform-overview.md)
+* [Setup](transforms/transform-setup.md)
+* [When to use {{transforms}}](transforms/transform-usage.md)
+* [Generating alerts for {{transforms}}](transforms/transform-alerts.md)
+* [{{transforms-cap}} at scale](transforms/transform-scale.md)
+* [How checkpoints work](transforms/transform-checkpoints.md)
+* [API quick reference](transforms/transform-api-quickref.md)
+* [Tutorial: Transforming the eCommerce sample data](transforms/ecommerce-transforms.md)
+* [Examples](transforms/transform-examples.md)
+* [Painless examples](transforms/transform-painless-examples.md)
+* [Troubleshooting {{transforms}}](../troubleshoot/elasticsearch/transform-troubleshooting.md)
+* [Limitations](transforms/transform-limitations.md)

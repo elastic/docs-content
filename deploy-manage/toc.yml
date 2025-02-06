@@ -687,7 +687,6 @@ toc:
   - file: manage-connectors.md
   - file: monitor.md
     children:
-      - file: monitor/monitoring-overview.md
       - file: monitor/autoops.md
         children:
           - file: monitor/autoops/ec-autoops-how-to-access.md
@@ -705,15 +704,15 @@ toc:
           - file: monitor/autoops/ec-autoops-faq.md
       - file: monitor/stack-monitoring.md
         children:
-          - file: monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md
-          - file: monitor/stack-monitoring/enable-stack-monitoring-on-eck-deployments.md
+          - file: monitor/stack-monitoring/elastic-cloud-stack-monitoring.md
+          - file: monitor/stack-monitoring/eck-stack-monitoring.md
             children:
               - file: monitor/stack-monitoring/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.md
               - file: monitor/stack-monitoring/k8s_when_to_use_it.md
               - file: monitor/stack-monitoring/k8s_how_it_works.md
               - file: monitor/stack-monitoring/k8s_audit_logging.md
               - file: monitor/stack-monitoring/k8s_override_the_beats_pod_template.md
-          - file: monitor/stack-monitoring/enable-stack-monitoring-on-ece-deployments.md
+          - file: monitor/stack-monitoring/ece-stack-monitoring.md
             children:
               - file: monitor/stack-monitoring/ece-restrictions-monitoring.md
           - file: monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md
@@ -721,19 +720,19 @@ toc:
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-elastic-agent.md
               - file: monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md
               - file: monitor/stack-monitoring/collecting-log-data-with-filebeat.md
-              - file: monitor/stack-monitoring/legacy-collection-methods.md
+              - file: monitor/stack-monitoring/es-legacy-collection-methods.md
                 children:
                   - file: monitor/stack-monitoring/es-monitoring-collectors.md
                   - file: monitor/stack-monitoring/es-monitoring-exporters.md
-                  - file: monitor/stack-monitoring/local-exporter.md
-                  - file: monitor/stack-monitoring/http-exporter.md
-                  - file: monitor/stack-monitoring/pause-export.md
+                  - file: monitor/stack-monitoring/es-local-exporter.md
+                  - file: monitor/stack-monitoring/es-http-exporter.md
+                  - file: monitor/stack-monitoring/es-pause-export.md
           - file: monitor/stack-monitoring/kibana-monitoring-self-managed.md
             children:
-              - file: monitor/stack-monitoring/monitoring-elastic-agent.md
-              - file: monitor/stack-monitoring/monitoring-metricbeat.md
-              - file: monitor/stack-monitoring/monitoring-data.md
-              - file: monitor/stack-monitoring/monitoring-kibana.md
+              - file: monitor/stack-monitoring/kibana-monitoring-elastic-agent.md
+              - file: monitor/stack-monitoring/kibana-monitoring-metricbeat.md
+              - file: monitor/stack-monitoring/kibana-monitoring-data.md
+              - file: monitor/stack-monitoring/kibana-monitoring-legacy.md
       - file: monitor/orchestrators.md
         children:
           - file: monitor/orchestrators/eck-metrics-configuration.md
@@ -762,10 +761,6 @@ toc:
                 children:
                   - file: monitor/monitoring-data/ec-memory-pressure.md
                   - file: monitor/monitoring-data/ec-vcpu-boost-instance.md
-              - file: monitor/monitoring-data/ech-saas-metrics-accessing.md
-                children:
-                  - file: monitor/monitoring-data/ech-memory-pressure.md
-                  - file: monitor/monitoring-data/ech-vcpu-boost-instance.md
           - file: monitor/monitoring-data/configure-stack-monitoring-alerts.md
           - file: monitor/monitoring-data/configuring-data-streamsindices-for-monitoring.md
             children:
@@ -780,8 +775,8 @@ toc:
           - file: monitor/logging-configuration/elasticsearch-deprecation-logs.md
           - file: monitor/logging-configuration/kibana-logging.md
             children:
-              - file: monitor/logging-configuration/log-settings-examples.md
-              - file: monitor/logging-configuration/_cli_configuration.md
+              - file: monitor/logging-configuration/kibana-log-settings-examples.md
+              - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
           - file: monitor/logging-configuration/security-event-audit-logging.md
             children:
               - file: monitor/logging-configuration/enabling-elasticsearch-audit-logs.md

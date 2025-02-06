@@ -48,7 +48,7 @@ Edit and delete.
 6. Click **Apply and close**.
 
 ::::{tip}
-Use the **Edit visualization*** flyout to make edits without having to leave the dashboard, or click ***Edit in Lens** in the flyout to make edits using the Lens application.
+Use the **Edit visualization** flyout to make edits without having to leave the dashboard, or click **Edit in Lens** in the flyout to make edits using the Lens application.
 ::::
 
 
@@ -362,7 +362,7 @@ The options available can vary based on the type of chart you’re setting up. F
 
 **Change the legend’s display**
 
-With the **Visibility***, ***Position***, and ***Width** options, you can adjust the way the legend appears in or next to the visualization.
+With the **Visibility**, **Position**, and **Width** options, you can adjust the way the legend appears in or next to the visualization.
 
 **Truncate long labels**
 
@@ -370,9 +370,9 @@ With the **Label truncation** option, you can keep your legend minimal in case o
 
 **Show additional statistics for time series charts**
 
-To make your legends as informative as possible, you can show some additional **Statistics*** for charts with a timestamp on one of the axes, and add a ***Series header**.
+To make your legends as informative as possible, you can show some additional **Statistics** for charts with a timestamp on one of the axes, and add a **Series header**.
 
-**Bar***, ***Line*** and ***Area** charts can show the following values:
+**Bar**, **Line** and **Area** charts can show the following values:
 
 * **Average**: Average value considering all data points in the chart
 * **Median**: Median value considering all data points in the chart
