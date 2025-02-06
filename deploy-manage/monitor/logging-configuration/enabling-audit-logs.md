@@ -13,21 +13,6 @@ applies:
   serverless: unavailable
 ---
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/350
-
-% Scope notes: Merge the content and even consider putting everything under a global section that also covers Elasticsearch self-managed (done)
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-enable-auditing.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s_audit_logging.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-enable-logging-and-monitoring.md
-
-% https://www.elastic.co/guide/en/cloud/current/ec-add-user-settings.html#ec_audit_settings
-% https://www.elastic.co/guide/en/cloud/current/ec-manage-kibana-settings.html#ec_logging_and_audit_settings
-
 # Enable audit logging [enable-audit-logging]
 
 You can log security-related events such as authentication failures and refused connections to monitor your cluster for suspicious activity (including data access authorization and user security configuration changes).
@@ -39,7 +24,6 @@ Audit logs are **disabled** by default and must be explicitly enabled.
 ::::{tip}
 Audit logs are only available on certain subscription levels. For more information, see https://www.elastic.co/subscriptions.
 ::::
-
 
 This section describes how to enable and configure audit logging in both {{es}} and {{kib}} for all supported deployment types, including self-managed clusters, Elastic Cloud Hosted, Elastic Cloud Enterprise (ECE), and Elastic Cloud on Kubernetes (ECK).
 
@@ -53,7 +37,7 @@ The only difference lies in how the configuration is applied:
 
 ## Enabling procedure [enable-audit-logging-procedure]
 
-In short, to enable {{es}} or {{kib}} audit logs, set `xpack.security.audit.enabled` to `true` in the configuration of **all {{es}} or {{kib}} nodes**. The following tabs show the detailed process for all deployment types:
+To enable {{es}} or {{kib}} audit logs, configure `xpack.security.audit.enabled` to `true` in **all {{es}} or {{kib}} nodes**, then restart the nodes to apply the changes. The following provide detailed steps for all deployment types:
 
 ::::::{tab-set}
 
@@ -189,12 +173,10 @@ When enabled, audit logs are collected and shipped to the monitoring cluster ref
 * [{{es}} ignore policies settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#audit-event-ignore-policies)
 * [{{kib}} audit logging settings](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-settings)
 
-To configure {{kib}} settings, follow the same [procedure](#enable-audit-logging-procedure) described above for enabling audit logs, which applies to all deployment types.
-
-For {{es}} `dynamic` auditing settings, you can also use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), which is a faster and more convenient alternative that doesn't require a restart.
+To configure {{kib}} settings, follow the same [procedure](#enable-audit-logging-procedure) as when enabling {{kib}} audit logs, but apply the relevant settings instead.
 
 ::::{tip}
-In {{es}}, the only auditing setting that must be added individually to all nodes and requires a restart is `xpack.security.audit.enabled`. The rest of the settings are dynamic and support being updated using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html).
+For {{es}} auditing settings identified as `dynamic` (all except `xpack.security.audit.enabled`), you can also use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), which is a faster and more convenient alternative that applies changes without requiring a restart.
 ::::
 
 Configuration suggestions:
