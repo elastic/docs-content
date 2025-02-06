@@ -45,6 +45,8 @@ Refer to [](./elasticsearch-audit-events.md) for a complete reference of event t
 
 In {{kib}}, the [trace.id](https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html#field-trace-id) field allows to correlate multiple events that originate from the same request.
 
-Additionally, this field helps correlate also events from one request with the backend calls that create {{es}} audit events. When {{kib}} sends requests to {{es}}, the `trace.id` value is propagated and stored in the `opaque_id` attribute of {{es}} audit logs, allowing cross-component correlation.
+Additionally, this field helps correlate events from one request with the backend calls that create {{es}} audit events. When {{kib}} sends requests to {{es}}, the `trace.id` value is propagated and stored in the `opaque_id` attribute of {{es}} audit logs, allowing cross-component correlation.
 
-For an example of correlating {{es}} and {{kib}} audit logs, refer to [](./correlating-kibana-elasticsearch-audit-logs.md)
+For an example of correlating {{es}} and {{kib}} audit logs, refer to [](./correlating-kibana-elasticsearch-audit-logs.md).
+
+Refer to [{{kib}} audit events](https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html#xpack-security-ecs-audit-logging) for a complete description of {{kib}} auditing events.
