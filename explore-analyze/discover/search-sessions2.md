@@ -1,7 +1,9 @@
 ---
 applies:
-  stack: deprecated 8.15
-  serverless: deprecated
+  stack: unavailable 9.0
+  stack: beta 9.3
+  stack: ga 9.6
+  serverless: ga
 ---
 
 # Run a search session in the background [search-sessions]

@@ -8,10 +8,10 @@ mapped_pages:
 
 # Run a search session in the background [search-sessions]
 
-::::{admonition} Search Sessions are deprecated.
+::::{admonition} Search Sessions aren't available in all versions of the Elastic Stack
 :class: warning
 
-Search Sessions are deprecated and will be removed in a future version.
+Search Sessions were added in Elastic Stack 9.3 in Beta, and became Generally Available in 9.6.
 ::::
 
 
