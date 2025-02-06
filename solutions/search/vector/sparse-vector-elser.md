@@ -1,5 +1,4 @@
 ---
-navigation_title: "Semantic search with ELSER"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-elser.html
 ---

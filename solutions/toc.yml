@@ -634,6 +634,7 @@ toc:
           - file: search/vector/dense-vector.md
             children:
               - file: search/vector/knn.md
+              - file: search/semantic-search/bring-own-vectors.md
           - file: search/vector/sparse-vector-elser.md
       - file: search/hybrid-search.md
       - file: search/semantic-search.md
@@ -644,7 +645,6 @@ toc:
           - file: search/semantic-search/semantic-search-elser.md
           - file: search/semantic-search/cohere-es.md
           - file: search/semantic-search/semantic-search-deployed-nlp-model.md
-          - file: search/semantic-search/bring-own-vectors.md
       - file: search/ranking.md
         children:
           - file: search/ranking/semantic-reranking.md
