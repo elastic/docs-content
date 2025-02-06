@@ -30,7 +30,7 @@ Create an anomaly detection rule to check for anomalies in one or more anomaly d
 To create an anomaly detection rule:
 
 1. In your {{obs-serverless}} project, go to **Machine learning** → **Jobs**.
-2. In the list of anomaly detection jobs, find the job you want to check for anomalies. Haven’t created a job yet? [Create one now](../../../explore-analyze/machine-learning/aiops-labs/observability-aiops-detect-anomalies.md).
+2. In the list of anomaly detection jobs, find the job you want to check for anomalies. Haven’t created a job yet? [Create one now](../../../explore-analyze/machine-learning/anomaly-detection.md).
 3. From the **Actions** menu next to the job, select **Create alert rule**.
 4. Specify a name and optional tags for the rule. You can use these tags later to filter alerts.
 5. Verify that the correct job is selected and configure the alert details:

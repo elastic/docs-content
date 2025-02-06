@@ -97,9 +97,9 @@ For host monitoring, the following capabilities and features are recommended:
 
 * Use [machine learning and AIOps features](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md) to apply predictive analytics and machine learning to your data:
 
-    * [Detect anomalies](../../../explore-analyze/machine-learning/aiops-labs/observability-aiops-detect-anomalies.md) by comparing real-time and historical data from different sources to look for unusual, problematic patterns.
+    * [Detect anomalies](../../../explore-analyze/machine-learning/anomaly-detection.md) by comparing real-time and historical data from different sources to look for unusual, problematic patterns.
     * [Analyze log spikes and drops](../../../explore-analyze/machine-learning/aiops-labs/observability-aiops-analyze-spikes.md).
-    * [Detect change points](../../../explore-analyze/machine-learning/aiops-labs/observability-aiops-detect-change-points.md) in your time series data.
+    * [Detect change points](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
 
 
 Refer to [Observability overview](../../../solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.
