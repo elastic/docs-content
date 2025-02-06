@@ -98,6 +98,7 @@ toc:
       - file: ingest/sample-data.md
       - file: ingest/transform-enrich.md
         children:
+          - file: ingest/transform-enrich/ingest-pipelines-serverless.md 
           - file: ingest/transform-enrich/ingest-pipelines.md
             children:
               - file: ingest/transform-enrich/example-parse-logs.md
