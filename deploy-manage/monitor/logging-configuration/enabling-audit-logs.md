@@ -30,51 +30,51 @@ applies:
 
 # Enable audit logging [enable-audit-logging]
 
+You can log security-related events such as authentication failures and refused connections to monitor your cluster for suspicious activity (including data access authorization and user security configuration changes).
+
 ::::{important}
-Audit logs are **disabled** by default and must be explicitly enabled; they are available only on certain [subscription levels](https://www.elastic.co/subscriptions).
+Audit logs are **disabled** by default and must be explicitly enabled.
 ::::
 
-You can log security-related events such as authentication failures and refused connections to monitor your cluster for suspicious activity (including data access authorization and user security configuration changes).
+::::{tip}
+Audit logs are only available on certain subscription levels. For more information, see https://www.elastic.co/subscriptions.
+::::
+
 
 This section describes how to enable and configure audit logging in both {{es}} and {{kib}} for all supported deployment types, including self-managed clusters, Elastic Cloud Hosted, Elastic Cloud Enterprise (ECE), and Elastic Cloud on Kubernetes (ECK).
 
-Audit logging is enabled separately for both {{es}} and {{kib}}, and enabling both is optional, depending on your use case and requirements. 
+Audit logging is enabled and configured independently for both {{es}} and {{kib}}, and enabling both is optional, depending on your use case and requirements. 
 
 The process of enabling and configuring audit logging is consistent across all supported deployment types, whether self-managed, Elastic Cloud, Elastic Cloud Enterprise (ECE), or Elastic Cloud on Kubernetes (ECK). The same settings apply regardless of the deployment type, ensuring a unified approach to audit logging configuration.
 
 The only difference lies in how the configuration is applied:
-  * In self-managed clusters, settings are added directly to the `elasticsearch.yml` and `kibana.yml` configuration files.
-  * In orchestrated deployments (Elastic Cloud Hosted, ECE or ECK), the configuration is applied using the appropriate mechanisms provided by the orchestrator. Refer to [](/deploy-manage/deploy.md) for more information about the different orchestrators and deployment configuration mechanisms.
-
-In short, to enable {{es}} or {{kib}} audit logs, set `xpack.security.audit.enabled` to `true` in the configuration of **all {{es}} or {{kib}} nodes**. In self-managed clusters you will have to perform a [rolling restart of the cluster](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) to apply the changes, while in orchestrated environments the orchestrator will apply the change and restart the nodes automatically.
-
-The following tabs show the detailed process for all deployment types:
+  * In self-managed clusters, settings are added directly to the `elasticsearch.yml` and `kibana.yml` configuration files, and you will have to perform a [rolling restart of the cluster](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) when applying changes to `static` settings (such as `xpack.security.audit.enabled`).
+  * In orchestrated deployments (Elastic Cloud Hosted, ECE or ECK), the configuration is applied using the appropriate mechanisms provided by the orchestrator, and the restart will be applied automatically. Refer to [](/deploy-manage/deploy.md) for more information about the different orchestrators and deployment configuration mechanisms.
 
 ## Enabling procedure [enable-audit-logging-procedure]
+
+In short, to enable {{es}} or {{kib}} audit logs, set `xpack.security.audit.enabled` to `true` in the configuration of **all {{es}} or {{kib}} nodes**. The following tabs show the detailed process for all deployment types:
 
 ::::::{tab-set}
 
 :::::{tab-item} Self-managed
 
-To enable audit logging in {{es}}:
+**To enable audit logging in {{es}}**:
 
 1. Set `xpack.security.audit.enabled` to `true` in `elasticsearch.yml`.
 2. Restart {{es}}.
 
-When audit logging is enabled, audit events are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, refer to [{{es}} logfile audit output](logfile-audit-output.md).
+When audit logging is enabled, security events are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, refer to [{{es}} logfile audit output](logfile-audit-output.md).
 
-::::{note}
-You can configure additional options to control what events are logged and what information is included in the audit log. For more information, refer to [{{es}} auditing settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html).
-::::
+You can configure additional options to control what events are logged and what information is included in the audit log. For more information, refer to [](#audit-logging-configuration).
 
-To enable audit logging in {{kib}}:
+**To enable audit logging in {{kib}}**:
 
 1. Set `xpack.security.audit.enabled` to `true` in `kibana.yml`
 2. Restart {{kib}}
 
-::::{note}
 You can optionally configure audit logs location, file/rolling file appenders and ignore filters using [{{kib}} audit logging settings](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-settings).
-::::
+
 
 :::::
 
@@ -90,10 +90,6 @@ To enable audit logging in an Elastic Cloud Hosted deployment:
 
 2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
 
-  ::::{tip}
-  On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-  ::::
-
 3. From your deployment menu, go to the **Edit** page.
 
 4. To enable auditing for Elasticsearch:
@@ -105,11 +101,7 @@ To enable audit logging in an Elastic Cloud Hosted deployment:
     * Add the setting `xpack.security.audit.enabled: true`.
 
 6. Select **Save changes**.
-    A plan change will run on your deployment. When it finishes, **audit logs will be delivered to your monitoring deployment**.
-
-For details on available audit settings in Elastic Cloud Hosted deployments, refer to the following documents:
-* [Elasticsearch audit settings on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-add-user-settings.html#ec_audit_settings)
-* [Kibana audit settings on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-manage-kibana-settings.html#ec_logging_and_audit_settings)
+    * A plan change will run on your deployment. When it finishes, **audit logs will be delivered to your monitoring deployment**.
 :::::
 
 :::::{tab-item} ECE
@@ -123,9 +115,6 @@ To enable audit logging in an ECE deployment:
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 
 2. On the **Deployments** page, select your deployment.
-  ::::{tip}
-  On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
-  ::::
 
 3. From your deployment menu, go to the **Edit** page.
 
@@ -139,9 +128,7 @@ To enable audit logging in an ECE deployment:
     * If your Elastic Stack version is below 7.6.0, add the setting `logging.quiet: false`.
 
 6. Select **Save**.
-    A plan change will run on your deployment. When it finishes, **audit logs will be delivered to your monitoring deployment**.
-
-For more information and other available auditing settings, refer to [{{es}} auditing settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html) and [{{kib}} auditing settings](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-settings). Audit logs can be viewed within Elasticsearch and Kibana logs.
+    * A plan change will run on your deployment. When it finishes, **audit logs will be delivered to your monitoring deployment**.
 :::::
 
 :::::{tab-item} ECK
@@ -150,7 +137,7 @@ For more information and other available auditing settings, refer to [{{es}} aud
 In orchestrated deployments, audit logs must be shipped to a monitoring deployment; otherwise, they remain at container level and won't be accessible to users. For details on configuring log forwarding in orchestrated environments, refer to [logging configuration](../logging-configuration.md).
 ::::
 
-To enable audit logging in an ECK-managed cluster, add `xpack.security.audit.enabled: true` to the `config` section of each {{es}} `nodeSet` and to the `config` section of the {{kib}} object's specification, for example:
+To enable audit logging in an ECK-managed cluster, add `xpack.security.audit.enabled: true` to the `config` section of each {{es}} `nodeSet` and to the `config` section of the {{kib}} object's specification. The following example shows this configuration together with logs and metrics delivery towards a remote cluster:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -195,23 +182,30 @@ When enabled, audit logs are collected and shipped to the monitoring cluster ref
 
 ## Advanced Configuration [audit-logging-configuration]
 
-{{es}} audit logging and {{kib}} audit logging offer several configuration mechanisms to control what events are logged and what information is included in the audit log. For more information, refer to:
+{{es}} and {{kib}} audit logging frameworks offer several configuration mechanisms to control what events are logged and what information is included in the audit log. For more information, refer to:
 
-* [{{es}} audited event settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#event-audit-settings)
+* [{{es}} audited events settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#event-audit-settings)
 * [{{es}} node information settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#node-audit-settings)
 * [{{es}} ignore policies settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#audit-event-ignore-policies)
 * [{{kib}} audit logging settings](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-settings)
 
-::::{important} 
-Be advised that **sensitive data may be audited in plain text** when including the request body in audit events, even though all the security APIs, such as those that change the user’s password, have the credentials filtered out when audited.
+To configure {{kib}} settings, follow the same [procedure](#enable-audit-logging-procedure) described above for enabling audit logs, which applies to all deployment types.
+
+For {{es}} `dynamic` auditing settings, you can also use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), which is a faster and more convenient alternative that doesn't require a restart.
+
+::::{tip}
+In {{es}}, the only auditing setting that must be added individually to all nodes and requires a restart is `xpack.security.audit.enabled`. The rest of the settings are dynamic and support being updated using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html).
 ::::
 
-The configuration can be applied using the same [procedure](#enable-audit-logging-procedure) used to enable audit logs, described for all deployment types.
-
 Configuration suggestions:
-* Use [`xpack.security.audit.logfile.events.include`](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include) or the corresponding `exclude` setting to specify the kind of events you want to include or exclude in the {{es}} auditing output.
+* Use [`xpack.security.audit.logfile.events.include`](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include) or the corresponding `exclude` setting to specify the type of events you want to include or exclude in the {{es}} auditing output.
 * Refer to [logfile ignore policies](./logfile-audit-events-ignore-policies.md) for an example of how to tune the verbosity of the {{es}} audit trail.
 * Refer to [auditing search queries](./auditing-search-queries.md) for details on logging request bodies in the {{es}} audit logs.
+
+  ::::{important}
+  Be advised that **sensitive data may be audited in plain text** when including the request body in audit events, even though all the security APIs, such as those that change the user’s password, have the credentials filtered out when audited.
+  ::::
+
 * Use {{kib}} [ignore filters](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-ignore-filters) to determine which events to exclude from the {{kib}} audit log.
 
 Extra considerations:
@@ -220,22 +214,6 @@ Extra considerations:
   * [Elasticsearch audit settings on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-add-user-settings.html#ec_audit_settings)
   * [Kibana audit settings on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-manage-kibana-settings.html#ec_logging_and_audit_settings)
 
-* Changing the configuration of `log4j2.properties` is not supported in orchestrated deployments, and it's not recommended for `self-managed` deployments.
-
-* For a complete list of event kinds and attributes, refer to:
+* For a complete list of event types and attributes, refer to:
   * [{{es}} audit events](/deploy-manage/monitor/logging-configuration/elasticsearch-audit-events.md).
   * [{{kib}} audit events](https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html#xpack-security-ecs-audit-logging)
-
-
-## Elasticsearch audit output 
-
-
-
-You can also configure how the logfile is written in the `log4j2.properties` file located in `ES_PATH_CONF` (or check out the relevant portion of the [log4j2.properties in the sources](https://github.com/elastic/elasticsearch/blob/master/x-pack/plugin/core/src/main/config/log4j2.properties)). By default, audit information is appended to the `<clustername>_audit.json` file located in the standard Elasticsearch `logs` directory (typically located at `$ES_HOME/logs`). The file is also rotated and archived daily or upon reaching the 1GB file size limit.
-
-
-
-
-
-
-
