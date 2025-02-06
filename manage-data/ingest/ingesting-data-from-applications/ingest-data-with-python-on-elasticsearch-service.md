@@ -12,7 +12,7 @@ This guide tells you how to get started with:
 * Ingesting data into your deployment from your application
 * Searching and modifying your data on Elasticsearch Service
 
-If you are an Python application programmer who is new to the Elastic Stack, this content can help you get started more easily.
+If you are a Python application programmer who is new to the Elastic Stack, this content can help you get started more easily.
 
 *Time required: 45 minutes*
 
