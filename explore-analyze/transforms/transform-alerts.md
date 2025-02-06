@@ -5,7 +5,7 @@ mapped_pages:
 
 # Generating alerts for transforms [transform-alerts]
 
-{{kib}} {alert-features} include support for {{transform}} health rules, which check the health of {{ctransforms}} with certain conditions. If the conditions of the rule are met, an alert is created and the associated actions run. For example, you can create a rule to check if a {{ctransform}} is started and to notify you in an email if it is not. To learn more about {{kib}} {alert-features}, refer to [Alerting](../alerts/kibana.md#alerting-getting-started).
+{{kib}} {alert-features} include support for {{transform}} health rules, which check the health of {{ctransforms}} with certain conditions. If the conditions of the rule are met, an alert is created and the associated actions run. For example, you can create a rule to check if a {{ctransform}} is started and to notify you in an email if it is not. To learn more about {{kib}} {alert-features}, refer to [Alerting](../alerts-cases/alerts.md#alerting-getting-started).
 
 ## Creating a rule [creating-transform-rules]
 
@@ -70,7 +70,7 @@ The name of an alert is always the same as the {{transform}} ID of the associate
 
 ## Action variables [transform-action-variables]
 
-The following variables are specific to the {{transform}} health rule type. You can also specify [variables common to all rules](../alerts/kibana/rule-action-variables.md).
+The following variables are specific to the {{transform}} health rule type. You can also specify [variables common to all rules](../alerts-cases/alerts/rule-action-variables.md).
 
 `context.message`
 :   A preconstructed message for the rule. For example: `Transform test-1 is not started.`
@@ -99,4 +99,4 @@ The following variables are specific to the {{transform}} health rule type. You 
     {{/context.results}}
     ```
 
-For more examples, refer to [Rule action variables](../alerts/kibana/rule-action-variables.md).
+For more examples, refer to [Rule action variables](../alerts-cases/alerts/rule-action-variables.md).
