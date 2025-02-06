@@ -116,7 +116,7 @@ To ensure the ML {{infer}} pipeline will be run when ingesting documents, you mu
 ## Learn More [ingest-pipeline-search-inference-learn-more]
 
 * See [Overview](/solutions/search/search-pipelines.md#ingest-pipeline-search-in-enterprise-search) for information on the various pipelines that are created.
-* Learn about [ELSER](ml-nlp-elser.md), Elastic’s proprietary retrieval model for semantic search with sparse vectors.
+* Learn about [ELSER](../nlp/ml-nlp-elser.md), Elastic’s proprietary retrieval model for semantic search with sparse vectors.
 * [NER HuggingFace Models](https://huggingface.co/models?library=pytorch&pipeline_tag=token-classification&sort=downloads)
 * [Text Classification HuggingFace Models](https://huggingface.co/models?library=pytorch&pipeline_tag=text-classification&sort=downloads)
 * [Text Embedding HuggingFace Models](https://huggingface.co/models?library=pytorch&pipeline_tag=sentence-similarity&sort=downloads)
