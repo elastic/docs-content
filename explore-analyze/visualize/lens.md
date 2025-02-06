@@ -614,7 +614,7 @@ Configuring the **Suggestions** is unsupported.
 ::::{dropdown} Is it possible to have pagination in a data table?
 :name: is-it-possible-to-have-pagination-for-datatable
 
-Pagination in a data table is unsupported. To use pagination in data tables, create an [aggregation-based data table](legacy-editors/aggreagation-based.md#types-of-visualizations).
+Pagination in a data table is unsupported. To use pagination in data tables, create an [aggregation-based data table](legacy-editors/aggregation-based.md#types-of-visualizations).
 
 ::::
 

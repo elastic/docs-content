@@ -34,5 +34,5 @@ $$$panels-editors$$$
 | [SLO Error Budget](https://www.elastic.co/guide/en/observability/current/slo.md) | Visualize the consumption of your SLO’s error budget |
 | Legacy | | |
 | [Log stream](https://www.elastic.co/guide/en/kibana/current/observability.html#logs-app) (deprecated) | Display a table of live streaming logs |
-| [Aggregation based](visualize/legacy-editors/aggregation-based.md#add-aggregation-based-visualization-panels) | While these panel types are still available, we recommend to use [Lens](visualize/lens.md) |
-| [TSVB](visualize/legacy-editors/tsvb.md#tsvb-panel) |
+| [Aggregation based](visualize/legacy-editors/aggregation-based.md) | While these panel types are still available, we recommend to use [Lens](visualize/lens.md) |
+| [TSVB](visualize/legacy-editors/tsvb.md) |

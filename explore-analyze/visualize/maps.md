@@ -35,7 +35,7 @@ Use multiple layers and indices to show all your data in a single map. Show how 
 :class: screenshot
 :::
 
-To learn about specific types of layers, check out [Heat map layer](../../../explore-analyze/visualize/maps/heatmap-layer.md), [Tile layer](../../../explore-analyze/visualize/maps/tile-layer.md), and [Vector layer](../../../explore-analyze/visualize/maps/vector-layer.md).
+To learn about specific types of layers, check out [Heat map layer](../../explore-analyze/visualize/maps/heatmap-layer.md), [Tile layer](../../explore-analyze/visualize/maps/tile-layer.md), and [Vector layer](../../explore-analyze/visualize/maps/vector-layer.md).
 
 
 ## Animate spatial temporal data [_animate_spatial_temporal_data]
@@ -49,7 +49,7 @@ This animated map uses the time slider to show Portland buses over a period of 1
 :class: screenshot
 :::
 
-To create this type of map, check out [Track, visualize, and alert assets in real time](../../../explore-analyze/visualize/maps/asset-tracking-tutorial.md).
+To create this type of map, check out [Track, visualize, and alert assets in real time](../../explore-analyze/visualize/maps/asset-tracking-tutorial.md).
 
 ## Upload GeoJSON files and shapefiles [_upload_geojson_files_and_shapefiles]
 
@@ -58,7 +58,7 @@ Use **Maps** to drag and drop your GeoJSON and shapefile data into Elasticsearch
 
 ## Embed your map in dashboards [_embed_your_map_in_dashboards]
 
-Viewing data from different angles provides better insights. Dimensions that are obscured in one visualization might be illuminated in another. Add your map to a [Dashboard](../../../explore-analyze/dashboards.md) and view your geospatial data alongside bar charts, pie charts, tag clouds, and more.
+Viewing data from different angles provides better insights. Dimensions that are obscured in one visualization might be illuminated in another. Add your map to a [Dashboard](../../explore-analyze/dashboards.md) and view your geospatial data alongside bar charts, pie charts, tag clouds, and more.
 
 This choropleth map shows the density of non-emergency service requests in San Diego by council district. The map is embedded in a dashboard, so users can better understand when services are requested and gain insight into the top requested services.
 
@@ -75,6 +75,6 @@ Customize each layer to highlight meaningful dimensions in your data. For exampl
 
 ## Focus on only the data that’s important to you [_focus_on_only_the_data_thats_important_to_you]
 
-Search across the layers in your map to focus on just the data you want. Combine free text search with field-based search using the [{{kib}} Query Language](../../../explore-analyze/query-filter/languages/kql.md). Set the time filter to restrict layers by time. Draw a polygon on the map or use the shape from features to create spatial filters. Filter individual layers to compares facets.
+Search across the layers in your map to focus on just the data you want. Combine free text search with field-based search using the [{{kib}} Query Language](../../explore-analyze/query-filter/languages/kql.md). Set the time filter to restrict layers by time. Draw a polygon on the map or use the shape from features to create spatial filters. Filter individual layers to compares facets.
 
-Check out [Search geographic data](../../../explore-analyze/visualize/maps/maps-search.md).
+Check out [Search geographic data](../../explore-analyze/visualize/maps/maps-search.md).
