@@ -260,7 +260,7 @@ From **Discover**, you can create a rule to periodically check when data goes ab
 
     The **Create rule** form is pre-filled with the latest query sent to {{es}}.
 
-3. [Configure your query](alerts-cases/alerts/rule-type-es-query.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
+3. [Configure your query](../alerts-cases/alerts/rule-type-es-query.md) and [select a connector type](../../deploy-manage/manage-connectors.md).
 4. Click **Save**.
 
 For more about this and other rules provided in {{alert-features}}, go to [Alerting](../alerts-cases/alerts.md).
