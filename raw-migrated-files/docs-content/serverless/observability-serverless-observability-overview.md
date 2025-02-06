@@ -126,4 +126,4 @@ Reduce the time and effort required to detect, understand, investigate, and reso
 :class: screenshot
 :::
 
-[Learn more about machine learning and AIOps →](../../../explore-analyze/machine-learning/aiops-labs.md)
+[Learn more about machine learning and AIOps →](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md)

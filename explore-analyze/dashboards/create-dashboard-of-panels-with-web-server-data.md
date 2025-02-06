@@ -64,14 +64,14 @@ The only number function that you can use with **clientip** is **Unique count**,
 
 1. Open the **Visualization type** dropdown, then select **Metric**.
 
-    :::{image} images/visualization-type-dropdown-8.16.0.png
+    :::{image} ../../images/kibana-visualization-type-dropdown-8.16.0.png
     :alt: Visualization type dropdown
     :class: screenshot
     :::
 
 2. From the **Available fields** list, drag **clientip** to the workspace or layer pane.
 
-    :::{image} images/tutorial-unique-count-of-client-ip-8.16.0.png
+    :::{image} ../../images/kibana-tutorial-unique-count-of-client-ip-8.16.0.png
     :alt: Metric visualization of the clientip field
     :class: screenshot
     :::
@@ -123,14 +123,14 @@ To save space on the dashboard, hide the axis labels.
 
 1. Open the **Left axis** menu, then select **None** from the **Axis title** dropdown.
 
-    :::{image} images/line-chart-left-axis-8.16.0.png
+    :::{image} ../../images/kibana-line-chart-left-axis-8.16.0.png
     :alt: Left axis menu
     :class: screenshot
     :::
 
 2. Open the **Bottom axis** menu, then select **None** from the **Axis title** dropdown.
 
-    :::{image} images/line-chart-bottom-axis-8.16.0.png
+    :::{image} ../../images/kibana-line-chart-bottom-axis-8.16.0.png
     :alt: Bottom axis menu
     :class: screenshot
     :::
@@ -162,7 +162,7 @@ The **Top values** function ranks the unique values of a field by another functi
 
 3. Drag **request.keyword** to the workspace.
 
-    :::{image} images/tutorial-top-values-of-field-8.16.0.png
+    :::{image} ../../images/kibana-tutorial-top-values-of-field-8.16.0.png
     :alt: Vertical bar chart with top values of request.keyword by most unique visitors
     :class: screenshot
     :::
@@ -174,7 +174,7 @@ The chart labels are unable to display because the **request.keyword** field con
 
 1. Open the **Visualization type** dropdown, then select **Table**.
 
-    :::{image} images/table-with-request-keyword-and-client-ip-8.16.0.png
+    :::{image} ../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png
     :alt: Table with top values of request.keyword by most unique visitors
     :class: screenshot
     :::

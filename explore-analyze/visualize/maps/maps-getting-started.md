@@ -137,7 +137,7 @@ You’ll create a layer for [aggregated data](../../aggregations.md) and make it
 
     Your map will look like this between zoom levels 0 and 9:
 
-    :::{image} ../../../images/sample_data_web_logs.png
+    :::{image} ../../../images/kibana-sample_data_web_logs.png
     :alt: Map showing what zoom level 3 looks like
     :class: screenshot
     :::
