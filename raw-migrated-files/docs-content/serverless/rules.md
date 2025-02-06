@@ -94,7 +94,7 @@ You can pass rule values to an action at the time a condition is detected. To vi
 :class: screenshot
 :::
 
-For more information about common action variables, refer to [Rule actions variables](../../../explore-analyze/alerts/kibana/rule-action-variables.md)
+For more information about common action variables, refer to [Rule actions variables](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md)
 
 
 ## Alerts [rules-alerts]

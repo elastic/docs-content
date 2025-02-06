@@ -4,14 +4,14 @@ navigation_title: Getting started with alerts
 
 # Getting started with alerting [alerting-getting-started]
 
-Alerting enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](https://www.elastic.co/guide/en/security/current/prebuilt-rules.html), [**Maps**](../../../explore-analyze/alerts/kibana/geo-alerting.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](../../../explore-analyze/alerts/kibana/rule-types.md#stack-rules) for you to use.
+Alerting enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](https://www.elastic.co/guide/en/security/current/prebuilt-rules.html), [**Maps**](../../../explore-analyze/alerts-cases/alerts/geo-alerting.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](../../../explore-analyze/alerts-cases/alerts/rule-types.md#stack-rules) for you to use.
 
 :::{image} ../../../images/kibana-alerting-overview.png
 :alt: {{rules-ui}} UI
 :::
 
 ::::{important}
-To make sure you can access alerting and actions, see the [setup and prerequisites](../../../explore-analyze/alerts/kibana/alerting-setup.md#alerting-prerequisites) section.
+To make sure you can access alerting and actions, see the [setup and prerequisites](../../../explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-prerequisites) section.
 
 ::::
 
@@ -19,7 +19,7 @@ Alerting works by running checks on a schedule to detect conditions defined by a
 
 ## Rules [_rules]
 
-A rule specifies a background task that runs on the {{kib}} server to check for specific conditions. {{kib}} provides two types of rules: stack rules that are built into {{kib}} and the rules that are registered by {{kib}} apps. For more information, refer to [*Rule types*](../../../explore-analyze/alerts/kibana/rule-types.md).
+A rule specifies a background task that runs on the {{kib}} server to check for specific conditions. {{kib}} provides two types of rules: stack rules that are built into {{kib}} and the rules that are registered by {{kib}} apps. For more information, refer to [*Rule types*](../../../explore-analyze/alerts-cases/alerts/rule-types.md).
 
 A rule consists of three main parts:
 
@@ -45,9 +45,9 @@ Under the hood, {{kib}} rules detect conditions by running a JavaScript function
 
 These conditions are packaged and exposed as *rule types*. A rule type hides the underlying details of the condition, and exposes a set of parameters to control the details of the conditions to detect.
 
-For example, an [index threshold rule type](../../../explore-analyze/alerts/kibana/rule-type-index-threshold.md) lets you specify the index to query, an aggregation field, and a time window, but the details of the underlying {{es}} query are hidden.
+For example, an [index threshold rule type](../../../explore-analyze/alerts-cases/alerts/rule-type-index-threshold.md) lets you specify the index to query, an aggregation field, and a time window, but the details of the underlying {{es}} query are hidden.
 
-See [*Rule types*](../../../explore-analyze/alerts/kibana/rule-types.md) for the rules provided by {{kib}} and how they express their conditions.
+See [*Rule types*](../../../explore-analyze/alerts-cases/alerts/rule-types.md) for the rules provided by {{kib}} and how they express their conditions.
 
 ### Schedule [alerting-concepts-scheduling]
 
@@ -105,7 +105,7 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 
 ## Differences from {{watcher}} [alerting-concepts-differences]
 
-[{{watcher}}](../../../explore-analyze/alerts/watcher.md) and the {{kib}} {alert-features} are both used to detect conditions and can trigger actions in response, but they are completely independent alerting systems.
+[{{watcher}}](../../../explore-analyze/alerts-cases/watcher.md) and the {{kib}} {alert-features} are both used to detect conditions and can trigger actions in response, but they are completely independent alerting systems.
 
 This section will clarify some of the important differences in the function and intent of the two systems.
 
