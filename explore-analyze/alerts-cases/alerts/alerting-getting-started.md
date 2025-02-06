@@ -1,4 +1,8 @@
-# Alerting [alerting-getting-started]
+---
+navigation_title: Getting started with alerts
+---
+
+# Getting started with alerting [alerting-getting-started]
 
 Alerting enables you to define *rules*, which detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. Alerting is integrated with [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](https://www.elastic.co/guide/en/security/current/prebuilt-rules.html), [**Maps**](../../../explore-analyze/alerts/kibana/geo-alerting.md) and [**{{ml-app}}**](../../../explore-analyze/machine-learning/anomaly-detection/ml-configuring-alerts.md). It can be centrally managed from **{{stack-manage-app}}** and provides a set of built-in [connectors](../../../deploy-manage/manage-connectors.md) and [rules](../../../explore-analyze/alerts/kibana/rule-types.md#stack-rules) for you to use.
 
@@ -11,9 +15,7 @@ To make sure you can access alerting and actions, see the [setup and prerequisit
 
 ::::
 
-
 Alerting works by running checks on a schedule to detect conditions defined by a rule. When a condition is met, the rule tracks it as an *alert* and responds by triggering one or more *actions*. Actions typically involve interaction with {{kib}} services or third party integrations. *Connectors* enable actions to talk to these services and integrations. This section describes all of these elements and how they operate together.
-
 
 ## Rules [_rules]
 
@@ -37,7 +39,6 @@ For example, when monitoring a set of servers, a rule might:
 
 The following sections describe each part of the rule in more detail.
 
-
 ### Conditions [alerting-concepts-conditions]
 
 Under the hood, {{kib}} rules detect conditions by running a JavaScript function on the {{kib}} server, which gives it the flexibility to support a wide range of conditions, anything from the results of a simple {{es}} query to heavy computations involving data from multiple sources or external systems.
@@ -48,7 +49,6 @@ For example, an [index threshold rule type](../../../explore-analyze/alerts/kiba
 
 See [*Rule types*](../../../explore-analyze/alerts/kibana/rule-types.md) for the rules provided by {{kib}} and how they express their conditions.
 
-
 ### Schedule [alerting-concepts-scheduling]
 
 Rule schedules are defined as an interval between subsequent checks, and can range from a few seconds to months.
@@ -57,8 +57,6 @@ Rule schedules are defined as an interval between subsequent checks, and can ran
 The intervals of rule checks in {{kib}} are approximate. Their timing is affected by factors such as the frequency at which tasks are claimed and the task load on the system. Refer to [Alerting production considerations](../../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md) for more information.
 
 ::::
-
-
 
 ### Actions [alerting-concepts-actions]
 
@@ -82,7 +80,6 @@ In the server monitoring example, the `email` connector type is used, and `serve
 
 When the rule detects the condition, it creates an alert containing the details of the condition.
 
-
 ## Alerts [alerting-concepts-alerts]
 
 When checking for a condition, a rule might identify multiple occurrences of the condition. {{kib}} tracks each of these alerts separately. Depending on the action frequency, an action occurs per alert or at the specified alert summary interval.
@@ -92,7 +89,6 @@ Using the server monitoring example, each server with average CPU > 0.9 is track
 :::{image} ../../../images/kibana-alerts.svg
 :alt: {{kib}} tracks each detected condition as an alert and takes action on each alert
 :::
-
 
 ## Putting it all together [_putting_it_all_together]
 
@@ -106,7 +102,6 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 2. Alerts create actions according to the action frequency, as long as they are not muted or throttled. When actions are created, its properties are filled with actual values. In this example, three actions are created when the threshold is met, and the template string `{{server}}` is replaced with the appropriate server name for each alert.
 3. {{kib}} runs the actions, sending notifications by using a third party integration like an email service.
 4. If the third party integration has connection parameters or credentials, {{kib}} fetches these from the appropriate connector.
-
 
 ## Differences from {{watcher}} [alerting-concepts-differences]
 
@@ -122,4 +117,3 @@ Functionally, the {{alert-features}} differ in that:
 * Actions are linked to alerts. Actions are fired for each occurrence of a detected condition, rather than for the entire rule.
 
 At a higher level, the {{alert-features}} allow rich integrations across use cases like [**APM**](https://www.elastic.co/guide/en/kibana/current/observability.html#apm-app), [**Metrics**](https://www.elastic.co/guide/en/kibana/current/observability.html#metrics-app), [**Security**](https://www.elastic.co/guide/en/kibana/current/xpack-siem.html), and [**Uptime**](https://www.elastic.co/guide/en/kibana/current/observability.html#uptime-app). Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across {{kib}}.
-

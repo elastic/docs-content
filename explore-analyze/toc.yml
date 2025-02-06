@@ -330,70 +330,71 @@ toc:
         children:
           - file: report-and-share/reporting-troubleshooting-csv.md
           - file: report-and-share/reporting-troubleshooting-pdf.md
-  - file: alerts.md
+  - file: alerts-cases.md
     children:
-      - file: alerts/kibana.md
+      - file: alerts-cases/alerts.md
         children:
-          - file: alerts/kibana/alerting-setup.md
-          - file: alerts/kibana/create-manage-rules.md
-          - file: alerts/kibana/view-alerts.md
-          - file: alerts/kibana/rule-types.md
+          - file: alerts-cases/alerts/alerting-getting-started.md 
+          - file: alerts-cases/alerts/alerting-setup.md
+          - file: alerts-cases/alerts/create-manage-rules.md
+          - file: alerts-cases/alerts/view-alerts.md
+          - file: alerts-cases/alerts/rule-types.md
             children:
-              - file: alerts/kibana/rule-type-index-threshold.md
-              - file: alerts/kibana/rule-type-es-query.md
-              - file: alerts/kibana/geo-alerting.md
-          - file: alerts/kibana/rule-action-variables.md
-          - file: alerts/kibana/alerting-troubleshooting.md
+              - file: alerts-cases/alerts/rule-type-index-threshold.md
+              - file: alerts-cases/alerts/rule-type-es-query.md
+              - file: alerts-cases/alerts/geo-alerting.md
+          - file: alerts-cases/alerts/rule-action-variables.md
+          - file: alerts-cases/alerts/alerting-troubleshooting.md
             children:
-              - file: alerts/kibana/alerting-common-issues.md
-              - file: alerts/kibana/event-log-index.md
-              - file: alerts/kibana/testing-connectors.md
-          - file: alerts/kibana/maintenance-windows.md
-      - file: alerts/watcher.md
+              - file: alerts-cases/alerts/alerting-common-issues.md
+              - file: alerts-cases/alerts/event-log-index.md
+              - file: alerts-cases/alerts/testing-connectors.md
+          - file: alerts-cases/alerts/maintenance-windows.md
+      - file: alerts-cases/watcher.md
         children:
-          - file: alerts/watcher/watcher-getting-started.md
-          - file: alerts/watcher/how-watcher-works.md
-          - file: alerts/watcher/encrypting-data.md
-          - file: alerts/watcher/input.md
+          - file: alerts-cases/watcher/watcher-getting-started.md
+          - file: alerts-cases/watcher/how-watcher-works.md
+          - file: alerts-cases/watcher/encrypting-data.md
+          - file: alerts-cases/watcher/input.md
             children:
-              - file: alerts/watcher/input-simple.md
-              - file: alerts/watcher/input-search.md
-              - file: alerts/watcher/input-http.md
-              - file: alerts/watcher/input-chain.md
-          - file: alerts/watcher/trigger.md
+              - file: alerts-cases/watcher/input-simple.md
+              - file: alerts-cases/watcher/input-search.md
+              - file: alerts-cases/watcher/input-http.md
+              - file: alerts-cases/watcher/input-chain.md
+          - file: alerts-cases/watcher/trigger.md
             children:
-              - file: alerts/watcher/trigger-schedule.md
-          - file: alerts/watcher/condition.md
+              - file: alerts-cases/watcher/trigger-schedule.md
+          - file: alerts-cases/watcher/condition.md
             children:
-              - file: alerts/watcher/condition-always.md
-              - file: alerts/watcher/condition-never.md
-              - file: alerts/watcher/condition-compare.md
-              - file: alerts/watcher/condition-array-compare.md
-              - file: alerts/watcher/condition-script.md
-          - file: alerts/watcher/actions.md
+              - file: alerts-cases/watcher/condition-always.md
+              - file: alerts-cases/watcher/condition-never.md
+              - file: alerts-cases/watcher/condition-compare.md
+              - file: alerts-cases/watcher/condition-array-compare.md
+              - file: alerts-cases/watcher/condition-script.md
+          - file: alerts-cases/watcher/actions.md
             children:
-              - file: alerts/watcher/action-foreach.md
-              - file: alerts/watcher/action-conditions.md
-              - file: alerts/watcher/actions-email.md
-              - file: alerts/watcher/actions-webhook.md
-              - file: alerts/watcher/actions-index.md
-              - file: alerts/watcher/actions-logging.md
-              - file: alerts/watcher/actions-slack.md
-              - file: alerts/watcher/actions-pagerduty.md
-              - file: alerts/watcher/actions-jira.md
-          - file: alerts/watcher/transform.md
+              - file: alerts-cases/watcher/action-foreach.md
+              - file: alerts-cases/watcher/action-conditions.md
+              - file: alerts-cases/watcher/actions-email.md
+              - file: alerts-cases/watcher/actions-webhook.md
+              - file: alerts-cases/watcher/actions-index.md
+              - file: alerts-cases/watcher/actions-logging.md
+              - file: alerts-cases/watcher/actions-slack.md
+              - file: alerts-cases/watcher/actions-pagerduty.md
+              - file: alerts-cases/watcher/actions-jira.md
+          - file: alerts-cases/watcher/transform.md
             children:
-              - file: alerts/watcher/transform-search.md
-              - file: alerts/watcher/transform-script.md
-              - file: alerts/watcher/transform-chain.md
-          - file: alerts/watcher/managing-watches.md
-          - file: alerts/watcher/example-watches.md
+              - file: alerts-cases/watcher/transform-search.md
+              - file: alerts-cases/watcher/transform-script.md
+              - file: alerts-cases/watcher/transform-chain.md
+          - file: alerts-cases/watcher/managing-watches.md
+          - file: alerts-cases/watcher/example-watches.md
             children:
-              - file: alerts/watcher/watch-cluster-status.md
-          - file: alerts/watcher/watcher-limitations.md
-      - file: alerts/cases.md
+              - file: alerts-cases/watcher/watch-cluster-status.md
+          - file: alerts-cases/watcher/watcher-limitations.md
+      - file: alerts-cases/cases.md
         children:
-          - file: alerts/cases/setup-cases.md
-          - file: alerts/cases/manage-cases.md
-          - file: alerts/cases/manage-cases-settings.md
+          - file: alerts-cases/cases/setup-cases.md
+          - file: alerts-cases/cases/manage-cases.md
+          - file: alerts-cases/cases/manage-cases-settings.md
   - file: numeral-formatting.md
