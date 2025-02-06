@@ -379,7 +379,6 @@ toc:
       - file: docs-content/serverless/observability-handle-no-results-found-message.md
       - file: docs-content/serverless/observability-infrastructure-monitoring.md
       - file: docs-content/serverless/observability-log-monitoring.md
-      - file: docs-content/serverless/observability-machine-learning.md
       - file: docs-content/serverless/observability-monitor-datasets.md
       - file: docs-content/serverless/observability-monitor-status-alert.md
       - file: docs-content/serverless/observability-monitor-synthetics.md
@@ -714,7 +713,6 @@ toc:
       - file: kibana/kibana/upgrade.md
       - file: kibana/kibana/using-kibana-with-security.md
       - file: kibana/kibana/watcher-ui.md
-      - file: kibana/kibana/xpack-ml-aiops.md
       - file: kibana/kibana/xpack-security-authorization.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
       - file: kibana/kibana/xpack-security.md

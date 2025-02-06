@@ -231,14 +231,6 @@ toc:
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
           - file: machine-learning/machine-learning-in-kibana/inference-processing.md
-      - file: machine-learning/aiops-labs.md
-        children:
-          - file: machine-learning/aiops-labs/observability-aiops-detect-anomalies.md
-            children:
-              - file: machine-learning/aiops-labs/observability-aiops-tune-anomaly-detection-job.md
-              - file: machine-learning/aiops-labs/observability-aiops-forecast-anomalies.md
-          - file: machine-learning/aiops-labs/observability-aiops-analyze-spikes.md
-          - file: machine-learning/aiops-labs/observability-aiops-detect-change-points.md
   - file: ai-assistant.md
   - file: discover.md
     children:
