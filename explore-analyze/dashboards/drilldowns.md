@@ -17,18 +17,6 @@ Third-party developers can create drilldowns. To learn how to code drilldowns, r
 
 [![Drilldowns video](https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg)](https://videos.elastic.co/watch/UhGkdJGC32HRn3oS5ZYJL1?)
 
-%<script type="text/javascript" async
-%src="https://play.vidyard.com/embed/v4.js"></script>
-%<img
-%style="width: 100%; margin: auto; display: block;"
-%class="vidyard-player-embed"
-%src="https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg"
-%data-uuid="UhGkdJGC32HRn3oS5ZYJL1"
-%data-v="4"
-%data-type="inline"
-%/>
-%</br>
-
 ## Create dashboard drilldowns [dashboard-drilldowns]
 
 Dashboard drilldowns enable you to open a dashboard from another dashboard, taking the time range, filters, and other parameters with you so the context remains the same. Dashboard drilldowns help you to continue your analysis from a new perspective.
@@ -79,11 +67,10 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 
 3. Save the dashboard.
 4. In the data table panel, hover over a value, click **+**, then select `View details`.
-
-    :::{image} ../../images/kibana-dashboard_drilldownOnPanel_8.3.png
-    :alt: Drilldown on data table that navigates to another dashboard
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-dashboard_drilldownOnPanel_8.3.png
+   :alt: Drilldown on data table that navigates to another dashboard
+   :class: screenshot
+   :::
 
 
 
@@ -166,11 +153,10 @@ Create a drilldown that opens **Discover** from the [**Sample web logs**](../ove
 5. Click **Create drilldown**.
 6. Save the dashboard.
 7. On the **[Logs] Bytes distribution** bar vertical stacked chart, click a bar, then select **View bytes distribution in Discover**.
-
-    :::{image} ../../images/kibana-dashboard_discoverDrilldown_8.3.png
-    :alt: Drilldown on bar vertical stacked chart that navigates to Discover
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-dashboard_discoverDrilldown_8.3.png
+   :alt: Drilldown on bar vertical stacked chart that navigates to Discover
+   :class: screenshot
+   :::
 
 
 

@@ -85,11 +85,7 @@ You can add one interactive time slider control to a dashboard.
 Several settings that apply to all controls of the same dashboard are available.
 
 1. In **Edit** mode, select **Controls** > **Settings**.
-
-    :::{image} ../../images/kibana-dashboard-controls-settings-8.15.0.png
-    :alt: Controls button in the toolbar with the Settings option selected
-    :class: screenshot
-    :::
+   ![Controls button in the toolbar with the Settings option selected](../../images/kibana-dashboard-controls-settings-8.15.0.png "title =60%")
 
 2. On the **Control settings** flyout, configure the following settings:
 

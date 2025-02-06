@@ -34,10 +34,10 @@ Open the visualization editor, then make sure the correct fields appear.
 1. On the dashboard, click **Create visualization**.
 2. Make sure the **{{kib}} Sample Data Logs** {{data-source}} appears.
 
-    :::{image} ../../images/kibana-lens_dataViewDropDown_8.4.0.png
-    :alt: Data view dropdown
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-lens_dataViewDropDown_8.4.0.png
+   :alt: Data view dropdown
+   :class: screenshot
+   :::
 
 
 To create the visualizations in this tutorial, you’ll use the following fields:
@@ -53,6 +53,7 @@ Click a field name to view more details, such as its top values and distribution
 :::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt25c7a05e0f5daaa3/671966b9b1d3dd705a2ae650/tutorial-field-more-info.gif
 :alt: Clicking a field name to view more details
 :class: screenshot
+:width: 50%
 :::
 
 
@@ -64,19 +65,19 @@ The only number function that you can use with **clientip** is **Unique count**,
 
 1. Open the **Visualization type** dropdown, then select **Metric**.
 
-    :::{image} ../../images/kibana-visualization-type-dropdown-8.16.0.png
-    :alt: Visualization type dropdown
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-visualization-type-dropdown-8.16.0.png
+   :alt: Visualization type dropdown
+   :class: screenshot
+   :::
 
 2. From the **Available fields** list, drag **clientip** to the workspace or layer pane.
 
-    :::{image} ../../images/kibana-tutorial-unique-count-of-client-ip-8.16.0.png
-    :alt: Metric visualization of the clientip field
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-tutorial-unique-count-of-client-ip-8.16.0.png
+   :alt: Metric visualization of the clientip field
+   :class: screenshot
+   :::
 
-    In the layer pane, **Unique count of clientip** appears because the editor automatically applies the **Unique count** function to the **clientip** field. **Unique count** is the only numeric function that works with IP addresses.
+   In the layer pane, **Unique count of clientip** appears because the editor automatically applies the **Unique count** function to the **clientip** field. **Unique count** is the only numeric function that works with IP addresses.
 
 3. In the layer pane, click **Unique count of clientip**.
 
@@ -99,10 +100,10 @@ To visualize the **bytes** field over time:
 
 3. To zoom in on the data, click and drag your cursor across the bars.
 
-    :::{image} ../../images/kibana-lens_end_to_end_3_1_1.gif
-    :alt: Zoom in on the data
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-lens_end_to_end_3_1_1.gif
+   :alt: Zoom in on the data
+   :class: screenshot
+   :::
 
 
 To emphasize the change in **Median of bytes** over time, change the visualization type to **Line** with one of the following options:
@@ -123,17 +124,19 @@ To save space on the dashboard, hide the axis labels.
 
 1. Open the **Left axis** menu, then select **None** from the **Axis title** dropdown.
 
-    :::{image} ../../images/kibana-line-chart-left-axis-8.16.0.png
-    :alt: Left axis menu
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-line-chart-left-axis-8.16.0.png
+   :alt: Left axis menu
+   :class: screenshot
+   :width: 50%
+   :::
 
 2. Open the **Bottom axis** menu, then select **None** from the **Axis title** dropdown.
 
-    :::{image} ../../images/kibana-line-chart-bottom-axis-8.16.0.png
-    :alt: Bottom axis menu
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-line-chart-bottom-axis-8.16.0.png
+   :alt: Bottom axis menu
+   :class: screenshot
+   :width: 50%
+   :::
 
 3. Click **Save and return**
 
@@ -142,10 +145,11 @@ Since you removed the axis labels, add a panel title:
 1. Hover over the panel and click ![Settings icon](../../images/kibana-settings-icon-hover-action.png ""). The **Settings** flyout appears.
 2. In the **Title** field, enter `Median of bytes`, then click **Apply**.
 
-    :::{image} ../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png
-    :alt: Line chart that displays metric data over time
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-lens_lineChartMetricOverTime_8.4.0.png
+   :alt: Line chart that displays metric data over time
+   :class: screenshot
+   :width: 50%
+   :::
 
 
 
@@ -162,10 +166,11 @@ The **Top values** function ranks the unique values of a field by another functi
 
 3. Drag **request.keyword** to the workspace.
 
-    :::{image} ../../images/kibana-tutorial-top-values-of-field-8.16.0.png
-    :alt: Vertical bar chart with top values of request.keyword by most unique visitors
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-tutorial-top-values-of-field-8.16.0.png
+   :alt: Vertical bar chart with top values of request.keyword by most unique visitors
+   :class: screenshot
+   :width: 50%
+   :::
 
     When you drag a text or IP address field to the workspace, the editor adds the **Top values** function ranked by **Count of records** to show the most frequent values.
 
@@ -174,10 +179,11 @@ The chart labels are unable to display because the **request.keyword** field con
 
 1. Open the **Visualization type** dropdown, then select **Table**.
 
-    :::{image} ../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png
-    :alt: Table with top values of request.keyword by most unique visitors
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-table-with-request-keyword-and-client-ip-8.16.0.png
+   :alt: Table with top values of request.keyword by most unique visitors
+   :class: screenshot
+   :width: 50%
+   :::
 
 2. In the layer pane, click **Top 5 values of request.keyword**.
 
@@ -185,10 +191,11 @@ The chart labels are unable to display because the **request.keyword** field con
     2. In the **Name** field, enter `Page URL`.
     3. Click **Close**.
 
-        :::{image} ../../images/kibana-lens_tableTopFieldValues_7.16.png
-        :alt: Table that displays the top field values
-        :class: screenshot
-        :::
+       :::{image} ../../images/kibana-lens_tableTopFieldValues_7.16.png
+       :alt: Table that displays the top field values
+       :class: screenshot
+       :width: 50%
+       :::
 
 3. Click **Save and return**.
 
@@ -221,10 +228,10 @@ Specify the file size ranges:
     * **Ranges** — `10240` → `+∞`
     * **Label** — `Above 10KB`
 
-        :::{image} ../../images/kibana-lens_end_to_end_6_1.png
-        :alt: Custom ranges configuration
-        :class: screenshot
-        :::
+      :::{image} ../../images/kibana-lens_end_to_end_6_1.png
+      :alt: Custom ranges configuration
+      :class: screenshot
+      :::
 
 4. From the **Value format** dropdown, select **Bytes (1024)**, then click **Close**.
 
@@ -232,10 +239,11 @@ To display the values as a percentage of the sum of all values, use the **Pie** 
 
 1. Open the **Visualization Type** dropdown, then select **Pie**.
 
-    :::{image} ../../images/kibana-lens_pieChartCompareSubsetOfDocs_7.16.png
-    :alt: Pie chart that compares a subset of documents to all documents
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-lens_pieChartCompareSubsetOfDocs_7.16.png
+   :alt: Pie chart that compares a subset of documents to all documents
+   :class: screenshot
+   :width: 50%
+   :::
 
 2. Click **Save and return**.
 
@@ -260,10 +268,11 @@ The distribution of a number can help you find patterns. For example, you can an
 4. From the **Available fields** list, drag **hour_of_day** to **Horizontal axis** field in the layer pane.
 5. In the layer pane, click **hour_of_day**, then slide the **Intervals granularity** slider until the horizontal axis displays hourly intervals.
 
-    :::{image} ../../images/kibana-lens_barChartDistributionOfNumberField_7.16.png
-    :alt: Bar chart that displays the distribution of a number field
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-lens_barChartDistributionOfNumberField_7.16.png
+   :alt: Bar chart that displays the distribution of a number field
+   :class: screenshot
+   :width: 60%
+   :::
 
 6. Click **Save and return**.
 
@@ -307,10 +316,11 @@ Add the user geography grouping:
 1. From the **Available fields** list, drag **geo.srcdest** to the workspace.
 2. To change the **Group by** order, drag **Top 3 values of geo.srcdest** in the layer pane so that appears first.
 
-    :::{image} ../../images/kibana-lens_end_to_end_7_2.png
-    :alt: Treemap visualization
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-lens_end_to_end_7_2.png
+   :alt: Treemap visualization
+   :class: screenshot
+   :width: 50%
+   :::
 
 
 Remove the documents that do not match the filter criteria:
@@ -318,10 +328,11 @@ Remove the documents that do not match the filter criteria:
 1. In the layer pane, click **Top 3 values of geo.srcdest**.
 2. Click **Advanced**, deselect **Group other values as "Other"**, then click **Close**.
 
-    :::{image} ../../images/kibana-lens_treemapMultiLevelChart_7.16.png
-    :alt: Treemap visualization
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-lens_treemapMultiLevelChart_7.16.png
+   :alt: Treemap visualization
+   :class: screenshot
+   :width: 50%
+   :::
 
 3. Click **Save and return**.
 
@@ -342,10 +353,10 @@ Decrease the size of the following panels, then move the panels to the first row
 * **Sum of bytes from large requests**
 * **Website traffic**
 
-    :::{image} ../../images/kibana-lens_logsDashboard_8.4.0.png
-    :alt: Logs dashboard
-    :class: screenshot
-    :::
+  :::{image} ../../images/kibana-lens_logsDashboard_8.4.0.png
+  :alt: Logs dashboard
+  :class: screenshot
+  :::
 
 
 
