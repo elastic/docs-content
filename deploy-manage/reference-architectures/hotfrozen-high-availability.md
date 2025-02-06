@@ -5,6 +5,7 @@ applies:
   stack: all
   hosted: all
   ece: all
+  eck: all
 ---
 
 # Hot/Frozen - High Availability [hot-frozen-architecture]
