@@ -135,7 +135,7 @@ In this example, you will use the {{kib}} [sample weblog data set](https://www.e
 
         You can add one or more actions to your rule to generate notifications when its conditions are met and when they are no longer met. For each action, you must select a connector, set the action frequency, and compose the notification details. For example, add an action that uses a server log connector to write an entry to the Kibana server log:
 
-        :::{image} ../../../images/rule-types-index-threshold-example-action.png
+        :::{image} ../../../images/kibana-rule-types-index-threshold-example-action.png
         :alt: Add an action to the rule
         :class: screenshot
         :::
