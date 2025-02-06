@@ -8,7 +8,7 @@ applies:
 
 # Multifactor authentication [ec-account-security-mfa]
 
-If you use a password-based login, Elastic requires that you add an extra layer of security to your Elasticsearch Service account by enabling a multifactor authentication (MFA) method.
+If you use a password-based login, Elastic requires that you add an extra layer of security to your {{ecloud}} account by enabling a multifactor authentication (MFA) method.
 
 You can choose from the following methods:
 
@@ -18,7 +18,7 @@ You can choose from the following methods:
 
 Elastic recommends that you enable multiple methods so that you can still access your account if you lose access to one method.
 
-If you use only a Google or Microsoft account to log in, then you can’t configure MFA in Elasticsearch Service. You can check and manage your multifactor authentication options in your Google or Microsoft account security settings.
+If you use only a Google or Microsoft account to log in, then you can’t configure MFA in {{ecloud}}. You can check and manage your multifactor authentication options in your Google or Microsoft account security settings.
 
 ::::{note} 
 You can no longer configure SMS as a multifactor authentication method. If you already use SMS for multifactor authentication, then you can continue using it. You’ll be prompted to switch to a new MFA method in the future.
@@ -30,7 +30,7 @@ You can no longer configure SMS as a multifactor authentication method. If you a
 
 To enable multifactor authentication using an authenticator app, you must enroll your device.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Go to [User settings](https://cloud.elastic.co/user/settings) and choose **Profile**. Navigate to the **Multifactor authentication** section.
 3. On the **Authenticator app** card, select **Set up**.
 4. Scan the QR code with your authenticator app. If you can’t scan the QR code, then you can enter the code manually.
@@ -41,7 +41,7 @@ To enable multifactor authentication using an authenticator app, you must enroll
 
 To enable multifactor authentication using a security key or biometrics, you must register your security key or biometric data.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Go to [User settings](https://cloud.elastic.co/user/settings) and choose **Profile**. Navigate to the **Multifactor authentication** section.
 3. On the **Security key or biometrics** card, select **Set up**.
 4. Follow the prompts on your screen to register your hardware security key or your biometric authentication method.
@@ -51,7 +51,7 @@ To enable multifactor authentication using a security key or biometrics, you mus
 
 To enable multifactor authentication using an authenticator app, you must verify your email address.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Go to [User settings](https://cloud.elastic.co/user/settings) and choose **Profile**. Navigate to the **Multifactor authentication** section.
 3. On the **Email** card, select **Set up**.
 4. Enter the verification code sent to your email address, and then select **Enable authentication method**.

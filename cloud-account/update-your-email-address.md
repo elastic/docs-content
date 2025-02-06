@@ -8,7 +8,7 @@ applies:
 
 # Update your email address [ec-update-email-address]
 
-Each Elasticsearch Service account has a primary email associated with it. By default, the primary email address is used to sign up for Elasticsearch Service and to log in. If needed, you can change this primary email address:
+Each {{ecloud}} account has a primary email associated with it. By default, the primary email address is used to sign up for {{ecloud}} and to log in. If needed, you can change this primary email address:
 
 1. To edit your account settings, select the user icon on the header bar and select **Settings**.
 2. In the **Email address** section, select **edit**.
@@ -20,7 +20,7 @@ If you are using Google or Microsoft Sign-In and would like to change your email
 
 1. Go to the [Forgot password](https://cloud.elastic.co/forgot) page and enter your email address.
 2. Follow the instructions in the "Reset your password" email.
-3. In the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), update your [User settings](https://cloud.elastic.co/user/settings) to the new email address.
+3. In the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), update your [User settings](https://cloud.elastic.co/user/settings) to the new email address.
 
 If your organization is associated with [Azure Marketplace](../deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md), you can’t change your primary email address using the above methods. Instead, [invite another user](../deploy-manage/users-roles/cloud-organization/manage-users.md) with the desired email address to your organization.
 
