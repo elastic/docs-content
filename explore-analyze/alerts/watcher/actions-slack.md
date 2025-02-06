@@ -152,7 +152,7 @@ To configure a Slack account, at a minimum you need to specify the account name 
 bin/elasticsearch-keystore add xpack.notification.slack.account.monitoring.secure_url
 ```
 
-::::{warning} 
+::::{warning}
 You can no longer configure Slack accounts using `elasticsearch.yml` settings. Please use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
 
 ::::
@@ -167,7 +167,7 @@ xpack.notification.slack:
       message_defaults:
         from: x-pack
         to: notifications
-        icon: http://example.com/images/elasticsearch-reference-watcher-icon.jpg
+        icon: http://example.com/images/watcher-icon.jpg
         attachment:
           fallback: "X-Pack Notification"
           color: "#36a64f"
