@@ -683,6 +683,7 @@ toc:
     children: 
       - file: manage-spaces/manage-spaces-stack.md
       - file: manage-spaces/manage-spaces-serverless.md
+  - file: manage-spaces4.md
   - file: api-keys.md
     children:
       - file: api-keys/elasticsearch-api-keys.md
