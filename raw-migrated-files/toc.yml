@@ -282,7 +282,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-knn-search.md
       - file: docs-content/serverless/elasticsearch-manage-project.md
       - file: docs-content/serverless/elasticsearch-playground.md
-      - file: docs-content/serverless/elasticsearch-reference-semantic-search.md
       - file: docs-content/serverless/elasticsearch-search-your-data-the-search-api.md
       - file: docs-content/serverless/elasticsearch-search-your-data.md
       - file: docs-content/serverless/endpoint-protection-rules.md

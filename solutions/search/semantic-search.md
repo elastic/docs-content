@@ -22,7 +22,7 @@ Semantic search has a wide range of use cases, including:
 - **Product discovery**: Help E-commerce users find relevant products
 - **Workplace search**: Help employees find relevant information within an organization
 
-{{es}} provides various semantic search capabilities using [natural language processing (NLP)](../../raw-migrated-files/elasticsearch/explore-analyze/machine-learning/nlp.md) and [vector search](vector.md).
+{{es}} provides various semantic search capabilities using [natural language processing (NLP)](/explore-analyze/machine-learning/nlp.md) and [vector search](vector.md).
 
 ## Overview of semantic search workflows [semantic-search-workflows-overview]
 
