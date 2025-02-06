@@ -57,5 +57,5 @@ A maintenance window can have any one of the following statuses:
 * `Finished`: It ended and does not have a repeat schedule.
 * `Archived`: It is archived. In a future release, archived maintenance windows will be queued for deletion.
 
-When you [view alert details](../../../explore-analyze/alerts/kibana/create-manage-rules.md#rule-details) in {{kib}}, each alert shows unique identifiers for maintenance windows that affected it.
+When you [view alert details](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md#rule-details) in {{kib}}, each alert shows unique identifiers for maintenance windows that affected it.
 

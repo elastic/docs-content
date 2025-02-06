@@ -10,7 +10,7 @@ To create SLO rules, you must first define a new SLO via the **Create new SLO** 
 :::
 
 ::::{note}
-You can also centrally create and manage rules, including rules *not* related to {{observability}}, from the [{{kib}} Management UI](../../../explore-analyze/alerts/kibana/create-manage-rules.md).
+You can also centrally create and manage rules, including rules *not* related to {{observability}}, from the [{{kib}} Management UI](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md).
 ::::
 
 
@@ -21,9 +21,9 @@ From the {{observability}} Rules page, you can manage rules for {{observability}
 * Updating the status of existing rules (Enabled, Disabled, or Snoozed indefinitely)
 
 ::::{note}
-The {{observability}} Rules page allows you to set a rule to be "Snoozed indefinitely". To snooze a rule for a specific time period, you must use the centralized [{{rules-ui}} page](../../../explore-analyze/alerts/kibana/create-manage-rules.md).
+The {{observability}} Rules page allows you to set a rule to be "Snoozed indefinitely". To snooze a rule for a specific time period, you must use the centralized [{{rules-ui}} page](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md).
 
-[preview] To temporarily suppress notifications for *all* rules, create a [maintenance window](../../../explore-analyze/alerts/kibana/maintenance-windows.md).
+[preview] To temporarily suppress notifications for *all* rules, create a [maintenance window](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md).
 
 ::::
 
@@ -76,7 +76,7 @@ Click on an individual rule on the Rules page to view details including the rule
 :::
 
 ::::{note}
-You can also view rule details by clicking on individual rules in the [{{kib}} Management UI](../../../explore-analyze/alerts/kibana/create-manage-rules.md).
+You can also view rule details by clicking on individual rules in the [{{kib}} Management UI](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md).
 ::::
 
 

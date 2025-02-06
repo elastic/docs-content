@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/ingest-pipelines.html
 ---
 
-# Ingest pipelines
+# Elasticsearch ingest pipelines
 
 % What needs to be done: Lift-and-shift
 

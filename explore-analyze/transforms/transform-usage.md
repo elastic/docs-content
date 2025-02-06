@@ -24,5 +24,3 @@ You might want to consider using {{transforms}} instead of aggregations when:
 * You want to create summary tables to optimize queries.
 
     For example, if you have a high level dashboard that is accessed by a large number of users and it uses a complex aggregation over a large dataset, it may be more efficient to create a {{transform}} to cache results. Thus, each user doesn’t need to run the aggregation query.
-
-

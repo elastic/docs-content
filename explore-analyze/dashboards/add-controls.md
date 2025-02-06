@@ -45,7 +45,7 @@ To add interactive Options list and Range slider controls, create the controls, 
 1. Open or create a new dashboard.
 2. In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
 
-    :::{image} images/dashboard-add-control-8.15.0.png
+    :::{image} ../../images/kibana-dashboard-add-control-8.15.0.png
     :alt: Controls button in the toolbar with the Add Control option selected
     :class: screenshot
     :::
@@ -95,7 +95,7 @@ You can add one interactive time slider control to a dashboard.
 1. Open or create a new dashboard.
 2. In **Edit** mode, select **Controls** > **Add time slider control**.
 
-    :::{image} images/dashboard-add-time-slider-control-8.15.0.png
+    :::{image} ../../images/kibana-dashboard-add-time-slider-control-8.15.0.png
     :alt: Controls button in the toolbar with the Add a time slider option selected
     :class: screenshot
     :::
@@ -110,7 +110,7 @@ Several settings that apply to all controls of the same dashboard are available.
 
 1. In **Edit** mode, select **Controls** > **Settings**.
 
-    :::{image} images/dashboard-controls-settings-8.15.0.png
+    :::{image} ../../images/kibana-dashboard-controls-settings-8.15.0.png
     :alt: Controls button in the toolbar with the Settings option selected
     :class: screenshot
     :::
