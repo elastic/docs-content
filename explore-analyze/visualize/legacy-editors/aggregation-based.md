@@ -49,7 +49,7 @@ Choose the type of visualization you want to create, then use the editor to conf
        There is no performance impact on the data source you select. For example, saved Discover sessions perform the same as {{data-sources}}.
        ::::
 
-2. Add the [aggregations](supported-chart-types.md#aggregation-reference) you want to visualize using the editor, then click **Update**.
+2. Add the [aggregations](../supported-chart-types.md#aggregation-reference) you want to visualize using the editor, then click **Update**.
 
    ::::{note}
    For the **Date Histogram** to use an **auto interval**, the date field must match the primary time field of the {{data-source}}.
@@ -89,7 +89,7 @@ Open the **Aggregation based** editor and change the time range.
 
 ### Create the bar chart [tutorial-configure-the-bar-chart]
 
-To create the bar chart, add a [bucket aggregation](supported-chart-types.md#bucket-aggregations), then add the terms sub-aggregation to display the top values.
+To create the bar chart, add a [bucket aggregation](../supported-chart-types.md#bucket-aggregations), then add the terms sub-aggregation to display the top values.
 
 1. Add a **Buckets** aggregation.
 
@@ -133,7 +133,7 @@ You can open the following aggregation-based visualizations in **Lens**:
 
 To get started, click **Edit visualization in Lens** in the toolbar.
 
-For more information, check out [Create visualizations with Lens](lens.md).
+For more information, check out [Create visualizations with Lens](../lens.md).
 
 
 ### Save and add the panel [save-the-aggregation-based-panel]

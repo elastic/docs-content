@@ -4,7 +4,7 @@
 
 With **TSVB**, you can:
 
-* Combine an infinite number of [aggregations](supported-chart-types.md#aggregation-reference) to display your data.
+* Combine an infinite number of [aggregations](../supported-chart-types.md#aggregation-reference) to display your data.
 * Annotate time series data with timestamped events from an {{es}} index.
 * View the data in several types of visualizations, including charts, data tables, and markdown panels.
 * Display multiple [data views](../../find-and-organize/data-views.md) in each visualization.
@@ -122,7 +122,7 @@ You can open the following **TSVB** visualizations in **Lens**:
 
 To get started, click **Edit visualization in Lens** in the toolbar.
 
-For more information, check out [Create visualizations with Lens](lens.md).
+For more information, check out [Create visualizations with Lens](../lens.md).
 
 
 ## View the visualization data requests [view-data-and-requests-tsvb]
@@ -214,7 +214,7 @@ It depends, but most often there are two causes:
 ::::{dropdown} How do I calculate the difference between two data series?
 :name: how-do-i-calculate-the-difference-between-two-data-series
 
-Performing math across data series is unsupported in **TSVB**. To calculate the difference between two data series, use [**Timelion**](#timelion) or [**Vega**](custom-visualizations-with-vega.md).
+Performing math across data series is unsupported in **TSVB**. To calculate the difference between two data series, use [**Timelion**](timelion.md) or [**Vega**](../custom-visualizations-with-vega.md).
 
 ::::
 
@@ -241,7 +241,7 @@ Performing math across data series is unsupported in **TSVB**. To calculate the 
 
 The ability to calculate a month over month change is not fully supported in **TSVB**, but there is a special case that is supported *if* the time filter is set to 3 months or more *and* the **Interval** is `1m`. Use the **Derivative** to get the absolute monthly change. To convert to a percent, add the **Math** function with the `params.current / (params.current - params.derivative)` formula, then select **Percent** from the **Data Formatter** dropdown.
 
-For other types of month over month calculations, use [**Timelion**](#timelion) or [**Vega**](custom-visualizations-with-vega.md).
+For other types of month over month calculations, use [**Timelion**](timelion.md) or [**Vega**](../custom-visualizations-with-vega.md).
 
 ::::
 
