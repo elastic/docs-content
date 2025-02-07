@@ -35,8 +35,8 @@ Common use cases for kNN include:
 
 {{es}} supports two methods for kNN search:
 
-* [Approximate kNN](../../../solutions/search/vector/knn.md#approximate-knn) using the `knn` search option or `knn` query
-* [Exact, brute-force kNN](../../../solutions/search/vector/knn.md#exact-knn) using a `script_score` query with a vector function
+* [Approximate kNN](#approximate-knn) using the `knn` search option or `knn` query
+* [Exact, brute-force kNN](#exact-knn) using a `script_score` query with a vector function
 
 In most cases, you’ll want to use approximate kNN. Approximate kNN offers lower latency at the cost of slower indexing and imperfect accuracy.
 
@@ -46,9 +46,8 @@ Exact, brute-force kNN guarantees accurate results but doesn’t scale well with
 ## Approximate kNN [approximate-knn]
 
 ::::{warning}
-Compared to other types of search, approximate kNN search has specific resource requirements. In particular, all vector data must fit in the node’s page cache for it to be efficient. Please consult the [approximate kNN search tuning guide](../../../solutions/search/vector/knn.md) for important notes on configuration and sizing.
+Compared to other types of search, approximate kNN search has specific resource requirements. In particular, all vector data must fit in the node’s page cache for it to be efficient. Please consult the [approximate kNN search tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) for important notes on configuration and sizing.
 ::::
-
 
 To run an approximate kNN search, use the [`knn` option](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-api-knn) to search one or more `dense_vector` fields with indexing enabled.
 
@@ -117,7 +116,31 @@ The [document `_score`](https://www.elastic.co/guide/en/elasticsearch/reference/
 Support for approximate kNN search was added in version 8.0. Before this, `dense_vector` fields did not support enabling `index` in the mapping. If you created an index prior to 8.0 containing `dense_vector` fields, then to support approximate kNN search the data must be reindexed using a new field mapping that sets `index: true` which is the default option.
 ::::
 
+### Indexing considerations [knn-indexing-considerations]
 
+For approximate kNN search, {{es}} stores the dense vector values of each segment as an [HNSW graph](https://arxiv.org/abs/1603.09320). Indexing vectors for approximate kNN search can take substantial time because of how expensive it is to build these graphs. You may need to increase the client request timeout for index and bulk requests. The [approximate kNN tuning guide](/deploy-manage/production-guidance/optimize-performance/approximate-knn-search.md) contains important guidance around indexing performance, and how the index configuration can affect search performance.
+
+In addition to its search-time tuning parameters, the HNSW algorithm has index-time parameters that trade off between the cost of building the graph, search speed, and accuracy. When setting up the `dense_vector` mapping, you can use the [`index_options`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-index-options) argument to adjust these parameters:
+
+```console
+PUT image-index
+{
+  "mappings": {
+    "properties": {
+      "image-vector": {
+        "type": "dense_vector",
+        "dims": 3,
+        "similarity": "l2_norm",
+        "index_options": {
+          "type": "hnsw",
+          "m": 32,
+          "ef_construction": 100
+        }
+      }
+    }
+  }
+}
+```
 
 ### Tune approximate kNN for speed or accuracy [tune-approximate-knn-for-speed-accuracy]
 
@@ -852,34 +875,6 @@ Now the result will contain the nearest found paragraph when searching.
     }
 }
 ```
-
-
-### Indexing considerations [knn-indexing-considerations]
-
-For approximate kNN search, {{es}} stores the dense vector values of each segment as an [HNSW graph](https://arxiv.org/abs/1603.09320). Indexing vectors for approximate kNN search can take substantial time because of how expensive it is to build these graphs. You may need to increase the client request timeout for index and bulk requests. The [approximate kNN tuning guide](../../../solutions/search/vector/knn.md) contains important guidance around indexing performance, and how the index configuration can affect search performance.
-
-In addition to its search-time tuning parameters, the HNSW algorithm has index-time parameters that trade off between the cost of building the graph, search speed, and accuracy. When setting up the `dense_vector` mapping, you can use the [`index_options`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-index-options) argument to adjust these parameters:
-
-```console
-PUT image-index
-{
-  "mappings": {
-    "properties": {
-      "image-vector": {
-        "type": "dense_vector",
-        "dims": 3,
-        "similarity": "l2_norm",
-        "index_options": {
-          "type": "hnsw",
-          "m": 32,
-          "ef_construction": 100
-        }
-      }
-    }
-  }
-}
-```
-
 
 ### Limitations for approximate kNN search [approximate-knn-limitations]
 
