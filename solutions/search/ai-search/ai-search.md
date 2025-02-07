@@ -1,6 +1,6 @@
 # AI-powered search
 
-Sometimes [full-text search](../full-text.md) alone isn't enough. Machine learning techniques are powerful tools for helping users find data based on intent and contextual meaning. Natural language understanding and information retrieval go hand in hand in modern search systems.
+Natural language understanding and information retrieval go hand in hand in modern search systems. Sometimes [full-text search](../full-text.md) alone isn't enough. Machine learning techniques are powerful tools for helping users find data based on intent and contextual meaning.
 
 Depending on your team's technical expertise and requirements, you can choose from two main paths to implement AI-powered search in Elasticsearch. You can use managed workflows that abstract away much of the complexity, or you can work directly with the underlying vector search technology.
 
