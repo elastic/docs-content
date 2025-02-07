@@ -39,6 +39,6 @@ The following tutorials demonstrate how you can use the Elasticsearch language c
 :   Get HTTP request logs from a Node.js web application and deliver them securely into your {{ech}} or {{ece}} deployment. You’ll set up Filebeat to monitor an ECS-formatted log file and then view real-time visualizations of the log events as HTTP requests occur on your Node.js web server.
 
 ::::{tip} 
-You can use [Elasticsearch ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) to preprocess incoming data. This enables you to optimize how your data is indexed, and simplifies tasks such as extracting error codes from a log file and mapping geographic locations to IP addresses.
+You can use [Elasticsearch ingest pipelines](transform-enrich/ingest-pipelines.md) to preprocess incoming data. This enables you to optimize how your data is indexed, and simplifies tasks such as extracting error codes from a log file and mapping geographic locations to IP addresses.
 ::::
 
