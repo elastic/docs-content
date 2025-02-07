@@ -10,27 +10,17 @@ mapped_urls:
 This page focuses on the semantic search workflows available in {{es}}. For detailed information about vector search implementations, refer to [vector search](vector.md).
 :::
 
-Sometimes [full-text search](full-text.md) isn't enough.
-
-Semantic search techniques help users find data based on intent and contextual meaning, going beyond traditional keyword matching.
-
-Semantic search has a wide range of use cases, including:
-
-- **Question answering**: Find the most relevant answers to user questions
-- **Recommendation systems**: Suggest similar items based on user preferences
-- **Information retrieval**: Retrieve relevant information from large datasets
-- **Product discovery**: Help E-commerce users find relevant products
-- **Workplace search**: Help employees find relevant information within an organization
-
 {{es}} provides various semantic search capabilities using [natural language processing (NLP)](/explore-analyze/machine-learning/nlp.md) and [vector search](vector.md).
+
+Learn more about use cases for AI-powered search in the [overview](ai-search/ai-search.md) page.
 
 ## Overview of semantic search workflows [semantic-search-workflows-overview]
 
 You have several options for using NLP models for semantic search in the {{stack}}:
 
-* Option 1: Use the `semantic_text` workflow (recommended)
-* Option 2: Use the {{infer}} API workflow
-* Option 3: Deploy models directly in {{es}}
+* [Option 1](#_semantic_text_workflow): Use the `semantic_text` workflow (recommended)
+* [Option 2](#_infer_api_workflow): Use the {{infer}} API workflow
+* [Option 3](#_model_deployment_workflow): Deploy models directly in {{es}}
 
 This diagram summarizes the relative complexity of each workflow:
 
@@ -49,7 +39,7 @@ For an end-to-end tutorial, refer to [Semantic search with `semantic_text`](sema
 
 ### Option 2: Inference API [_infer_api_workflow]
 
-The [{{infer}} API workflow](inference-api.md) is more complex but offers greater control over the {{infer}} endpoint configuration. You need to create an {{infer}} endpoint, provide various model-related settings and parameters, define an index mapping, and set up an {{infer}} ingest pipeline with the appropriate settings.
+The {{infer}} API workflow is more complex but offers greater control over the {{infer}} endpoint configuration. You need to create an {{infer}} endpoint, provide various model-related settings and parameters, define an index mapping, and set up an {{infer}} ingest pipeline with the appropriate settings.
 
 For an end-to-end tutorial, refer to [Semantic search with the {{infer}} API](inference-api.md).
 
@@ -61,7 +51,7 @@ You can also deploy NLP in {{es}} manually, without using an {{infer}} endpoint.
 For an end-to-end tutorial, refer to [Semantic search with a model deployed in {{es}}](semantic-search/semantic-search-deployed-nlp-model.md).
 
 ::::{tip}
-Refer to [vector queries and field types](vector.md#choosing-vector-query) for a quick reference overview.
+Refer to [vector queries and field types](vector.md#vector-queries-and-field-types) for a quick reference overview.
 ::::
 
 ## Learn more [semantic-search-read-more]
