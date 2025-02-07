@@ -11,10 +11,18 @@ A *k-nearest neighbor* (kNN) search finds the *k* nearest vectors to a query vec
 
 Common use cases for kNN include:
 
-* Relevance ranking based on natural language processing (NLP) algorithms
-* Product recommendations and recommendation engines
-* Similarity search for images or videos
+* Search
+  * Semantic text search
+  * Image/video similarity
 
+* Recommendations
+  * Product suggestions
+  * Collaborative filtering
+  * Content discovery
+
+* Analysis
+  * Anomaly detection
+  * Pattern matching
 
 ## Prerequisites [knn-prereqs]
 
