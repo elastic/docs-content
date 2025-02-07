@@ -181,7 +181,7 @@ After you’ve enabled log delivery on your deployment, you can [add the Elastic
 
 #### For Kibana: [ech-extra-logging-features-kibana] 
 
-* [Audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-kibana-audit-logs.md) - logs security-related events on your deployment
+* [Audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
 
 After you’ve enabled log delivery on your deployment, you can [add the Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to enable this feature.
 
