@@ -17,7 +17,7 @@ These architectures are specific to running your deployment on-premises or on cl
 These reference architectures are recommendations and should be adapted to fit your specific environment and needs. Each solution can vary based on the unique requirements and conditions of your deployment. In these architectures we discuss about how to deploy cluster components. For information about designing ingest architectures to feed content into your cluster, refer to [Ingest architectures](https://www.elastic.co/guide/en/ingest/current/use-case-arch.md)
 
 
-## Architectures [reference-architectures-time-series-2] 
+## Architectures [reference-architectures-time-series] 
 
 |     |     |
 | --- | --- |
