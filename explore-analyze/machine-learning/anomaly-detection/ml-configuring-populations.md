@@ -1,6 +1,6 @@
 ---
 mapped_pages:
-  - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-populations.html
+  - https://www.elastic.co/guide/en/machine-learning/master/ml-configuring-populations.html
 ---
 
 # Performing population analysis [ml-configuring-populations]
