@@ -1,5 +1,5 @@
 ---
-navigation_title: Allow data allocation
+navigation_title: Data allocation
 mapped_pages: 
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/allow-all-cluster-allocation.html
 ---

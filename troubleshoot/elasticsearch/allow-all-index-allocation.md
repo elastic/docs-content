@@ -1,5 +1,5 @@
 ---
-navigation_title: Allow index allocation
+navigation_title: Index allocation
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/allow-all-index-allocation.html
 ---
