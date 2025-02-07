@@ -101,7 +101,7 @@ You can also manage connectors as resources with the [Elasticstack provider](htt
 
 ## Importing and exporting connectors [importing-and-exporting-connectors]
 
-To import and export connectors, use the [Saved Objects Management UI](../../../explore-analyze/find-and-organize/saved-objects.md).
+To import and export connectors, use the [Saved Objects Management UI](/explore-analyze/find-and-organize/saved-objects.md).
 
 :::{image} ../../../images/kibana-connectors-import-banner.png
 :alt: Connectors import banner

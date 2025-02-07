@@ -54,7 +54,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 |     |     |
 | --- | --- |
 | [Data Views](../../../explore-analyze/find-and-organize/data-views.md) | Manage the fields in the data views that retrieve your data from {{es}}. |
-| [Saved Objects](../../../explore-analyze/find-and-organize/saved-objects.md) | Copy, edit, delete, import, and export your saved objects.These include dashboards, visualizations, maps, data views, Canvas workpads, and more. |
+| [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md) | Copy, edit, delete, import, and export your saved objects.These include dashboards, visualizations, maps, data views, Canvas workpads, and more. |
 | [Tags](../../../explore-analyze/find-and-organize/tags.md) | Create, manage, and assign tags to your saved objects. |
 | [Search Sessions](../../../explore-analyze/discover/search-sessions.md) | Manage your saved search sessions, groups of queries that run in the background.Search sessions are useful when your queries take longer than usual to process,for example, when you have a large volume of data or when the performance of your storage location is slow. |
 | [Spaces](../../../deploy-manage/manage-spaces.md) | Create spaces to organize your dashboards and other saved objects into categories.A space is isolated from all other spaces,so you can tailor it to your needs without impacting others. |

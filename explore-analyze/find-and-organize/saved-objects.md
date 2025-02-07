@@ -26,9 +26,9 @@ $$$managing-saved-objects-share-to-space$$$
 
 Edit, import, export, and copy your saved objects. These objects include dashboards, visualizations, maps, {{data-sources}}, **Canvas** workpads, and other saved objects.
 
-You can find the **Saved Objects** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+You can find the **Saved Objects** page using the navigation menu or the [global search field](/get-started/the-stack.md#kibana-navigation-search).
 
-:::{image} ../../../images/kibana-management-saved-objects.png
+:::{image} ../../images/kibana-management-saved-objects.png
 :alt: Saved Objects
 :class: screenshot
 :::
@@ -45,7 +45,7 @@ Granting access to `Saved Objects Management` authorizes users to manage all sav
 ## View and delete [saved-objects-view-and-delete]
 
 * To view and edit a saved object in its associated application, click the object title.
-* To show objects that use this object, so you know the impact of deleting it, click the actions icon ![More actions](../../../images/serverless-boxesHorizontal.svg "") and then select **Relationships**.
+* To show objects that use this object, so you know the impact of deleting it, click the actions icon ![More actions](../../images/serverless-boxesHorizontal.svg "") and then select **Relationships**.
 * To delete one or more objects, select their checkboxes, and then click **Delete**.
 
 
@@ -66,7 +66,7 @@ Import multiple objects in a single operation.
 4. Click **Import**.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](../../../deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](../../../deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportPayloadBytes) setting limits the overall size of the file that you can import.
+The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects to include in the file. The [`savedObjects.maxImportPayloadBytes`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportPayloadBytes) setting limits the overall size of the file that you can import.
 ::::
 
 
@@ -80,7 +80,7 @@ Export objects by selection or type.
 {{kib}} creates an NDJSON with all your saved objects. By default, the NDJSON includes child objects related to the saved objects. Exported dashboards include their associated {{data-sources}}.
 
 ::::{note}
-The [`savedObjects.maxImportExportSize`](../../../deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects that you can export.
+The [`savedObjects.maxImportExportSize`](/deploy-manage/deploy/self-managed/configure.md#savedObjects-maxImportExportSize) configuration setting limits the number of saved objects that you can export.
 ::::
 
 
@@ -88,7 +88,7 @@ The [`savedObjects.maxImportExportSize`](../../../deploy-manage/deploy/self-mana
 
 Copy saved objects and their related objects between spaces.
 
-1. Click the actions icon ![Actions](../../../images/serverless-boxesHorizontal.svg "").
+1. Click the actions icon ![Actions](../../images/serverless-boxesHorizontal.svg "").
 2. Click **Copy to spaces**.
 3. Specify whether to automatically overwrite any objects that already exist in the target spaces, or resolve them on a per-object basis.
 4. Select the spaces in which to copy the object.
@@ -116,7 +116,7 @@ However, saved objects can only be imported into the same version, a newer minor
 :stack:
 ::::
 
-In the past, many saved object types could have the same ID in different [spaces](../../../deploy-manage/manage-spaces.md). For example, if you copied dashboard "123" from the one space to another space, the second dashboard would also have an ID of "123". While the saved object ID is not something that users would interact with directly, many aspects of {{kib}} rely on it, notably URLs. If you have a "deep link" URL to a saved dashboard, that URL includes the saved object ID.
+In the past, many saved object types could have the same ID in different [spaces](/deploy-manage/manage-spaces.md). For example, if you copied dashboard "123" from the one space to another space, the second dashboard would also have an ID of "123". While the saved object ID is not something that users would interact with directly, many aspects of {{kib}} rely on it, notably URLs. If you have a "deep link" URL to a saved dashboard, that URL includes the saved object ID.
 
 **Since version 8.0**, {{kib}} requires most saved objects to have *globally unique* IDs. This is a change that we needed to make to support sharing saved objects to multiple spaces. Most saved objects cannot be shared to multiple spaces *yet*, but we needed to start enforcing globally unique object IDs first.
 
@@ -124,7 +124,7 @@ We have made several enhancements to minimize the impact, and this document desc
 
 ### Impact upon upgrading to version 8.x or later [saved-object-ids-impact-upon-upgrading]
 
-Every time you upgrade {{kib}}, [saved objects are migrated to a new format](../../../deploy-manage/upgrade/internal-upgrade-processes/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
+Every time you upgrade {{kib}}, [saved objects are migrated to a new format](/deploy-manage/upgrade/internal-upgrade-processes/saved-object-migrations.md). When you first upgrade to version 8.x or later, this migration process will start enforcing globally unique saved object IDs.
 
 In practical terms, **any old saved objects that exist in a custom space will have their IDs changed to a new UUID**, while saved objects in the Default space will be unchanged. This is how we can ensure that every saved object ID is unique. For example: if you had dashboard "123" in the Default space and dashboard "123" in Another space, after the upgrade you would have dashboard "123" in the Default space and dashboard "456" in Another space.
 
@@ -140,7 +140,7 @@ When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to ac
 
 #### Importing and copying saved objects [saved-object-ids-impact-when-using-import-and-copy]
 
-When you [copy a saved object to another space](../../../explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space), {{kib}} effectively [exports it and imports it into that space](../../../explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-export-objects). In this way, copying a saved object has always behaved like an import. In this document when we say "import", it applies to both features.
+When you [copy a saved object to another space](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces), {{kib}} effectively [exports it and imports it into that space](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-export). In this way, copying a saved object has always behaved like an import. In this document when we say "import", it applies to both features.
 
 Historically, whether you imported or copied a saved object, {{kib}} would create *at most* one copy of a saved object in that space. If you imported the saved object multiple times, {{kib}} would overwrite the existing object, because it used the same ID. Since saved object IDs are now globally unique, {{kib}} maintains this functionality by tracking each saved object’s *origin*. When you import an object in version 8.x or later, {{kib}} uses either the saved object ID *or* the origin to determine its destination.
 

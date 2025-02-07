@@ -63,7 +63,7 @@ To download or delete the file or copy the file hash to your clipboard, open the
 When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
 
 ::::{note}
-Uploaded files are also accessible on the **Files** page. To open **Files**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
+Uploaded files are also accessible on the **Files** page. To open **Files**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
 
 ::::
 

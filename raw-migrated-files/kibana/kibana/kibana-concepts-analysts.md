@@ -75,7 +75,7 @@ Structured filters are a more interactive way to create {{es}} queries, and are 
 
 ## Saving objects [_saving_objects]
 
-{{kib}} lets you save objects for your own future use or for sharing with others. Each [saved object](../../../explore-analyze/find-and-organize/saved-objects.md) type has different abilities. For example, you can save your search queries made with **Discover**, which lets you:
+{{kib}} lets you save objects for your own future use or for sharing with others. Each [saved object](/explore-analyze/find-and-organize/saved-objects.md) type has different abilities. For example, you can save your search queries made with **Discover**, which lets you:
 
 * Share a link to your search
 * Download the full search results in CSV form
