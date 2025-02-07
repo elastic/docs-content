@@ -301,7 +301,6 @@ toc:
       - file: docs-content/serverless/infrastructure-and-host-monitoring-intro.md
       - file: docs-content/serverless/ingest-aws-securityhub-data.md
       - file: docs-content/serverless/ingest-falco.md
-      - file: docs-content/serverless/ingest-pipelines.md
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
@@ -614,7 +613,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/index-modules-analysis.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/ingest-enriching-data.md
-      - file: elasticsearch/elasticsearch-reference/ingest.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
       - file: elasticsearch/elasticsearch-reference/jwt-auth-realm.md
