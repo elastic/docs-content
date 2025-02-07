@@ -269,7 +269,6 @@ toc:
       - file: docs-content/serverless/connect-to-byo-llm.md
       - file: docs-content/serverless/cspm-required-permissions.md
       - file: docs-content/serverless/custom-roles.md
-      - file: docs-content/serverless/data-views.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
       - file: docs-content/serverless/elasticsearch-clients.md
       - file: docs-content/serverless/elasticsearch-dev-tools.md
@@ -423,7 +422,6 @@ toc:
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/quickstart-monitor-hosts-with-otel.md
       - file: docs-content/serverless/rules.md
-      - file: docs-content/serverless/saved-objects.md
       - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
@@ -567,7 +565,6 @@ toc:
       - file: docs-content/serverless/security-vuln-management-overview.md
       - file: docs-content/serverless/slo-troubleshoot-slos.md
       - file: docs-content/serverless/spaces.md
-      - file: docs-content/serverless/tags.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
@@ -673,7 +670,6 @@ toc:
       - file: kibana/kibana/connect-to-elasticsearch.md
       - file: kibana/kibana/console-kibana.md
       - file: kibana/kibana/data-rollups.md
-      - file: kibana/kibana/data-views.md
       - file: kibana/kibana/elasticsearch-mutual-tls.md
       - file: kibana/kibana/esql.md
       - file: kibana/kibana/get-started.md
@@ -686,16 +682,12 @@ toc:
       - file: kibana/kibana/logging-settings.md
       - file: kibana/kibana/maintenance-windows.md
       - file: kibana/kibana/management.md
-      - file: kibana/kibana/managing-data-views.md
-      - file: kibana/kibana/managing-saved-objects.md
-      - file: kibana/kibana/managing-tags.md
       - file: kibana/kibana/osquery.md
       - file: kibana/kibana/playground.md
       - file: kibana/kibana/reporting-getting-started.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
       - file: kibana/kibana/sample-data.md
-      - file: kibana/kibana/saved-object-ids.md
       - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/secure-settings.md
