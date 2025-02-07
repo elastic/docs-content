@@ -7,7 +7,6 @@ mapped_pages:
 
 {{nlp-cap}} (NLP) refers to the way in which we can use software to understand natural language in spoken word or written text.
 
-
 ## NLP in the {{stack}} [nlp-elastic-stack]
 
 Elastic offers a wide range of possibilities to leverage natural language processing.
@@ -19,7 +18,6 @@ The [{{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/curr
 You can **upload and manage NLP models** using the Eland client and the [{{stack}}](ml-nlp-deploy-models.md). Find the  [list of recommended and compatible models here](ml-nlp-model-ref.md). Refer to [*Examples*](ml-nlp-examples.md) to learn more about how to use {{ml}} models deployed in your cluster.
 
 You can **store embeddings in your {{es}} vector database** if you generate [dense vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) or [sparse vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) model embeddings outside of {{es}}.
-
 
 ## What is NLP? [what-is-nlp]
 

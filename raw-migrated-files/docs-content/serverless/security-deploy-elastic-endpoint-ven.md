@@ -82,7 +82,7 @@ The following instructions apply only to {{elastic-endpoint}} version 8.0.0 and 
 1. Open the **System Settings** application.
 2. In the left pane, select **Privacy & Security**.
 
-    :::{image} ../../../images/serverless-getting-started-install-endpoint-ven-privacy_security_ven.png
+    :::{image} ../../../images/serverless--getting-started-install-endpoint-ven-privacy_security_ven.png
     :alt:  getting started install endpoint ven privacy security ven
     :class: screenshot
     :::

@@ -10,8 +10,3 @@ There are {{nlp}} models that are available for use in every cluster out-of-the-
 * [ELSER](ml-nlp-elser.md) trained by Elastic
 * [E5](ml-nlp-e5.md)
 * [{{lang-ident-cap}}](ml-nlp-lang-ident.md)
-
-
-
-
-

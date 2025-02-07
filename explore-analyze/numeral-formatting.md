@@ -11,7 +11,7 @@ Numeral formatting patterns are used in multiple places in {{kib}}, including:
 
 * [Advanced settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html)
 * [Data view formatters](find-and-organize/data-views.md#field-formatters-numeric)
-* [**TSVB**](visualize/legacy-editors.md#tsvb-panel)
+* [**TSVB**](visualize/legacy-editors/tsvb.md)
 * [**Canvas**](visualize/canvas.md)
 
 The simplest pattern format is `0`, and the default {{kib}} pattern is `0,0.[000]`. The numeral pattern syntax expresses:

@@ -30,7 +30,7 @@ To create the POST URL for CSV reports:
 
 ## Use Watcher [use-watcher]
 
-To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerts/watcher/actions-email.md#configuring-email).
+To configure a watch to email reports, use the `reporting` attachment type in an `email` action. For more information, refer to [Configuring email accounts](../alerts-cases/watcher/actions-email.md#configuring-email).
 
 For example, the following watch generates a PDF report and emails the report every hour:
 
@@ -68,7 +68,7 @@ PUT _watcher/watch/error_report
 }
 ```
 
-1. Configure at least one email account to enable Watcher to send email. For more information, refer to [Configuring email accounts](../alerts/watcher/actions-email.md#configuring-email).
+1. Configure at least one email account to enable Watcher to send email. For more information, refer to [Configuring email accounts](../alerts-cases/watcher/actions-email.md#configuring-email).
 2. An example POST URL. You can copy and paste the URL for any report.
 3. Optional, default is `40`.
 4. Optional, default is `15s`.
@@ -80,7 +80,7 @@ PUT _watcher/watch/error_report
 
 The report generation URL might contain date-math expressions that cause the watch to fail with a `parse_exception`. To avoid a failed watch, remove curly braces `{`  `}` from date-math expressions and URL-encode characters. For example, `...(range:(%27@timestamp%27:(gte:now-15m%2Fd,lte:now%2Fd))))...`
 
-For more information about configuring watches, refer to [How Watcher works](../alerts/watcher/how-watcher-works.md).
+For more information about configuring watches, refer to [How Watcher works](../alerts-cases/watcher/how-watcher-works.md).
 
 ::::
 
@@ -134,13 +134,13 @@ The response payload of a request to generate a report includes the path to down
 
 * **`200` (OK)**: As expected, Kibana returns `200` status in the response for successful requests to queue or download reports.
 
-    ::::{note}
-    Kibana will send a `200` response status for successfully queuing a Reporting job via the POST URL. This is true even if the job somehow fails later, since report generation happens asynchronously from queuing.
-    ::::
+  ::::{note}
+  Kibana will send a `200` response status for successfully queuing a Reporting job via the POST URL. This is true even if the job somehow fails later, since report generation happens asynchronously from queuing.
+  ::::
 
 * **`400` (Bad Request)**: When sending requests to the POST URL, if you don’t use `POST` as the HTTP method, or if your request is missing the `kbn-xsrf` header, Kibana will return a code `400` status response for the request.
 * **`503` (Service Unavailable)**: When using the `path` to request the download, you will get a `503` status response if report generation hasn’t completed yet. The response will include a `Retry-After` header. You can set the script to wait the number of seconds in the `Retry-After` header, and then repeat if needed, until the report is complete.
-* **`500` (Internal Server Error)***: When using the `path` to request the download, you will get a `500` status response if the report isn’t available due to an error when generating the report. More information is available at ***Management > Kibana > Reporting**.
+* **`500` (Internal Server Error)**: When using the `path` to request the download, you will get a `500` status response if the report isn’t available due to an error when generating the report. More information is available at **Management > Kibana > Reporting**.
 
 
 ## Deprecated report URLs [deprecated-report-urls]

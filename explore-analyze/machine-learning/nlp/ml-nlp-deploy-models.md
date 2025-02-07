@@ -11,8 +11,3 @@ If you want to perform {{nlp}} tasks in your cluster, you must deploy an appropr
 2. [Import the trained model and vocabulary](ml-nlp-import-model.md).
 3. [Deploy the model in your cluster](ml-nlp-deploy-model.md).
 4. [Try it out](ml-nlp-test-inference.md).
-
-
-
-
-

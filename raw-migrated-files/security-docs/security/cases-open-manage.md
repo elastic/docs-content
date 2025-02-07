@@ -43,7 +43,7 @@ You can configure email notifications that occur when users are assigned to case
 
 For hosted {{kib}} on {{ess}}:
 
-1. Add the email domains to the [notifications domain allowlist](../../../explore-analyze/alerts/kibana.md).
+1. Add the email domains to the [notifications domain allowlist](../../../explore-analyze/alerts-cases/alerts.md).
 
     You do not need to take any more steps to configure an email connector or update {{kib}} user settings, since the preconfigured Elastic-Cloud-SMTP connector is used by default.
 
@@ -243,7 +243,7 @@ Each case has a universally unique identifier (UUID) that you can copy and share
 
 ## Export and import cases [cases-export-import]
 
-Cases can be [exported](../../../solutions/security/investigate/open-manage-cases.md#cases-export) and [imported](../../../solutions/security/investigate/open-manage-cases.md#cases-import) as saved objects using the {{kib}} [Saved Objects](../../../explore-analyze/find-and-organize/saved-objects.md) UI.
+Cases can be [exported](../../../solutions/security/investigate/open-manage-cases.md#cases-export) and [imported](../../../solutions/security/investigate/open-manage-cases.md#cases-import) as saved objects using the {{kib}} [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md) UI.
 
 ::::{important}
 Before importing Lens visualizations, Timelines, or alerts into a space, ensure their data is present. Without it, they won’t work after being imported.

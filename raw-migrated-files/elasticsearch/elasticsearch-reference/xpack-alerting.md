@@ -1,7 +1,7 @@
 # Watcher [xpack-alerting]
 
 ::::{tip} 
-{{kib}} Alerting provides a set of built-in actions and alerts that are integrated with applications such as APM, Metrics, Security, and Uptime. You can use {{kib}} Alerting to detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. For more information, see [Alerting and actions](../../../explore-analyze/alerts.md).
+{{kib}} Alerting provides a set of built-in actions and alerts that are integrated with applications such as APM, Metrics, Security, and Uptime. You can use {{kib}} Alerting to detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. For more information, see [Alerting and actions](../../../explore-analyze/alerts-cases.md).
 ::::
 
 

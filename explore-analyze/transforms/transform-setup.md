@@ -4,11 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-setup.html
 ---
 
-
-
 # Setup [transform-setup]
-
-
 
 ## Requirements overview [requirements-overview]
 
@@ -17,11 +13,8 @@ To use {{transforms}}, you must have:
 * at least one [{{transform}} node](../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#transform-node-role),
 * management features visible in the {{kib}} space, and
 * security privileges that:
-
-    * grant use of {{transforms}}, and
-    * grant access to source and destination indices
-
-
+  * grant use of {{transforms}}, and
+  * grant access to source and destination indices
 
 ## Security privileges [transform-privileges]
 
@@ -29,7 +22,6 @@ Assigning security privileges affects how users access {{transforms}}. Consider 
 
 * **[{{es}} API user](#transform-es-security-privileges)**: uses an {{es}} client, cURL, or {{kib}} **{{dev-tools-app}}** to access {{transforms}} via {{es}} APIs. This scenario requires {{es}} security privileges.
 * **[{{kib}} user](#transform-kib-security-privileges)**: uses {{transforms}} in {{kib}}. This scenario requires {{kib}} feature privileges *and* {{es}} security privileges.
-
 
 ### {{es}} API user [transform-es-security-privileges]
 
@@ -44,7 +36,6 @@ To view only the configuration and status of {{transforms}}, you must have:
 * `transform_user` built-in role or `monitor_transform` cluster privileges
 
 For more information about {{es}} roles and privileges, refer to [Built-in roles](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) and [Security privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
-
 
 ### {{kib}} user [transform-kib-security-privileges]
 
@@ -69,7 +60,6 @@ Within a {{kib}} space, for read-only access to {{transforms}}, you must meet al
 * `read`, and `view_index_metadata` index privileges on source indices and destination indices
 
 For more information and {{kib}} security features, see [{{kib}} role management](../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md) and [{{kib}} privileges](../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-
 
 ## {{kib}} spaces [transform-kib-spaces]
 

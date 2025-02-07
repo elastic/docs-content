@@ -25,7 +25,7 @@ Not using serverless? Go to the [Elastic Observability docs](../../../solutions/
 * [**Explore log data**](../../../solutions/observability/logs/logs-explorer.md): Use Discover to explore your log data.
 * [**Trigger alerts and triage problems**](../../../solutions/observability/incident-management/create-manage-rules.md): Create rules to detect complex conditions and trigger alerts.
 * [**Track and deliver on your SLOs**](../../../solutions/observability/incident-management/service-level-objectives-slos.md): Measure key metrics important to the business.
-* [**Detect anomalies and spikes**](../../../explore-analyze/machine-learning/aiops-labs/observability-aiops-detect-anomalies.md): Find unusual behavior in time series data.
+* [**Detect anomalies and spikes**](../../../explore-analyze/machine-learning/anomaly-detection.md): Find unusual behavior in time series data.
 * [**Monitor application performance**](../../../solutions/observability/apps/application-performance-monitoring-apm.md): Monitor your software services and applications in real time.
 * [**Integrate with OpenTelemetry**](../../../solutions/observability/apps/use-opentelemetry-with-apm.md): Reuse existing APM instrumentation to capture logs, traces, and metrics.
 * [**Monitor your hosts and services**](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md): Get a metrics-driven view of your hosts backed by an interface called Lens.

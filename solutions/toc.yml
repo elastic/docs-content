@@ -597,6 +597,10 @@ toc:
           - file: search/search-approaches/long-running-searches.md
           - file: search/search-approaches/near-real-time-search.md
       - file: search/querying-for-search.md
+        children:
+          - file: search/retrievers-overview.md
+            children:
+              - file: search/retrievers-examples.md
       - file: search/inference-api.md
         children:
           - file: search/inference-api/elastic-inference-service-eis.md
@@ -619,6 +623,8 @@ toc:
       - file: search/building-search-in-your-app-or-site.md
       - file: search/search-templates.md
       - file: search/ingest-for-search.md
+        children:
+          - file: search/search-pipelines.md
       - file: search/full-text.md
         children:
           - file: search/full-text/search-with-synonyms.md

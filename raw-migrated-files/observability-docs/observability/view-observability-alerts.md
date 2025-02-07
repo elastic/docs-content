@@ -7,7 +7,7 @@ After alerts have been triggered, you can monitor their activity to verify they 
 You can also add alerts to [Cases](../../../solutions/observability/incident-management/cases.md) to open and track potential infrastructure issues.
 
 ::::{note}
-You can centrally manage rules from the [{{kib}} Management UI](../../../explore-analyze/alerts/kibana/create-manage-rules.md) that provides a set of built-in [rule types](../../../explore-analyze/alerts/kibana/rule-types.md) and [connectors](../../../deploy-manage/manage-connectors.md) for you to use. Click **Manage Rules**.
+You can centrally manage rules from the [{{kib}} Management UI](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md) that provides a set of built-in [rule types](../../../explore-analyze/alerts-cases/alerts/rule-types.md) and [connectors](../../../deploy-manage/manage-connectors.md) for you to use. Click **Manage Rules**.
 ::::
 
 
@@ -68,7 +68,7 @@ Use the toolbar buttons in the upper-left of the alerts table to customize the c
 * ***x* fields sorted**: Sort the table by one or more columns.
 * **Fields**: Select the fields to display in the table.
 
-For example, click **Fields** and choose the `kibana.alert.maintenance_window_ids` field. If an alert was affected by a [maintenance window](../../../explore-analyze/alerts/kibana/maintenance-windows.md), its identifier appears in the new column:
+For example, click **Fields** and choose the `kibana.alert.maintenance_window_ids` field. If an alert was affected by a [maintenance window](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md), its identifier appears in the new column:
 
 :::{image} ../../../images/observability-alert-table-toolbar-buttons.png
 :alt: Alerts table with toolbar buttons highlighted
