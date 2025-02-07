@@ -37,4 +37,4 @@ Elasticsearch uses vector search as the foundation for AI-powered search capabil
    - Flexibility to bring your own embeddings
    - Direct implementation of vector similarity matching
 
-Once you've implemented either approach, you can combine it with traditional [full-text search](../full-text.md) to create hybrid search solutions that leverage both meaning-based and keyword-based matching.
+Once you've implemented either approach, you can combine it with full-text search to create [hybrid search](../hybrid-search.md) solutions that leverage both meaning-based and keyword-based matching.
