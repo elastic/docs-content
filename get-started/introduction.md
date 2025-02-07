@@ -11,7 +11,7 @@ navigation_title: "What is Kibana?"
 * **Analyze your data.** Search for hidden insights, visualize what you’ve found in charts, gauges, maps, graphs, and more, and combine them in a dashboard.
 * **Manage, monitor, and secure the Elastic Stack.** Manage your data, monitor the health of your Elastic Stack cluster, and control which users have access to which features.
 
-:::{image} ../../../images/kibana-analytics-home-page.png
+:::{image} ../images/kibana-analytics-home-page.png
 :alt: Analytics home page
 :name: kibana-home-page
 :class: screenshot
@@ -35,7 +35,7 @@ Being able to search, observe, and protect your data is a requirement for any an
 
 With {{kib}} [**Analytics**](../explore-analyze/overview/kibana-quickstart.md), you can quickly search through large amounts of data, explore fields and values, and then use the drag-and-drop interface to rapidly build charts, tables, metrics, and more.
 
-:::{image} ../../../images/kibana-visualization-journey.png
+:::{image} ../images/kibana-visualization-journey.png
 :alt: User data analysis journey
 :class: screenshot
 :::
@@ -63,7 +63,7 @@ $$$get-data-into-kibana$$$
 
 For a full list of data management UIs, refer to [**Stack Management**](../deploy-manage/index.md).
 
-:::{image} ../../../images/kibana-stack-management.png
+:::{image} ../images/kibana-stack-management.png
 :alt: Index Management view in Stack Management
 :class: screenshot
 :::
@@ -85,7 +85,7 @@ You might be managing tens, hundreds, or even thousands of dashboards, visualiza
 
 {{kib}} provides [spaces](../deploy-manage/manage-spaces.md) for organizing your visualizations, dashboards, {{data-sources}}, and more. Think of a space as its own mini {{kib}} installation—it’s isolated from all other spaces, so you can tailor it to your specific needs without impacting others.
 
-:::{image} ../../../images/kibana-select-your-space.png
+:::{image} ../images/kibana-select-your-space.png
 :alt: Space selector view
 :class: screenshot
 :::
@@ -107,7 +107,7 @@ Don’t worry if you have hundreds of dashboards that need to be tagged. Use [**
 
 {{kib}} supports several [authentication providers](../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md), allowing you to login using {{es}}’s built-in realms, or with your own single sign-on provider.
 
-:::{image} ../../../images/kibana-kibana-login.png
+:::{image} ../images/kibana-kibana-login.png
 :alt: Login page
 :class: screenshot
 :::
@@ -121,7 +121,7 @@ When you create a role, you can scope the assigned {{kib}} privileges to specifi
 
 The {{kib}} role management interface allows you to describe these various access levels, or you can automate role creation by using [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles).
 
-:::{image} ../../../images/kibana-spaces-roles.png
+:::{image} ../images/kibana-spaces-roles.png
 :alt: {kib privileges}
 :class: screenshot
 :::
@@ -136,7 +136,7 @@ Once you have your users and roles configured, you might want to maintain a reco
 
 To quickly find apps and the objects you create, use the search field in the global header. Search suggestions include deep links into applications, allowing you to directly navigate to the views you need most.
 
-:::{image} ../../../images/kibana-app-navigation-search.png
+:::{image} ../images/kibana-app-navigation-search.png
 :alt: Example of searching for apps
 :class: screenshot
 :::
@@ -156,7 +156,7 @@ You can search for objects by type, name, and tag. To get the most from the sear
 
 This example searches for visualizations with the tag `design` .
 
-:::{image} ../../../images/kibana-tags-search.png
+:::{image} ../images/kibana-tags-search.png
 :alt: Example of searching for tags
 :class: screenshot
 :::
@@ -169,6 +169,6 @@ To view the full list of apps and features, go to [{{kib}} features](https://www
 
 ## Get help [try-kibana]
 
-Click ![Help icon in navigation bar](../../../images/kibana-intro-help-icon.png "") for help with questions or to provide feedback.
+Click ![Help icon in navigation bar](../images/kibana-intro-help-icon.png "") for help with questions or to provide feedback.
 
 To keep up with what’s new and changed in Elastic, click the celebration icon in the global header.
