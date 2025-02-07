@@ -4,8 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html
 ---
 
-
-
 # Semantic search with `semantic_text` [semantic-search-semantic-text]
 
 

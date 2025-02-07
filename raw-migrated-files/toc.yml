@@ -617,7 +617,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
       - file: elasticsearch/elasticsearch-reference/jwt-auth-realm.md
       - file: elasticsearch/elasticsearch-reference/kerberos-realm.md
-      - file: elasticsearch/elasticsearch-reference/knn-search.md
       - file: elasticsearch/elasticsearch-reference/ldap-realm.md
       - file: elasticsearch/elasticsearch-reference/mapping-roles.md
       - file: elasticsearch/elasticsearch-reference/mapping.md
