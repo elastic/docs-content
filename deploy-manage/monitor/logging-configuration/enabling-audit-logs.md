@@ -182,7 +182,7 @@ When enabled, audit logs are collected and shipped to the monitoring cluster ref
 
 For more information about event details and format, refer to:
   * [{{es}} audit events details and schema](/deploy-manage/monitor/logging-configuration/elasticsearch-audit-events.md).
-  * [{{es}} logentry output format](/deploy-manage/monitor/logging-configuration/logfile-audit-output.md#log-entry-format-audit-log-entry-format)
+  * [{{es}} logentry output format](/deploy-manage/monitor/logging-configuration/logfile-audit-output.md#audit-log-entry-format)
 
 * Elastic Cloud Hosted deployments provide its own subset of supported settings for auditing configuration:
   * [Elasticsearch audit settings on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-add-user-settings.html#ec_audit_settings)
