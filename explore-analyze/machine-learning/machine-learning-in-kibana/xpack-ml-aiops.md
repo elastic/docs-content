@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml-aiops.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-machine-learning.html
 ---
 
 # AIOps Labs [xpack-ml-aiops]

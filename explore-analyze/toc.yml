@@ -163,6 +163,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-configuring-transform.md
               - file: machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md
               - file: machine-learning/anomaly-detection/ml-configuring-categories.md
+              - file: machine-learning/anomaly-detection/ml-configuring-populations.md
               - file: machine-learning/anomaly-detection/ml-reverting-model-snapshot.md
               - file: machine-learning/anomaly-detection/geographic-anomalies.md
               - file: machine-learning/anomaly-detection/mapping-anomalies.md
@@ -230,6 +231,12 @@ toc:
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
+            children:
+              - file: machine-learning/machine-learning-in-kibana/observability-aiops-detect-anomalies.md
+              - file: machine-learning/machine-learning-in-kibana/observability-aiops-tune-anomaly-detection-job.md
+              - file: machine-learning/machine-learning-in-kibana/observability-aiops-forecast-anomalies.md
+              - file: machine-learning/machine-learning-in-kibana/observability-aiops-analyze-spikes.md
+              - file: machine-learning/machine-learning-in-kibana/observability-aiops-detect-change-points.md
           - file: machine-learning/machine-learning-in-kibana/inference-processing.md
   - file: ai-assistant.md
   - file: discover.md
@@ -334,7 +341,7 @@ toc:
     children:
       - file: alerts-cases/alerts.md
         children:
-          - file: alerts-cases/alerts/alerting-getting-started.md 
+          - file: alerts-cases/alerts/alerting-getting-started.md
           - file: alerts-cases/alerts/alerting-setup.md
           - file: alerts-cases/alerts/create-manage-rules.md
           - file: alerts-cases/alerts/view-alerts.md
