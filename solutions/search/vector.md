@@ -40,4 +40,4 @@ Sparse vectors use ELSER to expand content with semantically related terms. This
 - Domain-specific search
 - Large-scale deployments
 
-[Learn more about sparse vector search with ELSER](vector/sparse-vector-elser.md).
+[Learn more about sparse vector search with ELSER](vector/sparse-vector.md).

@@ -126,7 +126,7 @@ In this simple example, we’re sending a raw vector for the query text. In a re
 
 For this you’ll need to deploy a text embedding model in {{es}} and use the [`query_vector_builder` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-knn-query.html#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
 
-Learn how to [use a deployed text embedding model](../semantic-search/semantic-search-deployed-nlp-model.md) for semantic search.
+Learn how to [use a deployed text embedding model](dense-versus-sparse-ingest-pipelines.md) for semantic search.
 
 ::::{tip} 
 If you’re just getting started with vector search in {{es}}, refer to [Semantic search](../semantic-search.md).

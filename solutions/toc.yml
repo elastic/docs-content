@@ -637,15 +637,15 @@ toc:
                 children:
                  - file: search/vector/knn.md
                  - file: search/vector/bring-own-vectors.md
-              - file: search/vector/sparse-vector-elser.md
+              - file: search/vector/sparse-vector.md
+              - file: search/vector/dense-versus-sparse-ingest-pipelines.md
+
           - file: search/semantic-search.md
             children:
               - file: search/semantic-search/semantic-search-semantic-text.md
-              - file: search/semantic-search/semantic-text-hybrid-search.md
               - file: search/semantic-search/semantic-search-inference.md
               - file: search/semantic-search/semantic-search-elser.md
               - file: search/semantic-search/cohere-es.md
-              - file: search/semantic-search/semantic-search-deployed-nlp-model.md
       - file: search/hybrid-search.md
         children: 
           - file: search/hybrid-semantic-text.md

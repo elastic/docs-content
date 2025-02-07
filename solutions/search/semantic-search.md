@@ -48,7 +48,7 @@ For an end-to-end tutorial, refer to [Semantic search with the {{infer}} API](in
 
 You can also deploy NLP in {{es}} manually, without using an {{infer}} endpoint. This is the most complex and labor intensive workflow for performing semantic search in the {{stack}}. You need to select an NLP model from the [list of supported dense and sparse vector models](../../explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md#ml-nlp-model-ref-text-embedding), deploy it using the Eland client, create an index mapping, and set up a suitable ingest pipeline to start ingesting and querying data.
 
-For an end-to-end tutorial, refer to [Semantic search with a model deployed in {{es}}](semantic-search/semantic-search-deployed-nlp-model.md).
+For an end-to-end tutorial, refer to [Semantic search with a model deployed in {{es}}](vector/dense-versus-sparse-ingest-pipelines.md).
 
 ::::{tip}
 Refer to [vector queries and field types](vector.md#vector-queries-and-field-types) for a quick reference overview.

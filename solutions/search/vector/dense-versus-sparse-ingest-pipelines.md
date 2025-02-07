@@ -1,16 +1,16 @@
 ---
-navigation_title: "Semantic search with deployed model"
+navigation_title: "Tutorial: Dense and sparse workflows with ingest pipelines"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-deployed-nlp-model.html
 ---
 
 
 
-# Semantic search with deployed model [semantic-search-deployed-nlp-model]
+# Semantic search with deployed model (dense and sparse tabs) [semantic-search-deployed-nlp-model]
 
 
 ::::{important} 
-* For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](semantic-search-semantic-text.md) end-to-end tutorial.
+* For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) end-to-end tutorial.
 * This tutorial was written before the [{{infer}} endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html) and [`semantic_text` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text.html) was introduced. Today we have simpler options for performing semantic search.
 
 ::::
@@ -25,7 +25,7 @@ This guide shows you how to implement semantic search with models deployed in {{
 
 While it is possible to bring your own text embedding model, achieving good search results through model tuning is challenging. Selecting an appropriate model from our third-party model list is the first step. Training the model on your own data is essential to ensure better search results than using only BM25. However, the model training process requires a team of data scientists and ML experts, making it expensive and time-consuming.
 
-To address this issue, Elastic provides a pre-trained representational model called [Elastic Learned Sparse EncodeR (ELSER)](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md). ELSER, currently available only for English, is an out-of-domain sparse vector model that does not require fine-tuning. This adaptability makes it suitable for various NLP use cases out of the box. Unless you have a team of ML specialists, it is highly recommended to use the ELSER model.
+To address this issue, Elastic provides a pre-trained representational model called [Elastic Learned Sparse EncodeR (ELSER)](../explore-analyze/machine-learning/nlp/ml-nlp-elser.md). ELSER, currently available only for English, is an out-of-domain sparse vector model that does not require fine-tuning. This adaptability makes it suitable for various NLP use cases out of the box. Unless you have a team of ML specialists, it is highly recommended to use the ELSER model.
 
 In the case of sparse vector representation, the vectors mostly consist of zero values, with only a small subset containing non-zero values. This representation is commonly used for textual data. In the case of ELSER, each document in an index and the query text itself are represented by high-dimensional sparse vectors. Each non-zero element of the vector corresponds to a term in the model vocabulary. The ELSER vocabulary contains around 30000 terms, so the sparse vectors created by ELSER contain about 30000 values, the majority of which are zero. Effectively the ELSER model is replacing the terms in the original query with other terms that have been learnt to exist in the documents that best match the original search terms in a training dataset, and weights to control how important each is.
 
@@ -55,7 +55,7 @@ Before you start using the deployed model to generate embeddings based on your i
 ::::::{tab-item} ELSER
 ELSER produces token-weight pairs as output from the input text and the query. The {{es}} [`sparse_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) field type can store these token-weight pairs as numeric feature vectors. The index must have a field with the `sparse_vector` field type to index the tokens that ELSER generates.
 
-To create a mapping for your ELSER index, refer to the [Create the index mapping section](../vector/sparse-vector-elser.md#elser-mappings) of the tutorial. The example shows how to create an index mapping for `my-index` that defines the `my_embeddings.tokens` field - which will contain the ELSER output - as a `sparse_vector` field.
+To create a mapping for your ELSER index, refer to the [Create the index mapping section](../semantic-search/semantic-search-elser.md#elser-mappings) of the tutorial. The example shows how to create an index mapping for `my-index` that defines the `my_embeddings.tokens` field - which will contain the ELSER output - as a `sparse_vector` field.
 
 ```console
 PUT my-index
@@ -142,7 +142,7 @@ PUT _ingest/pipeline/my-text-embeddings-pipeline
 1. Configuration object that defines the `input_field` for the {{infer}} process and the `output_field` that will contain the {{infer}} results.
 
 
-To ingest data through the pipeline to generate tokens with ELSER, refer to the [Ingest the data through the {{infer}} ingest pipeline](../vector/sparse-vector-elser.md#reindexing-data-elser) section of the tutorial. After you successfully ingested documents by using the pipeline, your index will contain the tokens generated by ELSER. Tokens are learned associations capturing relevance, they are not synonyms. To learn more about what tokens are, refer to [this page](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-tokens).
+To ingest data through the pipeline to generate tokens with ELSER, refer to the [Ingest the data through the {{infer}} ingest pipeline](sparse-vector-elser.md#reindexing-data-elser) section of the tutorial. After you successfully ingested documents by using the pipeline, your index will contain the tokens generated by ELSER. Tokens are learned associations capturing relevance, they are not synonyms. To learn more about what tokens are, refer to [this page](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-tokens).
 ::::::
 
 ::::::{tab-item} Dense vector models
@@ -201,7 +201,7 @@ GET my-index/_search
 ::::::
 
 ::::::{tab-item} Dense vector models
-Text embeddings produced by dense vector models can be queried using a [kNN search](../vector/knn.md#knn-semantic-search). In the `knn` clause, provide the name of the dense vector field, and a `query_vector_builder` clause with the model ID and the query text.
+Text embeddings produced by dense vector models can be queried using a [kNN search](knn.md#knn-semantic-search). In the `knn` clause, provide the name of the dense vector field, and a `query_vector_builder` clause with the model ID and the query text.
 
 ```console
 GET my-index/_search

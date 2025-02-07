@@ -4,9 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text-hybrid-search.html
 ---
 
-
-
-# Hybrid search [semantic-text-hybrid-search]
+# Hybrid search with `semantic_text` [semantic-text-hybrid-search]
 
 
 This tutorial demonstrates how to perform hybrid search, combining semantic search with traditional full-text search.
