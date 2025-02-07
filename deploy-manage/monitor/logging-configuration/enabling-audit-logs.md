@@ -18,11 +18,11 @@ applies:
 You can log security-related events such as authentication failures and refused connections to monitor your cluster for suspicious activity (including data access authorization and user security configuration changes). Audit logging can be enabled independently for {{es}} and {{kib}}.
 
 ::::{important}
-Audit logs are **disabled** by default and must be explicitly enabled.
+Audit logs are only available on certain [subscription levels](https://www.elastic.co/subscriptions).
 ::::
 
-::::{tip}
-Audit logs are only available on certain subscription levels. For more information, see https://www.elastic.co/subscriptions.
+::::{note}
+Audit logs are **disabled** by default and must be explicitly enabled.
 ::::
 
 This section describes how to enable and configure audit logging in both {{es}} and {{kib}} for all supported deployment types, including self-managed clusters, Elastic Cloud Hosted, Elastic Cloud Enterprise (ECE), and Elastic Cloud on Kubernetes (ECK).
