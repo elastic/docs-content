@@ -4,6 +4,7 @@ applies:
   ece: all
   eck: all
   stack: all
+  serverless: unavailable
 ---
 # Security event audit logging
 
