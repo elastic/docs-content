@@ -1,8 +1,12 @@
 # Retrievers [retrievers-overview]
 
-A retriever is an abstraction that was added to the Search API in **8.14.0** and was made generally available in **8.16.0**. This abstraction enables the configuration of multi-stage retrieval pipelines within a single `_search` call. This simplifies your search application logic, because you no longer need to configure complex searches via multiple {{es}} calls or implement additional client-side logic to combine results from different queries.
+A retriever is an abstraction that was added to the `_search` API in **8.14.0** and was made generally available in **8.16.0**.
 
-This document provides a general overview of the retriever abstraction. For implementation details, including notable restrictions, check out the [reference documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html) in the `_search` API docs.
+This syntax enables the configuration of multi-stage retrieval pipelines within a single `_search` call. This simplifies your search application logic, because you no longer need to configure complex searches via multiple {{es}} calls or implement additional client-side logic to combine results from different queries.
+
+::::{note}
+This document provides a general overview of the retriever abstraction. For a full syntax reference and implementation overview, check out the [reference documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html) in the `_search` API docs.
+::::
 
 ::::{tip}
 Prefer to start with some sample code? Check out [](retrievers-examples.md) for a collection of retriever examples.
