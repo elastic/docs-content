@@ -96,7 +96,7 @@ In orchestrated deployments, audit logs must be shipped to a monitoring deployme
 
 To enable audit logging in an ECE deployment:
 
-1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 
 2. On the **Deployments** page, select your deployment.
 

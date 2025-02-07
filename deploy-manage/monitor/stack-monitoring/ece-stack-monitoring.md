@@ -180,7 +180,7 @@ When shipping logs to a monitoring deployment there are more logging features av
 
 #### For {{es}}: [ece-extra-logging-features-elasticsearch] 
 
-* [Audit logging](../logging-configuration/enabling-elasticsearch-audit-logs.md) - logs security-related events on your deployment
+* [Audit logging](../logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
 * [Slow query and index logging](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
