@@ -32,9 +32,11 @@ The size of the cache layer and the volume of data it holds depend on <<elastics
 **Pay per usage.** Each serverless project type includes product-specific and usage-based pricing.
 
 **Data and performance control**. Control your project data and query performance against your project data.
-* Data. Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project,
+
+**Data.** Choose the data you want to ingest and the method to ingest it. By default, data is stored indefinitely in your project,
 and you define the retention settings for your data streams.
-* Performance. For granular control over costs and query performance against your project data, serverless projects come with
+
+**Performance.** For granular control over costs and query performance against your project data, serverless projects come with
 a set of predefined settings you can edit.
 
 [discrete]
