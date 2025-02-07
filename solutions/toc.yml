@@ -636,7 +636,7 @@ toc:
               - file: search/vector/dense-vector.md
                 children:
                  - file: search/vector/knn.md
-                 - file: search/semantic-search/bring-own-vectors.md
+                 - file: search/vector/bring-own-vectors.md
               - file: search/vector/sparse-vector-elser.md
           - file: search/semantic-search.md
             children:
