@@ -306,7 +306,6 @@ toc:
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
       - file: docs-content/serverless/maintenance-windows.md
-      - file: docs-content/serverless/maps.md
       - file: docs-content/serverless/monitor-k8s-otel-edot.md
       - file: docs-content/serverless/observability-add-logs-service-name.md
       - file: docs-content/serverless/observability-aggregationOptions.md
@@ -690,7 +689,6 @@ toc:
       - file: kibana/kibana/managing-data-views.md
       - file: kibana/kibana/managing-saved-objects.md
       - file: kibana/kibana/managing-tags.md
-      - file: kibana/kibana/maps.md
       - file: kibana/kibana/osquery.md
       - file: kibana/kibana/playground.md
       - file: kibana/kibana/reporting-getting-started.md

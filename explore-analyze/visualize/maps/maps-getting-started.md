@@ -68,12 +68,12 @@ The first layer you’ll add is a choropleth layer to shade world countries by w
 
 8. Click **Keep changes**.
 
-    Your map now looks like this:
+   Your map now looks like this:
 
-    :::{image} ../../../images/kibana-gs_add_cloropeth_layer.png
-    :alt: Map showing the Total Requests by Destination layer
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-gs_add_cloropeth_layer.png
+   :alt: Map showing the Total Requests by Destination layer
+   :class: screenshot
+   :::
 
 
 
@@ -100,12 +100,12 @@ This layer displays web log documents as points. The layer is only visible when 
 7. In **Layer style**, set **Fill color** to **#2200FF**.
 8. Click **Keep changes**.
 
-    Your map will look like this from zoom level 9 to 24:
+   Your map will look like this from zoom level 9 to 24:
 
-    :::{image} ../../../images/kibana-gs_add_es_document_layer.png
-    :alt: Map showing what zoom level looks like a level 9
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-gs_add_es_document_layer.png
+   :alt: Map showing what zoom level looks like a level 9
+   :class: screenshot
+   :::
 
 
 
@@ -135,12 +135,12 @@ You’ll create a layer for [aggregated data](../../aggregations.md) and make it
 
 7. Click **Keep changes** button.
 
-    Your map will look like this between zoom levels 0 and 9:
+   Your map will look like this between zoom levels 0 and 9:
 
-    :::{image} ../../../images/kibana-sample_data_web_logs.png
-    :alt: Map showing what zoom level 3 looks like
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-sample_data_web_logs.png
+   :alt: Map showing what zoom level 3 looks like
+   :class: screenshot
+   :::
 
 
 
@@ -158,10 +158,10 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
 1. Click **Add from library** to open a list of panels that you can add to the dashboard.
 2. Add **[Logs] Unique Destination Heatmap** and **[Logs] Bytes distribution** to the dashboard.
 
-    :::{image} ../../../images/kibana-gs_dashboard_with_map.png
-    :alt: Map in a dashboard with 2 other panels
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-gs_dashboard_with_map.png
+   :alt: Map in a dashboard with 2 other panels
+   :class: screenshot
+   :::
 
 3. To filter for documents with unusually high byte values, click and drag in the **Bytes distribution** chart.
 4. Remove the filter by clicking **x** next to its name in the filter bar.
@@ -170,17 +170,17 @@ View your geospatial data alongside a heat map and pie chart, and then filter th
     1. Open a tooltip by clicking anywhere in the United States vector.
     2. To show only documents where **geo.src** is **US**, click the filter icon ![filter icon](../../../images/kibana-gs-filter-icon.png "")in the row for **ISO 3066-1 alpha-2**.
 
-        :::{image} ../../../images/kibana-gs_tooltip_filter.png
-        :alt: Tooltip on map
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-gs_tooltip_filter.png
+       :alt: Tooltip on map
+       :class: screenshot
+       :::
 
-        Your filtered map should look similar to this:
+       Your filtered map should look similar to this:
 
-        :::{image} ../../../images/kibana-gs_map_filtered.png
-        :alt: Map showing filtered data
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-gs_map_filtered.png
+       :alt: Map showing filtered data
+       :class: screenshot
+       :::
 
 
 

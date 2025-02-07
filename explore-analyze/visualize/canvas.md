@@ -89,7 +89,7 @@ Choose the type of element you want to use, then use the preconfigured demo data
 
     * **{{es}} SQL** — Access your data in {{es}} using [SQL syntax](../query-filter/languages/sql-spec.md).
     * **{{es}} documents** — Access your data in {{es}} without using aggregations. To use, select a {{data-source}} and fields. Use **{{es}} documents** when you have low-volume datasets, and you want to view raw documents or to plot exact, non-aggregated values on a chart.
-    * **Timelion** — Access your time series data using [**Timelion**](legacy-editors.md#timelion) queries. To use **Timelion** queries, you can enter a query using the [Lucene Query Syntax](../query-filter/languages/lucene-query-syntax.md).
+    * **Timelion** — Access your time series data using [**Timelion**](legacy-editors/timelion.md) queries. To use **Timelion** queries, you can enter a query using the [Lucene Query Syntax](../query-filter/languages/lucene-query-syntax.md).
 
         Each element can display a different {{data-source}}, and pages and workpads often contain multiple {{data-sources}}.
 

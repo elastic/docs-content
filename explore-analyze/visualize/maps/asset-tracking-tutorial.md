@@ -565,10 +565,10 @@ Add a layer that uses attributes in the data to set the style and orientation of
     4. Set **Border width** to 0.
     5. Change **Symbol orientation** to use **By value** and the `trimet.bearing` field.
 
-        :::{image} ../../../images/kibana-top_hits_layer_style.png
-        :alt: top hits layer style
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-top_hits_layer_style.png
+       :alt: top hits layer style
+       :class: screenshot
+       :::
 
 7. Click **Keep changes**.
 8. Open the [time filter](../../query-filter/filtering.md), and set **Refresh every** to 10 seconds, and click **Start**.
@@ -738,10 +738,10 @@ With the alert configured and running, in a few minutes your `trimet_alerts` ind
 * Enable the **Label** option with the `vehicleId` field
 * Add the `vehicleId`, `boundaryId`, `detectionTime`, and `vehicleTime` fields to the tooltip configuration to allow viewing alert details on the map.
 
-    :::{image} ../../../images/kibana-vehicle_alerts.png
-    :alt: vehicle alerts
-    :class: screenshot
-    :::
+  :::{image} ../../../images/kibana-vehicle_alerts.png
+  :alt: vehicle alerts
+  :class: screenshot
+  :::
 
 
 Congratulations! You have completed the tutorial and have the recipe for tracking assets. You can now try replicating this same analysis with your own data.

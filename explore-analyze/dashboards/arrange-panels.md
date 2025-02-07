@@ -15,9 +15,9 @@ In the toolbar, click **Edit**, then use the following options:
 * To resize, click the resize control, then drag to the new dimensions.
 * To maximize to full screen, open the panel menu and click **Maximize**.
 
-    ::::{tip}
-    If you [share](sharing.md) a dashboard while viewing a full screen panel, the generated link will directly open the same panel in full screen mode.
-    ::::
+  ::::{tip}
+  If you [share](sharing.md) a dashboard while viewing a full screen panel, the generated link will directly open the same panel in full screen mode.
+  ::::
 
 
 
