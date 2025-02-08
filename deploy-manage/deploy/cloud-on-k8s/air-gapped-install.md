@@ -1,4 +1,5 @@
 ---
+navigation_title: Air gapped environments
 applies:
   eck: all
 mapped_urls:

@@ -20,6 +20,8 @@ mapped_urls:
 
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-supported.md
 
+Pending to add link to supported versions (in the intro) [](../cloud-on-k8s.md#k8s-supported)
+
 ## Installation overview
 
 % TBD: I kind of hate this paragraph :) not because of the content, but because of the format...

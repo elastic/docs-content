@@ -99,6 +99,7 @@ Alternatively, or if you do not have a support contract, and if you are unable t
 * [Github issues](https://github.com/elastic/cloud-on-k8s/issues) for bugs and feature requests
 
 % to consider in either deploy or manage deployment sections
+% this was a "redirect only" in the excel
 ## Advanced topics [k8s-advanced-topics]
 
 * [*Deploy ECK on OpenShift*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-openshift.md)

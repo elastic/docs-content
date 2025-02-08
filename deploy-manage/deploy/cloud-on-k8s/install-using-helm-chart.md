@@ -1,8 +1,9 @@
 ---
-applies:
-  eck: all
+navigation_title: Helm chart
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-install-helm.html
+applies:
+  eck: all
 ---
 
 # Install using a Helm chart [k8s-install-helm]
