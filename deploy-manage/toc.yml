@@ -247,11 +247,11 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-autopilot-deploy-elasticsearch.md
                       - file: deploy/cloud-on-k8s/k8s-autopilot-deploy-agent-beats.md
                   - file: deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md
+                  - file: deploy/cloud-on-k8s/required-rbac-permissions.md
               - file: deploy/cloud-on-k8s/air-gapped-install.md
               - file: deploy/cloud-on-k8s/configure.md
                 children:
                   - file: deploy/cloud-on-k8s/configure-eck.md
-                  - file: deploy/cloud-on-k8s/required-rbac-permissions.md
                   - file: deploy/cloud-on-k8s/configure-validating-webhook.md
                   - file: deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md
                   - file: deploy/cloud-on-k8s/create-custom-images.md

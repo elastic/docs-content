@@ -22,7 +22,7 @@ The minimum supported version of Helm is 3.2.0.
 
 ## Cluster-wide (global) installation [k8s-install-helm-global]
 
-This is the default mode of installation and is equivalent to [installing ECK using the stand-alone YAML manifests](install-using-yaml-manifest-quickstart.md).
+This is the default mode of installation and is equivalent to [installing ECK using the stand-alone YAML manifests](./install-using-yaml-manifest-quickstart.md).
 
 ```sh
 helm install elastic-operator elastic/eck-operator -n elastic-system --create-namespace
@@ -112,4 +112,4 @@ For example, an ECK 1.2.1 installation deployed using the [quickstart guide](htt
 
     1. If you have previously customized the operator configuration in this ConfigMap, you will have to repeat the configuration once the operator has been reinstalled in the next step.
 
-3. Install the ECK operator using the Helm chart as described in [Install ECK using the Helm chart]().
+3. Install the ECK operator using the Helm chart as described in [Install ECK using the Helm chart](./install-using-helm-chart.md).

@@ -1,4 +1,5 @@
 ---
+navigation_title: Configuration parameters
 applies:
   eck: all
 mapped_pages:
@@ -8,6 +9,8 @@ mapped_pages:
 # Configure ECK [k8s-operator-config]
 
 ECK can be configured using either command line flags or environment variables.
+
+% this list of flags is a candidate to REFERENCE content
 
 | Flag | Default | Description |
 | --- | --- | --- |

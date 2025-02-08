@@ -5,6 +5,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-eck-permissions.html
 ---
 
+% candidate for REFERENCE content.
+
 # Required RBAC permissions [k8s-eck-permissions]
 
 Installing and running ECK, as well as using ECK-managed resources requires the following Kubernetes [permissions](https://kubernetes.io/docs/reference/access-authn-authz/rbac):
