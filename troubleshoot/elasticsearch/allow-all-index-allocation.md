@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/allow-all-index-allocation.html
 ---
 
+% Need to retitle to be about the problem, not the solution
+% New subsection about unassigned shards?
+
 # Allow Elasticsearch to allocate the index [allow-all-index-allocation]
 
 The allocation of data can be controlled using the [enable allocation configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-routing-allocation-enable-setting). In certain circumstances users might want to temporarily disable or restrict the allocation of data.

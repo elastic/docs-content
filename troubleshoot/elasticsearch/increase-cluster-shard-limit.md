@@ -4,6 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-cluster-shard-limit.html
 ---
 
+% marciw move to a new Unassigned shards subsection
+
 # Total number of shards per node has been reached [increase-cluster-shard-limit]
 
 Elasticsearch tries to take advantage of all the available resources by distributing data (index shards) amongst the cluster nodes.

@@ -4,6 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnose-unassigned-shards.html
 ---
 
+% marciw move to a new Unassigned shards subsection
+
 # Diagnose unassigned shards [diagnose-unassigned-shards]
 
 There are multiple reasons why shards might get unassigned, ranging from misconfigured allocation settings to lack of disk space.
