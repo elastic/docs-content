@@ -16,6 +16,7 @@ mapped_urls:
 
 % Use migrated content from existing pages that map to this page:
 
+% deleted all of them
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-overview.md
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-advanced-topics.md
 %      Notes: redirect only

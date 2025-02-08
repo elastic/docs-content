@@ -14,14 +14,9 @@ toc:
   - file: cloud-on-k8s/cloud-on-k8s/index.md
     children:
       - file: cloud-on-k8s/cloud-on-k8s/k8s_audit_logging.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s_installation.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-accessing-elastic-services.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-air-gapped.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-custom-http-certificate.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-deploy-eck.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-es-secure-settings.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-fips.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-install-yaml-manifests.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-installing-eck.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-request-elasticsearch-endpoint.md

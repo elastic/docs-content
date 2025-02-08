@@ -6,7 +6,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-eck.html
 ---
 
-# Install using YAML manifest (quickstart)
+# Install ECK using the YAML manifests [k8s-install-yaml-manifests]
 
 % What needs to be done: Refine
 
@@ -16,10 +16,9 @@ mapped_urls:
 
 % Use migrated content from existing pages that map to this page:
 
+% removed both
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-install-yaml-manifests.md
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-deploy-eck.md
-
-# Install ECK using the YAML manifests [k8s-install-yaml-manifests]
 
 This method is the quickest way to get started with ECK if you have full administrative access to the Kubernetes cluster. 
 
@@ -75,7 +74,7 @@ To deploy the ECK operator:
     ```
 
     ::::{note}
-    The ECK operator runs by default in the `elastic-system` namespace. It is recommended that you choose a dedicated namespace for your workloads, rather than using the `elastic-system` or the `default` namespace.
+    The ECK operator runs by default in the `elastic-system` namespace. It is recommended that you choose a dedicated namespace for your workloads (such as Elasticsearch and Kibana), rather than using the `elastic-system` or the `default` namespace.
     ::::
 
 3. Monitor the operator’s setup from its logs through [`logs`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/):

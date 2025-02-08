@@ -7,5 +7,4 @@ mapped_pages:
 
 # Installing the ECK Operator [k8s-autopilot-deploy-the-operator]
 
-Refer to [*Install ECK*](install.md) for more information on installation options.
-
+Refer to [*Install ECK*](install.md) for more information on installation options. On GKE Autopilot, the ECK Operator can be installed using either YAML manifests or the Helm chart.

@@ -19,7 +19,6 @@ The minimum supported version of Helm is 3.2.0.
 ::::
 
 
-
 ## Cluster-wide (global) installation [k8s-install-helm-global]
 
 This is the default mode of installation and is equivalent to [installing ECK using the stand-alone YAML manifests](install-using-yaml-manifest-quickstart.md).
@@ -27,7 +26,6 @@ This is the default mode of installation and is equivalent to [installing ECK us
 ```sh
 helm install elastic-operator elastic/eck-operator -n elastic-system --create-namespace
 ```
-
 
 ## Restricted installation [k8s-install-helm-restricted]
 
@@ -63,8 +61,6 @@ You can find the profile files in the Helm cache directory or from the [ECK sour
 
 ::::
 
-
-
 ## View available configuration options [k8s-install-helm-show-values]
 
 You can view all configurable values by running the following:
@@ -73,20 +69,17 @@ You can view all configurable values by running the following:
 helm show values elastic/eck-operator
 ```
 
-
 ## Migrate an existing installation to Helm [k8s-migrate-to-helm]
 
 ::::{warning}
 Migrating an existing installation to Helm is essentially an upgrade operation and any [caveats associated with normal operator upgrades](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md#k8s-beta-to-ga-rolling-restart) are applicable. Check the [upgrade documentation](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md#k8s-ga-upgrade) before proceeding.
 ::::
 
-
 You can migrate an existing operator installation to Helm by adding the `meta.helm.sh/release-name`, `meta.helm.sh/release-namespace` annotations and the `app.kubernetes.io/managed-by` label to all the resources you want to be adopted by Helm. You *must* do this for the Elastic Custom Resource Definitions (CRD) because deleting them would trigger the deletion of all deployed Elastic applications as well. All other resources are optional and can be deleted.
 
 ::::{note}
 A shell script is available in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/blob/2.16/deploy/helm-migrate.sh) to demonstrate how to migrate from version 1.7.1 to Helm. You can modify it to suit your own environment.
 ::::
-
 
 For example, an ECK 1.2.1 installation deployed using the [quickstart guide](https://www.elastic.co/guide/en/cloud-on-k8s/1.2/k8s-quickstart.html) can be migrated to Helm as follows:
 
