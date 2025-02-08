@@ -129,7 +129,7 @@ If you use [Operator Lifecycle Manager (OLM)](https://github.com/operator-framew
       name: elastic-cloud-eck
       source: elastic-operators
       sourceNamespace: openshift-marketplace
-      startingCSV: elastic-cloud-eck.v2.16.1
+      startingCSV: elastic-cloud-eck.v{{eck_version}}
       config:
         volumes:
           - name: config

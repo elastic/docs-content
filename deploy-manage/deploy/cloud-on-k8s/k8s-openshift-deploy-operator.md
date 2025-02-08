@@ -10,8 +10,8 @@ mapped_pages:
 1. Apply the all-in-one template, as described in the [quickstart](deploy-an-orchestrator.md).
 
     ```shell
-    oc create -f https://download.elastic.co/downloads/eck/2.16.1/crds.yaml
-    oc apply -f https://download.elastic.co/downloads/eck/2.16.1/operator.yaml
+    oc create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
+    oc apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
     ```
 
 2. [Optional] If the Software Defined Network is configured with the `ovs-multitenant` plug-in, you must allow the `elastic-system` namespace to access other Pods and Services in the cluster:
