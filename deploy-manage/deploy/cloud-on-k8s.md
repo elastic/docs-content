@@ -24,6 +24,7 @@ mapped_urls:
 
 # Elastic Cloud on Kubernetes [k8s-overview]
 
+% TBD: choose 
 ::::{important}
 ECK is an Elastic self-managed product offered in two licensing tiers: Basic and Enterprise. For more details refer to [Elastic subscriptions](https://www.elastic.co/subscriptions) and [](/deploy-manage/license/manage-your-license-in-eck.md) documentation.
 ::::
@@ -44,10 +45,11 @@ With Elastic Cloud on Kubernetes you can streamline critical operations, such as
 4. Securing clusters with TLS certificates
 5. Setting up hot-warm-cold architectures with availability zone awareness
 
+% TBD: choose
 On this section you will learn how to:
 This sections offers everything you need to know about:
 
-- [](./cloud-on-k8s/deploy-an-orchestrator.md): ECK installation methods
+- [](./cloud-on-k8s/deploy-an-orchestrator.md): ECK installation methods and configuration details.
 - [](./cloud-on-k8s/manage-deployments.md): Install and configure {{es}} clusters and {{kib}} instances through ECK.
 - [](./cloud-on-k8s/orchestrate-other-elastic-applications.md): Install and configure APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
 - [](./cloud-on-k8s/tools-apis.md): Collection of tools and APIs available in ECK based environments.
@@ -75,6 +77,8 @@ Elastic Stack application images for the OpenShift-certified Elasticsearch (ECK)
 
 Check the full [Elastic support matrix](https://www.elastic.co/support/matrix#matrix_kubernetes) for more information.
 
+% TBD: discuss if these make sense here
+
 ## Learn more about ECK [k8s_learn_more_about_eck]
 
 * [Orchestrate Elasticsearch on Kubernetes](https://www.elastic.co/elasticsearch-kubernetes)
@@ -82,10 +86,11 @@ Check the full [Elastic support matrix](https://www.elastic.co/support/matrix#ma
 * [Getting Started With Elastic Cloud on Kubernetes (ECK)](https://www.youtube.com/watch?v=PIJmlYBIFXM)
 * [Running the Elastic Stack on Kubernetes with ECK](https://www.youtube.com/watch?v=Wf6E3vkvEFM)
 
+% TBD: discuss where to put this "ask for help info"
 
 ## Ask for help [k8s-ask-for-help]
 
-If you are an existing Elastic customer with an active support contract, you can create a case in the [Elastic Support Portal](https://support.elastic.co/). Kindly attach an [ECK diagnostic](../../../troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) when opening your case.
+If you are an existing Elastic customer with an active support contract, you can create a case in the [Elastic Support Portal](https://support.elastic.co/). Kindly attach an [ECK diagnostic](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) when opening your case.
 
 Alternatively, or if you do not have a support contract, and if you are unable to find a solution to your problem with the information provided in these documents, ask for help:
 
@@ -95,12 +100,12 @@ Alternatively, or if you do not have a support contract, and if you are unable t
 % to consider in either deploy or manage deployment sections
 ## Advanced topics [k8s-advanced-topics]
 
-* [*Deploy ECK on OpenShift*](../../../deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-openshift.md)
-* [*Deploy ECK on GKE Autopilot*](../../../deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md)
-* [*Create custom images*](../../../deploy-manage/deploy/cloud-on-k8s/create-custom-images.md)
-* [*Service meshes*](../../../deploy-manage/deploy/cloud-on-k8s/service-meshes.md)
-* [*Traffic Splitting*](../../../deploy-manage/deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md)
-* [*Network policies*](../../../deploy-manage/deploy/cloud-on-k8s/network-policies.md)
-* [*Webhook namespace selectors*](../../../deploy-manage/deploy/cloud-on-k8s/webhook-namespace-selectors.md)
-* [*Stack Monitoring*](../../../deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md)
-* [*Deploy a FIPS compatible version of ECK*](../../../deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md)
+* [*Deploy ECK on OpenShift*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-openshift.md)
+* [*Deploy ECK on GKE Autopilot*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md)
+* [*Create custom images*](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md)
+* [*Service meshes*](/deploy-manage/deploy/cloud-on-k8s/service-meshes.md)
+* [*Traffic Splitting*](/deploy-manage/deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md)
+* [*Network policies*](/deploy-manage/deploy/cloud-on-k8s/network-policies.md)
+* [*Webhook namespace selectors*](/deploy-manage/deploy/cloud-on-k8s/webhook-namespace-selectors.md)
+* [*Stack Monitoring*](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md)
+* [*Deploy a FIPS compatible version of ECK*](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md)
