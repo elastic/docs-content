@@ -1,4 +1,5 @@
 ---
+navigation_title: Deploy a Kibana instance
 applies:
   eck: all
 mapped_pages:

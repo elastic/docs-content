@@ -1,4 +1,5 @@
 ---
+navigation_title: Deploy an Elasticsearch cluster
 applies:
   eck: all
 mapped_pages:
@@ -139,4 +140,6 @@ In order to make requests to the [{{es}} API](https://www.elastic.co/guide/en/el
             ```
 
 
-This completes the quickstart of deploying an {{es}} cluster. We recommend continuing to [Deploy a {{kib}} instance](kibana-instance-quickstart.md) but for more configuration options as needed, navigate to [Running {{es}} on ECK](elasticsearch-configuration.md).
+This completes the quickstart of deploying an {{es}} cluster. We recommend continuing to [Deploy a {{kib}} instance](kibana-instance-quickstart.md) but for more configuration options as needed, navigate to [](./elasticsearch-configuration.md).
+
+For more information about how to apply changes to your deployments, refer to [aplying updates](./update-deployments.md).

@@ -1,11 +1,12 @@
 ---
+navigation_title: Elastic Stack Helm chart
 applies:
   eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-helm-chart.html
 ---
 
-# Managing deployments using a Helm chart [k8s-stack-helm-chart]
+# Elastic Stack Helm chart [k8s-stack-helm-chart]
 
 Starting from ECK 2.4.0, a Helm chart is available for managing Elastic Stack resources using the ECK Operator. It is available from the Elastic Helm repository and can be added to your Helm repository list by running the following command:
 

@@ -267,8 +267,8 @@ toc:
             children:
               - file: deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md
               - file: deploy/cloud-on-k8s/kibana-instance-quickstart.md
-              - file: deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md
               - file: deploy/cloud-on-k8s/update-deployments.md
+              - file: deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md
               - file: deploy/cloud-on-k8s/accessing-services.md
               - file: deploy/cloud-on-k8s/configure-deployments.md
                 children:
