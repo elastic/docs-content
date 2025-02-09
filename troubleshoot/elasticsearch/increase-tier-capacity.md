@@ -1,4 +1,5 @@
 ---
+navigation_title: Not enough nodes to allocate shard replicas
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-tier-capacity.html
 ---

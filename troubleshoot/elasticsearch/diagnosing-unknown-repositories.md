@@ -1,4 +1,5 @@
 ---
+navigation_title: Unknown repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-unknown-repositories.html
 ---

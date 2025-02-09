@@ -1,5 +1,5 @@
 ---
-navigation_title: Unstable cluster
+navigation_title: Unstable clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unstable-cluster.html
 ---

@@ -1,7 +1,11 @@
 ---
+navigation_title: Snapshot lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-slm.html
 ---
+
+% marciw consider moving out of troubleshooting and into how-tos
+% marciw or add troubleshooting info from elsewhere
 
 # Start snapshot lifecycle management [start-slm]
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: Corrupted repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-corrupted-repositories.html
 ---

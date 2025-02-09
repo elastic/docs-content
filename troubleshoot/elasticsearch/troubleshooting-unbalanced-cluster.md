@@ -1,8 +1,10 @@
 ---
-navigation_title: Unbalanced cluster
+navigation_title: Unbalanced clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unbalanced-cluster.html
 ---
+
+% marciw move so this is with other cluster topics
 
 # Troubleshoot an unbalanced cluster [troubleshooting-unbalanced-cluster]
 
