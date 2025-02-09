@@ -32,13 +32,16 @@ Elastic Cloud on Kubernetes (ECK) is a [Kubernetes operator](https://kubernetes.
 Deleting CRDs will trigger deletion of all custom resources (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
 ::::
 
-## Installation methods
+## Installation Methods
 
-ECK offers multiple installation methods, including standard Kubernetes deployments and specialized procedures for environments such as OpenShift and GKE Autopilot. Choose the method that best suits your infrastructure:
+ECK supports multiple installation methods. Choose the one that best fits your infrastructure:
 
-* [Install ECK using the YAML manifests (quickstart)](./install-using-yaml-manifest-quickstart.md)
+* [Install ECK using YAML manifests (quickstart)](./install-using-yaml-manifest-quickstart.md)
 * [Install ECK using the Helm chart](./install-using-helm-chart.md)
 * [](./deploy-eck-on-openshift.md)
 * [](./deploy-eck-on-gke-autopilot.md)
 * [](./deploy-fips-compatible-version-of-eck.md)
-* [](./air-gapped-install.md)
+
+For air-gapped environments, refer to [](./air-gapped-install.md) to understand the requirements and installation considerations.
+
+See [*Required RBAC permissions*](required-rbac-permissions.md) for a complete list of the permissions needed by the operator.

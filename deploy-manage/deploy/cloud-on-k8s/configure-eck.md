@@ -1,16 +1,18 @@
 ---
-navigation_title: Configuration parameters
+navigation_title: Configuration flags
 applies:
   eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html
 ---
 
-# Configure ECK [k8s-operator-config]
+# ECK configuration flags [k8s-operator-config]
 
-ECK can be configured using either command line flags or environment variables.
+ECK can be configured using either **command-line flags** or **environment variables**.
 
-% this list of flags is a candidate to REFERENCE content
+Unless noted otherwise, environment variables can be used instead of flags to configure the operator. Simply convert the flag name to upper case and replace any dashes (`-`) with underscores (`_`). For example, the `log-verbosity` flag can be set by an environment variable named `LOG_VERBOSITY`.
+
+The following table lists and describes all available configuration flags:
 
 | Flag | Default | Description |
 | --- | --- | --- |
@@ -51,8 +53,6 @@ ECK can be configured using either command line flags or environment variables.
 | `webhook-name` | `"elastic-webhook.k8s.elastic.co"` | Name of the Kubernetes ValidatingWebhookConfiguration resource. Only used when `enable-webhook` is true. |
 | `webhook-secret` | `""` | K8s secret mounted into the path designated by webhook-cert-dir to be used for webhook certificates. |
 | `webhook-port` | `9443` | Port to listen for incoming validation requests. |
-
-Unless noted otherwise, environment variables can be used instead of flags to configure the operator as well. Simply convert the flag name to upper case and replace any dashes (`-`) with underscores (`_`). For example, the `log-verbosity` flag can be set by an environment variable named `LOG_VERBOSITY`.
 
 Duration values should be specified as numeric values suffixed by the time unit. For example, a duration of 10 hours should be specified as `10h`. Acceptable time unit suffixes are:
 
@@ -143,5 +143,3 @@ If you use [Operator Lifecycle Manager (OLM)](https://github.com/operator-framew
             mountPath: /conf
             readOnly: true
     ```
-
-
