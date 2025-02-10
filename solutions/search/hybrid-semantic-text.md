@@ -4,8 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text-hybrid-search.html
 ---
 
-
-
 # Hybrid search with `semantic_text` [semantic-text-hybrid-search]
 
 
@@ -13,7 +11,7 @@ This tutorial demonstrates how to perform hybrid search, combining semantic sear
 
 In hybrid search, semantic search retrieves results based on the meaning of the text, while full-text search focuses on exact word matches. By combining both methods, hybrid search delivers more relevant results, particularly in cases where relying on a single approach may not be sufficient.
 
-The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service](../inference-api/elasticsearch-inference-integration.md) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
+The recommended way to use hybrid search in the {{stack}} is following the `semantic_text` workflow. This tutorial uses the [`elasticsearch` service](inference-api/elasticsearch-inference-integration.md) for demonstration, but you can use any service and their supported models offered by the {{infer-cap}} API.
 
 
 ## Create an index mapping [hybrid-search-create-index-mapping]
@@ -55,7 +53,7 @@ In this step, you load the data that you later use to create embeddings from.
 
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
-Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest.md#upload-data-kibana) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [Data Visualizer](../../manage-data/ingest.md#upload-data-kibana) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ## Reindex the data for hybrid search [hybrid-search-reindex-data]

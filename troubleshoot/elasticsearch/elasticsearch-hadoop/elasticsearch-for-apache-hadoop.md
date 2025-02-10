@@ -1,9 +1,10 @@
 ---
+navigation_title: Apache Hadoop
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/hadoop/current/troubleshooting.html
 ---
 
-# Elasticsearch for Apache Hadoop [troubleshooting]
+# Troubleshoot Elasticsearch for Apache Hadoop [troubleshooting]
 
 Unfortunately, sometimes things do not go as expected and your elasticsearch-hadoop job execution might go awry: incorrect data might be read or written, the job might take significantly longer than expected or you might face some exception. This section tries to provide help and tips for doing your own diagnostics, identifying the problem and hopefully fixing it.
 

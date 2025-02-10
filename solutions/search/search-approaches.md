@@ -9,7 +9,7 @@ The following table provides an overview of the fundamental search techniques av
 | [**Full-text search**](full-text.md) | Traditional lexical search with analyzers and relevance tuning | Essential foundation for keyword matching, works out of the box |
 | [**Vector search**](vector.md) | Similarity search using numerical vectors | Requires extra setup/resources, ideal for finding similar documents |
 | [**Semantic search**](semantic-search.md) | Meaning-based search using natural language understanding | Requires ML models and vector infrastructure |
-| [**Hybrid search**](hybrid-search.md) | Combines lexical and vector/semantic approaches | Best balance for both keyword precision and semantic relevance |
+| [**Hybrid search**](hybrid-semantic-text.md) | Combines lexical and vector/semantic approaches | Best balance for both keyword precision and semantic relevance |
 | [**Re-ranking**](ranking/semantic-reranking.md) | Post-processing results to improve relevance | Optional ML-based enhancement for fine-tuned relevance |
 | [**Geospatial search**](/explore-analyze/geospatial-analysis.md) | Location-based search and spatial relationships | For maps, distance calculations, and shape queries |
 

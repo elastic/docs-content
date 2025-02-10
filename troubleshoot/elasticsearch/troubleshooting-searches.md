@@ -1,9 +1,10 @@
 ---
+navigation_title: Searches
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
 ---
 
-# Troubleshooting searches [troubleshooting-searches]
+# Troubleshoot searches [troubleshooting-searches]
 
 When you query your data, Elasticsearch may return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
 

@@ -7,8 +7,8 @@ Use the following quickstarts to get hands-on experience with Elasticsearch APIs
 - [Analyze eCommerce data with aggregations using Query DSL](/explore-analyze/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md): Learn how to analyze data using different types of aggregations, including metrics, buckets, and pipelines.
 % - [Getting started with ES|QL](esql-getting-started.md): Learn how to query and aggregate your data using ES|QL.
 - [Semantic search](semantic-search/semantic-search-semantic-text.md): Learn how to create embeddings for your data with `semantic_text` and query using the `semantic` query.
- - [Hybrid search](semantic-search/semantic-text-hybrid-search.md): Learn how to combine semantic search using`semantic_text` with full-text search.
-- [Bring your own dense vector embeddings](semantic-search/bring-own-vectors.md): Learn how to ingest dense vector embeddings into Elasticsearch.
+ - [Hybrid search](hybrid-semantic-text.md): Learn how to combine semantic search using`semantic_text` with full-text search.
+- [Bring your own dense vector embeddings](vector/bring-own-vectors.md): Learn how to ingest dense vector embeddings into Elasticsearch.
 
 :::{tip}
 To run the quickstarts, you need a running Elasticsearch cluster. Use [`start-local`](https://github.com/elastic/start-local) to set up a fast local dev environment in Docker, together with Kibana. Run the following command in your terminal:

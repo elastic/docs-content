@@ -1,9 +1,10 @@
 ---
+navigation_title: Transforms
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-troubleshooting.html
 ---
 
-# Troubleshooting transforms [transform-troubleshooting]
+# Troubleshoot transforms [transform-troubleshooting]
 
 Use the information in this section to troubleshoot common problems.
 

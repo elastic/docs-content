@@ -1,4 +1,5 @@
 ---
+navigation_title: Common cluster issues
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-common-cluster-issues.html
 ---
