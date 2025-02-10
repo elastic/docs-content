@@ -10,9 +10,9 @@ mapped_pages:
 1. From your dashboard, select **Add panel**.
 2. Choose **Field statistics** under **Visualizations**. An ES|QL editor appears and lets you configure your query with the fields and information that you want to show.
 
-    ::::{tip}
-    Check the [ES|QL reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-language.html) to get familiar with the syntax and optimize your query.
-    ::::
+   ::::{tip}
+   Check the [ES|QL reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-language.html) to get familiar with the syntax and optimize your query.
+   ::::
 
 3. When editing your query or its configuration, run the query to update the preview of the visualization.
 

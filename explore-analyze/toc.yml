@@ -253,7 +253,7 @@ toc:
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/_import_dashboards.md
+          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
       - file: dashboards/sharing.md
       - file: dashboards/tutorials.md
@@ -263,8 +263,8 @@ toc:
   - file: visualize.md
     children:
       - file: visualize/supported-chart-types.md
-      - file: visualize/manage-panels.md
       - file: visualize/visualize-library.md
+      - file: visualize/manage-panels.md
       - file: visualize/lens.md
       - file: visualize/esorql.md
       - file: visualize/field-statistics.md
@@ -315,6 +315,10 @@ toc:
           - file: visualize/graph/graph-configuration.md
           - file: visualize/graph/graph-troubleshooting.md
       - file: visualize/legacy-editors.md
+        children:
+          - file: visualize/legacy-editors/aggregation-based.md
+          - file: visualize/legacy-editors/tsvb.md
+          - file: visualize/legacy-editors/timelion.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/data-views.md

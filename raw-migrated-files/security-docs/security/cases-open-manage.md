@@ -243,7 +243,7 @@ Each case has a universally unique identifier (UUID) that you can copy and share
 
 ## Export and import cases [cases-export-import]
 
-Cases can be [exported](../../../solutions/security/investigate/open-manage-cases.md#cases-export) and [imported](../../../solutions/security/investigate/open-manage-cases.md#cases-import) as saved objects using the {{kib}} [Saved Objects](../../../explore-analyze/find-and-organize/saved-objects.md) UI.
+Cases can be [exported](../../../solutions/security/investigate/open-manage-cases.md#cases-export) and [imported](../../../solutions/security/investigate/open-manage-cases.md#cases-import) as saved objects using the {{kib}} [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md) UI.
 
 ::::{important}
 Before importing Lens visualizations, Timelines, or alerts into a space, ensure their data is present. Without it, they won’t work after being imported.
