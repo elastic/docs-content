@@ -31,7 +31,7 @@ This allows you to quickly check both absolute numbers and trends (tracked in pe
 
 The following screenshot shows an example **Overview** dashboard:
 
-:::{image} ../../images/elasticsearch-reference-analytics-overview-dashboard.png
+:::{image} ../../../images/elasticsearch-reference-analytics-overview-dashboard.png
 :alt: Analytics Overview dashboard showing the number of searches
 :class: screenshot
 :::
@@ -53,7 +53,7 @@ You can also easily sort in ascending or descending order by clicking on the hea
 
 The following screenshot shows the **Locations** tab of an **Explorer** dashboard, with a list of top locations in descending order:
 
-:::{image} ../../images/elasticsearch-reference-analytics-explorer-dashboard.png
+:::{image} ../../../images/elasticsearch-reference-analytics-explorer-dashboard.png
 :alt: Explorer dashboard showing the top locations in descending order
 :class: screenshot
 :::
@@ -67,7 +67,7 @@ Discover works with [data views^](../../../explore-analyze/find-and-organize/dat
 
 The following screenshot shows you where to find the data view dropdown menu in Discover:
 
-:::{image} ../../images/elasticsearch-reference-discover-data-view-analytics.png
+:::{image} ../../../images/elasticsearch-reference-discover-data-view-analytics.png
 :alt: Analytics Discover app showing the data view dropdown menu
 :class: screenshot
 :::
@@ -84,7 +84,7 @@ Discover has a lot of options, but here’s a quick overview of how to get start
 
 The following screenshot shows a Lens visualization of an `event.action` distribution:
 
-:::{image} ../../images/elasticsearch-reference-discover-lens-analytics.png
+:::{image} ../../../images/elasticsearch-reference-discover-lens-analytics.png
 :alt: Analytics Discover app showing a Lens visualization of an event action distribution
 :class: screenshot
 :::
