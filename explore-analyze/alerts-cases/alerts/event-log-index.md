@@ -16,7 +16,7 @@ Use the event log index to determine:
 * Additional information about errors when the rule ran
 * Run durations for the rules and actions
 
-## Example event log queries [_example_event_log_queries] 
+## Example event log queries [_example_event_log_queries]
 
 The following event log query looks at all events related to a specific rule id:
 

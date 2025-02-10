@@ -6,7 +6,7 @@ mapped_pages:
 
 # Set up [alerting-setup]
 
-{{kib}} {alert-features} are automatically enabled, but might require some additional configuration.
+{{kib}} {{alert-features}} are automatically enabled, but might require some additional configuration.
 
 ## Prerequisites [alerting-prerequisites]
 

@@ -303,7 +303,6 @@ toc:
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/maintenance-windows.md
       - file: docs-content/serverless/monitor-k8s-otel-edot.md
       - file: docs-content/serverless/observability-add-logs-service-name.md
       - file: docs-content/serverless/observability-aggregationOptions.md
@@ -678,7 +677,6 @@ toc:
       - file: kibana/kibana/kibana-concepts-analysts.md
       - file: kibana/kibana/kibana-role-management.md
       - file: kibana/kibana/logging-settings.md
-      - file: kibana/kibana/maintenance-windows.md
       - file: kibana/kibana/management.md
       - file: kibana/kibana/osquery.md
       - file: kibana/kibana/playground.md
