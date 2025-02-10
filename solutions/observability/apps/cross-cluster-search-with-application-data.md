@@ -9,7 +9,7 @@ mapped_pages:
 # Cross-cluster search with application data [apm-cross-cluster-search]
 
 
-Elastic APM utilizes {{es}}'s cross-cluster search functionality. Cross-cluster search lets you run a single search request against one or more [remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-remote-clusters.html) — making it easy to search APM data across multiple sources. This means you can also have deployments per data type, making sizing and scaling more predictable, and allowing for better performance while managing multiple observability use cases.
+Elastic APM utilizes {{es}}'s cross-cluster search functionality. Cross-cluster search lets you run a single search request against one or more [remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html) — making it easy to search APM data across multiple sources. This means you can also have deployments per data type, making sizing and scaling more predictable, and allowing for better performance while managing multiple observability use cases.
 
 
 ## Set up cross-cluster search [apm-set-up-cross-cluster-search]
@@ -18,9 +18,9 @@ Elastic APM utilizes {{es}}'s cross-cluster search functionality. Cross-cluster 
 
 If you’re using the Hosted {{ess}}, see [Enable cross-cluster search](../../../deploy-manage/remote-clusters/ec-enable-ccs.md).
 
-To add remote clusters directly in {{kib}}, find `Remote Clusters` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). All you need is a name for the remote cluster and the seed node(s). Remember the names of your remote clusters, you’ll need them in step two. See [managing remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started.html) for detailed information on the setup process.
+To add remote clusters directly in {{kib}}, find `Remote Clusters` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). All you need is a name for the remote cluster and the seed node(s). Remember the names of your remote clusters, you’ll need them in step two. See [managing remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html) for detailed information on the setup process.
 
-Alternatively, you can [configure remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-remote-clusters.html#configuring-remote-clusters) in {{es}}'s `elasticsearch.yml` file.
+Alternatively, you can [configure remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#configuring-remote-clusters) in {{es}}'s `elasticsearch.yml` file.
 
 **Step 2. Edit the default Applications UI {{data-sources}}.**
 

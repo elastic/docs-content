@@ -133,6 +133,6 @@ Now that you know the basics, you’re ready to explore on your own.
 
 Here are some things to try:
 
-* Play with the [sample Canvas workpads](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html).
+* Play with the [sample Canvas workpads](https://www.elastic.co/guide/en/kibana/current/get-started.html).
 * Build presentations of your own data with [workpads](../canvas.md#create-workpads).
 * Deep dive into the [expression language and functions](canvas-function-reference.md) that drive **Canvas**.
