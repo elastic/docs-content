@@ -163,6 +163,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-configuring-transform.md
               - file: machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md
               - file: machine-learning/anomaly-detection/ml-configuring-categories.md
+              - file: machine-learning/anomaly-detection/ml-configuring-populations.md
               - file: machine-learning/anomaly-detection/ml-reverting-model-snapshot.md
               - file: machine-learning/anomaly-detection/geographic-anomalies.md
               - file: machine-learning/anomaly-detection/mapping-anomalies.md
@@ -253,7 +254,7 @@ toc:
           - file: dashboards/drilldowns.md
           - file: dashboards/arrange-panels.md
           - file: dashboards/duplicate-dashboards.md
-          - file: dashboards/_import_dashboards.md
+          - file: dashboards/import-dashboards.md
       - file: dashboards/managing.md
       - file: dashboards/sharing.md
       - file: dashboards/tutorials.md
@@ -263,8 +264,8 @@ toc:
   - file: visualize.md
     children:
       - file: visualize/supported-chart-types.md
-      - file: visualize/manage-panels.md
       - file: visualize/visualize-library.md
+      - file: visualize/manage-panels.md
       - file: visualize/lens.md
       - file: visualize/esorql.md
       - file: visualize/field-statistics.md
@@ -315,6 +316,10 @@ toc:
           - file: visualize/graph/graph-configuration.md
           - file: visualize/graph/graph-troubleshooting.md
       - file: visualize/legacy-editors.md
+        children:
+          - file: visualize/legacy-editors/aggregation-based.md
+          - file: visualize/legacy-editors/tsvb.md
+          - file: visualize/legacy-editors/timelion.md
   - file: find-and-organize.md
     children:
       - file: find-and-organize/data-views.md
@@ -334,7 +339,7 @@ toc:
     children:
       - file: alerts-cases/alerts.md
         children:
-          - file: alerts-cases/alerts/alerting-getting-started.md 
+          - file: alerts-cases/alerts/alerting-getting-started.md
           - file: alerts-cases/alerts/alerting-setup.md
           - file: alerts-cases/alerts/create-manage-rules.md
           - file: alerts-cases/alerts/view-alerts.md
@@ -344,6 +349,7 @@ toc:
               - file: alerts-cases/alerts/rule-type-es-query.md
               - file: alerts-cases/alerts/geo-alerting.md
           - file: alerts-cases/alerts/rule-action-variables.md
+          - file: alerts-cases/alerts/notifications-domain-allowlist.md
           - file: alerts-cases/alerts/alerting-troubleshooting.md
             children:
               - file: alerts-cases/alerts/alerting-common-issues.md

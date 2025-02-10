@@ -5,7 +5,7 @@ mapped_pages:
 
 # Generating alerts for anomaly detection jobs [ml-configuring-alerts]
 
-{{kib}} {{alert-features}} include support for {{ml}} rules, which run scheduled checks for anomalies in one or more {{anomaly-jobs}} or check the health of the job with certain conditions. If the conditions of the rule are met, an alert is created and the associated action is triggered. For example, you can create a rule to check an {{anomaly-job}} every fifteen minutes for critical anomalies and to notify you in an email. To learn more about {{kib}} {{alert-features}}, refer to [Alerting](../../alerts-cases/alerts.md#alerting-getting-started).
+{{kib}} {{alert-features}} include support for {{ml}} rules, which run scheduled checks for anomalies in one or more {{anomaly-jobs}} or check the health of the job with certain conditions. If the conditions of the rule are met, an alert is created and the associated action is triggered. For example, you can create a rule to check an {{anomaly-job}} every fifteen minutes for critical anomalies and to notify you in an email. To learn more about {{kib}} {{alert-features}}, refer to [Alerting](../../alerts-cases/alerts/alerting-getting-started.md).
 
 The following {{ml}} rules are available:
 

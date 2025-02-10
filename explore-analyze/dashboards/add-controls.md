@@ -10,31 +10,16 @@ mapped_pages:
 There are three types of controls:
 
 * [**Options list**](#create-and-add-options-list-and-range-slider-controls) — Adds a dropdown that allows to filter data by selecting one or more values.
-
-    For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field that allows you to display only the logs generated from `osx` and `ios` operating systems.
-
-    :::{image} ../../images/kibana-dashboard_controlsOptionsList_8.7.0.png
-    :alt: Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected
-    :class: screenshot
-    :::
+  For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add an options list for the `machine.os.keyword` field that allows you to display only the logs generated from `osx` and `ios` operating systems.
+  ![Options list control for the `machine.os.keyword` field with the `osx` and `ios` options selected](../../images/kibana-dashboard_controlsOptionsList_8.7.0.png "title =50%")
 
 * [**Range slider**](#create-and-add-options-list-and-range-slider-controls) — Adds a slider that allows to filter the data within a specified range of values. This type of control only works with numeric fields.
-
-    For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field that allows you to display only the log data from 9:00AM to 5:00PM.
-
-    :::{image} ../../images/kibana-dashboard_controlsRangeSlider_8.3.0.png
-    :alt: Range slider control for the `hour_of_day` field with a range of `9` to `17` selected
-    :class: screenshot
-    :::
+  For example, if you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, you can add a range slider for the `hour_of_day` field that allows you to display only the log data from 9:00AM to 5:00PM.
+  ![Range slider control for the `hour_of_day` field with a range of `9` to `17` selected](../../images/kibana-dashboard_controlsRangeSlider_8.3.0.png "title =50%")
 
 * [**Time slider**](#add-time-slider-controls) — Adds a time range slider that allows to filter the data within a specified range of time, advance the time range backward and forward by a unit that you can define, and animate your change in data over the specified time range.
-
-    For example, you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, and the global time filter is **Last 7 days**. When you add the time slider, you can click the previous and next buttons to advance the time range backward or forward, and click the play button to watch how the data changes over the last 7 days.
-
-    :::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt672f3aaadf9ea5a6/6750dd6c2452f972af0a88b4/dashboard_timeslidercontrol_8.17.0.gif
-    :alt: Time slider control for the the Last 7 days
-    :class: screenshot
-    :::
+  For example, you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, and the global time filter is **Last 7 days**. When you add the time slider, you can click the previous and next buttons to advance the time range backward or forward, and click the play button to watch how the data changes over the last 7 days.
+  ![Time slider control for the the Last 7 days](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt672f3aaadf9ea5a6/6750dd6c2452f972af0a88b4/dashboard_timeslidercontrol_8.17.0.gif)
 
 
 
@@ -44,19 +29,14 @@ To add interactive Options list and Range slider controls, create the controls, 
 
 1. Open or create a new dashboard.
 2. In **Edit** mode, select **Controls** > **Add control** in the dashboard toolbar.
-
-    :::{image} ../../images/kibana-dashboard-add-control-8.15.0.png
-    :alt: Controls button in the toolbar with the Add Control option selected
-    :class: screenshot
-    :::
+   ![Controls button in the toolbar with the Add Control option selected](../../images/kibana-dashboard-add-control-8.15.0.png "title =60%")
 
 3. On the **Create control** flyout, from the **Data view** dropdown, select the data view that contains the field you want to use for the **Control**.
 4. In the **Field** list, select the field you want to filter on.
 5. Under **Control type**, select whether the control should be an **Options list** or a **Range slider**.
-
-    ::::{tip}
-    Range sliders are for Number type fields only.
-    ::::
+   ::::{tip}
+   Range sliders are for Number type fields only.
+   ::::
 
 6. Define how you want the control to appear:
 
@@ -75,9 +55,9 @@ To add interactive Options list and Range slider controls, create the controls, 
             * **Contains**: Show options that *contain* the entered value. This setting option is only available for *string* type fields. Results can take longer to show with this option.
             * **Exact**: Show options that are a 100% match with the entered value.
 
-                ::::{tip}
-                The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
-                ::::
+              ::::{tip}
+              The search is not case sensitive. For example, searching for `ios` would still retrieve `iOS` if that value exists.
+              ::::
 
         * **Ignore timeout for results** delays the display of the list of values to when it is fully loaded. This option is useful for large data sets, to avoid missing some available options in case they take longer to load and appear when using the control.
 
@@ -94,11 +74,7 @@ You can add one interactive time slider control to a dashboard.
 
 1. Open or create a new dashboard.
 2. In **Edit** mode, select **Controls** > **Add time slider control**.
-
-    :::{image} ../../images/kibana-dashboard-add-time-slider-control-8.15.0.png
-    :alt: Controls button in the toolbar with the Add a time slider option selected
-    :class: screenshot
-    :::
+   ![Controls button in the toolbar with the Add a time slider option selected](../../images/kibana-dashboard-add-time-slider-control-8.15.0.png "title =50%")
 
 3. The time slider control uses the time range from the global time filter. To change the time range in the time slider control, [change the global time filter](../query-filter/filtering.md).
 4. Save the dashboard. The control can now be used.
@@ -109,11 +85,7 @@ You can add one interactive time slider control to a dashboard.
 Several settings that apply to all controls of the same dashboard are available.
 
 1. In **Edit** mode, select **Controls** > **Settings**.
-
-    :::{image} ../../images/kibana-dashboard-controls-settings-8.15.0.png
-    :alt: Controls button in the toolbar with the Settings option selected
-    :class: screenshot
-    :::
+   ![Controls button in the toolbar with the Settings option selected](../../images/kibana-dashboard-controls-settings-8.15.0.png "title =60%")
 
 2. On the **Control settings** flyout, configure the following settings:
 

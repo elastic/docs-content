@@ -1,9 +1,10 @@
 ---
+navigation_title: Corrupted repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-corrupted-repositories.html
 ---
 
-# Diagnosing corrupted repositories [diagnosing-corrupted-repositories]
+# Diagnose corrupted repositories [diagnosing-corrupted-repositories]
 
 Multiple {{es}} deployments are writing to the same snapshot repository. {{es}} doesn’t support this configuration and only one cluster is allowed to write to the same repository. See [Repository contents](../../deploy-manage/tools/snapshot-and-restore.md#snapshot-repository-contents) for potential side-effects of corruption of the repository contents, which may not be resolved by the following guide. To remedy the situation mark the repository as read-only or remove it from all the other deployments, and re-add (recreate) the repository in the current deployment:
 

@@ -5,7 +5,7 @@
 Access to individual features is governed by {{es}} and {{kib}} privileges. Consult your administrator if you do not have the appropriate access.
 
 
-## Ingest [manage-ingest] 
+## Ingest [manage-ingest]
 
 |     |     |
 | --- | --- |
@@ -13,7 +13,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 | [Logstash Pipelines](https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html) | Create, edit, and delete your Logstash pipeline configurations. |
 
 
-## Data [manage-data] 
+## Data [manage-data]
 
 |     |     |
 | --- | --- |
@@ -22,11 +22,11 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 | [Snapshot and Restore](../../../deploy-manage/tools/snapshot-and-restore.md) | Define a policy that creates, schedules, and automatically deletes snapshots to ensure that youhave backups of your cluster in case something goes wrong. |
 | [Rollup Jobs](../../../manage-data/lifecycle/rollup.md) | [8.11.0] Create a job that periodically aggregates data from one or more indices, and thenrolls it into a new, compact index. Rollup indices are a good way to store months oryears of historical data in combination with your raw data. |
 | [Transforms](../../../explore-analyze/transforms.md) | Use transforms to pivot existing {{es}} indices into summarized or entity-centric indices. |
-| [Cross-Cluster Replication](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started.html) | Replicate indices on a remote cluster and copy them to a follower index on a local cluster.This is important fordisaster recovery. It also keeps data local for faster queries. |
-| [Remote Clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started.html#ccr-getting-started-remote-cluster) | Manage your remote clusters for use with cross-cluster search and cross-cluster replication.You can add and remove remote clusters, and check their connectivity. |
+| [Cross-Cluster Replication](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html) | Replicate indices on a remote cluster and copy them to a follower index on a local cluster.This is important fordisaster recovery. It also keeps data local for faster queries. |
+| [Remote Clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html#ccr-getting-started-remote-cluster) | Manage your remote clusters for use with cross-cluster search and cross-cluster replication.You can add and remove remote clusters, and check their connectivity. |
 
 
-## Alerts and Insights [manage-alerts-insights] 
+## Alerts and Insights [manage-alerts-insights]
 
 |     |     |
 | --- | --- |
@@ -39,7 +39,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 | [Maintenance windows](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md) | Suppress rule notifications for scheduled periods of time. |
 
 
-## Security [manage-security] 
+## Security [manage-security]
 
 |     |     |
 | --- | --- |
@@ -49,19 +49,19 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 | [Role Mappings](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) | Assign roles to your users using a set of rules. Role mappings are requiredwhen authenticating via an external identity provider, such as Active Directory,Kerberos, PKI, OIDC, and SAML. |
 
 
-## {{kib}} [manage-kibana] 
+## {{kib}} [manage-kibana]
 
 |     |     |
 | --- | --- |
 | [Data Views](../../../explore-analyze/find-and-organize/data-views.md) | Manage the fields in the data views that retrieve your data from {{es}}. |
-| [Saved Objects](../../../explore-analyze/find-and-organize/saved-objects.md) | Copy, edit, delete, import, and export your saved objects.These include dashboards, visualizations, maps, data views, Canvas workpads, and more. |
+| [Saved Objects](/explore-analyze/find-and-organize/saved-objects.md) | Copy, edit, delete, import, and export your saved objects.These include dashboards, visualizations, maps, data views, Canvas workpads, and more. |
 | [Tags](../../../explore-analyze/find-and-organize/tags.md) | Create, manage, and assign tags to your saved objects. |
 | [Search Sessions](../../../explore-analyze/discover/search-sessions.md) | Manage your saved search sessions, groups of queries that run in the background.Search sessions are useful when your queries take longer than usual to process,for example, when you have a large volume of data or when the performance of your storage location is slow. |
 | [Spaces](../../../deploy-manage/manage-spaces.md) | Create spaces to organize your dashboards and other saved objects into categories.A space is isolated from all other spaces,so you can tailor it to your needs without impacting others. |
 | [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html) | Customize {{kib}} to suit your needs. Change the format for displaying dates, turn on dark mode,set the timespan for notification messages, and much more. |
 
 
-## Stack [manage-stack] 
+## Stack [manage-stack]
 
 |     |     |
 | --- | --- |

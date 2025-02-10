@@ -71,7 +71,7 @@ es-secondary-authorization: ApiKey <TOKEN> <1>
 For more information about using {{security-features}} with the language specific clients, refer to:
 
 * [Java](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/_basic_authentication.html)
-* [JavaScript](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/auth-reference.html)
+* [JavaScript](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/client-connecting.html)
 * [.NET](https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/configuration.html)
 * [Perl](https://metacpan.org/pod/Search::Elasticsearch::Cxn::HTTPTiny#CONFIGURATION)
 * [PHP](https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/connecting.html)

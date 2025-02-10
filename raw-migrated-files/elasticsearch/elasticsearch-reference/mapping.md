@@ -45,7 +45,7 @@ It’s often useful to index the same field in different ways for different purp
 ::::
 
 
-Use [runtime fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html) to make schema changes without reindexing. You can use runtime fields in conjunction with indexed fields to balance resource usage and performance. Your index will be smaller, but with slower search performance.
+Use [runtime fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-mapping-fields.html) to make schema changes without reindexing. You can use runtime fields in conjunction with indexed fields to balance resource usage and performance. Your index will be smaller, but with slower search performance.
 
 
 ## Managing and updating mappings [mapping-manage-update]

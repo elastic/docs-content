@@ -35,7 +35,7 @@ Elasticsearch Add-On for Heroku supports the following `elasticsearch.yml` setti
 The following general settings are supported:
 
 $$$http-cors-settings$$$`http.cors.*`
-:   Enables cross-origin resource sharing (CORS) settings for the [HTTP module](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-http.html).
+:   Enables cross-origin resource sharing (CORS) settings for the [HTTP module](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html).
 
     ::::{note}
     If your use case depends on the ability to receive CORS requests and you have a cluster that was provisioned prior to January 25th 2019, you must manually set `http.cors.enabled` to `true` and allow a specific set of hosts with `http.cors.allow-origin`. Applying these changes in your Elasticsearch configuration  allows cross-origin resource sharing requests.
@@ -43,13 +43,13 @@ $$$http-cors-settings$$$`http.cors.*`
 
 
 `http.compression`
-:   Support for [HTTP compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-http.html) when possible (with Accept-Encoding). Defaults to `true`.
+:   Support for [HTTP compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) when possible (with Accept-Encoding). Defaults to `true`.
 
 `transport.compress`
-:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-transport.html) for node-to-node traffic.
+:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for node-to-node traffic.
 
 `transport.compression_scheme`
-:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-transport.html) for node-to-node traffic.
+:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for node-to-node traffic.
 
 `repositories.url.allowed_urls`
 :   Enables explicit allowing of [read-only URL repositories](../../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md).
@@ -197,16 +197,16 @@ The following search settings are supported:
 The following disk-based allocation settings are supported:
 
 `cluster.routing.allocation.disk.threshold_enabled`
-:   Enable or disable [disk allocation](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html) decider and defaults to `true`.
+:   Enable or disable [disk allocation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation) decider and defaults to `true`.
 
 `cluster.routing.allocation.disk.watermark.low`
-:   Configures [disk-based shard allocation’s low watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html).
+:   Configures [disk-based shard allocation’s low watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
 
 `cluster.routing.allocation.disk.watermark.high`
-:   Configures [disk-based shard allocation’s high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html).
+:   Configures [disk-based shard allocation’s high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
 
 `cluster.routing.allocation.disk.watermark.flood_stage`
-:   Configures [disk-based shard allocation’s flood_stage](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html).
+:   Configures [disk-based shard allocation’s flood_stage](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
 
 ::::{tip}
 Remember to update user settings for alerts when performing a major version upgrade.

@@ -52,7 +52,7 @@ The Events table includes inline actions and several customization options. To l
 
 * **Flows**: Source and destination IP addresses and countries.
 * **DNS**: DNS network queries.
-* **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](https://www.elastic.co/guide/en/kibana/current/apm-getting-started.html) are monitored by default).
+* **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](https://www.elastic.co/guide/en/observability/current/apm.html) are monitored by default).
 * **TLS**: Handshake details.
 * **Anomalies**: Anomalies discovered by [machine learning jobs](../../../solutions/security/advanced-entity-analytics/anomaly-detection.md).
 

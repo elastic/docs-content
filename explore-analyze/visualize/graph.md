@@ -49,19 +49,20 @@ Use **Graph** to reveal the relationships in your data.
 
 2. Select the data source that you want to explore.
 
-    {{kib}} graphs the relationships between the top fields.
+   {{kib}} graphs the relationships between the top fields.
 
-    :::{image} ../../images/kibana-graph-url-connections.png
-    :alt: URL connections
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-graph-url-connections.png
+   :alt: URL connections
+   :class: screenshot
+   :::
 
 3. Add more fields, or click an existing field to edit, disable or deselect it.
 
-    :::{image} ../../images/kibana-graph-menu.png
-    :alt: menu for editing, disabling, or removing a field from the graph
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-graph-menu.png
+   :alt: menu for editing, disabling, or removing a field from the graph
+   :class: screenshot
+   :width: 50%
+   :::
 
 4. Enter a query to discover relationships between terms in the selected fields.
 
@@ -69,10 +70,11 @@ Use **Graph** to reveal the relationships in your data.
 
 5. To view more information about a relationship, click any connection or vertex.
 
-    :::{image} ../../images/kibana-graph-control-bar.png
-    :alt: Graph toolbar
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-graph-control-bar.png
+   :alt: Graph toolbar
+   :class: screenshot
+   :width: 50%
+   :::
 
 6. Use the graph toolbar to display additional connections:
 

@@ -34,7 +34,7 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 There are a few limitations to consider before you create this type of job:
 
 1. You cannot create forecasts for {{anomaly-jobs}} that contain geographic functions.
-2. You cannot add [custom rules with conditions](https://www.elastic.co/guide/en/machine-learning/current/ml-rules.html) to detectors that use geographic functions.
+2. You cannot add [custom rules with conditions](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-rules) to detectors that use geographic functions.
 
 If those limitations are acceptable, try creating an {{anomaly-job}} that uses the [`lat_long` function](https://www.elastic.co/guide/en/machine-learning/current/ml-geo-functions.html#ml-lat-long) to analyze your own data or the sample data sets.
 
@@ -201,7 +201,7 @@ You can also view the anomaly in **Maps** by clicking **View in Maps** in the ac
 
 When you try this type of {{anomaly-job}} with your own data, it might take some experimentation to find the best combination of buckets, detectors, and influencers to detect the type of behavior you’re seeking.
 
-For more information about {{anomaly-detect}} concepts, see [Concepts](https://www.elastic.co/guide/en/machine-learning/current/ml-concepts.html). For the full list of functions that you can use in {{anomaly-jobs}}, see [*Function reference*](ml-functions.md). For more {{anomaly-detect}} examples, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-examples.html).
+For more information about {{anomaly-detect}} concepts, see [Concepts](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html). For the full list of functions that you can use in {{anomaly-jobs}}, see [*Function reference*](ml-functions.md). For more {{anomaly-detect}} examples, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html).
 
 ## Add anomaly layers to your maps [geographic-anomalies-map-layer]
 

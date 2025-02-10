@@ -7,7 +7,7 @@ mapped_pages:
 
 Dashboards are the best way to visualize and share insights from your {{es}} data.
 
-A **dashboard** is made of one or more **panels** that you can organize as you like. Each panel can display various types of content: *visualizations* such as charts, tables, metrics, and maps, *static annotations* like text or images, or even *specialized views* for Machine Learning or Observability data.
+A **dashboard** is made of one or more **panels** that you can organize as you like. Each panel can display various types of content: **visualizations** such as charts, tables, metrics, and maps, **static annotations** like text or images, or even **specialized views** for Machine Learning or Observability data.
 
 ![Example dashboard](../images/kibana-dashboard-overview.png "")
 

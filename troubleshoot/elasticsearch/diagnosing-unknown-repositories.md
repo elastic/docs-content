@@ -1,9 +1,10 @@
 ---
+navigation_title: Unknown repositories
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnosing-unknown-repositories.html
 ---
 
-# Diagnosing unknown repositories [diagnosing-unknown-repositories]
+# Diagnose unknown repositories [diagnosing-unknown-repositories]
 
 When a snapshot repository is marked as "unknown", it means that an {{es}} node is unable to instantiate the repository due to an unknown repository type. This is usually caused by a missing plugin on the node. Make sure each node in the cluster has the required plugins by following the following steps:
 

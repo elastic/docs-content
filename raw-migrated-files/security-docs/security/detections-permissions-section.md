@@ -14,7 +14,7 @@ Additionally, there are some [advanced settings](../../../solutions/security/det
 
 These steps are only required for **self-managed** deployments:
 
-* HTTPS must be configured for communication between [{{es}} and {{kib}}](https://www.elastic.co/guide/en/kibana/current/configuring-tls.html#configuring-tls-kib-es).
+* HTTPS must be configured for communication between [{{es}} and {{kib}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http).
 * In the `elasticsearch.yml` configuration file, set the `xpack.security.enabled` setting to `true`. For more information, refer to [Configuring {{es}}](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md) and [Security settings in {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html).
 * In the `kibana.yml` [configuration file](../../../deploy-manage/deploy/self-managed/configure.md), add the `xpack.encryptedSavedObjects.encryptionKey` setting with any alphanumeric value of at least 32 characters. For example:
 

@@ -18,7 +18,7 @@ Inspecting requests is available for the following UIs:
 
 * Applications
 * Uptime
-* {user-experience}
+* {{user-experience}}
 
 
 ## Enable inspect [inspect-enable]
@@ -57,7 +57,7 @@ Hits
 Hits (total)
 :   The number of documents that match the query.
 
-{data-source-cap}
+{{data-source-cap}}
 :   The {{data-source}} that connected to the {{es}} indices.
 
 {{kib}} API query parameters

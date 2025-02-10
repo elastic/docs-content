@@ -38,7 +38,7 @@ On the {{observability}} **Overview** page, the **Hosts** table shows your top h
 
 You can then drill down into the {{infrastructure-app}} by clicking **Show inventory**. Here you can monitor and filter your data by hosts, pods, containers,or EC2 instances and create custom groupings such as availability zones or namespaces.
 
-For more information, see [Infrastructure Monitoring](https://www.elastic.co/guide/en/observability/current/analyze-metrics.html).
+For more information, see [Infrastructure Monitoring](https://www.elastic.co/guide/en/observability/current/monitor-infrastructure-and-hosts.html).
 
 
 ## Real user monitoring (RUM) [user-experience-overview]

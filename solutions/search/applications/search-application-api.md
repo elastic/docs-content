@@ -367,7 +367,7 @@ POST _application/search_application/my-search-app/_search
 
 ### Text search + ELSER [search-application-api-catchall-template] 
 
-The Elastic Learned Sparse EncodeR ([ELSER](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) improves search relevance through text-expansion, which enables semantic search. This experimental template requires ELSER to be enabled for one or more fields. Refer to [Semantic search with ELSER](../vector/sparse-vector-elser.md) for more information on how to use ELSER. In this case, ELSER is enabled on the `title` and `description` fields.
+The Elastic Learned Sparse EncodeR ([ELSER](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) improves search relevance through text-expansion, which enables semantic search. This experimental template requires ELSER to be enabled for one or more fields. Refer to [Semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) for more information on how to use ELSER. In this case, ELSER is enabled on the `title` and `description` fields.
 
 This example provides a single template that you can use for various search application scenarios: text search, ELSER, or all of the above. It also provides a simple default `query_string` query if no parameters are specified.
 
