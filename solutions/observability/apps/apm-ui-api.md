@@ -61,7 +61,7 @@ curl -X POST \
 
 ## Kibana API [kibana-api] 
 
-In addition to the APM specific API endpoints, Kibana provides its own [REST API](https://www.elastic.co/guide/en/observability/current/api.html) which you can use to automate certain aspects of configuring and deploying Kibana.
+In addition to the APM specific API endpoints, Kibana provides its own [REST API](https://www.elastic.co/guide/en/observability/current/apm-api.html) which you can use to automate certain aspects of configuring and deploying Kibana.
 
 
 

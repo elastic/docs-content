@@ -13,7 +13,7 @@ applies:
 
 If you enable the Elastic {{monitor-features}} in your cluster, you can optionally collect metrics about {{kib}}.
 
-::::{important} 
+::::{important}
 {{agent}} and {{metricbeat}} are the recommended methods for collecting and shipping monitoring data to a monitoring cluster.
 
 If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}} collection. Do not use legacy collection alongside other collection methods.
@@ -29,7 +29,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
 1. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is is disabled (`false`).
 
-    ::::{note} 
+    ::::{note}
     You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{stack-security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
     ::::
 
@@ -64,7 +64,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 2. Verify that `monitoring.enabled` and `monitoring.kibana.collection.enabled` are set to `true` in the `kibana.yml` file. These are the default values. For more information, see [Monitoring settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/monitoring-settings-kb.html).
 3. Identify where to send monitoring data. {{kib}} automatically sends metrics to the {{es}} cluster specified in the `elasticsearch.hosts` setting in the `kibana.yml` file. This property has a default value of `http://localhost:9200`.<br>
 
-    ::::{tip} 
+    ::::{tip}
     In production environments, we strongly recommend using a separate cluster (referred to as the *monitoring cluster*) to store the data. Using a separate monitoring cluster prevents production cluster outages from impacting your ability to access your monitoring data. It also prevents monitoring activities from impacting the performance of your production cluster.
 
     If {{security-features}} are enabled on the production cluster, use an HTTPS URL such as `https://<your_production_cluster>:9200` in this setting.
@@ -74,7 +74,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 4. If {{security-features}} are enabled on the production cluster:
 
     1. Verify that there is a valid user ID and password in the `elasticsearch.username` and `elasticsearch.password` settings in the `kibana.yml` file. These values are used when {{kib}} sends monitoring data to the production cluster.
-    2. [Configure encryption for traffic between {{kib}} and {{es}}](https://www.elastic.co/guide/en/kibana/current/configuring-tls.html#configuring-tls-kib-es).
+    2. [Configure encryption for traffic between {{kib}} and {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http).
 
 5. [Start {{kib}}](../../maintenance/start-stop-services/start-stop-kibana.md).
 6. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).

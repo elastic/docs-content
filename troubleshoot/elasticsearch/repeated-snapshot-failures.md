@@ -1,9 +1,10 @@
 ---
+navigation_title: Snapshot policy failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repeated-snapshot-failures.html
 ---
 
-# Addressing repeated snapshot policy failures [repeated-snapshot-failures]
+# Fix repeated snapshot policy failures [repeated-snapshot-failures]
 
 Repeated snapshot failures are usually an indicator of a problem with your deployment. Continuous failures of automated snapshots can leave a deployment without recovery options in cases of data loss or outages.
 

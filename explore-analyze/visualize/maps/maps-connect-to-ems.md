@@ -481,9 +481,9 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 1. Pull the {{hosted-ems}} Docker image.
 
-    ::::{warning}
-    Version 9.0.0-beta1 of {{hosted-ems}} has not yet been released. No Docker image is currently available for this version.
-    ::::
+   ::::{warning}
+   Version 9.0.0-beta1 of {{hosted-ems}} has not yet been released. No Docker image is currently available for this version.
+   ::::
 
 
     ```bash
@@ -516,10 +516,10 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
     Once {{hosted-ems}} is running, follow instructions from the webpage at `localhost:8080` to define a configuration file and optionally download a more detailed basemaps database.
 
-    :::{image} ../../../images/kibana-elastic-maps-server-instructions.png
-    :alt: Set-up instructions
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-elastic-maps-server-instructions.png
+   :alt: Set-up instructions
+   :class: screenshot
+   :::
 
 
 

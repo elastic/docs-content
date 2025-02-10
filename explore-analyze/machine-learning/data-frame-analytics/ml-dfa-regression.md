@@ -437,7 +437,7 @@ You can also see the {{feat-imp}} values for each individual prediction in the f
 
 The decision path starts at a baseline, which is the average of the predictions for all the data points in the training data set. From there, the feature importance values are added to the decision path until it arrives at its final prediction. The features with the most significant positive or negative impact appear at the top. Thus in this example, the features related to the flight distance had the most significant influence on this particular predicted flight delay. This type of information can help you to understand how models arrive at their predictions. It can also indicate which aspects of your data set are most influential or least useful when you are training and tuning your model.
 
-If you do not use {{kib}}, you can see summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-inference.html) and the individual values by searching the destination index.
+If you do not use {{kib}}, you can see summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html) and the individual values by searching the destination index.
 
 ::::{dropdown} API example
 ```console

@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.html
 ---
 
 # Restore snapshots containing searchable snapshots indices across clusters [ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters]
@@ -22,7 +23,7 @@ Pre-requisites for restoring snapshots containing searchable snapshot indices ac
     Previous versions had issues restoring the snapshot or recovering searchable snapshot indices in case of, for example, node failure.
 
 
-::::{important} 
+::::{important}
 The snapshot in the source cluster MUST NOT be deleted even after being successfully restored in the destination cluster. In fact, that’s also the case for the searchable snapshots in the source cluster for which there were indices backed by the restored snapshot. These snapshots are required for recovery of the searchable snapshot indices in case of, for example, node failure.
 
 This means that until you delete the searchable snapshot indices in the destination cluster, you must not delete your source deployment, delete the restored snapshot, or delete any of the searchable snapshots used by the searchable snapshot indices.

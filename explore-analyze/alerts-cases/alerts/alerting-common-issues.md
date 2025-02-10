@@ -7,7 +7,6 @@ mapped_pages:
 
 This page describes how to resolve common problems you might encounter with Alerting.
 
-
 ## Rules with small check intervals run late [rules-small-check-interval-run-late]
 
 **Problem**
@@ -21,7 +20,6 @@ Rules run as background tasks at a cadence defined by their **check interval**. 
 Either tweak the [{{kib}} Task Manager settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) or increase the **check interval** of the rules in question.
 
 For more details, see [Tasks with small schedule intervals run late](../../../troubleshoot/kibana/task-manager.md#task-manager-health-scheduled-tasks-small-schedule-interval-run-late).
-
 
 ## Rules with the inconsistent cadence [scheduled-rules-run-late]
 
@@ -39,7 +37,6 @@ Alerting tasks always begin with `alerting:`. For example, the `alerting:.index-
 
 For more details on monitoring and diagnosing tasks in Task Manager, refer to [Health monitoring](../../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md).
 
-
 ## Connectors have TLS errors when running actions [connector-tls-settings]
 
 **Problem**
@@ -49,7 +46,6 @@ A connector gets a TLS socket error when connecting to the server to run an acti
 **Solution**
 
 Configuration options are available to specialize connections to TLS servers, including ignoring server certificate validation and providing certificate authority data to verify servers using custom certificates. For more details, see [Action settings](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html#action-settings).
-
 
 ## Rules take a long time to run [rules-long-run-time]
 
@@ -61,7 +57,6 @@ Rules are taking a long time to run and are impacting the overall health of your
 By default, only users with a `superuser` role can query the [preview] {{kib}} event log because it is a system index. To enable additional users to run this query, assign `read` privileges to the `.kibana-event-log*` index.
 
 ::::
-
 
 **Solution**
 
@@ -157,7 +152,6 @@ GET /.kibana-event-log*/_search
 4. This interval buckets the `event.duration_in_seconds` runtime field into 1 second intervals. Update this value to change the granularity of the buckets. If you are unable to use runtime fields, make sure this aggregation targets `event.duration` and use nanoseconds for the interval.
 5. This retrieves the top 10 rule ids for this duration interval. Update this value to retrieve more rule ids.
 
-
 This query returns the following:
 
 ```json
@@ -232,9 +226,7 @@ This query returns the following:
 1. Most run durations fall within the first bucket (0 - 1 seconds).
 2. A single rule with id `41893910-6bca-11eb-9e0d-85d233e3ee35` took between 30 and 31 seconds to run.
 
-
 Use the get rule API to retrieve additional information about rules that take a long time to run.
-
 
 ## Rule cannot decrypt API key [rule-cannot-decrypt-api-key]
 
@@ -251,7 +243,6 @@ This error happens when the `xpack.encryptedSavedObjects.encryptionKey` value us
 | If the value in `xpack.encryptedSavedObjects.encryptionKey` was manually changed, and the previous encryption key is still known. | Ensure any previous encryption key is included in the keys used for [decryption only](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#xpack-encryptedSavedObjects-keyRotation-decryptionOnlyKeys). |
 | If another {{kib}} instance with a different encryption key connects to the cluster. | The other {{kib}} instance might be trying to run the rule using a different encryption key than what the rule was created with. Ensure the encryption keys among all the {{kib}} instances are the same, and setting [decryption only keys](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#xpack-encryptedSavedObjects-keyRotation-decryptionOnlyKeys) for previously used encryption keys. |
 | If other scenarios don’t apply. | Generate a new API key for the rule. For example, in **{{stack-manage-app}} > {{rules-ui}}**, select **Update API key** from the action menu. |
-
 
 ## Rules stop running after upgrade [known-issue-upgrade-rule]
 

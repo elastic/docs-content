@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-server-es-down.html
 ---
 
-# What happens when APM Server or Elasticsearch is down? [apm-server-es-down]
+# APM Server or Elasticsearch is down [apm-server-es-down]
 
 **If {{es}} is down**
 

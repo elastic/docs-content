@@ -51,10 +51,10 @@ To edit links panels:
 1. Hover over the panel and click ![Edit links icon](../../images/kibana-edit-visualization-icon.png "") to edit the link. The **Edit links panel** flyout appears.
 2. Click ![Edit link icon](../../images/kibana-edit-link-icon.png "") next to the link.
 
-    :::{image} ../../images/kibana-edit-links-panel.png
-    :alt: A screenshot displaying the Edit icon next to the link
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-edit-links-panel.png
+   :alt: A screenshot displaying the Edit icon next to the link
+   :class: screenshot
+   :::
 
 3. Edit the link as needed and then click **Update link**.
 4. Click **Save**.

@@ -62,7 +62,7 @@ When past behavior on a hot tier indicates that the influx of data can increase 
 
 * Through ILM  policies. For example, if a deployment has only hot nodes and autoscaling is enabled, it automatically creates warm or cold nodes, if an ILM policy is trying to move data from hot to warm or cold nodes.
 
-On machine learning nodes, scaling is determined by an estimate of the memory and CPU requirements for the currently configured jobs and trained models. When a new machine learning job tries to start, it looks for a node with adequate native memory and CPU capacity. If one cannot be found, it stays in an `opening` state. If this waiting job exceeds the queueing limit set in the machine learning decider, a scale up is requested. Conversely, as machine learning jobs run, their memory and CPU usage might decrease or other running jobs might finish or close. In this case, if the duration of decreased resource usage exceeds the set value for `down_scale_delay`, a scale down is requested. Check [Machine learning decider](autoscaling-deciders.md) for more detail. To learn more about machine learning jobs in general, check [Create anomaly detection jobs](https://www.elastic.co/guide/en/machine-learning/current/create-jobs.html).
+On machine learning nodes, scaling is determined by an estimate of the memory and CPU requirements for the currently configured jobs and trained models. When a new machine learning job tries to start, it looks for a node with adequate native memory and CPU capacity. If one cannot be found, it stays in an `opening` state. If this waiting job exceeds the queueing limit set in the machine learning decider, a scale up is requested. Conversely, as machine learning jobs run, their memory and CPU usage might decrease or other running jobs might finish or close. In this case, if the duration of decreased resource usage exceeds the set value for `down_scale_delay`, a scale down is requested. Check [Machine learning decider](autoscaling-deciders.md) for more detail. To learn more about machine learning jobs in general, check [Create anomaly detection jobs](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html).
 
 On a highly available deployment, autoscaling events are always applied to instances in each availability zone simultaneously, to ensure consistency.
 
@@ -79,7 +79,7 @@ A warning is also issued in the ECE `service-constructor` logs with the field `l
 The following are known limitations and restrictions with autoscaling:
 
 * Autoscaling will not run if the cluster is unhealthy or if the last Elasticsearch plan failed.
-* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API](https://www.elastic.co/guide/en/cloud-enterprise/current/set-all-instances-settings-overrides.html), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
+* In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
 
 
 ## Enable or disable autoscaling [ece-autoscaling-enable]

@@ -97,7 +97,7 @@ The job uses *buckets* to divide the time series into batches for processing. Fo
 
 Each {{anomaly-job}} contains one or more *detectors*, which define the type of analysis that occurs (for example, `max`, `average`, or `rare` analytical functions) and the fields that are analyzed. Some of the analytical functions look for single anomalous data points. For example, `max` identifies the maximum value that is seen within a bucket. Others perform some aggregation over the length of the bucket. For example, `mean` calculates the mean of all the data points seen within the bucket.
 
-For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [Buckets](https://www.elastic.co/guide/en/machine-learning/current/ml-buckets.html), and [*Function reference*](ml-functions.md).
+For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [Buckets](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-create-job), and [*Function reference*](ml-functions.md).
 
 ::::
 
@@ -317,7 +317,7 @@ If you’re now thinking about where {{anomaly-detect}} can be most impactful fo
 2. It should be information that contains key performance indicators for the health, security, or success of your business or system. The better you know the data, the quicker you will be able to create jobs that generate useful insights.
 3. Ideally, the data is located in {{es}} and you can therefore create a {{dfeed}} that retrieves data in real time.  If your data is outside of {{es}}, you cannot use {{kib}} to create your jobs and you cannot use {{dfeeds}}.
 
-In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-examples.html).
+In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html).
 
 If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apache.html) and [Nginx](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-nginx.html) that are quite similar to the examples in this tutorial.
 

@@ -18,11 +18,6 @@ You can also optionally add custom fields and case templates. [preview]
 If you create cases in the {{observability}} or {{security-app}}, they are not visible in **{{stack-manage-app}}**. Likewise, the cases you create in **{{stack-manage-app}}** are not visible in the {{observability}} or {{security-app}}. You also cannot attach alerts from the {{observability}} or {{security-app}} to cases in **{{stack-manage-app}}**.
 ::::
 
-
 * [Configure access to cases](cases/setup-cases.md)
 * [Open and manage cases](cases/manage-cases.md)
 * [Configure case settings](cases/manage-cases-settings.md)
-
-
-
-

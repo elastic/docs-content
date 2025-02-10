@@ -31,7 +31,7 @@ A *workpad* provides you with a space where you can build presentations of your 
 To create workpads, you must meet the minimum requirements.
 
 * If you need to set up {{kib}}, use [our free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs).
-* Make sure you have [data indexed into {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-index.html) and a [data view](../find-and-organize/data-views.md).
+* Make sure you have [data indexed into {{es}}](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-general-purpose.html#gp-gs-add-data) and a [data view](../find-and-organize/data-views.md).
 * Have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 * Make sure you have sufficient privileges to create and save workpads. When the read-only indicator appears, you have insufficient privileges, and the options to create and save workpads are unavailable. For more information, refer to [Granting access to {{kib}}](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
@@ -89,7 +89,7 @@ Choose the type of element you want to use, then use the preconfigured demo data
 
     * **{{es}} SQL** — Access your data in {{es}} using [SQL syntax](../query-filter/languages/sql-spec.md).
     * **{{es}} documents** — Access your data in {{es}} without using aggregations. To use, select a {{data-source}} and fields. Use **{{es}} documents** when you have low-volume datasets, and you want to view raw documents or to plot exact, non-aggregated values on a chart.
-    * **Timelion** — Access your time series data using [**Timelion**](legacy-editors.md#timelion) queries. To use **Timelion** queries, you can enter a query using the [Lucene Query Syntax](../query-filter/languages/lucene-query-syntax.md).
+    * **Timelion** — Access your time series data using [**Timelion**](legacy-editors/timelion.md) queries. To use **Timelion** queries, you can enter a query using the [Lucene Query Syntax](../query-filter/languages/lucene-query-syntax.md).
 
         Each element can display a different {{data-source}}, and pages and workpads often contain multiple {{data-sources}}.
 

@@ -1,7 +1,10 @@
 ---
+navigation_title: Total number of shards per node reached
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-cluster-shard-limit.html
 ---
+
+% marciw move to a new Unassigned shards subsection
 
 # Total number of shards per node has been reached [increase-cluster-shard-limit]
 

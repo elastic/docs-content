@@ -1,4 +1,5 @@
 ---
+navigation_title: Red or yellow health status
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/red-yellow-cluster-status.html
 ---

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-change-login-method.html
+applies:
+  serverless: all
+  hosted: all
 ---
 
 # Add a login method [ec-change-login-method]
@@ -19,8 +22,7 @@ To enable password-based login in addition to Google or Microsoft sign-in, go to
 
 After you create a password, log in. You’ll be prompted to [enable multifactor authentication](multifactor-authentication.md).
 
-You will now be able to change the email address in your [user settings](https://cloud.elastic.co/user/settings).
-
+You will now be able to change the email address in your [user settings](https://cloud.elastic.co/user/settings). Refer to [Update your email address](/cloud-account/update-your-email-address.md) for more information.
 
 ## Enable Google or Microsoft sign-in [ec_enable_google_or_microsoft_sign_in]
 
