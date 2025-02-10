@@ -1,9 +1,10 @@
 ---
+navigation_title: Watcher
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-troubleshooting.html
 ---
 
-# Troubleshooting Watcher [watcher-troubleshooting]
+# Troubleshoot Watcher [watcher-troubleshooting]
 
 
 ## Dynamic mapping error when trying to add a watch [_dynamic_mapping_error_when_trying_to_add_a_watch] 

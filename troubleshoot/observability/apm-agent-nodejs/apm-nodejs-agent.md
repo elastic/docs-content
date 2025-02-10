@@ -1,9 +1,10 @@
 ---
+navigation_title: "APM Node.js Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/nodejs/current/troubleshooting.html
 ---
 
-# APM Node.js Agent [troubleshooting]
+# Troubleshoot APM Node.js Agent [troubleshooting]
 
 Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! As a first step, ensure your app is compatible with the agent’s [supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/current/supported-technologies.html).
 

@@ -12,7 +12,7 @@ To create a data stream with a built-in lifecycle, follow these steps:
 3. [Retrieve lifecycle information](#retrieve-lifecycle-information)
 
 
-## Create an index template [create-index-template-with-lifecycle] 
+## Create an index template [create-index-template-with-lifecycle]
 
 A data stream requires a matching [index template](../../data-store/templates.md). You can configure the data stream lifecycle by setting the `lifecycle` field in the index template the same as you do for mappings and index settings. You can define an index template that sets a lifecycle as follows:
 
@@ -40,7 +40,7 @@ PUT _index_template/my-index-template
 ```
 
 
-## Create a data stream [create-data-stream-with-lifecycle] 
+## Create a data stream [create-data-stream-with-lifecycle]
 
 You can create a data stream in two ways:
 
@@ -55,14 +55,14 @@ You can create a data stream in two ways:
     ```console
     PUT my-data-stream/_bulk
     { "create":{ } }
-    { "@timestamp": "2099-05-06T16:21:15.000Z", "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/elasticsearch-reference-bg.jpg HTTP/1.0\" 200 24736" }
+    { "@timestamp": "2099-05-06T16:21:15.000Z", "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736" }
     { "create":{ } }
     { "@timestamp": "2099-05-06T16:25:42.000Z", "message": "192.0.2.255 - - [06/May/2099:16:25:42 +0000] \"GET /favicon.ico HTTP/1.0\" 200 3638" }
     ```
 
 
 
-## Retrieve lifecycle information [retrieve-lifecycle-information] 
+## Retrieve lifecycle information [retrieve-lifecycle-information]
 
 You can use the [get data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-get-lifecycle.html) to see the data stream lifecycle of your data stream and the [explain data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html) to see the exact state of each backing index.
 

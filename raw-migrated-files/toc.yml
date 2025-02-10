@@ -168,18 +168,13 @@ toc:
       - file: cloud/cloud/ec_subscribe_to_individual_regionscomponents.md
       - file: cloud/cloud/ec-about.md
       - file: cloud/cloud/ec-access-kibana.md
-      - file: cloud/cloud/ec-account-usage.md
       - file: cloud/cloud/ec-account-user-settings.md
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
       - file: cloud/cloud/ec-api-deployment-other.md
       - file: cloud/cloud/ec-api-organizations.md
       - file: cloud/cloud/ec-autoscaling.md
-      - file: cloud/cloud/ec-billing-ecu.md
-      - file: cloud/cloud/ec-billing-history.md
-      - file: cloud/cloud/ec-billing-models.md
       - file: cloud/cloud/ec-billing-stop.md
-      - file: cloud/cloud/ec-billing.md
       - file: cloud/cloud/ec-cloud-ingest-data.md
       - file: cloud/cloud/ec-config-change-errors.md
       - file: cloud/cloud/ec-configure-index-management.md
@@ -217,7 +212,6 @@ toc:
       - file: cloud/cloud/ec-migrating-data.md
       - file: cloud/cloud/ec-monitoring-setup.md
       - file: cloud/cloud/ec-monitoring.md
-      - file: cloud/cloud/ec-organizations-notifications-domain-allowlist.md
       - file: cloud/cloud/ec-password-reset.md
       - file: cloud/cloud/ec-planning.md
       - file: cloud/cloud/ec-prepare-production.md
@@ -242,7 +236,6 @@ toc:
       - file: cloud/cloud/ec-service-status.md
       - file: cloud/cloud/ec-sign-outgoing-saml-message.md
       - file: cloud/cloud/ec-snapshot-restore.md
-      - file: cloud/cloud/ec-subscription-overview.md
       - file: cloud/cloud/ec-traffic-filtering-deployment-configuration.md
       - file: cloud/cloud/ec-traffic-filtering-ip.md
       - file: cloud/cloud/ec-traffic-filtering-psc.md
@@ -269,7 +262,6 @@ toc:
       - file: docs-content/serverless/connect-to-byo-llm.md
       - file: docs-content/serverless/cspm-required-permissions.md
       - file: docs-content/serverless/custom-roles.md
-      - file: docs-content/serverless/data-views.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
       - file: docs-content/serverless/elasticsearch-clients.md
       - file: docs-content/serverless/elasticsearch-dev-tools.md
@@ -279,20 +271,13 @@ toc:
       - file: docs-content/serverless/elasticsearch-ingest-data-file-upload.md
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
       - file: docs-content/serverless/elasticsearch-ingest-your-data.md
-      - file: docs-content/serverless/elasticsearch-knn-search.md
       - file: docs-content/serverless/elasticsearch-manage-project.md
-      - file: docs-content/serverless/elasticsearch-playground.md
-      - file: docs-content/serverless/elasticsearch-reference-semantic-search.md
       - file: docs-content/serverless/elasticsearch-search-your-data-the-search-api.md
       - file: docs-content/serverless/elasticsearch-search-your-data.md
       - file: docs-content/serverless/endpoint-protection-rules.md
-      - file: docs-content/serverless/general-billing-history.md
       - file: docs-content/serverless/general-billing-stop-project.md
-      - file: docs-content/serverless/general-check-subscription.md
-      - file: docs-content/serverless/general-manage-billing.md
       - file: docs-content/serverless/general-manage-organization.md
       - file: docs-content/serverless/general-ml-nlp-auto-scale.md
-      - file: docs-content/serverless/general-monitor-usage.md
       - file: docs-content/serverless/general-serverless-status.md
       - file: docs-content/serverless/general-sign-up-trial.md
       - file: docs-content/serverless/general-user-profile.md
@@ -301,12 +286,9 @@ toc:
       - file: docs-content/serverless/infrastructure-and-host-monitoring-intro.md
       - file: docs-content/serverless/ingest-aws-securityhub-data.md
       - file: docs-content/serverless/ingest-falco.md
-      - file: docs-content/serverless/ingest-pipelines.md
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/maintenance-windows.md
-      - file: docs-content/serverless/maps.md
       - file: docs-content/serverless/monitor-k8s-otel-edot.md
       - file: docs-content/serverless/observability-add-logs-service-name.md
       - file: docs-content/serverless/observability-aggregationOptions.md
@@ -379,7 +361,6 @@ toc:
       - file: docs-content/serverless/observability-handle-no-results-found-message.md
       - file: docs-content/serverless/observability-infrastructure-monitoring.md
       - file: docs-content/serverless/observability-log-monitoring.md
-      - file: docs-content/serverless/observability-machine-learning.md
       - file: docs-content/serverless/observability-monitor-datasets.md
       - file: docs-content/serverless/observability-monitor-status-alert.md
       - file: docs-content/serverless/observability-monitor-synthetics.md
@@ -416,7 +397,6 @@ toc:
       - file: docs-content/serverless/observability-triage-slo-burn-rate-breaches.md
       - file: docs-content/serverless/observability-triage-threshold-breaches.md
       - file: docs-content/serverless/observability-troubleshoot-logs.md
-      - file: docs-content/serverless/observability-troubleshooting-infrastructure-monitoring.md
       - file: docs-content/serverless/observability-view-alerts.md
       - file: docs-content/serverless/observability-view-infrastructure-metrics.md
       - file: docs-content/serverless/project-and-management-settings.md
@@ -424,8 +404,6 @@ toc:
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/quickstart-monitor-hosts-with-otel.md
-      - file: docs-content/serverless/rules.md
-      - file: docs-content/serverless/saved-objects.md
       - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
@@ -549,7 +527,6 @@ toc:
       - file: docs-content/serverless/security-timeline-templates-ui.md
       - file: docs-content/serverless/security-timelines-ui.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
-      - file: docs-content/serverless/security-troubleshoot-endpoints.md
       - file: docs-content/serverless/security-trusted-applications.md
       - file: docs-content/serverless/security-tune-detection-signals.md
       - file: docs-content/serverless/security-tuning-anomaly-results.md
@@ -567,8 +544,6 @@ toc:
       - file: docs-content/serverless/security-vuln-management-overview.md
       - file: docs-content/serverless/slo-troubleshoot-slos.md
       - file: docs-content/serverless/spaces.md
-      - file: docs-content/serverless/tags.md
-      - file: docs-content/serverless/transforms.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
     children:
@@ -594,7 +569,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
-      - file: elasticsearch/elasticsearch-reference/data-rollup-transform.md
       - file: elasticsearch/elasticsearch-reference/data-streams.md
       - file: elasticsearch/elasticsearch-reference/data-tiers.md
       - file: elasticsearch/elasticsearch-reference/defining-roles.md
@@ -615,12 +589,10 @@ toc:
       - file: elasticsearch/elasticsearch-reference/index-modules-analysis.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/ingest-enriching-data.md
-      - file: elasticsearch/elasticsearch-reference/ingest.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
       - file: elasticsearch/elasticsearch-reference/jwt-auth-realm.md
       - file: elasticsearch/elasticsearch-reference/kerberos-realm.md
-      - file: elasticsearch/elasticsearch-reference/knn-search.md
       - file: elasticsearch/elasticsearch-reference/ldap-realm.md
       - file: elasticsearch/elasticsearch-reference/mapping-roles.md
       - file: elasticsearch/elasticsearch-reference/mapping.md
@@ -632,7 +604,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/oidc-realm.md
       - file: elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
-      - file: elasticsearch/elasticsearch-reference/retrievers-overview.md
       - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
       - file: elasticsearch/elasticsearch-reference/rollup-overview.md
       - file: elasticsearch/elasticsearch-reference/saml-guide-stack.md
@@ -649,7 +620,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/security-files.md
       - file: elasticsearch/elasticsearch-reference/security-limitations.md
       - file: elasticsearch/elasticsearch-reference/semantic-search-inference.md
-      - file: elasticsearch/elasticsearch-reference/semantic-search.md
       - file: elasticsearch/elasticsearch-reference/setting-up-authentication.md
       - file: elasticsearch/elasticsearch-reference/setup.md
       - file: elasticsearch/elasticsearch-reference/shard-allocation-filtering.md
@@ -658,7 +628,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
       - file: elasticsearch/elasticsearch-reference/starting-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/stopping-elasticsearch.md
-      - file: elasticsearch/elasticsearch-reference/transforms.md
       - file: elasticsearch/elasticsearch-reference/xpack-alerting.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
       - file: elasticsearch/elasticsearch-reference/xpack-rollup.md
@@ -673,12 +642,10 @@ toc:
   - file: kibana/kibana/index.md
     children:
       - file: kibana/kibana/action-types.md
-      - file: kibana/kibana/alerting-getting-started.md
       - file: kibana/kibana/apm-settings-kb.md
       - file: kibana/kibana/connect-to-elasticsearch.md
       - file: kibana/kibana/console-kibana.md
       - file: kibana/kibana/data-rollups.md
-      - file: kibana/kibana/data-views.md
       - file: kibana/kibana/elasticsearch-mutual-tls.md
       - file: kibana/kibana/esql.md
       - file: kibana/kibana/get-started.md
@@ -689,19 +656,11 @@ toc:
       - file: kibana/kibana/kibana-concepts-analysts.md
       - file: kibana/kibana/kibana-role-management.md
       - file: kibana/kibana/logging-settings.md
-      - file: kibana/kibana/maintenance-windows.md
       - file: kibana/kibana/management.md
-      - file: kibana/kibana/managing-data-views.md
-      - file: kibana/kibana/managing-saved-objects.md
-      - file: kibana/kibana/managing-tags.md
-      - file: kibana/kibana/maps.md
       - file: kibana/kibana/osquery.md
-      - file: kibana/kibana/playground.md
-      - file: kibana/kibana/reporting-getting-started.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
       - file: kibana/kibana/sample-data.md
-      - file: kibana/kibana/saved-object-ids.md
       - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/secure-settings.md
@@ -713,7 +672,6 @@ toc:
       - file: kibana/kibana/upgrade.md
       - file: kibana/kibana/using-kibana-with-security.md
       - file: kibana/kibana/watcher-ui.md
-      - file: kibana/kibana/xpack-ml-aiops.md
       - file: kibana/kibana/xpack-security-authorization.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
       - file: kibana/kibana/xpack-security.md
@@ -842,7 +800,6 @@ toc:
       - file: observability-docs/observability/synthetics-troubleshooting.md
       - file: observability-docs/observability/triage-slo-burn-rate-breaches.md
       - file: observability-docs/observability/triage-threshold-breaches.md
-      - file: observability-docs/observability/troubleshooting-infrastructure-monitoring.md
       - file: observability-docs/observability/view-infrastructure-metrics.md
       - file: observability-docs/observability/view-observability-alerts.md
   - file: security-docs/security/index.md
@@ -980,7 +937,6 @@ toc:
       - file: security-docs/security/timeline-templates-ui.md
       - file: security-docs/security/timelines-ui.md
       - file: security-docs/security/trusted-apps-ov.md
-      - file: security-docs/security/ts-management.md
       - file: security-docs/security/tuning-anomaly-results.md
       - file: security-docs/security/tuning-detection-signals.md
       - file: security-docs/security/turn-on-risk-engine.md

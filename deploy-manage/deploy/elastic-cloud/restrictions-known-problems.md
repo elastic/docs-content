@@ -75,9 +75,9 @@ Watcher encryption Key Setup is not supported.
 
 Changing the default throttle period is not possible. You can specify a throttle period per watch, however.
 
-Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](../../../explore-analyze/alerts/watcher.md#ec-cloud-email-service-limits)
+Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](../../../explore-analyze/alerts-cases/watcher.md#ec-cloud-email-service-limits)
 
-Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts/watcher.md#ec-watcher-custom-mail-server)
+Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher.md#ec-watcher-custom-mail-server)
 
 
 ## Private Link and SSO to Kibana URLs [ec-restrictions-traffic-filters-kibana-sso]
@@ -94,7 +94,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 ## Kibana [ec-restrictions-kibana]
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
-* Running an external Kibana in parallel to Elasticsearch Service’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts/kibana/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-encrypted-saved-objects-settings) as Elasticsearch Service does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Running an external Kibana in parallel to Elasticsearch Service’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-encrypted-saved-objects-settings) as Elasticsearch Service does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
 
 ## APM Agent central configuration with PrivateLink or traffic filters [ec-restrictions-apm-traffic-filters]

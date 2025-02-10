@@ -15,17 +15,7 @@ There are three types of drilldowns you can add to dashboards:
 
 Third-party developers can create drilldowns. To learn how to code drilldowns, refer to [this example plugin](https://github.com/elastic/kibana/blob/master/x-pack/examples/ui_actions_enhanced_examples).
 
-<script type="text/javascript" async
-src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-style="width: 100%; margin: auto; display: block;"
-class="vidyard-player-embed"
-src="https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg"
-data-uuid="UhGkdJGC32HRn3oS5ZYJL1"
-data-v="4"
-data-type="inline"
-/>
-</br>
+[![Drilldowns video](https://play.vidyard.com/UhGkdJGC32HRn3oS5ZYJL1.jpg)](https://videos.elastic.co/watch/UhGkdJGC32HRn3oS5ZYJL1?)
 
 ## Create dashboard drilldowns [dashboard-drilldowns]
 
@@ -77,17 +67,16 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 
 3. Save the dashboard.
 4. In the data table panel, hover over a value, click **+**, then select `View details`.
-
-    :::{image} ../../images/kibana-dashboard_drilldownOnPanel_8.3.png
-    :alt: Drilldown on data table that navigates to another dashboard
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-dashboard_drilldownOnPanel_8.3.png
+   :alt: Drilldown on data table that navigates to another dashboard
+   :class: screenshot
+   :::
 
 
 
 ## Create URL drilldowns [create-url-drilldowns]
 
-URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](https://www.elastic.co/guide/en/kibana/current/url-drilldown.html#variables) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
+URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](https://www.elastic.co/guide/en/kibana/current/drilldowns.html) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
 
 ![Drilldown on pie chart that navigates to Github](../../images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
 
@@ -164,11 +153,10 @@ Create a drilldown that opens **Discover** from the [**Sample web logs**](../ove
 5. Click **Create drilldown**.
 6. Save the dashboard.
 7. On the **[Logs] Bytes distribution** bar vertical stacked chart, click a bar, then select **View bytes distribution in Discover**.
-
-    :::{image} ../../images/kibana-dashboard_discoverDrilldown_8.3.png
-    :alt: Drilldown on bar vertical stacked chart that navigates to Discover
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-dashboard_discoverDrilldown_8.3.png
+   :alt: Drilldown on bar vertical stacked chart that navigates to Discover
+   :class: screenshot
+   :::
 
 
 

@@ -36,7 +36,7 @@ After mapping the fields you want to retrieve, index a few records from your log
 ```console
 POST /my-index/_bulk?refresh
 {"index":{}}
-{"timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - - [30/Apr/2020:14:30:17 -0500] \"GET /images/elasticsearch-reference-hm_bg.jpg HTTP/1.0\" 200 24736"}
+{"timestamp":"2020-04-30T14:30:17-05:00","message":"40.135.0.0 - - [30/Apr/2020:14:30:17 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}
 {"timestamp":"2020-04-30T14:30:53-05:00","message":"232.0.0.0 - - [30/Apr/2020:14:30:53 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}
@@ -44,7 +44,7 @@ POST /my-index/_bulk?refresh
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:19-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:19 -0500] \"GET /french/splash_inet.html HTTP/1.0\" 200 3781"}
 {"index":{}}
-{"timestamp":"2020-04-30T14:31:22-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/elasticsearch-reference-hm_nbg.jpg HTTP/1.0\" 304 0"}
+{"timestamp":"2020-04-30T14:31:22-05:00","message":"247.37.0.0 - - [30/Apr/2020:14:31:22 -0500] \"GET /images/hm_nbg.jpg HTTP/1.0\" 304 0"}
 {"index":{}}
 {"timestamp":"2020-04-30T14:31:27-05:00","message":"252.0.0.0 - - [30/Apr/2020:14:31:27 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"}
 {"index":{}}
@@ -52,7 +52,7 @@ POST /my-index/_bulk?refresh
 ```
 
 
-## Extract an IP address from a log message (Grok) [field-extraction-ip] 
+## Extract an IP address from a log message (Grok) [field-extraction-ip]
 
 If you want to retrieve results that include `clientip`, you can add that field as a runtime field in the mapping. The following runtime script defines a grok pattern that extracts structured fields out of the `message` field.
 
@@ -121,7 +121,7 @@ The response includes documents where the value for `http.clientip` matches `40.
 ```
 
 
-## Parse a string to extract part of a field (Dissect) [field-extraction-parse] 
+## Parse a string to extract part of a field (Dissect) [field-extraction-parse]
 
 Instead of matching on a log pattern like in the [previous example](#field-extraction-ip), you can just define a dissect pattern to include the parts of the string that you want to discard.
 
@@ -193,7 +193,7 @@ The response includes a single document where the HTTP response is `304`:
 ```
 
 
-## Split values in a field by a separator (Dissect) [field-extraction-split] 
+## Split values in a field by a separator (Dissect) [field-extraction-split]
 
 Let’s say you want to extract part of a field like in the previous example, but you want to split on specific values. You can use a dissect pattern to extract only the information that you want, and also return that data in a specific format.
 

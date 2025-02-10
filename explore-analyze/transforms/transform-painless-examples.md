@@ -4,15 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-painless-examples.html
 ---
 
-
-
 # Painless examples [transform-painless-examples]
-
 
 ::::{important} 
 The examples that use the `scripted_metric` aggregation are not supported on {{es}} Serverless.
 ::::
-
 
 These examples demonstrate how to use Painless in {{transforms}}. You can learn more about the Painless scripting language in the [Painless guide](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-guide.html).
 
@@ -23,21 +19,20 @@ These examples demonstrate how to use Painless in {{transforms}}. You can learn 
 * [Comparing indices by using scripted metric aggregations](#painless-compare)
 * [Getting web session details by using scripted metric aggregation](#painless-web-session)
 
-::::{note} 
+::::{note}
+
 * While the context of the following examples is the {{transform}} use case, the Painless scripts in the snippets below can be used in other {{es}} search aggregations, too.
 * All the following examples use scripts, {{transforms}} cannot deduce mappings of output fields when the fields are created by a script. {{transforms-cap}} don’t create any mappings in the destination index for these fields, which means they get dynamically mapped. Create the destination index prior to starting the {{transform}} in case you want explicit mappings.
 
 ::::
 
-
 ## Getting top hits by using scripted metric aggregation [painless-top-hits]
 
 This snippet shows how to find the latest document, in other words the document with the latest timestamp. From a technical perspective, it helps to achieve the function of a [Top hits](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html) by using scripted metric aggregation in a {{transform}}, which provides a metric output.
 
-::::{important} 
+::::{important}
 This example uses a `scripted_metric` aggregation which is not supported on {{es}} Serverless.
 ::::
-
 
 ```js
 "aggregations": {
@@ -68,7 +63,6 @@ This example uses a `scripted_metric` aggregation which is not supported on {{es
 3. The `combine_script` returns `state` from each shard.
 4. The `reduce_script` iterates through the value of `s.timestamp_latest` returned by each shard and returns the document with the latest timestamp (`last_doc`). In the response, the top hit (in other words, the `latest_doc`) is nested below the `latest_doc` field.
 
-
 Check the [scope of scripts](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-scripted-metric-aggregation.html#scripted-metric-aggregation-scope) for detailed explanation on the respective scripts.
 
 You can retrieve the last value in a similar way:
@@ -97,8 +91,7 @@ You can retrieve the last value in a similar way:
 }
 ```
 
-
-#### Getting top hits by using stored scripts [top-hits-stored-scripts] 
+### Getting top hits by using stored scripts [top-hits-stored-scripts]
 
 You can also use the power of [stored scripts](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-stored-script-api.html) to get the latest value. Stored scripts are updatable, enable collaboration, and avoid duplication across queries.
 
@@ -178,8 +171,6 @@ You can also use the power of [stored scripts](https://www.elastic.co/guide/en/e
 
     1. The parameter `field_with_last_value` can be set any field that you want the latest value for.
 
-
-
 ## Getting time features by using aggregations [painless-time-features]
 
 This snippet shows how to extract time based features by using Painless in a {{transform}}. The snippet uses an index where `@timestamp` is defined as a `date` type field.
@@ -218,8 +209,6 @@ This snippet shows how to extract time based features by using Painless in a {{t
 6. Contains the Painless script that returns the month of the year.
 7. Sets `date` based on the timestamp of the document.
 8. Returns the month value from `date`.
-
-
 
 ## Getting duration by using bucket script [painless-bucket-script]
 
@@ -268,18 +257,15 @@ PUT _transform/data_log
 2. The bucket path is a map of script variables and their associated path to the buckets you want to use for the variable. In this particular case, `min` and `max` are variables mapped to `time_frame.gte.value` and `time_frame.lte.value`.
 3. Finally, the script substracts the start date of the session from the end date which results in the duration of the session.
 
-
-
 ## Counting HTTP responses by using scripted metric aggregation [painless-count-http]
 
 You can count the different HTTP response types in a web log data set by using scripted metric aggregation as part of the {{transform}}. You can achieve a similar function with filter aggregations, check the [Finding suspicious client IPs](transform-examples.md#example-clientips) example for details.
 
 The example below assumes that the HTTP response codes are stored as keywords in the `response` field of the documents.
 
-::::{important} 
+::::{important}
 This example uses a `scripted_metric` aggregation which is not supported on {{es}} Serverless.
 ::::
-
 
 ```js
 "aggregations": { <1>
@@ -320,16 +306,13 @@ This example uses a `scripted_metric` aggregation which is not supported on {{es
 6. The `combine_script` returns `state.responses` from each shard.
 7. The `reduce_script` creates a `counts` array with the `error`, `success`, and `other` properties, then iterates through the value of `responses` returned by each shard and assigns the different response types to the appropriate properties of the `counts` object; error responses to the error counts, success responses to the success counts, and other responses to the other counts. Finally, returns the `counts` array with the response counts.
 
-
-
 ## Comparing indices by using scripted metric aggregations [painless-compare]
 
 This example shows how to compare the content of two indices by a {{transform}} that uses a scripted metric aggregation.
 
-::::{important} 
+::::{important}
 This example uses a `scripted_metric` aggregation which is not supported on {{es}} Serverless.
 ::::
-
 
 ```console
 POST _transform/_preview
@@ -385,8 +368,6 @@ POST _transform/_preview
 6. The `combine_script` returns `state` from each shard.
 7. The `reduce_script` checks if the size of the indices are equal. If they are not equal, than it reports back a `count_mismatch`. Then it iterates through all the values of the two indices and compare them. If the values are equal, then it returns a `match`, otherwise returns a `mismatch`.
 
-
-
 ## Getting web session details by using scripted metric aggregation [painless-web-session]
 
 This example shows how to derive multiple features from a single transaction. Let’s take a look on the example source document from the data:
@@ -430,13 +411,11 @@ This example shows how to derive multiple features from a single transaction. Le
 
 ::::
 
-
 By using the `sessionid` as a group-by field, you are able to enumerate events through the session and get more details of the session by using scripted metric aggregation.
 
-::::{important} 
+::::{important}
 This example uses a `scripted_metric` aggregation which is not supported on {{es}} Serverless.
 ::::
-
 
 ```js
 POST _transform/_preview
@@ -513,7 +492,6 @@ POST _transform/_preview
 5. The `combine_script` returns `state.docs` from each shard.
 6. The `reduce_script` defines various objects like `min_time`, `max_time`, and `duration` based on the document fields, then declares a `ret` object, and copies the source document by using `new HashMap ()`. Next, the script defines `first_time`, `last_time`, `duration` and other fields inside the `ret` object based on the corresponding object defined earlier, finally returns `ret`.
 
-
 The API call results in a similar response:
 
 ```js
@@ -545,5 +523,3 @@ The API call results in a similar response:
 }
 ...
 ```
-
-

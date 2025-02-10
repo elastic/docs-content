@@ -13,6 +13,7 @@ You can use {{stack-ml-features}} to analyze natural language data and make pred
 * [Add NLP {{infer}} to ingest pipelines](nlp/ml-nlp-inference.md)
 * [API quick reference](nlp/ml-nlp-apis.md)
 * [ELSER](nlp/ml-nlp-elser.md)
+* [Elastic Rerank](nlp/ml-nlp-rerank.md)
 * [E5](nlp/ml-nlp-e5.md)
 * [Language identification](nlp/ml-nlp-lang-ident.md)
 * [Examples](nlp/ml-nlp-examples.md)

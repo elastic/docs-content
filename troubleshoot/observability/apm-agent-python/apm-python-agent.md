@@ -1,9 +1,10 @@
 ---
+navigation_title: "APM Python Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/python/current/troubleshooting.html
 ---
 
-# APM Python Agent [troubleshooting]
+# Troubleshoot APM Python Agent [troubleshooting]
 
 Below are some resources and tips for troubleshooting and debugging the python agent.
 

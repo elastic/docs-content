@@ -1,13 +1,12 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: Security
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-troubleshooting.html
 ---
 
+% marciw: this page needs to move to the security folder
 
-
-# Security [security-troubleshooting]
-
+# Troubleshoot {{es}} security [security-troubleshooting]
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions.
 

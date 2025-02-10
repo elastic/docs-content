@@ -15,7 +15,7 @@ To set up a data stream, follow these steps:
 
 You can also [convert an index alias to a data stream](#convert-index-alias-to-data-stream).
 
-::::{important} 
+::::{important}
 If you use {{fleet}}, {{agent}}, or {{ls}}, skip this tutorial. They all set up data streams for you.
 
 For {{fleet}} and {{agent}}, check out this [data streams documentation](https://www.elastic.co/guide/en/fleet/current/data-streams.html). For {{ls}}, check out the [data streams settings](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
@@ -24,7 +24,7 @@ For {{fleet}} and {{agent}}, check out this [data streams documentation](https:/
 
 
 
-## Create an index lifecycle policy [create-index-lifecycle-policy] 
+## Create an index lifecycle policy [create-index-lifecycle-policy]
 
 While optional, we recommend using {{ilm-init}} to automate the management of your data stream’s backing indices. {{ilm-init}} requires an index lifecycle policy.
 
@@ -83,7 +83,7 @@ PUT _ilm/policy/my-lifecycle-policy
 ```
 
 
-## Create component templates [create-component-templates] 
+## Create component templates [create-component-templates]
 
 A data stream requires a matching index template. In most cases, you compose this index template using one or more component templates. You typically use separate component templates for mappings and index settings. This lets you reuse the component templates in multiple index templates.
 
@@ -92,7 +92,7 @@ When creating your component templates, include:
 * A [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) or [`date_nanos`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date_nanos.html) mapping for the `@timestamp` field. If you don’t specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
 * Your lifecycle policy in the `index.lifecycle.name` index setting.
 
-::::{tip} 
+::::{tip}
 Use the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) when mapping your fields. ECS fields integrate with several {{stack}} features by default.
 
 If you’re unsure how to map your fields, use [runtime fields](../mapping/define-runtime-fields-in-search-request.md) to extract fields from [unstructured content](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#mapping-unstructured-content) at search time. For example, you can index a log message to a `wildcard` field and later extract IP addresses and other data from this field during a search.
@@ -143,7 +143,7 @@ PUT _component_template/my-settings
 ```
 
 
-## Create an index template [create-index-template] 
+## Create an index template [create-index-template]
 
 Use your component templates to create an index template. Specify:
 
@@ -171,7 +171,7 @@ PUT _index_template/my-index-template
 ```
 
 
-## Create the data stream [create-data-stream] 
+## Create the data stream [create-data-stream]
 
 [Indexing requests](use-data-stream.md#add-documents-to-a-data-stream) add documents to a data stream. These requests must use an `op_type` of `create`. Documents must include a `@timestamp` field.
 
@@ -180,7 +180,7 @@ To automatically create your data stream, submit an indexing request that target
 ```console
 PUT my-data-stream/_bulk
 { "create":{ } }
-{ "@timestamp": "2099-05-06T16:21:15.000Z", "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/elasticsearch-reference-bg.jpg HTTP/1.0\" 200 24736" }
+{ "@timestamp": "2099-05-06T16:21:15.000Z", "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736" }
 { "create":{ } }
 { "@timestamp": "2099-05-06T16:25:42.000Z", "message": "192.0.2.255 - - [06/May/2099:16:25:42 +0000] \"GET /favicon.ico HTTP/1.0\" 200 3638" }
 
@@ -198,14 +198,14 @@ PUT _data_stream/my-data-stream
 ```
 
 
-## Secure the data stream [secure-data-stream] 
+## Secure the data stream [secure-data-stream]
 
 Use [index privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) to control access to a data stream. Granting privileges on a data stream grants the same privileges on its backing indices.
 
 For an example, see [Data stream privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md#data-stream-privileges).
 
 
-## Convert an index alias to a data stream [convert-index-alias-to-data-stream] 
+## Convert an index alias to a data stream [convert-index-alias-to-data-stream]
 
 Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
 
@@ -216,7 +216,7 @@ POST _data_stream/_migrate/my-time-series-data
 ```
 
 
-## Get information about a data stream [get-info-about-data-stream] 
+## Get information about a data stream [get-info-about-data-stream]
 
 To get information about a data stream in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the data stream’s name.
 
@@ -227,7 +227,7 @@ GET _data_stream/my-data-stream
 ```
 
 
-## Delete a data stream [delete-data-stream] 
+## Delete a data stream [delete-data-stream]
 
 To delete a data stream and its backing indices in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) for the data stream.
 

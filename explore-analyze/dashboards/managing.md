@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_manage_dashboards.html
 ---
 
-# Managing [_manage_dashboards]
+# Managing dashboards [_manage_dashboards]
 
 
 ## Browse dashboards [find-dashboards]

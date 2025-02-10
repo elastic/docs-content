@@ -1,9 +1,12 @@
 ---
+navgiation_title: Index lifecycle management errors
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-error-handling.html
 ---
 
-# Index lifecycle management errors [index-lifecycle-error-handling]
+% marciw move so this is with other ILM topics
+
+# Fix index lifecycle management errors [index-lifecycle-error-handling]
 
 When [{{ilm-init}}](../../../manage-data/lifecycle/index-lifecycle-management.md) executes a lifecycle policy, it’s possible for errors to occur while performing the necessary index operations for a step. When this happens, {{ilm-init}} moves the index to an `ERROR` step. If {{ilm-init}} cannot resolve the error automatically, execution is halted until you resolve the underlying issues with the policy, index, or cluster.
 

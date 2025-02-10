@@ -1,9 +1,10 @@
 ---
+navigation_title: Node.js
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/timeout-best-practices.html
 ---
 
-# Node.js [timeout-best-practices]
+# Troubleshoot {{es}} Node.js client [timeout-best-practices]
 
 Starting in 9.0.0, this client is configured to not time out any HTTP request by default. {{es}} will always eventually respond to any request, even if it takes several minutes. Reissuing a request that it has not responded to yet can cause performance side effects. See the [official {{es}} recommendations for HTTP clients](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#_http_client_configuration) for more information.
 
