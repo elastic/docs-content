@@ -280,7 +280,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
       - file: docs-content/serverless/elasticsearch-ingest-your-data.md
       - file: docs-content/serverless/elasticsearch-manage-project.md
-      - file: docs-content/serverless/elasticsearch-playground.md
       - file: docs-content/serverless/elasticsearch-search-your-data-the-search-api.md
       - file: docs-content/serverless/elasticsearch-search-your-data.md
       - file: docs-content/serverless/endpoint-protection-rules.md
@@ -688,7 +687,6 @@ toc:
       - file: kibana/kibana/managing-tags.md
       - file: kibana/kibana/maps.md
       - file: kibana/kibana/osquery.md
-      - file: kibana/kibana/playground.md
       - file: kibana/kibana/reporting-getting-started.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
