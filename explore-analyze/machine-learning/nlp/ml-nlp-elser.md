@@ -42,7 +42,7 @@ If you want to learn more about the ELSER V2 improvements, refer to [this blog p
 
 ### Upgrading to ELSER v2 [upgrade-elser-v2]
 
-ELSER v2 is not backward compatible. If you indexed your data with ELSER v1, you need to reindex it with an ingest pipeline referencing ELSER v2 to be able to use v2 for search. This [tutorial](/solutions/search/semantic-search/semantic-search-elser.md) shows you how to create an ingest pipeline with an {{infer}} processor that uses ELSER v2, and how to reindex your data through the pipeline.
+ELSER v2 is not backward compatible. If you indexed your data with ELSER v1, you need to reindex it with an ingest pipeline referencing ELSER v2 to be able to use v2 for search. This [tutorial](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) shows you how to create an ingest pipeline with an {{infer}} processor that uses ELSER v2, and how to reindex your data through the pipeline.
 
 Additionally, the `elasticearch-labs` GitHub repository contains an interactive [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/model-upgrades/upgrading-index-to-use-elser.ipynb) that walks through upgrading an index to ELSER V2.
 
@@ -298,7 +298,7 @@ To gain the biggest value out of ELSER trained models, consider to follow this l
 ## Further reading [further-readings]
 
 * [Perform semantic search with `semantic_text` using the ELSER endpoint](../../../solutions/search/semantic-search/semantic-search-semantic-text.md)
-* [Perform semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser.md)
+* [Perform semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md)
 
 ## Benchmark information [elser-benchmarks]
 

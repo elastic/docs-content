@@ -644,7 +644,7 @@ toc:
             children:
               - file: search/semantic-search/semantic-search-semantic-text.md
               - file: search/semantic-search/semantic-search-inference.md
-              - file: search/semantic-search/semantic-search-elser.md
+              - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
               - file: search/semantic-search/cohere-es.md
       - file: search/hybrid-search.md
         children: 
