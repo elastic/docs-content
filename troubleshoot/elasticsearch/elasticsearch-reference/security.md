@@ -1,5 +1,5 @@
 ---
-navigation_title: "Security"
+navigation_title: Security
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-troubleshooting.html
 ---
