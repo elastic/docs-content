@@ -112,7 +112,7 @@ You can also use locally hosted LLMs that are compatible with the OpenAI SDK. On
 
 ## Getting started [playground-getting-started]
 
-:::{image} ../../../images/kibana-get-started.png
+:::{image} ../../images/kibana-get-started.png
 :alt: get started
 :class: screenshot
 :::
@@ -183,7 +183,7 @@ Once you’ve connected to your LLM provider, it’s time to choose the data you
 :::::{tip}
 You can always add or remove indices later by selecting the **Data** button from the main Playground UI.
 
-:::{image} ../../../images/kibana-data-button.png
+:::{image} ../../images/kibana-data-button.png
 :alt: data button
 :class: screenshot
 :::
@@ -201,14 +201,14 @@ Since 8.15.0 (and earlier for {{es}} Serverless), the main Playground UI has two
 
 The **chat mode** is selected when you first set up your Playground instance.
 
-:::{image} ../../../images/kibana-chat-interface.png
+:::{image} ../../images/kibana-chat-interface.png
 :alt: chat interface
 :class: screenshot
 :::
 
 To switch to **query mode**, select **Query** from the main UI.
 
-:::{image} ../../../images/kibana-query-interface.png
+:::{image} ../../images/kibana-query-interface.png
 :alt: query interface
 :class: screenshot
 :::
@@ -250,7 +250,7 @@ Use the **View code** button to see the Python code that powers the chat interfa
 * {{es}} Python Client + LLM provider
 * LangChain + LLM provider
 
-:::{image} ../../../images/kibana-view-code-button.png
+:::{image} ../../images/kibana-view-code-button.png
 :alt: view code button
 :class: screenshot
 :::
