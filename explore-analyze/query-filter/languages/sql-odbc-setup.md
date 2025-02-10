@@ -88,12 +88,11 @@ This new window has three tabs, each responsible for a set of configuration para
 This tab allows configuration for the following items:
 
 * Name
+  This is the name the DSN will be referred by.
 
-    This is the name the DSN will be referred by.
-
-    ::::{note}
-    The characters available for this field are limited to the set permitted for a Registry key.
-    ::::
+  ::::{note}
+  The characters available for this field are limited to the set permitted for a Registry key.
+  ::::
 
 
     Example: *localhost*
@@ -106,11 +105,11 @@ This tab allows configuration for the following items:
 
 * Cloud ID
 
-    The *Cloud ID* is a string that simplifies the configuration when connecting to Elastic’s Cloud {{ess}}; it is obtained from within the Cloud console of each {{es}} cluster and encodes the connection parameters to that cluster.
+  The *Cloud ID* is a string that simplifies the configuration when connecting to Elastic’s Cloud {{ess}}; it is obtained from within the Cloud console of each {{es}} cluster and encodes the connection parameters to that cluster.
 
-    ::::{note}
-    When this field is provisioned, the *Hostname*, *Port* and the security settings are provisioned as well and their respective inputs disabled.
-    ::::
+  ::::{note}
+  When this field is provisioned, the *Hostname*, *Port* and the security settings are provisioned as well and their respective inputs disabled.
+  ::::
 
 * Hostname
 
@@ -120,11 +119,11 @@ This tab allows configuration for the following items:
 
 * Port
 
-    The port on which the {{es}} listens on.
+  The port on which the {{es}} listens on.
 
-    ::::{note}
-    If left empty, the default **9200** port number will be used.
-    ::::
+  ::::{note}
+  If left empty, the default **9200** port number will be used.
+  ::::
 
 * Username, Password
 
@@ -145,29 +144,29 @@ One of the following SSL options can be chosen:
 
 * Disabled. All communications unencrypted.
 
-    The communication between the driver and the {{es}} instance is performed over a clear-text connection.
+  The communication between the driver and the {{es}} instance is performed over a clear-text connection.
 
-    ::::{warning}
-    This setting can expose the access credentials to a 3rd party intercepting the network traffic and is not recommended.
-    ::::
+  ::::{warning}
+  This setting can expose the access credentials to a 3rd party intercepting the network traffic and is not recommended.
+  ::::
 
 * Enabled. Certificate not validated.
 
-    The connection encryption is enabled, but the certificate of the server is not validated.
+  The connection encryption is enabled, but the certificate of the server is not validated.
 
-    This is currently the default setting.
+  This is currently the default setting.
 
-    ::::{note}
-    This setting allows a 3rd party to act with ease as a man-in-the-middle and thus intercept all communications.
-    ::::
+  ::::{note}
+  This setting allows a 3rd party to act with ease as a man-in-the-middle and thus intercept all communications.
+  ::::
 
 * Enabled. Certificate is validated; hostname not validated.
 
-    The connection encryption is enabled and the driver verifies that server’s certificate is valid, but it does **not** verify if the certificate is running on the server it was meant for.
+  The connection encryption is enabled and the driver verifies that server’s certificate is valid, but it does **not** verify if the certificate is running on the server it was meant for.
 
-    ::::{note}
-    This setting allows a 3rd party that had access to server’s certificate to act as a man-in-the-middle and thus intercept all the communications.
-    ::::
+  ::::{note}
+  This setting allows a 3rd party that had access to server’s certificate to act as a man-in-the-middle and thus intercept all the communications.
+  ::::
 
 * Enabled. Certificate is validated; hostname validated.
 
@@ -179,19 +178,19 @@ One of the following SSL options can be chosen:
 
 * Certificate File
 
-    In case the server uses a certificate that is not part of the PKI, for example using a self-signed certificate, you can configure the path to a X.509 certificate file that will be used by the driver to validate server’s offered certificate.
+  In case the server uses a certificate that is not part of the PKI, for example using a self-signed certificate, you can configure the path to a X.509 certificate file that will be used by the driver to validate server’s offered certificate.
 
-    The driver will only read the contents of the file just before a connection is attempted. See [2.7 Testing the connection](#connection_testing) section further on how to check the validity of the provided parameters.
+  The driver will only read the contents of the file just before a connection is attempted. See [2.7 Testing the connection](#connection_testing) section further on how to check the validity of the provided parameters.
 
-    ::::{note}
-    The certificate file can not be bundled or password protected since the driver will not prompt for a password.
-    ::::
+  ::::{note}
+  The certificate file can not be bundled or password protected since the driver will not prompt for a password.
+  ::::
 
 
-    If using the file browser to locate the certificate - by pressing the *Browse…​* button - only files with *.pem* and *.der* extensions will be considered by default. Choose *All Files (*.*)* from the drop down, if your file ends with a different extension:
+  If using the file browser to locate the certificate - by pressing the *Browse…​* button - only files with *.pem* and *.der* extensions will be considered by default. Choose *All Files (*.*)* from the drop down, if your file ends with a different extension:
 
-    $$$dsn_editor_cert$$$
-    ![dsn editor security cert](../../../images/elasticsearch-reference-dsn_editor_security_cert.png "")
+  $$$dsn_editor_cert$$$
+  ![dsn editor security cert](../../../images/elasticsearch-reference-dsn_editor_security_cert.png "")
 
 
 
@@ -315,11 +314,11 @@ However, this only logs the ODBC API calls made by the application into the *Dri
 
 * Log Directory
 
-    Here is to specify which directory to write the log files in.
+  Here is to specify which directory to write the log files in.
 
-    ::::{note}
-    The driver will create **one log file per connection**, for those connections that generate logging messages.
-    ::::
+  ::::{note}
+  The driver will create **one log file per connection**, for those connections that generate logging messages.
+  ::::
 
 * Log Level
 

@@ -30,10 +30,10 @@ To customize your workpad to look the way you want, add your own images.
     1. Click the Elastic logo.
     2. Drag the image file to the **Select or drag and drop an image** field.
 
-        :::{image} ../../../images/kibana-canvas_tutorialCustomImage_7.17.0.png
-        :alt: The Analytics logo added to the workpad
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-canvas_tutorialCustomImage_7.17.0.png
+       :alt: The Analytics logo added to the workpad
+       :class: screenshot
+       :::
 
 
 

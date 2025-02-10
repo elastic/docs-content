@@ -66,7 +66,7 @@ Deleting a space permanently removes the space and all of its contents. Find the
 
 ## Move saved objects between spaces [spaces-moving-objects]
 
-To move saved objects between spaces, you can [copy objects](../../../explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space), or [export and import objects](../../../explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-export-objects).
+To move saved objects between spaces, you can [copy objects](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-copy-to-other-spaces), or [export and import objects](/explore-analyze/find-and-organize/saved-objects.md#saved-objects-export).
 
 
 ## Configure a space-level landing page [spaces-default-route]
