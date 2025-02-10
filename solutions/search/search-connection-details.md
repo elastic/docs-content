@@ -21,7 +21,7 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
 1. Navigate to the Elastic Cloud home page.
 2. In the main menu, click **Manage this deployment**.
 
-    :::{image} ../../../images/kibana-manage-deployment.png
+    :::{image} ../../images/kibana-manage-deployment.png
     :alt: manage deployment
     :class: screenshot
     :::
