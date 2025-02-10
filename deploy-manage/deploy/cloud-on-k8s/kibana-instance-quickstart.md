@@ -6,7 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-kibana.html
 ---
 
-# Kibana instance quickstart [k8s-deploy-kibana]
+# Deploy a Kibana instance [k8s-deploy-kibana]
 
 To deploy a simple [{{kib}}](https://www.elastic.co/guide/en/kibana/current/introduction.html#introduction) specification, with one {{kib}} instance:
 

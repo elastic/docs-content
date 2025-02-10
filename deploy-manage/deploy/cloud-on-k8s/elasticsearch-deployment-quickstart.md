@@ -6,7 +6,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-elasticsearch.html
 ---
 
-# Elasticsearch deployment quickstart [k8s-deploy-elasticsearch]
+# Deploy an Elasticsearch cluster [k8s-deploy-elasticsearch]
 
 To deploy a simple [{es](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)}] cluster specification, with one {{es}} node:
 

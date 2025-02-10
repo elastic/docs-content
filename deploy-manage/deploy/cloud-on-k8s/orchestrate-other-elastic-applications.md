@@ -1,20 +1,24 @@
 # Orchestrate other Elastic applications
 
-% What needs to be done: Write from scratch
+This section explains how to deploy and configure various Elastic Stack applications within Elastic Cloud on Kubernetes (ECK).
 
-* [*Run APM Server on ECK*](apm-server.md)
-* [*Run standalone Elastic Agent on ECK*](standalone-elastic-agent.md)
-* [*Run {{fleet}}-managed {{agent}} on ECK*](fleet-managed-elastic-agent.md)
-* [*Run Elastic Maps Server on ECK*](elastic-maps-server.md)
-* [*Run Enterprise Search on ECK*](enterprise-search.md)
-* [*Run Beats on ECK*](beats.md)
-* [*Run {{ls}} on ECK*](logstash.md)
+::::{tip}
+This content applies to **APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash** applications. To orchestrate an **{{es}}** cluster or **{{kib}}**, refer to [](./manage-deployments.md).
+::::
 
-% to analyze and decide how the content gets presented
+The following guides provide specific instructions for deploying and configuring each application on ECK:
+* [*APM Server*](apm-server.md)
+* [*Standalone Elastic Agent*](standalone-elastic-agent.md)
+* [*{{fleet}}-managed {{agent}}*](fleet-managed-elastic-agent.md)
+* [*Elastic Maps Server*](elastic-maps-server.md)
+* [*Enterprise Search*](enterprise-search.md)
+* [*Beats*](beats.md)
+* [*{{ls}}*](logstash.md)
+
+When orchestrating any of these applications, also consider the following topics, originally presented for {{es}} and {{kib}}:
 
 * [*Elastic Stack Helm Chart*](managing-deployments-using-helm-chart.md)
 * [*Recipes*](recipes.md)
-
 * [*Secure the Elastic Stack*](../../security.md)
 * [*Access Elastic Stack services*](accessing-services.md)
 * [*Customize Pods*](customize-pods.md)
@@ -23,5 +27,3 @@
 * [*Elastic Stack configuration policies*](elastic-stack-configuration-policies.md)
 * [*Upgrade the Elastic Stack version*](../../upgrade/deployment-or-cluster.md)
 * [*Connect to external Elastic resources*](connect-to-external-elastic-resources.md)
-
-

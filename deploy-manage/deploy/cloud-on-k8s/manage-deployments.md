@@ -13,17 +13,17 @@ applies:
 This section provides detailed guidance on deploying, configuring, and managing Elasticsearch and Kibana within ECK. A **deployment** refers to an {{es}} cluster, optionally with one or more {{kib}} instances connected to it.
 
 ::::{tip}
-This section focuses on **Elasticsearch and Kibana** deployments. To orchestrate other Elastic Stack applications such as **APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash**, refer to the [Orchestrating other Elastic Stack applications](./orchestrate-other-elastic-applications.md).
+This content focuses on **Elasticsearch and Kibana** deployments. To orchestrate other Elastic Stack applications such as **APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash**, refer to the [Orchestrating other Elastic Stack applications](./orchestrate-other-elastic-applications.md).
 ::::
 
 ## What You'll Learn
 
-- [**Deploy an Elasticsearch cluster (quickstart)**](./elasticsearch-deployment-quickstart.md) → Orchestrate an {{es}} cluster in Kubernetes.
-- [**Deploy Kibana instances (quickstart)**](./kibana-instance-quickstart.md) → Set up and connect Kibana to an existing Elasticsearch cluster.
-- [**Manage deployments using Elastic Stack Helm chart**](./managing-deployments-using-helm-chart.md) → (pending description)
+- [**Deploy an Elasticsearch cluster**](./elasticsearch-deployment-quickstart.md) → Orchestrate an {{es}} cluster in Kubernetes.
+- [**Deploy Kibana instances**](./kibana-instance-quickstart.md) → Set up and connect Kibana to an existing Elasticsearch cluster.
+- [**Manage deployments using Elastic Stack Helm chart**](./managing-deployments-using-helm-chart.md) → Use Helm to deploy clusters and other stack applications.
 - [**Apply updates to your deployments**](./update-deployments.md) → Modify existing deployments, scale clusters, and update configurations, while ensuring minimal disruption.
-- [**Configure access to your deployments**](./accessing-services.md) → Expose your deployments through Kubernetes services.
-- [**Advanced configuration use cases**](./configure-deployments.md) → Explore available settings for Elasticsearch and Kibana, including storage, networking, security, and scaling options.
+- [**Configure access to your deployments**](./accessing-services.md) → Make your deployments available through Kubernetes services.
+- [**Advanced configuration**](./configure-deployments.md) → Explore available settings for Elasticsearch and Kibana, including storage, networking, security, and scaling options.
 
 For a complete reference on configuration possibilities for {{es}} and {{kib}}, see:
 

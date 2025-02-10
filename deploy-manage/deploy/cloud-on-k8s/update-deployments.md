@@ -6,6 +6,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
 ---
 
+% consider moving this to Configure deployments
+
 # Update your deployments [k8s-update-deployment]
 
 You can add and modify most elements of the original Kubernetes cluster specification provided that they translate to valid transformations of the underlying Kubernetes resources (for example [existing volume claims cannot be downsized](volume-claim-templates.md)). The ECK operator will attempt to apply your changes with minimal disruption to the existing cluster. You should ensure that the Kubernetes cluster has sufficient resources to accommodate the changes (extra storage space, sufficient memory and CPU resources to temporarily spin up new pods, and so on).

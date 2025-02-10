@@ -8,21 +8,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_learn_more_about_eck.html
 ---
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/357
-
-% Scope notes: Maybe we can even leave it as it is.
-
-% Use migrated content from existing pages that map to this page:
-
-% deleted all of them
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-overview.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-advanced-topics.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-supported.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s_learn_more_about_eck.md
-
 # Elastic Cloud on Kubernetes [k8s-overview]
 
 % TBD: choose 
@@ -46,14 +31,23 @@ With Elastic Cloud on Kubernetes you can streamline critical operations, such as
 4. Securing clusters with TLS certificates
 5. Setting up hot-warm-cold architectures with availability zone awareness
 
-% TBD: choose
-On this section you will learn how to:
-This sections offers everything you need to know about:
+This section provides everything you need to install, configure, and manage Elastic Stack applications with ECK, including:
 
 - [](./cloud-on-k8s/deploy-an-orchestrator.md): ECK installation methods and configuration details.
 - [](./cloud-on-k8s/manage-deployments.md): Install and configure {{es}} clusters and {{kib}} instances through ECK.
 - [](./cloud-on-k8s/orchestrate-other-elastic-applications.md): Install and configure APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
 - [](./cloud-on-k8s/tools-apis.md): Collection of tools and APIs available in ECK based environments.
+
+## Looking for a quickstart? [eck-quickstart]
+
+If you want to get started quickly, follow these guides to deploy ECK and set up an {{es}} cluster:
+
+* [Install ECK using the YAML manifests](install-using-yaml-manifest-quickstart.md)
+* [Deploy an {{es}} cluster](elasticsearch-deployment-quickstart.md)
+* [Deploy a {{kib}} instance](kibana-instance-quickstart.md)
+* [Update your deployment](update-deployments.md)
+
+Afterwards, you can find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/samples) or by checking out [our recipes](recipes.md).
 
 ## Supported versions [k8s-supported]
 
@@ -79,7 +73,6 @@ Elastic Stack application images for the OpenShift-certified Elasticsearch (ECK)
 Check the full [Elastic support matrix](https://www.elastic.co/support/matrix#matrix_kubernetes) for more information.
 
 % TBD: discuss if these make sense here
-
 ## Learn more about ECK [k8s_learn_more_about_eck]
 
 * [Orchestrate Elasticsearch on Kubernetes](https://www.elastic.co/elasticsearch-kubernetes)
@@ -100,6 +93,7 @@ Alternatively, or if you do not have a support contract, and if you are unable t
 
 % to consider in either deploy or manage deployment sections
 % this was a "redirect only" in the excel
+
 ## Advanced topics [k8s-advanced-topics]
 
 * [*Deploy ECK on OpenShift*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-openshift.md)
