@@ -8,7 +8,7 @@ applies:
 
 # Multifactor authentication [ec-account-security-mfa]
 
-If you use a password-based login, Elastic requires that you add an extra layer of security to your {{ecloud}} account by enabling a multifactor authentication (MFA) method.
+If you use a password-based login, Elastic requires you to enable multifactor authentication (MFA) for added security on your {{ecloud}} account.
 
 You can choose from the following methods:
 
