@@ -35,12 +35,12 @@ This section provides everything you need to install, configure, and manage Elas
 
 If you want to get started quickly, follow these guides to deploy ECK and set up an {{es}} cluster:
 
-* [Install ECK using the YAML manifests](install-using-yaml-manifest-quickstart.md)
-* [Deploy an {{es}} cluster](elasticsearch-deployment-quickstart.md)
-* [Deploy a {{kib}} instance](kibana-instance-quickstart.md)
-* [Update your deployment](update-deployments.md)
+* [Install ECK using the YAML manifests](./cloud-on-k8s/install-using-yaml-manifest-quickstart.md)
+* [Deploy an {{es}} cluster](./cloud-on-k8s/elasticsearch-deployment-quickstart.md)
+* [Deploy a {{kib}} instance](./cloud-on-k8s/kibana-instance-quickstart.md)
+* [Update your deployment](./cloud-on-k8s/update-deployments.md)
 
-Afterwards, you can find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/samples) or by checking out [our recipes](recipes.md).
+Afterwards, you can find further sample resources [in the project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/samples) or by checking out [our recipes](./cloud-on-k8s/recipes.md).
 
 ## Supported versions [k8s-supported]
 
@@ -65,6 +65,26 @@ Elastic Stack application images for the OpenShift-certified Elasticsearch (ECK)
 
 Check the full [Elastic support matrix](https://www.elastic.co/support/matrix#matrix_kubernetes) for more information.
 
+## Common tasks
+
+* [Deploy and configure ECK](./cloud-on-k8s/deploy-an-orchestrator.md)
+* [Manage {{es}} and {{kib}} deployments](./cloud-on-k8s/manage-deployments.md)
+* [Orchestrate other Elastic Stack applications](./cloud-on-k8s/orchestrate-other-elastic-applications.md)
+
+% to consider in either deploy or manage deployment sections
+% this was a "redirect only" in the excel
+## Advanced topics [k8s-advanced-topics]
+
+* [*Deploy ECK on OpenShift*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-openshift.md)
+* [*Deploy ECK on GKE Autopilot*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md)
+* [*Create custom images*](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md)
+* [*Service meshes*](/deploy-manage/deploy/cloud-on-k8s/service-meshes.md)
+* [*Traffic Splitting*](/deploy-manage/deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md)
+* [*Network policies*](/deploy-manage/deploy/cloud-on-k8s/network-policies.md)
+* [*Webhook namespace selectors*](/deploy-manage/deploy/cloud-on-k8s/webhook-namespace-selectors.md)
+* [*Stack Monitoring*](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md)
+* [*Deploy a FIPS compatible version of ECK*](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md)
+
 % TBD: discuss if these make sense here
 ## Learn more about ECK [k8s_learn_more_about_eck]
 
@@ -83,18 +103,3 @@ Alternatively, or if you do not have a support contract, and if you are unable t
 
 * [ECK Discuss forums](https://discuss.elastic.co/c/eck) to ask any question
 * [Github issues](https://github.com/elastic/cloud-on-k8s/issues) for bugs and feature requests
-
-% to consider in either deploy or manage deployment sections
-% this was a "redirect only" in the excel
-
-## Advanced topics [k8s-advanced-topics]
-
-* [*Deploy ECK on OpenShift*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-openshift.md)
-* [*Deploy ECK on GKE Autopilot*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md)
-* [*Create custom images*](/deploy-manage/deploy/cloud-on-k8s/create-custom-images.md)
-* [*Service meshes*](/deploy-manage/deploy/cloud-on-k8s/service-meshes.md)
-* [*Traffic Splitting*](/deploy-manage/deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md)
-* [*Network policies*](/deploy-manage/deploy/cloud-on-k8s/network-policies.md)
-* [*Webhook namespace selectors*](/deploy-manage/deploy/cloud-on-k8s/webhook-namespace-selectors.md)
-* [*Stack Monitoring*](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md)
-* [*Deploy a FIPS compatible version of ECK*](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md)
