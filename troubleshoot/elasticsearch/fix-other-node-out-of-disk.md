@@ -1,7 +1,10 @@
 ---
+navigation_title: Other nodes out of disk
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-other-node-out-of-disk.html
 ---
+
+% marciw move to new "out of disk" subsection
 
 # Fix other role nodes out of disk [fix-other-node-out-of-disk]
 

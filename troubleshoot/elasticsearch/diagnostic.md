@@ -1,10 +1,8 @@
 ---
-navigation_title: "Capture diagnostics"
+navigation_title: Diagnostics
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/diagnostic.html
 ---
-
-
 
 # Capture diagnostics [diagnostic]
 

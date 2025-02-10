@@ -1,7 +1,10 @@
 ---
+navigation_title: Master nodes out of disk
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-master-node-out-of-disk.html
 ---
+
+% marciw move to new "out of disk" subsection
 
 # Fix master nodes out of disk [fix-master-node-out-of-disk]
 

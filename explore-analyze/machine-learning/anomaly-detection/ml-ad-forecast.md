@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-forecast.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-aiops-forecast-anomalies.html
 ---
 
 # Forecast future behavior [ml-ad-forecast]

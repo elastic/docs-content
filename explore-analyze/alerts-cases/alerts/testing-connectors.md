@@ -24,7 +24,6 @@ or by directly opening the proper connector edit flyout:
 :class: screenshot
 :::
 
-
 ## [preview] Troubleshooting connectors with the `kbn-action` tool [_troubleshooting_connectors_with_the_kbn_action_tool]
 
 You can run an email action via [kbn-action](https://github.com/pmuellr/kbn-action). In this example, it is a Cloud hosted deployment of the {{stack}}:
@@ -80,4 +79,3 @@ $ kbn-action execute a692dc89-15b9-4a3c-9e47-9fb6872e49ce '{subject: "hallo", me
     "actionId": "a692dc89-15b9-4a3c-9e47-9fb6872e49ce"
 }
 ```
-

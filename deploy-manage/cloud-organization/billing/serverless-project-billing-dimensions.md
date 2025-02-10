@@ -1,11 +1,14 @@
 ---
+navigation_title: "Serverless billing dimensions"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-billing.html
+applies:
+  serverless: all
 ---
 
 # Serverless project billing dimensions [general-serverless-billing]
 
-Elastic Cloud serverless billing is based on your usage across these dimensions:
+{{serverless-full}} billing is based on your usage across these dimensions:
 
 * [Offerings](#offerings)
 * [Add-ons](#add-ons)
@@ -16,8 +19,8 @@ Elastic Cloud serverless billing is based on your usage across these dimensions:
 To learn about billing dimensions for specific offerings, refer to:
 
 * [{{es}} billing dimensions](elasticsearch-billing-dimensions.md)
-* [{{obs-serverless}} billing dimensions](elastic-observability-billing-dimensions.md)
-* [Security billing dimensions](security-billing-dimensions.md)
+* [Elastic for Observability billing dimensions](elastic-observability-billing-dimensions.md)
+* [Elastic for Security dimensions](security-billing-dimensions.md)
 
 
 ## Add-ons [add-ons] 

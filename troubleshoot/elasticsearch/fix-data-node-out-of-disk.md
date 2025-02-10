@@ -1,7 +1,10 @@
 ---
+navigation_title: Data nodes out of disk
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-data-node-out-of-disk.html
 ---
+
+% marciw move to new "out of disk" subsection
 
 # Fix data nodes out of disk [fix-data-node-out-of-disk]
 

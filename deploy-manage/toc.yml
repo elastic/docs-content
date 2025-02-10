@@ -795,18 +795,18 @@ toc:
           - file: cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md
           - file: cloud-organization/billing/serverless-project-billing-dimensions.md
             children:
-              - file: cloud-organization/billing/elastic-observability-billing-dimensions.md
               - file: cloud-organization/billing/elasticsearch-billing-dimensions.md
+              - file: cloud-organization/billing/elastic-observability-billing-dimensions.md
               - file: cloud-organization/billing/security-billing-dimensions.md
           - file: cloud-organization/billing/billing-models.md
-          - file: cloud-organization/billing/monitor-analyze-usage.md
-          - file: cloud-organization/billing/view-billing-history.md
           - file: cloud-organization/billing/add-billing-details.md
-          - file: cloud-organization/billing/update-billing-operational-contacts.md
-          - file: cloud-organization/billing/billing-faq.md
-          - file: cloud-organization/billing/stop-charges-for-project-deployment.md
+          - file: cloud-organization/billing/view-billing-history.md
           - file: cloud-organization/billing/manage-subscription.md
+          - file: cloud-organization/billing/monitor-analyze-usage.md
+          - file: cloud-organization/billing/ecu.md
+          - file: cloud-organization/billing/billing-faq.md
       - file: cloud-organization/operational-emails.md
+      - file: cloud-organization/billing/update-billing-operational-contacts.md
       - file: cloud-organization/service-status.md
       - file: cloud-organization/tools-and-apis.md
   - file: license.md

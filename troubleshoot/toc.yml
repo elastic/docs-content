@@ -15,9 +15,9 @@ toc:
           - file: elasticsearch/mapping-explosion.md
           - file: elasticsearch/hotspotting.md
       - file: elasticsearch/diagnose-unassigned-shards.md
-      - file: elasticsearch/add-tier.md
       - file: elasticsearch/allow-all-cluster-allocation.md
       - file: elasticsearch/allow-all-index-allocation.md
+      - file: elasticsearch/add-tier.md
       - file: elasticsearch/troubleshoot-migrate-to-tiers.md
       - file: elasticsearch/increase-tier-capacity.md
       - file: elasticsearch/increase-shard-limit.md
