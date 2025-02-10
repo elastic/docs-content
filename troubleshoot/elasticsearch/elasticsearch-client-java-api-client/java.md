@@ -1,9 +1,10 @@
 ---
+navigation_title: Java
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/troubleshooting.html
 ---
 
-# Java [troubleshooting]
+# Troubleshoot {{es}} Java client [troubleshooting]
 
 
 ## Exceptions [_exceptions] 

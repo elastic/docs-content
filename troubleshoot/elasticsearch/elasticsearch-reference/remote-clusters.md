@@ -1,12 +1,12 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: Remote clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-troubleshooting.html
 ---
 
 
 
-# Remote clusters [remote-clusters-troubleshooting]
+# Troubleshoot remote clusters [remote-clusters-troubleshooting]
 
 
 You may encounter several issues when setting up a remote cluster for {{ccr}} or {{ccs}}.

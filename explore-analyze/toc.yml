@@ -348,6 +348,7 @@ toc:
               - file: alerts-cases/alerts/rule-type-es-query.md
               - file: alerts-cases/alerts/geo-alerting.md
           - file: alerts-cases/alerts/rule-action-variables.md
+          - file: alerts-cases/alerts/notifications-domain-allowlist.md
           - file: alerts-cases/alerts/alerting-troubleshooting.md
             children:
               - file: alerts-cases/alerts/alerting-common-issues.md
