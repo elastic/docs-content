@@ -21,7 +21,7 @@ With [{{ccr}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/x
 ## Add remote clusters [add-remote-clusters]
 
 ::::{note}
-The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ess}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.md) or from an [{{ece}} deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.md).
+The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ess}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html) or from an [{{ece}} deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html).
 ::::
 
 

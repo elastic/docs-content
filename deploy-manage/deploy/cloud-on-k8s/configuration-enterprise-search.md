@@ -12,7 +12,7 @@ You can upgrade the Enterprise Search version or change settings by editing the 
 
 ## Customize Enterprise Search configuration [k8s-enterprise-search-custom-configuration]
 
-ECK sets up a default Enterprise Search [configuration](https://www.elastic.co/guide/en/enterprise-search/current/configuration.md#configuration). To customize it, use the `config` element in the specification.
+ECK sets up a default Enterprise Search [configuration](https://www.elastic.co/guide/en/enterprise-search/current/configuration.html#configuration). To customize it, use the `config` element in the specification.
 
 At a minimum, you must set both `ent_search.external_url` and `kibana.host` to the desired URLs.
 

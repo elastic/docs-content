@@ -42,7 +42,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 1. Make sure you are running a healthy x-node ECE environment ready to be upgraded. All nodes use the Docker container runtime.
 2. Upgrade to ECE 3.3.0+ following the [Upgrade your installation](../../upgrade/orchestrator/upgrade-cloud-enterprise.md) guideline. Skip this step if your existing ECE installation already runs ECE >= 3.3.0.
 3. Follow your internal guidelines to add an additional vanilla RHEL (Note that the version must be >= 8.5, but <9), or Rocky Linux 8 or 9 VM to your environment.
-4. Verify that required traffic from the host added in step 3 is allowed to the primary ECE VM(s). Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-gcp.html) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
+4. Verify that required traffic from the host added in step 3 is allowed to the primary ECE VM(s). Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-prereqs.html) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
 
     **Example** For AWS, allowing traffic between hosts is implemented using security groups.
 
@@ -435,7 +435,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 
     3. Put the docker-based allocator you want to replace with a podman allocator in maintenance mode by following the [Enable Maintenance Mode](../../maintenance/ece/enable-maintenance-mode.md) documentation.
 
-        As an alternative, use the [Start maintenance mode](https://www.elastic.co/guide/en/cloud-enterprise/current/start-allocator-maintenance-mode.html) API.
+        As an alternative, use the [Start maintenance mode](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-start-allocator-maintenance-mode) API.
 
     4. Move all instances from the Docker allocator to the podman allocator by following the [Move Nodes From Allocators](../../maintenance/ece/move-nodes-instances-from-allocators.md) documentation.
 
@@ -453,12 +453,12 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
         :alt: Move instances
         :::
 
-        As an alternative, use the [*Move clusters*](https://www.elastic.co/guide/en/cloud-enterprise/current/move-clusters.html) API.
+        As an alternative, use the [*Move clusters*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-move-clusters) API.
 
         To identifying the correct target allocator, the following APIs might be helpful:
 
-        * [*Get allocators*](https://www.elastic.co/guide/en/cloud-enterprise/current/get-allocators.html)
-        * [*Get allocator metadata*](https://www.elastic.co/guide/en/cloud-enterprise/current/get-allocator-metadata.html)
+        * [*Get allocators*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocators)
+        * [*Get allocator metadata*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocator-metadata)
 
             ```json
             {
@@ -483,11 +483,11 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
             }
             ```
 
-            1. If allocators are tagged as mentioned in step 7, the metadata section of the [*Get allocators*](https://www.elastic.co/guide/en/cloud-enterprise/current/get-allocators.html)  API should contain the tag.
+            1. If allocators are tagged as mentioned in step 7, the metadata section of the [*Get allocators*](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-allocators)  API should contain the tag.
 
 
             This information allows you to determine what allocators are running on top of podman (automated way)
 
     5. Remove the Docker allocator by following the [Delete Hosts](../../maintenance/ece/delete-ece-hosts.md) guidelines.
 
-    As an alternative, use the [Delete Runner](https://www.elastic.co/guide/en/cloud-enterprise/current/delete-runner.html) API.
+    As an alternative, use the [Delete Runner](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-delete-runner) API.

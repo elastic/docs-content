@@ -264,7 +264,7 @@ cluster:
 
 ## Configure roles and users for remote clusters [remote-clusters-privileges-cert]
 
-After [connecting remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-connect.html), you create a user role on both the local and remote clusters and assign necessary privileges. These roles are required to use {{ccr}} and {{ccs}}.
+After [connecting remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html), you create a user role on both the local and remote clusters and assign necessary privileges. These roles are required to use {{ccr}} and {{ccs}}.
 
 ::::{important}
 You must use the same role names on both the local and remote clusters. For example, the following configuration for {{ccr}} uses the `remote-replication` role name on both the local and remote clusters. However, you can specify different role definitions on each cluster.
