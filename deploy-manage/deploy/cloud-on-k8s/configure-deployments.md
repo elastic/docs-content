@@ -15,6 +15,8 @@ This section provides details around {{kib}} and {{es}} configuration when runni
 
 * [**{{es}} configuration**](elasticsearch-configuration.md) → Review configuration possibilities to tune your {{es}} cluster running on ECK, learn how [nodes orchestration](./nodes-orchestration.md) work, [storage recommendations](./storage-recommendations.md), and more.
 
+  * [](./requests-routing-to-elasticsearch-nodes.md) → Control the nodes receiving incoming traffic when using multiple `nodeSets` with different [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html).
+
 * [**{{kib}} configuration**](kibana-configuration.md) → Learn how to connect {{kib}} to an {{es}} cluster, apply advanced configuration settings, and tune the HTTP configuration.
 
 Additionally, the following topics apply to both {{es}} and {{kib}}, and in some cases, to other applications supported by ECK:
