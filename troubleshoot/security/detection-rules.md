@@ -15,7 +15,7 @@ This topic covers common troubleshooting issues when creating or managing [detec
 
 ## {{ml-cap}} rules [ML-rules-ts]
 
-::::{dropdown} {ml-cap} rule is failing and a required {{ml}} job is stopped
+::::{dropdown} {{ml-cap}} rule is failing and a required {{ml}} job is stopped
 :name: start-ML-jobs-ts
 
 If a {{ml}} rule is failing, check to make sure the required {{ml}} jobs are running and start any jobs that have stopped.
