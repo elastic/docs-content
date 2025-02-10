@@ -22,6 +22,7 @@ The following diagram illustrates the components of full-text search.
 
 :::{image} ../../images/elasticsearch-reference-full-text-search-overview.svg
 :alt: Components of full-text search from analysis to relevance scoring
+:width: 550px
 :::
 
 At a high level, full-text search involves the following:
@@ -80,5 +81,5 @@ Learn how to build full-text search queries using {{es}}'s query languages:
 
 For a technical deep dive into {{es}}'s BM25 implementation read this blog post: [The BM25 Algorithm and its Variables](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables).
 
-To learn how to optimize the relevance of your search results, refer to [Search relevance optimizations](examples.md).
+To learn how to optimize the relevance of your search results, refer to [Search relevance optimizations](full-text/search-relevance.md).
 
