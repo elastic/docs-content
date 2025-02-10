@@ -219,19 +219,19 @@ To generate the data, **Vega-Lite** uses the `source_0` and `data_0`. `source_0`
 2. From the **View** dropdown, select **Vega debug**.
 3. From the dropdown, select **source_0**.
 
-    :::{image} ../../images/kibana-vega_lite_tutorial_4.png
-    :alt: Table for data_0 with columns key
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-vega_lite_tutorial_4.png
+   :alt: Table for data_0 with columns key
+   :class: screenshot
+   :::
 
 4. To compare to the visually encoded data, select **data_0** from the dropdown.
 
-    :::{image} ../../images/kibana-vega_lite_tutorial_5.png
-    :alt: Table for data_0 where the key is NaN instead of a string
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-vega_lite_tutorial_5.png
+   :alt: Table for data_0 where the key is NaN instead of a string
+   :class: screenshot
+   :::
 
-    **key** is unable to convert because the property is category (`Men's Clothing`, `Women's Clothing`, etc.) instead of a timestamp.
+   **key** is unable to convert because the property is category (`Men's Clothing`, `Women's Clothing`, etc.) instead of a timestamp.
 
 
 
@@ -257,10 +257,10 @@ In the **Vega-Lite** spec, add the `encoding` block:
 1. Click **Inspect**, then select **Vega Debug** from the **View** dropdown.
 2. From the dropdown, select **data_0**.
 
-    :::{image} ../../images/kibana-vega_lite_tutorial_6.png
-    :alt: Table for data_0 showing that the column time_buckets.buckets.key is undefined
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-vega_lite_tutorial_6.png
+   :alt: Table for data_0 showing that the column time_buckets.buckets.key is undefined
+   :class: screenshot
+   :::
 
 
 **Vega-Lite** is unable to extract the `time_buckets.buckets` inner array.
@@ -283,10 +283,10 @@ In the **Vega-Lite** spec, add a `transform` block, then click **Update**:
 1. Click **Inspect**, then select **Vega Debug** from the **View** dropdown.
 2. From the dropdown, select **data_0**.
 
-    :::{image} ../../images/kibana-vega_lite_tutorial_7.png
-    :alt: Table showing data_0 with multiple pages of results
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-vega_lite_tutorial_7.png
+   :alt: Table showing data_0 with multiple pages of results
+   :class: screenshot
+   :::
 
     Vega-Lite displays **undefined** values because there are duplicate names.
 

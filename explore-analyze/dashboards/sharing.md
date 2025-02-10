@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/share-the-dashboard.html
 ---
 
-# Sharing [share-the-dashboard]
+# Sharing dashboards [share-the-dashboard]
 
 To share a dashboard with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
