@@ -1,9 +1,10 @@
 ---
+navigation_title: Monitoring
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-troubleshooting.html
 ---
 
-# Troubleshooting monitoring [monitoring-troubleshooting]
+# Troubleshoot monitoring [monitoring-troubleshooting]
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions. See also [Troubleshooting monitoring in {{ls}}](https://www.elastic.co/guide/en/logstash/current/monitoring-troubleshooting.html).
 

@@ -6,7 +6,7 @@ mapped_pages:
 
 
 
-# Troubleshooting APM [apm-troubleshoot-apm]
+# Troubleshoot APM [apm-troubleshoot-apm]
 
 
 This section provides solutions to common questions and problems, and processing and performance guidance.

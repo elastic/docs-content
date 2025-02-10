@@ -1,9 +1,12 @@
 ---
+navigation_title: Incomplete migration to data tiers
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshoot-migrate-to-tiers.html
 ---
 
-# Indices mix index allocation filters with data tiers node roles to move through data tiers [troubleshoot-migrate-to-tiers]
+% old title: Mix of index allocation filters and data tier node roles
+
+# Troubleshoot incomplete migration to data tiers [troubleshoot-migrate-to-tiers]
 
 Elasticsearch standardized the implementation of [hot-warm-cold architectures](https://www.elastic.co/blog/elasticsearch-data-lifecycle-management-with-data-tiers) to [data tiers](../../manage-data/lifecycle/data-tiers.md) in version 7.10. Some indices and deployments might have not fully transitioned to [data tiers](../../manage-data/lifecycle/data-tiers.md) and mix the new way of implementing the hot-warm-cold architecture with [legacy](../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) based node attributes.
 

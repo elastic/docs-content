@@ -1,7 +1,11 @@
 ---
+navigation_title: Index allocation
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/allow-all-index-allocation.html
 ---
+
+% Need to retitle to be about the problem, not the solution
+% New subsection about unassigned shards?
 
 # Allow Elasticsearch to allocate the index [allow-all-index-allocation]
 

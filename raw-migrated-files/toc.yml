@@ -284,7 +284,6 @@ toc:
       - file: docs-content/serverless/infrastructure-and-host-monitoring-intro.md
       - file: docs-content/serverless/ingest-aws-securityhub-data.md
       - file: docs-content/serverless/ingest-falco.md
-      - file: docs-content/serverless/ingest-pipelines.md
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
@@ -396,7 +395,6 @@ toc:
       - file: docs-content/serverless/observability-triage-slo-burn-rate-breaches.md
       - file: docs-content/serverless/observability-triage-threshold-breaches.md
       - file: docs-content/serverless/observability-troubleshoot-logs.md
-      - file: docs-content/serverless/observability-troubleshooting-infrastructure-monitoring.md
       - file: docs-content/serverless/observability-view-alerts.md
       - file: docs-content/serverless/observability-view-infrastructure-metrics.md
       - file: docs-content/serverless/project-and-management-settings.md
@@ -528,7 +526,6 @@ toc:
       - file: docs-content/serverless/security-timeline-templates-ui.md
       - file: docs-content/serverless/security-timelines-ui.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
-      - file: docs-content/serverless/security-troubleshoot-endpoints.md
       - file: docs-content/serverless/security-trusted-applications.md
       - file: docs-content/serverless/security-ts-detection-rules.md
       - file: docs-content/serverless/security-tune-detection-signals.md
@@ -592,7 +589,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/index-modules-analysis.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/ingest-enriching-data.md
-      - file: elasticsearch/elasticsearch-reference/ingest.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
       - file: elasticsearch/elasticsearch-reference/jwt-auth-realm.md
@@ -660,7 +656,6 @@ toc:
       - file: kibana/kibana/logging-settings.md
       - file: kibana/kibana/management.md
       - file: kibana/kibana/osquery.md
-      - file: kibana/kibana/reporting-getting-started.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
       - file: kibana/kibana/sample-data.md
@@ -803,7 +798,6 @@ toc:
       - file: observability-docs/observability/synthetics-troubleshooting.md
       - file: observability-docs/observability/triage-slo-burn-rate-breaches.md
       - file: observability-docs/observability/triage-threshold-breaches.md
-      - file: observability-docs/observability/troubleshooting-infrastructure-monitoring.md
       - file: observability-docs/observability/view-infrastructure-metrics.md
       - file: observability-docs/observability/view-observability-alerts.md
   - file: security-docs/security/index.md
@@ -943,7 +937,6 @@ toc:
       - file: security-docs/security/timelines-ui.md
       - file: security-docs/security/trusted-apps-ov.md
       - file: security-docs/security/ts-detection-rules.md
-      - file: security-docs/security/ts-management.md
       - file: security-docs/security/tuning-anomaly-results.md
       - file: security-docs/security/tuning-detection-signals.md
       - file: security-docs/security/turn-on-risk-engine.md

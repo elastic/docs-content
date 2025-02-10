@@ -4,13 +4,13 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-python.html
 ---
 
-# Ingest data with Python on Elastic Cloud
+# Ingest data with Python
 
 This guide tells you how to get started with:
 
-* Securely connecting to Elasticsearch Service with Python
+* Securely connecting to {{ech}} or {{ece}} with Python
 * Ingesting data into your deployment from your application
-* Searching and modifying your data on Elasticsearch Service
+* Searching and modifying your data
 
 If you are a Python application programmer who is new to the Elastic Stack, this content can help you get started more easily.
 
@@ -49,7 +49,7 @@ elasticsearch>=7.0.0,<8.0.0
 5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
+Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 :::
 
 :::{tab-item} Elastic Cloud Enterprise
@@ -64,9 +64,9 @@ Prefer not to subscribe to yet another service? You can also get Elasticsearch S
 
 ## Connect securely [ec_connect_securely]
 
-When connecting to Elasticsearch Service you need to use your Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+When connecting to {{ech}} or {{ece}}, you need to use your Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 
-To connect to, stream data to, and issue queries with Elasticsearch Service, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+To connect to, stream data to, and issue queries, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 
 ### Basic authentication [ec_basic_authentication_2]
@@ -333,7 +333,7 @@ POST /_security/api_key
 }
 ```
 
-Edit the `example.ini` file you created earlier and add the `id` and `api_key` you just created. You should also remove the lines for `user` and `password` you added earlier after you have tested the `api_key`, and consider changing the `elastic` password using the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+Edit the `example.ini` file you created earlier and add the `id` and `api_key` you just created. You should also remove the lines for `user` and `password` you added earlier after you have tested the `api_key`, and consider changing the `elastic` password using the [{{ech}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) or the {{ece}} admin console.
 
 ```sh
 [DEFAULT]
@@ -351,7 +351,7 @@ es = Elasticsearch(
 )
 ```
 
-Check [Create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-elasticsearch-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on Elasticsearch Service, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
+Check [Create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-elasticsearch-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ech}} or {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
 
 For more information on refreshing an index, searching, updating, and deleting, check the [elasticsearch-py examples](https://www.elastic.co/guide/en/elasticsearch/client/python-api/current/examples.html).
 
@@ -359,9 +359,9 @@ For more information on refreshing an index, searching, updating, and deleting, 
 ### Best practices [ec_best_practices_2]
 
 Security
-:   When connecting to Elasticsearch Service, the client automatically enables both request and response compression by default, since it yields significant throughput improvements. Moreover, the client also sets the SSL option `secureProtocol` to `TLSv1_2_method` unless specified otherwise. You can still override this option by configuring it.
+:   When connecting to {{ech}} or {{ece}}, the client automatically enables both request and response compression by default, since it yields significant throughput improvements. Moreover, the client also sets the SSL option `secureProtocol` to `TLSv1_2_method` unless specified otherwise. You can still override this option by configuring it.
 
-    Do not enable sniffing when using Elasticsearch Service, since the nodes are behind a load balancer. Elasticsearch Service takes care of everything for you. Take a look at [Elasticsearch sniffing best practices: What, when, why, how](https://www.elastic.co/blog/elasticsearch-sniffing-best-practices-what-when-why-how) if you want to know more.
+    Do not enable sniffing when using {{ech}} or {{ece}}, since the nodes are behind a load balancer. {{ech}} and {{ece}} take care of everything for you. Take a look at [Elasticsearch sniffing best practices: What, when, why, how](https://www.elastic.co/blog/elasticsearch-sniffing-best-practices-what-when-why-how) if you want to know more.
 
 
 Schema

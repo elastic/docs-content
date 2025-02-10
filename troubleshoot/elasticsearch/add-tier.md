@@ -1,9 +1,14 @@
 ---
+navigation_title: Index allocation data tier
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-tier.html
 ---
 
-# Add a missing tier to the system [add-tier]
+% marciw move this page to a new index allocation subsection
+% or just move it down in the ToC
+% and this page really really needs rewriting
+
+# Add a preferred data tier to a deployment [add-tier]
 
 The allocation of indices in an {{es}} deployment can be allocated on [data tiers](../../manage-data/lifecycle/data-tiers.md).
 
