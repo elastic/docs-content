@@ -14,7 +14,7 @@ Sparse vector search with ELSER is ideal for:
 ## Working with sparse vectors in Elasticsearch
 
 :::{tip}
-Using the `semantic_text` field type provides automatic model management and sensible defaults. [Learn more](semantic-search/semantic-search-semantic-text.md).
+Using the `semantic_text` field type provides automatic model management and sensible defaults. [Learn more](../semantic-search/semantic-search-semantic-text.md).
 :::
 
 Sparse vector search with ELSER expands both documents and queries into weighted terms. To use sparse vectors in {{es}}:
