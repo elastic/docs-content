@@ -44,7 +44,7 @@ You need to provide an administrator username and its password and replace the `
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/guide/en/kibana/current/ml-sync.html).
+Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
 
 ## Test the NER model [ex-ner-test]
 
@@ -56,7 +56,7 @@ Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Mod
 :::
 
 ::::{dropdown} **Test the model by using the _infer API**
-You can also evaluate your models by using the [_infer API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model-deployment.html). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
+You can also evaluate your models by using the [_infer API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model.html). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
 
 ```js
 POST _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/_infer
