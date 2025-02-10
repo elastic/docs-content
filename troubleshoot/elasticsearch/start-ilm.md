@@ -1,9 +1,13 @@
 ---
+navigation_title: Index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-ilm.html
 ---
 
 # Start index lifecycle management [start-ilm]
+
+% marciw consider moving out of troubleshooting and into how-tos
+% marciw or add troubleshooting info from elsewhere
 
 Automatic index lifecycle and data retention management is currently disabled.
 

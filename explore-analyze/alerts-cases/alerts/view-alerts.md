@@ -19,14 +19,11 @@ You must have the appropriate {{kib}} {alert-features} and index privileges to v
 
 ::::
 
-
-
 ## Filter alerts [filter-alerts]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
-
 
 In **{{stack-manage-app}}** > **Alerts**, you can filter the list (for example, by alert status or rule type) and customize the filter controls. To search for specific alerts, use the KQL bar to create structured queries using [{{kib}} Query Language](../../query-filter/languages/kql.md).
 
@@ -39,13 +36,11 @@ By default, the list contains all the alerts that you have authority to view in 
 
 Alternatively, view those alerts in the [{{security-app}}](../../../solutions/security/detect-and-alert/manage-detection-alerts.md).
 
-
 ## View alert details [view-alert-details]
 
 To get more information about a specific alert, open its action menu (…) and select **View alert details** in either **{{stack-manage-app}} > Alerts** or **{{rules-ui}}**. There you’ll see the current status of the alert, its duration, and when it was last updated. To help you determine what caused the alert, there is information such as the expected and actual threshold values and a summarized reason for the alert.
 
 If an alert is affected by a maintenance window, the alert details include its identifier. For more information about their impact on alert notifications, refer to [*Maintenance windows*](maintenance-windows.md).
-
 
 ### Alert statuses [alert-status]
 
@@ -65,11 +60,8 @@ An alert can also be in a "flapping" state when it is switching repeatedly betwe
 
 ::::
 
-
-
 ## Mute alerts [mute-alerts]
 
 If an alert is active or flapping, you can mute it to temporarily suppress future actions. In both **{{stack-manage-app}} > Alerts** and **{{rules-ui}}**, you can open the action menu (…) for the appropriate alert and select **Mute**. To permanently suppress actions for an alert, open the actions menu and select **Mark as untracked**.
 
 To affect the behavior of the rule rather than individual alerts, check out [Snooze and disable rules](create-manage-rules.md#controlling-rules).
-

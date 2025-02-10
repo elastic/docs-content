@@ -1,9 +1,10 @@
 ---
+navigation_title: Discovery
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-troubleshooting.html
 ---
 
-# Troubleshooting discovery [discovery-troubleshooting]
+# Troubleshoot discovery [discovery-troubleshooting]
 
 In most cases, the discovery and election process completes quickly, and the master node remains elected for a long period of time.
 

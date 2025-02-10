@@ -1,9 +1,10 @@
 ---
+navigation_title: Shard capacity issues
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-shards-capacity-issues.html
 ---
 
-# Troubleshooting shards capacity health issues [troubleshooting-shards-capacity-issues]
+# Troubleshoot shard capacity health issues [troubleshooting-shards-capacity-issues]
 
 {{es}} limits the maximum number of shards to be held per node using the [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node) and [`cluster.max_shards_per_node.frozen`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node-frozen) settings. The current shards capacity of the cluster is available in the [health API shards capacity section](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html#health-api-response-details-shards-capacity).
 

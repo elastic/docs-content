@@ -9,7 +9,6 @@ mapped_pages:
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-
 Use the event log index to determine:
 
 * Whether a rule ran successfully but its associated actions did not
@@ -17,8 +16,7 @@ Use the event log index to determine:
 * Additional information about errors when the rule ran
 * Run durations for the rules and actions
 
-
-## Example event log queries [_example_event_log_queries] 
+## Example event log queries [_example_event_log_queries]
 
 The following event log query looks at all events related to a specific rule id:
 
@@ -205,4 +203,3 @@ Here’s an example of what failed credentials from Google SMTP might look like 
 535 5.7.8  https://support.google.com/mail/?p=BadCredentials e207sm3359731pfh.171 - gsmtp"""
 },
 ```
-
