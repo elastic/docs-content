@@ -9,16 +9,13 @@ mapped_pages:
 If you want to install a trained model in a restricted or closed network, refer to [these instructions](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html#ml-nlp-pytorch-air-gapped).
 ::::
 
-
 After you choose a model, you must import it and its tokenizer vocabulary to your cluster. When you import the model, it must be chunked and imported one chunk at a time for storage in parts due to its size.
 
 ::::{note}
 Trained models must be in a TorchScript representation for use with {{stack-ml-features}}.
 ::::
 
-
 [Eland](https://github.com/elastic/eland) is an {{es}} Python client that provides a simple script to perform the conversion of Hugging Face transformer models to their TorchScript representations, the chunking process, and upload to {{es}}; it is therefore the recommended import method. You can either install the Python Eland client on your machine or use a Docker image to build Eland and run the model import script.
-
 
 ## Import with the Eland client installed [ml-nlp-import-script]
 
@@ -30,7 +27,7 @@ Trained models must be in a TorchScript representation for use with {{stack-ml-f
 
 2. Run the `eland_import_hub_model` script to download the model from Hugging Face, convert it to TorchScript format, and upload to the {{es}} cluster. For example:
 
-    ```shell
+    ```
     eland_import_hub_model \
     --cloud-id <cloud-id> \ <1>
     -u <username> -p <password> \ <2>
@@ -43,9 +40,7 @@ Trained models must be in a TorchScript representation for use with {{stack-ml-f
     3. Specify the identifier for the model in the Hugging Face model hub.
     4. Specify the type of NLP task. Supported values are `fill_mask`, `ner`, `question_answering`, `text_classification`, `text_embedding`, `text_expansion`, `text_similarity`, and `zero_shot_classification`.
 
-
 For more details, refer to [https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html#ml-nlp-pytorch](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html#ml-nlp-pytorch).
-
 
 ## Import with Docker [ml-nlp-import-docker]
 
@@ -65,9 +60,26 @@ docker run -it --rm docker.elastic.co/eland/eland \
       --start
 ```
 
-Replace the `$ELASTICSEARCH_URL` with the URL for your {{es}} cluster. Refer to [Authentication methods](https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-authentication.html) to learn more.
+Replace the `$ELASTICSEARCH_URL` with the URL for your {{es}} cluster. Refer to [Authentication methods](#ml-nlp-authentication) to learn more.
 
+## Authentication methods [ml-nlp-authentication]
 
+The following authentication options are available when using the import script:
 
+* username/password authentication (specified with the `-u` and `-p` options):
+  
+```bash
+eland_import_hub_model --url https://<hostname>:<port> -u <username> -p <password> ...
+```
 
-$$$ml-nlp-authentication$$$
+* username/password authentication (embedded in the URL):
+
+```bash
+eland_import_hub_model --url https://<user>:<password>@<hostname>:<port> ...
+```
+
+* API key authentication:
+
+```bash
+eland_import_hub_model --url https://<hostname>:<port> --es-api-key <api-key> ...
+```

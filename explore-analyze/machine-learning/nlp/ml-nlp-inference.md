@@ -12,7 +12,6 @@ After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you
 3. [Ingest documents](#ml-nlp-inference-ingest-docs).
 4. [View the results](#ml-nlp-inference-discover).
 
-
 ## Add an {{infer}} processor to an ingest pipeline [ml-nlp-inference-processor]
 
 In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
@@ -94,8 +93,6 @@ In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **In
 
     3. If everything looks correct, close the panel, and click **Create pipeline**. The pipeline is now ready for use.
 
-
-
 ## Ingest documents [ml-nlp-inference-ingest-docs]
 
 You can now use your ingest pipeline to perform NLP tasks on your data.
@@ -119,7 +116,6 @@ PUT ner-test
 ::::{tip}
 To use the `annotated_text` data type in this example, you must install the [mapper annotated text plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/mapper-annotated-text.html). For more installation details, refer to [Add plugins provided with {{ess}}](https://www.elastic.co/guide/en/cloud/current/ec-adding-elastic-plugins.html).
 ::::
-
 
 You can then use the new pipeline to index some documents. For example, use a bulk indexing request with the `pipeline` query parameter for your NER pipeline:
 
@@ -168,8 +164,6 @@ However, those web log messages are unlikely to contain enough words for the mod
 Set the reindex `size` option to a value smaller than the `queue_capacity` for the trained model deployment. Otherwise, requests might be rejected with a "too many requests" 429 error code.
 ::::
 
-
-
 ## View the results [ml-nlp-inference-discover]
 
 Before you can verify the results of the pipelines, you must [create {{data-sources}}](../../find-and-organize/data-views.md). Then you can explore your data in **Discover**:
@@ -190,7 +184,6 @@ In this {{lang-ident}} example, the `ml.inference.predicted_value` contains the 
 
 To learn more about ingest pipelines and all of the other processors that you can add, refer to [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).
 
-
 ## Common problems [ml-nlp-inference-common-problems]
 
 If you encounter problems while using your trained model in an ingest pipeline, check the following possible causes:
@@ -200,7 +193,6 @@ If you encounter problems while using your trained model in an ingest pipeline, 
 3. There are too many requests. If you are using bulk ingest, reduce the number of documents in the bulk request. If you are reindexing, use the `size` parameter to decrease the number of documents processed in each batch.
 
 These common failure scenarios and others can be captured by adding failure processors to your pipeline. For more examples, refer to [Handling pipeline failures](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md#handling-pipeline-failures).
-
 
 ## Further reading [nlp-example-reading]
 

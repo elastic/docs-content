@@ -23,4 +23,3 @@ _transform/
 * [Update {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html)
 
 For the full list, see [*{{transform-cap}} APIs*](https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-apis.html).
-

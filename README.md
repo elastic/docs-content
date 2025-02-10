@@ -1,5 +1,7 @@
 # Elastic Docs Content
 
+![GitHub deployments](https://img.shields.io/github/deployments/elastic/docs-content/docs-preview)
+
 This repo contains source files for Elastic documentation.
 
 ## Contribute

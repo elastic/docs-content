@@ -1,19 +1,29 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations.html
+applies:
+  serverless: all
+  hosted: all
 ---
 
 # Manage your Cloud organization [ec-organizations]
 
-When you sign up to Elastic Cloud, you create an organization.
+When you sign up to {{ecloud}}, you create an organization. This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier. 
 
-This organization is the umbrella for all of your Elastic Cloud resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization.
+You can perform the following tasks to manage your Cloud organization:
 
-From the Organization page, you can:
+* [Manage billing](/deploy-manage/cloud-organization/billing.md)
+* Manage user access to your organization: 
+  * [Add members to your organization](/deploy-manage/users-roles/cloud-organization/manage-users.md)
+  * [Assign roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md)
+  * [Create custom roles](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md) ({{serverless-short}} only)
+  * [Configure SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) to your organization
+* [Manage API keys](/deploy-manage/api-keys.md) to use with the [{{ecloud}}](https://www.elastic.co/docs/api/doc/cloud), [{{ecloud}} Billing](https://www.elastic.co/docs/api/doc/cloud-billing/), and [{{serverless-full}}](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless) APIs
+* Configure who receives [operational emails](/deploy-manage/cloud-organization/operational-emails.md) related to your organization
+* Track the [status of {{ecloud}} services](/deploy-manage/cloud-organization/service-status.md).
 
-* [Manage members of your organization](users-roles/cloud-organization/manage-users.md)
-* [Leave an organization](users-roles/cloud-organization/manage-users.md#ec-leave-organization)
-* [Assign user roles and privileges](users-roles/cloud-organization/user-roles.md)
-* [Create API keys for using the Elastic Cloud API](api-keys/elastic-cloud-api-keys.md#ec-api-keys)
-* [Configure SAML single sign-on for your organization](users-roles/cloud-organization/configure-saml-authentication.md)
+Several aspects of your organization can also be managed using tools provided by Elastic. For a list of tools, refer to [{{ecloud}} organization tools and APIs](/deploy-manage/cloud-organization/tools-and-apis.md).
 
+::::{tip} 
+To learn how to manage your {{ecloud}} account as a user, refer to [Manage your Cloud account](/cloud-account/index.md).
+::::

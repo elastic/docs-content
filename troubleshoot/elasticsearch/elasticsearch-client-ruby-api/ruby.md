@@ -1,9 +1,10 @@
 ---
+navigation_title: Ruby
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/troubleshooting.html
 ---
 
-# Ruby [troubleshooting]
+# Troubleshoot {{es}} Ruby client [troubleshooting]
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions.
 
