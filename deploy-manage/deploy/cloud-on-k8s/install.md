@@ -7,9 +7,17 @@ mapped_urls:
 
 # Install ECK [k8s-installing-eck]
 
-% TBD: This paragraph needs some improvement
+Elastic Cloud on Kubernetes (ECK) is a [Kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that helps you deploy and manage Elastic applications on Kubernetes, including **Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash**.
 
-Elastic Cloud on Kubernetes (ECK) is a [Kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) to orchestrate Elastic applications (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash) on Kubernetes. It relies on a set of [Custom Resource Definitions (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) to declaratively define the way each application is deployed. CRDs are global resources shared by all users of the Kubernetes cluster, which requires [certain permissions](../../../deploy-manage/deploy/cloud-on-k8s/required-rbac-permissions.md#k8s-eck-permissions-installing-crds) to install them for initial use. The operator itself can be installed as a cluster-scoped application managing all namespaces or it can be restricted to a pre-defined set of namespaces. Multiple copies of the operator can be installed on a single Kubernetes cluster provided that the global CRDs are compatible with each instance and optional cluster-scoped extensions such as the [validating webhook](../../../deploy-manage/deploy/cloud-on-k8s/configure-validating-webhook.md) are disabled.
+ECK relies on a set of [Custom Resource Definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) to define how applications are deployed. **CRDs are global resources**, shared across the entire Kubernetes cluster, so installing them requires [specific permissions](../../../deploy-manage/deploy/cloud-on-k8s/required-rbac-permissions.md#k8s-eck-permissions-installing-crds).
+
+ECK can be installed in two modes, depending on the namespaces the operator is allowed to manage:
+1. **Cluster-wide installation** - Allows the operator to orchestrate applications in all namespaces of the Kubernetes cluster. This is the default installation method.
+2. **Namespace-restricted installation** – Limited to specific, pre-defined namespaces. Use the `namespaces` [configuration flag](./configure-eck.md) to limit the namespaces in which the operator is allowed to work.
+
+::::{note}
+You can install multiple instances of ECK in the same Kubernetes cluster, **but only if** the CRDs are compatible across all operator instances (e.g., by ensuring they run the same version). If running multiple instances, you must also disable cluster-wide features like the [validating webhook](../../../deploy-manage/deploy/cloud-on-k8s/configure-validating-webhook.md).
+::::
 
 ::::{warning}
 Deleting CRDs will trigger deletion of all custom resources (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
