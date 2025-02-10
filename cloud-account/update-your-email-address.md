@@ -16,7 +16,7 @@ Each {{ecloud}} account has a primary email associated with it. By default, the 
 
     An email is sent to the new address with a link to confirm the change. If you don’t get the email after a few minutes, check your spam folder.
 
-If you are using Google or Microsoft Sign-In and would like to change your email address, you will need to:
+If you are using Google or Microsoft Sign-In and would like to change your email address, you need to:
 
 1. Go to the [Forgot password](https://cloud.elastic.co/forgot) page and enter your email address.
 2. Follow the instructions in the "Reset your password" email.
