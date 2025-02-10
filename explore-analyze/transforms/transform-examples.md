@@ -6,7 +6,7 @@ mapped_pages:
 
 # Examples [transform-examples]
 
-These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
+These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](https://www.elastic.co/guide/en/kibana/current/get-started.html). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
 
 * [Finding your best customers](#example-best-customers)
 * [Finding air carriers with the most delays](#example-airline)

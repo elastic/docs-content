@@ -6,7 +6,7 @@ mapped_pages:
 
 # Supplied configurations [ootb-ml-jobs]
 
-{{anomaly-jobs-cap}} contain the configuration information and metadata necessary to perform an analytics task. {{kib}} can recognize certain types of data and provide specialized wizards for that context. This page lists the categories of the {{anomaly-jobs}} that are ready to use via {{kib}} in **Machine learning**. Refer to [Create {{anomaly-jobs}}](https://www.elastic.co/guide/en/machine-learning/current/create-jobs.html) to learn more about creating a job by using supplied configurations. Logs and Metrics supplied configurations are available and can be created via the related solution UI in {{kib}}.
+{{anomaly-jobs-cap}} contain the configuration information and metadata necessary to perform an analytics task. {{kib}} can recognize certain types of data and provide specialized wizards for that context. This page lists the categories of the {{anomaly-jobs}} that are ready to use via {{kib}} in **Machine learning**. Refer to [Create {{anomaly-jobs}}](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-create-job) to learn more about creating a job by using supplied configurations. Logs and Metrics supplied configurations are available and can be created via the related solution UI in {{kib}}.
 
 * [Apache](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apache.html)
 * [APM](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apm.html)
