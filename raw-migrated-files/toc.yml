@@ -168,7 +168,6 @@ toc:
       - file: cloud/cloud/ec_subscribe_to_individual_regionscomponents.md
       - file: cloud/cloud/ec-about.md
       - file: cloud/cloud/ec-access-kibana.md
-      - file: cloud/cloud/ec-account-user-settings.md
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
       - file: cloud/cloud/ec-api-deployment-other.md
