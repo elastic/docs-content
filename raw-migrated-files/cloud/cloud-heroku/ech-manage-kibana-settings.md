@@ -224,7 +224,7 @@ If a setting is not supported by Elasticsearch Add-On for Heroku, you will get a
 
 If you are using SAML to secure your clusters, these settings are supported in Elasticsearch Add-On for Heroku.
 
-To learn more, refer to [configuring Kibana to use SAML](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-kibana.html).
+To learn more, refer to [configuring Kibana to use SAML](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-configure-kibana).
 
 #### Version 8.0.0+ [echversion_8_0_0]
 
@@ -299,7 +299,7 @@ If you are using OpenID Connect to secure your clusters, these settings are supp
 `xpack.security.authc.oidc.realm`
 :   Specifies which OpenID Connect realm in Elasticsearch should be used.
 
-To learn more, check [configuring Kibana to use OpenID Connect](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-kibana.html).
+To learn more, check [configuring Kibana to use OpenID Connect](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html).
 
 
 ### Anonymous authentication [echanonymous_authentication]

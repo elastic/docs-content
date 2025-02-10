@@ -103,7 +103,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     The following role mapping for OIDC restricts access to a specific user `(firstname.lastname)` based on the `claim_patterns.principal` email address. This prevents other users on the same domain from having access to your deployment. You can remove the rule or adjust it at your convenience.
 
-    More details are available in our [Configuring role mappings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-role-mapping.html).
+    More details are available in our [Configuring role mappings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html#oidc-role-mappings).
 
     ```json
     POST /_security/role_mapping/oidc_kibana
@@ -229,7 +229,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     The following role mapping for OIDC restricts access to a specific user `(firstname.lastname)` based on the `claim_patterns.principal` email address. This prevents other users on the same domain from having access to your deployment. You can remove the rule or adjust it at your convenience.
 
-    More details are available in our [Configuring role mappings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-role-mapping.html).
+    More details are available in our [Configuring role mappings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html#oidc-role-mappings).
 
     ```json
     POST /_security/role_mapping/oidc_kibana
@@ -355,7 +355,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     The following role mapping for OIDC restricts access to a specific user `(firstname.lastname)` based on the `claim_patterns.principal` email address. This prevents other users on the same domain from having access to your deployment. You can remove the rule or adjust it at your convenience.
 
-    More details are available in our [Configuring role mappings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-role-mapping.html).
+    More details are available in our [Configuring role mappings documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html#oidc-role-mappings).
 
     ```json
     POST /_security/role_mapping/oidc_kibana
