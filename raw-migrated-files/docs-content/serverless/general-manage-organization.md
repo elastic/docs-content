@@ -100,7 +100,7 @@ If you’re the only user in the organization, you are able to leave only when y
 ## Join an organization from an existing Elastic Cloud account [general-join-organization-from-existing-cloud-account]
 % This section has been already added by @eedugon to the cloud-account section)
 
-If you already belong to an organization, and you want to join a new one you will need to leave your existing organzation.
+If you already belong to an organization, and you want to join a new one you will need to leave your existing organization.
 
 If you want to join a new organization, follow these steps:
 
