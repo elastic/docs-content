@@ -8,13 +8,17 @@ mapped_pages:
 
 # Configure ECK [k8s-operating-eck]
 
-By default, the ECK installation includes a **ConfigMap** where you can **add, remove, or update configuration settings**. This ConfigMap is automatically mounted into the operator’s container and provided to it through the `--config` parameter.
+::::{tip}
+For a detailed description of available **configuration flags and methods**, refer to the [](./configure-eck.md).
+::::
+
+By default, the ECK installation includes a **ConfigMap** where you can **add, remove, or update [configuration settings](./configure-eck.md)**. This ConfigMap is mounted into the operator’s container as `eck.yaml` file, and provided to the application through the `--config` flag.
 
 To configure ECK **edit the `elastic-operator` ConfigMap** to change the operator configuration. The operator will restart automatically to apply the new changes unless the `--disable-config-watch` flag is set.
 
 Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
 
-For a complete description of available **configuration flags and methods**, refer to the [](./configure-eck.md).
+If you use [Operator Lifecycle Manager](https://github.com/operator-framework/operator-lifecycle-manager) refer to [](./configure-eck.md#k8s-operator-config-olm)
 
 ## Configuration use cases
 

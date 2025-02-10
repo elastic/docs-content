@@ -232,6 +232,7 @@ toc:
                 children:
                   - file: deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md
                   - file: deploy/cloud-on-k8s/install-using-helm-chart.md
+                  - file: deploy/cloud-on-k8s/required-rbac-permissions.md
                   - file: deploy/cloud-on-k8s/deploy-eck-on-openshift.md
                     children:
                       - file: deploy/cloud-on-k8s/k8s-openshift-deploy-operator.md
@@ -247,7 +248,6 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-autopilot-deploy-elasticsearch.md
                       - file: deploy/cloud-on-k8s/k8s-autopilot-deploy-agent-beats.md
                   - file: deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md
-                  - file: deploy/cloud-on-k8s/required-rbac-permissions.md
               - file: deploy/cloud-on-k8s/air-gapped-install.md
               - file: deploy/cloud-on-k8s/configure.md
                 children:
@@ -267,8 +267,8 @@ toc:
             children:
               - file: deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md
               - file: deploy/cloud-on-k8s/kibana-instance-quickstart.md
-              - file: deploy/cloud-on-k8s/update-deployments.md
               - file: deploy/cloud-on-k8s/managing-deployments-using-helm-chart.md
+              - file: deploy/cloud-on-k8s/update-deployments.md
               - file: deploy/cloud-on-k8s/accessing-services.md
               - file: deploy/cloud-on-k8s/configure-deployments.md
                 children:
