@@ -60,7 +60,7 @@ Once your project is set up, you’ll be directed to a page where you can create
 1. Enter a name for your index.
 2. Click **Create my index**. You can also create the index by clicking on **Code** to view and run code through the command line.
 
-    :::{image} ../../../images/serverless-get-started-create-an-index.png
+    :::{image} ../../images/serverless-get-started-create-an-index.png
     :alt: Create an index.
     :::
 
