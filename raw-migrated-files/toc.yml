@@ -168,7 +168,6 @@ toc:
       - file: cloud/cloud/ec_subscribe_to_individual_regionscomponents.md
       - file: cloud/cloud/ec-about.md
       - file: cloud/cloud/ec-access-kibana.md
-      - file: cloud/cloud/ec-account-user-settings.md
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
       - file: cloud/cloud/ec-api-deployment-other.md
@@ -254,7 +253,6 @@ toc:
     children:
       - file: docs-content/serverless/_cloud_native_vulnerability_management_dashboard.md
       - file: docs-content/serverless/action-connectors.md
-      - file: docs-content/serverless/agentless-integration-troubleshooting.md
       - file: docs-content/serverless/ai-assistant-knowledge-base.md
       - file: docs-content/serverless/application-and-service-monitoring.md
       - file: docs-content/serverless/attack-discovery.md
@@ -280,7 +278,6 @@ toc:
       - file: docs-content/serverless/general-ml-nlp-auto-scale.md
       - file: docs-content/serverless/general-serverless-status.md
       - file: docs-content/serverless/general-sign-up-trial.md
-      - file: docs-content/serverless/general-user-profile.md
       - file: docs-content/serverless/incident-management.md
       - file: docs-content/serverless/index-management.md
       - file: docs-content/serverless/infrastructure-and-host-monitoring-intro.md
@@ -411,7 +408,6 @@ toc:
       - file: docs-content/serverless/security-advanced-entity-analytics.md
       - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-agent-tamper-protection.md
-      - file: docs-content/serverless/security-agentless-integrations.md
       - file: docs-content/serverless/security-ai-assistant-esql-queries.md
       - file: docs-content/serverless/security-ai-assistant.md
       - file: docs-content/serverless/security-ai-for-security.md
@@ -420,7 +416,6 @@ toc:
       - file: docs-content/serverless/security-alert-suppression.md
       - file: docs-content/serverless/security-alerts-manage.md
       - file: docs-content/serverless/security-alerts-run-osquery.md
-      - file: docs-content/serverless/security-alerts-ui-monitor.md
       - file: docs-content/serverless/security-allowlist-endpoint.md
       - file: docs-content/serverless/security-analyze-risk-score-data.md
       - file: docs-content/serverless/security-asset-criticality.md
@@ -529,7 +524,6 @@ toc:
       - file: docs-content/serverless/security-timelines-ui.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
       - file: docs-content/serverless/security-trusted-applications.md
-      - file: docs-content/serverless/security-ts-detection-rules.md
       - file: docs-content/serverless/security-tune-detection-signals.md
       - file: docs-content/serverless/security-tuning-anomaly-results.md
       - file: docs-content/serverless/security-turn-on-risk-engine.md
@@ -814,13 +808,11 @@ toc:
       - file: security-docs/security/advanced-entity-analytics-overview.md
       - file: security-docs/security/advanced-settings.md
       - file: security-docs/security/agent-tamper-protection.md
-      - file: security-docs/security/agentless-integrations.md
       - file: security-docs/security/ai-assistant-knowledge-base.md
       - file: security-docs/security/ai-for-security.md
       - file: security-docs/security/alert-suppression.md
       - file: security-docs/security/alerts-run-osquery.md
       - file: security-docs/security/alerts-ui-manage.md
-      - file: security-docs/security/alerts-ui-monitor.md
       - file: security-docs/security/allowlist-endpoint-3rd-party-av-apps.md
       - file: security-docs/security/analyze-risk-score-data.md
       - file: security-docs/security/artifact-control.md
@@ -940,7 +932,6 @@ toc:
       - file: security-docs/security/timeline-templates-ui.md
       - file: security-docs/security/timelines-ui.md
       - file: security-docs/security/trusted-apps-ov.md
-      - file: security-docs/security/ts-detection-rules.md
       - file: security-docs/security/tuning-anomaly-results.md
       - file: security-docs/security/tuning-detection-signals.md
       - file: security-docs/security/turn-on-risk-engine.md

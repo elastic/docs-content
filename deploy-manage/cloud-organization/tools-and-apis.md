@@ -10,7 +10,7 @@ Most Elastic resources can be accessed and managed through RESTful APIs. While t
 Elasticsearch Service API
 :   You can use the Elasticsearch Service API to manage your deployments and all of the resources associated with them. This includes performing deployment CRUD operations, scaling or autoscaling resources, and managing traffic filters, deployment extensions, remote clusters, and Elastic Stack versions. You can also access cost data by deployment and by organization.
 
-    To learn more about the Elasticsearch Service API, read through the [API overview](https://www.elastic.co/guide/en/cloud/current/ec-restful-api.html), try out some [getting started examples](https://www.elastic.co/guide/en/cloud/current/ec-api-examples.html), and check our [API reference documentation](https://www.elastic.co/guide/en/cloud/current/ec-api-swagger.html).
+    To learn more about the Elasticsearch Service API, read through the [API overview](https://www.elastic.co/guide/en/cloud/current/ec-restful-api.html), try out some [getting started examples](https://www.elastic.co/guide/en/cloud/current/ec-api-examples.html), and check our [API reference documentation](https://www.elastic.co/docs/api/doc/cloud).
 
     Calls to the  Elasticsearch Service API are subject to [Rate limiting](https://www.elastic.co/guide/en/cloud/current/ec-api-rate-limiting.html).
 

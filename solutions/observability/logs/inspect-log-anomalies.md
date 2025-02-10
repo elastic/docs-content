@@ -57,4 +57,4 @@ The level of anomaly detected in a time period is color-coded, from red, orange,
 
 To help you further drill down into a potential anomaly, you can view an anomaly chart for each partition. Anomaly scores range from 0 (no anomalies) to 100 (critical).
 
-To analyze the anomalies in more detail, click **View anomaly in {{ml}}**, which opens the [Anomaly Explorer in {{ml-app}}](https://www.elastic.co/guide/en/machine-learning/current/ml-gs-results.html).
+To analyze the anomalies in more detail, click **View anomaly in {{ml}}**, which opens the [Anomaly Explorer in {{ml-app}}](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results).
