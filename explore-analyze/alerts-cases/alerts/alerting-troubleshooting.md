@@ -7,7 +7,6 @@ mapped_pages:
 
 Alerting provides many options for diagnosing problems with rules and connectors.
 
-
 ## Check the {{kib}} log [alerting-kibana-log]
 
 Rules and connectors log to the Kibana logger with tags of [alerting] and [actions], respectively.  Generally, the messages are warnings and errors. In some cases, the error might be a false positive, for example, when a connector is deleted and a rule is running.
@@ -18,14 +17,12 @@ server    log   [11:39:40.389] [error][alerting][alerting][plugins][plugins] Exe
 
 Some of the resources, such as saved objects and API keys, may no longer be available or valid, yielding error messages about those missing resources.
 
-
 ## Use the debugging tools [alerting-kibana-version]
 
 The following debugging tools are available:
 
 * {{kib}} versions 7.10 and above have a [Test connector](testing-connectors.md) UI.
 * {{kib}} versions 7.11 and above include improved Webhook error messages, better overall debug logging for actions and connectors, and Task Manager [diagnostics endpoints](../../../troubleshoot/kibana/task-manager.md#task-manager-diagnosing-root-cause).
-
 
 ## Using rules and connectors list for the current state and finding issues [alerting-managment-detail]
 
@@ -35,7 +32,6 @@ The following debugging tools are available:
 :alt: Alerting management details
 :class: screenshot
 :::
-
 
 ## Preview the index threshold rule chart [alerting-index-threshold-chart]
 
@@ -47,7 +43,6 @@ When creating or editing an index threshold rule, you see a graph of the data th
 :::
 
 The end date is related to the check interval for the rule. You can use this view to see if the rule is getting the data you expect, and visually compare to the threshold value (a horizontal line in the graph). If the graph does not contain any lines except for the threshold line, then the rule has an issue, for example, no data is available given the specified index and fields or there is a permission error. Diagnosing these may be difficult - but there may be log messages for error conditions.
-
 
 ## Use the REST APIs [alerting-rest-api]
 
@@ -75,7 +70,6 @@ kbn-action execute a692dc89-15b9-4a3c-9e47-9fb6872e49ce ‘{"params":{"subject":
 
 The result of this HTTP request (and printed to stdout by [kbn-action](https://github.com/pmuellr/kbn-action)) will be data returned by the action, along with error messages if errors were encountered.
 
-
 ## Look for error banners [alerting-error-banners]
 
 The **{{stack-manage-app}}** > **{{rules-ui}}** page contains an error banner that helps to identify the errors for the rules:
@@ -85,13 +79,11 @@ The **{{stack-manage-app}}** > **{{rules-ui}}** page contains an error banner th
 :class: screenshot
 :::
 
-
 ## Task Manager diagnostics [task-manager-diagnostics]
 
 Under the hood, the {{alert-features}} use a plugin called Task Manager, which handles the scheduling, running, and error handling of the tasks. This means that failure cases in {{alert-features}} will, at times, be revealed by the Task Manager mechanism, rather than the Rules mechanism.
 
 Task Manager provides a visible status which can be used to diagnose issues and is very well documented [health monitoring](../../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md) and [troubleshooting](../../../troubleshoot/kibana/task-manager.md). Task Manager uses the `.kibana_task_manager` index, an internal index that contains all the saved objects that represent the tasks in the system.
-
 
 ### Getting from a rule to its task [_getting_from_a_rule_to_its_task]
 
@@ -180,7 +172,6 @@ In addition to the above methods, refer to the following approaches and common i
 * [Querying event log index](event-log-index.md)
 * [Testing connectors using {{connectors-ui}} UI and the `kbn-action` tool](testing-connectors.md)
 
-
 ### Temporarily throttle all tasks [alerting-kibana-throttle]
 
 If cluster performance becomes degraded from excessive or expensive rules and {{kib}} is sluggish or unresponsive, you can temporarily reduce load to the Task Manager by updating its [settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html):
@@ -195,12 +186,9 @@ This approach should be used only temporarily as a last resort to restore functi
 
 ::::
 
-
-
 ## Limitations [alerting-limitations]
 
-The following limitations and known problems apply to the 9.0.0-beta1 release of the {{kib}} {alert-features}:
-
+The following limitations and known problems apply to the 9.0.0-beta1 release of the {{kib}} {{alert-features}}:
 
 ### Alert visibility [_alert_visibility]
 

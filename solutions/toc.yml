@@ -629,22 +629,26 @@ toc:
         children:
           - file: search/full-text/search-with-synonyms.md
           - file: search/full-text/text-analysis-during-search.md
-      - file: search/vector.md
+      - file: search/ai-search/ai-search.md
         children:
-          - file: search/vector/dense-vector.md
+          - file: search/vector.md
             children:
-              - file: search/vector/knn.md
-          - file: search/vector/sparse-vector-elser.md
+              - file: search/vector/dense-vector.md
+                children:
+                 - file: search/vector/knn.md
+                 - file: search/vector/bring-own-vectors.md
+              - file: search/vector/sparse-vector.md
+              - file: search/vector/dense-versus-sparse-ingest-pipelines.md
+
+          - file: search/semantic-search.md
+            children:
+              - file: search/semantic-search/semantic-search-semantic-text.md
+              - file: search/semantic-search/semantic-search-inference.md
+              - file: search/semantic-search/semantic-search-elser-ingest-pipelines.md
+              - file: search/semantic-search/cohere-es.md
       - file: search/hybrid-search.md
-      - file: search/semantic-search.md
-        children:
-          - file: search/semantic-search/semantic-search-semantic-text.md
-          - file: search/semantic-search/semantic-text-hybrid-search.md
-          - file: search/semantic-search/semantic-search-inference.md
-          - file: search/semantic-search/semantic-search-elser.md
-          - file: search/semantic-search/cohere-es.md
-          - file: search/semantic-search/semantic-search-deployed-nlp-model.md
-          - file: search/semantic-search/bring-own-vectors.md
+        children: 
+          - file: search/hybrid-semantic-text.md
       - file: search/ranking.md
         children:
           - file: search/ranking/semantic-reranking.md

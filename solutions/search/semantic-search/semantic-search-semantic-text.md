@@ -4,8 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html
 ---
 
-
-
 # Semantic search with `semantic_text` [semantic-search-semantic-text]
 
 
@@ -130,5 +128,5 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ## Further examples and reading [semantic-text-further-examples]
 
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
-* For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
-* To learn more about model autoscaling, refer to the [trained model autoscaling](../../../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md) page.
+* For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
+* To learn more about model autoscaling, refer to the [trained model autoscaling](/explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md) page.
