@@ -226,7 +226,7 @@ POST _transform/_preview
 Even though resource utilization is automatically adjusted based on the cluster load, a {{transform}} increases search and indexing load on your cluster while it runs. If you’re experiencing an excessive load, however, you can stop it.
 ::::
 
-    You can start, stop, and manage {{transforms}} in {{kib}}. Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-data-frame-transform.html) API.
+    You can start, stop, and manage {{transforms}} in {{kib}}. Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html) API.
 
 ::::{dropdown} API example
 ```console
@@ -356,7 +356,7 @@ GET weblog-outliers/_search?q="111.237.144.54"
 Now that you’ve found unusual behavior in the sample data set, consider how you might apply these steps to other data sets. If you have data that is already marked up with true outliers, you can determine how well the {{oldetection}} algorithms perform by using the evaluate {{dfanalytics}} API. See [6. Evaluate the results](#ml-outlier-detection-evaluate).
 
 ::::{tip}
-If you do not want to keep the {{transform}} and the {{dfanalytics}} job, you can delete them in {{kib}} or use the [delete {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-data-frame-transform.html) and [delete {{dfanalytics}} job API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html). When you delete {{transforms}} and {{dfanalytics}} jobs in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
+If you do not want to keep the {{transform}} and the {{dfanalytics}} job, you can delete them in {{kib}} or use the [delete {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html) and [delete {{dfanalytics}} job API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html). When you delete {{transforms}} and {{dfanalytics}} jobs in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
 ::::
 
 ## Further reading [outlier-detection-reading]

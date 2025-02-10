@@ -12,7 +12,7 @@ When styling a vector layer, you can customize your data by property, such as si
 
 Use static styling to specify a constant value for a style property.
 
-This image shows an example of static styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html) data set. The **kibana_sample_data_logs** layer uses static styling for all properties.
+This image shows an example of static styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/get-started.html) data set. The **kibana_sample_data_logs** layer uses static styling for all properties.
 
 :::{image} ../../../images/kibana-vector_style_static.png
 :alt: vector style static
@@ -24,7 +24,7 @@ This image shows an example of static styling using the [Kibana sample web logs]
 
 Use data driven styling to symbolize features by property values. To enable data driven styling for a style property, change the selected value from **Fixed** or **Solid** to **By value**.
 
-This image shows an example of data driven styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html) data set. The **kibana_sample_data_logs** layer uses data driven styling for fill color and symbol size style properties.
+This image shows an example of data driven styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/get-started.html) data set. The **kibana_sample_data_logs** layer uses data driven styling for fill color and symbol size style properties.
 
 * The `hour_of_day` property determines the fill color for each feature based on where the value fits on a linear scale. Light green circles symbolize documents that occur earlier in the day, and dark green circles symbolize documents that occur later in the day.
 * The `bytes` property determines the size of each symbol based on where the value fits on a linear scale. Smaller circles symbolize documents with smaller payloads, and larger circles symbolize documents with larger payloads.
@@ -39,7 +39,7 @@ This image shows an example of data driven styling using the [Kibana sample web 
 
 Quantitative data driven styling symbolizes features from a range of numeric property values.
 
-Property values are fit from the domain range to the style range on a linear scale. For example, let’s symbolize [Kibana sample web log](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html) documents by size. The sample web logs `bytes` field ranges from 0 to 18,000. This is the domain range. The smallest feature has a symbol radius of 1, and the largest feature has a symbol radius of 24. This is the style range. The `bytes` property value for each feature will fit on a linear scale from the range of 0 to 18,000 to the style range of 1 to 24.
+Property values are fit from the domain range to the style range on a linear scale. For example, let’s symbolize [Kibana sample web log](https://www.elastic.co/guide/en/kibana/current/get-started.html) documents by size. The sample web logs `bytes` field ranges from 0 to 18,000. This is the domain range. The smallest feature has a symbol radius of 1, and the largest feature has a symbol radius of 24. This is the style range. The `bytes` property value for each feature will fit on a linear scale from the range of 0 to 18,000 to the style range of 1 to 24.
 
 For color styles, values are fit from the domain range to the color ramp with one of the following:
 
@@ -71,7 +71,7 @@ Qualitative data driven styling is available for the following styling propertie
 * **Label color**
 * **Label border color**
 
-This image shows an example of quantitative data driven styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html) data set. The `machine.os.keyword` property determines the color of each symbol based on category.
+This image shows an example of quantitative data driven styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/get-started.html) data set. The `machine.os.keyword` property determines the color of each symbol based on category.
 
 :::{image} ../../../images/kibana-quantitative_data_driven_styling.png
 :alt: quantitative data driven styling
@@ -83,7 +83,7 @@ This image shows an example of quantitative data driven styling using the [Kiban
 
 Class styling symbolizes features by class and requires multiple layers. Use [layer filtering](maps-layer-based-filtering.md) to define the class for each layer, and [static styling](#maps-vector-style-static) to symbolize each class.
 
-This image shows an example of class styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html) data set.
+This image shows an example of class styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/get-started.html) data set.
 
 * The **Mac OS requests** layer applies the filter `machine.os : osx` so the layer only contains Mac OS requests. The fill color is a static value of green.
 * The **Window OS requests** layer applies the filter `machine.os : win*` so the layer only contains Window OS requests. The fill color is a static value of red.
