@@ -9,6 +9,10 @@ Dense neural embeddings capture semantic meaning by translating content into fix
 
 ## Working with dense vectors in Elasticsearch
 
+:::{tip}
+Using the `semantic_text` field type provides automatic model management and sensible defaults. [Learn more](semantic-search/semantic-search-semantic-text.md).
+:::
+
 Dense vector search requires both index configuration and a strategy for generating embeddings. To use dense vectors in {{es}}:
 
 1. Index documents with embeddings

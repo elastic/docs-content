@@ -7,7 +7,7 @@ mapped_urls:
 # Semantic search [semantic-search]
 
 :::{note}
-This page focuses on the semantic search workflows available in {{es}}. For detailed information about vector search implementations, refer to [vector search](vector.md).
+This page focuses on the semantic search workflows available in {{es}}. For detailed information about lower-level vector search implementations, refer to [vector search](vector.md).
 :::
 
 {{es}} provides various semantic search capabilities using [natural language processing (NLP)](/explore-analyze/machine-learning/nlp.md) and [vector search](vector.md).

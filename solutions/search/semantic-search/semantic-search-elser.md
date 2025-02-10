@@ -63,7 +63,7 @@ PUT my-index
 4. The field type which is text in this example.
 
 
-To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](/solutions/search/vector/sparse-vector-elser.md#save-space) section.
+To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](#save-space.
 
 
 ### Create an ingest pipeline with an inference processor [inference-ingest-pipeline]
@@ -160,7 +160,7 @@ GET my-index/_search
 }
 ```
 
-The result is the top 10 documents that are closest in meaning to your query text from the `my-index` index sorted by their relevancy. The result also contains the extracted tokens for each of the relevant search results with their weights. Tokens are learned associations capturing relevance, they are not synonyms. To learn more about what tokens are, refer to [this page](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-tokens). It is possible to exclude tokens from source, refer to [this section](/solutions/search/vector/sparse-vector-elser.md#save-space) to learn more.
+The result is the top 10 documents that are closest in meaning to your query text from the `my-index` index sorted by their relevancy. The result also contains the extracted tokens for each of the relevant search results with their weights. Tokens are learned associations capturing relevance, they are not synonyms. To learn more about what tokens are, refer to [this page](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-tokens). It is possible to exclude tokens from source, refer to [this section](#save-space) to learn more.
 
 ```console-result
 "hits": {
@@ -199,7 +199,6 @@ The result is the top 10 documents that are closest in meaning to your query tex
   ]
 }
 ```
-
 
 ### Combining semantic search with other queries [text-expansion-compound-query]
 

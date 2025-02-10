@@ -18,8 +18,8 @@ Here's a quick reference overview of vector search field types and queries avail
 
 | Vector type | Field type      | Query type      | Primary use case                                   |
 | ----------- | --------------- | --------------- | -------------------------------------------------- |
-| Dense       | `dense_vector`  | `knn`           | Semantic similarity via neural embeddings          |
-| Sparse      | `sparse_vector` | `sparse_vector` | Semantic term expansion with (ELSER)                 |
+| Dense       | `dense_vector`  | `knn`           | Semantic similarity using your chosen embeddings model          |
+| Sparse      | `sparse_vector` | `sparse_vector` | Semantic term expansion with the ELSER model                |
 | Sparse or dense | `semantic_text` | `semantic` | Managed semantic search that is agnostic to implementation details  |
 
 ## Dense vector search
@@ -34,7 +34,7 @@ Dense neural embeddings capture semantic meaning by translating content into fix
 
 ## Sparse vector search 
 
-Sparse vectors use ELSER to expand content with semantically related terms. This approach preserves explainability while adding semantic understanding, making it well-suited for:
+The sparse vector approach uses the ELSER model to expand content with semantically related terms. This approach preserves explainability while adding semantic understanding, making it well-suited for:
 - Enhanced keyword search
 - Cases requiring explainable results
 - Domain-specific search
