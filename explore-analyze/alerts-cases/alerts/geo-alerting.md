@@ -4,15 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/geo-alerting.html
 ---
 
-
-
 # Tracking containment [geo-alerting]
-
 
 The tracking containment rule alerts when an entity is contained or no longer contained within a boundary.
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Tracking containment** rule type then fill in the name and optional tags.
-
 
 ## Define the conditions [_define_the_conditions_3]
 
@@ -29,7 +25,6 @@ When you create a tracking containment rule, you must define the conditions that
 4. In the advanced options, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
 
 Entity locations are queried to determine whether they are contained within any monitored boundaries. Entity data should be somewhat "real time", meaning the dates of new documents aren’t older than the current time minus the amount of the interval. If data older than `now - <check interval>` is ingested, it won’t trigger a rule.
-
 
 ## Add actions [_add_actions_2]
 
@@ -49,7 +44,6 @@ After you select a connector, you must set the action frequency. You can choose 
 :::
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
-
 
 ## Add action variables [_add_action_variables_2]
 
@@ -82,4 +76,3 @@ The following action variables are specific to the tracking containment rule. Yo
 
 `context.entityLocation`
 :   The location of the entity.
-

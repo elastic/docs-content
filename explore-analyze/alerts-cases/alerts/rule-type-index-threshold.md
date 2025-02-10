@@ -4,15 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rule-type-index-threshold.html
 ---
 
-
-
 # Index threshold [rule-type-index-threshold]
-
 
 The index threshold rule type runs an {{es}} query. It aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met.
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Index threshold** rule type then fill in the name and optional tags.
-
 
 ## Define the conditions [_define_the_conditions]
 
@@ -33,7 +29,6 @@ When you create an index threshold rule, you must define the conditions for the 
 8. In the advanced options, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
 
 If data is available and all clauses have been defined, a preview chart will render the threshold value and display a line chart showing the value for the last 30 intervals. This can provide an indication of recent values and their proximity to the threshold, and help you tune the clauses.
-
 
 ## Add actions [actions-index-threshold]
 
@@ -61,7 +56,6 @@ Alternatively, you can set the action frequency such that actions run for each a
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
 
-
 ## Add action variables [action-variables-index-threshold]
 
 The following action variables are specific to the index threshold rule. You can also specify [variables common to all rules](rule-action-variables.md).
@@ -84,7 +78,6 @@ The following action variables are specific to the index threshold rule. You can
 `context.value`
 :   The value for the rule that met the threshold condition.
 
-
 ## Example [_example]
 
 In this example, you will use the {{kib}} [sample weblog data set](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html) to set up and tune the conditions on an index threshold rule. For this example, you want to detect when any of the top four sites serve more than 420,000 bytes over a 24 hour period.
@@ -94,39 +87,34 @@ In this example, you will use the {{kib}} [sample weblog data set](https://www.e
 
     1. Provide a rule name.
     2. Select an index. Click **Index**, and set **Indices to query** to `kibana_sample_data_logs`. Set the **Time field** to `@timestamp`.
-
-        :::{image} ../../../images/kibana-rule-types-index-threshold-example-index.png
-        :alt: Choosing an index
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-rule-types-index-threshold-example-index.png
+       :alt: Choosing an index
+       :class: screenshot
+       :::
 
     3. To detect the number of bytes served during the time window, click **When** and select `sum` as the aggregation, and `bytes` as the field to aggregate.
-
-        :::{image} ../../../images/kibana-rule-types-index-threshold-example-aggregation.png
-        :alt: Choosing the aggregation
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-rule-types-index-threshold-example-aggregation.png
+       :alt: Choosing the aggregation
+       :class: screenshot
+       :::
 
     4. To detect the four sites that have the most traffic, click **Over** and select `top`, enter `4`, and select `host.keyword` as the field.
-
-        :::{image} ../../../images/kibana-rule-types-index-threshold-example-grouping.png
-        :alt: Choosing the groups
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-rule-types-index-threshold-example-grouping.png
+       :alt: Choosing the groups
+       :class: screenshot
+       :::
 
     5. To trigger the rule when any of the top four sites exceeds 420,000 bytes over a 24 hour period, select `is above` and enter `420000`. Then click **For the last**, enter `24`, and select `hours`.
-
-        :::{image} ../../../images/kibana-rule-types-index-threshold-example-threshold.png
-        :alt: Setting the threshold
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-rule-types-index-threshold-example-threshold.png
+       :alt: Setting the threshold
+       :class: screenshot
+       :::
 
     6. Schedule the rule to check every four hours.
-
-        :::{image} ../../../images/kibana-rule-types-index-threshold-example-preview.png
-        :alt: Setting the check interval
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-rule-types-index-threshold-example-preview.png
+       :alt: Setting the check interval
+       :class: screenshot
+       :::
 
         The preview chart will render showing the 24 hour sum of bytes at 4 hours intervals for the past 120 hours (the last 30 intervals).
 
@@ -134,21 +122,19 @@ In this example, you will use the {{kib}} [sample weblog data set](https://www.e
     8. Define the actions for your rule.
 
         You can add one or more actions to your rule to generate notifications when its conditions are met and when they are no longer met. For each action, you must select a connector, set the action frequency, and compose the notification details. For example, add an action that uses a server log connector to write an entry to the Kibana server log:
-
-        :::{image} ../../../images/kibana-rule-types-index-threshold-example-action.png
-        :alt: Add an action to the rule
-        :class: screenshot
-        :::
+       :::{image} ../../../images/kibana-rule-types-index-threshold-example-action.png
+       :alt: Add an action to the rule
+       :class: screenshot
+       :::
 
         The unique action variables that you can use in the notification are listed in [Add action variables](#action-variables-index-threshold). For more information, refer to [Actions](create-manage-rules.md#defining-rules-actions-details) and [*Connectors*](../../../deploy-manage/manage-connectors.md).
 
     9. Save the rule.
 
 3. Find the rule and view its details in **{{stack-manage-app}} > {{rules-ui}}**. For example, you can see the status of the rule and its alerts:
-
-    :::{image} ../../../images/kibana-rule-types-index-threshold-example-alerts.png
-    :alt: View the list of alerts for the rule
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-rule-types-index-threshold-example-alerts.png
+   :alt: View the list of alerts for the rule
+   :class: screenshot
+   :::
 
 4. Delete or disable this example rule when it’s no longer useful. In the detailed rule view, select **Delete rule** from the actions menu.

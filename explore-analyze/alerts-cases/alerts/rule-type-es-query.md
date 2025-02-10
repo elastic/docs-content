@@ -4,15 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rule-type-es-query.html
 ---
 
-
-
 # Elasticsearch query [rule-type-es-query]
-
 
 The {{es}} query rule type runs a user-configured query, compares the number of matches to a configured threshold, and schedules actions to run when the threshold condition is met.
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **{{es}} query** rule type then fill in the name and optional tags. An {{es}} query rule can be defined using {{es}} Query Domain Specific Language (DSL), {{es}} Query Language (ES|QL), {{kib}} Query Language (KQL), or Lucene.
-
 
 ## Define the conditions [_define_the_conditions_2]
 
@@ -65,7 +61,6 @@ When you create an {{es}} query rule, your choice of query type affects the info
 7. In the advanced options, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
 8. Select a scope value, which affects the [{{kib}} feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges) that are required to access the rule. For example when it’s set to `Stack Rules`, you must have the appropriate **Management > {{stack-rules-feature}}** feature privileges to view or edit the rule.
 
-
 ## Test your query [_test_your_query]
 
 Use the **Test query** feature to verify that your query is valid.
@@ -85,7 +80,6 @@ If you use an ES|QL query, a table is displayed. For example:
 :::
 
 If the query is not valid, an error occurs.
-
 
 ## Add actions [_add_actions]
 
@@ -112,7 +106,6 @@ Alternatively, you can set the action frequency such that actions run for each a
 :::
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
-
 
 ## Add action variables [_add_action_variables]
 
@@ -177,7 +170,6 @@ The following variables are specific to the {{es}} query rule:
     {{/context.hits}}
     ```
 
-
 `context.link`
 :   (string) The URL for the rule that generated the alert. For example: `/app/management/insightsAndAlerting/triggersActions/rule/47754354-d894-49d3-87ec-05745a74e2b7`.
 
@@ -196,7 +188,6 @@ The following variables are specific to the {{es}} query rule:
 `rule.params`
 :   (object) The rule parameters, such as `searchType`, `timeWindowSize`, and `timeWindowUnit`. For the definitive list of parameters for this rule, refer to the API documentation.
 
-
 ## Handling multiple matches of the same document [_handling_multiple_matches_of_the_same_document]
 
 By default, **Exclude matches from previous run** is turned on and the rule checks for duplication of document matches across multiple runs. If you configure the rule with a schedule interval smaller than the time window and a document matches a query in multiple runs, it is alerted on only once.
@@ -211,4 +202,3 @@ Suppose you have a rule configured to run every minute. The rule uses a time win
 | `Run 2 (0:01)` | Rule finds 127 matches in the last hour. 105 of the matches are duplicates that were already alerted on previously, so you actually have 22 matches: `22 !> 99` | No alert. |
 | `Run 3 (0:02)` | Rule finds 159 matches in the last hour. 88 of the matches are duplicates that were already alerted on previously, so you actually have 71 matches: `71 !> 99` | No alert. |
 | `Run 4 (0:03)` | Rule finds 190 matches in the last hour. 71 of them are duplicates that were already alerted on previously, so you actually have 119 matches: `119 > 99` | Rule is active and user is alerted. |
-
