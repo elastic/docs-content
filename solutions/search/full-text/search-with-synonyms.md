@@ -15,5 +15,20 @@ mapped_urls:
 %      Notes: Custom synonyms bundle
 
 $$$ece-add-custom-bundle-example-synonyms$$$
-% Just link to ECE reference page wherever it ends up
+% Just link to ECE reference page wherever it ends 
+
+
+$$$ece-add-custom-bundle-example-LDA$$$
+
+$$$ece-add-custom-bundle-example-SAML$$$
+
+$$$ece-add-custom-bundle-example-cacerts$$$
+
+$$$ece-add-custom-bundle-example-LDAP$$$
+
+$$$synonyms-store-synonyms$$$
+
+$$$synonyms-synonym-token-filters$$$
+
+$$$synonyms-store-synonyms-api$$$
 
