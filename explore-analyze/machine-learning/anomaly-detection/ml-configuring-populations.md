@@ -26,7 +26,7 @@ Population analysis is resource-efficient and scales well, enabling the analysis
 3. Select the **Population** wizard from the list.
 4. Choose a population field - it’s the `clientip` field in this example - and the metric you want to use for the analysis - `Mean(bytes)` in this example.
 
-    :::{image} images/ml-population-wizard.png
+    :::{image} ../../../images/machine-learning-ml-population-wizard.png
     :alt: Creating a population job in Kibana
     :class: screenshot
     :::
