@@ -43,6 +43,6 @@ ECK also facilitates configuration and operation activities with advanced featur
 
 * [**Stack monitoring**](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html) → Monitor your deployments smoothly with the help of ECK.
 
-* [**Remote clusters**](/deploy-manage/remote-clusters/eck-remote-clusters.html) → Configure {{es}} remote clusters functionality for Cross Cluster Search (CCS) and Cross Cluster Replication.
+* [**Remote clusters**](/deploy-manage/remote-clusters/eck-remote-clusters.md) → Configure {{es}} remote clusters functionality for Cross Cluster Search (CCS) and Cross Cluster Replication.
 
 * [**Upgrade the Elastic Stack version**](../../upgrade/deployment-or-cluster.md) → Upgrade orchestrated applications on ECK.
