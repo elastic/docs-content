@@ -397,7 +397,7 @@ GET books/_search
 
 1. The `took` field indicates the time in milliseconds for {{es}} to execute the search
 2. The `timed_out` field indicates whether the search timed out
-3. The `_shards` field contains information about the number of [shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html) that the search was executed on and the number that succeeded
+3. The `_shards` field contains information about the number of [shards](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html) that the search was executed on and the number that succeeded
 4. The `hits` object contains the search results
 5. The `total` object provides information about the total number of matching documents
 6. The `max_score` field indicates the highest relevance score among all matching documents

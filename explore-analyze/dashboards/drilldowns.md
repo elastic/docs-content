@@ -76,7 +76,7 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 
 ## Create URL drilldowns [create-url-drilldowns]
 
-URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](https://www.elastic.co/guide/en/kibana/current/url-drilldown.html#variables) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
+URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](https://www.elastic.co/guide/en/kibana/current/drilldowns.html) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
 
 ![Drilldown on pie chart that navigates to Github](../../images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
 

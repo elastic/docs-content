@@ -56,7 +56,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](h
     * Enable multiple rules: Select the rules, then click **Bulk actions** → **Enable**.
 
 
-Once you enable a rule, it starts running on its configured schedule. To confirm that it’s running successfully, check its **Last response** status in the rules table, or open the rule’s details page and check the [**Execution results**](../../../troubleshoot/security/detection-rules.md#rule-execution-logs) tab.
+Once you enable a rule, it starts running on its configured schedule. To confirm that it’s running successfully, check its **Last response** status in the rules table, or open the rule’s details page and check the [**Execution results**](../../../solutions/security/detect-and-alert/monitor-rule-executions.md#rule-execution-logs) tab.
 
 
 ## Prebuilt rule tags [prebuilt-rule-tags]

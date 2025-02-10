@@ -19,7 +19,7 @@ One strategy for eliminating unintentional empty layers from a cross index searc
 
 Add [_index](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-index-field.html) to your search to include documents from indices that do not contain a search field.
 
-For example, suppose you have a vector layer showing the `kibana_sample_data_logs` documents and another vector layer with `kibana_sample_data_flights` documents. (See [adding sample data](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html) to install the `kibana_sample_data_logs` and `kibana_sample_data_flights` indices.)
+For example, suppose you have a vector layer showing the `kibana_sample_data_logs` documents and another vector layer with `kibana_sample_data_flights` documents. (See [adding sample data](https://www.elastic.co/guide/en/kibana/current/get-started.html) to install the `kibana_sample_data_logs` and `kibana_sample_data_flights` indices.)
 
 If you query for
 

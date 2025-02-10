@@ -80,7 +80,7 @@ The following action variables are specific to the index threshold rule. You can
 
 ## Example [_example]
 
-In this example, you will use the {{kib}} [sample weblog data set](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html) to set up and tune the conditions on an index threshold rule. For this example, you want to detect when any of the top four sites serve more than 420,000 bytes over a 24 hour period.
+In this example, you will use the {{kib}} [sample weblog data set](https://www.elastic.co/guide/en/kibana/current/get-started.html) to set up and tune the conditions on an index threshold rule. For this example, you want to detect when any of the top four sites serve more than 420,000 bytes over a 24 hour period.
 
 1. Go to **{{stack-manage-app}} > {{rules-ui}}** and click **Create rule**.
 2. Select the **Index threshold** rule type.
