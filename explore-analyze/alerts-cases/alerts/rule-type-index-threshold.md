@@ -4,15 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rule-type-index-threshold.html
 ---
 
-
-
 # Index threshold [rule-type-index-threshold]
-
 
 The index threshold rule type runs an {{es}} query. It aggregates field values from documents, compares them to threshold values, and schedules actions to run when the thresholds are met.
 
 In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select the **Index threshold** rule type then fill in the name and optional tags.
-
 
 ## Define the conditions [_define_the_conditions]
 
@@ -33,7 +29,6 @@ When you create an index threshold rule, you must define the conditions for the 
 8. In the advanced options, you can change the number of consecutive runs that must meet the rule conditions before an alert occurs. The default value is `1`.
 
 If data is available and all clauses have been defined, a preview chart will render the threshold value and display a line chart showing the value for the last 30 intervals. This can provide an indication of recent values and their proximity to the threshold, and help you tune the clauses.
-
 
 ## Add actions [actions-index-threshold]
 
@@ -61,7 +56,6 @@ Alternatively, you can set the action frequency such that actions run for each a
 
 You can further refine the conditions under which actions run by specifying that actions only run when they match a KQL query or when an alert occurs within a specific time frame.
 
-
 ## Add action variables [action-variables-index-threshold]
 
 The following action variables are specific to the index threshold rule. You can also specify [variables common to all rules](rule-action-variables.md).
@@ -83,7 +77,6 @@ The following action variables are specific to the index threshold rule. You can
 
 `context.value`
 :   The value for the rule that met the threshold condition.
-
 
 ## Example [_example]
 
