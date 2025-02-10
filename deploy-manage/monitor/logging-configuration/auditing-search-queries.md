@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-search-queries.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
 # Auditing search queries [auditing-search-queries]

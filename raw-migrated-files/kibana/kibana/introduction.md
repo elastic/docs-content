@@ -73,7 +73,7 @@ For a full list of data management UIs, refer to [**Stack Management**](../../..
 
 Detecting and acting on significant shifts and signals in your data is a need that exists in almost every use case. Alerting allows you to detect conditions in different {{kib}} apps and trigger actions when those conditions are met. For example, you might trigger an alert when a shift occurs in your business critical KPIs or when memory, CPU, or disk space take a dip. When the alert triggers, you can send a notification to a system that is part of your daily workflow: email, Slack, PagerDuty, ServiceNow, and other third party integrations.
 
-A dedicated view for creating, searching, and editing rules is in [**{{rules-ui}}**](../../../explore-analyze/alerts/kibana/create-manage-rules.md).
+A dedicated view for creating, searching, and editing rules is in [**{{rules-ui}}**](../../../explore-analyze/alerts-cases/alerts/create-manage-rules.md).
 
 
 ## Organize content [organize-and-secure]

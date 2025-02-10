@@ -70,22 +70,22 @@ mapped_pages:
     }
     ```
 
-    ::::{important} 
+    ::::{important}
     Existing data on the cluster will not be replicated by `_ccr/auto_follow` even though the patterns may match. This function will only replicate newly created backing indices (as part of the data stream).
     ::::
 
 
-    ::::{important} 
+    ::::{important}
     Use `leader_index_exclusion_patterns` to avoid recursion.
     ::::
 
 
-    ::::{tip} 
+    ::::{tip}
     `follow_index_pattern` allows lowercase characters only.
     ::::
 
 
-    ::::{tip} 
+    ::::{tip}
     This step cannot be executed via the {{kib}} UI due to the lack of an exclusion pattern in the UI. Use the API in this step.
     ::::
 
@@ -93,7 +93,7 @@ mapped_pages:
 
     This example uses the input generator to demonstrate the document count in the clusters. Reconfigure this section to suit your own use case.
 
-    ```logstash
+    ```json
     ### On Logstash server ###
     ### This is a logstash config file ###
     input {
@@ -111,12 +111,12 @@ mapped_pages:
     }
     ```
 
-    ::::{important} 
+    ::::{important}
     The key point is that when `cluster A` is down, all traffic will be automatically redirected to `cluster B`. Once `cluster A` comes back, traffic is automatically redirected back to `cluster A` again. This is achieved by the option `hosts` where multiple ES cluster endpoints are specified in the array `[clusterA, clusterB]`.
     ::::
 
 
-    ::::{tip} 
+    ::::{tip}
     Set up the same password for the same user on both clusters to use this load-balancing feature.
     ::::
 
@@ -148,5 +148,3 @@ mapped_pages:
     ```console
     GET logs*/_search?size=0
     ```
-
-

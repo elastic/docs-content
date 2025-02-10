@@ -1,17 +1,19 @@
 ---
+navigation_title: "Hosted billing dimensions"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-dimensions.html
+applies:
+  hosted: all
 ---
 
-# Cloud hosted deployment billing dimensions [ec-billing-dimensions]
+# Cloud Hosted deployment billing dimensions [ec-billing-dimensions]
 
-Elasticsearch Service Billing is based on your actual usage across a number of dimensions, as follows:
+{{ech}} billing is based on your actual usage across a number of dimensions, as follows:
 
 1. [Deployment capacity](#ram-hours)
 2. [Data Transfer](#data-transfer)
 3. [Storage](#storage)
 4. [Synthetics](#synthetics)
-5. [Serverless](https://docs.elastic.co/serverless/general/manage-billing)
 
 Read on for detail about each of these billing dimensions.
 
@@ -25,7 +27,7 @@ Deployment capacity typically constitutes the majority of your bill, and is the 
 
 ### How can I control the deployment capacity cost? [ec_how_can_i_control_the_deployment_capacity_cost] 
 
-Deployment capacity is purely a function of your current deployment configuration and time.  To reduce this cost, you must [configure your deployment](../../deploy/elastic-cloud/configure.md) to use fewer resources.  To determine how much a particular deployment configuration will cost, try our [Elasticsearch Service Pricing Calculator](https://cloud.elastic.co/pricing).
+Deployment capacity is purely a function of your current deployment configuration and time.  To reduce this cost, you must [configure your deployment](../../deploy/elastic-cloud/configure.md) to use fewer resources.  To determine how much a particular deployment configuration will cost, try our [pricing calculator](https://cloud.elastic.co/pricing).
 
 
 ## Data Transfer [data-transfer] 
@@ -57,7 +59,7 @@ Data transfer out of deployments and between nodes of the cluster is hard to con
 
 The largest contributor to inter-node data transfer is usually shard movement between nodes in a cluster.  The only way to prevent shard movement is by having a single node in a single availability zone. This solution is only possible for clusters up to 64GB RAM and is not recommended as it creates a risk of data loss. [Oversharding](https://www.elastic.co/guide/en/elasticsearch/reference/current/avoid-oversharding.html) can cause excessive shard movement. Avoiding oversharding can also help control costs and improve performance. Note that creating snapshots generates inter-node data transfer. The *storage* cost of snapshots is detailed later in this document.
 
-The exact root cause of unusual data transfer is not always something we can identify as it can have many causes, some of which are out of our control and not associated with Cloud configuration changes.  It may help to [enable monitoring](../../monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) and examine index and shard activity on your cluster.
+The exact root cause of unusual data transfer is not always something we can identify as it can have many causes, some of which are out of our control and not associated with Cloud configuration changes.  It may help to [enable monitoring](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) and examine index and shard activity on your cluster.
 
 
 ## Storage [storage] 

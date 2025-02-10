@@ -1,6 +1,9 @@
 name: docs-build
 
 on:
+  push:
+    branches:
+      - main
   pull_request: ~
 
 jobs:
@@ -11,3 +14,4 @@ jobs:
       strict: false
     permissions:
       contents: read
+      pull-requests: read

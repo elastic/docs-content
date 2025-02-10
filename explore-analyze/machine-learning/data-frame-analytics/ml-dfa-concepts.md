@@ -16,13 +16,3 @@ This section explains the more complex concepts of the Elastic {{ml}} {dfanalyti
 * [Loss functions for {{regression}} analyses](dfa-regression-lossfunction.md)
 * [Hyperparameter optimization](hyperparameters.md)
 * [Trained models](ml-trained-models.md)
-
-
-
-
-
-
-
-
-
-

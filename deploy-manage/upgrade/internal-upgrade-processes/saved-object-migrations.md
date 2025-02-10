@@ -5,7 +5,7 @@ mapped_pages:
 
 # Saved object migrations [saved-object-migrations]
 
-Each time you upgrade {{kib}}, an upgrade migration is performed to ensure that all [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md) are compatible with the new version.
+Each time you upgrade {{kib}}, an upgrade migration is performed to ensure that all [saved objects](/explore-analyze/find-and-organize/saved-objects.md) are compatible with the new version.
 
 ::::{note} 
 {{kib}} includes an [**Upgrade Assistant**](../prepare-to-upgrade/upgrade-assistant.md) to help you prepare for an upgrade. To access the assistant, go to **Stack Management > Upgrade Assistant**.

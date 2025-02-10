@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_audit_logging.html
+applies:
+  eck: all
 ---
 
 # Audit logging [k8s_audit_logging]

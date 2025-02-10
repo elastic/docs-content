@@ -7,7 +7,7 @@ mapped_pages:
 
 The **Metrics Explorer** page enables you to create time-series visualizations based on aggregation of your metrics, chart them against related metrics, and break them down per the field of your choice. You can group and create visualizations of metrics for one or more resources that you are monitoring.
 
-Additionally, for detailed analyses of your metrics, you can annotate and save visualizations for your custom dashboards by using the [Time Series Visual Builder (TSVB)](https://www.elastic.co/guide/en/kibana/current/tsvb.html) within {{kib}}.
+Additionally, for detailed analyses of your metrics, you can annotate and save visualizations for your custom dashboards by using the [Time Series Visual Builder (TSVB)](https://www.elastic.co/guide/en/kibana/current/legacy-editors.html#tsvb-panel) within {{kib}}.
 
 To open **Metrics Explorer**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
 
@@ -53,7 +53,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     There is now a separate graph for each network interface.
 
-7. Let’s visualize one of the graphs in [TSVB](https://www.elastic.co/guide/en/kibana/current/tsvb.html). Choose a graph, click **Actions**, and then select **Open In Visualize**.
+7. Let’s visualize one of the graphs in [TSVB](https://www.elastic.co/guide/en/kibana/current/legacy-editors.html#tsvb-panel). Choose a graph, click **Actions**, and then select **Open In Visualize**.
 
     In this visualization the max of `host.network.egress.bytes` is displayed, filtered by `host.name` and `system.network.name`.
 

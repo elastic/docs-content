@@ -1,6 +1,6 @@
 # Diagnose unavailable nodes [ec-scenario_why_is_my_node_unavailable]
 
-This section provides a list of common symptoms and possible actions that you can take to resolve issues when one or more nodes become unhealthy or unavailable. This guide is particularly useful if you are not [shipping your logs and metrics](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) to a dedicated monitoring cluster.
+This section provides a list of common symptoms and possible actions that you can take to resolve issues when one or more nodes become unhealthy or unavailable. This guide is particularly useful if you are not [shipping your logs and metrics](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to a dedicated monitoring cluster.
 
 **What are the symptoms?**
 
@@ -23,7 +23,7 @@ Some actions described here, such as stopping indexing or Machine Learning jobs,
 
 For production deployments, we recommend setting up a dedicated monitoring cluster to collect metrics and logs, troubleshooting views, and cluster alerts.
 
-If your issue is not addressed here, then [contact Elastic support for help](../../../troubleshoot/troubleshoot/cloud.md).
+If your issue is not addressed here, then [contact Elastic support for help](../../../troubleshoot/troubleshoot/index.md).
 
 ## Full disk on single-node deployment [ec-single-node-deployment-disk-used]
 
@@ -53,7 +53,7 @@ If your issue is not addressed here, then [contact Elastic support for help](../
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}
-If your {{es}} cluster is unhealthy and reports a status of red, then increasing the disk size of your Hot data and Content tier may fail. You might need to delete some data so the configuration can be edited. If you want to increase your disk size without deleting data, then [reach out to Elastic support](../../../troubleshoot/troubleshoot/cloud.md) and we will assist you with scaling up.
+If your {{es}} cluster is unhealthy and reports a status of red, then increasing the disk size of your Hot data and Content tier may fail. You might need to delete some data so the configuration can be edited. If you want to increase your disk size without deleting data, then [reach out to Elastic support](../../../troubleshoot/troubleshoot/index.md) and we will assist you with scaling up.
 ::::
 
 
@@ -79,7 +79,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
@@ -100,7 +100,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 * Increase the disk size (scale up).
 
 ::::{note}
-If your {{es}} cluster is unhealthy and reports a status of red, the scale up configuration change to increasing disk size on the affected data tiers may fail. You might need to delete some data so the configuration can be edited. If you want to increase your disk size without deleting data, then [reach out to Elastic support](../../../troubleshoot/troubleshoot/cloud.md) and we will assist you with scaling up.
+If your {{es}} cluster is unhealthy and reports a status of red, the scale up configuration change to increasing disk size on the affected data tiers may fail. You might need to delete some data so the configuration can be edited. If you want to increase your disk size without deleting data, then [reach out to Elastic support](../../../troubleshoot/troubleshoot/index.md) and we will assist you with scaling up.
 ::::
 
 
@@ -122,7 +122,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
     3. From your deployment menu, go to the **Edit** page and increase the **Size per zone** for the data tiers identified at step 2.
 
-        :::{image} ../../../images/cloud-increase-size-per-zone.png
+        :::{image} ../../../images/cloud-ec-increase-size-per-zone.png
         :alt: Increase size per zone
         :::
 
@@ -138,7 +138,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
@@ -204,7 +204,7 @@ By default, the allowed CPU usage threshold is set at 85%.
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 

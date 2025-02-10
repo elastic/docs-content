@@ -30,12 +30,12 @@ The data represents two real airports, two fictitious flight routes, and fictiti
 1. [Create a new map](maps-getting-started.md#maps-create).
 2. Zoom in on the New England area in the northeast United States.
 
-    You’re adding flight paths to this area, and this sets up the map for a good view of the data.
+   You’re adding flight paths to this area, and this sets up the map for a good view of the data.
 
-    :::{image} ../../../images/kibana-fu_gs_new_england_map.png
-    :alt: fu gs new england map
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-fu_gs_new_england_map.png
+   :alt: fu gs new england map
+   :class: screenshot
+   :::
 
 
 
@@ -58,12 +58,12 @@ For each GeoJSON file you downloaded, complete the following steps:
 7. Click **Keep changes**.
 8. Once you’ve added all of the sample files, [save your map](maps-getting-started.md#maps-save).
 
-    At this point, you could consider the map complete, but there are a few additions and tweaks that you can make to tell a better story with your data.
+   At this point, you could consider the map complete, but there are a few additions and tweaks that you can make to tell a better story with your data.
 
-    :::{image} ../../../images/kibana-fu_gs_flight_paths.png
-    :alt: fu gs flight paths
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-fu_gs_flight_paths.png
+   :alt: fu gs flight paths
+   :class: screenshot
+   :::
 
 
 
@@ -87,12 +87,12 @@ Looking at the `Lightning detected` layer, it’s clear where lightning has stru
 
 6. When you’re finished modifying settings, click **Keep changes**.
 
-    With your new lightning heat map layer, your map should look like this:
+   With your new lightning heat map layer, your map should look like this:
 
-    :::{image} ../../../images/kibana-fu_gs_lightning_intensity.png
-    :alt: fu gs lightning intensity
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-fu_gs_lightning_intensity.png
+   :alt: fu gs lightning intensity
+   :class: screenshot
+   :::
 
 
 

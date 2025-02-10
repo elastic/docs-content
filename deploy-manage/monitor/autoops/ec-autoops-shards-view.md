@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-shards-view.html
+applies:
+  hosted: all
 ---
 
 # Shards [ec-autoops-shards-view]

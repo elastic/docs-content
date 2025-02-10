@@ -33,24 +33,14 @@ Save your search session from **Discover** or **Dashboard**, and when your sessi
 You’re trying to understand a trend you see on a dashboard. You need to look at several years of data, currently in [cold storage](../../manage-data/lifecycle/data-tiers.md#cold-tier), but you don’t have time to wait. You want {{kib}} to continue working in the background, so tomorrow you can open your browser and pick up where you left off.
 
 1. Load your dashboard.
-
-    Your search session begins automatically. The icon after the dashboard title displays the current state of the search session. A clock icon indicates the search session is in progress. A checkmark indicates that the search session is complete.
+   Your search session begins automatically. The icon after the dashboard title displays the current state of the search session. A clock icon indicates the search session is in progress. A checkmark indicates that the search session is complete.
 
 2. To continue a search in the background, click the clock icon, and then click **Save session**.
-
-    :::{image} ../../images/kibana-search-session-awhile.png
-    :alt: Search Session indicator displaying the current state of the search
-    :class: screenshot
-    :::
-
-    Once you save a search session, you can start a new search, navigate to a different application, or close the browser.
+   ![Search Session indicator displaying the current state of the search](../../images/kibana-search-session-awhile.png "title =50%")
+   Once you save a search session, you can start a new search, navigate to a different application, or close the browser.
 
 3. To view your saved search sessions, go to the **Search Sessions** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search). For a saved or completed session, you can also open this view from the search sessions popup.
-
-    :::{image} ../../images/kibana-search-sessions-menu.png
-    :alt: Search Sessions management view with actions for inspecting
-    :class: screenshot
-    :::
+   ![Search Sessions management view with actions for inspecting](../../images/kibana-search-sessions-menu.png "")
 
 4. Use the edit menu in **Search Sessions** to:
 

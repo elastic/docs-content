@@ -1,4 +1,5 @@
 ---
+navigation_title: "Mapping issues"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/troubleshoot-uptime-mapping-issues.html
 ---
@@ -13,9 +14,9 @@ There are situations in which {{heartbeat}} data can be indexed without the corr
 To fix this problem, you typically need to remove your {{heartbeat}} indices and data streams. Then you must create new ones with the appropriate mappings installed. To achieve this, follow the steps below.
 
 
-### Stop your {{heartbeat}}/{elastic-agent} instances [_stop_your_heartbeatelastic_agent_instances] 
+### Stop your {{heartbeat}}/{{elastic-agent}} instances [_stop_your_heartbeatelastic_agent_instances] 
 
-It is necessary to stop all {{heartbeat}}/{elastic-agent} instances that are targeting the cluster, so they will not write to or re-create indices prematurely.
+It is necessary to stop all {{heartbeat}}/{{elastic-agent}} instances that are targeting the cluster, so they will not write to or re-create indices prematurely.
 
 
 ### Delete your {{heartbeat}} indices / {{elastic-agent}} data streams [_delete_your_heartbeat_indices_elastic_agent_data_streams] 
@@ -40,7 +41,7 @@ For more information on how to use this command, or if you’re using DEB, RPM, 
 This command performs the necessary startup tasks and ensures that your indices have the appropriate mapping going forward.
 
 
-### Run {{heartbeat}}/{elastic-agent} again [_run_heartbeatelastic_agent_again] 
+### Run {{heartbeat}}/{{elastic-agent}} again [_run_heartbeatelastic_agent_again] 
 
-Now, when you run {{heartbeat}}/{elastic-agent}, your data will be indexed with the appropriate mappings. When the {{uptime-app}} attempts to fetch your data, it should be able to render without issues.
+Now, when you run {{heartbeat}}/{{elastic-agent}}, your data will be indexed with the appropriate mappings. When the {{uptime-app}} attempts to fetch your data, it should be able to render without issues.
 

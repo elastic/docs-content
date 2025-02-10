@@ -1,9 +1,10 @@
 ---
+navigation_title: Unstable clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-unstable-cluster.html
 ---
 
-# Troubleshooting an unstable cluster [troubleshooting-unstable-cluster]
+# Troubleshoot an unstable cluster [troubleshooting-unstable-cluster]
 
 Normally, a node will only leave a cluster if deliberately shut down. If a node leaves the cluster unexpectedly, it’s important to address the cause. A cluster in which nodes leave unexpectedly is unstable and can create several issues. For instance:
 

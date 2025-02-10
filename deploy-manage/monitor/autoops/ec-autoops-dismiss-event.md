@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-dismiss-event.html
+applies:
+  hosted: all
 ---
 
 # Dismiss Events [ec-autoops-dismiss-event]

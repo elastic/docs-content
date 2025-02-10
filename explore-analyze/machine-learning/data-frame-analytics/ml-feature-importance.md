@@ -9,7 +9,7 @@ mapped_pages:
 
 The purpose of {{feat-imp}} is to help you determine whether the predictions are sensible. Is the relationship between the dependent variable and the important features supported by your domain knowledge? The lessons you learn about the importance of specific features might also affect your decision to include them in future iterations of your trained model.
 
-You can see the average magnitude of the {{feat-imp}} values for each field across all the training data in {{kib}} or by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-inference.html). For example, {{kib}} shows the total feature importance for each field in {{regression}} or binary {{classanalysis}} results as follows:
+You can see the average magnitude of the {{feat-imp}} values for each field across all the training data in {{kib}} or by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html). For example, {{kib}} shows the total feature importance for each field in {{regression}} or binary {{classanalysis}} results as follows:
 
 :::{image} ../../../images/machine-learning-flights-regression-total-importance.jpg
 :alt: Total {{feat-imp}} values for a {{regression}} {dfanalytics-job} in {kib}
@@ -40,5 +40,3 @@ For {{classanalysis}}, the sum of the {{feat-imp}} values approximates the predi
 By default, {{feat-imp}} values are not calculated. To generate this information, when you create a {{dfanalytics-job}} you must specify the `num_top_feature_importance_values` property. For example, see [Performing {{reganalysis}} in the sample flight data set](ml-dfa-regression.md#performing-regression) and [Performing {{classanalysis}} in the sample flight data set](ml-dfa-classification.md#performing-classification).
 
 The {{feat-imp}} values are stored in the {{ml}} results field for each document in the destination index. The number of {{feat-imp}} values for each document might be less than the `num_top_feature_importance_values` property value. For example, it returns only features that had a positive or negative effect on the prediction.
-
-

@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-memory-pressure.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-memory-pressure.html
+applies:
+  hosted: all
+  ece: all
 ---
 
 # JVM memory pressure indicator [ec-memory-pressure]

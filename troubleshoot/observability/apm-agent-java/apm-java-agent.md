@@ -1,11 +1,12 @@
 ---
+navigation_title: "APM Java Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/java/current/trouble-shooting.html
 ---
 
-# APM Java Agent [trouble-shooting]
+# Troubleshoot APM Java Agent [trouble-shooting]
 
-Something isn’t quite working as expected? Here are some guidelines how to find out what’s going wrong.
+Something isn’t quite working as expected? Here are some guidelines how to find out what’s going wrong. 
 
 As a first step, please check if your stack is compatible with the currently [supported technologies](https://www.elastic.co/guide/en/apm/agent/java/current/setup.html#supported-technologies).
 

@@ -1038,7 +1038,7 @@ TO_CHAR(
 
 **Output**: string
 
-**Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern conforms to [PostgreSQL Template Patterns for Date/Time Formatting](https://www.postgresql.org/docs/13/functions-formatting.md).
+**Description**: Returns the date/datetime/time as a string using the format specified in the 2nd argument. The formatting pattern conforms to [PostgreSQL Template Patterns for Date/Time Formatting](https://www.postgresql.org/docs/13/functions-formatting.html).
 
 ::::{note} 
 If the 1st argument is of type `time`, then the pattern specified by the 2nd argument cannot contain date related units (e.g. *dd*, *MM*, *YYYY*, etc.). If it contains such units an error is returned.<br> The result of the patterns `TZ` and `tz` (time zone abbreviations) in some cases differ from the results returned by the `TO_CHAR` in PostgreSQL. The reason is that the time zone abbreviations specified by the JDK are different from the ones specified by PostgreSQL. This function might show an actual time zone abbreviation instead of the generic `LMT` or empty string or offset returned by the PostgreSQL implementation. The summer/daylight markers might also differ between the two implementations (e.g. will show `HT` instead of `HST` for Hawaii).<br> The `FX`, `TM`, `SP` pattern modifiers are not supported and will show up as `FX`, `TM`, `SP` literals in the output.

@@ -90,7 +90,7 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:9.0.0-beta1
     ::::
 
 
-    {{ml-cap}} features such as [semantic search with ELSER](../../../solutions/search/vector/sparse-vector-elser.md) require a larger container with more than 1GB of memory. If you intend to use the {{ml}} capabilities, then start the container with this command:
+    {{ml-cap}} features such as [semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) require a larger container with more than 1GB of memory. If you intend to use the {{ml}} capabilities, then start the container with this command:
 
     ```sh
     docker run --name es01 --net elastic -p 9200:9200 -it -m 6GB -e "xpack.ml.use_auto_machine_memory_percent=true" docker.elastic.co/elasticsearch/elasticsearch:9.0.0-beta1
