@@ -1,8 +1,8 @@
 ---
-navigation_title: "Basics: Full-text search and filtering"
+navigation_title: "Full-text search and filtering"
 ---
 
-# Basic full-text search and filtering in {{es}} [full-text-filter-tutorial]
+# Tutorial: Full-text search and filtering in {{es}} [full-text-filter-tutorial]
 
 
 This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
