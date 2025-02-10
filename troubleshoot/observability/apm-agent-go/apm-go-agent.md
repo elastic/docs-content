@@ -1,5 +1,5 @@
 ---
-navigation_title: APM Go Agent
+navigation_title: "APM Go Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/go/current/troubleshooting.html
 ---

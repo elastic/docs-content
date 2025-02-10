@@ -1,5 +1,5 @@
 ---
-navigation_title: APM Ruby Agent
+navigation_title: "APM Ruby Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/ruby/current/debugging.html
 ---

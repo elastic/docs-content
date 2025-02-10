@@ -1,5 +1,5 @@
 ---
-navigation_title: APM Java Agent
+navigation_title: "APM Java Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/java/current/trouble-shooting.html
 ---

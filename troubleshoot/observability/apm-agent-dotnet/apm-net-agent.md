@@ -1,5 +1,5 @@
 ---
-navigation_title: APM .NET agent
+navigation_title: "APM .NET agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/dotnet/current/troubleshooting.html
 ---
