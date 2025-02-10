@@ -212,7 +212,6 @@ toc:
       - file: cloud/cloud/ec-migrating-data.md
       - file: cloud/cloud/ec-monitoring-setup.md
       - file: cloud/cloud/ec-monitoring.md
-      - file: cloud/cloud/ec-organizations-notifications-domain-allowlist.md
       - file: cloud/cloud/ec-password-reset.md
       - file: cloud/cloud/ec-planning.md
       - file: cloud/cloud/ec-prepare-production.md
@@ -294,7 +293,6 @@ toc:
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/maintenance-windows.md
       - file: docs-content/serverless/monitor-k8s-otel-edot.md
       - file: docs-content/serverless/observability-add-logs-service-name.md
       - file: docs-content/serverless/observability-aggregationOptions.md
@@ -411,7 +409,6 @@ toc:
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/quickstart-monitor-hosts-with-otel.md
-      - file: docs-content/serverless/rules.md
       - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
@@ -670,7 +667,6 @@ toc:
       - file: kibana/kibana/kibana-concepts-analysts.md
       - file: kibana/kibana/kibana-role-management.md
       - file: kibana/kibana/logging-settings.md
-      - file: kibana/kibana/maintenance-windows.md
       - file: kibana/kibana/management.md
       - file: kibana/kibana/osquery.md
       - file: kibana/kibana/playground.md

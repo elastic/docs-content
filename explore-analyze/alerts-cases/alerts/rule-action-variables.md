@@ -7,7 +7,6 @@ mapped_pages:
 
 Alerting rules can use the [Mustache](https://mustache.github.io/mustache.5.md) template syntax (`{{variable name}}`) to pass values when the actions run.
 
-
 ## Common variables [common-rule-action-variables]
 
 The available variables differ by rule type, however there are some common variables:
@@ -23,7 +22,6 @@ Some cases exist where the variable values will be "escaped" when used in a cont
 * For the [Webhook connector](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html), the `body` action configuration property escapes any characters that are invalid in JSON string values.
 
 Mustache also supports "triple braces" of the form `{{{variable name}}}`, which indicates no escaping should be done at all. Use this form with caution, since it could end up rendering the variable content such that the resulting parameter is invalid or formatted incorrectly.
-
 
 ### General [general-rule-action-variables]
 
@@ -52,7 +50,6 @@ All rule types pass the following variables:
 
 `rule.url`
 :   The URL for the rule that generated the alert. This will be an empty string if the `server.publicBaseUrl` setting is not configured.
-
 
 ### Action frequency: Summary of alerts [alert-summary-action-variables]
 
@@ -85,7 +82,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     ::::
 
-
 `alerts.new.count`
 :   The count of new alerts.
 
@@ -112,7 +108,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
     :   Alert status (for example, active or OK). [preview]
 
     ::::
-
 
 `alerts.ongoing.count`
 :   The count of ongoing alerts.
@@ -141,7 +136,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     ::::
 
-
 `alerts.recovered.count`
 :   The count of recovered alerts.
 
@@ -169,8 +163,6 @@ If the rule’s action frequency is a summary of alerts, it passes the following
 
     ::::
 
-
-
 ### Action frequency: For each alert [alert-action-variables]
 
 If the rule’s action frequency is not a summary of alerts, it passes the following variables:
@@ -196,7 +188,6 @@ If the rule’s action frequency is not a summary of alerts, it passes the follo
 `alert.uuid`
 :   A universally unique identifier for the alert. While the alert is active, the UUID value remains unchanged each time the rule runs. [preview]
 
-
 #### Context [defining-rules-actions-variable-context]
 
 If the rule’s action frequency is not a summary of alerts, the rule defines additional variables as properties of the variable `context`. For example, if a rule type defines a variable `value`, it can be used in an action parameter as `{{context.value}}`.
@@ -217,16 +208,13 @@ triggering data was:
 {{/context.hits}}
 ```
 
-
 ## Enhancing Mustache variables [enhance-mustache-variables]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-
 You can enhance the values contained in Mustache variables when the Mustache template is rendered by rendering objects as JSON or by using Mustache lambdas.
-
 
 ### Rendering objects as JSON [_rendering_objects_as_json]
 
@@ -234,7 +222,6 @@ Some connectors (such as the [Webhook connector](https://www.elastic.co/guide/en
 
 * Array values referenced in braces have a predefined rendering by Mustache as string versions of the array elements, joined with a comma (`,`). To render array values as JSON, access the `asJSON` property of the array, instead of the array directly. For example, given a Mustache variable `context.values` that has the value `[1, 4, 9]` the Mustache template `{{context.values}}` will render as `1,4,9`, and the Mustache template `{{context.values.asJSON}}` will render as `[1,4,9]`.
 * The [ParseHjson lambda](#parse-hjson-lambda) Mustache lambda makes it easier to create JSON in your templates by using [Hjson](https://hjson.github.io/), a syntax extension to JSON, rather than strict JSON.
-
 
 ### Using Mustache lambdas [_using_mustache_lambdas]
 
@@ -245,7 +232,6 @@ Mustache lambdas provide additional rendering capabilities for Mustache template
 ```
 
 In that example, the lambda `EvalMath` is passed the text `round(context.value, 1)` and renders a rounded value of the `context.value` variable. This pattern is used by all the provided Mustache lambdas described in the subsequent sections.
-
 
 #### EvalMath [_evalmath]
 
@@ -262,7 +248,6 @@ This lambda can access Mustache variables without having to wrap them in `{{}}`.
 ```sh
 {{#EvalMath}} round( {{{context.value}}} , 1) {{/EvalMath}}
 ```
-
 
 #### ParseHjson [parse-hjson-lambda]
 
@@ -296,7 +281,6 @@ When rendered, this template will generate:
     }
 ```
 
-
 #### FormatDate [_formatdate]
 
 The FormatDate lambda provides date formatting capabilities. Dates can be formatted in an arbitrary time zone and with an arbitrary format string.
@@ -317,7 +301,6 @@ The `<time zone>` parameter must be a valid time zone identifier as listed in [T
 The `<date format>` parameter must be a valid date format string as described in the [Moment `format()` documentation](https://momentjs.com/docs/#/displaying/). For example, the date format `"YYYY-MM-DD hh:mma"` will render in the following format: `"2023-04-24 11:21pm"`.
 
 The date value itself should usually be referenced with triple braces since some characters in date strings may contain values that are escaped, which would prevent them from being parsed as dates.
-
 
 #### FormatNumber [_formatnumber]
 
@@ -379,7 +362,6 @@ If the context variable `context.value.condition0` has a value of `628.4`, it re
     original value: 628.4
     formatted value: 62,84 €
 ```
-
 
 ## Mustache examples [mustache-examples]
 
@@ -448,8 +430,6 @@ You can create the following Mustache template in the email action for your rule
 3. Shows examples of `**bold**`, `_italic_`, and `[text](url)` links.
 4. Shows a table with three columns, with one row per element in the `context.hits` array. From each of those elements, you can access the `provider`, `action`, and `duration` fields of the `_source.event` object. The `duration` field is rendered as a number of seconds, rounded to the nearest second. It’s stored as nanoseconds so it needs to be divided by a billion to yield seconds. The duration field is optional, so you can use a `{{#duration}} ... {{/duration}}` section to render the duration if it’s present and show `-n/a-` otherwise.
 
-
 When rendered into Markdown and then HTML and viewed in an email client, it looks like this:
 
 ![Email template rendered in an email client](../../../images/kibana-email-mustache-template-rendered.png "")
-

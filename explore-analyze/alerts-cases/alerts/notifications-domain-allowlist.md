@@ -1,4 +1,9 @@
-# Notifications domain allowlist [ec-organizations-notifications-domain-allowlist]
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/ec-organizations-notifications-domain-allowlist.html
+---
+
+# Notifications domain allowlist [organizations-notifications-domain-allowlist]
 
 The notifications domain allowlist restricts the possible recipients for alert emails. {{es}} Watcher and {{kib}} alerting actions send emails only if the recipient domains are included in this allowlist.
 
@@ -6,19 +11,15 @@ The notifications domain allowlist restricts the possible recipients for alert e
 The recipients are only restricted if one or more domains are configured. If there are no domains configured, notifications can be sent to any recipient domain (No restrictions apply).
 ::::
 
-
 You can configure the allowlist on the organization [Contacts](https://cloud.elastic.co/account/contacts?page=docs&placement=docs-body) page.
 
 ::::{warning}
 Changes to the allowlist do not take effect immediately. After saving your changes, run a configuration change on each of your deployments to apply the updated allowlist.
 ::::
 
+## Apply the updated domain allowlist to a deployment [apply-update-domain-allowlist]
 
-
-## Apply the updated domain allowlist to a deployment [ec-apply-update-domain-allowlist]
-
-
-### Using the UI [ec_using_the_ui]
+### Using the UI [using-the-ui]
 
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Select a deployment.
@@ -27,8 +28,7 @@ Changes to the allowlist do not take effect immediately. After saving your chang
 
 This updates the notifications settings for {{es}} and {{kib}} to reflect what is configured on the organizations **Contacts** page.
 
-
-### Use the {{ecloud}} Control CLI [ec_use_the_ecloud_control_cli]
+### Use the {{ecloud}} Control CLI [use-the-ecloud-control-cli]
 
 Updating multiple deployments through the UI can take a lot of time. Instead, you can use the [{{ecloud}} Control](https://www.elastic.co/guide/en/ecctl/current/ecctl-overview.html) command-line interface (`ecctl`) to automate the deployment update.
 
