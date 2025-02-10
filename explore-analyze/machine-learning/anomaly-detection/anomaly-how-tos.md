@@ -2,6 +2,7 @@
 navigation_title: "How-tos"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-aiops-tune-anomaly-detection-job.html
 ---
 
 # How-tos [anomaly-how-tos]
