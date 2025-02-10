@@ -9,8 +9,6 @@ mapped_urls:
 
 ## {{rules-app}} [rules]
 
-This content applies to: [![Elasticsearch](../../../images/serverless-es-badge.svg "")](../../../solutions/search.md) [![Security](../../../images/serverless-sec-badge.svg "")](../../../solutions/security/elastic-security-serverless.md)
-
 In general, a rule consists of three parts:
 
 * *Conditions*: what needs to be detected?
@@ -37,7 +35,7 @@ Each project type supports a specific set of rule types. Each *rule type* provid
 All rules must have a check interval, which defines how often to evaluate the rule conditions. Checks are queued; they run as close to the defined value as capacity allows.
 
 ::::{important}
-The intervals of rule checks in {{kib}} are approximate. Their timing is affected by factors such as the frequency at which tasks are claimed and the task load on the system. Refer to [Alerting production considerations](../../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md)
+The intervals of rule checks in {{kib}} are approximate. Their timing is affected by factors such as the frequency at which tasks are claimed and the task load on the system. Refer to [Alerting production considerations](../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md)
 
 ::::
 
@@ -51,7 +49,7 @@ When defining actions in a rule, you specify:
 * An action frequency
 * A mapping of rule values to properties exposed for that type of action
 
-Each action uses a connector, which provides connection information for a {{kib}} service or third party integration, depending on where you want to send the notifications. The specific list of connectors that you can use in your rule vary by project type. Refer to [{{connectors-app}}](../../../deploy-manage/manage-connectors.md).
+Each action uses a connector, which provides connection information for a {{kib}} service or third party integration, depending on where you want to send the notifications. The specific list of connectors that you can use in your rule vary by project type. Refer to [{{connectors-app}}](../../deploy-manage/manage-connectors.md).
 
 After you select a connector, set the *action frequency*. If you want to reduce the number of notifications you receive without affecting their timeliness, some rule types support alert summaries. For example, if you create an {{es}} query rule, you can set the action frequency such that you receive summaries of the new, ongoing, and recovered alerts on a custom interval:
 
@@ -97,7 +95,7 @@ You can pass rule values to an action at the time a condition is detected. To vi
 :class: screenshot
 :::
 
-For more information about common action variables, refer to [Rule actions variables](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md)
+For more information about common action variables, refer to [Rule actions variables](../../explore-analyze/alerts-cases/alerts/rule-action-variables.md)
 
 ### Alerts [rules-alerts]
 
