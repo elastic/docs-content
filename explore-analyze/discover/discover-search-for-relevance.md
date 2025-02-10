@@ -28,17 +28,11 @@ This example shows how to use **Discover** to list your documents from most rele
 6. To turn off sorting by the `timestamp` field, click the **field sorted** option, and then click **Clear sorting.**
 7. Open the **Pick fields to sort by** menu, and then click **_score**.
 8. Select **High-Low**.
-
-    :::{image} ../../images/kibana-field-sorting-popover.png
-    :alt: Field sorting popover
-    :class: screenshot
-    :::
-
-    Your table now sorts documents from most to least relevant.
-
-    :::{image} ../../images/kibana-discover-search-for-relevance.png
-    :alt: Documents are sorted from most relevant to least relevant.
-    :class: screenshot
-    :::
+   ![Field sorting popover](../../images/kibana-field-sorting-popover.png "title =50%")
+   Your table now sorts documents from most to least relevant.
+   :::{image} ../../images/kibana-discover-search-for-relevance.png
+   :alt: Documents are sorted from most relevant to least relevant.
+   :class: screenshot
+   :::
 
 

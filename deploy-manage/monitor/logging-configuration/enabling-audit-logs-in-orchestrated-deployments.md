@@ -3,6 +3,10 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-auditing.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_audit_logging.html
   - https://www.elastic.co/guide/en/cloud/current/ec-enable-logging-and-monitoring.html#ec-enable-audit-logs
+applies:
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 # Enabling audit logs in orchestrated deployments

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-regions.html
+applies:
+  hosted: all
 ---
 
 # AutoOps regions [ec-autoops-regions]

@@ -28,7 +28,7 @@ You can configure email notifications that occur when users are assigned to case
 
 For hosted {{kib}} on {{ess}}:
 
-1. Add the email domains to the [notifications domain allowlist](../../../explore-analyze/alerts/kibana.md).
+1. Add the email domains to the [notifications domain allowlist](../../../explore-analyze/alerts-cases/alerts.md).
 
     You do not need to take any more steps to configure an email connector or update {{kib}} user settings, since the preconfigured Elastic-Cloud-SMTP connector is used by default.
 
@@ -63,7 +63,7 @@ To download or delete the file or copy the file hash to your clipboard, open the
 When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
 
 ::::{note}
-Uploaded files are also accessible on the **Files** page. To open **Files**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). When you export cases as [saved objects](../../../explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
+Uploaded files are also accessible on the **Files** page. To open **Files**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
 
 ::::
 

@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_use_and_filter_dashboards.html
 ---
 
-# Using [_use_and_filter_dashboards]
+# Exploring dashboards [_use_and_filter_dashboards]
 
 
 ## Search and filter your dashboard data [search-or-filter-your-data]

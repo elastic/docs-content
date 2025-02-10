@@ -481,9 +481,9 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
 1. Pull the {{hosted-ems}} Docker image.
 
-    ::::{warning}
-    Version 9.0.0-beta1 of {{hosted-ems}} has not yet been released. No Docker image is currently available for this version.
-    ::::
+   ::::{warning}
+   Version 9.0.0-beta1 of {{hosted-ems}} has not yet been released. No Docker image is currently available for this version.
+   ::::
 
 
     ```bash
@@ -516,10 +516,10 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 
     Once {{hosted-ems}} is running, follow instructions from the webpage at `localhost:8080` to define a configuration file and optionally download a more detailed basemaps database.
 
-    :::{image} ../../../images/kibana-elastic-maps-server-instructions.png
-    :alt: Set-up instructions
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-elastic-maps-server-instructions.png
+   :alt: Set-up instructions
+   :class: screenshot
+   :::
 
 
 
@@ -556,7 +556,7 @@ If you cannot connect to Elastic Maps Service from the {{kib}} server or browser
 | `ssl.certificateAuthorities` | Paths to one or more PEM-encoded X.509 certificate authority (CA) certificates that make up a trusted certificate chain for {{hosted-ems}}. This chain is used by the {{hosted-ems}} to establish trust when receiving inbound SSL/TLS connections from end users. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-certificateAuthorities). |
 | `ssl.key`, `ssl.certificate`, and `ssl.keyPassphrase` | Location of yor SSL key and certificate files and the password that decrypts the private key that is specified via `ssl.key`. This password is optional, as the key may not be encrypted. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-cert-key). |
 | `ssl.supportedProtocols` | An array of supported protocols with versions.Valid protocols: `TLSv1`, `TLSv1.1`, `TLSv1.2`. **Default: `TLSv1.1`, `TLSv1.2`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-supportedProtocols). |
-| `ssl.cipherSuites` | Details on the format, and the valid options, are available via the[OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.1/man1/ciphers.md#CIPHER-LIST-FORMAT).**Default: `TLS_AES_256_GCM_SHA384 TLS_CHACHA20_POLY1305_SHA256 TLS_AES_128_GCM_SHA256 ECDHE-RSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES256-GCM-SHA384, DHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES128-SHA256, DHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, DHE-RSA-AES256-SHA384, ECDHE-RSA-AES256-SHA256, DHE-RSA-AES256-SHA256, HIGH,!aNULL, !eNULL, !EXPORT, !DES, !RC4, !MD5, !PSK, !SRP, !CAMELLIA`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-cipherSuites). |
+| `ssl.cipherSuites` | Details on the format, and the valid options, are available via the[OpenSSL cipher list format documentation](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html#CIPHER-LIST-FORMAT).**Default: `TLS_AES_256_GCM_SHA384 TLS_CHACHA20_POLY1305_SHA256 TLS_AES_128_GCM_SHA256 ECDHE-RSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES256-GCM-SHA384, DHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES128-SHA256, DHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, DHE-RSA-AES256-SHA384, ECDHE-RSA-AES256-SHA256, DHE-RSA-AES256-SHA256, HIGH,!aNULL, !eNULL, !EXPORT, !DES, !RC4, !MD5, !PSK, !SRP, !CAMELLIA`**. [Equivalent {{kib}} setting](../../../deploy-manage/deploy/self-managed/configure.md#server-ssl-cipherSuites). |
 
 
 #### Bind-mounted configuration [elastic-maps-server-bind-mount-config]

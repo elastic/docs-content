@@ -1,6 +1,6 @@
 # Diagnose unavailable nodes [ec-scenario_why_is_my_node_unavailable]
 
-This section provides a list of common symptoms and possible actions that you can take to resolve issues when one or more nodes become unhealthy or unavailable. This guide is particularly useful if you are not [shipping your logs and metrics](../../../deploy-manage/monitor/stack-monitoring/stack-monitoring-on-elastic-cloud-deployments.md) to a dedicated monitoring cluster.
+This section provides a list of common symptoms and possible actions that you can take to resolve issues when one or more nodes become unhealthy or unavailable. This guide is particularly useful if you are not [shipping your logs and metrics](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to a dedicated monitoring cluster.
 
 **What are the symptoms?**
 
@@ -79,7 +79,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
@@ -122,7 +122,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
     3. From your deployment menu, go to the **Edit** page and increase the **Size per zone** for the data tiers identified at step 2.
 
-        :::{image} ../../../images/cloud-increase-size-per-zone.png
+        :::{image} ../../../images/cloud-ec-increase-size-per-zone.png
         :alt: Increase size per zone
         :::
 
@@ -138,7 +138,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
@@ -204,7 +204,7 @@ By default, the allowed CPU usage threshold is set at 85%.
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 

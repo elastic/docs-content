@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-notifications-settings.html
+applies:
+  hosted: all
 ---
 
 # Notifications settings [ec-autoops-notifications-settings]

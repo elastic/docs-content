@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-monitoring.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
 # Visualizing monitoring data [xpack-monitoring]

@@ -63,9 +63,9 @@ $$$aggregation-reference$$$
 | Function | **Lens** | **TSVB** |
 | --- | --- | --- |
 | Counter rate | &check; | &check; |
-| [Filter ratio](legacy-editors.md#tsvb-function-reference) | Use [formula](lens.md#lens-formulas) | &check; |
-| [Positive only](legacy-editors.md#tsvb-function-reference) |  | &check; |
-| [Series agg](legacy-editors.md#tsvb-function-reference) | Use [formula](lens.md#lens-formulas) | &check; |
+| [Filter ratio](legacy-editors/tsvb.md#tsvb-function-reference) | Use [formula](lens.md#lens-formulas) | &check; |
+| [Positive only](legacy-editors/tsvb.md#tsvb-function-reference) |  | &check; |
+| [Series agg](legacy-editors/tsvb.md#tsvb-function-reference) | Use [formula](lens.md#lens-formulas) | &check; |
 | Static value | &check; | &check; |
 
 

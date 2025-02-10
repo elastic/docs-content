@@ -15,7 +15,7 @@ There are several special prebuilt rules you need to know about:
 
 * **External Alerts**: Automatically creates an alert for all incoming third-party system alerts (for example, Suricata alerts).
 
-If you want to receive notifications via external systems, such as Slack or email, when alerts are created, use the [Alerting and Actions](../../../explore-analyze/alerts.md) framework.
+If you want to receive notifications via external systems, such as Slack or email, when alerts are created, use the [Alerting and Actions](../../../explore-analyze/alerts-cases.md) framework.
 
 After rules have started running, you can monitor their executions to verify they are functioning correctly, as well as view, manage, and troubleshoot alerts (see [Manage detection alerts](../../../solutions/security/detect-and-alert/manage-detection-alerts.md) and [Monitor and troubleshoot rule executions](../../../troubleshoot/security/detection-rules.md)).
 

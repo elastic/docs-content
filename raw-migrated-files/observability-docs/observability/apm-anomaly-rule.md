@@ -102,7 +102,7 @@ To add variables to alert messages, use [Mustache](https://mustache.github.io/) 
 :alt: apm anomaly rule action variables
 :::
 
-The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts/kibana/rule-action-variables.md).
+The following variables are specific to this rule type. You an also specify [variables common to all rules](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md).
 
 `context.alertDetailsUrl`
 :   Link to the alert troubleshooting view for further context and details. This will be an empty string if the server.publicBaseUrl is not configured.

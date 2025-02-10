@@ -17,35 +17,29 @@ The model can significantly improve search result quality by reordering results 
 
 When reranking BM25 results, it provides an average 40% improvement in ranking quality on a diverse benchmark of retrieval tasks— matching the performance of models 11x its size.
 
+## Availability and requirements [ml-nlp-rerank-availability]
 
-## Availability and requirements [ml-nlp-rerank-availability] 
-
-::::{warning} 
+::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-
-
-### Elastic Cloud Serverless [ml-nlp-rerank-availability-serverless] 
+### Elastic Cloud Serverless [ml-nlp-rerank-availability-serverless]
 
 Elastic Rerank is available in {{es}} Serverless projects as of November 25, 2024.
 
-
-### Elastic Cloud Hosted and self-managed deployments [ml-nlp-rerank-availability-elastic-stack] 
+### Elastic Cloud Hosted and self-managed deployments [ml-nlp-rerank-availability-elastic-stack]
 
 Elastic Rerank is available in Elastic Stack version 8.17+:
 
 * To use Elastic Rerank, you must have the appropriate subscription level or the trial period activated.
 * A 4GB ML node
 
-    ::::{important} 
+    ::::{important}
     Deploying the Elastic Rerank model in combination with ELSER (or other hosted models) requires at minimum an 8GB ML node. The current maximum size for trial ML nodes is 4GB (defaults to 1GB).
 
     ::::
 
-
-
-## Download and deploy [ml-nlp-rerank-deploy] 
+## Download and deploy [ml-nlp-rerank-deploy]
 
 To download and deploy Elastic Rerank, use the [create inference API](../../../solutions/search/inference-api/elasticsearch-inference-integration.md) to create an {{es}} service `rerank` endpoint.
 
@@ -54,15 +48,13 @@ Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/bl
 
 ::::
 
-
-
-### Create an inference endpoint [ml-nlp-rerank-deploy-steps] 
+### Create an inference endpoint [ml-nlp-rerank-deploy-steps]
 
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create an {{infer}} endpoint with the Elastic Rerank service by running:
 
-    ```console
-    PUT _inference/rerank/my-rerank-model
+```console
+PUT _inference/rerank/my-rerank-model
     {
       "service": "elasticsearch",
       "service_settings": {
@@ -75,42 +67,37 @@ Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/bl
         "model_id": ".rerank-v1"
       }
     }
-    ```
+```
 
-    ::::{note} 
-    The API request automatically downloads and deploys the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
-    ::::
+::::{note}
+The API request automatically downloads and deploys the model. This example uses [autoscaling](ml-nlp-auto-scale.md) through adaptive allocation.
+::::
 
-
-::::{note} 
+::::{note}
 You might see a 502 bad gateway error in the response when using the {{kib}} Console. This error usually just reflects a timeout, while the model downloads in the background. You can check the download progress in the {{ml-app}} UI. If using the Python client, you can set the `timeout` parameter to a higher value.
 
 ::::
 
-
 After creating the Elastic Rerank {{infer}} endpoint, it’s ready to use with a [`text_similarity_reranker`](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#text-similarity-reranker-retriever-example-elastic-rerank) retriever.
 
-
-## Deploy in an air-gapped environment [ml-nlp-rerank-deploy-verify] 
+## Deploy in an air-gapped environment [ml-nlp-rerank-deploy-verify]
 
 If you want to deploy the Elastic Rerank model in a restricted or closed network, you have two options:
 
 * Create your own HTTP/HTTPS endpoint with the model artifacts on it
 * Put the model artifacts into a directory inside the config directory on all master-eligible nodes.
 
-
-### Model artifact files [ml-nlp-rerank-model-artifacts] 
+### Model artifact files [ml-nlp-rerank-model-artifacts]
 
 For the cross-platform version, you need the following files in your system:
 
-```
+```url
 https://ml-models.elastic.co/rerank-v1.metadata.json
 https://ml-models.elastic.co/rerank-v1.pt
 https://ml-models.elastic.co/rerank-v1.vocab.json
 ```
 
-
-### Using an HTTP server [_using_an_http_server_2] 
+### Using an HTTP server [_using_an_http_server_2]
 
 INFO: If you use an existing HTTP server, note that the model downloader only supports passwordless HTTP servers.
 
@@ -131,7 +118,7 @@ You can use any HTTP service to deploy the model. This example uses the official
 
 4. Verify that Nginx runs properly by visiting the following URL in your browser:
 
-    ```
+    ```url
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/rerank-v1.metadata.json
     ```
 
@@ -139,7 +126,7 @@ You can use any HTTP service to deploy the model. This example uses the official
 
 5. Point your {{es}} deployment to the model artifacts on the HTTP server by adding the following line to the `config/elasticsearch.yml` file:
 
-    ```
+    ```yml
     xpack.ml.model_repository: http://{IP_ADDRESS_OR_HOSTNAME}:8080
     ```
 
@@ -155,8 +142,7 @@ The HTTP server is only required for downloading the model. After the download h
 docker stop ml-models
 ```
 
-
-### Using file-based access [_using_file_based_access_2] 
+### Using file-based access [_using_file_based_access_2]
 
 For a file-based access, follow these steps:
 
@@ -164,7 +150,7 @@ For a file-based access, follow these steps:
 2. Put the files into a `models` subdirectory inside the `config` directory of your {{es}} deployment.
 3. Point your {{es}} deployment to the model directory by adding the following line to the `config/elasticsearch.yml` file:
 
-    ```
+    ```yml
     xpack.ml.model_repository: file://${path.home}/config/models/
     ```
 
@@ -172,8 +158,7 @@ For a file-based access, follow these steps:
 5. [Restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) the master-eligible nodes one by one.
 6. Create an inference endpoint to deploy the model per [these steps](#ml-nlp-rerank-deploy-steps).
 
-
-## Limitations [ml-nlp-rerank-limitations] 
+## Limitations [ml-nlp-rerank-limitations]
 
 * English language only
 * Maximum context window of 512 tokens
@@ -182,61 +167,49 @@ For a file-based access, follow these steps:
 
     When the combined inputs exceed the 512 token limit, a balanced truncation strategy is used. If both the query and input text are longer than 255 tokens each then both are truncated, otherwise the longest is truncated.
 
-
-
-## Performance considerations [ml-nlp-rerank-perf-considerations] 
+## Performance considerations [ml-nlp-rerank-perf-considerations]
 
 It’s important to note that if you rerank to depth `n` then you will need to run `n` inferences per query. This will include the document text and will therefore be significantly more expensive than inference for query embeddings. Hardware can be scaled to run these inferences in parallel, but we would recommend shallow reranking for CPU inference: no more than top-30 results. You may find that the preview version is cost prohibitive for high query rates and low query latency requirements. We plan to address performance issues for GA.
 
-
-## Model specifications [ml-nlp-rerank-model-specs] 
+## Model specifications [ml-nlp-rerank-model-specs]
 
 * Purpose-built for English language content
 * Relatively small: 184M parameters (86M backbone + 98M embedding layer)
 * Matches performance of billion-parameter reranking models
 * Built directly into {{es}} - no external services or dependencies needed
 
-
-## Model architecture [ml-nlp-rerank-arch-overview] 
+## Model architecture [ml-nlp-rerank-arch-overview]
 
 Elastic Rerank is built on the [DeBERTa v3](https://arxiv.org/abs/2111.09543) language model architecture.
 
 The model employs several key architectural features that make it particularly effective for reranking:
 
 * **Disentangled attention mechanism** enables the model to:
-
-    * Process word content and position separately
-    * Learn more nuanced relationships between query and document text
-    * Better understand the semantic importance of word positions and relationships
+  * Process word content and position separately
+  * Learn more nuanced relationships between query and document text
+  * Better understand the semantic importance of word positions and relationships
 
 * **ELECTRA-style pre-training** uses:
+  * A GAN-like approach to token prediction
+  * Simultaneous training of token generation and detection
+  * Enhanced parameter efficiency compared to traditional masked language modeling
 
-    * A GAN-like approach to token prediction
-    * Simultaneous training of token generation and detection
-    * Enhanced parameter efficiency compared to traditional masked language modeling
-
-
-
-## Training process [ml-nlp-rerank-arch-training] 
+## Training process [ml-nlp-rerank-arch-training]
 
 Here is an overview of the Elastic Rerank model training process:
 
 * **Initial relevance extraction**
-
-    * Fine-tunes the pre-trained DeBERTa [CLS] token representation
-    * Uses a GeLU activation and dropout layer
-    * Preserves important pre-trained knowledge while adapting to the reranking task
+  * Fine-tunes the pre-trained DeBERTa [CLS] token representation
+  * Uses a GeLU activation and dropout layer
+  * Preserves important pre-trained knowledge while adapting to the reranking task
 
 * **Trained by distillation**
+  * Uses an ensemble of bi-encoder and cross-encoder models as a teacher
+  * Bi-encoder provides nuanced negative example assessment
+  * Cross-encoder helps differentiate between positive and negative examples
+  * Combines strengths of both model types
 
-    * Uses an ensemble of bi-encoder and cross-encoder models as a teacher
-    * Bi-encoder provides nuanced negative example assessment
-    * Cross-encoder helps differentiate between positive and negative examples
-    * Combines strengths of both model types
-
-
-
-### Training data [ml-nlp-rerank-arch-data] 
+### Training data [ml-nlp-rerank-arch-data]
 
 The training data consists of:
 
@@ -250,14 +223,11 @@ The data preparation process includes:
 * Basic cleaning and fuzzy deduplication
 * Multi-stage prompting for diverse topics (on the synthetic portion of the training data only)
 * Varied query types:
+  * Keyword search
+  * Exact phrase matching
+  * Short and long natural language questions
 
-    * Keyword search
-    * Exact phrase matching
-    * Short and long natural language questions
-
-
-
-### Negative sampling [ml-nlp-rerank-arch-sampling] 
+### Negative sampling [ml-nlp-rerank-arch-sampling]
 
 The model uses an advanced sampling strategy to ensure high-quality rankings:
 
@@ -265,14 +235,11 @@ The model uses an advanced sampling strategy to ensure high-quality rankings:
 * Uses five negative samples per query - more than typical approaches
 * Applies probability distribution shaped by document scores for sampling
 * Deep sampling benefits:
+  * Improves model robustness across different retrieval depths
+  * Enhances score calibration
+  * Provides better handling of document diversity
 
-    * Improves model robustness across different retrieval depths
-    * Enhances score calibration
-    * Provides better handling of document diversity
-
-
-
-### Training optimization [ml-nlp-rerank-arch-optimization] 
+### Training optimization [ml-nlp-rerank-arch-optimization]
 
 The training process incorporates several key optimizations:
 
@@ -286,20 +253,17 @@ Implemented parameter averaging along optimization trajectory:
 
 * Eliminates need for traditional learning rate scheduling and provides improvement in the final model quality
 
-
-## Performance [ml-nlp-rerank-performance] 
+## Performance [ml-nlp-rerank-performance]
 
 Elastic Rerank shows significant improvements in search quality across a wide range of retrieval tasks.
 
-
-### Overview [ml-nlp-rerank-performance-overview] 
+### Overview [ml-nlp-rerank-performance-overview]
 
 * Average 40% improvement in ranking quality when reranking BM25 results
 * 184M parameter model matches performance of 2B parameter alternatives
 * Evaluated across 21 different datasets using the BEIR benchmark suite
 
-
-### Key benchmark results [ml-nlp-rerank-performance-benchmarks] 
+### Key benchmark results [ml-nlp-rerank-performance-benchmarks]
 
 * Natural Questions: 90% improvement
 * MS MARCO: 85% improvement
@@ -308,8 +272,7 @@ Elastic Rerank shows significant improvements in search quality across a wide ra
 
 For detailed benchmark information, including complete dataset results and methodology, refer to the [Introducing Elastic Rerank blog](https://www.elastic.co/search-labs/blog/elastic-semantic-reranker-part-2).
 
-
-## Further resources [ml-nlp-rerank-resources] 
+## Further resources [ml-nlp-rerank-resources]
 
 **Documentation**:
 
@@ -325,4 +288,3 @@ For detailed benchmark information, including complete dataset results and metho
 **Python notebooks**:
 
 * [End-to-end example using Elastic Rerank in Python](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/search/12-semantic-reranking-elastic-rerank.ipynb)
-

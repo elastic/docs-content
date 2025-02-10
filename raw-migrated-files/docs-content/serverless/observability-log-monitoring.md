@@ -79,7 +79,7 @@ Use **Logs Explorer** to search, filter, and tail all your logs ingested into yo
 The following resources provide information on viewing and monitoring your logs:
 
 * [Discover and explore](../../../solutions/observability/logs/logs-explorer.md): Discover and explore all of the log events flowing in from your servers, virtual machines, and containers in a centralized view.
-* [Detect log anomalies](../../../explore-analyze/machine-learning/aiops-labs/observability-aiops-detect-anomalies.md): Use {{ml}} to detect log anomalies automatically.
+* [Detect log anomalies](../../../explore-analyze/machine-learning/anomaly-detection.md): Use {{ml}} to detect log anomalies automatically.
 
 
 ## Monitor data sets [observability-log-monitoring-monitor-data-sets]

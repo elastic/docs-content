@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-deployment-view.html
+applies:
+  hosted: all
 ---
 
 # Deployment [ec-autoops-deployment-view]

@@ -4,19 +4,16 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-overview.html
 ---
 
-
-
 # Overview [transform-overview]
-
 
 You can choose either of the following methods to transform your data: [pivot](#pivot-transform-overview) or [latest](#latest-transform-overview).
 
 ::::{important}
+
 * All {{transforms}} leave your source index intact. They create a new index that is dedicated to the transformed data.
 * {{transforms-cap}} might have more configuration options provided by the APIs than the options available in {{kib}}. For all the {{transform}} configuration options, refer to the [API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-apis.html).
 
 ::::
-
 
 {{transforms-cap}} are persistent tasks; they are stored in cluster state which makes them resilient for node failures. Refer to [How checkpoints work](transform-checkpoints.md) and [Error handling](transform-checkpoints.md#ml-transform-checkpoint-errors) to learn more about the machinery behind {{transforms}}.
 
@@ -45,7 +42,6 @@ If you want to check the sales in the different categories in your last fiscal y
 :class: screenshot
 :::
 
-
 ## Latest {{transforms}} [latest-transform-overview]
 
 You can use the `latest` type of {{transform}} to copy the most recent documents into a new index. You must identify one or more fields as the unique key for grouping your data, as well as a date field that sorts the data chronologically. For example, you can use this type of {{transform}} to keep track of the latest purchase for each customer or the latest event for each host.
@@ -56,7 +52,6 @@ You can use the `latest` type of {{transform}} to copy the most recent documents
 :::
 
 As in the case of a pivot, a latest {{transform}} can run once or continuously. It performs a composite aggregation on the data in the source index and stores the output in the destination index. If the {{transform}} runs continuously, new unique key values are automatically added to the destination index and the most recent documents for existing key values are automatically updated at each checkpoint.
-
 
 ## Performance considerations [transform-performance]
 
@@ -71,5 +66,3 @@ If you prefer to spread out the impact on your cluster (at the cost of a slower 
 ```
 documents_processed / search_time_in_ms * 1000
 ```
-
-

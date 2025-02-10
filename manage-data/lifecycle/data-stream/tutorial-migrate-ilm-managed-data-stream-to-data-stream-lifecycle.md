@@ -67,7 +67,7 @@ We’ll now index a document targetting `dsl-data-stream` to create the data str
 POST dsl-data-stream/_doc?
 {
   "@timestamp": "2023-10-18T16:21:15.000Z",
-  "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/elasticsearch-reference-bg.jpg HTTP/1.0\" 200 24736"
+  "message": "192.0.2.42 - - [06/May/2099:16:21:15 +0000] \"GET /images/bg.jpg HTTP/1.0\" 200 24736"
 }
 ```
 

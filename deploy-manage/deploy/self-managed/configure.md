@@ -196,10 +196,10 @@ $$$logging-root-appenders$$$ `logging.root.appenders`
 :   A list of logging appenders to forward the root level logger instance to.  By default `root` is configured with the `default` appender that logs to stdout with a `pattern` layout. This is the configuration that all custom loggers will use unless they’re re-configured explicitly. You can override the default behavior by configuring a different [appender](../../monitor/logging-configuration/kibana-logging.md#logging-appenders) to apply to `root`.
 
 $$$logging-root-level$$$ `logging.root.level` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")
-:   Level at which a log record should be logged. Supported levels are: *all*, *fatal*, *error*, *warn*, *info*, *debug*, *trace*, *off*. Levels are ordered from *all* (highest) to *off* and a log record will be logged it its level is higher than or equal to the level of its logger, otherwise the log record is ignored. Use this value to [change the overall log level](../../monitor/logging-configuration/log-settings-examples.md#change-overall-log-level). **Default: `info`**.
+:   Level at which a log record should be logged. Supported levels are: *all*, *fatal*, *error*, *warn*, *info*, *debug*, *trace*, *off*. Levels are ordered from *all* (highest) to *off* and a log record will be logged it its level is higher than or equal to the level of its logger, otherwise the log record is ignored. Use this value to [change the overall log level](../../monitor/logging-configuration/kibana-log-settings-examples.md#change-overall-log-level). **Default: `info`**.
 
     ::::{tip}
-    Set to `all` to log all events, including system usage information and all requests. Set to `off` to silence all logs.  You can also use the logging [cli commands](../../monitor/logging-configuration/_cli_configuration.md#logging-cli-migration) to set log level to `verbose` or silence all logs.
+    Set to `all` to log all events, including system usage information and all requests. Set to `off` to silence all logs.  You can also use the logging [cli commands](../../monitor/logging-configuration/kibana-logging-cli-configuration.md#logging-cli-migration) to set log level to `verbose` or silence all logs.
     ::::
 
 
@@ -220,7 +220,7 @@ $$$logging-root-level$$$ `logging.root.level` ![logo cloud](https://doc-icons.s3
 
 
 $$$logging-loggers$$$ `logging.loggers[]`
-:   Allows you to [customize a specific logger instance](../../monitor/logging-configuration/log-settings-examples.md#customize-specific-log-records).
+:   Allows you to [customize a specific logger instance](../../monitor/logging-configuration/kibana-log-settings-examples.md#customize-specific-log-records).
 
 `logging.appenders[]`
 :   [Appenders](../../monitor/logging-configuration/kibana-logging.md#logging-appenders) define how and where log messages are displayed (eg. **stdout** or console) and stored (eg. file on the disk).
