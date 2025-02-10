@@ -65,14 +65,26 @@ Elastic Stack application images for the OpenShift-certified Elasticsearch (ECK)
 
 Check the full [Elastic support matrix](https://www.elastic.co/support/matrix#matrix_kubernetes) for more information.
 
-## Common tasks
+% TBD: discuss if these make sense here
+## Learn more about ECK [k8s_learn_more_about_eck]
 
-* [Deploy and configure ECK](./cloud-on-k8s/deploy-an-orchestrator.md)
-* [Manage {{es}} and {{kib}} deployments](./cloud-on-k8s/manage-deployments.md)
-* [Orchestrate other Elastic Stack applications](./cloud-on-k8s/orchestrate-other-elastic-applications.md)
+* [Orchestrate Elasticsearch on Kubernetes](https://www.elastic.co/elasticsearch-kubernetes)
+* [ECK post on the Elastic Blog](https://www.elastic.co/blog/introducing-elastic-cloud-on-kubernetes-the-elasticsearch-operator-and-beyond?elektra=products&storm=sub1)
+* [Getting Started With Elastic Cloud on Kubernetes (ECK)](https://www.youtube.com/watch?v=PIJmlYBIFXM)
+* [Running the Elastic Stack on Kubernetes with ECK](https://www.youtube.com/watch?v=Wf6E3vkvEFM)
 
-% to consider in either deploy or manage deployment sections
-% this was a "redirect only" in the excel
+% TBD: discuss where to put this "ask for help info"
+## Ask for help [k8s-ask-for-help]
+
+If you are an existing Elastic customer with an active support contract, you can create a case in the [Elastic Support Portal](https://support.elastic.co/). Kindly attach an [ECK diagnostic](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) when opening your case.
+
+Alternatively, or if you do not have a support contract, and if you are unable to find a solution to your problem with the information provided in these documents, ask for help:
+
+* [ECK Discuss forums](https://discuss.elastic.co/c/eck) to ask any question
+* [Github issues](https://github.com/elastic/cloud-on-k8s/issues) for bugs and feature requests
+
+% TBD: decide if this should be ommited also.
+% This was a "redirect only" in the excel
 ## Advanced topics [k8s-advanced-topics]
 
 * [*Deploy ECK on OpenShift*](/deploy-manage/deploy/cloud-on-k8s/deploy-eck-on-openshift.md)
@@ -84,22 +96,3 @@ Check the full [Elastic support matrix](https://www.elastic.co/support/matrix#ma
 * [*Webhook namespace selectors*](/deploy-manage/deploy/cloud-on-k8s/webhook-namespace-selectors.md)
 * [*Stack Monitoring*](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md)
 * [*Deploy a FIPS compatible version of ECK*](/deploy-manage/deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md)
-
-% TBD: discuss if these make sense here
-## Learn more about ECK [k8s_learn_more_about_eck]
-
-* [Orchestrate Elasticsearch on Kubernetes](https://www.elastic.co/elasticsearch-kubernetes)
-* [ECK post on the Elastic Blog](https://www.elastic.co/blog/introducing-elastic-cloud-on-kubernetes-the-elasticsearch-operator-and-beyond?elektra=products&storm=sub1)
-* [Getting Started With Elastic Cloud on Kubernetes (ECK)](https://www.youtube.com/watch?v=PIJmlYBIFXM)
-* [Running the Elastic Stack on Kubernetes with ECK](https://www.youtube.com/watch?v=Wf6E3vkvEFM)
-
-% TBD: discuss where to put this "ask for help info"
-
-## Ask for help [k8s-ask-for-help]
-
-If you are an existing Elastic customer with an active support contract, you can create a case in the [Elastic Support Portal](https://support.elastic.co/). Kindly attach an [ECK diagnostic](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md) when opening your case.
-
-Alternatively, or if you do not have a support contract, and if you are unable to find a solution to your problem with the information provided in these documents, ask for help:
-
-* [ECK Discuss forums](https://discuss.elastic.co/c/eck) to ask any question
-* [Github issues](https://github.com/elastic/cloud-on-k8s/issues) for bugs and feature requests
