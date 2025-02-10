@@ -82,7 +82,7 @@ To change the output size, change the size of the browser, which resizes the sha
 
 In the following dashboard, the shareable container is highlighted:
 
-:::{image} ../../images/kibana-shareable-container.png
+:::{image} ../images/kibana-shareable-container.png
 :alt: Shareable Container
 :class: screenshot
 :::

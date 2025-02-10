@@ -663,7 +663,6 @@ toc:
       - file: kibana/kibana/logging-settings.md
       - file: kibana/kibana/management.md
       - file: kibana/kibana/osquery.md
-      - file: kibana/kibana/playground.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
       - file: kibana/kibana/sample-data.md
