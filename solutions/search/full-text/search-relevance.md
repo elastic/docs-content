@@ -8,9 +8,8 @@ mapped_pages:
 This section includes a few recipes to help with common search relevance issues:
 
 * [Mixing exact search with stemming](search-relevance/mixing-exact-search-with-stemming.md)
-* [Getting consistent scores](../examples/consistent-scoring.md)
-* [Incorporating static relevance signals into the score](../examples/static-scoring-signals.md)
-
+* [Getting consistent scores](search-relevance/consistent-scoring.md)
+* [Incorporating static relevance signals into the score](search-relevance/static-scoring-signals.md)
 
 
 
