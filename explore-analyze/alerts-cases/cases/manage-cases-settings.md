@@ -20,23 +20,21 @@ If you close cases in your external incident management system, they will remain
 
 To change whether cases are automatically closed after they are sent to an external system, update the case closure options.
 
-
 ## External incident management systems [case-connectors]
 
 You can add connectors to cases to push information to these external incident management systems:
 
-* {ibm-r}
-* {jira}
-* {sn-itsm}
-* {sn-sir}
-* {swimlane}
-* {hive}
-* {webhook-cm}
+* {{ibm-r}}
+* {{jira}}
+* {{sn-itsm}}
+* {{sn-sir}}
+* {{swimlane}}
+* {{hive}}
+* {{webhook-cm}}
 
 ::::{note}
 To create connectors and send cases to external systems, you must have the appropriate {{kib}} feature privileges. Refer to [Configure access to cases](setup-cases.md).
 ::::
-
 
 You can create connectors in **{{stack-manage-app}} > {{connectors-ui}}**, as described in [*Connectors*](../../../deploy-manage/manage-connectors.md). Alternatively, you can create them in **{{stack-manage-app}} > Cases > Settings**:
 
@@ -48,7 +46,6 @@ You can subsequently choose the connector when you create cases and use it in ca
 
 To update a connector, click **Update <connector name>** and edit the connector fields as required.
 
-
 ## Custom fields [case-custom-fields]
 
 You can add optional and required fields for customized case collaboration. [8.15.0]
@@ -56,11 +53,10 @@ You can add optional and required fields for customized case collaboration. [8.1
 To create a custom field:
 
 1. In the **Custom fields** section, click **Add field**.
-
-    :::{image} ../../../images/kibana-cases-custom-fields-add.png
-    :alt: Add a custom field in case settings
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-cases-custom-fields-add.png
+   :alt: Add a custom field in case settings
+   :class: screenshot
+   :::
 
 2. You must provide a field label and type (text or toggle). You can optionally designate it as a required field and provide a default value.
 
@@ -68,24 +64,21 @@ When you create a custom field, it’s added to all new and existing cases. Exis
 
 You can subsequently remove or edit custom fields on the **Settings** page.
 
-
 ## Templates [case-templates]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-
 You can make the case creation process faster and more consistent by adding templates. A template defines values for one or all of the case fields (such as severity, tags, description, and title) as well as any custom fields.
 
 To create a template:
 
 1. In the **Templates** section, click **Add template**.
-
-    :::{image} ../../../images/kibana-cases-templates-add.png
-    :alt: Add a template in case settings
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-cases-templates-add.png
+   :alt: Add a template in case settings
+   :class: screenshot
+   :::
 
 2. You must provide a template name and case severity. You can optionally add template tags and a description, values for each case field, and a case connector.
 
@@ -94,6 +87,3 @@ When users create cases, they can optionally select a template and use its value
 ::::{note}
 If you update or delete templates, existing cases are unaffected.
 ::::
-
-
-

@@ -20,11 +20,9 @@ You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rul
 
 For more information on alerting concepts and the types of rules and connectors available, go to [Alerting](../alerts.md).
 
-
 ## Required permissions [_required_permissions]
 
 Access to rules is granted based on your {{alert-features}} privileges. For more information, go to [Security](alerting-setup.md#alerting-security).
-
 
 ## Create and edit rules [create-edit-rules]
 
@@ -35,8 +33,6 @@ After a rule is created, you can open the action menu (…) and select **Edit ru
 ::::{tip}
 You can also manage rules as resources with the [Elasticstack provider](https://registry.terraform.io/providers/elastic/elasticstack/latest) for Terraform. For more details, refer to the [elasticstack_kibana_alerting_rule](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_alerting_rule) resource.
 ::::
-
-
 
 ### Rule type and conditions [defining-rules-type-conditions]
 
@@ -53,7 +49,6 @@ All rules must have a check interval, which defines how often to evaluate the ru
 
 For details on what types of rules are available and how to configure them, refer to [*Rule types*](rule-types.md).
 
-
 ### Actions [defining-rules-actions-details]
 
 You can add one or more actions to your rule to generate notifications when its conditions are met and when they are no longer met.
@@ -67,7 +62,6 @@ After you select a connector, set the action frequency. You can choose to create
 ::::{note}
 If you choose a custom action interval, it cannot be shorter than the rule’s check interval.
 ::::
-
 
 For example, if you create an {{es}} query rule, you can send notifications that summarize the new, ongoing, and recovered alerts on a custom interval:
 
@@ -104,8 +98,6 @@ To get notified only once when a server exceeds the threshold, you can set the a
 
 ::::
 
-
-
 ### Action variables [defining-rules-actions-variables]
 
 You can pass rule values to an action at the time a condition is detected. To view the list of variables available for your rule, click the "add rule variable" button:
@@ -116,7 +108,6 @@ You can pass rule values to an action at the time a condition is detected. To vi
 :::
 
 For more information about common action variables, refer to [*Rule action variables*](rule-action-variables.md).
-
 
 ## Snooze and disable rules [controlling-rules]
 
@@ -133,7 +124,6 @@ When you snooze a rule, the rule checks continue to run on a schedule but alerts
 When a rule is in a snoozed state, you can cancel or change the duration of this state.
 
 [preview] To temporarily suppress notifications for rules, you can also create a [maintenance window](maintenance-windows.md).
-
 
 ## View rule details [rule-details]
 
@@ -164,7 +154,6 @@ If there are rule actions that failed to run successfully, you can see the detai
 :class: screenshot
 :::
 
-
 ## Import and export rules [importing-and-exporting-rules]
 
 To import and export rules, use [saved objects](../../find-and-organize/saved-objects.md).
@@ -177,7 +166,6 @@ Some rule types cannot be exported through this interface:
 **Stack monitoring rules** are [automatically created](../../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) for you and therefore cannot be managed in **Saved Objects**.
 
 ::::
-
 
 Rules are disabled on export. You are prompted to re-enable the rule on successful import.
 
