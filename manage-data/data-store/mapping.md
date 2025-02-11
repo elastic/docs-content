@@ -37,18 +37,18 @@ Each document is a collection of fields, which each have their own [data type](h
 Depending on where you are in your data journey, use **dynamic mapping** and **explicit mapping** to define your data. For example, you can explicitly map fields where you don’t want to use the defaults, or to gain greater control over which fields are created. Then you can allow {{es}} to dynamically map other fields.
 
 ::::{note}
-Before 7.0.0, the mapping definition included a type name. {{es}} 7.0.0 and later no longer accept a default mapping. [Removal of mapping types](../../../manage-data/data-store/mapping/removal-of-mapping-types.md) provides more information.
+Before 7.0.0, the mapping definition included a type name. {{es}} 7.0.0 and later no longer accept a default mapping. [Removal of mapping types](/manage-data/data-store/mapping/removal-of-mapping-types.md) provides more information.
 ::::
 
 ## Dynamic mapping [mapping-dynamic] 
 
-When you use [dynamic mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically attempts to detect the data type of fields in your documents. This allows you to get started quickly by just adding data to an index. If you index additional documents with new fields, {{es}} will add these fields automatically. You can add fields to the top-level mapping, and to inner [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) and [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) fields.
+When you use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically attempts to detect the data type of fields in your documents. This allows you to get started quickly by just adding data to an index. If you index additional documents with new fields, {{es}} will add these fields automatically. You can add fields to the top-level mapping, and to inner [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) and [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) fields.
 
-Use [dynamic templates](../../../manage-data/data-store/mapping/dynamic-templates.md) to define custom mappings that are applied to dynamically added fields based on the matching condition.
+Use [dynamic templates](/manage-data/data-store/mapping/dynamic-templates.md) to define custom mappings that are applied to dynamically added fields based on the matching condition.
 
 ## Explicit mapping [mapping-explicit] 
 
-Use [explicit mapping](../../../manage-data/data-store/mapping/explicit-mapping.md) to define exactly how data types are mapped to fields, customized to your specific use case.
+Use [explicit mapping](/manage-data/data-store/mapping/explicit-mapping.md) to define exactly how data types are mapped to fields, customized to your specific use case.
 
 Defining your own mappings enables you to:
 
@@ -56,7 +56,7 @@ Defining your own mappings enables you to:
 * Define which fields contain numbers, dates, or geolocations.
 * Use data types that cannot be automatically detected (such as `geo_point` and `geo_shape`.)
 * Choose date value [formats](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html), including custom date formats.
-* Create custom rules to control the mapping for [dynamically added fields](../../../manage-data/data-store/mapping/dynamic-mapping.md).
+* Create custom rules to control the mapping for [dynamically added fields](/manage-data/data-store/mapping/dynamic-mapping.md).
 * Optimize fields for partial matching.
 * Perform language-specific text analysis.
 
@@ -67,10 +67,10 @@ It’s often useful to index the same field in different ways for different purp
 
 ## Runtime fields [runtime-fields]
 
-Use [runtime fields](../../../manage-data/data-store/mapping/runtime-fields.md) to make schema changes without reindexing. You can use runtime fields in conjunction with indexed fields to balance resource usage and performance. Your index will be smaller, but with slower search performance.
+Use [runtime fields](/manage-data/data-store/mapping/runtime-fields.md) to make schema changes without reindexing. You can use runtime fields in conjunction with indexed fields to balance resource usage and performance. Your index will be smaller, but with slower search performance.
 
 ::::{admonition} Experiment with mapping options
-[Define runtime fields in a search request](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) to experiment with different mapping options, and also fix mistakes in your index mapping values by overriding values in the mapping during the search request.
+[Define runtime fields in a search request](/manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) to experiment with different mapping options, and also fix mistakes in your index mapping values by overriding values in the mapping during the search request.
 ::::
 
 ## Manage and update mappings [mapping-manage-update]
@@ -95,6 +95,6 @@ However, you can update mappings under certain conditions:
 
 Defining too many fields in an index can lead to a mapping explosion, which can cause out of memory errors and difficult situations from which to recover.
 
-Consider a situation where every new document inserted introduces new fields, such as with [dynamic mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md). Each new field is added to the index mapping, which can become a problem as the mapping grows.
+Consider a situation where every new document inserted introduces new fields, such as with [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md). Each new field is added to the index mapping, which can become a problem as the mapping grows.
 
 Use the [mapping limit settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html) to limit the number of field mappings (created manually or dynamically) and prevent documents from causing a mapping explosion.
