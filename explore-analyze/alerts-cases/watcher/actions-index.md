@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-index.html
 ---
 
-
-
 # Index action [actions-index]
-
 
 Use the `index` action to index data into Elasticsearch. See [Index action attributes](#index-action-attributes) for the supported attributes.
 
@@ -34,8 +31,6 @@ The following snippet shows a simple `index` action definition:
 4. The index, alias, or data stream to which the data will be written
 5. An optional `_id` for the document
 
-
-
 ## Index action attributes [index-action-attributes]
 
 | Name | Required | Default | Description |
@@ -46,7 +41,6 @@ The following snippet shows a simple `index` action definition:
 | `execution_time_field` | no | - | The field that will store/index the watch execution                                                      time. |
 | `timeout` | no | 60s | The timeout for waiting for the index api call to                                                      return. If no response is returned within this time,                                                      the index action times out and fails. This setting                                                      overrides the default timeouts. |
 | `refresh` | no | - | Optional setting of the [refresh policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-refresh.html)                                                      for the write request |
-
 
 ## Multi-document support [anatomy-actions-index-multi-doc-support]
 
@@ -87,6 +81,3 @@ The following snippet shows a multi-document `index` action definition:
 3. A new `severity` field derived from the original document
 4. The payload `_doc` field which is an array of documents
 5. Since the `_index` was informed per document this should be empty
-
-
-
