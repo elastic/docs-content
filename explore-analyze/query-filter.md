@@ -7,6 +7,10 @@ mapped_pages:
 
 You can use {{es}} as a basic document store to retrieve documents and their metadata. However, the real power of {{es}} comes from its advanced search and analytics capabilities.
 
+* **{{es}} makes JSON documents searchable and aggregatable.** The documents are stored in an [index](/manage-data/data-store/index-basics.md) or [data stream](/manage-data/data-store/index-types/data-streams.md), which represent one type of data.
+* ***Searchable* means that you can filter the documents for conditions.** For example, you can filter for data "within the last 7 days" or data that "contains the word {{kib}}". {{kib}} provides many ways for you to construct filters, which are also called queries or search terms.
+* ***Aggregatable* means that you can extract summaries from matching documents.** The simplest aggregation is **count**, and it is frequently used in combination with the **date histogram**, to see count over time. The **terms** aggregation shows the most frequent values.
+
 ## Querying
 
 You’ll use a combination of an API endpoint and a query language to interact with your data.

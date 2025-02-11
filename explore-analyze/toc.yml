@@ -1,9 +1,6 @@
 project: 'Explore and analyze'
 toc:
   - file: index.md
-  - file: overview/kibana-quickstart.md
-    children:
-      - file: overview/kibana-quickstart/accessibility-in-kibana.md
   - file: query-filter.md
     children:
       - file: query-filter/languages.md
