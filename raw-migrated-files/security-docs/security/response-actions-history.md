@@ -8,7 +8,7 @@ You must have the **Response Actions History** [privilege](../../../solutions/se
 ::::
 
 
-To access the response actions history for all endpoints, find **Response actions history** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). You can also access the response actions history for an individual endpoint from these areas:
+To access the response actions history for all endpoints, find **Response actions history** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also access the response actions history for an individual endpoint from these areas:
 
 * **Endpoints** page: Click an endpoint’s name to open the details flyout, then click the **Response actions history** tab.
 * **Response console** page: Click the **Response actions history** button.

@@ -13,7 +13,7 @@ It is strongly advised to keep automatic updates enabled to ensure the highest l
 
 To configure the protection artifacts version deployed in your environment:
 
-1. Find **Policies** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Policies** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select an {{elastic-defend}} integration policy, then select the **Protection updates** tab.
 3. Turn off the **Enable automatic updates** toggle.
 4. Use the **Version to deploy** date picker to select the date of the protection artifacts you want to use in your environment.

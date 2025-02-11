@@ -7,6 +7,6 @@ To use the {{monitor-features}} with the {{security-features}} enabled, you need
 For more information, see:
 
 * [*Monitoring in a production environment*](../../../deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md)
-* [Configuring monitoring in {{kib}}](https://www.elastic.co/guide/en/kibana/current/monitoring-xpack-kibana.html)
+* [Configuring monitoring in {{kib}}](https://www.elastic.co/guide/en/kibana/current/monitoring-kibana.html)
 * [Configuring monitoring for Logstash nodes](https://www.elastic.co/guide/en/logstash/current/configuring-logstash.html)
 

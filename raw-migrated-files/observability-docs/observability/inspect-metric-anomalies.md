@@ -11,7 +11,7 @@ Create a {{ml}} job to detect anomalous memory usage and network traffic automat
 
 Once you create {{ml}} jobs, you can not change the settings. You can recreate these jobs later. However, you will remove any previously detected anomalies.
 
-1. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the **Anomaly detection** link at the top of the page.
 3. You’ll be prompted to create a {{ml}} job for **Hosts** or **Kubernetes Pods**. Click **Enable**.
 4. Choose a start date for the {{ml}} analysis.
@@ -41,10 +41,10 @@ Once you create {{ml}} jobs, you can not change the settings. You can recreate t
 
     Along with each anomaly job and the node name, detected anomalies with a severity score equal to 50 or higher are listed. These scores represent a severity of "warning" or higher in the selected time period. The **summary** value represents the increase between the actual value and the expected ("typical") value of the metric in the anomaly record result.
 
-    To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the [Anomaly Explorer in {{ml-app}}](https://www.elastic.co/guide/en/machine-learning/current/ml-gs-results.html). You can also select **Actions → Show in Inventory** to view the host or Kubernetes pods Inventory page, filtered by the specific metric.
+    To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the [Anomaly Explorer in {{ml-app}}](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results). You can also select **Actions → Show in Inventory** to view the host or Kubernetes pods Inventory page, filtered by the specific metric.
 
     ::::{note}
-    These predefined {{anomaly-jobs}} use [custom rules](https://www.elastic.co/guide/en/machine-learning/current/ml-rules.html). To update the rules in the [Anomaly Explorer](https://www.elastic.co/guide/en/machine-learning/current/ml-gs-results.html), select **actions → Configure rules**. The changes only take effect for new results. If you want to apply the changes to existing results, clone and rerun the job.
+    These predefined {{anomaly-jobs}} use [custom rules](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-rules). To update the rules in the [Anomaly Explorer](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results), select **actions → Configure rules**. The changes only take effect for new results. If you want to apply the changes to existing results, clone and rerun the job.
 
     ::::
 
@@ -52,7 +52,7 @@ Once you create {{ml}} jobs, you can not change the settings. You can recreate t
 
 ## History chart [history-chart]
 
-On the **Inventory** page, click **Show history** to view the metric values within the selected time frame. Detected anomalies with an anomaly score equal to 50, or higher, are highlighted in red. To examine the detected anomalies, use the [Anomaly Explorer](https://www.elastic.co/guide/en/machine-learning/current/ml-gs-results.html).
+On the **Inventory** page, click **Show history** to view the metric values within the selected time frame. Detected anomalies with an anomaly score equal to 50, or higher, are highlighted in red. To examine the detected anomalies, use the [Anomaly Explorer](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results).
 
 :::{image} ../../../images/observability-metrics-history-chart.png
 :alt: History

@@ -13,6 +13,20 @@ The {{kib}} Query Language (KQL) is a simple text-based query language for filte
 Use KQL to filter documents where a value for a field exists, matches a given value, or is within a given range.
 
 
+## Semi-structured search [semi-structured-search]
+
+Combine free text search with field-based search using KQL. Type a search term to match across all fields, or start typing a field name to get suggestions for field names and operators that you can use to build a structured query. The semi-structured search will filter documents for matches, and only return matching documents.
+
+|     |     |
+| --- | --- |
+| Exact phrase query | `http.response.body.content.text:"quick brown fox"` |
+| Terms query | http.response.status_code:400 401 404 |
+| Boolean query | `response:200 or extension:php` |
+| Range query | `account_number >= 100 and items_sold <= 200` |
+| Wildcard query | `machine.os:win*` |
+
+
+
 ## Filter for documents where a field exists [_filter_for_documents_where_a_field_exists] 
 
 To filter documents for which an indexed value exists for a given field, use the `*` operator. For example, to filter for documents where the `http.request.method` field exists, use the following syntax:

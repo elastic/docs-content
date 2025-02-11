@@ -4,7 +4,7 @@ Role mappings are part of single sign-on (SSO), a [subscription feature](https:/
 
 Role mappings are required when authenticating via an external identity provider, such as Active Directory, Kerberos, PKI, OIDC, or SAML. Role mappings have no effect for users inside the `native` or `file` realms.
 
-You can find the **Role mappings** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+You can find the **Role mappings** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 With **Role mappings**, you can:
 
@@ -21,7 +21,7 @@ The `manage_security` cluster privilege is required to manage Role Mappings.
 
 ## Create a role mapping [_create_a_role_mapping]
 
-1. Go to the **Role mappings** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Role mappings** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create role mapping**.
 3. Give your role mapping a unique name, and choose which roles you wish to assign to your users.
 

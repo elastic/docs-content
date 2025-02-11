@@ -1,5 +1,5 @@
 ---
-navigation_title: "Semantic search with ELSER"
+navigation_title: "Semantic search with ELSER (ingest pipelines)"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-elser.html
 ---
@@ -19,20 +19,18 @@ For the easiest way to perform semantic search in the {{stack}}, refer to the [`
 
 
 ::::{note}
-Only the first 512 extracted tokens per field are considered during semantic search with ELSER. Refer to [this page](../../../explore-analyze/machine-learning/nlp/ml-nlp-limitations.md#ml-nlp-elser-v1-limit-512) for more information.
+Only the first 512 extracted tokens per field are considered during semantic search with ELSER. Refer to [this page](/explore-analyze/machine-learning/nlp/ml-nlp-limitations.md#ml-nlp-elser-v1-limit-512) for more information.
 ::::
 
 
 
 ### Requirements [requirements]
 
-To perform semantic search by using ELSER, you must have the NLP model deployed in your cluster. Refer to the [ELSER documentation](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to learn how to download and deploy the model.
+To perform semantic search by using ELSER, you must have the NLP model deployed in your cluster. Refer to the [ELSER documentation](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to learn how to download and deploy the model.
 
 ::::{note}
 The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in Elasticsearch Service if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
-
-
 
 ### Create the index mapping [elser-mappings]
 
@@ -65,12 +63,7 @@ PUT my-index
 4. The field type which is text in this example.
 
 
-To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](../vector/sparse-vector-elser.md#save-space) section.
-
-
-### Create an ingest pipeline with an inference processor [inference-ingest-pipeline]
-
-Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) to use ELSER to infer against the data that is being ingested in the pipeline.
+To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](/manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) to use ELSER to infer against the data that is being ingested in the pipeline.
 
 ```console
 PUT _ingest/pipeline/elser-v2-test
@@ -162,7 +155,7 @@ GET my-index/_search
 }
 ```
 
-The result is the top 10 documents that are closest in meaning to your query text from the `my-index` index sorted by their relevancy. The result also contains the extracted tokens for each of the relevant search results with their weights. Tokens are learned associations capturing relevance, they are not synonyms. To learn more about what tokens are, refer to [this page](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-tokens). It is possible to exclude tokens from source, refer to [this section](../vector/sparse-vector-elser.md#save-space) to learn more.
+The result is the top 10 documents that are closest in meaning to your query text from the `my-index` index sorted by their relevancy. The result also contains the extracted tokens for each of the relevant search results with their weights. Tokens are learned associations capturing relevance, they are not synonyms. To learn more about what tokens are, refer to [this page](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-tokens). It is possible to exclude tokens from source, refer to [this section](#save-space) to learn more.
 
 ```console-result
 "hits": {
@@ -201,7 +194,6 @@ The result is the top 10 documents that are closest in meaning to your query tex
   ]
 }
 ```
-
 
 ### Combining semantic search with other queries [text-expansion-compound-query]
 
@@ -287,8 +279,8 @@ Depending on your data, the `sparse_vector` query may be faster with `track_tota
 
 ### Further reading [further-reading]
 
-* [How to download and deploy ELSER](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md)
-* [ELSER limitation](../../../explore-analyze/machine-learning/nlp/ml-nlp-limitations.md#ml-nlp-elser-v1-limit-512)
+* [How to download and deploy ELSER](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md)
+* [ELSER limitation](/explore-analyze/machine-learning/nlp/ml-nlp-limitations.md#ml-nlp-elser-v1-limit-512)
 * [Improving information retrieval in the Elastic Stack: Introducing Elastic Learned Sparse Encoder, our new retrieval model](https://www.elastic.co/blog/may-2023-launch-information-retrieval-elasticsearch-ai-model)
 
 

@@ -37,7 +37,7 @@ The instructions differ depending on whether you’re installing on EKS or on un
 
 ### Name your integration and select a Kubernetes Deployment type [_name_your_integration_and_select_a_kubernetes_deployment_type]
 
-1. Find **Cloud Security Posture** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Cloud Security Posture** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Add a KSPM integration**.
 3. Read the integration’s description to understand how it works. Then, click [**Add Kubernetes Security Posture Management**](https://docs.elastic.co/en/integrations/cloud_security_posture).
 4. Name your integration. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
@@ -235,7 +235,7 @@ Follow these steps to deploy the KSPM integration to unmanaged clusters. Keep in
 
 To install the integration on unmanaged clusters:
 
-1. Find **Cloud Security Posture** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Cloud Security Posture** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Add a KSPM integration**.
 3. Read the integration’s description to understand how it works. Then, click [**Add Kubernetes Security Posture Management**](https://docs.elastic.co/en/integrations/cloud_security_posture).
 4. Name your integration. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.

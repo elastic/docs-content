@@ -25,7 +25,7 @@ Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elast
 
 You’ll start with installing the Elastic GCP integration to add pre-built dashboards, ingest node configurations, and other assets that help you get the most of the GCP logs you ingest.
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `gcp`.
 
     :::{image} ../../../images/observability-monitor-gcp-kibana-integrations.png

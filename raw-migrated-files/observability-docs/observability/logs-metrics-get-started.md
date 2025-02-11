@@ -21,7 +21,7 @@ To get started quickly, spin up a deployment of our hosted {{ess}}. The {{ess}} 
 
 In this step, add the System integration to monitor host logs and metrics.
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for **System** and select the integration to see more details about it.
 3. Click **Add System**.
 4. Configure the integration name and optionally add a description. Make sure that **Collect logs from System instances** and **Collect metrics from System instances** are turned on.
@@ -117,7 +117,7 @@ Next, add additional integrations to the policy used by your agent.
 
     Any {{agent}}s assigned to this policy will begin collecting data for the newly configured integrations.
 
-9. To view the data, find **{{fleet}}** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+9. To view the data, find **{{fleet}}** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 10. Click the **Data streams** tab.
 11. In the **Actions** column, navigate to the dashboards corresponding to the data stream.
 

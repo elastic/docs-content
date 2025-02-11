@@ -47,7 +47,7 @@ The following video demonstrates these steps.
 To integrate with {{kib}}:
 
 1. Log in to {{kib}}.
-2. Find the **Connectors** page in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Then click **Create Connector**, and select **OpenAI**.
+2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **OpenAI**.
 3. Provide a name for your connector, such as `OpenAI (GPT-4 Turbo Preview)`, to help keep track of the model and version you are using.
 4. Under **Select an OpenAI provider**, choose **OpenAI**.
 5. The **URL** field can be left as default.

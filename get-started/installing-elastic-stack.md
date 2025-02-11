@@ -2,9 +2,9 @@
 
 When installing the Elastic Stack, you must use the same version across the entire stack. For example, if you are using Elasticsearch 9.0.0-beta1, you install Beats 9.0.0-beta1, APM Server 9.0.0-beta1, Elasticsearch Hadoop 9.0.0-beta1, Kibana 9.0.0-beta1, and Logstash 9.0.0-beta1.
 
-If you’re upgrading an existing installation, see [Upgrading the Elastic Stack](../../../deploy-manage/upgrade/deployment-or-cluster.md) for information about how to ensure compatibility with 9.0.0-beta1.
+If you’re upgrading an existing installation, see [Upgrading the Elastic Stack](../deploy-manage/upgrade/deployment-or-cluster.md) for information about how to ensure compatibility with 9.0.0-beta1.
 
-For an example of installing and configuring the {{stack}}, you can try out our [Tutorial 1: Installing a self-managed {{stack}}](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md). After that, you can also learn how to secure your installation for production following the steps in [Tutorial 2: Securing a self-managed {{stack}}](../../../deploy-manage/security/secure-your-cluster-deployment.md).
+For an example of installing and configuring the {{stack}}, you can try out our [Tutorial 1: Installing a self-managed {{stack}}](../deploy-manage/deploy/self-managed/installing-elasticsearch.md). After that, you can also learn how to secure your installation for production following the steps in [Tutorial 2: Securing a self-managed {{stack}}](../deploy-manage/security/secure-your-cluster-deployment.md).
 
 
 ## Network requirements [network-requirements] 

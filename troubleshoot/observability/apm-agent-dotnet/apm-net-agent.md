@@ -1,9 +1,10 @@
 ---
+navigation_title: "APM .NET agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/dotnet/current/troubleshooting.html
 ---
 
-# APM .NET agent
+# Troubleshoot APM .NET agent
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions. As a first step, ensure your stack is compatible with the Agent’s [supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/current/supported-technologies.html).
 

@@ -146,7 +146,7 @@ The following video demonstrates these steps.
 Finally, configure the connector in {{kib}}:
 
 1. Log in to {{kib}}.
-2. . Find the **Connectors** page in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Then click **Create Connector**, and select **Amazon Bedrock**.
+2. . Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **Amazon Bedrock**.
 3. Name your connector.
 4. (Optional) Configure the Amazon Bedrock connector to use a different AWS region where Anthropic models are supported by editing the **URL** field, for example by changing `us-east-1` to `eu-central-1`.
 5. (Optional) Add one of the following strings if you want to use a model other than the default:

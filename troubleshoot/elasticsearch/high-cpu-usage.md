@@ -1,9 +1,10 @@
 ---
+navigation_title: High CPU usage
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-cpu-usage.html
 ---
 
-# High CPU usage [high-cpu-usage]
+# Symptom: High CPU usage [high-cpu-usage]
 
 {{es}} uses [thread pools](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
 

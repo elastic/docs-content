@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-getting-started-search-use-cases-beats-logstash.html
 ---
 
-# Ingest data from Beats to Elastic Cloud with Logstash as a proxy
+# Ingest data from Beats with Logstash as a proxy
 
 % What needs to be done: Refine
 
@@ -57,13 +57,13 @@ $$$ece-beats-logstash-stdout$$$
 
 $$$ece-beats-logstash-view-kibana$$$
 
-This guide explains how to ingest data from Filebeat and Metricbeat to {{ls}} as an intermediary, and then send that data to Elasticsearch Service. Using {{ls}} as a proxy limits your Elastic stack traffic through a single, external-facing firewall exception or rule. Consider the following features of this type of setup:
+This guide explains how to ingest data from Filebeat and Metricbeat to {{ls}} as an intermediary, and then send that data to your {{ech}} or {{ece}} deployment. Using {{ls}} as a proxy limits your Elastic stack traffic through a single, external-facing firewall exception or rule. Consider the following features of this type of setup:
 
-* You can send multiple instances of Beats data through your local network’s demilitarized zone (DMZ) to {{ls}}. {{ls}} then acts as a proxy through your firewall to send the Beats data to Elasticsearch Service, as shown in the following diagram:
+* You can send multiple instances of Beats data through your local network’s demilitarized zone (DMZ) to {{ls}}. {{ls}} then acts as a proxy through your firewall to send the Beats data to your deployment, as shown in the following diagram:
 
     ![A diagram showing data from multiple Beats into Logstash](../../../images/cloud-ec-logstash-beats-dataflow.png "")
 
-* This proxying reduces the firewall exceptions or rules necessary for Beats to communicate with Elasticsearch Service. It’s common to have many Beats dispersed across a network, each installed close to the data that it monitors, and each Beat individually communicating with an Elasticsearch Service deployment. Multiple Beats support multiple servers. Rather than configure each Beat to send its data directly to Elasticsearch Service, you can use {{ls}} to proxy this traffic through one firewall exception or rule.
+* This proxying reduces the firewall exceptions or rules necessary for Beats to communicate with your {{ech}} or {{ece}} deployment. It’s common to have many Beats dispersed across a network, each installed close to the data that it monitors, and each Beat individually communicating with a deployment. Multiple Beats support multiple servers. Rather than configure each Beat to send its data directly to your {{ech}} or {{ece}} deployment, you can use {{ls}} to proxy this traffic through one firewall exception or rule.
 * This setup is not suitable in simple scenarios when there is only one or a couple of Beats in use. {{ls}} makes the most sense for proxying when there are many Beats.
 
 The configuration in this example makes use of the System module, available for both Filebeat and Metricbeat. Filebeat’s System sends server system log details (that is, login success/failures, sudo *superuser do* command usage, and other key usage details). Metricbeat’s System module sends memory, CPU, disk, and other server usage metrics.
@@ -83,7 +83,7 @@ The configuration in this example makes use of the System module, available for 
 5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
+Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 :::
 
 :::{tab-item} Elastic Cloud Enterprise
@@ -98,9 +98,9 @@ Prefer not to subscribe to yet another service? You can also get Elasticsearch S
 
 ## Connect securely [ec-beats-logstash-connect-securely]
 
-When connecting to Elasticsearch Service you can use a Cloud ID to specify the connection details. You must pass the Cloud ID that you can find in the cloud console.  Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+When connecting to your {{ech}} or {{ece}} deployment, you can use a Cloud ID to specify the connection details. You must pass the Cloud ID that you can find in the cloud console.  Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 
-To connect to, stream data to, and issue queries with Elasticsearch Service, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+To connect to, stream data to, and issue queries with {{ech}} or {{ece}}, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 
 ## Set up {{ls}} [ec-beats-logstash-logstash]
@@ -110,7 +110,7 @@ To connect to, stream data to, and issue queries with Elasticsearch Service, you
 
 ## Set up Metricbeat [ec-beats-logstash-metricbeat]
 
-Now that {{ls}} is downloaded and your Elasticsearch Service deployment is set up, you can configure Metricbeat to send operational data to {{ls}}.
+Now that {{ls}} is downloaded and your deployment is set up, you can configure Metricbeat to send operational data to {{ls}}.
 
 Install Metricbeat as close as possible to the service that you want to monitor. For example, if you have four servers with MySQL running, we recommend that you run Metricbeat on each server. This allows Metricbeat to access your service from *localhost*. This setup does not cause any additional network traffic and enables Metricbeat to collect metrics even in the event of network problems. Metrics from multiple Metricbeat instances are combined on the {{ls}} server.
 
@@ -126,7 +126,7 @@ Metricbeat has [many modules](https://www.elastic.co/guide/en/beats/metricbeat/c
 
 **Load the Metricbeat Kibana dashboards**
 
-Metricbeat comes packaged with example dashboards, visualizations, and searches for visualizing Metricbeat data in Kibana. Before you can use the dashboards, you need to create the data view (formerly *index pattern*) *metricbeat-**, and load the dashboards into Kibana. This needs to be done from a local Beats machine that has access to the Elasticsearch Service deployment.
+Metricbeat comes packaged with example dashboards, visualizations, and searches for visualizing Metricbeat data in Kibana. Before you can use the dashboards, you need to create the data view (formerly *index pattern*) *metricbeat-**, and load the dashboards into Kibana. This needs to be done from a local Beats machine that has access to the {{esh}} or {{ece}} deployment.
 
 ::::{note}
 Beginning with Elastic Stack version 8.0, Kibana *index patterns* have been renamed to *data views*. To learn more, check the Kibana [What’s new in 8.0](https://www.elastic.co/guide/en/kibana/8.0/whats-new.html#index-pattern-rename) page.
@@ -142,7 +142,7 @@ sudo ./metricbeat setup \
   -E cloud.auth=<username>:<password> <2>
 ```
 
-1. Specify the Cloud ID of your Elasticsearch Service deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
 Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html) of the metricbeat.yml.
 
@@ -230,7 +230,7 @@ sudo ./filebeat setup \
   -E cloud.auth=<username>:<password> <2>
 ```
 
-1. Specify the Cloud ID of your Elasticsearch Service deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
 Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html) of the filebeat.yml.
 ::::
@@ -418,7 +418,7 @@ Now, let’s try out the {{ls}} pipeline with the Metricbeats and Filebeats conf
 
 ## Output {{ls}} data to {{es}} [ec-beats-logstash-elasticsearch]
 
-In this section, you configure {{ls}} to send the Metricbeat and Filebeat data to {{es}}. You modify the *beats.conf* created earlier, and specify the output credentials needed for our Elasticsearch Service deployment. Then, you start {{ls}} to send the Beats data into {{es}}.
+In this section, you configure {{ls}} to send the Metricbeat and Filebeat data to {{es}}. You modify the *beats.conf* created earlier, and specify the output credentials needed for your {{ech}} or {{ece}} deployment. Then, you start {{ls}} to send the Beats data into {{es}}.
 
 1. In your *<localpath>/logstash-<version>/* folder, open *beats.conf* for editing.
 2. Replace the *output {}* section of the JSON with the following code:
@@ -436,7 +436,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
     }
     ```
 
-    1. Use the Cloud ID of your Elasticsearch Service deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+    1. Use the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
     2. the default usename is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check the [Grant access to secured resources](https://www.elastic.co/guide/en/beats/filebeat/current/feature-roles.html) for information on the writer role and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Grant access to secured resources](https://www.elastic.co/guide/en/beats/filebeat/current/feature-roles.html) documentation.
 
 
@@ -449,14 +449,14 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
 
             If you use Metricbeat version 8.13.1, the index created in {{es}} is named *metricbeat-8.13.1*. Similarly, using the 8.13.1 version of Filebeat, the {{es}} index is named *filebeat-8.13.1*.
 
-    * *cloud_id*: This is the ID that uniquely identifies your Elasticsearch Service deployment.
-    * *ssl*: This should be set to `true` so that Secure Socket Layer (SSL) certificates are used for secure communication between {{ls}} and your Elasticsearch Service deployment.
-    * *ilm_enabled*: Enables and disables Elasticsearch Service [index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md).
+    * *cloud_id*: This is the ID that uniquely identifies your {{ech}} or {{ece}} deployment.
+    * *ssl*: This should be set to `true` so that Secure Socket Layer (SSL) certificates are used for secure communication between {{ls}} and your {{ech}} or {{ece}} deployment.
+    * *ilm_enabled*: Enables and disables [index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md).
     * *api_key*: If you choose to use an API key to authenticate (as discussed in the next step), you can provide it here.
 
-3. **Optional**: For additional security, you can generate an {{es}} API key through the Elasticsearch Service console and configure {{ls}} to use the new key to connect securely to the Elasticsearch Service.
+3. **Optional**: For additional security, you can generate an {{es}} API key and configure {{ls}} to use the new key to connect securely to {{ech}} or {{ece}}.
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. For {{ech}}, log into [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), or for {{ece}}, log into the admin console.
     2. Select the deployment and go to **☰** > **Management** > **Dev Tools**.
     3. Enter the following:
 
@@ -524,7 +524,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
     ./filebeat -c filebeat.yml
     ```
 
-7. {{ls}} now outputs the Filebeat and Metricbeat data to your Elasticsearch Service instance.
+7. {{ls}} now outputs the Filebeat and Metricbeat data to your {{ech}} or {{ece}} deployment.
 
 ::::{note}
 In this guide, you manually launch each of the Elastic stack applications through the command line interface. In production, you may prefer to configure {{ls}}, Metricbeat, and Filebeat to run as System Services. Check the following pages for the steps to configure each application to run as a service:
@@ -539,7 +539,7 @@ In this guide, you manually launch each of the Elastic stack applications throug
 
 ## View data in Kibana [ec-beats-logstash-view-kibana]
 
-In this section, you log into Elasticsearch Service, open Kibana, and view the Kibana dashboards populated with our Metricbeat and Filebeat data.
+In this section, you log into {{ech}} or {{ece}}, open Kibana, and view the Kibana dashboards populated with our Metricbeat and Filebeat data.
 
 **View the Metricbeat dashboard**
 

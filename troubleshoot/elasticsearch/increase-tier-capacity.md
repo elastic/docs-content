@@ -1,9 +1,10 @@
 ---
+navigation_title: Not enough nodes to allocate shard replicas
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/increase-tier-capacity.html
 ---
 
-# Not enough nodes to allocate all shard replicas [increase-tier-capacity]
+# Warning: Not enough nodes to allocate all shard replicas [increase-tier-capacity]
 
 Distributing copies of the data (index shard replicas) on different nodes can parallelize processing requests thus speeding up search queries. This can be achieved by increasing the number of replica shards up to the maximum value (total number of nodes minus one) which also serves the purpose to protect against hardware failure. If the index has a preferred tier, Elasticsearch will only place the copies of the data for that index on nodes in the target tier.
 

@@ -91,7 +91,7 @@ After using the dashboards to examine your data and confirm you’ve ingested al
 
 For host monitoring, the following capabilities and features are recommended:
 
-* In the [Infrastructure UI](https://www.elastic.co/guide/en/observability/current/analyze-metrics.html), analyze and compare data collected from your hosts. You can also:
+* In the [Infrastructure UI](https://www.elastic.co/guide/en/observability/current/monitor-infrastructure-and-hosts.html), analyze and compare data collected from your hosts. You can also:
 
     * [Detect anomalies](../../../solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
     * [Create alerts](../../../solutions/observability/incident-management/alerting.md) that notify you when an anomaly is detected or a metric exceeds a given value.

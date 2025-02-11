@@ -9,7 +9,7 @@ mapped_pages:
 # Manage users and roles [project-settings-access]
 
 
-Go to **Project settings**, then ** Management** to manage your indices, data views, saved objects, settings, and more. You can also open Management by using the [global search field](../explore-analyze/overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+Go to **Project settings**, then ** Management** to manage your indices, data views, saved objects, settings, and more. You can also open Management by using the [global search field](../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Access to individual features is governed by Elastic user roles. Consult your administrator if you do not have the appropriate access. To learn more about roles, refer to [Assign user roles and privileges](users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 

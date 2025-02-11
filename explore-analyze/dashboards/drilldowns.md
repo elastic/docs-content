@@ -37,7 +37,7 @@ The panels you create using the following editors support dashboard drilldowns:
 
 ### Create and set up the dashboards you want to connect [_create_and_set_up_the_dashboards_you_want_to_connect]
 
-Use the [**Sample web logs**](../overview/kibana-quickstart.md#gs-get-data-into-kibana) data to create a dashboard and add panels, then set a search and filter on the **[Logs] Web Traffic** dashboard.
+Use the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data to create a dashboard and add panels, then set a search and filter on the **[Logs] Web Traffic** dashboard.
 
 1. Add the **Sample web logs** data.
 2. Create a new dashboard, click **Add from Library**, then add the following panels:
@@ -76,7 +76,7 @@ Create a drilldown that opens the **Detailed logs** dashboard from the **[Logs] 
 
 ## Create URL drilldowns [create-url-drilldowns]
 
-URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](https://www.elastic.co/guide/en/kibana/current/url-drilldown.html#variables) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
+URL drilldowns enable you to navigate from a dashboard to external websites. Destination URLs can be dynamic, depending on the dashboard context or user interaction with a panel. To create URL drilldowns, you add [variables](https://www.elastic.co/guide/en/kibana/current/drilldowns.html) to a URL template, which configures the behavior of the drilldown. All panels that you create with the visualization editors support dashboard drilldowns.
 
 ![Drilldown on pie chart that navigates to Github](../../images/kibana-dashboard_urlDrilldownGoToGitHub_8.3.gif "")
 
@@ -92,7 +92,7 @@ For example, **Single click** has `{{event.value}}` and **Range selection** has 
 
 For example, if you have a dashboard that shows data from a Github repository, you can create a URL drilldown that opens Github from the dashboard panel.
 
-1. Add the [**Sample web logs**](../overview/kibana-quickstart.md#gs-get-data-into-kibana) data.
+1. Add the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data.
 2. Open the **[Logs] Web Traffic** dashboard.
 3. In the toolbar, click **Edit**.
 4. Create a donut chart
@@ -144,7 +144,7 @@ Discover drilldowns are supported only by **Lens** panels. To open all of the **
 
 ### Create the Discover drilldown [_create_the_discover_drilldown]
 
-Create a drilldown that opens **Discover** from the [**Sample web logs**](../overview/kibana-quickstart.md#gs-get-data-into-kibana) data **[Logs] Web Traffic** dashboard.
+Create a drilldown that opens **Discover** from the [**Sample web logs**](../index.md#gs-get-data-into-kibana) data **[Logs] Web Traffic** dashboard.
 
 1. Click **Edit**, open the panel menu for the **[Logs] Bytes distribution** bar vertical stacked chart, then select **Create drilldown**.
 2. Click **Open in Discover**.

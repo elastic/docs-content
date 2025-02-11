@@ -43,7 +43,7 @@ As you edit the specs, work in small steps, and frequently save your work. Small
 
 Before starting, add the eCommerce sample data that you’ll use in your spec, then create the dashboard.
 
-1. [Install the eCommerce sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, click **Create dashboard**.
 
@@ -84,7 +84,7 @@ To create the stacked area chart, add the aggregations.
 To check your work, open and use the [**Console**](../query-filter/tools/console.md) on a separate browser tab.
 
 1. Open {{kib}} on a new tab.
-2. Go to the **Developer tools** page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+2. Go to the **Developer tools** page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. On the **Console** editor, enter the aggregation, then click **Click to send request**:
 
 ```js

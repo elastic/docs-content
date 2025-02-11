@@ -111,7 +111,7 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 ::::
 
 
-1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Elastic APM**.
 
     :::{image} ../../../images/observability-kibana-fleet-integrations-apm.png

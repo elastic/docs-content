@@ -70,7 +70,7 @@ stringData:
       hosts: ["quickstart-es-http.default.svc:9200"]
 ```
 
-For more details, check the [Beats configuration](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-format.md) section.
+For more details, check the [Beats configuration](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-format.html) section.
 
 
 ## Customize the connection to an Elasticsearch cluster [k8s-beat-connect-es]
@@ -87,7 +87,7 @@ ECK supports the deployment of the following Beats:
 * [Heartbeat](https://www.elastic.co/beats/heartbeat)
 * [Auditbeat](https://www.elastic.co/beats/auditbeat)
 * [Packetbeat](https://www.elastic.co/beats/packetbeat)
-* [Journalbeat](https://www.elastic.co/guide/en/beats/journalbeat/current/index.md)
+* [Journalbeat](https://www.elastic.co/guide/en/beats/journalbeat/current/index.html)
 
 For each Beat you want to deploy, you can specify the `type` and `version` elements. ECK creates a new user in Elasticsearch with a minimal set of appropriate roles and permissions to enable the use of all Beats features.
 
@@ -100,7 +100,7 @@ ECK supports the deployment of any Community Beat.
 2. Set the `image` element to point to the image to be deployed.
 3. Make sure the following roles exist in Elasticsearch:
 
-    * If `elasticsearchRef` is provided, create the role `eck_beat_es_$type_role`, where `$type` is the Beat type. For example, when deploying `kafkabeat`, the role name is `eck_beat_es_kafkabeat_role`. This role must have the permissions required by the Beat. Check the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.md) for more details.
+    * If `elasticsearchRef` is provided, create the role `eck_beat_es_$type_role`, where `$type` is the Beat type. For example, when deploying `kafkabeat`, the role name is `eck_beat_es_kafkabeat_role`. This role must have the permissions required by the Beat. Check the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/defining-roles.html) for more details.
     * If `kibanaRef` is provided, create the role `eck_beat_kibana_$type_role` with the permissions required to setup Kibana dashboards.
 
 
@@ -151,7 +151,7 @@ stringData:
   AGENT_NAME_VAR: id_007
 ```
 
-Check [Beats documentation](https://www.elastic.co/guide/en/beats/filebeat/current/keystore.md) for more details.
+Check [Beats documentation](https://www.elastic.co/guide/en/beats/filebeat/current/keystore.html) for more details.
 
 
 ## Set Beat output [k8s-beat-set-beat-output]
@@ -201,7 +201,7 @@ Consider picking the `Recreate` strategy if you are using a `hostPath` volume as
 
 ## Role Based Access Control for Beats [k8s-beat-role-based-access-control-for-beats]
 
-Some Beats features (such as [autodiscover](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover.md) or Kubernetes module [metricsets](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-kubernetes-apiserver.md)) require that Beat Pods interact with Kubernetes APIs. Specific permissions are needed to allow this functionality. Standard Kubernetes [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow for autodiscover:
+Some Beats features (such as [autodiscover](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover.html) or Kubernetes module [metricsets](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-metricset-kubernetes-apiserver.html)) require that Beat Pods interact with Kubernetes APIs. Specific permissions are needed to allow this functionality. Standard Kubernetes [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) rules apply. For example, to allow for autodiscover:
 
 ```yaml
 apiVersion: beat.k8s.elastic.co/v1beta1

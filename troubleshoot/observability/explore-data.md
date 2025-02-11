@@ -45,7 +45,7 @@ You can create multi-series visualizations for each report type, but you cannot 
 The Explore {{data-source}} is currently enabled for the following apps:
 
 * Uptime
-* {user-experience}
+* {{user-experience}}
 
 To create a multi-series visualization:
 

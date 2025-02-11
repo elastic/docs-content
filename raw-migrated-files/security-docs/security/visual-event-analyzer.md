@@ -21,8 +21,8 @@ To find events that can be visually analyzed:
 
 1. First, display a list of events by doing one of the following:
 
-    * Find **Hosts** in the main menu, or search for `Security/Explore/Hosts` by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then select the **Events** tab. A list of all your hosts' events appears at the bottom of the page.
-    * Find **Alerts** in the main menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then scroll down to the Alerts table.
+    * Find **Hosts** in the main menu, or search for `Security/Explore/Hosts` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the **Events** tab. A list of all your hosts' events appears at the bottom of the page.
+    * Find **Alerts** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then scroll down to the Alerts table.
 
 2. Filter events that can be visually analyzed by entering either of the following queries in the KQL search bar, then selecting **Enter**:
 

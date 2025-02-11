@@ -2,6 +2,7 @@
 navigation_title: "How-tos"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-aiops-tune-anomaly-detection-job.html
 ---
 
 # How-tos [anomaly-how-tos]
@@ -13,7 +14,7 @@ Though it is quite simple to analyze your data and provide quick {{ml}} results,
 * [Using runtime fields in {{dfeeds}}](ml-configuring-transform.md)
 * [Customizing detectors with custom rules](ml-configuring-detector-custom-rules.md)
 * [Detecting anomalous categories of data](ml-configuring-categories.md)
-* [Performing population analysis](https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-populations.html)
+* [Performing population analysis](ml-configuring-populations.md)
 * [Reverting to a model snapshot](ml-reverting-model-snapshot.md)
 * [Detecting anomalous locations in geographic data](geographic-anomalies.md)
 * [Mapping anomalies by location](mapping-anomalies.md)
