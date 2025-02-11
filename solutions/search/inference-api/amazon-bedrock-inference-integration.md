@@ -1,4 +1,5 @@
 ---
+navigation_title: "Amazon Bedrock"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-amazon-bedrock.html
 ---
