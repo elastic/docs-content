@@ -39,7 +39,7 @@ To get to the fun of visualizing and alerting on Portland public transport vehic
 
 ### Step 1: Set up an Elasticsearch index [_step_1_set_up_an_elasticsearch_index]
 
-1. In Kibana, go to **Developer tools** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. In Kibana, go to **Developer tools** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In **Console**, create the `tri_met_tracks` index lifecyle policy. This policy will keep the events in the hot data phase for 7 days. The data then moves to the warm phase. After 365 days in the warm phase, the data is deleted.
 
    ::::{dropdown} ILM policy definition

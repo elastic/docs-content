@@ -28,7 +28,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 
 ## Add the {{elastic-defend}} integration [add-security-integration]
 
-1. Find **Integrations** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} ../../../images/security-endpoint-cloud-sec-integrations-page.png
     :alt: Search result for "{{elastic-defend}}" on the Integrations page.
@@ -90,7 +90,7 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
 
 ### Add the {{agent}} [enroll-agent]
 
-1. If you’re in the process of installing an {{agent}} integration (such as {{elastic-defend}}), the **Add agent** UI opens automatically. Otherwise, find **{{fleet}}*** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), and select ***Agents** → **Add agent**.
+1. If you’re in the process of installing an {{agent}} integration (such as {{elastic-defend}}), the **Add agent** UI opens automatically. Otherwise, find **{{fleet}}*** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select ***Agents** → **Add agent**.
 
     :::{image} ../../../images/security-endpoint-cloud-sec-add-agent.png
     :alt: Add agent flyout on the Fleet page.

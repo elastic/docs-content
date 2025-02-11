@@ -35,7 +35,7 @@ To create workpads, you must meet the minimum requirements.
 * Have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 * Make sure you have sufficient privileges to create and save workpads. When the read-only indicator appears, you have insufficient privileges, and the options to create and save workpads are unavailable. For more information, refer to [Granting access to {{kib}}](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
-You can open **Canvas** using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+You can open **Canvas** using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ### Start with a blank workpad [start-with-a-blank-workpad]
@@ -71,7 +71,7 @@ On the **Canvas** page, drag the file to the **Import workpad JSON file** field.
 
 Each of the {{kib}} sample data sets comes with a workpad that you can use for your own workpad inspiration.
 
-1. Add a [sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. Add a [sample data set](../index.md#gs-get-data-into-kibana).
 2. On a sample data card, click **View data**, then select **Canvas**.
 
 

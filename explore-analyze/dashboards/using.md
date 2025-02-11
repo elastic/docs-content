@@ -16,7 +16,7 @@ mapped_pages:
 * **Filter pills**, that you can add and combine by clicking on specific parts of the dashboard visualizations, or by defining conditions manually from the filter editor. The filter editor is a good alternative if you’re not comfortable with using KQL expressions in the main query bar.
 * View the data of a panel and the requests used to build it.
 
-This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [{{kib}} concepts](../overview/kibana-quickstart.md).
+This section shows the most common ways for you to filter dashboard data. For more information about {{kib}} and {{es}} filtering capabilities, refer to [](/explore-analyze/query-filter.md).
 
 
 ### Use filter pills [_use_filter_pills]

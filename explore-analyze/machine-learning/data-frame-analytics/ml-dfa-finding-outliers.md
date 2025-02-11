@@ -109,7 +109,7 @@ The evaluate {{dfanalytics}} API can return the false positive rate (`fpr`) and 
 
 ## Detecting unusual behavior in the logs data set [weblogs-outliers]
 
-The goal of {{oldetection}} is to find the most unusual documents in an index. Let’s try to detect unusual behavior in the [data logs sample data set](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+The goal of {{oldetection}} is to find the most unusual documents in an index. Let’s try to detect unusual behavior in the [data logs sample data set](../../index.md#gs-get-data-into-kibana).
 
 1. Verify that your environment is set up properly to use {{ml-features}}. If the {{es}} {{security-features}} are enabled, you need a user that has authority to create and manage {{dfanalytics}} jobs. See [Setup and security](../setting-up-machine-learning.md). Since we’ll be creating {{transforms}}, you also need `manage_data_frame_transforms` cluster privileges.
 

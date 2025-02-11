@@ -29,7 +29,7 @@ Benchmark rules are not editable.
 
 ## Review your benchmarks [_review_your_benchmarks]
 
-Find **Benchmarks** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). From there, you can click a benchmark’s name to view the benchmark rules associated with it. You can click a benchmark rule’s name to see details including information about how to remediate it, and related links.
+Find **Benchmarks** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From there, you can click a benchmark’s name to view the benchmark rules associated with it. You can click a benchmark rule’s name to see details including information about how to remediate it, and related links.
 
 Benchmark rules are enabled by default, but you can disable some of them — at the benchmark level — to suit your environment. This means for example that if you have two integrations using the `CIS AWS` benchmark, disabling a rule for that benchmark affects both integrations. To enable or disable a rule, use the **Enabled** toggle on the right of the rules table.
 

@@ -26,7 +26,7 @@ Need more context? Check out the [{{es}} introduction](https://www.elastic.co/gu
 ::::
 
 2. Verify that your environment is set up properly to use the {{ml-features}}. If the {{es}} {{security-features}} are enabled, to complete this tutorial you need a user that has authority to manage {{anomaly-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
-3. [Add the sample data sets that ship with {{kib}}](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+3. [Add the sample data sets that ship with {{kib}}](../../index.md#gs-get-data-into-kibana).
 
     1. From the {{kib}} home page, click **Try sample data**, then open the **Other sample data sets** section.
     2. Pick a data set. In this tutorial, you’ll use the **Sample web logs**. While you’re here, feel free to click **Add data** on all of the available sample data sets.
@@ -43,7 +43,7 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
     The {{kib}} {{ml-features}} use pop-ups. You must configure your web browser so that it does not block pop-up windows or create an exception for your {{kib}} URL.
 ::::
 
-2. Open **Machine Learning** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+2. Open **Machine Learning** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 3. Select the **{{data-viz}}** tab.
 4. Click **Select data view** and choose the `kibana_sample_data_logs` {{data-source}}.
 5. Use the time filter to select a time period that you’re interested in exploring. Alternatively, click **Use full data** to view the full time range of data.

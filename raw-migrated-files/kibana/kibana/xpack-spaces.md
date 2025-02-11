@@ -9,7 +9,7 @@ You can define multiple spaces in a single {{kib}} instance from the **Spaces** 
 :class: screenshot
 :::
 
-To go to **Spaces***, find ***Stack Management** in the navigation menu or use the [global search bar](../../../get-started/the-stack.md#kibana-navigation-search).
+To go to **Spaces***, find ***Stack Management** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ## Required privileges [_required_privileges_3]

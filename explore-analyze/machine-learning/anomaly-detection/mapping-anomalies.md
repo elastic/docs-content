@@ -11,7 +11,7 @@ If your data includes vector layers that are defined in the [{{ems}} ({{ems-init
 
 If you want to view choropleth maps in **{{data-viz}}** or {{anomaly-job}} results, you must have fields that contain valid vector layers (such as [country codes](https://maps.elastic.co/#file/world_countries) or [postal codes](https://maps.elastic.co/#file/usa_zip_codes)).
 
-This example uses the sample web logs data set. For more information, see [Add the sample data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+This example uses the sample web logs data set. For more information, see [Add the sample data](../../index.md#gs-get-data-into-kibana).
 
 ## Explore your data [visualize-vector-layers]
 

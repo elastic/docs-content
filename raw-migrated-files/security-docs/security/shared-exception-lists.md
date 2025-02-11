@@ -17,7 +17,7 @@ Exception lists created in 8.5 and earlier become shared exception lists in 8.6 
 
 Set up shared exception lists to contain exception items:
 
-1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create shared exception list** → **Create shared list**.
 3. Give the shared exception list a name.
 4. (Optional) Provide a description.
@@ -28,7 +28,7 @@ Set up shared exception lists to contain exception items:
 
 Add exception items:
 
-1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create shared exception list** → **Create exception item**.
 
     ::::{tip}
@@ -78,7 +78,7 @@ Add exception items:
 
 Apply shared exception lists to rules:
 
-1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
 
     * Select a shared exception list’s name to open its details page, then click **Link rules**.

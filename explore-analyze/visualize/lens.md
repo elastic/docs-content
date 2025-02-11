@@ -228,7 +228,7 @@ Annotations allow you to call out specific points in your visualizations that ar
 Annotations support two placement types:
 
 * **Static date** — Displays annotations for specific times or time ranges.
-* **Custom query** — Displays annotations based on custom {{es}} queries. For detailed information about queries, check [Semi-structured search](../overview/kibana-quickstart.md#semi-structured-search).
+* **Custom query** — Displays annotations based on custom {{es}} queries. For detailed information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
 
 Any annotation layer can be saved as an annotation group to the **Visualize Library** in order to reuse it in other visualizations. Any changes made to the annotation group will be reflected in all visualizations to which it is added.
 
@@ -253,7 +253,7 @@ Create custom query annotations.
 1. Select **Custom query**.
 2. Enter the **Annotation query** for the data you want to display.
 
-    For detailed information about queries and examples, check [Semi-structured search](../overview/kibana-quickstart.md#semi-structured-search).
+    For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
 
 3. Select the **Target date field**.
 
@@ -299,7 +299,7 @@ For example, to track the number of bytes in the 75th percentile, add a shaded *
 
 ### Apply filters [filter-the-data]
 
-You can use the [query bar](../overview/kibana-quickstart.md#semi-structured-search) to create queries that filter all the data in a visualization, or use the layer pane and legend filters to apply filters based on field values.
+You can use the query bar to create queries that filter all the data in a visualization, or use the layer pane and legend filters to apply filters based on field values.
 
 
 #### Apply multiple KQL filters [filter-with-the-function]

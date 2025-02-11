@@ -14,7 +14,7 @@ AIOps Labs is a part of {{ml-app}} in {{kib}} which provides features that use a
 
 Log rate analysis uses advanced statistical methods to identify reasons for increases or decreases in log rates and displays the statistically significant data in a tabular format. It makes it easy to find and investigate causes of unusual spikes or drops by using the analysis workflow view. Examine the histogram chart of the log rates for a given {{data-source}}, and find the reason behind a particular change possibly in millions of log events across multiple fields and values.
 
-You can find log rate analysis embedded in multiple applications. In {{kib}}, you can find it under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Here, you can select the {{data-source}} or saved Discover session that you want to analyze.
+You can find log rate analysis embedded in multiple applications. In {{kib}}, you can find it under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Here, you can select the {{data-source}} or saved Discover session that you want to analyze.
 
 :::{image} ../../../images/kibana-ml-log-rate-analysis-before.png
 :alt: Log event histogram chart
@@ -34,7 +34,7 @@ Brushes in the chart show the baseline time range and the deviation in the analy
 
 Log pattern analysis helps you to find patterns in unstructured log messages and makes it easier to examine your data. It performs categorization analysis on a selected field of a {{data-source}}, creates categories based on the data and displays them together with a chart that shows the distribution of each category and an example document that matches the category.
 
-You can find log pattern analysis under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Here, you can select the {{data-source}} or saved Discover session that you want to analyze, or in **Discover** as an available action for any text field.
+You can find log pattern analysis under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Here, you can select the {{data-source}} or saved Discover session that you want to analyze, or in **Discover** as an available action for any text field.
 
 :::{image} ../../../images/kibana-ml-log-pattern-analysis.png
 :alt: Log pattern analysis UI
@@ -51,7 +51,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Change point detection uses the [change point aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-change-point-aggregation.html) to detect distribution changes, trend changes, and other statistically significant change points in a metric of your time series data.
 
-You can find change point detection under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Here, you can select the {{data-source}} or saved Discover session that you want to analyze.
+You can find change point detection under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Here, you can select the {{data-source}} or saved Discover session that you want to analyze.
 
 :::{image} ../../../images/kibana-ml-change-point-detection.png
 :alt: Change point detection UI

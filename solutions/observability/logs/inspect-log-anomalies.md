@@ -26,7 +26,7 @@ Create a {{ml}} job to detect anomalous log entry rates automatically.
 
 1. Select **Anomalies**, and you’ll be prompted to create a {{ml}} job which will carry out the log rate analysis.
 2. Choose a time range for the {{ml}} analysis.
-3. Add the indices that contain the logs you want to examine. By default, Machine Learning analyzes messages in all log indices that match the patterns set in the **logs source** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+3. Add the indices that contain the logs you want to examine. By default, Machine Learning analyzes messages in all log indices that match the patterns set in the **logs source** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 4. Click **Create {{ml-init}} job**.
 5. You’re now ready to explore your log partitions.
 

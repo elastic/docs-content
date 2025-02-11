@@ -42,7 +42,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
             If {{security-features}} are enabled, log in.
 
-        2. Go to the **Stack Monitoring** page using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). If data collection is disabled, you are prompted to turn it on.
+        2. Go to the **Stack Monitoring** page using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). If data collection is disabled, you are prompted to turn it on.
 
     * From the Console or command line, set `xpack.monitoring.collection.enabled` to `true` on the production cluster.<br>
 

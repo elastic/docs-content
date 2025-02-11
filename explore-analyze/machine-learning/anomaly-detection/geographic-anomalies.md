@@ -18,7 +18,7 @@ To run this type of {{anomaly-job}}, you must have [{{ml-features}} set up](../s
 
 The latitude and longitude must be in the range -180 to 180 and represent a point on the surface of the Earth.
 
-This example uses the sample eCommerce orders and sample web logs data sets. For more information, see [Add the sample data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+This example uses the sample eCommerce orders and sample web logs data sets. For more information, see [Add the sample data](../../index.md#gs-get-data-into-kibana).
 
 ## Explore your geographic data [geographic-anomalies-visualize]
 

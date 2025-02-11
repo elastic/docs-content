@@ -11,7 +11,7 @@ Create a {{ml}} job to detect anomalous memory usage and network traffic automat
 
 Once you create {{ml}} jobs, you can not change the settings. You can recreate these jobs later. However, you will remove any previously detected anomalies.
 
-1. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the **Anomaly detection** link at the top of the page.
 3. You’ll be prompted to create a {{ml}} job for **Hosts** or **Kubernetes Pods**. Click **Enable**.
 4. Choose a start date for the {{ml}} analysis.

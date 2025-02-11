@@ -23,7 +23,7 @@ If you’re using {{stack-security-features}}, you must have the `manage_pipelin
 ::::
 
 
-1. Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In **Sample Data**, enter a message that is representative of the data that you want to parse. For example:
 
     ```ruby

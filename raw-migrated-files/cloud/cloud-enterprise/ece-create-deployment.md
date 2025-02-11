@@ -38,7 +38,7 @@ If these system templates are not suitable for your use case, you can [create yo
 
     While waiting, you are prompted to save the admin credentials for your deployment which provides you with superuser access to Elasticsearch. Write down the password for the `elastic` user (or the `admin` user for version 2.x) and keep it somewhere safe. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 
-5. Once the deployment is ready, select **Continue** to open the deployment’s main page. From here, you can start ingesting data or simply [try a sample data](../../../explore-analyze/overview/kibana-quickstart.md#gs-get-data-into-kibana) set to get started.
+5. Once the deployment is ready, select **Continue** to open the deployment’s main page. From here, you can start ingesting data or simply [try a sample data](../../../explore-analyze/index.md#gs-get-data-into-kibana) set to get started.
 
     :::{image} ../../../images/cloud-enterprise-ece-deployment-mainpage.png
     :alt: ECE Deployment main page

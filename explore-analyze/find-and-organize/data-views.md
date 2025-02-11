@@ -175,7 +175,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 ::::
 
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](../../images/kibana-delete.png "") in the **Actions** column.
 
 
@@ -213,7 +213,7 @@ For detailed information on how to use runtime fields with {{es}}, refer to [Run
 
 To add runtime fields to your data views, open the data view you want to change, then define the field values by emitting a single value using the [Painless scripting language](../../explore-analyze/scripting/modules-scripting-painless.md). You can also add runtime fields in [**Discover**](../../explore-analyze/discover/discover-get-started.md#add-field-in-discover) and [**Lens**](../../explore-analyze/visualize/lens.md#change-the-fields).
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that you want to add the runtime field to, then click **Add field**.
 3. Enter the field **Name**, then select the **Type**.
 4. Select **Set custom label**, then enter the label you want to display where the data view is used, such as **Discover**.
@@ -229,7 +229,7 @@ To add runtime fields to your data views, open the data view you want to change,
 
 #### Runtime field examples [runtime-field-examples]
 
-Try the runtime field examples on your own using the [**Sample web logs**](../../explore-analyze/overview/kibana-quickstart.md#gs-get-data-into-kibana) data.
+Try the runtime field examples on your own using the [**Sample web logs**](../../explore-analyze/index.md#gs-get-data-into-kibana) data.
 
 
 #### Return a keyword value [simple-hello-world-example]
@@ -315,7 +315,7 @@ else {
 
 Edit the settings for runtime fields, or remove runtime fields from data views.
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the runtime field you want to manage, then open the runtime field edit options or delete the runtime field.
 
 
@@ -450,7 +450,7 @@ The ability to create new scripted fields has been removed from the **Data Views
 ::::
 
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the scripted field you want to manage.
 3. Select the **Scripted fields** tab, then open the scripted field edit options or delete the scripted field.
 
@@ -466,7 +466,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 {{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data fields, use the formatting options.
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
 3. Find the field, then open the edit options (![Data field edit icon](../../images/kibana-edit_icon.png "")).
 4. Select **Set custom label**, then enter a **Custom label** for the field.

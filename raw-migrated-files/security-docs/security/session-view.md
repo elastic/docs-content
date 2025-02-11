@@ -27,7 +27,7 @@ To view Linux session data from your Kubernetes infrastructure, you’ll need to
 
 Session View uses process data collected by the {{elastic-defend}} integration, but this data is not always collected by default. To confirm that Session View data is enabled:
 
-1. Find **Policies** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Policies** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select one or more of your {{elastic-defend}} integration policies to edit.
 3. Select the **Policy settings** tab, then scroll down to the Linux event collection section near the bottom.
 4. Check the box for **Process** events, and turn on the **Collect session data** toggle.
@@ -109,7 +109,7 @@ From a security perspective, terminal output is important because it offers a me
 
 To enable terminal output data capture:
 
-1. Find **Policies** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Policies** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select one or more of your {{elastic-defend}} integration policies to edit.
 3. On the **Policy settings** tab, scroll down to the Linux event collection section near the bottom of the page and select the **Collect session data** and **Capture terminal output** options.
 
