@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Tracking containment"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/geo-alerting.html

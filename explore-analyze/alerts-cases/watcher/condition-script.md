@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Script condition"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-script.html

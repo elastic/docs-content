@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-overview.html
 ---

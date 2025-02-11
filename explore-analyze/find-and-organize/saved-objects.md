@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/saved-objects.html
   - https://www.elastic.co/guide/en/kibana/current/managing-saved-objects.html

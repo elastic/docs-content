@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Text embedding and semantic search"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html

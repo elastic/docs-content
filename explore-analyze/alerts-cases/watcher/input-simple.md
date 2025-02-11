@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Simple input"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-simple.html

@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Schedule trigger"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trigger-schedule.html
