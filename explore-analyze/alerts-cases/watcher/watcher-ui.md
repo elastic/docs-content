@@ -1,4 +1,4 @@
-# Watcher [watcher-ui]
+# Watcher UI [watcher-ui]
 
 Watcher is an {{es}} feature that you can use to create actions based on conditions, which are periodically evaluated using queries on your data. Watches are helpful for analyzing mission-critical and business-critical streaming data. For example, you might watch application logs for performance outages or audit access logs for security threats.
 
@@ -17,8 +17,6 @@ Go to the **Watcher** page using the navigation menu or the [global search field
 There are limitations in **Watcher** that affect {{kib}}. For information, refer to [Alerting](../../../explore-analyze/alerts-cases/watcher/watcher-limitations.md).
 ::::
 
-
-
 ## Watcher security [watcher-security]
 
 To use Watcher in {{kib}}, you must have the built-in `kibana_admin` role and either of these Watcher roles:
@@ -32,14 +30,11 @@ To manage roles, go to the **Roles** management page, or use the [role APIs](htt
 If you are creating a threshold watch, you must also have the `view_index_metadata` index privilege. See [Index management](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) for detailed information.
 ::::
 
-
-
 ## Create a threshold alert [watcher-create-threshold-alert]
 
 A threshold alert is one of the most common types of watches that you can create. This alert periodically checks when your data is above, below, equals, or is in between a certain threshold within a given time interval.
 
 The following example walks you through creating a threshold alert. The alert is triggered when the maximum total CPU usage on a machine goes above a certain percentage. The example uses [Metricbeat](https://www.elastic.co/products/beats/metricbeat) to collect metrics from your systems and services. [Learn more](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html) on how to install and get started with Metricbeat.
-
 
 ### Define the watch input and schedule [_define_the_watch_input_and_schedule]
 
@@ -52,8 +47,6 @@ The following example walks you through creating a threshold alert. The alert is
 4. Use the default schedule to run the watch every 1 minute.
 
     ![Input and schedule for threshold alert](../../../images/kibana-create-threshold-alert-created.png "")
-
-
 
 ### Add a condition [_add_a_condition]
 
@@ -69,8 +62,6 @@ You should now see a panel with default conditions and a visualization of the da
     As you change the condition, the visualization is automatically updated. The black line represents the threshold (25%), while the green fluctuating line represents the change in CPU over the set time period.
 
     ![Condition for threshold alert](../../../images/kibana-threshold-alert-condition.png "")
-
-
 
 ### Add an action [_add_an_action]
 
@@ -89,17 +80,13 @@ In this example, you’ll configure an email action. You must have an [email acc
 
     The alert appears on the Watcher overview page, where you can drill down into the watch history and status.
 
-
-
 ### Delete the alert [_delete_the_alert]
 
 In this example, you set the threshold to 25% so you can see the watch execute its actions. In a real-world scenario, this threshold is likely too low because the alerts will be too frequent. Once you are done experimenting, you should delete the alert. Find the alert on the Watcher overview page and click the trash icon in the **Actions** column.
 
-
 ### Edit the alert [_edit_the_alert]
 
 Alternatively, you can keep the alert and adjust the threshold value. To edit an alert, find the alert on the Watcher overview page and click the pencil icon in the **Actions** column.
-
 
 ## View watch history and status [watcher-getting-started]
 
@@ -111,20 +98,17 @@ The Watcher overview page lists your watches, including the state of each watch,
 
 From this page you can drill down into a watch to investigate its history and status.
 
-
 ### View watch history [_view_watch_history]
 
 The **Execution history** tab shows each time the watch is triggered and the results of the query, whether the condition was met, and what actions were taken.
 
 ![Execution history tab](../../../images/kibana-execution-history.png "")
 
-
 ### Acknowledge action status [_acknowledge_action_status]
 
 The **Action statuses** tab lists all actions associated with the watch and the state of each action. Some actions can be acknowledged, which will prevent too many executions of that action for the relevant watch. See [Acknowledgement and throttling](../../../explore-analyze/alerts-cases/watcher/actions.md#actions-ack-throttle) for details.
 
 ![Action status tab](../../../images/kibana-alerts-status.png "")
-
 
 ## Deactivate and delete a watch [watcher-deactivate]
 
@@ -133,18 +117,15 @@ Actions for deactivating and deleting a watch are on each watch detail page:
 * **Deactivate a watch** if you know a situation is planned that will cause a false alarm. You can reactivate the watch when the situation is resolved.
 * **Delete a watch** to permanently remove it from the system. You can delete the watch you are currently viewing, or go to the Watcher overview, and delete watches in bulk.
 
-
 ## Create an advanced watch [watcher-create-advanced-watch]
 
 Advanced watches are for users who are more familiar with {{es}} query syntax and the Watcher framework. The UI is aligned with using the REST APIs. For more information, see [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md).
-
 
 ### Create the watch [_create_the_watch]
 
 On the Watch overview page, click **Create** and choose **Create advanced watch**. An advanced watch requires a name and ID.  Name is a user-friendly way to identify the watch, and ID refers to the identifier used by {{es}}.  Refer to [Watch definition](../../../explore-analyze/alerts-cases/watcher/how-watcher-works.md#watch-definition) for how to input the watch JSON.
 
 ![Create advanced watch](../../../images/kibana-advanced-watch-create.png "")
-
 
 ### Simulate the watch [_simulate_the_watch]
 
@@ -161,11 +142,9 @@ After starting the simulation, you’ll see a results screen. For more informati
 
 ![Create advanced watch](../../../images/kibana-advanced-watch-simulate.png "")
 
-
 ### Examples of advanced watches [_examples_of_advanced_watches]
 
 Refer to these examples for creating an advanced watch:
 
 * [Watch the status of an {{es}} cluster](../../../explore-analyze/alerts-cases/watcher/watch-cluster-status.md)
 * [Watch event data](https://www.elastic.co/guide/en/elasticsearch/reference/current/watching-meetup-data.html)
-
