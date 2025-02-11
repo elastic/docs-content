@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-never.html
 ---
 
-
-
 # Never condition [condition-never]
-
 
 Use the `never` condition to skip performing the watch actions whenever the watch is triggered. The watch input is processed, a record is added to the watch history, and watch execution ends. This condition is generally used for testing.
 
@@ -20,5 +17,3 @@ There are no attributes to specify for the `never` condition. To use the it, you
   "never" : {}
 }
 ```
-
-

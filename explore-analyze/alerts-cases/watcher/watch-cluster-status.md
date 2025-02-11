@@ -11,8 +11,7 @@ You can easily configure a basic watch to monitor the health of your Elasticsear
 * [Add a condition](#health-add-condition) that evaluates the health status to determine if action is required.
 * [Take action](#health-take-action) if the cluster is RED.
 
-
-## Schedule the watch and add an input [health-add-input] 
+## Schedule the watch and add an input [health-add-input]
 
 A watch [schedule](trigger-schedule.md) controls how often a watch is triggered. The watch [input](input.md) gets the data that you want to evaluate.
 
@@ -28,7 +27,6 @@ PUT _watcher/watch/cluster_health_watch
 ```
 
 1. Schedules are typically configured to run less frequently. This example sets the interval to 10 seconds to you can easily see the watches being triggered. Since this watch runs so frequently, don’t forget to [delete the watch](#health-delete) when you’re done experimenting.
-
 
 To get the status of your cluster, you can call the [cluster health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html):
 
@@ -99,8 +97,7 @@ GET .watcher-history*/_search
 }
 ```
 
-
-## Add a condition [health-add-condition] 
+## Add a condition [health-add-condition]
 
 A [condition](condition.md) evaluates the data you’ve loaded into the watch and determines if any action is required. Since you’ve defined an input that loads the cluster status into the watch, you can define a condition that checks that status.
 
@@ -131,7 +128,6 @@ PUT _watcher/watch/cluster_health_watch
 
 1. Schedules are typically configured to run less frequently. This example sets the interval to 10 seconds to you can easily see the watches being triggered.
 
-
 If you check the watch history, you’ll see that the condition result is recorded as part of the `watch_record` each time the watch executes.
 
 To check to see if the condition was met, you can run the following query.
@@ -145,8 +141,7 @@ GET .watcher-history*/_search?pretty
 }
 ```
 
-
-## Take action [health-take-action] 
+## Take action [health-take-action]
 
 Recording `watch_records` in the watch history is nice, but the real power of {{watcher}} is being able to do something in response to an alert. A watch’s [actions](actions.md) define what to do when the watch condition is true—​you can send emails, call third-party webhooks, or write documents to an Elasticsearch index or log when the watch condition is met.
 
@@ -207,11 +202,9 @@ xpack.notification.email.account:
 2. Replace `<username>` with your Gmail user name (typically your Gmail address).
 3. Replace `<password>` with your Gmail password.
 
-
-::::{note} 
+::::{note}
 If you have advanced security options enabled for your email account, you need to take additional steps to send email from {{watcher}}. For more information, see [Configuring email accounts](actions-email.md#configuring-email).
 ::::
-
 
 You can check the watch history or the `status_index` to see that the action was performed.
 
@@ -224,8 +217,7 @@ GET .watcher-history*/_search?pretty
 }
 ```
 
-
-## Delete the watch [health-delete] 
+## Delete the watch [health-delete]
 
 Since the `cluster_health_watch` is configured to run every 10 seconds, make sure you delete it when you’re done experimenting. Otherwise, you’ll spam yourself indefinitely.
 
@@ -234,4 +226,3 @@ To remove the watch, use the [delete watch API](https://www.elastic.co/guide/en/
 ```console
 DELETE _watcher/watch/cluster_health_watch
 ```
-

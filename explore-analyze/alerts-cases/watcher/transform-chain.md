@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-chain.html
 ---
 
-
-
 # Chain payload transform [transform-chain]
-
 
 A [{{watcher-transform}}](transform.md) that executes an ordered list of configured {{watcher-transforms}} in a chain, where the output of one transform serves as the input of the next transform in the chain. The payload that is accepted by this transform serves as the input of the first transform in the chain and the output of the last transform in the chain is the output of the `chain` transform as a whole.
 
@@ -40,6 +37,4 @@ You can use chain {{watcher-transforms}} to build more complex transforms out of
 2. The first transform in the chain (in this case, a `search` {{watcher-transform}})
 3. The second and final transform in the chain (in this case, a `script` {{watcher-transform}})
 
-
 This example executes a `count` search on the cluster to look for `error` events. The search results are then passed to the second `script` {{watcher-transform}}. The `script` {{watcher-transform}} extracts the total hit count and assigns it to the `error_count` field in a newly-generated payload. This new payload is the output of the `chain` {{watcher-transform}} and replaces the payload in the watch execution context.
-

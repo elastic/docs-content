@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform.html
 ---
 
-
-
 # Transforms [transform]
-
 
 A *{{watcher-transform}}* processes and changes the payload in the watch execution context to prepare it for the watch actions. {{watcher}} supports three types of {{watcher-transforms}}:
 
@@ -15,10 +12,9 @@ A *{{watcher-transform}}* processes and changes the payload in the watch executi
 * [`script`](transform-script.md)
 * [`chain`](transform-chain.md)
 
-::::{note} 
+::::{note}
 {{watcher-transforms-cap}} are optional. When none are defined, the actions have access to the payload as loaded by the watch input.
 ::::
-
 
 You can define {{watcher-transforms}} in two places:
 
@@ -58,8 +54,3 @@ The following example defines two {{watcher-transforms}}, one at the watch level
 
 1. A watch level `transform`
 2. An action level `transform`
-
-
-
-
-

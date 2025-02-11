@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-http.html
 ---
 
-
-
 # HTTP input [input-http]
-
 
 Use the `http` input to submit a request to an HTTP endpoint and load the response into the watch execution context when the watch is triggered. See [HTTP input attributes](#http-input-attributes) for all of the supported attributes.
 
@@ -48,7 +45,6 @@ You can use the full Elasticsearch [Query DSL](../../query-filter/languages/quer
 }
 ```
 
-
 ## Calling Elasticsearch APIs [_calling_elasticsearch_apis]
 
 To load the data from other Elasticsearch APIs, specify the API endpoint as the `path` attribute. Use the `params` attribute to specify query string parameters. For example, the following `http` input calls the [cluster stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html) API and enables the `human` attribute:
@@ -69,8 +65,6 @@ To load the data from other Elasticsearch APIs, specify the API endpoint as the 
 ```
 
 1. Enabling this attribute returns the `bytes` values in the response in human readable format.
-
-
 
 ## Calling external web services [input-http-auth-basic-example]
 
@@ -131,8 +125,6 @@ You can also call an API using a `Bearer token` instead of basic authentication.
 }
 ```
 
-
-
 ## Using templates [_using_templates_2]
 
 The `http` input supports templating. You can use [templates](how-watcher-works.md#templates) when specifying the `path`, `body`, header values, and parameter values.
@@ -152,7 +144,6 @@ For example, the following snippet uses templates to specify what index to query
   }
 ```
 
-
 ## Accessing the HTTP response [_accessing_the_http_response]
 
 If the response body is formatted in JSON or YAML, it is parsed and loaded into the execution context. If the response body is not formatted in JSON or YAML, it is loaded into the payload’s `_value` field.
@@ -160,7 +151,6 @@ If the response body is formatted in JSON or YAML, it is parsed and loaded into 
 Conditions, transforms, and actions access the response data through the execution context. For example, if the response contains a `message` object, you can use `ctx.payload.message` to access the message data.
 
 In addition all the headers from the response can be accessed using the `ctx.payload._headers` field as well as the HTTP status code of the response using `ctx.payload._status_code`.
-
 
 ## HTTP input attributes [http-input-attributes]
 
@@ -193,5 +183,3 @@ You can reference the following variables in the execution context when specifyi
 | `ctx.trigger.triggered_time` | The time this watch was triggered. |
 | `ctx.trigger.scheduled_time` | The time this watch was supposed to be triggered. |
 | `ctx.metadata.*` | Any metadata associated with the watch. |
-
-

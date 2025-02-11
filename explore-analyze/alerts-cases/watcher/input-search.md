@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-search.html
 ---
 
-
-
 # Search input [input-search]
-
 
 Use the `search` input to load the results of an Elasticsearch search request into the execution context when the watch is triggered. See [Search Input Attributes](#search-input-attributes) for all of the supported attributes.
 
@@ -74,7 +71,6 @@ For example, the following input loads only the total number of hits into the wa
   },
 ```
 
-
 ## Using Templates [_using_templates]
 
 The `search` input supports [search templates](../../../solutions/search/search-templates.md). For example, the following snippet references the indexed template called `my_template` and passes a value of 23 to fill in the template’s `value` parameter:
@@ -97,7 +93,6 @@ The `search` input supports [search templates](../../../solutions/search/search-
   ...
 }
 ```
-
 
 ## Applying conditions [_applying_conditions]
 
@@ -122,7 +117,6 @@ The `search` input is often used in conjunction with the [`script`](condition-sc
 }
 ```
 
-
 ## Accessing the search results [_accessing_the_search_results]
 
 Conditions, transforms, and actions can access the search results through the watch execution context. For example:
@@ -132,11 +126,9 @@ Conditions, transforms, and actions can access the search results through the wa
 * To access a particular hit, use its zero-based array index. For example, to get the third hit, use `ctx.payload.hits.hits.2`.
 * To get a field value from a particular hit, use `ctx.payload.hits.hits.<index>.fields.<fieldname>`. For example, to get the message field from the first hit, use `ctx.payload.hits.hits.0.fields.message`.
 
-::::{note} 
+::::{note}
 The total number of hits in the search response is returned as an object in the response. It contains a `value`, the number of hits, and a `relation` that indicates if the value is accurate (`"eq"`) or a lower bound of the total hits that match the query (`"gte"`). You can set `track_total_hits` to true in the search request to tell Elasticsearch to always track the number of hits accurately.
 ::::
-
-
 
 ## Search Input Attributes [search-input-attributes]
 
@@ -161,5 +153,3 @@ You can reference the following variables in the execution context when specifyi
 | `ctx.trigger.triggered_time` | The time this watch was triggered. |
 | `ctx.trigger.scheduled_time` | The time this watch was supposed to be triggered. |
 | `ctx.metadata.*` | Any metadata associated with the watch. |
-
-

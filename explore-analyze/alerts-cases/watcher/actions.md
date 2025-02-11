@@ -4,17 +4,13 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions.html
 ---
 
-
-
 # Actions [actions]
-
 
 When a watch’s condition is met, its actions are executed unless it is being [throttled](#actions-ack-throttle). A watch can perform multiple actions. The actions are executed one at a time and each action executes independently. Any failures encountered while executing an action are recorded in the action result and in the watch history.
 
 ::::{note}
 If no actions are defined for a watch, no actions are executed. However, a `watch_record` is still written to the watch history.
 ::::
-
 
 Actions have access to the payload in the execution context. They can use it to support their execution in any way they need. For example, the payload might serve as a model for a templated email body.
 
@@ -27,7 +23,6 @@ Actions have access to the payload in the execution context. They can use it to 
 * [`slack`](actions-slack.md)
 * [`pagerduty`](actions-pagerduty.md)
 * [`jira`](actions-jira.md)
-
 
 ## Acknowledgement and throttling [actions-ack-throttle]
 
@@ -88,7 +83,6 @@ PUT _watcher/watch/error_logs_alert
 1. There will be at least 15 minutes between subsequent `email_administrator` action executions.
 2. See [Email action](actions-email.md) for more information.
 
-
 You can also define a throttle period at the watch level. The watch-level throttle period serves as the default throttle period for all of the actions defined in the watch:
 
 ```console
@@ -143,7 +137,6 @@ PUT _watcher/watch/log_event_watch
 
 1. There will be at least 15 minutes between subsequent action executions (applies to both `email_administrator` and `notify_pager` actions)
 
-
 If you do not define a throttle period at the action or watch level, the global default throttle period is applied. Initially, this is set to 5 seconds. To change the global default, configure the `xpack.watcher.execution.default_throttle_period` setting in `elasticsearch.yml`:
 
 ```yaml
@@ -166,19 +159,8 @@ The following diagram illustrates the throttling decisions made for each action 
 :alt: action throttling
 :::
 
-
 ## Using SSL/TLS with OpenJDK [actions-ssl-openjdk]
 
 As each distributor is free to choose how to package OpenJDK, it may happen, that even despite the exact same version, an OpenJDK distribution contains different parts under different Linux distributions.
 
 This can lead to issues with any action or input that uses TLS, like the `jira`, `pagerduty`, `slack`, or `webhook` one, because of missing CA certs. If you encounter TLS errors, when writing watches that connect to TLS endpoints, you should try to upgrade to the latest available OpenJDK distribution for your platform and if that does not help, try to upgrade to Oracle JDK.
-
-
-
-
-
-
-
-
-
-

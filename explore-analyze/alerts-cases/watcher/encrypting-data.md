@@ -13,10 +13,9 @@ To encrypt sensitive data in {{watcher}}:
 
 1. Use the [elasticsearch-syskeygen](https://www.elastic.co/guide/en/elasticsearch/reference/current/syskeygen.html) command to create a system key file.
 2. Copy the `system_key` file to all of the nodes in your cluster.
-
-    ::::{important} 
-    The system key is a symmetric key, so the same key must be used on every node in the cluster.
-    ::::
+   ::::{important}
+   The system key is a symmetric key, so the same key must be used on every node in the cluster.
+   ::::
 
 3. Set the [`xpack.watcher.encrypt_sensitive_data` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html):
 
@@ -34,8 +33,6 @@ To encrypt sensitive data in {{watcher}}:
 
 5. Delete the `system_key` file on each node in the cluster.
 
-::::{note} 
+::::{note}
 Existing watches are not affected by these changes. Only watches that you create after following these steps have encryption enabled.
 ::::
-
-

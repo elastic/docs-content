@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-pagerduty.html
 ---
 
-
-
 # PagerDuty action [actions-pagerduty]
-
 
 Use the PagerDuty action to create events in [ PagerDuty](https://pagerduty.com/). To create PagerDuty events, you must [configure at least one PagerDuty account](#configuring-pagerduty) in `elasticsearch.yml`.
 
@@ -30,8 +27,6 @@ The following snippet shows a simple PagerDuty action definition:
 ```
 
 1. Description of the message
-
-
 
 ## Adding meta information to a PagerDuty incident [adding-context-and-payloads-to-pagerduty-actions]
 
@@ -62,7 +57,6 @@ To give the PagerDuty incident some more context, you can attach the payload as 
 }
 ```
 
-
 ## Pagerduty action attributes [pagerduty-action-attributes]
 
 | Name | Required | Description |
@@ -72,7 +66,6 @@ To give the PagerDuty incident some more context, you can attach the payload as 
 ::::{note}
 Although some of the attributes below have names which match the PagerDuty "Events API v1" parameter names, the "Events API v2" API is finally used by translating the attributes appropriately.
 ::::
-
 
 $$$pagerduty-event-trigger-incident-attributes$$$
 
@@ -94,7 +87,6 @@ You can configure defaults for the above values for the whole service using the 
 All of those objects have templating support, so you can use data from the context and the payload as part of all the fields.
 ::::
 
-
 $$$pagerduty-event-trigger-context-attributes$$$
 
 | Name | Required | Description |
@@ -102,7 +94,6 @@ $$$pagerduty-event-trigger-context-attributes$$$
 | `type` | yes | One of `link` or `image`. |
 | `href` | yes/no | A link to include more information. Must be there if the                      type is `link`, optional if the type is `image` |
 | `src` | no | A src attribute for the `image` type. |
-
 
 ## Configuring PagerDuty accounts [configuring-pagerduty]
 
@@ -127,7 +118,6 @@ bin/elasticsearch-keystore add xpack.notification.pagerduty.account.my_pagerduty
 Storing the service api key in the YAML file or via cluster update settings is still supported, but the keystore setting should be used.
 ::::
 
-
 You can also specify defaults for the [PagerDuty event attributes](#pagerduty-event-trigger-incident-attributes): .
 
 ```yaml
@@ -143,7 +133,7 @@ xpack.notification.pagerduty:
         attach_payload: true
 ```
 
-If you configure multiple PagerDuty accounts, you either need to set a default account or specify which account the event should be sent with in the [`pagerduty`]() action.
+If you configure multiple PagerDuty accounts, you either need to set a default account or specify which account the event should be sent with in the `pagerduty` action.
 
 ```yaml
 xpack.notification.pagerduty:
