@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Named entity recognition"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-ner-example.html

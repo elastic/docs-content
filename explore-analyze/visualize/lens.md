@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Lens"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html

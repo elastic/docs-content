@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Run a job"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html

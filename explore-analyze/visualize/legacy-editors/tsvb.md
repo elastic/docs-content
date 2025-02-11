@@ -1,3 +1,9 @@
+---
+applies:
+  stack:
+  serverless:
+---
+  
 # TSVB [tsvb-panel]
 
 **TSVB** is a set of visualization types that you configure and display on dashboards.

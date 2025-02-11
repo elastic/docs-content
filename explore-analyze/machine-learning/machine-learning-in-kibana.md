@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: ML in Kibana
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml.html

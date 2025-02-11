@@ -1,3 +1,9 @@
+---
+applies:
+  stack:
+  serverless:
+---
+  
 # Aggregation-based [add-aggregation-based-visualization-panels]
 
 Aggregation-based visualizations are the core {{kib}} panels, and are not optimized for a specific use case.
