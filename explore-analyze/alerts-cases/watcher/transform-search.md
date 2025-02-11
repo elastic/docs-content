@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-search.html
 ---
 
-
-
 # Search payload transform [transform-search]
-
 
 A [{{watcher-transform}}](transform.md) that executes a search on the cluster and replaces the current payload in the watch execution context with the returned search response. The following snippet shows how a simple search transform can be defined on the watch level:
 
@@ -43,9 +40,9 @@ Like every other search based construct, one can make use of the full search API
 }
 ```
 
-The following table lists all available settings for the search {{watcher-transform}}:
+## Transform search settings [transform-search-settings]
 
-$$$transform-search-settings$$$
+The following table lists all available settings for the search {{watcher-transform}}:
 
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
@@ -136,5 +133,3 @@ The following is an example of using templates that refer to provided parameters
   }
 }
 ```
-
-
