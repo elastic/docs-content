@@ -61,7 +61,7 @@ You can subscribe to Elastic Cloud at any time during your trial. Billing starts
 
 ## How do I get started with my trial? [ec_how_do_i_get_started_with_my_trial]
 
-Start by checking out some common approaches for [moving data into Elastic Cloud](../../../manage-data/ingest.md#ec-ingest-methods).
+Start by checking out some common approaches for [moving data into Elastic Cloud](../../../manage-data/ingest.md).
 
 
 ## How do I sign up through a marketplace? [ec_how_do_i_sign_up_through_a_marketplace]

@@ -20,7 +20,7 @@ Elastic offer tools designed to ingest specific types of general content. The co
 * To sync **data from third-party sources**, use [connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html). A connector syncs content from an original data source to an {{es}} index. Using connectors you can create *searchable*, read-only replicas of your data sources.
 * To index **single files** for testing in a non-production environment, use the {{kib}} [file uploader](https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html#upload-data-kibana).
 
-If you would like to try things out before you add your own data, try using our [sample data](../../../manage-data/ingest.md#_add_sample_data).
+If you would like to try things out before you add your own data, try using our [sample data](../../../manage-data/ingest/sample-data.md).
 
 
 ## Ingesting time-stamped data [ingest-timestamped]
