@@ -6,13 +6,6 @@ mapped_urls:
 
 # Enable threat intelligence integrations [security-enable-threat-intelligence-integrations]
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/security-docs/security/es-threat-intel-integrations.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-threat-intelligence.md
-
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$agent-ti-integration$$$
