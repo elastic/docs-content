@@ -10,7 +10,7 @@ mapped_urls:
 # Watcher
 
 ::::{tip}
-{{kib}} Alerting provides a set of built-in actions and alerts that are integrated with applications such as APM, Metrics, Security, and Uptime. You can use {{kib}} Alerting to detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. For more information, see [Alerting and actions](../alerts-cases.md).
+{{kib}} Alerting provides a set of built-in actions and alerts that are integrated with applications such as APM, Metrics, Security, and Uptime. You can use {{kib}} Alerting to detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. For more information, refer to [Alerts and Cases](../alerts-cases.md).
 ::::
 
 You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response. For example, you might want to:
@@ -46,17 +46,3 @@ Actions
 :   One or more actions, such as sending email, pushing data to 3rd party systems through a webhook, or indexing the results of the query.
 
 A full history of all watches is maintained in an Elasticsearch index. This history keeps track of each time a watch is triggered and records the results from the query, whether the condition was met, and what actions were taken.
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$watcher-create-advanced-watch$$$
-
-$$$ec-cloud-email-service-limits$$$
-
-$$$ec-watcher-custom-mail-server$$$
-
-$$$watcher-create-threshold-alert$$$
-
-$$$watcher-deactivate$$$
-
-$$$watcher-getting-started$$$

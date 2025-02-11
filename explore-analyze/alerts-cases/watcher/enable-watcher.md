@@ -1,10 +1,8 @@
 # Enable Watcher [enable-watcher]
 
 ::::{note}
-If you are looking for Kibana alerting, check [Alerting and Actions](../../../explore-analyze/alerts-cases.md) in the Kibana Guide.
+If you are looking for Kibana alerting, check [Alerts and Cases](../../../explore-analyze/alerts-cases.md).
 ::::
-
-Watcher lets you take action based on changes in your data. It is designed around the principle that, if you can query something in Elasticsearch, you can alert on it. Simply define a query, condition, schedule, the actions to take, and Watcher will do the rest.
 
 Watcher can be enabled when configuring your cluster. You can run Alerting on a separate cluster from the cluster whose data you are actually watching.
 
@@ -20,7 +18,7 @@ To learn more about Kibana alerting and how to use it, check [Alerting and Actio
 
 ## Send alerts by email [watcher-allowlist]
 
-Alerting can send alerts by email. You can configure notifications similar to the [operational emails](../../../deploy-manage/cloud-organization/operational-emails.md) that Elasticsearch Service sends automatically to alert you about performance issues in your clusters.
+You can configure notifications similar to the [operational emails](../../../deploy-manage/cloud-organization/operational-emails.md) that Elasticsearch Service sends automatically to alert you about performance issues in your clusters.
 
 Watcher in Elastic Cloud is preconfigured with an email service and can be used without any additional configuration. Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher.md#ec-watcher-custom-mail-server)
 

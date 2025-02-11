@@ -1,20 +1,18 @@
 # Watcher UI [watcher-ui]
 
-Watcher is an {{es}} feature that you can use to create actions based on conditions, which are periodically evaluated using queries on your data. Watches are helpful for analyzing mission-critical and business-critical streaming data. For example, you might watch application logs for performance outages or audit access logs for security threats.
-
 Go to the **Watcher** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). With this UI, you can:
 
-* [Create a simple threshold watch](../../../explore-analyze/alerts-cases/watcher.md#watcher-create-threshold-alert)
-* [View your watch history and action status](../../../explore-analyze/alerts-cases/watcher.md#watcher-getting-started)
-* [Deactivate and delete a watch](../../../explore-analyze/alerts-cases/watcher.md#watcher-deactivate)
-* [Create an advanced watch using API syntax](../../../explore-analyze/alerts-cases/watcher.md#watcher-create-advanced-watch)
+* [Create a simple threshold watch](#watcher-create-threshold-alert)
+* [View your watch history and action status](#watcher-getting-started)
+* [Deactivate and delete a watch](#watcher-deactivate)
+* [Create an advanced watch using API syntax](#watcher-create-advanced-watch)
 
 ![Watcher list](../../../images/kibana-watches.png "")
 
 [Alerting on cluster and index events](../../../explore-analyze/alerts-cases/watcher.md) is a good source for detailed information on how watches work. If you are using the UI to create a threshold watch, take a look at the different watcher actions. If you are creating an advanced watch, you should be familiar with the parts of a watch—input, schedule, condition, and actions.
 
 ::::{note}
-There are limitations in **Watcher** that affect {{kib}}. For information, refer to [Alerting](../../../explore-analyze/alerts-cases/watcher/watcher-limitations.md).
+There are limitations in **Watcher** that affect {{kib}}. For information, refer to [Limitations](watcher-limitations.md).
 ::::
 
 ## Watcher security [watcher-security]
@@ -146,5 +144,5 @@ After starting the simulation, you’ll see a results screen. For more informati
 
 Refer to these examples for creating an advanced watch:
 
-* [Watch the status of an {{es}} cluster](../../../explore-analyze/alerts-cases/watcher/watch-cluster-status.md)
-* [Watch event data](https://www.elastic.co/guide/en/elasticsearch/reference/current/example-watches.html)
+* [Watch the status of an {{es}} cluster](watch-cluster-status.md)
+* [Watch event data](example-watches.md)
