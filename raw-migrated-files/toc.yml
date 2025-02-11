@@ -267,7 +267,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-http-apis.md
       - file: docs-content/serverless/elasticsearch-ingest-data-file-upload.md
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
-      - file: docs-content/serverless/elasticsearch-ingest-your-data.md
       - file: docs-content/serverless/elasticsearch-manage-project.md
       - file: docs-content/serverless/endpoint-protection-rules.md
       - file: docs-content/serverless/general-billing-stop-project.md
@@ -626,8 +625,6 @@ toc:
       - file: ingest-docs/fleet/fleet-agent-serverless-restrictions.md
       - file: ingest-docs/fleet/fleet-elastic-agent-quick-start.md
   - file: ingest-docs/ingest-overview/index.md
-    children:
-      - file: ingest-docs/ingest-overview/ingest-intro.md
   - file: kibana/kibana/index.md
     children:
       - file: kibana/kibana/action-types.md
