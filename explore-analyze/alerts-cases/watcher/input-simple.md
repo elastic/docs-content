@@ -1,13 +1,13 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Simple input"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-simple.html
 ---
 
-
-
 # Simple input [input-simple]
-
 
 Use the `simple` input to load static data into the execution context when the watch is triggered. This enables you to store the data centrally and reference it with templates.
 
@@ -50,4 +50,3 @@ For example, the following watch uses the `simple` input to set the recipient na
   }
 }
 ```
-

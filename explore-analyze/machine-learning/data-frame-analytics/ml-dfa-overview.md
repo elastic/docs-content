@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Overview"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-overview.html

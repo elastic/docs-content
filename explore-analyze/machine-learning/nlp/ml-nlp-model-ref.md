@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Compatible third party models"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-model-ref.html
