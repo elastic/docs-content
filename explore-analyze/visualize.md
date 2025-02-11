@@ -15,7 +15,7 @@ $$$panels-editors$$$
 | --- | --- | --- |
 | Visualizations | |  |
 | [Lens](visualize/lens.md) | The default editor for creating powerful [charts](visualize/supported-chart-types.md) in {{kib}} |
-| [ES&#124;QL](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.md) | Create visualizations from ES&#124;QL queries |
+| [ES&#124;QL](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html) | Create visualizations from ES&#124;QL queries |
 | [Maps](visualize/maps.md) | Create beautiful displays of your geographical data |
 | [Field statistics](visualize/field-statistics.md) | Add a field statistics view of your data to your dashboards |
 | [Custom visualizations](visualize/custom-visualizations-with-vega.md) | Use Vega to create new types of visualizations |
@@ -29,9 +29,9 @@ $$$panels-editors$$$
 | [Single metric viewer](machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md) | Display an anomaly chart from the **Single Metric Viewer** |
 | [Change point detection](machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) | Display a chart to visualize change points in your data |
 | Observability | | |
-| [SLO overview](https://www.elastic.co/guide/en/observability/current/slo.md) | Visualize a selected SLO’s health, including name, current SLI value, target, and status |
-| [SLO Alerts](https://www.elastic.co/guide/en/observability/current/slo.md) | Visualize one or more SLO alerts, including status, rule name, duration, and reason. In addition, configure and update alerts, or create cases directly from the panel |
-| [SLO Error Budget](https://www.elastic.co/guide/en/observability/current/slo.md) | Visualize the consumption of your SLO’s error budget |
+| [SLO overview](https://www.elastic.co/guide/en/observability/current/slo.html) | Visualize a selected SLO’s health, including name, current SLI value, target, and status |
+| [SLO Alerts](https://www.elastic.co/guide/en/observability/current/slo.html) | Visualize one or more SLO alerts, including status, rule name, duration, and reason. In addition, configure and update alerts, or create cases directly from the panel |
+| [SLO Error Budget](https://www.elastic.co/guide/en/observability/current/slo.html) | Visualize the consumption of your SLO’s error budget |
 | Legacy | | |
 | [Log stream](https://www.elastic.co/guide/en/kibana/current/observability.html#logs-app) (deprecated) | Display a table of live streaming logs |
 | [Aggregation based](visualize/legacy-editors/aggregation-based.md) | While these panel types are still available, we recommend to use [Lens](visualize/lens.md) |

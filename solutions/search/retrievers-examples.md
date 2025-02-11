@@ -1,3 +1,9 @@
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/master/retrievers-examples.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrievers_examples.html
+---
+
 # Retrievers examples [retrievers-examples]
 
 Learn how to combine different retrievers in these hands-on examples.

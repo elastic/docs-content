@@ -533,7 +533,7 @@ You can also see the {{feat-imp}} values for each individual prediction in the f
 
 In {{kib}}, the decision path shows the relative impact of each feature on the probability of the prediction. The features with the most significant positive or negative impact appear at the top of the decision plot. Thus in this example, the features related to flight time and distance had the most significant influence on the probability value for this prediction. This type of information can help you to understand how models arrive at their predictions. It can also indicate which aspects of your data set are most influential or least useful when you are training and tuning your model.
 
-If you do not use {{kib}}, you can see the summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-inference.html) and the individual values by searching the destination index.
+If you do not use {{kib}}, you can see the summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html) and the individual values by searching the destination index.
 
 ::::{dropdown} API example
 ```console

@@ -47,7 +47,7 @@ There are also tabs for viewing and investigating specific types of data:
 * **Events**: All network events. To display alerts received from external monitoring tools, scroll down to the events table and select **Show only external alerts** on the right.
 * **Flows**: Source and destination IP addresses and countries.
 * **DNS**: DNS network queries.
-* **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](https://www.elastic.co/guide/en/kibana/current/apm-getting-started.html) are monitored by default).
+* **HTTP**: Received HTTP requests (HTTP requests for applications using [Elastic APM](https://www.elastic.co/guide/en/observability/current/apm.html) are monitored by default).
 * **TLS**: Handshake details.
 * **Anomalies**: Anomalies discovered by [machine learning jobs](../../../solutions/security/advanced-entity-analytics/anomaly-detection.md).
 

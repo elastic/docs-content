@@ -78,7 +78,7 @@ Expensive searches may have a large [`size` argument](https://www.elastic.co/gui
 * Lower the `size` limit using the [`index.max_result_window`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-max-result-window) index setting.
 * Decrease the maximum number of allowed aggregation buckets using the [search.max_buckets](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-settings.html#search-settings-max-buckets) cluster setting.
 * Disable expensive queries using the [`search.allow_expensive_queries`](../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries) cluster setting.
-* Set a default search timeout using the [`search.default_search_timeout`](../../solutions/search/querying-for-search.md#search-timeout) cluster setting.
+* Set a default search timeout using the [`search.default_search_timeout`](../../solutions/search/the-search-api.md#search-timeout) cluster setting.
 
 ```console
 PUT _settings

@@ -13,7 +13,7 @@ Snapshots are essential for recovering Elasticsearch indices in case of accident
 To set up automated snapshots for Elasticsearch on Kubernetes you have to:
 
 1. Register the snapshot repository with the Elasticsearch API.
-2. Set up a Snapshot Lifecycle Management Policy through [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-lifecycle-management-api.html) or the [Kibana UI](https://www.elastic.co/guide/en/kibana/current/snapshot-repositories.html)
+2. Set up a Snapshot Lifecycle Management Policy through [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-lifecycle-management-api.html) or the [Kibana UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html)
 
 ::::{note}
 Support for S3, GCS and Azure repositories is bundled in Elasticsearch by default from version 8.0. On older versions of Elasticsearch, or if another snapshot repository plugin should be used, you have to [Install a snapshot repository plugin](#k8s-install-plugin).
@@ -97,7 +97,7 @@ GCS credentials are automatically propagated into each Elasticsearch node’s ke
 
 #### Register the repository in Elasticsearch [k8s-create-repository]
 
-1. Create the GCS snapshot repository in Elasticsearch. You can either use the [Snapshot and Restore UI](https://www.elastic.co/guide/en/kibana/current/snapshot-repositories.html) in Kibana version 7.4.0 or higher, or follow the procedure described in [Snapshot and Restore](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html):
+1. Create the GCS snapshot repository in Elasticsearch. You can either use the [Snapshot and Restore UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html) in Kibana version 7.4.0 or higher, or follow the procedure described in [Snapshot and Restore](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html):
 
     ```sh
     PUT /_snapshot/my_gcs_repository

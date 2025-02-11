@@ -12,7 +12,7 @@ To explore Elasticsearch Service and its solutions, create your first deployment
 ::::
 
 
-You can also create a deployment using the [Elastic Cloud API](https://www.elastic.co/guide/en/cloud/current/Deployment_-_CRUD.html). This can be an interesting alternative for more advanced needs, such as for [creating a deployment encrypted with your own key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md).
+You can also create a deployment using the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). This can be an interesting alternative for more advanced needs, such as for [creating a deployment encrypted with your own key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md).
 
 1. Log in to your [cloud.elastic.co](https://cloud.elastic.co/login) account and select **Create deployment** from the Elasticsearch Service main page:
 
