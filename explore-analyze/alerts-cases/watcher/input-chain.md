@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/input-chain.html
 ---
 
-
-
 # Chain input [input-chain]
-
 
 Use the `chain` input to load data from multiple sources into the watch execution context when the watch is triggered. The inputs in a chain are processed in order and the data loaded by an input can be accessed by the subsequent inputs in the chain.
 
@@ -43,11 +40,9 @@ For example, the following chain input loads data from an HTTP server using the 
 1. The inputs in a chain are specified as an array to guarantee the order in which the inputs are processed. (JSON does not guarantee the order of arbitrary objects.)
 2. Loads the `path` set by the `first` input.
 
-
 ## Accessing chained input data [_accessing_chained_input_data]
 
 To reference data loaded by a particular input, you use the input’s name, `ctx.payload.<input-name>.<value>`.
-
 
 ## Transforming chained input data [_transforming_chained_input_data]
 

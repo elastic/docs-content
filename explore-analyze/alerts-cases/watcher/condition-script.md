@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-script.html
 ---
 
-
-
 # Script condition [condition-script]
-
 
 A watch [condition](condition.md) that evaluates a script. The default scripting language is `painless`. You can use any of the scripting languages supported by Elasticsearch as long as the language supports evaluating expressions to Boolean values. Note that the `mustache` and `expression` languages are too limited to be used by this condition. For more information, see [Scripting](../../scripting.md).
 
@@ -37,7 +34,6 @@ For example, the following snippet shows a formal definition of an `inline` scri
 }
 ```
 
-
 ## Inline scripts [condition-script-inline]
 
 Inline scripts are scripts that are defined in the condition itself. The following snippet shows the formal configuration of a simple painless script that always returns `true`.
@@ -49,7 +45,6 @@ Inline scripts are scripts that are defined in the condition itself. The followi
   }
 }
 ```
-
 
 ## Stored scripts [condition-script-stored]
 
@@ -74,7 +69,6 @@ As with [inline](#condition-script-inline) scripts, you can also specify the scr
   }
 }
 ```
-
 
 ## Accessing the watch payload [accessing-watch-payload]
 
@@ -122,5 +116,3 @@ You can reference the following variables in the watch context:
 | `ctx.trigger.scheduled_time` | The time this watch was supposed to be triggered. |
 | `ctx.metadata.*` | Any metadata associated with the watch. |
 | `ctx.payload.*` | The payload data loaded by the watch’s input. |
-
-

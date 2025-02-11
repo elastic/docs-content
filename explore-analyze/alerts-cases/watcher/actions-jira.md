@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-jira.html
 ---
 
-
-
 # Jira action [actions-jira]
-
 
 Use the `jira` action to create issues in [Atlassian’s Jira Software](https://www.atlassian.com/software/jira). To create issues you need to [configure at least one Jira account](#configuring-jira) in `elasticsearch.yml`.
 
@@ -51,16 +48,13 @@ The following snippet shows a simple jira action definition:
 6. The labels to apply to the Jira issue.
 7. The priority of the Jira issue.
 
-
-
 ## Jira action attributes [jira-action-attributes]
 
 Depending of how Jira projects are configured, the issues can have many different fields and values. Therefore the `jira` action can accept any type of sub fields within its `issue` field. These fields will be directly used when calling Jira’s [Create Issue API](https://docs.atlassian.com/jira/REST/cloud/#api/2/issue-createIssue), allowing any type of custom fields to be used.
 
-::::{note} 
+::::{note}
 The `project.key` (or `project.id`), the `issuetype.name` (or `issuetype.id`) and `issue.summary` are always required to create an issue in Jira.
 ::::
-
 
 | Name | Required | Description |
 | --- | --- | --- |
@@ -78,7 +72,6 @@ The `project.key` (or `project.id`), the `issuetype.name` (or `issuetype.id`) an
 | `fields.environment` | no | Name of the environment related to the issue. |
 | `fields.customfield_XXX` | no | Custom field XXX of the issue (ex: "customfield_10000": "09/Jun/81") |
 
-
 ## Configuring Jira accounts [configuring-jira]
 
 You configure the accounts {{watcher}} can use to communicate with Jira in the `xpack.notification.jira` namespace in `elasticsearch.yml`.
@@ -90,19 +83,16 @@ bin/elasticsearch-keystore add xpack.notification.jira.account.monitoring.secure
 bin/elasticsearch-keystore add xpack.notification.jira.account.monitoring.secure_user
 bin/elasticsearch-keystore add xpack.notification.jira.account.monitoring.secure_password
 ```
-
-::::{warning} 
+::::{warning}
 Storing sensitive data (`url`, `user` and `password`) in the configuration file or the cluster settings is insecure and has been deprecated. Please use {{es}}'s secure [keystore](../../../deploy-manage/security/secure-settings.md) method instead.
 
 ::::
 
-
 To avoid credentials that transit in clear text over the network, {{watcher}} will reject `url` settings like `http://internal-jira.elastic.co` that are based on plain text HTTP protocol. This default behavior can be disabled with the explicit `allow_http` setting:
 
-::::{note} 
+::::{note}
 The `url` field can also contain a path, that is used to create an issue. By default this is `/rest/api/2/issue`. If you set this as well, make sure that this path is the full path to the endpoint to create an issue.
 ::::
-
 
 ```yaml
 xpack.notification.jira:
@@ -111,10 +101,9 @@ xpack.notification.jira:
       allow_http: true
 ```
 
-::::{warning} 
+::::{warning}
 It is strongly advised to use Basic Authentication with secured HTTPS protocol only.
 ::::
-
 
 You can also specify defaults for the [Jira issues](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#jira-account-attributes):
 
@@ -131,7 +120,7 @@ xpack.notification.jira:
         labels: ["auto"]
 ```
 
-If you configure multiple Jira accounts, you either need to configure a default account or specify which account the notification should be sent with in the [`jira`]() action.
+If you configure multiple Jira accounts, you either need to configure a default account or specify which account the notification should be sent with in the `jira` action.
 
 ```yaml
 xpack.notification.jira:
@@ -142,5 +131,3 @@ xpack.notification.jira:
     team2:
       ...
 ```
-
-

@@ -9,26 +9,40 @@ mapped_urls:
 
 # Watcher
 
-% What needs to be done: Lift-and-shift
+::::{tip}
+{{kib}} Alerting provides a set of built-in actions and alerts that are integrated with applications such as APM, Metrics, Security, and Uptime. You can use {{kib}} Alerting to detect complex conditions within different {{kib}} apps and trigger actions when those conditions are met. For more information, refer to [Alerts and Cases](../alerts-cases.md).
+::::
 
-% Use migrated content from existing pages that map to this page:
+You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response. For example, you might want to:
 
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-alerting.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-watcher.md
-% - [ ] ./raw-migrated-files/kibana/kibana/watcher-ui.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/elasticsearch-differences.md
-% - [ ] ./raw-migrated-files/kibana/kibana/secure-reporting.md
+* Monitor social media as another way to detect failures in user-facing automated systems like ATMs or ticketing systems. When the number of tweets and posts in an area exceeds a threshold of significance, notify a service technician.
+* Monitor your infrastructure, tracking disk usage over time. Open a helpdesk ticket when any servers are likely to run out of free space in the next few days.
+* Track network activity to detect malicious activity, and proactively change firewall configuration to reject the malicious user.
+* Monitor Elasticsearch, and send immediate notification to the system administrator if nodes leave the cluster or query throughput exceeds an expected range.
+* Track application response times and if page-load time exceeds SLAs for more than 5 minutes, open a helpdesk ticket. If SLAs are exceeded for an hour, page the administrator on duty.
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+All of these use-cases share a few key properties:
 
-$$$watcher-create-advanced-watch$$$
+* The relevant data or changes in data can be identified with a periodic Elasticsearch query.
+* The results of the query can be checked against a condition.
+* One or more actions are taken if the condition is true — an email is sent, a 3rd party system is notified, or the query results are stored.
 
-$$$ec-cloud-email-service-limits$$$
+## How watches work [_how_watches_work]
 
-$$$ec-watcher-custom-mail-server$$$
+The {{alert-features}} provide an API for creating, managing and testing *watches*. A watch describes a single alert and can contain multiple notification actions.
 
-$$$watcher-create-threshold-alert$$$
+A watch is constructed from four simple building blocks:
 
-$$$watcher-deactivate$$$
+Schedule
+:   A schedule for running a query and checking the condition.
 
-$$$watcher-getting-started$$$
+Query
+:   The query to run as input to the condition. Watches support the full Elasticsearch query language, including aggregations.
+
+Condition
+:   A condition that determines whether or not to execute the actions. You can use simple conditions (always true), or use scripting for more sophisticated scenarios.
+
+Actions
+:   One or more actions, such as sending email, pushing data to 3rd party systems through a webhook, or indexing the results of the query.
+
+A full history of all watches is maintained in an Elasticsearch index. This history keeps track of each time a watch is triggered and records the results from the query, whether the condition was met, and what actions were taken.

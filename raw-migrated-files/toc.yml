@@ -243,7 +243,6 @@ toc:
       - file: cloud/cloud/ec-traffic-filtering-vpc.md
       - file: cloud/cloud/ec-upgrade-deployment.md
       - file: cloud/cloud/ec-user-privileges.md
-      - file: cloud/cloud/ec-watcher.md
       - file: cloud/cloud/ec-working-with-elasticsearch.md
   - file: curator/elasticsearch-client-curator/index.md
     children:
@@ -621,7 +620,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
       - file: elasticsearch/elasticsearch-reference/starting-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/stopping-elasticsearch.md
-      - file: elasticsearch/elasticsearch-reference/xpack-alerting.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
       - file: elasticsearch/elasticsearch-reference/xpack-rollup.md
   - file: ingest-docs/fleet/index.md
@@ -660,7 +658,6 @@ toc:
       - file: kibana/kibana/upgrade-migrations-rolling-back.md
       - file: kibana/kibana/upgrade.md
       - file: kibana/kibana/using-kibana-with-security.md
-      - file: kibana/kibana/watcher-ui.md
       - file: kibana/kibana/xpack-security-authorization.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
       - file: kibana/kibana/xpack-security.md

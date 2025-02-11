@@ -41,5 +41,3 @@ PUT _watcher/watch/log_event_watch
 ```
 
 1. The logging statement will be executed for each of the returned search hits.
-
-

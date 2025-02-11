@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/action-conditions.html
 ---
 
-
-
 # Adding conditions to actions [action-conditions]
-
 
 When a watch is triggered, its condition determines whether or not to execute the watch actions. Within each action, you can also add a condition per action. These additional conditions enable a single alert to execute different actions depending on a their respective conditions. The following watch would always send an email, when hits are found from the input search, but only trigger the `notify_pager` action when there are more than 5 hits in the search result.
 
@@ -64,5 +61,3 @@ PUT _watcher/watch/log_event_watch
 ```
 
 1. A `condition` that only applies to the `notify_pager` action, which restricts its execution to when the condition succeeds (at least 5 hits in this case).
-
-

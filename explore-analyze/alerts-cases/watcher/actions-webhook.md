@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-webhook.html
 ---
 
-
-
 # Webhook action [actions-webhook]
-
 
 Use the `webhook` action to send a request to any web service. The webhook action supports both HTTP and HTTPS connections. See [Webhook action attributes](#webhook-action-attributes) for the supported attributes.
 
@@ -42,7 +39,6 @@ The following snippet shows a simple webhook action definition:
 7. The path (URI) to use in the HTTP request
 8. The body to send with the request
 
-
 You can use basic authentication when sending a request to a secured webservice. For example, the following `webhook` action creates a new issue in GitHub:
 
 ```js
@@ -68,16 +64,13 @@ You can use basic authentication when sending a request to a secured webservice.
 
 1. The username and password for the user creating the issue
 
-
-::::{note} 
+::::{note}
 By default, both the username and the password are stored in the `.watches` index in plain text. When the {{es}} {security-features} are enabled, {{watcher}} can encrypt the password before storing it.
 ::::
 
-
 You can also use PKI-based authentication when submitting requests to a cluster that has {{es}} {security-features} enabled. When you use PKI-based authentication instead of HTTP basic auth, you don’t need to store any authentication information in the watch itself. To use PKI-based authentication, you [configure the SSL key settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#ssl-notification-settings) for {{watcher}} in `elasticsearch.yml`.
 
-
-## Query Parameters [webhook-query-parameters]
+## Query parameters [webhook-query-parameters]
 
 You can specify query parameters to send with the request with the `params` field. This field simply holds an object where the keys serve as the parameter names and the values serve as the parameter values:
 
@@ -99,9 +92,7 @@ You can specify query parameters to send with the request with the `params` fiel
 
 1. The parameter values can contain templated strings.
 
-
-
-## Custom Request Headers [webhook-custom-request-headers]
+## Custom request headers [webhook-custom-request-headers]
 
 You can specify request headers to send with the request with the `headers` field. This field simply holds an object where the keys serve as the header names and the values serve as the header values:
 
@@ -124,8 +115,6 @@ You can specify request headers to send with the request with the `headers` fiel
 
 1. The header values can contain templated strings.
 
-
-
 ## Webhook action attributes [_webhook_action_attributes]
 
 $$$webhook-action-attributes$$$
@@ -146,5 +135,3 @@ $$$webhook-action-attributes$$$
 | `connection_timeout` | no | 10s | The timeout for setting up the http connection. If the connection                                                    could not be set up within this time, the action will timeout and                                                    fail. |
 | `read_timeout` | no | 10s | The timeout for reading data from http connection. If no response                                                    was received within this time, the action will timeout and fail. |
 | `url` | no | - | A shortcut for specifying the request scheme, host, port, and                                                    path as a single string. For example, `http://example.org/foo/my-service`. |
-
-

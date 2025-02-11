@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-always.html
 ---
 
-
-
 # Always condition [condition-always]
-
 
 Use the `always` condition to perform the watch actions whenever the watch is triggered, unless they are [throttled](actions.md#actions-ack-throttle).
 

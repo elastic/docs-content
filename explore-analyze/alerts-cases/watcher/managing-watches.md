@@ -14,15 +14,13 @@ mapped_pages:
 * Use the [deactivate watch API](https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-deactivate-watch.html) to deactivate watches
 * Use the [ack watch API](https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-ack-watch.html) to acknowledge watches
 
-
-## Listing watches [listing-watches] 
+## Listing watches [listing-watches]
 
 Currently there is not dedicated API for listing the stored watches. However, since {{watcher}} stores its watches in the `.watches` index, you can list them by executing a search on this index.
 
-::::{important} 
+::::{important}
 You can only perform read actions on the `.watches` index. You must use the {{watcher}} APIs to create, update, and delete watches. If {{es}} {security-features} are enabled, we recommend you only grant users `read` privileges on the `.watches` index.
 ::::
-
 
 For example, the following returns the first 100 watches:
 
@@ -32,4 +30,3 @@ GET /_watcher/_query/watches
   "size" : 100
 }
 ```
-

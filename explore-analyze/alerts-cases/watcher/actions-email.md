@@ -4,10 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html
 ---
 
-
-
 # Email action [actions-email]
-
 
 Use the `email` action to send email notifications. To send email, you must [configure at least one email account](#configuring-email) in `elasticsearch.yml`.
 
@@ -38,8 +35,6 @@ For example, the following email action uses a template to include data from the
 3. One or more addresses to send the email to. Must be specified in the action definition or in the email account configuration.
 4. The subject of the email can contain static text and Mustache [templates](how-watcher-works.md#templates).
 5. The body of the email can contain static text and Mustache [templates](how-watcher-works.md#templates). Must be specified in the action definition or in the email account configuration.
-
-
 
 ## Configuring email attachments [configuring-email-attachments]
 
@@ -108,8 +103,6 @@ You can use the `reporting` attachment type in an `email` action to automaticall
 
 See [Automating report generation](../../report-and-share/automating-report-generation.md).
 
-
-
 ## Email action attributes [email-action-attributes]
 
 | Name | Required | Default | Description |
@@ -139,7 +132,6 @@ $$$address-list$$$
 Address List
 :   A list of addresses can be specified as a an array: `[ 'Personal Name <user1@host.domain>', 'user2@host.domain' ]`.
 
-
 ## Configuring email accounts [configuring-email]
 
 {{watcher}} can send email using any SMTP email service. Email messages can contain basic HTML tags. You can control which groups of tags are allowed by [Configuring HTML Sanitization Options](#email-html-sanitization).
@@ -148,7 +140,8 @@ You configure the accounts {{watcher}} can use to send email in the `xpack.notif
 
 If your email account is configured to require two step verification, you need to generate and use a unique App Password to send email from {{watcher}}. Authentication will fail if you use your primary password.
 
-$$$email-profile$$$
+### Email profiles [email-profile]
+
 {{watcher}} provides three email profiles that control how MIME messages are structured: `standard` (default), `gmail`, and `outlook`. These profiles accommodate differences in how various email systems interpret the MIME standard. If you are using Gmail or Outlook, we recommend using the corresponding profile. Use the `standard` profile if you are using another email system.
 
 For more information about configuring {{watcher}} to work with different email systems, see:
@@ -158,7 +151,7 @@ For more information about configuring {{watcher}} to work with different email 
 * [Sending email from Microsoft Exchange](#exchange)
 * [Sending email from Amazon SES (Simple Email Service)](#amazon-ses)
 
-If you configure multiple email accounts, you must either configure a default account or specify which account the email should be sent with in the [`email`]() action.
+If you configure multiple email accounts, you must either configure a default account or specify which account the email should be sent with in the `email` action.
 
 ```yaml
 xpack.notification.email:
@@ -170,8 +163,7 @@ xpack.notification.email:
       ...
 ```
 
-
-#### Sending email from Gmail [gmail] 
+### Sending email from Gmail [gmail]
 
 Use the following email account settings to send email from the [Gmail](https://mail.google.com) SMTP service:
 
@@ -197,8 +189,7 @@ If you get an authentication error that indicates that you need to continue the 
 
 If two-step verification is enabled for your account, you must generate and use a unique App Password to send email from {{watcher}}. See [Sign in using App Passwords](https://support.google.com/accounts/answer/185833?hl=en) for more information.
 
-
-#### Sending email from Outlook.com [outlook] 
+#### Sending email from Outlook.com [outlook]
 
 Use the following email account settings to send email action from the [Outlook.com](https://www.outlook.com/) SMTP service:
 
@@ -222,13 +213,11 @@ bin/elasticsearch-keystore add xpack.notification.email.account.outlook_account.
 
 When sending emails, you have to provide a from address, either a default one in your account configuration or as part of the email action in the watch.
 
-::::{note} 
+::::{note}
 You need to use a unique App Password if two-step verification is enabled. See [App passwords and two-step verification](http://windows.microsoft.com/en-us/windows/app-passwords-two-step-verification) for more information.
 ::::
 
-
-
-#### Sending email from Amazon SES (Simple Email Service) [amazon-ses] 
+#### Sending email from Amazon SES (Simple Email Service) [amazon-ses]
 
 Use the following email account settings to send email from the [Amazon Simple Email Service](http://aws.amazon.com/ses) (SES) SMTP service:
 
@@ -249,20 +238,17 @@ xpack.notification.email.account:
 1. In certain cases `email_defaults.from` is validated by Amazon SES to ensure that it is a valid local email account.
 2. `smtp.host` varies depending on the region.
 
-
 To store the account SMTP password, use the keystore command (see [secure settings](../../../deploy-manage/security/secure-settings.md))
 
 ```yaml
 bin/elasticsearch-keystore add xpack.notification.email.account.ses_account.smtp.secure_password
 ```
 
-::::{note} 
+::::{note}
 You need to use your Amazon SES SMTP credentials to send email through Amazon SES. For more information, see [Obtaining Your Amazon SES SMTP Credentials](http://docs.aws.amazon.com/ses/latest/DeveloperGuide/smtp-credentials.md). You might also need to verify [your email address](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.md) or [your whole domain](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-domains.md) at AWS.
 ::::
 
-
-
-#### Sending email from Microsoft Exchange [exchange] 
+#### Sending email from Microsoft Exchange [exchange]
 
 Use the following email account settings to send email action from Microsoft Exchange:
 
@@ -283,15 +269,13 @@ xpack.notification.email.account:
 1. Some organizations configure Exchange to validate that the `from` field is a valid local email account.
 2. Many organizations support use of your email address as your username, though it is a good idea to check with your system administrator if you receive authentication-related failures.
 
-
 To store the account SMTP password, use the keystore command (see [secure settings](../../../deploy-manage/security/secure-settings.md))
 
 ```yaml
 bin/elasticsearch-keystore add xpack.notification.email.account.exchange_account.smtp.secure_password
 ```
 
-
-#### Configuring HTML sanitization options [email-html-sanitization] 
+#### Configuring HTML sanitization options [email-html-sanitization]
 
 The `email` action supports sending messages with an HTML body. However, for security reasons, {{watcher}} [sanitizes](https://en.wikipedia.org/wiki/HTML_sanitization) the HTML.
 
@@ -310,5 +294,3 @@ To disable sanitization entirely, add the following setting to `elasticsearch.ym
 ```yaml
 xpack.notification.email.html.sanitization.enabled: false
 ```
-
-
