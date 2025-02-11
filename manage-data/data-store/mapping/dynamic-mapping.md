@@ -15,7 +15,7 @@ PUT data/_doc/1 <1>
 1. Creates the `data` index, the `_doc` mapping type, and a field called `count` with data type `long`.
 
 
-The automatic detection and addition of new fields is called **dynamic mapping**. The dynamic mapping rules can be customized to suit your purposes with:
+The automatic detection and addition of new fields is called *dynamic mapping*. The dynamic mapping rules can be customized to suit your purposes with:
 
 [Dynamic field mappings](dynamic-field-mapping.md)
 :   The rules governing dynamic field detection.
