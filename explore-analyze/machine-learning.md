@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: Machine learning
 mapped_urls:
   - https://www.elastic.co/guide/en/machine-learning/current/index.html

@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html
