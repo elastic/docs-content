@@ -15,7 +15,7 @@ Elasticsearch reference architectures are blueprints for deploying Elasticsearch
 These architectures are designed by architects and engineers to provide standardized, proven solutions that help you to follow best practices when deploying {{es}}.
 
 ::::{tip} 
-These architectures are specific to running your deployment on-premises or on cloud. If you are using Elastic serverless your {{es}} clusters are autoscaled and fully managed by Elastic. For all the deployment options, refer to [Run Elasticsearch](deploy.md).
+These architectures are specific to deploying Elastic on {ech}, {eck}, {ece}, or deploying a self-managed instance. If you are using {{serverless-full}}, your {{es}} clusters are autoscaled and fully managed by Elastic. To learn about all ofthe deployment options, refer to the [Deploy and manage overview](/deploy-manage/index.md).
 ::::
 
 
