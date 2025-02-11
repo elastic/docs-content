@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/reference-architectures/current/hot-frozen-architecture.html
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 # Hot/Frozen - High Availability [hot-frozen-architecture]
@@ -50,15 +55,15 @@ Machine learning nodes are optional but highly recommended for large scale time 
 
 ## Recommended hardware specifications [hot-frozen-hardware]
 
-With {{ecloud}} you can deploy clusters in AWS, Azure, and Google Cloud.  Available hardware types and configurations vary across all three cloud providers but each provides instance types that meet our recommendations for the node types used in this architecture. For more details on these instance types, see our documentation on {{ecloud}} hardware for [AWS](https://www.elastic.co/guide/en/cloud/current/ec-default-aws-configurations.html), [Azure](https://www.elastic.co/guide/en/cloud/current/ec-default-azure-configurations.html), and [GCP](https://www.elastic.co/guide/en/cloud/current/ec-default-gcp-configurations.html). The **Physical** column below is guidance, based on the cloud node types, when self-deploying {{es}} in your own data center.
+With {{ech}}, you can deploy clusters in AWS, Azure, and Google Cloud. Available hardware types and configurations vary across all three cloud providers but each provides instance types that meet our recommendations for the node types used in this architecture. For more details on these instance types, see our documentation on {{ech}} hardware for [AWS](https://www.elastic.co/guide/en/cloud/current/ec-default-aws-configurations.html), [Azure](https://www.elastic.co/guide/en/cloud/current/ec-default-azure-configurations.html), and [GCP](https://www.elastic.co/guide/en/cloud/current/ec-default-gcp-configurations.html). The **Physical** column below is guidance, based on the cloud node types, when self-deploying {{es}} in your own data center.
 
-In the links provided above, Elastic has performance tested hardware for each of the cloud providers to find the optimal hardware for each node type. We use ratios to represent the best mix of CPU, RAM, and disk for each type.   In some cases the CPU to RAM ratio is key, in others the disk to memory ratio and type of disk is critical. Significantly deviating from these ratios may seem like a way to save on hardware costs, but may result in an {{es}} cluster that does not scale and perform well.
+In the links provided above, Elastic has performance tested hardware for each of the cloud providers to find the optimal hardware for each node type. We use ratios to represent the best mix of CPU, RAM, and disk for each type. In some cases the CPU to RAM ratio is key, in others the disk to memory ratio and type of disk is critical. Significantly deviating from these ratios may seem like a way to save on hardware costs, but may result in an {{es}} cluster that does not scale and perform well.
 
 This table shows our specific recommendations for nodes in a Hot/Frozen architecture.
 
 |     |     |     |     |     |
 | --- | --- | --- | --- | --- |
-| **Type** | **AWS*** | ***Azure*** | ***GCP** | **Physical** |
+| **Type** | **AWS** | **Azure** | **GCP** | **Physical** |
 | ![Hot data node](../../images/reference-architectures-hot.png "") | c6gd | f32sv2 | N2 | 16-32 vCPU<br>64 GB RAM<br>2-6 TB NVMe SSD |
 | ![Frozen data node](../../images/reference-architectures-frozen.png "") | i3en | e8dsv4 | N2 | 8 vCPU<br>64 GB RAM<br>6-20+ TB NVMe SSD<br>Depending on days cached |
 | ![Machine learning node](../../images/reference-architectures-machine-learning.png "") | m6gd | f16sv2 | N2 | 16 vCPU<br>64 GB RAM<br>256 GB SSD |
@@ -82,7 +87,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 
 **Snapshots:**
 
-* If auditable or business critical events are being logged, a backup is necessary.  The choice to back up data will depend on each individual business’s needs and requirements. Refer to our [snapshot repository](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html) documentation to learn more.
+* If auditable or business critical events are being logged, a backup is necessary. The choice to back up data will depend on each individual business’s needs and requirements. Refer to our [snapshot repository](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html) documentation to learn more.
 * To automate snapshots and attach to Index lifecycle management policies, refer to [SLM (Snapshot lifecycle management)](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html#automate-snapshots-slm).
 
 **Kibana:**
