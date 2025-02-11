@@ -117,7 +117,7 @@ Once you assign a criticality level to an entity, all subsequent alerts related 
 
 ### Monitor an entity’s risk [security-asset-criticality-monitor-an-entitys-risk]
 
-The risk scoring engine dynamically factors in an entity’s asset criticality, along with `Open` and `Acknowledged` detection alerts to [calculate the entity’s overall risk score](../../../solutions/security/advanced-entity-analytics/entity-risk-scoring.md#security-entity-risk-scoring-how-is-risk-score-calculated). This dynamic risk scoring allows you to monitor changes in the risk profiles of your most sensitive entities, and quickly escalate high-risk threats.
+The risk scoring engine dynamically factors in an entity’s asset criticality, along with `Open` and `Acknowledged` detection alerts to [calculate the entity’s overall risk score](../../../solutions/security/advanced-entity-analytics/entity-risk-scoring.md#how-is-risk-score-calculated). This dynamic risk scoring allows you to monitor changes in the risk profiles of your most sensitive entities, and quickly escalate high-risk threats.
 
 To view the impact of asset criticality on an entity’s risk score, follow these steps:
 

@@ -424,5 +424,5 @@ The `constant_keyword` is not strictly required for this optimization: it is als
 
 ## Default search timeout [_default_search_timeout] 
 
-By default, search requests don’t time out. You can set a timeout using the [`search.default_search_timeout`](../../../solutions/search/querying-for-search.md#search-timeout) setting.
+By default, search requests don’t time out. You can set a timeout using the [`search.default_search_timeout`](../../../solutions/search/the-search-api.md#search-timeout) setting.
 

@@ -9,7 +9,7 @@ Threshold breaches occur when an {{observability}} data type reaches or exceeds 
 
 To triage issues quickly, go to the alert details page:
 
-1. Find **Alerts** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Alerts** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. From the Alerts table, click the ![More actions](../../../images/observability-boxesHorizontal.svg "") icon next to the alert and select **View alert details**.
 
 The alert details page shows information about the alert, including when the alert was triggered, the duration of the alert, and the last status update. If there is a "group by" field specified in the rule, the page also includes the source. You can follow the links to navigate to the rule definition.

@@ -33,7 +33,7 @@ Group services together to build meaningful views that remove noise, simplify in
 
 To create a service group:
 
-1. To open **Service inventory**, find **Applications** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Service inventory**, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Switch to **Service groups**.
 3. Click **Create group**.
 4. Specify a name, color, and description.

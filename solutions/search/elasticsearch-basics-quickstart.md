@@ -1,4 +1,4 @@
-# {{es}} API quickstart [getting-started]
+# Basics quickstart [getting-started]
 
 
 This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents and field type mappings](../../manage-data/data-store/index-basics.md).
@@ -9,8 +9,6 @@ You’ll learn how to create an index, add data as documents, work with dynamic 
 The code examples in this tutorial are in [Console](../../explore-analyze/query-filter/tools/console.md) syntax by default. You can [convert into other programming languages](../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
 
 ::::
-
-
 
 ## Requirements [getting-started-requirements]
 

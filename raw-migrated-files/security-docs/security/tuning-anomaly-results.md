@@ -19,7 +19,7 @@ For example, to filter out results from a housekeeping process, named `maintenan
 
 ### Create a filter list [create-fiter-list]
 
-1. Find **Machine Learning** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Machine Learning** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under **Anomaly Detection**, select **Settings**.
 3. Click **Filter Lists** and then **New**.
 

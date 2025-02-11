@@ -300,7 +300,7 @@ $$$monitor-locations$$$
     To list available locations you can:
 
     * Run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
-    * Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. Locations will be listed in *Locations*.
+    * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. Locations will be listed in *Locations*.
 
     **Examples**:
 
@@ -332,7 +332,7 @@ $$$monitor-private_locations$$$
     To list available {{private-location}}s you can:
 
     * Run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) and specify the {{kib}} URL of the deployment. This will fetch all available private locations associated with the deployment.
-    * Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
+    * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
 
     **Examples**:
 

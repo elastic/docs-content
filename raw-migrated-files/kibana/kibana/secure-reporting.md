@@ -13,7 +13,7 @@ Kibana PNG/PDF Reporting uses a custom binary of headless Chromium, and support 
 * Linux versions that are in end-of-life phase are not supported.
 * Linux systems with SELinux or fapolicyd are not supported.
 
-Before upgrading Kibana in a production environment, we encourage you to test your screenshotting use cases in a pre-production environment to make sure your hosts support our latest build of Chromium. For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](../../../deploy-manage/deploy/self-managed/install-with-docker.md), or using [Elastic Cloud](../../../explore-analyze/overview/kibana-quickstart.md#set-up-on-cloud).
+Before upgrading Kibana in a production environment, we encourage you to test your screenshotting use cases in a pre-production environment to make sure your hosts support our latest build of Chromium. For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](../../../deploy-manage/deploy/self-managed/install-with-docker.md), or using [Elastic Cloud](https://cloud.elastic.co).
 
 ::::
 
@@ -36,7 +36,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
 1. Create the reporting role.
 
-    1. Go to the **Roles** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+    1. Go to the **Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     2. Click **Create role**.
 
 2. Specify the role settings.
@@ -79,7 +79,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 4. Click **Create role**.
 5. Assign the reporting role to a user.
 
-    1. Go to the **Users** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+    1. Go to the **Users** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     2. Select the user you want to assign the reporting role to.
     3. From the **Roles** dropdown, select **custom_reporting_user**.
     4. Click **Update user**.

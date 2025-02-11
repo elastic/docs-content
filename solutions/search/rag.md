@@ -17,6 +17,7 @@ RAG is a form of [in-context learning](https://arxiv.org/abs/2301.00234), where 
 
 :::{image} ../../images/elasticsearch-reference-rag-venn-diagram.svg
 :alt: RAG sits at the intersection of information retrieval and generative AI
+:width: 600px
 :::
 
 RAG sits at the intersection of [information retrieval](https://www.elastic.co/what-is/information-retrieval) and generative AI. {{es}} is an excellent tool for implementing RAG, because it offers various retrieval capabilities, such as full-text search, vector search, and hybrid search, as well as other tools like filtering, aggregations, and security features.

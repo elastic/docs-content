@@ -11,7 +11,7 @@ Logs Explorer allows you to quickly search and filter your log data, get informa
 
 Logs Explorer also provides {{ml}} to detect specific [log anomalies](inspect-log-anomalies.md) automatically and [categorize log messages](categorize-log-entries.md) to quickly identify patterns in your log events.
 
-To view Logs Explorer, find `Logs Explorer` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search))
+To view Logs Explorer, find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md))
 
 
 

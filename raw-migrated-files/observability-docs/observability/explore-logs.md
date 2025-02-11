@@ -7,7 +7,7 @@ This functionality is in beta and is subject to change. The design and code is l
 
 With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also customize and save your searches and place them on a dashboard. Instead of having to log into different servers, change directories, and view individual files, all your logs are available in a single view.
 
-To open **Logs Explorer**, find `Logs Explorer` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To open **Logs Explorer**, find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/observability-log-explorer.png
 :alt: Screen capture of the Logs Explorer
@@ -22,7 +22,7 @@ Viewing data in Logs Explorer requires `read` privileges for **Discover**, **Ind
 
 ## Find your logs [find-your-logs]
 
-By default, Logs Explorer shows all of your logs, according to the index patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+By default, Logs Explorer shows all of your logs, according to the index patterns set in the **logs sources** advanced setting. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 If you need to focus on logs from a specific integration, select the integration from the logs menu:
 
@@ -68,6 +68,6 @@ The following actions help you filter and focus on specific fields in the log de
 
 ## View log data set details [view-log-data-set-details]
 
-Go to **Data Set Quality** to view more details about your data sets and monitor their overall quality. To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Go to **Data Set Quality** to view more details about your data sets and monitor their overall quality. To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Refer to [*Data set quality*](../../../solutions/observability/data-set-quality-monitoring.md) for more information.

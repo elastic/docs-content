@@ -1,3 +1,9 @@
+---
+applies:
+  stack:
+  serverless:
+---
+  
 # Aggregation-based [add-aggregation-based-visualization-panels]
 
 Aggregation-based visualizations are the core {{kib}} panels, and are not optimized for a specific use case.
@@ -74,7 +80,7 @@ You collected data from your web server, and you want to visualize and analyze t
 
 Add the sample web logs data that you’ll use to create the bar chart, then create the dashboard.
 
-1. [Install the web logs sample data set](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. [Install the web logs sample data set](../../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, click **Create dashboard**.
 

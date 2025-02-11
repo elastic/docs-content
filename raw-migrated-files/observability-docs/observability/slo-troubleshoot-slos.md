@@ -136,7 +136,7 @@ As mentioned, maintaining a healthy cluster is crucial for SLOs to function corr
 
 To be able to inspect SLOs you have to activate the corresponding feature in {{kib}}:
 
-1. Open **Advanced Settings**, by finding **Stack Management** in the main menu or using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Open **Advanced Settings**, by finding **Stack Management** in the main menu or using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Enable `observability:enableInspectEsQueries` setting.
 
 Afterwards visit the **SLO edit page** and click **SLO Inspect**.
@@ -169,7 +169,7 @@ Before resetting the SLO, verify that the source data and queries are correctly 
 
 Follow these steps to reset an SLO:
 
-1. Find **SLOs** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **SLOs** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click on the SLO to reset.
 3. Select **Actions** → **Reset**.
 

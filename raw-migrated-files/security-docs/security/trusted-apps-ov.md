@@ -23,7 +23,7 @@ By default, a trusted application is recognized globally across all hosts runnin
 
 To add a trusted application:
 
-1. Find **Trusted applications** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Trusted applications** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Add trusted application**.
 3. Fill in the following fields in the **Add trusted application** flyout:
 

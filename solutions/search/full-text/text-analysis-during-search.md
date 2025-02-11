@@ -22,7 +22,9 @@ However, if you use `text` fields or your text searches aren’t returning resul
 * Perform lexicographic or linguistic research
 
 
-## In this section [analysis-toc] 
+## Learn more [analysis-toc] 
+
+Learn more about text analysis in the **Manage Data** section of the documentation:
 
 * [Overview](../../../manage-data/data-store/text-analysis.md)
 * [Concepts](../../../manage-data/data-store/text-analysis/concepts.md)
