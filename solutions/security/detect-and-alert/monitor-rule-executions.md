@@ -17,7 +17,7 @@ Refer to the [Troubleshoot missing alerts](../../../troubleshoot/security/detect
 
 ## Rule Monitoring tab [rule-monitoring-tab]
 
-To view a summary of all rule executions, including the most recent failures and execution times, select the **Rule Monitoring** tab on the **Rules** page. To access the tab, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then go to the **Rule Monitoring** tab.
+To view a summary of all rule executions, including the most recent failures and execution times, select the **Rule Monitoring** tab on the **Rules** page. To access the tab, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the **Rule Monitoring** tab.
 
 :::{image} ../../../images/security-monitor-table.png
 :alt: monitor table

@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/add-image.html
 ---
@@ -24,7 +27,7 @@ You can upload images from your computer, select previously uploaded images, or 
 :class: screenshot
 :::
 
-To manage your uploaded image files, go to the **Files** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+To manage your uploaded image files, go to the **Files** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ::::{warning}
 When you export a dashboard, the uploaded image files are not exported. When importing a dashboard with an image panel, and the image file is unavailable, the image panel displays a `not found` warning. Such panels have to be fixed manually by re-uploading the image using the panel’s image editor.

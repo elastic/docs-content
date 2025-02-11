@@ -51,7 +51,7 @@ Knowledge base setup may take several minutes. It will continue in the backgroun
 
 ### Option 2: Enable Knowledge Base from the Security AI settings [_option_2_enable_knowledge_base_from_the_security_ai_settings]
 
-1. To open **Security AI settings**, use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) to find "AI Assistant for Security."
+1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security."
 2. On the **Knowledge Base** tab, click **Setup Knowledge Base**. If the button doesn’t appear, Knowledge Base is already enabled.
 
 :::{image} ../../../images/security-knowledge-base-assistant-settings-kb-tab.png
@@ -88,7 +88,7 @@ When you enable Knowledge Base, it comes pre-populated with articles from [Elast
 
 Add an individual document to Knowledge Base when you want AI Assistant to remember a specific piece of information.
 
-1. To open **Security AI settings**, use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
+1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
 2. Click **New → Document** and give it a name.
 3. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
 4. Write the knowledge AI Assistant should remember in the **Markdown text** field.
@@ -121,7 +121,7 @@ Indices added to Knowledge Base must have at least one field mapped as [semantic
 ::::
 
 
-1. To open **Security AI settings**, use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
+1. To open **Security AI settings**, use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to find "AI Assistant for Security." Select the **Knowledge Base** tab.
 2. Click **New → Index**.
 3. Name the knowledge source.
 4. Under **Sharing**, select whether this knowledge should be **Global** or **Private**.
@@ -163,7 +163,7 @@ This section provides an example of adding a threat intelligence feed to Knowled
 
 First, you’ll need to set up a web crawler to add the desired data to an index, then you’ll need to add that index to Knowledge Base.
 
-1. From the **Search** section of {{kib}}, find **Web crawlers** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. From the **Search** section of {{kib}}, find **Web crawlers** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **New web crawler**.
 
     1. Under **Index name**, name the index where the data from your new web crawler will be stored, for example `threat_intelligence_feed_1`. Click **Create index**.

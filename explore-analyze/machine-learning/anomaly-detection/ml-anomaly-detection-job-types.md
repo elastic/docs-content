@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Job types"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-anomaly-detection-job-types.html

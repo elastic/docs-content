@@ -63,7 +63,7 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
 ::::
 
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Do one of the following:
 
     * Edit a single rule: Select the **All actions** menu (**…​**) on a rule, then select **Edit rule settings**. The **Edit rule settings** view opens, where you can modify the [rule’s settings](../../../solutions/security/detect-and-alert/create-detection-rule.md).
@@ -106,7 +106,7 @@ When duplicating a rule with exceptions, you can choose to duplicate the rule an
 ::::
 
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Rules table, do one of the following:
 
     * Select the **All actions** menu (**…​**) on a rule, then select an action.
@@ -130,7 +130,7 @@ Before manually running rules, make sure you properly understand and plan for ru
 ::::
 
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, do one of the following:
 
     * Select the **All actions** menu (**…​**) on a rule, then select **Manual run**.
@@ -199,7 +199,7 @@ The `.ndjson` file also includes any actions, connectors, and exception lists re
 
 To export and import detection rules:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. To export rules:
 
     1. In the Rules table, select the rules you want to export.

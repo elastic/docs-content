@@ -21,7 +21,7 @@ To help you manage your data, {{es}} offers you the following options:
 * Define [multiple tiers](../../../manage-data/lifecycle/data-tiers.md) of data nodes with different performance characteristics.
 * Automatically transition indices through the data tiers according to your performance needs and retention policies.
 * Leverage [searchable snapshots](../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md) stored in a remote repository to provide resiliency for your older indices while reducing operating costs and maintaining search performance.
-* Perform [asynchronous searches](../../../solutions/search/search-approaches/long-running-searches.md) of data stored on less-performant hardware.
+* Perform [asynchronous searches](../../../solutions/search/async-search-api.md) of data stored on less-performant hardware.
 
 **Data stream lifecycle** is less feature rich but is focused on simplicity. It allows you to do the following:
 

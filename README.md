@@ -1,6 +1,6 @@
 # Elastic Docs Content
 
-![GitHub deployments](https://img.shields.io/github/deployments/elastic/docs-content/docs-preview)
+![GitHub deployments](https://img.shields.io/github/deployments/elastic/docs-content/docs-preview?logo=elastic&label=docs-preview&link=https%3A%2F%2Fdocs-v3-preview.elastic.dev%2Felastic%2Fdocs-content%2Ftree%2Fmain)
 
 This repo contains source files for Elastic documentation.
 

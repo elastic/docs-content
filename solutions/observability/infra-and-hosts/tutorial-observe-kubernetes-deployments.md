@@ -86,7 +86,7 @@ To start collecting logs and metrics from your Kubernetes clusters, first add th
 
 Follow these steps to add the Kubernetes integration to your policy:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Enter "Kubernetes" in the search bar, and select the **Kubernetes** integration.
 3. Click **Add Kubernetes** at the top of the Kubernetes integration page.
 4. Click **Add integration only (skip agent installation)** at the bottom of the Add integration page.
@@ -494,7 +494,7 @@ Use {{kib}} to view the metric and log data collected by {{agent}}. Refer to the
 
 ### View performance and health metrics [monitor-k8s-explore-metrics]
 
-To view the performance and health metrics collected by {{agent}}, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To view the performance and health metrics collected by {{agent}}, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 On the **Infrastructure inventory** page, you can switch between different views to see an overview of the containers and pods running on Kubernetes:
 
@@ -517,7 +517,7 @@ For more on using the **Metrics Explorer** page, refer to [Explore infrastructur
 
 ### View Kubernetes logs [monitor-k8s-explore-logs]
 
-Find `Logs Explorer` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
 
@@ -565,7 +565,7 @@ If you want to manage APM yourself, there are a few alternative options:
 
 A [secret token](../apps/secret-token.md) is used to secure communication between APM agents and APM Server. To create or update your secret token in {{kib}}:
 
-1. Find **Fleet** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Agent policies** tab, select the policy you would like to configure.
 3. Find the Elastic APM integration and select **Actions → Edit integration**.
 4. Navigate to **Agent authorization → Secret token** and set the value of your token.
@@ -1161,7 +1161,7 @@ kubectl apply -f demo.yml
 
 ### View your application’s traces in {{kib}} [_view_your_applications_traces_in_kib]
 
-Application trace data is available in the **Service Inventory**. To open **Service Inventory**, find **Applications** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Application trace data is available in the **Service Inventory**. To open **Service Inventory**, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 The **Applications** app allows you to monitor your software services and applications in real-time: visualize detailed performance information on your services, identify and analyze errors, and monitor host-level and agent-specific metrics like JVM and Go runtime metrics.
 
