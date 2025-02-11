@@ -70,7 +70,7 @@ You can subscribe to Elastic Cloud at any time during your trial. <<general-serv
 [[general-sign-up-trial-how-do-i-get-started-with-my-trial]]
 == Get started with your trial
 
-Start by checking out some common approaches for https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html[moving data into Elastic Cloud].
+Start by checking out some common approaches for https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html#ec-ingest-methods[moving data into Elastic Cloud].
 
 [discrete]
 [[general-sign-up-trial-what-happens-at-the-end-of-the-trial]]
