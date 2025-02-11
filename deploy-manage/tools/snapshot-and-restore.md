@@ -59,7 +59,7 @@ While the majority of snapshot-related operations are similar across all deploym
 ::::
 
 ::::{dropdown} Elastic Cloud Hosted
-When you create a cluster, a default repository called `found-snapshots` is automatically added to the cluster. This repository is specific to that cluster: the deployment ID is part of the repository’s `base_path`, such as `/snapshots/[cluster-id]`.
+When you create a deployment, a default repository called `found-snapshots` is automatically added to the {{es}} cluster. This repository is specific to that cluster: the `cluster ID` is part of the repository’s `base_path`, such as `/snapshots/[cluster-id]`.
 
 :::{note}
 Do not disable or delete the default `cloud-snapshot-policy` SLM policy, and do not change the default `found-snapshots` repository defined in that policy. These actions are not supported.
