@@ -1,9 +1,6 @@
 project: 'Explore and analyze'
 toc:
   - file: index.md
-  - file: overview/kibana-quickstart.md
-    children:
-      - file: overview/kibana-quickstart/accessibility-in-kibana.md
   - file: query-filter.md
     children:
       - file: query-filter/languages.md
@@ -163,6 +160,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-configuring-transform.md
               - file: machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md
               - file: machine-learning/anomaly-detection/ml-configuring-categories.md
+              - file: machine-learning/anomaly-detection/ml-configuring-populations.md
               - file: machine-learning/anomaly-detection/ml-reverting-model-snapshot.md
               - file: machine-learning/anomaly-detection/geographic-anomalies.md
               - file: machine-learning/anomaly-detection/mapping-anomalies.md
@@ -338,7 +336,7 @@ toc:
     children:
       - file: alerts-cases/alerts.md
         children:
-          - file: alerts-cases/alerts/alerting-getting-started.md 
+          - file: alerts-cases/alerts/alerting-getting-started.md
           - file: alerts-cases/alerts/alerting-setup.md
           - file: alerts-cases/alerts/create-manage-rules.md
           - file: alerts-cases/alerts/view-alerts.md

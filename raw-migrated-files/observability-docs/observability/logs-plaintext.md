@@ -272,7 +272,7 @@ Follow these steps to ingest and centrally manage your logs using {{agent}} and 
 
 To add the custom logs integration to your project:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Type `custom` in the search bar and select **Custom Logs**.
 3. Click **Add Custom Logs**.
 4. Click **Install {{agent}}** at the bottom of the page, and follow the instructions for your system to install the {{agent}}.
@@ -334,7 +334,7 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
 * [Go](https://www.elastic.co/guide/en/apm/agent/go/current/logs.html)
 * [Java](https://www.elastic.co/guide/en/apm/agent/java/current/logs.html#log-correlation-ids)
-* [.NET](https://www.elastic.co/guide/en/apm/agent/dotnet/current/log-correlation.html)
+* [.NET](https://www.elastic.co/guide/en/apm/agent/dotnet/current/logs.html)
 * [Node.js](https://www.elastic.co/guide/en/apm/agent/nodejs/current/log-correlation.html)
 * [Python](https://www.elastic.co/guide/en/apm/agent/python/current/logs.html#log-correlation-ids)
 * [Ruby](https://www.elastic.co/guide/en/apm/agent/ruby/current/log-correlation.html)

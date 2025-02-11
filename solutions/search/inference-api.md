@@ -1,15 +1,39 @@
 ---
 mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-inference.html
   - https://www.elastic.co/guide/en/kibana/current/inference-endpoints.html
+
+navigation_title: Inference integrations
 ---
 
-# Inference API
+# Integrate with third-party services
 
-% What needs to be done: Refine
+{{es}} provides a machine learning [inference API](https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-inference-get-1) to create and manage inference endpoints to integrate with machine learning models provide by popular third-party services like Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Mistral, OpenAI, Hugging Face, and more.
 
-% Use migrated content from existing pages that map to this page:
+Learn how to integrate with specific services in the subpages of this section.
 
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/semantic-search-inference.md
-%      Notes: some stakeholders wanted this more visible - just needs to draw attention to this as a key api
-% - [ ] ./raw-migrated-files/kibana/kibana/inference-endpoints.md
+## Inference endpoints UI [inference-endpoints]
+
+You can also manage inference endpoints using the UI.
+
+The **Inference endpoints** page provides an interface for managing inference endpoints.
+
+:::{image} ../../images/kibana-inference-endpoints-ui.png
+:alt: Inference endpoints UI
+:class: screenshot
+:::
+
+Available actions:
+
+* Add new endpoint
+* View endpoint details
+* Copy the inference endpoint ID
+* Delete endpoints
+
+## Add new inference endpoint
+
+To add a new interference endpoint using the UI:
+
+1. Select the **Add endpoint** button.
+1. Select a service from the drop down menu.
+1. Provide the required configuration details.
+1. Select **Save** to create the endpoint.

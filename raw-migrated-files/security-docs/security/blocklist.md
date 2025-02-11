@@ -13,7 +13,7 @@ The blocklist is not intended to broadly block benign applications for non-secur
 
 By default, a blocklist entry is recognized globally across all hosts running {{elastic-defend}}. If you have a [Platinum or Enterprise subscription](https://www.elastic.co/pricing), you can also assign a blocklist entry to specific {{elastic-defend}} integration policies, which blocks the process only on hosts assigned to that policy.
 
-1. Find **Blocklist** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Blocklist** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Add blocklist entry**. The **Add blocklist** flyout appears.
 3. Fill in these fields in the **Details** section:
 

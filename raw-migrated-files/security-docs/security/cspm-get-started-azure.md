@@ -28,7 +28,7 @@ This functionality is in beta and is subject to change. The design and code is l
 ::::
 
 
-1. Find **Integrations** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
 4. Select **Azure**, then either **Azure Organization** to onboard your whole organization, or **Single Subscription** to onboard an individual subscription.
@@ -43,7 +43,7 @@ This functionality is in beta and is subject to change. The design and code is l
 
 ### Add your CSPM integration [cspm-add-and-name-integration-azure]
 
-1. Find **Integrations** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `CSPM`, then click on the result.
 3. Click **Add Cloud Security Posture Management (CSPM)**.
 4. Under **Configure integration**, select **Azure***, then select either ***Azure Organization** or **Single Subscription**, depending on which resources you want to monitor.

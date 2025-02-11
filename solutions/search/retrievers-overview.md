@@ -1,3 +1,7 @@
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/retrievers-overview.html
+
 # Retrievers [retrievers-overview]
 
 A retriever is an abstraction that was added to the `_search` API in **8.14.0** and was made generally available in **8.16.0**.

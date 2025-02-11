@@ -155,7 +155,7 @@ To learn more about choosing the class assignment objective that fits your goal,
 
 The model that you created is stored as {{es}} documents in internal indices. In other words, the characteristics of your trained model are saved and ready to be deployed and used as functions.
 
-1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}.
+1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
 
 :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
@@ -207,7 +207,7 @@ If you use trained model aliases to reference your trained model in an {{infer}}
 
 ## Performing {{classanalysis}} in the sample flight data set [performing-classification]
 
-Let’s try to predict whether a flight will be delayed or not by using the [sample flight data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana). The data set contains information such as weather conditions, carrier, flight distance, origin, destination, and whether or not the flight was delayed. The {{classification}} model learns the relationships between the fields in your data to predict the value of the *dependent variable*, which in this case is the boolean `FlightDelay` field.
+Let’s try to predict whether a flight will be delayed or not by using the [sample flight data](../../index.md#gs-get-data-into-kibana). The data set contains information such as weather conditions, carrier, flight distance, origin, destination, and whether or not the flight was delayed. The {{classification}} model learns the relationships between the fields in your data to predict the value of the *dependent variable*, which in this case is the boolean `FlightDelay` field.
 
 ::::{tip}
 If you want to view this example in a Jupyter notebook, [click here](https://github.com/elastic/examples/tree/master/Machine%20Learning/Analytics%20Jupyter%20Notebooks).
@@ -533,7 +533,7 @@ You can also see the {{feat-imp}} values for each individual prediction in the f
 
 In {{kib}}, the decision path shows the relative impact of each feature on the probability of the prediction. The features with the most significant positive or negative impact appear at the top of the decision plot. Thus in this example, the features related to flight time and distance had the most significant influence on the probability value for this prediction. This type of information can help you to understand how models arrive at their predictions. It can also indicate which aspects of your data set are most influential or least useful when you are training and tuning your model.
 
-If you do not use {{kib}}, you can see the summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-inference.html) and the individual values by searching the destination index.
+If you do not use {{kib}}, you can see the summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html) and the individual values by searching the destination index.
 
 ::::{dropdown} API example
 ```console

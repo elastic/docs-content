@@ -27,7 +27,7 @@ Connectors provide a central place to store connection information for services 
 * [Tines](https://www.elastic.co/guide/en/kibana/current/tines-action-type.html): Send events to a Tines Story.
 * [Torq](https://www.elastic.co/guide/en/kibana/current/torq-action-type.html): Trigger a Torq workflow.
 * [{{webhook}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html): Send a request to a web service.
-* [{{webhook-cm}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html): Send a request to a Case Management web service.
+* [{{webhook-cm}}](https://www.elastic.co/guide/en/kibana/current/cases-webhook-action-type.html): Send a request to a Case Management web service.
 * [xMatters](https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html): Send actionable alerts to on-call xMatters resources.
 
 ::::{note}

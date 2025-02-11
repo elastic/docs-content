@@ -24,9 +24,20 @@ $$$managing-saved-objects-export-objects$$$
 $$$managing-saved-objects-share-to-space$$$
 
 
+{{kib}} lets you save objects for your own future use or for sharing with others. Each saved object type has different abilities. For example, you can save your search queries made with **Discover**, which lets you:
+
+* Share a link to your search
+* Download the full search results in CSV form
+* Start an aggregated visualization using the same search query
+* Embed the **Discover** search results into a dashboard
+
+For organization, every saved object can have a name, [tags](tags.md), and type. Use the global search to quickly open a saved object.
+
+## Manage saved objects
+
 Edit, import, export, and copy your saved objects. These objects include dashboards, visualizations, maps, {{data-sources}}, **Canvas** workpads, and other saved objects.
 
-You can find the **Saved Objects** page using the navigation menu or the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+You can find the **Saved Objects** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../images/kibana-management-saved-objects.png
 :alt: Saved Objects

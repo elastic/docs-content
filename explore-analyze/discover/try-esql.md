@@ -25,7 +25,7 @@ To view the {{esql}} option in **Discover**, the `enableESQL` setting must be en
 
 To load the sample data:
 
-1. [Install the web logs sample data](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. [Install the web logs sample data](../index.md#gs-get-data-into-kibana).
 2. Go to **Discover**.
 3. Select **Try {{esql}}** from the application menu bar.
 

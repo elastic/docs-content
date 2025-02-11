@@ -19,7 +19,7 @@ For security reasons, we recommend using a unique API key per APM Server instanc
 
 To create an API key:
 
-1. Go to **Stack Management** in the main menu and find **API Keys** or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to **Stack Management** in the main menu and find **API Keys** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create API key**.
 
     :::{image} ../../../images/observability-server-api-key-create.png
@@ -86,7 +86,7 @@ output.elasticsearch:
 
 ## Create an API key for monitoring [apm-beats-api-key-monitor]
 
-To open **API keys**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Click **Create API key**.
+To open **API keys**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create API key**.
 
 :::{image} ../../../images/observability-server-api-key-create.png
 :alt: API key creation

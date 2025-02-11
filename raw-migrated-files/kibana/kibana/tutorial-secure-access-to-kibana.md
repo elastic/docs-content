@@ -50,7 +50,7 @@ Let’s work through an example together. Consider a marketing analyst who wants
 
 Create a Marketing space for your marketing analysts to use.
 
-1. Go to the **Spaces** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Spaces** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create a space**.
 3. Give this space a unique name. For example: `Marketing`.
 4. Click **Create space**.
@@ -73,7 +73,7 @@ To effectively use dashboards, create a role that describes the privileges you w
 
 To create the role:
 
-1. Go to the **Roles** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create role**.
 3. Give this role a unique name. For example: `marketing_dashboards_role`.
 4. For this example, you want to store all marketing data in the `acme-marketing-*` set of indices. To grant this access, locate the **Index privileges** section and enter:

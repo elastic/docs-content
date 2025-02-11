@@ -4,7 +4,7 @@ In the {{infrastructure-app}}, visualize infrastructure metrics to help diagnose
 
 Using {{agent}} integrations, you can ingest and analyze metrics from servers, Docker containers, Kubernetes orchestrations, explore and analyze application telemetry, and more.
 
-To access the {{infrastructure-app}}, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To access the {{infrastructure-app}}, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 The {{infrastructure-app}} provides a few different views of your data.
 

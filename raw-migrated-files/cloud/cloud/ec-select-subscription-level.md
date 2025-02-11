@@ -35,7 +35,7 @@ This overview shows you:
 You can [change your subscription level](../../../deploy-manage/cloud-organization/billing/manage-subscription.md) to the recommended level, or stop using the features that belong to a higher level. In the following list, you can find the features we are tracking and the relevant instructions to remove them from your deployments:
 
 `Machine learning`
-:   Edit your deployment to disable [machine learning](https://www.elastic.co/guide/en/machine-learning/current/ml-overview.html).
+:   Edit your deployment to disable [machine learning](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html).
 
 `Searchable snapshots`
 :   Edit your deployment index management policies to disable the frozen tier that is using [searchable snapshots](../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), or set up your cold tier to not mount indices from a searchable snapshot.

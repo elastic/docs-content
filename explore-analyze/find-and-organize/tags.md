@@ -16,7 +16,7 @@ mapped_urls:
 
 Use tags to categorize your saved objects, then filter for related objects based on shared tags.
 
-To get started, go to the **Tags** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+To get started, go to the **Tags** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../images/kibana-tag-management-section.png
 :alt: Tags management

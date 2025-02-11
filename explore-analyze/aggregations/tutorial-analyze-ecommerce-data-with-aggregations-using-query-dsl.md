@@ -31,7 +31,7 @@ You’ll need:
         curl -fsSL https://elastic.co/start-local | sh
         ```
 
-2. The [sample eCommerce data](../overview/kibana-quickstart.md#gs-get-data-into-kibana) loaded into {{es}}. To load sample data follow these steps in your UI:
+2. The [sample eCommerce data](../index.md#gs-get-data-into-kibana) loaded into {{es}}. To load sample data follow these steps in your UI:
 
     * Open the **Integrations** pages by searching in the global search field.
     * Search for `sample data` in the **Integrations** search field.

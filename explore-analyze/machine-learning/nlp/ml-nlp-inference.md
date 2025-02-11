@@ -14,7 +14,7 @@ After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you
 
 ## Add an {{infer}} processor to an ingest pipeline [ml-nlp-inference-processor]
 
-In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/machine-learning-ml-nlp-pipeline-lang.png
 :alt: Creating a pipeline in the Stack Management app
@@ -142,7 +142,7 @@ POST lang-test/_doc?pipeline=my-lang-pipeline
 }
 ```
 
-You can also use NLP pipelines when you are reindexing documents to a new destination. For example, since the [sample web logs data set](../../overview/kibana-quickstart.md#gs-get-data-into-kibana) contain a `message` text field, you can reindex it with your {{lang-ident}} pipeline:
+You can also use NLP pipelines when you are reindexing documents to a new destination. For example, since the [sample web logs data set](../../index.md#gs-get-data-into-kibana) contain a `message` text field, you can reindex it with your {{lang-ident}} pipeline:
 
 ```console
 POST _reindex

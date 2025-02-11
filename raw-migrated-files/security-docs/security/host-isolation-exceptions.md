@@ -19,7 +19,7 @@ You must have the **Host Isolation Exceptions** [privilege](../../../solutions/s
 
 Host isolation is a [Platinum or Enterprise subscription](https://www.elastic.co/pricing) feature. By default, a host isolation exception is recognized globally across all hosts running {{elastic-defend}}. You can also assign a host isolation exception to a specific {{elastic-defend}} integration policy, affecting only the hosts assigned to that policy.
 
-1. Find **Host isolation exceptions** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Host isolation exceptions** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Add Host isolation exception**.
 3. Fill in these fields in the **Add Host isolation exception** flyout:
 

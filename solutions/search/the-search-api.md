@@ -1,10 +1,14 @@
-# The search API [search-your-data]
+# The `_search` API [search-your-data]
+
+::::{tip}
+This page is focused on the `_search` API using Query DSL syntax. Refer to [](querying-for-search.md) for an overview of alternative Elastic query syntaxes for search use cases.
+::::
 
 A *search* consists of one or more queries that are combined and sent to {{es}}. Documents that match a search’s queries are returned in the *hits*, or *search results*, of the response.
 
 A search may also contain additional information used to better process its queries. For example, a search may be limited to a specific index or only return a specific number of results.
 
-You can use the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to search and [aggregate](../../../explore-analyze/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md).
+You can use the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to search and [aggregate](../../explore-analyze/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
 
 
 ## Run a search [run-an-es-search]
@@ -76,14 +80,14 @@ The API response returns the top 10 documents matching the query in the `hits.hi
 
 You can use the following options to customize your searches.
 
-**Query DSL**<br> [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md) supports a variety of query types you can mix and match to get the results you want. Query types include:
+**Query DSL**<br> [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md) supports a variety of query types you can mix and match to get the results you want. Query types include:
 
 * [Boolean](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) and other [compound queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/compound-queries.html), which let you combine queries and match results based on multiple criteria
 * [Term-level queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/term-level-queries.html) for filtering and finding exact matches
 * [Full text queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html), which are commonly used in search engines
 * [Geo](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html) and [spatial queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/shape-queries.html)
 
-**Aggregations**<br> You can use [search aggregations](../../../explore-analyze/aggregations.md) to get statistics and other analytics for your search results. Aggregations help you answer questions like:
+**Aggregations**<br> You can use [search aggregations](../../explore-analyze/aggregations.md) to get statistics and other analytics for your search results. Aggregations help you answer questions like:
 
 * What’s the average response time for my servers?
 * What are the top IP addresses hit by users on my network?
@@ -95,18 +99,18 @@ You can use the following options to customize your searches.
 
 **Retrieve selected fields**<br> The search response’s `hits.hits` property includes the full document [`_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) for each hit. To retrieve only a subset of the `_source` or other fields, see [Retrieve selected fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html).
 
-**Sort search results**<br> By default, search hits are sorted by `_score`, a [relevance score](../../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores) that measures how well each document matches the query. To customize the calculation of these scores, use the [`script_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html) query. To sort search hits by other field values, see [Sort search results](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html).
+**Sort search results**<br> By default, search hits are sorted by `_score`, a [relevance score](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores) that measures how well each document matches the query. To customize the calculation of these scores, use the [`script_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html) query. To sort search hits by other field values, see [Sort search results](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html).
 
 **Run an async search**<br> {{es}} searches are designed to run on large volumes of data quickly, often returning results in milliseconds. For this reason, searches are *synchronous* by default. The search request waits for complete results before returning a response.
 
-However, complete results can take longer for searches across large data sets or [multiple clusters](../../../solutions/search/cross-cluster-search.md).
+However, complete results can take longer for searches across large data sets or [multiple clusters](cross-cluster-search.md).
 
-To avoid long waits, you can run an *asynchronous*, or *async*, search instead. An [async search](../../../solutions/search/search-approaches/long-running-searches.md) lets you retrieve partial results for a long-running search now and get complete results later.
+To avoid long waits, you can run an *asynchronous*, or *async*, search instead. An [async search](async-search-api.md) lets you retrieve partial results for a long-running search now and get complete results later.
 
 
 ## Define fields that exist only in a query [run-search-runtime-fields]
 
-Instead of indexing your data and then searching it, you can define [runtime fields](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) that only exist as part of your search query. You specify a `runtime_mappings` section in your search request to define the runtime field, which can optionally include a Painless script.
+Instead of indexing your data and then searching it, you can define [runtime fields](../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) that only exist as part of your search query. You specify a `runtime_mappings` section in your search request to define the runtime field, which can optionally include a Painless script.
 
 For example, the following query defines a runtime field called `day_of_week`. The included script calculates the day of the week based on the value of the `@timestamp` field, and uses `emit` to return the calculated value.
 
@@ -161,7 +165,7 @@ The response includes an aggregation based on the `day_of_week` runtime field. U
 
 By default, search requests don’t time out. The request waits for complete results from each shard before returning a response.
 
-While [async search](../../../solutions/search/search-approaches/long-running-searches.md) is designed for long-running searches, you can also use the `timeout` parameter to specify a duration you’d like to wait on each shard to complete. Each shard collects hits within the specified time period. If collection isn’t finished when the period ends, {{es}} uses only the hits accumulated up to that point. The overall latency of a search request depends on the number of shards needed for the search and the number of concurrent shard requests.
+While [async search](async-search-api.md) is designed for long-running searches, you can also use the `timeout` parameter to specify a duration you’d like to wait on each shard to complete. Each shard collects hits within the specified time period. If collection isn’t finished when the period ends, {{es}} uses only the hits accumulated up to that point. The overall latency of a search request depends on the number of shards needed for the search and the number of concurrent shard requests.
 
 ```console
 GET /my-index-000001/_search

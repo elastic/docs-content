@@ -101,7 +101,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 
 If you are using APM 7.9.0 or older:
 
-* You cannot use [APM Agent central configuration](https://www.elastic.co/guide/en/kibana/current/agent-configuration.html) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
+* You cannot use [APM Agent central configuration](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
 * If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
 
 
