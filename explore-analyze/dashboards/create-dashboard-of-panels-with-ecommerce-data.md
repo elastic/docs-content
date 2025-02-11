@@ -21,7 +21,7 @@ Before you begin, you should be familiar with the [*{{kib}} concepts*](../overvi
 
 Add the sample eCommerce data, and create and set up the dashboard.
 
-1. [Install the eCommerce sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, click **Create dashboard**.
 

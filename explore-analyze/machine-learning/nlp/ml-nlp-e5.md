@@ -57,7 +57,7 @@ For most cases, the preferred version is the **Intel and Linux optimized** model
 
 #### Using the Trained Models page [trained-model-e5]
 
-1. In {{kib}}, navigate to **{{ml-app}}** > **Trained Models** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects). E5 can be found in the list of trained models. There are two versions available: one portable version which runs on any hardware and one version which is optimized for Intel® silicon. You can see which model is recommended to use based on your hardware configuration.
+1. In {{kib}}, navigate to **{{ml-app}}** > **Trained Models** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). E5 can be found in the list of trained models. There are two versions available: one portable version which runs on any hardware and one version which is optimized for Intel® silicon. You can see which model is recommended to use based on your hardware configuration.
 2. Click the **Add trained model** button. Select the E5 model version you want to use in the opening modal window. The model that is recommended for you based on your hardware configuration is highlighted. Click **Download**. You can check the download status on the **Notifications** page.
 
     :::{image} ../../../images/machine-learning-ml-nlp-e5-download.png
@@ -171,7 +171,7 @@ For a file-based access, follow these steps:
 
 4. Repeat step 2 and step 3 on all master-eligible nodes.
 5. [Restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) the master-eligible nodes one by one.
-6. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}. E5 can be found in the list of trained models.
+6. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. E5 can be found in the list of trained models.
 7. Click the **Add trained model** button, select the E5 model version you downloaded in step 1 and want to deploy and click **Download**. The selected model will be downloaded from the model directory where you put in step 2.
 8. After the download is finished, start the deployment by clicking the **Start deployment** button.
 9. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.

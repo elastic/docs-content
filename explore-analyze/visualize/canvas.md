@@ -71,7 +71,7 @@ On the **Canvas** page, drag the file to the **Import workpad JSON file** field.
 
 Each of the {{kib}} sample data sets comes with a workpad that you can use for your own workpad inspiration.
 
-1. Add a [sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. Add a [sample data set](../index.md#gs-get-data-into-kibana).
 2. On a sample data card, click **View data**, then select **Canvas**.
 
 

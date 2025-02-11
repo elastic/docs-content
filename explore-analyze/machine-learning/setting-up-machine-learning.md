@@ -32,7 +32,7 @@ Assigning security privileges affects how users access {{ml-features}}. Consider
 
 You can configure these privileges
 
-* under **Security**. To open Security, find **{{stack-manage-app}}** in the main menu or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+* under **Security**. To open Security, find **{{stack-manage-app}}** in the main menu or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 * via the respective {{es}} security APIs.
 
 ### {{es}} API user [es-security-privileges]
@@ -63,16 +63,16 @@ Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also gran
 
 #### Feature visibility in Spaces [kib-visibility-spaces]
 
-In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects) to locate **Spaces** directly.
+In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
 
 :::{image} ../../images/machine-learning-spaces.jpg
 :alt: Manage spaces in {kib}
 :class: screenshot
 :::
 
-In addition to index privileges, source {{data-sources}} must also exist in the same space as your {{ml}} jobs. You can configure these under **{{data-sources-caps}}**. To open **{{data-sources-caps}}**, find **{{stack-manage-app}}** > **{{kib}}** in the main menu, or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+In addition to index privileges, source {{data-sources}} must also exist in the same space as your {{ml}} jobs. You can configure these under **{{data-sources-caps}}**. To open **{{data-sources-caps}}**, find **{{stack-manage-app}}** > **{{kib}}** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md).
 
-Each {{ml}} job and trained model can be assigned to all, one, or multiple spaces. This can be configured in **Machine Learning**. To open **Machine Learning**, find **{{stack-manage-app}} > Alerts and Insights** in the main menu, or use the [global search field](../overview/kibana-quickstart.md#_finding_your_apps_and_objects). You can edit the spaces that a job or model is assigned to by clicking the icons in the **Spaces** column.
+Each {{ml}} job and trained model can be assigned to all, one, or multiple spaces. This can be configured in **Machine Learning**. To open **Machine Learning**, find **{{stack-manage-app}} > Alerts and Insights** in the main menu, or use the [global search field](../find-and-organize/find-apps-and-objects.md). You can edit the spaces that a job or model is assigned to by clicking the icons in the **Spaces** column.
 
 :::{image} ../../images/machine-learning-assign-job-spaces.jpg
 :alt: Assign machine learning jobs to spaces

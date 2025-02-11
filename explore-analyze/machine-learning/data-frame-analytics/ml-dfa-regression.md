@@ -101,7 +101,7 @@ R-squared (R^2^) represents the goodness of fit and measures how much of the var
 
 The model that you created is stored as {{es}} documents in internal indices. In other words, the characteristics of your trained model are saved and ready to be deployed and used as functions. The [{{infer}}](#ml-inference-reg) feature enables you to use your model in a preprocessor of an ingest pipeline or in a pipeline aggregation of a search query to make predictions about your data.
 
-1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}.
+1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
 
 :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
@@ -153,7 +153,7 @@ If you use trained model aliases to reference your trained model in an {{infer}}
 
 ## Performing {{reganalysis}} in the sample flight data set [performing-regression]
 
-Let’s try to predict flight delays by using the [sample flight data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana). The data set contains information such as weather conditions, flight destinations and origins, flight distances, carriers, and the number of minutes each flight was delayed. When you create a {{regression}} job, it learns the relationships between the fields in your data to predict the value of a *{{depvar}}*, which - in this case - is the numeric `FlightDelayMins` field. For an overview of these concepts, see [*Predicting numerical values with {{regression}}*]() and [Introduction to supervised learning](ml-dfa-overview.md#ml-supervised-workflow).
+Let’s try to predict flight delays by using the [sample flight data](../../index.md#gs-get-data-into-kibana). The data set contains information such as weather conditions, flight destinations and origins, flight distances, carriers, and the number of minutes each flight was delayed. When you create a {{regression}} job, it learns the relationships between the fields in your data to predict the value of a *{{depvar}}*, which - in this case - is the numeric `FlightDelayMins` field. For an overview of these concepts, see [*Predicting numerical values with {{regression}}*]() and [Introduction to supervised learning](ml-dfa-overview.md#ml-supervised-workflow).
 
 ### Preparing your data [flightdata-regression-data]
 

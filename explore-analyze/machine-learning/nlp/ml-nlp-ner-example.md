@@ -235,7 +235,7 @@ The request returns the document marked up with one identified person:
 
 You can create a tag cloud to visualize your data processed by the {{infer}} pipeline. A tag cloud is a visualization that scales words by the frequency at which they occur. It is a handy tool for viewing the entities found in the data.
 
-In {{kib}}, open **Stack management** > **{{data-sources-cap}}** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects), and create a new {{data-source}} from the `les-miserables-infer` index pattern.
+In {{kib}}, open **Stack management** > **{{data-sources-cap}}** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md), and create a new {{data-source}} from the `les-miserables-infer` index pattern.
 
 Open **Dashboard** and create a new dashboard. Select the **Aggregation based-type > Tag cloud** visualization. Choose the new {{data-source}} as the source.
 

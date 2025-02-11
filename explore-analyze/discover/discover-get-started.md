@@ -14,7 +14,7 @@ Learn how to use **Discover** to:
 **Prerequisites:**
 
 * If you don’t already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on Elastic Cloud.
-* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana), but you can use your own data.
+* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
 * You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md) and [{{kib}} concepts](../overview/kibana-quickstart.md).
 
 

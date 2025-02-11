@@ -10,7 +10,7 @@ Explore the fields in your data with the **Field statistics** view in **Discover
 * What does the latency look like when one of the containers is down on a Sunday?
 * Is the field type and format in the data view appropriate for the data and its cardinality?
 
-This example explores the fields in the [sample web logs data](../overview/kibana-quickstart.md#gs-get-data-into-kibana), or you can use your own data.
+This example explores the fields in the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. Go to **Discover**.
 2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.

@@ -229,7 +229,7 @@ To add runtime fields to your data views, open the data view you want to change,
 
 #### Runtime field examples [runtime-field-examples]
 
-Try the runtime field examples on your own using the [**Sample web logs**](../../explore-analyze/overview/kibana-quickstart.md#gs-get-data-into-kibana) data.
+Try the runtime field examples on your own using the [**Sample web logs**](../../explore-analyze/index.md#gs-get-data-into-kibana) data.
 
 
 #### Return a keyword value [simple-hello-world-example]
