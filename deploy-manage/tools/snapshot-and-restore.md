@@ -77,7 +77,7 @@ To use a custom snapshot repository, [register a new snapshot repository](snapsh
 ::::
 
 ::::{dropdown} Elastic Cloud Enterprise
-To enable snapshots for your Elasticsearch clusters and work with them, you must [configure a repository](snapshot-and-restore/cloud-enterprise.md). After configuring a snapshot repository, a snapshot is taken every 30 minutes or at the interval that you specify.
+To enable snapshots for your Elasticsearch clusters, you must first [configure a repository](snapshot-and-restore/cloud-enterprise.md) at the platform level in ECE and then associate it with your deployments. Once configured, snapshots are taken every 30 minutes or at the interval you specify.
 
 Use **Kibana** to manage your snapshots. In Kibana, you can:
 
