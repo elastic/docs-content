@@ -49,7 +49,7 @@ Or
 
 * You install one or more of the [Advanced Analytics integrations](../../../solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#security-behavioral-detection-use-cases-elastic-integrations-for-behavioral-detection-use-cases).
 
-[Prebuilt job reference](https://www.elastic.co/guide/en/serverless/current/security-prebuilt-ml-jobs.html) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](../../../solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
+[Prebuilt job reference](https://www.elastic.co/guide/en/security/current/prebuilt-ml-jobs.html) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](../../../solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
 
 ::::{note}
 Machine learning jobs look back and analyze two weeks of historical data prior to the time they are enabled. After jobs are enabled, they continuously analyze incoming data. When jobs are stopped and restarted within the two-week time frame, previously analyzed data is not processed again.

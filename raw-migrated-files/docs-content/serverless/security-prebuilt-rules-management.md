@@ -5,7 +5,7 @@ navigation_title: "Use Elastic prebuilt rules"
 # Install and manage Elastic prebuilt rules [security-prebuilt-rules-management]
 
 
-Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](https://www.elastic.co/guide/en/serverless/current/security-prebuilt-rules.html), keep them updated, and make sure they have the data needed to run successfully.
+Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](https://www.elastic.co/guide/en/security/current/prebuilt-rules.html), keep them updated, and make sure they have the data needed to run successfully.
 
 * [Install and enable Elastic prebuilt rules](../../../solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules)
 * [Prebuilt rule tags](../../../solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#prebuilt-rule-tags)
@@ -60,7 +60,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](h
     * Enable multiple rules: Select the rules, then click **Bulk actions** → **Enable**.
 
 
-Once you enable a rule, it starts running on its configured schedule. To confirm that it’s running successfully, check its **Last response** status in the rules table, or open the rule’s details page and check the [**Execution results**](../../../troubleshoot/security/detection-rules.md#rule-execution-logs) tab.
+Once you enable a rule, it starts running on its configured schedule. To confirm that it’s running successfully, check its **Last response** status in the rules table, or open the rule’s details page and check the [**Execution results**](../../../solutions/security/detect-and-alert/monitor-rule-executions.md#rule-execution-logs) tab.
 
 
 ## Prebuilt rule tags [prebuilt-rule-tags]

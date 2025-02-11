@@ -1414,7 +1414,7 @@ Having added support for `node_roles` and autoscaling to your custom template, i
     curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443/api/v1/deployments/templates?region=ece-region
     ```
 
-2. Send a `PUT` request with the updated template on the payload, in order to effectively replace the outdated template with the new one. Note that the following request is just an example, you have to replace `{{template_id}}` with the `id` you collected on step 1. and set the payload to the updated template JSON. Check [set deployment template API](https://www.elastic.co/guide/en/cloud-enterprise/current/set-deployment-template-v2.html) for more details.
+2. Send a `PUT` request with the updated template on the payload, in order to effectively replace the outdated template with the new one. Note that the following request is just an example, you have to replace `{{template_id}}` with the `id` you collected on step 1. and set the payload to the updated template JSON. Check [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more details.
 
     ::::{dropdown} Update template API request example
     ```sh
@@ -1749,7 +1749,7 @@ If you do not intend to perform any of these actions, the migration can only be 
 1. Go to the deployment **Edit** page.
 2. Get the deployment update payload by clicking **Equivalent API request** at the bottom of the page.
 3. Update the payload by replacing `node_type` with `node_roles` in each Elasticsearch topology element. To know which `node_roles` to add to each topology element, refer to the [custom template example](#ece-ce-add-support-to-node-roles-example) where support for `node_roles` is added.
-4. Send a `PUT` request with the updated deployment payload to conclude the migration. Check the [Update Deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/update-deployment.html) API documentation for more details.
+4. Send a `PUT` request with the updated deployment payload to conclude the migration. Check the [Update Deployment](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-update-deployment) API documentation for more details.
 
 **Using the Advanced edit:**
 

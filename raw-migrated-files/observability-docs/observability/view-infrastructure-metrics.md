@@ -175,7 +175,7 @@ The **Anomalies** tab displays a list of each single metric {{anomaly-detect}} j
 
 Along with the name of each anomaly job, detected anomalies with a severity score equal to 50, or higher, are listed. These scores represent a severity of "warning" or higher in the selected time period. The **summary** value represents the increase between the actual value and the expected ("typical") value of the host metric in the anomaly record result.
 
-To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the [Anomaly Explorer in {{ml-app}}](https://www.elastic.co/guide/en/machine-learning/current/ml-gs-results.html). You can also select **Actions → Show in Inventory** to view the host Inventory page, filtered by the specific metric.
+To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the [Anomaly Explorer in {{ml-app}}](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results). You can also select **Actions → Show in Inventory** to view the host Inventory page, filtered by the specific metric.
 
 :::{image} ../../../images/observability-anomalies-overlay.png
 :alt: Anomalies

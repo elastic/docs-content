@@ -180,8 +180,8 @@ reporting_user:
 
 To automatically generate reports with {{watcher}}, you must configure {{watcher}} to trust the {{kib}} server certificate.
 
-1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [Getting started with security](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-getting-started.html).
-2. Configure TLS/SSL encryption for the {{kib}} server. For more information, see [*Encrypt TLS communications in {{kib}}*](https://www.elastic.co/guide/en/kibana/current/configuring-tls.html).
+1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [Getting started with security](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-cluster.html).
+2. Configure TLS/SSL encryption for the {{kib}} server. For more information, see [*Encrypt TLS communications in {{kib}}*](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http).
 3. Specify the {{kib}} server CA certificate chain in `elasticsearch.yml`:
 
     If you are using your own CA to sign the {{kib}} server certificate, then you need to specify the CA certificate chain in {{es}} to properly establish trust in TLS connections between {{watcher}} and {{kib}}. If your CA certificate chain is contained in a PKCS #12 trust store, specify it like so:

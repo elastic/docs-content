@@ -107,7 +107,7 @@ Either a `GET` or a `POST` request with some URI search parameters works, or omi
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/_search?q=title:T*
 ```
 
-For an explanation of the allowed parameters, check [URI Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-uri-request.html).
+For an explanation of the allowed parameters, check [URI Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html).
 
 To make {{es}} return a more human readable JSON response, add `?pretty=true` to the request:
 

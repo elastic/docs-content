@@ -172,7 +172,7 @@ Provide your key identifier without the key version identifier so Elastic Cloud 
         * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html).
         * [Get a valid Elastic Cloud API key](https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
         * Get the ARN of the symmetric AWS KMS key or of its alias. Use an alias if you are planning to do manual key rotations as specified in the [AWS documentation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.md).
-        * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/guide/en/cloud/current/Deployment_-_CRUD.html). For example:
+        * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
 
             ```curl
             curl -XPOST \
@@ -246,7 +246,7 @@ After you have created the service principal and granted it the necessary permis
     * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html).
 
         * [Get a valid Elastic Cloud API key](https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
-        * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/guide/en/cloud/current/Deployment_-_CRUD.html). For example:
+        * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
 
             ```curl
             curl -XPOST \
@@ -325,7 +325,7 @@ After you have granted the Elastic principals the necessary roles, you can finis
     * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html).
 
         * [Get a valid Elastic Cloud API key](https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
-        * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/guide/en/cloud/current/Deployment_-_CRUD.html). For example:
+        * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
 
             ```curl
             curl -XPOST \

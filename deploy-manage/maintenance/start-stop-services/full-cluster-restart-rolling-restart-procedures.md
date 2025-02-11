@@ -7,14 +7,14 @@ mapped_pages:
 
 There may be [situations where you want to perform a full-cluster restart](../../security/secure-cluster-communications.md) or a rolling restart. In the case of [full-cluster restart](#restart-cluster-full), you shut down and restart all the nodes in the cluster while in the case of [rolling restart](#restart-cluster-rolling), you shut down only one node at a time, so the service remains uninterrupted.
 
-::::{warning} 
+::::{warning}
 Nodes exceeding the low watermark threshold will be slow to restart. Reduce the disk usage below the [low watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-low) before restarting nodes.
 
 ::::
 
 
 
-## Full-cluster restart [restart-cluster-full] 
+## Full-cluster restart [restart-cluster-full]
 
 1. **Disable shard allocation.**
 
@@ -54,7 +54,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
 
         When you disable upgrade mode, the jobs resume using the last model state that was automatically saved. This option avoids the overhead of managing active jobs during the shutdown and is faster than explicitly stopping {{dfeeds}} and closing jobs.
 
-    * [Stop all {{dfeeds}} and close all jobs](https://www.elastic.co/guide/en/machine-learning/current/stopping-ml.html). This option saves the model state at the time of closure. When you reopen the jobs after the cluster restart, they use the exact same model. However, saving the latest model state takes longer than using upgrade mode, especially if you have a lot of jobs or jobs with large model states.
+    * [Stop all {{dfeeds}} and close all jobs](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-close-job). This option saves the model state at the time of closure. When you reopen the jobs after the cluster restart, they use the exact same model. However, saving the latest model state takes longer than using upgrade mode, especially if you have a lot of jobs or jobs with large model states.
 
 2. **Shut down all nodes.**
 
@@ -132,7 +132,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
 
 
 
-## Rolling restart [restart-cluster-rolling] 
+## Rolling restart [restart-cluster-rolling]
 
 1. **Disable shard allocation.**
 
@@ -171,7 +171,7 @@ Nodes exceeding the low watermark threshold will be slow to restart. Reduce the 
 
         When you disable upgrade mode, the jobs resume using the last model state that was automatically saved. This option avoids the overhead of managing active jobs during the shutdown and is faster than explicitly stopping {{dfeeds}} and closing jobs.
 
-    * [Stop all {{dfeeds}} and close all jobs](https://www.elastic.co/guide/en/machine-learning/current/stopping-ml.html). This option saves the model state at the time of closure. When you reopen the jobs after the cluster restart, they use the exact same model. However, saving the latest model state takes longer than using upgrade mode, especially if you have a lot of jobs or jobs with large model states.
+    * [Stop all {{dfeeds}} and close all jobs](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-close-job). This option saves the model state at the time of closure. When you reopen the jobs after the cluster restart, they use the exact same model. However, saving the latest model state takes longer than using upgrade mode, especially if you have a lot of jobs or jobs with large model states.
 
     * If you perform a rolling restart, you can also leave your machine learning jobs running. When you shut down a machine learning node, its jobs automatically move to another node and restore the model states. This option enables your jobs to continue running during the shutdown but it puts increased load on the cluster.
 
