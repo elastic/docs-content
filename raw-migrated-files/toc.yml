@@ -862,7 +862,7 @@ toc:
       - file: security-docs/security/environment-variable-capture.md
       - file: security-docs/security/ers-requirements.md
       - file: security-docs/security/es-overview.md
-      - file: security-docs/security/es-threat-intel-integrations.md
+      - file: security-docs/security/enable-threat-intelligence-integrations.md
       - file: security-docs/security/es-ui-overview.md
       - file: security-docs/security/esql-queries-assistant.md
       - file: security-docs/security/event-filters.md
