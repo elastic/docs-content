@@ -85,7 +85,7 @@ Use **Kibana** to manage your snapshots. In Kibana, you can:
 - View and delete snapshots
 - Configure a snapshot lifecycle management (SLM) policy to automate when snapshots are created and deleted
 
-In **Elastic Cloud Enterprise**, you can also [restore a snapshot](snapshot-and-restore/restore-snapshot.md) from a different deployment in the same region.
+In **Elastic Cloud Enterprise**, you can also [restore snapshots](snapshot-and-restore/restore-snapshot.md) across clusters.
 ::::
   
 ::::{dropdown} Elastic Cloud on Kubernetes (ECK)
