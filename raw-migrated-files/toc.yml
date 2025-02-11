@@ -270,8 +270,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
       - file: docs-content/serverless/elasticsearch-ingest-your-data.md
       - file: docs-content/serverless/elasticsearch-manage-project.md
-      - file: docs-content/serverless/elasticsearch-search-your-data-the-search-api.md
-      - file: docs-content/serverless/elasticsearch-search-your-data.md
       - file: docs-content/serverless/endpoint-protection-rules.md
       - file: docs-content/serverless/general-billing-stop-project.md
       - file: docs-content/serverless/general-manage-organization.md
@@ -607,7 +605,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/scalability.md
       - file: elasticsearch/elasticsearch-reference/search-analyze.md
       - file: elasticsearch/elasticsearch-reference/search-with-synonyms.md
-      - file: elasticsearch/elasticsearch-reference/search-your-data.md
       - file: elasticsearch/elasticsearch-reference/secure-cluster.md
       - file: elasticsearch/elasticsearch-reference/secure-monitoring.md
       - file: elasticsearch/elasticsearch-reference/secure-settings.md
@@ -645,7 +642,6 @@ toc:
       - file: kibana/kibana/elasticsearch-mutual-tls.md
       - file: kibana/kibana/esql.md
       - file: kibana/kibana/get-started.md
-      - file: kibana/kibana/inference-endpoints.md
       - file: kibana/kibana/install.md
       - file: kibana/kibana/kibana-authentication.md
       - file: kibana/kibana/kibana-concepts-analysts.md
