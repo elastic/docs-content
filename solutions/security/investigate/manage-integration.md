@@ -35,7 +35,7 @@ Depending on your [subscription level](https://www.elastic.co/subscriptions), yo
 ::::
 
 
-1. Go to **Fleet** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then open the **Agent policies** tab.
+1. Go to **Fleet** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then open the **Agent policies** tab.
 2. Click the name of the agent policy where you want to adjust the Osquery configuration. The configuration changes you make only apply to the policy you select.
 3. Click the name of the **Osquery Manager** integration, or add the integration first if the agent policy does not yet have it.
 4. From the **Edit Osquery Manager integration** page, expand the **Advanced** section.
@@ -101,7 +101,7 @@ If you encounter issues with **Osquery Manager**, find the relevant logs for {{e
 
 To get more details in the logs, change the agent logging level to debug:
 
-1. Go to **Fleet** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to **Fleet** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the agent that you want to debug.
 3. On the **Logs*** tab, change the ***Agent logging level*** to ***debug***, and then click ***Apply changes**.
 

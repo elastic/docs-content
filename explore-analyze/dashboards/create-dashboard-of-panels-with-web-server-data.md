@@ -14,14 +14,12 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 :class: screenshot
 :::
 
-Before you begin, you should be familiar with the [*{{kib}} concepts*](../overview/kibana-quickstart.md).
-
 
 ## Add the data and create the dashboard [add-the-data-and-create-the-dashboard]
 
 Add the sample web logs data, and create and set up the dashboard.
 
-1. [Install the web logs sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. [Install the web logs sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. Click **Create dashboard**.
 4. Set the [time filter](../query-filter/filtering.md) to **Last 90 days**.

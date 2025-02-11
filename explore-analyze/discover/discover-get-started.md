@@ -14,15 +14,15 @@ Learn how to use **Discover** to:
 **Prerequisites:**
 
 * If you don’t already have {{kib}}, [start a free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) on Elastic Cloud.
-* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana), but you can use your own data.
-* You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md) and [{{kib}} concepts](../overview/kibana-quickstart.md).
+* You must have data in {{es}}. Examples on this page use the [ecommerce sample data set](../index.md#gs-get-data-into-kibana), but you can use your own data.
+* You should have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 
 
 ## Load data into Discover [find-the-data-you-want-to-use]
 
 Select the data you want to explore, and then specify the time range in which to view that data.
 
-1. Find **Discover** in the navigation menu or by using the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Discover** in the navigation menu or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the data you want to explore.
    ::::{tip}
    By default, {{kib}} requires a [{{data-source}}](../find-and-organize/data-views.md) to access your Elasticsearch data. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/index-types/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). When adding data to {{es}} using one of the many integrations available, sometimes data views are created automatically, but you can also create your own.

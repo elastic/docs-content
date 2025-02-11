@@ -84,7 +84,7 @@ You may need to set other environment variables. Learn how in [{{agent}} environ
 
 When the {{agent}} is running you can add a new {{private-location}} in {{kib}}:
 
-1. Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Settings**.
 3. Click **{{private-location}}s**.
 4. Click **Add location**.

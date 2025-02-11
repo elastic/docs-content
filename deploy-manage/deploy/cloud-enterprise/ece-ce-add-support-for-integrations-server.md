@@ -48,7 +48,7 @@ Send a `PUT` request with the updated template in the payload to replace the ori
 * The following request is just an example; other resources in the request payload should remain unchanged (they have been truncated in the example).
 * You need to replace `{{template_id}}` in the URL with the `id` that you collected in Step 1.
 
-Refer to [set deployment template API](https://www.elastic.co/guide/en/cloud-enterprise/current/set-deployment-template-v2.html) for more details.
+Refer to [set deployment template API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-deployment-template-v2) for more details.
 
 ::::{dropdown} Update template API request example
 ```sh

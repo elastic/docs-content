@@ -168,7 +168,7 @@ When the aggregation interval of the {{dfeed}} and the bucket span of the job do
 
 ### Calendars and filters are visible in all {{kib}} spaces [ml-space-limitations]
 
-[Spaces](../../../deploy-manage/manage-spaces.md) enable you to organize your {{anomaly-jobs}} in {{kib}} and to see only the jobs and other saved objects that belong to your space. However, this limited scope does not apply to [calendars](https://www.elastic.co/guide/en/machine-learning/current/ml-calendars.html) and [filters](https://www.elastic.co/guide/en/machine-learning/current/ml-rules.html); they are visible in all spaces.
+[Spaces](../../../deploy-manage/manage-spaces.md) enable you to organize your {{anomaly-jobs}} in {{kib}} and to see only the jobs and other saved objects that belong to your space. However, this limited scope does not apply to [calendars](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-calendars) and [filters](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-rules); they are visible in all spaces.
 
 ### Rollup indices are not supported in {{kib}} [ml-rollup-limitations]
 

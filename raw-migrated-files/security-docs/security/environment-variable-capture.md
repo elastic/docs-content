@@ -18,7 +18,7 @@ You can configure an {{agent}} policy to capture up to five environment variable
 
 To set up environment variable capture for an {{agent}} policy:
 
-1. Find **Policies** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Policies** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select an {{agent}} policy.
 3. Click **Show advanced settings**.
 4. Scroll down or search for `linux.advanced.capture_env_vars` or `mac.advanced.capture_env_vars`.

@@ -19,7 +19,7 @@ You can optimize your deplyoment for typical use cases, such as search and inges
 Each deployment will be fine-tuned automatically based on its specific purpose you choose.
 
 ::::{note}
-Since eland uses APIs to deploy the models, you cannot see the models in {{kib}} until the saved objects are synchronized. You can follow the prompts in {{kib}}, wait for automatic synchronization, or use the [sync {{ml}} saved objects API](https://www.elastic.co/guide/en/kibana/current/machine-learning-api-sync.html).
+Since eland uses APIs to deploy the models, you cannot see the models in {{kib}} until the saved objects are synchronized. You can follow the prompts in {{kib}}, wait for automatic synchronization, or use the [sync {{ml}} saved objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
 ::::
 
 You can define the resource usage level of the NLP model during model deployment. The resource usage levels behave differently depending on [adaptive resources](ml-nlp-auto-scale.md#nlp-model-adaptive-resources) being enabled or disabled. When adaptive resources are disabled but {{ml}} autoscaling is enabled, vCPU usage of Cloud deployments derived from the Cloud console and functions as follows:

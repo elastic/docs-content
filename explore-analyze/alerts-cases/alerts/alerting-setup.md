@@ -4,13 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-setup.html
 ---
 
-
-
 # Set up [alerting-setup]
 
-
-{{kib}} {alert-features} are automatically enabled, but might require some additional configuration.
-
+{{kib}} {{alert-features}} are automatically enabled, but might require some additional configuration.
 
 ## Prerequisites [alerting-prerequisites]
 
@@ -25,18 +21,15 @@ If you are using an **on-premises** {{stack}} deployment with [**security**](../
 
 The alerting framework uses queries that require the `search.allow_expensive_queries` setting to be `true`. See the scripts [documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-query.html#_allow_expensive_queries_4).
 
-
 ## Production considerations and scaling guidance [alerting-setup-production]
 
 When relying on alerting and actions as mission critical services, make sure you follow the [alerting production considerations](../../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md).
 
 For more information on the scalability of {{alert-features}}, go to [Scaling guidance](../../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md#alerting-scaling-guidance).
 
-
 ## Security [alerting-security]
 
 To use {{alert-features}} in a {{kib}} app, you must have the appropriate feature privileges:
-
 
 ### Give full access to manage alerts, connectors, and rules in **{{stack-manage-app}}** [_give_full_access_to_manage_alerts_connectors_and_rules_in_stack_manage_app]
 
@@ -57,8 +50,6 @@ The rule type also affects the privileges that are required. For example, to cre
 
 ::::
 
-
-
 ### Give view-only access to alerts, connectors, and rules in  **{{stack-manage-app}}** [_give_view_only_access_to_alerts_connectors_and_rules_in_stack_manage_app]
 
 **{{kib}} privileges**
@@ -72,14 +63,11 @@ The rule type also affects the privileges that are required. For example, to vie
 
 ::::
 
-
-
 ### Give view-only access to alerts in **Discover** or **Dashboards** [_give_view_only_access_to_alerts_in_discover_or_dashboards]
 
 **{{kib}} privileges**
 
 * `Read` index privileges for the `.alerts-*` system indices.
-
 
 ### Revoke all access to alerts, connectors, and rules in **{{stack-manage-app}}**, **Discover**, or **Dashboards** [_revoke_all_access_to_alerts_connectors_and_rules_in_stack_manage_app_discover_or_dashboards]
 
@@ -90,11 +78,9 @@ The rule type also affects the privileges that are required. For example, to vie
 * `None` for the **Management > {{connectors-feature}}** feature.
 * No index privileges for the `.alerts-*` system indices.
 
-
 ### More details [_more_details]
 
 For more information on configuring roles that provide access to features, go to [Feature privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
-
 
 ### API keys [alerting-authorization]
 
@@ -113,17 +99,13 @@ If a rule requires certain privileges, such as index privileges, to run and a us
 
 ::::
 
-
-
 ### Restrict actions [alerting-restricting-actions]
 
 For security reasons you may wish to limit the extent to which {{kib}} can connect to external services. You can use [Action settings](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html#action-settings) to disable certain [*Connectors*](../../../deploy-manage/manage-connectors.md) and allowlist the hostnames that {{kib}} can connect with.
 
-
 ## Space isolation [alerting-spaces]
 
 Rules and connectors are isolated to the {{kib}} space in which they were created. A rule or connector created in one space will not be visible in another.
-
 
 ## {{ccs-cap}} [alerting-ccs-setup]
 

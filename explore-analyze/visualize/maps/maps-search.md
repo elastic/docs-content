@@ -27,7 +27,7 @@ Only layers requesting data from {{es}} are narrowed by global search and global
 
 ## Narrow layers by global search [maps-narrow-layer-by-global-search]
 
-Layers that request data from {{es}} are narrowed when you submit a [search](../../overview/kibana-quickstart.md#kibana-concepts-searching-your-data). Layers narrowed by semi-structured search and filters contain the filter icon ![filter icon](../../../images/kibana-filter_icon.png "") next to the layer name in the legend.
+Layers that request data from {{es}} are narrowed when you submit a search. Layers narrowed by semi-structured search and filters contain the filter icon ![filter icon](../../../images/kibana-filter_icon.png "") next to the layer name in the legend.
 
 To prevent the global search from applying to a layer, configure the following:
 

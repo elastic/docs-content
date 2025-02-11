@@ -16,7 +16,7 @@ In addition to Timelines, you can create and attach Timeline templates to [detec
 
 To make a new Timeline, choose one of the following:
 
-* Find **Timelines** in the main menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then click **Create new Timeline**.
+* Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new Timeline**.
 * Go to the Timeline bar (which is at the bottom of most pages), click the ![Click the add new button](../../../images/security-add-new-timeline-button.png "") button, then click **Create new Timeline template**.
 * From an open Timeline or Timeline template, click **New** → **New Timeline**.
 
@@ -179,7 +179,7 @@ You can export and import Timelines, which enables you to share Timelines from o
 
 To export Timelines:
 
-* Find **Timelines** in the main menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+* Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * Either click the **All actions** menu in the relevant row and select **Export selected**, or select multiple Timelines and then click **Bulk actions** → **Export selected**.
 
 To import Timelines:

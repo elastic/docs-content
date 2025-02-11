@@ -39,7 +39,7 @@ You’re trying to understand a trend you see on a dashboard. You need to look a
    ![Search Session indicator displaying the current state of the search](../../images/kibana-search-session-awhile.png "title =50%")
    Once you save a search session, you can start a new search, navigate to a different application, or close the browser.
 
-3. To view your saved search sessions, go to the **Search Sessions** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search). For a saved or completed session, you can also open this view from the search sessions popup.
+3. To view your saved search sessions, go to the **Search Sessions** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md). For a saved or completed session, you can also open this view from the search sessions popup.
    ![Search Sessions management view with actions for inspecting](../../images/kibana-search-sessions-menu.png "")
 
 4. Use the edit menu in **Search Sessions** to:

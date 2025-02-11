@@ -63,7 +63,7 @@ When stopping incoming requests, Universal Profiling Agent replicas back off and
 
 You can delete existing profiling data in Kibana:
 
-1. If you’re upgrading from 8.9.0 or later, go to **Console** and execute the following snippet. (To open **Console**, find `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).) If you’re upgrading from an earlier version, skip this step.
+1. If you’re upgrading from 8.9.0 or later, go to **Console** and execute the following snippet. (To open **Console**, find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).) If you’re upgrading from an earlier version, skip this step.
 
     ```console
     PUT /_cluster/settings
@@ -74,7 +74,7 @@ You can delete existing profiling data in Kibana:
     }
     ```
 
-2. Open **Index Management** by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+2. Open **Index Management** by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Make sure you’re in the **Data Streams** tab, and search for `profiling-` in the search bar.
 4. Select all resulting data streams, and click the **Delete data streams** button.
 5. Switch to the **Indices** tab, enable **Include hidden indices**, and  search for `profiling-` in the search bar.

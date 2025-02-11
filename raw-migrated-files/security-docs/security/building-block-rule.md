@@ -20,7 +20,7 @@ To create a rule that searches alert indices, select **Index Patterns** as the r
 
 By default, building block alerts are excluded from the Overview and Alerts pages. You can choose to include building block alerts on the Alerts page, which expands the number of alerts.
 
-1. Find **Alerts** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the Alerts table, select **Additional filters** → **Include building block alerts**, located on the far-right.
 
 ::::{note}

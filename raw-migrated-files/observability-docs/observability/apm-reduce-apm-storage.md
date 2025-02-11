@@ -16,7 +16,7 @@ See [Transaction sampling](../../../solutions/observability/apps/transaction-sam
 
 In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. These repeated, similar spans often don’t provide added benefit, especially if they are of very short duration. Span compression takes these similar spans and compresses them into a single span-- retaining important information but reducing processing and storage overhead.
 
-See [Span compression](https://www.elastic.co/guide/en/observability/current/apm-span-compression.html) to learn more.
+See [Span compression](https://www.elastic.co/guide/en/observability/current/apm-data-model-spans.html#apm-spans-span-compression) to learn more.
 
 
 ## Reduce collected stack trace information [apm-reduce-stacktrace]
@@ -66,7 +66,7 @@ POST /.ds-*-apm*/_delete_by_query
 
 {{kib}}'s [Index Management](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) allows you to manage your cluster’s indices, data streams, index templates, and much more.
 
-To open **Index Management**, find **Stack Management*** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Select ***Data Streams**. Select the data streams you want to delete, and click **Delete data streams**.
+To open **Index Management**, find **Stack Management*** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select ***Data Streams**. Select the data streams you want to delete, and click **Delete data streams**.
 
 
 ## Update existing data [apm-update-data]

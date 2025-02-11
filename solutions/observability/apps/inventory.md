@@ -47,7 +47,7 @@ Inventory allows you to:
 
 ## Explore your entities [explore-your-entities]
 
-1. To view all your entities, find **Inventory** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To view all your entities, find **Inventory** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     When you open the Inventory for the first time, you’ll be asked to enable the EEM. Once enabled, the Inventory will be accessible to anyone with the appropriate privileges.
 

@@ -7,7 +7,7 @@ mapped_pages:
 
 {{es}} assigns a relevancy, or score to each document, so you can can narrow your search to the documents with the most relevant results. The higher the score, the better it matches your query.
 
-This example shows how to use **Discover** to list your documents from most relevant to least relevant. This example uses the [sample flights data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana), or you can use your own data.
+This example shows how to use **Discover** to list your documents from most relevant to least relevant. This example uses the [sample flights data set](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. In **Discover**, open the {{data-source}} dropdown, and select the data that you want to work with.
 

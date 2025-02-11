@@ -2,7 +2,7 @@
 
 Watcher is an {{es}} feature that you can use to create actions based on conditions, which are periodically evaluated using queries on your data. Watches are helpful for analyzing mission-critical and business-critical streaming data. For example, you might watch application logs for performance outages or audit access logs for security threats.
 
-Go to the **Watcher** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). With this UI, you can:
+Go to the **Watcher** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). With this UI, you can:
 
 * [Create a simple threshold watch](../../../explore-analyze/alerts-cases/watcher.md#watcher-create-threshold-alert)
 * [View your watch history and action status](../../../explore-analyze/alerts-cases/watcher.md#watcher-getting-started)
@@ -167,5 +167,5 @@ After starting the simulation, you’ll see a results screen. For more informati
 Refer to these examples for creating an advanced watch:
 
 * [Watch the status of an {{es}} cluster](../../../explore-analyze/alerts-cases/watcher/watch-cluster-status.md)
-* [Watch event data](https://www.elastic.co/guide/en/elasticsearch/reference/current/watching-meetup-data.html)
+* [Watch event data](https://www.elastic.co/guide/en/elasticsearch/reference/current/example-watches.html)
 

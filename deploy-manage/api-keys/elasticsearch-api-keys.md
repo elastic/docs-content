@@ -15,7 +15,7 @@ You can use {{kib}} to manage your different API keys:
 * Cross-cluster API key: allows other clusters to connect to this cluster.
 * Managed API key: created and managed by Kibana to run background tasks.
 
-To manage API keys, go to the **API Keys** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+To manage API keys, go to the **API Keys** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 ![API Keys UI](../../images/kibana-api-keys.png "")
 
@@ -28,12 +28,12 @@ To manage API keys, go to the **API Keys** management page using the navigation 
 * To create or update a **cross-cluster API key**, you must have the `manage_security` privilege and an Enterprise license.
 * To have a read-only view on the API keys, you must have access to the page and the `read_security` cluster privilege.
 
-To manage roles, go to the **Roles** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search), or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles).
+To manage roles, go to the **Roles** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles).
 
 
 ## Create an API key [create-api-key]
 
-To create an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search), and select **Create API key**.
+To create an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Create API key**.
 
 ![Create API Key UI](../../images/kibana-create-ccr-api-key.png "")
 
@@ -44,7 +44,7 @@ Refer to the [create cross-cluster API key](https://www.elastic.co/guide/en/elas
 
 ## Update an API key [udpate-api-key]
 
-To update an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search), and then click on the name of the key. You cannot update the name or the type of API key.
+To update an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and then click on the name of the key. You cannot update the name or the type of API key.
 
 Refer to the [update API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html) documentation to learn more about updating user API keys.
 

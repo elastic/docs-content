@@ -9,7 +9,7 @@ Rollups are deprecated and will be removed in a future version. Use [downsamplin
 
 A rollup job is a periodic task that aggregates data from indices specified by an index pattern, and then rolls it into a new index. Rollup indices are a good way to compactly store months or years of historical data for use in visualizations and reports.
 
-You can go to the **Rollup Jobs** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+You can go to the **Rollup Jobs** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/kibana-management_rollup_list.png
 :alt: List of currently active rollup jobs
@@ -23,7 +23,7 @@ Before using this feature, you should be familiar with how rollups work. [Rollin
 
 The `manage_rollup` cluster privilege is required to access **Rollup jobs**.
 
-To add the privilege, go to the **Roles** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To add the privilege, go to the **Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ## Create a rollup job [create-and-manage-rollup-job]
@@ -47,12 +47,12 @@ Once you’ve saved a rollup job, you’ll see it the **Rollup Jobs** overview p
 :class: screenshot
 :::
 
-You can’t change a rollup job after you’ve created it. To select additional fields or redefine terms, you must delete the existing job, and then create a new one with the updated specifications. Be sure to use a different name for the new rollup job—reusing the same name can lead to problems with mismatched job configurations. Refer to [rollup job configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-job-config.html).
+You can’t change a rollup job after you’ve created it. To select additional fields or redefine terms, you must delete the existing job, and then create a new one with the updated specifications. Be sure to use a different name for the new rollup job—reusing the same name can lead to problems with mismatched job configurations. Refer to [rollup job configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-put-job.html#rollup-put-job-api-request-body).
 
 
 ## Try it: Create and visualize rolled up data [rollup-data-tutorial]
 
-This example creates a rollup job to capture log data from sample web logs. Before you start, [add the web logs sample data set](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html).
+This example creates a rollup job to capture log data from sample web logs. Before you start, [add the web logs sample data set](https://www.elastic.co/guide/en/kibana/current/get-started.html).
 
 In this example, you want data that is older than 7 days in the `kibana_sample_data_logs` index to roll up into the `rollup_logstash` index. You’ll bucket the rolled up data on an hourly basis, using `60m` for the time bucket configuration.
 
@@ -90,7 +90,7 @@ You can now use the rolled up data for analysis at a fraction of the storage cos
 
 Your next step is to visualize your rolled up data in a vertical bar chart. Most visualizations support rolled up data, with the exception of Timelion and Vega visualizations.
 
-1. Go to the **Data Views** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create data view**, and select **Rollup data view** from the dropdown.
 3. Enter **rollup_logstash,kibana_sample_logs** as your **Data View** and `@timestamp` as the **Time Filter field name**.
 

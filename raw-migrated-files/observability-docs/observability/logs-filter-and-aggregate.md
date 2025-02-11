@@ -63,13 +63,13 @@ Filter your data using the fields you’ve extracted so you can focus on log dat
 
 ### Filter logs in Logs Explorer [logs-filter-logs-explorer]
 
-Logs Explorer is a {{kib}} tool that automatically provides views of your log data based on integrations and data streams. To open **Logs Explorer**, find `Logs Explorer` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Logs Explorer is a {{kib}} tool that automatically provides views of your log data based on integrations and data streams. To open **Logs Explorer**, find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 From Logs Explorer, you can use the [{{kib}} Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) in the search bar to narrow down the log data displayed in Logs Explorer. For example, you might want to look into an event that occurred within a specific time range.
 
 Add some logs with varying timestamps and log levels to your data stream:
 
-1. To open **Console**, find `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Console**, find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Console** tab, run the following command:
 
 ```console

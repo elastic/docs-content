@@ -23,7 +23,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 ::::
 
 
-1. Go to the **Rules** page. To access it, find **Detection rules (SIEM)** in the main menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Rules** page. To access it, find **Detection rules (SIEM)** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select a rule to open the its details, then click **Edit rule settings**.
 3. Select the **About** tab, then expand the rule’s advanced settings.
 4. Scroll down to the Investigation guide section. In the toolbar, click the **Osquery** button (![Click the Osquery button](../../../images/security-osquery-button.png "")).
@@ -52,7 +52,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 
 ## Run live queries from an investigation guide [run-live-queries-ig]
 
-1. Go to the **Rules** page. To access it, find **Detection rules (SIEM)** in the main menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Rules** page. To access it, find **Detection rules (SIEM)** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select a rule to open the its details.
 3. Go to **Rules** → **Detection rules (SIEM)**, then select a rule to open its details.
 4. Go to the About section of the rule details page and click **Investigation guide**.

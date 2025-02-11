@@ -1,6 +1,6 @@
 # Configure case settings [cases-manage-settings]
 
-To change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then click **Settings**.
+To change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
 
 :::{image} ../../../images/security-cases-settings.png
 :alt: Shows the case settings page
