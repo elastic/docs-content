@@ -47,11 +47,10 @@ A snapshot is a backup of a running Elasticsearch cluster. You can use snapshots
 
 ## Snapshot workflow
 
-Elasticsearch stores snapshots in an off-cluster storage location called a **snapshot repository**. Before you can take or restore snapshots, you must [register a snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) on the cluster. Elasticsearch supports several repository types with cloud storage options, including:
+Elasticsearch stores snapshots in an off-cluster storage location called a **snapshot repository**. Before you can take or restore snapshots, you must [register a snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) on the cluster. Elasticsearch supports different repository types depending on your deployment type:
 
-- **AWS S3**
-- **Google Cloud Storage (GCS)**
-- **Microsoft Azure**
+* [**Elasticsearch Service repository types**](/deploy-manage/tools/snapshot-and-restore/self-managed.md#ess-repo-types)
+* [**Self-managed repository types**](/deploy-manage/tools/snapshot-and-restore/self-managed.md#self-managed-repo-types)
 
 After you register a snapshot repository, you can use [snapshot lifecycle management (SLM)](snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) to automatically take and manage snapshots. You can then [restore a snapshot](snapshot-and-restore/restore-snapshot.md) to recover or transfer its data.
 
@@ -59,7 +58,7 @@ After you register a snapshot repository, you can use [snapshot lifecycle manage
 While the majority of snapshot-related operations are similar across all deployment types, Elastic Cloud Hosted, Elastic Cloud Enterprise (ECE), and Elastic Cloud on Kubernetes (ECK) offer additional capabilities, as described below.
 ::::
 
-::::{dropdown} Elastic Cloud Hosted and Elasticsearch Add-on for Heroku
+::::{dropdown} Elastic Cloud Hosted
 When you create a cluster, a default repository called `found-snapshots` is automatically added to the cluster. This repository is specific to that cluster: the deployment ID is part of the repository’s `base_path`, such as `/snapshots/[cluster-id]`.
 
 :::{note}
