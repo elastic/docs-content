@@ -27,7 +27,7 @@ To learn more about alerts with threat intelligence, visit [View alert details](
 
 You can connect to threat intelligence sources using an [{{agent}} integration](../../../solutions/security/get-started/enable-threat-intelligence-integrations.md#agent-ti-integration), the [Threat Intel module](../../../solutions/security/get-started/enable-threat-intelligence-integrations.md#ti-mod-integration), or a [custom integration](../../../solutions/security/get-started/enable-threat-intelligence-integrations.md#custom-ti-integration).
 
-:::{image} ../../../images/serverless--getting-started-threat-intelligence-view.png
+:::{image} ../../../images/getting-started-threat-intelligence-view.png
 :alt: The Threat Intelligence view on the Overview dashboard
 :class: screenshot
 :::
