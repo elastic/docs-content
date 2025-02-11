@@ -4,14 +4,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-compare.html
 ---
 
-
-
 # Compare condition [condition-compare]
-
 
 Use the `compare` condition to perform a simple comparison against a value in the watch payload. You can use the `compare` condition without enabling dynamic scripting.
 
-$$$condition-compare-operators$$$
+## Compare condition operators [condition-compare-operators]
 
 | Name | Description |
 | --- | --- |
@@ -41,22 +38,6 @@ To use the `compare` condition, you specify the value in the execution context t
 1. Use dot notation to reference a value in the execution context.
 2. Specify a comparison operator and the value you want to compare against.
 
-
-$$$compare-condition-date-math$$$
-When comparing dates and times, you can use date math expressions of the form `<{{expression}}>`. For example, the following expression returns `true` if the watch was executed within the last five minutes:
-
-```js
-{
-  "condition" : {
-    "compare" : {
-      "ctx.execution_time" : {
-        "gte" : "<{now-5m}>"
-      }
-    }
-  }
-}
-```
-
 You can also compare two values in the execution context by specifying the compared value as a path of the form of `{{path}}`. For example, the following condition compares the `ctx.payload.aggregations.status.buckets.error.doc_count` to the `ctx.payload.aggregations.handled.buckets.true.doc_count`:
 
 ```js
@@ -71,6 +52,21 @@ You can also compare two values in the execution context by specifying the compa
 }
 ```
 
+## Using date math in a compare condition [compare-condition-date-math]
+
+When comparing dates and times, you can use date math expressions of the form `<{{expression}}>`. For example, the following expression returns `true` if the watch was executed within the last five minutes:
+
+```js
+{
+  "condition" : {
+    "compare" : {
+      "ctx.execution_time" : {
+        "gte" : "<{now-5m}>"
+      }
+    }
+  }
+}
+```
 
 ## Accessing values in the execution context [_accessing_values_in_the_execution_context]
 
@@ -86,5 +82,3 @@ You can reference entries in arrays using their zero-based array indices. For ex
 | `ctx.trigger.scheduled_time` | The time this watch was supposed to be triggered. |
 | `ctx.metadata.*` | Any metadata associated with the watch. |
 | `ctx.payload.*` | The payload data loaded by the watch’s input. |
-
-
