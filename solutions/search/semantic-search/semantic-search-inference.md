@@ -4,8 +4,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-inference.html
 ---
 
-
-
 # Semantic search with the inference API [semantic-search-inference]
 
 

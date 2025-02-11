@@ -37,7 +37,7 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
 
 ### Create an API key [create-an-api-key-cloud-self-managed]
 
-1. To navigate to **API keys**, use the [**global search bar**](../../get-started/the-stack.md#kibana-navigation-search).
+1. To navigate to **API keys**, use the [**global search bar**](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     :::{image} ../../images/kibana-api-keys-search-bar.png
     :alt: api keys search bar

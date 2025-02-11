@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: Conventions
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-concepts.html

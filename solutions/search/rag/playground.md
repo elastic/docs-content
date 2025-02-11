@@ -10,7 +10,6 @@ mapped_urls:
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-
 Use Playground to combine your Elasticsearch data with the power of large language models (LLMs) for retrieval augmented generation (RAG). The chat interface translates your natural language questions into {{es}} queries, retrieves the most relevant results from your {{es}} documents, and passes those documents to the LLM to generate tailored responses.
 
 Once you start chatting, use the UI to view and modify the Elasticsearch queries that search your data. You can also view the underlying Python code that powers the chat interface, and download this code to integrate into your own application.
@@ -186,6 +185,7 @@ You can always add or remove indices later by selecting the **Data** button from
 :::{image} ../../../images/kibana-data-button.png
 :alt: data button
 :class: screenshot
+:width: 150px
 :::
 
 :::::
@@ -253,6 +253,7 @@ Use the **View code** button to see the Python code that powers the chat interfa
 :::{image} ../../../images/kibana-view-code-button.png
 :alt: view code button
 :class: screenshot
+:width: 150px
 :::
 
 

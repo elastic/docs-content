@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations-notifications-domain-allowlist.html
 ---

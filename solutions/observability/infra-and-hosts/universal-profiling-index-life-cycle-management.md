@@ -45,7 +45,7 @@ Complete the following steps to configure a custom index lifecycle policy.
 
 ### Step 1: Create an index lifecycle policy [profiling-ilm-custom-policy-create-policy]
 
-1. To open **Index Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Index Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 3. Name your new policy, for example `custom-profiling-policy`.
 4. Customize the policy to your liking.
@@ -93,7 +93,7 @@ To apply a custom {{ilm-init}} policy, you must name the component template `pro
 
 Confirm that Universal Profiling is now using the new index template and {{ilm-init}} policy:
 
-1. Open **Console** by finding `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Open **Console** by finding `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Run the following:
 
     ```bash

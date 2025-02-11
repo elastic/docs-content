@@ -39,7 +39,7 @@ After notes are created, the **Notes** Timeline tab displays the total number of
 
 ## Manage all notes [manage-notes]
 
-Use the **Notes** page to view and interact with all existing notes. To access the page, navigate to **Investigations** in the main navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then go to **Notes**. From the **Notes** page, you can:
+Use the **Notes** page to view and interact with all existing notes. To access the page, navigate to **Investigations** in the main navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Notes**. From the **Notes** page, you can:
 
 * Search for specific notes
 * Filter notes by the user who created them or by the object they’re attached to (notes can be attached to alerts, events, or Timelines)

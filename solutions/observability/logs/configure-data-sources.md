@@ -20,12 +20,12 @@ If your logs have custom index patterns, use non-default field settings, or cont
 
 ## Edit configuration settings [edit-config-settings]
 
-1. Find `Logs / Settings` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find `Logs / Settings` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     |     |     |
     | --- | --- |
     | **Name** | Name of the source configuration. |
-    | **{{kib}} log sources advanced setting** | Use index patterns stored in the {{kib}} **log sources** advanced setting, which provides a centralized place to store and query log index patterns.To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). |
+    | **{{kib}} log sources advanced setting** | Use index patterns stored in the {{kib}} **log sources** advanced setting, which provides a centralized place to store and query log index patterns.To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). |
     | **{{data-source-cap}} (deprecated)** | The Logs UI integrates with {{data-sources}} toconfigure the used indices by clicking **Use {{data-sources}}**. |
     | **Log indices (deprecated)** | {{kib}} index patterns or index name patterns in the {{es}} indicesto read log data from. |
     | **Log columns** | Columns that are displayed in the logs **Stream** page. |

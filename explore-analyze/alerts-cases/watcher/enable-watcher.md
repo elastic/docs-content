@@ -1,16 +1,12 @@
-# Enable Watcher [ec-watcher]
+# Enable Watcher [enable-watcher]
 
 ::::{note}
-If you are looking for Kibana alerting, check [Alerting and Actions](../../../explore-analyze/alerts-cases.md) in the Kibana Guide.
+If you are looking for Kibana alerting, check [Alerts and Cases](../../../explore-analyze/alerts-cases.md).
 ::::
-
-
-Watcher lets you take action based on changes in your data. It is designed around the principle that, if you can query something in Elasticsearch, you can alert on it. Simply define a query, condition, schedule, the actions to take, and Watcher will do the rest.
 
 Watcher can be enabled when configuring your cluster. You can run Alerting on a separate cluster from the cluster whose data you are actually watching.
 
-
-## Before you begin [ec_before_you_begin_8]
+## Before you begin [watcher-before-you-begin]
 
 Some restrictions apply when adding alerts. To learn more, check [Restrictions for alerts (via Watcher)](../../../deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-watcher).
 
@@ -20,19 +16,17 @@ To enable Watcher on a cluster, you may first need to perform one or several of 
 
 To learn more about Kibana alerting and how to use it, check [Alerting and Actions](../../../explore-analyze/alerts-cases.md).
 
+## Send alerts by email [watcher-allowlist]
 
-## Send alerts by email [ec-watcher-allowlist]
+You can configure notifications similar to the [operational emails](../../../deploy-manage/cloud-organization/operational-emails.md) that Elasticsearch Service sends automatically to alert you about performance issues in your clusters.
 
-Alerting can send alerts by email. You can configure notifications similar to the [operational emails](../../../deploy-manage/cloud-organization/operational-emails.md) that Elasticsearch Service sends automatically to alert you about performance issues in your clusters.
-
-Watcher in Elastic Cloud is preconfigured with an email service and can be used without any additional configuration. Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher.md#ec-watcher-custom-mail-server)
+Watcher in Elastic Cloud is preconfigured with an email service and can be used without any additional configuration. Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](#watcher-custom-mail-server)
 
 You can optionally add [HTML sanitization](../../../explore-analyze/alerts-cases/watcher/actions-email.md#email-html-sanitization) settings under [Elasticsearch User settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) so that HTML elements are sanitized in the email notification.
 
 For more information on sending alerts by email, check [Email action](../../../explore-analyze/alerts-cases/watcher/actions-email.md).
 
-
-## Cloud email service limits [ec-cloud-email-service-limits]
+## Cloud email service limits [cloud-email-service-limits]
 
 The following quotas apply when using the Elastic email service:
 
@@ -41,11 +35,9 @@ The following quotas apply when using the Elastic email service:
 * Maximum message size (including attachments): 10 MB per message (after base64 encoding).
 * The email-sender can’t be customized (Any custom `From:` header will be removed)
 
+## Advanced usage [advanced_usage]
 
-## Advanced usage [ec_advanced_usage]
-
-
-### Slack and PagerDuty integration [ec-advanced-usage]
+### Slack and PagerDuty integration [advanced-usage]
 
 Under the hood, Alerting is configured through `elasticsearch.yml`. If you want to customize your Alerting settings, you can provide custom `elasticsearch.yml` snippet which is appended to your configuration.
 
@@ -80,7 +72,6 @@ xpack.notification.slack:
         from: account3
         to: channel3
 ```
-
 
 ### Slack Webhook account settings [slack-webhook-setting]
 
@@ -135,8 +126,7 @@ PUT _watcher/watch/test-alarm
 :alt: Advanced Alerting configuration
 :::
 
-
-## Configuring a custom mail server [ec-watcher-custom-mail-server]
+## Configuring a custom mail server [watcher-custom-mail-server]
 
 It is possible to use a custom mail service instead of the one configured by default. It can be configured by following the [Elasticsearch documentation for configuring email accounts](https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html).
 
@@ -169,4 +159,3 @@ An example on how to configure a new account from the Elastic cloud console:
 6. The new email account is now set up. It will now be used by default for watcher email actions.
 
 For a full reference of all available settings, see the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#email-notification-settings).
-

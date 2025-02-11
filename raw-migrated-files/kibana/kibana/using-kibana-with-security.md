@@ -44,9 +44,9 @@ Configure roles for your {{kib}} users to control what data those users can acce
 
 2. $$$kibana-roles$$$Create roles and users to grant access to {{kib}}.
 
-    To manage privileges in {{kib}}, go to the **Roles** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). The built-in `kibana_admin` role will grant access to {{kib}} with administrator privileges. Alternatively, you can create additional roles that grant limited access to {{kib}}.
+    To manage privileges in {{kib}}, go to the **Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). The built-in `kibana_admin` role will grant access to {{kib}} with administrator privileges. Alternatively, you can create additional roles that grant limited access to {{kib}}.
 
-    If you’re using the default native realm with Basic Authentication, go to the **Users** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) to create users and assign roles, or use the {{es}} [user management APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-user-apis). For example, the following creates a user named `jacknich` and assigns it the `kibana_admin` role:
+    If you’re using the default native realm with Basic Authentication, go to the **Users** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to create users and assign roles, or use the {{es}} [user management APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-user-apis). For example, the following creates a user named `jacknich` and assigns it the `kibana_admin` role:
 
     ```console
     POST /_security/user/jacknich

@@ -202,7 +202,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     To list available locations you can:
 
     * Run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command).
-    * Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. Locations will be listed in *Locations*.
+    * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. Locations will be listed in *Locations*.
 
 
 `privateLocations` (`Array<string>`)
@@ -211,7 +211,7 @@ $$$synthetics-configuration-monitor-tags$$$ `tags` (`Array<string>`)
     To list available {{private-location}}s you can:
 
     * Run the [`elastic-synthetics locations` command](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-locations-command) with the {{kib}} URL for the deployment from which to fetch available locations.
-    * Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
+    * Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) and click **Create monitor**. {{private-location}}s will be listed in *Locations*.
 
 
 `throttling` (`boolean` | [`ThrottlingOptions`](https://github.com/elastic/synthetics/blob/v1.3.0/src/common_types.ts#L194-L198))

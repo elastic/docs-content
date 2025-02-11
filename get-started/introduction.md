@@ -33,7 +33,7 @@ Being able to search, observe, and protect your data is a requirement for any an
 
 ## Analyze [visualize-and-analyze]
 
-With {{kib}} [**Analytics**](../explore-analyze/overview/kibana-quickstart.md), you can quickly search through large amounts of data, explore fields and values, and then use the drag-and-drop interface to rapidly build charts, tables, metrics, and more.
+With {{kib}} [**Analytics**](/explore-analyze/index.md), you can quickly search through large amounts of data, explore fields and values, and then use the drag-and-drop interface to rapidly build charts, tables, metrics, and more.
 
 :::{image} ../images/kibana-visualization-journey.png
 :alt: User data analysis journey
