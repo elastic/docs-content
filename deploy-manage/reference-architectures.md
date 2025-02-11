@@ -27,7 +27,7 @@ These reference architectures are recommendations and should be adapted to fit y
 |     |     |
 | --- | --- |
 | **Architecture** | **When to use** |
-| [*Hot/Frozen - High Availability*](reference-architectures/hotfrozen-architecture.md)<br>A high availability architecture that is cost optimized for large time-series datasets. | * Have a requirement for cost effective long term data storage (many months or years).<br>* Provide insights and alerts using logs, metrics, traces, or various event types to ensure optimal performance and quick issue resolution for applications.<br>* Apply Machine Learning and Search AI to assist in dealing with the large amount of data.<br>* Deploy an architecture model that allows for maximum flexibility between storage cost and performance.<br> |
+| [*Hot/Frozen - High Availability*](/deploy-manage/reference-architectures/hotfrozen-high-availability.md)<br>A high availability architecture that is cost optimized for large time-series datasets. | * Have a requirement for cost effective long term data storage (many months or years).<br>* Provide insights and alerts using logs, metrics, traces, or various event types to ensure optimal performance and quick issue resolution for applications.<br>* Apply Machine Learning and Search AI to assist in dealing with the large amount of data.<br>* Deploy an architecture model that allows for maximum flexibility between storage cost and performance.<br> |
 | Additional architectures are on the way.<br>Stay tuned for updates. |  |
 
 
