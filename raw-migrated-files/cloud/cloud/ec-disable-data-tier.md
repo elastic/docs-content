@@ -131,7 +131,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
         }
         ```
 
-        Removing required attributes does not trigger a shard reallocation. These shards are moved when applying the plan to disable the data tier. Alternatively, you can use the [cluster re-route API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html) to manually re-allocate the shards before removing the nodes, or explicitly re-allocate shards to hot nodes by using the following code:
+        Removing required attributes does not trigger a shard reallocation. These shards are moved when applying the plan to disable the data tier. Alternatively, you can use the [cluster re-route API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) to manually re-allocate the shards before removing the nodes, or explicitly re-allocate shards to hot nodes by using the following code:
 
         ```sh
         PUT /my-index/_settings

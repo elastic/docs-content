@@ -27,7 +27,7 @@ To create a lifecycle policy from {{kib}}, open the menu and go to **Stack Manag
 
 You specify the lifecycle phases for the policy and the actions to perform in each phase.
 
-The [create or update policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html) API is invoked to add the policy to the {{es}} cluster.
+The [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API is invoked to add the policy to the {{es}} cluster.
 
 ::::{dropdown} API example
 ```console
@@ -79,7 +79,7 @@ You can use the {{kib}} Create template wizard to create a template. To access t
 
 ![Create template page](../../../images/elasticsearch-reference-create-template-wizard-my_template.png "")
 
-The wizard invokes the [create or update index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html) to add templates to a cluster.
+The wizard invokes the [create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to add templates to a cluster.
 
 ::::{dropdown} API example
 ```console
@@ -138,7 +138,7 @@ Now you can start indexing data to the rollover alias specified in the lifecycle
 
 ## Apply lifecycle policy manually [apply-policy-manually]
 
-You can specify a policy when you create an index or apply a policy to an existing index through {{kib}} Management or the [update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html). When you apply a policy, {{ilm-init}} immediately starts managing the index.
+You can specify a policy when you create an index or apply a policy to an existing index through {{kib}} Management or the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). When you apply a policy, {{ilm-init}} immediately starts managing the index.
 
 ::::{important}
 Do not manually apply a policy that uses the rollover action. Policies that use rollover must be applied by the [index template](#apply-policy-template). Otherwise, the policy is not carried forward when the rollover action creates a new index.
@@ -168,7 +168,7 @@ PUT test-index
 
 ### Apply a policy to multiple indices [apply-policy-multiple]
 
-You can apply the same policy to multiple indices by using wildcards in the index name when you call the [update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) API.
+You can apply the same policy to multiple indices by using wildcards in the index name when you call the [update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) API.
 
 ::::{warning}
 Be careful that you don’t inadvertently match indices that you don’t want to modify.
@@ -194,7 +194,7 @@ PUT mylogs-pre-ilm*/_settings <1>
 
 To switch an index’s lifecycle policy, follow these steps:
 
-1. Remove the existing policy using the [remove policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-remove-policy.html). Target a data stream or alias to remove the policies of all its indices.
+1. Remove the existing policy using the [remove policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-remove-policy). Target a data stream or alias to remove the policies of all its indices.
 
     ```console
     POST logs-my_app-default/_ilm/remove
@@ -204,19 +204,19 @@ To switch an index’s lifecycle policy, follow these steps:
 
     For example, the [`forcemerge`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-forcemerge.html) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
 
-    After policy removal, use the [get index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-index.html) to check an index’s state . Target a data stream or alias to get the state of all its indices.
+    After policy removal, use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to check an index’s state . Target a data stream or alias to get the state of all its indices.
 
     ```console
     GET logs-my_app-default
     ```
 
-    You can then change the index as needed. For example, you can re-open any closed indices using the [open index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-open-close.html).
+    You can then change the index as needed. For example, you can re-open any closed indices using the [open index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open).
 
     ```console
     POST logs-my_app-default/_open
     ```
 
-3. Assign a new policy using the [update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html). Target a data stream or alias to assign a policy to all its indices.
+3. Assign a new policy using the [update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Target a data stream or alias to assign a policy to all its indices.
 
     ::::{warning}
     Don’t assign a new policy without first removing the existing policy. This can cause [phase execution](index-lifecycle.md#ilm-phase-execution) to silently fail.

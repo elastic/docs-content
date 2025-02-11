@@ -27,7 +27,7 @@ There are two types of exporters in {{es}}:
 
 Both exporters serve the same purpose: to set up the monitoring cluster and route monitoring data. However, they perform these tasks in very different ways. Even though things happen differently, both exporters are capable of sending all of the same data.
 
-Exporters are configurable at both the node and cluster level. Cluster-wide settings, which are updated with the [`_cluster/settings` API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), take precedence over settings in the `elasticsearch.yml` file on each node. When you update an exporter, it is completely replaced by the updated version of the exporter.
+Exporters are configurable at both the node and cluster level. Cluster-wide settings, which are updated with the [`_cluster/settings` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), take precedence over settings in the `elasticsearch.yml` file on each node. When you update an exporter, it is completely replaced by the updated version of the exporter.
 
 ::::{important} 
 It is critical that all nodes share the same setup. Otherwise, monitoring data might be routed in different ways or to different places.

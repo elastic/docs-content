@@ -60,10 +60,10 @@ To reindex into the managed index:
 
     1. Check once a minute to see if {{ilm-init}} actions such as rollover need to be performed.
 
-3. Reindex your data using the [reindex API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html). If you want to partition the data in the order in which it was originally indexed, you can run separate reindex requests.
+3. Reindex your data using the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex). If you want to partition the data in the order in which it was originally indexed, you can run separate reindex requests.
 
     ::::{important} 
-    Documents retain their original IDs. If you don’t use automatically generated document IDs, and are reindexing from multiple source indices, you might need to do additional processing to ensure that document IDs don’t conflict. One way to do this is to use a [script](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-scripts) in the reindex call to append the original index name to the document ID.
+    Documents retain their original IDs. If you don’t use automatically generated document IDs, and are reindexing from multiple source indices, you might need to do additional processing to ensure that document IDs don’t conflict. One way to do this is to use a [script](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex#reindex-scripts) in the reindex call to append the original index name to the document ID.
     ::::
 
 

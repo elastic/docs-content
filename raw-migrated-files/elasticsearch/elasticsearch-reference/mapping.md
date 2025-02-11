@@ -52,9 +52,9 @@ Use [runtime fields](https://www.elastic.co/guide/en/elasticsearch/reference/cur
 
 Explicit mappings should be defined at index creation for fields you know in advance. You can still add *new fields* to mappings at any time, as your data evolves.
 
-Use the [Update mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) to update an existing mapping.
+Use the [Update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) to update an existing mapping.
 
-In most cases, you can’t change mappings for fields that are already mapped. These changes require [reindexing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html).
+In most cases, you can’t change mappings for fields that are already mapped. These changes require [reindexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
 
 However, you can *update* mappings under certain conditions:
 

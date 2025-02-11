@@ -63,7 +63,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 
 * If the master node is overwhelmed by internal tasks initiated by users:
 
-    * Check [cluster-level pending tasks](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-pending-tasks.html).
+    * Check [cluster-level pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-pending-tasks).
     * Reduce the number of Machine Learning jobs or watches.
     * Change the number of ingest pipelines or processors to use less memory.
 

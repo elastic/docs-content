@@ -13,7 +13,7 @@ If you use {{es}} {security-features}, the following [security privileges](../..
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index’s data.
 * The `manage_index_templates` cluster privilege to manage index templates.
 
-To add these privileges, go to **Stack Management > Security > Roles** or use the [Create or update roles API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html).
+To add these privileges, go to **Stack Management > Security > Roles** or use the [Create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role).
 
 
 ## Manage indices [view-edit-indices]
@@ -25,8 +25,8 @@ Investigate your indices and perform operations from the **Indices** view.
 :class: screenshot
 :::
 
-* To show details and perform operations such as close, forcemerge, and flush, click the index name.  To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html).
-* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-follow.html), a [rollup index](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-get-rollup-index-caps.html), or [frozen](https://www.elastic.co/guide/en/elasticsearch/reference/current/unfreeze-index-api.html).
+* To show details and perform operations such as close, forcemerge, and flush, click the index name.  To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
 * To drill down into the index [mappings](../../../manage-data/data-store/mapping.md), [settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 
     :::{image} ../../../images/elasticsearch-reference-management_index_details.png
@@ -82,7 +82,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
 
 **Step 2. Add settings, mappings, and aliases**
 
-1. Add [component templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html) to your index template.
+1. Add [component templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template) to your index template.
 
     Component templates are pre-configured sets of mappings, index settings, and aliases you can reuse across multiple index templates. Badges indicate whether a component template contains mappings (**M**), index settings (**S**), aliases (**A**), or a combination of the three.
 
@@ -168,7 +168,7 @@ You’re now ready to create new indices using your index template.
     }
     ```
 
-2. Use the [get index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-index.html) to view the configurations for the new indices. The indices were configured using the index template you created earlier.
+2. Use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to view the configurations for the new indices. The indices were configured using the index template you created earlier.
 
     ```console
     GET /my-index-000001,my-index-000002

@@ -47,7 +47,7 @@ Runtime fields use less disk space and provide flexibility in how you access you
 
 To balance search performance and flexibility, index fields that you’ll frequently search for and filter on, such as a timestamp. {{es}} automatically uses these indexed fields first when running a query, resulting in a fast response time. You can then use runtime fields to limit the number of fields that {{es}} needs to calculate values for. Using indexed fields in tandem with runtime fields provides flexibility in the data that you index and how you define queries for other fields.
 
-Use the [asynchronous search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html) to run searches that include runtime fields. This method of search helps to offset the performance impacts of computing values for runtime fields in each document containing that field. If the query can’t return the result set synchronously, you’ll get results asynchronously as they become available.
+Use the [asynchronous search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) to run searches that include runtime fields. This method of search helps to offset the performance impacts of computing values for runtime fields in each document containing that field. If the query can’t return the result set synchronously, you’ll get results asynchronously as they become available.
 
 ::::{important} 
 Queries against runtime fields are considered expensive. If [`search.allow_expensive_queries`](../../../explore-analyze/query-filter/languages/querydsl.md#query-dsl-allow-expensive-queries) is set to `false`, expensive queries are not allowed and {{es}} will reject any queries against runtime fields.

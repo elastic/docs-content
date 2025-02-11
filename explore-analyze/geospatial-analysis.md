@@ -68,7 +68,7 @@ Combine aggregations to perform complex geospatial analysis. For example, to cal
 
 ## Integrate [geospatial-integrate]
 
-Use [vector tile search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-vector-tile-api.html) to consume {{es}} geo data within existing GIS infrastructure.
+Use [vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) to consume {{es}} geo data within existing GIS infrastructure.
 
 
 ## Visualize [geospatial-visualize]

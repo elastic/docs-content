@@ -12,7 +12,7 @@ When indexing time series data like logs or metrics, you can’t write to a sing
 * Shift older, less frequently accessed data to less expensive *cold* nodes,
 * Delete data according to your retention policies by removing entire indices.
 
-We recommend using [data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html) to manage time series data. Data streams automatically track the write index while keeping configuration to a minimum.
+We recommend using [data streams](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream) to manage time series data. Data streams automatically track the write index while keeping configuration to a minimum.
 
 Each data stream requires an [index template](../../data-store/templates.md) that contains:
 

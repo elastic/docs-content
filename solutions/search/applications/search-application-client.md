@@ -41,7 +41,7 @@ To follow this guide, you’ll need:
 
 * A **search application**.
 
-    * Create and manage search applications in the [{{kib}} UI](../applications.md#search-application-overview-get-started-ui) or using the [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html).
+    * Create and manage search applications in the [{{kib}} UI](../applications.md#search-application-overview-get-started-ui) or using the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put).
 
 * A **web app** to query your search application, using [Search Application client](https://github.com/elastic/search-application-client#installation).
 

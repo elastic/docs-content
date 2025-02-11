@@ -14,7 +14,7 @@ Use the `http` input to submit a request to an HTTP endpoint and load the respon
 With the `http` input, you can:
 
 * Query external Elasticsearch clusters. The `http` input provides a way to submit search requests to clusters other than the one {{watcher}} is running on. This is useful when you’re running a dedicated {{watcher}} cluster or if you need to search clusters that are running different Elasticsearch versions.
-* Query Elasticsearch APIs other than the search API. For example, you might want to load data from the [nodes stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html), [cluster health](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) or [cluster state](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state.html) APIs.
+* Query Elasticsearch APIs other than the search API. For example, you might want to load data from the [nodes stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats), [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) or [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state) APIs.
 * Query external web services. The `http` input enables you to load data from any service that exposes an HTTP endpoint. This provides a bridge between Elasticsearch clusters and other systems.
 
 ## Querying external Elasticsearch clusters [_querying_external_elasticsearch_clusters]
@@ -50,7 +50,7 @@ You can use the full Elasticsearch [Query DSL](../../query-filter/languages/quer
 
 ## Calling Elasticsearch APIs [_calling_elasticsearch_apis]
 
-To load the data from other Elasticsearch APIs, specify the API endpoint as the `path` attribute. Use the `params` attribute to specify query string parameters. For example, the following `http` input calls the [cluster stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html) API and enables the `human` attribute:
+To load the data from other Elasticsearch APIs, specify the API endpoint as the `path` attribute. Use the `params` attribute to specify query string parameters. For example, the following `http` input calls the [cluster stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats) API and enables the `human` attribute:
 
 ```js
 "input" : {
