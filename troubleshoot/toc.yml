@@ -3,27 +3,29 @@ toc:
   - file: troubleshoot/index.md
   - file: elasticsearch/elasticsearch-reference.md
     children:
-      - file: elasticsearch/fix-common-cluster-issues.md
+      - file: elasticsearch/clusters.md
         children:
+          - file: elasticsearch/fix-common-cluster-issues.md
+            children:
+              - file: elasticsearch/fix-watermark-errors.md
+              - file: elasticsearch/circuit-breaker-errors.md
+              - file: elasticsearch/high-cpu-usage.md
+              - file: elasticsearch/high-jvm-memory-pressure.md
+              - file: elasticsearch/red-yellow-cluster-status.md
+              - file: elasticsearch/rejected-requests.md
+              - file: elasticsearch/task-queue-backlog.md
+              - file: elasticsearch/mapping-explosion.md
+              - file: elasticsearch/hotspotting.md
           - file: elasticsearch/troubleshooting-unstable-cluster.md
           - file: elasticsearch/troubleshooting-unbalanced-cluster.md
           - file: elasticsearch/elasticsearch-reference/remote-clusters.md
           - file: elasticsearch/diagnose-unassigned-shards.md
           - file: elasticsearch/troubleshooting-shards-capacity-issues.md
-          - file: elasticsearch/fix-watermark-errors.md
-          - file: elasticsearch/circuit-breaker-errors.md
-          - file: elasticsearch/high-cpu-usage.md
-          - file: elasticsearch/high-jvm-memory-pressure.md
-          - file: elasticsearch/red-yellow-cluster-status.md
-          - file: elasticsearch/rejected-requests.md
-          - file: elasticsearch/task-queue-backlog.md
-          - file: elasticsearch/mapping-explosion.md
-          - file: elasticsearch/hotspotting.md
       - file: elasticsearch/data.md
         children:
-          - file: elasticsearch/add-tier.md
           - file: elasticsearch/allow-all-cluster-allocation.md
           - file: elasticsearch/allow-all-index-allocation.md
+          - file: elasticsearch/add-tier.md
           - file: elasticsearch/troubleshoot-migrate-to-tiers.md
           - file: elasticsearch/increase-tier-capacity.md
           - file: elasticsearch/increase-shard-limit.md
