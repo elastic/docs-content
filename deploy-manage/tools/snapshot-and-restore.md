@@ -71,6 +71,8 @@ The default policy and repository are used when:
 - Restoring a snapshot to a different deployment
 - Taking automated snapshots in case of deployment changes
 
+In Elastic Cloud Hosted, you can [restore snapshots](snapshot-and-restore/restore-snapshot.md) across clusters, but only within the same region.
+
 You can customize the snapshot retention settings in that policy to adjust them to your needs.
 
 To use a custom snapshot repository, [register a new snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) and [create another SLM policy](snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
