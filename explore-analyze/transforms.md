@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transforms.html
   - https://www.elastic.co/guide/en/serverless/current/transforms.html

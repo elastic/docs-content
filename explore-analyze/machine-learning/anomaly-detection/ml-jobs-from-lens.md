@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Anomaly detection jobs from visualizations"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-jobs-from-lens.html

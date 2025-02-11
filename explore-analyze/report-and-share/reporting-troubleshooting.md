@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Troubleshooting"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting.html

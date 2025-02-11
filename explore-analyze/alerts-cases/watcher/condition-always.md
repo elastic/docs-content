@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Always condition"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/condition-always.html

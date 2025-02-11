@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Setup and security"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/setup.html
