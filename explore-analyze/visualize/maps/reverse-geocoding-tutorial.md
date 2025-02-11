@@ -29,9 +29,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 GeoIP is a common way of transforming an IP address to a longitude and latitude. GeoIP is roughly accurate on the city level globally and neighborhood level in selected countries. It’s not as good as an actual GPS location from your phone, but it’s much more precise than just a country, state, or province.
 
-You’ll use the [web logs sample data set](../../overview/kibana-quickstart.md) that comes with Kibana for this tutorial. Web logs sample data set has longitude and latitude. If your web log data does not contain longitude and latitude, use [GeoIP processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html) to transform an IP address into a [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) field.
-
-To install the web logs sample data set, refer to [Add sample data](../../index.md#gs-get-data-into-kibana).
+You’ll use the [web logs sample data set](../../index.md#gs-get-data-into-kibana) that comes with Kibana for this tutorial. Web logs sample data set has longitude and latitude. If your web log data does not contain longitude and latitude, use [GeoIP processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html) to transform an IP address into a [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) field.
 
 
 ## Step 2: Index Combined Statistical Area (CSA) regions [_step_2_index_combined_statistical_area_csa_regions]

@@ -4,8 +4,8 @@ To quickly get up and running with {{kib}}, set up on Cloud, then add a sample d
 
 When you’re done, you’ll know how to:
 
-* [Explore the data with **Discover**.](../../../explore-analyze/overview/kibana-quickstart.md#explore-the-data)
-* [Visualize the data with **Dashboard**.](../../../explore-analyze/overview/kibana-quickstart.md#view-and-analyze-the-data)
+* [Explore the data with **Discover**.](../../../explore-analyze/discover.md)
+* [Visualize the data with **Dashboard**.](../../../explore-analyze/dashboards.md)
 
 
 ### Required privileges [_required_privileges]

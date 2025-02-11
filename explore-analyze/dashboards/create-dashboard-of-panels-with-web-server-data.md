@@ -14,8 +14,6 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 :class: screenshot
 :::
 
-Before you begin, you should be familiar with the [*{{kib}} concepts*](../overview/kibana-quickstart.md).
-
 
 ## Add the data and create the dashboard [add-the-data-and-create-the-dashboard]
 
