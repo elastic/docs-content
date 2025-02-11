@@ -35,7 +35,7 @@ To create workpads, you must meet the minimum requirements.
 * Have an understanding of [{{es}} documents and indices](../../manage-data/data-store/index-basics.md).
 * Make sure you have sufficient privileges to create and save workpads. When the read-only indicator appears, you have insufficient privileges, and the options to create and save workpads are unavailable. For more information, refer to [Granting access to {{kib}}](../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
-You can open **Canvas** using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+You can open **Canvas** using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ### Start with a blank workpad [start-with-a-blank-workpad]

@@ -74,7 +74,7 @@ Looking at the map, you get a sense of what constitutes a metro area in the eyes
 
 To visualize CSA regions by web log traffic, the web log traffic must contain a CSA region identifier. You’ll use {{es}} [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) to add CSA region identifiers to the web logs sample data set. You can skip this step if your source data already contains region identifiers.
 
-1. Go to **Developer tools** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to **Developer tools** using the navigation menu or the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In **Console**, create a [geo_match enrichment policy](../../../manage-data/ingest/transform-enrich/example-enrich-data-based-on-geolocation.md):
 
     ```js

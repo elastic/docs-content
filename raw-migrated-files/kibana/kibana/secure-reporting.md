@@ -36,7 +36,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 
 1. Create the reporting role.
 
-    1. Go to the **Roles** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+    1. Go to the **Roles** management page using the navigation menu or the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
     2. Click **Create role**.
 
 2. Specify the role settings.
@@ -79,7 +79,7 @@ When security is enabled, you grant users access to {{report-features}} with [{{
 4. Click **Create role**.
 5. Assign the reporting role to a user.
 
-    1. Go to the **Users** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+    1. Go to the **Users** management page using the navigation menu or the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
     2. Select the user you want to assign the reporting role to.
     3. From the **Roles** dropdown, select **custom_reporting_user**.
     4. Click **Update user**.

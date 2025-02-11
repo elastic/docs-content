@@ -144,7 +144,7 @@ If you'd like to explore some features but don't have data ready yet, some sampl
 
 Sample data sets come with sample visualizations, dashboards, and more to help you explore {{kib}} before you ingest or add your own data.
 
-1. Open the **Integrations** page from the navigation menu or using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Open the **Integrations** page from the navigation menu or using the [global search field](../../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the list of integrations, select **Sample Data**.
 3. On the page that opens, select **Other sample data sets**.
 4. Install the sample data sets that you want.

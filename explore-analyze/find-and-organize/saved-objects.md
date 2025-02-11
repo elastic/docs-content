@@ -37,7 +37,7 @@ For organization, every saved object can have a name, [tags](tags.md), and type.
 
 Edit, import, export, and copy your saved objects. These objects include dashboards, visualizations, maps, {{data-sources}}, **Canvas** workpads, and other saved objects.
 
-You can find the **Saved Objects** page using the navigation menu or the [global search field](/get-started/the-stack.md#kibana-navigation-search).
+You can find the **Saved Objects** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../images/kibana-management-saved-objects.png
 :alt: Saved Objects
