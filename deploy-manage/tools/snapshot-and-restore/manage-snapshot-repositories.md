@@ -5,3 +5,57 @@
 % GitHub issue: https://github.com/elastic/docs-projects/issues/343
 
 % Scope notes: Landing page for this containing links for Cloud and ECE
+
+Snapshot repositories allow you to back up and restore your Elasticsearch data efficiently. Whether you're using [Elastic Cloud](#elastic-cloud-hosted), [Elastic Cloud Enterprise (ECE)](#elastic-cloud-enterprise-ece), or managing your own [Elasticsearch deployment](#self-managed), configuring a snapshot repository ensures data security, long-term archiving, and seamless migration across environments.
+
+## Supported repository types
+
+### Elastic Cloud Hosted
+
+Elastic Cloud Hosted deployments automatically register the `found-snapshots` repository. Elastic Cloud Hosted deployments use this repository and the `cloud-snapshot-policy` to take periodic snapshots of your cluster. You can also use the `found-snapshots` repository for your own [SLM policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
+
+The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s found-snapshots repository if the deployments are under the same account and in the same region. 
+
+Elastic Cloud Hosted deployments also support the following repository types:
+
+* [Azure](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
+* [AWS S3](/deploy-managetools/snapshot-and-restore/ec-aws-custom-repository.md)
+* [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.md)
+
+For more details, refer to Managing snapshot repositories in [Elastic Cloud Hosted](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
+
+### Elastic Cloud Enterprise (ECE)
+
+Snapshot repositories are managed for your entire Elastic Cloud Enterprise installation and can be specified for an Elasticsearch cluster when you create or manage it.
+
+When a repository is specified, a snapshot is taken every 30 minutes by default. The interval can be adjusted on per deployment basis.
+
+Elastic Cloud Enterprise installations support the following Elasticsearch snapshot repository types:
+
+* [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
+
+:::{note}
+No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by Elasticsearch. 
+:::
+
+For more details, refer to Managing snapshot repositories in [Elastic Cloud Enterprise](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.html).
+
+### Self-managed
+
+If you manage your own Elasticsearch cluster, you can use the following built-in snapshot repository types:
+
+* [Azure](/deploy-manage/tools/snapshot-and-restore/azure-repository.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/s3-repository.md)
+* [Shared file system](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md)
+* [Read-only URL](/deploy-manage/tools/snapshot-and-restore/read-only-url-repository.html)
+* [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.html)
+
+Other repository types are available through official plugins:
+
+* [Hadoop Distributed File System (HDFS)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html)
+
+For more details, refer to the Managing snapshot repositories in [Self managed deployments](/deploy-manage/tools/snapshot-and-restore/self-managed.md) documentation.
