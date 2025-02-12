@@ -13,7 +13,7 @@ In this tutorial we’ll look at migrating an existing data stream from [Index L
 To migrate a data stream from {{ilm-init}} to data stream lifecycle we’ll have to execute two steps:
 
 1. Update the index template that’s backing the data stream to set [prefer_ilm](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle-settings.html#index-lifecycle-prefer-ilm) to `false`, and to configure data stream lifecycle.
-2. Configure the data stream lifecycle for the *existing* data stream using the [lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-put-lifecycle.html).
+2. Configure the data stream lifecycle for the *existing* data stream using the [lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
 For more details see the [migrate to data stream lifecycle](#migrate-from-ilm-to-dsl) section.
 
@@ -75,7 +75,7 @@ POST dsl-data-stream/_doc?
 POST dsl-data-stream/_rollover
 ```
 
-We’ll use the [GET _data_stream](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-data-stream.html) API to inspect the state of the data stream:
+We’ll use the [GET _data_stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream) API to inspect the state of the data stream:
 
 ```console
 GET _data_stream/dsl-data-stream
@@ -138,7 +138,7 @@ Inspecting the response we’ll see that both backing indices are managed by {{i
 To migrate the `dsl-data-stream` to data stream lifecycle we’ll have to execute two steps:
 
 1. Update the index template that’s backing the data stream to set [prefer_ilm](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle-settings.html#index-lifecycle-prefer-ilm) to `false`, and to configure data stream lifecycle.
-2. Configure the data stream lifecycle for the *existing* `dsl-data-stream` using the [lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-put-lifecycle.html).
+2. Configure the data stream lifecycle for the *existing* `dsl-data-stream` using the [lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
 ::::{important}
 The data stream lifecycle configuration that’s added to the index template, being a data stream configuration, will only apply to **new** data streams. Our data stream exists already, so even though we added a data stream lifecycle configuration in the index template it will not be applied to `dsl-data-stream`.
@@ -315,7 +315,7 @@ We can easily change this data stream to be managed by {{ilm-init}} because we d
 
 We can achieve this in two ways:
 
-1. [Delete the lifecycle](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-delete-lifecycle.html) from the data streams
+1. [Delete the lifecycle](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle) from the data streams
 2. Disable data stream lifecycle by configuring the `enabled` flag to `false`.
 
 Let’s implement option 2 and disable the data stream lifecycle:
