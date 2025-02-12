@@ -523,7 +523,6 @@ toc:
       - file: docs-content/serverless/security-ui.md
       - file: docs-content/serverless/security-uninstall-agent.md
       - file: docs-content/serverless/security-users-page.md
-      - file: docs-content/serverless/security-value-lists-exceptions.md
       - file: docs-content/serverless/security-view-alert-details.md
       - file: docs-content/serverless/security-visual-event-analyzer.md
       - file: docs-content/serverless/security-visualize-alerts.md
@@ -918,7 +917,6 @@ toc:
       - file: security-docs/security/uninstall-agent.md
       - file: security-docs/security/use-osquery.md
       - file: security-docs/security/users-page.md
-      - file: security-docs/security/value-lists-exceptions.md
       - file: security-docs/security/view-alert-details.md
       - file: security-docs/security/view-osquery-results.md
       - file: security-docs/security/visual-event-analyzer.md
