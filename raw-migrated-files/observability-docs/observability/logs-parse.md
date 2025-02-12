@@ -22,7 +22,7 @@ Follow the steps below to see how the following unstructured log data is indexed
 
 Start by storing the document in the `logs-example-default` data stream:
 
-1. To open **Console**, find `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Console**, find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Console** tab, add the example log to {{es}} using the following command:
 
     ```console

@@ -19,7 +19,7 @@ To view the map, you need a role with at least `Read` [privileges](../../../depl
 
 ## Create {{kib}} data views [kibana-index-pattern]
 
-To display map data, you must define a {{kib}} [data view](../../../explore-analyze/find-and-organize/data-views.md) that includes one or more of the indices specified in the `securitysolution:defaultIndex` field. To view those indices, find **Stack Management** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then go to **Advanced Settings** → **`securitysolution:defaultIndex`**.
+To display map data, you must define a {{kib}} [data view](../../../explore-analyze/find-and-organize/data-views.md) that includes one or more of the indices specified in the `securitysolution:defaultIndex` field. To view those indices, find **Stack Management** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Advanced Settings** → **`securitysolution:defaultIndex`**.
 
 For example, to display data that is stored in indices matching the index pattern `servers-europe-*` on the map, you must use a {{kib}} data view whose index pattern matches `servers-europe-*`, such as `servers-*`.
 

@@ -7,7 +7,7 @@
 :class: screenshot
 :::
 
-To go to **Console***, find ***Dev Tools** in the navigation menu or use the [global search bar](../../../get-started/the-stack.md#kibana-navigation-search).
+To go to **Console***, find ***Dev Tools** in the navigation menu or use the [global search bar](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 You can also find Console directly on certain Search solution and Elasticsearch serverless project pages, where you can expand it from the footer. This Console, called **Persistent Console***, has the same capabilities and shares the same history as the Console in ***Dev Tools**.
 

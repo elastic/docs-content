@@ -174,7 +174,7 @@ Next, you are going to configure {{filebeat}} output to {{ess}}.
     echo -n "<Your Deployment Cloud ID>" | ./filebeat keystore add CLOUD_ID --stdin
     ```
 
-2. To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Send the following request:
+2. To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Send the following request:
 
     ```console
     POST /_security/api_key
@@ -358,9 +358,9 @@ Once you have edited the config file, you need to restart {{filebeat}}. To stop 
 
 ## Step 6: Visualize Logs [aws-step-six]
 
-Now that the logs are being shipped to {{es}} we can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Now that the logs are being shipped to {{es}} we can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-The filesets we used in the previous steps also come with pre-built dashboards that you can use to visualize the data. In {{kib}}, find **Dashboards** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Search for S3 and select the dashboard called: **[Filebeat AWS] S3 Server Access Log Overview**:
+The filesets we used in the previous steps also come with pre-built dashboards that you can use to visualize the data. In {{kib}}, find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for S3 and select the dashboard called: **[Filebeat AWS] S3 Server Access Log Overview**:
 
 :::{image} ../../../images/observability-S3-Server-Access-Logs.png
 :alt: S3 Server Access Log Overview
@@ -442,7 +442,7 @@ Next, you are going to configure {{metricbeat}} output to {{ess}}.
     echo -n "<Your Deployment Cloud ID>" | ./metricbeat keystore add CLOUD_ID --stdin
     ```
 
-2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). From the **Console**, send the following request:
+2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
 
     ```console
     POST /_security/api_key
@@ -568,13 +568,13 @@ You can now start {{metricbeat}}:
 
 ## Step 10: Visualize metrics [aws-step-ten]
 
-Now that the metrics are being streamed to {{es}} we can visualize them in {{kib}}. To open **Infrastructure inventory**, find **Infrastructure*** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Make sure to show the ***AWS** source and the **EC2 Instances**:
+Now that the metrics are being streamed to {{es}} we can visualize them in {{kib}}. To open **Infrastructure inventory**, find **Infrastructure*** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Make sure to show the ***AWS** source and the **EC2 Instances**:
 
 :::{image} ../../../images/observability-EC2-instances.png
 :alt: Your EC2 Infrastructure
 :::
 
-The metricsets we used in the previous steps also comes with pre-built dashboard that you can use to visualize the data. In {{kib}}, find **Dashboards** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Search for EC2 and select the dashboard called: **[Metricbeat AWS] EC2 Overview**:
+The metricsets we used in the previous steps also comes with pre-built dashboard that you can use to visualize the data. In {{kib}}, find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for EC2 and select the dashboard called: **[Metricbeat AWS] EC2 Overview**:
 
 :::{image} ../../../images/observability-ec2-dashboard.png
 :alt: EC2 Overview

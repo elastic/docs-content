@@ -24,7 +24,7 @@ This page describes how to set up Cloud Workload Protection (CWP) for Kubernetes
 
 First, you’ll need to deploy Elastic’s Defend for Containers integration to the Kubernetes clusters you wish to monitor.
 
-1. Find **Container Workload Security** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Click **Add D4C Integration**.
+1. Find **Container Workload Security** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Add D4C Integration**.
 2. Name the integration. The default name, which you can change, is `cloud_defend-1`.
 3. Optional — make any desired changes to the integration’s policy by adjusting the **Selectors** and **Responses** sections. (For more information, refer to the [Defend for Containers policy guide](container-workload-protection-policies.md)). You can also change these later.
 4. Under **Where to add this integration**, select an existing or new agent policy.
@@ -54,7 +54,7 @@ In order to detect threats using this data, you’ll need active [detection rule
 
 To install and enable the prebuilt rules:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Click **Add Elastic rules**.
+1. Find **Detection rules (SIEM)** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Add Elastic rules**.
 2. Click the **Tags** filter next to the search bar, and search for the `Data Source: Elastic Defend for Containers` tag.
 3. Select all the displayed rules, then click **Install *x* selected rule(s)**.
 4. Return to the **Rules** page. Click the **Tags** filter next to the search bar, and search for the `Data Source: Elastic Defend for Containers` tag.
@@ -72,7 +72,7 @@ To enable drift detection, you can use the default D4C policy:
 
 To enable drift prevention, create a new policy:
 
-1. Find **Container Workload Security** in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then select your integration.
+1. Find **Container Workload Security** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select your integration.
 2. Under **Selectors**, click **Add selector > File Selector**. By default, it selects the operations `createExecutable` and `modifyExecutable`.
 3. Name the selector, for example: `blockDrift`.
 4. Scroll down to the **Responses** section and click **Add response > File Response**.

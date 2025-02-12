@@ -88,7 +88,7 @@ To ingest Azure subscription and resource logs into Elastic using the Microsoft 
 
     ::::
 
-3. In {{kib}}, find the {{observability}} **Overview** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Refresh the page until you see some data. This may take a few minutes.
+3. In {{kib}}, find the {{observability}} **Overview** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Refresh the page until you see some data. This may take a few minutes.
 4. To analyze your subscription and resource logs, click **Show Logs Explorer**.
 
 
@@ -102,9 +102,9 @@ To ingest Azure subscription and resource logs into Elastic using the Microsoft 
 
     ![Select VMs to collect logs and metrics from](../../../images/observability-monitor-azure-elastic-vms.png "")
 
-3. Wait until it is installed and sending data (if the list does not update, click **Refresh** ). To see the logs from the VM, open **Logs Explorer** (find `Logs Explorer` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search)).
+3. Wait until it is installed and sending data (if the list does not update, click **Refresh** ). To see the logs from the VM, open **Logs Explorer** (find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
 
-    To view VM metrics, go to **Infrastructure inventory** and then select a VM. (To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).)
+    To view VM metrics, go to **Infrastructure inventory** and then select a VM. (To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).)
 
 
 ::::{note}
@@ -246,7 +246,7 @@ Next, you are going to configure {{metricbeat}} output to {{ess}}.
     echo -n "<Your Deployment Cloud ID>" | ./metricbeat keystore add CLOUD_ID --stdin
     ```
 
-2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). From the **Console**, send the following request:
+2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
 
     ```console
     POST /_security/api_key

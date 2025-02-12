@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/kibana-concepts-analysts.html
   - https://www.elastic.co/guide/en/kibana/current/set-time-filter.html

@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/anomaly-detection-scale.html
 ---
@@ -111,7 +114,7 @@ When working with large model sizes, consider how frequently you want to create 
 
 Also consider how long you wish to retain snapshots using `model_snapshot_retention_days` and `daily_model_snapshot_retention_after_days`. Retaining fewer snapshots substantially reduces index storage requirements for model state, but also reduces the granularity of model snapshots from which you can revert.
 
-For more information, refer to [Model snapshots](https://www.elastic.co/guide/en/machine-learning/current/ml-model-snapshots.html).
+For more information, refer to [Model snapshots](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-model-snapshots).
 
 ## 12. Optimize your search queries [search-queries]
 

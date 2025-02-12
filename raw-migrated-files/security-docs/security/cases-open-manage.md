@@ -7,7 +7,7 @@ You can create and manage cases using the UI or the [cases API](https://www.elas
 
 Open a new case to keep track of security issues and share their details with colleagues.
 
-1. Find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then click **Create case**. If no cases exist, the Cases table will be empty and you’ll be prompted to create one by clicking the **Create case** button inside the table.
+1. Find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create case**. If no cases exist, the Cases table will be empty and you’ll be prompted to create one by clicking the **Create case** button inside the table.
 2. If you defined [templates](../../../solutions/security/investigate/configure-case-settings.md#cases-templates), you can optionally select one to use its default field values. [preview]
 3. Give the case a name, assign a severity level, and provide a description. You can use [Markdown](https://www.markdownguide.org/cheat-sheet) syntax in the case description.
 
@@ -272,7 +272,7 @@ The following attachments are *not* exported:
 
 To export a case:
 
-1. Find **Saved Objects** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Saved Objects** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for the case by choosing a saved object type or entering the case title in the search bar.
 3. Select one or more cases, then click the **Export** button.
 4. Click **Export**. A confirmation message that your file is downloading displays.
@@ -292,7 +292,7 @@ To export a case:
 
 To import a case:
 
-1. Find **Saved Objects** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Saved Objects** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Import**.
 3. Select the NDJSON file containing the exported case and configure the import options.
 4. Click **Import**.
