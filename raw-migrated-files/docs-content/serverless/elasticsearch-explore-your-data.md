@@ -11,7 +11,7 @@ These features are available on all Elastic deployment types: self-managed clust
 
 ## Data analysis [_data_analysis]
 
-[Aggregations](../../../explore-analyze/aggregations.md)
+[Aggregations](../../../explore-analyze/query-filter/aggregations.md)
 :   Use aggregations in your [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search#operation-search-body-application-json-aggregations) requests to summarize your data as metrics, statistics, or other analytics.
 
 $$$elasticsearch-explore-your-data-discover-your-data$$$

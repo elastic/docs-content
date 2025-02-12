@@ -98,27 +98,10 @@ toc:
           - file: query-filter/tools/search-profiler.md
           - file: query-filter/tools/grok-debugger.md
           - file: query-filter/tools/playground.md
+      - file: query-filter/aggregations.md
+        children:
+          - file: query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
       - file: query-filter/filtering.md
-  - file: scripting.md
-    children:
-      - file: scripting/modules-scripting-painless.md
-      - file: scripting/modules-scripting-using.md
-        children:
-          - file: scripting/scripts-search-speed.md
-          - file: scripting/dissect.md
-          - file: scripting/grok.md
-      - file: scripting/script-fields-api.md
-      - file: scripting/common-script-uses.md
-        children:
-          - file: scripting/scripting-field-extraction.md
-      - file: scripting/modules-scripting-fields.md
-      - file: scripting/modules-scripting-security.md
-      - file: scripting/modules-scripting-expression.md
-      - file: scripting/modules-scripting-engine.md
-      - file: scripting/painless-lab.md
-  - file: aggregations.md
-    children:
-      - file: aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
   - file: geospatial-analysis.md
   - file: transforms.md
     children:
@@ -229,6 +212,23 @@ toc:
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
           - file: machine-learning/machine-learning-in-kibana/inference-processing.md
+  - file: scripting.md
+    children:
+      - file: scripting/modules-scripting-painless.md
+      - file: scripting/modules-scripting-using.md
+        children:
+          - file: scripting/scripts-search-speed.md
+          - file: scripting/dissect.md
+          - file: scripting/grok.md
+      - file: scripting/script-fields-api.md
+      - file: scripting/common-script-uses.md
+        children:
+          - file: scripting/scripting-field-extraction.md
+      - file: scripting/modules-scripting-fields.md
+      - file: scripting/modules-scripting-security.md
+      - file: scripting/modules-scripting-expression.md
+      - file: scripting/modules-scripting-engine.md
+      - file: scripting/painless-lab.md
   - file: ai-assistant.md
   - file: discover.md
     children:

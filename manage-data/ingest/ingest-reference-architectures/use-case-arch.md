@@ -16,7 +16,7 @@ You can host {{es}} on your own hardware or send your data to {{es}} on {{ecloud
 
 **Decision tree**
 
-[Data ingestion pipeline with decision tree](https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html#ec-data-ingest-pipeline)
+[Data ingestion](../../ingest.md)
 
 | **Ingest architecture** | **Use when** |
 | --- | --- |

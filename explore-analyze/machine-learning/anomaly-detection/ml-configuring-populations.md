@@ -14,13 +14,11 @@ This type of analysis is most effective when the behavior within a group is gene
 
 Population analysis is resource-efficient and scales well, enabling the analysis of populations consisting of hundreds of thousands or even millions of entities with a lower resource footprint than analyzing each series individually.
 
-
 ## Recommendations [population-recommendations]
 
 * Use population analysis when the behavior within a group is mostly homogeneous, as it helps identify anomalous patterns effectively.
 * Leverage population analysis when dealing with large-scale datasets.
 * Avoid using population analysis when members of the population exhibit vastly different behaviors, as it may not be effective.
-
 
 ## Creating population jobs [creating-population-jobs]
 
@@ -28,11 +26,10 @@ Population analysis is resource-efficient and scales well, enabling the analysis
 2. Click **Create job**, select the {{data-source}} you want to analyze.
 3. Select the **Population** wizard from the list.
 4. Choose a population field - it’s the `clientip` field in this example - and the metric you want to use for the analysis - `Mean(bytes)` in this example.
-
-    :::{image} ../../../images/machine-learning-ml-population-wizard.png
-    :alt: Creating a population job in Kibana
-    :class: screenshot
-    :::
+   :::{image} ../../../images/machine-learning-ml-population-wizard.png
+   :alt: Creating a population job in Kibana
+   :class: screenshot
+   :::
 
 5. Click **Next**.
 6. Provide a job ID and click **Next**.
@@ -68,10 +65,7 @@ PUT _ml/anomaly_detectors/population
 
 1. This `over_field_name` property indicates that the metrics for each client (as identified by their IP address) are analyzed relative to other clients in each bucket.
 
-
 ::::
-
-
 
 ### Viewing the job results [population-job-results]
 
