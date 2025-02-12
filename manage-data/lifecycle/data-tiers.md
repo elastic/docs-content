@@ -2,6 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-disable-data-tier.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
 ---
 
 # Data tiers
@@ -105,7 +106,7 @@ To add a data tier to an existing deployment:
 4. Click **+ Add capacity** for any data tiers to add.
 5. Click **Save** at the bottom of the page to save your changes.
 
-#### Disable a data tier [ece-update-data-tier-allocation-rules]
+#### Disable a data tier [disable-a-data-tier]
 
 The process of disabling a data tier depends on whether we are dealing with [searchable snapshots](#ece-disable-searchable-snapshot-data-tier) or [regular indices](#ece-disable-non-searchable-snapshot-data-tier).
 
@@ -169,7 +170,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
     GET /my-index/_settings
     ```
 
-    1. Updating data tier based allocation inclusion rules.
+    1. $$$update-data-tier-allocation-rules$$$ Updating data tier based allocation inclusion rules.
 
         Data tier based ILM policies use `index.routing.allocation.include` to allocate shards to the appropriate tier. The indices that use this method have index routing settings similar to the following example:
 
@@ -339,7 +340,7 @@ When data reaches the `cold` or `frozen` phases, it is automatically converted t
 
 5. Restore indices from the searchable snapshots.
 
-    1. Follow the steps to [specify the data tier based allocation inclusion rules](/manage-data/lifecycle/data-tiers.md#ece-update-data-tier-allocation-rules).
+    1. Follow the steps to [specify the data tier based allocation inclusion rules](/manage-data/lifecycle/data-tiers.md#update-data-tier-allocation-rules).
     2. Remove the associated ILM policy (set it to `null`). If you want to apply a different ILM policy, follow the steps to [Switch lifecycle policies](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html#switch-lifecycle-policies).
     3. If needed, specify the alias for rollover, otherwise set it to `null`.
     4. Optionally, specify the desired number of replica shards.

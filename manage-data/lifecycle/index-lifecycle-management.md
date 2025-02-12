@@ -6,7 +6,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-index-management.html
   - https://www.elastic.co/guide/en/cloud/current/ec-configure-index-management.html
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-index-management.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
 ---
 
 # Index lifecycle management
@@ -25,7 +24,6 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-migrate-index-management.md
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-configure-index-management.md
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-migrate-index-management.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-disable-data-tier.md
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
@@ -44,5 +42,3 @@ $$$ilm-gs-check-progress$$$
 $$$ilm-gs-alias-apply-policy$$$
 
 $$$ilm-gs-alias-check-progress$$$
-
-$$$ec-update-data-tier-allocation-rules$$$
