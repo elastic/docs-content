@@ -4,6 +4,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-api.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-pipeline-search.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-your-data.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Ingest for search use cases

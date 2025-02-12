@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/client/index.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-clients.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Clients

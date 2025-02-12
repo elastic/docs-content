@@ -114,7 +114,7 @@ This layer displays web log documents as points. The layer is only visible when 
 
 ### Add a layer for aggregated data [_add_a_layer_for_aggregated_data]
 
-You’ll create a layer for [aggregated data](../../aggregations.md) and make it visible only when the map is zoomed out. Darker colors will symbolize grids with more web log traffic, and lighter colors will symbolize grids with less traffic. Larger circles will symbolize grids with more total bytes transferred, and smaller circles will symbolize grids with less bytes transferred.
+You’ll create a layer for [aggregated data](../../query-filter/aggregations.md) and make it visible only when the map is zoomed out. Darker colors will symbolize grids with more web log traffic, and lighter colors will symbolize grids with less traffic. Larger circles will symbolize grids with more total bytes transferred, and smaller circles will symbolize grids with less bytes transferred.
 
 1. Click **Add layer**, and select **Clusters**.
 2. Set **Data view** to **kibana_sample_data_logs**.

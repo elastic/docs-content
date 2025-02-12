@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+---
+
 # Ingest pipelines for search use cases [ingest-pipeline-search]
 
 You can manage ingest pipelines through Elasticsearch APIs or Kibana UIs.

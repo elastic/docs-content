@@ -2,6 +2,9 @@
 navigation_title: "OpenAI"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-openai.html
+applies:
+  stack:
+  serverless:
 ---
 
 # OpenAI inference integration [infer-service-openai]
