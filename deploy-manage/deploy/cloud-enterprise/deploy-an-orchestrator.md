@@ -8,14 +8,10 @@
 
 Elastic Cloud Enterprise (ECE) provides a centralized platform that allows organizations to run **Elasticsearch, Kibana, and other Elastic Stack components** across multiple machines, whether in a private or public cloud, virtual machines, or your own premises.
 
-If you need to manage multiple Elastic deployments across teams or geographies, you can leverage Elastic Cloud Enterprise to centralize cluster management for:
-* Provisioning
-* Monitoring
-* Scaling
-* Replication
-* Upgrades
-* Backup and restore
+This section provides step-by-step guidance on:
 
-Centralizing the management of clusters with Elastic Cloud Enterprise enforces uniform versioning, data governance, backup, and user policies. Increased hardware utilization through better management can also reduce total cost.
+* [**Installing ECE**](./install.md) → Installation pre-requisites and multiple installation methods for all supported Operating Systems.
+* [**Configuring ECE**](./configure.md) → (TBD)
 
-This section covers the planning, installation, and configuration of ECE.
+If you're looking to deploy {{es}}, {{kib}} or other {{stack}} applications on ECE, refer to [](./working-with-deployments.md).
+
