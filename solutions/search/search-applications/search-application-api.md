@@ -9,7 +9,7 @@ mapped_pages:
 # Search API and templates [search-application-api]
 
 
-Your [search applications](../applications.md) use [search templates](../search-templates.md) to perform searches. Templates help reduce complexity by exposing only template parameters, while using the full power of {{es}}'s query DSL to formulate queries. Templates may be set when creating or updating a search application, and can be customized. This template can be edited or updated at any time using the [Put Search Application API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html) API call.
+Your [search applications](../search-applications.md) use [search templates](../search-templates.md) to perform searches. Templates help reduce complexity by exposing only template parameters, while using the full power of {{es}}'s query DSL to formulate queries. Templates may be set when creating or updating a search application, and can be customized. This template can be edited or updated at any time using the [Put Search Application API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html) API call.
 
 In a nutshell, you create search templates with parameters instead of specific hardcoded search values. At search time, you pass in the actual values for these parameters, enabling customized searches without rewriting the entire query structure. Search Application templates:
 
@@ -17,7 +17,7 @@ In a nutshell, you create search templates with parameters instead of specific h
 * Reduce request size
 * Ensure security and performance, as the query is predefined and can’t be changed arbitrarily
 
-This document provides information and sample templates to get you started using [search applications](../applications.md) for additional use cases. These templates are designed to be easily modified to meet your needs. Once you’ve created a search application with a template, you can search your search application using this template.
+This document provides information and sample templates to get you started using [search applications](../search-applications.md) for additional use cases. These templates are designed to be easily modified to meet your needs. Once you’ve created a search application with a template, you can search your search application using this template.
 
 ::::{tip} 
 Search templates use the [Mustache](https://mustache.github.io/) templating language. Mustache variables are typically enclosed in double curly brackets like this: `{{my-var}}`.
@@ -598,7 +598,7 @@ POST _application/search_application/my_search_application/_search
 
 ### kNN search [search-applications-knn-template] 
 
-This example supports [k-nearest neighbor (kNN) search](../vector/knn.md)
+This example supports [k-nearest neighbor (kNN) search](../vector/knn.md).
 
 A template supporting exact kNN search will look like the following example:
 
