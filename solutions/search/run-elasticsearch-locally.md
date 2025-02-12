@@ -2,6 +2,9 @@
 navigation_title: "Run {{es}} locally"
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Run {{es}} locally [run-elasticsearch-locally]

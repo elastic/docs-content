@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-reranking.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Semantic reranking [semantic-reranking]

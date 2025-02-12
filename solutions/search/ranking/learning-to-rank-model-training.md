@@ -2,6 +2,9 @@
 navigation_title: "Deploy and manage LTR models"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/learning-to-rank-model-training.html
+applies:
+  stack:
+  serverless:
 ---
 
 

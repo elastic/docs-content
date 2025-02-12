@@ -2,6 +2,9 @@
 navigation_title: "Get started on Serverless"
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Get started with {{es}} Serverless [elasticsearch-get-started]

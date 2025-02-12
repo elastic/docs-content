@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # Vector search
 
 :::{tip}

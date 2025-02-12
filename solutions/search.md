@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html
   - https://www.elastic.co/guide/en/serverless/current/what-is-elasticsearch-serverless.html

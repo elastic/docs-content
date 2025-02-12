@@ -2,6 +2,9 @@
 navigation_title: "View events"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-event.html
+applies:
+  stack:
+  serverless:
 ---
 
 

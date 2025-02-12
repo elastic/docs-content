@@ -2,6 +2,9 @@
 navigation_title: "Find connection details"
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Find your connection details [search-space-connection-details]

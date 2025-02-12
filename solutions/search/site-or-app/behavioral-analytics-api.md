@@ -2,6 +2,9 @@
 navigation_title: "API overview"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-api.html
+applies:
+  stack:
+  serverless:
 ---
 
 

@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # API quickstarts
 
 Use the following quickstarts to get hands-on experience with Elasticsearch APIs and tools:
