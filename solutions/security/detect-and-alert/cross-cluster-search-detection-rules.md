@@ -4,7 +4,6 @@ mapped_pages:
 
 applies:
   stack: ga all
-  serverless: ga all
 ---
 
 # Cross-cluster search and detection rules [rules-cross-cluster-search]
@@ -15,6 +14,8 @@ applies:
 ## Set up cross-cluster search in detection rules [set-up-ccs-rules]
 
 This section explains the general process for setting up cross-cluster search in detection rules. For specific instructions on each part of the process, refer to the linked documentation.
+
+% The list items under step 1 require versioning. Guidance on versioning is pending, so revisit this later.
 
 1. On the local cluster, establish trust and set up a connection to the remote cluster, using one of the following methods. With either method, note the unique name that you give to the remote cluster, because you’ll need to use it throughout this process.
 
