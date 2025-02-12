@@ -1,5 +1,10 @@
 ---
 navigation_title: "Find connection details"
+mapped_urls:
+  - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Find your connection details [search-space-connection-details]
@@ -7,10 +12,10 @@ navigation_title: "Find connection details"
 
 To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on the deployment type you use. For secure connections, it’s recommended to use an API key for authentication.
 
-* Learn how to [find your Cloud ID](get-started.md#find-cloud-id-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
-* Learn how to [create an API key](get-started.md#create-an-api-key-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
-* Learn how to [find your {{es}} endpoint or Cloud ID](get-started.md#find-cloud-id-serverless) for a serverless deployment.
-* Learn how to [create an API key](get-started.md#create-an-api-key-serverless) for a serverless deployment.
+* Learn how to [find your Cloud ID](#find-cloud-id-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
+* Learn how to [create an API key](#create-an-api-key-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
+* Learn how to [find your {{es}} endpoint or Cloud ID](#find-cloud-id-serverless) for a serverless deployment.
+* Learn how to [create an API key](#create-an-api-key-serverless) for a serverless deployment.
 
 
 ## Elastic Cloud and self-hosted deployments [_elastic_cloud_and_self_hosted_deployments]

@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # Hybrid search
 
 Hybrid search combines traditional [full-text search](full-text.md) with [AI-powered search](ai-search/ai-search.md) for more powerful search experiences that serve a wider range of user needs.

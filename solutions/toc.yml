@@ -592,6 +592,9 @@ toc:
             children:
               - file: search/elasticsearch-basics-quickstart.md
               - file: search/querydsl-full-text-filter-tutorial.md
+      - file: search/ingest-for-search.md
+        children:
+          - file: search/search-pipelines.md
       - file: search/search-approaches.md
       - file: search/full-text.md
         children:
@@ -663,15 +666,6 @@ toc:
             children:
               - file: search/retrievers-examples.md
           - file: search/search-templates.md
-      - file: search/ingest-for-search.md
-        children:
-          - file: search/search-pipelines.md
-      - file: search/building-search-in-your-app-or-site.md
-      - file: search/auto-complete.md
-      - file: search/spelling-correction.md
-      - file: search/cross-cluster-search.md
-        children:
-          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
       - file: search/site-or-app.md
         children:
           - file: search/site-or-app/clients.md
@@ -683,11 +677,14 @@ toc:
               - file: search/site-or-app/behavioral-analytics-event.md
               - file: search/site-or-app/behavioral-analytics-event-reference.md
               - file: search/site-or-app/behavioral-analytics-api.md
-      - file: search/applications.md
-        children:
-          - file: search/applications/search-application-api.md
-          - file: search/applications/search-application-security.md
-          - file: search/applications/search-application-client.md
+          - file: search/search-applications.md
+            children:
+              - file: search/search-applications/search-application-api.md
+              - file: search/search-applications/search-application-security.md
+              - file: search/search-applications/search-application-client.md
       - file: search/apis-and-tools.md
       - file: search/search-approaches/near-real-time-search.md
+      - file: search/cross-cluster-search.md
+        children:
+          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
   - file: other-use-cases.md

@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # AI-powered search
 
 Natural language understanding and information retrieval go hand in hand in modern search systems. Sometimes [full-text search](../full-text.md) alone isn't enough. Machine learning techniques are powerful tools for helping users find data based on intent and contextual meaning.
