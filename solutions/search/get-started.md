@@ -1,11 +1,7 @@
 ---
 mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-filter-tutorial.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-get-started.html
-  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html
-  - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
 ---
 
 # Get started
