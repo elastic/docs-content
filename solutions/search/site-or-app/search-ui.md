@@ -2,6 +2,9 @@
 navigation_title: "Search UI"
 mapped_pages:
   - https://www.elastic.co/guide/en/search-ui/current/overview.html
+applies:
+  stack:
+  serverless:
 ---
 
 # What is Search UI? [overview]

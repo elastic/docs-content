@@ -3,56 +3,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
 ---
 
-# The Elasticsearch data store [elasticsearch-intro-what-is-es]
+# The Elasticsearch data store
 
-[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time.
+[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene.
 
-{{es}} is the heart of the [Elastic Stack](../get-started/the-stack.md). Combined with [{{kib}}](https://www.elastic.co/kibana), it powers the following Elastic solutions:
+The documentation in this section details how {{es}} works as a _data store_ starting with the fundamental unit of storage in Elasticsearch: the index. An index is a collection of documents uniquely identified by a name or an alias. Read more in [Index basics](/manage-data/data-store/index-basics.md) and [Index types](/manage-data/data-store/index-types.md).
 
-* [Observability](https://www.elastic.co/observability)
-* [Search](https://www.elastic.co/enterprise-search)
-* [Security](https://www.elastic.co/security)
+Then, learn how these documents and the fields they contain are stored and indexed in [Mapping](/manage-data/data-store/mapping.md), and how unstructured text is converted into a structured format that’s optimized for search in [Text analysis](/manage-data/data-store/text-analysis.md).
 
-::::{tip}
-{{es}} has a lot of features. Explore the full list on the [product webpage](https://www.elastic.co/elasticsearch/features).
-
-::::
-
-
-::::{admonition} What is the Elastic Stack?
-:name: elasticsearch-intro-elastic-stack
-
-{{es}} is the core component of the Elastic Stack, a suite of products for collecting, storing, searching, and visualizing data. [Learn more about the Elastic Stack](../get-started/the-stack.md).
-
-::::
-
-
-
-## Use cases [elasticsearch-intro-use-cases]
-
-{{es}} is used for a wide and growing range of use cases. Here are a few examples:
-
-**Observability**
-
-* **Logs, metrics, and traces**: Collect, store, and analyze logs, metrics, and traces from applications, systems, and services.
-* **Application performance monitoring (APM)**: Monitor and analyze the performance of business-critical software applications.
-* **Real user monitoring (RUM)**: Monitor, quantify, and analyze user interactions with web applications.
-* **OpenTelemetry**: Reuse your existing instrumentation to send telemetry data to the Elastic Stack using the OpenTelemetry standard.
-
-**Search**
-
-* **Full-text search**: Build a fast, relevant full-text search solution using inverted indexes, tokenization, and text analysis.
-* **Vector database**: Store and search vectorized data, and create vector embeddings with built-in and third-party natural language processing (NLP) models.
-* **Semantic search**: Understand the intent and contextual meaning behind search queries using tools like synonyms, dense vector embeddings, and learned sparse query-document expansion.
-* **Hybrid search**: Combine full-text search with vector search using state-of-the-art ranking algorithms.
-* **Build search experiences**: Add hybrid search capabilities to apps or websites, or build enterprise search engines over your organization’s internal data sources.
-* **Retrieval augmented generation (RAG)**: Use {{es}} as a retrieval engine to supplement generative AI models with more relevant, up-to-date, or proprietary data for a range of use cases.
-* **Geospatial search**: Search for locations and calculate spatial relationships using geospatial queries.
-
-**Security**
-
-* **Security information and event management (SIEM)**: Collect, store, and analyze security data from applications, systems, and services.
-* **Endpoint security**: Monitor and analyze endpoint security data.
-* **Threat hunting**: Search and analyze data to detect and respond to security threats.
-
-This is just a sample of search, observability, and security use cases enabled by {{es}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
+You can also read more about working with {{es}} as a data store including how to use [index templates](/manage-data/data-store/templates.md) to tell {{es}} how to configure an index when it is created, how to use [aliases](/manage-data/data-store/aliases.md) to point to multiple indices, and how to use the [command line to manage data](/manage-data/data-store/manage-data-from-the-command-line.md) stored in {{es}}.

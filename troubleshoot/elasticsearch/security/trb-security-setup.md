@@ -1,9 +1,10 @@
 ---
+navigation_title: Password setup connection failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-setup.html
 ---
 
-# Setup-passwords command fails due to connection failure [trb-security-setup]
+# Troubleshoot connection failures with elasticsearch-setup-passwords [trb-security-setup]
 
 The [elasticsearch-setup-passwords command](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-passwords.html) sets passwords for the built-in users by sending user management API requests. If your cluster uses SSL/TLS for the HTTP (REST) interface, the command attempts to establish a connection with the HTTPS protocol. If the connection attempt fails, the command fails.
 
