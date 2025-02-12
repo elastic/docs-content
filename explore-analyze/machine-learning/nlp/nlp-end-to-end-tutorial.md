@@ -107,7 +107,7 @@ We want to run our documents through an inference processor that uses the traine
 * Choose to **Use the API** and give your index a name. It will automatically be prefixed with `search-`. For this demo, we will name the index `search-photo-comments`.
 * After clicking **Create Index**, you will be redirected to the overview page for your new index.
 
-To configure the ML inference pipeline, we need the index to have an existing field mapping so we can choose which field to analyze. This can be done via the [index mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) in the Kibana Dev Tools or simply through a cURL command:
+To configure the ML inference pipeline, we need the index to have an existing field mapping so we can choose which field to analyze. This can be done via the [index mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) in the Kibana Dev Tools or simply through a cURL command:
 
 ```js
 PUT search-photo-comments/_mapping

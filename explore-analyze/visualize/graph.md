@@ -12,7 +12,7 @@ The {{graph-features}} enable you to discover how items in an {{es}} index are r
 
 For example, graph exploration could help you uncover website vulnerabilities that hackers are targeting so you can harden your website. Or, you might provide graph-based personalized recommendations to your e-commerce customers.
 
-The {{graph-features}} provide a simple, yet powerful [graph exploration API](https://www.elastic.co/guide/en/elasticsearch/reference/current/graph-explore-api.html), and an interactive graph visualization app for {{kib}}. Both work out of the box with existing {{es}} indices—you don’t need to store any additional data to use these features.
+The {{graph-features}} provide a simple, yet powerful [graph exploration API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-graph), and an interactive graph visualization app for {{kib}}. Both work out of the box with existing {{es}} indices—you don’t need to store any additional data to use these features.
 
 
 ## How Graph works [how-graph-works]

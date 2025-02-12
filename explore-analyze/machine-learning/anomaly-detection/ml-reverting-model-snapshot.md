@@ -33,7 +33,7 @@ mapped_pages:
 You can use [custom rules](ml-ad-run-jobs.md#ml-ad-rules) to avoid a model being updated in case of a known event you want to exclude from the analysis. Using custom rules might help you to avoid situations where you need to revert to a snapshot.
 ::::
 
-Alternatively, you can use the [revert model snapshots](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html) API. In this case, you need to manually close the corresponding job before reverting to the saved snapshot.
+Alternatively, you can use the [revert model snapshots](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-revert-model-snapshot) API. In this case, you need to manually close the corresponding job before reverting to the saved snapshot.
 
 ::::{note}
 
