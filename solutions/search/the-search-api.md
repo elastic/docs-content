@@ -8,7 +8,7 @@ A *search* consists of one or more queries that are combined and sent to {{es}}.
 
 A search may also contain additional information used to better process its queries. For example, a search may be limited to a specific index or only return a specific number of results.
 
-You can use the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to search and [aggregate](../../explore-analyze/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
+You can use the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to search and [aggregate](../../explore-analyze/query-filter/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
 
 
 ## Run a search [run-an-es-search]
@@ -87,7 +87,7 @@ You can use the following options to customize your searches.
 * [Full text queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html), which are commonly used in search engines
 * [Geo](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html) and [spatial queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/shape-queries.html)
 
-**Aggregations**<br> You can use [search aggregations](../../explore-analyze/aggregations.md) to get statistics and other analytics for your search results. Aggregations help you answer questions like:
+**Aggregations**<br> You can use [search aggregations](../../explore-analyze/query-filter/aggregations.md) to get statistics and other analytics for your search results. Aggregations help you answer questions like:
 
 * What’s the average response time for my servers?
 * What are the top IP addresses hit by users on my network?

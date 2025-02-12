@@ -122,7 +122,7 @@ In the following example, we’re adding 2 fields: A simple "Hello world" field,
 
 ### Visualize aggregated fields [_visualize_aggregated_fields]
 
-If a field can be [aggregated](../aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
+If a field can be [aggregated](../query-filter/aggregations.md), you can quickly visualize it in detail by opening it in **Lens** from **Discover**. **Lens** is the default visualization editor in {{kib}}.
 
 1. In the list of fields, find an aggregatable field. For example, with the sample data, you can look for `day_of_week`.
    ![Top values for the day_of_week field](../../images/kibana-discover-day-of-week.png "title =60%")
