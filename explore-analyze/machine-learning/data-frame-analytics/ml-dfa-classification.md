@@ -160,25 +160,22 @@ The model that you created is stored as {{es}} documents in internal indices. In
 
 1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
-
-:::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
-:alt: The trained models UI in {kib}
-:class: screenshot
-:::
+   :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
+   :alt: The trained models UI in {kib}
+   :class: screenshot
+   :::
 
 3. Create an {{infer}} pipeline to be able to use the model against new data through the pipeline. Add a name and a description or use the default values.
-
-:::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
-:alt: Creating an inference pipeline
-:class: screenshot
-:::
+   :::{image} ../../../images/machine-learning-ml-dfa-inference-pipeline.png
+   :alt: Creating an inference pipeline
+   :class: screenshot
+   :::
 
 4. Configure the pipeline processors or use the default settings.
-
-:::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
-:alt: Configuring an inference processor
-:class: screenshot
-:::
+   :::{image} ../../../images/machine-learning-ml-dfa-inference-processor.png
+   :alt: Configuring an inference processor
+   :class: screenshot
+   :::
 
 5. Configure to handle ingest failures or use the default settings.
 6. (Optional) Test your pipeline by running a simulation of the pipeline to confirm it produces the anticipated results.
@@ -223,7 +220,8 @@ Each document in the sample flight data set contains details for a single flight
 In order to be analyzed, a document must contain at least one field with a supported data type (`numeric`, `boolean`, `text`, `keyword` or `ip`) and must not contain arrays with more than one item. If your source data consists of some documents that contain the dependent variable and some that do not, the model is trained on the subset of documents that contain it.
 
 ::::{dropdown} Example source document
-```
+
+```json
 {
   "_index": "kibana_sample_data_flights",
   "_type": "_doc",
@@ -281,36 +279,31 @@ The sample flight data set is used in this example because it is easily accessib
 To predict whether a specific flight is delayed:
 
 1. Create a {{dfanalytics-job}}.
+   You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html) API.
+   :::{image} ../../../images/machine-learning-flights-classification-job-1.jpg
+   :alt: Creating a {{dfanalytics-job}} in {kib}
+   :class: screenshot
+   :::
 
-    You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html) API.
-
-:::{image} ../../../images/machine-learning-flights-classification-job-1.jpg
-:alt: Creating a {{dfanalytics-job}} in {kib}
-:class: screenshot
-:::
-
-    1. Choose `kibana_sample_data_flights` as the source index.
-    2. Choose `classification` as the job type.
-    3. Choose `FlightDelay` as the dependent variable, which is the field that we want to predict with the {{classanalysis}}.
-    4. Add `Cancelled`, `FlightDelayMin`, and `FlightDelayType` to the list of excluded fields. It is recommended to exclude fields that either contain erroneous data or describe the `dependent_variable`.
-
+      1. Choose `kibana_sample_data_flights` as the source index.
+      2. Choose `classification` as the job type.
+      3. Choose `FlightDelay` as the dependent variable, which is the field that we want to predict with the {{classanalysis}}.
+      4. Add `Cancelled`, `FlightDelayMin`, and `FlightDelayType` to the list of excluded fields. It is recommended to exclude fields that either contain erroneous data or describe the `dependent_variable`.
         The wizard includes a scatterplot matrix, which enables you to explore the relationships between the numeric fields. The color of each point is affected by the value of the {{depvar}} for that document, as shown in the legend. You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the charts. You can use this matrix to help you decide which fields to include or exclude.
-
-:::{image} ../../../images/machine-learning-flights-classification-scatterplot.png
-:alt: A scatterplot matrix for three fields in {kib}
-:class: screenshot
-:::
-
-        If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
-
-    5. Choose a training percent of `10` which means it randomly selects 10% of the source data for training. While that value is low for this example, for many large data sets using a small training sample greatly reduces runtime without impacting accuracy.
-    6. If you want to experiment with [{{feat-imp}}](ml-feature-importance.md), specify a value in the advanced configuration options. In this example, a maximum of 10 {{feat-imp}} values per document will return. This option affects the speed of the analysis, so by default it is disabled.
-    7. Use the default memory limit for the job. If the job requires more than this amount of memory, it fails to start. If the available memory on the node is limited, this setting makes it possible to prevent job execution.
-    8. Add a job ID (such as `model-flight-delays-classification`) and optionally a job description.
-    9. Add the name of the destination index that will contain the results. In {{kib}}, the index name matches the job ID by default. It will contain a copy of the source index data where each document is annotated with the results. If the index does not exist, it will be created automatically.
-    10. Use default values for all other options.
+   :::{image} ../../../images/machine-learning-flights-classification-scatterplot.png
+   :alt: A scatterplot matrix for three fields in {kib}
+   :class: screenshot
+   :::
+       If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
+      5. Choose a training percent of `10` which means it randomly selects 10% of the source data for training. While that value is low for this example, for many large data sets using a small training sample greatly reduces runtime without impacting accuracy.
+      6. If you want to experiment with [{{feat-imp}}](ml-feature-importance.md), specify a value in the advanced configuration options. In this example, a maximum of 10 {{feat-imp}} values per document will return. This option affects the speed of the analysis, so by default it is disabled.
+      7. Use the default memory limit for the job. If the job requires more than this amount of memory, it fails to start. If the available memory on the node is limited, this setting makes it possible to prevent job execution.
+      8. Add a job ID (such as `model-flight-delays-classification`) and optionally a job description.
+      9. Add the name of the destination index that will contain the results. In {{kib}}, the index name matches the job ID by default. It will contain a copy of the source index data where each document is annotated with the results. If the index does not exist, it will be created automatically.
+      10. Use default values for all other options.
 
 ::::{dropdown} API example
+
 ```console
 PUT _ml/data_frame/analytics/model-flight-delays-classification
         {
@@ -344,17 +337,16 @@ PUT _ml/data_frame/analytics/model-flight-delays-classification
 1. The field name in the `dest` index that contains the analysis results.
 2. To disable {{feat-imp}} calculations, omit this option.
 
-
 ::::
 
-
-        After you configured your job, the configuration details are automatically validated. If the checks are successful, you can start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
+After you configured your job, the configuration details are automatically validated. If the checks are successful, you can start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
 
 2. Start the job in {{kib}} or use the [start {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) API.
 
     The job takes a few minutes to run. Runtime depends on the local hardware and also on the number of documents and fields that are analyzed. The more fields and documents, the longer the job runs. It stops automatically when the analysis is complete.
 
 ::::{dropdown} API example
+
 ```console
 POST _ml/data_frame/analytics/model-flight-delays-classification/_start
 ```
@@ -368,9 +360,10 @@ POST _ml/data_frame/analytics/model-flight-delays-classification/_start
 :class: screenshot
 :::
 
-    When the job stops, the results are ready to view and evaluate. To learn more about the job phases, see [How {{dfanalytics-jobs}} work](ml-dfa-phases.md).
+   When the job stops, the results are ready to view and evaluate. To learn more about the job phases, see [How {{dfanalytics-jobs}} work](ml-dfa-phases.md).
 
 ::::{dropdown} API example
+
 ```console
 GET _ml/data_frame/analytics/model-flight-delays-classification/_stats
 ```
@@ -485,6 +478,7 @@ If you have a large number of classes, your destination index contains a large n
 ::::
 
 ::::{dropdown} API example
+
 ```console
 GET model-flight-delays-classification/_search
 ```
@@ -539,6 +533,7 @@ In {{kib}}, the decision path shows the relative impact of each feature on the p
 If you do not use {{kib}}, you can see the summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html) and the individual values by searching the destination index.
 
 ::::{dropdown} API example
+
 ```console
 GET _ml/trained_models/model-flight-delays-classification*?include=total_feature_importance
 ```

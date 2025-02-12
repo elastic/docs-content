@@ -1,4 +1,5 @@
 ---
+navigation_title: Configuration file relocation
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-path.html
 ---

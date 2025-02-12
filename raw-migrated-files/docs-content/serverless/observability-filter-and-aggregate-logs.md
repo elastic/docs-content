@@ -336,4 +336,4 @@ The results should show an aggregate of logs that occurred within your timestamp
 }
 ```
 
-For more on aggregation types and available aggregations, refer to the [Aggregations](../../../explore-analyze/aggregations.md) documentation.
+For more on aggregation types and available aggregations, refer to the [Aggregations](../../../explore-analyze/query-filter/aggregations.md) documentation.

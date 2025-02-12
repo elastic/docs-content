@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # Basics quickstart [getting-started]
 
 

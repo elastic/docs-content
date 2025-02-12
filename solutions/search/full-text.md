@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-search.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Full-text search [full-text-search]
@@ -20,7 +23,7 @@ You can combine full-text search with [semantic search using vectors](semantic-s
 
 For a high-level overview of how full-text search works, refer to [How full-text search works](full-text/how-full-text-works.md).
 
-For a hands-on introduction to full-text search, refer to the [full-text search tutorial](get-started.md).
+For a hands-on introduction to full-text search, refer to the [full-text search tutorial](querydsl-full-text-filter-tutorial.md).
 
 
 ## Learn more [full-text-search-learn-more]

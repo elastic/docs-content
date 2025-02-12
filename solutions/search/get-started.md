@@ -1,46 +1,29 @@
 ---
 mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-filter-tutorial.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-get-started.html
-  - https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html
-  - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Get started
 
-% What needs to be done: Refine
+## Core implementation decisions
 
-% Use migrated content from existing pages that map to this page:
+% TODO add diagram
 
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/run-elasticsearch-locally.md
-%      Notes: Needs quickstart install steps (local,cloud,serverless)
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/getting-started.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/full-text-filter-tutorial.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/elasticsearch-get-started.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/elasticsearch-connecting-to-es-serverless-endpoint.md
-%      Notes: ?
-% - [ ] ./raw-migrated-files/kibana/kibana/search-space-connection-details.md
+Building a search experience with {{es}} requires a number of fundamental implementation decisions:
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+1. [**Deployment**](/deploy-manage/index.md): Where will you run Elastic?
+1. [**Ingestion**](ingest-for-search.md): What tools will you use to get your content into {{es}}? 
+1. [**Search approaches**](search-approaches.md): What search techniques and algorithms will you use to find relevant results? 
+1. **Implementation tools**: How will you write queries and interact with {{es}}?
+   - Which [programming language client]() matches your application?
+   - Which API endpoints and [query language(s)](querying-for-search.md) will you use to express your search logic?
 
-$$$find-cloud-id-cloud-self-managed$$$
+Each decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.
 
-$$$create-an-api-key-cloud-self-managed$$$
-
-$$$find-cloud-id-serverless$$$
-
-$$$create-an-api-key-serverless$$$
-
-$$$elasticsearch-get-started-create-project$$$
-
-$$$elasticsearch-follow-guided-index-flow$$$
-
-$$$elasticsearch-follow-in-product-getting-started$$$
-
-$$$elasticsearch-explore-on-your-own$$$
-
-$$$elasticsearch-get-started-create-api-key$$$
-
-$$$full-text-filter-tutorial-create-index$$$
+::::{tip}
+Already have an {{es}} deployment? You can get started with our hands-on [quick start tutorials](api-quickstarts.md), or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
+::::
