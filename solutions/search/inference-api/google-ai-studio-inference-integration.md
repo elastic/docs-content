@@ -1,4 +1,5 @@
 ---
+navigation_title: "Google AI Studio"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-ai-studio.html
 ---

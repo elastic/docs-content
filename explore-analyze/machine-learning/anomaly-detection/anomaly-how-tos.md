@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "How-tos"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html

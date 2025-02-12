@@ -357,6 +357,8 @@ toc:
         children:
           - file: alerts-cases/watcher/watcher-getting-started.md
           - file: alerts-cases/watcher/how-watcher-works.md
+          - file: alerts-cases/watcher/enable-watcher.md
+          - file: alerts-cases/watcher/watcher-ui.md
           - file: alerts-cases/watcher/encrypting-data.md
           - file: alerts-cases/watcher/input.md
             children:

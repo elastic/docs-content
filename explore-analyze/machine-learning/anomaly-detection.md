@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml-anomalies.html
