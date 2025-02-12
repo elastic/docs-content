@@ -15,7 +15,7 @@ Elasticsearch heavily relies on the filesystem cache in order to make search fas
 
 Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-store.html#file-system)).
 
-Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing Elasticsearch [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html)) performance.
+Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing Elasticsearch [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
 
 You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE,SIZE`. Consult the documentation of your distribution on how to alter this value (for example with a `udev` rule to persist across reboots, or via [blockdev --setra](https://man7.org/linux/man-pages/man8/blockdev.8.md) as a transient setting). We recommend a value of `128KiB` for readahead.
 
@@ -264,7 +264,7 @@ However such practice might make the query run slower in some cases since the ov
 
 ## Force-merge read-only indices [_force_merge_read_only_indices] 
 
-Indices that are read-only may benefit from being [merged down to a single segment](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html). This is typically the case with time-based indices: only the index for the current time frame is getting new documents while older indices are read-only. Shards that have been force-merged into a single segment can use simpler and more efficient data structures to perform searches.
+Indices that are read-only may benefit from being [merged down to a single segment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge). This is typically the case with time-based indices: only the index for the current time frame is getting new documents while older indices are read-only. Shards that have been force-merged into a single segment can use simpler and more efficient data structures to perform searches.
 
 ::::{important} 
 Do not force-merge indices to which you are still writing, or to which you will write again in the future. Instead, rely on the automatic background merge process to perform merges as needed to keep the index running smoothly. If you continue to write to a force-merged index then its performance may become much worse.
@@ -274,7 +274,7 @@ Do not force-merge indices to which you are still writing, or to which you will 
 
 ## Warm up global ordinals [_warm_up_global_ordinals] 
 
-[Global ordinals](https://www.elastic.co/guide/en/elasticsearch/reference/current/eager-global-ordinals.html) are a data structure that is used to optimize the performance of aggregations. They are calculated lazily and stored in the JVM heap as part of the [field data cache](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-fielddata.html). For fields that are heavily used for bucketing aggregations, you can tell {{es}} to construct and cache the global ordinals before requests are received. This should be done carefully because it will increase heap usage and can make [refreshes](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-refresh.html) take longer. The option can be updated dynamically on an existing mapping by setting the [eager global ordinals](https://www.elastic.co/guide/en/elasticsearch/reference/current/eager-global-ordinals.html) mapping parameter:
+[Global ordinals](https://www.elastic.co/guide/en/elasticsearch/reference/current/eager-global-ordinals.html) are a data structure that is used to optimize the performance of aggregations. They are calculated lazily and stored in the JVM heap as part of the [field data cache](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-fielddata.html). For fields that are heavily used for bucketing aggregations, you can tell {{es}} to construct and cache the global ordinals before requests are received. This should be done carefully because it will increase heap usage and can make [refreshes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) take longer. The option can be updated dynamically on an existing mapping by setting the [eager global ordinals](https://www.elastic.co/guide/en/elasticsearch/reference/current/eager-global-ordinals.html) mapping parameter:
 
 ```console
 PUT index
