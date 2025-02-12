@@ -279,7 +279,7 @@ The sample flight data set is used in this example because it is easily accessib
 To predict whether a specific flight is delayed:
 
 1. Create a {{dfanalytics-job}}.
-   You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html) API.
+   You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics) API.
    :::{image} ../../../images/machine-learning-flights-classification-job-1.jpg
    :alt: Creating a {{dfanalytics-job}} in {kib}
    :class: screenshot
