@@ -5,7 +5,7 @@ mapped_pages:
 
 # Dynamic templates [dynamic-templates]
 
-Dynamic templates allow you greater control of how {{es}} maps your data beyond the default [dynamic field mapping rules](dynamic-field-mapping.md). You enable dynamic mapping by setting the dynamic parameter to `true` or `runtime`. You can then use dynamic templates to define custom mappings that can be applied to dynamically added fields based on the matching condition:
+Dynamic templates allow you greater control over how {{es}} maps your data beyond the default [dynamic field mapping rules](dynamic-field-mapping.md). You enable dynamic mapping by setting the dynamic parameter to `true` or `runtime`. You can then use dynamic templates to define custom mappings that can be applied to dynamically added fields based on the matching condition:
 
 * [`match_mapping_type` and `unmatch_mapping_type`](#match-mapping-type) operate on the data type that {{es}} detects
 * [`match` and `unmatch`](#match-unmatch) use a pattern to match on the field name

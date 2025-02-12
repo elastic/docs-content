@@ -585,7 +585,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/kerberos-realm.md
       - file: elasticsearch/elasticsearch-reference/ldap-realm.md
       - file: elasticsearch/elasticsearch-reference/mapping-roles.md
-      - file: elasticsearch/elasticsearch-reference/mapping.md
       - file: elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
       - file: elasticsearch/elasticsearch-reference/monitoring-overview.md
       - file: elasticsearch/elasticsearch-reference/monitoring-production.md
