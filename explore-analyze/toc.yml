@@ -98,9 +98,9 @@ toc:
           - file: query-filter/tools/search-profiler.md
           - file: query-filter/tools/grok-debugger.md
           - file: query-filter/tools/playground.md
-      - file: aggregations.md
+      - file: query-filter/aggregations.md
         children:
-          - file: aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
+          - file: query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
       - file: query-filter/filtering.md
   - file: geospatial-analysis.md
   - file: transforms.md
