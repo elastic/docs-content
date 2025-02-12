@@ -17,7 +17,7 @@ There are two ways to migrate the internal {{es}} indices:
 1. Reindex the indices from a remote cluster.
 2. Restore the indices from a snapshot.
 
-To reindex internal indices from a remote cluster, you can follow the same steps that you use to reindex regular indices when you [migrate your {{es}} data indices](../migrate.md#ec-reindex-remote).
+To reindex internal indices from a remote cluster, you can follow the same steps that you use to reindex regular indices when you [migrate your {{es}} data indices](../migrate.md#ech-reindex-remote).
 
 To restore internal indices from a snapshot, the procedure is a bit different from migrating {{es}} data indices. Use these steps to restore internal indices from a snapshot:
 

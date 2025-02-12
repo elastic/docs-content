@@ -48,7 +48,7 @@ If you still have access to the original data source, outside of your old {{es}}
 
 If the original source isn’t available or has other issues that make it non-viable, there are still two more migration options, getting the data from a remote cluster or restoring from a snapshot.
 
-### Reindex from a remote cluster [ec-reindex-remote] [ech-reindex-remote]
+### Reindex from a remote cluster [ech-reindex-remote]
 
 Through the {{es}} reindex API, you can connect your new {{es}} Service deployment remotely to your old {{es}} cluster. This pulls the data from your old cluster and indexes it into your new one. Reindexing essentially rebuilds the index from scratch and it can be more resource intensive to run.
 
