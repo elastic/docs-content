@@ -23,7 +23,7 @@ An aggregation summarizes your data as metrics, statistics, or other analytics. 
 
 ## Run an aggregation [run-an-agg]
 
-You can run aggregations as part of a [search](../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. The following search runs a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) on `my-field`:
+You can run aggregations as part of a [search](../../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. The following search runs a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) on `my-field`:
 
 ```console
 GET /my-index-000001/_search
@@ -262,7 +262,7 @@ Some aggregations return a different aggregation type from the type in the reque
 
 ## Use scripts in an aggregation [use-scripts-in-an-agg] 
 
-When a field doesn’t exactly match the aggregation you need, you should aggregate on a [runtime field](../manage-data/data-store/mapping/runtime-fields.md):
+When a field doesn’t exactly match the aggregation you need, you should aggregate on a [runtime field](../../manage-data/data-store/mapping/runtime-fields.md):
 
 ```console
 GET /my-index-000001/_search?size=0
