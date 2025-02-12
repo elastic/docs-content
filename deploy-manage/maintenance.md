@@ -3,7 +3,23 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana.html
 ---
 
-# Maintenance [ece-manage-kibana]
+# Maintenance [maintenance]
+
+The topics in this section provide information about the tasks and processes necessary to keep your {{es}} infrastructure and deplyoments healthy, performant, and secure:
+
+* **ECE maintenance**: presents the procedures of both host infrastructure and deplyoment maintenance.
+* **Start and stop services** describes how to stop and start your {{es}} deplyoment or {{kib}} instance in case you need to perform actions that require a restart.
+* **Add and remove {{es}} nodes**: 
+
+
+
+
+
+
+
+
+
+## Managing Kibana [ece-manage-kibana]
 
 Kibana is an open source analytics and visualization platform designed to work with Elasticsearch, that makes it easy to perform advanced data analysis and to visualize your data in a variety of charts, tables, and maps. Its simple, browser-based interface enables you to quickly create and share dynamic dashboards that display changes to Elasticsearch queries in real time.
 
@@ -11,10 +27,9 @@ Most deployment templates include a Kibana instance, but if it wasn’t part of 
 
 The new Kibana instance takes a few moments to provision. After provisioning Kibana is complete, you can use the endpoint URL to access Kibana.
 
-::::{tip} 
+::::{tip}
 You can log into Kibana as the `elastic` superuser. The password was provided when you created your deployment or can be [reset](users-roles/cluster-or-deployment-auth/built-in-users.md). On AWS and not able to access Kibana? [Check if you need to update your endpoint URL first](../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
 ::::
-
 
 From the deployment **Kibana** page you can also:
 
@@ -22,4 +37,3 @@ From the deployment **Kibana** page you can also:
 * Restart it after stopping.
 * Upgrade your Kibana instance version if it is out of sync with your Elasticsearch cluster.
 * Delete to fully remove the instance, wipe it from the disk, and stop charges.
-
