@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Webhook action"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-webhook.html

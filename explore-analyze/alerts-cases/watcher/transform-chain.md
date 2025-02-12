@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Chain {{watcher-transform}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-chain.html

@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Triggers"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trigger.html

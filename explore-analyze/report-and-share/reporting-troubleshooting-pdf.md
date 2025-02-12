@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "PDF/PNG"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting-pdf.html

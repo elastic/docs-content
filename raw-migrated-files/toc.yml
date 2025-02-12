@@ -267,7 +267,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-http-apis.md
       - file: docs-content/serverless/elasticsearch-ingest-data-file-upload.md
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
-      - file: docs-content/serverless/elasticsearch-ingest-your-data.md
       - file: docs-content/serverless/elasticsearch-manage-project.md
       - file: docs-content/serverless/endpoint-protection-rules.md
       - file: docs-content/serverless/general-billing-stop-project.md
@@ -401,8 +400,7 @@ toc:
       - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
-      - file: docs-content/serverless/security-advanced-behavioral-detections.md
-      - file: docs-content/serverless/security-advanced-entity-analytics.md
+      - file: docs-content/serverless/security-advanced-behavioral-detections.md  
       - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-agent-tamper-protection.md
       - file: docs-content/serverless/security-ai-assistant-esql-queries.md
@@ -462,7 +460,6 @@ toc:
       - file: docs-content/serverless/security-endpoint-protection-intro.md
       - file: docs-content/serverless/security-endpoint-self-protection.md
       - file: docs-content/serverless/security-endpoints-page.md
-      - file: docs-content/serverless/security-entity-risk-scoring.md
       - file: docs-content/serverless/security-environment-variable-capture.md
       - file: docs-content/serverless/security-ers-requirements.md
       - file: docs-content/serverless/security-event-filters.md
@@ -628,8 +625,6 @@ toc:
       - file: ingest-docs/fleet/fleet-agent-serverless-restrictions.md
       - file: ingest-docs/fleet/fleet-elastic-agent-quick-start.md
   - file: ingest-docs/ingest-overview/index.md
-    children:
-      - file: ingest-docs/ingest-overview/ingest-intro.md
   - file: kibana/kibana/index.md
     children:
       - file: kibana/kibana/action-types.md
@@ -795,7 +790,6 @@ toc:
       - file: security-docs/security/add-manage-notes.md
       - file: security-docs/security/admin-page-ov.md
       - file: security-docs/security/advanced-behavioral-detections.md
-      - file: security-docs/security/advanced-entity-analytics-overview.md
       - file: security-docs/security/advanced-settings.md
       - file: security-docs/security/agent-tamper-protection.md
       - file: security-docs/security/ai-assistant-knowledge-base.md
@@ -862,7 +856,6 @@ toc:
       - file: security-docs/security/endpoint-protection-intro.md
       - file: security-docs/security/endpoint-protection-rules.md
       - file: security-docs/security/endpoint-self-protection.md
-      - file: security-docs/security/entity-risk-scoring.md
       - file: security-docs/security/environment-variable-capture.md
       - file: security-docs/security/ers-requirements.md
       - file: security-docs/security/es-overview.md
