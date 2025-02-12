@@ -20,7 +20,7 @@ The Threat Intelligence view provides a streamlined way to collect threat intell
 Threat indicators describe potential threats, unusual behavior, or malicious activity on a network or in an environment. They are commonly used in indicator match rules to detect and match known threats. When an indicator match rule generates an alert, it includes information about the matched threat indicator.
 
 ::::{note}
-To learn more about alerts with threat intelligence, visit [View alert details](../../../solutions/security/detect-and-alert/view-detection-alert-details.md).
+To learn more about alerts with threat intelligence, visit [View alert details](../detect-and-alert/view-detection-alert-details.md).
 
 ::::
 
