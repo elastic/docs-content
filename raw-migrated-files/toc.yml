@@ -507,7 +507,6 @@ toc:
       - file: docs-content/serverless/security-runtime-fields.md
       - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-session-view.md
-      - file: docs-content/serverless/security-shared-exception-lists.md
       - file: docs-content/serverless/security-signals-to-cases.md
       - file: docs-content/serverless/security-spaces.md
       - file: docs-content/serverless/security-third-party-actions.md
@@ -903,7 +902,6 @@ toc:
       - file: security-docs/security/security-spaces.md
       - file: security-docs/security/self-healing-rollback.md
       - file: security-docs/security/session-view.md
-      - file: security-docs/security/shared-exception-lists.md
       - file: security-docs/security/signals-to-cases.md
       - file: security-docs/security/third-party-actions.md
       - file: security-docs/security/timeline-templates-ui.md
