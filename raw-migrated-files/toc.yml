@@ -55,7 +55,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-create-deployment.md
       - file: cloud/cloud-enterprise/ece-delete-deployment.md
       - file: cloud/cloud-enterprise/ece-deployment-no-op.md
-      - file: cloud/cloud-enterprise/ece-disable-data-tier.md
       - file: cloud/cloud-enterprise/ece-enable-auditing.md
       - file: cloud/cloud-enterprise/ece-find.md
       - file: cloud/cloud-enterprise/ece-generate-roles-token.md
@@ -400,7 +399,7 @@ toc:
       - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
-      - file: docs-content/serverless/security-advanced-behavioral-detections.md  
+      - file: docs-content/serverless/security-advanced-behavioral-detections.md
       - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-agent-tamper-protection.md
       - file: docs-content/serverless/security-ai-assistant-esql-queries.md
@@ -560,7 +559,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
       - file: elasticsearch/elasticsearch-reference/data-streams.md
-      - file: elasticsearch/elasticsearch-reference/data-tiers.md
       - file: elasticsearch/elasticsearch-reference/defining-roles.md
       - file: elasticsearch/elasticsearch-reference/document-level-security.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
