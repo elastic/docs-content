@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-error-handling.html
 ---
 
-% marciw move so this is with other ILM topics
+% marciw consolidate ILM topics
 
 # Fix index lifecycle management errors [index-lifecycle-error-handling]
 
