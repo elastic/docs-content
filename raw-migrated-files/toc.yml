@@ -398,7 +398,6 @@ toc:
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/quickstart-monitor-hosts-with-otel.md
       - file: docs-content/serverless/security-about-rules.md
-      - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
       - file: docs-content/serverless/security-advanced-behavioral-detections.md  
       - file: docs-content/serverless/security-advanced-settings.md
@@ -785,7 +784,6 @@ toc:
   - file: security-docs/security/index.md
     children:
       - file: security-docs/security/about-rules.md
-      - file: security-docs/security/add-exceptions.md
       - file: security-docs/security/add-manage-notes.md
       - file: security-docs/security/admin-page-ov.md
       - file: security-docs/security/advanced-behavioral-detections.md
