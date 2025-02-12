@@ -79,8 +79,7 @@ Once your project is set up, you’ll be directed to a page where you can create
 
 
 ::::{note}
-You won’t be able to view this API key again. If needed, refer to [Create a new API key](#elasticsearch-get-started-create-api-key) to generate a new one.
-
+You won’t be able to view this API key again. If needed you'll need to generate a new one.
 ::::
 
 
