@@ -2,6 +2,9 @@
 navigation_title: "Search Application client guide"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-client.html
+applies:
+  stack:
+  serverless:
 ---
 
 

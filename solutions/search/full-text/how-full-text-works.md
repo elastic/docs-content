@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # How full-text search works [full-text-search-how-it-works]
 
 The following diagram illustrates the components of full-text search.

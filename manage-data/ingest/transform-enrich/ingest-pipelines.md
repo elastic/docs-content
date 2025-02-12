@@ -13,7 +13,7 @@ A pipeline consists of a series of configurable tasks called [processors](https:
 :alt: Ingest pipeline diagram
 :::
 
-You can create and manage ingest pipelines using {{kib}}'s **Ingest Pipelines** feature or the [ingest APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-apis.html). {{es}} stores pipelines in the [cluster state](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state.html).
+You can create and manage ingest pipelines using {{kib}}'s **Ingest Pipelines** feature or the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). {{es}} stores pipelines in the [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state).
 
 :::{note}
 To run an {{es}} pipeline in {{serverless-full}}, refer to [{{es}} Ingest pipelines (Serverless)](./ingest-pipelines-serverless.md).
@@ -46,7 +46,7 @@ The **New pipeline from CSV** option lets you use a CSV to create an ingest pipe
 ::::
 
 
-You can also use the [ingest APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-apis.html) to create and manage pipelines. The following [create pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html) request creates a pipeline containing two [`set`](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html) processors followed by a [`lowercase`](https://www.elastic.co/guide/en/elasticsearch/reference/current/lowercase-processor.html) processor. The processors run sequentially in the order specified.
+You can also use the [ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest) to create and manage pipelines. The following [create pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) request creates a pipeline containing two [`set`](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html) processors followed by a [`lowercase`](https://www.elastic.co/guide/en/elasticsearch/reference/current/lowercase-processor.html) processor. The processors run sequentially in the order specified.
 
 ```console
 PUT _ingest/pipeline/my-pipeline
@@ -79,7 +79,7 @@ PUT _ingest/pipeline/my-pipeline
 
 ## Manage pipeline versions [manage-pipeline-versions]
 
-When you create or update a pipeline, you can specify an optional `version` integer. You can use this version number with the [`if_version`](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html#put-pipeline-api-query-params) parameter to conditionally update the pipeline. When the `if_version` parameter is specified, a successful update increments the pipeline’s version.
+When you create or update a pipeline, you can specify an optional `version` integer. You can use this version number with the [`if_version`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline#put-pipeline-api-query-params) parameter to conditionally update the pipeline. When the `if_version` parameter is specified, a successful update increments the pipeline’s version.
 
 ```console
 PUT _ingest/pipeline/my-pipeline-id
@@ -101,7 +101,7 @@ Before using a pipeline in production, we recommend you test it using sample doc
 :class: screenshot
 :::
 
-You can also test pipelines using the [simulate pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html). You can specify a configured pipeline in the request path. For example, the following request tests `my-pipeline`.
+You can also test pipelines using the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate). You can specify a configured pipeline in the request path. For example, the following request tests `my-pipeline`.
 
 ```console
 POST _ingest/pipeline/my-pipeline/_simulate
@@ -188,7 +188,7 @@ The API returns transformed documents:
 
 ## Add a pipeline to an indexing request [add-pipeline-to-indexing-request]
 
-Use the `pipeline` query parameter to apply a pipeline to documents in [individual](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html) or [bulk](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) indexing requests.
+Use the `pipeline` query parameter to apply a pipeline to documents in [individual](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) or [bulk](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) indexing requests.
 
 ```console
 POST my-data-stream/_doc?pipeline=my-pipeline
@@ -204,7 +204,7 @@ PUT my-data-stream/_bulk?pipeline=my-pipeline
 { "@timestamp": "2099-03-07T11:04:07.000Z", "my-keyword-field": "bar" }
 ```
 
-You can also use the `pipeline` parameter with the [update by query](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html) or [reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) APIs.
+You can also use the `pipeline` parameter with the [update by query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) or [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) APIs.
 
 ```console
 POST my-data-stream/_update_by_query?pipeline=my-pipeline
@@ -269,7 +269,7 @@ $$$pipeline-custom-logs-index-template$$$
 
 2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-default-pipeline) or [`index.final_pipeline`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/index-types/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
 
-    You can create this template using {{kib}}'s [**Index Management**](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [create index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html).
+    You can create this template using {{kib}}'s [**Index Management**](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
     For example, the following request creates a template matching `logs-my_app-*`. The template uses a component template that contains the `index.default_pipeline` index setting.
 
@@ -305,7 +305,7 @@ $$$pipeline-custom-logs-index-template$$$
     :class: screenshot
     :::
 
-5. Use the [rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html) to roll over your data stream. This ensures {{es}} applies the index template and its pipeline settings to any new data for the integration.
+5. Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to roll over your data stream. This ensures {{es}} applies the index template and its pipeline settings to any new data for the integration.
 
     ```console
     POST logs-my_app-default/_rollover/
@@ -477,7 +477,7 @@ PUT _ingest/pipeline/my-pipeline
 The set processor above tells ES to use the dynamic template named `geo_point` for the field `address` if this field is not defined in the mapping of the index yet. This processor overrides the dynamic template for the field `address` if already defined in the bulk request, but has no effect on other dynamic templates defined in the bulk request.
 
 ::::{warning}
-If you [automatically generate](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#create-document-ids-automatically) document IDs, you cannot use `{{{_id}}}` in a processor. {{es}} assigns auto-generated `_id` values after ingest.
+If you [automatically generate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create#create-document-ids-automatically) document IDs, you cannot use `{{{_id}}}` in a processor. {{es}} assigns auto-generated `_id` values after ingest.
 ::::
 
 
@@ -799,7 +799,7 @@ PUT _ingest/pipeline/one-pipeline-to-rule-them-all
 
 ## Get pipeline usage statistics [get-pipeline-usage-stats]
 
-Use the [node stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html) API to get global and per-pipeline ingest statistics. Use these stats to determine which pipelines run most frequently or spend the most time processing.
+Use the [node stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) API to get global and per-pipeline ingest statistics. Use these stats to determine which pipelines run most frequently or spend the most time processing.
 
 ```console
 GET _nodes/stats/ingest?filter_path=nodes.*.ingest

@@ -2,6 +2,9 @@
 navigation_title: "Semantic search with `semantic_text`"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Semantic search with `semantic_text` [semantic-search-semantic-text]
