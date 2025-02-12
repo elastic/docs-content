@@ -157,7 +157,7 @@ Once configured you’ll be able to make search requests to your search applicat
 
 ## Working with your search template [search-application-client-client-template] 
 
-The Search Application client is designed to work with any [search template](../applications/search-application-api.md) you create. You’ll use the Search Application APIs to create and manage your search templates.
+The Search Application client is designed to work with any [search template](search-application-api.md) you create. You’ll use the Search Application APIs to create and manage your search templates.
 
 ::::{tip} 
 When working with the Search Application APIs to manage templates, we provide the API examples using [{{kib}} Console^](../../../explore-analyze/query-filter/tools/console.md) syntax.

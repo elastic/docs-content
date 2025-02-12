@@ -108,7 +108,7 @@ If `expiration` is not present, by default {{es}} API keys never expire. The API
 
 ## Parameter validation with search applications [search-application-security-parameter-validation] 
 
-Your search applications use [search templates](../applications/search-application-api.md) to render queries. The template parameters are passed to the Search Application Search API. In the case of APIs used by frontend applications or untrusted clients, we need to have strict parameter validation. Search applications define a JSON schema that describes which parameters the Search Application Search API allows.
+Your search applications use [search templates](search-application-api.md) to render queries. The template parameters are passed to the Search Application Search API. In the case of APIs used by frontend applications or untrusted clients, we need to have strict parameter validation. Search applications define a JSON schema that describes which parameters the Search Application Search API allows.
 
 The following example defines a search application with strict parameter validation:
 
@@ -213,7 +213,7 @@ If you are unable to enable CORS on {{es}}, you can proxy the request through a 
 * [Role restrictions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/role-restriction.md)
 * [Document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 * [Field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
-* [APIs](../applications/search-application-api.md)
+* [APIs](search-application-api.md)
 
     * [PUT Search Application API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html)
     * [Search Application Search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-search.html)
