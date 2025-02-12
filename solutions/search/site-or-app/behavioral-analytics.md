@@ -3,7 +3,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-overview.html
 applies:
   stack:
-  serverless:
 ---
 
 # Behavioral analytics [behavioral-analytics-overview]
