@@ -6,8 +6,6 @@ mapped_urls:
 
 # Add and manage exceptions [add-exceptions]
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 You can add exceptions to a rule from the rule details page, the Alerts table, the alert details flyout, or the Shared Exception Lists page. When you add an exception, you can also close all alerts that meet the exception’s criteria.
 
 ::::{important}
@@ -245,7 +243,8 @@ Some Endpoint objects contain nested fields, and the only way to ensure you are 
 }
 ```
 
-[[nested-field-list]]
+[nested-field-list]
+
 Only these objects require nested conditions to ensure the exception functions correctly:
 
 * `Endpoint.policy.applied.artifacts.global.identifiers`
