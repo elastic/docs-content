@@ -2,6 +2,9 @@
 navigation_title: "Alibaba Cloud AI Search"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-alibabacloud-ai-search.html
+applies:
+  stack:
+  serverless:
 ---
 
 # AlibabaCloud AI Search inference integration [infer-service-alibabacloud-ai-search]

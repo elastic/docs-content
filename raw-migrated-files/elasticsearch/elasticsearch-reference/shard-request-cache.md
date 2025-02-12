@@ -7,7 +7,7 @@ The shard-level request cache module caches the local results on each shard. Thi
 You can control the size and expiration of the cache at the node level using the [shard request cache settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache-settings.html).
 
 ::::{important} 
-By default, the requests cache will only cache the results of search requests where `size=0`, so it will not cache `hits`, but it will cache `hits.total`,  [aggregations](../../../explore-analyze/aggregations.md), and [suggestions](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html).
+By default, the requests cache will only cache the results of search requests where `size=0`, so it will not cache `hits`, but it will cache `hits.total`,  [aggregations](../../../explore-analyze/query-filter/aggregations.md), and [suggestions](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html).
 
 Most queries that use `now` (see [Date Math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math)) cannot be cached.
 

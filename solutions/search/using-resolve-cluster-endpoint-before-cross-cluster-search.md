@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_advantages_of_using_this_endpoint_before_a_cross_cluster_search.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Advantages of using this endpoint before a {{ccs}} [_advantages_of_using_this_endpoint_before_a_ccs]

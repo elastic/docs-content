@@ -105,7 +105,6 @@ If the estimated model memory limit for an {{anomaly-job}} is greater than the m
 
 * If you are using the default value for the `model_memory_limit` and the {{ml}} nodes in the cluster have lots of memory, the best course of action might be to simply increase the job’s `model_memory_limit`. Before doing this, however, double-check that the chosen analysis makes sense. The default `model_memory_limit` is relatively low to avoid accidentally creating a job that uses a huge amount of memory.
 * If the {{ml}} nodes in the cluster do not have sufficient memory to accommodate a job of the estimated size, the only options are:
-
   * Add bigger {{ml}} nodes to the cluster, or
   * Accept that the job will hit its memory limit and will not necessarily find all the anomalies it could otherwise find.
 

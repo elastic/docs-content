@@ -1,9 +1,10 @@
 ---
+navigation_title: Kibana internal server error
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-internalserver.html
 ---
 
-# Internal Server Error in Kibana [trb-security-internalserver]
+# Internal server error in Kibana [trb-security-internalserver]
 
 **Symptoms:**
 

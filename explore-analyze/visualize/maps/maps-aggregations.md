@@ -12,7 +12,7 @@ mapped_pages:
 # Plot big data [maps-aggregations]
 
 
-Use [aggregations](../../aggregations.md) to plot large data sets without overwhelming your network or your browser. When using aggregations, the documents stay in Elasticsearch and only the calculated values for each group are returned to your computer.
+Use [aggregations](../../query-filter/aggregations.md) to plot large data sets without overwhelming your network or your browser. When using aggregations, the documents stay in Elasticsearch and only the calculated values for each group are returned to your computer.
 
 Aggregations group your documents into buckets and calculate metrics for each bucket. Use metric aggregations for [data driven styling](vector-style.md#maps-vector-style-data-driven). For example, use the count aggregation to shade world countries by web log traffic.
 

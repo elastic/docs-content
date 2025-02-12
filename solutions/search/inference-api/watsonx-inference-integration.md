@@ -2,6 +2,9 @@
 navigation_title: "Watsonx"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-watsonx-ai.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Watsonx inference integration [infer-service-watsonx-ai]

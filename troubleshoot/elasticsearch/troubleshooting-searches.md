@@ -126,7 +126,7 @@ GET /my-index-000001/_count
 }
 ```
 
-If the field is aggregatable, you can use [aggregations](../../explore-analyze/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) to retrieve the field’s most common values:
+If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) to retrieve the field’s most common values:
 
 ```console
 GET /my-index-000001/_search?filter_path=aggregations

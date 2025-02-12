@@ -2,6 +2,9 @@
 navigation_title: "Hybrid search with `semantic_text`"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text-hybrid-search.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Hybrid search with `semantic_text` [semantic-text-hybrid-search]

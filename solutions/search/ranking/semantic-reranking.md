@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-reranking.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Semantic reranking [semantic-reranking]
@@ -99,7 +102,7 @@ To use semantic re-ranking in {{es}}, you need to:
 2. **Create a `rerank` endpoint using the [{{es}} Inference API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put)**. The Inference API creates an inference endpoint and configures your chosen machine learning model to perform the re-ranking task.
 3. **Define a `text_similarity_reranker` retriever in your search request**. The retriever syntax makes it simple to configure both the retrieval and re-ranking of search results in a single API call.
 
-::::{dropdown} **Example search request** with semantic reranker
+::::{dropdown} Example search request with semantic reranker
 The following example shows a search request that uses a semantic reranker to reorder the top-k documents based on their semantic similarity to the query.
 
 ```console

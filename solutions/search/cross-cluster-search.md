@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Cross-cluster search [modules-cross-cluster-search]

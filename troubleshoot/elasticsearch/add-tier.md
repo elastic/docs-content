@@ -1,5 +1,5 @@
 ---
-navigation_title: Index allocation data tier
+navigation_title: Preferred data tier
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-tier.html
 ---

@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # Dense vector
 
 Dense neural embeddings capture semantic meaning by translating content into fixed-length vectors of floating-point numbers. Similar content maps to nearby points in the vector space, making them ideal for:

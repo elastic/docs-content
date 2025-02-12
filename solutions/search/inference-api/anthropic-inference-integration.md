@@ -2,6 +2,9 @@
 navigation_title: "Anthropic"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-anthropic.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Anthropic inference integration [infer-service-anthropic]

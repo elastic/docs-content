@@ -2,6 +2,9 @@
 navigation_title: "Google Vertex AI"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-vertex-ai.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Google Vertex AI inference integration [infer-service-google-vertex-ai]

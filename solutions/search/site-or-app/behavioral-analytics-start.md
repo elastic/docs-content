@@ -2,6 +2,8 @@
 navigation_title: "Get started"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-start.html
+applies:
+  stack:
 ---
 
 

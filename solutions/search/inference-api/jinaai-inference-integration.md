@@ -2,6 +2,9 @@
 navigation_title: "JinaAI"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-service-jinaai.html
+applies:
+  stack:
+  serverless:
 ---
 
 # JinaAI inference integration [infer-service-jinaai]

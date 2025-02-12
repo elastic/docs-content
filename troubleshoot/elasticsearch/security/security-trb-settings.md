@@ -1,9 +1,10 @@
 ---
+navigation_title: Nodes info API response
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-trb-settings.html
 ---
 
-# Some settings are not returned via the nodes settings API [security-trb-settings]
+# Troubleshoot a nodes info API response [security-trb-settings]
 
 **Symptoms:**
 

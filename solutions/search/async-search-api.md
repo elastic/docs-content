@@ -2,6 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search-intro.html
 navigation_title: The `async-search` API
+applies:
+  stack:
+  serverless:
 ---
 
 # Long running searches with the Async Search API [async-search-intro]

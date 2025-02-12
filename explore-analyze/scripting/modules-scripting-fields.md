@@ -36,7 +36,7 @@ Field values can be accessed from a script using [doc-values](#modules-scripting
 
 ### Accessing the score of a document within a script [scripting-score] 
 
-Scripts used in the [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html), in [script-based sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html), or in [aggregations](../aggregations.md) have access to the `_score` variable which represents the current relevance score of a document.
+Scripts used in the [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html), in [script-based sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html), or in [aggregations](../query-filter/aggregations.md) have access to the `_score` variable which represents the current relevance score of a document.
 
 Here’s an example of using a script in a [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html) to alter the relevance `_score` of each document:
 

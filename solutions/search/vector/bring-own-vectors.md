@@ -2,6 +2,9 @@
 navigation_title: "Bring your own dense vectors"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bring-your-own-vectors.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Bring your own dense vectors [bring-your-own-vectors]

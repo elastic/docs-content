@@ -2,6 +2,9 @@
 navigation_title: "Mistral"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-mistral.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Mistral inference integration [infer-service-mistral]
