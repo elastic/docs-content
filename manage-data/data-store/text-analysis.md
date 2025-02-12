@@ -7,28 +7,7 @@ mapped_urls:
 
 # Text analysis
 
-% What needs to be done: Refine
-
-% GitHub issue: docs-projects#371
-
-% Scope notes: Combine the linked sources into a single intro/overview and add links to the relevant reference pages.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/analysis.md
-%      Notes: Introduce analysis plugins, placed here because in an indexing context it's called from the mapping or the index settings, you can also call it from search but maybe we can just reference it in the context of the search API
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/analysis-overview.md
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-modules-analysis.md
-
-% //////////////////////////////
-% What is it?
-% //////////////////////////////
-
 _Text analysis_ is the process of converting unstructured text, like the body of an email or a product description, into a structured format that’s [optimized for search](/solutions/search/full-text.md).
-
-% //////////////////////////////
-% Why would someone use it?
-% //////////////////////////////
 
 Text analysis enables {{es}} to perform full-text search, where the search returns all *relevant* results rather than just exact matches. For example, if you search for `Quick fox jumps`, you probably want the document that contains `A quick brown fox jumps over the lazy dog`, and you might also want documents that contain related words like `fast fox` or `foxes leap`.
 
@@ -38,10 +17,6 @@ Text analysis enables {{es}} to perform full-text search, where the search retur
 * Mine unstructured data
 * Fine-tune search for a specific language
 * Perform lexicographic or linguistic research
-
-% //////////////////////////////
-% How does it work?
-% //////////////////////////////
 
 ## Tokenization [tokenization]
 
