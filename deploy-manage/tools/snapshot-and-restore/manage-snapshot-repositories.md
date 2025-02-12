@@ -20,7 +20,7 @@ Elastic Cloud Hosted deployments also support the following repository types:
 
 * [Azure](/deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
-* [AWS S3](/deploy-managetools/snapshot-and-restore/ec-aws-custom-repository.md)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
 * [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.md)
 
 For more details, refer to Managing snapshot repositories in [Elastic Cloud Hosted](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
