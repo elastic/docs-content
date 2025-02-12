@@ -464,7 +464,6 @@ toc:
       - file: docs-content/serverless/security-ers-requirements.md
       - file: docs-content/serverless/security-event-filters.md
       - file: docs-content/serverless/security-examine-osquery-results.md
-      - file: docs-content/serverless/security-explore-your-data.md
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
       - file: docs-content/serverless/security-hosts-overview.md
@@ -900,7 +899,6 @@ toc:
       - file: security-docs/security/rules-ui-create.md
       - file: security-docs/security/rules-ui-management.md
       - file: security-docs/security/runtime-fields.md
-      - file: security-docs/security/sec-explore-intro.md
       - file: security-docs/security/sec-manage-intro.md
       - file: security-docs/security/sec-requirements.md
       - file: security-docs/security/security-assistant.md
