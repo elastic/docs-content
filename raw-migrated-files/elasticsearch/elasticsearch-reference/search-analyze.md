@@ -59,7 +59,7 @@ The folowing aggregation types are available:
 * [Bucket](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html): Group documents into buckets based on field values, ranges, or other criteria.
 * [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html): Run aggregations on the results of other aggregations.
 
-Run aggregations by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. Learn more in [Run an aggregation](../../../explore-analyze/aggregations.md#run-an-agg).
+Run aggregations by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. Learn more in [Run an aggregation](../../../explore-analyze/query-filter/aggregations.md#run-an-agg).
 
 
 ### {{esql}} [search-analyze-data-esql]

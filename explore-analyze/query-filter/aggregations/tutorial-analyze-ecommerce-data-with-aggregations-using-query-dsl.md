@@ -22,15 +22,15 @@ You’ll learn how to:
 
 You’ll need:
 
-1. A running instance of [{{es}}](../../get-started/deployment-options.md), either on {{serverless-full}} or together with {{kib}} on Elastic Cloud Hosted/Self Managed deployments.
+1. A running instance of [{{es}}](../../../get-started/deployment-options.md), either on {{serverless-full}} or together with {{kib}} on Elastic Cloud Hosted/Self Managed deployments.
 
-    * If you don’t have a deployment, you can run the following command in your terminal to set up a [local dev environment](../../solutions/search/get-started.md):
+    * If you don’t have a deployment, you can run the following command in your terminal to set up a [local dev environment](../../../solutions/search/get-started.md):
 
         ```sh
         curl -fsSL https://elastic.co/start-local | sh
         ```
 
-2. The [sample eCommerce data](../index.md#gs-get-data-into-kibana) loaded into {{es}}. To load sample data follow these steps in your UI:
+2. The [sample eCommerce data](../../index.md#gs-get-data-into-kibana) loaded into {{es}}. To load sample data follow these steps in your UI:
 
     * Open the **Integrations** pages by searching in the global search field.
     * Search for `sample data` in the **Integrations** search field.
@@ -40,7 +40,7 @@ You’ll need:
 
 ## Inspect index structure [aggregations-tutorial-inspect-data]
 
-Before we start analyzing the data, let’s examine the structure of the documents in our sample eCommerce index. Run this command to see the field [mappings](../../manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings):
+Before we start analyzing the data, let’s examine the structure of the documents in our sample eCommerce index. Run this command to see the field [mappings](../../../manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings):
 
 ```console
 GET kibana_sample_data_ecommerce/_mapping
