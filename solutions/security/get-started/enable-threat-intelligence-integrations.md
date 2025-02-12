@@ -44,7 +44,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 2. In the Threat Intelligence view, click **Enable sources** to view the Integrations page. Scroll down and select **Elastic Agent only** to filter by {{agent}} integrations.
 
     ::::{tip}
-    If you know the name of {{agent}} integration you want to install, you can search for it directly. Alternatively, choose the **Threat Intelligence** category to display a list of available [threat intelligence integrations](https://docs.elastic.co/en/integrations/threat-intelligence-intro).
+    If you know the name of {{agent}} integration you want to install, you can search for it directly. Alternatively, choose the **Threat Intelligence** category to display a list of available [threat intelligence integrations]({{integrations-docs}}/threat-intelligence-intro).
 
     ::::
 
