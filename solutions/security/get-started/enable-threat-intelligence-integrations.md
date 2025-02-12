@@ -74,7 +74,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 ## Add a custom integration [custom-ti-integration]
 
 1. Set up a way to [ingest data](ingest-data-to-elastic-security.md) into your system.
-2. Update the `securitySolution:defaultThreatIndex` [advanced setting](../../../solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`), for example, `logs-ti*`,`custom-ti-index*`.
+2. Update the `securitySolution:defaultThreatIndex` [advanced setting](configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`), for example, `logs-ti*`,`custom-ti-index*`.
 
     ::::{note}
     Threat intelligence indices aren’t required to be ECS compatible. However, we strongly recommend compatibility if you’d like your alerts to be enriched with relevant threat indicator information. You can find a list of ECS-compliant threat intelligence fields at [Threat Fields](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-threat.html).
