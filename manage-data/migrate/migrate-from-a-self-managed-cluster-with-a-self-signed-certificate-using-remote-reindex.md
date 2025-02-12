@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-reindex.html
+applies:
+  serverless: unavailable
+  hosted: all
+  ece: unavailable
 ---
 
 # Migrate from a self-managed cluster with a self-signed certificate using remote reindex [ec-remote-reindex]
