@@ -2,6 +2,8 @@
 navigation_title: "Get started on Serverless"
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-connecting-to-es-serverless-endpoint.html
+applies:
+  serverless:
 ---
 
 # Get started with {{es}} Serverless [elasticsearch-get-started]
@@ -27,12 +29,12 @@ This automation allows you to focus on building your search applications and sol
 
 On this page, you will learn how to:
 
-* [Create an {{es-serverless}} project](get-started.md#elasticsearch-get-started-create-project).
+* [Create an {{es-serverless}} project](#elasticsearch-get-started-create-project).
 * Get started with {{es}}:
 
-    * [Option 1: Guided index flow](get-started.md#elasticsearch-follow-guided-index-flow): Follow the step-by-step tutorial provided in the UI to create an index and ingest data.
-    * [Option 2: In-product Getting Started guide](get-started.md#elasticsearch-follow-in-product-getting-started): Use the Getting Started page’s instructions to ingest data and perform your first search.
-    * [Option 3: Explore on your own](get-started.md#elasticsearch-explore-on-your-own): If you’re already familiar with {{es}}, retrieve your connection details, select an ingest method that suits your needs, and start searching.
+    * [Option 1: Guided index flow](#elasticsearch-follow-guided-index-flow): Follow the step-by-step tutorial provided in the UI to create an index and ingest data.
+    * [Option 2: In-product Getting Started guide](#elasticsearch-follow-in-product-getting-started): Use the Getting Started page’s instructions to ingest data and perform your first search.
+    * [Option 3: Explore on your own](#elasticsearch-explore-on-your-own): If you’re already familiar with {{es}}, retrieve your connection details, select an ingest method that suits your needs, and start searching.
 
 
 ## Create an {{es-serverless}} project [elasticsearch-get-started-create-project]
@@ -77,8 +79,7 @@ Once your project is set up, you’ll be directed to a page where you can create
 
 
 ::::{note}
-You won’t be able to view this API key again. If needed, refer to [Create a new API key](get-started.md#elasticsearch-get-started-create-api-key) to generate a new one.
-
+You won’t be able to view this API key again. If needed you'll need to generate a new one.
 ::::
 
 

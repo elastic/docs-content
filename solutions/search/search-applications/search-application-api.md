@@ -2,6 +2,9 @@
 navigation_title: "Search API and templates"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-api.html
+applies:
+  stack:
+  serverless:
 ---
 
 

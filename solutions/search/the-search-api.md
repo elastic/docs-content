@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # The `_search` API [search-your-data]
 
 ::::{tip}
