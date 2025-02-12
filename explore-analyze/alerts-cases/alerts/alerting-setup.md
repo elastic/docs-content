@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Set up"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-setup.html

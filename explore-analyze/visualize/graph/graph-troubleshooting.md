@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Troubleshooting and limitations"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-troubleshooting.html

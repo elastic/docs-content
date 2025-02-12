@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-pipeline-search-inference.html
 ---
@@ -20,7 +23,7 @@ This feature is not available at all Elastic subscription levels. Refer to the E
 
 ### ELSER text expansion [ingest-pipeline-search-inference-elser]
 
-Using Elastic’s [ELSER machine learning model](../nlp/ml-nlp-elser.md) you can easily incorporate text expansion for your queries. This works by using ELSER to provide semantic enrichments to your documents upon ingestion, combined with the power of [Elastic Search Application templates](../../../solutions/search/applications.md) to provide automated text expansion at query time.
+Using Elastic’s [ELSER machine learning model](../nlp/ml-nlp-elser.md) you can easily incorporate text expansion for your queries. This works by using ELSER to provide semantic enrichments to your documents upon ingestion, combined with the power of [Elastic Search Application templates](../../../solutions/search/search-applications.md) to provide automated text expansion at query time.
 
 ### Named entity recognition (NER) [ingest-pipeline-search-inference-ner]
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrieval_augmented_generation.html
+applies:
+  stack:
+  serverless:
 ---
 
 # RAG [_retrieval_augmented_generation]

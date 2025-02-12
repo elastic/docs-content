@@ -408,5 +408,5 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 2. As your final step, remember to stop Filebeat and the Python script. Enter *CTRL + C* in both your Filebeat terminal and in your `elvis.py` terminal.
 
-You now know how to monitor log files from a Python application, deliver the log event data securely into an Elasticsearch Service deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md#ec-ingest-methods) to learn all about working in Elasticsearch Service.
+You now know how to monitor log files from a Python application, deliver the log event data securely into an Elasticsearch Service deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about working in Elasticsearch Service.
 

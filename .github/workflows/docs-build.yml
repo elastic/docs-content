@@ -13,5 +13,7 @@ jobs:
       continue-on-error: false
       strict: false
     permissions:
+      deployments: write
+      id-token: write
       contents: read
       pull-requests: read
