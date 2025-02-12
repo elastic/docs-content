@@ -190,7 +190,7 @@ Behavioral Analytics logs events using the [Elastic Common Schema^](https://www.
 
 ## Examples [behavioral-analytics-event-reference-examples] 
 
-::::{dropdown} **Expand** to see a full example of a `search` event data object:
+::::{dropdown} Expand to see a full example of a search event data object:
 ```js
 {
   "@timestamp": [
@@ -258,7 +258,7 @@ Behavioral Analytics logs events using the [Elastic Common Schema^](https://www.
 ::::
 
 
-::::{dropdown} **Expand** to see a full example of a `search_click` event data object:
+::::{dropdown} Expand to see a full example of a searchclick event data object:
 ```js
 {
   "@timestamp": [
@@ -347,7 +347,7 @@ Behavioral Analytics logs events using the [Elastic Common Schema^](https://www.
 ::::
 
 
-::::{dropdown} **Expand** to see a full example of a `pageview` event data object:
+::::{dropdown} Expand to see a full example of a pageview event data object:
 ```js
 {
   "@timestamp": [
