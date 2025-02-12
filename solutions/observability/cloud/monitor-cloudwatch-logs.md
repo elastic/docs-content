@@ -35,7 +35,7 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-cloudwatch-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Browse the catalog to find the AWS integration.
 3. Navigate to the **Settings** tab and click **Install AWS assets**.
 

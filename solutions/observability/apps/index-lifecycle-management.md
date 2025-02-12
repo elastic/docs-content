@@ -62,7 +62,7 @@ This tutorial explains how to apply a custom index lifecycle policy to the `trac
 
 The **Data Streams** view in {{kib}} shows you data streams, index templates, and lifecycle policies:
 
-1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Data Streams**.
 3. Search for `traces-apm` to see all data streams associated with APM trace data.
 4. In this example, I only have one data stream because I’m only using the `default` namespace. You may have more if your setup includes multiple namespaces.
@@ -76,7 +76,7 @@ The **Data Streams** view in {{kib}} shows you data streams, index templates, an
 
 ## Step 2: Create an index lifecycle policy [apm-data-streams-custom-two]
 
-1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 
 Name your new policy; For this tutorial, I’ve chosen `custom-traces-apm-policy`. Customize the policy to your liking, and when you’re done, click **Save policy**.

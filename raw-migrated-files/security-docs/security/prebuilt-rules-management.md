@@ -19,7 +19,7 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](h
 
 ## Install and enable Elastic prebuilt rules [load-prebuilt-rules]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then go to the Rules table.
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to the Rules table.
 
     The badge next to **Add Elastic rules** shows the number of prebuilt rules available for installation.
 
@@ -86,7 +86,7 @@ Each prebuilt rule includes several tags identifying the rule’s purpose, detec
 
 ## Select and duplicate all prebuilt rules [select-all-prebuilt-rules]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Elastic rules** filter.
 3. Click **Select all *x* rules** above the rules table.
 4. Click **Bulk actions** → **Duplicate**.
@@ -99,7 +99,7 @@ You can then modify the duplicated rules and, if required, delete the prebuilt o
 
 Elastic regularly updates prebuilt rules to optimize their performance and ensure they detect the latest threats and techniques. When updated versions are available for your installed prebuilt rules, the **Rule Updates** tab appears on the **Rules** page, allowing you to update your installed rules with the latest versions.
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Rules** table, select the **Rule Updates** tab.
 
     ::::{note}

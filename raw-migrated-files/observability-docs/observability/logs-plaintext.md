@@ -272,7 +272,7 @@ Follow these steps to ingest and centrally manage your logs using {{agent}} and 
 
 To add the custom logs integration to your project:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Type `custom` in the search bar and select **Custom Logs**.
 3. Click **Add Custom Logs**.
 4. Click **Install {{agent}}** at the bottom of the page, and follow the instructions for your system to install the {{agent}}.

@@ -36,7 +36,7 @@ For more on defining processors, refer to [define processors](https://www.elasti
 
 For logs that with an existing field being used to represent the service name, map that field to the `service.name` field using the [alias field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/field-alias.html). Follow these steps to update your mapping:
 
-1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Index Templates**.
 3. Search for the index template you want to update.
 4. From the **Actions** menu for that template, select **Edit**.

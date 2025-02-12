@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Named entity recognition"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-ner-example.html
@@ -110,7 +113,7 @@ Using the example text "Elastic is headquartered in Mountain View, California.",
 
 ## Add the NER model to an {{infer}} ingest pipeline [ex-ner-ingest]
 
-You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest.md#upload-data-kibana). Give the new index the name `les-miserables` when uploading the file.
+You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/tools/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
 
 Now create an ingest pipeline either in the [Stack management UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
 
@@ -235,7 +238,7 @@ The request returns the document marked up with one identified person:
 
 You can create a tag cloud to visualize your data processed by the {{infer}} pipeline. A tag cloud is a visualization that scales words by the frequency at which they occur. It is a handy tool for viewing the entities found in the data.
 
-In {{kib}}, open **Stack management** > **{{data-sources-cap}}** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects), and create a new {{data-source}} from the `les-miserables-infer` index pattern.
+In {{kib}}, open **Stack management** > **{{data-sources-cap}}** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md), and create a new {{data-source}} from the `les-miserables-infer` index pattern.
 
 Open **Dashboard** and create a new dashboard. Select the **Aggregation based-type > Tag cloud** visualization. Choose the new {{data-source}} as the source.
 

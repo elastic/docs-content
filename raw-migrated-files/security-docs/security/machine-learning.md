@@ -39,7 +39,7 @@ You can also check the status of {{ml}} detection rules, and start or stop their
 
 {{elastic-sec}} comes with prebuilt {{ml}} {anomaly-jobs} for automatically detecting host and network anomalies. The jobs are displayed in the `Anomaly Detection` interface. They are available when either:
 
-* You ship data using [Beats](https://www.elastic.co/products/beats) or the [{{agent}}](../../../solutions/security/configure-elastic-defend/install-elastic-defend.md), and {{kib}} is configured with the required index patterns (such as `auditbeat-*`, `filebeat-*`, `packetbeat-*`, or `winlogbeat-*`) on the **Data Views** page. To find this page, navigate to **Data Views** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+* You ship data using [Beats](https://www.elastic.co/products/beats) or the [{{agent}}](../../../solutions/security/configure-elastic-defend/install-elastic-defend.md), and {{kib}} is configured with the required index patterns (such as `auditbeat-*`, `filebeat-*`, `packetbeat-*`, or `winlogbeat-*`) on the **Data Views** page. To find this page, navigate to **Data Views** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Or
 

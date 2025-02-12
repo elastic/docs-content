@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/search-ai-assistant.html
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html

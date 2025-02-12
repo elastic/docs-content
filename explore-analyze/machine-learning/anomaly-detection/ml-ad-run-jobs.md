@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Run a job"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html
@@ -19,7 +22,7 @@ If your data is located outside of {{es}}, you cannot use {{kib}} to create your
 
 ## Create an {{anomaly-job}} [ml-ad-create-job]
 
-You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html). {{kib}} also provides wizards to simplify the process, which vary depending on whether you are using the {{ml-app}} app, {{security-app}} or {{observability}} apps. To open **Anomaly Detection**, find **{{ml-app}}** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+You can create {{anomaly-jobs}} by using the [create {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html). {{kib}} also provides wizards to simplify the process, which vary depending on whether you are using the {{ml-app}} app, {{security-app}} or {{observability}} apps. To open **Anomaly Detection**, find **{{ml-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/machine-learning-ml-create-job.png
 :alt: Create New Job
@@ -102,7 +105,6 @@ If the estimated model memory limit for an {{anomaly-job}} is greater than the m
 
 * If you are using the default value for the `model_memory_limit` and the {{ml}} nodes in the cluster have lots of memory, the best course of action might be to simply increase the job’s `model_memory_limit`. Before doing this, however, double-check that the chosen analysis makes sense. The default `model_memory_limit` is relatively low to avoid accidentally creating a job that uses a huge amount of memory.
 * If the {{ml}} nodes in the cluster do not have sufficient memory to accommodate a job of the estimated size, the only options are:
-
   * Add bigger {{ml}} nodes to the cluster, or
   * Accept that the job will hit its memory limit and will not necessarily find all the anomalies it could otherwise find.
 

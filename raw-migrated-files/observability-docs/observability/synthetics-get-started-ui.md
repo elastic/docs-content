@@ -37,7 +37,7 @@ If you are setting up Synthetics for a deployment configured with [traffic filte
 
 To use the {{synthetics-app}} to add a lightweight monitor:
 
-1. Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create monitor**.
 3. Set the monitor type to **HTTP Ping**, **TCP Ping**, or **ICMP Ping**.
 4. In *Locations*, select one or more locations.

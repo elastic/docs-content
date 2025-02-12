@@ -20,7 +20,7 @@ For agentless integrations to successfully connect to {{elastic-sec}}, the {{fle
 
 To troubleshoot this issue:
 
-1. Find **{{fleet}}** in the navigation menu or use the [global search field](../../get-started/the-stack.md#kibana-navigation-search). Go to the **Settings** tab.
+1. Find **{{fleet}}** in the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md). Go to the **Settings** tab.
 2. Under **{{fleet}} server hosts**, click the **Actions** button for the policy named `Default`. This opens the Edit {{fleet}} Server flyout. The policy named `Default` should have the **Make this {{fleet}} server the default one** setting enabled. If not, enable it, then delete your integration and create it again.
 
 ::::{note}
@@ -52,7 +52,7 @@ Deleting your integration will remove all associated resources and stop data ing
 
 When you create a new agentless CSPM integration, a new agent policy appears within the **Agent policies** tab on the **{{fleet}}** page, but you can’t use the **Delete integration** button on this page. Instead, you must delete the integration from the CSPM Integration’s **Integration policies** tab.
 
-1. Find **Integrations** in the navigation menu or use the [global search field](../../get-started/the-stack.md#kibana-navigation-search), then search for and select `CSPM`.
+1. Find **Integrations** in the navigation menu or use the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), then search for and select `CSPM`.
 2. Go to the CSPM Integration’s **Integration policies** tab.
 3. Find the integration policy for the integration you want to delete. Click **Actions**, then **Delete integration**.
 4. Confirm by clicking **Delete integration** again.

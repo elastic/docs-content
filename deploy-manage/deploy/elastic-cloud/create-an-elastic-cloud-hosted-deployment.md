@@ -48,7 +48,7 @@ Once you are on the **Create deployment** page, you can create the deployment wi
     ::::
 
 3. Select **Create deployment**. It takes a few minutes before your deployment gets created. While waiting, you are prompted to save the admin credentials for your deployment which provides you with superuser access to Elasticsearch. Keep these credentials safe as they are shown only once. These credentials also help you [add data using Kibana](../../../manage-data/ingest.md). If you need to refresh these credentials, you can [reset the password](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
-4. Once the deployment is ready, select **Continue** to open the deployment’s main page. From here, you can start [ingesting data](../../../manage-data/ingest.md) or simply [try a sample data](../../../explore-analyze/overview/kibana-quickstart.md#gs-get-data-into-kibana) set to get started.
+4. Once the deployment is ready, select **Continue** to open the deployment’s main page. From here, you can start [ingesting data](../../../manage-data/ingest.md) or simply [try a sample data](../../../explore-analyze/index.md#gs-get-data-into-kibana) set to get started.
 
     At any time, you can manage and [adjust the configuration](configure.md) of your deployment to your needs, add extra layers of [security](../../users-roles/cluster-or-deployment-auth.md), or (highly recommended) set up [health monitoring](../../monitor/stack-monitoring.md).
 

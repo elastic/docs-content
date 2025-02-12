@@ -28,7 +28,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
     * To add an exception from the rule details page:
 
-        1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+        1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
         2. In the Rules table, search for the rule that you want to add an exception to, then click its name to open the rule details.
         3. Scroll down the rule details page, select the **Rule exceptions** tab, then click **Add rule exception**.
 
@@ -39,18 +39,18 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
     * To add an exception from the Alerts table:
 
-        1. Find **Alerts** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+        1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
         2. Scroll down to the Alerts table, go to the alert you want to create an exception for, click the **More Actions** menu (**…​**), then select **Add rule exception**.
 
     * To add an exception from the alert details flyout:
 
-        1. Find **Alerts** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+        1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
         2. Click the **View details** button from the Alerts table.
         3. In the alert details flyout, click **Take action → Add rule exception**.
 
     * To add an exception from the Shared Exception Lists page:
 
-        1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+        1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
         2. Click **Create shared exception list** → **Create exception item**.
 
 2. In the **Add rule exception** flyout, name the exception.
@@ -159,18 +159,18 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
     * To add an Endpoint exception from the rule details page:
 
-        1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+        1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
         2. In the Rules table, search for and select one of the [endpoint protection rules](../../../solutions/security/manage-elastic-defend/endpoint-protection-rules.md).
         3. Scroll down the rule details page, select the **Endpoint exceptions** tab, then click **Add endpoint exception**.
 
     * To add an Endpoint exception from the Alerts table:
 
-        1. Find **Alerts** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+        1. Find **Alerts** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
         2. Scroll down to the Alerts table, and from an {{elastic-endpoint}} alert, click the **More actions** menu (**…​**), then select **Add Endpoint exception**.
 
     * To add an Endpoint exception from Shared Exception Lists page:
 
-        1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+        1. Find the **Shared exception lists** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
         2. Expand the Endpoint Security Exception List or click the list name to open the list’s details page. Next, click **Add endpoint exception**.
 
             ::::{note}
@@ -271,7 +271,7 @@ Creates an exception that excludes all LFC-signed trusted processes:
 
 To view a rule’s exceptions:
 
-1. Open the rule’s details page. To do this, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), search for the rule that you want to examine, then click the rule’s name to open its details.
+1. Open the rule’s details page. To do this, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for the rule that you want to examine, then click the rule’s name to open its details.
 2. Scroll down and select the **Rule exceptions** or **Endpoint exceptions** tab. All exceptions that belong to the rule will display in a list.
 
     From the list, you can filter, edit, and delete exceptions. You can also toggle between **Active exceptions** and **Expired exceptions**.

@@ -395,7 +395,7 @@ The score of each hit is the sum of the `knn` and `query` scores. You can specif
 score = 0.9 * match_score + 0.1 * knn_score
 ```
 
-The `knn` option can also be used with [`aggregations`](../../../explore-analyze/aggregations.md). In general, {{es}} computes aggregations over all documents that match the search. So for approximate kNN search, aggregations are calculated on the top `k` nearest documents. If the search also includes a `query`, then aggregations are calculated on the combined set of `knn` and `query` matches.
+The `knn` option can also be used with [`aggregations`](../../../explore-analyze/query-filter/aggregations.md). In general, {{es}} computes aggregations over all documents that match the search. So for approximate kNN search, aggregations are calculated on the top `k` nearest documents. If the search also includes a `query`, then aggregations are calculated on the combined set of `knn` and `query` matches.
 
 
 ### Perform semantic search [knn-semantic-search]

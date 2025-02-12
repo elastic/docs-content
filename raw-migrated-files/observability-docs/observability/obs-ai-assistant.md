@@ -122,7 +122,7 @@ You can also add information to the knowledge base by asking the AI Assistant to
 
 To add external data to the knowledge base in {{kib}}:
 
-1. To open AI Assistant settings, find `AI Assistants` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open AI Assistant settings, find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under **Elastic AI Assistant for Observability**, click **Manage settings**.
 3. Switch to the **Knowledge base** tab.
 4. Click the **New entry** button, and choose either:
@@ -157,7 +157,7 @@ By default, the AI Assistant queries all search connector indices. To override t
 
 To create a connector in the {{kib}} UI and make its content available to the AI Assistant knowledge base, follow these steps:
 
-1. Open **Connectors** by finding `Content / Connectors` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Open **Connectors** by finding `Content / Connectors` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     ::::{note}
     If your {{kib}} Space doesn’t include the Search solution you will have to create the connector from a different space or change your space **Solution view** setting to `Classic`.
@@ -381,7 +381,7 @@ To learn more about alerting, actions, and connectors, refer to [Alerting](../..
 
 To access the AI Assistant Settings page, you can:
 
-* Find `AI Assistants` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+* Find `AI Assistants` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * Use the **More actions** menu inside the AI Assistant window.
 
 The AI Assistant Settings page contains the following tabs:

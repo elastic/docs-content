@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Exporting and importing machine learning jobs"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/move-jobs.html

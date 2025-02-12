@@ -1,13 +1,13 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Basics"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/aggregations-tutorial.html
 ---
 
-
-
 # Tutorial: Analyze eCommerce data with aggregations using Query DSL [aggregations-tutorial]
-
 
 This hands-on tutorial shows you how to analyze eCommerce data using {{es}} [aggregations](../aggregations.md) with the `_search` API and Query DSL.
 
@@ -18,20 +18,19 @@ You’ll learn how to:
 * Compare performance across product categories
 * Track moving averages and cumulative totals
 
-
 ## Requirements [aggregations-tutorial-requirements]
 
 You’ll need:
 
-1. A running instance of [{{es}}](../../get-started/deployment-options.md), either on {{serverless-full}} or together with {{kib}} on Elastic Cloud Hosted/Self Managed deployments.
+1. A running instance of [{{es}}](../../../get-started/deployment-options.md), either on {{serverless-full}} or together with {{kib}} on Elastic Cloud Hosted/Self Managed deployments.
 
-    * If you don’t have a deployment, you can run the following command in your terminal to set up a [local dev environment](../../solutions/search/get-started.md):
+    * If you don’t have a deployment, you can run the following command in your terminal to set up a [local dev environment](../../../solutions/search/get-started.md):
 
         ```sh
         curl -fsSL https://elastic.co/start-local | sh
         ```
 
-2. The [sample eCommerce data](../overview/kibana-quickstart.md#gs-get-data-into-kibana) loaded into {{es}}. To load sample data follow these steps in your UI:
+2. The [sample eCommerce data](../../index.md#gs-get-data-into-kibana) loaded into {{es}}. To load sample data follow these steps in your UI:
 
     * Open the **Integrations** pages by searching in the global search field.
     * Search for `sample data` in the **Integrations** search field.
@@ -39,11 +38,9 @@ You’ll need:
     * Select the **Other sample data sets** collapsible.
     * Add the **Sample eCommerce orders** data set. This will create and populate an index called `kibana_sample_data_ecommerce`.
 
-
-
 ## Inspect index structure [aggregations-tutorial-inspect-data]
 
-Before we start analyzing the data, let’s examine the structure of the documents in our sample eCommerce index. Run this command to see the field [mappings](../../manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings):
+Before we start analyzing the data, let’s examine the structure of the documents in our sample eCommerce index. Run this command to see the field [mappings](../../../manage-data/data-store/index-basics.md#elasticsearch-intro-documents-fields-mappings):
 
 ```console
 GET kibana_sample_data_ecommerce/_mapping
@@ -52,6 +49,7 @@ GET kibana_sample_data_ecommerce/_mapping
 The response shows the field mappings for the `kibana_sample_data_ecommerce` index.
 
 ::::{dropdown} Example response
+
 ```console-response
 {
   "kibana_sample_data_ecommerce": {
@@ -268,33 +266,27 @@ The response shows the field mappings for the `kibana_sample_data_ecommerce` ind
 3. `geoip.location`: Geographic coordinates stored as geo_point for location-based queries
 4. `products.properties`: Nested structure containing details about items in each order
 
-
 ::::
-
 
 The sample data includes the following [field data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html):
 
 * [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) and [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) for text fields
-
-    * Most `text` fields have a `.keyword` subfield for exact matching using [multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html)
+  * Most `text` fields have a `.keyword` subfield for exact matching using [multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html)
 
 * [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) for date fields
 * 3 [numeric](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html) types:
-
-    * `integer` for whole numbers
-    * `long` for large whole numbers
-    * `half_float` for floating-point numbers
+  * `integer` for whole numbers
+  * `long` for large whole numbers
+  * `half_float` for floating-point numbers
 
 * [`geo_point`](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) for geographic coordinates
 * [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) for nested structures such as `products`, `geoip`, `event`
 
 Now that we understand the structure of our sample data, let’s start analyzing it.
 
-
 ## Get key business metrics [aggregations-tutorial-basic-metrics]
 
 Let’s start by calculating important metrics about orders and customers.
-
 
 ### Get average order size [aggregations-tutorial-order-value]
 
@@ -318,8 +310,8 @@ GET kibana_sample_data_ecommerce/_search
 2. A meaningful name that describes what this metric represents
 3. Configures an `avg` aggregation, which calculates a simple arithmetic mean
 
-
 ::::{dropdown} Example response
+
 ```console-result
 {
   "took": 0,
@@ -351,10 +343,7 @@ GET kibana_sample_data_ecommerce/_search
 3. Results appear under the name we specified in the request
 4. The average order value is calculated dynamically from all the orders in the dataset
 
-
 ::::
-
-
 
 ### Get multiple order statistics at once [aggregations-tutorial-order-stats]
 
@@ -377,8 +366,8 @@ GET kibana_sample_data_ecommerce/_search
 1. A descriptive name for this set of statistics
 2. `stats` returns count, min, max, avg, and sum at once
 
-
 ::::{dropdown} Example response
+
 ```console-result
 {
  "aggregations": {
@@ -399,21 +388,16 @@ GET kibana_sample_data_ecommerce/_search
 4. `"avg"`: Average value per order across all orders
 5. `"sum"`: Total revenue from all orders combined
 
-
 ::::
-
 
 ::::{tip}
 The [stats aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html) is more efficient than running individual min, max, avg, and sum aggregations.
 
 ::::
 
-
-
 ## Analyze sales patterns [aggregations-tutorial-sales-patterns]
 
 Let’s group orders in different ways to understand sales patterns.
-
 
 ### Break down sales by category [aggregations-tutorial-category-breakdown]
 
@@ -441,8 +425,8 @@ GET kibana_sample_data_ecommerce/_search
 4. Limit to top 5 categories
 5. Order by number of orders (descending)
 
-
 ::::{dropdown} Example response
+
 ```console-result
 {
   "took": 4,
@@ -498,10 +482,7 @@ GET kibana_sample_data_ecommerce/_search
 4. Category name.
 5. Number of orders in this category.
 
-
 ::::
-
-
 
 ### Track daily sales patterns [aggregations-tutorial-daily-sales]
 
@@ -530,8 +511,8 @@ GET kibana_sample_data_ecommerce/_search
 4. Formats dates in response using [date patterns](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html) (e.g. "yyyy-MM-dd"). Refer to [date math expressions](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math) for additional options.
 5. When `min_doc_count` is 0, returns buckets for days with no orders, useful for continuous time series visualization.
 
-
 ::::{dropdown} Example response
+
 ```console-result
 {
   "took": 2,
@@ -720,15 +701,11 @@ GET kibana_sample_data_ecommerce/_search
 4. `key` is the same date represented as the Unix timestamp for this bucket
 5. `doc_count` counts the number of documents that fall into this time bucket
 
-
 ::::
-
-
 
 ## Combine metrics with groupings [aggregations-tutorial-combined-analysis]
 
 Now let’s calculate [metrics](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html) within each group to get deeper insights.
-
 
 ### Compare category performance [aggregations-tutorial-category-metrics]
 
@@ -773,8 +750,8 @@ GET kibana_sample_data_ecommerce/_search
 4. Average order value in the category
 5. Total number of items sold
 
-
 ::::{dropdown} Example response
+
 ```console-result
 {
  "aggregations": {
@@ -810,10 +787,7 @@ GET kibana_sample_data_ecommerce/_search
 4. Average order value for this category
 5. Total quantity of items sold
 
-
 ::::
-
-
 
 ### Analyze daily sales performance [aggregations-tutorial-daily-metrics]
 
@@ -856,8 +830,8 @@ GET kibana_sample_data_ecommerce/_search
 2. Uses the [`cardinality`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-cardinality-aggregation.html) aggregation to count unique customers per day
 3. Average number of items per order
 
-
 ::::{dropdown} Example response
+
 ```console-result
 {
   "took": 119,
@@ -1321,12 +1295,9 @@ GET kibana_sample_data_ecommerce/_search
 
 ::::
 
-
-
 ## Track trends and patterns [aggregations-tutorial-trends]
 
 You can use [pipeline aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html) on the results of other aggregations. Let’s analyze how metrics change over time.
-
 
 ### Smooth out daily fluctuations [aggregations-tutorial-moving-average]
 
@@ -1368,8 +1339,8 @@ GET kibana_sample_data_ecommerce/_search
 5. Use a 3-day window — use different window sizes to see trends at different time scales.
 6. Use the built-in unweighted average function in the `moving_fn` aggregation.
 
-
 ::::{dropdown} Example response
+
 ```console-result
 {
   "took": 13,
@@ -1744,16 +1715,12 @@ GET kibana_sample_data_ecommerce/_search
 4. First day has no smoothed value as it needs previous days for the calculation
 5. Moving average starts from second day, using a 3-day window
 
-
 ::::
-
 
 ::::{tip}
 Notice how the smoothed values lag behind the actual values - this is because they need previous days' data to calculate. The first day will always be null when using moving averages.
 
 ::::
-
-
 
 ### Track running totals [aggregations-tutorial-cumulative]
 
@@ -1790,8 +1757,8 @@ GET kibana_sample_data_ecommerce/_search
 2. `cumulative_sum` adds up values across buckets
 3. Reference the revenue we want to accumulate
 
-
 ::::{dropdown} Example response
+
 ```console-result
 {
   "took": 4,
@@ -2166,10 +2133,7 @@ GET kibana_sample_data_ecommerce/_search
 4. `revenue`: Daily revenue for this date
 5. `cumulative_revenue`: Running total of revenue up to this date
 
-
 ::::
-
-
 
 ## Next steps [aggregations-tutorial-next-steps]
 
