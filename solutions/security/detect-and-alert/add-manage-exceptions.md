@@ -243,7 +243,7 @@ Some Endpoint objects contain nested fields, and the only way to ensure you are 
 }
 ```
 
-[nested-field-list]
+### Nested fields [nested-field-list]
 
 Only these objects require nested conditions to ensure the exception functions correctly:
 
