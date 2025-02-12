@@ -598,7 +598,7 @@ POST _application/search_application/my_search_application/_search
 
 ### kNN search [search-applications-knn-template] 
 
-This example supports [k-nearest neighbor (kNN) search](../../vector/knn.md)
+This example supports [k-nearest neighbor (kNN) search](../vector/knn.md).
 
 A template supporting exact kNN search will look like the following example:
 
