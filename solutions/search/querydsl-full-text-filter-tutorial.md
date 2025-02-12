@@ -1,4 +1,6 @@
 ---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-filter-tutorial.html
 navigation_title: "Full-text search and filtering"
 ---
 

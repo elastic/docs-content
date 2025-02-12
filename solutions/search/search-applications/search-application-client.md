@@ -9,7 +9,7 @@ mapped_pages:
 # Search Application client guide [search-application-client]
 
 
-This document is a how-to guide to building a search experience with a [search application](../applications.md), using the [Search Application client](https://github.com/elastic/search-application-client). The client is a JavaScript library designed to be used in the browser. You’ll integrate this library into your web app to simplify querying your search application.
+This document is a how-to guide to building a search experience with a [search application](../search-applications.md), using the [Search Application client](https://github.com/elastic/search-application-client). The client is a JavaScript library designed to be used in the browser. You’ll integrate this library into your web app to simplify querying your search application.
 
 ::::{tip} 
 A [sandbox environment](https://github.com/elastic/search-application-client/blob/main/examples/sandbox/README.md) is available for testing and experimenting with the `search-application-client` library. Jump there if you’d like to try out the client without setting up your own web app.
@@ -35,13 +35,13 @@ You can think of the search application as the "server side" that persists chang
 
 To follow this guide, you’ll need:
 
-* An **Elastic deployment**, that satisfies the [prerequisites](../applications.md#search-application-overview-prerequisites) for running a search application.
+* An **Elastic deployment**, that satisfies the [prerequisites](../search-applications.md#search-application-overview-prerequisites) for running a search application.
 
     * If you don’t have an Elastic deployment, start a free trial on [Elastic Cloud](https://cloud.elastic.co).
 
 * A **search application**.
 
-    * Create and manage search applications in the [{{kib}} UI](../applications.md#search-application-overview-get-started-ui) or using the [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html).
+    * Create and manage search applications in the [{{kib}} UI](../search-applications.md#search-application-overview-get-started-ui) or using the [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html).
 
 * A **web app** to query your search application, using [Search Application client](https://github.com/elastic/search-application-client#installation).
 

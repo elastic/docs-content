@@ -1,13 +1,10 @@
 ---
-navigation_title: "What is Search UI?"
+navigation_title: "Search UI"
 mapped_pages:
   - https://www.elastic.co/guide/en/search-ui/current/overview.html
 ---
 
-
-
-# Search UI [overview]
-
+# What is Search UI? [overview]
 
 A JavaScript library for the fast development of modern, engaging search experiences with [Elastic](https://www.elastic.co/). Get up and running quickly without re-inventing the wheel.
 
