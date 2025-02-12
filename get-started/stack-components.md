@@ -16,7 +16,7 @@ Trying to decide which ingest component to use? Refer to [Adding data to {{es}}]
 
 $$$stack-components-agent$$$
 
-{{fleet}} and {agent}
+{{fleet}} and {{agent}}
 :   {{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. Each agent has a single policy to which you can add integrations for new data sources, security protections, and more.
 
     {{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
@@ -31,7 +31,7 @@ APM
 
 $$$stack-components-beats$$$
 
-{beats}
+{{beats}}
 :   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/beats-reference.html).
 
 $$$stack-components-ingest-pipelines$$$
@@ -41,7 +41,7 @@ $$$stack-components-ingest-pipelines$$$
 
 $$$stack-components-logstash$$$
 
-{ls}
+{{ls}}
 :   {{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](https://www.elastic.co/guide/en/logstash/current/introduction.html).
 
 
@@ -49,7 +49,7 @@ $$$stack-components-logstash$$$
 
 $$$stack-components-elasticsearch$$$
 
-{es}
+{{es}}
 :   {{es}} is the distributed search and analytics engine at the heart of the {{stack}}. It provides near real-time search and analytics for all types of data. Whether you have structured or unstructured text, numerical data, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches. {{es}} provides a REST API that enables you to store data in {{es}} and retrieve it. The REST API also provides access to {{es}}'s search and analytics capabilities. [Learn more about {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html).
 
 
@@ -59,7 +59,7 @@ Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use t
 
 $$$stack-components-kibana$$$
 
-{kib}
+{{kib}}
 :   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Elastic Enterprise Search, Elastic Observability and Elastic Security solutions. [Learn more about {{kib}}](https://www.elastic.co/guide/en/kibana/current/introduction.html).
 
 $$$stack-components-elasticsearch-clients$$$
