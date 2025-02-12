@@ -41,7 +41,7 @@ Elastic Cloud Enterprise installations support the following Elasticsearch snaps
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by Elasticsearch. 
 :::
 
-For more details, refer to Managing snapshot repositories in [Elastic Cloud Enterprise](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.html).
+For more details, refer to Managing snapshot repositories in [Elastic Cloud Enterprise](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
 
 ### Self-managed
 
@@ -51,8 +51,8 @@ If you manage your own Elasticsearch cluster, you can use the following built-in
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
 * [AWS S3](/deploy-manage/tools/snapshot-and-restore/s3-repository.md)
 * [Shared file system](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md)
-* [Read-only URL](/deploy-manage/tools/snapshot-and-restore/read-only-url-repository.html)
-* [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.html)
+* [Read-only URL](/deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md)
+* [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.md)
 
 Other repository types are available through official plugins:
 
