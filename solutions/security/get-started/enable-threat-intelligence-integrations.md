@@ -73,7 +73,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
 
 ## Add a custom integration [custom-ti-integration]
 
-1. Set up a way to [ingest data](../../../solutions/security/get-started/ingest-data-to-elastic-security.md) into your system.
+1. Set up a way to [ingest data](ingest-data-to-elastic-security.md) into your system.
 2. Update the `securitySolution:defaultThreatIndex` [advanced setting](../../../solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices) by adding the appropriate index pattern name after the default {{fleet}} threat intelligence index pattern (`logs-ti*`), for example, `logs-ti*`,`custom-ti-index*`.
 
     ::::{note}
