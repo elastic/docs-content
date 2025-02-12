@@ -22,10 +22,10 @@ The Data Quality dashboard doesn’t show data from cold or frozen [data tiers](
 ::::{admonition} Requirements
 To use the Data Quality dashboard, you need at least the following [privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for each index you want to check:
 
-* `monitor` or `manage` (required for the [Index stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-stats.html))
-* `view_index_metadata` or `manage_ilm` (required for the [Explain lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-explain-lifecycle.html))
-* `view_index_metadata` or `manage` (required for the [Get mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html))
-* `read` (required for the [Search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html))
+* `monitor` or `manage` (required for the [Index stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-stats))
+* `view_index_metadata` or `manage_ilm` (required for the [Explain lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-explain-lifecycle))
+* `view_index_metadata` or `manage` (required for the [Get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping))
+* `read` (required for the [Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search))
 
 ::::
 

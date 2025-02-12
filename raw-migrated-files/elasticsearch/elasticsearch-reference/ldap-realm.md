@@ -14,7 +14,7 @@ An integral part of a realm authentication process is to resolve the roles assoc
 
 Since with the `ldap` realm the users are managed externally in the LDAP server, the expectation is that their roles are managed there as well. In fact, LDAP supports the notion of groups, which often represent user roles for different systems in the organization.
 
-The `ldap` realm enables you to map LDAP users to roles via their LDAP groups or other metadata. This role mapping can be configured via the [add role mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) or by using a file stored on each node. When a user authenticates with LDAP, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
+The `ldap` realm enables you to map LDAP users to roles via their LDAP groups or other metadata. This role mapping can be configured via the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or by using a file stored on each node. When a user authenticates with LDAP, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
 
 
 ## Configuring an LDAP realm [ldap-realm-configuration]
@@ -101,7 +101,7 @@ To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to use
 6. Restart {{es}}.
 7. Map LDAP groups to roles.
 
-    The `ldap` realm enables you to map LDAP users to roles via their LDAP groups, or other metadata. This role mapping can be configured via the [add role mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) or by using a file stored on each node. When a user authenticates with LDAP, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
+    The `ldap` realm enables you to map LDAP users to roles via their LDAP groups, or other metadata. This role mapping can be configured via the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or by using a file stored on each node. When a user authenticates with LDAP, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
 
     Within a mapping definition, you specify groups using their distinguished names. For example, the following mapping configuration maps the LDAP `admins` group to both the `monitoring` and `user` roles, and maps the `users` group to the `user` role.
 
@@ -186,7 +186,7 @@ When a user is authenticated via an LDAP realm, the following properties are pop
 | `ldap_dn` | The distinguished name of the user. |
 | `ldap_groups` | The distinguished name of each of the groups that were                        resolved for the user (regardless of whether those                        groups were mapped to a role). |
 
-This metadata is returned in the [authenticate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html), and can be used with [templated queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) in roles.
+This metadata is returned in the [authenticate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate), and can be used with [templated queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) in roles.
 
 Additional fields can be included in the user’s metadata by configuring the `metadata` setting on the LDAP realm. This metadata is available for use with the [role mapping API](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-api) or in [templated role queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query).
 

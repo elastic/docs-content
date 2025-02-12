@@ -49,7 +49,7 @@ If your issue is not addressed here, then [contact Elastic support for help](../
 
 **Resolution**
 
-* [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+* [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}
@@ -96,7 +96,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 
 **Resolution**
 
-* [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+* [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 * Increase the disk size (scale up).
 
 ::::{note}
@@ -177,7 +177,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
 * If the master node is overwhelmed by internal tasks initiated by users:
 
-    * Check [cluster-level pending tasks](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-pending-tasks.html).
+    * Check [cluster-level pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-pending-tasks).
     * Reduce the number of Machine Learning jobs or watches.
     * Change the number of ingest pipelines or processors to use less memory.
 
@@ -260,7 +260,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 
 * If the master node is overwhelmed by internal tasks initiated by users:
 
-    * Check [cluster-level pending tasks](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-pending-tasks.html).
+    * Check [cluster-level pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-pending-tasks).
     * Reduce the number of Machine Learning jobs or watches.
     * Change the number of ingest pipelines or processors to use less memory.
 
@@ -298,7 +298,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 * Routing stopped: A failed {{es}} configuration might stop the nodes routing. Restart the routing manually to bring the node back to health.
 * Disk/memory/CPU saturated:
 
-    * [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+    * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
     * Increase disk size.
     * [Enable autoscaling](../../../deploy-manage/autoscaling.md).
     * Configuration of [ILM](../../../manage-data/lifecycle/index-lifecycle-management.md) policies.

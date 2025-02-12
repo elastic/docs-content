@@ -11,7 +11,7 @@ You can retrieve information about the status of your cluster, indices, and shar
 
 ## Check cluster health [ech-check-cluster-health]
 
-Use the [Cluster health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html):
+Use the [Cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health):
 
 ```json
 GET /_cluster/health/
@@ -42,7 +42,7 @@ This command returns the cluster status (green, yellow, or red) and shows the nu
 
 ## Check unhealthy indices [ech-check-unhealthy-indices]
 
-Use the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html) to get the status of individual indices. Specify the `health` parameter to limit the results to a particular status, for example `?v&health=red` or `?v&health=yellow`.
+Use the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) to get the status of individual indices. Specify the `health` parameter to limit the results to a particular status, for example `?v&health=red` or `?v&health=yellow`.
 
 ```json
 GET /_cat/indices?v&health=red
@@ -60,7 +60,7 @@ For more information, refer to [Fix a red or yellow cluster status](../../../tro
 
 ## Check which shards are unassigned [ech-check-which-unassigned-shards]
 
-Use the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html):
+Use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards):
 
 ```json
 GET /_cat/shards/?v
@@ -77,7 +77,7 @@ filebeat-7.9.3-2022.01.07-000015  2   r   UNASSIGNED
 
 ## Check why shards are unassigned [ech-check-why-unassigned-shards]
 
-To understand why shards are unassigned, run the [Cluster allocation explain API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html).
+To understand why shards are unassigned, run the [Cluster allocation explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain).
 
 Running the API call `GET _cluster/allocation/explain` retrieves an allocation explanation for unassigned primary shards, or replica shards.
 
