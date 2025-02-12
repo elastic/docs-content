@@ -412,8 +412,6 @@ toc:
       - file: docs-content/serverless/security-alerts-manage.md
       - file: docs-content/serverless/security-alerts-run-osquery.md
       - file: docs-content/serverless/security-allowlist-endpoint.md
-      - file: docs-content/serverless/security-analyze-risk-score-data.md
-      - file: docs-content/serverless/security-asset-criticality.md
       - file: docs-content/serverless/security-automated-response-actions.md
       - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-behavioral-detection-use-cases.md
@@ -798,9 +796,7 @@ toc:
       - file: security-docs/security/alerts-run-osquery.md
       - file: security-docs/security/alerts-ui-manage.md
       - file: security-docs/security/allowlist-endpoint-3rd-party-av-apps.md
-      - file: security-docs/security/analyze-risk-score-data.md
       - file: security-docs/security/artifact-control.md
-      - file: security-docs/security/asset-criticality.md
       - file: security-docs/security/assistant-connect-to-azure-openai.md
       - file: security-docs/security/assistant-connect-to-bedrock.md
       - file: security-docs/security/assistant-connect-to-openai.md
