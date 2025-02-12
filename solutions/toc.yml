@@ -677,11 +677,11 @@ toc:
               - file: search/site-or-app/behavioral-analytics-event.md
               - file: search/site-or-app/behavioral-analytics-event-reference.md
               - file: search/site-or-app/behavioral-analytics-api.md
-          - file: search/applications.md
+          - file: search/search-applications.md
             children:
-              - file: search/applications/search-application-api.md
-              - file: search/applications/search-application-security.md
-              - file: search/applications/search-application-client.md
+              - file: search/search-applications/search-application-api.md
+              - file: search/search-applications/search-application-security.md
+              - file: search/search-applications/search-application-client.md
       - file: search/apis-and-tools.md
       - file: search/search-approaches/near-real-time-search.md
       - file: search/cross-cluster-search.md
