@@ -4,15 +4,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-disable-data-tier.html
 ---
 
-% What needs to be done: Refine
-
-% GitHub issue: docs-projects#375
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/data-tiers.md
-% - [x] ./raw-migrated-files/cloud/cloud-enterprise/ece-disable-data-tier.md
-
 # Data tiers
 
 A *data tier* is a collection of [nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html) within a cluster that share the same [data node role](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles), and a hardware profile that’s appropriately sized for the role. Elastic recommends that nodes in the same tier share the same hardware profile to avoid [hot spotting](/troubleshoot/elasticsearch/hotspotting.md).
