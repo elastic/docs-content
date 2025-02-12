@@ -10,7 +10,7 @@ applies:
 # Tutorial: Full-text search and filtering in {{es}} [full-text-filter-tutorial]
 
 
-This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
+This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
 
 In this scenario, we’re implementing a search function for a cooking blog. The blog contains recipes with various attributes including textual content, categorical data, and numerical ratings.
 
@@ -114,7 +114,7 @@ Full-text search is powered by [text analysis](full-text/text-analysis-during-se
 
 ## Step 2: Add sample blog posts to your index [full-text-filter-tutorial-index-data] 
 
-Now you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html#bulk). Note that `text` fields are analyzed and multi-fields are generated at index time.
+Now you’ll need to index some example blog posts using the [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). Note that `text` fields are analyzed and multi-fields are generated at index time.
 
 ```console
 POST /cooking_blog/_bulk?refresh=wait_for
