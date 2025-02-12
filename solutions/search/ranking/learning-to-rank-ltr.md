@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/learning-to-rank.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Learning To Rank (LTR) [learning-to-rank]

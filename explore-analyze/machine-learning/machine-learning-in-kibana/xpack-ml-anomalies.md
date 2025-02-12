@@ -1,6 +1,10 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml-anomalies.html
+  - https://www.elastic.co/guide/en/serverless/current/observability-aiops-detect-anomalies.html
 ---
 
 # Anomaly detection [xpack-ml-anomalies]

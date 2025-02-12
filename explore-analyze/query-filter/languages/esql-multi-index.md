@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Using {{esql}} to query multiple indices"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-multi-index.html

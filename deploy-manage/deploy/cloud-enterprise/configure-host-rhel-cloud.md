@@ -20,7 +20,7 @@ Create a RHEL 8 (the version must be >= 8.5, but <9), RHEL 9, Rocky Linux 8, or 
 
 * For RHEL 8, follow your internal guidelines to add a vanilla RHEL 8 VM to your environment. Note that the version must be >= 8.5, but <9.
 
-Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-gcp.html) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
+Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-prereqs.html) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 

@@ -63,5 +63,5 @@ Depending on the features you have installed and configured, you can view logs, 
 
 * Show host, pod, or container logs in the [{{logs-app}}](../logs/explore-logs.md).
 * Show APM data in the [Applications UI](traces-2.md).
-* Show host, pod, or container metrics in the [{{infrastructure-app}}](https://www.elastic.co/guide/en/observability/current/analyze-metrics.html).
+* Show host, pod, or container metrics in the [{{infrastructure-app}}](https://www.elastic.co/guide/en/observability/current/monitor-infrastructure-and-hosts.html).
 

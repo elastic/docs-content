@@ -1,6 +1,10 @@
 ---
+navigation_title: "HuggingFace"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-hugging-face.html
+applies:
+  stack:
+  serverless:
 ---
 
 # HuggingFace inference integration [infer-service-hugging-face]

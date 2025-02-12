@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/run-pattern-analysis-discover.html
 ---
@@ -9,7 +12,7 @@ Log pattern analysis helps you to find patterns in unstructured log messages and
 
 Log pattern analysis works on every text field.
 
-This example uses the [sample web logs data](../overview/kibana-quickstart.md#gs-get-data-into-kibana), or you can use your own data.
+This example uses the [sample web logs data](../index.md#gs-get-data-into-kibana), or you can use your own data.
 
 1. Go to **Discover**.
 2. Expand the {{data-source}} dropdown, and select **Kibana Sample Data Logs**.

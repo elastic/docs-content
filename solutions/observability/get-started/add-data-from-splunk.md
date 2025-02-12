@@ -36,7 +36,7 @@ To get started quickly, spin up a deployment of our hosted {{ess}}. The {{ess}} 
 
 ## Step 1: Add integration [splunk-step-one]
 
-Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Search for and add the nginx integration. Refer to [Get started with system metrics](../infra-and-hosts/get-started-with-system-metrics.md) for detailed steps about adding integrations.
+Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for and add the nginx integration. Refer to [Get started with system metrics](../infra-and-hosts/get-started-with-system-metrics.md) for detailed steps about adding integrations.
 
 
 ## Step 2: Enable Collect logs from third-party REST API [splunk-step-two]

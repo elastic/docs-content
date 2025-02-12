@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Text embedding and semantic search"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
@@ -48,7 +51,7 @@ You need to provide an administrator username and password and replace the `$CLO
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/guide/en/kibana/current/ml-sync.html).
+Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
 
 ## Test the text embedding model [ex-text-emb-test]
 
@@ -60,7 +63,7 @@ Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Mod
 :::
 
 ::::{dropdown} **Test the model by using the _infer API**
-You can also evaluate your models by using the [_infer API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model-deployment.html). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
+You can also evaluate your models by using the [_infer API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model.html). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
 
 ```js
 POST /_ml/trained_models/sentence-transformers__msmarco-minilm-l-12-v3/_infer
@@ -100,7 +103,7 @@ In this step, you load the data that you later use in an ingest pipeline to get 
 
 The data set `msmarco-passagetest2019-top1000` is a subset of the MS MARCO Passage Ranking data set used in the testing stage of the 2019 TREC Deep Learning Track. It contains 200 queries and for each query a list of relevant text passages extracted by a simple information retrieval (IR) system. From that data set, all unique passages with their IDs have been extracted and put into a [tsv file](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv), totaling 182469 passages. In the following, this file is used as the example data set.
 
-Upload the file by using the [Data Visualizer](../../../manage-data/ingest.md#upload-data-kibana). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
+Upload the file by using the [Data Visualizer](../../../manage-data/ingest/tools/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
 
 :::{image} ../../../images/machine-learning-ml-nlp-text-emb-data.png
 :alt: Importing the data

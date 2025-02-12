@@ -1,9 +1,10 @@
 ---
+navigation_title: "APM Ruby Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/ruby/current/debugging.html
 ---
 
-# APM Ruby Agent [debugging]
+# Troubleshoot APM Ruby Agent [debugging]
 
 Hopefully the agent Just Works™, but depending on your situation the agent might need some tuning.
 

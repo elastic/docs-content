@@ -89,7 +89,7 @@ host,host-001,extreme_impact
 
 To import a file:
 
-1. Find **Entity Store** in the main menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Entity Store** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select or drag and drop the file you want to import.
 
     ::::{note}

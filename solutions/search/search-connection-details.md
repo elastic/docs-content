@@ -1,5 +1,10 @@
 ---
 navigation_title: "Find connection details"
+mapped_urls:
+  - https://www.elastic.co/guide/en/kibana/current/search-space-connection-details.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Find your connection details [search-space-connection-details]
@@ -7,10 +12,10 @@ navigation_title: "Find connection details"
 
 To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} endpoint, depending on the deployment type you use. For secure connections, it’s recommended to use an API key for authentication.
 
-* Learn how to [find your Cloud ID](get-started.md#find-cloud-id-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
-* Learn how to [create an API key](get-started.md#create-an-api-key-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
-* Learn how to [find your {{es}} endpoint or Cloud ID](get-started.md#find-cloud-id-serverless) for a serverless deployment.
-* Learn how to [create an API key](get-started.md#create-an-api-key-serverless) for a serverless deployment.
+* Learn how to [find your Cloud ID](#find-cloud-id-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
+* Learn how to [create an API key](#create-an-api-key-cloud-self-managed) for Elastic Cloud or self-hosted deployments.
+* Learn how to [find your {{es}} endpoint or Cloud ID](#find-cloud-id-serverless) for a serverless deployment.
+* Learn how to [create an API key](#create-an-api-key-serverless) for a serverless deployment.
 
 
 ## Elastic Cloud and self-hosted deployments [_elastic_cloud_and_self_hosted_deployments]
@@ -21,14 +26,14 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
 1. Navigate to the Elastic Cloud home page.
 2. In the main menu, click **Manage this deployment**.
 
-    :::{image} ../../../images/kibana-manage-deployment.png
+    :::{image} ../../images/kibana-manage-deployment.png
     :alt: manage deployment
     :class: screenshot
     :::
 
 3. The Cloud ID is displayed on the right side of the page.
 
-    :::{image} ../../../images/kibana-cloud-id.png
+    :::{image} ../../images/kibana-cloud-id.png
     :alt: cloud id
     :class: screenshot
     :::
@@ -37,16 +42,16 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
 
 ### Create an API key [create-an-api-key-cloud-self-managed]
 
-1. To navigate to **API keys**, use the [**global search bar**](../../get-started/the-stack.md#kibana-navigation-search).
+1. To navigate to **API keys**, use the [**global search bar**](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-    :::{image} ../../../images/kibana-api-keys-search-bar.png
+    :::{image} ../../images/kibana-api-keys-search-bar.png
     :alt: api keys search bar
     :class: screenshot
     :::
 
 2. Click **Create API key**.
 
-    :::{image} ../../../images/kibana-click-create-api-key.png
+    :::{image} ../../images/kibana-click-create-api-key.png
     :alt: click create api key
     :class: screenshot
     :::
@@ -62,7 +67,7 @@ To connect to your {{es}} deployment, you need either a Cloud ID or an {{es}} en
 1. Navigate to the serverless project’s home page.
 2. Scroll down to the **Copy your connection details** section, and copy the **Elasticsearch endpoint**.
 
-    :::{image} ../../../images/kibana-serverless-connection-details.png
+    :::{image} ../../images/kibana-serverless-connection-details.png
     :alt: serverless connection details
     :class: screenshot
     :::
@@ -79,7 +84,7 @@ The **Cloud ID** is also displayed in the Copy your connection details section, 
 1. Navigate to the serverless project’s home page.
 2. Scroll down to the **Add an API Key** section, and click **New**.
 
-    :::{image} ../../../images/kibana-serverless-create-an-api-key.png
+    :::{image} ../../images/kibana-serverless-create-an-api-key.png
     :alt: serverless create an api key
     :class: screenshot
     :::

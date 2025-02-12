@@ -16,7 +16,7 @@ On this page, you’ll find information on:
 
 ## Inspecting data in {{kib}} [profiling-inspecting-data-in-kibana]
 
-To open **Universal Profiling**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To open **Universal Profiling**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Under **Universal Profiling**, click **Stacktraces** to open the [stacktraces view](#profiling-stacktraces-intro).
 

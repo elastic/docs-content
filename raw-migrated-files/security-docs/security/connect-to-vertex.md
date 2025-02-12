@@ -90,7 +90,7 @@ The following video demonstrates these steps.
 Finally, configure the connector in your Elastic deployment:
 
 1. Log in to your Elastic deployment.
-2. Find the **Connectors** page in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Then click **Create Connector**, select **Google Gemini**.
+2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, select **Google Gemini**.
 3. Name your connector to help keep track of the model version you are using.
 4. Under **URL**, enter the URL for your region.
 5. Enter your **GCP Region** and **GCP Project ID**.

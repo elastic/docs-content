@@ -15,12 +15,12 @@ The `manage_security` cluster privilege is required to access all Security featu
 
 ## Users [_users_2] 
 
-To create and manage users, go to the **Users** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). You can also change their passwords and roles. For more information about authentication and built-in users, see [Setting up user authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
+To create and manage users, go to the **Users** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). You can also change their passwords and roles. For more information about authentication and built-in users, see [Setting up user authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
 
 
 ## Roles [_roles_2] 
 
-To manage roles, go to the **Roles** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles). For more information on configuring roles for {{kib}}, see [Granting access to {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+To manage roles, go to the **Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), or use the [role APIs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles). For more information on configuring roles for {{kib}}, see [Granting access to {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
 For a more holistic overview of configuring roles for the entire stack, see [User authorization](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 

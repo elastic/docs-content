@@ -7,7 +7,7 @@ Ignoring file systems can create gaps in your security coverage. Use additional 
 ::::
 
 
-To monitor or ignore additional file systems, configure the following advanced settings related to **fanotify**, a Linux feature that monitors file system events. Find **Policies** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), click a policy’s name, then scroll down and select **Show advanced settings**.
+To monitor or ignore additional file systems, configure the following advanced settings related to **fanotify**, a Linux feature that monitors file system events. Find **Policies** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), click a policy’s name, then scroll down and select **Show advanced settings**.
 
 ::::{note}
 Even when configured to monitor all file systems (`ignore_unknown_filesystems` is `false`), {{elastic-defend}} will still ignore specific file systems that Elastic has internally identified as incompatible. The following settings apply to any *other* file systems.
@@ -58,7 +58,7 @@ In a typical setup, when you install {{agent}}, {{filebeat}} is installed alongs
 
 To find the system file name:
 
-1. Find **Hosts** in the navigation menu, or search for `Security/Explore/Hosts` by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Hosts** in the navigation menu, or search for `Security/Explore/Hosts` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. From the Hosts page, search for `message: "Current sync path"` to reveal the file path.
 3. If you have access to the endpoint, run `findmnt -o FSTYPE -T <file path>` to return the file system. For example:
 

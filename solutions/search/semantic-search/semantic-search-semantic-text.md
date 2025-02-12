@@ -2,9 +2,10 @@
 navigation_title: "Semantic search with `semantic_text`"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html
+applies:
+  stack:
+  serverless:
 ---
-
-
 
 # Semantic search with `semantic_text` [semantic-search-semantic-text]
 
@@ -62,7 +63,7 @@ In this step, you load the data that you later use to create embeddings from it.
 
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
-Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest.md#upload-data-kibana) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/tools/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ## Reindex the data [semantic-text-reindex-data]
@@ -130,5 +131,5 @@ As a result, you receive the top 10 documents that are closest in meaning to the
 ## Further examples and reading [semantic-text-further-examples]
 
 * If you want to use `semantic_text` in hybrid search, refer to [this notebook](https://colab.research.google.com/github/elastic/elasticsearch-labs/blob/main/notebooks/search/09-semantic-text.ipynb) for a step-by-step guide.
-* For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
-* To learn more about model autoscaling, refer to the [trained model autoscaling](../../../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md) page.
+* For more information on how to optimize your ELSER endpoints, refer to [the ELSER recommendations](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md#elser-recommendations) section in the model documentation.
+* To learn more about model autoscaling, refer to the [trained model autoscaling](/explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md) page.

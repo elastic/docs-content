@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Tutorial"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html
@@ -19,14 +22,12 @@ Need more context? Check out the [{{es}} introduction](https://www.elastic.co/gu
 ## Try it out [get-started-prereqs]
 
 1. Before you can play with the {{ml-features}}, you must install {{es}} and {{kib}}. {{es}} stores the data and the analysis results. {{kib}} provides a helpful user interface for creating and viewing jobs.
-
-::::{tip}
-    You can run {{es}} and {{kib}} on your own hardware, or use our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service) on {{ecloud}}. The {{ess}} is available on both AWS and GCP. [Try out the {{ess}} for free](https://www.elastic.co/cloud/elasticsearch-service/signup).
-
-::::
+   ::::{tip}
+   You can run {{es}} and {{kib}} on your own hardware, or use our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service) on {{ecloud}}. The {{ess}} is available on both AWS and GCP. [Try out the {{ess}} for free](https://www.elastic.co/cloud/elasticsearch-service/signup).
+   ::::
 
 2. Verify that your environment is set up properly to use the {{ml-features}}. If the {{es}} {{security-features}} are enabled, to complete this tutorial you need a user that has authority to manage {{anomaly-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
-3. [Add the sample data sets that ship with {{kib}}](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+3. [Add the sample data sets that ship with {{kib}}](../../index.md#gs-get-data-into-kibana).
 
     1. From the {{kib}} home page, click **Try sample data**, then open the **Other sample data sets** section.
     2. Pick a data set. In this tutorial, you’ll use the **Sample web logs**. While you’re here, feel free to click **Add data** on all of the available sample data sets.
@@ -38,33 +39,30 @@ These data sets are now ready be analyzed in {{ml}} jobs in {{kib}}.
 To get the best results from {{ml}} analytics, you must understand your data. You must know its data types and the range and distribution of values. The {{data-viz}} enables you to explore the fields in your data:
 
 1. Open {{kib}} in your web browser. If you are running {{kib}} locally, go to `http://localhost:5601/`.
+   ::::{tip}
+   The {{kib}} {{ml-features}} use pop-ups. You must configure your web browser so that it does not block pop-up windows or create an exception for your {{kib}} URL.
+   ::::
 
-::::{tip}
-    The {{kib}} {{ml-features}} use pop-ups. You must configure your web browser so that it does not block pop-up windows or create an exception for your {{kib}} URL.
-::::
-
-2. Open **Machine Learning** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+2. Open **Machine Learning** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 3. Select the **{{data-viz}}** tab.
 4. Click **Select data view** and choose the `kibana_sample_data_logs` {{data-source}}.
 5. Use the time filter to select a time period that you’re interested in exploring. Alternatively, click **Use full data** to view the full time range of data.
 6. Optional: You can change the random sampling behavior, which affects the number of documents per shard that are used in the {{data-viz}}. You can use automatic random sampling that balances accuracy and speed, manual sampling where you can chose a value for the sampling percentage, or you can turn the feaure off to use the full data set. There is a relatively small number of documents in the {{kib}} sample data, so you can turn random sampling off. For larger data sets, keep in mind that using a large sample size increases query run times and increases the load on the cluster.
 7. Explore the fields in the {{data-viz}}.
 
-    You can filter the list by field names or [field types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). The {{data-viz}} indicates how many of the documents in the sample for the selected time period contain each field.
+   You can filter the list by field names or [field types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). The {{data-viz}} indicates how many of the documents in the sample for the selected time period contain each field.
 
-    In particular, look at the `clientip`, `response.keyword`, and `url.keyword` fields, since we’ll use them in our {{anomaly-jobs}}. For these fields, the {{data-viz}} provides the number of distinct values, a list of the top values, and the number and percentage of documents that contain the field. For example:
+   In particular, look at the `clientip`, `response.keyword`, and `url.keyword` fields, since we’ll use them in our {{anomaly-jobs}}. For these fields, the {{data-viz}} provides the number of distinct values, a list of the top values, and the number and percentage of documents that contain the field. For example:
+   :::{image} ../../../images/machine-learning-ml-gs-data-keyword.jpg
+   :alt: {{data-viz}} output for ip and keyword fields
+   :class: screenshot
+   :::
 
-:::{image} ../../../images/machine-learning-ml-gs-data-keyword.jpg
-:alt: {{data-viz}} output for ip and keyword fields
-:class: screenshot
-:::
-
-    For numeric fields, the {{data-viz}} provides information about the minimum, median, maximum, and top values, the number of distinct values, and their distribution. You can use the distribution chart to get a better idea of how the values in the data are clustered. For example:
-
-:::{image} ../../../images/machine-learning-ml-gs-data-metric.jpg
-:alt: {{data-viz}} for sample web logs
-:class: screenshot
-:::
+   For numeric fields, the {{data-viz}} provides information about the minimum, median, maximum, and top values, the number of distinct values, and their distribution. You can use the distribution chart to get a better idea of how the values in the data are clustered. For example:
+   :::{image} ../../../images/machine-learning-ml-gs-data-metric.jpg
+   :alt: {{data-viz}} for sample web logs
+   :class: screenshot
+   :::
 
 ::::{tip}
 Make note of the range of dates in the `@timestamp` field. They are relative to when you added the sample data and you’ll need that information later in the tutorial.
@@ -97,7 +95,7 @@ The job uses *buckets* to divide the time series into batches for processing. Fo
 
 Each {{anomaly-job}} contains one or more *detectors*, which define the type of analysis that occurs (for example, `max`, `average`, or `rare` analytical functions) and the fields that are analyzed. Some of the analytical functions look for single anomalous data points. For example, `max` identifies the maximum value that is seen within a bucket. Others perform some aggregation over the length of the bucket. For example, `mean` calculates the mean of all the data points seen within the bucket.
 
-For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [Buckets](https://www.elastic.co/guide/en/machine-learning/current/ml-buckets.html), and [*Function reference*](ml-functions.md).
+For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [Buckets](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-create-job), and [*Function reference*](ml-functions.md).
 
 ::::
 
@@ -268,34 +266,30 @@ To create a forecast in {{kib}}:
 
 1. View your job results (for example, for the `low_request_rate` job) in the **Single Metric Viewer**. To find that view, click the **View series** button in the **Actions** column on the **Anomaly Detection** page.
 2. Click **Forecast**.
-
-:::{image} ../../../images/machine-learning-ml-gs-forecast.png
-:alt: Create a forecast from the Single Metric Viewer
-:class: screenshot
-:::
+   :::{image} ../../../images/machine-learning-ml-gs-forecast.png
+   :alt: Create a forecast from the Single Metric Viewer
+   :class: screenshot
+   :::
 
 3. Specify a duration for your forecast. This value indicates how far to extrapolate beyond the last record that was processed. You must use [time units](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units). In this example, the duration is one week (`1w`):
-
-:::{image} ../../../images/machine-learning-ml-gs-duration.png
-:alt: Specify a duration of 1w
-:class: screenshot
-:::
+   :::{image} ../../../images/machine-learning-ml-gs-duration.png
+   :alt: Specify a duration of 1w
+   :class: screenshot
+   :::
 
 4. View the forecast in the **Single Metric Viewer**:
+   :::{image} ../../../images/machine-learning-ml-gs-forecast-results.png
+   :alt: View a forecast from the Single Metric Viewer
+   :class: screenshot
+   :::
 
-:::{image} ../../../images/machine-learning-ml-gs-forecast-results.png
-:alt: View a forecast from the Single Metric Viewer
-:class: screenshot
-:::
-
-The yellow line in the chart represents the predicted data values. The shaded yellow area represents the bounds for the predicted values, which also gives an indication of the confidence of the predictions. Note that the bounds generally increase with time (that is to say, the confidence levels decrease), since you are forecasting further into the future. Eventually if the confidence levels are too low, the forecast stops.
+   The yellow line in the chart represents the predicted data values. The shaded yellow area represents the bounds for the predicted values, which also gives an indication of the confidence of the predictions. Note that the bounds generally increase with time (that is to say, the confidence levels decrease), since you are forecasting further into the future. Eventually if the confidence levels are too low, the forecast stops.
 
 5. Optional: Compare the forecast to actual data.
-
-:::{image} ../../../images/machine-learning-ml-gs-forecast-actual.png
-:alt: View a forecast over actual data in the Single Metric Viewer
-:class: screenshot
-:::
+   :::{image} ../../../images/machine-learning-ml-gs-forecast-actual.png
+   :alt: View a forecast over actual data in the Single Metric Viewer
+   :class: screenshot
+   :::
 
 As the job processes more data, you can click the **Forecast** button again and choose to see one of your forecasts overlaid on the actual data. The chart then contains the actual data values, the bounds for the expected values, the anomalies, the forecast data values, and the bounds for the forecast. This combination of actual and forecast data gives you an indication of how well the {{ml-features}} can extrapolate the future behavior of the data.
 
@@ -317,7 +311,7 @@ If you’re now thinking about where {{anomaly-detect}} can be most impactful fo
 2. It should be information that contains key performance indicators for the health, security, or success of your business or system. The better you know the data, the quicker you will be able to create jobs that generate useful insights.
 3. Ideally, the data is located in {{es}} and you can therefore create a {{dfeed}} that retrieves data in real time.  If your data is outside of {{es}}, you cannot use {{kib}} to create your jobs and you cannot use {{dfeeds}}.
 
-In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-examples.html).
+In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html).
 
 If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apache.html) and [Nginx](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-nginx.html) that are quite similar to the examples in this tutorial.
 

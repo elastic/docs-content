@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/testing-connectors.html
 ---
@@ -23,7 +26,6 @@ or by directly opening the proper connector edit flyout:
 :alt: Five clauses define the condition to detect
 :class: screenshot
 :::
-
 
 ## [preview] Troubleshooting connectors with the `kbn-action` tool [_troubleshooting_connectors_with_the_kbn_action_tool]
 
@@ -80,4 +82,3 @@ $ kbn-action execute a692dc89-15b9-4a3c-9e47-9fb6872e49ce '{subject: "hallo", me
     "actionId": "a692dc89-15b9-4a3c-9e47-9fb6872e49ce"
 }
 ```
-

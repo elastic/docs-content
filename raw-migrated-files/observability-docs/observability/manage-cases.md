@@ -7,7 +7,7 @@ To perform these tasks, you must have [full access](../../../solutions/observabi
 
 Open a new case to keep track of issues and share the details with colleagues.
 
-1. Find **Cases** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create case**.
 3. If you defined [templates](../../../solutions/observability/incident-management/configure-case-settings.md#observability-case-templates), optionally select one to use its default field values. [preview]
 4. Give the case a name, severity, and description.
@@ -63,7 +63,7 @@ To download or delete the file or copy the file hash to your clipboard, open the
 When you upload a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
 
 ::::{note}
-Uploaded files are also accessible on the **Files** page. To open **Files**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
+Uploaded files are also accessible on the **Files** page. To open **Files**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). When you export cases as [saved objects](/explore-analyze/find-and-organize/saved-objects.md), the case files are not exported.
 
 ::::
 

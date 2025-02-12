@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/setup-cases.html
 ---
@@ -6,7 +9,6 @@ mapped_pages:
 # Configure access to cases [setup-cases]
 
 To access cases in **{{stack-manage-app}}**, you must have the appropriate {{kib}} privileges:
-
 
 ## Give full access to manage cases and settings [_give_full_access_to_manage_cases_and_settings]
 
@@ -22,8 +24,6 @@ By default, `All` for the **Cases** feature includes authority to delete cases a
 
 ::::
 
-
-
 ## Give assignee access to cases [_give_assignee_access_to_cases]
 
 **{{kib}} privileges**
@@ -37,8 +37,6 @@ This privilege is also required to add [case actions](https://www.elastic.co/gui
 
 ::::
 
-
-
 ## Give view-only access to cases [_give_view_only_access_to_cases]
 
 **{{kib}} privileges**
@@ -49,14 +47,11 @@ This privilege is also required to add [case actions](https://www.elastic.co/gui
 You can customize sub-feature privileges for deleting cases and comments, editing case settings, adding case comments and attachments, and re-opening cases.
 ::::
 
-
-
 ## Revoke all access to cases [_revoke_all_access_to_cases]
 
 **{{kib}} privileges**
 
 `None` for the **Cases** feature under **Management**.
-
 
 ## More details [_more_details_2]
 

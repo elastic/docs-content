@@ -92,7 +92,7 @@ Assign the newly created `apm_agent_key_role` role to any user that wishes to cr
 
 The Applications UI has a built-in workflow that you can use to easily create and view {{apm-agent}} API keys. Only API keys created in the Applications UI will show up here.
 
-Using a superuser account, or a user with the role created in the previous step, In {{kib}}, find **Applications** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Go to **Settings** → **Agent keys**. Enter a name for your API key and select at least one privilege.
+Using a superuser account, or a user with the role created in the previous step, In {{kib}}, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Agent keys**. Enter a name for your API key and select at least one privilege.
 
 For example, to create an API key that can be used to ingest APM events and read agent central configuration, select `config_agent:read` and `event:write`.
 

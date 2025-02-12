@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-context.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Optimize model context [playground-context]

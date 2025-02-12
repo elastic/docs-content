@@ -1,9 +1,10 @@
 ---
+navigation_title: Searches
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting-searches.html
 ---
 
-# Troubleshooting searches [troubleshooting-searches]
+# Troubleshoot searches [troubleshooting-searches]
 
 When you query your data, Elasticsearch may return an error, no search results, or results in an unexpected order. This guide describes how to troubleshoot searches.
 
@@ -125,7 +126,7 @@ GET /my-index-000001/_count
 }
 ```
 
-If the field is aggregatable, you can use [aggregations](../../explore-analyze/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) to retrieve the field’s most common values:
+If the field is aggregatable, you can use [aggregations](../../explore-analyze/query-filter/aggregations.md) to check the field’s values. For `keyword` fields, you can use a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) to retrieve the field’s most common values:
 
 ```console
 GET /my-index-000001/_search?filter_path=aggregations

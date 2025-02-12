@@ -1,9 +1,6 @@
 project: 'Explore and analyze'
 toc:
   - file: index.md
-  - file: overview/kibana-quickstart.md
-    children:
-      - file: overview/kibana-quickstart/accessibility-in-kibana.md
   - file: query-filter.md
     children:
       - file: query-filter/languages.md
@@ -101,27 +98,10 @@ toc:
           - file: query-filter/tools/search-profiler.md
           - file: query-filter/tools/grok-debugger.md
           - file: query-filter/tools/playground.md
+      - file: query-filter/aggregations.md
+        children:
+          - file: query-filter/aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
       - file: query-filter/filtering.md
-  - file: scripting.md
-    children:
-      - file: scripting/modules-scripting-painless.md
-      - file: scripting/modules-scripting-using.md
-        children:
-          - file: scripting/scripts-search-speed.md
-          - file: scripting/dissect.md
-          - file: scripting/grok.md
-      - file: scripting/script-fields-api.md
-      - file: scripting/common-script-uses.md
-        children:
-          - file: scripting/scripting-field-extraction.md
-      - file: scripting/modules-scripting-fields.md
-      - file: scripting/modules-scripting-security.md
-      - file: scripting/modules-scripting-expression.md
-      - file: scripting/modules-scripting-engine.md
-      - file: scripting/painless-lab.md
-  - file: aggregations.md
-    children:
-      - file: aggregations/tutorial-analyze-ecommerce-data-with-aggregations-using-query-dsl.md
   - file: geospatial-analysis.md
   - file: transforms.md
     children:
@@ -163,6 +143,7 @@ toc:
               - file: machine-learning/anomaly-detection/ml-configuring-transform.md
               - file: machine-learning/anomaly-detection/ml-configuring-detector-custom-rules.md
               - file: machine-learning/anomaly-detection/ml-configuring-categories.md
+              - file: machine-learning/anomaly-detection/ml-configuring-populations.md
               - file: machine-learning/anomaly-detection/ml-reverting-model-snapshot.md
               - file: machine-learning/anomaly-detection/geographic-anomalies.md
               - file: machine-learning/anomaly-detection/mapping-anomalies.md
@@ -231,6 +212,23 @@ toc:
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-dfanalytics.md
           - file: machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md
           - file: machine-learning/machine-learning-in-kibana/inference-processing.md
+  - file: scripting.md
+    children:
+      - file: scripting/modules-scripting-painless.md
+      - file: scripting/modules-scripting-using.md
+        children:
+          - file: scripting/scripts-search-speed.md
+          - file: scripting/dissect.md
+          - file: scripting/grok.md
+      - file: scripting/script-fields-api.md
+      - file: scripting/common-script-uses.md
+        children:
+          - file: scripting/scripting-field-extraction.md
+      - file: scripting/modules-scripting-fields.md
+      - file: scripting/modules-scripting-security.md
+      - file: scripting/modules-scripting-expression.md
+      - file: scripting/modules-scripting-engine.md
+      - file: scripting/painless-lab.md
   - file: ai-assistant.md
   - file: discover.md
     children:
@@ -338,7 +336,7 @@ toc:
     children:
       - file: alerts-cases/alerts.md
         children:
-          - file: alerts-cases/alerts/alerting-getting-started.md 
+          - file: alerts-cases/alerts/alerting-getting-started.md
           - file: alerts-cases/alerts/alerting-setup.md
           - file: alerts-cases/alerts/create-manage-rules.md
           - file: alerts-cases/alerts/view-alerts.md
@@ -348,6 +346,7 @@ toc:
               - file: alerts-cases/alerts/rule-type-es-query.md
               - file: alerts-cases/alerts/geo-alerting.md
           - file: alerts-cases/alerts/rule-action-variables.md
+          - file: alerts-cases/alerts/notifications-domain-allowlist.md
           - file: alerts-cases/alerts/alerting-troubleshooting.md
             children:
               - file: alerts-cases/alerts/alerting-common-issues.md
@@ -358,6 +357,8 @@ toc:
         children:
           - file: alerts-cases/watcher/watcher-getting-started.md
           - file: alerts-cases/watcher/how-watcher-works.md
+          - file: alerts-cases/watcher/enable-watcher.md
+          - file: alerts-cases/watcher/watcher-ui.md
           - file: alerts-cases/watcher/encrypting-data.md
           - file: alerts-cases/watcher/input.md
             children:

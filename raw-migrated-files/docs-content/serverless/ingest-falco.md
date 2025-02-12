@@ -18,7 +18,7 @@ In {{elastic-sec}}:
 
 Next, to make alerts from Falco appear on {{elastic-sec}}'s **Alerts** page:
 
-1. Find the **Detection rules (SIEM)** page in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find the **Detection rules (SIEM)** page in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for a rule named `External Alerts`. Install it if necessary, and enable it.
 
 

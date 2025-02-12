@@ -75,9 +75,9 @@ Watcher encryption Key Setup is not supported.
 
 Changing the default throttle period is not possible. You can specify a throttle period per watch, however.
 
-Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](../../../explore-analyze/alerts-cases/watcher.md#ec-cloud-email-service-limits)
+Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#cloud-email-service-limits)
 
-Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher.md#ec-watcher-custom-mail-server)
+Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
 ## Private Link and SSO to Kibana URLs [ec-restrictions-traffic-filters-kibana-sso]
@@ -101,7 +101,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 
 If you are using APM 7.9.0 or older:
 
-* You cannot use [APM Agent central configuration](https://www.elastic.co/guide/en/kibana/current/agent-configuration.html) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
+* You cannot use [APM Agent central configuration](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
 * If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
 
 

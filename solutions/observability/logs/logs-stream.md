@@ -22,7 +22,7 @@ Click **Stream Live** to view a continuous flow of log messages in real time, or
 
 Because [Logs Explorer](logs-explorer.md) is replacing Logs Stream, Logs Stream and the Logs Stream dashboard panel are disabled by default. To activate Logs Stream and the Logs Stream dashboard panel complete the following steps:
 
-1. To open **Advanced Settings**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Advanced Settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In **Advanced Settings**, enter *Logs Stream* in the search bar.
 3. Turn on **Logs Stream**.
 

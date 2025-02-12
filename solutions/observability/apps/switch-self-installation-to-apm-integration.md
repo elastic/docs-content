@@ -25,7 +25,7 @@ Review the APM [release notes](https://www.elastic.co/guide/en/observability/cur
 
 ## Add a {{fleet}} Server [apm-integration-upgrade-2]
 
-{{fleet}} Server is a component of the {{stack}} used to centrally manage {{agent}}s. The APM integration requires a {{fleet}} Server to be running and accessible to your hosts. Add a {{fleet}} Server by following [this guide](https://www.elastic.co/guide/en/fleet/current/add-a-fleet-server.html).
+{{fleet}} Server is a component of the {{stack}} used to centrally manage {{agent}}s. The APM integration requires a {{fleet}} Server to be running and accessible to your hosts. Add a {{fleet}} Server by following [this guide](https://www.elastic.co/guide/en/fleet/current/fleet-deployment-models.html).
 
 ::::{tip}
 If you’re upgrading a self-managed deployment of the {{stack}}, you’ll need to enable [{{es}} security](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md) and the [API key service](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html).
