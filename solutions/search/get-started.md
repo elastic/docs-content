@@ -9,34 +9,6 @@ applies:
 
 # Get started
 
-% What needs to be done: Refine
-
-
-
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$find-cloud-id-cloud-self-managed$$$
-
-$$$create-an-api-key-cloud-self-managed$$$
-
-$$$find-cloud-id-serverless$$$
-
-$$$create-an-api-key-serverless$$$
-
-$$$elasticsearch-get-started-create-project$$$
-
-$$$elasticsearch-follow-guided-index-flow$$$
-
-$$$elasticsearch-follow-in-product-getting-started$$$
-
-$$$elasticsearch-explore-on-your-own$$$
-
-$$$elasticsearch-get-started-create-api-key$$$
-
-$$$full-text-filter-tutorial-create-index$$$
-
-
 ## Core implementation decisions
 
 % TODO add diagram
@@ -51,3 +23,7 @@ Building a search experience with {{es}} requires a number of fundamental implem
    - Which API endpoints and [query language(s)](search/querying-for-search.md) will you use to express your search logic?
 
 Each decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.
+
+::::{tip}
+Already have an {{es}} deployment? You can get started with our hands-on [quick start tutorials](api-quickstarts.md), or check out our [Python notebooks](https://github.com/elastic/elasticsearch-labs/tree/main/notebooks#readme).
+::::
