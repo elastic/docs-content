@@ -50,7 +50,6 @@ The `Destination` cluster should be the same or newer version as the `Source` cl
 ::::
 
 
-
 ## Step 4: Enable bundle and add `reindex` settings on the `Desination` cluster. [ec-remote-reindex-step4]
 
 1. From your deployment page, go to the **Edit** page, click **Manage user settings and extensions**, select tab **Extensions** then enable `my_source_ca`.

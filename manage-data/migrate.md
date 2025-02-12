@@ -36,7 +36,7 @@ Migrating internal {{es}} indices
 :   For {{ech}} and Elasticsearch Add-On for Heroku, if you are migrating internal {{es}} indices from another cluster, specifically the `.kibana` index or the `.security` index, there are two options:
 
     * Use the steps on this page to reindex the internal indices from a remote cluster. The steps for reindexing internal indices and regular, data indices are the same.
-    * Check [Migrating internal indices](../../../manage-data/migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
+    * Check [Migrating internal indices](migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
 
 ::::{warning}
 Before you migrate your {{es}} data, [define your index mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html) on the new cluster. Index mappings are unable to migrate during reindex operations.
@@ -48,7 +48,7 @@ If you still have access to the original data source, outside of your old {{es}}
 
 If the original source isn’t available or has other issues that make it non-viable, there are still two more migration options, getting the data from a remote cluster or restoring from a snapshot.
 
-### Reindex from a remote cluster [ec-reindex-remote]
+### Reindex from a remote cluster [ec-reindex-remote] [ech-reindex-remote]
 
 Through the {{es}} reindex API, you can connect your new {{es}} Service deployment remotely to your old {{es}} cluster. This pulls the data from your old cluster and indexes it into your new one. Reindexing essentially rebuilds the index from scratch and it can be more resource intensive to run.
 
