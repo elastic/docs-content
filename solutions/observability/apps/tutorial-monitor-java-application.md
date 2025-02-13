@@ -846,7 +846,7 @@ If a new log file is created, older log files are gzipped as well to take less s
 
 The built-in modules are almost entirely using the [Ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) feature of {{es}} instead of the {{beats}} processors.
 
-One of the most helpful parts of the ingest pipeline is the ability to debug by using the [Simulate Pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html).
+One of the most helpful parts of the ingest pipeline is the ability to debug by using the [Simulate Pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate).
 
 1. Let’s write a pipeline that is similar to our {{filebeat}} processors using the {{dev-tools-app}} panel in {{kib}}, run the following:
 

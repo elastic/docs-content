@@ -398,7 +398,6 @@ toc:
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/quickstart-monitor-hosts-with-otel.md
       - file: docs-content/serverless/security-about-rules.md
-      - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
       - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-agent-tamper-protection.md
@@ -497,7 +496,6 @@ toc:
       - file: docs-content/serverless/security-response-actions-config.md
       - file: docs-content/serverless/security-response-actions-history.md
       - file: docs-content/serverless/security-response-actions.md
-      - file: docs-content/serverless/security-rule-exceptions.md
       - file: docs-content/serverless/security-rule-monitoring-dashboard.md
       - file: docs-content/serverless/security-rules-coverage.md
       - file: docs-content/serverless/security-rules-create.md
@@ -505,10 +503,8 @@ toc:
       - file: docs-content/serverless/security-runtime-fields.md
       - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-session-view.md
-      - file: docs-content/serverless/security-shared-exception-lists.md
       - file: docs-content/serverless/security-signals-to-cases.md
       - file: docs-content/serverless/security-third-party-actions.md
-      - file: docs-content/serverless/security-threat-intelligence.md
       - file: docs-content/serverless/security-timeline-templates-ui.md
       - file: docs-content/serverless/security-timelines-ui.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
@@ -518,7 +514,6 @@ toc:
       - file: docs-content/serverless/security-ui.md
       - file: docs-content/serverless/security-uninstall-agent.md
       - file: docs-content/serverless/security-users-page.md
-      - file: docs-content/serverless/security-value-lists-exceptions.md
       - file: docs-content/serverless/security-view-alert-details.md
       - file: docs-content/serverless/security-visual-event-analyzer.md
       - file: docs-content/serverless/security-vuln-management-dashboard-dash.md
@@ -775,7 +770,6 @@ toc:
   - file: security-docs/security/index.md
     children:
       - file: security-docs/security/about-rules.md
-      - file: security-docs/security/add-exceptions.md
       - file: security-docs/security/add-manage-notes.md
       - file: security-docs/security/admin-page-ov.md
       - file: security-docs/security/advanced-settings.md
@@ -832,7 +826,6 @@ toc:
       - file: security-docs/security/detection-response-dashboard.md
       - file: security-docs/security/detections-logsdb-index-mode-impact.md
       - file: security-docs/security/detections-permissions-section.md
-      - file: security-docs/security/detections-ui-exceptions.md
       - file: security-docs/security/elastic-endpoint-deploy-reqs.md
       - file: security-docs/security/endpoint-artifacts.md
       - file: security-docs/security/endpoint-data-volume.md
@@ -845,7 +838,6 @@ toc:
       - file: security-docs/security/environment-variable-capture.md
       - file: security-docs/security/ers-requirements.md
       - file: security-docs/security/es-overview.md
-      - file: security-docs/security/es-threat-intel-integrations.md
       - file: security-docs/security/es-ui-overview.md
       - file: security-docs/security/esql-queries-assistant.md
       - file: security-docs/security/event-filters.md
@@ -893,7 +885,6 @@ toc:
       - file: security-docs/security/security-posture-management.md
       - file: security-docs/security/self-healing-rollback.md
       - file: security-docs/security/session-view.md
-      - file: security-docs/security/shared-exception-lists.md
       - file: security-docs/security/signals-to-cases.md
       - file: security-docs/security/third-party-actions.md
       - file: security-docs/security/timeline-templates-ui.md
@@ -904,7 +895,6 @@ toc:
       - file: security-docs/security/uninstall-agent.md
       - file: security-docs/security/use-osquery.md
       - file: security-docs/security/users-page.md
-      - file: security-docs/security/value-lists-exceptions.md
       - file: security-docs/security/view-alert-details.md
       - file: security-docs/security/view-osquery-results.md
       - file: security-docs/security/visual-event-analyzer.md

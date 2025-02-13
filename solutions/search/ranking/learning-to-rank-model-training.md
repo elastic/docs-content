@@ -142,7 +142,7 @@ MLModel.import_ltr_model(
 )
 ```
 
-This method will serialize the trained model and the Learning To Rank configuration (including feature extraction) in a format that {{es}} can understand. The model is then deployed to {{es}} using the [Create Trained Models API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html).
+This method will serialize the trained model and the Learning To Rank configuration (including feature extraction) in a format that {{es}} can understand. The model is then deployed to {{es}} using the [Create Trained Models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model).
 
 The following types of models are currently supported for LTR with {{es}}:
 
@@ -157,5 +157,5 @@ More model types will be supported in the future.
 
 ## Learning To Rank model management [learning-to-rank-model-management]
 
-Once your model is deployed in {{es}} you can manage it using the [trained model APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-df-trained-models-apis.html). You’re now ready to work with your LTR model as a rescorer at [search time](learning-to-rank-search-usage.md).
+Once your model is deployed in {{es}} you can manage it using the [trained model APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-trained-model). You’re now ready to work with your LTR model as a rescorer at [search time](learning-to-rank-search-usage.md).
 
