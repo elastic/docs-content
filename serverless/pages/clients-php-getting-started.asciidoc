@@ -39,7 +39,7 @@ composer require elastic/elasticsearch-serverless
 [[elasticsearch-php-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and {{es}} endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,php]
 ----
@@ -53,7 +53,7 @@ $client = ClientBuilder::create()
   ->build();
 ----
 
-To get API keys for the {{es}} endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-php-client-getting-started-using-the-api]]

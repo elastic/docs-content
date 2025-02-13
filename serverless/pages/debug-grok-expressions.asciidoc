@@ -11,8 +11,8 @@ Grok is a pattern-matching syntax that you can use to parse and structure arbitr
 Grok is good for parsing syslog, apache, and other webserver logs, mysql logs, and in general,
 any log format written for human consumption.
 
-Grok patterns are supported in {{es}} {ref}/runtime.html[runtime fields],
-the {{es}} {ref}/grok-processor.html[grok ingest processor],
+Grok patterns are supported in {es} {ref}/runtime.html[runtime fields],
+the {es} {ref}/grok-processor.html[grok ingest processor],
 and the {ls} {logstash-ref}/plugins-filters-grok.html[grok filter].
 For syntax, see {ref}/grok.html[Grokking grok].
 
@@ -25,8 +25,8 @@ grok patterns].
 
 // TODO: Figure out where to link to for grok patterns. Looks like the dir structure has changed.
 
-Because {{es}} and {ls} share the same grok implementation and pattern libraries,
-any grok pattern that you create in the **Grok Debugger** will work in both {{es}} and {ls}.
+Because {es} and {ls} share the same grok implementation and pattern libraries,
+any grok pattern that you create in the **Grok Debugger** will work in both {es} and {ls}.
 
 [discrete]
 [[grokdebugger-getting-started]]

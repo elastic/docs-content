@@ -6,7 +6,7 @@
 
 This content applies to: {es-badge} {obs-badge} {sec-badge}
 
-{transforms-cap} enable you to convert existing {{es}} indices into summarized
+{transforms-cap} enable you to convert existing {es} indices into summarized
 indices, which provide opportunities for new insights and analytics.
 
 For example, you can use {transforms} to pivot your data into entity-centric

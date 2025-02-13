@@ -19,7 +19,7 @@ Trained models must be in a TorchScript representation for use with
 {stack-ml-features}.
 ====
 
-https://github.com/elastic/eland[Eland] is an {{es}} Python client that
+https://github.com/elastic/eland[Eland] is an {es} Python client that
 provides a simple script to perform the conversion of Hugging Face transformer
 models to their TorchScript representations, the chunking process, and upload to
 {es}; it is therefore the recommended import method. You can either install
@@ -40,7 +40,7 @@ python -m pip install 'eland[pytorch]'
 +
 // NOTCONSOLE
 . Run the `eland_import_hub_model` script to download the model from Hugging
-Face, convert it to TorchScript format, and upload to the {{es}} cluster.
+Face, convert it to TorchScript format, and upload to the {es} cluster.
 For example:
 +
 // NOTCONSOLE
@@ -100,7 +100,7 @@ docker run -it --rm elastic/eland \
       --start
 ----
 
-Replace the `$ELASTICSEARCH_URL` with the URL for your {{es}} cluster. Refer to
+Replace the `$ELASTICSEARCH_URL` with the URL for your {es} cluster. Refer to
 https://www.elastic.co/docs/current/serverless/elasticsearch/explore-your-data-ml-nlp/deploy-trained-models/import-model[Authentication methods]
 to learn more.
 

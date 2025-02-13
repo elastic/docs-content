@@ -1,5 +1,5 @@
 [[elasticsearch-differences]]
-= Differences from other {{es}} offerings
+= Differences from other {es} offerings
 ++++
 <titleabbrev>Serverless differences</titleabbrev>
 ++++
@@ -7,11 +7,11 @@
 // :description: Understand how {es-serverless} differs from Elastic Cloud Hosted and self-managed offerings.
 // :keywords: serverless, elasticsearch
 
-<<what-is-elasticsearch-serverless,{es-serverless}>> handles all the infrastructure management for you, providing a fully managed {{es}} service.
+<<what-is-elasticsearch-serverless,{es-serverless}>> handles all the infrastructure management for you, providing a fully managed {es} service.
 
-If you've used {{es}} before, you'll notice some differences in how you work with the service on {serverless-full}, because a number of APIs and settings are not required for serverless projects.
+If you've used {es} before, you'll notice some differences in how you work with the service on {serverless-full}, because a number of APIs and settings are not required for serverless projects.
 
-This guide helps you understand what's different, what's available, and how to work effectively when running {{es}} on {serverless-full}.
+This guide helps you understand what's different, what's available, and how to work effectively when running {es} on {serverless-full}.
 
 [discrete]
 [[elasticsearch-differences-serverless-infrastructure-management]]
@@ -24,7 +24,7 @@ This guide helps you understand what's different, what's available, and how to w
 * Shard distribution and replication
 * Resource utilization and monitoring
 
-This fully managed approach means many traditional {{es}} infrastructure APIs and settings are not available to end users, as detailed in the following sections.
+This fully managed approach means many traditional {es} infrastructure APIs and settings are not available to end users, as detailed in the following sections.
 
 [discrete]
 [[elasticsearch-differences-serverless-index-size]]
@@ -50,7 +50,7 @@ To ensure optimal performance, follow these recommendations for sizing individua
 
 For large datasets that exceed the recommended maximum size for a single index, consider splitting your data across smaller indices and using an alias to search them collectively.
 
-These recommendations do not apply to indices using better binary quantization (BBQ). Refer to {ref}/dense-vector.html#dense-vector-quantization[vector quantization] in the core {{es}} docs for more information.
+These recommendations do not apply to indices using better binary quantization (BBQ). Refer to {ref}/dense-vector.html#dense-vector-quantization[vector quantization] in the core {es} docs for more information.
 
 [discrete]
 [[elasticsearch-differences-serverless-apis-availability]]
@@ -105,7 +105,7 @@ In {es-serverless}, you can only configure {ref}/index-modules.html#index-module
 Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
 
 Available settings::
-*Index-level settings*: Settings that control how {{es}} documents are processed, stored, and searched are available to end users. These include:
+*Index-level settings*: Settings that control how {es} documents are processed, stored, and searched are available to end users. These include:
 * Analysis configuration
 * Mapping parameters
 * Search/query settings

@@ -4,7 +4,7 @@
 // :description: Troubleshoot searches.
 // :keywords: serverless, troubleshooting
 
-When you query your data, {{es}} may return an error, no search results,
+When you query your data, {es} may return an error, no search results,
 or results in an unexpected order. This guide describes how to troubleshoot
 searches.
 
@@ -219,12 +219,12 @@ GET /my-index-000001/_search?sort=@timestamp:desc&size=1
 [[devtools-dev-tools-troubleshooting-validate-explain-and-profile-queries]]
 == Validate, explain, and profile queries
 
-When a query returns unexpected results, {{es}} offers several tools to
+When a query returns unexpected results, {es} offers several tools to
 investigate why.
 
 The https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-validate-query[**Validate API**]
 enables you to validate a query.
-Use the `rewrite` parameter to return the Lucene query an {{es}} query is
+Use the `rewrite` parameter to return the Lucene query an {es} query is
 rewritten into:
 
 [source,js]
@@ -264,7 +264,7 @@ For a visual representation of the results, use the
 ====
 To troubleshoot queries, select **Inspect** in the toolbar.
 Next, select **Request**.
-You can now copy the query sent to {{es}} for further analysis in Console.
+You can now copy the query sent to {es} for further analysis in Console.
 ====
 
 [discrete]

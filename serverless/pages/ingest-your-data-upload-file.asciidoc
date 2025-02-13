@@ -1,10 +1,10 @@
 [[elasticsearch-ingest-data-file-upload]]
 = Upload a file
 
-// :description: Add data to {{es}} using the File Uploader.
+// :description: Add data to {es} using the File Uploader.
 // :keywords: serverless, elasticsearch, ingest, how to
 
-You can upload files to {{es}} using the File Uploader.
+You can upload files to {es} using the File Uploader.
 Use the visualizer to inspect the data before importing it.
 
 You can upload different file formats for analysis:
@@ -28,7 +28,7 @@ File formats supported up to 60 MB:
 [[elasticsearch-ingest-data-file-upload-how-to-upload-a-file]]
 == How to upload a file
 
-You'll find a link to the Data Visualizer on the {{es}} **Getting Started** page.
+You'll find a link to the Data Visualizer on the {es} **Getting Started** page.
 
 [role="screenshot"]
 image::images/file-data-visualizer-homepage-link.png[data visualizer link]

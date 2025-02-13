@@ -20,7 +20,7 @@ Your project's performance and general data retention are controlled by the **Se
 
 //* **Rename your project**. In the **Overview** section, click **Edit** next to the project's name.
 //* **Manage data and integrations**. Update your project data, including storage settings, indices, and data views, directly in your project.
-//* **Manage API keys**. Access your project and interact with its data programmatically using {{es}} APIs.
+//* **Manage API keys**. Access your project and interact with its data programmatically using {es} APIs.
 //* **Manage members**. Add members and manage their access to this project or other resources of your organization.
 
 [discrete]

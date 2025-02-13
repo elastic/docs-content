@@ -1,8 +1,8 @@
-{serverless-full} is a fully managed solution that allows you to deploy and use Elastic for your use cases without managing the underlying infrastructure. It represents a shift in how you interact with {{es}} - instead of managing clusters, nodes, data tiers, and scaling, you create **serverless projects** that are fully managed and automatically scaled by Elastic. This abstraction of infrastructure decisions allows you to focus solely on gaining value and insight from your data.
+{serverless-full} is a fully managed solution that allows you to deploy and use Elastic for your use cases without managing the underlying infrastructure. It represents a shift in how you interact with {es} - instead of managing clusters, nodes, data tiers, and scaling, you create **serverless projects** that are fully managed and automatically scaled by Elastic. This abstraction of infrastructure decisions allows you to focus solely on gaining value and insight from your data.
 
-{serverless-full} automatically provisions, manages, and scales your {{es}} resources based on your actual usage. Unlike traditional deployments where you need to predict and provision resources in advance, serverless adapts to your workload in real-time, ensuring optimal performance while eliminating the need for manual capacity planning.
+{serverless-full} automatically provisions, manages, and scales your {es} resources based on your actual usage. Unlike traditional deployments where you need to predict and provision resources in advance, serverless adapts to your workload in real-time, ensuring optimal performance while eliminating the need for manual capacity planning.
 
-Serverless projects use the core components of the {stack}, such as {{es}} and {kib}, and are based on an architecture that
+Serverless projects use the core components of the {stack}, such as {es} and {kib}, and are based on an architecture that
 decouples compute and storage. Search and indexing operations are separated, which offers high flexibility for scaling your workloads while ensuring
 a high level of performance.
 

@@ -30,7 +30,7 @@ Depending on what data you want to collect, you may need to install multiple shi
 | https://www.elastic.co/products/beats/winlogbeat[Winlogbeat]
 |===
 
-{beats} can send data to {{es}} directly or through {ls}, where you
+{beats} can send data to {es} directly or through {ls}, where you
 can further process and enhance the data before visualizing it in {kib}.
 
 .Authenticating with {es}

@@ -22,11 +22,11 @@ On this page, you will learn how to:
 [[elasticsearch-get-started-create-project]]
 == Create an {es-serverless} project
 
-Use your {ecloud} account to create a fully-managed {{es}} project:
+Use your {ecloud} account to create a fully-managed {es} project:
 
 . Navigate to {ess-console}[cloud.elastic.co] and create a new account or log in to your existing account.
 . Within **Serverless Projects**, choose **Create project**.
-. Choose the {{es}} project type.
+. Choose the {es} project type.
 . Select a **configuration** for your project, based on your use case.
 +
 ** **General purpose**: For general search use cases across various data types.
@@ -98,5 +98,5 @@ If you're already familiar with Elasticsearch, you can jump right into setting u
 [[elasticsearch-next-steps]]
 == Next steps
 
-* Once you've added data to your {es-serverless} project, you can use {kibana-ref}/playground.html[Playground] to test and tweak {{es}} queries and chat with your data, using GenAI.
-* You can also try our hands-on {ref}/quickstart.html#quickstart-list[quick start tutorials] in the core {{es}} documentation.
+* Once you've added data to your {es-serverless} project, you can use {kibana-ref}/playground.html[Playground] to test and tweak {es} queries and chat with your data, using GenAI.
+* You can also try our hands-on {ref}/quickstart.html#quickstart-list[quick start tutorials] in the core {es} documentation.

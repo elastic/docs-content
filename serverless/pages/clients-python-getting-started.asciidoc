@@ -50,7 +50,7 @@ python -m pip install elasticsearch
 [[elasticsearch-python-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and {{es}} endpoint:
+Initialize the client using your API key and {es} endpoint:
 
 [source,python]
 ----
@@ -62,7 +62,7 @@ client = Elasticsearch(
 )
 ----
 
-To get API keys for the {{es}} endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-python-client-getting-started-using-the-api]]

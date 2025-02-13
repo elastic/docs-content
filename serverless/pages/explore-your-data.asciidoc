@@ -1,7 +1,7 @@
 [[elasticsearch-explore-your-data]]
 = Explore your data
 
-// :description: Turn {{es}} data into actionable insights with aggregations, visualizations, and alerts
+// :description: Turn {es} data into actionable insights with aggregations, visualizations, and alerts
 // :keywords: serverless, elasticsearch, explore, overview
 
 In addition to search, {es3} offers several options for analyzing and visualizing your data.
@@ -9,7 +9,7 @@ In addition to search, {es3} offers several options for analyzing and visualizin
 [NOTE]
 ====
 These features are available on all Elastic deployment types: self-managed clusters, Elastic Cloud Hosted deployments, and {es-serverless} projects.
-They are documented in the {{es}} and {kib} core documentation.
+They are documented in the {es} and {kib} core documentation.
 ====
 
 [discrete]

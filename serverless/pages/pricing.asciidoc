@@ -1,5 +1,5 @@
 [[elasticsearch-billing]]
-= {{es}} billing dimensions
+= {es} billing dimensions
 
 // :description: Learn about how Elasticsearch usage affects pricing.
 // :keywords: serverless, elasticsearch, overview
@@ -39,7 +39,7 @@ queries per second (QPS) you require.
 
 [discrete]
 [[elasticsearch-billing-managing-elasticsearch-costs]]
-== Managing {{es}} costs
+== Managing {es} costs
 
 You can control costs using the following strategies:
 
