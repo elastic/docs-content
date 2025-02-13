@@ -58,4 +58,8 @@ Other repository types are available through official plugins:
 
 * [Hadoop Distributed File System (HDFS)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html)
 
-For more details, refer to the Managing snapshot repositories in [Self managed deployments](/deploy-manage/tools/snapshot-and-restore/self-managed.md) documentation.
+#### Elastic Cloud on Kubernetes (ECK)
+
+ECK is also considered a self-managed deployment method. It supports the same snapshot repositories as self-managed Elasticsearch and has no additional restrictions.
+
+For more details, refer to the Managing snapshot repositories in [Self managed deployments](/deploy-manage/tools/snapshot-and-restore/self-managed.md) and the [Elastic Cloud on Kubernetes](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md) documentation.
