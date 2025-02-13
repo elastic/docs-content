@@ -27,7 +27,7 @@ For more details, refer to Managing snapshot repositories in [Elastic Cloud Host
 
 ### Elastic Cloud Enterprise (ECE)
 
-Snapshot repositories are managed for your entire Elastic Cloud Enterprise installation and can be specified for an Elasticsearch cluster when you create or manage it.
+Snapshot repositories are managed at the platform level in Elastic Cloud Enterprise (ECE) and can be associated with deployments as needed. ECE supports the creation and maintenance of multiple repositories, but each deployment can be linked to only one repository for automatic snapshots.
 
 When a repository is specified, a snapshot is taken every 30 minutes by default. The interval can be adjusted on per deployment basis.
 
