@@ -17,7 +17,7 @@ When [anonymous access](../../../deploy-manage/users-roles/cluster-or-deployment
 ::::
 
 
-If there are role-mapping rules created through the API as well as a role mapping file, the rules are combined. It’s possible for a single user to have some roles that were mapped through the API, and others assigned based on the role mapping file. You can define role-mappings via an [API](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-api) or manage them through [files](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file). These two sources of role-mapping are combined inside of the {{es}} {security-features}, so it is possible for a single user to have some roles that have been mapped through the API, and other roles that are mapped through files.
+If there are role-mapping rules created through the API as well as a role mapping file, the rules are combined. It’s possible for a single user to have some roles that were mapped through the API, and others assigned based on the role mapping file. You can define role-mappings via an [API](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-api) or manage them through [files](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file). These two sources of role-mapping are combined inside of the {{es}} {{security-features}}, so it is possible for a single user to have some roles that have been mapped through the API, and other roles that are mapped through files.
 
 ::::{note} 
 Users with no roles assigned will be unauthorized for any action. In other words, they may be able to authenticate, but they will have no roles. No roles means no privileges, and no privileges means no authorizations to make requests.
@@ -62,7 +62,7 @@ You cannot view, edit, or remove any roles that are defined in the role mapping 
 To specify users and groups in the role mappings, you use their *Distinguished Names* (DNs). A DN is a string that uniquely identifies the user or group, for example `"cn=John Doe,cn=contractors,dc=example,dc=com"`.
 
 ::::{note} 
-The {{es}} {security-features} support only Active Directory security groups. You cannot map distribution groups to roles.
+The {{es}} {{security-features}} support only Active Directory security groups. You cannot map distribution groups to roles.
 ::::
 
 

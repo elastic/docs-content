@@ -16,7 +16,7 @@ You will go through the following steps:
 * Select a AWS Network Firewall-compatible resource
 * Create a delivery stream in Amazon Data Firehose
 * Set up logging to forward the logs to the Elastic stack using a Firehose stream
-* Visualize your logs in {kib}
+* Visualize your logs in {{kib}}
 
 
 ## Before you begin [firehose-firewall-prerequisites]

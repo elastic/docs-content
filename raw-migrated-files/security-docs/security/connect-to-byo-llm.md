@@ -203,7 +203,7 @@ Finally, configure the connector:
 8. Click **Save**.
 
 :::{image} ../../../images/security-lms-edit-connector.png
-:alt: The Edit connector page in the {security-app}
+:alt: The Edit connector page in the {{security-app}}
 :::
 
 Setup is now complete. You can use the model you’ve loaded in LM Studio to power Elastic’s generative AI features. You can test a variety of models as you interact with AI Assistant to see what works best without having to update your connector.

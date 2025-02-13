@@ -20,7 +20,7 @@ If you are using an **on-premises** {{stack}} deployment:
 
 If you are using an **on-premises** {{stack}} deployment with [**security**](../../../deploy-manage/security.md):
 
-* If you are unable to access {{kib}} {alert-features}, ensure that you have not [explicitly disabled API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#api-key-service-settings).
+* If you are unable to access {{kib}} {{alert-features}}, ensure that you have not [explicitly disabled API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#api-key-service-settings).
 
 The alerting framework uses queries that require the `search.allow_expensive_queries` setting to be `true`. See the scripts [documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-query.html#_allow_expensive_queries_4).
 

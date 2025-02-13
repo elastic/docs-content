@@ -23,7 +23,7 @@ Alternatively, you can use APIs like [get trained models](https://www.elastic.co
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
 
 :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
-:alt: The trained models UI in {kib}
+:alt: The trained models UI in {{kib}}
 :class: screenshot
 :::
 

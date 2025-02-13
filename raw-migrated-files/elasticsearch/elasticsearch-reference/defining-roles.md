@@ -113,7 +113,7 @@ The following describes the structure of an application privileges entry:
 
 1. The name of the application.
 2. The list of the names of the application privileges to grant to this role.
-3. The resources to which those privileges apply. These are handled in the same way as index name pattern in `indices` permissions. These resources do not have any special meaning to the {{es}} {security-features}.
+3. The resources to which those privileges apply. These are handled in the same way as index name pattern in `indices` permissions. These resources do not have any special meaning to the {{es}} {{security-features}}.
 
 
 For details about the validation rules for these fields, see the [add application privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-privileges).

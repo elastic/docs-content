@@ -12,16 +12,16 @@ The examples in this section are for illustration purposes only and should not b
 ::::
 
 
-## System and {{k8s}} {integrations} [k8s_system_and_k8s_integrations]
+## System and {{k8s}} {{integrations}} [k8s_system_and_k8s_integrations]
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/elastic-agent/fleet-kubernetes-integration.yaml
 ```
 
-Deploys {{agent}} as a DaemonSet in {{fleet}} mode with System and {{k8s}} {integrations} enabled. System integration collects syslog logs, auth logs and system metrics (for CPU, I/O, filesystem, memory, network, process and others). {{k8s}} {integrations} collects API server, Container, Event, Node, Pod, Volume and system metrics.
+Deploys {{agent}} as a DaemonSet in {{fleet}} mode with System and {{k8s}} {{integrations}} enabled. System integration collects syslog logs, auth logs and system metrics (for CPU, I/O, filesystem, memory, network, process and others). {{k8s}} {{integrations}} collects API server, Container, Event, Node, Pod, Volume and system metrics.
 
 
-## System and {{k8s}} {integrations} running as non-root [k8s_system_and_k8s_integrations_running_as_non_root]
+## System and {{k8s}} {{integrations}} running as non-root [k8s_system_and_k8s_integrations_running_as_non_root]
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/elastic-agent/fleet-kubernetes-integration-nonroot.yaml

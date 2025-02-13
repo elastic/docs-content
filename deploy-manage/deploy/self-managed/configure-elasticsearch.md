@@ -14,7 +14,7 @@ The configuration files should contain settings which are node-specific (such as
 
 {{es}} has three configuration files:
 
-* `elasticsearch.yml` for configuring {es}
+* `elasticsearch.yml` for configuring {{es}}
 * `jvm.options` for configuring {{es}} JVM settings
 * `log4j2.properties` for configuring {{es}} logging
 

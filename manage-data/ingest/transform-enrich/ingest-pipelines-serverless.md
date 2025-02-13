@@ -24,7 +24,7 @@ In **{{project-settings}} → {{manage-app}} → {{ingest-pipelines-app}}**, you
 * Delete pipelines
 
 :::{image} ../../../images/serverless-ingest-pipelines-management.png
-:alt: {ingest-pipelines-app}
+:alt: {{ingest-pipelines-app}}
 :class: screenshot
 :::
 
@@ -38,6 +38,6 @@ The **New pipeline from CSV** option lets you use a file with comma-separated va
 Before you use a pipeline in production, you should test it using sample documents. When creating or editing a pipeline in **{{ingest-pipelines-app}}**, click **Add documents***. In the ***Documents** tab, provide sample documents and click **Run the pipeline**:
 
 :::{image} ../../../images/serverless-ingest-pipelines-test.png
-:alt: Test a pipeline in {ingest-pipelines-app}
+:alt: Test a pipeline in {{ingest-pipelines-app}}
 :class: screenshot
 :::

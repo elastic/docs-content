@@ -1,6 +1,6 @@
 # Kerberos authentication [kerberos-realm]
 
-You can configure the {{stack}} {security-features} to support Kerberos V5 authentication, an industry standard protocol to authenticate users in {{es}}.
+You can configure the {{stack}} {{security-features}} to support Kerberos V5 authentication, an industry standard protocol to authenticate users in {{es}}.
 
 ::::{note} 
 You cannot use the Kerberos realm to authenticate on the transport network layer.
@@ -143,7 +143,7 @@ To configure a Kerberos realm in {{es}}:
 
     For detailed information of available realm settings, see [Kerberos realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-kerberos-settings).
 
-5. Restart {es}
+5. Restart {{es}}
 6. Map Kerberos users to roles.
 
     The `kerberos` realm enables you to map Kerberos users to roles. You can configure these role mappings by using the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). You identify users by their `username` field.

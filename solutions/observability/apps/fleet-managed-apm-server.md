@@ -72,7 +72,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
 5. Click the **Agents** tab and follow the in-product instructions to add a {{fleet}} server:
 
     :::{image} ../../../images/observability-add-fleet-server.png
-    :alt: In-product instructions for adding a {fleet-server}
+    :alt: In-product instructions for adding a {{fleet-server}}
     :class: screenshot
     :::
 

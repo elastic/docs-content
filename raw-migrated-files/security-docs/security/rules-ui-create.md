@@ -695,7 +695,7 @@ Refer to [Action frequency: Summary of alerts](../../../explore-analyze/alerts-c
 
 
 * `{{context.alerts}}`: Array of detected alerts
-* `{{{context.results_link}}}`: URL to the alerts in {kib}
+* `{{{context.results_link}}}`: URL to the alerts in {{kib}}
 * `{{context.rule.anomaly_threshold}}`: Anomaly threshold score above which alerts are generated ({{ml}} rules only)
 * `{{context.rule.description}}`: Rule description
 * `{{context.rule.false_positives}}`: Rule false positives

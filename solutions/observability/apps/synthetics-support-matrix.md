@@ -44,7 +44,7 @@ There are various components that make up the Synthetics solution, which are sup
         * Any *inline* or *Zip URL* monitors configured with the beta Synthetics integration prior to 1.0.0, are not supported and will stop running in the future
 
     * Shipped as the `elastic-agent-complete` Docker image
-    * Must have a direct connection to {es}
+    * Must have a direct connection to {{es}}
 
         * Do not configure any ingest pipelines or Logstash output
 
@@ -65,7 +65,7 @@ There are various components that make up the Synthetics solution, which are sup
 * **GA support**: As defined in the standard [Support matrix](https://www.elastic.co/support/matrix)
 * **Notes**:
 
-    * For running lightweight monitors via YML configuration running on self-managed infrastructure with standalone {agent}
+    * For running lightweight monitors via YML configuration running on self-managed infrastructure with standalone {{agent}}
     * Browser-based monitors are not supported in this configuration
     * Results for monitors configured using the standalone {{agent}} are available in the {{uptime-app}} (*not* the {{synthetics-app}})
 

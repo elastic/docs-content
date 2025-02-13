@@ -26,7 +26,7 @@ Upgrading from a release candidate build, such as 8.0.0-rc1 or 8.0.0-rc2, is not
 
     ::::{important}
     * Make sure you check the breaking changes for each minor release up to 9.0.0-beta1.
-    * If you are using {{ml}} {dfeeds} that contain discontinued search or query domain specific language (DSL), the upgrade will fail. In 5.6.5 and later, the Upgrade Assistant provides information about which {{dfeeds}} need to be updated.
+    * If you are using {{ml}} {{dfeeds}} that contain discontinued search or query domain specific language (DSL), the upgrade will fail. In 5.6.5 and later, the Upgrade Assistant provides information about which {{dfeeds}} need to be updated.
 
     ::::
 

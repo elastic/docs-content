@@ -1,6 +1,6 @@
 # LDAP user authentication [ldap-realm]
 
-You can configure the {{stack}} {security-features} to communicate with a Lightweight Directory Access Protocol (LDAP) server to authenticate users. See [Configuring an LDAP realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#ldap-realm-configuration).
+You can configure the {{stack}} {{security-features}} to communicate with a Lightweight Directory Access Protocol (LDAP) server to authenticate users. See [Configuring an LDAP realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#ldap-realm-configuration).
 
 LDAP stores users and groups hierarchically, similar to the way folders are grouped in a file system. An LDAP directory’s hierarchy is built from containers such as the *organizational unit* (`ou`), *organization* (`o`), and *domain component* (`dc`).
 
@@ -95,7 +95,7 @@ To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to use
 
 4. (Optional) Configure how the {{security-features}} interact with multiple LDAP servers.
 
-    The `load_balance.type` setting can be used at the realm level. The {{es}} {security-features} support both failover and load balancing modes of operation. See [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings).
+    The `load_balance.type` setting can be used at the realm level. The {{es}} {{security-features}} support both failover and load balancing modes of operation. See [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings).
 
 5. (Optional) To protect passwords, [encrypt communications between {{es}} and the LDAP server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#tls-ldap).
 6. Restart {{es}}.

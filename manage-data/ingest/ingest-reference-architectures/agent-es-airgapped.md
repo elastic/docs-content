@@ -13,7 +13,7 @@ Ingest model
 :   All {{stack}} components deployed inside a DMZ:
 
     * Control path: {{agent}} to {{fleet}} to {{es}}<br>
-    * Data path: {{agent}} to {es}
+    * Data path: {{agent}} to {{es}}
 
 
 Use when

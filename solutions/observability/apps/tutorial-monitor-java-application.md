@@ -1461,7 +1461,7 @@ java -jar /tmp/apm-agent-attach-1.17.0-standalone.jar --pid 30730 \
 This above message will return something like this:
 
 ```text
-2020-07-10 15:04:48.144  INFO Attaching the Elastic {apm-agent} to 30730
+2020-07-10 15:04:48.144  INFO Attaching the Elastic {{apm-agent}} to 30730
 2020-07-10 15:04:49.649  INFO Done
 ```
 

@@ -52,7 +52,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 You can find the data drift view in **{{ml-app}}** > **{{data-viz}}** in {{kib}} or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md). The data drift view shows you the differences in each field for two different time ranges in a given {{data-source}}. The view helps you to visualize the changes in your data over time and enables you to understand its behavior better.
 
 :::{image} ../../images/kibana-ml-data-drift.png
-:alt: Data drift view in {kib}
+:alt: Data drift view in {{kib}}
 :class: screenshot
 :::
 

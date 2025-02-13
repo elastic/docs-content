@@ -138,5 +138,5 @@ POST _search
 * Read the [retriever reference documentation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for syntax and implementation details
 * Learn more about the [retrievers](../querying-for-search.md) abstraction
 * Learn more about the Elastic [Inference APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference)
-* Check out our [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb) for using Cohere with {es}
+* Check out our [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/integrations/cohere/cohere-elasticsearch.ipynb) for using Cohere with {{es}}
 

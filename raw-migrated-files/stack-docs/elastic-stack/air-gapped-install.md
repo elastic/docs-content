@@ -40,7 +40,7 @@ Some components of the {{stack}} require additional configuration and local depe
 
         * [D.2.1. Using the {{kib}} UI](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-kibana)
         * [D.2.2. Using the `kibana.yml` config file](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-yml)
-        * [D.2.3. Using the {{kib}} {fleet} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api)
+        * [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api)
 
 
 ::::{note}
@@ -92,7 +92,7 @@ Elastic {{beats}} are light-weight data shippers. They do not require any unique
 
 Air-gapped install of {{agent}} depends on the [{{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry) and the [{{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry) for most use-cases. The agent itself is fairly lightweight and installs dependencies only as required by its configuration. In terms of connections to these dependencies, {{agents}} need to be able to connect to the {{artifact-registry}} directly, but {{package-registry}} connections are handled through [{{kib}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana).
 
-Additionally, if the {{agent}} {elastic-defend} integration is used, then access to the [Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository) is necessary in order to deploy updates for some of the detection and prevention capabilities.
+Additionally, if the {{agent}} {{elastic-defend}} integration is used, then access to the [Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository) is necessary in order to deploy updates for some of the detection and prevention capabilities.
 
 To learn more about install and configuration, refer to the [{{agent}} install documentation](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](https://www.elastic.co/guide/en/fleet/current/air-gapped.html).
 
@@ -480,7 +480,7 @@ There are three ways to configure {{agent}} integrations:
 
 * [D.2.1. Using the {{kib}} UI](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-kibana)
 * [D.2.2. Using the `kibana.yml` config file](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-yml)
-* [D.2.3. Using the {{kib}} {fleet} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api)
+* [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api)
 
 
 #### D.2.1. Using the {{kib}} UI [air-gapped-agent-integration-configure-kibana]
@@ -514,7 +514,7 @@ You can have {{kib}} create {{agent}} policies on your behalf by adding appropri
 :   Takes a list of all integration package names and versions that {{kib}} should download from the {{package-registry}} (EPR). This is done because {{agents}} themselves do not directly fetch packages from the EPR.
 
 `xpack.fleet.agentPolicies`
-:   Takes a list of {{agent}} policies in the format expected by the [{{kib}} {fleet} HTTP API](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html). Refer to the setting in [Preconfiguration settings](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html#_preconfiguration_settings_for_advanced_use_cases) for the format. See also [D.2.3. Using the {{kib}} {fleet} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api).
+:   Takes a list of {{agent}} policies in the format expected by the [{{kib}} {{fleet}} HTTP API](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html). Refer to the setting in [Preconfiguration settings](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html#_preconfiguration_settings_for_advanced_use_cases) for the format. See also [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api).
 
 `xpack.fleet.registryUrl`
 :   Takes a URL of the {{package-registry}} that can be reached by the {{kib}} server. Enable this setting only when deploying in an air-gapped environment.
@@ -523,17 +523,17 @@ Other settings
 :   You can add other, more discretionary settings for {{fleet}}, {{agents}}, & policies. Refer to [Fleet settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html).
 
 
-#### D.2.3. Using the {{kib}} {fleet} API [air-gapped-agent-integration-configure-fleet-api]
+#### D.2.3. Using the {{kib}} {{fleet}} API [air-gapped-agent-integration-configure-fleet-api]
 
 **Best option for**: Declarative configuration and users who need reproducible and automated deployments in even the trickiest of environments.
 
 **Example:** See the following.
 
-It is possible to use custom scripts that call the {{kib}} {fleet} API to create or update policies without restarting {{kib}}, and also allowing for custom error handling and update logic.
+It is possible to use custom scripts that call the {{kib}} {{fleet}} API to create or update policies without restarting {{kib}}, and also allowing for custom error handling and update logic.
 
-At this time, you can refer to the the [{{kib}} {fleet} HTTP API](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html) documentation, however additional resources from public code repositories should be consulted to capture the full set of configuration options available for a given integration. Specifically, many integrations have configuration options such as `inputs` and `data_streams` that are unique.
+At this time, you can refer to the the [{{kib}} {{fleet}} HTTP API](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html) documentation, however additional resources from public code repositories should be consulted to capture the full set of configuration options available for a given integration. Specifically, many integrations have configuration options such as `inputs` and `data_streams` that are unique.
 
-In particular, the `*.yml.hbs` templates should be consulted to determine which `vars` are available for configuring a particular integration using the {{kib}} {fleet} API.
+In particular, the `*.yml.hbs` templates should be consulted to determine which `vars` are available for configuring a particular integration using the {{kib}} {{fleet}} API.
 
 * For most Integrations, refer to the README and `*.yml.hbs` files in the appropriate directory in the [elastic/integrations repository](https://github.com/elastic/integrations/tree/main/packages).
 * For the APM integration, refer to the README and `*.yml.hbs` files in the [elastic/apm-server repository](https://github.com/elastic/apm-server/tree/main/apmpackage/apm/agent).

@@ -44,7 +44,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 
         * Machine Learning jobs, watches, monitoring, ingest pipelines
 
-    * Internal tasks initiated by {es}
+    * Internal tasks initiated by {{es}}
 
         * Nodes joining and leaving due to hardware failures
         * Shard allocation due to nodes joining and leaving

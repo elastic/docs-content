@@ -33,7 +33,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 3. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the production cluster. By default, it is disabled (`false`).
 
     ::::{note}
-    You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {security-features} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
+    You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
     ::::
 
 
@@ -65,7 +65,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         For more information, see [Monitoring settings in {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
 4. [Install {{metricbeat}}](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html) on the same server as {{kib}}.
-5. Enable the {{kib}} {xpack} module in {{metricbeat}}.<br>
+5. Enable the {{kib}} {{xpack}} module in {{metricbeat}}.<br>
 
     For example, to enable the default configuration in the `modules.d` directory, run the following command:
 
@@ -75,7 +75,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
     For more information, see [Specify which modules to run](https://www.elastic.co/guide/en/beats/metricbeat/current/configuration-metricbeat.html) and [{{kib}} module](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-kibana.html).
 
-6. Configure the {{kib}} {xpack} module in {{metricbeat}}.<br>
+6. Configure the {{kib}} {{xpack}} module in {{metricbeat}}.<br>
 
     The `modules.d/kibana-xpack.yml` file contains the following settings:
 
@@ -132,11 +132,11 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     If you configured the monitoring cluster to use encrypted communications, you must access it via HTTPS. For example, use a `hosts` setting like `https://es-mon-1:9200`.
 
     ::::{important}
-    The {{es}} {monitor-features} use ingest pipelines. The cluster that stores the monitoring data must have at least one node with the `ingest` role.
+    The {{es}} {{monitor-features}} use ingest pipelines. The cluster that stores the monitoring data must have at least one node with the `ingest` role.
     ::::
 
 
-    If the {{es}} {security-features} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
+    If the {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{metricbeat}} can send metrics successfully:
 
     1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the `remote_monitoring_user` [built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.

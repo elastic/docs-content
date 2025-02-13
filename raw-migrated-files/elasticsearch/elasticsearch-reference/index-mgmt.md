@@ -7,7 +7,7 @@ To use these features, go to **Stack Management** > **Index Management**.
 
 ## Required permissions [index-mgm-req-permissions]
 
-If you use {{es}} {security-features}, the following [security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) are required:
+If you use {{es}} {{security-features}}, the following [security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) are required:
 
 * The `monitor` cluster privilege to access {{kib}}'s **Index Management** features.
 * The `view_index_metadata` and `manage` index privileges to view a data stream or index’s data.

@@ -45,7 +45,7 @@ You can also find Console directly on certain Search solution and Elasticsearch 
 
 ## Write requests [console-api]
 
-**Console** accepts commands in a simplified HTTP request syntax. For example, the following `GET` request calls the {es} `_search` API:
+**Console** accepts commands in a simplified HTTP request syntax. For example, the following `GET` request calls the {{es}} `_search` API:
 
 ```js
 GET /_search

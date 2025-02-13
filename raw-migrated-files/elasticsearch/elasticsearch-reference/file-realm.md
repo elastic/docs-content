@@ -3,7 +3,7 @@
 You can manage and authenticate users with the built-in `file` realm. With the `file` realm, users are defined in local files on each node in the cluster.
 
 ::::{important}
-As the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {security-features} do not deliver any mechanism to guarantee this. You should also be aware that you cannot add or manage users in the `file` realm via the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) and you cannot add or manage them in {{kib}} on the **Management / Security / Users** page
+As the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this. You should also be aware that you cannot add or manage users in the `file` realm via the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) and you cannot add or manage them in {{kib}} on the **Management / Security / Users** page
 ::::
 
 
@@ -67,7 +67,7 @@ A safer approach would be to apply the change on one of the nodes and have the f
     While it is possible to modify the `users` files directly using any standard text editor, we strongly recommend using the [*elasticsearch-users*](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool to apply the required changes.
 
     ::::{important}
-    As the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{es}} {security-features} do not deliver any mechanisms to guarantee this.
+    As the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{es}} {{security-features}} do not deliver any mechanisms to guarantee this.
     ::::
 
 4. Add role information to the `ES_PATH_CONF/users_roles` file on each node in the cluster.

@@ -1,6 +1,6 @@
 # Security [xpack-security]
 
-The {{stack}} {security-features} enable you to easily secure a cluster. With security, you can password-protect your data as well as implement more advanced security measures such as encrypting communications, role-based access control, IP filtering, and auditing. For more information, see [Secure a cluster](../../../deploy-manage/security.md) and [Configuring Security in {{kib}}](../../../deploy-manage/security.md).
+The {{stack}} {{security-features}} enable you to easily secure a cluster. With security, you can password-protect your data as well as implement more advanced security measures such as encrypting communications, role-based access control, IP filtering, and auditing. For more information, see [Secure a cluster](../../../deploy-manage/security.md) and [Configuring Security in {{kib}}](../../../deploy-manage/security.md).
 
 ::::{note} 
 There are security limitations that affect {{kib}}. For more information, refer to [Security](../../../deploy-manage/security.md).

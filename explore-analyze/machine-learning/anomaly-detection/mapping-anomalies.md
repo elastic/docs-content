@@ -21,7 +21,7 @@ This example uses the sample web logs data set. For more information, see [Add t
 If you have fields that contain valid vector layers, you can use the **{{data-viz}}** in the **{{ml-app}}** app to see a choropleth map, in which each area is colored based on its document count. For example:
 
 :::{image} ../../../images/machine-learning-weblogs-data-visualizer-choropleth.png
-:alt: A screenshot of a field that contains vector layer values in {data-viz}
+:alt: A screenshot of a field that contains vector layer values in {{data-viz}}
 :class: screenshot
 :::
 
@@ -32,7 +32,7 @@ To create an {{anomaly-job}} in {{kib}}, click **Create job** on the **{{ml-cap}
 For example, use the multi-metric job wizard to create a job that analyzes the sample web logs data set to detect anomalous behavior in the sum of the data transferred (`bytes` values) for each destination country (`geo.dest` values):
 
 :::{image} ../../../images/machine-learning-weblogs-multimetric-wizard-vector.png
-:alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {kib}
+:alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {{kib}}
 :class: screenshot
 :::
 

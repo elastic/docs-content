@@ -64,7 +64,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 
 In {{fleet}}, if you delete an {{agent}} policy that is associated with one or more inactive enrolled agents, when the agent returns back to a `Healthy` or `Offline` state, it cannot be unenrolled. Attempting to unenroll the agent results in an `Error unenrolling agent` message, and the unenrollment fails.
 
-To resolve this problem, you can use the [{{kib}} {fleet} APIs](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html) to force unenroll the agent.
+To resolve this problem, you can use the [{{kib}} {{fleet}} APIs](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html) to force unenroll the agent.
 
 To uninstall a single {{agent}}:
 
@@ -152,7 +152,7 @@ If you are unable to see {{fleet-server}} in {{kib}}, make sure it’s set up.
 To set up {{fleet-server}} on {{ecloud}}:
 
 1. Go to your deployment on {{ecloud}}.
-2. Follow the {{ecloud}} prompts to set up **{{integrations-server}}**. Once complete, the {{fleet-server}} {agent} will show up in {{fleet}}.
+2. Follow the {{ecloud}} prompts to set up **{{integrations-server}}**. Once complete, the {{fleet-server}} {{agent}} will show up in {{fleet}}.
 
 To enable {{fleet}} and set up {{fleet-server}} on a self-managed cluster:
 
@@ -249,7 +249,7 @@ You will also need to set `ssl.verification_mode: none` in the Output settings i
 To enroll in {{fleet}}, {{agent}} must connect to the {{fleet-server}} instance. If the agent is unable to connect, you see the following failure:
 
 ```txt
-fail to enroll: fail to execute request to {fleet-server}:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
+fail to enroll: fail to execute request to {{fleet-server}}:Post http://fleet-server:8220/api/fleet/agents/enroll?: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 ```
 
 Here are several steps to help you troubleshoot the problem.
@@ -261,7 +261,7 @@ Here are several steps to help you troubleshoot the problem.
     curl -f http://<fleet-server-url>:8220/api/status
     ```
 
-3. Verify that you have specified the correct {{kib}} {fleet} settings URL and port for your environment.
+3. Verify that you have specified the correct {{kib}} {{fleet}} settings URL and port for your environment.
 
     By default, HTTPS protocol and port 8220 is expected by {{fleet-server}} to communicate with {{es}} unless you have explicitly set it otherwise.
 
@@ -539,7 +539,7 @@ Error: fail to enroll: fail to execute request to fleet-server: x509: certificat
 Error: enroll command failed with exit code: 1
 ```
 
-To install or enroll against a self-signed cert {{fleet-server}} {agent}, add in the `--insecure` option to the command:
+To install or enroll against a self-signed cert {{fleet-server}} {{agent}}, add in the `--insecure` option to the command:
 
 ```sh
 sudo ./elastic-agent install --url=https://<fleet-server-ip>:8220 --enrollment-token=<token> --insecure
@@ -657,9 +657,9 @@ To recover the {{agent}}:
 1. In {{fleet}}, open the **Agents** tab and click **Add agent**.
 2. In the **Add agent** flyout, select an agent policy that contains the **Fleet Server** integration. On Elastic Cloud you can use the **Elastic Cloud agent policy** which includes the integration.
 3. Follow the instructions in the flyout, and stop before running the CLI commands.
-4. Depending on the state of the original {{fleet-server}} {agent}, do one of the following:
+4. Depending on the state of the original {{fleet-server}} {{agent}}, do one of the following:
 
-    * **The original {{fleet-server}} {agent} is still running and healthy**
+    * **The original {{fleet-server}} {{agent}} is still running and healthy**
 
         In this case, you only need to re-enroll the agent with {{fleet}}:
 
@@ -679,7 +679,7 @@ To recover the {{agent}}:
             sudo ./elastic-agent enroll --url=https://fleet-server:8220 --enrollment-token=bXktc3VwZXItc2VjcmV0LWVucm9sbWVudC10b2tlbg==
             ```
 
-    * **The original {{fleet-server}} {agent} is no longer installed**
+    * **The original {{fleet-server}} {{agent}} is no longer installed**
 
         In this case, you need to install the agent again:
 

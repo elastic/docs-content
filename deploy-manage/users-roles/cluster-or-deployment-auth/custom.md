@@ -5,7 +5,7 @@ mapped_pages:
 
 # Custom [custom-realms]
 
-If you are using an authentication system that is not supported out-of-the-box by the {{es}} {security-features}, you can create a custom realm to interact with it to authenticate users. You implement a custom realm as an SPI loaded security extension as part of an ordinary elasticsearch plugin.
+If you are using an authentication system that is not supported out-of-the-box by the {{es}} {{security-features}}, you can create a custom realm to interact with it to authenticate users. You implement a custom realm as an SPI loaded security extension as part of an ordinary elasticsearch plugin.
 
 ## Implementing a custom realm [implementing-custom-realm]
 
@@ -37,7 +37,7 @@ To package your custom realm as a plugin:
     }
     ```
 
-    The `getAuthenticationFailureHandler` method is used to optionally provide a custom `AuthenticationFailureHandler`, which will control how the {{es}} {security-features} respond in certain authentication failure events.
+    The `getAuthenticationFailureHandler` method is used to optionally provide a custom `AuthenticationFailureHandler`, which will control how the {{es}} {{security-features}} respond in certain authentication failure events.
 
     ```java
     @Override
