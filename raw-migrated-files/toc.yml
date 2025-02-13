@@ -55,7 +55,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-create-deployment.md
       - file: cloud/cloud-enterprise/ece-delete-deployment.md
       - file: cloud/cloud-enterprise/ece-deployment-no-op.md
-      - file: cloud/cloud-enterprise/ece-disable-data-tier.md
       - file: cloud/cloud-enterprise/ece-enable-auditing.md
       - file: cloud/cloud-enterprise/ece-find.md
       - file: cloud/cloud-enterprise/ece-generate-roles-token.md
@@ -183,7 +182,6 @@ toc:
       - file: cloud/cloud/ec-customize-deployment.md
       - file: cloud/cloud/ec-delete-deployment.md
       - file: cloud/cloud/ec-deployment-no-op.md
-      - file: cloud/cloud/ec-disable-data-tier.md
       - file: cloud/cloud/ec-editing-user-settings.md
       - file: cloud/cloud/ec-enable-logging-and-monitoring.md
       - file: cloud/cloud/ec-faq-getting-started.md
@@ -547,7 +545,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
       - file: elasticsearch/elasticsearch-reference/data-streams.md
-      - file: elasticsearch/elasticsearch-reference/data-tiers.md
       - file: elasticsearch/elasticsearch-reference/defining-roles.md
       - file: elasticsearch/elasticsearch-reference/document-level-security.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
