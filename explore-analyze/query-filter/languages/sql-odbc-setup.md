@@ -235,7 +235,7 @@ The connection configuration can further be tweaked by the following parameters.
 
 * Max page size (rows)
 
-    The maximum number of rows that Elasticsearch SQL server should send the driver for one page. This corresponds to the SQL search API’s [`fetch_size`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html#sql-search-api-fetch-size) parameter. A `0` value indicates a server default.
+    The maximum number of rows that Elasticsearch SQL server should send the driver for one page. This corresponds to the SQL search API’s [`fetch_size`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query) parameter. A `0` value indicates a server default.
 
 * Max page length (MB)
 
@@ -287,7 +287,7 @@ The connection configuration can further be tweaked by the following parameters.
 
 * Multi value field lenient
 
-    This setting controls the behavior of the server in case a multi-value field is queried. In case this is set and the server encounters such a field, it will pick a value in the set - without any guarantees of what that will be, but typically the first in natural ascending order - and return it as the value for the column. If not set, the server will return an error. This corresponds to the SQL search API’s [`field_multi_value_leniency`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html#sql-search-api-field-multi-value-leniency) parameter.
+    This setting controls the behavior of the server in case a multi-value field is queried. In case this is set and the server encounters such a field, it will pick a value in the set - without any guarantees of what that will be, but typically the first in natural ascending order - and return it as the value for the column. If not set, the server will return an error. This corresponds to the SQL search API’s [`field_multi_value_leniency`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query) parameter.
 
 * Include frozen indices
 
