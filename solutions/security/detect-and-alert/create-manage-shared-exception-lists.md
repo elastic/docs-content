@@ -8,9 +8,11 @@ mapped_urls:
 
 Shared exception lists allow you to group exceptions together and then apply them to multiple rules. Use the Shared Exception Lists page to set up shared exception lists.
 
-::::{note}
-Exception lists created in 8.5 and earlier become shared exception lists in 8.6 or later. You can access all shared exception lists from the Shared Exception Lists page.
-::::
+% The following note is only applicable to ESS and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
+
+% ::::{note}
+% Exception lists created in 8.5 and earlier become shared exception lists in 8.6 or later. You can access all shared exception % lists from the Shared Exception Lists page.
+% ::::
 
 
 :::{image} ../../../images/security-rule-exceptions-page.png

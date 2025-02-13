@@ -74,8 +74,8 @@ You can edit, remove, or export existing value lists.
 
     * **Add individual items to the list**: Click **Create list item**, enter a value, then click **Add list item**.
     * **Bulk upload list items**: Drag or select the `csv` or `txt` file that contains the values that you want to add, then click **Upload**.
-    * **Edit a value**: In the Value column, go to the value you want to edit and click the **Edit*** button (![Edit button from Manage value lists window](../../../images/security-edit-value-list-item.png "")). When you’re done editing, click the ***Save** button (![Save button from Manage value lists window](../../../images/security-save-value-list-item-changes.png "")) to save your changes. Click the **Cancel** button (![Cancel button from Manage value lists window](../../../images/security-cancel-value-list-item-changes.png "")) to revert your changes.
-    * **Remove a value**: Click the **Remove value** button (![Remove value list button from Manage value lists window](../../../images/security-remove-value-list-item.png "")) to delete a value from the list.
+    * **Edit a value**: In the Value column, go to the value you want to edit and click the **Edit*** button (![Edit button from Manage value lists window](../../../images/security-edit-value-list-item.png "title =20x20")). When you’re done editing, click the ***Save** button (![Save button from Manage value lists window](../../../images/security-save-value-list-item-changes.png "title =30x30")) to save your changes. Click the **Cancel** button (![Cancel button from Manage value lists window](../../../images/security-cancel-value-list-item-changes.png "title =30x30")) to revert your changes.
+    * **Remove a value**: Click the **Remove value** button (![Remove value list button from Manage value lists window](../../../images/security-remove-value-list-item.png "title =20x20")) to delete a value from the list.
 
 
 :::{image} ../../../images/security-edit-value-lists.png
