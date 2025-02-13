@@ -9,7 +9,7 @@ mapped_pages:
 # Configure ECK [k8s-operating-eck]
 
 ::::{tip}
-For a detailed description of available **configuration flags and methods**, refer to the [](./configure-eck.md).
+For a detailed description of available **configuration flags and methods**, refer to [](./configure-eck.md).
 ::::
 
 By default, the ECK installation includes a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) where you can add, remove, or update [configuration settings](./configure-eck.md). This ConfigMap is mounted into the operator’s container as an `eck.yaml` file, and provided to the application through the `--config` flag.
