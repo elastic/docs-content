@@ -82,7 +82,7 @@ You can migrate an existing operator installation to Helm by adding the `meta.he
 A shell script is available in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/blob/2.16/deploy/helm-migrate.sh) to demonstrate how to migrate from version 1.7.1 to Helm. You can modify it to suit your own environment.
 ::::
 
-For example, an ECK 1.2.1 installation deployed using the [quickstart guide](https://www.elastic.co/guide/en/cloud-on-k8s/1.2/k8s-quickstart.html) can be migrated to Helm as follows:
+For example, an ECK 1.2.1 installation deployed using [YAML manifests](/deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart) can be migrated to Helm as follows:
 
 1. Annotate and label all the ECK CRDs with the appropriate Helm annotations and labels. CRDs need to be preserved to retain any existing Elastic applications deployed using the operator.
 
