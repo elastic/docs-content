@@ -1,5 +1,4 @@
 ---
-navigation_title: "Troubleshooting"
 mapped_pages:
   - https://www.elastic.co/guide/en/esf/current/aws-serverless-troubleshooting.html
 ---
