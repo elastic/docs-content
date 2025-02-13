@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-tools.html
 ---
 
-# Ingesting timeseries data [ingest-tools]
+# Ingesting time series data [ingest-tools]
 
 Elastic and others offer tools to help you get your data from the original data source into {{es}}. Some tools are designed for particular data sources, and others are multi-purpose.
 

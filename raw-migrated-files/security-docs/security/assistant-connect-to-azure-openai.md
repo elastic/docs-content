@@ -99,7 +99,7 @@ The following video demonstrates these steps.
 Finally, configure the connector in {{kib}}:
 
 1. Log in to {{kib}}.
-2. Find the **Connectors** page in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Then click **Create Connector**, and select **OpenAI**.
+2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **OpenAI**.
 3. Give your connector a name to help you keep track of different models, such as `Azure OpenAI (GPT-4 Turbo v. 0125)`.
 4. For **Select an OpenAI provider**, choose **Azure OpenAI**.
 5. Update the **URL** field. We recommend doing the following:

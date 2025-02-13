@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting-fields.html
 ---
@@ -10,7 +13,7 @@ Depending on where a script is used, it will have access to certain special vari
 
 ## Update scripts [_update_scripts] 
 
-A script used in the [update](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html), [update-by-query](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html), or [reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) API will have access to the `ctx` variable which exposes:
+A script used in the [update](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update), [update-by-query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query), or [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) API will have access to the `ctx` variable which exposes:
 
 `ctx._source`
 :   Access to the document [`_source` field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html).
@@ -33,7 +36,7 @@ Field values can be accessed from a script using [doc-values](#modules-scripting
 
 ### Accessing the score of a document within a script [scripting-score] 
 
-Scripts used in the [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html), in [script-based sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html), or in [aggregations](../aggregations.md) have access to the `_score` variable which represents the current relevance score of a document.
+Scripts used in the [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html), in [script-based sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html), or in [aggregations](../query-filter/aggregations.md) have access to the `_score` variable which represents the current relevance score of a document.
 
 Here’s an example of using a script in a [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html) to alter the relevance `_score` of each document:
 

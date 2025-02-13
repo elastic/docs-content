@@ -15,7 +15,7 @@ The preview is limited to two risk scores per {{kib}} instance.
 ::::
 
 
-To preview risky entities, find **Entity Risk Score** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To preview risky entities, find **Entity Risk Score** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/security-preview-risky-entities.png
 :alt: Preview of risky entities

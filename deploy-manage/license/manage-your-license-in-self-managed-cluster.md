@@ -9,14 +9,14 @@ By default, new installations have a Basic license that never expires. For the f
 
 To explore all of the available solutions and features, start a 30-day free trial. You can activate a trial subscription once per major product version. If you need more than 30 days to complete your evaluation, request an extended trial at {{extendtrial}}.
 
-To view the status of your license, start a trial, or install a new license, go to the **License Management** page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+To view the status of your license, start a trial, or install a new license, go to the **License Management** page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ## Required permissions [_required_permissions_3] 
 
 The `manage` cluster privilege is required to access **License Management**.
 
-To add the privilege, go to the **Roles** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+To add the privilege, go to the **Roles** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 
 ## License expiration [license-expiration] 

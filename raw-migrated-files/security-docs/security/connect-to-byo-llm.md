@@ -194,7 +194,7 @@ You can monitor the performance of the host running LM Studio using Elastic’s 
 Finally, configure the connector:
 
 1. Log in to your Elastic deployment.
-2. Find the **Connectors** page in the navigation menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Then click **Create Connector**, and select **OpenAI**. The OpenAI connector enables this use case because LM Studio uses the OpenAI SDK.
+2. Find the **Connectors** page in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Then click **Create Connector**, and select **OpenAI**. The OpenAI connector enables this use case because LM Studio uses the OpenAI SDK.
 3. Name your connector to help keep track of the model version you are using.
 4. Under **Select an OpenAI provider**, select **Other (OpenAI Compatible Service)**.
 5. Under **URL**, enter the domain name specified in your Nginx configuration file, followed by `/v1/chat/completions`.

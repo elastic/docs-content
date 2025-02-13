@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-categories.html
 ---
@@ -20,7 +23,7 @@ Categorization is a {{ml}} process that tokenizes a text field, clusters similar
 
 ## Creating categorization jobs [creating-categorization-jobs]
 
-1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 2. Click **Create job**, select the data view you want to analyze.
 3. Select the **Categorization** wizard from the list.
 4. Choose a categorization detector - it’s the `count` function in this example - and the field you want to categorize - the `message` field in this example.
@@ -75,7 +78,7 @@ For this type of job, the results contain extra information for each anomaly: th
 
 ### Advanced configuration options [advanced-categorization-options]
 
-If you use the advanced {{anomaly-job}} wizard in {{kib}} or the [create {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html), there are additional configuration options. For example, the optional `categorization_examples_limit` property specifies the maximum number of examples that are stored in memory and in the results data store for each category. The default value is `4`. Note that this setting does not affect the categorization; it just affects the list of visible examples. If you increase this value, more examples are available, but you must have more storage available. If you set this value to `0`, no examples are stored.
+If you use the advanced {{anomaly-job}} wizard in {{kib}} or the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job), there are additional configuration options. For example, the optional `categorization_examples_limit` property specifies the maximum number of examples that are stored in memory and in the results data store for each category. The default value is `4`. Note that this setting does not affect the categorization; it just affects the list of visible examples. If you increase this value, more examples are available, but you must have more storage available. If you set this value to `0`, no examples are stored.
 
 Another advanced option is the `categorization_filters` property, which can contain an array of regular expressions. If a categorization field value matches the regular expression, the portion of the field that is matched is not taken into consideration when defining categories. The categorization filters are applied in the order they are listed in the job configuration, which enables you to disregard multiple sections of the categorization field value. In this example, you might create a filter like `[ "\\[statement:.*\\]"]` to remove the SQL statement from the categorization algorithm.
 
@@ -98,7 +101,7 @@ If you use the categorization wizard in {{kib}}, you can see which categorizatio
 :class: screenshot
 :::
 
-The categorization analyzer can refer to a built-in {{es}} analyzer or a combination of zero or more character filters, a tokenizer, and zero or more token filters. In this example, adding a [`pattern_replace` character filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-replace-charfilter.html) achieves the same behavior as the `categorization_filters` job configuration option described earlier. For more details about these properties, refer to the [`categorization_analyzer` API object](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html#ml-put-job-request-body).
+The categorization analyzer can refer to a built-in {{es}} analyzer or a combination of zero or more character filters, a tokenizer, and zero or more token filters. In this example, adding a [`pattern_replace` character filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-replace-charfilter.html) achieves the same behavior as the `categorization_filters` job configuration option described earlier. For more details about these properties, refer to the [`categorization_analyzer` API object](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job#ml-put-job-request-body).
 
 If you use the default categorization analyzer in {{kib}} or omit the `categorization_analyzer` property from the API, the following default values are used:
 

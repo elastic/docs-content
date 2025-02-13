@@ -20,7 +20,7 @@ For example, if you need to change the name of new indices in a series while ret
 
 1. Create a template for the new index pattern that uses the same policy.
 2. Bootstrap the initial index.
-3. Change the write index for the alias to the bootstrapped index using the [aliases API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html).
+3. Change the write index for the alias to the bootstrapped index using the [aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases).
 4. Set `index.lifecycle.indexing_complete` to `true` on the old index to indicate that it does not need to be rolled over.
 
 {{ilm-init}} continues to manage the old index in accordance with your existing policy. New indices are named according to the new template and managed according to the same policy without interruption.

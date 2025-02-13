@@ -37,7 +37,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 ::::
 
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create new rule**.
 3. To create a rule based on a {{ml}} anomaly threshold, select **Machine Learning** on the **Create new rule** page, then select:
 
@@ -65,7 +65,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 
 ## Create a custom query rule [create-custom-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create new rule**.
 3. To create a rule based on a KQL or Lucene query, select **Custom query** on the **Create new rule** page, then:
 
@@ -110,7 +110,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 
 ## Create a threshold rule [create-threshold-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create new rule**.
 3. To create a rule based on a source event field threshold, select **Threshold** on the **Create new rule** page, then:
 
@@ -153,7 +153,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 
 ## Create an event correlation rule [create-eql-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create new rule**.
 3. To create an event correlation rule using EQL, select **Event Correlation** on the **Create new rule** page, then:
 4. To create an event correlation rule using EQL, select **Event Correlation**, then:
@@ -223,7 +223,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 ::::
 
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create new rule**.
 3. To create a rule that searches for events whose specified field value matches the specified indicator field value in the indicator index patterns, select **Indicator Match** on the **Create new rule** page, then fill in the following fields:
 
@@ -316,7 +316,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
 
 ## Create a new terms rule [create-new-terms-rule]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create new rule**.
 3. To create a rule that searches for each new term detected in source documents, select **New Terms** on the **Create new rule** page, then:
 
@@ -357,7 +357,7 @@ Use [{{esql}}](../../../explore-analyze/query-filter/languages/esql.md) to query
 
 To create an {{esql}} rule:
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create new rule**.
 3. Select **{{esql}}**, then write a query.
 

@@ -24,7 +24,7 @@ To use **Osquery Manager**, you must be assigned to a role with the following pr
 
 To inspect hosts, run a query against one or more agents or policies, then view the results.
 
-1. Go to **Osquery** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to **Osquery** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Live queries** view, click **New live query**.
 3. Choose to run a single query or a query pack.
 4. Select one or more agents or groups to query. Start typing in the search field, and you’ll get suggestions for agents by name, ID, platform, and policy.

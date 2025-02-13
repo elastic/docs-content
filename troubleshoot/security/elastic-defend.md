@@ -102,7 +102,7 @@ To restart a transform that’s not running:
 :::::
 
 
-:::::{dropdown} {agent} and Endpoint connection issues
+:::::{dropdown} {{agent}} and Endpoint connection issues
 :name: ts-agent-connection
 
 After {{agent}} installs Endpoint, Endpoint connects to {{agent}} over a local relay connection to report its health status and receive policy updates and response action requests. If that connection cannot be established, the {{elastic-defend}} integration will cause {{agent}} to be in an `Unhealthy` status, and Endpoint won’t operate properly.
@@ -168,7 +168,7 @@ To debug and resolve the issue, follow these steps:
 :::::
 
 
-::::{dropdown} {elastic-defend} deployment issues
+::::{dropdown} {{elastic-defend}} deployment issues
 :name: defend-deployment
 
 After deploying {{elastic-defend}}, you might encounter warnings or errors in the endpoint’s **Policy status** in {{fleet}} if your mobile device management (MDM) is misconfigured or certain permissions for {{elastic-endpoint}} aren’t granted. The following sections explain issues that can cause warnings or failures in the endpoint’s policy status.

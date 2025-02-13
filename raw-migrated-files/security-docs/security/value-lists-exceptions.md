@@ -37,7 +37,7 @@ To create a value list:
 
     ::::
 
-2. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+2. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Click **Manage value lists**. The **Manage value lists** window opens.
 
     :::{image} ../../../images/security-upload-lists-ui.png
@@ -62,7 +62,7 @@ You can edit, remove, or export existing value lists.
 
 ### Edit value lists [edit-value-lists]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. In the **Value lists** table, click the value list you want to edit.
 4. Do any of the following:
@@ -90,7 +90,7 @@ You can also edit value lists while creating and managing exceptions that use va
 
 ### Export or remove value lists [export-remove-value-lists]
 
-1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Detection rules (SIEM)** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Manage value lists**. The **Manage value lists** window opens.
 3. From the **Value lists** table, you can:
 

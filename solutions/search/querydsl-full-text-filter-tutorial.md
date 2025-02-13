@@ -1,8 +1,13 @@
 ---
-navigation_title: "Basics: Full-text search and filtering"
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-filter-tutorial.html
+navigation_title: "Full-text search and filtering"
+applies:
+  stack:
+  serverless:
 ---
 
-# Basic full-text search and filtering in {{es}} [full-text-filter-tutorial]
+# Tutorial: Full-text search and filtering in {{es}} [full-text-filter-tutorial]
 
 
 This is a hands-on introduction to the basics of [full-text search](full-text.md) with {{es}}, also known as *lexical search*, using the [`_search` API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) and [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md). You’ll also learn how to filter data, to narrow down search results based on exact criteria.
@@ -196,7 +201,7 @@ At search time, {{es}} defaults to the analyzer defined in the field mapping. In
 }
 ```
 
-1. The `hits` object contains the total number of matching documents and their relation to the total. Refer to [Track total hits](querying-for-search.md#track-total-hits) for more details about the `hits` object.
+1. The `hits` object contains the total number of matching documents and their relation to the total.
 2. `max_score` is the highest relevance score among all matching documents. In this example, we only have one matching document.
 3. `_score` is the relevance score for a specific document, indicating how well it matches the query. Higher scores indicate better matches. In this example the `max_score` is the same as the `_score`, as there is only one matching document.
 4. The title contains both "Fluffy" and "Pancakes", matching our search terms exactly.
@@ -402,7 +407,7 @@ GET /cooking_blog/_search
 The `.keyword` suffix accesses the unanalyzed version of a field, enabling exact, case-sensitive matching. This works in two scenarios:
 
 1. **When using dynamic mapping for text fields**. Elasticsearch automatically creates a `.keyword` sub-field.
-2. **When text fields are explicitly mapped with a `.keyword` sub-field**. For example, we explicitly mapped the `category` field in [Step 1](get-started.md#full-text-filter-tutorial-create-index) of this tutorial.
+2. **When text fields are explicitly mapped with a `.keyword` sub-field**. For example, we explicitly mapped the `category` field in [Step 1](#full-text-filter-tutorial-create-index) of this tutorial.
 
 ::::
 

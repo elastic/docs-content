@@ -29,7 +29,7 @@ Create a deployment in AWS regions (including gov cloud) using our hosted {{ess}
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-step-one]
 
-1. Install AWS integrations to load index templates, ingest pipelines, and dashboards into {{kib}}. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Find the AWS Integration by browsing the catalog.
+1. Install AWS integrations to load index templates, ingest pipelines, and dashboards into {{kib}}. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Find the AWS Integration by browsing the catalog.
 2. Navigate to the **Settings** tab and click **Install AWS assets**. Confirm by clicking **Install AWS** in the popup.
 3. Install Amazon Data Firehose integration assets in Kibana.
 

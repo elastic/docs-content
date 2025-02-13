@@ -2,7 +2,7 @@
 
 After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts (some features require a Platinum or Enterprise license). If needed, you can update the integration policy to configure protection settings, event collection, antivirus settings, trusted applications, event filters, host isolation exceptions, and blocked applications to meet your organization’s security needs.
 
-You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then follow the steps for [adding the {{elastic-defend}} integration](../../../solutions/security/configure-elastic-defend/install-elastic-defend.md#add-security-integration).
+You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then follow the steps for [adding the {{elastic-defend}} integration](../../../solutions/security/configure-elastic-defend/install-elastic-defend.md#add-security-integration).
 
 ::::{admonition} Requirements
 You must have the **{{elastic-defend}} Policy Management : All** [privilege](../../../solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to configure an integration policy.
@@ -17,7 +17,7 @@ In addition to configuring an {{elastic-defend}} policy through the {{elastic-se
 
 To configure an integration policy:
 
-1. Find **Policies** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Policies** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the integration policy you want to configure. The integration policy configuration page appears.
 3. On the **Policy settings** tab, review and configure the following settings as appropriate:
 
@@ -39,7 +39,7 @@ To configure an integration policy:
     * Assign an existing artifact (Platinum or Enterprise subscription) — Click **Assign *x* to policy**, then select an item from the flyout. This view lists any existing artifacts that aren’t already assigned to the current policy.
 
     ::::{note}
-    You can’t create a new endpoint policy artifact while configuring an integration policy. To create a new artifact, go to its main page in the {{security-app}} (for example, to create a new trusted application, find **Trusted applications** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search)).
+    You can’t create a new endpoint policy artifact while configuring an integration policy. To create a new artifact, go to its main page in the {{security-app}} (for example, to create a new trusted application, find **Trusted applications** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
     ::::
 
 5. Click the **Protection updates** tab to configure how {{elastic-defend}} receives updates from Elastic with the latest threat detections, malware models, and other protection artifacts. Refer to [Configure updates for protection artifacts](../../../solutions/security/configure-elastic-defend/configure-updates-for-protection-artifacts.md) for more information.
