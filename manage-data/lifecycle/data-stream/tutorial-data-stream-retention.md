@@ -12,7 +12,7 @@ In this tutorial, we are going to go over the data stream lifecycle retention; w
 3. [How is the effective retention calculated?](#effective-retention-calculation)
 4. [How is the effective retention applied?](#effective-retention-application)
 
-You can verify if a data steam is managed by the data stream lifecycle via the [get data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-get-lifecycle.html):
+You can verify if a data steam is managed by the data stream lifecycle via the [get data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle):
 
 ```console
 GET _data_stream/my-data-stream/_lifecycle
@@ -49,9 +49,9 @@ Retention does not define the period that the data will be removed, but the mini
 
 We define 4 different types of retention:
 
-* The data stream retention, or `data_retention`, which is the retention configured on the data stream level. It can be set via an [index template](../../data-store/templates.md) for future data streams or via the [PUT data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-put-lifecycle.html) for an existing data stream. When the data stream retention is not set, it implies that the data need to be kept forever.
-* The global default retention, let’s call it `default_retention`, which is a retention configured via the cluster setting [`data_streams.lifecycle.retention.default`](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle-settings.html#data-streams-lifecycle-retention-default) and will be applied to all data streams managed by data stream lifecycle that do not have `data_retention` configured. Effectively, it ensures that there will be no data streams keeping their data forever. This can be set via the [update cluster settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html).
-* The global max retention, let’s call it `max_retention`, which is a retention configured via the cluster setting [`data_streams.lifecycle.retention.max`](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle-settings.html#data-streams-lifecycle-retention-max) and will be applied to all data streams managed by data stream lifecycle. Effectively, it ensures that there will be no data streams whose retention will exceed this time period. This can be set via the [update cluster settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html).
+* The data stream retention, or `data_retention`, which is the retention configured on the data stream level. It can be set via an [index template](../../data-store/templates.md) for future data streams or via the [PUT data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) for an existing data stream. When the data stream retention is not set, it implies that the data need to be kept forever.
+* The global default retention, let’s call it `default_retention`, which is a retention configured via the cluster setting [`data_streams.lifecycle.retention.default`](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle-settings.html#data-streams-lifecycle-retention-default) and will be applied to all data streams managed by data stream lifecycle that do not have `data_retention` configured. Effectively, it ensures that there will be no data streams keeping their data forever. This can be set via the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+* The global max retention, let’s call it `max_retention`, which is a retention configured via the cluster setting [`data_streams.lifecycle.retention.max`](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle-settings.html#data-streams-lifecycle-retention-max) and will be applied to all data streams managed by data stream lifecycle. Effectively, it ensures that there will be no data streams whose retention will exceed this time period. This can be set via the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 * The effective retention, or `effective_retention`, which is the retention applied at a data stream on a given moment. Effective retention cannot be set, it is derived by taking into account all the configured retention listed above and is calculated as it is described [here](#effective-retention-calculation).
 
 ::::{note}
@@ -64,7 +64,7 @@ Global default and max retention do not apply to data streams internal to elasti
 
 * By setting the `data_retention` on the data stream level. This retention can be configured in two ways:
 
-     — For new data streams, it can be defined in the index template that would be applied during the data stream’s creation. You can use the [create index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html), for example:
+     — For new data streams, it can be defined in the index template that would be applied during the data stream’s creation. You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template), for example:
 
     ```console
     PUT _index_template/template
@@ -83,7 +83,7 @@ Global default and max retention do not apply to data streams internal to elasti
     }
     ```
 
-     — For an existing data stream, it can be set via the [PUT lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-put-lifecycle.html).
+     — For an existing data stream, it can be set via the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
     ```console
     PUT _data_stream/my-data-stream/_lifecycle
@@ -94,7 +94,7 @@ Global default and max retention do not apply to data streams internal to elasti
 
     1. The retention period of this data stream is set to 30 days.
 
-* By setting the global retention via the `data_streams.lifecycle.retention.default` and/or `data_streams.lifecycle.retention.max` that are set on a cluster level. You can be set via the [update cluster settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html). For example:
+* By setting the global retention via the `data_streams.lifecycle.retention.default` and/or `data_streams.lifecycle.retention.max` that are set on a cluster level. You can be set via the [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). For example:
 
     ```console
     PUT /_cluster/settings

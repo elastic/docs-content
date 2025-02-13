@@ -9,7 +9,7 @@ mapped_pages:
 
 The following example creates a `match` enrich policy that adds user name and contact information to incoming documents based on an email address. It then adds the `match` enrich policy to a processor in an ingest pipeline.
 
-Use the [create index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html) or [index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html) to create a source index.
+Use the [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) or [index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) to create a source index.
 
 The following index API request creates a source index and indexes a new document to that index.
 
@@ -44,13 +44,13 @@ PUT /_enrich/policy/users-policy
 }
 ```
 
-Use the [execute enrich policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html) to create an enrich index for the policy.
+Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) to create an enrich index for the policy.
 
 ```console
 POST /_enrich/policy/users-policy/_execute?wait_for_completion=false
 ```
 
-Use the [create or update pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html) to create an ingest pipeline. In the pipeline, add an [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) that includes:
+Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) that includes:
 
 * Your enrich policy.
 * The `field` of incoming documents used to match documents from the enrich index.
@@ -82,7 +82,7 @@ PUT /my-index-000001/_doc/my_id?pipeline=user_lookup
 }
 ```
 
-To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html) to view the indexed document.
+To verify the enrich processor matched and appended the appropriate field data, use the [get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) to view the indexed document.
 
 ```console
 GET /my-index-000001/_doc/my_id
