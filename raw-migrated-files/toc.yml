@@ -74,7 +74,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-manage-kibana-settings.md
       - file: cloud/cloud-enterprise/ece-manage-kibana.md
       - file: cloud/cloud-enterprise/ece-migrate-index-management.md
-      - file: cloud/cloud-enterprise/ece-migrating-data.md
       - file: cloud/cloud-enterprise/ece-monitoring-deployments.md
       - file: cloud/cloud-enterprise/ece-password-reset-elastic.md
       - file: cloud/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md
@@ -129,8 +128,6 @@ toc:
       - file: cloud/cloud-heroku/ech-manage-apm-settings.md
       - file: cloud/cloud-heroku/ech-manage-kibana-settings.md
       - file: cloud/cloud-heroku/ech-metrics-memory-pressure.md
-      - file: cloud/cloud-heroku/ech-migrate-data-internal.md
-      - file: cloud/cloud-heroku/ech-migrate-data2.md
       - file: cloud/cloud-heroku/ech-monitoring-setup.md
       - file: cloud/cloud-heroku/ech-monitoring.md
       - file: cloud/cloud-heroku/ech-multiple-node-deployment-disk-used.md
@@ -204,9 +201,7 @@ toc:
       - file: cloud/cloud/ec-manage-enterprise-search-settings.md
       - file: cloud/cloud/ec-manage-kibana-settings.md
       - file: cloud/cloud/ec-metrics-memory-pressure.md
-      - file: cloud/cloud/ec-migrate-data-internal.md
       - file: cloud/cloud/ec-migrate-index-management.md
-      - file: cloud/cloud/ec-migrating-data.md
       - file: cloud/cloud/ec-monitoring-setup.md
       - file: cloud/cloud/ec-monitoring.md
       - file: cloud/cloud/ec-password-reset.md
