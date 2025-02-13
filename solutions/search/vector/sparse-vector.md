@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # Sparse vector [sparse-vector-foo]
 
 When working with sparse vectors in {{es}}, you'll be using the Elastic learned sparse encoder (ELSER) model at index and query time to expand content with semantically related terms.

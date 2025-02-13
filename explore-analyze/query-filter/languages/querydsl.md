@@ -58,7 +58,7 @@ The following aggregation types are available:
 * [Bucket](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html): Group documents into buckets based on field values, ranges, or other criteria.
 * [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html): Run aggregations on the results of other aggregations.
 
-Run aggregations by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. Learn more in [Run an aggregation](/explore-analyze/query-filter/aggregations.md#run-an-agg).
+Run aggregations by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. Learn more in [Run an aggregation](/explore-analyze/query-filter/aggregations.md#run-an-agg).
 
 
 ## How does it work? [query-dsl]
@@ -103,14 +103,14 @@ The execution of such queries can be prevented by setting the value of the `sear
 
 By default, Elasticsearch sorts matching search results by **relevance score**, which measures how well each document matches a query.
 
-The relevance score is a positive floating point number, returned in the `_score` metadata field of the [search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) API. The higher the `_score`, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether the query clause is run in a **query** or **filter** context.
+The relevance score is a positive floating point number, returned in the `_score` metadata field of the [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) API. The higher the `_score`, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether the query clause is run in a **query** or **filter** context.
 
 
 ### Query context [query-context]
 
 In the query context, a query clause answers the question *How well does this document match this query clause?* Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the `_score` metadata field.
 
-Query context is in effect whenever a query clause is passed to a `query` parameter, such as the `query` parameter in the [search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#request-body-search-query) API.
+Query context is in effect whenever a query clause is passed to a `query` parameter, such as the `query` parameter in the [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#request-body-search-query) API.
 
 
 ### Filter context [filter-context]

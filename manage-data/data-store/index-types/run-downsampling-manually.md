@@ -349,7 +349,7 @@ This returns:
 
 Before a backing index can be downsampled, the TSDS needs to be rolled over and the old index needs to be made read-only.
 
-Roll over the TSDS using the [rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html):
+Roll over the TSDS using the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
 
 ```console
 POST /my-data-stream/_rollover/
@@ -363,7 +363,7 @@ The old index needs to be set to read-only mode. Run the following request:
 PUT /.ds-my-data-stream-2023.07.26-000001/_block/write
 ```
 
-Next, use the [downsample API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-downsample-data-stream.html) to downsample the index, setting the time series interval to one hour:
+Next, use the [downsample API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-downsample) to downsample the index, setting the time series interval to one hour:
 
 ```console
 POST /.ds-my-data-stream-2023.07.26-000001/_downsample/.ds-my-data-stream-2023.07.26-000001-downsample
@@ -372,7 +372,7 @@ POST /.ds-my-data-stream-2023.07.26-000001/_downsample/.ds-my-data-stream-2023.0
 }
 ```
 
-Now you can [modify the data stream](https://www.elastic.co/guide/en/elasticsearch/reference/current/modify-data-streams-api.html), and replace the original index with the downsampled one:
+Now you can [modify the data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream), and replace the original index with the downsampled one:
 
 ```console
 POST _data_stream/_modify

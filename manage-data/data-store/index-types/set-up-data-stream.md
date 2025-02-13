@@ -30,7 +30,7 @@ While optional, we recommend using {{ilm-init}} to automate the management of yo
 
 To create an index lifecycle policy in {{kib}}, open the main menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
-You can also use the [create lifecycle policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html).
+You can also use the [create lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle).
 
 ```console
 PUT _ilm/policy/my-lifecycle-policy
@@ -102,7 +102,7 @@ If you’re unsure how to map your fields, use [runtime fields](../mapping/defin
 
 To create a component template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create component template**.
 
-You can also use the [create component template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html).
+You can also use the [create component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
 
 ```console
 # Creates a component template for mappings
@@ -154,7 +154,7 @@ Use your component templates to create an index template. Specify:
 
 To create an index template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
 
-You can also use the [create index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html). Include the `data_stream` object to enable data streams.
+You can also use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template). Include the `data_stream` object to enable data streams.
 
 ```console
 PUT _index_template/my-index-template
@@ -191,7 +191,7 @@ POST my-data-stream/_doc
 }
 ```
 
-You can also manually create the stream using the [create data stream API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html). The stream’s name must still match one of your template’s index patterns.
+You can also manually create the stream using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
 
 ```console
 PUT _data_stream/my-data-stream
@@ -209,7 +209,7 @@ For an example, see [Data stream privileges](../../../deploy-manage/users-roles/
 
 Prior to {{es}} 7.9, you’d typically use an [index alias with a write index](../../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams) to manage time series data. Data streams replace this functionality, require less maintenance, and automatically integrate with [data tiers](../../lifecycle/data-tiers.md).
 
-To convert an index alias with a write index to a data stream with the same name, use the [migrate to data stream API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-migrate-to-data-stream.html). During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
+To convert an index alias with a write index to a data stream with the same name, use the [migrate to data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-migrate-to-data-stream). During conversion, the alias’s indices become hidden backing indices for the stream. The alias’s write index becomes the stream’s write index. The stream still requires a matching index template with data stream enabled.
 
 ```console
 POST _data_stream/_migrate/my-time-series-data
@@ -220,7 +220,7 @@ POST _data_stream/_migrate/my-time-series-data
 
 To get information about a data stream in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the data stream’s name.
 
-You can also use the [get data stream API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-data-stream.html).
+You can also use the [get data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream).
 
 ```console
 GET _data_stream/my-data-stream
@@ -231,7 +231,7 @@ GET _data_stream/my-data-stream
 
 To delete a data stream and its backing indices in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Data Streams** view, click the trash icon. The icon only displays if you have the `delete_index` [security privilege](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) for the data stream.
 
-You can also use the [delete data stream API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-data-stream.html).
+You can also use the [delete data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-stream).
 
 ```console
 DELETE _data_stream/my-data-stream

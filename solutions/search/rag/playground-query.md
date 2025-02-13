@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-query.html
+applies:
+  stack:
+  serverless:
 ---
 
 # View and modify queries [playground-query]

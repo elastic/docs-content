@@ -15,7 +15,7 @@ mapped_pages:
 
 ## Overview [esql-rest-overview]
 
-The [{{esql}} query API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-query-api.html) accepts an {{esql}} query string in the `query` parameter, runs it, and returns the results. For example:
+The [{{esql}} query API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-esql) accepts an {{esql}} query string in the `query` parameter, runs it, and returns the results. For example:
 
 ```console
 POST /_query?format=txt
@@ -248,11 +248,11 @@ POST /_query
 
 ### Running an async {{esql}} query [esql-rest-async-query]
 
-The [{{esql}} async query API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-api.html) lets you asynchronously execute a query request, monitor its progress, and retrieve results when they become available.
+The [{{esql}} async query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query) lets you asynchronously execute a query request, monitor its progress, and retrieve results when they become available.
 
 Executing an {{esql}} query is commonly quite fast, however queries across large data sets or frozen data can take some time. To avoid long waits, run an async {{esql}} query.
 
-Queries initiated by the async query API may return results or not. The `wait_for_completion_timeout` property determines how long to wait for the results. If the results are not available by this time, a [query id](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-api.html#esql-async-query-api-response-body-query-id) is returned which can be later used to retrieve the results. For example:
+Queries initiated by the async query API may return results or not. The `wait_for_completion_timeout` property determines how long to wait for the results. If the results are not available by this time, a [query id](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query#esql-async-query-api-response-body-query-id) is returned which can be later used to retrieve the results. For example:
 
 ```console
 POST /_query/async
@@ -282,7 +282,7 @@ The query continues to run in the background without blocking other requests.
 }
 ```
 
-To check the progress of an async query, use the [{{esql}} async query get API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-get-api.html) with the query ID. Specify how long you’d like to wait for complete results in the `wait_for_completion_timeout` parameter.
+To check the progress of an async query, use the [{{esql}} async query get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-get) with the query ID. Specify how long you’d like to wait for complete results in the `wait_for_completion_timeout` parameter.
 
 ```console
 GET /_query/async/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=30s
@@ -298,7 +298,7 @@ If the response’s `is_running` value is `false`, the query has finished and th
 }
 ```
 
-Use the [{{esql}} async query delete API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-async-query-delete-api.html) to delete an async query before the `keep_alive` period ends. If the query is still running, {{es}} cancels it.
+Use the [{{esql}} async query delete API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-delete) to delete an async query before the `keep_alive` period ends. If the query is still running, {{es}} cancels it.
 
 ```console
 DELETE /_query/async/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=

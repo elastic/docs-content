@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/static-scoring-signals.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Incorporating static relevance signals into the score [static-scoring-signals]

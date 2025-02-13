@@ -20,7 +20,7 @@ After you [set up a data stream](set-up-data-stream.md), you can do the followin
 
 ## Add documents to a data stream [add-documents-to-a-data-stream] 
 
-To add an individual document, use the [index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html). [Ingest pipelines](../../ingest/transform-enrich/ingest-pipelines.md) are supported.
+To add an individual document, use the [index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create). [Ingest pipelines](../../ingest/transform-enrich/ingest-pipelines.md) are supported.
 
 ```console
 POST /my-data-stream/_doc/
@@ -33,9 +33,9 @@ POST /my-data-stream/_doc/
 }
 ```
 
-You cannot add new documents to a data stream using the index API’s `PUT /<target>/_doc/<_id>` request format. To specify a document ID, use the `PUT /<target>/_create/<_id>` format instead. Only an [`op_type`](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#docs-index-api-op_type) of `create` is supported.
+You cannot add new documents to a data stream using the index API’s `PUT /<target>/_doc/<_id>` request format. To specify a document ID, use the `PUT /<target>/_create/<_id>` format instead. Only an [`op_type`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create#docs-index-api-op_type) of `create` is supported.
 
-To add multiple documents with a single request, use the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html). Only `create` actions are supported.
+To add multiple documents with a single request, use the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Only `create` actions are supported.
 
 ```console
 PUT /my-data-stream/_bulk?refresh
@@ -52,16 +52,16 @@ PUT /my-data-stream/_bulk?refresh
 
 The following search APIs support data streams:
 
-* [Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)
-* [Async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html)
-* [Multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html)
-* [Field capabilities](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-field-caps.html)
-* [EQL search](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html)
+* [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
+* [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
+* [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
+* [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
 
 
 ## Get statistics for a data stream [get-stats-for-a-data-stream] 
 
-Use the [data stream stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-stats-api.html) to get statistics for one or more data streams:
+Use the [data stream stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-data-streams-stats-1) to get statistics for one or more data streams:
 
 ```console
 GET /_data_stream/my-data-stream/_stats?human=true
@@ -70,7 +70,7 @@ GET /_data_stream/my-data-stream/_stats?human=true
 
 ## Manually roll over a data stream [manually-roll-over-a-data-stream] 
 
-Use the [rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html) to manually [roll over](data-streams.md#data-streams-rollover) a data stream. You have two options when manually rolling over:
+Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to manually [roll over](data-streams.md#data-streams-rollover) a data stream. You have two options when manually rolling over:
 
 1. To immediately trigger a rollover:
 
@@ -90,9 +90,9 @@ Use the [rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/c
 
 ## Open closed backing indices [open-closed-backing-indices] 
 
-You cannot search a [closed](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-close.html) backing index, even by searching its data stream. You also cannot [update](#update-docs-in-a-data-stream-by-query) or [delete](#delete-docs-in-a-data-stream-by-query) documents in a closed index.
+You cannot search a [closed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close) backing index, even by searching its data stream. You also cannot [update](#update-docs-in-a-data-stream-by-query) or [delete](#delete-docs-in-a-data-stream-by-query) documents in a closed index.
 
-To re-open a closed backing index, submit an [open index API request](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-open-close.html) directly to the index:
+To re-open a closed backing index, submit an [open index API request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open) directly to the index:
 
 ```console
 POST /.ds-my-data-stream-2099.03.07-000001/_open/
@@ -107,7 +107,7 @@ POST /my-data-stream/_open/
 
 ## Reindex with a data stream [reindex-with-a-data-stream] 
 
-Use the [reindex API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) to copy documents from an existing index, alias, or data stream to a data stream. Because data streams are [append-only](data-streams.md#data-streams-append-only), a reindex into a data stream must use an `op_type` of `create`. A reindex cannot update existing documents in a data stream.
+Use the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to copy documents from an existing index, alias, or data stream to a data stream. Because data streams are [append-only](data-streams.md#data-streams-append-only), a reindex into a data stream must use an `op_type` of `create`. A reindex cannot update existing documents in a data stream.
 
 ```console
 POST /_reindex
@@ -125,7 +125,7 @@ POST /_reindex
 
 ## Update documents in a data stream by query [update-docs-in-a-data-stream-by-query] 
 
-Use the [update by query API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html) to update documents in a data stream that match a provided query:
+Use the [update by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) to update documents in a data stream that match a provided query:
 
 ```console
 POST /my-data-stream/_update_by_query
@@ -147,7 +147,7 @@ POST /my-data-stream/_update_by_query
 
 ## Delete documents in a data stream by query [delete-docs-in-a-data-stream-by-query] 
 
-Use the [delete by query API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html) to delete documents in a data stream that match a provided query:
+Use the [delete by query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query) to delete documents in a data stream that match a provided query:
 
 ```console
 POST /my-data-stream/_delete_by_query
@@ -227,7 +227,7 @@ Response:
 4. Primary term for the document
 
 
-To update the document, use an [index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html) request with valid `if_seq_no` and `if_primary_term` arguments:
+To update the document, use an [index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) request with valid `if_seq_no` and `if_primary_term` arguments:
 
 ```console
 PUT /.ds-my-data-stream-2099-03-08-000003/_doc/bfspvnIBr7VVZlfp2lqX?if_seq_no=0&if_primary_term=1
@@ -240,13 +240,13 @@ PUT /.ds-my-data-stream-2099-03-08-000003/_doc/bfspvnIBr7VVZlfp2lqX?if_seq_no=0&
 }
 ```
 
-To delete the document, use the [delete API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html):
+To delete the document, use the [delete API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete):
 
 ```console
 DELETE /.ds-my-data-stream-2099.03.08-000003/_doc/bfspvnIBr7VVZlfp2lqX
 ```
 
-To delete or update multiple documents with a single request, use the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html)'s `delete`, `index`, and `update` actions. For `index` actions, include valid [`if_seq_no` and `if_primary_term`](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html#bulk-optimistic-concurrency-control) arguments.
+To delete or update multiple documents with a single request, use the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk)'s `delete`, `index`, and `update` actions. For `index` actions, include valid [`if_seq_no` and `if_primary_term`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk#bulk-optimistic-concurrency-control) arguments.
 
 ```console
 PUT /_bulk?refresh
