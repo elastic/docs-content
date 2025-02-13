@@ -20,7 +20,7 @@ When auditing security events, a single client request might generate multiple a
   * [{{es}} ignore policies settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#audit-event-ignore-policies)
 
     ::::{tip}
-    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are **dynamic**, which means you can configure them using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) as a faster and more convenient method that applies changes without requiring a restart.
+    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are **dynamic**. This means you can configure them using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying `elasticsearch.yml`. 
     ::::
 
 Note that {{ech}} deployments provide its own subset of supported settings for auditing configuration:

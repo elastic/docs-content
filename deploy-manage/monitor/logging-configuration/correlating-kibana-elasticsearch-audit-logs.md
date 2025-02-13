@@ -9,51 +9,37 @@ applies:
   stack: all
 ---
 
-# Correlating Kibana and Elasticsearch audit events [xpack-security-ecs-audit-correlation]
-(TBD) 
+# Correlating audit events [xpack-security-ecs-audit-correlation]
 
-When auditing security events, a single client request might generate multiple audit events across multiple cluster nodes, potentially leading to a high volume of log data and *I/O operations*. To maintain clarity and ensure logs remain actionable, {{es}} and {{kib}} provide configuration mechanisms to control what events are logged and which can be ignored.
+When audit logs are enabled, a single request to {{kib}} or {{es}} generates multiple audit events in the logs.
 
-Refer to [](./configuring-audit-logs.md) for more details.
+Audit events from {{kib}} can also be correlated with backend calls that produce {{es}} audit events, allowing for a more comprehensive view of user actions.
 
-Balancing verbosity, performance, and security requirements is essential to capture relevant events without generating excessive log volume.
+This section explains the key fields that help correlate these events, with examples to illustrate their relationships.
 
-## Optimizing audit logging for effective security monitoring [audit-logging-recommendations]
+## `request.id` attribute in {{es}} audit events
 
-
-## Correlating audit events
-
-This section explains the main fields that help correlate events and understand their relationships more effectively.  
-
-### `request.id` attribute in {{es}} audit events
-
-When a request generates multiple audit events across multiple nodes, you can use the `request.id` attribute to correlate the associated events.
+When an {{es}} request generates multiple audit events across multiple nodes, you can use the `request.id` attribute to correlate the associated events.
 
 This identifier allows you to trace the flow of a request across the {{es}} cluster and reconstruct the full context of an operation.
 
 Refer to [](./elasticsearch-audit-events.md) for a complete reference of event types and attributes.
 
-### `trace.id` field in {{kib}} audit events
+## `trace.id` field in {{kib}} audit events
 
 In {{kib}}, the [trace.id](https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html#field-trace-id) field allows to correlate multiple events that originate from the same request.
 
 Additionally, this field helps correlate events from one request with the backend calls that create {{es}} audit events. When {{kib}} sends requests to {{es}}, the `trace.id` value is propagated and stored in the `opaque_id` attribute of {{es}} audit logs, allowing cross-component correlation.
 
-For an example of correlating {{es}} and {{kib}} audit logs, refer to [](./correlating-kibana-elasticsearch-audit-logs.md).
-
 Refer to [{{kib}} audit events](https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html#xpack-security-ecs-audit-logging) for a complete description of {{kib}} auditing events.
 
+## Examples
 
-
-Audit events can be correlated in two ways:
-
-1. Multiple {{kib}} audit events that resulted from the same request can be correlated together.
-2. If [{{es}} audit logging](enabling-audit-logs.md) is enabled, {{kib}} audit events from one request can be correlated with backend calls that create {{es}} audit events.
+This section shows practical examples of correlating audit logs.
 
 ::::{note}
 The examples below are simplified, many fields have been omitted and values have been shortened for clarity.
 ::::
-
 
 ### Example 1: correlating multiple {{kib}} audit events [_example_1_correlating_multiple_kib_audit_events]
 
