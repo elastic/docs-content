@@ -5,6 +5,7 @@ applies:
   serverless: unavailable
   hosted: all
   ece: unavailable
+navigation_title: Reindex from a self-managed cluster
 ---
 
 # Migrate from a self-managed cluster with a self-signed certificate using remote reindex [ec-remote-reindex]
