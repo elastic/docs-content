@@ -268,7 +268,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-ingest-data-file-upload.md
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
       - file: docs-content/serverless/elasticsearch-manage-project.md
-      - file: docs-content/serverless/endpoint-protection-rules.md
       - file: docs-content/serverless/general-billing-stop-project.md
       - file: docs-content/serverless/general-manage-organization.md
       - file: docs-content/serverless/general-ml-nlp-auto-scale.md
@@ -411,7 +410,6 @@ toc:
       - file: docs-content/serverless/security-alert-suppression.md
       - file: docs-content/serverless/security-alerts-manage.md
       - file: docs-content/serverless/security-alerts-run-osquery.md
-      - file: docs-content/serverless/security-allowlist-endpoint.md
       - file: docs-content/serverless/security-analyze-risk-score-data.md
       - file: docs-content/serverless/security-asset-criticality.md
       - file: docs-content/serverless/security-automated-response-actions.md
@@ -455,10 +453,8 @@ toc:
       - file: docs-content/serverless/security-elastic-endpoint-deploy-reqs.md
       - file: docs-content/serverless/security-endpoint-data-volume.md
       - file: docs-content/serverless/security-endpoint-diagnostic-data.md
-      - file: docs-content/serverless/security-endpoint-event-capture.md
       - file: docs-content/serverless/security-endpoint-management-req.md
       - file: docs-content/serverless/security-endpoint-protection-intro.md
-      - file: docs-content/serverless/security-endpoint-self-protection.md
       - file: docs-content/serverless/security-endpoints-page.md
       - file: docs-content/serverless/security-environment-variable-capture.md
       - file: docs-content/serverless/security-ers-requirements.md
@@ -481,10 +477,8 @@ toc:
       - file: docs-content/serverless/security-llm-connector-guides.md
       - file: docs-content/serverless/security-llm-performance-matrix.md
       - file: docs-content/serverless/security-machine-learning.md
-      - file: docs-content/serverless/security-manage-endpoint-protection.md
       - file: docs-content/serverless/security-ml-requirements.md
       - file: docs-content/serverless/security-network-page-overview.md
-      - file: docs-content/serverless/security-optimize-edr.md
       - file: docs-content/serverless/security-osquery-placeholder-fields.md
       - file: docs-content/serverless/security-osquery-response-action.md
       - file: docs-content/serverless/security-overview-dashboard.md
@@ -797,7 +791,6 @@ toc:
       - file: security-docs/security/alert-suppression.md
       - file: security-docs/security/alerts-run-osquery.md
       - file: security-docs/security/alerts-ui-manage.md
-      - file: security-docs/security/allowlist-endpoint-3rd-party-av-apps.md
       - file: security-docs/security/analyze-risk-score-data.md
       - file: security-docs/security/artifact-control.md
       - file: security-docs/security/asset-criticality.md
@@ -848,14 +841,10 @@ toc:
       - file: security-docs/security/detections-permissions-section.md
       - file: security-docs/security/detections-ui-exceptions.md
       - file: security-docs/security/elastic-endpoint-deploy-reqs.md
-      - file: security-docs/security/endpoint-artifacts.md
       - file: security-docs/security/endpoint-data-volume.md
       - file: security-docs/security/endpoint-diagnostic-data.md
-      - file: security-docs/security/endpoint-event-capture.md
       - file: security-docs/security/endpoint-management-req.md
       - file: security-docs/security/endpoint-protection-intro.md
-      - file: security-docs/security/endpoint-protection-rules.md
-      - file: security-docs/security/endpoint-self-protection.md
       - file: security-docs/security/environment-variable-capture.md
       - file: security-docs/security/ers-requirements.md
       - file: security-docs/security/es-overview.md
@@ -901,7 +890,6 @@ toc:
       - file: security-docs/security/rules-ui-management.md
       - file: security-docs/security/runtime-fields.md
       - file: security-docs/security/sec-explore-intro.md
-      - file: security-docs/security/sec-manage-intro.md
       - file: security-docs/security/sec-requirements.md
       - file: security-docs/security/security-assistant.md
       - file: security-docs/security/security-posture-faq.md
