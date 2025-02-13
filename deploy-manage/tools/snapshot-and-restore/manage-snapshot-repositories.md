@@ -62,4 +62,4 @@ Other repository types are available through official plugins:
 
 {{es}} clusters deployed through ECK support the same type of deployments as self-managed {{es}} clusters. ECK does not currently provide any automation or functionality to facilitate the integration of snapshot repositores within the {{es}} clusters.
 
-For more details, refer to the Managing snapshot repositories in [Self managed deployments](/deploy-manage/tools/snapshot-and-restore/self-managed.md) and the [Elastic Cloud on Kubernetes](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md) documentation.
+For more information and examples, refer to [create automated snapshots on ECK](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md).
