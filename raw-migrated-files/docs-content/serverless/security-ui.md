@@ -113,6 +113,8 @@ Expand this section to access the following pages:
     :class: screenshot
     :::
 
+% When we delete this page, we can also delete the serverless--detections-rules-coverage.png file because it's no longer referenced in the Security docs or elsewhere.
+ 
 * [**MITRE ATT&CK® coverage**](../../../solutions/security/detect-and-alert/mitre-attandckr-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
 
     :::{image} ../../../images/serverless--detections-rules-coverage.png

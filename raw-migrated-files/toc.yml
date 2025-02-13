@@ -498,7 +498,6 @@ toc:
       - file: docs-content/serverless/security-response-actions.md
       - file: docs-content/serverless/security-rule-exceptions.md
       - file: docs-content/serverless/security-rule-monitoring-dashboard.md
-      - file: docs-content/serverless/security-rules-coverage.md
       - file: docs-content/serverless/security-rules-create.md
       - file: docs-content/serverless/security-rules-ui-management.md
       - file: docs-content/serverless/security-runtime-fields.md
@@ -885,7 +884,6 @@ toc:
       - file: security-docs/security/response-actions-history.md
       - file: security-docs/security/response-actions.md
       - file: security-docs/security/rule-monitoring-dashboard.md
-      - file: security-docs/security/rules-coverage.md
       - file: security-docs/security/rules-ui-create.md
       - file: security-docs/security/rules-ui-management.md
       - file: security-docs/security/runtime-fields.md
