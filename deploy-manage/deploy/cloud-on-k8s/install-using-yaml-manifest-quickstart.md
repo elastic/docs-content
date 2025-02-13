@@ -43,21 +43,18 @@ Before you begin, review the following prerequisites and recommendations:
 
 * If you are using Amazon EKS, make sure the Kubernetes control plane is allowed to communicate with the Kubernetes nodes on port 443. This is required for communication with the validating webhook. For more information, check [Recommended inbound traffic](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html).
 
-* Refer to [*Install ECK*](../../../deploy-manage/deploy/cloud-on-k8s/install.md) for more information on installation options.
-
-* Check the [upgrade notes](../../../deploy-manage/upgrade/orchestrator/upgrade-cloud-on-k8s.md) if you are attempting to upgrade an existing ECK deployment.
 
 ##  Installation procedure
 
 To deploy the ECK operator:
 
-1. Install [custom resource definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) with [`create`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/):
+1. Install Elastic's [custom resource definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) with [`create`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/):
 
     ```sh
     kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
     ```
 
-    This will output similar to the following upon Elastic resources' creation:
+    You'll see output similar to the following as resources are created:
 
     ```sh
     customresourcedefinition.apiextensions.k8s.io/agents.agent.k8s.elastic.co created
@@ -70,7 +67,7 @@ To deploy the ECK operator:
     customresourcedefinition.apiextensions.k8s.io/logstashes.logstash.k8s.elastic.co created
     ```
 
-2. Install the operator with its RBAC rules with [`apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/):
+2. Using [`kubectl apply`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/), install the operator with its RBAC rules:
 
     ```sh
     kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
@@ -80,13 +77,13 @@ To deploy the ECK operator:
     The ECK operator runs by default in the `elastic-system` namespace. It is recommended that you choose a dedicated namespace for your workloads (such as Elasticsearch and Kibana), rather than using the `elastic-system` or the `default` namespace.
     ::::
 
-3. Monitor the operator’s setup from its logs through [`logs`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/):
+3. Using [`kubectl logs`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs), monitor the operator’s setup by watching the logs:
 
     ```sh
     kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
     ```
 
-4. Once ready, the operator will report as `Running` as shown with [`get`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/), replacing default `elastic-system` with applicable installation namespace as needed: *
+4. Use [`kubectl get`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) to check the operator status, passing in the namespace using the `-n` flag. When the operator is ready to use, it will report as `Running`. 
 
 ```
 $ kubectl get -n elastic-system pods
@@ -94,4 +91,7 @@ NAME                 READY   STATUS    RESTARTS   AGE
 elastic-operator-0   1/1     Running   0          1m
 ```
 
-This completes the quickstart of the ECK operator. We recommend continuing to [Deploying an {{es}} cluster](../../../deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md); but for more configuration options as needed, navigate to [Operating ECK](../../../deploy-manage/deploy/cloud-on-k8s/configure.md).
+## Next steps
+
+* To continue the quickstart, go to [](/deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md)
+* For more configuration options, refer to [](/deploy-manage/deploy/cloud-on-k8s/configure.md).
