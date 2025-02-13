@@ -29,7 +29,7 @@ If the {{classanalysis}} involves more than two classes, {{kib}} uses colors to 
 You can also examine the feature importance values for each individual prediction. In {{kib}}, you can see these values in JSON objects or decision plots. For {{reganalysis}}, each decision plot starts at a shared baseline, which is the average of the prediction values for all the data points in the training data set. When you add all of the feature importance values for a particular data point to that baseline, you arrive at the numeric prediction value. If a {{feat-imp}} value is negative, it reduces the prediction value. If a {{feat-imp}} value is positive, it increases the prediction value. For example:
 
 :::{image} ../../../images/machine-learning-flights-regression-decision-plot.png
-:alt: Feature importance values for a {{regression}} {{dfanalytics-job}} in {kib}
+:alt: Feature importance values for a {{regression}} {{dfanalytics-job}} in {{kib}}
 :class: screenshot
 :::
 
