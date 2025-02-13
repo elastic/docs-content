@@ -14,7 +14,7 @@ mapped_urls:
 ECK is an Elastic self-managed product offered in two licensing tiers: Basic and Enterprise. For more details refer to [Elastic subscriptions](https://www.elastic.co/subscriptions) and [](/deploy-manage/license/manage-your-license-in-eck.md) documentation.
 ::::
 
-Built on the Kubernetes Operator pattern, Elastic Cloud on Kubernetes (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
+Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
 
 With Elastic Cloud on Kubernetes, you can streamline critical operations, such as:
 
