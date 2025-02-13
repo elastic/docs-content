@@ -23,7 +23,7 @@ Elastic Cloud Hosted deployments also support the following repository types:
 * [AWS S3](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
 * [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.md)
 
-For more details, refer to Managing snapshot repositories in [Elastic Cloud Hosted](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
+For more details, refer to [Managing snapshot repositories in Elastic Cloud Hosted](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 
 ### Elastic Cloud Enterprise (ECE)
 
