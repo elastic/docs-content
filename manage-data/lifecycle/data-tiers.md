@@ -100,7 +100,7 @@ To add a warm, cold, or frozen tier when you create a deployment:
 
 To add a data tier to an existing deployment:
 
-1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) or the {{ece}} admin console.
 2. On the **Deployments** page, select your deployment.
 3. In your deployment menu, select **Edit**.
 4. Click **+ Add capacity** for any data tiers to add.
