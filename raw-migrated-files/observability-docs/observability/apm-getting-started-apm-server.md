@@ -64,7 +64,7 @@ Install, configure, and run the APM Server binary wherever you need it.
 **Supported outputs**:
 
 * {{es}}
-* {ess}
+* {{ess}}
 * {{ls}}
 * Kafka
 * Redis
