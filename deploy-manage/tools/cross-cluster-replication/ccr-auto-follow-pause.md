@@ -9,5 +9,5 @@ To pause and resume replication of auto-follow pattern collections, [access {{ki
 
 To resume replication, select the pattern and choose **Manage pattern > Resume replication**.
 
-Use the [pause auto-follow pattern API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-pause-auto-follow-pattern.html) to pause auto-follow patterns. Use the [resume auto-follow pattern API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-resume-auto-follow-pattern.html) to resume auto-follow patterns.
+Use the [pause auto-follow pattern API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-pause-auto-follow-pattern) to pause auto-follow patterns. Use the [resume auto-follow pattern API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-resume-auto-follow-pattern) to resume auto-follow patterns.
 

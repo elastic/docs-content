@@ -107,7 +107,7 @@ Either a `GET` or a `POST` request with some URI search parameters works, or omi
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/_search?q=title:T*
 ```
 
-For an explanation of the allowed parameters, check [URI Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html).
+For an explanation of the allowed parameters, check [URI Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search).
 
 To make {{es}} return a more human readable JSON response, add `?pretty=true` to the request:
 
@@ -121,7 +121,7 @@ curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/_search?pretty=tru
 
 For performance reasons, `?pretty=true` is not recommended in production. You can verify the performance difference yourself by checking the `took` field in the JSON response which tells you how long Elasticsearch took to evaluate the search in milliseconds. When we tested these examples ourselves, the difference was `"took" : 4` against `"took" : 18`, a substantial difference.
 
-For a full explanation of how the request body is structured, check [Elasticsearch Request Body documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-body.html). You can also execute multiple queries in one request with the [Multi Search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html).
+For a full explanation of how the request body is structured, check [Elasticsearch Request Body documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-body.html). You can also execute multiple queries in one request with the [Multi Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch).
 
 
 ## Deleting [echdeleting]

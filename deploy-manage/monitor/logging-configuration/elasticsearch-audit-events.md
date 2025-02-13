@@ -115,7 +115,7 @@ $$$event-authentication-success$$$
 $$$event-change-disable-user$$$
 
 `change_disable_user`
-:   Logged when the [enable user API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-enable-user.html) is invoked to disable a native or a built-in user.
+:   Logged when the [enable user API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-enable-user) is invoked to disable a native or a built-in user.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -133,7 +133,7 @@ $$$event-change-disable-user$$$
 $$$event-change-enable-user$$$
 
 `change_enable_user`
-:   Logged when the [enable user API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-enable-user.html) is invoked to enable a native or a built-in user.
+:   Logged when the [enable user API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-enable-user) is invoked to enable a native or a built-in user.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -151,7 +151,7 @@ $$$event-change-enable-user$$$
 $$$event-change-password$$$
 
 `change_password`
-:   Logged when the [change password API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-change-password.html) is invoked to change the password of a native or built-in user.
+:   Logged when the [change password API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) is invoked to change the password of a native or built-in user.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -169,7 +169,7 @@ $$$event-change-password$$$
 $$$event-create-service-token$$$
 
 `create_service_token`
-:   Logged when the [create service account token API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-service-token.html) is invoked to create a new index-based token for a service account.
+:   Logged when the [create service account token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token) is invoked to create a new index-based token for a service account.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -219,7 +219,7 @@ $$$event-connection-granted$$$
 $$$event-create-apikey$$$
 
 `create_apikey`
-:   Logged when the [create API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) or the [grant API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-grant-api-key.html) APIs are invoked to create a new API key.
+:   Logged when the [create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) or the [grant API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-grant-api-key) APIs are invoked to create a new API key.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -244,7 +244,7 @@ $$$event-create-apikey$$$
 $$$event-change-apikey$$$
 
 `change_apikey`
-:   Logged when the [update API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html) API is invoked to update the attributes of an existing API key.
+:   Logged when the [update API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-api-key) API is invoked to update the attributes of an existing API key.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -269,7 +269,7 @@ $$$event-change-apikey$$$
 $$$event-change-apikeys$$$
 
 `change_apikeys`
-:   Logged when the [bulk update API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-bulk-update-api-keys.html) API is invoked to update the attributes of multiple existing API keys.
+:   Logged when the [bulk update API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-bulk-update-api-keys) API is invoked to update the attributes of multiple existing API keys.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -295,7 +295,7 @@ $$$event-change-apikeys$$$
 $$$event-delete-privileges$$$
 
 `delete_privileges`
-:   Logged when the [delete application privileges API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-privilege.html) is invoked to remove one or more application privileges.
+:   Logged when the [delete application privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-privileges) is invoked to remove one or more application privileges.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -313,7 +313,7 @@ $$$event-delete-privileges$$$
 $$$event-delete-role$$$
 
 `delete_role`
-:   Logged when the [delete role API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-role.html) is invoked to delete a role.
+:   Logged when the [delete role API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-role) is invoked to delete a role.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -331,7 +331,7 @@ $$$event-delete-role$$$
 $$$event-delete-role-mapping$$$
 
 `delete_role_mapping`
-:   Logged when the [delete role mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-role-mapping.html) is invoked to delete a role mapping.
+:   Logged when the [delete role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-role-mapping) is invoked to delete a role mapping.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -349,7 +349,7 @@ $$$event-delete-role-mapping$$$
 $$$event-delete-service-token$$$
 
 `delete_service_token`
-:   Logged when the [delete service account token API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-service-token.html) is invoked to delete an index-based token for a service account.
+:   Logged when the [delete service account token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-service-token) is invoked to delete an index-based token for a service account.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -367,7 +367,7 @@ $$$event-delete-service-token$$$
 $$$event-delete-user$$$
 
 `delete_user`
-:   Logged when the [delete user API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-user.html) is invoked to delete a specific native user.
+:   Logged when the [delete user API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-user) is invoked to delete a specific native user.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -385,7 +385,7 @@ $$$event-delete-user$$$
 $$$event-invalidate-apikeys$$$
 
 `invalidate_apikeys`
-:   Logged when the [invalidate API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html) is invoked to invalidate one or more API keys.
+:   Logged when the [invalidate API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key) is invoked to invalidate one or more API keys.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -404,7 +404,7 @@ $$$event-invalidate-apikeys$$$
 $$$event-put-privileges$$$
 
 `put_privileges`
-:   Logged when the [create or update privileges API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-privileges.html) is invoked to add or update one or more application privileges.
+:   Logged when the [create or update privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-privileges) is invoked to add or update one or more application privileges.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -423,7 +423,7 @@ $$$event-put-privileges$$$
 $$$event-put-role$$$
 
 `put_role`
-:   Logged when the [create or update role API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html) is invoked to create or update a role.
+:   Logged when the [create or update role API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) is invoked to create or update a role.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -445,7 +445,7 @@ $$$event-put-role$$$
 $$$event-put-role-mapping$$$
 
 `put_role_mapping`
-:   Logged when the [create or update role mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) is invoked to create or update a role mapping.
+:   Logged when the [create or update role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) is invoked to create or update a role mapping.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -464,7 +464,7 @@ $$$event-put-role-mapping$$$
 $$$event-put-user$$$
 
 `put_user`
-:   Logged when the [create or update user API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html) is invoked to create or update a native user. Note that user updates can also change the user’s password.
+:   Logged when the [create or update user API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) is invoked to create or update a native user. Note that user updates can also change the user’s password.
 
     You must include the `security_config_change` event type to audit the related event action.
 
@@ -673,10 +673,10 @@ These events also have **one** of the following extra attributes (in addition to
 :   The object representation of the security config that is being changed. It can be the `password`, `enable` or `disable`, config object for native or built-in users. If an API key is updated, the config object will be an `apikey`.
 
 `create`
-:   The object representation of the new security config that is being created. This is currently only used for API keys auditing. If the API key is created using the [create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) it only contains an `apikey` config object. If the API key is created using the [grant API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-grant-api-key.html) it also contains a `grant` config object.
+:   The object representation of the new security config that is being created. This is currently only used for API keys auditing. If the API key is created using the [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) it only contains an `apikey` config object. If the API key is created using the [grant API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-grant-api-key) it also contains a `grant` config object.
 
 `invalidate`
-:   The object representation of the security configuration that is being invalidated. The only config that currently supports invalidation is `apikeys`, through the [invalidate API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html).
+:   The object representation of the security configuration that is being invalidated. The only config that currently supports invalidation is `apikeys`, through the [invalidate API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key).
 
 The schemas of the security config objects mentioned above are as follows. They are very similar to the request bodies of the corresponding security APIs.
 
@@ -818,10 +818,10 @@ There are a few events that have some more attributes in addition to those that 
     :   Method used to authenticate the user. Possible values are `REALM`, `API_KEY`, `TOKEN`, `ANONYMOUS` or `INTERNAL`.
 
     `apikey.id`
-    :   API key ID returned by the [create API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) request. This attribute is only provided for authentication using an API key.
+    :   API key ID returned by the [create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) request. This attribute is only provided for authentication using an API key.
 
     `apikey.name`
-    :   API key name provided in the [create API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) request. This attribute is only provided for authentication using an API key.
+    :   API key name provided in the [create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) request. This attribute is only provided for authentication using an API key.
 
     `authentication.token.name`
     :   Name of the [service account](../../users-roles/cluster-or-deployment-auth/service-accounts.md) token. This attribute is only provided for authentication using a service account token.
@@ -886,10 +886,10 @@ There are a few events that have some more attributes in addition to those that 
     :   Method used to authenticate the user. Possible values are `REALM`, `API_KEY`, `TOKEN`, `ANONYMOUS` or `INTERNAL`.
 
     `apikey.id`
-    :   API key ID returned by the [create API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) request. This attribute is only provided for authentication using an API key.
+    :   API key ID returned by the [create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) request. This attribute is only provided for authentication using an API key.
 
     `apikey.name`
-    :   API key name provided in the [create API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) request. This attribute is only provided for authentication using an API key.
+    :   API key name provided in the [create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) request. This attribute is only provided for authentication using an API key.
 
     `authentication.token.name`
     :   Name of the [service account](../../users-roles/cluster-or-deployment-auth/service-accounts.md) token. This attribute is only provided for authentication using a service account token.
