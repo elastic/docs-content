@@ -615,8 +615,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/shard-request-cache.md
       - file: elasticsearch/elasticsearch-reference/snapshot-restore.md
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
-      - file: elasticsearch/elasticsearch-reference/starting-elasticsearch.md
-      - file: elasticsearch/elasticsearch-reference/stopping-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
       - file: elasticsearch/elasticsearch-reference/xpack-rollup.md
   - file: ingest-docs/fleet/index.md
