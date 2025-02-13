@@ -34,5 +34,5 @@ If you are using a self-managed deployment, access {{kib}} through the web appli
 4. To make the {{kib}} page your landing page, click **Make this my landing page**.
 
 ## Resources
-* [Troubleshoot: Check Kibana server status](troubleshoot/kibana/access.md)
-* [Troubleshoot: Error: {{kib}} server is not ready yet](troubleshoot/kibana/error-server-not-ready.md) 
+* [Troubleshoot: Check Kibana server status](/troubleshoot/kibana/access.md)
+* [Troubleshoot: Error: {{kib}} server is not ready yet](/troubleshoot/kibana/error-server-not-ready.md) 
