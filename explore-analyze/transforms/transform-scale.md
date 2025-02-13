@@ -29,7 +29,7 @@ The keywords in parenthesis at the end of each recommendation title indicates th
 
 ## Measure {{transforms}} performance [measure-performance]
 
-In order to optimize {{transform}} performance, start by identifying the areas where most work is being done. The **Stats** interface of the **{{transforms-cap}}** page in {{kib}} contains information that covers three main areas: indexing, searching, and processing time (alternatively, you can use the [{{transforms}} stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html)). If, for example, the results show that the highest proportion of time is spent on search, then prioritize efforts on optimizing the search query of the {{transform}}. {{transforms-cap}} also has [Rally support](https://esrally.readthedocs.io) that makes it possible to run performance checks on {{transforms}} configurations if it is required. If you optimized the crucial factors and you still experience performance issues, you may also want to consider improving your hardware.
+In order to optimize {{transform}} performance, start by identifying the areas where most work is being done. The **Stats** interface of the **{{transforms-cap}}** page in {{kib}} contains information that covers three main areas: indexing, searching, and processing time (alternatively, you can use the [{{transforms}} stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-transform-stats)). If, for example, the results show that the highest proportion of time is spent on search, then prioritize efforts on optimizing the search query of the {{transform}}. {{transforms-cap}} also has [Rally support](https://esrally.readthedocs.io) that makes it possible to run performance checks on {{transforms}} configurations if it is required. If you optimized the crucial factors and you still experience performance issues, you may also want to consider improving your hardware.
 
 ## 1. Optimize `frequency` (index) [frequency]
 
@@ -40,7 +40,7 @@ In a {{ctransform}}, the `frequency` configuration option sets the interval betw
 Depending on the size of the destination index, you may consider increasing its shard count. {{transforms-cap}} use one shard by default when creating the destination index. To override the index settings, create the destination index before starting the {{transform}}. For more information about how the number of shards affects scalability and resilience, refer to [Get ready for production](../../deploy-manage/index.md)
 
 ::::{tip}
-Use the [Preview {{transform}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html) to check the settings that the {{transform}} would use to create the destination index. You can copy and adjust these in order to create the destination index prior to starting the {{transform}}.
+Use the [Preview {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) to check the settings that the {{transform}} would use to create the destination index. You can copy and adjust these in order to create the destination index prior to starting the {{transform}}.
 ::::
 
 ## 3. Profile and optimize your search queries (search) [search-queries]
