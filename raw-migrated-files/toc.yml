@@ -521,7 +521,6 @@ toc:
       - file: docs-content/serverless/security-value-lists-exceptions.md
       - file: docs-content/serverless/security-view-alert-details.md
       - file: docs-content/serverless/security-visual-event-analyzer.md
-      - file: docs-content/serverless/security-visualize-alerts.md
       - file: docs-content/serverless/security-vuln-management-dashboard-dash.md
       - file: docs-content/serverless/security-vuln-management-faq.md
       - file: docs-content/serverless/security-vuln-management-get-started.md
@@ -909,7 +908,6 @@ toc:
       - file: security-docs/security/view-alert-details.md
       - file: security-docs/security/view-osquery-results.md
       - file: security-docs/security/visual-event-analyzer.md
-      - file: security-docs/security/visualize-alerts.md
       - file: security-docs/security/vuln-management-dashboard-dash.md
       - file: security-docs/security/vuln-management-dashboard.md
       - file: security-docs/security/vuln-management-faq.md
