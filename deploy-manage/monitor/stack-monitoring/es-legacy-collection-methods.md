@@ -33,7 +33,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         ::::
 
 
-        For more information, see [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html).
+        For more information, see [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
     2. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the cluster. By default, it is disabled (`false`).
 
@@ -59,7 +59,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
         Alternatively, you can enable this setting in {{kib}}. In the side navigation, click **Monitoring**. If data collection is disabled, you are prompted to turn it on.
 
-        For more information, see [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html).
+        For more information, see [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
     3. Optional: Specify which indices you want to monitor.
 

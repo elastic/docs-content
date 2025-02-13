@@ -31,7 +31,7 @@ PUT _watcher/watch/cluster_health_watch
 
 1. Schedules are typically configured to run less frequently. This example sets the interval to 10 seconds to you can easily see the watches being triggered. Since this watch runs so frequently, don’t forget to [delete the watch](#health-delete) when you’re done experimenting.
 
-To get the status of your cluster, you can call the [cluster health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html):
+To get the status of your cluster, you can call the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health):
 
 ```console
 GET _cluster/health?pretty
@@ -224,7 +224,7 @@ GET .watcher-history*/_search?pretty
 
 Since the `cluster_health_watch` is configured to run every 10 seconds, make sure you delete it when you’re done experimenting. Otherwise, you’ll spam yourself indefinitely.
 
-To remove the watch, use the [delete watch API](https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-delete-watch.html):
+To remove the watch, use the [delete watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-delete-watch):
 
 ```console
 DELETE _watcher/watch/cluster_health_watch

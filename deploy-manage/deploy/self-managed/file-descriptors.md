@@ -18,7 +18,7 @@ On macOS, you must also pass the JVM option `-XX:-MaxFDLimit` to Elasticsearch i
 
 RPM and Debian packages already default the maximum number of file descriptors to 65535 and do not require further configuration.
 
-You can check the `max_file_descriptors` configured for each node using the [Nodes stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html) API, with:
+You can check the `max_file_descriptors` configured for each node using the [Nodes stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) API, with:
 
 ```console
 GET _nodes/stats/process?filter_path=**.max_file_descriptors

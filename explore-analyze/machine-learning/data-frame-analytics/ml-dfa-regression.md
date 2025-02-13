@@ -36,7 +36,7 @@ To learn more about how to prepare your data, refer to [the relevant section](ml
 
 ## 4. Create a job [dfa-regression-create-job]
 
-{{dfanalytics-cap}} jobs contain the configuration information and metadata necessary to perform an analytics task. You can create {{dfanalytics}} jobs via {{kib}} or using the [create {{dfanalytics}} jobs API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html).
+{{dfanalytics-cap}} jobs contain the configuration information and metadata necessary to perform an analytics task. You can create {{dfanalytics}} jobs via {{kib}} or using the [create {{dfanalytics}} jobs API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics).
 
 Select {{regression}} as the analytics type for the job, then select the field that you want to predict (the {{depvar}}). You can also include and exclude fields to/from the analysis.
 
@@ -46,7 +46,7 @@ You can view the statistics of the selectable fields in the {{dfanalytics}} wiza
 
 ## 5. Start the job [dfa-regression-start]
 
-You can start the job via {{kib}} or using the [start {{dfanalytics}} jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) API. A {{regression}} job has the following phases:
+You can start the job via {{kib}} or using the [start {{dfanalytics}} jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-data-frame-analytics) API. A {{regression}} job has the following phases:
 
 * `reindexing`: Documents are copied from the source index to the destination index.
 * `loading_data`: The job fetches the necessary data from the destination index.
@@ -65,11 +65,11 @@ When you create a {{dfanalytics-job}}, the inference step of the process might f
 
 ## 6. Evaluate the result [ml-dfanalytics-regression-evaluation]
 
-Using the {{dfanalytics}} features to gain insights from a data set is an iterative process. After you defined the problem you want to solve, and chose the analytics type that can help you to do so, you need to produce a high-quality data set and create the appropriate {{dfanalytics}} job. You might need to experiment with different configurations, parameters, and ways to transform data before you arrive at a result that satisfies your use case. A valuable companion to this process is the [evaluate {{dfanalytics}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html), which enables you to evaluate the {{dfanalytics}} performance. It helps you understand error distributions and identifies the points where the {{dfanalytics}} model performs well or less trustworthily.
+Using the {{dfanalytics}} features to gain insights from a data set is an iterative process. After you defined the problem you want to solve, and chose the analytics type that can help you to do so, you need to produce a high-quality data set and create the appropriate {{dfanalytics}} job. You might need to experiment with different configurations, parameters, and ways to transform data before you arrive at a result that satisfies your use case. A valuable companion to this process is the [evaluate {{dfanalytics}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-evaluate-data-frame), which enables you to evaluate the {{dfanalytics}} performance. It helps you understand error distributions and identifies the points where the {{dfanalytics}} model performs well or less trustworthily.
 
 To evaluate the analysis with this API, you need to annotate your index that contains the results of the analysis with a field that marks each document with the ground truth. The {{evaluatedf-api}} evaluates the performance of the {{dfanalytics}} against this manually provided ground truth.
 
-You can measure how well the model has performed on your training data by using the `regression` evaluation type of the [evaluate {{dfanalytics}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html). The [mean squared error (MSE)](#ml-dfanalytics-mse) value that the evaluation provides you on the training data set is the *training error*. Training and evaluating the model iteratively means finding the combination of model parameters that produces the lowest possible training error.
+You can measure how well the model has performed on your training data by using the `regression` evaluation type of the [evaluate {{dfanalytics}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-evaluate-data-frame). The [mean squared error (MSE)](#ml-dfanalytics-mse) value that the evaluation provides you on the training data set is the *training error*. Training and evaluating the model iteratively means finding the combination of model parameters that produces the lowest possible training error.
 
 Another crucial measurement is how well your model performs on unseen data. To assess how well the trained model will perform on data it has never seen before, you must set aside a proportion of the training set for testing (testing data). Once the model is trained, you can let it predict the value of the data points it has never seen before and compare the prediction to the actual value. This test provides an estimate of a quantity known as the *model generalization error*.
 
@@ -139,16 +139,16 @@ For instance, suppose you have an online service and you would like to predict w
 
 {{infer-cap}} can be used as a processor specified in an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md). It uses a trained model to infer against the data that is being ingested in the pipeline. The model is used on the ingest node. {{infer-cap}} pre-processes the data by using the model and provides a prediction. After the process, the pipeline continues executing (if there is any other processor in the pipeline), finally the new data together with the results are indexed into the destination index.
 
-Check the [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-df-analytics-apis.html) to learn more.
+Check the [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 #### {{infer-cap}} aggregation [ml-inference-aggregation-reg]
 
 {{infer-cap}} can also be used as a pipeline aggregation. You can reference a trained model in the aggregation to infer on the result field of the parent bucket aggregation. The {{infer}} aggregation uses the model on the results to provide a prediction. This aggregation enables you to run {{classification}} or {{reganalysis}} at search time. If you want to perform the analysis on a small set of data, this aggregation enables you to generate predictions without the need to set up a processor in the ingest pipeline.
 
-Check the [{{infer}} bucket aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-inference-bucket-aggregation.html) and [the {{ml}} {dfanalytics} API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-df-analytics-apis.html) to learn more.
+Check the [{{infer}} bucket aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-inference-bucket-aggregation.html) and [the {{ml}} {dfanalytics} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 ::::{note}
-If you use trained model aliases to reference your trained model in an {{infer}} processor or {{infer}} aggregation, you can replace your trained model with a new one without the need of updating the processor or the aggregation. Reassign the alias you used to a new trained model ID by using the [Create or update trained model aliases API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html). The new trained model needs to use the same type of {{dfanalytics}} as the old one.
+If you use trained model aliases to reference your trained model in an {{infer}} processor or {{infer}} aggregation, you can replace your trained model with a new one without the need of updating the processor or the aggregation. Reassign the alias you used to a new trained model ID by using the [Create or update trained model aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model-alias). The new trained model needs to use the same type of {{dfanalytics}} as the old one.
 ::::
 
 ## Performing {{reganalysis}} in the sample flight data set [performing-regression]
@@ -222,7 +222,7 @@ To predict the number of minutes delayed for each flight:
 
 1. Verify that your environment is set up properly to use {{ml-features}}. The {{stack}} {security-features} require a user that has authority to create and manage {{dfanalytics-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
 2. Create a {{dfanalytics-job}}.
-   You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html) API.
+   You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics) API.
    :::{image} ../../../images/machine-learning-flights-regression-job-1.jpg
    :alt: Creating a {{dfanalytics-job}} in {kib}
    :class: screenshot
@@ -289,7 +289,7 @@ PUT _ml/data_frame/analytics/model-flight-delays-regression
 
 After you configured your job, the configuration details are automatically validated. If the checks are successful, you can proceed and start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
 
-3. Start the job in {{kib}} or use the [start {{dfanalytics-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) API.
+3. Start the job in {{kib}} or use the [start {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-data-frame-analytics) API.
 
 The job takes a few minutes to run. Runtime depends on the local hardware and also on the number of documents and fields that are analyzed. The more fields and documents, the longer the job runs. It stops automatically when the analysis is complete.
 
@@ -301,7 +301,7 @@ POST _ml/data_frame/analytics/model-flight-delays-regression/_start
 
 ::::
 
-4. Check the job stats to follow the progress in {{kib}} or use the [get {{dfanalytics-jobs}} statistics API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html).
+4. Check the job stats to follow the progress in {{kib}} or use the [get {{dfanalytics-jobs}} statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-data-frame-analytics-stats).
 
 :::{image} ../../../images/machine-learning-flights-regression-details.jpg
 :alt: Statistics for a {{dfanalytics-job}} in {kib}
@@ -434,7 +434,7 @@ You can also see the {{feat-imp}} values for each individual prediction in the f
 
 The decision path starts at a baseline, which is the average of the predictions for all the data points in the training data set. From there, the feature importance values are added to the decision path until it arrives at its final prediction. The features with the most significant positive or negative impact appear at the top. Thus in this example, the features related to the flight distance had the most significant influence on this particular predicted flight delay. This type of information can help you to understand how models arrive at their predictions. It can also indicate which aspects of your data set are most influential or least useful when you are training and tuning your model.
 
-If you do not use {{kib}}, you can see summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html) and the individual values by searching the destination index.
+If you do not use {{kib}}, you can see summarized {{feat-imp}} values by using the [get trained model API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) and the individual values by searching the destination index.
 
 ::::{dropdown} API example
 
@@ -542,7 +542,7 @@ A mean squared error (MSE) of zero means that the models predicts the {{depvar}}
 
 For more information about the interpreting the evaluation metrics, see [6. Evaluate the result](#ml-dfanalytics-regression-evaluation).
 
-You can alternatively generate these metrics with the [{{dfanalytics}} evaluate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html).
+You can alternatively generate these metrics with the [{{dfanalytics}} evaluate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-evaluate-data-frame).
 
 ::::{dropdown} API example
 
@@ -628,7 +628,7 @@ POST _ml/data_frame/_evaluate
 
 When you have trained a satisfactory model, you can [deploy it](#dfa-regression-deploy) to make predictions about new data.
 
-If you don’t want to keep the {{dfanalytics-job}}, you can delete it. For example, use {{kib}} or the [delete {{dfanalytics-job}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html). When you delete {{dfanalytics-jobs}} in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
+If you don’t want to keep the {{dfanalytics-job}}, you can delete it. For example, use {{kib}} or the [delete {{dfanalytics-job}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-delete-data-frame-analytics). When you delete {{dfanalytics-jobs}} in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.
 
 ## Further reading [dfa-regression-reading]
 

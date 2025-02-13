@@ -18,7 +18,7 @@ To configure a remote cluster from Stack Management in {{kib}}:
 3. Specify the {{es}} endpoint URL, or the IP address or host name of the remote cluster (`ClusterA`) followed by the transport port (defaults to `9300`). For example, `cluster.es.eastus2.staging.azure.foundit.no:9400` or `192.168.1.1:9300`.
 
 ::::{dropdown} API example
-You can also use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) to add a remote cluster:
+You can also use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to add a remote cluster:
 
 ```console
 PUT /_cluster/settings
