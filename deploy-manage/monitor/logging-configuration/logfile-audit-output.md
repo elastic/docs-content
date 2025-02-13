@@ -21,7 +21,7 @@ Orchestrated deployments (Elastic Cloud, Elastic Cloud Enterprise (ECE), and Ela
 If you overwrite the `log4j2.properties` and do not specify appenders for any of the audit trails, audit events are forwarded to the root appender, which by default points to the `elasticsearch.log` file.
 ::::
 
-For {{es}} configuration options that control event filtering in audit logs, refer to [](./enabling-audit-logs.md#audit-logging-configuration).
+For {{es}} configuration options that control event filtering in audit logs, refer to [](./configuring-audit-logs.md).
 
 ## Log entry format [audit-log-entry-format] 
 

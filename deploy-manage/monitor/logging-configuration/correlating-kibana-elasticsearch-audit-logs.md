@@ -14,7 +14,7 @@ applies:
 
 When auditing security events, a single client request might generate multiple audit events across multiple cluster nodes, potentially leading to a high volume of log data and *I/O operations*. To maintain clarity and ensure logs remain actionable, {{es}} and {{kib}} provide configuration mechanisms to control what events are logged and which can be ignored.
 
-Refer to [](./enabling-audit-logs.md#audit-logging-configuration) for more details.
+Refer to [](./configuring-audit-logs.md) for more details.
 
 Balancing verbosity, performance, and security requirements is essential to capture relevant events without generating excessive log volume.
 

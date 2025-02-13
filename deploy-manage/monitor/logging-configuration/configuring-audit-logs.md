@@ -37,7 +37,7 @@ For a complete description of event details and format, refer to:
   * [{{kib}} ignore filters](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-ignore-filters)
 
     ::::{tip}
-    To configure {{kib}} settings, follow the same [procedure](#enable-audit-logging-procedure) as when enabling {{kib}} audit logs, but apply the relevant settings instead.
+    To configure {{kib}} settings, follow the same [procedure](./enabling-audit-logs.md#enable-audit-logging-procedure) as when enabling {{kib}} audit logs, but apply the relevant settings instead.
     ::::
 
 Note that {{ech}} deployments provide its own subset of supported settings for auditing configuration:
