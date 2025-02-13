@@ -71,5 +71,5 @@ Real User Monitoring (RUM) agent
 
 For most users, APM agent configuration should work out-of-the-box. If you run into trouble, it may be because you’re not using the {{es}} output, or because your {{es}} credentials don’t have sufficient privileges.
 
-See [configure APM agent configuration](https://www.elastic.co/guide/en/apm/guide/current/configure-agent-config.html) to learn how to configure APM Server to avoid these problems.
+See [configure APM agent configuration](/solutions/observability/apps/configure-apm-agent-central-configuration.md) to learn how to configure APM Server to avoid these problems.
 

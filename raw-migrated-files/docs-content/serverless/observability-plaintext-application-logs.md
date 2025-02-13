@@ -388,7 +388,7 @@ Learn about correlating plaintext logs in the agent-specific ingestion guides:
 * [Go](https://www.elastic.co/guide/en/apm/agent/go/current/logs.html)
 * [Java](https://www.elastic.co/guide/en/apm/agent/java/current/logs.html#log-correlation-ids)
 * [.NET](https://www.elastic.co/guide/en/apm/agent/dotnet/current/logs.html)
-* [Node.js](https://www.elastic.co/guide/en/apm/agent/nodejs/current/log-correlation.html)
+* [Node.js](https://www.elastic.co/guide/en/apm/agent/nodejs/current/logs.html)
 * [Python](https://www.elastic.co/guide/en/apm/agent/python/current/logs.html#log-correlation-ids)
 * [Ruby](https://www.elastic.co/guide/en/apm/agent/ruby/current/log-correlation.html)
 
