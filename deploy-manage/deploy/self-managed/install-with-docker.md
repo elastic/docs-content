@@ -154,7 +154,7 @@ docker network rm elastic
 # Remove the {{es}} container
 docker rm es01
 
-# Remove the {kib} container
+# Remove the {{kib}} container
 docker rm kib01
 ```
 

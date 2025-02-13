@@ -32,7 +32,7 @@ To create an {{anomaly-job}} in {{kib}}, click **Create job** on the **{{ml-cap}
 For example, use the multi-metric job wizard to create a job that analyzes the sample web logs data set to detect anomalous behavior in the sum of the data transferred (`bytes` values) for each destination country (`geo.dest` values):
 
 :::{image} ../../../images/machine-learning-weblogs-multimetric-wizard-vector.png
-:alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {kib}
+:alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {{kib}}
 :class: screenshot
 :::
 

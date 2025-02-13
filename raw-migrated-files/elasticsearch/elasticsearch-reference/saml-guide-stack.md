@@ -287,7 +287,7 @@ The possible solutions to this problem are:
 
 * Ask your IdP administrator or vendor to provide a Single Logout service
 * If your Idp does provide a Single Logout Service, make sure it is included in the IdP metadata file, and do *not* set `idp.use_single_logout` to `false`.
-* Advise your users to close their browser after logging out of {kib}
+* Advise your users to close their browser after logging out of {{kib}}
 * Enable the `force_authn` setting on your SAML realm. This setting causes the Elastic Stack to request fresh authentication from the IdP every time a user attempts to log in to {{kib}}. This setting defaults to `false` because it can be a more cumbersome user experience, but it can also be an effective protection to stop users piggy-backing on existing IdP sessions.
 
 

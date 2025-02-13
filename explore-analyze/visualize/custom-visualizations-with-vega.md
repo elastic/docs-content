@@ -1119,7 +1119,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 {{kib}} has extended Vega and Vega-Lite with extensions that support:
 
 * Automatic sizing
-* Default theme to match {kib}
+* Default theme to match {{kib}}
 * Writing {{es}} queries using the time range and filters from dashboards
 * [preview] Using the Elastic Map Service in Vega maps
 * Additional tooltip styling

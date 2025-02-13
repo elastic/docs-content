@@ -15,14 +15,14 @@ The purpose of {{feat-imp}} is to help you determine whether the predictions are
 You can see the average magnitude of the {{feat-imp}} values for each field across all the training data in {{kib}} or by using the [get trained model API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models). For example, {{kib}} shows the total feature importance for each field in {{regression}} or binary {{classanalysis}} results as follows:
 
 :::{image} ../../../images/machine-learning-flights-regression-total-importance.jpg
-:alt: Total {{feat-imp}} values for a {{regression}} {{dfanalytics-job}} in {kib}
+:alt: Total {{feat-imp}} values for a {{regression}} {{dfanalytics-job}} in {{kib}}
 :class: screenshot
 :::
 
 If the {{classanalysis}} involves more than two classes, {{kib}} uses colors to show how the impact of each field varies by class. For example:
 
 :::{image} ../../../images/machine-learning-diamonds-classification-total-importance.png
-:alt: Total {{feat-imp}} values for a {{classification}} {{dfanalytics-job}} in {kib}
+:alt: Total {{feat-imp}} values for a {{classification}} {{dfanalytics-job}} in {{kib}}
 :class: screenshot
 :::
 

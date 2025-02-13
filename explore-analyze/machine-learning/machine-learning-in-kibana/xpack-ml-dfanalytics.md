@@ -13,7 +13,7 @@ The Elastic {{ml}} {{dfanalytics}} feature enables you to analyze your data usin
 If you have a license that includes the {{ml-features}}, you can create {{dfanalytics}} jobs and view their results on the **Data Frame Analytics** page in {{kib}}. For example:
 
 :::{image} ../../../images/kibana-classification.png
-:alt: {{classification-cap}} results in {kib}
+:alt: {{classification-cap}} results in {{kib}}
 :class: screenshot
 :::
 

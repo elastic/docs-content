@@ -23,7 +23,7 @@ When you use a single monitor configuration to create monitors in multiple locat
 
 
 :::{image} ../../../images/observability-synthetics-monitor-page.png
-:alt: {{synthetics-app}} in {kib}
+:alt: {{synthetics-app}} in {{kib}}
 :class: screenshot
 :::
 

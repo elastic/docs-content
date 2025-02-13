@@ -291,21 +291,21 @@ For instance, you can follow the below steps:
 
 :::{image} ../../images/observability-jenkins-dashboard-import.png
 :alt: Import {{kib}} dashboard
-:title: Import dashboard in {kib}
+:title: Import dashboard in {{kib}}
 :class: screenshot
 :::
 
 * The new dashboard is now ready to be used:
 
 :::{image} ../../images/observability-jenkins-dashboard-ready.png
-:alt: Jenkins dashboard in {kib}
+:alt: Jenkins dashboard in {{kib}}
 :title: Jenkins dashboard in {{kib}} is ready
 :class: screenshot
 :::
 
 :::{image} ../../images/observability-jenkins-dashboard.png
 :alt: Jenkins dashboard
-:title: Jenkins dashboard in {kib}
+:title: Jenkins dashboard in {{kib}}
 :class: screenshot
 :::
 

@@ -16,7 +16,7 @@ Amazon Data Firehose is a popular service that allows you to send your service l
 
 In this tutorial, you’ll learn how to:
 
-* Install AWS integration in {kib}
+* Install AWS integration in {{kib}}
 * Create a delivery stream in Amazon Data Firehose
 * Specify the destination settings for your Firehose stream
 * Send data to the Firehose delivery stream
