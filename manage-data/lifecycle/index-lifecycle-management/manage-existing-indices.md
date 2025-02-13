@@ -10,13 +10,13 @@ If you’ve been using Curator or some other mechanism to manage periodic indice
 * Set up your index templates to use an {{ilm-init}} policy to manage your new indices. Once {{ilm-init}} is managing your current write index, you can apply an appropriate policy to your old indices.
 * Reindex into an {{ilm-init}}-managed index.
 
-::::{note} 
+::::{note}
 Starting in Curator version 5.7, Curator ignores {{ilm-init}} managed indices.
 ::::
 
 
 
-## Apply policies to existing time series indices [ilm-existing-indices-apply] 
+## Apply policies to existing time series indices [ilm-existing-indices-apply]
 
 The simplest way to transition to managing your periodic indices with {{ilm-init}} is to [configure an index template](configure-lifecycle-policy.md#apply-policy-template) to apply a lifecycle policy to new indices. Once the index you are writing to is being managed by {{ilm-init}}, you can [manually apply a policy](configure-lifecycle-policy.md#apply-policy-multiple) to your older indices.
 
@@ -28,13 +28,13 @@ You can specify different `min_age` values in the policy you use for existing in
 
 Once all pre-{{ilm-init}} indices have been aged out and removed, you can delete the policy you used to manage them.
 
-::::{note} 
+::::{note}
 If you are using {{beats}} or {{ls}}, enabling {{ilm-init}} in version 7.0 and onward sets up {{ilm-init}} to manage new indices automatically. If you are using {{beats}} through {{ls}}, you might need to change your {{ls}} output configuration and invoke the {{beats}} setup to use {{ilm-init}} for new data.
 ::::
 
 
 
-## Reindex into a managed index [ilm-existing-indices-reindex] 
+## Reindex into a managed index [ilm-existing-indices-reindex]
 
 An alternative to [applying policies to existing indices](#ilm-existing-indices-apply) is to reindex your data into an {{ilm-init}}-managed index. You might want to do this if creating periodic indices with very small amounts of data has led to excessive shard counts, or if continually indexing into the same index has led to large shards and performance issues.
 
@@ -60,10 +60,10 @@ To reindex into the managed index:
 
     1. Check once a minute to see if {{ilm-init}} actions such as rollover need to be performed.
 
-3. Reindex your data using the [reindex API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html). If you want to partition the data in the order in which it was originally indexed, you can run separate reindex requests.
+3. Reindex your data using the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex). If you want to partition the data in the order in which it was originally indexed, you can run separate reindex requests.
 
-    ::::{important} 
-    Documents retain their original IDs. If you don’t use automatically generated document IDs, and are reindexing from multiple source indices, you might need to do additional processing to ensure that document IDs don’t conflict. One way to do this is to use a [script](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-scripts) in the reindex call to append the original index name to the document ID.
+    ::::{important}
+    Documents retain their original IDs. If you don’t use automatically generated document IDs, and are reindexing from multiple source indices, you might need to do additional processing to ensure that document IDs don’t conflict. One way to do this is to use a [script](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) in the reindex call to append the original index name to the document ID.
     ::::
 
 

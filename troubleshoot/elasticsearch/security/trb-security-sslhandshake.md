@@ -1,9 +1,10 @@
 ---
+navigation_title: SSLHandshakeException
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-sslhandshake.html
 ---
 
-# SSLHandshakeException causes connections to fail [trb-security-sslhandshake]
+# Troubleshoot SSLHandshakeException and failed node connections [trb-security-sslhandshake]
 
 **Symptoms:**
 

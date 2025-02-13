@@ -20,7 +20,7 @@ A data stream requires a matching [index template](../../data-store/templates.md
 * Define the lifecycle in the template section or include a composable template that defines the lifecycle.
 * Use a priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../../data-store/templates.md#avoid-index-pattern-collisions).
 
-You can use the [create index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html).
+You can use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
 ```console
 PUT _index_template/my-index-template
@@ -44,7 +44,7 @@ PUT _index_template/my-index-template
 
 You can create a data stream in two ways:
 
-1. By manually creating the stream using the [create data stream API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html). The stream’s name must still match one of your template’s index patterns.
+1. By manually creating the stream using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The stream’s name must still match one of your template’s index patterns.
 
     ```console
     PUT _data_stream/my-data-stream
@@ -64,7 +64,7 @@ You can create a data stream in two ways:
 
 ## Retrieve lifecycle information [retrieve-lifecycle-information]
 
-You can use the [get data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-get-lifecycle.html) to see the data stream lifecycle of your data stream and the [explain data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html) to see the exact state of each backing index.
+You can use the [get data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-lifecycle) to see the data stream lifecycle of your data stream and the [explain data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle) to see the exact state of each backing index.
 
 ```console
 GET _data_stream/my-data-stream/_lifecycle
@@ -95,7 +95,7 @@ The result will look like this:
 4. The retention period that will be applied by the data stream lifecycle. This means that the data in this data stream will be kept at least for 7 days. After that {{es}} can delete it at its own discretion.
 
 
-If you want to see more information about how the data stream lifecycle is applied on individual backing indices use the [explain data stream lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html):
+If you want to see more information about how the data stream lifecycle is applied on individual backing indices use the [explain data stream lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
 
 ```console
 GET .ds-my-data-stream-*/_lifecycle/explain

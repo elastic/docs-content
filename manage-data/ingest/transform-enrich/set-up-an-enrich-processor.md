@@ -38,14 +38,14 @@ To use enrich policies, you must have:
 
 To begin, add documents to one or more source indices. These documents should contain the enrich data you eventually want to add to incoming data.
 
-You can manage source indices just like regular {{es}} indices using the [document](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html) and [index](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html) APIs.
+You can manage source indices just like regular {{es}} indices using the [document](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document) and [index](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) APIs.
 
 You also can set up [{{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html), such as a [{{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html), to automatically send and index documents to your source indices. See [Getting started with {{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html).
 
 
 ## Create an enrich policy [create-enrich-policy]
 
-After adding enrich data to your source indices, use the [create enrich policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-enrich-policy-api.html) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an enrich policy.
+After adding enrich data to your source indices, use the [create enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-put-policy) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an enrich policy.
 
 ::::{warning}
 Once created, you can’t update or change an enrich policy. See [Update an enrich policy](#update-enrich-policies).
@@ -56,13 +56,13 @@ Once created, you can’t update or change an enrich policy. See [Update an enri
 
 ## Execute the enrich policy [execute-enrich-policy]
 
-Once the enrich policy is created, you need to execute it using the [execute enrich policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an [enrich index](data-enrichment.md#enrich-index).
+Once the enrich policy is created, you need to execute it using the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to create an [enrich index](data-enrichment.md#enrich-index).
 
 :::{image} ../../../images/elasticsearch-reference-enrich-policy-index.svg
 :alt: enrich policy index
 :::
 
-The *enrich index* contains documents from the policy’s source indices. Enrich indices always begin with `.enrich-*`, are read-only, and are [force merged](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html).
+The *enrich index* contains documents from the policy’s source indices. Enrich indices always begin with `.enrich-*`, are read-only, and are [force merged](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge).
 
 ::::{warning}
 Enrich indices should only be used by the [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) or the [{{esql}} `ENRICH` command](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich). Avoid using enrich indices for other purposes.
@@ -79,7 +79,7 @@ Once you have source indices, an enrich policy, and the related enrich index in 
 :alt: enrich processor
 :::
 
-Define an [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) and add it to an ingest pipeline using the [create or update pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html).
+Define an [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) and add it to an ingest pipeline using the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline).
 
 When defining the enrich processor, you must include at least the following:
 
@@ -102,28 +102,28 @@ You can now use your ingest pipeline to enrich and index documents.
 :alt: enrich process
 :::
 
-Before implementing the pipeline in production, we recommend indexing a few test documents first and verifying enrich data was added correctly using the [get API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html).
+Before implementing the pipeline in production, we recommend indexing a few test documents first and verifying enrich data was added correctly using the [get API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get).
 
 
 ## Update an enrich index [update-enrich-data]
 
-Once created, you cannot update or index documents to an enrich index. Instead, update your source indices and [execute](https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html) the enrich policy again. This creates a new enrich index from your updated source indices. The previous enrich index will be deleted with a delayed maintenance job that executes by default every 15 minutes.
+Once created, you cannot update or index documents to an enrich index. Instead, update your source indices and [execute](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) the enrich policy again. This creates a new enrich index from your updated source indices. The previous enrich index will be deleted with a delayed maintenance job that executes by default every 15 minutes.
 
-If wanted, you can [reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) or [update](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html) any already ingested documents using your ingest pipeline.
+If wanted, you can [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) or [update](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) any already ingested documents using your ingest pipeline.
 
 
 ## Update an enrich policy [update-enrich-policies]
 
 Once created, you can’t update or change an enrich policy. Instead, you can:
 
-1. Create and [execute](https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html) a new enrich policy.
+1. Create and [execute](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy) a new enrich policy.
 2. Replace the previous enrich policy with the new enrich policy in any in-use enrich processors or {{esql}} queries.
-3. Use the [delete enrich policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-enrich-policy-api.html) API or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to delete the previous enrich policy.
+3. Use the [delete enrich policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-delete-policy) API or [Index Management in {{kib}}](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-enrich-policies) to delete the previous enrich policy.
 
 
 ## Enrich components [ingest-enrich-components]
 
-The enrich coordinator is a component that manages and performs the searches required to enrich documents on each ingest node. It combines searches from all enrich processors in all pipelines into bulk [multi-searches](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html).
+The enrich coordinator is a component that manages and performs the searches required to enrich documents on each ingest node. It combines searches from all enrich processors in all pipelines into bulk [multi-searches](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch).
 
 The enrich policy executor is a component that manages the executions of all enrich policies. When an enrich policy is executed, this component creates a new enrich index and removes the previous enrich index. The enrich policy executions are managed from the elected master node. The execution of these policies occurs on a different node.
 
@@ -138,10 +138,10 @@ The enrich coordinator supports the following node settings:
 :   Maximum size of the cache that caches searches for enriching documents. The size can be specified in three units: the raw number of cached searches (e.g. `1000`), an absolute size in bytes (e.g. `100Mb`), or a percentage of the max heap space of the node (e.g. `1%`). Both for the absolute byte size and the percentage of heap space, {{es}} does not guarantee that the enrich cache size will adhere exactly to that maximum, as {{es}} uses the byte size of the serialized search response which is is a good representation of the used space on the heap, but not an exact match. Defaults to `1%`. There is a single cache for all enrich processors in the cluster.
 
 `enrich.coordinator_proxy.max_concurrent_requests`
-:   Maximum number of concurrent [multi-search requests](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) to run when enriching documents. Defaults to `8`.
+:   Maximum number of concurrent [multi-search requests](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch) to run when enriching documents. Defaults to `8`.
 
 `enrich.coordinator_proxy.max_lookups_per_request`
-:   Maximum number of searches to include in a [multi-search request](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) when enriching documents. Defaults to `128`.
+:   Maximum number of searches to include in a [multi-search request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch) when enriching documents. Defaults to `128`.
 
 The enrich policy executor supports the following node settings:
 
@@ -149,7 +149,7 @@ The enrich policy executor supports the following node settings:
 :   Maximum batch size when reindexing a source index into an enrich index. Defaults to `10000`.
 
 `enrich.max_force_merge_attempts`
-:   Maximum number of [force merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) attempts allowed on an enrich index. Defaults to `3`.
+:   Maximum number of [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) attempts allowed on an enrich index. Defaults to `3`.
 
 `enrich.cleanup_period`
 :   How often {{es}} checks whether unused enrich indices can be deleted. Defaults to `15m`.

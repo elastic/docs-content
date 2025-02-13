@@ -13,7 +13,7 @@ To update the lifecycle of an existing data stream you do the following actions:
 
 ## Set a data stream’s lifecycle [set-lifecycle] 
 
-To add or to change the retention period of your data stream you can use the [PUT lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-put-lifecycle.html).
+To add or to change the retention period of your data stream you can use the [PUT lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle).
 
 * You can set infinite retention period, meaning that your data should never be deleted. For example:
 
@@ -36,7 +36,7 @@ To add or to change the retention period of your data stream you can use the [PU
     1. The retention period of this data stream is set to 30 days. This means that {{es}} is allowed to delete data that is older than 30 days at its own discretion.
 
 
-The changes in the lifecycle are applied on all backing indices of the data stream. You can see the effect of the change via the [explain API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html):
+The changes in the lifecycle are applied on all backing indices of the data stream. You can see the effect of the change via the [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle):
 
 ```console
 GET .ds-my-data-stream-*/_lifecycle/explain
@@ -89,13 +89,13 @@ The response will look like:
 
 ## Remove lifecycle for a data stream [delete-lifecycle] 
 
-To remove the lifecycle of a data stream you can use the [delete lifecycle API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-delete-lifecycle.html#data-streams-delete-lifecycle-request). As consequence, the maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all its backing indices. For example:
+To remove the lifecycle of a data stream you can use the [delete lifecycle API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-lifecycle). As consequence, the maintenance operations that were applied by the lifecycle will no longer be applied to the data stream and all its backing indices. For example:
 
 ```console
 DELETE _data_stream/my-data-stream/_lifecycle
 ```
 
-You can then use the [explain API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-explain-lifecycle.html) again to see that the indices are no longer managed.
+You can then use the [explain API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-explain-data-lifecycle) again to see that the indices are no longer managed.
 
 ```console
 GET .ds-my-data-stream-*/_lifecycle/explain
