@@ -17,7 +17,7 @@ The simplest method to test your model against new data is to use the **Test mod
 :class: screenshot
 :::
 
-Alternatively, you can use the [infer trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model.html). For example, to try a named entity recognition task, provide some sample text:
+Alternatively, you can use the [infer trained model API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). For example, to try a named entity recognition task, provide some sample text:
 
 ```console
 POST /_ml/trained_models/elastic__distilbert-base-cased-finetuned-conll03-english/_infer
