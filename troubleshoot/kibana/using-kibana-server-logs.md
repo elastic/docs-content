@@ -1,11 +1,12 @@
 ---
+navigation_title: "Server logs"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-kibana-server-logs.html
 ---
 
 # Using Kibana server logs [kibana-troubleshooting-kibana-server-logs]
 
-{{kib}} Logs is a great way to see what’s going on in your application and to debug performance issues. Navigating through a large number of generated logs can be overwhelming, and following are some techniques that you can use to optimize the process.
+{{kib}} Logs help you see what's going on in your application and debug performance issues. Navigating through a large number of generated logs can be overwhelming, and following are some techniques that you can use to optimize the process.
 
 Start by defining a problem area that you are interested in. For example, you might be interested in seeing how a particular {{kib}} Plugin is performing, so no need to gather logs for all of {{kib}}. Or you might want to focus on a particular feature, such as requests from the {{kib}} server to the {{es}} server. Depending on your needs, you can configure {{kib}} to generate logs for a specific feature.
 

@@ -1,15 +1,15 @@
 ---
-navigation_title: "Troubleshoot"
+navigation_title: "Maps"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-troubleshooting.html
 ---
 
 
 
-# Maps [maps-troubleshooting]
+# Troubleshoot {{kib}} Maps [maps-troubleshooting]
 
 
-Use the information in this section to inspect Elasticsearch requests and find solutions to common problems.
+Use the information in this section to inspect Elasticsearch requests and find solutions to common problems with {{kib}} Maps.
 
 
 ## Inspect Elasticsearch requests [_inspect_elasticsearch_requests]

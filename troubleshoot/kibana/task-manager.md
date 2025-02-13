@@ -1,12 +1,10 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: "Task Manager"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-troubleshooting.html
 ---
 
-
-
-# Task manager [task-manager-troubleshooting]
+# Troubleshoot {{kib}} Task Manager [task-manager-troubleshooting]
 
 
 Task Manager is used by a wide range of services in {{kib}}, such as [Alerting](../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md), Actions, Reporting, and Telemetry. Unexpected behavior in these services might be a downstream issue originating in Task Manager.

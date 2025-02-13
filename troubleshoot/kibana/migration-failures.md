@@ -1,9 +1,10 @@
 ---
+navigation_title: "Migrating and updating"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/resolve-migrations-failures.html
 ---
 
-# Migration failures [resolve-migrations-failures]
+# Troubleshoot migrating and upgrading {{kibana}} [resolve-migrations-failures]
 
 Migrating {{kib}} primarily involves migrating saved object documents to be compatible with the new version.
 
