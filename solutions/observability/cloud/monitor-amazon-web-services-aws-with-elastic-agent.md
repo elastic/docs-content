@@ -117,7 +117,7 @@ In this step, you install the AWS integration in {{kib}}. The AWS integration co
 
 To add the integration:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for **AWS** and select the AWS integration to see more details about it.
 3. Click **Add AWS**.
 4. Configure the integration name and optionally add a description.
@@ -227,7 +227,7 @@ Now you’re ready to edit the agent policy and configure S3 access log collecti
 
 The {{agent}} you’ve deployed is already running and collecting VPC flow logs. Now you need to edit the agent policy and configure the integration to collect S3 access logs.
 
-1. In {{kib}}, find **Fleet** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. In {{kib}}, find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Agents** tab, click the policy your agent is using.
 3. Edit the AWS integration policy and turn on the **Collect S3 access logs from S3** selector.
 4. In the **Queue URL** field, enter the URL of the SQS queue you created for S3 access log notifications, then save and deploy your changes.
@@ -237,7 +237,7 @@ It takes a few minutes for {{agent}} to update its configuration and start colle
 
 ## Step 5: Visualize AWS logs [aws-elastic-agent-visualize-logs]
 
-Now that logs are streaming into {{es}}, you can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Now that logs are streaming into {{es}}, you can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Notice that you can filter on a specific data stream. For example, set `data_stream.dataset : "aws.s3access"` to show S3 access logs.
 
@@ -289,7 +289,7 @@ Extra AWS charges on CloudWatch API requests may be generated if you configure t
     }
     ```
 
-2. In {{kib}}, find **Fleet** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+2. In {{kib}}, find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. On the **Agents** tab, click the policy your agent is using.
 4. Edit the AWS integration policy and turn on the **Collect billing metrics** selector. You can accept the defaults.
 5. Also turn on the **Collect EC2 metrics** selector. Optionally change the defaults, then save and deploy your changes.
@@ -299,14 +299,14 @@ It takes a few minutes for {{agent}} to update its configuration and start colle
 
 ## Step 7: Visualize AWS metrics [aws-elastic-agent-visualize-metrics]
 
-Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}}. Find **Discover** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Select the `metrics-*` data view, then filter on `data_stream.dataset: "aws.ec2_metrics"`:
+Now that the metrics are streaming into {{es}}, you can visualize them in {{kib}}. Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select the `metrics-*` data view, then filter on `data_stream.dataset: "aws.ec2_metrics"`:
 
 :::{image} ../../../images/observability-agent-tut-ec2-metrics-discover.png
 :alt: Screenshot of the Discover app showing EC2 metrics
 :class: screenshot
 :::
 
-The AWS integration also comes with pre-built dashboards that you can use to visualize the data. Find **Dashboards** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+The AWS integration also comes with pre-built dashboards that you can use to visualize the data. Find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Search for EC2 and select the dashboard called **[Metrics AWS] EC2 Overview**:
 

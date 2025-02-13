@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-ad-explain.html
 ---
@@ -55,4 +58,4 @@ Real-world anomalies often show the impacts of several factors. The **Anomaly ex
 :class: screenshot
 :::
 
-You can also find this information in the `anomaly_score_explanation` field of the [get record API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html).
+You can also find this information in the `anomaly_score_explanation` field of the [get record API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-records).

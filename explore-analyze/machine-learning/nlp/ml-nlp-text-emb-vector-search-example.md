@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Text embedding and semantic search"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
@@ -60,7 +63,7 @@ Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Mod
 :::
 
 ::::{dropdown} **Test the model by using the _infer API**
-You can also evaluate your models by using the [_infer API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model.html). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
+You can also evaluate your models by using the [_infer API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
 
 ```js
 POST /_ml/trained_models/sentence-transformers__msmarco-minilm-l-12-v3/_infer
@@ -100,7 +103,7 @@ In this step, you load the data that you later use in an ingest pipeline to get 
 
 The data set `msmarco-passagetest2019-top1000` is a subset of the MS MARCO Passage Ranking data set used in the testing stage of the 2019 TREC Deep Learning Track. It contains 200 queries and for each query a list of relevant text passages extracted by a simple information retrieval (IR) system. From that data set, all unique passages with their IDs have been extracted and put into a [tsv file](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv), totaling 182469 passages. In the following, this file is used as the example data set.
 
-Upload the file by using the [Data Visualizer](../../../manage-data/ingest.md#upload-data-kibana). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
+Upload the file by using the [Data Visualizer](../../../manage-data/ingest/tools/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
 
 :::{image} ../../../images/machine-learning-ml-nlp-text-emb-data.png
 :alt: Importing the data
@@ -149,7 +152,7 @@ PUT _ingest/pipeline/text-embeddings
 
 The passages are in a field named `text`. The `field_map` maps the text to the field `text_field` that the model expects. The `on_failure` handler is set to index failures into a different index.
 
-Before ingesting the data through the pipeline, create the mappings of the destination index, in particular for the field `text_embedding.predicted_value` where the ingest processor stores the embeddings. The `dense_vector` field must be configured with the same number of dimensions (`dims`) as the text embedding produced by the model. That value can be found in the `embedding_size` option in the model configuration either under the Trained Models page in {{kib}} or in the response body of the [Get trained models API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html) call. The msmarco-MiniLM-L-12-v3 model has embedding_size of 384, so `dims` is set to 384.
+Before ingesting the data through the pipeline, create the mappings of the destination index, in particular for the field `text_embedding.predicted_value` where the ingest processor stores the embeddings. The `dense_vector` field must be configured with the same number of dimensions (`dims`) as the text embedding produced by the model. That value can be found in the `embedding_size` option in the model configuration either under the Trained Models page in {{kib}} or in the response body of the [Get trained models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) call. The msmarco-MiniLM-L-12-v3 model has embedding_size of 384, so `dims` is set to 384.
 
 ```js
 PUT collection-with-embeddings

@@ -1,13 +1,13 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Index action"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-index.html
 ---
 
-
-
 # Index action [actions-index]
-
 
 Use the `index` action to index data into Elasticsearch. See [Index action attributes](#index-action-attributes) for the supported attributes.
 
@@ -34,19 +34,16 @@ The following snippet shows a simple `index` action definition:
 4. The index, alias, or data stream to which the data will be written
 5. An optional `_id` for the document
 
-
-
 ## Index action attributes [index-action-attributes]
 
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
 | `index` | yes* | - | The index, alias, or data stream to index into. Date math expressions like `<my-index-{now/d}>` are also supported.<br><br>*If you dynamically set an `_index` value, this parameter isn’t required. See [Multi-document support](#anatomy-actions-index-multi-doc-support).<br> |
 | `doc_id` | no | - | The optional `_id` of the document. |
-| `op_type` | no | `index` | The [op_type](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#docs-index-api-op_type) for the index operation.                                                      Must be one of either `index` or `create`. Must be `create` if                                                      `index` is a data stream. |
+| `op_type` | no | `index` | The [op_type](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for the index operation.                                                      Must be one of either `index` or `create`. Must be `create` if                                                      `index` is a data stream. |
 | `execution_time_field` | no | - | The field that will store/index the watch execution                                                      time. |
 | `timeout` | no | 60s | The timeout for waiting for the index api call to                                                      return. If no response is returned within this time,                                                      the index action times out and fails. This setting                                                      overrides the default timeouts. |
 | `refresh` | no | - | Optional setting of the [refresh policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-refresh.html)                                                      for the write request |
-
 
 ## Multi-document support [anatomy-actions-index-multi-doc-support]
 
@@ -87,6 +84,3 @@ The following snippet shows a multi-document `index` action definition:
 3. A new `severity` field derived from the original document
 4. The payload `_doc` field which is an array of documents
 5. Since the `_index` was informed per document this should be empty
-
-
-

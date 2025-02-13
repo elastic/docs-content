@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/canvas-tutorial.html
 ---
@@ -12,8 +15,8 @@ To familiarize yourself with **Canvas**, add the Sample eCommerce orders data, t
 
 To create a workpad of the eCommerce store data, add the data set, then create the workpad.
 
-1. [Install the eCommerce sample data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
-2. Go to **Canvas** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. [Install the eCommerce sample data](../../index.md#gs-get-data-into-kibana).
+2. Go to **Canvas** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Select **Create workpad**.
 
 

@@ -38,7 +38,7 @@ Create or update a secret token in {{fleet}}.
 
 Configure and customize Fleet-managed APM settings directly in {{kib}}:
 
-1. In {{kib}}, find **Fleet** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. In {{kib}}, find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Agent policies** tab, select the policy you would like to configure.
 3. Find the Elastic APM integration and select **Actions** > **Edit integration**.
 4. Navigate to **Agent authorization** > **Secret token** and set the value of your token.

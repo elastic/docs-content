@@ -14,16 +14,16 @@ Operator privileges provide protection for APIs and dynamic cluster settings. An
 
 ## Operator-only APIs [operator-only-apis]
 
-* [Voting configuration exclusions](https://www.elastic.co/guide/en/elasticsearch/reference/current/voting-config-exclusions.html)
-* [Delete license](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-license.html)
-* [Update license](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-license.html)
-* [Create or update autoscaling policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-put-autoscaling-policy.html)
-* [Delete autoscaling policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-delete-autoscaling-policy.html)
-* [Create or update desired nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-desired-nodes.html)
-* [Get desired nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-desired-nodes.html)
-* [Delete desired nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-desired-nodes.html)
-* [Get desired balance](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-desired-balance.html)
-* [Reset desired balance](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-desired-balance.html)
+* [Voting configuration exclusions](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-post-voting-config-exclusions)
+* [Delete license](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-delete)
+* [Update license](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post)
+* [Create or update autoscaling policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-autoscaling-put-autoscaling-policy)
+* [Delete autoscaling policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-autoscaling-delete-autoscaling-policy)
+* [Create or update desired nodes](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
+* [Get desired nodes](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
+* [Delete desired nodes](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
+* [Get desired balance](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
+* [Reset desired balance](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-cluster)
 
 
 ## Operator-only dynamic cluster settings [operator-only-dynamic-cluster-settings]

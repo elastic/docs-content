@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-getting-started.html
 ---
@@ -25,7 +28,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 ## Prerequisites [_prerequisites_2]
 
 * If you don’t already have {{kib}}, set it up with [our free trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs).
-* This tutorial requires the [web logs sample data set](../../overview/kibana-quickstart.md). The sample data includes a [Logs] Total Requests and Bytes map, which you’ll re-create in this tutorial.
+* This tutorial requires the [web logs sample data set](/explore-analyze/index.md#gs-get-data-into-kibana). The sample data includes a [Logs] Total Requests and Bytes map, which you’ll re-create in this tutorial.
 * You must have the correct privileges for creating a map. If you don’t have sufficient privileges to create or save maps, a read-only icon appears in the toolbar. For more information, refer to [Granting access to {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
 
 
@@ -111,7 +114,7 @@ This layer displays web log documents as points. The layer is only visible when 
 
 ### Add a layer for aggregated data [_add_a_layer_for_aggregated_data]
 
-You’ll create a layer for [aggregated data](../../aggregations.md) and make it visible only when the map is zoomed out. Darker colors will symbolize grids with more web log traffic, and lighter colors will symbolize grids with less traffic. Larger circles will symbolize grids with more total bytes transferred, and smaller circles will symbolize grids with less bytes transferred.
+You’ll create a layer for [aggregated data](../../query-filter/aggregations.md) and make it visible only when the map is zoomed out. Darker colors will symbolize grids with more web log traffic, and lighter colors will symbolize grids with less traffic. Larger circles will symbolize grids with more total bytes transferred, and smaller circles will symbolize grids with less bytes transferred.
 
 1. Click **Add layer**, and select **Clusters**.
 2. Set **Data view** to **kibana_sample_data_logs**.

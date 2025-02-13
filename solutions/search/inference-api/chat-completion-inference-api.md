@@ -1,9 +1,18 @@
 ---
+navigation_title: "Chat completion"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/chat-completion-inference-api.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Chat completion inference API [chat-completion-inference-api]
+
+::::{admonition} New API reference
+For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
+
+::::
 
 Streams a chat completion response.
 

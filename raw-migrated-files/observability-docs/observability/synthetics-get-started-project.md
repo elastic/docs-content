@@ -58,7 +58,7 @@ Then, follow the prompts on screen to setup the correct default variables for yo
 
 1. To generate an API key:
 
-    1. Find `Synthetics` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+    1. Find `Synthetics` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
     2. Click **Settings**.
     3. Switch to the **Project API Keys** tab.
     4. Click **Generate Project API key**.

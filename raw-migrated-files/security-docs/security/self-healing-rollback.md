@@ -14,7 +14,7 @@ Also, rollback is triggered by *every* {{elastic-defend}} prevention alert, so y
 ::::
 
 
-1. Find **Policies** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then select the integration policy you want to configure.
+1. Find **Policies** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then select the integration policy you want to configure.
 2. Scroll down to the bottom of the policy and click **Show advanced settings**.
 3. Enter `true` for the setting `windows.advanced.alerts.rollback.self_healing.enabled`.
 4. Click **Save**.

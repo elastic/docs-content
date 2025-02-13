@@ -11,7 +11,7 @@ To create and manage SLOs, you need an [appropriate license](https://www.elastic
 ::::
 
 
-To create an SLO, find **SLOs** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To create an SLO, find **SLOs** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 * If you’re creating your first SLO, you’ll see an introductory page. Click the **Create SLO** button.
 * If you’ve created SLOs before, click the **Create new SLO** button in the upper-right corner of the page.

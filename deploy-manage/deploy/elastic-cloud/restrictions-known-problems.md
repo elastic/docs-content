@@ -75,9 +75,9 @@ Watcher encryption Key Setup is not supported.
 
 Changing the default throttle period is not possible. You can specify a throttle period per watch, however.
 
-Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](../../../explore-analyze/alerts-cases/watcher.md#ec-cloud-email-service-limits)
+Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#cloud-email-service-limits)
 
-Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher.md#ec-watcher-custom-mail-server)
+Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
 ## Private Link and SSO to Kibana URLs [ec-restrictions-traffic-filters-kibana-sso]
@@ -153,4 +153,4 @@ To make a seamless migration, after restoring from a snapshot there are some add
 
 ## Repository Analysis API is unavailable in Elastic Cloud [ec-repository-analyis-unavailable]
 
-* The Elasticsearch [Repository analysis API](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+* The Elasticsearch [Repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.

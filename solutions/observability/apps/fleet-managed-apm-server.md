@@ -111,7 +111,7 @@ If you don’t have a {{fleet}} setup already in place, the easiest way to get s
 ::::
 
 
-1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Elastic APM**.
 
     :::{image} ../../../images/observability-kibana-fleet-integrations-apm.png
@@ -237,7 +237,7 @@ elasticApm {
 1. You can find the latest version in the [Gradle plugin portal](https://plugins.gradle.org/plugin/co.elastic.apm.android).
 2. Defaults to your `android.defaultConfig.applicationId` value.
 3. Defaults to your `android.defaultConfig.versionName` value.
-4. Defaults to null. More info on API Keys [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html).
+4. Defaults to null. More info on API Keys [here](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
 5. Defaults to null.
 
 

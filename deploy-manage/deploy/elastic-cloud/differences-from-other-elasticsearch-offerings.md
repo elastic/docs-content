@@ -149,7 +149,7 @@ The following features are planned for future support in all {{serverless-full}}
 The following {{es-serverless}} project-specific features are planned for future support:
 
 * [Behavioral Analytics](../../../solutions/search/site-or-app/behavioral-analytics.md)
-* [Search Applications](../../../solutions/search/applications.md)
+* [Search Applications](../../../solutions/search/search-applications.md)
 * Managed web crawler
 
     You can use the [self-managed web crawler](https://github.com/elastic/crawler) in the meantime.

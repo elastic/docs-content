@@ -62,7 +62,7 @@ This tutorial explains how to apply a custom index lifecycle policy to the `trac
 
 The **Data Streams** view in {{kib}} shows you data streams, index templates, and lifecycle policies:
 
-1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Data Streams**.
 3. Search for `traces-apm` to see all data streams associated with APM trace data.
 4. In this example, I only have one data stream because I’m only using the `default` namespace. You may have more if your setup includes multiple namespaces.
@@ -76,7 +76,7 @@ The **Data Streams** view in {{kib}} shows you data streams, index templates, an
 
 ## Step 2: Create an index lifecycle policy [apm-data-streams-custom-two]
 
-1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Lifecycle Policies**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create policy**.
 
 Name your new policy; For this tutorial, I’ve chosen `custom-traces-apm-policy`. Customize the policy to your liking, and when you’re done, click **Save policy**.
@@ -138,7 +138,7 @@ The result should include the following:
 2. The name of the {{ilm-init}} policy applied to the new component template in step two
 
 
-New {{ilm-init}} policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html):
+New {{ilm-init}} policies only take effect when new indices are created, so you either must wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
 
 ```bash
 POST /traces-apm-default/_rollover/

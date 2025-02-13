@@ -8,7 +8,7 @@ The **Hosts** page provides a metrics-driven view of your infrastructure backed 
 * View historical data to rule out false alerts and identify root causes.
 * Filter and search the data to focus on the hosts you care about the most.
 
-To open **Hosts**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To open **Hosts**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/observability-hosts.png
 :alt: Screenshot of the Hosts page

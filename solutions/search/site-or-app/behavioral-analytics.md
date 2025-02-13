@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-overview.html
+applies:
+  stack:
 ---
 
 # Behavioral analytics [behavioral-analytics-overview]
@@ -22,7 +24,7 @@ Behavioral Analytics is a **beta feature**. Beta features are subject to change 
 ::::
 
 
-::::{dropdown} **Expand to learn about version history**
+::::{dropdown} Expand to learn about version history
 * Behavioral Analytics was introduced in Elastic **8.7.0** to the Enterprise Search service.
 * There was a breaking schema change in **8.8.0**. (See [Migrating from 8.7 to 8.8](https://www.elastic.co/guide/en/enterprise-search/current/analytics-migration.html) in the Search documentation if you’re upgrading from 8.7 to 8.8.)
 * The feature was moved to Elasticsearch in **8.10**, meaning the Enterprise Search service is no longer required as of 8.10.
@@ -55,7 +57,7 @@ Additional documentation is available in the following places:
     * Read the [Browser tracker README](https://github.com/elastic/behavioral-analytics-tracker/blob/main/packages/browser-tracker/README.md).
 
 * The Search UI documentation contains information about the [Search UI Analytics Plugin](https://docs.elastic.co/search-ui/api/core/plugins/analytics-plugin).
-* Behavioral Analytics uses a number of [APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-apis.html) to manage analytics collections.
+* Behavioral Analytics uses a number of [APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-analytics) to manage analytics collections.
 
 ::::{admonition} GDPR compliance
 :class: note

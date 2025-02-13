@@ -80,7 +80,7 @@ To update a rule’s API key, log into the local cluster as a user with the priv
 * Edit and save the rule.
 * Update the rule’s API key manually:
 
-    1. Find **Stack Management** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then go to **Rules**.
+    1. Find **Stack Management** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**.
     2. Use the search box and filters to find the rules you want to update. For example, use the **Type** filter to find rules under the **Security** category.
     3. Select the rule’s actions menu (**…​**), then **Update API key**.
 

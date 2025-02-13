@@ -8,7 +8,7 @@ mapped_pages:
 
 # Fix other role nodes out of disk [fix-other-node-out-of-disk]
 
-{{es}} can use dedicated nodes to execute other functions apart from storing data or coordinating the cluster, for example machine learning. If one or more of these nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html) reports that a node that is not a master and does not contain data is out of space you need to increase the disk capacity of this node.
+{{es}} can use dedicated nodes to execute other functions apart from storing data or coordinating the cluster, for example machine learning. If one or more of these nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) reports that a node that is not a master and does not contain data is out of space you need to increase the disk capacity of this node.
 
 :::::::{tab-set}
 

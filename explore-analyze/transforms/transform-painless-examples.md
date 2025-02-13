@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Painless examples"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-painless-examples.html
@@ -93,7 +96,7 @@ You can retrieve the last value in a similar way:
 
 ### Getting top hits by using stored scripts [top-hits-stored-scripts]
 
-You can also use the power of [stored scripts](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-stored-script-api.html) to get the latest value. Stored scripts are updatable, enable collaboration, and avoid duplication across queries.
+You can also use the power of [stored scripts](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-put-script) to get the latest value. Stored scripts are updatable, enable collaboration, and avoid duplication across queries.
 
 1. Create the stored scripts:
 

@@ -1,13 +1,13 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Search {{watcher-transform}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-search.html
 ---
 
-
-
 # Search payload transform [transform-search]
-
 
 A [{{watcher-transform}}](transform.md) that executes a search on the cluster and replaces the current payload in the watch execution context with the returned search response. The following snippet shows how a simple search transform can be defined on the watch level:
 
@@ -43,15 +43,15 @@ Like every other search based construct, one can make use of the full search API
 }
 ```
 
-The following table lists all available settings for the search {{watcher-transform}}:
+## Transform search settings [transform-search-settings]
 
-$$$transform-search-settings$$$
+The following table lists all available settings for the search {{watcher-transform}}:
 
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
-| `request.search_type` | no | query_then_fetch | The search [type](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-type). |
+| `request.search_type` | no | query_then_fetch | The search [type](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search). |
 | `request.indices` | no | all indices | One or more indices to search on. |
-| `request.body` | no | `match_all` query | The body of the request. The                                                                                  [request body](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) follows                                                                                  the same structure you normally send in the body of                                                                                  a REST `_search` request. The body can be static text                                                                                  or include `mustache` [templates](how-watcher-works.md#templates). |
+| `request.body` | no | `match_all` query | The body of the request. The                                                                                  [request body](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) follows                                                                                  the same structure you normally send in the body of                                                                                  a REST `_search` request. The body can be static text                                                                                  or include `mustache` [templates](how-watcher-works.md#templates). |
 | `request.indices_options.expand_wildcards` | no | `open` | Determines how to expand indices wildcards. An array                                                                                  consisting of a combination of `open`, `closed`,                                                                                  and `hidden`. Alternatively a value of `none` or `all`.                                                                                  (see [multi-target syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index)) |
 | `request.indices_options.ignore_unavailable` | no | `true` | A boolean value that determines whether the search                                                                                  should leniently ignore unavailable indices                                                                                  (see [multi-target syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index)) |
 | `request.indices_options.allow_no_indices` | no | `true` | A boolean value that determines whether the search                                                                                  should leniently return no results when no indices                                                                                  are resolved (see [multi-target syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index)) |
@@ -136,5 +136,3 @@ The following is an example of using templates that refer to provided parameters
   }
 }
 ```
-
-

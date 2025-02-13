@@ -46,7 +46,7 @@ The `min_age` value is relative to the rollover time, not the index creation tim
 ::::
 
 
-You can create the policy through {{kib}} or with the [create or update policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html) API. To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
+You can create the policy through {{kib}} or with the [create or update policy](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle) API. To create the policy from {{kib}}, open the menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
 :::{image} ../../../images/elasticsearch-reference-create-policy.png
 :alt: Create policy page
@@ -104,7 +104,7 @@ You can use the {{kib}} Create template wizard to add the template. From Kibana,
 :alt: Create template page
 :::
 
-This wizard invokes the [create or update index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html) to create the index template with the options you specify.
+This wizard invokes the [create or update index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template) to create the index template with the options you specify.
 
 ::::{dropdown} API example
 ```console

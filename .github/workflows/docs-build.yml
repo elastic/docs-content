@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request: ~
+  pull_request_target: ~
 
 jobs:
   preview:
@@ -13,5 +13,7 @@ jobs:
       continue-on-error: false
       strict: false
     permissions:
+      deployments: write
+      id-token: write
       contents: read
       pull-requests: read

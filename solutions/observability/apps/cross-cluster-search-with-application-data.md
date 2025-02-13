@@ -18,7 +18,7 @@ Elastic APM utilizes {{es}}'s cross-cluster search functionality. Cross-cluster 
 
 If you’re using the Hosted {{ess}}, see [Enable cross-cluster search](../../../deploy-manage/remote-clusters/ec-enable-ccs.md).
 
-To add remote clusters directly in {{kib}}, find `Remote Clusters` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). All you need is a name for the remote cluster and the seed node(s). Remember the names of your remote clusters, you’ll need them in step two. See [managing remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html) for detailed information on the setup process.
+To add remote clusters directly in {{kib}}, find `Remote Clusters` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). All you need is a name for the remote cluster and the seed node(s). Remember the names of your remote clusters, you’ll need them in step two. See [managing remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html) for detailed information on the setup process.
 
 Alternatively, you can [configure remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#configuring-remote-clusters) in {{es}}'s `elasticsearch.yml` file.
 
@@ -32,7 +32,7 @@ You can also specify certain clusters to display data from, for example, `cluste
 
 There are two ways to edit the default {{data-source}}:
 
-* In the Applications UI — Find **Applications** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
+* In the Applications UI — Find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
 * In `kibana.yml` — Update the [`xpack.apm.indices.*`](https://www.elastic.co/guide/en/kibana/current/apm-settings-kb.html) configuration values to include remote clusters.
 
 ::::{admonition} Exclude data tiers from search
@@ -42,7 +42,7 @@ In a cross-cluster search (CCS) environment, it’s possible for different clust
 
 To prevent this, you can exclude [data tiers](../../../manage-data/lifecycle/data-tiers.md) that might slow down responses from search: the `data_frozen` and `data_cold` tiers. To exclude data tiers from search in the APM UI:
 
-1. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Observability** section, update the **Excluded data tiers from search** option with a list of data tiers.
 
 ::::
