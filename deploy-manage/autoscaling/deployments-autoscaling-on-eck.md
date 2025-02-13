@@ -10,7 +10,7 @@ Elasticsearch autoscaling requires a valid Enterprise license or Enterprise tria
 ::::
 
 
-ECK can leverage the [autoscaling API](https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-apis.html) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html) and machine learning nodes.
+ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html) and machine learning nodes.
 
 
 ## Enable autoscaling [k8s-enable]

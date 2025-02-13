@@ -537,8 +537,6 @@ toc:
     children:
       - file: elasticsearch/elasticsearch-reference/_usage_example.md
       - file: elasticsearch/elasticsearch-reference/active-directory-realm.md
-      - file: elasticsearch/elasticsearch-reference/analysis-overview.md
-      - file: elasticsearch/elasticsearch-reference/analysis.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-deciders.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-fixed-decider.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-frozen-existence-decider.md
@@ -571,7 +569,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/index-lifecycle-management.md
       - file: elasticsearch/elasticsearch-reference/index-mgmt.md
       - file: elasticsearch/elasticsearch-reference/index-modules-allocation.md
-      - file: elasticsearch/elasticsearch-reference/index-modules-analysis.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/ingest-enriching-data.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
