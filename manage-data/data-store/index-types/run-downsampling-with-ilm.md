@@ -433,7 +433,7 @@ The new downsampled index contains just one document that includes the `min`, `m
 }
 ```
 
-Use the [data stream stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-stats-api.html) to get statistics for the data stream, including the storage size.
+Use the [data stream stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-data-streams-stats-1) to get statistics for the data stream, including the storage size.
 
 ```console
 GET /_data_stream/datastream/_stats?human=true

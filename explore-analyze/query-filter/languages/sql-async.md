@@ -38,7 +38,7 @@ For CSV, TSV, and TXT responses, the API returns these values in the respective 
 }
 ```
 
-To check the progress of an async search, use the search ID with the [get async SQL search status API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-sql-search-status-api.html).
+To check the progress of an async search, use the search ID with the [get async SQL search status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-get-async-status).
 
 ```console
 GET _sql/async/status/FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=
@@ -56,7 +56,7 @@ If `is_running` and `is_partial` are `false`, the async search has finished with
 }
 ```
 
-To get the results, use the search ID with the [get async SQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-sql-search-api.html). If the search is still running, specify how long you’d like to wait using `wait_for_completion_timeout`. You can also specify the response `format`.
+To get the results, use the search ID with the [get async SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-get-async). If the search is still running, specify how long you’d like to wait using `wait_for_completion_timeout`. You can also specify the response `format`.
 
 ```console
 GET _sql/async/FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=?wait_for_completion_timeout=2s&format=json
@@ -83,7 +83,7 @@ You can use the get async SQL search API’s `keep_alive` parameter to later cha
 GET _sql/async/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=?keep_alive=5d&wait_for_completion_timeout=2s&format=json
 ```
 
-Use the [delete async SQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-async-sql-search-api.html) to delete an async search before the `keep_alive` period ends. If the search is still running, {{es}} cancels it.
+Use the [delete async SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-delete-async) to delete an async search before the `keep_alive` period ends. If the search is still running, {{es}} cancels it.
 
 ```console
 DELETE _sql/async/delete/FmdMX2pIang3UWhLRU5QS0lqdlppYncaMUpYQ05oSkpTc3kwZ21EdC1tbFJXQToxOTI=
@@ -117,7 +117,7 @@ If `is_partial` and `is_running` are `false`, the search was synchronous and ret
 }
 ```
 
-You can get the same results later using the search ID with the [get async SQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-sql-search-api.html).
+You can get the same results later using the search ID with the [get async SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-get-async).
 
-Saved synchronous searches are still subject to the `keep_alive` retention period. When this period ends, {{es}} deletes the search results. You can also delete saved searches using the [delete async SQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-async-sql-search-api.html).
+Saved synchronous searches are still subject to the `keep_alive` retention period. When this period ends, {{es}} deletes the search results. You can also delete saved searches using the [delete async SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-delete-async).
 

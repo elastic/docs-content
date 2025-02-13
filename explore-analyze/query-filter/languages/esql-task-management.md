@@ -12,7 +12,7 @@ mapped_pages:
 # Task management [esql-task-management]
 
 
-You can list running {{esql}} queries with the [task management API](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html):
+You can list running {{esql}} queries with the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks):
 
 $$$esql-task-management-get-all$$$
 
@@ -43,7 +43,7 @@ Which returns a list of statuses like this:
 2. Time the query has been running.
 
 
-You can use this to find long running queries and, if you need to, cancel them with the [task cancellation API](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html#task-cancellation):
+You can use this to find long running queries and, if you need to, cancel them with the [task cancellation API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks#task-cancellation):
 
 $$$esql-task-management-cancelEsqlQueryRequestTests$$$
 
