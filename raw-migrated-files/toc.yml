@@ -398,9 +398,7 @@ toc:
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/quickstart-monitor-hosts-with-otel.md
       - file: docs-content/serverless/security-about-rules.md
-      - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
-      - file: docs-content/serverless/security-advanced-behavioral-detections.md  
       - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-agent-tamper-protection.md
       - file: docs-content/serverless/security-ai-assistant-esql-queries.md
@@ -412,8 +410,6 @@ toc:
       - file: docs-content/serverless/security-alerts-manage.md
       - file: docs-content/serverless/security-alerts-run-osquery.md
       - file: docs-content/serverless/security-allowlist-endpoint.md
-      - file: docs-content/serverless/security-analyze-risk-score-data.md
-      - file: docs-content/serverless/security-asset-criticality.md
       - file: docs-content/serverless/security-automated-response-actions.md
       - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-behavioral-detection-use-cases.md
@@ -464,7 +460,6 @@ toc:
       - file: docs-content/serverless/security-ers-requirements.md
       - file: docs-content/serverless/security-event-filters.md
       - file: docs-content/serverless/security-examine-osquery-results.md
-      - file: docs-content/serverless/security-explore-your-data.md
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
       - file: docs-content/serverless/security-hosts-overview.md
@@ -501,7 +496,6 @@ toc:
       - file: docs-content/serverless/security-response-actions-config.md
       - file: docs-content/serverless/security-response-actions-history.md
       - file: docs-content/serverless/security-response-actions.md
-      - file: docs-content/serverless/security-rule-exceptions.md
       - file: docs-content/serverless/security-rule-monitoring-dashboard.md
       - file: docs-content/serverless/security-rules-coverage.md
       - file: docs-content/serverless/security-rules-create.md
@@ -509,22 +503,17 @@ toc:
       - file: docs-content/serverless/security-runtime-fields.md
       - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-session-view.md
-      - file: docs-content/serverless/security-shared-exception-lists.md
       - file: docs-content/serverless/security-signals-to-cases.md
-      - file: docs-content/serverless/security-spaces.md
       - file: docs-content/serverless/security-third-party-actions.md
-      - file: docs-content/serverless/security-threat-intelligence.md
       - file: docs-content/serverless/security-timeline-templates-ui.md
       - file: docs-content/serverless/security-timelines-ui.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
       - file: docs-content/serverless/security-trusted-applications.md
       - file: docs-content/serverless/security-tune-detection-signals.md
-      - file: docs-content/serverless/security-tuning-anomaly-results.md
       - file: docs-content/serverless/security-turn-on-risk-engine.md
       - file: docs-content/serverless/security-ui.md
       - file: docs-content/serverless/security-uninstall-agent.md
       - file: docs-content/serverless/security-users-page.md
-      - file: docs-content/serverless/security-value-lists-exceptions.md
       - file: docs-content/serverless/security-view-alert-details.md
       - file: docs-content/serverless/security-visual-event-analyzer.md
       - file: docs-content/serverless/security-visualize-alerts.md
@@ -542,8 +531,6 @@ toc:
     children:
       - file: elasticsearch/elasticsearch-reference/_usage_example.md
       - file: elasticsearch/elasticsearch-reference/active-directory-realm.md
-      - file: elasticsearch/elasticsearch-reference/analysis-overview.md
-      - file: elasticsearch/elasticsearch-reference/analysis.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-deciders.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-fixed-decider.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-frozen-existence-decider.md
@@ -576,7 +563,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/index-lifecycle-management.md
       - file: elasticsearch/elasticsearch-reference/index-mgmt.md
       - file: elasticsearch/elasticsearch-reference/index-modules-allocation.md
-      - file: elasticsearch/elasticsearch-reference/index-modules-analysis.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/ingest-enriching-data.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
@@ -585,7 +571,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/kerberos-realm.md
       - file: elasticsearch/elasticsearch-reference/ldap-realm.md
       - file: elasticsearch/elasticsearch-reference/mapping-roles.md
-      - file: elasticsearch/elasticsearch-reference/mapping.md
       - file: elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
       - file: elasticsearch/elasticsearch-reference/monitoring-overview.md
       - file: elasticsearch/elasticsearch-reference/monitoring-production.md
@@ -786,10 +771,8 @@ toc:
   - file: security-docs/security/index.md
     children:
       - file: security-docs/security/about-rules.md
-      - file: security-docs/security/add-exceptions.md
       - file: security-docs/security/add-manage-notes.md
       - file: security-docs/security/admin-page-ov.md
-      - file: security-docs/security/advanced-behavioral-detections.md
       - file: security-docs/security/advanced-settings.md
       - file: security-docs/security/agent-tamper-protection.md
       - file: security-docs/security/ai-assistant-knowledge-base.md
@@ -798,9 +781,7 @@ toc:
       - file: security-docs/security/alerts-run-osquery.md
       - file: security-docs/security/alerts-ui-manage.md
       - file: security-docs/security/allowlist-endpoint-3rd-party-av-apps.md
-      - file: security-docs/security/analyze-risk-score-data.md
       - file: security-docs/security/artifact-control.md
-      - file: security-docs/security/asset-criticality.md
       - file: security-docs/security/assistant-connect-to-azure-openai.md
       - file: security-docs/security/assistant-connect-to-bedrock.md
       - file: security-docs/security/assistant-connect-to-openai.md
@@ -846,7 +827,6 @@ toc:
       - file: security-docs/security/detection-response-dashboard.md
       - file: security-docs/security/detections-logsdb-index-mode-impact.md
       - file: security-docs/security/detections-permissions-section.md
-      - file: security-docs/security/detections-ui-exceptions.md
       - file: security-docs/security/elastic-endpoint-deploy-reqs.md
       - file: security-docs/security/endpoint-artifacts.md
       - file: security-docs/security/endpoint-data-volume.md
@@ -859,7 +839,6 @@ toc:
       - file: security-docs/security/environment-variable-capture.md
       - file: security-docs/security/ers-requirements.md
       - file: security-docs/security/es-overview.md
-      - file: security-docs/security/es-threat-intel-integrations.md
       - file: security-docs/security/es-ui-overview.md
       - file: security-docs/security/esql-queries-assistant.md
       - file: security-docs/security/event-filters.md
@@ -900,28 +879,23 @@ toc:
       - file: security-docs/security/rules-ui-create.md
       - file: security-docs/security/rules-ui-management.md
       - file: security-docs/security/runtime-fields.md
-      - file: security-docs/security/sec-explore-intro.md
       - file: security-docs/security/sec-manage-intro.md
       - file: security-docs/security/sec-requirements.md
       - file: security-docs/security/security-assistant.md
       - file: security-docs/security/security-posture-faq.md
       - file: security-docs/security/security-posture-management.md
-      - file: security-docs/security/security-spaces.md
       - file: security-docs/security/self-healing-rollback.md
       - file: security-docs/security/session-view.md
-      - file: security-docs/security/shared-exception-lists.md
       - file: security-docs/security/signals-to-cases.md
       - file: security-docs/security/third-party-actions.md
       - file: security-docs/security/timeline-templates-ui.md
       - file: security-docs/security/timelines-ui.md
       - file: security-docs/security/trusted-apps-ov.md
-      - file: security-docs/security/tuning-anomaly-results.md
       - file: security-docs/security/tuning-detection-signals.md
       - file: security-docs/security/turn-on-risk-engine.md
       - file: security-docs/security/uninstall-agent.md
       - file: security-docs/security/use-osquery.md
       - file: security-docs/security/users-page.md
-      - file: security-docs/security/value-lists-exceptions.md
       - file: security-docs/security/view-alert-details.md
       - file: security-docs/security/view-osquery-results.md
       - file: security-docs/security/visual-event-analyzer.md

@@ -11,7 +11,7 @@ For example, a single [user profile](user-profiles.md) is associated with a user
 
 ## Resource sharing across domains [security-domain-resource-sharing]
 
-Some types of resources in {{es}} are owned by a single user, such as [async search contexts](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html), [API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html), and [user profiles](user-profiles.md). When a user creates a resource, {{es}} captures the user’s username and realm information as part of the resource’s metadata. Likewise, if a user updates a resource, such as an API key, {{es}} automatically re-captures the user’s current realm information.
+Some types of resources in {{es}} are owned by a single user, such as [async search contexts](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit), [API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key), and [user profiles](user-profiles.md). When a user creates a resource, {{es}} captures the user’s username and realm information as part of the resource’s metadata. Likewise, if a user updates a resource, such as an API key, {{es}} automatically re-captures the user’s current realm information.
 
 When a user later attempts to access the resource, {{es}} compares the captured username and realm information against those from the accessing user. {{es}} will deny access unless both the realm and username match. If {{es}} detects that a username from two different realms is attempting to access a resource, {{es}} assumes that these users are distinct and doesn’t allow resources to be shared between those users.
 
@@ -72,7 +72,7 @@ To configure a security domain:
 
     ::::
 
-3. Apply the same configuration across all nodes in the cluster before performing operations related to security domains, including creating and managing resources such as [user profiles](user-profiles.md), [API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html), and [async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html).
+3. Apply the same configuration across all nodes in the cluster before performing operations related to security domains, including creating and managing resources such as [user profiles](user-profiles.md), [API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key), and [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit).
 
     When adding realms to a security domain, avoid authenticating with a newly-added realm until changes are fully applied to all nodes.
 
@@ -82,8 +82,8 @@ To configure a security domain:
 
 Removing realms from a security domain can lead to unexpected behaviors and is not recommended. Resources created or updated before the removal can be owned by different users depending on the resource type:
 
-* [User profiles](user-profiles.md) are owned by the user for whom the profile was last [activated](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-activate-user-profile.html). For users whose realms are no longer in the same domain as the owner user, a new user profile will be created for them next time the activate user profile API is called.
-* An API key is owned by the user who originally [created](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) or last [updated](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html) it. Users, including the original creator of the API key, will lose ownership if their realms are no longer in the same domain as those of the current API key owner.
+* [User profiles](user-profiles.md) are owned by the user for whom the profile was last [activated](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-activate-user-profile). For users whose realms are no longer in the same domain as the owner user, a new user profile will be created for them next time the activate user profile API is called.
+* An API key is owned by the user who originally [created](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) or last [updated](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-api-key) it. Users, including the original creator of the API key, will lose ownership if their realms are no longer in the same domain as those of the current API key owner.
 * Resources such as async search contexts are owned by the user who originally created them.
 
 Instead of removing realms, consider disabling them and keeping them as part of the security domain. Under all circumstances, resource sharing across realms is only possible between users with the same username.

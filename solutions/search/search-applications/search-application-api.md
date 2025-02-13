@@ -12,7 +12,7 @@ applies:
 # Search API and templates [search-application-api]
 
 
-Your [search applications](../search-applications.md) use [search templates](../search-templates.md) to perform searches. Templates help reduce complexity by exposing only template parameters, while using the full power of {{es}}'s query DSL to formulate queries. Templates may be set when creating or updating a search application, and can be customized. This template can be edited or updated at any time using the [Put Search Application API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html) API call.
+Your [search applications](../search-applications.md) use [search templates](../search-templates.md) to perform searches. Templates help reduce complexity by exposing only template parameters, while using the full power of {{es}}'s query DSL to formulate queries. Templates may be set when creating or updating a search application, and can be customized. This template can be edited or updated at any time using the [Put Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) API call.
 
 In a nutshell, you create search templates with parameters instead of specific hardcoded search values. At search time, you pass in the actual values for these parameters, enabling customized searches without rewriting the entire query structure. Search Application templates:
 
@@ -22,7 +22,7 @@ In a nutshell, you create search templates with parameters instead of specific h
 
 This document provides information and sample templates to get you started using [search applications](../search-applications.md) for additional use cases. These templates are designed to be easily modified to meet your needs. Once you’ve created a search application with a template, you can search your search application using this template.
 
-::::{tip} 
+::::{tip}
 Search templates use the [Mustache](https://mustache.github.io/) templating language. Mustache variables are typically enclosed in double curly brackets like this: `{{my-var}}`.
 
 Learn more by reading about [search templates](../search-templates.md).
@@ -31,11 +31,11 @@ Learn more by reading about [search templates](../search-templates.md).
 
 
 
-## Default template example [search-application-api-default-template] 
+## Default template example [search-application-api-default-template]
 
 If no template is stored with a search application, a minimal [default search template](#search-application-api-default-template) will be applied at search time. The default template implements a simple search use case.
 
-To create a search application with the default template, issue a [create or update Search Application](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html) request without specifying a template:
+To create a search application with the default template, issue a [create or update Search Application](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) request without specifying a template:
 
 ```console
 PUT _application/search_application/my_search_application
@@ -44,7 +44,7 @@ PUT _application/search_application/my_search_application
 }
 ```
 
-You can then use the [get search application](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-search-application.html) API call to view your newly created search application, which will also include the default template that was created for you:
+You can then use the [get search application](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-get) API call to view your newly created search application, which will also include the default template that was created for you:
 
 ```console
 GET _application/search_application/my_search_application
@@ -106,14 +106,14 @@ The default template is very minimal:
 
 This may be useful for initial exploration of search templates, but you’ll likely want to update this.
 
-::::{note} 
+::::{note}
 This template does not support additional parameters, including `from`, `size` or `boost`. If you need to use these, you can customize the template associated with your search application accordingly to include them as parameters.
 ::::
 
 
-You can see the parameters and their default values by viewing the template, but it also may be valuable to view the query that will be generated if you [search your search application](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-search.html) with various parameters.
+You can see the parameters and their default values by viewing the template, but it also may be valuable to view the query that will be generated if you [search your search application](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search) with various parameters.
 
-You can use the [render search application query](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-render-query.html) to view the query this template would generate, including with default parameters. For example, searching the search application with no parameters:
+You can use the [render search application query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-render-query) to view the query this template would generate, including with default parameters. For example, searching the search application with no parameters:
 
 ```console
 POST _application/search_application/my_search_application/_render_query
@@ -168,7 +168,7 @@ POST _application/search_application/my_search_application/_search
 
 Searching with the `query_string` and/or `default_field` parameters will perform a [`query_string`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html) query.
 
-::::{warning} 
+::::{warning}
 The default template is subject to change in future versions of the Search Applications feature.
 
 ::::
@@ -177,14 +177,14 @@ The default template is subject to change in future versions of the Search Appli
 Try some of the other examples in this document to experiment with specific use cases, or try creating your own!
 
 
-## Searching a search application [search-application-api-searching] 
+## Searching a search application [search-application-api-searching]
 
 
-### Template search [search-application-api-searching-templates] 
+### Template search [search-application-api-searching-templates]
 
 The simplest way to interact with a search application is to use the search template that’s created and stored with it. Each search application has a single template associated with it, which defines search criteria, parameters and defaults.
 
-You send search requests to a search application using the [Search Application Search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-search.html).
+You send search requests to a search application using the [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search).
 
 With the default template, a search looks like this:
 
@@ -200,30 +200,30 @@ POST _application/search_application/my_search_application/_search
 In this example, we’ve overridden the `query_string` parameter’s default value of `*`. Since we didn’t specify `default_field` the value of this parameter will still be `*`.
 
 
-### Alias search [search-application-api-searching-alias] 
+### Alias search [search-application-api-searching-alias]
 
 If you don’t want to set up a search template for your search application, an alias will be created with the same name as your search application. This may be helpful when experimenting with specific search queries that you want to use when building your search application’s search template.
 
-If your search application’s name is `my_search_application`, your alias will be `my_search_application`. You can search this using the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html).
+If your search application’s name is `my_search_application`, your alias will be `my_search_application`. You can search this using the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search).
 
 
-### Cross cluster search [search-application-cross-cluster-search] 
+### Cross cluster search [search-application-cross-cluster-search]
 
 Search applications do not currently support {{ccs}} because it is not possible to add a remote cluster’s index or index pattern to an index alias.
 
-::::{note} 
-You should use the Search Applications management APIs to update your application and *not* directly use {{es}} APIs such as the alias API. For example, use [PUT Search Application](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html) with the `indices` parameter. This will automatically keep the associated alias up to date and ensure that indices are added to the search application correctly.
+::::{note}
+You should use the Search Applications management APIs to update your application and *not* directly use {{es}} APIs such as the alias API. For example, use [PUT Search Application](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) with the `indices` parameter. This will automatically keep the associated alias up to date and ensure that indices are added to the search application correctly.
 
 ::::
 
 
 
-## Search template examples [search-application-api-examples] 
+## Search template examples [search-application-api-examples]
 
 We have created a number of examples to explore specific use cases. Use these as a starting point for creating your own search templates.
 
 
-### Text search example [search-application-api-bm25-template] 
+### Text search example [search-application-api-bm25-template]
 
 The following template supports a `multi_match` search over specified fields and boosts:
 
@@ -282,7 +282,7 @@ POST _application/search_application/my_search_application/_search
 The `text_fields` parameters can be overridden with new/different fields and boosts to experiment with the best configuration for your use case. This template also supports pagination and `explain` via parameters.
 
 
-### Text search + ELSER with RRF [search-application-api-rrf-template] 
+### Text search + ELSER with RRF [search-application-api-rrf-template]
 
 This example supports the [reciprocal rank fusion (RRF)]](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) method for combining BM25 and [ELSER](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) searches. Reciprocal Rank Fusion consistently improves the combined results of different search algorithms. It outperforms all other ranking algorithms, and often surpasses the best individual results, without calibration.
 
@@ -345,7 +345,7 @@ PUT _application/search_application/my-search-app
 }
 ```
 
-::::{note} 
+::::{note}
 Replace `<elser_model_id>` with the model ID of your ELSER deployment.
 ::::
 
@@ -368,7 +368,7 @@ POST _application/search_application/my-search-app/_search
 ```
 
 
-### Text search + ELSER [search-application-api-catchall-template] 
+### Text search + ELSER [search-application-api-catchall-template]
 
 The Elastic Learned Sparse EncodeR ([ELSER](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md)) improves search relevance through text-expansion, which enables semantic search. This experimental template requires ELSER to be enabled for one or more fields. Refer to [Semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) for more information on how to use ELSER. In this case, ELSER is enabled on the `title` and `description` fields.
 
@@ -512,14 +512,14 @@ POST _application/search_application/my_search_application/_search
 }
 ```
 
-::::{tip} 
+::::{tip}
 Text search results and ELSER search results are expected to have significantly different scores in some cases, which makes ranking challenging. To find the best search result mix for your dataset, we suggest experimenting with the boost values provided in the example template:
 
 * `text_query_boost` to boost the BM25 query as a whole
 * [`boost`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_boosting) fields to boost individual text search fields
-* [`min_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-api-min-score) parameter to omit significantly low confidence results
+* [`min_score`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-min_score) parameter to omit significantly low confidence results
 
-The above boosts should be sufficient for many use cases, but there are cases when adding a [rescore](https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#rescore) query or [index boost](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multiple-indices.html#index-boost) to your template may be beneficial. Remember to update your search application to use the new template using the [put search application command](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html).
+The above boosts should be sufficient for many use cases, but there are cases when adding a [rescore](https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#rescore) query or [index boost](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multiple-indices.html#index-boost) to your template may be beneficial. Remember to update your search application to use the new template using the [put search application command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put).
 
 ::::
 
@@ -531,7 +531,7 @@ POST _application/search_application/my_search_application/_search
 ```
 
 
-### ELSER search [search-application-api-elser-template] 
+### ELSER search [search-application-api-elser-template]
 
 This example supports a streamlined version of ELSER search.
 
@@ -582,7 +582,7 @@ PUT _application/search_application/my_search_application
 }
 ```
 
-::::{note} 
+::::{note}
 Replace `<elser_model_id>` with the model ID of your ELSER deployment.
 ::::
 
@@ -599,7 +599,7 @@ POST _application/search_application/my_search_application/_search
 ```
 
 
-### kNN search [search-applications-knn-template] 
+### kNN search [search-applications-knn-template]
 
 This example supports [k-nearest neighbor (kNN) search](../vector/knn.md).
 

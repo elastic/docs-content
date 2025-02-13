@@ -8,7 +8,7 @@ mapped_pages:
 
 **Symptoms:**
 
-* When you use the [nodes info API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-info.html) to retrieve settings for a node, some information is missing.
+* When you use the [nodes info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-info) to retrieve settings for a node, some information is missing.
 
 **Resolution:**
 

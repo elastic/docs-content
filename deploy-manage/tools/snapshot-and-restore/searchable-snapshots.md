@@ -18,20 +18,20 @@ By default, {{search-snap}} indices have no replicas. The underlying snapshot pr
 
 If a node fails and {{search-snap}} shards need to be recovered elsewhere, there is a brief window of time while {{es}} allocates the shards to other nodes where the cluster health will not be `green`. Searches that hit these shards may fail or return partial results until the shards are reallocated to healthy nodes.
 
-You typically manage {{search-snaps}} through {{ilm-init}}. The [searchable snapshots](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-searchable-snapshot.html) action automatically converts a regular index into a {{search-snap}} index when it reaches the `cold` or `frozen` phase. You can also make indices in existing snapshots searchable by manually mounting them using the [mount snapshot](https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html) API.
+You typically manage {{search-snaps}} through {{ilm-init}}. The [searchable snapshots](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-searchable-snapshot.html) action automatically converts a regular index into a {{search-snap}} index when it reaches the `cold` or `frozen` phase. You can also make indices in existing snapshots searchable by manually mounting them using the [mount snapshot](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-searchable-snapshots-mount) API.
 
-To mount an index from a snapshot that contains multiple indices, we recommend creating a [clone](https://www.elastic.co/guide/en/elasticsearch/reference/current/clone-snapshot-api.html) of the snapshot that contains only the index you want to search, and mounting the clone. You should not delete a snapshot if it has any mounted indices, so creating a clone enables you to manage the lifecycle of the backup snapshot independently of any {{search-snaps}}. If you use {{ilm-init}} to manage your {{search-snaps}} then it will automatically look after cloning the snapshot as needed.
+To mount an index from a snapshot that contains multiple indices, we recommend creating a [clone](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-clone) of the snapshot that contains only the index you want to search, and mounting the clone. You should not delete a snapshot if it has any mounted indices, so creating a clone enables you to manage the lifecycle of the backup snapshot independently of any {{search-snaps}}. If you use {{ilm-init}} to manage your {{search-snaps}} then it will automatically look after cloning the snapshot as needed.
 
 You can control the allocation of the shards of {{search-snap}} indices using the same mechanisms as for regular indices. For example, you could use [Index-level shard allocation filtering](../../distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to restrict {{search-snap}} shards to a subset of your nodes.
 
 The speed of recovery of a {{search-snap}} index is limited by the repository setting `max_restore_bytes_per_sec` and the node setting `indices.recovery.max_bytes_per_sec` just like a normal restore operation. By default `max_restore_bytes_per_sec` is unlimited, but the default for `indices.recovery.max_bytes_per_sec` depends on the configuration of the node. See [Recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings).
 
-We recommend that you [force-merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) indices to a single segment per shard before taking a snapshot that will be mounted as a {{search-snap}} index. Each read from a snapshot repository takes time and costs money, and the fewer segments there are the fewer reads are needed to restore the snapshot or to respond to a search.
+We recommend that you [force-merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) indices to a single segment per shard before taking a snapshot that will be mounted as a {{search-snap}} index. Each read from a snapshot repository takes time and costs money, and the fewer segments there are the fewer reads are needed to restore the snapshot or to respond to a search.
 
 ::::{tip}
 {{search-snaps-cap}} are ideal for managing a large archive of historical data. Historical information is typically searched less frequently than recent data and therefore may not need replicas for their performance benefits.
 
-For more complex or time-consuming searches, you can use [Async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html) with {{search-snaps}}.
+For more complex or time-consuming searches, you can use [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) with {{search-snaps}}.
 
 ::::
 
@@ -46,7 +46,7 @@ Use any of the following repository types with searchable snapshots:
 * [Shared filesystems](shared-file-system-repository.md) such as NFS
 * [Read-only HTTP and HTTPS repositories](read-only-url-repository.md)
 
-You can also use alternative implementations of these repository types, for instance [MinIO](s3-repository.md#repository-s3-client), as long as they are fully compatible. Use the [Repository analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html) API to analyze your repository’s suitability for use with searchable snapshots.
+You can also use alternative implementations of these repository types, for instance [MinIO](s3-repository.md#repository-s3-client), as long as they are fully compatible. Use the [Repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) API to analyze your repository’s suitability for use with searchable snapshots.
 
 
 ## How {{search-snaps}} work [how-searchable-snapshots-work]
@@ -58,7 +58,7 @@ If a node holding one of these shards fails, {{es}} automatically allocates the 
 
 ### Mount options [searchable-snapshot-mount-storage-options]
 
-To search a snapshot, you must first mount it locally as an index. Usually {{ilm-init}} will do this automatically, but you can also call the [mount snapshot](https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html) API yourself. There are two options for mounting an index from a snapshot, each with different performance characteristics and local storage footprints:
+To search a snapshot, you must first mount it locally as an index. Usually {{ilm-init}} will do this automatically, but you can also call the [mount snapshot](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-searchable-snapshots-mount) API yourself. There are two options for mounting an index from a snapshot, each with different performance characteristics and local storage footprints:
 
 $$$fully-mounted$$$
 
@@ -136,7 +136,7 @@ You can only configure these settings on nodes with the [`data_frozen`](../../di
 :   ([Dynamic](../../deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting)) The number of documents that are searched for and bulk-deleted at once during the periodic cleanup of the `.snapshot-blob-cache` index. Defaults to `100`.
 
 `searchable_snapshots.blob_cache.periodic_cleanup.pit_keep_alive`
-:   ([Dynamic](../../deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting)) The value used for the [point-in-time keep alive](https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html#point-in-time-keep-alive) requests executed during the periodic cleanup of the `.snapshot-blob-cache` index. Defaults to `10m`.
+:   ([Dynamic](../../deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting)) The value used for the [point-in-time keep alive](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time) requests executed during the periodic cleanup of the `.snapshot-blob-cache` index. Defaults to `10m`.
 
 
 ## Reduce costs with {{search-snaps}} [searchable-snapshots-costs]

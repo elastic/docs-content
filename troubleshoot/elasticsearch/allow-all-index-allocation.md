@@ -36,7 +36,7 @@ In order to get the shards assigned we’ll need to change the value of the [con
     :class: screenshot
     :::
 
-4. Inspect the `index.routing.allocation.enable` [index setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) for the index with unassigned shards:
+4. Inspect the `index.routing.allocation.enable` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:
 
     ```console
     GET /my-index-000001/_settings/index.routing.allocation.enable?flat_settings
@@ -56,7 +56,7 @@ In order to get the shards assigned we’ll need to change the value of the [con
 
     1. Represents the current configured value that controls if the index is allowed to be partially or totally allocated.
 
-5. [Change](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-routing-allocation-enable-setting) value to allow the index to be fully allocated:
+5. [Change](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-routing-allocation-enable-setting) value to allow the index to be fully allocated:
 
     ```console
     PUT /my-index-000001/_settings
@@ -73,7 +73,7 @@ In order to get the shards assigned we’ll need to change the value of the [con
 ::::::{tab-item} Self-managed
 In order to get the shards assigned we’ll need to change the value of the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-routing-allocation-enable-setting) that restricts the assignemnt of the shards to `all`.
 
-1. Inspect the `index.routing.allocation.enable` [index setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) for the index with unassigned shards:
+1. Inspect the `index.routing.allocation.enable` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) for the index with unassigned shards:
 
     ```console
     GET /my-index-000001/_settings/index.routing.allocation.enable?flat_settings
@@ -93,7 +93,7 @@ In order to get the shards assigned we’ll need to change the value of the [con
 
     1. Represents the current configured value that controls if the index is allowed to be partially or totally allocated.
 
-2. [Change](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-routing-allocation-enable-setting) value to allow the index to be fully allocated:
+2. [Change](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-routing-allocation-enable-setting) value to allow the index to be fully allocated:
 
     ```console
     PUT /my-index-000001/_settings

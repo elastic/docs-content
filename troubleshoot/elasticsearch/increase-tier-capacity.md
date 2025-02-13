@@ -34,7 +34,7 @@ One way to get the replica shards assigned is to add an availability zone. This 
     :::
 
 
-To inspect which tier an index is targeting for assignment, use the [get index setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
+To inspect which tier an index is targeting for assignment, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
 
 ```console
 GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
@@ -110,9 +110,9 @@ If it is not possible to increase the size per zone or the number of availabilit
     himrst
     ```
 
-    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [{{api-query-parms-title}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html#cat-nodes-api-query-params) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
+    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [{{api-query-parms-title}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
 
-4. [Decrease](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) the value for the total number of replica shards required for this index. As replica shards cannot reside on the same node as primary shards for [high availability](../../deploy-manage/production-guidance/availability-and-resilience.md), the new value needs to be less than or equal to the number of nodes found above minus one. Since the example above found 2 nodes in the hot tier, the maximum value for `index.number_of_replicas` is 1.
+4. [Decrease](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the value for the total number of replica shards required for this index. As replica shards cannot reside on the same node as primary shards for [high availability](../../deploy-manage/production-guidance/availability-and-resilience.md), the new value needs to be less than or equal to the number of nodes found above minus one. Since the example above found 2 nodes in the hot tier, the maximum value for `index.number_of_replicas` is 1.
 
     ```console
     PUT /my-index-000001/_settings
@@ -129,7 +129,7 @@ If it is not possible to increase the size per zone or the number of availabilit
 ::::::{tab-item} Self-managed
 In order to get the replica shards assigned you can add more nodes to your {{es}} cluster and assign the index’s target tier [node role](../../manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md#assign-data-tier) to the new nodes.
 
-To inspect which tier an index is targeting for assignment, use the [get index setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
+To inspect which tier an index is targeting for assignment, use the [get index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) API to retrieve the configured value for the `index.routing.allocation.include._tier_preference` setting:
 
 ```console
 GET /my-index-000001/_settings/index.routing.allocation.include._tier_preference?flat_settings
@@ -188,9 +188,9 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
     himrst
     ```
 
-    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [{{api-query-parms-title}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html#cat-nodes-api-query-params) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
+    You can count the rows containing the letter representing the target tier to know how many nodes you have. See [{{api-query-parms-title}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) for details. The example above has two rows containing `h`, so there are two nodes in the hot tier.
 
-3. [Decrease](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) the value for the total number of replica shards required for this index. As replica shards cannot reside on the same node as primary shards for [high availability](../../deploy-manage/production-guidance/availability-and-resilience.md), the new value needs to be less than or equal to the number of nodes found above minus one. Since the example above found 2 nodes in the hot tier, the maximum value for `index.number_of_replicas` is 1.
+3. [Decrease](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) the value for the total number of replica shards required for this index. As replica shards cannot reside on the same node as primary shards for [high availability](../../deploy-manage/production-guidance/availability-and-resilience.md), the new value needs to be less than or equal to the number of nodes found above minus one. Since the example above found 2 nodes in the hot tier, the maximum value for `index.number_of_replicas` is 1.
 
     ```console
     PUT /my-index-000001/_settings

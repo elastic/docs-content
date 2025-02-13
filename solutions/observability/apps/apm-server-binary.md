@@ -168,7 +168,7 @@ elasticApm {
 1. You can find the latest version in the [Gradle plugin portal](https://plugins.gradle.org/plugin/co.elastic.apm.android).
 2. Defaults to your `android.defaultConfig.applicationId` value.
 3. Defaults to your `android.defaultConfig.versionName` value.
-4. Defaults to null. More info on API Keys [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html).
+4. Defaults to null. More info on API Keys [here](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
 5. Defaults to null.
 
 
