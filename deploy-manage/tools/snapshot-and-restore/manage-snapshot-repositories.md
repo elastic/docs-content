@@ -41,7 +41,7 @@ Elastic Cloud Enterprise installations support the following Elasticsearch snaps
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by Elasticsearch. 
 :::
 
-For more details, refer to Managing snapshot repositories in [Elastic Cloud Enterprise](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
+For more details, refer to [Managing snapshot repositories in Elastic Cloud Enterprise](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
 
 ### Self-managed
 
