@@ -18,7 +18,7 @@ To configure ECK, edit the `elastic-operator` ConfigMap to change the operator c
 
 Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
 
-If you use [Operator Lifecycle Manager](https://github.com/operator-framework/operator-lifecycle-manager) refer to [](./configure-eck.md#k8s-operator-config-olm)
+If you use [Operator Lifecycle Manager](https://github.com/operator-framework/operator-lifecycle-manager), refer to [Configure ECK under Operator Lifecycle Manager](./configure-eck.md#k8s-operator-config-olm)
 
 ## Configuration use cases
 
