@@ -328,7 +328,7 @@ The API returns the following response:
 
 ## Using async search for {{ccs}} with ccs_minimize_roundtrips=true [ccs-async-search-minimize-roundtrips-true]
 
-Remote clusters can be queried asynchronously using the [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) API. A {{ccs}} accepts a [`ccs_minimize_roundtrips`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) parameter. For asynchronous searches it defaults to `false`. (Note: for synchronous searches it defaults to `true`.) See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn more about this option.
+Remote clusters can be queried asynchronously using the [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) API. A {{ccs}} accepts a [`ccs_minimize_roundtrips`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-ccs_minimize_roundtrips) parameter. For asynchronous searches it defaults to `false`. (Note: for synchronous searches it defaults to `true`.) See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn more about this option.
 
 The following request does an asynchronous search of the `my-index-000001` index using `ccs_minimize_roundtrips=true` against three clusters (same ones as the previous example).
 
@@ -980,7 +980,7 @@ If `skip_unavailable` is `true`, a {{ccs}}:
 
 * Skips the remote cluster if its nodes are unavailable during the search. The response’s `_clusters.skipped` value contains a count of any skipped clusters and the `_clusters.details` section of the response will show a `skipped` status.
 * Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) and [`ignore_unavailable`](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index).
-* Ignores the [`allow_partial_search_results`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
+* Ignores the [`allow_partial_search_results`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-allow_partial_search_results) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
 
 You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the elasticsearch.yml config file. For example:
 
