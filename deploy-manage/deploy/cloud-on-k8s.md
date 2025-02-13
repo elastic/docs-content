@@ -31,7 +31,7 @@ This section provides everything you need to install, configure, and manage Elas
 - [](./cloud-on-k8s/orchestrate-other-elastic-applications.md): Install and configure APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
 - [](./cloud-on-k8s/tools-apis.md): A collection of tools and APIs available in ECK based environments.
 
-## Looking for a quickstart? [eck-quickstart]
+## Quickstart [eck-quickstart]
 
 If you want to get started quickly, follow these guides to deploy ECK and set up an {{es}} cluster:
 
