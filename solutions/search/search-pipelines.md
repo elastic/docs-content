@@ -100,7 +100,7 @@ If the pipeline is not specified, the underscore-prefixed fields will actually b
 
 ### `search-default-ingestion` Reference [ingest-pipeline-search-details-generic-reference]
 
-You can access this pipeline with the [Elasticsearch Ingest Pipelines API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-pipeline-api.html) or via Kibana’s [Stack Management > Ingest Pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md#create-manage-ingest-pipelines) UI.
+You can access this pipeline with the [Elasticsearch Ingest Pipelines API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-pipeline) or via Kibana’s [Stack Management > Ingest Pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md#create-manage-ingest-pipelines) UI.
 
 ::::{warning}
 This pipeline is a "managed" pipeline. That means that it is not intended to be edited. Editing/updating this pipeline manually could result in unintended behaviors, or difficulty in upgrading in the future. If you want to make customizations, we recommend you utilize index-specific pipelines (see below), specifically [the `<index-name>@custom` pipeline](#ingest-pipeline-search-details-specific-custom-reference).

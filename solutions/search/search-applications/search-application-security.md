@@ -17,7 +17,7 @@ When building a frontend application for search use cases, there are two main ap
 1. The client (user’s browser) makes API requests to the application backend, which in turn makes a request to {{es}}. The {{es}} cluster is not exposed to the end user.
 2. **The client (user’s browser) makes API requests directly to the search service - in this case the {{es}} cluster is reachable to the client.**
 
-This guide describes best practices when taking the second approach. Specifically, we will explain how to use search applications with frontend apps that make direct requests to the [Search Application Search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-search.html).
+This guide describes best practices when taking the second approach. Specifically, we will explain how to use search applications with frontend apps that make direct requests to the [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search).
 
 This approach has a few advantages:
 
@@ -97,7 +97,7 @@ curl -XPOST "http://localhost:9200/_application/search_application/website-produ
 ```
 
 ::::{tip} 
-If `expiration` is not present, by default {{es}} API keys never expire. The API key can be invalidated using the [invalidate API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html).
+If `expiration` is not present, by default {{es}} API keys never expire. The API key can be invalidated using the [invalidate API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key).
 
 ::::
 
@@ -218,7 +218,7 @@ If you are unable to enable CORS on {{es}}, you can proxy the request through a 
 * [Field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 * [APIs](search-application-api.md)
 
-    * [PUT Search Application API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html)
-    * [Search Application Search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-search.html)
+    * [PUT Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put)
+    * [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search)
 
 
