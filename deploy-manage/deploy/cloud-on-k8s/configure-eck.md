@@ -8,7 +8,7 @@ mapped_pages:
 
 # ECK configuration flags [k8s-operator-config]
 
-ECK can be configured using either **command-line flags** or **environment variables**.
+ECK can be configured using either command-line flags or environment variables.
 
 Unless noted otherwise, environment variables can be used instead of flags to configure the operator. Simply convert the flag name to upper case and replace any dashes (`-`) with underscores (`_`). For example, the `log-verbosity` flag can be set by an environment variable named `LOG_VERBOSITY`.
 
