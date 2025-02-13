@@ -18,6 +18,8 @@ This content focuses on **Elasticsearch and Kibana** deployments. To orchestrate
 
 ## What You'll Learn
 
+In this section, you'll learn how to perform the following tasks in ECK:
+
 - [**Deploy an Elasticsearch cluster**](./elasticsearch-deployment-quickstart.md) → Orchestrate an {{es}} cluster in Kubernetes.
 - [**Deploy Kibana instances**](./kibana-instance-quickstart.md) → Set up and connect Kibana to an existing Elasticsearch cluster.
 - [**Manage deployments using Elastic Stack Helm chart**](./managing-deployments-using-helm-chart.md) → Use Helm to deploy clusters and other stack applications.
