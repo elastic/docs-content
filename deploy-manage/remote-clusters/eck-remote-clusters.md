@@ -1,9 +1,11 @@
 ---
+applies:
+  eck:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html
 ---
 
-# ECK remote clusters [k8s-remote-clusters]
+# Remote clusters with {{eck}} [k8s-remote-clusters]
 
 The [remote clusters module](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html) in Elasticsearch enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
 

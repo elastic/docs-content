@@ -1,20 +1,19 @@
 ---
+applies:
+  ece:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html
 ---
 
-# Enable cross-cluster search and cross-cluster replication [ece-enable-ccs]
+# Remote clusters with {{ece}} [ece-enable-ccs]
 
-[Cross-cluster search (CCS)](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html) allows you to configure multiple remote clusters across different locations and to enable federated search queries across all of the configured remote clusters.
+You can configure an Elastic Cloud Enterprise deployment to remotely access or (be accessed by) a cluster from:
 
-[Cross-cluster replication (CCR)](https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html) allows you to replicate indices across multiple remote clusters regardless of where they’re located. This provides tremendous benefit in scenarios of disaster recovery or data locality.
-
-These remote clusters could be:
-
-* Another {{es}} cluster of your ECE installation
-* An {{es}} cluster in a remote ECE installation
-* An {{es}} cluster hosted on {ecloud}
-* Any other self-managed {{es}} cluster
+* Another deployment of your ECE installation
+* A deployment running on a different ECE installation
+* An Elastic Cloud Hosted deployment
+* A deployment running on an {{eck}} installation
+* A self-managed installation
 
 
 ## Prerequisites [ece-ccs-ccr-prerequisites]

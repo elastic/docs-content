@@ -1,4 +1,7 @@
 ---
+applies:
+  ece:
+  self:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-self-managed.html
 ---
@@ -37,7 +40,7 @@ A deployment can be configured to trust all or specific deployments in any envir
         Trust management will not work properly in clusters without an `otherName` value specified, as is the case by default in an out-of-the-box [Elasticsearch installation](../deploy/self-managed/installing-elasticsearch.md). To have the Elasticsearch certutil generate new certificates with the `otherName` attribute, use the file input with the `cn` attribute as in the example below.
         ::::
 
-5. . Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s Security page.
+5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s Security page.
 6. Select **Create trust** to complete the configuration.
 7. Configure the self-managed cluster to trust this deployment, so that both deployments are configured to trust each other:
 
@@ -80,7 +83,7 @@ Generate new node certificates for an entire cluster using the file input mode o
 ::::
 
 
-::::{dropdown} **Using the API**
+::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
 In order to trust a cluster whose nodes present certificates with the subject names: "CN = node1.example.com", "CN = node2.example.com" and "CN = node3.example.com" in a self-managed environment, you could update the trust settings with an additional direct trust relationship like this:
@@ -282,7 +285,7 @@ PUT /_cluster/settings
 }
 ```
 
-:::::{dropdown} **Stack Version above 6.7.0 and below 7.6.0**
+:::::{dropdown} Stack Version above 6.7.0 and below 7.6.0
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model.
 ::::

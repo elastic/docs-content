@@ -1,4 +1,7 @@
 ---
+applies:
+  hosted:
+  ece:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html
 ---
@@ -40,7 +43,7 @@ A deployment can be configured to trust all or specific deployments in a remote 
 
 Note that the environment ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
 
-::::{dropdown} **Using the API**
+::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
 In order to trust a deployment with cluster id `cf659f7fe6164d9691b284ae36811be1` (NOTE: use the {{es}} cluster ID, not the deployment ID) in an ECE environment with environment ID `1053523734`, you need to update the trust settings with an additional direct trust relationship like this:
@@ -109,8 +112,8 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 **The CA is public**
 
 ::::{dropdown}
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [Elastic Cloud console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
 
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
@@ -139,8 +142,8 @@ If you later need to update the remote connection with different permissions, yo
 **The CA is private**
 
 ::::{dropdown}
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [Elastic Cloud console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. On the home page, find your hosted deployment and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
 
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
@@ -198,13 +201,13 @@ On the local cluster, add the remote cluster using Kibana or the {{es}} API.
 3. Fill in the following fields:
 
     * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
-    * **Proxy address**: This value can be found on the **Security** page of the Elasticsearch Service deployment you want to use as a remote.<br>
+    * **Proxy address**: This value can be found on the **Security** page of the Elastic Cloud Hosted deployment you want to use as a remote.<br>
 
         ::::{tip}
         If you’re using API keys as security model, change the port into `9443`.
         ::::
 
-    * **Server name**: This value can be found on the **Security** page of the Elasticsearch Service deployment you want to use as a remote.
+    * **Server name**: This value can be found on the **Security** page of the Elastic Cloud Hosted deployment you want to use as a remote.
 
         :::{image} ../../images/cloud-ce-copy-remote-cluster-parameters.png
         :alt: Remote Cluster Parameters in Deployment
@@ -224,14 +227,14 @@ On the local cluster, add the remote cluster using Kibana or the {{es}} API.
 To configure a deployment as a remote cluster, use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html). Configure the following fields:
 
 * `mode`: `proxy`
-* `proxy_address`: This value can be found on the **Security** page of the Elasticsearch Service deployment you want to use as a remote. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9400` using a semicolon.
+* `proxy_address`: This value can be found on the **Security** page of the Elastic Cloud Hosted deployment you want to use as a remote. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9400` using a semicolon.
 
 ::::{tip}
 If you’re using API keys as security model, change the port into `9443`.
 ::::
 
 
-* `server_name`: This value can be found on the **Security** page of the Elasticsearch Service deployment you want to use as a remote. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
+* `server_name`: This value can be found on the **Security** page of the Elastic Cloud Hosted deployment you want to use as a remote. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
 
 This is an example of the API call to `_cluster/settings`:
 
@@ -252,7 +255,7 @@ PUT /_cluster/settings
 }
 ```
 
-:::::{dropdown} **Stack Version above 6.7.0 and below 7.6.0**
+:::::{dropdown} Stack Version above 6.7.0 and below 7.6.0
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model.
 ::::
@@ -287,7 +290,7 @@ This is an example of the API call to `_cluster/settings`:
 
 
 
-### Using the Elasticsearch Service RESTful API [ec_using_the_elasticsearch_service_restful_api_3]
+### Using the Elastic Cloud RESTful API [ec_using_the_elasticsearch_service_restful_api_3]
 
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model and when both clusters belong to the same organization (for other scenarios,the Elasticsearch API should be used instead):
@@ -314,7 +317,7 @@ curl -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $EC_AP
 `REF_ID_REMOTE`
 :   The unique ID of the {{es}} resources inside your remote deployment (you can obtain these values through the API).
 
-Note the following when using the Elasticsearch Service RESTful API:
+Note the following when using the Elastic Cloud RESTful API:
 
 1. A cluster alias must contain only letters, numbers, dashes (-), or underscores (_).
 2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#skip-unavailable-clusters).
@@ -327,7 +330,7 @@ curl -X GET -H "Authorization: ApiKey $EC_API_KEY" https://api.elastic-cloud.com
 ```
 
 ::::{note}
-The response will include just the remote clusters from the same organization in Elasticsearch Service. In order to obtain the whole list of remote clusters, use Kibana or the Elasticsearch API [Elasticsearch API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-remote-info.html) directly.
+The response will include just the remote clusters from the same Elastic Cloud organization. In order to obtain the whole list of remote clusters, use Kibana or the Elasticsearch API [Elasticsearch API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-remote-info.html) directly.
 ::::
 
 

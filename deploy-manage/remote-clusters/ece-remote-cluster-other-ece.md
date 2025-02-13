@@ -1,4 +1,6 @@
 ---
+applies:
+  ece:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-other-ece.html
 ---
@@ -48,7 +50,7 @@ Now, deployments in those environments will be able to configure trust with depl
 
 Note that the environment ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
 
-::::{dropdown} **Using the API**
+::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
 Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/Platform_-_Configuration_-_Trust_relationships.html). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/get-trust-relationships.html):
@@ -277,7 +279,7 @@ PUT /_cluster/settings
 }
 ```
 
-:::::{dropdown} **Stack Version above 6.7.0 and below 7.6.0**
+:::::{dropdown} Stack Version above 6.7.0 and below 7.6.0
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model.
 ::::

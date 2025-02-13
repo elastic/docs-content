@@ -1,9 +1,12 @@
 ---
+applies:
+  ece:
+  eck:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs-for-eck.html
 ---
 
-# Enabling CCS/R between Elastic Cloud Enterprise and ECK [ece-enable-ccs-for-eck]
+# Remote clusters between Elastic Cloud Enterprise and ECK [ece-enable-ccs-for-eck]
 
 These steps describe how to configure remote clusters between an {{es}} cluster in Elastic Cloud Enterprise and an {{es}} cluster running within [Elastic Cloud on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-overview.html). Once that’s done, you’ll be able to [run CCS queries from {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html) or [set up CCR](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html).
 

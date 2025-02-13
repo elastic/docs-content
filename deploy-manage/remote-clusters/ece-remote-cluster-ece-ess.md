@@ -1,9 +1,12 @@
 ---
+applies:
+  ece:
+  hosted:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-ece-ess.html
 ---
 
-# Access deployments of an Elasticsearch Service organization [ece-remote-cluster-ece-ess]
+# Access deployments of an Elastic Cloud organization [ece-remote-cluster-ece-ess]
 
 This section explains how to configure a deployment to connect remotely to clusters belonging to an {{ess}} organization.
 
@@ -37,7 +40,7 @@ A deployment can be configured to trust all or specific deployments from an orga
 
 Note that the organization ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
 
-::::{dropdown} **Using the API**
+::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
 In order to trust a deployment with cluster id `cf659f7fe6164d9691b284ae36811be1` (NOTE: use the {{es}} cluster ID, not the deployment ID) in an organization with organization ID `803289842`, you need to update the trust settings with an additional direct trust relationship like this:
@@ -199,7 +202,7 @@ PUT /_cluster/settings
 }
 ```
 
-:::::{dropdown} **Stack Version above 6.7.0 and below 7.6.0**
+:::::{dropdown} Stack Version above 6.7.0 and below 7.6.0
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model.
 ::::

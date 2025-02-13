@@ -1,4 +1,6 @@
 ---
+applies:
+  ece:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-same-ece.html
 ---
@@ -61,7 +63,7 @@ When trusting specific deployments, the more restrictive [CCS](https://www.elast
 
 1. Repeat these steps from each of the deployments you want to use for CCS or CCR. You will only be able to connect 2 deployments successfully when both of them trust each other.
 
-::::{dropdown} **Using the API**
+::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
 The current trust settings can be found in the path `.resources.elasticsearch[0].info.settings.trust` when calling:
@@ -229,7 +231,7 @@ PUT /_cluster/settings
 }
 ```
 
-:::::{dropdown} **Stack Version above 6.7.0 and below 7.6.0**
+:::::{dropdown} Stack Version above 6.7.0 and below 7.6.0
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model.
 ::::
