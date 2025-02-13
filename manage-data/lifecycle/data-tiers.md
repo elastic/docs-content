@@ -118,19 +118,38 @@ GET /_cat/indices/restored-*
 
 ##### Non-searchable snapshot data tier [ece-disable-non-searchable-snapshot-data-tier]
 
-Elastic Cloud Enterprise tries to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (e.g., hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
+{{ess}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (e.g., hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
 
-To learn more about ILM for Elastic Cloud Enterprise, or shard allocation filtering, check the following documentation:
+To learn more about ILM, or shard allocation filtering, check the following documentation:
 
-* [Configure index management](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html)
-* [Create your index lifecyle policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html)
-* [Managing the index lifecycle](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html)
-* [Shard allocation filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-filtering.html)
+* [Create your index lifecyle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
+* [Managing the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md)
+* [Shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md)
 
 To make sure that all data can be migrated from the data tier you want to disable, follow these steps:
 
 1. Determine which nodes will be removed from the cluster.
 
+    :::::{tab-set}
+
+    ::::{tab-item} {{ess}}
+
+    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    2. From the **Deployments** page, select your deployment.
+
+        On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+
+    3. Filter the list of instances by the Data tier you want to disable.
+
+        :::{image} ../../images/cloud-ec-ce-remove-tier-filter-instances.png
+        :alt: A screenshot showing a filtered instance list
+        :::
+
+        Note the listed instance IDs. In this example, it would be Instance 2 and Instance 3.
+
+    ::::
+
+    ::::{tab-item} Elastic Cloud Enterprise
     1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
     2. From the **Deployments** page, select your deployment.
 
@@ -143,6 +162,9 @@ To make sure that all data can be migrated from the data tier you want to disabl
         :::
 
         Note the listed instance IDs. In this example, it would be Instance 2 and Instance 3.
+    ::::
+
+    :::::
 
 2. Stop ILM.
 
