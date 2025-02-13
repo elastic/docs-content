@@ -12,7 +12,7 @@ mapped_pages:
 For a detailed description of available **configuration flags and methods**, refer to the [](./configure-eck.md).
 ::::
 
-By default, the ECK installation includes a **ConfigMap** where you can **add, remove, or update [configuration settings](./configure-eck.md)**. This ConfigMap is mounted into the operator’s container as `eck.yaml` file, and provided to the application through the `--config` flag.
+By default, the ECK installation includes a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) where you can add, remove, or update [configuration settings](./configure-eck.md). This ConfigMap is mounted into the operator’s container as an `eck.yaml` file, and provided to the application through the `--config` flag.
 
 To configure ECK **edit the `elastic-operator` ConfigMap** to change the operator configuration. The operator will restart automatically to apply the new changes unless the `--disable-config-watch` flag is set.
 
