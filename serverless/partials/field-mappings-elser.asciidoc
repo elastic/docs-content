@@ -1,5 +1,5 @@
 ELSER produces token-weight pairs as output from the input text and the query.
-The {{es}} {ref}/sparse-vector.html[`sparse_vector`] field type can store these
+The {es} {ref}/sparse-vector.html[`sparse_vector`] field type can store these
 token-weight pairs as numeric feature vectors. The index must have a field with
 the `sparse_vector` field type to index the tokens that ELSER generates.
 
