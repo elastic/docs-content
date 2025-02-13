@@ -4,11 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-explore-your-data.html
 ---
 
-# Explore
+# Explore [sec-explore-intro]
 
-% What needs to be done: Lift-and-shift
+The following section includes an overview of the **Hosts**, **Network**, and **Users** pages.
 
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/security-docs/security/sec-explore-intro.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-explore-your-data.md

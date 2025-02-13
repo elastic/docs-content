@@ -10,7 +10,7 @@ Dynamic templates allow you greater control over how {{es}} maps your data beyon
 * [`match_mapping_type` and `unmatch_mapping_type`](#match-mapping-type) operate on the data type that {{es}} detects
 * [`match` and `unmatch`](#match-unmatch) use a pattern to match on the field name
 * [`path_match` and `path_unmatch`](#path-match-unmatch) operate on the full dotted path to the field
-* If a dynamic template doesn’t define `match_mapping_type`, `match`, or `path_match`, it won’t match any field. You can still refer to the template by name in `dynamic_templates` section of a [bulk request](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html#bulk).
+* If a dynamic template doesn’t define `match_mapping_type`, `match`, or `path_match`, it won’t match any field. You can still refer to the template by name in `dynamic_templates` section of a [bulk request](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
 
 Use the `{{name}}` and `{{dynamic_type}}` [template variables](#template-variables) in the mapping specification as placeholders.
 
@@ -45,7 +45,7 @@ If a provided mapping contains an invalid mapping snippet, a validation error is
 * If no `match_mapping_type` has been specified but the template is valid for at least one predefined mapping type, the mapping snippet is considered valid. However, a validation error is returned at index time if a field matching the template is indexed as a different type. For example, configuring a dynamic template with no `match_mapping_type` is considered valid as string type, but if a field matching the dynamic template is indexed as a long, a validation error is returned at index time. It is recommended to configure the `match_mapping_type` to the expected JSON type or configure the desired `type` in the mapping snippet.
 * If the `{{name}}` placeholder is used in the mapping snippet, validation is skipped when updating the dynamic template. This is because the field name is unknown at that time. Instead, validation occurs when the template is applied at index time.
 
-Templates are processed in order — the first matching template wins. When putting new dynamic templates through the [update mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) API, all existing templates are overwritten. This allows for dynamic templates to be reordered or deleted after they were initially added.
+Templates are processed in order — the first matching template wins. When putting new dynamic templates through the [update mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) API, all existing templates are overwritten. This allows for dynamic templates to be reordered or deleted after they were initially added.
 
 
 ## Mapping runtime fields in a dynamic template [dynamic-mapping-runtime-fields]

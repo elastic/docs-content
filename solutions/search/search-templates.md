@@ -17,9 +17,9 @@ If you use {{es}} for a custom application, search templates let you change your
 
 ### Create a search template [create-search-template] 
 
-To create or update a search template, use the [create stored script API](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-stored-script-api.html).
+To create or update a search template, use the [create stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-put-script).
 
-The request’s `source` supports the same parameters as the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-search-api-request-body)'s request body.`source` also accepts [Mustache](https://mustache.github.io/) variables, from an open source project [mustache.java](https://github.com/spullara/mustache.java).
+The request’s `source` supports the same parameters as the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s request body.`source` also accepts [Mustache](https://mustache.github.io/) variables, from an open source project [mustache.java](https://github.com/spullara/mustache.java).
 
 Typically [Mustache](https://mustache.github.io/) variables are enclosed in double curly brackets: `{{my-var}}`. When you run a templated search, {{es}} replaces these variables with values from `params`. To learn more about mustache syntax - see [Mustache.js manual](http://mustache.github.io/mustache.5.md) Search templates must use a `lang` of `mustache`.
 
@@ -49,7 +49,7 @@ PUT _scripts/my-search-template
 ### Validate a search template [validate-search-template] 
 
 $$$_validating_templates$$$
-To test a template with different `params`, use the [render search template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html).
+To test a template with different `params`, use the [render search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-render-search-template).
 
 ```console
 POST _render/template
@@ -63,7 +63,7 @@ POST _render/template
 }
 ```
 
-When rendered, the template outputs a [search request body](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-search-api-request-body).
+When rendered, the template outputs a [search request body](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search).
 
 ```console-result
 {
@@ -104,7 +104,7 @@ POST _render/template
 
 ### Run a templated search [run-templated-search] 
 
-To run a search with a search template, use the [search template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template-api.html). You can specify different `params` with each request.
+To run a search with a search template, use the [search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-template). You can specify different `params` with each request.
 
 ```console
 GET my-index/_search/template
@@ -118,7 +118,7 @@ GET my-index/_search/template
 }
 ```
 
-The response uses the same properties as the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s response.
+The response uses the same properties as the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s response.
 
 ```console-result
 {
@@ -153,7 +153,7 @@ The response uses the same properties as the [search API](https://www.elastic.co
 
 ### Run multiple templated searches [run-multiple-templated-searches] 
 
-To run multiple templated searches with a single request, use the [multi search template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-search-template.html). These requests often have less overhead and faster speeds than multiple individual searches.
+To run multiple templated searches with a single request, use the [multi search template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template). These requests often have less overhead and faster speeds than multiple individual searches.
 
 ```console
 GET my-index/_msearch/template
@@ -166,13 +166,13 @@ GET my-index/_msearch/template
 
 ### Get search templates [get-search-templates] 
 
-To retrieve a search template, use the [get stored script API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-stored-script-api.html).
+To retrieve a search template, use the [get stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get-script).
 
 ```console
 GET _scripts/my-search-template
 ```
 
-To get a list of all search templates and other stored scripts, use the [cluster state API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state.html).
+To get a list of all search templates and other stored scripts, use the [cluster state API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state).
 
 ```console
 GET _cluster/state/metadata?pretty&filter_path=metadata.stored_scripts
@@ -181,7 +181,7 @@ GET _cluster/state/metadata?pretty&filter_path=metadata.stored_scripts
 
 ### Delete a search template [delete-search-template] 
 
-To delete a search template, use the [delete stored script API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-stored-script-api.html).
+To delete a search template, use the [delete stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-script).
 
 ```console
 DELETE _scripts/my-search-template

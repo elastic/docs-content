@@ -23,7 +23,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 ## Monitor rebalancing [fix-watermark-errors-rebalance]
 
-To verify that shards are moving off the affected node until it falls below high watermark., use the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html) and [cat recovery API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-recovery.html):
+To verify that shards are moving off the affected node until it falls below high watermark., use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards) and [cat recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery):
 
 ```console
 GET _cat/shards?v=true
@@ -31,7 +31,7 @@ GET _cat/shards?v=true
 GET _cat/recovery?v=true&active_only=true
 ```
 
-If shards remain on the node keeping it about high watermark, use the [cluster allocation explanation API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html) to get an explanation for their allocation status.
+If shards remain on the node keeping it about high watermark, use the [cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) to get an explanation for their allocation status.
 
 ```console
 GET _cluster/allocation/explain
@@ -93,11 +93,11 @@ To resolve watermark errors permanently, perform one of the following actions:
 
 * Horizontally scale nodes of the affected [data tiers](../../manage-data/lifecycle/data-tiers.md).
 * Vertically scale existing nodes to increase disk space.
-* Delete indices using the [delete index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html), either permanently if the index isn’t needed, or temporarily to later [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
+* Delete indices using the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete), either permanently if the index isn’t needed, or temporarily to later [restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
 * update related [ILM policy](../../manage-data/lifecycle/index-lifecycle-management.md) to push indices through to later [data tiers](../../manage-data/lifecycle/data-tiers.md)
 
 ::::{tip}
-On {{ess}} and {{ece}}, indices may need to be temporarily deleted via its [Elasticsearch API Console](https://www.elastic.co/guide/en/cloud/current/ec-api-console.html) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) in order to resolve [cluster health](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) `status:red` which will block [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow on {{ess}}, kindly reach out to [Elastic Support](https://support.elastic.co) for assistance.
+On {{ess}} and {{ece}}, indices may need to be temporarily deleted via its [Elasticsearch API Console](https://www.elastic.co/guide/en/cloud/current/ec-api-console.html) to later [snapshot restore](../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) in order to resolve [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) `status:red` which will block [attempted changes](../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md). If you experience issues with this resolution flow on {{ess}}, kindly reach out to [Elastic Support](https://support.elastic.co) for assistance.
 ::::
 
 

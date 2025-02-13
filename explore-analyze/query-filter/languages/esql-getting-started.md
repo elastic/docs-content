@@ -74,7 +74,7 @@ In {{kib}}, you can use Console or Discover to run {{esql}} queries:
 ::::::{tab-item} Console
 To get started with {{esql}} in Console, open the main menu and select **Dev Tools**.
 
-The general structure of an [{{esql}} query API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-query-api.html) request is:
+The general structure of an [{{esql}} query API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-esql) request is:
 
 ```txt
 POST /_query?format=txt
