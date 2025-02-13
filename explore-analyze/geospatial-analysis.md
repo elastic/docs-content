@@ -48,7 +48,7 @@ Data is often messy and incomplete. [Ingest pipelines](../manage-data/ingest/tra
 
 ## Aggregate [geospatial-aggregate]
 
-[Aggregations](aggregations.md) summarizes your data as metrics, statistics, or other analytics. Use [bucket aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html) to group documents into buckets, also called bins, based on field values, ranges, or other criteria. Then, use [metric aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html) to calculate metrics, such as a sum or average, from field values in each bucket. Compare metrics across buckets to gain insights from your data.
+[Aggregations](query-filter/aggregations.md) summarizes your data as metrics, statistics, or other analytics. Use [bucket aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html) to group documents into buckets, also called bins, based on field values, ranges, or other criteria. Then, use [metric aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html) to calculate metrics, such as a sum or average, from field values in each bucket. Compare metrics across buckets to gain insights from your data.
 
 Geospatial bucket aggregations:
 
@@ -68,7 +68,7 @@ Combine aggregations to perform complex geospatial analysis. For example, to cal
 
 ## Integrate [geospatial-integrate]
 
-Use [vector tile search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-vector-tile-api.html) to consume {{es}} geo data within existing GIS infrastructure.
+Use [vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) to consume {{es}} geo data within existing GIS infrastructure.
 
 
 ## Visualize [geospatial-visualize]

@@ -98,7 +98,7 @@ Use any of the following repository types with searchable snapshots:
 * [Shared filesystems](../deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) such as NFS
 * [Read-only HTTP and HTTPS repositories](../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md)
 
-You can also use alternative implementations of these repository types, for instance [MinIO](../deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-client), as long as they are fully compatible. Use the [Repository analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html) API to analyze your repository’s suitability for use with searchable snapshots.
+You can also use alternative implementations of these repository types, for instance [MinIO](../deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-client), as long as they are fully compatible. Use the [Repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) API to analyze your repository’s suitability for use with searchable snapshots.
 ::::::
 
 :::::::
@@ -127,7 +127,7 @@ You can customize these policies based on your performance, resilience, and rete
 
 To edit a policy in {{kib}}, open the main menu and go to **Stack Management > Index Lifecycle Policies**. Click the policy you’d like to edit.
 
-You can also use the [update lifecycle policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html).
+You can also use the [update lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle).
 
 ```console
 PUT _ilm/policy/logs
@@ -183,7 +183,7 @@ PUT _ilm/policy/logs
 ::::::{tab-item} Custom application
 To create a policy in {{kib}}, open the main menu and go to **Stack Management > Index Lifecycle Policies**. Click **Create policy**.
 
-You can also use the [update lifecycle policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html).
+You can also use the [update lifecycle policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle).
 
 ```console
 PUT _ilm/policy/my-lifecycle-policy
@@ -262,7 +262,7 @@ If you’re unsure how to map your fields, use [runtime fields](data-store/mappi
 
 To create a component template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create component template**.
 
-You can also use the [create component template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html).
+You can also use the [create component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
 
 ```console
 # Creates a component template for mappings
@@ -314,7 +314,7 @@ Use your component templates to create an index template. Specify:
 
 To create an index template in {{kib}}, open the main menu and go to **Stack Management > Index Management**. In the **Index Templates** view, click **Create template**.
 
-You can also use the [create index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html). Include the `data_stream` object to enable data streams.
+You can also use the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template). Include the `data_stream` object to enable data streams.
 
 ```console
 PUT _index_template/my-index-template
@@ -358,7 +358,7 @@ To explore and search your data in {{kib}}, open the main menu and select **Disc
 
 Use {{kib}}'s **Dashboard** feature to visualize your data in a chart, table, map, and more. See {{kib}}'s [Dashboard documentation](../explore-analyze/dashboards.md).
 
-You can also search and aggregate your data using the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html). Use [runtime fields](data-store/mapping/define-runtime-fields-in-search-request.md) and [grok patterns](../explore-analyze/scripting/grok.md) to dynamically extract data from log messages and other unstructured content at search time.
+You can also search and aggregate your data using the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search). Use [runtime fields](data-store/mapping/define-runtime-fields-in-search-request.md) and [grok patterns](../explore-analyze/scripting/grok.md) to dynamically extract data from log messages and other unstructured content at search time.
 
 ```console
 GET my-data-stream/_search
@@ -409,7 +409,7 @@ GET my-data-stream/_search
 }
 ```
 
-{{es}} searches are synchronous by default. Searches across frozen data, long time ranges, or large datasets may take longer. Use the [async search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html#submit-async-search) to run searches in the background. For more search options, see [*The search API*](../solutions/search/querying-for-search.md).
+{{es}} searches are synchronous by default. Searches across frozen data, long time ranges, or large datasets may take longer. Use the [async search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) to run searches in the background. For more search options, see [*The search API*](../solutions/search/querying-for-search.md).
 
 ```console
 POST my-data-stream/_async_search

@@ -23,7 +23,7 @@ This feature is not available at all Elastic subscription levels. Refer to the E
 
 ### ELSER text expansion [ingest-pipeline-search-inference-elser]
 
-Using Elastic’s [ELSER machine learning model](../nlp/ml-nlp-elser.md) you can easily incorporate text expansion for your queries. This works by using ELSER to provide semantic enrichments to your documents upon ingestion, combined with the power of [Elastic Search Application templates](../../../solutions/search/applications.md) to provide automated text expansion at query time.
+Using Elastic’s [ELSER machine learning model](../nlp/ml-nlp-elser.md) you can easily incorporate text expansion for your queries. This works by using ELSER to provide semantic enrichments to your documents upon ingestion, combined with the power of [Elastic Search Application templates](../../../solutions/search/search-applications.md) to provide automated text expansion at query time.
 
 ### Named entity recognition (NER) [ingest-pipeline-search-inference-ner]
 
@@ -104,7 +104,7 @@ Here, you’ll be able to:
 
 Inference processors added to your index-specific ML {{infer}} pipelines are normal Elasticsearch pipelines. Once created, each processor will have options to **View in Stack Management** and **Delete Pipeline**. Deleting an {{infer}} processor from within the **Content** UI deletes the pipeline and also removes its reference from your index-specific ML {{infer}} pipeline.
 
-These pipelines can also be viewed, edited, and deleted in Kibana via **Stack Management → Ingest Pipelines**, just like all other Elasticsearch ingest pipelines. You may also use the [Ingest pipeline APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-apis.html). If you delete any of these pipelines outside of the **Content** UI in Kibana, make sure to edit the ML {{infer}} pipelines that reference them.
+These pipelines can also be viewed, edited, and deleted in Kibana via **Stack Management → Ingest Pipelines**, just like all other Elasticsearch ingest pipelines. You may also use the [Ingest pipeline APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest). If you delete any of these pipelines outside of the **Content** UI in Kibana, make sure to edit the ML {{infer}} pipelines that reference them.
 
 ## Test your ML {{infer}} pipeline [ingest-pipeline-search-inference-test-inference-pipeline]
 

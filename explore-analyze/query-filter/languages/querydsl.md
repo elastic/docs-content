@@ -48,7 +48,7 @@ You can also filter data using Query DSL. Filters enable you to include or exclu
 
 ### Analyze with Query DSL [search-analyze-data-query-dsl]
 
-[Aggregations](/explore-analyze/aggregations.md) are the primary tool for analyzing {{es}} data using Query DSL. Aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends.
+[Aggregations](../aggregations.md) are the primary tool for analyzing {{es}} data using Query DSL. Aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends.
 
 Because aggregations leverage the same data structures used for search, they are also very fast. This enables you to analyze and visualize your data in real time. You can search documents, filter results, and perform analytics at the same time, on the same data, in a single request. That means aggregations are calculated in the context of the search query.
 
@@ -58,7 +58,7 @@ The following aggregation types are available:
 * [Bucket](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html): Group documents into buckets based on field values, ranges, or other criteria.
 * [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html): Run aggregations on the results of other aggregations.
 
-Run aggregations by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. Learn more in [Run an aggregation](/explore-analyze/aggregations.md#run-an-agg).
+Run aggregations by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. Learn more in [Run an aggregation](/explore-analyze/query-filter/aggregations.md#run-an-agg).
 
 
 ## How does it work? [query-dsl]
@@ -103,14 +103,14 @@ The execution of such queries can be prevented by setting the value of the `sear
 
 By default, Elasticsearch sorts matching search results by **relevance score**, which measures how well each document matches a query.
 
-The relevance score is a positive floating point number, returned in the `_score` metadata field of the [search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) API. The higher the `_score`, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether the query clause is run in a **query** or **filter** context.
+The relevance score is a positive floating point number, returned in the `_score` metadata field of the [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) API. The higher the `_score`, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether the query clause is run in a **query** or **filter** context.
 
 
 ### Query context [query-context]
 
 In the query context, a query clause answers the question *How well does this document match this query clause?* Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the `_score` metadata field.
 
-Query context is in effect whenever a query clause is passed to a `query` parameter, such as the `query` parameter in the [search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#request-body-search-query) API.
+Query context is in effect whenever a query clause is passed to a `query` parameter, such as the `query` parameter in the [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#request-body-search-query) API.
 
 
 ### Filter context [filter-context]

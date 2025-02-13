@@ -180,7 +180,7 @@ POST metrics-weather_sensors-dev/_doc
 }
 ```
 
-You can also manually create the TSDS using the [create data stream API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html). The TSDS’s name must still match one of your template’s index patterns.
+You can also manually create the TSDS using the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream). The TSDS’s name must still match one of your template’s index patterns.
 
 ```console
 PUT _data_stream/metrics-weather_sensors-dev
@@ -201,7 +201,7 @@ You can also use the above steps to convert an existing regular data stream to a
 * Edit your existing index lifecycle policy, component templates, and index templates instead of creating new ones.
 * Instead of creating the TSDS, manually roll over its write index. This ensures the current write index and any new backing indices have an [`index.mode` of `time_series`](time-series-data-stream-tsds.md#time-series-mode).
 
-    You can manually roll over the write index using the [rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html).
+    You can manually roll over the write index using the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover).
 
     ```console
     POST metrics-weather_sensors-dev/_rollover
@@ -222,5 +222,5 @@ Now that you’ve set up your TSDS, you can manage and use it like a regular dat
 
 * [*Use a data stream*](use-data-stream.md)
 * [Change mappings and settings for a data stream](modify-data-stream.md#data-streams-change-mappings-and-settings)
-* [data stream APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-apis.html)
+* [data stream APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream)
 

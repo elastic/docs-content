@@ -37,13 +37,13 @@ To get started:
     ```
 
 2. Download [`normalized-T1117-AtomicRed-regsvr32.json`](https://raw.githubusercontent.com/elastic/elasticsearch/master/docs/src/yamlRestTest/resources/normalized-T1117-AtomicRed-regsvr32.json).
-3. Use the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index the data to a matching stream:
+3. Use the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index the data to a matching stream:
 
     ```sh
     curl -H "Content-Type: application/json" -XPOST "localhost:9200/my-data-stream/_bulk?pretty&refresh" --data-binary "@normalized-T1117-AtomicRed-regsvr32.json"
     ```
 
-4. Use the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html) to verify the data was indexed:
+4. Use the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) to verify the data was indexed:
 
     ```console
     GET /_cat/indices/my-data-stream?v=true&h=health,status,index,docs.count

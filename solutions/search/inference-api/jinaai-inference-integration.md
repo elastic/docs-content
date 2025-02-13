@@ -2,9 +2,17 @@
 navigation_title: "JinaAI"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-service-jinaai.html
+applies:
+  stack:
+  serverless:
 ---
 
 # JinaAI inference integration [infer-service-jinaai]
+
+::::{admonition} New API reference
+For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
+
+::::
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `jinaai` service.
 

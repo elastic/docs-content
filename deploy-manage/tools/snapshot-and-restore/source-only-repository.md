@@ -9,7 +9,7 @@ You can use a source-only repository to take minimal, source-only snapshots that
 
 Unlike other repository types, a source-only repository doesn’t directly store snapshots. It delegates storage to another registered snapshot repository.
 
-When you take a snapshot using a source-only repository, {{es}} creates a source-only snapshot in the delegated storage repository. This snapshot only contains stored fields and metadata. It doesn’t include index or doc values structures and isn’t immediately searchable when restored. To search the restored data, you first have to [reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) it into a new data stream or index.
+When you take a snapshot using a source-only repository, {{es}} creates a source-only snapshot in the delegated storage repository. This snapshot only contains stored fields and metadata. It doesn’t include index or doc values structures and isn’t immediately searchable when restored. To search the restored data, you first have to [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) it into a new data stream or index.
 
 ::::{important} 
 Source-only snapshots are only supported if the `_source` field is enabled and no source-filtering is applied. As a result, indices adopting synthetic source cannot be restored. When you restore a source-only snapshot:
@@ -17,12 +17,12 @@ Source-only snapshots are only supported if the `_source` field is enabled and n
 * The restored index is read-only and can only serve `match_all` search or scroll requests to enable reindexing.
 * Queries other than `match_all` and `_get` requests are not supported.
 * The mapping of the restored index is empty, but the original mapping is available from the types top level `meta` element.
-* Information such as document count, deleted document count and store size are not available for such indices since these indices do not contain the relevant data structures to retrieve this information from. Therefore, this information is not shown for such indices in APIs such as the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html).
+* Information such as document count, deleted document count and store size are not available for such indices since these indices do not contain the relevant data structures to retrieve this information from. Therefore, this information is not shown for such indices in APIs such as the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices).
 
 ::::
 
 
-Before registering a source-only repository, use {{kib}} or the [create snapshot repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html) to register a snapshot repository of another type to use for storage. Then register the source-only repository and specify the delegated storage repository in the request.
+Before registering a source-only repository, use {{kib}} or the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository) to register a snapshot repository of another type to use for storage. Then register the source-only repository and specify the delegated storage repository in the request.
 
 ```console
 PUT _snapshot/my_src_only_repository
@@ -44,7 +44,7 @@ PUT _snapshot/my_src_only_repository
 :   (Optional, Boolean) If `true`, metadata files, such as index mappings and settings, are compressed in snapshots. Data files are not compressed. Defaults to `true`.
 
 `delegate_type`
-:   (Optional, string) Delegated repository type. For valid values, see the [`type` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html#put-snapshot-repo-api-request-type).
+:   (Optional, string) Delegated repository type. For valid values, see the [`type` parameter](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository#put-snapshot-repo-api-request-type).
 
     `source` repositories can use `settings` properties for its delegated repository type. See [Source-only repository]().
 

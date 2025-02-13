@@ -21,10 +21,9 @@ An aggregation summarizes your data as metrics, statistics, or other analytics. 
 * [Bucket](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html) aggregations that group documents into buckets, also called bins, based on field values, ranges, or other criteria.
 * [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html) aggregations that take input from other aggregations instead of documents or fields.
 
+## Run an aggregation [run-an-agg]
 
-## Run an aggregation [run-an-agg] 
-
-You can run aggregations as part of a [search](../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. The following search runs a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) on `my-field`:
+You can run aggregations as part of a [search](../../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. The following search runs a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) on `my-field`:
 
 ```console
 GET /my-index-000001/_search
@@ -71,9 +70,7 @@ Aggregation results are in the response’s `aggregations` object:
 
 1. Results for the `my-agg-name` aggregation.
 
-
-
-## Change an aggregation’s scope [change-agg-scope] 
+## Change an aggregation’s scope [change-agg-scope]
 
 Use the `query` parameter to limit the documents on which an aggregation runs:
 
@@ -98,8 +95,7 @@ GET /my-index-000001/_search
 }
 ```
 
-
-## Return only aggregation results [return-only-agg-results] 
+## Return only aggregation results [return-only-agg-results]
 
 By default, searches containing an aggregation return both search hits and aggregation results. To return only aggregation results, set `size` to `0`:
 
@@ -117,8 +113,7 @@ GET /my-index-000001/_search
 }
 ```
 
-
-## Run multiple aggregations [run-multiple-aggs] 
+## Run multiple aggregations [run-multiple-aggs]
 
 You can specify multiple aggregations in the same request:
 
@@ -140,8 +135,7 @@ GET /my-index-000001/_search
 }
 ```
 
-
-## Run sub-aggregations [run-sub-aggs] 
+## Run sub-aggregations [run-sub-aggs]
 
 Bucket aggregations support bucket or metric sub-aggregations. For example, a terms aggregation with an [avg](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-avg-aggregation.html) sub-aggregation calculates an average value for each bucket of documents. There is no level or depth limit for nesting sub-aggregations.
 
@@ -191,9 +185,7 @@ The response nests sub-aggregation results under their parent aggregation:
 1. Results for the parent aggregation, `my-agg-name`.
 2. Results for `my-agg-name`'s sub-aggregation, `my-sub-agg-name`.
 
-
-
-## Add custom metadata [add-metadata-to-an-agg] 
+## Add custom metadata [add-metadata-to-an-agg]
 
 Use the `meta` object to associate custom metadata with an aggregation:
 
@@ -231,8 +223,7 @@ The response returns the `meta` object in place:
 }
 ```
 
-
-## Return the aggregation type [return-agg-type] 
+## Return the aggregation type [return-agg-type]
 
 By default, aggregation results include the aggregation’s name but not its type. To return the aggregation type, use the `typed_keys` query parameter.
 
@@ -252,10 +243,9 @@ GET /my-index-000001/_search?typed_keys
 
 The response returns the aggregation type as a prefix to the aggregation’s name.
 
-::::{important} 
+::::{important}
 Some aggregations return a different aggregation type from the type in the request. For example, the terms, [significant terms](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-significantterms-aggregation.html), and [percentiles](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html) aggregations return different aggregations types depending on the data type of the aggregated field.
 ::::
-
 
 ```console-result
 {
@@ -270,11 +260,9 @@ Some aggregations return a different aggregation type from the type in the reque
 
 1. The aggregation type, `histogram`, followed by a `#` separator and the aggregation’s name, `my-agg-name`.
 
+## Use scripts in an aggregation [use-scripts-in-an-agg]
 
-
-## Use scripts in an aggregation [use-scripts-in-an-agg] 
-
-When a field doesn’t exactly match the aggregation you need, you should aggregate on a [runtime field](../manage-data/data-store/mapping/runtime-fields.md):
+When a field doesn’t exactly match the aggregation you need, you should aggregate on a [runtime field](../../manage-data/data-store/mapping/runtime-fields.md):
 
 ```console
 GET /my-index-000001/_search?size=0
@@ -298,15 +286,12 @@ GET /my-index-000001/_search?size=0
 
 Scripts calculate field values dynamically, which adds a little overhead to the aggregation. In addition to the time spent calculating, some aggregations like [`terms`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) and [`filters`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filters-aggregation.html) can’t use some of their optimizations with runtime fields. In total, performance costs for using a runtime field varies from aggregation to aggregation.
 
-
-## Aggregation caches [agg-caches] 
+## Aggregation caches [agg-caches]
 
 For faster responses, {{es}} caches the results of frequently run aggregations in the [shard request cache](https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache.html). To get cached results, use the same [`preference` string](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-shard-routing.html#shard-and-node-preference) for each search. If you don’t need search hits, [set `size` to `0`](#return-only-agg-results) to avoid filling the cache.
 
 {{es}} routes searches with the same preference string to the same shards. If the shards' data doesn’t change between searches, the shards return cached aggregation results.
 
-
-## Limits for `long` values [limits-for-long-values] 
+## Limits for `long` values [limits-for-long-values]
 
 When running aggregations, {{es}} uses [`double`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html) values to hold and represent numeric data. As a result, aggregations on [`long`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html) numbers greater than `253` are approximate.
-

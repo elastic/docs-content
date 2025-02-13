@@ -13,7 +13,7 @@ This section lists the privileges that you can assign to a role.
 :   All cluster administration operations, like snapshotting, node shutdown/restart, settings update, rerouting, or managing users and roles.
 
 `cancel_task`
-:   Privileges to cancel tasks and delete async searches. See [delete async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html#delete-async-search) API for more informations.
+:   Privileges to cancel tasks and delete async searches. See [delete async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) API for more informations.
 
 `create_snapshot`
 :   Privileges to create snapshots for existing repositories. Can also list and view details on existing repositories and snapshots.
@@ -27,7 +27,7 @@ This section lists the privileges that you can assign to a role.
     This privilege is not available in {{serverless-full}}.
 
     ::::{note}
-    This privilege should *not* be directly granted. It is used internally by [Create Cross-Cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) and [Update Cross-Cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-cross-cluster-api-key.html) to manage cross-cluster API keys.
+    This privilege should *not* be directly granted. It is used internally by [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) and [Update Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-cross-cluster-api-key) to manage cross-cluster API keys.
     ::::
 
 
@@ -37,7 +37,7 @@ This section lists the privileges that you can assign to a role.
     This privilege is not available in {{serverless-full}}.
 
     ::::{note}
-    This privilege should *not* be directly granted. It is used internally by [Create Cross-Cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) and [Update Cross-Cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-cross-cluster-api-key.html) to manage cross-cluster API keys.
+    This privilege should *not* be directly granted. It is used internally by [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) and [Update Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-cross-cluster-api-key) to manage cross-cluster API keys.
     ::::
 
 
@@ -51,7 +51,7 @@ This section lists the privileges that you can assign to a role.
 :   Builds on `monitor` and adds cluster operations that change values in the cluster. This includes snapshotting, updating settings, and rerouting. It also includes obtaining snapshot and restore status. This privilege does not include the ability to manage security.
 
 `manage_api_key`
-:   All security-related operations on {{es}} REST API keys including [creating new API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html), [retrieving information about API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html), [querying API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html), [updating API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html), [bulk updating API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-bulk-update-api-keys.html), and [invalidating API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html).
+:   All security-related operations on {{es}} REST API keys including [creating new API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key), [retrieving information about API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-api-key), [querying API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-query-api-keys), [updating API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-api-key), [bulk updating API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-bulk-update-api-keys), and [invalidating API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key).
 
     ::::{note}
     * When you create new API keys, they will always be owned by the authenticated user.
@@ -111,13 +111,13 @@ This section lists the privileges that you can assign to a role.
 
 
 `manage_oidc`
-:   Enables the use of {{es}} APIs ([OpenID connect prepare authentication](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-oidc-prepare-authentication.html), [OpenID connect authenticate](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-oidc-authenticate.html), and [OpenID connect logout](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-oidc-logout.html)) to initiate and manage OpenID Connect authentication on behalf of other users.
+:   Enables the use of {{es}} APIs ([OpenID connect prepare authentication](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-prepare-authentication), [OpenID connect authenticate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-authenticate), and [OpenID connect logout](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-logout)) to initiate and manage OpenID Connect authentication on behalf of other users.
 
     This privilege is not available in {{serverless-full}}.
 
 
 `manage_own_api_key`
-:   All security-related operations on {{es}} API keys that are owned by the current authenticated user. The operations include [creating new API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html), [retrieving information about API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html), [querying API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html), [updating API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html), [bulk updating API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-bulk-update-api-keys.html), and [invalidating API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-invalidate-api-key.html).
+:   All security-related operations on {{es}} API keys that are owned by the current authenticated user. The operations include [creating new API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key), [retrieving information about API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-api-key), [querying API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-query-api-keys), [updating API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-api-key), [bulk updating API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-bulk-update-api-keys), and [invalidating API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key).
 
 `manage_pipeline`
 :   All operations on ingest pipelines.
@@ -135,19 +135,19 @@ This section lists the privileges that you can assign to a role.
 
 
 `manage_search_application`
-:   All CRUD operations on [search applications](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-apis.html).
+:   All CRUD operations on [search applications](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search_application).
 
 `manage_search_query_rules`
-:   All CRUD operations on [query rules](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-rules-apis.html).
+:   All CRUD operations on [query rules](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-query_rules).
 
 `manage_search_synonyms`
-:   All synonyms management operations on [Synonyms APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/synonyms-apis.html).
+:   All synonyms management operations on [Synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms).
 
 `manage_security`
 :   All security-related operations such as CRUD operations on users and roles and cache clearing.
 
 `manage_service_account`
-:   All security-related operations on {{es}} service accounts including [Get service accounts](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-service-accounts.html), [Create service account tokens](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-service-token.html), [Delete service account token](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-service-token.html), and [Get service account credentials](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-service-credentials.html).
+:   All security-related operations on {{es}} service accounts including [Get service accounts](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-accounts), [Create service account tokens](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token), [Delete service account token](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-service-token), and [Get service account credentials](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-credentials).
 
     This privilege is not available in {{serverless-full}}.
 
@@ -157,7 +157,7 @@ This section lists the privileges that you can assign to a role.
 
     This privilege is not available in {{serverless-full}}.
 
-    [8.15] Also grants the permission to start and stop {{Ilm}}, using the [ILM start](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html) and [ILM stop](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-stop.html) APIs. In a future major release, this privilege will not grant any {{Ilm}} permissions.
+    [8.15] Also grants the permission to start and stop {{Ilm}}, using the [ILM start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) and [ILM stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) APIs. In a future major release, this privilege will not grant any {{Ilm}} permissions.
 
 
 `manage_token`
@@ -213,7 +213,7 @@ This section lists the privileges that you can assign to a role.
 
 
 `monitor_text_structure`
-:   All read-only operations related to the [find structure API](https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html).
+:   All read-only operations related to the [find structure API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-structure).
 
     This privilege is not available in {{serverless-full}}.
 
@@ -247,11 +247,11 @@ This section lists the privileges that you can assign to a role.
 
     This privilege is not available in {{serverless-full}}.
 
-    [8.15] Also grants the permission to get the {{Ilm}} status, using the [ILM get status API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-get-status.html). In a future major release, this privilege will not grant any {{Ilm}} permissions.
+    [8.15] Also grants the permission to get the {{Ilm}} status, using the [ILM get status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-get-status). In a future major release, this privilege will not grant any {{Ilm}} permissions.
 
 
 `read_security`
-:   All read-only security-related operations, such as getting users, user profiles, {{es}} API keys, {{es}} service accounts, roles and role mappings. Allows [querying](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html) and [retrieving information](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-api-key.html) on all {{es}} API keys.
+:   All read-only security-related operations, such as getting users, user profiles, {{es}} API keys, {{es}} service accounts, roles and role mappings. Allows [querying](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-query-api-keys) and [retrieving information](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-api-key) on all {{es}} API keys.
 
 `transport_client`
 :   All privileges necessary for a transport client to connect. Required by the remote cluster to enable [{{ccs}}](../../remote-clusters.md).
@@ -266,12 +266,12 @@ This section lists the privileges that you can assign to a role.
 :   Any action on an index or data stream.
 
 `auto_configure`
-:   Permits auto-creation of indices and data streams. An auto-create action is the result of an [index](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html) or [bulk](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) request that targets a non-existent index or data stream rather than an explicit [create index](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html) or [create data stream](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html) request. Also permits auto-update of mappings on indices and data streams if they do not contradict existing mappings. An auto-update mapping action is the result of an index or bulk request on an index or data stream that contains new fields that may be mapped rather than an explicit [update mapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) request.
+:   Permits auto-creation of indices and data streams. An auto-create action is the result of an [index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) or [bulk](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) request that targets a non-existent index or data stream rather than an explicit [create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) or [create data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream) request. Also permits auto-update of mappings on indices and data streams if they do not contradict existing mappings. An auto-update mapping action is the result of an index or bulk request on an index or data stream that contains new fields that may be mapped rather than an explicit [update mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) request.
 
 `create`
 :   Privilege to index documents.
 
-    [8.0] Also grants the permission to update the index mapping (but not the data streams mapping), using the [updating mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) or by relying on [dynamic field mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md). In a future major release, this privilege will not grant any mapping update permissions.
+    [8.0] Also grants the permission to update the index mapping (but not the data streams mapping), using the [updating mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) or by relying on [dynamic field mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md). In a future major release, this privilege will not grant any mapping update permissions.
 
     ::::{note}
     This privilege does not restrict the index operation to the creation of documents but instead restricts API use to the index API. The index API allows a user to overwrite a previously indexed document. See the `create_doc` privilege for an alternative.
@@ -281,10 +281,10 @@ This section lists the privileges that you can assign to a role.
 `create_doc`
 :   Privilege to index documents. It does not grant the permission to update or overwrite existing documents.
 
-    [8.0] Also grants the permission to update the index mapping (but not the data streams mapping), using the [updating mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) or by relying on [dynamic field mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md). In a future major release, this privilege will not grant any mapping update permissions.
+    [8.0] Also grants the permission to update the index mapping (but not the data streams mapping), using the [updating mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) or by relying on [dynamic field mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md). In a future major release, this privilege will not grant any mapping update permissions.
 
     ::::{note}
-    This privilege relies on the `op_type` of indexing requests ([Index](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html) and [Bulk](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html)). When ingesting documents as a user who has the `create_doc` privilege (and no higher privilege such as `index` or `write`), you must ensure that *op_type* is set to *create* through one of the following:
+    This privilege relies on the `op_type` of indexing requests ([Index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) and [Bulk](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk)). When ingesting documents as a user who has the `create_doc` privilege (and no higher privilege such as `index` or `write`), you must ensure that *op_type* is set to *create* through one of the following:
 
     * Explicitly setting the `op_type` in the index or bulk APIs
     * Using the `_create` endpoint for the index API
@@ -308,7 +308,7 @@ This section lists the privileges that you can assign to a role.
     This privilege is not available in {{serverless-full}}.
 
     ::::{note}
-    This privilege should *not* be directly granted. It is used internally by [Create Cross-Cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) and [Update Cross-Cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-cross-cluster-api-key.html) to manage cross-cluster API keys.
+    This privilege should *not* be directly granted. It is used internally by [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) and [Update Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-cross-cluster-api-key) to manage cross-cluster API keys.
     ::::
 
 
@@ -321,7 +321,7 @@ This section lists the privileges that you can assign to a role.
 `index`
 :   Privilege to index and update documents.
 
-    [8.0] Also grants the permission to update the index mapping (but not the data streams mapping), using the [updating mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) or by relying on [dynamic field mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md). In a future major release, this privilege will not grant any mapping update permissions.
+    [8.0] Also grants the permission to update the index mapping (but not the data streams mapping), using the [updating mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) or by relying on [dynamic field mapping](../../../manage-data/data-store/mapping/dynamic-mapping.md). In a future major release, this privilege will not grant any mapping update permissions.
 
 
 `maintenance`
@@ -346,7 +346,7 @@ This section lists the privileges that you can assign to a role.
 
 
 `manage_leader_index`
-:   All actions that are required to manage the lifecycle of a leader index, which includes [forgetting a follower](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-forget-follower.html). This privilege is necessary only on clusters that contain leader indices.
+:   All actions that are required to manage the lifecycle of a leader index, which includes [forgetting a follower](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-forget-follower). This privilege is necessary only on clusters that contain leader indices.
 
     This privilege is not available in {{serverless-full}}.
 
@@ -369,7 +369,7 @@ This section lists the privileges that you can assign to a role.
 `write`
 :   Privilege to perform all write operations to documents, which includes the permission to index, update, and delete documents as well as performing bulk operations, while also allowing to dynamically update the index mapping.
 
-    [8.0] It also grants the permission to update the index mapping (but not the data streams mapping), using the [updating mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html). This will be retracted in a future major release.
+    [8.0] It also grants the permission to update the index mapping (but not the data streams mapping), using the [updating mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). This will be retracted in a future major release.
 
 
 
@@ -382,8 +382,8 @@ This privilege is not available in {{serverless-full}}.
 
 ## Application privileges [application-privileges]
 
-Application privileges are managed within {{es}} and can be retrieved with the [has privileges API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html) and the [get application privileges API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-privileges.html). They do not, however, grant access to any actions or resources within {{es}}. Their purpose is to enable applications to represent and store their own privilege models within {{es}} roles.
+Application privileges are managed within {{es}} and can be retrieved with the [has privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-has-privileges) and the [get application privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-privileges). They do not, however, grant access to any actions or resources within {{es}}. Their purpose is to enable applications to represent and store their own privilege models within {{es}} roles.
 
-To create application privileges, use the [add application privileges API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-privileges.html). You can then associate these application privileges with roles, as described in [Defining roles](defining-roles.md).
+To create application privileges, use the [add application privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-privileges). You can then associate these application privileges with roles, as described in [Defining roles](defining-roles.md).
 
 

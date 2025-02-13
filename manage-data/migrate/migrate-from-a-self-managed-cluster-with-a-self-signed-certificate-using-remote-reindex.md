@@ -59,7 +59,7 @@ The `Destination` cluster should be the same or newer version as the `Source` cl
     ```
 
     ::::{note}
-    Make sure `reindex.remote.whitelist` is in an array format.  All uploaded bundles will be uncompressed into `/app/config/` folder.  Ensure the file path corresponds to your uploaded bundle in [Step 1](#ec-remote-reindex-step1). You can optionally set `reindex.ssl.verification_mode` to `full`, `certificate` or `none` depending on the validity of hostname and the certificate path.  More details can be found in [reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-ssl) setting.
+    Make sure `reindex.remote.whitelist` is in an array format.  All uploaded bundles will be uncompressed into `/app/config/` folder.  Ensure the file path corresponds to your uploaded bundle in [Step 1](#ec-remote-reindex-step1). You can optionally set `reindex.ssl.verification_mode` to `full`, `certificate` or `none` depending on the validity of hostname and the certificate path.  More details can be found in [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) setting.
     ::::
 
 3. Click **Back** to the **Edit** page and scroll to the button of the page to **Save** changes.  This step will restart all Elasticsearch instances.
@@ -87,5 +87,5 @@ POST _reindex
 ```
 
 ::::{note}
-If you have many sources to reindex, it’s is generally better to reindex them one at a time and run them in parallel rather than using a glob pattern to pick up multiple sources. Check [reindex from multiple sources](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#docs-reindex-from-multiple-sources) for more details.
+If you have many sources to reindex, it’s is generally better to reindex them one at a time and run them in parallel rather than using a glob pattern to pick up multiple sources. Check [reindex from multiple sources](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) for more details.
 ::::
