@@ -9,7 +9,7 @@ mapped_pages:
 
 # Required RBAC permissions [k8s-eck-permissions]
 
-Installing and running ECK, as well as using ECK-managed resources requires the following Kubernetes [permissions](https://kubernetes.io/docs/reference/access-authn-authz/rbac):
+Installing and running ECK, as well as using ECK-managed resources, requires the following Kubernetes [permissions](https://kubernetes.io/docs/reference/access-authn-authz/rbac):
 
 * [Installing CRDs](#k8s-eck-permissions-installing-crds)
 * [Installing the ECK operator](#k8s-eck-permissions-installing-operator)
