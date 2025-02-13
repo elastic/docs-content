@@ -417,7 +417,6 @@ toc:
       - file: docs-content/serverless/security-benchmark-rules-kspm.md
       - file: docs-content/serverless/security-benchmark-rules.md
       - file: docs-content/serverless/security-blocklist.md
-      - file: docs-content/serverless/security-building-block-rules.md
       - file: docs-content/serverless/security-cases-open-manage.md
       - file: docs-content/serverless/security-cases-overview.md
       - file: docs-content/serverless/security-cases-requirements.md
@@ -804,7 +803,6 @@ toc:
       - file: security-docs/security/behavioral-detection-use-cases.md
       - file: security-docs/security/benchmark-rules.md
       - file: security-docs/security/blocklist.md
-      - file: security-docs/security/building-block-rule.md
       - file: security-docs/security/case-permissions.md
       - file: security-docs/security/cases-manage-settings.md
       - file: security-docs/security/cases-open-manage.md
