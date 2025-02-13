@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-search.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Full-text search [full-text-search]

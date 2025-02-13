@@ -400,7 +400,6 @@ toc:
       - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-exceptions.md
       - file: docs-content/serverless/security-add-manage-notes.md
-      - file: docs-content/serverless/security-advanced-behavioral-detections.md  
       - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-agent-tamper-protection.md
       - file: docs-content/serverless/security-ai-assistant-esql-queries.md
@@ -412,8 +411,6 @@ toc:
       - file: docs-content/serverless/security-alerts-manage.md
       - file: docs-content/serverless/security-alerts-run-osquery.md
       - file: docs-content/serverless/security-allowlist-endpoint.md
-      - file: docs-content/serverless/security-analyze-risk-score-data.md
-      - file: docs-content/serverless/security-asset-criticality.md
       - file: docs-content/serverless/security-automated-response-actions.md
       - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-behavioral-detection-use-cases.md
@@ -464,7 +461,6 @@ toc:
       - file: docs-content/serverless/security-ers-requirements.md
       - file: docs-content/serverless/security-event-filters.md
       - file: docs-content/serverless/security-examine-osquery-results.md
-      - file: docs-content/serverless/security-explore-your-data.md
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
       - file: docs-content/serverless/security-hosts-overview.md
@@ -519,7 +515,6 @@ toc:
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
       - file: docs-content/serverless/security-trusted-applications.md
       - file: docs-content/serverless/security-tune-detection-signals.md
-      - file: docs-content/serverless/security-tuning-anomaly-results.md
       - file: docs-content/serverless/security-turn-on-risk-engine.md
       - file: docs-content/serverless/security-ui.md
       - file: docs-content/serverless/security-uninstall-agent.md
@@ -585,7 +580,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/kerberos-realm.md
       - file: elasticsearch/elasticsearch-reference/ldap-realm.md
       - file: elasticsearch/elasticsearch-reference/mapping-roles.md
-      - file: elasticsearch/elasticsearch-reference/mapping.md
       - file: elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
       - file: elasticsearch/elasticsearch-reference/monitoring-overview.md
       - file: elasticsearch/elasticsearch-reference/monitoring-production.md
@@ -787,7 +781,6 @@ toc:
       - file: security-docs/security/add-exceptions.md
       - file: security-docs/security/add-manage-notes.md
       - file: security-docs/security/admin-page-ov.md
-      - file: security-docs/security/advanced-behavioral-detections.md
       - file: security-docs/security/advanced-settings.md
       - file: security-docs/security/agent-tamper-protection.md
       - file: security-docs/security/ai-assistant-knowledge-base.md
@@ -796,9 +789,7 @@ toc:
       - file: security-docs/security/alerts-run-osquery.md
       - file: security-docs/security/alerts-ui-manage.md
       - file: security-docs/security/allowlist-endpoint-3rd-party-av-apps.md
-      - file: security-docs/security/analyze-risk-score-data.md
       - file: security-docs/security/artifact-control.md
-      - file: security-docs/security/asset-criticality.md
       - file: security-docs/security/assistant-connect-to-azure-openai.md
       - file: security-docs/security/assistant-connect-to-bedrock.md
       - file: security-docs/security/assistant-connect-to-openai.md
@@ -898,7 +889,6 @@ toc:
       - file: security-docs/security/rules-ui-create.md
       - file: security-docs/security/rules-ui-management.md
       - file: security-docs/security/runtime-fields.md
-      - file: security-docs/security/sec-explore-intro.md
       - file: security-docs/security/sec-manage-intro.md
       - file: security-docs/security/sec-requirements.md
       - file: security-docs/security/security-assistant.md
@@ -913,7 +903,6 @@ toc:
       - file: security-docs/security/timeline-templates-ui.md
       - file: security-docs/security/timelines-ui.md
       - file: security-docs/security/trusted-apps-ov.md
-      - file: security-docs/security/tuning-anomaly-results.md
       - file: security-docs/security/tuning-detection-signals.md
       - file: security-docs/security/turn-on-risk-engine.md
       - file: security-docs/security/uninstall-agent.md

@@ -22,7 +22,7 @@ Wherever scripting is supported in the {{es}} APIs, the syntax follows the same 
 :   Specifies the language the script is written in. Defaults to `painless`.
 
 `source`, `id`
-:   The script itself, which you specify as `source` for an inline script or `id` for a stored script. Use the [stored script APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/script-apis.html#stored-script-apis) to create and manage stored scripts.
+:   The script itself, which you specify as `source` for an inline script or `id` for a stored script. Use the [stored script APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-script) to create and manage stored scripts.
 
 `params`
 :   Specifies any named parameters that are passed into the script as variables. [Use parameters](#prefer-params) instead of hard-coded values to decrease compile time.
@@ -154,7 +154,7 @@ Use this abbreviated syntax anywhere that {{es}} supports scripts, such as when 
 
 ## Store and retrieve scripts [script-stored-scripts] 
 
-You can store and retrieve scripts from the cluster state using the [stored script APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/script-apis.html#stored-script-apis). Stored scripts allow you to reference shared scripts for operations like scoring, aggregating, filtering, and reindexing. Instead of embedding scripts inline in each query, you can reference these shared operations.
+You can store and retrieve scripts from the cluster state using the [stored script APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-script). Stored scripts allow you to reference shared scripts for operations like scoring, aggregating, filtering, and reindexing. Instead of embedding scripts inline in each query, you can reference these shared operations.
 
 Stored scripts can also reduce request payload size. Depending on script size and request frequency, this can help lower latency and data transfer costs.
 
@@ -163,7 +163,7 @@ Unlike regular scripts, stored scripts require that you specify a script languag
 ::::
 
 
-To create a script, use the [create stored script API](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-stored-script-api.html). For example, the following request creates a stored script named `calculate-score`.
+To create a script, use the [create stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-put-script). For example, the following request creates a stored script named `calculate-score`.
 
 ```console
 POST _scripts/calculate-score
@@ -175,7 +175,7 @@ POST _scripts/calculate-score
 }
 ```
 
-You can retrieve that script by using the [get stored script API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-stored-script-api.html).
+You can retrieve that script by using the [get stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get-script).
 
 ```console
 GET _scripts/calculate-score
@@ -207,7 +207,7 @@ GET my-index-000001/_search
 1. `id` of the stored script
 
 
-To delete a stored script, submit a [delete stored script API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-stored-script-api.html) request.
+To delete a stored script, submit a [delete stored script API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-script) request.
 
 ```console
 DELETE _scripts/calculate-score
@@ -216,7 +216,7 @@ DELETE _scripts/calculate-score
 
 ## Update documents with scripts [scripts-update-scripts] 
 
-You can use the [update API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html) to update documents with a specified script. The script can update, delete, or skip modifying the document. The update API also supports passing a partial document, which is merged into the existing document.
+You can use the [update API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update) to update documents with a specified script. The script can update, delete, or skip modifying the document. The update API also supports passing a partial document, which is merged into the existing document.
 
 First, let’s index a simple document:
 

@@ -98,7 +98,7 @@ Instead, the {{rollup-features}} save the `count` and `sum` for the defined time
 ::::
 
 
-For more details about the job syntax, see [Create {{rollup-jobs}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-put-job.html).
+For more details about the job syntax, see [Create {{rollup-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-put-job).
 
 After you execute the above command and create the job, you’ll receive the following response:
 
@@ -122,7 +122,7 @@ POST _rollup/job/sensor/_start
 
 ## Searching the rolled results [_searching_the_rolled_results] 
 
-After the job has run and processed some data, we can use the [Rollup search](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-search.html) endpoint to do some searching. The Rollup feature is designed so that you can use the same Query DSL syntax that you are accustomed to…​ it just happens to run on the rolled up data instead.
+After the job has run and processed some data, we can use the [Rollup search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-rollup-search) endpoint to do some searching. The Rollup feature is designed so that you can use the same Query DSL syntax that you are accustomed to…​ it just happens to run on the rolled up data instead.
 
 For example, take this query:
 

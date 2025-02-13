@@ -1,4 +1,9 @@
 ---
+applies:
+  stack:
+  serverless:
+---
+---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/retrievers-overview.html
 
