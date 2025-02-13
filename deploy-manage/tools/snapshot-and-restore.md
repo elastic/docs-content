@@ -126,7 +126,7 @@ Snapshots don’t contain or back up:
 A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **Elasticsearch security** or **Kibana**.
 
 ::::{note}
-To retrieve a list of feature states, use the [Features API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-features-api.html).
+To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
 ::::
 
 A feature state typically includes one or more [system indices or system data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#system-indices). It may also include regular indices and data streams used by the feature. For example, a feature state may include a regular index that contains the feature’s execution history. Storing this history in a regular index lets you more easily search it.

@@ -6,7 +6,7 @@ mapped_pages:
 
 # Troubleshoot shard capacity health issues [troubleshooting-shards-capacity-issues]
 
-{{es}} limits the maximum number of shards to be held per node using the [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node) and [`cluster.max_shards_per_node.frozen`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node-frozen) settings. The current shards capacity of the cluster is available in the [health API shards capacity section](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html#health-api-response-details-shards-capacity).
+{{es}} limits the maximum number of shards to be held per node using the [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node) and [`cluster.max_shards_per_node.frozen`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node-frozen) settings. The current shards capacity of the cluster is available in the [health API shards capacity section](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report).
 
 
 ## Cluster is close to reaching the configured maximum number of shards for data nodes. [_cluster_is_close_to_reaching_the_configured_maximum_number_of_shards_for_data_nodes]
@@ -15,7 +15,7 @@ The [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearc
 
 This symptom indicates that action should be taken, otherwise, either the creation of new indices or upgrading the cluster could be blocked.
 
-If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html):
+If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings):
 
 :::::::{tab-set}
 
@@ -87,7 +87,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
 
     This increase should only be temporary. As a long-term solution, we recommend you add nodes to the oversharded data tier or [reduce your cluster’s shard count](../../deploy-manage/production-guidance/optimize-performance/size-shards.md#reduce-cluster-shard-count) on nodes that do not belong to the frozen tier.
 
-6. To verify that the change has fixed the issue, you can get the current status of the `shards_capacity` indicator by checking the `data` section of the [health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html#health-api-example):
+6. To verify that the change has fixed the issue, you can get the current status of the `shards_capacity` indicator by checking the `data` section of the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report):
 
     ```console
     GET _health_report/shards_capacity
@@ -166,7 +166,7 @@ The response will look like this:
 2. Current number of open shards across the cluster
 
 
-Using the [`cluster settings API`](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), update the [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node) setting:
+Using the [`cluster settings API`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), update the [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node) setting:
 
 ```console
 PUT _cluster/settings
@@ -177,7 +177,7 @@ PUT _cluster/settings
 }
 ```
 
-This increase should only be temporary. As a long-term solution, we recommend you add nodes to the oversharded data tier or [reduce your cluster’s shard count](../../deploy-manage/production-guidance/optimize-performance/size-shards.md#reduce-cluster-shard-count) on nodes that do not belong to the frozen tier. To verify that the change has fixed the issue, you can get the current status of the `shards_capacity` indicator by checking the `data` section of the [health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html#health-api-example):
+This increase should only be temporary. As a long-term solution, we recommend you add nodes to the oversharded data tier or [reduce your cluster’s shard count](../../deploy-manage/production-guidance/optimize-performance/size-shards.md#reduce-cluster-shard-count) on nodes that do not belong to the frozen tier. To verify that the change has fixed the issue, you can get the current status of the `shards_capacity` indicator by checking the `data` section of the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report):
 
 ```console
 GET _health_report/shards_capacity
@@ -225,7 +225,7 @@ The [`cluster.max_shards_per_node.frozen`](https://www.elastic.co/guide/en/elast
 
 This symptom indicates that action should be taken, otherwise, either the creation of new indices or upgrading the cluster could be blocked.
 
-If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html):
+If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings):
 
 :::::::{tab-set}
 
@@ -296,7 +296,7 @@ If you’re confident your changes won’t destabilize the cluster, you can temp
 
     This increase should only be temporary. As a long-term solution, we recommend you add nodes to the oversharded data tier or [reduce your cluster’s shard count](../../deploy-manage/production-guidance/optimize-performance/size-shards.md#reduce-cluster-shard-count) on nodes that belong to the frozen tier.
 
-6. To verify that the change has fixed the issue, you can get the current status of the `shards_capacity` indicator by checking the `data` section of the [health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html#health-api-example):
+6. To verify that the change has fixed the issue, you can get the current status of the `shards_capacity` indicator by checking the `data` section of the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report):
 
     ```console
     GET _health_report/shards_capacity
@@ -373,7 +373,7 @@ GET _health_report/shards_capacity
 2. Current number of open shards used by frozen nodes across the cluster.
 
 
-Using the [`cluster settings API`](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), update the [`cluster.max_shards_per_node.frozen`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node-frozen) setting:
+Using the [`cluster settings API`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), update the [`cluster.max_shards_per_node.frozen`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node-frozen) setting:
 
 ```console
 PUT _cluster/settings
@@ -384,7 +384,7 @@ PUT _cluster/settings
 }
 ```
 
-This increase should only be temporary. As a long-term solution, we recommend you add nodes to the oversharded data tier or [reduce your cluster’s shard count](../../deploy-manage/production-guidance/optimize-performance/size-shards.md#reduce-cluster-shard-count) on nodes that belong to the frozen tier. To verify that the change has fixed the issue, you can get the current status of the `shards_capacity` indicator by checking the `data` section of the [health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html#health-api-example):
+This increase should only be temporary. As a long-term solution, we recommend you add nodes to the oversharded data tier or [reduce your cluster’s shard count](../../deploy-manage/production-guidance/optimize-performance/size-shards.md#reduce-cluster-shard-count) on nodes that belong to the frozen tier. To verify that the change has fixed the issue, you can get the current status of the `shards_capacity` indicator by checking the `data` section of the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report):
 
 ```console
 GET _health_report/shards_capacity

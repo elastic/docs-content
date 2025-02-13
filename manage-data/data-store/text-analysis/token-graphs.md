@@ -50,7 +50,7 @@ In the following graph, `domain name system` and its synonym, `dns`, both have a
 
 However, queries, such as the [`match`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) or [`match_phrase`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query-phrase.html) query, can use these graphs to generate multiple sub-queries from a single query string.
 
-:::::{dropdown} **Example**
+:::::{dropdown} Example
 A user runs a search for the following phrase using the `match_phrase` query:
 
 `domain name system is fragile`

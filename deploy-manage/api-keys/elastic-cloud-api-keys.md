@@ -19,7 +19,7 @@ You can have multiple API keys for different purposes, and you can revoke them w
 3. On the API keys tab of the **Organization** page, click **Create API Key**.
 
     ::::{note}
-    This key provides access to the API that enables you to manage your deployments. It does not provide access to {{es}}. To access {{es}} with an API key, create a key [in {{kib}}](elasticsearch-api-keys.md) or [using the {{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html).
+    This key provides access to the API that enables you to manage your deployments. It does not provide access to {{es}}. To access {{es}} with an API key, create a key [in {{kib}}](elasticsearch-api-keys.md) or [using the {{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
     ::::
 
 4. From the **Create API Key** page, you can configure your new key by adding a name, set expiration, or assign [roles](../users-roles/cloud-organization/user-roles.md).

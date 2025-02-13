@@ -17,7 +17,7 @@ This purpose of this section is to give a high level overview of the Elasticsear
 
 ## Basic write model [basic-write-model]
 
-Every indexing operation in Elasticsearch is first resolved to a replication group using [routing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-routing), typically based on the document ID. Once the replication group has been determined, the operation is forwarded internally to the current *primary shard* of the group. This stage of indexing is referred to as the *coordinating stage*.
+Every indexing operation in Elasticsearch is first resolved to a replication group using [routing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create), typically based on the document ID. Once the replication group has been determined, the operation is forwarded internally to the current *primary shard* of the group. This stage of indexing is referred to as the *coordinating stage*.
 
 :::{image} ../../images/elasticsearch-reference-data_processing_flow.png
 :alt: An example of a basic write model.
@@ -49,7 +49,7 @@ $$$demoted-primary$$$
 While forwarding an operation to the replicas, the primary will use the replicas to validate that it is still the active primary. If the primary has been isolated due to a network partition (or a long GC) it may continue to process incoming indexing operations before realising that it has been demoted. Operations that come from a stale primary will be rejected by the replicas. When the primary receives a response from the replica rejecting its request because it is no longer the primary then it will reach out to the master and will learn that it has been replaced. The operation is then routed to the new primary.
 
 ::::{admonition} What happens if there are no replicas?
-This is a valid scenario that can happen due to index configuration or simply because all the replicas have failed. In that case the primary is processing operations without any external validation, which may seem problematic. On the other hand, the primary cannot fail other shards on its own but request the master to do so on its behalf. This means that the master knows that the primary is the only single good copy. We are therefore guaranteed that the master will not promote any other (out-of-date) shard copy to be a new primary and that any operation indexed into the primary will not be lost. Of course, since at that point we are running with only single copy of the data, physical hardware issues can cause data loss. See [Active shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-wait-for-active-shards) for some mitigation options.
+This is a valid scenario that can happen due to index configuration or simply because all the replicas have failed. In that case the primary is processing operations without any external validation, which may seem problematic. On the other hand, the primary cannot fail other shards on its own but request the master to do so on its behalf. This means that the master knows that the primary is the only single good copy. We are therefore guaranteed that the master will not promote any other (out-of-date) shard copy to be a new primary and that any operation indexed into the primary will not be lost. Of course, since at that point we are running with only single copy of the data, physical hardware issues can cause data loss. See [Active shards](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for some mitigation options.
 
 ::::
 
@@ -73,9 +73,9 @@ When a shard fails to respond to a read request, the coordinating node sends the
 
 To ensure fast responses, the following APIs will respond with partial results if one or more shards fail:
 
-* [Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)
-* [Multi Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html)
-* [Multi Get](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-get.html)
+* [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Multi Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
+* [Multi Get](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-mget)
 
 Responses containing partial results still provide a `200 OK` HTTP status code. Shard failures are indicated by the `timed_out` and `_shards` fields of the response header.
 
