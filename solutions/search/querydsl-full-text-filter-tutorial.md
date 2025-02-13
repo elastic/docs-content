@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-filter-tutorial.html
 navigation_title: "Full-text search and filtering"
+applies:
+  stack:
+  serverless:
 ---
 
 # Tutorial: Full-text search and filtering in {{es}} [full-text-filter-tutorial]
@@ -404,7 +407,7 @@ GET /cooking_blog/_search
 The `.keyword` suffix accesses the unanalyzed version of a field, enabling exact, case-sensitive matching. This works in two scenarios:
 
 1. **When using dynamic mapping for text fields**. Elasticsearch automatically creates a `.keyword` sub-field.
-2. **When text fields are explicitly mapped with a `.keyword` sub-field**. For example, we explicitly mapped the `category` field in [Step 1](get-started.md#full-text-filter-tutorial-create-index) of this tutorial.
+2. **When text fields are explicitly mapped with a `.keyword` sub-field**. For example, we explicitly mapped the `category` field in [Step 1](#full-text-filter-tutorial-create-index) of this tutorial.
 
 ::::
 

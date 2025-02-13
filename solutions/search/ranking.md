@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/re-ranking-overview.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Ranking and reranking [re-ranking-overview]

@@ -12,7 +12,7 @@ mapped_pages:
 
 The purpose of {{feat-imp}} is to help you determine whether the predictions are sensible. Is the relationship between the dependent variable and the important features supported by your domain knowledge? The lessons you learn about the importance of specific features might also affect your decision to include them in future iterations of your trained model.
 
-You can see the average magnitude of the {{feat-imp}} values for each field across all the training data in {{kib}} or by using the [get trained model API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html). For example, {{kib}} shows the total feature importance for each field in {{regression}} or binary {{classanalysis}} results as follows:
+You can see the average magnitude of the {{feat-imp}} values for each field across all the training data in {{kib}} or by using the [get trained model API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models). For example, {{kib}} shows the total feature importance for each field in {{regression}} or binary {{classanalysis}} results as follows:
 
 :::{image} ../../../images/machine-learning-flights-regression-total-importance.jpg
 :alt: Total {{feat-imp}} values for a {{regression}} {dfanalytics-job} in {kib}

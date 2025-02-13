@@ -1451,7 +1451,7 @@ Use the contextual **Inspect** tool to gain insights into different elements.
 
 ##### Inspect {{es}} requests [inspect-elasticsearch-requests]
 
-**Vega** uses the [{{es}} search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
+**Vega** uses the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
 
 :::{image} ../../images/kibana-vega_tutorial_inspect_requests.png
 :alt: vega tutorial inspect requests

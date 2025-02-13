@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mixing-exact-search-with-stemming.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Mixing exact search with stemming [mixing-exact-search-with-stemming]
