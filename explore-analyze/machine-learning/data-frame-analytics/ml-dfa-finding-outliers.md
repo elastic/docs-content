@@ -117,19 +117,14 @@ The goal of {{oldetection}} is to find the most unusual documents in an index. L
 1. Verify that your environment is set up properly to use {{ml-features}}. If the {{es}} {{security-features}} are enabled, you need a user that has authority to create and manage {{dfanalytics}} jobs. See [Setup and security](../setting-up-machine-learning.md). Since we’ll be creating {{transforms}}, you also need `manage_data_frame_transforms` cluster privileges.
 
 2. Create a {{transform}} that generates an entity-centric index with numeric or boolean data to analyze.
-
-    In this example, we’ll use the web logs sample data and pivot the data such that we get a new index that contains a network usage summary for each client IP.
-
-    In particular, create a {{transform}} that calculates the number of occasions when a specific client IP communicated with the network (`@timestamp.value_count`), the sum of the bytes that are exchanged between the network and the client’s machine (`bytes.sum`), the maximum exchanged bytes during a single occasion (`bytes.max`), and the total number of requests (`request.value_count`) initiated by a specific client IP.
-
-    You can preview the {{transform}} before you create it in **{{stack-manage-app}}** > **Transforms**:
-
-:::{image} ../../../images/machine-learning-logs-transform-preview.jpg
-:alt: Creating a {{transform}} in {kib}
-:class: screenshot
-:::
-
-    Alternatively, you can use the [preview {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html) and the [create {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html).
+   In this example, we’ll use the web logs sample data and pivot the data such that we get a new index that contains a network usage summary for each client IP.
+   In particular, create a {{transform}} that calculates the number of occasions when a specific client IP communicated with the network (`@timestamp.value_count`), the sum of the bytes that are exchanged between the network and the client’s machine (`bytes.sum`), the maximum exchanged bytes during a single occasion (`bytes.max`), and the total number of requests (`request.value_count`) initiated by a specific client IP.
+   You can preview the {{transform}} before you create it in **{{stack-manage-app}}** > **Transforms**:
+   :::{image} ../../../images/machine-learning-logs-transform-preview.jpg
+   :alt: Creating a {{transform}} in {kib}
+   :class: screenshot
+   :::
+   Alternatively, you can use the [preview {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html) and the [create {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html).
 
 ::::{dropdown} API example
 
@@ -221,7 +216,7 @@ POST _transform/_preview
 
 ::::
 
-    For more details about creating {{transforms}}, see [Transforming the eCommerce sample data](../../transforms/ecommerce-transforms.md).
+   For more details about creating {{transforms}}, see [Transforming the eCommerce sample data](../../transforms/ecommerce-transforms.md).
 
 3. Start the {{transform}}.
 
@@ -229,9 +224,10 @@ POST _transform/_preview
 Even though resource utilization is automatically adjusted based on the cluster load, a {{transform}} increases search and indexing load on your cluster while it runs. If you’re experiencing an excessive load, however, you can stop it.
 ::::
 
-    You can start, stop, and manage {{transforms}} in {{kib}}. Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html) API.
+   You can start, stop, and manage {{transforms}} in {{kib}}. Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html) API.
 
 ::::{dropdown} API example
+
 ```console
 POST _transform/logs-by-clientip/_start
 ```
@@ -240,25 +236,24 @@ POST _transform/logs-by-clientip/_start
 
 4. Create a {{dfanalytics-job}} to detect outliers in the new entity-centric index.
 
-    In the wizard on the **Machine Learning** > **Data Frame Analytics** page in {{kib}}, select your new {{data-source}} then use the default values for {{oldetection}}. For example:
+   In the wizard on the **Machine Learning** > **Data Frame Analytics** page in {{kib}}, select your new {{data-source}} then use the default values for {{oldetection}}. For example:
+   :::{image} ../../../images/machine-learning-weblog-outlier-job-1.jpg
+   :alt: Create a {{dfanalytics-job}} in {kib}
+   :class: screenshot
+   :::
 
-:::{image} ../../../images/machine-learning-weblog-outlier-job-1.jpg
-:alt: Create a {{dfanalytics-job}} in {kib}
-:class: screenshot
-:::
-
-    The wizard includes a scatterplot matrix, which enables you to explore the relationships between the fields. You can use that information to help you decide which fields to include or exclude from the analysis.
-
-:::{image} ../../../images/machine-learning-weblog-outlier-scatterplot.jpg
-:alt: A scatterplot matrix for three fields in {kib}
-:class: screenshot
-:::
+   The wizard includes a scatterplot matrix, which enables you to explore the relationships between the fields. You can use that information to help you decide which fields to include or exclude from the analysis.
+   :::{image} ../../../images/machine-learning-weblog-outlier-scatterplot.jpg
+   :alt: A scatterplot matrix for three fields in {kib}
+   :class: screenshot
+   :::
 
     If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
 
     Alternatively, you can use the [create {{dfanalytics}} jobs API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html).
 
 ::::{dropdown} API example
+
 ```console
 PUT _ml/data_frame/analytics/weblog-outliers
     {
@@ -280,14 +275,13 @@ PUT _ml/data_frame/analytics/weblog-outliers
 
 ::::
 
-
-    After you configured your job, the configuration details are automatically validated. If the checks are successful, you can proceed and start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
+   After you configured your job, the configuration details are automatically validated. If the checks are successful, you can proceed and start the job. A warning message is shown if the configuration is invalid. The message contains a suggestion to improve the configuration to be validated.
 
 5. Start the {{dfanalytics}} job.
-
-    You can start, stop, and manage {{dfanalytics-jobs}} on the **Machine Learning** > **Data Frame Analytics** page. Alternatively, you can use the [start {{dfanalytics}} jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) and [stop {{dfanalytics}} jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html) APIs.
+   You can start, stop, and manage {{dfanalytics-jobs}} on the **Machine Learning** > **Data Frame Analytics** page. Alternatively, you can use the [start {{dfanalytics}} jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html) and [stop {{dfanalytics}} jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html) APIs.
 
 ::::{dropdown} API example
+
 ```console
     POST _ml/data_frame/analytics/weblog-outliers/_start
 ```
@@ -295,28 +289,26 @@ PUT _ml/data_frame/analytics/weblog-outliers
 ::::
 
 6. View the results of the {{oldetection}} analysis.
+   The {{dfanalytics}} job creates an index that contains the original data and {{olscores}} for each document. The {{olscore}} indicates how different each entity is from other entities.
+   In {{kib}}, you can view the results from the {{dfanalytics}} job and sort them on the outlier score:
+   :::{image} ../../../images/machine-learning-outliers.jpg
+   :alt: View {{oldetection}} results in {kib}
+   :class: screenshot
+   :::
 
-    The {{dfanalytics}} job creates an index that contains the original data and {{olscores}} for each document. The {{olscore}} indicates how different each entity is from other entities.
+   The `ml.outlier` score is a value between 0 and 1. The larger the value, the more likely they are to be an outlier. In {{kib}}, you can optionally enable histogram charts to get a better understanding of the distribution of values for each column in the result.
 
-    In {{kib}}, you can view the results from the {{dfanalytics}} job and sort them on the outlier score:
+   In addition to an overall outlier score, each document is annotated with feature influence values for each field. These values add up to 1 and indicate which fields are the most important in deciding whether an entity is an outlier or inlier. For example, the dark shading on the `bytes.sum` field for the client IP `111.237.144.54` indicates that the sum of the exchanged bytes was the most influential feature in determining that that client IP is an outlier.
 
-:::{image} ../../../images/machine-learning-outliers.jpg
-:alt: View {{oldetection}} results in {kib}
-:class: screenshot
-:::
-
-    The `ml.outlier` score is a value between 0 and 1. The larger the value, the more likely they are to be an outlier. In {{kib}}, you can optionally enable histogram charts to get a better understanding of the distribution of values for each column in the result.
-
-    In addition to an overall outlier score, each document is annotated with feature influence values for each field. These values add up to 1 and indicate which fields are the most important in deciding whether an entity is an outlier or inlier. For example, the dark shading on the `bytes.sum` field for the client IP `111.237.144.54` indicates that the sum of the exchanged bytes was the most influential feature in determining that that client IP is an outlier.
-
-    If you want to see the exact feature influence values, you can retrieve them from the index that is associated with your {{dfanalytics}} job.
+   If you want to see the exact feature influence values, you can retrieve them from the index that is associated with your {{dfanalytics}} job.
 
 ::::{dropdown} API example
+
 ```console
 GET weblog-outliers/_search?q="111.237.144.54"
 ```
 
-    The search results include the following {{oldetection}} scores:
+   The search results include the following {{oldetection}} scores:
 
 ```js
       ...
@@ -344,19 +336,18 @@ GET weblog-outliers/_search?q="111.237.144.54"
       ...
 ```
 
-    ::::
+::::
 
+   {{kib}} also provides a scatterplot matrix in the results. Outliers with a score that exceeds the threshold are highlighted in each chart. The outlier score threshold can be set by using the slider under the matrix:
 
-    {{kib}} also provides a scatterplot matrix in the results. Outliers with a score that exceeds the threshold are highlighted in each chart. The outlier score threshold can be set by using the slider under the matrix:
+:::{image} ../../../images/machine-learning-outliers-scatterplot.jpg
+:alt: View scatterplot in {{oldetection}} results
+:class: screenshot
+:::
 
-    :::{image} ../../../images/machine-learning-outliers-scatterplot.jpg
-    :alt: View scatterplot in {{oldetection}} results
-    :class: screenshot
-    :::
+   You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the charts. This function makes it easier to focus on specific values and areas in the results. In addition to the sample size and random scoring options, there is a **Dynamic size** option. If you enable this option, the size of each point is affected by its {{olscore}}; that is to say, the largest points have the highest {{olscores}}. The goal of these charts and options is to help you visualize and explore the outliers within your data.
 
-    You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the charts. This function makes it easier to focus on specific values and areas in the results. In addition to the sample size and random scoring options, there is a **Dynamic size** option. If you enable this option, the size of each point is affected by its {{olscore}}; that is to say, the largest points have the highest {{olscores}}. The goal of these charts and options is to help you visualize and explore the outliers within your data.
-
-Now that you’ve found unusual behavior in the sample data set, consider how you might apply these steps to other data sets. If you have data that is already marked up with true outliers, you can determine how well the {{oldetection}} algorithms perform by using the evaluate {{dfanalytics}} API. See [6. Evaluate the results](#ml-outlier-detection-evaluate).
+   Now that you’ve found unusual behavior in the sample data set, consider how you might apply these steps to other data sets. If you have data that is already marked up with true outliers, you can determine how well the {{oldetection}} algorithms perform by using the evaluate {{dfanalytics}} API. See [6. Evaluate the results](#ml-outlier-detection-evaluate).
 
 ::::{tip}
 If you do not want to keep the {{transform}} and the {{dfanalytics}} job, you can delete them in {{kib}} or use the [delete {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html) and [delete {{dfanalytics}} job API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html). When you delete {{transforms}} and {{dfanalytics}} jobs in {{kib}}, you have the option to also remove the destination indices and {{data-sources}}.

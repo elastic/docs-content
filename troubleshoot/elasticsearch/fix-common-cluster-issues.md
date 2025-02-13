@@ -4,6 +4,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-common-cluster-issues.html
 ---
 
+% add other cluster topics if it makes sense (already in toc)
+% or keep a "common issues" page and create new cluster section index page
+
 # Fix common cluster issues [fix-common-cluster-issues]
 
 This guide describes how to fix common errors and problems with {{es}} clusters.

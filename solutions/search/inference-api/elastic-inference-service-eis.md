@@ -2,6 +2,9 @@
 navigation_title: "Elastic Inference Service"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-service-elastic.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Elastic Inference Service (EIS) [infer-service-elastic]

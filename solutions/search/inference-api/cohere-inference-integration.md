@@ -2,6 +2,9 @@
 navigation_title: "Cohere"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-cohere.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Cohere inference integration [infer-service-cohere]

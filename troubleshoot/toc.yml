@@ -3,50 +3,58 @@ toc:
   - file: troubleshoot/index.md
   - file: elasticsearch/elasticsearch-reference.md
     children:
-      - file: elasticsearch/fix-common-cluster-issues.md
+      - file: elasticsearch/clusters.md
         children:
-          - file: elasticsearch/fix-watermark-errors.md
-          - file: elasticsearch/circuit-breaker-errors.md
-          - file: elasticsearch/high-cpu-usage.md
-          - file: elasticsearch/high-jvm-memory-pressure.md
-          - file: elasticsearch/red-yellow-cluster-status.md
-          - file: elasticsearch/rejected-requests.md
-          - file: elasticsearch/task-queue-backlog.md
-          - file: elasticsearch/mapping-explosion.md
-          - file: elasticsearch/hotspotting.md
-      - file: elasticsearch/diagnose-unassigned-shards.md
-      - file: elasticsearch/allow-all-cluster-allocation.md
-      - file: elasticsearch/allow-all-index-allocation.md
-      - file: elasticsearch/add-tier.md
-      - file: elasticsearch/troubleshoot-migrate-to-tiers.md
-      - file: elasticsearch/increase-tier-capacity.md
-      - file: elasticsearch/increase-shard-limit.md
-      - file: elasticsearch/increase-cluster-shard-limit.md
-      - file: elasticsearch/corruption-troubleshooting.md
-      - file: elasticsearch/fix-data-node-out-of-disk.md
+          - file: elasticsearch/fix-common-cluster-issues.md
+            children:
+              - file: elasticsearch/fix-watermark-errors.md
+              - file: elasticsearch/circuit-breaker-errors.md
+              - file: elasticsearch/high-cpu-usage.md
+              - file: elasticsearch/high-jvm-memory-pressure.md
+              - file: elasticsearch/red-yellow-cluster-status.md
+              - file: elasticsearch/rejected-requests.md
+              - file: elasticsearch/task-queue-backlog.md
+              - file: elasticsearch/mapping-explosion.md
+              - file: elasticsearch/hotspotting.md
+          - file: elasticsearch/troubleshooting-unstable-cluster.md
+          - file: elasticsearch/troubleshooting-unbalanced-cluster.md
+          - file: elasticsearch/elasticsearch-reference/remote-clusters.md
+          - file: elasticsearch/diagnose-unassigned-shards.md
+          - file: elasticsearch/troubleshooting-shards-capacity-issues.md
+      - file: elasticsearch/data.md
         children:
-          - file: elasticsearch/increase-capacity-data-node.md
-          - file: elasticsearch/decrease-disk-usage-data-node.md
-      - file: elasticsearch/fix-master-node-out-of-disk.md
-      - file: elasticsearch/fix-other-node-out-of-disk.md
-      - file: elasticsearch/start-ilm.md
-      - file: elasticsearch/start-slm.md
-      - file: elasticsearch/restore-from-snapshot.md
-      - file: elasticsearch/add-repository.md
+          - file: elasticsearch/allow-all-cluster-allocation.md
+          - file: elasticsearch/allow-all-index-allocation.md
+          - file: elasticsearch/add-tier.md
+          - file: elasticsearch/troubleshoot-migrate-to-tiers.md
+          - file: elasticsearch/increase-tier-capacity.md
+          - file: elasticsearch/increase-shard-limit.md
+          - file: elasticsearch/increase-cluster-shard-limit.md
+          - file: elasticsearch/corruption-troubleshooting.md
+      - file: elasticsearch/capacity.md
+        children:  
+        - file: elasticsearch/fix-data-node-out-of-disk.md
+          children:
+            - file: elasticsearch/increase-capacity-data-node.md
+            - file: elasticsearch/decrease-disk-usage-data-node.md
+        - file: elasticsearch/fix-master-node-out-of-disk.md
+        - file: elasticsearch/fix-other-node-out-of-disk.md
+      - file: elasticsearch/snapshot-and-restore.md
         children:
-          - file: elasticsearch/diagnosing-corrupted-repositories.md
-          - file: elasticsearch/diagnosing-unknown-repositories.md
-          - file: elasticsearch/diagnosing-invalid-repositories.md
-      - file: elasticsearch/repeated-snapshot-failures.md
-      - file: elasticsearch/troubleshooting-unstable-cluster.md
-      - file: elasticsearch/discovery-troubleshooting.md
-      - file: elasticsearch/monitoring-troubleshooting.md
-      - file: elasticsearch/transform-troubleshooting.md
-      - file: elasticsearch/watcher-troubleshooting.md
+          - file: elasticsearch/restore-from-snapshot.md
+          - file: elasticsearch/add-repository.md
+            children:
+              - file: elasticsearch/diagnosing-corrupted-repositories.md
+              - file: elasticsearch/diagnosing-unknown-repositories.md
+              - file: elasticsearch/diagnosing-invalid-repositories.md
+          - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
-      - file: elasticsearch/troubleshooting-shards-capacity-issues.md
-      - file: elasticsearch/troubleshooting-unbalanced-cluster.md
-      - file: elasticsearch/diagnostic.md
+
+      - file: elasticsearch/lifecycle-management.md
+        children: 
+        - file: elasticsearch/start-ilm.md
+        - file: elasticsearch/start-slm.md
+        - file: elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md
       - file: elasticsearch/elasticsearch-reference/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md
@@ -61,8 +69,6 @@ toc:
           - file: elasticsearch/security/trb-security-internalserver.md
           - file: elasticsearch/security/trb-security-setup.md
           - file: elasticsearch/security/trb-security-path.md
-      - file: elasticsearch/elasticsearch-reference/remote-clusters.md
-      - file: elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md
       - file: elasticsearch/clients.md
         children:
           - file: elasticsearch/elasticsearch-client-java-api-client/java.md
@@ -83,7 +89,14 @@ toc:
                   - file: elasticsearch/elasticsearch-client-net-api/debug-mode.md
           - file: elasticsearch/elasticsearch-client-javascript-api/nodejs.md
           - file: elasticsearch/elasticsearch-client-ruby-api/ruby.md
-      - file: elasticsearch/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md
+      - file: elasticsearch/diagnostic.md
+      - file: elasticsearch/more-topics.md
+        children:
+          - file: elasticsearch/discovery-troubleshooting.md
+          - file: elasticsearch/monitoring-troubleshooting.md
+          - file: elasticsearch/transform-troubleshooting.md
+          - file: elasticsearch/watcher-troubleshooting.md
+          - file: elasticsearch/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md
   - file: kibana.md
     children:
       - file: kibana/using-kibana-server-logs.md
