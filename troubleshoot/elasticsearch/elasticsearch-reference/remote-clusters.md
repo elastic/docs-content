@@ -15,7 +15,7 @@ You may encounter several issues when setting up a remote cluster for {{ccr}} or
 
 ### Checking whether a remote cluster has connected successfully [remote-clusters-troubleshooting-check-connection]
 
-A successful call to the cluster settings update API for adding or updating remote clusters does not necessarily mean the configuration is successful. Use the [remote cluster info API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-remote-info.html) to verify that a local cluster is successfully connected to a remote cluster.
+A successful call to the cluster settings update API for adding or updating remote clusters does not necessarily mean the configuration is successful. Use the [remote cluster info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) to verify that a local cluster is successfully connected to a remote cluster.
 
 ```console
 GET /_remote/info
@@ -238,7 +238,7 @@ Check the port number and ensure you are indeed connecting to the remote cluster
 
 ### Connecting without a cross-cluster API key [remote-clusters-troubleshooting-no-api-key]
 
-A local cluster uses the presence of a cross-cluster API key to determine the model with which it connects to a remote cluster. If a cross-cluster API key is present, it uses API key based authentication. Otherwise, it uses certificate based authentication. You can check what model is being used with the [remote cluster info API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-remote-info.html) on the local cluster:
+A local cluster uses the presence of a cross-cluster API key to determine the model with which it connects to a remote cluster. If a cross-cluster API key is present, it uses API key based authentication. Otherwise, it uses certificate based authentication. You can check what model is being used with the [remote cluster info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) on the local cluster:
 
 ```console
 GET /_remote/info
@@ -302,13 +302,13 @@ This does not show up in the logs of the remote cluster.
 
 #### Resolution [_resolution_5]
 
-Add the cross-cluster API key to {{es}} keystore on every node of the local cluster. Use the [Nodes reload secure settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) API to reload the keystore.
+Add the cross-cluster API key to {{es}} keystore on every node of the local cluster. Use the [Nodes reload secure settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API to reload the keystore.
 
 
 
 ### Using the wrong API key type [remote-clusters-troubleshooting-wrong-api-key-type]
 
-API key based authentication requires [cross-cluster API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html). It does not work with [REST API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html).
+API key based authentication requires [cross-cluster API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). It does not work with [REST API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
 
 #### Symptom [_symptom_5]
 
@@ -325,7 +325,7 @@ This does not show up in the logs of the remote cluster.
 
 #### Resolution [_resolution_6]
 
-Ask the remote cluster administrator to create and distribute a [cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html). Replace the existing API key in the {{es}} keystore with this cross-cluster API key on every node of the local cluster. Use the [Nodes reload secure settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) API to reload the keystore.
+Ask the remote cluster administrator to create and distribute a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). Replace the existing API key in the {{es}} keystore with this cross-cluster API key on every node of the local cluster. Use the [Nodes reload secure settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API to reload the keystore.
 
 
 
@@ -352,7 +352,7 @@ The remote cluster logs `Authentication using apikey failed`:
 
 #### Resolution [_resolution_7]
 
-Ask the remote cluster administrator to create and distribute a [cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html). Replace the existing API key in the {{es}} keystore with this cross-cluster API key on every node of the local cluster. Use the [Nodes reload secure settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) API to reload the keystore.
+Ask the remote cluster administrator to create and distribute a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). Replace the existing API key in the {{es}} keystore with this cross-cluster API key on every node of the local cluster. Use the [Nodes reload secure settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API to reload the keystore.
 
 
 
@@ -377,7 +377,7 @@ This does not show up in any logs.
 #### Resolution [_resolution_8]
 
 1. Check that the local user has the necessary `remote_indices` or `remote_cluster` privileges. Grant sufficient `remote_indices` or `remote_cluster` privileges if necessary.
-2. If permission is not an issue locally, ask the remote cluster administrator to create and distribute a [cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html). Replace the existing API key in the {{es}} keystore with this cross-cluster API key on every node of the local cluster. Use the [Nodes reload secure settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) API to reload the keystore.
+2. If permission is not an issue locally, ask the remote cluster administrator to create and distribute a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). Replace the existing API key in the {{es}} keystore with this cross-cluster API key on every node of the local cluster. Use the [Nodes reload secure settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API to reload the keystore.
 
 
 

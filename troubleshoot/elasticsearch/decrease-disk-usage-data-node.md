@@ -109,7 +109,7 @@ In order to estimate how many replicas need to be removed, first you need to est
     green  logs-000001                                                  1   0      7.7gb          7.7gb
     ```
 
-5. In the list above we see that if we reduce the replicas to 1 of the indices `my_index` and  `my_other_index` we will release the required disk space. It is not necessary to reduce the replicas of `search-products` and `logs-000001` does not have any replicas anyway. Reduce the replicas of one or more indices with the [index update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html):
+5. In the list above we see that if we reduce the replicas to 1 of the indices `my_index` and  `my_other_index` we will release the required disk space. It is not necessary to reduce the replicas of `search-products` and `logs-000001` does not have any replicas anyway. Reduce the replicas of one or more indices with the [index update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings):
 
     ::::{warning}
     Reducing the replicas of an index can potentially reduce search throughput and data redundancy.

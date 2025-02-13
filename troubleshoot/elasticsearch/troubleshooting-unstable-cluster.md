@@ -60,7 +60,7 @@ Nodes will also log a message containing `master node changed` whenever they sta
 
 If a node restarts, it will leave the cluster and then join the cluster again. When it rejoins, the `NodeJoinExecutor` will log that it processed a `node-join` task indicating that the node is `joining after restart`. If a node is unexpectedly restarting, look at the node’s logs to see why it is shutting down.
 
-The [Health](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html) API on the affected node will also provide some useful information about the situation.
+The [Health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) API on the affected node will also provide some useful information about the situation.
 
 If the node did not restart then you should look at the reason for its departure more closely. Each reason has different troubleshooting steps, described below. There are three possible reasons:
 
@@ -99,7 +99,7 @@ If you’re an advanced user, you can get more detailed information about what t
 logger.org.elasticsearch.cluster.coordination.LagDetector: DEBUG
 ```
 
-When this logger is enabled, {{es}} will attempt to run the [Nodes hot threads](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-hot-threads.html) API on the faulty node and report the results in the logs on the elected master. The results are compressed, encoded, and split into chunks to avoid truncation:
+When this logger is enabled, {{es}} will attempt to run the [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API on the faulty node and report the results in the logs on the elected master. The results are compressed, encoded, and split into chunks to avoid truncation:
 
 ```text
 [DEBUG][o.e.c.c.LagDetector      ] [master] hot threads from node [{node}{g3cCUaMDQJmQ2ZLtjr-3dg}{10.0.0.1:9300}] lagging at version [183619] despite commit of cluster state version [183620] [part 1]: H4sIAAAAAAAA/x...
@@ -131,7 +131,7 @@ If the last check failed with an exception then the exception is reported, and t
 * Packet captures will reveal system-level and network-level faults, especially if you capture the network traffic simultaneously at the elected master and the faulty node and analyse it alongside the {{es}} logs from those nodes. The connection used for follower checks is not used for any other traffic so it can be easily identified from the flow pattern alone, even if TLS is in use: almost exactly every second there will be a few hundred bytes sent each way, first the request by the master and then the response by the follower. You should be able to observe any retransmissions, packet loss, or other delays on such a connection.
 * Long waits for particular threads to be available can be identified by taking stack dumps of the main {{es}} process (for example, using `jstack`) or a profiling trace (for example, using Java Flight Recorder) in the few seconds leading up to the relevant log message.
 
-    The [Nodes hot threads](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-hot-threads.html) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you’re trying to diagnose. `jstack` is much more reliable since it doesn’t require any JVM threads.
+    The [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you’re trying to diagnose. `jstack` is much more reliable since it doesn’t require any JVM threads.
 
     The threads involved in discovery and cluster membership are mainly `transport_worker` and `cluster_coordination` threads, for which there should never be a long wait. There may also be evidence of long waits for threads in the {{es}} logs, particularly looking at warning logs from `org.elasticsearch.transport.InboundHandler`. See [Networking threading model](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#modules-network-threading-model) for more information.
 
@@ -149,7 +149,7 @@ To gather more information about the reason for shards shutting down slowly, con
 logger.org.elasticsearch.env.NodeEnvironment: DEBUG
 ```
 
-When this logger is enabled, {{es}} will attempt to run the [Nodes hot threads](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-hot-threads.html) API whenever it encounters a `ShardLockObtainFailedException`. The results are compressed, encoded, and split into chunks to avoid truncation:
+When this logger is enabled, {{es}} will attempt to run the [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API whenever it encounters a `ShardLockObtainFailedException`. The results are compressed, encoded, and split into chunks to avoid truncation:
 
 ```text
 [DEBUG][o.e.e.NodeEnvironment    ] [master] hot threads while failing to obtain shard lock for [index][0] [part 1]: H4sIAAAAAAAA/x...
