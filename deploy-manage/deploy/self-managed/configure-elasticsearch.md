@@ -5,7 +5,7 @@ mapped_pages:
 
 # Configure Elasticsearch [settings]
 
-{{es}} ships with good defaults and requires very little configuration. Most settings can be changed on a running cluster using the [Cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) API.
+{{es}} ships with good defaults and requires very little configuration. Most settings can be changed on a running cluster using the [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API.
 
 The configuration files should contain settings which are node-specific (such as `node.name` and paths), or settings which a node requires in order to be able to join a cluster, such as `cluster.name` and `network.host`.
 
@@ -87,7 +87,7 @@ Cluster and node settings can be categorized based on how they are configured:
 $$$dynamic-cluster-setting$$$
 
 Dynamic
-:   You can configure and update dynamic settings on a running cluster using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html). You can also configure dynamic settings locally on an unstarted or shut down node using `elasticsearch.yml`.
+:   You can configure and update dynamic settings on a running cluster using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). You can also configure dynamic settings locally on an unstarted or shut down node using `elasticsearch.yml`.
 
 Updates made using the cluster update settings API can be *persistent*, which apply across cluster restarts, or *transient*, which reset after a cluster restart. You can also reset transient or persistent settings by assigning them a `null` value using the API.
 
@@ -103,7 +103,7 @@ For example, you can apply a transient setting to override a persistent setting 
 ::::{tip} 
 If you use {{ess}}, use the [user settings](../elastic-cloud/edit-stack-settings.md) feature to configure all cluster settings. This method lets {{ess}} automatically reject unsafe settings that could break your cluster.
 
-If you run {{es}} on your own hardware, use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) to configure dynamic cluster settings. Only use `elasticsearch.yml` for static cluster settings and node settings. The API doesn’t require a restart and ensures a setting’s value is the same on all nodes.
+If you run {{es}} on your own hardware, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to configure dynamic cluster settings. Only use `elasticsearch.yml` for static cluster settings and node settings. The API doesn’t require a restart and ensures a setting’s value is the same on all nodes.
 
 ::::
 

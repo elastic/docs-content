@@ -30,23 +30,21 @@ For more information on supported network configurations, refer to [{{es}} Inges
 
 Install the Elastic Stack products you want to use in the following order:
 
-1. Elasticsearch ({{ref}}/install-elasticsearch.html[install instructions])
-2. Kibana ({{kibana-ref}}/install.html[install])
-3. Logstash ({{logstash-ref}}/installing-logstash.html[install])
-4. Elastic Agent ({{fleet-guide}}/elastic-agent-installation.html[install instructions]) or Beats ({{beats-ref}}/getting-started.html[install instructions])
-5. APM ({{apm-guide-ref}}/apm-quick-start.html[install instructions])
-6. Elasticsearch Hadoop ({{hadoop-ref}}/install.html[install instructions])
+1. [Elasticsearch]({{ref}}/install-elasticsearch.html)
+2. [Kibana]({{kibana-ref}}/install.html) 
+3. [Logstash]({{logstash-ref}}/installing-logstash.html)
+4. [Elastic Agent]({{fleet-guide}}/elastic-agent-installation.html) or [Beats]({{beats-ref}}/getting-started.html)
+5. [APM]({{apm-guide-ref}}/apm-quick-start.html)
+6. [Elasticsearch Hadoop]({{hadoop-ref}}/install.html)
 
 Installing in this order ensures that the components each product depends on are in place.
 
 
 ## Installing on {{ecloud}} [install-elastic-stack-for-elastic-cloud] 
 
-{ess-leadin-short}
-
 Installing on {{ecloud}} is easy: a single click creates an {{es}} cluster configured to the size you want, with or without high availability. The subscription features are always installed, so you automatically have the ability to secure and monitor your cluster. {{kib}} is enabled automatically, and a number of popular plugins are readily available.
 
-Some {{ecloud}} features can be used only with a specific subscription. For more information, see [https://www.elastic.co/pricing/](https://www.elastic.co/pricing/).
+Some {{ecloud}} features can be used only with a specific subscription. For more information, refer to [https://www.elastic.co/pricing/](https://www.elastic.co/pricing/).
 
 
 

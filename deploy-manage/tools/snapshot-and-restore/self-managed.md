@@ -47,11 +47,11 @@ When registering a snapshot repository, keep the following in mind:
 You can register and manage snapshot repositories in two ways:
 
 * {{kib}}'s **Snapshot and Restore** feature
-* {{es}}'s [snapshot repository management APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore-apis.html#snapshot-restore-repo-apis)
+* {{es}}'s [snapshot repository management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-snapshot)
 
 To manage repositories in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore*** > ***Repositories**. To register a snapshot repository, click **Register repository**.
 
-You can also register a repository using the [Create snapshot repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html).
+You can also register a repository using the [Create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository).
 
 
 ## Snapshot repository types [snapshot-repo-types]
@@ -96,14 +96,14 @@ You can also use alternative storage implementations with these repository types
 
 Note that some storage systems claim to be compatible with these repository types without emulating their behaviour in full. {{es}} requires full compatibility. In particular the alternative implementation must support the same set of API endpoints, return the same errors in case of failures, and offer equivalent consistency guarantees and performance even when accessed concurrently by multiple nodes. Incompatible error codes, consistency or performance may be particularly hard to track down since errors, consistency failures, and performance issues are usually rare and hard to reproduce.
 
-You can perform some basic checks of the suitability of your storage system using the [Repository analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html) API. If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible and is therefore unsuitable for use as a snapshot repository. You will need to work with the supplier of your storage system to address any incompatibilities you encounter.
+You can perform some basic checks of the suitability of your storage system using the [Repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) API. If this API does not complete successfully, or indicates poor performance, then your storage system is not fully compatible and is therefore unsuitable for use as a snapshot repository. You will need to work with the supplier of your storage system to address any incompatibilities you encounter.
 
 
 ## Verify a repository [snapshots-repository-verification]
 
 When you register a snapshot repository, {{es}} automatically verifies that the repository is available and functional on all master and data nodes.
 
-To disable this verification, set the [create snapshot repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html)'s `verify` query parameter to `false`. You can’t disable repository verification in {{kib}}.
+To disable this verification, set the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)'s `verify` query parameter to `false`. You can’t disable repository verification in {{kib}}.
 
 ```console
 PUT _snapshot/my_unverified_backup?verify=false
@@ -115,7 +115,7 @@ PUT _snapshot/my_unverified_backup?verify=false
 }
 ```
 
-If wanted, you can manually run the repository verification check. To verify a repository in {{kib}}, go to the **Repositories** list page and click the name of a repository. Then click **Verify repository**. You can also use the [verify snapshot repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/verify-snapshot-repo-api.html).
+If wanted, you can manually run the repository verification check. To verify a repository in {{kib}}, go to the **Repositories** list page and click the name of a repository. Then click **Verify repository**. You can also use the [verify snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-verify-repository).
 
 ```console
 POST _snapshot/my_unverified_backup/_verify
@@ -123,7 +123,7 @@ POST _snapshot/my_unverified_backup/_verify
 
 If successful, the request returns a list of nodes used to verify the repository. If verification fails, the request returns an error.
 
-You can test a repository more thoroughly using the [repository analysis API](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html).
+You can test a repository more thoroughly using the [repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze).
 
 
 ## Clean up a repository [snapshots-repository-cleanup]
@@ -132,7 +132,7 @@ Repositories can over time accumulate data that is not referenced by any existin
 
 To run the repository cleanup operation in {{kib}}, go to the **Repositories** list page and click the name of a repository. Then click **Clean up repository**.
 
-You can also use the [clean up snapshot repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/clean-up-snapshot-repo-api.html).
+You can also use the [clean up snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-cleanup-repository).
 
 ```console
 POST _snapshot/my_repository/_cleanup
@@ -172,4 +172,4 @@ Do not use filesystem snapshots of individual nodes as a backup mechanism. You m
 ::::
 
 
-When restoring a repository from a backup, you must not register the repository with {{es}} until the repository contents are fully restored. If you alter the contents of a repository while it is registered with {{es}} then the repository may become unreadable or may silently lose some of its contents. After restoring a repository from a backup, use the [Verify repository integrity](https://www.elastic.co/guide/en/elasticsearch/reference/current/verify-repo-integrity-api.html) API to verify its integrity before you start to use the repository.
+When restoring a repository from a backup, you must not register the repository with {{es}} until the repository contents are fully restored. If you alter the contents of a repository while it is registered with {{es}} then the repository may become unreadable or may silently lose some of its contents. After restoring a repository from a backup, use the [Verify repository integrity](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-verify-integrity) API to verify its integrity before you start to use the repository.

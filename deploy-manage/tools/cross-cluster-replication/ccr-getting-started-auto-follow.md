@@ -25,7 +25,7 @@ As new indices matching these patterns are created on the remote, {{es}} automat
 :::
 
 ::::{dropdown} API example
-Use the [create auto-follow pattern API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-auto-follow-pattern.html) to configure auto-follow patterns.
+Use the [create auto-follow pattern API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-put-auto-follow-pattern) to configure auto-follow patterns.
 
 ```console
 PUT /_ccr/auto_follow/beats
