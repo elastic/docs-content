@@ -10,7 +10,7 @@ mapped_pages:
 
 With Elastic Cloud on Kubernetes (ECK), you can extend the basic Kubernetes orchestration capabilities to easily deploy, secure, upgrade your {{es}} cluster, along with other Elastic applications.
 
-This section provides step-by-step guidance on:
+In this section, you'll learn how to do the following:
 
 - [**Installing the ECK Operator**](./install.md) → Learn different installation methods, including Helm and YAML manifests.
 - [**Deploying in air-gapped environments**](./air-gapped-install.md) → Follow best practices for installing and operating ECK in restricted networks.
