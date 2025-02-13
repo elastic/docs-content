@@ -18,19 +18,17 @@ If an {{anomaly-job}} fails, try to restart the job by following the procedure d
 If an {{anomaly-job}} has failed, do the following to recover from `failed` state:
 
 1. *Force* stop the corresponding {{dfeed}} by using the [Stop {{dfeed}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html) with the `force` parameter being `true`. For example, the following request force stops the `my_datafeed` {{dfeed}}.
-
-    ```console
-    POST _ml/datafeeds/my_datafeed/_stop
+   ```console
+   POST _ml/datafeeds/my_datafeed/_stop
     {
       "force": "true"
     }
-    ```
+   ```
 
 2. *Force* close the {{anomaly-job}} by using the [Close {{anomaly-job}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html) with the `force` parameter being `true`. For example, the following request force closes the `my_job` {{anomaly-job}}:
-
-    ```console
-    POST _ml/anomaly_detectors/my_job/_close?force=true
-    ```
+   ```console
+   POST _ml/anomaly_detectors/my_job/_close?force=true
+   ```
 
 3. Restart the {{anomaly-job}} on the **Job management** pane in {{kib}}.
 

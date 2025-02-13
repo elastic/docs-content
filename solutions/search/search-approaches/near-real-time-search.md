@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/near-real-time.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Near real-time search [near-real-time]
