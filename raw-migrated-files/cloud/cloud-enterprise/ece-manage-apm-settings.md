@@ -6,7 +6,7 @@ Starting in {{stack}} version 8.0, how you change APM settings and the settings 
 :   New deployments created in {{stack}} version 8.0 and later will be managed by {{fleet}}.
 
     * This mode requires SSL/TLS configuration. Check [TLS configuration for {{fleet}}-managed mode](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md#ece-edit-apm-fleet-tls) for details.
-    * Check [APM integration input settings](https://www.elastic.co/guide/en/apm/guide/current/input-apm.html) for all other Elastic APM configuration options in this mode.
+    * Check [APM integration input settings](/solutions/observability/apps/configure-apm-server.md) for all other Elastic APM configuration options in this mode.
 
 
 Standalone APM Server (legacy)
@@ -15,7 +15,7 @@ Standalone APM Server (legacy)
     Check [Edit standalone APM settings (legacy)](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md#ece-edit-apm-standalone-settings-ece)for information on how to configure Elastic APM in this mode.
 
 
-To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](https://www.elastic.co/guide/en/apm/guide/current/upgrade-to-apm-integration.html).
+To learn more about the differences between these modes, or to switch from Standalone APM Server (legacy) mode to {{fleet}}-managed, check [Switch to the Elastic APM integration](/solutions/observability/apps/switch-to-elastic-apm-integration.md).
 
 
 ## TLS configuration for {{fleet}}-managed mode [ece-edit-apm-fleet-tls]
@@ -33,7 +33,7 @@ Pick one of the following options:
 Elastic Cloud Enterprise supports most of the legacy APM settings. Through a YAML editor in the console, you can append your APM Server properties to the `apm-server.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
-Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](https://www.elastic.co/guide/en/apm/guide/current/configuring-howto-apm-server.html).
+Be aware that some settings could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest APM settings and syntax](/solutions/observability/apps/configure-apm-server.md).
 ::::
 
 

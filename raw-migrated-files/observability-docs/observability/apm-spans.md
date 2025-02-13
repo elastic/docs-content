@@ -10,7 +10,7 @@ The trace sample timeline visualization is a bird’s-eye view of what your appl
 View a span in detail by clicking on it in the timeline waterfall. For example, when you click on an SQL Select database query, the information displayed includes the actual SQL that was executed, how long it took, and the percentage of the trace’s total time. You also get a stack trace, which shows the SQL query in your code. Finally, APM knows which files are your code and which are just modules or libraries that you’ve installed. These library frames will be minimized by default in order to show you the most relevant stack trace.
 
 ::::{tip}
-A [span](https://www.elastic.co/guide/en/apm/guide/current/data-model-spans.html) is the duration of a single event. Spans are automatically captured by APM agents, and you can also define custom spans. Each span has a type and is defined by a different color in the timeline/waterfall visualization.
+A [span](/solutions/observability/apps/spans.md) is the duration of a single event. Spans are automatically captured by APM agents, and you can also define custom spans. Each span has a type and is defined by a different color in the timeline/waterfall visualization.
 ::::
 
 
