@@ -35,7 +35,7 @@ This section provides everything you need to install, configure, and manage Elas
 
 If you want to get started quickly, follow these guides to deploy ECK and set up an {{es}} cluster:
 
-* [Install ECK using the YAML manifests](./cloud-on-k8s/install-using-yaml-manifest-quickstart.md)
+* [Install ECK using YAML manifests](./cloud-on-k8s/install-using-yaml-manifest-quickstart.md)
 * [Deploy an {{es}} cluster](./cloud-on-k8s/elasticsearch-deployment-quickstart.md)
 * [Deploy a {{kib}} instance](./cloud-on-k8s/kibana-instance-quickstart.md)
 * [Update your deployment](./cloud-on-k8s/update-deployments.md)
