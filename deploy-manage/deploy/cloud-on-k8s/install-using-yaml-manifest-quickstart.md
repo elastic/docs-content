@@ -37,7 +37,7 @@ During the installation, the following components are installed or updated:
 
 Before you begin, review the following prerequisites and recommendations:
 
-* For this quickstart guide, your Kubernetes cluster is assumed to be already up and running. Before you proceed with the ECK installation, make sure you check the [supported versions](/deploy-manage/deploy/cloud-on-k8s.md#k8s-supported).
+* You're running a Kubernetes cluster using a [supported platform](/deploy-manage/deploy/cloud-on-k8s.md#k8s-supported).
 
 * If you are using GKE, make sure your user has `cluster-admin` permissions. For more information, check [Prerequisites for using Kubernetes RBAC on GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#iam-rolebinding-bootstrap).
 
