@@ -16,7 +16,7 @@ In this section, you'll learn how to do the following:
 - [**Deploying in air-gapped environments**](./air-gapped-install.md): Follow best practices for installing and operating ECK in restricted networks.
 - [**Configuring ECK**](./configure.md): Understand the available configuration options to optimize your ECK deployment.
 
-If you're looking to deploy {{es}}, {{kib}}, or other Elastic applications using ECK, refer to [](./manage-deployments.md).
+To learn how to deploy {{es}}, {{kib}}, or other Elastic applications using ECK, refer to [](./manage-deployments.md).
 
 ::::{tip}
 For a quickstart experience covering installation of ECK and deployment of an {{es}} cluster with a {{kib}} instance, refer to [](../cloud-on-k8s.md#eck-quickstart)
