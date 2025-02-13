@@ -504,7 +504,6 @@ toc:
       - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-session-view.md
       - file: docs-content/serverless/security-signals-to-cases.md
-      - file: docs-content/serverless/security-spaces.md
       - file: docs-content/serverless/security-third-party-actions.md
       - file: docs-content/serverless/security-threat-intelligence.md
       - file: docs-content/serverless/security-timeline-templates-ui.md
@@ -887,7 +886,6 @@ toc:
       - file: security-docs/security/security-assistant.md
       - file: security-docs/security/security-posture-faq.md
       - file: security-docs/security/security-posture-management.md
-      - file: security-docs/security/security-spaces.md
       - file: security-docs/security/self-healing-rollback.md
       - file: security-docs/security/session-view.md
       - file: security-docs/security/signals-to-cases.md
