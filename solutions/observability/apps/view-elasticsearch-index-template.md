@@ -73,7 +73,7 @@ In the **Index settings** step, you can specify custom [index settings](https://
 
 ## Roll over the data stream [apm-custom-index-template-rollover]
 
-Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. This can be done with the {{es}} [Rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html). For example, to roll over the `traces-apm-default` data stream, run:
+Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. This can be done with the {{es}} [Rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover). For example, to roll over the `traces-apm-default` data stream, run:
 
 ```console
 POST /traces-apm-default/_rollover/
