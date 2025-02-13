@@ -81,7 +81,7 @@ The frozen tier requires a snapshot repository. The frozen tier uses [partially 
 
 Follow the instructions for your deployment type to configure data tiers.
 
-### {{ess}} or {{ece}} [configure-data-tiers-cloud]
+### {{ech}} or {{ece}} [configure-data-tiers-cloud]
 
 The default configuration for an {{ecloud}} deployment includes a shared tier for hot and content data. This tier is required and can’t be removed.
 
@@ -118,7 +118,7 @@ GET /_cat/indices/restored-*
 
 ##### Non-searchable snapshot data tier [ece-disable-non-searchable-snapshot-data-tier]
 
-{{ess}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (e.g., hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
+{{ech}} and {{ece}} try to move all data from the nodes that are removed during plan changes. To disable a non-searchable snapshot data tier (e.g., hot, warm, or cold tier), make sure that all data on that tier can be re-allocated by reconfiguring the relevant shard allocation filters. You’ll also need to temporarily stop your index lifecycle management (ILM) policies to prevent new indices from being moved to the data tier you want to disable.
 
 To learn more about ILM, or shard allocation filtering, check the following documentation:
 
@@ -132,7 +132,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     :::::{tab-set}
 
-    ::::{tab-item} {{ess}}
+    ::::{tab-item} {{ech}}
 
     1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. From the **Deployments** page, select your deployment.
