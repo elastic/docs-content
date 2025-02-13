@@ -1,7 +1,10 @@
 # Start and stop services
 
-% What needs to be done: Write from scratch
+This section covers the recommended procedures for:
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/353
+* starting and stopping Elasticsearch
+* starting and stopping Kibana
+* restarting cloud-hosted deployments
+* full cluster and rolling restarts
 
-% Scope notes: Super brief summary
+Following these guidelines helps prevent data loss, minimize downtime, and maintain optimal performance across different environments.
