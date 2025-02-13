@@ -223,7 +223,7 @@ By default, Windows log files are stored in `C:\ProgramData\filebeat\Logs`.
 
 #### Step 5: Parse logs with an ingest pipeline [step-5-plaintext-parse-logs-with-an-ingest-pipeline]
 
-Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html)-compatible fields.
+Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html)-compatible fields.
 
 Create an ingest pipeline that defines a [dissect processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect-processor.html) to extract structured ECS fields from your log messages. In your project, navigate to **Developer Tools** and using a command similar to the following example:
 
@@ -245,7 +245,7 @@ PUT _ingest/pipeline/filebeat* <1>
 1. `_ingest/pipeline/filebeat*`: The name of the pipeline. Update the pipeline name to match the name of your data stream. For more information, refer to [Data stream naming scheme](https://www.elastic.co/guide/en/fleet/current/data-streams.html#data-streams-naming-scheme).
 2. `processors.dissect`: Adds a [dissect processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect-processor.html) to extract structured fields from your log message.
 3. `field`: The field you’re extracting data from, `message` in this case.
-4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
+4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 
 Refer to [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#logs-stream-parse) for more on using ingest pipelines to parse your log data.
@@ -285,7 +285,7 @@ To add the custom logs integration to your project:
 
 #### Step 2: Add an ingest pipeline to your integration [step-2-plaintext-add-an-ingest-pipeline-to-your-integration]
 
-To aggregate or search for information in plaintext logs, use an ingest pipeline with your integration to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html)-compatible fields.
+To aggregate or search for information in plaintext logs, use an ingest pipeline with your integration to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html)-compatible fields.
 
 1. From the custom logs integration, select **Integration policies** tab.
 2. Select the integration policy you created in the previous section.
@@ -311,7 +311,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
 
     1. `processors.dissect`: Adds a [dissect processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect-processor.html) to extract structured fields from your log message.
     2. `field`: The field you’re extracting data from, `message` in this case.
-    3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
+    3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 6. Click **Create pipeline**.
 7. Save and deploy your integration.

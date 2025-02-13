@@ -234,14 +234,14 @@ export ELASTIC_APM_SECRET_TOKEN=
 
 Instrumentation is the process of extending your application’s code to report trace data to Elastic APM. Go applications must be instrumented manually at the source code level. To instrument your applications, use one of the following approaches:
 
-* [Built-in instrumentation modules](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/builtin-modules.html).
-* [Custom instrumentation](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/custom-instrumentation.html) and context propagation with the Go Agent API.
+* [Built-in instrumentation modules](https://www.elastic.co/guide/en/apm/agent/go/current/builtin-modules.html).
+* [Custom instrumentation](https://www.elastic.co/guide/en/apm/agent/go/current/custom-instrumentation.html) and context propagation with the Go Agent API.
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/supported-tech.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html)
-* [Detailed guide to instrumenting Go source code](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/getting-started.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/go/current/supported-tech.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html)
+* [Detailed guide to instrumenting Go source code](https://www.elastic.co/guide/en/apm/agent/go/current/getting-started.html)
 ::::::
 
 ::::::{tab-item} iOS
@@ -359,12 +359,12 @@ Different application servers have different ways of setting the `-javaagent` fl
 java -javaagent:/path/to/elastic-apm-agent-<version>.jar -Delastic.apm.service_name=my-cool-service -Delastic.apm.application_packages=org.example,org.another.example -Delastic.apm.server_url=http://127.0.0.1:8200 -jar my-application.jar
 ```
 
-Refer to [Manual setup with `-javaagent` flag](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/setup-javaagent.html) to learn more.
+Refer to [Manual setup with `-javaagent` flag](https://www.elastic.co/guide/en/apm/agent/java/current/setup-javaagent.html) to learn more.
 
 **Alternate setup methods**
 
-* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/setup-attach-cli.html) for more information on this setup method.
-* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/setup-attach-api.html) for more information on this setup method.
+* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-cli.html) for more information on this setup method.
+* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-api.html) for more information on this setup method.
 ::::::
 
 ::::::{tab-item} .NET
@@ -372,14 +372,14 @@ Refer to [Manual setup with `-javaagent` flag](https://www.elastic.co/guide/en/a
 
 The .NET agent can be added to an application in a few different ways:
 
-* **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/setup-auto-instrumentation.html).
-* **NuGet packages**: The agent ships as a set of [NuGet packages](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/packages.html) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
-* **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/setup-dotnet-net-core.html) for more details.
+* **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup-auto-instrumentation.html).
+* **NuGet packages**: The agent ships as a set of [NuGet packages](https://www.elastic.co/guide/en/apm/agent/dotnet/current/packages.html) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
+* **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup-dotnet-net-core.html) for more details.
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/dotnet/current/configuration.html)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -421,9 +421,9 @@ The agent will now monitor the performance of your application and record any un
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/supported-technologies.html)
-* [Babel/ES Modules](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/advanced-setup.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuring-the-agent.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/current/supported-technologies.html)
+* [Babel/ES Modules](https://www.elastic.co/guide/en/apm/agent/nodejs/current/advanced-setup.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuring-the-agent.html)
 ::::::
 
 ::::::{tab-item} PHP
@@ -492,8 +492,8 @@ elastic_apm.bootstrap_php_part_file=<repo root>/agent/php/bootstrap_php_part.php
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/supported-technologies.html)
-* [Configuration](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/php/current/supported-technologies.html)
+* [Configuration](https://www.elastic.co/guide/en/apm/agent/php/current/configuration.html)
 ::::::
 
 ::::::{tab-item} Python
@@ -576,8 +576,8 @@ apm = ElasticAPM(app)
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -653,8 +653,8 @@ server_url: 'http://localhost:8200'
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/ruby/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html)
 ::::::
 
 ::::::{tab-item} RUM
@@ -725,8 +725,8 @@ const apm = initApm({
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/rum-js/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/rum-js/current/configuration.html)
 ::::::
 
 ::::::{tab-item} OpenTelemetry
