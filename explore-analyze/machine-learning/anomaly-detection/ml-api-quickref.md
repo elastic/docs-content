@@ -8,7 +8,7 @@ mapped_pages:
 
 # API quick reference [ml-api-quickref]
 
-All {{ml}} {anomaly-detect} endpoints have the following base:
+All {{ml}} {{anomaly-detect}} endpoints have the following base:
 
 ```js
 /_ml/
@@ -23,4 +23,4 @@ The main resources can be accessed with a variety of endpoints:
 * [`/results/`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly): Access the results of an {anomaly-job}
 * [`/model_snapshots/`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly): Manage model snapshots
 
-For a full list, see [{{ml-cap}} {anomaly-detect} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly).
+For a full list, see [{{ml-cap}} {{anomaly-detect}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-anomaly).

@@ -21,7 +21,7 @@ The same client is used for {es3}, on-premise and managed Elasticsearch. Some AP
 
 * Java 8 or later.
 * A JSON object mapping library to allow seamless integration of
-your application classes with the {es} API. The examples below
+your application classes with the {{es}} API. The examples below
 show usage with Jackson.
 
 [discrete]
@@ -79,7 +79,7 @@ the following to the `pom.xml` of your project:
 [[elasticsearch-java-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and {es} endpoint:
+Initialize the client using your API key and {{es}} endpoint:
 
 [source,java]
 ----
@@ -103,7 +103,7 @@ ElasticsearchTransport transport = new RestClientTransport(
 ElasticsearchClient esClient = new ElasticsearchClient(transport);
 ----
 
-To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {{es}} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-java-client-getting-started-using-the-api]]
@@ -157,7 +157,7 @@ SearchResponse<Product> response = esClient.search(s -> s
 A few things to note in the above example:
 
 * The search query is built using a hierarchy of lambda expressions that closely
-follows the {es} HTTP API. Lambda expressions allows you to be guided
+follows the {{es}} HTTP API. Lambda expressions allows you to be guided
 by your IDE's autocompletion, without having to import (or even know!) the
 actual classes representing a query.
 * The last parameter `Product.class` instructs the client to return results as

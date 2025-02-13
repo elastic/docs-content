@@ -44,7 +44,7 @@ Creating **TSVB** visualizations with an {{es}} index string is deprecated and w
 1. On the dashboard, click **Select type**, then select **TSVB**.
 2. In **TSVB**, click **Panel options**, then specify the **Data** settings.
 3. Open the **Data view mode** options next to the **Data view** dropdown.
-4. Select **Use only {{kib}} {data-sources}**.
+4. Select **Use only {{kib}} {{data-sources}}**.
 5. From the **Data view** dropdown, select the {{data-source}}, then select the **Time field** and **Interval**.
 6. Select a **Drop last bucket** option.
 

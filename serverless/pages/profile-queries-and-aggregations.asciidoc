@@ -54,7 +54,7 @@ indices and shards, it doesn't necessarily represent the actual physical query t
 To see more profiling information, select **View details**.
 You'll find details about query components and the timing
 breakdown of low-level methods.
-For more information, refer to {ref}/search-profile.html#profiling-queries[Profiling queries] in the {es} documentation.
+For more information, refer to {ref}/search-profile.html#profiling-queries[Profiling queries] in the {{es}} documentation.
 
 [discrete]
 [[devtools-profile-queries-and-aggregations-filter-for-an-index-or-type]]
@@ -168,7 +168,7 @@ image::images/profiler-gs10.png["Drilling into the first shard's details"]
 +
 For more information about how the **{searchprofiler}** works, how timings are calculated, and
 how to interpret various results, refer to
-{ref}/search-profile.html#profiling-queries[Profiling queries] in the {es} documentation.
+{ref}/search-profile.html#profiling-queries[Profiling queries] in the {{es}} documentation.
 
 [discrete]
 [[profiler-render-JSON]]

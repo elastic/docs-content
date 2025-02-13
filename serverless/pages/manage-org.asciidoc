@@ -117,7 +117,7 @@ endif::[]
 
 |Detections admin |All available detection engine permissions to include creating rule actions, such as notifications to third-party systems. |{sec-badge}
 
-|Endpoint policy manager |Access to endpoint policy management and related artifacts. Can manage {fleet} and integrations. |{sec-badge}
+|Endpoint policy manager |Access to endpoint policy management and related artifacts. Can manage {{fleet}} and integrations. |{sec-badge}
 |===
 
 

@@ -43,10 +43,10 @@ To learn more about roles, refer to <<general-assign-user-roles>>.
 | {es-badge}{obs-badge}{sec-badge}
 
 | <<machine-learning>>
-| View, export, and import your {anomaly-detect} and {dfanalytics} jobs and trained models.
+| View, export, and import your {{anomaly-detect}} and {{dfanalytics}} jobs and trained models.
 | {es-badge}{obs-badge}{sec-badge}
 
 | <<transforms>>
-| Use transforms to pivot existing {es} indices into summarized or entity-centric indices.
+| Use transforms to pivot existing {{es}} indices into summarized or entity-centric indices.
 | {es-badge}{obs-badge}{sec-badge}
 |===

@@ -1,6 +1,6 @@
 # Active Directory user authentication [active-directory-realm]
 
-You can configure {{stack}} {security-features} to communicate with Active Directory to authenticate users. See [Configuring an Active Directory realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#ad-realm-configuration).
+You can configure {{stack}} {{security-features}} to communicate with Active Directory to authenticate users. See [Configuring an Active Directory realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#ad-realm-configuration).
 
 The {{security-features}} use LDAP to communicate with Active Directory, so `active_directory` realms are similar to [`ldap` realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md). Like LDAP directories, Active Directory stores users and groups hierarchically. The directory’s hierarchy is built from containers such as the *organizational unit* (`ou`), *organization* (`o`), and *domain component* (`dc`).
 

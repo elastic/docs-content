@@ -34,7 +34,7 @@ image::images/custom-roles-ui.png[Custom Roles app]
 // TO-DO: This screenshot needs to be refreshed and automated.
 
 Roles are a collection of privileges that enable users to access project features and data.
-For example, when you create a custom role, you can assign {es} cluster and index privileges and {kib} privileges.
+For example, when you create a custom role, you can assign {{es}} cluster and index privileges and {kib} privileges.
 
 [NOTE]
 ====
@@ -43,13 +43,13 @@ You cannot assign {ref}/security-privileges.html#_run_as_privilege[run as privil
 
 [discrete]
 [[custom-roles-es-cluster-privileges]]
-== {es} cluster privileges
+== {{es}} cluster privileges
 
 Cluster privileges grant access to monitoring and management features in {es}.
 They also enable some {stack-manage-app} capabilities in your project.
 
 [role="screenshot"]
-image::images/custom-roles-cluster-privileges.png[Create a custom role and define {es} cluster privileges]
+image::images/custom-roles-cluster-privileges.png[Create a custom role and define {{es}} cluster privileges]
 
 // TO-DO: This screenshot needs to be refreshed and automated.
 
@@ -57,22 +57,22 @@ Refer to {ref}/security-privileges.html#privileges-list-cluster[cluster privileg
 
 [discrete]
 [[custom-roles-es-index-privileges]]
-== {es} index privileges
+== {{es}} index privileges
 
 Each role can grant access to multiple data indices, and each index can have a different set of privileges.
 Typically, you will grant the `read` and `view_index_metadata` privileges to each index that you expect your users to work with.
 For example, grant access to indices that match an `acme-marketing-*` pattern:
 
 [role="screenshot"]
-image::images/custom-roles-index-privileges.png[Create a custom role and define {es} index privileges]
+image::images/custom-roles-index-privileges.png[Create a custom role and define {{es}} index privileges]
 
 // TO-DO: This screenshot needs to be refreshed and automated.
 
 Refer to {ref}/security-privileges.html#privileges-list-indices[index privileges] for a complete description of available options.
 
 Document-level and field-level security affords you even more granularity when it comes to granting access to your data.
-With document-level security (DLS), you can write an {es} query to describe which documents this role grants access to.
-With field-level security (FLS), you can instruct {es} to grant or deny access to specific fields within each document.
+With document-level security (DLS), you can write an {{es}} query to describe which documents this role grants access to.
+With field-level security (FLS), you can instruct {{es}} to grant or deny access to specific fields within each document.
 
 // Derived from https://www.elastic.co/guide/en/kibana/current/kibana-role-management.html#adding_cluster_privileges
 

@@ -36,7 +36,7 @@ You can configure a `native` realm in the `xpack.security.authc.realms.native` n
 
 ## Managing native users [managing-native-users]
 
-The {{stack}} {security-features} enable you to easily manage users in {{kib}} on the **Management / Security / Users** page.
+The {{stack}} {{security-features}} enable you to easily manage users in {{kib}} on the **Management / Security / Users** page.
 
 Alternatively, you can manage users through the `user` API. For more information and examples, see [Users](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-user-apis).
 

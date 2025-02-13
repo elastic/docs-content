@@ -1,6 +1,6 @@
 # Kerberos authentication [kerberos-realm]
 
-You can configure the {{stack}} {security-features} to support Kerberos V5 authentication, an industry standard protocol to authenticate users in {{es}}.
+You can configure the {{stack}} {{security-features}} to support Kerberos V5 authentication, an industry standard protocol to authenticate users in {{es}}.
 
 ::::{note} 
 You cannot use the Kerberos realm to authenticate on the transport network layer.

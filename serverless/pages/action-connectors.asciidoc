@@ -47,7 +47,7 @@ Actions are instantiations of a connector that are linked to rules and run as ba
 ////
 
 ////
-/* {kib} provides the following types of connectors for use with {alert-features} :
+/* {kib} provides the following types of connectors for use with {{alert-features}} :
 
 - [D3 Security]({kibana-ref}/d3security-action-type.html)
 - [Email]({kibana-ref}/email-action-type.html)

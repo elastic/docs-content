@@ -1,10 +1,10 @@
 [[elasticsearch-api-conventions]]
-= {es} API conventions
+= {{es}} API conventions
 
 // :description: The {es-serverless} REST APIs have conventions for headers and request bodies.
 // :keywords: serverless, elasticsearch, API, reference
 
-You can run {es} API requests in **{dev-tools-app} → Console**.
+You can run {{es}} API requests in **{dev-tools-app} → Console**.
 For example:
 
 [source,shell]
@@ -18,8 +18,8 @@ Check out <<devtools-run-api-requests-in-the-console>>.
 [[elasticsearch-api-conventions-request-headers]]
 == Request headers
 
-When you call {es} APIs outside of the Console, you must provide a request header.
-The {es} APIs support the `Authorization`, `Content-Type`, and `X-Opaque-Id` headers.
+When you call {{es}} APIs outside of the Console, you must provide a request header.
+The {{es}} APIs support the `Authorization`, `Content-Type`, and `X-Opaque-Id` headers.
 
 [discrete]
 [[elasticsearch-api-conventions-authorization]]
@@ -35,7 +35,7 @@ curl -X GET "${ES_URL}/_cat/indices?v=true" \
   -H "Authorization: ApiKey ${API_KEY}"
 ----
 
-To get API keys for the {es} endpoint (`${ES_URL}`) for a project, refer to <<elasticsearch-get-started>>.
+To get API keys for the {{es}} endpoint (`${ES_URL}`) for a project, refer to <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-api-conventions-content-type]]
@@ -79,7 +79,7 @@ Because it's used only for traces, you can safely generate a unique `traceparent
 
 {es} APIs surface the header's `trace-id` value as `trace.id` in the:
 
-* JSON {es} server logs
+* JSON {{es}} server logs
 * Slow logs
 * Deprecation logs
 
@@ -92,7 +92,7 @@ For example, a `traceparent` value of `00-0af7651916cd43dd8448eb211c80319c-b7ad6
 [[elasticsearch-api-conventions-x-opaque-id]]
 === X-Opaque-Id
 
-You can pass an `X-Opaque-Id` HTTP header to track the origin of a request in {es} logs and tasks.
+You can pass an `X-Opaque-Id` HTTP header to track the origin of a request in {{es}} logs and tasks.
 For example:
 
 [source,bash]
@@ -126,7 +126,7 @@ curl -X GET "${ES_URL}/_search?pretty" \
 */
 ////
 
-For the deprecation logs, {es} also uses the `X-Opaque-Id` value to throttle and deduplicate deprecation warnings.
+For the deprecation logs, {{es}} also uses the `X-Opaque-Id` value to throttle and deduplicate deprecation warnings.
 
 ////
 /* MISSING LINKS
@@ -137,16 +137,16 @@ See \<\<_deprecation_logs_throttling>>.
 The `X-Opaque-Id` header accepts any arbitrary value.
 However, it is recommended that you limit these values to a finite set, such as an ID per client.
 Don't generate a unique `X-Opaque-Id` header for every request.
-Too many unique `X-Opaque-Id` values can prevent {es} from deduplicating warnings in the deprecation logs.
+Too many unique `X-Opaque-Id` values can prevent {{es}} from deduplicating warnings in the deprecation logs.
 
 [discrete]
 [[elasticsearch-api-conventions-request-bodies]]
 == Request bodies
 
-A number of {es} APIs with GET operations--most notably the search API--support a request body.
+A number of {{es}} APIs with GET operations--most notably the search API--support a request body.
 While the GET operation makes sense in the context of retrieving information, GET requests with a body are not supported by all HTTP libraries.
 
-All {es} APIs with GET operations that require a body can also be submitted as POST requests.
+All {{es}} APIs with GET operations that require a body can also be submitted as POST requests.
 Alternatively, you can pass the request body as the `source` query string parameter when using GET.
 When you use this method, the `source_content_type` parameter should also be passed with a media type value that indicates the format of the source, such as `application/json`.
 
@@ -157,7 +157,7 @@ Error: no handler found for uri [.../_search?pretty=true] and method [GET]"
 
 ## Date math
 
-Most {es} APIs that accept an index or index alias argument support date math.
+Most {{es}} APIs that accept an index or index alias argument support date math.
 Date math name resolution enables you to search a range of time series indices or index aliases rather than searching all of your indices and filtering the results.
 Limiting the number of searched indices reduces cluster load and improves search performance.
 For example, if you are searching for errors in your daily logs, you can use a date math name template to restrict the search to the past two days.

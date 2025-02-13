@@ -1,4 +1,4 @@
-The models compatible with {es} NLP generate dense vectors as output. The
+The models compatible with {{es}} NLP generate dense vectors as output. The
 {ref}/dense-vector.html[`dense_vector`] field type is suitable for storing dense vectors
 of numeric values. The index must have a field with the `dense_vector` field
 type to index the embeddings that the supported third-party model that you

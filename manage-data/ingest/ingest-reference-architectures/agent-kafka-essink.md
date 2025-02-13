@@ -32,7 +32,7 @@ Info on {{agent}} and agent integrations:
 Info on {{ls}} and {{ls}} plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {agent} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
+* [{{ls}} {{agent}} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
 * [{{ls}} Kafka output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-kafka.html)
 
 Info on {{es}}:

@@ -11,7 +11,7 @@ For example, you can use pipelines to remove fields, extract values from text, a
 
 A pipeline consists of a series of configurable tasks called processors.
 Each processor runs sequentially, making specific changes to incoming documents.
-After the processors have run, {es} adds the transformed documents to your data stream or index.
+After the processors have run, {{es}} adds the transformed documents to your data stream or index.
 
 ////
 /*
@@ -19,7 +19,7 @@ TBD: Do these requirements apply in serverless?
 ## Prerequisites
 
 - Nodes with the ingest node role handle pipeline processing. To use ingest pipelines, your cluster must have at least one node with the ingest role. For heavy ingest loads, we recommend creating dedicated ingest nodes.
-- If the {es} security features are enabled, you must have the manage_pipeline cluster privilege to manage ingest pipelines. To use Kibana’s Ingest Pipelines feature, you also need the cluster:monitor/nodes/info cluster privileges.
+- If the {{es}} security features are enabled, you must have the manage_pipeline cluster privilege to manage ingest pipelines. To use Kibana’s Ingest Pipelines feature, you also need the cluster:monitor/nodes/info cluster privileges.
 - Pipelines including the enrich processor require additional setup. See Enrich your data.
 */
 ////

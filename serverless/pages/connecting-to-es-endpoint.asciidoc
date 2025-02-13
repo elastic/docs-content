@@ -17,7 +17,7 @@ To connect to your Elasticsearch instance from your applications, client librari
 [[elasticsearch-get-started-create-api-key]]
 == Create a new API key
 
-Create an API key to authenticate your requests to the {es} APIs. You'll need an API key for all API requests and client connections.
+Create an API key to authenticate your requests to the {{es}} APIs. You'll need an API key for all API requests and client connections.
 
 To create a new API key:
 
@@ -40,10 +40,10 @@ You can't recover or retrieve a lost API key. Instead, you must delete the key a
 
 [discrete]
 [[elasticsearch-get-started-endpoint]]
-== Get your {es} endpoint URL
+== Get your {{es}} endpoint URL
 
-The endpoint URL is the address for your {es} instance.
-You'll use this URL together with your API key to make requests to the {es} APIs.
+The endpoint URL is the address for your {{es}} instance.
+You'll use this URL together with your API key to make requests to the {{es}} APIs.
 To find the endpoint URL:
 
 

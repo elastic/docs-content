@@ -30,7 +30,7 @@ TBD: Are these RBAC requirements valid for serverless?
 
 ## Required permissions
 
-If you use {es} {security-features}, the following <DocLink id="enElasticsearchReferenceSecurityPrivileges">security privileges</DocLink> are required:
+If you use {{es}} {{security-features}}, the following <DocLink id="enElasticsearchReferenceSecurityPrivileges">security privileges</DocLink> are required:
 
 * The `monitor` cluster privilege to access Elastic's **{index-manage-app}** features.
 * The `view_index_metadata` and `manage` index privileges to view a data stream

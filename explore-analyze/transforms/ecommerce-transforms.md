@@ -10,7 +10,7 @@ mapped_pages:
 
 [{{transforms-cap}}](../transforms.md) enable you to retrieve information from an {{es}} index, transform it, and store it in another index. Let’s use the [{{kib}} sample data](https://www.elastic.co/guide/en/kibana/current/get-started.html) to demonstrate how you can pivot and summarize your data with {{transforms}}.
 
-1. Verify that your environment is set up properly to use {{transforms}}. If the {{es}} {security-features} are enabled, to complete this tutorial you need a user that has authority to preview and create {{transforms}}. You must also have specific index privileges for the source and destination indices. See [Setup](transform-setup.md).
+1. Verify that your environment is set up properly to use {{transforms}}. If the {{es}} {{security-features}} are enabled, to complete this tutorial you need a user that has authority to preview and create {{transforms}}. You must also have specific index privileges for the source and destination indices. See [Setup](transform-setup.md).
 2. Choose your *source index*.
 
     In this example, we’ll use the eCommerce orders sample data. If you’re not already familiar with the `kibana_sample_data_ecommerce` index, use the **Revenue** dashboard in {{kib}} to explore the data. Consider what insights you might want to derive from this eCommerce data.

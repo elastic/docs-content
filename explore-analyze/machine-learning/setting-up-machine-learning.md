@@ -11,7 +11,7 @@ mapped_pages:
 
 ## Requirements overview [requirements-overview]
 
-To use the {{stack}} {ml-features}, you must have:
+To use the {{stack}} {{ml-features}}, you must have:
 
 * the [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated
 * `xpack.ml.enabled` set to its default value of `true` on every node in the cluster (refer to [{{ml-cap}} settings in {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html))

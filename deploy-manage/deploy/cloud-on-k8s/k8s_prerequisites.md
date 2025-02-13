@@ -172,7 +172,7 @@ spec:
       podSelector:
         matchLabels:
           common.k8s.elastic.co/type: elasticsearch
-          # [Optional] Restrict to a single {es} cluster named hulk.
+          # [Optional] Restrict to a single {{es}} cluster named hulk.
           # elasticsearch.k8s.elastic.co/cluster-name=hulk
   - ports:
     - port: 53

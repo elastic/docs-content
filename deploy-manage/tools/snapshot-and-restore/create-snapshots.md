@@ -57,7 +57,7 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 
 ### {{slm-init}} security [slm-security]
 
-The following [cluster privileges](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) control access to the {{slm-init}} actions when {{es}} {security-features} are enabled:
+The following [cluster privileges](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) control access to the {{slm-init}} actions when {{es}} {{security-features}} are enabled:
 
 `manage_slm`
 :   Allows a user to perform all {{slm-init}} actions, including creating and updating policies and starting and stopping {{slm-init}}.

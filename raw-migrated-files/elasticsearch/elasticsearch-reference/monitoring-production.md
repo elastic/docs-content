@@ -38,7 +38,7 @@ To store monitoring data in a separate cluster:
         }
         ```
 
-    2. If the {{es}} {security-features} are enabled on the monitoring cluster, create users that can send and retrieve monitoring data:
+    2. If the {{es}} {{security-features}} are enabled on the monitoring cluster, create users that can send and retrieve monitoring data:
 
         ::::{note} 
         If you plan to use {{kib}} to view monitoring data, username and password credentials must be valid on both the {{kib}} server and the monitoring cluster.

@@ -4,7 +4,7 @@
 // :description: Set up and use the Go client.
 // :keywords: serverless, elasticsearch, go, how to
 
-This page guides you through the installation process of the {es} Go
+This page guides you through the installation process of the {{es}} Go
 client, shows you how to initialize the client, and how to perform basic
 {es} operations with it.
 
@@ -55,7 +55,7 @@ import (
 [[elasticsearch-go-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and {es} endpoint:
+Initialize the client using your API key and {{es}} endpoint:
 
 [source,go]
 ----
@@ -68,7 +68,7 @@ if err != nil {
 }
 ----
 
-To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {{es}} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-go-client-getting-started-using-the-api]]

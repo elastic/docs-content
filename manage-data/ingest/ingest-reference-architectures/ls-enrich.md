@@ -35,10 +35,10 @@ Info on configuring {{agent}}:
 
 For info on {{ls}} for enriching data, check out these sections in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
 
-* [{{ls}} {agent} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
+* [{{ls}} {{agent}} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
 * [{{ls}} plugins for enriching data](https://www.elastic.co/guide/en/logstash/current/lookup-enrichment.html)
 * [Logstash filter plugins](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html)
-* [{{ls}} {es} output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html)
+* [{{ls}} {{es}} output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html)
 
 Info on {{es}}:
 

@@ -113,7 +113,7 @@ You'll need to update these values in your https://github.com/elastic/connectors
 [[elasticsearch-ingest-data-through-integrations-connector-client-step-2-deploy-your-self-managed-connector]]
 == Step 2: Deploy your self-managed connector
 
-To use connector clients, you must deploy the connector service so your connector can talk to your {es} instance.
+To use connector clients, you must deploy the connector service so your connector can talk to your {{es}} instance.
 The source code is hosted in the `elastic/connectors` repository.
 
 You have two deployment options:
@@ -125,8 +125,8 @@ You have two deployment options:
 ====
 You'll need the following values handy to update your `config.yml` file:
 
-* `elasticsearch.host`: Your {es} endpoint. Printed to the screen when you create a new connector.
-* `elasticsearch.api_key`: Your {es} API key. You can create API keys by navigating to **Home**, and clicking **New** in the **API key** section. Once your connector is running, you'll be able to create a new API key that is limited to only access the connector's index.
+* `elasticsearch.host`: Your {{es}} endpoint. Printed to the screen when you create a new connector.
+* `elasticsearch.api_key`: Your {{es}} API key. You can create API keys by navigating to **Home**, and clicking **New** in the **API key** section. Once your connector is running, you'll be able to create a new API key that is limited to only access the connector's index.
 * `connector_id`: Unique id for your connector. Printed to the screen when you create a new connector.
 * `service_type`: Original data source type. Printed to the screen when you create a new connector.
 ====
@@ -251,7 +251,7 @@ make install
 make run
 ----
 
-The connector service should now be running in your terminal. If the connection to your {es} instance was successful, the **Configure your connector** step will be activated in the project's UI.
+The connector service should now be running in your terminal. If the connection to your {{es}} instance was successful, the **Configure your connector** step will be activated in the project's UI.
 
 Here we're working locally. In a production setup, you'll deploy the connector service to your own infrastructure.
 
@@ -280,7 +280,7 @@ For example, the Sharepoint Online connector requires the following details abou
 Once you've entered the data source details, you need to connect to an index.
 This is the final step in your project's UI, before you can run a sync.
 
-You can choose to sync to an existing {es} index, or create a new index for your connector.
+You can choose to sync to an existing {{es}} index, or create a new index for your connector.
 You can also create an API key that is limited to only access your selected index.
 
 .Index name prefix
@@ -296,7 +296,7 @@ When choosing an existing index for the connector to sync to, please ensure mapp
 ====
 
 Once this step is completed, you're ready to run a sync.
-When a sync is launched you'll start to see documents being added to your {es} index.
+When a sync is launched you'll start to see documents being added to your {{es}} index.
 
 Learn https://github.com/elastic/connectors/blob/main/docs/DEVELOPING.md#syncing[how syncing works] in the `elastic/connectors` repo docs.
 

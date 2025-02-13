@@ -4,7 +4,7 @@
 // :keywords: serverless, elasticsearch, tbd
 
 When the model is deployed on at least one node in the cluster, you can begin to
-perform inference. _{infer-cap}_ is a {ml} feature that enables you to use
+perform inference. _{infer-cap}_ is a {{ml}} feature that enables you to use
 your trained models to perform NLP tasks (such as text extraction,
 classification, or embeddings) on incoming data.
 
@@ -13,7 +13,7 @@ The simplest method to test your model against new data is to use the
 field of an existing index in your cluster to test the model:
 
 [role="screenshot"]
-image::images/ml-nlp-test-ner.png[Testing a sentence with two named entities against a NER trained model in the {ml} app]
+image::images/ml-nlp-test-ner.png[Testing a sentence with two named entities against a NER trained model in the {{ml}} app]
 
 Alternatively, you can use the
 {ref}/infer-trained-model.html[infer trained model API].

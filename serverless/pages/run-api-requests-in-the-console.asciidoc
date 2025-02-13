@@ -22,7 +22,7 @@ You can also find Console directly on your {es-serverless} project pages, where 
 == Write requests
 
 **Console** understands commands in a cURL-like syntax.
-For example, the following is a `GET` request to the {es} `_search` API.
+For example, the following is a `GET` request to the {{es}} `_search` API.
 
 [source,js]
 ----

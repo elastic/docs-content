@@ -5,7 +5,7 @@ mapped_pages:
 
 # Authorization plugins [custom-roles-authorization]
 
-If you need to retrieve user roles from a system not supported out-of-the-box or if the authorization system that is provided by the {{es}} {security-features} does not meet your needs, a SPI loaded security extension can be implemented to customize role retrieval and/or the authorization system. The SPI loaded security extension is part of an ordinary elasticsearch plugin.
+If you need to retrieve user roles from a system not supported out-of-the-box or if the authorization system that is provided by the {{es}} {{security-features}} does not meet your needs, a SPI loaded security extension can be implemented to customize role retrieval and/or the authorization system. The SPI loaded security extension is part of an ordinary elasticsearch plugin.
 
 ## Implementing a custom roles provider [implementing-custom-roles-provider]
 

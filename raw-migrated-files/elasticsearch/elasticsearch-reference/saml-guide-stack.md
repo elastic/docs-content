@@ -365,7 +365,7 @@ If you wish to sign some, but not all outgoing **SAML messages**, then you shoul
 
 #### Configuring {{es}} for encrypted messages [_configuring_es_for_encrypted_messages]
 
-The {{es}} {security-features} support a single key for message decryption. If a key is configured, then {{es}} attempts to use it to decrypt `EncryptedAssertion` and `EncryptedAttribute` elements in Authentication responses, and `EncryptedID` elements in Logout requests.
+The {{es}} {{security-features}} support a single key for message decryption. If a key is configured, then {{es}} attempts to use it to decrypt `EncryptedAssertion` and `EncryptedAttribute` elements in Authentication responses, and `EncryptedID` elements in Logout requests.
 
 {{es}} rejects any SAML message that contains an `EncryptedAssertion` that cannot be decrypted.
 

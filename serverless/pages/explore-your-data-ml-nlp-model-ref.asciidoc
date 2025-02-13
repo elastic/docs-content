@@ -71,13 +71,13 @@ for calculating the similarity between the embeddings they produce.
 Examples of typical scoring functions are: `cosine`, `dot product` and
 `euclidean distance` (also known as `l2_norm`).
 
-The embeddings produced by these models should be indexed in {es} using the
+The embeddings produced by these models should be indexed in {{es}} using the
 {ref}/dense-vector.html[dense vector field type]
 with an appropriate
 {ref}/dense-vector.html#dense-vector-params[similarity function] chosen for
 the model.
 
-To find similar embeddings in {es} use the efficient
+To find similar embeddings in {{es}} use the efficient
 {ref}/knn-search.html#approximate-knn[Approximate k-nearest neighbor (kNN)]
 search API with a text embedding as the query vector. Approximate kNN search
 uses the similarity function defined in the dense vector field mapping is used
@@ -144,7 +144,7 @@ Using `DPREncoderWrapper`:
 == Expected model output
 
 Models used for each NLP task type must output tensors of a specific format to
-be used in the {es} NLP pipelines.
+be used in the {{es}} NLP pipelines.
 
 Here are the expected outputs for each task type.
 

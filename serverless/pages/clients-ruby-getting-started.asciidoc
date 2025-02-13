@@ -18,7 +18,7 @@ client for {es3}, shows you how to initialize the client, and how to perform bas
 == Requirements
 
 * Ruby 3.0 or higher installed on your system.
-* To use the `elasticsearch-serverless` gem, you must have an API key and {es} endpoint for an {es3} project.
+* To use the `elasticsearch-serverless` gem, you must have an API key and {{es}} endpoint for an {es3} project.
 
 [discrete]
 [[elasticsearch-ruby-client-getting-started-installation]]
@@ -90,7 +90,7 @@ bundle exec rake console
 [[elasticsearch-ruby-client-getting-started-initialize-the-client]]
 == Initialize the client
 
-Initialize the client using your API key and {es} endpoint:
+Initialize the client using your API key and {{es}} endpoint:
 
 [source,ruby]
 ----
@@ -100,7 +100,7 @@ client = ElasticsearchServerless::Client.new(
 )
 ----
 
-To get API keys for the {es} endpoint for a project, see <<elasticsearch-get-started>>.
+To get API keys for the {{es}} endpoint for a project, see <<elasticsearch-get-started>>.
 
 [discrete]
 [[elasticsearch-ruby-client-getting-started-using-the-api]]

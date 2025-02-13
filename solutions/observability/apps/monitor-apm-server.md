@@ -5,7 +5,7 @@ mapped_pages:
 
 # Monitor APM Server [apm-monitor-apm]
 
-Use the {{stack}} {monitor-features} to gain insight into the real-time health and performance of APM Server. Stack monitoring exposes key metrics, like intake response count, intake error rate, output event rate, output failed event rate, and more.
+Use the {{stack}} {{monitor-features}} to gain insight into the real-time health and performance of APM Server. Stack monitoring exposes key metrics, like intake response count, intake error rate, output event rate, output failed event rate, and more.
 
 Select your deployment method to get started:
 
