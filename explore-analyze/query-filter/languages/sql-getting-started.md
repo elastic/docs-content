@@ -47,7 +47,7 @@ $ ./bin/elasticsearch-sql-cli
 
 From there you can run the same query:
 
-```sqlcli
+```sql
 sql> SELECT * FROM library WHERE release_date < '2000-01-01';
     author     |     name      |  page_count   | release_date
 ---------------+---------------+---------------+------------------------

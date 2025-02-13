@@ -95,7 +95,7 @@ POST /_security/role/apm_agent_key_user
 
 #### Example [apm-agent-key-create-example] 
 
-```curl
+```bash
 POST /api/apm/agent_keys
 {
     "name": "apm-key",

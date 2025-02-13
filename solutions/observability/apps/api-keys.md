@@ -245,7 +245,7 @@ It is also possible to create API keys using the {{es}} [create API key API](htt
 
 This example creates an API key named `java-002`:
 
-```kibana
+```bash
 POST /_security/api_key
 {
   "name": "java-002", <1>
