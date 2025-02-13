@@ -1,3 +1,13 @@
+---
+
+  applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
+  
+---
+
 # Manage snapshot repositories
 
 % What needs to be done: Write from scratch
@@ -9,6 +19,21 @@
 Snapshot repositories allow you to back up and restore your Elasticsearch data efficiently. Whether you're using [Elastic Cloud](#elastic-cloud-hosted), [Elastic Cloud Enterprise (ECE)](#elastic-cloud-enterprise-ece), [Elastic Cloud on Kubernetes (ECK)](#elastic-cloud-on-kubernetes-eck), or managing your own [Elasticsearch cluster](#self-managed), configuring a snapshot repository ensures data security, long-term archiving, and seamless migration across environments.
 
 ## Supported repository types
+
+### Self-managed
+
+If you manage your own Elasticsearch cluster, you can use the following built-in snapshot repository types:
+
+* [Azure](/deploy-manage/tools/snapshot-and-restore/azure-repository.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/s3-repository.md)
+* [Shared file system](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md)
+* [Read-only URL](/deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md)
+* [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.md)
+
+Other repository types are available through official plugins:
+
+* [Hadoop Distributed File System (HDFS)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html)
 
 ### Elastic Cloud Hosted
 
@@ -43,22 +68,7 @@ No repository types other than those listed are supported in the Elastic Cloud E
 
 For more details, refer to [Managing snapshot repositories in Elastic Cloud Enterprise](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md).
 
-### Self-managed
-
-If you manage your own Elasticsearch cluster, you can use the following built-in snapshot repository types:
-
-* [Azure](/deploy-manage/tools/snapshot-and-restore/azure-repository.md)
-* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
-* [AWS S3](/deploy-manage/tools/snapshot-and-restore/s3-repository.md)
-* [Shared file system](/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md)
-* [Read-only URL](/deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md)
-* [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.md)
-
-Other repository types are available through official plugins:
-
-* [Hadoop Distributed File System (HDFS)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html)
-
-#### Elastic Cloud on Kubernetes (ECK)
+### Elastic Cloud on Kubernetes (ECK)
 
 {{es}} clusters deployed through ECK support the same type of deployments as self-managed {{es}} clusters. ECK does not currently provide any automation or functionality to facilitate the integration of snapshot repositores within the {{es}} clusters.
 
