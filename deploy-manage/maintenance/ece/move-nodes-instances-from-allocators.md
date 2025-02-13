@@ -16,9 +16,7 @@ You might need to move Elasticsearch nodes, Kibana instances, and other componen
 When you move all nodes from an existing allocator to the new one, ECE migrates the data to new nodes. The migration can take some time, especially when deployments contain large amounts of data and have a heavy workload. Is your deployment under a heavy workload? You might need to [stop routing requests](deployments-maintenance.md) first.
 ::::
 
-
-
-## Before you begin [ece_before_you_begin_9] 
+## Before you begin [ece_before_you_begin_9]
 
 Before you move the nodes and instances that are part of a deployment, you need to make sure that you have sufficient capacity on another allocator. For example: If you have a deployment with a single 32 GB Elasticsearch node and a 4 GB Kibana instance, the allocator that you are moving the deployment to needs to have at least 36 GB of capacity. Note that moving nodes does not actually move the same node onto a different allocator. Under the covers, Elastic Cloud Enterprise creates a new node and then migrates the data for you.
 
@@ -33,46 +31,40 @@ To move nodes from one allocator to another one:
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Allocators**.
 3. Review the list of all allocators that are part of this installation and look for allocators that are unhealthy or find the allocator that you want to free up.
-
-    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
+   Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
 4. Recommended: [Put the allocator into maintenance mode](enable-maintenance-mode.md) before continuing.
 5. Select the name of an unhealthy allocator and then choose **Move Nodes** from the menu.
 6. Select the nodes you want, then choose **Move Nodes**.
 7. To customize how you would like to move the nodes, select **Customize settings**, choose your options, then select **Move nodes**.
+   ::::{important}
+   Review **Customize Settings** before proceeding to move nodes.
+   ::::
 
-    ::::{important} 
-    Review **Customize Settings** before proceeding to move nodes.
-    ::::
+   Gracefully move data
+   :   (Default) Gracefully move the data from the instances we’re about to remove from the cluster before stopping them. Never disable this setting at the same time as enabling `override_failsafe` on a non-Highly Available cluster since it can result in data loss.
 
+   Skip snapshot
+   :   If an allocator has failed or is otherwise unhealthy, select this option to move the nodes but disable the snapshot attempt. As this can perform potentially destructive actions on the deployment, do not use this option on a healthy allocator unless you are an advanced user.
 
-    Gracefully move data
-    :   (Default) Gracefully move the data from the instances we’re about to remove from the cluster before stopping them. Never disable this setting at the same time as enabling `override_failsafe` on a non-Highly Available cluster since it can result in data loss.
+   Restore snapshot to latest success
+   :   Restore the cluster to the last successful snapshot. Recommended for single-node clusters hosted on unhealthy allocators. Any data indexed after the last snapshot was taken is lost.
 
-    Skip snapshot
-    :   If an allocator has failed or is otherwise unhealthy, select this option to move the nodes but disable the snapshot attempt. As this can perform potentially destructive actions on the deployment, do not use this option on a healthy allocator unless you are an advanced user.
+   Extended maintenance
+   :   Keep new instances in maintenance mode until a snapshot has been restored. If not enabled, new instances remain in maintenance mode only until they can join a cluster.
 
-    Restore snapshot to latest success
-    :   Restore the cluster to the last successful snapshot. Recommended for single-node clusters hosted on unhealthy allocators. Any data indexed after the last snapshot was taken is lost.
+   Set target allocators
+   :   Request that instances be moved to the specified allocators. If no allocators are specified, or those specified are unsuitable for the instances being moved, then any suitable healthy allocator can be used.
 
-    Extended maintenance
-    :   Keep new instances in maintenance mode until a snapshot has been restored. If not enabled, new instances remain in maintenance mode only until they can join a cluster.
+   Reallocate
+   :   Create new containers for all nodes in the cluster.
 
-    Set target allocators
-    :   Request that instances be moved to the specified allocators. If no allocators are specified, or those specified are unsuitable for the instances being moved, then any suitable healthy allocator can be used.
+   Set Timeout
+   :   On by default.
 
-    Reallocate
-    :   Create new containers for all nodes in the cluster.
-
-    Set Timeout
-    :   On by default.
-
-
-::::{tip} 
+::::{tip}
 If you did not enable maintenance mode, set a target allocator under the advanced options when moving nodes to make sure the nodes do not end up on the same allocator again. By default, moving a node moves it to any allocator that has enough capacity.
 ::::
 
-
 1. Repeat **step 6** for each of the node types until no nodes remain on the allocator.
 2. Optionally, once the nodes have been moved, **Delete Allocator**.
-
