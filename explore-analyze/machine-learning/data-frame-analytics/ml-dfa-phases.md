@@ -25,7 +25,7 @@ Let’s take a look at the phases one-by-one.
 
 During the reindexing phase the documents from the source index or indices are copied to the destination index. If you want to define settings or mappings, create the index before you start the job. Otherwise, the job creates it using default settings.
 
-Once the destination index is built, the {{dfanalytics-job}} task calls the {{es}} [Reindex API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) to launch the reindexing task.
+Once the destination index is built, the {{dfanalytics-job}} task calls the {{es}} [Reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to launch the reindexing task.
 
 ## Loading data [ml-dfa-phases-load]
 

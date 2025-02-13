@@ -81,7 +81,7 @@ You might see a 502 bad gateway error in the response when using the {{kib}} Con
 
 ::::
 
-After creating the Elastic Rerank {{infer}} endpoint, it’s ready to use with a [`text_similarity_reranker`](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#text-similarity-reranker-retriever-example-elastic-rerank) retriever.
+After creating the Elastic Rerank {{infer}} endpoint, it’s ready to use with a [`text_similarity_reranker`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) retriever.
 
 ## Deploy in an air-gapped environment [ml-nlp-rerank-deploy-verify]
 

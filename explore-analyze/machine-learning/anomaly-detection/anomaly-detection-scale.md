@@ -40,7 +40,7 @@ For large jobs, use a dedicated results index. This ensures that results from a 
 
 ## 3. Disable model plot [model-plot]
 
-By default, model plot is enabled when you create jobs in {{kib}}. If you have a large job, however, consider disabling it. You can disable model plot for existing jobs by using the [Update {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html).
+By default, model plot is enabled when you create jobs in {{kib}}. If you have a large job, however, consider disabling it. You can disable model plot for existing jobs by using the [Update {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-update-job).
 
 Model plot calculates and stores the model bounds for each analyzed entity, including both anomalous and non-anomalous entities. These bounds are used to display the shaded area in the Single Metric Viewer charts. Model plot creates one result document per bucket per split field value. If you have high cardinality fields and/or a short bucket span, disabling model plot reduces processing workload and results stored.
 
@@ -77,7 +77,7 @@ The `model_memory_limit` job configuration option sets the approximate maximum a
 If you change the resources available on your {{ml}} nodes or make significant changes to the characteristics or cardinality of your data, the model memory requirements might also change. You can update the model memory limit for a job while it is closed. If you want to decrease the limit below the current model memory usage, however, you must clone and re-run the job.
 
 ::::{tip}
-You can view the current model size statistics with the [get {{anomaly-job}} stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html) and [get model snapshots](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-snapshot.html) APIs. You can also obtain a model memory limit estimate at any time by running the [estimate {{anomaly-jobs}} model memory API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-estimate-model-memory.html). However, you must provide your own cardinality estimates.
+You can view the current model size statistics with the [get {{anomaly-job}} stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-job-stats) and [get model snapshots](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-model-snapshots) APIs. You can also obtain a model memory limit estimate at any time by running the [estimate {{anomaly-jobs}} model memory API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-estimate-model-memory). However, you must provide your own cardinality estimates.
 ::::
 
 As a job approaches its model memory limit, the memory status is `soft_limit` and older models are more aggressively pruned to free up space. If you have categorization jobs, no further examples are stored. When a job exceeds its limit, the memory status is `hard_limit` and the job no longer models new entities. It is therefore important to have appropriate memory model limits for each job. If you reach the hard limit and are concerned about the missing data, ensure that you have adequate resources then clone and re-run the job with a larger model memory limit.
