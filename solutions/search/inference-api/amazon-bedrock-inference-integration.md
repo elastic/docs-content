@@ -41,7 +41,7 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `amazonbedro
 ## {{api-request-body-title}} [infer-service-amazon-bedrock-api-request-body] 
 
 `chunking_settings`
-:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html#infer-chunking-config) to learn more about chunking.
+:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) to learn more about chunking.
 
     `max_chunk_size`
     :   (Optional, integer) Specifies the maximum size of a chunk in words. Defaults to `250`. This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).
@@ -72,7 +72,7 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `amazonbedro
 
 
 ::::{important} 
-You need to provide the access and secret keys only once, during the {{infer}} model creation. The [Get {{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-inference-api.html) does not retrieve your access or secret keys. After creating the {{infer}} model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the {{infer}} model and recreate it with the same name and the updated keys.
+You need to provide the access and secret keys only once, during the {{infer}} model creation. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not retrieve your access or secret keys. After creating the {{infer}} model, you cannot change the associated key pairs. If you want to use a different access and secret key pair, delete the {{infer}} model and recreate it with the same name and the updated keys.
 ::::
 
 

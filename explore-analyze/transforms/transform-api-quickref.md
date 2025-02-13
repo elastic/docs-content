@@ -14,15 +14,15 @@ All {{transform}} endpoints have the following base:
 _transform/
 ```
 
-* [Create {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html)
-* [Delete {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html)
-* [Get {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html)
-* [Get {{transforms}} statistics](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html)
-* [Preview {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html)
-* [Reset {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html)
-* [Schedule now {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/schedule-now-transform.html)
-* [Start {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html)
-* [Stop {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html)
-* [Update {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html)
+* [Create {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform)
+* [Delete {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-delete-transform)
+* [Get {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-transform)
+* [Get {{transforms}} statistics](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-transform-stats)
+* [Preview {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform)
+* [Reset {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform)
+* [Schedule now {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-schedule-now-transform)
+* [Start {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform)
+* [Stop {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform)
+* [Update {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-update-transform)
 
-For the full list, see [*{{transform-cap}} APIs*](https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-apis.html).
+For the full list, see [*{{transform-cap}} APIs*](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-transform).

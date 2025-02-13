@@ -21,7 +21,7 @@ The cached user credentials are hashed in memory. By default, the {{es}} {securi
 
 ## Evicting users from the cache [cache-eviction-api]
 
-You can use the [clear cache API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-cache.html) to force the eviction of cached users . For example, the following request evicts all users from the `ad1` realm:
+You can use the [clear cache API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-clear-cached-realms) to force the eviction of cached users . For example, the following request evicts all users from the `ad1` realm:
 
 ```js
 $ curl -XPOST 'http://localhost:9200/_security/realm/ad1/_clear_cache'

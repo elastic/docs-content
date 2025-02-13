@@ -16,7 +16,7 @@ This page outlines all the APIs available for behavioral analytics and links to 
 
 ## Behavioral Analytics REST APIs [behavioral-analytics-api-es-rest] 
 
-Behavioral Analytics relies on a number of {{es}} APIs to manage analytics collections. Refer to the [API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-apis.html) for the details.
+Behavioral Analytics relies on a number of {{es}} APIs to manage analytics collections. Refer to the [API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-analytics) for the details.
 
 
 ## Behavioral Analytics Clients [behavioral-analytics-api-clients] 

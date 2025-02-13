@@ -47,13 +47,13 @@ Caused by: org.elasticsearch.common.breaker.CircuitBreakingException: [parent] D
 
 If you’ve enabled Stack Monitoring, you can view JVM memory usage in {{kib}}. In the main menu, click **Stack Monitoring**. On the Stack Monitoring **Overview*** page, click ***Nodes**. The **JVM Heap** column lists the current memory usage for each node.
 
-You can also use the [cat nodes API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html) to get the current `heap.percent` for each node.
+You can also use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to get the current `heap.percent` for each node.
 
 ```console
 GET _cat/nodes?v=true&h=name,node*,heap*
 ```
 
-To get the JVM memory usage for each circuit breaker, use the [node stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html).
+To get the JVM memory usage for each circuit breaker, use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
 GET _nodes/stats/breaker
@@ -72,7 +72,7 @@ For high-cardinality `text` fields, fielddata can use a large amount of JVM memo
 
 **Clear the fielddata cache**
 
-If you’ve triggered the fielddata circuit breaker and can’t disable fielddata, use the [clear cache API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-clearcache.html) to clear the fielddata cache. This may disrupt any in-flight searches that use fielddata.
+If you’ve triggered the fielddata circuit breaker and can’t disable fielddata, use the [clear cache API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clear-cache) to clear the fielddata cache. This may disrupt any in-flight searches that use fielddata.
 
 ```console
 POST _cache/clear?fielddata=true

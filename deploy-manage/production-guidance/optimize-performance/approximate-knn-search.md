@@ -27,7 +27,7 @@ The speed of kNN search scales linearly with the number of vector dimensions, be
 {{es}} stores the original JSON document that was passed at index time in the [`_source` field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html). By default, each hit in the search results contains the full document `_source`. When the documents contain high-dimensional `dense_vector` fields, the `_source` can be quite large and expensive to load. This could significantly slow down the speed of kNN search.
 
 ::::{note} 
-[reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html), [update](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html), and [update by query](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html) operations generally require the `_source` field. Disabling `_source` for a field might result in unexpected behavior for these operations. For example, reindex might not actually contain the `dense_vector` field in the new index.
+[reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex), [update](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update), and [update by query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query) operations generally require the `_source` field. Disabling `_source` for a field might result in unexpected behavior for these operations. For example, reindex might not actually contain the `dense_vector` field in the new index.
 ::::
 
 
@@ -38,7 +38,7 @@ Another option is to use  [synthetic `_source`](https://www.elastic.co/guide/en/
 
 ## Ensure data nodes have enough memory [_ensure_data_nodes_have_enough_memory] 
 
-{{es}} uses the [HNSW](https://arxiv.org/abs/1603.09320) algorithm for approximate kNN search. HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures. To check the size of the vector data, you can use the [Analyze index disk usage](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-disk-usage.html) API.
+{{es}} uses the [HNSW](https://arxiv.org/abs/1603.09320) algorithm for approximate kNN search. HNSW is a graph-based algorithm which only works efficiently when most vector data is held in memory. You should ensure that data nodes have at least enough RAM to hold the vector data and index structures. To check the size of the vector data, you can use the [Analyze index disk usage](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-disk-usage) API.
 
 Here are estimates for different element types and quantization levels:
 
@@ -105,7 +105,7 @@ When possible, it’s best to avoid heavy indexing during approximate kNN search
 
 Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-store.html#file-system)).
 
-Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing Elasticsearch [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html)) performance.
+Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing Elasticsearch [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
 
 You can check the current value in `KiB` using `lsblk -o NAME,RA,MOUNTPOINT,TYPE,SIZE`. Consult the documentation of your distribution on how to alter this value (for example with a `udev` rule to persist across reboots, or via [blockdev --setra](https://man7.org/linux/man-pages/man8/blockdev.8.md) as a transient setting). We recommend a value of `128KiB` for readahead.
 

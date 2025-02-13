@@ -51,7 +51,7 @@ As always, your indices should have at least one replica in case a node fails, u
 
 The cluster will be resilient to the loss of any zone as long as:
 
-* The [cluster health status](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) is `green`.
+* The [cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) is `green`.
 * There are at least two zones containing data nodes.
 * Every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) has at least one replica of each shard, in addition to the primary.
 * [Shard allocation awareness](../../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) is configured to avoid concentrating all copies of a shard within a single zone.

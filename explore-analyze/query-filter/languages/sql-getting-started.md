@@ -21,7 +21,7 @@ PUT /library/_bulk?refresh
 {"name": "Dune", "author": "Frank Herbert", "release_date": "1965-06-01", "page_count": 604}
 ```
 
-And now you can execute SQL using the [SQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html):
+And now you can execute SQL using the [SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query):
 
 ```console
 POST /_sql?format=txt

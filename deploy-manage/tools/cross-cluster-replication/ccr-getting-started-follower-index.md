@@ -24,7 +24,7 @@ When you index documents into your leader index, {{es}} replicates the documents
 :::
 
 ::::{dropdown} API example
-You can also use the [create follower API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-follow.html) to create follower indices. When you create a follower index, you must reference the remote cluster and the leader index that you created in the remote cluster.
+You can also use the [create follower API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow) to create follower indices. When you create a follower index, you must reference the remote cluster and the leader index that you created in the remote cluster.
 
 When initiating the follower request, the response returns before the [remote recovery](../cross-cluster-replication.md#ccr-remote-recovery) process completes. To wait for the process to complete, add the `wait_for_active_shards` parameter to your request.
 
@@ -36,7 +36,7 @@ PUT /server-metrics-follower/_ccr/follow?wait_for_active_shards=1
 }
 ```
 
-Use the [get follower stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-stats.html) to inspect the status of replication.
+Use the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats) to inspect the status of replication.
 
 ::::
 

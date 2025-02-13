@@ -132,11 +132,11 @@ The **Simulate** tab allows you to override parts of the watch, and then run a s
 * Trigger overrides use [date math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math).
 * Input overrides accepts a JSON blob.
 * Condition overrides indicates if you want to force the condition to always be `true`.
-* Action overrides support [multiple options](https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-execute-watch.html#watcher-api-execute-watch-action-mode).
+* Action overrides support [multiple options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch).
 
 Some watches, such as those using basic auth credentials, contain passwords. For security reasons, these passwords will be stripped from any watches that are loaded by the Watcher UI. You will need to manually re-enter these passwords to simulate the watch.
 
-After starting the simulation, you’ll see a results screen. For more information on the fields in the response, see the [Execute watch API](https://www.elastic.co/guide/en/elasticsearch/reference/current/watcher-api-execute-watch.html).
+After starting the simulation, you’ll see a results screen. For more information on the fields in the response, see the [Execute watch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch).
 
 ![Create advanced watch](../../../images/kibana-advanced-watch-simulate.png "")
 
