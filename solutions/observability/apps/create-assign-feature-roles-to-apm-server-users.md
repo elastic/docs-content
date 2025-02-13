@@ -95,7 +95,7 @@ The privileges included in this role are **required** for all users when [centra
 $$$apm-privileges-agent-central-config-server$$$
 APM Server acts as a proxy between your APM agents and the Applications UI. The Applications UI communicates any changed settings to APM Server so that your agents only need to poll the Server to determine which central configuration settings have changed.
 
-To create a role with the required privileges for managing central configuration in {{es}} without {{kib}}, you must use the [Roles API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html) (the required privileges can’t be assigned to a role in Kibana):
+To create a role with the required privileges for managing central configuration in {{es}} without {{kib}}, you must use the [Roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) (the required privileges can’t be assigned to a role in Kibana):
 
 ```console
 POST /_security/role/apm_agentcfg
