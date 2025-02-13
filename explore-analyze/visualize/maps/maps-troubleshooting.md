@@ -17,7 +17,7 @@ Use the information in this section to inspect Elasticsearch requests and find s
 
 ## Inspect Elasticsearch requests [_inspect_elasticsearch_requests]
 
-Maps uses the [{{es}} vector tile search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-vector-tile-api.html) and the [{{es}} search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to get documents and aggregation results from {{es}}. Use **Vector tiles** inspector to view {{es}} vector tile search API requests. Use **Requests** inspector to view {{es}} search API requests.
+Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) and the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. Use **Vector tiles** inspector to view {{es}} vector tile search API requests. Use **Requests** inspector to view {{es}} search API requests.
 
 :::{image} ../../../images/kibana-vector_tile_inspector.png
 :alt: vector tile inspector

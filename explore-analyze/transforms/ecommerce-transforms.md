@@ -35,10 +35,10 @@ mapped_pages:
    :::
 
    ::::{tip}
-   If you’re interested in a subset of the data, you can optionally include a [query](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#request-body-search-query) element. In this example, we’ve filtered the data so that we’re only looking at orders with a `currency` of `EUR`. Alternatively, we could group the data by that field too. If you want to use more complex queries, you can create your {{dataframe}} from a [saved search](../discover/save-open-search.md).
+   If you’re interested in a subset of the data, you can optionally include a [query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) element. In this example, we’ve filtered the data so that we’re only looking at orders with a `currency` of `EUR`. Alternatively, we could group the data by that field too. If you want to use more complex queries, you can create your {{dataframe}} from a [saved search](../discover/save-open-search.md).
    ::::
 
-   If you prefer, you can use the [preview {{transforms}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html).
+   If you prefer, you can use the [preview {{transforms}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform).
 
    ::::{dropdown} API example
    ```console
@@ -105,7 +105,7 @@ mapped_pages:
    :class: screenshot
    :::
 
-   If you prefer, you can use the [create {{transforms}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html).
+   If you prefer, you can use the [create {{transforms}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
 
    ::::{dropdown} API example
    ```console
@@ -173,7 +173,7 @@ mapped_pages:
 5. Optional: Create the destination index.
    If the destination index does not exist, it is created the first time you start your {{transform}}. A pivot transform deduces the mappings for the destination index from the source indices and the transform aggregations. If there are fields in the destination index that are derived from scripts (for example, if you use [`scripted_metrics`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-scripted-metric-aggregation.html) or [`bucket_scripts`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-bucket-script-aggregation.html) aggregations), they’re created with [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md). You can use the preview {{transform}} API to preview the mappings it will use for the destination index. In {{kib}}, if you copied the API request to your clipboard, paste it into the console, then refer to the `generated_dest_index` object in the API response.
    ::::{note}
-   {{transforms-cap}} might have more configuration options provided by the APIs than the options available in {{kib}}. For example, you can set an ingest pipeline for `dest` by calling the [Create {{transform}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html). For all the {{transform}} configuration options, refer to the [documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-apis.html).
+   {{transforms-cap}} might have more configuration options provided by the APIs than the options available in {{kib}}. For example, you can set an ingest pipeline for `dest` by calling the [Create {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform). For all the {{transform}} configuration options, refer to the [documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-transform).
    ::::
 
    ::::{dropdown} API example
@@ -247,7 +247,7 @@ mapped_pages:
 
    ::::
 
-   In some instances the deduced mappings might be incompatible with the actual data. For example, numeric overflows might occur or dynamically mapped fields might contain both numbers and strings. To avoid this problem, create your destination index before you start the {{transform}}. For more information, see the [create index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html).
+   In some instances the deduced mappings might be incompatible with the actual data. For example, numeric overflows might occur or dynamically mapped fields might contain both numbers and strings. To avoid this problem, create your destination index before you start the {{transform}}. For more information, see the [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create).
 
    ::::{dropdown} API example
    You can use the information from the {{transform}} preview to create the destination index. For example:
@@ -299,7 +299,7 @@ mapped_pages:
    :class: screenshot
    :::
 
-   Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html), [stop {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html) and [reset {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-transform.html) APIs.
+   Alternatively, you can use the [start {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform), [stop {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform) and [reset {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform) APIs.
 
    If you reset a {{transform}}, all checkpoints, states, and the destination index (if it was created by the {{transform}}) are deleted. The {{transform}} is ready to start again as if it had just been created.
 
@@ -355,6 +355,6 @@ mapped_pages:
    If the destination index does not exist, it is created the first time you start your {{transform}}. Unlike pivot {{transforms}}, however, latest {{transforms}} do not deduce mapping definitions when they create the index. Instead, they use dynamic mappings. To use explicit mappings, create the destination index before you start the {{transform}}.
    ::::
 
-9. If you do not want to keep a {{transform}}, you can delete it in {{kib}} or use the [delete {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html). By default, when you delete a {{transform}}, its destination index and {{kib}} index patterns remain.
+9. If you do not want to keep a {{transform}}, you can delete it in {{kib}} or use the [delete {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-delete-transform). By default, when you delete a {{transform}}, its destination index and {{kib}} index patterns remain.
 
 Now that you’ve created simple {{transforms}} for {{kib}} sample data, consider possible use cases for your own data. For more ideas, see [When to use {{transforms}}](transform-usage.md) and [Examples](transform-examples.md).

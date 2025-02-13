@@ -72,7 +72,7 @@ API key based cross-cluster search (CCS) enables more granular control over allo
 
 You will need to:
 
-* Create an API key on the **remote cluster** using the [Create cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) API or using the [Kibana API keys UI](../../../deploy-manage/api-keys/elasticsearch-api-keys.md).
+* Create an API key on the **remote cluster** using the [Create cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API or using the [Kibana API keys UI](../../../deploy-manage/api-keys/elasticsearch-api-keys.md).
 * Add the API key to the keystore on the **local cluster**, as part of the steps in [configuring the local cluster](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md#remote-clusters-security-api-key-local-actions). All cross-cluster requests from the local cluster are bound by the API key’s privileges.
 
 Using {{esql}} with the API key based security model requires some additional permissions that may not be needed when using the traditional query DSL based search. The following example API call creates a role that can query remote indices using {{esql}} when using the API key based security model. The final privilege, `remote_cluster`, is required to allow remote enrich operations.
@@ -109,9 +109,9 @@ POST /_security/role/remote1
 
 1. The `cross_cluster_search` cluster privilege is required for the *local* cluster.
 2. Typically, users will have permissions to read both local and remote indices. However, for cases where the role is intended to ONLY search the remote cluster, the `read` permission is still required for the local cluster. To provide read access to the local cluster, but disallow reading any indices in the local cluster, the `names` field may be an empty string.
-3. The indices allowed read access to the remote cluster. The configured [cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) must also allow this index to be read.
+3. The indices allowed read access to the remote cluster. The configured [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) must also allow this index to be read.
 4. The `read_cross_cluster` privilege is always required when using {{esql}} across clusters with the API key based security model.
-5. The remote clusters to which these privileges apply. This remote cluster must be configured with a [cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) and connected to the remote cluster before the remote index can be queried. Verify connection using the [Remote cluster info](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-remote-info.html) API.
+5. The remote clusters to which these privileges apply. This remote cluster must be configured with a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) and connected to the remote cluster before the remote index can be queried. Verify connection using the [Remote cluster info](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) API.
 6. Required to allow remote enrichment. Without this, the user cannot read from the `.enrich` indices on the remote cluster. The `remote_cluster` security privilege was introduced in version **8.15.0**.
 
 
@@ -138,7 +138,7 @@ Cross cluster API keys created in versions prior to 8.15.0 will need to replaced
 
 Once the security model is configured, you can add remote clusters.
 
-The following [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) API request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
+The following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
 
 ```console
 PUT _cluster/settings

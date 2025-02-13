@@ -12,7 +12,7 @@ mapped_pages:
 
 Cache sizing is important. Your script cache should be large enough to hold all of the scripts that users need to be accessed concurrently.
 
-If you see a large number of script cache evictions and a rising number of compilations in [node stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html), your cache might be too small.
+If you see a large number of script cache evictions and a rising number of compilations in [node stats](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats), your cache might be too small.
 
 All scripts are cached by default so that they only need to be recompiled when updates occur. By default, scripts do not have a time-based expiration. You can change this behavior by using the `script.cache.expire` setting. Use the `script.cache.max_size` setting to configure the size of the cache.
 
@@ -88,7 +88,7 @@ PUT _ingest/pipeline/my_test_scores_pipeline
 }
 ```
 
-To update existing data, use this pipeline to [reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) any documents from `my_test_scores` to a new index named `my_test_scores_2`.
+To update existing data, use this pipeline to [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) any documents from `my_test_scores` to a new index named `my_test_scores_2`.
 
 ```console
 POST /_reindex
