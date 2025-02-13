@@ -5,8 +5,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-quickstart.html
 ---
 
-% Similar to ECE section, write an introduction about the installation methods and include links to the other sections (AIR GAPPED and Configure).
-% The page has been provided as it already provides a good introduction.
 
 # Deploy an orchestrator [k8s-quickstart]
 
