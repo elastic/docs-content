@@ -60,6 +60,6 @@ Other repository types are available through official plugins:
 
 #### Elastic Cloud on Kubernetes (ECK)
 
-ECK is also considered a self-managed deployment method. It supports the same snapshot repositories as self-managed Elasticsearch and has no additional restrictions.
+{{es}} clusters deployed through ECK support the same type of deployments as self-managed {{es}} clusters. ECK does not currently provide any automation or functionality to facilitate the integration of snapshot repositores within the {{es}} clusters.
 
 For more details, refer to the Managing snapshot repositories in [Self managed deployments](/deploy-manage/tools/snapshot-and-restore/self-managed.md) and the [Elastic Cloud on Kubernetes](/deploy-manage/tools/snapshot-and-restore/cloud-on-k8s.md) documentation.
