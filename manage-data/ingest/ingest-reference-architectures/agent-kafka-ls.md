@@ -16,7 +16,7 @@ Ingest model
 
 
 Use when
-:   You are standardizing on Kafka as middleware message queue between {{agent}} and {es}
+:   You are standardizing on Kafka as middleware message queue between {{agent}} and {{es}}
 
 Notes
 :   The transformation from raw data to Elastic Common Schema (ECS) and any other enrichment can be handled by {{ls}} as described in [{{agent}} to {{ls}} (for enrichment) to {{es}}](ls-enrich.md).

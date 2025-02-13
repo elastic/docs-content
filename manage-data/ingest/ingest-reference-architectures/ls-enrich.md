@@ -11,7 +11,7 @@ mapped_pages:
 
 Ingest models
 :   * {{agent}} to {{es}} using {{ls}} to enrich the data
-* {{agent}} to {{ls}} for enrichment based on fields in the {{agent}} data to {es}
+* {{agent}} to {{ls}} for enrichment based on fields in the {{agent}} data to {{es}}
 
 
 Use when

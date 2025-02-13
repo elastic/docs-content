@@ -8,7 +8,7 @@ mapped_pages:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](synthetic-monitoring.md) instead of the {uptime-app}
+Use [Synthetic monitoring](synthetic-monitoring.md) instead of the {{uptime-app}}
 ::::
 
 

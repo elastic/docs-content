@@ -21,9 +21,9 @@ This guide describes best practices when taking the second approach. Specificall
 
 This approach has a few advantages:
 
-* No need to maintain a passthrough query system between frontend applications and {es}
+* No need to maintain a passthrough query system between frontend applications and {{es}}
 * Direct requests to {{es}} result in faster response times
-* Query configuration is managed in one place: your search application configuration in {es}
+* Query configuration is managed in one place: your search application configuration in {{es}}
 
 We will cover:
 

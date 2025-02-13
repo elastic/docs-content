@@ -29,7 +29,7 @@
 
         * Machine Learning jobs, watches, monitoring, ingest pipeline
 
-    * Internal tasks initiated by {es}
+    * Internal tasks initiated by {{es}}
 
         * Nodes joining and leaving due to hardware failures
         * Shard allocation due to nodes joining and leaving

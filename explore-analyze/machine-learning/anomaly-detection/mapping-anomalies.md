@@ -21,7 +21,7 @@ This example uses the sample web logs data set. For more information, see [Add t
 If you have fields that contain valid vector layers, you can use the **{{data-viz}}** in the **{{ml-app}}** app to see a choropleth map, in which each area is colored based on its document count. For example:
 
 :::{image} ../../../images/machine-learning-weblogs-data-visualizer-choropleth.png
-:alt: A screenshot of a field that contains vector layer values in {data-viz}
+:alt: A screenshot of a field that contains vector layer values in {{data-viz}}
 :class: screenshot
 :::
 

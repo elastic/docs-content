@@ -15,7 +15,7 @@ mapped_pages:
 Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
 * Aggregations that use `nested` or `parent/child` mapping
-* Aggregations without a {data-source}
+* Aggregations without a {{data-source}}
 * Queries that use custom time filters
 * Complex calculations
 * Extracted data from _source instead of aggregations

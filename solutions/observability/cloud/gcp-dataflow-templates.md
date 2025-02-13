@@ -114,7 +114,7 @@ After creating a Pub/Sub topic and subscription, go to the **Dataflow Jobs** pag
 To create a job, click **Create Job From Template**. Set **Job name** as `auditlogs-stream` and select `Pub/Sub to Elasticsearch` from the **Dataflow template** dropdown menu:
 
 :::{image} ../../../images/observability-monitor-gcp-dataflow-pub-sub-elasticsearch.png
-:alt: GCP Dataflow Pub/Sub to {es}
+:alt: GCP Dataflow Pub/Sub to {{es}}
 :::
 
 Before running the job, fill in required parameters:

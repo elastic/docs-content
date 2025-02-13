@@ -28,7 +28,7 @@ This example uses the sample eCommerce orders and sample web logs data sets. For
 To get the best results from {{ml}} analytics, you must understand your data. You can use the **{{data-viz}}** in the **{{ml-app}}** app for this purpose. Search for specific fields or field types, such as geo-point fields in the sample data sets. You can see how many documents contain those fields within a specific time period and sample size. You can also see the number of distinct values, a list of example values, and preview them on a map. For example:
 
 :::{image} ../../../images/machine-learning-weblogs-data-visualizer-geopoint.jpg
-:alt: A screenshot of a geo_point field in {data-viz}
+:alt: A screenshot of a geo_point field in {{data-viz}}
 :class: screenshot
 :::
 

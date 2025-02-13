@@ -4,7 +4,7 @@ The advanced settings determine:
 
 * Which indices {{elastic-sec}} uses to retrieve data
 * {{ml-cap}} anomaly score display threshold
-* The navigation menu style used throughout the {security-app}
+* The navigation menu style used throughout the {{security-app}}
 * Whether the news feed is displayed on the [*Overview dashboard*](../../../solutions/security/dashboards/overview-dashboard.md)
 * The default time interval used to filter {{elastic-sec}} pages
 * The default {{elastic-sec}} pages refresh time

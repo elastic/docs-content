@@ -42,7 +42,7 @@ Before you can monitor APM, you must have monitoring data for the {{es}} product
     2. The host to expose logs/metrics on
     3. The port to expose logs/metrics on
 
-2. Enroll {agent}
+2. Enroll {{agent}}
 
     After editing `elastic-agent.yml`, you must re-enroll {{agent}} for the changes to take effect.
 

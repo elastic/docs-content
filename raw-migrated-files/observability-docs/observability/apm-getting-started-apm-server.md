@@ -31,8 +31,8 @@ Fleet is a web-based UI in {{kib}} that is used to centrally manage {{agent}}s. 
 
 **Supported outputs**:
 
-* {es}
-* {ess}
+* {{es}}
+* {{ess}}
 
 ::::{note}
 Fleet-managed APM Server does *not* support all the outputs that are supported by the APM Server binary method of running Elastic APM.
@@ -63,9 +63,9 @@ Install, configure, and run the APM Server binary wherever you need it.
 
 **Supported outputs**:
 
-* {es}
+* {{es}}
 * {ess}
-* {ls}
+* {{ls}}
 * Kafka
 * Redis
 * File
@@ -75,7 +75,7 @@ Install, configure, and run the APM Server binary wherever you need it.
 
 * APM agents
 * APM Server
-* {stack}
+* {{stack}}
 
 **Configuration method**: YAML
 

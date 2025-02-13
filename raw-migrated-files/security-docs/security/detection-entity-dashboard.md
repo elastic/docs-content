@@ -94,7 +94,7 @@ To display the **Entities** section, you must [enable the entity store](../../..
 
 The **Entities** section provides a centralized view of all hosts and users in your environment. It displays entities from the [entity store](../../../solutions/security/advanced-entity-analytics/entity-store.md), which meet any of the following criteria:
 
-* Have been observed by {elastic-sec}
+* Have been observed by {{elastic-sec}}
 * Have an asset criticality assignment
 * Have been added to {{elastic-sec}} through an integration, such Active Directory or Okta
 
