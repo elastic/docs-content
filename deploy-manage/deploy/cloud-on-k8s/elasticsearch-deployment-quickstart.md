@@ -8,7 +8,7 @@ mapped_pages:
 
 # Deploy an Elasticsearch cluster [k8s-deploy-elasticsearch]
 
-To deploy a simple [{es](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)}] cluster specification, with one {{es}} node:
+To deploy a simple [{{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)}] cluster specification, with one {{es}} node:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
