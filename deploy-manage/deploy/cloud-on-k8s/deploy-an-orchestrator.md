@@ -12,9 +12,9 @@ With Elastic Cloud on Kubernetes (ECK), you can extend the basic Kubernetes orch
 
 In this section, you'll learn how to do the following:
 
-- [**Installing the ECK Operator**](./install.md) → Learn different installation methods, including Helm and YAML manifests.
-- [**Deploying in air-gapped environments**](./air-gapped-install.md) → Follow best practices for installing and operating ECK in restricted networks.
-- [**Configuring ECK**](./configure.md) → Understand the available configuration options to optimize your ECK deployment.
+- [**Installing the ECK Operator**](./install.md): Learn different installation methods, including Helm and YAML manifests.
+- [**Deploying in air-gapped environments**](./air-gapped-install.md): Follow best practices for installing and operating ECK in restricted networks.
+- [**Configuring ECK**](./configure.md): Understand the available configuration options to optimize your ECK deployment.
 
 If you're looking to deploy {{es}}, {{kib}}, or other Elastic applications using ECK, refer to [](./manage-deployments.md).
 
