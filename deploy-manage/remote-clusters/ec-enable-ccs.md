@@ -41,22 +41,15 @@ The steps, information, and authentication method required to configure CCS and 
 
 
 
-## Enable CCR and the Remote Clusters UI in Kibana [ec-enable-ccr]
+## Enable Remote clusters in Kibana [ec-enable-ccr]
 
-If your deployment was created before February 2021, CCR won’t be enabled by default and you won’t find the Remote Clusters UI in Kibana even though your deployment meets all the [criteria](#ec-ccs-ccr-prerequisites).
-
-To enable these features, go to the **Security** page of your deployment and under **Trust management** select **Enable CCR**.
-
-::::{note}
-CCR is not supported for indices used by Enterprise Search.
-::::
-
+If your deployment was created before February 2021, the Remote clusters page in {kib} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
 
 
 ## Remote clusters and traffic filtering [ec-ccs-ccr-traffic-filtering]
 
 ::::{note}
-Traffic filtering isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ess}} deployment.
+Traffic filtering isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
 ::::
 
 

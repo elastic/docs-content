@@ -5,7 +5,7 @@ mapped_pages:
 
 # Remote clusters with self-managed installations [remote-clusters]
 
-The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ess}} deployment](/deploy-manage/remote-clusters/ec-enable-ccs.md) or from an [{{ece}} deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md).
+The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ech}} deployment](/deploy-manage/remote-clusters/ec-enable-ccs.md) or from an [{{ece}} deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md).
 
 
 ## Add remote clusters [add-remote-clusters]
@@ -15,12 +15,11 @@ To add remote clusters, you can choose between [two security models](#remote-clu
 
 ### Security models [remote-clusters-security-models]
 
-API key based security model
+API key
 :   For clusters on version 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote cluster fine-grained access controls. [Add remote clusters using API key authentication](remote-clusters-api-key.md).
 
-Certificate based security model
-:   [Deprecated in 9.0.0 - Use [API key based security model](remote-clusters-api-key.md) instead.]
-    Uses mutual TLS authentication for cross-cluster operations. User authentication is performed on the local cluster and a user’s role names are passed to the remote cluster. In this model, a superuser on the local cluster gains total read access to the remote cluster, so it is only suitable for clusters that are in the same security domain. [Add remote clusters using TLS certificate authentication](remote-clusters-cert.md).
+TLS certificate (deprecated in 9.0.0)
+:   Uses mutual TLS authentication for cross-cluster operations. User authentication is performed on the local cluster and a user’s role names are passed to the remote cluster. In this model, a superuser on the local cluster gains total read access to the remote cluster, so it is only suitable for clusters that are in the same security domain. [Add remote clusters using TLS certificate authentication](remote-clusters-cert.md).
 
 
 ### Connection modes [sniff-proxy-modes]

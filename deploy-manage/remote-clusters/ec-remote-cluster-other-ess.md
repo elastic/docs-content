@@ -14,59 +14,12 @@ This section explains how to configure a deployment to connect remotely to clust
 Before you start, consider the security model that you would prefer to use for authenticating remote connections between clusters, and follow the corresponding steps.
 
 API key
-:   For deployments based on {{stack}} version 8.10 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote deployment fine-grained access controls.
+:   For deployments based on {{stack}} version 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote deployment fine-grained access controls.
 
-TLS certificate
+TLS certificate (deprecated in 9.0.0)
 :   This model uses mutual TLS authentication for cross-cluster operations. User authentication is performed on the local cluster and a user’s role names are passed to the remote cluster. A superuser on the local deployment gains total read access to the remote deployment, so it is only suitable for deployments that are in the same security domain.
 
 :::::::{tab-set}
-
-::::::{tab-item} TLS certificate
-#### Specify the deployments trusted to be used as remote clusters [ec-trust-other-organization]
-
-A deployment can be configured to trust all or specific deployments in another Elastic Cloud Hosted [organization](../users-roles/cloud-organization.md). To add cross-organization trust:
-
-1. From the **Security** menu, select **Remote Connections > Add trusted environment** and select **{{ecloud}}**. Then click **Next**.
-2. Select **Certificates** as authentication mechanism and click **Next**.
-3. Enter the ID of the deployment’s organization which you want to establish trust with. You can find that ID on the Organization page. It is usually made of 10 digits.
-4. Choose one of following options to configure the level of trust with the other organization:
-
-    * All deployments - This deployment trusts all deployments in the other organization, including new deployments when they are created.
-    * Specific deployments - Specify which of the existing deployments you want to trust in the other organization. The full Elasticsearch cluster ID must be entered for each remote cluster. The Elasticsearch `Cluster ID` can be found in the deployment overview page under **Applications**.
-
-5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s Security page.
-6. Select **Create trust** to complete the configuration.
-7. Repeat these steps from each of the deployments you want to use for CCS or CCR in both organizations. You will only be able to connect 2 deployments successfully when both of them trust each other.
-
-Note that the organization ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-organization trust does not appear to be working, double-checking the IDs is a good place to start.
-
-::::{dropdown} Using the API
-You can update a deployment using the appropriate trust settings for the {{es}} payload.
-
-In order to trust a deployment with cluster id `cf659f7fe6164d9691b284ae36811be1` (NOTE: use the {{es}} cluster ID, not the deployment ID) in another organization with Organization ID `1053523734`, you need to update the trust settings with an additional account like this:
-
-```json
-{
-  "trust":{
-    "accounts":[
-      {
-         "account_id":"ec38dd0aa45f4a69909ca5c81c27138a",
-         "trust_all":true
-      },
-      {
-         "account_id":"1053523734",
-         "trust_all":false,
-         "trust_allowlist":[
-            "cf659f7fe6164d9691b284ae36811be1"
-         ]
-      }
-    ]
-  }
-}
-```
-
-::::
-::::::
 
 ::::::{tab-item} API key
 API key authentication enables a local cluster to authenticate itself with a remote cluster via a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key and grants access, based on the API key’s privileges.
@@ -120,6 +73,52 @@ The API key created previously will be used by the local deployment to authentic
 If you later need to update the remote connection with different permissions, you can replace the API key as detailed in [Update the access level of a remote cluster connection relying on a cross-cluster API key](ec-edit-remove-trusted-environment.md#ec-edit-remove-trusted-environment-api-key).
 ::::::
 
+::::::{tab-item} TLS certificate (deprecated)
+#### Specify the deployments trusted to be used as remote clusters [ec-trust-other-organization]
+
+A deployment can be configured to trust all or specific deployments in another Elastic Cloud Hosted [organization](../users-roles/cloud-organization.md). To add cross-organization trust:
+
+1. From the **Security** menu, select **Remote Connections > Add trusted environment** and select **{{ecloud}}**. Then click **Next**.
+2. Select **Certificates** as authentication mechanism and click **Next**.
+3. Enter the ID of the deployment’s organization which you want to establish trust with. You can find that ID on the Organization page. It is usually made of 10 digits.
+4. Choose one of following options to configure the level of trust with the other organization:
+
+    * All deployments - This deployment trusts all deployments in the other organization, including new deployments when they are created.
+    * Specific deployments - Specify which of the existing deployments you want to trust in the other organization. The full Elasticsearch cluster ID must be entered for each remote cluster. The Elasticsearch `Cluster ID` can be found in the deployment overview page under **Applications**.
+
+5. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s Security page.
+6. Select **Create trust** to complete the configuration.
+7. Repeat these steps from each of the deployments you want to use for CCS or CCR in both organizations. You will only be able to connect 2 deployments successfully when both of them trust each other.
+
+Note that the organization ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-organization trust does not appear to be working, double-checking the IDs is a good place to start.
+
+::::{dropdown} Using the API
+You can update a deployment using the appropriate trust settings for the {{es}} payload.
+
+In order to trust a deployment with cluster id `cf659f7fe6164d9691b284ae36811be1` (NOTE: use the {{es}} cluster ID, not the deployment ID) in another organization with Organization ID `1053523734`, you need to update the trust settings with an additional account like this:
+
+```json
+{
+  "trust":{
+    "accounts":[
+      {
+         "account_id":"ec38dd0aa45f4a69909ca5c81c27138a",
+         "trust_all":true
+      },
+      {
+         "account_id":"1053523734",
+         "trust_all":false,
+         "trust_allowlist":[
+            "cf659f7fe6164d9691b284ae36811be1"
+         ]
+      }
+    ]
+  }
+}
+```
+
+::::
+::::::
 :::::::
 You can now connect remotely to the trusted clusters.
 
@@ -265,7 +264,7 @@ curl -X GET -H "Authorization: ApiKey $EC_API_KEY" https://api.elastic-cloud.com
 ```
 
 ::::{note}
-The response will include just the remote clusters from the same organization in Elasticsearch Service. In order to obtain the whole list of remote clusters, use Kibana or the Elasticsearch API [Elasticsearch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
+The response will include just the remote clusters from the same Elastic Cloud organization. In order to obtain the whole list of remote clusters, use Kibana or the Elasticsearch API [Elasticsearch API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
 ::::
 
 

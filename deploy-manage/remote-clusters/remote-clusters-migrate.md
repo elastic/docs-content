@@ -29,7 +29,7 @@ If you run into any issues, refer to [Troubleshooting](remote-clusters-troublesh
 
 ## Prerequisites [remote-clusters-migration-prerequisites]
 
-* The nodes of the local and remote clusters must be on version 8.10 or later.
+* The nodes of the local and remote clusters must be on version 8.14 or later.
 * The local and remote clusters must have an appropriate license. For more information, refer to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions).
 
 

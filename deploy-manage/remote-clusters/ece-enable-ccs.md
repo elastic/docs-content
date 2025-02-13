@@ -33,7 +33,7 @@ The steps, information, and authentication method required to configure CCS and 
 
     * [Access other deployments of the same Elastic Cloud Enterprise environment](ece-remote-cluster-same-ece.md)
     * [Access deployments of a different Elastic Cloud Enterprise environment](ece-remote-cluster-other-ece.md)
-    * [Access deployments of an {{ess}} environment](ece-remote-cluster-ece-ess.md)
+    * [Access deployments of an {{ecloud}} environment](ece-remote-cluster-ece-ess.md)
     * [Access clusters of a self-managed environment](ece-remote-cluster-self-managed.md)
     * [Access deployments of an ECK environment](ece-enable-ccs-for-eck.md)
 
@@ -41,27 +41,20 @@ The steps, information, and authentication method required to configure CCS and 
 
     * [From another deployment of the same Elastic Cloud Enterprise environment](ece-remote-cluster-same-ece.md)
     * [From a deployment of another Elastic Cloud Enterprise environment](ece-remote-cluster-other-ece.md)
-    * [From an {{ess}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html)
+    * [From an {{ech}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html)
     * [From a self-managed cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html)
 
 
 
-## Enable CCR and the Remote Clusters UI in Kibana [ece-enable-ccr]
+## Enable Remote clusters in Kibana [ece-enable-ccr]
 
-If your deployment was created before ECE version `2.9.0`, CCR won’t be enabled by default and you won’t find the Remote Clusters UI in Kibana even though your deployment meets all the [criteria](#ece-ccs-ccr-prerequisites).
-
-To enable these features, go to the **Security** page of your deployment and under **Trust management** select **Enable CCR**.
-
-::::{note}
-CCR is not supported for indices used by Enterprise Search.
-::::
-
+If your deployment was created before ECE version `2.9.0`, the Remote clusters page in {kib} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
 
 
 ## Remote clusters and traffic filtering [ece-ccs-ccr-traffic-filtering]
 
 ::::{note}
-Traffic filtering isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ess}} deployment.
+Traffic filtering isn’t supported for cross-cluster operations initiated from an {{ece}} environment to a remote {{ech}} deployment.
 ::::
 
 

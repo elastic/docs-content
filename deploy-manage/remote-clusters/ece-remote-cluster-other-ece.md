@@ -15,91 +15,12 @@ This section explains how to configure a deployment to connect remotely to clust
 Before you start, consider the security model that you would prefer to use for authenticating remote connections between clusters, and follow the corresponding steps.
 
 API key
-:   For deployments based on {{stack}} version 8.10 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote deployment fine-grained access controls.
+:   For deployments based on {{stack}} version 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote deployment fine-grained access controls.
 
-TLS certificate
+TLS certificate (deprecated in 9.0.0)
 :   This model uses mutual TLS authentication for cross-cluster operations. User authentication is performed on the local cluster and a user’s role names are passed to the remote cluster. A superuser on the local deployment gains total read access to the remote deployment, so it is only suitable for deployments that are in the same security domain.
 
 :::::::{tab-set}
-
-::::::{tab-item} TLS certificate
-### Configuring platform level trust [ece-trust-remote-environments]
-
-In order to configure remote clusters in other ECE environments, you first need to establish a bi-directional trust relationship between both ECE environment’s platform:
-
-1. Download the certificate and copy the environment ID from your first ECE environment under **Platform** > **Trust Management** > **Trust parameters**.
-2. Create a new trust relationship in the other ECE environment under **Platform** > **Trust Management** > **Trusted environments** using the certificate and environment ID from the previous step.
-3. Download the certificate and copy the environment ID from your second ECE environment and create a new trust relationship with those in the first ECE environment.
-
-Now, deployments in those environments will be able to configure trust with deployments in the other environment. Trust must always be bi-directional (local cluster must trust remote cluster and vice versa) and it can be configured in each deployment’s security settings.
-
-
-### Configuring trust with clusters of an {{ece}} environment [ece-trust-ece]
-
-1. Access the **Security** page of the deployment you want to use for cross-cluster operations.
-2. Select **Remote Connections > Add trusted environment** and choose **{{ece}}**. Then click **Next**.
-3. Select **Certificates** as authentication mechanism and click **Next**.
-4. From the dropdown, select one of the environments configured in [Configuring platform level trust](#ece-trust-remote-environments).
-5. Choose one of following options to configure the level of trust with the ECE environment:
-
-    * All deployments - This deployment trusts all deployments in the ECE environment, including new deployments when they are created.
-    * Specific deployments - Specify which of the existing deployments you want to trust in the ECE environment. The full Elasticsearch cluster ID must be entered for each remote cluster. The Elasticsearch `Cluster ID` can be found in the deployment overview page under **Applications**.
-
-6. Select **Create trust** to complete the configuration.
-7. Configure the corresponding deployments of the ECE environment to [trust this deployment](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-enable-ccs.html). You will only be able to connect 2 deployments successfully when both of them trust each other.
-
-Note that the environment ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
-
-::::{dropdown} Using the API
-You can update a deployment using the appropriate trust settings for the {{es}} payload.
-
-Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/Platform_-_Configuration_-_Trust_relationships.html). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/get-trust-relationships.html):
-
-```sh
-curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443//api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false
-```
-
-For each remote ECE environment, it will return something like this:
-
-```json
-{
-   "id":"83a7b03f2a4343fe99f09bd27ca3d9ec",
-   "name":"ECE2",
-   "trust_by_default":false,
-   "account_ids":[
-      "651598b101e54ccab1bfdcd8b6e3b8be"
-   ],
-   "local":false,
-   "last_modified":"2022-01-9T14:33:20.465Z"
-}
-```
-
-In order to trust a deployment with cluster id `cf659f7fe6164d9691b284ae36811be1` (NOTE: use the {{es}} cluster ID, not the deployment ID) in this environment named `ECE2`, you need to update the trust settings with an external trust relationship like this:
-
-```json
-{
-  "trust":{
-    "accounts":[
-      {
-         "account_id":"ec38dd0aa45f4a69909ca5c81c27138a",
-         "trust_all":true
-      }
-    ],
-    "external":[
-      {
-         "trust_relationship_id":"83a7b03f2a4343fe99f09bd27ca3d9ec",
-         "trust_all":false,
-         "trust_allowlist":[
-            "cf659f7fe6164d9691b284ae36811be1"
-         ]
-      }
-    ]
-  }
-}
-```
-
-::::
-::::::
 
 ::::::{tab-item} API key
 API key authentication enables a local cluster to authenticate itself with a remote cluster via a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key and grants access, based on the API key’s privileges.
@@ -204,6 +125,84 @@ If you later need to update the remote connection with different permissions, yo
 ::::
 ::::::
 
+::::::{tab-item} TLS certificate (deprecated)
+### Configuring platform level trust [ece-trust-remote-environments]
+
+In order to configure remote clusters in other ECE environments, you first need to establish a bi-directional trust relationship between both ECE environment’s platform:
+
+1. Download the certificate and copy the environment ID from your first ECE environment under **Platform** > **Trust Management** > **Trust parameters**.
+2. Create a new trust relationship in the other ECE environment under **Platform** > **Trust Management** > **Trusted environments** using the certificate and environment ID from the previous step.
+3. Download the certificate and copy the environment ID from your second ECE environment and create a new trust relationship with those in the first ECE environment.
+
+Now, deployments in those environments will be able to configure trust with deployments in the other environment. Trust must always be bi-directional (local cluster must trust remote cluster and vice versa) and it can be configured in each deployment’s security settings.
+
+
+### Configuring trust with clusters of an {{ece}} environment [ece-trust-ece]
+
+1. Access the **Security** page of the deployment you want to use for cross-cluster operations.
+2. Select **Remote Connections > Add trusted environment** and choose **{{ece}}**. Then click **Next**.
+3. Select **Certificates** as authentication mechanism and click **Next**.
+4. From the dropdown, select one of the environments configured in [Configuring platform level trust](#ece-trust-remote-environments).
+5. Choose one of following options to configure the level of trust with the ECE environment:
+
+    * All deployments - This deployment trusts all deployments in the ECE environment, including new deployments when they are created.
+    * Specific deployments - Specify which of the existing deployments you want to trust in the ECE environment. The full Elasticsearch cluster ID must be entered for each remote cluster. The Elasticsearch `Cluster ID` can be found in the deployment overview page under **Applications**.
+
+6. Select **Create trust** to complete the configuration.
+7. Configure the corresponding deployments of the ECE environment to [trust this deployment](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-enable-ccs.html). You will only be able to connect 2 deployments successfully when both of them trust each other.
+
+Note that the environment ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
+
+::::{dropdown} Using the API
+You can update a deployment using the appropriate trust settings for the {{es}} payload.
+
+Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/Platform_-_Configuration_-_Trust_relationships.html). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/get-trust-relationships.html):
+
+```sh
+curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443//api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false
+```
+
+For each remote ECE environment, it will return something like this:
+
+```json
+{
+   "id":"83a7b03f2a4343fe99f09bd27ca3d9ec",
+   "name":"ECE2",
+   "trust_by_default":false,
+   "account_ids":[
+      "651598b101e54ccab1bfdcd8b6e3b8be"
+   ],
+   "local":false,
+   "last_modified":"2022-01-9T14:33:20.465Z"
+}
+```
+
+In order to trust a deployment with cluster id `cf659f7fe6164d9691b284ae36811be1` (NOTE: use the {{es}} cluster ID, not the deployment ID) in this environment named `ECE2`, you need to update the trust settings with an external trust relationship like this:
+
+```json
+{
+  "trust":{
+    "accounts":[
+      {
+         "account_id":"ec38dd0aa45f4a69909ca5c81c27138a",
+         "trust_all":true
+      }
+    ],
+    "external":[
+      {
+         "trust_relationship_id":"83a7b03f2a4343fe99f09bd27ca3d9ec",
+         "trust_all":false,
+         "trust_allowlist":[
+            "cf659f7fe6164d9691b284ae36811be1"
+         ]
+      }
+    ]
+  }
+}
+```
+
+::::
+::::::
 :::::::
 You can now connect remotely to the trusted clusters.
 
