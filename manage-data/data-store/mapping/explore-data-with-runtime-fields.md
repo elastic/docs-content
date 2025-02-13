@@ -33,7 +33,7 @@ PUT /my-index-000001/
 
 ## Ingest some data [runtime-examples-ingest-data]
 
-After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index raw log data into `my-index-000001`. Instead of indexing all of your log data, you can use a small sample to experiment with runtime fields.
+After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index raw log data into `my-index-000001`. Instead of indexing all of your log data, you can use a small sample to experiment with runtime fields.
 
 The final document is not a valid Apache log format, but we can account for that scenario in our script.
 
