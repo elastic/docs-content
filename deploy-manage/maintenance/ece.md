@@ -19,7 +19,7 @@ Most deployment templates include a {{kib}} instance, but if it wasn’t part of
 The new {{kib}} instance takes a few moments to provision. After provisioning {{kib}} is complete, you can use the endpoint URL to access {{kib}}.
 
 ::::{tip}
-You can log into Kibana as the `elastic` superuser. The password was provided when you created your deployment or can be [reset](users-roles/cluster-or-deployment-auth/built-in-users.md). On AWS and not able to access Kibana? [Check if you need to update your endpoint URL first](../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
+You can log into Kibana as the `elastic` superuser. The password was provided when you created your deployment or can be [reset](../users-roles/cluster-or-deployment-auth/built-in-users.md). On AWS and not able to access Kibana? [Check if you need to update your endpoint URL first](../../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
 ::::
 
 From the deployment **{{kib}}** page you can also:
