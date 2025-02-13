@@ -21,7 +21,9 @@ applies:
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-install-yaml-manifests.md
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-deploy-eck.md
 
-This method is the quickest way to get started with ECK if you have full administrative access to the Kubernetes cluster. 
+In this guide, you'll learn how to deploy ECK using Elastic-provided YAML manifests. This method is the quickest way to get started with ECK if you have full administrative access to the Kubernetes cluster. 
+
+To learn about other installation methods, refer to [](/deploy-manage/deploy/cloud-on-k8s/install.md).
 
 During the installation, the following components are installed or updated:
 
