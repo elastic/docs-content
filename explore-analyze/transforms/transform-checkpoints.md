@@ -41,7 +41,7 @@ If the cluster experiences unsuitable performance degradation due to the {{trans
 
 In most cases, it is strongly recommended to use the ingest timestamp of the source indices for syncing the {{transform}}. This is the most optimal way for {{transforms}} to be able to identify new changes. If your data source follows the [ECS standard](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html), you might already have an [`event.ingested`](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-event.html#field-event-ingested) field. In this case, use `event.ingested` as the `sync`.`time`.`field` property of your {{transform}}.
 
-If you don’t have a `event.ingested` field or it isn’t populated, you can set it by using an ingest pipeline. Create an ingest pipeline either using the [ingest pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html) (like the example below) or via {{kib}} under **Stack Management > Ingest Pipelines**. Use a [`set` processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html) to set the field and associate it with the value of the ingest timestamp.
+If you don’t have a `event.ingested` field or it isn’t populated, you can set it by using an ingest pipeline. Create an ingest pipeline either using the [ingest pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) (like the example below) or via {{kib}} under **Stack Management > Ingest Pipelines**. Use a [`set` processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html) to set the field and associate it with the value of the ingest timestamp.
 
 ```console
 PUT _ingest/pipeline/set_ingest_time
@@ -58,7 +58,7 @@ PUT _ingest/pipeline/set_ingest_time
 }
 ```
 
-After you created the ingest pipeline, apply it to the source indices of your {{transform}}. The pipeline adds the field `event.ingested` to every document with the value of the ingest timestamp. Configure the `sync`.`time`.`field` property of your {{transform}} to use the field by using the [create {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html) for new {{transforms}} or the [update {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html) for existing {{transforms}}. The `event.ingested` field is used for syncing the {{transform}}.
+After you created the ingest pipeline, apply it to the source indices of your {{transform}}. The pipeline adds the field `event.ingested` to every document with the value of the ingest timestamp. Configure the `sync`.`time`.`field` property of your {{transform}} to use the field by using the [create {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform) for new {{transforms}} or the [update {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-update-transform) for existing {{transforms}}. The `event.ingested` field is used for syncing the {{transform}}.
 
 Refer to [Add a pipeline to an indexing request](../../manage-data/ingest/transform-enrich/ingest-pipelines.md#add-pipeline-to-indexing-request) and [Ingest pipelines](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) to learn more about how to use an ingest pipeline.
 

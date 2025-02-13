@@ -24,7 +24,7 @@ We recommend using CSV reports to export moderate amounts of data only. The feat
 
 To work around the limitations, use filters to create multiple smaller reports, or extract the data you need directly with the Elasticsearch APIs.
 
-For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/guide/en/elasticsearch/reference/current/scroll-api.html), [Point in time API](https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html), [ES|QL](../query-filter/languages/esql-rest.md) or [SQL](../query-filter/languages/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
+For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](../query-filter/languages/esql-rest.md) or [SQL](../query-filter/languages/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 
 [Reporting parameters](https://www.elastic.co/guide/en/kibana/current/reporting-settings-kb.html) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
 
@@ -38,7 +38,7 @@ For advice about common problems, refer to [Troubleshooting](reporting-troublesh
 
 ## Configuring CSV export to use the scroll API [reporting-troubleshooting-csv-configure-scan-api]
 
-The Kibana CSV export feature collects all of the data from Elasticsearch by using multiple requests to page over all of the documents. Internally, the feature uses the [Point in time API and `search_after` parameters in the queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/point-in-time-api.html) to do so. There are some limitations related to the point in time API:
+The Kibana CSV export feature collects all of the data from Elasticsearch by using multiple requests to page over all of the documents. Internally, the feature uses the [Point in time API and `search_after` parameters in the queries](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time) to do so. There are some limitations related to the point in time API:
 
 1. Permissions to read data aliases alone will not work: the permissions are needed on the underlying indices or data streams.
 2. In cases where data shards are unavailable or time out, the export will be empty rather than returning partial data.
