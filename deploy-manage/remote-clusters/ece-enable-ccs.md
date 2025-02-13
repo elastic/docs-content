@@ -7,11 +7,11 @@ mapped_pages:
 
 # Remote clusters with {{ece}} [ece-enable-ccs]
 
-You can configure an Elastic Cloud Enterprise deployment to remotely access or (be accessed by) a cluster from:
+You can configure an {{ece}} deployment to remotely access or (be accessed by) a cluster from:
 
 * Another deployment of your ECE installation
 * A deployment running on a different ECE installation
-* An Elastic Cloud Hosted deployment
+* An {{ech}} deployment
 * A deployment running on an {{eck}} installation
 * A self-managed installation
 
@@ -29,24 +29,24 @@ To use CCS or CCR, your environment must meet the following criteria:
 
 The steps, information, and authentication method required to configure CCS and CCR can vary depending on where the clusters you want to use as remote are hosted.
 
-* Connect remotely to other clusters from your Elastic Cloud Enterprise deployments
+* Connect remotely to other clusters from your {{ece}} deployments
 
-    * [Access other deployments of the same Elastic Cloud Enterprise environment](ece-remote-cluster-same-ece.md)
-    * [Access deployments of a different Elastic Cloud Enterprise environment](ece-remote-cluster-other-ece.md)
+    * [Access other deployments of the same {{ece}} environment](ece-remote-cluster-same-ece.md)
+    * [Access deployments of a different {{ece}} environment](ece-remote-cluster-other-ece.md)
     * [Access deployments of an {{ecloud}} environment](ece-remote-cluster-ece-ess.md)
     * [Access clusters of a self-managed environment](ece-remote-cluster-self-managed.md)
     * [Access deployments of an ECK environment](ece-enable-ccs-for-eck.md)
 
-* Use clusters from your Elastic Cloud Enterprise deployments as remote
+* Use clusters from your {{ece}} deployments as remote
 
-    * [From another deployment of the same Elastic Cloud Enterprise environment](ece-remote-cluster-same-ece.md)
-    * [From a deployment of another Elastic Cloud Enterprise environment](ece-remote-cluster-other-ece.md)
+    * [From another deployment of the same {{ece}} environment](ece-remote-cluster-same-ece.md)
+    * [From a deployment of another {{ece}} environment](ece-remote-cluster-other-ece.md)
     * [From an {{ech}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html)
     * [From a self-managed cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html)
 
 
 
-## Enable Remote clusters in Kibana [ece-enable-ccr]
+## Enable Remote clusters in {{kib}} [ece-enable-ccr]
 
 If your deployment was created before ECE version `2.9.0`, the Remote clusters page in {kib} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
 
@@ -63,7 +63,7 @@ For remote clusters configured using TLS certificate authentication, [traffic fi
 Traffic filtering for remote clusters supports 2 methods:
 
 * [Filtering by IP addresses and Classless Inter-Domain Routing (CIDR) masks](../security/ip-traffic-filtering.md)
-* Filtering by Organization or Elasticsearch cluster ID with a Remote cluster type filter. You can configure this type of filter from the **Platform** > **Security** page of your environment or using the [Elastic Cloud Enterprise API](https://www.elastic.co/docs/api/doc/cloud-enterprise) and apply it from each deployment’s **Security** page.
+* Filtering by Organization or {{es}} cluster ID with a Remote cluster type filter. You can configure this type of filter from the **Platform** > **Security** page of your environment or using the [{{ece}} API](https://www.elastic.co/docs/api/doc/cloud-enterprise) and apply it from each deployment’s **Security** page.
 
 ::::{note}
 When setting up traffic filters for a remote connection to an {{ece}} environment, you also need to upload the region’s TLS certificate of the local cluster to the {{ece}} environment’s proxy. You can find that region’s TLS certificate in the Security page of any deployment of the environment initiating the remote connection.

@@ -7,7 +7,7 @@ mapped_pages:
 
 # Migrate the cross-cluster search deployment template [ec-migrate-ccs]
 
-The cross-cluster search deployment template is now deprecated and has been removed from the Elastic Cloud console. You no longer need to use the dedicated cross-cluster template to search across deployments. Instead, you can now use any template to [configure remote clusters](ec-enable-ccs.md) and search across them. Existing deployments created using this template are not affected, but they are required to migrate to another template before upgrading to version 8.x.
+The cross-cluster search deployment template is now deprecated and has been removed from the {{ecloud}} console. You no longer need to use the dedicated cross-cluster template to search across deployments. Instead, you can now use any template to [configure remote clusters](ec-enable-ccs.md) and search across them. Existing deployments created using this template are not affected, but they are required to migrate to another template before upgrading to version 8.x.
 
 There are two different approaches to do this migration:
 
@@ -19,7 +19,7 @@ There are two different approaches to do this migration:
 
 You can use a PUT request to update your deployment, changing both the deployment template ID and the instances required by the new template.
 
-1. First, choose the new template you want to use and obtain its ID. This template ID can be obtained from the [Elastic Cloud console](https://cloud.elastic.co?page=docs&placement=docs-body) **Create Deployment** page by selecting **Equivalent API request** and inspecting the result for the field `deployment_template`. For example, we are going to use the "Storage optimized" deployment template, and in our GCP region the id is `gcp-storage-optimized-v5`.
+1. First, choose the new template you want to use and obtain its ID. This template ID can be obtained from the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body) **Create Deployment** page by selecting **Equivalent API request** and inspecting the result for the field `deployment_template`. For example, we are going to use the "Storage optimized" deployment template, and in our GCP region the id is `gcp-storage-optimized-v5`.
 
     You can also find the template in the [list of templates available for each region](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html).
 
@@ -264,7 +264,7 @@ Note that the `ref_id` and version numbers for your resources may not be the sam
 
 ## Use a snapshot to migrate deployments that use the cross-cluster search deployment template [ec-migrate-ccs-deployment-using-snapshot]
 
-You can make this change in the user [Elastic Cloud console](https://cloud.elastic.co?page=docs&placement=docs-body). The only drawback of this method is that it changes the URL used to access the {{es}} cluster and Kibana.
+You can make this change in the user [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body). The only drawback of this method is that it changes the URL used to access the {{es}} cluster and {{kib}}.
 
 1. From the deployment menu, open the **Snapshots** page and click **Take Snapshot now**. Wait for the snapshot to finish.
 2. From the main **Deployments** page, click **Create deployment**. Next to **Settings** toggle on **Restore snapshot data**, and then select your deployment and the snapshot that you created.

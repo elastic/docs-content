@@ -5,9 +5,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-other-ece.html
 ---
 
-# Access deployments of another Elastic Cloud Enterprise environment [ece-remote-cluster-other-ece]
+# Access deployments of another {{ece}} environment [ece-remote-cluster-other-ece]
 
-This section explains how to configure a deployment to connect remotely to clusters belonging to a different Elastic Cloud Enterprise environment.
+This section explains how to configure a deployment to connect remotely to clusters belonging to a different {{ece}} environment.
 
 
 ## Allow the remote connection [ece_allow_the_remote_connection_2]
@@ -39,7 +39,7 @@ If you run into any issues, refer to [Troubleshooting](remote-clusters-troublesh
 
 ### Create a cross-cluster API key on the remote deployment [ece_create_a_cross_cluster_api_key_on_the_remote_deployment_2]
 
-* On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [Kibana](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
+* On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [{{kib}}](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
 * Copy the encoded key (`encoded` in the response) to a safe location. You will need it in the next step.
 
 
@@ -67,7 +67,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
     2. Click **Add** to save the API key to the keystore.
 
-5. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart Elasticsearch**.<br>
+5. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart {{es}}**.<br>
 
     ::::{note}
     If the local deployment runs on version 8.13 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
@@ -113,7 +113,7 @@ If you later need to update the remote connection with different permissions, yo
 
 8. Provide a name for the trusted environment. That name will appear in the trust summary of your deployment’s Security page.
 9. Select **Create trust** to complete the configuration.
-10. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart Elasticsearch**.<br>
+10. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart {{es}}**.<br>
 
     ::::{note}
     If the local deployment runs on version 8.13 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
@@ -146,7 +146,7 @@ Now, deployments in those environments will be able to configure trust with depl
 5. Choose one of following options to configure the level of trust with the ECE environment:
 
     * All deployments - This deployment trusts all deployments in the ECE environment, including new deployments when they are created.
-    * Specific deployments - Specify which of the existing deployments you want to trust in the ECE environment. The full Elasticsearch cluster ID must be entered for each remote cluster. The Elasticsearch `Cluster ID` can be found in the deployment overview page under **Applications**.
+    * Specific deployments - Specify which of the existing deployments you want to trust in the ECE environment. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
 
 6. Select **Create trust** to complete the configuration.
 7. Configure the corresponding deployments of the ECE environment to [trust this deployment](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-enable-ccs.html). You will only be able to connect 2 deployments successfully when both of them trust each other.
@@ -209,23 +209,23 @@ You can now connect remotely to the trusted clusters.
 
 ## Connect to the remote cluster [ece_connect_to_the_remote_cluster_2]
 
-On the local cluster, add the remote cluster using Kibana or the {{es}} API.
+On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
 
 
-### Using Kibana [ece_using_kibana_2]
+### Using {{kib}} [ece_using_kibana_2]
 
 1. Open the {{kib}} main menu, and select **Stack Management > Data > Remote Clusters > Add a remote cluster**.
 2. Enable **Manually enter proxy address and server name**.
 3. Fill in the following fields:
 
     * **Name**: This *cluster alias* is a unique identifier that represents the connection to the remote cluster and is used to distinguish between local and remote indices.
-    * **Proxy address**: This value can be found on the **Security** page of the Elastic Cloud Enterprise deployment you want to use as a remote.<br>
+    * **Proxy address**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.<br>
 
         ::::{tip}
         If you’re using API keys as security model, change the port into `9443`.
         ::::
 
-    * **Server name**: This value can be found on the **Security** page of the Elastic Cloud Enterprise deployment you want to use as a remote.
+    * **Server name**: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote.
 
         :::{image} ../../images/cloud-enterprise-ce-copy-remote-cluster-parameters.png
         :alt: Remote Cluster Parameters in Deployment
@@ -245,19 +245,19 @@ This configuration of remote clusters uses the [Proxy mode](https://www.elastic.
 
 
 
-### Using the Elasticsearch API [ece_using_the_elasticsearch_api_2]
+### Using the {{es}} API [ece_using_the_elasticsearch_api_2]
 
 To configure a deployment as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
 * `mode`: `proxy`
-* `proxy_address`: This value can be found on the **Security** page of the Elastic Cloud Enterprise deployment you want to use as a remote. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9300` using a semicolon.
+* `proxy_address`: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9300` using a semicolon.
 
 ::::{tip}
 If you’re using API keys as security model, change the port into `9443`.
 ::::
 
 
-* `server_name`: This value can be found on the **Security** page of the Elastic Cloud Enterprise deployment you want to use as a remote. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
+* `server_name`: This value can be found on the **Security** page of the {{ece}} deployment you want to use as a remote. Also, using the API, this can be obtained from the {{es}} resource info field `metadata.endpoint`.
 
 This is an example of the API call to `_cluster/settings`:
 
@@ -313,7 +313,7 @@ This is an example of the API call to `_cluster/settings`:
 
 
 
-### Using the Elastic Cloud Enterprise RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api_2]
+### Using the {{ece}} RESTful API [ece_using_the_elastic_cloud_enterprise_restful_api_2]
 
 ::::{note}
 This section only applies if you’re using TLS certificates as cross-cluster security model and when both clusters belong to the same ECE environment (for other scenarios, the {{es}} API should be used instead):
@@ -340,7 +340,7 @@ curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $EC
 `REF_ID_REMOTE`
 :   The unique ID of the {{es}} resources inside your remote deployment (you can obtain these values through the API).
 
-Note the following when using the Elastic Cloud Enterprise RESTful API:
+Note the following when using the {{ece}} RESTful API:
 
 1. A cluster alias must contain only letters, numbers, dashes (-), or underscores (_).
 2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#skip-unavailable-clusters).
@@ -353,7 +353,7 @@ curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:
 ```
 
 ::::{note}
-The response includes just the remote clusters from the same ECE environment. In order to obtain the whole list of remote clusters, use Kibana or the {{es}} API [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
+The response includes just the remote clusters from the same ECE environment. In order to obtain the whole list of remote clusters, use {{kib}} or the {{es}} API [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
 ::::
 
 

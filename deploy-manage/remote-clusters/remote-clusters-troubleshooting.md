@@ -204,7 +204,7 @@ The local cluster logs `missing authentication`:
 ```txt
 [2023-06-28T13:04:52,710][WARN ][o.e.t.ProxyConnectionStrategy] [local-node] failed to open any proxy connections to cluster [my]
 org.elasticsearch.transport.RemoteTransportException: [remote-node][192.168.0.42:9309][cluster:internal/remote_cluster/handshake]
-Caused by: org.elasticsearch.ElasticsearchSecurityException: **missing authentication** credentials for action [cluster:internal/remote_cluster/handshake]
+Caused by: org.elasticsearch.{{es}}SecurityException: **missing authentication** credentials for action [cluster:internal/remote_cluster/handshake]
 ```
 
 This does not show up in the logs of the remote cluster.
@@ -218,7 +218,7 @@ If the anonymous user does not the have necessary privileges to make a connectio
 
 ```txt
 org.elasticsearch.transport.RemoteTransportException: [remote-node][192.168.0.42:9309][cluster:internal/remote_cluster/handshake]
-Caused by: org.elasticsearch.ElasticsearchSecurityException: action [cluster:internal/remote_cluster/handshake] is **unauthorized** for user [anonymous_foo] with effective roles [reporting_user], this action is granted by the cluster privileges [cross_cluster_search,cross_cluster_replication,manage,all]
+Caused by: org.elasticsearch.{{es}}SecurityException: action [cluster:internal/remote_cluster/handshake] is **unauthorized** for user [anonymous_foo] with effective roles [reporting_user], this action is granted by the cluster privileges [cross_cluster_search,cross_cluster_replication,manage,all]
 ```
 
 If the anonymous user has necessary privileges, for example it is a superuser, the local cluster logs `requires channel profile to be [_remote_cluster], but got [default]`:
@@ -317,7 +317,7 @@ The local cluster logs `authentication expected API key type of [cross_cluster]`
 ```txt
 [2023-06-28T13:26:53,962][WARN ][o.e.t.ProxyConnectionStrategy] [local-node] failed to open any proxy connections to cluster [my]
 org.elasticsearch.transport.RemoteTransportException: [remote-node][192.168.0.42:9443][cluster:internal/remote_cluster/handshake]
-Caused by: org.elasticsearch.ElasticsearchSecurityException: **authentication expected API key type of [cross_cluster]**, but API key [agZXJocBmA2beJfq2yKu] has type [rest]
+Caused by: org.elasticsearch.{{es}}SecurityException: **authentication expected API key type of [cross_cluster]**, but API key [agZXJocBmA2beJfq2yKu] has type [rest]
 ```
 
 This does not show up in the logs of the remote cluster.
@@ -340,7 +340,7 @@ The local cluster logs `unable to authenticate`:
 ```txt
 [2023-06-28T13:22:58,264][WARN ][o.e.t.ProxyConnectionStrategy] [local-node] failed to open any proxy connections to cluster [my]
 org.elasticsearch.transport.RemoteTransportException: [remote-node][192.168.0.42:9443][cluster:internal/remote_cluster/handshake]
-Caused by: org.elasticsearch.ElasticsearchSecurityException: **unable to authenticate** user [agZXJocBmA2beJfq2yKu] for action [cluster:internal/remote_cluster/handshake]
+Caused by: org.elasticsearch.{{es}}SecurityException: **unable to authenticate** user [agZXJocBmA2beJfq2yKu] for action [cluster:internal/remote_cluster/handshake]
 ```
 
 The remote cluster logs `Authentication using apikey failed`:
