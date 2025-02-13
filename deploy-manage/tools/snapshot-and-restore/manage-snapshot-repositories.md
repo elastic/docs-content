@@ -12,7 +12,7 @@ Snapshot repositories allow you to back up and restore your Elasticsearch data e
 
 ### Elastic Cloud Hosted
 
-Elastic Cloud Hosted deployments automatically register the `found-snapshots` repository. Elastic Cloud Hosted deployments use this repository and the `cloud-snapshot-policy` to take periodic snapshots of your {{es}} cluster. You can also use the `found-snapshots` repository for your own [SLM policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
+{{ech}} deployments automatically register a repository named `found-snapshots` in {{es}} clusters. These repositories are used together with the `cloud-snapshot-policy` SLM policy to take periodic snapshots of your {{es}} clusters. You can also use the `found-snapshots` repository for your own [SLM policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
 The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s found-snapshots repository if the deployments are under the same account and in the same region. 
 
