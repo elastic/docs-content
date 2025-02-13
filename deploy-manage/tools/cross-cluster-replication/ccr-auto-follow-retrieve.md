@@ -9,5 +9,5 @@ To view existing auto-follow patterns and make changes to the backing patterns, 
 
 Select the auto-follow pattern that you want to view details about. From there, you can make changes to the auto-follow pattern. You can also view your follower indices included in the auto-follow pattern.
 
-Use the [get auto-follow pattern API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-auto-follow-pattern.html) to inspect all configured auto-follow pattern collections.
+Use the [get auto-follow pattern API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-get-auto-follow-pattern-1) to inspect all configured auto-follow pattern collections.
 

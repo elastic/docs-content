@@ -26,7 +26,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 **Check your cluster status**
 
-Use the [cluster health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html).
+Use the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
 
 ```console
 GET _cluster/health?filter_path=status,*_shards
@@ -36,7 +36,7 @@ A healthy cluster has a green `status` and zero `unassigned_shards`. A yellow st
 
 **View unassigned shards**
 
-To view unassigned shards, use the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html).
+To view unassigned shards, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
 ```console
 GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
@@ -44,7 +44,7 @@ GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
 
 Unassigned shards have a `state` of `UNASSIGNED`. The `prirep` value is `p` for primary shards and `r` for replicas.
 
-To understand why an unassigned shard is not being assigned and what action you must take to allow {{es}} to assign it, use the [cluster allocation explanation API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html).
+To understand why an unassigned shard is not being assigned and what action you must take to allow {{es}} to assign it, use the [cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain).
 
 ```console
 GET _cluster/allocation/explain?filter_path=index,node_allocation_decisions.node_name,node_allocation_decisions.deciders.*
@@ -78,9 +78,9 @@ Shards often become unassigned when a data node leaves the cluster. This can occ
 
 After you resolve the issue and recover the node, it will rejoin the cluster. {{es}} will then automatically allocate any unassigned shards.
 
-You can monitor this process by [checking your cluster health](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html). The number of unallocated shards should progressively decrease until green status is reached.
+You can monitor this process by [checking your cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health). The number of unallocated shards should progressively decrease until green status is reached.
 
-To avoid wasting resources on temporary issues, {{es}} [delays allocation](../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md) by one minute by default. If you’ve recovered a node and don’t want to wait for the delay period, you can call the [cluster reroute API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html) with no arguments to start the allocation process. The process runs asynchronously in the background.
+To avoid wasting resources on temporary issues, {{es}} [delays allocation](../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md) by one minute by default. If you’ve recovered a node and don’t want to wait for the delay period, you can call the [cluster reroute API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) with no arguments to start the allocation process. The process runs asynchronously in the background.
 
 ```console
 POST _cluster/reroute
@@ -95,7 +95,7 @@ Misconfigured allocation settings can result in an unassigned primary shard. The
 * [Allocation filtering](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-shard-allocation-filtering) cluster settings
 * [Allocation awareness](../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) cluster settings
 
-To review your allocation settings, use the [get index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) and [cluster get settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html) APIs.
+To review your allocation settings, use the [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and [cluster get settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) APIs.
 
 ```console
 GET my-index/_settings?flat_settings=true&include_defaults=true
@@ -103,7 +103,7 @@ GET my-index/_settings?flat_settings=true&include_defaults=true
 GET _cluster/settings?flat_settings=true&include_defaults=true
 ```
 
-You can change the settings using the [update index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) and [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) APIs.
+You can change the settings using the [update index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) and [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) APIs.
 
 
 ### Allocate or reduce replicas [fix-cluster-status-allocation-replicas]
@@ -125,7 +125,7 @@ PUT _settings
 
 {{es}} uses a [low disk watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation) to ensure data nodes have enough disk space for incoming shards. By default, {{es}} does not allocate shards to nodes using more than 85% of disk space.
 
-To check the current disk space of your nodes, use the [cat allocation API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-allocation.html).
+To check the current disk space of your nodes, use the [cat allocation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation).
 
 ```console
 GET _cat/allocation?v=true&h=node,shards,disk.*
@@ -136,13 +136,13 @@ If your nodes are running low on disk space, you have a few options:
 * Upgrade your nodes to increase disk space.
 * Add more nodes to the cluster.
 * Delete unneeded indices to free up space. If you use {{ilm-init}}, you can update your lifecycle policy to use [searchable snapshots](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-searchable-snapshot.html) or add a delete phase. If you no longer need to search the data, you can use a [snapshot](../../deploy-manage/tools/snapshot-and-restore.md) to store it off-cluster.
-* If you no longer write to an index, use the [force merge API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) or {{ilm-init}}'s [force merge action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-forcemerge.html) to merge its segments into larger ones.
+* If you no longer write to an index, use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) or {{ilm-init}}'s [force merge action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-forcemerge.html) to merge its segments into larger ones.
 
     ```console
     POST my-index/_forcemerge
     ```
 
-* If an index is read-only, use the [shrink index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-shrink-index.html) or {{ilm-init}}'s [shrink action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-shrink.html) to reduce its primary shard count.
+* If an index is read-only, use the [shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink) or {{ilm-init}}'s [shrink action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-shrink.html) to reduce its primary shard count.
 
     ```console
     POST my-index/_shrink/my-shrunken-index
@@ -191,12 +191,12 @@ Shard allocation requires JVM heap memory. High JVM memory pressure can trigger 
 
 ### Recover data for a lost primary shard [fix-cluster-status-restore]
 
-If a node containing a primary shard is lost, {{es}} can typically replace it using a replica on another node. If you can’t recover the node and replicas don’t exist or are irrecoverable, [Allocation Explain](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html) will report `no_valid_shard_copy` and you’ll need to do one of the following:
+If a node containing a primary shard is lost, {{es}} can typically replace it using a replica on another node. If you can’t recover the node and replicas don’t exist or are irrecoverable, [Allocation Explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) will report `no_valid_shard_copy` and you’ll need to do one of the following:
 
 * restore the missing data from [snapshot](../../deploy-manage/tools/snapshot-and-restore.md)
 * index the missing data from its original data source
-* accept data loss on the index-level by running [Delete Index](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html)
-* accept data loss on the shard-level by executing [Cluster Reroute](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html) allocate_stale_primary or allocate_empty_primary command with `accept_data_loss: true`
+* accept data loss on the index-level by running [Delete Index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete)
+* accept data loss on the shard-level by executing [Cluster Reroute](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-reroute) allocate_stale_primary or allocate_empty_primary command with `accept_data_loss: true`
 
     ::::{warning}
     Only use this option if node recovery is no longer possible. This process allocates an empty primary shard. If the node later rejoins the cluster, {{es}} will overwrite its primary shard with data from this newer empty shard, resulting in data loss.

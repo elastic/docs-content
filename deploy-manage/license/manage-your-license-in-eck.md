@@ -85,7 +85,7 @@ kubectl create secret generic eck-license --from-file=my-license-file.json -n el
 kubectl label secret eck-license "license.k8s.elastic.co/scope"=operator -n elastic-system
 ```
 
-After you install a license into ECK, the Enterprise features of the operator are available, like Elasticsearch autoscaling and support for Elastic Maps Server. All the Elastic Stack applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-license.html) API reports that individual Elasticsearch clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
+After you install a license into ECK, the Enterprise features of the operator are available, like Elasticsearch autoscaling and support for Elastic Maps Server. All the Elastic Stack applications you manage with ECK will have Platinum and Enterprise features enabled.  The [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API reports that individual Elasticsearch clusters are running under an Enterprise license, and the [elastic-licensing](#k8s-get-usage-data) ConfigMap contains the current license level of the ECK operator. The applications created before you installed the license are upgraded to Platinum or Enterprise features without interruption of service after a short delay.
 
 ::::{note}
 The Elasticsearch `_license` API for versions before 8.0.0 reports a Platinum license level for backwards compatibility even if an Enterprise license is installed.
@@ -98,7 +98,7 @@ The Elasticsearch `_license` API for versions before 8.0.0 reports a Platinum li
 Before your current Enterprise license expires, you will receive a new Enterprise license from Elastic (provided that your subscription is valid).
 
 ::::{note}
-You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual Elasticsearch clusters with shorter expiry. Therefore, you get a different expiry in Kibana or through the Elasticsearch [`_license`](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-license.html) API. ECK automatically updates the Elasticsearch cluster licenses until the expiry date of the ECK Enterprise license is reached.
+You can check the expiry date of your license in the [elastic-licensing](#k8s-get-usage-data) ConfigMap. Enterprise licenses are container licenses that include multiple licenses for individual Elasticsearch clusters with shorter expiry. Therefore, you get a different expiry in Kibana or through the Elasticsearch [`_license`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get) API. ECK automatically updates the Elasticsearch cluster licenses until the expiry date of the ECK Enterprise license is reached.
 ::::
 
 

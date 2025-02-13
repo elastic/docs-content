@@ -39,7 +39,7 @@ If `cluster.auto_shrink_voting_configuration` is set to `true` (which is the def
 ::::
 
 
-There are situations in which Elasticsearch might tolerate the loss of multiple nodes, but this is not guaranteed under all sequences of failures. If the `cluster.auto_shrink_voting_configuration` setting is `false`, you must remove departed nodes from the voting configuration manually. Use the [voting exclusions API](https://www.elastic.co/guide/en/elasticsearch/reference/current/voting-config-exclusions.html) to achieve the desired level of resilience.
+There are situations in which Elasticsearch might tolerate the loss of multiple nodes, but this is not guaranteed under all sequences of failures. If the `cluster.auto_shrink_voting_configuration` setting is `false`, you must remove departed nodes from the voting configuration manually. Use the [voting exclusions API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-post-voting-config-exclusions) to achieve the desired level of resilience.
 
 No matter how it is configured, Elasticsearch will not suffer from a "split-brain" inconsistency. The `cluster.auto_shrink_voting_configuration` setting affects only its availability in the event of the failure of some of its nodes and the administrative tasks that must be performed as nodes join and leave the cluster.
 

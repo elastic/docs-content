@@ -180,7 +180,7 @@ Possible causes include:
     elasticsearch.elasticsearch.k8s.elastic.co/elasticsearch-sample   yellow   1       7.9.2     Ready   3m50s
     ```
 
-    In this case, you have to [check](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html) and fix your shard allocations. The [cluster health](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html), [cat shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html), and [get Elasticsearch](../../../deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md#k8s-elasticsearch-monitor-cluster-health) APIs can assist in tracking the shard recover process.
+    In this case, you have to [check](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain) and fix your shard allocations. The [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health), [cat shards](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards), and [get Elasticsearch](../../../deploy-manage/deploy/cloud-on-k8s/elasticsearch-deployment-quickstart.md#k8s-elasticsearch-monitor-cluster-health) APIs can assist in tracking the shard recover process.
 
 * Scheduling issues
 

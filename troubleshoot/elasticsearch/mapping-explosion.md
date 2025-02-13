@@ -9,9 +9,9 @@ mapped_pages:
 
 Mapping explosion may surface as the following performance symptoms:
 
-* [CAT nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html) reporting high heap or CPU on the main node and/or nodes hosting the indices shards. This may potentially escalate to temporary node unresponsiveness and/or main overwhelm.
-* [CAT tasks](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-tasks.html) reporting long search durations only related to this index or indices, even on simple searches.
-* [CAT tasks](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-tasks.html) reporting long index durations only related to this index or indices. This usually relates to [pending tasks](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-pending.html) reporting that the coordinating node is waiting for all other nodes to confirm they are on mapping update request.
+* [CAT nodes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) reporting high heap or CPU on the main node and/or nodes hosting the indices shards. This may potentially escalate to temporary node unresponsiveness and/or main overwhelm.
+* [CAT tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-tasks) reporting long search durations only related to this index or indices, even on simple searches.
+* [CAT tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-tasks) reporting long index durations only related to this index or indices. This usually relates to [pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-pending-tasks) reporting that the coordinating node is waiting for all other nodes to confirm they are on mapping update request.
 * Discover’s **Fields for wildcard** page-loading API command or [Dev Tools](../../explore-analyze/query-filter/tools/console.md) page-refreshing Autocomplete API commands are taking a long time (more than 10 seconds) or timing out in the browser’s Developer Tools Network tab. For more information, refer to our [walkthrough on troubleshooting Discover](https://www.elastic.co/blog/troubleshooting-guide-common-issues-kibana-discover-load).
 * Discover’s **Available fields** taking a long time to compile Javascript in the browser’s Developer Tools Performance tab. This may potentially escalate to temporary browser page unresponsiveness.
 * Kibana’s [alerting](../../explore-analyze/alerts-cases/alerts.md) or [security rules](../../solutions/security/detect-and-alert.md) may error `The content length (X) is bigger than the maximum allowed string (Y)` where `X` is attempted payload and `Y` is {{kib}}'s [`server-maxPayload`](../../deploy-manage/deploy/self-managed/configure.md#server-maxPayload).
@@ -36,7 +36,7 @@ Modifying to the [nested](https://www.elastic.co/guide/en/elasticsearch/referenc
 To confirm the field totals of an index to check for mapping explosion:
 
 * Check {{es}} cluster logs for errors `Limit of total fields [X] in index [Y] has been exceeded` where `X` is the value of  `index.mapping.total_fields.limit` and `Y` is your index. The correlated ingesting source log error would be `Limit of total fields [X] has been exceeded while adding new fields [Z]` where `Z` is attempted new fields.
-* For top-level fields, poll [field capabilities](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-field-caps.html) for `fields=*`.
+* For top-level fields, poll [field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps) for `fields=*`.
 * Search the output of [get mapping](../../manage-data/data-store/mapping.md) for `"type"`.
 * If you’re inclined to use the [third-party tool JQ](https://stedolan.github.io/jq), you can process the [get mapping](../../manage-data/data-store/mapping.md) `mapping.json` output.
 
@@ -45,12 +45,12 @@ To confirm the field totals of an index to check for mapping explosion:
     ```
 
 
-You can use [analyze index disk usage](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-disk-usage.html) to find fields which are never or rarely populated as easy wins.
+You can use [analyze index disk usage](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-disk-usage) to find fields which are never or rarely populated as easy wins.
 
 
 ## Complex explosions [complex]
 
-Mapping explosions also covers when an individual index field totals are within limits but combined indices fields totals are very high. It’s very common for symptoms to first be noticed on a [data view](../../explore-analyze/find-and-organize/data-views.md) and be traced back to an individual index or a subset of indices via the [resolve index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-resolve-index-api.html).
+Mapping explosions also covers when an individual index field totals are within limits but combined indices fields totals are very high. It’s very common for symptoms to first be noticed on a [data view](../../explore-analyze/find-and-organize/data-views.md) and be traced back to an individual index or a subset of indices via the [resolve index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index).
 
 However, though less common, it is possible to only experience mapping explosions on the combination of backing indices. For example, if a [data stream](../../manage-data/data-store/index-types/data-streams.md)'s backing indices are all at field total limit but each contain unique fields from one another.
 
@@ -64,8 +64,8 @@ If your issue only surfaces via a [data view](../../explore-analyze/find-and-org
 Mapping explosion is not easily resolved, so it is better prevented via the above. Encountering it usually indicates unexpected upstream data changes or planning failures. If encountered, we recommend reviewing your data architecture. The following options are additional to the ones discussed earlier on this page; they should be applied as best use-case applicable:
 
 * Disable [dynamic mappings](../../manage-data/data-store/mapping.md).
-* [Reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) into an index with a corrected mapping, either via [index template](../../manage-data/data-store/templates.md) or [explicitly set](../../manage-data/data-store/mapping.md).
-* If index is unneeded and/or historical, consider [deleting](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+* [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) into an index with a corrected mapping, either via [index template](../../manage-data/data-store/templates.md) or [explicitly set](../../manage-data/data-store/mapping.md).
+* If index is unneeded and/or historical, consider [deleting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 * [Export](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elasticsearch.html) and [re-import](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html) data into a mapping-corrected index after [pruning](https://www.elastic.co/guide/en/logstash/current/plugins-filters-prune.html) problematic fields via Logstash.
 
-[Splitting index](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-split-index.html) would not resolve the core issue.
+[Splitting index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split) would not resolve the core issue.
