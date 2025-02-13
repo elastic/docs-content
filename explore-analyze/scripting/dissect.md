@@ -155,7 +155,7 @@ PUT my-index/_mappings
 }
 ```
 
-After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index raw log data into `my-index`:
+After mapping the fields you want to retrieve, index a few records from your log data into {{es}}. The following request uses the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index raw log data into `my-index`:
 
 ```console
 POST /my-index/_bulk?refresh=true

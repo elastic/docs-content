@@ -23,7 +23,7 @@ An aggregation summarizes your data as metrics, statistics, or other analytics. 
 
 ## Run an aggregation [run-an-agg]
 
-You can run aggregations as part of a [search](../../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. The following search runs a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) on `my-field`:
+You can run aggregations as part of a [search](../../solutions/search/querying-for-search.md) by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. The following search runs a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) on `my-field`:
 
 ```console
 GET /my-index-000001/_search
@@ -113,7 +113,7 @@ GET /my-index-000001/_search
 }
 ```
 
-## Run multiple aggregations [run-multiple-aggs] 
+## Run multiple aggregations [run-multiple-aggs]
 
 You can specify multiple aggregations in the same request:
 
@@ -185,7 +185,7 @@ The response nests sub-aggregation results under their parent aggregation:
 1. Results for the parent aggregation, `my-agg-name`.
 2. Results for `my-agg-name`'s sub-aggregation, `my-sub-agg-name`.
 
-## Add custom metadata [add-metadata-to-an-agg] 
+## Add custom metadata [add-metadata-to-an-agg]
 
 Use the `meta` object to associate custom metadata with an aggregation:
 
@@ -260,7 +260,7 @@ Some aggregations return a different aggregation type from the type in the reque
 
 1. The aggregation type, `histogram`, followed by a `#` separator and the aggregation’s name, `my-agg-name`.
 
-## Use scripts in an aggregation [use-scripts-in-an-agg] 
+## Use scripts in an aggregation [use-scripts-in-an-agg]
 
 When a field doesn’t exactly match the aggregation you need, you should aggregate on a [runtime field](../../manage-data/data-store/mapping/runtime-fields.md):
 
