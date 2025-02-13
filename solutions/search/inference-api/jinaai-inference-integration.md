@@ -14,7 +14,6 @@ For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.e
 
 ::::
 
-
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `jinaai` service.
 
 
