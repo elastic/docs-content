@@ -40,17 +40,17 @@ logging.loggers:
 ```
 
 ::::{warning}
-Kibana’s `file` appender is configured to produce logs in [ECS JSON](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) format. It’s the only format that includes the meta information necessary for [log correlation](https://www.elastic.co/guide/en/apm/agent/nodejs/current/log-correlation.html) out-of-the-box.
+Kibana’s `file` appender is configured to produce logs in [ECS JSON](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) format. It’s the only format that includes the meta information necessary for [log correlation](https://www.elastic.co/guide/en/apm/agent/nodejs/current/logs.html) out-of-the-box.
 ::::
 
 
-The next step is to define what [observability tools](https://www.elastic.co/observability) are available. For a better experience, set up an [Observability integration](https://www.elastic.co/guide/en/apm/get-started/current/observability-integrations.html) provided by Elastic to debug your application with the [APM UI.](#debugging-logs-apm-ui) To debug something quickly without setting up additional tooling, you can work with [the plain {{kib}} logs.](#plain-kibana-logs)
+The next step is to define what [observability tools](https://www.elastic.co/observability) are available. For a better experience, set up an [Observability integration](/solutions/observability/logs/stream-application-logs.md) provided by Elastic to debug your application with the [APM UI.](#debugging-logs-apm-ui) To debug something quickly without setting up additional tooling, you can work with [the plain {{kib}} logs.](#plain-kibana-logs)
 
 ## APM UI [debugging-logs-apm-ui]
 
 **Prerequisites** {{kib}} logs are configured to be in [ECS JSON](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) format to include tracing identifiers.
 
-To debug {{kib}} with the APM UI, you must set up the APM infrastructure. You can find instructions for the setup process [on the Observability integrations page](https://www.elastic.co/guide/en/apm/get-started/current/observability-integrations.html).
+To debug {{kib}} with the APM UI, you must set up the APM infrastructure. You can find instructions for the setup process [on the Observability integrations page](/solutions/observability/logs/stream-application-logs.md).
 
 Once you set up the APM infrastructure, you can enable the APM agent and put {{kib}} under load to collect APM events. To analyze the collected metrics and logs, use the APM UI as demonstrated [in the docs](../../solutions/observability/apps/transactions-2.md#transaction-trace-sample).
 

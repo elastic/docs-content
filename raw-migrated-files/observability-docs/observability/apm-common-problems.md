@@ -188,7 +188,7 @@ https://www.elastic.co/guide/en/infrastructure/guide/current/index.html
 
 These URLs, like most, include unique names. If we named transactions based on each unique URL, we’d end up with the problem described above—a very large number of different transaction names. Instead, we should strip away the unique information and group our transactions based on common information. In this case, that means naming all blog transactions, `/blog`, and all documentation transactions, `/guide`.
 
-If you feel like you’d be losing valuable information by following this naming convention, don’t fret! You can always add additional metadata to your transactions using [labels](https://www.elastic.co/guide/en/apm/guide/current/data-model-metadata.html#data-model-labels) (indexed) or [custom context](https://www.elastic.co/guide/en/apm/guide/current/data-model-metadata.html#data-model-custom) (non-indexed).
+If you feel like you’d be losing valuable information by following this naming convention, don’t fret! You can always add additional metadata to your transactions using [labels](/solutions/observability/apps/metadata.md#apm-data-model-labels) (indexed) or [custom context](/solutions/observability/apps/metadata.md#apm-data-model-custom) (non-indexed).
 
 After ensuring you’ve correctly named your transactions, you might still see errors in the Applications UI related to transaction group limit reached:
 
@@ -230,7 +230,7 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 
 **Ensure a field is searchable** There are two things you can do to if you’d like to ensure a field is searchable:
 
-1. Index your additional data as [labels](https://www.elastic.co/guide/en/apm/guide/current/data-model-metadata.html) instead. These are dynamic by default, which means they will be indexed and become searchable and aggregatable.
+1. Index your additional data as [labels](/solutions/observability/apps/metadata.md) instead. These are dynamic by default, which means they will be indexed and become searchable and aggregatable.
 2. Create a custom mapping for the field.
 
 

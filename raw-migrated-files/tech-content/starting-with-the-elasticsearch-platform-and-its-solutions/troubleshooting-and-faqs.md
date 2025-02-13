@@ -39,9 +39,7 @@ Throughout the Elastic docs we have a number of troubleshooting and frequently a
 **{{observability}}**
 
 * [Observability troubleshooting](../../../troubleshoot/observability.md)
-* [APM troubleshooting](https://www.elastic.co/guide/en/apm/guide/current/troubleshoot-apm.html)
-* [Legacy APM Overview troubleshooting](https://www.elastic.co/guide/en/apm/get-started/7.15/troubleshooting.html)
-* [Legacy APM Server Reference troubleshooting](https://www.elastic.co/guide/en/apm/guide/current/troubleshooting.html)
+* [APM troubleshooting](/troubleshoot/observability/apm.md)
 * [{{apm-go-agent}} troubleshooting](../../../troubleshoot/observability/apm-agent-go/apm-go-agent.md)
 * [{{apm-ios-agent}} troubleshooting](../../../troubleshoot/observability/apm-agent-swift/apm-ios-agent.md)
 * [{{apm-java-agent}} troubleshooting](../../../troubleshoot/observability/apm-agent-java/apm-java-agent.md)
