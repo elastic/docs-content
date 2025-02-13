@@ -40,9 +40,9 @@ If a shard copy is unassigned, it means that the shard copy is not allocated to 
 
 You can use the following APIs to monitor shard allocation:
 
-* [Cluster allocation explain](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html)
-* [cat allocation](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-allocation.html)
-* [cluster health](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html)
+* [Cluster allocation explain](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain)
+* [cat allocation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation)
+* [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health)
 
 [Learn more about troubleshooting unassigned shard copies and recovering your cluster health](../../troubleshoot/elasticsearch/red-yellow-cluster-status.md).
 
@@ -58,9 +58,9 @@ Recovery automatically occurs during the following processes:
 * Creation of new replica shard copies from the primary.
 * Relocation of a shard copy to a different node in the same cluster.
 * A [snapshot restore](../tools/snapshot-and-restore/restore-snapshot.md) operation.
-* A [clone](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-clone-index.html), [shrink](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-shrink-index.html), or [split](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-split-index.html) operation.
+* A [clone](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone), [shrink](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink), or [split](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split) operation.
 
-You can determine the cause of a shard recovery using the [recovery](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-recovery.html) or  [cat recovery](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-recovery.html) APIs.
+You can determine the cause of a shard recovery using the [recovery](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery) or  [cat recovery](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery) APIs.
 
 
 ### Adjust shard recovery settings [_adjust_shard_recovery_settings]
@@ -78,8 +78,8 @@ Shard recovery operations also respect general shard allocation settings.
 
 You can use the following APIs to monitor shard allocation:
 
-* View a list of in-progress and completed recoveries using the [cat recovery API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-recovery.html)
-* View detailed information about a specific recovery using the [index recovery API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-recovery.html)
+* View a list of in-progress and completed recoveries using the [cat recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery)
+* View detailed information about a specific recovery using the [index recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery)
 
 
 ## Shard relocation [shard-relocation]

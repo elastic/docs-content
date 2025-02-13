@@ -28,7 +28,7 @@ To identify the cause of the backlog, try these diagnostic actions.
 
 A [depleted thread pool](high-cpu-usage.md) can result in [rejected requests](rejected-requests.md).
 
-Use the [cat thread pool API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-thread-pool.html) to monitor active threads, queued tasks, rejections, and completed tasks:
+Use the [cat thread pool API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool) to monitor active threads, queued tasks, rejections, and completed tasks:
 
 ```console
 GET /_cat/thread_pool?v&s=t,n&h=type,name,node_name,active,queue,rejected,completed
@@ -41,26 +41,26 @@ GET /_cat/thread_pool?v&s=t,n&h=type,name,node_name,active,queue,rejected,comple
 
 ### Inspect hot threads on each node [diagnose-task-queue-hot-thread] 
 
-If a particular thread pool queue is backed up, periodically poll the [nodes hot threads API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-hot-threads.html) to gauge the thread’s progression and ensure it has sufficient resources:
+If a particular thread pool queue is backed up, periodically poll the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) to gauge the thread’s progression and ensure it has sufficient resources:
 
 ```console
 GET /_nodes/hot_threads
 ```
 
-Although the hot threads API response does not list the specific tasks running on a thread, it provides a summary of the thread’s activities. You can correlate a hot threads response with a [task management API response](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html) to identify any overlap with specific tasks. For example, if the hot threads response indicates the thread is `performing a search query`, you can [check for long-running search tasks](#diagnose-task-queue-long-running-node-tasks) using the task management API.
+Although the hot threads API response does not list the specific tasks running on a thread, it provides a summary of the thread’s activities. You can correlate a hot threads response with a [task management API response](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) to identify any overlap with specific tasks. For example, if the hot threads response indicates the thread is `performing a search query`, you can [check for long-running search tasks](#diagnose-task-queue-long-running-node-tasks) using the task management API.
 
 
 ### Identify long-running node tasks [diagnose-task-queue-long-running-node-tasks] 
 
-Long-running tasks can also cause a backlog. Use the [task management API](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html) to check for excessive `running_time_in_nanos` values:
+Long-running tasks can also cause a backlog. Use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) to check for excessive `running_time_in_nanos` values:
 
 ```console
 GET /_tasks?pretty=true&human=true&detailed=true
 ```
 
-You can filter on a specific `action`, such as [bulk indexing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) or search-related tasks. These tend to be long-running.
+You can filter on a specific `action`, such as [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) or search-related tasks. These tend to be long-running.
 
-* Filter on [bulk index](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) actions:
+* Filter on [bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) actions:
 
     ```console
     GET /_tasks?human&detailed&actions=indices:data/write/bulk
@@ -78,7 +78,7 @@ Long-running tasks might need to be [canceled](#resolve-task-queue-backlog-stuck
 
 ### Look for long-running cluster tasks [diagnose-task-queue-long-running-cluster-tasks] 
 
-Use the [cluster pending tasks API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-pending.html) to identify delays in cluster state synchronization:
+Use the [cluster pending tasks API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-pending-tasks) to identify delays in cluster state synchronization:
 
 ```console
 GET /_cluster/pending_tasks
@@ -101,7 +101,7 @@ In some cases, you might need to increase the thread pool size. For example, the
 
 ### Cancel stuck tasks [resolve-task-queue-backlog-stuck-tasks] 
 
-If an active task’s [hot thread](#diagnose-task-queue-hot-thread) shows no progress, consider [canceling the task](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html#task-cancellation).
+If an active task’s [hot thread](#diagnose-task-queue-hot-thread) shows no progress, consider [canceling the task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks#task-cancellation).
 
 
 ### Address hot spotting [resolve-task-queue-backlog-hotspotting] 
