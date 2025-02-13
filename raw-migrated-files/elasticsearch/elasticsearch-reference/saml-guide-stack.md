@@ -6,7 +6,7 @@ The other component that is needed to enable SAML single-sign-on is the *Identit
 
 If you are interested in configuring SSO into {{kib}}, then you will need to provide {{es}} with information about your *Identity Provider*, and you will need to register the Elastic Stack as a known *Service Provider* within that Identity Provider. There are also a few configuration changes that are required in {{kib}} to activate the SAML authentication provider.
 
-::::{note} 
+::::{note}
 The SAML support in {{kib}} is designed on the expectation that it will be the primary (or sole) authentication method for users of that {{kib}} instance. Once you enable SAML authentication in {{kib}} it will affect all users who try to login. The [Configuring {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana) section provides more detail about how this works.
 ::::
 
@@ -80,7 +80,7 @@ xpack.security.authc.realms.saml.saml1:
   attributes.groups: "urn:oid:1.3.6.1.4.1.5923.1.5.1."
 ```
 
-::::{important} 
+::::{important}
 SAML is used when authenticating via {{kib}}, but it is not an effective means of authenticating directly to the {{es}} REST API. For this reason we recommend that you include at least one additional realm such as the [native realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md) in your authentication chain for use by API clients.
 ::::
 
@@ -150,7 +150,7 @@ In general, {{es}} expects that the configured value for an attribute will be a 
 `nameid:persistent`
 :   This uses the SAML `NameID` value (all leading and trailing whitespace removed), but only if the NameID format is `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`. A SAML `NameID` element has an optional `Format` attribute that indicates the semantics of the provided name. It is common for IdPs to be configured with "transient" NameIDs that present a new identifier for each session. Since it is rarely useful to use a transient NameID as part of an attribute mapping, the "nameid:persistent" attribute name can be used as a safety mechanism that will cause an error if you attempt to map from a `NameID` that does not have a persistent value.
 
-::::{note} 
+::::{note}
 Identity Providers can be either statically configured to release a `NameID` with a specific format, or they can be configured to try to conform with the requirements of the SP. The SP declares its requirements as part of the Authentication Request, using an element which is called the `NameIDPolicy`. If this is needed, you can set the relevant [settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-settings) named `nameid_format` in order to request that the IdP releases a `NameID` with a specific format.
 ::::
 
@@ -183,7 +183,7 @@ principal
 groups
 :   *(Recommended)* If you wish to use your IdP’s concept of groups or roles as the basis for a user’s {{es}} privileges, you should map them with this attribute. The `groups` are passed directly to your [role mapping rules](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-role-mapping).
 
-    ::::{note} 
+    ::::{note}
     Some IdPs are configured to send the `groups` list as a single value, comma-separated string. To map this SAML attribute to the `attributes.groups` setting in the {{es}} realm, you can configure a string delimiter using the `attribute_delimiters.group` setting.
 
     For example, splitting the SAML attribute value `engineering,elasticsearch-admins,employees` on a delimiter value of `,` will result in `engineering`, `elasticsearch-admins`, and `employees` as the list of groups for the user.
@@ -222,7 +222,7 @@ In this case, the user’s `principal` is mapped from an email attribute, but a 
 
 In this example, the email address must belong to the `staff.example.com` domain, and then the local-part (anything before the `@`) is used as the principal. Any users who try to login using a different email domain will fail because the regular expression will not match against their email address, and thus their principal attribute - which is mandatory - will not be populated.
 
-::::{important} 
+::::{important}
 Small mistakes in these regular expressions can have significant security consequences. For example, if we accidentally left off the trailing `$` from the example above, then we would match any email address where the domain starts with `staff.example.com`, and this would accept an email address such as `admin@staff.example.com.attacker.net`. It is important that you make sure your regular expressions are as precise as possible so that you do not inadvertently open an avenue for user impersonation attacks.
 ::::
 
@@ -266,7 +266,7 @@ The {{es}} realm setting `sp.logout` specifies a URL in {{kib}} to which the IdP
 
 If you do not configure a value for `sp.logout`, {{es}} will refuse all `<LogoutRequest>` messages.
 
-::::{note} 
+::::{note}
 It is common for IdPs to require that `LogoutRequest` messages be signed, so you may need to configure [signing credentials](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-enc-sign).
 ::::
 
@@ -400,7 +400,7 @@ If you wish to use **PKCS#12 formatted** files or a **Java Keystore** for SAML e
 
 Some Identity Providers support importing a metadata file from the Service Provider. This will automatically configure many of the integration options between the IdP and the SP.
 
-The {{stack}} supports generating such a metadata file using the [`bin/elasticsearch-saml-metadata` command](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-metadata.html) or the [SAML service provider metadata API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-sp-metadata.html).
+The {{stack}} supports generating such a metadata file using the [`bin/elasticsearch-saml-metadata` command](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-metadata.html) or the [SAML service provider metadata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-service-provider-metadata).
 
 You can generate the SAML metadata by issuing the API request to {{es}} and store it as an XML file using tools like `jq`. For example, the following command generates the metadata for the SAML realm `realm1` and saves it to a `metadata.xml` file:
 
@@ -413,9 +413,9 @@ curl -u user_name:password  -X GET http://localhost:9200/_security/saml/metadata
 
 When a user authenticates using SAML, they are identified to the Elastic Stack, but this does not automatically grant them access to perform any actions or access any data.
 
-Your SAML users cannot do anything until they are assigned roles. This can be done through either the [add role mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) or with [authorization realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
+Your SAML users cannot do anything until they are assigned roles. This can be done through either the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or with [authorization realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
 
-::::{note} 
+::::{note}
 You cannot use [role mapping files](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) to grant roles to users authenticating via SAML.
 ::::
 
@@ -445,7 +445,7 @@ The user fields that are provided to the role mapping are derived from the SAML 
 * `groups`: The `groups` attribute
 * `metadata`: See [User metadata](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-user-metadata)
 
-For more information, see [Mapping users and groups to roles](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) and [Role mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-role-mapping-apis).
+For more information, see [Mapping users and groups to roles](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) and [Role mappings](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
 
 If your IdP has the ability to provide groups or roles to Service Providers, then you should map this SAML attribute to the `attributes.groups` setting in the {{es}} realm, and then make use of it in a role mapping as per the example below.
 
@@ -463,7 +463,7 @@ PUT /_security/role_mapping/saml-finance
 }
 ```
 
-1. The `groups` attribute supports using wildcards (`*`). Refer to the [create or update role mappings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html#security-api-put-role-mapping-example) for more information.
+1. The `groups` attribute supports using wildcards (`*`). Refer to the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) for more information.
 
 
 If your users also exist in a repository that can be directly accessed by {{es}} (such as an LDAP directory) then you can use [authorization realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) instead of role mappings.
@@ -583,7 +583,7 @@ The SAML 2.0 specification offers a lot of options and flexibility for the imple
 
 The SAML realm in {{es}} is designed to allow users to authenticate to {{kib}} and as such, most of the parts of the guide above make the assumption that {{kib}} is used. This section describes how a custom web application could use the relevant SAML REST APIs in order to authenticate the users to {{es}} with SAML.
 
-::::{note} 
+::::{note}
 This section assumes that the reader is familiar with the SAML 2.0 standard and more specifically with the SAML 2.0 Web Browser Single Sign On profile.
 ::::
 
@@ -619,7 +619,7 @@ POST /_security/user/saml-service-user
 
 On a high level, the custom web application would need to perform the following steps in order to authenticate a user with SAML against {{es}}:
 
-1. Make an HTTP POST request to `_security/saml/prepare`, authenticating as the `saml-service-user` user. Use either the name of the SAML realm in the {{es}} configuration or the value for the Assertion Consumer Service URL in the request body. See the [SAML prepare authentication API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-prepare-authentication.html) for more details.
+1. Make an HTTP POST request to `_security/saml/prepare`, authenticating as the `saml-service-user` user. Use either the name of the SAML realm in the {{es}} configuration or the value for the Assertion Consumer Service URL in the request body. See the [SAML prepare authentication API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-prepare-authentication) for more details.
 
     ```console
     POST /_security/saml/prepare
@@ -631,7 +631,7 @@ On a high level, the custom web application would need to perform the following 
 2. Handle the response from `/_security/saml/prepare`. The response from {{es}} will contain 3 parameters: `redirect`, `realm` and `id`. The custom web application would need to store the value for `id` in the user’s session (client side in a cookie or server side if session information is persisted this way). It must also redirect the user’s browser to the URL that was returned in the `redirect` parameter. The `id` value should not be disregarded as it is used as a nonce in SAML in order to mitigate against replay attacks.
 3. Handle a subsequent response from the SAML IdP. After the user is successfully authenticated with the Identity Provider they will be redirected back to the Assertion Consumer Service URL. This `sp.acs` needs to be defined as a URL which the custom web application handles. When it receives this HTTP POST request, the custom web application must parse it and make an HTTP POST request itself to the `_security/saml/authenticate` API. It must authenticate as the `saml-service-user` user and pass the Base64 encoded SAML Response that was sent as the body of the request. It must also pass the value for `id` that it had saved in the user’s session previously.
 
-    See [SAML authenticate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-authenticate.html) for more details.
+    See [SAML authenticate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-authenticate) for more details.
 
     ```console
     POST /_security/saml/authenticate
@@ -641,7 +641,7 @@ On a high level, the custom web application would need to perform the following 
     }
     ```
 
-    Elasticsearch will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests. It also supplies a refresh token that can be later used to refresh the given access token as described in [get token API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-token.html).
+    Elasticsearch will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests. It also supplies a refresh token that can be later used to refresh the given access token as described in [get token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
 
 4. The response to calling `/_security/saml/authenticate` will contain only the username of the authenticated user. If you need to get the values for the SAML Attributes that were contained in the SAML Response for that user, you can call the Authenticate API `/_security/_authenticate/` using the access token as a `Bearer` token and the SAML attribute values will be contained in the response as part of the [User metadata](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-user-metadata).
 
@@ -661,7 +661,7 @@ POST /_security/saml/authenticate
 
 ### Handling the logout flow [saml-no-kibana-slo]
 
-1. At some point, if necessary, the custom web application can log the user out by using the [SAML logout API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-logout.html) and passing the access token and refresh token as parameters. For example:
+1. At some point, if necessary, the custom web application can log the user out by using the [SAML logout API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-logout) and passing the access token and refresh token as parameters. For example:
 
     ```console
     POST /_security/saml/logout
@@ -673,7 +673,7 @@ POST /_security/saml/authenticate
 
     If the SAML realm is configured accordingly and the IdP supports it (see [SAML logout](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-logout)), this request will trigger a SAML SP-initiated Single Logout. In this case, the response will include a `redirect` parameter indicating where the user needs to be redirected at the IdP in order to complete the logout.
 
-2. Alternatively, the IdP might initiate the Single Logout flow at some point. In order to handle this, the Logout URL (`sp.logout`) needs to be handled by the custom web app. The query part of the URL that the user will be redirected to will contain a SAML Logout request and this query part needs to be relayed to {{es}} using the [SAML invalidate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-invalidate.html)
+2. Alternatively, the IdP might initiate the Single Logout flow at some point. In order to handle this, the Logout URL (`sp.logout`) needs to be handled by the custom web app. The query part of the URL that the user will be redirected to will contain a SAML Logout request and this query part needs to be relayed to {{es}} using the [SAML invalidate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-invalidate)
 
     ```console
     POST /_security/saml/invalidate
@@ -686,7 +686,7 @@ POST /_security/saml/authenticate
     The custom web application will then need to also handle the response, which will include a `redirect` parameter with a URL in the IdP that contains the SAML Logout response. The application should redirect the user there to complete the logout.
 
 
-For SP-initiated Single Logout, the IdP may send back a logout response which can be verified by {{es}} using the [SAML complete logout API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-complete-logout.html).
+For SP-initiated Single Logout, the IdP may send back a logout response which can be verified by {{es}} using the [SAML complete logout API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-complete-logout).
 
 
 

@@ -24,11 +24,11 @@ Users with no roles assigned will be unauthorized for any action. In other words
 ::::
 
 
-When you use role mappings to assign roles to users, the roles must exist. There are two sources of roles. The available roles should either be added using the [role management APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-role-apis) or defined in the [roles file](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file). Either role-mapping method can use either role management method. For example, when you use the role mapping API, you are able to map users to both API-managed roles and file-managed roles (and likewise for file-based role-mappings).
+When you use role mappings to assign roles to users, the roles must exist. There are two sources of roles. The available roles should either be added using the [role management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) or defined in the [roles file](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-file). Either role-mapping method can use either role management method. For example, when you use the role mapping API, you are able to map users to both API-managed roles and file-managed roles (and likewise for file-based role-mappings).
 
 ## Using the role mapping API [mapping-roles-api]
 
-You can define role-mappings through the [add role mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html).
+You can define role-mappings through the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
 
 
 ## Using role mapping files [mapping-roles-file]

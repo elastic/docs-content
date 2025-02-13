@@ -146,7 +146,7 @@ To configure a Kerberos realm in {{es}}:
 5. Restart {es}
 6. Map Kerberos users to roles.
 
-    The `kerberos` realm enables you to map Kerberos users to roles. You can configure these role mappings by using the [create or update role mappings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html). You identify users by their `username` field.
+    The `kerberos` realm enables you to map Kerberos users to roles. You can configure these role mappings by using the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). You identify users by their `username` field.
 
     The following example uses the role mapping API to map `user@REALM` to the roles `monitoring` and `user`:
 

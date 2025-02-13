@@ -144,7 +144,7 @@ PUT _ingest/pipeline/logs-example-default<1>
 
 #### Test the pipeline with the simulate pipeline API [logs-stream-simulate-api]
 
-The [simulate pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html#ingest-verbose-param) runs the ingest pipeline without storing any documents. This lets you verify your pipeline works using multiple documents. Run the following command to test your ingest pipeline with the simulate pipeline API.
+The [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) runs the ingest pipeline without storing any documents. This lets you verify your pipeline works using multiple documents. Run the following command to test your ingest pipeline with the simulate pipeline API.
 
 ```console
 POST _ingest/pipeline/logs-example-default/_simulate
@@ -332,7 +332,7 @@ In addition to setting an ingest pipeline, you need to set an index template. Yo
 
 #### Test the pipeline with the simulate API [logs-stream-log-level-simulate]
 
-Test that your ingest pipeline works as expected with the [simulate pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html#ingest-verbose-param):
+Test that your ingest pipeline works as expected with the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate):
 
 ```console
 POST _ingest/pipeline/logs-example-default/_simulate
@@ -504,7 +504,7 @@ In addition to setting an ingest pipeline, you need to set an index template. Yo
 
 #### Test the pipeline with the simulate API [logs-stream-host-ip-simulate]
 
-Test that your ingest pipeline works as expected with the [simulate pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html#ingest-verbose-param):
+Test that your ingest pipeline works as expected with the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate):
 
 ```console
 POST _ingest/pipeline/logs-example-default/_simulate

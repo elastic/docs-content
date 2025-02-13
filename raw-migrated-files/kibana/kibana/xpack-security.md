@@ -25,7 +25,7 @@ To manage roles, go to the **Roles** management page using the navigation menu o
 For a more holistic overview of configuring roles for the entire stack, see [User authorization](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
 ::::{note} 
-Managing roles that grant [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) using the {{es}} [role management APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-role-apis) is not supported. Doing so will likely cause Kibana’s authorization to behave unexpectedly.
+Managing roles that grant [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) using the {{es}} [role management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) is not supported. Doing so will likely cause Kibana’s authorization to behave unexpectedly.
 
 ::::
 

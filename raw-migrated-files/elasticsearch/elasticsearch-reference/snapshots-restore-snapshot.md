@@ -24,7 +24,7 @@ This guide also provides tips for [restoring to another cluster](../../../deploy
 * You can only restore a snapshot to a running cluster with an elected [master node](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be [registered](../../../deploy-manage/tools/snapshot-and-restore/self-managed.md) and available to the cluster.
 * The snapshot and cluster versions must be compatible. See [Snapshot compatibility](../../../deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility).
 * To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any [cluster blocks](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-read-only) that prevent writes. The restore operation ignores [index blocks](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html).
-* Before you restore a data stream, ensure the cluster contains a [matching index template](../../../manage-data/data-store/index-types/set-up-data-stream.md#create-index-template) with data stream enabled. To check, use {{kib}}'s [**Index Management**](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [get index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-template.html):
+* Before you restore a data stream, ensure the cluster contains a [matching index template](../../../manage-data/data-store/index-types/set-up-data-stream.md#create-index-template) with data stream enabled. To check, use {{kib}}'s [**Index Management**](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [get index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-index-template):
 
     ```console
     GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
@@ -40,7 +40,7 @@ This guide also provides tips for [restoring to another cluster](../../../deploy
 When restoring data from a snapshot, keep the following in mind:
 
 * If you restore a data stream, you also restore its backing indices.
-* You can only restore an existing index if it’s [closed](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-close.html) and the index in the snapshot has the same number of primary shards.
+* You can only restore an existing index if it’s [closed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-close) and the index in the snapshot has the same number of primary shards.
 * You can’t restore an existing open index. This includes backing indices for a data stream.
 * The restore operation automatically opens restored indices, including backing indices.
 * You can restore only a specific backing index from a data stream. However, the restore operation doesn’t add the restored backing index to any existing data stream.
@@ -50,7 +50,7 @@ When restoring data from a snapshot, keep the following in mind:
 
 To view a list of available snapshots in {{kib}}, go to the main menu and click **Stack Management > Snapshot and Restore**.
 
-You can also use the [get repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-repo-api.html) and the [get snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-api.html) to find snapshots that are available to restore. First, use the get repository API to fetch a list of registered snapshot repositories.
+You can also use the [get repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get-repository) and the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get) to find snapshots that are available to restore. First, use the get repository API to fetch a list of registered snapshot repositories.
 
 ```console
 GET _snapshot
@@ -65,7 +65,7 @@ GET _snapshot/my_repository/*?verbose=false
 
 ## Restore an index or data stream [restore-index-data-stream]
 
-You can restore a snapshot using {{kib}}'s **Snapshot and Restore** feature or the [restore snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-snapshot-api.html).
+You can restore a snapshot using {{kib}}'s **Snapshot and Restore** feature or the [restore snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore).
 
 By default, a restore request attempts to restore all regular indices and regular data streams in a snapshot. In most cases, you only need to restore a specific index or data stream from a snapshot. However, you can’t restore an existing open index.
 
@@ -80,7 +80,7 @@ If you’re restoring data to a pre-existing cluster, use one of the following m
 The simplest way to avoid conflicts is to delete an existing index or data stream before restoring it. To prevent the accidental re-creation of the index or data stream, we recommend you temporarily stop all indexing until the restore operation is complete.
 
 ::::{warning}
-If the [`action.destructive_requires_name`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-management-settings.html#action-destructive-requires-name) cluster setting is `false`, don’t use the [delete index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html) to target the `*` or `.*` wildcard pattern. If you use {{es}}'s security features, this will delete system indices required for authentication. Instead, target the `*,-.*` wildcard pattern to exclude these system indices and other index names that begin with a dot (`.`).
+If the [`action.destructive_requires_name`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-management-settings.html#action-destructive-requires-name) cluster setting is `false`, don’t use the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete) to target the `*` or `.*` wildcard pattern. If you use {{es}}'s security features, this will delete system indices required for authentication. Instead, target the `*,-.*` wildcard pattern to exclude these system indices and other index names that begin with a dot (`.`).
 ::::
 
 
@@ -123,7 +123,7 @@ If the rename options produce two or more indices or data streams with the same 
 
 If you rename a data stream, its backing indices are also renamed. For example, if you rename the `logs-my_app-default` data stream to `restored-logs-my_app-default`, the backing index `.ds-logs-my_app-default-2099.03.09-000005` is renamed to `.ds-restored-logs-my_app-default-2099.03.09-000005`.
 
-When the restore operation is complete, you can compare the original and restored data. If you no longer need an original index or data stream, you can delete it and use a [reindex](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html) to rename the restored one.
+When the restore operation is complete, you can compare the original and restored data. If you no longer need an original index or data stream, you can delete it and use a [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to rename the restored one.
 
 ```console
 # Delete the original index
@@ -171,7 +171,7 @@ GET _snapshot/my_repository/my_snapshot_2099.05.06
 
 The response’s `feature_states` property contains a list of features in the snapshot as well as each feature’s indices.
 
-To restore a specific feature state from the snapshot, specify the `feature_name` from the response in the restore snapshot API’s [`feature_states`](https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-snapshot-api.html#restore-snapshot-api-feature-states) parameter.
+To restore a specific feature state from the snapshot, specify the `feature_name` from the response in the restore snapshot API’s [`feature_states`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore) parameter.
 
 ::::{note}
 When you restore a feature state, {{es}} closes and overwrites the feature’s existing indices.
@@ -286,7 +286,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
     Use this file realm user to authenticate requests until the restore operation is complete.
 
-4. Use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) to set [`action.destructive_requires_name`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-management-settings.html#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
+4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-management-settings.html#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
 
     ```console
     PUT _cluster/settings
@@ -322,7 +322,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 8. When the restore operation is complete, resume indexing and restart any features you stopped:
 
     ::::{note}
-    When the snapshot is restored, the license that was in use at the time the snapshot was taken will be restored as well. If your license has expired since the snapshot was taken, you will need to use the [Update License API](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-license.html) to install a current license.
+    When the snapshot is restored, the license that was in use at the time the snapshot was taken will be restored as well. If your license has expired since the snapshot was taken, you will need to use the [Update License API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post) to install a current license.
     ::::
 
 
@@ -396,25 +396,25 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
 ## Monitor a restore [monitor-restore]
 
-The restore operation uses the [shard recovery process](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-recovery.html) to restore an index’s primary shards from a snapshot. While the restore operation recovers primary shards, the cluster will have a `yellow` [health status](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html).
+The restore operation uses the [shard recovery process](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery) to restore an index’s primary shards from a snapshot. While the restore operation recovers primary shards, the cluster will have a `yellow` [health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
 
 After all primary shards are recovered, the replication process creates and distributes replicas across eligible data nodes. When replication is complete, the cluster health status typically becomes `green`.
 
 Once you start a restore in {{kib}}, you’re navigated to the **Restore Status** page. You can use this page to track the current state for each shard in the snapshot.
 
-You can also monitor snapshot recover using {{es}} APIs. To monitor the cluster health status, use the [cluster health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html).
+You can also monitor snapshot recover using {{es}} APIs. To monitor the cluster health status, use the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health).
 
 ```console
 GET _cluster/health
 ```
 
-To get detailed information about ongoing shard recoveries, use the [index recovery API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-recovery.html).
+To get detailed information about ongoing shard recoveries, use the [index recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery).
 
 ```console
 GET my-index/_recovery
 ```
 
-To view any unassigned shards, use the [cat shards API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html).
+To view any unassigned shards, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
 ```console
 GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
@@ -422,7 +422,7 @@ GET _cat/shards?v=true&h=index,shard,prirep,state,node,unassigned.reason&s=state
 
 Unassigned shards have a `state` of `UNASSIGNED`. The `prirep` value is `p` for primary shards and `r` for replicas. The `unassigned.reason` describes why the shard remains unassigned.
 
-To get a more in-depth explanation of an unassigned shard’s allocation status, use the [cluster allocation explanation API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-allocation-explain.html).
+To get a more in-depth explanation of an unassigned shard’s allocation status, use the [cluster allocation explanation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-allocation-explain).
 
 ```console
 GET _cluster/allocation/explain
@@ -480,7 +480,7 @@ Before you start a restore operation, ensure the new cluster has enough capacity
 
 If indices or backing indices in the original cluster were assigned to particular nodes using [shard allocation filtering](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md), the same rules will be enforced in the new cluster. If the new cluster does not contain nodes with appropriate attributes that a restored index can be allocated on, the index will not be successfully restored unless these index allocation settings are changed during the restore operation.
 
-The restore operation also checks that restored persistent settings are compatible with the current cluster to avoid accidentally restoring incompatible settings. If you need to restore a snapshot with incompatible persistent settings, try restoring it without the [global cluster state](https://www.elastic.co/guide/en/elasticsearch/reference/current/restore-snapshot-api.html#restore-snapshot-api-include-global-state).
+The restore operation also checks that restored persistent settings are compatible with the current cluster to avoid accidentally restoring incompatible settings. If you need to restore a snapshot with incompatible persistent settings, try restoring it without the [global cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-restore).
 
 
 ## Troubleshoot restore errors [troubleshoot-restore]

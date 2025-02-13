@@ -253,7 +253,7 @@ If you are running a pre-8.x version, you might need to perform multiple upgrade
 Alternatively, you can create a new 9.0.0-beta1 deployment and reindex from remote:
 
 1. Provision an additional deployment running 9.0.0-beta1.
-2. Reindex your data into the new {{es}} cluster using [reindex from remote](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-from-remote) and temporarily send new index requests to both clusters.
+2. Reindex your data into the new {{es}} cluster using [reindex from remote](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) and temporarily send new index requests to both clusters.
 3. Verify that the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
 4. Delete the old deployment. On Elastic Cloud, you are billed only for the time that the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
 
