@@ -28,9 +28,9 @@ When adaptive allocations are enabled, the number of allocations of the model is
 You can enable adaptive allocations by using:
 
 * the create inference endpoint API for [ELSER](../../../solutions/search/inference-api/elser-inference-integration.md), [E5 and models uploaded through Eland](../../../solutions/search/inference-api/elasticsearch-inference-integration.md) that are used as {{infer}} services.
-* the [start trained model deployment](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-trained-model-deployment.html) or [update trained model deployment](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-trained-model-deployment.html) APIs for trained models that are deployed on {{ml}} nodes.
+* the [start trained model deployment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) or [update trained model deployment](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-update-trained-model-deployment) APIs for trained models that are deployed on {{ml}} nodes.
 
-If the new allocations fit on the current {{ml}} nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your {{ml}} node will be scaled up if {{ml}} autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [{{infer}} endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-inference-api.html).
+If the new allocations fit on the current {{ml}} nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your {{ml}} node will be scaled up if {{ml}} autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 
 ### Optimizing for typical use cases [optimize-use-case]
 
@@ -60,7 +60,7 @@ The used resources for trained model deployments depend on three factors:
 * the use case you optimize the model deployment for (ingest or search)
 * whether model autoscaling is enabled with adaptive allocations/resources to have dynamic resources, or disabled for static resources
 
-If you use {{es}} on-premises, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-ml-info.html) to check these values. The following tables show you the number of allocations, threads, and vCPUs available in Cloud when adaptive resources are enabled or disabled.
+If you use {{es}} on-premises, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values. The following tables show you the number of allocations, threads, and vCPUs available in Cloud when adaptive resources are enabled or disabled.
 
 ::::{note}
 On Serverless, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in {{kib}} for Observability and Security projects.

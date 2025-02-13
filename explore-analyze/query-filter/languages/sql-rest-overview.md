@@ -8,7 +8,7 @@ mapped_pages:
 
 # Overview [sql-rest-overview]
 
-The [SQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html) accepts SQL in a JSON document, executes it, and returns the results. For example:
+The [SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query) accepts SQL in a JSON document, executes it, and returns the results. For example:
 
 ```console
 POST /_sql?format=txt

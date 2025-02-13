@@ -22,7 +22,7 @@ Similarly to sizing bulk requests, only testing can tell what the optimal number
 
 ## Unset or increase the refresh interval [_unset_or_increase_the_refresh_interval] 
 
-The operation that consists of making changes visible to search - called a [refresh](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-refresh.html) - is costly, and calling it often while there is ongoing indexing activity can hurt indexing speed.
+The operation that consists of making changes visible to search - called a [refresh](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) - is costly, and calling it often while there is ongoing indexing activity can hurt indexing speed.
 
 By default, Elasticsearch periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds.
 

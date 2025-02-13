@@ -39,7 +39,7 @@ cd C:\Program Files\elasticsearch-9.0.0-beta1
 
 ## Enable automatic creation of system indices [windows-enable-indices]
 
-Some commercial features automatically create indices within {{es}}. By default, {{es}} is configured to allow automatic index creation, and no additional steps are required. However, if you have disabled automatic index creation in {{es}}, you must configure [`action.auto_create_index`](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation) in `elasticsearch.yml` to allow the commercial features to create the following indices:
+Some commercial features automatically create indices within {{es}}. By default, {{es}} is configured to allow automatic index creation, and no additional steps are required. However, if you have disabled automatic index creation in {{es}}, you must configure [`action.auto_create_index`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) in `elasticsearch.yml` to allow the commercial features to create the following indices:
 
 ```yaml
 action.auto_create_index: .monitoring*,.watches,.triggered_watches,.watcher-history*,.ml*

@@ -162,7 +162,7 @@ The following are examples of a GCP plan. Your specific deployment plan will be 
 }
 ```
 
-You can use the [cat plugins API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-plugins.html) to confirm that the plugin has been deployed successfully to Elasticsearch.
+You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been deployed successfully to Elasticsearch.
 
 The previous examples are for plugins. For bundles, use the `user_bundles` construct instead.
 
@@ -466,7 +466,7 @@ Unlike bundles, plugins *must* match the Elasticsearch version down to the patch
     }
     ```
 
-    You can use the [cat plugins API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-plugins.html) to confirm that the plugin has been upgraded successfully to Elasticsearch.
+    You can use the [cat plugins API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-plugins) to confirm that the plugin has been upgraded successfully to Elasticsearch.
 
 
 
