@@ -4,17 +4,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-overview.html
 ---
 
-% What needs to be done: Refine
-
-% GitHub issue: docs-projects#377
-
-% Scope notes: Combine linked resources.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-rollup.md
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/rollup-overview.md
-
 # Rollup
 
 ::::{admonition} Deprecated in 8.11.0.
