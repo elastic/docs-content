@@ -23,7 +23,7 @@ $$$machine-learning-model$$$
 
 Use the detection engine to create and manage rules and view the alerts these rules create. Rules periodically search indices (such as `logs-*` and `filebeat-*`) for suspicious source events and create alerts when a rule’s conditions are met. When an alert is created, its status is `Open`. To help track investigations, an alert’s [status](detect-and-alert/manage-detection-alerts.md#detection-alert-status) can be set as `Open`, `Acknowledged`, or `Closed`.
 
-:::{image} ../../../images/security-alert-page.png
+:::{image} ../../images/security-alert-page.png
 :alt: Alerts page
 :class: screenshot
 :::
