@@ -644,9 +644,9 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/supported-tech.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html)
-* [Detailed guide to instrumenting Go source code](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/getting-started.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/go/current/supported-tech.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html)
+* [Detailed guide to instrumenting Go source code](https://www.elastic.co/guide/en/apm/agent/go/current/getting-started.html)
 ::::::
 
 ::::::{tab-item} Java
@@ -726,13 +726,13 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/supported-technologies-details.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/java/current/supported-technologies-details.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/java/current/configuration.html)
 ::::::
 
 ::::::{tab-item} .NET
 ::::{note}
-These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/setup.html) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
+These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup.html) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
 ::::
 
 
@@ -806,8 +806,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/dotnet/current/configuration.html)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -851,8 +851,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/supported-technologies.html)
-* [Configuring the agent](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/advanced-setup.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/current/supported-technologies.html)
+* [Configuring the agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/advanced-setup.html)
 ::::::
 
 ::::::{tab-item} PHP
@@ -966,8 +966,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -1029,8 +1029,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/ruby/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html)
 ::::::
 
 :::::::

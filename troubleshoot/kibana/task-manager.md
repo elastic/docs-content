@@ -81,7 +81,7 @@ By analyzing the different sections of the output, you can evaluate different th
 
 Retrieve the latest monitored health stats of a {{kib}} instance Task Manager:
 
-```kibana
+```bash
 $ curl -X GET api/task_manager/_health
 ```
 

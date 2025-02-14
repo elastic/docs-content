@@ -76,7 +76,7 @@ For all APM APIs, you must use a request header. Supported headers are `Authoriz
 
 #### Example [apm-update-config-example] 
 
-```curl
+```bash
 PUT /api/apm/settings/agent-configuration
 {
     "service": {
@@ -119,7 +119,7 @@ PUT /api/apm/settings/agent-configuration
 
 #### Example [apm-delete-config-example] 
 
-```curl
+```bash
 DELETE /api/apm/settings/agent-configuration
 {
     "service" : {
@@ -189,7 +189,7 @@ DELETE /api/apm/settings/agent-configuration
 
 #### Example [apm-list-config-example] 
 
-```curl
+```bash
 GET  /api/apm/settings/agent-configuration
 ```
 
@@ -246,7 +246,7 @@ GET  /api/apm/settings/agent-configuration
 
 #### Example [apm-search-config-example] 
 
-```curl
+```bash
 POST /api/apm/settings/agent-configuration/search
 {
     "etag": "1e58c178efeebae15c25c539da740d21dee422fc",

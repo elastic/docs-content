@@ -917,7 +917,7 @@ You have now learned about parsing logs in either {{beats}} or {{es}}. What if w
 
 Writing out logs as plain text works and is easy to read for humans. However, first writing them out as plain text, parsing them using the `dissect` processors, and then creating a JSON again sounds tedious and burns unneeded CPU cycles.
 
-While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/index.html). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
+While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/index.html). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
 
 1. Instead of writing our logging standard, use an existing one. Let’s add the logging dependency to our Javalin application.
 
