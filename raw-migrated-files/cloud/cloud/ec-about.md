@@ -7,6 +7,6 @@ The information in this section covers:
 * [Elasticsearch Service Hardware](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html)
 * [Elasticsearch Service Regions](https://www.elastic.co/guide/en/cloud/current/ec-reference-regions.html)
 * [Service Status](../../../deploy-manage/cloud-organization/service-status.md)
-* [Getting help](../../../troubleshoot/troubleshoot/index.md)
+* [Getting help](../../../troubleshoot/index.md)
 * [Restrictions and known problems](../../../deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md)
 
