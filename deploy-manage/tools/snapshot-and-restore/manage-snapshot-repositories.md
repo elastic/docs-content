@@ -1,11 +1,11 @@
 ---
 
-  applies:
+applies:
   stack: all
   hosted: all
   ece: all
   eck: all
-  
+
 ---
 
 # Manage snapshot repositories
