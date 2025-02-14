@@ -2,7 +2,7 @@ project: 'Elastic documentation'
 exclude:
   - 'README.md'
 cross_links:
-  - docs-content
+  - asciidocalypse
 toc:
   - file: index.md
   - toc: get-started
