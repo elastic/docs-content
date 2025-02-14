@@ -314,7 +314,7 @@ With `log.format.json.fix_duplicate_message_fields` enabled the duplication of `
 
 * [Troubleshoot Logstash plugins](/troubleshoot/ingest/logstash/plugins.md)
 * [Logstash: Contribute and discuss](/troubleshoot/ingest/logstash/contribute.md)
-* [Troubleshoot: Contact us](/troubleshoot/troubleshoot/index.md#contact-us)
+* [Troubleshoot: Contact us](/troubleshoot/index.md#contact-us)
 
 
 
