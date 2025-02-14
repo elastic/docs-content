@@ -197,7 +197,7 @@ A `429` message indicates that an application is busy handling other requests. F
 Check {{es}} to see if it needs attention.
 
 * [Cluster stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats)
-* [Monitor a cluster](../../../deploy-manage/monitor.md)
+* [Monitoring](/deploy-manage/monitor.md)
 
 **Sample error**
 

@@ -13,6 +13,8 @@ mapped_urls:
 
 % Use migrated content from existing pages that map to this page:
 
+## Contact us [contact-us]
+
 % - [ ] ./raw-migrated-files/tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-support-help.md
 % - [ ] ./raw-migrated-files/tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/troubleshooting-and-faqs.md
 % - next one added by marciw manually for tracking
