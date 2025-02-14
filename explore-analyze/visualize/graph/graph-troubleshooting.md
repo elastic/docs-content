@@ -7,7 +7,6 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-troubleshooting.html
 ---
 
-% marciw redirect to ../../../troubleshoot/kibana/graph.md -- 100% dupe
 
 # Troubleshooting and limitations [graph-troubleshooting]
 
