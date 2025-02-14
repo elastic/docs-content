@@ -27,7 +27,7 @@ To determine whether you should use a data stream for your data, you should cons
 
 For most time series data use-cases, a data stream will be a good fit. However, if you find that your data doesn’t fit into these categories (for example, if you frequently send multiple documents using the same `_id` expecting last-write-wins), you may want to use an index alias with a write index instead. See documentation for [managing time series data without a data stream](../../../manage-data/lifecycle/index-lifecycle-management.md#manage-time-series-data-without-data-streams) for more information.
 
-Keep in mind that some features such as [Time Series Data Streams (TSDS)](../../../manage-data/data-store/index-types/tsdb.md) and [data stream lifecycles](../../../manage-data/lifecycle/data-stream.md) require a data stream.
+Keep in mind that some features such as [Time Series Data Streams (TSDS)](../../../manage-data/data-store/index-types/time-series-data-stream-tsds.md) and [data stream lifecycles](../../../manage-data/lifecycle/data-stream.md) require a data stream.
 
 
 ## Backing indices [backing-indices]
