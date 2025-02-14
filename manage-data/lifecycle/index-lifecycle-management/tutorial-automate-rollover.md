@@ -1,21 +1,15 @@
 ---
-navigation_title: "Tutorial"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-index-lifecycle-management.html
 ---
 
-
-
 # Tutorial: Automate rollover [getting-started-index-lifecycle-management]
-
 
 When you continuously index timestamped documents into {{es}}, you typically use a [data stream](../../data-store/index-types/data-streams.md) so you can periodically [roll over](rollover.md) to a new index. This enables you to implement a [hot-warm-cold architecture](../data-tiers.md) to meet your performance requirements for your newest data, control costs over time, enforce retention policies, and still get the most out of your data.
 
 ::::{tip}
 [Data streams](../../data-store/index-types/data-streams.md) are best suited for [append-only](../../data-store/index-types/data-streams.md#data-streams-append-only) use cases. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. You can still use [ILM](../index-lifecycle-management.md) to manage and [roll over](rollover.md) the alias’s indices. Skip to [Manage time series data without data streams](../index-lifecycle-management.md#manage-time-series-data-without-data-streams).
 ::::
-
-
 
 ## Manage time series data with data streams [manage-time-series-data-with-data-streams]
 
