@@ -1,10 +1,10 @@
 ---
-navigation_title: "Getting started in Kibana"
+navigation_title: "Get started in Kibana"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/data-rollups.html
 ---
 
-# Getting started with the rollups in {{kib}}
+# Get started with the rollups in {{kib}}
 
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
@@ -79,7 +79,7 @@ As you walk through the **Create rollup job** UI, enter the data:
 | Histogram interval | 1000 |
 | Metrics | bytes (average) |
 
-On the **Review and save*** page, click ***Start job now*** and ***Save**.
+On the **Review and save** page, click **Start job now** and **Save**.
 
 The terms, histogram, and metrics fields reflect the key information to retain in the rolled up data: where visitors are from (geo.src), what operating system they are using (machine.os.keyword), and how much data is being sent (bytes).
 

@@ -1,17 +1,16 @@
 ---
-navigation_title: "Getting started with the API"
+navigation_title: "Get started using the API"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-getting-started.html
 ---
 
-# Getting started with the Rollup API
+# Get started with rollups using the API
 
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups will be removed in a future version. Please [migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups will be removed in a future version. Please [migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](# Getting started with the Rollup API/data-store/index-types/downsampling-time-series-data-stream.md) instead.
 ::::
-
 
 ::::{warning}
 From 8.15.0 invoking the put job API in a cluster with no rollup usage will fail with a message about Rollup’s deprecation and planned removal. A cluster either needs to contain a rollup job or a rollup index in order for the put job API to be allowed to execute.
