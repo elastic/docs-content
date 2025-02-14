@@ -71,7 +71,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 To enable the {{elastic-defend}} integration, you must enroll agents in the relevant policy using {{fleet}}.
 
 ::::{important}
-Before you add an {{agent}}, a {{fleet-server}} must be running. Refer to [Add a {{fleet-server}}](https://www.elastic.co/guide/en/fleet/current/add-a-fleet-server.html).
+Before you add an {{agent}}, a {{fleet-server}} must be running. Refer to [Add a {{fleet-server}}](https://www.elastic.co/guide/en/fleet/current/fleet-deployment-models.html).
 
 {{elastic-defend}} cannot be integrated with an {{agent}} in standalone mode.
 

@@ -8,7 +8,7 @@ mapped_pages:
 The **Inspect** view in {{kib}} allows you to view information about all requests that were made to collect the data displayed on the current page.
 
 :::{image} ../../images/observability-inspect-flyout.png
-:alt: Inspector flyout in the {uptime-app}
+:alt: Inspector flyout in the {{uptime-app}}
 :class: screenshot
 :::
 
@@ -18,7 +18,7 @@ Inspecting requests is available for the following UIs:
 
 * Applications
 * Uptime
-* {user-experience}
+* {{user-experience}}
 
 
 ## Enable inspect [inspect-enable]
@@ -57,7 +57,7 @@ Hits
 Hits (total)
 :   The number of documents that match the query.
 
-{data-source-cap}
+{{data-source-cap}}
 :   The {{data-source}} that connected to the {{es}} indices.
 
 {{kib}} API query parameters

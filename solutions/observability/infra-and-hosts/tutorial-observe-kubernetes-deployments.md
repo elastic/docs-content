@@ -25,7 +25,7 @@ This guide describes how to use Elastic {{observability}} to observe all layers 
 
 * Collect logs and metrics from Kubernetes and your applications
 * Collect trace data from applications deployed with Kubernetes
-* Centralize the data in the {stack}
+* Centralize the data in the {{stack}}
 * Explore the data in real-time using tailored dashboards and {{observability}} UIs
 
 This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html).
@@ -86,7 +86,7 @@ To start collecting logs and metrics from your Kubernetes clusters, first add th
 
 Follow these steps to add the Kubernetes integration to your policy:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Enter "Kubernetes" in the search bar, and select the **Kubernetes** integration.
 3. Click **Add Kubernetes** at the top of the Kubernetes integration page.
 4. Click **Add integration only (skip agent installation)** at the bottom of the Add integration page.
@@ -494,7 +494,7 @@ Use {{kib}} to view the metric and log data collected by {{agent}}. Refer to the
 
 ### View performance and health metrics [monitor-k8s-explore-metrics]
 
-To view the performance and health metrics collected by {{agent}}, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To view the performance and health metrics collected by {{agent}}, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 On the **Infrastructure inventory** page, you can switch between different views to see an overview of the containers and pods running on Kubernetes:
 
@@ -517,7 +517,7 @@ For more on using the **Metrics Explorer** page, refer to [Explore infrastructur
 
 ### View Kubernetes logs [monitor-k8s-explore-logs]
 
-Find `Logs Explorer` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
 
@@ -565,7 +565,7 @@ If you want to manage APM yourself, there are a few alternative options:
 
 A [secret token](../apps/secret-token.md) is used to secure communication between APM agents and APM Server. To create or update your secret token in {{kib}}:
 
-1. Find **Fleet** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Agent policies** tab, select the policy you would like to configure.
 3. Find the Elastic APM integration and select **Actions → Edit integration**.
 4. Navigate to **Agent authorization → Secret token** and set the value of your token.
@@ -644,9 +644,9 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/supported-tech.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html)
-* [Detailed guide to instrumenting Go source code](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/getting-started.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/go/current/supported-tech.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html)
+* [Detailed guide to instrumenting Go source code](https://www.elastic.co/guide/en/apm/agent/go/current/getting-started.html)
 ::::::
 
 ::::::{tab-item} Java
@@ -726,13 +726,13 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/supported-technologies-details.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/java/current/supported-technologies-details.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/java/current/configuration.html)
 ::::::
 
 ::::::{tab-item} .NET
 ::::{note}
-These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/setup.html) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
+These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup.html) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
 ::::
 
 
@@ -806,8 +806,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/dotnet/current/configuration.html)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -851,8 +851,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/supported-technologies.html)
-* [Configuring the agent](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/advanced-setup.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/current/supported-technologies.html)
+* [Configuring the agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/advanced-setup.html)
 ::::::
 
 ::::::{tab-item} PHP
@@ -966,8 +966,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -1029,8 +1029,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html)
+* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/ruby/current/supported-technologies.html)
+* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html)
 ::::::
 
 :::::::
@@ -1161,7 +1161,7 @@ kubectl apply -f demo.yml
 
 ### View your application’s traces in {{kib}} [_view_your_applications_traces_in_kib]
 
-Application trace data is available in the **Service Inventory**. To open **Service Inventory**, find **Applications** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+Application trace data is available in the **Service Inventory**. To open **Service Inventory**, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 The **Applications** app allows you to monitor your software services and applications in real-time: visualize detailed performance information on your services, identify and analyze errors, and monitor host-level and agent-specific metrics like JVM and Go runtime metrics.
 

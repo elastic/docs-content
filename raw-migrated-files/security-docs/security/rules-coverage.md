@@ -4,7 +4,7 @@ The **MITRE ATT&CK® coverage** page shows which [MITRE ATT&CK®](https://attack
 
 Mirroring the MITRE ATT&CK® framework, columns represent major tactics, and cells within each column represent a tactic’s related techniques. Cells are darker when a technique has more rules matching the current filters, as indicated in the **Legend** at the top.
 
-To access the **MITRE ATT&CK® coverage** page, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then go to **MITRE ATT&CK® coverage**.
+To access the **MITRE ATT&CK® coverage** page, find **Detection rules (SIEM)** in the navigation menu or look for “Detection rules (SIEM)” using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **MITRE ATT&CK® coverage**.
 
 ::::{note}
 This page only includes the detection rules you currently have installed, and only rules that are mapped to MITRE ATT&CK®. The coverage page maps detections to the following [MITRE ATT&CK® version](https://attack.mitre.org/resources/updates/updates-april-2024) used by {{elastic-sec}}: `v15.1`. Elastic prebuilt rules that aren’t installed and custom rules that are either unmapped or mapped to a deprecated tactic or technique will not appear on the coverage map.

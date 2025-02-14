@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Limitations"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-limitations.html
@@ -50,7 +53,7 @@ Trained models created in version 7.8.0 are not backwards compatible with older 
 
 ### Deleting a {{dfanalytics-job}} does not delete the destination index [dfa-deletion-limitations]
 
-The [delete {{dfanalytics-job}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-dfanalytics.html) does not delete the destination index that contains the annotated data of the {{dfanalytics}}. That index must be deleted separately.
+The [delete {{dfanalytics-job}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-delete-data-frame-analytics) does not delete the destination index that contains the annotated data of the {{dfanalytics}}. That index must be deleted separately.
 
 ### {{dfanalytics-jobs-cap}} runtime may vary [dfa-time-limitations]
 

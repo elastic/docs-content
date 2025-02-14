@@ -2,7 +2,7 @@
 
 **Health check**
 
-* Use the [Metrics inventory](https://www.elastic.co/guide/en/observability/current/analyze-metrics.html) to identify unavailable or unhealthy nodes. If the number of minimum master nodes is down, {{es}} is not available.
+* Use the [Metrics inventory](https://www.elastic.co/guide/en/observability/current/monitor-infrastructure-and-hosts.html) to identify unavailable or unhealthy nodes. If the number of minimum master nodes is down, {{es}} is not available.
 
 **Possible causes**
 
@@ -18,7 +18,7 @@
 * Routing stopped: A failed {{es}} configuration might stop the nodes routing. Restart the routing manually to bring the node back to health.
 * Disk/memory/CPU saturated:
 
-    * [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+    * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
     * Increase disk size.
     * [Enable autoscaling](../../../deploy-manage/autoscaling.md).
     * Configuration of ILM policies.

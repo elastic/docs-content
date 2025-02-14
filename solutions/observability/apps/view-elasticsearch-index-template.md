@@ -7,7 +7,7 @@ mapped_pages:
 
 Index templates are used to configure the backing indices of data streams as they are created. These index templates are composed of multiple component templates—​reusable building blocks that configure index mappings, settings, and aliases.
 
-The default APM index templates can be viewed in {{kib}}. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Select **Index Templates** and search for `apm`. Select any of the APM index templates to view their relevant component templates.
+The default APM index templates can be viewed in {{kib}}. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Index Templates** and search for `apm`. Select any of the APM index templates to view their relevant component templates.
 
 
 ## Edit the {{es}} index template [index-template-view]
@@ -19,7 +19,7 @@ Custom index mappings may conflict with the mappings defined by the {{es}} apm-d
 
 The APM index templates by default reference a non-existent `@custom` component template for each data stream. You can create or edit this `@custom` component template to customize your {{es}} indices.
 
-First, determine which [data stream](data-streams.md) you’d like to edit in {{kib}}. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Select **Component Templates**.
+First, determine which [data stream](data-streams.md) you’d like to edit in {{kib}}. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Component Templates**.
 
 Custom component templates are named following this pattern: `<name_of_data_stream>@custom`. Search for the name of the data stream, like `traces-apm`, and select its custom component template. Create one if it does not exist. In this example, that’d be, `traces-apm@custom`. Then click **Manage** → **Edit**.
 
@@ -73,7 +73,7 @@ In the **Index settings** step, you can specify custom [index settings](https://
 
 ## Roll over the data stream [apm-custom-index-template-rollover]
 
-Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. This can be done with the {{es}} [Rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html). For example, to roll over the `traces-apm-default` data stream, run:
+Changes to component templates are not applied retroactively to existing indices. For changes to take effect, you must create a new write index for the data stream. This can be done with the {{es}} [Rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover). For example, to roll over the `traces-apm-default` data stream, run:
 
 ```console
 POST /traces-apm-default/_rollover/

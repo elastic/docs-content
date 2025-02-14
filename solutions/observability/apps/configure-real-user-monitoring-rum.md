@@ -17,7 +17,7 @@ Most options in this section are supported by all APM Server deployment methods.
 ::::
 
 
-The [Real User Monitoring (RUM) agent](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/index.html) captures user interactions with clients such as web browsers. These interactions are sent as events to the APM Server. Because the RUM agent runs on the client side, the connection between agent and server is unauthenticated. As a security precaution, RUM is therefore disabled by default.
+The [Real User Monitoring (RUM) agent](https://www.elastic.co/guide/en/apm/agent/rum-js/current/index.html) captures user interactions with clients such as web browsers. These interactions are sent as events to the APM Server. Because the RUM agent runs on the client side, the connection between agent and server is unauthenticated. As a security precaution, RUM is therefore disabled by default.
 
 :::::::{tab-set}
 
@@ -46,14 +46,14 @@ To enable RUM, set [Enable RUM](#apm-rum-enable) to `true`.
 
 Configure and customize Fleet-managed APM settings directly in {{kib}}:
 
-1. In {{kib}}, find **Fleet** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. In {{kib}}, find **Fleet** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Under the **Agent policies** tab, select the policy you would like to configure.
 3. Find the Elastic APM integration and select **Actions** > **Edit integration**.
 4. Look for these options under **Real User Monitoring**.
 ::::::
 
 :::::::
-In addition, if APM Server is deployed in an origin different than the page’s origin, you will need to configure [Cross-Origin Resource Sharing (CORS)](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/configuring-cors.html) in the Agent.
+In addition, if APM Server is deployed in an origin different than the page’s origin, you will need to configure [Cross-Origin Resource Sharing (CORS)](https://www.elastic.co/guide/en/apm/agent/rum-js/current/configuring-cors.html) in the Agent.
 
 
 ## Configuration reference [apm-enable-rum-support]

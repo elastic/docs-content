@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-grokdebugger.html
 ---
@@ -23,7 +26,7 @@ If you’re using {{stack-security-features}}, you must have the `manage_pipelin
 ::::
 
 
-1. Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In **Sample Data**, enter a message that is representative of the data that you want to parse. For example:
 
     ```ruby
@@ -40,12 +43,12 @@ If you’re using {{stack-security-features}}, you must have the `manage_pipelin
 
 4. Click **Simulate**.
 
-    You’ll see the simulated event that results from applying the grok pattern.
+   You’ll see the simulated event that results from applying the grok pattern.
 
-    :::{image} ../../../images/kibana-grok-debugger-overview.png
-    :alt: Grok Debugger
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-grok-debugger-overview.png
+   :alt: Grok Debugger
+   :class: screenshot
+   :::
 
 
 
@@ -82,11 +85,11 @@ Follow this example to define a custom pattern.
 
 4. Click **Simulate**.
 
-    You’ll see the simulated output event that results from applying the grok pattern that contains the custom pattern:
+   You’ll see the simulated output event that results from applying the grok pattern that contains the custom pattern:
 
-    :::{image} ../../../images/kibana-grok-debugger-custom-pattern.png
-    :alt: Debugging a custom pattern
-    :class: screenshot
-    :::
+   :::{image} ../../../images/kibana-grok-debugger-custom-pattern.png
+   :alt: Debugging a custom pattern
+   :class: screenshot
+   :::
 
-    If an error occurs, you can continue iterating over the custom pattern until the output matches the event that you expect.
+   If an error occurs, you can continue iterating over the custom pattern until the output matches the event that you expect.

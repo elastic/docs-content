@@ -36,7 +36,7 @@ Interact with APM APIs using cURL or another API tool. All APM APIs are Kibana A
 For all APM APIs, you must use a request header. Supported headers are `Authorization`, `kbn-xsrf`, and `Content-Type`.
 
 `Authorization: ApiKey {{credentials}}`
-:   Kibana supports token-based authentication with the Elasticsearch API key service. The API key returned by the  [Elasticsearch create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) can be used by sending a request with an `Authorization` header that has a value of `ApiKey` followed by the `{{credentials}}`, where `{{credentials}}` is the base64 encoding of `id` and `api_key` joined by a colon.
+:   Kibana supports token-based authentication with the Elasticsearch API key service. The API key returned by the  [Elasticsearch create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) can be used by sending a request with an `Authorization` header that has a value of `ApiKey` followed by the `{{credentials}}`, where `{{credentials}}` is the base64 encoding of `id` and `api_key` joined by a colon.
 
     Alternatively, you can create a user and use their username and password to authenticate API access: `-u $USER:$PASSWORD`.
 
@@ -91,7 +91,7 @@ The user accessing this endpoint requires `All` Kibana privileges for the APM an
 
 The following example uploads a source map for a service named `foo` and a service version of `1.0.0`:
 
-```curl
+```bash
 curl -X POST "http://localhost:5601/api/apm/sourcemaps" \
 -H 'Content-Type: multipart/form-data' \
 -H 'kbn-xsrf: true' \
@@ -146,7 +146,7 @@ The user accessing this endpoint requires `Read` or `All` Kibana privileges for 
 
 The following example requests all uploaded source maps:
 
-```curl
+```bash
 curl -X GET "http://localhost:5601/api/apm/sourcemaps" \
 -H 'Content-Type: application/json' \
 -H 'kbn-xsrf: true' \
@@ -218,7 +218,7 @@ The user accessing this endpoint requires `All` Kibana privileges for the APM an
 
 The following example deletes a source map with an id of `apm:foo-1.0.0-644fd5a9`:
 
-```curl
+```bash
 curl -X DELETE "http://localhost:5601/api/apm/sourcemaps/apm:foo-1.0.0-644fd5a9" \
 -H 'Content-Type: application/json' \
 -H 'kbn-xsrf: true' \

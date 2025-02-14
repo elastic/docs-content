@@ -70,14 +70,14 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 ## Kibana [ech-restrictions-kibana]
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
-* Running an external Kibana in parallel to Elasticsearch Add-On for Heroku’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts/kibana/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-encrypted-saved-objects-settings) as Elasticsearch Add-On for Heroku does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Running an external Kibana in parallel to Elasticsearch Add-On for Heroku’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-encrypted-saved-objects-settings) as Elasticsearch Add-On for Heroku does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
 
 ## APM Agent central configuration with PrivateLink or traffic filters [ech-restrictions-apm-traffic-filters]
 
 If you are using APM 7.9.0 or older:
 
-* You cannot use [APM Agent central configuration](https://www.elastic.co/guide/en/kibana/current/agent-configuration.html) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
+* You cannot use [APM Agent central configuration](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
 * If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
 
 
@@ -129,4 +129,4 @@ To make a seamless migration, after restoring from a snapshot there are some add
 
 ## Repository Analysis API is unavailable in Elastic Cloud [ech-repository-analyis-unavailable]
 
-* The Elasticsearch [Repository analysis API](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+* The Elasticsearch [Repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.

@@ -20,7 +20,7 @@ Interact with APM APIs using cURL or another API tool. All APM APIs are Kibana A
 For all APM APIs, you must use a request header. Supported headers are `Authorization`, `kbn-xsrf`, and `Content-Type`.
 
 `Authorization: ApiKey {{credentials}}`
-:   Kibana supports token-based authentication with the Elasticsearch API key service. The API key returned by the  [Elasticsearch create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) can be used by sending a request with an `Authorization` header that has a value of `ApiKey` followed by the `{{credentials}}`, where `{{credentials}}` is the base64 encoding of `id` and `api_key` joined by a colon.
+:   Kibana supports token-based authentication with the Elasticsearch API key service. The API key returned by the  [Elasticsearch create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) can be used by sending a request with an `Authorization` header that has a value of `ApiKey` followed by the `{{credentials}}`, where `{{credentials}}` is the base64 encoding of `id` and `api_key` joined by a colon.
 
     Alternatively, you can create a user and use their username and password to authenticate API access: `-u $USER:$PASSWORD`.
 
@@ -40,7 +40,7 @@ For all APM APIs, you must use a request header. Supported headers are `Authoriz
 
 Here’s an example CURL request that adds an annotation to the Applications UI:
 
-```curl
+```bash
 curl -X POST \
   http://localhost:5601/api/apm/services/opbeans-java/annotation \
 -H 'Content-Type: application/json' \
@@ -61,7 +61,7 @@ curl -X POST \
 
 ## Kibana API [kibana-api] 
 
-In addition to the APM specific API endpoints, Kibana provides its own [REST API](https://www.elastic.co/guide/en/observability/current/api.html) which you can use to automate certain aspects of configuring and deploying Kibana.
+In addition to the APM specific API endpoints, Kibana provides its own [REST API](https://www.elastic.co/guide/en/observability/current/apm-api.html) which you can use to automate certain aspects of configuring and deploying Kibana.
 
 
 

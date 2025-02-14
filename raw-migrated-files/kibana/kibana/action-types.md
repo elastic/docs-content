@@ -27,7 +27,7 @@ Connectors provide a central place to store connection information for services 
 * [Tines](https://www.elastic.co/guide/en/kibana/current/tines-action-type.html): Send events to a Tines Story.
 * [Torq](https://www.elastic.co/guide/en/kibana/current/torq-action-type.html): Trigger a Torq workflow.
 * [{{webhook}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html): Send a request to a web service.
-* [{{webhook-cm}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html): Send a request to a Case Management web service.
+* [{{webhook-cm}}](https://www.elastic.co/guide/en/kibana/current/cases-webhook-action-type.html): Send a request to a Case Management web service.
 * [xMatters](https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html): Send actionable alerts to on-call xMatters resources.
 
 ::::{note}
@@ -49,7 +49,7 @@ Rules use connectors to route actions to different destinations like log files, 
 
 ## Required permissions [_required_permissions_2]
 
-Access to connectors is granted based on your privileges to alerting-enabled features. For more information, go to [Security](../../../explore-analyze/alerts/kibana/alerting-setup.md#alerting-security).
+Access to connectors is granted based on your privileges to alerting-enabled features. For more information, go to [Security](../../../explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-security).
 
 
 ## Connector networking configuration [_connector_networking_configuration]
@@ -101,7 +101,7 @@ You can also manage connectors as resources with the [Elasticstack provider](htt
 
 ## Importing and exporting connectors [importing-and-exporting-connectors]
 
-To import and export connectors, use the [Saved Objects Management UI](../../../explore-analyze/find-and-organize/saved-objects.md).
+To import and export connectors, use the [Saved Objects Management UI](/explore-analyze/find-and-organize/saved-objects.md).
 
 :::{image} ../../../images/kibana-connectors-import-banner.png
 :alt: Connectors import banner
@@ -120,4 +120,4 @@ If a connector is missing sensitive information after the import, a **Fix** butt
 
 The [Task Manager health API](../../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md) helps you understand the performance of all tasks in your environment. However, if connectors fail to run, they will report as successful to Task Manager. The failure stats will not accurately depict the performance of connectors.
 
-For more information on connector successes and failures, refer to the [Event log index](../../../explore-analyze/alerts/kibana/event-log-index.md).
+For more information on connector successes and failures, refer to the [Event log index](../../../explore-analyze/alerts-cases/alerts/event-log-index.md).

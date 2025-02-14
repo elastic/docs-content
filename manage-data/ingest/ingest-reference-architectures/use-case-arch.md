@@ -10,13 +10,13 @@ We offer a variety of ingest architectures to serve a wide range of use cases an
 To ingest data into {{es}}, use the *simplest option that meets your needs* and satisfies your use case. For many users and use cases, the simplest approach is ingesting data with {{agent}} and sending it to {{es}}. {{agent}} and [{{agent}} integrations](https://www.elastic.co/integrations/) are available for many popular platforms and services, and are a good place to start.
 
 ::::{tip}
-You can host {{es}} on your own hardware or send your data to {{es}} on {{ecloud}}. For most users, {{agent}} writing directly to {{es}} on {{ecloud}} provides the easiest and fastest time to value. {ess-leadin-short}
+You can host {{es}} on your own hardware or send your data to {{es}} on {{ecloud}}. For most users, {{agent}} writing directly to {{es}} on {{ecloud}} provides the easiest and fastest time to value. {{ess-leadin-short}}
 ::::
 
 
 **Decision tree**
 
-[Data ingestion pipeline with decision tree](https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html#ec-data-ingest-pipeline)
+[Data ingestion](../../ingest.md)
 
 | **Ingest architecture** | **Use when** |
 | --- | --- |

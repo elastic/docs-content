@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Lens"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/lens.html
@@ -63,10 +66,8 @@ Change the fields list to display a different {{data-source}}, different time ra
 
 * If the fields list is empty, change the [time filter](../query-filter/filtering.md).
 * To add fields, open the {{data-source}} dropdown, then select **Add a field to this {{data-source}}**.
-
-    ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](../../images/kibana-lens_dataViewDropDown_8.4.0.png "")
-
-    For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
+  ![Dropdown menu located next to {{data-source}} field with items for adding and managing fields](../../images/kibana-lens_dataViewDropDown_8.4.0.png "")
+  For more information about adding fields to {{data-sources}} and examples, refer to [Explore your data with runtime fields](../find-and-organize/data-views.md#runtime-fields).
 
 
 
@@ -118,10 +119,10 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
 
 1. Select the field in the fields list or layer pane. Most fields have an inner and outer select state. The inner state opens a panel with detailed information or options. The outer state allows you to drag the field. Tab through the fields until you get the outer state on the field.
 
-    :::{image} ../../images/kibana-lens_drag_drop_2.png
-    :alt: Lens drag and drop focus state
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-lens_drag_drop_2.png
+   :alt: Lens drag and drop focus state
+   :class: screenshot
+   :::
 
 2. Complete the following actions:
 
@@ -130,10 +131,10 @@ To use a keyboard instead of a mouse, use the **Lens** fully accessible and cont
     * To reorder the fields on the layer pane, use the Up and Down arrows.
     * To duplicate an action, use the Left and Right arrows, then select the **Drop a field or click to add** field you want to use.
 
-        :::{image} ../../images/kibana-lens_drag_drop_3.gif
-        :alt: Using drag and drop to reorder
-        :class: screenshot
-        :::
+      :::{image} ../../images/kibana-lens_drag_drop_3.gif
+      :alt: Using drag and drop to reorder
+      :class: screenshot
+      :::
 
 3. To confirm the action, press Space bar. To cancel, press Esc.
 
@@ -230,7 +231,7 @@ Annotations allow you to call out specific points in your visualizations that ar
 Annotations support two placement types:
 
 * **Static date** — Displays annotations for specific times or time ranges.
-* **Custom query** — Displays annotations based on custom {{es}} queries. For detailed information about queries, check [Semi-structured search](../overview/kibana-quickstart.md#semi-structured-search).
+* **Custom query** — Displays annotations based on custom {{es}} queries. For detailed information about queries, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
 
 Any annotation layer can be saved as an annotation group to the **Visualize Library** in order to reuse it in other visualizations. Any changes made to the annotation group will be reflected in all visualizations to which it is added.
 
@@ -255,7 +256,7 @@ Create custom query annotations.
 1. Select **Custom query**.
 2. Enter the **Annotation query** for the data you want to display.
 
-    For detailed information about queries and examples, check [Semi-structured search](../overview/kibana-quickstart.md#semi-structured-search).
+    For detailed information about queries and examples, check [Semi-structured search](/explore-analyze/query-filter/languages/kql.md#semi-structured-search).
 
 3. Select the **Target date field**.
 
@@ -301,7 +302,7 @@ For example, to track the number of bytes in the 75th percentile, add a shaded *
 
 ### Apply filters [filter-the-data]
 
-You can use the [query bar](../overview/kibana-quickstart.md#semi-structured-search) to create queries that filter all the data in a visualization, or use the layer pane and legend filters to apply filters based on field values.
+You can use the query bar to create queries that filter all the data in a visualization, or use the layer pane and legend filters to apply filters based on field values.
 
 
 #### Apply multiple KQL filters [filter-with-the-function]
@@ -453,7 +454,7 @@ To save the panel to the dashboard:
 
 For answers to common **Lens** questions, review the following.
 
-::::{dropdown} **When should I normalize the data by unit or use a custom interval?**
+::::{dropdown} When should I normalize the data by unit or use a custom interval?
 :name: when-should-i-normalize-the-data-by-unit-or-use-a-custom-interval
 
 * **Normalize by unit** — Calculates the average for the interval. When you normalize the data by unit, the data appears less granular, but **Lens** is able to calculate the data faster.
@@ -474,7 +475,7 @@ To create a custom interval:
 ::::
 
 
-::::{dropdown} **What data is categorized as Other?**
+::::{dropdown} What data is categorized as Other?
 :name: what-is-the-other-category
 
 The **Other** category contains all of the documents that do not match the specified criteria or filters. Use **Other** when you want to compare a value, or multiple values, to a whole.
@@ -486,7 +487,7 @@ To disable **Group other values as "Other"**, click a field in the layer pane, c
 ::::
 
 
-::::{dropdown} **How do I add documents without a field?**
+::::{dropdown} How do I add documents without a field?
 :name: how-can-i-include-documents-without-the-field-in-the-operation
 
 By default, **Lens** retrieves only the documents from the fields. For bucket aggregations, such as **Top values**, you can add documents that do not contain the fields, which is helpful when you want to make a comparison to the whole documentation set.
@@ -497,7 +498,7 @@ By default, **Lens** retrieves only the documents from the fields. For bucket ag
 ::::
 
 
-::::{dropdown} **When do I use runtime fields vs. formula?**
+::::{dropdown} When do I use runtime fields vs. formula?
 :name: when-do-i-use-runtime-fields-vs-formula
 
 Use runtime fields to format, concatenate, and extract document-level fields. Runtime fields work across all of {{kib}} and are best used for smaller computations without compromising performance.
@@ -507,7 +508,7 @@ Use formulas to compare multiple {{es}} aggregations that can be filtered or shi
 ::::
 
 
-::::{dropdown} **Can I add more than one y-axis scale?**
+::::{dropdown} Can I add more than one y-axis scale?
 :name: is-it-possible-to-have-more-than-one-Y-axis-scale
 
 For each y-axis, you can select **Left** and **Right**, and configure a different scale.
@@ -515,7 +516,7 @@ For each y-axis, you can select **Left** and **Right**, and configure a differen
 ::::
 
 
-::::{dropdown} **Why is my value the incorrect color when I use value-based coloring?**
+::::{dropdown} Why is my value the incorrect color when I use value-based coloring?
 :name: why-is-my-value-with-the-right-color-using-value-based-coloring
 
 Here’s a short list of few different aspects to check:
@@ -532,7 +533,7 @@ Here’s a short list of few different aspects to check:
 ::::
 
 
-::::{dropdown} **How do I sort by multiple columns?**
+::::{dropdown} How do I sort by multiple columns?
 :name: can-i-sort-by-multiple-columns
 
 Multiple column sorting is unsupported, but is supported in **Discover**. For information on how to sort multiple columns in **Discover**, refer to [Explore the fields in your data](../discover/discover-get-started.md#explore-fields-in-your-data).
@@ -540,7 +541,7 @@ Multiple column sorting is unsupported, but is supported in **Discover**. For in
 ::::
 
 
-::::{dropdown} **Why is my field missing from the fields list?**
+::::{dropdown} Why is my field missing from the fields list?
 :name: why-my-field-is-missing-from-the-fields-list
 
 The following field types do not appear in the **Available fields** list:
@@ -555,7 +556,7 @@ Verify if the field appears in the **Empty fields** list. **Lens** uses heuristi
 ::::
 
 
-::::{dropdown} **What do I do with gaps in time series visualizations?**
+::::{dropdown} What do I do with gaps in time series visualizations?
 :name: how-to-handle-gaps-in-time-series-visualizations
 
 When you create **Area** and **Line** charts with sparse time series data, open **Visual options** in the editor toolbar, then select a **Missing values** option.
@@ -563,7 +564,7 @@ When you create **Area** and **Line** charts with sparse time series data, open 
 ::::
 
 
-::::{dropdown} **Can I statically define the y-axis scale?**
+::::{dropdown} Can I statically define the y-axis scale?
 :name: is-it-possible-to-change-the-scale-of-Y-axis
 
 You can set the scale, or *bounds*, for area, bar, and line charts. You can configure the bounds for all functions, except **Percentile**. Logarithmic scales are unsupported.
@@ -573,7 +574,7 @@ To configure the bounds, use the menus in the editor toolbar. Bar and area chart
 ::::
 
 
-::::{dropdown} **Is it possible to display icons in data tables?**
+::::{dropdown} Is it possible to display icons in data tables?
 :name: is-it-possible-to-show-icons-in-datatable
 
 You can display icons with [field formatters](../find-and-organize/data-views.md) in data tables.
@@ -581,7 +582,7 @@ You can display icons with [field formatters](../find-and-organize/data-views.md
 ::::
 
 
-::::{dropdown} **How do I inspect {{es}} queries in visualizations?**
+::::{dropdown} How do I inspect {{es}} queries in visualizations?
 :name: is-it-possible-to-inspect-the-elasticsearch-queries-in-Lens
 
 You can inspect the requests sent by the visualization to {{es}} using the Inspector. It can be accessed within the editor or in the dashboard.
@@ -589,7 +590,7 @@ You can inspect the requests sent by the visualization to {{es}} using the Inspe
 ::::
 
 
-::::{dropdown} **How do I isolate a single series in a chart?**
+::::{dropdown} How do I isolate a single series in a chart?
 :name: how-to-isolate-a-single-series-in-a-chart
 
 For area, line, and bar charts, press Shift, then click the series in the legend. All other series are automatically deselected.
@@ -597,7 +598,7 @@ For area, line, and bar charts, press Shift, then click the series in the legend
 ::::
 
 
-::::{dropdown} **How do I visualize saved Discover sessions?**
+::::{dropdown} How do I visualize saved Discover sessions?
 :name: is-it-possible-to-use-saved-serches-in-lens
 
 Visualizing saved Discover sessions is unsupported.
@@ -605,7 +606,7 @@ Visualizing saved Discover sessions is unsupported.
 ::::
 
 
-::::{dropdown} **How do I change the number of suggestions?**
+::::{dropdown} How do I change the number of suggestions?
 :name: is-it-possible-to-decrease-or-increase-the-number-of-suggestions
 
 Configuring the **Suggestions** is unsupported.
@@ -613,15 +614,15 @@ Configuring the **Suggestions** is unsupported.
 ::::
 
 
-::::{dropdown} **Is it possible to have pagination in a data table?**
+::::{dropdown} Is it possible to have pagination in a data table?
 :name: is-it-possible-to-have-pagination-for-datatable
 
-Pagination in a data table is unsupported. To use pagination in data tables, create an [aggregation-based data table](legacy-editors.md#types-of-visualizations).
+Pagination in a data table is unsupported. To use pagination in data tables, create an [aggregation-based data table](legacy-editors/aggregation-based.md#types-of-visualizations).
 
 ::::
 
 
-::::{dropdown} **How do I change the color for a single data point?**
+::::{dropdown} How do I change the color for a single data point?
 :name: is-it-possible-to-select-color-for-specific-bar-or-point
 
 Specifying the color for a single data point, such as a single bar or line, is unsupported.
@@ -629,7 +630,7 @@ Specifying the color for a single data point, such as a single bar or line, is u
 ::::
 
 
-::::{dropdown} **How does dynamic coloring work for the metric visualization?**
+::::{dropdown} How does dynamic coloring work for the metric visualization?
 :name: dynamic-metric-coloring
 
 In the color palette editor, if you select **Value type: Number** the colors are applied based on the **Primary metric** value.

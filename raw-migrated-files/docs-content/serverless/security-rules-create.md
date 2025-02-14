@@ -697,7 +697,7 @@ You can use [mustache syntax](http://mustache.github.io/) to add variables to no
 The following variables can be passed for all rules:
 
 ::::{note}
-Refer to [Action frequency: Summary of alerts](../../../explore-analyze/alerts/kibana/rule-action-variables.md#alert-summary-action-variables) to learn about additional variables that can be passed if the rule’s action frequency is **Summary of alerts**.
+Refer to [Action frequency: Summary of alerts](../../../explore-analyze/alerts-cases/alerts/rule-action-variables.md#alert-summary-action-variables) to learn about additional variables that can be passed if the rule’s action frequency is **Summary of alerts**.
 
 ::::
 
@@ -758,7 +758,7 @@ The following variables can only be passed if the rule’s action frequency is f
 
 #### Alert placeholder examples [placeholder-examples]
 
-To understand which fields to parse, see the [Detections API](https://www.elastic.co/guide/en/security/current/rule-api-overview.html) to view the JSON representation of rules.
+To understand which fields to parse, see the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api) to view the JSON representation of rules.
 
 Example using `{{context.rule.filters}}` to output a list of filters:
 

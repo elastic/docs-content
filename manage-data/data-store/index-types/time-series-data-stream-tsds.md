@@ -129,7 +129,7 @@ If you convert an existing data stream to a TSDS, only backing indices created a
 
 When you add a document to a TSDS, {{es}} automatically generates a `_tsid` metadata field for the document. The `_tsid` is an object containing the document’s dimensions. Documents in the same TSDS with the same `_tsid` are part of the same time series.
 
-The `_tsid` field is not queryable or updatable. You also can’t retrieve a document’s `_tsid` using a [get document](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html) request. However, you can use the `_tsid` field in aggregations and retrieve the `_tsid` value in searches using the [`fields` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-param).
+The `_tsid` field is not queryable or updatable. You also can’t retrieve a document’s `_tsid` using a [get document](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) request. However, you can use the `_tsid` field in aggregations and retrieve the `_tsid` value in searches using the [`fields` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-param).
 
 ::::{warning}
 The format of the `_tsid` field shouldn’t be relied upon. It may change from version to version.
@@ -188,7 +188,7 @@ A TSDS is designed to ingest current metrics data. When the TSDS is first create
 
 Only data that falls inside that range can be indexed.
 
-You can use the [get data stream API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-data-stream.html) to check the accepted time range for writing to any TSDS.
+You can use the [get data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream) to check the accepted time range for writing to any TSDS.
 
 
 ### Dimension-based routing [dimension-based-routing]

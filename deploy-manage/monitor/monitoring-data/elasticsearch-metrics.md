@@ -29,7 +29,7 @@ For more information, refer to [Monitor a cluster](../../monitor.md).
 To view the key metrics that indicate the overall health of an {{es}} cluster, click **Overview** in the {{es}} section. Anything that needs your attention is highlighted in yellow or red.
 
 ::::{tip}
-Conditions that require your attention are listed at the top of the Clusters page. You can also set up watches to alert you when the status of your cluster changes. To learn how, see [Watching the status of an {{es}} cluster](../../../explore-analyze/alerts/watcher/watch-cluster-status.md).
+Conditions that require your attention are listed at the top of the Clusters page. You can also set up watches to alert you when the status of your cluster changes. To learn how, see [Watching the status of an {{es}} cluster](../../../explore-analyze/alerts-cases/watcher/watch-cluster-status.md).
 ::::
 
 
@@ -105,9 +105,9 @@ To view {{ccr}} metrics, click **CCR**. For each follower index on the cluster, 
 
 * **Error**: Any exceptions returned for the most recent document in the selected time period.
 
-If you select a follower index, you can view the same information for each shard. For more information on the properties used to calculate these metrics, refer to the [get follower stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-stats.html) documentation.
+If you select a follower index, you can view the same information for each shard. For more information on the properties used to calculate these metrics, refer to the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats) documentation.
 
-If you select a shard, you can see graphs for the fetch and operation delays. You can also see advanced information, which contains additional stats from the [get follower stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-stats.html).
+If you select a shard, you can see graphs for the fetch and operation delays. You can also see advanced information, which contains additional stats from the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats).
 
 Learn more about [{{ccr-cap}}](../../tools/cross-cluster-replication.md).
 

@@ -1,4 +1,9 @@
-# {{es}} API quickstart [getting-started]
+---
+applies:
+  stack:
+  serverless:
+---
+# Basics quickstart [getting-started]
 
 
 This quick start guide is a hands-on introduction to the fundamental concepts of Elasticsearch: [indices, documents and field type mappings](../../manage-data/data-store/index-basics.md).
@@ -9,8 +14,6 @@ You’ll learn how to create an index, add data as documents, work with dynamic 
 The code examples in this tutorial are in [Console](../../explore-analyze/query-filter/tools/console.md) syntax by default. You can [convert into other programming languages](../../explore-analyze/query-filter/tools/console.md#import-export-console-requests) in the Console UI.
 
 ::::
-
-
 
 ## Requirements [getting-started-requirements]
 
@@ -112,7 +115,7 @@ The response includes metadata that {{es}} generates for the document, including
 
 ### Add multiple documents [getting-started-add-multiple-documents]
 
-Use the [`_bulk` endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to add multiple documents in one request. Bulk data must be formatted as newline-delimited JSON (NDJSON).
+Use the [`_bulk` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to add multiple documents in one request. Bulk data must be formatted as newline-delimited JSON (NDJSON).
 
 ```console
 POST /_bulk
@@ -249,7 +252,7 @@ POST /books/_doc
 1. The new field.
 
 
-View the mapping for the `books` index with the [Get mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html). The new field `language` has been added to the mapping with a `text` data type.
+View the mapping for the `books` index with the [Get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping). The new field `language` has been added to the mapping with a `text` data type.
 
 ```console
 GET /books/_mapping
@@ -342,7 +345,7 @@ PUT /my-explicit-mappings-books
 
 ### Combine dynamic and explicit mappings [getting-started-combined-mapping]
 
-Explicit mappings are defined at index creation, and documents must conform to these mappings. You can also use the [Update mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html). When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping.
+Explicit mappings are defined at index creation, and documents must conform to these mappings. You can also use the [Update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping.
 
 This allows you to combine explicit and dynamic mappings. Learn more about [managing and updating mappings](../../manage-data/data-store/mapping.md#mapping-manage-update).
 
@@ -397,7 +400,7 @@ GET books/_search
 
 1. The `took` field indicates the time in milliseconds for {{es}} to execute the search
 2. The `timed_out` field indicates whether the search timed out
-3. The `_shards` field contains information about the number of [shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/glossary.html) that the search was executed on and the number that succeeded
+3. The `_shards` field contains information about the number of [shards](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html) that the search was executed on and the number that succeeded
 4. The `hits` object contains the search results
 5. The `total` object provides information about the total number of matching documents
 6. The `max_score` field indicates the highest relevance score among all matching documents
@@ -471,7 +474,7 @@ GET books/_search
 
 ## Step 5: Delete your indices (optional) [getting-started-delete-indices]
 
-When following along with examples, you might want to delete an index to start from scratch. You can delete indices using the [Delete index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+When following along with examples, you might want to delete an index to start from scratch. You can delete indices using the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 
 For example, run the following command to delete the indices created in this tutorial:
 

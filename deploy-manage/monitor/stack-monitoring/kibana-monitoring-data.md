@@ -43,7 +43,7 @@ If you use a separate monitoring cluster to store the monitoring data, it is str
 
     2. Add the `monitoring.ui.elasticsearch.username` and `monitoring.ui.elasticsearch.password` settings in the `kibana.yml` file. If these settings are omitted, {{kib}} uses the `elasticsearch.username` and `elasticsearch.password` setting values. For more information, see [Configuring security in {{kib}}](../../security.md).
 
-4. (Optional) Configure {{kib}} to encrypt communications between the {{kib}} server and the monitoring cluster. See [*Encrypt TLS communications in {{kib}}*](https://www.elastic.co/guide/en/kibana/current/configuring-tls.html).
+4. (Optional) Configure {{kib}} to encrypt communications between the {{kib}} server and the monitoring cluster. See [*Encrypt TLS communications in {{kib}}*](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http).
 5. If the Elastic {{security-features}} are enabled on the {{kib}} server, only users that have the authority to access {{kib}} indices and to read the monitoring indices can use the monitoring dashboards.
 
     ::::{note}
@@ -59,9 +59,9 @@ If you use a separate monitoring cluster to store the monitoring data, it is str
 
     If the Elastic {{security-features}} are enabled, log in.
 
-7. Go to the **Stack Monitoring** page using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+7. Go to the **Stack Monitoring** page using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-    If data collection is disabled, you are prompted to turn on data collection. If {{es}} {security-features} are enabled, you must have `manage` cluster privileges to turn on data collection.
+    If data collection is disabled, you are prompted to turn on data collection. If {{es}} {{security-features}} are enabled, you must have `manage` cluster privileges to turn on data collection.
 
     ::::{note}
     If you are using a separate monitoring cluster, you do not need to turn on data collection. The dashboards appear when there is data in the monitoring cluster.

@@ -68,7 +68,7 @@ This section explains the general process for setting up cross-cluster search in
 
 ## Update a rule’s API key [update-api-key]
 
-Each detection rule has its own [API key](../../../explore-analyze/alerts/kibana/alerting-setup.md#alerting-authorization), which determines the data and actions the rule is allowed to access. When a user creates a new rule or changes an existing rule, their current privileges are saved to the rule’s API key. If that user’s privileges change in the future, the rule **does not** automatically update with the user’s latest privileges — you must update the rule’s API key if you want to update its privileges.
+Each detection rule has its own [API key](../../../explore-analyze/alerts-cases/alerts/alerting-setup.md#alerting-authorization), which determines the data and actions the rule is allowed to access. When a user creates a new rule or changes an existing rule, their current privileges are saved to the rule’s API key. If that user’s privileges change in the future, the rule **does not** automatically update with the user’s latest privileges — you must update the rule’s API key if you want to update its privileges.
 
 ::::{important}
 A rule’s API key is different from the API key you might have created for [authentication between local and remote clusters](#set-up-ccs-rules).
@@ -80,7 +80,7 @@ To update a rule’s API key, log into the local cluster as a user with the priv
 * Edit and save the rule.
 * Update the rule’s API key manually:
 
-    1. Find **Stack Management** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then go to **Rules**.
+    1. Find **Stack Management** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then go to **Rules**.
     2. Use the search box and filters to find the rules you want to update. For example, use the **Type** filter to find rules under the **Security** category.
     3. Select the rule’s actions menu (**…​**), then **Update API key**.
 

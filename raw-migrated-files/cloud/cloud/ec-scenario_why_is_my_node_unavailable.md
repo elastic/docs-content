@@ -49,7 +49,7 @@ If your issue is not addressed here, then [contact Elastic support for help](../
 
 **Resolution**
 
-* [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+* [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}
@@ -79,7 +79,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
@@ -96,7 +96,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, then increasing
 
 **Resolution**
 
-* [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+* [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 * Increase the disk size (scale up).
 
 ::::{note}
@@ -122,7 +122,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
     3. From your deployment menu, go to the **Edit** page and increase the **Size per zone** for the data tiers identified at step 2.
 
-        :::{image} ../../../images/cloud-increase-size-per-zone.png
+        :::{image} ../../../images/cloud-ec-increase-size-per-zone.png
         :alt: Increase size per zone
         :::
 
@@ -138,7 +138,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
@@ -162,7 +162,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
         * Machine Learning jobs, watches, monitoring, ingest pipeline
 
-    * Internal tasks initiated by {es}
+    * Internal tasks initiated by {{es}}
 
         * Nodes joining and leaving due to hardware failures
         * Shard allocation due to nodes joining and leaving
@@ -177,7 +177,7 @@ If your {{es}} cluster is unhealthy and reports a status of red, the scale up co
 
 * If the master node is overwhelmed by internal tasks initiated by users:
 
-    * Check [cluster-level pending tasks](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-pending-tasks.html).
+    * Check [cluster-level pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-pending-tasks).
     * Reduce the number of Machine Learning jobs or watches.
     * Change the number of ingest pipelines or processors to use less memory.
 
@@ -204,7 +204,7 @@ By default, the allowed CPU usage threshold is set at 85%.
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the {{es}} Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
 
-    :::{image} ../../../images/cloud-quick-link-to-deployment.png
+    :::{image} ../../../images/cloud-ec-quick-link-to-deployment.png
     :alt: Quick link to the deployment page
     :::
 
@@ -241,7 +241,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 
         * Machine Learning jobs, watches, monitoring, ingest pipelines
 
-    * Internal tasks initiated by {es}
+    * Internal tasks initiated by {{es}}
 
         * Nodes joining and leaving due to hardware failures
         * Shard allocation due to nodes joining and leaving
@@ -260,7 +260,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 
 * If the master node is overwhelmed by internal tasks initiated by users:
 
-    * Check [cluster-level pending tasks](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-pending-tasks.html).
+    * Check [cluster-level pending tasks](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-pending-tasks).
     * Reduce the number of Machine Learning jobs or watches.
     * Change the number of ingest pipelines or processors to use less memory.
 
@@ -282,7 +282,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 
 **Health check**
 
-* Use the [Metrics inventory](https://www.elastic.co/guide/en/observability/current/analyze-metrics.html) to identify unavailable or unhealthy nodes. If the number of minimum master nodes is down, {{es}} is not available.
+* Use the [Metrics inventory](https://www.elastic.co/guide/en/observability/current/monitor-infrastructure-and-hosts.html) to identify unavailable or unhealthy nodes. If the number of minimum master nodes is down, {{es}} is not available.
 
 **Possible causes**
 
@@ -298,7 +298,7 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 * Routing stopped: A failed {{es}} configuration might stop the nodes routing. Restart the routing manually to bring the node back to health.
 * Disk/memory/CPU saturated:
 
-    * [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+    * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
     * Increase disk size.
     * [Enable autoscaling](../../../deploy-manage/autoscaling.md).
     * Configuration of [ILM](../../../manage-data/lifecycle/index-lifecycle-management.md) policies.

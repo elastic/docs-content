@@ -7,7 +7,7 @@ You can view the details of detected anomalies within the `Anomalies` table widg
 
 ## Manage {{ml}} jobs [manage-jobs]
 
-If you have the `machine_learning_admin` role, you can use the **ML job settings** interface on the **Alerts***, ***Rules**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {ml} jobs.
+If you have the `machine_learning_admin` role, you can use the **ML job settings** interface on the **Alerts***, ***Rules**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {{ml}} jobs.
 
 :::{image} ../../../images/serverless--detections-machine-learning-ml-ui.png
 :alt: ML job settings UI on the Alerts page
@@ -37,7 +37,7 @@ You can also check the status of {{ml}} detection rules, and start or stop their
 
 ### Prebuilt jobs [included-jobs]
 
-{{elastic-sec}} comes with prebuilt {{ml}} {anomaly-jobs} for automatically detecting host and network anomalies. The jobs are displayed in the `Anomaly Detection` interface. They are available when either:
+{{elastic-sec}} comes with prebuilt {{ml}} {{anomaly-jobs}} for automatically detecting host and network anomalies. The jobs are displayed in the `Anomaly Detection` interface. They are available when either:
 
 * You ship data using [Beats](https://www.elastic.co/products/beats) or the [{{agent}}](../../../solutions/security/configure-elastic-defend/install-elastic-defend.md), and {{kib}} is configured with the required index patterns (such as `auditbeat-*`, `filebeat-*`, `packetbeat-*`, or `winlogbeat-*` in **Project settings** → **Management** → **Index Management**).
 
@@ -49,7 +49,7 @@ Or
 
 * You install one or more of the [Advanced Analytics integrations](../../../solutions/security/advanced-entity-analytics/behavioral-detection-use-cases.md#security-behavioral-detection-use-cases-elastic-integrations-for-behavioral-detection-use-cases).
 
-[Prebuilt job reference](https://www.elastic.co/guide/en/serverless/current/security-prebuilt-ml-jobs.html) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](../../../solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
+[Prebuilt job reference](https://www.elastic.co/guide/en/security/current/prebuilt-ml-jobs.html) describes all available {{ml}} jobs and lists which ECS fields are required on your hosts when you are not using {{beats}} or the {{agent}} to ship your data. For information on tuning anomaly results to reduce the number of false positives, see [Optimizing anomaly results](../../../solutions/security/advanced-entity-analytics/optimizing-anomaly-results.md).
 
 ::::{note}
 Machine learning jobs look back and analyze two weeks of historical data prior to the time they are enabled. After jobs are enabled, they continuously analyze incoming data. When jobs are stopped and restarted within the two-week time frame, previously analyzed data is not processed again.

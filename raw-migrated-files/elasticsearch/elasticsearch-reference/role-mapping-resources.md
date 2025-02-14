@@ -49,7 +49,7 @@ The value specified in the field rule can be one of the following types:
 The *user object* against which rules are evaluated has the following fields:
 
 `username`
-:   (string) The username by which the {{es}} {security-features} knows this user. For example, `"username": "jsmith"`.
+:   (string) The username by which the {{es}} {{security-features}} knows this user. For example, `"username": "jsmith"`.
 
 `dn`
 :   (string) The *Distinguished Name* of the user. For example, `"dn": "cn=jsmith,ou=users,dc=example,dc=com",`.

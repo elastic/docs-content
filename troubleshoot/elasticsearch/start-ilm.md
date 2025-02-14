@@ -1,9 +1,13 @@
 ---
+navigation_title: Index lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-ilm.html
 ---
 
 # Start index lifecycle management [start-ilm]
+
+% marciw consider moving out of troubleshooting and into how-tos
+% marciw or add troubleshooting info from elsewhere
 
 Automatic index lifecycle and data retention management is currently disabled.
 
@@ -12,7 +16,7 @@ In order to start the automatic {{ilm}} service, follow these steps:
 :::::::{tab-set}
 
 ::::::{tab-item} Elasticsearch Service
-In order to start {{ilm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html).
+In order to start {{ilm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start).
 
 **Use {{kib}}**
 
@@ -30,7 +34,7 @@ In order to start {{ilm}} we need to go to Kibana and execute the [start command
     :class: screenshot
     :::
 
-4. [Start](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html) {{ilm}}:
+4. [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}:
 
     ```console
     POST _ilm/start
@@ -60,7 +64,7 @@ In order to start {{ilm}} we need to go to Kibana and execute the [start command
 ::::::
 
 ::::::{tab-item} Self-managed
-[Start](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html) {{ilm}}:
+[Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}:
 
 ```console
 POST _ilm/start

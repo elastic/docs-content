@@ -20,12 +20,12 @@ If your logs have custom index patterns, use non-default field settings, or cont
 
 ## Edit configuration settings [edit-config-settings]
 
-1. Find `Logs / Settings` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find `Logs / Settings` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
     |     |     |
     | --- | --- |
     | **Name** | Name of the source configuration. |
-    | **{{kib}} log sources advanced setting** | Use index patterns stored in the {{kib}} **log sources** advanced setting, which provides a centralized place to store and query log index patterns.To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). |
+    | **{{kib}} log sources advanced setting** | Use index patterns stored in the {{kib}} **log sources** advanced setting, which provides a centralized place to store and query log index patterns.To open **Advanced settings**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). |
     | **{{data-source-cap}} (deprecated)** | The Logs UI integrates with {{data-sources}} toconfigure the used indices by clicking **Use {{data-sources}}**. |
     | **Log indices (deprecated)** | {{kib}} index patterns or index name patterns in the {{es}} indicesto read log data from. |
     | **Log columns** | Columns that are displayed in the logs **Stream** page. |
@@ -46,7 +46,7 @@ By default, the **Stream** page within the {{logs-app}} displays the following c
 |     |     |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-base.html)base field, `message`, is used. |
+| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-base.html)base field, `message`, is used. |
 
 1. To add a new column to the logs stream, select **Settings > Add column**.
 2. In the list of available fields, select the field you want to add. To filter the field list by that name, you can start typing a field name in the search box.

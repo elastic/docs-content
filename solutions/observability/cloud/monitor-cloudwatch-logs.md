@@ -13,11 +13,11 @@ In this section, you’ll learn how to export log events from CloudWatch logs to
 
 You’ll go through the following steps:
 
-* Install AWS integration in {kib}
+* Install AWS integration in {{kib}}
 * Select a CloudWatch log group to monitor
 * Create a delivery stream in Amazon Data Firehose
 * Set up a subscription filter to forward the logs using the Firehose stream
-* Visualize your logs in {kib}
+* Visualize your logs in {{kib}}
 
 
 ## Before you begin [firehose-cloudwatch-prerequisites]
@@ -35,7 +35,7 @@ AWS PrivateLink is not supported. Make sure the deployment is on AWS, because th
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-cloudwatch-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Browse the catalog to find the AWS integration.
 3. Navigate to the **Settings** tab and click **Install AWS assets**.
 

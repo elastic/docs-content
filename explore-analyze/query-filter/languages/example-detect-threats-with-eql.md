@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-ex-threat-detection.html
 ---
@@ -18,7 +21,7 @@ One common variant of regsvr32 misuse is a [Squiblydoo attack](https://attack.mi
 
 ## Setup [eql-ex-threat-detection-setup] 
 
-This tutorial uses a test dataset from [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team) that includes events imitating a Squiblydoo attack. The data has been mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) fields.
+This tutorial uses a test dataset from [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team) that includes events imitating a Squiblydoo attack. The data has been mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current) fields.
 
 To get started:
 
@@ -34,13 +37,13 @@ To get started:
     ```
 
 2. Download [`normalized-T1117-AtomicRed-regsvr32.json`](https://raw.githubusercontent.com/elastic/elasticsearch/master/docs/src/yamlRestTest/resources/normalized-T1117-AtomicRed-regsvr32.json).
-3. Use the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index the data to a matching stream:
+3. Use the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index the data to a matching stream:
 
     ```sh
     curl -H "Content-Type: application/json" -XPOST "localhost:9200/my-data-stream/_bulk?pretty&refresh" --data-binary "@normalized-T1117-AtomicRed-regsvr32.json"
     ```
 
-4. Use the [cat indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-indices.html) to verify the data was indexed:
+4. Use the [cat indices API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices) to verify the data was indexed:
 
     ```console
     GET /_cat/indices/my-data-stream?v=true&h=health,status,index,docs.count

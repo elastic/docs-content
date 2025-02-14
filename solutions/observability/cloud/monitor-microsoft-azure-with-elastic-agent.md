@@ -90,7 +90,7 @@ In this step, you install the Azure Billing Metrics integration in {{kib}}. This
 
 To add the integration:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for **Azure Billing** and select the Azure Billing Metrics integration to see more details about it.
 3. Click **Add Azure Billing Metrics**.
 4. Under Integration settings, configure the integration name and optionally add a description.
@@ -157,7 +157,7 @@ It takes a few minutes for {{agent}} to enroll in {{fleet}}, download the config
 
 ## Step 4: Visualize Azure billing metrics [azure-elastic-agent-visualize-metrics]
 
-Now that the metrics are streaming to {{es}}, you can visualize them in {{kib}}. Find **Dashboards** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Search for Azure Billing and select the dashboard called **[Azure Billing] Billing Overview**.
+Now that the metrics are streaming to {{es}}, you can visualize them in {{kib}}. Find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Search for Azure Billing and select the dashboard called **[Azure Billing] Billing Overview**.
 
 :::{image} ../../../images/observability-agent-tut-azure-billing-dashboard.png
 :alt: Screenshot of Azure billing overview dashboard
@@ -243,7 +243,7 @@ Now that activity logs are streaming into the event hub, you can configure the A
 
 To add the integration:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for **Azure activity logs** and select the Azure activity logs integration to see more details about it.
 3. Click **Add Azure activity logs**.
 4. Under Integration settings, configure the integration name and optionally add a description.
@@ -281,7 +281,7 @@ To add the integration:
 
 ## Step 5: Visualize Azure activity logs [azure-elastic-agent-visualize-azure-logs]
 
-Now that logs are streaming into {{es}}, you can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Notice that you can filter on a specific data stream. For example, you can use `data_stream.dataset : "azure.activitylogs"` to show Azure activity logs.
+Now that logs are streaming into {{es}}, you can visualize them in {{kib}}. To see the raw logs, find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Notice that you can filter on a specific data stream. For example, you can use `data_stream.dataset : "azure.activitylogs"` to show Azure activity logs.
 
 The Azure activity logs integration also comes with pre-built dashboards that you can use to visualize the data. In {{kib}}, open the main menu and click **Dashboard**. Search for Azure activity and select the dashboard called **[Logs Azure] User Activity**:
 

@@ -1,9 +1,10 @@
 ---
+navigation_title: Snapshot policy failures
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repeated-snapshot-failures.html
 ---
 
-# Addressing repeated snapshot policy failures [repeated-snapshot-failures]
+# Fix repeated snapshot policy failures [repeated-snapshot-failures]
 
 Repeated snapshot failures are usually an indicator of a problem with your deployment. Continuous failures of automated snapshots can leave a deployment without recovery options in cases of data loss or outages.
 
@@ -14,7 +15,7 @@ In the event that an automated {{slm}} policy execution is experiencing repeated
 :::::::{tab-set}
 
 ::::::{tab-item} Elasticsearch Service
-In order to check the status of failing {{slm}} policies we need to go to Kibana and retrieve the [Snapshot Lifecycle Policy information](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-get-policy.html).
+In order to check the status of failing {{slm}} policies we need to go to Kibana and retrieve the [Snapshot Lifecycle Policy information](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle).
 
 **Use {{kib}}**
 
@@ -32,7 +33,7 @@ In order to check the status of failing {{slm}} policies we need to go to Kibana
     :class: screenshot
     :::
 
-4. [Retrieve](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-get-policy.html) the {{slm}} policy:
+4. [Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) the {{slm}} policy:
 
     ```console
     GET _slm/policy/<affected-policy-name>
@@ -99,7 +100,7 @@ In the event that snapshots are failing for other reasons check the logs on the 
 ::::::
 
 ::::::{tab-item} Self-managed
-[Retrieve](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-get-policy.html) the {{slm}} policy:
+[Retrieve](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle) the {{slm}} policy:
 
 ```console
 GET _slm/policy/<affected-policy-name>

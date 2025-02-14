@@ -18,7 +18,7 @@ In this tutorial, you’ll learn how to:
 
 * Enable AWS VPC flow logs to be sent to your S3 bucket
 * Create an SQS queue and notifications for VPC flow logs
-* Install and configure the Elastic AWS integration from {kib}
+* Install and configure the Elastic AWS integration from {{kib}}
 * Visualize and analyze AWS logs in the Elastic Stack
 
 
@@ -94,7 +94,7 @@ For more details, refer to the AWS documentation on how to [Configure a bucket f
 
 {{kib}} offers prebuilt dashboards, ingest node configurations, and other assets that help you get the most value out of the logs you ingest.
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for AWS.
 3. Click the AWS integration, select **Settings** and click **Install AWS assets** to install all the AWS integration assets.
 

@@ -1,15 +1,15 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Examples"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-examples.html
 ---
 
-
-
 # Examples [transform-examples]
 
-
-These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](https://www.elastic.co/guide/en/kibana/current/add-sample-data.html). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
+These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](https://www.elastic.co/guide/en/kibana/current/get-started.html). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
 
 * [Finding your best customers](#example-best-customers)
 * [Finding air carriers with the most delays](#example-airline)
@@ -23,11 +23,11 @@ These examples demonstrate how to use {{transforms}} to derive useful insights f
 This example uses the eCommerce orders sample data set to find the customers who spent the most in a hypothetical webshop. Let’s use the `pivot` type of {{transform}} such that the destination index contains the number of orders, the total price of the orders, the amount of unique products and the average price per order, and the total amount of ordered products for each customer.
 
 :::{image} ../../images/elasticsearch-reference-transform-ex1-1.jpg
-:alt: Finding your best customers with {{transforms}} in {kib}
+:alt: Finding your best customers with {{transforms}} in {{kib}}
 :class: screenshot
 :::
 
-Alternatively, you can use the [preview {{transform}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html) and the [create {{transform}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html).
+Alternatively, you can use the [preview {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) and the [create {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
 
 :::::{dropdown} API example
 ```console
@@ -58,11 +58,9 @@ POST _transform/_preview
 1. The destination index for the {{transform}}. It is ignored by `_preview`.
 2. Two `group_by` fields is selected. This means the {{transform}} contains a unique row per `user` and `customer_id` combination. Within this data set, both these fields are unique. By including both in the {{transform}}, it gives more context to the final results.
 
-
 ::::{note}
 In the example above, condensed JSON formatting is used for easier readability of the pivot object.
 ::::
-
 
 The preview {{transforms}} API enables you to see the layout of the {{transform}} in advance, populated with some sample values. For example:
 
@@ -85,7 +83,6 @@ The preview {{transforms}} API enables you to see the layout of the {{transform}
 
 :::::
 
-
 This {{transform}} makes it easier to answer questions such as:
 
 * Which customers spend the most?
@@ -94,7 +91,6 @@ This {{transform}} makes it easier to answer questions such as:
 * Which customers ordered the least number of different products?
 
 It’s possible to answer these questions using aggregations alone, however {{transforms}} allow us to persist this data as a customer centric index. This enables us to analyze data at scale and gives more flexibility to explore and navigate data from a customer centric perspective. In some cases, it can even make creating visualizations much simpler.
-
 
 ## Finding air carriers with the most delays [example-airline]
 
@@ -143,7 +139,6 @@ POST _transform/_preview
 3. The data is grouped by the `Carrier` field which contains the airline name.
 4. This `bucket_script` performs calculations on the results that are returned by the aggregation. In this particular example, it calculates what percentage of travel time was taken up by delays.
 
-
 The preview shows you that the new index would contain data like this for each carrier:
 
 ```js
@@ -168,8 +163,6 @@ This {{transform}} makes it easier to answer questions such as:
 ::::{note}
 This data is fictional and does not reflect actual delays or flight stats for any of the featured destination or origin airports.
 ::::
-
-
 
 ## Finding suspicious client IPs [example-clientips]
 
@@ -235,7 +228,6 @@ PUT _transform/suspicious_client_ips
 4. Filter aggregation that counts the occurrences of successful (`200`) responses in the `response` field. The following two aggregations (`error404` and `error5xx`) count the error responses by error codes, matching an exact value or a range of response codes.
 5. This `bucket_script` calculates the duration of the `clientip` access based on the results of the aggregation.
 
-
 After you create the {{transform}}, you must start it:
 
 ```console
@@ -285,14 +277,12 @@ The search result shows you data like this for each client IP:
 Like other Kibana sample data sets, the web log sample dataset contains timestamps relative to when you installed it, including timestamps in the future. The {{ctransform}} will pick up the data points once they are in the past. If you installed the web log sample dataset some time ago, you can uninstall and reinstall it and the timestamps will change.
 ::::
 
-
 This {{transform}} makes it easier to answer questions such as:
 
 * Which client IPs are transferring the most amounts of data?
 * Which client IPs are interacting with a high number of different URLs?
 * Which client IPs have high error rates?
 * Which client IPs are interacting with a high number of destination countries?
-
 
 ## Finding the last log event for each IP address [example-last-log]
 
@@ -301,14 +291,14 @@ This example uses the web log sample data set to find the last log from an IP ad
 Pick the `clientip` field as the unique key; the data is grouped by this field. Select `timestamp` as the date field that sorts the data chronologically. For continuous mode, specify a date field that is used to identify new documents, and an interval between checks for changes in the source index.
 
 :::{image} ../../images/elasticsearch-reference-transform-ex4-1.jpg
-:alt: Finding the last log event for each IP address with {{transforms}} in {kib}
+:alt: Finding the last log event for each IP address with {{transforms}} in {{kib}}
 :class: screenshot
 :::
 
 Let’s assume that we’re interested in retaining documents only for IP addresses that appeared recently in the log. You can define a retention policy and specify a date field that is used to calculate the age of a document. This example uses the same date field that is used to sort the data. Then set the maximum age of a document; documents that are older than the value you set will be removed from the destination index.
 
 :::{image} ../../images/elasticsearch-reference-transform-ex4-2.jpg
-:alt: Defining retention policy for {{transforms}} in {kib}
+:alt: Defining retention policy for {{transforms}} in {{kib}}
 :class: screenshot
 :::
 
@@ -357,7 +347,6 @@ PUT _transform/last-log-from-clientip
 4. Contains the time field and delay settings used to synchronize the source and destination indices.
 5. Specifies the retention policy for the transform. Documents that are older than the configured value will be removed from the destination index.
 
-
 After you create the {{transform}}, start it:
 
 ```console
@@ -365,7 +354,6 @@ POST _transform/last-log-from-clientip/_start
 ```
 
 ::::
-
 
 After the {{transform}} processes the data, search the destination index:
 
@@ -425,7 +413,6 @@ This {{transform}} makes it easier to answer questions such as:
 
 * What was the most recent log event associated with a specific IP address?
 
-
 ## Finding client IPs that sent the most bytes to the server [example-bytes]
 
 This example uses the web log sample data set to find the client IP that sent the most bytes to the server in every hour. The example uses a `pivot` {{transform}} with a [`top_metrics`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-metrics.html) aggregation.
@@ -477,7 +464,6 @@ POST _transform/_preview
 2. Calculates the maximum value of the `bytes` field.
 3. Specifies the fields (`clientip` and `geo.src`) of the top document to return and the sorting method (document with the highest `bytes` value).
 
-
 The API call above returns a response similar to this:
 
 ```js
@@ -517,7 +503,6 @@ The API call above returns a response similar to this:
   ]
 }
 ```
-
 
 ## Getting customer name and email address by customer ID [example-customer-names]
 
@@ -566,7 +551,6 @@ POST _transform/_preview
 1. The data is grouped by a `terms` aggregation on the `customer_id` field.
 2. Specifies the fields to return (email and name fields) in a descending order by the order date.
 
-
 The API returns a response that is similar to this:
 
 ```js
@@ -600,5 +584,3 @@ The API returns a response that is similar to this:
   ]
 }
 ```
-
-

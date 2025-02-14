@@ -90,7 +90,7 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:9.0.0-beta1
     ::::
 
 
-    {{ml-cap}} features such as [semantic search with ELSER](../../../solutions/search/vector/sparse-vector-elser.md) require a larger container with more than 1GB of memory. If you intend to use the {{ml}} capabilities, then start the container with this command:
+    {{ml-cap}} features such as [semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) require a larger container with more than 1GB of memory. If you intend to use the {{ml}} capabilities, then start the container with this command:
 
     ```sh
     docker run --name es01 --net elastic -p 9200:9200 -it -m 6GB -e "xpack.ml.use_auto_machine_memory_percent=true" docker.elastic.co/elasticsearch/elasticsearch:9.0.0-beta1
@@ -141,7 +141,7 @@ docker pull docker.elastic.co/elasticsearch/elasticsearch-wolfi:9.0.0-beta1
     docker run -e ENROLLMENT_TOKEN="<token>" --name es02 --net elastic -it -m 1GB docker.elastic.co/elasticsearch/elasticsearch:9.0.0-beta1
     ```
 
-3. Call the [cat nodes API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html) to verify the node was added to the cluster.
+3. Call the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to verify the node was added to the cluster.
 
     ```sh
     curl --cacert http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200/_cat/nodes
@@ -202,11 +202,11 @@ To remove the containers and their network, run:
 # Remove the Elastic network
 docker network rm elastic
 
-# Remove {es} containers
+# Remove {{es}} containers
 docker rm es01
 docker rm es02
 
-# Remove the {kib} container
+# Remove the {{kib}} container
 docker rm kib01
 ```
 

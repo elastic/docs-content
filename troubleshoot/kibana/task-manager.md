@@ -81,7 +81,7 @@ By analyzing the different sections of the output, you can evaluate different th
 
 Retrieve the latest monitored health stats of a {{kib}} instance Task Manager:
 
-```kibana
+```bash
 $ curl -X GET api/task_manager/_health
 ```
 
@@ -924,7 +924,7 @@ For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/
 Tasks are not running, and the server logs contain the following error message:
 
 ```txt
-[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in {es}
+[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in {{es}}
 ```
 
 **Solution**:

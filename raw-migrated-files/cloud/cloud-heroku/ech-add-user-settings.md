@@ -5,7 +5,7 @@ Change how {{es}} runs by providing your own user settings. Elasticsearch Add-On
 Elasticsearch Add-On for Heroku automatically rejects `elasticsearch.yml` settings that could break your cluster. For a list of supported settings, check [Supported {{es}} settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ech-es-elasticsearch-settings).
 
 ::::{warning}
-You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html). However, Elasticsearch Add-On for Heroku doesn’t reject unsafe setting changes made using this API. Use with caution.
+You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, Elasticsearch Add-On for Heroku doesn’t reject unsafe setting changes made using this API. Use with caution.
 ::::
 
 
@@ -35,7 +35,7 @@ Elasticsearch Add-On for Heroku supports the following `elasticsearch.yml` setti
 The following general settings are supported:
 
 $$$http-cors-settings$$$`http.cors.*`
-:   Enables cross-origin resource sharing (CORS) settings for the [HTTP module](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-http.html).
+:   Enables cross-origin resource sharing (CORS) settings for the [HTTP module](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html).
 
     ::::{note}
     If your use case depends on the ability to receive CORS requests and you have a cluster that was provisioned prior to January 25th 2019, you must manually set `http.cors.enabled` to `true` and allow a specific set of hosts with `http.cors.allow-origin`. Applying these changes in your Elasticsearch configuration  allows cross-origin resource sharing requests.
@@ -43,31 +43,31 @@ $$$http-cors-settings$$$`http.cors.*`
 
 
 `http.compression`
-:   Support for [HTTP compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-http.html) when possible (with Accept-Encoding). Defaults to `true`.
+:   Support for [HTTP compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) when possible (with Accept-Encoding). Defaults to `true`.
 
 `transport.compress`
-:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-transport.html) for node-to-node traffic.
+:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for node-to-node traffic.
 
 `transport.compression_scheme`
-:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-transport.html) for node-to-node traffic.
+:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for node-to-node traffic.
 
 `repositories.url.allowed_urls`
 :   Enables explicit allowing of [read-only URL repositories](../../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md).
 
 `reindex.remote.whitelist`
-:   Explicitly allows the set of hosts that can be [reindexed from remotely](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-from-remote). Expects a YAML array of `host:port` strings. Consists of a comma-delimited list of `host:port` entries. Defaults to `["\*.io:*", "\*.com:*"]`.
+:   Explicitly allows the set of hosts that can be [reindexed from remotely](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex). Expects a YAML array of `host:port` strings. Consists of a comma-delimited list of `host:port` entries. Defaults to `["\*.io:*", "\*.com:*"]`.
 
 `reindex.ssl.*`
-:   To learn more on how to configure reindex SSL user settings, check [configuring reindex SSL parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-ssl).
+:   To learn more on how to configure reindex SSL user settings, check [configuring reindex SSL parameters](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
 
 `script.painless.regex.enabled`
 :   Enables [regular expressions](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-walkthrough.html#modules-scripting-painless-regex) for the Painless scripting language.
 
 `action.auto_create_index`
-:   [Automatically create index](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation) if it doesn’t already exist.
+:   [Automatically create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) if it doesn’t already exist.
 
 `action.destructive_requires_name`
-:   When set to `true`, users must [specify the index name](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html#indices-delete-index) to delete an index. It’s not possible to delete _all or use wildcards.
+:   When set to `true`, users must [specify the index name](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete) to delete an index. It’s not possible to delete _all or use wildcards.
 
 `xpack.notification.webhook.additional_token_enabled`
 :   When set to `true`, {{es}} automatically sets a token which enables the bypassing of traffic filters for calls initiated by Watcher towards {{es}} or {{kib}}. The default is `false` and the feature is available starting with {{es}} version 8.7.1 and later.
@@ -197,16 +197,16 @@ The following search settings are supported:
 The following disk-based allocation settings are supported:
 
 `cluster.routing.allocation.disk.threshold_enabled`
-:   Enable or disable [disk allocation](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html) decider and defaults to `true`.
+:   Enable or disable [disk allocation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation) decider and defaults to `true`.
 
 `cluster.routing.allocation.disk.watermark.low`
-:   Configures [disk-based shard allocation’s low watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html).
+:   Configures [disk-based shard allocation’s low watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
 
 `cluster.routing.allocation.disk.watermark.high`
-:   Configures [disk-based shard allocation’s high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html).
+:   Configures [disk-based shard allocation’s high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
 
 `cluster.routing.allocation.disk.watermark.flood_stage`
-:   Configures [disk-based shard allocation’s flood_stage](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-allocator.html).
+:   Configures [disk-based shard allocation’s flood_stage](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
 
 ::::{tip}
 Remember to update user settings for alerts when performing a major version upgrade.

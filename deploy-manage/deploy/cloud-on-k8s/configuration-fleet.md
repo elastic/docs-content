@@ -216,7 +216,7 @@ roleRef:
 
 ## Deploy {{agent}} in secured clusters [k8s-elastic-agent-fleet-configuration-deploying-in-secured-clusters]
 
-To deploy {{agent}} in clusters with the Pod Security Policy admission controller enabled, or in [OpenShift](k8s-openshift-agent.md) clusters, you might need to grant additional permissions to the Service Account used by the {{agent}} Pods. Those Service Accounts must be bound to a Role or ClusterRole that has `use` permission for the required Pod Security Policy or Security Context Constraints. Different {{agent}} {integrations} might require different settings set in their PSP/[SCC](k8s-openshift-agent.md).
+To deploy {{agent}} in clusters with the Pod Security Policy admission controller enabled, or in [OpenShift](k8s-openshift-agent.md) clusters, you might need to grant additional permissions to the Service Account used by the {{agent}} Pods. Those Service Accounts must be bound to a Role or ClusterRole that has `use` permission for the required Pod Security Policy or Security Context Constraints. Different {{agent}} {{integrations}} might require different settings set in their PSP/[SCC](k8s-openshift-agent.md).
 
 
 ## Customize {{fleet-server}} Service [k8s-elastic-agent-fleet-configuration-customize-fleet-server-service]

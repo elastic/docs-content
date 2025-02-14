@@ -91,7 +91,7 @@ After using the dashboards to examine your data and confirm you’ve ingested al
 
 For host monitoring, the following capabilities and features are recommended:
 
-* In the [Infrastructure UI](https://www.elastic.co/guide/en/observability/current/analyze-metrics.html), analyze and compare data collected from your hosts. You can also:
+* In the [Infrastructure UI](https://www.elastic.co/guide/en/observability/current/monitor-infrastructure-and-hosts.html), analyze and compare data collected from your hosts. You can also:
 
     * [Detect anomalies](../../../solutions/observability/infra-and-hosts/detect-metric-anomalies.md) for memory usage and network traffic on hosts.
     * [Create alerts](../../../solutions/observability/incident-management/alerting.md) that notify you when an anomaly is detected or a metric exceeds a given value.
@@ -99,14 +99,14 @@ For host monitoring, the following capabilities and features are recommended:
 * In the [Logs Explorer](../../../solutions/observability/logs/logs-explorer.md), search and filter your log data, get information about the structure of log fields, and display your findings in a visualization. You can also:
 
     * [Monitor log data set quality](../../../solutions/observability/data-set-quality-monitoring.md) to find degraded documents.
-    * [Run a pattern analysis](../../../explore-analyze/machine-learning/aiops-labs.md#log-pattern-analysis) to find patterns in unstructured log messages.
+    * [Run a pattern analysis](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-pattern-analysis) to find patterns in unstructured log messages.
     * [Create alerts](../../../solutions/observability/incident-management/alerting.md) that notify you when an Observability data type reaches or exceeds a given value.
 
 * Use [machine learning](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md) to apply predictive analytics to your data:
 
     * [Detect anomalies](../../../explore-analyze/machine-learning/anomaly-detection.md) by comparing real-time and historical data from different sources to look for unusual, problematic patterns.
-    * [Analyze log spikes and drops](../../../explore-analyze/machine-learning/aiops-labs.md#log-rate-analysis).
-    * [Detect change points](../../../explore-analyze/machine-learning/aiops-labs.md#change-point-detection) in your time series data.
+    * [Analyze log spikes and drops](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#log-rate-analysis).
+    * [Detect change points](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) in your time series data.
 
 
 Refer to the [What is Elastic {{observability}}?](../../../solutions/observability/get-started/what-is-elastic-observability.md) for a description of other useful features.

@@ -51,7 +51,7 @@ Finally, you must create a {{ls}} configuration pipeline that listens for incomi
 
 1. Use the [Elastic Agent input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html) to configure {{ls}} to receive events from the APM Server. A minimal `input` config might look like this:
 
-    ```conf
+    ```json
     input {
       elastic_agent {
         port => 5044
@@ -61,7 +61,7 @@ Finally, you must create a {{ls}} configuration pipeline that listens for incomi
 
 2. Use the [{{es}} output plugin](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html) to send events to {{es}} for indexing. A minimal `output` config might look like this:
 
-    ```conf
+    ```json
     output {
       elasticsearch {
         data_stream => "true" <1>
@@ -77,7 +77,7 @@ Finally, you must create a {{ls}} configuration pipeline that listens for incomi
 
 Here’s what your basic {{ls}} configuration file will look like when we put everything together:
 
-```conf
+```json
 input {
   elastic_agent {
     port => 5044

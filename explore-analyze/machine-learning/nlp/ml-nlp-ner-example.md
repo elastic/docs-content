@@ -1,16 +1,15 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Named entity recognition"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-ner-example.html
 ---
 
-
-
 # Named entity recognition [ml-nlp-ner-example]
 
-
 You can use these instructions to deploy a [named entity recognition (NER)](ml-nlp-extract-info.md#ml-nlp-ner) model in {{es}}, test the model, and add it to an {{infer}} ingest pipeline. The model that is used in the example is publicly available on [HuggingFace](https://huggingface.co/).
-
 
 ## Requirements [ex-ner-requirements]
 
@@ -19,7 +18,6 @@ To follow along the process on this page, you must have:
 * an {{es}} Cloud cluster that is set up properly to use the {{ml-features}}. Refer to [Setup and security](../setting-up-machine-learning.md).
 * The [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated.
 * [Docker](https://docs.docker.com/get-docker/) installed.
-
 
 ## Deploy a NER model [ex-ner-deploy]
 
@@ -49,8 +47,7 @@ You need to provide an administrator username and its password and replace the `
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 
-Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/guide/en/kibana/current/ml-sync.html).
-
+Go to the **{{ml-app}} > Trained Models** page and synchronize your trained models. A warning message is displayed at the top of the page that says *"ML job and trained model synchronization required"*. Follow the link to *"Synchronize your jobs and trained models."* Then click **Synchronize**. You can also wait for the automatic synchronization that occurs in every hour, or use the [sync {{ml}} objects API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-ml).
 
 ## Test the NER model [ex-ner-test]
 
@@ -62,7 +59,7 @@ Deployed models can be evaluated in {{kib}} under **{{ml-app}}** > **Trained Mod
 :::
 
 ::::{dropdown} **Test the model by using the _infer API**
-You can also evaluate your models by using the [_infer API](https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-trained-model-deployment.html). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
+You can also evaluate your models by using the [_infer API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-infer-trained-model). In the following request, `text_field` is the field name where the model expects to find the input, as defined in the model configuration. By default, if the model was uploaded via Eland, the input field is `text_field`.
 
 ```js
 POST _ml/trained_models/elastic__distilbert-base-uncased-finetuned-conll03-english/_infer
@@ -112,13 +109,11 @@ The API returns a response similar to the following:
 
 ::::
 
-
 Using the example text "Elastic is headquartered in Mountain View, California.", the model finds three entities: an organization "Elastic", and two locations "Mountain View" and "California".
-
 
 ## Add the NER model to an {{infer}} ingest pipeline [ex-ner-ingest]
 
-You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest.md#upload-data-kibana). Give the new index the name `les-miserables` when uploading the file.
+You can perform bulk {{infer}} on documents as they are ingested by using an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) in your ingest pipeline. The novel *Les Misérables* by Victor Hugo is used as an example for {{infer}} in the following example. [Download](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/les-miserables-nd.json) the novel text split by paragraph as a JSON file, then upload it by using the [Data Visualizer](../../../manage-data/ingest/tools/upload-data-files.md). Give the new index the name `les-miserables` when uploading the file.
 
 Now create an ingest pipeline either in the [Stack management UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
 
@@ -187,7 +182,6 @@ POST _reindex
 
 1. The default batch size for reindexing is 1000. Reducing `size` to a smaller number makes the update of the reindexing process quicker which enables you to follow the progress closely and detect errors early.
 
-
 Take a random paragraph from the source document as an example:
 
 ```js
@@ -240,12 +234,11 @@ The request returns the document marked up with one identified person:
 (...)
 ```
 
-
 ## Visualize results [ex-ner-visual]
 
 You can create a tag cloud to visualize your data processed by the {{infer}} pipeline. A tag cloud is a visualization that scales words by the frequency at which they occur. It is a handy tool for viewing the entities found in the data.
 
-In {{kib}}, open **Stack management** > **{{data-sources-cap}}** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects), and create a new {{data-source}} from the `les-miserables-infer` index pattern.
+In {{kib}}, open **Stack management** > **{{data-sources-cap}}** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md), and create a new {{data-source}} from the `les-miserables-infer` index pattern.
 
 Open **Dashboard** and create a new dashboard. Select the **Aggregation based-type > Tag cloud** visualization. Choose the new {{data-source}} as the source.
 

@@ -76,7 +76,7 @@ Similarly, rules will be skipped if they can’t be modified by a bulk edit. For
         * **Add rule actions**: Add [rule actions](../../../solutions/security/detect-and-alert/create-detection-rule.md) on all selected rules. If you add multiple actions, you can specify an action frequency for each of them. To overwrite the frequency of existing actions select the option to **Overwrite all selected rules actions**.
 
             ::::{note}
-            Rule actions won’t run during a [maintenance window](../../../explore-analyze/alerts/kibana/maintenance-windows.md). They’ll resume running after the maintenance window ends.
+            Rule actions won’t run during a [maintenance window](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md). They’ll resume running after the maintenance window ends.
 
             ::::
 
@@ -140,7 +140,7 @@ Before manually running rules, make sure you properly understand and plan for ru
     ::::
 
 
-The manual run’s details are shown in the [Manual runs](../../../troubleshoot/security/detection-rules.md#manual-runs-table) table on the **Execution results** tab. Changes you make to the manual run or rule settings will display in the Manual runs table after the current run completes.
+The manual run’s details are shown in the [Manual runs](../../../solutions/security/detect-and-alert/monitor-rule-executions.md#manual-runs-table) table on the **Execution results** tab. Changes you make to the manual run or rule settings will display in the Manual runs table after the current run completes.
 
 ::::{note}
 Be mindful of the following:

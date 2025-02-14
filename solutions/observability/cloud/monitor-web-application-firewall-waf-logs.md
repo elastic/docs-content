@@ -17,7 +17,7 @@ You will go through the following steps:
 * Create a delivery stream in Amazon Data Firehose
 * Create a web Access Control List (ACL) to generate WAF logs
 * Set up logging to forward the logs to the {{stack}} using a Firehose stream
-* Visualize your WAF logs in {kib}
+* Visualize your WAF logs in {{kib}}
 
 
 ## Before you begin [firehose-waf-prerequisites]
@@ -35,7 +35,7 @@ Make sure the deployment is on AWS, because the Amazon Data Firehose delivery st
 
 ## Step 1: Install the AWS integration in {{kib}} [firehose-waf-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Browse the catalog to find the AWS integration.
 3. Navigate to the **Settings** tab and click **Install AWS assets**.
 

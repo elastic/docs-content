@@ -11,11 +11,11 @@ mapped_pages:
 
 In this section, you’ll learn how to monitor and analyze the CloudTrail logs you send to Elastic with Amazon Data Firehose. You will go through the following steps:
 
-* Install AWS integration in {kib}
+* Install AWS integration in {{kib}}
 * Export Cloudtrail events to CloudWatch
 * Set up a Firehose delivery stream
 * Set up a subscription filter to route Cloudtrail events to a delivery stream
-* Visualize your CloudTrail logs in {kib}
+* Visualize your CloudTrail logs in {{kib}}
 
 
 ## Before you begin [firehose-cloudtrail-prerequisites]
@@ -33,7 +33,7 @@ Make sure the deployment is on AWS, because the Amazon Data Firehose delivery st
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-cloudtrail-step-one]
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Browse the catalog to find the Amazon Data Firehose integration.
 3. Navigate to the **Settings** tab and click **Install Amazon Data Firehose assets**.
 

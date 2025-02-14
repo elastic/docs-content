@@ -5,11 +5,6 @@ mapped_pages:
 
 # Entity store [entity-store]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 ::::{admonition} Requirements
 To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity risk scoring requirements](entity-risk-scoring-requirements.md).
 
@@ -38,7 +33,7 @@ When the entity store is enabled, the following resources are generated for each
 
 To enable the entity store:
 
-1. Find **Entity Store** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Entity Store** page, turn the toggle on.
 
 Once you enable the entity store, the Entity Analytics dashboard displays the [**Entities**](../dashboards/entity-analytics-dashboard.md#entity-entities) section.
@@ -57,5 +52,5 @@ Clearing entity store data permanently deletes persisted user and host records, 
 
 To clear entity data:
 
-1. Find **Entity Store** in the navigation menu or by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Entity Store** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. On the **Entity Store** page, select **Clear**.

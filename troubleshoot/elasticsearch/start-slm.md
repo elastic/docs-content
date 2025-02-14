@@ -1,9 +1,13 @@
 ---
+navigation_title: Snapshot lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-slm.html
 ---
 
-# Start Snapshot Lifecycle Management [start-slm]
+% marciw consider moving out of troubleshooting and into how-tos
+% marciw or add troubleshooting info from elsewhere
+
+# Start snapshot lifecycle management [start-slm]
 
 Automatic snapshot lifecycle management is currently disabled. New backup snapshots will not be created automatically.
 
@@ -12,7 +16,7 @@ In order to start the snapshot lifecycle management service, follow these steps:
 :::::::{tab-set}
 
 ::::::{tab-item} Elasticsearch Service
-In order to start {{slm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html).
+In order to start {{slm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start).
 
 **Use {{kib}}**
 
@@ -30,7 +34,7 @@ In order to start {{slm}} we need to go to Kibana and execute the [start command
     :class: screenshot
     :::
 
-4. [Start](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html) {{slm}}:
+4. [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start) {{slm}}:
 
     ```console
     POST _slm/start
@@ -60,7 +64,7 @@ In order to start {{slm}} we need to go to Kibana and execute the [start command
 ::::::
 
 ::::::{tab-item} Self-managed
-[Start](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html) {{slm}}:
+[Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start) {{slm}}:
 
 ```console
 POST _slm/start

@@ -124,7 +124,7 @@ These features have been replaced by a new feature and are therefore not availab
 
     Data stream lifecycle is an optimized lifecycle tool that lets you focus on the most common lifecycle management needs, without unnecessary hardware-centric concepts like data tiers.
 
-* **Watcher** is not available, in favor of [**Alerts**](../../../explore-analyze/alerts/kibana.md#rules-alerts).
+* **Watcher** is not available, in favor of [**Alerts**](../../../explore-analyze/alerts-cases/alerts.md#rules-alerts).
 
     Kibana Alerts allows rich integrations across use cases like APM, metrics, security, and uptime. Prepackaged rule types simplify setup and hide the details of complex, domain-specific detections, while providing a consistent interface across Kibana.
 
@@ -145,7 +145,7 @@ The following features are planned for future support in all {{serverless-full}}
 The following {{es-serverless}} project-specific features are planned for future support:
 
 * [Behavioral Analytics](../../../solutions/search/site-or-app/behavioral-analytics.md)
-* [Search Applications](../../../solutions/search/applications.md)
+* [Search Applications](../../../solutions/search/search-applications.md)
 * Managed web crawler
 
     You can use the [self-managed web crawler](https://github.com/elastic/crawler) in the meantime.

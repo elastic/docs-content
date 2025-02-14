@@ -25,7 +25,7 @@ Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elast
 
 You’ll start with installing the Elastic GCP integration to add pre-built dashboards, ingest node configurations, and other assets that help you get the most of the GCP logs you ingest.
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for `gcp`.
 
     :::{image} ../../../images/observability-monitor-gcp-kibana-integrations.png
@@ -114,7 +114,7 @@ After creating a Pub/Sub topic and subscription, go to the **Dataflow Jobs** pag
 To create a job, click **Create Job From Template**. Set **Job name** as `auditlogs-stream` and select `Pub/Sub to Elasticsearch` from the **Dataflow template** dropdown menu:
 
 :::{image} ../../../images/observability-monitor-gcp-dataflow-pub-sub-elasticsearch.png
-:alt: GCP Dataflow Pub/Sub to {es}
+:alt: GCP Dataflow Pub/Sub to {{es}}
 :::
 
 Before running the job, fill in required parameters:

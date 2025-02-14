@@ -47,19 +47,19 @@ The Jenkins health dashboards provide insights on the build executions, the fail
 
 :::{image} ../../images/observability-ci-cd-overview.png
 :alt: CI/CD overview
-:title: Jenkins KPIs in Elastic {observability}
+:title: Jenkins KPIs in Elastic {{observability}}
 :class: screenshot
 :::
 
 :::{image} ../../images/observability-jenkins-kpis.png
 :alt: Jenkins KPIs
-:title: Jenkins Provisioning KPIs in Elastic {observability}
+:title: Jenkins Provisioning KPIs in Elastic {{observability}}
 :class: screenshot
 :::
 
 :::{image} ../../images/observability-jenkins-jvm-indicators.png
 :alt: Jenkins JVM health indicators
-:title: Jenkins JVM health indicators in Elastic {observability}
+:title: Jenkins JVM health indicators in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -74,7 +74,7 @@ In the following image, a Jenkins CI build failed, and its exceptions are report
 
 :::{image} ../../images/observability-jenkins-pipeline-build.png
 :alt: Jenkins pipeline builds
-:title: Jenkins pipeline build error in Elastic {observability}
+:title: Jenkins pipeline build error in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -82,13 +82,13 @@ The Errors overview screen provides a high-level view of the exceptions that CI 
 
 :::{image} ../../images/observability-jenkins-pipeline-errors.png
 :alt: Jenkins pipeline build errors
-:title: Jenkins jobs and pipelines errors in Elastic {observability}
+:title: Jenkins jobs and pipelines errors in Elastic {{observability}}
 :class: screenshot
 :::
 
 :::{image} ../../images/observability-concourse-ci-traces.png
 :alt: Concourse CI traces view
-:title: Concourse CI pipeline execution as a trace in Elastic {observability}
+:title: Concourse CI pipeline execution as a trace in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -108,7 +108,7 @@ The Applications Services view in Elastic {{observability}} provides a view of a
 
 :::{image} ../../images/observability-jenkins-servers.png
 :alt: Jenkins servers view
-:title: Jenkins servers in Elastic {observability}
+:title: Jenkins servers in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -116,7 +116,7 @@ The Service page provides more granular insights into your CI/CD workflows by br
 
 :::{image} ../../images/observability-jenkins-server.png
 :alt: Jenkins server view
-:title: A Jenkins server in Elastic {observability}
+:title: A Jenkins server in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -127,7 +127,7 @@ Once you’ve identified the pipeline you want to troubleshoot, you can drill do
 
 :::{image} ../../images/observability-jenkins-pipeline-overview.png
 :alt: Jenkins pipeline overview
-:title: Performance overview of a Jenkins pipeline in Elastic {observability}
+:title: Performance overview of a Jenkins pipeline in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -135,7 +135,7 @@ The pipelines and traditional jobs are instrumented automatically. If you spot a
 
 :::{image} ../../images/observability-jenkins-pipeline-trace.png
 :alt: Trace of a Jenkins pipeline build
-:title: A Jenkins pipeline build as a trace in Elastic {observability}
+:title: A Jenkins pipeline build as a trace in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -143,7 +143,7 @@ To investigate further, you can view the details of the build captured as labels
 
 :::{image} ../../images/observability-jenkins-pipeline-context.png
 :alt: Attributes of a Jenkins pipeline execution
-:title: Contextual attributes of a Jenkins pipeline execution in Elastic {observability}
+:title: Contextual attributes of a Jenkins pipeline execution in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -185,7 +185,7 @@ Visualizing logs both in Elastic and through Jenkins is recommended because it p
 The Jenkins OpenTelemetry Plugin provides pipeline log storage in {{es}} while enabling you to visualize the logs in {{kib}} and continue to display them through the Jenkins pipeline build console.
 
 :::{image} ../../images/observability-ci-cd-visualize-logs-kibana-and-jenkins-console.png
-:alt: Jenkins Console Output page displaying both log contents and a link to view logs in Elastic {observability}
+:alt: Jenkins Console Output page displaying both log contents and a link to view logs in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -202,7 +202,7 @@ This more advanced setup requires connecting the Jenkins Controller to {{es}} wi
 Visualizing logs exclusively in {{kib}} involves a simpler setup that doesn’t require access to {{es}} from the Jenkins Controller. This is because the Jenkins pipeline build console displays a hyperlink to the {{kib}} logs visualization screen instead of displaying the logs in the Jenkins UI.
 
 :::{image} ../../images/observability-ci-cd-visualize-logs-kibana-console.png
-:alt: Jenkins Console Output page with link to view logs in Elastic {observability}
+:alt: Jenkins Console Output page with link to view logs in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -291,21 +291,21 @@ For instance, you can follow the below steps:
 
 :::{image} ../../images/observability-jenkins-dashboard-import.png
 :alt: Import {{kib}} dashboard
-:title: Import dashboard in {kib}
+:title: Import dashboard in {{kib}}
 :class: screenshot
 :::
 
 * The new dashboard is now ready to be used:
 
 :::{image} ../../images/observability-jenkins-dashboard-ready.png
-:alt: Jenkins dashboard in {kib}
+:alt: Jenkins dashboard in {{kib}}
 :title: Jenkins dashboard in {{kib}} is ready
 :class: screenshot
 :::
 
 :::{image} ../../images/observability-jenkins-dashboard.png
 :alt: Jenkins dashboard
-:title: Jenkins dashboard in {kib}
+:title: Jenkins dashboard in {{kib}}
 :class: screenshot
 :::
 
@@ -459,7 +459,7 @@ make login build push
 
 :::{image} ../../images/observability-jenkins-makefile.png
 :alt: Jenkins build executing an instrumented Makefile
-:title: A Jenkins build executing a Makefile instrumented with the otel-cli in Elastic {observability}
+:title: A Jenkins build executing a Makefile instrumented with the otel-cli in Elastic {{observability}}
 :class: screenshot
 :::
 
@@ -505,7 +505,7 @@ Once Concourse CI tracing is configured, Concourse CI pipeline executions are re
 
 :::{image} ../../images/observability-jenkins-concourse.png
 :alt: Concourse CI pipeline execution
-:title: A Concourse CI pipeline execution in Elastic {observability}
+:title: A Concourse CI pipeline execution in Elastic {{observability}}
 :class: screenshot
 :::
 

@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Limitations"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-limitations.html
@@ -91,7 +94,7 @@ One of the counts associated with a {{ml}} job is `missing_field_count`, which i
 
 Since jobs analyze JSON data, the `missing_field_count` might be misleading. Missing fields might be expected due to the structure of the data and therefore do not generate poor results.
 
-For more information about `missing_field_count`, see the [get {{anomaly-job}} statistics API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html).
+For more information about `missing_field_count`, see the [get {{anomaly-job}} statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-job-stats).
 
 ### Security integration [_security_integration]
 
@@ -99,7 +102,7 @@ When the {{es}} {{security-features}} are enabled, a {{dfeed}} stores the roles 
 
 ### Job and {{dfeed}} APIs have a maximum search size [ml-result-size-limitations]
 
-In 6.6 and later releases, the [get jobs API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job.html) and the [get job statistics API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-job-stats.html) return a maximum of 10,000 jobs. Likewise, the [get {{dfeeds}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html) and the [get {{dfeed}} statistics API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html) return a maximum of 10,000 {{dfeeds}}.
+In 6.6 and later releases, the [get jobs API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-jobs) and the [get job statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-job-stats) return a maximum of 10,000 jobs. Likewise, the [get {{dfeeds}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-datafeeds) and the [get {{dfeed}} statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-datafeed-stats) return a maximum of 10,000 {{dfeeds}}.
 
 ### Forecast operational limitations [ml-forecast-limitations]
 
@@ -168,7 +171,7 @@ When the aggregation interval of the {{dfeed}} and the bucket span of the job do
 
 ### Calendars and filters are visible in all {{kib}} spaces [ml-space-limitations]
 
-[Spaces](../../../deploy-manage/manage-spaces.md) enable you to organize your {{anomaly-jobs}} in {{kib}} and to see only the jobs and other saved objects that belong to your space. However, this limited scope does not apply to [calendars](https://www.elastic.co/guide/en/machine-learning/current/ml-calendars.html) and [filters](https://www.elastic.co/guide/en/machine-learning/current/ml-rules.html); they are visible in all spaces.
+[Spaces](../../../deploy-manage/manage-spaces.md) enable you to organize your {{anomaly-jobs}} in {{kib}} and to see only the jobs and other saved objects that belong to your space. However, this limited scope does not apply to [calendars](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-calendars) and [filters](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-rules); they are visible in all spaces.
 
 ### Rollup indices are not supported in {{kib}} [ml-rollup-limitations]
 

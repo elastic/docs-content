@@ -36,7 +36,7 @@ For the `local` exporter, all setup occurs only on the elected master node. This
 
 The elected master node is the only node to set up resources for the `local` exporter. Therefore all other nodes wait for the resources to be set up before indexing any monitoring data from their own collectors. Each of these nodes logs a message indicating that they are waiting for the resources to be set up.
 
-One benefit of the `local` exporter is that it lives within the cluster and therefore no extra configuration is required when the cluster is secured with {{stack}} {security-features}. All operations, including indexing operations, that occur from a `local` exporter make use of the internal transport mechanisms within {{es}}. This behavior enables the exporter to be used without providing any user credentials when {{security-features}} are enabled.
+One benefit of the `local` exporter is that it lives within the cluster and therefore no extra configuration is required when the cluster is secured with {{stack}} {{security-features}}. All operations, including indexing operations, that occur from a `local` exporter make use of the internal transport mechanisms within {{es}}. This behavior enables the exporter to be used without providing any user credentials when {{security-features}} are enabled.
 
 For more information about the configuration options for the `local` exporter, see [Local exporter settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#local-exporter-settings).
 

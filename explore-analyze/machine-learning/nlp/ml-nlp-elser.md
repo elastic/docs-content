@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "ELSER"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-elser.html
@@ -6,7 +9,7 @@ mapped_pages:
 
 # ELSER [ml-nlp-elser]
 
-Elastic Learned Sparse EncodeR - or ELSER - is a retrieval model trained by Elastic that enables you to perform [semantic search](../../../solutions/search/vector/sparse-vector-elser.md) to retrieve more relevant search results. This search type provides you search results based on contextual meaning and user intent, rather than exact keyword matches.
+Elastic Learned Sparse EncodeR - or ELSER - is a retrieval model trained by Elastic that enables you to perform [semantic search](/solutions/search/semantic-search.md) to retrieve more relevant search results. This search type provides you search results based on contextual meaning and user intent, rather than exact keyword matches.
 
 ELSER is an out-of-domain model which means it does not require fine-tuning on your own data, making it adaptable for various use cases out of the box.
 
@@ -42,13 +45,13 @@ If you want to learn more about the ELSER V2 improvements, refer to [this blog p
 
 ### Upgrading to ELSER v2 [upgrade-elser-v2]
 
-ELSER v2 is not backward compatible. If you indexed your data with ELSER v1, you need to reindex it with an ingest pipeline referencing ELSER v2 to be able to use v2 for search. This [tutorial](../../../solutions/search/vector/sparse-vector-elser.md) shows you how to create an ingest pipeline with an {{infer}} processor that uses ELSER v2, and how to reindex your data through the pipeline.
+ELSER v2 is not backward compatible. If you indexed your data with ELSER v1, you need to reindex it with an ingest pipeline referencing ELSER v2 to be able to use v2 for search. This [tutorial](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md) shows you how to create an ingest pipeline with an {{infer}} processor that uses ELSER v2, and how to reindex your data through the pipeline.
 
 Additionally, the `elasticearch-labs` GitHub repository contains an interactive [Python notebook](https://github.com/elastic/elasticsearch-labs/blob/main/notebooks/model-upgrades/upgrading-index-to-use-elser.ipynb) that walks through upgrading an index to ELSER V2.
 
 ## Download and deploy ELSER [download-deploy-elser]
 
-The easiest and recommended way to download and deploy ELSER is to use the [{{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html).
+The easiest and recommended way to download and deploy ELSER is to use the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create an {{infer}} endpoint with the ELSER service by running the following API request:
@@ -120,7 +123,7 @@ Alternatively, you can download and deploy ELSER to an {{infer}} pipeline using 
 1. In {{kib}}, navigate to **Search** > **Indices**.
 2. Select the index from the list that has an {{infer}} pipeline in which you want to use ELSER.
 3. Navigate to the **Pipelines** tab.
-4. Under **{{ml-app}} {infer-cap} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
+4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-elser-v2-es.png
     :alt: Deploying ELSER in Elasticsearch
@@ -154,7 +157,7 @@ PUT _ml/trained_models/.elser_model_2
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
-3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-trained-model-deployment.html) with a delpoyment ID:
+3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
 
 ```console
 POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_search
@@ -226,7 +229,7 @@ You can use any HTTP service to deploy ELSER. This example uses the official Ngi
 
 6. Repeat step 5 on all master-eligible nodes.
 7. [Restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) the master-eligible nodes one by one.
-8. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}. ELSER can be found in the list of trained models.
+8. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. ELSER can be found in the list of trained models.
 9. Click the **Add trained model** button, select the ELSER model version you downloaded in step 1 and want to deploy, and click **Download**. The selected model will be downloaded from the HTTP/HTTPS server you configured.
 10. After the download is finished, start the deployment by clicking the **Start deployment** button.
 11. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.
@@ -252,7 +255,7 @@ For a file-based access, follow these steps:
 
 4. Repeat step 2 and step 3 on all master-eligible nodes.
 5. [Restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) the master-eligible nodes one by one.
-6. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}. ELSER can be found in the list of trained models.
+6. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. ELSER can be found in the list of trained models.
 7. Click the **Add trained model** button, select the ELSER model version you downloaded in step 1 and want to deploy and click **Download**. The selected model will be downloaded from the model directory where you put in step 2.
 8. After the download is finished, start the deployment by clicking the **Start deployment** button.
 9. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.
@@ -260,7 +263,7 @@ For a file-based access, follow these steps:
 
 ## Testing ELSER [_testing_elser]
 
-You can test the deployed model in {{kib}}. Navigate to **Model Management** > **Trained Models** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}. Locate the deployed ELSER model in the list of trained models, then select **Test model** from the Actions menu.
+You can test the deployed model in {{kib}}. Navigate to **Model Management** > **Trained Models** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. Locate the deployed ELSER model in the list of trained models, then select **Test model** from the Actions menu.
 
 You can use data from an existing index to test the model. Select the index, then a field of the index you want to test ELSER on. Provide a search query and click **Test**. Evaluating model recall is simpler when using a query related to the documents.
 
@@ -298,7 +301,7 @@ To gain the biggest value out of ELSER trained models, consider to follow this l
 ## Further reading [further-readings]
 
 * [Perform semantic search with `semantic_text` using the ELSER endpoint](../../../solutions/search/semantic-search/semantic-search-semantic-text.md)
-* [Perform semantic search with ELSER](../../../solutions/search/vector/sparse-vector-elser.md)
+* [Perform semantic search with ELSER](/solutions/search/semantic-search/semantic-search-elser-ingest-pipelines.md)
 
 ## Benchmark information [elser-benchmarks]
 

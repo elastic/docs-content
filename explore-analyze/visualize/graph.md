@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-graph.html
 ---
@@ -9,7 +12,7 @@ The {{graph-features}} enable you to discover how items in an {{es}} index are r
 
 For example, graph exploration could help you uncover website vulnerabilities that hackers are targeting so you can harden your website. Or, you might provide graph-based personalized recommendations to your e-commerce customers.
 
-The {{graph-features}} provide a simple, yet powerful [graph exploration API](https://www.elastic.co/guide/en/elasticsearch/reference/current/graph-explore-api.html), and an interactive graph visualization app for {{kib}}. Both work out of the box with existing {{es}} indices—you don’t need to store any additional data to use these features.
+The {{graph-features}} provide a simple, yet powerful [graph exploration API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-graph), and an interactive graph visualization app for {{kib}}. Both work out of the box with existing {{es}} indices—you don’t need to store any additional data to use these features.
 
 
 ## How Graph works [how-graph-works]
@@ -49,19 +52,20 @@ Use **Graph** to reveal the relationships in your data.
 
 2. Select the data source that you want to explore.
 
-    {{kib}} graphs the relationships between the top fields.
+   {{kib}} graphs the relationships between the top fields.
 
-    :::{image} ../../images/kibana-graph-url-connections.png
-    :alt: URL connections
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-graph-url-connections.png
+   :alt: URL connections
+   :class: screenshot
+   :::
 
 3. Add more fields, or click an existing field to edit, disable or deselect it.
 
-    :::{image} ../../images/kibana-graph-menu.png
-    :alt: menu for editing, disabling, or removing a field from the graph
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-graph-menu.png
+   :alt: menu for editing, disabling, or removing a field from the graph
+   :class: screenshot
+   :width: 50%
+   :::
 
 4. Enter a query to discover relationships between terms in the selected fields.
 
@@ -69,10 +73,11 @@ Use **Graph** to reveal the relationships in your data.
 
 5. To view more information about a relationship, click any connection or vertex.
 
-    :::{image} ../../images/kibana-graph-control-bar.png
-    :alt: Graph toolbar
-    :class: screenshot
-    :::
+   :::{image} ../../images/kibana-graph-control-bar.png
+   :alt: Graph toolbar
+   :class: screenshot
+   :width: 50%
+   :::
 
 6. Use the graph toolbar to display additional connections:
 

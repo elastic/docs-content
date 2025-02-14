@@ -1,6 +1,6 @@
 # Configure case settings [cases-manage-settings]
 
-To change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), then click **Settings**.
+To change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**.
 
 :::{image} ../../../images/security-cases-settings.png
 :alt: Shows the case settings page
@@ -24,13 +24,13 @@ To close cases when they are sent to an external system, select **Automatically 
 
 You can push {{elastic-sec}} cases to these third-party systems:
 
-* {sn-itsm}
-* {sn-sir}
+* {{sn-itsm}}
+* {{sn-sir}}
 * {{jira}} (including Jira Service Desk)
-* {ibm-r}
-* {swimlane}
-* {hive}
-* {webhook-cm}
+* {{ibm-r}}
+* {{swimlane}}
+* {{hive}}
+* {{webhook-cm}}
 
 To push cases, you need to create a connector, which stores the information required to interact with an external system. After you have created a connector, you can set {{elastic-sec}} cases to automatically close when they are sent to external systems.
 

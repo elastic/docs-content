@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: Save a search for reuse
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/save-open-search.html

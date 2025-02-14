@@ -1,9 +1,10 @@
 ---
+navigation_title: "APM Go Agent"
 mapped_pages:
   - https://www.elastic.co/guide/en/apm/agent/go/current/troubleshooting.html
 ---
 
-# APM Go Agent
+# Troubleshoot APM Go Agent
 
 Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! First, ensure your app is compatible with the agent’s [supported technologies](https://www.elastic.co/guide/en/apm/agent/go/current/supported-tech.html).
 

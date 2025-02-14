@@ -39,7 +39,7 @@ Along with each anomaly job and the node name, detected anomalies with a severit
 To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the Anomaly Explorer. You can also select **Actions** → **Show in Inventory** to view the host or Kubernetes pods Inventory page, filtered by the specific metric.
 
 ::::{note}
-These predefined {{anomaly-jobs}} use [custom rules](https://www.elastic.co/guide/en/machine-learning/current/ml-rules.html). To update the rules in the Anomaly Explorer, select **Actions** → **Configure rules**. The changes only take effect for new results. If you want to apply the changes to existing results, clone and rerun the job.
+These predefined {{anomaly-jobs}} use [custom rules](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-rules). To update the rules in the Anomaly Explorer, select **Actions** → **Configure rules**. The changes only take effect for new results. If you want to apply the changes to existing results, clone and rerun the job.
 
 ::::
 

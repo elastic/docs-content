@@ -1,9 +1,10 @@
 ---
+navigation_title: High CPU usage
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/high-cpu-usage.html
 ---
 
-# High CPU usage [high-cpu-usage]
+# Symptom: High CPU usage [high-cpu-usage]
 
 {{es}} uses [thread pools](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html) to manage CPU resources for concurrent operations. High CPU usage typically means one or more thread pools are running low.
 
@@ -22,7 +23,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 **Check CPU usage**
 
-You can check the CPU usage per node using the [cat nodes API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html):
+You can check the CPU usage per node using the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes):
 
 ```console
 GET _cat/nodes?v=true&s=cpu:desc
@@ -57,7 +58,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 :::::::
 **Check hot threads**
 
-If a node has high CPU usage, use the [nodes hot threads API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-hot-threads.html) to check for resource-intensive threads running on the node.
+If a node has high CPU usage, use the [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) to check for resource-intensive threads running on the node.
 
 ```console
 GET _nodes/hot_threads
@@ -76,11 +77,11 @@ Heavy indexing and search loads can deplete smaller thread pools. To better hand
 
 **Spread out bulk requests**
 
-While more efficient than individual requests, large [bulk indexing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) or [multi-search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) requests still require CPU resources. If possible, submit smaller requests and allow more time between them.
+While more efficient than individual requests, large [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) or [multi-search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch) requests still require CPU resources. If possible, submit smaller requests and allow more time between them.
 
 **Cancel long-running searches**
 
-Long-running searches can block threads in the `search` thread pool. To check for these searches, use the [task management API](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html).
+Long-running searches can block threads in the `search` thread pool. To check for these searches, use the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks).
 
 ```console
 GET _tasks?actions=*search&detailed
