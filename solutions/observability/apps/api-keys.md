@@ -114,7 +114,7 @@ You can now apply your newly created API keys in the configuration of each of yo
 * **iOS**: [`withApiKey`](https://www.elastic.co/guide/en/apm/agent/swift/current/configuration.html#withApiKey)
 * **Java agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-api-key)
 * **Node.js agent**: [`apiKey`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#api-key)
-* **PHP agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/configuration-reference.html#config-api-key)
+* **PHP agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-api-key)
 * **Python agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-api-key)
 * **Ruby agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-api-key)
 
@@ -245,7 +245,7 @@ It is also possible to create API keys using the {{es}} [create API key API](htt
 
 This example creates an API key named `java-002`:
 
-```kibana
+```bash
 POST /_security/api_key
 {
   "name": "java-002", <1>

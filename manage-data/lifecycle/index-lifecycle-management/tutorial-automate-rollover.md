@@ -26,7 +26,7 @@ To automate rollover and management of a data stream with {{ilm-init}}, you:
 3. [Verify indices are moving through the lifecycle phases](../index-lifecycle-management.md#ilm-gs-check-progress) as expected.
 
 ::::{important}
-When you enable {{ilm}} for {{beats}} or the {{ls}} {es} output plugin, lifecycle policies are set up automatically. You do not need to take any other actions. You can modify the default policies through [{{kib}} Management](tutorial-customize-built-in-policies.md) or the {{ilm-init}} APIs.
+When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, lifecycle policies are set up automatically. You do not need to take any other actions. You can modify the default policies through [{{kib}} Management](tutorial-customize-built-in-policies.md) or the {{ilm-init}} APIs.
 ::::
 
 

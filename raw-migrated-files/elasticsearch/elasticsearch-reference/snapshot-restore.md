@@ -25,7 +25,7 @@ By default, a snapshot of a cluster contains the cluster state, all regular data
 
 * [Persistent cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#cluster-setting-types)
 * [Index templates](../../../manage-data/data-store/templates.md)
-* [Legacy index templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-templates-v1.html)
+* [Legacy index templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-template)
 * [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md)
 * [{{ilm-init}} policies](../../../manage-data/lifecycle/index-lifecycle-management.md)
 * [Stored scripts](../../../explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts)
@@ -51,7 +51,7 @@ When restoring a data stream, if the target cluster does not have an index templ
 A feature state contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as {{es}} security or {{kib}}.
 
 ::::{tip}
-To retrieve a list of feature states, use the [Features API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-features-api.html).
+To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
 ::::
 
 
@@ -118,7 +118,7 @@ You can’t restore an index to an earlier version of {{es}}. For example, you c
 
 A compatible snapshot can contain indices created in an older incompatible version. For example, a snapshot of a 8.17 cluster can contain an index created in 6.8. Restoring the 6.8 index to an 9.0 cluster fails unless you can use the [archive functionality](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). Keep this in mind if you take a snapshot before upgrading a cluster.
 
-As a workaround, you can first restore the index to another cluster running the latest version of {{es}} that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-from-remote) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) is enabled.
+As a workaround, you can first restore the index to another cluster running the latest version of {{es}} that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) is enabled.
 
 Reindexing from remote can take significantly longer than restoring a snapshot. Before you start, test the reindex from remote process with a subset of the data to estimate your time requirements.
 

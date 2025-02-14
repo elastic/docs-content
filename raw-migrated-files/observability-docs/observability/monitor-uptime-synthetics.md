@@ -14,7 +14,7 @@ Synthetics periodically checks the status of your services and applications. Mon
 * [Browser monitors](../../../solutions/observability/apps/synthetic-monitoring.md#monitoring-synthetics)
 
 :::{image} ../../../images/observability-synthetics-monitor-page.png
-:alt: {{synthetics-app}} in {kib}
+:alt: {{synthetics-app}} in {{kib}}
 :class: screenshot
 :::
 

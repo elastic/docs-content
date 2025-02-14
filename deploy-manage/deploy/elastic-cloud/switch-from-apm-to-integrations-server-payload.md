@@ -12,7 +12,7 @@ This example shows how to use the Elasticsearch Service RESTful API to switch fr
 
 Given a deployment that is using an APM & Fleet Server with Elastic Stack version 8.0 or later, it is possible to start using Integrations Server instead by updating the deployment with an Integrations Server payload. Switching from APM & Fleet Server to Integrations Server in this way ensures that the endpoints and credentials currently used by APM Server and Fleet Server remain the same after the switch.
 
-In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](https://www.elastic.co/guide/en/apm/guide/current/apm-integration-upgrade-steps-ess.html).
+In order to start using the Integrations Server payload, you first need to enable the APM integration for Elastic Agent by following the steps in [Switch to the Elastic APM integration](/solutions/observability/apps/switch-an-elastic-cloud-cluster-to-apm-integration.md).
 
 
 ### API request example [ec_api_request_example_3]
@@ -376,7 +376,7 @@ Beginning with Elastic Stack version 8.0, [Integrations Server](manage-integrati
 ::::
 
 
-You have the option to add a combined [Application Performance Monitoring (APM) Server](https://www.elastic.co/guide/en/apm/guide/current/apm-overview.html) and [Fleet Server](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the Elasticsearch cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
+You have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the Elasticsearch cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 
 As part of provisioning, the APM Server and Fleet Server are already configured to work with Elasticsearch and Kibana. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
 

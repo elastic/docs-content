@@ -44,14 +44,14 @@ Now, deployments in those environments will be able to configure trust with depl
     * Specific deployments - Specify which of the existing deployments you want to trust in the ECE environment. The full Elasticsearch cluster ID must be entered for each remote cluster. The Elasticsearch `Cluster ID` can be found in the deployment overview page under **Applications**.
 
 6. Select **Create trust** to complete the configuration.
-7. Configure the corresponding deployments of the ECE environment to [trust this deployment](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-enable-ccs.html). You will only be able to connect 2 deployments successfully when both of them trust each other.
+7. Configure the corresponding deployments of the ECE environment to [trust this deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html). You will only be able to connect 2 deployments successfully when both of them trust each other.
 
 Note that the environment ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
 
 ::::{dropdown} **Using the API**
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/Platform_-_Configuration_-_Trust_relationships.html). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/get-trust-relationships.html):
+Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/guide/en/cloud-enterprise/current/Platform_-_Configuration_-_Trust_relationships.html). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/guide/en/cloud-enterprise/current/get-trust-relationships.html):
 
 ```sh
 curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443//api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false

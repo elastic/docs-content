@@ -34,10 +34,10 @@ Features of this approach:
 
 Refer to the relevant agent’s documentation for more information and examples:
 
-* .NET: [Filter API](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/public-api.html#filter-api).
-* Node.js: [`addFilter()`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/agent-api.html#apm-add-filter).
-* Python: [custom processors](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/sanitizing-data.html).
-* Ruby: [`add_filter()`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/api.html#api-agent-add-filter).
+* .NET: [Filter API](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html#filter-api).
+* Node.js: [`addFilter()`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-add-filter).
+* Python: [custom processors](https://www.elastic.co/guide/en/apm/agent/python/current/sanitizing-data.html).
+* Ruby: [`add_filter()`](https://www.elastic.co/guide/en/apm/agent/ruby/current/api.html#api-agent-add-filter).
 
 
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial] 

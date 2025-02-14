@@ -10,7 +10,7 @@ mapped_pages:
 This package contains both free and subscription features. [Start a 30-day trial](https://www.elastic.co/guide/en/elasticsearch/reference/current/license-settings.html) to try out all of the features.
 
 ::::{note}
-On Windows the {{es}} {ml} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows it can be installed via Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you cannot install the Microsoft Universal C Runtime library you can still use the rest of {{es}} if you disable the {{ml}} feature.
+On Windows the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows it can be installed via Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you cannot install the Microsoft Universal C Runtime library you can still use the rest of {{es}} if you disable the {{ml}} feature.
 ::::
 
 

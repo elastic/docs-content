@@ -18,7 +18,7 @@ In this tutorial, you’ll learn how to:
 
 * Enable AWS VPC flow logs to be sent to your S3 bucket
 * Create an SQS queue and notifications for VPC flow logs
-* Install and configure the Elastic AWS integration from {kib}
+* Install and configure the Elastic AWS integration from {{kib}}
 * Visualize and analyze AWS logs in the Elastic Stack
 
 

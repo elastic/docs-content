@@ -17,7 +17,7 @@ If you are looking for a user interface for {{es}} and your data, head on over t
 
 To find out what the ELASTICSEARCH_URL is for your {{es}} cluster, grep on the output of the `heroku config` command for your app:
 
-```term
+```bash
 heroku config --app MY_APP | grep ELASTICSEARCH_URL
 ELASTICSEARCH_URL: https://74f176887fdef36bb51e6e37nnnnnnnn.us-east-1.aws.found.io
 ```
@@ -31,7 +31,7 @@ To use these examples, you also need to have the [curl](http://curl.haxx.se/) co
 
 To index a document into {{es}}, `POST` your document:
 
-```term
+```bash
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc -XPOST -H 'Content-Type: application/json' -d '{
     "title": "One", "tags": ["ruby"]
 }'
@@ -48,7 +48,7 @@ To achieve the best possible performance, use the bulk API.
 
 To index some additional documents with the bulk API:
 
-```term
+```bash
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/_bulk -XPOST -H 'Content-Type: application/json' -d '
 {"index": {}}
 {"title": "Two", "tags": ["ruby", "python"] }
@@ -72,7 +72,7 @@ To update an existing document in {{es}}, `POST` the updated document to `http:/
 
 For example, to update the last document indexed from the previous example with `"_id":"06NqhW4BnhCSymaqFHQn"`:
 
-```term
+```bash
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/06NqhW4BnhCSymaqFHQn -XPOST -H 'Content-Type: application/json' -d '{
     "title": "Four updated", "tags": ["ruby", "php", "python"]
 }'
@@ -85,7 +85,7 @@ The JSON response shows that the version counter for the document got incremente
 
 To take a look at a specific document you indexed, here the last document we updated with the ID `0KNPhW4BnhCSymaq_3SI`:
 
-```term
+```bash
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/06NqhW4BnhCSymaqFHQn
 ```
 
@@ -96,14 +96,14 @@ This request didn’t include `GET`, as the method is implied if you don’t spe
 
 You issue search requests for documents with one of these {{es}} endpoints:
 
-```term
+```bash
 https://ELASTICSEARCH_URL/_search
 https://ELASTICSEARCH_URL/INDEX_NAME/_search
 ```
 
 Either a `GET` or a `POST` request with some URI search parameters works, or omit the method to default to `GET` request:
 
-```term
+```bash
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/_search?q=title:T*
 ```
 
@@ -111,7 +111,7 @@ For an explanation of the allowed parameters, check [URI Search](https://www.ela
 
 To make {{es}} return a more human readable JSON response, add `?pretty=true` to the request:
 
-```term
+```bash
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/_search?pretty=true -H 'Content-Type: application/json' -d '{
     "query": {
         "query_string": {"query": "*"}
@@ -130,13 +130,13 @@ You delete documents from {{es}} by sending `DELETE` requests.
 
 To delete a single document by ID from an earlier example:
 
-```term
+```bash
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index/_doc/06NqhW4BnhCSymaqFHQn -XDELETE
 ```
 
 To delete a whole index, here `my_index`:
 
-```term
+```bash
 curl -u USER:PASSWORD https://ELASTICSEARCH_URL/my_index -XDELETE
 ```
 

@@ -202,11 +202,11 @@ To remove the containers and their network, run:
 # Remove the Elastic network
 docker network rm elastic
 
-# Remove {es} containers
+# Remove {{es}} containers
 docker rm es01
 docker rm es02
 
-# Remove the {kib} container
+# Remove the {{kib}} container
 docker rm kib01
 ```
 

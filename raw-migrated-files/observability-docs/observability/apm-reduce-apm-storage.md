@@ -16,7 +16,7 @@ See [Transaction sampling](../../../solutions/observability/apps/transaction-sam
 
 In some cases, APM agents may collect large amounts of very similar or identical spans in a transaction. These repeated, similar spans often don’t provide added benefit, especially if they are of very short duration. Span compression takes these similar spans and compresses them into a single span-- retaining important information but reducing processing and storage overhead.
 
-See [Span compression](https://www.elastic.co/guide/en/observability/current/apm-data-model-spans.html#apm-spans-span-compression) to learn more.
+See [Span compression](/solutions/observability/apps/spans.md#apm-spans-span-compression) to learn more.
 
 
 ## Reduce collected stack trace information [apm-reduce-stacktrace]
@@ -46,7 +46,7 @@ Index lifecycle management enables you to automate how you want to manage your i
 
 ### Delete data matching a query [apm-delete-data-query]
 
-You can delete all APM documents matching a specific query with the [Delete By Query API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html). For example, to delete all documents with a given `service.name`, use the following request:
+You can delete all APM documents matching a specific query with the [Delete By Query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query). For example, to delete all documents with a given `service.name`, use the following request:
 
 ```console
 POST /.ds-*-apm*/_delete_by_query
@@ -73,7 +73,7 @@ To open **Index Management**, find **Stack Management*** in the main menu or use
 
 You might want to update documents that are already indexed. For example, if you your service name was set incorrectly.
 
-To do this, you can use the [Update By Query API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html). To rename a service, send the following request:
+To do this, you can use the [Update By Query API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query). To rename a service, send the following request:
 
 ```console
 POST /.ds-*-apm*/_update_by_query?expand_wildcards=all

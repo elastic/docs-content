@@ -40,10 +40,10 @@ There are some additional requirements for specific features:
 
 ## Third-party collectors mapped to ECS [security-requirements-overview-third-party-collectors-mapped-to-ecs] 
 
-The [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) defines a common set of fields to be used for storing event data in Elasticsearch. ECS helps users normalize their event data to better analyze, visualize, and correlate the data represented in their events. {{elastic-sec}} can ingest and normalize events from any ECS-compliant data source.
+The [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current) defines a common set of fields to be used for storing event data in Elasticsearch. ECS helps users normalize their event data to better analyze, visualize, and correlate the data represented in their events. {{elastic-sec}} can ingest and normalize events from any ECS-compliant data source.
 
 ::::{important} 
-{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/{{ecs_version}}). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [{{elastic-sec}} ECS field reference](https://www.elastic.co/guide/en/serverless/current/security-siem-field-reference.html) lists ECS fields used in {{elastic-sec}}.
+{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [{{elastic-sec}} ECS field reference](https://www.elastic.co/guide/en/serverless/current/security-siem-field-reference.html) lists ECS fields used in {{elastic-sec}}.
 
 ::::
 

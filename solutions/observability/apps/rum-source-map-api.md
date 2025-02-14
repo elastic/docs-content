@@ -91,7 +91,7 @@ The user accessing this endpoint requires `All` Kibana privileges for the APM an
 
 The following example uploads a source map for a service named `foo` and a service version of `1.0.0`:
 
-```curl
+```bash
 curl -X POST "http://localhost:5601/api/apm/sourcemaps" \
 -H 'Content-Type: multipart/form-data' \
 -H 'kbn-xsrf: true' \
@@ -146,7 +146,7 @@ The user accessing this endpoint requires `Read` or `All` Kibana privileges for 
 
 The following example requests all uploaded source maps:
 
-```curl
+```bash
 curl -X GET "http://localhost:5601/api/apm/sourcemaps" \
 -H 'Content-Type: application/json' \
 -H 'kbn-xsrf: true' \
@@ -218,7 +218,7 @@ The user accessing this endpoint requires `All` Kibana privileges for the APM an
 
 The following example deletes a source map with an id of `apm:foo-1.0.0-644fd5a9`:
 
-```curl
+```bash
 curl -X DELETE "http://localhost:5601/api/apm/sourcemaps/apm:foo-1.0.0-644fd5a9" \
 -H 'Content-Type: application/json' \
 -H 'kbn-xsrf: true' \

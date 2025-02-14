@@ -64,7 +64,7 @@ These additional options are available for malware protection:
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {filename}` syntax.
+Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {{filename}}` syntax.
 ::::
 
 
@@ -111,7 +111,7 @@ When ransomware protection is enabled, canary files placed in targeted locations
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {filename}` syntax.
+Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {{filename}}` syntax.
 ::::
 
 
@@ -135,7 +135,7 @@ Memory threat protection levels are:
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {rule}` syntax.
+Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {{rule}}` syntax.
 ::::
 
 
@@ -166,7 +166,7 @@ Reputation service requires an active [Platinum or Enterprise subscription](http
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {rule}` syntax.
+Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {{rule}}` syntax.
 ::::
 
 
