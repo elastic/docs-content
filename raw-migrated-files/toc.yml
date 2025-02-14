@@ -73,7 +73,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-manage-integrations-server.md
       - file: cloud/cloud-enterprise/ece-manage-kibana-settings.md
       - file: cloud/cloud-enterprise/ece-manage-kibana.md
-      - file: cloud/cloud-enterprise/ece-migrate-index-management.md
       - file: cloud/cloud-enterprise/ece-monitoring-deployments.md
       - file: cloud/cloud-enterprise/ece-password-reset-elastic.md
       - file: cloud/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md
@@ -200,7 +199,6 @@ toc:
       - file: cloud/cloud/ec-manage-enterprise-search-settings.md
       - file: cloud/cloud/ec-manage-kibana-settings.md
       - file: cloud/cloud/ec-metrics-memory-pressure.md
-      - file: cloud/cloud/ec-migrate-index-management.md
       - file: cloud/cloud/ec-monitoring-setup.md
       - file: cloud/cloud/ec-monitoring.md
       - file: cloud/cloud/ec-password-reset.md
