@@ -796,7 +796,6 @@ toc:
       - file: security-docs/security/data-quality-dash.md
       - file: security-docs/security/data-views-in-sec.md
       - file: security-docs/security/deploy-elastic-endpoint.md
-      - file: security-docs/security/deploy-with-mdm.md
       - file: security-docs/security/detection-engine-overview.md
       - file: security-docs/security/detection-entity-dashboard.md
       - file: security-docs/security/detection-response-dashboard.md
