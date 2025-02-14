@@ -28,7 +28,7 @@ $ ./bin/elasticsearch-sql-cli https://sql_user:strongpassword@some.server:9200
 
 Once the CLI is running you can use any [query](sql-spec.md) that Elasticsearch supports:
 
-```sqlcli
+```sql
 sql> SELECT * FROM library WHERE page_count > 500 ORDER BY page_count DESC;
      author      |        name        |  page_count   | release_date
 -----------------+--------------------+---------------+---------------
@@ -61,7 +61,7 @@ Apart from SQL queries, CLI can also execute some specific commands:
 `allow_partial_search_results = <boolean>` (default `false`)
 :   If `true`, returns partial results if there are shard request timeouts or [shard failures](../../../deploy-manage/distributed-architecture/reading-and-writing-documents.md#shard-failures). If `false`, returns an error with no partial results.
 
-```sqlcli
+```sql
 sql> allow_partial_search_results = true;
 allow_partial_search_results set to true
 ```
@@ -69,7 +69,7 @@ allow_partial_search_results set to true
 `fetch_size = <number>` (default `1000`)
 :   Allows to change the size of fetches for query execution. Each fetch is delimited by fetch separator (if explicitly set).
 
-```sqlcli
+```sql
 sql> fetch_size = 2000;
 fetch size set to 2000
 ```
@@ -77,7 +77,7 @@ fetch size set to 2000
 `fetch_separator = <string>` (empty string by default)
 :   Allows to change the separator string between fetches.
 
-```sqlcli
+```sql
 sql> fetch_separator = "---------------------";
 fetch separator set to "---------------------"
 ```
@@ -85,7 +85,7 @@ fetch separator set to "---------------------"
 `lenient = <boolean>` (default `false`)
 :   If `false`, Elasticsearch SQL returns an error for fields containing [array values](https://www.elastic.co/guide/en/elasticsearch/reference/current/array.html). If `true`, Elasticsearch SQL returns the first value from the array with no guarantee of consistent results.
 
-```sqlcli
+```sql
 sql> lenient = true;
 lenient set to true
 ```
@@ -93,7 +93,7 @@ lenient set to true
 `info`
 :   Returns server information.
 
-```sqlcli
+```sql
 sql> info;
 Node:mynode Cluster:elasticsearch Version:8.3
 ```
@@ -101,7 +101,7 @@ Node:mynode Cluster:elasticsearch Version:8.3
 `exit`
 :   Closes the CLI.
 
-```sqlcli
+```sql
 sql> exit;
 Bye!
 ```
@@ -109,14 +109,14 @@ Bye!
 `cls`
 :   Clears the screen.
 
-```sqlcli
+```sql
 sql> cls;
 ```
 
 `logo`
 :   Prints Elastic logo.
 
-```sqlcli
+```sql
 sql> logo;
 
                        asticElasticE

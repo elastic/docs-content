@@ -357,7 +357,7 @@ agent.startTransaction('my-service-b-transaction', { childOf: traceparent }) <2>
 
 ::::::{tab-item} PHP
 1. Receive the distributed tracing data on the server side.
-2. Begin a new transaction using the agent’s public API. For example, use [`ElasticApm::beginCurrentTransaction`](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/public-api.html#api-elasticapm-class-begin-current-transaction) and pass the received distributed tracing data (serialized as string) as a parameter. This will create a new transaction as a child of the incoming trace context.
+2. Begin a new transaction using the agent’s public API. For example, use [`ElasticApm::beginCurrentTransaction`](https://www.elastic.co/guide/en/apm/agent/php/current/public-api.html#api-elasticapm-class-begin-current-transaction) and pass the received distributed tracing data (serialized as string) as a parameter. This will create a new transaction as a child of the incoming trace context.
 3. Don’t forget to eventually end the transaction on the server side.
 
 Example:

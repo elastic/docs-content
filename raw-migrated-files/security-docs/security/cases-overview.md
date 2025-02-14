@@ -4,12 +4,12 @@ Collect and share information about security issues by opening a case in {{elast
 
 You can also send cases to these external systems by [configuring external connectors](../../../solutions/security/investigate/configure-case-settings.md#cases-ui-integrations):
 
-* {sn-itsm}
-* {sn-sir}
+* {{sn-itsm}}
+* {{sn-sir}}
 * {{jira}} (including Jira Service Desk)
-* {ibm-r}
-* {swimlane}
-* {webhook-cm}
+* {{ibm-r}}
+* {{swimlane}}
+* {{webhook-cm}}
 
 :::{image} ../../../images/security-cases-home-page.png
 :alt: Case UI Home

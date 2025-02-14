@@ -13,7 +13,7 @@ These remote clusters could be:
 
 * Another {{es}} cluster of your ECE installation
 * An {{es}} cluster in a remote ECE installation
-* An {{es}} cluster hosted on {ecloud}
+* An {{es}} cluster hosted on {{ecloud}}
 * Any other self-managed {{es}} cluster
 
 

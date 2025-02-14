@@ -98,7 +98,7 @@ toc:
       - file: ingest/sample-data.md
       - file: ingest/transform-enrich.md
         children:
-          - file: ingest/transform-enrich/ingest-pipelines-serverless.md 
+          - file: ingest/transform-enrich/ingest-pipelines-serverless.md
           - file: ingest/transform-enrich/ingest-pipelines.md
             children:
               - file: ingest/transform-enrich/example-parse-logs.md
@@ -138,6 +138,7 @@ toc:
           - file: lifecycle/data-stream/tutorial-update-existing-data-stream.md
           - file: lifecycle/data-stream/tutorial-data-stream-retention.md
           - file: lifecycle/data-stream/tutorial-migrate-ilm-managed-data-stream-to-data-stream-lifecycle.md
+      - file: lifecycle/curator.md
       - file: lifecycle/rollup.md
         children:
           - file: lifecycle/rollup/getting-started-with-rollups.md
@@ -145,7 +146,6 @@ toc:
           - file: lifecycle/rollup/rollup-aggregation-limitations.md
           - file: lifecycle/rollup/rollup-search-limitations.md
           - file: lifecycle/rollup/migrating-from-rollup-to-downsampling.md
-      - file: lifecycle/curator.md
   - file: migrate.md
     children:
       - file: migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md

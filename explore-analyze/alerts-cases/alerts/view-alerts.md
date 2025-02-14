@@ -18,7 +18,7 @@ You can manage the alerts for each rule in **{{stack-manage-app}}** > **{{rules-
 :::
 
 ::::{note}
-You must have the appropriate {{kib}} {alert-features} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup.md#alerting-security).
+You must have the appropriate {{kib}} {{alert-features}} and index privileges to view alerts. Refer to [Alerting security requirements](alerting-setup.md#alerting-security).
 
 ::::
 

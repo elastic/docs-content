@@ -9,7 +9,7 @@ Rollups will be removed in a future version. Please [migrate](../../../manage-da
 
 Keeping historical data around for analysis is extremely useful but often avoided due to the financial cost of archiving massive amounts of data. Retention periods are thus driven by financial realities rather than by the usefulness of extensive historical data.
 
-The {{stack}} {rollup-features} provide a means to summarize and store historical data so that it can still be used for analysis, but at a fraction of the storage cost of raw data.
+The {{stack}} {{rollup-features}} provide a means to summarize and store historical data so that it can still be used for analysis, but at a fraction of the storage cost of raw data.
 
 * [Overview](../../../manage-data/lifecycle/rollup.md)
 * [Getting started](../../../manage-data/lifecycle/rollup/getting-started-with-rollups.md)

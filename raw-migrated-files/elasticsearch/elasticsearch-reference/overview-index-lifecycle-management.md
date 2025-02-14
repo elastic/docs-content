@@ -11,7 +11,7 @@ Index lifecycle policies can trigger actions such as:
 
 * **Rollover**: Creates a new write index when the current one reaches a certain size, number of docs, or age.
 * **Shrink**: Reduces the number of primary shards in an index.
-* **Force merge**: Triggers a [force merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) to reduce the number of segments in an index’s shards.
+* **Force merge**: Triggers a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to reduce the number of segments in an index’s shards.
 * **Delete**: Permanently remove an index, including all of its data and metadata.
 
 {{ilm-init}} makes it easier to manage indices in hot-warm-cold architectures, which are common when you’re working with time series data such as logs and metrics.

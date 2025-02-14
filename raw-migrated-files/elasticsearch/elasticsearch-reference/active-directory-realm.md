@@ -1,6 +1,6 @@
 # Active Directory user authentication [active-directory-realm]
 
-You can configure {{stack}} {security-features} to communicate with Active Directory to authenticate users. See [Configuring an Active Directory realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#ad-realm-configuration).
+You can configure {{stack}} {{security-features}} to communicate with Active Directory to authenticate users. See [Configuring an Active Directory realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#ad-realm-configuration).
 
 The {{security-features}} use LDAP to communicate with Active Directory, so `active_directory` realms are similar to [`ldap` realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md). Like LDAP directories, Active Directory stores users and groups hierarchically. The directory’s hierarchy is built from containers such as the *organizational unit* (`ou`), *organization* (`o`), and *domain component* (`dc`).
 
@@ -124,7 +124,7 @@ To integrate with Active Directory, you configure an `active_directory` realm an
 
     Since with the `active_directory` realm the users are managed externally in the Active Directory server, the expectation is that their roles are managed there as well. In fact, Active Directory supports the notion of groups, which often represent user roles for different systems in the organization.
 
-    The `active_directory` realm enables you to map Active Directory users to roles via their Active Directory groups or other metadata. This role mapping can be configured via the [role-mapping APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-role-mapping-apis) or by using a file stored on each node. When a user authenticates against an Active Directory realm, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
+    The `active_directory` realm enables you to map Active Directory users to roles via their Active Directory groups or other metadata. This role mapping can be configured via the [role-mapping APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) or by using a file stored on each node. When a user authenticates against an Active Directory realm, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
 
     Within a mapping definition, you specify groups using their distinguished names. For example, the following mapping configuration maps the Active Directory `admins` group to both the `monitoring` and `user` roles, maps the `users` group to the `user` role and maps the `John Doe` user to the `user` role.
 
@@ -199,7 +199,7 @@ When a user is authenticated via an Active Directory realm, the following proper
 | `ldap_dn` | The distinguished name of the user. |
 | `ldap_groups` | The distinguished name of each of the groups that were                        resolved for the user (regardless of whether those                        groups were mapped to a role). |
 
-This metadata is returned in the [authenticate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html) and can be used with [templated queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) in roles.
+This metadata is returned in the [authenticate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) and can be used with [templated queries](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#templating-role-query) in roles.
 
 Additional metadata can be extracted from the Active Directory server by configuring the `metadata` setting on the Active Directory realm.
 

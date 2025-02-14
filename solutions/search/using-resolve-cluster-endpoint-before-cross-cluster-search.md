@@ -113,10 +113,10 @@ GET /_resolve/cluster/not-present,clust*:my-index*,oldcluster:*?ignore_unavailab
 ```
 
 1. The local cluster has no index called `not_present`. Searching against it using the specified `ignore_unavailable=false` param will return a "no such index" error. Other types of errors can show up here as well, such as security permission errors when the user does not have authorization to search the specified index.
-2. The `cluster_one` remote cluster has no indices that match the pattern `my-index*`. There may be no indices that match the pattern or the index could be closed. (You can check this by using the [resolve index](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-resolve-index-api.html) API.)
+2. The `cluster_one` remote cluster has no indices that match the pattern `my-index*`. There may be no indices that match the pattern or the index could be closed. (You can check this by using the [resolve index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index) API.)
 3. The `cluster_two` remote cluster is not connected (the attempt to connect failed). Since this cluster is marked as `skip_unavailable=false`, you should probably exclude this cluster from the search by adding `-cluster_two:*` to the search index expression.
 4. For `cluster_three`, the error message indicates that this remote cluster did not respond within the 5-second timeout window specified, so it is also marked as not connected.
-5. The `oldcluster` remote cluster shows that it has matching indices, but no version information is included. This indicates that the cluster version predates the introduction of the `_resolve/cluster` API in 8.13.0., so you may want to exclude it from your {{ccs}}. (Note: the endpoint was able to tell there were matching indices because it fell back to using the [resolve index](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-resolve-index-api.html) API.)
+5. The `oldcluster` remote cluster shows that it has matching indices, but no version information is included. This indicates that the cluster version predates the introduction of the `_resolve/cluster` API in 8.13.0., so you may want to exclude it from your {{ccs}}. (Note: the endpoint was able to tell there were matching indices because it fell back to using the [resolve index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index) API.)
 
 
 
