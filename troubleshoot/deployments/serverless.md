@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
 ---
 
-# Serverless [general-serverless-status]
+# Check Serverless status and get updates [general-serverless-status]
 
 Serverless projects run on cloud platforms, which may undergo changes in availability. When availability changes, Elastic makes sure to provide you with a current service status.
 

@@ -1,10 +1,11 @@
 ---
-navgiation_title: Index lifecycle management errors
+navigation_title: "Index lifecycle management errors"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-error-handling.html
 ---
 
-% marciw consolidate ILM topics
+% TODO restructure ILM and SLM dtopics
+% TODO dropdowns or break it up
 
 # Fix index lifecycle management errors [index-lifecycle-error-handling]
 

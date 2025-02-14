@@ -49,12 +49,8 @@ toc:
               - file: elasticsearch/diagnosing-invalid-repositories.md
           - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
-
-      - file: elasticsearch/lifecycle-management.md
-        children: 
-        - file: elasticsearch/start-ilm.md
-        - file: elasticsearch/start-slm.md
-        - file: elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md
+      - file: elasticsearch/start-ilm.md
+      - file: elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md
       - file: elasticsearch/elasticsearch-reference/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md
@@ -127,7 +123,6 @@ toc:
           - file: deployments/cloud-enterprise/troubleshooting-container-engines.md
           - file: deployments/cloud-enterprise/run-ece-diagnostics-tool.md
           - file: deployments/cloud-enterprise/ask-for-help.md
-          - file: deployments/cloud-enterprise/finding-deployments-finding-problems.md
           - file: deployments/cloud-enterprise/heap-dumps.md
           - file: deployments/cloud-enterprise/thread-dumps.md
       - file: deployments/cloud-on-k8s/kubernetes.md
@@ -159,6 +154,7 @@ toc:
               - file: ingest/logstash/kafka.md
               - file: ingest/logstash/azure-event-hub.md
           - file: ingest/logstash/health-report-pipelines.md
+          - file: ingest/logstash/contribute.md
       - file: ingest/fleet/fleet-elastic-agent.md
         children:
           - file: ingest/fleet/common-problems.md

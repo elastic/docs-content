@@ -50,34 +50,3 @@ To view the {{kib}} status page, use the status endpoint. For example, `localhos
 
 For JSON-formatted server status details, use the `localhost:5601/api/status` API endpoint.
 
-=======
-
-## Troubleshoot {{kib}} UI error [not-ready]
-
-Troubleshoot the `Kibana Server is not Ready yet` error.
-
-1. From within a {{kib}} node, confirm the connection to {{es}}:
-
-    ```sh
-    curl -XGET elasticsearch_ip_or_hostname:9200/
-    ```
-
-2. Guarantee the health of the three {{kib}}-backing indices.  All indices must appear and display `status:green` and `status:open`:
-
-    ```sh
-    curl -XGET elasticsearch_ip_or_hostname:9200/_cat/indices/.kibana,.kibana_task_manager,.kibana_security_session?v=true
-    ```
-
-    These {{kib}}-backing indices must also not have [index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) flagging `read_only_allow_delete` or `write` [index blocks](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html).
-
-3. [Shut down all {{kib}} nodes](../../deploy-manage/maintenance/start-stop-services/start-stop-kibana.md).
-4. Choose any {{kib}} node, then update the config to set the [debug logging](../../deploy-manage/monitor/logging-configuration/kibana-log-settings-examples.md#change-overall-log-level).
-5. [Start the node](../../deploy-manage/maintenance/start-stop-services/start-stop-kibana.md), then check the start-up debug logs for `ERROR` messages or other start-up issues.
-
-    For example:
-
-    * When {{kib}} is unable to connect to a healthy {{es}} cluster, errors like `master_not_discovered_exception` or `unable to revive connection` or `license is not available` errors appear.
-    * When one or more {{kib}}-backing indices are unhealthy, the `index_not_green_timeout` error appears.
-
-
-You can find a Kibana health troubleshooting walkthrough in [this blog](https://www.elastic.co/blog/troubleshooting-kibana-health) or in [this video](https://www.youtube.com/watch?v=AlgGYcpGvOA).
