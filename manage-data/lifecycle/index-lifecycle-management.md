@@ -19,27 +19,11 @@ mapped_urls:
 % - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-lifecycle-management.md
 % - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
 % - [x] ./raw-migrated-files/docs-content/serverless/elasticsearch-differences.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-configure-index-management.md
+% - [x] ./raw-migrated-files/cloud/cloud/ec-configure-index-management.md
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-migrate-index-management.md
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-migrate-index-management.md
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ilm-gs-alias-bootstrap$$$
-
-$$$manage-time-series-data-without-data-streams$$$
-
-$$$ilm-gs-create-policy$$$
-
-$$$ilm-gs-apply-policy$$$
-
-$$$ilm-gs-create-the-data-stream$$$
-
-$$$ilm-gs-check-progress$$$
-
-$$$ilm-gs-alias-apply-policy$$$
-
-$$$ilm-gs-alias-check-progress$$$
 
 # Index lifecycle management
 
@@ -65,8 +49,7 @@ Data stream lifecycle is an optimized lifecycle tool that lets you focus on the 
 To use {{ilm-init}}, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
 ::::
 
-
-## Trigger actions
+## Actions
 
 {{ilm-init}} policies can trigger actions like:
 
@@ -96,7 +79,13 @@ For example, if you are indexing metrics data from a fleet of ATMs into Elastics
 
 ## Create and manage {{ilm-init}} policies
 
-You can create and manage index lifecycle policies through [{{kib}} Management](/manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) or the [{{ilm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-ilm).
+You can create and manage index lifecycle policies through [{{kib}} Management](/manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) or the [{{ilm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/v8/group/endpoint-ilm). For more details on creating and managing index lifecycle policies refer to:
+
+* [Configure a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
+* [Update a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/policy-updates.md)
+* [Start and stop index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md)
+* [Restore a managed data stream or index](/manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
+* [Customize built-in policies](/manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md)
 
 Default {{ilm}} policies are created automatically when you use {{agent}}, {{beats}}, or the {{ls}} {{es}} output plugin to send data to the {{stack}}.
 
@@ -105,3 +94,11 @@ Default {{ilm}} policies are created automatically when you use {{agent}}, {{bea
 ::::{tip}
 To automatically back up your indices and manage snapshots, use [snapshot lifecycle policies](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm).
 ::::
+
+## Migrate to {{ilm-init}}
+
+For existing hot-warm deployments that are currently using index curation, migrating to ILM gives you more fine-grained control over the lifecycle of each index. Read more in:
+
+* [Manage existing indices](/manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)
+* [Migrate to index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/migrate-index-management.md)
+* [Migrate index allocation filters to node roles](/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md)

@@ -1,9 +1,15 @@
-# Migrate to index lifecycle management [ec-migrate-index-management]
+---
+mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-index-management.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-configure-index-management.html
+  - https://www.elastic.co/guide/en/cloud/current/ec-migrate-index-management.html
+---
+
+# Migrate to index lifecycle management
 
 ::::{important}
 Index curation is deprecated. Any deployments using index curation are prompted to migrate to ILM.
 ::::
-
 
 The index lifecycle management (ILM) feature of the {{stack}} provides an integrated and streamlined way to manage time-based data, making it easier to follow best practices for managing your indices. Compared to index curation, migrating to ILM gives you more fine-grained control over the lifecycle of each index.
 
@@ -32,6 +38,10 @@ To configure ILM Migration in the console:
 2. From the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
+
+3. Near the top of the deployment overview, you should get a message to migrate from index curation to index lifecycle management (ILM) along with a **Start migration** button.
+4. Select which index curation pattern you wish to migrate.
+5. Set the ILM policy name for each data view (formerly *index pattern*).
 :::
 
 ::::
