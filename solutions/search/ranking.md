@@ -45,7 +45,7 @@ When using the following advanced re-ranking pipelines, first-stage retrieval me
 
 #### Semantic re-ranking [re-ranking-overview-semantic] 
 
-[*Semantic re-ranking*](ranking/semantic-reranking.md) uses machine learning models to reorder search results based on their semantic similarity to a query. Models can be hosted directly in your {{es}} cluster, or you can use [inference endpoints](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html) to call models provided by third-party services. Semantic re-ranking enables out-of-the-box semantic search capabilities on existing full-text search indices.
+[*Semantic re-ranking*](ranking/semantic-reranking.md) uses machine learning models to reorder search results based on their semantic similarity to a query. Models can be hosted directly in your {{es}} cluster, or you can use [inference endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) to call models provided by third-party services. Semantic re-ranking enables out-of-the-box semantic search capabilities on existing full-text search indices.
 
 
 #### Learning to Rank (LTR) [re-ranking-overview-ltr] 

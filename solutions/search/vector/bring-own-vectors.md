@@ -82,7 +82,7 @@ PUT /amazon-reviews/_doc/1
 
 ### Bulk index multiple documents [_bulk_index_multiple_documents] 
 
-In a production scenario, you’ll want to index many documents at once using the [`_bulk` endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html).
+In a production scenario, you’ll want to index many documents at once using the [`_bulk` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk).
 
 Here’s an example of indexing multiple documents in a single `_bulk` request.
 
@@ -101,7 +101,7 @@ POST /_bulk
 
 ## Step 3: Search documents with embeddings [bring-your-own-vectors-search-documents] 
 
-Now you can query these document vectors using a [`knn` retriever](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#knn-retriever). `knn` is a type of vector search, which finds the `k` most similar documents to a query vector. Here we’re simply using a raw vector for the query text, for demonstration purposes.
+Now you can query these document vectors using a [`knn` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever). `knn` is a type of vector search, which finds the `k` most similar documents to a query vector. Here we’re simply using a raw vector for the query text, for demonstration purposes.
 
 ```console
 POST /amazon-reviews/_search

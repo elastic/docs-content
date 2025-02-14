@@ -30,5 +30,5 @@ If your license expires, your subscription level reverts to Basic and you will n
 
 Licenses are provided as a *JSON* file and have an effective date and an expiration date. You cannot install a new license before its effective date. License updates take effect immediately and do not require restarting {{es}}.
 
-You can update your license from **Stack Management > License Management** or through the [update license API](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-license.html).
+You can update your license from **Stack Management > License Management** or through the [update license API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post).
 

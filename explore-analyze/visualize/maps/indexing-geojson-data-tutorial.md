@@ -11,7 +11,7 @@ mapped_pages:
 In this tutorial, you’ll build a customized map that shows the flight path between two airports, and the lightning hot spots on that route. You’ll learn to:
 
 * Import GeoJSON files into Kibana
-* Index the files in {es}
+* Index the files in {{es}}
 * Display the data in a multi-layer map
 
 

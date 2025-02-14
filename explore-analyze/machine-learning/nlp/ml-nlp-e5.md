@@ -25,7 +25,7 @@ Enabling trained model autoscaling for your E5 deployment is recommended. Refer 
 
 ## Download and deploy E5 [download-deploy-e5]
 
-The easiest and recommended way to download and deploy E5 is to use the [{{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html).
+The easiest and recommended way to download and deploy E5 is to use the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create an {{infer}} endpoint with the `elasticsearch` service by running the following API request:
@@ -91,7 +91,7 @@ Alternatively, you can download and deploy the E5 model to an {{infer}} pipeline
 1. In {{kib}}, navigate to **Search** > **Indices**.
 2. Select the index from the list that has an {{infer}} pipeline in which you want to use E5.
 3. Navigate to the **Pipelines** tab.
-4. Under **{{ml-app}} {infer-cap} Pipelines**, click the **Deploy** button in the **Improve your results with E5** section to begin downloading the E5 model. This may take a few minutes depending on your network.
+4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button in the **Improve your results with E5** section to begin downloading the E5 model. This may take a few minutes depending on your network.
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-e5-es.png
     :alt: Deploying E5 in Elasticsearch
@@ -127,7 +127,7 @@ PUT _ml/trained_models/.multilingual-e5-small
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
-3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-trained-model-deployment.html) with a delpoyment ID:
+3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
 
 ```console
 POST _ml/trained_models/.multilingual-e5-small/deployment/_start?deployment_id=for_search

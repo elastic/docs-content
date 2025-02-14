@@ -60,7 +60,7 @@ The **Add agent** flyout has two options: **Enroll in {{fleet}}** and **Run stan
 2. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step.
 
     :::{image} ../../../images/observability-kibana-agent-flyout.png
-    :alt: Add agent flyout in {kib}
+    :alt: Add agent flyout in {{kib}}
     :class: screenshot
     :::
 

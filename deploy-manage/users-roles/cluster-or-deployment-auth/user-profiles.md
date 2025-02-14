@@ -37,20 +37,20 @@ For use cases where one individual can authenticate against multiple realms, you
 
 ## Create and manage user profiles [_create_and_manage_user_profiles]
 
-To create a new user profile or update an existing one, use the [activate user profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-activate-user-profile.html). When you submit a request, {{es}} attempts to locate an existing profile document for the specified user. If one doesn’t exist, {{es}} creates a new profile document.
+To create a new user profile or update an existing one, use the [activate user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-activate-user-profile). When you submit a request, {{es}} attempts to locate an existing profile document for the specified user. If one doesn’t exist, {{es}} creates a new profile document.
 
-In either case, the profile document captures the user’s `full_name`, `email`, `roles`, and `realms`, and also includes the profile unique ID and timestamp of the operation. You can retrieve a user profile with the [get user profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user-profile.html) by including the profile’s unique ID (`uid`).
+In either case, the profile document captures the user’s `full_name`, `email`, `roles`, and `realms`, and also includes the profile unique ID and timestamp of the operation. You can retrieve a user profile with the [get user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile) by including the profile’s unique ID (`uid`).
 
-In addition to the user’s basic information, you can add data to a profile document with the [update user profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-user-profile-data.html). For example, you can add user-specific preferences as part of the profile data.
+In addition to the user’s basic information, you can add data to a profile document with the [update user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-user-profile-data). For example, you can add user-specific preferences as part of the profile data.
 
-Use the [suggest user profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-suggest-user-profile.html) to retrieve profiles that match given criteria. This API is designed to support user-suggestions, in collaboration with features such as those found in {{kib}}. However, the suggest user profile API is not intended to provide a general-purpose search API.
+Use the [suggest user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-suggest-user-profiles) to retrieve profiles that match given criteria. This API is designed to support user-suggestions, in collaboration with features such as those found in {{kib}}. However, the suggest user profile API is not intended to provide a general-purpose search API.
 
-Lastly, you can use the [has privileges API for user profiles](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges-user-profile.html) to check the privileges of multiple users by specifying their profiles' unique IDs. This can be used in conjunction with the suggest user profile API in order to restrict the suggestions only to users that have the necessary permissions to actually perform the action in the context.
+Lastly, you can use the [has privileges API for user profiles](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-has-privileges-user-profile) to check the privileges of multiple users by specifying their profiles' unique IDs. This can be used in conjunction with the suggest user profile API in order to restrict the suggestions only to users that have the necessary permissions to actually perform the action in the context.
 
 
 ## Limitations [_limitations_10]
 
-* Creating a new user profile requires a user’s authentication details (`username` and `password` or its [OAuth2 access token](token-based-authentication-services.md)). This means that a user must authenticate at least one time to create a user profile. Users who have never authenticated to {{kib}} (or another profile-aware application) won’t have a user profile, and the [suggest user profile API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-suggest-user-profile.html) won’t return any results for those users.
+* Creating a new user profile requires a user’s authentication details (`username` and `password` or its [OAuth2 access token](token-based-authentication-services.md)). This means that a user must authenticate at least one time to create a user profile. Users who have never authenticated to {{kib}} (or another profile-aware application) won’t have a user profile, and the [suggest user profile API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-suggest-user-profiles) won’t return any results for those users.
 * User profiles are meant for interactive users, such as a human user who interacts with {{kib}}. Therefore, user profiles don’t support API keys or [service accounts](service-accounts.md).
 
     ::::{note} 

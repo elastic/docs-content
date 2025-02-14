@@ -72,7 +72,7 @@ To override these variables, create a drop-in unit file in the `/etc/systemd/sys
 
 For example a file with the following content placed in `/etc/systemd/system/apm-server.service.d/debug.conf` would override `BEAT_LOG_OPTS` to enable debug for {{es}} output.
 
-```systemd
+```text
 [Service]
 Environment="BEAT_LOG_OPTS=-d elasticsearch"
 ```
@@ -100,7 +100,7 @@ APM Server will only start if the configuration file is owned by the user runnin
 
 You may encounter the following errors if your configuration file fails these checks:
 
-```systemd
+```text
 Exiting: error loading config file: config file ("/etc/apm-server/apm-server.yml")
 must be owned by the user identifier (uid=1000) or root
 ```
@@ -109,7 +109,7 @@ To correct this problem you can change the ownership of the configuration file w
 
 You can also make root the config owner, although this is not recommended: `sudo chown root:root /etc/apm-server/apm-server.yml`.
 
-```systemd
+```text
 Exiting: error loading config file: config file ("/etc/apm-server/apm-server.yml")
 can only be writable by the owner but the permissions are "-rw-rw-r--"
 (to fix the permissions use: 'chmod go-w /etc/apm-server/apm-server.yml')

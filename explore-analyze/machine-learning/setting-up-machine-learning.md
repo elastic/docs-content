@@ -11,7 +11,7 @@ mapped_pages:
 
 ## Requirements overview [requirements-overview]
 
-To use the {{stack}} {ml-features}, you must have:
+To use the {{stack}} {{ml-features}}, you must have:
 
 * the [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated
 * `xpack.ml.enabled` set to its default value of `true` on every node in the cluster (refer to [{{ml-cap}} settings in {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html))
@@ -69,7 +69,7 @@ Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also gran
 In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
 
 :::{image} ../../images/machine-learning-spaces.jpg
-:alt: Manage spaces in {kib}
+:alt: Manage spaces in {{kib}}
 :class: screenshot
 :::
 

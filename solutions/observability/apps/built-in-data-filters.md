@@ -24,21 +24,21 @@ The default list of sanitized fields attempts to target common field names for d
 
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
-* Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-sanitize-field-names)
-* Java: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-sanitize-field-names)
-* .NET: [`sanitizeFieldNames`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-core.html#config-sanitize-field-names)
-* Node.js: [`sanitizeFieldNames`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#sanitize-field-names)
-* Python: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-sanitize-field-names)
-* Ruby: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-sanitize-field-names)
+* Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-sanitize-field-names)
+* Java: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-sanitize-field-names)
+* .NET: [`sanitizeFieldNames`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-sanitize-field-names)
+* Node.js: [`sanitizeFieldNames`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#sanitize-field-names)
+* Python: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-sanitize-field-names)
+* Ruby: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-sanitize-field-names)
 
 Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](apm-agent-central-configuration.md):
 
-* Go: [`ELASTIC_APM_CAPTURE_HEADERS`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-capture-headers)
-* Java: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-capture-headers)
-* .NET: [`CaptureHeaders`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-http.html#config-capture-headers)
-* Node.js: [`captureHeaders`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#capture-headers)
-* Python: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-capture-headers)
-* Ruby: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-capture-headers)
+* Go: [`ELASTIC_APM_CAPTURE_HEADERS`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-capture-headers)
+* Java: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-capture-headers)
+* .NET: [`CaptureHeaders`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-http.html#config-capture-headers)
+* Node.js: [`captureHeaders`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#capture-headers)
+* Python: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-capture-headers)
+* Ruby: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-capture-headers)
 
 
 ## HTTP bodies [apm-filters-http-body]
@@ -47,12 +47,12 @@ By default, the body of HTTP requests is not recorded. Request bodies often cont
 
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
-* Go: [`ELASTIC_APM_CAPTURE_BODY`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-capture-body)
-* Java: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-capture-body)
-* .NET: [`CaptureBody`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-http.html#config-capture-body)
-* Node.js: [`captureBody`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#capture-body)
-* Python: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-capture-body)
-* Ruby: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-capture-body)
+* Go: [`ELASTIC_APM_CAPTURE_BODY`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-capture-body)
+* Java: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-capture-body)
+* .NET: [`CaptureBody`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-http.html#config-capture-body)
+* Node.js: [`captureBody`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#capture-body)
+* Python: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-capture-body)
+* Ruby: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-capture-body)
 
 
 ## Personal data [apm-filters-personal-data]
@@ -67,7 +67,7 @@ The capturing of this data can be turned off by setting **Capture personal data*
 
 ## Real user monitoring data [apm-filters-real-user-data]
 
-Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/configuration.html#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
+Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/configuration.html#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
 
 | Disable | Configuration value |
 | --- | --- |
@@ -91,5 +91,5 @@ Certain agents offer additional filtering and obfuscating options:
 
 **Agent configuration options**
 
-* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#capture-exceptions).
-* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-reporter.html#config-include-process-args).
+* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#capture-exceptions).
+* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-include-process-args).

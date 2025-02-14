@@ -5,11 +5,6 @@ mapped_pages:
 
 # Entity store [entity-store]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
-
 ::::{admonition} Requirements
 To use the entity store, you must have the appropriate privileges. For more information, refer to [Entity risk scoring requirements](entity-risk-scoring-requirements.md).
 

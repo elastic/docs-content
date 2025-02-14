@@ -21,7 +21,7 @@ You can tell which {{data-source}} is active by clicking the **{{data-source-cap
 
 To learn how to modify the default **Security Default Data View**, refer to [Update default {{elastic-sec}} indices](../../../solutions/security/get-started/configure-advanced-settings.md#update-sec-indices).
 
-To learn how to modify, create, or delete another {{data-source}} refer to [{{kib}} {data-sources-cap}](../../../explore-analyze/find-and-organize/data-views.md).
+To learn how to modify, create, or delete another {{data-source}} refer to [{{kib}} {{data-sources-cap}}](../../../explore-analyze/find-and-organize/data-views.md).
 
 You can also temporarily modify the active {{data-source}} from the **{{data-source-cap}}** menu by clicking **Advanced options**, then adding or removing index patterns.
 

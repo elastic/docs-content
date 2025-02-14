@@ -15,7 +15,7 @@ When monitoring [using {{metricbeat}} 7](../stack-monitoring/collecting-monitori
 * `.monitoring-{{product}}-7-mb-{{date}}`, when using {{metricbeat}} 7.
 * `.monitoring-{{product}}-7-{{date}}`, when using internal collection.
 
-The settings and mappings for these indices are determined by [legacy index templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-templates-v1.html) named `.monitoring-{{product}}`. You can retrieve these templates in {{kib}} by navigating to **Stack Management** > **Index Management** > **Index Templates**, or by using the {{es}} `_template` API:
+The settings and mappings for these indices are determined by [legacy index templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-template) named `.monitoring-{{product}}`. You can retrieve these templates in {{kib}} by navigating to **Stack Management** > **Index Management** > **Index Templates**, or by using the {{es}} `_template` API:
 
 ```console
 GET /_template/.monitoring-*

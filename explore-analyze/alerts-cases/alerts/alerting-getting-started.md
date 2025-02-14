@@ -108,13 +108,13 @@ A rule consists of conditions, actions, and a schedule. When conditions are met,
 
 ## Differences from {{watcher}} [alerting-concepts-differences]
 
-[{{watcher}}](../../../explore-analyze/alerts-cases/watcher.md) and the {{kib}} {alert-features} are both used to detect conditions and can trigger actions in response, but they are completely independent alerting systems.
+[{{watcher}}](../../../explore-analyze/alerts-cases/watcher.md) and the {{kib}} {{alert-features}} are both used to detect conditions and can trigger actions in response, but they are completely independent alerting systems.
 
 This section will clarify some of the important differences in the function and intent of the two systems.
 
 Functionally, the {{alert-features}} differ in that:
 
-* Scheduled checks are run on {{kib}} instead of {es}
+* Scheduled checks are run on {{kib}} instead of {{es}}
 * {{kib}} [rules hide the details of detecting conditions](../../../explore-analyze/alerts-cases/alerts/alerting-getting-started.md#alerting-concepts-conditions) through rule types, whereas watches provide low-level control over inputs, conditions, and transformations.
 * {{kib}} rules track and persist the state of each detected condition through alerts. This makes it possible to mute and throttle individual alerts, and detect changes in state such as resolution.
 * Actions are linked to alerts. Actions are fired for each occurrence of a detected condition, rather than for the entire rule.

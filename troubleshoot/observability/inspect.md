@@ -8,7 +8,7 @@ mapped_pages:
 The **Inspect** view in {{kib}} allows you to view information about all requests that were made to collect the data displayed on the current page.
 
 :::{image} ../../images/observability-inspect-flyout.png
-:alt: Inspector flyout in the {uptime-app}
+:alt: Inspector flyout in the {{uptime-app}}
 :class: screenshot
 :::
 
