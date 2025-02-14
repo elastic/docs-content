@@ -17,7 +17,7 @@ Most options in this section are supported by all APM Server deployment methods.
 ::::
 
 
-The [Real User Monitoring (RUM) agent](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/index.html) captures user interactions with clients such as web browsers. These interactions are sent as events to the APM Server. Because the RUM agent runs on the client side, the connection between agent and server is unauthenticated. As a security precaution, RUM is therefore disabled by default.
+The [Real User Monitoring (RUM) agent](https://www.elastic.co/guide/en/apm/agent/rum-js/current/index.html) captures user interactions with clients such as web browsers. These interactions are sent as events to the APM Server. Because the RUM agent runs on the client side, the connection between agent and server is unauthenticated. As a security precaution, RUM is therefore disabled by default.
 
 :::::::{tab-set}
 
@@ -53,7 +53,7 @@ Configure and customize Fleet-managed APM settings directly in {{kib}}:
 ::::::
 
 :::::::
-In addition, if APM Server is deployed in an origin different than the page’s origin, you will need to configure [Cross-Origin Resource Sharing (CORS)](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/configuring-cors.html) in the Agent.
+In addition, if APM Server is deployed in an origin different than the page’s origin, you will need to configure [Cross-Origin Resource Sharing (CORS)](https://www.elastic.co/guide/en/apm/agent/rum-js/current/configuring-cors.html) in the Agent.
 
 
 ## Configuration reference [apm-enable-rum-support]

@@ -5,7 +5,7 @@ Change how {{es}} runs by providing your own user settings. Elasticsearch Servic
 Elasticsearch Service automatically rejects `elasticsearch.yml` settings that could break your cluster. For a list of supported settings, check [Supported {{es}} settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ec-es-elasticsearch-settings).
 
 ::::{warning}
-You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html). However, Elasticsearch Service doesn’t reject unsafe setting changes made using this API. Use with caution.
+You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, Elasticsearch Service doesn’t reject unsafe setting changes made using this API. Use with caution.
 ::::
 
 
@@ -55,19 +55,19 @@ $$$http-cors-settings$$$`http.cors.*`
 :   Enables explicit allowing of [read-only URL repositories](../../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md).
 
 `reindex.remote.whitelist`
-:   Explicitly allows the set of hosts that can be [reindexed from remotely](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-from-remote). Expects a YAML array of `host:port` strings. Consists of a comma-delimited list of `host:port` entries. Defaults to `["\*.io:*", "\*.com:*"]`.
+:   Explicitly allows the set of hosts that can be [reindexed from remotely](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex). Expects a YAML array of `host:port` strings. Consists of a comma-delimited list of `host:port` entries. Defaults to `["\*.io:*", "\*.com:*"]`.
 
 `reindex.ssl.*`
-:   To learn more on how to configure reindex SSL user settings, check [configuring reindex SSL parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-ssl).
+:   To learn more on how to configure reindex SSL user settings, check [configuring reindex SSL parameters](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
 
 `script.painless.regex.enabled`
 :   Enables [regular expressions](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-walkthrough.html#modules-scripting-painless-regex) for the Painless scripting language.
 
 `action.auto_create_index`
-:   [Automatically create index](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation) if it doesn’t already exist.
+:   [Automatically create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) if it doesn’t already exist.
 
 `action.destructive_requires_name`
-:   When set to `true`, users must [specify the index name](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html#indices-delete-index) to delete an index. It’s not possible to delete _all or use wildcards.
+:   When set to `true`, users must [specify the index name](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete) to delete an index. It’s not possible to delete _all or use wildcards.
 
 `xpack.notification.webhook.additional_token_enabled`
 :   When set to `true`, {{es}} automatically sets a token which enables the bypassing of traffic filters for calls initiated by Watcher towards {{es}} or {{kib}}. The default is `false` and the feature is available starting with {{es}} version 8.7.1 and later.

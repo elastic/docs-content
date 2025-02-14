@@ -34,7 +34,7 @@ In the {{synthetics-app}}:
 3. Define parameters.
 
 :::{image} ../../../images/observability-synthetics-params-secrets-kibana-define.png
-:alt: Global parameters tab on the Synthetics Settings page in {kib}
+:alt: Global parameters tab on the Synthetics Settings page in {{kib}}
 :class: screenshot
 :::
 

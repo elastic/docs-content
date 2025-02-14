@@ -6,7 +6,7 @@ mapped_pages:
 # Elastic Agent to Logstash to Kafka to Kafka ES Sink to Elasticsearch: Kafka as middleware message queue [agent-kafka-essink]
 
 :::{image} ../../../images/ingest-ls-kafka-essink.png
-:alt: Image showing {{agent}} collecting data and using Kafka as a message queue enroute to {es}
+:alt: Image showing {{agent}} collecting data and using Kafka as a message queue enroute to {{es}}
 :::
 
 Ingest model
@@ -16,7 +16,7 @@ Ingest model
 
 
 Use when
-:   You are standardizing on Kafka as middleware message queue between {{agent}} and {es}
+:   You are standardizing on Kafka as middleware message queue between {{agent}} and {{es}}
 
 Notes
 :   The transformation from raw data to Elastic Common Schema (ECS) and any other enrichment can be handled by {{ls}} as described in [{{agent}} to {{ls}} (for enrichment) to {{es}}](ls-enrich.md).
@@ -32,7 +32,7 @@ Info on {{agent}} and agent integrations:
 Info on {{ls}} and {{ls}} plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {agent} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
+* [{{ls}} {{agent}} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
 * [{{ls}} Kafka output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-kafka.html)
 
 Info on {{es}}:

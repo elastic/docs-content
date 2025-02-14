@@ -313,12 +313,12 @@ Follow these steps to enable TLS connection from collector/symbolizer to Elastic
 
 1. Create secrets with the TLS key pairs (omit the `ca.pem` field if you are not using a self-signed CA):
 
-    ```terminal
+    ```bash
     kubectl -n universal-profiling create secret generic pf-collector-tls-certificate --from-file=tls.key=/path/to/key.pem \
     --from-file=tls.cert=/path/to/cert.pem --from-file=ca.pem=/path/to/ca.crt
     ```
 
-    ```terminal
+    ```bash
     kubectl -n universal-profiling create secret generic pf-symbolizer-tls-certificate --from-file=tls.key=/path/to/key.pem \
     --from-file=tls.cert=/path/to/cert.pem --from-file=ca.pem=/path/to/ca.crt
     ```

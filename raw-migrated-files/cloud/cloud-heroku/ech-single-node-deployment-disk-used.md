@@ -22,7 +22,7 @@
 
 **Resolution**
 
-* [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+* [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 * Increase the disk size on your Hot data and Content tier (scale up).
 
 ::::{note}

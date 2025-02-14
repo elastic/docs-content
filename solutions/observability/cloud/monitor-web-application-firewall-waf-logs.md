@@ -17,7 +17,7 @@ You will go through the following steps:
 * Create a delivery stream in Amazon Data Firehose
 * Create a web Access Control List (ACL) to generate WAF logs
 * Set up logging to forward the logs to the {{stack}} using a Firehose stream
-* Visualize your WAF logs in {kib}
+* Visualize your WAF logs in {{kib}}
 
 
 ## Before you begin [firehose-waf-prerequisites]

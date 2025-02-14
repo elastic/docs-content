@@ -61,7 +61,7 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 1. To single sign-on directly into Elastic, select your Azure account.
 2. To see if there is any available data, click **Observability**. There should be no data yet, but next, you will ingest logs.
 
-    ![{{kib}} {observability} page (no data)](../../../images/observability-monitor-azure-kibana-observability-page-empty.png "")
+    ![{{kib}} {{observability}} page (no data)](../../../images/observability-monitor-azure-kibana-observability-page-empty.png "")
 
 
 

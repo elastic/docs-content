@@ -137,7 +137,7 @@ As a managed service, {{ecloud}} is here to help you manage the maintenance and 
 * Review the deployment logs
 * Act on automated alerts
 
-When issues come up that you need to troubleshoot, you’ll frequently start with the same queries to determine which rabbit hole to investigate further, such as [`_cluster/health`](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) to determine overall deployment health.
+When issues come up that you need to troubleshoot, you’ll frequently start with the same queries to determine which rabbit hole to investigate further, such as [`_cluster/health`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) to determine overall deployment health.
 
 :::{image} ../../../images/cloud-ec-ce-monitoring-ongoing.png
 :alt: Elasticsearch API console showing queries useful for monitoring

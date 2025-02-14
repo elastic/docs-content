@@ -34,7 +34,7 @@ Kibana APIs
 Other Products
 :   Most other Elastic products have APIs to support machine-to-machine operations. You can find the documentation for these at the following links:
 
-    * [APM event intake API Reference](https://www.elastic.co/guide/en/apm/guide/current/api-events.html)
+    * [APM event intake API Reference](/solutions/observability/apps/elastic-apm-events-intake-api.md)
     * [App Search API Reference](https://www.elastic.co/guide/en/app-search/current/api-reference.html)
     * [Elastic Security APIs](https://www.elastic.co/guide/en/security/current/security-apis.html)
     * [Enterprise Search management APIs](https://www.elastic.co/guide/en/enterprise-search/current/management-apis.html)

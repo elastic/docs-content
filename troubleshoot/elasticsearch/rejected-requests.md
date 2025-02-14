@@ -20,7 +20,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 ## Check rejected tasks [check-rejected-tasks]
 
-To check the number of rejected tasks for each thread pool, use the [cat thread pool API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-thread-pool.html). A high ratio of `rejected` to `completed` tasks, particularly in the `search` and `write` thread pools, means {{es}} regularly rejects requests.
+To check the number of rejected tasks for each thread pool, use the [cat thread pool API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-thread-pool). A high ratio of `rejected` to `completed` tasks, particularly in the `search` and `write` thread pools, means {{es}} regularly rejects requests.
 
 ```console
 GET /_cat/thread_pool?v=true&h=id,name,queue,active,rejected,completed
@@ -35,7 +35,7 @@ See [this video](https://www.youtube.com/watch?v=auZJRXoAVpI) for a walkthrough 
 
 ## Check circuit breakers [check-circuit-breakers]
 
-To check the number of tripped [circuit breakers](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html), use the [node stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html).
+To check the number of tripped [circuit breakers](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html), use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
 GET /_nodes/stats/breaker
@@ -48,7 +48,7 @@ See [this video](https://www.youtube.com/watch?v=k3wYlRVbMSw) for a walkthrough 
 
 ## Check indexing pressure [check-indexing-pressure]
 
-To check the number of [indexing pressure](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-indexing-pressure.html) rejections, use the [node stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html).
+To check the number of [indexing pressure](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-indexing-pressure.html) rejections, use the [node stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
 GET _nodes/stats?human&filter_path=nodes.*.indexing_pressure
@@ -58,7 +58,7 @@ These stats are cumulative from node startup.
 
 Indexing pressure rejections appear as an `EsRejectedExecutionException`, and indicate that they were rejected due to `combined_coordinating_and_primary`, `coordinating`, `primary`, or `replica`.
 
-These errors are often related to [backlogged tasks](task-queue-backlog.md), [bulk index](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) sizing, or the ingest target’s [`refresh_interval` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html).
+These errors are often related to [backlogged tasks](task-queue-backlog.md), [bulk index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) sizing, or the ingest target’s [`refresh_interval` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html).
 
 See [this video](https://www.youtube.com/watch?v=QuV8QqSfc0c) for a walkthrough of diagnosing indexing pressure rejections.
 

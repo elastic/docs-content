@@ -13,7 +13,7 @@ A *search* consists of one or more queries that are combined and sent to {{es}}.
 
 A search may also contain additional information used to better process its queries. For example, a search may be limited to a specific index or only return a specific number of results.
 
-You can use the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to search and [aggregate](../../explore-analyze/query-filter/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
+You can use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to search and [aggregate](../../explore-analyze/query-filter/aggregations.md) data stored in {{es}} data streams or indices. The API’s `query` request body parameter accepts queries written in [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md).
 
 
 ## Run a search [run-an-es-search]
@@ -184,12 +184,12 @@ GET /my-index-000001/_search
 }
 ```
 
-To set a cluster-wide default timeout for all search requests, configure `search.default_search_timeout` using the [cluster settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html). This global timeout duration is used if no `timeout` argument is passed in the request. If the global search timeout expires before the search request finishes, the request is cancelled using [task cancellation](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html#task-cancellation). The `search.default_search_timeout` setting defaults to `-1` (no timeout).
+To set a cluster-wide default timeout for all search requests, configure `search.default_search_timeout` using the [cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). This global timeout duration is used if no `timeout` argument is passed in the request. If the global search timeout expires before the search request finishes, the request is cancelled using [task cancellation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks). The `search.default_search_timeout` setting defaults to `-1` (no timeout).
 
 
 ## Search cancellation [global-search-cancellation]
 
-You can cancel a search request using the [task management API](https://www.elastic.co/guide/en/elasticsearch/reference/current/tasks.html#task-cancellation). {{es}} also automatically cancels a search request when your client’s HTTP connection closes. We recommend you set up your client to close HTTP connections when a search request is aborted or times out.
+You can cancel a search request using the [task management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks). {{es}} also automatically cancels a search request when your client’s HTTP connection closes. We recommend you set up your client to close HTTP connections when a search request is aborted or times out.
 
 
 ## Track total hits [track-total-hits]

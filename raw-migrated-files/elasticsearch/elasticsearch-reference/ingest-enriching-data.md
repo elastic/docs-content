@@ -36,7 +36,7 @@ An enrich policy contains:
 * A *match field* from the source indices used to match incoming documents
 * *Enrich fields* containing enrich data from the source indices you want to add to incoming documents
 
-Before it can be used with an enrich processor, an enrich policy must be [executed](https://www.elastic.co/guide/en/elasticsearch/reference/current/execute-enrich-policy-api.html). When executed, an enrich policy uses enrich data from the policy’s source indices to create a streamlined system index called the *enrich index*. The processor uses this index to match and enrich incoming documents.
+Before it can be used with an enrich processor, an enrich policy must be [executed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-execute-policy). When executed, an enrich policy uses enrich data from the policy’s source indices to create a streamlined system index called the *enrich index*. The processor uses this index to match and enrich incoming documents.
 
 
 $$$source-index$$$
@@ -56,7 +56,7 @@ Enrich indices contain enrich data from source indices but have a few special pr
 * They are system indices, meaning they’re managed internally by {{es}} and only intended for use with enrich processors and the {{esql}} `ENRICH` command.
 * They always begin with `.enrich-*`.
 * They are read-only, meaning you can’t directly change them.
-* They are [force merged](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) for fast retrieval.
+* They are [force merged](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) for fast retrieval.
 
 
 

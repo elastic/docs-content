@@ -44,7 +44,7 @@ PUT semantic-embeddings
 
 
 ::::{note}
-If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
+If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
 
 ::::
 

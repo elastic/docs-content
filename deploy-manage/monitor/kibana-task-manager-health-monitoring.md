@@ -22,7 +22,7 @@ The health monitoring API provides a reliable endpoint that can be monitored. Co
 
 Each {{kib}} instance exposes its own endpoint at:
 
-```kibana
+```bash
 $ curl -X GET api/task_manager/_health
 ```
 

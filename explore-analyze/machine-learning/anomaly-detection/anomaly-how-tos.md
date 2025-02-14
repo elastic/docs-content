@@ -27,7 +27,7 @@ Though it is quite simple to analyze your data and provide quick {{ml}} results,
 
 ## {{anomaly-detect-cap}} examples in blog posts [anomaly-examples-blog-posts]
 
-The blog posts listed below show how to get the most out of Elastic {{ml}} {anomaly-detect}.
+The blog posts listed below show how to get the most out of Elastic {{ml}} {{anomaly-detect}}.
 
 * [Sizing for {{ml}} with {{es}}](https://www.elastic.co/blog/sizing-machine-learning-with-elasticsearch)
 * [Filtering input data to refine {{ml-jobs}}](https://www.elastic.co/blog/filtering-input-data-to-refine-machine-learning-jobs)
@@ -37,7 +37,7 @@ The blog posts listed below show how to get the most out of Elastic {{ml}} {anom
 * [User annotations for Elastic {{ml}}](https://www.elastic.co/blog/augmenting-results-with-user-annotations-for-elastic-machine-learning)
 * [Custom {{es}} aggregations for {{ml-jobs}}](https://www.elastic.co/blog/custom-elasticsearch-aggregations-for-machine-learning-jobs)
 * [Analysing Linux auditd anomalies with Auditbeat and {{ml}}](https://www.elastic.co/blog/analysing-linux-auditd-anomalies-with-auditbeat-and-elastic-stack-machine-learning)
-* [How to optimize {{es}} {ml} job configurations using job validation](https://www.elastic.co/blog/how-to-optimize-elasticsearch-machine-learning-job-configurations-using-job-validation)
+* [How to optimize {{es}} {{ml}} job configurations using job validation](https://www.elastic.co/blog/how-to-optimize-elasticsearch-machine-learning-job-configurations-using-job-validation)
 * [Interpretability in {{ml}}: Identifying anomalies, influencers, and root causes](https://www.elastic.co/blog/interpretability-in-ml-identifying-anomalies-influencers-root-causes)
 
 There are also some examples in the {{ml}} folder in the [examples repository](https://github.com/elastic/examples).

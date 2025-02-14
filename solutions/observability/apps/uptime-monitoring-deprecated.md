@@ -8,7 +8,7 @@ mapped_pages:
 ::::{admonition} Deprecated in 8.15.0.
 :class: warning
 
-Use [Synthetic monitoring](synthetic-monitoring.md) instead of the {uptime-app}
+Use [Synthetic monitoring](synthetic-monitoring.md) instead of the {{uptime-app}}
 ::::
 
 
@@ -36,7 +36,7 @@ In the {{uptime-app}}, you can monitor the status of network endpoints using the
 | **TCP monitor** | Monitor the services running on your hosts. The TCP monitor checks individual portsto make sure the service is accessible and running. |
 
 :::{image} ../../../images/observability-uptime-app.png
-:alt: {{uptime-app}} in {kib}
+:alt: {{uptime-app}} in {{kib}}
 :class: screenshot
 :::
 

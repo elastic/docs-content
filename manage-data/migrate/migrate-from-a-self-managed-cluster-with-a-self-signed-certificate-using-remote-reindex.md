@@ -1,6 +1,11 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-reindex.html
+applies:
+  serverless: unavailable
+  hosted: all
+  ece: unavailable
+navigation_title: Reindex from a self-managed cluster
 ---
 
 # Migrate from a self-managed cluster with a self-signed certificate using remote reindex [ec-remote-reindex]
@@ -44,7 +49,6 @@ From the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&plac
 ::::{note}
 The `Destination` cluster should be the same or newer version as the `Source` cluster. If you already have a cluster available, you can skip this step.
 ::::
-
 
 
 ## Step 4: Enable bundle and add `reindex` settings on the `Desination` cluster. [ec-remote-reindex-step4]
