@@ -91,7 +91,7 @@ While you can search for phrases in the `message` field, you can’t use this fi
 * **message** (`Disk usage exceeds 90%.`): You can search for phrases or words in the message field.
 
 ::::{note}
-These fields are part of the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html). The ECS defines a common set of fields that you can use across your project when storing data, including log and metric data.
+These fields are part of the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html). The ECS defines a common set of fields that you can use across your project when storing data, including log and metric data.
 
 ::::
 
@@ -154,7 +154,7 @@ The previous command sets the following values for your ingest pipeline:
 
 #### Test the pipeline with the simulate pipeline API [observability-parse-log-data-test-the-pipeline-with-the-simulate-pipeline-api]
 
-The [simulate pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html#ingest-verbose-param) runs the ingest pipeline without storing any documents. This lets you verify your pipeline works using multiple documents.
+The [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate) runs the ingest pipeline without storing any documents. This lets you verify your pipeline works using multiple documents.
 
 Run the following command to test your ingest pipeline with the simulate pipeline API.
 
@@ -234,14 +234,14 @@ The previous command sets the following values for your index template:
 
 The example index template above sets the following component templates:
 
-* `logs@mappings`: general mappings for log data streams that include disabling automatic date detection from `string` fields and specifying mappings for [`data_stream` ECS fields](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-data_stream.html).
+* `logs@mappings`: general mappings for log data streams that include disabling automatic date detection from `string` fields and specifying mappings for [`data_stream` ECS fields](https://www.elastic.co/guide/en/ecs/current/ecs-data_stream.html).
 * `logs@settings`: general settings for log data streams including the following:
 
     * The default lifecycle policy that rolls over when the primary shard reaches 50 GB or after 30 days.
     * The default pipeline uses the ingest timestamp if there is no specified `@timestamp` and places a hook for the `logs@custom` pipeline. If a `logs@custom` pipeline is installed, it’s applied to logs ingested into this data stream.
     * Sets the [`ignore_malformed`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-malformed.html) flag to `true`. When ingesting a large batch of log data, a single malformed field like an IP address can cause the entire batch to fail. When set to true, malformed fields with a mapping type that supports this flag are still processed.
     * `logs@custom`: a predefined component template that is not installed by default. Use this name to install a custom component template to override or extend any of the default mappings or settings.
-    * `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html).
+    * `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html).
 
 
 
@@ -347,7 +347,7 @@ In addition to setting an ingest pipeline, you need to set an index template. Us
 
 #### Test the pipeline with the simulate API [observability-parse-log-data-test-the-pipeline-with-the-simulate-api]
 
-Test that your ingest pipeline works as expected with the [simulate pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html#ingest-verbose-param):
+Test that your ingest pipeline works as expected with the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate):
 
 ```console
 POST _ingest/pipeline/logs-example-default/_simulate
@@ -470,7 +470,7 @@ The results should show only the high-severity logs:
 
 Extracting the `host.ip` field lets you filter logs by host IP addresses allowing you to focus on specific hosts that you’re having issues with or find disparities between hosts.
 
-The `host.ip` field is part of the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/ip.html). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
+The `host.ip` field is part of the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/ip.html). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
 
 This section shows you how to extract the `host.ip` field from the following example logs and query based on the extracted fields:
 
@@ -519,7 +519,7 @@ In addition to setting an ingest pipeline, you need to set an index template. Us
 
 #### Test the pipeline with the simulate API [observability-parse-log-data-test-the-pipeline-with-the-simulate-api-1]
 
-Test that your ingest pipeline works as expected with the [simulate pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html#ingest-verbose-param):
+Test that your ingest pipeline works as expected with the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate):
 
 ```console
 POST _ingest/pipeline/logs-example-default/_simulate

@@ -32,7 +32,7 @@ For simplicity, in the time series mapping all `time_series_metric` parameters a
 
 The index template includes a set of static [time series dimensions](time-series-data-stream-tsds.md#time-series-dimension): `host`, `namespace`, `node`, and `pod`. The time series dimensions are not changed by the downsampling process.
 
-To enable downsampling, this template includes a `lifecycle` section with [downsampling](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams-put-lifecycle.html#data-streams-put-lifecycle-downsampling-example) object. `fixed_interval` parameter sets downsampling interval at which you want to aggregate the original time series data. `after` parameter specifies how much time after index was rolled over should pass before downsampling is performed.
+To enable downsampling, this template includes a `lifecycle` section with [downsampling](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) object. `fixed_interval` parameter sets downsampling interval at which you want to aggregate the original time series data. `after` parameter specifies how much time after index was rolled over should pass before downsampling is performed.
 
 ```console
 PUT _index_template/datastream_template
@@ -305,7 +305,7 @@ The query returns your ten newly added documents.
 
 Data stream lifecycle will automatically roll over data stream and perform downsampling. This step is only needed in order to see downsampling results in scope of this tutorial.
 
-Roll over the data stream using the [rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html):
+Roll over the data stream using the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
 
 ```console
 POST /datastream/_rollover/
@@ -460,7 +460,7 @@ The new downsampled index contains just one document that includes the `min`, `m
 }
 ```
 
-Use the [data stream stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-stats-api.html) to get statistics for the data stream, including the storage size.
+Use the [data stream stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-data-streams-stats-1) to get statistics for the data stream, including the storage size.
 
 ```console
 GET /_data_stream/datastream/_stats?human=true

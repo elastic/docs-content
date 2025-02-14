@@ -758,7 +758,7 @@ The following variables can only be passed if the rule’s action frequency is f
 
 #### Alert placeholder examples [placeholder-examples]
 
-To understand which fields to parse, see the [Detections API](https://www.elastic.co/guide/en/security/current/rule-api-overview.html) to view the JSON representation of rules.
+To understand which fields to parse, see the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api) to view the JSON representation of rules.
 
 Example using `{{context.rule.filters}}` to output a list of filters:
 

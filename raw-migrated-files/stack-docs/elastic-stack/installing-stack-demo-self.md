@@ -463,7 +463,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
 
 17. In the `status` command output, a URL is shown with:
 
-    * A host address to access {kib}
+    * A host address to access {{kib}}
     * A six digit verification code
 
         For example:

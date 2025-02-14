@@ -61,11 +61,11 @@ Each Elastic {{apm-agent}} has a configuration option to set the value of the se
 
 * **Android agent**: [`secretToken`](https://www.elastic.co/guide/en/apm/agent/android/current/configuration.html)
 * **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-secret-token)
-* **iOS agent**: [`secretToken`](https://www.elastic.co/guide/en/apm/agent/swift/{{apm-ios-branch}}/configuration.html#secretToken)
+* **iOS agent**: [`secretToken`](https://www.elastic.co/guide/en/apm/agent/swift/current/configuration.html#secretToken)
 * **Java agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-secret-token)
 * **.NET agent**: [`ELASTIC_APM_SECRET_TOKEN`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-reporter.html#config-secret-token)
 * **Node.js agent**: [`Secret Token`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#secret-token)
-* **PHP agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/configuration-reference.html#config-secret-token)
+* **PHP agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-secret-token)
 * **Python agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-secret-token)
 * **Ruby agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-secret-token)
 
@@ -75,6 +75,6 @@ In addition to setting the secret token, ensure the configured server URL uses `
 * **Java agent**: [`server_urls`](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-server-urls)
 * **.NET agent**: [`ServerUrl`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-reporter.html#config-server-url)
 * **Node.js agent**: [`serverUrl`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-url)
-* **PHP agent**: [`server_url`](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/configuration-reference.html#config-server-url)
+* **PHP agent**: [`server_url`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-server-url)
 * **Python agent**: [`server_url`](https://www.elastic.co/guide/en/apm/agent/python/current/)
 * **Ruby agent**: [`server_url`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-server-url)

@@ -43,7 +43,7 @@ Refer to [Performing population analysis](https://www.elastic.co/guide/en/machin
 
 ## Advanced jobs [advanced-jobs]
 
-Advanced jobs give you all the flexibility that’s possible in the [create {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html). At the extreme, you can switch to directly edit the JSON that will be sent to this endpoint. All the other types of jobs described in this page *can* be created as advanced jobs, but the more specialized wizards make it easier to create jobs for common situations. You can create an advanced job if you are familiar with all the functionality that {{ml}} {{anomaly-detect}} provides and want to do something that the more specialized wizards do not allow you to do.
+Advanced jobs give you all the flexibility that’s possible in the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job). At the extreme, you can switch to directly edit the JSON that will be sent to this endpoint. All the other types of jobs described in this page *can* be created as advanced jobs, but the more specialized wizards make it easier to create jobs for common situations. You can create an advanced job if you are familiar with all the functionality that {{ml}} {{anomaly-detect}} provides and want to do something that the more specialized wizards do not allow you to do.
 
 ## Categorization jobs [categorization-jobs]
 

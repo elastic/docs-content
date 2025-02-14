@@ -27,15 +27,15 @@ For additional help with other APM components, see the links below.
 
 * [**{{fleet}} and {{agent}}** troubleshooting](../ingest/fleet/fleet-elastic-agent.md)
 * [**Android agent** FAQ](https://www.elastic.co/guide/en/apm/agent/android/current/faq.html)
-* [**.NET agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/troubleshooting.html)
-* [**Go agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/troubleshooting.html)
-* [**iOS agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/swift/{{apm-ios-branch}}/troubleshooting.html)
-* [**Java agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/trouble-shooting.html)
-* [**Node.js agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/troubleshooting.html)
-* [**PHP agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/troubleshooting.html)
-* [**Python agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/troubleshooting.html)
-* [**Ruby agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/debugging.html)
-* [**RUM agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/troubleshooting.html)
+* [**.NET agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/dotnet/current/troubleshooting.html)
+* [**Go agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/go/current/troubleshooting.html)
+* [**iOS agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/swift/current/troubleshooting.html)
+* [**Java agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/java/current/trouble-shooting.html)
+* [**Node.js agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/nodejs/current/troubleshooting.html)
+* [**PHP agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/php/current/troubleshooting.html)
+* [**Python agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/python/current/troubleshooting.html)
+* [**Ruby agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/ruby/current/debugging.html)
+* [**RUM agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/rum-js/current/troubleshooting.html)
 
 
 ## Elastic Support [apm-elastic-support]

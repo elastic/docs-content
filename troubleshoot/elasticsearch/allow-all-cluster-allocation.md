@@ -17,7 +17,7 @@ In order to (re)allow all data to be allocated follow these steps:
 ::::::{tab-item} Elasticsearch Service
 In order to get the shards assigned we’ll need to change the value of the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-enable) that restricts the assignemnt of the shards to allow all shards to be allocated.
 
-We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html) and changing the configured value to `all`.
+We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) and changing the configured value to `all`.
 
 **Use {{kib}}**
 
@@ -35,7 +35,7 @@ We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.e
     :class: screenshot
     :::
 
-4. Inspect the `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html):
+4. Inspect the `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):
 
     ```console
     GET /_cluster/settings?flat_settings
@@ -54,7 +54,7 @@ We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.e
 
     1. Represents the current configured value that controls if data is partially or fully allowed to be allocated in the system.
 
-5. [Change](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-enable) value to allow all the data in the system to be fully allocated:
+5. [Change](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-enable) value to allow all the data in the system to be fully allocated:
 
     ```console
     PUT _cluster/settings
@@ -71,9 +71,9 @@ We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.e
 ::::::{tab-item} Self-managed
 In order to get the shards assigned we’ll need to change the value of the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-enable) that restricts the assignemnt of the shards to allow all shards to be allocated.
 
-We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html) and changing the configured value to `all`.
+We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings) and changing the configured value to `all`.
 
-1. Inspect the `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-get-settings.html):
+1. Inspect the `cluster.routing.allocation.enable` [cluster setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-settings):
 
     ```console
     GET /_cluster/settings?flat_settings
@@ -92,7 +92,7 @@ We’ll achieve this by inspecting the system-wide `cluster.routing.allocation.e
 
     1. Represents the current configured value that controls if data is partially or fully allowed to be allocated in the system.
 
-2. [Change](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-enable) value to allow all the data in the system to be fully allocated:
+2. [Change](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) the [configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-enable) value to allow all the data in the system to be fully allocated:
 
     ```console
     PUT _cluster/settings

@@ -6,11 +6,11 @@ mapped_pages:
 # Elastic Agent to Logstash to Elasticsearch: Logstash as a proxy [ls-networkbridge]
 
 :::{image} ../../../images/ingest-ea-ls-bridge.png
-:alt: Image showing {{agent}}s collecting data and sending to {{ls}} for proxying before sending on to {es}
+:alt: Image showing {{agent}}s collecting data and sending to {{ls}} for proxying before sending on to {{es}}
 :::
 
 Ingest model
-:   Data path: {{agent}} to {{ls}} as bridge to {{es}} on {{stack}} network<br> Control path: {{agent}} to {{fleet-server}} to {es}
+:   Data path: {{agent}} to {{ls}} as bridge to {{es}} on {{stack}} network<br> Control path: {{agent}} to {{fleet-server}} to {{es}}
 
 Use when
 :   Agents have network restrictions for connecting to {{es}} on {{stack}} deployed outside of the agent network

@@ -18,7 +18,7 @@ For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.e
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `elasticsearch` service.
 
 ::::{note} 
-* Your {{es}} deployment contains [preconfigured ELSER and E5 {{infer}} endpoints](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html#default-enpoints), you only need to create the enpoints using the API if you want to customize the settings.
+* Your {{es}} deployment contains [preconfigured ELSER and E5 {{infer}} endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference), you only need to create the enpoints using the API if you want to customize the settings.
 * If you use the ELSER or the E5 model through the `elasticsearch` service, the API request will automatically download and deploy the model if it isn’t downloaded yet.
 
 ::::
@@ -49,7 +49,7 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `elasticsear
 ## {{api-request-body-title}} [infer-service-elasticsearch-api-request-body] 
 
 `chunking_settings`
-:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html#infer-chunking-config) to learn more about chunking.
+:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) to learn more about chunking.
 
     `max_chunk_size`
     :   (Optional, integer) Specifies the maximum size of a chunk in words. Defaults to `250`. This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).
@@ -146,7 +146,7 @@ Refer to this [Python notebook](https://github.com/elastic/elasticsearch-labs/bl
 ::::
 
 
-The API request below will automatically download the Elastic Rerank model if it isn’t already downloaded and then deploy the model. Once deployed, the model can be used for semantic re-ranking with a [`text_similarity_reranker` retriever](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#text-similarity-reranker-retriever-example-elastic-rerank).
+The API request below will automatically download the Elastic Rerank model if it isn’t already downloaded and then deploy the model. Once deployed, the model can be used for semantic re-ranking with a [`text_similarity_reranker` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever).
 
 ```console
 PUT _inference/rerank/my-elastic-rerank

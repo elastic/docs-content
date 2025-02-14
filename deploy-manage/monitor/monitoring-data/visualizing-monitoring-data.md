@@ -10,7 +10,7 @@ applies:
 
 # Visualizing monitoring data [xpack-monitoring]
 
-The {{kib}} {monitor-features} serve two separate purposes:
+The {{kib}} {{monitor-features}} serve two separate purposes:
 
 1. To visualize monitoring data from across the {{stack}}. You can view health and performance data for {{es}}, {{ls}}, {{ents}}, APM, and Beats in real time, as well as analyze past performance.
 2. To monitor {{kib}} itself and route that data to the monitoring cluster.

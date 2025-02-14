@@ -102,7 +102,7 @@ The APM Server keystore can be used to store sensitive settings in the APM Serve
             password: "${ES_PASSWORD}"
     ```
 
-3. Reference the key in the APM Server configuration, as described in the [Secrets keystore for secure settings](https://www.elastic.co/guide/en/apm/server/current/keystore.html).
+3. Reference the key in the APM Server configuration, as described in the [Secrets keystore for secure settings](/solutions/observability/apps/secrets-keystore-for-secure-settings.md).
 
 
 ## Reference an existing Elasticsearch cluster [k8s-apm-existing-es]

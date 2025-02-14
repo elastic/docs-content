@@ -47,7 +47,7 @@ Once you’ve saved a rollup job, you’ll see it the **Rollup Jobs** overview p
 :class: screenshot
 :::
 
-You can’t change a rollup job after you’ve created it. To select additional fields or redefine terms, you must delete the existing job, and then create a new one with the updated specifications. Be sure to use a different name for the new rollup job—reusing the same name can lead to problems with mismatched job configurations. Refer to [rollup job configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-put-job.html#rollup-put-job-api-request-body).
+You can’t change a rollup job after you’ve created it. To select additional fields or redefine terms, you must delete the existing job, and then create a new one with the updated specifications. Be sure to use a different name for the new rollup job—reusing the same name can lead to problems with mismatched job configurations. Refer to [rollup job configuration](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-put-job).
 
 
 ## Try it: Create and visualize rolled up data [rollup-data-tutorial]

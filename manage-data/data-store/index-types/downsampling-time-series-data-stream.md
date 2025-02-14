@@ -74,7 +74,7 @@ Fields in the target, downsampled index are created based on fields in the origi
 
 ## Running downsampling on time series data [running-downsampling]
 
-To downsample a time series index, use the [Downsample API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-downsample-data-stream.html) and set `fixed_interval` to the level of granularity that you’d like:
+To downsample a time series index, use the [Downsample API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-downsample) and set `fixed_interval` to the level of granularity that you’d like:
 
 ```console
 POST /my-time-series-index/_downsample/my-downsampled-time-series-index
@@ -105,7 +105,7 @@ PUT _ilm/policy/my_policy
 
 ## Querying downsampled indices [querying-downsampled-indices]
 
-You can use the [`_search`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) and [`_async_search`](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html) endpoints to query a downsampled index. Multiple raw data and downsampled indices can be queried in a single request, and a single request can include downsampled indices at different granularities (different bucket timespan). That is, you can query data streams that contain downsampled indices with multiple downsampling intervals (for example, `15m`, `1h`, `1d`).
+You can use the [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) and [`_async_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoints to query a downsampled index. Multiple raw data and downsampled indices can be queried in a single request, and a single request can include downsampled indices at different granularities (different bucket timespan). That is, you can query data streams that contain downsampled indices with multiple downsampling intervals (for example, `15m`, `1h`, `1d`).
 
 The result of a time based histogram aggregation is in a uniform bucket size and each downsampled index returns data ignoring the downsampling time interval. For example, if you run a `date_histogram` aggregation with `"fixed_interval": "1m"` on a downsampled index that has been downsampled at an hourly resolution (`"fixed_interval": "1h"`), the query returns one bucket with all of the data at minute 0, then 59 empty buckets, and then a bucket with data again for the next hour.
 

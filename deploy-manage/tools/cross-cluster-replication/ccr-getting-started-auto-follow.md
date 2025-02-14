@@ -20,12 +20,12 @@ To create an auto-follow pattern from Stack Management in {{kib}}:
 As new indices matching these patterns are created on the remote, {{es}} automatically replicates them to local follower indices.
 
 :::{image} ../../../images/elasticsearch-reference-auto-follow-patterns.png
-:alt: The Auto-follow patterns page in {kib}
+:alt: The Auto-follow patterns page in {{kib}}
 :class: screenshot
 :::
 
 ::::{dropdown} API example
-Use the [create auto-follow pattern API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-auto-follow-pattern.html) to configure auto-follow patterns.
+Use the [create auto-follow pattern API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-put-auto-follow-pattern) to configure auto-follow patterns.
 
 ```console
 PUT /_ccr/auto_follow/beats

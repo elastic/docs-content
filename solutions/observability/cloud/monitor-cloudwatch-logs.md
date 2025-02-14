@@ -13,11 +13,11 @@ In this section, you’ll learn how to export log events from CloudWatch logs to
 
 You’ll go through the following steps:
 
-* Install AWS integration in {kib}
+* Install AWS integration in {{kib}}
 * Select a CloudWatch log group to monitor
 * Create a delivery stream in Amazon Data Firehose
 * Set up a subscription filter to forward the logs using the Firehose stream
-* Visualize your logs in {kib}
+* Visualize your logs in {{kib}}
 
 
 ## Before you begin [firehose-cloudwatch-prerequisites]

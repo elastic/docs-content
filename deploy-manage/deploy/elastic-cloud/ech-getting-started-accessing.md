@@ -13,7 +13,7 @@ You use the console to manage your cluster from a web browser. Tasks that are av
 
 To access the console in a browser from the Heroku CLI:
 
-```term
+```bash
 heroku addons:open foundelasticsearch --app MY_APP
 Opening https://addons-sso.heroku.com/apps/e286f875-cbdb-47a9-b445-e94bnnnnnnnn/addons/9b883e93-3db3-4491-b620-c3dfnnnnnnnn...
 ```

@@ -22,10 +22,10 @@ Add keys and secret values to the keystore.
 4. Locate **Elasticsearch keystore** and select **Add settings**.
 5. On the **Create setting** window, select the secret **Type**.
 6. Configure the settings, then select **Save**.
-7. All the modifications to the non-reloadable keystore take effect only after restarting Elasticsearch. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) API request.
+7. All the modifications to the non-reloadable keystore take effect only after restarting Elasticsearch. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
 
 ::::{important} 
-Only some settings are designed to be read from the keystore. However, the keystore has no validation to block unsupported settings. Adding unsupported settings to the keystore causes [reload_secure_settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) to fail and if not addressed, Elasticsearch will fail to start. To check whether a setting is supported in the keystore, look for a "Secure" qualifier in the [setting reference](../../../deploy-manage/security/secure-settings.md).
+Only some settings are designed to be read from the keystore. However, the keystore has no validation to block unsupported settings. Adding unsupported settings to the keystore causes [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) to fail and if not addressed, Elasticsearch will fail to start. To check whether a setting is supported in the keystore, look for a "Secure" qualifier in the [setting reference](../../../deploy-manage/security/secure-settings.md).
 ::::
 
 
@@ -42,5 +42,5 @@ When your keys and secret values are no longer needed, delete them from the keys
 3. From your deployment menu, select **Security**.
 4. From the **Existing keystores** list, use the delete icon next to the **Setting Name** that you want to delete.
 5. On the **Confirm to delete** window, select **Confirm**.
-6. All modifications to the non-reloadable keystore take effect only after restarting Elasticsearch. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) API request.
+6. All modifications to the non-reloadable keystore take effect only after restarting Elasticsearch. Reloadable keystore changes take effect after issuing a [reload_secure_settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) API request.
 

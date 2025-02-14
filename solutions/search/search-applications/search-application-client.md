@@ -14,7 +14,7 @@ applies:
 
 This document is a how-to guide to building a search experience with a [search application](../search-applications.md), using the [Search Application client](https://github.com/elastic/search-application-client). The client is a JavaScript library designed to be used in the browser. You’ll integrate this library into your web app to simplify querying your search application.
 
-::::{tip} 
+::::{tip}
 A [sandbox environment](https://github.com/elastic/search-application-client/blob/main/examples/sandbox/README.md) is available for testing and experimenting with the `search-application-client` library. Jump there if you’d like to try out the client without setting up your own web app.
 
 Clone the [repository](https://github.com/elastic/search-application-client) and follow the instructions in the README to get started.
@@ -23,7 +23,7 @@ Clone the [repository](https://github.com/elastic/search-application-client) and
 
 
 
-## Goal [search-application-client-client-goal] 
+## Goal [search-application-client-client-goal]
 
 This guide assumes you want to build a web app with the following search features:
 
@@ -34,7 +34,7 @@ This guide assumes you want to build a web app with the following search feature
 You can think of the search application as the "server side" that persists changes to {{es}}. Your web app acts as the "client side" that queries the search application. You’ll be making edits to both your search application and your web app to complete the implementation.
 
 
-## Prerequisites [search-application-client-client-prerequisites] 
+## Prerequisites [search-application-client-client-prerequisites]
 
 To follow this guide, you’ll need:
 
@@ -44,15 +44,15 @@ To follow this guide, you’ll need:
 
 * A **search application**.
 
-    * Create and manage search applications in the [{{kib}} UI](../search-applications.md#search-application-overview-get-started-ui) or using the [API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html).
+    * Create and manage search applications in the [{{kib}} UI](../search-applications.md#search-application-overview-get-started-ui) or using the [API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put).
 
 * A **web app** to query your search application, using [Search Application client](https://github.com/elastic/search-application-client#installation).
 
 
-## Install and configure the client [search-application-client-client-configuration] 
+## Install and configure the client [search-application-client-client-configuration]
 
 
-### Install the client [search-application-client-client-configuration-install] 
+### Install the client [search-application-client-client-configuration-install]
 
 [Install](https://github.com/elastic/search-application-client/blob/main/README.md#installation) the client using npm, yarn, or a CDN.
 
@@ -79,7 +79,7 @@ Alternatively, you can install the client using a CDN. Add the following `<scrip
 ```
 
 
-### Import and initialize the client [search-application-client-client-configuration-import] 
+### Import and initialize the client [search-application-client-client-configuration-import]
 
 Once installed, you can import the client into your web app. You’ll need the following information to initialize the client:
 
@@ -90,7 +90,7 @@ Once installed, you can import the client into your web app. You’ll need the f
 Find this information on the **Connect** page in the {{kib}} UI.
 
 
-#### Option 1: Using JavaScript modules [search-application-client-client-configuration-import-js] 
+#### Option 1: Using JavaScript modules [search-application-client-client-configuration-import-js]
 
 Use the following import statement:
 
@@ -122,7 +122,7 @@ const results = await request()
 ```
 
 
-#### Option 2: Using CDN [search-application-client-client-configuration-import-cdn] 
+#### Option 2: Using CDN [search-application-client-client-configuration-import-cdn]
 
 Alternatively, if you’re using a CDN, you can import the client using the following statement:
 
@@ -158,11 +158,11 @@ Once configured you’ll be able to make search requests to your search applicat
 ```
 
 
-## Working with your search template [search-application-client-client-template] 
+## Working with your search template [search-application-client-client-template]
 
 The Search Application client is designed to work with any [search template](search-application-api.md) you create. You’ll use the Search Application APIs to create and manage your search templates.
 
-::::{tip} 
+::::{tip}
 When working with the Search Application APIs to manage templates, we provide the API examples using [{{kib}} Console^](../../../explore-analyze/query-filter/tools/console.md) syntax.
 
 ::::
@@ -216,7 +216,7 @@ const results = await request()
 ```
 
 
-### Example template [search-application-client-client-template-example] 
+### Example template [search-application-client-client-template-example]
 
 We recommend getting started with the [boilerplate template](https://github.com/elastic/search-application-client#boilerplate-template) provided in the client repository. [View this script](https://github.com/elastic/search-application-client/blob/main/bin/boilerplate_template.js) to see how this is used. The `dictionary` parameter is used to pass in a JSON schema definition that describes structure and validation rules for the request object. This schema is important, because it restricts the use of certain features in the {{es}} query. [View the schema](https://github.com/elastic/search-application-client/blob/main/bin/request_schema.json).
 
@@ -229,18 +229,18 @@ Each search functionality in this guide requires a feature included in this temp
 * Pagination: `from` and `size`
 
 
-## Search features [search-application-client-client-features] 
+## Search features [search-application-client-client-features]
 
 We will explore all the essential basics you’ll need for a search experience. You’ll learn how to implement them using your search application and query them using the client.
 
-::::{tip} 
+::::{tip}
 Refer to the [client repo](https://github.com/elastic/search-application-client#api-reference) for information on the available methods and their parameters.
 
 ::::
 
 
 
-### Customizing relevance [search-application-client-client-features-relevance] 
+### Customizing relevance [search-application-client-client-features-relevance]
 
 Our simple template uses `query_string` searching across all fields, but this may not suit your use case. You can update the template to provide better relevance recall.
 
@@ -312,7 +312,7 @@ If you need to adjust `search_fields` at query request time, you can add a new p
 You can add additional template parameters to send the geo-coordinates of the user. Then use [`function_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html) to boost documents which match a certain [`geo_distance`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-distance-query.html) from the user.
 
 
-## Result fields [search-application-client-client-features-result-fields] 
+## Result fields [search-application-client-client-features-result-fields]
 
 By default, all fields are returned in the `_source` field. To restrict the fields returned, specify the fields in the template.
 
@@ -366,7 +366,7 @@ PUT _application/search_application/my-example-app
 If you need to adjust the fields returned at query request time, you can add a new parameter to the template (for example: `result_fields`) and use the `addParameter` method to provide the fields to the template.
 
 
-### Highlighting and snippets [search-application-client-client-features-highlight-snippets] 
+### Highlighting and snippets [search-application-client-client-features-highlight-snippets]
 
 Highlighting support is straightforward to add to the template. With the [highlighting API](https://www.elastic.co/guide/en/elasticsearch/reference/current/highlighting.html), you can specify which fields you want to highlight for matches.
 
@@ -451,7 +451,7 @@ If a match was found, this will return the results with a highlight field. For e
 ```
 
 
-#### Highlighting helper [search-application-client-client-features-highlight-helpers] 
+#### Highlighting helper [search-application-client-client-features-highlight-helpers]
 
 When displaying the fields in the frontend, you will need to first determine if the field has a highlight. To simplify this, we provide a helper.
 
@@ -470,7 +470,7 @@ const ResultsList = ({ hits } ) => {
 ```
 
 
-### Pagination [search-application-client-client-features-pagination] 
+### Pagination [search-application-client-client-features-pagination]
 
 To use pagination, set the page number and the page size. By default, the page size is 10. The `size` and `from` parameters allow you to control the page and number of hits returned in the response.
 
@@ -491,7 +491,7 @@ const results = await request()
 ```
 
 
-## Sorting [search-application-client-client-features-sorting] 
+## Sorting [search-application-client-client-features-sorting]
 
 To use sorting, specify the field name and the sort order or `pass _score` to sort by relevance. Requires the `_es_sort_fields_fields` param in the search template. Refer to our [example template](#search-application-client-client-template-example) to see where this is used.
 
@@ -504,7 +504,7 @@ const results = await request()
 ```
 
 
-### Filtering [search-application-client-client-features-filter] 
+### Filtering [search-application-client-client-features-filter]
 
 The Search application client also supports filters and facets. To use these, you need to add two parameters:
 
@@ -514,7 +514,7 @@ The Search application client also supports filters and facets. To use these, yo
 Refer to our [example template](#search-application-client-client-template-example) to see where these are used.
 
 
-#### Base Filtering [search-application-client-client-features-filter-base] 
+#### Base Filtering [search-application-client-client-features-filter-base]
 
 With a template that’s configured to use filters, use the `setFilter` method to add filters to your query.
 
@@ -535,7 +535,7 @@ const results = await request()
 ```
 
 
-### Facets [search-application-client-client-features-facets] 
+### Facets [search-application-client-client-features-facets]
 
 The client supports the ability to configure facets with your results. Specify facets in the client initialization call. For example, say we want to add facets for actors, directors and IMDB rating.
 
@@ -566,7 +566,7 @@ const request = Client(
 )
 ```
 
-::::{note} 
+::::{note}
 In {{es}}, the `keyword` type is used for fields that need to be searchable in their exact, unmodified form. This means these queries are case-sensitive. We use this type for facets because facets require aggregating and filtering data based on exact values or terms.
 
 ::::

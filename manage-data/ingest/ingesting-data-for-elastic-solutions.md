@@ -35,7 +35,7 @@ To use [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) and [Elast
 * [Elastic Search for integrations](https://www.elastic.co/integrations/data-integrations?solution=search)
 * [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
 
-    * [{{es}} document APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html)
+    * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
     * [{{es}} language clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
     * [Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html)
@@ -58,6 +58,8 @@ With [Elastic Observability](https://www.elastic.co/observability), you can moni
 
     * [Monitor hosts with {{agent}} ({{serverless-short}})](https://docs.elastic.co/serverless/observability/quickstarts/monitor-hosts-with-elastic-agent)
     * [Monitor your K8s cluster with {{agent}} ({{serverless-short}})](https://docs.elastic.co/serverless/observability/quickstarts/k8s-logs-metrics)
+
+* [Use OpenTelemetry with APM](../../solutions/observability/apps/use-opentelemetry-with-apm.md)
 
 
 **Resources**
@@ -93,7 +95,7 @@ Bring your ideas and use {{es}} and the {{stack}} to store, search, and visualiz
 * [Install {{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html)
 * [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
 
-    * [{{es}} document APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html)
+    * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
     * [{{es}} language clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
     * [Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html)

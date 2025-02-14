@@ -16,7 +16,7 @@ In order to start the automatic {{ilm}} service, follow these steps:
 :::::::{tab-set}
 
 ::::::{tab-item} Elasticsearch Service
-In order to start {{ilm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html).
+In order to start {{ilm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start).
 
 **Use {{kib}}**
 
@@ -34,7 +34,7 @@ In order to start {{ilm}} we need to go to Kibana and execute the [start command
     :class: screenshot
     :::
 
-4. [Start](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html) {{ilm}}:
+4. [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}:
 
     ```console
     POST _ilm/start
@@ -64,7 +64,7 @@ In order to start {{ilm}} we need to go to Kibana and execute the [start command
 ::::::
 
 ::::::{tab-item} Self-managed
-[Start](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html) {{ilm}}:
+[Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}:
 
 ```console
 POST _ilm/start

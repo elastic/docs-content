@@ -1,7 +1,7 @@
 # Transactions [apm-transactions]
 
 ::::{tip}
-A [transaction](https://www.elastic.co/guide/en/apm/guide/current/data-model-transactions.html) describes an event captured by an Elastic APM agent instrumenting a service. APM agents automatically collect performance metrics on HTTP requests, database queries, and much more.
+A [transaction](/solutions/observability/apps/transactions.md) describes an event captured by an Elastic APM agent instrumenting a service. APM agents automatically collect performance metrics on HTTP requests, database queries, and much more.
 ::::
 
 
