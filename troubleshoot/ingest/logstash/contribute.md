@@ -13,4 +13,4 @@ You might also want to try the [Logstash discussion forum](https://discuss.elast
 
 ## Additional resources
 
-* [Troubleshoot: Contact us](/troubleshoot/index.md)
+* [Troubleshoot: Contact us](/troubleshoot/troubleshoot/index.md)
