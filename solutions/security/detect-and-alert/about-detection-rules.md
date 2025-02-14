@@ -4,8 +4,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-about-rules.html
 ---
 
-# About detection rules
-
 % What needs to be done: Align serverless/stateful
 
 % Use migrated content from existing pages that map to this page:

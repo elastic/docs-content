@@ -4,8 +4,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-tune-detection-signals.html
 ---
 
-# Tune detection rules
-
 % What needs to be done: Lift-and-shift
 
 % Use migrated content from existing pages that map to this page:

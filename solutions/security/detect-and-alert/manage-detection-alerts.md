@@ -4,8 +4,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-manage.html
 ---
 
-# Manage detection alerts
-
 % What needs to be done: Align serverless/stateful
 
 % Use migrated content from existing pages that map to this page:
