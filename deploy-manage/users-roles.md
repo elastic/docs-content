@@ -56,14 +56,14 @@ For {{ecloud}} Hosted deployments, you can configure SSO at the organization lev
 
 Control access to your {{ece}} [orchestrator](/deploy-manage/deploy/cloud-enterprise/deploy-an-orchestrator.md) and deployments. 
 
-* [Manage passwords for default users](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-system-passwords.html)
-* [Manage orchestrator users and roles](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.html):
-  * [Using native users](/deploy-manage/users-roles/cloud-enterprise-orchestrator/native-user-authentication.html)
+* [Manage passwords for default users](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-system-passwords.md)
+* [Manage orchestrator users and roles](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md):
+  * [Using native users](/deploy-manage/users-roles/cloud-enterprise-orchestrator/native-user-authentication.md)
   * By integrating with external authentication providers:
-    * [Active Directory](/deploy-manage/users-roles/cloud-enterprise-orchestrator/active-directory.html)
-    * [LDAP](/deploy-manage/users-roles/cloud-enterprise-orchestrator/ldap.html)
-    * [SAML](/deploy-manage/users-roles/cloud-enterprise-orchestrator/saml.html)
-* [Configure single sign-on to deployments](/deploy-manage/users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.html) for orchestrator users
+    * [Active Directory](/deploy-manage/users-roles/cloud-enterprise-orchestrator/active-directory.md)
+    * [LDAP](/deploy-manage/users-roles/cloud-enterprise-orchestrator/ldap.md)
+    * [SAML](/deploy-manage/users-roles/cloud-enterprise-orchestrator/saml.md)
+* [Configure single sign-on to deployments](/deploy-manage/users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md) for orchestrator users
 
   ::::{tip}
   For {{ece}} deployments, you can configure SSO at the orchestrator level, the deployment level, or both.
@@ -88,13 +88,13 @@ Set up methods to identify users to the Elasticsearch cluster.
 
 Key tasks for managing user authentication include:
 
-* [Managing default users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.html)
-* [Managing users natively](/deploy-manage/users-roles/cluster-or-deployment-auth/native.html)
-* [Integrating with external authentication providers](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.html)
+* [Managing default users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md)
+* [Managing users natively](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)
+* [Integrating with external authentication providers](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md)
 
 You can also learn the basics of Elasticsearch authentication, learn about accounts used to communicate within an Elasticsearch cluster and across services, and perform advanced tasks.
 
-[View all user authentication docs](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.html)
+[View all user authentication docs](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md)
 
 ### User authorization
 
@@ -102,14 +102,14 @@ After a user is authenticated, use role-based access control to determine whethe
 
 Key tasks for managing user authorization include: 
 
-* Assigning [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.html) or [defining your own](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.html)
-* [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.html)
-* [Setting up field- and document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.html)
+* Assigning [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or [defining your own](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
+* [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
+* [Setting up field- and document-level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 
 You can also learn the basics of Elasticsearch authorization, and perform advanced tasks.
 
 ::::{tip}
-User roles are also used to control access to [spaces](/deploy-manage/manage-spaces.html).
+User roles are also used to control access to [spaces](/deploy-manage/manage-spaces.md).
 :::: 
 
-[View all user authorization docs](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.html)
+[View all user authorization docs](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md)

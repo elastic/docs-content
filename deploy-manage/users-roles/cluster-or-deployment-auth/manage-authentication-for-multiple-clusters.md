@@ -36,7 +36,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 
 
 ::::{tip}
-Make sure you check the complete [guide to setting up LDAP with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/ldap-realm.html).
+Make sure you check the complete [guide to setting up LDAP with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/ldap-realm.md).
 ::::
 
 
@@ -205,7 +205,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 
 
 ::::{tip}
-Make sure you check the complete [guide to setting up OpenID Connect with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html).
+Make sure you check the complete [guide to setting up OpenID Connect with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.md).
 ::::
 
 
@@ -386,7 +386,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 
 
 ::::{tip}
-Make sure you check the complete [guide to setting up JWT with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/jwt-auth-realm.html).
+Make sure you check the complete [guide to setting up JWT with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/jwt-auth-realm.md).
 ::::
 
 

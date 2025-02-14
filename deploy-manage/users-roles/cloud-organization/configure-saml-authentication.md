@@ -24,7 +24,7 @@ You can also integrate third-party authentication directly [at the deployment le
 | --- | --- | --- |
 | **Management experience** | Manage authentication and role mapping centrally for all deployments in the organization | Configure SSO for each deployment individually |
 | **Authentication protocols** | SAML only | Multiple protocols, including LDAP, OIDC, and SAML |
-| **Role mapping** | [Organization-level roles and instance access roles](user-roles.md), Serverless project [custom roles](https://docs.elastic.co/serverless/custom-roles.html) | [Built-in](../cluster-or-deployment-auth/built-in-roles.md) and [custom](../cluster-or-deployment-auth/defining-roles.md) stack-level roles |
+| **Role mapping** | [Organization-level roles and instance access roles](user-roles.md), Serverless project [custom roles](https://docs.elastic.co/serverless/custom-roles.md) | [Built-in](../cluster-or-deployment-auth/built-in-roles.md) and [custom](../cluster-or-deployment-auth/defining-roles.md) stack-level roles |
 | **User experience** | Users interact with Cloud | Users interact with the deployment directly |
 
 If you want to avoid exposing users to the {{ecloud}} UI, or have users who only interact with some deployments, then you might prefer users to interact with your deployment directly.
