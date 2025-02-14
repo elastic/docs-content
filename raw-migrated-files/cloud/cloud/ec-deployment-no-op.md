@@ -14,7 +14,7 @@ Re-saving the deployment configuration without making any changes is often all t
 
 **Seeing multiple warnings?**
 
-If multiple health warnings appear for one of your deployments, or if your deployment is unhealthy, we recommend [Getting help](../../../troubleshoot/troubleshoot/index.md) through the Elastic Support Portal.
+If multiple health warnings appear for one of your deployments, or if your deployment is unhealthy, we recommend [Getting help](../../../troubleshoot/index.md) through the Elastic Support Portal.
 
 **Warning about system changes**
 

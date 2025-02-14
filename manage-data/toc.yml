@@ -57,7 +57,7 @@ toc:
         children:
           - file: data-store/templates/simulate-multi-component-templates.md
           - file: data-store/templates/config-ignoremissingcomponenttemplates.md
-          - file: data-store/templates/index-management-in-ui.md
+          - file: data-store/templates/index-template-management.md
       - file: data-store/aliases.md
       - file: data-store/manage-data-from-the-command-line.md
   - file: ingest.md
