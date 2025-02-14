@@ -20,7 +20,7 @@ The purpose of exporters is to take data collected from any Elastic Stack source
 There are two types of exporters in {{es}}:
 
 `local`
-:   The default exporter used by {{es}} {monitor-features}. This exporter routes data back into the *same* cluster. See [Local exporters](es-local-exporter.md).
+:   The default exporter used by {{es}} {{monitor-features}}. This exporter routes data back into the *same* cluster. See [Local exporters](es-local-exporter.md).
 
 `http`
 :   The preferred exporter, which you can use to route data into any supported {{es}} cluster accessible via HTTP. Production environments should always use a separate monitoring cluster. See [HTTP exporters](es-http-exporter.md).
@@ -78,7 +78,7 @@ The templates are ordinary {{es}} templates that control the default settings an
 By default, monitoring indices are created daily (for example, `.monitoring-es-6-2017.08.26`). You can change the default date suffix for monitoring indices with the `index.name.time_format` setting. You can use this setting to control how frequently monitoring indices are created by a specific `http` exporter. You cannot use this setting with `local` exporters. For more information, see [HTTP exporter settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#http-exporter-settings).
 
 ::::{warning} 
-Some users create their own templates that match *all* index patterns, which therefore impact the monitoring indices that get created. It is critical that you do not disable `_source` storage for the monitoring indices. If you do, {{kib}} {monitor-features} do not work and you cannot visualize monitoring data for your cluster.
+Some users create their own templates that match *all* index patterns, which therefore impact the monitoring indices that get created. It is critical that you do not disable `_source` storage for the monitoring indices. If you do, {{kib}} {{monitor-features}} do not work and you cannot visualize monitoring data for your cluster.
 ::::
 
 

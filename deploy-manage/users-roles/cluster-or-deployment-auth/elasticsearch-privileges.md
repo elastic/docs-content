@@ -234,7 +234,7 @@ This section lists the privileges that you can assign to a role.
 
 
 `read_ilm`
-:   All read-only {{Ilm}} operations, such as getting policies and checking the status of {Ilm}
+:   All read-only {{Ilm}} operations, such as getting policies and checking the status of {{Ilm}}
 
     This privilege is not available in {{serverless-full}}.
 

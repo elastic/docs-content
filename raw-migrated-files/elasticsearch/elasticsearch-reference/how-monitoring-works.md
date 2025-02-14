@@ -31,6 +31,6 @@ To learn how to collect monitoring data, refer to:
     * [{{packetbeat}}](https://www.elastic.co/guide/en/beats/packetbeat/current/monitoring.html)
     * [{{winlogbeat}}](https://www.elastic.co/guide/en/beats/winlogbeat/current/monitoring.html)
 
-* [Monitoring APM Server](https://www.elastic.co/guide/en/apm/guide/current/monitor-apm.html)
+* [Monitoring APM Server](/solutions/observability/apps/monitor-apm-server.md)
 * [Monitoring {{agent}}s](https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](https://www.elastic.co/guide/en/fleet/current/elastic-agent-monitoring-configuration.html)
 

@@ -11,7 +11,7 @@ mapped_pages:
 
 When a data node is critically low on disk space and has reached the [flood-stage disk usage watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-flood-stage), the following error is logged: `Error: disk usage exceeded flood-stage watermark, index has read-only-allow-delete block`.
 
-To prevent a full disk, when a node reaches this watermark, {{es}} [blocks writes](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html#index-block-settings) to any index with a shard on the node. If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, this could induce {{kib}}'s `Kibana Server is not Ready yet` [error message](../../deploy-manage/deploy/self-managed/access.md#not-ready).
+To prevent a full disk, when a node reaches this watermark, {{es}} [blocks writes](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html#index-block-settings) to any index with a shard on the node. If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, this could induce {{kib}}'s `Kibana Server is not Ready yet` [error message](/troubleshoot/kibana/error-server-not-ready.md).
 
 {{es}} will automatically remove the write block when the affected node’s disk usage falls below the [high disk watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high). To achieve this, {{es}} attempts to rebalance some of the affected node’s shards to other nodes in the same data tier.
 

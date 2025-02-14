@@ -6,7 +6,7 @@ You can configure {{ilm}} ({{ilm-init}}) policies to automatically manage indice
 * Create a new index each day, week, or month and archive previous ones
 * Delete stale indices to enforce data retention standards
 
-You can create and manage index lifecycle policies through {{kib}} Management or the {{ilm-init}} APIs. Default {{ilm}} policies are created automatically when you use {{agent}}, {{beats}}, or the {{ls}} {es} output plugin to send data to the {{stack}}.
+You can create and manage index lifecycle policies through {{kib}} Management or the {{ilm-init}} APIs. Default {{ilm}} policies are created automatically when you use {{agent}}, {{beats}}, or the {{ls}} {{es}} output plugin to send data to the {{stack}}.
 
 ![index lifecycle policies](../../../images/elasticsearch-reference-index-lifecycle-policies.png "")
 
@@ -26,6 +26,6 @@ To automatically back up your indices and manage snapshots, use [snapshot lifecy
 * [*Manage existing indices*](../../../manage-data/lifecycle/index-lifecycle-management/manage-existing-indices.md)
 * [*Skip rollover*](../../../manage-data/lifecycle/index-lifecycle-management/skip-rollover.md)
 * [*Restore a managed data stream or index*](../../../manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
-* [*{{ilm-cap}} APIs*](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management-api.html)
+* [*{{ilm-cap}} APIs*](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ilm)
 * [*Index lifecycle actions*](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html)
 

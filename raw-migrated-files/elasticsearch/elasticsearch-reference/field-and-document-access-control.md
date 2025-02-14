@@ -124,7 +124,7 @@ For more information see [Ingest pipelines](../../../manage-data/ingest/transfor
 
 ## Field and document level security with Cross-cluster API keys [ccx-apikeys-dls-fls]
 
-[Cross-Cluster API keys](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) can be used to authenticate requests to a remote cluster. The `search` parameter defines permissions for cross-cluster search. The `replication` parameter defines permissions for cross-cluster replication.
+[Cross-Cluster API keys](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) can be used to authenticate requests to a remote cluster. The `search` parameter defines permissions for cross-cluster search. The `replication` parameter defines permissions for cross-cluster replication.
 
 `replication` does not support any field or document level security. `search` supports field and document level security.
 

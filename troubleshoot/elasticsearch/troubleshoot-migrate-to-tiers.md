@@ -35,7 +35,7 @@ In order to get the shards assigned we need to call the [migrate to data tiers r
     :class: screenshot
     :::
 
-4. First, let’s [stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {ilm}
+4. First, let’s [stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {{ilm}}
 
     ```console
     POST /_ilm/stop
@@ -88,7 +88,7 @@ In order to get the shards assigned we need to call the [migrate to data tiers r
     4. The composable index templates that were updated to not contain custom routing settings for the provided data attribute.
     5. The component templates that were updated to not contain custom routing settings for the provided data attribute.
 
-7. [Restart](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {ilm}
+7. [Restart](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}
 
     ```console
     POST /_ilm/start
@@ -112,7 +112,7 @@ In order to get the shards assigned we need to make sure the deployment is using
     node.roles [ data_hot, data_content ]
     ```
 
-2. [Stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {ilm}
+2. [Stop](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop) {{ilm}}
 
     ```console
     POST /_ilm/stop
@@ -165,7 +165,7 @@ In order to get the shards assigned we need to make sure the deployment is using
     4. The composable index templates that were updated to not contain custom routing settings for the provided data attribute.
     5. The component templates that were updated to not contain custom routing settings for the provided data attribute.
 
-5. [Restart](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {ilm}
+5. [Restart](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start) {{ilm}}
 
     ```console
     POST /_ilm/start

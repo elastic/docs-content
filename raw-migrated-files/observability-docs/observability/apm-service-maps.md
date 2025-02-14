@@ -15,7 +15,7 @@ We currently surface two types of service maps:
 
 ## How do service maps work? [service-maps-how]
 
-Service Maps rely on distributed traces to draw connections between services. As [distributed tracing](https://www.elastic.co/guide/en/apm/guide/current/apm-distributed-tracing.html) is enabled out-of-the-box for supported technologies, so are service maps. However, if a service isn’t instrumented, or a `traceparent` header isn’t being propagated to it, distributed tracing will not work, and the connection will not be drawn on the map.
+Service Maps rely on distributed traces to draw connections between services. As [distributed tracing](/solutions/observability/apps/traces.md) is enabled out-of-the-box for supported technologies, so are service maps. However, if a service isn’t instrumented, or a `traceparent` header isn’t being propagated to it, distributed tracing will not work, and the connection will not be drawn on the map.
 
 
 ## Visualize your architecture [visualize-your-architecture]

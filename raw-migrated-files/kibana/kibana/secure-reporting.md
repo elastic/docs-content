@@ -136,7 +136,7 @@ With a Basic license, you can grant users access with custom roles to {{report-f
 :class: screenshot
 :::
 
-With a Basic license, sub-feature application privileges are unavailable, but you can use the [role API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html) to grant access to CSV {{report-features}}:
+With a Basic license, sub-feature application privileges are unavailable, but you can use the [role API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role) to grant access to CSV {{report-features}}:
 
 ```console
 PUT localhost:5601/api/security/role/custom_reporting_user

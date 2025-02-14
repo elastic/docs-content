@@ -19,7 +19,7 @@ If you want to receive notifications via external systems, such as Slack or emai
 
 After rules have started running, you can monitor their executions to verify they are functioning correctly, as well as view, manage, and troubleshoot alerts (see [Manage detection alerts](../../../solutions/security/detect-and-alert/manage-detection-alerts.md) and [Monitor and troubleshoot rule executions](../../../troubleshoot/security/detection-rules.md)).
 
-You can create and manage rules and alerts via the UI or the [Detections API](https://www.elastic.co/guide/en/security/current/rule-api-overview.html).
+You can create and manage rules and alerts via the UI or the [Detections API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api).
 
 ::::{important}
 To make sure you can access Detections and manage rules, see [Detections prerequisites and requirements](../../../solutions/security/detect-and-alert/detections-requirements.md).
