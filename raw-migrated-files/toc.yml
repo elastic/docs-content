@@ -480,7 +480,6 @@ toc:
       - file: docs-content/serverless/security-rules-coverage.md
       - file: docs-content/serverless/security-rules-create.md
       - file: docs-content/serverless/security-rules-ui-management.md
-      - file: docs-content/serverless/security-runtime-fields.md
       - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-session-view.md
       - file: docs-content/serverless/security-signals-to-cases.md
@@ -843,7 +842,6 @@ toc:
       - file: security-docs/security/rules-coverage.md
       - file: security-docs/security/rules-ui-create.md
       - file: security-docs/security/rules-ui-management.md
-      - file: security-docs/security/runtime-fields.md
       - file: security-docs/security/sec-requirements.md
       - file: security-docs/security/security-assistant.md
       - file: security-docs/security/security-posture-faq.md
