@@ -19,13 +19,13 @@ If you prefer to install the add-on through your web browser, go to the [Elastic
 
 To install the latest add-on for MY_APP using the Heroku CLI:
 
-```term
+```bash
 heroku addons:create foundelasticsearch --app MY_APP
 ```
 
 After the Elasticsearch Add-On for Heroku gets added, you can find the canonical URL you use to access your newly provisioned cluster in the configuration for the app. Look for the `FOUNDELASTICSEARCH_URL` setting when you grep on the output of the `heroku config` command:
 
-```term
+```bash
 heroku config --app MY_APP | grep FOUNDELASTICSEARCH_URL
 FOUNDELASTICSEARCH_URL: https://74f176887fdef36bb51e6e37nnnnnnnn.us-east-1.aws.found.io
 ```

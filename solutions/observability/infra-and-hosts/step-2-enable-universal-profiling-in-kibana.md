@@ -16,7 +16,7 @@ Refer to the steps for your platform to deploy update the configuration.
 
 ## ECE [_ece] 
 
-Install the 8.12.0 stackpack or higher. Refer to [ECE manage elastic stack](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-manage-elastic-stack.html#ece-manage-elastic-stack) for more information.
+Install the 8.12.0 stackpack or higher. Refer to [ECE manage elastic stack](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-elastic-stack.html#ece-manage-elastic-stack) for more information.
 
 In ECE, you don’t need to perform any additional steps to enable the Universal Profiling plugin in Kibana.
 

@@ -17,7 +17,7 @@ If you have previously configured legacy collection methods, you should migrate 
 
 Collectors, as their name implies, collect things. Each collector runs once for each collection interval to obtain data from the public APIs in {{es}} and {{xpack}} that it chooses to monitor. When the data collection is finished, the data is handed in bulk to the [exporters](es-monitoring-exporters.md) to be sent to the monitoring clusters. Regardless of the number of exporters, each collector only runs once per collection interval.
 
-There is only one collector per data type gathered. In other words, for any monitoring document that is created, it comes from a single collector rather than being merged from multiple collectors. The {{es}} {monitor-features} currently have a few collectors because the goal is to minimize overlap between them for optimal performance.
+There is only one collector per data type gathered. In other words, for any monitoring document that is created, it comes from a single collector rather than being merged from multiple collectors. The {{es}} {{monitor-features}} currently have a few collectors because the goal is to minimize overlap between them for optimal performance.
 
 Each collector can create zero or more monitoring documents. For example, the `index_stats` collector collects all index statistics at the same time to avoid many unnecessary calls.
 
@@ -30,7 +30,7 @@ Each collector can create zero or more monitoring documents. For example, the `i
 | Jobs | `job_stats` | Gathers details about all machine learning job statistics (for example, `GET/_ml/anomaly_detectors/_stats`). This information only needs to be collectedonce, so it is collected on the *elected* master node. However, for the masternode to be able to perform the collection, the master node must have`xpack.ml.enabled` set to true (default) and a license level that supports {{ml}}. |
 | Node Stats | `node_stats` | Gathers details about the running node, such as memory utilization and CPUusage (for example, `GET /_nodes/_local/stats`). This runs on *every* node with{{monitor-features}} enabled. One common failure results in the timeout of the nodestats request due to too many segment files. As a result, the collector spendstoo much time waiting for the file system stats to be calculated until itfinally times out. A single `node_stats` document is created per collection.This is collected per node to help to discover issues with nodes communicatingwith each other, but not with the monitoring cluster (for example, intermittentnetwork issues or memory pressure). |
 
-The {{es}} {monitor-features} use a single threaded scheduler to run the collection of {{es}} monitoring data by all of the appropriate collectors on each node. This scheduler is managed locally by each node and its interval is controlled by specifying the `xpack.monitoring.collection.interval`, which defaults to 10 seconds (`10s`), at either the node or cluster level.
+The {{es}} {{monitor-features}} use a single threaded scheduler to run the collection of {{es}} monitoring data by all of the appropriate collectors on each node. This scheduler is managed locally by each node and its interval is controlled by specifying the `xpack.monitoring.collection.interval`, which defaults to 10 seconds (`10s`), at either the node or cluster level.
 
 Fundamentally, each collector works on the same principle. Per collection interval, each collector is checked to see whether it should run and then the appropriate collectors run. The failure of an individual collector does not impact any other collector.
 
@@ -48,14 +48,14 @@ For more information about the configuration options for the collectors, see [Mo
 
 ## Collecting data from across the Elastic Stack [es-monitoring-stack] 
 
-{{es}} {monitor-features} also receive monitoring data from other parts of the Elastic Stack. In this way, it serves as an unscheduled monitoring data collector for the stack.
+{{es}} {{monitor-features}} also receive monitoring data from other parts of the Elastic Stack. In this way, it serves as an unscheduled monitoring data collector for the stack.
 
 By default, data collection is disabled. {{es}} monitoring data is not collected and all monitoring data from other sources such as {{kib}}, Beats, and Logstash is ignored. You must set `xpack.monitoring.collection.enabled` to `true` to enable the collection of monitoring data. See [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html).
 
 Once data is received, it is forwarded to the exporters to be routed to the monitoring cluster like all monitoring data.
 
 ::::{warning} 
-Because this stack-level "collector" lives outside of the collection interval of {{es}} {monitor-features}, it is not impacted by the `xpack.monitoring.collection.interval` setting. Therefore, data is passed to the exporters whenever it is received. This behavior can result in indices for {{kib}}, Logstash, or Beats being created somewhat unexpectedly.
+Because this stack-level "collector" lives outside of the collection interval of {{es}} {{monitor-features}}, it is not impacted by the `xpack.monitoring.collection.interval` setting. Therefore, data is passed to the exporters whenever it is received. This behavior can result in indices for {{kib}}, Logstash, or Beats being created somewhat unexpectedly.
 ::::
 
 

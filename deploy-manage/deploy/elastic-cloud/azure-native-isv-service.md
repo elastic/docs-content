@@ -298,7 +298,7 @@ $$$azure-integration-whats-included$$$What is included in my {{ecloud}} deployme
 :   Each {{ecloud}} deployment includes:
 
     * An {{es}} cluster
-    * A {{kib}} instance which provides data visualization and a front-end for the {stack}
+    * A {{kib}} instance which provides data visualization and a front-end for the {{stack}}
     * An APM server that allows you to easily collect application traces
     * An {{ents}} instance that allows you to easily build a search experience with an intuitive interface
 

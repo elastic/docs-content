@@ -15,7 +15,7 @@ mapped_pages:
 Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
 * Aggregations that use `nested` or `parent/child` mapping
-* Aggregations without a {data-source}
+* Aggregations without a {{data-source}}
 * Queries that use custom time filters
 * Complex calculations
 * Extracted data from _source instead of aggregations
@@ -1119,7 +1119,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 {{kib}} has extended Vega and Vega-Lite with extensions that support:
 
 * Automatic sizing
-* Default theme to match {kib}
+* Default theme to match {{kib}}
 * Writing {{es}} queries using the time range and filters from dashboards
 * [preview] Using the Elastic Map Service in Vega maps
 * Additional tooltip styling

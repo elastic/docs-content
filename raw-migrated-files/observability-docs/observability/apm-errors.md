@@ -1,7 +1,7 @@
 # Errors [apm-errors]
 
 ::::{tip}
-[Errors](https://www.elastic.co/guide/en/apm/guide/current/data-model-errors.html) are groups of exceptions with a similar exception or log message.
+[Errors](/solutions/observability/apps/errors.md) are groups of exceptions with a similar exception or log message.
 ::::
 
 

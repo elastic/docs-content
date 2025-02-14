@@ -41,7 +41,7 @@ In **Management > {{stack-manage-app}} > Maintenance Windows** or **{{project-se
 When you create a maintenance window, you must provide a name and a schedule. You can optionally configure it to repeat daily, monthly, yearly, or on a custom interval.
 
 :::{image} ../../../images/kibana-create-maintenance-window.png
-:alt: The Create Maintenance Window user interface in {kib}
+:alt: The Create Maintenance Window user interface in {{kib}}
 :class: screenshot
 :::
 

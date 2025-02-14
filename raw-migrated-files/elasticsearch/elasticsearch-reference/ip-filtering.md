@@ -2,17 +2,17 @@
 
 You can apply IP filtering to application clients, node clients, or transport clients, remote cluster clients, in addition to other nodes that are attempting to join the cluster.
 
-If a node’s IP address is on the denylist, the {{es}} {security-features} allow the connection to {{es}} but it is be dropped immediately and no requests are processed.
+If a node’s IP address is on the denylist, the {{es}} {{security-features}} allow the connection to {{es}} but it is be dropped immediately and no requests are processed.
 
 ::::{note} 
-Elasticsearch installations are not designed to be publicly accessible over the Internet. IP Filtering and the other capabilities of the {{es}} {security-features} do not change this condition.
+Elasticsearch installations are not designed to be publicly accessible over the Internet. IP Filtering and the other capabilities of the {{es}} {{security-features}} do not change this condition.
 ::::
 
 
 
 ## Enabling IP filtering [_enabling_ip_filtering] 
 
-The {{es}} {security-features} contain an access control feature that allows or rejects hosts, domains, or subnets. If the [{{operator-feature}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) is enabled, only operator users can update these settings.
+The {{es}} {{security-features}} contain an access control feature that allows or rejects hosts, domains, or subnets. If the [{{operator-feature}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) is enabled, only operator users can update these settings.
 
 You configure IP filtering by specifying the `xpack.security.transport.filter.allow` and `xpack.security.transport.filter.deny` settings in `elasticsearch.yml`. Allow rules take precedence over the deny rules.
 
@@ -66,7 +66,7 @@ xpack.security.http.filter.enabled: true
 
 ## Specifying TCP transport profiles [_specifying_tcp_transport_profiles] 
 
-[TCP transport profiles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#transport-profiles) enable Elasticsearch to bind on multiple hosts. The {{es}} {security-features} enable you to apply different IP filtering on different profiles.
+[TCP transport profiles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#transport-profiles) enable Elasticsearch to bind on multiple hosts. The {{es}} {{security-features}} enable you to apply different IP filtering on different profiles.
 
 ```yaml
 xpack.security.transport.filter.allow: 172.16.0.0/24

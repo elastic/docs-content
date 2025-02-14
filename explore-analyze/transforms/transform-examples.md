@@ -23,7 +23,7 @@ These examples demonstrate how to use {{transforms}} to derive useful insights f
 This example uses the eCommerce orders sample data set to find the customers who spent the most in a hypothetical webshop. Let’s use the `pivot` type of {{transform}} such that the destination index contains the number of orders, the total price of the orders, the amount of unique products and the average price per order, and the total amount of ordered products for each customer.
 
 :::{image} ../../images/elasticsearch-reference-transform-ex1-1.jpg
-:alt: Finding your best customers with {{transforms}} in {kib}
+:alt: Finding your best customers with {{transforms}} in {{kib}}
 :class: screenshot
 :::
 
@@ -291,14 +291,14 @@ This example uses the web log sample data set to find the last log from an IP ad
 Pick the `clientip` field as the unique key; the data is grouped by this field. Select `timestamp` as the date field that sorts the data chronologically. For continuous mode, specify a date field that is used to identify new documents, and an interval between checks for changes in the source index.
 
 :::{image} ../../images/elasticsearch-reference-transform-ex4-1.jpg
-:alt: Finding the last log event for each IP address with {{transforms}} in {kib}
+:alt: Finding the last log event for each IP address with {{transforms}} in {{kib}}
 :class: screenshot
 :::
 
 Let’s assume that we’re interested in retaining documents only for IP addresses that appeared recently in the log. You can define a retention policy and specify a date field that is used to calculate the age of a document. This example uses the same date field that is used to sort the data. Then set the maximum age of a document; documents that are older than the value you set will be removed from the destination index.
 
 :::{image} ../../images/elasticsearch-reference-transform-ex4-2.jpg
-:alt: Defining retention policy for {{transforms}} in {kib}
+:alt: Defining retention policy for {{transforms}} in {{kib}}
 :class: screenshot
 :::
 

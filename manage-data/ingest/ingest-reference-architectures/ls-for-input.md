@@ -6,7 +6,7 @@ mapped_pages:
 # Logstash to Elasticsearch [ls-for-input]
 
 :::{image} ../../../images/ingest-ls-es.png
-:alt: Image showing {{ls}} collecting data and sending to {es}
+:alt: Image showing {{ls}} collecting data and sending to {{es}}
 :::
 
 Ingest model

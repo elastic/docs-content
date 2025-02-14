@@ -192,7 +192,7 @@ DELETE _scripts/my-search-template
 
 To set a default value for a variable, use the following syntax:
 
-```mustache
+```handlebars
 {{my-var}}{{^my-var}}default value{{/my-var}}
 ```
 
@@ -447,7 +447,7 @@ The template renders as:
 
 To create if conditions, use the following syntax:
 
-```mustache
+```handlebars
 {{#condition}}content{{/condition}}
 ```
 
@@ -527,7 +527,7 @@ The template renders as:
 
 To create if-else conditions, use the following syntax:
 
-```mustache
+```handlebars
 {{#condition}}if content{{/condition}} {{^condition}}else content{{/condition}}
 ```
 
@@ -817,7 +817,7 @@ Inverted sections are useful when you want to set a value once.
 
 To use inverted sections use following syntax:
 
-```mustache
+```handlebars
 {{^my-variable}} content {{/my-variable}}
 ```
 
