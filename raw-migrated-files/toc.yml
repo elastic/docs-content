@@ -433,17 +433,11 @@ toc:
       - file: docs-content/serverless/security-dashboards-overview.md
       - file: docs-content/serverless/security-data-quality-dash.md
       - file: docs-content/serverless/security-data-views-in-sec.md
-      - file: docs-content/serverless/security-deploy-elastic-endpoint-ven.md
-      - file: docs-content/serverless/security-deploy-with-mdm.md
       - file: docs-content/serverless/security-detection-engine-overview.md
       - file: docs-content/serverless/security-detection-entity-dashboard.md
       - file: docs-content/serverless/security-detection-response-dashboard.md
       - file: docs-content/serverless/security-detections-requirements.md
-      - file: docs-content/serverless/security-elastic-endpoint-deploy-reqs.md
-      - file: docs-content/serverless/security-endpoint-data-volume.md
-      - file: docs-content/serverless/security-endpoint-diagnostic-data.md
       - file: docs-content/serverless/security-endpoint-management-req.md
-      - file: docs-content/serverless/security-endpoint-protection-intro.md
       - file: docs-content/serverless/security-endpoints-page.md
       - file: docs-content/serverless/security-environment-variable-capture.md
       - file: docs-content/serverless/security-ers-requirements.md
@@ -475,7 +469,6 @@ toc:
       - file: docs-content/serverless/security-posture-faq.md
       - file: docs-content/serverless/security-posture-management.md
       - file: docs-content/serverless/security-prebuilt-rules-management.md
-      - file: docs-content/serverless/security-protection-artifact-control.md
       - file: docs-content/serverless/security-query-alert-indices.md
       - file: docs-content/serverless/security-query-operating-systems.md
       - file: docs-content/serverless/security-reduce-notifications-alerts.md
@@ -499,7 +492,6 @@ toc:
       - file: docs-content/serverless/security-tune-detection-signals.md
       - file: docs-content/serverless/security-turn-on-risk-engine.md
       - file: docs-content/serverless/security-ui.md
-      - file: docs-content/serverless/security-uninstall-agent.md
       - file: docs-content/serverless/security-users-page.md
       - file: docs-content/serverless/security-view-alert-details.md
       - file: docs-content/serverless/security-visual-event-analyzer.md
@@ -766,7 +758,6 @@ toc:
       - file: security-docs/security/alert-suppression.md
       - file: security-docs/security/alerts-run-osquery.md
       - file: security-docs/security/alerts-ui-manage.md
-      - file: security-docs/security/artifact-control.md
       - file: security-docs/security/assistant-connect-to-azure-openai.md
       - file: security-docs/security/assistant-connect-to-bedrock.md
       - file: security-docs/security/assistant-connect-to-openai.md
@@ -804,7 +795,6 @@ toc:
       - file: security-docs/security/dashboards-overview.md
       - file: security-docs/security/data-quality-dash.md
       - file: security-docs/security/data-views-in-sec.md
-      - file: security-docs/security/deploy-elastic-endpoint-ven.md
       - file: security-docs/security/deploy-elastic-endpoint.md
       - file: security-docs/security/deploy-with-mdm.md
       - file: security-docs/security/detection-engine-overview.md
@@ -812,11 +802,7 @@ toc:
       - file: security-docs/security/detection-response-dashboard.md
       - file: security-docs/security/detections-logsdb-index-mode-impact.md
       - file: security-docs/security/detections-permissions-section.md
-      - file: security-docs/security/elastic-endpoint-deploy-reqs.md
-      - file: security-docs/security/endpoint-data-volume.md
-      - file: security-docs/security/endpoint-diagnostic-data.md
       - file: security-docs/security/endpoint-management-req.md
-      - file: security-docs/security/endpoint-protection-intro.md
       - file: security-docs/security/environment-variable-capture.md
       - file: security-docs/security/ers-requirements.md
       - file: security-docs/security/es-overview.md
@@ -873,7 +859,6 @@ toc:
       - file: security-docs/security/trusted-apps-ov.md
       - file: security-docs/security/tuning-detection-signals.md
       - file: security-docs/security/turn-on-risk-engine.md
-      - file: security-docs/security/uninstall-agent.md
       - file: security-docs/security/use-osquery.md
       - file: security-docs/security/users-page.md
       - file: security-docs/security/view-alert-details.md
