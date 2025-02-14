@@ -60,8 +60,8 @@ The right panel provides an overview of the alert. Expand any of the collapsed s
 From the right panel, you can also:
 
 * Click **Expand details** to open the [left panel](#left-panel), which shows more information about sections in the right panel.
-* Click the **Chat** icon (![AI assistant chat icon](../../../images/security-ai-assistant-chat.png "")) to access the [*AI Assistant*](../ai/ai-assistant.md).
-* Click the **Share alert** icon (![Share alert icon](../../../images/security-share-alert.png "")) to get a shareable alert URL. We *do not* recommend copying the URL from your browser’s address bar, which can lead to inconsistent results if you’ve set up filters or relative time ranges for the Alerts page.
+* Click the **Chat** icon (![AI assistant chat icon](../../../images/security-ai-assistant-chat.png "title =20x20")) to access the [*AI Assistant*](../ai/ai-assistant.md).
+* Click the **Share alert** icon (![Share alert icon](../../../images/security-share-alert.png "title =20x20")) to get a shareable alert URL. We *do not* recommend copying the URL from your browser’s address bar, which can lead to inconsistent results if you’ve set up filters or relative time ranges for the Alerts page.
 
     ::::{note}
     If you’ve configured the [`server.publicBaseUrl`](../../../deploy-manage/deploy/self-managed/configure.md#server-publicBaseUrl) setting in the `kibana.yml` file, the shareable URL is also in the `kibana.alert.url` field. You can find the field by searching for `kibana.alert.url` on the **Table** tab.
@@ -72,14 +72,14 @@ From the right panel, you can also:
     If you’ve enabled grouping on the Alerts page, the alert details flyout won’t open until you expand a collapsed group and select an individual alert.
     ::::
 
-* Click the **Flyout settings** icon (![Flyout settings icon](../../../images/security-flyout-settings.png "")) to access options for displaying the alert details flyout. The **Overlay*** option (which displays the flyout over the Alerts table) is selected by default. Select ***Push** to display the flyout to the side of the table instead. In either display, you can resize the flyout panels to your liking. Clicking **Reset size** reverts the flyout to its default dimensions.
+* Click the **Flyout settings** icon (![Flyout settings icon](../../../images/security-flyout-settings.png "title =20x20")) to access options for displaying the alert details flyout. The **Overlay*** option (which displays the flyout over the Alerts table) is selected by default. Select ***Push** to display the flyout to the side of the table instead. In either display, you can resize the flyout panels to your liking. Clicking **Reset size** reverts the flyout to its default dimensions.
 * Find basic details about the alert, such as the:
 
     * Associated rule
     * Alert status and when the alert was created
     * Alert severity and risk score (these are inherited from rule that generated the alert)
-    * Users assigned to the alert (click the **Assign alert** ![Assign alert](../../../images/security-assign-alert.png "") icon to assign more users)
-    * Notes attached to the alert (click the **Add note** ![Add note](../../../images/security-add-note-icon.png "") icon to create a new note)
+    * Users assigned to the alert (click the **Assign alert** ![Assign alert](../../../images/security-assign-alert.png "title =20x20") icon to assign more users)
+    * Notes attached to the alert (click the **Add note** ![Add note](../../../images/security-add-note-icon.png "title =20x20") icon to create a new note)
 
 * Click the **Table** or **JSON** tabs to display the alert details in table or JSON format. In table format, alert details are displayed as field-value pairs.
 
@@ -167,7 +167,7 @@ The Visualizations section is located on the **Overview** tab in the right panel
 Click **Visualizations** to display the following previews:
 
 * **Session viewer preview**: Shows a preview of [Session View](../investigate/session-view.md) data. Click **Session viewer preview** to open the **Session View** tab in Timeline.
-* **Analyzer preview**: Shows a preview of the [visual analyzer graph](../investigate/visual-event-analyzer.md). The preview displays up to three levels of the analyzed event’s ancestors and up to three levels of the event’s descendants and children. The ellipses symbol (**`...`***) indicates the event has more ancestors and descendants to examine. Click ***Analyzer preview** to open the **Event Analyzer** tab in Timeline.
+* **Analyzer preview**: Shows a preview of the [visual analyzer graph](../investigate/visual-event-analyzer.md). The preview displays up to three levels of the analyzed event’s ancestors and up to three levels of the event’s descendants and children. The ellipses symbol (**...**) indicates the event has more ancestors and descendants to examine. Click ***Analyzer preview** to open the **Event Analyzer** tab in Timeline.
 
 
 ### Expanded visualizations view [expanded-visualizations-view]
@@ -358,7 +358,7 @@ The expanded Prevalence view provides the following details:
 * **Field**: Shows [highlighted fields](#investigation-section) for the alert and any custom highlighted fields that were added to the alert’s rule.
 * **Value**: Shows values for highlighted fields and any custom highlighted fields that were added to the alert’s rule.
 * **Alert count**: Shows the total number of alert documents that have identical highlighted field values, including the alert you’re currently examining. For example, if the `host.name` field has an alert count of 5, that means there are five total alerts with the same `host.name` value. The Alert count column only retrieves documents that contain the [`event.kind:signal`](https://www.elastic.co/guide/en/ecs/current/ecs-allowed-values-event-kind.html#ecs-event-kind-signal) field-value pair.
-* **Document count**: Shows the total number of event documents that have identical field values. A dash (`——`) displays if there are no event documents that match the field value. The Document count column only retrieves documents that don’t contain the [`event.kind:signal`](https://www.elastic.co/guide/en/ecs/current/ecs-allowed-values-event-kind.html#ecs-event-kind-signal) field-value pair.
+* **Document count**: Shows the total number of event documents that have identical field values. A dash (**——**) displays if there are no event documents that match the field value. The Document count column only retrieves documents that don’t contain the [`event.kind:signal`](https://www.elastic.co/guide/en/ecs/current/ecs-allowed-values-event-kind.html#ecs-event-kind-signal) field-value pair.
 
 The following features require a [Platinum subscription](https://www.elastic.co/pricing) or higher:
 

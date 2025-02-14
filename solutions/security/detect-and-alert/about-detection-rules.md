@@ -25,7 +25,7 @@ Rules run periodically and search for source events, matches, sequences, or {{ml
 You can create the following types of rules:
 
 * [**Custom query**](create-detection-rule.md#create-custom-rule): Query-based rule, which searches the defined indices and creates an alert when one or more documents match the rule’s query.
-* [**Machine learning](create-detection-rule.md#create-ml-rule)**: {{ml-cap}} rule, which creates an alert when a {{ml}} job discovers an anomaly above the defined threshold (see [Anomaly detection](../advanced-entity-analytics/anomaly-detection.md)).
+* [**Machine learning**](create-detection-rule.md#create-ml-rule)**: {{ml-cap}} rule, which creates an alert when a {{ml}} job discovers an anomaly above the defined threshold (see [Anomaly detection](../advanced-entity-analytics/anomaly-detection.md)).
 
     For {{ml}} rules, the associated {{ml}} job must be running. If the {{ml}} job isn’t running, the rule will:
 

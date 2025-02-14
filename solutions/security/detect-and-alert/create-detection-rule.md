@@ -140,7 +140,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
             :class: screenshot
             :::
 
-    3. You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+    3. You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
 
         When you use a saved query, the **Load saved query "*query name*" dynamically on each rule execution** check box appears:
 
@@ -171,7 +171,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     2. Use the filter and query fields to create the criteria used for detecting alerts.
 
         ::::{note}
-        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
     3. Use the **Group by** and **Threshold** fields to determine which source event field is used as a threshold and the threshold’s value.
@@ -249,7 +249,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
             For sequence events, the {{security-app}} generates a single alert when all events listed in the sequence are detected. To see the matched sequence events in more detail, you can view the alert in the Timeline, and, if all events came from the same process, open the alert in Analyze Event view.
             ::::
 
-5. (Optional) Click the EQL settings icon (![EQL settings icon](../../../images/security-eql-settings-icon.png "")) to configure additional fields used by [EQL search](../../../explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
+5. (Optional) Click the EQL settings icon (![EQL settings icon](../../../images/security-eql-settings-icon.png "title =20x20")) to configure additional fields used by [EQL search](../../../explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
 
     * **Event category field**: Contains the event classification, such as `process`, `file`, or `network`. This field is typically mapped as a field type in the [keyword family](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html). Defaults to the `event.category` ECS field.
     * **Tiebreaker field**: Sets a secondary field for sorting events (in ascending, lexicographic order) if they have the same timestamp.
@@ -289,7 +289,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 
 
         ::::{note}
-        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
     3. **Indicator index patterns**: The indicator index patterns containing field values for which you want to generate alerts. This field is automatically populated with indices specified in the `securitySolution:defaultThreatIndex` advanced setting. For more information, see [Update default Elastic Security threat intelligence indices](../get-started/configure-advanced-settings.md#update-threat-intel-indices).
@@ -377,7 +377,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
     2. Use the filter and query fields to create the criteria used for detecting alerts.
 
         ::::{note}
-        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
+        You can use {{kib}} saved queries (![Saved query menu](../../../images/security-saved-query-menu.png "title =20x20")) and queries from saved Timelines (**Import query from saved Timeline**) as rule conditions.
         ::::
 
     3. Use the **Fields** menu to select a field to check for new terms. You can also select up to three fields to detect a combination of new terms (for example, a `host.ip` and `host.id` that have never been observed together before).
@@ -420,7 +420,7 @@ To create an {{esql}} rule:
 
 
     ::::{tip}
-    Click the help icon (![Click the ES|QL help icon](../../../images/security-esql-help-ref-button.png "")) to open the in-product reference documentation for all {{esql}} commands and functions.
+    Click the help icon (![Click the ES|QL help icon](../../../images/security-esql-help-ref-button.png "title =20x20")) to open the in-product reference documentation for all {{esql}} commands and functions.
     ::::
 
 4. (Optional, [Platinum or higher subscription](https://www.elastic.co/pricing) required) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](suppress-detection-alerts.md) for more information.
@@ -867,11 +867,11 @@ To interact with the rule preview:
 
 * Click **Refresh** to update the preview.
 
-    * When you edit the rule’s settings or the preview’s time range, the button changes from blue (![Blue circular refresh icon](../../../images/security-rule-preview-refresh-circle.png "")) to green (![Green right-pointing arrow refresh icon](../../../images/security-rule-preview-refresh-arrow.png "")) to indicate that the rule has been edited since the last preview.
+    * When you edit the rule’s settings or the preview’s time range, the button changes from blue (![Blue circular refresh icon](../../../images/security-rule-preview-refresh-circle.png "title =20x20")) to green (![Green right-pointing arrow refresh icon](../../../images/security-rule-preview-refresh-arrow.png "title =20x20")) to indicate that the rule has been edited since the last preview.
     * For a relative time range (such as `Last 1 hour`), refresh the preview to check for the latest results. (Previews don’t automatically refresh with new incoming data.)
 
-* Click the **View details** icon (![View details icon](../../../images/security-view-details-icon.png "")) in the alerts table to view the details of a particular alert.
-* To resize the preview, hover between the rule settings and preview, then click and drag the border. You can also click the border, then the collapse icon (![Collapse icon](../../../images/security-collapse-right-icon.png "")) to collapse and expand the preview.
+* Click the **View details** icon (![View details icon](../../../images/security-view-details-icon.png "title =20x20")) in the alerts table to view the details of a particular alert.
+* To resize the preview, hover between the rule settings and preview, then click and drag the border. You can also click the border, then the collapse icon (![Collapse icon](../../../images/security-collapse-right-icon.png "title =20x20")) to collapse and expand the preview.
 * To close the preview, click the **Rule preview** button again.
 
 

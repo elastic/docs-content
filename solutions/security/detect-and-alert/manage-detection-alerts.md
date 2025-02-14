@@ -98,13 +98,13 @@ By default, the drop-down controls on the Alerts page filter alerts by **Status*
 ::::
 
 
-1. Click the three-dot icon next to the controls (![Three-dot icon](../../../images/security-three-dot-icon-blue.png "")), then select **Edit Controls**.
+1. Click the three-dot icon next to the controls (![Three-dot icon](../../../images/security-three-dot-icon-blue.png "title =20x20")), then select **Edit Controls**.
 2. Do any of the following:
 
-    * To reorder controls, click and drag a control by its handle (![Control handle](../../../images/security-handle-icon.png "")).
-    * To remove a control, hover over it and select **Remove control** (![Red X icon](../../../images/security-red-x-icon.png "")).
-    * To edit a control, hover over it and select **Edit control** (![Edit icon](../../../images/security-pencil-icon.png "")).
-    * To add a new control, click **Add Controls** (![Add icon](../../../images/security-add-icon-blue.png "")). If you already have four controls, you must first remove one to make room for the new one.
+    * To reorder controls, click and drag a control by its handle (![Control handle](../../../images/security-handle-icon.png "title =20x20")).
+    * To remove a control, hover over it and select **Remove control** (![Red X icon](../../../images/security-red-x-icon.png "title =20x20")).
+    * To edit a control, hover over it and select **Edit control** (![Edit icon](../../../images/security-pencil-icon.png "title =20x20")).
+    * To add a new control, click **Add Controls** (![Add icon](../../../images/security-add-icon-blue.png "title =20x20")). If you already have four controls, you must first remove one to make room for the new one.
 
 3. If you’re editing or adding a control, do the following in the configuration flyout that opens:
 
@@ -112,7 +112,7 @@ By default, the drop-down controls on the Alerts page filter alerts by **Status*
     2. Enter a **Label** to identify the control.
     3. Click **Save and close**.
 
-4. Click **Save pending changes** (![Save icon](../../../images/security-save-icon-blue.png "")).
+4. Click **Save pending changes** (![Save icon](../../../images/security-save-icon-blue.png "title =20x20")).
 
 
 ## Group alerts [group-alerts]
@@ -131,7 +131,7 @@ Each group displays information such as the alerts' severity and how many users,
 To interact with grouped alerts:
 
 * Select the **Take actions** menu to perform a bulk action on all alerts in a group, such as [changing their status](#detection-alert-status).
-* Click a group’s name or the expand icon (![Grouped alerts expand icon](../../../images/security-expand-icon-vertical-right.png "")) to display alerts within that group. You can filter and customize this view like any other alerts table.
+* Click a group’s name or the expand icon (![Grouped alerts expand icon](../../../images/security-expand-icon-vertical-right.png "title =20x20")) to display alerts within that group. You can filter and customize this view like any other alerts table.
 
     :::{image} ../../../images/security-group-alerts-expand.png
     :alt: Expanded alert group with alerts table
@@ -246,9 +246,9 @@ Users are not notified when they’ve been assigned to, or unassigned from, aler
 
 | Action | Instructions |
 | --- | --- |
-| Assign users to an alert | Choose one of the following:<br><br>* **Alerts table** - Click **More actions*** (***…​***) in an alert’s row, then click ***Assign alert***. Select users, then click ***Apply***.<br>* ***Alert details flyout*** - Click ***Take action → Assign alert***. Alternatively, click the ***Assign alert** icon at the top of the alert details flyout, select users, then click **Apply**.<br> |
-| Unassign all users from an alert | Choose one of the following:<br><br>* **Alerts table** - Click **More actions*** (***…​***) in an alert’s row, then click ***Unassign alert***.<br>* ***Alert details flyout** - Click **Take action → Unassign alert**.<br> |
-| Assign users to multiple alerts | From the Alerts table, select the alerts you want to change. Click **Selected *x* alerts** at the upper-left above the table, then click **Assign alert**. Select users, then click **Apply**.<br><br>::::{note} <br>Users assigned to some of the selected alerts will be displayed as unassigned in the selection list. Selecting said users will assign them to all alerts they haven’t been assigned to yet.<br>::::<br><br> |
+| Assign users to an alert | Choose one of the following:<br><br> - **Alerts table** - Click **More actions*** (**…​**) in an alert’s row, then click **Assign alert**. Select users, then click ***Apply***.<br> - **Alert details flyout** - Click **Take action → Assign alert**. Alternatively, click the **Assign alert** icon at the top of the alert details flyout, select users, then click **Apply**.<br> |
+| Unassign all users from an alert | Choose one of the following:<br><br> - **Alerts table** - Click **More actions*** (***…​***) in an alert’s row, then click **Unassign alert**.<br> - **Alert details flyout** - Click **Take action → Unassign alert**.<br> |
+| Assign users to multiple alerts | From the Alerts table, select the alerts you want to change. Click **Selected *x* alerts** at the upper-left above the table, then click **Assign alert**. Select users, then click **Apply**.<br><br> **Note:** Users assigned to some of the selected alerts will be displayed as unassigned in the selection list. Selecting said users will assign them to all alerts they haven’t been assigned to yet.<br><br> |
 | Unassign users from multiple alerts | From the Alerts table, select the alerts you want to change and click **Selected *x* alerts** at the upper-left above the table. Click **Unassign alert** to remove users from the alert. |
 
 Show users that have been assigned to alerts by adding the **Assignees** column to the Alerts table (**Fields** → `kibana.alert.workflow_assignee_ids`). Up to four assigned users can appear in the **Assignees** column. If an alert is assigned to five or more users, a number appears instead.

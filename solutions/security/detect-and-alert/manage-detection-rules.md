@@ -79,7 +79,7 @@ The **Last response** column displays the current status of each rule, based on 
 * **Failed**: The rule encountered an error that prevented it from running. For example, a {{ml}} rule whose corresponding {{ml}} job wasn’t running.
 * **Warning**: Nothing prevented the rule from running, but it might have returned unexpected results. For example, a custom query rule tried to search an index pattern that couldn’t be found in {{es}}.
 
-For {{ml}} rules, an indicator icon (![Error icon from rules table](../../../images/security-rules-table-error-icon.png "")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
+For {{ml}} rules, an indicator icon (![Error icon from rules table](../../../images/security-rules-table-error-icon.png "title =20x20")) also appears in this column if a required {{ml}} job isn’t running. Click the icon to list the affected jobs, then click **Visit rule details page to investigate** to open the rule’s details page, where you can start the {{ml}} job.
 
 
 ## Modify existing rules settings [edit-rules-settings]
