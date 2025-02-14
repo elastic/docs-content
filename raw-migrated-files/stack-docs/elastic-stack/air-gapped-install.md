@@ -208,7 +208,7 @@ Besides the public [Elastic container repository](https://www.docker.elastic.co)
 
 #### 3.0 {{ece}} [air-gapped-ece]
 
-To install {{ece}} in an air-gapped environment you’ll need to host your own [1.10. {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry). Refer to the [ECE offline install instructions](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-install-offline.html) for details.
+To install {{ece}} in an air-gapped environment you’ll need to host your own [1.10. {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry). Refer to the [ECE offline install instructions](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline.html) for details.
 
 
 ### Appendix A - {{package-registry}} [air-gapped-elastic-package-registry-example]
