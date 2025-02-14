@@ -17,7 +17,7 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 :class: screenshot
 :::
 
-In {{serverless-full}}, the default **logs** template uses the logsDB index mode to create a [logs data stream](../index-types/logsdb.md).
+In {{serverless-full}}, the default **logs** template uses the logsDB index mode to create a [logs data stream](../index-types/logs-data-stream.md).
 
 If you don’t have any templates, you can create one using the **Create template** wizard.
 
