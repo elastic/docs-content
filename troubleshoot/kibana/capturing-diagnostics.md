@@ -109,4 +109,4 @@ The following are common errors that you might encounter when running the diagno
 
 * `{{kib}} Server is not Ready yet`
 
-    This indicates issues with {{kib}}'s dependencies blocking full start-up. To investigate, check [Troubleshoot {{kib}} UI error](../../deploy-manage/deploy/self-managed/access.md#not-ready).
+    This indicates issues with {{kib}}'s dependencies blocking full start-up. To investigate, check [Error: {{kib}}} server is not ready yet](/troubleshoot/kibana/error-server-not-ready.md).

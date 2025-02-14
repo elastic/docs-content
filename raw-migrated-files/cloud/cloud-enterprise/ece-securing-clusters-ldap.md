@@ -175,7 +175,7 @@ If your CA certificate is available as a `JKS` or `PKCS#12` keystore, you can up
 
 ## Mapping LDAP groups to roles [ece-securing-clusters-ldap-role-mapping]
 
-You have two ways of mapping LDAP groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html). If for some reason this is not possible, you can use a [role mapping file](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html) to specify the mappings instead.
+You have two ways of mapping LDAP groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). If for some reason this is not possible, you can use a [role mapping file](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html) to specify the mappings instead.
 
 
 ### Using the Role Mapping API [ece_using_the_role_mapping_api]

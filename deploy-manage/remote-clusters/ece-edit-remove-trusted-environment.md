@@ -60,7 +60,7 @@ If you need to update the permissions granted by a cross-cluster API key for a r
 ::::
 
 
-1. On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) or [Kibana](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key with the appropriate permissions. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
+1. On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [Kibana](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key with the appropriate permissions. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
 2. Copy the encoded key (`encoded` in the response) to a safe location. You will need it in the next steps.
 3. Go to the **Security** page of the local deployment and locate the **Remote connections** section.
 4. Locate the API key currently used for connecting to the remote cluster, copy its current alias, and delete it.

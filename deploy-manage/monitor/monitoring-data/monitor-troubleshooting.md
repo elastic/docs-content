@@ -12,7 +12,7 @@ applies:
 # Troubleshooting [monitor-troubleshooting]
 
 
-Use the information in this section to troubleshoot common problems and find answers for frequently asked questions related to the {{kib}} {monitor-features}.
+Use the information in this section to troubleshoot common problems and find answers for frequently asked questions related to the {{kib}} {{monitor-features}}.
 
 
 ## Cannot view the cluster because the license information is invalid [_cannot_view_the_cluster_because_the_license_information_is_invalid] 

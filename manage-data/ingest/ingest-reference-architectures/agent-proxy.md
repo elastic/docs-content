@@ -19,15 +19,15 @@ This architecture works with a variety of proxying tools to allow for more flexi
 
 
 Ingest model
-:   <br> Control path for {{fleet-server}} on {{ecloud}}: {{agent}} to proxy to {{fleet-server}} to {{es}}<br> Control path for self-managed {{fleet-server}}: {{agent}} to {{fleet-server}} to proxy to {{es}}<br> Data path: {{agent}} to proxy to {es}
+:   <br> Control path for {{fleet-server}} on {{ecloud}}: {{agent}} to proxy to {{fleet-server}} to {{es}}<br> Control path for self-managed {{fleet-server}}: {{agent}} to {{fleet-server}} to proxy to {{es}}<br> Data path: {{agent}} to proxy to {{es}}
 
 Use when
-:   * Network restrictions prevent connection between {{agent}} network and network where {{fleet-server}} and {{stack}} are deployed, as when {{fleet-server}} is deployed on {ecloud}
-* Network restrictions prevent connection between {{agent}} and {{fleet-server}} network and the network where {{stack}} is deployed, as when {{stack}} is deployed on {ecloud}
+:   * Network restrictions prevent connection between {{agent}} network and network where {{fleet-server}} and {{stack}} are deployed, as when {{fleet-server}} is deployed on {{ecloud}}
+* Network restrictions prevent connection between {{agent}} and {{fleet-server}} network and the network where {{stack}} is deployed, as when {{stack}} is deployed on {{ecloud}}
 * Using [{{ls}} as proxy](ls-networkbridge.md) is not feasible.
 
 
-Currently {{agent}} is not able to present a certificate for connectivity to {{fleet-server}}. Therefore if a proxy placed between the {{agent}} and {{fleet-server}} is configured for mutual TLS, {{agents}} won’t be able to establish connectivity to {fleet server}.
+Currently {{agent}} is not able to present a certificate for connectivity to {{fleet-server}}. Therefore if a proxy placed between the {{agent}} and {{fleet-server}} is configured for mutual TLS, {{agents}} won’t be able to establish connectivity to {{fleet server}}.
 
 
 ## Resources [agent-proxy-resources]

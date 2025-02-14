@@ -23,7 +23,7 @@ Using behavioral analytics is a three-step process:
 ## Collections [behavioral-analytics-start-collections] 
 
 ::::{note} 
-This guide focuses on using the Behavioral Analytics UI in {{kib}} to create and manage collections. You can also use the [Behavioral Analytics APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-apis.html) to create, list, and delete collections, as well as post events to a collection.
+This guide focuses on using the Behavioral Analytics UI in {{kib}} to create and manage collections. You can also use the [Behavioral Analytics APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-analytics) to create, list, and delete collections, as well as post events to a collection.
 
 ::::
 

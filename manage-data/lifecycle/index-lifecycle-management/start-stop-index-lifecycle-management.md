@@ -17,7 +17,7 @@ When you stop {{ilm-init}}, [{{slm-init}}](../../../deploy-manage/tools/snapshot
 
 ## Get {{ilm-init}} status [get-ilm-status] 
 
-To see the current status of the {{ilm-init}} service, use the [Get Status API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-get-status.html):
+To see the current status of the {{ilm-init}} service, use the [Get Status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-get-status):
 
 ```console
 GET _ilm/status
@@ -34,7 +34,7 @@ Under normal operation, the response shows {{ilm-init}} is `RUNNING`:
 
 ## Stop {{ilm-init}} [stop-ilm] 
 
-To stop the {{ilm-init}} service and pause execution of all lifecycle policies, use the [Stop API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-stop.html):
+To stop the {{ilm-init}} service and pause execution of all lifecycle policies, use the [Stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop):
 
 ```console
 POST _ilm/stop
@@ -59,7 +59,7 @@ Once all policies are at a safe stopping point, {{ilm-init}} moves into the `STO
 
 ## Start {{ilm-init}} [_start_ilm_init] 
 
-To restart {{ilm-init}} and resume executing policies, use the [Start API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-start.html). This puts the  {{ilm-init}} service in the `RUNNING` state and {{ilm-init}} begins executing policies from where it left off.
+To restart {{ilm-init}} and resume executing policies, use the [Start API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start). This puts the  {{ilm-init}} service in the `RUNNING` state and {{ilm-init}} begins executing policies from where it left off.
 
 ```console
 POST _ilm/start
