@@ -21,7 +21,7 @@ The **{{index-manage-app}}** page contains an overview of your indices.
 * To drill down into the index mappings, settings, and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 
 
-## Manage data streams [index-management-manage-data-streams]
+## Manage data streams 
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 

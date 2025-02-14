@@ -525,7 +525,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
-      - file: elasticsearch/elasticsearch-reference/data-streams.md
       - file: elasticsearch/elasticsearch-reference/defining-roles.md
       - file: elasticsearch/elasticsearch-reference/document-level-security.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
