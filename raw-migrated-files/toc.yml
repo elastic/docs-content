@@ -557,7 +557,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
       - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
-      - file: elasticsearch/elasticsearch-reference/rollup-overview.md
       - file: elasticsearch/elasticsearch-reference/saml-guide-stack.md
       - file: elasticsearch/elasticsearch-reference/saml-realm.md
       - file: elasticsearch/elasticsearch-reference/scalability.md
@@ -580,7 +579,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/starting-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/stopping-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
-      - file: elasticsearch/elasticsearch-reference/xpack-rollup.md
   - file: ingest-docs/fleet/index.md
     children:
       - file: ingest-docs/fleet/beats-agent-comparison.md
@@ -593,7 +591,6 @@ toc:
       - file: kibana/kibana/apm-settings-kb.md
       - file: kibana/kibana/connect-to-elasticsearch.md
       - file: kibana/kibana/console-kibana.md
-      - file: kibana/kibana/data-rollups.md
       - file: kibana/kibana/elasticsearch-mutual-tls.md
       - file: kibana/kibana/esql.md
       - file: kibana/kibana/install.md

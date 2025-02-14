@@ -141,7 +141,8 @@ toc:
       - file: lifecycle/curator.md
       - file: lifecycle/rollup.md
         children:
-          - file: lifecycle/rollup/getting-started-with-rollups.md
+          - file: lifecycle/rollup/getting-started-api.md
+          - file: lifecycle/rollup/getting-started-kibana.md
           - file: lifecycle/rollup/understanding-groups.md
           - file: lifecycle/rollup/rollup-aggregation-limitations.md
           - file: lifecycle/rollup/rollup-search-limitations.md
