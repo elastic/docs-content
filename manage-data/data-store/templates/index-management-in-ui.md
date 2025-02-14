@@ -2,19 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-index-templates
   - https://www.elastic.co/guide/en/serverless/current/index-management.html#index-management-manage-index-templates
+applies:
+  stack: all
+  serverless: all
+  hosted: all
 ---
 
 # Manage index templates [manage-index-templates]
-
-% What needs to be done: Align serverless/stateful
-
-% Scope notes: Combine serverless and stateful content.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-mgmt.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/index-management.md
-
 
 Create, edit, clone, and delete your index templates in the **Index Templates** view. Changes made to an index template do not affect existing indices.
 
