@@ -88,7 +88,7 @@ Go to **{{project-settings}} → {{manage-app}} → {{index-manage-app}}**.
 
 Investigate your indices and perform operations from the **Indices** view.
 
-:::{image} ../../../images/serverless-index-management-indices.png
+:::{image} /images/serverless-index-management-indices.png
 :alt: Index Management indices
 :class: screenshot
 :::
