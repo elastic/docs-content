@@ -8,29 +8,65 @@ mapped_pages:
 
 # Configure ECK [k8s-operating-eck]
 
+This section covers ECK configuration mechanisms and use cases, starting with the basic setup of the operator using the provided `ConfigMap` and extending to more advanced configuration scenarios that require detailed procedures.
+
 ::::{tip}
-For a detailed description of available **configuration flags and methods**, refer to [](./configure-eck.md).
+This content focuses on ECK operator configuration. For details on available features and how to configure your {{es}} and {{kib}} deployments, refer to [](./configure-deployments.md).
 ::::
 
-By default, the ECK installation includes a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) where you can add, remove, or update [configuration settings](./configure-eck.md). This ConfigMap is mounted into the operator’s container as an `eck.yaml` file, and provided to the application through the `--config` flag.
+The following guides cover common ECK configuration tasks:
 
-To configure ECK, edit the `elastic-operator` ConfigMap to change the operator configuration. The operator will restart automatically to apply the new changes unless the `--disable-config-watch` flag is set.
+* [](./configure-eck.md): Apply configuration changes, such the CA certificate validity period, the namespaces where the operator is allowed to work, or the log verbosity level for ECK.
 
-Alternatively, you can edit the `elastic-operator` StatefulSet and add flags to the `args` section — which will trigger an automatic restart of the operator pod by the StatefulSet controller.
+* [Configure the validating webhook](configure-validating-webhook.md): Enable or disable the webhook, and configure multiple SSL certificate generation options.
 
-If you use [Operator Lifecycle Manager](https://github.com/operator-framework/operator-lifecycle-manager), refer to [Configure ECK under Operator Lifecycle Manager](./configure-eck.md#k8s-operator-config-olm)
+* [Restrict cross-namespace resource associations](restrict-cross-namespace-resource-associations.md): Configure access control rules for cross-namespace associations. This functionality is disabled by default.
 
-## Configuration use cases
+* [Create custom images](./create-custom-images.md): Use your own images with {{es}} plugins already installed rather than installing them through init containers.
 
-The following guides provide detailed instructions on configuring specific features, managing licenses, and performing common operational tasks:
+* [Service meshes](./service-meshes.md): Connect ECK and managed Elastic Stack applications to some of the most popular [service mesh](https://www.cncf.io/blog/2017/04/26/service-mesh-critical-component-cloud-native-stack/) implementations in the Kubernetes ecosystem.
 
-* [*Configure the validating webhook*](configure-validating-webhook.md)
-* [*Configure the metrics endpoint*](../../monitor/orchestrators/eck-metrics-configuration.md)
-* [*Restrict cross-namespace resource associations*](restrict-cross-namespace-resource-associations.md)
-* [*Manage licenses in ECK*](../../license/manage-your-license-in-eck.md)
-* [*Install ECK*](install.md)
-* [*Upgrade ECK*](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md)
-* [*Uninstall ECK*](../../uninstall/uninstall-elastic-cloud-on-kubernetes.md)
-* [*Running in air-gapped environments*](air-gapped-install.md)
+* [Network policies](./network-policies.md): Use [Kubernetes network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) to isolate pods by restricting incoming and outgoing network connections to a trusted set of sources and destinations.
 
-% suggestion: maybe we should add a comment about most common configuration needs, like CA certificates, namespaces, log-verbosity...
+* [](./webhook-namespace-selectors.md): Restrict the namespaces that the validation webhook applies to, allowing multiple operators to coexist efficiently in the same cluster.
+
+Other sections of the Elastic documentation cover additional topics related to ECK configuration:
+
+* **Security**
+  * (topis related with ECK security (TLS certificates?), not deployments stuff ), CA certificates?
+
+* **Monitoring**
+  * [Configure the metrics endpoint](/deploy-manage/monitor/orchestrators/eck-metrics-configuration.md)  (monitor an orchestrator)
+
+* **Licensing**
+  * [Manage licenses in ECK](../../license/manage-your-license-in-eck.md)
+
+* **Maintenance**
+  * [Upgrade ECK](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md)
+  * [Uninstall ECK](../../uninstall/uninstall-elastic-cloud-on-kubernetes.md)
+
+(Apps related)
+* **Snapshots and Restore**
+  * Manage snapshots repositories --> Pending to add to configure deployments.
+
+* **Remote Clusters**
+  * Configure interconnection between your {{es}} clusters with the help of ECK.
+
+* **Monitoring**
+  * Stack Monitoring (for deployments)
+
+* **Licensing**
+  * [Manage licenses in ECK](../../license/manage-your-license-in-eck.md)
+
+* **Maintenance**
+  * [Upgrade ECK](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md)
+  * [Uninstall ECK](../../uninstall/uninstall-elastic-cloud-on-kubernetes.md)
+
+* **Autoscaling**
+  * Autoscaling stateless applications
+  * Elasticsearch autoscaling on ECK
+
+* Security
+  * SAML authentication
+  * Users and roles
+  * Built-in users

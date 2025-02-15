@@ -9,17 +9,31 @@ mapped_pages:
 % the security link needs to be refined to point to the eck related section around security
 % same for upgrade link
 
+% WORK IN PROGRESS, TOGETHER WITH CONFIGURE.md
+
 # Configure deployments [k8s-orchestrating-elastic-stack-applications]
 
 This section provides details around {{kib}} and {{es}} configuration when running on ECK. For general information about how ECK applies configuration changes and the syntax to use in the YAML manifests, refer to [](./update-deployments.md).
 
 * [**{{es}} configuration**](elasticsearch-configuration.md) → Review configuration possibilities to tune your {{es}} cluster running on ECK, learn how [nodes orchestration](./nodes-orchestration.md) work, [storage recommendations](./storage-recommendations.md), and more.
 
+  * [Users and roles]() (SECURITY)
+
   * [](./requests-routing-to-elasticsearch-nodes.md) → Control the nodes receiving incoming traffic when using multiple `nodeSets` with different [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html).
+
+  * [{{es}} autoscaling on ECK](../../autoscaling/deployments-autoscaling-on-eck.md): 
+
+  * [Snapshot and Restore](../../tools/snapshot-and-restore/cloud-on-k8s.md)
+
+  * [**Stack monitoring**](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html) → Monitor your deployments smoothly with the help of ECK.
+
+  * [**Remote clusters**](/deploy-manage/remote-clusters/eck-remote-clusters.md) → Configure {{es}} remote clusters functionality for Cross Cluster Search (CCS) and Cross Cluster Replication.
 
 * [**{{kib}} configuration**](kibana-configuration.md) → Learn how to connect {{kib}} to an {{es}} cluster, apply advanced configuration settings, and tune the HTTP configuration.
 
 Additionally, the following topics apply to both {{es}} and {{kib}}, and in some cases, to other applications supported by ECK:
+
+* [Configure secure settings]() (LINK TBD, SECURITY CONFIGURE ES AND KIB SECURE SETTINGS)
 
 * [**Access services**](accessing-services.md) → Learn how to access to the orchestrated clusters and how to adapt the Kubernetes services to your needs.
 

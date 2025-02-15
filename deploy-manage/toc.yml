@@ -260,8 +260,6 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-service-mesh-istio.md
                       - file: deploy/cloud-on-k8s/k8s-service-mesh-linkerd.md
                   - file: deploy/cloud-on-k8s/network-policies.md
-                    children:
-                      - file: deploy/cloud-on-k8s/k8s_prerequisites.md
                   - file: deploy/cloud-on-k8s/webhook-namespace-selectors.md
           - file: deploy/cloud-on-k8s/manage-deployments.md
             children:
