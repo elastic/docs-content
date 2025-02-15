@@ -12,8 +12,8 @@ The following Elasticsearch settings are managed by ECK:
 * `cluster.name`
 * `discovery.seed_hosts`
 * `discovery.seed_providers`
-* `discovery.zen.minimum_master_nodes` [7.0]
-* `cluster.initial_master_nodes` [7.0]
+* `discovery.zen.minimum_master_nodes`
+* `cluster.initial_master_nodes`
 * `network.host`
 * `network.publish_host`
 * `path.data`

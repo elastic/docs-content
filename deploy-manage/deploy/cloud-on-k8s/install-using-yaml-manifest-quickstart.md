@@ -9,18 +9,6 @@ applies:
 
 # Install ECK using the YAML manifests [k8s-install-yaml-manifests]
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/357
-
-% Scope notes: Work with the quickstart and the small "yaml manifest installation" doc to create a single doc.
-
-% Use migrated content from existing pages that map to this page:
-
-% removed both
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-install-yaml-manifests.md
-% - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-deploy-eck.md
-
 In this guide, you'll learn how to deploy ECK using Elastic-provided YAML manifests. This method is the quickest way to get started with ECK if you have full administrative access to the Kubernetes cluster. 
 
 To learn about other installation methods, refer to [](/deploy-manage/deploy/cloud-on-k8s/install.md).

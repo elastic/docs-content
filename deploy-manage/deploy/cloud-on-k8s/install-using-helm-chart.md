@@ -113,3 +113,7 @@ For example, an ECK 1.2.1 installation deployed using [YAML manifests](/deploy-m
     1. If you have previously customized the operator configuration in this ConfigMap, you will have to repeat the configuration once the operator has been reinstalled in the next step.
 
 3. Install the ECK operator using the Helm chart as described in [Install ECK using the Helm chart](./install-using-helm-chart.md).
+
+## Configure the webhook namespace selectors
+
+If needed, the Helm based installation support the configuration of the namespaces associated to the webhook validator. Refer to [](./webhook-namespace-selectors.md) for more information.

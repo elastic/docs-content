@@ -108,8 +108,6 @@ helm install es-quickstart elastic/eck-stack -n elastic-stack --create-namespace
 helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-namespace
 ```
 
-For more details about eck-stack helm chart, the other individual charts, and all possible values, refer to the [chart repository](https://github.com/elastic/cloud-on-k8s/tree/main/deploy/eck-stack/).
-
 ## Adding Ingress to the Elastic stack [k8s-eck-stack-ingress] 
 
 Both Elasticsearch and Kibana support [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), which can be enabled using the following options:
@@ -179,4 +177,19 @@ spec:
             name: es-kb-quickstart-eck-kibana-kb-http
             port:
               number: 5601
+```
+
+## View available configuration options [k8s-install-helm-show-values-stack]
+
+You can view all configurable values of the Elastic Stack helm chart of the individual charts by running the following:
+
+```sh
+helm show values elastic/eck-stack
+helm show values elastic/eck-elasticsearch
+helm show values elastic/eck-kibana
+helm show values elastic/eck-agent
+helm show values elastic/eck-beats
+helm show values elastic/eck-apm-server
+helm show values elastic/eck-fleet-server
+helm show values elastic/eck-logstash
 ```
