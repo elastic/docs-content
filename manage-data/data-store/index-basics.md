@@ -25,7 +25,7 @@ $$$elasticsearch-intro-documents-fields-mappings$$$
 
 This content applies to: [![Elasticsearch](/images/serverless-es-badge.svg "")](/solutions/search.md) [![Observability](/images/serverless-obs-badge.svg "")](/solutions/observability.md) [![Security](/images/serverless-sec-badge.svg "")](/solutions/security/elastic-security-serverless.md)
 
-An index is a fundamental unit of storage in {{es}}. It is a collection of documents uniquely identified by a name or an [alias](../../../manage-data/data-store/aliases.md). This unique name is important because it’s used to target the index in search queries and other operations.
+An index is a fundamental unit of storage in {{es}}. It is a collection of documents uniquely identified by a name or an [alias](/manage-data/data-store/aliases.md). This unique name is important because it’s used to target the index in search queries and other operations.
 
 ::::{tip} 
 A closely related concept is a [data stream](/manage-data/data-store/index-types/data-streams.md). This index abstraction is optimized for append-only timestamped data, and is made up of hidden, auto-generated backing indices. If you’re working with timestamped data, we recommend the [Elastic Observability](https://www.elastic.co/guide/en/observability/current) solution for additional tools and optimized content.
@@ -95,7 +95,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
 * To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html).
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-follow.html), a [rollup index](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-get-rollup-index-caps.html), or [frozen](https://www.elastic.co/guide/en/elasticsearch/reference/current/unfreeze-index-api.html).
-* To drill down into the index [mappings](../../../manage-data/data-store/mapping.md), [settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
+* To drill down into the index [mappings](/manage-data/data-store/mapping.md), [settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 * To create new indices, use the **Create index** wizard.
 
 ### Manage data streams
