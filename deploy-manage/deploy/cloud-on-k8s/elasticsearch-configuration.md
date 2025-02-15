@@ -7,7 +7,7 @@ mapped_pages:
 
 # Elasticsearch configuration [k8s-elasticsearch-specification]
 
-Before you deploy and run ECK, take some time to look at the basic and advanced settings available on this page. These settings are related both to Elasticsearch and Kubernetes.
+Before you deploy and run ECK in production, take some time to look at the basic and advanced settings available on this page. These settings are related both to Elasticsearch and Kubernetes functionality.
 
 **Basic settings**
 
