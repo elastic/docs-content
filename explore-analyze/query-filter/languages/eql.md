@@ -24,21 +24,21 @@ Event Query Language (EQL) is a query language for event-based time series data,
 
 ## Required fields [eql-required-fields]
 
-With the exception of sample queries, EQL searches require that the searched data stream or index  contains a *timestamp* field. By default, EQL uses the `@timestamp` field from the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}).
+With the exception of sample queries, EQL searches require that the searched data stream or index  contains a *timestamp* field. By default, EQL uses the `@timestamp` field from the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current).
 
 EQL searches also require an *event category* field, unless you use the [`any` keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-syntax-match-any-event-category) to search for  documents without an event category field. By default, EQL uses the ECS `event.category` field.
 
 To use a different timestamp or event category field, see [Specify a timestamp or event category field](#specify-a-timestamp-or-event-category-field).
 
 ::::{tip}
-While no schema is required to use EQL, we recommend using the [ECS](https://www.elastic.co/guide/en/ecs/{{ecs_version}}). EQL searches are designed to work with core ECS fields by default.
+While no schema is required to use EQL, we recommend using the [ECS](https://www.elastic.co/guide/en/ecs/current). EQL searches are designed to work with core ECS fields by default.
 ::::
 
 
 
 ## Run an EQL search [run-an-eql-search]
 
-Use the [EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html) to run a [basic EQL query](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax).
+Use the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) to run a [basic EQL query](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax).
 
 ```console
 GET /my-data-stream/_eql/search
@@ -1042,7 +1042,7 @@ The API returns:
 
 ## Specify a timestamp or event category field [specify-a-timestamp-or-event-category-field]
 
-The EQL search API uses the `@timestamp` and `event.category` fields from the [ECS](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) by default. To specify different fields, use the `timestamp_field` and `event_category_field` parameters:
+The EQL search API uses the `@timestamp` and `event.category` fields from the [ECS](https://www.elastic.co/guide/en/ecs/current) by default. To specify different fields, use the `timestamp_field` and `event_category_field` parameters:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -1064,7 +1064,7 @@ By default, the EQL search API returns matching hits by timestamp. If two or mor
 
 If you don’t specify a tiebreaker field or the events also share the same tiebreaker value, {{es}} considers the events concurrent and may not return them in a consistent sort order.
 
-To specify a tiebreaker field, use the `tiebreaker_field` parameter. If you use the [ECS](https://www.elastic.co/guide/en/ecs/{{ecs_version}}), we recommend using `event.sequence` as the tiebreaker field.
+To specify a tiebreaker field, use the `tiebreaker_field` parameter. If you use the [ECS](https://www.elastic.co/guide/en/ecs/current), we recommend using `event.sequence` as the tiebreaker field.
 
 ```console
 GET /my-data-stream/_eql/search
@@ -1134,7 +1134,7 @@ The async search continues to run in the background without blocking other reque
 }
 ```
 
-To check the progress of an async search, use the [get async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-eql-search-api.html) with the search ID. Specify how long you’d like for complete results in the `wait_for_completion_timeout` parameter.
+To check the progress of an async search, use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get) with the search ID. Specify how long you’d like for complete results in the `wait_for_completion_timeout` parameter.
 
 ```console
 GET /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?wait_for_completion_timeout=2s
@@ -1153,7 +1153,7 @@ If the response’s `is_running` value is `false`, the async search has finished
 }
 ```
 
-Another more lightweight way to check the progress of an async search is to use the [get async EQL status API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-eql-status-api.html) with the search ID.
+Another more lightweight way to check the progress of an async search is to use the [get async EQL status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get-status) with the search ID.
 
 ```console
 GET /_eql/search/status/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=
@@ -1185,13 +1185,13 @@ GET /my-data-stream/_eql/search
 }
 ```
 
-You can use the [get async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-eql-search-api.html)'s `keep_alive` parameter to later change the retention period. The new retention period starts after the get request runs.
+You can use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get)'s `keep_alive` parameter to later change the retention period. The new retention period starts after the get request runs.
 
 ```console
 GET /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=?keep_alive=5d
 ```
 
-Use the [delete async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-async-eql-search-api.html) to manually delete an async EQL search before the `keep_alive` period ends. If the search is still ongoing, {{es}} cancels the search request.
+Use the [delete async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-delete) to manually delete an async EQL search before the `keep_alive` period ends. If the search is still ongoing, {{es}} cancels the search request.
 
 ```console
 DELETE /_eql/search/FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=
@@ -1226,7 +1226,7 @@ The response includes a search ID. `is_partial` and `is_running` are `false`, in
 }
 ```
 
-Use the [get async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-eql-search-api.html) to get the same results later:
+Use the [get async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get) to get the same results later:
 
 ```console
 GET /_eql/search/FjlmbndxNmJjU0RPdExBTGg0elNOOEEaQk9xSjJBQzBRMldZa1VVQ2pPa01YUToxMDY=
@@ -1234,9 +1234,9 @@ GET /_eql/search/FjlmbndxNmJjU0RPdExBTGg0elNOOEEaQk9xSjJBQzBRMldZa1VVQ2pPa01YUTo
 
 Saved synchronous searches are still subject to the `keep_alive` parameter’s retention period. When this period ends, the search and its results are deleted.
 
-You can also check only the status of the saved synchronous search without results by using [get async EQL status API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-async-eql-status-api.html).
+You can also check only the status of the saved synchronous search without results by using [get async EQL status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get-status).
 
-You can also manually delete saved synchronous searches using the [delete async EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-async-eql-search-api.html).
+You can also manually delete saved synchronous searches using the [delete async EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-delete).
 
 
 ## Run an EQL search across clusters [run-eql-search-across-clusters]
@@ -1248,7 +1248,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 The EQL search API supports [cross-cluster search](../../../solutions/search/cross-cluster-search.md). However, the local and [remote clusters](../../../deploy-manage/remote-clusters.md) must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
 
-The following [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) request adds two remote clusters: `cluster_one` and `cluster_two`.
+The following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) request adds two remote clusters: `cluster_one` and `cluster_two`.
 
 ```console
 PUT /_cluster/settings

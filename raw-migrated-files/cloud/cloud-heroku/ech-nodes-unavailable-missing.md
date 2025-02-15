@@ -18,7 +18,7 @@
 * Routing stopped: A failed {{es}} configuration might stop the nodes routing. Restart the routing manually to bring the node back to health.
 * Disk/memory/CPU saturated:
 
-    * [Delete unused data](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+    * [Delete unused data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
     * Increase disk size.
     * [Enable autoscaling](../../../deploy-manage/autoscaling.md).
     * Configuration of ILM policies.

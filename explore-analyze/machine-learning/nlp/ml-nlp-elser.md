@@ -51,7 +51,7 @@ Additionally, the `elasticearch-labs` GitHub repository contains an interactive 
 
 ## Download and deploy ELSER [download-deploy-elser]
 
-The easiest and recommended way to download and deploy ELSER is to use the [{{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html).
+The easiest and recommended way to download and deploy ELSER is to use the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create an {{infer}} endpoint with the ELSER service by running the following API request:
@@ -123,7 +123,7 @@ Alternatively, you can download and deploy ELSER to an {{infer}} pipeline using 
 1. In {{kib}}, navigate to **Search** > **Indices**.
 2. Select the index from the list that has an {{infer}} pipeline in which you want to use ELSER.
 3. Navigate to the **Pipelines** tab.
-4. Under **{{ml-app}} {infer-cap} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
+4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-elser-v2-es.png
     :alt: Deploying ELSER in Elasticsearch
@@ -157,7 +157,7 @@ PUT _ml/trained_models/.elser_model_2
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
-3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-trained-model-deployment.html) with a delpoyment ID:
+3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
 
 ```console
 POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_search

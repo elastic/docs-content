@@ -26,9 +26,9 @@ navigation_title: "What is Kibana?"
 
 Being able to search, observe, and protect your data is a requirement for any analyst. {{kib}} provides solutions for each of these use cases.
 
-* [**Enterprise Search**](https://www.elastic.co/guide/en/enterprise-search/current/index.html) enables you to create a search experience for your app, workplace, and website.
-* [**Elastic Observability**](../solutions/observability/get-started/what-is-elastic-observability.md) enables you to monitor and apply analytics in real time to events happening across all your environments. You can analyze log events, monitor the performance metrics for the host or container that it ran in, trace the transaction, and check the overall service availability.
-* Designed for security analysts, [**Elastic Security**](../solutions/security.md) provides an overview of the events and alerts from your environment.  Elastic Security helps you defend your organization from threats before damage and loss occur.
+* [**Enterprise Search**](https://www.elastic.co/guide/en/enterprise-search/current/index.html) enables you to implement premier search experiences for your apps, organizations, and websites.
+* [**Elastic Observability**](../solutions/observability/get-started/what-is-elastic-observability.md) enables you to monitor and apply analytics in real time to events happening across all your environments. You can analyze log events, monitor performance metrics for hosts and containers, trace transactions, and maintain service availability.
+* Designed for security analysts, [**Elastic Security**](../solutions/security.md) includes a multitude of prebuilt detection rules and data integrations to help you collect important information in one place, get an overview of events and alerts, and secure your environments from endpoints to the cloud.
 
 
 ## Analyze [visualize-and-analyze]
@@ -44,11 +44,11 @@ $$$get-data-into-kibana$$$
 
 |     |     |
 | --- | --- |
-| **1** | **Add data.** The best way to add data to the Elastic Stack is to use one of our many [integrations](../manage-data/ingest.md).On the **Integrations** page, you can also find options to add sample data sets or to upload a file. |
-| **2** | **Explore.** With [**Discover**](../explore-analyze/discover.md), you can search your data for hiddeninsights and relationships. Ask your questions, and then filter the results to just the data you want.You can limit your results to the most recent documents added to {{es}}. |
-| **3** | **Visualize.** {{kib}} provides many options to create visualizations of your data, fromaggregation-based data to time series data to geo data.[**Dashboard**](../explore-analyze/dashboards.md) is your starting point to create visualizations,and then pulling them together to show your data from multiple perspectives.Use [**Canvas**](../explore-analyze/visualize/canvas.md),to give your datathe “wow” factor for display on a big screen. Use **Graph** to explore patterns and relationships. |
-| **4** | **Model data behavior.**Use [**{{ml-cap}}**](../explore-analyze/machine-learning/machine-learning-in-kibana.md) to model the behavior of your data—forecast unusual behavior andperform outlier detection, regression, and classification analysis. |
-| **5** | **Share.** Ready to [share](../explore-analyze/report-and-share.md) your findings with a larger audience? {{kib}} offers many options—embeda dashboard, share a link, export to PDF, and more. |
+| **1** | **Add data.** The best way to add data to the Elastic Stack is to use one of our many [integrations](../manage-data/ingest.md). On the **Integrations** page, you can also find options to add sample data sets or to upload a file. |
+| **2** | **Explore.** With [**Discover**](../explore-analyze/discover.md), you can search your data for hidden insights and relationships. Ask your questions, and then filter the results using a wide range of criteria. |
+| **3** | **Visualize.** {{kib}} provides many options to create visualizations of your data, from aggregation-based data to time series data to geospatial data. Use [**Dashboards**](../explore-analyze/dashboards.md) to visualize your data from multiple perspectives tailored for your use case. Use [**Canvas**](../explore-analyze/visualize/canvas.md) to give your data the “wow” factor for display on a big screen. Use **Graph** to identify patterns and relationships. |
+| **4** | **Model data behavior.** Use [**{{ml-cap}}**](../explore-analyze/machine-learning/machine-learning-in-kibana.md) to gain a deeper understanding of your data. You can use a wide range of models for supervised and unsupervised learning on tasks including classification, regression, trend forecasting, and anomaly detection. |
+| **5** | **Share.** Ready to [share](../explore-analyze/report-and-share.md) your findings with a larger audience? {{kib}} offers many options—embed a dashboard, share a link, export to PDF, and more. |
 
 
 ## Manage your data [_manage_your_data]
@@ -73,7 +73,7 @@ For a full list of data management UIs, refer to [**Stack Management**](../deplo
 
 Detecting and acting on significant shifts and signals in your data is a need that exists in almost every use case. Alerting allows you to detect conditions in different {{kib}} apps and trigger actions when those conditions are met. For example, you might trigger an alert when a shift occurs in your business critical KPIs or when memory, CPU, or disk space take a dip. When the alert triggers, you can send a notification to a system that is part of your daily workflow: email, Slack, PagerDuty, ServiceNow, and other third party integrations.
 
-A dedicated view for creating, searching, and editing rules is in [**{{rules-ui}}**](../explore-analyze/alerts-cases/alerts/create-manage-rules.md).
+The [**{{rules-ui}}**](../explore-analyze/alerts-cases/alerts/create-manage-rules.md) page provides a dedicated view for creating, searching, and editing rules.
 
 
 ## Organize content [organize-and-secure]
@@ -83,7 +83,7 @@ You might be managing tens, hundreds, or even thousands of dashboards, visualiza
 
 ### Collect related items in a space [organize-in-spaces]
 
-{{kib}} provides [spaces](../deploy-manage/manage-spaces.md) for organizing your visualizations, dashboards, {{data-sources}}, and more. Think of a space as its own mini {{kib}} installation—it’s isolated from all other spaces, so you can tailor it to your specific needs without impacting others.
+{{kib}} [spaces](../deploy-manage/manage-spaces.md) help you organize your visualizations, dashboards, {{data-sources}}, and more. Think of a space as its own mini {{kib}} instance—it’s isolated from all other spaces, so you can tailor it to your specific needs without impacting others.
 
 :::{image} ../images/kibana-select-your-space.png
 :alt: Space selector view
@@ -93,9 +93,9 @@ You might be managing tens, hundreds, or even thousands of dashboards, visualiza
 
 ### Organize your content with tags [_organize_your_content_with_tags]
 
-Tags are keywords or labels that you assign to saved objects, such as dashboards and visualizations, so you can classify them in a way that is meaningful to you. For example, if you tag objects with “design”, you can search and filter on the tag to see all related objects. Tags are also good for grouping content into categories within a space.
+Tags are keywords or labels that you assign to saved objects, such as dashboards and visualizations, so you can classify them in a way that is meaningful to you. For example, if you tag objects with “design”, you can search and filter on the tag to display all related objects. Tags are also good for grouping content into categories within a space.
 
-Don’t worry if you have hundreds of dashboards that need to be tagged. Use [**Tags**](../explore-analyze/find-and-organize/tags.md) in **Stack Management** to create your tags, then assign and delete them in bulk operations.
+Don’t worry if you have hundreds of dashboards that need to be tagged. Use [**Tags**](../explore-analyze/find-and-organize/tags.md) in **Stack Management** to create your tags, then assign and delete them using bulk operations.
 
 
 ## Secure {{kib}} [intro-kibana-Security]
@@ -105,7 +105,7 @@ Don’t worry if you have hundreds of dashboards that need to be tagged. Use [**
 
 ### Log in [_log_in]
 
-{{kib}} supports several [authentication providers](../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md), allowing you to login using {{es}}’s built-in realms, or with your own single sign-on provider.
+{{kib}} supports several [authentication providers](../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md), allowing you to login using {{es}} or your own single sign-on provider.
 
 :::{image} ../images/kibana-kibana-login.png
 :alt: Login page
@@ -129,7 +129,7 @@ The {{kib}} role management interface allows you to describe these various acces
 
 ### Audit access [_audit_access]
 
-Once you have your users and roles configured, you might want to maintain a record of who did what, when. The {{kib}} audit log will record this information for you, which can then be correlated with {{es}} audit logs to gain more insights into your users’ behavior. For more information, see [{{kib}} audit logging](../deploy-manage/monitor/logging-configuration/enabling-kibana-audit-logs.md).
+Once you have your users and roles configured, you might want to maintain a record of who did what, when. The {{kib}} audit log will record this information for you, which can then be correlated with {{es}} audit logs to gain more insights into your users’ behavior. For more information, refer to [{{kib}} audit logging](../deploy-manage/monitor/logging-configuration/enabling-kibana-audit-logs.md).
 
 
 ## Find apps and objects [kibana-navigation-search]
@@ -143,7 +143,7 @@ To quickly find apps and the objects you create, use the search field in the glo
 
 You can search for objects by type, name, and tag. To get the most from the search feature, follow these tips:
 
-* Use the keyboard shortcut—Ctrl+/ on Windows and Linux, Command+/ on MacOS—to focus on the input at any time.
+* Use the keyboard shortcut—Ctrl+/ on Windows and Linux, Command+/ on MacOS—to focus on the search bar at any time.
 * Use the provided syntax keywords.
 
     |     |     |
@@ -154,7 +154,7 @@ You can search for objects by type, name, and tag. To get the most from the sear
     | Advanced searches | `tag:(tagname1 or tagname2) my_dashboard_title`<br>`type:lens tag:(tagname1 or tagname2)`<br>`type:(dashboard or canvas-workpad) logs`<br> |
 
 
-This example searches for visualizations with the tag `design` .
+This example searches for visualizations with the tag `design`.
 
 :::{image} ../images/kibana-tags-search.png
 :alt: Example of searching for tags

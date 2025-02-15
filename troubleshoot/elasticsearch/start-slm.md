@@ -16,7 +16,7 @@ In order to start the snapshot lifecycle management service, follow these steps:
 :::::::{tab-set}
 
 ::::::{tab-item} Elasticsearch Service
-In order to start {{slm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html).
+In order to start {{slm}} we need to go to Kibana and execute the [start command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start).
 
 **Use {{kib}}**
 
@@ -34,7 +34,7 @@ In order to start {{slm}} we need to go to Kibana and execute the [start command
     :class: screenshot
     :::
 
-4. [Start](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html) {{slm}}:
+4. [Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start) {{slm}}:
 
     ```console
     POST _slm/start
@@ -64,7 +64,7 @@ In order to start {{slm}} we need to go to Kibana and execute the [start command
 ::::::
 
 ::::::{tab-item} Self-managed
-[Start](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html) {{slm}}:
+[Start](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start) {{slm}}:
 
 ```console
 POST _slm/start

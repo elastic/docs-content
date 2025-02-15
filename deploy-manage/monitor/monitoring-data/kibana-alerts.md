@@ -12,17 +12,17 @@ applies:
 
 # Kibana alerts [kibana-alerts]
 
-The {{stack}} {monitor-features} provide [Alerting rules](../../../explore-analyze/alerts-cases/alerts.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
+The {{stack}} {{monitor-features}} provide [Alerting rules](../../../explore-analyze/alerts-cases/alerts.md) out-of-the box to notify you of potential issues in the {{stack}}. These rules are preconfigured based on the best practices recommended by Elastic. However, you can tailor them to meet your specific needs.
 
 :::{image} ../../../images/kibana-monitoring-kibana-alerting-notification.png
-:alt: {{kib}} alerting notifications in {stack-monitor-app}
+:alt: {{kib}} alerting notifications in {{stack-monitor-app}}
 :class: screenshot
 :::
 
 When you open **{{stack-monitor-app}}** for the first time, you will be asked to acknowledge the creation of these default rules. They are initially configured to detect and notify on various conditions across your monitored clusters. You can view notifications for: **Cluster health**, **Resource utilization**, and **Errors and exceptions** for {{es}} in real time.
 
 ::::{note}
-The default {{watcher}} based "cluster alerts" for {{stack-monitor-app}} have been recreated as rules in {{kib}} {alert-features}. For this reason, the existing {{watcher}} email action `monitoring.cluster_alerts.email_notifications.email_address` no longer works. The default action for all {{stack-monitor-app}} rules is to write to {{kib}} logs and display a notification in the UI.
+The default {{watcher}} based "cluster alerts" for {{stack-monitor-app}} have been recreated as rules in {{kib}} {{alert-features}}. For this reason, the existing {{watcher}} email action `monitoring.cluster_alerts.email_notifications.email_address` no longer works. The default action for all {{stack-monitor-app}} rules is to write to {{kib}} logs and display a notification in the UI.
 ::::
 
 

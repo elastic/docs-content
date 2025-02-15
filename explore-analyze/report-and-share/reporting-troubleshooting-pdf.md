@@ -87,7 +87,7 @@ The Puppeteer logs are very verbose and could possibly contain sensitive informa
 
 ## System requirements [reporting-troubleshooting-system-requirements]
 
-In Elastic Cloud, the {{kib}} instances that most configurations provide by default is for 1GB of RAM for the instance. That is enough for {{kib}} {report-features} when the visualization or dashboard is relatively simple, such as a single pie chart or a dashboard with a few visualizations. However, certain visualization types incur more load than others. For example, a TSVB panel has a lot of network requests to render.
+In Elastic Cloud, the {{kib}} instances that most configurations provide by default is for 1GB of RAM for the instance. That is enough for {{kib}} {{report-features}} when the visualization or dashboard is relatively simple, such as a single pie chart or a dashboard with a few visualizations. However, certain visualization types incur more load than others. For example, a TSVB panel has a lot of network requests to render.
 
 If the {{kib}} instance doesn’t have enough memory to run the report, the report fails with an error such as `Error: Page crashed!`. In this case, try increasing the memory for the {{kib}} instance to 2GB.
 

@@ -23,7 +23,7 @@ Your synonyms sets need to be stored in {{es}} so your analyzers can refer to th
 
 ### Synonyms API [synonyms-store-synonyms-api]
 
-You can use the [synonyms APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/synonyms-apis.html) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets.
+You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
 
@@ -72,7 +72,7 @@ foo => foo bar, baz
 
 To update an existing synonyms set, upload new files to your cluster. Synonyms set files must be kept in sync on every cluster node.
 
-When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-reload-analyzers.html)
+When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers)
 
 This manual syncing and reloading makes this approach less flexible than using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api).
 
@@ -120,7 +120,7 @@ Check each synonym token filter documentation for configuration details and inst
 
 ### Test your analyzer [synonyms-test-analyzer]
 
-You can test an analyzer configuration without modifying your index settings. Use the [analyze API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html) to test your analyzer chain:
+You can test an analyzer configuration without modifying your index settings. Use the [analyze API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) to test your analyzer chain:
 
 ```console
 GET /_analyze
@@ -144,8 +144,8 @@ Analyzers can be applied at [index time or search time](../../../manage-data/dat
 
 You need to decide when to apply your synonyms:
 
-* Index time: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html).
-* Search time: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn’t require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-reload-analyzers.html) when you make changes to your synonyms.
+* Index time: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
+* Search time: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn’t require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
 
 Synonyms sets created using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api) can only be used at search time.
 

@@ -99,7 +99,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
 
 7. Map roles for PKI users.
 
-    You map roles for PKI users through the [role mapping APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-role-mapping-apis) or by using a file stored on each node. Both configuration options are merged together. When a user authenticates against a PKI realm, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
+    You map roles for PKI users through the [role mapping APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) or by using a file stored on each node. Both configuration options are merged together. When a user authenticates against a PKI realm, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
 
     You identify a user by the distinguished name in their certificate. For example, the following mapping configuration maps `John Doe` to the `user` role using the role mapping API:
 
@@ -132,7 +132,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
 
     The distinguished name for a PKI user follows X.500 naming conventions which place the most specific fields (like `cn` or `uid`) at the beginning of the name and the most general fields (like `o` or `dc`) at the end of the name. Some tools, such as *openssl*, may print out the subject name in a different format.
 
-    One way that you can determine the correct DN for a certificate is to use the [authenticate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html) (use the relevant PKI certificate as the means of authentication) and inspect the metadata field in the result. The user’s distinguished name will be populated under the `pki_dn` key. You can also use the authenticate API to validate your role mapping.
+    One way that you can determine the correct DN for a certificate is to use the [authenticate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) (use the relevant PKI certificate as the means of authentication) and inspect the metadata field in the result. The user’s distinguished name will be populated under the `pki_dn` key. You can also use the authenticate API to validate your role mapping.
 
     For more information, see [Mapping users and groups to roles](mapping-users-groups-to-roles.md).
 
@@ -170,7 +170,7 @@ After you restart {{es}}, this realm can validate delegated PKI authentication. 
 
 A PKI realm with `delegation.enabled` still works unchanged for clients connecting directly to {{es}}. Directly authenticated users and users that are PKI authenticated by delegation to {{kib}} both follow the same [role mapping rules](mapping-users-groups-to-roles.md) or [authorization realms configurations](realm-chains.md#authorization_realms).
 
-If you use the [role mapping APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-role-mapping-apis), however, you can distinguish between users that are authenticated by delegation and users that are authenticated directly. The former have the extra fields `pki_delegated_by_user` and `pki_delegated_by_realm` in the user’s metadata. In the common setup, where authentication is delegated to {{kib}}, the values of these fields are `kibana` and `reserved`, respectively. For example, the following role mapping rule assigns the `role_for_pki1_direct` role to all users that have been authenticated directly by the `pki1` realm, by connecting to {{es}} instead of going through {{kib}}:
+If you use the [role mapping APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security), however, you can distinguish between users that are authenticated by delegation and users that are authenticated directly. The former have the extra fields `pki_delegated_by_user` and `pki_delegated_by_realm` in the user’s metadata. In the common setup, where authentication is delegated to {{kib}}, the values of these fields are `kibana` and `reserved`, respectively. For example, the following role mapping rule assigns the `role_for_pki1_direct` role to all users that have been authenticated directly by the `pki1` realm, by connecting to {{es}} instead of going through {{kib}}:
 
 ```console
 PUT /_security/role_mapping/direct_pki_only

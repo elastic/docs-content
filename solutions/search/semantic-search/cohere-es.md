@@ -79,7 +79,7 @@ print(client.info())
 
 ## Create the {{infer}} endpoint [cohere-es-infer-endpoint]
 
-[Create the {{infer}} endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-inference-api.html) first. In this example, the {{infer}} endpoint uses Cohere’s `embed-english-v3.0` model and the `embedding_type` is set to `byte`.
+[Create the {{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put) first. In this example, the {{infer}} endpoint uses Cohere’s `embed-english-v3.0` model and the `embedding_type` is set to `byte`.
 
 ```py
 COHERE_API_KEY = "cohere_api_key"

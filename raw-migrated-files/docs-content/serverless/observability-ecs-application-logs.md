@@ -17,13 +17,13 @@ ECS loggers reformat your application logs into ECS-compatible JSON, removing th
 
 For more information on adding an ECS logger to your application, refer to the guide for your framework:
 
-* [.NET](https://www.elastic.co/guide/en/ecs-logging/dotnet/{{ecs-logging-dotnet}}/setup.html)
-* Go: [zap](https://www.elastic.co/guide/en/ecs-logging/go-zap/{{ecs-logging-go-zap}}/setup.html), [logrus](https://www.elastic.co/guide/en/ecs-logging/go-logrus/{{ecs-logging-go-logrus}}/setup.html)
-* [Java](https://www.elastic.co/guide/en/ecs-logging/java/{{ecs-logging-java}}/setup.html)
-* Node.js: [morgan](https://www.elastic.co/guide/en/ecs-logging/nodejs/{{ecs-logging-nodejs}}/morgan.html), [pino](https://www.elastic.co/guide/en/ecs-logging/nodejs/{{ecs-logging-nodejs}}/pino.html), [winston](https://www.elastic.co/guide/en/ecs-logging/nodejs/{{ecs-logging-nodejs}}/winston.html)
-* [PHP](https://www.elastic.co/guide/en/ecs-logging/php/{{ecs-logging-php}}/setup.html)
-* [Python](https://www.elastic.co/guide/en/ecs-logging/python/{{ecs-logging-python}}/installation.html)
-* [Ruby](https://www.elastic.co/guide/en/ecs-logging/ruby/{{ecs-logging-ruby}}/setup.html)
+* [.NET](https://www.elastic.co/guide/en/ecs-logging/dotnet/current/setup.html)
+* Go: [zap](https://www.elastic.co/guide/en/ecs-logging/go-zap/current/setup.html)
+* [Java](https://www.elastic.co/guide/en/ecs-logging/java/current/setup.html)
+* Node.js: [morgan](https://www.elastic.co/guide/en/ecs-logging/nodejs/current/winston.html)
+* [PHP](https://www.elastic.co/guide/en/ecs-logging/php/current/setup.html)
+* [Python](https://www.elastic.co/guide/en/ecs-logging/python/current/installation.html)
+* [Ruby](https://www.elastic.co/guide/en/ecs-logging/ruby/current/setup.html)
 
 
 ## APM agent ECS reformatting [reformatting-logs]
