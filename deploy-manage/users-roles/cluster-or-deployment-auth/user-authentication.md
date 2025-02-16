@@ -74,6 +74,6 @@ Review the following topics to learn about authentication in your Elasticsearch 
 * Learn about [internal users](/deploy-manage/users-roles/cluster-or-deployment-auth/internal-users.md), which are responsible for the operations that take place inside an Elasticsearch cluster.
 * Learn about [service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md), which are used for integration with external services that connect to Elasticsearch
 * Learn about the [services used for token-based authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services.md)
-* Learn about the [services used by orchestrators](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) (applies to {{ece}}, {{ecloud}} Hosted, and {{eck}})
+* Learn about the [services used by orchestrators](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) (applies to {{ece}}, {{ech}}, and {{eck}})
 * Learn about [user lookup technologies](/deploy-manage/users-roles/cluster-or-deployment-auth/looking-up-users-without-authentication.md)
 * [Manage the user cache](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-user-cache.md)
