@@ -7,7 +7,7 @@ mapped_pages:
 
 # Deploy ECK on Openshift [k8s-openshift]
 
-This page shows how to run ECK on OpenShift.
+This section shows how to run ECK on OpenShift.
 
 * [Before you begin](#k8s-openshift-before-you-begin)
 * [Deploy the operator](k8s-openshift-deploy-operator.md)
@@ -20,8 +20,6 @@ This page shows how to run ECK on OpenShift.
 ::::{warning} 
 Some Docker images are incompatible with the `restricted` SCC. This is the case for the **APM Server before 7.9** and for **Enterprise Search 7.9 and 7.10**. You can use this [workaround](k8s-openshift-anyuid-workaround.md) to run those images with the `anyuid` SCC.
 ::::
-
-
 
 ## Before you begin [k8s-openshift-before-you-begin] 
 

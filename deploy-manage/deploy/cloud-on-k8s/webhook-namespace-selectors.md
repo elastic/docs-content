@@ -17,6 +17,5 @@ Webhook resources are cluster-scoped, therefore `createClusterScopedResources` m
 It is not recommended to deploy webhook resources in environments where operators are run by untrusted users and need to be locked down tightly.
 ::::
 
-
 For more information, check [Configure the validating webhook](configure-validating-webhook.md) and [Dynamic Admission Control](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/).
 

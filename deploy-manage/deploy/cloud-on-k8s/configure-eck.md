@@ -53,6 +53,8 @@ helm upgrade elastic-operator elastic/eck-operator --set config.ca-cert-validity
 
 If you installed ECK using the manifests and the commands listed in [Deploy ECK](./install-using-yaml-manifest-quickstart.md), you can configure it by editing the `eck.yaml` key of the `elastic-operator` ConfigMap. Add, remove or update any configuration setting there and the operator will restart automatically to apply the new changes unless the `--disable-config-watch` flag is set.
 
+You can update the ConfigMap directly using the command `kubectl edit configmap elastic-operator -n elastic-operator` or modify the installation manifests and reapply them with `kubectl apply -f <your-manifest-file.yaml>`.
+
 The following shows the default `elastic-operator` ConfigMap, for reference purposes. Refer to asciidocalypse://reference/cloud/cloud-on-k8s/eck-configuration-flags.md for a complete list of available settings.
 
 ```yaml

@@ -1,5 +1,5 @@
 ---
-navigation_title: Configure ECK
+navigation_title: Configure
 applies:
   eck: all
 mapped_pages:

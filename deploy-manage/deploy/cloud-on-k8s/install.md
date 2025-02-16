@@ -1,4 +1,5 @@
 ---
+navigation_title: Install
 applies:
   eck: all
 mapped_urls:
@@ -23,13 +24,13 @@ You can install multiple instances of ECK in the same Kubernetes cluster, but on
 Deleting CRDs will trigger deletion of all custom resources (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
 ::::
 
-For a list of supported versions refer to [](../cloud-on-k8s.md#k8s-supported)
+For a list of supported Kubernetes versions refer to [](../cloud-on-k8s.md#k8s-supported)
 
 ## Installation methods
 
 ECK supports multiple installation methods. Choose the one that best fits your infrastructure:
 
-* [Install ECK using YAML manifests (quickstart)](./install-using-yaml-manifest-quickstart.md)
+* [Install ECK using YAML manifests](./install-using-yaml-manifest-quickstart.md)
 * [Install ECK using a Helm chart](./install-using-helm-chart.md)
 * [](./deploy-eck-on-openshift.md)
 * [](./deploy-eck-on-gke-autopilot.md)

@@ -22,20 +22,29 @@ Before you deploy and run ECK in production, take some time to look at the basic
 Snapshots are essential for recovering Elasticsearch indices in case of accidental deletion or for migrating data between clusters.
 ::::
 
+* [Nodes orchestration](nodes-orchestration.md)
+
 
 * [Virtual memory](virtual-memory.md)
 * [Settings managed by ECK](settings-managed-by-eck.md)
-* [Secure settings](../../security/secure-settings.md)
 * [Custom configuration files and plugins](custom-configuration-files-plugins.md)
 * [Init containers for plugin downloads](init-containers-for-plugin-downloads.md)
 * [Update strategy](update-strategy.md)
 * [Pod disruption budget](pod-disruption-budget.md)
 * [Advanced Elasticsearch node scheduling](advanced-elasticsearch-node-scheduling.md)
-* [Nodes orchestration](nodes-orchestration.md)
-* [Create automated snapshots](../../tools/snapshot-and-restore/cloud-on-k8s.md)
-* [Remote clusters](../../remote-clusters/eck-remote-clusters.md)
 * [Readiness probe](readiness-probe.md)
 * [Pod PreStop hook](pod-prestop-hook.md)
-* [Elasticsearch autoscaling](../../autoscaling/deployments-autoscaling-on-eck.md)
-* [JVM heap dumps](../../../troubleshoot/deployments/cloud-on-k8s/jvm-heap-dumps.md)
 * [Security Context](security-context.md)
+
+In other sections of the documentation you can find information for the following configuration use cases:
+
+* [Secure settings](../../security/secure-settings.md)
+* [Remote clusters](../../remote-clusters/eck-remote-clusters.md)
+* [Create automated snapshots](../../tools/snapshot-and-restore/cloud-on-k8s.md)
+* [Elasticsearch autoscaling](../../autoscaling/deployments-autoscaling-on-eck.md)
+
+**Troubleshooting utilities**
+
+* [JVM heap dumps](../../../troubleshoot/deployments/cloud-on-k8s/jvm-heap-dumps.md)
+* [ECK diagnostics utility](../../../troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md)
+

@@ -19,8 +19,16 @@ helm repo update
 The minimum supported version of Helm is 3.2.0.
 ::::
 
+## Installation options
 
-## Cluster-wide (global) installation [k8s-install-helm-global]
+The Elastic Operator Helm chart supports two main installation methods:
+
+* Cluster-wide (global) installation – Installs both the operator and all its Custom Resource Definitions (CRDs) in a single step.
+* Restricted installation – Separates the installation of the CRDs from the operator, allowing multiple operator instances to coexist in the same cluster while managing different sets of namespaces.
+
+A restricted installation is required if you plan to run multiple operators in the same cluster or if the operator cannot have cluster-wide permissions.
+
+### Cluster-wide (global) installation [k8s-install-helm-global]
 
 This is the default mode of installation and is equivalent to [installing ECK using the stand-alone YAML manifests](./install-using-yaml-manifest-quickstart.md).
 
@@ -28,7 +36,7 @@ This is the default mode of installation and is equivalent to [installing ECK us
 helm install elastic-operator elastic/eck-operator -n elastic-system --create-namespace
 ```
 
-## Restricted installation [k8s-install-helm-restricted]
+### Restricted installation [k8s-install-helm-restricted]
 
 This mode avoids installing any cluster-scoped resources and restricts the operator to manage only a set of pre-defined namespaces.
 
@@ -58,13 +66,14 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
   --set=managedNamespaces='{namespace-a, namespace-b}'
 ```
 
-You can find the profile files in the Helm cache directory or from the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/deploy/eck-operator).
-
+You can find the profile files in the Helm cache directory or in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/deploy/eck-operator).
 ::::
+
+The previous example disabled the validation webhook along with all other cluster-wide resources. If you need to enable the validation webhook in a restricted environment, see [](./webhook-namespace-selectors.md). To understand what the validation webhook does, refer to [](./configure-validating-webhook.md).
 
 ## View available configuration options [k8s-install-helm-show-values]
 
-You can view all configurable values by running the following:
+You can view all configurable values of the operator Helm chart by running the following:
 
 ```sh
 helm show values elastic/eck-operator
@@ -114,6 +123,7 @@ For example, an ECK 1.2.1 installation deployed using [YAML manifests](/deploy-m
 
 3. Install the ECK operator using the Helm chart as described in [Install ECK using the Helm chart](./install-using-helm-chart.md).
 
-## Configure the webhook namespace selectors
+## Next steps
 
-If needed, the Helm based installation support the configuration of the namespaces associated to the webhook validator. Refer to [](./webhook-namespace-selectors.md) for more information.
+* For ECK configuration settings, refer to [](/deploy-manage/deploy/cloud-on-k8s/configure.md).
+* To continue with the installation of {{es}} and {{kib}} go to [](/deploy-manage/deploy/cloud-on-k8s/manage-deployments.md).

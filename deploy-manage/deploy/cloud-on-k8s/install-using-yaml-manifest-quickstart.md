@@ -62,7 +62,7 @@ To deploy the ECK operator:
     ```
 
     ::::{note}
-    The ECK operator runs by default in the `elastic-system` namespace. It is recommended that you choose a dedicated namespace for your workloads (such as Elasticsearch and Kibana), rather than using the `elastic-system` or the `default` namespace.
+    The ECK operator runs by default in the `elastic-system` namespace. While this namespace is used for the operator itself, it is recommended that you deploy your application workloads in a separate, dedicated namespace instead of `elastic-system` or `default`. You will need to consider this when setting up your applications.
     ::::
 
 3. Using [`kubectl logs`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs), monitor the operator’s setup by watching the logs:
@@ -71,13 +71,20 @@ To deploy the ECK operator:
     kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
     ```
 
-4. Use [`kubectl get`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) to check the operator status, passing in the namespace using the `-n` flag. When the operator is ready to use, it will report as `Running`. 
+4. Use [`kubectl get pods`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) to check the operator status, passing in the namespace using the `-n` flag:
 
-```
-$ kubectl get -n elastic-system pods
-NAME                 READY   STATUS    RESTARTS   AGE
-elastic-operator-0   1/1     Running   0          1m
-```
+    ```sh
+    kubectl get -n elastic-system pods
+    ```
+
+    When the operator is ready to use, it will report as `Running`
+
+    ```
+    $ kubectl get -n elastic-system pods
+    NAME                 READY   STATUS    RESTARTS   AGE
+    elastic-operator-0   1/1     Running   0          1m
+    ```
+
 
 ## Next steps
 
