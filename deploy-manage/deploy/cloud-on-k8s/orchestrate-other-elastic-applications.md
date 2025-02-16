@@ -15,7 +15,7 @@ The following guides provide specific instructions for deploying and configuring
 * [Beats](beats.md)
 * [{{ls}}](logstash.md)
 
-When orchestrating any of these applications, also consider the following topics, originally presented for {{es}} and {{kib}}:
+When orchestrating any of these applications, also consider the following topics:
 
 * [Elastic Stack Helm Chart](managing-deployments-using-helm-chart.md)
 * [Recipes](recipes.md)

@@ -31,7 +31,7 @@ ECK also facilitates configuration and operation activities with advanced featur
 * [**Elastic Stack configuration policies**](elastic-stack-configuration-policies.md): Organize your {{es}} and {{kib}} configuration settings through `StackConfigPolicy` resources that can be referenced within your deployments. This helps to keep your manifests simplified.
 
 ## Other sections
-
+% check this other sections with the same section on elasticsearch-configuration to decide what to do
 Other sections of the Elastic documentation cover additional topics related to deployments configuration on ECK:
 
 **Security**
@@ -48,6 +48,3 @@ Other sections of the Elastic documentation cover additional topics related to d
 **Monitoring and Logging**
 
   * [**Stack monitoring**](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html): Use ECK to manage logs and metrics for your deployments.
-
-**Autoscaling**
-  * [**Autoscaling stateless applications**](../../autoscaling/autoscaling-stateless-applications-on-eck.md): Use [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) for {{kib}} or other stateless applications.
