@@ -123,7 +123,7 @@ Alternatively, you can download and deploy ELSER to an {{infer}} pipeline using 
 1. In {{kib}}, navigate to **Search** > **Indices**.
 2. Select the index from the list that has an {{infer}} pipeline in which you want to use ELSER.
 3. Navigate to the **Pipelines** tab.
-4. Under **{{ml-app}} {infer-cap} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
+4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-elser-v2-es.png
     :alt: Deploying ELSER in Elasticsearch

@@ -1,6 +1,6 @@
 # Security [xpack-security]
 
-The {{stack}} {security-features} enable you to easily secure a cluster. With security, you can password-protect your data as well as implement more advanced security measures such as encrypting communications, role-based access control, IP filtering, and auditing. For more information, see [Secure a cluster](../../../deploy-manage/security.md) and [Configuring Security in {{kib}}](../../../deploy-manage/security.md).
+The {{stack}} {{security-features}} enable you to easily secure a cluster. With security, you can password-protect your data as well as implement more advanced security measures such as encrypting communications, role-based access control, IP filtering, and auditing. For more information, see [Secure a cluster](../../../deploy-manage/security.md) and [Configuring Security in {{kib}}](../../../deploy-manage/security.md).
 
 ::::{note} 
 There are security limitations that affect {{kib}}. For more information, refer to [Security](../../../deploy-manage/security.md).
@@ -25,7 +25,7 @@ To manage roles, go to the **Roles** management page using the navigation menu o
 For a more holistic overview of configuring roles for the entire stack, see [User authorization](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md).
 
 ::::{note} 
-Managing roles that grant [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) using the {{es}} [role management APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-role-apis) is not supported. Doing so will likely cause Kibana’s authorization to behave unexpectedly.
+Managing roles that grant [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) using the {{es}} [role management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) is not supported. Doing so will likely cause Kibana’s authorization to behave unexpectedly.
 
 ::::
 

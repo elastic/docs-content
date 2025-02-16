@@ -42,7 +42,7 @@ On {{ecloud}}, [operator privileges](../../../deploy-manage/users-roles/cluster-
 
 These built-in users are stored in a special `.security` index, which is managed by {{es}}. If a built-in user is disabled or its password changes, the change is automatically reflected on each node in the cluster. If your `.security` index is deleted or restored from a snapshot, however, any changes you have applied are lost.
 
-Although they share the same API, the built-in users are separate and distinct from users managed by the [native realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md). Disabling the native realm will not have any effect on the built-in users. The built-in users can be disabled individually, using the [disable users API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-disable-user.html).
+Although they share the same API, the built-in users are separate and distinct from users managed by the [native realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md). Disabling the native realm will not have any effect on the built-in users. The built-in users can be disabled individually, using the [disable users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-disable-user).
 
 
 ## The Elastic bootstrap password [bootstrap-elastic-passwords] 
@@ -74,7 +74,7 @@ After you set a password for the `elastic` user, the bootstrap password is no lo
 ::::
 
 
-Alternatively, you can set the initial passwords for the built-in users by using the **Management > Users** page in {{kib}} or the [change password API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-change-password.html). These methods are more complex. You must supply the `elastic` user and its bootstrap password to log in to {{kib}} or run the API. This requirement means that you cannot use the default bootstrap password that is derived from the `keystore.seed` setting. Instead, you must explicitly set a `bootstrap.password` setting in the keystore before you start {{es}}. For example, the following command prompts you to enter a new bootstrap password:
+Alternatively, you can set the initial passwords for the built-in users by using the **Management > Users** page in {{kib}} or the [change password API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password). These methods are more complex. You must supply the `elastic` user and its bootstrap password to log in to {{kib}} or run the API. This requirement means that you cannot use the default bootstrap password that is derived from the `keystore.seed` setting. Instead, you must explicitly set a `bootstrap.password` setting in the keystore before you start {{es}}. For example, the following command prompts you to enter a new bootstrap password:
 
 ```shell
 bin/elasticsearch-keystore add "bootstrap.password"
@@ -128,7 +128,7 @@ For example, see [Monitoring {{metricbeat}}](https://www.elastic.co/guide/en/bea
 
 The `remote_monitoring_user` is used when {{metricbeat}} collects and stores monitoring data for the {{stack}}. See [*Monitoring in a production environment*](../../../deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
 
-If you have upgraded from an older version of {{es}}, then you may not have set a password for the `beats_system` or `remote_monitoring_user` users. If this is the case, then you should use the **Management > Users** page in {{kib}} or the [change password API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-change-password.html) to set a password for these users.
+If you have upgraded from an older version of {{es}}, then you may not have set a password for the `beats_system` or `remote_monitoring_user` users. If this is the case, then you should use the **Management > Users** page in {{kib}} or the [change password API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) to set a password for these users.
 
 
 ## Adding built-in user passwords to APM [add-built-in-user-apm] 
@@ -142,7 +142,7 @@ xpack.monitoring.elasticsearch.username: apm_system
 xpack.monitoring.elasticsearch.password: apmserverpassword
 ```
 
-If you have upgraded from an older version of {{es}}, then you may not have set a password for the `apm_system` user. If this is the case, then you should use the **Management > Users** page in {{kib}} or the [change password API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-change-password.html) to set a password for these users.
+If you have upgraded from an older version of {{es}}, then you may not have set a password for the `apm_system` user. If this is the case, then you should use the **Management > Users** page in {{kib}} or the [change password API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) to set a password for these users.
 
 
 ## Disabling default password functionality [disabling-default-password] 

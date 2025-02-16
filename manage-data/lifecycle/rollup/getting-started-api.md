@@ -1,22 +1,18 @@
 ---
-navigation_title: "Getting started"
+navigation_title: "Get started using the API"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-getting-started.html
 ---
 
-
-
-# Getting started with rollups [rollup-getting-started]
-
+# Get started with rollups using the API
 
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups will be removed in a future version. Please [migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups will be removed in a future version. Please [migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](/manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
 ::::
 
-
-::::{warning} 
+::::{warning}
 From 8.15.0 invoking the put job API in a cluster with no rollup usage will fail with a message about Rollup’s deprecation and planned removal. A cluster either needs to contain a rollup job or a rollup index in order for the put job API to be allowed to execute.
 ::::
 
@@ -35,7 +31,7 @@ Imagine you have a series of daily indices that hold sensor data (`sensor-2017-0
 ```
 
 
-## Creating a rollup job [_creating_a_rollup_job] 
+## Creating a rollup job [_creating_a_rollup_job]
 
 We’d like to rollup these documents into hourly summaries, which will allow us to generate reports and dashboards with any time interval one hour or greater. A rollup job might look like this:
 
@@ -109,7 +105,7 @@ After you execute the above command and create the job, you’ll receive the fol
 ```
 
 
-## Starting the job [_starting_the_job] 
+## Starting the job [_starting_the_job]
 
 After the job is created, it will be sitting in an inactive state. Jobs need to be started before they begin processing data (this allows you to stop them later as a way to temporarily pause, without deleting the configuration).
 
@@ -120,7 +116,7 @@ POST _rollup/job/sensor/_start
 ```
 
 
-## Searching the rolled results [_searching_the_rolled_results] 
+## Searching the rolled results [_searching_the_rolled_results]
 
 After the job has run and processed some data, we can use the [Rollup search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-rollup-search) endpoint to do some searching. The Rollup feature is designed so that you can use the same Query DSL syntax that you are accustomed to…​ it just happens to run on the rolled up data instead.
 
@@ -275,7 +271,7 @@ Which returns a corresponding response:
 In addition to being more complicated (date histogram and a terms aggregation, plus an additional average metric), you’ll notice the date_histogram uses a `7d` interval instead of `60m`.
 
 
-## Conclusion [_conclusion] 
+## Conclusion [_conclusion]
 
 This quickstart should have provided a concise overview of the core functionality that Rollup exposes. There are more tips and things to consider when setting up Rollups, which you can find throughout the rest of this section. You may also explore the [REST API](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-api-quickref.html) for an overview of what is available.
 

@@ -119,7 +119,7 @@ A {{data-source}} can match one rollup index.  For a combination rollup {{data-s
 rollup_logstash,kibana_sample_data_logs
 ```
 
-For an example, refer to [Create and visualize rolled up data](../../manage-data/lifecycle/rollup.md#rollup-data-tutorial).
+For an example, refer to [Create and visualize rolled up data](/manage-data/lifecycle/rollup/getting-started-kibana.md#rollup-data-tutorial).
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]

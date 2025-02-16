@@ -219,7 +219,7 @@ Typically, you need to create the following separate roles:
 
 * **setup** role for setting up index templates and other dependencies
 * **monitoring** role for sending monitoring information
-* **writer** role for publishing events collected by {metricbeat}
+* **writer** role for publishing events collected by {{metricbeat}}
 * **reader** role for Kibana users who need to view and create visualizations that access {{metricbeat}} data
 
 ::::{note}

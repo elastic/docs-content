@@ -16,7 +16,7 @@ These settings, just like the regular ones in the `elasticsearch.yml` config fil
 
 Just like the settings values in `elasticsearch.yml`, changes to the keystore contents are not automatically applied to the running {{es}} node. Re-reading settings requires a node restart. However, certain secure settings are marked as **reloadable**. Such settings can be re-read and applied on a running node.
 
-You can define these settings before the node is started, or call the [Nodes reload secure settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) after the settings are defined to apply them to a running node.
+You can define these settings before the node is started, or call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) after the settings are defined to apply them to a running node.
 
 The values of all secure settings, **reloadable** or not, must be identical across all cluster nodes. After making the desired secure settings changes, using the `bin/elasticsearch-keystore add` command, call:
 
@@ -32,7 +32,7 @@ POST _nodes/reload_secure_settings
 
 This API decrypts, re-reads the entire keystore and validates all settings on every cluster node, but only the **reloadable** secure settings are applied. Changes to other settings do not go into effect until the next restart. Once the call returns, the reload has been completed, meaning that all internal data structures dependent on these settings have been changed. Everything should look as if the settings had the new value from the start.
 
-When changing multiple **reloadable** secure settings, modify all of them on each cluster node, then issue a [`reload_secure_settings`](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) call instead of reloading after each modification.
+When changing multiple **reloadable** secure settings, modify all of them on each cluster node, then issue a [`reload_secure_settings`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) call instead of reloading after each modification.
 
 There are reloadable secure settings for:
 

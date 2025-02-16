@@ -28,7 +28,7 @@ This example uses the sample eCommerce orders and sample web logs data sets. For
 To get the best results from {{ml}} analytics, you must understand your data. You can use the **{{data-viz}}** in the **{{ml-app}}** app for this purpose. Search for specific fields or field types, such as geo-point fields in the sample data sets. You can see how many documents contain those fields within a specific time period and sample size. You can also see the number of distinct values, a list of example values, and preview them on a map. For example:
 
 :::{image} ../../../images/machine-learning-weblogs-data-visualizer-geopoint.jpg
-:alt: A screenshot of a geo_point field in {data-viz}
+:alt: A screenshot of a geo_point field in {{data-viz}}
 :class: screenshot
 :::
 
@@ -46,7 +46,7 @@ To create an {{anomaly-job}} that uses the `lat_long` function, in {{kib}} you m
 For example, create a job that analyzes the sample eCommerce orders data set to find orders with unusual coordinates (`geoip.location` values) relative to the past behavior of each customer (`user` ID):
 
 :::{image} ../../../images/machine-learning-ecommerce-advanced-wizard-geopoint.jpg
-:alt: A screenshot of creating an {{anomaly-job}} using the eCommerce data in {kib}
+:alt: A screenshot of creating an {{anomaly-job}} using the eCommerce data in {{kib}}
 :class: screenshot
 :::
 
@@ -107,7 +107,7 @@ POST _ml/datafeeds/datafeed-ecommerce-geo/_start <4>
 Alternatively, create a job that analyzes the sample web logs data set to detect events with unusual coordinates (`geo.coordinates` values) or unusually high sums of transferred data (`bytes` values):
 
 :::{image} ../../../images/machine-learning-weblogs-advanced-wizard-geopoint.jpg
-:alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {kib}
+:alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {{kib}}
 :class: screenshot
 :::
 

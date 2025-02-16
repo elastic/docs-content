@@ -102,20 +102,20 @@ Regardless of the above, cost conscious customers are likely to be fine with a l
 
 Each APM agent provides a configuration value used to set the transaction sample rate. Refer to the relevant agent’s documentation for more details:
 
-* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-transaction-sample-rate)
-* Java: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-transaction-sample-rate)
-* .NET: [`TransactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-core.html#config-transaction-sample-rate)
-* Node.js: [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#transaction-sample-rate)
+* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-transaction-sample-rate)
+* Java: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-transaction-sample-rate)
+* .NET: [`TransactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-transaction-sample-rate)
+* Node.js: [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate)
 * PHP: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-transaction-sample-rate)
-* Python: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-transaction-sample-rate)
-* Ruby: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-transaction-sample-rate)
+* Python: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-transaction-sample-rate)
+* Ruby: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-transaction-sample-rate)
 
 Each APM agent provides a configuration value used to set the transaction sample rate. Refer to the relevant agent’s documentation for more details:
 
-* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-transaction-sample-rate)
-* Java: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-transaction-sample-rate)
-* .NET: [`TransactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-core.html#config-transaction-sample-rate)
-* Node.js: [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#transaction-sample-rate)
+* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-transaction-sample-rate)
+* Java: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-transaction-sample-rate)
+* .NET: [`TransactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-transaction-sample-rate)
+* Node.js: [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate)
 * PHP: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-transaction-sample-rate)
-* Python: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-transaction-sample-rate)
-* Ruby: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-transaction-sample-rate)
+* Python: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-transaction-sample-rate)
+* Ruby: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-transaction-sample-rate)

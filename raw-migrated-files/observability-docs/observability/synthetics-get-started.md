@@ -5,8 +5,8 @@ To set up a synthetic monitor, you need to configure the monitor, run it, and se
 $$$uptime-set-up-choose$$$
 There are two ways to set up a synthetic monitor:
 
-* {project-monitors-cap}
-* The {synthetics-app}
+* {{project-monitors-cap}}
+* The {{synthetics-app}}
 
 Read more about each option below, and choose the approach that works best for you.
 
