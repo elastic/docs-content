@@ -9,7 +9,7 @@ mapped_pages:
 
 Before you deploy and run ECK in production, take some time to look at the basic and advanced settings available on this page. These settings are related both to Elasticsearch and Kubernetes functionality.
 
-**Read first**
+**Read first (theory)**
 * [Nodes orchestration](nodes-orchestration.md): Learn how ECK orchestrates nodes, applies changes or upgrades the cluster.
 * [Storage recommendations](storage-recommendations.md): Kubernetes storage considerations for {{es}} workloads.
 
@@ -18,15 +18,18 @@ Before you deploy and run ECK in production, take some time to look at the basic
 * [Node configuration](node-configuration.md): Configure the `elasticsearch.yml` of your {{es}} nodes.
 * [Volume claim templates](volume-claim-templates.md): Configure storage in your {{es}} nodes.
 * [Virtual memory](virtual-memory.md): Methods to accomplish {{es}} virtual memory system configuration requirement.
-* [Settings managed by ECK](settings-managed-by-eck.md): List of {{es}} settings that you cannot update.
-* [Custom configuration files and plugins](custom-configuration-files-plugins.md): Add extra configuration files or install plugins in your {{es}} nodes.
+* [Settings managed by ECK](settings-managed-by-eck.md): List of {{es}} settings that you shouldn't update.
+* [Custom configuration files and plugins](custom-configuration-files-plugins.md): Add extra configuration files or install plugins to your {{es}} nodes.
 * [Init containers for plugin downloads](init-containers-for-plugin-downloads.md): Use Kubernetes init containers to install plugins before starting {{es}}.
 
 **Kubernetes related configuration**
-* [Security Context](security-context.md): Kubernetes security context and kernel capabilities.
-* [Update strategy](update-strategy.md): 
-* [Pod disruption budget](pod-disruption-budget.md): 
+
+% This section shows interactions between Kubernetes standard functionality and your ECK managed clusters.
+
 * [Advanced Elasticsearch node scheduling](advanced-elasticsearch-node-scheduling.md): Integrate standard Kubernetes scheduling options with your {{es}} nodes.
+* [Update strategy](update-strategy.md): Control how the changes are applied to the cluster.
+* [Pod disruption budget](pod-disruption-budget.md): Integrate Kubernetes Pod disruption budgets in your cluster.
+* [Security Context](security-context.md): Kubernetes security context and kernel capabilities.
 * [Readiness probe](readiness-probe.md): Customize `readinessProbe` in certain use cases.
 
 **Traffic handling**
