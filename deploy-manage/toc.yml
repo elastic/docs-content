@@ -281,6 +281,7 @@ toc:
                       - file: deploy/cloud-on-k8s/readiness-probe.md
                       - file: deploy/cloud-on-k8s/pod-prestop-hook.md
                       - file: deploy/cloud-on-k8s/security-context.md
+                      - file: deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md
                   - file: deploy/cloud-on-k8s/kibana-configuration.md
                     children:
                       - file: deploy/cloud-on-k8s/k8s-kibana-es.md
@@ -288,11 +289,10 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-kibana-secure-settings.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-http-configuration.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
-                  - file: deploy/cloud-on-k8s/tls-certificates.md
-                  - file: deploy/cloud-on-k8s/recipes.md
-                  - file: deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
+                  - file: deploy/cloud-on-k8s/tls-certificates.md
+                  - file: deploy/cloud-on-k8s/recipes.md
                   - file: deploy/cloud-on-k8s/elastic-stack-configuration-policies.md
                   - file: deploy/cloud-on-k8s/connect-to-external-elastic-resources.md
           - file: deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md
