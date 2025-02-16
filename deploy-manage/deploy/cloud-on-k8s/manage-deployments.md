@@ -25,3 +25,7 @@ For a complete reference on configuration possibilities for {{es}} and {{kib}}, 
 
 - [](./elasticsearch-configuration.md)
 - [](./kibana-configuration.md)
+
+Other references for managing deployments:
+
+* [**Upgrade the Elastic Stack version**](../../upgrade/deployment-or-cluster.md): Upgrade orchestrated applications on ECK.

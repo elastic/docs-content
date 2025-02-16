@@ -32,9 +32,6 @@ The following guides cover common ECK configuration tasks:
 
 Other sections of the Elastic documentation cover additional topics related to ECK configuration:
 
-* **Security**
-  * (topis related with ECK security (TLS certificates?), not deployments stuff ), CA certificates?
-
 * **Monitoring**
   * [Configure the metrics endpoint](/deploy-manage/monitor/orchestrators/eck-metrics-configuration.md)  (monitor an orchestrator)
 
@@ -44,29 +41,3 @@ Other sections of the Elastic documentation cover additional topics related to E
 * **Maintenance**
   * [Upgrade ECK](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md)
   * [Uninstall ECK](../../uninstall/uninstall-elastic-cloud-on-kubernetes.md)
-
-(Apps related)
-* **Snapshots and Restore**
-  * Manage snapshots repositories --> Pending to add to configure deployments.
-
-* **Remote Clusters**
-  * Configure interconnection between your {{es}} clusters with the help of ECK.
-
-* **Monitoring**
-  * Stack Monitoring (for deployments)
-
-* **Licensing**
-  * [Manage licenses in ECK](../../license/manage-your-license-in-eck.md)
-
-* **Maintenance**
-  * [Upgrade ECK](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md)
-  * [Uninstall ECK](../../uninstall/uninstall-elastic-cloud-on-kubernetes.md)
-
-* **Autoscaling**
-  * Autoscaling stateless applications
-  * Elasticsearch autoscaling on ECK
-
-* Security
-  * SAML authentication
-  * Users and roles
-  * Built-in users
