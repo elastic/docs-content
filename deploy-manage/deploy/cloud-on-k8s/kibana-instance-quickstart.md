@@ -71,5 +71,12 @@ For a full description of each `CustomResourceDefinition` (CRD), refer to the [*
 kubectl describe crd kibana
 ```
 
-This completes the quickstart of deploying an {{kib}} instance on top of [the ECK operator](install-using-yaml-manifest-quickstart.md) and [deployed {{es}} cluster](elasticsearch-deployment-quickstart.md). We recommend continuing to [updating your deployment](update-deployments.md). For more {{kib}} configuration options, refer to [Running {{kib}} on ECK](kibana-configuration.md).
+## Next steps
+
+This completes the quickstart of deploying an {{kib}} instance on top of [the ECK operator](install-using-yaml-manifest-quickstart.md) and [deployed {{es}} cluster](elasticsearch-deployment-quickstart.md).
+
+We recommend continuing to:
+* [Updating your deployment](update-deployments.md).
+* For more {{kib}} configuration options, refer to [Running {{kib}} on ECK](kibana-configuration.md).
+
 

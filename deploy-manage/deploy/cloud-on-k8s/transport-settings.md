@@ -31,7 +31,6 @@ When you change the `clusterIP` setting of the service, ECK deletes and re-creat
 ::::
 
 
-
 ## Configure a custom Certificate Authority [k8s-transport-ca]
 
 Elasticsearch uses X.509 certificates to establish encrypted and authenticated connections across nodes in the cluster. By default, ECK creates a self-signed CA certificate to issue a certificate [for each node in the cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html#encrypt-internode-communication).

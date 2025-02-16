@@ -39,3 +39,7 @@ ECK supports multiple installation methods. Choose the one that best fits your i
 For air-gapped environments, refer to [](./air-gapped-install.md) to understand the requirements and installation considerations.
 
 Refer to [Required RBAC permissions](required-rbac-permissions.md) for a complete list of the permissions needed by the operator.
+
+::::{note}
+To upgrade ECK, refer to [](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md).
+::::
