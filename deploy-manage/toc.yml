@@ -266,17 +266,17 @@ toc:
                 children:
                   - file: deploy/cloud-on-k8s/elasticsearch-configuration.md
                     children:
+                      - file: deploy/cloud-on-k8s/nodes-orchestration.md
+                      - file: deploy/cloud-on-k8s/storage-recommendations.md
                       - file: deploy/cloud-on-k8s/node-configuration.md
                       - file: deploy/cloud-on-k8s/volume-claim-templates.md
-                      - file: deploy/cloud-on-k8s/storage-recommendations.md
-                      - file: deploy/cloud-on-k8s/transport-settings.md
                       - file: deploy/cloud-on-k8s/virtual-memory.md
                       - file: deploy/cloud-on-k8s/settings-managed-by-eck.md
                       - file: deploy/cloud-on-k8s/custom-configuration-files-plugins.md
                       - file: deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md
+                      - file: deploy/cloud-on-k8s/transport-settings.md
                       - file: deploy/cloud-on-k8s/update-strategy.md
                       - file: deploy/cloud-on-k8s/pod-disruption-budget.md
-                      - file: deploy/cloud-on-k8s/nodes-orchestration.md
                       - file: deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md
                       - file: deploy/cloud-on-k8s/readiness-probe.md
                       - file: deploy/cloud-on-k8s/pod-prestop-hook.md
@@ -293,8 +293,8 @@ toc:
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
                   - file: deploy/cloud-on-k8s/tls-certificates.md
                   - file: deploy/cloud-on-k8s/recipes.md
-                  - file: deploy/cloud-on-k8s/elastic-stack-configuration-policies.md
                   - file: deploy/cloud-on-k8s/connect-to-external-elastic-resources.md
+                  - file: deploy/cloud-on-k8s/elastic-stack-configuration-policies.md
           - file: deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md
             children:
               - file: deploy/cloud-on-k8s/apm-server.md

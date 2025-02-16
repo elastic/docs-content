@@ -16,11 +16,11 @@ This section provides details around {{kib}} and {{es}} configuration when runni
 
 Additionally, the following topics apply to both {{es}} and {{kib}}, and in some cases, to other applications supported by ECK:
 
+* [**Access services**](accessing-services.md): Learn how to access to the orchestrated clusters and how to adapt the Kubernetes services to your needs.
+
 * [**Customize Pods**](customize-pods.md): Learn how to adapt the `podTemplate` field to your needs.
 
 * [**Manage compute resources**](manage-compute-resources.md): Important considerations around CPU and memory `requests` and `limits` when running production workloads.
-
-* [**Access services**](accessing-services.md): Learn how to access to the orchestrated clusters and how to adapt the Kubernetes services to your needs.
 
 * [**Recipes**](recipes.md): Advanced use cases examples available in our GitHub repository. 
 
@@ -36,14 +36,18 @@ Other sections of the Elastic documentation cover additional topics related to d
 
 **Security**
 
+% the two pages about HTTP TLS certificate should be merged into one and be placed on Security docs
   * [**HTTP TLS certificates**](./tls-certificates.md): Use your own SSL/TLS certificates for the HTTP endpoint of {{es}} and {{kib}}.
-  
+
+  * Custom HTTP certificate -> TBD: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-custom-http-certificate.html
+
+  * SAML authentication -> TBD: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html (this mixes Elasticsearch and Kibana)
+
+  * [Users and roles] -> TBD Link to wherever this ends up: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
+
 **Monitoring and Logging**
 
   * [**Stack monitoring**](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html): Use ECK to manage logs and metrics for your deployments.
-
-**Remote Clusters**
-  * [**Remote clusters**](/deploy-manage/remote-clusters/eck-remote-clusters.md): Configure {{es}} remote clusters functionality for Cross Cluster Search (CCS) and Cross Cluster Replication.
 
 **Autoscaling**
   * [**Autoscaling stateless applications**](../../autoscaling/autoscaling-stateless-applications-on-eck.md): Use [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) for {{kib}} or other stateless applications.
