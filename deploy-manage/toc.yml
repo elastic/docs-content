@@ -254,7 +254,6 @@ toc:
                   - file: deploy/cloud-on-k8s/configure-eck.md
                   - file: deploy/cloud-on-k8s/configure-validating-webhook.md
                   - file: deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md
-                  - file: deploy/cloud-on-k8s/create-custom-images.md
                   - file: deploy/cloud-on-k8s/service-meshes.md
                     children:
                       - file: deploy/cloud-on-k8s/k8s-service-mesh-istio.md
@@ -345,6 +344,7 @@ toc:
                   - file: deploy/cloud-on-k8s/configuration-examples-logstash.md
                   - file: deploy/cloud-on-k8s/update-strategy-logstash.md
                   - file: deploy/cloud-on-k8s/advanced-configuration-logstash.md
+          - file: deploy/cloud-on-k8s/create-custom-images.md
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
         children:
