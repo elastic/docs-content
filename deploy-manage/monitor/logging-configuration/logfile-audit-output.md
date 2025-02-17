@@ -15,7 +15,7 @@ The `logfile` audit output is the only output for auditing. By default, it write
 
 In self-managed clusters, you can configure how the `logfile` is written in the `log4j2.properties` file located in `ES_PATH_CONF` (or check out the relevant portion of the [log4j2.properties in the sources](https://github.com/elastic/elasticsearch/blob/master/x-pack/plugin/core/src/main/config/log4j2.properties)). However, **Elastic strongly recommends using the default Log4j2 configuration**.
 
-Orchestrated deployments (Elastic Cloud, Elastic Cloud Enterprise (ECE), and Elastic Cloud on Kubernetes (ECK)) do not support changes in `log4j2.properties` files of the {{es}} instances.
+Orchestrated deployments (ECH, ECE, and ECK) do not support changes in `log4j2.properties` files of the {{es}} instances.
 
 ::::{note} 
 If you overwrite the `log4j2.properties` and do not specify appenders for any of the audit trails, audit events are forwarded to the root appender, which by default points to the `elasticsearch.log` file.

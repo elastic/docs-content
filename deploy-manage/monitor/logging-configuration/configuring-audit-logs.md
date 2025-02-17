@@ -20,28 +20,22 @@ When auditing security events, a single client request might generate multiple a
   * [{{es}} ignore policies settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#audit-event-ignore-policies): Use ignore policies for fine-grained control over which audit events are printed to the log file.
 
     ::::{tip}
-    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are **dynamic**. This means you can configure them using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying `elasticsearch.yml`. 
+    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are dynamic. This means you can configure them using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying `elasticsearch.yml`. 
     ::::
 
-Note that {{ech}} deployments provide its own subset of supported settings for auditing configuration:
-  * [Elasticsearch audit settings for Elastic Cloud Hosted deployments](https://www.elastic.co/guide/en/cloud/current/ec-add-user-settings.html#ec_audit_settings)
 
-For a complete description of event details and format, refer to:
-  * [{{es}} audit events details and schema](/deploy-manage/monitor/logging-configuration/elasticsearch-audit-events.md).
-  * [{{es}} logentry output format](/deploy-manage/monitor/logging-configuration/logfile-audit-output.md#audit-log-entry-format)
+For a complete description of event details and format, refer to the following resources:
+  * [{{es}} audit events details and schema](/deploy-manage/monitor/logging-configuration/elasticsearch-audit-events.md)
+  * [{{es}} log entry output format](/deploy-manage/monitor/logging-configuration/logfile-audit-output.md#audit-log-entry-format)
 
 ### Kibana auditing configuration
 
-{{kib}} configuration options include:
-
-  * [{{kib}} ignore filters](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-ignore-filters): List of filters that determine which events should be excluded from the audit log.
+To control the logs that are outputted by Kibana, you can use [{{kib}} ignore filters](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
 
     ::::{tip}
     To configure {{kib}} settings, follow the same [procedure](./enabling-audit-logs.md#enable-audit-logging-procedure) as when enabling {{kib}} audit logs, but apply the relevant settings instead.
     ::::
 
-Note that {{ech}} deployments provide its own subset of supported settings for auditing configuration:
-  * [Kibana audit settings on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-manage-kibana-settings.html#ec_logging_and_audit_settings)
 
 For a complete description of auditing event details, such as `category`, `type`, or `action`, refer to:
   * [{{kib}} audit events](https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html#xpack-security-ecs-audit-logging)
@@ -55,7 +49,7 @@ For a complete description of auditing event details, such as `category`, `type`
 * Refer to [auditing search queries](./auditing-search-queries.md) for details on logging request bodies in the {{es}} audit logs.
 
   ::::{important}
-  Be advised that **sensitive data may be audited in plain text** when including the request body in audit events, even though all the security APIs, such as those that change the user’s password, have the credentials filtered out when audited.
+  Sensitive data may be audited in plain text when including the request body in audit events, even though all the security APIs, such as those that change the user’s password, have the credentials filtered out when audited.
   ::::
 
 * Use {{kib}} [ignore filters](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-ignore-filters) if you want to filter out certain events from the {{kib}} audit log.

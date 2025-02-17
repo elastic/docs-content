@@ -18,12 +18,12 @@ Audit logging also provides forensic evidence in the event of an attack, and can
 
 In this section, you'll learn how to:
 
-1. [](./enabling-audit-logs.md): Activate {{es}} or {{kib}} audit logs for all supported deployment types, including self-managed clusters, {{ech}}, {{ece}} (ECE), and {{eck}} (ECK).
+* [](./enabling-audit-logs.md): Activate {{es}} or {{kib}} audit logs for all supported deployment types.
 
-2. [](./configuring-audit-logs.md): Filter and control what security events get logged in the audit log output.
+* [](./configuring-audit-logs.md): Filter and control what security events get logged in the audit log output.
 
-3. Optionally, [audit {{es}} search queries](./auditing-search-queries.md): Audit and log search request bodies. 
+* [Audit {{es}} search queries](./auditing-search-queries.md): Audit and log search request bodies. 
 
-4. [Correlate audit events](./correlating-kibana-elasticsearch-audit-logs.md): Explore audit logs and understand how events from the same request are correlated.
+* [Correlate audit events](./correlating-kibana-elasticsearch-audit-logs.md): Explore audit logs and understand how events from the same request are correlated.
 
 By following these guidelines, you can effectively audit system activity, enhance security monitoring, and meet compliance requirements.
