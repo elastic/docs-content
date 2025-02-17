@@ -27,7 +27,6 @@ To use CCS or CCR, your deployments must meet the following criteria:
   :::
 
 * If your deployment was created before February 2021, the Remote clusters page in {{kib}} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
-* To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
 
 ## Set up remote clusters with {{ech}}
 
