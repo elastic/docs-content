@@ -1,11 +1,16 @@
-# Rollup Jobs [data-rollups]
+---
+navigation_title: "Get started in Kibana"
+mapped_pages:
+  - https://www.elastic.co/guide/en/kibana/current/data-rollups.html
+---
+
+# Get started with the rollups in {{kib}}
 
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups are deprecated and will be removed in a future version. Use [downsampling](../../../manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups are deprecated and will be removed in a future version. Use [downsampling](/manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
 ::::
-
 
 A rollup job is a periodic task that aggregates data from indices specified by an index pattern, and then rolls it into a new index. Rollup indices are a good way to compactly store months or years of historical data for use in visualizations and reports.
 
@@ -16,15 +21,11 @@ You can go to the **Rollup Jobs** page using the navigation menu or the [global 
 :class: screenshot
 :::
 
-Before using this feature, you should be familiar with how rollups work. [Rolling up historical data](../../../manage-data/lifecycle/rollup.md) is a good source for more detailed information.
-
-
 ## Required permissions [_required_permissions_4]
 
 The `manage_rollup` cluster privilege is required to access **Rollup jobs**.
 
 To add the privilege, go to the **Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
-
 
 ## Create a rollup job [create-and-manage-rollup-job]
 
@@ -36,7 +37,6 @@ When defining the index pattern, you must enter a name that is different than th
 :alt: Wizard that walks you through creation of a rollup job
 :class: screenshot
 :::
-
 
 ## Start, stop, and delete rollup jobs [manage-rollup-job]
 
@@ -79,11 +79,11 @@ As you walk through the **Create rollup job** UI, enter the data:
 | Histogram interval | 1000 |
 | Metrics | bytes (average) |
 
-On the **Review and save*** page, click ***Start job now*** and ***Save**.
+On the **Review and save** page, click **Start job now** and **Save**.
 
 The terms, histogram, and metrics fields reflect the key information to retain in the rolled up data: where visitors are from (geo.src), what operating system they are using (machine.os.keyword), and how much data is being sent (bytes).
 
-You can now use the rolled up data for analysis at a fraction of the storage cost of the original index. The original data can live side by side with the new rollup index, or you can remove or archive it using [{{ilm}} ({{ilm-init}})](../../../manage-data/lifecycle/index-lifecycle-management.md).
+You can now use the rolled up data for analysis at a fraction of the storage cost of the original index. The original data can live side by side with the new rollup index, or you can remove or archive it using [{{ilm}} ({{ilm-init}})](/manage-data/lifecycle/index-lifecycle-management.md).
 
 
 ### Visualize the rolled up data [_visualize_the_rolled_up_data]
