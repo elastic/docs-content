@@ -82,9 +82,6 @@ You need an administrator to give you the `Saved Objects Management` {{kib}} pri
 
 
 ### {{kib}} or Observability project not accessible from host [logs-troubleshooting-kib-not-accessible]
-:::{applies}
-:stack: all
-:::
 
 If {{kib}} or your Observability project is not accessible from the host, you’ll see the following error message after pasting the **Install the {{agent}}** instructions into the host:
 
