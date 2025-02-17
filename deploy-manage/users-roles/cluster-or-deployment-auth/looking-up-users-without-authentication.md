@@ -27,7 +27,7 @@ See the [run_as](submitting-requests-on-behalf-of-other-users.md) and [delegated
 The `pki`, `saml`, `oidc`, `kerberos` and `jwt` realms do not support user lookup.
 
 ::::{note} 
-If you want to use a realm only for user lookup and prevent users from authenticating against that realm, you can [configure the realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.md#ref-realm-settings) and set `authentication.enabled` to `false`
+If you want to use a realm only for user lookup and prevent users from authenticating against that realm, you can [configure the realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-realm-settings) and set `authentication.enabled` to `false`
 ::::
 
 

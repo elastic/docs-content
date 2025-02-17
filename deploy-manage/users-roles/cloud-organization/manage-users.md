@@ -8,7 +8,9 @@ applies:
   hosted: all
 ---
 
-# Manage users [general-assign-user-roles]
+# Manage users
+
+$$$general-assign-user-roles$$$
 
 You can invite users to join your organization to allow them to interact with all or specific instances, projects and settings. After they're invited, you can manage the users in your organization.
 
