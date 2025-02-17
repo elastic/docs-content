@@ -27,7 +27,7 @@ If you run into any issues, refer to [Troubleshooting](remote-clusters-troublesh
 ## Prerequisites [remote-clusters-prerequisites-api-key]
 
 * The {{es}} security features need to be enabled on both clusters, on every node. Security is enabled by default. If it’s disabled, set `xpack.security.enabled` to `true` in `elasticsearch.yml`. Refer to [General security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#general-security-settings).
-* The nodes of the local and remote clusters must be on version 8.14 or later.
+* The nodes of the local and remote clusters must be on {{stack}} 8.14 or later.
 * The local and remote clusters must have an appropriate license. For more information, refer to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions).
 
 

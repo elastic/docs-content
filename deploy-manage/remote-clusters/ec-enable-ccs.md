@@ -21,7 +21,15 @@ You can configure an {{ech}} deployment to remotely access or (be accessed by) a
 
 To use CCS or CCR, your deployments must meet the following criteria:
 
-* The local and remote clusters must run on compatible versions of {{es}}. Review the [version compatibility](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html#remote-clusters-prerequisites-cert) table.
+* The local and remote clusters must run on compatible versions of {{es}}. Review the version compatibility table.
+  
+  :::{include} _snippets/remote-cluster-certificate-compatibility.md
+  :::
+
+* If your deployment was created before February 2021, the Remote clusters page in {{kib}} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
+* To use a remote cluster for {{ccr}} or {{ccs}}, you need to create user roles with [remote indices privileges](../users-roles/cluster-or-deployment-auth/defining-roles.md#roles-remote-indices-priv) on the local cluster. Refer to [Configure roles and users](remote-clusters-api-key.md#remote-clusters-privileges-api-key).
+
+## Set up remote clusters with {{ech}}
 
 The steps, information, and authentication method required to configure CCS and CCR can vary depending on where the clusters you want to use as remote are hosted.
 
@@ -39,12 +47,7 @@ The steps, information, and authentication method required to configure CCS and 
     * [From a deployment of another {{ecloud}} organization](ec-remote-cluster-other-ess.md)
     * [From an ECE deployment](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-enable-ccs.html)
     * [From a self-managed cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html)
-
-
-
-## Enable Remote clusters in {{kib}} [ec-enable-ccr]
-
-If your deployment was created before February 2021, the Remote clusters page in {kib} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
+    * [From an ECK environment](ec-enable-ccs-for-eck.md)
 
 
 ## Remote clusters and traffic filtering [ec-ccs-ccr-traffic-filtering]
@@ -62,5 +65,5 @@ Traffic filtering for remote clusters supports 2 methods:
 * Filtering by Organization or {{es}} cluster ID with a Remote cluster type filter. You can configure this type of filter from the **Features** > **Traffic filters** page of your organization or using the [{{ecloud}} RESTful API](https://www.elastic.co/docs/api/doc/cloud) and apply it from each deployment’s **Security** page.
 
 ::::{note}
-When setting up traffic filters for a remote connection to an {{ece}} environment, you also need to upload the region’s TLS certificate of the local cluster to the {{ece}} environment’s proxy. You can find that region’s TLS certificate in the Security page of any deployment of the environment initiating the remote connection.
+When setting up traffic filters for a remote connection to an {{ece}} environment, you also need to upload the region’s TLS certificate of the local cluster to the {{ece}} environment’s proxy. You can find that region’s TLS certificate in the **Security** page of any deployment of the environment initiating the remote connection.
 ::::

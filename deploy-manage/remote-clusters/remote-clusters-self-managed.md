@@ -17,9 +17,9 @@ To add remote clusters, you can choose between [two security models](#remote-clu
 ### Security models [remote-clusters-security-models]
 
 API key
-:   For clusters on version 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote cluster fine-grained access controls. [Add remote clusters using API key authentication](remote-clusters-api-key.md).
+:   For clusters on {{stack}} 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote cluster fine-grained access controls. [Add remote clusters using API key authentication](remote-clusters-api-key.md).
 
-TLS certificate (deprecated in 9.0.0)
+TLS certificate (deprecated in {{stack}} 9.0.0)
 :   Uses mutual TLS authentication for cross-cluster operations. User authentication is performed on the local cluster and a user’s role names are passed to the remote cluster. In this model, a superuser on the local cluster gains total read access to the remote cluster, so it is only suitable for clusters that are in the same security domain. [Add remote clusters using TLS certificate authentication](remote-clusters-cert.md).
 
 
