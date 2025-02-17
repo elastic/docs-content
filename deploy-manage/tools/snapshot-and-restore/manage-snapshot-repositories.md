@@ -16,7 +16,7 @@ applies:
 
 % Scope notes: Landing page for this containing links for Cloud and ECE
 
-Snapshot repositories allow you to back up and restore your Elasticsearch data efficiently. Whether you're using [Elastic Cloud](#elastic-cloud-hosted), [Elastic Cloud Enterprise (ECE)](#elastic-cloud-enterprise-ece), [Elastic Cloud on Kubernetes (ECK)](#elastic-cloud-on-kubernetes-eck), or managing your own [Elasticsearch cluster](#self-managed), configuring a snapshot repository ensures data security, long-term archiving, and seamless migration across environments.
+Snapshot repositories allow you to back up and restore your Elasticsearch data efficiently. Whether you're using [{{ech}}](#elastic-cloud-hosted), [{{ece}} (ECE)](#elastic-cloud-enterprise-ece), [{{eck}} (ECK)](#elastic-cloud-on-kubernetes-eck), or managing your own [{{es}} cluster](#self-managed), configuring a snapshot repository ensures data security, long-term archiving, and seamless migration across environments.
 
 ## Supported repository types
 
