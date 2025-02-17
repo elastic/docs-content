@@ -68,7 +68,7 @@ $$$faq-payment$$$What are the available payment methods on {{ecloud}}?
 :   For month-to-month payments only credit cards are accepted. We also allow payments by bank transfer for annual subscriptions.
 
 $$$faq-contact$$$Who can I contact for more information?
-:   If you have any further questions about your credit card statement, billing, or receipts, please send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/troubleshoot/index.md) using the *Billing issue* category.
+:   If you have any further questions about your credit card statement, billing, or receipts, please send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/index.md) using the *Billing issue* category.
 
 $$$faq-charge$$$Why is my credit card charged?
 :   If you are on a monthly plan, the charge is a recurring fee for using {{ecloud}}. The fee is normally charged at the start of each month, but it can also be charged at other times during the month. If a charge is unsuccessful, we will try to charge your card again at a later date.
@@ -86,10 +86,10 @@ $$$faq-chargednotusing$$$Why am I being charged if I don’t use any of my deplo
 :   Even if you have no activity on your account and you haven’t logged into the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), your active deployments still incur costs that we need to charge you for. To avoid being charged for active but unused deployments, you can simply delete them. Your account will stay active with no charges, and you can always spin up more capacity when you need it.
 
 $$$faq-deleteaccount$$$How can I delete my {{ecloud}} account?
-:   To have your account removed, you can contact support through the {{ecloud}} [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) or use one of these [alternative contact methods](../../../troubleshoot/troubleshoot/index.md). For details about our data erasure policy, check [Privacy Rights and Choices](https://www.elastic.co/legal/privacy-statement#privacy-rights-and-choices?page=docs&placement=docs-body) in our General Privacy Statement.
+:   To have your account removed, you can contact support through the {{ecloud}} [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) or use one of these [alternative contact methods](../../../troubleshoot/index.md). For details about our data erasure policy, check [Privacy Rights and Choices](https://www.elastic.co/legal/privacy-statement#privacy-rights-and-choices?page=docs&placement=docs-body) in our General Privacy Statement.
 
 $$$faq-refund$$$Can I get a refund?
-:   Charges are non-refundable, but once you delete a deployment we’ll stop charging you for that deployment immediately. You only pay for what you use and you can stop using the service at any time. For any special considerations warranting a potential refund, please use the {{ecloud}} Console [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) to open a support case and select *Billing issue* as the category. To ensure quick processing, be sure to provide detail about the reasons for the refund request as well as other matters pertaining to the issue. For other ways to open a Support case, check [Contact us](../../../troubleshoot/troubleshoot/index.md).
+:   Charges are non-refundable, but once you delete a deployment we’ll stop charging you for that deployment immediately. You only pay for what you use and you can stop using the service at any time. For any special considerations warranting a potential refund, please use the {{ecloud}} Console [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) to open a support case and select *Billing issue* as the category. To ensure quick processing, be sure to provide detail about the reasons for the refund request as well as other matters pertaining to the issue. For other ways to open a Support case, check [Contact us](../../../troubleshoot/index.md).
 
 $$$faq-included$$$What is included in my paid {{ech}} deployment?
 :   All subscription tiers for {{ech}} include the following free allowance:

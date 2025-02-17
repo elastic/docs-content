@@ -18,7 +18,7 @@ You can optionally attach one or more custom URLs to your {{anomaly-jobs}}. Thes
 When you create or edit an {{anomaly-job}} in {{kib}}, it simplifies the creation of the custom URLs for {{kib}} dashboards and the **Discover** app and it enables you to test your URLs. For example:
 
 :::{image} ../../../images/machine-learning-ml-customurl-edit.gif
-:alt: Add a custom URL in {kib}
+:alt: Add a custom URL in {{kib}}
 :class: screenshot
 :::
 
@@ -57,7 +57,7 @@ When you click this custom URL in the anomalies table in {{kib}}, it opens up th
 ::::{tip}
 
 * The custom URL links in the anomaly tables use pop-ups. You must configure your web browser so that it does not block pop-up windows or create an exception for your {{kib}} URL.
-* When creating a link to a {{kib}} dashboard, the URLs for dashboards can be very long. Be careful of typos, end of line characters, and URL encoding. Also ensure you use the appropriate index ID for the target {{kib}} {data-source}.
+* When creating a link to a {{kib}} dashboard, the URLs for dashboards can be very long. Be careful of typos, end of line characters, and URL encoding. Also ensure you use the appropriate index ID for the target {{kib}} {{data-source}}.
 * If you use an influencer name for string substitution, keep in mind that it might not always be available in the analysis results and the URL is invalid in those cases. There is not always a statistically significant influencer for each anomaly.
 * The dates substituted for `$earliest$` and `$latest$` tokens are in ISO-8601 format and the target system must understand this format.
 * If the job performs an analysis against nested JSON fields, the tokens for string substitution can refer to these fields using dot notation. For example, `$cpu.total$`.

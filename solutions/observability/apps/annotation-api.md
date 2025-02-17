@@ -80,7 +80,7 @@ For all APM APIs, you must use a request header. Supported headers are `Authoriz
 
 The following example creates an annotation for a service named `opbeans-java`.
 
-```curl
+```bash
 curl -X POST \
   http://localhost:5601/api/apm/services/opbeans-java/annotation \
 -H 'Content-Type: application/json' \

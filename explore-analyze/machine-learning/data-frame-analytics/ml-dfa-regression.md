@@ -107,7 +107,7 @@ The model that you created is stored as {{es}} documents in internal indices. In
 1. To deploy {{dfanalytics}} model in a pipeline, navigate to  **Machine Learning** > **Model Management** > **Trained models** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}.
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
    :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
-   :alt: The trained models UI in {kib}
+   :alt: The trained models UI in {{kib}}
    :class: screenshot
    :::
 
@@ -145,7 +145,7 @@ Check the [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/re
 
 {{infer-cap}} can also be used as a pipeline aggregation. You can reference a trained model in the aggregation to infer on the result field of the parent bucket aggregation. The {{infer}} aggregation uses the model on the results to provide a prediction. This aggregation enables you to run {{classification}} or {{reganalysis}} at search time. If you want to perform the analysis on a small set of data, this aggregation enables you to generate predictions without the need to set up a processor in the ingest pipeline.
 
-Check the [{{infer}} bucket aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-inference-bucket-aggregation.html) and [the {{ml}} {dfanalytics} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
+Check the [{{infer}} bucket aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-inference-bucket-aggregation.html) and [the {{ml}} {{dfanalytics}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-data-frame) to learn more.
 
 ::::{note}
 If you use trained model aliases to reference your trained model in an {{infer}} processor or {{infer}} aggregation, you can replace your trained model with a new one without the need of updating the processor or the aggregation. Reassign the alias you used to a new trained model ID by using the [Create or update trained model aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-trained-model-alias). The new trained model needs to use the same type of {{dfanalytics}} as the old one.
@@ -220,11 +220,11 @@ The sample flight data is used in this example because it is easily accessible. 
 
 To predict the number of minutes delayed for each flight:
 
-1. Verify that your environment is set up properly to use {{ml-features}}. The {{stack}} {security-features} require a user that has authority to create and manage {{dfanalytics-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
+1. Verify that your environment is set up properly to use {{ml-features}}. The {{stack}} {{security-features}} require a user that has authority to create and manage {{dfanalytics-jobs}}. See [Setup and security](../setting-up-machine-learning.md).
 2. Create a {{dfanalytics-job}}.
    You can use the wizard on the **{{ml-app}}** > **Data Frame Analytics** tab in {{kib}} or the [create {{dfanalytics-jobs}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-data-frame-analytics) API.
    :::{image} ../../../images/machine-learning-flights-regression-job-1.jpg
-   :alt: Creating a {{dfanalytics-job}} in {kib}
+   :alt: Creating a {{dfanalytics-job}} in {{kib}}
    :class: screenshot
    :::
       1. Choose `kibana_sample_data_flights` as the source index.
@@ -234,7 +234,7 @@ To predict the number of minutes delayed for each flight:
       5. Add `Cancelled`, `FlightDelay`, and `FlightDelayType` to the list of excluded fields. These fields will be excluded from the analysis. It is recommended to exclude fields that either contain erroneous data or describe the `dependent_variable`.
          The wizard includes a scatterplot matrix, which enables you to explore the relationships between the numeric fields. The color of each point is affected by the value of the {{depvar}} for that document, as shown in the legend. You can highlight an area in one of the charts and the corresponding area is also highlighted in the rest of the chart. You can use this matrix to help you decide which fields to include or exclude from the analysis.
    :::{image} ../../../images/machine-learning-flightdata-regression-scatterplot.png
-   :alt: A scatterplot matrix for three fields in {kib}
+   :alt: A scatterplot matrix for three fields in {{kib}}
    :class: screenshot
    :::
          If you want these charts to represent data from a larger sample size or from a randomized selection of documents, you can change the default behavior. However, a larger sample size might slow down the performance of the matrix and a randomized selection might put more load on the cluster due to the more intensive query.
@@ -304,7 +304,7 @@ POST _ml/data_frame/analytics/model-flight-delays-regression/_start
 4. Check the job stats to follow the progress in {{kib}} or use the [get {{dfanalytics-jobs}} statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-data-frame-analytics-stats).
 
 :::{image} ../../../images/machine-learning-flights-regression-details.jpg
-:alt: Statistics for a {{dfanalytics-job}} in {kib}
+:alt: Statistics for a {{dfanalytics-job}} in {{kib}}
 :class: screenshot
 :::
 
@@ -412,7 +412,7 @@ Now you have a new index that contains a copy of your source data with predictio
 When you view the results in {{kib}}, it shows the contents of the destination index in a tabular format. It also provides information about the analysis details, model evaluation metrics, total feature importance values, and a scatterplot matrix. Let’s start by looking at the results table:
 
 :::{image} ../../../images/machine-learning-flights-regression-results.jpg
-:alt: Results for a {{dfanalytics-job}} in {kib}
+:alt: Results for a {{dfanalytics-job}} in {{kib}}
 :class: screenshot
 :::
 
@@ -421,14 +421,14 @@ In this example, the table shows a column for the {{depvar}} (`FlightDelayMin`),
 If you chose to calculate {{feat-imp}}, the destination index also contains `ml.feature_importance` objects. Every field that is included in the {{reganalysis}} (known as a *feature* of the data point) is assigned a {{feat-imp}} value. This value has both a magnitude and a direction (positive or negative), which indicates how each field affects a particular prediction. Only the most significant values (in this case, the top 5) are stored in the index. However, the trained model metadata also contains the average magnitude of the {{feat-imp}} values for each field across all the training data. You can view this summarized information in {{kib}}:
 
 :::{image} ../../../images/machine-learning-flights-regression-total-importance.jpg
-:alt: Total {{feat-imp}} values in {kib}
+:alt: Total {{feat-imp}} values in {{kib}}
 :class: screenshot
 :::
 
 You can also see the {{feat-imp}} values for each individual prediction in the form of a decision plot:
 
 :::{image} ../../../images/machine-learning-flights-regression-importance.png
-:alt: A decision plot for {{feat-imp}} values in {kib}
+:alt: A decision plot for {{feat-imp}} values in {{kib}}
 :class: screenshot
 :::
 
@@ -534,7 +534,7 @@ Though you can look at individual results and compare the predicted value (`ml.F
 {{kib}} provides *training error* metrics, which represent how well the model performed on the training data set. It also provides *generalization error* metrics, which represent how well the model performed on testing data.
 
 :::{image} ../../../images/machine-learning-flights-regression-evaluation.jpg
-:alt: Evaluating {{reganalysis}} results in {kib}
+:alt: Evaluating {{reganalysis}} results in {{kib}}
 :class: screenshot
 :::
 

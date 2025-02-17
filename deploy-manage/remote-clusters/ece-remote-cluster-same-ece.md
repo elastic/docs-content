@@ -25,7 +25,7 @@ TLS certificate
 
 By default, any deployment that you or your users create trusts all other deployments in the same Elastic Cloud Enterprise environment. You can change this behavior in the Cloud UI under **Platform** > **Trust Management**, so that when a new deployment is created it does not automatically trust any other deployment. You can choose one of the following options:
 
-* Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-remote-cluster-same-ece.html#ece_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
+* Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-same-ece.html#ece_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * Trust no deployment - New deployments won’t trust any other deployment when they are created. You can instead configure trust individually for each of them in their security settings, as described in the next section.
 
 :::{image} ../../images/cloud-enterprise-ce-environment-trust-management.png

@@ -28,7 +28,7 @@ We highly recommend using [eland](https://eland.readthedocs.io/) in your workflo
 
 * Configure feature extraction
 * Extract features for training
-* Deploy the model in {es}
+* Deploy the model in {{es}}
 
 
 ### Configure feature extraction in Eland [learning-to-rank-model-training-feature-definition]

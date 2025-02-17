@@ -18,7 +18,7 @@ You should time the migration to a new plan to ensure proper application functio
 
 To migrate to a new plan, use the `heroku addons:upgrade` command and include one of the available plans:
 
-```term
+```bash
 foundelasticsearch:dachs-standard
 foundelasticsearch:beagle-standard
 foundelasticsearch:dachs-ha
@@ -33,7 +33,7 @@ foundelasticsearch:husky-ha
 
 For example: Migrate from the smallest, default `dachs-standard` plan to the larger `beagle-ha` plan that includes high availability for MY_APP:
 
-```term
+```bash
 heroku addons:upgrade foundelasticsearch:beagle-ha --app MY_APP
 Changing foundelasticsearch-defined-nnnnn on MY_APP from foundelasticsearch:dachs-standard to foundelasticsearch:beagle-ha... done, $201/month
 ```

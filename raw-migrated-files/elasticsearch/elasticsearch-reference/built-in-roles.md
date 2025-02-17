@@ -26,7 +26,7 @@ $$$built-in-roles-editor$$$ `editor`
     ::::{note}
     * This role provides read access to any index that is not prefixed with a dot.
     * This role automatically grants full access to new {{kib}} features as soon as they are released.
-    * Some {{kib}} features may also require creation or write access to data indices. {{ml-cap}} {dfanalytics-jobs} is an example. For such features those privileges must be defined in a separate role.
+    * Some {{kib}} features may also require creation or write access to data indices. {{ml-cap}} {{dfanalytics-jobs}} is an example. For such features those privileges must be defined in a separate role.
 
     ::::
 

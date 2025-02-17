@@ -149,7 +149,7 @@ The [search connectors](https://www.elastic.co/guide/en/elasticsearch/reference/
 
 [Connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html) allow you to index content from external sources thereby making it available for the AI Assistant. This can greatly improve the relevance of the AI Assistant’s responses. Data can be integrated from sources such as GitHub, Confluence, Google Drive, Jira, AWS S3, Microsoft Teams, Slack, and more.
 
-UI affordances for creating and managing search connectors are available in the Search Solution in {{kib}}. You can also use the {{es}} [Connector APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/connector-apis.html) to create and manage search connectors.
+UI affordances for creating and managing search connectors are available in the Search Solution in {{kib}}. You can also use the {{es}} [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector) to create and manage search connectors.
 
 The infrastructure for deploying connectors can be managed by Elastic or self-managed. Managed connectors require an [Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/server.html) server connected to the Elastic Stack. Self-managed connectors are run on your own infrastructure and don’t require the Enterprise Search service.
 

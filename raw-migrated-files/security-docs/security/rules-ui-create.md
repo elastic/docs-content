@@ -695,7 +695,7 @@ Refer to [Action frequency: Summary of alerts](../../../explore-analyze/alerts-c
 
 
 * `{{context.alerts}}`: Array of detected alerts
-* `{{{context.results_link}}}`: URL to the alerts in {kib}
+* `{{{context.results_link}}}`: URL to the alerts in {{kib}}
 * `{{context.rule.anomaly_threshold}}`: Anomaly threshold score above which alerts are generated ({{ml}} rules only)
 * `{{context.rule.description}}`: Rule description
 * `{{context.rule.false_positives}}`: Rule false positives
@@ -748,7 +748,7 @@ The following variables can only be passed if the rule’s action frequency is f
 
 #### Alert placeholder examples [placeholder-examples]
 
-To understand which fields to parse, see the [*Detections API*](https://www.elastic.co/guide/en/security/current/rule-api-overview.html) to view the JSON representation of rules.
+To understand which fields to parse, see the [*Detections API*](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-detections-api) to view the JSON representation of rules.
 
 Example using `{{context.rule.filters}}` to output a list of filters:
 

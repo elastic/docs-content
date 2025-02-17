@@ -8,7 +8,7 @@ mapped_pages:
 
 # Advanced concepts [ml-dfa-concepts]
 
-This section explains the more complex concepts of the Elastic {{ml}} {dfanalytics} feature.
+This section explains the more complex concepts of the Elastic {{ml}} {{dfanalytics}} feature.
 
 * [How {{dfanalytics-jobs}} work](ml-dfa-phases.md)
 * [Working with {{dfanalytics}} at scale](ml-dfa-scale.md)

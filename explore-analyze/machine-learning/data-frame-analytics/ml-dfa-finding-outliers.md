@@ -121,7 +121,7 @@ The goal of {{oldetection}} is to find the most unusual documents in an index. L
    In particular, create a {{transform}} that calculates the number of occasions when a specific client IP communicated with the network (`@timestamp.value_count`), the sum of the bytes that are exchanged between the network and the client’s machine (`bytes.sum`), the maximum exchanged bytes during a single occasion (`bytes.max`), and the total number of requests (`request.value_count`) initiated by a specific client IP.
    You can preview the {{transform}} before you create it in **{{stack-manage-app}}** > **Transforms**:
    :::{image} ../../../images/machine-learning-logs-transform-preview.jpg
-   :alt: Creating a {{transform}} in {kib}
+   :alt: Creating a {{transform}} in {{kib}}
    :class: screenshot
    :::
    Alternatively, you can use the [preview {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform) and the [create {{transform}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
@@ -238,13 +238,13 @@ POST _transform/logs-by-clientip/_start
 
    In the wizard on the **Machine Learning** > **Data Frame Analytics** page in {{kib}}, select your new {{data-source}} then use the default values for {{oldetection}}. For example:
    :::{image} ../../../images/machine-learning-weblog-outlier-job-1.jpg
-   :alt: Create a {{dfanalytics-job}} in {kib}
+   :alt: Create a {{dfanalytics-job}} in {{kib}}
    :class: screenshot
    :::
 
    The wizard includes a scatterplot matrix, which enables you to explore the relationships between the fields. You can use that information to help you decide which fields to include or exclude from the analysis.
    :::{image} ../../../images/machine-learning-weblog-outlier-scatterplot.jpg
-   :alt: A scatterplot matrix for three fields in {kib}
+   :alt: A scatterplot matrix for three fields in {{kib}}
    :class: screenshot
    :::
 
@@ -292,7 +292,7 @@ PUT _ml/data_frame/analytics/weblog-outliers
    The {{dfanalytics}} job creates an index that contains the original data and {{olscores}} for each document. The {{olscore}} indicates how different each entity is from other entities.
    In {{kib}}, you can view the results from the {{dfanalytics}} job and sort them on the outlier score:
    :::{image} ../../../images/machine-learning-outliers.jpg
-   :alt: View {{oldetection}} results in {kib}
+   :alt: View {{oldetection}} results in {{kib}}
    :class: screenshot
    :::
 
