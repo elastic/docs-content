@@ -121,7 +121,7 @@ To assign all authenticated users a single role, select one of the **Default rol
 
 To assign roles according to the **User DN** of the user or **Group DN** of the group they belong to, use the **Add role mapping rule** fields.
 
-For a list of roles, refer to [Available roles and permissions](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles#ece-user-role-permissions).
+For a list of roles, refer to [Available roles and permissions](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md#ece-user-role-permissions).
 
 
 ## Custom configuration [ece-ldap-custom-configuration] 
