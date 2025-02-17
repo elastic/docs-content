@@ -47,13 +47,19 @@ $$$token-authentication$$$
 
 
 
-Review the following topics to learn about authentication in your Elasticsearch cluster:
+Review the following topics to learn about authentication in your Elasticsearch cluster.
+
+:::{tip}
+If you use {{ece}} or {{ech}}, then you can also manage authentication at the level of your [{{ece}} orchestrator](/deploy-manage/users-roles/cloud-enterprise-orchestrator.md) or [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization.md).
+
+If you use {{serverless-full}}, then you can only manage authentication at the [{{ecloud}} organization level](/deploy-manage/users-roles/cloud-organization.md).
+:::
 
 ### Set up user authentication
 
-* Learn about the available [realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) that you can use to authenticate users
-* Manage passwords for [default users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md)
-* Manage users [natively](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)
+* Learn about the available [realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) that you can use to authenticate users.
+* Manage passwords for [default users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+* Manage users [natively](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md).
 * Integrate with external authentication providers using [external realms](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md):
   * [Active Directory](/deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md)
   * [JWT](/deploy-manage/users-roles/cluster-or-deployment-auth/jwt.md)
@@ -63,17 +69,17 @@ Review the following topics to learn about authentication in your Elasticsearch 
   * [SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md)
   * [PKI](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md)
   * [Implement a custom realm](/deploy-manage/users-roles/cluster-or-deployment-auth/custom.md)
-* Configure [file-based authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md)
-* Enable [anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md)
-* Manage [user profiles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-profiles.md)
-* Manage authentication for [multiple clusters](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md) ({{eck}} only)
-* Set up a [user access agreement](/deploy-manage/users-roles/cluster-or-deployment-auth/access-agreement.md)
+* Configure [file-based authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).
+* Enable [anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md).
+* Manage [user profiles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-profiles.md).
+* Manage authentication for [multiple clusters](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md) ({{eck}} only).
+* Set up a [user access agreement](/deploy-manage/users-roles/cluster-or-deployment-auth/access-agreement.md).
 
 ### Advanced topics
 
 * Learn about [internal users](/deploy-manage/users-roles/cluster-or-deployment-auth/internal-users.md), which are responsible for the operations that take place inside an Elasticsearch cluster.
-* Learn about [service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md), which are used for integration with external services that connect to Elasticsearch
-* Learn about the [services used for token-based authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services.md)
-* Learn about the [services used by orchestrators](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md) (applies to {{ece}}, {{ech}}, and {{eck}})
-* Learn about [user lookup technologies](/deploy-manage/users-roles/cluster-or-deployment-auth/looking-up-users-without-authentication.md)
-* [Manage the user cache](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-user-cache.md)
+* Learn about [service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md), which are used for integration with external services that connect to Elasticsearch.
+* Learn about the [services used for token-based authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services.md).
+* Learn about the [services used by orchestrators](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md).
+* Learn about [user lookup technologies](/deploy-manage/users-roles/cluster-or-deployment-auth/looking-up-users-without-authentication.md).
+* [Manage the user cache](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-user-cache.md).
