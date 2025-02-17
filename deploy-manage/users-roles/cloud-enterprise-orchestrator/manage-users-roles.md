@@ -20,7 +20,7 @@ Implementing RBAC in your environment benefits you in several ways:
     * Integrating with third-party authentication providers like [Active Directory](active-directory.md), [LDAP](ldap.md) or [SAML](saml.md).
 
 ::::{important}
-With RBAC, interacting with API endpoints requires a [bearer token](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-command-line.html) or [API key](../../api-keys/elastic-cloud-enterprise-api-keys.html#ece-api-keys).
+With RBAC, interacting with API endpoints requires a [bearer token](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-command-line.html) or [API key](/deploy-manage/api-keys/elastic-cloud-enterprise-api-keys.md#ece-api-keys).
 ::::
 
 ## Before you begin [ece_before_you_begin_8]
