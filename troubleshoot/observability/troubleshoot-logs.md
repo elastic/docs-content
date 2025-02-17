@@ -81,12 +81,12 @@ Something went wrong: Unable to create observability-onboarding-state
 You need an administrator to give you the `Saved Objects Management` {{kib}} privilege to generate the required `observability-onboarding-state` flow state. Once you have the necessary privileges, restart the onboarding flow.
 
 
-### {{kib}} not accessible from host [logs-troubleshooting-kib-not-accessible]
+### {{kib}} or Observability project not accessible from host [logs-troubleshooting-kib-not-accessible]
 :::{applies}
 :stack: all
 :::
 
-If {{kib}} is not accessible from the host, you’ll see the following error message after pasting the **Install the {{agent}}** instructions into the host:
+If {{kib}} or your Observability project is not accessible from the host, you’ll see the following error message after pasting the **Install the {{agent}}** instructions into the host:
 
 ```plaintext
 Failed to connect to {host} port {port} after 0 ms: Connection refused
@@ -95,34 +95,13 @@ Failed to connect to {host} port {port} after 0 ms: Connection refused
 
 #### Solution [logs-troubleshooting-kib-not-accessible-solution]
 
-The host needs access to {{kib}}. Port `443` must be open and the deployment’s {{es}} endpoint must be reachable. Locate your project’s endpoint from **Help menu (![help icon](../../images/observability-help-icon.png "")) → Connection details**.
+The host needs access to {{kib}} or your project. Port `443` must be open and the deployment’s {{es}} endpoint must be reachable. Locate your project’s endpoint from **Help menu (![help icon](../../images/observability-help-icon.png "")) → Connection details**.
 
 Run the following command, replacing the URL with your endpoint, and you should get an authentication error with more details on resolving your issue:
 
 ```shell
 curl https://your-endpoint.elastic.cloud
 ```
-
-### Observability project not accessible from host [observability-troubleshoot-logs-observability-project-not-accessible-from-host]
-:::{applies}
-:serverless: all
-:::
-
-If your Observability project is not accessible from the host, you’ll see the following error message after pasting the **Install the {{agent}}** instructions into the host:
-
-```plaintext
-Failed to connect to {host} port {port} after 0 ms: Connection refused
-```
-
-
-#### Solution [observability-troubleshoot-logs-solution-1]
-
-The host needs access to your project. Port `443` must be open and the project’s {{es}} endpoint must be reachable. You can locate your project’s endpoint by clicking the help icon (![Help icon](../../images/serverless-help.svg "")) and selecting **Endpoints**. Run the following command, replacing the URL with your endpoint, and you should get an authentication error with more details on resolving your issue:
-
-```shell
-curl https://your-endpoint.elastic.cloud
-```
-
 
 ### Download {{agent}} failed [logs-troubleshooting-download-agent]
 
