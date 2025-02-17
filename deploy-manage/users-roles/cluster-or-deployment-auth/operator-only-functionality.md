@@ -41,8 +41,8 @@ Operator privileges provide protection for APIs and dynamic cluster settings. An
     * `xpack.ml.enable_config_migration`
     * `xpack.ml.persist_results_max_retries`
 
-* The [`cluster.routing.allocation.disk.threshold_enabled` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-disk-threshold)
-* The following [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services):
+* The [`cluster.routing.allocation.disk.threshold_enabled` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.md#cluster-routing-disk-threshold)
+* The following [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.md#recovery-settings-for-managed-services):
 
     * `node.bandwidth.recovery.operator.factor`
     * `node.bandwidth.recovery.operator.factor.read`

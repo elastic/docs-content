@@ -9,7 +9,7 @@ This content applies to: [![Elasticsearch](../../images/serverless-es-badge.svg 
 
 # Project custom roles [custom-roles]
 
-Built-in [organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-organization-level-roles) and [instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles-instance-access-roles) are great for getting started with {{serverless-full}}, and for system administrators who do not need more restrictive access.
+Built-in [organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) and [instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) are great for getting started with {{serverless-full}}, and for system administrators who do not need more restrictive access.
 
 As an administrator, you can also create roles for users with the access they need within specific projects. For example, you might create a `marketing_user` role, which you then assign to all users in your marketing department. This role would grant access to all of the necessary data and features for this team to be successful, without granting them access they don’t require.
 
@@ -90,4 +90,4 @@ As new features are added to {{serverless-full}}, roles that use the custom opti
 
 ## Assign custom roles 
 
-After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to the **Members** tab of the **Organization** page. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+After your roles are set up, the next step to securing access is to assign roles to your users. Click the **Assign roles** link to go to the **Members** tab of the **Organization** page. Learn more in [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
