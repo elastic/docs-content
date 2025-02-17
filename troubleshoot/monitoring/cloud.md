@@ -5,6 +5,11 @@ mapped_pages:
 
 # Monitoring [ec-monitoring-diagnose-resolve]
 
+Use the topics in this section to troubleshoot monitoring, including AutoOps.
+
+% TODO topic links
+
+
 
 
 

@@ -1,4 +1,5 @@
 ---
+navigation_title: "Troubleshoot node moves and outages"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-deployment-node-move.html
 ---
