@@ -8,6 +8,7 @@ applies:
 ---
 
 # User roles and privileges [ec-user-privileges]
+$$$general-assign-user-roles$$$
 
 Within an {{ecloud}} organization, users can have one or more roles and each role grants specific privileges.
 
