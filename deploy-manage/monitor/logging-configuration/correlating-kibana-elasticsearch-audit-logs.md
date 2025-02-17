@@ -38,7 +38,7 @@ Refer to [{{kib}} audit events](https://www.elastic.co/guide/en/kibana/current/x
 This section shows practical examples of correlating audit logs.
 
 ::::{note}
-The examples below are simplified, many fields have been omitted and values have been shortened for clarity.
+The examples below are simplified. Many fields have been omitted and values have been shortened for clarity.
 ::::
 
 ### Example 1: correlating multiple {{kib}} audit events [_example_1_correlating_multiple_kib_audit_events]
