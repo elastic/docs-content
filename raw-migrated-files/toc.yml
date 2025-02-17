@@ -446,7 +446,6 @@ toc:
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
       - file: docs-content/serverless/security-hosts-overview.md
-      - file: docs-content/serverless/security-indicators-of-compromise.md
       - file: docs-content/serverless/security-ingest-data.md
       - file: docs-content/serverless/security-install-edr.md
       - file: docs-content/serverless/security-install-endpoint-manually.md
