@@ -6,7 +6,7 @@ mapped_pages:
 
 # Troubleshoot APM Node.js Agent [troubleshooting]
 
-Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! As a first step, ensure your app is compatible with the agent’s [supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/current/supported-technologies.html).
+Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! As a first step, ensure your app is compatible with the agent’s [supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md).
 
 If you’re an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
 
@@ -20,14 +20,14 @@ If you’re an existing Elastic customer with a support contract, please create 
 
 The Elastic Node.js APM Agent is updated frequently and releases are not strongly tied to other components in the Elastic Stack.  Therefore, updating to the most recently released agent version is often the recommended first troubleshooting step.
 
-See [upgrading documentation](https://www.elastic.co/guide/en/apm/agent/nodejs/current/upgrading.html) for more details.
+See [upgrading documentation](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/upgrading.md) for more details.
 
 
 ## Debug mode [debug-mode]
 
 To capture enough information for troubleshooting, perform these steps:
 
-1. Start your app with "trace"-level logging. This can be done by setting the environment variable `ELASTIC_APM_LOG_LEVEL=trace` or adding `logLevel: 'trace'` to the `apm.start(options)` call (see [`logLevel`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#log-level) for details).
+1. Start your app with "trace"-level logging. This can be done by setting the environment variable `ELASTIC_APM_LOG_LEVEL=trace` or adding `logLevel: 'trace'` to the `apm.start(options)` call (see [`logLevel`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#log-level) for details).
 2. Disable a possible custom `logger` config, because a custom logger can result in structured log data being lost. This can be done by setting the environment variable `ELASTIC_APM_LOGGER=false`.
 3. Send a few HTTP requests to some of the app endpoints and/or reproduce the issue you are seeing.
 4. Wait at least 10 seconds to allow the agent to try and connect to the APM Server (controlled by [`apiRequestTime`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#api-request-time)).
@@ -73,7 +73,7 @@ Elastic APM is incorrectly configured: serverUrl "..." contains an invalid port!
 
 Errors get tracked just fine, but you don’t see any performance metrics or trace data.
 
-Make sure that the agent is **both required and started at the very top of your main app file** (usually the `index.js`, `server.js` or `app.js` file). It’s important that the agent is started before any other modules are `require`d.  If not, the agent will not be able to hook into any modules and will not be able to measure the performance of your application. See [Start gotchas](https://www.elastic.co/guide/en/apm/agent/nodejs/current/starting-the-agent.html#start-gotchas) for a number of possible surprises in correctly starting the APM agent when used with some compilers or bundlers.
+Make sure that the agent is **both required and started at the very top of your main app file** (usually the `index.js`, `server.js` or `app.js` file). It’s important that the agent is started before any other modules are `require`d.  If not, the agent will not be able to hook into any modules and will not be able to measure the performance of your application. See [Start gotchas](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/starting-agent.md#start-gotchas) for a number of possible surprises in correctly starting the APM agent when used with some compilers or bundlers.
 
 
 ## Disable the Agent [disable-agent]

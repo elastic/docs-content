@@ -23,7 +23,7 @@ Before you try anything else, go through the following sections to ensure that t
 
 Most frameworks support a debug mode. Generally, this mode is intended for non-production environments and provides detailed error messages and logging of potentially sensitive data. Because of these security issues, the agent will not collect traces if the app is in debug mode by default.
 
-You can override this behavior with the [`DEBUG`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-debug) configuration.
+You can override this behavior with the [`DEBUG`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-debug) configuration.
 
 Note that configuration of the agent should occur before creation of any `ElasticAPM` objects:
 
@@ -50,7 +50,7 @@ In order for the agent to send data to the APM Server, it may need an [`API_KEY`
 
 ## Django `check` and `test` [django-test] 
 
-When used with Django, the agent provides two management commands to help debug common issues. Head over to the [Django troubleshooting section](https://www.elastic.co/guide/en/apm/agent/python/current/django-support.html#django-troubleshooting) for more information.
+When used with Django, the agent provides two management commands to help debug common issues. Head over to the [Django troubleshooting section](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/django-support.md#django-troubleshooting) for more information.
 
 
 ## Agent logging [agent-logging] 

@@ -21,7 +21,7 @@ To add a vector layer to your map, click **Add layer**, then select one of the f
 :   Shaded areas to compare statistics across boundaries.
 
 **Clusters**
-:   Geospatial data grouped in grids with metrics for each gridded cell. The index must contain at least one field mapped as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html).
+:   Geospatial data grouped in grids with metrics for each gridded cell. The index must contain at least one field mapped as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md).
 
 **Create index**
 :   Draw shapes on the map and index in Elasticsearch.
@@ -32,7 +32,7 @@ To add a vector layer to your map, click **Add layer**, then select one of the f
     Results are limited to the `index.max_result_window` index setting, which defaults to 10000. Select the appropriate **Scaling** option for your use case.
 
     * **Limit results to 10,000** The layer displays features from the first `index.max_result_window` documents. Results exceeding `index.max_result_window` are not displayed.
-    * **Show clusters when results exceed 10,000** When results exceed `index.max_result_window`, the layer uses [GeoTile grid aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-geotilegrid-aggregation.html) to group your documents into clusters and displays metrics for each cluster. When results are less then `index.max_result_window`, the layer displays features from individual documents.
+    * **Show clusters when results exceed 10,000** When results exceed `index.max_result_window`, the layer uses [GeoTile grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) to group your documents into clusters and displays metrics for each cluster. When results are less then `index.max_result_window`, the layer displays features from individual documents.
     * **Use vector tiles.** Vector tiles partition your map into tiles. Each tile request is limited to the `index.max_result_window` index setting. When a tile exceeds `index.max_result_window`, results exceeding `index.max_result_window` are not contained in the tile and a dashed rectangle outlining the bounding box containing all geo values within the tile is displayed.
 
 

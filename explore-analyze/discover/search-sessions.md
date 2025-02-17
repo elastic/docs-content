@@ -17,7 +17,7 @@ Search Sessions are deprecated and will be removed in a future version.
 
 Sometimes you might need to search through large amounts of data, no matter how long the search takes. Consider a threat hunting scenario, where you need to search through years of data. You can save a long-running search, so {{kib}} processes your request in the background, and you can continue your work.
 
-Save your search session from **Discover** or **Dashboard**, and when your session is complete, view and manage it in **Stack Management**. Search sessions are [enabled by default](https://www.elastic.co/guide/en/kibana/current/search-session-settings-kb.html).
+Save your search session from **Discover** or **Dashboard**, and when your session is complete, view and manage it in **Stack Management**. Search sessions are [enabled by default](asciidocalypse://docs/kibana/docs/reference/configuration-reference/search-sessions-settings.md).
 
 :::{image} ../../images/kibana-search-session.png
 :alt: Search Session indicator displaying the current state of the search

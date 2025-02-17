@@ -10,7 +10,7 @@ mapped_pages:
 
 
 ::::{important}
-To create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions) and an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present.
+To create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions) and an {{es}} cluster with both `transform` and `ingest` [node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present.
 ::::
 
 

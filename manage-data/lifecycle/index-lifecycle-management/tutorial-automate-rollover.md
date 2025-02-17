@@ -21,7 +21,7 @@ When you continuously index timestamped documents into {{es}}, you typically use
 
 To automate rollover and management of a data stream with {{ilm-init}}, you:
 
-1. [Create a lifecycle policy](../index-lifecycle-management.md#ilm-gs-create-policy) that defines the appropriate [phases](index-lifecycle.md) and [actions](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html).
+1. [Create a lifecycle policy](../index-lifecycle-management.md#ilm-gs-create-policy) that defines the appropriate [phases](index-lifecycle.md) and [actions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/index.md).
 2. [Create an index template](../index-lifecycle-management.md#ilm-gs-apply-policy) to [create the data stream](../index-lifecycle-management.md#ilm-gs-create-the-data-stream) and apply the ILM policy and the indices settings and mappings configurations for the backing indices.
 3. [Verify indices are moving through the lifecycle phases](../index-lifecycle-management.md#ilm-gs-check-progress) as expected.
 

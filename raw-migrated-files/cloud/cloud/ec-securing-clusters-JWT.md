@@ -97,7 +97,7 @@ xpack:
 
 
 ::::{note}
-Refer to [JWT authentication documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/jwt-auth-realm.html) for more details and examples.
+Refer to [JWT authentication documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/jwt.md) for more details and examples.
 ::::
 
 

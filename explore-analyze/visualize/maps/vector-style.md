@@ -15,7 +15,7 @@ When styling a vector layer, you can customize your data by property, such as si
 
 Use static styling to specify a constant value for a style property.
 
-This image shows an example of static styling using the [Kibana sample web logs](https://www.elastic.co/guide/en/kibana/current/get-started.html) data set. The **kibana_sample_data_logs** layer uses static styling for all properties.
+This image shows an example of static styling using the [Kibana sample web logs](/explore-analyze/index.md) data set. The **kibana_sample_data_logs** layer uses static styling for all properties.
 
 :::{image} ../../../images/kibana-vector_style_static.png
 :alt: vector style static

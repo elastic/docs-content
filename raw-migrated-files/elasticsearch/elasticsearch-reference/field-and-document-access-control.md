@@ -110,7 +110,7 @@ POST /_security/role/example3
 
 ## Pre-processing documents to add security details [set-security-user-processor]
 
-To guarantee that a user reads only their own documents, it makes sense to set up document level security. In this scenario, each document must have the username or role name associated with it, so that this information can be used by the role query for document level security. This is a situation where the [set security user processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-node-set-security-user-processor.html) ingest processor can help.
+To guarantee that a user reads only their own documents, it makes sense to set up document level security. In this scenario, each document must have the username or role name associated with it, so that this information can be used by the role query for document level security. This is a situation where the [set security user processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) ingest processor can help.
 
 ::::{note} 
 Document level security doesn’t apply to write APIs. You must use unique ids for each user that uses the same data stream or index, otherwise they might overwrite other users' documents. The ingest processor just adds properties for the current authenticated user to the documents that are being indexed.

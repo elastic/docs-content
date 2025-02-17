@@ -53,7 +53,7 @@ If you receive the following rule failure: `"An error occurred during rule execu
 ::::{dropdown} Indicator match rules are failing because the `maxClauseCount` limit is too low
 :name: IM-rule-heap-memory
 
-If you receive the following rule failure: `Bulk Indexing of signals failed: index: ".index-name" reason: "maxClauseCount is set to 1024" type: "too_many_clauses"`, this indicates that the limit for the total number of clauses that a query tree can have is too low. To update your maximum clause count, [increase the size of your {{es}} JVM heap memory](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-heap-size). 1 GB of {{es}} JVM heap size or more is sufficient.
+If you receive the following rule failure: `Bulk Indexing of signals failed: index: ".index-name" reason: "maxClauseCount is set to 1024" type: "too_many_clauses"`, this indicates that the limit for the total number of clauses that a query tree can have is too low. To update your maximum clause count, [increase the size of your {{es}} JVM heap memory](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). 1 GB of {{es}} JVM heap size or more is sufficient.
 ::::
 
 
@@ -205,20 +205,20 @@ If you’re using 8.2 or earlier versions of {{beats}} or {{agent}} with {{stack
 
 The following Elastic prebuilt rules use the new `v3` {{ml}} jobs to generate alerts. Duplicate their associated `v1`/`v2` prebuilt rules *before* updating them if you need continued coverage from the `v1`/`v2` {{ml}} jobs:
 
-* [Unusual Linux Network Port Activity](https://www.elastic.co/guide/en/security/current/unusual-linux-network-port-activity.html): `v3_linux_anomalous_network_port_activity`
-* [Unusual Linux Network Connection Discovery](https://www.elastic.co/guide/en/security/current/unusual-linux-network-connection-discovery.html): `v3_linux_anomalous_network_connection_discovery`
-* [Anomalous Process For a Linux Population](https://www.elastic.co/guide/en/security/current/anomalous-process-for-a-linux-population.html): `v3_linux_anomalous_process_all_hosts`
-* [Unusual Linux Username](https://www.elastic.co/guide/en/security/current/unusual-linux-username.html): `v3_linux_anomalous_user_name`
-* [Unusual Linux Process Calling the Metadata Service](https://www.elastic.co/guide/en/security/current/unusual-linux-process-calling-the-metadata-service.html): `v3_linux_rare_metadata_process`
-* [Unusual Linux User Calling the Metadata Service](https://www.elastic.co/guide/en/security/current/unusual-linux-user-calling-the-metadata-service.html): `v3_linux_rare_metadata_user`
-* [Unusual Process For a Linux Host](https://www.elastic.co/guide/en/security/current/unusual-process-for-a-linux-host.html): `v3_rare_process_by_host_linux`
-* [Unusual Process For a Windows Host](https://www.elastic.co/guide/en/security/current/unusual-process-for-a-windows-host.html): `v3_rare_process_by_host_windows`
-* [Unusual Windows Network Activity](https://www.elastic.co/guide/en/security/current/unusual-windows-network-activity.html): `v3_windows_anomalous_network_activity`
-* [Unusual Windows Path Activity](https://www.elastic.co/guide/en/security/current/unusual-windows-path-activity.html): `v3_windows_anomalous_path_activity`
-* [Anomalous Windows Process Creation](https://www.elastic.co/guide/en/security/current/anomalous-windows-process-creation.html): `v3_windows_anomalous_process_creation`
-* [Anomalous Process For a Windows Population](https://www.elastic.co/guide/en/security/current/anomalous-process-for-a-windows-population.html): `v3_windows_anomalous_process_all_hosts`
-* [Unusual Windows Username](https://www.elastic.co/guide/en/security/current/unusual-windows-username.html): `v3_windows_anomalous_user_name`
-* [Unusual Windows Process Calling the Metadata Service](https://www.elastic.co/guide/en/security/current/unusual-windows-process-calling-the-metadata-service.html): `v3_windows_rare_metadata_process`
-* [Unusual Windows User Calling the Metadata Service](https://www.elastic.co/guide/en/security/current/unusual-windows-user-calling-the-metadata-service.html): `v3_windows_rare_metadata_user`
+* [Unusual Linux Network Port Activity](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-linux-network-port-activity.md): `v3_linux_anomalous_network_port_activity`
+* [Unusual Linux Network Connection Discovery](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-linux-network-connection-discovery.md): `v3_linux_anomalous_network_connection_discovery`
+* [Anomalous Process For a Linux Population](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/anomalous-process-for-a-linux-population.md): `v3_linux_anomalous_process_all_hosts`
+* [Unusual Linux Username](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-linux-username.md): `v3_linux_anomalous_user_name`
+* [Unusual Linux Process Calling the Metadata Service](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-linux-process-calling-the-metadata-service.md): `v3_linux_rare_metadata_process`
+* [Unusual Linux User Calling the Metadata Service](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-linux-user-calling-the-metadata-service.md): `v3_linux_rare_metadata_user`
+* [Unusual Process For a Linux Host](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-process-for-a-linux-host.md): `v3_rare_process_by_host_linux`
+* [Unusual Process For a Windows Host](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-process-for-a-windows-host.md): `v3_rare_process_by_host_windows`
+* [Unusual Windows Network Activity](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-windows-network-activity.md): `v3_windows_anomalous_network_activity`
+* [Unusual Windows Path Activity](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-windows-path-activity.md): `v3_windows_anomalous_path_activity`
+* [Anomalous Windows Process Creation](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/anomalous-windows-process-creation.md): `v3_windows_anomalous_process_creation`
+* [Anomalous Process For a Windows Population](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/anomalous-process-for-a-windows-population.md): `v3_windows_anomalous_process_all_hosts`
+* [Unusual Windows Username](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-windows-username.md): `v3_windows_anomalous_user_name`
+* [Unusual Windows Process Calling the Metadata Service](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-windows-process-calling-the-metadata-service.md): `v3_windows_rare_metadata_process`
+* [Unusual Windows User Calling the Metadata Service](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules/unusual-windows-user-calling-the-metadata-service.md): `v3_windows_rare_metadata_user`
 
 :::::

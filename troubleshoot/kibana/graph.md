@@ -32,7 +32,7 @@ With the default setting of `use_significance` set to `true`, the Graph API perf
 If your data is noisy and you need to filter based on significance, you can reduce the number of frequency checks by:
 
 * Reducing the `sample_size`. Considering fewer documents can actually be better when the quality of matches is quite variable.
-* Avoiding noisy documents that have a large number of terms. You can do this by either allowing ranking to naturally favor shorter documents in the top-results sample (see [enabling norms](https://www.elastic.co/guide/en/elasticsearch/reference/current/norms.html)) or by explicitly excluding large documents with your seed and guiding queries.
+* Avoiding noisy documents that have a large number of terms. You can do this by either allowing ranking to naturally favor shorter documents in the top-results sample (see [enabling norms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/norms.md)) or by explicitly excluding large documents with your seed and guiding queries.
 * Increasing the frequency threshold. Many many terms occur very infrequently so even increasing the frequency threshold by one can massively reduce the number of candidate terms whose background frequencies are checked.
 
 Keep in mind that all of these options reduce the scope of information analyzed and can increase the potential to miss what could be interesting details. However, the information that’s lost tends to be associated with lower-quality documents with lower-frequency terms, which can be an acceptable trade-off.

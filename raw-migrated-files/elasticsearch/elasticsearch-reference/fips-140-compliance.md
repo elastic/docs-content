@@ -39,7 +39,7 @@ Detailed instructions for installation and configuration of a FIPS certified Jav
 
 Elasticsearch has been tested with Bouncy Castle’s [bc-fips 1.0.2.5](https://repo1.maven.org/maven2/org/bouncycastle/bc-fips/1.0.2.5/bc-fips-1.0.2.5.jar) and [bctls-fips 1.0.19](https://repo1.maven.org/maven2/org/bouncycastle/bctls-fips/1.0.19/bctls-fips-1.0.19.jar). Please refer to the {{es}} [JVM support matrix](https://www.elastic.co/support/matrix#matrix_jvm) for details on which combinations of JVM and security provider are supported in FIPS mode. Elasticsearch does not ship with a FIPS certified provider. It is the responsibility of the user to install and configure the security provider to ensure compliance with FIPS 140-2. Using a FIPS certified provider will ensure that only approved cryptographic algorithms are used.
 
-To configure {{es}} to use additional security provider(s) configure {{es}}'s [JVM property](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-options) `java.security.properties` to point to a file ([example](https://raw.githubusercontent.com/elastic/elasticsearch/main/build-tools-internal/src/main/resources/fips_java.security)) in {{es}}'s `config` directory. Ensure the FIPS certified security provider is configured with the lowest order. This file should contain the necessary configuration to instruct Java to use the FIPS certified security provider.
+To configure {{es}} to use additional security provider(s) configure {{es}}'s [JVM property](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) `java.security.properties` to point to a file ([example](https://raw.githubusercontent.com/elastic/elasticsearch/main/build-tools-internal/src/main/resources/fips_java.security)) in {{es}}'s `config` directory. Ensure the FIPS certified security provider is configured with the lowest order. This file should contain the necessary configuration to instruct Java to use the FIPS certified security provider.
 
 
 ### Java security manager [java-security-manager] 
@@ -51,12 +51,12 @@ To configure {{es}}'s security manager configure the JVM property `java.security
 
 ### {{es}} Keystore [keystore-fips-password] 
 
-FIPS 140-2 (via NIST Special Publication 800-132) dictates that encryption keys should at least have an effective strength of 112 bits. As such, the {{es}} keystore that stores the node’s [secure settings](../../../deploy-manage/security/secure-settings.md) needs to be password protected with a password that satisfies this requirement. This means that the password needs to be 14 bytes long which is equivalent to a 14 character ASCII encoded password, or a 7 character UTF-8 encoded password. You can use the [elasticsearch-keystore passwd](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-keystore.html) subcommand to change or set the password of an existing keystore. Note that when the keystore is password-protected, you must supply the password each time Elasticsearch starts.
+FIPS 140-2 (via NIST Special Publication 800-132) dictates that encryption keys should at least have an effective strength of 112 bits. As such, the {{es}} keystore that stores the node’s [secure settings](../../../deploy-manage/security/secure-settings.md) needs to be password protected with a password that satisfies this requirement. This means that the password needs to be 14 bytes long which is equivalent to a 14 character ASCII encoded password, or a 7 character UTF-8 encoded password. You can use the [elasticsearch-keystore passwd](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) subcommand to change or set the password of an existing keystore. Note that when the keystore is password-protected, you must supply the password each time Elasticsearch starts.
 
 
 ### TLS [fips-tls] 
 
-SSLv2 and SSLv3 are not allowed by FIPS 140-2, so `SSLv2Hello` and `SSLv3` cannot be used for [`ssl.supported_protocols`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ssl-tls-settings).
+SSLv2 and SSLv3 are not allowed by FIPS 140-2, so `SSLv2Hello` and `SSLv3` cannot be used for [`ssl.supported_protocols`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 
 ::::{note} 
 The use of TLS ciphers is mainly governed by the relevant crypto module (the FIPS Approved Security Provider that your JVM uses). All the ciphers that are configured by default in {{es}} are FIPS 140-2 compliant and as such can be used in a FIPS 140-2 JVM. See [`ssl.cipher_suites`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ssl-tls-settings).
@@ -92,7 +92,7 @@ You can still use one of the plain `pbkdf2` options instead of `pbkdf2_stretch` 
 
 You must set the `xpack.security.authc.password_hashing.algorithm` setting to one of the available `pbkdf_stretch_*` values. When FIPS-140 mode is enabled, the default value for `xpack.security.authc.password_hashing.algorithm` is `pbkdf2_stretch`. See [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
 
-Password hashing configuration changes are not retroactive so the stored hashed credentials of existing users of the reserved, native, and file realms are not updated on disk. To ensure FIPS 140-2 compliance, recreate users or change their password using the [elasticsearch-user](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) CLI tool for the file realm and the [create users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) and [change password](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) APIs for the native and reserved realms. Other types of realms are not affected and do not require any changes.
+Password hashing configuration changes are not retroactive so the stored hashed credentials of existing users of the reserved, native, and file realms are not updated on disk. To ensure FIPS 140-2 compliance, recreate users or change their password using the [elasticsearch-user](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) CLI tool for the file realm and the [create users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) and [change password](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) APIs for the native and reserved realms. Other types of realms are not affected and do not require any changes.
 
 
 ### Cached password hashing [_cached_password_hashing] 
@@ -154,6 +154,6 @@ If your [subscription](https://www.elastic.co/subscriptions) already supports FI
 Due to the limitations that FIPS 140-2 compliance enforces, a small number of features are not available while running in FIPS 140-2 mode. The list is as follows:
 
 * Azure Classic Discovery Plugin
-* The [`elasticsearch-certutil`](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html) tool. However, `elasticsearch-certutil` can very well be used in a non FIPS 140-2 configured JVM (pointing `ES_JAVA_HOME` environment variable to a different java installation) in order to generate the keys and certificates that can be later used in the FIPS 140-2 configured JVM.
+* The [`elasticsearch-certutil`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md) tool. However, `elasticsearch-certutil` can very well be used in a non FIPS 140-2 configured JVM (pointing `ES_JAVA_HOME` environment variable to a different java installation) in order to generate the keys and certificates that can be later used in the FIPS 140-2 configured JVM.
 * The SQL CLI client cannot run in a FIPS 140-2 configured JVM while using TLS for transport security or PKI for client authentication.
 

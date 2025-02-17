@@ -33,7 +33,7 @@ There is a list of [audit event types](elasticsearch-audit-events.md) specifying
 
 ## Logfile output settings [audit-log-settings] 
 
-The events and some other information about what gets logged can be controlled using settings in the `elasticsearch.yml` file. See [Audited Event Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#event-audit-settings) and [Local Node Info Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#node-audit-settings).
+The events and some other information about what gets logged can be controlled using settings in the `elasticsearch.yml` file. See [Audited Event Settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md#event-audit-settings) and [Local Node Info Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#node-audit-settings).
 
 ::::{important} 
 Be advised that **sensitive data may be audited in plain text** when including the request body in audit events, even though all the security APIs, such as those that change the user’s password, have the credentials filtered out when audited.

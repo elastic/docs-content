@@ -11,7 +11,7 @@ mapped_pages:
 `LIKE` and `RLIKE` operators are commonly used to filter data based on string patterns. They usually act on a field placed on the left-hand side of the operator, but can also act on a constant (literal) expression. The right-hand side of the operator represents the pattern. Both can be used in the `WHERE` clause of the `SELECT` statement, but `LIKE` can also be used in other places, such as defining an [index pattern](sql-index-patterns.md) or across various [SHOW commands](sql-commands.md). This section covers only the `SELECT ... WHERE ...` usage.
 
 ::::{note} 
-One significant difference between `LIKE`/`RLIKE` and the [full-text search predicates](sql-functions-search.md) is that the former act on [exact fields](sql-data-types.md#sql-multi-field) while the latter also work on [analyzed](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) fields. If the field used with `LIKE`/`RLIKE` doesn’t have an exact not-normalized sub-field (of [keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) type) Elasticsearch SQL will not be able to run the query. If the field is either exact or has an exact sub-field, it will use it as is, or it will automatically use the exact sub-field even if it wasn’t explicitly specified in the statement.
+One significant difference between `LIKE`/`RLIKE` and the [full-text search predicates](sql-functions-search.md) is that the former act on [exact fields](sql-data-types.md#sql-multi-field) while the latter also work on [analyzed](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) fields. If the field used with `LIKE`/`RLIKE` doesn’t have an exact not-normalized sub-field (of [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) type) Elasticsearch SQL will not be able to run the query. If the field is either exact or has an exact sub-field, it will use it as is, or it will automatically use the exact sub-field even if it wasn’t explicitly specified in the statement.
 ::::
 
 
@@ -73,7 +73,7 @@ RLIKE constant_exp <2>
 
 **Description**: This operator is similar to `LIKE`, but the user is not limited to search for a string based on a fixed pattern with the percent sign (`%`) and underscore (`_`); the pattern in this case is a regular expression which allows the construction of more flexible patterns.
 
-For supported syntax, see [*Regular expression syntax*](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html).
+For supported syntax, see [*Regular expression syntax*](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md).
 
 ```sql
 SELECT author, name FROM library WHERE name RLIKE 'Child.* Dune';

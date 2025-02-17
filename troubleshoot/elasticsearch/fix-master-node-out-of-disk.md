@@ -28,7 +28,7 @@ mapped_pages:
 ::::::{tab-item} Self-managed
 In order to increase the disk capacity of a master node, you will need to replace **all** the master nodes with master nodes of higher disk capacity.
 
-1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high) and can be retrieved via the following command:
+1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved via the following command:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*

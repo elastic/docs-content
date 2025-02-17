@@ -14,8 +14,8 @@ For existing hot-warm deployments that are currently using index curation, there
 
 To learn more about configuring index lifecycle management for Elasticsearch Service or about all of the features that are available with ILM, see:
 
-* [Create your index lifecyle policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html)
-* [Managing the index lifecycle](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html)
+* [Create your index lifecyle policy](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md)
+* [Managing the index lifecycle](/manage-data/lifecycle/index-lifecycle-management.md)
 
 To configure ILM Migration in the console:
 

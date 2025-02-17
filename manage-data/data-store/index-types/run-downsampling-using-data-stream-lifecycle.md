@@ -314,7 +314,7 @@ POST /datastream/_rollover/
 
 ## View downsampling results [downsampling-dsl-view-results]
 
-By default, data stream lifecycle actions are executed every five minutes. Downsampling takes place after the index is rolled over and the [index time series end time](https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds-index-settings.html#index-time-series-end-time) has lapsed as the source index is still expected to receive major writes until then. Index is now rolled over after previous step but its time series range end is likely still in the future. Once index time series range is in the past, re-run the `GET _data_stream` request.
+By default, data stream lifecycle actions are executed every five minutes. Downsampling takes place after the index is rolled over and the [index time series end time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/time-series-index-settings.md#index-time-series-end-time) has lapsed as the source index is still expected to receive major writes until then. Index is now rolled over after previous step but its time series range end is likely still in the future. Once index time series range is in the past, re-run the `GET _data_stream` request.
 
 ```console
 GET _data_stream

@@ -11,7 +11,7 @@ In smaller clusters, it is most important to be resilient to single-node failure
 
 If your cluster consists of one node, that single node must do everything. To accommodate this, {{es}} assigns nodes every role by default.
 
-A single node cluster is not resilient. If the node fails, the cluster will stop working. Because there are no replicas in a one-node cluster, you cannot store your data redundantly. However, by default at least one replica is required for a [`green` cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health). To ensure your cluster can report a `green` status, override the default by setting [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-settings) to `0` on every index.
+A single node cluster is not resilient. If the node fails, the cluster will stop working. Because there are no replicas in a one-node cluster, you cannot store your data redundantly. However, by default at least one replica is required for a [`green` cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health). To ensure your cluster can report a `green` status, override the default by setting [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-settings) to `0` on every index.
 
 If the node fails, you may need to restore an older copy of any lost indices from a [snapshot](../../tools/snapshot-and-restore.md).
 

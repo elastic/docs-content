@@ -27,5 +27,5 @@ To automatically back up your indices and manage snapshots, use [snapshot lifecy
 * [*Skip rollover*](../../../manage-data/lifecycle/index-lifecycle-management/skip-rollover.md)
 * [*Restore a managed data stream or index*](../../../manage-data/lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md)
 * [*{{ilm-cap}} APIs*](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ilm)
-* [*Index lifecycle actions*](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html)
+* [*Index lifecycle actions*](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/index.md)
 

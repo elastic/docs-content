@@ -40,7 +40,7 @@ $$$ece-db-logstash-pipeline$$$
 
 $$$ece-db-logstash-prerequisites$$$
 
-This guide explains how to ingest data from a relational database into {{ess}} through [{{ls}}](https://www.elastic.co/guide/en/logstash/current/introduction.html), using the Logstash [JDBC input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} or {{ece}} deployment.
+This guide explains how to ingest data from a relational database into {{ess}} through [{{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md), using the Logstash [JDBC input plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} or {{ece}} deployment.
 
 The code and methods presented here have been tested with MySQL. They should work with other relational databases.
 
@@ -330,7 +330,7 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
     ```
 
     1. Use the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-    2. the default username is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check [Configuring security in Logstash](https://www.elastic.co/guide/en/logstash/current/ls-security.html) for information on roles and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Configuring security in Logstash](https://www.elastic.co/guide/en/logstash/current/ls-security.html) documentation.
+    2. the default username is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check [Configuring security in Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/secure-connection.md) for information on roles and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Configuring security in Logstash](https://www.elastic.co/guide/en/logstash/current/ls-security.html) documentation.
 
 
     Following are some additional details about the configuration file settings:

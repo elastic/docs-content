@@ -20,7 +20,7 @@ Throughout the Elastic docs we have a number of troubleshooting and frequently a
 * [Sign up using an email address from another Elastic Cloud account](../../../deploy-manage/deploy/elastic-cloud/create-an-organization.md)
 * [{{ess}} AWS Marketplace troubleshooting](../../../deploy-manage/deploy/elastic-cloud/aws-marketplace.md#ec-billing-aws-troubleshooting)
 * [Native Azure integration troubleshooting](../../../deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md#ec-azure-integration-troubleshooting)
-* [{{ece}} troubleshooting](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html)
+* [{{ece}} troubleshooting](/troubleshoot/deployments/cloud-enterprise/cloud-enterprise.md)
 * [Understanding deployment health FAQ](../../../deploy-manage/monitor/stack-monitoring.md#ec-health-best-practices)
 * [{{ess}} FAQ](../../../deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
 * [{{ess}} billing FAQ](../../../deploy-manage/cloud-organization/billing/billing-faq.md)
@@ -65,11 +65,11 @@ Throughout the Elastic docs we have a number of troubleshooting and frequently a
 
 **{{beats}}**
 
-* [{{auditbeat}} troubleshooting](https://www.elastic.co/guide/en/beats/auditbeat/current/troubleshooting.html)
-* [{{filebeat}} troubleshooting](https://www.elastic.co/guide/en/beats/filebeat/current/troubleshooting.html)
-* [{{heartbeat}} troubleshooting](https://www.elastic.co/guide/en/beats/heartbeat/current/troubleshooting.html)
-* [{{metricbeat}} troubleshooting](https://www.elastic.co/guide/en/beats/metricbeat/current/troubleshooting.html)
-* [{{packetbeat}} troubleshooting](https://www.elastic.co/guide/en/beats/packetbeat/current/troubleshooting.html)
-* [{{winlogbeat}} troubleshooting](https://www.elastic.co/guide/en/beats/winlogbeat/current/troubleshooting.html)
+* [{{auditbeat}} troubleshooting](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-auditbeat/troubleshooting.md)
+* [{{filebeat}} troubleshooting](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/troubleshooting.md)
+* [{{heartbeat}} troubleshooting](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/troubleshooting.md)
+* [{{metricbeat}} troubleshooting](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/troubleshooting.md)
+* [{{packetbeat}} troubleshooting](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/troubleshooting.md)
+* [{{winlogbeat}} troubleshooting](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-winlogbeat/troubleshooting.md)
 * [{{log-driver-long}} troubleshooting](../../../troubleshoot/ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md)
-* [{{metricbeat}} Developer FAQ](https://www.elastic.co/guide/en/beats/devguide/current/dev-faq.html)
+* [{{metricbeat}} Developer FAQ](asciidocalypse://docs/beats/docs/extend/contribute-to-beats/dev-faq.md)

@@ -21,7 +21,7 @@ This guide shows you how to use {{esql}} in Kibana. To follow along with the que
 
 ## Enable or disable {{esql}} [esql-kibana-enable]
 
-{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html).
+{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
 
 This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
 
@@ -39,7 +39,7 @@ After switching to {{esql}} mode, the query bar shows a sample query. For exampl
 from kibana_sample_data_logs | limit 10
 ```
 
-Every query starts with a [source command](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html). In this query, the source command is [`FROM`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
+Every query starts with a [source command](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md). In this query, the source command is [`FROM`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
 
 A source command can be followed by one or more [processing commands](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html). In this query, the processing command is [`LIMIT`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-limit). `LIMIT` limits the number of rows that are retrieved.
 
@@ -179,7 +179,7 @@ FROM my_index
 | WHERE custom_timestamp >= ?_tstart AND custom_timestamp < ?_tend
 ```
 
-You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-bucket) function to create auto-incrementing time buckets in {{esql}} [visualizations](#esql-kibana-visualizations). For example:
+You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-bucket) function to create auto-incrementing time buckets in {{esql}} [visualizations](#esql-kibana-visualizations). For example:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -254,7 +254,7 @@ You can also edit the {{esql}} visualization from here. Click the options button
 
 ## Create an enrich policy [esql-kibana-enrich]
 
-The {{esql}} [`ENRICH`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich) command enables you to [enrich](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
+The {{esql}} [`ENRICH`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich) command enables you to [enrich](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
 
 :::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete

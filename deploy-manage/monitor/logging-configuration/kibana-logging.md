@@ -98,7 +98,7 @@ The pattern layout also offers a `highlight` option that allows you to highlight
 
 ### JSON layout [json-layout]
 
-With `json` layout log messages will be formatted as JSON strings in [ECS format](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html) that includes a timestamp, log level, logger, message text and any other metadata that may be associated with the log message itself.
+With `json` layout log messages will be formatted as JSON strings in [ECS format](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) that includes a timestamp, log level, logger, message text and any other metadata that may be associated with the log message itself.
 
 
 ## Logger hierarchy [logger-hierarchy]

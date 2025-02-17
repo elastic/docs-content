@@ -10,7 +10,7 @@ To add a service name to your logs, either:
 
 ## Use the add fields processor to add a service name [use-the-add-fields-processor-to-add-a-service-name]
 
-For log data without a service name, use the [add_fields processor](https://www.elastic.co/guide/en/fleet/current/add_fields-processor.html) to add the `service.name` field. You can add the processor in an integration’s settings or in the {{agent}} or {{filebeat}} configuration.
+For log data without a service name, use the [add_fields processor](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add_fields-processor.md) to add the `service.name` field. You can add the processor in an integration’s settings or in the {{agent}} or {{filebeat}} configuration.
 
 For example, adding the `add_fields` processor to the inputs section of a standalone {{agent}} or {{filebeat}} configuration would add `your_service_name` as the `service.name` field:
 
@@ -29,12 +29,12 @@ Adding the `add_fields` processor to an integration’s settings would add `your
 :class: screenshot
 :::
 
-For more on defining processors, refer to [define processors](https://www.elastic.co/guide/en/fleet/current/elastic-agent-processor-configuration.html).
+For more on defining processors, refer to [define processors](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-processors.md).
 
 
 ## Map an existing field to the service name field [map-an-existing-field-to-the-service-name-field]
 
-For logs that with an existing field being used to represent the service name, map that field to the `service.name` field using the [alias field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/field-alias.html). Follow these steps to update your mapping:
+For logs that with an existing field being used to represent the service name, map that field to the `service.name` field using the [alias field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md). Follow these steps to update your mapping:
 
 1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Index Templates**.

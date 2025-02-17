@@ -47,7 +47,7 @@ These are settings typically added to the keystore for the purpose of:
 
 The keystore allows you to safely store sensitive settings, such as passwords, as a key/value pair. You can then access a secret value from a settings file by referencing its key. Importantly, not all settings can be stored in the keystore, and the keystore does not validate the settings that you add. Adding unsupported settings can cause {{es}} or other components to fail to restart. To check whether a setting is supported in the keystore, look for a "Secure" qualifier in the [lists of reloadable settings](../../../deploy-manage/security/secure-settings.md).
 
-The following sections detail some secure settings problems that can result in a configuration change error that can prevent a deployment from restarting. You might diagnose these plan failures via the logs or via their [related exit codes](https://www.elastic.co/guide/en/elasticsearch/reference/current/stopping-elasticsearch.html#fatal-errors) `1`, `3`, and `78`.
+The following sections detail some secure settings problems that can result in a configuration change error that can prevent a deployment from restarting. You might diagnose these plan failures via the logs or via their [related exit codes](/deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#fatal-errors) `1`, `3`, and `78`.
 
 
 ### Invalid or outdated values [ech-config-change-errors-old-values]
@@ -135,5 +135,5 @@ To resolve this:
 
 ## Insufficient Storage [ech-config-change-errors-insufficient-storage]
 
-Configuration change errors can occur when there is insufficient disk space for a data tier. To resolve this, you need to increase the size of that tier to ensure it provides enough storage to accommodate the data in your cluster tier considering the [high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation). For troubleshooting walkthrough, see [Fix watermark errors](https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-watermark-errors.html).
+Configuration change errors can occur when there is insufficient disk space for a data tier. To resolve this, you need to increase the size of that tier to ensure it provides enough storage to accommodate the data in your cluster tier considering the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation). For troubleshooting walkthrough, see [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md).
 

@@ -36,7 +36,7 @@ To run Elasticsearch with specific plugins or configuration files installed on E
 
 Refer to [Creating custom images](create-custom-images.md) for instructions on how to build custom Docker images based on the official Elastic images.
 
-The following example describes option 2, using a repository plugin. To install the plugin before the Elasticsearch nodes start, use an init container to run the [plugin installation tool](https://www.elastic.co/guide/en/elasticsearch/plugins/current/installation.html).
+The following example describes option 2, using a repository plugin. To install the plugin before the Elasticsearch nodes start, use an init container to run the [plugin installation tool](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/installation.md).
 
 ```yaml
 spec:
@@ -57,7 +57,7 @@ spec:
 
 To install custom configuration files you can use volumes and volume mounts.
 
-The next example shows how to add a synonyms file for the [synonym token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html) in Elasticsearch. But you can use the same approach for any kind of file you want to mount into the configuration directory of Elasticsearch.
+The next example shows how to add a synonyms file for the [synonym token filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md) in Elasticsearch. But you can use the same approach for any kind of file you want to mount into the configuration directory of Elasticsearch.
 
 ```yaml
 spec:

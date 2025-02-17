@@ -14,13 +14,13 @@ Every `password` field that is used in your watch within an HTTP basic authentic
 
 To encrypt sensitive data in {{watcher}}:
 
-1. Use the [elasticsearch-syskeygen](https://www.elastic.co/guide/en/elasticsearch/reference/current/syskeygen.html) command to create a system key file.
+1. Use the [elasticsearch-syskeygen](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/syskeygen.md) command to create a system key file.
 2. Copy the `system_key` file to all of the nodes in your cluster.
    ::::{important}
    The system key is a symmetric key, so the same key must be used on every node in the cluster.
    ::::
 
-3. Set the [`xpack.watcher.encrypt_sensitive_data` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html):
+3. Set the [`xpack.watcher.encrypt_sensitive_data` setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md):
 
     ```sh
     xpack.watcher.encrypt_sensitive_data: true

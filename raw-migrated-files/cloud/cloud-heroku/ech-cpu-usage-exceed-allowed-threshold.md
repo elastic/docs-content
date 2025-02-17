@@ -23,7 +23,7 @@ By default, the allowed CPU usage threshold is set at 85%.
 
 4. Navigate to the **Performance** page of your deployment. Check if the CPU usage of your master nodes exceeds 85%. Your master node has the format `instance-<ID>``, where `<ID>`` is the ID of the master node.
 
-If you use [Stack Monitoring](https://www.elastic.co/guide/en/kibana/current/xpack-monitoring.html), open Kibana from your deployment page and select **Stack Monitoring** from the menu or the search bar.
+If you use [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md), open Kibana from your deployment page and select **Stack Monitoring** from the menu or the search bar.
 
 ::::{note}
 Stack Monitoring comes with out-of-the-box rules, but you need to enable them when prompted.

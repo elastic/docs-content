@@ -7,16 +7,16 @@ Elastic APM agents automatically measure application performance and track error
 
 Elastic APM agents are built and maintained by Elastic. While they are similar, different programming languages have different nuances and requirements. Refer to each APM agent’s documentation to learn how to install the agent, configure it, and more:
 
-* [APM Android agent](https://www.elastic.co/guide/en/apm/agent/android/current/intro.html)
-* [APM Go agent](https://www.elastic.co/guide/en/apm/agent/go/current/introduction.html)
-* [APM iOS agent](https://www.elastic.co/guide/en/apm/agent/swift/current/intro.html)
-* [APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/intro.html)
-* [APM .NET agent](https://www.elastic.co/guide/en/apm/agent/dotnet/current/intro.html)
-* [APM Node.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/intro.html)
-* [APM PHP agent](https://www.elastic.co/guide/en/apm/agent/php/current/intro.html)
-* [APM Python agent](https://www.elastic.co/guide/en/apm/agent/python/current/getting-started.html)
-* [APM Ruby agent](https://www.elastic.co/guide/en/apm/agent/ruby/current/introduction.html)
-* [APM Real User Monitoring JavaScript agent](https://www.elastic.co/guide/en/apm/agent/rum-js/current/intro.html)
+* [APM Android agent](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/index.md)
+* [APM Go agent](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/index.md)
+* [APM iOS agent](asciidocalypse://docs/apm-agent-ios/docs/reference/ingestion-tools/apm-agent-swift/index.md)
+* [APM Java agent](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/index.md)
+* [APM .NET agent](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/index.md)
+* [APM Node.js agent](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/index.md)
+* [APM PHP agent](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/index.md)
+* [APM Python agent](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/index.md)
+* [APM Ruby agent](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/index.md)
+* [APM Real User Monitoring JavaScript agent](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/index.md)
 
 
 ## More APM agent resources [_more_apm_agent_resources] 

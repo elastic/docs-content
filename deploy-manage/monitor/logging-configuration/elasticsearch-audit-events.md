@@ -12,7 +12,7 @@ applies:
 
 When you are [auditing security events](enabling-elasticsearch-audit-logs.md), a single client request might generate multiple audit events, across multiple cluster nodes. The common `request.id` attribute can be used to correlate the associated events.
 
-Use the [`xpack.security.audit.logfile.events.include`](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include) setting in `elasticsearch.yml` to specify the kind of events you want to include in the auditing output.
+Use the [`xpack.security.audit.logfile.events.include`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md#xpack-sa-lf-events-include) setting in `elasticsearch.yml` to specify the kind of events you want to include in the auditing output.
 
 ::::{note}
 Certain audit events require the `security_config_change` event type to audit the related event action. The description of impacted audit events indicate whether that event type is required.
@@ -607,7 +607,7 @@ In addition, all the events of types `rest`, `transport` and `ip_filter` (but no
 :   The origin type of the request associated with this event: `rest` (request originated from a REST API request), `transport` (request was received on the transport channel), or `local_node` (the local node issued the request).
 
 `opaque_id`
-:   The value of the `X-Opaque-Id` HTTP header (if present) of the request associated with this event. See more: [`X-Opaque-Id` HTTP header - API conventions](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#x-opaque-id)
+:   The value of the `X-Opaque-Id` HTTP header (if present) of the request associated with this event. See more: [`X-Opaque-Id` HTTP header - API conventions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#x-opaque-id)
 
 `trace_id`
 :   The identifier extracted from the `traceparent` HTTP header (if present) of the request associated with this event. It allows to surface audit logs into the Trace Logs feature of Elastic APM.

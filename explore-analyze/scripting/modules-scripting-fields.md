@@ -16,27 +16,27 @@ Depending on where a script is used, it will have access to certain special vari
 A script used in the [update](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update), [update-by-query](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query), or [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) API will have access to the `ctx` variable which exposes:
 
 `ctx._source`
-:   Access to the document [`_source` field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html).
+:   Access to the document [`_source` field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md).
 
 `ctx.op`
 :   The operation that should be applied to the document: `index` or `delete`.
 
 `ctx._index` etc
-:   Access to [document metadata fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html), some of which may be read-only.
+:   Access to [document metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/document-metadata-fields.md), some of which may be read-only.
 
 These scripts do not have access to the `doc` variable and have to use `ctx` to access the documents they operate on.
 
 
 ## Search and aggregation scripts [_search_and_aggregation_scripts] 
 
-With the exception of [script fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#script-fields) which are executed once per search hit, scripts used in search and aggregations will be executed once for every document which might match a query or an aggregation. Depending on how many documents you have, this could mean millions or billions of executions: these scripts need to be fast!
+With the exception of [script fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) which are executed once per search hit, scripts used in search and aggregations will be executed once for every document which might match a query or an aggregation. Depending on how many documents you have, this could mean millions or billions of executions: these scripts need to be fast!
 
 Field values can be accessed from a script using [doc-values](#modules-scripting-doc-vals), [the `_source` field](#modules-scripting-source), or [stored fields](#modules-scripting-stored), each of which is explained below.
 
 
 ### Accessing the score of a document within a script [scripting-score] 
 
-Scripts used in the [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html), in [script-based sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html), or in [aggregations](../query-filter/aggregations.md) have access to the `_score` variable which represents the current relevance score of a document.
+Scripts used in the [`function_score` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-function-score-query.md), in [script-based sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/sort-search-results.md), or in [aggregations](../query-filter/aggregations.md) have access to the `_score` variable which represents the current relevance score of a document.
 
 Here’s an example of using a script in a [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html) to alter the relevance `_score` of each document:
 
@@ -76,7 +76,7 @@ GET my-index-000001/_search
 
 ### Accessing term statistics of a document within a script [scripting-term-statistics] 
 
-Scripts used in a [`script_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html) query have access to the `_termStats` variable which provides statistical information about the terms in the child query.
+Scripts used in a [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query have access to the `_termStats` variable which provides statistical information about the terms in the child query.
 
 In the following example, `_termStats` is used within a [`script_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html) query to retrieve the average term frequency for the terms `quick`, `brown`, and `fox` in the `text` field:
 
@@ -143,7 +143,7 @@ The `_termStats` variable is only available when using the [Painless](modules-sc
 
 ### Doc values [modules-scripting-doc-vals] 
 
-By far the fastest most efficient way to access a field value from a script is to use the `doc['field_name']` syntax, which retrieves the field value from [doc values](https://www.elastic.co/guide/en/elasticsearch/reference/current/doc-values.html). Doc values are a columnar field value store, enabled by default on all fields except for [analyzed `text` fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html).
+By far the fastest most efficient way to access a field value from a script is to use the `doc['field_name']` syntax, which retrieves the field value from [doc values](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/doc-values.md). Doc values are a columnar field value store, enabled by default on all fields except for [analyzed `text` fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md).
 
 ```console
 PUT my-index-000001/_doc/1?refresh
@@ -239,7 +239,7 @@ GET my-index-000001/_search
 
 ### Stored fields [modules-scripting-stored] 
 
-*Stored fields* — fields explicitly marked as [`"store": true`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-store.html) in the mapping — can be accessed using the `_fields['field_name'].value` or `_fields['field_name']` syntax:
+*Stored fields* — fields explicitly marked as [`"store": true`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-store.md) in the mapping — can be accessed using the `_fields['field_name'].value` or `_fields['field_name']` syntax:
 
 ```console
 PUT my-index-000001

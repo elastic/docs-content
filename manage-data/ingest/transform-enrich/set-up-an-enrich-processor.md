@@ -17,7 +17,7 @@ To set up an enrich processor, follow these steps:
 Once you have an enrich processor set up, you can [update your enrich data](#update-enrich-data) and [update your enrich policies](#update-enrich-policies).
 
 ::::{important}
-The enrich processor performs several operations and may impact the speed of your ingest pipeline. We recommend [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html) co-locating ingest and data roles to minimize remote search operations.
+The enrich processor performs several operations and may impact the speed of your ingest pipeline. We recommend [node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md) co-locating ingest and data roles to minimize remote search operations.
 
 We strongly recommend testing and benchmarking your enrich processors before deploying them in production.
 
@@ -40,7 +40,7 @@ To begin, add documents to one or more source indices. These documents should co
 
 You can manage source indices just like regular {{es}} indices using the [document](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document) and [index](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) APIs.
 
-You also can set up [{{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html), such as a [{{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html), to automatically send and index documents to your source indices. See [Getting started with {{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html).
+You also can set up [{{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md), such as a [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md), to automatically send and index documents to your source indices. See [Getting started with {{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html).
 
 
 ## Create an enrich policy [create-enrich-policy]
@@ -65,7 +65,7 @@ Once the enrich policy is created, you need to execute it using the [execute enr
 The *enrich index* contains documents from the policy’s source indices. Enrich indices always begin with `.enrich-*`, are read-only, and are [force merged](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge).
 
 ::::{warning}
-Enrich indices should only be used by the [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) or the [{{esql}} `ENRICH` command](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich). Avoid using enrich indices for other purposes.
+Enrich indices should only be used by the [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) or the [{{esql}} `ENRICH` command](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-enrich). Avoid using enrich indices for other purposes.
 
 ::::
 
@@ -91,7 +91,7 @@ You also can use the `max_matches` option to set the number of enrich documents 
 
 See [Enrich](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) for a full list of configuration options.
 
-You also can add other [processors](https://www.elastic.co/guide/en/elasticsearch/reference/current/processors.html) to your ingest pipeline.
+You also can add other [processors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/index.md) to your ingest pipeline.
 
 
 ## Ingest and enrich documents [ingest-enrich-docs]

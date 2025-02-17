@@ -14,7 +14,7 @@ To enable auditing for Elasticsearch:
 5. Add the setting `xpack.security.audit.enabled: true`.
 6. Select **Save**.
 
-For more information and other available auditing settings in Elasticsearch, check [Auditing security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html). Audit logs can be viewed within Elasticsearch logs.
+For more information and other available auditing settings in Elasticsearch, check [Auditing security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md). Audit logs can be viewed within Elasticsearch logs.
 
 To enable auditing for Kibana:
 

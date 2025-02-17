@@ -35,30 +35,30 @@ When choosing between {{agent}} and {{filebeat}}, consider the different feature
 
 Install an {{agent}} and use {{fleet}} to define, configure, and manage your agents in a central location.
 
-See [install {{fleet}}-managed {{agent}}](https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html).
+See [install {{fleet}}-managed {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md).
 
 
 #### Standalone {{agent}} [observability-log-monitoring-standalone-agent]
 
 Install an {{agent}} and manually configure it locally on the system where it’s installed. You are responsible for managing and upgrading the agents.
 
-See [install standalone {{agent}}](https://www.elastic.co/guide/en/fleet/current/install-standalone-elastic-agent.html).
+See [install standalone {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md).
 
 
 #### {{agent}} in a containerized environment [observability-log-monitoring-agent-in-a-containerized-environment]
 
 Run an {{agent}} inside of a container — either with {{fleet-server}} or standalone.
 
-See [install {{agent}} in containers](https://www.elastic.co/guide/en/fleet/current/install-elastic-agents-in-containers.html).
+See [install {{agent}} in containers](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents-in-containers.md).
 
 
 ### {{filebeat}} [observability-log-monitoring-filebeat]
 
 {{filebeat}} is a lightweight shipper for forwarding and centralizing log data. Installed as a service on your servers, {{filebeat}} monitors the log files or locations that you specify, collects log events, and forwards them to your Observability project for indexing.
 
-* [{{filebeat}} overview](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html): General information on {{filebeat}} and how it works.
-* [{{filebeat}} quick start](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html): Basic installation instructions to get you started.
-* [Set up and run {{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/setting-up-and-running.html): Information on how to install, set up, and run {{filebeat}}.
+* [{{filebeat}} overview](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-overview.md): General information on {{filebeat}} and how it works.
+* [{{filebeat}} quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md): Basic installation instructions to get you started.
+* [Set up and run {{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/setting-up-running.md): Information on how to install, set up, and run {{filebeat}}.
 
 
 ## Configure logs [observability-log-monitoring-configure-logs]

@@ -9,7 +9,7 @@ mapped_pages:
 # Import the trained model and vocabulary [ml-nlp-import-model]
 
 ::::{important}
-If you want to install a trained model in a restricted or closed network, refer to [these instructions](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html#ml-nlp-pytorch-air-gapped).
+If you want to install a trained model in a restricted or closed network, refer to [these instructions](asciidocalypse://docs/eland/docs/reference/elasticsearch/elasticsearch-client-eland/machine-learning.md#ml-nlp-pytorch-air-gapped).
 ::::
 
 After you choose a model, you must import it and its tokenizer vocabulary to your cluster. When you import the model, it must be chunked and imported one chunk at a time for storage in parts due to its size.
@@ -22,7 +22,7 @@ Trained models must be in a TorchScript representation for use with {{stack-ml-f
 
 ## Import with the Eland client installed [ml-nlp-import-script]
 
-1. Install the [Eland Python client](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/installation.html) with PyTorch extra dependencies.
+1. Install the [Eland Python client](asciidocalypse://docs/eland/docs/reference/elasticsearch/elasticsearch-client-eland/installation.md) with PyTorch extra dependencies.
 
     ```shell
     python -m pip install 'eland[pytorch]'

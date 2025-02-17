@@ -15,7 +15,7 @@ Normally, a node will only leave a cluster if deliberately shut down. If a node 
 * The master may appear busy due to frequent cluster state updates.
 
 ::::{admonition}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::
 
@@ -65,7 +65,7 @@ The [Health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operati
 If the node did not restart then you should look at the reason for its departure more closely. Each reason has different troubleshooting steps, described below. There are three possible reasons:
 
 * `disconnected`: The connection from the master node to the removed node was closed.
-* `lagging`: The master published a cluster state update, but the removed node did not apply it within the permitted timeout. By default, this timeout is 2 minutes. Refer to [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html) for information about the settings which control this mechanism.
+* `lagging`: The master published a cluster state update, but the removed node did not apply it within the permitted timeout. By default, this timeout is 2 minutes. Refer to [Discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 * `followers check retry count exceeded`: The master sent a number of consecutive health checks to the removed node. These checks were rejected or timed out. By default, each health check times out after 10 seconds and {{es}} removes the node removed after three consecutively failed health checks. Refer to [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html) for information about the settings which control this mechanism.
 
 
@@ -73,7 +73,7 @@ If the node did not restart then you should look at the reason for its departure
 
 Nodes typically leave the cluster with reason `disconnected` when they shut down, but if they rejoin the cluster without restarting then there is some other problem.
 
-{{es}} is designed to run on a fairly reliable network. It opens a number of TCP connections between nodes and expects these connections to remain open [forever](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections). If a connection is closed then {{es}} will try and reconnect, so the occasional blip may fail some in-flight operations but should otherwise have limited impact on the cluster. In contrast, repeatedly-dropped connections will severely affect its operation.
+{{es}} is designed to run on a fairly reliable network. It opens a number of TCP connections between nodes and expects these connections to remain open [forever](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). If a connection is closed then {{es}} will try and reconnect, so the occasional blip may fail some in-flight operations but should otherwise have limited impact on the cluster. In contrast, repeatedly-dropped connections will severely affect its operation.
 
 The connections from the elected master node to every other node in the cluster are particularly important. The elected master never spontaneously closes its outbound connections to other nodes. Similarly, once an inbound connection is fully established, a node never spontaneously closes it unless the node is shutting down.
 
@@ -126,7 +126,7 @@ Timeouts and failures may be due to network delays or performance problems on th
 
 If the last check failed with an exception then the exception is reported, and typically indicates the problem that needs to be addressed. If any of the checks timed out then narrow down the problem as follows.
 
-* GC pauses are recorded in the GC logs that {{es}} emits by default, and also usually by the `JvmMonitorService` in the main node logs. Use these logs to confirm whether or not the node is experiencing high heap usage with long GC pauses. If so, [the troubleshooting guide for high heap usage](high-jvm-memory-pressure.md) has some suggestions for further investigation but typically you will need to capture a heap dump and the [garbage collector logs](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#gc-logging) during a time of high heap usage to fully understand the problem.
+* GC pauses are recorded in the GC logs that {{es}} emits by default, and also usually by the `JvmMonitorService` in the main node logs. Use these logs to confirm whether or not the node is experiencing high heap usage with long GC pauses. If so, [the troubleshooting guide for high heap usage](high-jvm-memory-pressure.md) has some suggestions for further investigation but typically you will need to capture a heap dump and the [garbage collector logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#gc-logging) during a time of high heap usage to fully understand the problem.
 * VM pauses also affect other processes on the same host. A VM pause also typically causes a discontinuity in the system clock, which {{es}} will report in its logs. If you see evidence of other processes pausing at the same time, or unexpected clock discontinuities, investigate the infrastructure on which you are running {{es}}.
 * Packet captures will reveal system-level and network-level faults, especially if you capture the network traffic simultaneously at the elected master and the faulty node and analyse it alongside the {{es}} logs from those nodes. The connection used for follower checks is not used for any other traffic so it can be easily identified from the flow pattern alone, even if TLS is in use: almost exactly every second there will be a few hundred bytes sent each way, first the request by the master and then the response by the follower. You should be able to observe any retransmissions, packet loss, or other delays on such a connection.
 * Long waits for particular threads to be available can be identified by taking stack dumps of the main {{es}} process (for example, using `jstack`) or a profiling trace (for example, using Java Flight Recorder) in the few seconds leading up to the relevant log message.

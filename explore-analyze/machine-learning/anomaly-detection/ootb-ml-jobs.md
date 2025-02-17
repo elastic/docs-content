@@ -9,17 +9,17 @@ mapped_pages:
 
 # Supplied configurations [ootb-ml-jobs]
 
-{{anomaly-jobs-cap}} contain the configuration information and metadata necessary to perform an analytics task. {{kib}} can recognize certain types of data and provide specialized wizards for that context. This page lists the categories of the {{anomaly-jobs}} that are ready to use via {{kib}} in **Machine learning**. Refer to [Create {{anomaly-jobs}}](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-create-job) to learn more about creating a job by using supplied configurations. Logs and Metrics supplied configurations are available and can be created via the related solution UI in {{kib}}.
+{{anomaly-jobs-cap}} contain the configuration information and metadata necessary to perform an analytics task. {{kib}} can recognize certain types of data and provide specialized wizards for that context. This page lists the categories of the {{anomaly-jobs}} that are ready to use via {{kib}} in **Machine learning**. Refer to [Create {{anomaly-jobs}}](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-create-job) to learn more about creating a job by using supplied configurations. Logs and Metrics supplied configurations are available and can be created via the related solution UI in {{kib}}.
 
-* [Apache](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apache.html)
-* [APM](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apm.html)
-* [{{auditbeat}}](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-auditbeat.html)
-* [Logs](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-logs-ui.html)
-* [{{metricbeat}}](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-metricbeat.html)
-* [Metrics](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-metrics-ui.html)
-* [Nginx](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-nginx.html)
-* [Security](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-siem.html)
-* [Uptime](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-uptime.html)
+* [Apache](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md)
+* [APM](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-apm.md)
+* [{{auditbeat}}](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-auditbeat.md)
+* [Logs](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-logs-ui.md)
+* [{{metricbeat}}](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-metricbeat.md)
+* [Metrics](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-metrics-ui.md)
+* [Nginx](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md)
+* [Security](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-siem.md)
+* [Uptime](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-uptime.md)
 
 ::::{note}
 The configurations are only available if data exists that matches the queries specified in the manifest files. These recognizer queries are linked in the descriptions of the individual configurations.

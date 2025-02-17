@@ -12,12 +12,12 @@ applies:
 
 Audit logging is a [subscription feature](https://www.elastic.co/subscriptions) that you can enable to keep track of security-related events, such as authorization success and failures. Logging these events enables you to monitor {{kib}} for suspicious activity and provides evidence in the event of an attack.
 
-Use the {{kib}} audit logs in conjunction with [{{es}} audit logging](enabling-elasticsearch-audit-logs.md) to get a holistic view of all security related events. {{kib}} defers to the {{es}} security model for authentication, data index authorization, and features that are driven by cluster-wide privileges. For more information on enabling audit logging in {{es}}, refer to [Auditing security events](https://www.elastic.co/guide/en/elasticsearch/reference/current/enable-audit-logging.html).
+Use the {{kib}} audit logs in conjunction with [{{es}} audit logging](enabling-elasticsearch-audit-logs.md) to get a holistic view of all security related events. {{kib}} defers to the {{es}} security model for authentication, data index authorization, and features that are driven by cluster-wide privileges. For more information on enabling audit logging in {{es}}, refer to [Auditing security events](/deploy-manage/monitor/logging-configuration/enabling-elasticsearch-audit-logs.md).
 
 ::::{note}
 Audit logs are **disabled** by default. To enable this functionality, you must set `xpack.security.audit.enabled` to `true` in `kibana.yml`.
 
-You can optionally configure audit logs location, file/rolling file appenders and ignore filters using [Audit logging settings](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-settings).
+You can optionally configure audit logs location, file/rolling file appenders and ignore filters using [Audit logging settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#audit-logging-settings).
 
 ::::
 

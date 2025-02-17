@@ -50,7 +50,7 @@ A simple {{es}} document might look like this:
 
 ## Metadata fields [elasticsearch-intro-documents-fields-data-metadata] 
 
-An indexed document contains data and metadata. [Metadata fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html) are system fields that store information about the documents. In {{es}}, metadata fields are prefixed with an underscore. For example, the following fields are metadata fields:
+An indexed document contains data and metadata. [Metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system fields that store information about the documents. In {{es}}, metadata fields are prefixed with an underscore. For example, the following fields are metadata fields:
 
 * `_index`: The name of the index where the document is stored.
 * `_id`: The document’s ID. IDs must be unique per index.
@@ -58,7 +58,7 @@ An indexed document contains data and metadata. [Metadata fields](https://www.el
 
 ## Mappings and data types [elasticsearch-intro-documents-fields-mappings] 
 
-Each index has a [mapping](../../../manage-data/data-store/mapping.md) or schema for how the fields in your documents are indexed. A mapping defines the [data type](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html) for each field, how the field should be indexed, and how it should be stored. When adding documents to {{es}}, you have two options for mappings:
+Each index has a [mapping](../../../manage-data/data-store/mapping.md) or schema for how the fields in your documents are indexed. A mapping defines the [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored. When adding documents to {{es}}, you have two options for mappings:
 
 * [Dynamic mapping](../../../manage-data/data-store/mapping.md#mapping-dynamic): Let {{es}} automatically detect the data types and create the mappings for you. Dynamic mapping helps you get started quickly, but might yield suboptimal results for your specific use case due to automatic field type inference.
 * [Explicit mapping](../../../manage-data/data-store/mapping.md#mapping-explicit): Define the mappings up front by specifying data types for each field. Recommended for production use cases, because you have full control over how your data is indexed to suit your specific use case.

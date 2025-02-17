@@ -171,7 +171,7 @@ PUT my-index-000001/_doc/1
 ```
 
 1. The `my_integer` field is mapped as an `integer`.
-2. The `my_string` field is mapped as a `text`, with a `keyword` [multi-field](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html).
+2. The `my_string` field is mapped as a `text`, with a `keyword` [multi-field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md).
 3. The `my_boolean` field is mapped as a `keyword`.
 4. The `field.count` field is mapped as a `long`.
 
@@ -356,7 +356,7 @@ PUT my-index-000001/_doc/2
 
 ## Template variables [template-variables]
 
-The `{{name}}` and `{{dynamic_type}}` placeholders are replaced in the `mapping` with the field name and detected dynamic type. The following example sets all string fields to use an [`analyzer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) with the same name as the field, and disables [`doc_values`](https://www.elastic.co/guide/en/elasticsearch/reference/current/doc-values.html) for all non-string fields:
+The `{{name}}` and `{{dynamic_type}}` placeholders are replaced in the `mapping` with the field name and detected dynamic type. The following example sets all string fields to use an [`analyzer`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/analyzer.md) with the same name as the field, and disables [`doc_values`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/doc-values.md) for all non-string fields:
 
 ```console
 PUT my-index-000001

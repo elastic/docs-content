@@ -43,7 +43,7 @@ Collection is currently done serially, rather than in parallel, to avoid extra o
 ::::
 
 
-For more information about the configuration options for the collectors, see [Monitoring collection settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#monitoring-collection-settings).
+For more information about the configuration options for the collectors, see [Monitoring collection settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
 
 
 ## Collecting data from across the Elastic Stack [es-monitoring-stack] 

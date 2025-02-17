@@ -20,7 +20,7 @@ A data stream lifecycle also supports downsampling the data stream backing indic
 
 ## How does it work? [data-streams-lifecycle-how-it-works] 
 
-In intervals configured by [`data_streams.lifecycle.poll_interval`](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle-settings.html#data-streams-lifecycle-poll-interval), {{es}} goes over each data stream and performs the following steps:
+In intervals configured by [`data_streams.lifecycle.poll_interval`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/data-stream-lifecycle-settings.md#data-streams-lifecycle-poll-interval), {{es}} goes over each data stream and performs the following steps:
 
 1. Checks if the data stream has a data stream lifecycle configured, skipping any indices not part of a managed data stream.
 2. Rolls over the write index of the data stream, if it fulfills the conditions defined by [`cluster.lifecycle.default.rollover`](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-stream-lifecycle-settings.html#cluster-lifecycle-default-rollover).

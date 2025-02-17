@@ -33,7 +33,7 @@ Monitoring the `_health` endpoint of each {{kib}} instance in the cluster is the
 
 The health monitoring API monitors the performance of Task Manager out of the box.  However, certain performance considerations are deployment specific and you can configure them.
 
-A health threshold is the threshold for failed task executions.  Once a task exceeds this threshold, a status of `warn` or `error` is set on the task type execution. To configure a health threshold, use the [`xpack.task_manager.monitored_task_execution_thresholds`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-health-settings) setting.  You can apply this this setting to all task types in the system, or to a custom task type.
+A health threshold is the threshold for failed task executions.  Once a task exceeds this threshold, a status of `warn` or `error` is set on the task type execution. To configure a health threshold, use the [`xpack.task_manager.monitored_task_execution_thresholds`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-health-settings) setting.  You can apply this this setting to all task types in the system, or to a custom task type.
 
 By default, this setting marks the health of every task type as `warning` when it exceeds 80% failed executions, and as `error` at 90%. Set this value to a number between 0 to 100. The threshold is hit when the value **exceeds** this number. To avoid a status of `error`, set the threshold at 100.  To hit `error` the moment any task fails, set the threshold to 0.
 

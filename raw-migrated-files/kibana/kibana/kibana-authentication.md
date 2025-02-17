@@ -66,7 +66,7 @@ xpack.security.authc.providers:
 :class: screenshot
 :::
 
-For more information, refer to [authentication security settings](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#authentication-security-settings).
+For more information, refer to [authentication security settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#authentication-security-settings).
 
 ::::{tip}
 If you have multiple authentication providers configured, you can use the `auth_provider_hint` URL query parameter to create a deep link to any provider and bypass the Login Selector UI. Using the `kibana.yml` above as an example, you can add `?auth_provider_hint=basic1` to the login page URL, which will take you directly to the basic login page.
@@ -118,7 +118,7 @@ PKI authentication will not work if {{kib}} is hosted behind a TLS termination r
 
 PKI authentication is a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log into {{kib}} using X.509 client certificates that must be presented while connecting to {{kib}}. The certificates must first be accepted for authentication on the {{kib}} TLS layer, and then they are further validated by an {{es}} PKI realm. The PKI authentication provider relies on the {{es}} [Delegate PKI authentication API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delegate-pki) to exchange X.509 client certificates to access tokens. All subsequent requests to {{es}} APIs on behalf of users will be authenticated using these access tokens.
 
-Prior to configuring {{kib}}, ensure that the PKI realm is enabled in {{es}} and configured to permit delegation. See [Configuring a PKI realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/pki-realm.html) for more information.
+Prior to configuring {{kib}}, ensure that the PKI realm is enabled in {{es}} and configured to permit delegation. See [Configuring a PKI realm](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) for more information.
 
 To enable the PKI authentication provider in {{kib}}, you must first [configure {{kib}} to encrypt communications between the browser and {{kib}} server](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http). You must also enable TLS client authentication and include the certificate authority (CA) used to sign client certificates into a list of CAs trusted by {{kib}} in your `kibana.yml`:
 
@@ -156,7 +156,7 @@ Note that with `server.ssl.clientAuthentication` set to `required`, users are as
 
 ## SAML single sign-on [saml]
 
-SAML authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in to {{kib}} with an external Identity Provider, such as Okta or Auth0. Make sure that SAML is enabled and configured in {{es}} before setting it up in {{kib}}. See [Configuring SAML single sign-on on the Elastic Stack](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html).
+SAML authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in to {{kib}} with an external Identity Provider, such as Okta or Auth0. Make sure that SAML is enabled and configured in {{es}} before setting it up in {{kib}}. See [Configuring SAML single sign-on on the Elastic Stack](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
 Enable SAML authentication by specifying which SAML realm in {{es}} should be used:
 

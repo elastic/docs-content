@@ -8,13 +8,13 @@ mapped_pages:
 {{es}} requires very little configuration to get started, but there are a number of items which **must** be considered before using your cluster in production:
 
 * [Path settings](#path-settings)
-* [Cluster name setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-name)
+* [Cluster name setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-name)
 * [Node name setting](#node-name)
 * [Network host settings](#network.host)
 * [Discovery settings](#discovery-settings)
 * [Heap size settings](#heap-size-settings)
 * [JVM heap dump path setting](#heap-dump-path)
-* [GC logging settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#gc-logging)
+* [GC logging settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#gc-logging)
 * [Temporary directory settings](#es-tmpdir)
 * [JVM fatal error log setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#error-file-path)
 * [Cluster backups](#important-settings-backups)
@@ -60,7 +60,7 @@ Don’t modify anything within the data directory or run processes that might in
 ::::
 
 
-Elasticsearch offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](https://www.elastic.co/guide/en/elasticsearch/reference/current/path-settings-overview.html#multiple-data-paths).
+Elasticsearch offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/path-settings.md#multiple-data-paths).
 
 
 ## Cluster name setting [_cluster_name_setting]
@@ -93,7 +93,7 @@ node.name: prod-data-2
 
 ## Network host setting [network.host]
 
-By default, {{es}} only binds to loopback addresses such as `127.0.0.1` and `[::1]`. This is sufficient to run a cluster of one or more nodes on a single server for development and testing, but a [resilient production cluster](../../production-guidance/availability-and-resilience.md) must involve nodes on other servers. There are many [network settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) but usually all you need to configure is `network.host`:
+By default, {{es}} only binds to loopback addresses such as `127.0.0.1` and `[::1]`. This is sufficient to run a cluster of one or more nodes on a single server for development and testing, but a [resilient production cluster](../../production-guidance/availability-and-resilience.md) must involve nodes on other servers. There are many [network settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) but usually all you need to configure is `network.host`:
 
 ```yaml
 network.host: 192.168.1.10
@@ -158,12 +158,12 @@ cluster.initial_master_nodes: <1>
 1. Identify the initial master nodes by their [`node.name`](#node-name), which defaults to their hostname. Ensure that the value in `cluster.initial_master_nodes` matches the `node.name` exactly. If you use a fully-qualified domain name (FQDN) such as `master-node-a.example.com` for your node names, then you must use the FQDN in this list. Conversely, if `node.name` is a bare hostname without any trailing qualifiers, you must also omit the trailing qualifiers in `cluster.initial_master_nodes`.
 
 
-See [bootstrapping a cluster](../../distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md) and [discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html).
+See [bootstrapping a cluster](../../distributed-architecture/discovery-cluster-formation/modules-discovery-bootstrap-cluster.md) and [discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md).
 
 
 ## Heap size settings [heap-size-settings]
 
-By default, {{es}} automatically sets the JVM heap size based on a node’s [roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) and total memory. We recommend the default sizing for most production environments.
+By default, {{es}} automatically sets the JVM heap size based on a node’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. We recommend the default sizing for most production environments.
 
 If needed, you can override the default sizing by manually [setting the JVM heap size](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-heap-size).
 

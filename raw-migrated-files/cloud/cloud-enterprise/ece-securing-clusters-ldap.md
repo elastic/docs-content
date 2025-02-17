@@ -5,7 +5,7 @@ These steps show how you can secure your {{es}} clusters and Kibana instances wi
 
 ## Before you begin [ece_before_you_begin_17]
 
-To learn more about how securing {{es}} clusters with LDAP works, check [LDAP user authentication](https://www.elastic.co/guide/en/elasticsearch/reference/current/ldap-realm.html).
+To learn more about how securing {{es}} clusters with LDAP works, check [LDAP user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md).
 
 ::::{note}
 The LDAP credentials are valid against the deployment, not the ECE platform. You can configure [role-based access control](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md) for the platform separately.
@@ -175,7 +175,7 @@ If your CA certificate is available as a `JKS` or `PKCS#12` keystore, you can up
 
 ## Mapping LDAP groups to roles [ece-securing-clusters-ldap-role-mapping]
 
-You have two ways of mapping LDAP groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). If for some reason this is not possible, you can use a [role mapping file](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html) to specify the mappings instead.
+You have two ways of mapping LDAP groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). If for some reason this is not possible, you can use a [role mapping file](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) to specify the mappings instead.
 
 
 ### Using the Role Mapping API [ece_using_the_role_mapping_api]

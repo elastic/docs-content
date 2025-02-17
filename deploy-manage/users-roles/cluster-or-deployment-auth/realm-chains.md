@@ -42,7 +42,7 @@ xpack.security.authc.realms:
       enabled: false
 ```
 
-As can be seen above, each realm has a unique name that identifies it. Each type of realm dictates its own set of required and optional settings. That said, there are [settings that are common to all realms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-realm-settings).
+As can be seen above, each realm has a unique name that identifies it. Each type of realm dictates its own set of required and optional settings. That said, there are [settings that are common to all realms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-realm-settings).
 
 ## Delegating authorization to another realm [authorization_realms]
 

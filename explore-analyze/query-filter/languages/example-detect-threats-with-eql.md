@@ -207,7 +207,7 @@ The query matches an event, confirming `scrobj.dll` was loaded.
 
 ## Determine the likelihood of success [eql-ex-detemine-likelihood-of-success] 
 
-In many cases, attackers use malicious scripts to connect to remote servers or download other files. Use an [EQL sequence query](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences) to check for the following series of events:
+In many cases, attackers use malicious scripts to connect to remote servers or download other files. Use an [EQL sequence query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-sequences) to check for the following series of events:
 
 1. A `regsvr32.exe` process
 2. A load of the `scrobj.dll` library by the same process

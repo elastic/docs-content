@@ -5,7 +5,7 @@ mapped_pages:
 
 # Retrieve a runtime field [runtime-retrieving-fields]
 
-Use the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API to retrieve the values of runtime fields. Runtime fields won’t display in `_source`, but the `fields` API works for all fields, even those that were not sent as part of the original `_source`.
+Use the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API to retrieve the values of runtime fields. Runtime fields won’t display in `_source`, but the `fields` API works for all fields, even those that were not sent as part of the original `_source`.
 
 ## Define a runtime field to calculate the day of week [runtime-define-field-dayofweek]
 
@@ -199,7 +199,7 @@ POST logs/_search
 }
 ```
 
-1. Define a runtime field in the main search request with a type of `lookup` that retrieves fields from the target index using the [`term`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html) queries.
+1. Define a runtime field in the main search request with a type of `lookup` that retrieves fields from the target index using the [`term`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) queries.
 2. The target index where the lookup query executes against
 3. A field on the main index whose values are used as the input values of the lookup term query
 4. A field on the lookup index which the lookup query searches against

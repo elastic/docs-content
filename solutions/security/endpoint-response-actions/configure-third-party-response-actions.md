@@ -58,11 +58,11 @@ Expand a section below for your endpoint security system:
         * **URL**: The base URL of the CrowdStrike API.
 
     4. Select the **Falcon Alerts** and **Hosts** sub-options under **Collect CrowdStrike logs via API**.
-    5. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](https://www.elastic.co/guide/en/fleet/current/agent-policy.html).
+    5. Scroll down and enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md).
     6. Click **Save and continue**.
     7. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge collecting data from CrowdStrike and sending it back to {{elastic-sec}}.
 
-3. **Create a CrowdStrike connector.** Elastic’s [CrowdStrike connector](https://www.elastic.co/guide/en/kibana/current/crowdstrike-action-type.html) enables {{elastic-sec}} to perform actions on CrowdStrike-enrolled hosts.
+3. **Create a CrowdStrike connector.** Elastic’s [CrowdStrike connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/crowdstrike-action-type.md) enables {{elastic-sec}} to perform actions on CrowdStrike-enrolled hosts.
 
     ::::{important}
     Do not create more than one CrowdStrike connector.
@@ -170,7 +170,7 @@ Expand a section below for your endpoint security system:
     5. Click **Save and continue**.
     6. Select **Add {{agent}} to your hosts** and continue with the [{{agent}} installation steps](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-agent) to install {{agent}} on a resource in your network (such as a server or VM). {{agent}} will act as a bridge collecting data from SentinelOne and sending it to {{elastic-sec}}.
 
-3. **Create a SentinelOne connector.** Elastic’s [SentinelOne connector](https://www.elastic.co/guide/en/kibana/current/sentinelone-action-type.html) enables {{elastic-sec}} to perform actions on SentinelOne-enrolled hosts.
+3. **Create a SentinelOne connector.** Elastic’s [SentinelOne connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/sentinelone-action-type.md) enables {{elastic-sec}} to perform actions on SentinelOne-enrolled hosts.
 
     ::::{important}
     Do not create more than one SentinelOne connector.

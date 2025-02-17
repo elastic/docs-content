@@ -97,7 +97,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
 Now that your CA truststore is updated, use your new CA certificate to sign a certificate for your nodes.
 
 ::::{note} 
-If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate.
+If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate.
 ::::
 
 

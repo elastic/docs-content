@@ -23,7 +23,7 @@ You’ll learn how to:
 * Create an {{es}} resource in the Azure portal.
 * Ingest Azure platform logs using the native integration and view those logs in {{kib}}.
 * Ingest logs and metrics from your virtual machines and view those logs and infrastructure metrics in {{kib}}.
-* Ingest other metrics (such as billing) using the [{{metricbeat}} Azure module](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-azure.html) and view those metrics in {{kib}}.
+* Ingest other metrics (such as billing) using the [{{metricbeat}} Azure module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-module-azure.md) and view those metrics in {{kib}}.
 
 
 ## Step 1: Create an {{es}} resource in the Azure portal [azure-step-one]
@@ -229,7 +229,7 @@ Version 9.0.0-beta1 of Metricbeat has not yet been released.
 
 
 ::::{important}
-Setting up {{metricbeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](https://www.elastic.co/guide/en/beats/metricbeat/current/privileges-to-setup-beats.html), and a more restrictive role for event publishing (which you will do next).
+Setting up {{metricbeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/privileges-to-setup-beats.md), and a more restrictive role for event publishing (which you will do next).
 
 ::::
 
@@ -239,7 +239,7 @@ Setting up {{metricbeat}} is an admin-level task that requires extra privileges.
 
 Next, you are going to configure {{metricbeat}} output to {{ess}}.
 
-1. Use the {{metricbeat}} keystore to store [secure settings](https://www.elastic.co/guide/en/beats/metricbeat/current/keystore.html). Store the Cloud ID in the keystore.
+1. Use the {{metricbeat}} keystore to store [secure settings](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/keystore.md). Store the Cloud ID in the keystore.
 
     ```bash
     ./metricbeat keystore create

@@ -21,7 +21,7 @@ When utilizing audit events ignore policies you are acknowledging potential acco
 ::::
 
 
-A policy is a named set of filter rules. Each filter rule applies to a single event attribute, one of the `users`, `realms`, `actions`, `roles` or `indices` attributes. The filter rule defines a list of [Lucene regexp](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html), **any** of which has to match the value of the audit event attribute for the rule to match. A policy matches an event if **all** the rules comprising it match the event. An audit event is ignored, therefore not printed, if it matches **any** policy. All other non-matching events are printed as usual.
+A policy is a named set of filter rules. Each filter rule applies to a single event attribute, one of the `users`, `realms`, `actions`, `roles` or `indices` attributes. The filter rule defines a list of [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md), **any** of which has to match the value of the audit event attribute for the rule to match. A policy matches an event if **all** the rules comprising it match the event. An audit event is ignored, therefore not printed, if it matches **any** policy. All other non-matching events are printed as usual.
 
 All policies are defined under the `xpack.security.audit.logfile.events.ignore_filters` settings namespace. For example, the following policy named *example1* matches events from the *kibana_system* or *admin_user* principals that operate over indices of the wildcard form *app-logs**:
 

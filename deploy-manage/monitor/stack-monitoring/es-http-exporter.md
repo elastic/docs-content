@@ -17,9 +17,9 @@ If you have previously configured legacy collection methods, you should migrate 
 
 The `http` exporter is the preferred exporter in the {{es}} {{monitor-features}} because it enables the use of a separate monitoring cluster. As a secondary benefit, it avoids using a production cluster node as a coordinating node for indexing monitoring data because all requests are HTTP requests to the monitoring cluster.
 
-The `http` exporter uses the low-level {{es}} REST Client, which enables it to send its data to any {{es}} cluster it can access through the network. Its requests make use of the [`filter_path`](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#common-options-response-filtering) parameter to reduce bandwidth whenever possible, which helps to ensure that communications between the production and monitoring clusters are as lightweight as possible.
+The `http` exporter uses the low-level {{es}} REST Client, which enables it to send its data to any {{es}} cluster it can access through the network. Its requests make use of the [`filter_path`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) parameter to reduce bandwidth whenever possible, which helps to ensure that communications between the production and monitoring clusters are as lightweight as possible.
 
-The `http` exporter supports a number of settings that control how it communicates over HTTP to remote clusters. In most cases, it is not necessary to explicitly configure these settings. For detailed descriptions, see [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html).
+The `http` exporter supports a number of settings that control how it communicates over HTTP to remote clusters. In most cases, it is not necessary to explicitly configure these settings. For detailed descriptions, see [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md).
 
 ```yaml
 xpack.monitoring.exporters:

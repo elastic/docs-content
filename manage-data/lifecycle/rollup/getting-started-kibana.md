@@ -52,7 +52,7 @@ You can’t change a rollup job after you’ve created it. To select additional 
 
 ## Try it: Create and visualize rolled up data [rollup-data-tutorial]
 
-This example creates a rollup job to capture log data from sample web logs. Before you start, [add the web logs sample data set](https://www.elastic.co/guide/en/kibana/current/get-started.html).
+This example creates a rollup job to capture log data from sample web logs. Before you start, [add the web logs sample data set](/explore-analyze/index.md).
 
 In this example, you want data that is older than 7 days in the `kibana_sample_data_logs` index to roll up into the `rollup_logstash` index. You’ll bucket the rolled up data on an hourly basis, using `60m` for the time bucket configuration.
 

@@ -439,7 +439,7 @@ $$$monitor-http-password$$$
 $$$monitor-http-ssl$$$
 
 **`ssl`**
-:   Type: [SSL](https://www.elastic.co/guide/en/beats/heartbeat/current/configuration-ssl.html)
+:   Type: [SSL](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/configuration-ssl.md)
 
     The TLS/SSL connection settings for use with the HTTPS endpoint. If you don’t specify settings, the system defaults are used.
 

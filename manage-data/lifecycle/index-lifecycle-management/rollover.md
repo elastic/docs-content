@@ -17,7 +17,7 @@ We recommend using [data streams](https://www.elastic.co/docs/api/doc/elasticsea
 Each data stream requires an [index template](../../data-store/templates.md) that contains:
 
 * A name or wildcard (`*`) pattern for the data stream.
-* The data stream’s timestamp field. This field must be mapped as a [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) or [`date_nanos`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date_nanos.html) field data type and must be included in every document indexed to the data stream.
+* The data stream’s timestamp field. This field must be mapped as a [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md) field data type and must be included in every document indexed to the data stream.
 * The mappings and settings applied to each backing index when it’s created.
 
 Data streams are designed for append-only data, where the data stream name can be used as the operations (read, write, rollover, shrink etc.) target. If your use case requires data to be updated in place, you can instead manage your time series data using [index aliases](../../data-store/aliases.md). However, there are a few more configuration steps and concepts:

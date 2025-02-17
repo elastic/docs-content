@@ -39,7 +39,7 @@ To use the Cloud ID, you need:
     * The unique Cloud ID for your deployment, available from the deployment overview page.
     * A user ID and password that has permission to send data to your cluster.
 
-        In our examples, we use the `elastic` superuser that every Elasticsearch cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/current/feature-roles.html) documentation.
+        In our examples, we use the `elastic` superuser that every Elasticsearch cluster comes with. The password for the `elastic` user is provided when you create a deployment (and can also be [reset](../../users-roles/cluster-or-deployment-auth/built-in-users.md) if you forget it). On a production system, you should adapt these examples by creating a user that can write to and access only the minimally required indices. For each Beat, review the specific feature and role table, similar to the one in [Metricbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/feature-roles.md) documentation.
 
 
 
@@ -48,7 +48,7 @@ To use the Cloud ID, you need:
 The following example shows how you can send operational data from Metricbeat to Elasticsearch Service by using the Cloud ID. Any of the available Beats will work, but we had to pick one for this example.
 
 ::::{tip}
-For others, you can learn more about [getting started](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html) with each Beat.
+For others, you can learn more about [getting started](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md) with each Beat.
 ::::
 
 
@@ -57,8 +57,8 @@ To get started with Metricbeat and Elasticsearch Service:
 1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. [Create a new deployment](create-an-elastic-cloud-hosted-deployment.md) and copy down the password for the `elastic` user.
 3. On the deployment overview page, copy down the Cloud ID.
-4. Set up the Beat of your choice, such as [Metricbeat version 7.17](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html).
-5. [Configure the Beat output to send to Elastic Cloud](https://www.elastic.co/guide/en/beats/metricbeat/current/configure-cloud-id.html).
+4. Set up the Beat of your choice, such as [Metricbeat version 7.17](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-installation-configuration.md).
+5. [Configure the Beat output to send to Elastic Cloud](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/configure-cloud-id.md).
 
     ::::{note}
     Make sure you replace the values for `cloud.id` and `cloud.auth` with your own information.

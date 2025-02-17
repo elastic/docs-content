@@ -8,7 +8,7 @@ Elastic Stack SSO requires a valid Enterprise license or Enterprise trial licens
 
 
 ::::{tip}
-Make sure you check the complete [Configuring SAML single sign-on on the Elastic Stack](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html) guide before setting up SAML SSO for Kibana and Elasticsearch deployments managed by ECK.
+Make sure you check the complete [Configuring SAML single sign-on on the Elastic Stack](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) guide before setting up SAML SSO for Kibana and Elasticsearch deployments managed by ECK.
 ::::
 
 
@@ -100,7 +100,7 @@ To configure Elasticsearch for signing messages and/or for encrypted messages, k
 To enable SAML authentication in Kibana, you have to add SAML as an authentication provider and specify the SAML realm that you used in your Elasticsearch configuration.
 
 ::::{tip}
-You can configure multiple authentication providers in Kibana and let users choose the provider they want to use. For more information, check [the Kibana authentication documentation](https://www.elastic.co/guide/en/kibana/current/kibana-authentication.html).
+You can configure multiple authentication providers in Kibana and let users choose the provider they want to use. For more information, check [the Kibana authentication documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
 ::::
 
 
@@ -134,7 +134,7 @@ Your SAML users cannot login to Kibana until they are assigned roles. For more i
 
 The Elastic Stack supports generating service provider metadata, that can be imported to the identity provider, and configure many of the integration options between the identity provider and the service provider, automatically. For more information, check [the Generating SP metadata section](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-sp-metadata) in the Stack SAML guide.
 
-To generate the Service Provider metadata using [the elasticsearch-saml-metadata command](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-metadata.html), you will have to run the command using `kubectl`, and then copy the generated metadata file to your local machine. For example:
+To generate the Service Provider metadata using [the elasticsearch-saml-metadata command](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/saml-metadata.md), you will have to run the command using `kubectl`, and then copy the generated metadata file to your local machine. For example:
 
 ```sh
 # Create metadata

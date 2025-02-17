@@ -15,9 +15,9 @@ If your data includes geographic fields, you can use {{ml-features}} to detect a
 To run this type of {{anomaly-job}}, you must have [{{ml-features}} set up](../setting-up-machine-learning.md). You must also have time series data that contains spatial data types. In particular, you must have:
 
 * two comma-separated numbers of the form `latitude,longitude`,
-* a [`geo_point`](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) field,
-* a [`geo_shape`](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html) field that contains point values, or
-* a [`geo_centroid`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-geocentroid-aggregation.html) aggregation
+* a [`geo_point`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) field,
+* a [`geo_shape`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md) field that contains point values, or
+* a [`geo_centroid`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-geocentroid-aggregation.md) aggregation
 
 The latitude and longitude must be in the range -180 to 180 and represent a point on the surface of the Earth.
 
@@ -37,9 +37,9 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 There are a few limitations to consider before you create this type of job:
 
 1. You cannot create forecasts for {{anomaly-jobs}} that contain geographic functions.
-2. You cannot add [custom rules with conditions](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-rules) to detectors that use geographic functions.
+2. You cannot add [custom rules with conditions](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-rules) to detectors that use geographic functions.
 
-If those limitations are acceptable, try creating an {{anomaly-job}} that uses the [`lat_long` function](https://www.elastic.co/guide/en/machine-learning/current/ml-geo-functions.html#ml-lat-long) to analyze your own data or the sample data sets.
+If those limitations are acceptable, try creating an {{anomaly-job}} that uses the [`lat_long` function](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-geo-functions.md#ml-lat-long) to analyze your own data or the sample data sets.
 
 To create an {{anomaly-job}} that uses the `lat_long` function, in {{kib}} you must click **Create job** on the **{{ml-cap}} > {{anomaly-detect-cap}} > Jobs** page and select the advanced job wizard. Alternatively, use the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
 
@@ -204,7 +204,7 @@ You can also view the anomaly in **Maps** by clicking **View in Maps** in the ac
 
 When you try this type of {{anomaly-job}} with your own data, it might take some experimentation to find the best combination of buckets, detectors, and influencers to detect the type of behavior you’re seeking.
 
-For more information about {{anomaly-detect}} concepts, see [Concepts](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html). For the full list of functions that you can use in {{anomaly-jobs}}, see [*Function reference*](ml-functions.md). For more {{anomaly-detect}} examples, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html).
+For more information about {{anomaly-detect}} concepts, see [Concepts](/explore-analyze/machine-learning/anomaly-detection.md). For the full list of functions that you can use in {{anomaly-jobs}}, see [*Function reference*](ml-functions.md). For more {{anomaly-detect}} examples, see [Examples](/explore-analyze/machine-learning/anomaly-detection/anomaly-how-tos.md).
 
 ## Add anomaly layers to your maps [geographic-anomalies-map-layer]
 

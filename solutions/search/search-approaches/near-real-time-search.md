@@ -31,7 +31,7 @@ Lucene allows new segments to be written and opened, making the documents they c
 In {{es}}, this process of writing and opening a new segment is called a *refresh*. A refresh makes all operations performed on an index since the last refresh available for search. You can control refreshes through the following means:
 
 * Waiting for the refresh interval
-* Setting the [?refresh](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-refresh.html) option
+* Setting the [?refresh](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/refresh-parameter.md) option
 * Using the [Refresh API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) to explicitly complete a refresh (`POST _refresh`)
 
 By default, {{es}} periodically refreshes indices every second, but only on indices that have received one search request or more in the last 30 seconds. This is why we say that {{es}} has *near* real-time search: document changes are not visible to search immediately, but will become visible within this timeframe.

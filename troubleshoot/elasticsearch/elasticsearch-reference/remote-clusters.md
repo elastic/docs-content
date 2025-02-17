@@ -49,7 +49,7 @@ The API should return `"connected" : true`. When using [API key authentication](
 
 When using API key authentication, cross-cluster traffic happens on the remote cluster interface, instead of the transport interface. The remote cluster interface is not enabled by default. This means a node is not ready to accept incoming cross-cluster requests by default, while it is ready to send outgoing cross-cluster requests. Ensure you’ve enabled the remote cluster server on every node of the remote cluster. In `elasticsearch.yml`:
 
-* Set [`remote_cluster_server.enabled`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote-cluster-network-settings) to `true`.
+* Set [`remote_cluster_server.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
 * Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
 * Optionally, configure the remote server port using [`remote_cluster.port`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote_cluster.port) (defaults to `9443`).
 

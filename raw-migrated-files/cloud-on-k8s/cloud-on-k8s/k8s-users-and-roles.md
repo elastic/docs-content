@@ -43,12 +43,12 @@ Do not run the `elasticsearch-service-tokens` command inside an Elasticsearch Po
 
 ### Native realm [k8s_native_realm]
 
-You can create custom users in the [Elasticsearch native realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/native-realm.html) using [Elasticsearch user management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
+You can create custom users in the [Elasticsearch native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) using [Elasticsearch user management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
 
 
 ### File realm [k8s_file_realm]
 
-Custom users can also be created by providing the desired [file realm content](https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html) or a username and password in Kubernetes secrets, referenced in the Elasticsearch resource.
+Custom users can also be created by providing the desired [file realm content](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md) or a username and password in Kubernetes secrets, referenced in the Elasticsearch resource.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -117,7 +117,7 @@ stringData:
     user:jacknich
 ```
 
-You can populate the content of both `users` and `users_roles` using the [elasticsearch-users](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool.
+You can populate the content of both `users` and `users_roles` using the [elasticsearch-users](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) tool.
 
 For example, invoking the tool in a Docker container:
 

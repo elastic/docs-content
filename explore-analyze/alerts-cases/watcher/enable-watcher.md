@@ -128,7 +128,7 @@ PUT _watcher/watch/test-alarm
 
 ## Configuring a custom mail server [watcher-custom-mail-server]
 
-It is possible to use a custom mail service instead of the one configured by default. It can be configured by following the [Elasticsearch documentation for configuring email accounts](https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-email.html).
+It is possible to use a custom mail service instead of the one configured by default. It can be configured by following the [Elasticsearch documentation for configuring email accounts](/explore-analyze/alerts-cases/watcher/actions-email.md).
 
 An example on how to configure a new account from the Elastic cloud console:
 
@@ -158,4 +158,4 @@ An example on how to configure a new account from the Elastic cloud console:
 
 6. The new email account is now set up. It will now be used by default for watcher email actions.
 
-For a full reference of all available settings, see the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#email-notification-settings).
+For a full reference of all available settings, see the [Elasticsearch documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#email-notification-settings).

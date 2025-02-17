@@ -13,7 +13,7 @@ Snapshots are essential for recovering Elasticsearch indices in case of accident
 To set up automated snapshots for Elasticsearch on Kubernetes you have to:
 
 1. Register the snapshot repository with the Elasticsearch API.
-2. Set up a Snapshot Lifecycle Management Policy through [API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) or the [Kibana UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html)
+2. Set up a Snapshot Lifecycle Management Policy through [API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm) or the [Kibana UI](/deploy-manage/tools/snapshot-and-restore.md)
 
 ::::{note}
 Support for S3, GCS and Azure repositories is bundled in Elasticsearch by default from version 8.0. On older versions of Elasticsearch, or if another snapshot repository plugin should be used, you have to [Install a snapshot repository plugin](#k8s-install-plugin).
@@ -42,7 +42,7 @@ The final example illustrates how to configure secure and trusted communication 
 
 #### Configure GCS credentials through the Elasticsearch keystore [k8s-secure-settings]
 
-The Elasticsearch GCS repository plugin requires a JSON file that contains service account credentials. These need to be added as secure settings to the Elasticsearch keystore. For more details, check [Google Cloud Storage Repository](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html).
+The Elasticsearch GCS repository plugin requires a JSON file that contains service account credentials. These need to be added as secure settings to the Elasticsearch keystore. For more details, check [Google Cloud Storage Repository](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md).
 
 Using ECK, you can automatically inject secure settings into a cluster node by providing them through a secret in the Elasticsearch Spec.
 
@@ -306,7 +306,7 @@ Follow the [Azure documentation](https://learn.microsoft.com/en-us/azure/aks/wor
           --sku Standard_ZRS <1>
     ```
 
-    1. This can be any of the supported storage account types `Standard_LRS`, `Standard_ZRS`, `Standard_GRS`, `Standard_RAGRS` but not `Premium_LRS` see [the Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html) for details.
+    1. This can be any of the supported storage account types `Standard_LRS`, `Standard_ZRS`, `Standard_GRS`, `Standard_RAGRS` but not `Premium_LRS` see [the Elasticsearch documentation](/deploy-manage/tools/snapshot-and-restore/azure-repository.md) for details.
 
 7. Create a container in the storage account, for this example `es-snapshots`.
 

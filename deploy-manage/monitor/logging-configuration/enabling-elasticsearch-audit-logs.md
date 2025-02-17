@@ -32,4 +32,4 @@ To enable audit logging:
 
 When audit logging is enabled, [security events](elasticsearch-audit-events.md) are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, see [Logfile audit output](logfile-audit-output.md).
 
-You can configure additional options to control what events are logged and what information is included in the audit log. For more information, see [Auditing settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html).
+You can configure additional options to control what events are logged and what information is included in the audit log. For more information, see [Auditing settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md).

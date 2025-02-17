@@ -40,7 +40,7 @@ When you create a new deployment through the API, you have two options:
 
 ### Create a deployment using default values [ec-api-examples-deployment-simple]
 
-This example requires minimal information in the API payload, and creates a deployment with default settings and a default name. You just need to specify one of the [available deployment templates](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) in your API request header and the deployment is created using default settings from that template.
+This example requires minimal information in the API payload, and creates a deployment with default settings and a default name. You just need to specify one of the [available deployment templates](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) in your API request header and the deployment is created using default settings from that template.
 
 ```sh
 curl -XPOST \

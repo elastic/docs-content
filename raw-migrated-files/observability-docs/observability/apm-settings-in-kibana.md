@@ -5,7 +5,7 @@ navigation_title: "Settings"
 # Applications UI settings [apm-settings-in-kibana]
 
 
-You do not need to configure any settings to use the Applications UI. It is enabled by default. If you’d like to adjust the default settings, see [APM Settings](https://www.elastic.co/guide/en/kibana/current/apm-settings-kb.html).
+You do not need to configure any settings to use the Applications UI. It is enabled by default. If you’d like to adjust the default settings, see [APM Settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/apm-settings.md).
 
 
 ## APM Indices [apm-indices-settings]

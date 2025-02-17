@@ -9,7 +9,7 @@ mapped_pages:
 
 # Allow Elasticsearch to allocate the index [allow-all-index-allocation]
 
-The allocation of data can be controlled using the [enable allocation configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-routing-allocation-enable-setting). In certain circumstances users might want to temporarily disable or restrict the allocation of data.
+The allocation of data can be controlled using the [enable allocation configuration](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-routing-allocation-enable-setting). In certain circumstances users might want to temporarily disable or restrict the allocation of data.
 
 Forgetting to re-allow all data allocation can lead to unassigned shards.
 

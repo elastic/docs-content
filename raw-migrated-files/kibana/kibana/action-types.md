@@ -2,33 +2,33 @@
 
 Connectors provide a central place to store connection information for services and integrations with Elastic or third party systems. Actions are instantiations of a connector that are linked to rules and run as background tasks on the {{kib}} server when rule conditions are met. {{kib}} provides the following types of connectors:
 
-* [{{bedrock}}](https://www.elastic.co/guide/en/kibana/current/bedrock-action-type.html): Send a request to {{bedrock}}.
-* [Cases](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html): Add alerts to cases.
-* [CrowdStrike](https://www.elastic.co/guide/en/kibana/current/crowdstrike-action-type.html): Send a request to CrowdStrike.
-* [D3 Security](https://www.elastic.co/guide/en/kibana/current/d3security-action-type.html): Send a request to D3 Security.
-* [{{gemini}}](https://www.elastic.co/guide/en/kibana/current/gemini-action-type.html): Send a request to {{gemini}}.
-* [Email](https://www.elastic.co/guide/en/kibana/current/email-action-type.html): Send email from your server.
-* [{{ibm-r}}](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html): Create an incident in {{ibm-r}}.
-* [Index](https://www.elastic.co/guide/en/kibana/current/index-action-type.html): Index data into Elasticsearch.
-* [Jira](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html): Create an incident in Jira.
-* [Microsoft Teams](https://www.elastic.co/guide/en/kibana/current/teams-action-type.html): Send a message to a Microsoft Teams channel.
-* [Observability AI Assistant](https://www.elastic.co/guide/en/kibana/current/obs-ai-assistant-action-type.html): Add AI-driven insights and custom actions to your workflow.
-* [OpenAI](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html): Send a request to OpenAI.
-* [{{opsgenie}}](https://www.elastic.co/guide/en/kibana/current/opsgenie-action-type.html): Create or close an alert in {{opsgenie}}.
-* [PagerDuty](https://www.elastic.co/guide/en/kibana/current/pagerduty-action-type.html): Send an event in PagerDuty.
-* [SentinelOne](https://www.elastic.co/guide/en/kibana/current/sentinelone-action-type.html): Send a request to SentinelOne.
-* [ServerLog](https://www.elastic.co/guide/en/kibana/current/server-log-action-type.html): Add a message to a Kibana log.
-* [{{sn-itsm}}](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html): Create an incident in {{sn}}.
-* [{{sn-sir}}](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html): Create a security incident in {{sn}}.
-* [{{sn-itom}}](https://www.elastic.co/guide/en/kibana/current/servicenow-itom-action-type.html): Create an event in {{sn}}.
-* [Slack](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html): Send a message to a Slack channel or user.
-* [{{swimlane}}](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html): Create an incident in {{swimlane}}.
-* [{{hive}}](https://www.elastic.co/guide/en/kibana/current/thehive-action-type.html): Create cases and alerts in {{hive}}.
-* [Tines](https://www.elastic.co/guide/en/kibana/current/tines-action-type.html): Send events to a Tines Story.
-* [Torq](https://www.elastic.co/guide/en/kibana/current/torq-action-type.html): Trigger a Torq workflow.
-* [{{webhook}}](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html): Send a request to a web service.
-* [{{webhook-cm}}](https://www.elastic.co/guide/en/kibana/current/cases-webhook-action-type.html): Send a request to a Case Management web service.
-* [xMatters](https://www.elastic.co/guide/en/kibana/current/xmatters-action-type.html): Send actionable alerts to on-call xMatters resources.
+* [{{bedrock}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md): Send a request to {{bedrock}}.
+* [Cases](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md): Add alerts to cases.
+* [CrowdStrike](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/crowdstrike-action-type.md): Send a request to CrowdStrike.
+* [D3 Security](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/d3security-action-type.md): Send a request to D3 Security.
+* [{{gemini}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md): Send a request to {{gemini}}.
+* [Email](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md): Send email from your server.
+* [{{ibm-r}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md): Create an incident in {{ibm-r}}.
+* [Index](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/index-action-type.md): Index data into Elasticsearch.
+* [Jira](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md): Create an incident in Jira.
+* [Microsoft Teams](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/teams-action-type.md): Send a message to a Microsoft Teams channel.
+* [Observability AI Assistant](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md): Add AI-driven insights and custom actions to your workflow.
+* [OpenAI](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md): Send a request to OpenAI.
+* [{{opsgenie}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/opsgenie-action-type.md): Create or close an alert in {{opsgenie}}.
+* [PagerDuty](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pagerduty-action-type.md): Send an event in PagerDuty.
+* [SentinelOne](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/sentinelone-action-type.md): Send a request to SentinelOne.
+* [ServerLog](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/server-log-action-type.md): Add a message to a Kibana log.
+* [{{sn-itsm}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md): Create an incident in {{sn}}.
+* [{{sn-sir}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md): Create a security incident in {{sn}}.
+* [{{sn-itom}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-itom-action-type.md): Create an event in {{sn}}.
+* [Slack](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md): Send a message to a Slack channel or user.
+* [{{swimlane}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md): Create an incident in {{swimlane}}.
+* [{{hive}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/thehive-action-type.md): Create cases and alerts in {{hive}}.
+* [Tines](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/tines-action-type.md): Send events to a Tines Story.
+* [Torq](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/torq-action-type.md): Trigger a Torq workflow.
+* [{{webhook}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md): Send a request to a web service.
+* [{{webhook-cm}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-webhook-action-type.md): Send a request to a Case Management web service.
+* [xMatters](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/xmatters-action-type.md): Send actionable alerts to on-call xMatters resources.
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -54,7 +54,7 @@ Access to connectors is granted based on your privileges to alerting-enabled fea
 
 ## Connector networking configuration [_connector_networking_configuration]
 
-Use the [action configuration settings](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html#action-settings) to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
+Use the [action configuration settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#action-settings) to customize connector networking configurations, such as proxies, certificates, or TLS settings. You can set configurations that apply to all your connectors or use `xpack.actions.customHostSettings` to set per-host configurations.
 
 
 ## Connector list [connectors-list]
@@ -91,7 +91,7 @@ New connectors can be created with the **Create connector** button, which guides
 
 After you create a connector, it is available for use any time you set up an action in the current space.
 
-For out-of-the-box and standardized connectors, refer to [preconfigured connectors](https://www.elastic.co/guide/en/kibana/current/pre-configured-connectors.html).
+For out-of-the-box and standardized connectors, refer to [preconfigured connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md).
 
 ::::{tip}
 You can also manage connectors as resources with the [Elasticstack provider](https://registry.terraform.io/providers/elastic/elasticstack/latest) for Terraform. For more details, refer to the [elasticstack_kibana_action_connector](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_action_connector) resource.

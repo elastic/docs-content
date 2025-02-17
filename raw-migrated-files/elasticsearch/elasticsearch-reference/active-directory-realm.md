@@ -21,7 +21,7 @@ To integrate with Active Directory, you configure an `active_directory` realm an
 
 1. Add a realm configuration of type `active_directory` to `elasticsearch.yml` under the `xpack.security.authc.realms.active_directory` namespace. At a minimum, you must specify the Active Directory `domain_name` and `order`.
 
-    See [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings) for all of the options you can set for an `active_directory` realm.
+    See [Active Directory realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings) for all of the options you can set for an `active_directory` realm.
 
     ::::{note} 
     Binding to Active Directory fails if the domain name is not mapped in DNS. If DNS is not being provided by a Windows DNS server, add a mapping for the domain in the local `/etc/hosts` file.

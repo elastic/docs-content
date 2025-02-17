@@ -13,7 +13,7 @@ You can also use PKI certificates to authenticate to {{kib}}, however this requi
 
 To use PKI in {{es}}, you configure a PKI realm, enable client authentication on the desired network layers (transport or http), and map the Distinguished Names (DNs) from the Subject field in the user certificates to roles. You create the mappings in a role mapping file or use the role mappings API.
 
-1. Add a realm configuration for a `pki` realm to `elasticsearch.yml` under the `xpack.security.authc.realms.pki` namespace. You must explicitly set the `order` attribute. See [PKI realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-pki-settings) for all of the options you can set for a `pki` realm.
+1. Add a realm configuration for a `pki` realm to `elasticsearch.yml` under the `xpack.security.authc.realms.pki` namespace. You must explicitly set the `order` attribute. See [PKI realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) for all of the options you can set for a `pki` realm.
 
     For example, the following snippet shows the most basic `pki` realm configuration:
 

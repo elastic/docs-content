@@ -29,9 +29,9 @@ A TSDS works like a regular data stream with some key differences:
 * {{es}} generates a hidden [`_tsid`](time-series-data-stream-tsds.md#tsid) metadata field for each document in a TSDS.
 * A TSDS uses [time-bound backing indices](time-series-data-stream-tsds.md#time-bound-indices) to store data from the same time period in the same backing index.
 * The matching index template for a TSDS must contain the `index.routing_path` index setting. A TSDS uses this setting to perform [dimension-based routing](time-series-data-stream-tsds.md#dimension-based-routing).
-* A TSDS uses internal [index sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-index-sorting.html) to order shard segments by `_tsid` and `@timestamp`.
+* A TSDS uses internal [index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-sorting-settings.md) to order shard segments by `_tsid` and `@timestamp`.
 * TSDS documents only support auto-generated document `_id` values. For TSDS documents, the document `_id` is a hash of the document’s dimensions and `@timestamp`. A TSDS doesn’t support custom document `_id` values.
-* A TSDS uses [synthetic `_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source), and as a result is subject to some [restrictions](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source-restrictions) and [modifications](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source-modifications) applied to the `_source` field.
+* A TSDS uses [synthetic `_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), and as a result is subject to some [restrictions](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source-restrictions) and [modifications](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source-modifications) applied to the `_source` field.
 
 ::::{note}
 A time series index can contain fields other than dimensions or metrics.
@@ -63,18 +63,18 @@ A TSDS document is uniquely identified by its time series and timestamp, both of
 
 You mark a field as a dimension using the boolean `time_series_dimension` mapping parameter. The following field types support the `time_series_dimension` parameter:
 
-* [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#keyword-field-type)
-* [`ip`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ip.html)
-* [`byte`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html)
+* [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type)
+* [`ip`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md)
+* [`byte`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md)
 * [`short`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html)
 * [`integer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html)
 * [`long`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html)
 * [`unsigned_long`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html)
-* [`boolean`](https://www.elastic.co/guide/en/elasticsearch/reference/current/boolean.html)
+* [`boolean`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/boolean.md)
 
-For a flattened field, use the `time_series_dimensions` parameter to configure an array of fields as dimensions. For details refer to [`flattened`](https://www.elastic.co/guide/en/elasticsearch/reference/current/flattened.html#flattened-params).
+For a flattened field, use the `time_series_dimensions` parameter to configure an array of fields as dimensions. For details refer to [`flattened`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/flattened.md#flattened-params).
 
-Dimension definitions can be simplified through [pass-through](https://www.elastic.co/guide/en/elasticsearch/reference/current/passthrough.html#passthrough-dimensions) fields.
+Dimension definitions can be simplified through [pass-through](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/passthrough.md#passthrough-dimensions) fields.
 
 
 ### Metrics [time-series-metric]
@@ -85,8 +85,8 @@ Metrics differ from dimensions in that while dimensions generally remain constan
 
 To mark a field as a metric, you must specify a metric type using the `time_series_metric` mapping parameter. The following field types support the `time_series_metric` parameter:
 
-* [`aggregate_metric_double`](https://www.elastic.co/guide/en/elasticsearch/reference/current/aggregate-metric-double.html)
-* [`histogram`](https://www.elastic.co/guide/en/elasticsearch/reference/current/histogram.html)
+* [`aggregate_metric_double`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/aggregate-metric-double.md)
+* [`histogram`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/histogram.md)
 * All [numeric field types](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html)
 
 Accepted metric types vary based on the field type:
@@ -120,7 +120,7 @@ Due to the cumulative nature of counter fields, the following aggregations are s
 
 ## Time series mode [time-series-mode]
 
-The matching index template for a TSDS must contain a `data_stream` object with the `index_mode: time_series` option. This option ensures the TSDS creates backing indices with an [`index.mode`](https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds-index-settings.html#index-mode) setting of `time_series`. This setting enables most TSDS-related functionality in the backing indices.
+The matching index template for a TSDS must contain a `data_stream` object with the `index_mode: time_series` option. This option ensures the TSDS creates backing indices with an [`index.mode`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/time-series-index-settings.md#index-mode) setting of `time_series`. This setting enables most TSDS-related functionality in the backing indices.
 
 If you convert an existing data stream to a TSDS, only backing indices created after the conversion have an `index.mode` of `time_series`. You can’t change the `index.mode` of an existing backing index.
 
@@ -129,7 +129,7 @@ If you convert an existing data stream to a TSDS, only backing indices created a
 
 When you add a document to a TSDS, {{es}} automatically generates a `_tsid` metadata field for the document. The `_tsid` is an object containing the document’s dimensions. Documents in the same TSDS with the same `_tsid` are part of the same time series.
 
-The `_tsid` field is not queryable or updatable. You also can’t retrieve a document’s `_tsid` using a [get document](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) request. However, you can use the `_tsid` field in aggregations and retrieve the `_tsid` value in searches using the [`fields` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-param).
+The `_tsid` field is not queryable or updatable. You also can’t retrieve a document’s `_tsid` using a [get document](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get) request. However, you can use the `_tsid` field in aggregations and retrieve the `_tsid` value in searches using the [`fields` parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param).
 
 ::::{warning}
 The format of the `_tsid` field shouldn’t be relied upon. It may change from version to version.
@@ -148,7 +148,7 @@ When you add a document to a TSDS, {{es}} adds the document to the appropriate b
 :::
 
 ::::{tip}
-Some {{ilm-init}} actions mark the source index as read-only, or expect the index to not be actively written anymore in order to provide good performance. These actions are: - [Delete](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-delete.html) - [Downsample](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-downsample.html) - [Force merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-forcemerge.html) - [Read only](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-readonly.html) - [Searchable snapshot](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-searchable-snapshot.html) - [Shrink](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-shrink.html) {{ilm-cap}} will **not** proceed with executing these actions until the upper time-bound for accepting writes, represented by the [`index.time_series.end_time`](https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds-index-settings.html#index-time-series-end-time) index setting, has lapsed.
+Some {{ilm-init}} actions mark the source index as read-only, or expect the index to not be actively written anymore in order to provide good performance. These actions are: - [Delete](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-delete.md) - [Downsample](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) - [Force merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) - [Read only](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-readonly.md) - [Searchable snapshot](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) - [Shrink](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-shrink.md) {{ilm-cap}} will **not** proceed with executing these actions until the upper time-bound for accepting writes, represented by the [`index.time_series.end_time`](https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds-index-settings.html#index-time-series-end-time) index setting, has lapsed.
 ::::
 
 
@@ -206,7 +206,7 @@ TSDS documents don’t support a custom `_routing` value. Similarly, you can’t
 
 ### Index sorting [tsds-index-sorting]
 
-{{es}} uses [compression algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-codec) to compress repeated values. This compression works best when repeated values are stored near each other — in the same index, on the same shard, and side-by-side in the same shard segment.
+{{es}} uses [compression algorithms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-codec) to compress repeated values. This compression works best when repeated values are stored near each other — in the same index, on the same shard, and side-by-side in the same shard segment.
 
 Most time series data contains repeated values. Dimensions are repeated across documents in the same time series. The metric values of a time series may also change slowly over time.
 

@@ -38,7 +38,7 @@ For self-managed {{kib}}:
 1. Create a preconfigured email connector.
 
     ::::{note}
-    At this time, email notifications support only [preconfigured email connectors](https://www.elastic.co/guide/en/kibana/current/pre-configured-connectors.html), which are defined in the `kibana.yml` file.
+    At this time, email notifications support only [preconfigured email connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md), which are defined in the `kibana.yml` file.
     ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting to the name of your email connector.
@@ -56,7 +56,7 @@ After you create a case, you can upload and manage files on the **Files** tab:
 :class: screenshot
 :::
 
-The acceptable file types and sizes are affected by your [{{kib}} case settings](https://www.elastic.co/guide/en/kibana/current/cases-settings.html).
+The acceptable file types and sizes are affected by your [{{kib}} case settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/cases-settings.md).
 
 To download or delete the file or copy the file hash to your clipboard, open the action menu (…). The available hash functions are MD5, SHA-1, and SHA-256.
 

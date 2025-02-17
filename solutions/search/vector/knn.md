@@ -30,7 +30,7 @@ Common use cases for kNN include:
 ## Prerequisites [knn-prereqs]
 
 * To run a kNN search, your data must be transformed into vectors. You can [use an NLP model in {{es}}](../../../explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md), or generate them outside {{es}}.
-  - Dense vectors need to use the [`dense_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) field type.
+  - Dense vectors need to use the [`dense_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) field type.
   - Queries are represented as vectors with the same dimension. You should use the same model to generate the query vector as you used to generate the document vectors.
   - If you already have vectors, refer to the [Bring your own dense vectors](bring-own-vectors.md) guide.
 
@@ -103,7 +103,7 @@ To run an approximate kNN search, use the [`knn` option](https://www.elastic.co/
     ...
     ```
 
-3. Run the search using the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) or the [`knn` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-knn-query.html) (expert case).
+3. Run the search using the [`knn` option](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-knn) or the [`knn` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-knn-query.md) (expert case).
 
     ```console
     POST image-index/_search
@@ -543,7 +543,7 @@ In our data set, the only document with the file type of `png` has a vector of `
 
 ### Nested kNN Search [nested-knn-search]
 
-It is common for text to exceed a particular model’s token limit and requires chunking before building the embeddings for individual chunks. When using [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) with [`dense_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html), you can achieve nearest passage retrieval without copying top-level document metadata.
+It is common for text to exceed a particular model’s token limit and requires chunking before building the embeddings for individual chunks. When using [`nested`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/nested.md) with [`dense_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html), you can achieve nearest passage retrieval without copying top-level document metadata.
 
 Here is a simple passage vectors index that stores vectors and some top-level metadata for filtering.
 
@@ -739,7 +739,7 @@ Now we have filtered based on the top level `"creation_time"` and only one docum
 
 ### Nested kNN Search with Inner hits [nested-knn-search-inner-hits]
 
-Additionally, if you wanted to extract the nearest passage for a matched document, you can supply [inner_hits](https://www.elastic.co/guide/en/elasticsearch/reference/current/inner-hits.html) to the `knn` clause.
+Additionally, if you wanted to extract the nearest passage for a matched document, you can supply [inner_hits](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits.md) to the `knn` clause.
 
 ::::{note}
 When using `inner_hits` and multiple `knn` clauses, be sure to specify the [`inner_hits.name`](https://www.elastic.co/guide/en/elasticsearch/reference/current/inner-hits.html#inner-hits-options) field. Otherwise, a naming clash can occur and fail the search request.
@@ -955,7 +955,7 @@ The following sections provide additional ways of rescoring:
 
 You can use this option when you don’t want to rescore on each shard, but on the top results from all shards.
 
-Use the [rescore section](https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#rescore) in the `_search` request to rescore the top results from a kNN search.
+Use the [rescore section](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/filter-search-results.md#rescore) in the `_search` request to rescore the top results from a kNN search.
 
 Here is an example using the top level `knn` search with oversampling and using `rescore` to rerank the results:
 
@@ -1005,7 +1005,7 @@ POST /my-index/_search
 
 You can use this option when you want to rescore on each shard and want more fine-grained control on the rescoring than the `rescore_vector` option provides.
 
-Use rescore per shard with the [knn query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-knn-query.html) and [script_score query ](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html). Generally, this means that there will be more rescoring per shard, but this can increase overall recall at the cost of compute.
+Use rescore per shard with the [knn query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-knn-query.html) and [script_score query ](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md). Generally, this means that there will be more rescoring per shard, but this can increase overall recall at the cost of compute.
 
 ```console
 POST /my-index/_search
@@ -1078,7 +1078,7 @@ To run an exact kNN search, use a `script_score` query with a vector function.
 3. Use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to run a `script_score` query containing a [vector function](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html#vector-functions).
 
     ::::{tip}
-    To limit the number of matched documents passed to the vector function, we recommend you specify a filter query in the `script_score.query` parameter. If needed, you can use a [`match_all` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-all-query.html) in this parameter to match all documents. However, matching all documents can significantly increase search latency.
+    To limit the number of matched documents passed to the vector function, we recommend you specify a filter query in the `script_score.query` parameter. If needed, you can use a [`match_all` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-all-query.md) in this parameter to match all documents. However, matching all documents can significantly increase search latency.
     ::::
 
 
