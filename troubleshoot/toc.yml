@@ -116,6 +116,7 @@ toc:
       - file: deployments/serverless.md
       - file: deployments/elastic-cloud.md
         children:
+          - file: deployments/elastic-cloud/sso.md
           - file: deployments/elastic-cloud/monitoring.md
       - file: deployments/cloud-enterprise/cloud-enterprise.md
         children:
