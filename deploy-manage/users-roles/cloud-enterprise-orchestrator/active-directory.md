@@ -130,7 +130,7 @@ For a list of roles, refer to [Available roles and permissions](/deploy-manage/u
 You can add any additional settings to the **Advanced configuration** YAML file. For example, if you need to ignore the SSL check for the SSL certificate of the domain controller in a testing environment, you might add `ssl.verification_mode: none`.
 
 :::{note}
-All entries added should omit the `xpack.security.authc.realms.ldap.$realm_id` prefix, as ECE will insert this itself and automatically account for any differences in format across Elasticsearch versions.
+All entries added should omit the `xpack.security.authc.realms.ldap.$realm_id` prefix, as ECE will insert this itself and automatically account for any differences in format across {{es}} versions.
 :::
 
 ::::{important} 

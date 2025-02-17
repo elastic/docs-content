@@ -50,7 +50,7 @@ Deployment viewer
 The security deployment is a system deployment that manages all of the {{ece}} authentication and permissions. It is created automatically during installation.
 
 ::::{important}
-We strongly recommend using three availability zones with at least 1 GB Elasticsearch nodes. You can scale up if you expect a heavy authentication workload.
+We strongly recommend using three availability zones with at least 1 GB {{es}} nodes. You can scale up if you expect a heavy authentication workload.
 ::::
 
 
@@ -59,7 +59,7 @@ We strongly recommend using three availability zones with at least 1 GB Elastics
 3. Configure regular [snapshots](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of the security deployment. This is critical if you plan to create any native users.
 4. Optional: [Enable monitoring](/deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md) on the security deployment to a dedicated monitoring deployment.
 
-If you have authentication issues, you check out the security deployment Elasticsearch logs.
+If you have authentication issues, you check out the security deployment {{es}} [logs](/deploy-manage/monitor/logging-configuration.md).
 
 ## Step 2: Set up provider profiles
 
