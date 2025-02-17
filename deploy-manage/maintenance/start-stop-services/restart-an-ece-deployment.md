@@ -15,4 +15,3 @@ To restart a running or a stopped deployment:
 3. In the **Deployment Management** section, select **Restart** and follow the steps to restart a deployment.
 
 You can also edit the configuration of the deployment before restarting it.
-

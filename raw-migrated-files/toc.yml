@@ -165,7 +165,6 @@ toc:
       - file: cloud/cloud/ec-access-kibana.md
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
-      - file: cloud/cloud/ec-api-deployment-other.md
       - file: cloud/cloud/ec-api-organizations.md
       - file: cloud/cloud/ec-autoscaling.md
       - file: cloud/cloud/ec-billing-stop.md
@@ -207,7 +206,6 @@ toc:
       - file: cloud/cloud/ec-planning.md
       - file: cloud/cloud/ec-prepare-production.md
       - file: cloud/cloud/ec-regional-deployment-aliases.md
-      - file: cloud/cloud/ec-restart-deployment.md
       - file: cloud/cloud/ec-restore-across-clusters.md
       - file: cloud/cloud/ec-restoring-snapshots.md
       - file: cloud/cloud/ec-saas-metrics-accessing.md
