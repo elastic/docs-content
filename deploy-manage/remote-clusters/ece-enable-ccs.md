@@ -53,6 +53,7 @@ The steps, information, and authentication method required to configure CCS and 
     * [From a deployment of another {{ece}} environment](ece-remote-cluster-other-ece.md)
     * [From an {{ech}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html)
     * [From a self-managed cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html)
+    * [From an ECK environment](ece-enable-ccs-for-eck.md)
 
 
 ## Remote clusters and traffic filtering [ece-ccs-ccr-traffic-filtering]
