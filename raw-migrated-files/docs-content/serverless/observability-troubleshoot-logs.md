@@ -26,7 +26,7 @@ You need permission to manage API keys
 
 You need to either:
 
-* Ask an administrator to update your user role to at least **Developer** by going to the user icon on the header bar and opening **Organization** → **Members**. Read more about user roles in [](/deploy-manage/users-roles/cloud-organization/user-roles.md). After your use role is updated, restart the onboarding flow.
+* Ask an administrator to update your user role to at least **Developer** by going to the user icon on the header bar and opening **Organization** → **Members**. Read more about user roles in [Assign user roles and privileges](general-manage-organization.md#general-assign-user-roles). After your use role is updated, restart the onboarding flow.
 * Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](observability-stream-log-files.md#observability-stream-log-files-step-3-configure-the-agent) for more on manually updating the configuration and adding the API key.
 
 
@@ -142,7 +142,7 @@ Aggregations on this field would no longer be supported, but the contents would 
 To convert the `keyword` field to a `text` field:
 
 1. Create a new index with the `text` field data type.
-2. Reindex from the `_source` field of the source index using the [`_reindex` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
+2. Reindex from the `_source` field of the source index using the [`_reindex` API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html).
 
 
 ### Date format mismatch [logs-mapping-troubleshooting-date-mismatch]
