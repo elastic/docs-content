@@ -8,7 +8,7 @@ mapped_pages:
 ::::{admonition} Required role
 :class: note
 
-The **Admin** role or higher is required to onboard log data. To learn more, refer to [](/deploy-manage/users-roles/cloud-organization/user-roles.md).
+The **Admin** role or higher is required to onboard log data. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
 ::::
 
