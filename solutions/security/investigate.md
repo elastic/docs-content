@@ -10,5 +10,7 @@ mapped_urls:
 
 % Use migrated content from existing pages that map to this page:
 
-% - [ ] ./raw-migrated-files/security-docs/security/investigations-tools.md
+% - [x] ./raw-migrated-files/security-docs/security/investigations-tools.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/security-investigate-events.md
+
+The following sections describe tools for investigating security events and tracking security issues directly in the {{security-app}}.
