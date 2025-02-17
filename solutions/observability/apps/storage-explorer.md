@@ -15,7 +15,7 @@ Analyze your APM data and manage costs with **storage explorer**. For example, a
 
 ## Index lifecycle phases [_index_lifecycle_phases]
 
-A default [index lifecycle policy](https://www.elastic.co/guide/en/apm/guide/current/ilm-how-to.html) is applied to each APM data stream, but can be customized depending on your business needs. Use the **Index lifecycle phase** dropdown to visualize and analyze your storage by phase.
+A default [index lifecycle policy](/solutions/observability/apps/index-lifecycle-management.md) is applied to each APM data stream, but can be customized depending on your business needs. Use the **Index lifecycle phase** dropdown to visualize and analyze your storage by phase.
 
 Customizing the default APM index lifecycle policies can save money by specifying things like:
 
@@ -23,7 +23,7 @@ Customizing the default APM index lifecycle policies can save money by specifyin
 * The point at which availability is not as critical and the number of replicas can be reduced.
 * When the index can be safely deleted.
 
-See [Index lifecycle management](https://www.elastic.co/guide/en/apm/guide/current/ilm-how-to.html) to learn more about customizing the default APM index lifecycle policies.
+See [Index lifecycle management](/solutions/observability/apps/index-lifecycle-management.md) to learn more about customizing the default APM index lifecycle policies.
 
 
 ## Service size chart [_service_size_chart]
@@ -50,12 +50,12 @@ As you explore your service statistics, you might want to take action to reduce 
 
 ### Reduce the number of transactions [_reduce_the_number_of_transactions]
 
-To reduce the number of transactions a service generates, configure a more aggressive [transaction sampling policy](https://www.elastic.co/guide/en/apm/guide/current/sampling.html). Transaction sampling lowers the amount of data ingested without negatively impacting the usefulness of your data.
+To reduce the number of transactions a service generates, configure a more aggressive [transaction sampling policy](/solutions/observability/apps/transaction-sampling.md). Transaction sampling lowers the amount of data ingested without negatively impacting the usefulness of your data.
 
 
 ### Reduce the number of spans [_reduce_the_number_of_spans]
 
-To reduce the number of spans a service generates, enable [span compression](https://www.elastic.co/guide/en/apm/guide/current/span-compression.html). Span compression saves on data and transfer costs by compressing multiple, similar spans into a single span.
+To reduce the number of spans a service generates, enable [span compression](/solutions/observability/apps/spans.md#apm-spans-span-compression). Span compression saves on data and transfer costs by compressing multiple, similar spans into a single span.
 
 
 ### Reduce the number of metrics [_reduce_the_number_of_metrics]

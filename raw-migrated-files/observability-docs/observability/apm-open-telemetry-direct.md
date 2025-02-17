@@ -73,7 +73,7 @@ service:
 You’re now ready to export traces and metrics from your services and applications.
 
 ::::{tip} 
-When using the OpenTelemetry Collector, you should always prefer sending data via the [`OTLP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) to an Elastic APM Server. Other methods, like using the [`elasticsearch` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter) to send data directly to {{es}} will send data to the {{stack}}, but will bypass all of the validation and data processing that the APM Server performs. In addition, your data will not be viewable in the {{kib}} {observability} apps if you use the `elasticsearch` exporter.
+When using the OpenTelemetry Collector, you should always prefer sending data via the [`OTLP` exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) to an Elastic APM Server. Other methods, like using the [`elasticsearch` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter) to send data directly to {{es}} will send data to the {{stack}}, but will bypass all of the validation and data processing that the APM Server performs. In addition, your data will not be viewable in the {{kib}} {{observability}} apps if you use the `elasticsearch` exporter.
 ::::
 
 

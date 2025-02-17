@@ -45,7 +45,7 @@ The steps, information, and authentication method required to configure CCS and 
 
     * [From another deployment of your {{ecloud}} organization](ec-remote-cluster-same-ess.md)
     * [From a deployment of another {{ecloud}} organization](ec-remote-cluster-other-ess.md)
-    * [From an ECE deployment](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-enable-ccs.html)
+    * [From an ECE deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html)
     * [From a self-managed cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html)
     * [From an ECK environment](ec-enable-ccs-for-eck.md)
 

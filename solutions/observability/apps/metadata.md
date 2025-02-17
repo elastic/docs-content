@@ -27,14 +27,14 @@ Avoid defining too many user-specified labels. Defining too many unique fields i
 
 ### Agent API reference [_agent_api_reference] 
 
-* Go: [`SetLabel`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/api.html#context-set-label)
-* Java: [`setLabel`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/public-api.html#api-transaction-add-tag)
-* .NET: [`SetLabel`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/public-api.html#api-transaction-set-label)
-* Node.js: [`setLabel`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/agent-api.html#apm-set-label) | [`addLabels`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/agent-api.html#apm-add-labels)
+* Go: [`SetLabel`](https://www.elastic.co/guide/en/apm/agent/go/current/api.html#context-set-label)
+* Java: [`setLabel`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction-add-tag)
+* .NET: [`SetLabel`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html#api-transaction-set-label)
+* Node.js: [`setLabel`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-add-labels)
 * PHP: [`Transaction` `setLabel`](https://www.elastic.co/guide/en/apm/agent/php/current/public-api.html#api-transaction-interface-set-label) | [`Span` `setLabel`](https://www.elastic.co/guide/en/apm/agent/php/current/public-api.html#api-span-interface-set-label)
-* Python: [`elasticapm.label()`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/api.html#api-label)
-* Ruby:  [`set_label`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/api.html#api-agent-set-label)
-* Rum: [`addLabels`](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/agent-api.html#apm-add-labels)
+* Python: [`elasticapm.label()`](https://www.elastic.co/guide/en/apm/agent/python/current/api.html#api-label)
+* Ruby:  [`set_label`](https://www.elastic.co/guide/en/apm/agent/ruby/current/api.html#api-agent-set-label)
+* Rum: [`addLabels`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/agent-api.html#apm-add-labels)
 
 
 ## Custom context [apm-data-model-custom] 
@@ -56,15 +56,15 @@ Setting a circular object, a large object, or a non JSON serializable object can
 
 ### Agent API reference [_agent_api_reference_2] 
 
-* Go: [`SetCustom`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/api.html#context-set-custom)
+* Go: [`SetCustom`](https://www.elastic.co/guide/en/apm/agent/go/current/api.html#context-set-custom)
 * iOS: *coming soon*
-* Java: [`addCustomContext`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/public-api.html#api-transaction-add-custom-context)
+* Java: [`addCustomContext`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction-add-custom-context)
 * .NET: *coming soon*
-* Node.js: [`setCustomContext`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/agent-api.html#apm-set-custom-context)
+* Node.js: [`setCustomContext`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-set-custom-context)
 * PHP: *coming soon*
-* Python: [`set_custom_context`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/api.html#api-set-custom-context)
-* Ruby: [`set_custom_context`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/api.html#api-agent-set-custom-context)
-* Rum: [`setCustomContext`](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/agent-api.html#apm-set-custom-context)
+* Python: [`set_custom_context`](https://www.elastic.co/guide/en/apm/agent/python/current/api.html#api-set-custom-context)
+* Ruby: [`set_custom_context`](https://www.elastic.co/guide/en/apm/agent/ruby/current/api.html#api-agent-set-custom-context)
+* Rum: [`setCustomContext`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/agent-api.html#apm-set-custom-context)
 
 
 ## User context [apm-data-model-user] 
@@ -79,13 +79,13 @@ User context adds **indexed** user information to transactions and errors. Index
 
 ### Agent API reference [_agent_api_reference_3] 
 
-* Go: [`SetUsername`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/api.html#context-set-username) | [`SetUserID`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/api.html#context-set-user-id) | [`SetUserEmail`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/api.html#context-set-user-email)
+* Go: [`SetUsername`](https://www.elastic.co/guide/en/apm/agent/go/current/api.html#context-set-user-email)
 * iOS: *coming soon*
-* Java: [`setUser`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/public-api.html#api-transaction-set-user)
+* Java: [`setUser`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction-set-user)
 * .NET *coming soon*
-* Node.js: [`setUserContext`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/agent-api.html#apm-set-user-context)
+* Node.js: [`setUserContext`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-set-user-context)
 * PHP: *coming soon*
-* Python: [`set_user_context`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/api.html#api-set-user-context)
-* Ruby: [`set_user`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/api.html#api-agent-set-user)
-* Rum: [`setUserContext`](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/agent-api.html#apm-set-user-context)
+* Python: [`set_user_context`](https://www.elastic.co/guide/en/apm/agent/python/current/api.html#api-set-user-context)
+* Ruby: [`set_user`](https://www.elastic.co/guide/en/apm/agent/ruby/current/api.html#api-agent-set-user)
+* Rum: [`setUserContext`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/agent-api.html#apm-set-user-context)
 

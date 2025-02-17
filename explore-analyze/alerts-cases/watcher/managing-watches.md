@@ -22,7 +22,7 @@ mapped_pages:
 Currently there is not dedicated API for listing the stored watches. However, since {{watcher}} stores its watches in the `.watches` index, you can list them by executing a search on this index.
 
 ::::{important}
-You can only perform read actions on the `.watches` index. You must use the {{watcher}} APIs to create, update, and delete watches. If {{es}} {security-features} are enabled, we recommend you only grant users `read` privileges on the `.watches` index.
+You can only perform read actions on the `.watches` index. You must use the {{watcher}} APIs to create, update, and delete watches. If {{es}} {{security-features}} are enabled, we recommend you only grant users `read` privileges on the `.watches` index.
 ::::
 
 For example, the following returns the first 100 watches:

@@ -25,7 +25,7 @@ The `manage_security` cluster privilege is required to manage Role Mappings.
 2. Click **Create role mapping**.
 3. Give your role mapping a unique name, and choose which roles you wish to assign to your users.
 
-    If you need more flexibility, you can use [role templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html#_role_templates) instead.
+    If you need more flexibility, you can use [role templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) instead.
 
 4. Define the rules describing which users should receive the roles you defined. Rules can optionally grouped and nested, allowing for sophisticated logic to suite complex requirements.
 5. View the [role mapping resources for an overview of the allowed rule types](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).

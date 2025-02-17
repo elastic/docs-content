@@ -29,7 +29,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     1. Verify that the `xpack.monitoring.elasticsearch.collection.enabled` setting is `true`, which is its default value, on each node in the cluster.
 
         ::::{note} 
-        You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {security-features} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
+        You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
         ::::
 
 
@@ -38,7 +38,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     2. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the cluster. By default, it is disabled (`false`).
 
         ::::{note} 
-        You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {security-features} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
+        You can specify this setting in either the `elasticsearch.yml` on each node or across the cluster as a dynamic cluster setting. If {{es}} {{security-features}} are enabled, you must have `monitor` cluster privileges to view the cluster settings and `manage` cluster privileges to change them.
         ::::
 
 
@@ -78,7 +78,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     By default, the data is stored on the same cluster by using a [`local` exporter](es-local-exporter.md). Alternatively, you can use an [`http` exporter](es-http-exporter.md) to send data to a separate *monitoring cluster*.
 
     ::::{important} 
-    The {{es}} {monitor-features} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one [ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).
+    The {{es}} {{monitor-features}} use ingest pipelines, therefore the cluster that stores the monitoring data must have at least one [ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md).
     ::::
 
 

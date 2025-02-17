@@ -23,7 +23,7 @@ Interact with APM APIs using cURL or another API tool. All APM APIs are Kibana A
 For all APM APIs, you must use a request header. Supported headers are `Authorization`, `kbn-xsrf`, and `Content-Type`.
 
 `Authorization: ApiKey {{credentials}}`
-:   Kibana supports token-based authentication with the Elasticsearch API key service. The API key returned by the  [Elasticsearch create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) can be used by sending a request with an `Authorization` header that has a value of `ApiKey` followed by the `{{credentials}}`, where `{{credentials}}` is the base64 encoding of `id` and `api_key` joined by a colon.
+:   Kibana supports token-based authentication with the Elasticsearch API key service. The API key returned by the  [Elasticsearch create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) can be used by sending a request with an `Authorization` header that has a value of `ApiKey` followed by the `{{credentials}}`, where `{{credentials}}` is the base64 encoding of `id` and `api_key` joined by a colon.
 
     Alternatively, you can create a user and use their username and password to authenticate API access: `-u $USER:$PASSWORD`.
 
@@ -76,7 +76,7 @@ For all APM APIs, you must use a request header. Supported headers are `Authoriz
 
 #### Example [apm-update-config-example] 
 
-```curl
+```bash
 PUT /api/apm/settings/agent-configuration
 {
     "service": {
@@ -119,7 +119,7 @@ PUT /api/apm/settings/agent-configuration
 
 #### Example [apm-delete-config-example] 
 
-```curl
+```bash
 DELETE /api/apm/settings/agent-configuration
 {
     "service" : {
@@ -189,7 +189,7 @@ DELETE /api/apm/settings/agent-configuration
 
 #### Example [apm-list-config-example] 
 
-```curl
+```bash
 GET  /api/apm/settings/agent-configuration
 ```
 
@@ -246,7 +246,7 @@ GET  /api/apm/settings/agent-configuration
 
 #### Example [apm-search-config-example] 
 
-```curl
+```bash
 POST /api/apm/settings/agent-configuration/search
 {
     "etag": "1e58c178efeebae15c25c539da740d21dee422fc",

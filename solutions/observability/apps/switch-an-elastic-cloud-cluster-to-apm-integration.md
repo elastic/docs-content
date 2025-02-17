@@ -29,7 +29,7 @@ With a Superuser account, complete the following steps:
 1. In {{kib}}, go to the **Applications** app and click **Settings** → **Schema**.
 
     :::{image} ../../../images/observability-schema-agent.png
-    :alt: switch to {agent}
+    :alt: switch to {{agent}}
     :::
 
 2. Click **Switch to {{agent}}**. Make a note of the `apm-server.yml` user settings that are incompatible with {{agent}}. Check the confirmation box and click **Switch to {{agent}}**.

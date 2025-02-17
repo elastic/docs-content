@@ -13,7 +13,7 @@ mapped_pages:
 
 ## System metrics [_system_metrics]
 
-APM agents automatically pick up basic host-level metrics, including system and process-level CPU and memory metrics. Agent specific metrics are also available, like [JVM metrics](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/metrics.html) in the Java Agent, and [Go runtime](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/metrics.html) metrics in the Go Agent.
+APM agents automatically pick up basic host-level metrics, including system and process-level CPU and memory metrics. Agent specific metrics are also available, like [JVM metrics](https://www.elastic.co/guide/en/apm/agent/java/current/metrics.html) in the Java Agent, and [Go runtime](https://www.elastic.co/guide/en/apm/agent/go/current/metrics.html) metrics in the Go Agent.
 
 Infrastructure and application metrics are important sources of information when debugging production systems, which is why we’ve made it easy to filter metrics for specific hosts or containers in the {{kib}} [metrics overview](metrics-2.md).
 
@@ -26,11 +26,11 @@ Metrics are stored in metric indices.
 
 For a full list of tracked metrics, see the relevant agent documentation:
 
-* [Go](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/metrics.html)
-* [Java](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/metrics.html)
-* [Node.js](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/metrics.html)
-* [Python](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/metrics.html)
-* [Ruby](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/metrics.html)
+* [Go](https://www.elastic.co/guide/en/apm/agent/go/current/metrics.html)
+* [Java](https://www.elastic.co/guide/en/apm/agent/java/current/metrics.html)
+* [Node.js](https://www.elastic.co/guide/en/apm/agent/nodejs/current/metrics.html)
+* [Python](https://www.elastic.co/guide/en/apm/agent/python/current/metrics.html)
+* [Ruby](https://www.elastic.co/guide/en/apm/agent/ruby/current/metrics.html)
 
 
 ### Example system metric document [_example_system_metric_document]

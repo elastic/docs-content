@@ -162,7 +162,7 @@ Aggregations on this field would no longer be supported, but the contents would 
 To convert the `keyword` field to a `text` field:
 
 1. Create a new index with the `text` field data type.
-2. Reindex from the `_source` field of the source index using the [`_reindex` API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html).
+2. Reindex from the `_source` field of the source index using the [`_reindex` API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
 
 
 ### Date format mismatch [logs-mapping-troubleshooting-date-mismatch]

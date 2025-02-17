@@ -37,7 +37,7 @@ To deploy a simple [{{kib}}](https://www.elastic.co/guide/en/kibana/current/intr
     kubectl get pod --selector='kibana.k8s.elastic.co/name=quickstart'
     ```
 
-    {{kib}} will be status `available` once [`get`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) reports `green`. If it experiences issues starting up, use [`logs`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/) against the pod in order to [Troubleshoot {{kib}} start-up](https://www.elastic.co/guide/en/kibana/current/access.html#not-ready).
+    {{kib}} will be status `available` once [`get`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) reports `green`. If it experiences issues starting up, use [`logs`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/) against the pod in order to make sure the {{kib}} server is [ready](/troubleshoot/kibana/error-server-not-ready.md).
 
 3. Access {{kib}}.
 

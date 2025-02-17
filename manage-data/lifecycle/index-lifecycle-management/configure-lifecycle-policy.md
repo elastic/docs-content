@@ -14,7 +14,7 @@ To use a policy to manage an index that doesn’t roll over, you can specify a l
 {{ilm-init}} policies are stored in the global cluster state and can be included in snapshots by setting `include_global_state` to `true` when you [take the snapshot](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md). When the snapshot is restored, all of the policies in the global state are restored and any local policies with the same names are overwritten.
 
 ::::{important}
-When you enable {{ilm}} for {{beats}} or the {{ls}} {es} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
+When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
 ::::
 
 
@@ -111,7 +111,7 @@ PUT _index_template/my_template
 When you set up policies for your own rolling indices, if you are not using the recommended [data streams](../../data-store/index-types/data-streams.md), you need to manually create the first index managed by a policy and designate it as the write index.
 
 ::::{important}
-When you enable {{ilm}} for {{beats}} or the {{ls}} {es} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
+When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
 ::::
 
 

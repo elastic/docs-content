@@ -140,7 +140,7 @@ This example demonstrates how to use runtime fields, but it contains insufficien
 You can alternatively use {{kib}} to create an advanced {{anomaly-job}} that uses runtime fields. To add the `runtime_mappings` property to your {{dfeed}}, you must use the **Edit JSON** tab. For example:
 
 :::{image} ../../../images/machine-learning-ml-runtimefields.jpg
-:alt: Using runtime_mappings in {{dfeed}} config via {kib}
+:alt: Using runtime_mappings in {{dfeed}} config via {{kib}}
 :class: screenshot
 :::
 

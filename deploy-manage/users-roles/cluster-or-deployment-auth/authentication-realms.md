@@ -43,7 +43,7 @@ The {{security-features}} also support custom realms. If you need to integrate w
 Realm types can roughly be classified in two categories:
 
 Internal
-:   Realms that are internal to Elasticsearch and don’t require any communication with external parties. They are fully managed by the {{stack}} {security-features}. There can only be a maximum of one configured realm per internal realm type. The {{security-features}} provide two internal realm types: `native` and `file`.
+:   Realms that are internal to Elasticsearch and don’t require any communication with external parties. They are fully managed by the {{stack}} {{security-features}}. There can only be a maximum of one configured realm per internal realm type. The {{security-features}} provide two internal realm types: `native` and `file`.
 
 External
 :   Realms that require interaction with parties/components external to {{es}}, typically, with enterprise grade identity management systems. Unlike internal realms, there can be as many external realms as one would like - each with its own unique name and configuration. The {{security-features}} provide the following external realm types: `ldap`, `active_directory`, `saml`, `kerberos`, and `pki`.
