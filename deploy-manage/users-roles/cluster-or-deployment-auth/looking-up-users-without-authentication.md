@@ -22,7 +22,7 @@ See the [run_as](submitting-requests-on-behalf-of-other-users.md) and [delegated
 
 * The reserved, [`native`](native.md) and [`file`](file-based.md) realms always support user lookup.
 * The [`ldap`](ldap.md) realm supports user lookup when the realm is configured in [*user search* mode](ldap.md#ldap-realm-configuration). User lookup is not support when the realm is configured with `user_dn_templates`.
-* User lookup support in the [`active_directory`](active-directory.md) realm requires that the realm be configured with a [`bind_dn`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.md#ref-ad-settings) and a bind password.
+* User lookup support in the [`active_directory`](active-directory.md) realm requires that the realm be configured with a [`bind_dn`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings) and a bind password.
 
 The `pki`, `saml`, `oidc`, `kerberos` and `jwt` realms do not support user lookup.
 
