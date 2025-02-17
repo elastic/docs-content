@@ -1,10 +1,11 @@
 ---
+navigation_title: "Cluster performance metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-scenario_is_my_cluster_really_highly_available.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echscenario_is_my_cluster_really_highly_available.html
 ---
 
-# Cluster performance metrics [ec-scenario_is_my_cluster_really_highly_available]
+# Troubleshoot cluster availability using performance metrics [ec-scenario_is_my_cluster_really_highly_available]
 
 % TODO: Edit edit edit
 
