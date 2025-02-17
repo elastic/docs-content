@@ -33,17 +33,13 @@ This section describes how to enable and configure audit logging in both {{es}} 
 In orchestrated deployments, audit logs must be shipped to a monitoring deployment; otherwise, they remain at container level and won't be accessible to users. For details on configuring log forwarding in orchestrated environments, refer to [logging configuration](../logging-configuration.md).
 ::::
 
+When audit logging is enabled, security events are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, refer to [{{es}} logfile audit output](logfile-audit-output.md).
+
+You can configure additional options to control what events are logged and what information is included in the audit log. For more information, refer to [](./configuring-audit-logs.md).
+
 ## Enable audit logging [enable-audit-logging-procedure]
 
 To enable {{es}} or {{kib}} audit logs, configure `xpack.security.audit.enabled` to `true` in **all {{es}} or {{kib}} nodes**, then restart the nodes to apply the changes. For detailed instructions, select your deployment type:
-
-% content discarded (for review)
-% The process of enabling and configuring audit logging is consistent across all supported deployment types, whether self-managed, Elastic Cloud, Elastic Cloud Enterprise (ECE), or Elastic Cloud on Kubernetes (ECK). The same settings apply regardless of the deployment type, ensuring a unified approach to audit logging configuration.
-% 
-% consider removing this sentence as maybe it doesn't add any benefit
-% The only difference lies in how the configuration is applied:
-%  * In self-managed clusters, settings are added directly to the `elasticsearch.yml` and `kibana.yml` configuration files, and you will have to perform %a [rolling restart of the cluster](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) when applying changes to `static` settings (such as `xpack.security.audit.enabled`).
-%  * In orchestrated deployments (Elastic Cloud Hosted, ECE or ECK), the configuration is applied using the appropriate mechanisms provided by the orchestrator, and the restart will be applied automatically. Refer to [](/deploy-manage/deploy.md) for more information about the different orchestrators and deployment configuration mechanisms.
 
 ::::::{tab-set}
 
@@ -54,16 +50,10 @@ To enable {{es}} or {{kib}} audit logs, configure `xpack.security.audit.enabled`
 1. In all nodes, set `xpack.security.audit.enabled` to `true` in `elasticsearch.yml`.
 2. Restart the cluster by following the [rolling restart](/deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md) procedure.
 
-When audit logging is enabled, security events are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, refer to [{{es}} logfile audit output](logfile-audit-output.md).
-
-You can configure additional options to control what events are logged and what information is included in the audit log. For more information, refer to [](./configuring-audit-logs.md).
-
 **To enable audit logging in {{kib}}**:
 
 1. Set `xpack.security.audit.enabled` to `true` in `kibana.yml`.
 2. Restart {{kib}}.
-
-You can optionally configure audit logs location, file/rolling file appenders and ignore filters using [{{kib}} audit logging settings](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-settings).
 
 :::::
 
