@@ -2,6 +2,7 @@
 applies:
   ece:
   eck:
+navigation_title: With {{eck}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs-for-eck.html
 ---

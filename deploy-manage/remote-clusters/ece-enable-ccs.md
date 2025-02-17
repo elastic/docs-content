@@ -1,6 +1,7 @@
 ---
 applies:
   ece:
+navigation_title: Elastic Cloud Enterprise
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html
 ---

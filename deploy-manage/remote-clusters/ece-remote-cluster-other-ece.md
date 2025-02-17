@@ -1,6 +1,7 @@
 ---
 applies:
   ece:
+navigation_title: With a different {{ece}} environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-other-ece.html
 ---

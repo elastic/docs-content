@@ -1,6 +1,7 @@
 ---
 applies:
   eck:
+navigation_title: Elastic Cloud on Kubernetes
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html
 ---

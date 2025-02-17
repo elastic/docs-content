@@ -2,6 +2,7 @@
 applies:
   ece:
   hosted:
+navigation_title: With {{ecloud}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-ece-ess.html
 ---
