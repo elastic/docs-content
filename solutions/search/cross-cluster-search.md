@@ -15,17 +15,17 @@ applies:
 
 The following APIs support {{ccs}}:
 
-* [Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)
-* [Async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html)
-* [Multi search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html)
+* [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)
+* [Multi search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
 * [Search template](search-templates.md)
-* [Multi search template](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-search-template.html)
-* [Field capabilities](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-field-caps.html)
+* [Multi search template](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template)
+* [Field capabilities](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps)
 * [Painless execute API](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html)
-* [Resolve Index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-resolve-index-api.html)
-* [preview] [EQL search](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html)
-* [preview] [SQL search](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html)
-* [preview] [Vector tile search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-vector-tile-api.html)
+* [Resolve Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index)
+* [preview] [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search)
+* [preview] [SQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)
+* [preview] [Vector tile search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt)
 * [preview] [ES|QL](../../explore-analyze/query-filter/languages/esql-cross-clusters.md)
 
 
@@ -52,7 +52,7 @@ The following APIs support {{ccs}}:
 
 ### Remote cluster setup [ccs-remote-cluster-setup]
 
-The following [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) API request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
+The following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
 
 ```console
 PUT _cluster/settings
@@ -91,7 +91,7 @@ PUT _cluster/settings
 
 In the search request, you specify data streams and indices on a remote cluster as `<remote_cluster_name>:<target>`.
 
-The following [search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) API request searches the `my-index-000001` index on a single remote cluster, `cluster_one`.
+The following [search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) API request searches the `my-index-000001` index on a single remote cluster, `cluster_one`.
 
 ```console
 GET /cluster_one:my-index-000001/_search
@@ -180,7 +180,7 @@ The API returns the following response. Note that when you search one or more re
 
 ### Search multiple remote clusters [ccs-search-multi-remote-cluster]
 
-The following [search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html) API request searches the `my-index-000001` index on three clusters:
+The following [search](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search) API request searches the `my-index-000001` index on three clusters:
 
 * The local ("querying") cluster, with 10 shards
 * Two remote clusters, `cluster_one`, with 12 shards and `cluster_two` with 6 shards.
@@ -328,7 +328,7 @@ The API returns the following response:
 
 ## Using async search for {{ccs}} with ccs_minimize_roundtrips=true [ccs-async-search-minimize-roundtrips-true]
 
-Remote clusters can be queried asynchronously using the [async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html) API. A {{ccs}} accepts a [`ccs_minimize_roundtrips`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#ccs-minimize-roundtrips) parameter. For asynchronous searches it defaults to `false`. (Note: for synchronous searches it defaults to `true`.) See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn more about this option.
+Remote clusters can be queried asynchronously using the [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) API. A {{ccs}} accepts a [`ccs_minimize_roundtrips`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-ccs_minimize_roundtrips) parameter. For asynchronous searches it defaults to `false`. (Note: for synchronous searches it defaults to `true`.) See [Considerations for choosing whether to minimize roundtrips in a {{ccs}}](#ccs-min-roundtrips) to learn more about this option.
 
 The following request does an asynchronous search of the `my-index-000001` index using `ccs_minimize_roundtrips=true` against three clusters (same ones as the previous example).
 
@@ -405,7 +405,7 @@ The API returns the following response:
 3. The `_clusters` section indicates that 3 clusters are in scope for the search and all are currently in the "running" state.
 
 
-If you query the [get async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html#get-async-search) endpoint while the query is still running, you will see an update in the `_clusters` and `_shards` section of the response as each cluster finishes its search.
+If you query the [get async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoint while the query is still running, you will see an update in the `_clusters` and `_shards` section of the response as each cluster finishes its search.
 
 If you set `ccs_minimize_roundtrips=false`, then you will also see partial aggregation results from shards (from any cluster) that have finished, but no results are shown in "hits" section until the search has completed.
 
@@ -490,7 +490,7 @@ Response:
 3. Number of hits from the completed searches so far. Final hits are not shown until searches on all clusters have been completed and merged. Thus, the "hits" section can change as you call this endpoint until the search is completely done.
 
 
-After searches on all the clusters have completed, querying the [get async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html#get-async-search) endpoint will show the final status of the `_clusters` and `_shards` section as well as the hits and any aggregation results.
+After searches on all the clusters have completed, querying the [get async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) endpoint will show the final status of the `_clusters` and `_shards` section as well as the hits and any aggregation results.
 
 ```console
 GET /_async_search/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=
@@ -888,7 +888,7 @@ POST /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_a
 }
 ```
 
-The API returns the following response if the query takes longer than the `wait_for_completion_timeout` duration (see [Async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html)).
+The API returns the following response if the query takes longer than the `wait_for_completion_timeout` duration (see [Async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit)).
 
 ```console-result
 {
@@ -980,7 +980,7 @@ If `skip_unavailable` is `true`, a {{ccs}}:
 
 * Skips the remote cluster if its nodes are unavailable during the search. The response’s `_clusters.skipped` value contains a count of any skipped clusters and the `_clusters.details` section of the response will show a `skipped` status.
 * Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as [`allow_no_indices`](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) and [`ignore_unavailable`](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index).
-* Ignores the [`allow_partial_search_results`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#search-partial-responses) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
+* Ignores the [`allow_partial_search_results`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-allow_partial_search_results) parameter and the related `search.default_allow_partial_results` cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
 
 You can modify the `skip_unavailable` setting by editing the `cluster.remote.<cluster_alias>` settings in the elasticsearch.yml config file. For example:
 
@@ -995,7 +995,7 @@ cluster:
             skip_unavailable: true
 ```
 
-Or you can set the cluster.remote settings via the [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) API as shown [here](#ccs-remote-cluster-setup).
+Or you can set the cluster.remote settings via the [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API as shown [here](#ccs-remote-cluster-setup).
 
 When a remote cluster configured with `skip_unavailable: true` (such as `cluster_two` above) is disconnected or unavailable during a {{ccs}}, {{es}} won’t include matching documents from that cluster in the final results and the search will be considered successful (HTTP status 200 OK).
 
@@ -1013,13 +1013,13 @@ Because {{ccs}} involves sending requests to remote clusters, any network delays
 
 
 [Don’t minimize network roundtrips](#ccs-unmin-roundtrips)
-:   For search requests that include a scroll or inner hits, {{es}} sends multiple outgoing and ingoing requests to each remote cluster. You can also choose this option by setting the [`ccs_minimize_roundtrips`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html#ccs-minimize-roundtrips) parameter to `false`. While typically slower, this approach may work well for networks with low latency.
+:   For search requests that include a scroll or inner hits, {{es}} sends multiple outgoing and ingoing requests to each remote cluster. You can also choose this option by setting the [`ccs_minimize_roundtrips`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) parameter to `false`. While typically slower, this approach may work well for networks with low latency.
 
     See [Don’t minimize network roundtrips](#ccs-unmin-roundtrips) to learn how this option works.
 
 
 ::::{note}
-The [vector tile search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-vector-tile-api.html) always minimizes network roundtrips and doesn’t include the `ccs_minimize_roundtrips` parameter.
+The [vector tile search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt) always minimizes network roundtrips and doesn’t include the `ccs_minimize_roundtrips` parameter.
 ::::
 
 
@@ -1138,7 +1138,7 @@ $$$ccs-version-compatibility$$$
 | 8.17 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
 
 ::::{important}
-For the [EQL search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html), the local and remote clusters must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
+For the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search), the local and remote clusters must use the same {{es}} version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
 ::::
 
 

@@ -12,7 +12,7 @@ applies:
 # Events reference [behavioral-analytics-event-reference]
 
 
-Behavioral Analytics logs events using the [Elastic Common Schema^](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html), including a custom field set for analytics events. Refer to [examples](#behavioral-analytics-event-reference-examples) of the full data objects that are logged.
+Behavioral Analytics logs events using the [Elastic Common Schema^](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html), including a custom field set for analytics events. Refer to [examples](#behavioral-analytics-event-reference-examples) of the full data objects that are logged.
 
 
 ## Fields overview [behavioral-analytics-event-reference-fields] 

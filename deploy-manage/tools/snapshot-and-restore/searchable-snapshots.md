@@ -173,7 +173,7 @@ A snapshot of a {{search-snap}} index contains only a small amount of metadata w
 
 Because {{search-snap}} indices are not regular indices, it is not possible to use a [source-only repository](source-only-repository.md) to take snapshots of {{search-snap}} indices.
 
-::::{admonition} Reliability of {search-snaps}
+::::{admonition} Reliability of {{search-snaps}}
 :class: warning
 
 :name: searchable-snapshots-reliability

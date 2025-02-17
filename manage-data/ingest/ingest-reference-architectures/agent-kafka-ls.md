@@ -16,7 +16,7 @@ Ingest model
 
 
 Use when
-:   You are standardizing on Kafka as middleware message queue between {{agent}} and {es}
+:   You are standardizing on Kafka as middleware message queue between {{agent}} and {{es}}
 
 Notes
 :   The transformation from raw data to Elastic Common Schema (ECS) and any other enrichment can be handled by {{ls}} as described in [{{agent}} to {{ls}} (for enrichment) to {{es}}](ls-enrich.md).
@@ -32,7 +32,7 @@ Info on {{agent}} and agent integrations:
 Info on {{ls}} and {{ls}} Kafka plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {agent} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
+* [{{ls}} {{agent}} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
 * [{{ls}} Kafka input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-kafka.html)
 * [{{ls}} Kafka output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-kafka.html)
 * [{{ls}} Elasticsearch output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html)

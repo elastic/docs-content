@@ -24,7 +24,7 @@ When you view your {{ml}} results, each bucket has an anomaly score. This score 
 The {{ml}} analytics enhance the anomaly score for each bucket by considering contiguous buckets. This extra *multi-bucket analysis* effectively uses a sliding window to evaluate the events in each bucket relative to the larger context of recent events. When you review your {{ml}} results, there is a `multi_bucket_impact` property that indicates how strongly the final anomaly score is influenced by multi-bucket analysis. In {{kib}}, anomalies with medium or high multi-bucket impact are depicted in the **Anomaly Explorer** and the **Single Metric Viewer** with a cross symbol instead of a dot. For example:
 
 :::{image} ../../../images/machine-learning-multibucketanalysis.jpg
-:alt: Examples of anomalies with multi-bucket impact in {kib}
+:alt: Examples of anomalies with multi-bucket impact in {{kib}}
 :class: screenshot
 :::
 

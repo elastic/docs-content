@@ -5,7 +5,7 @@ mapped_pages:
 
 # Granting privileges for data streams and aliases [securing-aliases]
 
-{{es}} {security-features} allow you to secure operations executed against [data streams](../../../manage-data/data-store/index-types/data-streams.md) and [aliases](../../../manage-data/data-store/aliases.md).
+{{es}} {{security-features}} allow you to secure operations executed against [data streams](../../../manage-data/data-store/index-types/data-streams.md) and [aliases](../../../manage-data/data-store/aliases.md).
 
 ## Data stream privileges [data-stream-privileges]
 

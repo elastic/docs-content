@@ -129,7 +129,7 @@ If the custom policy is already applied, the result should include the following
 }
 ```
 
-If the result is empty, the custom {{ilm-init}} policy is not yet in use. New {{ilm-init}} policies only take effect when new indices are created, so either wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html):
+If the result is empty, the custom {{ilm-init}} policy is not yet in use. New {{ilm-init}} policies only take effect when new indices are created, so either wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
 
 ```bash
 POST /profiling-events-5pow01/_rollover/

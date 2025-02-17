@@ -18,7 +18,7 @@ In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select th
 When you create an index threshold rule, you must define the conditions for the rule to detect. For example:
 
 :::{image} ../../../images/kibana-rule-types-index-threshold-conditions.png
-:alt: Defining index threshold rule conditions in {kib}
+:alt: Defining index threshold rule conditions in {{kib}}
 :class: screenshot
 :::
 

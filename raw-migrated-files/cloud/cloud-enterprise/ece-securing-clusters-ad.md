@@ -177,7 +177,7 @@ If the keystore is also password protected (which isn’t typical for keystores 
 
 ## Mapping Active Directory groups to roles [ece-securing-clusters-ad-role-mapping]
 
-You have two ways of mapping Active Directory groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html). If for some reason this is not possible, you can use a [role mapping file](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html) to specify the mappings instead.
+You have two ways of mapping Active Directory groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). If for some reason this is not possible, you can use a [role mapping file](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html) to specify the mappings instead.
 
 ::::{important}
 Only Active Directory security groups are supported. You cannot map distribution groups to roles.
