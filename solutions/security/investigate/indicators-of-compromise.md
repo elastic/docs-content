@@ -6,19 +6,11 @@ mapped_urls:
 
 # Indicators of compromise
 
-% What needs to be done: Refine
-
-% Scope notes: Pull out the troubleshooting section into its own topic, and leave the rest of the content in its current place 
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/indicators-of-compromise.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-indicators-of-compromise.md
-
 The Indicators page collects data from enabled threat intelligence feeds and provides a centralized view of indicators, also known as indicators of compromise (IoCs). This topic helps you set up the Indicators page and explains how to work with IoCs.
 
 ::::{admonition} Requirements
-* The Indicators page is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
+* In {{stack}} 9.0.0+, the Indicators page is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
+* In serverless, the Indicators page requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md)
 * You must have *one* of the following installed on the hosts you want to monitor:
 
     * **{{agent}}** - Install a [{{fleet}}-managed {{agent}}](https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html) and ensure the agent’s status is `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
@@ -56,26 +48,9 @@ Install a threat intelligence integration to add indicators to the Indicators pa
 4. Return to the Indicators page in {{elastic-sec}}. Refresh the page if indicator data isn’t displaying.
 
 
-### Troubleshooting [troubleshoot-indicators-page]
-
-If indicator data is not appearing in the Indicators table after you installed a threat intelligence integration:
-
-* Verify that the index storing indicator documents is included in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) (`securitySolution:defaultIndex`). The index storing indicator documents will differ based on the way you’re collecting indicator data:
-
-    * **{{agent}} integrations** - `logs_ti*`
-    * **{{filebeat}} integrations** - `filebeat-*`
-
-* Ensure the indicator data you’re ingesting is mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current).
-
-::::{note}
-These troubleshooting steps also apply to the [Threat Intelligence view](/solutions/security/get-started/enable-threat-intelligence-integrations.md).
-::::
-
-
-
 ## Indicators page UI [intelligence-page-ui]
 
-After you add indicators to the Indicators page, you can [examine](/troubleshoot/security/indicators-of-compromise.md#examine-indicator-details), search, filter, and take action on indicator data. Indicators also appear in the Trend view, which shows the total values in the legend.
+After you add indicators to the Indicators page, you can [examine](#examine-indicator-details), search, filter, and take action on indicator data. Indicators also appear in the Trend view, which shows the total values in the legend.
 
 :::{image} ../../../images/security-interact-with-indicators-table.gif
 :alt: interact with indicators table
