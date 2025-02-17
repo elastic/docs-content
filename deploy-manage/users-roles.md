@@ -56,7 +56,7 @@ For {{ech}} deployments, you can configure SSO at the organization level, the de
 
 Control access to your {{ece}} [orchestrator](/deploy-manage/deploy/cloud-enterprise/deploy-an-orchestrator.md) and deployments. 
 
-* [Manage passwords for default users](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-system-passwords.md)
+* [Manage system passwords](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-system-passwords.md)
 * [Manage orchestrator users and roles](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md):
   * [Using native users](/deploy-manage/users-roles/cloud-enterprise-orchestrator/native-user-authentication.md)
   * By integrating with external authentication providers:
