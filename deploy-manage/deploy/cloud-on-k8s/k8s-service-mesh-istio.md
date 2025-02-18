@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-mesh-istio.html
 ---
@@ -33,8 +35,8 @@ The operator itself must be connected to the service mesh to deploy and manage E
 2. Install ECK:
 
     ```sh
-    kubectl create -f https://download.elastic.co/downloads/eck/2.16.1/crds.yaml
-    kubectl apply -f https://download.elastic.co/downloads/eck/2.16.1/operator.yaml
+    kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
+    kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
     ```
 
 3. Check the configuration and make sure the installation has been successful:

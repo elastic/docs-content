@@ -12,3 +12,10 @@ mapped_urls:
 
 % - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-adding-plugins.md
 % - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-adding-elastic-plugins.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-heroku/ech-adding-plugins.md](/raw-migrated-files/cloud/cloud-heroku/ech-adding-plugins.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-adding-elastic-plugins.md](/raw-migrated-files/cloud/cloud-heroku/ech-adding-elastic-plugins.md)

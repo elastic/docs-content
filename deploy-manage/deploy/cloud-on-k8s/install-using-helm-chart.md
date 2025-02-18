@@ -1,6 +1,9 @@
 ---
+navigation_title: Helm chart
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-install-helm.html
+applies:
+  eck: all
 ---
 
 # Install using a Helm chart [k8s-install-helm]
@@ -16,18 +19,24 @@ helm repo update
 The minimum supported version of Helm is 3.2.0.
 ::::
 
+## Installation options
 
+The Elastic Operator Helm chart supports two main installation methods:
 
-## Cluster-wide (global) installation [k8s-install-helm-global]
+* Cluster-wide (global) installation – Installs both the operator and all its Custom Resource Definitions (CRDs) in a single step.
+* Restricted installation – Separates the installation of the CRDs from the operator, allowing multiple operator instances to coexist in the same cluster while managing different sets of namespaces.
 
-This is the default mode of installation and is equivalent to [installing ECK using the stand-alone YAML manifests](install-using-yaml-manifest-quickstart.md).
+A restricted installation is required if you plan to run multiple operators in the same cluster or if the operator cannot have cluster-wide permissions.
+
+### Cluster-wide (global) installation [k8s-install-helm-global]
+
+This is the default mode of installation and is equivalent to [installing ECK using the stand-alone YAML manifests](./install-using-yaml-manifest-quickstart.md).
 
 ```sh
 helm install elastic-operator elastic/eck-operator -n elastic-system --create-namespace
 ```
 
-
-## Restricted installation [k8s-install-helm-restricted]
+### Restricted installation [k8s-install-helm-restricted]
 
 This mode avoids installing any cluster-scoped resources and restricts the operator to manage only a set of pre-defined namespaces.
 
@@ -57,20 +66,18 @@ helm install elastic-operator elastic/eck-operator -n elastic-system --create-na
   --set=managedNamespaces='{namespace-a, namespace-b}'
 ```
 
-You can find the profile files in the Helm cache directory or from the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/deploy/eck-operator).
-
+You can find the profile files in the Helm cache directory or in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/deploy/eck-operator).
 ::::
 
-
+The previous example disabled the validation webhook along with all other cluster-wide resources. If you need to enable the validation webhook in a restricted environment, see [](./webhook-namespace-selectors.md). To understand what the validation webhook does, refer to [](./configure-validating-webhook.md).
 
 ## View available configuration options [k8s-install-helm-show-values]
 
-You can view all configurable values by running the following:
+You can view all configurable values of the operator Helm chart by running the following:
 
 ```sh
 helm show values elastic/eck-operator
 ```
-
 
 ## Migrate an existing installation to Helm [k8s-migrate-to-helm]
 
@@ -78,15 +85,13 @@ helm show values elastic/eck-operator
 Migrating an existing installation to Helm is essentially an upgrade operation and any [caveats associated with normal operator upgrades](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md#k8s-beta-to-ga-rolling-restart) are applicable. Check the [upgrade documentation](../../upgrade/orchestrator/upgrade-cloud-on-k8s.md#k8s-ga-upgrade) before proceeding.
 ::::
 
-
 You can migrate an existing operator installation to Helm by adding the `meta.helm.sh/release-name`, `meta.helm.sh/release-namespace` annotations and the `app.kubernetes.io/managed-by` label to all the resources you want to be adopted by Helm. You *must* do this for the Elastic Custom Resource Definitions (CRD) because deleting them would trigger the deletion of all deployed Elastic applications as well. All other resources are optional and can be deleted.
 
 ::::{note}
 A shell script is available in the [ECK source repository](https://github.com/elastic/cloud-on-k8s/blob/2.16/deploy/helm-migrate.sh) to demonstrate how to migrate from version 1.7.1 to Helm. You can modify it to suit your own environment.
 ::::
 
-
-For example, an ECK 1.2.1 installation deployed using the [quickstart guide](https://www.elastic.co/guide/en/cloud-on-k8s/1.2/k8s-quickstart.html) can be migrated to Helm as follows:
+For example, an ECK 1.2.1 installation deployed using [YAML manifests](/deploy-manage/deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md) can be migrated to Helm as follows:
 
 1. Annotate and label all the ECK CRDs with the appropriate Helm annotations and labels. CRDs need to be preserved to retain any existing Elastic applications deployed using the operator.
 
@@ -116,4 +121,9 @@ For example, an ECK 1.2.1 installation deployed using the [quickstart guide](htt
 
     1. If you have previously customized the operator configuration in this ConfigMap, you will have to repeat the configuration once the operator has been reinstalled in the next step.
 
-3. Install the ECK operator using the Helm chart as described in [Install ECK using the Helm chart]().
+3. Install the ECK operator using the Helm chart as described in [Install ECK using the Helm chart](./install-using-helm-chart.md).
+
+## Next steps
+
+* For ECK configuration settings, refer to [](/deploy-manage/deploy/cloud-on-k8s/configure.md).
+* To continue with the installation of {{es}} and {{kib}} go to [](/deploy-manage/deploy/cloud-on-k8s/manage-deployments.md).
