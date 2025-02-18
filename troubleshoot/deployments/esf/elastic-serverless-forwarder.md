@@ -1,16 +1,16 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: "Elastic Serverless Forwarder"
 mapped_pages:
   - https://www.elastic.co/guide/en/esf/current/aws-serverless-troubleshooting.html
 ---
 
 
 
-# Elastic Serverless Forwarder [aws-serverless-troubleshooting]
+# Troubleshoot Elastic Serverless Forwarder for AWS [aws-serverless-troubleshooting]
 
 
 
-## Troubleshooting deployment errors [_troubleshooting_deployment_errors]
+## Check deployment errors [_troubleshooting_deployment_errors]
 
 You can view the status of deployment actions and get additional information on events, including why a particular event fails e.g. misconfiguration details.
 
@@ -23,19 +23,18 @@ For example, if you don’t increase the visibility timeout for an SQS queue as 
 
 
 
-## Preventing unexpected costs [preventing-unexpected-costs]
+## Prevent unexpected costs [preventing-unexpected-costs]
 
 It is important to monitor the Elastic Serverless Forwarder Lambda function for timeouts to prevent unexpected costs. You can use the [AWS Lambda integration](https://docs.elastic.co/en/integrations/aws/lambda) for this. If the timeouts are constant, you should throttle the Lambda function to stop its execution before proceeding with any troubleshooting steps. In most cases, constant timeouts will cause the records and messages from the event triggers to go back to their sources and trigger the function again, which will cause further timeouts and force a loop that will incure unexpected high costs. For more information on throttling Lambda functions, refer to [AWS docs](https://docs.aws.amazon.com/lambda/latest/operatorguide/throttling.md).
 
 
-### Increase debug information [_increase_debug_information]
+## Increase debug information [_increase_debug_information]
 
 To help with debugging, you can increase the amount of logging detail by adding an environment variable as follows:
 
 1. Select the serverless forwarder **application** from **Lambda > Functions**
 2. Click **Configuration** and select **Environment Variables** and choose **Edit**
 3. Click **Add environment variable** and enter `LOG_LEVEL` as **Key*** and `DEBUG` as ***Value** and click **Save**
-
 
 ## Using the Event ID format (version 1.6.0 and above) [aws-serverless-troubleshooting-event-id-format]
 
@@ -47,7 +46,7 @@ The timestamp is used as a prefix for the ID, because identifiers that gradually
 If old events that are already published to {{es}} using a version of Elastic Serverless Forwarder before v1.6.0 are ingested again, they will be treated as new events and published to {{es}} as duplicates.
 ::::
 
-
+% TODO pull out error info to separate topic
 
 ## Error handling [_error_handling]
 

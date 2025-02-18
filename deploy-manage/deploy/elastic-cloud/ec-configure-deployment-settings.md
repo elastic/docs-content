@@ -36,9 +36,8 @@ The components of the Elastic Stack that we support as part of a deployment are 
 * Kibana instances
 * APM and Fleet instances
 * Integrations Server instances
-* Enterprise Search instances
 
-When you [create your deployment](create-an-elastic-cloud-hosted-deployment.md), you can choose the hardware profile that best fits your needs, and configure it with the **Advanced settings** option. Depending on the cloud provider that you select, you can adjust the size of Elasticsearch nodes, or configure your Kibana, APM & Fleet, and Enterprise Search instances. As your usage evolves, you can [change the hardware profile](ec-change-hardware-profile.md) of your deployment.
+When you [create your deployment](create-an-elastic-cloud-hosted-deployment.md), you can choose the hardware profile that best fits your needs, and configure it with the **Advanced settings** option. Depending on the cloud provider that you select, you can adjust the size of Elasticsearch nodes, or configure your Kibana and APM & Fleet instances. As your usage evolves, you can [change the hardware profile](ec-change-hardware-profile.md) of your deployment.
 
 ::::{note} 
 Elastic Agent, Beats, and Logstash are components of the Elastic Stack that are not included in the hardware profiles as they are installed outside of Elastic Cloud.

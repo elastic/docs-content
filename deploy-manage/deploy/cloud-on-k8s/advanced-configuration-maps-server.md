@@ -55,7 +55,7 @@ stringData:
     logging.level: debug
 ```
 
-Refer to [Set compute resources for Kibana, Enterprise Search, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for adjusting compute resources for Elastic Maps Server.
+Refer to [Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for adjusting compute resources for Elastic Maps Server.
 
 
 ## Scale out an Elastic Maps Server deployment [k8s-maps-scaling]

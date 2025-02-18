@@ -7,7 +7,7 @@ mapped_urls:
 
 # The stack
 
-This section provides an overview of the {{stack}} and its components — including {{kib}}, the primary user interface for all of Elastic's solutions: Enterprise Search, Elastic Observability, and Elastic Security. It then describes how to install the {{stack}}.
+This section provides an overview of the {{stack}} and its components — including {{kib}}, the primary user interface for all of Elastic's solutions: Elastic Search, Elastic Observability, and Elastic Security. It then describes how to install the {{stack}}.
 
 $$$kibana-navigation-search$$$
 
@@ -73,7 +73,7 @@ Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use t
 $$$stack-components-kibana$$$
 
 {{kib}}
-:   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Elastic Enterprise Search, Elastic Observability and Elastic Security solutions. [Learn more about {{kib}}](https://www.elastic.co/guide/en/kibana/current/introduction.html).
+:   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](https://www.elastic.co/guide/en/kibana/current/introduction.html).
 
 $$$stack-components-elasticsearch-clients$$$
 
