@@ -101,7 +101,7 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 
 
 ### Use {{data-sources}} with rolled up data [rollup-data-view]
-::::{applies}
+::::{applies_to}
 :serverless: unavailable
 :stack: deprecated
 ::::
@@ -123,7 +123,7 @@ For an example, refer to [Create and visualize rolled up data](/manage-data/life
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]
-::::{applies}
+::::{applies_to}
 :serverless: unavailable
 :stack: ga
 ::::
