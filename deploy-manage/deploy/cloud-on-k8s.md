@@ -12,6 +12,8 @@ mapped_urls:
 
 Built on the Kubernetes Operator pattern, {{eck}} (ECK) extends the basic Kubernetes orchestration capabilities to support the setup and management of Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash on Kubernetes.
 
+## ECK overview
+
 With Elastic Cloud on Kubernetes, you can streamline critical operations, such as:
 
 1. Managing and monitoring multiple clusters
@@ -32,7 +34,8 @@ Other sections of the documentation include the following important topics aroun
 - [Logging and Monitoring](../monitor.md): Configure stack monitoring and logs forwarding with the help of ECK.
 - [Remote Clusters](../remote-clusters.md): Configure remote clusters on ECK.
 - [](../tools.md): Add snapshot repositories to your {{es}} clusters for automatic snapshots.
-- [Security](../security.md): Users and roles, built-in users, configure SSO authentication realms, and more.
+- [Security](../security.md): Secure communications, manage HTTP certificates, or add secure settings to your applications.
+- [Users and Roles](../users-roles.md): Configure authentication and authorization mechanisms, built-in users, external providers, and more.
 - [Autoscaling](../autoscaling.md): Learn how to use {{es}} autoscaling on ECK, or use Horizontal Pod Autoscaler functionality for stateless workloads.
 - [Licensing](../license/manage-your-license-in-eck.md): Manage licenses on ECK.
 

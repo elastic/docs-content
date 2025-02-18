@@ -77,6 +77,6 @@ This completes the quickstart of deploying an {{kib}} instance on top of [the EC
 
 We recommend continuing to:
 * [Updating your deployment](update-deployments.md).
-* For more {{kib}} configuration options, refer to [Running {{kib}} on ECK](kibana-configuration.md).
+* For more {{kib}} configuration options, refer to [{{kib}} configuration on ECK](kibana-configuration.md) and [](./configure-deployments.md).
 
 

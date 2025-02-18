@@ -110,9 +110,11 @@ helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-n
 
 ## Adding Ingress to the Elastic stack [k8s-eck-stack-ingress] 
 
-Both Elasticsearch and Kibana support [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), which can be enabled using the following options:
+Both {{es}} and {{kib}} support [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/), which can be enabled using the following options:
 
 **If an individual chart is used (not eck-stack)**
+
+The following command installs an {{es}} cluster using the `eck-elasticsearch` chart and configures an ingress resource:
 
 ```sh
 helm install es-quickstart elastic/eck-elasticsearch -n elastic-stack --create-namespace \

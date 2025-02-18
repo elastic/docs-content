@@ -8,7 +8,7 @@ mapped_pages:
 
 # Deploy an Elasticsearch cluster [k8s-deploy-elasticsearch]
 
-To deploy a simple [{{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)}] cluster specification, with one {{es}} node:
+To deploy a simple [{{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html) cluster specification, with one {{es}} node:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -145,5 +145,5 @@ In order to make requests to the [{{es}} API](https://www.elastic.co/guide/en/el
 This completes the quickstart of deploying an {{es}} cluster. We recommend continuing to:
 
 * [Deploy a {{kib}} instance](kibana-instance-quickstart.md)
-* For more configuration options as needed, navigate to [](./elasticsearch-configuration.md).
-* For more information about how to apply changes to your deployments, refer to [aplying updates](./update-deployments.md).
+* For information about how to apply changes to your deployments, refer to [aplying updates](./update-deployments.md).
+* To explore other configuration options for your {{es}} cluster, see [](./elasticsearch-configuration.md) and [](./configure-deployments.md).
