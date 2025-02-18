@@ -15,10 +15,10 @@ Elastic authenticates users by using realms and one or more [token-based authent
 A *realm* is used to resolve and authenticate users based on authentication tokens. There are two types of realms: 
 
 Internal
-:   Realms that are internal to {{es}} and don’t require any communication with external parties. They are fully managed by the {{stack}} {{security-features}}. There can only be a maximum of one configured realm per internal realm type. {{es}} provides two internal realm types: `native` and `file`.
+:   Realms that are internal to {{es}} and don’t require any communication with external parties. They are fully managed by {{es}}. There can only be a maximum of one configured realm per internal realm type. {{es}} provides two internal realm types: `native` and `file`.
 
 External
-:   Realms that require interaction with parties/components external to {{es}}, typically, with enterprise grade identity management systems. Unlike internal realms, you can have as many external realms as you would like, each with its own unique name and configuration. [View external realm types](#external-realms).
+:   Realms that require interaction with parties and components external to {{es}}, typically, with enterprise grade identity management systems. Unlike internal realms, you can have as many external realms as you would like, each with its own unique name and configuration. [View external realm types](#external-realms).
 
 ## Configuring realms
 
@@ -45,4 +45,4 @@ You can also perform the following tasks to further configure your realms:
 
 ## Custom realms
 
-{{es}} also supports custom realms. If you need to integrate with another authentication system, you can build a custom realm plugin. For more information, see [Integrating with other authentication systems](custom.md).
+If you need to integrate with another authentication system, you can build a custom realm plugin. For more information, see [Integrating with other authentication systems](custom.md).

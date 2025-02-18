@@ -9,6 +9,7 @@ applies:
   hosted: all
   ece: all
   eck: all
+navigation_title: "Native"
 ---
 
 # Native user authentication [native-realm]
