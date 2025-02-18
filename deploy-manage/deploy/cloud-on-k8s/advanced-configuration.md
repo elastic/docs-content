@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-apm-advanced-configuration.html
 ---
@@ -166,8 +168,6 @@ Now that you know how to use the APM keystore and customize the server configura
 
 By default the operator manages a private CA and generates a self-signed certificate used to secure the communication between APM agents and the server.
 
-This behavior and the relevant configuration is identical to what is done for Elasticsearch and Kibana. Check [Setting up your own certificate](accessing-services.md#k8s-setting-up-your-own-certificate) for more information on how to use your own certificate to configure the TLS endpoint of the APM Server.
+This behavior and the relevant configuration is identical to what is done for Elasticsearch and Kibana. Check [Setting up your own certificate](/deploy-manage/security/secure-http-communications.md) for more information on how to use your own certificate to configure the TLS endpoint of the APM Server.
 
 For more details on how to configure the APM agents to work with custom certificates, check the [APM agents documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
-
-

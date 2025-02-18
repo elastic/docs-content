@@ -18,3 +18,10 @@ mapped_urls:
 %      Notes: 2 child docs
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-administering-ece.md
 %      Notes: redirect only
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-enterprise/Elastic-Cloud-Enterprise-overview.md](/raw-migrated-files/cloud/cloud-enterprise/Elastic-Cloud-Enterprise-overview.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-administering-ece.md](/raw-migrated-files/cloud/cloud-enterprise/ece-administering-ece.md)

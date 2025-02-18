@@ -47,6 +47,7 @@ It is safe to restart the following via Docker [`stop`](https://docs.docker.com/
 * `frc-beats-runners-beats-runner`
 * `frc-constructors-constructor`
 * `frc-proxies-proxyv2`
+* `frc-proxies-route-server`
 
 It is safe to restart the following via Docker [`restart`](https://docs.docker.com/reference/cli/docker/container/restart/):
 

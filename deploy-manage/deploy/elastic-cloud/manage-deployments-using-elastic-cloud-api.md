@@ -68,7 +68,7 @@ This example creates a new deployment named "my-first-api-deployment" with the f
 
 * Version 8.17.1 of the Elastic Stack
 * Elasticsearch cluster in two zones with 4 GB of memory for each node
-* 1 GB single zone Kibana instance, 1 GB Integrations Server instance, and 2GB Enterprise Search instance
+* 1 GB single zone Kibana instance and 1 GB Integrations Server instance
 
 ```sh
 curl -XPOST \
@@ -252,33 +252,6 @@ curl -XPOST \
         },
         "ref_id": "main-integrations_server"
       }
-    ],
-    "enterprise_search": [
-      {
-        "elasticsearch_cluster_ref_id": "main-elasticsearch",
-        "region": "gcp-us-central1",
-        "plan": {
-          "cluster_topology": [
-            {
-              "node_type": {
-                "connector": true,
-                "appserver": true,
-                "worker": true
-              },
-              "instance_configuration_id": "gcp.enterprisesearch.n2.68x32x45",
-              "zone_count": 1, <10>
-              "size": {
-                "resource": "memory",
-                "value": 2048 <11>
-              }
-            }
-          ],
-          "enterprise_search": {
-            "version": "8.17.1"
-          }
-        },
-        "ref_id": "main-enterprise_search"
-      }
     ]
   },
   "name": "my-first-api-deployment"
@@ -295,8 +268,6 @@ curl -XPOST \
 7. Memory allocated for Kibana
 8. Availability zones for Integrations Server
 9. Memory allocated for Integrations Server
-10. Availability zones for Enterprise Search
-11. Memory allocated for Enterprise Search
 
 
 ::::{tip}

@@ -20,6 +20,9 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-custom-http-certificate.md
 % - [ ] ./raw-migrated-files/kibana/kibana/Security-production-considerations.md
 
+% EEDUGON NOTE: security section might miss a section to secure the transport layer (not the HTTP).
+% There we should integrate the content of https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-transport-settings.html which is currently in ECK (/deploy-manage) doc.
+
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$encrypt-kibana-browser$$$
@@ -47,3 +50,5 @@ $$$csp-strict-mode$$$
 $$$k8s-setting-up-your-own-certificate$$$
 
 $$$k8s-static-ip-custom-domain$$$
+
+$$$k8s-disable-tls$$$

@@ -13,7 +13,6 @@ To install the Elastic Stack on-premises, the following ports need to be open fo
 
 | Default port | Component |
 | --- | --- |
-| 3002 | {{ents}} |
 | 5044 | {{agent}} → {{ls}}<br>{{beats}} → {{ls}} |
 | 5601 | {{kib}}<br>{{agent}} → {{fleet}}<br>{{fleet-server}} → {{fleet}} |
 | 8220 | {{agent}} → {{fleet-server}}<br>APM Server |

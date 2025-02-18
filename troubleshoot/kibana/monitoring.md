@@ -1,12 +1,10 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: "Monitoring"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitor-troubleshooting.html
 ---
 
-
-
-# Monitoring [monitor-troubleshooting]
+# Troubleshoot {{kib}} monitoring [monitor-troubleshooting]
 
 
 Use the information in this section to troubleshoot common problems and find answers for frequently asked questions related to the {{kib}} {{monitor-features}}.

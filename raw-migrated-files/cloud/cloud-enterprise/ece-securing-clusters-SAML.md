@@ -1,6 +1,6 @@
 # Secure your clusters with SAML [ece-securing-clusters-SAML]
 
-These steps show how you can secure your Elasticsearch clusters, Kibana, and Enterprise Search instances in a deployment by using a Security Assertion Markup Language (SAML) identity provider (IdP) for cross-domain, single sign-on authentication.
+These steps show how you can secure your Elasticsearch clusters and Kibana instances in a deployment by using a Security Assertion Markup Language (SAML) identity provider (IdP) for cross-domain, single sign-on authentication.
 
 ::::{note}
 The SAML credentials are valid against the deployment, not the ECE platform. You can configure [role-based access control](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md) for the platform separately.
@@ -112,29 +112,7 @@ You must edit your cluster configuration, sometimes also referred to as the depl
 
     1. This arbitrary string defines how SAML login is titled in the Login Selector UI that is shown when you enable multiple authentication providers in Kibana. You can also configure the optional `icon` and `hint` settings for any authentication provider.
 
-7. Recommended: If you are using Enterprise Search, we recommend you set up SAML 2.0 single sign-on (SSO) for the solution. This allows you to manage access to App Search and Workplace Search for your existing SAML users.
-
-    [Configure your Enterprise Search user settings](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) with the following parameters:
-
-    * If you are using an Enterprise Search deployment of version 7.14.0 or later:
-
-        Check [Set up Enterprise Search with SAML 2.0 single sign-on (SSO)](https://www.elastic.co/guide/en/enterprise-search/current/saml-idp.html) in the Enterprise Search documentation. This document covers the Elastic Cloud user settings for Elasticsearch, Kibana, and Enterprise Search. It also explains how to manage access to App Search and Workplace Search for your existing SAML users.
-
-    * If you are using an Enterprise Search deployment of version 7.9.2 - 7.17:
-
-        ```sh
-        ent_search.auth.saml1.source: elasticsearch-saml <1>
-        ent_search.auth.saml1.order: 1 <2>
-        ent_search.auth.saml1.description: "SAML login" <3>
-        ent_search.auth.saml1.icon: "https://my-company.org/company-logo.png" <4>
-        ```
-
-        1. The name of the SAML realm that you have configured earlier, for instance `saml-realm-name`. The SAML realm name can only contain alphanumeric characters, underscores, and hyphens. To reference an `ent_search.auth.<auth_name>.source`, you must create a separate application in your third-party SAML provider first and then set up a new SAML realm in Elasticsearch for Enterprise Search. To learn more, check [Elasticsearch SAML](https://www.elastic.co/guide/en/app-search/7.13/security-and-users.html#app-search-self-managed-security-and-user-management-elasticsearch-saml) in the App Search documentation.
-        2. The order in which to display this provider on the login screen.
-        3. The name to be displayed on the login screen associated with this provider.
-        4. The URL to an icon to be displayed on the login screen associated with this provider.
-
-8. Optional: Generate SAML metadata for the Service Provider.
+7. Optional: Generate SAML metadata for the Service Provider.
 
     The SAML 2.0 specification provides a mechanism for Service Providers to describe their capabilities and configuration using a metadata file. If your SAML Identity Provider requires or allows you to configure it to trust the Elastic Stack Service Provider through the use of a metadata file, you can generate the SAML metadata by issuing the following request to Elasticsearch:
 
@@ -156,7 +134,7 @@ You must edit your cluster configuration, sometimes also referred to as the depl
 
     1. The elasticsearch endpoint for the given deployment where the `saml1` realm is configured.
 
-9. Optional: If your Identity Provider doesn’t publish its SAML metadata at an HTTP URL, or if your Elasticsearch cluster cannot reach that URL, you can upload the SAML metadata as a file.
+8. Optional: If your Identity Provider doesn’t publish its SAML metadata at an HTTP URL, or if your Elasticsearch cluster cannot reach that URL, you can upload the SAML metadata as a file.
 
     1. Prepare a ZIP file with a [custom bundle](../../../solutions/search/full-text/search-with-synonyms.md) that contains your Identity Provider’s metadata (`metadata.xml`) inside of a `saml` folder.
 
@@ -206,7 +184,7 @@ You must edit your cluster configuration, sometimes also referred to as the depl
 
         1. The path to the SAML metadata file that was uploaded.
 
-10. Use the Kibana endpoint URL to log in.
+9. Use the Kibana endpoint URL to log in.
 
 
 ## Configure your 7.x cluster to use SAML [ece-7x-saml]

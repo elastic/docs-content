@@ -1,14 +1,12 @@
 ---
+navigation_title: "Kafka"
 mapped_pages:
   - https://www.elastic.co/guide/en/logstash/current/ts-plugins.html
 ---
 
-# Kafka [ts-plugins]
+# Troubleshoot Logstash plugin for Kafka [ts-kafka]
 
-## Kafka issues and solutions [ts-kafka]
-
-
-#### Kafka session timeout issues (input) [ts-kafka-timeout]
+## Kafka session timeout issues (input) [ts-kafka-timeout]
 
 **Symptoms**
 
@@ -62,7 +60,7 @@ In practice the value must be set much higher than the theoretical value because
 From a performance perspective, decreasing the `max_poll_records` value is preferable to increasing the timeout value. Increasing the timeout is your only option if the client’s issues are caused by periodically stalling outputs. Check logs for evidence of stalling outputs, such as `ES output logging status 429`.
 
 
-#### Kafka input plugin crashes when using schema registry [ts-schema-registry]
+## Kafka input plugin crashes when using schema registry [ts-schema-registry]
 
 By default, the kafka input plugin checks connectivity and validates the schema registry during plugin registration before events are processed. In some circumstances, this process may fail when it tries to validate an authenticated schema registry, causing the plugin to crash.
 
@@ -79,7 +77,7 @@ The default setting of `auto` is the best option for most circumstances and shou
 
 
 
-#### Large number of offset commits (input) [ts-kafka-many-offset-commits]
+## Large number of offset commits (input) [ts-kafka-many-offset-commits]
 
 **Symptoms**
 
@@ -92,7 +90,7 @@ For Kafka Broker versions 0.10.2.1 to 1.0.x: The problem is caused by a bug in K
 For older versions of Kafka or if the above does not fully resolve the issue: The problem can also be caused by setting the value for `poll_timeout_ms` too low relative to the rate at which the Kafka Brokers receive events themselves (or if Brokers periodically idle between receiving bursts of events). Increasing the value set for `poll_timeout_ms` proportionally decreases the number of offsets commits in this scenario. For example, raising it by 10x will lead to 10x fewer offset commits.
 
 
-#### Codec Errors in Kafka Input (before Plugin Version 6.3.4 only) [ts-kafka-codec-errors-input]
+#
 
 **Symptoms**
 
@@ -124,7 +122,7 @@ There was a bug in the way the Kafka Input plugin was handling codec instances w
 * If (and only if) upgrading is not possible, set `consumer_threads` to `1`.
 
 
-#### Setting up debugging for Kerberos SASL [ts-kafka-kerberos-debug]
+## Setting up debugging for Kerberos SASL [ts-kafka-kerberos-debug]
 
 You can set up your machine to help you troubleshoot authentication failures in the Kafka client.
 
@@ -152,78 +150,3 @@ Logging entries for Kerberos are NOT sent through Log4j but go directly to the c
 
 
 
-## Azure Event Hub issues and solutions [ts-azure]
-
-
-#### Event Hub plugin can’t connect to Storage blob (input) [ts-azure-http]
-
-**Symptoms**
-
-Azure EventHub can’t connect to blob storage:
-
-```
-[2024-01-01T13:13:13,123][ERROR][com.microsoft.azure.eventprocessorhost.AzureStorageCheckpointLeaseManager][azure_eventhub_pipeline][eh_input_plugin] host logstash-a0a00a00-0aa0-0000-aaaa-0a00a0a0aaaa: Failure while creating lease store
-com.microsoft.azure.storage.StorageException: The client could not finish the operation within specified maximum execution timeout.
-```
-
-Plugin can’t complete registration phase because it can’t connect to Azure Blob Storage configured in the plugin `storage_connection` setting.
-
-**Background**
-
-Azure Event Hub plugin can share the offset position of a consumer group with other consumers only if Blob Storage connection settings are configured. EventHub uses the AMQP protocol to transfer data, but Blob storage uses a library which leverages the JDK’s http client, `HttpURLConnection`. To troubleshoot HTTP connection problems, which may be related to proxy settings, the logging level for this part of the JDK has to be increased. The problem is that JDK uses Java Util Logging for its internal logging needs, which is not configurable with the standard `log4j2.properties` shipped with {{ls}}.
-
-**Possible solutions**
-
-* Configure {{ls}} settings to enable the JDK logging.
-
-**Details**
-
-Steps to enable JDK logging on {{ls}}:
-
-* Create a properties file with the logging definitions for Java Util Logging (JUL).
-* Configure a JVM property to inform JUL to use such definitions file.
-
-**JUL definitions**
-
-Create a file that you can use to define logging levels, handlers and loggers. For example, `<LS_HOME>/conf/jul.properties`.
-
-```txt
-handlers= java.util.logging.ConsoleHandler,java.util.logging.FileHandler
-.level= ALL
-java.util.logging.FileHandler.pattern = <USER's LOGS FOLDER>/logs/jul_http%u.log <1>
-java.util.logging.FileHandler.limit = 50000
-java.util.logging.FileHandler.count = 1
-java.util.logging.FileHandler.level=ALL
-java.util.logging.FileHandler.maxLocks = 100
-java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
-
-java.util.logging.ConsoleHandler.level = INFO
-java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
-
-# defines the logger we are interested in
-sun.net.www.protocol.http.HttpURLConnection.level = ALL <2>
-```
-
-1. The log file will be created in a path defined by the user (`<USER's LOGS FOLDER>/logs/`)
-2. This configuration enables the `sun.net.www.protocol.http.HttpURLConnection` logger, and sets the logging level to `ALL`. It will log all messages directed to it, from highest to lowest priority.
-
-
-**JVM property**
-
-To inform the JUL framework of the selected definitions file a property (`java.util.logging.config.file`) has to be evaluated, this is where {{ls}}'s `config/jvm.properties` come in handy. Edit the file adding the property, pointing to the path where the JUL definitions file was created:
-
-```txt
--Djava.util.logging.config.file=<LS_HOME>/conf/jul.properties
-```
-
-The logs could contain sensible information, such credentials, and could be verbose but should give hits on the connection problem at HTTP level with the Azure Blob Storage.
-
-
-## Other issues [ts-other]
-
-Coming soon, and you can help! If you have something to add, please:
-
-* create an issue at [https://github.com/elastic/logstash/issues](https://github.com/elastic/logstash/issues), or
-* create a pull request with your proposed changes at [https://github.com/elastic/logstash](https://github.com/elastic/logstash).
-
-Also check out the [Logstash discussion forum](https://discuss.elastic.co/c/logstash).

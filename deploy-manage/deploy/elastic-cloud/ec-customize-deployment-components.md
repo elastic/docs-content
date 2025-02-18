@@ -121,14 +121,6 @@ In production systems, you might need to control what {{es}} data users can acce
 
 Refer to [Manage your Integrations Server](manage-integrations-server.md) to learn more.
 
-
-## {{ents}} [ec_ents]
-
-{{ents}} enables you to add modern search to your application or connect and unify content across your workplace. An {{ents}} instance is created automatically as part of every deployment.
-
-Refer to [Enable Enterprise Search](https://www.elastic.co/guide/en/cloud/current/ec-enable-enterprise-search.html) to learn more.
-
-
 ## Security [ec_security]
 
 Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up traffic filters, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.

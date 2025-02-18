@@ -5,3 +5,5 @@
 % GitHub issue: https://github.com/elastic/docs-projects/issues/353
 
 % Scope notes: summarize the list of activites
+
+⚠️ **This page is a work in progress.** ⚠️
