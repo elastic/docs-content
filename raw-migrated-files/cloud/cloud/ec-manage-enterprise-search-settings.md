@@ -1,7 +1,7 @@
 # Add Enterprise Search user settings [ec-manage-enterprise-search-settings]
 
 :::{important}
-Enterprise Search is not available in versions 9.0+.
+Enterprise Search is not available in{{stack}} 9.0+.
 :::
 
 Change how Enterprise Search runs by providing your own user settings. User settings are appended to the `ent-search.yml` configuration file for your instance and provide custom configuration options.

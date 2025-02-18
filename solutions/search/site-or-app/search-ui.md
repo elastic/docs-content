@@ -21,7 +21,7 @@ A JavaScript library for the fast development of modern, engaging search experie
 * **Flexible front-end** - Not just for React. Use with any JavaScript library, even vanilla JavaScript.
 * **Flexible back-end** - Use it with Elasticsearch, Elastic Enterprise Search, or any other search API.
 :::{important}
-Enterprise Search is not available in versions 9.0+.
+Enterprise Search is not available in{{stack}} 9.0+.
 :::
 
 

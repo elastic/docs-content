@@ -34,7 +34,7 @@ APM
 Enterprise Search
 
 :::{important}
-Enterprise Search is not available in versions 9.0+.
+Enterprise Search is not available in{{stack}} 9.0+.
 :::
 
 * [Enterprise Search Release Notes](https://www.elastic.co/guide/en/enterprise-search/current/changelog.html)

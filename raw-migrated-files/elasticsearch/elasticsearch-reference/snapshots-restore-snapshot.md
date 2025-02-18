@@ -34,7 +34,7 @@ This guide also provides tips for [restoring to another cluster](../../../deploy
 
 * If your snapshot contains data from App Search or Workplace Search, ensure you’ve restored the [Enterprise Search encryption key](https://www.elastic.co/guide/en/enterprise-search/current/encryption-keys.html) before restoring the snapshot.
 :::{important}
-Enterprise Search is not available in versions 9.0+.
+Enterprise Search is not available in{{stack}} 9.0+.
 :::
 
 
