@@ -22,7 +22,7 @@ Preventing unauthorized access is only one element of a complete security strate
 * Restrict the nodes and clients that can connect to the cluster using [traffic filters](/deploy-manage/security/traffic-filtering.md). 
 * Take steps to maintain your data integrity and confidentiality by [encrypting HTTP and inter-node communications](/deploy-manage/security/secure-endpoints.md), as well as [encrypting your data at rest](/deploy-manage/security/encrypt-deployment.md).
 * Maintain an [audit trail](/deploy-manage/monitor/logging-configuration/security-event-audit-logging.md) for security-related events.
-* Control access to dashboards and other saved objects in your UI using [Spaces](/deploy-manage/manage-spaces.md). 
+* Control access to dashboards and other saved objects in your UI using [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
 * Connect your cluster to a [remote cluster](/deploy-manage/remote-clusters.md) to enable cross-cluster replication and search.
 * Manage [API keys](/deploy-manage/api-keys.md) used for programmatic access to Elastic.
 ::::
@@ -70,6 +70,10 @@ Control access to your {{ece}} [orchestrator](/deploy-manage/deploy/cloud-enterp
   ::::
 
 {{ece}} deployments can also use [cluster-level authentication and authorization](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
+
+:::{note}
+You can't manage users and roles for {{eck}} clusters at the orchestrator level. {{eck}} deployments use cluster-level authentication and authorization only.
+:::
 
 ## Project level
 
@@ -119,7 +123,7 @@ Key tasks for managing user authorization include:
 You can also learn the basics of Elasticsearch authorization, and perform advanced tasks.
 
 ::::{tip}
-User roles are also used to control access to [spaces](/deploy-manage/manage-spaces.md).
+User roles are also used to control access to [{{kib}} spaces](/deploy-manage/manage-spaces.md).
 :::: 
 
 [View all user authorization docs](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md)

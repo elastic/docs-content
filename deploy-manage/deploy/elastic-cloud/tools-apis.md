@@ -17,3 +17,9 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/docs-content/serverless/elasticsearch-http-apis.md
 % - [ ] https://www.elastic.co/guide/en/tpec/current/index.html
 %      Notes: reference only, this page wasn't migrated, but you can pull from the live URL if needed.
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/docs-content/serverless/elasticsearch-http-apis.md](/raw-migrated-files/docs-content/serverless/elasticsearch-http-apis.md)

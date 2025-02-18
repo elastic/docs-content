@@ -107,11 +107,6 @@ In production systems, you might need to control what {{es}} data users can acce
 {{integrations-server}} connects observability and security data from Elastic Agents and APM to Elasticsearch. An {{integrations-server}} instance is created automatically as part of every deployment.
 
 
-### {{ents}} [echents]
-
-{{ents}} enables you to add modern search to your application or connect and unify content across your workplace. An {{ents}} instance is created automatically as part of every deployment.
-
-
 ### Security [echsecurity]
 
 Here, you can configure features that keep your deployment secure: reset the password for the `elastic` user, set up traffic filters, and add settings to the {{es}} keystore. You can also set up remote connections to other deployments.

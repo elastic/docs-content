@@ -1,29 +1,23 @@
 ---
-navigation_title: "Tutorial"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-index-lifecycle-management.html
 ---
 
-
-
 # Tutorial: Automate rollover [getting-started-index-lifecycle-management]
-
 
 When you continuously index timestamped documents into {{es}}, you typically use a [data stream](../../data-store/index-types/data-streams.md) so you can periodically [roll over](rollover.md) to a new index. This enables you to implement a [hot-warm-cold architecture](../data-tiers.md) to meet your performance requirements for your newest data, control costs over time, enforce retention policies, and still get the most out of your data.
 
 ::::{tip}
-[Data streams](../../data-store/index-types/data-streams.md) are best suited for [append-only](../../data-store/index-types/data-streams.md#data-streams-append-only) use cases. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. You can still use [ILM](../index-lifecycle-management.md) to manage and [roll over](rollover.md) the alias’s indices. Skip to [Manage time series data without data streams](../index-lifecycle-management.md#manage-time-series-data-without-data-streams).
+[Data streams](../../data-store/index-types/data-streams.md) are best suited for [append-only](../../data-store/index-types/data-streams.md#data-streams-append-only) use cases. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. You can still use [ILM](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) to manage and [roll over](rollover.md) the alias’s indices. Skip to [Manage time series data without data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams).
 ::::
-
-
 
 ## Manage time series data with data streams [manage-time-series-data-with-data-streams]
 
 To automate rollover and management of a data stream with {{ilm-init}}, you:
 
-1. [Create a lifecycle policy](../index-lifecycle-management.md#ilm-gs-create-policy) that defines the appropriate [phases](index-lifecycle.md) and [actions](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html).
-2. [Create an index template](../index-lifecycle-management.md#ilm-gs-apply-policy) to [create the data stream](../index-lifecycle-management.md#ilm-gs-create-the-data-stream) and apply the ILM policy and the indices settings and mappings configurations for the backing indices.
-3. [Verify indices are moving through the lifecycle phases](../index-lifecycle-management.md#ilm-gs-check-progress) as expected.
+1. [Create a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-create-policy) that defines the appropriate [phases](index-lifecycle.md) and [actions](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html).
+2. [Create an index template](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-apply-policy) to [create the data stream](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-create-the-data-stream) and apply the ILM policy and the indices settings and mappings configurations for the backing indices.
+3. [Verify indices are moving through the lifecycle phases](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-check-progress) as expected.
 
 ::::{important}
 When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, lifecycle policies are set up automatically. You do not need to take any other actions. You can modify the default policies through [{{kib}} Management](tutorial-customize-built-in-policies.md) or the {{ilm-init}} APIs.
@@ -220,10 +214,10 @@ If you frequently send multiple documents using the same `_id` expecting last-wr
 
 To automate rollover and management of time series indices with {{ilm-init}} using an index alias, you:
 
-1. Create a lifecycle policy that defines the appropriate phases and actions. See [Create a lifecycle policy](../index-lifecycle-management.md#ilm-gs-create-policy) above.
-2. [Create an index template](../index-lifecycle-management.md#ilm-gs-alias-apply-policy) to apply the policy to each new index.
-3. [Bootstrap an index](../index-lifecycle-management.md#ilm-gs-alias-bootstrap) as the initial write index.
-4. [Verify indices are moving through the lifecycle phases](../index-lifecycle-management.md#ilm-gs-alias-check-progress) as expected.
+1. Create a lifecycle policy that defines the appropriate phases and actions. See [Create a lifecycle policy](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-create-policy) above.
+2. [Create an index template](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-alias-apply-policy) to apply the policy to each new index.
+3. [Bootstrap an index](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-alias-bootstrap) as the initial write index.
+4. [Verify indices are moving through the lifecycle phases](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-alias-check-progress) as expected.
 
 
 ### Create an index template to apply the lifecycle policy [ilm-gs-alias-apply-policy]
@@ -291,7 +285,7 @@ This process repeats each time rollover conditions are met. You can search acros
 
 ### Check lifecycle progress [ilm-gs-alias-check-progress]
 
-Retrieving the status information for managed indices is very similar to the data stream case. See the data stream [check progress section](../index-lifecycle-management.md#ilm-gs-check-progress) for more information. The only difference is the indices namespace, so retrieving the progress will entail the following api call:
+Retrieving the status information for managed indices is very similar to the data stream case. See the data stream [check progress section](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-check-progress) for more information. The only difference is the indices namespace, so retrieving the progress will entail the following api call:
 
 ```console
 GET timeseries-*/_ilm/explain

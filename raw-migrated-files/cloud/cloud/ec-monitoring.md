@@ -8,7 +8,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 Keeping on top of the health of your deployments is a key part of the [shared responsibilities](https://www.elastic.co/cloud/shared-responsibility) between Elastic and yourself. Elastic Cloud provides out of the box tools for monitoring the health of your deployment and resolving health issues when they arise. If you are ready to set up a deployment for production use cases, make sure you check the recommendations and best practices for [production readiness](../../../deploy-manage/production-guidance/plan-for-production-elastic-cloud.md).
 
-A deployment on Elastic Cloud is a combination of an Elasticsearch cluster, a Kibana instance and potentially an APM server instance, an Enterprise Search Server instance and an Integration Server instance. The health of an Elastic Cloud deployment comprises the health of the various components that are part of the deployment.
+A deployment on Elastic Cloud is a combination of an Elasticsearch cluster, a Kibana instance and potentially an APM server instance, and an Integration Server instance. The health of an Elastic Cloud deployment comprises the health of the various components that are part of the deployment.
 
 The most important of these is the {{es}} cluster, because it is the heart of the system for searching and indexing data.
 

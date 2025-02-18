@@ -7,7 +7,7 @@ applies:
 
 # Configure SSO for deployments [ece-deployment-sso]
 
-The single sign-on (SSO) feature in ECE allows `platform admins` and `deployment managers` to log in to their {{kib}} and {{ents}} instances automatically after they are logged in to ECE.
+The single sign-on (SSO) feature in ECE allows `platform admins` and `deployment managers` to log in to their {{kib}} instances automatically after they are logged in to ECE.
 
 ::::{note} 
 Single sign-on is not available for system deployments; you need to use credentials to log in to them.

@@ -58,8 +58,6 @@ If you use {{serverless-full}}, then you can only manage authentication at the [
     * [Implement a custom realm](/deploy-manage/users-roles/cluster-or-deployment-auth/custom.md)
 * Configure [authentication mechanisms for {{kib}}](kibana-authentication.md).
 * Enable [anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md).
-* Manage [user profiles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-profiles.md).
-* Manage authentication for [multiple clusters](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md) ({{eck}} only).
 * Set up a [user access agreement](/deploy-manage/users-roles/cluster-or-deployment-auth/access-agreement.md).
 
 ### Advanced topics
@@ -68,5 +66,7 @@ If you use {{serverless-full}}, then you can only manage authentication at the [
 * Learn about [service accounts](/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md), which are used for integration with external services that connect to Elasticsearch.
 * Learn about the [services used for token-based authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/token-based-authentication-services.md).
 * Learn about the [services used by orchestrators](/deploy-manage/users-roles/cluster-or-deployment-auth/operator-privileges.md).
+* Manage [user profiles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-profiles.md).
 * Learn about [user lookup technologies](/deploy-manage/users-roles/cluster-or-deployment-auth/looking-up-users-without-authentication.md).
 * [Manage the user cache](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-user-cache.md).
+* Manage authentication for [multiple clusters](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md) using {{stack}} configuration policies ({{eck}} only)

@@ -18,7 +18,7 @@ After a user is authenticated, use role-based access control to determine whethe
 * [Define roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
 * Learn about [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md)
 * Learn about the [Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) and [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges you can assign to roles
-* [Map users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
+* Creating [mappings of users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) for external authentication providers
 * Learn how to [control access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
 
 ### Advanced topics
@@ -29,7 +29,7 @@ After a user is authenticated, use role-based access control to determine whethe
 * Learn about [attribute-based access control](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md#attributes)
 
 ::::{tip}
-User roles are also used to control access to [spaces](/deploy-manage/manage-spaces.md). 
+User roles are also used to control access to [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
 ::::
 
 

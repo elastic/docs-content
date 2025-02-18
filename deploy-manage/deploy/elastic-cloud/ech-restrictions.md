@@ -89,6 +89,10 @@ If you are using APM 7.9.0 or older:
 
 ## Enterprise Search in Kibana [ech-restrictions-enterprise-search-kibana-integration-traffic-filters]
 
+:::{important}
+Enterprise Search is not available in {{stack}} 9.0+.
+:::
+
 Enterprise Search’s management interface in Kibana does not work with traffic filters with 8.3.1 and older, it will return an `Insufficient permissions` (403 Forbidden) error. In Kibana 8.3.2, 8.4.0 and higher, the Enterprise Search management interface works with traffic filters.
 
 

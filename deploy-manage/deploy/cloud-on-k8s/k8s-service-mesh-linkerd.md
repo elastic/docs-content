@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-mesh-linkerd.html
 ---
@@ -17,8 +19,8 @@ These instructions have been tested with Linkerd 2.7.0.
 In order to connect the operator to the service mesh, Linkerd sidecar must be injected into the ECK deployment. This can be done during installation as follows:
 
 ```sh
-kubectl create -f https://download.elastic.co/downloads/eck/2.16.1/crds.yaml
-linkerd inject https://download.elastic.co/downloads/eck/2.16.1/operator.yaml | kubectl apply -f -
+kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
+linkerd inject https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml | kubectl apply -f -
 ```
 
 Confirm that the operator is now meshed:

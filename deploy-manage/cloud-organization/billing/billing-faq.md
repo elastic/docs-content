@@ -96,7 +96,6 @@ $$$faq-included$$$What is included in my paid {{ech}} deployment?
 
     * Free 1GB RAM Kibana instance
     * Free 1GB RAM Machine Learning node
-    * Free 2GB RAM Enterprise Search instance
     * Free 1GB RAM APM server
     * A free allowance for [data transfer and snapshot storage costs](#faq-dts)
 

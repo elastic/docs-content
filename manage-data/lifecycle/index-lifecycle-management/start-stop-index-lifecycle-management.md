@@ -1,4 +1,5 @@
 ---
+navigation_title: Start and stop {{ilm-init}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-stop-ilm.html
 ---
@@ -9,13 +10,13 @@ By default, the {{ilm-init}} service is in the `RUNNING` state and manages all i
 
 You can stop {{ilm}} to suspend management operations for all indices. For example, you might stop {{ilm}} when performing scheduled maintenance or making changes to the cluster that could impact the execution of {{ilm-init}} actions.
 
-::::{important} 
+::::{important}
 When you stop {{ilm-init}}, [{{slm-init}}](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) operations are also suspended. No snapshots will be taken as scheduled until you restart {{ilm-init}}. In-progress snapshots are not affected.
 ::::
 
 
 
-## Get {{ilm-init}} status [get-ilm-status] 
+## Get {{ilm-init}} status [get-ilm-status]
 
 To see the current status of the {{ilm-init}} service, use the [Get Status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-get-status):
 
@@ -32,7 +33,7 @@ Under normal operation, the response shows {{ilm-init}} is `RUNNING`:
 ```
 
 
-## Stop {{ilm-init}} [stop-ilm] 
+## Stop {{ilm-init}} [stop-ilm]
 
 To stop the {{ilm-init}} service and pause execution of all lifecycle policies, use the [Stop API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-stop):
 
@@ -57,7 +58,7 @@ Once all policies are at a safe stopping point, {{ilm-init}} moves into the `STO
 ```
 
 
-## Start {{ilm-init}} [_start_ilm_init] 
+## Start {{ilm-init}} [_start_ilm_init]
 
 To restart {{ilm-init}} and resume executing policies, use the [Start API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-start). This puts the  {{ilm-init}} service in the `RUNNING` state and {{ilm-init}} begins executing policies from where it left off.
 

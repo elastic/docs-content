@@ -1,11 +1,10 @@
 # Set up SAML with Microsoft Entra ID [ec-securing-clusters-saml-azure]
 
-This guide provides a walk-through of how to configure Microsoft Entra ID (formerly Azure Active Directory) as an identity provider for SAML single sign-on (SSO) authentication, used for accessing Kibana and Enterprise Search in Elasticsearch Service.
+This guide provides a walk-through of how to configure Microsoft Entra ID (formerly Azure Active Directory) as an identity provider for SAML single sign-on (SSO) authentication, used for accessing Kibana in Elasticsearch Service.
 
-Use the following steps to configure SAML access to Kibana and/or Enterprise Search:
+Use the following steps to configure SAML access to Kibana:
 
 * [Configure SAML with Azure AD to access Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#ec-securing-clusters-saml-azure-kibana)
-* [Configure SAML with Azure AD to access Enterprise Search (Versions 7.x and earlier)](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#ec-securing-clusters-saml-azure-enterprise-search)
 
 For more information about SAML configuration, you can also refer to:
 
@@ -35,7 +34,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
     5. Navigate to **Single sign-on** and edit the basic SAML configuration, adding the following information:
 
-        1. `Identifier (Entity ID)` - a string that uniquely identifies a SAML service provider. We recommend using your Kibana or Enterprise Search URL, but you can use any identifier.
+        1. `Identifier (Entity ID)` - a string that uniquely identifies a SAML service provider. We recommend using your Kibana URL, but you can use any identifier.
 
             For example, `https://saml-azure.kb.northeurope.azure.elastic-cloud.com:443`.
 
@@ -139,59 +138,4 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
             For more information, refer to [Configure role mapping](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-role-mapping) in the Elasticsearch SAML documentation.
 
 
-
-## Configure SAML with Azure AD to access Enterprise Search (versions 7.x and earlier) [ec-securing-clusters-saml-azure-enterprise-search]
-
-::::{note}
-The following instructions only apply to **Enterprise Search versions 7.x and earlier**, which used a standalone UI. Since 8.0 Enterprise Search uses {{kib}} as its user interface.
-
-::::
-
-
-1. The initial steps to configure SAML with Azure AD to access Enterprise Search are similar to the earlier steps for [the prior steps for Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#ec-securing-clusters-saml-azure-kibana) except that the Enterprise Search URL is used instead of the Kibana URL in the Azure configuration. Follow those steps first to configure the Azure Identity Provider, using your Enterprise Search URL as shown.
-
-    :::{image} ../../../images/cloud-ec-saml-azuread-es-config.png
-    :alt: The Azure SAML configuration page with Kibana settings
-    :::
-
-2. After you have configured the Azure Identity Provider, proceed with the following steps to configure Elasticsearch and Enterprise Search for SAML:
-
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-    2. [Update your Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
-
-        ```sh
-        xpack.security.authc.realms.saml.enterprise-search-realm:
-                    order: 3
-                    attributes.principal: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
-                    attributes.groups: "http://schemas.microsoft.com/ws/2008/06/identity/claims/groups"
-                    idp.metadata.path: "https://login.microsoftonline.com/<Tenant ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application_ID>"
-                    idp.entity_id: "https://sts.windows.net/<Tenant_ID>/"
-                    sp.entity_id: "https://<Random_String>"
-                    sp.acs: "<Enterprise_Search_URL>/api/security/v1/saml"
-                    sp.logout: "<Enterprise_Search_URL>/logout"
-        ```
-
-        Where:
-
-        * `<Application_ID>`` is your Application ID, available in the application details in Azure.
-        * `<Tenant_ID>`` is your Tenant ID, available in the application details in Azure.
-        * `<Enterprise_Search_URL>` is your Enterprise Search endpoint, available from the Elasticsearch Service console. Ensure this is the same value that you set for `Identifier (Entity ID)` in the earlier Azure AD configuration step.
-
-            Remember to add this configuration for each node type in your [user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) if you use several node types based on your deployment architecture (Dedicated Master, High IO, and/or High Storage).
-
-            Note that for `idp.metadata.path` we’ve shown the format to construct the URL, but this should be identical to the `App Federation Metadata URL` setting that you made a note of in the previous step.
-
-    3. Next, configure Enterprise Search in order to enable SAML authentication:
-
-        1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-        2. [Update your Enterprise Search user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
-
-            ```sh
-            ent_search.auth.ent-search-realm.source: elasticsearch-saml
-            ent_search.auth.ent-search-realm.order: 1
-            ent_search.auth.ent-search-realm.description: "SAML login"
-            ent_search.auth.ent-search-realm.icon: "https://my-company.org/company-logo.png"
-            ```
-
-
-You should now have successfully configured SSO access to both Kibana and Enterprise Search with Azure AD as the identity provider.
+You should now have successfully configured SSO access to Kibana with Azure AD as the identity provider.
