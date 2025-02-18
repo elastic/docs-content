@@ -76,7 +76,7 @@ spec:
 
 ### Note when using Istio [istio-note]
 
-When using Istio, init containers do **not** have network access, as the Envoy sidecar that provides network connectivity is not started yet. In this scenario, custom containers are the best option. If custom containers are simply not a viable option, then it is possible to adjust the startup command for the elasticsearch container itself to run the plugin installation before starting Elasticsearch, as the following example describes. Note that this approach will require updating the startup command if it changes in the Elasticsearch image, which could potentially cause failures during upgrades.
+When using Istio, init containers do **not** have network access, as the Envoy sidecar that provides network connectivity is not started yet. In this scenario, custom containers are the best option. If custom containers are simply not a viable option, then it is possible to adjust the startup command for the {{es}} container itself to run the plugin installation before starting {{es}}, as the following example describes. Note that this approach will require updating the startup command if it changes in the {{es}} image, which could potentially cause failures during upgrades.
 
 ```yaml
 spec:
