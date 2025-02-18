@@ -27,7 +27,7 @@ This frequently-asked-questions list helps you with common questions while you g
     $$$faq-trial$$$Can I try Elasticsearch Service for free?
     :   Yes, sign up for a 14-day free trial. The trial starts the moment a cluster is created.
 
-        During the free trial period get access to a deployment to explore Elastic solutions for Enterprise Search, Observability, Security, or the latest version of the Elastic Stack.
+        During the free trial period get access to a deployment to explore Elastic solutions for Search, Observability, Security, or the latest version of the Elastic Stack.
 
 
     $$$faq-config$$$What if I need to change the size of my {{es}} cluster at a later time?

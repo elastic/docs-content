@@ -39,7 +39,7 @@ Also, the data you provide to the Observability AI assistant is *not* anonymized
 The AI assistant requires the following:
 
 * {{stack}} version 8.9 and later.
-* An [Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/server.html) server if Elastic managed [search connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-native-connectors.html) are used to populate external data into the knowledge base.
+* A [self-managed](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-build-connector.html) connector service must be deployed if search connectors are used to populate external data into the knowledge base.
 * An account with a third-party generative AI provider that preferably supports function calling. If your AI provider does not support function calling, you can configure AI Assistant settings under **Stack Management** to simulate function calling, but this might affect performance.
 
     Refer to the [connector documentation](../../../deploy-manage/manage-connectors.md) for your provider to learn about supported and default models.
@@ -151,7 +151,7 @@ The [search connectors](https://www.elastic.co/guide/en/elasticsearch/reference/
 
 UI affordances for creating and managing search connectors are available in the Search Solution in {{kib}}. You can also use the {{es}} [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector) to create and manage search connectors.
 
-The infrastructure for deploying connectors can be managed by Elastic or self-managed. Managed connectors require an [Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/server.html) server connected to the Elastic Stack. Self-managed connectors are run on your own infrastructure and don’t require the Enterprise Search service.
+A [self-managed](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-build-connector.html) connector service must be deployed to run connectors.
 
 By default, the AI Assistant queries all search connector indices. To override this behavior and customize which indices are queried, adjust the **Search connector index pattern** setting on the [AI Assistant Settings](../../../solutions/observability/observability-ai-assistant.md#obs-ai-settings) page. This allows precise control over which data sources are included in AI Assistant knowledge base.
 

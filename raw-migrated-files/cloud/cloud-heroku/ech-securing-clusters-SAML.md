@@ -1,6 +1,6 @@
 # Secure your clusters with SAML [ech-securing-clusters-SAML]
 
-These steps show how you can secure your Elasticsearch clusters, Kibana, and Enterprise Search instances in a deployment by using a Security Assertion Markup Language (SAML) identity provider (IdP) for cross-domain, single sign-on authentication.
+These steps show how you can secure your Elasticsearch clusters and Kibana instances in a deployment by using a Security Assertion Markup Language (SAML) identity provider (IdP) for cross-domain, single sign-on authentication.
 
 
 ## Configure your 8.0 or above cluster to use SAML [echconfigure_your_8_0_or_above_cluster_to_use_saml]

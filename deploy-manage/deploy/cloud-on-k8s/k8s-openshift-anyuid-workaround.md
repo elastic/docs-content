@@ -70,3 +70,6 @@ Starting with version 7.9, it is possible to run the APM Server with the `restri
     ```
 
 
+:::{important}
+Enterprise Search is not available in versions 9.0+.
+:::

@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-whats-new.html
 ---
 
-# What���s new with the Elastic Stack [ech-whats-new]
+# What's new with the Elastic Stack [ech-whats-new]
 
 As soon as the latest Elastic Stack version is released, we make it available to you.
 
@@ -32,6 +32,10 @@ APM
 * [APM Release Notes](https://www.elastic.co/guide/en/apm/guide/current/release-notes.html)
 
 Enterprise Search
+
+:::{important}
+Enterprise Search is not available in {{stack}} 9.0+.
+:::
 
 * [Enterprise Search Release Notes](https://www.elastic.co/guide/en/enterprise-search/current/changelog.html)
 

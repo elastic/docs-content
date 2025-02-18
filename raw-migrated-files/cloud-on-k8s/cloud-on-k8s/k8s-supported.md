@@ -7,7 +7,8 @@ ECK is compatible with:
 * Google Kubernetes Engine (GKE), Azure Kubernetes Service (AKS), and Amazon Elastic Kubernetes Service (EKS)
 * Helm: 3.2.0+
 * Elasticsearch, Kibana, APM Server: 6.8+, 7.1+, 8+
-* Enterprise Search: 7.7+, 8+
+* Enterprise Search: 7.7+, 8.x (Enterprise Search is not available in {{stack}} 9.0+)
+
 * Beats: 7.0+, 8+
 * Elastic Agent: 7.10+ (standalone), 7.14+ (Fleet), 8+
 * Elastic Maps Server: 7.11+, 8+

@@ -169,7 +169,7 @@ $$$azure-integration-existing-email$$$Can I subscribe using an email address fro
 $$$azure-integration-azure-user-management$$$Is the {{ecloud}} Azure Native ISV Service connected with Azure user management?
 :   No. Elastic is not currently integrated with Azure user management. Azure users who deploy {{es}} on Azure view and manage their own cluster through the Cloud console. Other Azure users in the same tenant cannot access clusters through the Cloud console other than those that they themselves created.
 
-    When trying to access resources such as {{es}}, {{kib}}, {{ents}}, or APM in a deployment that was created by another Azure user, the following error is shown:
+    When trying to access resources such as {{es}}, {{kib}}, or APM in a deployment that was created by another Azure user, the following error is shown:
 
     :::{image} ../../../images/cloud-ec-marketplace-azure026.png
     :alt: Error message displayed in the {{ecloud}} console: To access the resource {resource-name}
@@ -300,8 +300,6 @@ $$$azure-integration-whats-included$$$What is included in my {{ecloud}} deployme
     * An {{es}} cluster
     * A {{kib}} instance which provides data visualization and a front-end for the {{stack}}
     * An APM server that allows you to easily collect application traces
-    * An {{ents}} instance that allows you to easily build a search experience with an intuitive interface
-
 
 $$$azure-integration-how-to-access$$$How can I access my {{ecloud}} deployment?
 :   Navigate to the deployment overview page in Azure:
@@ -320,7 +318,7 @@ $$$azure-integration-modify-deployment$$$How can I modify my {{ecloud}} deployme
 
     * [Re-size](ec-customize-deployment-components.md) to increase or decrease the amount of RAM, CPU, and storage available to your deployment, or to add additional availability zones.
     * [Upgrade](../../upgrade/deployment-or-cluster.md) your deployment to a new {{stack}} version.
-    * Enable or disable individual {{stack}} components such as APM, Machine Learning, and {{ents}}.
+    * Enable or disable individual {{stack}} components such as APM and Machine Learning.
     * [Update {{stack}} user settings](edit-stack-settings.md) in the component YML files.
     * [Add or remove custom plugins](add-plugins-extensions.md).
     * [Configure IP filtering](../../security/traffic-filtering.md).
