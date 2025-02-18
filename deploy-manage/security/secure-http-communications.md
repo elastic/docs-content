@@ -50,3 +50,5 @@ $$$csp-strict-mode$$$
 $$$k8s-setting-up-your-own-certificate$$$
 
 $$$k8s-static-ip-custom-domain$$$
+
+$$$k8s-disable-tls$$$
