@@ -34,7 +34,7 @@ Mapping is the process of defining how a document and the fields it contains are
 
 Each document is a collection of fields, which each have their own [data type](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes [metadata fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html), like the `_source` field, which customize how a document’s associated metadata is handled.
 
-Depending on where you are in your data journey, use **dynamic mapping** and **explicit mapping** to define your data. For example, you can explicitly map fields where you don’t want to use the defaults, or to gain greater control over which fields are created. Then you can allow {{es}} to dynamically map other fields.
+Depending on where you are in your data journey, use *dynamic mapping* and *explicit mapping* to define your data. For example, you can explicitly map fields where you don’t want to use the defaults, or to gain greater control over which fields are created. Then you can allow {{es}} to dynamically map other fields. Using a combination of dynamic and explicit mapping on the same index is especially useful when you have a mix of known and unknown fields in your data.
 
 ::::{note}
 Before 7.0.0, the mapping definition included a type name. {{es}} 7.0.0 and later no longer accept a default mapping. [Removal of mapping types](/manage-data/data-store/mapping/removal-of-mapping-types.md) provides more information.
@@ -42,13 +42,13 @@ Before 7.0.0, the mapping definition included a type name. {{es}} 7.0.0 and late
 
 ## Dynamic mapping [mapping-dynamic] 
 
-When you use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically attempts to detect the data type of fields in your documents. This allows you to get started quickly by just adding data to an index. If you index additional documents with new fields, {{es}} will add these fields automatically. You can add fields to the top-level mapping, and to inner [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) and [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) fields.
+When you use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically detects the data types of fields in your documents and creates mappings for you. If you index additional documents with new fields, {{es}} will add these fields automatically. You can add fields to the top-level mapping, and to inner [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) and [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) fields. Dynamic mapping helps you get started quickly, but might yield suboptimal results for your specific use case due to automatic field type inference.
 
-Use [dynamic templates](/manage-data/data-store/mapping/dynamic-templates.md) to define custom mappings that are applied to dynamically added fields based on the matching condition.
+Use [dynamic templates](/manage-data/data-store/mapping/dynamic-templates.md) to define custom mappings that are applied to dynamically added fields based on the matching condition. 
 
 ## Explicit mapping [mapping-explicit] 
 
-Use [explicit mapping](/manage-data/data-store/mapping/explicit-mapping.md) to define exactly how data types are mapped to fields, customized to your specific use case.
+Use [explicit mapping](/manage-data/data-store/mapping/explicit-mapping.md) to define mappings by specifying data types for each field. This is recommended for production use cases, because you have full control over how your data is indexed to suit your specific use case.
 
 Defining your own mappings enables you to:
 

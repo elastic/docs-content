@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-webhook-namespace-selectors.html
 ---
@@ -14,7 +16,6 @@ Webhook resources are cluster-scoped, therefore `createClusterScopedResources` m
 ::::{warning} 
 It is not recommended to deploy webhook resources in environments where operators are run by untrusted users and need to be locked down tightly.
 ::::
-
 
 For more information, check [Configure the validating webhook](configure-validating-webhook.md) and [Dynamic Admission Control](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/).
 

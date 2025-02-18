@@ -1,11 +1,13 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-transport-settings.html
 ---
 
 # Transport settings [k8s-transport-settings]
 
-The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for details. For customization options of the HTTP layer, check [Services](accessing-services.md) and [TLS certificates](tls-certificates.md).
+The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for details. For customization options of the HTTP layer, check [Services](accessing-services.md) and [TLS certificates](/deploy-manage/security/secure-http-communications.md).
 
 ## Customize the Transport Service [k8s_customize_the_transport_service]
 
@@ -27,7 +29,6 @@ Check the [Kubernetes Publishing Services (ServiceTypes)](https://kubernetes.io/
 ::::{note}
 When you change the `clusterIP` setting of the service, ECK deletes and re-creates the service, as `clusterIP` is an immutable field. This will cause a short network disruption, but in most cases it should not affect existing connections as the transport module uses long-lived TCP connections.
 ::::
-
 
 
 ## Configure a custom Certificate Authority [k8s-transport-ca]
@@ -119,8 +120,6 @@ spec:
 2. The example assumes that a `ClusterIssuer` by the name of `ca-cluster-issuer` exists and a PEM encoded version of the CA certificate is available in a ConfigMap (in the example named `trust`).  The CA certificate must be in a file called `ca.crt` inside the ConfigMap in the same namespace as the Elasticsearch resource.
 3. If the remote cluster server is enabled, then the DNS names must also include both:* The DNS name for the related Kubernetes `Service`: `<cluster-name>-es-remote-cluster.${POD_NAMESPACE}.svc`
 * The Pod DNS name: `${POD_NAME}.<cluster-name>-es-<nodeset-name>.${POD_NAMESPACE}.svc`
-
-
 
 The following manifest is only provided to illustrate how these certificates can be configured in principle, using the trust-manager Bundle resource and cert-manager provisioned certificates:
 

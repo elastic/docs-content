@@ -161,7 +161,7 @@ Problems with rollover aliases are a common cause of errors. Consider using [dat
 
 ### Rollover alias [x] can point to multiple indices, found duplicated alias [x] in index template [z] [_rollover_alias_x_can_point_to_multiple_indices_found_duplicated_alias_x_in_index_template_z]
 
-The target rollover alias is specified in an index template’s `index.lifecycle.rollover_alias` setting. You need to explicitly configure this alias *one time* when you [bootstrap the initial index](../../../manage-data/lifecycle/index-lifecycle-management.md#ilm-gs-alias-bootstrap). The rollover action then manages setting and updating the alias to [roll over](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover#rollover-index-api-desc) to each subsequent index.
+The target rollover alias is specified in an index template’s `index.lifecycle.rollover_alias` setting. You need to explicitly configure this alias *one time* when you [bootstrap the initial index](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#ilm-gs-alias-bootstrap). The rollover action then manages setting and updating the alias to [roll over](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover#rollover-index-api-desc) to each subsequent index.
 
 Do not explicitly configure this same alias in the aliases section of an index template.
 

@@ -1,13 +1,9 @@
 ---
-navigation_title: "Tutorial"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/example-using-index-lifecycle-policy.html
 ---
 
-
-
-# Tutorial: Customize built-in policies [example-using-index-lifecycle-policy]
-
+# Tutorial: Customize built-in policies
 
 {{es}} includes the following built-in {{ilm-init}} policies:
 
