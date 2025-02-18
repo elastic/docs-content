@@ -15,3 +15,10 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/docs-content/serverless/intro.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/general-serverless-status.md
 %      Notes: also in troubleshooting
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/docs-content/serverless/intro.md](/raw-migrated-files/docs-content/serverless/intro.md)
+* [/raw-migrated-files/docs-content/serverless/general-serverless-status.md](/raw-migrated-files/docs-content/serverless/general-serverless-status.md)

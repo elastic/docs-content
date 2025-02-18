@@ -129,7 +129,7 @@ The {{kib}} role management interface allows you to describe these various acces
 
 ### Audit access [_audit_access]
 
-Once you have your users and roles configured, you might want to maintain a record of who did what, when. The {{kib}} audit log will record this information for you, which can then be correlated with {{es}} audit logs to gain more insights into your users’ behavior. For more information, refer to [{{kib}} audit logging](../deploy-manage/monitor/logging-configuration/enabling-kibana-audit-logs.md).
+Once you have your users and roles configured, you might want to maintain a record of who did what, when. The {{kib}} audit log will record this information for you, which can then be correlated with {{es}} audit logs to gain more insights into your users’ behavior. For more information, refer to [{{kib}} audit logging](/deploy-manage/monitor/logging-configuration/enabling-audit-logs.md).
 
 
 ## Find apps and objects [kibana-navigation-search]

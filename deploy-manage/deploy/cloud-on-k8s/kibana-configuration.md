@@ -1,11 +1,13 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana.html
 ---
 
 # Kibana configuration [k8s-kibana]
 
-The [quickstart](kibana-instance-quickstart.md) is a good starting point to quickly setup a {{kib}} instance with ECK. The following sections describe how to customize a {{kib}} deployment to suit your requirements.
+The following sections describe how to customize a {{kib}} deployment to suit your requirements.
 
 * [Connect to an {{es}} cluster](k8s-kibana-es.md)
 
@@ -26,9 +28,6 @@ The [quickstart](kibana-instance-quickstart.md) is a good starting point to quic
     * [Disable TLS](k8s-kibana-http-configuration.md#k8s-kibana-http-disable-tls)
     * [Install {{kib}} plugins](k8s-kibana-plugins.md)
 
-
-
-
-
+* [Autoscaling stateless applications](../../autoscaling/autoscaling-stateless-applications-on-eck.md): Use [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) for {{kib}} or other stateless applications.
 
 

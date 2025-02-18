@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-readiness.html
 ---
@@ -39,8 +41,9 @@ spec:
 
 Note that this requires restarting the Pods.
 
-
 ## Elasticsearch versions 8.2.0 and later [k8s_elasticsearch_versions_8_2_0_and_later]
+
+% this feature might have disappeared, we will need to investigate this a bit more, as the link below doesn't work anymore but it does for 8.15 for example.
 
 We do not recommend overriding the default readiness probe on Elasticsearch 8.2.0 and later. ECK configures a socket based readiness probe using the Elasticsearch [readiness port feature](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#readiness-tcp-port) which is not influenced by the load on the Elasticsearch cluster.
 

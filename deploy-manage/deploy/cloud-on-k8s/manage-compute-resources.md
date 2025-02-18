@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-managing-compute-resources.html
 ---
@@ -102,7 +104,7 @@ A [known Kubernetes issue](https://github.com/kubernetes/kubernetes/issues/51135
 
 
 
-### Set compute resources for Kibana, Enterprise Search, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
+### Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1
@@ -285,7 +287,6 @@ If `resources` is not defined in the specification of an object, then the operat
 | Beat | `300Mi` | `300Mi` |
 | Elastic Agent | `400Mi` | `400Mi` |
 | Elastic Maps Server | `200Mi` | `200Mi` |
-| Enterprise Search | `4Gi` | `4Gi` |
 | Logstash | `2Gi` | `2Gi` |
 
 If the Kubernetes cluster is configured with [LimitRanges](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) that enforce a minimum memory constraint, they could interfere with the operator defaults and cause object creation to fail.
