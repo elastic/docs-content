@@ -12,7 +12,7 @@ This repository type is only available if you run {{es}} on your own hardware. I
 
 You can use a URL repository to give a cluster read-only access to a shared file system. Since URL repositories are always read-only, they’re a safer and more convenient alternative to registering a read-only shared filesystem repository.
 
-Use {{kib}} or the [create snapshot repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html) to register a URL repository.
+Use {{kib}} or the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository) to register a URL repository.
 
 ```console
 PUT _snapshot/my_read_only_url_repository

@@ -25,8 +25,8 @@ Use the Data Quality dashboard to:
 To use the Data Quality dashboard, you need the appropriate user role with the following privileges for each index you want to check:
 
 * `monitor` or `manage`
-* `view_index_metadata` or `manage` (required for the [Get mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html))
-* `read` (required for the [Search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html))
+* `view_index_metadata` or `manage` (required for the [Get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping))
+* `read` (required for the [Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search))
 
 ::::
 

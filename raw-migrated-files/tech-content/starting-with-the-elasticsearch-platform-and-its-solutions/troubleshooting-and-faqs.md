@@ -20,7 +20,7 @@ Throughout the Elastic docs we have a number of troubleshooting and frequently a
 * [Sign up using an email address from another Elastic Cloud account](../../../deploy-manage/deploy/elastic-cloud/create-an-organization.md)
 * [{{ess}} AWS Marketplace troubleshooting](../../../deploy-manage/deploy/elastic-cloud/aws-marketplace.md#ec-billing-aws-troubleshooting)
 * [Native Azure integration troubleshooting](../../../deploy-manage/deploy/elastic-cloud/azure-native-isv-service.md#ec-azure-integration-troubleshooting)
-* [{{ece}} troubleshooting](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-troubleshooting.html)
+* [{{ece}} troubleshooting](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting.html)
 * [Understanding deployment health FAQ](../../../deploy-manage/monitor/stack-monitoring.md#ec-health-best-practices)
 * [{{ess}} FAQ](../../../deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
 * [{{ess}} billing FAQ](../../../deploy-manage/cloud-organization/billing/billing-faq.md)
@@ -32,16 +32,10 @@ Throughout the Elastic docs we have a number of troubleshooting and frequently a
 * [Kibana troubleshooting](../../../troubleshoot/kibana.md)
 * [Osquery FAQ](../../../solutions/security/investigate/osquery-faq.md)
 
-**{{ents}}**
-
-* [Enterprise Search troubleshooting](https://www.elastic.co/guide/en/enterprise-search/current/troubleshooting.html)
-
 **{{observability}}**
 
 * [Observability troubleshooting](../../../troubleshoot/observability.md)
-* [APM troubleshooting](https://www.elastic.co/guide/en/apm/guide/current/troubleshoot-apm.html)
-* [Legacy APM Overview troubleshooting](https://www.elastic.co/guide/en/apm/get-started/7.15/troubleshooting.html)
-* [Legacy APM Server Reference troubleshooting](https://www.elastic.co/guide/en/apm/guide/current/troubleshooting.html)
+* [APM troubleshooting](/troubleshoot/observability/apm.md)
 * [{{apm-go-agent}} troubleshooting](../../../troubleshoot/observability/apm-agent-go/apm-go-agent.md)
 * [{{apm-ios-agent}} troubleshooting](../../../troubleshoot/observability/apm-agent-swift/apm-ios-agent.md)
 * [{{apm-java-agent}} troubleshooting](../../../troubleshoot/observability/apm-agent-java/apm-java-agent.md)

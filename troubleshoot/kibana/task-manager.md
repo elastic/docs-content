@@ -1,12 +1,10 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: "Task Manager"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-troubleshooting.html
 ---
 
-
-
-# Task manager [task-manager-troubleshooting]
+# Troubleshoot {{kib}} Task Manager [task-manager-troubleshooting]
 
 
 Task Manager is used by a wide range of services in {{kib}}, such as [Alerting](../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md), Actions, Reporting, and Telemetry. Unexpected behavior in these services might be a downstream issue originating in Task Manager.
@@ -81,7 +79,7 @@ By analyzing the different sections of the output, you can evaluate different th
 
 Retrieve the latest monitored health stats of a {{kib}} instance Task Manager:
 
-```kibana
+```bash
 $ curl -X GET api/task_manager/_health
 ```
 
@@ -924,7 +922,7 @@ For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/
 Tasks are not running, and the server logs contain the following error message:
 
 ```txt
-[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in {es}
+[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in {{es}}
 ```
 
 **Solution**:

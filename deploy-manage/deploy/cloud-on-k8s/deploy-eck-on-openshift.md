@@ -1,11 +1,13 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-openshift.html
 ---
 
 # Deploy ECK on Openshift [k8s-openshift]
 
-This page shows how to run ECK on OpenShift.
+This section shows how to run ECK on OpenShift.
 
 * [Before you begin](#k8s-openshift-before-you-begin)
 * [Deploy the operator](k8s-openshift-deploy-operator.md)
@@ -14,12 +16,6 @@ This page shows how to run ECK on OpenShift.
 * [Deploy Docker images with `anyuid` SCC](k8s-openshift-anyuid-workaround.md)
 * [Grant privileged permissions to Beats](k8s-openshift-beats.md)
 * [Grant host access permission to Elastic Agent](k8s-openshift-agent.md)
-
-::::{warning} 
-Some Docker images are incompatible with the `restricted` SCC. This is the case for the **APM Server before 7.9** and for **Enterprise Search 7.9 and 7.10**. You can use this [workaround](k8s-openshift-anyuid-workaround.md) to run those images with the `anyuid` SCC.
-::::
-
-
 
 ## Before you begin [k8s-openshift-before-you-begin] 
 

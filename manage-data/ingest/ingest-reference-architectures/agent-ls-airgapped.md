@@ -6,14 +6,14 @@ mapped_pages:
 # Elastic Agent to Logstash: Air-gapped environment [agent-ls-airgapped]
 
 :::{image} ../../../images/ingest-ea-ls-airgapped.png
-:alt: Image showing {agent}
+:alt: Image showing {{agent}}
 :::
 
 Ingest model
 :   All {{stack}} components deployed inside a DMZ:
 
     * Control path: {{agent}} to {{fleet}} to {{es}}<br>
-    * Data path: {{agent}} to {es}
+    * Data path: {{agent}} to {{es}}
 
 
 Use when

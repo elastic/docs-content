@@ -3,7 +3,7 @@
 
 ## Hosted Elasticsearch Service [hosted-elasticsearch-service]
 
-{{ecloud}} offers all of the features of {{es}}, {{kib}}, and  Elastic’s {{observability}}, {{ents}}, and {{elastic-sec}} solutions as a hosted service available on AWS, GCP, and Azure.
+{{ecloud}} offers all of the features of {{es}}, {{kib}}, and  Elastic’s {{observability}}, and {{elastic-sec}} solutions as a hosted service available on AWS, GCP, and Azure.
 
 To set up Elasticsearch in {{ecloud}}, sign up for a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 

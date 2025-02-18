@@ -16,7 +16,7 @@ By default, automatic deployment annotations are enabled. This means the Applica
 
 Alternatively, you can explicitly create deployment annotations with our annotation API. The API can integrate into your CI/CD pipeline, so that each time you deploy, a POST request is sent to the annotation API endpoint:
 
-```curl
+```bash
 curl -X POST \
   http://localhost:5601/api/apm/services/${SERVICE_NAME}/annotation \ <1>
 -H 'Content-Type: application/json' \

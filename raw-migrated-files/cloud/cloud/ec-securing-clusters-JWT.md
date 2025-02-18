@@ -1,6 +1,6 @@
 # Secure your clusters with JWT [ec-securing-clusters-JWT]
 
-These steps show how you can secure your Elasticsearch clusters, and Enterprise Search instances in a deployment by using a JSON Web Token (JWT) realm for authentication.
+These steps show how you can secure your Elasticsearch clusters in a deployment by using a JSON Web Token (JWT) realm for authentication.
 
 
 ## Before you begin [ec_before_you_begin_14]

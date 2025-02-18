@@ -125,7 +125,7 @@ To add external data to the knowledge base in the Project Settings UI:
 
 ### Use the {{es}} Index API [observability-ai-assistant-use-the-es-index-api]
 
-1. Ingest external data (GitHub issues, Markdown files, Jira tickets, text files, etc.) into {{es}} using the {{es}} [Index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html).
+1. Ingest external data (GitHub issues, Markdown files, Jira tickets, text files, etc.) into {{es}} using the {{es}} [Index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create).
 2. Reindex your data into the AI Assistant’s knowledge base index by completing the following query in **Developer Tools** → **Console**. Update the following fields before reindexing:
 
     * `InternalDocsIndex`: Name of the index where your internal documents are stored.

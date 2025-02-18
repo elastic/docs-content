@@ -22,7 +22,6 @@ To get up and running with your deployment quickly:
     * **Default**. A template to get you started and for backwards compatibility with existing deployments. The default template is suitable for search and general all-purpose workloads that don’t require more specialized resources.
     * **Cross-cluster Search**. A lightweight hub to manage remote connections for running Elasticsearch queries across multiple deployments and indices.
     * [**Elastic Security**](../../../solutions/security.md). Provides an overview of the events and alerts from your environment. Elastic Security helps you defend your organization from threats before damage and loss occur.
-    * [**Enterprise Search**](https://www.elastic.co/guide/en/enterprise-search/current/index.html). Default deployment template for Elastic Enterprise Search.
     * [**Elastic Observability**](../../../solutions/observability/get-started/what-is-elastic-observability.md). Enables you to monitor and apply analytics in real time to events happening across all your environments. You can analyze log events, monitor the performance metrics for the host or container that it ran in, trace the transaction, and check the overall service availability.
 
 
@@ -45,7 +44,7 @@ If these system templates are not suitable for your use case, you can [create yo
     :::
 
 
-After a deployment is spun up, you can scale the size and add other features; however, the instance configuration and computing ratios cannot be changed. If you need to change an existing deployment to another template, we recommend [migrating your data](../../../manage-data/migrate.md#ece-migrate-data2).
+After a deployment is spun up, you can scale the size and add other features; however, the instance configuration and computing ratios cannot be changed. If you need to change an existing deployment to another template, we recommend [migrating your data](../../../manage-data/migrate.md).
 
 
 

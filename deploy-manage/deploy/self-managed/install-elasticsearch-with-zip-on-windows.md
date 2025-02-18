@@ -10,7 +10,7 @@ mapped_pages:
 This package contains both free and subscription features. [Start a 30-day trial](https://www.elastic.co/guide/en/elasticsearch/reference/current/license-settings.html) to try out all of the features.
 
 ::::{note}
-On Windows the {{es}} {ml} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows it can be installed via Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you cannot install the Microsoft Universal C Runtime library you can still use the rest of {{es}} if you disable the {{ml}} feature.
+On Windows the {{es}} {{ml}} feature requires the Microsoft Universal C Runtime library. This is built into Windows 10, Windows Server 2016 and more recent versions of Windows. For older versions of Windows it can be installed via Windows Update, or from a [separate download](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows). If you cannot install the Microsoft Universal C Runtime library you can still use the rest of {{es}} if you disable the {{ml}} feature.
 ::::
 
 
@@ -39,7 +39,7 @@ cd C:\Program Files\elasticsearch-9.0.0-beta1
 
 ## Enable automatic creation of system indices [windows-enable-indices]
 
-Some commercial features automatically create indices within {{es}}. By default, {{es}} is configured to allow automatic index creation, and no additional steps are required. However, if you have disabled automatic index creation in {{es}}, you must configure [`action.auto_create_index`](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-creation) in `elasticsearch.yml` to allow the commercial features to create the following indices:
+Some commercial features automatically create indices within {{es}}. By default, {{es}} is configured to allow automatic index creation, and no additional steps are required. However, if you have disabled automatic index creation in {{es}}, you must configure [`action.auto_create_index`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) in `elasticsearch.yml` to allow the commercial features to create the following indices:
 
 ```yaml
 action.auto_create_index: .monitoring*,.watches,.triggered_watches,.watcher-history*,.ml*

@@ -67,7 +67,7 @@ We do not recommend disabling {{apm-agent}} verification of the server’s certi
 * **Go agent**: [`ELASTIC_APM_VERIFY_SERVER_CERT`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-verify-server-cert)
 * **.NET agent**: [`VerifyServerCert`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-reporter.html#config-verify-server-cert)
 * **Java agent**: [`verify_server_cert`](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-verify-server-cert)
-* **PHP agent**: [`verify_server_cert`](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/configuration-reference.html#config-verify-server-cert)
+* **PHP agent**: [`verify_server_cert`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-verify-server-cert)
 * **Python agent**: [`verify_server_cert`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-verify-server-cert)
 * **Ruby agent**: [`verify_server_cert`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-verify-server-cert)
 * **Node.js agent**: [`verifyServerCert`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#validate-server-cert)

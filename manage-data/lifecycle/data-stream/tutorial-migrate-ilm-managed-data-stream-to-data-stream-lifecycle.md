@@ -233,8 +233,8 @@ GET _data_stream/dsl-data-stream
 }
 ```
 
-1. The existing backing index will continue to be managed by {ilm-init}
-2. The existing backing index will continue to be managed by {ilm-init}
+1. The existing backing index will continue to be managed by {{ilm-init}}
+2. The existing backing index will continue to be managed by {{ilm-init}}
 3. The next generation index will be managed by Data stream lifecycle
 4. The `prefer_ilm` setting value we configured in the index template is reflected and will be configured accordingly for new backing indices.
 
@@ -302,8 +302,8 @@ GET _data_stream/dsl-data-stream
 }
 ```
 
-1. The backing indices that existed before rollover will continue to be managed by {ilm-init}
-2. The backing indices that existed before rollover will continue to be managed by {ilm-init}
+1. The backing indices that existed before rollover will continue to be managed by {{ilm-init}}
+2. The backing indices that existed before rollover will continue to be managed by {{ilm-init}}
 3. The new write index received the `false` value for the `prefer_ilm` setting, as we configured in the index template
 4. The new write index is managed by `Data stream lifecycle`
 
@@ -386,9 +386,9 @@ GET _data_stream/dsl-data-stream
 }
 ```
 
-1. The write index is now managed by {ilm-init}
+1. The write index is now managed by {{ilm-init}}
 2. The `lifecycle` configured on the data stream is now disabled.
-3. The next write index will be managed by {ilm-init}
+3. The next write index will be managed by {{ilm-init}}
 
 
 Had we removed the {{ilm-init}} policy from the index template when we [updated](#update-index-template-for-dsl) it, the write index of the data stream will now be `Unmanaged` because the index wouldn’t have the {{ilm-init}} policy configured to fallback onto.

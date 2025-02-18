@@ -1,12 +1,12 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: "Reporting"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting.html
 ---
 
 
 
-# Reporting [reporting-troubleshooting]
+# Troubleshoot {{kib}} reporting [reporting-troubleshooting]
 
 
 Kibana excels as a data visualization tool. The {{report-features}} exist to export data as simple reports, however Kibana is not a data export tool. To export data at a large scale, there are better ways and better architectures for exporting data at scale from Elasticsearch.

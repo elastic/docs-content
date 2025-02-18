@@ -114,7 +114,7 @@ You can further refine the conditions under which actions run by specifying that
 
 When you create a rule in {{kib}}, it provides an example message that is appropriate for each action. For example, the following message is provided for server log connector actions that run for each alert:
 
-```mustache
+```handlebars
 Elasticsearch query rule '{{rule.name}}' is active:
 
 - Value: {{context.value}}
@@ -141,7 +141,7 @@ The following variables are specific to the {{es}} query rule:
 `context.hits`
 :   (array of objects) The most recent documents that matched the query. Using the [Mustache](https://mustache.github.io/) template array syntax, you can iterate over these hits to get values from the {{es}} documents into your actions. For example, the message in an email connector action might contain:
 
-    ```mustache
+    ```handlebars
     Elasticsearch query rule '{{rule.name}}' is active:
 
     {{#context.hits}}
@@ -152,7 +152,7 @@ The following variables are specific to the {{es}} query rule:
 
     The documents returned by `context.hits` include the [`_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) field. If the {{es}} query search API’s [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
 
-    ```mustache
+    ```handlebars
     {{#context.hits}}
     timestamp: {{_source.@timestamp}}
     day of the week: {{fields.day_of_week}} <1>
@@ -164,7 +164,7 @@ The following variables are specific to the {{es}} query rule:
 
     As the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
 
-    ```mustache
+    ```handlebars
     {{#context.hits}}
     Labels:
     {{#fields.labels}}

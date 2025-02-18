@@ -37,18 +37,18 @@ To create an API key, go to the **API Keys** management page using the navigatio
 
 ![Create API Key UI](../../images/kibana-create-ccr-api-key.png "")
 
-Refer to the [create API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) documentation to learn more about creating user API keys.
+Refer to the [create API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) documentation to learn more about creating user API keys.
 
-Refer to the [create cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) documentation to learn more about creating cross-cluster API keys.
+Refer to the [create cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) documentation to learn more about creating cross-cluster API keys.
 
 
 ## Update an API key [udpate-api-key]
 
 To update an API key, go to the **API Keys** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md), and then click on the name of the key. You cannot update the name or the type of API key.
 
-Refer to the [update API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-api-key.html) documentation to learn more about updating user API keys.
+Refer to the [update API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-api-key) documentation to learn more about updating user API keys.
 
-Refer to the [update cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-update-cross-cluster-api-key.html) documentation to learn more about updating cross-cluster API keys.
+Refer to the [update cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-cross-cluster-api-key) documentation to learn more about updating cross-cluster API keys.
 
 
 ## View and delete API keys [view-api-keys]

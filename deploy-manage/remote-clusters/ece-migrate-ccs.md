@@ -23,5 +23,5 @@ You can make this change in the user Cloud UI. The only drawback of this method 
     :class: screenshot
     :::
 
-4. Finally, [configure the remote clusters](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-remote-cluster-other-ece.html).
+4. Finally, [configure the remote clusters](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-other-ece.html).
 

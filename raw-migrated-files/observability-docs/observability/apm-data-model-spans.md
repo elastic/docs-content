@@ -25,14 +25,14 @@ For performance reasons, APM agents can choose to sample or omit spans purposefu
 To configure the number of spans recorded per transaction, see the relevant Agent documentation:
 
 * Android: *Not yet supported*
-* Go: [`ELASTIC_APM_TRANSACTION_MAX_SPANS`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-transaction-max-spans)
+* Go: [`ELASTIC_APM_TRANSACTION_MAX_SPANS`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-transaction-max-spans)
 * iOS: *Not yet supported*
-* Java: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-transaction-max-spans)
-* .NET: [`TransactionMaxSpans`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-core.html#config-transaction-max-spans)
-* Node.js: [`transactionMaxSpans`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#transaction-max-spans)
-* PHP: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/configuration-reference.html#config-transaction-max-spans)
-* Python: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-transaction-max-spans)
-* Ruby: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-transaction-max-spans)
+* Java: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-transaction-max-spans)
+* .NET: [`TransactionMaxSpans`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-transaction-max-spans)
+* Node.js: [`transactionMaxSpans`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-max-spans)
+* PHP: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-transaction-max-spans)
+* Python: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-transaction-max-spans)
+* Ruby: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-transaction-max-spans)
 
 
 ## Missing spans [apm-data-model-missing-spans]
@@ -465,8 +465,8 @@ Support for span compression is available in these agents:
 
 | Agent | Same-kind config | Exact-match config |
 | --- | --- | --- |
-| **Go agent** | [`ELASTIC_APM_SPAN_COMPRESSION_SAME_KIND_MAX_DURATION`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-span-compression-same-kind-duration) | [`ELASTIC_APM_SPAN_COMPRESSION_EXACT_MATCH_MAX_DURATION`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-span-compression-exact-match-duration) |
-| **Java agent** | [`span_compression_same_kind_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-huge-traces.html#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-huge-traces.html#config-span-compression-exact-match-max-duration) |
-| **.NET agent** | [`SpanCompressionSameKindMaxDuration`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-core.html#config-span-compression-same-kind-max-duration) | [`SpanCompressionExactMatchMaxDuration`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-core.html#config-span-compression-exact-match-max-duration) |
-| **Node.js agent** | [`spanCompressionSameKindMaxDuration`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#span-compression-same-kind-max-duration) | [`spanCompressionExactMatchMaxDuration`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#span-compression-exact-match-max-duration) |
-| **Python agent** | [`span_compression_same_kind_max_duration`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-span-compression-exact-match-max_duration) |
+| **Go agent** | [`ELASTIC_APM_SPAN_COMPRESSION_SAME_KIND_MAX_DURATION`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-span-compression-exact-match-duration) |
+| **Java agent** | [`span_compression_same_kind_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/current/config-huge-traces.html#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/current/config-huge-traces.html#config-span-compression-exact-match-max-duration) |
+| **.NET agent** | [`SpanCompressionSameKindMaxDuration`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-span-compression-exact-match-max-duration) |
+| **Node.js agent** | [`spanCompressionSameKindMaxDuration`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#span-compression-exact-match-max-duration) |
+| **Python agent** | [`span_compression_same_kind_max_duration`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-span-compression-exact-match-max_duration) |

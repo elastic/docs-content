@@ -10,13 +10,13 @@ mapped_pages:
 
 
 ::::{important} 
-You only need to complete the following steps if you’re running an existing, unsecured cluster and want to enable the {{es}} {security-features}.
+You only need to complete the following steps if you’re running an existing, unsecured cluster and want to enable the {{es}} {{security-features}}.
 ::::
 
 
 In {{es}} 8.0 and later, security is [enabled automatically](../deploy/self-managed/installing-elasticsearch.md) when you start {{es}} for the first time.
 
-If you’re running an existing {{es}} cluster where security is disabled, you can manually enable the {{es}} {security-features} and then create passwords for built-in users. You can add more users later, but using the built-in users simplifies the process of enabling security for your cluster.
+If you’re running an existing {{es}} cluster where security is disabled, you can manually enable the {{es}} {{security-features}} and then create passwords for built-in users. You can add more users later, but using the built-in users simplifies the process of enabling security for your cluster.
 
 ::::{important} 
 The minimal security scenario is not sufficient for [production mode](../deploy/self-managed/bootstrap-checks.md#dev-vs-prod-mode) clusters. If your cluster has multiple nodes, you must enable minimal security and then [configure Transport Layer Security (TLS)](secure-cluster-communications.md) between nodes.
