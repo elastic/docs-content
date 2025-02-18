@@ -49,7 +49,7 @@ Each role can grant access to multiple data indices, and each index can have a d
 :class: screenshot
 :::
 
-Refer to [index privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices) for a complete description of available options.
+Refer to [index privileges](asciidocalypse://reference/elasticsearch/security-privileges.md#privileges-list-indices) for a complete description of available options.
 
 ### Document-level and field-level security
 

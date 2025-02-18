@@ -29,7 +29,7 @@ After a user is authenticated, use role-based access control to determine whethe
 * Learn about [attribute-based access control](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md#attributes)
 
 ::::{tip}
-User roles are also used to control access to [spaces](/deploy-manage/manage-spaces.md). 
+User roles are also used to control access to [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
 ::::
 
 
