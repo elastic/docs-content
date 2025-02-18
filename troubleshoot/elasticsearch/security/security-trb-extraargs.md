@@ -1,5 +1,5 @@
 ---
-navigation_title: "Users command error: extra arguments" 
+navigation_title: "Error: Extra arguments provided" 
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-trb-extraargs.html
 ---

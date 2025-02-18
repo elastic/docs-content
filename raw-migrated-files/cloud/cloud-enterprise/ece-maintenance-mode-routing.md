@@ -14,7 +14,7 @@ It might be helpful to temporarily block upstream requests in order to protect s
 
 * {{ecloud}} will automatically set and remove routing blocks during  plan changes. Elastic recommends avoiding manually overriding these settings for a deployment while its plans are pending.
 * The [{{es}} API console](../../../explore-analyze/query-filter/tools/console.md) bypasses {{ecloud}} proxy routing blocks against {{es}} to enable administrative tasks while plan changes are pending. You should generally default traffic to the {{es}} endpoint. However, if you enable **Stop routing requests** across all {{es}} nodes, you need to use this UI to administer your cluster.
-* While {{es}} has **Stop routing requests** set across all nodes, other products with the deployment may become unhealthy. This is because {{es}} is a prerequisite for those other products, such as {{kib}}. In {{kib}}, this results in a [**Kibana server is not ready yet**](../../../troubleshoot/kibana/error-server-not-ready.md#not-ready) message.
+* While {{es}} has **Stop routing requests** set across all nodes, other products with the deployment may become unhealthy. This is because {{es}} is a prerequisite for those other products, such as {{kib}}. In {{kib}}, this results in a [**Kibana server is not ready yet**](/troubleshoot/kibana/error-server-not-ready.md) message.
 
 
 ## Stop routing requests [ece_stop_routing_requests] 
