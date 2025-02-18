@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-filesystem-repository.html
+  
+applies:
+  stack: all
 ---
 
 # Shared file system repository [snapshots-filesystem-repository]

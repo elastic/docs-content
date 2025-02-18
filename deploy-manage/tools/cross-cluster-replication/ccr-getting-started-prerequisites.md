@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-prerequisites.html
+  
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 # Prerequisites [ccr-getting-started-prerequisites]

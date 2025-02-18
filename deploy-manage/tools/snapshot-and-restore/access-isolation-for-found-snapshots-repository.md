@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-repository-migration.html
+  
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 # Access isolation for the found-snapshots repository [ec-snapshot-repository-migration]

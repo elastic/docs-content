@@ -134,7 +134,7 @@ If you cannot connect to a remote index for whatever reason, such as if it’s i
     }
     ```
 
-3. From the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) of the **new** Elasticsearch cluster, add the snapshot repository. For details, check our guidelines for [Amazon Web Services (AWS) Storage](../../tools/snapshot-and-restore/ech-aws-custom-repository.md), [Google Cloud Storage (GCS)](../../tools/snapshot-and-restore/ech-gcs-snapshotting.md), or [Azure Blob Storage](../../tools/snapshot-and-restore/ech-azure-snapshotting.md).
+3. From the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) of the **new** Elasticsearch cluster, add the snapshot repository. For details, check our guidelines for [Amazon Web Services (AWS) Storage](../../tools/snapshot-and-restore/ec-aws-custom-repository.md), [Google Cloud Storage (GCS)](../../tools/snapshot-and-restore/ec-gcs-snapshotting.md), or [Azure Blob Storage](../../tools/snapshot-and-restore/ec-azure-snapshotting.md).
 
     ::::{important}
     If you’re migrating [searchable snapshots](../../tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and destination clusters.

@@ -1,6 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-across-clusters.html
+
+applies:
+  hosted: all
+  ece: all
 ---
 
 # Restore a snapshot across clusters [ece-restore-across-clusters]
@@ -26,15 +30,16 @@ Testing mapping changes
 Integration testing
 :   Test your application against a real live Elasticsearch cluster with actual data. If you automate this, you could also aggregate performance metrics from the tests and use those metrics to detect if a change in your application has introduced a performance degradation.
 
-::::{note} 
-A cluster is eligible as a destination for a built-in snapshot restore if it meets these criteria:
+In **Elastic Cloud Hosted**, a cluster is eligible as a destination for a snapshot restore if it meets these criteria:
 
-* The destination cluster is able to read the indices. You can generally restore to your Elasticsearch cluster snapshots of indices created back to the previous major version, but see the [version matrix](../snapshot-and-restore.md#snapshot-restore-version-compatibility) for all the details.
+- The cluster is in the same region. For example, a snapshot taken in `eu-west-1` cannot be restored to `us-east-1` at this point. If you need to restore snapshots across regions, create the destination deployment, connect to the [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), and then [restore from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
+- The destination cluster is able to read the indices. You can generally restore to your Elasticsearch cluster snapshots of indices created back to the previous major version, but see the [version matrix](../snapshot-and-restore.md#snapshot-restore-version-compatibility) for all the details.
 
-::::
+The list of available snapshots can be found in the [`found-snapshots`](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.html#ess-repo-types) repository.
 
+In **Elastic Cloud Enterprise**, a cluster is eligible as a destination for a snapshot restore if it meets these criteria:
 
-The list of available snapshots can be found in the [`found-snapshots` repository](self-managed.md#ess-repo-types).
+- The destination cluster is able to read the indices. You can generally restore to your Elasticsearch cluster snapshots of indices created back to the previous major version, but see the [version matrix](../snapshot-and-restore.md#snapshot-restore-version-compatibility) for all the details.
 
 To restore built-in snapshots across clusters, there are two options:
 
@@ -44,10 +49,5 @@ To restore built-in snapshots across clusters, there are two options:
 When restoring snapshots across clusters, we create a new repository called `\_clone_{{clusterIdPrefix}}`, which persists until manually deleted. If the repository is still in use, for example by mounted searchable snapshots, it can’t be removed.
 
 ::::{warning} 
-When restoring from a deployment that’s using searchable snapshots, refer to [Restore snapshots containing searchable snapshots indices across clusters](ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md)
+When restoring from a deployment that’s using searchable snapshots, refer to [Restore snapshots containing searchable snapshots indices across clusters](ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md).
 ::::
-
-
-
-
-

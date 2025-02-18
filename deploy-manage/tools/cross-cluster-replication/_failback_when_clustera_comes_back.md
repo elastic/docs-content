@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_failback_when_clustera_comes_back.html
+
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 # Failback when clusterA comes back [_failback_when_clustera_comes_back]

@@ -1,7 +1,13 @@
 ---
-navigation_title: "Set up {{ccr}}"
+navigation_title: "Set up cross-cluster replication"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html
+
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 

@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow-retrieve.html
+
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 # Retrieve auto-follow patterns [ccr-auto-follow-retrieve]

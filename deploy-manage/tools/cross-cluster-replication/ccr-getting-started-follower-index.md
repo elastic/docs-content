@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-follower-index.html
+
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 # Create a follower index to replicate a specific index [ccr-getting-started-follower-index]

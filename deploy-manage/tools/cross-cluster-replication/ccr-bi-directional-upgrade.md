@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-bi-directional-upgrade.html
+
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
 ---
 
 # Bi-directional index following [ccr-bi-directional-upgrade]

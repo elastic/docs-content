@@ -1,15 +1,20 @@
 ---
+navigation_title: "Elastic Cloud Enterprise"
+
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-repositories.html
+
+applies:
+  ece: all
 ---
 
-# Elastic Cloud Enterprise [ece-manage-repositories]
+# Manage snapshot repositories in Elastic Cloud Enterprise [ece-manage-repositories]
 
-Snapshot repositories are managed for your entire Elastic Cloud Enterprise installation and can be specified for an Elasticsearch cluster when you create or manage it.
+Snapshots enable you to back up and restore Elasticsearch indices, protecting data from accidental deletion and supporting migration between clusters. In Elastic Cloud Enterprise (ECE), snapshot repositories are managed at the platform level and can be assigned to individual deployments.
 
-When a repository is specified, a snapshot is taken every 30 minutes by default. The interval can be adjusted on per deployment basis.
+When a repository is assigned to a deployment, a snapshot is taken every 30 minutes by default. The snapshot interval can be adjusted per deployment.
 
-Snapshots are configured and restored using the [snapshot and restore feature](../snapshot-and-restore.md).
+## Supported repository types
 
 Elastic Cloud Enterprise installations support the following {{es}} [snapshot repository types](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#ess-repo-types):
 
@@ -20,7 +25,6 @@ Elastic Cloud Enterprise installations support the following {{es}} [snapshot re
 ::::{note}
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by {{es}}.
 ::::
-
 
 To configure Google Cloud Storage (GCS) as a snapshot repository, you must use [Google Default Authentication](https://developers.google.com/identity/protocols/application-default-credentials). To learn more, check [Snapshotting to Google Cloud Storage](google-cloud-storage-gcs-repository.md).
 

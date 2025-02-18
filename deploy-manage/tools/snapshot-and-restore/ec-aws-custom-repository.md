@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-aws-custom-repository.html
+  
+applies:
+  hosted: all
 ---
 
 # Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]

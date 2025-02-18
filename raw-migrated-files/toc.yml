@@ -117,7 +117,6 @@ toc:
       - file: cloud/cloud-heroku/ech-configuring-keystore.md
       - file: cloud/cloud-heroku/ech-cpu-usage-exceed-allowed-threshold.md
       - file: cloud/cloud-heroku/ech-custom-bundles.md
-      - file: cloud/cloud-heroku/ech-custom-repository.md
       - file: cloud/cloud-heroku/ech-delete-deployment.md
       - file: cloud/cloud-heroku/ech-deployment-no-op.md
       - file: cloud/cloud-heroku/ech-editing-user-settings.md
@@ -175,7 +174,6 @@ toc:
       - file: cloud/cloud/ec-configure-index-management.md
       - file: cloud/cloud/ec-configuring-keystore.md
       - file: cloud/cloud/ec-custom-bundles.md
-      - file: cloud/cloud/ec-custom-repository.md
       - file: cloud/cloud/ec-customize-deployment.md
       - file: cloud/cloud/ec-delete-deployment.md
       - file: cloud/cloud/ec-deployment-no-op.md

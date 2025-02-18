@@ -2,6 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.html
   - https://www.elastic.co/guide/en/cloud/current/ec-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.html
+
+applies:
+  hosted: all
+  ece: all
 ---
 
 # Restore snapshots containing searchable snapshots indices across clusters [ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters]

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html
+
+applies:
+  stack: all
 ---
 
 # Azure repository [repository-azure]

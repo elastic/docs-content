@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html
+  
+applies:
+  stack: all
 ---
 
 # S3 repository [repository-s3]

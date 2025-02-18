@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-azure-snapshotting.html
+
+applies:
+  hosted: all
 ---
 
 # Configure a snapshot repository using Azure Blob storage [ec-azure-snapshotting]
