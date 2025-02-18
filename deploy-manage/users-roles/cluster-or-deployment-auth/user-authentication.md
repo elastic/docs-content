@@ -52,7 +52,7 @@ Review the following topics to learn about authentication in your Elasticsearch 
 ### Set up user authentication
 
 * Learn about the available [realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) that you can use to authenticate users
-* Manage passwords for [default users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md)
+* Manage passwords for [built-in users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md)
 * Manage users [natively](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)
 * Integrate with external authentication providers using [external realms](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md):
   * [Active Directory](/deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md)

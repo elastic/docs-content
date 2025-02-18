@@ -28,7 +28,7 @@ Set up methods to identify users to the Elasticsearch cluster.
 
 Key tasks for managing user authentication include:
 
-* [Managing default users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md)
+* [Managing built-in users](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md)
 * [Managing users natively](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md)
 * [Integrating with external authentication providers](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md)
 
@@ -50,7 +50,7 @@ Key tasks for managing user authorization include:
 You can also learn the basics of Elasticsearch authorization, and perform advanced tasks.
 
 ::::{tip}
-User roles are also used to control access to [spaces](/deploy-manage/manage-spaces.md).
+User roles are also used to control access to [{{kib}} spaces](/deploy-manage/manage-spaces.md).
 :::: 
 
 [View all user authorization docs](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md)
