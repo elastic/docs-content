@@ -11,7 +11,6 @@ mapped_pages:
 * [*Run standalone Elastic Agent on ECK*](standalone-elastic-agent.md)
 * [*Run {{fleet}}-managed {{agent}} on ECK*](fleet-managed-elastic-agent.md)
 * [*Run Elastic Maps Server on ECK*](elastic-maps-server.md)
-* [*Run Enterprise Search on ECK*](enterprise-search.md)
 * [*Run Beats on ECK*](beats.md)
 * [*Run {{ls}} on ECK*](logstash.md)
 * [*Elastic Stack Helm Chart*](managing-deployments-using-helm-chart.md)

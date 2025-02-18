@@ -141,7 +141,7 @@ server {
 This should work for all of your applications, not just {{es}}. To set it up for {{kib}}, for example, you can select `Copy cluster ID` next to {{kib}} on your deployment’s main page to get the correct UUID.
 
 ::::{note} 
-Doing this for {{kib}} or {{ents}} would not work with Cloud SSO.
+Doing this for {{kib}} won't work with Cloud SSO.
 ::::
 
 

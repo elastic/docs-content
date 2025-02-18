@@ -74,18 +74,6 @@ helm install eck-stack-with-apm-server elastic/eck-stack \
     --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/apm-server/basic.yaml -n elastic-stack
 ```
 
-
-## Installing an Elastic Enterprise Search Server along with Elasticsearch and Kibana using the eck-stack Helm Chart [k8s-install-enterprise-search-elasticsearch-kibana-helm] 
-
-The following section builds upon the previous sections, and allows installing an Elastic Enterprise Search Server along with Elasticsearch and Kibana.
-
-```sh
-# Install an eck-managed Elasticsearch, Kibana, and Enterprise Search Server using custom values.
-helm install eck-stack-with-enterprise-search elastic/eck-stack \
-    --values https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/deploy/eck-stack/examples/enterprise-search/basic.yaml -n elastic-stack
-```
-
-
 ### Installing individual components of the Elastic Stack using the Helm Charts [k8s-eck-stack-individual-components] 
 
 You can install individual components in one of two ways using the provided Helm Charts.

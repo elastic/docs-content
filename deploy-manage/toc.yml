@@ -327,11 +327,6 @@ toc:
                   - file: deploy/cloud-on-k8s/map-data.md
                   - file: deploy/cloud-on-k8s/advanced-configuration-maps-server.md
                   - file: deploy/cloud-on-k8s/http-configuration.md
-              - file: deploy/cloud-on-k8s/enterprise-search.md
-                children:
-                  - file: deploy/cloud-on-k8s/quickstart-enterprise-search.md
-                  - file: deploy/cloud-on-k8s/configuration-enterprise-search.md
-                  - file: deploy/cloud-on-k8s/troubleshooting-enterprise-search.md
               - file: deploy/cloud-on-k8s/beats.md
                 children:
                   - file: deploy/cloud-on-k8s/quickstart-beats.md

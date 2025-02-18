@@ -21,7 +21,6 @@ To learn how to collect monitoring data, refer to:
 
 * [Monitoring {{kib}}](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md)
 * [Monitoring {{ls}}](https://www.elastic.co/guide/en/logstash/current/configuring-logstash.html)
-* [Monitoring {{ents}}](https://www.elastic.co/guide/en/enterprise-search/current/monitoring.html)
 * Monitoring {{beats}}:
 
     * [{{auditbeat}}](https://www.elastic.co/guide/en/beats/auditbeat/current/monitoring.html)

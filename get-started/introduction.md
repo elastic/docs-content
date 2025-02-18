@@ -26,7 +26,7 @@ navigation_title: "What is Kibana?"
 
 Being able to search, observe, and protect your data is a requirement for any analyst. {{kib}} provides solutions for each of these use cases.
 
-* [**Enterprise Search**](https://www.elastic.co/guide/en/enterprise-search/current/index.html) enables you to implement premier search experiences for your apps, organizations, and websites.
+* [**Elastic Search**](/solutions/search.md) enables you to implement premier search experiences for your apps, organizations, and websites.
 * [**Elastic Observability**](../solutions/observability/get-started/what-is-elastic-observability.md) enables you to monitor and apply analytics in real time to events happening across all your environments. You can analyze log events, monitor performance metrics for hosts and containers, trace transactions, and maintain service availability.
 * Designed for security analysts, [**Elastic Security**](../solutions/security.md) includes a multitude of prebuilt detection rules and data integrations to help you collect important information in one place, get an overview of events and alerts, and secure your environments from endpoints to the cloud.
 

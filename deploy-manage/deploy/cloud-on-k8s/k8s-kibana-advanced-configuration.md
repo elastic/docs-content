@@ -49,7 +49,7 @@ spec:
 
 The name of the container in the [Pod Template](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates) must be `kibana`.
 
-Check [Set compute resources for Kibana, Enterprise Search, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for more information.
+Check [Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for more information.
 
 
 ## {{kib}} configuration [k8s-kibana-configuration]
