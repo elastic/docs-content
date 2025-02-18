@@ -197,10 +197,6 @@ toc:
       - file: cloud/cloud/ec-upgrade-deployment.md
       - file: cloud/cloud/ec-user-privileges.md
       - file: cloud/cloud/ec-working-with-elasticsearch.md
-  - file: curator/elasticsearch-client-curator/index.md
-    children:
-      - file: curator/elasticsearch-client-curator/about.md
-      - file: curator/elasticsearch-client-curator/ilm.md
   - file: docs-content/serverless/index.md
     children:
       - file: docs-content/serverless/_cloud_native_vulnerability_management_dashboard.md
