@@ -14,26 +14,13 @@ toc:
   - file: cloud-on-k8s/cloud-on-k8s/index.md
     children:
       - file: cloud-on-k8s/cloud-on-k8s/k8s_audit_logging.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s_installation.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s_learn_more_about_eck.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-accessing-elastic-services.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-advanced-topics.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-air-gapped.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-custom-http-certificate.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-deploy-eck.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-es-secure-settings.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-fips.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-install-yaml-manifests.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-installing-eck.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-overview.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-request-elasticsearch-endpoint.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-rotate-credentials.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-saml-authentication.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-security.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-services.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-supported.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-tls-certificates.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md
@@ -71,7 +58,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-manage-integrations-server.md
       - file: cloud/cloud-enterprise/ece-manage-kibana-settings.md
       - file: cloud/cloud-enterprise/ece-manage-kibana.md
-      - file: cloud/cloud-enterprise/ece-migrate-index-management.md
       - file: cloud/cloud-enterprise/ece-monitoring-deployments.md
       - file: cloud/cloud-enterprise/ece-password-reset-elastic.md
       - file: cloud/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md
@@ -154,7 +140,6 @@ toc:
       - file: cloud/cloud/ec-autoscaling.md
       - file: cloud/cloud/ec-billing-stop.md
       - file: cloud/cloud/ec-cloud-ingest-data.md
-      - file: cloud/cloud/ec-configure-index-management.md
       - file: cloud/cloud/ec-configuring-keystore.md
       - file: cloud/cloud/ec-custom-bundles.md
       - file: cloud/cloud/ec-custom-repository.md
@@ -182,7 +167,6 @@ toc:
       - file: cloud/cloud/ec-manage-enterprise-search-settings.md
       - file: cloud/cloud/ec-manage-kibana-settings.md
       - file: cloud/cloud/ec-metrics-memory-pressure.md
-      - file: cloud/cloud/ec-migrate-index-management.md
       - file: cloud/cloud/ec-monitoring-setup.md
       - file: cloud/cloud/ec-monitoring.md
       - file: cloud/cloud/ec-password-reset.md
@@ -505,7 +489,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/fips-140-compliance.md
       - file: elasticsearch/elasticsearch-reference/how-monitoring-works.md
       - file: elasticsearch/elasticsearch-reference/ignore_missing_component_templates.md
-      - file: elasticsearch/elasticsearch-reference/index-lifecycle-management.md
       - file: elasticsearch/elasticsearch-reference/index-mgmt.md
       - file: elasticsearch/elasticsearch-reference/index-modules-allocation.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
@@ -522,7 +505,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/native-realm.md
       - file: elasticsearch/elasticsearch-reference/oidc-guide.md
       - file: elasticsearch/elasticsearch-reference/oidc-realm.md
-      - file: elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
       - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
       - file: elasticsearch/elasticsearch-reference/saml-guide-stack.md

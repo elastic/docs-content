@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-webhook.html
 ---
@@ -24,7 +26,7 @@ Validating webhooks are defined using a `ValidatingWebhookConfiguration` object 
 
 When using the default `operator.yaml` manifest, ECK is installed with a `ValidatingWebhookConfiguration` configured as follows:
 
-* Validate all known Elastic custom resources (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash) on create and update.
+* Validate all known Elastic custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) on create and update.
 * The operator itself is the webhook server — which is exposed through a service named `elastic-webhook-server` in the `elastic-system` namespace.
 * The operator generates a certificate for the webhook and stores it in a secret named `elastic-webhook-server-cert` in the `elastic-system` namespace. This certificate is automatically rotated by the operator when it is due to expire.
 

@@ -232,6 +232,7 @@ toc:
                 children:
                   - file: deploy/cloud-on-k8s/install-using-yaml-manifest-quickstart.md
                   - file: deploy/cloud-on-k8s/install-using-helm-chart.md
+                  - file: deploy/cloud-on-k8s/required-rbac-permissions.md
                   - file: deploy/cloud-on-k8s/deploy-eck-on-openshift.md
                     children:
                       - file: deploy/cloud-on-k8s/k8s-openshift-deploy-operator.md
@@ -241,27 +242,18 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-openshift-beats.md
                       - file: deploy/cloud-on-k8s/k8s-openshift-agent.md
                   - file: deploy/cloud-on-k8s/deploy-eck-on-gke-autopilot.md
-                    children:
-                      - file: deploy/cloud-on-k8s/k8s-autopilot-setting-virtual-memory.md
-                      - file: deploy/cloud-on-k8s/k8s-autopilot-deploy-operator.md
-                      - file: deploy/cloud-on-k8s/k8s-autopilot-deploy-elasticsearch.md
-                      - file: deploy/cloud-on-k8s/k8s-autopilot-deploy-agent-beats.md
                   - file: deploy/cloud-on-k8s/deploy-fips-compatible-version-of-eck.md
               - file: deploy/cloud-on-k8s/air-gapped-install.md
               - file: deploy/cloud-on-k8s/configure.md
                 children:
                   - file: deploy/cloud-on-k8s/configure-eck.md
-                  - file: deploy/cloud-on-k8s/required-rbac-permissions.md
                   - file: deploy/cloud-on-k8s/configure-validating-webhook.md
                   - file: deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md
-                  - file: deploy/cloud-on-k8s/create-custom-images.md
                   - file: deploy/cloud-on-k8s/service-meshes.md
                     children:
                       - file: deploy/cloud-on-k8s/k8s-service-mesh-istio.md
                       - file: deploy/cloud-on-k8s/k8s-service-mesh-linkerd.md
                   - file: deploy/cloud-on-k8s/network-policies.md
-                    children:
-                      - file: deploy/cloud-on-k8s/k8s_prerequisites.md
                   - file: deploy/cloud-on-k8s/webhook-namespace-selectors.md
           - file: deploy/cloud-on-k8s/manage-deployments.md
             children:
@@ -274,21 +266,22 @@ toc:
                 children:
                   - file: deploy/cloud-on-k8s/elasticsearch-configuration.md
                     children:
+                      - file: deploy/cloud-on-k8s/nodes-orchestration.md
+                      - file: deploy/cloud-on-k8s/storage-recommendations.md
                       - file: deploy/cloud-on-k8s/node-configuration.md
                       - file: deploy/cloud-on-k8s/volume-claim-templates.md
-                      - file: deploy/cloud-on-k8s/storage-recommendations.md
-                      - file: deploy/cloud-on-k8s/transport-settings.md
                       - file: deploy/cloud-on-k8s/virtual-memory.md
                       - file: deploy/cloud-on-k8s/settings-managed-by-eck.md
                       - file: deploy/cloud-on-k8s/custom-configuration-files-plugins.md
                       - file: deploy/cloud-on-k8s/init-containers-for-plugin-downloads.md
+                      - file: deploy/cloud-on-k8s/transport-settings.md
                       - file: deploy/cloud-on-k8s/update-strategy.md
                       - file: deploy/cloud-on-k8s/pod-disruption-budget.md
-                      - file: deploy/cloud-on-k8s/nodes-orchestration.md
                       - file: deploy/cloud-on-k8s/advanced-elasticsearch-node-scheduling.md
                       - file: deploy/cloud-on-k8s/readiness-probe.md
                       - file: deploy/cloud-on-k8s/pod-prestop-hook.md
                       - file: deploy/cloud-on-k8s/security-context.md
+                      - file: deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md
                   - file: deploy/cloud-on-k8s/kibana-configuration.md
                     children:
                       - file: deploy/cloud-on-k8s/k8s-kibana-es.md
@@ -296,13 +289,11 @@ toc:
                       - file: deploy/cloud-on-k8s/k8s-kibana-secure-settings.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-http-configuration.md
                       - file: deploy/cloud-on-k8s/k8s-kibana-plugins.md
-                  - file: deploy/cloud-on-k8s/tls-certificates.md
-                  - file: deploy/cloud-on-k8s/recipes.md
-                  - file: deploy/cloud-on-k8s/requests-routing-to-elasticsearch-nodes.md
                   - file: deploy/cloud-on-k8s/customize-pods.md
                   - file: deploy/cloud-on-k8s/manage-compute-resources.md
-                  - file: deploy/cloud-on-k8s/elastic-stack-configuration-policies.md
+                  - file: deploy/cloud-on-k8s/recipes.md
                   - file: deploy/cloud-on-k8s/connect-to-external-elastic-resources.md
+                  - file: deploy/cloud-on-k8s/elastic-stack-configuration-policies.md
           - file: deploy/cloud-on-k8s/orchestrate-other-elastic-applications.md
             children:
               - file: deploy/cloud-on-k8s/apm-server.md
@@ -342,6 +333,7 @@ toc:
                   - file: deploy/cloud-on-k8s/configuration-examples-logstash.md
                   - file: deploy/cloud-on-k8s/update-strategy-logstash.md
                   - file: deploy/cloud-on-k8s/advanced-configuration-logstash.md
+          - file: deploy/cloud-on-k8s/create-custom-images.md
           - file: deploy/cloud-on-k8s/tools-apis.md
       - file: deploy/self-managed.md
         children:

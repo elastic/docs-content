@@ -118,20 +118,20 @@ toc:
       - file: lifecycle/data-tiers.md
       - file: lifecycle/index-lifecycle-management.md
         children:
-          - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
-          - file: lifecycle/index-lifecycle-management/tutorial-automate-rollover.md
-          - file: lifecycle/index-lifecycle-management/index-management-in-kibana.md
-          - file: lifecycle/index-lifecycle-management/concepts.md
+          - file: lifecycle/index-lifecycle-management/index-lifecycle.md
+          - file: lifecycle/index-lifecycle-management/rollover.md
             children:
-              - file: lifecycle/index-lifecycle-management/index-lifecycle.md
-              - file: lifecycle/index-lifecycle-management/rollover.md
-              - file: lifecycle/index-lifecycle-management/policy-updates.md
+              - file: lifecycle/index-lifecycle-management/skip-rollover.md
+              - file: lifecycle/index-lifecycle-management/tutorial-automate-rollover.md
           - file: lifecycle/index-lifecycle-management/configure-lifecycle-policy.md
-          - file: lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md
+          - file: lifecycle/index-lifecycle-management/policy-updates.md
           - file: lifecycle/index-lifecycle-management/start-stop-index-lifecycle-management.md
-          - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
-          - file: lifecycle/index-lifecycle-management/skip-rollover.md
           - file: lifecycle/index-lifecycle-management/restore-managed-data-stream-index.md
+          - file: lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md
+          - file: lifecycle/index-lifecycle-management/index-management-in-kibana.md
+          - file: lifecycle/index-lifecycle-management/manage-existing-indices.md
+          - file: lifecycle/index-lifecycle-management/migrate-index-management.md
+          - file: lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles.md
       - file: lifecycle/data-stream.md
         children:
           - file: lifecycle/data-stream/tutorial-create-data-stream-with-lifecycle.md
