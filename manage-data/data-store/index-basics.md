@@ -88,7 +88,7 @@ A [data stream](/manage-data/data-store/index-types/data-streams.md) lets you st
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 
-:::{image} ../../images/serverless-management-data-stream.png
+:::{image} /images/serverless-management-data-stream.png
 :alt: Data stream details
 :class: screenshot
 :::
