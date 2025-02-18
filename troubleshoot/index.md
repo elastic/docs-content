@@ -6,7 +6,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-get-help.html
 ---
 
-# Troubleshooting
+# Troubleshoot
 
 % What needs to be done: Refine
 
@@ -24,13 +24,15 @@ Use the topics in this section to troubleshoot Elastic products, features, and d
 * [](/troubleshoot/observability.md)
 * [](/troubleshoot/security.md)
 * [](/troubleshoot/ingest.md)
-* [](/troubleshoot/deployments.md)
+* [](/troubleshoot/deployments/elastic-cloud.md)
+* [](/troubleshoot/deployments/cloud-enterprise/cloud-enterprise.md)
+* [](/troubleshoot/deployments/cloud-on-k8s/kubernetes.md)
 
 
 ## Contact us [contact-us]
 
 :::{warning}
-Work in progress. Contributions welcome!
+Work in progress
 :::
 
 % Scope notes: - Match new content type; TOC entry TBD - consider splitting out subsections?
