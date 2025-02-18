@@ -141,9 +141,10 @@ toc:
       - file: monitoring/unavailable-nodes.md
       - file: monitoring/unavailable-shards.md
       - file: monitoring/performance.md
-      - file: monitoring/high-memory-pressure.md
-      - file: monitoring/high-availability.md
-      - file: monitoring/cluster-response-time.md
+        children:
+          - file: monitoring/high-memory-pressure.md
+          - file: monitoring/high-availability.md
+          - file: monitoring/cluster-response-time.md
       - file: monitoring/node-moves-outages.md
       - file: monitoring/deployment-health-warnings.md
       - file: monitoring/node-bootlooping.md
