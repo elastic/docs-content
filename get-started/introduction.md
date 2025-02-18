@@ -26,7 +26,7 @@ navigation_title: "What is Kibana?"
 
 Being able to search, observe, and protect your data is a requirement for any analyst. {{kib}} provides solutions for each of these use cases.
 
-* [**Enterprise Search**](https://www.elastic.co/guide/en/enterprise-search/current/index.html) enables you to implement premier search experiences for your apps, organizations, and websites.
+* [**Elastic Search**](/solutions/search.md) enables you to implement premier search experiences for your apps, organizations, and websites.
 * [**Elastic Observability**](../solutions/observability/get-started/what-is-elastic-observability.md) enables you to monitor and apply analytics in real time to events happening across all your environments. You can analyze log events, monitor performance metrics for hosts and containers, trace transactions, and maintain service availability.
 * Designed for security analysts, [**Elastic Security**](../solutions/security.md) includes a multitude of prebuilt detection rules and data integrations to help you collect important information in one place, get an overview of events and alerts, and secure your environments from endpoints to the cloud.
 
@@ -129,7 +129,7 @@ The {{kib}} role management interface allows you to describe these various acces
 
 ### Audit access [_audit_access]
 
-Once you have your users and roles configured, you might want to maintain a record of who did what, when. The {{kib}} audit log will record this information for you, which can then be correlated with {{es}} audit logs to gain more insights into your users’ behavior. For more information, refer to [{{kib}} audit logging](../deploy-manage/monitor/logging-configuration/enabling-kibana-audit-logs.md).
+Once you have your users and roles configured, you might want to maintain a record of who did what, when. The {{kib}} audit log will record this information for you, which can then be correlated with {{es}} audit logs to gain more insights into your users’ behavior. For more information, refer to [{{kib}} audit logging](/deploy-manage/monitor/logging-configuration/enabling-audit-logs.md).
 
 
 ## Find apps and objects [kibana-navigation-search]

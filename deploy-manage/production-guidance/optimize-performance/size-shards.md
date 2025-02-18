@@ -80,7 +80,7 @@ There is some overhead associated with each shard, both in terms of cluster mana
 
 There is no hard limit on the physical size of a shard, and each shard can in theory contain up to [just over two billion documents](#troubleshooting-max-docs-limit). However, experience shows that shards between 10GB and 50GB typically work well for many use cases, as long as the per-shard document count is kept below 200 million.
 
-You may be able to use larger shards depending on your network and use case, and smaller shards may be appropriate for [Enterprise Search](https://www.elastic.co/guide/en/enterprise-search/current/index.html) and similar use cases.
+You may be able to use larger shards depending on your network and use case, and smaller shards may be appropriate for certain use cases.
 
 If you use {{ilm-init}}, set the [rollover action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html)'s `max_primary_shard_size` threshold to `50gb` to avoid shards larger than 50GB and `min_primary_shard_size` threshold to `10gb` to avoid shards smaller than 10GB.
 

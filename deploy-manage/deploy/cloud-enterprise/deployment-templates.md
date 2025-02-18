@@ -13,7 +13,6 @@ The components of the Elastic Stack that we support as part of a deployment are 
 * Machine Learning (ML) nodes
 * Kibana instances
 * APM and Fleet instances
-* Enterprise Search instances
 
 Elastic Cloud Enterprise comes with some deployment templates already built in, but you can [create new deployment templates](ece-configuring-ece-create-templates.md) to address a particular use case you might have. To make the most out of your hardware, we also recommend that you [configure deployment templates](configure-deployment-templates.md), so that ECE knows where to deploy components of the Elastic Stack.
 
@@ -38,10 +37,6 @@ The deployment templates available are:
 * **Elastic Security template**
 
     Use this template to prevent, collect, detect, and respond to threats for unified protection across your infrastructure. Check the [**Elastic Security**](../../../solutions/security.md) documentation for more information.
-
-* **Elastic Enterprise Search template**
-
-    Default deployment template for Elastic Enterprise Search. Check the [**Enterprise Search**](https://www.elastic.co/guide/en/enterprise-search/current/index.html) documentation for more information.
 
 * **Elastic Observability template**
 

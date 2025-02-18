@@ -42,5 +42,5 @@ See [Configure security for the {{stack}}](../../../deploy-manage/security/secur
 
 Keeping a system secure takes vigilance. By using {{stack-security-features}} to maintain an audit trail, you can easily see who is accessing your cluster and what they’re doing. You can configure the audit level, which accounts for the type of events that are logged. These events include failed authentication attempts, user access denied, node connection denied, and more. By analyzing access patterns and failed attempts to access your cluster, you can gain insights into attempted attacks and data breaches. Keeping an auditable log of the activity in your cluster can also help diagnose operational issues.
 
-See [Enable audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-elasticsearch-audit-logs.md).
+See [Enable audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md).
 

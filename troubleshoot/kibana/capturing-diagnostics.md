@@ -1,12 +1,12 @@
 ---
-navigation_title: "Capture diagnostics"
+navigation_title: "Diagnostics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-diagnostic.html
 ---
 
 
 
-# Capturing diagnostics [kibana-diagnostic]
+# Capture {{kib}} diagnostics [kibana-diagnostic]
 
 
 The {{kib}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of {{kib}} and its Task Manager health. It works on {{kib}} versions 7.11.0 and above.

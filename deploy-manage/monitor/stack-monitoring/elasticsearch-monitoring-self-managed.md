@@ -17,3 +17,10 @@ applies:
 
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-production.md
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-production.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-production.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md)

@@ -1,4 +1,5 @@
 ---
+navigation_title: Configure a policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
 ---
@@ -16,7 +17,6 @@ To use a policy to manage an index that doesn’t roll over, you can specify a l
 ::::{important}
 When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
 ::::
-
 
 
 ## Create lifecycle policy [ilm-create-policy]
