@@ -20,9 +20,3 @@ Memory pressure is not the culprit. The **Memory Pressure per Node** metric is a
 So what caused the sudden increase in response times? The key to the puzzle lies in the **Number of Requests** metric, which indicates the number of requests that a cluster receives per second. Beginning shortly before 13:32, there was a substantial increase in the number of user requests per second. The number of requests per second continued to rise until the requests began to plateau as your cluster reached its maximum throughput, which in turn caused response times to rise. The number of requests remained at a high level for approximately five minutes, until they started to drop off again around 13:40. Overall, the sustained increase of user requests lasted a bit over 10 minutes, consistent with the slowdown you observed.
 
 This cluster was sized to handle a certain number of user requests. As the user requests exceeded the maximum throughput that a cluster of this size could sustain, response times increased. To avoid such a slowdown, you either need to control the volume of user requests that reaches the {{es}} cluster or you need to size your cluster to be able to accommodate a sudden increase in user requests.
-
-
-
-%      Notes: Lift and shift this one
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/echscenario_why_are_my_cluster_response_times_suddenly_so_much_worse.md
-%      Notes: dupe, redirect
