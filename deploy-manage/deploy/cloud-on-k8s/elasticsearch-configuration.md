@@ -11,11 +11,12 @@ This section covers various Elasticsearch cluster configuration scenarios when u
 
 Before deploying and running ECK in production, review the basic and advanced settings available on this page. These configurations integrate Elasticsearch, Kubernetes, and ECK operator functionality to help you fine-tune your deployment.
 
-**Read first**
+## Key concepts
+
 * [Nodes orchestration](nodes-orchestration.md): Learn how ECK orchestrates nodes, applies changes or upgrades the cluster.
 * [Storage recommendations](storage-recommendations.md): Kubernetes storage considerations for {{es}} workloads.
 
-**Basic {{es}} settings**
+## Basic {{es}} settings
 
 * [Node configuration](node-configuration.md): Configure the `elasticsearch.yml` of your {{es}} nodes.
 * [Volume claim templates](volume-claim-templates.md): Configure storage in your {{es}} nodes.
@@ -24,7 +25,7 @@ Before deploying and running ECK in production, review the basic and advanced se
 * [Custom configuration files and plugins](custom-configuration-files-plugins.md): Add extra configuration files or install plugins to your {{es}} nodes.
 * [Init containers for plugin downloads](init-containers-for-plugin-downloads.md): Use Kubernetes init containers to install plugins before starting {{es}}.
 
-**Scheduling and lifecycle management**
+## Scheduling and lifecycle management
 
 * [Advanced Elasticsearch node scheduling](advanced-elasticsearch-node-scheduling.md): Integrate standard Kubernetes scheduling options with your {{es}} nodes.
 * [Update strategy](update-strategy.md): Control how the changes are applied to the cluster.
@@ -33,41 +34,30 @@ Before deploying and running ECK in production, review the basic and advanced se
 * [Readiness probe](readiness-probe.md): Customize `readinessProbe` in certain use cases.
 * [Pod PreStop hook](pod-prestop-hook.md)
 
-**Traffic handling**
+## Traffic handling
 
 * [HTTP access](./accessing-services.md): Configure the HTTP service of your cluster.
 * [](./requests-routing-to-elasticsearch-nodes.md): Control the nodes receiving incoming traffic when using multiple `nodeSets` with different [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html).
 
-**TLS/SSL Certificates**
+## TLS/SSL Certificates
 
-* [HTTP TLS certificates](./tls-certificates.md): Customize HTTP TLS certificates.
+* [Secure HTTP communications](/deploy-manage/security/secure-http-communications.md): Customize the service and TLS certificates used for transport traffic.
 * [Transport settings](transport-settings.md): Customize the service and TLS certificates used for transport traffic.
-* Custom SSL certificate: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-custom-http-certificate.html (needs to be merged and add to security (secure HTTP communications))
 
 ## Other sections
 
-In other sections of the documentation you can find information for the following configuration use cases:
+In other sections of the documentation you can find also relevant information:
 
-**Security** (TBD)
-  * [Secure settings](../../security/secure-settings.md)
-  * [Secure the Elastic Stack](../../security.md): Manage users and roles, authentication realms, and more.
-  * Users and roles
-  * SAML authentication
-  * (TBD when security section is completed)
+* [Secure settings](/deploy-manage/security/secure-settings.md)
 
-* **Snapshot and Restore**
-  * [Create automated snapshots](../../tools/snapshot-and-restore/cloud-on-k8s.md)
+* [Users and roles](/deploy-manage/users-roles.md)
 
-**Remote Clusters**
-  * [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md): Configure {{es}} remote clusters functionality for Cross Cluster Search (CCS) and Cross Cluster Replication.
+* [Snapshots](../../tools/snapshot-and-restore/cloud-on-k8s.md)
 
-* **Autoscaling**
-  * [{{es}} autoscaling](../../autoscaling/deployments-autoscaling-on-eck.md): Use {{es}} autoscaling functionality with ECK.
+* [Remote clusters](/deploy-manage/remote-clusters/eck-remote-clusters.md)
 
-* **Monitoring and Logging**
-  * [Stack monitoring](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html): Monitor your {{es}} cluster smoothly with the help of ECK.
+* [Autoscaling](../../autoscaling/deployments-autoscaling-on-eck.md)
 
-**Troubleshoot**
+* [Stack monitoring](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html): Monitor your {{es}} cluster smoothly with the help of ECK.
 
-  * [JVM heap dumps](../../../troubleshoot/deployments/cloud-on-k8s/jvm-heap-dumps.md)
-  * [ECK diagnostics utility](../../../troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md)
+* [Troubleshoot](/troubleshoot/deployments/cloud-on-k8s/kubernetes.md)

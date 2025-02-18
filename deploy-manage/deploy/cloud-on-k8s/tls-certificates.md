@@ -1,11 +1,12 @@
 ---
+navigation_title: HTTP TLS certificates
 applies:
   eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-tls-certificates.html
 ---
 
-# TLS Certificates [k8s-tls-certificates]
+# HTTP TLS Certificates [k8s-tls-certificates]
 
 This section only covers TLS certificates for the HTTP layer. TLS certificates for the transport layer that are used for internal communications between Elasticsearch nodes are managed by ECK and cannot be changed. You can however set your own certificate authority for the [transport layer](transport-settings.md#k8s-transport-ca).
 
@@ -47,8 +48,6 @@ spec:
         - ip: 160.46.176.15
         - dns: hulk.example.com
 ```
-
-
 
 ## Setup your own certificate [k8s-setting-up-your-own-certificate]
 

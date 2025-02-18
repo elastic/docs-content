@@ -37,7 +37,7 @@ Other sections of the Elastic documentation cover additional topics related to d
 **Security**
 
 % the two pages about HTTP TLS certificate should be merged into one and be placed on Security docs
-  * [**HTTP TLS certificates**](./tls-certificates.md): Use your own SSL/TLS certificates for the HTTP endpoint of {{es}} and {{kib}}.
+  * [**HTTP TLS certificates**](/deploy-manage/security/secure-http-communications.md): Use your own SSL/TLS certificates for the HTTP endpoint of {{es}} and {{kib}}.
 
   * Custom HTTP certificate -> TBD: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-custom-http-certificate.html
 
