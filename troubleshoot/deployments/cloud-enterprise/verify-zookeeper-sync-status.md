@@ -1,9 +1,10 @@
 ---
+navigation_title: "ZooKeeper sync status"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-zookeeper-sync.html
 ---
 
-# Verify ZooKeeper Sync Status [ece-zookeeper-sync]
+# Verify ZooKeeper sync status [ece-zookeeper-sync]
 
 It is recommended to check the ZooKeeper sync status before starting any maintenance on your Director nodes. This helps you prevent the following scenarios:
 

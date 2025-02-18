@@ -1,9 +1,12 @@
 ---
+navigation_title: "Resources and logs"
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-troubleshooting-methods.html
 ---
 
-# Troubleshooting methods [k8s-troubleshooting-methods]
+# Troubleshoot ECK resources and logs  [k8s-troubleshooting-methods]
 
 Most common issues can be identified and resolved by following these instructions:
 

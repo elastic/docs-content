@@ -1,9 +1,10 @@
 ---
+navigation_title: "Removing containers"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-uninstall.html
 ---
 
-# Remove Elastic Cloud Enterprise [ece-uninstall]
+# Remove Elastic Cloud Enterprise containers  [ece-uninstall]
 
 You might need to remove Elastic Cloud Enterprise for one of the following reasons:
 

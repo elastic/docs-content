@@ -6,7 +6,7 @@ mapped_pages:
 
 # Troubleshoot Kibana [kibana-troubleshooting]
 
-These topics help you troubleshoot issues with {{kib}}:
+Use these topics to troubleshoot issues with {{kib}}:
 
 ## Debugging
 
