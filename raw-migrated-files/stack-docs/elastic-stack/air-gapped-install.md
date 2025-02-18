@@ -12,11 +12,10 @@ Some components of the {{stack}} require additional configuration and local depe
     * [1.6. {{fleet-server}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-fleet)
     * [1.7. Elastic APM](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-apm)
     * [1.8. {{ems}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-maps-service)
-    * [1.9. {{ents}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-enterprise-search)
-    * [1.10. {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry)
-    * [1.11. {{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry)
-    * [1.12. Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository)
-    * [1.13 {{ml-cap}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-machine-learning)
+    * [1.9. {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry)
+    * [1.10. {{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry)
+    * [1.11. Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository)
+    * [1.12 {{ml-cap}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-machine-learning)
 
 
 * [2. Kubernetes & OpenShift Install](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kubernetes-and-openshift)
@@ -73,7 +72,6 @@ Specifically:
 * To be able to use {{kib}} mapping visualizations, you need to set up and configure the [Elastic Maps Service](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-maps-service).
 * To be able to use {{kib}} sample data, install or update hundreds of prebuilt alert rules, and explore available data integrations, you need to set up and configure the [{{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry).
 * To provide detection rule updates for {{endpoint-sec}} agents, you need to set up and configure the [Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository).
-* To access {{ents}} capabilities (in addition to the general search capabilities of {{es}}), you need to set up and configure [{{ents}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-enterprise-search).
 * To access the APM integration, you need to set up and configure [Elastic APM](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-apm).
 * To install and use the Elastic documentation for {{kib}} AI assistants, you need to set up and configure the [Elastic product documentation for {{kib}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana-product-documentation).
 
@@ -119,12 +117,7 @@ Air-gapped setup of the APM server is possible in two ways:
 Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-connect-to-ems.md) in the {{kib}} documentation to learn how to configure your firewall to connect to {{ems}}, host it locally, or disable it completely.
 
 
-#### 1.9. {{ents}} [air-gapped-enterprise-search]
-
-Detailed install and configuration instructions are available in the [{{ents}} install documentation](https://www.elastic.co/guide/en/enterprise-search/current/installation.html).
-
-
-#### 1.10. {{package-registry}} [air-gapped-elastic-package-registry]
+#### 1.9. {{package-registry}} [air-gapped-elastic-package-registry]
 
 Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](https://www.elastic.co/guide/en/fleet/current/air-gapped.html) page in the {{fleet}} and {{agent}} Guide.
 
@@ -136,7 +129,7 @@ Besides setting up the EPR service, you also need to [configure {{kib}}](../../.
 
 
 
-#### 1.11. {{artifact-registry}} [air-gapped-elastic-artifact-registry]
+#### 1.10. {{artifact-registry}} [air-gapped-elastic-artifact-registry]
 
 Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](https://www.elastic.co/guide/en/fleet/current/air-gapped.html#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
 
@@ -148,12 +141,12 @@ When setting up own web server, such as NGINX, to function as the {{artifact-reg
 
 
 
-#### 1.12. Elastic Endpoint Artifact Repository [air-gapped-elastic-endpoint-artifact-repository]
+#### 1.11. Elastic Endpoint Artifact Repository [air-gapped-elastic-endpoint-artifact-repository]
 
 Air-gapped setup of this component is, essentially, identical to the setup of the [{{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry) except that different artifacts are served. To learn more, refer to [Configure offline endpoints and air-gapped environments](../../../solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md) in the Elastic Security guide.
 
 
-#### 1.13 {{ml-cap}} [air-gapped-machine-learning]
+#### 1.12 {{ml-cap}} [air-gapped-machine-learning]
 
 Some {{ml}} features, like natural language processing (NLP), require you to deploy trained models. To learn about deploying {{ml}} models in an air-gapped environment, refer to:
 
@@ -161,7 +154,7 @@ Some {{ml}} features, like natural language processing (NLP), require you to dep
 * [Install trained models in an air-gapped environment with Eland](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html#ml-nlp-pytorch-air-gapped).
 
 
-#### 1.14 {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
+#### 1.13 {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
 
 Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](https://www.elastic.co/guide/en/kibana/current/ai-assistant-settings-kb.html).
 

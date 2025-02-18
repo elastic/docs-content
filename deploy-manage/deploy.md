@@ -16,3 +16,10 @@ mapped_urls:
 
 % - [ ] ./raw-migrated-files/docs-content/serverless/intro.md
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/docs-content/serverless/intro.md](/raw-migrated-files/docs-content/serverless/intro.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md)

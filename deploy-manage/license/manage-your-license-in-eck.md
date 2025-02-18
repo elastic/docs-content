@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-licensing.html
 ---
@@ -150,9 +152,6 @@ elastic_licensing_memory_gibibytes_apm{license_level="enterprise"} 0.5
 # HELP elastic_licensing_memory_gibibytes_elasticsearch Memory used by Elasticsearch in GiB
 # TYPE elastic_licensing_memory_gibibytes_elasticsearch gauge
 elastic_licensing_memory_gibibytes_elasticsearch{license_level="enterprise"} 18
-# HELP elastic_licensing_memory_gibibytes_enterprise_search Memory used by Enterprise Search in GiB
-# TYPE elastic_licensing_memory_gibibytes_enterprise_search gauge
-elastic_licensing_memory_gibibytes_enterprise_search{license_level="enterprise"} 4
 # HELP elastic_licensing_memory_gibibytes_kibana Memory used by Kibana in GiB
 # TYPE elastic_licensing_memory_gibibytes_kibana gauge
 elastic_licensing_memory_gibibytes_kibana{license_level="enterprise"} 1

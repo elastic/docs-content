@@ -22,6 +22,10 @@ Elasticsearch 7.8 and later comes with Index Lifecycle Management (ILM) always e
 
 ## Most recent Elastic Stack packs [ece_most_recent_elastic_stack_packs]
 
+:::{important}
+Enterprise Search is not available in versions 9.0+.
+:::
+
 The following are the most recently released Elastic Stack packs for version 8.x, 7.x, and 6.x, respectively:
 
 $$$ece-elastic-stack-stackpacks-recent$$$

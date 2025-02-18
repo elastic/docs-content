@@ -32,10 +32,6 @@ Throughout the Elastic docs we have a number of troubleshooting and frequently a
 * [Kibana troubleshooting](../../../troubleshoot/kibana.md)
 * [Osquery FAQ](../../../solutions/security/investigate/osquery-faq.md)
 
-**{{ents}}**
-
-* [Enterprise Search troubleshooting](https://www.elastic.co/guide/en/enterprise-search/current/troubleshooting.html)
-
 **{{observability}}**
 
 * [Observability troubleshooting](../../../troubleshoot/observability.md)

@@ -39,7 +39,6 @@ $$$ec-autoscaling-api-example-requirements-table$$$
 | coordinating and master nodes | ✓ | ✕ | ✕ |
 | Kibana | ✓ | ✕ | ✕ |
 | APM | ✓ | ✕ | ✕ |
-| Enterprise Search | ✓ | ✕ | ✕ |
 
 +
 
