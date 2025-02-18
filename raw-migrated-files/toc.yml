@@ -134,7 +134,6 @@ toc:
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
       - file: cloud/cloud/ec-api-deployment-other.md
-      - file: cloud/cloud/ec-api-organizations.md
       - file: cloud/cloud/ec-autoscaling.md
       - file: cloud/cloud/ec-billing-stop.md
       - file: cloud/cloud/ec-cloud-ingest-data.md
@@ -158,7 +157,6 @@ toc:
       - file: cloud/cloud/ec-getting-started-trial.md
       - file: cloud/cloud/ec-getting-started.md
       - file: cloud/cloud/ec-ingest-guides.md
-      - file: cloud/cloud/ec-invite-users.md
       - file: cloud/cloud/ec-maintenance-mode-routing.md
       - file: cloud/cloud/ec-manage-apm-settings.md
       - file: cloud/cloud/ec-manage-appsearch-settings.md
@@ -193,7 +191,6 @@ toc:
       - file: cloud/cloud/ec-traffic-filtering-vnet.md
       - file: cloud/cloud/ec-traffic-filtering-vpc.md
       - file: cloud/cloud/ec-upgrade-deployment.md
-      - file: cloud/cloud/ec-user-privileges.md
       - file: cloud/cloud/ec-working-with-elasticsearch.md
   - file: docs-content/serverless/index.md
     children:
@@ -205,7 +202,6 @@ toc:
       - file: docs-content/serverless/collect-data-with-aws-firehose.md
       - file: docs-content/serverless/connect-to-byo-llm.md
       - file: docs-content/serverless/cspm-required-permissions.md
-      - file: docs-content/serverless/custom-roles.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
       - file: docs-content/serverless/elasticsearch-clients.md
       - file: docs-content/serverless/elasticsearch-dev-tools.md
@@ -216,7 +212,6 @@ toc:
       - file: docs-content/serverless/elasticsearch-ingest-data-through-api.md
       - file: docs-content/serverless/elasticsearch-manage-project.md
       - file: docs-content/serverless/general-billing-stop-project.md
-      - file: docs-content/serverless/general-manage-organization.md
       - file: docs-content/serverless/general-ml-nlp-auto-scale.md
       - file: docs-content/serverless/general-serverless-status.md
       - file: docs-content/serverless/general-sign-up-trial.md

@@ -60,7 +60,7 @@ In order to register the security extension for your custom roles provider or au
 
 1. Implement a plugin class that extends `org.elasticsearch.plugins.Plugin`
 2. Create a build configuration file for the plugin; Gradle is our recommendation.
-3. Create a `plugin-descriptor.properties` file as described in [Help for plugin authors](https://www.elastic.co/guide/en/elasticsearch/plugins/current/plugin-authors.html).
+3. Create a `plugin-descriptor.properties` file as described in [Help for plugin authors](https://www.elastic.co/guide/en/elasticsearch/plugins/current/plugin-authors.md).
 4. Create a `META-INF/services/org.elasticsearch.xpack.core.security.SecurityExtension` descriptor file for the extension that contains the fully qualified class name of your `org.elasticsearch.xpack.core.security.SecurityExtension` implementation
 5. Bundle all in a single zip file.
 
