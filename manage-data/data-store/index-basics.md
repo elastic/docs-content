@@ -7,22 +7,6 @@ mapped_urls:
 
 # Index basics
 
-% What needs to be done: Refine
-
-% GitHub issue: docs-projects#369
-
-% Scope notes: Combine content from linked sources.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/documents-indices.md
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-mgmt.md
-% - [x] ./raw-migrated-files/docs-content/serverless/index-management.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$elasticsearch-intro-documents-fields-mappings$$$
-
 This content applies to: [![Elasticsearch](/images/serverless-es-badge.svg "")](/solutions/search.md) [![Observability](/images/serverless-obs-badge.svg "")](/solutions/observability.md) [![Security](/images/serverless-sec-badge.svg "")](/solutions/security/elastic-security-serverless.md)
 
 An index is a fundamental unit of storage in {{es}}. It is a collection of documents uniquely identified by a name or an [alias](/manage-data/data-store/aliases.md). This unique name is important because it’s used to target the index in search queries and other operations.
@@ -104,7 +88,7 @@ A [data stream](/manage-data/data-store/index-types/data-streams.md) lets you st
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 
-:::{image} /images/serverless-management-data-stream.png
+:::{image} ../../images/serverless-management-data-stream.png
 :alt: Data stream details
 :class: screenshot
 :::
