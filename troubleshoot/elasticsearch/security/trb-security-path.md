@@ -1,10 +1,10 @@
 ---
-navigation_title: Configuration file relocation
+navigation_title: Configuration file locations
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-path.html
 ---
 
-# Failures due to relocation of the configuration files [trb-security-path]
+# Diagnose configuration file location issues [trb-security-path]
 
 **Symptoms:**
 

@@ -6,7 +6,7 @@ mapped_urls:
 
 # Enable threat intelligence integrations [security-enable-threat-intelligence-integrations]
 
-The Threat Intelligence view provides a streamlined way to collect threat intelligence data that you can use for threat detection and matching. Threat intelligence data consists of  [threat indicators](../../../troubleshoot/security/indicators-of-compromise.md#ti-indicators) ingested from third-party threat intelligence sources.
+The Threat Intelligence view provides a streamlined way to collect threat intelligence data that you can use for threat detection and matching. Threat intelligence data consists of  [threat indicators](/solutions/security/investigate/indicators-of-compromise.md#ti-indicators) ingested from third-party threat intelligence sources.
 
 Threat indicators describe potential threats, unusual behavior, or malicious activity on a network or in an environment. They are commonly used in indicator match rules to detect and match known threats. When an indicator match rule generates an alert, it includes information about the matched threat indicator.
 
@@ -40,7 +40,7 @@ There are a few scenarios when data won’t display in the Threat Intelligence v
     ::::
 
 3. Select an {{agent}} integration, then complete the installation steps.
-4. Return to the Threat Intelligence view on the Overview dashboard. If indicator data isn’t displaying, refresh the page or refer to these [troubleshooting steps](../../../troubleshoot/security/indicators-of-compromise.md#troubleshoot-indicators-page).
+4. Return to the Threat Intelligence view on the Overview dashboard. If indicator data isn’t displaying, refresh the page or refer to these [troubleshooting steps](../../../troubleshoot/security/indicators-of-compromise.md).
 
 
 ## Add a {{filebeat}} Threat Intel module integration [ti-mod-integration]

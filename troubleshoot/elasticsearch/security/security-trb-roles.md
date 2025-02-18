@@ -1,9 +1,10 @@
 ---
+navigation_title: Authorization errors
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-trb-roles.html
 ---
 
-# Authorization exceptions [security-trb-roles]
+# Troubleshoot authorization errors  [security-trb-roles]
 
 **Symptoms:**
 

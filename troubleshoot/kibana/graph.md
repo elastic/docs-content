@@ -1,12 +1,12 @@
 ---
-navigation_title: "Troubleshooting and limitations"
+navigation_title: "Graph"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/graph-troubleshooting.html
 ---
 
 
 
-# Graph [graph-troubleshooting]
+# Troubleshoot graph analytics features [graph-troubleshooting]
 
 
 
