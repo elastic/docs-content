@@ -18,7 +18,7 @@ Internal
 :   Realms that are internal to {{es}} and don’t require any communication with external parties. They are fully managed by {{es}}. There can only be a maximum of one configured realm per internal realm type. {{es}} provides two internal realm types: `native` and `file`.
 
 External
-:   Realms that require interaction with parties and components external to {{es}}, typically, with enterprise grade identity management systems. Unlike internal realms, you can have as many external realms as you would like, each with its own unique name and configuration. [View external realm types](#external-realms).
+:   Realms that require interaction with parties and components external to {{es}}, typically with enterprise grade identity management systems. Unlike internal realms, you can have as many external realms as you would like, each with its own unique name and configuration. [View external realm types](#external-realms).
 
 ## Configuring realms
 

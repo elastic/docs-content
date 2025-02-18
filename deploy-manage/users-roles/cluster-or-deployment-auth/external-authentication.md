@@ -1,8 +1,20 @@
+---
+applies:
+  stack: all
+  hosted: all
+  ece: all
+  eck: all
+---
+
 # External authentication
 
-Internal authentication is managed by [realms](authentication-realms.md) that require interaction with parties and components external to {{es}}, typically, with enterprise grade identity management systems. Unlike internal realms, you can have as many external realms as you would like, each with its own unique name and configuration.
+External authentication in Elastic is any form of authentication that requires interaction with parties and components external to {{es}}, typically with enterprise grade identity management systems. 
 
-In this section, you'll learn how to configure external realms, and use them to grant access to Elastic resources.
+Elastic offers several external [realm](authentication-realms.md) types, each of which represents a common authentication provider. You can have as many external realms as you would like, each with its own unique name and configuration.
+
+If the authentication provider that you want to use is not currently supported, then you can create a your own [custom realm plugin](custom.md) to integrate with additional systems.
+
+In this section, you'll learn how to configure different types of external realms, and use them to grant access to Elastic resources.
 
 ## Available external realms
 
@@ -10,7 +22,3 @@ In this section, you'll learn how to configure external realms, and use them to 
 
 :::{include} ../_snippets/external-realms.md
 :::
-
-## Custom realms
-
-If you need to integrate with another authentication system, you can build a custom realm plugin. For more information, see [Integrating with other authentication systems](custom.md).
