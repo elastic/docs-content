@@ -1,9 +1,10 @@
 ---
+navigation_title: "Elasticsearch"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/troubleshooting.html
 ---
 
-# Elasticsearch [troubleshooting]
+# Troubleshoot {{es}} [troubleshooting]
 
 This section provides a series of troubleshooting solutions aimed at helping users fix problems that an {{es}} deployment might encounter.
 
