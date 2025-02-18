@@ -189,13 +189,13 @@ toc:
           - file: deployments/cloud-enterprise/common-issues.md
           - file: deployments/cloud-enterprise/use-emergency-roles-token.md
           - file: deployments/cloud-enterprise/remove-cloud-enterprise.md
+          - file: deployments/cloud-enterprise/troubleshooting-container-engines.md
           - file: deployments/cloud-enterprise/verify-zookeeper-sync-status.md
           - file: deployments/cloud-enterprise/rebuilding-broken-zookeeper-quorum.md
-          - file: deployments/cloud-enterprise/troubleshooting-container-engines.md
           - file: deployments/cloud-enterprise/run-ece-diagnostics-tool.md
-          - file: deployments/cloud-enterprise/ask-for-help.md
           - file: deployments/cloud-enterprise/heap-dumps.md
           - file: deployments/cloud-enterprise/thread-dumps.md
+          - file: deployments/cloud-enterprise/ask-for-help.md
       - file: deployments/cloud-on-k8s/kubernetes.md
         children:
           - file: deployments/cloud-on-k8s/common-problems.md
