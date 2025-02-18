@@ -11,9 +11,9 @@ mapped_urls:
 % What needs to be done: Refine
 
 :::{admonition} WIP
-⚠️ **This page is a work in progress.** ⚠️
+⚠️ **This section is a work in progress.** ⚠️
 
-The documentation team is working on expanding this topic.
+The documentation team is actively working on structure, user focus, and more.
 :::
 
 Use the topics in this section to troubleshoot Elastic products, features, and deployments.
