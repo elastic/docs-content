@@ -33,7 +33,7 @@ Building a rich search experience, gaining actionable insight into your environm
 :::
 
 :::{important}
-Enterprise Search is not available in{{stack}} 9.0+.
+Enterprise Search is not available in {{stack}} 9.0+.
 :::
 
 These solutions help you accomplish your use cases: Ingest data into the deployment and set up specific capabilities of the Elastic Stack.
