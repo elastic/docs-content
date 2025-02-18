@@ -32,7 +32,7 @@ Install the Elastic Stack products you want to use in the following order:
 1. [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html)
 2. [Kibana](https://www.elastic.co/guide/en/kibana/current/install.html) 
 3. [Logstash](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
-4. [Elastic Agent](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html) or [Beats]({{beats-ref}}/getting-started.html)
+4. [Elastic Agent](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html) or [Beats](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html)
 5. [APM](https://www.elastic.co/guide/en/apm/guide/current/apm-quick-start.html)
 6. [Elasticsearch Hadoop](https://www.elastic.co/guide/en/elasticsearch/hadoop/current/install.html)
 

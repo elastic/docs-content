@@ -62,7 +62,7 @@ subs:
   apm-lambda-ref:   "https://www.elastic.co/guide/en/apm/lambda/current"
   apm-attacher-ref:   "https://www.elastic.co/guide/en/apm/attacher/current"
   docker-logging-ref:   "https://www.elastic.co/guide/en/beats/loggingplugin/current"
-  esf-ref:   "https://www.elastic.co/guide/en/esf/{{esf_version}}"
+  esf-ref:   "https://www.elastic.co/guide/en/esf/current"
   kinesis-firehose-ref:   "https://www.elastic.co/guide/en/kinesis/{{kinesis_version}}"
   estc-welcome-current:   "https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current"
   estc-welcome:   "https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current"
