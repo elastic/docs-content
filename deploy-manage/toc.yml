@@ -650,6 +650,7 @@ toc:
                   - file: users-roles/cluster-or-deployment-auth/pki.md
                   - file: users-roles/cluster-or-deployment-auth/custom.md
               - file: users-roles/cluster-or-deployment-auth/built-in-users.md
+              - file: users-roles/cluster-or-deployment-auth/kibana-authentication.md
               - file: users-roles/cluster-or-deployment-auth/user-profiles.md
               - file: users-roles/cluster-or-deployment-auth/access-agreement.md
               - file: users-roles/cluster-or-deployment-auth/anonymous-access.md

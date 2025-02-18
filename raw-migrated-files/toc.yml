@@ -528,7 +528,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/esql-using.md
       - file: elasticsearch/elasticsearch-reference/field-and-document-access-control.md
       - file: elasticsearch/elasticsearch-reference/field-level-security.md
-      - file: elasticsearch/elasticsearch-reference/file-realm.md
       - file: elasticsearch/elasticsearch-reference/fips-140-compliance.md
       - file: elasticsearch/elasticsearch-reference/how-monitoring-works.md
       - file: elasticsearch/elasticsearch-reference/ignore_missing_component_templates.md
@@ -589,7 +588,6 @@ toc:
       - file: kibana/kibana/elasticsearch-mutual-tls.md
       - file: kibana/kibana/esql.md
       - file: kibana/kibana/install.md
-      - file: kibana/kibana/kibana-authentication.md
       - file: kibana/kibana/kibana-role-management.md
       - file: kibana/kibana/logging-settings.md
       - file: kibana/kibana/management.md
