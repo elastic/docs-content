@@ -13,9 +13,11 @@ applies:
 
 # Native user authentication [native-realm]
 
-The easiest way to manage and authenticate users is with the internal `native` realm. You can use the Elasticsearch REST APIs or Kibana to add and remove users, assign user roles, and manage user passwords.
+The easiest way to manage and authenticate users is with the internal `native` realm. You can use [Elasticsearch REST APIs](#manage-native-users-using-the-api) or [Kibana](#managing-native-users) to add and remove users, assign user roles, and manage user passwords.
 
-## Configuring a native realm [native-realm-configuration]
+In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-passwords-using-the-command-line).
+
+## Configure a native realm [native-realm-configuration]
 
 The native realm is available and enabled by default. You can disable it explicitly with the following setting.
 
@@ -47,20 +49,16 @@ You can configure a `native` realm in the `xpack.security.authc.realms.native` n
 2. Restart {{es}}.
 
 
-## Managing native users [managing-native-users]
+## Manage native users using {{kib}} [managing-native-users]
 
-The {{stack}} {{security-features}} enable you to easily manage users in {{kib}} on the **Management / Security / Users** page.
+The Elastic enables you to easily manage users in {{kib}} on the **Stack Management > Security > Users** page. From this page, you can create users, edit users, assign roles to users, and change user passwords. You can also deactivate or delete existing users.
 
-Alternatively, you can manage users through the `user` API. For more information and examples, see [Users](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
-
-### Create a user [_create_a_user]
-
-Now that you created a role, create a user account.
+### Example: Create a user [_create_a_user]
 
 1. Navigate to **Stack Management**, and under **Security**, select **Users**.
 2. Click **Create user**.
-3. Give this user a descriptive username, and choose a secure password.
-4. Assign the **marketing_dashboards_role** that you previously created to this new user.
+3. Give the user a descriptive username, and choose a secure password.
+4. Optional: assign [roles](/deploy-manage/users-roles/user-roles.md) to the user.
 5. Click **Create user**.
 
 :::{image} ../../../images/kibana-tutorial-secure-access-example-1-user.png
@@ -68,9 +66,28 @@ Now that you created a role, create a user account.
 :class: screenshot
 :::
 
-## Reset passwords for native users
+## Manage native users using the `user` API
 
-After you implement security, you might need or want to change passwords for different users. You can use the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) tool or the [change passwords API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) to change passwords for native users.
+You can manage users through the Elasticsearch `user` API. 
+
+For example, you can change a user's password:
+
+```console
+POST /_security/user/user1/_password
+{
+  "password" : "new-test-password"
+}
+```
+
+For more information and examples, see [Users](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
+
+## Reset passwords for native users using the command line [reset-pw-cmd-line]
+
+:::{applies}
+:stack: all
+:::
+
+In self-managed {{es}} clusters, you can also reset passwords for users in the native realm through the command line using the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) tool.
 
 For example, the following command changes the password for a user with the username `user1` to an auto-generated value, and prints the new password to the terminal:
 
@@ -82,13 +99,4 @@ To explicitly set a password for a user, include the `-i` parameter with the int
 
 ```shell
 bin/elasticsearch-reset-password -u user1 -i <password>
-```
-
-If you’re working in {{kib}} or don’t have command-line access, you can use the change passwords API to change a user’s password:
-
-```console
-POST /_security/user/user1/_password
-{
-  "password" : "new-test-password"
-}
 ```
