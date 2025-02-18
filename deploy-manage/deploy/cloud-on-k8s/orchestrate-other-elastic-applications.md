@@ -3,7 +3,7 @@
 This section explains how to deploy and configure various Elastic Stack applications within Elastic Cloud on Kubernetes (ECK).
 
 ::::{tip}
-This content applies to APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash applications. To orchestrate an {{es}} cluster or {{kib}}, refer to [](./manage-deployments.md).
+This content applies to APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash applications. To orchestrate an {{es}} cluster or {{kib}}, refer to [](./manage-deployments.md).
 ::::
 
 The following guides provide specific instructions for deploying and configuring each application on ECK:
@@ -11,7 +11,6 @@ The following guides provide specific instructions for deploying and configuring
 * [Standalone Elastic Agent](standalone-elastic-agent.md)
 * [{{fleet}}-managed {{agent}}](fleet-managed-elastic-agent.md)
 * [Elastic Maps Server](elastic-maps-server.md)
-* [Enterprise Search](enterprise-search.md)
 * [Beats](beats.md)
 * [{{ls}}](logstash.md)
 

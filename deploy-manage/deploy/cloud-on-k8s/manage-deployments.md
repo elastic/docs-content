@@ -7,7 +7,7 @@ applies:
 This section provides detailed guidance on deploying, configuring, and managing Elasticsearch and Kibana within ECK. A **deployment** refers to an {{es}} cluster, optionally with one or more {{kib}} instances connected to it.
 
 ::::{tip}
-This content focuses on Elasticsearch and Kibana deployments. To orchestrate other Elastic Stack applications such as APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash, refer to the [Orchestrating other Elastic Stack applications](./orchestrate-other-elastic-applications.md).
+This content focuses on Elasticsearch and Kibana deployments. To orchestrate other Elastic Stack applications such as APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash, refer to the [Orchestrating other Elastic Stack applications](./orchestrate-other-elastic-applications.md).
 ::::
 
 ## What You'll Learn

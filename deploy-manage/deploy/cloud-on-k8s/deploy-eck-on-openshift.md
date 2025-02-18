@@ -17,10 +17,6 @@ This section shows how to run ECK on OpenShift.
 * [Grant privileged permissions to Beats](k8s-openshift-beats.md)
 * [Grant host access permission to Elastic Agent](k8s-openshift-agent.md)
 
-::::{warning} 
-Some Docker images are incompatible with the `restricted` SCC. This is the case for the **APM Server before 7.9** and for **Enterprise Search 7.9 and 7.10**. You can use this [workaround](k8s-openshift-anyuid-workaround.md) to run those images with the `anyuid` SCC.
-::::
-
 ## Before you begin [k8s-openshift-before-you-begin] 
 
 1. To run the instructions on this page, you must be a `system:admin` user or a user with the privileges to create Projects, CRDs, and RBAC resources at the cluster level.

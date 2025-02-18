@@ -274,53 +274,6 @@ spec:
       common.k8s.elastic.co/type: apm-server
 ```
 
-
-## Isolating Enterprise Search [k8s-network-policies-enterprise-search-isolation] 
-
-|     |     |
-| --- | --- |
-| Egress (outgoing) | * TCP port 9200 to {{es}} nodes in the namespace.<br>* UDP port 53 for DNS lookup.<br> |
-| Ingress (incoming) | * TCP port 3002 from other pods in the namespace.<br> |
-
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: eck-enterprise-search
-  namespace: team-a
-spec:
-  egress:
-  - ports:
-    - port: 9200
-      protocol: TCP
-    to:
-    - namespaceSelector:
-        matchLabels:
-          eck.k8s.elastic.co/tenant: team-a
-      podSelector:
-        matchLabels:
-          common.k8s.elastic.co/type: elasticsearch
-  - ports:
-    - port: 53
-      protocol: UDP
-  ingress:
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          eck.k8s.elastic.co/tenant: team-a
-    # [Optional] Allow ingress controller pods from the ingress-nginx namespace.
-    #- namespaceSelector:
-    #    matchLabels:
-    #      name: ingress-nginx
-    ports:
-    - port: 3002
-      protocol: TCP
-  podSelector:
-    matchLabels:
-      common.k8s.elastic.co/type: enterprise-search
-```
-
-
 ## Isolating Beats [k8s-network-policies-beats-isolation] 
 
 ::::{note} 
