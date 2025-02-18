@@ -766,14 +766,12 @@ toc:
               - file: monitor/logging-configuration/kibana-logging-cli-configuration.md
           - file: monitor/logging-configuration/security-event-audit-logging.md
             children:
-              - file: monitor/logging-configuration/enabling-elasticsearch-audit-logs.md
+              - file: monitor/logging-configuration/enabling-audit-logs.md
+              - file: monitor/logging-configuration/configuring-audit-logs.md
                 children:
-                  - file: monitor/logging-configuration/elasticsearch-audit-events.md
-                  - file: monitor/logging-configuration/logfile-audit-output.md
                   - file: monitor/logging-configuration/logfile-audit-events-ignore-policies.md
-                  - file: monitor/logging-configuration/auditing-search-queries.md
-              - file: monitor/logging-configuration/enabling-kibana-audit-logs.md
-              - file: monitor/logging-configuration/enabling-audit-logs-in-orchestrated-deployments.md
+                  - file: monitor/logging-configuration/logfile-audit-output.md
+              - file: monitor/logging-configuration/auditing-search-queries.md
               - file: monitor/logging-configuration/correlating-kibana-elasticsearch-audit-logs.md
   - file: cloud-organization.md
     children:
