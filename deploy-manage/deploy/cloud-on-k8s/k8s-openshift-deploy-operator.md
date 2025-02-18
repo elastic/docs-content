@@ -18,7 +18,7 @@ mapped_pages:
     oc adm pod-network make-projects-global elastic-system
     ```
 
-3. Create a namespace to hold the Elastic resources (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash):
+3. Create a namespace to hold the Elastic resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash):
 
     ::::{note} 
     A namespace other than the default namespaces (default, kube-**, openshift-**, etc) is required such that default [Security Context Constraint](https://docs.openshift.com/container-platform/4.12/authentication/managing-security-context-constraints.md) (SCC) permissions are applied automatically. Elastic resources will not work properly in any of the default namespaces.

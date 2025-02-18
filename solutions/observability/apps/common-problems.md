@@ -4,6 +4,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-troubleshooting.html
 ---
 
+% This page exists in the Troubleshoot section (troubleshoot/observability/apm/common-problems.md), so probably OK to delete from Solutions?
+
+
 # Common problems
 
 % What needs to be done: Align serverless/stateful

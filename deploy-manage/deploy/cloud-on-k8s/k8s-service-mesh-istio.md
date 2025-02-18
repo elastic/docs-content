@@ -61,7 +61,7 @@ spec:
 
 As the default `failurePolicy` of the webhook is `Ignore`, the operator continues to function even if the above annotations are not present. The downside is that you are still able to submit an invalid manifest using `kubectl` without receiving any immediate feedback.
 
-ECK has a fallback validation mechanism that reports validation failures as events associated with the relevant resource (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash) that must be manually discovered by running `kubectl describe`. For example, to find the validation errors in an Elasticsearch resource named `quickstart`, you can run `kubectl describe elasticsearch quickstart`.
+ECK has a fallback validation mechanism that reports validation failures as events associated with the relevant resource (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) that must be manually discovered by running `kubectl describe`. For example, to find the validation errors in an Elasticsearch resource named `quickstart`, you can run `kubectl describe elasticsearch quickstart`.
 
 
 ## Connect Elastic Stack applications to the Istio service mesh [k8s-service-mesh-istio-stack-connection]

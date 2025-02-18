@@ -198,20 +198,6 @@ After you’ve enabled log delivery on your deployment, you can [add the Kibana 
 
 Enabling log collection also supports collecting and indexing the following types of logs from other components in your deployments:
 
-**Enterprise Search**
-
-* connectors.log*
-* crawler.log*
-* filebeat*
-* app-server.log*
-* system.log*
-* worker.log*
-* kibana.log*
-
-**App Search**
-
-* app-search*.log
-
 **APM**
 
 * apm*.log*
@@ -228,7 +214,7 @@ Check the respective product documentation for more information about the loggin
 
 ## Metrics features [ece-extra-metrics-features] 
 
-With logging and monitoring enabled for a deployment, metrics are collected for Elasticsearch, Kibana, Enterprise Search, and APM with Fleet Server.
+With logging and monitoring enabled for a deployment, metrics are collected for Elasticsearch, Kibana, and APM with Fleet Server.
 
 
 #### Enabling Elasticsearch/Kibana audit logs on your deployment [ece-enable-audit-logs] 

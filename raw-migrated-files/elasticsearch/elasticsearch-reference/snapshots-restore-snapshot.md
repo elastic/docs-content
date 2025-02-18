@@ -33,6 +33,9 @@ This guide also provides tips for [restoring to another cluster](../../../deploy
     If no such template exists, you can [create one](../../../manage-data/data-store/index-types/set-up-data-stream.md#create-index-template) or [restore a cluster state](../../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-entire-cluster) that contains one. Without a matching index template, a data stream can’t roll over or create backing indices.
 
 * If your snapshot contains data from App Search or Workplace Search, ensure you’ve restored the [Enterprise Search encryption key](https://www.elastic.co/guide/en/enterprise-search/current/encryption-keys.html) before restoring the snapshot.
+:::{important}
+Enterprise Search is not available in {{stack}} 9.0+.
+:::
 
 
 ## Considerations [restore-snapshot-considerations]

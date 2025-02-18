@@ -32,9 +32,6 @@ Service accounts are predefined in code. The following service accounts are avai
 `elastic/kibana`
 :   The service account used by {{kib}} to communicate with {{es}}.
 
-`elastic/enterprise-search-server`
-:   The service account used by Enterprise Search to communicate with {{es}}.
-
 ::::{important} 
 Do not attempt to use service accounts for authenticating individual users. Service accounts can only be authenticated with service tokens, which are not applicable to regular users.
 ::::
