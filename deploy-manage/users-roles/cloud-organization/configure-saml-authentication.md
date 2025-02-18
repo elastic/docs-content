@@ -24,7 +24,6 @@ On this page, you'll learn the following:
 * How to [enforce SAML SSO](#enforce-sso) for your organization
 * How to [map groups returned by your IdP to Elastic Cloud roles](#role-mappings)
 * How to [disable SAML SSO](#ec_disable_sso)
-* How to [troubleshoot your implementation](#ec_troubleshoot_sso).
 
 For detailed examples of implementing SAML SSO using common identity providers, refer to the following topics:
 
