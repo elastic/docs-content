@@ -354,10 +354,8 @@ toc:
       - file: docs-content/serverless/observability-synthetics-scale-and-architect.md
       - file: docs-content/serverless/observability-synthetics-security-encryption.md
       - file: docs-content/serverless/observability-synthetics-settings.md
-      - file: docs-content/serverless/observability-synthetics-troubleshooting.md
       - file: docs-content/serverless/observability-triage-slo-burn-rate-breaches.md
       - file: docs-content/serverless/observability-triage-threshold-breaches.md
-      - file: docs-content/serverless/observability-troubleshoot-logs.md
       - file: docs-content/serverless/observability-view-alerts.md
       - file: docs-content/serverless/observability-view-infrastructure-metrics.md
       - file: docs-content/serverless/project-and-management-settings.md
@@ -474,7 +472,6 @@ toc:
       - file: docs-content/serverless/security-vuln-management-faq.md
       - file: docs-content/serverless/security-vuln-management-get-started.md
       - file: docs-content/serverless/security-vuln-management-overview.md
-      - file: docs-content/serverless/slo-troubleshoot-slos.md
       - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
@@ -673,7 +670,6 @@ toc:
       - file: observability-docs/observability/logs-plaintext.md
       - file: observability-docs/observability/logs-send-application.md
       - file: observability-docs/observability/logs-stream.md
-      - file: observability-docs/observability/logs-troubleshooting.md
       - file: observability-docs/observability/manage-cases-settings.md
       - file: observability-docs/observability/manage-cases.md
       - file: observability-docs/observability/monitor-datasets.md
@@ -690,7 +686,6 @@ toc:
       - file: observability-docs/observability/rate-aggregation.md
       - file: observability-docs/observability/slo-burn-rate-alert.md
       - file: observability-docs/observability/slo-create.md
-      - file: observability-docs/observability/slo-troubleshoot-slos.md
       - file: observability-docs/observability/slo.md
       - file: observability-docs/observability/synthetics-analyze.md
       - file: observability-docs/observability/synthetics-command-reference.md
@@ -712,7 +707,6 @@ toc:
       - file: observability-docs/observability/synthetics-scale-and-architect.md
       - file: observability-docs/observability/synthetics-security-encryption.md
       - file: observability-docs/observability/synthetics-settings.md
-      - file: observability-docs/observability/synthetics-troubleshooting.md
       - file: observability-docs/observability/triage-slo-burn-rate-breaches.md
       - file: observability-docs/observability/triage-threshold-breaches.md
       - file: observability-docs/observability/view-infrastructure-metrics.md
