@@ -9,13 +9,13 @@ mapped_pages:
 # Set up a TSDS [set-up-tsds]
 
 
-To set up a [time series data stream (TSDS)](../index-types/TSDS)](../data-streams/time-series-data-stream-tsds.md), follow these steps:
+To set up a [time series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md), follow these steps:
 
-1. Check the [prerequisites](../index-types/set-up-tsds.md#tsds-prereqs).
-2. [Create an index lifecycle policy](../index-types/set-up-tsds.md#tsds-ilm-policy).
-3. [Create an index template](../index-types/set-up-tsds.md#create-tsds-index-template).
-4. [Create the TSDS](../index-types/set-up-tsds.md#create-tsds).
-5. [Secure the TSDS](../index-types/set-up-tsds.md#secure-tsds).
+1. Check the [prerequisites](#tsds-prereqs).
+2. [Create an index lifecycle policy](#tsds-ilm-policy).
+3. [Create an index template](#create-tsds-index-template).
+4. [Create the TSDS](#create-tsds).
+5. [Secure the TSDS](#secure-tsds).
 
 
 ## Prerequisites [tsds-prereqs]
