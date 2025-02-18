@@ -497,7 +497,6 @@ toc:
       - file: docs-content/serverless/security-vuln-management-faq.md
       - file: docs-content/serverless/security-vuln-management-get-started.md
       - file: docs-content/serverless/security-vuln-management-overview.md
-      - file: docs-content/serverless/slo-troubleshoot-slos.md
       - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
@@ -712,7 +711,6 @@ toc:
       - file: observability-docs/observability/rate-aggregation.md
       - file: observability-docs/observability/slo-burn-rate-alert.md
       - file: observability-docs/observability/slo-create.md
-      - file: observability-docs/observability/slo-troubleshoot-slos.md
       - file: observability-docs/observability/slo.md
       - file: observability-docs/observability/synthetics-analyze.md
       - file: observability-docs/observability/synthetics-command-reference.md
