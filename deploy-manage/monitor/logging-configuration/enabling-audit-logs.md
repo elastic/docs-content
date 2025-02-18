@@ -21,13 +21,7 @@ Audit logs are only available on certain [subscription levels](https://www.elast
 
 You can log security-related events such as authentication failures and refused connections to monitor your cluster for suspicious activity (including data access authorization and user security configuration changes). Audit logging can be enabled independently for {{es}} and {{kib}}.
 
-Use the {{kib}} audit logs in conjunction with {{es}} audit logging to get a holistic view of all security related events. {{kib}} defers to the {{es}} security model for authentication, data index authorization, and features that are driven by cluster-wide privileges.
-
-::::{note}
-Audit logs are disabled by default and must be explicitly enabled.
-::::
-
-This section describes how to enable and configure audit logging in both {{es}} and {{kib}} for all supported deployment types, including self-managed clusters, Elastic Cloud Hosted, Elastic Cloud Enterprise (ECE), and Elastic Cloud on Kubernetes (ECK).
+This section describes how to enable and configure audit logging in both {{es}} and {{kib}} for all supported deployment types, including self-managed clusters, {{ech}}, {{ece}} (ECE), and {{eck}} (ECK).
 
 ::::{important}
 In orchestrated deployments, audit logs must be shipped to a monitoring deployment; otherwise, they remain at container level and won't be accessible to users. For details on configuring log forwarding in orchestrated environments, refer to [logging configuration](../logging-configuration.md).
@@ -35,11 +29,14 @@ In orchestrated deployments, audit logs must be shipped to a monitoring deployme
 
 When audit logging is enabled, security events are persisted to a dedicated `<clustername>_audit.json` file on the host’s file system, on every cluster node. For more information, refer to [{{es}} logfile audit output](logfile-audit-output.md).
 
-You can configure additional options to control what events are logged and what information is included in the audit log. For more information, refer to [](./configuring-audit-logs.md).
-
 ## Enable audit logging [enable-audit-logging-procedure]
 
 To enable {{es}} or {{kib}} audit logs, configure `xpack.security.audit.enabled` to `true` in **all {{es}} or {{kib}} nodes**, then restart the nodes to apply the changes. For detailed instructions, select your deployment type:
+
+::::{note}
+Audit logs are disabled by default and must be explicitly enabled.
+::::
+
 
 ::::::{tab-set}
 
@@ -154,3 +151,6 @@ When enabled, audit logs are collected and shipped to the monitoring cluster ref
 
 ::::::
 
+## Next steps
+
+You can configure additional options to control what events are logged and what information is included in the audit log. For more information, refer to [](./configuring-audit-logs.md).

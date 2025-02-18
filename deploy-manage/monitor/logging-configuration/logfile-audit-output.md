@@ -7,6 +7,7 @@ applies:
   ece: all
   eck: all
   stack: all
+  serverless: unavailable
 ---
 
 # Elasticsearch logfile audit output [audit-log-output]
@@ -23,7 +24,7 @@ If you overwrite the `log4j2.properties` and do not specify appenders for any of
 
 For {{es}} configuration options that control event filtering in audit logs, refer to [](./configuring-audit-logs.md).
 
-## Log entry format [audit-log-entry-format] 
+## Log entry format [audit-log-entry-format]
 
 The audit events are formatted as JSON documents, and each event is printed on a separate line in the `<clustername>_audit.json` file. The entries themselves do not contain the end-of-line delimiter. The audit event JSON format is somewhat particular, as **most** fields follow a dotted name syntax, are ordered, and contain non-null string values. This format creates a structured columnar aspect, similar to a CSV, that can be more easily inspected visually (compared to an equivalent nested JSON document).
 
@@ -31,4 +32,4 @@ There are however a few attributes that are exceptions to the above format. The 
 
 When the `request.body` attribute is present (see [Auditing search queries](auditing-search-queries.md)), it contains a string value containing the full HTTP request body, escaped as per the JSON RFC 4677.
 
-Refer to [audit event types](elasticsearch-audit-events.md) for a complete list of fields, as well as examples, for each entry type.
+Refer to [audit event types]() (asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events) for a complete list of fields, as well as examples, for each entry type.

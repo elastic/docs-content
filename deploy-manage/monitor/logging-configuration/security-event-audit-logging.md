@@ -16,6 +16,8 @@ Audit logging is a powerful feature that helps you monitor and track security-re
 
 Audit logging also provides forensic evidence in the event of an attack, and can be enabled independently for {{es}} and {{kib}}.
 
+Use the {{kib}} audit logs in conjunction with {{es}} audit logging to get a holistic view of all security related events. {{kib}} defers to the {{es}} security model for authentication, data index authorization, and features that are driven by cluster-wide privileges.
+
 In this section, you'll learn how to:
 
 * [](./enabling-audit-logs.md): Activate {{es}} or {{kib}} audit logs for all supported deployment types.
@@ -27,3 +29,8 @@ In this section, you'll learn how to:
 * [Correlate audit events](./correlating-kibana-elasticsearch-audit-logs.md): Explore audit logs and understand how events from the same request are correlated.
 
 By following these guidelines, you can effectively audit system activity, enhance security monitoring, and meet compliance requirements.
+
+For a complete description of audit event details and format, refer to:
+
+* [Elasticsearch audit events]() asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events
+* [Kibana audit events]() asciidocalypse://kibana/docs/reference/kibana-audit-events
