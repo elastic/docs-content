@@ -41,7 +41,7 @@ Run the following command to obtain the password of the `elastic` user:
 Beware of copying this Secret as-is into a different namespace. Check [Common Problems: Owner References](../../../troubleshoot/deployments/cloud-on-k8s/common-problems.md#k8s-common-problems-owner-refs) for more information.
 ::::
 
-For more information about handling users on ECK deployments refer to [ECK users and roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
+For more information about handling built-in users on ECK deployments, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md).
 
 ## Managing Kubernetes services [k8s-kubernetes-service]
 
