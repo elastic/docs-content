@@ -78,7 +78,6 @@ The following are known limitations and restrictions with autoscaling:
 
 * Autoscaling will not run if the cluster is unhealthy or if the last Elasticsearch plan failed.
 * Trial deployments cannot be configured to autoscale beyond the normal Trial deployment size limits. The maximum size per zone is increased automatically from the Trial limit when you convert to a paid subscription.
-* If Enterprise Search is left at the default size, and has no engines or sources configured for an extended period, it will be automatically disabled. This occurs whether autoscaling is enabled or not. Reactivate the service by editing the **Enterprise Search** settings for your deployment under **Cloud > Deployments > *your-deployment* > Edit**.
 * ELSER deployments do not scale automatically. For more information, refer to [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md).
 
 

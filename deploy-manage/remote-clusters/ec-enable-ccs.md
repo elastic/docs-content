@@ -48,12 +48,6 @@ If your deployment was created before February 2021, CCR won’t be enabled by d
 
 To enable these features, go to the **Security** page of your deployment and under **Trust management** select **Enable CCR**.
 
-::::{note}
-CCR is not supported for indices used by Enterprise Search.
-::::
-
-
-
 ## Remote clusters and traffic filtering [ec-ccs-ccr-traffic-filtering]
 
 ::::{note}

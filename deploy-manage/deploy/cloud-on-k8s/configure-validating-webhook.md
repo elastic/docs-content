@@ -5,7 +5,7 @@ mapped_pages:
 
 # Configure the validating webhook [k8s-webhook]
 
-ECK can be configured to provide a [validating webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/) that validates Elastic custom resources (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash) before they are created or updated. Validating webhooks provide immediate feedback if a submitted manifest contains invalid or illegal configuration — which can help you catch errors early and save time that would otherwise be spent on troubleshooting.
+ECK can be configured to provide a [validating webhook](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/) that validates Elastic custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) before they are created or updated. Validating webhooks provide immediate feedback if a submitted manifest contains invalid or illegal configuration — which can help you catch errors early and save time that would otherwise be spent on troubleshooting.
 
 Validating webhooks are defined using a `ValidatingWebhookConfiguration` object that defines the following:
 
