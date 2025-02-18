@@ -543,7 +543,6 @@ toc:
       - file: kibana/kibana/osquery.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
-      - file: kibana/kibana/sample-data.md
       - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/secure-settings.md
