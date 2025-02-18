@@ -37,7 +37,7 @@ To configure ILM Migration in the console:
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Deployments** page, select your deployment.
 
-    Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
+    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. Near the top of the deployment overview, you should get a message to migrate from index curation to index lifecycle management (ILM) along with a **Start migration** button.
 4. Select which index curation pattern you wish to migrate.

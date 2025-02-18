@@ -5,20 +5,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-concepts.html
 ---
 
-% What needs to be done: Refine
-
-% GitHub issue: docs-projects#376
-
-% Scope notes: Combine the linked resources. The "migrate to ILM" one is probably outdated now.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-lifecycle-management.md
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/overview-index-lifecycle-management.md
-% - [x] ./raw-migrated-files/docs-content/serverless/elasticsearch-differences.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
 # Index lifecycle management
 
 {{ilm-cap}} ({{ilm-init}}) provides an integrated and streamlined way to manage time-based data such as logs and metrics, making it easier to follow best practices for managing your indices.
