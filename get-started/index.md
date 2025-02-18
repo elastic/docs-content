@@ -7,17 +7,13 @@ mapped_pages:
 
 [{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time.
 
-{{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with [{{kib}}](https://www.elastic.co/kibana), it powers the following Elastic solutions:
+{{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with [{{kib}}](https://www.elastic.co/kibana), it powers these Elastic solutions:
 
 * [Observability](https://www.elastic.co/observability)
 * [Search](https://www.elastic.co/enterprise-search)
 * [Security](https://www.elastic.co/security)
 
-::::{tip}
-{{es}} has a lot of features. Explore the full list on the [product webpage](https://www.elastic.co/elasticsearch/features).
-
-::::
-
+Explore the full list of [{{es}} features](https://www.elastic.co/elasticsearch/features) on the product webpage.
 
 ::::{admonition} What is the Elastic Stack?
 :name: elasticsearch-intro-elastic-stack
@@ -30,7 +26,7 @@ mapped_pages:
 
 ## Use cases [elasticsearch-intro-use-cases]
 
-{{es}} is used for a wide and growing range of use cases. Here are a few examples:
+You can use {{es}} for a wide and growing range of use cases. Here are a few examples:
 
 **Observability**
 
