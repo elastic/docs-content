@@ -1,59 +1,58 @@
 ---
-navigation_title: "Run downsampling manually"
+navigation_title: "Run downsampling using data stream lifecycle"
 mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/downsampling-manual.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/downsampling-dsl.html
 ---
 
 
 
-# Run downsampling manually [downsampling-manual]
+# Run downsampling using data stream lifecycle [downsampling-dsl]
 
 
-The recommended way to [downsample](downsampling-time-series-data-stream.md) a [time-series data stream (TSDS)](time-series-data-stream-tsds.md) is [through index lifecycle management (ILM)](run-downsampling-with-ilm.md). However, if you’re not using ILM, you can downsample a TSDS manually. This guide shows you how, using typical Kubernetes cluster monitoring data.
+This is a simplified example that allows you to see quickly how [downsampling](../index-types/downsampling-time-series-data-stream.md) works as part of a datastream lifecycle to reduce the storage size of a sampled set of metrics. The example uses typical Kubernetes cluster monitoring data. To test out downsampling with data stream lifecycle, follow these steps:
 
-To test out manual downsampling, follow these steps:
-
-1. Check the [prerequisites](#downsampling-manual-prereqs).
-2. [Create a time series data stream](#downsampling-manual-create-index).
-3. [Ingest time series data](#downsampling-manual-ingest-data).
-4. [Downsample the TSDS](#downsampling-manual-run).
-5. [View the results](#downsampling-manual-view-results).
-
-
-## Prerequisites [downsampling-manual-prereqs]
-
-* Refer to the [TSDS prerequisites](set-up-tsds.md#tsds-prereqs).
-* It is not possible to downsample a [data stream](data-streams.md) directly, nor multiple indices at once. It’s only possible to downsample one time series index (TSDS backing index).
-* In order to downsample an index, it needs to be read-only. For a TSDS write index, this means it needs to be rolled over and made read-only first.
-* Downsampling uses UTC timestamps.
-* Downsampling needs at least one metric field to exist in the time series index.
+1. Check the [prerequisites](#downsampling-dsl-prereqs).
+2. [Create an index template with data stream lifecycle](#downsampling-dsl-create-index-template).
+3. [Ingest time series data](#downsampling-dsl-ingest-data).
+4. [View current state of data stream](#downsampling-dsl-view-data-stream-state).
+5. [Roll over the data stream](#downsampling-dsl-rollover).
+6. [View downsampling results](#downsampling-dsl-view-results).
 
 
-## Create a time series data stream [downsampling-manual-create-index]
+## Prerequisites [downsampling-dsl-prereqs]
 
-First, you’ll create a TSDS. For simplicity, in the time series mapping all `time_series_metric` parameters are set to type `gauge`, but [other values](time-series-data-stream-tsds.md#time-series-metric) such as `counter` and `histogram` may also be used. The `time_series_metric` values determine the kind of statistical representations that are used during downsampling.
+Refer to [time series data stream prerequisites](../index-types/set-up-tsds.md#tsds-prereqs).
+
+
+## Create an index template with data stream lifecycle [downsampling-dsl-create-index-template]
+
+This creates an index template for a basic data stream. The available parameters for an index template are described in detail in [Set up a time series data stream](set-up-data-stream.md).
+
+For simplicity, in the time series mapping all `time_series_metric` parameters are set to type `gauge`, but the `counter` metric type may also be used. The `time_series_metric` values determine the kind of statistical representations that are used during downsampling.
 
 The index template includes a set of static [time series dimensions](time-series-data-stream-tsds.md#time-series-dimension): `host`, `namespace`, `node`, and `pod`. The time series dimensions are not changed by the downsampling process.
 
+To enable downsampling, this template includes a `lifecycle` section with [downsampling](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-lifecycle) object. `fixed_interval` parameter sets downsampling interval at which you want to aggregate the original time series data. `after` parameter specifies how much time after index was rolled over should pass before downsampling is performed.
+
 ```console
-PUT _index_template/my-data-stream-template
+PUT _index_template/datastream_template
 {
   "index_patterns": [
-    "my-data-stream*"
+    "datastream*"
   ],
   "data_stream": {},
   "template": {
+    "lifecycle": {
+      "downsampling": [
+        {
+          "after": "1m",
+          "fixed_interval": "1h"
+        }
+      ]
+    },
     "settings": {
       "index": {
-        "mode": "time_series",
-        "routing_path": [
-          "kubernetes.namespace",
-          "kubernetes.host",
-          "kubernetes.node",
-          "kubernetes.pod"
-        ],
-        "number_of_replicas": 0,
-        "number_of_shards": 2
+        "mode": "time_series"
       }
     },
     "mappings": {
@@ -188,43 +187,14 @@ PUT _index_template/my-data-stream-template
 ```
 
 
-## Ingest time series data [downsampling-manual-ingest-data]
+## Ingest time series data [downsampling-dsl-ingest-data]
 
-Because time series data streams have been designed to [only accept recent data](time-series-data-stream-tsds.md#tsds-accepted-time-range), in this example, you’ll use an ingest pipeline to time-shift the data as it gets indexed. As a result, the indexed data will have an `@timestamp` from the last 15 minutes.
+Use a bulk API request to automatically create your TSDS and index a set of ten documents.
 
-Create the pipeline with this request:
-
-```console
-PUT _ingest/pipeline/my-timestamp-pipeline
-{
-  "description": "Shifts the @timestamp to the last 15 minutes",
-  "processors": [
-    {
-      "set": {
-        "field": "ingest_time",
-        "value": "{{_ingest.timestamp}}"
-      }
-    },
-    {
-      "script": {
-        "lang": "painless",
-        "source": """
-          def delta = ChronoUnit.SECONDS.between(
-            ZonedDateTime.parse("2022-06-21T15:49:00Z"),
-            ZonedDateTime.parse(ctx["ingest_time"])
-          );
-          ctx["@timestamp"] = ZonedDateTime.parse(ctx["@timestamp"]).plus(delta,ChronoUnit.SECONDS).toString();
-        """
-      }
-    }
-  ]
-}
-```
-
-Next, use a bulk API request to automatically create your TSDS and index a set of ten documents:
+**Important:** Before running this bulk request you need to update the timestamps to within three to five hours after your current time. That is, search `2022-06-21T15` and replace with your present date, and adjust the hour to your current time plus three hours.
 
 ```console
-PUT /my-data-stream/_bulk?refresh&pipeline=my-timestamp-pipeline
+PUT /datastream/_bulk?refresh
 {"create": {}}
 {"@timestamp":"2022-06-21T15:49:00Z","kubernetes":{"host":"gke-apps-0","node":"gke-apps-0-0","pod":"gke-apps-0-0-0","container":{"cpu":{"usage":{"nanocores":91153,"core":{"ns":12828317850},"node":{"pct":2.77905e-05},"limit":{"pct":2.77905e-05}}},"memory":{"available":{"bytes":463314616},"usage":{"bytes":307007078,"node":{"pct":0.01770037710617187},"limit":{"pct":9.923134671484496e-05}},"workingset":{"bytes":585236},"rss":{"bytes":102728},"pagefaults":120901,"majorpagefaults":0},"start_time":"2021-03-30T07:59:06Z","name":"container-name-44"},"namespace":"namespace26"}}
 {"create": {}}
@@ -247,85 +217,45 @@ PUT /my-data-stream/_bulk?refresh&pipeline=my-timestamp-pipeline
 {"@timestamp":"2022-06-21T15:38:30Z","kubernetes":{"host":"gke-apps-0","node":"gke-apps-0-0","pod":"gke-apps-0-0-0","container":{"cpu":{"usage":{"nanocores":40018,"core":{"ns":12828317850},"node":{"pct":2.77905e-05},"limit":{"pct":2.77905e-05}}},"memory":{"available":{"bytes":1062428344},"usage":{"bytes":265142477,"node":{"pct":0.01770037710617187},"limit":{"pct":9.923134671484496e-05}},"workingset":{"bytes":2294743},"rss":{"bytes":340623},"pagefaults":224530,"majorpagefaults":0},"start_time":"2021-03-30T07:59:06Z","name":"container-name-44"},"namespace":"namespace26"}}
 ```
 
-You can use the search API to check if the documents have been indexed correctly:
+
+## View current state of data stream [downsampling-dsl-view-data-stream-state]
+
+Now that you’ve created and added documents to the data stream, check to confirm the current state of the new index.
 
 ```console
-GET /my-data-stream/_search
+GET _data_stream
 ```
 
-Run the following aggregation on the data to calculate some interesting statistics:
-
-```console
-GET /my-data-stream/_search
-{
-    "size": 0,
-    "aggs": {
-        "tsid": {
-            "terms": {
-                "field": "_tsid"
-            },
-            "aggs": {
-                "over_time": {
-                    "date_histogram": {
-                        "field": "@timestamp",
-                        "fixed_interval": "1d"
-                    },
-                    "aggs": {
-                        "min": {
-                            "min": {
-                                "field": "kubernetes.container.memory.usage.bytes"
-                            }
-                        },
-                        "max": {
-                            "max": {
-                                "field": "kubernetes.container.memory.usage.bytes"
-                            }
-                        },
-                        "avg": {
-                            "avg": {
-                                "field": "kubernetes.container.memory.usage.bytes"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-```
-
-
-## Downsample the TSDS [downsampling-manual-run]
-
-A TSDS can’t be downsampled directly. You need to downsample its backing indices instead. You can see the backing index for your data stream by running:
-
-```console
-GET /_data_stream/my-data-stream
-```
-
-This returns:
+If the data stream lifecycle policy has not yet been applied, your results will be like the following. Note the original `index_name`: `.ds-datastream-2024.04.29-000001`.
 
 ```console-result
 {
   "data_streams": [
     {
-      "name": "my-data-stream",
+      "name": "datastream",
       "timestamp_field": {
         "name": "@timestamp"
       },
       "indices": [
         {
-          "index_name": ".ds-my-data-stream-2023.07.26-000001", <1>
-          "index_uuid": "ltOJGmqgTVm4T-Buoe7Acg",
-          "prefer_ilm": true,
-          "managed_by": "Unmanaged"
+          "index_name": ".ds-datastream-2024.04.29-000001",
+          "index_uuid": "vUMNtCyXQhGdlo1BD-cGRw",
+          "managed_by": "Data stream lifecycle"
         }
       ],
       "generation": 1,
       "status": "GREEN",
-      "next_generation_managed_by": "Unmanaged",
-      "prefer_ilm": true,
-      "template": "my-data-stream-template",
+      "template": "datastream_template",
+      "lifecycle": {
+        "enabled": true,
+        "downsampling": [
+          {
+            "after": "1m",
+            "fixed_interval": "1h"
+          }
+        ]
+      },
+      "next_generation_managed_by": "Data stream lifecycle",
       "hidden": false,
       "system": false,
       "allow_custom_routing": false,
@@ -334,8 +264,8 @@ This returns:
       "time_series": {
         "temporal_ranges": [
           {
-            "start": "2023-07-26T09:26:42.000Z",
-            "end": "2023-07-26T13:26:42.000Z"
+            "start": "2024-04-29T15:55:46.000Z",
+            "end": "2024-04-29T18:25:46.000Z"
           }
         ]
       }
@@ -344,76 +274,92 @@ This returns:
 }
 ```
 
-1. The backing index for this data stream.
-
-
-Before a backing index can be downsampled, the TSDS needs to be rolled over and the old index needs to be made read-only.
-
-Roll over the TSDS using the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
+Next, run a search query:
 
 ```console
-POST /my-data-stream/_rollover/
+GET datastream/_search
 ```
 
-Copy the name of the `old_index` from the response. In the following steps, replace the index name with that of your `old_index`.
-
-The old index needs to be set to read-only mode. Run the following request:
-
-```console
-PUT /.ds-my-data-stream-2023.07.26-000001/_block/write
-```
-
-Next, use the [downsample API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-downsample) to downsample the index, setting the time series interval to one hour:
-
-```console
-POST /.ds-my-data-stream-2023.07.26-000001/_downsample/.ds-my-data-stream-2023.07.26-000001-downsample
-{
-  "fixed_interval": "1h"
-}
-```
-
-Now you can [modify the data stream](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-modify-data-stream), and replace the original index with the downsampled one:
-
-```console
-POST _data_stream/_modify
-{
-  "actions": [
-    {
-      "remove_backing_index": {
-        "data_stream": "my-data-stream",
-        "index": ".ds-my-data-stream-2023.07.26-000001"
-      }
-    },
-    {
-      "add_backing_index": {
-        "data_stream": "my-data-stream",
-        "index": ".ds-my-data-stream-2023.07.26-000001-downsample"
-      }
-    }
-  ]
-}
-```
-
-You can now delete the old backing index. But be aware this will delete the original data. Don’t delete the index if you may need the original data in the future.
-
-
-## View the results [downsampling-manual-view-results]
-
-Re-run the earlier search query (note that when querying downsampled indices there are [a few nuances to be aware of](downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)):
-
-```console
-GET /my-data-stream/_search
-```
-
-The TSDS with the new downsampled backing index contains just one document. For counters, this document would only have the last value. For gauges, the field type is now `aggregate_metric_double`. You see the `min`, `max`, `sum`, and `value_count` statistics based off of the original sampled metrics:
+The query returns your ten newly added documents.
 
 ```console-result
 {
-  "took": 2,
+  "took": 23,
   "timed_out": false,
   "_shards": {
-    "total": 4,
-    "successful": 4,
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 10,
+      "relation": "eq"
+    },
+...
+```
+
+
+## Roll over the data stream [downsampling-dsl-rollover]
+
+Data stream lifecycle will automatically roll over data stream and perform downsampling. This step is only needed in order to see downsampling results in scope of this tutorial.
+
+Roll over the data stream using the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
+
+```console
+POST /datastream/_rollover/
+```
+
+
+## View downsampling results [downsampling-dsl-view-results]
+
+By default, data stream lifecycle actions are executed every five minutes. Downsampling takes place after the index is rolled over and the [index time series end time](https://www.elastic.co/guide/en/elasticsearch/reference/current/tsds-index-settings.html#index-time-series-end-time) has lapsed as the source index is still expected to receive major writes until then. Index is now rolled over after previous step but its time series range end is likely still in the future. Once index time series range is in the past, re-run the `GET _data_stream` request.
+
+```console
+GET _data_stream
+```
+
+After the data stream lifecycle action was executed, original `.ds-datastream-2024.04.29-000001` index is replaced with a new, downsampled index, in this case `downsample-1h-.ds-datastream-2024.04.29-000001`.
+
+```console-result
+{
+  "data_streams": [
+    {
+      "name": "datastream",
+      "timestamp_field": {
+        "name": "@timestamp"
+      },
+      "indices": [
+        {
+          "index_name": "downsample-1h-.ds-datastream-2024.04.29-000001",
+          "index_uuid": "VqXuShP4T8ODAOnWFcqitg",
+          "managed_by": "Data stream lifecycle"
+        },
+        {
+          "index_name": ".ds-datastream-2024.04.29-000002",
+          "index_uuid": "8gCeSdjUSWG-o-PeEAJ0jA",
+          "managed_by": "Data stream lifecycle"
+        }
+      ],
+...
+```
+
+Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](../index-types/downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)).
+
+```console
+GET datastream/_search
+```
+
+The new downsampled index contains just one document that includes the `min`, `max`, `sum`, and `value_count` statistics based off of the original sampled metrics.
+
+```console-result
+{
+  "took": 26,
+  "timed_out": false,
+  "_shards": {
+    "total": 2,
+    "successful": 2,
     "skipped": 0,
     "failed": 0
   },
@@ -425,13 +371,12 @@ The TSDS with the new downsampled backing index contains just one document. For 
     "max_score": 1,
     "hits": [
       {
-        "_index": ".ds-my-data-stream-2023.07.26-000001-downsample",
-        "_id": "0eL0wC_4-45SnTNFAAABiZHbD4A",
+        "_index": "downsample-1h-.ds-datastream-2024.04.29-000001",
+        "_id": "0eL0wMf38sl_s5JnAAABjyrMjoA",
         "_score": 1,
         "_source": {
-          "@timestamp": "2023-07-26T11:00:00.000Z",
+          "@timestamp": "2024-04-29T17:00:00.000Z",
           "_doc_count": 10,
-          "ingest_time": "2023-07-26T11:26:42.715Z",
           "kubernetes": {
             "container": {
               "cpu": {
@@ -515,48 +460,33 @@ The TSDS with the new downsampled backing index contains just one document. For 
 }
 ```
 
-Re-run the earlier aggregation. Even though the aggregation runs on the downsampled TSDS that only contains 1 document, it returns the same results as the earlier aggregation on the original TSDS.
+Use the [data stream stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-data-streams-stats-1) to get statistics for the data stream, including the storage size.
 
 ```console
-GET /my-data-stream/_search
+GET /_data_stream/datastream/_stats?human=true
+```
+
+```console-result
 {
-    "size": 0,
-    "aggs": {
-        "tsid": {
-            "terms": {
-                "field": "_tsid"
-            },
-            "aggs": {
-                "over_time": {
-                    "date_histogram": {
-                        "field": "@timestamp",
-                        "fixed_interval": "1d"
-                    },
-                    "aggs": {
-                        "min": {
-                            "min": {
-                                "field": "kubernetes.container.memory.usage.bytes"
-                            }
-                        },
-                        "max": {
-                            "max": {
-                                "field": "kubernetes.container.memory.usage.bytes"
-                            }
-                        },
-                        "avg": {
-                            "avg": {
-                                "field": "kubernetes.container.memory.usage.bytes"
-                            }
-                        }
-                    }
-                }
-            }
-        }
+  "_shards": {
+    "total": 4,
+    "successful": 4,
+    "failed": 0
+  },
+  "data_stream_count": 1,
+  "backing_indices": 2,
+  "total_store_size": "37.3kb",
+  "total_store_size_bytes": 38230,
+  "data_streams": [
+    {
+      "data_stream": "datastream",
+      "backing_indices": 2,
+      "store_size": "37.3kb",
+      "store_size_bytes": 38230,
+      "maximum_timestamp": 1714410000000
     }
+  ]
 }
 ```
 
-This example demonstrates how downsampling can dramatically reduce the number of documents stored for time series data, within whatever time boundaries you choose. It’s also possible to perform downsampling on already downsampled data, to further reduce storage and associated costs, as the time series data ages and the data resolution becomes less critical.
-
-The recommended way to downsample a TSDS is with ILM. To learn more, try the [Run downsampling with ILM](run-downsampling-with-ilm.md) example.
-
+This example demonstrates how downsampling works as part of a data stream lifecycle to reduce the storage size of metrics data as it becomes less current and less frequently queried.

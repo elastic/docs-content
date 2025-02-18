@@ -9,18 +9,18 @@ mapped_pages:
 # Set up a TSDS [set-up-tsds]
 
 
-To set up a [time series data stream (TSDS)](time-series-data-stream-tsds.md), follow these steps:
+To set up a [time series data stream (TSDS)](../index-types/TSDS)](../data-streams/time-series-data-stream-tsds.md), follow these steps:
 
-1. Check the [prerequisites](set-up-tsds.md#tsds-prereqs).
-2. [Create an index lifecycle policy](set-up-tsds.md#tsds-ilm-policy).
-3. [Create an index template](set-up-tsds.md#create-tsds-index-template).
-4. [Create the TSDS](set-up-tsds.md#create-tsds).
-5. [Secure the TSDS](set-up-tsds.md#secure-tsds).
+1. Check the [prerequisites](../index-types/set-up-tsds.md#tsds-prereqs).
+2. [Create an index lifecycle policy](../index-types/set-up-tsds.md#tsds-ilm-policy).
+3. [Create an index template](../index-types/set-up-tsds.md#create-tsds-index-template).
+4. [Create the TSDS](../index-types/set-up-tsds.md#create-tsds).
+5. [Secure the TSDS](../index-types/set-up-tsds.md#secure-tsds).
 
 
 ## Prerequisites [tsds-prereqs]
 
-* Before you create a TSDS, you should be familiar with [data streams](data-streams.md) and [TSDS concepts](time-series-data-stream-tsds.md).
+* Before you create a TSDS, you should be familiar with [data streams](../data-streams.md) and [TSDS concepts](time-series-data-stream-tsds.md).
 * To follow this tutorial, you must have the following permissions:
 
     * [Cluster privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster): `manage_ilm` and `manage_index_templates`.

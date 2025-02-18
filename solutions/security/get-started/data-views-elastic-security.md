@@ -17,7 +17,7 @@ mapped_urls:
 
 $$$default-data-view-security$$$
 
-{{data-sources-cap}} determine what data displays on {{elastic-sec}} pages with event or alert data. {{data-sources-cap}} are defined by the index patterns they include. Only data from {{es}} [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/data-store/index-types/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html) specified in the active {{data-source}} will appear.
+{{data-sources-cap}} determine what data displays on {{elastic-sec}} pages with event or alert data. {{data-sources-cap}} are defined by the index patterns they include. Only data from {{es}} [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html) specified in the active {{data-source}} will appear.
 
 ::::{important}
 Custom indices are not included in the [default {{data-source}}](/solutions/security/get-started/data-views-elastic-security.md#default-data-view-security). Modify it or create a custom {{data-source}} to include custom indices.

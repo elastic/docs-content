@@ -5,23 +5,21 @@ toc:
     children:
       - file: data-store/index-basics.md
       - file: data-store/index-types.md
+      - file: data-store/data-streams.md
         children:
-          - file: data-store/index-types/data-streams.md
+          - file: data-store/data-streams/set-up-data-stream.md
+          - file: data-store/data-streams/use-data-stream.md
+          - file: data-store/data-streams/modify-data-stream.md
+          - file: data-store/data-streams/manage-data-stream.md
+          - file: data-store/data-streams/time-series-data-stream-tsds.md
             children:
-              - file: data-store/index-types/set-up-data-stream.md
-              - file: data-store/index-types/use-data-stream.md
-              - file: data-store/index-types/modify-data-stream.md
-              - file: data-store/index-types/manage-data-stream.md
-              - file: data-store/index-types/time-series-data-stream-tsds.md
-                children:
-                  - file: data-store/index-types/set-up-tsds.md
-                  - file: data-store/index-types/downsampling-time-series-data-stream.md
-                  - file: data-store/index-types/run-downsampling-with-ilm.md
-                  - file: data-store/index-types/run-downsampling-manually.md
-                  - file: data-store/index-types/run-downsampling-using-data-stream-lifecycle.md
-                  - file: data-store/index-types/reindex-tsds.md
-              - file: data-store/index-types/logs-data-stream.md
-          - file: data-store/index-types/vectordb.md
+              - file: data-store/data-streams/set-up-tsds.md
+              - file: data-store/data-streams/downsampling-time-series-data-stream.md
+              - file: data-store/data-streams/run-downsampling-with-ilm.md
+              - file: data-store/data-streams/run-downsampling-manually.md
+              - file: data-store/data-streams/run-downsampling-using-data-stream-lifecycle.md
+              - file: data-store/data-streams/reindex-tsds.md
+              - file: data-store/data-streams/logs-data-stream.md
       - file: data-store/mapping.md
         children:
           - file: data-store/mapping/dynamic-mapping.md

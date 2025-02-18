@@ -5,7 +5,7 @@ mapped_pages:
 
 # Index management in Kibana [index-mgmt]
 
-{{kib}}'s **Index Management** features are an easy, convenient way to manage your cluster’s indices, [data streams](../../data-store/index-types/data-streams.md), [index templates](../../data-store/templates.md), and [enrich policies](../../ingest/transform-enrich/data-enrichment.md). Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
+{{kib}}'s **Index Management** features are an easy, convenient way to manage your cluster’s indices, [data streams](../../data-store/data-streams.md), [index templates](../../data-store/templates.md), and [enrich policies](../../ingest/transform-enrich/data-enrichment.md). Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
 
 To use these features, go to **Stack Management** > **Index Management**.
 
