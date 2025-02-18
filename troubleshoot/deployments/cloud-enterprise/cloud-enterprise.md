@@ -6,6 +6,12 @@ mapped_urls:
 
 # Elastic Cloud Enterprise
 
+:::{admonition} WIP
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working on restructuring this section. It currently reflects a legacy product-centric structure.
+:::
+
 ## Finding deployments [ts-ece-find]
 
 % TODO compare to https://github.com/elastic/docs-content/tree/main/deploy-manage/deploy/cloud-enterprise/search-filter-deployments.md
