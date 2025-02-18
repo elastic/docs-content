@@ -22,3 +22,11 @@ applies:
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-enable-auditing.md
 % - [ ] ./raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s_audit_logging.md
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-enable-logging-and-monitoring.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-enable-auditing.md](/raw-migrated-files/cloud/cloud-enterprise/ece-enable-auditing.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s_audit_logging.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s_audit_logging.md)
+* [/raw-migrated-files/cloud/cloud/ec-enable-logging-and-monitoring.md](/raw-migrated-files/cloud/cloud/ec-enable-logging-and-monitoring.md)
