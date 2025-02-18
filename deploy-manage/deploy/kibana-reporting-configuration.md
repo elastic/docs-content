@@ -17,6 +17,10 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/kibana/kibana/secure-reporting.md
 % - [ ] ./raw-migrated-files/kibana/kibana/reporting-production-considerations.md
 
+% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+
+$$$reporting-chromium-sandbox$$$
+
 ⚠️ **This page is a work in progress.** ⚠️
 
 The documentation team is working to combine content pulled from the following pages:
