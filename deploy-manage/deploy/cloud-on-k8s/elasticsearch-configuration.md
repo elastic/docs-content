@@ -32,21 +32,20 @@ Before deploying and running ECK in production, review the basic and advanced se
 * [Pod disruption budget](pod-disruption-budget.md): Integrate Kubernetes Pod disruption budgets in your cluster.
 * [Security Context](security-context.md): Kubernetes security context and kernel capabilities.
 * [Readiness probe](readiness-probe.md): Customize `readinessProbe` in certain use cases.
-* [Pod PreStop hook](pod-prestop-hook.md)
-
-## Traffic handling
-
-* [HTTP access](./accessing-services.md): Configure the HTTP service of your cluster.
-* [](./requests-routing-to-elasticsearch-nodes.md): Control the nodes receiving incoming traffic when using multiple `nodeSets` with different [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html).
+* [Pod PreStop hook](pod-prestop-hook.md): Prevent disruptions when terminating Elasticsearch Pods.
 
 ## TLS/SSL Certificates
 
 * [Secure HTTP communications](/deploy-manage/security/secure-http-communications.md): Customize the service and TLS certificates used for transport traffic.
 * [Transport settings](transport-settings.md): Customize the service and TLS certificates used for transport traffic.
 
+## Traffic handling
+
+* [](./requests-routing-to-elasticsearch-nodes.md): Control the nodes receiving incoming traffic when using multiple `nodeSets` with different [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html).
+
 ## Other sections
 
-In other sections of the documentation you can find also relevant information:
+Other sections of the documentation also include relevant configuration options for your {{es}} cluster:
 
 * [Secure settings](/deploy-manage/security/secure-settings.md)
 

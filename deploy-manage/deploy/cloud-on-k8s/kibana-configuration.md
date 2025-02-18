@@ -31,6 +31,3 @@ The following sections describe how to customize a {{kib}} deployment to suit yo
 * [Autoscaling stateless applications](../../autoscaling/autoscaling-stateless-applications-on-eck.md): Use [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) for {{kib}} or other stateless applications.
 
 
-
-
-

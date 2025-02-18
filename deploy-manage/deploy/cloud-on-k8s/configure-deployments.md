@@ -30,21 +30,6 @@ ECK also facilitates configuration and operation activities with advanced featur
 
 * [**Elastic Stack configuration policies**](elastic-stack-configuration-policies.md): Organize your {{es}} and {{kib}} configuration settings through `StackConfigPolicy` resources that can be referenced within your deployments. This helps to keep your manifests simplified.
 
-## Other sections
-% check this other sections with the same section on elasticsearch-configuration to decide what to do
-Other sections of the Elastic documentation cover additional topics related to deployments configuration on ECK:
-
-**Security**
-
-% the two pages about HTTP TLS certificate should be merged into one and be placed on Security docs
-  * [**HTTP TLS certificates**](/deploy-manage/security/secure-http-communications.md): Use your own SSL/TLS certificates for the HTTP endpoint of {{es}} and {{kib}}.
-
-  * Custom HTTP certificate -> TBD: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-custom-http-certificate.html
-
-  * SAML authentication -> TBD: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html (this mixes Elasticsearch and Kibana)
-
-  * [Users and roles] -> TBD Link to wherever this ends up: https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
-
-**Monitoring and Logging**
-
-  * [**Stack monitoring**](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html): Use ECK to manage logs and metrics for your deployments.
+::::{important}
+Explore the [Security](/deploy-manage/security.md) section for configuration options such as user and role management, configuring security realms, securing HTTP communications, and more.
+::::
