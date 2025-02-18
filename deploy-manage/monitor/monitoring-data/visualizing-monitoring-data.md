@@ -12,7 +12,7 @@ applies:
 
 The {{kib}} {{monitor-features}} serve two separate purposes:
 
-1. To visualize monitoring data from across the {{stack}}. You can view health and performance data for {{es}}, {{ls}}, {{ents}}, APM, and Beats in real time, as well as analyze past performance.
+1. To visualize monitoring data from across the {{stack}}. You can view health and performance data for {{es}}, {{ls}}, APM, and Beats in real time, as well as analyze past performance.
 2. To monitor {{kib}} itself and route that data to the monitoring cluster.
 
 If you enable monitoring across the {{stack}}, each monitored component is considered unique based on its persistent UUID, which is written to the [`path.data`](../../deploy/self-managed/configure.md) directory when the node or instance starts.

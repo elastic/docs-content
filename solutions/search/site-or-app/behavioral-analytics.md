@@ -28,7 +28,6 @@ Behavioral Analytics is a **beta feature**. Beta features are subject to change 
 * Behavioral Analytics was introduced in Elastic **8.7.0** to the Enterprise Search service.
 * There was a breaking schema change in **8.8.0**. (See [Migrating from 8.7 to 8.8](https://www.elastic.co/guide/en/enterprise-search/current/analytics-migration.html) in the Search documentation if you’re upgrading from 8.7 to 8.8.)
 * The feature was moved to Elasticsearch in **8.10**, meaning the Enterprise Search service is no longer required as of 8.10.
-
 ::::
 
 

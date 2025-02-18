@@ -69,8 +69,7 @@ To store monitoring data in a separate cluster:
     * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
 
 3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](https://www.elastic.co/guide/en/logstash/current/configuring-logstash.html).
-4. (Optional) [Configure {{ents}} monitoring](https://www.elastic.co/guide/en/enterprise-search/current/monitoring.html).
-5. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
+4. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
 
     * [Auditbeat](https://www.elastic.co/guide/en/beats/auditbeat/current/monitoring.html)
     * [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/monitoring.html)
@@ -79,14 +78,14 @@ To store monitoring data in a separate cluster:
     * [Packetbeat](https://www.elastic.co/guide/en/beats/packetbeat/current/monitoring.html)
     * [Winlogbeat](https://www.elastic.co/guide/en/beats/winlogbeat/current/monitoring.html)
 
-6. (Optional) [Configure APM Server monitoring](/solutions/observability/apps/monitor-apm-server.md)
-7. (Optional) Configure {{kib}} to collect data and send it to the monitoring cluster:
+5. (Optional) [Configure APM Server monitoring](/solutions/observability/apps/monitor-apm-server.md)
+6. (Optional) Configure {{kib}} to collect data and send it to the monitoring cluster:
 
     * [{{agent}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-elastic-agent.md)
     * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-metricbeat.md)
     * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-legacy.md)
 
-8. (Optional) Create a dedicated {{kib}} instance for monitoring, rather than using a single {{kib}} instance to access both your production cluster and monitoring cluster.
+7. (Optional) Create a dedicated {{kib}} instance for monitoring, rather than using a single {{kib}} instance to access both your production cluster and monitoring cluster.
 
     ::::{note}
     If you log in to {{kib}} using SAML, Kerberos, PKI, OpenID Connect, or token authentication providers, a dedicated {{kib}} instance is **required**. The security tokens that are used in these contexts are cluster-specific; therefore you cannot use a single {{kib}} instance to connect to both production and monitoring clusters.
@@ -95,5 +94,5 @@ To store monitoring data in a separate cluster:
 
     1. (Optional) Disable the collection of monitoring data in this {{kib}} instance. Set the `xpack.monitoring.kibana.collection.enabled` setting to `false` in the `kibana.yml` file. For more information about this setting, see [Monitoring settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/monitoring-settings-kb.html).
 
-9. [Configure {{kib}} to retrieve and display the monitoring data](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
+8. [Configure {{kib}} to retrieve and display the monitoring data](../../../deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md).
 
