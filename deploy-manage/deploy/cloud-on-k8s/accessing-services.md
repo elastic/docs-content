@@ -9,7 +9,7 @@ mapped_urls:
 
 # Accessing services [k8s-accessing-elastic-services]
 
-To provide access to {{es}}, {{kib}}, and, other Elastic Stack applications when applicable, ECK relies on [Kubernetes services](https://kubernetes.io/docs/concepts/services-networking/service/).
+To provide access to {{es}}, {{kib}}, and other {{stack}} applications when applicable, ECK relies on [Kubernetes services](https://kubernetes.io/docs/concepts/services-networking/service/).
 
 All Elastic Stack resources deployed by the ECK operator are secured by default. The operator sets up basic authentication and TLS to encrypt network traffic to, from, and within your Elasticsearch cluster.
 
