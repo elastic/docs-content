@@ -34,7 +34,7 @@ You need permission to manage API keys
 
 You need to either:
 
-* Ask an administrator to update your user role to at least **Developer** by going to the user icon on the header bar and opening **Organization** → **Members**. Read more about user roles in [Assign user roles and privileges](../../raw-migrated-files/docs-content/serverless/general-manage-organization.md#general-assign-user-roles). After your use role is updated, restart the onboarding flow.
+* Ask an administrator to update your user role to at least **Developer** by going to the user icon on the header bar and opening **Organization** → **Members**. Read more about user roles in [](/deploy-manage/users-roles/cloud-organization/user-roles.md). After your use role is updated, restart the onboarding flow.
 * Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](../../raw-migrated-files/docs-content/serverless/observability-stream-log-files.md#observability-stream-log-files-step-3-configure-the-agent) for more on manually updating the configuration and adding the API key.
 ::::
 

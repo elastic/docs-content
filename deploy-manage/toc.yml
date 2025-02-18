@@ -594,6 +594,14 @@ toc:
           - file: security/fips-140-2.md
   - file: users-roles.md
     children:
+      - file: users-roles/cloud-organization.md
+        children:
+          - file: users-roles/cloud-organization/manage-users.md
+          - file: users-roles/cloud-organization/user-roles.md
+          - file: users-roles/cloud-organization/configure-saml-authentication.md
+            children:
+              - file: users-roles/cloud-organization/register-elastic-cloud-saml-in-okta.md
+              - file: users-roles/cloud-organization/register-elastic-cloud-saml-in-microsoft-entra-id.md
       - file: users-roles/cloud-enterprise-orchestrator.md
         children:
           - file: users-roles/cloud-enterprise-orchestrator/manage-system-passwords.md
@@ -604,14 +612,7 @@ toc:
               - file: users-roles/cloud-enterprise-orchestrator/ldap.md
               - file: users-roles/cloud-enterprise-orchestrator/saml.md
           - file: users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md
-      - file: users-roles/cloud-organization.md
-        children:
-          - file: users-roles/cloud-organization/manage-users.md
-          - file: users-roles/cloud-organization/user-roles.md
-          - file: users-roles/cloud-organization/configure-saml-authentication.md
-            children:
-              - file: users-roles/cloud-organization/register-elastic-cloud-saml-in-okta.md
-              - file: users-roles/cloud-organization/register-elastic-cloud-saml-in-microsoft-entra-id.md
+      - file: users-roles/custom-roles.md
       - file: users-roles/cluster-or-deployment-auth.md
         children:
           - file: users-roles/cluster-or-deployment-auth/quickstart.md

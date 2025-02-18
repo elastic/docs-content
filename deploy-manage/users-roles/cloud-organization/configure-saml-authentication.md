@@ -1,13 +1,13 @@
 ---
-navigation_title: "Configure {{ecloud}} SAML SSO"
+navigation_title: "Configure SAML SSO"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso.html
+applies:
+  hosted: all
+  serverless: all
 ---
 
-
-
-# Configure SAML authentication [ec-saml-sso]
-
+# Configure {{ecloud}} SAML single sign-on [ec-saml-sso]
 
 You can centrally control access to your {{ecloud}} organization by setting up SAML single sign-on (SSO) with a SAML 2.0 identity provider (IdP).
 
@@ -15,21 +15,25 @@ When users log in to {{ecloud}} for the first time using SSO, they’re automati
 
 You can also enhance security by enforcing SSO authentication for members of your organization, and centrally manage role assignments by mapping IdP groups to {{ecloud}} roles.
 
+On this page, you'll learn the following:
+
+* How to [choose between organization- and deployment-level SSO](#ec_should_i_use_organization_level_or_deployment_level_sso_2)
+* The [prerequisites for using SAML SSO](#ec_prerequisites_4)
+* The [risks and considerations for using SAML SSO](#ec_risks_and_considerations)
+* How to [implement and test SAML SSO](#set-up-sso)
+* How to [enforce SAML SSO](#enforce-sso) for your organization
+* How to [map groups returned by your IdP to Elastic Cloud roles](#role-mappings)
+* How to [disable SAML SSO](#ec_disable_sso)
+
+For detailed examples of implementing SAML SSO using common identity providers, refer to the following topics:
+
+* [](/deploy-manage/users-roles/cloud-organization/register-elastic-cloud-saml-in-okta.md)
+* [](/deploy-manage/users-roles/cloud-organization/register-elastic-cloud-saml-in-microsoft-entra-id.md)
 
 ## Should I use organization-level or deployment-level SSO? [ec_should_i_use_organization_level_or_deployment_level_sso_2]
 
-You can also integrate third-party authentication directly [at the deployment level](../cluster-or-deployment-auth.md). The option that you choose depends on your requirements:
-
-| Consideration | Organization-level | Deployment-level |
-| --- | --- | --- |
-| **Management experience** | Manage authentication and role mapping centrally for all deployments in the organization | Configure SSO for each deployment individually |
-| **Authentication protocols** | SAML only | Multiple protocols, including LDAP, OIDC, and SAML |
-| **Role mapping** | [Organization-level roles and instance access roles](user-roles.md), Serverless project [custom roles](https://docs.elastic.co/serverless/custom-roles.html) | [Built-in](../cluster-or-deployment-auth/built-in-roles.md) and [custom](../cluster-or-deployment-auth/defining-roles.md) stack-level roles |
-| **User experience** | Users interact with Cloud | Users interact with the deployment directly |
-
-If you want to avoid exposing users to the {{ecloud}} UI, or have users who only interact with some deployments, then you might prefer users to interact with your deployment directly.
-
-In some circumstances, you might want to use both organization-level and deployment-level SSO. For example, if you have a data analyst who interacts only with data in specific deployments, then you might want to configure deployment-level SSO for them. If you manage multiple tenants in a single organization, then you might want to configure organization-level SSO to administer deployments, and deployment-level SSO for the users who are using each deployment.
+:::{include} ../_snippets/org-vs-deploy-sso.md
+:::
 
 
 ## Prerequisites [ec_prerequisites_4]
@@ -47,13 +51,16 @@ Before you configure SAML SSO, familiarize yourself with the following risks and
     To immediately revoke a user’s active sessions, an organization owner must [remove the user from the {{ecloud}} organization](https://cloud.elastic.co/account/members) or remove their assigned roles.
 
 * If you enforce SSO authentication, you can be locked out of {{ecloud}} if your IdP is unavailable or misconfigured. You might need to work with Elastic Support to regain access to your account. To avoid being locked out, you should maintain and store an [{{ecloud}} API key](../../api-keys/elastic-cloud-api-keys.md#ec-api-keys) with organization owner level privileges so that an administrator can disable enforcement in an emergency.
-* If you do not enforce SSO authentication, users can still log in without authenticating with your IdP. You need to manage these users in Elastic Cloud.
-* Cloud passwords are invalidated each time a user logs in using SSO. If a user needs sign in with their email and password again, they need to [change their password](../../../cloud-account/change-your-password.md).
+* If you do not enforce SSO authentication, users can still log in without authenticating with your IdP. You need to manage these users in {{ecloud}}.
+* {{ecloud}} passwords are invalidated each time a user logs in using SSO. If a user needs sign in with their email and password again, they need to [change their password](../../../cloud-account/change-your-password.md).
 * Role mappings only take effect when your organization’s members authenticate using SSO. If SSO authentication is not enforced, users might have roles that are inconsistent with the role mapping when they log in using other methods.
-* Roles manually assigned using the {{ecloud}} UI are overwritten by the role mapping when the user logs in using SSO.
+* Roles manually assigned using the {{ecloud}} Console are overwritten by the role mapping when the user logs in using SSO.
 
+## Set up SSO
 
-## Claim a domain [ec-saml-sso-claim-domain]
+Follow this procedure to set up SAML SSO with your IdP.
+
+### Step 1: Claim a domain [ec-saml-sso-claim-domain]
 
 Before you can register and use your IdP with {{ecloud}}, you must claim one or more domains. Only users that have email addresses that match claimed domains can authenticate with your IdP.
 
@@ -75,7 +82,7 @@ You must have authority to modify your domain’s DNS records and be a member of
     ...
     ```
 
-6. In the {{ecloud}} UI, click **Verify and add domain**.
+6. In the {{ecloud}} Console, click **Verify and add domain**.
 
 ::::{note}
 It might take some time for the DNS records to be updated and propagated in the network. If verification isn’t successful, wait a while and try again.
@@ -83,12 +90,12 @@ It might take some time for the DNS records to be updated and propagated in the 
 
 
 
-## Register a SAML IdP [ec-saml-sso-register-idp]
+### Step 2: Register a SAML IdP [ec-saml-sso-register-idp]
 
-After you have claimed one or more domains, you can register your IdP with {{ecloud}}. The steps vary by IdP; for more specific details, refer to [Register {{ecloud}} SAML in Microsoft Entra ID](register-elastic-cloud-saml-in-microsoft-entra-id.md) and [Register {{ecloud}} SAML in Okta](register-elastic-cloud-saml-in-okta.md).
+After you have [claimed one or more domains](#ec-saml-sso-claim-domain), you can register your IdP with {{ecloud}}. The steps vary by IdP; for more specific details, refer to [Register {{ecloud}} SAML in Microsoft Entra ID](register-elastic-cloud-saml-in-microsoft-entra-id.md) and [Register {{ecloud}} SAML in Okta](register-elastic-cloud-saml-in-okta.md).
 
 
-### Create a new SAML 2 application [ec_create_a_new_saml_2_application]
+#### Create a new SAML 2 application [ec_create_a_new_saml_2_application]
 
 Create a new SAML 2 application in your IdP.
 
@@ -100,7 +107,7 @@ Create a new SAML 2 application in your IdP.
 6. Download the public certificate of the SAML 2 application.
 
 
-### Register the IdP with {{ecloud}} [ec_register_the_idp_with_ecloud]
+#### Register the IdP with {{ecloud}} [ec_register_the_idp_with_ecloud]
 
 Add the information that you collected to {{ecloud}}.
 
@@ -108,7 +115,7 @@ Add the information that you collected to {{ecloud}}.
 2. In the **User authentication** section, click **Configure SSO**.
 3. Fill the following fields:
 
-    1. **Identity Provider Entity ID**: The SAML issuer that you collected in the previous step. This is unique identifier of your identity provider that allows Elastic Cloud to verify the source of SAML assertions.
+    1. **Identity Provider Entity ID**: The SAML issuer that you collected in the previous step. This is unique identifier of your identity provider that allows {{ecloud}} to verify the source of SAML assertions.
     2. **Identity Provider SSO URL**: The SSO URL that you collected in the previous step. This should be the HTTP-POST SAML binding of your identity provider. Users will be redirected to this URL when they attempt to log in.
     3. **Public x509 certificate**: The public certificate of the SAML 2 application that you downloaded in the previous step. This is the certificate that SAML responses will be signed with by your IdP. The certificate must be in PEM format.
     4. **Login identifier prefix**: A customizable piece of the {{ecloud}} SSO URL that your organization members can use to authenticate. This could be the name of your business. You can use lowercase alphanumeric characters and hyphens in this value, and you can change it later.
@@ -131,7 +138,7 @@ If your configuration is valid, the following details of the service provider (S
 * **Metadata URL**: The link to an XML metadata file that contains the Elastic service provider metadata. If your IdP accepts metadata files, then you can use this file to configure your IdP.
 
 
-### Update the SAML 2 application in your IdP [ec_update_the_saml_2_application_in_your_idp]
+#### Update the SAML 2 application in your IdP [ec_update_the_saml_2_application_in_your_idp]
 
 Using the details returned in the previous step, update the assertion consumer service (ACS), SP entity ID/audience, and SSO login URL values in your SAML 2 application.
 
@@ -141,7 +148,7 @@ Additional details that you might want to use in your IdP configuration, such as
 
 
 
-## Test SSO [ec_test_sso]
+### Step 3: Test SSO [ec_test_sso]
 
 After you register the IdP in {{ecloud}} and configure your IdP, you can test authentication. To begin SSO, open the identity provider SSO URL in an incognito browsing session. If everything is configured correctly, you should be redirected to your IdP for authentication and then redirected back to {{ecloud}} signed in.
 
@@ -174,7 +181,7 @@ To protect your account from being accidentally locked out when this option is e
 2. In the **User authentication** section, click **Edit**.
 3. Toggle the **Only allow login through my identity provider** option off to disable enforcement.
 
-If you are unable to access the UI for any reason, use the following API call to disable enforcement. The API key that you use must have organization owner level privileges to disable enforcement.
+If you are unable to access the {{ecloud}} Console for any reason, use the following API call to disable enforcement. The API key that you use must have organization owner level privileges to disable enforcement.
 
 ```sh
 curl -XPUT \
@@ -194,12 +201,8 @@ curl -XPUT \
 To automate [role](user-roles.md) assignments to your {{ecloud}} organization’s members, you can use role mappings. Role mappings map groups returned by your IdP in the `groups` SAML attribute to one or more {{ecloud}} roles. The mapping will be evaluated and the applicable roles will be assigned each time your organization’s members log into {{ecloud}} using SSO.
 
 ::::{note}
-If [SSO enforcement](#enforce-sso) is not enabled, user roles might not be consistent with your role mapping and additional manual role assignment might be needed. Roles manually assigned using the {{ecloud}} UI are overwritten by the role mapping when the user logs in using SSO.
-::::
-
-
-::::{note}
-If the `groups` attribute is not included in the SAML response, the user will keep whatever groups they were last assigned by the IdP. If you want to remove all groups for a user as part of an offboarding process, instead unassign the user from the {{ecloud}} application.
+* If [SSO enforcement](#enforce-sso) is not enabled, user roles might not be consistent with your role mapping and additional manual role assignment might be needed. Roles manually assigned using the {{ecloud}} Console are overwritten by the role mapping when the user logs in using SSO.
+* If the `groups` attribute is not included in the SAML response, the user will keep whatever groups they were last assigned by the IdP. If you want to remove all groups for a user as part of an offboarding process, instead unassign the user from the {{ecloud}} application.
 ::::
 
 

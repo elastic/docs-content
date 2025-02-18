@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/custom-realms.html
 ---
 
-# Custom [custom-realms]
+# Custom realms
 
 If you are using an authentication system that is not supported out-of-the-box by the {{es}} {{security-features}}, you can create a custom realm to interact with it to authenticate users. You implement a custom realm as an SPI loaded security extension as part of an ordinary elasticsearch plugin.
 
