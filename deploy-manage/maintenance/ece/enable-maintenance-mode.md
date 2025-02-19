@@ -29,7 +29,7 @@ If you need the existing instances to stop routing requests you can [stop routin
 * `ALLOCATOR_ID` Action target allocator id.
 * `ENABLE_TRAFFIC` Wether traffic to the selected allocator instances should be enabled (`true`) or disabled (`false`).
 
-This is an example of script execution to disable routing on all instances running on a given allocator: In this example the script disables routing on all instances running on a given allocator:
+This is an example of script execution to disable routing on all instances running on a given allocator:
 
 ```bash
 AUTH_HEADER="Authorization: ApiKey $(cat ~/api.key)" API_URL="https://adminconsole:12443" ALLOCATOR_ID="192.168.44.10" ENABLE_TRAFFIC=false ./allocator-toggle-routing-requests.sh

@@ -9,23 +9,23 @@ Maintenance activities ensure the smooth operation and scalability of your {{es}
 
 ## Available maintenance operations
 
-### Enable maintenance mode
+### [Enable maintenance mode](enable-maintenance-mode.md)
 
 Before performing maintenance on an allocator, you should enable maintenance mode to prevent new Elasticsearch clusters and Kibana instances from being provisioned. This ensures that existing deployments can be safely moved to other allocators or adjusted without disruption.
 
-### Scale out installation
+### [Scale out installation](scale-out-installation.md)
 
 You can scale out your installation by adding capacity to meet growing demand or improve high availability. This process involves installing ECE on additional hosts, assigning roles to new hosts, and resizing deployments to utilize the expanded resources.
 
-### Move nodes and instances between allocators
+### [Move nodes and instances between allocators](move-nodes-instances-from-allocators.md)
 
 Moving {{es}} nodes, {{kib}} instances, and other components between allocators may be necessary to free up space, avoid downtime, or handle allocator failures. The process involves selecting target allocators and ensuring enough capacity to accommodate the migration.
 
-### Perform ECE host maintenance
+### [Perform ECE host maintenance](perform-ece-hosts-maintenance.md)
 
 Maintaining ECE hosts is critical for applying system patches, performing hardware upgrades, and ensuring compliance with security standards. Learn about the various methods of maintaining hosts, and their impact on your ECE installation.
 
-### Delete ECE hosts
+### [Delete ECE hosts](delete-ece-hosts.md)
 
 If a host is no longer required or is faulty, it can be removed from the Elastic Cloud Enterprise installation. Deleting a host only removes it from the installation but does not uninstall the software from the physical machine. Before deletion, allocators should be placed in maintenance mode, and nodes should be migrated to avoid disruption.
 

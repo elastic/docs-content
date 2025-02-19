@@ -22,8 +22,8 @@ Check the available capacity:
 
 If this is not sufficient, add more capacity to your installation:
 
-* [Install Elastic Cloud Enterprise on additional hosts](../../deploy/cloud-enterprise/install-ece-on-additional-hosts.md) to create additional capacity.
-* [Add capacity](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-allocator-settings) to existing allocators by updating the allocator settings when adding memory to the host.
-* [Assign roles](../../deploy/cloud-enterprise/assign-roles-to-hosts.md) to the additional hosts. If you need to handle a larger search or logging workload, assign the new hosts the allocator role.
-* (Optional) [Tag allocators](../../deploy/cloud-enterprise/ece-configuring-ece-tag-allocators.md) to the new host to indicate what kind of hardware you have available.
-* [Resize your deployment](../../deploy/cloud-enterprise/resize-deployment.md) to handle a larger workload.
+1. [Install Elastic Cloud Enterprise on additional hosts](../../deploy/cloud-enterprise/install-ece-on-additional-hosts.md) to create additional capacity.
+2. [Add capacity](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-allocator-settings) to existing allocators by updating the allocator settings when adding memory to the host.
+3. [Assign roles](../../deploy/cloud-enterprise/assign-roles-to-hosts.md) to the additional hosts. If you need to handle a larger search or logging workload, assign the new hosts the allocator role.
+4. (Optional) [Tag allocators](../../deploy/cloud-enterprise/ece-configuring-ece-tag-allocators.md) to the new host to indicate what kind of hardware you have available.
+5. [Resize your deployment](../../deploy/cloud-enterprise/resize-deployment.md) to handle a larger workload.

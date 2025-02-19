@@ -15,7 +15,7 @@ You might need to move Elasticsearch nodes, Kibana instances, and other componen
 * To make room on an allocator: You can move some smaller deployments to another allocator if you need additional room for a larger one on an allocator.
 * To move deployments after a failure: When host failures happen, you can move all deployments from the affected allocator to a healthy allocator quickly before spending any time on fixing the failure.
 
-::::{tip} 
+::::{tip}
 When you move all nodes from an existing allocator to the new one, ECE migrates the data to new nodes. The migration can take some time, especially when deployments contain large amounts of data and have a heavy workload. Is your deployment under a heavy workload? You might need to [stop routing requests](deployments-maintenance.md) first.
 ::::
 
@@ -28,6 +28,8 @@ Elastic Cloud Enterprise will adhere to the high availability configuration when
 If you followed our recommendation and [tagged your allocators](../../deploy/cloud-enterprise/ece-configuring-ece-tag-allocators.md) to indicate what allocators you want components of the Elastic Stack to run on, the spare capacity you plan to use must be available on an allocator with the same tags. If you did not tag your allocators and edit the default instance configurations, ECE will move nodes and instances to wherever there is space.
 
 When you move all nodes from an existing allocator to the new one, ECE migrates the data to new nodes. The migration can take some time, especially when clusters contain large amounts of data and have a heavy workload. Is your cluster under a heavy workload? You might need to [stop routing requests](deployments-maintenance.md) first.
+
+## Moving nodes from allocators [move-nodes-from-allocators]
 
 To move nodes from one allocator to another one:
 
@@ -64,10 +66,9 @@ To move nodes from one allocator to another one:
 
    Set Timeout
    :   On by default.
+   ::::{tip}
+   If you did not enable maintenance mode, set a target allocator under the advanced options when moving nodes to make sure the nodes do not end up on the same allocator again. By default, moving a node moves it to any allocator that has enough capacity.
+   ::::
 
-::::{tip}
-If you did not enable maintenance mode, set a target allocator under the advanced options when moving nodes to make sure the nodes do not end up on the same allocator again. By default, moving a node moves it to any allocator that has enough capacity.
-::::
-
-1. Repeat **step 6** for each of the node types until no nodes remain on the allocator.
-2. Optionally, once the nodes have been moved, **Delete Allocator**.
+8. Repeat **step 6** for each of the node types until no nodes remain on the allocator.
+9. Optionally, once the nodes have been moved, **Delete Allocator**.

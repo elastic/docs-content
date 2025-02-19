@@ -30,6 +30,16 @@ When you add more nodes to a cluster, it automatically allocates replica shards.
 
 ## Enroll nodes in an existing cluster [_enroll_nodes_in_an_existing_cluster_5]
 
+::::{tip}
+Refer to the following pages to learn more about how to add nodes to your cluster in different environments:
+
+* [autoscaling](../autoscaling.md)
+* [ECE](../deploy/cloud-enterprise/resize-deployment.md)
+* [ECH](../deploy/elastic-cloud/configure.md)
+* [ECK](../deploy/cloud-on-k8s/update-deployments.md)
+
+::::
+
 You can enroll additional nodes on your local machine to experiment with how an {{es}} cluster with multiple nodes behaves.
 
 ::::{note}
