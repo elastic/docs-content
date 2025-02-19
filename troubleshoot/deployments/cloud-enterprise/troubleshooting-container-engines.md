@@ -1,9 +1,10 @@
 ---
+navigation_title: "Container engines"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-containers.html
 ---
 
-# Troubleshooting container engines [ece-troubleshooting-containers]
+# Troubleshoot container engines [ece-troubleshooting-containers]
 
 This article describes how to troubleshoot container engine services in Elastic Cloud Enterprise. We refer to [Docker](https://www.docker.com/) by default, as it’s the most common container engine, but these steps are also valid for [Podman](https://podman.io/). You can simply replace `docker` in the commands  with `podman` as needed.
 

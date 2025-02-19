@@ -173,7 +173,7 @@ PUT _index_template/my-index-template
 
 ## Create the data stream [create-data-stream]
 
-[Indexing requests](use-data-stream.md#add-documents-to-a-data-stream) add documents to a data stream. These requests must use an `op_type` of `create`. Documents must include a `@timestamp` field.
+[Indexing requests](../data-streams/use-data-stream.md#add-documents-to-a-data-stream)     [Indexing requests](./use-data-stream.md#add-documents-to-a-data-stream)  add documents to a data stream. These requests must use an `op_type` of `create`. Documents must include a `@timestamp` field.
 
 To automatically create your data stream, submit an indexing request that targets the stream’s name. This name must match one of your index template’s index patterns.
 

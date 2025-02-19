@@ -71,7 +71,7 @@ The rollover action implicitly always rolls over a data stream or alias if one o
 To use a policy that triggers the rollover action, you need to configure the policy in the index template used to create each new index. You specify the name of the policy and the alias used to reference the rolling indices.
 
 ::::{tip}
-An `index.lifecycle.rollover_alias` setting is only required if using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/index-types/data-streams.md).
+An `index.lifecycle.rollover_alias` setting is only required if using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/data-streams.md).
 ::::
 
 
@@ -108,7 +108,7 @@ PUT _index_template/my_template
 
 ### Create an initial managed index [create-initial-index]
 
-When you set up policies for your own rolling indices, if you are not using the recommended [data streams](../../data-store/index-types/data-streams.md), you need to manually create the first index managed by a policy and designate it as the write index.
+When you set up policies for your own rolling indices, if you are not using the recommended [data streams](../../data-store/data-streams.md), you need to manually create the first index managed by a policy and designate it as the write index.
 
 ::::{important}
 When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.

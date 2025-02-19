@@ -6,16 +6,17 @@ mapped_pages:
 
 # Troubleshoot Kibana [kibana-troubleshooting]
 
-These topics help you troubleshoot issues with {{kib}}:
+Use the topics in this section to troubleshoot issues with {{kib}}:
 
-## Debugging
-
-* [Using {{kib}} server logs](kibana/using-kibana-server-logs.md)
-* [Trace {{es}} query to the origin in {{kib}}](kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md)
-* [Capture {{kib}} diagnostic](kibana/capturing-diagnostics.md)
-
-## General
-*  
-* 
-
-
+* [](/troubleshoot/kibana/using-kibana-server-logs.md)
+* [](/troubleshoot/kibana/access.md)
+* [](/troubleshoot/kibana/error-server-not-ready.md)
+* [](/troubleshoot/kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md)
+* [](/troubleshoot/kibana/monitoring.md)
+* [](/troubleshoot/kibana/alerts.md)
+* [](/troubleshoot/kibana/reporting.md)
+* [](/troubleshoot/kibana/task-manager.md)
+* [](/troubleshoot/kibana/maps.md)
+* [](/troubleshoot/kibana/graph.md)
+* [](/troubleshoot/kibana/migration-failures.md)
+* [](/troubleshoot/kibana/capturing-diagnostics.md)

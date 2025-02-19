@@ -12,7 +12,7 @@ This content applies to: [![Elasticsearch](/images/serverless-es-badge.svg "")](
 An index is a fundamental unit of storage in {{es}}. It is a collection of documents uniquely identified by a name or an [alias](/manage-data/data-store/aliases.md). This unique name is important because it’s used to target the index in search queries and other operations.
 
 ::::{tip} 
-A closely related concept is a [data stream](/manage-data/data-store/index-types/data-streams.md). This index abstraction is optimized for append-only timestamped data, and is made up of hidden, auto-generated backing indices. If you’re working with timestamped data, we recommend the [Elastic Observability](https://www.elastic.co/guide/en/observability/current) solution for additional tools and optimized content.
+A closely related concept is a [data stream](/manage-data/data-store/data-streams.md). This index abstraction is optimized for append-only timestamped data, and is made up of hidden, auto-generated backing indices. If you’re working with timestamped data, we recommend the [Elastic Observability](https://www.elastic.co/guide/en/observability/current) solution for additional tools and optimized content.
 ::::
 
 ## Index components
@@ -84,7 +84,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
 ### Manage data streams
 
-A [data stream](/manage-data/data-store/index-types/data-streams.md) lets you store append-only time series data across multiple indices while giving you a single named resource for requests. 
+A [data stream](/manage-data/data-store/data-streams.md) lets you store append-only time series data across multiple indices while giving you a single named resource for requests. 
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 

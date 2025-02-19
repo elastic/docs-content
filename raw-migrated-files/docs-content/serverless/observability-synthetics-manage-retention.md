@@ -1,6 +1,6 @@
 # Manage data retention [observability-synthetics-manage-retention]
 
-When you set up a synthetic monitor, data from the monitor is saved in [{{es}} data streams](../../../manage-data/data-store/index-types/data-streams.md), an append-only structure in {{es}}.
+When you set up a synthetic monitor, data from the monitor is saved in [{{es}} data streams](../../../manage-data/data-store/data-streams.md), an append-only structure in {{es}}.
 
 There are six data streams recorded by synthetic monitors: `http`, `tcp`, `icmp`, `browser`, `browser.network`, `browser.screenshot`. Elastic will retain data from each data stream for some time period, and the default time period varies by data stream. If you want to reduce the amount of storage required or store data for longer, you can customize how long to retain data for each data stream.
 

@@ -31,7 +31,7 @@ $$$management-cross-cluster-search$$$
 $$$data-views-read-only-access$$$
 
 
-By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/index-types/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
+By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
 In certain apps, you can also query your {{es}} data using [{{esql}}](../query-filter/languages/esql.md). With {{esql}}, data views aren't required.
@@ -109,7 +109,7 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 ::::{admonition}
 :class: warning
 
-Rollups are deprecated. Use [downsampling](../../manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups are deprecated. Use [downsampling](../../manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 
