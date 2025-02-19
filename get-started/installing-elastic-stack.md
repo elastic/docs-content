@@ -11,14 +11,14 @@ For an example of installing and configuring the {{stack}}, you can try out our 
 
 To install the Elastic Stack on-premises, these ports need to be open for each component.
 
-| Default port  | Component |
-| ------------- | ------------- |
-| 5044 | {{agent}} → {{ls}}<br>{{beats}} → {{ls}} |
-| 5601 | {{kib}}<br>{{agent}} → {{fleet}}<br>{{fleet-server}} → {{fleet}} |
-| 8220 | {{agent}} → {{fleet-server}}<br>APM Server |
-| 9200-9300 | {{es}} REST API |
-| 9300-9400 | {{es}} node transport and communication |
-| 9600-9700 | {{ls}} REST API |
+| Default port  | Component                         |
+| ------------- | ---------------------------------------------- |
+| 5044          | {{agent}} → {{ls}}<br>{{beats}} → {{ls}}       |
+| 5601          | {{kib}}<br>{{agent}} → {{fleet}}<br>{{fleet-server}} → {{fleet}} |
+| 8220          | {{agent}} → {{fleet-server}}<br>APM Server     |
+| 9200-9300     | {{es}} REST API                                |
+| 9300-9400     | {{es}} node transport and communication        |
+| 9600-9700     | {{ls}} REST API                                |
 
 Each Elastic integration has its own ports and dependencies. Verify these ports and dependencies before installation. Refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
 
