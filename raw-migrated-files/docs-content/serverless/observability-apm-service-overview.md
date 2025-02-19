@@ -82,7 +82,7 @@ The **Dependencies** table displays a list of downstream services or external co
 
 The cold start rate chart is specific to serverless services, and displays the percentage of requests that trigger a cold start of a serverless function. A cold start occurs when a serverless function has not been used for a certain period of time. Analyzing the cold start rate can be useful for deciding how much memory to allocate to a function, or when to remove a large dependency.
 
-The cold start rate chart is currently supported for [AWS Lambda](../../../solutions/observability/apps/observe-lambda-functions.md#observability-apm-observe-lambda-functions-cold-starts) functions and Azure functions.
+The cold start rate chart is currently supported for [AWS Lambda](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) functions and Azure functions.
 
 
 ## Instances [observability-apm-service-overview-instances]

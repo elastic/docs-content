@@ -10,7 +10,7 @@ The **Editor** role or higher is required to create and manage custom links. To 
 
 Elastic’s custom link feature allows you to easily create up to 500 dynamic links based on your specific APM data. Custom links can be filtered to only appear for relevant services, environments, transaction types, or transaction names.
 
-Ready to dive in? Jump straight to the [examples](../../../solutions/observability/apps/create-custom-links.md#observability-apm-create-custom-links-custom-link-examples).
+Ready to dive in? Jump straight to the [examples](../../../solutions/observability/apps/create-custom-links.md).
 
 
 ## Create a link [observability-apm-create-custom-links-create-a-link]

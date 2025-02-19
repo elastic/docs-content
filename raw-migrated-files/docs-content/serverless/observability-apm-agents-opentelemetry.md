@@ -15,10 +15,10 @@ For a complete overview of using OpenTelemetry with Elastic, explore [Elastic Di
 
 Elastic integrates with OpenTelemetry, allowing you to reuse your existing instrumentation to easily send observability data to the Elastic Stack. There are several ways to integrate OpenTelemetry with the Elastic Stack:
 
-* [Elastic Distributions of OpenTelemetry language SDKs](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#observability-apm-agents-opentelemetry-elastic-distributions-of-opentelemetry-language-sdks)
-* [Upstream OpenTelemetry API/SDK + Elastic APM agent](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#observability-apm-agents-opentelemetry-upstream-opentelemetry-apisdk-elastic-apm-agent)
-* [Upstream OpenTelemetry Collector and language SDKs](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#observability-apm-agents-opentelemetry-upstream-opentelemetry-collector-and-language-sdks)
-* [AWS Lambda collector exporter](../../../solutions/observability/apps/use-opentelemetry-with-apm.md#observability-apm-agents-opentelemetry-aws-lambda-collector-exporter)
+* [Elastic Distributions of OpenTelemetry language SDKs](../../../solutions/observability/apps/use-opentelemetry-with-apm.md)
+* [Upstream OpenTelemetry API/SDK + Elastic APM agent](../../../solutions/observability/apps/use-opentelemetry-with-apm.md)
+* [Upstream OpenTelemetry Collector and language SDKs](../../../solutions/observability/apps/use-opentelemetry-with-apm.md)
+* [AWS Lambda collector exporter](../../../solutions/observability/apps/use-opentelemetry-with-apm.md)
 
 
 ## Elastic Distributions of OpenTelemetry language SDKs [observability-apm-agents-opentelemetry-elastic-distributions-of-opentelemetry-language-sdks]

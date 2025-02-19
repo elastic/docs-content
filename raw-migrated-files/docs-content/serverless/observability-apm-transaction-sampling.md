@@ -39,7 +39,7 @@ In the example in *Figure 2*, `Service A` initiates four transactions and has a 
 
 In addition to setting the sample rate, you can also specify which *trace continuation strategy* to use. There are three trace continuation strategies: `continue`, `restart`, and `restart_external`.
 
-The **`continue`** trace continuation strategy is the default and will behave similar to the examples in the [Distributed tracing section](../../../solutions/observability/apps/transaction-sampling.md#observability-apm-transaction-sampling-distributed-tracing).
+The **`continue`** trace continuation strategy is the default and will behave similar to the examples in the [Distributed tracing section](../../../solutions/observability/apps/transaction-sampling.md).
 
 Use the **`restart_external`** trace continuation strategy on an Elastic-monitored service to start a new trace if the previous service did not have a `traceparent` header with `es` vendor data. This can be helpful if a transaction includes an Elastic-monitored service that is receiving requests from an unmonitored service.
 
