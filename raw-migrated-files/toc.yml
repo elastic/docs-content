@@ -132,7 +132,6 @@ toc:
       - file: cloud/cloud/ec-access-kibana.md
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
-      - file: cloud/cloud/ec-api-organizations.md
       - file: cloud/cloud/ec-autoscaling.md
       - file: cloud/cloud/ec-billing-stop.md
       - file: cloud/cloud/ec-cloud-ingest-data.md
