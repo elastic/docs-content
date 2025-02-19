@@ -26,3 +26,5 @@ $$$start-rpm$$$
 $$$_enroll_nodes_in_an_existing_cluster_3$$$
 
 $$$start-es-deb-systemd$$$
+
+$$$fatal-errors$$$

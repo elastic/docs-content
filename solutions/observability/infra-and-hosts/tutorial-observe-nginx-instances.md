@@ -264,7 +264,7 @@ The nginx ML module provides the following anomaly detection jobs:
 $$$horizontal$$$
 
 Low request rates (`low_request_rate_nginx`)
-:   Uses the [`low_count`](https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html#ml-count) function to detect abnormally low request rates. Abnormally low request rates might indicate that network issues or other issues are preventing requests from reaching the server.
+:   Uses the [`low_count`](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-count) function to detect abnormally low request rates. Abnormally low request rates might indicate that network issues or other issues are preventing requests from reaching the server.
 
 Unusual source IPs - high request rates (`source_ip_request_rate_nginx`)
 :   Uses the [`hight_count`](https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html#ml-count) function to detect abnormally high request rates from individual IP addresses. Many requests from a single IP or small group of IPs might indicate something malicious like a distributed denial of service (DDoS) attack where a large number of requests are sent to overwhelm the server and make it unavailable to users.

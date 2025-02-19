@@ -9,7 +9,7 @@ As the administrator of the cluster, it is your responsibility to ensure the sam
 
 The `file` realm is very useful as a fallback or recovery realm. For example in cases where the cluster is unresponsive or the security index is unavailable, or when you forget the password for your administrative users. In this type of scenario, the `file` realm is a convenient way out - you can define a new `admin` user in the `file` realm and use it to log in and reset the credentials of all other users.
 
-To define users, the {{security-features}} provide the [users](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) command-line tool. This tool enables you to add and remove users, assign user roles, and manage user passwords.
+To define users, the {{security-features}} provide the [users](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) command-line tool. This tool enables you to add and remove users, assign user roles, and manage user passwords.
 
 ## Configuring a file realm [file-realm-configuration]
 
@@ -60,7 +60,7 @@ A safer approach would be to apply the change on one of the nodes and have the f
     ```
 
     ::::{note}
-    To limit exposure to credential theft and mitigate credential compromise, the file realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted `sha-256` hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the `bcrypt` hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+    To limit exposure to credential theft and mitigate credential compromise, the file realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted `sha-256` hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the `bcrypt` hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
     ::::
 
 

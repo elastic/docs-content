@@ -50,7 +50,7 @@ To get the best results from {{ml}} analytics, you must understand your data. Yo
 6. Optional: You can change the random sampling behavior, which affects the number of documents per shard that are used in the {{data-viz}}. You can use automatic random sampling that balances accuracy and speed, manual sampling where you can chose a value for the sampling percentage, or you can turn the feaure off to use the full data set. There is a relatively small number of documents in the {{kib}} sample data, so you can turn random sampling off. For larger data sets, keep in mind that using a large sample size increases query run times and increases the load on the cluster.
 7. Explore the fields in the {{data-viz}}.
 
-   You can filter the list by field names or [field types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). The {{data-viz}} indicates how many of the documents in the sample for the selected time period contain each field.
+   You can filter the list by field names or [field types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). The {{data-viz}} indicates how many of the documents in the sample for the selected time period contain each field.
 
    In particular, look at the `clientip`, `response.keyword`, and `url.keyword` fields, since we’ll use them in our {{anomaly-jobs}}. For these fields, the {{data-viz}} provides the number of distinct values, a list of the top values, and the number and percentage of documents that contain the field. For example:
    :::{image} ../../../images/machine-learning-ml-gs-data-keyword.jpg
@@ -95,7 +95,7 @@ The job uses *buckets* to divide the time series into batches for processing. Fo
 
 Each {{anomaly-job}} contains one or more *detectors*, which define the type of analysis that occurs (for example, `max`, `average`, or `rare` analytical functions) and the fields that are analyzed. Some of the analytical functions look for single anomalous data points. For example, `max` identifies the maximum value that is seen within a bucket. Others perform some aggregation over the length of the bucket. For example, `mean` calculates the mean of all the data points seen within the bucket.
 
-For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [Buckets](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-create-job), and [*Function reference*](ml-functions.md).
+For more information, see [{{dfeeds-cap}}](ml-ad-run-jobs.md#ml-ad-datafeeds), [Buckets](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-create-job), and [*Function reference*](ml-functions.md).
 
 ::::
 
@@ -271,7 +271,7 @@ To create a forecast in {{kib}}:
    :class: screenshot
    :::
 
-3. Specify a duration for your forecast. This value indicates how far to extrapolate beyond the last record that was processed. You must use [time units](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units). In this example, the duration is one week (`1w`):
+3. Specify a duration for your forecast. This value indicates how far to extrapolate beyond the last record that was processed. You must use [time units](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units). In this example, the duration is one week (`1w`):
    :::{image} ../../../images/machine-learning-ml-gs-duration.png
    :alt: Specify a duration of 1w
    :class: screenshot
@@ -311,8 +311,8 @@ If you’re now thinking about where {{anomaly-detect}} can be most impactful fo
 2. It should be information that contains key performance indicators for the health, security, or success of your business or system. The better you know the data, the quicker you will be able to create jobs that generate useful insights.
 3. Ideally, the data is located in {{es}} and you can therefore create a {{dfeed}} that retrieves data in real time.  If your data is outside of {{es}}, you cannot use {{kib}} to create your jobs and you cannot use {{dfeeds}}.
 
-In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](https://www.elastic.co/guide/en/machine-learning/current/anomaly-how-tos.html).
+In general, it is a good idea to start with single metric {{anomaly-jobs}} for your key performance indicators. After you examine these simple analysis results, you will have a better idea of what the influencers might be. You can create multi-metric jobs and split the data or create more complex analysis functions as necessary. For examples of more complicated configuration options, see [Examples](/explore-analyze/machine-learning/anomaly-detection/anomaly-how-tos.md).
 
-If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-apache.html) and [Nginx](https://www.elastic.co/guide/en/machine-learning/current/ootb-ml-jobs-nginx.html) that are quite similar to the examples in this tutorial.
+If you want to find more sample jobs, see [Supplied configurations](ootb-ml-jobs.md). In particular, there are sample jobs for [Apache](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-apache.md) and [Nginx](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ootb-ml-jobs-nginx.md) that are quite similar to the examples in this tutorial.
 
 If you encounter problems, we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](http://support.elastic.co). Or post in the [Elastic forum](https://discuss.elastic.co/).

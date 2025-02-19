@@ -5,7 +5,7 @@ mapped_pages:
 
 # TCP retransmission timeout [system-config-tcpretries]
 
-Each pair of {{es}} nodes communicates via a number of TCP connections which [remain open](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections) until one of the nodes shuts down or communication between the nodes is disrupted by a failure in the underlying infrastructure.
+Each pair of {{es}} nodes communicates via a number of TCP connections which [remain open](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) until one of the nodes shuts down or communication between the nodes is disrupted by a failure in the underlying infrastructure.
 
 TCP provides reliable communication over occasionally unreliable networks by hiding temporary network disruptions from the communicating applications. Your operating system will retransmit any lost messages a number of times before informing the sender of any problem. {{es}} must wait while the retransmissions are happening and can only react once the operating system decides to give up. Users must therefore also wait for a sequence of retransmissions to complete.
 

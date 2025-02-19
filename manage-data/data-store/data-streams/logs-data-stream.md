@@ -44,7 +44,7 @@ You can also set the index mode and adjust other template settings in [the Elast
 
 ## Synthetic source [logsdb-synthetic-source]
 
-If you have the required [subscription](https://www.elastic.co/subscriptions), `logsdb` index mode uses [synthetic `_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source), which omits storing the original `_source` field. Instead, the document source is synthesized from doc values or stored fields upon document retrieval.
+If you have the required [subscription](https://www.elastic.co/subscriptions), `logsdb` index mode uses [synthetic `_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source), which omits storing the original `_source` field. Instead, the document source is synthesized from doc values or stored fields upon document retrieval.
 
 If you don’t have the required [subscription](https://www.elastic.co/subscriptions), `logsdb` mode uses the original `_source` field.
 
@@ -65,7 +65,7 @@ In `logsdb` index mode, indices are sorted by the fields `host.name` and `@times
 
 * To prioritize the latest data, `host.name` is sorted in ascending order and `@timestamp` is sorted in descending order.
 
-You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, see [*Index Sorting*](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-index-sorting.html).
+You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, see [*Index Sorting*](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-sorting-settings.md).
 
 To modify the sort configuration of an existing data stream, update the data stream’s component templates, and then perform or wait for a [rollover](../data-streams.md#data-streams-rollover).
 
@@ -83,7 +83,7 @@ To avoid mapping conflicts, consider these options:
 
 * **Adjust mappings:** Check your existing mappings to ensure that `host.name` is mapped as a keyword.
 * **Change sorting:** If needed, you can remove `host.name` from the sort settings and use a different set of fields. Sorting by `@timestamp` can be a good fallback.
-* **Switch to a different [index mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-mode-setting)**: If resolving `host.name` mapping conflicts is not feasible, you can choose not to use `logsdb` mode.
+* **Switch to a different [index mode](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-mode-setting)**: If resolving `host.name` mapping conflicts is not feasible, you can choose not to use `logsdb` mode.
 
 ::::{important}
 On existing data streams, `logsdb` mode is applied on [rollover](../data-streams.md#data-streams-rollover) (automatic or manual).
@@ -101,7 +101,7 @@ To configure a routing optimization:
 
 * Include the index setting `[index.logsdb.route_on_sort_fields:true]` in the data stream configuration.
 * [Configure index sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-index-sorting.html) with two or more fields, in addition to `@timestamp`.
-* Make sure the [`_id`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-id-field.html) field is not populated in ingested documents. It should be auto-generated instead.
+* Make sure the [`_id`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-id-field.md) field is not populated in ingested documents. It should be auto-generated instead.
 
 A custom sort configuration is required, to improve storage efficiency and to minimize hotspots from logging spikes that may route documents to a single shard. For best results, use a few sort fields that have a relatively low cardinality and don’t co-vary (for example, `host.name` and `host.id` are not optimal).
 

@@ -6,7 +6,7 @@ mapped_pages:
 
 # Troubleshoot APM Go Agent
 
-Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! First, ensure your app is compatible with the agent’s [supported technologies](https://www.elastic.co/guide/en/apm/agent/go/current/supported-tech.html).
+Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! First, ensure your app is compatible with the agent’s [supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md).
 
 If you’re an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
 
@@ -18,7 +18,7 @@ If you’re an existing Elastic customer with a support contract, please create 
 
 ## Logging [agent-logging]
 
-Agent logs are critical to the debugging process. By default, this logging is disabled. To enable it, set a log output file with [`ELASTIC_APM_LOG_FILE`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-log-file). Alternatively, if you’re using Docker or Kubernetes and are okay with mixing agent and application logs, you can set `ELASTIC_APM_LOG_FILE=stderr`.
+Agent logs are critical to the debugging process. By default, this logging is disabled. To enable it, set a log output file with [`ELASTIC_APM_LOG_FILE`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-log-file). Alternatively, if you’re using Docker or Kubernetes and are okay with mixing agent and application logs, you can set `ELASTIC_APM_LOG_FILE=stderr`.
 
 ::::{note}
 The agent does not rotate log files. Log rotation must be handled externally.

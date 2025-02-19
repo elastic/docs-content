@@ -8,7 +8,7 @@ mapped_pages:
 
 Distributing copies of the data (index shard replicas) on different nodes can parallelize processing requests thus speeding up search queries. This can be achieved by increasing the number of replica shards up to the maximum value (total number of nodes minus one) which also serves the purpose to protect against hardware failure. If the index has a preferred tier, Elasticsearch will only place the copies of the data for that index on nodes in the target tier.
 
-If a warning is encountered with not enough nodes to allocate all shard replicas, you can influence this behavior by adding more nodes to the cluster (or tier if tiers are in use), or by reducing the [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-number-of-replicas) index setting.
+If a warning is encountered with not enough nodes to allocate all shard replicas, you can influence this behavior by adding more nodes to the cluster (or tier if tiers are in use), or by reducing the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-number-of-replicas) index setting.
 
 In order to fix this follow the next steps:
 
@@ -206,6 +206,6 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
 
 :::::::
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::

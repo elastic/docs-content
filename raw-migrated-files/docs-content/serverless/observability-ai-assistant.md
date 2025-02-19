@@ -12,9 +12,9 @@ The AI Assistant uses generative AI to provide:
 
 The AI Assistant integrates with your large language model (LLM) provider through our supported Elastic connectors:
 
-* [OpenAI connector](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html) for OpenAI or Azure OpenAI Service.
-* [Amazon Bedrock connector](https://www.elastic.co/guide/en/kibana/current/bedrock-action-type.html) for Amazon Bedrock, specifically for the Claude models.
-* [Google Gemini connector](https://www.elastic.co/guide/en/kibana/current/gemini-action-type.html) for Google Gemini.
+* [OpenAI connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md) for OpenAI or Azure OpenAI Service.
+* [Amazon Bedrock connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md) for Amazon Bedrock, specifically for the Claude models.
+* [Google Gemini connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md) for Google Gemini.
 
 ::::{important}
 The AI Assistant is powered by an integration with your large language model (LLM) provider. LLMs are known to sometimes present incorrect information as if it’s correct. Elastic supports configuration and connection to the LLM provider and your knowledge base, but is not responsible for the LLM’s responses.
@@ -248,7 +248,7 @@ Clicking a prompt generates a message specific to that log entry. You can contin
 
 ### Add the AI Assistant connector to alerting workflows [observability-ai-assistant-add-the-ai-assistant-connector-to-alerting-workflows]
 
-You can use the [Observability AI Assistant connector](https://www.elastic.co/guide/en/kibana/current/obs-ai-assistant-action-type.html) to add AI-generated insights and custom actions to your alerting workflows. To do this:
+You can use the [Observability AI Assistant connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md) to add AI-generated insights and custom actions to your alerting workflows. To do this:
 
 1. [Create (or edit) an alerting rule](../../../solutions/observability/incident-management/create-manage-rules.md) and specify the conditions that must be met for the alert to fire.
 2. Under **Actions**, select the **Observability AI Assistant** connector type.

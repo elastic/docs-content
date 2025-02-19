@@ -32,7 +32,7 @@ The deployment templates available are:
 
 * **Cross-cluster search template**
 
-    This template manages remote connections for running Elasticsearch queries across multiple deployments and indices. These federated searches make it possible to break up large deployments into smaller, more resilient Elasticsearch clusters. You can organize deployments by departments or projects for example, but still have the ability to aggregate query results and get visibility into your Elastic Cloud Enterprise infrastructure. You can add remote connections either when you create your deployment or when you customize it. To know more about cross-cluster search, check [Enable cross-cluster search](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html).
+    This template manages remote connections for running Elasticsearch queries across multiple deployments and indices. These federated searches make it possible to break up large deployments into smaller, more resilient Elasticsearch clusters. You can organize deployments by departments or projects for example, but still have the ability to aggregate query results and get visibility into your Elastic Cloud Enterprise infrastructure. You can add remote connections either when you create your deployment or when you customize it. To know more about cross-cluster search, check [Enable cross-cluster search](/deploy-manage/remote-clusters/ec-enable-ccs.md).
 
 * **Elastic Security template**
 

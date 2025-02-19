@@ -26,16 +26,16 @@ For additional help with other APM components, see the links below.
 {{agent}}, the Applications UI, and each {{apm-agent}} has its own troubleshooting guide:
 
 * [**{{fleet}} and {{agent}}** troubleshooting](../ingest/fleet/fleet-elastic-agent.md)
-* [**Android agent** FAQ](https://www.elastic.co/guide/en/apm/agent/android/current/faq.html)
-* [**.NET agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/dotnet/current/troubleshooting.html)
-* [**Go agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/go/current/troubleshooting.html)
-* [**iOS agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/swift/current/troubleshooting.html)
-* [**Java agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/java/current/trouble-shooting.html)
-* [**Node.js agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/nodejs/current/troubleshooting.html)
-* [**PHP agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/php/current/troubleshooting.html)
-* [**Python agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/python/current/troubleshooting.html)
-* [**Ruby agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/ruby/current/debugging.html)
-* [**RUM agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/rum-js/current/troubleshooting.html)
+* [**Android agent** FAQ](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/faq.md)
+* [**.NET agent** troubleshooting](/troubleshoot/observability/apm-agent-dotnet/apm-net-agent.md)
+* [**Go agent** troubleshooting](/troubleshoot/observability/apm-agent-go/apm-go-agent.md)
+* [**iOS agent** troubleshooting](/troubleshoot/observability/apm-agent-swift/apm-ios-agent.md)
+* [**Java agent** troubleshooting](/troubleshoot/observability/apm-agent-java/apm-java-agent.md)
+* [**Node.js agent** troubleshooting](/troubleshoot/observability/apm-agent-nodejs/apm-nodejs-agent.md)
+* [**PHP agent** troubleshooting](/troubleshoot/observability/apm-agent-php/apm-php-agent.md)
+* [**Python agent** troubleshooting](/troubleshoot/observability/apm-agent-python/apm-python-agent.md)
+* [**Ruby agent** troubleshooting](/troubleshoot/observability/apm-agent-ruby/apm-ruby-agent.md)
+* [**RUM agent** troubleshooting](/troubleshoot/observability/apm-agent-rum-js/apm-real-user-monitoring-javascript-agent.md)
 
 
 ## Elastic Support [apm-elastic-support]

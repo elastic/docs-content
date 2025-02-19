@@ -27,7 +27,7 @@ Also read [Troubleshoot common problems](common-problems.md).
 
 ## Why doesn’t my enrolled agent show up in the {{fleet}} app? [enrolled-agent-not-showing-up]
 
-If {{agent}} was successfully enrolled, but doesn’t show up in the **Agents** list, it might not be started. Make sure the `elastic-agent` process is running on the host. If it’s not running, use the [`run`](https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html#elastic-agent-run-command) command to start it.  The most common way to deploy an {{agent}} is by using the `install` command. This command starts the {{agent}} for you.
+If {{agent}} was successfully enrolled, but doesn’t show up in the **Agents** list, it might not be started. Make sure the `elastic-agent` process is running on the host. If it’s not running, use the [`run`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-command-reference.md#elastic-agent-run-command) command to start it.  The most common way to deploy an {{agent}} is by using the `install` command. This command starts the {{agent}} for you.
 
 
 ## Where does {{agent}} store logs after startup? [where-are-the-agent-logs]
@@ -42,7 +42,7 @@ You’ll find logs for the {{beats}} shippers, such as {{metricbeat}}, under pat
 
 If the log path does not exist, {{agent}} was unable to start {{metricbeat}}, which is a higher level problem to triage. Usually you can see these logs in the {{fleet}} UI, unless there are problems severe enough that the {{agent}} or its related  processes cannot send data to {{es}}.
 
-See [Installation layout](https://www.elastic.co/guide/en/fleet/current/installation-layout.html) to find out the exact paths for each platform.
+See [Installation layout](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/installation-layout.md) to find out the exact paths for each platform.
 
 
 ## What policy is the {{agent}} running? [what-is-my-agent-config]
@@ -95,14 +95,14 @@ If {{elastic-agent}} is set up and running, but you don’t see data in {{kib}}:
 
 If you don’t see data for your host, it’s possible that the data is blocked in the network, or that a firewall or security problem is preventing the {{agent}} from sending the data.
 
-Although it’s redundant to install stand-alone {{metricbeat}}, you might want to try installing it to see if it’s able to send data successfully to {{es}}. For more information, see [{{metricbeat}} quick start](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html).
+Although it’s redundant to install stand-alone {{metricbeat}}, you might want to try installing it to see if it’s able to send data successfully to {{es}}. For more information, see [{{metricbeat}} quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-installation-configuration.md).
 
 If {{metricbeat}} is able to send data to {{es}}, there is possibly a bug or problem with {{agent}}, and you should report it.
 
 
 ## How do I restore an {{agent}} that I deleted from {{fleet}}? [i-deleted-my-agent]
 
-It’s okay, we’ve got your back! The data is still in {{es}}. To add {{agent}} to {{fleet}} again, [Stop {{agent}}](https://www.elastic.co/guide/en/fleet/current/start-stop-elastic-agent.html#stop-elastic-agent-service), re-enroll it on the host, then run {{agent}}.
+It’s okay, we’ve got your back! The data is still in {{es}}. To add {{agent}} to {{fleet}} again, [Stop {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/start-stop-elastic-agent.md#stop-elastic-agent-service), re-enroll it on the host, then run {{agent}}.
 
 
 ## How do I restart {{agent}} after rebooting my host? [i-rebooted-my-host]
@@ -124,7 +124,7 @@ elastic-agent restart
 
 {{agent}} does not download integration packages. When you add an integration in {{fleet}}, {{kib}} connects to the {{package-registry}} at `epr.elastic.co`, downloads the integration package, and stores its assets in {{es}}. This means that you no longer have to run a manual setup command to load integrations as you did previously with {{beats}} modules.
 
-By default, {{kib}} requires an internet connection to download integration packages from the {{package-registry}}. If network restrictions prevent {{kib}} from reaching the public {{package-registry}}, you can use a proxy server or host your own {{package-registry}}. To learn more, refer to [Air-gapped environments](https://www.elastic.co/guide/en/fleet/current/air-gapped.html).
+By default, {{kib}} requires an internet connection to download integration packages from the {{package-registry}}. If network restrictions prevent {{kib}} from reaching the public {{package-registry}}, you can use a proxy server or host your own {{package-registry}}. To learn more, refer to [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md).
 
 
 ## Does {{agent}} download anything from the Internet? [does-agent-download-anything-from-internet]
@@ -162,7 +162,7 @@ The policy generated by {{fleet}} already contains the correct {{es}} address an
 
 ## If I delete an integration dashboard asset from {{kib}}, how do I get it back? [how-do-i-reinstall-a-missing-dashboard-asset]
 
-To reinstall the assets for a specific integration, you can use the {{fleet}} UI. For more information, see [Reinstall integration assets](https://www.elastic.co/guide/en/fleet/current/install-uninstall-integration-assets.html#reinstall-integration-assets).
+To reinstall the assets for a specific integration, you can use the {{fleet}} UI. For more information, see [Reinstall integration assets](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-uninstall-integration-assets.md#reinstall-integration-assets).
 
 Alternatively, you can use the {{fleet}} API using the package name and version. This needs to be run against the {{kib}} API and not the {{es}} API to be successful. To reinstall package assets, execute the following call with the `force` parameter in the body:
 

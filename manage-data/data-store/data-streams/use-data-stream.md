@@ -165,9 +165,9 @@ POST /my-data-stream/_delete_by_query
 
 If needed, you can update or delete documents in a data stream by sending requests to the backing index containing the document. You’ll need:
 
-* The [document ID](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-id-field.html)
+* The [document ID](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-id-field.md)
 * The name of the backing index containing the document
-* If updating the document, its [sequence number and primary term](https://www.elastic.co/guide/en/elasticsearch/reference/current/optimistic-concurrency-control.html)
+* If updating the document, its [sequence number and primary term](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control.md)
 
 To get this information, use a [search request](#search-a-data-stream):
 

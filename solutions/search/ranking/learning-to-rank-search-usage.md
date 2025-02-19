@@ -20,7 +20,7 @@ This feature was introduced in version 8.12.0 and is only available to certain s
 
 ## Learning To Rank as a rescorer [learning-to-rank-rescorer] 
 
-Once your LTR model is trained and deployed in {{es}}, it can be used as a [rescorer](https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#rescore) in the [search API](../querying-for-search.md):
+Once your LTR model is trained and deployed in {{es}}, it can be used as a [rescorer](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/filter-search-results.md#rescore) in the [search API](../querying-for-search.md):
 
 ```console
 GET my-index/_search

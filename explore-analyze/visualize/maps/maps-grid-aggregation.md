@@ -8,7 +8,7 @@ mapped_pages:
 
 # Clusters [maps-grid-aggregation]
 
-Clusters use [Geotile grid aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-geotilegrid-aggregation.html) or [Geohex grid aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-geohexgrid-aggregation.html) to group your documents into grids. You can calculate metrics for each gridded cell.
+Clusters use [Geotile grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geotilegrid-aggregation.md) or [Geohex grid aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-geohexgrid-aggregation.md) to group your documents into grids. You can calculate metrics for each gridded cell.
 
 Symbolize cluster metrics as:
 

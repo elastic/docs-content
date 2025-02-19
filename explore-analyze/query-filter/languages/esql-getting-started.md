@@ -117,7 +117,7 @@ You can adjust the editor’s height by dragging its bottom border to your likin
 
 ## Your first {{esql}} query [esql-getting-started-first-query]
 
-Each {{esql}} query starts with a [source command](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-source-commands). A source command produces a table, typically with data from {{es}}.
+Each {{esql}} query starts with a [source command](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-source-commands). A source command produces a table, typically with data from {{es}}.
 
 :::{image} ../../../images/elasticsearch-reference-source-command.svg
 :alt: A source command producing a table from {{es}}
@@ -191,7 +191,7 @@ FROM sample_data
 | WHERE event_duration > 5000000
 ```
 
-`WHERE` supports several [operators](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-operators). For example, you can use [`LIKE`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-like-operator) to run a wildcard query against the `message` column:
+`WHERE` supports several [operators](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-operators). For example, you can use [`LIKE`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-like-operator) to run a wildcard query against the `message` column:
 
 ```esql
 FROM sample_data
@@ -269,7 +269,7 @@ FROM sample_data
 
 ## Access columns [esql-getting-started-access-columns]
 
-You can access columns by their name. If a name contains special characters, [it needs to be quoted](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-syntax.html#esql-identifiers) with backticks (```).
+You can access columns by their name. If a name contains special characters, [it needs to be quoted](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-syntax.md#esql-identifiers) with backticks (```).
 
 Assigning an explicit name to a column created by `EVAL` or `STATS` is optional. If you don’t provide a name, the new column name is equal to the function expression. For example:
 
@@ -309,7 +309,7 @@ FROM sample_data
 
 ## Enrich data [esql-getting-started-enrich]
 
-{{esql}} enables you to [enrich](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html) a table with data from indices in {{es}}, using the [`ENRICH`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich) command.
+{{esql}} enables you to [enrich](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md) a table with data from indices in {{es}}, using the [`ENRICH`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich) command.
 
 :::{image} ../../../images/elasticsearch-reference-esql-enrich.png
 :alt: esql enrich
@@ -391,7 +391,7 @@ For more about data enrichment with {{esql}}, refer to [Data enrichment](https:/
 
 ## Process data [esql-getting-started-process-data]
 
-Your data may contain unstructured strings that you want to [structure](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-process-data-with-dissect-and-grok.html) to make it easier to analyze the data. For example, the sample data contains log messages like:
+Your data may contain unstructured strings that you want to [structure](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-process-data-with-dissect-grok.md) to make it easier to analyze the data. For example, the sample data contains log messages like:
 
 ```txt
 "Connected to 10.1.0.3"
@@ -424,5 +424,5 @@ For more about data processing with {{esql}}, refer to [Data processing with DIS
 
 ## Learn more [esql-getting-learn-more]
 
-To learn more about {{esql}}, refer to [{{esql}} reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-language.html).
+To learn more about {{esql}}, refer to [{{esql}} reference](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql.md).
 

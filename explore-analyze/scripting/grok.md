@@ -46,14 +46,14 @@ The first value is a number, followed by what appears to be an IP address. You c
 
 To ease migration to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current), a new set of ECS-compliant patterns is available in addition to the existing patterns. The new ECS pattern definitions capture event field names that are compliant with the schema.
 
-The ECS pattern set has all of the pattern definitions from the legacy set, and is a drop-in replacement. Use the [`ecs-compatability`](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html#plugins-filters-grok-ecs_compatibility) setting to switch modes.
+The ECS pattern set has all of the pattern definitions from the legacy set, and is a drop-in replacement. Use the [`ecs-compatability`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-grok.md#plugins-filters-grok-ecs_compatibility) setting to switch modes.
 
 New features and enhancements will be added to the ECS-compliant files. The legacy patterns may still receive bug fixes which are backwards compatible.
 
 
 ## Use grok patterns in Painless scripts [grok-patterns]
 
-You can incorporate predefined grok patterns into Painless scripts to extract data. To test your script, use either the [field contexts](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html#painless-execute-runtime-field-context) of the Painless execute API or create a runtime field that includes the script. Runtime fields offer greater flexibility and accept multiple documents, but the Painless execute API is a great option if you don’t have write access on a cluster where you’re testing a script.
+You can incorporate predefined grok patterns into Painless scripts to extract data. To test your script, use either the [field contexts](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-api-examples.md#painless-execute-runtime-field-context) of the Painless execute API or create a runtime field that includes the script. Runtime fields offer greater flexibility and accept multiple documents, but the Painless execute API is a great option if you don’t have write access on a cluster where you’re testing a script.
 
 ::::{tip}
 If you need help building grok patterns to match your data, use the [Grok Debugger](../query-filter/tools/grok-debugger.md) tool in {{kib}}.
@@ -154,7 +154,7 @@ GET my-index/_search
 
 ## Return calculated results [grok-pattern-results]
 
-Using the `http.clientip` runtime field, you can define a simple query to run a search for a specific IP address and return all related fields. The [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API works for all fields, even those that weren’t sent as part of the original `_source`:
+Using the `http.clientip` runtime field, you can define a simple query to run a search for a specific IP address and return all related fields. The [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API works for all fields, even those that weren’t sent as part of the original `_source`:
 
 ```console
 GET my-index/_search

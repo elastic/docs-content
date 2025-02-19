@@ -64,7 +64,7 @@ xpack.security.authc.token.enabled: true
 
 SAML authentication is enabled by configuring a SAML realm within the authentication chain for {{es}}.
 
-This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [Security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html). For example, [SAML realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-settings), [SAML realm signing settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-signing-settings), [SAML realm encryption settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-encryption-settings), [SAML realm SSL settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-ssl-settings). This guide will walk you through the most common settings.
+This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [Security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md). For example, [SAML realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-settings), [SAML realm signing settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-signing-settings), [SAML realm encryption settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-encryption-settings), [SAML realm SSL settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-ssl-settings). This guide will walk you through the most common settings.
 
 Create a realm by adding the following to your `elasticsearch.yml` configuration file. Each configuration value is explained below.
 
@@ -308,7 +308,7 @@ Encryption certificates are rarely needed, but the Elastic Stack supports them f
 
 {{es}} supports certificates and keys in either PEM, PKCS#12 or JKS format. Some Identity Providers are more restrictive in the formats they support, and will require you to provide the certificates as a file in a particular format. You should consult the documentation for your IdP to determine what formats they support. Since PEM format is the most commonly supported format, the examples below will generate certificates in that format.
 
-Using the [`elasticsearch-certutil` tool](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html), you can generate a signing certificate with the following command:
+Using the [`elasticsearch-certutil` tool](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md), you can generate a signing certificate with the following command:
 
 ```sh
 bin/elasticsearch-certutil cert --self-signed --pem --days 1100 --name saml-sign --out saml-sign.zip
@@ -400,7 +400,7 @@ If you wish to use **PKCS#12 formatted** files or a **Java Keystore** for SAML e
 
 Some Identity Providers support importing a metadata file from the Service Provider. This will automatically configure many of the integration options between the IdP and the SP.
 
-The {{stack}} supports generating such a metadata file using the [`bin/elasticsearch-saml-metadata` command](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-metadata.html) or the [SAML service provider metadata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-service-provider-metadata).
+The {{stack}} supports generating such a metadata file using the [`bin/elasticsearch-saml-metadata` command](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/saml-metadata.md) or the [SAML service provider metadata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-service-provider-metadata).
 
 You can generate the SAML metadata by issuing the API request to {{es}} and store it as an XML file using tools like `jq`. For example, the following command generates the metadata for the SAML realm `realm1` and saves it to a `metadata.xml` file:
 

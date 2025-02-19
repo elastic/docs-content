@@ -43,16 +43,16 @@ If a setting is not supported by Elasticsearch Service, you will get an error me
 ### Version 8.9.0+ [ec_version_8_9_0]
 
 `xpack.fleet.createArtifactsBulkBatchSize`
-:   Allow to configure batch size for creating and updating Fleet user artifacts.  Examples include creation of Trusted Applications and Endpoint Exceptions in Security.  To learn more, check [Fleet settings in Kibana](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html).
+:   Allow to configure batch size for creating and updating Fleet user artifacts.  Examples include creation of Trusted Applications and Endpoint Exceptions in Security.  To learn more, check [Fleet settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
 
 `xpack.securitySolution.maxUploadResponseActionFileBytes`
-:   Allow to configure the max file upload size for use with the Upload File Repsonse action available with the Defend Integration.  To learn more, check [Endpoint Response actions](https://www.elastic.co/guide/en/security/current/response-actions.html).
+:   Allow to configure the max file upload size for use with the Upload File Repsonse action available with the Defend Integration.  To learn more, check [Endpoint Response actions](/solutions/security/endpoint-response-actions.md).
 
 
 ### Version 8.7.0+ [ec_version_8_7_0]
 
 `xpack.security.session.concurrentSessions.maxSessions`
-:   Set the maximum number of sessions each user is allowed to have active in {{kib}}. By default, no limit is applied. If set, the value of this option should be an integer between 1 and 1000. When the limit is exceeded, the oldest session is automatically invalidated. To learn more, check [Session management](https://www.elastic.co/guide/en/kibana/current/xpack-security-session-management.html#session-max-sessions).
+:   Set the maximum number of sessions each user is allowed to have active in {{kib}}. By default, no limit is applied. If set, the value of this option should be an integer between 1 and 1000. When the limit is exceeded, the oldest session is automatically invalidated. To learn more, check [Session management](/deploy-manage/security/kibana-session-management.md#session-max-sessions).
 
 `server.securityResponseHeaders.crossOriginOpenerPolicy`
 :   Controls whether the [`Cross-Origin-Opener-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-crossOriginOpenerPolicy).
@@ -224,7 +224,7 @@ If a setting is not supported by Elasticsearch Service, you will get an error me
 
 If you are using SAML to secure your clusters, these settings are supported in Elasticsearch Service.
 
-To learn more, refer to [configuring Kibana to use SAML](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-configure-kibana).
+To learn more, refer to [configuring Kibana to use SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana).
 
 #### Version 8.0.0+ [ec_version_8_0_0]
 
@@ -299,17 +299,17 @@ If you are using OpenID Connect to secure your clusters, these settings are supp
 `xpack.security.authc.oidc.realm`
 :   Specifies which OpenID Connect realm in Elasticsearch should be used.
 
-To learn more, check [configuring Kibana to use OpenID Connect](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html).
+To learn more, check [configuring Kibana to use OpenID Connect](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md).
 
 
 ### Anonymous authentication [ec_anonymous_authentication]
 
-If you want to allow anonymous authentication in Kibana, these settings are supported in Elasticsearch Service. To learn more on how to enable anonymous access, check [Enabling anonymous access](https://www.elastic.co/guide/en/elasticsearch/reference/current/anonymous-access.html) and [Configuring Kibana to use anonymous authentication](https://www.elastic.co/guide/en/kibana/current/kibana-authentication.html#anonymous-authentication).
+If you want to allow anonymous authentication in Kibana, these settings are supported in Elasticsearch Service. To learn more on how to enable anonymous access, check [Enabling anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md) and [Configuring Kibana to use anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#anonymous-authentication).
 
 #### Supported versions before 8.0.0 [ec_supported_versions_before_8_0_0]
 
 `xpack.security.sessionTimeout`
-:   Specifies the session duration in milliseconds. Allows a value between 15000 (15 seconds) and 86400000 (1 day). To learn more, check [Security settings in Kibana](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html). Deprecated in versions 7.6+ and removed in versions 8.0+.
+:   Specifies the session duration in milliseconds. Allows a value between 15000 (15 seconds) and 86400000 (1 day). To learn more, check [Security settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md). Deprecated in versions 7.6+ and removed in versions 8.0+.
 
 
 #### All supported versions [ec_all_supported_versions_4]
@@ -474,7 +474,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 :   Sets the size of the ephemeral queue. Defaults to `10`.
 
 `xpack.actions.customHostSettings`
-:   An array of objects, one per host, containing the SSL/TLS settings used when executing connectors which make HTTPS and SMTP connections to the host servers.  For details about using this setting, check [Alerting and action settings in Kibana](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html).
+:   An array of objects, one per host, containing the SSL/TLS settings used when executing connectors which make HTTPS and SMTP connections to the host servers.  For details about using this setting, check [Alerting and action settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md).
 
 `xpack.actions.ssl.proxyVerificationMode`
 :   Controls the verification of the proxy server certificate that hosted-ems receives when making an outbound SSL/TLS connection to the host server. Valid values are `full`, `certificate`, and `none`. Use `full` to perform hostname verification, `certificate` to skip hostname verification, and `none` to skip verification. Default: `full`.
@@ -588,7 +588,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 :   When enabled, specifies the email address to receive cluster alert notifications.
 
 `xpack.monitoring.kibana.collection.interval`
-:   Controls [how often data samples are collected](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#monitoring-collection-settings).
+:   Controls [how often data samples are collected](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
 
 `xpack.monitoring.min_interval_seconds`
 :   Specifies the minimum number of seconds that a time bucket in a chart can represent. If you modify the `xpack.monitoring.kibana.collection.interval`, use the same value in this setting.
@@ -599,7 +599,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 `xpack.ml.enabled`
 :   Set to true (default) to enable machine learning.
 
-    If set to `false` in `kibana.yml`, the machine learning icon is hidden in this Kibana instance. If `xpack.ml.enabled` is set to `true` in `elasticsearch.yml`, however, you can still use the machine learning APIs. To disable machine learning entirely, check the [Elasticsearch Machine Learning Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html).
+    If set to `false` in `kibana.yml`, the machine learning icon is hidden in this Kibana instance. If `xpack.ml.enabled` is set to `true` in `elasticsearch.yml`, however, you can still use the machine learning APIs. To disable machine learning entirely, check the [Elasticsearch Machine Learning Settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md).
 
 
 #### Content security policy configuration [ec_content_security_policy_configuration]
@@ -692,7 +692,7 @@ Each method has its own unique limitations which are important to understand.
 
 
 `xpack.reporting.csv.scroll.duration`
-:   Amount of [time](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units) allowed before {{kib}} cleans the scroll context during a CSV export. Valid option is either `auto` or [time](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units), Defaults to `30s`.
+:   Amount of [time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units) allowed before {{kib}} cleans the scroll context during a CSV export. Valid option is either `auto` or [time](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units), Defaults to `30s`.
 
 ::::{note}
 Support for the The option `auto` was included here, when the config value is set to `auto` the scroll context will be preserved for as long as is possible, before the report task is terminated due to the limits of `xpack.reporting.queue.timeout`.
@@ -929,7 +929,7 @@ The following APM settings are supported in Kibana:
 `xpack.apm.ui.maxTraceItems`
 :   Maximum number of child items displayed when viewing trace details.
 
-    Defaults to `1000`.  Any positive value is valid. To learn more, check [APM settings in Kibana](https://www.elastic.co/guide/en/kibana/current/apm-settings-kb.html).
+    Defaults to `1000`.  Any positive value is valid. To learn more, check [APM settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/apm-settings.md).
 
 
 `xpack.apm.ui.enabled`

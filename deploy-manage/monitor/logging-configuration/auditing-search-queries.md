@@ -38,7 +38,7 @@ Not all events contain the `request.body` attribute, even when the above setting
 * `run_as_denied` 
 * `anonymous_access_denied`
 
-The `request.body` attribute is printed on the coordinating node only (the node that handles the REST request). Most of these event types are [not included by default](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include).
+The `request.body` attribute is printed on the coordinating node only (the node that handles the REST request). Most of these event types are [not included by default](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md#xpack-sa-lf-events-include).
 
 A good practical piece of advice is to add `authentication_success` to the event types that are audited (add it to the list in the `xpack.security.audit.logfile.events.include`), as this event type is not audited by default.
 

@@ -31,9 +31,9 @@ By using an AWS Lambda extension, Elastic APM agents can send data to a local La
 
 To get started with monitoring AWS Lambda functions, refer to the APM agent documentation:
 
-* [Monitor AWS Lambda Node.js functions](https://www.elastic.co/guide/en/apm/agent/nodejs/current/lambda.html)
-* [Monitor AWS Lambda Python functions](https://www.elastic.co/guide/en/apm/agent/python/current/lambda-support.html)
-* [Monitor AWS Lambda Java functions](https://www.elastic.co/guide/en/apm/agent/java/current/aws-lambda.html)
+* [Monitor AWS Lambda Node.js functions](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/lambda.md)
+* [Monitor AWS Lambda Python functions](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/lambda-support.md)
+* [Monitor AWS Lambda Java functions](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/aws-lambda.md)
 
 ::::{important}
 When sending data to an {{obs-serverless}} project, you *must* use an API key.

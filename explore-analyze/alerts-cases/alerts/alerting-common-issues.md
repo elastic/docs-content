@@ -18,7 +18,7 @@ Rules with a small check interval, such as every two seconds, run later than sch
 
 **Solution**
 
-Rules run as background tasks at a cadence defined by their **check interval**. When a Rule **check interval** is smaller than the Task Manager [`poll_interval`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings), the rule will run late.
+Rules run as background tasks at a cadence defined by their **check interval**. When a Rule **check interval** is smaller than the Task Manager [`poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings), the rule will run late.
 
 Either tweak the [{{kib}} Task Manager settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) or increase the **check interval** of the rules in question.
 
@@ -36,7 +36,7 @@ Actions run long after the status of a rule changes, sending a notification of t
 
 Rules and actions run as background tasks by each {{kib}} instance at a default rate of ten tasks every three seconds. When diagnosing issues related to alerting, focus on the tasks that begin with `alerting:` and `actions:`.
 
-Alerting tasks always begin with `alerting:`. For example, the `alerting:.index-threshold` tasks back the [index threshold stack rule](rule-type-index-threshold.md). Action tasks always begin with `actions:`. For example, the `actions:.index` tasks back the [index action](https://www.elastic.co/guide/en/kibana/current/index-action-type.html).
+Alerting tasks always begin with `alerting:`. For example, the `alerting:.index-threshold` tasks back the [index threshold stack rule](rule-type-index-threshold.md). Action tasks always begin with `actions:`. For example, the `actions:.index` tasks back the [index action](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/index-action-type.md).
 
 For more details on monitoring and diagnosing tasks in Task Manager, refer to [Health monitoring](../../../deploy-manage/monitor/kibana-task-manager-health-monitoring.md).
 
@@ -48,7 +48,7 @@ A connector gets a TLS socket error when connecting to the server to run an acti
 
 **Solution**
 
-Configuration options are available to specialize connections to TLS servers, including ignoring server certificate validation and providing certificate authority data to verify servers using custom certificates. For more details, see [Action settings](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html#action-settings).
+Configuration options are available to specialize connections to TLS servers, including ignoring server certificate validation and providing certificate authority data to verify servers using custom certificates. For more details, see [Action settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#action-settings).
 
 ## Rules take a long time to run [rules-long-run-time]
 
@@ -243,7 +243,7 @@ This error happens when the `xpack.encryptedSavedObjects.encryptionKey` value us
 
 |     |     |
 | --- | --- |
-| If the value in `xpack.encryptedSavedObjects.encryptionKey` was manually changed, and the previous encryption key is still known. | Ensure any previous encryption key is included in the keys used for [decryption only](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#xpack-encryptedSavedObjects-keyRotation-decryptionOnlyKeys). |
+| If the value in `xpack.encryptedSavedObjects.encryptionKey` was manually changed, and the previous encryption key is still known. | Ensure any previous encryption key is included in the keys used for [decryption only](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-encryptedSavedObjects-keyRotation-decryptionOnlyKeys). |
 | If another {{kib}} instance with a different encryption key connects to the cluster. | The other {{kib}} instance might be trying to run the rule using a different encryption key than what the rule was created with. Ensure the encryption keys among all the {{kib}} instances are the same, and setting [decryption only keys](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#xpack-encryptedSavedObjects-keyRotation-decryptionOnlyKeys) for previously used encryption keys. |
 | If other scenarios don’t apply. | Generate a new API key for the rule. For example, in **{{stack-manage-app}} > {{rules-ui}}**, select **Update API key** from the action menu. |
 

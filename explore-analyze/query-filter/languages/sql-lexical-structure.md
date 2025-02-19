@@ -43,7 +43,7 @@ Identifiers can be of two types: *quoted* and *unquoted*:
 SELECT ip_address FROM "hosts-*"
 ```
 
-This query has two identifiers, `ip_address` and `hosts-*` (an [index pattern](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index)). As `ip_address` does not clash with any key words it can be used verbatim, `hosts-*` on the other hand cannot as it clashes with `-` (minus operation) and `*` hence the double quotes.
+This query has two identifiers, `ip_address` and `hosts-*` (an [index pattern](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index)). As `ip_address` does not clash with any key words it can be used verbatim, `hosts-*` on the other hand cannot as it clashes with `-` (minus operation) and `*` hence the double quotes.
 
 Another example:
 

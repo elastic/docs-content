@@ -18,7 +18,7 @@ Event Query Language (EQL) is a query language for event-based time series data,
 ## Advantages of EQL [eql-advantages]
 
 * **EQL lets you express relationships between events.**<br> Many query languages allow you to match single events. EQL lets you match a sequence of events across different event categories and time spans.
-* **EQL has a low learning curve.**<br> [EQL syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html) looks like other common query languages, such as SQL. EQL lets you write and read queries intuitively, which makes for quick, iterative searching.
+* **EQL has a low learning curve.**<br> [EQL syntax](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md) looks like other common query languages, such as SQL. EQL lets you write and read queries intuitively, which makes for quick, iterative searching.
 * **EQL is designed for security use cases.**<br> While you can use it for any event-based data, we created EQL for threat hunting. EQL not only supports indicator of compromise (IOC) searches but can describe activity that goes beyond IOCs.
 
 
@@ -871,7 +871,7 @@ GET /my-index*/_eql/search
 
 By default, each hit in the search response includes the document `_source`, which is the entire JSON object that was provided when indexing the document.
 
-You can use the [`filter_path`](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#common-options-response-filtering) query parameter to filter the API response. For example, the following search returns only the timestamp and PID from the `_source` of each matching event.
+You can use the [`filter_path`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) query parameter to filter the API response. For example, the following search returns only the timestamp and PID from the `_source` of each matching event.
 
 ```console
 GET /my-data-stream/_eql/search?filter_path=hits.events._source.@timestamp,hits.events._source.process.pid
@@ -909,12 +909,12 @@ The API returns the following response.
 }
 ```
 
-You can also use the `fields` parameter to retrieve and format specific fields in the response. This field is identical to the search API’s [`fields` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html).
+You can also use the `fields` parameter to retrieve and format specific fields in the response. This field is identical to the search API’s [`fields` parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
 
 Because it consults the index mappings, the `fields` parameter provides several advantages over referencing the `_source` directly. Specifically, the `fields` parameter:
 
 * Returns each value in a standardized way that matches its mapping type
-* Accepts [multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html) and [field aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/field-alias.html)
+* Accepts [multi-fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md) and [field aliases](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md)
 * Formats dates and spatial data types
 * Retrieves [runtime field values](../../../manage-data/data-store/mapping/retrieve-runtime-field.md)
 * Returns fields calculated by a script at index time
@@ -1055,7 +1055,7 @@ GET /my-data-stream/_eql/search
 }
 ```
 
-The event category field must be mapped as a [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) family field type. The timestamp field should be mapped as a [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) field type. [`date_nanos`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date_nanos.html) timestamp fields are not supported. You cannot use a [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) field or the sub-fields of a `nested` field as the timestamp or event category field.
+The event category field must be mapped as a [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) family field type. The timestamp field should be mapped as a [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) field type. [`date_nanos`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md) timestamp fields are not supported. You cannot use a [`nested`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/nested.md) field or the sub-fields of a `nested` field as the timestamp or event category field.
 
 
 ## Specify a sort tiebreaker [eql-search-specify-a-sort-tiebreaker]
@@ -1286,5 +1286,5 @@ GET /cluster_one:my-data-stream,cluster_two:my-data-stream/_eql/search
 
 ## EQL circuit breaker settings [eql-circuit-breaker]
 
-The relevant circuit breaker settings can be found in the [Circuit Breakers page](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#circuit-breakers-page-eql).
+The relevant circuit breaker settings can be found in the [Circuit Breakers page](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#circuit-breakers-page-eql).
 

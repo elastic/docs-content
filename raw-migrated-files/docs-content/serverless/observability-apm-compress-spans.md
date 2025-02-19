@@ -52,8 +52,8 @@ Support for span compression is available in the following agents and can be con
 
 | Agent | Same-kind config | Exact-match config |
 | --- | --- | --- |
-| **Go agent** | [`ELASTIC_APM_SPAN_COMPRESSION_SAME_KIND_MAX_DURATION`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-span-compression-exact-match-duration) |
-| **Java agent** | [`span_compression_same_kind_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/current/config-huge-traces.html#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/current/config-huge-traces.html#config-span-compression-exact-match-max-duration) |
-| **.NET agent** | [`SpanCompressionSameKindMaxDuration`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-span-compression-exact-match-max-duration) |
-| **Node.js agent** | [`spanCompressionSameKindMaxDuration`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#span-compression-exact-match-max-duration) |
-| **Python agent** | [`span_compression_same_kind_max_duration`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-span-compression-exact-match-max_duration) |
+| **Go agent** | [`ELASTIC_APM_SPAN_COMPRESSION_SAME_KIND_MAX_DURATION`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-span-compression-exact-match-duration) |
+| **Java agent** | [`span_compression_same_kind_max_duration`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-huge-traces.md#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/current/config-huge-traces.html#config-span-compression-exact-match-max-duration) |
+| **.NET agent** | [`SpanCompressionSameKindMaxDuration`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-core.md#config-span-compression-exact-match-max-duration) |
+| **Node.js agent** | [`spanCompressionSameKindMaxDuration`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#span-compression-exact-match-max-duration) |
+| **Python agent** | [`span_compression_same_kind_max_duration`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-span-compression-exact-match-max_duration) |

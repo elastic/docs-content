@@ -268,19 +268,19 @@ The response shows the field mappings for the `kibana_sample_data_ecommerce` ind
 
 ::::
 
-The sample data includes the following [field data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html):
+The sample data includes the following [field data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md):
 
-* [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) and [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) for text fields
-  * Most `text` fields have a `.keyword` subfield for exact matching using [multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html)
+* [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) and [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) for text fields
+  * Most `text` fields have a `.keyword` subfield for exact matching using [multi-fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md)
 
-* [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) for date fields
-* 3 [numeric](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html) types:
+* [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) for date fields
+* 3 [numeric](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) types:
   * `integer` for whole numbers
   * `long` for large whole numbers
   * `half_float` for floating-point numbers
 
-* [`geo_point`](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) for geographic coordinates
-* [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) for nested structures such as `products`, `geoip`, `event`
+* [`geo_point`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) for geographic coordinates
+* [`object`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md) for nested structures such as `products`, `geoip`, `event`
 
 Now that we understand the structure of our sample data, let’s start analyzing it.
 
@@ -290,7 +290,7 @@ Let’s start by calculating important metrics about orders and customers.
 
 ### Get average order size [aggregations-tutorial-order-value]
 
-Calculate the average order value across all orders in the dataset using the [`avg`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-avg-aggregation.html) aggregation.
+Calculate the average order value across all orders in the dataset using the [`avg`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-avg-aggregation.md) aggregation.
 
 ```console
 GET kibana_sample_data_ecommerce/_search
@@ -347,7 +347,7 @@ GET kibana_sample_data_ecommerce/_search
 
 ### Get multiple order statistics at once [aggregations-tutorial-order-stats]
 
-Calculate multiple statistics about orders in one request using the [`stats`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html) aggregation.
+Calculate multiple statistics about orders in one request using the [`stats`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-stats-aggregation.md) aggregation.
 
 ```console
 GET kibana_sample_data_ecommerce/_search
@@ -401,7 +401,7 @@ Let’s group orders in different ways to understand sales patterns.
 
 ### Break down sales by category [aggregations-tutorial-category-breakdown]
 
-Group orders by category to see which product categories are most popular, using the [`terms`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) aggregation.
+Group orders by category to see which product categories are most popular, using the [`terms`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) aggregation.
 
 ```console
 GET kibana_sample_data_ecommerce/_search
@@ -486,7 +486,7 @@ GET kibana_sample_data_ecommerce/_search
 
 ### Track daily sales patterns [aggregations-tutorial-daily-sales]
 
-Group orders by day to track daily sales patterns using the [`date_histogram`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html) aggregation.
+Group orders by day to track daily sales patterns using the [`date_histogram`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md) aggregation.
 
 ```console
 GET kibana_sample_data_ecommerce/_search
@@ -508,7 +508,7 @@ GET kibana_sample_data_ecommerce/_search
 1. Descriptive name for the time-series aggregation results.
 2. The `date_histogram` aggregation groups documents into time-based buckets, similar to terms aggregation but for dates.
 3. Uses [calendar and fixed time intervals](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html#calendar_and_fixed_intervals) to handle months with different lengths. `"day"` ensures consistent daily grouping regardless of timezone.
-4. Formats dates in response using [date patterns](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html) (e.g. "yyyy-MM-dd"). Refer to [date math expressions](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math) for additional options.
+4. Formats dates in response using [date patterns](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md) (e.g. "yyyy-MM-dd"). Refer to [date math expressions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math) for additional options.
 5. When `min_doc_count` is 0, returns buckets for days with no orders, useful for continuous time series visualization.
 
 ::::{dropdown} Example response
@@ -705,7 +705,7 @@ GET kibana_sample_data_ecommerce/_search
 
 ## Combine metrics with groupings [aggregations-tutorial-combined-analysis]
 
-Now let’s calculate [metrics](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html) within each group to get deeper insights.
+Now let’s calculate [metrics](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/metrics.md) within each group to get deeper insights.
 
 ### Compare category performance [aggregations-tutorial-category-metrics]
 
@@ -827,7 +827,7 @@ GET kibana_sample_data_ecommerce/_search
 ```
 
 1. Daily revenue
-2. Uses the [`cardinality`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-cardinality-aggregation.html) aggregation to count unique customers per day
+2. Uses the [`cardinality`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-cardinality-aggregation.md) aggregation to count unique customers per day
 3. Average number of items per order
 
 ::::{dropdown} Example response
@@ -1297,11 +1297,11 @@ GET kibana_sample_data_ecommerce/_search
 
 ## Track trends and patterns [aggregations-tutorial-trends]
 
-You can use [pipeline aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html) on the results of other aggregations. Let’s analyze how metrics change over time.
+You can use [pipeline aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/pipeline.md) on the results of other aggregations. Let’s analyze how metrics change over time.
 
 ### Smooth out daily fluctuations [aggregations-tutorial-moving-average]
 
-Moving averages help identify trends by reducing day-to-day noise in the data. Let’s observe sales trends more clearly by smoothing daily revenue variations, using the [Moving Function](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-movfn-aggregation.html) aggregation.
+Moving averages help identify trends by reducing day-to-day noise in the data. Let’s observe sales trends more clearly by smoothing daily revenue variations, using the [Moving Function](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-movfn-aggregation.md) aggregation.
 
 ```console
 GET kibana_sample_data_ecommerce/_search
@@ -1724,7 +1724,7 @@ Notice how the smoothed values lag behind the actual values - this is because th
 
 ### Track running totals [aggregations-tutorial-cumulative]
 
-Track running totals over time using the [`cumulative_sum`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-cumulative-sum-aggregation.html) aggregation.
+Track running totals over time using the [`cumulative_sum`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-cumulative-sum-aggregation.md) aggregation.
 
 ```console
 GET kibana_sample_data_ecommerce/_search

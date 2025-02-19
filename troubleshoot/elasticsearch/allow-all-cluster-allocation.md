@@ -6,7 +6,7 @@ mapped_pages:
 
 # Allow Elasticsearch to allocate the data in the system [allow-all-cluster-allocation]
 
-The allocation of data in an {{es}} deployment can be controlled using the [enable cluster allocation configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-enable). In certain circumstances users might want to temporarily disable or restrict the allocation of data in the system.
+The allocation of data in an {{es}} deployment can be controlled using the [enable cluster allocation configuration](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable). In certain circumstances users might want to temporarily disable or restrict the allocation of data in the system.
 
 Forgetting to re-allow all data allocations can lead to unassigned shards.
 

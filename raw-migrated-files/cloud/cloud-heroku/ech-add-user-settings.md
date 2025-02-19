@@ -35,7 +35,7 @@ Elasticsearch Add-On for Heroku supports the following `elasticsearch.yml` setti
 The following general settings are supported:
 
 $$$http-cors-settings$$$`http.cors.*`
-:   Enables cross-origin resource sharing (CORS) settings for the [HTTP module](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html).
+:   Enables cross-origin resource sharing (CORS) settings for the [HTTP module](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md).
 
     ::::{note}
     If your use case depends on the ability to receive CORS requests and you have a cluster that was provisioned prior to January 25th 2019, you must manually set `http.cors.enabled` to `true` and allow a specific set of hosts with `http.cors.allow-origin`. Applying these changes in your Elasticsearch configuration  allows cross-origin resource sharing requests.
@@ -61,7 +61,7 @@ $$$http-cors-settings$$$`http.cors.*`
 :   To learn more on how to configure reindex SSL user settings, check [configuring reindex SSL parameters](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
 
 `script.painless.regex.enabled`
-:   Enables [regular expressions](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-walkthrough.html#modules-scripting-painless-regex) for the Painless scripting language.
+:   Enables [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/brief-painless-walkthrough.md#modules-scripting-painless-regex) for the Painless scripting language.
 
 `action.auto_create_index`
 :   [Automatically create index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) if it doesn’t already exist.
@@ -94,7 +94,7 @@ $$$http-cors-settings$$$`http.cors.*`
 The following circuit breaker settings are supported:
 
 `indices.breaker.total.limit`
-:   Configures [the parent circuit breaker settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#parent-circuit-breaker).
+:   Configures [the parent circuit breaker settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker).
 
 `indices.breaker.fielddata.limit`
 :   Configures [the limit for the fielddata breaker](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#fielddata-circuit-breaker).
@@ -114,7 +114,7 @@ The following circuit breaker settings are supported:
 The following indexing pressure settings are supported:
 
 `indexing_pressure.memory.limit`
-:   Configures [the indexing pressure settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-indexing-pressure.html#indexing-pressure-settings).
+:   Configures [the indexing pressure settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/indexing-pressure-settings.md#indexing-pressure-settings).
 
 
 ### X-Pack [echx_pack]
@@ -128,28 +128,28 @@ The following indexing pressure settings are supported:
 #### All supported versions [echall_supported_versions]
 
 `xpack.ml.inference_model.time_to_live`
-:   Sets the duration of time that the trained models are cached. Check [{{ml-cap}} settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html).
+:   Sets the duration of time that the trained models are cached. Check [{{ml-cap}} settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md).
 
 `xpack.security.loginAssistanceMessage`
 :   Adds a message to the login screen. Useful for displaying corporate messages.
 
 `xpack.security.authc.anonymous.*`
-:   To learn more on how to enable anonymous access, check [Enabling anonymous access](https://www.elastic.co/guide/en/elasticsearch/reference/current/anonymous-access.html)
+:   To learn more on how to enable anonymous access, check [Enabling anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md)
 
 `xpack.notification.slack`
-:   Configures [Slack notification settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-slack.html#actions-slack). Note that you need to add `secure_url` as a [secret value to the keystore](../../../deploy-manage/security/secure-settings.md).
+:   Configures [Slack notification settings](/explore-analyze/alerts-cases/watcher/actions-slack.md). Note that you need to add `secure_url` as a [secret value to the keystore](../../../deploy-manage/security/secure-settings.md).
 
 `xpack.notification.pagerduty`
-:   Configures [PagerDuty notification settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-pagerduty.html#configuring-pagerduty).
+:   Configures [PagerDuty notification settings](/explore-analyze/alerts-cases/watcher/actions-pagerduty.md#configuring-pagerduty).
 
 `xpack.watcher.trigger.schedule.engine`
-:   Defines when the watch should start, based on date and time [Learn more](https://www.elastic.co/guide/en/elasticsearch/reference/current/trigger-schedule.html).
+:   Defines when the watch should start, based on date and time [Learn more](/explore-analyze/alerts-cases/watcher/trigger-schedule.md).
 
 `xpack.notification.email.html.sanitization.*`
-:   Enables [email notification settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html) to sanitize HTML elements in emails that are sent.
+:   Enables [email notification settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md) to sanitize HTML elements in emails that are sent.
 
 `xpack.monitoring.collection.interval`
-:   Controls [how often data samples are collected](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#monitoring-collection-settings).
+:   Controls [how often data samples are collected](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
 
 `xpack.monitoring.collection.min_interval_seconds`
 :   Specifies the minimum number of seconds that a time bucket in a chart can represent. If you modify the `xpack.monitoring.collection.interval`, use the same value in this setting.
@@ -197,7 +197,7 @@ The following search settings are supported:
 The following disk-based allocation settings are supported:
 
 `cluster.routing.allocation.disk.threshold_enabled`
-:   Enable or disable [disk allocation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation) decider and defaults to `true`.
+:   Enable or disable [disk allocation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) decider and defaults to `true`.
 
 `cluster.routing.allocation.disk.watermark.low`
 :   Configures [disk-based shard allocation’s low watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).

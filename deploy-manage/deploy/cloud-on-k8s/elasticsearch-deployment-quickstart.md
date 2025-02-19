@@ -8,7 +8,7 @@ mapped_pages:
 
 # Deploy an Elasticsearch cluster [k8s-deploy-elasticsearch]
 
-To deploy a simple [{{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html) cluster specification, with one {{es}} node:
+To deploy a simple [{{es}}](/solutions/search/get-started.md) cluster specification, with one {{es}} node:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -107,7 +107,7 @@ NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 quickstart-es-http   ClusterIP   10.15.251.145   <none>        9200/TCP   34m
 ```
 
-In order to make requests to the [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html):
+In order to make requests to the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md):
 
 1. Get the credentials.
 

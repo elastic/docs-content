@@ -20,9 +20,9 @@ The available variables differ by rule type, however there are some common varia
 
 Some cases exist where the variable values will be "escaped" when used in a context where escaping is needed. For example:
 
-* For the [email connector](https://www.elastic.co/guide/en/kibana/current/email-action-type.html), the `message` action configuration property escapes any characters that would be interpreted as Markdown.
-* For the [Slack connector](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html), the `message` action configuration property escapes any characters that would be interpreted as Slack Markdown.
-* For the [Webhook connector](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html), the `body` action configuration property escapes any characters that are invalid in JSON string values.
+* For the [email connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md), the `message` action configuration property escapes any characters that would be interpreted as Markdown.
+* For the [Slack connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md), the `message` action configuration property escapes any characters that would be interpreted as Slack Markdown.
+* For the [Webhook connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md), the `body` action configuration property escapes any characters that are invalid in JSON string values.
 
 Mustache also supports "triple braces" of the form `{{{variable name}}}`, which indicates no escaping should be done at all. Use this form with caution, since it could end up rendering the variable content such that the resulting parameter is invalid or formatted incorrectly.
 

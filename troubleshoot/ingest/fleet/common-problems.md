@@ -18,7 +18,7 @@ We have collected the most common known problems and listed them here. If your p
 
 Have a question? Read our [FAQ](frequently-asked-questions.md), or contact us in the [discuss forum](https://discuss.elastic.co/). Your feedback is valuable to us.
 
-Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](https://www.elastic.co/guide/en/fleet/current/debug-standalone-agents.html).
+Running {{agent}} standalone? Also refer to [Debug standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/debug-standalone-agents.md).
 
 
 ## Troubleshooting contents [troubleshooting-contents]
@@ -64,7 +64,7 @@ Find troubleshooting information for {{fleet}}, {{fleet-server}}, and {{agent}} 
 
 In {{fleet}}, if you delete an {{agent}} policy that is associated with one or more inactive enrolled agents, when the agent returns back to a `Healthy` or `Offline` state, it cannot be unenrolled. Attempting to unenroll the agent results in an `Error unenrolling agent` message, and the unenrollment fails.
 
-To resolve this problem, you can use the [{{kib}} {{fleet}} APIs](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html) to force unenroll the agent.
+To resolve this problem, you can use the [{{kib}} {{fleet}} APIs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md) to force unenroll the agent.
 
 To uninstall a single {{agent}}:
 
@@ -100,7 +100,7 @@ For details about the error and how to resolve it, refer to the section `Runtime
 
 ## {{agent}}s hosted on {{ecloud}} are stuck in `Updating` or `Offline` [agents-in-cloud-stuck-at-updating]
 
-In {{ecloud}}, after [upgrading](https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html) {{fleet-server}} and its integration policies, agents enrolled in the {{ecloud}} agent policy may experience issues updating. To resolve this problem:
+In {{ecloud}}, after [upgrading](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-integration.md) {{fleet-server}} and its integration policies, agents enrolled in the {{ecloud}} agent policy may experience issues updating. To resolve this problem:
 
 1. In a terminal window, run the following `cURL` request, providing your {{kib}} superuser credentials to reset the {{ecloud}} agent policy.
 
@@ -180,7 +180,7 @@ To enable {{fleet}} and set up {{fleet-server}} on a self-managed cluster:
 
     1. Copy the Elastic user name to the {{kib}} configuration file.
     2. Restart {{kib}}.
-    3. Follow the documented steps for setting up a self-managed {{fleet-server}}. For more information, refer to [What is {{fleet-server}}?](https://www.elastic.co/guide/en/fleet/current/fleet-server.html).
+    3. Follow the documented steps for setting up a self-managed {{fleet-server}}. For more information, refer to [What is {{fleet-server}}?](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md).
 
 
 
@@ -199,7 +199,7 @@ In air-gapped environments, you may encounter the following error if you’re us
 {"type":"log","@timestamp":"2022-03-02T09:58:36-05:00","tags":["error","plugins","fleet"],"pid":58716,"message":"Error connecting to package registry: request to https://customer.server.name:8443/categories?experimental=true&include_policy_templates=true&kibana.version=7.17.0 failed, reason: self signed certificate in certificate chain"}
 ```
 
-To fix this problem, add your CA certificate file path to the {{kib}} startup file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information about this in [TLS configuration of the {{package-registry}}](https://www.elastic.co/guide/en/fleet/current/air-gapped.html#air-gapped-tls) section.
+To fix this problem, add your CA certificate file path to the {{kib}} startup file by defining the `NODE_EXTRA_CA_CERTS` environment variable. More information about this in [TLS configuration of the {{package-registry}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md#air-gapped-tls) section.
 
 
 ## {{fleet}} in {{kib}} crashes [fleet-app-crashes]
@@ -232,7 +232,7 @@ Traffic between {{agent}}s and {{fleet-server}} over HTTPS will be encrypted; yo
 
 Allowing {{fleet-server}} to generate self-signed certificates is useful to get things running for development, but not recommended in a production environment.
 
-For more information, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](https://www.elastic.co/guide/en/fleet/current/secure-connections.html).
+For more information, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure-connections.md).
 
 
 ## {{agent}} enrollment fails on the host with `x509: cannot validate certificate for x.x.x.x because it doesn't contain any IP SANs` message [es-enrollment-certs]
@@ -298,7 +298,7 @@ When creating an issue or sending a support forum communication, this section ca
     ```
 
     ::::{note}
-    Both of the above commands are accessible via Windows or macOS with their OS-specific slight variation in how you call them. If needed, please refer to [*Install {{agent}}s*](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html) for examples of how to adjust them.
+    Both of the above commands are accessible via Windows or macOS with their OS-specific slight variation in how you call them. If needed, please refer to [*Install {{agent}}s*](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) for examples of how to adjust them.
     ::::
 
 
@@ -431,7 +431,7 @@ For information on where to find agent logs, refer to our [FAQ](frequently-asked
 
 ## {{agent}} is stuck in status `Updating` [fleet-agent-stuck-on-updating]
 
-Beginning in {{stack}} version 8.11, a stuck {{agent}} upgrade should be detected automatically, and you can [restart the upgrade](https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html#restart-upgrade-single) from {{fleet}}.
+Beginning in {{stack}} version 8.11, a stuck {{agent}} upgrade should be detected automatically, and you can [restart the upgrade](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md#restart-upgrade-single) from {{fleet}}.
 
 
 ## {{fleet-server}} is running and healthy with data, but other Agents cannot use it to connect to {{es}} [secondary-agent-not-connecting]
@@ -491,7 +491,7 @@ If you try to upgrade an integration policy that is several versions old, there 
 
 After [upgrading the integration](https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html):
 
-1. [Create a new policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#create-a-policy).
+1. [Create a new policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy).
 2. [Add the integration to the policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#add-integration). The newer version is automatically used.
 3. [Apply the policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#apply-a-policy) to an {{agent}}.
 
@@ -713,7 +713,7 @@ To resolve the problem, allocate additional memory to the agent and then restart
 
 ## Error when running {{agent}} commands with `sudo` [agent-sudo-error]
 
-On Linux systems, when you install {{agent}} [without administrative privileges](https://www.elastic.co/guide/en/fleet/current/elastic-agent-unprivileged.html), that is, using the `--unprivileged` flag, {{agent}} commands should not be run with `sudo`. Doing so may result in an error due to the agent not having the required privileges.
+On Linux systems, when you install {{agent}} [without administrative privileges](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-unprivileged.md), that is, using the `--unprivileged` flag, {{agent}} commands should not be run with `sudo`. Doing so may result in an error due to the agent not having the required privileges.
 
 For example, when you run {{agent}} with the `--unprivileged` flag, running the `elastic-agent inspect` command will result in an error like the following:
 
@@ -749,7 +749,7 @@ The previous command generates a local file named `elastic_agent_installation_co
 * {{agent}} Standalone deployed as a `DaemonSet`
 * [Kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) deployed as a `Deployment`
 
-The content of this file is equivalent to what you’d obtain by following the [Run {{agent}} Standalone on Kubernetes](https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html) steps, with the exception that `kube-state-metrics` is not included in the standalone method.
+The content of this file is equivalent to what you’d obtain by following the [Run {{agent}} Standalone on Kubernetes](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/running-on-kubernetes-standalone.md) steps, with the exception that `kube-state-metrics` is not included in the standalone method.
 
 **Possible issues**
 
@@ -805,7 +805,7 @@ If the installation is correct and all resources are deployed, but data is not f
 
     As described in [Run {{agent}} Standalone on Kubernetes](https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
 
-    1. Determine which Pod owns the [leadership](https://www.elastic.co/guide/en/fleet/current/kubernetes_leaderelection-provider.html) `lease` in the cluster, with:
+    1. Determine which Pod owns the [leadership](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/kubernetes_leaderelection-provider.md) `lease` in the cluster, with:
 
         ```sh
         kubectl get lease -n kube-system elastic-agent-cluster-leader
@@ -831,7 +831,7 @@ If the installation is correct and all resources are deployed, but data is not f
 
 * Performance problems:
 
-    Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to [Scaling {{agent}} on {{k8s}}](https://www.elastic.co/guide/en/fleet/current/scaling-on-kubernetes.html) for more details about the needed resources.
+    Monitor the CPU and Memory usage of the agents Pods and adjust the manifest requests and limits as needed. Refer to [Scaling {{agent}} on {{k8s}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/scaling-on-kubernetes.md) for more details about the needed resources.
 
 
 Extra resources for {{agent}} on Kubernetes troubleshooting and information:

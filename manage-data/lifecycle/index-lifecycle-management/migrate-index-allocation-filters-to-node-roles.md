@@ -5,7 +5,7 @@ mapped_pages:
 
 # Migrate index allocation filters to node roles [migrate-index-allocation-filters]
 
-If you currently use [custom node attributes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#custom-node-attributes) and [attribute-based allocation filters](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to move indices through [data tiers](../data-tiers.md) in a [hot-warm-cold architecture](https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management), we recommend that you switch to using the built-in node roles and automatic [data tier allocation](../data-tiers.md#data-tier-allocation). Using node roles enables {{ilm-init}} to automatically move indices between data tiers.
+If you currently use [custom node attributes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes) and [attribute-based allocation filters](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to move indices through [data tiers](../data-tiers.md) in a [hot-warm-cold architecture](https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management), we recommend that you switch to using the built-in node roles and automatic [data tier allocation](../data-tiers.md#data-tier-allocation). Using node roles enables {{ilm-init}} to automatically move indices between data tiers.
 
 ::::{note} 
 While we recommend relying on automatic data tier allocation to manage your data in a hot-warm-cold architecture, you can still use attribute-based allocation filters to control shard allocation for other purposes.
@@ -68,7 +68,7 @@ node.roles [ data_hot, data_content ]
 
 ### Remove custom allocation settings from existing {{ilm-init}} policies [remove-custom-allocation-settings] 
 
-Update the allocate action for each lifecycle phase to remove the attribute-based allocation settings. {{ilm-init}} will inject a [migrate](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-migrate.html) action into each phase to automatically transition the indices through the data tiers.
+Update the allocate action for each lifecycle phase to remove the attribute-based allocation settings. {{ilm-init}} will inject a [migrate](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) action into each phase to automatically transition the indices through the data tiers.
 
 If the allocate action does not set the number of replicas, remove the allocate action entirely. (An empty allocate action is invalid.)
 
@@ -100,7 +100,7 @@ To completely avoid the issues that raise when mixing the tier preference and cu
 To enable {{ilm-init}} to move an *existing* managed index through the data tiers, update the index settings to:
 
 1. Remove the custom allocation filter by setting it to `null`.
-2. Set the [tier preference](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tier-shard-filtering.html#tier-preference-allocation-filter).
+2. Set the [tier preference](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation-settings.md#tier-preference-allocation-filter).
 
 For example, if your old template set the `data` attribute to `hot` to allocate shards to the hot tier, set the `data` attribute to `null` and set the `_tier_preference` to `data_hot`.
 

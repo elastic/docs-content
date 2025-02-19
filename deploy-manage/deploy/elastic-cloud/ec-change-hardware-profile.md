@@ -115,7 +115,7 @@ Replace those values with your actual API key and deployment ID in the following
                     "region":"gcp-us-central1",
         ```
 
-3. Check the [hardware profiles available](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) for the region that your deployment is in and find the template ID of the deployment hardware profile you’d like to use.
+3. Check the [hardware profiles available](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) for the region that your deployment is in and find the template ID of the deployment hardware profile you’d like to use.
 
     ::::{tip}
     If you wish to update your hardware profile to the latest version available for that same profile, locate the template ID corresponding to the `deployment_template` you retrieved at step 2, but without the version information. For example, if your deployment’s current hardware profile is `gcp-cpu-optimized-v5`, use `gcp-cpu-optimized` as a template ID to update your deployment.
@@ -143,7 +143,7 @@ Replace those values with your actual API key and deployment ID in the following
 
 ### Storage optimized [ec-profiles-storage]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. Use this profile if you are new to Elasticsearch or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+Your Elasticsearch data nodes are optimized for high I/O throughput. Use this profile if you are new to Elasticsearch or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 

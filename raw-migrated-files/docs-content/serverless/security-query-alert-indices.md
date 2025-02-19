@@ -1,6 +1,6 @@
 # Query alert indices [security-query-alert-indices]
 
-This page explains how you should query alert indices, for example, when building rule queries, custom dashboards, or visualizations. For more information about alert event field definitions, review the [Alert schema](https://www.elastic.co/guide/en/serverless/current/security-alert-schema.html).
+This page explains how you should query alert indices, for example, when building rule queries, custom dashboards, or visualizations. For more information about alert event field definitions, review the [Alert schema](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/alert-schema.md).
 
 
 ## Alert index aliases [security-query-alert-indices-alert-index-aliases] 

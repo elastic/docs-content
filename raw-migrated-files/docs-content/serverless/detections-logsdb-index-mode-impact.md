@@ -2,7 +2,7 @@
 
 Logsdb is enabled by default for {{serverless-full}}. This topic explains the impact of using logsdb index mode with {{sec-serverless}}.
 
-With logsdb index mode, the original `_source` field is not stored in the index but can be reconstructed using [synthetic `_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source).
+With logsdb index mode, the original `_source` field is not stored in the index but can be reconstructed using [synthetic `_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
 When the `_source` is reconstructed, [modifications](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source-modifications) are possible. Therefore, there could be a mismatch between users' expectations and how fields are formatted.
 

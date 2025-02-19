@@ -103,7 +103,7 @@ The following list contains the available client settings. Those that must be st
 :   The password to connect to the `proxy.host` with.
 
 `read_timeout`
-:   ([time value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units)) The maximum time {{es}} will wait to receive the next byte of data over an established, open connection to the repository before it closes the connection. The default value is 50 seconds.
+:   ([time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The maximum time {{es}} will wait to receive the next byte of data over an established, open connection to the repository before it closes the connection. The default value is 50 seconds.
 
 `max_connections`
 :   The maximum number of concurrent connections to S3. The default value is `50`.
@@ -175,7 +175,7 @@ The following settings are supported:
 :   When set to `true` metadata files are stored in compressed format. This setting doesn’t affect index files that are already compressed by default. Defaults to `true`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
 :   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
@@ -385,7 +385,7 @@ You can perform some basic checks of the suitability of your storage system usin
 
 Most storage systems can be configured to log the details of their interaction with {{es}}. If you are investigating a suspected incompatibility with AWS S3, it is usually simplest to collect these logs and provide them to the supplier of your storage system for further analysis. If the incompatibility is not clear from the logs emitted by the storage system, configure {{es}} to log every request it makes to the S3 API by [setting the logging level](../../monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md#configuring-logging-levels) of the `com.amazonaws.request` logger to `DEBUG`.
 
-To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
+To prevent leaking sensitive information such as credentials and keys in logs, {{es}} rejects configuring this logger at high verbosity unless [insecure network trace logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-rest-request-tracer) is enabled. To do so, you must explicitly enable it on each node by setting the system property `es.insecure_network_trace_enabled` to `true`.
 
 Once enabled, you can configure the `com.amazonaws.request` logger:
 
@@ -398,7 +398,7 @@ PUT /_cluster/settings
 }
 ```
 
-Collect the Elasticsearch logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-../../monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
+Collect the Elasticsearch logs covering the time period of the failed analysis from all nodes in your cluster and share them with the supplier of your storage system along with the analysis response so they can use them to determine the problem. See the [AWS Java SDK](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/java-dg-../../monitor/logging-configuration/elasticsearch-log4j-configuration-self-managed.md) documentation for further information, including details about other loggers that can be used to obtain even more verbose logs. When you have finished collecting the logs needed by your supplier, set the logger settings back to `null` to return to the default logging configuration and disable insecure network trace logging again. See [Logger](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-logger) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) for more information.
 
 
 ## Linearizable register implementation [repository-s3-linearizable-registers]

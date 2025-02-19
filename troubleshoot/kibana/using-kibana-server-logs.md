@@ -41,7 +41,7 @@ logging.loggers:
 ```
 
 ::::{warning}
-Kibana’s `file` appender is configured to produce logs in [ECS JSON](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html) format. It’s the only format that includes the meta information necessary for [log correlation](https://www.elastic.co/guide/en/apm/agent/nodejs/current/logs.html) out-of-the-box.
+Kibana’s `file` appender is configured to produce logs in [ECS JSON](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) format. It’s the only format that includes the meta information necessary for [log correlation](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/logs.md) out-of-the-box.
 ::::
 
 
@@ -71,6 +71,6 @@ Open {{kib}} Logs and search for an operation you are interested in. For example
 }
 ```
 
-You are interested in the [trace.id](https://www.elastic.co/guide/en/ecs/current/ecs-tracing.html#field-trace-id) field, which is a unique identifier of a trace. The `trace.id` provides a way to group multiple events, like transactions, which belong together. You can search for `"trace":{"id":"9b99131a6f66587971ef085ef97dfd07"}` to get all the logs that belong to the same trace. This enables you to see how many {{es}} requests were triggered during the `9b99131a6f66587971ef085ef97dfd07` trace, what they looked like, what {{es}} endpoints were hit, and so on.
+You are interested in the [trace.id](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-tracing.md#field-trace-id) field, which is a unique identifier of a trace. The `trace.id` provides a way to group multiple events, like transactions, which belong together. You can search for `"trace":{"id":"9b99131a6f66587971ef085ef97dfd07"}` to get all the logs that belong to the same trace. This enables you to see how many {{es}} requests were triggered during the `9b99131a6f66587971ef085ef97dfd07` trace, what they looked like, what {{es}} endpoints were hit, and so on.
 
 

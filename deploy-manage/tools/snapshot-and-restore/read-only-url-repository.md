@@ -27,7 +27,7 @@ PUT _snapshot/my_read_only_url_repository
 ## Repository settings [read-only-url-repository-settings]
 
 `chunk_size`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum size of files in snapshots. In snapshots, files larger than this are broken down into chunks of this size or smaller. Defaults to `null` (unlimited file size).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum size of files in snapshots. In snapshots, files larger than this are broken down into chunks of this size or smaller. Defaults to `null` (unlimited file size).
 
 `http_max_retries`
 :   (Optional, integer) Maximum number of retries for `http` and `https` URLs. Defaults to `5`.
@@ -42,7 +42,7 @@ PUT _snapshot/my_read_only_url_repository
 :   (Optional, integer) Maximum number of snapshots the repository can contain. Defaults to `Integer.MAX_VALUE`, which is `2^31-1` or `2147483647`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
 :   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
@@ -56,7 +56,7 @@ PUT _snapshot/my_read_only_url_repository
 * `https`
 * `jar`
 
-URLs using the `http`, `https`, or `ftp` protocols must be explicitly allowed with the [`repositories.url.allowed_urls`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-settings.html#repositories-url-allowed) cluster setting. This setting supports wildcards in the place of a host, path, query, or fragment in the URL.
+URLs using the `http`, `https`, or `ftp` protocols must be explicitly allowed with the [`repositories.url.allowed_urls`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#repositories-url-allowed) cluster setting. This setting supports wildcards in the place of a host, path, query, or fragment in the URL.
 
 URLs using the `file` protocol must point to the location of a shared filesystem accessible to all master and data nodes in the cluster. This location must be registered in the `path.repo` setting. You don’t need to register URLs using the `ftp`, `http`, `https`, or `jar` protocols in the `path.repo` setting.
 

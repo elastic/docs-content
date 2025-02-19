@@ -52,7 +52,7 @@ xpack.security.authc.token.enabled: true
 
 OpenID Connect based authentication is enabled by configuring the appropriate realm within the authentication chain for {{es}}.
 
-This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [OpenID Connect realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-oidc-settings). This guide will explore the most common settings.
+This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [OpenID Connect realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings). This guide will explore the most common settings.
 
 Create an OpenID Connect (the realm type is `oidc`) realm in your `elasticsearch.yml` file similar to what is shown below:
 

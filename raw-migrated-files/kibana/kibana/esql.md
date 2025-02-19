@@ -17,7 +17,7 @@ You can also use ES|QL queries to create panels on your dashboards, create enric
 For more detailed information about {{esql}} in Kibana, refer to [Using {{esql}} in {{kib}}](../../../explore-analyze/query-filter/languages/esql-kibana.md).
 
 ::::{note}
-{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html).
+{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
 
 This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved Discover sessions and visualizations.
 

@@ -26,7 +26,7 @@ If you lose this index, all scheduled alerts and actions are lost.
 
 {{kib}} background tasks are managed as follows:
 
-* An {{es}} task index is polled for overdue tasks at 3-second intervals. You can change this interval using the [`xpack.task_manager.poll_interval`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) setting.
+* An {{es}} task index is polled for overdue tasks at 3-second intervals. You can change this interval using the [`xpack.task_manager.poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.
 * Tasks are claimed by updating them in the {{es}} index, using optimistic concurrency control to prevent conflicts. Each {{kib}} instance can run a maximum of 10 concurrent tasks, so a maximum of 10 tasks are claimed each interval.
 * Tasks are run on the {{kib}} server.
 * Task Manager ensures that tasks:

@@ -11,7 +11,7 @@ Use the information in this section to troubleshoot common problems and find ans
 
 ## Logging [ruby-ts-logging] 
 
-The client provides several options for logging that can help when things go wrong. Check out the extensive documentation on [Logging](https://www.elastic.co/guide/en/elasticsearch/client/ruby-api/current/advanced-config.html#logging).
+The client provides several options for logging that can help when things go wrong. Check out the extensive documentation on [Logging](asciidocalypse://docs/elasticsearch-ruby/docs/reference/elasticsearch/elasticsearch-client-ruby-api/advanced-config.md#logging).
 
 If you are having trouble sending a request to {{es}} with the client, we suggest enabling `tracing` on the client and testing the cURL command that appears in your terminal:
 

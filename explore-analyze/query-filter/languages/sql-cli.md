@@ -83,7 +83,7 @@ fetch separator set to "---------------------"
 ```
 
 `lenient = <boolean>` (default `false`)
-:   If `false`, Elasticsearch SQL returns an error for fields containing [array values](https://www.elastic.co/guide/en/elasticsearch/reference/current/array.html). If `true`, Elasticsearch SQL returns the first value from the array with no guarantee of consistent results.
+:   If `false`, Elasticsearch SQL returns an error for fields containing [array values](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/array.md). If `true`, Elasticsearch SQL returns the first value from the array with no guarantee of consistent results.
 
 ```sql
 sql> lenient = true;

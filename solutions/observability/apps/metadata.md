@@ -13,7 +13,7 @@ Metadata can enrich your events and make application performance monitoring even
 Labels add **indexed** information to transactions, spans, and errors. Indexed means the data is searchable and aggregatable in {{es}}. Add additional key-value pairs to define multiple labels.
 
 * Indexed: Yes
-* {{es}} type: [object](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html)
+* {{es}} type: [object](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md)
 * {{es}} field: `labels`
 * Applies to: [Transactions](transactions.md) | [Spans](spans.md) | [Errors](errors.md)
 
@@ -27,14 +27,14 @@ Avoid defining too many user-specified labels. Defining too many unique fields i
 
 ### Agent API reference [_agent_api_reference] 
 
-* Go: [`SetLabel`](https://www.elastic.co/guide/en/apm/agent/go/current/api.html#context-set-label)
-* Java: [`setLabel`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction-add-tag)
-* .NET: [`SetLabel`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html#api-transaction-set-label)
-* Node.js: [`setLabel`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-add-labels)
-* PHP: [`Transaction` `setLabel`](https://www.elastic.co/guide/en/apm/agent/php/current/public-api.html#api-transaction-interface-set-label) | [`Span` `setLabel`](https://www.elastic.co/guide/en/apm/agent/php/current/public-api.html#api-span-interface-set-label)
-* Python: [`elasticapm.label()`](https://www.elastic.co/guide/en/apm/agent/python/current/api.html#api-label)
-* Ruby:  [`set_label`](https://www.elastic.co/guide/en/apm/agent/ruby/current/api.html#api-agent-set-label)
-* Rum: [`addLabels`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/agent-api.html#apm-add-labels)
+* Go: [`SetLabel`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#context-set-label)
+* Java: [`setLabel`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-transaction-add-tag)
+* .NET: [`SetLabel`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#api-transaction-set-label)
+* Node.js: [`setLabel`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-add-labels)
+* PHP: [`Transaction` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/public-api.md#api-transaction-interface-set-label) | [`Span` `setLabel`](https://www.elastic.co/guide/en/apm/agent/php/current/public-api.html#api-span-interface-set-label)
+* Python: [`elasticapm.label()`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/api-reference.md#api-label)
+* Ruby:  [`set_label`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-set-label)
+* Rum: [`addLabels`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/agent-api.md#apm-add-labels)
 
 
 ## Custom context [apm-data-model-custom] 
@@ -72,7 +72,7 @@ Setting a circular object, a large object, or a non JSON serializable object can
 User context adds **indexed** user information to transactions and errors. Indexed means the data is searchable and aggregatable in {{es}}.
 
 * Indexed: Yes
-* {{es}} type: [keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html)
+* {{es}} type: [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md)
 * {{es}} fields: `user.email` | `user.name` | `user.id`
 * Applies to: [Transactions](transactions.md) | [Errors](errors.md)
 

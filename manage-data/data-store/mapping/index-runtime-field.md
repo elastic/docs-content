@@ -82,7 +82,7 @@ PUT my-index-000001/_mapping
 }
 ```
 
-You retrieve the calculated values using the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API:
+You retrieve the calculated values using the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API:
 
 ```console
 GET my-index-000001/_search

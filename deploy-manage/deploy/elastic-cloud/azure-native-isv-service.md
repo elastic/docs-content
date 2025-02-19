@@ -139,7 +139,7 @@ $$$azure-integration-pricing$$$What is the pricing for this offer?
 
 
 $$$azure-integration-regions$$$Which Azure regions are supported?
-:   Here is the [list of available Azure regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html#ec-azure_regions) supported in {{ecloud}}.
+:   Here is the [list of available Azure regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions) supported in {{ecloud}}.
 
 $$$azure-integration-subscription-levels$$$Which {{ecloud}} subscription levels are available?
 :   The subscription defaults to the Enterprise subscription, granting immediate access to advanced {{stack}} features like machine learning, and premium support response time SLAs. {{ecloud}} offers a number of different [subscription levels](https://elastic.co/pricing).
@@ -236,7 +236,7 @@ $$$azure-integration-cli-api$$$What other methods are available to deploy {{es}}
 
         * The {{ecloud}} [console](https://cloud.elastic.co?page=docs&placement=docs-body)
         * The {{ecloud}} [REST API](https://www.elastic.co/guide/en/cloud/current/ec-restful-api.html)
-        * The {{ecloud}} [command line tool](https://www.elastic.co/guide/en/ecctl/current/index.html)
+        * The {{ecloud}} [command line tool](asciidocalypse://docs/ecctl/docs/reference/cloud/ecctl/index.md)
         * The {{ecloud}} [Terraform provider](https://registry.terraform.io/providers/elastic/ec/latest/docs)
 
             Note that when you use any of the {{ecloud}} methods, the {{es}} deployment will not be available in Azure.
@@ -426,7 +426,7 @@ $$$azure-integration-vm-extensions$$$How can I monitor my Azure virtual machines
 
     **Managing the Elastic Agent VM extension**
 
-    Once installed on the virtual machine, you can manage Elastic Agent either from Fleet or locally on the host where it’s installed. We recommend managing the VM extension through Fleet, because it makes handling and upgrading the agents considerably easier. For more information on the Elastic Agent, check [Manage your Elastic Agents](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html).
+    Once installed on the virtual machine, you can manage Elastic Agent either from Fleet or locally on the host where it’s installed. We recommend managing the VM extension through Fleet, because it makes handling and upgrading the agents considerably easier. For more information on the Elastic Agent, check [Manage your Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md).
 
     **Operating system compatibility matrix**
 

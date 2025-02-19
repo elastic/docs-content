@@ -28,4 +28,4 @@ Sparse vector search with ELSER expands both documents and queries into weighted
    - Deploy and configure the ELSER model
    - Use the `sparse_vector` field type
    - See [this overview](../semantic-search.md#using-nlp-models) for implementation options
-2. Query the index using [`sparse_vector` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html).
+2. Query the index using [`sparse_vector` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-sparse-vector-query.md).

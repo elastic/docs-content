@@ -50,7 +50,7 @@ For each GeoJSON file you downloaded, complete the following steps:
 2. From the list of layer types, click **Upload file**.
 3. Using the File Picker, upload the GeoJSON file.
 
-    Depending on the geometry type of your features, this will auto-populate **Index type** with either [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html) and **Index name** with `<file name>`.
+    Depending on the geometry type of your features, this will auto-populate **Index type** with either [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md) and **Index name** with `<file name>`.
 
 4. Click **Import file**.
 

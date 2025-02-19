@@ -37,7 +37,7 @@ When you use only {{data-sources}}, you are able to:
 ::::{important}
 :name: tsvb-index-patterns-mode
 
-Creating **TSVB** visualizations with an {{es}} index string is deprecated and will be removed in a future release. By default, you create **TSVB** visualizations with only {{data-sources}}. To use an {{es}} index string, contact your administrator, or go to [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html) and set `metrics:allowStringIndices` to `true`.
+Creating **TSVB** visualizations with an {{es}} index string is deprecated and will be removed in a future release. By default, you create **TSVB** visualizations with only {{data-sources}}. To use an {{es}} index string, contact your administrator, or go to [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md) and set `metrics:allowStringIndices` to `true`.
 ::::
 
 

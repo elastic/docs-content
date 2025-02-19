@@ -59,15 +59,15 @@ apm-server.auth.secret_token: <secret-token>
 
 Each Elastic {{apm-agent}} has a configuration option to set the value of the secret token:
 
-* **Android agent**: [`secretToken`](https://www.elastic.co/guide/en/apm/agent/android/current/configuration.html)
-* **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-secret-token)
-* **iOS agent**: [`secretToken`](https://www.elastic.co/guide/en/apm/agent/swift/current/configuration.html#secretToken)
-* **Java agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-secret-token)
-* **.NET agent**: [`ELASTIC_APM_SECRET_TOKEN`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-reporter.html#config-secret-token)
-* **Node.js agent**: [`Secret Token`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#secret-token)
-* **PHP agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-secret-token)
-* **Python agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-secret-token)
-* **Ruby agent**: [`secret_token`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-secret-token)
+* **Android agent**: [`secretToken`](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/configuration.md)
+* **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-secret-token)
+* **iOS agent**: [`secretToken`](asciidocalypse://docs/apm-agent-ios/docs/reference/ingestion-tools/apm-agent-swift/configuration.md#secretToken)
+* **Java agent**: [`secret_token`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-reporter.md#config-secret-token)
+* **.NET agent**: [`ELASTIC_APM_SECRET_TOKEN`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-reporter.md#config-secret-token)
+* **Node.js agent**: [`Secret Token`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#secret-token)
+* **PHP agent**: [`secret_token`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-secret-token)
+* **Python agent**: [`secret_token`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-secret-token)
+* **Ruby agent**: [`secret_token`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-secret-token)
 
 In addition to setting the secret token, ensure the configured server URL uses `HTTPS` instead of `HTTP`:
 

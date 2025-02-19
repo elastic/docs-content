@@ -1,6 +1,6 @@
 # Enrich your data [ingest-enriching-data]
 
-You can use the [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) to add data from your existing indices to incoming documents during ingest.
+You can use the [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) to add data from your existing indices to incoming documents during ingest.
 
 For example, you can use the enrich processor to:
 

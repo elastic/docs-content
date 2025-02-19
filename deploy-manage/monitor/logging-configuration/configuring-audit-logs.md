@@ -15,7 +15,7 @@ When auditing security events, a single client request might generate multiple a
 
 {{es}} configuration options include:
 
-  * [{{es}} audited events settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#event-audit-settings): Use include and exclude filters to control the types of events that get logged.
+  * [{{es}} audited events settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md#event-audit-settings): Use include and exclude filters to control the types of events that get logged.
   * [{{es}} node information settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#node-audit-settings): Control whether to add or hide node information such as hostname or IP address in the audited events.
   * [{{es}} ignore policies settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#audit-event-ignore-policies): Use ignore policies for fine-grained control over which audit events are printed to the log file.
 
@@ -29,7 +29,7 @@ For a complete description of event details and format, refer to the following r
 
 ### Kibana auditing configuration
 
-To control the logs that are outputted by Kibana, you can use [{{kib}} ignore filters](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
+To control the logs that are outputted by Kibana, you can use [{{kib}} ignore filters](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#audit-logging-ignore-filters). These are a list of filters that determine which events should be excluded from the audit log.
 
 In self-managed systems, you can optionally configure audit logs location, and file/rolling file using [{{kib}} audit logging settings](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#audit-logging-settings).
 

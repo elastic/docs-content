@@ -34,7 +34,7 @@ Which looks like:
 
 Note that the `columns` object is only part of the first page.
 
-You’ve reached the last page when there is no `cursor` returned in the results. Like Elasticsearch’s [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results), SQL may keep state in Elasticsearch to support the cursor. Unlike scroll, receiving the last page is enough to guarantee that the Elasticsearch state is cleared.
+You’ve reached the last page when there is no `cursor` returned in the results. Like Elasticsearch’s [scroll](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results), SQL may keep state in Elasticsearch to support the cursor. Unlike scroll, receiving the last page is enough to guarantee that the Elasticsearch state is cleared.
 
 To clear the state earlier, use the [clear cursor API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-clear-cursor):
 

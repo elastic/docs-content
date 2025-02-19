@@ -100,7 +100,7 @@ The following list describes the available client settings. Those that must be s
 :   A shared access signatures (SAS) token, which the repository’s internal Azure client uses for authentication. The SAS token must have read (r), write (w), list (l), and delete (d) permissions for the repository base path and all its contents. These permissions must be granted for the blob service (b) and apply to resource types service (s), container (c), and object (o). Alternatively, use `key`.
 
 `azure.client.CLIENT_NAME.timeout`
-:   The client side timeout for any single request to Azure, as a [time unit](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units). For example, a value of `5s` specifies a 5 second timeout. There is no default value, which means that {{es}} uses the [default value](https://azure.github.io/azure-storage-java/com/microsoft/azure/storage/RequestOptions.md#setTimeoutIntervalInMs(java.lang.Integer)) set by the Azure client.
+:   The client side timeout for any single request to Azure, as a [time unit](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units). For example, a value of `5s` specifies a 5 second timeout. There is no default value, which means that {{es}} uses the [default value](https://azure.github.io/azure-storage-java/com/microsoft/azure/storage/RequestOptions.md#setTimeoutIntervalInMs(java.lang.Integer)) set by the Azure client.
 
 `azure.client.CLIENT_NAME.endpoint`
 :   The Azure endpoint to connect to. It must include the protocol used to connect to Azure.
@@ -162,7 +162,7 @@ PUT _snapshot/my_backup
 :   When set to `true` metadata files are stored in compressed format. This setting doesn’t affect index files that are already compressed by default. Defaults to `true`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
 :   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).

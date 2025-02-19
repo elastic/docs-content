@@ -39,7 +39,7 @@ bucket_key = Math.floor(value / interval) * interval
 ```
 
 ::::{note}
-The histogram in SQL does **NOT** return empty buckets for missing intervals as the traditional [histogram](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-histogram-aggregation.html) and  [date histogram](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html). Such behavior does not fit conceptually in SQL which treats all missing values as `null`; as such the histogram places all missing values in the `null` group.
+The histogram in SQL does **NOT** return empty buckets for missing intervals as the traditional [histogram](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-histogram-aggregation.md) and  [date histogram](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md). Such behavior does not fit conceptually in SQL which treats all missing values as `null`; as such the histogram places all missing values in the `null` group.
 ::::
 
 

@@ -15,7 +15,7 @@ To prepare for using OpenID Connect for authentication for deployments:
 * Create or use an existing deployment. Make note of the Kibana endpoint URL, it will be referenced as `<KIBANA_ENDPOINT_URL>` in the following steps.
 * The steps in this section required a moderate understanding of [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.md#Authentication) in general and the Authorization Code Grant flow specifically. For more information about OpenID Connect and how it works with the Elastic Stack check:
 
-    * Our [configuration guide for Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html#oidc-elasticsearch-authentication).
+    * Our [configuration guide for Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-elasticsearch-authentication).
 
 
 

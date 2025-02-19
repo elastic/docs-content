@@ -86,7 +86,7 @@ Sending services must add the `traceparent` header to outgoing requests.
 :::::::{tab-set}
 
 ::::::{tab-item} Go
-1. Start a transaction with [`StartTransaction`](https://www.elastic.co/guide/en/apm/agent/go/current/api.html#tracer-api-start-transaction) or a span with [`StartSpan`](https://www.elastic.co/guide/en/apm/agent/go/current/api.html#transaction-start-span).
+1. Start a transaction with [`StartTransaction`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#tracer-api-start-transaction) or a span with [`StartSpan`](https://www.elastic.co/guide/en/apm/agent/go/current/api.html#transaction-start-span).
 2. Get the active `TraceContext`.
 3. Send the `TraceContext` to the receiving service.
 
@@ -107,7 +107,7 @@ tracestate := traceContext.State.String()
 ::::::
 
 ::::::{tab-item} Java
-1. Start a transaction with [`startTransaction`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-start-transaction), or a span with [`startSpan`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-span-start-span).
+1. Start a transaction with [`startTransaction`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-start-transaction), or a span with [`startSpan`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-span-start-span).
 2. Inject the `traceparent` header into the request object with [`injectTraceHeaders`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-transaction-inject-trace-headers)
 
 Example of manually instrumenting an RPC framework:
@@ -136,7 +136,7 @@ public Response onOutgoingRequest(Request request) throws Exception {
 ::::::
 
 ::::::{tab-item} .NET
-1. Serialize the distributed tracing context of the active transaction or span with [`CurrentTransaction`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html#api-current-transaction) or [`CurrentSpan`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html#api-current-span).
+1. Serialize the distributed tracing context of the active transaction or span with [`CurrentTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#api-current-transaction) or [`CurrentSpan`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html#api-current-span).
 2. Send the serialized context the receiving service.
 
 Example:
@@ -150,7 +150,7 @@ string outgoingDistributedTracingData =
 ::::::
 
 ::::::{tab-item} Node.js
-1. Start a transaction with [`apm.startTransaction()`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-start-transaction), or a span with [`apm.startSpan()`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-start-span).
+1. Start a transaction with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-start-transaction), or a span with [`apm.startSpan()`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-start-span).
 2. Get the serialized `traceparent` string of the started transaction/span with [`currentTraceparent`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-current-traceparent).
 3. Encode the `traceparent` and send it to the receiving service inside your regular request.
 
@@ -181,7 +181,7 @@ $distDataAsString = ElasticApm::getSerializedCurrentDistributedTracingData();   
 ::::::
 
 ::::::{tab-item} Python
-1. Start a transaction with [`begin_transaction()`](https://www.elastic.co/guide/en/apm/agent/python/current/api.html#client-api-begin-transaction).
+1. Start a transaction with [`begin_transaction()`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/api-reference.md#client-api-begin-transaction).
 2. Get the `trace_parent` of the active transaction.
 3. Send the `trace_parent` to the receiving service.
 
@@ -200,7 +200,7 @@ elasticapm.get_trace_parent_header('new-transaction')   <2>
 ::::::
 
 ::::::{tab-item} Ruby
-1. Start a span with [`with_span`](https://www.elastic.co/guide/en/apm/agent/ruby/current/api.html#api-agent-with_span).
+1. Start a span with [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-with_span).
 2. Get the active `TraceContext`.
 3. Send the `TraceContext` to the receiving service.
 
@@ -308,7 +308,7 @@ agent.startTransaction('my-service-b-transaction', { childOf: traceparent })   <
 
 ::::::{tab-item} PHP
 1. Receive the distributed tracing data on the server side.
-2. Begin a new transaction using the agent’s public API. For example, use [`ElasticApm::beginCurrentTransaction`](https://www.elastic.co/guide/en/apm/agent/php/current/public-api.html#api-elasticapm-class-begin-current-transaction) and pass the received distributed tracing data (serialized as string) as a parameter. This will create a new transaction as a child of the incoming trace context.
+2. Begin a new transaction using the agent’s public API. For example, use [`ElasticApm::beginCurrentTransaction`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/public-api.md#api-elasticapm-class-begin-current-transaction) and pass the received distributed tracing data (serialized as string) as a parameter. This will create a new transaction as a child of the incoming trace context.
 3. Don’t forget to eventually end the transaction on the server side.
 
 Example:

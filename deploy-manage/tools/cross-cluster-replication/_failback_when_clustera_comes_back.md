@@ -55,7 +55,7 @@ When `clusterA` comes back, `clusterB` becomes the new leader and `clusterA` bec
     ```
 
     ::::{tip} 
-    If a soft delete is merged away before it can be replicated to a follower the following process will fail due to incomplete history on the leader, see [index.soft_deletes.retention_lease.period](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#ccr-index-soft-deletes-retention-period) for more details.
+    If a soft delete is merged away before it can be replicated to a follower the following process will fail due to incomplete history on the leader, see [index.soft_deletes.retention_lease.period](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#ccr-index-soft-deletes-retention-period) for more details.
     ::::
 
 

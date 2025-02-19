@@ -19,7 +19,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 
 Starting from ECK `2.6.1` and Elasticsearch `8.6.1`, Elastic Stack configuration policies allow you to configure the following settings for Elasticsearch:
 
-* [Cluster Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html#dynamic-cluster-setting)
+* [Cluster Settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting)
 * [Snapshot Repositories](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)
 * [Snapshot Lifecycle Policies](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle)
 * [Ingest pipelines](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline)

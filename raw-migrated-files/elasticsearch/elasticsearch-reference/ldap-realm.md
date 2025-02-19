@@ -29,7 +29,7 @@ To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to use
 
 2. To configure an `ldap` realm with user search:
 
-    1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the `url` and `order` of the LDAP server, and set `user_search.base_dn` to the container DN where the users are searched for. See [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
+    1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the `url` and `order` of the LDAP server, and set `user_search.base_dn` to the container DN where the users are searched for. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
 
         For example, the following snippet shows an LDAP realm configured with a user search:
 

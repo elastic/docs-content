@@ -1,6 +1,6 @@
 # Sign up for Elastic Cloud [general-sign-up-trial]
 
-The following page provides information on how to sign up for an Elastic Cloud Serverless account, for information on how to sign up for hosted deployments, see [Elasticsearch Service - How do i sign up?](https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html).
+The following page provides information on how to sign up for an Elastic Cloud Serverless account, for information on how to sign up for hosted deployments, see [Elasticsearch Service - How do i sign up?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
 
 
 ## Trial features [general-sign-up-trial-what-is-included-in-my-trial]

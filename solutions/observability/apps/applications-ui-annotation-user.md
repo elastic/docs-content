@@ -10,7 +10,7 @@ mapped_pages:
 
 
 ::::{note} 
-By default, the `viewer` and `editor` built-in roles provide read access to Observability annotations. You only need to create an annotation user to write to the annotations index ([`xpack.observability.annotations.index`](https://www.elastic.co/guide/en/kibana/current/apm-settings-kb.html)).
+By default, the `viewer` and `editor` built-in roles provide read access to Observability annotations. You only need to create an annotation user to write to the annotations index ([`xpack.observability.annotations.index`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/apm-settings.md)).
 ::::
 
 

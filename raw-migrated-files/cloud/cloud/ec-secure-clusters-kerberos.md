@@ -5,7 +5,7 @@ You can secure your Elasticsearch clusters and Kibana instances in a deployment 
 
 ## Before you begin [ec_before_you_begin_13]
 
-The steps in this section require an understanding of Kerberos. To learn more about Kerberos, check our documentation on [configuring Elasticsearch for Kerberos authentication](https://www.elastic.co/guide/en/elasticsearch/reference/current/kerberos-realm.html).
+The steps in this section require an understanding of Kerberos. To learn more about Kerberos, check our documentation on [configuring Elasticsearch for Kerberos authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
 
 
 ## Configure the cluster to use Kerberos [ec-configure-kerberos-settings]

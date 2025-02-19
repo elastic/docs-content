@@ -30,7 +30,7 @@ You can disable the generation of the self-signed certificate and hence disable 
 
 ### Ingress and Kibana configuration [k8s-maps-ingress]
 
-To use Elastic Maps Server from your Kibana instances, you need to configure Kibana to fetch maps from your Elastic Maps Server instance by using the [`map.emsUrl`](https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html#elastic-maps-server-kibana) configuration key. The value of this setting needs to be the URL where the Elastic Maps Server instance is reachable from your browser. The certificates presented by Elastic Maps Server need to be trusted by the browser, and the URL must have the same origin as the URL where your Kibana is hosted to avoid cross origin resource issues. Check the [recipe section](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/recipes/) for an example on how to set this up using an Ingress resource.
+To use Elastic Maps Server from your Kibana instances, you need to configure Kibana to fetch maps from your Elastic Maps Server instance by using the [`map.emsUrl`](/explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server-kibana) configuration key. The value of this setting needs to be the URL where the Elastic Maps Server instance is reachable from your browser. The certificates presented by Elastic Maps Server need to be trusted by the browser, and the URL must have the same origin as the URL where your Kibana is hosted to avoid cross origin resource issues. Check the [recipe section](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/recipes/) for an example on how to set this up using an Ingress resource.
 
 
 

@@ -11,7 +11,7 @@ All cross-cluster requests from the local cluster are bound by the API key’s p
 
 On the local cluster side, not every local user needs to access every piece of data allowed by the API key. An administrator of the local cluster can further configure additional permission constraints on local users so each user only gets access to the necessary remote data. Note it is only possible to further reduce the permissions allowed by the API key for individual local users. It is impossible to increase the permissions to go beyond what is allowed by the API key.
 
-In this model, cross-cluster operations use [a dedicated server port](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote_cluster.port) (remote cluster interface) for communication between clusters. A remote cluster must enable this port for local clusters to connect. Configure Transport Layer Security (TLS) for this port to maximize security (as explained in [Establish trust with a remote cluster](#remote-clusters-security-api-key)).
+In this model, cross-cluster operations use [a dedicated server port](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (remote cluster interface) for communication between clusters. A remote cluster must enable this port for local clusters to connect. Configure Transport Layer Security (TLS) for this port to maximize security (as explained in [Establish trust with a remote cluster](#remote-clusters-security-api-key)).
 
 The local cluster must trust the remote cluster on the remote cluster interface. This means that the local cluster trusts the remote cluster’s certificate authority (CA) that signs the server certificate used by the remote cluster interface. When establishing a connection, all nodes from the local cluster that participate in cross-cluster communication verify certificates from nodes on the other side, based on the TLS trust configuration.
 
@@ -26,7 +26,7 @@ If you run into any issues, refer to [Troubleshooting](remote-clusters-troublesh
 
 ## Prerequisites [remote-clusters-prerequisites-api-key]
 
-* The {{es}} security features need to be enabled on both clusters, on every node. Security is enabled by default. If it’s disabled, set `xpack.security.enabled` to `true` in `elasticsearch.yml`. Refer to [General security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#general-security-settings).
+* The {{es}} security features need to be enabled on both clusters, on every node. Security is enabled by default. If it’s disabled, set `xpack.security.enabled` to `true` in `elasticsearch.yml`. Refer to [General security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings).
 * The nodes of the local and remote clusters must be on version 8.10 or later.
 * The local and remote clusters must have an appropriate license. For more information, refer to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions).
 
@@ -78,7 +78,7 @@ If a remote cluster is part of an {{ess}} deployment, it has a valid certificate
     4. If the remote cluster has multiple nodes, you can either:
 
         * create a single wildcard certificate for all nodes;
-        * or, create separate certificates for each node either manually or in batch with the [silent mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html#certutil-silent).
+        * or, create separate certificates for each node either manually or in batch with the [silent mode](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-silent).
 
 3. On every node of the remote cluster:
 
@@ -205,7 +205,7 @@ Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasti
 
 The `seeds` parameter specifies the hostname and [remote cluster port](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) (default `9443`) of a seed node in the remote cluster.
 
-The `mode` parameter determines the configured connection mode, which defaults to [`sniff`](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#sniff-mode). Because `cluster_one` doesn’t specify a `mode`, it uses the default. Both `cluster_two` and `cluster_three` explicitly use different modes.
+The `mode` parameter determines the configured connection mode, which defaults to [`sniff`](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode). Because `cluster_one` doesn’t specify a `mode`, it uses the default. Both `cluster_two` and `cluster_three` explicitly use different modes.
 
 ```console
 PUT _cluster/settings

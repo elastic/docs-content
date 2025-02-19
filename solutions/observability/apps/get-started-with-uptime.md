@@ -42,7 +42,7 @@ Version 9.0.0-beta1 has not yet been released.
 
 Next, create a `heartbeat.yml` configuration file.
 
-The example below shows how to configure an `http` monitor, one of [three types of lightweight monitors](https://www.elastic.co/guide/en/beats/heartbeat/current/configuration-heartbeat-options.html#monitor-types).
+The example below shows how to configure an `http` monitor, one of [three types of lightweight monitors](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/configuration-heartbeat-options.md#monitor-types).
 
 ```yaml
 heartbeat.monitors:

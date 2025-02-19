@@ -37,7 +37,7 @@ To use {{ilm-init}}, all nodes in a cluster must run the same version. Although 
 * **Shrink**: Reduces the number of primary shards in an index.
 * **Force merge**: Triggers a [force merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) to reduce the number of segments in an index’s shards.
 * **Delete**: Permanently remove an index, including all of its data and metadata.
-* [And more](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-actions.html)
+* [And more](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/index.md)
 
 Each action has options you can use to specify index behavior and characteristics like:
 
