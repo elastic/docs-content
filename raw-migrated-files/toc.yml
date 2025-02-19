@@ -430,7 +430,6 @@ toc:
       - file: docs-content/serverless/security-signals-to-cases.md
       - file: docs-content/serverless/security-third-party-actions.md
       - file: docs-content/serverless/security-timeline-templates-ui.md
-      - file: docs-content/serverless/security-timelines-ui.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
       - file: docs-content/serverless/security-trusted-applications.md
       - file: docs-content/serverless/security-tune-detection-signals.md
