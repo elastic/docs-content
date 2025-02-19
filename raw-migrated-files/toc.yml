@@ -257,7 +257,6 @@ toc:
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-rateAggregation.md
       - file: docs-content/serverless/observability-send-application-logs.md
-      - file: docs-content/serverless/observability-serverless-observability-overview.md
       - file: docs-content/serverless/observability-slos.md
       - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/observability-triage-slo-burn-rate-breaches.md
@@ -529,7 +528,6 @@ toc:
       - file: observability-docs/observability/monitor-status-alert.md
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
-      - file: observability-docs/observability/observability-introduction.md
       - file: observability-docs/observability/rate-aggregation.md
       - file: observability-docs/observability/slo-burn-rate-alert.md
       - file: observability-docs/observability/slo-create.md
