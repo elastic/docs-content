@@ -1,17 +1,21 @@
 ---
+applies:
+  ece: all
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html
 ---
 
+% we still need to determine what to do with /raw-migrated-files/cloud/cloud-enterprise/ece-administering-ece.md
+
 # Elastic Cloud Enterprise [Elastic-Cloud-Enterprise-overview]
 
-This page provides a high-level overview of Elastic Cloud Enterprise (ECE).
+This page provides a high-level introduction to {{ece}} (ECE).
 
 ::::{note}
 Try one of the [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html) to discover the core concepts of the Elastic Stack and understand how Elastic can help you.
 ::::
 
-**What is ECE?**
+## ECE Overview
 
 Elastic Cloud Enterprise (ECE) is an on-premises and self-managed solution for deploying, orchestrating, and managing {{es}} clusters at scale. It provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines.
 
@@ -23,14 +27,14 @@ For an overview of ECE architecture refer to [](./cloud-enterprise/ece-architect
 If you are looking for a solution to orchestrate and manage {{es}} clusters natively on Kubernetes, consider using [Elastic Cloud on Kubernetes (ECK)](./cloud-on-k8s.md) instead of ECE. ECK enables you to orchestrate Elastic Stack applications seamlessly on Kubernetes, leveraging it as the underlying platform for deployment, scaling, and lifecycle management.
 ::::
 
-**Why ECE?**
+### Why ECE?
 
 * Host your regulated or sensitive data on your internal network.
 * Reuse your existing investment in on-premise infrastructure and reduce total cost.
 * Maximize the hardware utilization for the various clusters.
 * Centralize the management of multiple Elastic deployments across teams or geographies.
 
-**ECE features**
+### ECE features
 
 - **Automated Scaling & Orchestration** – Handles cluster provisioning, scaling, and upgrades automatically.
 - **High Availability & Resilience** – Ensures uptime through multiple Availability Zones, data replication, and automated restore and snapshot.
@@ -42,7 +46,7 @@ If you are looking for a solution to orchestrate and manage {{es}} clusters nati
 
 Check the [glossary](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
 
-**Use cases**
+### Use cases
 
 - Organizations that need **full control over their Elastic Stack** while benefiting from cloud-like automation.
 - Enterprises managing **multiple Elasticsearch clusters** across different teams or environments.
@@ -56,6 +60,6 @@ For information about other deployment options, refer to [](../deploy.md).
 % - **ECE** is for organizations that **want to self-host and manage their own Elastic Stack** deployments across their infrastructure.
 % - **ECK** is for organizations that want to run on Kubernetes.
 
-## Supported versions
+## Supported versions [ece-supported-versions]
 
 Refer to [Elastic Support Matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information about supported Operating Systems, Docker, and Podman versions.
