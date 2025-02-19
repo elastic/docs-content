@@ -38,3 +38,9 @@ $$$install-stack-demo-secure-second-node$$$
 $$$install-stack-demo-secure-transport$$$
 
 $$$install-stack-demo-secure-view-data$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md)
+* [/raw-migrated-files/kibana/kibana/using-kibana-with-security.md](/raw-migrated-files/kibana/kibana/using-kibana-with-security.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/install-stack-demo-secure.md](/raw-migrated-files/stack-docs/elastic-stack/install-stack-demo-secure.md)

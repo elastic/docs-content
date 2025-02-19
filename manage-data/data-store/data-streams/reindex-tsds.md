@@ -12,7 +12,7 @@ mapped_pages:
 
 ## Introduction [tsds-reindex-intro] 
 
-With reindexing, you can copy documents from an old [time-series data stream (TSDS)](time-series-data-stream-tsds.md) to a new one. Data streams support reindexing in general, with a few [restrictions](use-data-stream.md#reindex-with-a-data-stream). Still, time-series data streams introduce additional challenges due to tight control on the accepted timestamp range for each backing index they contain. Direct use of the reindex API would likely error out due to attempting to insert documents with timestamps that are outside the current acceptance window.
+With reindexing, you can copy documents from an old [time-series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md) to a new one. Data streams support reindexing in general, with a few [restrictions](use-data-stream.md#reindex-with-a-data-stream). Still, time-series data streams introduce additional challenges due to tight control on the accepted timestamp range for each backing index they contain. Direct use of the reindex API would likely error out due to attempting to insert documents with timestamps that are outside the current acceptance window.
 
 To avoid these limitations, use the process that is outlined below:
 
@@ -28,7 +28,7 @@ To avoid these limitations, use the process that is outlined below:
 5. Invoke the `rollover` api to create a new backing index that can receive new documents.
 
 ::::{note} 
-This process only applies to time-series data streams without [downsampling](downsampling-time-series-data-stream.md) configuration. Data streams with downsampling can only be re-indexed by re-indexing their backing indexes individually and adding them to an empty destination data stream.
+This process only applies to time-series data streams without [downsampling](./downsampling-time-series-data-stream.md) configuration. Data streams with downsampling can only be re-indexed by re-indexing their backing indexes individually and adding them to an empty destination data stream.
 ::::
 
 

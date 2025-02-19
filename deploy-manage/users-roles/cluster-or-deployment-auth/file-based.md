@@ -17,3 +17,8 @@ mapped_urls:
 %      Notes: file realm content
 
 $$$file-realm-configuration$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/file-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/file-realm.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md)

@@ -37,7 +37,7 @@ The way data tiers are used often depends on the data’s category:
 * Content data remains on the [content tier](/manage-data/lifecycle/data-tiers.md#content-tier) for its entire data lifecycle.
 * Time series data may progress through the descending temperature data tiers (hot, warm, cold, and frozen) according to your performance, resiliency, and data retention requirements.
 
-    You can automate these lifecycle transitions using the [data stream lifecycle](/manage-data/data-store/index-types/data-streams.md), or custom [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md).
+    You can automate these lifecycle transitions using the [data stream lifecycle](/manage-data/data-store/data-streams.md), or custom [{{ilm}}](/manage-data/lifecycle/index-lifecycle-management.md).
 
 Learn more about each data tier, including when and how it should be used.
 
@@ -54,7 +54,7 @@ The content tier is required and is often deployed within the same node grouping
 
 The hot tier is the {{es}} entry point for time series data and holds your most-recent, most-frequently-searched time series data. Nodes in the hot tier need to be fast for both reads and writes, which requires more hardware resources and faster storage (SSDs). For resiliency, indices in the hot tier should be configured to use one or more replicas.
 
-The hot tier is required. New indices that are part of a [data stream](/manage-data/data-store/index-types/data-streams.md) are automatically allocated to the hot tier.
+The hot tier is required. New indices that are part of a [data stream](/manage-data/data-store/data-streams.md) are automatically allocated to the hot tier.
 
 
 ### Warm tier [warm-tier]
@@ -437,7 +437,7 @@ The [`index.routing.allocation.include._tier_preference`](https://www.elastic.co
 
 When you create an index, by default {{es}} sets the `_tier_preference` to `data_content` to automatically allocate the index shards to the content tier.
 
-When {{es}} creates an index as part of a [data stream](/manage-data/data-store/index-types/data-streams.md), by default {{es}} sets the `_tier_preference` to `data_hot` to automatically allocate the index shards to the hot tier.
+When {{es}} creates an index as part of a [data stream](/manage-data/data-store/data-streams.md), by default {{es}} sets the `_tier_preference` to `data_hot` to automatically allocate the index shards to the hot tier.
 
 At the time of index creation, you can override the default setting by explicitly setting the preferred value in one of two ways:
 

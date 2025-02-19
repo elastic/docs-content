@@ -8,19 +8,19 @@ mapped_pages:
 
 ## Change mappings and settings for a data stream [data-streams-change-mappings-and-settings]
 
-Each [data stream](data-streams.md) has a [matching index template](set-up-data-stream.md#create-index-template). Mappings and index settings from this template are applied to new backing indices created for the stream. This includes the stream’s first backing index, which is auto-generated when the stream is created.
+Each [data stream](../data-streams.md) has a [matching index template](../data-streams/set-up-data-stream.md#create-index-template). Mappings and index settings from this template are applied to new backing indices created for the stream. This includes the stream’s first backing index, which is auto-generated when the stream is created.
 
 Before creating a data stream, we recommend you carefully consider which mappings and settings to include in this template.
 
 If you later need to change the mappings or settings for a data stream, you have a few options:
 
-* [Add a new field mapping to a data stream](modify-data-stream.md#add-new-field-mapping-to-a-data-stream)
-* [Change an existing field mapping in a data stream](modify-data-stream.md#change-existing-field-mapping-in-a-data-stream)
-* [Change a dynamic index setting for a data stream](modify-data-stream.md#change-dynamic-index-setting-for-a-data-stream)
-* [Change a static index setting for a data stream](modify-data-stream.md#change-static-index-setting-for-a-data-stream)
+* [Add a new field mapping to a data stream](../data-streams/modify-data-stream.md#add-new-field-mapping-to-a-data-stream)
+* [Change an existing field mapping in a data stream](../data-streams/modify-data-stream.md#change-existing-field-mapping-in-a-data-stream)
+* [Change a dynamic index setting for a data stream](../data-streams/modify-data-stream.md#change-dynamic-index-setting-for-a-data-stream)
+* [Change a static index setting for a data stream](../data-streams/modify-data-stream.md#change-static-index-setting-for-a-data-stream)
 
 ::::{tip}
-If your changes include modifications to existing field mappings or [static index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings), a reindex is often required to apply the changes to a data stream’s backing indices. If you are already performing a reindex, you can use the same process to add new field mappings and change [dynamic index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings). See [Use reindex to change mappings or settings](modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
+If your changes include modifications to existing field mappings or [static index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings), a reindex is often required to apply the changes to a data stream’s backing indices. If you are already performing a reindex, you can use the same process to add new field mappings and change [dynamic index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings). See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 ::::
 
 
@@ -165,7 +165,7 @@ The documentation for each [mapping parameter](https://www.elastic.co/guide/en/e
 
 Except for supported mapping parameters, we don’t recommend you change the mapping or field data type of existing fields, even in a data stream’s matching index template or its backing indices. Changing the mapping of an existing field could invalidate any data that’s already indexed.
 
-If you need to change the mapping of an existing field, create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
+If you need to change the mapping of an existing field, create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 
 
 ### Change a dynamic index setting for a data stream [change-dynamic-index-setting-for-a-data-stream]
@@ -243,9 +243,9 @@ PUT /_index_template/my-data-stream-template
 2. Adds the `sort.order` index setting.
 
 
-If wanted, you can [roll over the data stream](use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the setting to the data stream’s write index. This affects any new data added to the stream after the rollover. However, it does not affect the data stream’s existing backing indices or existing data.
+If wanted, you can [roll over the data stream](../data-streams/use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the setting to the data stream’s write index. This affects any new data added to the stream after the rollover. However, it does not affect the data stream’s existing backing indices or existing data.
 
-To apply static setting changes to existing backing indices, you must create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
+To apply static setting changes to existing backing indices, you must create a new data stream and reindex your data into it. See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 
 
 ### Use reindex to change mappings or settings [data-streams-use-reindex-to-change-mappings-settings]
@@ -278,7 +278,7 @@ Follow these steps:
 
 2. Create or update an index template. This template should contain the mappings and settings you’d like to apply to the new data stream’s backing indices.
 
-    This index template must meet the [requirements for a data stream template](set-up-data-stream.md#create-index-template). It should also contain your previously chosen name or index pattern in the `index_patterns` property.
+    This index template must meet the [requirements for a data stream template](../data-streams/set-up-data-stream.md#create-index-template). It should also contain your previously chosen name or index pattern in the `index_patterns` property.
 
     ::::{tip}
     If you are only adding or changing a few things, we recommend you create a new template by copying an existing one and modifying it as needed.
@@ -321,7 +321,7 @@ Follow these steps:
 
 3. Use the [create data stream API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream) to manually create the new data stream. The name of the data stream must match the index pattern defined in the new template’s `index_patterns` property.
 
-    We do not recommend [indexing new data to create this data stream](set-up-data-stream.md#create-data-stream). Later, you will reindex older data from an existing data stream into this new stream. This could result in one or more backing indices that contains a mix of new and old data.
+    We do not recommend [indexing new data to create this data stream](../data-streams/set-up-data-stream.md#create-data-stream). Later, you will reindex older data from an existing data stream into this new stream. This could result in one or more backing indices that contains a mix of new and old data.
 
     ::::{important}
     $$$data-stream-mix-new-old-data$$$
@@ -338,7 +338,7 @@ Follow these steps:
     PUT /_data_stream/new-data-stream
     ```
 
-4. If you do not want to mix new and old data in your new data stream, pause the indexing of new documents. While mixing old and new data is safe, it could interfere with data retention. See [Mixing new and old data in a data stream](modify-data-stream.md#data-stream-mix-new-old-data).
+4. If you do not want to mix new and old data in your new data stream, pause the indexing of new documents. While mixing old and new data is safe, it could interfere with data retention. See [Mixing new and old data in a data stream](../data-streams/modify-data-stream.md#data-stream-mix-new-old-data).
 5. If you use {{ilm-init}} to [automate rollover](../../lifecycle/index-lifecycle-management/tutorial-automate-rollover.md), reduce the {{ilm-init}} poll interval. This ensures the current write index doesn’t grow too large while waiting for the rollover check. By default, {{ilm-init}} checks rollover conditions every 10 minutes.
 
     The following [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) request lowers the `indices.lifecycle.poll_interval` setting to `1m` (one minute).

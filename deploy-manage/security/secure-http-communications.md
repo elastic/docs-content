@@ -52,3 +52,10 @@ $$$k8s-setting-up-your-own-certificate$$$
 $$$k8s-static-ip-custom-domain$$$
 
 $$$k8s-disable-tls$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-basic-setup-https.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-basic-setup-https.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-tls-certificates.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-tls-certificates.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-custom-http-certificate.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-custom-http-certificate.md)
+* [/raw-migrated-files/kibana/kibana/Security-production-considerations.md](/raw-migrated-files/kibana/kibana/Security-production-considerations.md)
