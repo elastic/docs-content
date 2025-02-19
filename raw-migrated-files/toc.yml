@@ -219,7 +219,6 @@ toc:
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/monitor-k8s-otel-edot.md
       - file: docs-content/serverless/observability-add-logs-service-name.md
       - file: docs-content/serverless/observability-aggregationOptions.md
       - file: docs-content/serverless/observability-ai-assistant.md
@@ -527,7 +526,6 @@ toc:
       - file: observability-docs/observability/manage-cases.md
       - file: observability-docs/observability/monitor-datasets.md
       - file: observability-docs/observability/monitor-infrastructure-and-hosts.md
-      - file: observability-docs/observability/monitor-k8s-otel-edot.md
       - file: observability-docs/observability/monitor-status-alert.md
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
