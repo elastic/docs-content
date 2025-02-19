@@ -46,6 +46,8 @@ The advanced settings determine:
 * Whether related integrations are displayed on the Rules page tables
 * The options provided in the alert tag menu
 
+% The required privs are different for Serverless docs. See line 16 in the raw migrated Serverless file for more info. Also remember to annotate the Serverless and ESS content appropriately. 
+
 To change these settings, you need `All` privileges for the **Advanced Settings** [{{kib}} feature](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
 
 ::::{warning}
@@ -54,7 +56,9 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 
 
-## Access advanced settings [_access_advanced_settings]
+## Access advanced settings [security-advanced-settings-access-advanced-settings]
+
+% The advanced settings are located in a different place in Serverless. See line 27 in the raw migrated Serverless file for more info. Also remember to annotate the Serverless and ESS content appropriately. 
 
 To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
 
@@ -66,6 +70,8 @@ To access advanced settings, go to **Stack Management** → **Advanced Settings*
 
 ## Update default Elastic Security indices [update-sec-indices]
 
+% The following is slightly different in the Serverless docs -- not sure why. See lines 45-51 in the raw migrated Serverless file for more info. If add the Serverless content, remember to annotate the Serverless and ESS content appropriately. 
+
 The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices.
 
 ::::{note}
@@ -75,6 +81,8 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 
 All of the default index patterns match [{{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/beats-reference.html) and [{{agent}}](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
+% The following is slightly different in the Serverless docs -- not sure why. See line 61 in the raw migrated Serverless file for more info. If add the Serverless content, remember to annotate the Serverless and ESS content appropriately. 
+
 You can add or remove any indices and index patterns as required. For background information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
 ::::{note}
@@ -83,14 +91,18 @@ If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cl
 
 
 ::::{important}
-{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [*Elastic Security ECS field reference*](https://www.elastic.co/guide/en/security/current/siem-field-reference.html) lists ECS fields used in {{elastic-sec}}.
+{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [{{elastic-sec}} ECS field reference](https://www.elastic.co/guide/en/security/current/siem-field-reference.html) lists ECS fields used in {{elastic-sec}}.
 ::::
 
 
 
 ## Update default Elastic Security threat intelligence indices [update-threat-intel-indices]
 
-The `securitySolution:defaultThreatIndex` advanced setting specifies threat intelligence indices that {{elastic-sec}} features query for ingested threat indicators. This setting affects features that query threat intelligence indices, such as the Threat Intelligence view on the Overview page, indicator match rules, and the alert enrichment query. You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
+The `securitySolution:defaultThreatIndex` advanced setting specifies threat intelligence indices that {{elastic-sec}} features query for ingested threat indicators. This setting affects features that query threat intelligence indices, such as the Threat Intelligence view on the Overview page, indicator match rules, and the alert enrichment query.
+
+% The max limit of threat intel indices is different in the Serverless docs -- not sure why. See line 80 in the raw migrated Serverless file for more info. If add the Serverless content, remember to annotate the Serverless and ESS content appropriately. 
+
+You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
 
 ::::{important}
 Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) for more information.
