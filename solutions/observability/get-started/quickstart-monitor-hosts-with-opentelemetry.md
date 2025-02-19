@@ -141,11 +141,3 @@ After using the Hosts page and Discover to confirm you’ve ingested all the hos
 
 
 Refer to the [Elastic Observability](../../../solutions/observability.md) for a description of other useful features.
-
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/observability-docs/observability/quickstart-monitor-hosts-with-otel.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/quickstart-monitor-hosts-with-otel.md
