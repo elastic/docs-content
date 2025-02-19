@@ -6,7 +6,7 @@ navigation_title: "Use the CLI"
 
 
 
-## `@elastic/synthetics` [elastic-synthetics-command] 
+## `@elastic/synthetics` [elastic-synthetics-command]
 
 Elastic uses the [@elastic/synthetics](https://www.npmjs.com/package/@elastic/synthetics) library to run synthetic browser tests and report the test results. The library also provides a CLI to help you scaffold, develop/run tests locally, and push tests to Elastic.
 
@@ -57,7 +57,7 @@ You will not need to use most command line flags. However, there are some you ma
 
     Throttling can also be disabled in the configuration file using [`monitor.throttling`](../../../solutions/observability/apps/configure-synthetics-projects.md#synthetics-configuration-monitor). The value defined via the CLI will take precedence.
 
-    ::::{note} 
+    ::::{note}
     Network throttling for browser based monitors is disabled. See this [documention](https://github.com/elastic/synthetics/blob/main/docs/throttling.md) for more details.
 
     ::::
@@ -68,7 +68,7 @@ You will not need to use most command line flags. However, there are some you ma
 
     This is the same as setting [Playwright’s `headless` option](https://playwright.dev/docs/api/class-testoptions#test-options-headless) to `false` by running `--playwright-options '{"headless": false}'`.
 
-    ::::{note} 
+    ::::{note}
     Headful mode should only be used locally to see the browser and interact with DOM elements directly for testing purposes. Do not attempt to run in headful mode when running through Elastic’s global managed testing infrastructure or {{private-location}}s as this is not supported.
 
     ::::
@@ -77,20 +77,20 @@ You will not need to use most command line flags. However, there are some you ma
 `-h, --help`
 :   Shows help for the `npx @elastic/synthetics` command.
 
-::::{note} 
+::::{note}
 The `--pattern`, `--tags`, and `--match` flags for filtering are only supported when you run synthetic tests locally or push them to Elastic. Filtering is *not* supported in any other subcommands like `init` and `locations`.
 
 ::::
 
 
-::::{note} 
+::::{note}
 For debugging synthetic tests locally, you can set an environment variable, `DEBUG=synthetics npx @elastic/synthetics`, to capture Synthetics agent logs.
 
 ::::
 
 
 
-## `@elastic/synthetics init` [elastic-synthetics-init-command] 
+## `@elastic/synthetics init` [elastic-synthetics-init-command]
 
 Scaffold a new Synthetics project using Elastic Synthetics.
 
@@ -100,10 +100,10 @@ This will create a template Node.js project that includes the synthetics agent, 
 npx @elastic/synthetics init <name-of-synthetics-project>
 ```
 
-Read more about what’s included in a template Synthetics project in [Create a Synthetics project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md#observability-synthetics-get-started-project-create-a-synthetics-project).
+Read more about what’s included in a template Synthetics project in [Create a Synthetics project](../../../solutions/observability/apps/create-monitors-with-project-monitors.md).
 
 
-## `@elastic/synthetics push` [elastic-synthetics-push-command] 
+## `@elastic/synthetics push` [elastic-synthetics-push-command]
 
 Create monitors in by using your local journeys. By default, running `push` command will use the `project` settings field from the `synthetics.config.ts` file, which is set up using the `init` command. However, you can override these settings using the CLI flags.
 
@@ -111,7 +111,7 @@ Create monitors in by using your local journeys. By default, running `push` comm
 SYNTHETICS_API_KEY=<api-key> npx @elastic/synthetics push --url <kibana-url> --id <id|name>
 ```
 
-::::{note} 
+::::{note}
 The `push` command includes interactive prompts to prevent you from accidentally deleting or duplicating monitors. You will see a prompt when:
 
 * You `push` a project that used to contain one or more monitors but either no longer contains previously running monitors or has any monitors. Select `yes` to delete the monitors associated with the project ID being pushed.
@@ -120,7 +120,7 @@ The `push` command includes interactive prompts to prevent you from accidentally
 ::::
 
 
-::::{note} 
+::::{note}
 If the journey contains external NPM packages other than the `@elastic/synthetics`, those packages will be bundled along with the journey code when the `push` command is invoked. However there are some limitations when using external packages:
 
 * Bundled journeys after compression should not be more than 1500 Kilobytes.
@@ -188,7 +188,7 @@ If the journey contains external NPM packages other than the `@elastic/synthetic
 
 
 
-## Tag monitors [observability-synthetics-command-reference-tag-monitors] 
+## Tag monitors [observability-synthetics-command-reference-tag-monitors]
 
 Synthetics journeys can be tagged with one or more tags.  Use tags to filter journeys when running tests locally or pushing them to Elastic.
 
@@ -215,7 +215,7 @@ tags:
 To apply tags to all browser and lightweight monitors, configure using the `monitor.tags` field in the `synthetics.config.ts` file.
 
 
-## Filter monitors [observability-synthetics-command-reference-filter-monitors] 
+## Filter monitors [observability-synthetics-command-reference-filter-monitors]
 
 When running the `npx @elastic/synthetics push` command, you can filter the monitors that are pushed to Elastic using the following flags:
 
@@ -236,7 +236,7 @@ npx @elastic/synthetics push --config synthetics.prod.config.ts --tags env:prod
 ```
 
 
-## `@elastic/synthetics locations` [elastic-synthetics-locations-command] 
+## `@elastic/synthetics locations` [elastic-synthetics-locations-command]
 
 List all available locations for running synthetics monitors.
 
@@ -255,7 +255,7 @@ To list both locations on Elastic’s global managed infrastructure and {{privat
 :   API key used for authentication.
 
 
-## `@elastic/synthetics totp <secret>` [observability-synthetics-command-reference-elasticsynthetics-totp-lesssecretgreater] 
+## `@elastic/synthetics totp <secret>` [observability-synthetics-command-reference-elasticsynthetics-totp-lesssecretgreater]
 
 Generate a Time-based One-Time Password (TOTP) for multifactor authentication(MFA) in Synthetics.
 

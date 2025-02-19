@@ -4,7 +4,6 @@ toc:
   - file: data-store.md
     children:
       - file: data-store/index-basics.md
-      - file: data-store/index-types.md
       - file: data-store/data-streams.md
         children:
           - file: data-store/data-streams/set-up-data-stream.md
@@ -19,7 +18,7 @@ toc:
               - file: data-store/data-streams/run-downsampling-manually.md
               - file: data-store/data-streams/run-downsampling-using-data-stream-lifecycle.md
               - file: data-store/data-streams/reindex-tsds.md
-              - file: data-store/data-streams/logs-data-stream.md
+          - file: data-store/data-streams/logs-data-stream.md
       - file: data-store/mapping.md
         children:
           - file: data-store/mapping/dynamic-mapping.md

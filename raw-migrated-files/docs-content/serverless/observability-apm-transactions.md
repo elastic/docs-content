@@ -37,7 +37,7 @@ The **Latency**, **Throughput***, ***Failed transaction rate***, ***Time spent b
 
 
 **Cold start rate**
-:   Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](../../../solutions/observability/apps/observe-lambda-functions.md#observability-apm-observe-lambda-functions-cold-starts) for more information.
+:   Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
 
 
 ## Transactions table [observability-apm-transactions-transactions-table]

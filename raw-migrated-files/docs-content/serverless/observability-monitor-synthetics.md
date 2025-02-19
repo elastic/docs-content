@@ -8,8 +8,8 @@ The Synthetics UI is for viewing result data from monitors created and managed d
 
 Synthetics periodically checks the status of your services and applications. Monitor the availability of network endpoints and services using the following types of monitors:
 
-* [Lightweight HTTP/S, TCP, and ICMP monitors](../../../solutions/observability/apps/synthetic-monitoring.md#observability-monitor-synthetics-lightweight-https-tcp-and-icmp-monitors)
-* [Browser monitors](../../../solutions/observability/apps/synthetic-monitoring.md#observability-monitor-synthetics-browser-monitors)
+* [Lightweight HTTP/S, TCP, and ICMP monitors](../../../solutions/observability/apps/synthetic-monitoring.md)
+* [Browser monitors](../../../solutions/observability/apps/synthetic-monitoring.md)
 
 :::{image} ../../../images/serverless-synthetics-monitor-page.png
 :alt: Synthetics UI

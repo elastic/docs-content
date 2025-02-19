@@ -26,7 +26,7 @@ Cold start is also displayed in the trace waterfall, where you can drill-down in
 
 ### Latency distribution correlation [observability-apm-observe-lambda-functions-latency-distribution-correlation]
 
-The [latency correlations](../../../solutions/observability/apps/find-transaction-latency-failure-correlations.md#observability-apm-find-transaction-latency-and-failure-correlations-find-high-transaction-latency-correlations) feature can be used to visualize the impact of Lambda cold starts on latency—just select the `faas.coldstart` field.
+The [latency correlations](../../../solutions/observability/apps/find-transaction-latency-failure-correlations.md) feature can be used to visualize the impact of Lambda cold starts on latency—just select the `faas.coldstart` field.
 
 
 ## AWS Lambda function grouping [observability-apm-observe-lambda-functions-aws-lambda-function-grouping]
