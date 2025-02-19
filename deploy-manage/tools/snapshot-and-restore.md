@@ -56,8 +56,8 @@ A snapshot is a backup of a running Elasticsearch cluster. You can use snapshots
 
 Elasticsearch stores snapshots in an off-cluster storage location called a **snapshot repository**. Before you can take or restore snapshots, you must [register a snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) on the cluster. Elasticsearch supports different repository types depending on your deployment type:
 
-* [**Elasticsearch Service repository types**](/deploy-manage/tools/snapshot-and-restore/self-managed.md#ess-repo-types)
-* [**Self-managed repository types**](/deploy-manage/tools/snapshot-and-restore/self-managed.md#self-managed-repo-types)
+* [**Elastic Cloud Hosted repository types**](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md)
+* [**Self-managed repository types**](/deploy-manage/tools/snapshot-and-restore/self-managed.md)
 
 After you register a snapshot repository, you can use [snapshot lifecycle management (SLM)](snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) to automatically take and manage snapshots. You can then [restore a snapshot](snapshot-and-restore/restore-snapshot.md) to recover or transfer its data.
 

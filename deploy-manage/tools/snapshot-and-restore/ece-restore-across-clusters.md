@@ -35,7 +35,7 @@ In **Elastic Cloud Hosted**, a cluster is eligible as a destination for a snapsh
 - The cluster is in the same region. For example, a snapshot taken in `eu-west-1` cannot be restored to `us-east-1` at this point. If you need to restore snapshots across regions, create the destination deployment, connect to the [custom repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md#ess-repo-types), and then [restore from a snapshot](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md).
 - The destination cluster is able to read the indices. You can generally restore to your Elasticsearch cluster snapshots of indices created back to the previous major version, but see the [version matrix](../snapshot-and-restore.md#snapshot-restore-version-compatibility) for all the details.
 
-The list of available snapshots can be found in the [`found-snapshots`](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.html#ess-repo-types) repository.
+The list of available snapshots can be found in the found-snapshots repository.
 
 In **Elastic Cloud Enterprise**, a cluster is eligible as a destination for a snapshot restore if it meets these criteria:
 

@@ -16,7 +16,7 @@ When a repository is assigned to a deployment, a snapshot is taken every 30 minu
 
 ## Supported repository types
 
-Elastic Cloud Enterprise installations support the following {{es}} [snapshot repository types](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#ess-repo-types):
+Elastic Cloud Enterprise installations support the following {{es}} snapshot repository types:
 
 * [Azure](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html)
 * [Google Cloud Storage](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html)
