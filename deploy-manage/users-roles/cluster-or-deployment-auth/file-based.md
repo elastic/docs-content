@@ -2,42 +2,28 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
-applies:
-  stack: all
-  eck: all
+applies_to:
+  deployment:
+    self: all
+    eck: all
 ---
 
 # File-based user authentication [file-realm]
 
 You can manage and authenticate users with the built-in `file` realm. With the `file` realm, users are defined in local files on each node in the cluster.
 
-::::{important}
-As the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this. You should also be aware that you cannot add or manage users in the `file` realm via the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) and you cannot add or manage them in {{kib}} on the **Management / Security / Users** page
-::::
+The `file` realm is useful as a fallback or recovery realm. For example in cases where the cluster is unresponsive or the security index is unavailable, or when you forget the password for your administrative users. In this type of scenario, the `file` realm is a convenient workaround: you can define a new `admin` user in the `file` realm and use it to log in and reset the credentials of all other users.
 
-
-The `file` realm is very useful as a fallback or recovery realm. For example in cases where the cluster is unresponsive or the security index is unavailable, or when you forget the password for your administrative users. In this type of scenario, the `file` realm is a convenient way out - you can define a new `admin` user in the `file` realm and use it to log in and reset the credentials of all other users.
-
-To define users, the {{security-features}} provide the [users](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) command-line tool. This tool enables you to add and remove users, assign user roles, and manage user passwords.
-
-## Configuring a file realm [file-realm-configuration]
-
-You don’t need to explicitly configure a `file` realm. The `file` and `native` realms are added to the realm chain by default. Unless configured otherwise, the `file` realm is added first, followed by the `native` realm.
+You can configure only one file realm on {{es}} nodes.
 
 ::::{important}
-While it is possible to define multiple instances of some other realms, you can define only *one* `file` realm per node.
+* In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this. 
+* You can't add or manage users in the `file` realm using the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security), orusing the {{kib}} **Management > Security > Users** page.
 ::::
 
+## Configure a file realm [file-realm-configuration]
 
-All the data about the users for the `file` realm is stored in two files on each node in the cluster: `users` and `users_roles`. Both files are located in `ES_PATH_CONF` and are read on startup.
-
-::::{important}
-The `users` and `users_roles` files are managed locally by the node and are **not** managed globally by the cluster. This means that with a typical multi-node cluster, the exact same changes need to be applied on each and every node in the cluster.
-
-A safer approach would be to apply the change on one of the nodes and have the files distributed or copied to all other nodes in the cluster (either manually or using a configuration management system such as Puppet or Chef).
-
-::::
-
+You don’t need to explicitly configure a `file` realm. The `file` and `native` realms are added to the realm chain by default. Unless configured otherwise, the `file` realm is added first, followed by the `native` realm. You can define only one `file` realm per node.
 
 1. (Optional) Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.file` namespace. At a minimum, you must set the realm’s `order` attribute.
 
@@ -53,60 +39,80 @@ A safer approach would be to apply the change on one of the nodes and have the f
                 order: 0
     ```
 
-    ::::{note}
-    You can configure only one file realm on {{es}} nodes.
-    ::::
+2. If you're using a self-managed {{es}} cluster, optionally change how often the `users` and `users_roles` files are checked.
 
-2. Restart {{es}}.
-3. Add user information to the `ES_PATH_CONF/users` file on each node in the cluster.
+    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file 
+    
+    :::{{warning}}
+    Because `resource.reload.interval.high` is a common setting in {{es}}, changing its value may effect other schedules in the system.
+    :::
 
-    The `users` file stores all the users and their passwords. Each line in the file represents a single user entry consisting of the username and **hashed** and **salted** password.
-
-    ```bash
-    rdeniro:$2a$10$BBJ/ILiyJ1eBTYoRKxkqbuDEdYECplvxnqQ47uiowE7yGqvCEgj9W
-    alpacino:$2a$10$cNwHnElYiMYZ/T3K4PvzGeJ1KbpXZp2PfoQD.gfaVdImnHOwIuBKS
-    jacknich:{PBKDF2}50000$z1CLJt0MEFjkIK5iEfgvfnA6xq7lF25uasspsTKSo5Q=$XxCVLbaKDimOdyWgLCLJiyoiWpA/XDMe/xtVgn1r5Sg=
-    ```
-
-    ::::{note}
-    To limit exposure to credential theft and mitigate credential compromise, the file realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted `sha-256` hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the `bcrypt` hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
-    ::::
+3. Restart {{es}}. 
+   
+   In {{eck}}, this change is propagated automatically.
 
 
-    While it is possible to modify the `users` files directly using any standard text editor, we strongly recommend using the [*elasticsearch-users*](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool to apply the required changes.
+## Add users
 
-    ::::{important}
-    As the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{es}} {{security-features}} do not deliver any mechanisms to guarantee this.
-    ::::
+**In a self-managed {{es}} cluster**, all the data about the users for the `file` realm is stored in two files on each node in the cluster: [`users` and `users_roles`](#using-users-and-users_roles-files). Both files are located in `ES_PATH_CONF` and are read on startup.
 
-4. Add role information to the `ES_PATH_CONF/users_roles` file on each node in the cluster.
+**In an {{eck}} deployment**, you can pass file realm user information in two ways:
 
-    The `users_roles` file stores the roles associated with the users. For example:
+1. Using [`users` and `user_roles`](#using-users-and-users_roles-files) files, which are passed using file realm content secrets 
+2. [Using Kubernetes basic authentication secrets](#using-k8s-basic-authentication-secrets)
 
-    ```shell
-    admin:rdeniro
-    power_user:alpacino,jacknich
-    user:jacknich
-    ```
+You can reference several secrets in the {{es}} specification. ECK aggregates their content into a single secret, mounted in every {{es}} Pod.
 
-    Each row maps a role to a comma-separated list of all the users that are associated with that role.
+::::{important}
+In a self-managed cluster, the `users` and `users_roles` files are managed locally by the node and are **not** managed globally by the cluster. This means that with a typical multi-node cluster, the exact same changes need to be applied on each and every node in the cluster.
 
-    You can use the [*elasticsearch-users*](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool to update this file. You must ensure that the same changes are made on every node in the cluster.
-
-5. (Optional) Change how often the `users` and `users_roles` files are checked.
-
-    By default, {{es}} checks these files for changes every 5 seconds. You can change this default behavior by changing the `resource.reload.interval.high` setting in the `elasticsearch.yml` file (as this is a common setting in {{es}}, changing its value may effect other schedules in the system).
-
-
-====
-
-### File realm [k8s_file_realm]
-
-::::{warning}
-Do not run the `elasticsearch-service-tokens` command inside an Elasticsearch Pod managed by the operator. This would overwrite the service account tokens used internally to authenticate the Elastic stack applications.
+A safer approach would be to apply the change on one of the nodes and have the files distributed or copied to all other nodes in the cluster (either manually or using a configuration management system such as Puppet or Chef).
 ::::
 
-Custom users can also be created by providing the desired [file realm content](https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html) or a username and password in Kubernetes secrets, referenced in the Elasticsearch resource.
+### Using `users` and `users_roles` files
+
+`users` and `users_roles` files contain all of the information about users in the file realm.
+
+#### `users`
+
+The `users` file stores all the users and their passwords. Each line in the file represents a single user entry consisting of the username and hashed and salted password.
+
+```
+rdeniro:$2a$10$BBJ/ILiyJ1eBTYoRKxkqbuDEdYECplvxnqQ47uiowE7yGqvCEgj9W
+alpacino:$2a$10$cNwHnElYiMYZ/T3K4PvzGeJ1KbpXZp2PfoQD.gfaVdImnHOwIuBKS
+jacknich:{PBKDF2}50000$z1CLJt0MEFjkIK5iEfgvfnA6xq7lF25uasspsTKSo5Q=$XxCVLbaKDimOdyWgLCLJiyoiWpA/XDMe/xtVgn1r5Sg=
+```
+
+:::{tip}
+To limit exposure to credential theft and mitigate credential compromise, the file realm stores passwords and caches user credentials according to security best practices. By default, a hashed version of user credentials is stored in memory, using a salted sha-256 hash algorithm and a hashed version of passwords is stored on disk salted and hashed with the bcrypt hash algorithm. To use different hash algorithms, see [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+:::
+
+#### `users_roles`
+
+The `users_roles` file stores the roles associated with the users. For example:
+
+```
+admin:rdeniro
+power_user:alpacino,jacknich
+user:jacknich
+```
+
+Each row maps a role to a comma-separated list of all the users that are associated with that role.
+
+#### Editing `users` and `users_roles` files
+
+You can edit files and secrets that contain `users` and `users_roles` manually, or you can edit them using a tool.
+
+**Manually**
+
+::::{tab-set}
+
+:::{tab-item} Self-managed
+In a self-managed cluster, you can edit the contents of `ES_PATH_CONF/users` and `ES_PATH_CONF/users_roles` directly.
+:::
+
+:::{tab-item} {{eck}}
+You can pass `users` and `user_roles` files to {{eck}} using a file realm secret:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -124,40 +130,11 @@ spec:
     count: 1
 ```
 
-You can reference several secrets in the Elasticsearch specification. ECK aggregates their content into a single secret, mounted in every Elasticsearch Pod.
-
-Referenced secrets may be of one of two types:
-
-1. a combination of username and password as in [Kubernetes basic authentication secrets](https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret)
-2. a raw file realm content secret
-
-A basic authentication secret can optionally also contain a `roles` file. It must contain a comma separated list of roles to be associated with the user. The following example illustrates this combination:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: secret-basic-auth
-type: kubernetes.io/basic-auth
-stringData:
-  username: rdeniro    # required field for kubernetes.io/basic-auth
-  password: mypassword # required field for kubernetes.io/basic-auth
-  roles: kibana_admin,ingest_admin  # optional, not part of kubernetes.io/basic-auth
-```
-
-::::{note}
-If you specify the password for the `elastic` user through such a basic authentication secret then the secret holding the password described in [Default elastic user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md#k8s-default-elastic-user) will not be created by the operator.
-::::
-
-
-The second option, a file realm secret, is composed of 2 entries. You can provide either one entry or both entries in each secret:
-
-* `users`: content of the `users` file. It specifies user names and password hashes, as described in the [file realm documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html).
-* `users_roles`: content of the `users_roles` file. It associates each role to a list of users, as described in the [file realm documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html).
+A file realm secret is composed of two entries: a `users` entry and a `users_roles` entry. You can provide either one entry or both entries in each secret.
 
 If you specify multiple users with the same name in more than one secret, the last one takes precedence. If you specify multiple roles with the same name in more than one secret, a single entry per role is derived from the concatenation of its corresponding users from all secrets.
 
-The following Secret specifies three users and their respective roles:
+The following secret specifies three users and their respective roles:
 
 ```yaml
 kind: Secret
@@ -174,10 +151,25 @@ stringData:
     power_user:alpacino,jacknich
     user:jacknich
 ```
+:::
 
-You can populate the content of both `users` and `users_roles` using the [elasticsearch-users](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool.
+::::
 
-For example, invoking the tool in a Docker container:
+**Using a tool**
+
+To avoid editing these files manually, you can use the [elasticsearch-users](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool:
+
+::::{tab-set}
+
+:::{tab-item} Self-managed
+
+```
+bin/elasticsearch-users useradd myuser -p mypassword -r monitoring_user
+```
+:::
+
+:::{tab-item} {{eck}}
+The following is an example of invoking the `elasticsearch-users` tool in a Docker container:
 
 ```sh
 # create a folder with the 2 files
@@ -193,3 +185,30 @@ docker run \
 # create a Kubernetes secret with the file realm content
 kubectl create secret generic my-file-realm-secret --from-file filerealm
 ```
+:::
+
+::::
+
+### Using {{k8s}} basic authentication secrets
+```{applies_to}
+eck: all
+```
+You can also add file-based authentication users using [Kubernetes basic authentication secrets](https://kubernetes.io/docs/concepts/configuration/secret/#basic-authentication-secret).
+
+A basic authentication secret can optionally contain a [`roles`](#users_roles) entry. It must contain a comma separated list of roles to be associated with the user. The following example illustrates this combination:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-basic-auth
+type: kubernetes.io/basic-auth
+stringData:
+  username: rdeniro    # required field for kubernetes.io/basic-auth
+  password: mypassword # required field for kubernetes.io/basic-auth
+  roles: kibana_admin,ingest_admin  # optional, not part of kubernetes.io/basic-auth
+```
+
+::::{note}
+If you specify the password for the `elastic` user through a basic authentication secret, then the secret holding the password described in [Default elastic user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md#k8s-default-elastic-user) will not be created by the operator.
+::::
