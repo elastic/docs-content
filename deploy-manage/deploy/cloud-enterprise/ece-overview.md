@@ -8,7 +8,7 @@ mapped_urls:
 
 # Elastic Cloud Enterprise overview [Elastic-Cloud-Enterprise-overview]
 
-This page provides a high-level introduction to {{ece}} (ECE), including it's [](./ece-architecture.md) and [Containerized design](./ece-containerization.md)
+This page provides a high-level introduction to {{ece}} (ECE), including its [](./ece-architecture.md) and [Containerized design](./ece-containerization.md).
 
 ::::{note}
 Try one of the [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html) to discover the core concepts of the Elastic Stack and understand how Elastic can help you.
