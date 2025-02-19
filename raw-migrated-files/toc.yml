@@ -50,7 +50,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-ingest-guides.md
       - file: cloud/cloud-enterprise/ece-install-offline.md
       - file: cloud/cloud-enterprise/ece-integrations-server-api-example.md
-      - file: cloud/cloud-enterprise/ece-maintenance-mode-routing.md
       - file: cloud/cloud-enterprise/ece-manage-apm-settings.md
       - file: cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md
       - file: cloud/cloud-enterprise/ece-manage-integrations-server.md
@@ -133,7 +132,6 @@ toc:
       - file: cloud/cloud/ec-access-kibana.md
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
-      - file: cloud/cloud/ec-api-deployment-other.md
       - file: cloud/cloud/ec-autoscaling.md
       - file: cloud/cloud/ec-billing-stop.md
       - file: cloud/cloud/ec-cloud-ingest-data.md
@@ -169,7 +167,6 @@ toc:
       - file: cloud/cloud/ec-planning.md
       - file: cloud/cloud/ec-prepare-production.md
       - file: cloud/cloud/ec-regional-deployment-aliases.md
-      - file: cloud/cloud/ec-restart-deployment.md
       - file: cloud/cloud/ec-restore-across-clusters.md
       - file: cloud/cloud/ec-restoring-snapshots.md
       - file: cloud/cloud/ec-saas-metrics-accessing.md
@@ -516,8 +513,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/shard-request-cache.md
       - file: elasticsearch/elasticsearch-reference/snapshot-restore.md
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
-      - file: elasticsearch/elasticsearch-reference/starting-elasticsearch.md
-      - file: elasticsearch/elasticsearch-reference/stopping-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
   - file: ingest-docs/fleet/index.md
     children:

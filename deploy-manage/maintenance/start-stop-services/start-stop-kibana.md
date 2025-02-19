@@ -1,19 +1,20 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/start-stop.html
+applies_to:
+  deployment:
+     self:
 ---
 
 # Start and stop Kibana [start-stop]
 
 The method for starting and stopping {{kib}} varies depending on how you installed it.  If a password protected keystore is used, the environment variable `KBN_KEYSTORE_PASSPHRASE_FILE` can be used to point to a file containing the password, the environment variable `KEYSTORE_PASSWORD` can be defined, or you will be prompted to enter to enter the password on startup,
 
-
-## Archive packages (`.tar.gz`) [start-start-targz] 
+## Archive packages (`.tar.gz`) [start-start-targz]
 
 If you installed {{kib}} on Linux or Darwin with a `.tar.gz` package, you can start and stop {{kib}} from the command line.
 
-
-### Run {{kib}} from the command line [_run_kib_from_the_command_line] 
+### Run {{kib}} from the command line [run-kibana-from-command-line]
 
 Kibana can be started from the command line as follows:
 
@@ -34,14 +35,11 @@ If you need to reset the password for the `elastic` user or other built-in users
 
 ::::
 
-
-
-## Archive packages (`.zip`) [start-stop-zip] 
+## Archive packages (`.zip`) [start-stop-zip]
 
 If you installed {{kib}} on Windows with a `.zip` package, you can stop and start {{kib}} from the command line.
 
-
-### Run {{kib}} from the command line [_run_kib_from_the_command_line_2] 
+### Run {{kib}} from the command line [_run_kib_from_the_command_line_2]
 
 Kibana can be started from the command line as follows:
 
@@ -62,12 +60,9 @@ If you need to reset the password for the `elastic` user or other built-in users
 
 ::::
 
+## Debian and RPM packages [start-stop-deb-rpm]
 
-
-## Debian and RPM packages [start-stop-deb-rpm] 
-
-
-### Run {{kib}} with `systemd` [_run_kib_with_systemd] 
+### Run {{kib}} with `systemd` [_run_kib_with_systemd]
 
 To configure {{kib}} to start automatically when the system starts, run the following commands:
 
@@ -84,7 +79,3 @@ sudo systemctl stop kibana.service
 ```
 
 These commands provide no feedback as to whether {{kib}} was started successfully or not. Log information can be accessed via `journalctl -u kibana.service`.
-
-
-
-$$$_run_kibana_from_the_command_line$$$
