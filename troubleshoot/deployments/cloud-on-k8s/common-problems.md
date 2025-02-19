@@ -1,9 +1,12 @@
 ---
+navigation_title: "Common issues"
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-common-problems.html
 ---
 
-# Common problems [k8s-common-problems]
+# Troubleshoot common Elastic Cloud on Kubernetes issues [k8s-common-problems]
 
 
 ## Operator crashes on startup with `OOMKilled` [k8s-common-problems-operator-oom]

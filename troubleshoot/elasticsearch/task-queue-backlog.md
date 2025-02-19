@@ -5,11 +5,8 @@ mapped_pages:
 
 # Task queue backlog [task-queue-backlog]
 
-::::{admonition} 
-**Product:** Elasticsearch<br> **Deployment type:** Elastic Cloud Enterprise, Elastic Cloud Hosted, Elastic Cloud on Kubernetes, Elastic Self-Managed <br> **Versions:** All
-
-::::
-
+% **Product:** Elasticsearch<br> **Deployment type:** Elastic Cloud % Enterprise, Elastic Cloud Hosted, Elastic Cloud on Kubernetes, Elastic
+% Self-Managed <br> **Versions:** All
 
 A backlogged task queue can prevent tasks from completing and lead to an unhealthy cluster state. Contributing factors include resource constraints, a large number of tasks triggered at once, and long-running tasks.
 
@@ -116,4 +113,4 @@ Related symptoms:
 * [High CPU usage](high-cpu-usage.md)
 * [Rejected requests](rejected-requests.md)
 * [Hot spotting](hotspotting.md)
-
+* [Troubeshooting overview](/troubleshoot/index.md)
