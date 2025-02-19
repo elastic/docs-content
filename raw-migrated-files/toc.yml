@@ -270,7 +270,6 @@ toc:
       - file: docs-content/serverless/project-setting-data.md
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
-      - file: docs-content/serverless/quickstart-monitor-hosts-with-otel.md
       - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-manage-notes.md
       - file: docs-content/serverless/security-advanced-settings.md
@@ -535,7 +534,6 @@ toc:
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
       - file: observability-docs/observability/observability-introduction.md
-      - file: observability-docs/observability/quickstart-monitor-hosts-with-otel.md
       - file: observability-docs/observability/rate-aggregation.md
       - file: observability-docs/observability/slo-burn-rate-alert.md
       - file: observability-docs/observability/slo-create.md
