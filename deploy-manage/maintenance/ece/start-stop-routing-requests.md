@@ -9,7 +9,6 @@ applies_to:
 
 # Start and stop routing requests [maintenance-mode-routing]
 
-
 The {{ecloud}} proxy service routes traffic from external sources to the deployment, between deployments, and between products within a deployment. For example, it routes API requests from your local machine to your deployment, CCR and CCS requests between your deployments, and communications between {{kib}} and {{es}}. It does not direct the TCP traffic between {{es}} nodes, nor does it manage requests starting within {{es}} outwards to external sources such as to snapshot repositories.
 
 The {{ecloud}} proxy routes HTTP requests to its deployment’s individual product instances through the product’s endpoint. By default, instances are enabled to route HTTP traffic and will report no special messaging.
@@ -32,7 +31,25 @@ To block HTTP requests for an instance, select **Stop routing requests** under f
 
 The instance will then report **Not routing requests**. It will complete existing requested traffic, but not be sent new requests.
 
+You can stop routing requests to disable incoming requests to particular instances. You can also massively disable all allocator instances routing with the [allocator-toggle-routing-requests.sh](https://download.elastic.co/cloud/allocator-toggle-routing-requests.sh) script. The script runs with the following parameters in the form environment variables:
+
+* `API_URL` Url of the administration API.
+* `AUTH_HEADER` Curl format string representing the authentication header.
+* `ALLOCATOR_ID` Action target allocator id.
+* `ENABLE_TRAFFIC` Wether traffic to the selected allocator instances should be enabled (`true`) or disabled (`false`).
+
+This is an example of script execution to disable routing on all instances running on a given allocator:
+
+```bash
+AUTH_HEADER="Authorization: ApiKey $(cat ~/api.key)" API_URL="https://adminconsole:12443" ALLOCATOR_ID="192.168.44.10" ENABLE_TRAFFIC=false ./allocator-toggle-routing-requests.sh
+```
+
+The same script can be used to enable traffic again:
+
+```bash
+AUTH_HEADER="Authorization: ApiKey $(cat ~/api.key)" API_URL="https://adminconsole:12443" ALLOCATOR_ID="192.168.44.10" ENABLE_TRAFFIC=true ./allocator-toggle-routing-requests.sh
+```
+
 ## Restart routing requests [restart-routing-requests]
 
 To unblock HTTP requests for an instance, select **Start routing requests** under from instance’s menu.
-
