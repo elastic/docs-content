@@ -159,18 +159,6 @@ The following features are planned for future support in all {serverless-full} p
 * Clone index API
 * Traffic filtering and VPCs
 
-The following {es-serverless} project-specific features are planned for future support:
-
-* {ref}/behavioral-analytics-overview.html[Behavioral Analytics]
-* {ref}/search-application-overview.html[Search Applications]
-* Managed web crawler
-+ 
-You can use the https://github.com/elastic/crawler[self-managed web crawler] in the meantime.
-+
-* Managed Search connectors
-+ 
-You can use {ref}/es-build-connector.html[self-managed Search connectors] in the meantime.
-
 [discrete]
 [[elasticsearch-differences-serverless-feature-unavailable]]
 === Unplanned features
@@ -180,3 +168,7 @@ The following features are not available in {es-serverless} and are not planned 
 * https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html[Custom plugins and bundles]
 * https://www.elastic.co/guide/en/elasticsearch/hadoop/current/reference.html[{es} for Apache Hadoop]
 * {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[Scripted metric aggregations]
+* Managed web crawler: You can use the https://github.com/elastic/crawler[self-managed web crawler] instead.
+* Managed Search connectors: You can use {ref}/es-build-connector.html[self-managed Search connectors] instead.
+
+

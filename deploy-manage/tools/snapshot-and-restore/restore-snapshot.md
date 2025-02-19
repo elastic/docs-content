@@ -33,3 +33,9 @@ $$$restore-entire-cluster$$$
 $$$restore-index-data-stream$$$
 
 $$$troubleshoot-restore$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md)
+* [/raw-migrated-files/cloud/cloud/ec-restore-across-clusters.md](/raw-migrated-files/cloud/cloud/ec-restore-across-clusters.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-restore-across-clusters.md](/raw-migrated-files/cloud/cloud-enterprise/ece-restore-across-clusters.md)

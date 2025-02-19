@@ -49,3 +49,8 @@ $$$ech-find-your-resource-name$$$
 $$$ech-private-link-azure-dns$$$
 
 $$$ech-private-link-azure-service-aliases$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-traffic-filtering-vnet.md](/raw-migrated-files/cloud/cloud/ec-traffic-filtering-vnet.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-vnet.md](/raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-vnet.md)

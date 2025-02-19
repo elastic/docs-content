@@ -114,7 +114,7 @@ Complete the following steps **for each node in your cluster**. To join the same
     ```
 
 3. Complete the previous steps for each node in your cluster.
-4. On **every** node in your cluster, start {{es}}. The method for [starting](starting-elasticsearch.md) and [stopping](starting-elasticsearch.md) {{es}} varies depending on how you installed it.
+4. On **every** node in your cluster, start {{es}}. The method for [starting and stopping](../../../deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md) {{es}} varies depending on how you installed it.
 
     For example, if you installed {{es}} with an archive distribution (`tar.gz` or `.zip`), you can enter `Ctrl+C` on the command line to stop {{es}}.
 

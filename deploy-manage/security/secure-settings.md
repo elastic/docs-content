@@ -36,3 +36,13 @@ $$$ec-add-secret-values$$$
 $$$change-password$$$
 
 $$$creating-keystore$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-configuring-keystore.md](/raw-migrated-files/cloud/cloud-enterprise/ece-configuring-keystore.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md](/raw-migrated-files/cloud/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md)
+* [/raw-migrated-files/cloud/cloud/ec-configuring-keystore.md](/raw-migrated-files/cloud/cloud/ec-configuring-keystore.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-configuring-keystore.md](/raw-migrated-files/cloud/cloud-heroku/ech-configuring-keystore.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-es-secure-settings.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-es-secure-settings.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-settings.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-settings.md)
+* [/raw-migrated-files/kibana/kibana/secure-settings.md](/raw-migrated-files/kibana/kibana/secure-settings.md)

@@ -27,7 +27,7 @@ Workflow names are case-sensitive.
 
 ### Examples [_examples_5] 
 
-The following example creates an API key with a [restriction]() to the `search_application_query` workflow, which allows to call only [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search):
+The following example creates an API key with a restriction to the `search_application_query` workflow, which allows to call only [Search Application Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-search):
 
 ```console
 POST /_security/api_key

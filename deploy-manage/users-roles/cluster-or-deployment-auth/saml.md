@@ -69,3 +69,17 @@ $$$saml-elasticsearch-authentication$$$
 $$$saml-no-kibana-sp-init-sso$$$
 
 $$$req-authn-context$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/saml-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/saml-realm.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece_sign_outgoing_saml_message.md](/raw-migrated-files/cloud/cloud-enterprise/ece_sign_outgoing_saml_message.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece_optional_settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece_optional_settings.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-securing-clusters-SAML.md](/raw-migrated-files/cloud/cloud-enterprise/ece-securing-clusters-SAML.md)
+* [/raw-migrated-files/cloud/cloud/ec-securing-clusters-SAML.md](/raw-migrated-files/cloud/cloud/ec-securing-clusters-SAML.md)
+* [/raw-migrated-files/cloud/cloud/ec-sign-outgoing-saml-message.md](/raw-migrated-files/cloud/cloud/ec-sign-outgoing-saml-message.md)
+* [/raw-migrated-files/cloud/cloud/ec-securing-clusters-saml-azure.md](/raw-migrated-files/cloud/cloud/ec-securing-clusters-saml-azure.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-securing-clusters-SAML.md](/raw-migrated-files/cloud/cloud-heroku/ech-securing-clusters-SAML.md)
+* [/raw-migrated-files/cloud/cloud-heroku/echsign-outgoing-saml-message.md](/raw-migrated-files/cloud/cloud-heroku/echsign-outgoing-saml-message.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-saml-authentication.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-saml-authentication.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/saml-guide-stack.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/saml-guide-stack.md)
