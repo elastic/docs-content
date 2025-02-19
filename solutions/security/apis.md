@@ -1,4 +1,4 @@
-# API
+# APIs
 
 You can use these APIs to interface with {{elastic-sec}} features:
 
