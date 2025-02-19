@@ -35,7 +35,7 @@ This section covers the following tasks:
 
 * Learn how to use the multiple [](./cloud-enterprise/tools-apis.md) available
 
-Other sections of the documentation also include important tasks related with ECE:
+Other sections of the documentation also include important tasks related to ECE:
 
 * [Secure your ECE installation](../security/secure-your-elastic-cloud-enterprise-installation.md)
 * [Users and roles](../users-roles/cloud-enterprise-orchestrator.md)
