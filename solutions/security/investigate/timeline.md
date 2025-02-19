@@ -222,10 +222,8 @@ From the **Correlation** tab, you can also do the following:
 
 ## Use {{esql}} to investigate events [esql-in-timeline]
 
-% The following note isn't present in the Serverless docs and there's no enableESQL advanced setting in Serverless. The note might be applicable to ESS only. 
-
 ::::{note}
-{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
+Elastic Stack 9.0.0+ {{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html). This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
 ::::
 
 
