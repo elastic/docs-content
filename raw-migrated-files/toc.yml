@@ -257,7 +257,6 @@ toc:
       - file: docs-content/serverless/observability-parse-log-data.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-quickstarts-k8s-logs-metrics.md
-      - file: docs-content/serverless/observability-quickstarts-monitor-hosts-with-elastic-agent.md
       - file: docs-content/serverless/observability-rateAggregation.md
       - file: docs-content/serverless/observability-send-application-logs.md
       - file: docs-content/serverless/observability-serverless-observability-overview.md
@@ -536,7 +535,6 @@ toc:
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
       - file: observability-docs/observability/observability-introduction.md
-      - file: observability-docs/observability/quickstart-monitor-hosts-with-elastic-agent.md
       - file: observability-docs/observability/quickstart-monitor-hosts-with-otel.md
       - file: observability-docs/observability/rate-aggregation.md
       - file: observability-docs/observability/slo-burn-rate-alert.md
