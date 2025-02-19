@@ -54,7 +54,7 @@ Begin the provider profile by adding the general settings:
 
 ## Map SAML attributes to user properties [ece-saml-attributes]
 
-The SAML assertion about a user usually includes attribute names and values that can be used for role mapping. The configuration in this section allows to configure a mapping between these SAML attribute values and [{{es}} user properties](https://www.elastic.co/guide/en/{{es}}/reference/current/saml-guide-stack.html#saml-{{es}}-authentication).
+The SAML assertion about a user usually includes attribute names and values that can be used for role mapping. The configuration in this section allows to configure a mapping between these SAML attribute values and [{{es}} user properties](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-elasticsearch-authentication).
 
 When the attributes have been mapped to user properties such as `groups`, these can then be used to configure  [role mappings](#ece-saml-role-mapping). Mapping the `principal` user property is required and the `groups` property is recommended for a minimum configuration.
 
@@ -73,7 +73,7 @@ To assign all authenticated users a single role, select one of the **Default rol
 
 To assign roles according to the user properties (such as `dn`, `groups`, `username`), use the **Add role mapping rule** fields.
 
-For a list of roles, refer to [Available roles and permissions](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles#ece-user-role-permissions).
+For a list of roles, refer to [Available roles and permissions](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md#ece-user-role-permissions).
 
 In the following example, you have configured the {{es}} user property `groups` to map to the SAML attribute with name `SAML_Roles` and you want only users whose SAML assertion contains the `SAML_Roles` attribute with value `p_viewer` to get the `Platform viewer` role in {{ece}}.
 

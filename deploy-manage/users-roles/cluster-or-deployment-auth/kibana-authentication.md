@@ -305,7 +305,6 @@ xpack.security.authc.providers:
 ::::
 
 
-
 ## Anonymous authentication [anonymous-authentication]
 
 ::::{important}

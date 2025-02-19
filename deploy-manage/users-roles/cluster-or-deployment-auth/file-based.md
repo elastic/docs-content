@@ -6,6 +6,7 @@ applies_to:
   deployment:
     self: all
     eck: all
+navigation_title: "File-based"
 ---
 
 # File-based user authentication [file-realm]

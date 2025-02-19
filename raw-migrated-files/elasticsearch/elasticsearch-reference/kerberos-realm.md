@@ -173,7 +173,7 @@ To configure a Kerberos realm in {{es}}:
 
 ### Configure Kibana for Kerberos [kerberos-realm-kibana]
 
-If you want to use Kerberos to authenticate via your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [kerberos single sign-on](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#kerberos)
+If you want to use Kerberos to authenticate via your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [kerberos single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#kerberos)
 
 
 

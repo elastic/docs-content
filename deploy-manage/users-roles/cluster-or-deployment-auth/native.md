@@ -5,10 +5,11 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
 applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+  deployment:
+    self: all
+    hosted: all
+    ece: all
+    eck: all
 navigation_title: "Native"
 ---
 
