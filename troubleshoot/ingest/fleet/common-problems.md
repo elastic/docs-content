@@ -803,7 +803,7 @@ If the installation is correct and all resources are deployed, but data is not f
 
 * Missing cluster-level metrics (provided by `kube-state-metrics`):
 
-    As described in [Run {{agent}} Standalone on Kubernetes](https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/index-types/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
+    As described in [Run {{agent}} Standalone on Kubernetes](https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
 
     1. Determine which Pod owns the [leadership](https://www.elastic.co/guide/en/fleet/current/kubernetes_leaderelection-provider.html) `lease` in the cluster, with:
 

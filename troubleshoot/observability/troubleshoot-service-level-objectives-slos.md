@@ -191,7 +191,7 @@ Refer to [SLO API calls](https://www.elastic.co/docs/api/doc/kibana/v8/operation
 
 
 ## Upgrade from beta to GA [slo-troubleshoot-beta]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 

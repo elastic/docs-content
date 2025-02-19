@@ -12,7 +12,7 @@ You can set it manually to skip rollover if you need to make an exception to you
 If an index’s lifecycle policy is removed, this setting is also removed.
 
 ::::{important} 
-When `index.lifecycle.indexing_complete` is `true`, {{ilm-init}} verifies that the index is no longer the write index for the alias specified by `index.lifecycle.rollover_alias`. If the index is still the write index or the rollover alias is not set, the index is moved to the [`ERROR` step](../../../troubleshoot/elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md).
+When `index.lifecycle.indexing_complete` is `true`, {{ilm-init}} verifies that the index is no longer the write index for the alias specified by `index.lifecycle.rollover_alias`. If the index is still the write index or the rollover alias is not set, the index is moved to the [`ERROR` step](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md).
 ::::
 
 

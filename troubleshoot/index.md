@@ -19,7 +19,7 @@ The documentation team is actively working on structure, user focus, and more.
 Use the topics in this section to troubleshoot Elastic products, features, and deployments.
 
 
-* [](/troubleshoot/elasticsearch/elasticsearch-reference.md)
+* [](/troubleshoot/elasticsearch/elasticsearch.md)
 * [](/troubleshoot/kibana.md)
 * [](/troubleshoot/observability.md)
 * [](/troubleshoot/security.md)

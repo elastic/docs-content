@@ -153,7 +153,7 @@ If you need help troubleshooting a configuration failure, refer to [Endpoint man
 
 ### Filter endpoints [_filter_endpoints]
 
-To filter the Endpoints list, use the search bar to enter a query using **{{kibana-ref}}/kuery-query.html[{{kib}} Query Language (KQL)]**. To refresh the search results, click **Refresh**.
+To filter the Endpoints list, use the search bar to enter a query using **https://www.elastic.co/guide/en/kibana/current/kuery-query.html[{{kib}} Query Language (KQL)]**. To refresh the search results, click **Refresh**.
 
 :::{image} ../../../images/security-filter-endpoints.png
 :alt: filter endpoints

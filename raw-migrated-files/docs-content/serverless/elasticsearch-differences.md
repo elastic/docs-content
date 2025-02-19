@@ -118,7 +118,7 @@ Some features that are available in Elastic Cloud Hosted and self-managed offeri
 
 These features have been replaced by a new feature and are therefore not available on {{es-serverless}}:
 
-* **Index lifecycle management ({{ilm-init}})** is not available, in favor of [**data stream lifecycle**](../../../manage-data/data-store/index-types.md).
+* **Index lifecycle management ({{ilm-init}})** is not available, in favor of **data stream lifecycle**.
 
     In an Elastic Cloud Hosted or self-managed environment, {{ilm-init}} lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. {{es-serverless}} eliminates this complexity by optimizing your cluster performance for you.
 

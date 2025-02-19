@@ -1,6 +1,6 @@
 # Index management in {{kib}} [index-mgmt]
 
-{{kib}}'s **Index Management** features are an easy, convenient way to manage your cluster’s indices, [data streams](../../../manage-data/data-store/index-types/data-streams.md), [index templates](../../../manage-data/data-store/templates.md), and [enrich policies](../../../manage-data/ingest/transform-enrich/data-enrichment.md). Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
+{{kib}}'s **Index Management** features are an easy, convenient way to manage your cluster’s indices, [data streams](../../../manage-data/data-store/data-streams.md), [index templates](../../../manage-data/data-store/templates.md), and [enrich policies](../../../manage-data/ingest/transform-enrich/data-enrichment.md). Practicing good index management ensures your data is stored correctly and in the most cost-effective way possible.
 
 To use these features, go to **Stack Management** > **Index Management**.
 

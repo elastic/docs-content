@@ -6,37 +6,6 @@ mapped_urls:
 
 # Users page
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/users-page.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-users-page.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$user-details-flyout$$$
-
-$$$user-details-page$$$
-
-$$$user-risk-summary$$$
-
-$$$user-asset-criticality-section$$$
-
-$$$user-insights$$$
-
-$$$user-observed-data$$$
-
-$$$security-users-page-user-details-page$$$
-
-$$$security-users-page-user-details-flyout$$$
-
-$$$security-users-page-user-risk-summary$$$
-
-$$$security-users-page-asset-criticality$$$
-
-$$$security-users-page-observed-data$$$
-
 The Users page provides a comprehensive overview of user data to help you understand authentication and user behavior within your environment. Key performance indicator (KPI) charts, data tables, and interactive widgets let you view specific data and drill down for deeper insights.
 
 :::{image} ../../../images/security-users-page.png
@@ -65,7 +34,7 @@ Beneath the KPI charts are data tables, which are useful for viewing and investi
 * **All users**: A chronological list of unique user names, when they were last active, and the associated domains.
 * **Authentications**: A chronological list of user authentication events and associated details, such as the number of successes and failures, and the host name of the last successful destination.
 * **Anomalies**: Unusual activity discovered by machine learning jobs that contain user data.
-* **User risk**: The latest recorded user risk score for each user, and its user risk classification. This feature requires a [Platinum subscription](https://www.elastic.co/pricing) or higher and must be enabled to display the data. Click **Enable** on the **User risk** tab to get started. To learn more, refer to our [entity risk scoring documentation](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
+* **User risk**: The latest recorded user risk score for each user, and its user risk classification. In {{stack}} 9.0.0+, this feature requires a [Platinum subscription](https://www.elastic.co/pricing) or higher. In serverless, this feature requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md). Click **Enable** on the **User risk** tab to get started. To learn more, refer to our [entity risk scoring documentation](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
 The Events table includes inline actions and several customization options. To learn more about what you can do with the data in these tables, refer to [*Manage detection alerts*](/solutions/security/detect-and-alert/manage-detection-alerts.md).
 

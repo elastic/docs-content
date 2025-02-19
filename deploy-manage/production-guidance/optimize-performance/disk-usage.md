@@ -107,4 +107,4 @@ Due to the fact that multiple documents are compressed together into blocks, it 
 
 ## Roll up historical data [roll-up-historical-data]
 
-Keeping older data can be useful for later analysis but is often avoided due to storage costs. You can use downsampling to summarize and store historical data at a fraction of the raw data’s storage cost. See [Downsampling a time series data stream](../../../manage-data/data-store/index-types/downsampling-time-series-data-stream.md).
+Keeping older data can be useful for later analysis but is often avoided due to storage costs. You can use downsampling to summarize and store historical data at a fraction of the raw data’s storage cost. See [Downsampling a time series data stream](../../../manage-data/data-store/data-streams/downsampling-time-series-data-stream.md).
