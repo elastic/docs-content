@@ -21,7 +21,7 @@ This section provides step-by-step guidance on:
   * [Install ECE on your own premises](./install-ece-on-own-premises.md)
   * [Alternative: install ECE with Ansible](./alternative-install-ece-with-ansible.md)
 
-* [Air gapped installations](./air-gapped-install.md): Review the different options for air-gapped environments.
+* [Air-gapped installations](./air-gapped-install.md): Review the different options for air-gapped environments.
   * [With your private Docker registry](./ece-install-offline-with-registry.md)
   * [Without any Docker registry](./ece-install-offline-no-registry.md)
 
