@@ -5,7 +5,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-mapping-resources.html
 ---
 
-# Mapping users and groups to roles
+# Map external users and groups to roles
 
 % What needs to be done: Refine
 

@@ -1,9 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso-okta.html
+navigation_title: Okta
+applies:
+  hosted: all
+  serverless: all
 ---
 
-# Register Elastic Cloud SAML in Okta [ec-saml-sso-okta]
+# Register {{ecloud}} SAML in Okta [ec-saml-sso-okta]
 
 To [configure {{ecloud}} SAML SSO](configure-saml-authentication.md) with Okta as the identity provider (IdP), perform the following steps.
 
