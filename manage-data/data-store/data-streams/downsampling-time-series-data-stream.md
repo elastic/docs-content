@@ -131,17 +131,17 @@ The following restrictions and limitations apply for downsampling:
 * Only indices in a [time series data stream](time-series-data-stream-tsds.md) are supported.
 * Data is downsampled based on the time dimension only. All other dimensions are copied to the new index without any modification.
 * Within a data stream, a downsampled index replaces the original index and the original index is deleted. Only one index can exist for a given time period.
-* A source index must be in read-only mode for the downsampling process to succeed. Check the [Run downsampling manually](run-downsampling-manually.md) example for details.
+* A source index must be in read-only mode for the downsampling process to succeed. Check the [Run downsampling manually](./run-downsampling-manually.md) example for details.
 * Downsampling data for the same period many times (downsampling of a downsampled index) is supported. The downsampling interval must be a multiple of the interval of the downsampled index.
 * Downsampling is provided as an ILM action. See [Downsample](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-downsample.html).
 * The new, downsampled index is created on the data tier of the original index and it inherits its settings (for example, the number of shards and replicas).
 * The numeric `gauge` and `counter` [metric types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-field-meta.html) are supported.
-* The downsampling configuration is extracted from the time series data stream [index mapping](set-up-tsds.md#create-tsds-index-template). The only additional required setting is the downsampling `fixed_interval`.
+* The downsampling configuration is extracted from the time series data stream [index mapping](./set-up-tsds.md#create-tsds-index-template). The only additional required setting is the downsampling `fixed_interval`.
 
 
 ## Try it out [try-out-downsampling]
 
-To take downsampling for a test run, try our example of [running downsampling manually](run-downsampling-manually.md).
+To take downsampling for a test run, try our example of [running downsampling manually](./run-downsampling-manually.md).
 
-Downsampling can easily be added to your ILM policy. To learn how, try our [Run downsampling with ILM](run-downsampling-with-ilm.md) example.
+Downsampling can easily be added to your ILM policy. To learn how, try our [Run downsampling with ILM](./run-downsampling-with-ilm.md) example.
 

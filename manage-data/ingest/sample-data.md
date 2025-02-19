@@ -6,13 +6,42 @@ mapped_urls:
 
 # Sample data
 
-% What needs to be done: Refine
+Using sample data is a great way to start exploring the system and learn your way around. There are a few ways to easily ingest sample data into {{es}}.
 
-% GitHub issue: docs-projects#373
+## Add sample data sets
 
-% Scope notes: Combine the two linked resources.
+The simplest way is to add one or more of our sample data sets. These data sets come with sample visualizations, dashboards, and more to help you explore the interface before you add your own data. 
 
-% Use migrated content from existing pages that map to this page:
+If you have no data, you will be prompted to install these packages when running {{kib}} for the first time. 
 
-% - [ ] ./raw-migrated-files/kibana/kibana/sample-data.md
-% - [ ] ./raw-migrated-files/kibana/kibana/connect-to-elasticsearch.md
+You can also access and install them from the **Integrations** page. Go to **Integrations** and search for **Sample Data**. On the **Sample Data** page, expand the **Other sample data sets** section and add the type of data you want.
+<br>
+:::{image} /images/sample-data-sets.png
+:alt: Sample data sets
+:class: screenshot
+:::
+
+## Run the makelogs script
+
+Alternatively, run the provided `makelogs` script to generate sample data.
+
+```bash
+node scripts/makelogs --auth <username>:<password>
+```
+
+The default username and password combination are `elastic:changeme`
+
+:::{important}
+Make sure to execute `node scripts/makelogs` *after* {{es}} is up and running.
+:::
+
+## Upload a file
+
+You can also upload your own sample data using the **Upload a file** option on the **Integrations** page. 
+
+Go to **Integrations** and search for **Upload a file**. On the **Upload file** page, select or drag and drop a file to add your data.
+<br>
+:::{image} /images/sample-upload-a-file.png
+:alt: Upload a sample data file
+:class: screenshot
+:::

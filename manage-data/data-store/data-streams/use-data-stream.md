@@ -70,7 +70,7 @@ GET /_data_stream/my-data-stream/_stats?human=true
 
 ## Manually roll over a data stream [manually-roll-over-a-data-stream] 
 
-Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to manually [roll over](data-streams.md#data-streams-rollover) a data stream. You have two options when manually rolling over:
+Use the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) to manually [roll over](../data-streams.md#data-streams-rollover) a data stream. You have two options when manually rolling over:
 
 1. To immediately trigger a rollover:
 
@@ -107,7 +107,7 @@ POST /my-data-stream/_open/
 
 ## Reindex with a data stream [reindex-with-a-data-stream] 
 
-Use the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to copy documents from an existing index, alias, or data stream to a data stream. Because data streams are [append-only](data-streams.md#data-streams-append-only), a reindex into a data stream must use an `op_type` of `create`. A reindex cannot update existing documents in a data stream.
+Use the [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to copy documents from an existing index, alias, or data stream to a data stream. Because data streams are [append-only](../data-streams.md#data-streams-append-only), a reindex into a data stream must use an `op_type` of `create`. A reindex cannot update existing documents in a data stream.
 
 ```console
 POST /_reindex

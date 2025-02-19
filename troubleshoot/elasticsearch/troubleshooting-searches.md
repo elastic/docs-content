@@ -217,9 +217,9 @@ To troubleshoot queries in {{kib}}, select **Inspect** in the toolbar. Next, sel
 GET /my-index-000001/_settings
 ```
 
-You can update dynamic index settings with the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). [Changing dynamic index settings for a data stream](../../manage-data/data-store/index-types/modify-data-stream.md#change-dynamic-index-setting-for-a-data-stream) requires changing the index template used by the data stream.
+You can update dynamic index settings with the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings). [Changing dynamic index settings for a data stream](../../manage-data/data-store/data-streams/modify-data-stream.md#change-dynamic-index-setting-for-a-data-stream) requires changing the index template used by the data stream.
 
-For static settings, you need to create a new index with the correct settings. Next, you can reindex the data into that index. For data streams, refer to [Change a static index setting for a data stream](../../manage-data/data-store/index-types/modify-data-stream.md#change-static-index-setting-for-a-data-stream).
+For static settings, you need to create a new index with the correct settings. Next, you can reindex the data into that index. For data streams, refer to [Change a static index setting for a data stream](../../manage-data/data-store/data-streams/modify-data-stream.md#change-static-index-setting-for-a-data-stream).
 
 
 ## Find slow queries [troubleshooting-slow-searches]
