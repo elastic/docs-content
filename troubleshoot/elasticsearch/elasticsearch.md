@@ -37,7 +37,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 ## Management [troubleshooting-management]
 
 * [Troubleshoot index and snapshot lifecycle management](start-ilm.md)
-* [Fix index lifecycle management errors](/troubleshoot/elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md)
+* [Fix index lifecycle management errors](/troubleshoot/elasticsearch/index-lifecycle-management-errors.md)
 
 
 ## Capacity [troubleshooting-capacity]

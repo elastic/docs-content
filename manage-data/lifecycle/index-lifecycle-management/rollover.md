@@ -27,7 +27,7 @@ Data streams are designed for append-only data, where the data stream name can b
 * A single index designated as the *write index*. This is the active index that handles all write requests. On each rollover, the new index becomes the write index.
 
 ::::{note} 
-When an index is rolled over, the previous index’s age is updated to reflect the rollover time. This date, rather than the index’s `creation_date`, is used in {{ilm}} `min_age` phase calculations. [Learn more](../../../troubleshoot/elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md#min-age-calculation).
+When an index is rolled over, the previous index’s age is updated to reflect the rollover time. This date, rather than the index’s `creation_date`, is used in {{ilm}} `min_age` phase calculations. [Learn more](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md#min-age-calculation).
 
 ::::
 
