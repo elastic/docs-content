@@ -115,7 +115,7 @@ To explore a case, click on its name. You can then:
     Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](../../../images/security-markdown-icon.png "")) in the bottom right of the comment.
     ::::
 
-* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts) and [indicators](/troubleshoot/security/indicators-of-compromise.md#review-indicator-in-case) attached to the case
+* Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts) and [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case) attached to the case
 * [Add files](/solutions/security/investigate/open-manage-cases.md#cases-add-files)
 * [Add a Lens visualization](/solutions/security/investigate/open-manage-cases.md#cases-lens-visualization)
 * Modify the case’s description, assignees, category, severity, status, and tags.

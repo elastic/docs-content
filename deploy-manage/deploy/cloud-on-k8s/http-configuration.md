@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-http-configuration.html
 ---
@@ -14,7 +16,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 By default a `ClusterIP` [service](https://kubernetes.io/docs/concepts/services-networking/service/) is created and associated with the Elastic Maps Server deployment. If you want to expose maps externally with a [load balancer](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer), it is recommended to include a custom DNS name or IP in the self-generated certificate.
 
-Refer to [Reserve static IP and custom domain](tls-certificates.md#k8s-static-ip-custom-domain) for more details.
+Refer to [Reserve static IP and custom domain](/deploy-manage/security/secure-http-communications.md#k8s-static-ip-custom-domain) for more details.
 
 
 ## Provide your own certificate [k8s-maps-http-custom-tls]
@@ -24,7 +26,7 @@ If you want to use your own certificate, the required configuration is identical
 
 ## Disable TLS [k8s-maps-http-disable-tls]
 
-You can disable the generation of the self-signed certificate and hence disable TLS. Check [Disable TLS](tls-certificates.md#k8s-disable-tls).
+You can disable the generation of the self-signed certificate and hence disable TLS. Check [Disable TLS](/deploy-manage/security/secure-http-communications.md#k8s-disable-tls).
 
 ### Ingress and Kibana configuration [k8s-maps-ingress]
 

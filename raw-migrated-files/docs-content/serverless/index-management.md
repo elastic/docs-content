@@ -21,11 +21,11 @@ The **{{index-manage-app}}** page contains an overview of your indices.
 * To drill down into the index mappings, settings, and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 
 
-## Manage data streams [index-management-manage-data-streams]
+## Manage data streams 
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 
-In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB index mode by default. The logsDB index mode creates a [logs data stream](../../../manage-data/data-store/index-types/logsdb.md).
+In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB index mode by default. The logsDB index mode creates a [logs data stream](../../../manage-data/data-store/index-types/logs-data-stream.md).
 
 The value in the **Indices** column indicates the number of backing indices. Click this number to drill down into details.
 
@@ -53,7 +53,7 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 :class: screenshot
 :::
 
-The default **logs** template uses the logsDB index mode to create a [logs data stream](../../../manage-data/data-store/index-types/logsdb.md).
+The default **logs** template uses the logsDB index mode to create a [logs data stream](../../../manage-data/data-store/index-types/logs-data-stream.md).
 
 If you don’t have any templates, you can create one using the **Create template** wizard.
 

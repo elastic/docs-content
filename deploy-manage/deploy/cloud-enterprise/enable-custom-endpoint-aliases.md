@@ -25,7 +25,6 @@ After installing or upgrading to version 2.10 or later:
     * For Elasticsearch, the certificate needs to allow for ***.es.<your-domain>**
     * For Kibana, the certificate needs to allow for ***.kb.<your-domain>**
     * For APM, the certificate needs to allow for ***.apm.<your-domain>**
-    * For Enterprise Search or AppSearch, the certificate needs to allow for ***.ent.<your-domain>**
     * For Fleet, the certificate needs to allow for ***.fleet.<your-domain>**
 
 3. In the **Platform** menu, select **Settings**.

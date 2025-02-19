@@ -9,11 +9,9 @@ applies:
 
 # Google AI Studio inference integration [infer-service-google-ai-studio]
 
-::::{admonition} New API reference
-For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
-
-::::
-
+:::{tip} Inference API reference  
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `googleaistudio` service.
 

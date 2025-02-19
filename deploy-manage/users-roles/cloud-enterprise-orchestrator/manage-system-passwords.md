@@ -50,5 +50,5 @@ To reset the password for the `admin` user if no secrets file exists:
 bash elastic-cloud-enterprise.sh reset-adminconsole-password
 ```
 
-For additional usage examples, check [`elastic-cloud-enterprise.sh reset-adminconsole-password` Reference](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-installation-script-reset.html).
+For additional usage examples, check [`elastic-cloud-enterprise.sh reset-adminconsole-password` Reference](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-installation-script-reset.md).
 

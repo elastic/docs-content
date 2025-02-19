@@ -1,6 +1,6 @@
 # Get Elastic [get-elastic]
 
-{{ecloud}} enables you set up the {{stack}} and start using the Enterprise Search, Observability, and Security solutions in minutes. You can deploy globally in any of the dozens of supported regions across Amazon Web Services (AWS), Google Cloud, and Microsoft Azure.
+{{ecloud}} enables you set up the {{stack}} and start using the Search, Observability, and Security solutions in minutes. You can deploy globally in any of the dozens of supported regions across Amazon Web Services (AWS), Google Cloud, and Microsoft Azure.
 
 If you prefer to go the self-managed route, you can install the Elastic Stack on your own hardware or on a public, private, or hybrid cloud. If you are operating multiple clusters, consider using Elastic Cloud Enterprise or Elastic Cloud for Kubernetes to orchestrate your deployments.
 

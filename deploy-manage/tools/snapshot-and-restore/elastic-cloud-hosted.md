@@ -19,6 +19,16 @@ applies:
 % - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-custom-repository.md
 %      Notes: redirects only
 
+=======
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-custom-repository.md](/raw-migrated-files/cloud/cloud/ec-custom-repository.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-custom-repository.md](/raw-migrated-files/cloud/cloud-heroku/ech-custom-repository.md)
+
+
 Snapshot repositories allow you to back up and restore your Elasticsearch data efficiently. In Elastic Cloud Hosted, repositories are automatically registered and managed within your deployment, ensuring data security, long-term archiving, and seamless recovery.
 
 By default, Elastic Cloud Hosted takes a snapshot of all the indices in your Elasticsearch cluster every 30 minutes. You can set a different snapshot interval if needed for your environment. You can also take snapshots on demand, without having to wait for the next interval. Taking a snapshot on demand does not affect the retention schedule for existing snapshots; it just adds an additional snapshot to the repository. This might be helpful if you are about to make a deployment change and you don’t have a current snapshot.
@@ -146,3 +156,4 @@ Do not use filesystem snapshots of individual nodes as a backup mechanism. You m
 
 
 When restoring a repository from a backup, you must not register the repository with {{es}} until the repository contents are fully restored. If you alter the contents of a repository while it is registered with {{es}} then the repository may become unreadable or may silently lose some of its contents. After restoring a repository from a backup, use the [Verify repository integrity](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-verify-integrity) API to verify its integrity before you start to use the repository.
+

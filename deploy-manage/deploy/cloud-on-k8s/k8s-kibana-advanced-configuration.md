@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-kibana-advanced-configuration.html
 ---
@@ -49,7 +51,7 @@ spec:
 
 The name of the container in the [Pod Template](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates) must be `kibana`.
 
-Check [Set compute resources for Kibana, Enterprise Search, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for more information.
+Check [Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for more information.
 
 
 ## {{kib}} configuration [k8s-kibana-configuration]
