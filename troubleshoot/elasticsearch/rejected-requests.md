@@ -11,7 +11,7 @@ When {{es}} rejects a request, it stops the operation and returns an error with 
 * A [circuit breaker error](circuit-breaker-errors.md).
 * High [indexing pressure](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-indexing-pressure.html) that exceeds the [`indexing_pressure.memory.limit`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-indexing-pressure.html#memory-limits).
 
-::::{admonition}
+::::{tip}
 If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
 
 ::::
