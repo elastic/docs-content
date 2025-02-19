@@ -15,7 +15,7 @@ To prevent a full disk, when a node reaches this watermark, {{es}} [blocks write
 
 {{es}} will automatically remove the write block when the affected node’s disk usage falls below the [high disk watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high). To achieve this, {{es}} attempts to rebalance some of the affected node’s shards to other nodes in the same data tier.
 
-::::{admonition}
+::::{tip}
 If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
 
 ::::
