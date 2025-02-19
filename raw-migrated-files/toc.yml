@@ -429,7 +429,6 @@ toc:
       - file: docs-content/serverless/security-turn-on-risk-engine.md
       - file: docs-content/serverless/security-ui.md
       - file: docs-content/serverless/security-view-alert-details.md
-      - file: docs-content/serverless/security-visual-event-analyzer.md
       - file: docs-content/serverless/security-visualize-alerts.md
       - file: docs-content/serverless/security-vuln-management-dashboard-dash.md
       - file: docs-content/serverless/security-vuln-management-faq.md
