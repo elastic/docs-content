@@ -18,5 +18,3 @@ Use the topics in this section to troubleshoot {{es}} clusters:
 * [](/troubleshoot/elasticsearch/remote-clusters.md)
 * [](/troubleshoot/elasticsearch/diagnose-unassigned-shards.md)
 * [](/troubleshoot/elasticsearch/troubleshooting-shards-capacity-issues.md)
-* []()
-

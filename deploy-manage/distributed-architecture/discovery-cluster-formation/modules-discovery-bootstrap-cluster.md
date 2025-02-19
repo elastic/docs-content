@@ -74,7 +74,7 @@ By default each node will automatically bootstrap itself into a single-node clus
 * `discovery.seed_hosts`
 * `cluster.initial_master_nodes`
 
-To add a new node into an existing cluster, configure `discovery.seed_hosts` or other relevant discovery settings so that the new node can discover the existing master-eligible nodes in the cluster. To bootstrap a new multi-node cluster, configure `cluster.initial_master_nodes` as described in the [section on cluster bootstrapping]() as well as `discovery.seed_hosts` or other relevant discovery settings.
+To add a new node into an existing cluster, configure `discovery.seed_hosts` or other relevant discovery settings so that the new node can discover the existing master-eligible nodes in the cluster. To bootstrap a new multi-node cluster, configure `cluster.initial_master_nodes` as described in the section on cluster bootstrapping as well as `discovery.seed_hosts` or other relevant discovery settings.
 
 ::::{admonition} Forming a single cluster
 :name: modules-discovery-bootstrap-cluster-joining

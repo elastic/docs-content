@@ -292,5 +292,4 @@ Authentication is specified in the APM Server configuration file:
 
 More information on sending data to a secured cluster is available in the configuration reference:
 
-* [{{es}}]()
 * [SSL/TLS output settings](ssltls-output-settings.md)

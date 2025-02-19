@@ -137,7 +137,7 @@ If you need help troubleshooting a configuration failure, refer to [Endpoint man
 
 ### Filter endpoints [security-endpoints-page-filter-endpoints]
 
-To filter the Endpoints list, use the search bar to enter a query using **{{kibana-ref}}/kuery-query.html[{{kib}} Query Language (KQL)]**. To refresh the search results, click **Refresh**.
+To filter the Endpoints list, use the search bar to enter a query using **https://www.elastic.co/guide/en/kibana/current/kuery-query.html[{{kib}} Query Language (KQL)]**. To refresh the search results, click **Refresh**.
 
 ::::{note}
 The date and time picker on the right side of the page allows you to set a time interval to automatically refresh the Endpoints list — for example, to check if new endpoints were added or deleted.

@@ -46,7 +46,7 @@ PUT _snapshot/my_src_only_repository
 `delegate_type`
 :   (Optional, string) Delegated repository type. For valid values, see the [`type` parameter](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository#put-snapshot-repo-api-request-type).
 
-    `source` repositories can use `settings` properties for its delegated repository type. See [Source-only repository]().
+    `source` repositories can use `settings` properties for its delegated repository type.
 
 
 `max_number_of_snapshots`

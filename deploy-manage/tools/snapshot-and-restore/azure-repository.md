@@ -73,15 +73,15 @@ In progress snapshot or restore jobs will not be preempted by a **reload** of th
 
 ## Client settings [repository-azure-client-settings]
 
-The following list describes the available client settings. Those that must be stored in the keystore are marked as ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings)); the other settings must be stored in the `elasticsearch.yml` file. The default `CLIENT_NAME` is `default` but you may configure a client with a different name and specify that client by name when registering a repository.
+The following list describes the available client settings. Those that must be stored in the keystore are marked as ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings)); the other settings must be stored in the `elasticsearch.yml` file. The default `CLIENT_NAME` is `default` but you may configure a client with a different name and specify that client by name when registering a repository.
 
-`azure.client.CLIENT_NAME.account` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.account` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The Azure account name, which is used by the repository’s internal Azure client. This setting is required for all clients.
 
 `azure.client.CLIENT_NAME.endpoint_suffix`
 :   The Azure endpoint suffix to connect to. The default value is `core.windows.net`.
 
-`azure.client.CLIENT_NAME.key` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.key` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The Azure secret key, which is used by the repository’s internal Azure client. Alternatively, use `sas_token`.
 
 `azure.client.CLIENT_NAME.max_retries`
@@ -96,7 +96,7 @@ The following list describes the available client settings. Those that must be s
 `azure.client.CLIENT_NAME.proxy.type`
 :   Register a proxy type for the client. Supported values are `direct`, `http`, and `socks`. For example: `azure.client.default.proxy.type: http`. When `proxy.type` is set to `http` or `socks`, `proxy.host` and `proxy.port` must also be provided. The default value is `direct`.
 
-`azure.client.CLIENT_NAME.sas_token` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.sas_token` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   A shared access signatures (SAS) token, which the repository’s internal Azure client uses for authentication. The SAS token must have read (r), write (w), list (l), and delete (d) permissions for the repository base path and all its contents. These permissions must be granted for the blob service (b) and apply to resource types service (s), container (c), and object (o). Alternatively, use `key`.
 
 `azure.client.CLIENT_NAME.timeout`

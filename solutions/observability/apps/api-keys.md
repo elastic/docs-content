@@ -46,8 +46,6 @@ apm-server.auth.api_key.limit: 50 <2>
 1. Enables API keys
 2. Restricts the number of unique API keys that {{es}} allows each minute. This value should be the number of unique API keys configured in your monitored services.
 
-
-All other configuration options are described in [API keys]().
 ::::::
 
 :::::::

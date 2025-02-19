@@ -58,7 +58,7 @@ To access the object shared with the link, users need to authenticate.
 
 Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt49f2b5a80ec89a34/66b9e919af508f4ac182c194/share-dashboard.gif
+:::{image} ../images/share-dashboard.gif
 :alt: getting a shareable link for a dashboard
 :::
 

@@ -110,7 +110,7 @@ To copy a function, you drag it to the **Add or drag-and-drop a field** area wit
 
 1. Drag the **95th** field to **Add or drag-and-drop a field** for **Vertical axis**.
 
-   :::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8fb6969daa820faf/6700642c363a96bb08f48bee/drag-and-drop-a-field-8.16.0.gif
+   :::{image} ../../images/drag-and-drop-a-field-8.16.0.gif
    :alt: Easily duplicate the items with drag and drop
    :class: screenshot
    :::

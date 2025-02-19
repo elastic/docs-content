@@ -1519,7 +1519,7 @@ EXTRACT(
 
 **Output**: integer
 
-**Description**: Extract fields from a date/datetime by specifying the name of a [datetime function](). The following
+**Description**: Extract fields from a date/datetime by specifying the name of a datetime function. The following
 
 ```sql
 SELECT EXTRACT(DAY_OF_YEAR FROM CAST('2018-02-19T10:23:27Z' AS TIMESTAMP)) AS day;

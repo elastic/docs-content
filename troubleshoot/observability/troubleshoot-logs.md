@@ -63,7 +63,7 @@ You need to either:
 
 
 ### Failed to create API key [logs-troubleshooting-API-key-failed]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 

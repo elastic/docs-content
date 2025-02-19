@@ -18,7 +18,7 @@ These settings apply to SSL/TLS communication between the APM Server and APM Age
 :::::::{tab-set}
 
 ::::::{tab-item} Fleet-managed
-Enable TLS in the APM integration settings and use the [SSL/TLS input settings]() to set the path to the server certificate and key.
+Enable TLS in the APM integration settings and use the SSL/TLS input settings to set the path to the server certificate and key.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -29,8 +29,6 @@ apm-server.ssl.enabled: true
 apm-server.ssl.certificate: "/path/to/apm-server.crt"
 apm-server.ssl.key: "/path/to/apm-server.key"
 ```
-
-A full list of configuration options is available in [SSL/TLS input settings]().
 
 ::::{tip}
 If APM agents are authenticating themselves using a certificate that cannot be authenticated through known CAs (e.g. self signed certificates), use the `ssl.certificate_authorities` to set a custom CA. This will automatically modify the `ssl.client_authentication` configuration to require authentication.

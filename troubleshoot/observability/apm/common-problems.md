@@ -26,7 +26,7 @@ This section describes common problems you might encounter when using APM Server
 
 
 ## No data is indexed [apm-no-data-indexed]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -83,7 +83,7 @@ APM Server currently relies on {{es}} to create indices that do not exist. As a 
 :::::::
 
 ## Common SSL-related problems [apm-common-ssl-problems]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -134,7 +134,7 @@ A firewall is refusing the connection. Check if a firewall is blocking the traff
 
 
 ## I/O Timeout [apm-io-timeout]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -177,7 +177,7 @@ In the agent logs, you won’t see a sign of failures as the APM server asynchro
 
 
 ## Tail-based sampling causing high system memory usage and high disk IO [apm-tail-based-sampling-memory-disk-io]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -185,7 +185,7 @@ Tail-based sampling requires minimal memory to run, and there should not be a no
 
 
 ## Too many unique transaction names [troubleshooting-too-many-transactions]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -231,7 +231,7 @@ If your problem is occurring in a different APM agent, the tips above still appl
 
 
 ## Unknown route [troubleshooting-unknown-route]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -245,7 +245,7 @@ To resolve this, you’ll need to head over to the relevant [APM agent documenta
 
 
 ## Fields are not searchable [troubleshooting-fields-unsearchable]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -262,7 +262,7 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 
 
 ## Service Maps: no connection between client and server [service-map-rum-connections]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -272,7 +272,7 @@ This setting is necessary, for example, for cross-origin requests. If you have a
 
 
 ## No data shown in the infrastructure tab [troubleshooting-apm-infra-data]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -292,7 +292,7 @@ For example, if the APM agent is not configured to use the correct host name, th
 
 
 ## Common response codes [observability-apm-troubleshooting-common-response-codes]
-:::{applies}
+:::{applies_to}
 :serverless: all
 :::
 

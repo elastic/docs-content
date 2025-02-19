@@ -51,7 +51,7 @@ To create the visualizations in this tutorial, you’ll use the following fields
 
 Click a field name to view more details, such as its top values and distribution.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt25c7a05e0f5daaa3/671966b9b1d3dd705a2ae650/tutorial-field-more-info.gif
+:::{image} ../../images/tutorial-field-more-info.gif
 :alt: Clicking a field name to view more details
 :class: screenshot
 :width: 50%

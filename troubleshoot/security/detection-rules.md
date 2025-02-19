@@ -182,7 +182,7 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 
 
 ### Troubleshoot missing alerts for {{ml}} jobs [ml-job-compatibility]
-:::{applies}
+:::{applies_to}
 :serverless: unavailable
 :::
 % doesn't apply to serverless 

@@ -76,7 +76,7 @@ If you have explicitly disabled Elastic security *and* you are *not* using tail-
 1. Assign the **general writer role** to APM Server users who need to publish APM data.
 
 ::::{note}
-Assign [additional APM feature roles]() to users as needed including the *Central configuration management role*, which is [required in most cases](#apm-central-config-role-note).
+Assign additional APM feature roles to users as needed including the *Central configuration management role*, which is [required in most cases](#apm-central-config-role-note).
 
 ::::
 
@@ -118,7 +118,7 @@ The previous privileges should be sufficient for APM agent central configuration
 | Spaces | `Read` on Applications UI | Allow APM Server to manage central configurations via the Applications UI |
 
 ::::{note}
-Assign [additional APM feature roles]() to users as needed including the *Writer role*, which is [required in most cases](#apm-privileges-to-publish-events).
+Assign additional APM feature roles to users as needed including the *Writer role*, which is [required in most cases](#apm-privileges-to-publish-events).
 
 ::::
 
@@ -177,7 +177,7 @@ If you don’t use the `apm_system` user, you can create a custom role:
 2. Assign the **monitoring role** to APM Server users who need to write monitoring data to {{es}}.
 
 ::::{note}
-Assign [additional APM feature roles]() to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
+Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
 
 ::::
 
@@ -214,7 +214,7 @@ If you don’t use the `remote_monitoring_user` user, you can create a custom us
 
 
 ::::{note}
-Assign [additional APM feature roles]() to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
+Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
 
 ::::
 
@@ -239,7 +239,7 @@ To grant users the required privileges for viewing monitoring data:
 
 
 ::::{note}
-Assign [additional APM feature roles]() to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
+Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
 
 ::::
 
@@ -257,7 +257,7 @@ To grant an APM Server user with the required privileges for reading RUM source 
 | Index | `read` on `.apm-source-map` index | Allow APM Server to read RUM source maps from {{es}} |
 
 ::::{note}
-Assign [additional APM feature roles]() to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
+Assign additional APM feature roles to users as needed including the [*Writer role*](#apm-privileges-to-publish-events) and [*Central configuration management role*](#apm-central-config-role-note), both of which are required in most cases.
 
 ::::
 

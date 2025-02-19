@@ -25,7 +25,7 @@ If you're using {{ech}}, then you can also manage users and control access [at t
 
 ## Should I use organization-level or deployment-level SSO? [organization-deployment-sso] 
 
-:::{applies}
+:::{applies_to}
 :hosted: all
 :::
 
