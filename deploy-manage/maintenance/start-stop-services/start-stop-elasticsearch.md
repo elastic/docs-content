@@ -28,3 +28,8 @@ $$$_enroll_nodes_in_an_existing_cluster_3$$$
 $$$start-es-deb-systemd$$$
 
 $$$fatal-errors$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/starting-elasticsearch.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/starting-elasticsearch.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/stopping-elasticsearch.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/stopping-elasticsearch.md)
