@@ -25,3 +25,10 @@ mapped_urls:
 $$$k8s-default-elastic-user$$$
 
 $$$managing-native-users$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/native-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/native-realm.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/change-passwords-native-users.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/change-passwords-native-users.md)
+* [/raw-migrated-files/kibana/kibana/tutorial-secure-access-to-kibana.md](/raw-migrated-files/kibana/kibana/tutorial-secure-access-to-kibana.md)

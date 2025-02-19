@@ -22,3 +22,9 @@ mapped_urls:
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$general-sign-up-trial-what-is-included-in-my-trial$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-getting-started-trial.md](/raw-migrated-files/cloud/cloud/ec-getting-started-trial.md)
+* [/raw-migrated-files/docs-content/serverless/general-sign-up-trial.md](/raw-migrated-files/docs-content/serverless/general-sign-up-trial.md)
+* [/raw-migrated-files/cloud/cloud/ec-getting-started-existing-email.md](/raw-migrated-files/cloud/cloud/ec-getting-started-existing-email.md)
