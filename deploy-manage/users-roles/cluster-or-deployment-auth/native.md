@@ -85,10 +85,9 @@ For more information and examples, see [Users](https://www.elastic.co/docs/api/d
 
 ## Reset passwords for native users using the command line [reset-pw-cmd-line]
 
-:::{applies}
-:stack: all
-:eck: all
-:::
+```{applies_to}
+:self: all
+```
 
 You can also reset passwords for users in the native realm through the command line using the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) tool.
 
