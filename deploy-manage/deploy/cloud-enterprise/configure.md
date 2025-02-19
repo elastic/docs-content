@@ -1,10 +1,12 @@
 ---
+applies:
+  ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-ece.html
 ---
 
-# Configure [ece-configuring-ece]
+# Configure ECE [ece-configuring-ece]
 
 Now that you have Elastic Cloud Enterprise up and running, take a look at some of the additional features that you can configure:
 
@@ -17,9 +19,9 @@ Now that you have Elastic Cloud Enterprise up and running, take a look at some o
 * [Change allocator disconnect timeout](change-allocator-disconnect-timeout.md) - Configure how long ECE waits before considering allocators to be disconnected.
 * [Migrate ECE on Podman hosts to SELinux in enforcing mode](migrate-ece-on-podman-hosts-to-selinux-enforce.md) - Migrate ECE to SELinux in `enforcing` mode using Podman.
 
-# Administering your installation [ece-administering-ece]
+## Administering your installation [ece-administering-ece]
 
-Now that you have Elastic Cloud Enterprise up and running, take a look at the things you can do to keep your installation humming along, from adding more capacity to dealing with hosts that require maintenance or have failed:
+Now that you have Elastic Cloud Enterprise up and running, take a look at the things you can do to keep your installation humming along, from adding more capacity to dealing with hosts that require maintenance or have failed. They are all presented in the [](../../maintenance.md) section.
 
 * [Scale Out Your Installation](../../../deploy-manage/maintenance/ece/scale-out-installation.md) - Need to add more capacity? Here’s how.
 * [Assign Roles to Hosts](../../../deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md) - Make sure new hosts can be used for their intended purpose after you install ECE on them.

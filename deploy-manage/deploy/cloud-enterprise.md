@@ -1,58 +1,49 @@
 ---
 applies:
   ece: all
-mapped_urls:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html
 ---
-
-% we still need to determine what to do with /raw-migrated-files/cloud/cloud-enterprise/ece-administering-ece.md
 
 # Elastic Cloud Enterprise [Elastic-Cloud-Enterprise-overview]
 
-This page provides a high-level introduction to {{ece}} (ECE).
+{{ece}} (ECE) is an Elastic self-managed solution for deploying, orchestrating, and managing {{es}} clusters at scale. It provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines.
 
-::::{note}
-Try one of the [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html) to discover the core concepts of the Elastic Stack and understand how Elastic can help you.
-::::
-
-## ECE Overview
-
-Elastic Cloud Enterprise (ECE) is an on-premises and self-managed solution for deploying, orchestrating, and managing {{es}} clusters at scale. It provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines.
-
-ECE evolves from the Elastic hosted Cloud SaaS offering into a standalone product. You can deploy ECE on public or private clouds, virtual machines, or on-premises.
-
-For an overview of ECE architecture refer to [](./cloud-enterprise/ece-architecture.md).
+Refer to [](./cloud-enterprise/ece-overview.md) for a detailed introduction to ECE, including its features, use cases, and architecture.
 
 ::::{tip}
 If you are looking for a solution to orchestrate and manage {{es}} clusters natively on Kubernetes, consider using [Elastic Cloud on Kubernetes (ECK)](./cloud-on-k8s.md) instead of ECE. ECK enables you to orchestrate Elastic Stack applications seamlessly on Kubernetes, leveraging it as the underlying platform for deployment, scaling, and lifecycle management.
 ::::
 
-### Why ECE?
+% should we use a L2 heading here or just continue?
+## Section overview
 
-* Host your regulated or sensitive data on your internal network.
-* Reuse your existing investment in on-premise infrastructure and reduce total cost.
-* Maximize the hardware utilization for the various clusters.
-* Centralize the management of multiple Elastic deployments across teams or geographies.
+This section focuses on deploying ECE and the orchestrating and configuring {{es}} clusters, also referred to as `deployments`.
 
-### ECE features
+In ECE, a deployment is a managed {{stack}} environment that provides users with an {{es}} cluster along with supporting components such as {{kib}} and other optional services like APM and Fleet.
 
-- **Automated Scaling & Orchestration** – Handles cluster provisioning, scaling, and upgrades automatically.
-- **High Availability & Resilience** – Ensures uptime through multiple Availability Zones, data replication, and automated restore and snapshot.
-- **Centralized Monitoring & Logging** – Provides insights into cluster performance, resource usage, and logs.
-- **Single Sign-On (SSO) & Role-Based Access Control (RBAC)** – Allows organizations to manage access and security policies.
-- **API & UI Management** – Offers a web interface and API to create and manage clusters easily.
-- **Air gapped installations** - Support for off-line installations.
-- **Microservices** - All services are containerized through Docker. See [](./cloud-enterprise/ece-containerization.md) for more details.
+This section covers the following tasks:
 
-Check the [glossary](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
+* [Deploy ECE](./cloud-enterprise/deploy-an-orchestrator.md)
+    - [Prepare the environment](./cloud-enterprise/prepare-environment.md)
+    - [Install ECE](./cloud-enterprise/install.md)
+    - [Air gapped installations](./cloud-enterprise/air-gapped-install.md)
+    - [Configure ECE](./cloud-enterprise/configure.md)
 
-### Use cases
+* [Work with deployments](./cloud-enterprise/working-with-deployments.md)
+  - Use [](./cloud-enterprise/deployment-templates.md) to [](./cloud-enterprise/create-deployment.md)
+  - [](./cloud-enterprise/customize-deployment.md)
+  - Use the deployment [Cloud ID](./cloud-enterprise/find-cloud-id.md) and [Endpoint URLs](./cloud-enterprise/find-endpoint-url.md) for clients connection
 
-- Organizations that need **full control over their Elastic Stack** while benefiting from cloud-like automation.
-- Enterprises managing **multiple Elasticsearch clusters** across different teams or environments.
-- Businesses looking for **a self-hosted alternative to Elastic Cloud** with centralized administration.
+* Learn how to use the multiple [](./cloud-enterprise/tools-apis.md) available
 
-## How it differs from Elastic Cloud and other orchestrators
+Other sections of the documentation also include important tasks related with ECE:
+
+* [Secure your ECE installation](../security/secure-your-elastic-cloud-enterprise-installation.md)
+* [Users and roles](../users-roles/cloud-enterprise-orchestrator.md)
+* [Manage snapshot repositories](../tools/snapshot-and-restore.md)
+* [Manage licenses](../license/manage-your-license-in-ece.md)
+* [ECE platform maintenance operations](../maintenance/ece.md)
+
+## How ECE differs from Elastic Cloud and other orchestrators
 
 For information about other deployment options, refer to [](../deploy.md).
 
