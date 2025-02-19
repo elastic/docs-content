@@ -1,4 +1,5 @@
 ---
+navigation_title: "Emergency roles token"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-emergency.html
 ---

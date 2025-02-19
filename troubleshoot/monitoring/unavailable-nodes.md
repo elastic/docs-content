@@ -324,22 +324,3 @@ Stack Monitoring comes with out-of-the-box rules, but you need to enable them wh
 * Nodes unable to join: Fix the {{es}} configuration.
 * Nodes unable to join: Contact support.
 
-
-
-%      Notes: dupe
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-single-node-deployment-disk-used$$$
-
-$$$ec-multiple-node-deployment-disk-used$$$
-
-$$$ec-single-node-deployment-disk-used$$$
-
-$$$ec-multiple-node-deployment-disk-used$$$
-
-$$$ec-jvm-heap-usage-exceed-allowed-threshold$$$
-
-$$$ec-cpu-usage-exceed-allowed-threshold$$$
-
-$$$ec-nodes-unavailable-missing$$$
