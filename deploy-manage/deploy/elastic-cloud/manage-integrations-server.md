@@ -28,8 +28,6 @@ The APM secret token can no longer be reset from the Elasticsearch Service UI. C
 
 This example demonstrates how to use the Elasticsearch Service RESTful API to create a deployment with Integrations Server enabled.
 
-For more information on how to manage Integrations Server from the UI, check [Manage your Integrations Server]()
-
 
 #### Requirements [ec_requirements_2]
 

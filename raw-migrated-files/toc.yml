@@ -50,7 +50,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-ingest-guides.md
       - file: cloud/cloud-enterprise/ece-install-offline.md
       - file: cloud/cloud-enterprise/ece-integrations-server-api-example.md
-      - file: cloud/cloud-enterprise/ece-maintenance-mode-routing.md
       - file: cloud/cloud-enterprise/ece-manage-apm-settings.md
       - file: cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md
       - file: cloud/cloud-enterprise/ece-manage-integrations-server.md
@@ -133,7 +132,6 @@ toc:
       - file: cloud/cloud/ec-access-kibana.md
       - file: cloud/cloud/ec-activity-page.md
       - file: cloud/cloud/ec-add-user-settings.md
-      - file: cloud/cloud/ec-api-deployment-other.md
       - file: cloud/cloud/ec-autoscaling.md
       - file: cloud/cloud/ec-billing-stop.md
       - file: cloud/cloud/ec-cloud-ingest-data.md
@@ -169,7 +167,6 @@ toc:
       - file: cloud/cloud/ec-planning.md
       - file: cloud/cloud/ec-prepare-production.md
       - file: cloud/cloud/ec-regional-deployment-aliases.md
-      - file: cloud/cloud/ec-restart-deployment.md
       - file: cloud/cloud/ec-restore-across-clusters.md
       - file: cloud/cloud/ec-restoring-snapshots.md
       - file: cloud/cloud/ec-saas-metrics-accessing.md
@@ -364,7 +361,6 @@ toc:
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash-kspm.md
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash.md
       - file: docs-content/serverless/security-cloud-workload-protection.md
-      - file: docs-content/serverless/security-conf-map-ui.md
       - file: docs-content/serverless/security-configure-endpoint-integration-policy.md
       - file: docs-content/serverless/security-connect-to-azure-openai.md
       - file: docs-content/serverless/security-connect-to-bedrock.md
@@ -392,7 +388,6 @@ toc:
       - file: docs-content/serverless/security-examine-osquery-results.md
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
-      - file: docs-content/serverless/security-hosts-overview.md
       - file: docs-content/serverless/security-ingest-data.md
       - file: docs-content/serverless/security-install-edr.md
       - file: docs-content/serverless/security-install-endpoint-manually.md
@@ -406,7 +401,6 @@ toc:
       - file: docs-content/serverless/security-llm-performance-matrix.md
       - file: docs-content/serverless/security-machine-learning.md
       - file: docs-content/serverless/security-ml-requirements.md
-      - file: docs-content/serverless/security-network-page-overview.md
       - file: docs-content/serverless/security-osquery-placeholder-fields.md
       - file: docs-content/serverless/security-osquery-response-action.md
       - file: docs-content/serverless/security-overview-dashboard.md
@@ -437,7 +431,6 @@ toc:
       - file: docs-content/serverless/security-tune-detection-signals.md
       - file: docs-content/serverless/security-turn-on-risk-engine.md
       - file: docs-content/serverless/security-ui.md
-      - file: docs-content/serverless/security-users-page.md
       - file: docs-content/serverless/security-view-alert-details.md
       - file: docs-content/serverless/security-visual-event-analyzer.md
       - file: docs-content/serverless/security-visualize-alerts.md
@@ -516,8 +509,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/shard-request-cache.md
       - file: elasticsearch/elasticsearch-reference/snapshot-restore.md
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
-      - file: elasticsearch/elasticsearch-reference/starting-elasticsearch.md
-      - file: elasticsearch/elasticsearch-reference/stopping-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/xpack-autoscaling.md
   - file: ingest-docs/fleet/index.md
     children:

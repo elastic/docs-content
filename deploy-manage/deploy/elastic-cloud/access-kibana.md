@@ -19,3 +19,9 @@ mapped_urls:
 
 
 $$$ec-enable-kibana2$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-access-kibana.md](/raw-migrated-files/cloud/cloud/ec-access-kibana.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-access-kibana.md](/raw-migrated-files/cloud/cloud-heroku/ech-access-kibana.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-enable-kibana2.md](/raw-migrated-files/cloud/cloud-heroku/ech-enable-kibana2.md)

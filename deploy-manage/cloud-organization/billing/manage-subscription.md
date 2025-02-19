@@ -39,7 +39,7 @@ To change your subscription level:
 
 ### Feature usage notifications [ec_feature_usage_notifications]
 
-:::{applies}
+:::{applies_to}
 :hosted: all
 :::
 

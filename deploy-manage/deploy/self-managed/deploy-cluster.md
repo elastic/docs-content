@@ -21,3 +21,11 @@ mapped_urls:
 %      Notes: 1-5
 
 $$$dedicated-host$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/setup.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/setup.md)
+
+% Doesn't exist
+% * [/raw-migrated-files/stack-docs/elastic-stack/installing-elastic-stack.md](/raw-migrated-files/stack-docs/elastic-stack/installing-elastic-stack.md)

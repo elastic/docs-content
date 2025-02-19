@@ -9,7 +9,7 @@ mapped_pages:
 
 # Fix index lifecycle management errors [index-lifecycle-error-handling]
 
-When [{{ilm-init}}](../../../manage-data/lifecycle/index-lifecycle-management.md) executes a lifecycle policy, it’s possible for errors to occur while performing the necessary index operations for a step. When this happens, {{ilm-init}} moves the index to an `ERROR` step. If {{ilm-init}} cannot resolve the error automatically, execution is halted until you resolve the underlying issues with the policy, index, or cluster.
+When [{{ilm-init}}](../../manage-data/lifecycle/index-lifecycle-management.md) executes a lifecycle policy, it’s possible for errors to occur while performing the necessary index operations for a step. When this happens, {{ilm-init}} moves the index to an `ERROR` step. If {{ilm-init}} cannot resolve the error automatically, execution is halted until you resolve the underlying issues with the policy, index, or cluster.
 
 See [this video](https://www.youtube.com/watch?v=VCIqkji3IwY) for a walkthrough of troubleshooting current {{ilm-init}} health issues, and [this video](https://www.youtube.com/watch?v=onrnnwjYWSQ) for a walkthrough of troubleshooting historical {{ilm-init}} issues.
 
@@ -142,7 +142,7 @@ POST /my-index-000001/_ilm/retry
 
 ### How `min_age` is calculated [min-age-calculation]
 
-When setting up an [{{ilm-init}} policy](../../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) or [automating rollover with {{ilm-init}}](../../../manage-data/lifecycle/index-lifecycle-management.md), be aware that `min_age` can be relative to either the rollover time or the index creation time.
+When setting up an [{{ilm-init}} policy](../../manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) or [automating rollover with {{ilm-init}}](../../manage-data/lifecycle/index-lifecycle-management.md), be aware that `min_age` can be relative to either the rollover time or the index creation time.
 
 If you use [{{ilm-init}} rollover](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html), `min_age` is calculated relative to the time the index was rolled over. This is because the [rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover) generates a new index and updates the `age` of the previous index to reflect the rollover time. If the index hasn’t been rolled over, then the `age` is the same as the `creation_date` for the index.
 
@@ -154,7 +154,7 @@ You can override how `min_age` is calculated using the `index.lifecycle.originat
 Here’s how to resolve the most common errors reported in the `ERROR` step.
 
 ::::{tip}
-Problems with rollover aliases are a common cause of errors. Consider using [data streams](../../../manage-data/data-store/data-streams.md) instead of managing rollover with aliases.
+Problems with rollover aliases are a common cause of errors. Consider using [data streams](/manage-data/data-store/data-streams.md) instead of managing rollover with aliases.
 ::::
 
 
@@ -208,12 +208,12 @@ See this [resolving `does not match pattern` video](https://www.youtube.com/watc
 
 This indicates that the cluster is hitting resource limits.
 
-Before continuing to set up {{ilm-init}}, you’ll need to take steps to alleviate the resource issues. For more information, see [Circuit breaker errors](../circuit-breaker-errors.md).
+Before continuing to set up {{ilm-init}}, you’ll need to take steps to alleviate the resource issues. For more information, see [Circuit breaker errors](circuit-breaker-errors.md).
 
 
 ### High disk watermark [x] exceeded on [y] [_high_disk_watermark_x_exceeded_on_y]
 
-This indicates that the cluster is running out of disk space. This can happen when you don’t have {{ilm}} set up to roll over from hot to warm nodes. For more information, see [Fix watermark errors](../fix-watermark-errors.md).
+This indicates that the cluster is running out of disk space. This can happen when you don’t have {{ilm}} set up to roll over from hot to warm nodes. For more information, see [Fix watermark errors](fix-watermark-errors.md).
 
 
 ### security_exception: action [<action-name>] is unauthorized for user [<user-name>] with roles [<role-name>], this action is granted by the index privileges [manage_follow_index,manage,all] [_security_exception_action_action_name_is_unauthorized_for_user_user_name_with_roles_role_name_this_action_is_granted_by_the_index_privileges_manage_follow_indexmanageall]
