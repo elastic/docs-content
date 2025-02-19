@@ -5,7 +5,7 @@ mapped_pages:
 
 # Granting privileges for data streams and aliases [securing-aliases]
 
-{{es}} {{security-features}} allow you to secure operations executed against [data streams](../../../manage-data/data-store/index-types/data-streams.md) and [aliases](../../../manage-data/data-store/aliases.md).
+{{es}} {{security-features}} allow you to secure operations executed against [data streams](../../../manage-data/data-store/data-streams.md) and [aliases](../../../manage-data/data-store/aliases.md).
 
 ## Data stream privileges [data-stream-privileges]
 
@@ -28,7 +28,7 @@ Because the user is automatically granted the same privileges to the stream’s 
 GET .ds-my-data-stream-2099.03.08-000002/_doc/2
 ```
 
-Later `my-data-stream` [rolls over](../../../manage-data/data-store/index-types/use-data-stream.md#manually-roll-over-a-data-stream). This creates a new backing index: `.ds-my-data-stream-2099.03.09-000003`. Because the user still has the `read` privilege for `my-data-stream`, the user can retrieve documents directly from `.ds-my-data-stream-2099.03.09-000003`:
+Later `my-data-stream` [rolls over](../../../manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream). This creates a new backing index: `.ds-my-data-stream-2099.03.09-000003`. Because the user still has the `read` privilege for `my-data-stream`, the user can retrieve documents directly from `.ds-my-data-stream-2099.03.09-000003`:
 
 ```console
 GET .ds-my-data-stream-2099.03.09-000003/_doc/2

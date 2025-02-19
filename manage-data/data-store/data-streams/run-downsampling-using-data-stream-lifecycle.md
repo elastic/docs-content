@@ -9,7 +9,7 @@ mapped_pages:
 # Run downsampling using data stream lifecycle [downsampling-dsl]
 
 
-This is a simplified example that allows you to see quickly how [downsampling](downsampling-time-series-data-stream.md) works as part of a datastream lifecycle to reduce the storage size of a sampled set of metrics. The example uses typical Kubernetes cluster monitoring data. To test out downsampling with data stream lifecycle, follow these steps:
+This is a simplified example that allows you to see quickly how [downsampling](./downsampling-time-series-data-stream.md) works as part of a datastream lifecycle to reduce the storage size of a sampled set of metrics. The example uses typical Kubernetes cluster monitoring data. To test out downsampling with data stream lifecycle, follow these steps:
 
 1. Check the [prerequisites](#downsampling-dsl-prereqs).
 2. [Create an index template with data stream lifecycle](#downsampling-dsl-create-index-template).
@@ -21,7 +21,7 @@ This is a simplified example that allows you to see quickly how [downsampling](d
 
 ## Prerequisites [downsampling-dsl-prereqs]
 
-Refer to [time series data stream prerequisites](set-up-tsds.md#tsds-prereqs).
+Refer to [time series data stream prerequisites](./set-up-tsds.md#tsds-prereqs).
 
 
 ## Create an index template with data stream lifecycle [downsampling-dsl-create-index-template]
@@ -345,7 +345,7 @@ After the data stream lifecycle action was executed, original `.ds-datastream-20
 ...
 ```
 
-Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)).
+Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)).
 
 ```console
 GET datastream/_search

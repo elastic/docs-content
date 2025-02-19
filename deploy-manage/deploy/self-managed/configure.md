@@ -513,7 +513,7 @@ $$$settings-explore-data-in-chart$$$ `xpack.discoverEnhanced.actions.exploreData
     ::::{admonition} Deprecated in 8.11.0.
     :class: warning
 
-    Rollups are deprecated and will be removed in a future version. Use [downsampling](../../../manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
+    Rollups are deprecated and will be removed in a future version. Use [downsampling](../../../manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
     ::::
 
 

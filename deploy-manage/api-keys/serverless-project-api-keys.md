@@ -1,15 +1,16 @@
 ---
+applies_to:
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/api-keys.html
 ---
 
 # Serverless project API keys [api-keys]
 
-This content applies to: [![Elasticsearch](../../images/serverless-es-badge.svg "")](../../solutions/search.md) [![Observability](../../images/serverless-obs-badge.svg "")](../../solutions/observability.md) [![Security](../../images/serverless-sec-badge.svg "")](../../solutions/security/elastic-security-serverless.md)
+In serverless projects, the following types of API keys exist:
 
-API keys are security mechanisms used to authenticate and authorize access to {{stack}} resources, and ensure that only authorized users or applications are able to interact with the {{stack}}.
-
-For example, if you extract data from an {{es}} cluster on a daily basis, you might create an API key tied to your credentials, configure it with minimum access, and then put the API credentials into a cron job. Or, you might create API keys to automate ingestion of new data from remote sources, without a live user interaction.
+- **Personal** API keys, that you can create to allow external services to access your serverless project on behalf of a user.
+- **Managed** API keys, created and managed by {{kib}} to correctly run background tasks.
 
 You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-keys-app}}**:
 
@@ -17,10 +18,6 @@ You can manage your keys in **{{project-settings}} → {{manage-app}} → {{api-
 :alt: API keys UI
 :class: screenshot
 :::
-
-A *personal API key* allows external services to access the {{stack}} on behalf of a user.
-
-A *managed API key* is created and managed by {{kib}} to correctly run background tasks.
 
 
 ## Create an API key [api-keys-create-an-api-key]
@@ -30,6 +27,7 @@ In **{{api-keys-app}}**, click **Create API key**:
 :::{image} ../../images/serverless-create-personal-api-key.png
 :alt: Create API key UI
 :class: screenshot
+:width: 50%
 :::
 
 Once created, you can copy the encoded API key and use it to send requests to the {{es}} HTTP API. For example:
@@ -72,7 +70,7 @@ For example, the following `role_descriptors` object defines a `books-read-only`
 }
 ```
 
-For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices).
+For the `role_descriptors` object schema, check out the [`/_security/api_key` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-security-create-api-key) docs. For supported privileges, check [Security privileges](../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-indices).
 
 
 ## Update an API key [api-keys-update-an-api-key]

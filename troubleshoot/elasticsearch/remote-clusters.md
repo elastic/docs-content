@@ -21,7 +21,7 @@ A successful call to the cluster settings update API for adding or updating remo
 GET /_remote/info
 ```
 
-The API should return `"connected" : true`. When using [API key authentication](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md), it should also return `"cluster_credentials": "::es_redacted::"`.
+The API should return `"connected" : true`. When using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md), it should also return `"cluster_credentials": "::es_redacted::"`.
 
 ```console-result
 {
@@ -41,7 +41,7 @@ The API should return `"connected" : true`. When using [API key authentication](
 ```
 
 1. The remote cluster has connected successfully.
-2. If present, indicates the remote cluster has connected using [API key authentication](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md) instead of [certificate based authentication](../../../deploy-manage/remote-clusters/remote-clusters-cert.md).
+2. If present, indicates the remote cluster has connected using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md) instead of [certificate based authentication](../../deploy-manage/remote-clusters/remote-clusters-cert.md).
 
 
 
@@ -83,7 +83,7 @@ org.elasticsearch.transport.ConnectTransportException: [][192.168.0.42:9443] **c
 #### Resolution [_resolution]
 
 * Check the host and port for the remote cluster are correct.
-* Ensure the [remote cluster server is enabled](../../../deploy-manage/remote-clusters/remote-clusters-troubleshooting.md#remote-clusters-troubleshooting-enable-server) on the remote cluster.
+* Ensure the [remote cluster server is enabled](../../deploy-manage/remote-clusters/remote-clusters-troubleshooting.md#remote-clusters-troubleshooting-enable-server) on the remote cluster.
 * Ensure no firewall is blocking the communication.
 
 
@@ -109,7 +109,7 @@ Note that with some network configurations it could take minutes or hours for th
 
 * Ensure that the network between the clusters is as reliable as possible.
 * Ensure that the network is configured to permit [Long-lived idle connections](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections).
-* Ensure that the network is configured to detect faulty connections quickly. In particular, you must enable and fully support TCP keepalives, and set a short [retransmission timeout](../../../deploy-manage/deploy/self-managed/system-config-tcpretries.md).
+* Ensure that the network is configured to detect faulty connections quickly. In particular, you must enable and fully support TCP keepalives, and set a short [retransmission timeout](../../deploy-manage/deploy/self-managed/system-config-tcpretries.md).
 * On Linux systems, execute `ss -tonie` to verify the details of the configuration of each network connection between the clusters.
 * If the problems persist, capture network packets at both ends of the connection and analyse the traffic to look for delays and lost messages.
 
@@ -244,7 +244,7 @@ A local cluster uses the presence of a cross-cluster API key to determine the mo
 GET /_remote/info
 ```
 
-The API should return `"connected" : true`. When using [API key authentication](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md), it should also return `"cluster_credentials": "::es_redacted::"`.
+The API should return `"connected" : true`. When using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md), it should also return `"cluster_credentials": "::es_redacted::"`.
 
 ```console-result
 {
@@ -264,7 +264,7 @@ The API should return `"connected" : true`. When using [API key authentication](
 ```
 
 1. The remote cluster has connected successfully.
-2. If present, indicates the remote cluster has connected using [API key authentication](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md) instead of [certificate based authentication](../../../deploy-manage/remote-clusters/remote-clusters-cert.md).
+2. If present, indicates the remote cluster has connected using [API key authentication](../../deploy-manage/remote-clusters/remote-clusters-api-key.md) instead of [certificate based authentication](../../deploy-manage/remote-clusters/remote-clusters-cert.md).
 
 
 Besides checking the response of the remote cluster info API, you can also check the logs.

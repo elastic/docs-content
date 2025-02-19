@@ -13,7 +13,7 @@ $$$kibana-navigation-search$$$
 
 ## An overview of the {{stack}} [stack-components]
 
-What exactly is the "{{stack}}"? It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
+What exactly is the "{{stack}}?" It’s a fast and highly scalable set of components — {{es}}, {{kib}}, {{beats}}, {{ls}}, and others — that together enable you to securely take data from any source, in any format, and then search, analyze, and visualize it.
 
 You can deploy the {{stack}} as a Cloud service supported on AWS, Google Cloud, and Azure, or as an on-prem installation on your own hardware.
 

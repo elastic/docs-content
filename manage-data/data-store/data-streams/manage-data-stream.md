@@ -6,7 +6,7 @@ The value in the **Indices** column indicates the number of backing indices. Cli
 
 A value in the data retention column indicates that the data stream is managed by a data stream lifecycle policy. This value is the time period for which your data is guaranteed to be stored. Data older than this period can be deleted by {{es}} at a later time.
 
-In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB index mode by default. The logsDB index mode creates a [logs data stream](../../../manage-data/data-store/index-types/logs-data-stream.md).
+In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB index mode by default. The logsDB index mode creates a [logs data stream](./logs-data-stream.md).
 
 :::{image} ../../../images/serverless-management-data-stream.png
 :alt: Data stream details

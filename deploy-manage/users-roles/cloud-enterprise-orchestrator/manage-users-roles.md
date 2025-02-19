@@ -27,7 +27,6 @@ With RBAC, interacting with API endpoints requires a [bearer token](https://www.
 
 To prepare for RBAC, you should review the {{ece}} [limitations and known issues](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-limitations.html).
 
-
 ## Available roles and permissions [ece-user-role-permissions]
 
 Beyond the system users, there are several pre-built roles that you can apply to additional users:

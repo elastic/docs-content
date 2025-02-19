@@ -9,10 +9,10 @@ For an example of installing and configuring the {{stack}}, you can try out our 
 
 ## Network requirements [network-requirements] 
 
-To install the Elastic Stack on-premises, the following ports need to be open for each component.
+To install the Elastic Stack on-premises, these ports need to be open for each component.
 
-| Default port | Component |
-| --- | --- |
+| Default port  | Component |
+| ------------- | ------------- |
 | 5044 | {{agent}} → {{ls}}<br>{{beats}} → {{ls}} |
 | 5601 | {{kib}}<br>{{agent}} → {{fleet}}<br>{{fleet-server}} → {{fleet}} |
 | 8220 | {{agent}} → {{fleet-server}}<br>APM Server |

@@ -52,7 +52,7 @@ You can use [analyze index disk usage](https://www.elastic.co/docs/api/doc/elast
 
 Mapping explosions also covers when an individual index field totals are within limits but combined indices fields totals are very high. It’s very common for symptoms to first be noticed on a [data view](../../explore-analyze/find-and-organize/data-views.md) and be traced back to an individual index or a subset of indices via the [resolve index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-resolve-index).
 
-However, though less common, it is possible to only experience mapping explosions on the combination of backing indices. For example, if a [data stream](../../manage-data/data-store/index-types/data-streams.md)'s backing indices are all at field total limit but each contain unique fields from one another.
+However, though less common, it is possible to only experience mapping explosions on the combination of backing indices. For example, if a [data stream](../../manage-data/data-store/data-streams.md)'s backing indices are all at field total limit but each contain unique fields from one another.
 
 This situation most easily surfaces by adding a [data view](../../explore-analyze/find-and-organize/data-views.md) and checking its **Fields** tab for its total fields count. This statistic does tells you overall fields and not only where [`index:true`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-index.html), but serves as a good baseline.
 
