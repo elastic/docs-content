@@ -57,25 +57,25 @@ Some APM agents offer a way to manipulate or drop APM events *before* they leave
 
 ### Java [observability-apm-keep-data-secure-java]
 
-**`include_process_args`**: Remove process arguments from transactions. This option is disabled by default. Read more in the [Java agent configuration docs](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-reporter.html#config-include-process-args).
+**`include_process_args`**: Remove process arguments from transactions. This option is disabled by default. Read more in the [Java agent configuration docs](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-include-process-args).
 
 
 ### .NET [observability-apm-keep-data-secure-net]
 
-**Filter API**: Drop APM events *before* they are sent to Elastic. Read more in the [.NET agent Filter API docs](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/public-api.html#filter-api).
+**Filter API**: Drop APM events *before* they are sent to Elastic. Read more in the [.NET agent Filter API docs](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html#filter-api).
 
 
 ### Node.js [observability-apm-keep-data-secure-nodejs]
 
-* **`addFilter()`**: Drop APM events *before* they are sent to Elastic. Read more in the [Node.js agent API docs](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/agent-api.html#apm-add-filter).
-* **`captureExceptions`**: Remove errors raised by the server-side process by disabling the `captureExceptions` configuration option. Read more in [the Node.js agent configuration docs](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#capture-exceptions).
+* **`addFilter()`**: Drop APM events *before* they are sent to Elastic. Read more in the [Node.js agent API docs](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-add-filter).
+* **`captureExceptions`**: Remove errors raised by the server-side process by disabling the `captureExceptions` configuration option. Read more in [the Node.js agent configuration docs](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#capture-exceptions).
 
 
 ### Python [observability-apm-keep-data-secure-python]
 
-**Custom processors**: Drop APM events *before* they are sent to Elastic. Read more in the [Python agent Custom processors docs](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/sanitizing-data.html).
+**Custom processors**: Drop APM events *before* they are sent to Elastic. Read more in the [Python agent Custom processors docs](https://www.elastic.co/guide/en/apm/agent/python/current/sanitizing-data.html).
 
 
 ### Ruby [observability-apm-keep-data-secure-ruby]
 
-**`add_filter()`**: Drop APM events *before* they are sent to Elastic. Read more in the [Ruby agent API docs](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/api.html#api-agent-add-filter).
+**`add_filter()`**: Drop APM events *before* they are sent to Elastic. Read more in the [Ruby agent API docs](https://www.elastic.co/guide/en/apm/agent/ruby/current/api.html#api-agent-add-filter).

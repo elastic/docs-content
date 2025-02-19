@@ -56,7 +56,7 @@ The APM integration serves Jaeger gRPC over the same host and port as the Elasti
 
     As of this writing, the Jaeger agent binary offers the following CLI flags, which can be used to enable TLS, output to {{ecloud}}, and set the APM Integration secret token:
 
-    ```terminal
+    ```bash
     --reporter.grpc.tls.enabled=true
     --reporter.grpc.host-port=<apm-url:443>
     --agent.tags="elastic-apm-auth=Bearer <secret-token>"
@@ -73,7 +73,7 @@ For the equivalent environment variables, change all letters to upper-case and r
 
     As of this writing, the Jaeger agent binary offers the `--reporter.grpc.host-port` CLI flag. Use this to define the host and port that the APM Integration is listening on:
 
-    ```terminal
+    ```bash
     --reporter.grpc.host-port=<apm-endpoint:8200>
     ```
 
@@ -81,7 +81,7 @@ For the equivalent environment variables, change all letters to upper-case and r
 
     When TLS is enabled for the APM Integration, Jaeger agents must also enable TLS communication:
 
-    ```terminal
+    ```bash
     --reporter.grpc.tls.enabled=true
     ```
 
@@ -89,7 +89,7 @@ For the equivalent environment variables, change all letters to upper-case and r
 
     A secret token or API key can be used to ensure only authorized Jaeger agents can send data to the APM Integration. When enabled, use an agent level tag to authorize Jaeger agent communication with the APM Server:
 
-    ```terminal
+    ```bash
     --agent.tags="elastic-apm-auth=Bearer <secret-token>"
     ```
 

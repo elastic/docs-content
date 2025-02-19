@@ -23,7 +23,7 @@ Even though we throttle concurrent recoveries both at the [node level](https://w
 * Node 5 returns after a few minutes.
 * The master rebalances the cluster by allocating shards to Node 5.
 
-If the master had just waited for a few minutes, then the missing shards could have been re-allocated to Node 5 with the minimum of network traffic. This process would be even quicker for idle shards (shards not receiving indexing requests) which have been automatically [flushed](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-flush.html).
+If the master had just waited for a few minutes, then the missing shards could have been re-allocated to Node 5 with the minimum of network traffic. This process would be even quicker for idle shards (shards not receiving indexing requests) which have been automatically [flushed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush).
 
 The allocation of replica shards which become unassigned because a node has left can be delayed with the `index.unassigned.node_left.delayed_timeout` dynamic setting, which defaults to `1m`.
 
@@ -61,7 +61,7 @@ For this reason, the default `timeout` is set to just one minute: even if shard 
 
 ## Monitoring delayed unassigned shards [_monitoring_delayed_unassigned_shards]
 
-The number of shards whose allocation has been delayed by this timeout setting can be viewed with the [cluster health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html):
+The number of shards whose allocation has been delayed by this timeout setting can be viewed with the [cluster health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health):
 
 ```console
 GET _cluster/health <1>

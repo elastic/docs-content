@@ -12,3 +12,5 @@ mapped_urls:
 
 % - [ ] ./raw-migrated-files/observability-docs/observability/apm-service-overview.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/observability-apm-service-overview.md
+
+$$$service-span-duration$$$

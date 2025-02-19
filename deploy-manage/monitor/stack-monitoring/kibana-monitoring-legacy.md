@@ -59,7 +59,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         }
         ```
 
-        For more information, see [Monitoring settings in {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html).
+        For more information, see [Monitoring settings in {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
 2. Verify that `monitoring.enabled` and `monitoring.kibana.collection.enabled` are set to `true` in the `kibana.yml` file. These are the default values. For more information, see [Monitoring settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/monitoring-settings-kb.html).
 3. Identify where to send monitoring data. {{kib}} automatically sends metrics to the {{es}} cluster specified in the `elasticsearch.hosts` setting in the `kibana.yml` file. This property has a default value of `http://localhost:9200`.<br>

@@ -43,7 +43,7 @@ Do not run the `elasticsearch-service-tokens` command inside an Elasticsearch Po
 
 ### Native realm [k8s_native_realm]
 
-You can create custom users in the [Elasticsearch native realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/native-realm.html) using [Elasticsearch user management APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-user-apis).
+You can create custom users in the [Elasticsearch native realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/native-realm.html) using [Elasticsearch user management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
 
 
 ### File realm [k8s_file_realm]

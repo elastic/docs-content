@@ -261,7 +261,7 @@ node.roles: [ ingest ]
 
 If you take away the ability to be able to handle master duties, to hold data, and pre-process documents, then you are left with a *coordinating* node that can only route requests, handle the search reduce phase, and distribute bulk indexing. Essentially, coordinating only nodes behave as smart load balancers.
 
-Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state.html), like every other node, and they use the cluster state to route requests directly to the appropriate place(s).
+Coordinating only nodes can benefit large clusters by offloading the coordinating node role from data and master-eligible nodes. They join the cluster and receive the full [cluster state](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state), like every other node, and they use the cluster state to route requests directly to the appropriate place(s).
 
 ::::{warning}
 Adding too many coordinating only nodes to a cluster can increase the burden on the entire cluster because the elected master node must await acknowledgement of cluster state updates from every node! The benefit of coordinating only nodes should not be overstated — data nodes can happily serve the same purpose.

@@ -5,7 +5,7 @@ mapped_pages:
 
 # Manage your installation capacity [ece-manage-capacity]
 
-In ECE, every host is a runner. Depending on the size of your platform, runners can have [one or more roles](ece-roles.md): Coordinator, director, proxy, and allocator. While planning the capacity of your ECE installation, you have to properly size the capacity for all roles. However, the allocator role deserves particular attention, as it hosts the Elasticsearch, Kibana, APM,  Enterprise Search nodes, and the relevant services.
+In ECE, every host is a runner. Depending on the size of your platform, runners can have [one or more roles](ece-roles.md): Coordinator, director, proxy, and allocator. While planning the capacity of your ECE installation, you have to properly size the capacity for all roles. However, the allocator role deserves particular attention, as it hosts the Elasticsearch, Kibana, and APM nodes, and the relevant services.
 
 This section focuses on the allocator role, and explains how to plan its capacity in terms of memory, CPU, `processors` setting, and storage.
 

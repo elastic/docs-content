@@ -9,6 +9,10 @@ applies:
 
 # Chat completion inference API [chat-completion-inference-api]
 
+:::{tip} Inference API reference  
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::
+
 Streams a chat completion response.
 
 ::::{important} 

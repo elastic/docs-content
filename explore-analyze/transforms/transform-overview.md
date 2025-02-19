@@ -14,7 +14,7 @@ You can choose either of the following methods to transform your data: [pivot](#
 ::::{important}
 
 * All {{transforms}} leave your source index intact. They create a new index that is dedicated to the transformed data.
-* {{transforms-cap}} might have more configuration options provided by the APIs than the options available in {{kib}}. For all the {{transform}} configuration options, refer to the [API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-apis.html).
+* {{transforms-cap}} might have more configuration options provided by the APIs than the options available in {{kib}}. For all the {{transform}} configuration options, refer to the [API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-transform).
 
 ::::
 
@@ -30,7 +30,7 @@ A lot of {{es}} indices are organized as a stream of events: each event is an in
 
 To define a pivot, first you select one or more fields that you will use to group your data. You can select categorical fields (terms) and numerical fields for grouping. If you use numerical fields, the field values are bucketed using an interval that you specify.
 
-The second step is deciding how you want to aggregate the grouped data. When using aggregations, you practically ask questions about the index. There are different types of aggregations, each with its own purpose and output. To learn more about the supported aggregations and group-by fields, see [Create {{transform}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html).
+The second step is deciding how you want to aggregate the grouped data. When using aggregations, you practically ask questions about the index. There are different types of aggregations, each with its own purpose and output. To learn more about the supported aggregations and group-by fields, see [Create {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform).
 
 As an optional step, you can also add a query to further limit the scope of the aggregation.
 
@@ -41,7 +41,7 @@ Imagine that you run a webshop that sells clothes. Every order creates a documen
 If you want to check the sales in the different categories in your last fiscal year, define a {{transform}} that groups the data by the product categories (women’s shoes, men’s clothing, etc.) and the order date. Use the last year as the interval for the order date. Then add a sum aggregation on the ordered quantity. The result is an entity-centric index that shows the number of sold items in every product category in the last year.
 
 :::{image} ../../images/elasticsearch-reference-pivot-preview.png
-:alt: Example of a pivot {{transform}} preview in {kib}
+:alt: Example of a pivot {{transform}} preview in {{kib}}
 :class: screenshot
 :::
 
@@ -50,7 +50,7 @@ If you want to check the sales in the different categories in your last fiscal y
 You can use the `latest` type of {{transform}} to copy the most recent documents into a new index. You must identify one or more fields as the unique key for grouping your data, as well as a date field that sorts the data chronologically. For example, you can use this type of {{transform}} to keep track of the latest purchase for each customer or the latest event for each host.
 
 :::{image} ../../images/elasticsearch-reference-latest-preview.png
-:alt: Example of a latest {{transform}} preview in {kib}
+:alt: Example of a latest {{transform}} preview in {{kib}}
 :class: screenshot
 :::
 
@@ -64,7 +64,7 @@ If your {{transform}} must process a lot of historic data, it has high resource 
 
 For better performance, make sure that your search aggregations and queries are optimized and that your {{transform}} is processing only necessary data. Consider whether you can apply a source query to the {{transform}} to reduce the scope of data it processes. Also consider whether the cluster has sufficient resources in place to support both the composite aggregation search and the indexing of its results.
 
-If you prefer to spread out the impact on your cluster (at the cost of a slower {{transform}}), you can throttle the rate at which it performs search and index requests. Set the `docs_per_second` limit when you [create](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html) or [update](https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html) your {{transform}}. If you want to calculate the current rate, use the following information from the [get {{transform}} stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html):
+If you prefer to spread out the impact on your cluster (at the cost of a slower {{transform}}), you can throttle the rate at which it performs search and index requests. Set the `docs_per_second` limit when you [create](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform) or [update](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-update-transform) your {{transform}}. If you want to calculate the current rate, use the following information from the [get {{transform}} stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-transform-stats):
 
 ```
 documents_processed / search_time_in_ms * 1000

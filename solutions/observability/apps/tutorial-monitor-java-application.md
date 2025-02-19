@@ -846,7 +846,7 @@ If a new log file is created, older log files are gzipped as well to take less s
 
 The built-in modules are almost entirely using the [Ingest node](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) feature of {{es}} instead of the {{beats}} processors.
 
-One of the most helpful parts of the ingest pipeline is the ability to debug by using the [Simulate Pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html).
+One of the most helpful parts of the ingest pipeline is the ability to debug by using the [Simulate Pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate).
 
 1. Let’s write a pipeline that is similar to our {{filebeat}} processors using the {{dev-tools-app}} panel in {{kib}}, run the following:
 
@@ -917,7 +917,7 @@ You have now learned about parsing logs in either {{beats}} or {{es}}. What if w
 
 Writing out logs as plain text works and is easy to read for humans. However, first writing them out as plain text, parsing them using the `dissect` processors, and then creating a JSON again sounds tedious and burns unneeded CPU cycles.
 
-While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/index.html). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
+While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/index.html). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
 
 1. Instead of writing our logging standard, use an existing one. Let’s add the logging dependency to our Javalin application.
 
@@ -1461,7 +1461,7 @@ java -jar /tmp/apm-agent-attach-1.17.0-standalone.jar --pid 30730 \
 This above message will return something like this:
 
 ```text
-2020-07-10 15:04:48.144  INFO Attaching the Elastic {apm-agent} to 30730
+2020-07-10 15:04:48.144  INFO Attaching the Elastic {{apm-agent}} to 30730
 2020-07-10 15:04:49.649  INFO Done
 ```
 

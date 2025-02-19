@@ -44,7 +44,7 @@ The first value is a number, followed by what appears to be an IP address. You c
 
 ## Migrating to Elastic Common Schema (ECS) [grok-ecs]
 
-To ease migration to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}), a new set of ECS-compliant patterns is available in addition to the existing patterns. The new ECS pattern definitions capture event field names that are compliant with the schema.
+To ease migration to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current), a new set of ECS-compliant patterns is available in addition to the existing patterns. The new ECS pattern definitions capture event field names that are compliant with the schema.
 
 The ECS pattern set has all of the pattern definitions from the legacy set, and is a drop-in replacement. Use the [`ecs-compatability`](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html#plugins-filters-grok-ecs_compatibility) setting to switch modes.
 
@@ -88,7 +88,7 @@ PUT /my-index/
 }
 ```
 
-Next, use the [bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to index some log data into `my-index`.
+Next, use the [bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to index some log data into `my-index`.
 
 ```console
 POST /my-index/_bulk?refresh

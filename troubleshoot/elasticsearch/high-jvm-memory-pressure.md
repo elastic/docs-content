@@ -23,7 +23,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 ::::::{tab-item} Elasticsearch Service
 From your deployment menu, click **Elasticsearch**. Under **Instances**, each instance displays a **JVM memory pressure** indicator. When the JVM memory pressure reaches 75%, the indicator turns red.
 
-You can also use the [nodes stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html) to calculate the current JVM memory pressure for each node.
+You can also use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.
 
 ```console
 GET _nodes/stats?filter_path=nodes.*.jvm.mem.pools.old
@@ -35,7 +35,7 @@ JVM Memory Pressure = `used_in_bytes` / `max_in_bytes`
 ::::::
 
 ::::::{tab-item} Self-managed
-To calculate the current JVM memory pressure for each node, use the [nodes stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html).
+To calculate the current JVM memory pressure for each node, use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats).
 
 ```console
 GET _nodes/stats?filter_path=nodes.*.jvm.mem.pools.old
@@ -101,7 +101,7 @@ Defining too many fields or nesting fields too deeply can lead to [mapping explo
 
 **Spread out bulk requests**
 
-While more efficient than individual requests, large [bulk indexing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) or [multi-search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html) requests can still create high JVM memory pressure. If possible, submit smaller requests and allow more time between them.
+While more efficient than individual requests, large [bulk indexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) or [multi-search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch) requests can still create high JVM memory pressure. If possible, submit smaller requests and allow more time between them.
 
 **Upgrade node memory**
 

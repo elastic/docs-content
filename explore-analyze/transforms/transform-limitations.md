@@ -51,9 +51,9 @@ A {{ctransform}} periodically checks for changes to source data. The functionali
 
 When a pivot {{transform}} is first started, it will deduce the mappings required for the destination index. This process is based on the field types of the source index and the aggregations used. If the fields are derived from [`scripted_metrics`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-scripted-metric-aggregation.html) or [`bucket_scripts`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-bucket-script-aggregation.html), [dynamic mappings](../../manage-data/data-store/mapping/dynamic-mapping.md) will be used. In some instances the deduced mappings may be incompatible with the actual data. For example, numeric overflows might occur or dynamically mapped fields might contain both numbers and strings. Please check {{es}} logs if you think this may have occurred.
 
-You can view the deduced mappings by using the [preview transform API](https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html). See the `generated_dest_index` object in the API response.
+You can view the deduced mappings by using the [preview transform API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform). See the `generated_dest_index` object in the API response.
 
-If it’s required, you may define custom mappings prior to starting the {{transform}} by creating a custom destination index using the [create index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html). As deduced mappings cannot be overwritten by an index template, use the create index API to define custom mappings. The index templates only apply to fields derived from scripts that use dynamic mappings.
+If it’s required, you may define custom mappings prior to starting the {{transform}} by creating a custom destination index using the [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create). As deduced mappings cannot be overwritten by an index template, use the create index API to define custom mappings. The index templates only apply to fields derived from scripts that use dynamic mappings.
 
 ### Batch {{transforms}} may not account for changed documents [transform-batch-limitations]
 
@@ -133,4 +133,4 @@ The {{transforms}} management page in {{kib}} lists up to 1000 {{transforms}}.
 
 ### {{kib}} might not support every {{transform}} configuration option [transform-ui-support]
 
-There might be configuration options available via the {{transform}} APIs that are not supported in {{kib}}. For an exhaustive list of configuration options, refer to the [documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-apis.html).
+There might be configuration options available via the {{transform}} APIs that are not supported in {{kib}}. For an exhaustive list of configuration options, refer to the [documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-transform).

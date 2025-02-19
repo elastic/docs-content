@@ -12,7 +12,7 @@ applies:
 
 ::::{important} 
 * For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) end-to-end tutorial.
-* This tutorial was written before the [{{infer}} endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html) and [`semantic_text` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text.html) was introduced. Today we have simpler options for performing semantic search.
+* This tutorial was written before the [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) and [`semantic_text` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text.html) was introduced. Today we have simpler options for performing semantic search.
 
 ::::
 
@@ -233,7 +233,7 @@ Combining semantic and lexical search into one hybrid search request using [reci
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#rrf-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#standard-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) to rank the top documents.
+Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) to rank the top documents.
 
 ```console
 GET my-index/_search

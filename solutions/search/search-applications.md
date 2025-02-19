@@ -14,13 +14,13 @@ applies:
 
 *Search Applications* enable users to build search-powered applications that leverage the full power of {{es}} and its Query DSL, with a simplified user experience. Create search applications based on your {{es}} indices, build queries using search templates, and easily preview your results directly in the {{kib}} Search UI.
 
-You can also interact with your search applications using the [Search Application APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-apis.html). Search Applications are designed to simplify building unified search experiences across a range of enterprise search use cases, using the Elastic platform.
+You can also interact with your search applications using the [Search Application APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search_application). Search Applications are designed to simplify building unified search experiences across a range of enterprise search use cases, using the Elastic platform.
 
 ::::{admonition} Search Applications documentation
 Documentation for the Search Applications feature lives in two places:
 
 * The documentation in this section covers the basics of Search Applications, information about working with Search Applications in the {{kib}} UI, and use case examples.
-* The [{{es}} API documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-apis.html) contains the API references for working with Search Applications programmatically. Jump there if you’re only interested in the APIs.
+* The [{{es}} API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-search_application) contains the API references for working with Search Applications programmatically. Jump there if you’re only interested in the APIs.
 
 ::::
 
@@ -74,7 +74,7 @@ Once created, you can explore the documents in your search application under **S
 
 ### Option 2: Get started with the API [search-application-overview-get-started-api] 
 
-Use the {{es}} [Put Search Application API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-search-application.html) to create a search application.
+Use the {{es}} [Put Search Application API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put) to create a search application.
 
 The following example creates a search application named `my_search_application` that searches over the `my_search_index1` and `my_search_index2` indices, along with defining a simple search template (Refer to [Default template example](search-applications/search-application-api.md#search-application-api-default-template)).
 

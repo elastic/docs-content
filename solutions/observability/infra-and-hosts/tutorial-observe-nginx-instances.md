@@ -286,7 +286,7 @@ These anomaly detection jobs are available when you have data that matches the q
 
 ### Before you begin [monitor-nginx-ml-prereqs]
 
-Verify that your environment is set up properly to use the {{ml-features}}. If {{es}} {security-features} are enabled, you need a user with permissions to manage {{anomaly-jobs}}. Refer to [Set up ML features](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
+Verify that your environment is set up properly to use the {{ml-features}}. If {{es}} {{security-features}} are enabled, you need a user with permissions to manage {{anomaly-jobs}}. Refer to [Set up ML features](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
 
 
 ### Add nginx ML jobs [monitor-nginx-ml-add-jobs]

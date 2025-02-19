@@ -72,7 +72,7 @@ The upload feature is not intended for use as part of a repeated production proc
 
 
 :::{image} ../../../images/kibana-add-data-fv.png
-:alt: Uploading a file in {kib}
+:alt: Uploading a file in {{kib}}
 :class: screenshot
 :::
 

@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-configuration.html
 ---
@@ -216,12 +218,12 @@ roleRef:
 
 ## Deploy {{agent}} in secured clusters [k8s-elastic-agent-fleet-configuration-deploying-in-secured-clusters]
 
-To deploy {{agent}} in clusters with the Pod Security Policy admission controller enabled, or in [OpenShift](k8s-openshift-agent.md) clusters, you might need to grant additional permissions to the Service Account used by the {{agent}} Pods. Those Service Accounts must be bound to a Role or ClusterRole that has `use` permission for the required Pod Security Policy or Security Context Constraints. Different {{agent}} {integrations} might require different settings set in their PSP/[SCC](k8s-openshift-agent.md).
+To deploy {{agent}} in clusters with the Pod Security Policy admission controller enabled, or in [OpenShift](k8s-openshift-agent.md) clusters, you might need to grant additional permissions to the Service Account used by the {{agent}} Pods. Those Service Accounts must be bound to a Role or ClusterRole that has `use` permission for the required Pod Security Policy or Security Context Constraints. Different {{agent}} {{integrations}} might require different settings set in their PSP/[SCC](k8s-openshift-agent.md).
 
 
 ## Customize {{fleet-server}} Service [k8s-elastic-agent-fleet-configuration-customize-fleet-server-service]
 
-By default, ECK creates a Service for {{fleet-server}} that {{agents}} can connect through. You can customize it using the `http` configuration element. Check more information on how to [make changes](accessing-services.md) to the Service and [customize](tls-certificates.md) the TLS configuration.
+By default, ECK creates a Service for {{fleet-server}} that {{agents}} can connect through. You can customize it using the `http` configuration element. Check more information on how to [make changes](accessing-services.md) to the Service and [customize](/deploy-manage/security/secure-http-communications.md) the TLS configuration.
 
 
 ## Control {{fleet}} policy selection [k8s-elastic-agent-control-fleet-policy-selection]

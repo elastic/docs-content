@@ -1,11 +1,11 @@
 # Adding data to Elasticsearch [ec-cloud-ingest-data]
 
-You have a number of options for getting data into Elasticsearch, referred to as ingesting or indexing your data. Use Elastic Agent, Beats, Logstash, Elastic language clients, Elastic connectors, or the Enterprise Search web crawler. The option (or combination) selected depends on whether you are indexing general content or timestamped data.
+You have a number of options for getting data into Elasticsearch, referred to as ingesting or indexing your data. Use Elastic Agent, Beats, Logstash, Elastic language clients, Elastic connectors, or the web crawler. The option (or combination) selected depends on whether you are indexing general content or timestamped data.
 
 $$$ec-ingest-methods$$$
 
 General content
-:   Index content like HTML pages, catalogs and other files. Send data directly to Elasticseach from your application using an Elastic language client. Otherwise use Elastic content [connectors](https://www.elastic.co/guide/en/enterprise-search/current/connectors.html) or the Elastic [web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
+:   Index content like HTML pages, catalogs and other files. Send data directly to Elasticseach from your application using an Elastic language client. Otherwise use Elastic content [connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html) or the Elastic [web crawler](https://github.com/elastic/crawler).
 
 Timestamped data
 :   The preferred way to index timestamped data is to use Elastic Agent. Elastic Agent is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. Each Elastic Agent based integration includes default ingestion rules, dashboards, and visualizations to start analyzing your data right away. Fleet Management enables you to centrally manage all of your deployed Elastic Agents from Kibana.
@@ -188,7 +188,7 @@ For users who want to build their own solution, we can help you get started inge
 
 ### Ingest data with Elastic web crawler, connectors [ec-ingest-crawler-connectors]
 
-[Add data with the web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html)
+[Add data with the web crawler](https://github.com/elastic/crawler)
 :   Use the web crawler to programmatically discover, extract, and index searchable content from websites and knowledge bases.
 
 [Add data with connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html)
@@ -199,9 +199,6 @@ For users who want to build their own solution, we can help you get started inge
 
 [Elasticsearch language clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
 :   Use the {{es}} language clients to ingest data from an application into {{es}}.
-
-[Enterprise Search language clients](https://www.elastic.co/guide/en/enterprise-search/current/programming-language-clients.html)
-:   The {{ents}} programming language client libraries provide native APIs for those languages to ingest data into {{ents}}, App Search, and Workplace Search.
 
 [Application ingest tutorials](../../../manage-data/ingest/ingesting-data-from-applications.md)
 :   These hands-on guides demonstrate how to use the {{es}} language clients to ingest data from your applications.

@@ -3,9 +3,6 @@ toc:
   - file: index.md
   - file: the-stack.md
     children:
-      - file: stack-components.md
       - file: introduction.md
       - file: installing-elastic-stack.md
   - file: deployment-options.md
-  - file: use-cases.md
-  - file: contribute.md

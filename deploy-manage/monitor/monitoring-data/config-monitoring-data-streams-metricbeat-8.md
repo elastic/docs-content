@@ -32,9 +32,9 @@ You can clone index templates in {{kib}}:
 
 You can also use the {{es}} API:
 
-* Retrieve the index template using the [get index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-template.html).
+* Retrieve the index template using the [get index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-index-template).
 * Edit the index template: set the template `priority` to `500`, and specify the settings you want to change in the `settings` section.
-* Store the updated index template under a different name, for example `custom_monitoring`, using the [create index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html).
+* Store the updated index template under a different name, for example `custom_monitoring`, using the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
 ::::{note} 
 {{metricbeat}} 8 uses [composable templates](../../../manage-data/data-store/templates.md), rather than legacy templates.

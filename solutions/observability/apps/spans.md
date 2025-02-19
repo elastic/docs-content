@@ -14,3 +14,7 @@ mapped_urls:
 
 % - [ ] ./raw-migrated-files/observability-docs/observability/apm-data-model-spans.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/observability-apm-compress-spans.md
+
+% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+
+$$$apm-spans-span-compression$$$

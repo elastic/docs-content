@@ -95,7 +95,7 @@ To automatically generate reports from a script, make a request to the `POST` UR
 
 To queue CSV report generation using the `POST` URL with cURL:
 
-```curl
+```bash
 curl \
 -XPOST \ <1>
 -u elastic \ <2>

@@ -9,6 +9,10 @@ applies:
 
 # JinaAI inference integration [infer-service-jinaai]
 
+:::{tip} Inference API reference  
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::
+
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `jinaai` service.
 
 

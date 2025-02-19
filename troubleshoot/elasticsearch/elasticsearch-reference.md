@@ -17,7 +17,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 ## General [troubleshooting-general]
 
 * [Fix common cluster issues](fix-common-cluster-issues.md)
-* Several troubleshooting issues can be diagnosed using the [health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html).
+* Several troubleshooting issues can be diagnosed using the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report).
 
 
 ## Data [troubleshooting-data]
@@ -35,8 +35,8 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 ## Management [troubleshooting-management]
 
-* [Start index lifecycle management](start-ilm.md)
-* [Start snapshot lifecycle management](start-slm.md)
+* [Troubleshoot index and snapshot lifecycle management](start-ilm.md)
+* [Fix index lifecycle management errors](/troubleshoot/elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md)
 
 
 ## Capacity [troubleshooting-capacity]

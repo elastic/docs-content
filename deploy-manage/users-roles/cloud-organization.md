@@ -1,19 +1,33 @@
 ---
+navigation_title: "Cloud organization"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations.html
+applies:
+  serverless: all
+  hosted: all
 ---
 
 # Cloud organization users [ec-organizations]
 
-When you sign up to Elastic Cloud, you create an organization.
+When you sign up to {{ecloud}}, you create an organization. This organization is the umbrella for all of your {{ecloud}} resources, users, and account settings. Every organization has a unique identifier.
 
-This organization is the umbrella for all of your Elastic Cloud resources, users, and account settings. Every organization has a unique identifier. Bills are invoiced according to the billing contact and details that you set for your organization.
+You can perform the following tasks to control access to your Cloud organization, your {{ech}} deployments, and your {{serverless-full}} projects:
 
-From the Organization page, you can:
+* [Manage users](/deploy-manage/users-roles/cloud-organization/manage-users.md): Invite users to join your organization and manage existing users.
+* Assign [user roles and privileges](/deploy-manage/users-roles/cloud-organization/user-roles.md): 
+  * Manage organization-level roles and high-level access to deployments and projects. 
+  * If you have {{serverless-full}} projects, assign project-level roles and create custom roles.
+* Configure [SAML single sign-on](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md) for your organization.
 
-* [Manage members of your organization](cloud-organization/manage-users.md)
-* [Leave an organization](cloud-organization/manage-users.md#ec-leave-organization)
-* [Assign user roles and privileges](cloud-organization/user-roles.md)
-* [Create API keys for using the Elastic Cloud API](../api-keys/elastic-cloud-api-keys.md#ec-api-keys)
-* [Configure SAML single sign-on for your organization](cloud-organization/configure-saml-authentication.md)
+:::{tip}
+If you're using {{ech}}, then you can also manage users and control access [at the deployment level](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
+:::
 
+## Should I use organization-level or deployment-level SSO? [organization-deployment-sso] 
+
+:::{applies}
+:hosted: all
+:::
+
+:::{include} _snippets/org-vs-deploy-sso.md
+:::

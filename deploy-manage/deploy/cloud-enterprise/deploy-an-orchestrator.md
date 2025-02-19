@@ -14,4 +14,3 @@ This section provides step-by-step guidance on:
 * [**Configuring ECE**](./configure.md) → (TBD)
 
 If you're looking to deploy {{es}}, {{kib}} or other {{stack}} applications on ECE, refer to [](./working-with-deployments.md).
-
