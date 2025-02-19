@@ -67,7 +67,7 @@ In `logsdb` index mode, indices are sorted by the fields `host.name` and `@times
 
 You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, see [*Index Sorting*](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-index-sorting.html).
 
-To modify the sort configuration of an existing data stream, update the data stream’s component templates, and then perform or wait for a [rollover](data-streams.md#data-streams-rollover).
+To modify the sort configuration of an existing data stream, update the data stream’s component templates, and then perform or wait for a [rollover](../data-streams.md#data-streams-rollover).
 
 ::::{note}
 If you apply custom sort settings, the `@timestamp` field is injected into the mappings but is not automatically added to the list of sort fields. For best results, include it manually as the last sort field, with `desc` ordering.
@@ -86,7 +86,7 @@ To avoid mapping conflicts, consider these options:
 * **Switch to a different [index mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-mode-setting)**: If resolving `host.name` mapping conflicts is not feasible, you can choose not to use `logsdb` mode.
 
 ::::{important}
-On existing data streams, `logsdb` mode is applied on [rollover](data-streams.md#data-streams-rollover) (automatic or manual).
+On existing data streams, `logsdb` mode is applied on [rollover](../data-streams.md#data-streams-rollover) (automatic or manual).
 ::::
 
 

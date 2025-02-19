@@ -72,13 +72,13 @@ Define the relevant secure settings in each node’s keystore before starting th
 
 The following list contains the available client settings. Those that must be stored in the keystore are marked as "secure" and are **reloadable**; the other settings belong in the `elasticsearch.yml` file.
 
-`access_key` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`access_key` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   An S3 access key. If set, the `secret_key` setting must also be specified. If unset, the client will use the instance or container role instead.
 
-`secret_key` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`secret_key` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   An S3 secret key. If set, the `access_key` setting must also be specified.
 
-`session_token` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`session_token` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   An S3 session token. If set, the `access_key` and `secret_key` settings must also be specified.
 
 `endpoint`
@@ -96,10 +96,10 @@ The following list contains the available client settings. Those that must be st
 `proxy.scheme`
 :   The scheme to use for the proxy connection to S3. Valid values are either `http` or `https`. Defaults to `http`. This setting allows to specify the protocol used for communication with the proxy server
 
-`proxy.username` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`proxy.username` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The username to connect to the `proxy.host` with.
 
-`proxy.password` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`proxy.password` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The password to connect to the `proxy.host` with.
 
 `read_timeout`

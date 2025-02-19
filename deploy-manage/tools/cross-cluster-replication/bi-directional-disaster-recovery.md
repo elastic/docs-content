@@ -9,7 +9,7 @@ mapped_pages:
 # Bi-directional disaster recovery [ccr-disaster-recovery-bi-directional-tutorial]
 
 
-Learn how to set up disaster recovery between two clusters based on bi-directional {{ccr}}. The following tutorial is designed for data streams which support [update by query](../../../manage-data/data-store/index-types/use-data-stream.md#update-docs-in-a-data-stream-by-query) and [delete by query](../../../manage-data/data-store/index-types/use-data-stream.md#delete-docs-in-a-data-stream-by-query). You can only perform these actions on the leader index.
+Learn how to set up disaster recovery between two clusters based on bi-directional {{ccr}}. The following tutorial is designed for data streams which support [update by query](../../../manage-data/data-store/data-streams/use-data-stream.md#update-docs-in-a-data-stream-by-query) and [delete by query](../../../manage-data/data-store/data-streams/use-data-stream.md#delete-docs-in-a-data-stream-by-query). You can only perform these actions on the leader index.
 
 This tutorial works with {{ls}} as the source of ingestion. It takes advantage of a {{ls}} feature where [the {{ls}} output to {{es}}](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html) can be load balanced across an array of hosts specified. {{beats}} and {{agents}} currently do not support multiple outputs. It should also be possible to set up a proxy (load balancer) to redirect traffic without {{ls}} in this tutorial.
 

@@ -9,7 +9,7 @@ mapped_pages:
 # Run downsampling with ILM [downsampling-ilm]
 
 
-This is a simplified example that allows you to see quickly how [downsampling](downsampling-time-series-data-stream.md) works as part of an ILM policy to reduce the storage size of a sampled set of metrics. The example uses typical Kubernetes cluster monitoring data. To test out downsampling with ILM, follow these steps:
+This is a simplified example that allows you to see quickly how [downsampling](./downsampling-time-series-data-stream.md) works as part of an ILM policy to reduce the storage size of a sampled set of metrics. The example uses typical Kubernetes cluster monitoring data. To test out downsampling with ILM, follow these steps:
 
 1. Check the [prerequisites](#downsampling-ilm-prereqs).
 2. [Create an index lifecycle policy](#downsampling-ilm-policy).
@@ -20,9 +20,9 @@ This is a simplified example that allows you to see quickly how [downsampling](d
 
 ## Prerequisites [downsampling-ilm-prereqs]
 
-Refer to [time series data stream prerequisites](set-up-tsds.md#tsds-prereqs).
+Refer to [time series data stream prerequisites](./set-up-tsds.md#tsds-prereqs).
 
-Before running this example you may want to try the [Run downsampling manually](run-downsampling-manually.md) example.
+Before running this example you may want to try the [Run downsampling manually](./run-downsampling-manually.md) example.
 
 
 ## Create an index lifecycle policy [downsampling-ilm-policy]
@@ -346,7 +346,7 @@ After the ILM policy has taken effect, the original `.ds-datastream-2022.08.26-0
 ...
 ```
 
-Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)).
+Run a search query on the datastream (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)).
 
 ```console
 GET datastream/_search
@@ -464,4 +464,4 @@ GET /_data_stream/datastream/_stats?human=true
 
 This example demonstrates how downsampling works as part of an ILM policy to reduce the storage size of metrics data as it becomes less current and less frequently queried.
 
-You can also try our [Run downsampling manually](run-downsampling-manually.md) example to learn how downsampling can work outside of an ILM policy.
+You can also try our [Run downsampling manually](./run-downsampling-manually.md) example to learn how downsampling can work outside of an ILM policy.

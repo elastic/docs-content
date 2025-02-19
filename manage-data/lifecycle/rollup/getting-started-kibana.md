@@ -9,7 +9,7 @@ mapped_pages:
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups are deprecated and will be removed in a future version. Use [downsampling](/manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups are deprecated and will be removed in a future version. Use [downsampling](/manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 A rollup job is a periodic task that aggregates data from indices specified by an index pattern, and then rolls it into a new index. Rollup indices are a good way to compactly store months or years of historical data for use in visualizations and reports.

@@ -18,7 +18,7 @@ For debugging synthetic tests locally, you can set an environment variable, `DEB
 
 
 ### Monitors stopped running after upgrading to 8.8.0 or above [synthetics-troubleshooting-missing-api-key]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 
@@ -128,7 +128,7 @@ There are a few ways to fix this:
 ::::
 
 ### You do not have permission to use Elastic managed locations [synthetics-troubleshooting-public-locations-disabled]
-:::{applies}
+:::{applies_to}
 :stack: all
 :::
 

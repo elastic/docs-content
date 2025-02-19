@@ -174,7 +174,7 @@ xpack.notification.slack:
 
 To notify multiple channels, create a webhook URL for each channel in Slack and multiple Slack accounts in {{es}} (one for each webhook URL).
 
-If you configure multiple Slack accounts, you either need to configure a default account or specify which account the notification should be sent with in the [`slack`]() action.
+If you configure multiple Slack accounts, you either need to configure a default account or specify which account the notification should be sent with in the `slack` action.
 
 ```yaml
 xpack.notification.slack:
