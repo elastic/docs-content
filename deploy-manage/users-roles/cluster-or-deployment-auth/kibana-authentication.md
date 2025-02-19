@@ -253,7 +253,7 @@ To support basic authentication for the applications like `curl` or when the `Au
 
 ### Single sign-on provider details [_single_sign_on_provider_details]
 
-The following sections apply both to [SAML single sign-on](/#saml) and [OpenID Connect single sign-on](#oidc).
+The following sections apply both to [SAML single sign-on](#saml) and [OpenID Connect single sign-on](#oidc).
 
 
 #### Access and refresh tokens [_access_and_refresh_tokens]
