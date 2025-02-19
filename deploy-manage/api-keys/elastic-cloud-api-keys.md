@@ -1,27 +1,31 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html
 ---
 
-# Elastic Cloud API keys [ec-api-authentication]
+# {{ecloud}} API keys [ec-api-authentication]
 
-With a valid Elastic Cloud API key, you can access the API from its base URL at `api.elastic-cloud.com`.
+{{ecloud}} API keys allow you to use the [{{ecloud}}](https://www.elastic.co/docs/api/doc/cloud/) and [{{ecloud}} serverless](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/) APIs.
+
+With a valid {{ecloud}} API key, you can access the API from its base URL at `api.elastic-cloud.com`.
 
 Only **Organization owners** can create and manage API keys. An API key is not tied to the user who created it. When creating a key, you assign it specific roles to control its access to organizational resources, including hosted deployments and serverless projects. If a user leaves the organization, the API keys they have created will still function until they expire.
 
 You can have multiple API keys for different purposes, and you can revoke them when you no longer need them.
 
+::::{note}
+These keys provides access to the API that enables you to manage your deployments. It does not provide access to {{es}}. To access {{es}} with an API key, create a key [in {{kib}}](elasticsearch-api-keys.md) or [using the {{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
+::::
 
 ## Create an API key [ec-api-keys]
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Go to your avatar in the upper right corner and choose **Organization**.
 3. On the API keys tab of the **Organization** page, click **Create API Key**.
-
-    ::::{note}
-    This key provides access to the API that enables you to manage your deployments. It does not provide access to {{es}}. To access {{es}} with an API key, create a key [in {{kib}}](elasticsearch-api-keys.md) or [using the {{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
-    ::::
-
 4. From the **Create API Key** page, you can configure your new key by adding a name, set expiration, or assign [roles](../users-roles/cloud-organization/user-roles.md).
 
     By default, API keys expire after three months. You can set the expiration to a different preset value or to a specific date, up to one year. If you need the key to work indefinitely, you can also set its expiration to Never. In this case, the key won’t expire.
@@ -41,7 +45,7 @@ Authorization: ApiKey $EC_API_KEY
 
 ## Revoke an API key [ec_revoke_an_api_key]
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Go to your avatar in the upper right corner and choose **Organization**.
 
     The keys currently associated with your organization are listed under the API keys tab of the **Organization** page.
