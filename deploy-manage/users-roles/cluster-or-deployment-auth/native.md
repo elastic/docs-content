@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-users-and-roles.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/change-passwords-native-users.html
   - https://www.elastic.co/guide/en/kibana/current/tutorial-secure-access-to-kibana.html
-applies:
+applies_to:
   deployment:
     self: all
     hosted: all
