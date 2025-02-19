@@ -10,7 +10,7 @@ These use cases are supported by ready-to-use implementations that help you get 
 - As integrated solutions on [{{ecloud}} Hosted](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) and [self-managed](/deploy-manage/deploy/self-managed.md) deployments
 - As project types on [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md)
 
-While these solutions provide pre-built components for common use cases, you can also build custom implementations using Elastic's features, APIs, and tools. This documentation guides you through:
+While these solutions and project types provide pre-built components for common use cases, you can also build custom implementations using Elastic's features, APIs, and tools. This documentation guides you through:
 
 1. Evaluating if an Elastic solution fits your needs
 2. Getting started with your chosen solution
