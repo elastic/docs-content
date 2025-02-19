@@ -4,9 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-other.html
 applies_to:
   deployment:
-     eck:
      ess:
-     ece:
 ---
 
 # Restart a Cloud Hosted deployment
