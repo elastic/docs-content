@@ -9,7 +9,7 @@ applies:
 # Read-only URL repository [snapshots-read-only-repository]
 
 ::::{note} 
-This repository type is only available if you run {{es}} on your own hardware. If you use {{ess}}, see [{{ess}} repository types](self-managed.md#ess-repo-types).
+This repository type is only available if you run {{es}} on your own hardware. If you use {{ess}}, see [{{ess}} repository types](self-managed.md).
 ::::
 
 

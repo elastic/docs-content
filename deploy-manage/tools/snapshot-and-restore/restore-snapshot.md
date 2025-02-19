@@ -51,7 +51,7 @@ In this guide, you’ll learn how to:
 - Monitor the restore operation
 - Cancel an ongoing restore
 
-This guide also provides tips for [restoring to another cluster](#restore-to-a-different-cluster) and [troubleshooting common restore errors](#troubleshoot-restore-errors).
+This guide also provides tips for [restoring to another cluster](#restore-different-cluster) and [troubleshooting common restore errors](#troubleshoot-restore).
 
 ## Prerequisites
 - To use Kibana’s Snapshot and Restore feature, you must have the following permissions:
