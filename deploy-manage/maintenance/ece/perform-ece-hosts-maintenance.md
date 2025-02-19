@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-perform-host-maintenance.html
+applies_to:
+  deployment:
+     ece:
 ---
 
 # Perform ECE hosts maintenance [ece-perform-host-maintenance]

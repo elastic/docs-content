@@ -1,6 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-elasticsearch-nodes.html
+applies_to:
+  stack:
+  deployment:
+     eck:
+     ess:
+     ece:
+     self:
 ---
 
 # Add and Remove Elasticsearch nodes [add-elasticsearch-nodes]
@@ -102,7 +109,6 @@ Although the voting configuration exclusions API is most useful for down-scaling
 ::::{note}
 Voting exclusions are only required when removing at least half of the master-eligible nodes from a cluster in a short time period. They are not required when removing master-ineligible nodes, nor are they required when removing fewer than half of the master-eligible nodes.
 ::::
-
 
 Adding an exclusion for a node creates an entry for that node in the voting configuration exclusions list, which has the system automatically try to reconfigure the voting configuration to remove that node and prevents it from returning to the voting configuration once it has removed. The current list of exclusions is stored in the cluster state and can be inspected as follows:
 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-delete-runner.html
+applies_to:
+  deployment:
+     ece:
 ---
 
 # Delete ECE hosts [ece-delete-runner]

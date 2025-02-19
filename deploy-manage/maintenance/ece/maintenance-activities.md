@@ -1,3 +1,8 @@
+---
+applies_to:
+  deployment:
+     ece:
+---
 # Maintenance activities
 
 Maintenance activities ensure the smooth operation and scalability of your {{es}} installation. This section provides guidelines on performing essential maintenance tasks while minimizing downtime and maintaining high availability.

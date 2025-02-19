@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restart-deployment.html
+applies_to:
+  deployment:
+     ece:
 ---
 
 # Restart an ECE deployment [ece-restart-deployment]

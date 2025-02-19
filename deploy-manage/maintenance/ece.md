@@ -1,3 +1,9 @@
+---
+applies_to:
+  deployment:
+     ece:
+---
+
 # ECE maintenance
 
 Elastic Cloud Enterprise (ECE), being a self-managed Elastic Stack deployment platform, abstracts much of the complexity of running {{es}}, but still requires regular maintenance at both the platform and deployment levels. Maintenance activities range from managing individual deployments to performing infrastructure-level updates on ECE hosts.

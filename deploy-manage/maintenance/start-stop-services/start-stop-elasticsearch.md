@@ -2,6 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/stopping-elasticsearch.html
+applies_to:
+  stack:
+  deployment:
+     eck:
+     ess:
+     ece:
+     self:
 ---
 
 # Start and stop Elasticsearch

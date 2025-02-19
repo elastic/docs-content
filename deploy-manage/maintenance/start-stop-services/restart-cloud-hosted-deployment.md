@@ -2,6 +2,11 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-restart-deployment.html
   - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-other.html
+applies_to:
+  deployment:
+     eck:
+     ess:
+     ece:
 ---
 
 # Restart a Cloud Hosted deployment
@@ -34,7 +39,7 @@ curl -XPOST \
 
 `REF_ID`  Name given to each resource type in the attribute `ref_id`. `main-elasticsearch` in the preceding example
 
-## Shut down a Elasticsearch Service deployment [ec_shut_down_a_elasticsearch_service_deployment] 
+## Shut down a Elasticsearch Service deployment [ec_shut_down_a_elasticsearch_service_deployment]
 
 Shut down a Elasticsearch Service deployment by calling the following API request:
 
