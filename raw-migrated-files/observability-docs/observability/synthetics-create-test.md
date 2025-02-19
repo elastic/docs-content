@@ -209,7 +209,7 @@ step('make an API request', async () => {
 
 The Elastic Synthetics `request` parameter is similar to [other request objects that are exposed by Playwright](https://playwright.dev/docs/api/class-apirequestcontext) with a few key differences:
 
-* The Elastic Synthetics `request` parameter comes built into the library so it doesn’t have to be imported separately, which reduces the amount of code needed and allows you to make API requests in [inline journeys](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md#synthetics-get-started-ui-browser).
+* The Elastic Synthetics `request` parameter comes built into the library so it doesn’t have to be imported separately, which reduces the amount of code needed and allows you to make API requests in [inline journeys](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md#synthetics-get-started-ui-add-a-browser-monitor).
 * The top level `request` object exposed by Elastic Synthetics has its own isolated cookie storage unlike Playwright’s `context.request` and `page.request`, which share cookie storage with the corresponding [`BrowserContext`](https://playwright.dev/docs/api/class-browsercontext).
 * If you want to control the creation of the `request` object, you can do so by passing options via [`--playwright-options`](../../../solutions/observability/apps/use-synthetics-cli.md#elastic-synthetics-command) or in the [`synthetics.config.ts` file](../../../solutions/observability/apps/configure-synthetics-projects.md).
 

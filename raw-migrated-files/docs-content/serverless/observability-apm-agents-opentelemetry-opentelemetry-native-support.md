@@ -8,8 +8,8 @@ This is one of several approaches you can use to integrate Elastic with OpenTele
 
 Elastic natively supports the OpenTelemetry protocol (OTLP). This means trace data and metrics collected from your applications and infrastructure can be sent directly to Elastic.
 
-* Send data to Elastic from an upstream [OpenTelemetry Collector](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md#observability-apm-agents-opentelemetry-opentelemetry-native-support-send-data-from-an-upstream-opentelemetry-collector)
-* Send data to Elastic from an upstream [OpenTelemetry language SDK](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md#observability-apm-agents-opentelemetry-opentelemetry-native-support-send-data-from-an-upstream-opentelemetry-sdk)
+* Send data to Elastic from an upstream [OpenTelemetry Collector](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md)
+* Send data to Elastic from an upstream [OpenTelemetry language SDK](../../../solutions/observability/apps/upstream-opentelemetry-collectors-language-sdks.md)
 
 
 ## Send data from an upstream OpenTelemetry Collector [observability-apm-agents-opentelemetry-opentelemetry-native-support-send-data-from-an-upstream-opentelemetry-collector]
@@ -105,7 +105,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 `OTEL_EXPORTER_OTLP_HEADERS`
 :   Authorization header that includes the Elastic APM API key: `"Authorization=ApiKey an_api_key"`. Note the required space between `ApiKey` and `an_api_key`.
 
-    For information on how to format an API key, refer to [Secure communication with APM agents](../../../solutions/observability/apps/use-apm-securely.md#observability-apm-keep-data-secure-secure-communication-with-apm-agents).
+    For information on how to format an API key, refer to [Secure communication with APM agents](../../../solutions/observability/apps/use-apm-securely.md).
 
     ::::{note}
     If you are using a version of the Python OpenTelemetry agent *before* 1.27.0, the content of the header *must* be URL-encoded. You can use the Python standard library’s `urllib.parse.quote` function to encode the content of the header.
@@ -121,7 +121,7 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
 
 
 
-You are now ready to collect traces and [metrics](../../../solutions/observability/apps/collect-metrics.md) before [verifying metrics](../../../solutions/observability/apps/collect-metrics.md#open-telemetry-verify-metrics) and [visualizing metrics](../../../solutions/observability/apps/collect-metrics.md#open-telemetry-visualize).
+You are now ready to collect traces and [metrics](../../../solutions/observability/apps/collect-metrics.md) before [verifying metrics](../../../solutions/observability/apps/collect-metrics.md#apm-open-telemetry-verify-metrics) and [visualizing metrics](../../../solutions/observability/apps/collect-metrics.md#apm-open-telemetry-visualize).
 
 
 ## Proxy requests to Elastic [observability-apm-agents-opentelemetry-opentelemetry-native-support-proxy-requests-to-elastic]

@@ -31,7 +31,7 @@ $$$management-cross-cluster-search$$$
 $$$data-views-read-only-access$$$
 
 
-By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/index-types/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
+By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
 In certain apps, you can also query your {{es}} data using [{{esql}}](../query-filter/languages/esql.md). With {{esql}}, data views aren't required.
@@ -89,7 +89,7 @@ Want to explore your data or create a visualization without saving it as a data 
 
 A temporary {{data-source}} remains in your space until you change apps, or until you save it.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte3a4f3994c44c0cc/637eb0c95834861044c21a25/ad-hoc-data-view.gif
+:::{image} ../../images/ad-hoc-data-view.gif
 :alt: how to create an ad-hoc data view
 :class: screenshot
 :::
@@ -101,7 +101,7 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 
 
 ### Use {{data-sources}} with rolled up data [rollup-data-view]
-::::{applies}
+::::{applies_to}
 :serverless: unavailable
 :stack: deprecated
 ::::
@@ -109,7 +109,7 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 ::::{admonition}
 :class: warning
 
-Rollups are deprecated. Use [downsampling](../../manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups are deprecated. Use [downsampling](../../manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 
@@ -123,7 +123,7 @@ For an example, refer to [Create and visualize rolled up data](/manage-data/life
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]
-::::{applies}
+::::{applies_to}
 :serverless: unavailable
 :stack: ga
 ::::

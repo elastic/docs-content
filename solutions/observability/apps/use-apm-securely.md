@@ -4,15 +4,13 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-keep-data-secure.html
 ---
 
-# Use APM securely
+# Use APM securely [apm-securing-apm-server]
 
-% What needs to be done: Align serverless/stateful
+When setting up Elastic APM, it’s critical to ensure that application data is secure from start to finish. You should approach securing your application data from different perspectives:
 
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/observability-docs/observability/apm-securing-apm-server.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-apm-keep-data-secure.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$observability-apm-keep-data-secure-secure-communication-with-apm-agents$$$
+|     |     |
+| --- | --- |
+| **What kind of data is collected?** | Ensure that data doesn’t contain sensitive information like passwords,  credit card numbers, health data, or other identifiable information.<br>  Read more in [Secure data](../../../solutions/observability/apps/application-data-security.md). |
+| **How do APM agents and {{agent}} communicate?** | Ensure that any communication between APM agents and {{agent}}  are both encrypted and authenticated.<br>  Read more in [Secure communication with APM agents](../../../solutions/observability/apps/secure-communication-with-apm-agents.md). |
+| **How do APM Server and the {{stack}} communicate?** | Use role-based access control to grant APM Server users access  to secured resources. The roles that you set up depend on your organization’s security requirements and the  minimum privileges required to use specific features.<br>  Read more in [Secure communication with the {{stack}}](../../../solutions/observability/apps/secure-communication-with-elastic-stack.md). |
+| **Who can use the Applications UI?** | Use role-based access control to grant users access to features of the Applications UI.<br>  Read more in [Secure access to the Applications UI](../../../solutions/observability/apps/secure-access-to-applications-ui.md). |

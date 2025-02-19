@@ -178,7 +178,7 @@ If you want to deploy ELSER in a restricted or closed network, you have two opti
 
 For the cross-platform verison, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/elser_model_2.metadata.json
 https://ml-models.elastic.co/elser_model_2.pt
 https://ml-models.elastic.co/elser_model_2.vocab.json
@@ -186,7 +186,7 @@ https://ml-models.elastic.co/elser_model_2.vocab.json
 
 For the optimized version, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.metadata.json
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.pt
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.vocab.json
@@ -213,7 +213,7 @@ You can use any HTTP service to deploy ELSER. This example uses the official Ngi
 
 4. Verify that Nginx runs properly by visiting the following URL in your browser:
 
-    ```url
+    ```text
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/elser_model_2.metadata.json
     ```
 

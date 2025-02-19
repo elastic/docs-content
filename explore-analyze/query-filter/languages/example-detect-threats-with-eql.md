@@ -25,7 +25,7 @@ This tutorial uses a test dataset from [Atomic Red Team](https://github.com/redc
 
 To get started:
 
-1. Create an [index template](../../../manage-data/data-store/templates.md) with [data stream enabled](../../../manage-data/data-store/index-types/set-up-data-stream.md#create-index-template):
+1. Create an [index template](../../../manage-data/data-store/templates.md) with [data stream enabled](../../../manage-data/data-store/data-streams/set-up-data-stream.md#create-index-template):
 
     ```console
     PUT /_index_template/my-data-stream-template

@@ -1,9 +1,38 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/authorization.html
+applies:
+  hosted: all
+  ece: all
+  eck: all
+  stack: all
 ---
 
 # User roles [authorization]
+
+
+After a user is authenticated, use role-based access control to determine whether the user behind an incoming request is allowed to execute the request. The primary method of authorization in a cluster is role-based access control (RBAC). Review the following topics to learn about authorization in your Elasticsearch cluster.
+
+### Set up user authorization
+
+* [Define roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md)
+* Learn about [built-in roles](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md)
+* Learn about the [Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) and [Kibana](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) privileges you can assign to roles
+* Creating [mappings of users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) for external authentication providers
+* Learn how to [control access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)
+
+### Advanced topics
+
+* Learn how to [delegate authorization to another realm](/deploy-manage/users-roles/cluster-or-deployment-auth/authorization-delegation.md)
+* Learn how to [build a custom authorization plugin](/deploy-manage/users-roles/cluster-or-deployment-auth/authorization-plugins.md) for unsupported systems or advanced applications
+* Learn how to [submit requests on behalf of other users](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md)
+* Learn about [attribute-based access control](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md#attributes)
+
+::::{tip}
+User roles are also used to control access to [{{kib}} spaces](/deploy-manage/manage-spaces.md). 
+::::
+
+
 
 The {{stack-security-features}} add *authorization*, which is the process of determining whether the user behind an incoming request is allowed to execute the request.
 

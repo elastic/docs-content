@@ -166,7 +166,7 @@ In the event that snapshots are failing for other reasons check the logs on the 
 ::::::
 
 :::::::
-::::{admonition}
+::::{tip}
 If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
 
 ::::

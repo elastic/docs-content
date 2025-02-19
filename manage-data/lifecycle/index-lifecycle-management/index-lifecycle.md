@@ -31,7 +31,7 @@ If you use {{es}}'s security features, {{ilm-init}} performs operations as the u
 The minimum age defaults to zero, which causes {{ilm-init}} to move indices to the next phase as soon as all actions in the current phase complete.
 
 ::::{note}
-If an index has been [rolled over](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html), then the `min_age` value is relative to the time the index was rolled over, not the index creation time. [Learn more](../../../troubleshoot/elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md#min-age-calculation).
+If an index has been [rolled over](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html), then the `min_age` value is relative to the time the index was rolled over, not the index creation time. [Learn more](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md#min-age-calculation).
 
 ::::
 

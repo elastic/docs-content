@@ -66,6 +66,6 @@ To make machine learning as easy as possible to set up, the Applications UI will
 
 After enabling anomaly detection, service health may display as "Unknown". Here are some reasons why this can occur:
 
-1. No machine learning job exists. See [Enable anomaly detection](../../../solutions/observability/apps/integrate-with-machine-learning.md#create-ml-integration) to enable anomaly detection and create a machine learning job.
+1. No machine learning job exists. See [Enable anomaly detection](../../../solutions/observability/apps/integrate-with-machine-learning.md#observability-apm-integrate-with-machine-learning-enable-anomaly-detection) to enable anomaly detection and create a machine learning job.
 2. There is no machine learning data for the job. If you just created the machine learning job you’ll need to wait a few minutes for data to be available. Alternatively, if the service or its enviroment are new, you’ll need to wait for more trace data.
 3. No "request" or "page-load" transaction type exists for this service; service health is only available for these transaction types.

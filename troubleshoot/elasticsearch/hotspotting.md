@@ -11,7 +11,7 @@ mapped_pages:
 
 Computer [hot spotting](https://en.wikipedia.org/wiki/Hot_spot_(computer_programming)) may occur in {{es}} when resource utilizations are unevenly distributed across [nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html). Temporary spikes are not usually considered problematic, but ongoing significantly unique utilization may lead to cluster bottlenecks and should be reviewed.
 
-::::{admonition}
+::::{tip}
 If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
 
 ::::
@@ -175,5 +175,5 @@ Its response contains a `description` that reports this query:
 indices[winlogbeat-*,logs-window*], sequence by winlog.computer_name with maxspan=1m\n\n[authentication where host.os.type == "windows" and event.action:"logged-in" and\n event.outcome == "success" and process.name == "svchost.exe" ] by winlog.event_data.TargetLogonId
 ```
 
-This lets you know which indices to check (`winlogbeat-*,logs-window*`), as well as the [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) request body. Most likely this is [SIEM related](https://www.elastic.co/guide/en/security/current/es-overview.html). You can combine this with [audit logging](../../deploy-manage/monitor/logging-configuration/enabling-elasticsearch-audit-logs.md) as needed to trace the request source.
+This lets you know which indices to check (`winlogbeat-*,logs-window*`), as well as the [EQL search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) request body. Most likely this is [SIEM related](https://www.elastic.co/guide/en/security/current/es-overview.html). You can combine this with [audit logging](../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) as needed to trace the request source.
 
