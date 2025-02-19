@@ -449,7 +449,6 @@ toc:
       - file: elasticsearch-hadoop/elasticsearch-hadoop/doc-sections.md
   - file: elasticsearch/elasticsearch-reference/index.md
     children:
-      - file: elasticsearch/elasticsearch-reference/_usage_example.md
       - file: elasticsearch/elasticsearch-reference/active-directory-realm.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-deciders.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-fixed-decider.md
@@ -477,7 +476,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/file-realm.md
       - file: elasticsearch/elasticsearch-reference/fips-140-compliance.md
       - file: elasticsearch/elasticsearch-reference/how-monitoring-works.md
-      - file: elasticsearch/elasticsearch-reference/ignore_missing_component_templates.md
       - file: elasticsearch/elasticsearch-reference/index-mgmt.md
       - file: elasticsearch/elasticsearch-reference/index-modules-allocation.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
@@ -538,7 +536,6 @@ toc:
       - file: kibana/kibana/osquery.md
       - file: kibana/kibana/reporting-production-considerations.md
       - file: kibana/kibana/role-mappings.md
-      - file: kibana/kibana/sample-data.md
       - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/secure-settings.md

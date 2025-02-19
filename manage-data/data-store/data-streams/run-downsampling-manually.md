@@ -9,7 +9,7 @@ mapped_pages:
 # Run downsampling manually [downsampling-manual]
 
 
-The recommended way to [downsample](downsampling-time-series-data-stream.md) a [time-series data stream (TSDS)](time-series-data-stream-tsds.md) is [through index lifecycle management (ILM)](run-downsampling-with-ilm.md). However, if you’re not using ILM, you can downsample a TSDS manually. This guide shows you how, using typical Kubernetes cluster monitoring data.
+The recommended way to [downsample](./downsampling-time-series-data-stream.md) a [time-series data stream (TSDS)](../data-streams/time-series-data-stream-tsds.md) is [through index lifecycle management (ILM)](run-downsampling-with-ilm.md). However, if you’re not using ILM, you can downsample a TSDS manually. This guide shows you how, using typical Kubernetes cluster monitoring data.
 
 To test out manual downsampling, follow these steps:
 
@@ -22,8 +22,8 @@ To test out manual downsampling, follow these steps:
 
 ## Prerequisites [downsampling-manual-prereqs]
 
-* Refer to the [TSDS prerequisites](set-up-tsds.md#tsds-prereqs).
-* It is not possible to downsample a [data stream](data-streams.md) directly, nor multiple indices at once. It’s only possible to downsample one time series index (TSDS backing index).
+* Refer to the [TSDS prerequisites](./set-up-tsds.md#tsds-prereqs).
+* It is not possible to downsample a [data stream](../data-streams.md) directly, nor multiple indices at once. It’s only possible to downsample one time series index (TSDS backing index).
 * In order to downsample an index, it needs to be read-only. For a TSDS write index, this means it needs to be rolled over and made read-only first.
 * Downsampling uses UTC timestamps.
 * Downsampling needs at least one metric field to exist in the time series index.
@@ -399,7 +399,7 @@ You can now delete the old backing index. But be aware this will delete the orig
 
 ## View the results [downsampling-manual-view-results]
 
-Re-run the earlier search query (note that when querying downsampled indices there are [a few nuances to be aware of](downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)):
+Re-run the earlier search query (note that when querying downsampled indices there are [a few nuances to be aware of](./downsampling-time-series-data-stream.md#querying-downsampled-indices-notes)):
 
 ```console
 GET /my-data-stream/_search
@@ -558,5 +558,5 @@ GET /my-data-stream/_search
 
 This example demonstrates how downsampling can dramatically reduce the number of documents stored for time series data, within whatever time boundaries you choose. It’s also possible to perform downsampling on already downsampled data, to further reduce storage and associated costs, as the time series data ages and the data resolution becomes less critical.
 
-The recommended way to downsample a TSDS is with ILM. To learn more, try the [Run downsampling with ILM](run-downsampling-with-ilm.md) example.
+The recommended way to downsample a TSDS is with ILM. To learn more, try the [Run downsampling with ILM](./run-downsampling-with-ilm.md) example.
 

@@ -17,7 +17,7 @@ The following aspects of downsampling are easier or more robust:
 * No separate search API. Downsampled indices can be accessed via the search api and es|ql.
 * No separate rollup configuration. Downsampling uses the time series dimension and metric configuration from the mapping.
 
-It isn’t possible to migrate all rollup usages to downsampling. The main requirement is that the data should be stored in Elasticsearch as [time series data stream (TSDS)](../../data-store/index-types/time-series-data-stream-tsds.md). Rollup usages that basically roll the data up by time and all dimensions can migrate to downsampling.
+It isn’t possible to migrate all rollup usages to downsampling. The main requirement is that the data should be stored in Elasticsearch as [time series data stream (TSDS)](../../data-store/data-streams/time-series-data-stream-tsds.md). Rollup usages that basically roll the data up by time and all dimensions can migrate to downsampling.
 
 An example rollup usage that can be migrated to downsampling:
 
@@ -50,7 +50,7 @@ PUT _rollup/job/sensor
 }
 ```
 
-The equivalent [time series data stream (TSDS)](../../data-store/index-types/time-series-data-stream-tsds.md) setup that uses downsampling via DSL:
+The equivalent [time series data stream (TSDS)](../../data-store/data-streams/time-series-data-stream-tsds.md) setup that uses downsampling via DSL:
 
 ```console
 PUT _index_template/sensor-template
@@ -92,7 +92,7 @@ PUT _index_template/sensor-template
 }
 ```
 
-The downsample configuration is included in the above template for a [time series data stream (TSDS)](../../data-store/index-types/time-series-data-stream-tsds.md). Only the `downsampling` part is necessary to enable downsampling, which indicates when to downsample to what fixed interval.
+The downsample configuration is included in the above template for a [time series data stream (TSDS)](../../data-store/data-streams/time-series-data-stream-tsds.md). Only the `downsampling` part is necessary to enable downsampling, which indicates when to downsample to what fixed interval.
 
 1. In the rollup job, the `cron` field determines when the rollup documents. In the index template, the `after` field determines when downsampling will rollup documents (note that this the time after a rollover has been performed).
 2. In the rollup job, the `groups` field determines all dimensions of the group documents are rolled up to. In the index template, the fields with `time_series_dimension` set `true` and the `@timestamp` field determine the group.

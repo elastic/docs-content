@@ -37,3 +37,9 @@ $$$ec-es-health-preconfigured$$$
 $$$ec-es-health-warnings$$$
 
 $$$ec-health-best-practices$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-overview.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-overview.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/how-monitoring-works.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/how-monitoring-works.md)
+* [/raw-migrated-files/cloud/cloud/ec-monitoring.md](/raw-migrated-files/cloud/cloud/ec-monitoring.md)

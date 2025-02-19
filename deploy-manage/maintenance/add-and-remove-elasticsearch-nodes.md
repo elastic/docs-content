@@ -2,11 +2,7 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/add-elasticsearch-nodes.html
 applies_to:
-  stack:
   deployment:
-     eck:
-     ess:
-     ece:
      self:
 ---
 
@@ -34,9 +30,9 @@ When you add more nodes to a cluster, it automatically allocates replica shards.
 Refer to the following pages to learn more about how to add nodes to your cluster in different environments:
 
 * [autoscaling](../autoscaling.md)
-* [ECE](../deploy/cloud-enterprise/resize-deployment.md)
-* [ECH](../deploy/elastic-cloud/configure.md)
-* [ECK](../deploy/cloud-on-k8s/update-deployments.md)
+* [{{ece}}](../deploy/cloud-enterprise/resize-deployment.md)
+* [{{ech}}](../deploy/elastic-cloud/configure.md)
+* [{{eck}}](../deploy/cloud-on-k8s/update-deployments.md)
 
 ::::
 

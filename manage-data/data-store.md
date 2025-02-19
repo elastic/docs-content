@@ -7,7 +7,7 @@ mapped_pages:
 
 [{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene.
 
-The documentation in this section details how {{es}} works as a _data store_ starting with the fundamental unit of storage in Elasticsearch: the index. An index is a collection of documents uniquely identified by a name or an alias. Read more in [Index basics](/manage-data/data-store/index-basics.md) and [Index types](/manage-data/data-store/index-types.md).
+The documentation in this section details how {{es}} works as a _data store_ starting with the fundamental unit of storage in Elasticsearch: the index. An index is a collection of documents uniquely identified by a name or an alias. Read more in [Index basics](/manage-data/data-store/index-basics.md).
 
 Then, learn how these documents and the fields they contain are stored and indexed in [Mapping](/manage-data/data-store/mapping.md), and how unstructured text is converted into a structured format that’s optimized for search in [Text analysis](/manage-data/data-store/text-analysis.md).
 

@@ -105,7 +105,7 @@ You can also use alternative implementations of these repository types, for inst
 
 ## Create or edit an index lifecycle policy [create-edit-index-lifecycle-policy]
 
-A [data stream](data-store/index-types/data-streams.md) stores your data across multiple backing indices. {{ilm-init}} uses an [index lifecycle policy](lifecycle/index-lifecycle-management/index-lifecycle.md) to automatically move these indices through your data tiers.
+A [data stream](data-store/data-streams.md) stores your data across multiple backing indices. {{ilm-init}} uses an [index lifecycle policy](lifecycle/index-lifecycle-management/index-lifecycle.md) to automatically move these indices through your data tiers.
 
 If you use {{fleet}} or {{agent}}, edit one of {{es}}'s built-in lifecycle policies. If you use a custom application, create your own policy. In either case, ensure your policy:
 
@@ -333,7 +333,7 @@ PUT _index_template/my-index-template
 
 ## Add data to a data stream [add-data-to-data-stream]
 
-[Indexing requests](data-store/index-types/use-data-stream.md#add-documents-to-a-data-stream) add documents to a data stream. These requests must use an `op_type` of `create`. Documents must include a `@timestamp` field.
+[Indexing requests](data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) add documents to a data stream. These requests must use an `op_type` of `create`. Documents must include a `@timestamp` field.
 
 To automatically create your data stream, submit an indexing request that targets the stream’s name. This name must match one of your index template’s index patterns.
 

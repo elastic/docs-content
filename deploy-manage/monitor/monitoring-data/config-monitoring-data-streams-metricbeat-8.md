@@ -41,5 +41,5 @@ You can also use the {{es}} API:
 ::::
 
 
-After changing the index template, the updated settings are only applied to the data stream’s new backing indices. [Roll over the data stream](../../../manage-data/data-store/index-types/use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the updated settings to the data stream’s write index.
+After changing the index template, the updated settings are only applied to the data stream’s new backing indices. [Roll over the data stream](../../../manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the updated settings to the data stream’s write index.
 

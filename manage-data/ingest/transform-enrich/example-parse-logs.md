@@ -110,9 +110,9 @@ These logs contain a timestamp, IP address, and user agent. You want to give the
 8. Click **Run the pipeline** and verify the pipeline worked as expected.
 9. If everything looks correct, close the panel, and then click **Create pipeline**.
 
-    You’re now ready to index the logs data to a [data stream](../../data-store/index-types/data-streams.md).
+    You’re now ready to index the logs data to a [data stream](../../data-store/data-streams.md).
 
-10. Create an [index template](../../data-store/templates.md) with [data stream enabled](../../data-store/index-types/set-up-data-stream.md#create-index-template).
+10. Create an [index template](../../data-store/templates.md) with [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template).
 
     ```console
     PUT _index_template/my-data-stream-template
