@@ -19,7 +19,7 @@ These architectures are specific to deploying Elastic on {{ech}}, {{eck}}, {{ece
 ::::
 
 
-These reference architectures are recommendations and should be adapted to fit your specific environment and needs. Each solution can vary based on the unique requirements and conditions of your deployment. In these architectures we discuss about how to deploy cluster components. For information about designing ingest architectures to feed content into your cluster, refer to [Ingest architectures](../manage-data/ingest/ingest-reference-architectures/use-case-arch.md)
+These reference architectures are recommendations and should be adapted to fit your specific environment and needs. Each solution can vary based on the unique requirements and conditions of your deployment. In these architectures we discuss about how to deploy cluster components. For information about designing ingest architectures to feed content into your cluster, refer to [Ingest architectures](../manage-data/ingest/ingest-reference-architectures.md).
 
 ## Architectures [reference-architectures-time-series] 
 

@@ -25,7 +25,7 @@ The most likely cause for this error is using an incompatible version of an {{ap
 
 ### HTTP 400: Event too large [event-too-large]
 
-APM agents communicate with the Managed intake service by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](../../../solutions/observability/apps/spans.md) or [reducing collected stack trace information](../../../solutions/observability/apps/reduce-storage.md#observability-apm-reduce-stacktrace).
+APM agents communicate with the Managed intake service by sending events in an HTTP request. Each event is sent as its own line in the HTTP request body. If events are too large, you can reduce the size of the events that your APM agents send by: [enabling span compression](../../../solutions/observability/apps/spans.md) or [reducing collected stack trace information](../../../solutions/observability/apps/reduce-storage.md).
 
 
 ### HTTP 401: Invalid token [unauthorized]

@@ -93,7 +93,7 @@ Then, take a look at key files and directories inside your project:
 * `synthetics.config.ts` contains settings for your project. When you create a new project, it will contain some basic configuration options that you can customize later.
 
     ::::{note}
-    The `synthetics.config.ts` in the sample project uses a location on Elastic’s global managed testing infrastructure. Administrators can restrict access to Elastic’s global managed testing infrastructure. When you attempt to [`push` the sample monitors](../../../solutions/observability/apps/create-monitors-with-project-monitors.md#synthetics-get-started-project-push), if you see an error stating that you don’t have permission to use Elastic managed global locations, refer to the [troubleshooting guide](../../../troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
+    The `synthetics.config.ts` in the sample project uses a location on Elastic’s global managed testing infrastructure. Administrators can restrict access to Elastic’s global managed testing infrastructure. When you attempt to [`push` the sample monitors](../../../solutions/observability/apps/create-monitors-with-project-monitors.md), if you see an error stating that you don’t have permission to use Elastic managed global locations, refer to the [troubleshooting guide](../../../troubleshoot/observability/troubleshooting-synthetics.md#synthetics-troubleshooting-no-locations) for guidance.
 
     ::::
 
