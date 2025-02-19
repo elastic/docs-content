@@ -60,7 +60,7 @@ You don’t need to explicitly configure a `file` realm. The `file` and `native`
 **In an {{eck}} deployment**, you can pass file realm user information in two ways:
 
 1. Using [`users` and `user_roles`](#using-users-and-users_roles-files) files, which are passed using file realm content secrets 
-2. [Using Kubernetes basic authentication secrets](#using-k8s-basic-authentication-secrets)
+2. [Using Kubernetes basic authentication secrets](#k8s-basic)
 
 You can reference several secrets in the {{es}} specification. ECK aggregates their content into a single secret, mounted in every {{es}} Pod.
 
@@ -190,7 +190,7 @@ kubectl create secret generic my-file-realm-secret --from-file filerealm
 
 ::::
 
-### Using {{k8s}} basic authentication secrets
+### Using {{k8s}} basic authentication secrets [k8s-basic]
 ```{applies_to}
 eck: all
 ```
@@ -211,5 +211,5 @@ stringData:
 ```
 
 ::::{note}
-If you specify the password for the `elastic` user through a basic authentication secret, then the secret holding the password described in [Default elastic user](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md#k8s-default-elastic-user) will not be created by the operator.
+If you specify the password for the `elastic` user through a basic authentication secret, then the secret holding the password described in [](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) will not be created by the operator.
 ::::

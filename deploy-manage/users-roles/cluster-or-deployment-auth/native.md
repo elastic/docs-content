@@ -15,9 +15,9 @@ navigation_title: "Native"
 
 # Native user authentication [native-realm]
 
-The easiest way to manage and authenticate users is with the internal `native` realm. You can use [Elasticsearch REST APIs](#manage-native-users-using-the-api) or [Kibana](#managing-native-users) to add and remove users, assign user roles, and manage user passwords.
+The easiest way to manage and authenticate users is with the internal `native` realm. You can use [Elasticsearch REST APIs](#native-users-api) or [Kibana](#managing-native-users) to add and remove users, assign user roles, and manage user passwords.
 
-In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-passwords-using-the-command-line).
+In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-pw-cmd-line).
 
 ## Configure a native realm [native-realm-configuration]
 
@@ -60,7 +60,7 @@ The Elastic enables you to easily manage users in {{kib}} on the **Stack Managem
 1. Navigate to **Stack Management**, and under **Security**, select **Users**.
 2. Click **Create user**.
 3. Give the user a descriptive username, and choose a secure password.
-4. Optional: assign [roles](/deploy-manage/users-roles/user-roles.md) to the user.
+4. Optional: assign [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md) to the user.
 5. Click **Create user**.
 
 :::{image} ../../../images/kibana-tutorial-secure-access-example-1-user.png
@@ -68,7 +68,7 @@ The Elastic enables you to easily manage users in {{kib}} on the **Stack Managem
 :class: screenshot
 :::
 
-## Manage native users using the `user` API
+## Manage native users using the `user` API [native-users-api]
 
 You can manage users through the Elasticsearch `user` API. 
 

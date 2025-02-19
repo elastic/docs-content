@@ -13,16 +13,16 @@ After you configure an authentication method in {{es}}, you can configure an aut
 
 {{kib}} supports the following authentication mechanisms:
 
-* [Multiple authentication providers](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#multiple-authentication-providers)
-* [Basic authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#basic-authentication)
-* [Token authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#token-authentication)
-* [Public key infrastructure (PKI) authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#pki-authentication)
-* [SAML single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#saml)
-* [OpenID Connect single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#oidc)
-* [Kerberos single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#kerberos)
-* [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#anonymous-authentication)
-* [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#http-authentication)
-* [Embedded content authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#embedded-content-authentication)
+* [Multiple authentication providers](#multiple-authentication-providers)
+* [Basic authentication](#basic-authentication)
+* [Token authentication](#token-authentication)
+* [Public key infrastructure (PKI) authentication](#pki-authentication)
+* [SAML single sign-on](#saml)
+* [OpenID Connect single sign-on](#oidc)
+* [Kerberos single sign-on](#kerberos)
+* [Anonymous authentication](#anonymous-authentication)
+* [HTTP authentication](#http-authentication)
+* [Embedded content authentication]#embedded-content-authentication)
 
 ## Multiple authentication providers [multiple-authentication-providers]
 

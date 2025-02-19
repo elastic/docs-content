@@ -6,7 +6,7 @@ mapped_pages:
 # Anonymous access [anonymous-access]
 
 ::::{tip} 
-To embed {{kib}} dashboards or grant access to {{kib}} without requiring credentials, use {{kib}}'s [anonymous authentication](user-authentication.md#anonymous-authentication) feature instead.
+To embed {{kib}} dashboards or grant access to {{kib}} without requiring credentials, use {{kib}}'s [anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md) feature instead.
 ::::
 
 

@@ -166,7 +166,7 @@ xpack:
               path: "pki1_truststore.jks"
 ```
 
-After you restart {{es}}, this realm can validate delegated PKI authentication. You must then [configure {{kib}} to allow PKI certificate authentication](user-authentication.md#pki-authentication).
+After you restart {{es}}, this realm can validate delegated PKI authentication. You must then [configure {{kib}} to allow PKI certificate authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#pki-authentication).
 
 A PKI realm with `delegation.enabled` still works unchanged for clients connecting directly to {{es}}. Directly authenticated users and users that are PKI authenticated by delegation to {{kib}} both follow the same [role mapping rules](mapping-users-groups-to-roles.md) or [authorization realms configurations](realm-chains.md#authorization_realms).
 
