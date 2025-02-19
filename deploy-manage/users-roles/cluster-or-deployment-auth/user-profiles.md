@@ -6,7 +6,7 @@ mapped_pages:
 # User profiles [user-profile]
 
 ::::{note} 
-The user profile feature is designed only for use by {{kib}} and Elastic’s {{observability}}, {{ents}}, and {{elastic-sec}} solutions. Individual users and external applications should not call this API directly. Elastic reserves the right to change or remove this feature in future releases without prior notice.
+The user profile feature is designed only for use by {{kib}} and Elastic’s {{observability}}, and {{elastic-sec}} solutions. Individual users and external applications should not call this API directly. Elastic reserves the right to change or remove this feature in future releases without prior notice.
 ::::
 
 

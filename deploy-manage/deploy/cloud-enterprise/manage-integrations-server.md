@@ -12,3 +12,10 @@ mapped_urls:
 
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-manage-integrations-server.md
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-integrations-server-api-example.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-manage-integrations-server.md](/raw-migrated-files/cloud/cloud-enterprise/ece-manage-integrations-server.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-integrations-server-api-example.md](/raw-migrated-files/cloud/cloud-enterprise/ece-integrations-server-api-example.md)

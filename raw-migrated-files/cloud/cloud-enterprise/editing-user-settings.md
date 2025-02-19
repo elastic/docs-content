@@ -6,8 +6,6 @@ From the Elastic Cloud Enterprise console you can customize Elasticsearch, Kiban
 * [Manage Kibana’s settings](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md).
 * [Tune your APM Server](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md).
 * [Configure App Search](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-appsearch-settings.html).
-* [Configure Enterprise Search](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md).
-
 
 
 

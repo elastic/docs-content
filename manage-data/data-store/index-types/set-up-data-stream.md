@@ -197,6 +197,7 @@ You can also manually create the stream using the [create data stream API](https
 PUT _data_stream/my-data-stream
 ```
 
+After it's been created, you can view and manage this and other data streams from the **Stack Management > Index Management** view. Refer to [Manage a data stream](./manage-data-stream.md) for details.
 
 ## Secure the data stream [secure-data-stream]
 

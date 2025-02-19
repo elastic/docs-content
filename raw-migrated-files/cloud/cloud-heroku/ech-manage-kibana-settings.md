@@ -459,7 +459,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 ### All supported versions [echall_supported_versions_5]
 
 `xpack.alerting.defaultRuleTaskTimeout`
-:   Specifies the default timeout for the all rule types tasks. Defaults to `5m`. Deprecated in versions 8.2+ and removed in versions 9.0+.
+:   Specifies the default timeout for the all rule types tasks. Defaults to `5m`. Deprecated in versions 8.2+ and removed in {{stack}} 9.0+.
 
 `xpack.actions.microsoftGraphApiUrl`
 :   Specifies the URL to the Microsoft Graph server when using the MS Exchange Server email service. Defaults to `https://graph.microsoft.com/v1.0`.

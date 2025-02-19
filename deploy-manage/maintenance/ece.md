@@ -34,3 +34,4 @@ From the deployment **{{kib}}** page you can also:
 * Restart it after stopping.
 * Upgrade your {{kib}} instance version if it is out of sync with your {{es}} cluster.
 * Delete to fully remove the instance, wipe it from the disk, and stop charges.
+

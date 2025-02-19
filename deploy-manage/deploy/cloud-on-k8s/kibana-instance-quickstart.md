@@ -1,9 +1,12 @@
 ---
+navigation_title: Deploy a Kibana instance
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-kibana.html
 ---
 
-# Kibana instance quickstart [k8s-deploy-kibana]
+# Deploy a Kibana instance [k8s-deploy-kibana]
 
 To deploy a simple [{{kib}}](https://www.elastic.co/guide/en/kibana/current/introduction.html#introduction) specification, with one {{kib}} instance:
 
@@ -53,7 +56,7 @@ To deploy a simple [{{kib}}](https://www.elastic.co/guide/en/kibana/current/intr
     kubectl port-forward service/quickstart-kb-http 5601
     ```
 
-    Open `https://localhost:5601` in your browser. Your browser will show a warning because the self-signed certificate configured by default is not verified by a known certificate authority and not trusted by your browser. You can temporarily acknowledge the warning for the purposes of this quick start but it is highly recommended that you [configure valid certificates](tls-certificates.md#k8s-setting-up-your-own-certificate) for any production deployments.
+    Open `https://localhost:5601` in your browser. Your browser will show a warning because the self-signed certificate configured by default is not verified by a known certificate authority and not trusted by your browser. You can temporarily acknowledge the warning for the purposes of this quick start but it is highly recommended that you [configure valid certificates](/deploy-manage/security/secure-http-communications.md#k8s-setting-up-your-own-certificate) for any production deployments.
 
     Login as the `elastic` user. The password can be obtained with the following command:
 
@@ -68,5 +71,12 @@ For a full description of each `CustomResourceDefinition` (CRD), refer to the [*
 kubectl describe crd kibana
 ```
 
-This completes the quickstart of deploying an {{kib}} instance on top of [the ECK operator](install-using-yaml-manifest-quickstart.md) and [deployed {{es}} cluster](elasticsearch-deployment-quickstart.md). We recommend continuing to [updating your deployment](update-deployments.md). For more {{kib}} configuration options, refer to [Running {{kib}} on ECK](kibana-configuration.md).
+## Next steps
+
+This completes the quickstart of deploying an {{kib}} instance on top of [the ECK operator](install-using-yaml-manifest-quickstart.md) and [deployed {{es}} cluster](elasticsearch-deployment-quickstart.md).
+
+We recommend continuing to:
+* [Updating your deployment](update-deployments.md).
+* For more {{kib}} configuration options, refer to [{{kib}} configuration on ECK](kibana-configuration.md) and [](./configure-deployments.md).
+
 

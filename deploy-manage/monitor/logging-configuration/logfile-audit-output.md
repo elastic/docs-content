@@ -1,4 +1,5 @@
 ---
+navigation_title: Elasticsearch logfile output
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/audit-log-output.html
 applies:
@@ -6,21 +7,24 @@ applies:
   ece: all
   eck: all
   stack: all
+  serverless: unavailable
 ---
 
-% evaluate the applies section
+# Elasticsearch logfile audit output [audit-log-output]
 
-# Logfile audit output [audit-log-output]
+The `logfile` audit output is the only output for auditing. By default, it writes data to the `<clustername>_audit.json` file in the logs directory. The file is also rotated and archived daily or upon reaching the 1GB file size limit.
 
-The `logfile` audit output is the only output for auditing. It writes data to the `<clustername>_audit.json` file in the logs directory.
+In self-managed clusters, you can configure how the `logfile` is written in the `log4j2.properties` file located in `ES_PATH_CONF` (or check out the relevant portion of the [log4j2.properties in the sources](https://github.com/elastic/elasticsearch/blob/master/x-pack/plugin/core/src/main/config/log4j2.properties)). However, **Elastic strongly recommends using the default Log4j2 configuration**.
+
+Orchestrated deployments (ECH, ECE, and ECK) do not support changes in `log4j2.properties` files of the {{es}} instances.
 
 ::::{note} 
 If you overwrite the `log4j2.properties` and do not specify appenders for any of the audit trails, audit events are forwarded to the root appender, which by default points to the `elasticsearch.log` file.
 ::::
 
+For {{es}} configuration options that control event filtering in audit logs, refer to [](./configuring-audit-logs.md).
 
-
-## Log entry format [audit-log-entry-format] 
+## Log entry format [audit-log-entry-format]
 
 The audit events are formatted as JSON documents, and each event is printed on a separate line in the `<clustername>_audit.json` file. The entries themselves do not contain the end-of-line delimiter. The audit event JSON format is somewhat particular, as **most** fields follow a dotted name syntax, are ordered, and contain non-null string values. This format creates a structured columnar aspect, similar to a CSV, that can be more easily inspected visually (compared to an equivalent nested JSON document).
 
@@ -28,17 +32,4 @@ There are however a few attributes that are exceptions to the above format. The 
 
 When the `request.body` attribute is present (see [Auditing search queries](auditing-search-queries.md)), it contains a string value containing the full HTTP request body, escaped as per the JSON RFC 4677.
 
-There is a list of [audit event types](elasticsearch-audit-events.md) specifying the set of fields, as well as examples, for each entry type.
-
-
-## Logfile output settings [audit-log-settings] 
-
-The events and some other information about what gets logged can be controlled using settings in the `elasticsearch.yml` file. See [Audited Event Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#event-audit-settings) and [Local Node Info Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#node-audit-settings).
-
-::::{important} 
-Be advised that **sensitive data may be audited in plain text** when including the request body in audit events, even though all the security APIs, such as those that change the user’s password, have the credentials filtered out when audited.
-::::
-
-
-You can also configure how the logfile is written in the `log4j2.properties` file located in `ES_PATH_CONF` (or check out the relevant portion of the [log4j2.properties in the sources](https://github.com/elastic/elasticsearch/blob/master/x-pack/plugin/core/src/main/config/log4j2.properties)). By default, audit information is appended to the `<clustername>_audit.json` file located in the standard Elasticsearch `logs` directory (typically located at `$ES_HOME/logs`). The file is also rotated and archived daily or upon reaching the 1GB file size limit.
-
+Refer to [audit event types]() (asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events) for a complete list of fields, as well as examples, for each entry type.
