@@ -50,7 +50,9 @@ $$$faq-static-ip-elastic-cloud$$$
 
 **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 
-* [/raw-migrated-files/kibana/kibana/introduction.md](/raw-migrated-files/kibana/kibana/introduction.md)
+% Doesn't exist
+% * [/raw-migrated-files/kibana/kibana/introduction.md](/raw-migrated-files/kibana/kibana/introduction.md)
+
 * [/raw-migrated-files/kibana/kibana/setup.md](/raw-migrated-files/kibana/kibana/setup.md)
 * [/raw-migrated-files/tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md](/raw-migrated-files/tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md)
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/scalability.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/scalability.md)
