@@ -484,7 +484,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
       - file: elasticsearch/elasticsearch-reference/monitoring-overview.md
       - file: elasticsearch/elasticsearch-reference/monitoring-production.md
-      - file: elasticsearch/elasticsearch-reference/native-realm.md
       - file: elasticsearch/elasticsearch-reference/oidc-guide.md
       - file: elasticsearch/elasticsearch-reference/oidc-realm.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
