@@ -17,19 +17,13 @@ Before performing maintenance on an allocator, you should enable maintenance mod
 
 You can scale out your installation by adding capacity to meet growing demand or improve high availability. This process involves installing ECE on additional hosts, assigning roles to new hosts, and resizing deployments to utilize the expanded resources.
 
-### Move nodes and instances betwwen allocators
+### Move nodes and instances between allocators
 
 Moving {{es}} nodes, {{kib}} instances, and other components between allocators may be necessary to free up space, avoid downtime, or handle allocator failures. The process involves selecting target allocators and ensuring enough capacity to accommodate the migration.
 
 ### Perform ECE host maintenance
 
-Maintaining ECE hosts is critical for applying system patches, performing hardware upgrades, and ensuring compliance with security standards. Different maintenance methods are available based on the level of disruption:
-
-* Disabling the Docker daemon (nondestructive): Temporarily disables a host while keeping it in the installation.
-
-* Deleting the host (destructive): Permanently removes a host, requiring reinstallation after maintenance.
-
-* Shutting down the host (less destructive): Temporarily shuts down a host while preserving configurations for planned outages.
+Maintaining ECE hosts is critical for applying system patches, performing hardware upgrades, and ensuring compliance with security standards. Learn about the various methods of maintaining hosts, and their impact on your ECE installation.
 
 ### Delete ECE hosts
 

@@ -9,7 +9,6 @@ applies_to:
 
 # Start and stop routing requests
 
-## Request routing [maintenance-mode-routing]
 
 The {{ecloud}} proxy service routes traffic from external sources to the deployment, between deployments, and between products within a deployment. For example, it routes API requests from your local machine to your deployment, CCR and CCS requests between your deployments, and communications between {{kib}} and {{es}}. It does not direct the TCP traffic between {{es}} nodes, nor does it manage requests starting within {{es}} outwards to external sources such as to snapshot repositories.
 
