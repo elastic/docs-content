@@ -141,5 +141,5 @@ Depending on your privileges and whether detection system indices have already b
 
 ## Using logsdb index mode [detections-logsdb-index-mode]
 
-To learn how your rules and alerts are affected by using the [logsdb index mode](/manage-data/data-store/index-types/logs-data-stream.md), refer to [*Using logsdb index mode with {{elastic-sec}}*](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md).
+To learn how your rules and alerts are affected by using the [logsdb index mode](/manage-data/data-store/data-streams/logs-data-stream.md), refer to [*Using logsdb index mode with {{elastic-sec}}*](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md).
 

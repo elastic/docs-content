@@ -154,7 +154,7 @@ You can override how `min_age` is calculated using the `index.lifecycle.originat
 Here’s how to resolve the most common errors reported in the `ERROR` step.
 
 ::::{tip}
-Problems with rollover aliases are a common cause of errors. Consider using [data streams](../../../manage-data/data-store/index-types/data-streams.md) instead of managing rollover with aliases.
+Problems with rollover aliases are a common cause of errors. Consider using [data streams](../../../manage-data/data-store/data-streams.md) instead of managing rollover with aliases.
 ::::
 
 

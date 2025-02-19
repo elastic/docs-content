@@ -267,7 +267,7 @@ $$$pipeline-custom-logs-index-template$$$
     }
     ```
 
-2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-default-pipeline) or [`index.final_pipeline`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/index-types/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
+2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-default-pipeline) or [`index.final_pipeline`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
 
     You can create this template using {{kib}}'s [**Index Management**](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 

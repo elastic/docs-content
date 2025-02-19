@@ -5,10 +5,10 @@ mapped_pages:
 
 # Tutorial: Automate rollover [getting-started-index-lifecycle-management]
 
-When you continuously index timestamped documents into {{es}}, you typically use a [data stream](../../data-store/index-types/data-streams.md) so you can periodically [roll over](rollover.md) to a new index. This enables you to implement a [hot-warm-cold architecture](../data-tiers.md) to meet your performance requirements for your newest data, control costs over time, enforce retention policies, and still get the most out of your data.
+When you continuously index timestamped documents into {{es}}, you typically use a [data stream](../../data-store/data-streams.md) so you can periodically [roll over](rollover.md) to a new index. This enables you to implement a [hot-warm-cold architecture](../data-tiers.md) to meet your performance requirements for your newest data, control costs over time, enforce retention policies, and still get the most out of your data.
 
 ::::{tip}
-[Data streams](../../data-store/index-types/data-streams.md) are best suited for [append-only](../../data-store/index-types/data-streams.md#data-streams-append-only) use cases. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. You can still use [ILM](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) to manage and [roll over](rollover.md) the alias’s indices. Skip to [Manage time series data without data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams).
+[Data streams](../../data-store/data-streams.md) are best suited for [append-only](../../data-store/data-streams.md#data-streams-append-only) use cases. If you need to update or delete existing time series data, you can perform update or delete operations directly on the data stream backing index. If you frequently send multiple documents using the same `_id` expecting last-write-wins, you may want to use an index alias with a write index instead. You can still use [ILM](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) to manage and [roll over](rollover.md) the alias’s indices. Skip to [Manage time series data without data streams](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md#manage-time-series-data-without-data-streams).
 ::::
 
 ## Manage time series data with data streams [manage-time-series-data-with-data-streams]
@@ -126,7 +126,7 @@ PUT _index_template/timeseries_template
 
 ### Create the data stream [ilm-gs-create-the-data-stream]
 
-To get things started, index a document into the name or wildcard pattern defined in the `index_patterns` of the [index template](../../data-store/templates.md). As long as an existing data stream, index, or index alias does not already use the name, the index request automatically creates a corresponding data stream with a single backing index. {{es}} automatically indexes the request’s documents into this backing index, which also acts as the stream’s [write index](../../data-store/index-types/data-streams.md#data-stream-write-index).
+To get things started, index a document into the name or wildcard pattern defined in the `index_patterns` of the [index template](../../data-store/templates.md). As long as an existing data stream, index, or index alias does not already use the name, the index request automatically creates a corresponding data stream with a single backing index. {{es}} automatically indexes the request’s documents into this backing index, which also acts as the stream’s [write index](../../data-store/data-streams.md#data-stream-write-index).
 
 For example, the following request creates the `timeseries` data stream and the first generation backing index called `.ds-timeseries-2099.03.08-000001`.
 
@@ -208,7 +208,7 @@ The following response shows the data stream’s first generation backing index 
 
 ## Manage time series data without data streams [manage-time-series-data-without-data-streams]
 
-Even though [data streams](../../data-store/index-types/data-streams.md) are a convenient way to scale and manage time series data, they are designed to be append-only. We recognise there might be use-cases where data needs to be updated or deleted in place and the data streams don’t support delete and update requests directly, so the index APIs would need to be used directly on the data stream’s backing indices. In these cases we still recommend using a data stream.
+Even though [data streams](../../data-store/data-streams.md) are a convenient way to scale and manage time series data, they are designed to be append-only. We recognise there might be use-cases where data needs to be updated or deleted in place and the data streams don’t support delete and update requests directly, so the index APIs would need to be used directly on the data stream’s backing indices. In these cases we still recommend using a data stream.
 
 If you frequently send multiple documents using the same `_id` expecting last-write-wins, you can use an index alias instead of a data stream to manage indices containing the time series data and periodically roll over to a new index.
 

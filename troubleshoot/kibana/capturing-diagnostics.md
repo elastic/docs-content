@@ -63,8 +63,7 @@ To run a {{kib}} diagnostic:
     sudo .\diagnostics.bat --type kibana-local --host localhost --port 5601 -u elastic -p --bypassDiagVerify --ssl --noVerify
     ```
 
-    ::::{admonition} Script execution modes
-    :class: tip
+    ::::{tip}
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 

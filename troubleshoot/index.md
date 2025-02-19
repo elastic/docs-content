@@ -1,4 +1,5 @@
 ---
+navigation_title: "Troubleshoot"
 mapped_urls:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/get-support-help.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/troubleshooting-and-faqs.html
@@ -9,7 +10,30 @@ mapped_urls:
 
 % What needs to be done: Refine
 
+:::{admonition} WIP
+⚠️ **This section is a work in progress.** ⚠️
+
+The documentation team is actively working on structure, user focus, and more.
+:::
+
+Use the topics in this section to troubleshoot Elastic products, features, and deployments.
+
+
+* [](/troubleshoot/elasticsearch/elasticsearch-reference.md)
+* [](/troubleshoot/kibana.md)
+* [](/troubleshoot/observability.md)
+* [](/troubleshoot/security.md)
+* [](/troubleshoot/ingest.md)
+* [](/troubleshoot/deployments/elastic-cloud.md)
+* [](/troubleshoot/deployments/cloud-enterprise/cloud-enterprise.md)
+* [](/troubleshoot/deployments/cloud-on-k8s/kubernetes.md)
+
+
 ## Contact us [contact-us]
+
+:::{warning}
+Work in progress
+:::
 
 % Scope notes: - Match new content type; TOC entry TBD - consider splitting out subsections?
 
