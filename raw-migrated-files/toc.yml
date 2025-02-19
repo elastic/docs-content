@@ -361,7 +361,6 @@ toc:
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash-kspm.md
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash.md
       - file: docs-content/serverless/security-cloud-workload-protection.md
-      - file: docs-content/serverless/security-conf-map-ui.md
       - file: docs-content/serverless/security-configure-endpoint-integration-policy.md
       - file: docs-content/serverless/security-connect-to-azure-openai.md
       - file: docs-content/serverless/security-connect-to-bedrock.md
@@ -389,7 +388,6 @@ toc:
       - file: docs-content/serverless/security-examine-osquery-results.md
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
-      - file: docs-content/serverless/security-hosts-overview.md
       - file: docs-content/serverless/security-ingest-data.md
       - file: docs-content/serverless/security-install-edr.md
       - file: docs-content/serverless/security-install-endpoint-manually.md
@@ -403,7 +401,6 @@ toc:
       - file: docs-content/serverless/security-llm-performance-matrix.md
       - file: docs-content/serverless/security-machine-learning.md
       - file: docs-content/serverless/security-ml-requirements.md
-      - file: docs-content/serverless/security-network-page-overview.md
       - file: docs-content/serverless/security-osquery-placeholder-fields.md
       - file: docs-content/serverless/security-osquery-response-action.md
       - file: docs-content/serverless/security-overview-dashboard.md
@@ -434,7 +431,6 @@ toc:
       - file: docs-content/serverless/security-tune-detection-signals.md
       - file: docs-content/serverless/security-turn-on-risk-engine.md
       - file: docs-content/serverless/security-ui.md
-      - file: docs-content/serverless/security-users-page.md
       - file: docs-content/serverless/security-view-alert-details.md
       - file: docs-content/serverless/security-visual-event-analyzer.md
       - file: docs-content/serverless/security-visualize-alerts.md
