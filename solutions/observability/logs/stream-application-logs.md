@@ -16,3 +16,5 @@ mapped_urls:
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$observability-correlate-application-logs-log-correlation$$$
+
+$$$log-correlation-intro$$$
