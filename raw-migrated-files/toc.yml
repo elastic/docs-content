@@ -379,7 +379,6 @@ toc:
       - file: docs-content/serverless/security-cspm.md
       - file: docs-content/serverless/security-dashboards-overview.md
       - file: docs-content/serverless/security-data-quality-dash.md
-      - file: docs-content/serverless/security-data-views-in-sec.md
       - file: docs-content/serverless/security-detection-engine-overview.md      
       - file: docs-content/serverless/security-detection-entity-dashboard.md
       - file: docs-content/serverless/security-detection-response-dashboard.md
@@ -419,6 +418,7 @@ toc:
       - file: docs-content/serverless/security-reduce-notifications-alerts.md
       - file: docs-content/serverless/security-response-actions-config.md
       - file: docs-content/serverless/security-response-actions-history.md
+      - file: docs-content/serverless/security-requirements-overview.md
       - file: docs-content/serverless/security-response-actions.md
       - file: docs-content/serverless/security-rule-monitoring-dashboard.md
       - file: docs-content/serverless/security-rules-coverage.md
