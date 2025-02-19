@@ -12,8 +12,8 @@ Throughout the Elastic docs we have a number of troubleshooting and frequently a
 
 **{{es}}**
 
-* [{{es}} troubleshooting](../../../troubleshoot/elasticsearch/elasticsearch-reference.md)
-* [Troubleshooting index lifecycle management errors](../../../troubleshoot/elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md)
+* [{{es}} troubleshooting](../../../troubleshoot/elasticsearch/elasticsearch.md)
+* [Troubleshooting index lifecycle management errors](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md)
 
 **{{ecloud}}**
 

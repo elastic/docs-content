@@ -5,7 +5,7 @@ mapped_pages:
 
 # Size your shards [size-your-shards]
 
-Each index in {{es}} is divided into one or more shards, each of which may be replicated across multiple nodes to protect against hardware failures. If you are using [Data streams](../../../manage-data/data-store/index-types/data-streams.md) then each data stream is backed by a sequence of indices. There is a limit to the amount of data you can store on a single node so you can increase the capacity of your cluster by adding nodes and increasing the number of indices and shards to match. However, each index and shard has some overhead and if you divide your data across too many shards then the overhead can become overwhelming. A cluster with too many indices or shards is said to suffer from *oversharding*. An oversharded cluster will be less efficient at responding to searches and in extreme cases it may even become unstable.
+Each index in {{es}} is divided into one or more shards, each of which may be replicated across multiple nodes to protect against hardware failures. If you are using [Data streams](../../../manage-data/data-store/data-streams.md) then each data stream is backed by a sequence of indices. There is a limit to the amount of data you can store on a single node so you can increase the capacity of your cluster by adding nodes and increasing the number of indices and shards to match. However, each index and shard has some overhead and if you divide your data across too many shards then the overhead can become overwhelming. A cluster with too many indices or shards is said to suffer from *oversharding*. An oversharded cluster will be less efficient at responding to searches and in extreme cases it may even become unstable.
 
 
 ## Create a sharding strategy [create-a-sharding-strategy]
@@ -61,13 +61,13 @@ When possible, delete entire indices instead. {{es}} can immediately remove dele
 
 ### Use data streams and {{ilm-init}} for time series data [use-ds-ilm-for-time-series]
 
-[Data streams](../../../manage-data/data-store/index-types/data-streams.md) let you store time series data across multiple, time-based backing indices. You can use [{{ilm}} ({{ilm-init}})](../../../manage-data/lifecycle/index-lifecycle-management.md) to automatically manage these backing indices.
+[Data streams](../../../manage-data/data-store/data-streams.md) let you store time series data across multiple, time-based backing indices. You can use [{{ilm}} ({{ilm-init}})](../../../manage-data/lifecycle/index-lifecycle-management.md) to automatically manage these backing indices.
 
 One advantage of this setup is [automatic rollover](../../../manage-data/lifecycle/index-lifecycle-management.md), which creates a new write index when the current one meets a defined `max_primary_shard_size`, `max_age`, `max_docs`, or `max_size` threshold. When an index is no longer needed, you can use {{ilm-init}} to automatically delete it and free up resources.
 
 {{ilm-init}} also makes it easy to change your sharding strategy over time:
 
-* **Want to decrease the shard count for new indices?**<br> Change the [`index.number_of_shards`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-number-of-shards) setting in the data stream’s [matching index template](../../../manage-data/data-store/index-types/modify-data-stream.md#data-streams-change-mappings-and-settings).
+* **Want to decrease the shard count for new indices?**<br> Change the [`index.number_of_shards`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-number-of-shards) setting in the data stream’s [matching index template](../../../manage-data/data-store/data-streams/modify-data-stream.md#data-streams-change-mappings-and-settings).
 * **Want larger shards or fewer backing indices?**<br> Increase your {{ilm-init}} policy’s [rollover threshold](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html).
 * **Need indices that span shorter intervals?**<br> Offset the increased shard count by deleting older indices sooner. You can do this by lowering the `min_age` threshold for your policy’s [delete phase](../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 

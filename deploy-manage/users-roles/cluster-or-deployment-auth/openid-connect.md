@@ -67,3 +67,12 @@ $$$oidc-role-mappings$$$
 $$$oidc-user-metadata$$$
 
 $$$oidc-user-properties$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-realm.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-guide.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-guide.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-secure-clusters-oidc.md](/raw-migrated-files/cloud/cloud-enterprise/ece-secure-clusters-oidc.md)
+* [/raw-migrated-files/cloud/cloud/ec-secure-clusters-oidc.md](/raw-migrated-files/cloud/cloud/ec-secure-clusters-oidc.md)
+* [/raw-migrated-files/cloud/cloud/ec-securing-clusters-oidc-op.md](/raw-migrated-files/cloud/cloud/ec-securing-clusters-oidc-op.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-secure-clusters-oidc.md](/raw-migrated-files/cloud/cloud-heroku/ech-secure-clusters-oidc.md)

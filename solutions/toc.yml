@@ -580,7 +580,7 @@ toc:
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
       - file: security/asset-management.md
-      - file: security/apis-and-tools.md
+      - file: security/apis.md
   - file: search.md
     children:
       - file: search/get-started.md

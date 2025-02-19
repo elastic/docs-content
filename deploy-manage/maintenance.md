@@ -1,25 +1,19 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-kibana.html
+applies_to:
+  deployment:
+     ess:
+     ece:
+     self:
 ---
 
-# Maintenance [ece-manage-kibana]
+# Maintenance [maintenance]
 
-Kibana is an open source analytics and visualization platform designed to work with Elasticsearch, that makes it easy to perform advanced data analysis and to visualize your data in a variety of charts, tables, and maps. Its simple, browser-based interface enables you to quickly create and share dynamic dashboards that display changes to Elasticsearch queries in real time.
+This section outlines the key tasks and processes required to maintain a healthy, performant, and secure {{es}} infrastructure and its deployments.
 
-Most deployment templates include a Kibana instance, but if it wasn’t part of the initial deployment you can go to the **Kibana** page and **Enable** Kibana.
+The topics covered include:
 
-The new Kibana instance takes a few moments to provision. After provisioning Kibana is complete, you can use the endpoint URL to access Kibana.
-
-::::{tip} 
-You can log into Kibana as the `elastic` superuser. The password was provided when you created your deployment or can be [reset](users-roles/cluster-or-deployment-auth/built-in-users.md). On AWS and not able to access Kibana? [Check if you need to update your endpoint URL first](../troubleshoot/deployments/cloud-enterprise/common-issues.md#ece-aws-private-ip).
-::::
-
-
-From the deployment **Kibana** page you can also:
-
-* Terminate your Kibana instance, which stops it. The information is stored in your Elasticsearch cluster, so stopping and restarting should not risk your Kibana information.
-* Restart it after stopping.
-* Upgrade your Kibana instance version if it is out of sync with your Elasticsearch cluster.
-* Delete to fully remove the instance, wipe it from the disk, and stop charges.
-
+* **[ECE Maintenance](maintenance/ece.md)**: Explains the procedures for maintaining both the host infrastructure and {{es}} deployments within Elastic Cloud Enterprise (ECE).
+* **[Start and Stop services](maintenance/start-stop-services.md)**: Provides step-by-step instructions on how to safely start and stop your {{es}} deployment or {{kib}} instance, particularly when performing actions that require a restart.
+* **[Add and remove {{es}} nodes](maintenance/add-and-remove-elasticsearch-nodes.md)**: Guides you through the process of enrolling new nodes or safely removing existing ones from a self-managed {{es}} cluster to optimize resource utilization and cluster performance.
