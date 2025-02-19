@@ -1,21 +1,21 @@
 ---
+applies_to:
+  deployment:
+    ece: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restful-api-authentication.html
 ---
 
-# Elastic Cloud Enterprise API keys [ece-restful-api-authentication]
+# {{ece}} API keys [ece-restful-api-authentication]
 
-::::{note}
-This documentation applies to the Elastic Cloud Enterprise API only. If you are using [Elasticsearch Service](https://cloud.elastic.co/home), check the [Elastic Cloud API information](https://www.elastic.co/guide/en/cloud/current/ec-restful-api.html) instead.
-::::
+The {{ece}} RESTful APIs support both key-based and token-based authentication. Key-based is generally the preferred method.
 
-
-The Elastic Cloud Enterprise RESTful APIs support both key-based and token-based authentication. Key-based is generally the preferred method.
+{{ece}} API keys allow you to manage your {{ece}} platform and deployments using the [{{ece}}](https://www.elastic.co/docs/api/doc/cloud-enterprise/) API.
 
 
 ## Authenticate using an API key [ece-api-keys]
 
-For key-based API authentication, you can create an API key through the Elastic Cloud Enterprise UI. Once created, you can specify the key in the header of your API calls to authenticate.
+For key-based API authentication, you can create an API key through the {{ece}} UI. Once created, you can specify the key in the header of your API calls to authenticate.
 
 ::::{note}
 API keys are not available for the built-in users (`admin` and `readonly`).  Therefore, the **API Keys** settings page on the UI does not appear for these users.
@@ -37,7 +37,7 @@ To create an API key:
 
 The API key has the same permissions as the API key owner. You may have multiple API keys for different purposes and you can revoke them when you no longer need them.
 
-Currently, API keys cannot be generated for the `admin` and `readonly` users that come pre-configured with your Elastic Cloud Enterprise installation.
+Currently, API keys cannot be generated for the `admin` and `readonly` users that come pre-configured with your {{ece}} installation.
 
 To revoke an API key:
 
@@ -48,7 +48,7 @@ To revoke an API key:
 
 ## Authenticate using a bearer token [ece-restful-api-authentication-token]
 
-For token-based API authentication, you can use the same username and password that you use to log into the Cloud UI. If you want to use the credentials that were provided when you installed Elastic Cloud Enterprise on your first host, for example `admin`, you can [retrieve them separately](../users-roles/cloud-enterprise-orchestrator/manage-system-passwords.md#ece-retrieve-passwords).
+For token-based API authentication, you can use the same username and password that you use to log into the Cloud UI. If you want to use the credentials that were provided when you installed {{ece}} on your first host, for example `admin`, you can [retrieve them separately](../users-roles/cloud-enterprise-orchestrator/manage-system-passwords.md#ece-retrieve-passwords).
 
 For operations that only read information, but don’t create, update or delete, you can authenticate with a user that has restricted permissions, such as the `readonly` user.
 
