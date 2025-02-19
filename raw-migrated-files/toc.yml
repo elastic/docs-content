@@ -565,5 +565,3 @@ toc:
   - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/index.md
     children:
       - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md
-      - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-support-help.md
-      - file: tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/troubleshooting-and-faqs.md
