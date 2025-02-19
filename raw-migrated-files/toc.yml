@@ -393,7 +393,6 @@ toc:
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
       - file: docs-content/serverless/security-hosts-overview.md
-      - file: docs-content/serverless/security-ingest-data.md
       - file: docs-content/serverless/security-install-edr.md
       - file: docs-content/serverless/security-install-endpoint-manually.md
       - file: docs-content/serverless/security-interactive-investigation-guides.md
@@ -418,7 +417,6 @@ toc:
       - file: docs-content/serverless/security-query-alert-indices.md
       - file: docs-content/serverless/security-query-operating-systems.md
       - file: docs-content/serverless/security-reduce-notifications-alerts.md
-      - file: docs-content/serverless/security-requirements-overview.md
       - file: docs-content/serverless/security-response-actions-config.md
       - file: docs-content/serverless/security-response-actions-history.md
       - file: docs-content/serverless/security-response-actions.md

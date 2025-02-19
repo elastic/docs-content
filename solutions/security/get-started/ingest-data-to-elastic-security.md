@@ -4,25 +4,18 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-ingest-data.html
 ---
 
-# Ingest data to Elastic Security
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/ingest-data.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ingest-data.md
+# Ingest data to {{elastic-sec}} [security-ingest-data]
 
 To ingest data, you can use:
 
 * The [{{agent}}](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) with the **{{elastic-defend}}** integration, which protects your hosts and sends logs, metrics, and endpoint security data to {{elastic-sec}}. See [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
-* The {{agent}} with integrations, which are available in the [Elastic Package Registry (EPR)](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html#package-registry-intro). To install an integration that works with {{elastic-sec}}, go to the {{kib}} Home page or navigation menu and click **Add integrations**. On the Integrations page, click the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
+* The {{agent}} with other integrations, which are available in the [Elastic Package Registry (EPR)](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html#package-registry-intro). To install an integration that works with {{elastic-sec}}, select **Add integrations** in the toolbar on most pages. On the **Integrations** page, select the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
 * **{{beats}}** shippers installed for each system you want to monitor.
 * The {{agent}} to send data from Splunk to {{elastic-sec}}. See [Get started with data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md).
-* Third-party collectors configured to ship ECS-compliant data. [*Elastic Security ECS field reference*](https://www.elastic.co/guide/en/security/current/siem-field-reference.html) provides a list of ECS fields used in {{elastic-sec}}.
+* Third-party collectors configured to ship ECS-compliant data. [{{elastic-sec}} ECS field reference](https://www.elastic.co/guide/en/serverless/current/security-siem-field-reference.html) provides a list of ECS fields used in {{elastic-sec}}.
 
 ::::{important}
-If you use a third-party collector to ship data to {{elastic-sec}}, you must map its fields to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Additionally, you must add its index to the {{elastic-sec}} indices (open the main menu, then go to **Stack Management** → **Advanced Settings** → **`securitySolution:defaultIndex`**).
+If you use a third-party collector to ship data to {{elastic-sec}}, you must map its fields to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Additionally, you must add its index to the {{elastic-sec}} indices (update the **`securitySolution:defaultIndex`** [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices).
 
 {{elastic-sec}} uses the [`host.name`](https://www.elastic.co/guide/en/ecs/current/ecs-host.html) ECS field as the primary key for identifying hosts.
 
@@ -49,12 +42,12 @@ To add hosts and populate {{elastic-sec}} with network security events, you need
 * [{{winlogbeat}}](https://www.elastic.co/products/beats/winlogbeat) for centralizing Windows event logs
 * [{{packetbeat}}](https://www.elastic.co/products/beats/packetbeat) for analyzing network activity
 
-You can install {{beats}} using the {{kib}} UI guide or directly from the command line.
+You can install {{beats}} using the UI guide or directly from the command line.
 
 
-### Install {{beats}} using the {{kib}} UI guide [_install_beats_using_the_kib_ui_guide]
+### Install {{beats}} using the UI guide [security-ingest-data-install-beats-using-the-ui-guide]
 
-When you add integrations that use {{beats}}, you’re guided through the {{beats}} installation process. To begin, go to the Home page, click **Add integrations**, and then follow the links for the types of data you want to collect.
+When you add integrations that use {{beats}}, you’re guided through the {{beats}} installation process. To begin, go to the **Integrations** page (select **Add integrations** in the toolbar on most pages), and then follow the links for the types of data you want to collect.
 
 ::::{tip}
 On the Integrations page, you can select the **Beats only** filter to only view integrations using Beats.
@@ -67,7 +60,7 @@ On the Integrations page, you can select the **Beats only** filter to only view 
 :::
 
 
-### Download and install {{beats}} from the command line [_download_and_install_beats_from_the_command_line]
+### Download and install {{beats}} from the command line [security-ingest-data-download-and-install-beats-from-the-command-line]
 
 To install {{beats}}, see these installation guides:
 
