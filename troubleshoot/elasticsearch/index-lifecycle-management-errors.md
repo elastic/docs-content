@@ -154,11 +154,7 @@ You can override how `min_age` is calculated using the `index.lifecycle.originat
 Here’s how to resolve the most common errors reported in the `ERROR` step.
 
 ::::{tip}
-<<<<<<< HEAD:troubleshoot/elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md
 Problems with rollover aliases are a common cause of errors. Consider using [data streams](../../../manage-data/data-store/data-streams.md) instead of managing rollover with aliases.
-=======
-Problems with rollover aliases are a common cause of errors. Consider using [data streams](../../manage-data/data-store/index-types/data-streams.md) instead of managing rollover with aliases.
->>>>>>> 639a0a46 (Move files out of errant dir):troubleshoot/elasticsearch/index-lifecycle-management-errors.md
 ::::
 
 
