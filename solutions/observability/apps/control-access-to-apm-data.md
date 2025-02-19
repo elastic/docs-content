@@ -19,7 +19,7 @@ This guide will explain how to separate your staging and production data. This c
 This guide assumes that you:
 
 * Are sending both staging and production APM data to an {{es}} cluster.
-* Have configured the `environment` variable in your APM agent configurations. This variable sets the `service.environment` field in APM documents. You should have documents where `service.environment: production` and `service.environment: staging`. If this field is empty, see [service environment filter](filter-application-data.md#environment-selector) to learn how to set this value.
+* Have configured the `environment` variable in your APM agent configurations. This variable sets the `service.environment` field in APM documents. You should have documents where `service.environment: production` and `service.environment: staging`. If this field is empty, see [service environment filter](filter-application-data.md#apm-filter-your-data-service-environment-filter) to learn how to set this value.
 
 
 ### Step 1: Create filtered aliases [_step_1_create_filtered_aliases]
