@@ -256,7 +256,6 @@ toc:
       - file: docs-content/serverless/observability-monitor-status-alert.md
       - file: docs-content/serverless/observability-parse-log-data.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
-      - file: docs-content/serverless/observability-quickstarts-k8s-logs-metrics.md
       - file: docs-content/serverless/observability-rateAggregation.md
       - file: docs-content/serverless/observability-send-application-logs.md
       - file: docs-content/serverless/observability-serverless-observability-overview.md
@@ -528,7 +527,6 @@ toc:
       - file: observability-docs/observability/manage-cases.md
       - file: observability-docs/observability/monitor-datasets.md
       - file: observability-docs/observability/monitor-infrastructure-and-hosts.md
-      - file: observability-docs/observability/monitor-k8s-logs-metrics-with-elastic-agent.md
       - file: observability-docs/observability/monitor-k8s-otel-edot.md
       - file: observability-docs/observability/monitor-status-alert.md
       - file: observability-docs/observability/obs-ai-assistant.md
