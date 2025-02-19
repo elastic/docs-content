@@ -280,8 +280,7 @@ const client = new Client({
 })
 ```
 
-Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-elasticsearch-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on Elastic Cloud Enterprise, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
-
+Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key) to learn more about API Keys and [Security privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to understand which privileges are needed. If you are not sure what the right combination of privileges for your custom application is, you can enable [audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) on {{es}} to find out what privileges are being used. To learn more about how logging works on {{ece}}, check [Monitoring Elastic Cloud deployment logs and metrics](https://www.elastic.co/blog/monitoring-elastic-cloud-deployment-logs-and-metrics).
 
 ### Best practices [ece_best_practices]
 

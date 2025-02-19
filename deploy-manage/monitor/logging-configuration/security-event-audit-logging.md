@@ -4,13 +4,33 @@ applies:
   ece: all
   eck: all
   stack: all
+  serverless: unavailable
 ---
 # Security event audit logging
 
-% What needs to be done: Write from scratch
+::::{important}
+Audit logs are only available on certain [subscription levels](https://www.elastic.co/subscriptions).
+::::
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/350
+Audit logging is a powerful feature that helps you monitor and track security-related events within the {{stack}}. By enabling audit logs, you can gain visibility into authentication attempts, authorization decisions, and other system activity.
 
-% Scope notes: Landing page about audit logs in Kibana and Elasticsearch, explaining how they can be enabled and configured, and also linking to the page about correlating information. We can create a doc to explain how to enable audit logging in both Elasticsearch and Kibana, and considering also ECE and orchestrated deployments. Kibana audit events list should be moved to reference content.
+Audit logging also provides forensic evidence in the event of an attack, and can be enabled independently for {{es}} and {{kib}}.
 
-⚠️ **This page is a work in progress.** ⚠️
+Use the {{kib}} audit logs in conjunction with {{es}} audit logging to get a holistic view of all security related events. {{kib}} defers to the {{es}} security model for authentication, data index authorization, and features that are driven by cluster-wide privileges.
+
+In this section, you'll learn how to:
+
+* [](./enabling-audit-logs.md): Activate {{es}} or {{kib}} audit logs for all supported deployment types.
+
+* [](./configuring-audit-logs.md): Filter and control what security events get logged in the audit log output.
+
+* [Audit {{es}} search queries](./auditing-search-queries.md): Audit and log search request bodies. 
+
+* [Correlate audit events](./correlating-kibana-elasticsearch-audit-logs.md): Explore audit logs and understand how events from the same request are correlated.
+
+By following these guidelines, you can effectively audit system activity, enhance security monitoring, and meet compliance requirements.
+
+For a complete description of audit event details and format, refer to:
+
+* [Elasticsearch audit events]() asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events
+* [Kibana audit events]() asciidocalypse://kibana/docs/reference/kibana-audit-events

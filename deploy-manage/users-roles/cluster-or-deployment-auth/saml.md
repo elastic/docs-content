@@ -67,3 +67,5 @@ $$$saml-user-metadata$$$
 $$$saml-elasticsearch-authentication$$$
 
 $$$saml-no-kibana-sp-init-sso$$$
+
+$$$req-authn-context$$$

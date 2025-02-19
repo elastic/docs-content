@@ -11,6 +11,7 @@ toc:
               - file: data-store/index-types/set-up-data-stream.md
               - file: data-store/index-types/use-data-stream.md
               - file: data-store/index-types/modify-data-stream.md
+              - file: data-store/index-types/manage-data-stream.md
               - file: data-store/index-types/time-series-data-stream-tsds.md
                 children:
                   - file: data-store/index-types/set-up-tsds.md
@@ -20,8 +21,6 @@ toc:
                   - file: data-store/index-types/run-downsampling-using-data-stream-lifecycle.md
                   - file: data-store/index-types/reindex-tsds.md
               - file: data-store/index-types/logs-data-stream.md
-          - file: data-store/index-types/logsdb.md
-          - file: data-store/index-types/tsdb.md
           - file: data-store/index-types/vectordb.md
       - file: data-store/mapping.md
         children:
