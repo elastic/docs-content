@@ -22,6 +22,6 @@ Learn more in the following sections:
 
 | Solution | Use case | 
 | --- | --- | 
-| [Observability](observability.md) | Monitor and troubleshoot applications and infrastructure 
-| [Security](security.md) | Protect applications and infrastructure 
-| [Search](search.md) | Use Elasticsearch to power search experiences, build custom use case implementations
+| [Observability](observability.md) | Monitor and troubleshoot applications and infrastructure with Elastic Observability
+| [Security](security.md) | Protect applications and infrastructure with Elastic Security
+| [Search](search.md) | Build search experiences, or implement custom use cases with Elasticsearch
