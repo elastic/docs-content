@@ -196,7 +196,6 @@ toc:
       - file: docs-content/serverless/ai-assistant-knowledge-base.md
       - file: docs-content/serverless/application-and-service-monitoring.md
       - file: docs-content/serverless/attack-discovery.md
-      - file: docs-content/serverless/collect-data-with-aws-firehose.md
       - file: docs-content/serverless/connect-to-byo-llm.md
       - file: docs-content/serverless/cspm-required-permissions.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
@@ -507,7 +506,6 @@ toc:
       - file: observability-docs/observability/apm-traces.md
       - file: observability-docs/observability/application-and-service-monitoring.md
       - file: observability-docs/observability/application-logs.md
-      - file: observability-docs/observability/collect-data-with-aws-firehose.md
       - file: observability-docs/observability/configure-settings.md
       - file: observability-docs/observability/create-alerts-rules.md
       - file: observability-docs/observability/create-alerts.md
