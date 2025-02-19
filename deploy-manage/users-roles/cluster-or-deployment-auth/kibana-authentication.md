@@ -22,7 +22,7 @@ After you configure an authentication method in {{es}}, you can configure an aut
 * [Kerberos single sign-on](#kerberos)
 * [Anonymous authentication](#anonymous-authentication)
 * [HTTP authentication](#http-authentication)
-* [Embedded content authentication]#embedded-content-authentication)
+* [Embedded content authentication](#embedded-content-authentication)
 
 ## Multiple authentication providers [multiple-authentication-providers]
 
@@ -104,7 +104,7 @@ xpack.security.authc.providers:
     order: 0
 ```
 
-Switching to the token authentication provider from the basic one will make {{kib}} to reject requests from applications like `curl` that usually use `Authorization` request header with the `Basic` scheme for authentication. If you still want to support such applications, you’ll have to either switch to using `Bearer` scheme with the tokens [created by {{es}} token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token), or add the `Basic` scheme to the list of supported schemes for the [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#http-authentication).
+Switching to the token authentication provider from the basic one will make {{kib}} to reject requests from applications like `curl` that usually use `Authorization` request header with the `Basic` scheme for authentication. If you still want to support such applications, you’ll have to either switch to using `Bearer` scheme with the tokens [created by {{es}} token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token), or add the `Basic` scheme to the list of supported schemes for the [HTTP authentication](#http-authentication).
 
 
 ## Public key infrastructure (PKI) authentication [pki-authentication]
@@ -199,7 +199,7 @@ xpack.security.authc.providers:
 
 Basic authentication is supported *only* if the `basic` authentication provider is explicitly declared in `xpack.security.authc.providers` setting, in addition to `saml`.
 
-To support basic authentication for the applications like `curl` or when the `Authorization: Basic base64(username:password)` HTTP header is included in the request (for example, by reverse proxy), add `Basic` scheme to the list of supported schemes for the [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#http-authentication).
+To support basic authentication for the applications like `curl` or when the `Authorization: Basic base64(username:password)` HTTP header is included in the request (for example, by reverse proxy), add `Basic` scheme to the list of supported schemes for the [HTTP authentication](#http-authentication).
 
 
 ## OpenID Connect single sign-on [oidc]
@@ -248,12 +248,12 @@ xpack.security.authc.providers:
 
 Basic authentication is supported *only* if the `basic` authentication provider is explicitly declared in `xpack.security.authc.providers` setting, in addition to `oidc`.
 
-To support basic authentication for the applications like `curl` or when the `Authorization: Basic base64(username:password)` HTTP header is included in the request (for example, by reverse proxy), add `Basic` scheme to the list of supported schemes for the [HTTP authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#http-authentication).
+To support basic authentication for the applications like `curl` or when the `Authorization: Basic base64(username:password)` HTTP header is included in the request (for example, by reverse proxy), add `Basic` scheme to the list of supported schemes for the [HTTP authentication](#http-authentication).
 
 
 ### Single sign-on provider details [_single_sign_on_provider_details]
 
-The following sections apply both to [SAML single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#saml) and [OpenID Connect single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#oidc).
+The following sections apply both to [SAML single sign-on](/#saml) and [OpenID Connect single sign-on](#oidc).
 
 
 #### Access and refresh tokens [_access_and_refresh_tokens]
