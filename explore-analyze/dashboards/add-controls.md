@@ -22,7 +22,7 @@ There are three types of controls:
 
 * [**Time slider**](#add-time-slider-controls) — Adds a time range slider that allows to filter the data within a specified range of time, advance the time range backward and forward by a unit that you can define, and animate your change in data over the specified time range.
   For example, you are using the **[Logs] Web Traffic** dashboard from the sample web logs data, and the global time filter is **Last 7 days**. When you add the time slider, you can click the previous and next buttons to advance the time range backward or forward, and click the play button to watch how the data changes over the last 7 days.
-  ![Time slider control for the the Last 7 days](https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt672f3aaadf9ea5a6/6750dd6c2452f972af0a88b4/dashboard_timeslidercontrol_8.17.0.gif)
+  ![Time slider control for the the Last 7 days](../../images/dashboard_timeslidercontrol_8.17.0.gif)
 
 
 

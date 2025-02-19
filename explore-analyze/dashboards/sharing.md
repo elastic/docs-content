@@ -10,7 +10,7 @@ mapped_pages:
 
 To share a dashboard with a larger audience, click **Share** in the toolbar. For detailed information about the sharing options, refer to [Reporting](../report-and-share.md).
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt9428300b184af4c6/6763173de7201118db0315a7/share-dashboard-copy-link.gif
+:::{image} ../../images/share-dashboard-copy-link.gif
 :alt: getting a shareable link for a dashboard
 :::
 

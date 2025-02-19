@@ -29,7 +29,7 @@ Preventing unauthorized access is only one element of a complete security strate
 
 ## Cloud organization level
 
-:::{applies}
+:::{applies_to}
 :hosted: all
 :serverless: all
 :::
@@ -50,7 +50,7 @@ For {{ech}} deployments, you can configure SSO at the organization level, the de
 
 ## Orchestrator level
 
-:::{applies}
+:::{applies_to}
 :ece: all
 :::
 
@@ -77,7 +77,7 @@ You can't manage users and roles for {{eck}} clusters at the orchestrator level.
 
 ## Project level
 
-:::{applies}
+:::{applies_to}
 :serverless: all
 :::
 
@@ -87,7 +87,7 @@ As an extension of the [predefined instance access roles](/deploy-manage/users-r
 
 ## Cluster or deployment level
 
-:::{applies}
+:::{applies_to}
 :ece: all
 :hosted: all
 :eck: all
