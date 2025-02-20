@@ -217,7 +217,6 @@ toc:
       - file: docs-content/serverless/observability-apm-act-on-data.md
       - file: docs-content/serverless/observability-apm-agents-elastic-apm-agents.md
       - file: docs-content/serverless/observability-apm-get-started.md
-      - file: docs-content/serverless/observability-apm-traces.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-stream-log-files.md
@@ -445,7 +444,6 @@ toc:
       - file: observability-docs/observability/apm-act-on-data.md
       - file: observability-docs/observability/apm-agents.md
       - file: observability-docs/observability/apm-getting-started-apm-server.md
-      - file: observability-docs/observability/apm-traces.md
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/obs-ai-assistant.md
   - file: security-docs/security/index.md
