@@ -228,7 +228,6 @@ toc:
       - file: docs-content/serverless/observability-apm-traces.md
       - file: docs-content/serverless/observability-configure-intra-settings.md
       - file: docs-content/serverless/observability-correlate-application-logs.md
-      - file: docs-content/serverless/observability-create-manage-rules.md
       - file: docs-content/serverless/observability-detect-metric-anomalies.md
       - file: docs-content/serverless/observability-discover-and-explore-logs.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
@@ -484,7 +483,6 @@ toc:
       - file: observability-docs/observability/application-and-service-monitoring.md
       - file: observability-docs/observability/application-logs.md
       - file: observability-docs/observability/configure-settings.md
-      - file: observability-docs/observability/create-alerts-rules.md
       - file: observability-docs/observability/explore-logs.md
       - file: observability-docs/observability/handle-no-results-found-message.md
       - file: observability-docs/observability/incident-management.md
