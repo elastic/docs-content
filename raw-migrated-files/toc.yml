@@ -228,7 +228,6 @@ toc:
       - file: docs-content/serverless/observability-apm-traces.md
       - file: docs-content/serverless/observability-configure-intra-settings.md
       - file: docs-content/serverless/observability-correlate-application-logs.md
-      - file: docs-content/serverless/observability-create-a-new-case.md
       - file: docs-content/serverless/observability-create-manage-rules.md
       - file: docs-content/serverless/observability-detect-metric-anomalies.md
       - file: docs-content/serverless/observability-discover-and-explore-logs.md
@@ -500,7 +499,6 @@ toc:
       - file: observability-docs/observability/logs-plaintext.md
       - file: observability-docs/observability/logs-send-application.md
       - file: observability-docs/observability/logs-stream.md
-      - file: observability-docs/observability/manage-cases.md
       - file: observability-docs/observability/monitor-datasets.md
       - file: observability-docs/observability/monitor-infrastructure-and-hosts.md
       - file: observability-docs/observability/monitor-status-alert.md
