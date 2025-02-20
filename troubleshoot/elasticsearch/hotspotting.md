@@ -11,7 +11,7 @@ mapped_pages:
 
 Computer [hot spotting](https://en.wikipedia.org/wiki/Hot_spot_(computer_programming)) may occur in {{es}} when resource utilizations are unevenly distributed across [nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html). Temporary spikes are not usually considered problematic, but ongoing significantly unique utilization may lead to cluster bottlenecks and should be reviewed.
 
-::::{admonition}
+::::{tip}
 If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
 
 ::::

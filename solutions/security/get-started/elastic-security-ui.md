@@ -22,7 +22,7 @@ The {{security-app}} is a highly interactive workspace designed for security ana
 
 ## Search [search-overview]
 
-Filter for alerts, events, processes, and other important security data by entering **{{kibana-ref}}/kuery-query.html[{{kib}} Query Language (KQL)]** queries in the search bar, which appears at the top of each page throughout the app. A date/time filter set to `Today` is enabled by default, but can be changed to any time range.
+Filter for alerts, events, processes, and other important security data by entering **https://www.elastic.co/guide/en/kibana/current/kuery-query.html[{{kib}} Query Language (KQL)]** queries in the search bar, which appears at the top of each page throughout the app. A date/time filter set to `Today` is enabled by default, but can be changed to any time range.
 
 :::{image} ../../../images/security-search-bar.png
 :alt: search bar

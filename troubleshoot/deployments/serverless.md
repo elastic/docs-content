@@ -12,3 +12,4 @@ Use the topics in this section to troubleshoot {{serverless-full}}:
 
 
 ## Additional resources
+[Troubleshooting overview](/troubleshoot/index.md)

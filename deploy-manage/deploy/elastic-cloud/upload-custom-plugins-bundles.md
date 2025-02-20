@@ -26,3 +26,8 @@ $$$ech-add-your-plugin$$$
 $$$ech-update-bundles-and-plugins$$$
 
 $$$ech-update-bundles$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-custom-bundles.md](/raw-migrated-files/cloud/cloud/ec-custom-bundles.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-custom-bundles.md](/raw-migrated-files/cloud/cloud-heroku/ech-custom-bundles.md)

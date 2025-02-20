@@ -50,7 +50,7 @@ You can create a data stream in two ways:
     PUT _data_stream/my-data-stream
     ```
 
-2. By [indexing requests](../../data-store/index-types/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
+2. By [indexing requests](../../data-store/data-streams/use-data-stream.md#add-documents-to-a-data-stream) that target the stream’s name. This name must match one of your index template’s index patterns.
 
     ```console
     PUT my-data-stream/_bulk

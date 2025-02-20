@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-maintenance-mode-pausing.html
+applies_to:
+  deployment:
+     ece:
 ---
 
 # Pause instance [ece-maintenance-mode-pausing]

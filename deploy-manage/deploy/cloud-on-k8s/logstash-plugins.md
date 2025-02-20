@@ -7,7 +7,7 @@ mapped_pages:
 
 # Logstash plugins [k8s-logstash-plugins]
 
-The power of {{ls}} is in the plugins--{{logstash-ref}}/input-plugins.html[inputs], [outputs](https://www.elastic.co/guide/en/logstash/current/output-plugins.html), [filters,](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html) and [codecs](https://www.elastic.co/guide/en/logstash/current/codec-plugins.html).
+The power of {{ls}} is in the plugins--[inputs](https://www.elastic.co/guide/en/logstash/current/input-plugins.html), [outputs](https://www.elastic.co/guide/en/logstash/current/output-plugins.html), [filters,](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html) and [codecs](https://www.elastic.co/guide/en/logstash/current/codec-plugins.html).
 
 In {{ls}} on ECK, you can use the same plugins that you use for other {{ls}} instances—​including Elastic-supported, community-supported, and custom plugins. However, you may have other factors to consider, such as how you configure your {{k8s}} resources, how you specify additional resources, and how you scale your {{ls}} installation.
 

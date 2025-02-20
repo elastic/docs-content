@@ -6,35 +6,6 @@ mapped_urls:
 
 # Hosts page
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/hosts-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-hosts-overview.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$host-asset-criticality-section$$$
-
-$$$host-details-flyout$$$
-
-$$$host-details-insights$$$
-
-$$$host-details-page$$$
-
-$$$host-observed-data$$$
-
-$$$host-risk-summary$$$
-
-$$$security-hosts-overview-asset-criticality$$$
-
-$$$security-hosts-overview-host-details-flyout$$$
-
-$$$security-hosts-overview-host-risk-summary$$$
-
-$$$security-hosts-overview-observed-data$$$
-
 The Hosts page provides a comprehensive overview of all hosts and host-related security events. Key performance indicator (KPI) charts, data tables, and interactive widgets let you view specific data, drill down for deeper insights, and interact with Timeline for further investigation.
 
 :::{image} ../../../images/security-hosts-ov-pg.png
@@ -63,7 +34,7 @@ Beneath the KPI charts are data tables, categorized by individual tabs, which ar
 * **All hosts**: High-level host details.
 * **Uncommon processes**: Uncommon processes running on hosts.
 * **Anomalies**: Anomalies discovered by machine learning jobs.
-* **Host risk**: The latest recorded host risk score for each host, and its host risk classification. This feature requires a [Platinum subscription](https://www.elastic.co/pricing) or higher and must be enabled to display the data. Click **Enable** on the **Host risk** tab to get started. To learn more, refer to our [entity risk scoring documentation](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
+* **Host risk**: The latest recorded host risk score for each host, and its host risk classification. In {{stack}} 9.0.0+, this feature requires a [Platinum subscription](https://www.elastic.co/pricing) or higher. In serverless, this feature requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md). Click **Enable** on the **Host risk** tab to get started. To learn more, refer to our [entity risk scoring documentation](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 * **Sessions**: Linux process events that you can open in [Session View](/solutions/security/investigate/session-view.md), an investigation tool that allows you to examine Linux process data at a hierarchal level.
 
 The tables within the **Events** and **Sessions** tabs include inline actions and several customization options. To learn more about what you can do with the data in these tables, refer to [*Manage detection alerts*](/solutions/security/detect-and-alert/manage-detection-alerts.md).
@@ -95,7 +66,7 @@ The host details page includes the following sections:
 
 In addition to the host details page, relevant host information is also available in the host details flyout throughout the {{elastic-sec}} app. You can access this flyout from the following places:
 
-* The Alerts page, by clicking on a host name in the Alerts
+* The Alerts page, by clicking on a host name in the Alerts table
 * The Entity Analytics dashboard, by clicking on a host name in the Host Risk Scores table
 * The **Events** tab on the Users and user details pages, by clicking on a host name in the Events table
 * The **User risk** tab on the user details page, by clicking on a host name in the Top risk score contributors table

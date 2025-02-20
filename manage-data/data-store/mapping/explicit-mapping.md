@@ -56,7 +56,7 @@ PUT /my-index-000001/_mapping
 
 Except for supported [mapping parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html), you can’t change the mapping or field type of an existing field. Changing an existing field could invalidate data that’s already indexed.
 
-If you need to change the mapping of a field in a data stream’s backing indices, see [Change mappings and settings for a data stream](../index-types/modify-data-stream.md#data-streams-change-mappings-and-settings).
+If you need to change the mapping of a field in a data stream’s backing indices, see [Change mappings and settings for a data stream](../data-streams/modify-data-stream.md#data-streams-change-mappings-and-settings).
 
 If you need to change the mapping of a field in other indices, create a new index with the correct mapping and [reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) your data into that index.
 

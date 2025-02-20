@@ -22,3 +22,10 @@ mapped_urls:
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$jwt-realm-runas$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-securing-clusters-JWT.md](/raw-migrated-files/cloud/cloud/ec-securing-clusters-JWT.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-securing-clusters-JWT.md](/raw-migrated-files/cloud/cloud-enterprise/ece-securing-clusters-JWT.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-securing-clusters-JWT.md](/raw-migrated-files/cloud/cloud-heroku/ech-securing-clusters-JWT.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/jwt-auth-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/jwt-auth-realm.md)

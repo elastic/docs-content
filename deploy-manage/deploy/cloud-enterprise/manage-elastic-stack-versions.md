@@ -348,7 +348,7 @@ You can add new Elastic Stack packs to your installation through the Cloud UI, t
 
 To add a new Elastic Stack pack from the Cloud UI:
 
-1. Download the [Elastic Stack version]() that you want.
+1. Download the Elastic Stack version that you want.
 2. [Log into the Cloud UI](log-into-cloud-ui.md).
 3. From the **Platform** menu, select **Elastic Stack**.
 4. Select **Upload Elastic Stack pack**.
