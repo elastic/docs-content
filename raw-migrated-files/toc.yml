@@ -229,7 +229,6 @@ toc:
       - file: docs-content/serverless/observability-configure-intra-settings.md
       - file: docs-content/serverless/observability-correlate-application-logs.md
       - file: docs-content/serverless/observability-create-a-new-case.md
-      - file: docs-content/serverless/observability-create-an-slo.md
       - file: docs-content/serverless/observability-create-custom-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-failed-transaction-rate-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-latency-threshold-alert-rule.md
@@ -514,7 +513,6 @@ toc:
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
       - file: observability-docs/observability/rate-aggregation.md
-      - file: observability-docs/observability/slo-create.md
       - file: observability-docs/observability/slo.md
       - file: observability-docs/observability/triage-slo-burn-rate-breaches.md
       - file: observability-docs/observability/triage-threshold-breaches.md
