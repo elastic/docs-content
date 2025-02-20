@@ -5,7 +5,7 @@ mapped_pages:
 
 # Manage your license  
 
-Your Elastic license determines which features are available. For a comprehensive comparison of the available subscription tiers, see [Elastic subscriptions](https://www.elastic.co/subscriptions).
+Your Elastic license determines which features are available. For a comprehensive comparison of the available subscription levels, see [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 Use the topics in this section to manage your license or start a trial:  
 
