@@ -245,11 +245,3 @@ The following variables are specific to this rule type. You can also specify [va
 :   Link to the alert source.
 
 :::::
-
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/observability-docs/observability/custom-threshold-alert.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-create-custom-threshold-alert-rule.md
