@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-generate-roles-token.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-revoke-roles-token.html
@@ -8,7 +11,7 @@ mapped_urls:
 
 At the end of the {{ece}} installation process on the first host, you are provided with a roles token. This token can be used to install {{ece}} on additional hosts, but it does not include any role permissions.
 
-You can [assign roles](/deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md) to the additional hosts through the Cloud UI later on, but this role assignment is a manual process.
+You can [assign roles](./assign-roles-to-hosts.md) to the additional hosts through the Cloud UI later on, but this role assignment is a manual process.
 
 For automation purposes, you need to generate a new *ephemeral* or *persistent* token with the right role permissions, so that you can install {{ece}} on hosts and add the right roles at the same time.
 
@@ -25,9 +28,9 @@ Ephemeral token
 :   Available for use during {{ece}} installation on additional hosts for one hour before the token is revoked automatically. Cannot be revoked manually.
 
 Persistent token
-:   Available for use during {{ece}} installation on additional hosts indefinitely. [Can be revoked](../../../deploy-manage/deploy/cloud-enterprise/generate-roles-tokens.md) at any time.
+:   Available for use during {{ece}} installation on additional hosts indefinitely. [Can be revoked](./generate-roles-tokens.md) at any time.
 
-The permitted roles are the same as those you can [assign in the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/assign-roles-to-hosts.md):
+The permitted roles are the same as those you can [assign in the Cloud UI](./assign-roles-to-hosts.md):
 
 `allocator`
 :   Allocates the available computing resources to Elasticsearch nodes or Kibana instances. In larger installations, a majority of the machines will be allocators.
