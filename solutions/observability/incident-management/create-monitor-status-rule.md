@@ -7,7 +7,7 @@ navigation_title: "Monitor Status"
 ---
 
 
-## Create a synthetic monitor status rule [observability-monitor-status-alert]
+# Create a synthetic monitor status rule [observability-monitor-status-alert]
 
 
 Within the Synthetics UI, create a **Monitor Status** rule to receive notifications based on errors and outages.
@@ -15,7 +15,7 @@ Within the Synthetics UI, create a **Monitor Status** rule to receive notificati
 1. To access this page, go to **Synthetics** → **Overview**.
 2. At the top of the page, click **Alerts and rules** → **Monitor status rule** → **Create status rule**.
 
-### Filters [observability-monitor-status-alert-filters]
+## Filters [observability-monitor-status-alert-filters]
 
 The **Filter by** section controls the scope of the rule. The rule will only check monitors that match the filters defined in this section. In this example, the rule will only alert on `browser` monitors located in `Asia/Pacific - Japan`.
 
@@ -25,7 +25,7 @@ The **Filter by** section controls the scope of the rule. The rule will only che
 :::
 
 
-### Conditions [observability-monitor-status-alert-conditions]
+## Conditions [observability-monitor-status-alert-conditions]
 
 Conditions for each rule will be applied to all monitors that match the filters in the [**Filter by** section](../../../solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-filters). You can choose the number of times the monitor has to be down relative to either a number of checks run or a time range in which checks were run, and the minimum number of locations the monitor must be down in.
 
@@ -47,7 +47,7 @@ In this example, the conditions will be met any time a `browser` monitor is down
 :::
 
 
-### Action types [observability-monitor-status-alert-action-types]
+## Action types [observability-monitor-status-alert-action-types]
 
 Extend your rules by connecting them to actions that use the following supported built-in integrations.
 
