@@ -55,7 +55,7 @@ When creating a {{private-location}}, you have to:
 3. [Add a {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the Synthetics UI.
 :::
 
-:::{tab-item} {{stack}} 9.0.0+
+:::{tab-item} {{stack}}
 1. [Set up {{fleet-server}} and {{agent}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-fleet-agent).
 2. [Connect {{fleet}} to the {{stack}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-connect) and enroll an {{agent}} in {{fleet}}.
 3. [Add a {{private-location}}](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in the {{synthetics-app}}.
@@ -119,7 +119,7 @@ There are a few ways to fix this:
 
 :::
 
-:::{tab-item} {{stack}} 9.0.0+
+:::{tab-item} {{stack}}
 * If you have [write access](/solutions/observability/apps/writer-role.md) including the privileges for [creating new Private Locations](/solutions/observability/apps/writer-role.md#synthetics-role-write-private-locations), you can [create a new Private Location](/solutions/observability/apps/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
 * If you do *not* have the right privileges to create a Private Location, you can ask someone with the [necessary privileges](/solutions/observability/apps/writer-role.md#synthetics-role-write-private-locations) to create a Private Location or ask an administrator with a [setup role](/solutions/observability/apps/setup-role.md) to give you the necessary privileges and [create a new Private Location](/solutions/observability/apps/monitor-resources-on-private-networks.md#monitor-via-private-agent). Then try creating the monitor again.
 * If you want to create a monitor to run on Elastic’s global managed infrastructure, ask an administrator with a [setup role](/solutions/observability/apps/setup-role.md) to update [`Synthetics and Uptime` sub-feature privileges](/solutions/observability/apps/writer-role.md#disable-managed-locations) for the role you’re currently assigned. Then try creating the monitor again.

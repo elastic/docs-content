@@ -338,7 +338,6 @@ toc:
       - file: docs-content/serverless/security-osquery-placeholder-fields.md
       - file: docs-content/serverless/security-osquery-response-action.md
       - file: docs-content/serverless/security-overview-dashboard.md
-      - file: docs-content/serverless/security-overview.md
       - file: docs-content/serverless/security-policies-page.md
       - file: docs-content/serverless/security-posture-faq.md
       - file: docs-content/serverless/security-posture-management.md
@@ -537,8 +536,6 @@ toc:
       - file: observability-docs/observability/view-infrastructure-metrics.md
       - file: observability-docs/observability/view-observability-alerts.md
   - file: security-docs/security/index.md
-    children:
-      - file: security-docs/security/es-overview.md
   - file: stack-docs/elastic-stack/index.md
     children:
       - file: stack-docs/elastic-stack/air-gapped-install.md
