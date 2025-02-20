@@ -80,7 +80,7 @@ You collected data from your operating system using Metricbeat, and you want to 
 
 Set up Metricbeat, then create the dashboard.
 
-1. To set up Metricbeat, go to [Metricbeat quick start: installation and configuration](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html)
+1. To set up Metricbeat, go to [Metricbeat quick start: installation and configuration](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-installation-configuration.md)
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, click **Create dashboard**.
 

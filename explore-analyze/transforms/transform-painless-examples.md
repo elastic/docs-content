@@ -13,7 +13,7 @@ mapped_pages:
 The examples that use the `scripted_metric` aggregation are not supported on {{es}} Serverless.
 ::::
 
-These examples demonstrate how to use Painless in {{transforms}}. You can learn more about the Painless scripting language in the [Painless guide](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-guide.html).
+These examples demonstrate how to use Painless in {{transforms}}. You can learn more about the Painless scripting language in the [Painless guide](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless.md).
 
 * [Getting top hits by using scripted metric aggregation](#painless-top-hits)
 * [Getting time features by using aggregations](#painless-time-features)
@@ -31,7 +31,7 @@ These examples demonstrate how to use Painless in {{transforms}}. You can learn 
 
 ## Getting top hits by using scripted metric aggregation [painless-top-hits]
 
-This snippet shows how to find the latest document, in other words the document with the latest timestamp. From a technical perspective, it helps to achieve the function of a [Top hits](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-hits-aggregation.html) by using scripted metric aggregation in a {{transform}}, which provides a metric output.
+This snippet shows how to find the latest document, in other words the document with the latest timestamp. From a technical perspective, it helps to achieve the function of a [Top hits](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-top-hits-aggregation.md) by using scripted metric aggregation in a {{transform}}, which provides a metric output.
 
 ::::{important}
 This example uses a `scripted_metric` aggregation which is not supported on {{es}} Serverless.
@@ -66,7 +66,7 @@ This example uses a `scripted_metric` aggregation which is not supported on {{es
 3. The `combine_script` returns `state` from each shard.
 4. The `reduce_script` iterates through the value of `s.timestamp_latest` returned by each shard and returns the document with the latest timestamp (`last_doc`). In the response, the top hit (in other words, the `latest_doc`) is nested below the `latest_doc` field.
 
-Check the [scope of scripts](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-scripted-metric-aggregation.html#scripted-metric-aggregation-scope) for detailed explanation on the respective scripts.
+Check the [scope of scripts](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md#scripted-metric-aggregation-scope) for detailed explanation on the respective scripts.
 
 You can retrieve the last value in a similar way:
 
@@ -215,7 +215,7 @@ This snippet shows how to extract time based features by using Painless in a {{t
 
 ## Getting duration by using bucket script [painless-bucket-script]
 
-This example shows you how to get the duration of a session by client IP from a data log by using [bucket script](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-bucket-script-aggregation.html). The example uses the {{kib}} sample web logs dataset.
+This example shows you how to get the duration of a session by client IP from a data log by using [bucket script](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-bucket-script-aggregation.md). The example uses the {{kib}} sample web logs dataset.
 
 ```console
 PUT _transform/data_log

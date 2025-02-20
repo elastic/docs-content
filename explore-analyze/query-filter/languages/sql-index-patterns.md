@@ -13,7 +13,7 @@ Elasticsearch SQL supports two types of patterns for matching multiple indices o
 
 ## {{es}} multi-target syntax [sql-index-patterns-multi] 
 
-The {{es}} notation for enumerating, including or excluding [multi-target syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) is supported *as long* as it is quoted or escaped as a table identifier.
+The {{es}} notation for enumerating, including or excluding [multi-target syntax](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) is supported *as long* as it is quoted or escaped as a table identifier.
 
 For example:
 

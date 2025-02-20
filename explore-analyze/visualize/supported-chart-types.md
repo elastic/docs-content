@@ -89,7 +89,7 @@ Metric aggregations are calculated from the values in the aggregated documents. 
 | Value count | &check; |  | &check; | &check; |
 | Variance | &check; | &check; |  | &check; |
 
-For information about {{es}} metrics aggregations, refer to [Metrics aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html).
+For information about {{es}} metrics aggregations, refer to [Metrics aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/metrics.md).
 
 
 ## Bucket aggregations [bucket-aggregations] 
@@ -110,7 +110,7 @@ Bucket aggregations group, or bucket, documents based on the aggregation type. T
 | Terms | &check; | &check; | &check; | &check; |
 | Significant terms | &check; |  | &check; | &check; |
 
-For information about {{es}} bucket aggregations, refer to [Bucket aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html).
+For information about {{es}} bucket aggregations, refer to [Bucket aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/bucket.md).
 
 
 ## Pipeline aggregations [pipeline-aggregations] 
@@ -130,5 +130,5 @@ Pipeline aggregations are dependent on the outputs calculated from other aggrega
 | Bucket selector |  |  |  | &check; |
 | Serial differencing |  | &check; | &check; | &check; |
 
-For information about {{es}} pipeline aggregations, refer to [Pipeline aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html).
+For information about {{es}} pipeline aggregations, refer to [Pipeline aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/pipeline.md).
 

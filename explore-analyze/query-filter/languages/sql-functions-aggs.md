@@ -249,7 +249,7 @@ M              |emzi
 
 
 ::::{note} 
-`FIRST` cannot be used with columns of type [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) unless the field is also [saved as a keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#before-enabling-fielddata).
+`FIRST` cannot be used with columns of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) unless the field is also [saved as a keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#before-enabling-fielddata).
 ::::
 
 
@@ -370,7 +370,7 @@ M              |lari
 
 
 ::::{note} 
-`LAST` cannot be used with columns of type [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) unless the field is also [`saved as a keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#before-enabling-fielddata).
+`LAST` cannot be used with columns of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) unless the field is also [`saved as a keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#before-enabling-fielddata).
 ::::
 
 
@@ -407,7 +407,7 @@ SELECT MAX(ABS(salary / -12.0)) AS max FROM emp;
 ```
 
 ::::{note} 
-`MAX` on a field of type [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) or [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) is translated into [`LAST/LAST_VALUE`](#sql-functions-aggs-last) and therefore, it cannot be used in `HAVING` clause.
+`MAX` on a field of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) or [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) is translated into [`LAST/LAST_VALUE`](#sql-functions-aggs-last) and therefore, it cannot be used in `HAVING` clause.
 ::::
 
 
@@ -436,7 +436,7 @@ SELECT MIN(salary) AS min FROM emp;
 ```
 
 ::::{note} 
-`MIN` on a field of type [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) or [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) is translated into [`FIRST/FIRST_VALUE`](#sql-functions-aggs-first) and therefore, it cannot be used in `HAVING` clause.
+`MIN` on a field of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) or [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) is translated into [`FIRST/FIRST_VALUE`](#sql-functions-aggs-first) and therefore, it cannot be used in `HAVING` clause.
 ::::
 
 
@@ -560,8 +560,8 @@ PERCENTILE(
 
 1. a numeric field. If this field contains only `null` values, the function returns `null`. Otherwise, the function ignores `null` values in this field.
 2. a numeric expression (must be a constant and not based on a field). If `null`, the function returns `null`.
-3. optional string literal for the [percentile algorithm](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html#search-aggregations-metrics-percentile-aggregation-approximation). Possible values: `tdigest` or `hdr`. Defaults to `tdigest`.
-4. optional numeric literal that configures the [percentile algorithm](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html#search-aggregations-metrics-percentile-aggregation-approximation). Configures `compression` for `tdigest` or `number_of_significant_value_digits` for `hdr`. The default is the same as that of the backing algorithm.
+3. optional string literal for the [percentile algorithm](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Possible values: `tdigest` or `hdr`. Defaults to `tdigest`.
+4. optional numeric literal that configures the [percentile algorithm](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Configures `compression` for `tdigest` or `number_of_significant_value_digits` for `hdr`. The default is the same as that of the backing algorithm.
 
 
 **Output**: `double` numeric value
@@ -631,8 +631,8 @@ PERCENTILE_RANK(
 
 1. a numeric field. If this field contains only `null` values, the function returns `null`. Otherwise, the function ignores `null` values in this field.
 2. a numeric expression (must be a constant and not based on a field). If `null`, the function returns `null`.
-3. optional string literal for the [percentile algorithm](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html#search-aggregations-metrics-percentile-aggregation-approximation). Possible values: `tdigest` or `hdr`. Defaults to `tdigest`.
-4. optional numeric literal that configures the [percentile algorithm](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html#search-aggregations-metrics-percentile-aggregation-approximation). Configures `compression` for `tdigest` or `number_of_significant_value_digits` for `hdr`. The default is the same as that of the backing algorithm.
+3. optional string literal for the [percentile algorithm](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Possible values: `tdigest` or `hdr`. Defaults to `tdigest`.
+4. optional numeric literal that configures the [percentile algorithm](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Configures `compression` for `tdigest` or `number_of_significant_value_digits` for `hdr`. The default is the same as that of the backing algorithm.
 
 
 **Output**: `double` numeric value

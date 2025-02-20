@@ -25,7 +25,7 @@ After you configure {{ls}} to use centralized pipeline management, you can no lo
 
 ## Manage pipelines [logstash-pipelines-manage-pipelines]
 
-1. [Configure centralized pipeline management](https://www.elastic.co/guide/en/logstash/current/configuring-centralized-pipelines.html).
+1. [Configure centralized pipeline management](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/configuring-centralized-pipelines.md).
 2. To add a new pipeline, go to **{{project-settings}} → {{manage-app}} → {{ls-pipelines-app}}** and click **Create pipeline**. Provide the following details, then click **Create and deploy**.
 
     Pipeline ID
@@ -58,4 +58,4 @@ After you configure {{ls}} to use centralized pipeline management, you can no lo
 
 To delete one or more pipelines, select their checkboxes then click **Delete**.
 
-For more information about pipeline behavior, go to [Centralized Pipeline Management](https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html#_pipeline_behavior).
+For more information about pipeline behavior, go to [Centralized Pipeline Management](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/logstash-centralized-pipeline-management.md#_pipeline_behavior).

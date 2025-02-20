@@ -21,7 +21,7 @@ While ELSER V2 is generally available, ELSER V1 is in [preview] and will remain 
 
 ## Tokens - not synonyms [elser-tokens]
 
-ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) (or [rank features](https://www.elastic.co/guide/en/elasticsearch/reference/current/rank-features.html)) field type is used to store the terms and weights at index time, and to search against later.
+ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) (or [rank features](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/rank-features.md)) field type is used to store the terms and weights at index time, and to search against later.
 
 This approach provides a more understandable search experience compared to vector embeddings. However, attempting to directly interpret the tokens and weights can be misleading, as the expansion essentially results in a vector in a very high-dimensional space. Consequently, certain tokens, especially those with low weight, contain information that is intertwined with other low-weight tokens in the representation. In this regard, they function similarly to a dense vector representation, making it challenging to separate their individual contributions. This complexity can potentially lead to misinterpretations if not carefully considered during analysis.
 
@@ -172,7 +172,7 @@ POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_searc
 If you want to deploy ELSER in a restricted or closed network, you have two options:
 
 * create your own HTTP/HTTPS endpoint with the model artifacts on it,
-* put the model artifacts into a directory inside the config directory on all [master-eligible nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#master-node).
+* put the model artifacts into a directory inside the config directory on all [master-eligible nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#master-node).
 
 ### Model artifact files [elser-model-artifacts]
 
@@ -284,7 +284,7 @@ To learn more about ELSER performance, refer to the [Benchmark information](#els
 
 ## Pre-cleaning input text [pre-cleaning]
 
-The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/htmlstrip-processor.html) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
+The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/htmlstrip-processor.md) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
 
 ## Recommendations for using ELSER [elser-recommendations]
 

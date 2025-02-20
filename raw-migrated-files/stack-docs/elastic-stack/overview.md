@@ -2,7 +2,7 @@
 
 The products in the [{{stack}}](https://www.elastic.co/products) are designed to be used together and releases are synchronized to simplify the installation and upgrade process. The full stack consists of:
 
-* [Beats master](https://www.elastic.co/guide/en/beats/libbeat/current/index.html)
+* [Beats master](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md)
 * [APM master](https://www.elastic.co/guide/en/apm/guide/current/index.html)
 * [Elasticsearch master](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)
 * [Elasticsearch Hadoop master](https://www.elastic.co/guide/en/elasticsearch/hadoop/current/index.html)

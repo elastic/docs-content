@@ -202,7 +202,7 @@ To switch an index’s lifecycle policy, follow these steps:
 
 2. The remove policy API removes all {{ilm-init}} metadata from the index and doesn’t consider the index’s lifecycle status. This can leave indices in an undesired state.
 
-    For example, the [`forcemerge`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-forcemerge.html) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
+    For example, the [`forcemerge`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
 
     After policy removal, use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to check an index’s state . Target a data stream or alias to get the state of all its indices.
 

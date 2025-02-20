@@ -9,5 +9,5 @@ Plugins are a way to enhance the basic Elasticsearch functionality in a custom m
 
 For information about selecting and installing plugins, see [{{es}} Plugins and Integrations](https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html).
 
-For information about developing your own plugin, see [Help for plugin authors](https://www.elastic.co/guide/en/elasticsearch/plugins/current/plugin-authors.html).
+For information about developing your own plugin, see [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/create-elasticsearch-plugins/index.md).
 

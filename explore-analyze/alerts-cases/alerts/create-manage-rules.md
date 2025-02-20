@@ -8,7 +8,7 @@ mapped_pages:
 
 # Create and manage rules [create-and-manage-rules]
 
-The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](https://www.elastic.co/guide/en/security/current/prebuilt-rules.html), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
+The **{{stack-manage-app}}** > **{{rules-ui}}** UI provides a cross-app view of alerting. Different {{kib}} apps like [**{{observability}}**](../../../solutions/observability/incident-management/alerting.md), [**Security**](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules.md), [**Maps**](geo-alerting.md) and [**{{ml-app}}**](../../machine-learning/machine-learning-in-kibana.md) can offer their own rules.
 
 You can find **Rules** in **Stack Management** > **Alerts and insights** > **Rules** in {{kib}} or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -58,7 +58,7 @@ You can add one or more actions to your rule to generate notifications when its 
 
 Each action uses a connector, which provides connection information for a {{kib}} service or third party integration, depending on where you want to send the notifications.
 
-[preview] Some connectors that perform actions within {{kib}}, such as the [Cases connector](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html), require less configuration. For example, you do not need to set the action frequency or variables.
+[preview] Some connectors that perform actions within {{kib}}, such as the [Cases connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md), require less configuration. For example, you do not need to set the action frequency or variables.
 
 After you select a connector, set the action frequency. You can choose to create a summary of alerts on each check interval or on a custom interval. Alternatively, you an choose to run actions for each alert (at each check interval, only when the alert status changes, or at a custom interval).
 
@@ -150,7 +150,7 @@ Click the rule name to access a rule details page:
 
 In this example, the rule detects when a site serves more than a threshold number of bytes in a 24 hour period. Four sites are above the threshold. These are called alerts - occurrences of the condition being detected - and the alert name, status, time of detection, and duration of the condition are shown in this view. Alerts come and go from the list depending on whether the rule conditions are met. For more information about alerts, go to [*View alerts*](view-alerts.md).
 
-If there are rule actions that failed to run successfully, you can see the details on the **History** tab. In the **Message** column, click the warning or expand icon ![double arrow icon to open a flyout with the document details](../../../images/kibana-expand-icon-2.png "") or click the number in the **Errored actions** column to open the **Errored Actions** panel. In this example, the action failed because the [`xpack.actions.email.domain_allowlist`](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html#action-config-email-domain-allowlist) setting was updated and the action’s email recipient is no longer included in the allowlist:
+If there are rule actions that failed to run successfully, you can see the details on the **History** tab. In the **Message** column, click the warning or expand icon ![double arrow icon to open a flyout with the document details](../../../images/kibana-expand-icon-2.png "") or click the number in the **Errored actions** column to open the **Errored Actions** panel. In this example, the action failed because the [`xpack.actions.email.domain_allowlist`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#action-config-email-domain-allowlist) setting was updated and the action’s email recipient is no longer included in the allowlist:
 
 :::{image} ../../../images/kibana-rule-details-errored-actions.png
 :alt: Rule histor page with alerts that have errored actions

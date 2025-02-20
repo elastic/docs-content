@@ -70,14 +70,14 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 ## Kibana [ech-restrictions-kibana]
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
-* Running an external Kibana in parallel to Elasticsearch Add-On for Heroku’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#security-encrypted-saved-objects-settings) as Elasticsearch Add-On for Heroku does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Running an external Kibana in parallel to Elasticsearch Add-On for Heroku’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as Elasticsearch Add-On for Heroku does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
 
 ## APM Agent central configuration with PrivateLink or traffic filters [ech-restrictions-apm-traffic-filters]
 
 If you are using APM 7.9.0 or older:
 
-* You cannot use [APM Agent central configuration](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
+* You cannot use [APM Agent central configuration](/solutions/observability/apps/apm-agent-central-configuration.md) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
 * If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
 
 
@@ -100,7 +100,7 @@ Enterprise Search’s management interface in Kibana does not work with traffic 
 
 Kibana and Enterprise Search do not currently support restoring a snapshot of their indices across Elastic Cloud deployments.
 
-* [Kibana uses encryption keys](https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html#security-configure-settings) in various places, ranging from encrypting data in some areas of reporting, alerts, actions, connector tokens, ingest outputs used in Fleet and Synthetics monitoring to user sessions.
+* [Kibana uses encryption keys](/deploy-manage/security/secure-your-cluster-deployment.md#security-configure-settings) in various places, ranging from encrypting data in some areas of reporting, alerts, actions, connector tokens, ingest outputs used in Fleet and Synthetics monitoring to user sessions.
 * [Enterprise Search uses encryption keys](https://www.elastic.co/guide/en/enterprise-search/current/encryption-keys.html) when storing content source synchronization credentials, API tokens and other sensitive information.
 * Currently, there is not a way to retrieve the values of Kibana and Enterprise Search encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, Kibana and Enterprise Search will not be able to decrypt the data required for some Kibana and Enterprise Search features to function properly in the target deployment.
 * If you have already restored a snapshot across deployments and now have broken Kibana saved objects or Enterprise Search features in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
@@ -116,7 +116,7 @@ There are situations where you may need or want to move your installed {{agents}
 
 In {{ecloud}}, you can migrate your {{agents}} by taking a snapshot of your source deployment, and restoring it on a target deployment.
 
-To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](https://www.elastic.co/guide/en/fleet/current/migrate-elastic-agent.html) for details.
+To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/migrate-elastic-agent.md) for details.
 
 
 ## Regions and Availability Zones [ech-regions-and-availability-zone]

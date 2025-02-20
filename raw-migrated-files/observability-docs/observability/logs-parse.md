@@ -83,7 +83,7 @@ While you can search for phrases in the `message` field, you can’t use this fi
 * **message** (`Disk usage exceeds 90%.`): You can search for phrases or words in the message field.
 
 ::::{note}
-These fields are part of the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html). The ECS defines a common set of fields that you can use across Elasticsearch when storing data, including log and metric data.
+These fields are part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md). The ECS defines a common set of fields that you can use across Elasticsearch when storing data, including log and metric data.
 ::::
 
 
@@ -115,9 +115,9 @@ When looking into issues, you want to filter for logs by when the issue occurred
 
 #### Use an ingest pipeline to extract the `@timestamp` field [logs-stream-ingest-pipeline]
 
-Ingest pipelines consist of a series of processors that perform common transformations on incoming documents before they are indexed. To extract the `@timestamp` field from the example log, use an ingest pipeline with a dissect processor. The [dissect processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect-processor.html) extracts structured fields from unstructured log messages based on a pattern you set.
+Ingest pipelines consist of a series of processors that perform common transformations on incoming documents before they are indexed. To extract the `@timestamp` field from the example log, use an ingest pipeline with a dissect processor. The [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) extracts structured fields from unstructured log messages based on a pattern you set.
 
-{{es}} can parse string timestamps that are in `yyyy-MM-dd'T'HH:mm:ss.SSSZ` and `yyyy-MM-dd` formats into date fields. Since the log example’s timestamp is in one of these formats, you don’t need additional processors. More complex or nonstandard timestamps require a [date processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-processor.html) to parse the timestamp into a date field.
+{{es}} can parse string timestamps that are in `yyyy-MM-dd'T'HH:mm:ss.SSSZ` and `yyyy-MM-dd` formats into date fields. Since the log example’s timestamp is in one of these formats, you don’t need additional processors. More complex or nonstandard timestamps require a [date processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/date-processor.md) to parse the timestamp into a date field.
 
 Use the following command to extract the timestamp from the `message` field into the `@timestamp` field:
 
@@ -136,7 +136,7 @@ PUT _ingest/pipeline/logs-example-default<1>
 }
 ```
 
-1. The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](https://www.elastic.co/guide/en/fleet/current/data-streams.html#data-streams-naming-scheme).
+1. The name of the pipeline,`logs-example-default`, needs to match the name of your data stream. You’ll set up your data stream in the next section. For more information, refer to the [data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
 2. The field you’re extracting data from, `message` in this case.
 3. The pattern of the elements in your log data. The `%{@timestamp} %{{message}}` pattern extracts the timestamp, `2023-08-08T13:45:12.123Z`, to the `@timestamp` field, while the rest of the message, `WARN 192.168.1.101 Disk usage exceeds 90%.`, stays in the `message` field. The dissect processor looks for the space as a separator defined by the pattern.
 
@@ -220,20 +220,20 @@ PUT _index_template/logs-example-default-template
 
 The example index template above sets the following component templates:
 
-* `logs@mappings`: general mappings for log data streams that include disabling automatic date detection from `string` fields and specifying mappings for [`data_stream` ECS fields](https://www.elastic.co/guide/en/ecs/current/ecs-data_stream.html).
+* `logs@mappings`: general mappings for log data streams that include disabling automatic date detection from `string` fields and specifying mappings for [`data_stream` ECS fields](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-data_stream.md).
 * `logs@settings`: general settings for log data streams including the following:
 
     * The default lifecycle policy that rolls over when the primary shard reaches 50 GB or after 30 days.
     * The default pipeline uses the ingest timestamp if there is no specified `@timestamp` and places a hook for the `logs@custom` pipeline. If a `logs@custom` pipeline is installed, it’s applied to logs ingested into this data stream.
-    * Sets the [`ignore_malformed`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-malformed.html) flag to `true`. When ingesting a large batch of log data, a single malformed field like an IP address can cause the entire batch to fail. When set to true, malformed fields with a mapping type that supports this flag are still processed.
+    * Sets the [`ignore_malformed`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-malformed.md) flag to `true`. When ingesting a large batch of log data, a single malformed field like an IP address can cause the entire batch to fail. When set to true, malformed fields with a mapping type that supports this flag are still processed.
 
 * `logs@custom`: a predefined component template that is not installed by default. Use this name to install a custom component template to override or extend any of the default mappings or settings.
-* `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html).
+* `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md).
 
 
 #### Create a data stream [logs-stream-create-data-stream]
 
-Create your data stream using the [data stream naming scheme](https://www.elastic.co/guide/en/fleet/current/data-streams.html#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
+Create your data stream using the [data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
 
 ```console
 POST logs-example-default/_doc
@@ -283,8 +283,8 @@ You can now use the `@timestamp` field to sort your logs by the date and time th
 Check the following common issues and solutions with timestamps:
 
 * **Timestamp failure**: If your data has inconsistent date formats, set `ignore_failure` to `true` for your date processor. This processes logs with correctly formatted dates and ignores those with issues.
-* **Incorrect timezone**: Set your timezone using the `timezone` option on the [date processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-processor.html).
-* **Incorrect timestamp format**: Your timestamp can be a Java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. For more information on timestamp formats, refer to the [mapping date format](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html).
+* **Incorrect timezone**: Set your timezone using the `timezone` option on the [date processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/date-processor.md).
+* **Incorrect timestamp format**: Your timestamp can be a Java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. For more information on timestamp formats, refer to the [mapping date format](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md).
 
 
 ### Extract the `log.level` field [logs-stream-extract-log-level]
@@ -455,7 +455,7 @@ The results should show only the high-severity logs:
 
 Extracting the `host.ip` field lets you filter logs by host IP addresses allowing you to focus on specific hosts that you’re having issues with or find disparities between hosts.
 
-The `host.ip` field is part of the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/ip.html). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
+The `host.ip` field is part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
 
 This section shows you how to extract the `host.ip` field from the following example logs and query based on the extracted fields:
 
@@ -655,7 +655,7 @@ Because all of the example logs are in this range, you’ll get the following re
 
 ##### Range queries [logs-stream-range-query]
 
-Use [range queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) to query logs in a specific range.
+Use [range queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) to query logs in a specific range.
 
 The following command searches for IP addresses greater than or equal to `192.168.1.100` and less than or equal to `192.168.1.102`.
 
@@ -723,7 +723,7 @@ You’ll get the following results only showing logs in the range you’ve set:
 
 ## Reroute log data to specific data streams [logs-stream-reroute]
 
-By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/reroute-processor.html) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
+By default, an ingest pipeline sends your log data to a single data stream. To simplify log data management, use a [reroute processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/reroute-processor.md) to route data from the generic data stream to a target data stream. For example, you might want to send high-severity logs to a specific data stream to help with categorization.
 
 This section shows you how to use a reroute processor to send the high-severity logs (`WARN` or `ERROR`) from the following example logs to a specific data stream and keep the regular logs (`DEBUG` and `INFO`) in the default data stream:
 

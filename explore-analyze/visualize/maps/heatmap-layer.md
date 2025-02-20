@@ -15,7 +15,7 @@ Heat map layers cluster point data to show locations with higher densities.
 :class: screenshot
 :::
 
-To add a heat map layer to your map, click **Add layer**, then select **Heat map**. The index must contain at least one field mapped as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html).
+To add a heat map layer to your map, click **Add layer**, then select **Heat map**. The index must contain at least one field mapped as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md).
 
 ::::{note}
 Only count, sum, unique count metric aggregations are available with the grid aggregation source and heat map layers. Average, min, and max are turned off because the heat map will blend nearby values. Blending two average values would make the cluster more prominent, even though it just might literally mean that these nearby areas are average.

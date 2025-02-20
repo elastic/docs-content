@@ -28,7 +28,7 @@ Add any custom metadata, index settings, or mappings.
 
 ### Index settings [apm-custom-index-template-index-settings]
 
-In the **Index settings** step, you can specify custom [index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings). For example, you could:
+In the **Index settings** step, you can specify custom [index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings). For example, you could:
 
 * Customize the index lifecycle policy applied to a data stream. See [custom index lifecycle policies](index-lifecycle-management.md#apm-data-streams-custom-policy) for a walk-through.
 * Change the number of [shards](../../../deploy-manage/index.md) per index. Specify the number of primary shards:
@@ -57,7 +57,7 @@ In the **Index settings** step, you can specify custom [index settings](https://
 
 [Mapping](../../../manage-data/data-store/mapping.md) is the process of defining how a document, and the fields it contains, are stored and indexed. In the **Mappings** step, you can add custom field mappings. For example, you could:
 
-* Add custom field mappings that you can index on and search. In the **Mapped fields** tab, add a new field including the [field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html):
+* Add custom field mappings that you can index on and search. In the **Mapped fields** tab, add a new field including the [field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md):
 
     :::{image} ../../../images/observability-custom-index-template-mapped-fields.png
     :alt: Editing a component template to add a new mapped field

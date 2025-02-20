@@ -6,7 +6,7 @@ mapped_urls:
 
 # Uninstall {{agent}} [uninstall-agent]
 
-To uninstall {{agent}} from a host, run the `uninstall` command from the directory where it’s running. Refer to the [{{fleet}} and {{agent}} documentation](https://www.elastic.co/guide/en/fleet/current/uninstall-elastic-agent.html) for more information.
+To uninstall {{agent}} from a host, run the `uninstall` command from the directory where it’s running. Refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/uninstall-elastic-agent.md) for more information.
 
 If [Agent tamper protection](prevent-elastic-agent-uninstallation.md) is enabled on the Agent policy for the host, you’ll need to include the uninstall token in the command, using the `--uninstall-token` flag. You can [find the uninstall token](prevent-elastic-agent-uninstallation.md#fleet-uninstall-tokens) on the Agent policy. Alternatively, find **{{fleet}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Uninstall tokens**.
 
@@ -49,7 +49,7 @@ If you have multiple tamper-protected {{agent}} policies, you may want to provid
 
 ## Uninstall {{elastic-endpoint}} [uninstall-endpoint]
 
-Use these commands to uninstall {{elastic-endpoint}} from a host **ONLY** if [uninstalling an {{agent}}](https://www.elastic.co/guide/en/fleet/current/uninstall-elastic-agent.html) is unsuccessful.
+Use these commands to uninstall {{elastic-endpoint}} from a host **ONLY** if [uninstalling an {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/uninstall-elastic-agent.md) is unsuccessful.
 
 Windows
 

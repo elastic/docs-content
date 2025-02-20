@@ -56,9 +56,9 @@ Logs formatted in ECS don’t require manual parsing and the configuration can b
 
     This feature is supported for the following {{apm-agent}}s:
 
-    * [Ruby](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-log-ecs-formatting)
-    * [Python](https://www.elastic.co/guide/en/apm/agent/python/current/logs.html#log-reformatting)
-    * [Java](https://www.elastic.co/guide/en/apm/agent/java/current/logs.html#log-reformatting)
+    * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-log-ecs-formatting)
+    * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/logs.md#log-reformatting)
+    * [Java](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/logs.md#log-reformatting)
 
 
 **[ECS formatted application logs](../../../solutions/observability/logs/ecs-formatted-application-logs.md)**
@@ -83,9 +83,9 @@ Correlate your application logs with trace events to:
 
 Learn more about log correlation in the agent-specific ingestion guides:
 
-* [Go](https://www.elastic.co/guide/en/apm/agent/go/current/logs.html)
-* [Java](https://www.elastic.co/guide/en/apm/agent/java/current/logs.html#log-correlation-ids)
-* [.NET](https://www.elastic.co/guide/en/apm/agent/dotnet/current/logs.html)
-* [Node.js](https://www.elastic.co/guide/en/apm/agent/nodejs/current/logs.html)
-* [Python](https://www.elastic.co/guide/en/apm/agent/python/current/logs.html#log-correlation-ids)
-* [Ruby](https://www.elastic.co/guide/en/apm/agent/ruby/current/log-correlation.html)
+* [Go](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/logs.md)
+* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/logs.md#log-correlation-ids)
+* [.NET](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/logs.md)
+* [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/logs.md)
+* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/logs.md#log-correlation-ids)
+* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/logs.md)

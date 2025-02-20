@@ -52,7 +52,7 @@ Select a field for categorization and optionally apply any filters that you want
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
-Change point detection uses the [change point aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-change-point-aggregation.html) to detect distribution changes, trend changes, and other statistically significant change points in a metric of your time series data.
+Change point detection uses the [change point aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-change-point-aggregation.md) to detect distribution changes, trend changes, and other statistically significant change points in a metric of your time series data.
 
 You can find change point detection under **{{ml-app}}** > **AIOps Labs** or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Here, you can select the {{data-source}} or saved Discover session that you want to analyze.
 

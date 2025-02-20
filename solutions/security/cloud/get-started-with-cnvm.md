@@ -83,4 +83,4 @@ The integration will only scan VMs in the region you select. To scan multiple re
 
 3. Click **Create stack**.  To avoid authentication problems, you can only make configuration changes to the VM InstanceType, which you could make larger to increase scanning speed.
 4. Wait for the confirmation that {{agent}} was enrolled.
-5. Your data will start to appear on the **Vulnerabilities** tab of the [Findings page](https://www.elastic.co/guide/en/security/current/vuln-management-findings.html).
+5. Your data will start to appear on the **Vulnerabilities** tab of the [Findings page](/solutions/security/cloud/findings-page-3.md).

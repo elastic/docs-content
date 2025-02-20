@@ -7,7 +7,7 @@ mapped_pages:
 
 Amazon EC2 (AWS) C6gd, M6gd & R6gd instances, powered by AWS Graviton2, are now available for Elastic Cloud deployments. C6gd, M6gd & R6gd VMs use the [Graviton2, ARM neoverse N1 cores](https://aws.amazon.com/about-aws/whats-new/2020/07/announcing-new-amazon-ec2-instances-powered-aws-graviton2-processors/) and provide high compute coupled with fast NVMe storage, which makes them a good fit to power Elastic workloads. In addition, Graviton2 VMs also offer more than a 20% improvement in price-performance over comparable Intel chipsets.
 
-In addition to AWS Graviton2 instances, Amazon EC2 (AWS) C5d, M5d, I3, I3en, and D2/D3 instances are now available for Elastic Cloud deployments in all supported [AWS Cloud Regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html#ec-aws_regions).
+In addition to AWS Graviton2 instances, Amazon EC2 (AWS) C5d, M5d, I3, I3en, and D2/D3 instances are now available for Elastic Cloud deployments in all supported [AWS Cloud Regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md#ec-aws_regions).
 
 For specific AWS hardware and availability details, check the [Regional availability of instances per AWS region](ech-default-aws-configurations.md#aws-list-region) and the [AWS default provider instance configurations](ech-default-aws-configurations.md).
 
@@ -25,7 +25,7 @@ For example, Instance ID / SKU: `aws.es.datahot.i3`
 | `\*.es.datahot.*` | Denotes that this configuration is an Elasticsearch (`es`) cluster component that serves as a data node for hot content. Other options may be `datawarm`, `datacold`, `datafrozen` for data nodes, and `kibana`, `master`, and so on for other components. |
 | `*.i3` | Denotes that this configuration is running on the AWS i3 instance family. |
 
-The new configuration naming convention aligns with the [data tiers](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html) intended for each configuration type, replacing prior naming conventions of “highio”, “highcpu”, and so on. The following table details the new configurations for data nodes and compares them with prior naming conventions where applicable.
+The new configuration naming convention aligns with the [data tiers](/manage-data/lifecycle/data-tiers.md) intended for each configuration type, replacing prior naming conventions of “highio”, “highcpu”, and so on. The following table details the new configurations for data nodes and compares them with prior naming conventions where applicable.
 
 | New config name | Notes |
 | --- | --- |

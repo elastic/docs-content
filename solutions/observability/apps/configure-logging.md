@@ -12,7 +12,7 @@ mapped_pages:
 ::::{admonition}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
-These configuration options are only relevant to APM Server binary users. Fleet-managed users should see [View {{agent}} logs](https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html) to learn how to view logs and change the logging level of {{agent}}.
+These configuration options are only relevant to APM Server binary users. Fleet-managed users should see [View {{agent}} logs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn how to view logs and change the logging level of {{agent}}.
 
 ::::
 
@@ -106,7 +106,7 @@ To see which selectors are available, run APM Server in debug mode (set `logging
 ::::
 
 
-To configure multiple selectors, use the following [YAML list syntax](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-format.html):
+To configure multiple selectors, use the following [YAML list syntax](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-format.md):
 
 ```yaml
 logging.selectors: [ harvester, input ]

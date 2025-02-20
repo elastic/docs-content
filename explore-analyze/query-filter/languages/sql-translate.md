@@ -52,7 +52,7 @@ Which returns:
 }
 ```
 
-Which is the request that SQL will run to provide the results. In this case, SQL will use the [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results) API. If the result contained an aggregation then SQL would use the normal [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search).
+Which is the request that SQL will run to provide the results. In this case, SQL will use the [scroll](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results) API. If the result contained an aggregation then SQL would use the normal [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search).
 
 The request body accepts the same [parameters](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query) as the [SQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query), excluding `cursor`.
 

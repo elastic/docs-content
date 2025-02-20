@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku GCP instance configurations [ech-gcp-instance-configuration]
 
-Google Compute Engine (GCE) N2 general purpose VM types are now available for Elastic Cloud deployments in all supported [Google Cloud regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html#ec-gcp_regions). [N2](https://cloud.google.com/compute/docs/machine-types) VMs have a better mix of vCPU, RAM, and internal disk, and are up to 50% more cost effective when compared to N1 VM types. In addition to N2, we also provide N2D VMs across the Google Cloud regions.
+Google Compute Engine (GCE) N2 general purpose VM types are now available for Elastic Cloud deployments in all supported [Google Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md#ec-gcp_regions). [N2](https://cloud.google.com/compute/docs/machine-types) VMs have a better mix of vCPU, RAM, and internal disk, and are up to 50% more cost effective when compared to N1 VM types. In addition to N2, we also provide N2D VMs across the Google Cloud regions.
 
 To learn about the GCE specific configurations, check:
 
@@ -27,7 +27,7 @@ For example, Instance ID / SKU: `gcp.es.datahot.n2.68x10x45`
 | `\*.n2.*` | Denotes that this configuration is running on the GCP N2 family. |
 | `*.68x10x45` | Denotes the resource configuration, delimited by “x”.<br>* The first argument (`68`) denotes the total gross RAM capacity of the instance. Normally we use 4GB of that for utilities and therefore this configuration has a “usable RAM” of 64GB.<br>* The second argument (`10`) denotes the number of vCPUs allocated to the entire machine.<br>* The third argument denotes the ratio of RAM to storage capacity as in 1:X. In this case, for each 1GB of RAM, you will have 45 GB of disk to store Elasticsearch data. |
 
-The new configuration naming convention aligns with the [data tiers](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html) intended for each configuration type, replacing prior naming conventions of “highio”, “highcpu”, and so on. The following table details the new configurations for data nodes and compares them with prior naming conventions where applicable.
+The new configuration naming convention aligns with the [data tiers](/manage-data/lifecycle/data-tiers.md) intended for each configuration type, replacing prior naming conventions of “highio”, “highcpu”, and so on. The following table details the new configurations for data nodes and compares them with prior naming conventions where applicable.
 
 | New config name | Notes |
 | --- | --- |
