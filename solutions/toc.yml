@@ -328,7 +328,7 @@ toc:
               - file: observability/logs/logs-stream.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/add-service-name-to-logs.md
-          - file: observability/unknown-bucket/logs-index-template-reference.md
+          - file: observability/logs/logs-index-template-reference.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md

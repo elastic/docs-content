@@ -219,7 +219,6 @@ toc:
       - file: docs-content/serverless/observability-apm-get-started.md
       - file: docs-content/serverless/observability-apm-traces.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
-      - file: docs-content/serverless/observability-log-monitoring.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/project-and-management-settings.md
@@ -448,7 +447,6 @@ toc:
       - file: observability-docs/observability/apm-getting-started-apm-server.md
       - file: observability-docs/observability/apm-traces.md
       - file: observability-docs/observability/index.md
-      - file: observability-docs/observability/logs-checklist.md
       - file: observability-docs/observability/obs-ai-assistant.md
   - file: security-docs/security/index.md
   - file: stack-docs/elastic-stack/index.md
