@@ -210,7 +210,6 @@ toc:
       - file: docs-content/serverless/general-serverless-status.md
       - file: docs-content/serverless/general-sign-up-trial.md
       - file: docs-content/serverless/index-management.md
-      - file: docs-content/serverless/infrastructure-and-host-monitoring-intro.md
       - file: docs-content/serverless/ingest-aws-securityhub-data.md
       - file: docs-content/serverless/ingest-falco.md
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
@@ -453,7 +452,6 @@ toc:
       - file: observability-docs/observability/apm-getting-started-apm-server.md
       - file: observability-docs/observability/apm-traces.md
       - file: observability-docs/observability/index.md
-      - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
       - file: observability-docs/observability/logs-checklist.md
       - file: observability-docs/observability/obs-ai-assistant.md
   - file: security-docs/security/index.md
