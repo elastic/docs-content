@@ -22,4 +22,4 @@ Painless provides numerous capabilities that center around the following core pr
 
 Ready to start scripting with Painless? Learn how to [write your first script](modules-scripting-using.md).
 
-If you’re already familiar with Painless, see the [Painless Language Specification](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-lang-spec.html) for a detailed description of the Painless syntax and language features.
+If you’re already familiar with Painless, see the [Painless Language Specification](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-language-specification.md) for a detailed description of the Painless syntax and language features.

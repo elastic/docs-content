@@ -34,7 +34,7 @@ Wherever scripting is supported in the {{es}} APIs, the syntax follows the same 
 
 A Painless script is structured as one or more statements and optionally has one or more user-defined functions at the beginning. A script must always have at least one statement.
 
-The [Painless execute API](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html) provides the ability to test a script with simple user-defined parameters and receive a result. Let’s start with a complete script and review its constituent parts.
+The [Painless execute API](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-api-examples.md) provides the ability to test a script with simple user-defined parameters and receive a result. Let’s start with a complete script and review its constituent parts.
 
 First, index a document with a single field so that we have some data to work with:
 
@@ -45,7 +45,7 @@ PUT my-index-000001/_doc/1
 }
 ```
 
-We can then construct a script that operates on that field and run evaluate the script as part of a query. The following query uses the [`script_fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#script-fields) parameter of the search API to retrieve a script valuation. There’s a lot happening here, but we’ll break it down the components to understand them individually. For now, you only need to understand that this script takes `my_field` and operates on it.
+We can then construct a script that operates on that field and run evaluate the script as part of a query. The following query uses the [`script_fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) parameter of the search API to retrieve a script valuation. There’s a lot happening here, but we’ll break it down the components to understand them individually. For now, you only need to understand that this script takes `my_field` and operates on it.
 
 ```console
 GET my-index-000001/_search

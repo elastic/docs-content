@@ -12,3 +12,7 @@ mapped_urls:
 
 % - [ ] ./raw-migrated-files/observability-docs/observability/logs-metrics-get-started.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/observability-get-started-with-metrics.md
+
+$$$add-system-integration$$$
+
+$$$add-agent-to-fleet$$$

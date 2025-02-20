@@ -9,7 +9,7 @@ mapped_pages:
 
 # Examples [transform-examples]
 
-These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](https://www.elastic.co/guide/en/kibana/current/get-started.html). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
+These examples demonstrate how to use {{transforms}} to derive useful insights from your data. All the examples use one of the [{{kib}} sample datasets](/explore-analyze/index.md). For a more detailed, step-by-step example, see [Tutorial: Transforming the eCommerce sample data](ecommerce-transforms.md).
 
 * [Finding your best customers](#example-best-customers)
 * [Finding air carriers with the most delays](#example-airline)
@@ -94,7 +94,7 @@ It’s possible to answer these questions using aggregations alone, however {{tr
 
 ## Finding air carriers with the most delays [example-airline]
 
-This example uses the Flights sample data set to find out which air carrier had the most delays. First, filter the source data such that it excludes all the cancelled flights by using a query filter. Then transform the data to contain the distinct number of flights, the sum of delayed minutes, and the sum of the flight minutes by air carrier. Finally, use a [`bucket_script`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-bucket-script-aggregation.html) to determine what percentage of the flight time was actually delay.
+This example uses the Flights sample data set to find out which air carrier had the most delays. First, filter the source data such that it excludes all the cancelled flights by using a query filter. Then transform the data to contain the distinct number of flights, the sum of delayed minutes, and the sum of the flight minutes by air carrier. Finally, use a [`bucket_script`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-bucket-script-aggregation.md) to determine what percentage of the flight time was actually delay.
 
 ```console
 POST _transform/_preview
@@ -415,9 +415,9 @@ This {{transform}} makes it easier to answer questions such as:
 
 ## Finding client IPs that sent the most bytes to the server [example-bytes]
 
-This example uses the web log sample data set to find the client IP that sent the most bytes to the server in every hour. The example uses a `pivot` {{transform}} with a [`top_metrics`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-top-metrics.html) aggregation.
+This example uses the web log sample data set to find the client IP that sent the most bytes to the server in every hour. The example uses a `pivot` {{transform}} with a [`top_metrics`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-top-metrics.md) aggregation.
 
-Group the data by a [date histogram](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html#_date_histogram) on the time field with an interval of one hour. Use a [max aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-max-aggregation.html) on the `bytes` field to get the maximum amount of data that is sent to the server. Without the `max` aggregation, the API call still returns the client IP that sent the most bytes, however, the amount of bytes that it sent is not returned. In the `top_metrics` property, specify `clientip` and `geo.src`, then sort them by the `bytes` field in descending order. The {{transform}} returns the client IP that sent the biggest amount of data and the 2-letter ISO code of the corresponding location.
+Group the data by a [date histogram](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md#_date_histogram) on the time field with an interval of one hour. Use a [max aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-max-aggregation.md) on the `bytes` field to get the maximum amount of data that is sent to the server. Without the `max` aggregation, the API call still returns the client IP that sent the most bytes, however, the amount of bytes that it sent is not returned. In the `top_metrics` property, specify `clientip` and `geo.src`, then sort them by the `bytes` field in descending order. The {{transform}} returns the client IP that sent the biggest amount of data and the 2-letter ISO code of the corresponding location.
 
 ```console
 POST _transform/_preview

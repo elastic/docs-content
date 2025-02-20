@@ -14,7 +14,7 @@ Explore the topics in this section to learn how to observe and monitor hosts and
 | [Tutorial: Observe your Kubernetes deployments](../../../solutions/observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md) | Observe all layers of your application, including the orchestration software itself. |
 | [Tutorial: Observe your nginx instances](../../../solutions/observability/infra-and-hosts/tutorial-observe-nginx-instances.md) | Collect valuable metrics and logs from your nginx instances. |
 | [Troubleshooting](../../../troubleshoot/observability/troubleshooting-infrastructure-monitoring.md) | Troubleshoot common issues on your own or ask for help. |
-| [Metrics reference](https://www.elastic.co/guide/en/observability/current/metrics-reference.html) | Learn about the key metrics displayed in the Infrastructure UI and how they are calculated. |
+| [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference.md) | Learn about the key metrics displayed in the Infrastructure UI and how they are calculated. |
 
 
 

@@ -12,7 +12,7 @@ Numeral formatting in {{kib}} is done through a pattern-based syntax. These patt
 
 Numeral formatting patterns are used in multiple places in {{kib}}, including:
 
-* [Advanced settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html)
+* [Advanced settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md)
 * [Data view formatters](find-and-organize/data-views.md#field-formatters-numeric)
 * [**TSVB**](visualize/legacy-editors/tsvb.md)
 * [**Canvas**](visualize/canvas.md)
@@ -28,7 +28,7 @@ Thousands separator
 Accounting notation
 :   Putting parentheses around your format like `(0.00)` will use accounting notation to show negative numbers.
 
-The display of these patterns is affected by the [advanced setting](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#kibana-general-settings) `format:number:defaultLocale`. The default locale is `en`, but some examples will specify that they are using an alternate locale.
+The display of these patterns is affected by the [advanced setting](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings) `format:number:defaultLocale`. The default locale is `en`, but some examples will specify that they are using an alternate locale.
 
 Most basic examples:
 

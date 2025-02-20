@@ -39,10 +39,10 @@ The [`_search` endpoint](../../../solutions/search/querying-for-search.md) accep
 Query DSL support a wide range of search techniques, including the following:
 
 * [**Full-text search**](/solutions/search/full-text.md): Search text that has been analyzed and indexed to support phrase or proximity queries, fuzzy matches, and more.
-* [**Keyword search**](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html): Search for exact matches using `keyword` fields.
+* [**Keyword search**](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md): Search for exact matches using `keyword` fields.
 * [**Semantic search**](/solutions/search/semantic-search/semantic-search-semantic-text.md): Search `semantic_text` fields using dense or sparse vector search on embeddings generated in your {{es}} cluster.
 * [**Vector search**](/solutions/search/vector/knn.md): Search for similar dense vectors using the kNN algorithm for embeddings generated outside of {{es}}.
-* [**Geospatial search**](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html): Search for locations and calculate spatial relationships using geospatial queries.
+* [**Geospatial search**](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/geo-queries.md): Search for locations and calculate spatial relationships using geospatial queries.
 
 You can also filter data using Query DSL. Filters enable you to include or exclude documents by retrieving documents that match specific field-level criteria. A query that uses the `filter` parameter indicates [filter context](#filter-context).
 
@@ -54,9 +54,9 @@ Because aggregations leverage the same data structures used for search, they are
 
 The following aggregation types are available:
 
-* [Metric](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html): Calculate metrics, such as a sum or average, from field values.
-* [Bucket](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html): Group documents into buckets based on field values, ranges, or other criteria.
-* [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html): Run aggregations on the results of other aggregations.
+* [Metric](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/metrics.md): Calculate metrics, such as a sum or average, from field values.
+* [Bucket](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/bucket.md): Group documents into buckets based on field values, ranges, or other criteria.
+* [Pipeline](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/pipeline.md): Run aggregations on the results of other aggregations.
 
 Run aggregations by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. Learn more in [Run an aggregation](/explore-analyze/query-filter/aggregations.md#run-an-agg).
 
@@ -65,9 +65,9 @@ Run aggregations by specifying the [search API](https://www.elastic.co/docs/api/
 
 Think of the Query DSL as an AST (Abstract Syntax Tree) of queries, consisting of two types of clauses:
 
-**Leaf query clauses**: Leaf query clauses look for a particular value in a particular field, such as the [`match`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html), [`term`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html) or [`range`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) queries. These queries can be used by themselves.
+**Leaf query clauses**: Leaf query clauses look for a particular value in a particular field, such as the [`match`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-query.md), [`term`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) or [`range`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) queries. These queries can be used by themselves.
 
-**Compound query clauses**: Compound query clauses wrap other leaf **or** compound queries and are used to combine multiple queries in a logical fashion (such as the [`bool`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) or [`dis_max`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-dis-max-query.html) query), or to alter their behavior (such as the [`constant_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-constant-score-query.html) query).
+**Compound query clauses**: Compound query clauses wrap other leaf **or** compound queries and are used to combine multiple queries in a logical fashion (such as the [`bool`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md) or [`dis_max`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-dis-max-query.md) query), or to alter their behavior (such as the [`constant_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-constant-score-query.md) query).
 
 Query clauses behave differently depending on whether they are used in [query context or filter context](#query-filter-context).
 
@@ -77,22 +77,22 @@ $$$query-dsl-allow-expensive-queries$$$
 
   - Queries that need to do linear scans to identify matches:
 
-    - [`script` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-query.html)
-    - queries on [numeric](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html), [date](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html), [boolean](https://www.elastic.co/guide/en/elasticsearch/reference/current/boolean.html), [ip](https://www.elastic.co/guide/en/elasticsearch/reference/current/ip.html), [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) fields that are not indexed but have [doc values](https://www.elastic.co/guide/en/elasticsearch/reference/current/doc-values.html) enabled
+    - [`script` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-query.md)
+    - queries on [numeric](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md), [date](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md), [boolean](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/boolean.md), [ip](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md), [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) fields that are not indexed but have [doc values](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/doc-values.md) enabled
 
   - Queries that have a high up-front cost:
 
-    - [`fuzzy` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html) (except on [`wildcard`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type) fields)
-    - [`regexp` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html) (except on [`wildcard`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type) fields)
-    - [`prefix` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-prefix-query.html)  (except on [`wildcard`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type) fields or those without [`index_prefixes`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-prefixes.html))
-    - [`wildcard` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-wildcard-query.html) (except on [`wildcard`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type) fields)
-    - [`range` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) on [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) and [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) fields
+    - [`fuzzy` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-fuzzy-query.md) (except on [`wildcard`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`regexp` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-regexp-query.md) (except on [`wildcard`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`prefix` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-prefix-query.md)  (except on [`wildcard`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields or those without [`index_prefixes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/index-prefixes.md))
+    - [`wildcard` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-wildcard-query.md) (except on [`wildcard`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`range` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) on [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) and [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) fields
 
-  - [Joining queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/joining-queries.html)
+  - [Joining queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/joining-queries.md)
   - Queries that may have a high per-document cost:
 
-    - [`script_score` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html)
-    - [`percolate` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html)
+    - [`script_score` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md)
+    - [`percolate` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-percolate-query.md)
 
 
 The execution of such queries can be prevented by setting the value of the `search.allow_expensive_queries` setting to `false` (defaults to `true`).
@@ -142,9 +142,9 @@ Common filter applications include:
 
 Filter context applies when a query clause is passed to a `filter` parameter, such as:
 
-* `filter` or `must_not` parameters in [`bool`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)  queries
-* `filter` parameter in [`constant_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-constant-score-query.html) queries
-* [`filter`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html) aggregations
+* `filter` or `must_not` parameters in [`bool`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md)  queries
+* `filter` parameter in [`constant_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-constant-score-query.md) queries
+* [`filter`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-filter-aggregation.md) aggregations
 
 Filters optimize query performance and efficiency, especially for structured data queries and when combined with full-text searches.
 

@@ -137,7 +137,7 @@ The main requirements are:
 
 #### 2.2. Elastic Package Registry [air-gapped-k8s-os-elastic-package-registry]
 
-The container image can be downloaded from the official Elastic Docker repository, as described in the {{fleet}} and {{elastic-agent}} [air-gapped environments](https://www.elastic.co/guide/en/fleet/current/air-gapped.html) documentation.
+The container image can be downloaded from the official Elastic Docker repository, as described in the {{fleet}} and {{elastic-agent}} [air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) documentation.
 
 This container would, ideally, run as a Kubernetes deployment. Refer to [Appendix C - EPR Kubernetes Deployment](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-epr-kubernetes-example) for examples.
 

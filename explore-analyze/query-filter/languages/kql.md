@@ -101,7 +101,7 @@ You can also use range syntax for string values, IP addresses, and timestamps. F
 @timestamp < now-2w
 ```
 
-For more examples on acceptable date formats, refer to [Date Math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math).
+For more examples on acceptable date formats, refer to [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math).
 
 
 ## Filter for documents using wildcards [_filter_for_documents_using_wildcards] 
@@ -112,7 +112,7 @@ To search for documents matching a pattern, use the wildcard syntax. For example
 http.response.status_code: 4*
 ```
 
-By default, leading wildcards are not allowed for performance reasons. You can modify this with the [`query:allowLeadingWildcards`](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#query-allowleadingwildcards) advanced setting.
+By default, leading wildcards are not allowed for performance reasons. You can modify this with the [`query:allowLeadingWildcards`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#query-allowleadingwildcards) advanced setting.
 
 ::::{note} 
 Only `*` is currently supported. This matches zero or more characters.
@@ -173,7 +173,7 @@ When using wildcards to query multiple fields, errors might occur if the fields 
 
 ## Querying nested fields [_querying_nested_fields] 
 
-Querying [nested fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) requires a special syntax. Consider the following document, where `user` is a nested field:
+Querying [nested fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/nested.md) requires a special syntax. Consider the following document, where `user` is a nested field:
 
 ```yaml
 {

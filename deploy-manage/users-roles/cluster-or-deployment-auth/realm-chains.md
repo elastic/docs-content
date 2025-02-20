@@ -42,7 +42,7 @@ xpack.security.authc.realms:
       enabled: false
 ```
 
-As can be seen above, each realm has a unique name that identifies it. Each type of realm dictates its own set of required and optional settings. That said, there are [settings that are common to all realms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-realm-settings).
+As can be seen above, each realm has a unique name that identifies it. Each type of realm dictates its own set of required and optional settings. That said, there are [settings that are common to all realms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-realm-settings).
 
 ## Delegating authorization to another realm [authorization_realms]
 
@@ -52,7 +52,7 @@ For example, you may wish to use a PKI realm to authenticate your users with TLS
 
 Any realm that supports retrieving users (without needing their credentials) can be used as an *authorization realm* (that is, its name may appear as one of the values in the list of `authorization_realms`). See [Looking up users without authentication](looking-up-users-without-authentication.md) for further explanation on which realms support this.
 
-For realms that support this feature, it can be enabled by configuring the `authorization_realms` setting on the authenticating realm. Check the list of [supported settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#realm-settings) for each realm to see if they support the `authorization_realms` setting.
+For realms that support this feature, it can be enabled by configuring the `authorization_realms` setting on the authenticating realm. Check the list of [supported settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#realm-settings) for each realm to see if they support the `authorization_realms` setting.
 
 If delegated authorization is enabled for a realm, it authenticates the user in its standard manner (including relevant caching) then looks for that user in the configured list of authorization realms. It tries each realm in the order they are specified in the `authorization_realms` setting. The user is retrieved by principal - the user must have identical usernames in the *authentication* and *authorization realms*. If the user cannot be found in any of the authorization realms, authentication fails.
 

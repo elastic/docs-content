@@ -10,7 +10,7 @@ The Kerberos credentials are valid against the deployment, not the ECE platform.
 
 ## Before you begin [ece_before_you_begin_20]
 
-The steps in this section require an understanding of Kerberos. To learn more about Kerberos, check our documentation on [configuring Elasticsearch for Kerberos authentication](https://www.elastic.co/guide/en/elasticsearch/reference/current/kerberos-realm.html).
+The steps in this section require an understanding of Kerberos. To learn more about Kerberos, check our documentation on [configuring Elasticsearch for Kerberos authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
 
 
 ## Configure the cluster to use Kerberos [ece-configure-kerberos-settings]
@@ -18,13 +18,13 @@ The steps in this section require an understanding of Kerberos. To learn more ab
 With a custom bundle containing the Kerberos files and changes to the cluster configuration, you can enforce user authentication through the Kerberos protocol.
 
 1. Create or use an existing deployment that includes a Kibana instance.
-2. Create a [custom bundle](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-plugins.html) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
+2. Create a [custom bundle](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
 
     ::::{tip}
     You should use these exact filenames for Elastic Cloud Enterprise to recognize the file in the bundle.
     ::::
 
-3. Edit your cluster configuration, sometimes also referred to as the deployment plan, to define Kerberos settings as described in [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/kerberos-realm.html).
+3. Edit your cluster configuration, sometimes also referred to as the deployment plan, to define Kerberos settings as described in [Elasticsearch documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
 
     ```sh
     xpack.security.authc.realms.kerberos.cloud-krb:

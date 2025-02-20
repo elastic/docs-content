@@ -37,7 +37,7 @@ Open the visualization editor, then make sure the correct fields appear.
 
 ## Create visualizations with custom time intervals [custom-time-interval]
 
-When you create visualizations with time series data, you can use the default time interval or increase and decrease the interval. For performance reasons, the visualization editor allows you to choose the minimum time interval, but not the exact time interval. The interval limit is controlled by the [`histogram:maxBars`](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#histogram-maxbars) setting and [time range](../query-filter/filtering.md).
+When you create visualizations with time series data, you can use the default time interval or increase and decrease the interval. For performance reasons, the visualization editor allows you to choose the minimum time interval, but not the exact time interval. The interval limit is controlled by the [`histogram:maxBars`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#histogram-maxbars) setting and [time range](../query-filter/filtering.md).
 
 To analyze the data with a custom time interval, create a bar chart that shows you how many orders were made at your store every hour:
 

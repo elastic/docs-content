@@ -35,7 +35,7 @@ File formats supported up to 60 MB:
 * Rich Text (RTF)
 * Open Document Format (ODF)
 
-The **{{data-viz}}** identifies the file format and field mappings, and you can import the data into an {{es}} index. To change the default file size limit, see [`fileUpload:maxFileSize`](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#kibana-general-settings) in advanced settings.
+The **{{data-viz}}** identifies the file format and field mappings, and you can import the data into an {{es}} index. To change the default file size limit, see [`fileUpload:maxFileSize`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings) in advanced settings.
 
 If {{stack-security-features}} are enabled, users must have the necessary privileges to use {{ml-features}}. Refer to [Set up {{ml-features}}](setting-up-machine-learning.md#setup-privileges).
 

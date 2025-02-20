@@ -283,5 +283,5 @@ This section references common questions and issues encountered when using Disco
 
 This can happen in several cases:
 
-* With runtime fields and regular keyword fields, when the string exceeds the value set for the [ignore_above](https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore-above.html) setting used when indexing the data into {{es}}.
+* With runtime fields and regular keyword fields, when the string exceeds the value set for the [ignore_above](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-above.md) setting used when indexing the data into {{es}}.
 * Due to the structure of nested fields, a leaf field added to the table as a column will not contain values in any of its cells. Instead, add the root field as a column to view a JSON representation of its values. Learn more in [this blog post](https://www.elastic.co/de/blog/discover-uses-fields-api-in-7-12).

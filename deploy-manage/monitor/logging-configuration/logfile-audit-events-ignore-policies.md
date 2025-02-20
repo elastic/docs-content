@@ -14,7 +14,7 @@ applies:
 
 The comprehensive audit trail is necessary to ensure accountability. It offers tremendous value during incident response and can even be required for demonstrating compliance.
 
-The drawback of an audited system is represented by the inevitable performance penalty incurred. In all truth, the audit trail spends *I/O ops* that are not available anymore for the user’s queries. Sometimes the verbosity of the audit trail may become a problem that the event type restrictions, [defined by `include` and `exclude`](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#event-audit-settings), will not alleviate.
+The drawback of an audited system is represented by the inevitable performance penalty incurred. In all truth, the audit trail spends *I/O ops* that are not available anymore for the user’s queries. Sometimes the verbosity of the audit trail may become a problem that the event type restrictions, [defined by `include` and `exclude`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md#event-audit-settings), will not alleviate.
 
 **Audit events ignore policies** are a finer way to tune the verbosity of the audit trail. These policies define rules that match audit events which will be *ignored* (read as: not printed). Rules match on the values of attributes of audit events and complement the `include` or `exclude` method. Imagine the corpus of audit events and the policies chopping off unwanted events. With a sole exception, all audit events are subject to the ignore policies. The exception are events of type `security_config_change`, which cannot be filtered out, unless excluded altogether.
 
@@ -22,7 +22,7 @@ The drawback of an audited system is represented by the inevitable performance p
 When utilizing audit events ignore policies you are acknowledging potential accountability gaps that could render illegitimate actions undetectable. Please take time to review these policies whenever your system architecture changes.
 ::::
 
-A policy is a named set of filter rules. Each filter rule applies to a single event attribute, one of the `users`, `realms`, `actions`, `roles` or `indices` attributes. The filter rule defines a list of [Lucene regexp](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html), **any** of which has to match the value of the audit event attribute for the rule to match. A policy matches an event if **all** the rules comprising it match the event. An audit event is ignored, therefore not printed, if it matches **any** policy. All other non-matching events are printed as usual.
+A policy is a named set of filter rules. Each filter rule applies to a single event attribute, one of the `users`, `realms`, `actions`, `roles` or `indices` attributes. The filter rule defines a list of [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md), **any** of which has to match the value of the audit event attribute for the rule to match. A policy matches an event if **all** the rules comprising it match the event. An audit event is ignored, therefore not printed, if it matches **any** policy. All other non-matching events are printed as usual.
 
 All policies are defined under the `xpack.security.audit.logfile.events.ignore_filters` settings namespace. For example, the following policy named *example1* matches events from the *kibana_system* or *admin_user* principals that operate over indices of the wildcard form *app-logs**:
 

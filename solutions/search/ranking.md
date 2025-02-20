@@ -35,7 +35,7 @@ Vector search involves transforming data into dense or sparse vector embeddings 
 
 #### Hybrid techniques [re-ranking-ranking-overview-hybrid] 
 
-Hybrid search techniques combine results from full-text and vector search pipelines. {{es}} enables combining lexical matching (BM25) and vector search scores using the [Reciprocal Rank Fusion (RRF)](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) algorithm.
+Hybrid search techniques combine results from full-text and vector search pipelines. {{es}} enables combining lexical matching (BM25) and vector search scores using the [Reciprocal Rank Fusion (RRF)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) algorithm.
 
 
 ### Re-ranking [re-ranking-overview-second-stage] 

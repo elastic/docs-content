@@ -30,7 +30,7 @@ To resolve these problems, either remove the `noexec` option from your `/tmp` fi
     ```
 
 
-If you need finer control over the location of these temporary files, you can also configure the path that JNA uses with the [JVM flag](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-options) `-Djna.tmpdir=<path>` and you can configure the path that `libffi` uses for its temporary files by setting the `LIBFFI_TMPDIR` environment variable. Future versions of {{es}} may need additional configuration, so you should prefer to set `ES_TMPDIR` wherever possible.
+If you need finer control over the location of these temporary files, you can also configure the path that JNA uses with the [JVM flag](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) `-Djna.tmpdir=<path>` and you can configure the path that `libffi` uses for its temporary files by setting the `LIBFFI_TMPDIR` environment variable. Future versions of {{es}} may need additional configuration, so you should prefer to set `ES_TMPDIR` wherever possible.
 
 ::::{note} 
 {{es}} does not remove its temporary directory. You should remove leftover temporary directories while {{es}} is not running. It is best to do this automatically, for instance on each reboot. If you are running on Linux, you can achieve this by using the [tmpfs](https://www.kernel.org/doc/html/latest/filesystems/tmpfs.md) file system.

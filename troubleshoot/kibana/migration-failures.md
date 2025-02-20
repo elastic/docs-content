@@ -157,7 +157,7 @@ If the cluster exceeded the low watermark for disk usage, the output should cont
 "The node is above the low watermark cluster setting [cluster.routing.allocation.disk.watermark.low=85%], using more disk space than the maximum allowed [85.0%], actual free: [11.692661332965082%]"
 ```
 
-Refer to the {{es}} guide for how to [fix common cluster issues](https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-watermark-errors.html).
+Refer to the {{es}} guide for how to [fix common cluster issues](/troubleshoot/elasticsearch/fix-watermark-errors.md).
 
 If routing allocation is the issue, the `_cluster/allocation/explain` API will return an entry similar to this:
 
@@ -193,4 +193,4 @@ PUT /_cluster/settings
 
 When upgrading, {{kib}} creates new indices requiring a small number of new shards. If the amount of open {{es}} shards approaches or exceeds the {{es}} `cluster.max_shards_per_node` setting, {{kib}} is unable to complete the upgrade. Ensure that {{kib}} is able to add at least 10 more shards by removing indices to clear up resources, or by increasing the `cluster.max_shards_per_node` setting.
 
-For more information, refer to the documentation on [total shards per node](https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-total-shards.html).
+For more information, refer to the documentation on [total shards per node](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/total-shards-per-node.md).

@@ -11,11 +11,11 @@ When a repository is specified, a snapshot is taken every 30 minutes by default.
 
 Snapshots are configured and restored using the [snapshot and restore feature](../snapshot-and-restore.md).
 
-Elastic Cloud Enterprise installations support the following {{es}} [snapshot repository types](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html#ess-repo-types):
+Elastic Cloud Enterprise installations support the following {{es}} [snapshot repository types](/deploy-manage/tools/snapshot-and-restore/self-managed.md#ess-repo-types):
 
-* [Azure](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html)
-* [Google Cloud Storage](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html)
-* [AWS S3](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html)
+* [Azure](/deploy-manage/tools/snapshot-and-restore/azure-repository.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/s3-repository.md)
 
 ::::{note}
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by {{es}}.
@@ -26,7 +26,7 @@ To configure Google Cloud Storage (GCS) as a snapshot repository, you must use [
 
 To configure Microsoft Azure Storage as a snapshot repository, refer to [Snapshotting to Azure Storage](azure-storage-repository.md).
 
-For more details about how snapshots are used with Elasticsearch, check [Snapshot and Restore](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html). You can also review the official documentation for these storage repository options:
+For more details about how snapshots are used with Elasticsearch, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
 
 * [Amazon S3 documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.md)
 * [Microsoft Azure storage documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account)
@@ -73,7 +73,7 @@ To add a snapshot repository:
 
         Used for Microsoft Azure, Google Cloud Platform, or for some Amazon S3 repositories where you need to provide additional configuration parameters not supported by the S3 repository option. Configurations must be specified in a valid JSON format. For example:
 
-        Amazon S3 (check [supported settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html#repository-s3-repository)):
+        Amazon S3 (check [supported settings](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#repository-s3-repository)):
 
         ```json
         {

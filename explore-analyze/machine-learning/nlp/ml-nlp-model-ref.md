@@ -70,7 +70,7 @@ Sparse embedding models should be configured with the `text_expansion` task type
 
 Text Embedding models are designed to work with specific scoring functions for calculating the similarity between the embeddings they produce. Examples of typical scoring functions are: `cosine`, `dot product` and `euclidean distance` (also known as `l2_norm`).
 
-The embeddings produced by these models should be indexed in {{es}} using the [dense vector field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) with an appropriate [similarity function](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-params) chosen for the model.
+The embeddings produced by these models should be indexed in {{es}} using the [dense vector field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) with an appropriate [similarity function](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) chosen for the model.
 
 To find similar embeddings in {{es}} use the efficient [Approximate k-nearest neighbor (kNN)](../../../solutions/search/vector/knn.md#approximate-knn) search API with a text embedding as the query vector. Approximate kNN search uses the similarity function defined in the dense vector field mapping is used to calculate the relevance. For the best results the function must be one of the suitable similarity functions for the model.
 

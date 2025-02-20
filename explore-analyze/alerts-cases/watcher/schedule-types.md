@@ -418,10 +418,10 @@ By default, the `yearly` schedule is evaluated in the UTC time zone. To use a di
 ## {{watcher}} cron schedule [schedule-cron]
 
 
-Defines a [`schedule`](trigger-schedule.md) using a [cron expression](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-cron-expressions) that specifiues when to execute a watch.
+Defines a [`schedule`](trigger-schedule.md) using a [cron expression](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-cron-expressions) that specifiues when to execute a watch.
 
 ::::{tip}
-While cron expressions are powerful, a regularly occurring schedule is easier to configure with the other schedule types. If you must use a cron schedule, make sure you verify it with [`elasticsearch-croneval`](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-croneval.html) .
+While cron expressions are powerful, a regularly occurring schedule is easier to configure with the other schedule types. If you must use a cron schedule, make sure you verify it with [`elasticsearch-croneval`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-croneval.md) .
 ::::
 
 
@@ -484,7 +484,7 @@ By default, cron expressions are evaluated in the UTC time zone. To use a differ
 
 ### Use croneval to validate cron expressions [croneval]
 
-{{es}} provides a [`elasticsearch-croneval`](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-croneval.html) command line tool in the `$ES_HOME/bin` directory that you can use to check that your cron expressions are valid and produce the expected results.
+{{es}} provides a [`elasticsearch-croneval`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-croneval.md) command line tool in the `$ES_HOME/bin` directory that you can use to check that your cron expressions are valid and produce the expected results.
 
 To validate a cron expression, pass it in as a parameter to `elasticsearch-croneval`:
 

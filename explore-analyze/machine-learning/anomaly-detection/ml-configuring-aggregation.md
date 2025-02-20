@@ -34,13 +34,13 @@ There are a number of requirements for using aggregations in {{dfeeds}}.
 
 * If your [{{dfeed}} uses aggregations with nested `terms` aggs](#aggs-dfeeds) and model plot is not enabled for the {{anomaly-job}}, neither the **Single Metric Viewer** nor the **Anomaly Explorer** can plot and display an anomaly chart. In these cases, an explanatory message is shown instead of the chart.
 * Your {{dfeed}} can contain multiple aggregations, but only the ones with names that match values in the job configuration are fed to the job.
-* Using [scripted metric](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-scripted-metric-aggregation.html) aggregations is not supported in {{dfeeds}}.
+* Using [scripted metric](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md) aggregations is not supported in {{dfeeds}}.
 
 ## Recommendations [aggs-recommendations-dfeeds]
 
-* When your detectors use [metric](https://www.elastic.co/guide/en/machine-learning/current/ml-metric-functions.html) or [sum](https://www.elastic.co/guide/en/machine-learning/current/ml-sum-functions.html) analytical functions, it’s recommended to set the `date_histogram` or `composite` aggregation interval to a tenth of the bucket span. This creates finer, more granular time buckets, which are ideal for this type of analysis.
-* When your detectors use [count](https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html) or [rare](https://www.elastic.co/guide/en/machine-learning/current/ml-rare-functions.html) functions, set the interval to the same value as the bucket span.
-* If you have multiple influencers or partition fields or if your field cardinality is more than 1000, use [composite aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html).
+* When your detectors use [metric](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-metric-functions.md) or [sum](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-sum-functions.md) analytical functions, it’s recommended to set the `date_histogram` or `composite` aggregation interval to a tenth of the bucket span. This creates finer, more granular time buckets, which are ideal for this type of analysis.
+* When your detectors use [count](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md) or [rare](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-rare-functions.md) functions, set the interval to the same value as the bucket span.
+* If you have multiple influencers or partition fields or if your field cardinality is more than 1000, use [composite aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md).
 
     To determine the cardinality of your data, you can run searches such as:
 
@@ -254,10 +254,10 @@ Use the following format to define a composite aggregation in your {{dfeed}}:
 
 You can also use complex nested aggregations in {{dfeeds}}.
 
-The next example uses the [`derivative` pipeline aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-derivative-aggregation.html) to find the first order derivative of the counter `system.network.out.bytes` for each value of the field `beat.name`.
+The next example uses the [`derivative` pipeline aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-derivative-aggregation.md) to find the first order derivative of the counter `system.network.out.bytes` for each value of the field `beat.name`.
 
 ::::{note}
-`derivative` or other pipeline aggregations may not work within `composite` aggregations. See [composite aggregations and pipeline aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html#search-aggregations-bucket-composite-aggregation-pipeline-aggregations).
+`derivative` or other pipeline aggregations may not work within `composite` aggregations. See [composite aggregations and pipeline aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md#search-aggregations-bucket-composite-aggregation-pipeline-aggregations).
 ::::
 
 ```js
@@ -346,7 +346,7 @@ You can also use single bucket aggregations in {{dfeeds}}. The following example
 It is not currently possible to use `aggregate_metric_double` type fields in {{dfeeds}} without aggregations.
 ::::
 
-You can use fields with the [`aggregate_metric_double`](https://www.elastic.co/guide/en/elasticsearch/reference/current/aggregate-metric-double.html) field type in a {{dfeed}} with aggregations. It is required to retrieve the `value_count` of the `aggregate_metric_double` filed in an aggregation and then use it as the `summary_count_field_name` to provide the correct count that represents the aggregation value.
+You can use fields with the [`aggregate_metric_double`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/aggregate-metric-double.md) field type in a {{dfeed}} with aggregations. It is required to retrieve the `value_count` of the `aggregate_metric_double` filed in an aggregation and then use it as the `summary_count_field_name` to provide the correct count that represents the aggregation value.
 
 In the following example, `presum` is an `aggregate_metric_double` type field that has all the possible metrics: `[ min, max, sum, value_count ]`. To use an `avg` aggregation on this field, you need to perform a `value_count` aggregation on `presum` and then set the field that contains the aggregated values `my_count` as the `summary_count_field_name`:
 

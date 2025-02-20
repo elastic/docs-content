@@ -25,5 +25,5 @@ Use when
 Info for air-gapped environments:
 
 * [Installing the {{stack}} in an air-gapped environment](../../../deploy-manage/deploy/cloud-enterprise/air-gapped-install.md)
-* [Using a proxy server with Elastic Agent and Fleet](https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-support.html)
+* [Using a proxy server with Elastic Agent and Fleet](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md)
 
