@@ -36,7 +36,7 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 
 ## Analyze unassigned shards using the {{es}} API [ec-analyze_shards_with-api]
 
-You can retrieve information about the status of your cluster, indices, and shards using the {{es}} API. To access the API you can either use the [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md), or the [Elasticsearch API console](https://www.elastic.co/guide/en/cloud/current/ec-api-console.html). If you have your own way to run the {{es}} API, check [How to access the API](https://www.elastic.co/guide/en/cloud/current/ec-api-access.html). This section shows you how to:
+You can retrieve information about the status of your cluster, indices, and shards using the {{es}} API. To access the API you can either use the [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md), or the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md). If you have your own way to run the {{es}} API, check [How to access the API](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-access.md). This section shows you how to:
 
 * [Check cluster health](/troubleshoot/monitoring/unavailable-shards.md#ec-check-cluster-health)
 * [Check unhealthy indices](/troubleshoot/monitoring/unavailable-shards.md#ec-check-unhealthy-indices)
@@ -221,7 +221,7 @@ Review the topic for your deployment architecture:
 
 To learn more, review the following topics:
 
-* [Cluster-level shard allocation and routing settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html)
+* [Cluster-level shard allocation and routing settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
 * [Fix watermark errors](/troubleshoot/elasticsearch/fix-watermark-errors.md)
 
 
@@ -263,7 +263,7 @@ When shards cannot be assigned, due to [data tier allocation](/manage-data/lifec
 
 * Make sure nodes are available in each data tier and have sufficient disk space.
 * [Check the index settings](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) and ensure shards can be allocated to the expected data tier.
-* Check the [ILM policy](/manage-data/lifecycle/index-lifecycle-management.md) and check for issues with the [allocate action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-allocate.html).
+* Check the [ILM policy](/manage-data/lifecycle/index-lifecycle-management.md) and check for issues with the [allocate action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-allocate.md).
 * Inspect the [index templates](/manage-data/data-store/templates.md) and check for issues with the index settings.
 
 
@@ -304,7 +304,7 @@ The bugs also affect searchable snapshots. If you still have data in the cluster
 
 **Symptom**
 
-The parameter [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node) limits the total number of primary and replica shards for the cluster. If your cluster has a number of shards beyond this limit, you might get the following message:
+The parameter [`cluster.max_shards_per_node`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) limits the total number of primary and replica shards for the cluster. If your cluster has a number of shards beyond this limit, you might get the following message:
 
 `Validation Failed: 1: this action would add [2] shards, but this cluster currently has [1000]/[1000] maximum normal shards open`
 

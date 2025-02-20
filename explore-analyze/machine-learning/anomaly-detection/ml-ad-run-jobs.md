@@ -45,7 +45,7 @@ The {{ml-features}} use the concept of a *bucket* to divide the time series into
 
 The *bucket span* is part of the configuration information for an {{anomaly-job}}. It defines the time interval that is used to summarize and model the data. This is typically between 5 minutes to 1 hour and it depends on your data characteristics. When you set the bucket span, take into account the granularity at which you want to analyze, the frequency of the input data, the typical duration of the anomalies, and the frequency at which alerting is required.
 
-The bucket span must contain a valid [time interval](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units). When you create an {{anomaly-job}} in {{kib}}, you can choose to estimate a bucket span value based on your data characteristics. If you choose a value that is larger than one day or is significantly different than the estimated value, you receive an informational message.
+The bucket span must contain a valid [time interval](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units). When you create an {{anomaly-job}} in {{kib}}, you can choose to estimate a bucket span value based on your data characteristics. If you choose a value that is larger than one day or is significantly different than the estimated value, you receive an informational message.
 
 ### Detectors [ml-ad-detectors]
 
@@ -118,7 +118,7 @@ For each {{anomaly-job}}, you can optionally specify a dedicated index to store 
 
 If you create {{anomaly-jobs}} in {{kib}}, you *must* use {{dfeeds}} to retrieve data from {{es}} for analysis. When you create an {{anomaly-job}}, you select a {{data-source}} and {{kib}} configures the {{dfeed}} for you under the covers.
 
-You can associate only one {{dfeed}} with each {{anomaly-job}}. The {{dfeed}} contains a query that runs at a defined interval (`frequency`). By default, this interval is calculated relative to the [bucket span](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-create-job) of the {{anomaly-job}}. If you are concerned about delayed data, you can add a delay before the query runs at each interval. See [Handling delayed data](ml-delayed-data-detection.md).
+You can associate only one {{dfeed}} with each {{anomaly-job}}. The {{dfeed}} contains a query that runs at a defined interval (`frequency`). By default, this interval is calculated relative to the [bucket span](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-create-job) of the {{anomaly-job}}. If you are concerned about delayed data, you can add a delay before the query runs at each interval. See [Handling delayed data](ml-delayed-data-detection.md).
 
 {{dfeeds-cap}} can also aggregate data before sending it to the {{anomaly-job}}. There are some limitations, however, and aggregations should generally be used only for low cardinality data. See [Aggregating data for faster performance](ml-configuring-aggregation.md).
 
@@ -159,7 +159,7 @@ If you want to add multiple scheduled events at once, you can import an iCalenda
 
 * You must identify scheduled events before your {{anomaly-job}} analyzes the data for that time period. Machine learning results are not updated retroactively.
 * If your iCalendar file contains recurring events, only the first occurrence is imported.
-* [Bucket results](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-view-results.html#ml-ad-bucket-results) are generated during scheduled events but they have an anomaly score of zero.
+* [Bucket results](/explore-analyze/machine-learning/anomaly-detection/ml-ad-view-results.md#ml-ad-bucket-results) are generated during scheduled events but they have an anomaly score of zero.
 * If you use long or frequent scheduled events, it might take longer for the {{ml}} analytics to learn to model your data and some anomalous behavior might be missed.
 
 ::::
@@ -194,7 +194,7 @@ You can see the list of model snapshots for each job with the [get model snapsho
 :::
 
 ::::{tip}
-There are situations other than system failures where you might want to [revert](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-revert-model-snapshot) to using a specific model snapshot. The {{ml-features}} react quickly to anomalous input and new behaviors in data. Highly anomalous input increases the variance in the models and {{ml}} analytics must determine whether it is a new step-change in behavior or a one-off event. In the case where you know this anomalous input is a one-off, it might be appropriate to reset the model state to a time before this event. For example, after a Black Friday sales day you might consider reverting to a saved snapshot. If you know about such events in advance, however, you can use [calendars and scheduled events](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-calendars) to avoid impacting your model.
+There are situations other than system failures where you might want to [revert](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-revert-model-snapshot) to using a specific model snapshot. The {{ml-features}} react quickly to anomalous input and new behaviors in data. Highly anomalous input increases the variance in the models and {{ml}} analytics must determine whether it is a new step-change in behavior or a one-off event. In the case where you know this anomalous input is a one-off, it might be appropriate to reset the model state to a time before this event. For example, after a Black Friday sales day you might consider reverting to a saved snapshot. If you know about such events in advance, however, you can use [calendars and scheduled events](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-calendars) to avoid impacting your model.
 ::::
 
 ## Close the job [ml-ad-close-job]

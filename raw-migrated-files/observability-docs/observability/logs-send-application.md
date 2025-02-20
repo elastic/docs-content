@@ -22,4 +22,4 @@ The Elastic APM agent for Java.
 
 ## Get started [get-started]
 
-See the [Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/logs.html#log-sending) documentation to get started.
+See the [Java agent](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/logs.md#log-sending) documentation to get started.

@@ -14,7 +14,7 @@ Elasticsearch SQL offers a wide range of facilities for performing date/time man
 
 A common requirement when dealing with date/time in general revolves around the notion of `interval`, a topic that is worth exploring in the context of {{es}} and Elasticsearch SQL.
 
-{{es}} has comprehensive support for [date math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math) both inside [index names](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-date-math-index-names) and [queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html). Inside Elasticsearch SQL the former is supported as is by passing the expression in the table name, while the latter is supported through the standard SQL `INTERVAL`.
+{{es}} has comprehensive support for [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math) both inside [index names](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names) and [queries](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md). Inside Elasticsearch SQL the former is supported as is by passing the expression in the table name, while the latter is supported through the standard SQL `INTERVAL`.
 
 The table below shows the mapping between {{es}} and Elasticsearch SQL:
 
@@ -56,7 +56,7 @@ Example of the possible combinations below:
 
 ## Comparison [_comparison]
 
-Date/time fields can be compared to [date math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math) expressions with the equality (`=`) and `IN` operators:
+Date/time fields can be compared to [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math) expressions with the equality (`=`) and `IN` operators:
 
 ```sql
 SELECT hire_date FROM emp WHERE hire_date = '1987-03-01||+4y/y';

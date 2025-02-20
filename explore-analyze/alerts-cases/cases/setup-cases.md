@@ -33,7 +33,7 @@ By default, `All` for the **Cases** feature includes authority to delete cases a
 ::::{note}
 Before a user can be assigned to a case, they must log into {{kib}} at least once, which creates a user profile.
 
-This privilege is also required to add [case actions](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html) to rules.
+This privilege is also required to add [case actions](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md) to rules.
 
 ::::
 

@@ -35,7 +35,7 @@ Most commonly used to detect entities such as People, Places, and Organization i
 
 ### Text embedding [ingest-pipeline-search-inference-text-embedding]
 
-Analyzing a text field using a [Text embedding](../nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding) model will generate a [dense vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) representation of the text. This array of numeric values encodes the semantic *meaning* of the text. Using the same model with a user’s search query will produce a vector that can then be used to search, ranking results based on vector similarity - semantic similarity - as opposed to traditional word or text similarity.
+Analyzing a text field using a [Text embedding](../nlp/ml-nlp-search-compare.md#ml-nlp-text-embedding) model will generate a [dense vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) representation of the text. This array of numeric values encodes the semantic *meaning* of the text. Using the same model with a user’s search query will produce a vector that can then be used to search, ranking results based on vector similarity - semantic similarity - as opposed to traditional word or text similarity.
 
 A common use case is a user searching FAQs, or a support agent searching a knowledge base, where semantically similar content may be indexed with little similarity in phrasing.
 

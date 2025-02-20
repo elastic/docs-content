@@ -8,7 +8,7 @@ mapped_pages:
 
 # Detecting anomalous categories of data [ml-configuring-categories]
 
-Categorization is a {{ml}} process that tokenizes a text field, clusters similar data together, and classifies it into categories. It works best on machine-written messages and application output that typically consist of repeated elements. [Categorization jobs](ml-anomaly-detection-job-types.md#categorization-jobs) enable you to find anomalous behavior in your categorized data. Categorization is not natural language processing (NLP). When you create a categorization {{anomaly-job}}, the {{ml}} model learns what volume and pattern is normal for each category over time. You can then detect anomalies and surface rare events or unusual types of messages by using [count](https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html) or [rare](https://www.elastic.co/guide/en/machine-learning/current/ml-rare-functions.html) functions. Categorization works well on finite set of possible messages, for example:
+Categorization is a {{ml}} process that tokenizes a text field, clusters similar data together, and classifies it into categories. It works best on machine-written messages and application output that typically consist of repeated elements. [Categorization jobs](ml-anomaly-detection-job-types.md#categorization-jobs) enable you to find anomalous behavior in your categorized data. Categorization is not natural language processing (NLP). When you create a categorization {{anomaly-job}}, the {{ml}} model learns what volume and pattern is normal for each category over time. You can then detect anomalies and surface rare events or unusual types of messages by using [count](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md) or [rare](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-rare-functions.md) functions. Categorization works well on finite set of possible messages, for example:
 
 ```js
 {"@timestamp":1549596476000,
@@ -84,7 +84,7 @@ Another advanced option is the `categorization_filters` property, which can cont
 
 ## Per-partition categorization [ml-per-partition-categorization]
 
-If you enable per-partition categorization, categories are determined independently for each partition. For example, if your data includes messages from multiple types of logs from different applications, you can use a field like the ECS [`event.dataset` field](https://www.elastic.co/guide/en/ecs/current/ecs-event.html) as the `partition_field_name` and categorize the messages for each type of log separately.
+If you enable per-partition categorization, categories are determined independently for each partition. For example, if your data includes messages from multiple types of logs from different applications, you can use a field like the ECS [`event.dataset` field](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-event.md) as the `partition_field_name` and categorize the messages for each type of log separately.
 
 If your job has multiple detectors, every detector that uses the `mlcategory` keyword must also define a `partition_field_name`. You must use the same `partition_field_name` value in all of these detectors. Otherwise, when you create or update a job and enable per-partition categorization, it fails.
 
@@ -101,7 +101,7 @@ If you use the categorization wizard in {{kib}}, you can see which categorizatio
 :class: screenshot
 :::
 
-The categorization analyzer can refer to a built-in {{es}} analyzer or a combination of zero or more character filters, a tokenizer, and zero or more token filters. In this example, adding a [`pattern_replace` character filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-pattern-replace-charfilter.html) achieves the same behavior as the `categorization_filters` job configuration option described earlier. For more details about these properties, refer to the [`categorization_analyzer` API object](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job#ml-put-job-request-body).
+The categorization analyzer can refer to a built-in {{es}} analyzer or a combination of zero or more character filters, a tokenizer, and zero or more token filters. In this example, adding a [`pattern_replace` character filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-pattern-replace-charfilter.md) achieves the same behavior as the `categorization_filters` job configuration option described earlier. For more details about these properties, refer to the [`categorization_analyzer` API object](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job#ml-put-job-request-body).
 
 If you use the default categorization analyzer in {{kib}} or omit the `categorization_analyzer` property from the API, the following default values are used:
 
@@ -137,7 +137,7 @@ POST _ml/anomaly_detectors/_validate
 
 If you specify any part of the `categorization_analyzer`, however, any omitted sub-properties are *not* set to default values.
 
-The `ml_standard` tokenizer and the day and month stopword filter are almost equivalent to the following analyzer, which is defined using only built-in {{es}} [tokenizers](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html) and [token filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html):
+The `ml_standard` tokenizer and the day and month stopword filter are almost equivalent to the following analyzer, which is defined using only built-in {{es}} [tokenizers](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/tokenizer-reference.md) and [token filters](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/token-filter-reference.md):
 
 ```console
 PUT _ml/anomaly_detectors/it_ops_new_logs

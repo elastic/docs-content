@@ -38,7 +38,7 @@ javaRestTest      |employees      |VIEW      |ALIAS
 javaRestTest      |library        |TABLE     |INDEX
 ```
 
-Match multiple indices by using {{es}} [multi-target syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) notation:
+Match multiple indices by using {{es}} [multi-target syntax](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) notation:
 
 ```sql
 SHOW TABLES "*,-l*";

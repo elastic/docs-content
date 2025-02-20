@@ -1,6 +1,6 @@
 # Ingest logs from a Python application using Filebeat [ece-getting-started-search-use-cases-python-logs]
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elastic Cloud Enterprise deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](https://www.elastic.co/guide/en/ecs-logging/overview/current/intro.html).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elastic Cloud Enterprise deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/ecs/ecs-logging-overview/intro.md).
 
 You are going to learn how to:
 
@@ -14,7 +14,7 @@ You are going to learn how to:
 
 ## Prerequisites [ece_prerequisites_2]
 
-To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](https://www.elastic.co/guide/en/ecs-logging/python/current/installation.html) for the Python logging library.
+To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](asciidocalypse://docs/ecs-logging-python/docs/reference/ecs/ecs-logging-python/installation.md) for the Python logging library.
 
 To install *ecs-logging-python*, run:
 
@@ -99,7 +99,7 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsible format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 
-    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](https://www.elastic.co/guide/en/ecs/current/ecs-field-reference.html) for the full list of available fields.
+    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-field-reference.md) for the full list of available fields.
 
 2. Let’s give the Python script a test run. Open a terminal instance in the location where you saved *elvis.py* and run the following:
 
@@ -193,7 +193,7 @@ For this example, Filebeat uses the following four decoding options.
   json.expand_keys: true
 ```
 
-To learn more about these settings, check [JSON input configuration options](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-log.html#filebeat-input-log-config-json) and [Decode JSON fields](https://www.elastic.co/guide/en/beats/filebeat/current/decode-json-fields.html) in the Filebeat Reference.
+To learn more about these settings, check [JSON input configuration options](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-input-log.md#filebeat-input-log-config-json) and [Decode JSON fields](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/decode-json-fields.md) in the Filebeat Reference.
 
 Append the four JSON decoding options to the *Filebeat inputs* section of *filebeat.yml*, so that the section now looks like this:
 
@@ -229,7 +229,7 @@ Filebeat comes with predefined assets for parsing, indexing, and visualizing you
 ```
 
 ::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md) of filebeat.yml. You can also try running the command as *root*: *sudo ./filebeat setup -e* or you can disable strict permission checks by running the command with the `--strict.perms=false` option.
 ::::
 
 
@@ -335,7 +335,7 @@ In this command:
 * The *-c* flag specifies the path to the Filebeat config file.
 
 ::::{note}
-Just in case the command doesn’t work as expected, check the [Filebeat quick start](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html#start) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
+Just in case the command doesn’t work as expected, check the [Filebeat quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md#start) for the detailed command syntax for your operating system. You can also try running the command as *root*: *sudo ./filebeat -e -c filebeat.yml*.
 ::::
 
 
@@ -413,5 +413,5 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 2. As your final step, remember to stop Filebeat and the Python script. Enter *CTRL + C* in both your Filebeat terminal and in your `elvis.py` terminal.
 
-You now know how to monitor log files from a Python application, deliver the log event data securely into an Elastic Cloud Enterprise deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-cloud-ingest-data.html#ece-ingest-methods) to learn all about working in Elastic Cloud Enterprise.
+You now know how to monitor log files from a Python application, deliver the log event data securely into an Elastic Cloud Enterprise deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-cloud-ingest-data.html#ece-ingest-methods) to learn all about working in Elastic Cloud Enterprise.
 

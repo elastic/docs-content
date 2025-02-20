@@ -37,10 +37,10 @@ The [`_search` endpoint](../../../solutions/search/querying-for-search.md) accep
 Query DSL support a wide range of search techniques, including the following:
 
 * [**Full-text search**](../../../solutions/search/full-text.md): Search text that has been analyzed and indexed to support phrase or proximity queries, fuzzy matches, and more.
-* [**Keyword search**](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html): Search for exact matches using `keyword` fields.
+* [**Keyword search**](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md): Search for exact matches using `keyword` fields.
 * [**Semantic search**](../../../solutions/search/semantic-search/semantic-search-semantic-text.md): Search `semantic_text` fields using dense or sparse vector search on embeddings generated in your {{es}} cluster.
 * [**Vector search**](../../../solutions/search/vector/knn.md): Search for similar dense vectors using the kNN algorithm for embeddings generated outside of {{es}}.
-* [**Geospatial search**](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html): Search for locations and calculate spatial relationships using geospatial queries.
+* [**Geospatial search**](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/geo-queries.md): Search for locations and calculate spatial relationships using geospatial queries.
 
 Learn about the full range of queries supported by [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md).
 
@@ -55,9 +55,9 @@ Because aggregations leverage the same data structures used for search, they are
 
 The folowing aggregation types are available:
 
-* [Metric](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html): Calculate metrics, such as a sum or average, from field values.
-* [Bucket](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html): Group documents into buckets based on field values, ranges, or other criteria.
-* [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html): Run aggregations on the results of other aggregations.
+* [Metric](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/metrics.md): Calculate metrics, such as a sum or average, from field values.
+* [Bucket](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/bucket.md): Group documents into buckets based on field values, ranges, or other criteria.
+* [Pipeline](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/pipeline.md): Run aggregations on the results of other aggregations.
 
 Run aggregations by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. Learn more in [Run an aggregation](../../../explore-analyze/query-filter/aggregations.md#run-an-agg).
 
@@ -70,7 +70,7 @@ The [`_query` endpoint](../../../explore-analyze/query-filter/languages/esql-res
 
 Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
 
-It comes with a comprehensive set of [functions and operators](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html) for working with data and has robust integration with {{kib}}'s Discover, dashboards and visualizations.
+It comes with a comprehensive set of [functions and operators](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md) for working with data and has robust integration with {{kib}}'s Discover, dashboards and visualizations.
 
 Learn more in [Getting started with {{esql}}](../../../solutions/search/get-started.md), or try [our training course](https://www.elastic.co/training/introduction-to-esql).
 

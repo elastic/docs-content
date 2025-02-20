@@ -66,7 +66,7 @@ xpack.security.http.filter.enabled: true
 
 ## Specifying TCP transport profiles [_specifying_tcp_transport_profiles] 
 
-[TCP transport profiles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#transport-profiles) enable Elasticsearch to bind on multiple hosts. The {{es}} {{security-features}} enable you to apply different IP filtering on different profiles.
+[TCP transport profiles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#transport-profiles) enable Elasticsearch to bind on multiple hosts. The {{es}} {{security-features}} enable you to apply different IP filtering on different profiles.
 
 ```yaml
 xpack.security.transport.filter.allow: 172.16.0.0/24

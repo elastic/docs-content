@@ -9,7 +9,7 @@ Each [index](../../manage-data/data-store/index-basics.md) in Elasticsearch is d
 
 A cluster can contain multiple copies of a shard. Each shard has one distinguished shard copy called the *primary*, and zero or more non-primary copies called *replicas*. The primary shard copy serves as the main entry point for all indexing operations. The operations on the primary shard copy are then forwarded to its replicas.
 
-Replicas maintain redundant copies of your data across the [nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html) in your cluster, protecting against hardware failure and increasing capacity to serve read requests like searching or retrieving a document. If the primary shard copy fails, then a replica is promoted to primary and takes over the primary’s responsibilities.
+Replicas maintain redundant copies of your data across the [nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md) in your cluster, protecting against hardware failure and increasing capacity to serve read requests like searching or retrieving a document. If the primary shard copy fails, then a replica is promoted to primary and takes over the primary’s responsibilities.
 
 Over the course of normal operation, Elasticsearch allocates shard copies to nodes, relocates shard copies across nodes to balance the cluster or satisfy new allocation constraints, and recovers shards to initialize new copies. In this topic, you’ll learn how these operations work and how you can control them.
 
@@ -30,7 +30,7 @@ By default, the primary and replica shard copies for an index can be allocated t
 
 You can control how shard copies are allocated using the following settings:
 
-* [Cluster-level shard allocation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html): Use these settings to control how shard copies are allocated and balanced across the entire cluster. For example, you might want to [allocate nodes availability zones](shard-allocation-relocation-recovery/shard-allocation-awareness.md), or prevent certain nodes from being used so you can perform maintenance.
+* [Cluster-level shard allocation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md): Use these settings to control how shard copies are allocated and balanced across the entire cluster. For example, you might want to [allocate nodes availability zones](shard-allocation-relocation-recovery/shard-allocation-awareness.md), or prevent certain nodes from being used so you can perform maintenance.
 * [Index-level shard allocation settings](shard-allocation-relocation-recovery/index-level-shard-allocation.md): Use these settings to control how the shard copies for a specific index are allocated. For example, you might want to allocate an index to a node in a specific data tier, or to an node with specific attributes.
 
 
@@ -67,8 +67,8 @@ You can determine the cause of a shard recovery using the [recovery](https://www
 
 To control how shards are recovered, for example the resources that can be used by recovery operations, and which indices should be prioritized for recovery, you can adjust the following settings:
 
-* [Index recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html)
-* [Cluster-level shard allocation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html)
+* [Index recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md)
+* [Cluster-level shard allocation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
 * [Index-level shard allocation settings](shard-allocation-relocation-recovery/index-level-shard-allocation.md), including [delayed allocation](shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md) and [index recovery prioritization](shard-allocation-relocation-recovery/index-level-shard-allocation.md)
 
 Shard recovery operations also respect general shard allocation settings.
@@ -91,7 +91,7 @@ When a shard copy is relocated, it is created as a new shard copy on the target 
 
 ### Adjust shard relocation settings [_adjust_shard_relocation_settings]
 
-You can control how and when shard copies are relocated. For example, you can adjust the rebalancing settings that control when shard copies are relocated to balance the cluster, or the high watermark for disk-based shard allocation that can trigger relocation. These settings are part of the [cluster-level shard allocation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html).
+You can control how and when shard copies are relocated. For example, you can adjust the rebalancing settings that control when shard copies are relocated to balance the cluster, or the high watermark for disk-based shard allocation that can trigger relocation. These settings are part of the [cluster-level shard allocation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md).
 
 Shard relocation operations also respect shard allocation and recovery settings.
 

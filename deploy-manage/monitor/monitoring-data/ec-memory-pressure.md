@@ -22,7 +22,7 @@ The percentage number used in the JVM memory pressure indicator is actually the 
 
 When the JVM memory pressure reaches 75%, the indicator turns red. At this level, garbage collection becomes more frequent as the memory usage increases, potentially impacting the performance of your cluster. As long as the cluster performance suits your needs, JVM memory pressure above 75% is not a problem in itself, but there is not much spare memory capacity. Review the [common causes of high JVM memory usage](#ec-memory-pressure-causes) to determine your best course of action.
 
-When the JVM memory pressure indicator rises above 95%, {{es}}'s [real memory circuit breaker](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#parent-circuit-breaker) triggers to prevent your instance from running out of memory. This situation can reduce the stability of your cluster and the integrity of your data. Unless you expect the load to drop soon, we recommend that you resize to a larger cluster before you reach this level of memory pressure. Even if you’re planning to optimize your memory usage, it is best to resize the cluster first. Resizing the cluster to increase capacity can give you more time to apply other changes, and also provides the cluster with more resource for when those changes are applied.
+When the JVM memory pressure indicator rises above 95%, {{es}}'s [real memory circuit breaker](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker) triggers to prevent your instance from running out of memory. This situation can reduce the stability of your cluster and the integrity of your data. Unless you expect the load to drop soon, we recommend that you resize to a larger cluster before you reach this level of memory pressure. Even if you’re planning to optimize your memory usage, it is best to resize the cluster first. Resizing the cluster to increase capacity can give you more time to apply other changes, and also provides the cluster with more resource for when those changes are applied.
 
 
 ## Common causes of high JVM memory usage [ec-memory-pressure-causes]
@@ -31,7 +31,7 @@ The two most common reasons for a high JVM memory pressure reading are:
 
 **1. Having too many shards per node**
 
-If JVM memory pressure above 75% is a frequent occurrence, the cause is often having too many shards per node relative to the amount of available memory. You can lower the JVM memory pressure by reducing the number of shards or upgrading to a larger cluster. For guidelines, check [How to size your shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html).
+If JVM memory pressure above 75% is a frequent occurrence, the cause is often having too many shards per node relative to the amount of available memory. You can lower the JVM memory pressure by reducing the number of shards or upgrading to a larger cluster. For guidelines, check [How to size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md).
 
 **2. Running expensive queries**
 

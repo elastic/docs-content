@@ -50,7 +50,7 @@ For each GeoJSON file you downloaded, complete the following steps:
 2. From the list of layer types, click **Upload file**.
 3. Using the File Picker, upload the GeoJSON file.
 
-    Depending on the geometry type of your features, this will auto-populate **Index type** with either [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html) and **Index name** with `<file name>`.
+    Depending on the geometry type of your features, this will auto-populate **Index type** with either [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md) and **Index name** with `<file name>`.
 
 4. Click **Import file**.
 
@@ -72,12 +72,12 @@ For each GeoJSON file you downloaded, complete the following steps:
 
 ## Add a heatmap aggregation layer [_add_a_heatmap_aggregation_layer]
 
-Looking at the `Lightning detected` layer, it’s clear where lightning has struck. What’s less clear, is if there have been more lightning strikes in some areas than others, in other words, where the lightning hot spots are. An advantage of having indexed [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) data for the lightning strikes is that you can perform aggregations on the data.
+Looking at the `Lightning detected` layer, it’s clear where lightning has struck. What’s less clear, is if there have been more lightning strikes in some areas than others, in other words, where the lightning hot spots are. An advantage of having indexed [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) data for the lightning strikes is that you can perform aggregations on the data.
 
 1. Click **Add layer**.
 2. From the list of layer types, click **Heat map**.
 
-    Because you indexed `lightning_detected.geojson` using the index name and pattern `lightning_detected`, that data is available as a [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) aggregation.
+    Because you indexed `lightning_detected.geojson` using the index name and pattern `lightning_detected`, that data is available as a [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) aggregation.
 
 3. Select `lightning_detected`.
 4. Click **Add layer** to add the heat map layer "Lightning intensity".

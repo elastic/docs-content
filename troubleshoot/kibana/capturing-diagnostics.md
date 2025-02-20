@@ -26,7 +26,7 @@ You can generate diagnostic information using this tool before you contact [Elas
 The Support Diagnostic tool is included out-of-the-box as a sub-library in:
 
 * {{ece}} - Find the tool under **{{ece}}*** > ***Deployment*** > ***Operations*** > ***Prepare Bundle*** > ***{{kib}}**.
-* {{eck}} - Run the tool with [`eck-diagnostics`](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-take-eck-dump.html).
+* {{eck}} - Run the tool with [`eck-diagnostics`](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md).
 
 You can also get the latest version of the tool by downloading the `diagnostics-X.X.X-dist.zip` file from [the `support-diagnostic` repo](https://github.com/elastic/support-diagnostics/releases/latest).
 

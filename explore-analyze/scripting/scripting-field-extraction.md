@@ -246,7 +246,7 @@ The following pattern tells dissect to return the term `used`, a blank space, th
 emit("used" + ' ' + gc.usize + ', ' + "capacity" + ' ' + gc.csize + ', ' + "committed" + ' ' + gc.comsize)
 ```
 
-Putting it all together, you can create a runtime field named `gc_size` in a search request. Using the [`fields` option](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-param), you can retrieve all values for the `gc_size` runtime field. This query also includes a bucket aggregation to group your data.
+Putting it all together, you can create a runtime field named `gc_size` in a search request. Using the [`fields` option](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param), you can retrieve all values for the `gc_size` runtime field. This query also includes a bucket aggregation to group your data.
 
 ```console
 GET my-index/_search

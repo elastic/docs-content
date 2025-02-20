@@ -33,7 +33,7 @@ You can also review the [Colab notebook version of this tutorial](https://colab.
 ## Requirements [cohere-es-req]
 
 * A paid [Cohere account](https://cohere.com/) is required to use the {{infer-cap}} API with the Cohere service as the Cohere free trial API usage is limited,
-* an [Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html) account,
+* an [Elastic Cloud](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) account,
 * Python 3.7 or higher.
 
 
@@ -127,7 +127,7 @@ client.indices.create(
 
 ## Create the {{infer}} pipeline [cohere-es-infer-pipeline]
 
-Now you have an {{infer}} endpoint and an index ready to store embeddings. The next step is to create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) that will create the embeddings using the {{infer}} endpoint and stores them in the index.
+Now you have an {{infer}} endpoint and an index ready to store embeddings. The next step is to create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) that will create the embeddings using the {{infer}} endpoint and stores them in the index.
 
 ```py
 client.ingest.put_pipeline(

@@ -26,7 +26,7 @@ $$$configuring-console$$$
 $$$import-export-console-requests$$$
 
 
-**Console** is an interactive UI for sending requests to [{{es}} APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html) and [{{kib}} APIs](https://www.elastic.co/docs/api) and viewing their responses.
+**Console** is an interactive UI for sending requests to [{{es}} APIs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md) and [{{kib}} APIs](https://www.elastic.co/docs/api) and viewing their responses.
 
 :::{image} ../../../images/kibana-console.png
 :alt: Console

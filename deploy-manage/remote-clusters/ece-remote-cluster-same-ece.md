@@ -25,7 +25,7 @@ TLS certificate
 
 By default, any deployment that you or your users create trusts all other deployments in the same Elastic Cloud Enterprise environment. You can change this behavior in the Cloud UI under **Platform** > **Trust Management**, so that when a new deployment is created it does not automatically trust any other deployment. You can choose one of the following options:
 
-* Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-same-ece.html#ece_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
+* Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](/deploy-manage/remote-clusters/ece-remote-cluster-same-ece.md#ece_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * Trust no deployment - New deployments won’t trust any other deployment when they are created. You can instead configure trust individually for each of them in their security settings, as described in the next section.
 
 :::{image} ../../images/cloud-enterprise-ce-environment-trust-management.png
@@ -55,7 +55,7 @@ If your organization’s deployments already trust each other by default, you ca
 
 
 ::::{note}
-When trusting specific deployments, the more restrictive [CCS](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#sniff-mode) version policy is used (even if you only want to use [CCR](https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html)). To work around this restriction for CCR-only trust, it is necessary to use the API as described below.
+When trusting specific deployments, the more restrictive [CCS](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) version policy is used (even if you only want to use [CCR](/deploy-manage/tools/cross-cluster-replication.md)). To work around this restriction for CCR-only trust, it is necessary to use the API as described below.
 ::::
 
 
@@ -184,14 +184,14 @@ On the local cluster, add the remote cluster using Kibana or the {{es}} API.
         :::
 
         ::::{note}
-        If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-endpoints.html).
+        If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
         ::::
 
 4. Click **Next**.
 5. Click **Add remote cluster** (you have already established trust in a previous step).
 
 ::::{note}
-This configuration of remote clusters uses the [Proxy mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#proxy-mode) and it requires that the allocators can communicate via http with the proxies.
+This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode) and it requires that the allocators can communicate via http with the proxies.
 ::::
 
 
@@ -235,7 +235,7 @@ This section only applies if you’re using TLS certificates as cross-cluster se
 ::::
 
 
-When the cluster to be configured as a remote is above 6.7.0 and below 7.6.0, the remote cluster must be configured using the [sniff mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#sniff-mode) with the proxy field. For each remote cluster you need to pass the following fields:
+When the cluster to be configured as a remote is above 6.7.0 and below 7.6.0, the remote cluster must be configured using the [sniff mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) with the proxy field. For each remote cluster you need to pass the following fields:
 
 * **Proxy**: This value can be found on the **Security** page of the deployment you want to use as a remote under the name `Proxy Address`. Also, using the API, this can be obtained from the elasticsearch resource info, concatenating the fields `metadata.endpoint` and `metadata.ports.transport_passthrough` using a semicolon.
 * **Seeds**: This field is an array that must contain only one value, which is the `server name` that can be found on the **Security** page of the ECE deployment you want to use as a remote concatenated with `:1`. Also, using the API, this can be obtained from the {{es}} resource info, concatenating the fields `metadata.endpoint` and `1` with a semicolon.
@@ -294,7 +294,7 @@ curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $EC
 Note the following when using the Elastic Cloud Enterprise RESTful API:
 
 1. A cluster alias must contain only letters, numbers, dashes (-), or underscores (_).
-2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#skip-unavailable-clusters).
+2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](/solutions/search/cross-cluster-search.md#skip-unavailable-clusters).
 3. When remote clusters are already configured for a deployment, the `PUT` request replaces the existing configuration with the new configuration passed. Passing an empty array of resources will remove all remote clusters.
 
 The following API request retrieves the remote clusters configuration:

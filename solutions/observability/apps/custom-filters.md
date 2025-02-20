@@ -34,10 +34,10 @@ Features of this approach:
 
 Refer to the relevant agent’s documentation for more information and examples:
 
-* .NET: [Filter API](https://www.elastic.co/guide/en/apm/agent/dotnet/current/public-api.html#filter-api).
-* Node.js: [`addFilter()`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-add-filter).
-* Python: [custom processors](https://www.elastic.co/guide/en/apm/agent/python/current/sanitizing-data.html).
-* Ruby: [`add_filter()`](https://www.elastic.co/guide/en/apm/agent/ruby/current/api.html#api-agent-add-filter).
+* .NET: [Filter API](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#filter-api).
+* Node.js: [`addFilter()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-add-filter).
+* Python: [custom processors](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/sanitizing-data.md).
+* Ruby: [`add_filter()`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-add-filter).
 
 
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial] 
@@ -51,7 +51,7 @@ Say you decide to [capture HTTP request bodies](built-in-data-filters.md#apm-fil
 }
 ```
 
-To obfuscate the passwords stored in the request body, you can use a series of [ingest processors](https://www.elastic.co/guide/en/elasticsearch/reference/current/processors.html).
+To obfuscate the passwords stored in the request body, you can use a series of [ingest processors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/index.md).
 
 
 ### Create a pipeline [_create_a_pipeline] 
@@ -78,7 +78,7 @@ To start, create a pipeline with a simple description and an empty array of proc
 
 #### Add a JSON processor [_add_a_json_processor] 
 
-Add your first processor to the processors array. Because the agent captures the request body as a string, use the [JSON processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/json-processor.html) to convert the original field value into a structured JSON object. Save this JSON object in a new field:
+Add your first processor to the processors array. Because the agent captures the request body as a string, use the [JSON processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/json-processor.md) to convert the original field value into a structured JSON object. Save this JSON object in a new field:
 
 ```json
 {
@@ -93,7 +93,7 @@ Add your first processor to the processors array. Because the agent captures the
 
 #### Add a set processor [_add_a_set_processor] 
 
-If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `password` with the [set processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html), by setting the value of `body.original_json.password` to `"redacted"`:
+If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `password` with the [set processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/set-processor.md), by setting the value of `body.original_json.password` to `"redacted"`:
 
 ```json
 {
@@ -108,7 +108,7 @@ If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `pass
 
 #### Add a convert processor [_add_a_convert_processor] 
 
-Use the [convert processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/convert-processor.html) to convert the JSON value of `body.original_json` to a string and set it as the `body.original` value:
+Use the [convert processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/convert-processor.md) to convert the JSON value of `body.original_json` to a string and set it as the `body.original` value:
 
 ```json
 {
@@ -125,7 +125,7 @@ Use the [convert processor](https://www.elastic.co/guide/en/elasticsearch/refere
 
 #### Add a remove processor [_add_a_remove_processor] 
 
-Finally, use the [remove processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/remove-processor.html) to remove the `body.original_json` field:
+Finally, use the [remove processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/remove-processor.md) to remove the `body.original_json` field:
 
 ```json
 {

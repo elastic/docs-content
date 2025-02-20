@@ -32,10 +32,10 @@ Info on {{agent}} and agent integrations:
 Info on {{ls}} and {{ls}} Kafka plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} {{agent}} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
-* [{{ls}} Kafka input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-kafka.html)
-* [{{ls}} Kafka output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-kafka.html)
-* [{{ls}} Elasticsearch output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html)
+* [{{ls}} {{agent}} input](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md)
+* [{{ls}} Kafka input](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-kafka.md)
+* [{{ls}} Kafka output](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-kafka.md)
+* [{{ls}} Elasticsearch output](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 
