@@ -108,7 +108,7 @@ GET /my-index-000001/_analyze
 }
 ```
 
-To change the mapping of an existing field, refer to [Changing the mapping of a field](../../manage-data/data-store/mapping.md#updating-field-mappings).
+To change the mapping of an existing field, refer to [Manage and update mappings](../../manage-data/data-store/mapping.md#mapping-manage-update).
 
 
 ## Check the field’s values [troubleshooting-check-field-values]
