@@ -232,7 +232,6 @@ toc:
       - file: docs-content/serverless/observability-create-an-slo.md
       - file: docs-content/serverless/observability-create-custom-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-failed-transaction-rate-threshold-alert-rule.md
-      - file: docs-content/serverless/observability-create-inventory-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-latency-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-manage-rules.md
       - file: docs-content/serverless/observability-create-slo-burn-rate-alert-rule.md
@@ -500,7 +499,6 @@ toc:
       - file: observability-docs/observability/incident-management.md
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
-      - file: observability-docs/observability/infrastructure-threshold-alert.md
       - file: observability-docs/observability/inspect-metric-anomalies.md
       - file: observability-docs/observability/logs-checklist.md
       - file: observability-docs/observability/logs-ecs-application.md
