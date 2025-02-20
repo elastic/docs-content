@@ -234,7 +234,6 @@ toc:
       - file: docs-content/serverless/observability-create-failed-transaction-rate-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-latency-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-manage-rules.md
-      - file: docs-content/serverless/observability-create-slo-burn-rate-alert-rule.md
       - file: docs-content/serverless/observability-detect-metric-anomalies.md
       - file: docs-content/serverless/observability-discover-and-explore-logs.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
@@ -515,7 +514,6 @@ toc:
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
       - file: observability-docs/observability/rate-aggregation.md
-      - file: observability-docs/observability/slo-burn-rate-alert.md
       - file: observability-docs/observability/slo-create.md
       - file: observability-docs/observability/slo.md
       - file: observability-docs/observability/triage-slo-burn-rate-breaches.md
