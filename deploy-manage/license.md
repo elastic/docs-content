@@ -5,7 +5,7 @@ mapped_pages:
 
 # Manage your license  
 
-Your Elastic license determines which features are available. Use the topics in this section to manage your license in your environment:  
+Your Elastic license determines which features are available. Use the topics in this section to manage your license or start a trial:  
 
 - [{{ece}}](/deploy-manage/license/manage-your-license-in-ece.md)  
 - [{{eck}}](/deploy-manage/license/manage-your-license-in-eck.md)  
