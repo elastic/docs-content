@@ -6,30 +6,6 @@ mapped_urls:
 
 # Mapping
 
-% What needs to be done: Refine
-
-% GitHub issue: docs-projects#370
-
-% Scope notes: Use the content in the linked source and add links to the relevent reference content.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/mapping.md
-% - [x] ./raw-migrated-files/elasticsearch/elasticsearch-reference/index-modules-mapper.md
-%      Notes: redirect only
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$mapping-limit-settings$$$
-
-$$$updating-field-mappings$$$
-
-$$$mapping-manage-update$$$
-
-$$$mapping-dynamic$$$
-
-$$$mapping-explicit$$$
-
 Mapping is the process of defining how a document and the fields it contains are stored and indexed.
 
 Each document is a collection of fields, which each have their own [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes [metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/document-metadata-fields.md), like the `_source` field, which customize how a document’s associated metadata is handled.

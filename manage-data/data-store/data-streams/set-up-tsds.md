@@ -220,7 +220,7 @@ The reasons for this is that each component template needs to be valid on its ow
 
 Now that you’ve set up your TSDS, you can manage and use it like a regular data stream. For more information, refer to:
 
-* [*Use a data stream*](use-data-stream.md)
+* [Use a data stream](use-data-stream.md)
 * [Change mappings and settings for a data stream](modify-data-stream.md#data-streams-change-mappings-and-settings)
 * [data stream APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-data-stream)
 

@@ -172,7 +172,7 @@ Loaded dashboards
 2. Scroll down to the *Elasticsearch Output* section. Place a comment pound sign (*#*) in front of *output.elasticsearch* and {{es}} *hosts*.
 3. Scroll down to the *Logstash Output* section. Remove the comment pound sign (*#*) from in front of *output.logstash* and *hosts*, as follows:
 
-```txt
+```json
 # ---------------- Logstash Output -----------------
 output.logstash:
   # The Logstash hosts
@@ -219,19 +219,21 @@ The system module is now enabled in Filebeat and it will be used the next time F
 
 **Load the Filebeat Kibana dashboards**
 
-Filebeat comes packaged with example Kibana dashboards, visualizations, and searches for visualizing Filebeat data in Kibana. Before you can use the dashboards, you need to create the data view *filebeat-**, and load the dashboards into Kibana. This needs to be done from a Beats machine that has access to the Internet.
+Filebeat comes packaged with example Kibana dashboards, visualizations, and searches for visualizing Filebeat data in Kibana. Before you can use the dashboards, you need to create the data view **filebeat-**, and load the dashboards into Kibana. This needs to be done from a Beats machine that has access to the Internet.
 
 1. Open a command line instance and then go to *<localpath>/filebeat-<version>/*
 2. Run the following command:
 
-```txt
+```json
 sudo ./filebeat setup \
   -E cloud.id=<cloudID> \ <1>
   -E cloud.auth=<username>:<password> <2>
 ```
 
 1. Specify the Cloud ID of your {{ech}} or {{ece}} deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.::::{important}
+2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
+
+::::{important}
 Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md) of the filebeat.yml.
 ::::
 
@@ -265,7 +267,7 @@ The data views for *filebeat-** and *metricbeat-** are now available in {{es}}. 
 2. Scroll down to the *Outputs* section. Place a comment pound sign (*#*) in front of *output.elasticsearch* and {{es}} *hosts*.
 3. Scroll down to the *Logstash Output* section. Remove the comment pound sign (*#*) from in front of *output.logstash* and *hosts* as follows:
 
-```txt
+```json
 # ---------------- Logstash Output -----------------
 output.logstash:
   # The Logstash hosts
@@ -283,7 +285,7 @@ Now the Filebeat and Metricbeat are set up, let’s configure a {{ls}} pipeline 
 1. In *<localpath>/logstash-<version>/*, create a new text file named *beats.conf*.
 2. Copy and paste the following code into the new text file. This code creates a {{ls}} pipeline that listens for connections from Beats on port 5044 and writes to standard out (typically to your terminal) with formatting provided by the {{ls}} rubydebug output plugin.
 
-    ```txt
+    ```json
     input {
       beats{port => 5044} <1>
     }
@@ -423,7 +425,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
 1. In your *<localpath>/logstash-<version>/* folder, open *beats.conf* for editing.
 2. Replace the *output {}* section of the JSON with the following code:
 
-    ```txt
+    ```json
     output {
       elasticsearch {
         index => "%{[@metadata][beat]}-%{[@metadata][version]}"

@@ -316,7 +316,7 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
 1. Open the `jdbc.conf` file in the Logstash folder for editing.
 2. Update the output section with the one that follows:
 
-    ```txt
+    ```json
     output {
       elasticsearch {
         index => "rdbms_idx"

@@ -169,7 +169,7 @@ Filebeat offers a straightforward, easy to configure way to monitor your Python 
 
 In *<localpath>/filebeat-<version>/* (where *<localpath>* is the directory where Filebeat is installed and *<version>* is the Filebeat version number), open the *filebeat.yml* configuration file for editing.
 
-```txt
+```json
 # =============================== Elastic Cloud ================================
 
 # These settings simplify using Filebeat with the Elastic Cloud (https://cloud.elastic.co/).

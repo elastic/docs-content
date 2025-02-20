@@ -6,13 +6,6 @@ mapped_urls:
 
 # Upload data files [upload-data-kibana]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/docs-content/serverless/elasticsearch-ingest-data-file-upload.md
-% - [x] ./raw-migrated-files/kibana/kibana/connect-to-elasticsearch.md
-
 % Note from David: I've removed the ID $$$upload-data-kibana$$$ from manage-data/ingest.md as those links should instead point to this page. So, please ensure that the following ID is included on this page. I've added it beside the title.
 
 You can upload files, view their fields and metrics, and optionally import them to {{es}} with the Data Visualizer. 
