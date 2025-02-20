@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-getting-started.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/index.html
 ---
 
 # Introducing Elasticsearch Add-On for Heroku [ech-getting-started]

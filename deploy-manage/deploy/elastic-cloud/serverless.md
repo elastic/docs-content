@@ -1,5 +1,6 @@
 ---
 mapped_urls:
+  - https://www.elastic.co/guide/en/serverless/current/index.html
   - https://www.elastic.co/guide/en/serverless/current/intro.html
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
 ---

@@ -1,3 +1,9 @@
+---
+applies_to:
+  stack: ga
+  serverless: ga
+---
+
 # Enable Watcher [enable-watcher]
 
 ::::{note}

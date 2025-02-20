@@ -53,7 +53,7 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 
 9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](https://www.elastic.co/guide/en/fleet/current/index.html).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
 
 ::::
 

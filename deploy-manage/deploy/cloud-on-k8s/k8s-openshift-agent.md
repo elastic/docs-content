@@ -7,7 +7,7 @@ mapped_pages:
 
 # Grant host access permission to Elastic Agent [k8s-openshift-agent]
 
-Deploying Elastic Agent on Openshift may require additional permissions depending on the type of [integration](https://www.elastic.co/guide/en/fleet/current/index.html) Elastic Agent is supposed to run. In any case, Elastic Agent uses a [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) volume as its data directory on OpenShift to maintain a stable identity. Therefore, the Service Account used for Elastic Agent needs permissions to use hostPath volumes.
+Deploying Elastic Agent on Openshift may require additional permissions depending on the type of [integration](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) Elastic Agent is supposed to run. In any case, Elastic Agent uses a [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) volume as its data directory on OpenShift to maintain a stable identity. Therefore, the Service Account used for Elastic Agent needs permissions to use hostPath volumes.
 
 The following example assumes that Elastic Agent is deployed in the Namespace `elastic` with the ServiceAccount `elastic-agent`. You can replace these values according to your environment.
 
