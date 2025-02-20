@@ -242,7 +242,6 @@ toc:
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-send-application-logs.md
       - file: docs-content/serverless/observability-stream-log-files.md
-      - file: docs-content/serverless/observability-view-alerts.md
       - file: docs-content/serverless/observability-view-infrastructure-metrics.md
       - file: docs-content/serverless/project-and-management-settings.md
       - file: docs-content/serverless/project-setting-data.md
@@ -498,7 +497,6 @@ toc:
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
       - file: observability-docs/observability/view-infrastructure-metrics.md
-      - file: observability-docs/observability/view-observability-alerts.md
   - file: security-docs/security/index.md
     children:
       - file: security-docs/security/es-overview.md
