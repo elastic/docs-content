@@ -15,10 +15,10 @@ You can [assign roles](./assign-roles-to-hosts.md) to the additional hosts throu
 
 For automation purposes, you need to generate a new *ephemeral* or *persistent* token with the right role permissions, so that you can install {{ece}} on hosts and add the right roles at the same time.
 
-In this section, you'll learn how to perform the following tasks:
+This section covers the different types of tokens and the following tasks:
 
-* [](#ece-generate-roles-token)
-* [](#ece-revoke-roles-token)
+* [Generate roles tokens](#ece-generate-roles-token)
+* [Revoke roles tokens](#ece-revoke-roles-token)
 
 ## Ephemeral and persistent roles tokens
 
@@ -28,7 +28,7 @@ Ephemeral token
 :   Available for use during {{ece}} installation on additional hosts for one hour before the token is revoked automatically. Cannot be revoked manually.
 
 Persistent token
-:   Available for use during {{ece}} installation on additional hosts indefinitely. [Can be revoked](#ece-revoke-roles-token) at any time.
+:   Available for use during {{ece}} installation on additional hosts indefinitely. Can be revoked at any time.
 
 The permitted roles are the same as those you can [assign in the Cloud UI](./assign-roles-to-hosts.md):
 
@@ -69,7 +69,7 @@ curl -H 'Content-Type: application/json' -u USER:PASSWORD https://COORDINATOR_HO
 
 At the end of the {{ece}} installation process on the first host, you are provided with a roles token. You can also generate new roles tokens yourself, either as ephemeral tokens that get deleted after 24 hours or as persistent tokens that get stored by {{ece}}. These tokens enable additional hosts to join an {{ece}} installation and should be kept secure or deleted if they are no longer needed.
 
-If you delete all tokens and need to add further hosts to your installation later on, you can  [generate a new token](#ece-generate-roles-token) first.
+If you delete all tokens and need to add more hosts to your installation, you should generate a new token first.
 
 ::::{important}
 During installation, an emergency token gets generated that enables you to install {{ece}} on additional hosts with all roles already assigned, except the allocator role. The emergency token can save your installation if all coordinators fail or are removed and you can no longer use the Cloud UI or the RESTful API. You should not delete this token. To learn more, check [Using the Emergency Roles Token](/troubleshoot/deployments/cloud-enterprise/use-emergency-roles-token.md).
