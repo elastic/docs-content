@@ -1,3 +1,9 @@
+---
+applies_to:
+  stack: ga
+  serverless: ga
+---
+
 # Watcher UI [watcher-ui]
 
 Go to the **Watcher** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). With this UI, you can:

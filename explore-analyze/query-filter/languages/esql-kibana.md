@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Using {{esql}} in {{kib}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-kibana.html
