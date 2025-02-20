@@ -16,7 +16,7 @@ If you are looking for a solution to orchestrate and manage {{es}} clusters nati
 % should we use a L2 heading here or just continue?
 ## Section overview
 
-This section focuses on deploying ECE and the orchestrating and configuring {{es}} clusters, also referred to as `deployments`.
+This section focuses on deploying ECE and orchestrating and configuring {{es}} clusters, also referred to as `deployments`.
 
 In ECE, a deployment is a managed {{stack}} environment that provides users with an {{es}} cluster along with supporting components such as {{kib}} and other optional services like APM and Fleet.
 
