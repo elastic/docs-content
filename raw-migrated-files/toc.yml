@@ -231,7 +231,6 @@ toc:
       - file: docs-content/serverless/observability-create-a-new-case.md
       - file: docs-content/serverless/observability-create-an-slo.md
       - file: docs-content/serverless/observability-create-custom-threshold-alert-rule.md
-      - file: docs-content/serverless/observability-create-error-count-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-failed-transaction-rate-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-inventory-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-latency-threshold-alert-rule.md
@@ -487,7 +486,6 @@ toc:
       - file: observability-docs/observability/analyze-hosts.md
       - file: observability-docs/observability/apm-act-on-data.md
       - file: observability-docs/observability/apm-agents.md
-      - file: observability-docs/observability/apm-error-count-threshold-rule.md
       - file: observability-docs/observability/apm-failed-transaction-rate-threshold-rule.md
       - file: observability-docs/observability/apm-getting-started-apm-server.md
       - file: observability-docs/observability/apm-latency-threshold-rule.md
