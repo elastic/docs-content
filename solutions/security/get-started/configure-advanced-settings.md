@@ -21,7 +21,7 @@ The advanced settings determine:
 
 ::::{important}
 - To change these settings in the {{stack}}, you need `All` privileges for the **Advanced Settings** [{{kib}} feature](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
-- To change these settings in {{serverless-short}}, you need either the appropriate [predefined Security user role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md) with `All` privileges for the **Advanced Settings** feature.
+- To change these settings in {{serverless-short}}, you need either the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with `All` privileges for the **Advanced Settings** feature.
 ::::
 
 ::::{warning}
