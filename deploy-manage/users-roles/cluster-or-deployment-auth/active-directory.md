@@ -58,13 +58,13 @@ When you use Active Directory for authentication, the username entered by the us
 ::::
 
 
-The Active Directory realm authenticates users using an LDAP bind request. After authenticating the user, the realm then searches to find the user’s entry in Active Directory. Once the user has been found, the Active Directory realm then retrieves the user’s group memberships from the `tokenGroups` attribute on the user’s entry in Active Directory.
+The Active Directory realm authenticates users using an LDAP bind request. After authenticating the user, the realm then searches to find the user’s entry in Active Directory. After the user has been found, the Active Directory realm then retrieves the user’s group memberships from the `tokenGroups` attribute on the user’s entry in Active Directory.
 
-## Configuring an Active Directory realm [ad-realm-configuration]
+## Configure an Active Directory realm [ad-realm-configuration]
 
-To integrate with Active Directory, you configure an `active_directory` realm and map Active Directory users and groups to roles in the role mapping file.
+To integrate with Active Directory, you configure an `active_directory` realm and map Active Directory users and groups to roles in the role mapping file. 
 
-#### Step 1: Add a new realm configuration
+### Step 1: Add a new realm configuration
 
 1. Add a realm configuration of type `active_directory` to `elasticsearch.yml` under the `xpack.security.authc.realms.active_directory` namespace. At a minimum, you must specify the Active Directory `domain_name` and `order`.
 
@@ -76,8 +76,12 @@ To integrate with Active Directory, you configure an `active_directory` realm an
     In a self-managed cluster, if DNS is not being provided by a Windows DNS server, you can add a mapping for the domain in the local `/etc/hosts` file.
     ::::
 
+    ::::{tab-set}
+    :group: single-forest
 
-    For example, the following realm configuration configures {{es}} to connect to `ldaps://example.com:636` to authenticate users through Active Directory:
+    :::{tab-item} Single domain
+    :sync: single
+    The following realm configuration configures {{es}} to connect to `ldaps://example.com:636` to authenticate users through Active Directory:
 
     ```yaml
     xpack:
@@ -87,20 +91,17 @@ To integrate with Active Directory, you configure an `active_directory` realm an
             active_directory:
               my_ad:
                 order: 0 <1>
-                domain_name: ad.example.com
-                url: ldaps://ad.example.com:636 <2>
+                domain_name: ad.example.com <2>
+                url: ldaps://ad.example.com:636 <3>
     ```
 
-    1. The realm order controls the order in which the configured realms are checked when authenticating a user.
-    2. If you don’t specify the URL, it defaults to `ldap:<domain_name>:389`.
+    1. The order in which the `active_directory` realm is consulted during an authentication attempt.
+    2. The primary domain in Active Directory. Binding to Active Directory fails if the domain name is not mapped in DNS.
+    3. The LDAP URL pointing to the Active Directory Domain Controller that should handle authentication. If you don’t specify the URL, it defaults to `ldap:<domain_name>:389`.
+    :::
 
-
-    ::::{important} 
-    When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
-    ::::
-
-2. If you are authenticating users across multiple domains in a forest, extra steps are required. There are a few minor differences in the configuration and the way that users authenticate.
-
+    :::{tab-item} Forest
+    :sync: forest
     Set the `domain_name` setting to the forest root domain name.
 
     You must also set the `url` setting, since you must authenticate against the Global Catalog, which uses a different port and might not be running on every Domain Controller.
@@ -119,57 +120,108 @@ To integrate with Active Directory, you configure an `active_directory` realm an
                 url: ldaps://dc1.ad.example.com:3269, ldaps://dc2.ad.example.com:3269 <2>
                 load_balance:
                   type: "round_robin" <3>
-    ```
+      ```
 
-    1. The `domain_name` is set to the name of the root domain in the forest.
-    2. The `url` value used in this example has URLs for two different Domain Controllers, which are also Global Catalog servers. Port 3268 is the default port for unencrypted communication with the Global Catalog; port 3269 is the default port for SSL connections. The servers that are being connected to can be in any domain of the forest as long as they are also Global Catalog servers.
-    3. A load balancing setting is provided to indicate the desired behavior when choosing the server to connect to.
+      1. The `domain_name` is set to the name of the root domain in the forest.
+      2. The `url` value used in this example has URLs for two different Domain Controllers, which are also Global Catalog servers. Port 3268 is the default port for unencrypted communication with the Global Catalog; port 3269 is the default port for SSL connections. The servers that are being connected to can be in any domain of the forest as long as they are also Global Catalog servers.
+      3. A load balancing setting is provided to indicate the desired behavior when choosing the server to connect to.
 
 
-    In this configuration, users will need to use either their full User Principal Name (UPN) or their Down-Level Logon Name. A UPN is typically a concatenation of the username with `@<DOMAIN_NAME` such as `johndoe@ad.example.com`. The Down-Level Logon Name is the NetBIOS domain name, followed by a `\` and the username, such as `AD\johndoe`. Use of Down-Level Logon Name requires a connection to the regular LDAP ports (389 or 636) in order to query the configuration container to retrieve the domain name from the NetBIOS name.
+      In this configuration, users will need to use either their full User Principal Name (UPN) or their down-level logon name: 
+      * A UPN is typically a concatenation of the username with `@<DOMAIN_NAME` such as `johndoe@ad.example.com`. 
+      * The down-level logon name is the NetBIOS domain name, followed by a `\` and the username, such as `AD\johndoe`. 
+      
+        Use of down-level logon name requires a connection to the regular LDAP ports (389 or 636) in order to query the configuration container to retrieve the domain name from the NetBIOS name.
+      :::
 
-3. (Optional) Configure how {{es}} should interact with multiple Active Directory servers.
+      ::::
+
+    ::::{note}
+    If your Domain Controller is configured to use LDAP over TLS and it uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate. Refer to [using self-signed certificates](#ece-ad-configuration-encrypt-communications).
+    ::::
+
+    ::::{important} 
+    When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
+    ::::
+
+2. (Optional) Configure how {{es}} should interact with multiple Active Directory servers.
 
     The `load_balance.type` setting can be used at the realm level. Two modes of operation are supported: failover and load balancing. See [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings).
 
-4. (Optional) To protect passwords, [encrypt communications between {{es}} and the Active Directory server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#tls-active-directory).
-5. Restart {{es}}.
+3. (Optional) To protect passwords, [encrypt communications between {{es}} and the Active Directory server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#tls-active-directory).
+4. Restart {{es}}.
 
 
 ### Step 2: Configure a bind user (Optional)
 
-6. (Optional) Configure a bind user.
+You can choose to configure an Active Directory realm using a bind user. 
 
-    The Active Directory realm authenticates users using an LDAP bind request. By default, all of the LDAP operations are run by the user that {{es}} is authenticating. In some cases, regular users may not be able to access all of the necessary items within Active Directory and a *bind user* is needed. A bind user can be configured and is used to perform all operations other than the LDAP bind request, which is required to authenticate the credentials provided by the user.
+The Active Directory realm authenticates users using an LDAP bind request. By default, all of the LDAP operations are run by the user that {{es}} is authenticating. In some cases, regular users may not be able to access all of the necessary items within Active Directory and a bind user is needed. A bind user can be configured and is used to perform all operations other than the LDAP bind request, which is required to authenticate the credentials provided by the user.
 
-    The use of a bind user enables the [run as feature](../../../deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md) to be used with the Active Directory realm and the ability to maintain a set of pooled connections to Active Directory. These pooled connection reduce the number of resources that must be created and destroyed with every user authentication.
+When you specify a `bind_dn`, this specific user is used to search for the Distinguished Name (`DN`) of the authenticating user based on the provided username and an LDAP attribute. If found, this user is authenticated by attempting to bind to the LDAP server using the found `DN` and the provided password.
 
-    The following example shows the configuration of a bind user through the user of the `bind_dn` and `secure_bind_password` settings:
+The use of a bind user enables the [run as feature](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md) to be used with the Active Directory realm. 
 
-    ```yaml
-    xpack:
-      security:
-        authc:
-          realms:
-            active_directory:
-              my_ad:
-                order: 0
-                domain_name: ad.example.com
-                url: ldaps://ad.example.com:636
-                bind_dn: es_svc_user@ad.example.com <1>
-    ```
+In self-managed clusters, use of a bind user also enables the ability to maintain a set of pooled connections to Active Directory. These pooled connections reduce the number of resources that must be created and destroyed with every user authentication.
 
-    1. This is the user that all Active Directory search requests are executed as. Without a bind user configured, all requests run as the user that is authenticating with {{es}}.
+To configure a bind user: 
+
+1. [Add your user settings](../../../deploy-manage/deploy/cloud-enterprise/edit-stack-settings.md) for the `active_directory` realm as follows:
+
+   ::::{important}
+   In {{ece}}, you must apply the user settings to each [deployment template](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md).
+   ::::
 
 
-    The password for the `bind_dn` user should be configured by adding the appropriate `secure_bind_password` setting to the {{es}} keystore. For example, the following command adds the password for the example realm above:
+   ```sh
+   xpack:
+     security:
+       authc:
+         realms:
+           active_directory:
+             my_ad:
+               order: 2 
+               domain_name: ad.example.com 
+               url: ldap://ad.example.com:389 
+               bind_dn: es_svc_user@ad.example.com <1>            
+   ```
 
-    ```shell
-    bin/elasticsearch-keystore add  \
-    xpack.security.authc.realms.active_directory.my_ad.secure_bind_password
-    ```
+   1. The user to run as for all Active Directory search requests.
 
-    When a bind user is configured, connection pooling is enabled by default. Connection pooling can be disabled using the `user_search.pool.enabled` setting.
+1. Configure the password for the `bind_dn` user by adding the appropriate `secure_bind_password` setting to the {{es}} keystore.
+
+   ::::{tab-set}
+   :group: cloud-self
+
+   :::{tab-item} Cloud (ECH, ECE)
+   :sync: cloud
+
+   1. From the **Deployments** page, select your deployment.
+
+       Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
+
+   2. From your deployment menu, select **Security**.
+   3. Under the **{{es}} keystore** section, select **Add settings**.
+   4. On the **Create setting** window, select the secret **Type** to be `Secret String`.
+   5. Set the **Setting name** to `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` and add the password for the `bind_dn` user in the `secret` field.
+
+       :::{warning}
+       After you configure `secure_bind_password`, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you wish to rollback the Active Directory realm related configuration effort, you need to remove the `xpack.security.authc.realms.active_directory.my_ad.secure_bind_password` that was just added by clicking **Remove** by the setting name under `Existing Keystores`.
+       :::
+   :::
+
+   :::{tab-item} Self-managed
+   :sync: self
+ 
+   ```shell
+   bin/elasticsearch-keystore add  \
+   xpack.security.authc.realms.active_directory.my_ad.secure_bind_password
+   ```
+
+   When a bind user is configured, connection pooling is enabled by default. Connection pooling can be disabled using the `user_search.pool.enabled` setting.
+   :::
+   ::::
+    
 
 ## Map Active Directory users and groups to roles
 
