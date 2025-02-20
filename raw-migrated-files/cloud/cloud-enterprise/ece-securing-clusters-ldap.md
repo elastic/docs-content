@@ -95,7 +95,7 @@ You must apply the user settings to each [deployment template](../../../deploy-m
 
 3. (Optional) Encrypt communications between the deployment and the LDAP Server. If your LDAP server uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate.
 
-    1. Prepare the custom bundle ZIP file `ldapcert.zip`, that contains the CA certificate file (for example `ca.crt`) [in the same way that you would on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html).
+    1. Prepare the custom bundle ZIP file `ldapcert.zip`, that contains the CA certificate file (for example `ca.crt`) [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
     2. Custom bundles are unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
 
         ```sh
@@ -254,7 +254,7 @@ Let’s assume that you want all your users that authenticate through LDAP and a
       - cn=my-users, ou=groups, o=services, dc=example, dc=com
     ```
 
-2. Prepare the custom bundle ZIP file `mappings.zip`, that contains the `role-mappings.yml` file [in the same way that you would on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html).
+2. Prepare the custom bundle ZIP file `mappings.zip`, that contains the `role-mappings.yml` file [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 3. Custom bundles are unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
 
     ```sh

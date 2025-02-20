@@ -58,7 +58,7 @@ Check [Set compute resources for Kibana, Elastic Maps Server, APM Server and Log
 
 You can add your own {{kib}} settings to the `spec.config` section.
 
-The following example demonstrates how to set the [`elasticsearch.requestHeadersWhitelist`](https://www.elastic.co/guide/en/kibana/current/settings.html#elasticsearch-requestHeadersWhitelist) configuration option.
+The following example demonstrates how to set the [`elasticsearch.requestHeadersWhitelist`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#elasticsearch-requestHeadersWhitelist) configuration option.
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1

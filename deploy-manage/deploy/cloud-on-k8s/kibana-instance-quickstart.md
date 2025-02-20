@@ -8,7 +8,7 @@ mapped_pages:
 
 # Deploy a Kibana instance [k8s-deploy-kibana]
 
-To deploy a simple [{{kib}}](https://www.elastic.co/guide/en/kibana/current/introduction.html#introduction) specification, with one {{kib}} instance:
+To deploy a simple [{{kib}}](/get-started/the-stack.md#stack-components-kibana) specification, with one {{kib}} instance:
 
 1. Specify a {{kib}} instance and associate it with your {{es}} `quickstart` cluster created previously under [Deploying an {{es}} cluster](elasticsearch-deployment-quickstart.md):
 

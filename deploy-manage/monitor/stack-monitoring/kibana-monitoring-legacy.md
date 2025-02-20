@@ -74,7 +74,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 4. If {{security-features}} are enabled on the production cluster:
 
     1. Verify that there is a valid user ID and password in the `elasticsearch.username` and `elasticsearch.password` settings in the `kibana.yml` file. These values are used when {{kib}} sends monitoring data to the production cluster.
-    2. [Configure encryption for traffic between {{kib}} and {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http).
+    2. [Configure encryption for traffic between {{kib}} and {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 
 5. [Start {{kib}}](../../maintenance/start-stop-services/start-stop-kibana.md).
 6. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).

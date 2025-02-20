@@ -94,7 +94,7 @@ You can choose to configure an Active Directory realm using a bind user. When yo
 
 If your LDAP server uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate. These steps are required only if TLS is enabled and the Active Directory controller is using self-signed certificates.
 
-You’ll prepare a custom bundle that contains your certificate [in the same way that you would on {{ess}}](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html). Custom bundles are extracted in the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
+You’ll prepare a custom bundle that contains your certificate [in the same way that you would on {{ess}}](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). Custom bundles are extracted in the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
 
 ```sh
 $ tree .
@@ -261,7 +261,7 @@ Let’s assume that you want all your users that authenticate through AD and are
     - cn=my-users, dc=example, dc=com
     ```
 
-2. Prepare the custom bundle ZIP file `mappings.zip`, that contains the `role-mappings.yml` file [in the same way that you would on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html).
+2. Prepare the custom bundle ZIP file `mappings.zip`, that contains the `role-mappings.yml` file [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 3. Custom bundles get unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
 
     ```sh

@@ -106,7 +106,7 @@ You will get this request reported as a new log. Audit logs do not currently rep
 
 You should take advantage of the default [Elastic Stack monitoring alerts](/deploy-manage/monitor/monitoring-data/kibana-alerts.md) that are available out-of-the-box. You don’t have to do anything other than enable shipping logs and metrics to have them made available to you (which you did earlier on).
 
-On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](https://www.elastic.co/guide/en/kibana/current/action-types.html) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
+On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana.md) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
 
 1. Go to **Stack Management** > **Rules and Connectors** > **Connectors** and create your Slack connector:
 

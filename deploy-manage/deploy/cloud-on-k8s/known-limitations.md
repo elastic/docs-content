@@ -23,7 +23,7 @@ As of ECK version 2.11.0, {{agent}}, {{fleet-server}} and {{es}} can all be depl
 
 ## Running {{endpoint-sec}} integration [k8s_running_endpoint_sec_integration]
 
-Running {{endpoint-sec}} [integration](https://www.elastic.co/guide/en/security/current/install-endpoint.html) is not yet supported in containerized environments, like {{k8s}}. This is not an ECK limitation, but the limitation of the integration itself. Note that you can use ECK to deploy {{es}}, {{kib}} and {{fleet-server}}, and add {{endpoint-sec}} integration to your policies if {{agents}} running those policies are deployed in non-containerized environments.
+Running {{endpoint-sec}} [integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md) is not yet supported in containerized environments, like {{k8s}}. This is not an ECK limitation, but the limitation of the integration itself. Note that you can use ECK to deploy {{es}}, {{kib}} and {{fleet-server}}, and add {{endpoint-sec}} integration to your policies if {{agents}} running those policies are deployed in non-containerized environments.
 
 
 ## {{fleet-server}} initialization fails on minikube when CNI is disabled [k8s_fleet_server_initialization_fails_on_minikube_when_cni_is_disabled]

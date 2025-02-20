@@ -164,6 +164,6 @@ The following {{es-serverless}} project-specific features are planned for future
 
 The following features are not available in {{es-serverless}} and are not planned for future support:
 
-* [Custom plugins and bundles](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html)
+* [Custom plugins and bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md)
 * [{{es}} for Apache Hadoop](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/ingestion-tools/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md)
 * [Scripted metric aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md)

@@ -21,8 +21,8 @@ This Hot/Frozen – High Availability architecture is intended for organizations
 
 * Have a requirement for cost effective long term data storage (many months or years).
 * Provide insights and alerts using logs, metrics, traces, or various event types to ensure optimal performance and quick issue resolution for applications.
-* Apply [machine learning anomaly detection](https://www.elastic.co/guide/en/kibana/current/xpack-ml-anomalies.html) to help detect patterns in time series data to find root cause and resolve problems faster.
-* Use an AI assistant ([Observability](https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html), [Security](/solutions/security/ai/ai-assistant.md), or [Playground](/solutions/search/rag/playground.md)) for investigation, incident response, reporting, query generation, or query conversion from other languages using natural language.
+* Apply [machine learning anomaly detection](/explore-analyze/machine-learning/anomaly-detection.md) to help detect patterns in time series data to find root cause and resolve problems faster.
+* Use an AI assistant ([Observability](/explore-analyze/ai-assistant.md), [Security](/solutions/security/ai/ai-assistant.md), or [Playground](/solutions/search/rag/playground.md)) for investigation, incident response, reporting, query generation, or query conversion from other languages using natural language.
 * Deploy an architecture model that allows for maximum flexibility between storage cost and performance.
 
 ::::{important}
@@ -109,6 +109,6 @@ You can [contact us](https://www.elastic.co/contact) for an estimate and recomme
 
 ## Resources and references [hot-frozen-resources]
 
-* [{{es}} - Get ready for production](https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html)
+* [{{es}} - Get ready for production](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md)
 * [{{ess}} - Preparing a deployment for production](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
 * [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)

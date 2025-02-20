@@ -25,7 +25,7 @@ Elastic provides a number of components that ingest data. Collect and ship logs,
 
 If you want to transform or enrich data before it’s stored, you can use {{es}} ingest pipelines or {{ls}}.
 
-Trying to decide which ingest component to use? Refer to [Adding data to {{es}}](https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html) to help you decide.
+Trying to decide which ingest component to use? Refer to [Adding data to {{es}}](/manage-data/ingest.md) to help you decide.
 
 $$$stack-components-agent$$$
 
@@ -73,7 +73,7 @@ Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use t
 $$$stack-components-kibana$$$
 
 {{kib}}
-:   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](https://www.elastic.co/guide/en/kibana/current/introduction.html).
+:   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](/get-started/the-stack.md).
 
 $$$stack-components-elasticsearch-clients$$$
 

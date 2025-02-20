@@ -186,7 +186,7 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
 4. Move shards off the nodes to be removed from the cluster.
 
-    You must remove any [index-level shard allocation filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-filtering.html) from the indices on the nodes to be removed. ILM uses different rules depending on the policy and version of Elasticsearch. Check the index settings to determine which rule to use:
+    You must remove any [index-level shard allocation filters](/deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) from the indices on the nodes to be removed. ILM uses different rules depending on the policy and version of Elasticsearch. Check the index settings to determine which rule to use:
 
     ```sh
     GET /my-index/_settings

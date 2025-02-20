@@ -120,7 +120,7 @@ PKI authentication is a [subscription feature](https://www.elastic.co/subscripti
 
 Prior to configuring {{kib}}, ensure that the PKI realm is enabled in {{es}} and configured to permit delegation. See [Configuring a PKI realm](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md) for more information.
 
-To enable the PKI authentication provider in {{kib}}, you must first [configure {{kib}} to encrypt communications between the browser and {{kib}} server](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http). You must also enable TLS client authentication and include the certificate authority (CA) used to sign client certificates into a list of CAs trusted by {{kib}} in your `kibana.yml`:
+To enable the PKI authentication provider in {{kib}}, you must first [configure {{kib}} to encrypt communications between the browser and {{kib}} server](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http). You must also enable TLS client authentication and include the certificate authority (CA) used to sign client certificates into a list of CAs trusted by {{kib}} in your `kibana.yml`:
 
 ::::{note}
 You can configure only one PKI provider per {{kib}} instance.

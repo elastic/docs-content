@@ -3,7 +3,7 @@
 Elasticsearch Service supports most of the standard Kibana and X-Pack settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
-Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](https://www.elastic.co/guide/en/kibana/current/settings.html).
+Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 ::::
 
 
@@ -55,13 +55,13 @@ If a setting is not supported by Elasticsearch Service, you will get an error me
 :   Set the maximum number of sessions each user is allowed to have active in {{kib}}. By default, no limit is applied. If set, the value of this option should be an integer between 1 and 1000. When the limit is exceeded, the oldest session is automatically invalidated. To learn more, check [Session management](/deploy-manage/security/kibana-session-management.md#session-max-sessions).
 
 `server.securityResponseHeaders.crossOriginOpenerPolicy`
-:   Controls whether the [`Cross-Origin-Opener-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-crossOriginOpenerPolicy).
+:   Controls whether the [`Cross-Origin-Opener-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-crossOriginOpenerPolicy).
 
 
 ### Version 8.6.0+ [ec_version_8_6_0]
 
 `server.compression.brotli.enabled`
-:   Enable brotli compression format for browser-server communications. Default: false. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Enable brotli compression format for browser-server communications. Default: false. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `xpack.fleet.enableExperimental`
 :   Allow to configure experimental feature for Fleet. To learn more, check [Fleet settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
@@ -70,28 +70,28 @@ If a setting is not supported by Elasticsearch Service, you will get an error me
 ### Version 8.4.0+ [ec_version_8_4_0]
 
 `migrations.discardUnknownObjects`
-:   Discard saved objects with unknown types during a migration. Must be set to the target version, e.g.: `8.4.0`. Default: undefined. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Discard saved objects with unknown types during a migration. Must be set to the target version, e.g.: `8.4.0`. Default: undefined. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `migrations.discardCorruptObjects`
-:   Discard corrupt saved objects, as well as those that cause transform errors during a migration. Must be set to the target version, e.g.: `8.4.0`. Default: undefined. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Discard corrupt saved objects, as well as those that cause transform errors during a migration. Must be set to the target version, e.g.: `8.4.0`. Default: undefined. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 
 ### Version 8.3.0+ [ec_version_8_3_0]
 
 `elasticsearch.compression`
-:   Enable compression for communications with Elasticsearch. Default: false. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Enable compression for communications with Elasticsearch. Default: false. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 
 ### Version 8.2.0+ [ec_version_8_2_0]
 
 `elasticsearch.maxSockets`
-:   The maximum number of sockets that can be used for communications with Elasticsearch. Default: Infinity. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   The maximum number of sockets that can be used for communications with Elasticsearch. Default: Infinity. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 
 ### Version 8.1.0+ [ec_version_8_1_0]
 
 `execution_context.enabled`
-:   Propagate request-specific metadata to Elasticsearch server by way of the `x-opaque-id` header. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Propagate request-specific metadata to Elasticsearch server by way of the `x-opaque-id` header. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 
 ### Supported versions before 8.x [ec_supported_versions_before_8_x]
@@ -106,34 +106,34 @@ If a setting is not supported by Elasticsearch Service, you will get an error me
 ### All supported versions [ec_all_supported_versions_2]
 
 `migrations.maxBatchSizeBytes`
-:   Defines the maximum payload size for indexing batches of saved objects during upgrade migrations. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Defines the maximum payload size for indexing batches of saved objects during upgrade migrations. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `server.maxPayload`
-:   The maximum payload size in bytes for incoming server requests. Default: 1048576. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-maxPayload).
+:   The maximum payload size in bytes for incoming server requests. Default: 1048576. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-maxPayload).
 
 `server.securityResponseHeaders.strictTransportSecurity`
-:   Controls whether the [`Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-strictTransportSecurity).
+:   Controls whether the [`Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-strictTransportSecurity).
 
 `server.securityResponseHeaders.xContentTypeOptions`
-:   Controls whether the [`X-Content-Type-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-xContentTypeOptions).
+:   Controls whether the [`X-Content-Type-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-xContentTypeOptions).
 
 `server.securityResponseHeaders.referrerPolicy`
-:   Controls whether the [`Referrer-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-referrerPolicy).
+:   Controls whether the [`Referrer-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-referrerPolicy).
 
 `server.securityResponseHeaders.permissionsPolicy`
-:   Controls whether the `Permissions-Policy` header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-permissionsPolicy).
+:   Controls whether the `Permissions-Policy` header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-permissionsPolicy).
 
 `server.securityResponseHeaders.permissionsPolicyReportOnly`
-:   Controls whether the `Permissions-Policy-Report-Only` header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-permissionsPolicy).
+:   Controls whether the `Permissions-Policy-Report-Only` header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-permissionsPolicy).
 
 `server.securityResponseHeaders.disableEmbedding`
-:   Controls whether the [`Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) and [`X-Frame-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options) headers are configured to disable embedding Kibana in other webpages using iframes. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-disableEmbedding).
+:   Controls whether the [`Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) and [`X-Frame-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options) headers are configured to disable embedding Kibana in other webpages using iframes. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-disableEmbedding).
 
 `data.autocomplete.valueSuggestions.timeout`
-:   Specifies the time in milliseconds to wait for autocomplete suggestions from Elasticsearch. The default is 1000. Allowed values are between 1 and 1200000. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Specifies the time in milliseconds to wait for autocomplete suggestions from Elasticsearch. The default is 1000. Allowed values are between 1 and 1200000. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `data.autocomplete.valueSuggestions.terminateAfter`
-:   Specifies the max number of documents loaded by each shard to generate autocomplete suggestions. The default is 100000. Allowed values are between 1 and 10000000. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Specifies the max number of documents loaded by each shard to generate autocomplete suggestions. The default is 100000. Allowed values are between 1 and 10000000. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `map.tilemap.options.attribution`
 :   Adds the map attribution string.
@@ -154,7 +154,7 @@ If a setting is not supported by Elasticsearch Service, you will get an error me
 :   Specifies the locale for all strings, dates, and number formats that can be localized. Defaults to `en` (English).
 
 `migrations.batchSize`
-:   Defines the number of documents migrated at a time during saved object upgrade migrations. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Defines the number of documents migrated at a time during saved object upgrade migrations. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `server.defaultRoute`
 :   Specifies the default route when opening Kibana. You can use this setting to modify the landing page when opening Kibana.
@@ -635,7 +635,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 :   Add sources for the [Content Security Policy `form-action` directive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/form-action) in reporting mode.
 
 $$$csp-strict$$$ `csp.strict`
-:   Blocks Kibana access to any browser that does not enforce even rudimentary CSP rules. In practice, this disables support for older, less safe browsers like Internet Explorer. **Default: `true`** To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html)].
+:   Blocks Kibana access to any browser that does not enforce even rudimentary CSP rules. In practice, this disables support for older, less safe browsers like Internet Explorer. **Default: `true`** To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md)].
 
 `csp.warnLegacyBrowsers`
 :   Shows a warning message after loading Kibana to any browser that does not enforce even rudimentary CSP rules, though Kibana is still accessible. This configuration is effectively ignored when [`csp.strict`](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#csp-strict) is enabled. **Default: `true`**
@@ -650,7 +650,7 @@ $$$csp-strict$$$ `csp.strict`
 #### Permissions policy configuration [ec_permissions_policy_configuration]
 
 `permissionsPolicy.report_to`
-:   Add sources for the permissions policy `report-to` directive. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-permissionsPolicy)
+:   Add sources for the permissions policy `report-to` directive. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-permissionsPolicy)
 
 
 #### Banner settings [ec_banner_settings]
