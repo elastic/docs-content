@@ -92,6 +92,24 @@ In this step, add the System integration to monitor host logs and metrics.
     * When configuring the System integration, make sure that **Collect metrics from System instances** is turned on.
     * Expand each configuration section to verify that the settings are correct for your host. For example, you may want to turn on **System core metrics** to get a complete view of your infrastructure.
 
+## Install and run an {{agent}} on your machine [add-agent-to-fleet]
+
+The **Add agent** flyout has two options: **Enroll in {{fleet}}** and **Run standalone**. The default is to enroll the agents in {{fleet}}, as this reduces the amount of work on the person managing the hosts by providing a centralized management tool in {{kib}}.
+
+1. Skip the **Select enrollment token** step. The enrollment token you need is already selected.
+
+    ::::{note}
+    The enrollment token is specific to the {{agent}} policy that you just created. When you run the command to enroll the agent in {{fleet}}, you will pass in the enrollment token.
+    ::::
+
+2. Download, install, and enroll the {{agent}} on your host by selecting your host operating system and following the **Install {{agent}} on your host** step.
+
+    :::{image} ../../../images/observability-kibana-agent-flyout.png
+    :alt: Add agent flyout in {{kib}}
+    :class: screenshot
+    :::
+
+    It takes about a minute for {{agent}} to enroll in {{fleet}}, download the configuration specified in the policy you just created, and start collecting data.
 
 Notice that you can also configure the integration to collect logs.
 
