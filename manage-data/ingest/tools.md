@@ -38,7 +38,7 @@ Depending on the type of data you want to ingest, you have a number of methods a
 
 | Tools   | Usage           | Links to more information |
 | ------- | --------------- | ------------------------- |
-| File upload | Upload data from a file and inspect it before importing it into {{es}}. | [Upload data files](/manage-data/ingest/tools/upload-data-files.md) |
+| File upload | Upload data from a file and inspect it before importing it into {{es}}. | [Upload data files](/manage-data/ingest/upload-data-files.md) |
 | APIs  | Ingest data through code by using the APIs of one of the language clients or the {{es}} HTTP APIs. | [Document APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs.html) |
 | OpenTelemetry | Collect and send your telemetry data to Elastic Observability | [Elastic Distributions of OpenTelemetry](https://github.com/elastic/opentelemetry?tab=readme-ov-file#elastic-distributions-of-opentelemetry) |
 | Fleet and Elastic Agent | Add monitoring for logs, metrics, and other types of data to a host using Elastic Agent, and centrally manage it using Fleet. | [Fleet and {{agent}} overview](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) <br> [{{fleet}} and {{agent}} restrictions (Serverless)](https://www.elastic.co/guide/en/fleet/current/fleet-agent-serverless-restrictions.html) <br> [{{beats}} and {{agent}} capabilities](https://www.elastic.co/guide/en/fleet/current/beats-agent-comparison.html)||
