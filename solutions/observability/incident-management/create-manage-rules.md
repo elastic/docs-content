@@ -32,6 +32,8 @@ Learn more about Observability rules and how to create them:
 | APM | [Error count threshold](../../../solutions/observability/incident-management/create-an-error-count-threshold-rule.md) | The number of errors in a service exceeds a defined threshold. |
 | APM | [Failed transaction rate threshold](../../../solutions/observability/incident-management/create-failed-transaction-rate-threshold-rule.md) | The rate of transaction errors in a service exceeds a defined threshold. |
 | Metrics | [Inventory](../../../solutions/observability/incident-management/create-an-inventory-rule.md) | The infrastructure inventory exceeds a defined threshold. |
+| Logs | [Log threshold](../../../solutions/observability/incident-management/create-log-threshold-rule.md) | An Observability data type reaches or exceeds a given value. |
+| Metrics | [Metric threshold](../../../solutions/observability/incident-management/create-metric-threshold-rule.md)| An Observability data type reaches or exceeds a given value. |
 | APM | [Latency threshold](../../../solutions/observability/incident-management/create-latency-threshold-rule.md) | The latency of a specific transaction type in a service exceeds a defined threshold. |
 | SLO | [SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md) | The burn rate is above a defined threshold. |
 
