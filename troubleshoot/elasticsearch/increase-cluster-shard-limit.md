@@ -10,7 +10,7 @@ mapped_pages:
 
 Elasticsearch tries to take advantage of all the available resources by distributing data (index shards) amongst the cluster nodes.
 
-Users might want to influence this data distribution by configuring the [`cluster.routing.allocation.total_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-total-shards.html#cluster-total-shards-per-node) system setting to restrict the number of shards that can be hosted on a single node in the system, regardless of the index. Various configurations limiting how many shards can be hosted on a single node can lead to shards being unassigned due to the cluster not having enough nodes to satisfy the configuration.
+Users might want to influence this data distribution by configuring the [`cluster.routing.allocation.total_shards_per_node`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/total-shards-per-node.md#cluster-total-shards-per-node) system setting to restrict the number of shards that can be hosted on a single node in the system, regardless of the index. Various configurations limiting how many shards can be hosted on a single node can lead to shards being unassigned due to the cluster not having enough nodes to satisfy the configuration.
 
 In order to fix this follow the next steps:
 
@@ -129,6 +129,6 @@ Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspec
 
 :::::::
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::

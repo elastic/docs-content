@@ -10,7 +10,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 |     |     |
 | --- | --- |
 | [Ingest Pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) | Create and manage ingest pipelines that let you perform common transformationsand enrichments on your data. |
-| [Logstash Pipelines](https://www.elastic.co/guide/en/logstash/current/logstash-centralized-pipeline-management.html) | Create, edit, and delete your Logstash pipeline configurations. |
+| [Logstash Pipelines](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/logstash-centralized-pipeline-management.md) | Create, edit, and delete your Logstash pipeline configurations. |
 
 
 ## Data [manage-data]
@@ -22,8 +22,8 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 | [Snapshot and Restore](../../../deploy-manage/tools/snapshot-and-restore.md) | Define a policy that creates, schedules, and automatically deletes snapshots to ensure that youhave backups of your cluster in case something goes wrong. |
 | [Rollup Jobs](../../../manage-data/lifecycle/rollup.md) | [8.11.0] Create a job that periodically aggregates data from one or more indices, and thenrolls it into a new, compact index. Rollup indices are a good way to store months oryears of historical data in combination with your raw data. |
 | [Transforms](../../../explore-analyze/transforms.md) | Use transforms to pivot existing {{es}} indices into summarized or entity-centric indices. |
-| [Cross-Cluster Replication](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html) | Replicate indices on a remote cluster and copy them to a follower index on a local cluster.This is important fordisaster recovery. It also keeps data local for faster queries. |
-| [Remote Clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html#ccr-getting-started-remote-cluster) | Manage your remote clusters for use with cross-cluster search and cross-cluster replication.You can add and remove remote clusters, and check their connectivity. |
+| [Cross-Cluster Replication](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md) | Replicate indices on a remote cluster and copy them to a follower index on a local cluster.This is important fordisaster recovery. It also keeps data local for faster queries. |
+| [Remote Clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) | Manage your remote clusters for use with cross-cluster search and cross-cluster replication.You can add and remove remote clusters, and check their connectivity. |
 
 
 ## Alerts and Insights [manage-alerts-insights]
@@ -58,7 +58,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 | [Tags](../../../explore-analyze/find-and-organize/tags.md) | Create, manage, and assign tags to your saved objects. |
 | [Search Sessions](../../../explore-analyze/discover/search-sessions.md) | Manage your saved search sessions, groups of queries that run in the background.Search sessions are useful when your queries take longer than usual to process,for example, when you have a large volume of data or when the performance of your storage location is slow. |
 | [Spaces](../../../deploy-manage/manage-spaces.md) | Create spaces to organize your dashboards and other saved objects into categories.A space is isolated from all other spaces,so you can tailor it to your needs without impacting others. |
-| [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html) | Customize {{kib}} to suit your needs. Change the format for displaying dates, turn on dark mode,set the timespan for notification messages, and much more. |
+| [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md) | Customize {{kib}} to suit your needs. Change the format for displaying dates, turn on dark mode,set the timespan for notification messages, and much more. |
 
 
 ## Stack [manage-stack]

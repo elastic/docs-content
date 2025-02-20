@@ -90,11 +90,11 @@ PUT _ilm/policy/my-weather-sensor-lifecycle-policy
 
 To setup a TSDS create an index template with the following details:
 
-* One or more index patterns that match the TSDS’s name. We recommend using our [data stream naming scheme](https://www.elastic.co/guide/en/fleet/current/data-streams.html#data-streams-naming-scheme).
+* One or more index patterns that match the TSDS’s name. We recommend using our [data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
 * Enable data streams.
 * Specify a mapping that defines your dimensions and metrics:
 
-    * One or more [dimension fields](time-series-data-stream-tsds.md#time-series-dimension) with a `time_series_dimension` value of `true`. Alternatively, one or more [pass-through](https://www.elastic.co/guide/en/elasticsearch/reference/current/passthrough.html#passthrough-dimensions) fields configured as dimension containers, provided that they will contain at least one sub-field (mapped statically or dynamically).
+    * One or more [dimension fields](time-series-data-stream-tsds.md#time-series-dimension) with a `time_series_dimension` value of `true`. Alternatively, one or more [pass-through](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/passthrough.md#passthrough-dimensions) fields configured as dimension containers, provided that they will contain at least one sub-field (mapped statically or dynamically).
     * One or more [metric fields](time-series-data-stream-tsds.md#time-series-metric), marked using the `time_series_metric` mapping parameter.
     * Optional: A `date` or `date_nanos` mapping for the `@timestamp` field. If you don’t specify a mapping, Elasticsearch maps `@timestamp` as a `date` field with default options.
 
@@ -102,7 +102,7 @@ To setup a TSDS create an index template with the following details:
 
     * Set `index.mode` setting to `time_series`.
     * Your lifecycle policy in the `index.lifecycle.name` index setting.
-    * Optional: Other index settings, such as [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-number-of-replicas), for your TSDS’s backing indices.
+    * Optional: Other index settings, such as [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-number-of-replicas), for your TSDS’s backing indices.
 
 * A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../templates.md#avoid-index-pattern-collisions).
 * Optional: Component templates containing your mappings and other index settings.

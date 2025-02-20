@@ -33,14 +33,14 @@ For performance reasons, APM agents can choose to sample or omit spans purposefu
 To configure the number of spans recorded per transaction, see the relevant Agent documentation:
 
 * Android: *Not yet supported*
-* Go: [`ELASTIC_APM_TRANSACTION_MAX_SPANS`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-transaction-max-spans)
+* Go: [`ELASTIC_APM_TRANSACTION_MAX_SPANS`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-transaction-max-spans)
 * iOS: *Not yet supported*
-* Java: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-transaction-max-spans)
-* .NET: [`TransactionMaxSpans`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-transaction-max-spans)
-* Node.js: [`transactionMaxSpans`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-max-spans)
-* PHP: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-transaction-max-spans)
-* Python: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-transaction-max-spans)
-* Ruby: [`transaction_max_spans`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-transaction-max-spans)
+* Java: [`transaction_max_spans`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-transaction-max-spans)
+* .NET: [`TransactionMaxSpans`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-core.md#config-transaction-max-spans)
+* Node.js: [`transactionMaxSpans`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#transaction-max-spans)
+* PHP: [`transaction_max_spans`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-transaction-max-spans)
+* Python: [`transaction_max_spans`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-transaction-max-spans)
+* Ruby: [`transaction_max_spans`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-transaction-max-spans)
 
 
 ## Missing spans [apm-data-model-missing-spans]
@@ -475,8 +475,8 @@ Support for span compression is available in the following agents and can be con
 
 | Agent | Same-kind config | Exact-match config |
 | --- | --- | --- |
-| **Go agent** | [`ELASTIC_APM_SPAN_COMPRESSION_SAME_KIND_MAX_DURATION`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-span-compression-exact-match-duration) |
-| **Java agent** | [`span_compression_same_kind_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/current/config-huge-traces.html#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](https://www.elastic.co/guide/en/apm/agent/java/current/config-huge-traces.html#config-span-compression-exact-match-max-duration) |
-| **.NET agent** | [`SpanCompressionSameKindMaxDuration`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-span-compression-exact-match-max-duration) |
-| **Node.js agent** | [`spanCompressionSameKindMaxDuration`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#span-compression-exact-match-max-duration) |
-| **Python agent** | [`span_compression_same_kind_max_duration`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-span-compression-exact-match-max_duration) |
+| **Go agent** | [`ELASTIC_APM_SPAN_COMPRESSION_SAME_KIND_MAX_DURATION`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-span-compression-exact-match-duration) |
+| **Java agent** | [`span_compression_same_kind_max_duration`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-huge-traces.md#config-span-compression-same-kind-max-duration) | [`span_compression_exact_match_max_duration`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-huge-traces.md#config-span-compression-exact-match-max-duration) |
+| **.NET agent** | [`SpanCompressionSameKindMaxDuration`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-core.md#config-span-compression-exact-match-max-duration) |
+| **Node.js agent** | [`spanCompressionSameKindMaxDuration`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#span-compression-exact-match-max-duration) |
+| **Python agent** | [`span_compression_same_kind_max_duration`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-span-compression-exact-match-max_duration) |

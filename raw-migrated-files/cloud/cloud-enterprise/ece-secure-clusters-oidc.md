@@ -15,7 +15,7 @@ To prepare for using OpenID Connect for authentication for deployments:
 * Create or use an existing deployment. Make note of the Kibana endpoint URL, it will be referenced as `<KIBANA_ENDPOINT_URL>` in the following steps.
 * The steps in this section required a moderate understanding of [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.md#Authentication) in general and the Authorization Code Grant flow specifically. For more information about OpenID Connect and how it works with the Elastic Stack check:
 
-    * Our [configuration guide for Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html#oidc-elasticsearch-authentication).
+    * Our [configuration guide for Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-elasticsearch-authentication).
 
 
 
@@ -103,8 +103,8 @@ The Elasticsearch cluster needs to be configured to use the OpenID Connect realm
     7. The URL for the Token Endpoint in the OpenID Connect Provider. This is the endpoint where Elastic Cloud Enterprise will send a request to exchange the code for an ID Token, as part of the Authorization Code flow. The value for this setting should be provided by your OpenID Connect Provider.
     8. (Optional) The URL for the UserInfo Endpoint in the OpenID Connect Provider. This is the endpoint of the OP that can be queried to get further user information, if required. The value for this setting should be provided by your OpenID Connect Provider.
     9. The path to a file or an HTTPS URL pointing to a JSON Web Key Set with the key material that the OpenID Connect Provider uses for signing tokens and claims responses. Your OpenID Connect Provider should provide you with this file.
-    10. Defines the OpenID Connect claim that is going to be mapped to the principal (username) of the authenticated user in Kibana. In this example, we map the value of the `sub` claim, but this is not a requirement, other claims can be used too. Check [the claims mapping documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html#oidc-claims-mapping) for details and available options.
-    11. Defines the OpenID Connect claim that is going to be used for role mapping. Note that the value `"http://example.info/claims/groups"` that is used here, is an arbitrary example. Check  [the claims mapping documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html#oidc-claims-mapping) for a very detailed description of how the claim mapping works and how can these be used for role mapping. The name of this claim should be determined by the configuration of your OpenID Connect Provider. NOTE: According to the OpenID Connect specification, the OP should also make their configuration available at a well known URL, which is the concatenation of their `Issuer` value with the `.well-known/openid-configuration` string. To configure the OpenID Connect realm, refer to the `https://op.org.com/.well-known/openid-configuration` documentation.
+    10. Defines the OpenID Connect claim that is going to be mapped to the principal (username) of the authenticated user in Kibana. In this example, we map the value of the `sub` claim, but this is not a requirement, other claims can be used too. Check [the claims mapping documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-claims-mapping) for details and available options.
+    11. Defines the OpenID Connect claim that is going to be used for role mapping. Note that the value `"http://example.info/claims/groups"` that is used here, is an arbitrary example. Check  [the claims mapping documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-claims-mapping) for a very detailed description of how the claim mapping works and how can these be used for role mapping. The name of this claim should be determined by the configuration of your OpenID Connect Provider. NOTE: According to the OpenID Connect specification, the OP should also make their configuration available at a well known URL, which is the concatenation of their `Issuer` value with the `.well-known/openid-configuration` string. To configure the OpenID Connect realm, refer to the `https://op.org.com/.well-known/openid-configuration` documentation.
 
 2. By default, users authenticating through OpenID Connect have no roles assigned to them. For example, if you want all your users authenticating with OpenID Connect to get access to Kibana, issue the following request to Elasticsearch:
 
@@ -153,7 +153,7 @@ The Elasticsearch cluster needs to be configured to use the OpenID Connect realm
 
 4. Optional: If your OpenID Connect Provider doesn’t publish its JWKS at an https URL, or if you want to use a local copy, you can upload the JWKS as a file.
 
-    1. Prepare a ZIP file with a [custom bundle](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-plugins.html) that contains your OpenID Connect Provider’s JWKS file (`op_jwks.json`) inside of an `oidc` folder.
+    1. Prepare a ZIP file with a [custom bundle](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains your OpenID Connect Provider’s JWKS file (`op_jwks.json`) inside of an `oidc` folder.
 
         This bundle allows all Elasticsearch containers to access the metadata file.
 
@@ -203,7 +203,7 @@ OpenID Connect depends on TLS to provider security properties such as encryption
 
 However, if your OP uses a certificate that is issued for instance, by a CA used only in your Organization, you must configure Elastic Cloud Enterprise to trust that CA.
 
-1. Prepare a ZIP file with a [custom bundle](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-plugins.html) that contains the CA certificate (`company-ca.pem`) that signed the certificate your OpenID Connect Provider uses for TLS inside of an `oidc-tls` folder
+1. Prepare a ZIP file with a [custom bundle](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains the CA certificate (`company-ca.pem`) that signed the certificate your OpenID Connect Provider uses for TLS inside of an `oidc-tls` folder
 2. Update your Elasticsearch cluster configuration using the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md) to use the bundle you prepared in the previous step. You need to modify the `user_bundles` JSON attribute similar to the following example snippet:
 
     ```sh

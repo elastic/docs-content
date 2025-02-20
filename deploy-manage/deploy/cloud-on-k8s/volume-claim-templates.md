@@ -13,7 +13,7 @@ mapped_pages:
 By default, the operator creates a [`PersistentVolumeClaim`](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) with a capacity of 1Gi for each pod in an Elasticsearch cluster to prevent data loss in case of accidental pod deletion. For production workloads, you should define your own volume claim template with the desired storage capacity and (optionally) the Kubernetes [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/) to associate with the persistent volume.
 
 ::::{important}
-The name of the volume claim must always be `elasticsearch-data`. If you chose a different name you have to set up a corresponding volume mount matching the [data.path](https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#path-settings) yourself ( `/usr/share/elasticsearch/data` by default).
+The name of the volume claim must always be `elasticsearch-data`. If you chose a different name you have to set up a corresponding volume mount matching the [data.path](/deploy-manage/deploy/self-managed/important-settings-configuration.md#path-settings) yourself ( `/usr/share/elasticsearch/data` by default).
 ::::
 
 

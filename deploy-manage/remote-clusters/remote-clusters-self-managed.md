@@ -10,18 +10,18 @@ You can connect a local cluster to other {{es}} clusters, known as *remote clust
 
 ## {{ccr-cap}} [remote-clusters-ccr]
 
-With [{{ccr}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html), you ingest data to an index on a remote cluster. This *leader* index is replicated to one or more read-only *follower* indices on your local cluster. Creating a multi-cluster architecture with {{ccr}} enables you to configure disaster recovery, bring data closer to your users, or establish a centralized reporting cluster to process reports locally.
+With [{{ccr}}](/deploy-manage/tools/cross-cluster-replication.md), you ingest data to an index on a remote cluster. This *leader* index is replicated to one or more read-only *follower* indices on your local cluster. Creating a multi-cluster architecture with {{ccr}} enables you to configure disaster recovery, bring data closer to your users, or establish a centralized reporting cluster to process reports locally.
 
 
 ## {{ccs-cap}} [remote-clusters-ccs]
 
-[{{ccs-cap}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html) enables you to run a search request against one or more remote clusters. This capability provides each region with a global view of all clusters, allowing you to send a search request from a local cluster and return results from all connected remote clusters. For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
+[{{ccs-cap}}](/solutions/search/cross-cluster-search.md) enables you to run a search request against one or more remote clusters. This capability provides each region with a global view of all clusters, allowing you to send a search request from a local cluster and return results from all connected remote clusters. For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
 
 
 ## Add remote clusters [add-remote-clusters]
 
 ::::{note}
-The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ess}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html) or from an [{{ece}} deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html).
+The instructions that follow describe how to create a remote connection from a self-managed cluster. You can also set up {{ccs}} and {{ccr}} from an [{{ess}} deployment](/deploy-manage/remote-clusters/ec-enable-ccs.md) or from an [{{ece}} deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md).
 ::::
 
 
@@ -57,7 +57,7 @@ Sniff mode
     The *gateway nodes* selection depends on the following criteria:
 
     * **version**: Remote nodes must be compatible with the cluster they are registered to.
-    * **role**: By default, any non-[master-eligible](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html#master-node-role) node can act as a gateway node. Dedicated master nodes are never selected as gateway nodes.
+    * **role**: By default, any non-[master-eligible](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) node can act as a gateway node. Dedicated master nodes are never selected as gateway nodes.
     * **attributes**: You can define the gateway nodes for a cluster by setting [`cluster.remote.node.attr.gateway`](remote-clusters-settings.md#cluster-remote-node-attr) to `true`. However, such nodes still have to satisfy the two above requirements.
 
 

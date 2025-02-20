@@ -61,4 +61,4 @@ Deploys single instance {{agent}} Deployment in {{fleet}} mode with APM integrat
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/elastic-agent/synthetic-monitoring.yaml
 ```
 
-Deploys an {{fleet}}-enrolled {{agent}} that can be used as for [Synthetic monitoring](https://www.elastic.co/guide/en/observability/current/monitor-uptime-synthetics.html). This {{agent}} uses the `elastic-agent-complete` image. The agent policy still needs to be [registered as private location](https://www.elastic.co/guide/en/observability/current/synthetics-private-location.html#synthetics-private-location-add) in {{kib}}.
+Deploys an {{fleet}}-enrolled {{agent}} that can be used as for [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md). This {{agent}} uses the `elastic-agent-complete` image. The agent policy still needs to be [registered as private location](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in {{kib}}.

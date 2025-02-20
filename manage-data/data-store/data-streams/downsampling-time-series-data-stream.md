@@ -83,7 +83,7 @@ POST /my-time-series-index/_downsample/my-downsampled-time-series-index
 }
 ```
 
-To downsample time series data as part of ILM, include a [Downsample action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-downsample.html) in your ILM policy and set `fixed_interval` to the level of granularity that you’d like:
+To downsample time series data as part of ILM, include a [Downsample action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md) in your ILM policy and set `fixed_interval` to the level of granularity that you’d like:
 
 ```console
 PUT _ilm/policy/my_policy
@@ -115,12 +115,12 @@ The result of a time based histogram aggregation is in a uniform bucket size and
 There are a few things to note about querying downsampled indices:
 
 * When you run queries in {{kib}} and through Elastic solutions, a normal response is returned without notification that some of the queried indices are downsampled.
-* For [date histogram aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html), only `fixed_intervals` (and not calendar-aware intervals) are supported.
+* For [date histogram aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md), only `fixed_intervals` (and not calendar-aware intervals) are supported.
 * Timezone support comes with caveats:
 
     * Date histograms at intervals that are multiples of an hour are based on values generated at UTC. This works well for timezones that are on the hour, e.g. +5:00 or -3:00, but requires offsetting the reported time buckets, e.g. `2020-01-01T10:30:00.000` instead of `2020-03-07T10:00:00.000` for timezone +5:30 (India), if downsampling aggregates values per hour. In this case, the results include the field `downsampled_results_offset: true`, to indicate that the time buckets are shifted. This can be avoided if a downsampling interval of 15 minutes is used, as it allows properly calculating hourly values for the shifted buckets.
     * Date histograms at intervals that are multiples of a day are similarly affected, in case downsampling aggregates values per day. In this case, the beginning of each day is always calculated at UTC when generated the downsampled values, so the time buckets need to be shifted, e.g. reported as `2020-03-07T19:00:00.000` instead of `2020-03-07T00:00:00.000` for timezone `America/New_York`. The field `downsampled_results_offset: true` is added in this case too.
-    * Daylight savings and similar peculiarities around timezones affect reported results, as [documented](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html#datehistogram-aggregation-time-zone) for date histogram aggregation. Besides, downsampling at daily interval hinders tracking any information related to daylight savings changes.
+    * Daylight savings and similar peculiarities around timezones affect reported results, as [documented](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md#datehistogram-aggregation-time-zone) for date histogram aggregation. Besides, downsampling at daily interval hinders tracking any information related to daylight savings changes.
 
 
 
@@ -133,9 +133,9 @@ The following restrictions and limitations apply for downsampling:
 * Within a data stream, a downsampled index replaces the original index and the original index is deleted. Only one index can exist for a given time period.
 * A source index must be in read-only mode for the downsampling process to succeed. Check the [Run downsampling manually](./run-downsampling-manually.md) example for details.
 * Downsampling data for the same period many times (downsampling of a downsampled index) is supported. The downsampling interval must be a multiple of the interval of the downsampled index.
-* Downsampling is provided as an ILM action. See [Downsample](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-downsample.html).
+* Downsampling is provided as an ILM action. See [Downsample](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-downsample.md).
 * The new, downsampled index is created on the data tier of the original index and it inherits its settings (for example, the number of shards and replicas).
-* The numeric `gauge` and `counter` [metric types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-field-meta.html) are supported.
+* The numeric `gauge` and `counter` [metric types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-field-meta.md) are supported.
 * The downsampling configuration is extracted from the time series data stream [index mapping](./set-up-tsds.md#create-tsds-index-template). The only additional required setting is the downsampling `fixed_interval`.
 
 

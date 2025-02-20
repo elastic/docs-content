@@ -53,7 +53,7 @@ Configure and customize Fleet-managed APM settings directly in {{kib}}:
 ::::::
 
 :::::::
-In addition, if APM Server is deployed in an origin different than the page’s origin, you will need to configure [Cross-Origin Resource Sharing (CORS)](https://www.elastic.co/guide/en/apm/agent/rum-js/current/configuring-cors.html) in the Agent.
+In addition, if APM Server is deployed in an origin different than the page’s origin, you will need to configure [Cross-Origin Resource Sharing (CORS)](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/configuring-cors.md) in the Agent.
 
 
 ## Configuration reference [apm-enable-rum-support]

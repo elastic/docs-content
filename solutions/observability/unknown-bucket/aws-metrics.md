@@ -63,5 +63,5 @@ To help you analyze the RDS database metrics listed on the **Infrastructure inve
 | **Active Transactions** | Average of `aws.rds.transactions.active`. |
 | **Latency** | Average of `aws.rds.latency.dml`. |
 
-For information about which required fields the {{infrastructure-app}} uses to display AWS services metrics, see the [{{infrastructure-app}} field reference](https://www.elastic.co/guide/en/observability/current/metrics-app-fields.html).
+For information about which required fields the {{infrastructure-app}} uses to display AWS services metrics, see the [{{infrastructure-app}} field reference](asciidocalypse://docs/docs-content/docs/reference/observability/fields-and-object-schemas/metrics-app-fields.md).
 

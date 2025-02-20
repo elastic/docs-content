@@ -18,7 +18,7 @@ You can use the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/o
 
 ## Run a search [run-an-es-search]
 
-The following request searches `my-index-000001` using a [`match`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) query. This query matches documents with a `user.id` value of `kimchy`.
+The following request searches `my-index-000001` using a [`match`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-query.md) query. This query matches documents with a `user.id` value of `kimchy`.
 
 ```console
 GET /my-index-000001/_search
@@ -87,10 +87,10 @@ You can use the following options to customize your searches.
 
 **Query DSL**<br> [Query DSL](../../explore-analyze/query-filter/languages/querydsl.md) supports a variety of query types you can mix and match to get the results you want. Query types include:
 
-* [Boolean](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) and other [compound queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/compound-queries.html), which let you combine queries and match results based on multiple criteria
-* [Term-level queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/term-level-queries.html) for filtering and finding exact matches
-* [Full text queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html), which are commonly used in search engines
-* [Geo](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html) and [spatial queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/shape-queries.html)
+* [Boolean](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md) and other [compound queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/compound-queries.md), which let you combine queries and match results based on multiple criteria
+* [Term-level queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/term-level-queries.md) for filtering and finding exact matches
+* [Full text queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/full-text-queries.md), which are commonly used in search engines
+* [Geo](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/geo-queries.md) and [spatial queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/shape-queries.md)
 
 **Aggregations**<br> You can use [search aggregations](../../explore-analyze/query-filter/aggregations.md) to get statistics and other analytics for your search results. Aggregations help you answer questions like:
 
@@ -98,13 +98,13 @@ You can use the following options to customize your searches.
 * What are the top IP addresses hit by users on my network?
 * What is the total transaction revenue by customer?
 
-**Search multiple data streams and indices**<br> You can use comma-separated values and grep-like index patterns to search several data streams and indices in the same request. You can even boost search results from specific indices. See [Search multiple data streams and indices using a query](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multiple-indices.html).
+**Search multiple data streams and indices**<br> You can use comma-separated values and grep-like index patterns to search several data streams and indices in the same request. You can even boost search results from specific indices. See [Search multiple data streams and indices using a query](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/search-multiple-data-streams-indices.md).
 
-**Paginate search results**<br> By default, searches return only the top 10 matching hits. To retrieve more or fewer documents, see [Paginate search results](https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html).
+**Paginate search results**<br> By default, searches return only the top 10 matching hits. To retrieve more or fewer documents, see [Paginate search results](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/paginate-search-results.md).
 
-**Retrieve selected fields**<br> The search response’s `hits.hits` property includes the full document [`_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) for each hit. To retrieve only a subset of the `_source` or other fields, see [Retrieve selected fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html).
+**Retrieve selected fields**<br> The search response’s `hits.hits` property includes the full document [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) for each hit. To retrieve only a subset of the `_source` or other fields, see [Retrieve selected fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
 
-**Sort search results**<br> By default, search hits are sorted by `_score`, a [relevance score](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores) that measures how well each document matches the query. To customize the calculation of these scores, use the [`script_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html) query. To sort search hits by other field values, see [Sort search results](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html).
+**Sort search results**<br> By default, search hits are sorted by `_score`, a [relevance score](../../explore-analyze/query-filter/languages/querydsl.md#relevance-scores) that measures how well each document matches the query. To customize the calculation of these scores, use the [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query. To sort search hits by other field values, see [Sort search results](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/sort-search-results.md).
 
 **Run an async search**<br> {{es}} searches are designed to run on large volumes of data quickly, often returning results in milliseconds. For this reason, searches are *synchronous* by default. The search request waits for complete results before returning a response.
 
@@ -119,7 +119,7 @@ Instead of indexing your data and then searching it, you can define [runtime fie
 
 For example, the following query defines a runtime field called `day_of_week`. The included script calculates the day of the week based on the value of the `@timestamp` field, and uses `emit` to return the calculated value.
 
-The query also includes a [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) that operates on `day_of_week`.
+The query also includes a [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) that operates on `day_of_week`.
 
 ```console
 GET /my-index-000001/_search
@@ -341,7 +341,7 @@ GET /_search?q=user.id:elkbee&size=0&terminate_after=1
 ```
 
 ::::{note}
-`terminate_after` is always applied **after** the [`post_filter`](https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#post-filter) and stops the query as well as the aggregation executions when enough hits have been collected on the shard. Though the doc count on aggregations may not reflect the `hits.total` in the response since aggregations are applied **before** the post filtering.
+`terminate_after` is always applied **after** the [`post_filter`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/filter-search-results.md#post-filter) and stops the query as well as the aggregation executions when enough hits have been collected on the shard. Though the doc count on aggregations may not reflect the `hits.total` in the response since aggregations are applied **before** the post filtering.
 ::::
 
 

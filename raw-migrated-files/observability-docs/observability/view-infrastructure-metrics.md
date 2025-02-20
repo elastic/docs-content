@@ -9,7 +9,7 @@ To open **Infrastructure inventory**, find **Infrastructure** in the main menu o
 :class: screenshot
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/observability/current/metrics-reference.html) documentation.
+To learn more about the metrics shown on this page, refer to the [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference.md) documentation.
 
 ::::{tip}
 If there are no metrics to display, {{kib}} prompts you to add a metrics integration. Click **Add a metrics integration** to get started. If you want to add more data in the future, click **Add data** from any page in the {{infrastructure-app}}.
@@ -158,7 +158,7 @@ The **Logs** tab displays logs relating to the host that you have selected. By d
 |     |     |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-base.html)base field, `message`, is used. |
+| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-base.md)base field, `message`, is used. |
 
 You can customize the logs view by adding a column for an arbitrary field you would like to filter by. For more information, refer to [Customize Stream](../../../solutions/observability/logs/configure-data-sources.md#customize-stream-page). To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Logs**.
 
@@ -175,7 +175,7 @@ The **Anomalies** tab displays a list of each single metric {{anomaly-detect}} j
 
 Along with the name of each anomaly job, detected anomalies with a severity score equal to 50, or higher, are listed. These scores represent a severity of "warning" or higher in the selected time period. The **summary** value represents the increase between the actual value and the expected ("typical") value of the host metric in the anomaly record result.
 
-To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the [Anomaly Explorer in {{ml-app}}](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results). You can also select **Actions → Show in Inventory** to view the host Inventory page, filtered by the specific metric.
+To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the [Anomaly Explorer in {{ml-app}}](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-results). You can also select **Actions → Show in Inventory** to view the host Inventory page, filtered by the specific metric.
 
 :::{image} ../../../images/observability-anomalies-overlay.png
 :alt: Anomalies
@@ -187,7 +187,7 @@ To drill down and analyze the metric anomaly, select **Actions → Open in Anoma
 
 :::::{dropdown} **Osquery**
 ::::{important}
-You must have an active [{{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration and have Osquery [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) as a user.
+You must have an active [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration and have Osquery [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) as a user.
 
 ::::
 
@@ -294,7 +294,7 @@ The **Logs** tab displays logs relating to the container that you have selected.
 |     |     |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-base.html)base field, `message`, is used. |
+| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-base.md)base field, `message`, is used. |
 
 You can customize the logs view by adding a column for an arbitrary field you would like to filter by. For more information, refer to [Customize Stream](../../../solutions/observability/logs/configure-data-sources.md#customize-stream-page). To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Logs**.
 

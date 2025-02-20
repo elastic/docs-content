@@ -15,7 +15,7 @@ Elasticsearch balances shards across data tiers to achieve a good compromise bet
 * write load (for indices in data streams)
 
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::
 
@@ -62,7 +62,7 @@ This is not concerning as long as the number of such shards is decreasing and th
 
 If the cluster has this warning repeatedly for an extended period of time (multiple hours), it is possible that the desired balance is diverging too far from the current state.
 
-If so, increase the [`cluster.routing.allocation.balance.threshold`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#shards-rebalancing-heuristics) to reduce the sensitivity of the algorithm that tries to level up the shard count and disk usage within the cluster.
+If so, increase the [`cluster.routing.allocation.balance.threshold`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#shards-rebalancing-heuristics) to reduce the sensitivity of the algorithm that tries to level up the shard count and disk usage within the cluster.
 
 And reset the desired balance using the following API call:
 

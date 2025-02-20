@@ -65,7 +65,7 @@ To grant an APM Server user the required privileges for writing events to {{es}}
     | --- | --- | --- |
     | Index | `auto_configure` on `traces-apm*`, `logs-apm*`, and `metrics-apm*` indices | Permits auto-creation of indices and data streams |
     | Index | `create_doc` on `traces-apm*`, `logs-apm*`, and `metrics-apm*` indices | Write events into {{es}} |
-    | Cluster | `monitor` | Allows cluster UUID checks, which are performed as part of APM server startup preconditionsif [Elasticsearch security](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html) is enabled (it is enabled by default), and allows a license check, which is required if [tail-based sampling](transaction-sampling.md#apm-tail-based-sampling) is enabled. |
+    | Cluster | `monitor` | Allows cluster UUID checks, which are performed as part of APM server startup preconditionsif [Elasticsearch security](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md) is enabled (it is enabled by default), and allows a license check, which is required if [tail-based sampling](transaction-sampling.md#apm-tail-based-sampling) is enabled. |
 
 
 ::::{note}
