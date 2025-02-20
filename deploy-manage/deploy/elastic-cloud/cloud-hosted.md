@@ -1,5 +1,6 @@
 ---
 mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/index.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html
   - https://www.elastic.co/guide/en/cloud/current/ec-prepare-production.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-getting-started.html

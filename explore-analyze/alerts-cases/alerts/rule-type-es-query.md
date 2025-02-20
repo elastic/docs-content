@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "{{es}} query"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rule-type-es-query.html

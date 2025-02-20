@@ -1271,7 +1271,7 @@ The output of which, albeit a bit verbose, will provide all the necessary info t
 
 ## Example: Rerank results of an RRF retriever [retrievers-examples-text-similarity-reranker-on-top-of-rrf]
 
-To demonstrate the full functionality of retrievers, the following examples also require access to a [semantic reranking model](/solutions/search/ranking/semantic-reranking.md) set up using the [Elastic inference APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html).
+To demonstrate the full functionality of retrievers, the following examples also require access to a [semantic reranking model](/solutions/search/ranking/semantic-reranking.md) set up using the [Elastic inference APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 In this example we’ll set up a reranking service and use it with the `text_similarity_reranker` retriever to rerank our top results.
 

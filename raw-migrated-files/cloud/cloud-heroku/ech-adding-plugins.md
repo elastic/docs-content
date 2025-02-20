@@ -15,7 +15,7 @@ There are two ways to add plugins to a deployment in Elasticsearch Add-On for He
 
 Custom plugins can include the official {{es}} plugins not provided with Elasticsearch Add-On for Heroku, any of the community-sourced plugins, or [plugins that you write yourself](asciidocalypse://docs/elasticsearch/docs/extend/create-elasticsearch-plugins/index.md). Uploading custom plugins is available only to Gold, Platinum, and Enterprise subscriptions. For more information, check [Upload custom plugins and bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
-To learn more about the official and community-sourced plugins, refer to [{{es}} Plugins and Integrations](https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html).
+To learn more about the official and community-sourced plugins, refer to [{{es}} Plugins and Integrations](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/index.md).
 
 Plugins are not supported for {{kib}}. To learn more, check [Restrictions for {{es}} and {{kib}} plugins](../../../deploy-manage/deploy/elastic-cloud/ech-restrictions.md#ech-restrictions-plugins).
 
