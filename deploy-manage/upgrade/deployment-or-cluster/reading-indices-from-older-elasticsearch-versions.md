@@ -16,23 +16,23 @@ For this, {{es}} has the ability to access older snapshot repositories (going ba
 
 Old mappings are imported as much "as-is" as possible into {{es}} 8, but only provide regular query capabilities on a select subset of fields:
 
-* [Numeric types](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html)
-* [`boolean` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/boolean.html)
-* [`ip` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/ip.html)
-* [`geo_point` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html)
-* [`date` types](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html): the date `format` setting on date fields is supported as long as it behaves similarly across these versions. In case it is not, for example [when using custom date formats](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/migrate-to-java-time.html), this field can be updated on legacy indices so that it can be changed by a user if need be.
-* [`keyword` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#keyword-field-type): the `normalizer` setting on keyword fields is supported as long as it behaves similarly across these versions. In case it is not, this field can be updated on legacy indices if need be.
-* [`text` type](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#text-field-type): scoring capabilities are limited, and all queries return constant scores that are equal to 1.0. The `analyzer` settings on text fields are supported as long as they behave similarly across these versions. In case they do not, they can be updated on legacy indices if need be.
-* [Multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html)
-* [Field aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/field-alias.html)
-* [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) fields
+* [Numeric types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md)
+* [`boolean` type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/boolean.md)
+* [`ip` type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md)
+* [`geo_point` type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md)
+* [`date` types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md): the date `format` setting on date fields is supported as long as it behaves similarly across these versions. In case it is not, for example [when using custom date formats](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/migrate-to-java-time.html), this field can be updated on legacy indices so that it can be changed by a user if need be.
+* [`keyword` type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type): the `normalizer` setting on keyword fields is supported as long as it behaves similarly across these versions. In case it is not, this field can be updated on legacy indices if need be.
+* [`text` type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type): scoring capabilities are limited, and all queries return constant scores that are equal to 1.0. The `analyzer` settings on text fields are supported as long as they behave similarly across these versions. In case they do not, they can be updated on legacy indices if need be.
+* [Multi-fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md)
+* [Field aliases](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md)
+* [`object`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md) fields
 * some basic metadata fields, e.g. `_type` for querying {{es}} 5 indices
 * [runtime fields](../../../manage-data/data-store/mapping/map-runtime-field.md)
-* [`_source` field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html)
+* [`_source` field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md)
 
 {{es}} 5 indices with mappings that have [multiple mapping types](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/removal-of-types.html) are collapsed together on a best-effort basis before they are imported.
 
-In case the auto-import of mappings does not work, or the new {{es}} version can’t make sense of the mapping, it falls back to importing the index without the mapping, but stores the original mapping in the [_meta](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html) section of the imported index. The legacy mapping can then be introspected using the [GET mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping) API and an updated mapping can be manually put in place using the [update mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) API, copying and adapting relevant sections of the legacy mapping to work with the current {{es}} version. While auto-import is expected to work in most cases, failures of doing so should be [raised](https://github.com/elastic/elasticsearch/issues/new/choose) with the Elastic team for future improvements.
+In case the auto-import of mappings does not work, or the new {{es}} version can’t make sense of the mapping, it falls back to importing the index without the mapping, but stores the original mapping in the [_meta](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-meta-field.md) section of the imported index. The legacy mapping can then be introspected using the [GET mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping) API and an updated mapping can be manually put in place using the [update mapping](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) API, copying and adapting relevant sections of the legacy mapping to work with the current {{es}} version. While auto-import is expected to work in most cases, failures of doing so should be [raised](https://github.com/elastic/elasticsearch/issues/new/choose) with the Elastic team for future improvements.
 
 
 ## Supported APIs [_supported_apis] 

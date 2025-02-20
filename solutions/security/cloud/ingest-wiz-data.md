@@ -28,7 +28,7 @@ In order to enrich your {{elastic-sec}} workflows with third-party cloud securit
 :alt: Wiz integration settings showing the vulnerabilities toggle
 :::
 
-After you’ve completed these steps, Wiz data will appear on the [Misconfiguations](/solutions/security/cloud/findings-page.md) and [Vulnerabilities](https://www.elastic.co/guide/en/security/current/vuln-management-findings.html) tabs of the Findings page.
+After you’ve completed these steps, Wiz data will appear on the [Misconfiguations](/solutions/security/cloud/findings-page.md) and [Vulnerabilities](/solutions/security/cloud/findings-page-3.md) tabs of the Findings page.
 
 :::{image} ../../../images/security-wiz-findings.png
 :alt: Wiz data on the Findings page

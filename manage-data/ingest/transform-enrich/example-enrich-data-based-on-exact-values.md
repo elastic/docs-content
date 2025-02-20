@@ -5,7 +5,7 @@ mapped_pages:
 
 # Example: Enrich your data based on exact values [match-enrich-policy-type]
 
-`match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on an exact value, such as a email address or ID, using a [`term` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-term-query.html).
+`match` [enrich policies](data-enrichment.md#enrich-policy) match enrich data to incoming documents based on an exact value, such as a email address or ID, using a [`term` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md).
 
 The following example creates a `match` enrich policy that adds user name and contact information to incoming documents based on an email address. It then adds the `match` enrich policy to a processor in an ingest pipeline.
 
@@ -50,7 +50,7 @@ Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elastics
 POST /_enrich/policy/users-policy/_execute?wait_for_completion=false
 ```
 
-Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) that includes:
+Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) that includes:
 
 * Your enrich policy.
 * The `field` of incoming documents used to match documents from the enrich index.

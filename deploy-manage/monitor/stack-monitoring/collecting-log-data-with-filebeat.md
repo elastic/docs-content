@@ -26,13 +26,13 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
 2. Identify which logs you want to monitor.
 
-    The {{filebeat}} {{es}} module can handle [audit logs](../logging-configuration/logfile-audit-output.md), [deprecation logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md#deprecation-logging), [gc logs](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
+    The {{filebeat}} {{es}} module can handle [audit logs](../logging-configuration/logfile-audit-output.md), [deprecation logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md#deprecation-logging), [gc logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#gc-logging), [server logs](../logging-configuration/elasticsearch-log4j-configuration-self-managed.md), and [slow logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log-settings.md). For more information about the location of your {{es}} logs, see the [path.logs](../../deploy/self-managed/important-settings-configuration.md#path-settings) setting.
 
     ::::{important} 
     If there are both structured (`*.json`) and unstructured (plain text) versions of the logs, you must use the structured logs. Otherwise, they might not appear in the appropriate context in {{kib}}.
     ::::
 
-3. [Install {{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html) on the {{es}} nodes that contain logs that you want to monitor.
+3. [Install {{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md) on the {{es}} nodes that contain logs that you want to monitor.
 4. Identify where to send the log data.
 
     For example, specify {{es}} output information for your monitoring cluster in the {{filebeat}} configuration file (`filebeat.yml`):
@@ -60,7 +60,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
     If {{es}} {{security-features}} are enabled on the monitoring cluster, you must provide a valid user ID and password so that {{filebeat}} can send metrics successfully.
 
-    For more information about these configuration options, see [Configure the {{es}} output](https://www.elastic.co/guide/en/beats/filebeat/current/elasticsearch-output.html).
+    For more information about these configuration options, see [Configure the {{es}} output](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/elasticsearch-output.md).
 
 5. Optional: Identify where to visualize the data.
 
@@ -81,9 +81,9 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
     If {{security-features}} are enabled, you must provide a valid user ID and password so that {{filebeat}} can connect to {{kib}}:
 
     1. Create a user on the monitoring cluster that has the [`kibana_admin` built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md) or equivalent privileges.
-    2. Add the `username` and `password` settings to the {{es}} output information in the {{filebeat}} configuration file. The example shows a hard-coded password, but you should store sensitive values in the [secrets keystore](https://www.elastic.co/guide/en/beats/filebeat/current/keystore.html).
+    2. Add the `username` and `password` settings to the {{es}} output information in the {{filebeat}} configuration file. The example shows a hard-coded password, but you should store sensitive values in the [secrets keystore](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/keystore.md).
 
-    See [Configure the {{kib}} endpoint](https://www.elastic.co/guide/en/beats/filebeat/current/setup-kibana-endpoint.html).
+    See [Configure the {{kib}} endpoint](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/setup-kibana-endpoint.md).
 
 6. Enable the {{es}} module and set up the initial {{filebeat}} environment on each node.
 
@@ -94,20 +94,20 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
     filebeat setup -e
     ```
 
-    For more information, see [{{es}} module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-elasticsearch.html).
+    For more information, see [{{es}} module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-elasticsearch.md).
 
 7. Configure the {{es}} module in {{filebeat}} on each node.
 
-    If the logs that you want to monitor aren’t in the default location, set the appropriate path variables in the `modules.d/elasticsearch.yml` file. See [Configure the {{es}} module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-elasticsearch.html#configuring-elasticsearch-module).
+    If the logs that you want to monitor aren’t in the default location, set the appropriate path variables in the `modules.d/elasticsearch.yml` file. See [Configure the {{es}} module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-elasticsearch.md#configuring-elasticsearch-module).
 
     ::::{important} 
     If there are JSON logs, configure the `var.paths` settings to point to them instead of the plain text logs.
     ::::
 
-8. [Start {{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-starting.html) on each node.
+8. [Start {{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-starting.md) on each node.
 
     ::::{note} 
-    Depending on how you’ve installed {{filebeat}}, you might see errors related to file ownership or permissions when you try to run {{filebeat}} modules. See [Config file ownership and permissions](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html).
+    Depending on how you’ve installed {{filebeat}}, you might see errors related to file ownership or permissions when you try to run {{filebeat}} modules. See [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
     ::::
 
 9. Check whether the appropriate indices exist on the monitoring cluster.

@@ -12,7 +12,7 @@ mapped_pages:
 ::::{admonition}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
-This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html).
+This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elasticsearch-output.md).
 
 ::::
 

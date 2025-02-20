@@ -70,6 +70,10 @@ $$$saml-no-kibana-sp-init-sso$$$
 
 $$$req-authn-context$$$
 
+$$$saml-guide-idp$$$
+
+$$$saml-sp-metadata$$$
+
 **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/saml-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/saml-realm.md)

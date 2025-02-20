@@ -23,7 +23,7 @@ If you run into any issues, refer to [Troubleshooting](remote-clusters-troublesh
 
 ## Prerequisites [remote-clusters-prerequisites-cert]
 
-1. The {{es}} security features need to be enabled on both clusters, on every node. Security is enabled by default. If it’s disabled, set `xpack.security.enabled` to `true` in `elasticsearch.yml`. Refer to [General security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#general-security-settings).
+1. The {{es}} security features need to be enabled on both clusters, on every node. Security is enabled by default. If it’s disabled, set `xpack.security.enabled` to `true` in `elasticsearch.yml`. Refer to [General security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings).
 2. The local and remote clusters versions must be compatible.
 
     * Any node can communicate with another node on the same major version. For example, 7.0 can talk to any 7.x node.
@@ -84,7 +84,7 @@ You must have the `manage` cluster privilege to connect remote clusters.
 ::::
 
 
-The local cluster uses the [transport interface](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) to establish communication with remote clusters. The coordinating nodes in the local cluster establish [long-lived](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections) TCP connections with specific nodes in the remote cluster. {{es}} requires these connections to remain open, even if the connections are idle for an extended period.
+The local cluster uses the [transport interface](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) to establish communication with remote clusters. The coordinating nodes in the local cluster establish [long-lived](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) TCP connections with specific nodes in the remote cluster. {{es}} requires these connections to remain open, even if the connections are idle for an extended period.
 
 To add a remote cluster from Stack Management in {{kib}}:
 
@@ -149,9 +149,9 @@ The API response indicates that the local cluster is connected to the remote clu
 
 Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to dynamically configure remote settings on every node in the cluster. The following request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
 
-The `seeds` parameter specifies the hostname and [transport port](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) (default `9300`) of a seed node in the remote cluster.
+The `seeds` parameter specifies the hostname and [transport port](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) (default `9300`) of a seed node in the remote cluster.
 
-The `mode` parameter determines the configured connection mode, which defaults to [`sniff`](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#sniff-mode). Because `cluster_one` doesn’t specify a `mode`, it uses the default. Both `cluster_two` and `cluster_three` explicitly use different modes.
+The `mode` parameter determines the configured connection mode, which defaults to [`sniff`](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode). Because `cluster_one` doesn’t specify a `mode`, it uses the default. Both `cluster_two` and `cluster_three` explicitly use different modes.
 
 ```console
 PUT _cluster/settings
@@ -264,7 +264,7 @@ cluster:
 
 ## Configure roles and users for remote clusters [remote-clusters-privileges-cert]
 
-After [connecting remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html), you create a user role on both the local and remote clusters and assign necessary privileges. These roles are required to use {{ccr}} and {{ccs}}.
+After [connecting remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md), you create a user role on both the local and remote clusters and assign necessary privileges. These roles are required to use {{ccr}} and {{ccs}}.
 
 ::::{important}
 You must use the same role names on both the local and remote clusters. For example, the following configuration for {{ccr}} uses the `remote-replication` role name on both the local and remote clusters. However, you can specify different role definitions on each cluster.

@@ -42,7 +42,7 @@ To pass this bootstrap check, you must [set up SSL/TLS in your cluster](../../..
 
 If you use {{es}} {{security-features}} and the built-in token service is enabled, you must configure your cluster to use SSL/TLS for the HTTP interface. HTTPS is required in order to use the token service.
 
-In particular, if `xpack.security.authc.token.enabled` is set to `true` in the `elasticsearch.yml` file, you must also set `xpack.security.http.ssl.enabled` to `true`. For more information about these settings, see [Security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html) and [Advanced HTTP settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#http-settings).
+In particular, if `xpack.security.authc.token.enabled` is set to `true` in the `elasticsearch.yml` file, you must also set `xpack.security.http.ssl.enabled` to `true`. For more information about these settings, see [Security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md) and [Advanced HTTP settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-settings).
 
 To pass this bootstrap check, you must enable HTTPS or disable the built-in token service.
 

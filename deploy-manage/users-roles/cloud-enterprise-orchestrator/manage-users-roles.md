@@ -23,14 +23,14 @@ Implementing RBAC in your environment benefits you in several ways:
 
 
 ::::{important}
-With RBAC, interacting with API endpoints now requires a [bearer token](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-command-line.md) or [API key](../../api-keys/elastic-cloud-enterprise-api-keys.md#ece-api-keys).
+With RBAC, interacting with API endpoints now requires a [bearer token](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-enterprise/ece-api-command-line.md) or [API key](../../api-keys/elastic-cloud-enterprise-api-keys.md#ece-api-keys).
 ::::
 
 
 
 ## Before you begin [ece_before_you_begin_8]
 
-To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-limitations.md).
+To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](asciidocalypse://docs/cloud/docs/release-notes/known-issues/cloud-enterprise.md).
 
 
 ## Available roles and permissions [ece-user-role-permissions]

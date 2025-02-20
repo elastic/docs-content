@@ -22,7 +22,7 @@ $$$enroll-agent$$$
 
 $$$enroll-security-agent$$$
 
-Like other Elastic integrations, {{elastic-defend}} is integrated into the {{agent}} using [{{fleet}}](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html). Upon configuration, the integration allows the {{agent}} to monitor events on your host and send data to the {{security-app}}.
+Like other Elastic integrations, {{elastic-defend}} is integrated into the {{agent}} using [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md). Upon configuration, the integration allows the {{agent}} to monitor events on your host and send data to the {{security-app}}.
 
 ::::{admonition} Requirements
 * {{fleet}} is required for {{elastic-defend}}.
@@ -73,7 +73,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
     | **Traditional Endpoint presets** | All traditional endpoint presets *except **Data Collection*** have these preventions enabled by default: malware, ransomware, memory threat, malicious behavior, and credential theft. Each preset collects the following events:<br><br>* **Data Collection:** All events; no preventions<br>* **Next-Generation Antivirus (NGAV):** Process events; all preventions<br>* **Essential EDR (Endpoint Detection & Response):** Process, Network, File events; all preventions<br>* **Complete EDR (Endpoint Detection & Response):** All events; all preventions<br> |
     | **Cloud Workloads presets** | Both cloud workload presets are intended for monitoring cloud-based Linux hosts. Therefore, [session data](/solutions/security/investigate/session-view.md) collection, which enriches process events, is enabled by default. They both have all preventions disabled by default, and collect process, network, and file events.<br><br>* **All events:** Includes data from automated sessions.<br>* **Interactive only:** Filters out data from non-interactive sessions by creating an [event filter](/solutions/security/manage-elastic-defend/event-filters.md).<br> |
 
-6. Enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](https://www.elastic.co/guide/en/fleet/current/agent-policy.html).
+6. Enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md).
 7. When you’re ready, click **Save and continue**.
 8. To complete the integration, select **Add {{agent}} to your hosts** and continue to the next section to install the {{agent}} on your hosts.
 
@@ -83,7 +83,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 To enable the {{elastic-defend}} integration, you must enroll agents in the relevant policy using {{fleet}}.
 
 ::::{important}
-Before you add an {{agent}}, a {{fleet-server}} must be running. Refer to [Add a {{fleet-server}}](https://www.elastic.co/guide/en/fleet/current/fleet-deployment-models.html).
+Before you add an {{agent}}, a {{fleet-server}} must be running. Refer to [Add a {{fleet-server}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/deployment-models.md).
 
 {{elastic-defend}} cannot be integrated with an {{agent}} in standalone mode.
 
@@ -101,7 +101,7 @@ If you are running an {{stack}} version earlier than 7.13.0, you can skip this s
 If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13.0 or newer, you will need to redeploy your agents. Review the following scenarios to ensure you take the appropriate steps.
 
 * If you redeploy the {{agent}} to the same machine through the {{fleet}} application after you upgrade, a new agent will appear.
-* If you want to remove the {{agent}} entirely without transitioning to the {{fleet-server}}, then you will need to manually uninstall the {{agent}} on the machine. This will also uninstall the endpoint. Refer to [Uninstall Elastic Agent](https://www.elastic.co/guide/en/fleet/current/uninstall-elastic-agent.html).
+* If you want to remove the {{agent}} entirely without transitioning to the {{fleet-server}}, then you will need to manually uninstall the {{agent}} on the machine. This will also uninstall the endpoint. Refer to [Uninstall Elastic Agent](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/uninstall-elastic-agent.md).
 * In the rare event that the {{agent}} fails to uninstall, you might need to manually uninstall the endpoint. Refer to [Uninstall an endpoint](/solutions/security/configure-elastic-defend/uninstall-elastic-agent.md#uninstall-endpoint) at the end of this topic.
 
 
@@ -114,7 +114,7 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
     :class: screenshot
     :::
 
-2. Select an agent policy for the {{agent}}. You can select an existing policy, or select **Create new agent policy** to create a new one. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](https://www.elastic.co/guide/en/fleet/current/agent-policy.html).
+2. Select an agent policy for the {{agent}}. You can select an existing policy, or select **Create new agent policy** to create a new one. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md).
 
     The selected agent policy should include the integration you want to install on the hosts covered by the agent policy (in this example, {{elastic-defend}}).
 

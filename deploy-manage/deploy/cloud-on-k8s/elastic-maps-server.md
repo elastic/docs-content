@@ -12,7 +12,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-If you cannot connect to Elastic Maps Service from the Kibana server or browser clients, and you are running ECK with an Enterprise license, you can opt to host the service on your Kubernetes cluster. Check also the [Elastic Maps Server documentation.](https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html#elastic-maps-server)
+If you cannot connect to Elastic Maps Service from the Kibana server or browser clients, and you are running ECK with an Enterprise license, you can opt to host the service on your Kubernetes cluster. Check also the [Elastic Maps Server documentation.](/explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server)
 
 The following sections describe how to customize an Elastic Maps Server deployment to suit your requirements.
 

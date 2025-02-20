@@ -17,13 +17,13 @@ ECS loggers reformat your application logs into ECS-compatible JSON, removing th
 
 For more information on adding an ECS logger to your application, refer to the guide for your framework:
 
-* [.NET](https://www.elastic.co/guide/en/ecs-logging/dotnet/current/setup.html)
-* Go: [zap](https://www.elastic.co/guide/en/ecs-logging/go-zap/current/setup.html)
-* [Java](https://www.elastic.co/guide/en/ecs-logging/java/current/setup.html)
-* Node.js: [morgan](https://www.elastic.co/guide/en/ecs-logging/nodejs/current/winston.html)
-* [PHP](https://www.elastic.co/guide/en/ecs-logging/php/current/setup.html)
-* [Python](https://www.elastic.co/guide/en/ecs-logging/python/current/installation.html)
-* [Ruby](https://www.elastic.co/guide/en/ecs-logging/ruby/current/setup.html)
+* [.NET](asciidocalypse://docs/ecs-dotnet/docs/reference/ecs/ecs-logging-dotnet/setup.md)
+* Go: [zap](asciidocalypse://docs/ecs-logging-go-zap/docs/reference/ecs/ecs-logging-go-zap/setup.md)
+* [Java](asciidocalypse://docs/ecs-logging-java/docs/reference/ecs/ecs-logging-java/setup.md)
+* Node.js: [morgan](asciidocalypse://docs/ecs-logging-nodejs/docs/reference/ecs/ecs-logging-nodejs/winston.md)
+* [PHP](asciidocalypse://docs/ecs-logging-php/docs/reference/ecs/ecs-logging-php/setup.md)
+* [Python](asciidocalypse://docs/ecs-logging-python/docs/reference/ecs/ecs-logging-python/installation.md)
+* [Ruby](asciidocalypse://docs/ecs-logging-ruby/docs/reference/ecs/ecs-logging-ruby/setup.md)
 
 
 ## APM agent ECS reformatting [apm-agent-ecs-reformatting]
@@ -41,9 +41,9 @@ To set up log ECS reformatting:
 
 Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration option, and is disabled by default. Refer to the guide for your framework for information on enabling:
 
-* [Java](https://www.elastic.co/guide/en/apm/agent/java/current/config-logging.html#config-log-ecs-reformatting)
-* [Ruby](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-log-ecs-formatting)
-* [Python](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-log_ecs_reformatting)
+* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-logging.md#config-log-ecs-reformatting)
+* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-log-ecs-formatting)
+* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-log_ecs_reformatting)
 
 
 ### Ingest logs [ingest-ecs-logs]
@@ -142,7 +142,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](https://www.elastic.co/guide/en/beats/filebeat/current/beats-api-keys.html) for more information.
+    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/beats-api-keys.md) for more information.
 
 
 
@@ -267,7 +267,7 @@ To add the custom logs integration to your project:
 5. Give your integration a meaningful name and description.
 6. Add the **Log file path**. For example, `/var/log/your-logs.log`.
 7. Click **Advanced options**.
-8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. Refer to [processors](https://www.elastic.co/guide/en/beats/filebeat/current/filtering-and-enhancing-data.html) to learn more.
+8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. Refer to [processors](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filtering-enhancing-data.md) to learn more.
 
     ```yaml
     processors:

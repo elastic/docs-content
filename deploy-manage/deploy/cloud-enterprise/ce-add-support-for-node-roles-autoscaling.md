@@ -12,12 +12,12 @@ System owned deployment templates have already been updated to support both data
 
 ## Adding support for node_roles [ece_adding_support_for_node_roles]
 
-The `node_roles` field defines the roles that an Elasticsearch topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [Elastic stack versions 7.10 and above](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-node-types.html).
+The `node_roles` field defines the roles that an Elasticsearch topology element can have, which is used in place of `node_type` when a new feature such as autoscaling is enabled, or when a new data tier is added. This field is supported on [Elastic stack versions 7.10 and above](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-enterprise/changes-to-index-allocation-api.md).
 
 There are a number of fields that need to be added to each Elasticsearch node in order to support `node_roles`:
 
 * **id**: Unique identifier of the topology element. This field, along with the `node_roles`, identifies an Elasticsearch topology element.
-* **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles).
+* **node_roles**: The list of node roles. Allowable roles are: `master`, `ingest`, `ml`, `data_hot`, `data_content`, `data_warm`, `data_cold`, `data_frozen`, `remote_cluster_client`, and `transform`. For details, check [Node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
 * **topology_element_control**: Controls for the topology element.
 
     * **min**: The absolute minimum size limit for a topology element. If the value is `0`, that means the topology element can be disabled.

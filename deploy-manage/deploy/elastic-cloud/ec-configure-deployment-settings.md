@@ -27,7 +27,7 @@ You can select your cloud platform and region only when you create a new deploym
 
 Elastic Cloud deploys Elastic Stack components into a *hardware profile* which provides a unique blend of storage, memory and vCPU. This gives you more flexibility to choose the hardware profile that best fits for your use case. For example, *Compute Optimized* deploys Elasticsearch on virtual hardware that provides high [vCPU](../../monitor/monitoring-data/ec-vcpu-boost-instance.md) which can help search-heavy use cases return queries quickly.
 
-Under the covers, hardware profiles leverage virtualized instances from a cloud provider, such as Amazon Web Services, Google Compute Platform, and Microsoft Azure. You don’t interact with the cloud provider directly, but we do document what we use for your reference. To learn more, check [Elasticsearch Service Hardware](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html).
+Under the covers, hardware profiles leverage virtualized instances from a cloud provider, such as Amazon Web Services, Google Compute Platform, and Microsoft Azure. You don’t interact with the cloud provider directly, but we do document what we use for your reference. To learn more, check [Elasticsearch Service Hardware](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md).
 
 The components of the Elastic Stack that we support as part of a deployment are called *instances* and include:
 

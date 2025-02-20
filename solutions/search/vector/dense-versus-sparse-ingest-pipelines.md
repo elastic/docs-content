@@ -12,7 +12,7 @@ applies:
 
 ::::{important} 
 * For the easiest way to perform semantic search in the {{stack}}, refer to the [`semantic_text`](../semantic-search/semantic-search-semantic-text.md) end-to-end tutorial.
-* This tutorial was written before the [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) and [`semantic_text` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text.html) was introduced. Today we have simpler options for performing semantic search.
+* This tutorial was written before the [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) and [`semantic_text` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/semantic-text.md) was introduced. Today we have simpler options for performing semantic search.
 
 ::::
 
@@ -54,7 +54,7 @@ Before you start using the deployed model to generate embeddings based on your i
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-ELSER produces token-weight pairs as output from the input text and the query. The {{es}} [`sparse_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) field type can store these token-weight pairs as numeric feature vectors. The index must have a field with the `sparse_vector` field type to index the tokens that ELSER generates.
+ELSER produces token-weight pairs as output from the input text and the query. The {{es}} [`sparse_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) field type can store these token-weight pairs as numeric feature vectors. The index must have a field with the `sparse_vector` field type to index the tokens that ELSER generates.
 
 To create a mapping for your ELSER index, refer to the [Create the index mapping section](../semantic-search/semantic-search-elser-ingest-pipelines.md#elser-mappings) of the tutorial. The example shows how to create an index mapping for `my-index` that defines the `my_embeddings.tokens` field - which will contain the ELSER output - as a `sparse_vector` field.
 
@@ -81,7 +81,7 @@ PUT my-index
 ::::::
 
 ::::::{tab-item} Dense vector models
-The models compatible with {{es}} NLP generate dense vectors as output. The [`dense_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) field type is suitable for storing dense vectors of numeric values. The index must have a field with the `dense_vector` field type to index the embeddings that the supported third-party model that you selected generates. Keep in mind that the model produces embeddings with a certain number of dimensions. The `dense_vector` field must be configured with the same number of dimensions using the `dims` option. Refer to the respective model documentation to get information about the number of dimensions of the embeddings.
+The models compatible with {{es}} NLP generate dense vectors as output. The [`dense_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) field type is suitable for storing dense vectors of numeric values. The index must have a field with the `dense_vector` field type to index the embeddings that the supported third-party model that you selected generates. Keep in mind that the model produces embeddings with a certain number of dimensions. The `dense_vector` field must be configured with the same number of dimensions using the `dims` option. Refer to the respective model documentation to get information about the number of dimensions of the embeddings.
 
 To review a mapping of an index for an NLP model, refer to the mapping code snippet in the [Add the text embedding model to an ingest inference pipeline](/explore-analyze/machine-learning/nlp/ml-nlp-text-emb-vector-search-example.md#ex-text-emb-ingest) section of the tutorial. The example shows how to create an index mapping that defines the `my_embeddings.predicted_value` field - which will contain the model output - as a `dense_vector` field.
 
@@ -113,7 +113,7 @@ PUT my-index
 
 ## Generate text embeddings [deployed-generate-embeddings] 
 
-Once you have created the mappings for the index, you can generate text embeddings from your input text. This can be done by using an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [inference processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html). The ingest pipeline processes the input data and indexes it into the destination index. At index time, the inference ingest processor uses the trained model to infer against the data ingested through the pipeline. After you created the ingest pipeline with the inference processor, you can ingest your data through it to generate the model output.
+Once you have created the mappings for the index, you can generate text embeddings from your input text. This can be done by using an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [inference processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md). The ingest pipeline processes the input data and indexes it into the destination index. At index time, the inference ingest processor uses the trained model to infer against the data ingested through the pipeline. After you created the ingest pipeline with the inference processor, you can ingest your data through it to generate the model output.
 
 :::::::{tab-set}
 
@@ -180,12 +180,12 @@ Now it is time to perform semantic search!
 
 ## Search the data [deployed-search] 
 
-Depending on the type of model you have deployed, you can query rank features with a [sparse vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html) query, or dense vectors with a kNN search.
+Depending on the type of model you have deployed, you can query rank features with a [sparse vector](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-sparse-vector-query.md) query, or dense vectors with a kNN search.
 
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-ELSER text embeddings can be queried using a [sparse vector query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html). The sparse vector query enables you to query a [sparse vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) field, by providing the inference ID associated with the NLP model you want to use, and the query text:
+ELSER text embeddings can be queried using a [sparse vector query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-sparse-vector-query.md). The sparse vector query enables you to query a [sparse vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) field, by providing the inference ID associated with the NLP model you want to use, and the query text:
 
 ```console
 GET my-index/_search
@@ -228,12 +228,12 @@ GET my-index/_search
 
 In some situations, lexical search may perform better than semantic search. For example, when searching for single words or IDs, like product numbers.
 
-Combining semantic and lexical search into one hybrid search request using [reciprocal rank fusion](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) provides the best of both worlds. Not only that, but hybrid search using reciprocal rank fusion [has been shown to perform better in general](https://www.elastic.co/blog/improving-information-retrieval-elastic-stack-hybrid).
+Combining semantic and lexical search into one hybrid search request using [reciprocal rank fusion](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) provides the best of both worlds. Not only that, but hybrid search using reciprocal rank fusion [has been shown to perform better in general](https://www.elastic.co/blog/improving-information-retrieval-elastic-stack-hybrid).
 
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) to rank the top documents.
+Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to rank the top documents.
 
 ```console
 GET my-index/_search
@@ -271,7 +271,7 @@ GET my-index/_search
 ::::::{tab-item} Dense vector models
 Hybrid search between a semantic and lexical query can be achieved by providing:
 
-* an `rrf` retriever to rank top documents using [reciprocal rank fusion](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html)
+* an `rrf` retriever to rank top documents using [reciprocal rank fusion](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md)
 * a `standard` retriever as a child retriever with `query` clause for the full-text query
 * a `knn` retriever as a child retriever with the kNN search that queries the dense vector field
 

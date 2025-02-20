@@ -39,7 +39,7 @@ To configure index management when you create a deployment template:
     Index curation
     :   Creates new indices on hot nodes first and moves them to warm nodes later on, based on the data views (formerly *index patterns*) you specify. Also manages replica counts for you, so that all shards of an index can fit on the right data nodes. Compared to index lifecycle management, index curation for time-based indices supports only one action, to move indices from nodes on one data configuration to another, but it is more straightforward to set up initially and all setup can be done directly from the Cloud UI.
 
-        If your user need to delete indices once they are no longer useful to them, they can run [Curator](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html) on-premise to manage indices for Elasticsearch clusters hosted on Elastic Cloud Enterprise.
+        If your user need to delete indices once they are no longer useful to them, they can run [Curator](asciidocalypse://docs/curator/docs/reference/elasticsearch/elasticsearch-client-curator/index.md) on-premise to manage indices for Elasticsearch clusters hosted on Elastic Cloud Enterprise.
 
         To configure index curation:
 

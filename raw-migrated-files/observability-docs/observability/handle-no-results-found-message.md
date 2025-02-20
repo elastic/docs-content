@@ -1,6 +1,6 @@
 # Understanding "no results found" message [handle-no-results-found-message]
 
-To correctly render visualizations in the {{observability}} UI, all metrics used by the UI must be present in the collected data. For a description of these metrics, refer to [Metrics reference](https://www.elastic.co/guide/en/observability/current/metrics-reference.html).
+To correctly render visualizations in the {{observability}} UI, all metrics used by the UI must be present in the collected data. For a description of these metrics, refer to [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference.md).
 
 There are several reasons why metrics might be missing from the collected data:
 
@@ -24,7 +24,7 @@ This could be for any of these reasons:
     Follow our OpenTelemetry quickstart under **Observability** → **Add data** to make sure OpenTelemetry data is correctly mapped to ECS-compliant fields.
     ::::
 
-* You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](https://www.elastic.co/guide/en/fleet/current/edit-or-delete-integration-policy.html) to begin collecting the missing metrics. For example:
+* You have explicitly chosen not to send these metrics. You may choose to limit the metrics sent to Elastic to save on space and improve cluster performance. For example, the System integration has options to choose which metrics you want to send. You can [edit the integration policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/edit-delete-integration-policy.md) to begin collecting the missing metrics. For example:
 
     :::{image} ../../../images/observability-turn-on-system-metrics.png
     :alt: Screenshot showing system cpu and diskio metrics selected for collection

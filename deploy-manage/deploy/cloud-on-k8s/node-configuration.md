@@ -33,5 +33,5 @@ spec:
       node.roles: ["data", "ingest", "ml", "transform"]
 ```
 
-For more information on Elasticsearch settings, check [Configuring Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html).
+For more information on Elasticsearch settings, check [Configuring Elasticsearch](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 

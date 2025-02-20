@@ -7,7 +7,7 @@ mapped_pages:
 
 # Standalone Elastic Agent [k8s-elastic-agent]
 
-This section describes how to configure and deploy Elastic Agent in [standalone mode](https://www.elastic.co/guide/en/fleet/current/install-standalone-elastic-agent.html) with ECK. Check the [Fleet section](fleet-managed-elastic-agent.md) if you want to manage your Elastic Agents with [Fleet](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html).
+This section describes how to configure and deploy Elastic Agent in [standalone mode](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md) with ECK. Check the [Fleet section](fleet-managed-elastic-agent.md) if you want to manage your Elastic Agents with [Fleet](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md).
 
 * [Quickstart](quickstart-standalone.md)
 * [Configuration](configuration-standalone.md)

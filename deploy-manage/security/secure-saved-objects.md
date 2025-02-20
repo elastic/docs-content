@@ -23,7 +23,7 @@ If you don’t specify an encryption key, {{kib}} might disable features that re
 
 
 ::::{tip} 
-For help generating the encryption key, refer to the [`kibana-encryption-keys`](https://www.elastic.co/guide/en/kibana/current/kibana-encryption-keys.html) script.
+For help generating the encryption key, refer to the [`kibana-encryption-keys`](asciidocalypse://docs/kibana/docs/reference/commands/kibana-encryption-keys.md) script.
 
 ::::
 
