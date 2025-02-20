@@ -23,8 +23,8 @@ This article summarizes the features and functionality you need to be aware of b
 The following steps will help you determine if {{agent}} can support your use case:
 
 1. Determine if the integrations you need are supported and Generally Available (GA) on {{agent}}. To find out if an integration is GA, see the [{{integrations}} quick reference table](https://docs.elastic.co/en/integrations/all_integrations).
-2. If the integration is available, check [Supported outputs](../../../manage-data/ingest/tools.md#supported-outputs-beats-and-agent) to see whether the required output is also supported.
-3. Review [Capabilities comparison](../../../manage-data/ingest/tools.md#additional-capabilities-beats-and-agent) to determine if any features required by your deployment are supported. {{agent}} should support most of the features available on {{beats}} and is updated for each release.
+2. If the integration is available, check [Supported outputs](#supported-outputs-beats-and-agent) to see whether the required output is also supported.
+3. Review [Capabilities comparison](#additional-capabilities-beats-and-agent) to determine if any features required by your deployment are supported. {{agent}} should support most of the features available on {{beats}} and is updated for each release.
 
 If you are satisfied with all three steps, then {{agent}} is suitable for your deployment. However, if any steps fail your assessment, you should continue using {{beats}}, and review future updates or contact us in the [discuss forum](https://discuss.elastic.co/).
 
@@ -67,7 +67,7 @@ The following table shows the outputs supported by the {{agent}} in 9.0.0-beta1:
 | [Project paths](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-path.html) | {{agent}} configures these paths to provide a simpler and more streamlinedconfiguration experience. |
 | [External configuration file loading](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-reloading.html) | Config is distributed via policy. |
 | [Live reloading](https://www.elastic.co/guide/en/beats/filebeat/current/_live_reloading.html) | Related to the config file reload. |
-| [Outputs](https://www.elastic.co/guide/en/beats/filebeat/current/configuring-output.html) | Configured through {{fleet}}. See [Supported outputs](../../../manage-data/ingest/tools.md#supported-outputs-beats-and-agent). |
+| [Outputs](https://www.elastic.co/guide/en/beats/filebeat/current/configuring-output.html) | Configured through {{fleet}}. See [Supported outputs](#supported-outputs-beats-and-agent). |
 | [SSL](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-ssl.html) | Supported |
 | [{{ilm-cap}}](https://www.elastic.co/guide/en/beats/filebeat/current/ilm.html) | Enabled by default although the Agent uses [data streams](https://www.elastic.co/guide/en/fleet/current/data-streams.html). |
 | [{{es}} index template loading](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-template.html) | No longer applicable |
