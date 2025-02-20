@@ -234,7 +234,6 @@ toc:
       - file: docs-content/serverless/observability-get-started-with-metrics.md
       - file: docs-content/serverless/observability-get-started.md
       - file: docs-content/serverless/observability-handle-no-results-found-message.md
-      - file: docs-content/serverless/observability-infrastructure-monitoring.md
       - file: docs-content/serverless/observability-log-monitoring.md
       - file: docs-content/serverless/observability-monitor-datasets.md
       - file: docs-content/serverless/observability-parse-log-data.md
@@ -490,7 +489,6 @@ toc:
       - file: observability-docs/observability/logs-send-application.md
       - file: observability-docs/observability/logs-stream.md
       - file: observability-docs/observability/monitor-datasets.md
-      - file: observability-docs/observability/monitor-infrastructure-and-hosts.md
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
       - file: observability-docs/observability/view-infrastructure-metrics.md
