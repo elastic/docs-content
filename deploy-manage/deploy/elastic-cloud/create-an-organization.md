@@ -62,11 +62,7 @@ Serverless projects package Elastic Stack features by type of solution:
 
 When you create a project, you select the project type applicable to your use case, so only the relevant and impactful applications and features are easily accessible to you.
 
-::::{note}
-During the trial period, you are limited to one active hosted deployment and one active serverless project at a time. When you subscribe, you can create additional deployments and projects.
-
-::::
-
+For more information, check the [{{serverless-short}} documentation](serverless.md).
 
 
 ### Trial limitations [general-sign-up-trial-what-limits-are-in-place-during-a-trial]

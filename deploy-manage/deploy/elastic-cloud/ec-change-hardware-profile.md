@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-change-hardware-profile.html
 ---
@@ -27,6 +30,7 @@ Note that if there’s no indication that a newer version is available, that mea
 
     :::{image} ../../../images/cloud-ec-new-hardware-profile-version.png
     :alt: Badge indicating new hardware profile version
+    :width: 50%
     :::
 
 2. Preview the changes for the new hardware profile version.

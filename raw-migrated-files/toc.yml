@@ -164,7 +164,6 @@ toc:
       - file: cloud/cloud/ec-monitoring.md
       - file: cloud/cloud/ec-password-reset.md
       - file: cloud/cloud/ec-planning.md
-      - file: cloud/cloud/ec-prepare-production.md
       - file: cloud/cloud/ec-regional-deployment-aliases.md
       - file: cloud/cloud/ec-restore-across-clusters.md
       - file: cloud/cloud/ec-restoring-snapshots.md

@@ -42,4 +42,4 @@ You can have multiple hosted deployments and serverless projects in the same {{e
 
 ## APIs
 
-{{ecloud}} offers APIs to manage your organization and its resources. Check the [{{ecloud}}](https://www.elastic.co/docs/api/doc/cloud/) and [{{ecloud}} serverless](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/) APIs
+{{ecloud}} offers APIs to manage your organization and its resources. Check the [{{ecloud}}](https://www.elastic.co/docs/api/doc/cloud/) and [{{ecloud}} serverless](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/) APIs.

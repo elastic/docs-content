@@ -91,19 +91,11 @@ toc:
                 children:
                   - file: deploy/elastic-cloud/configure.md
                     children:
-                      - file: deploy/elastic-cloud/ec-customize-deployment.md
-                        children:
-                          - file: deploy/elastic-cloud/ec-configure-deployment-settings.md
-                          - file: deploy/elastic-cloud/ec-change-hardware-profile.md
-                          - file: deploy/elastic-cloud/ec-customize-deployment-components.md
-                      - file: deploy/elastic-cloud/ech-configure-settings.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-configure-deployment-settings.md
-                          - file: deploy/elastic-cloud/ech-customize-deployment-components.md
+                      - file: deploy/elastic-cloud/ec-change-hardware-profile.md
+                      - file: deploy/elastic-cloud/ec-customize-deployment-components.md
                       - file: deploy/elastic-cloud/edit-stack-settings.md
                       - file: deploy/elastic-cloud/add-plugins-extensions.md
                         children:
-                          - file: deploy/elastic-cloud/add-plugins-provided-with-elastic-cloud-hosted.md
                           - file: deploy/elastic-cloud/upload-custom-plugins-bundles.md
                           - file: deploy/elastic-cloud/manage-plugins-extensions-through-api.md
                       - file: deploy/elastic-cloud/custom-endpoint-aliases.md

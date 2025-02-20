@@ -1,9 +1,13 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-customize-deployment-components.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-customize-deployment-components.html
 ---
 
-# How can I customize the components of my deployment? [ec-customize-deployment-components]
+# Customize deployment components [ec-customize-deployment-components]
 
 When you create or edit an existing deployment, you can fine-tune the capacity, add extensions, and select additional features.
 
