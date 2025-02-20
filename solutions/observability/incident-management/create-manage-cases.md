@@ -18,7 +18,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
 
 1. Find **Cases** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create case**.
-3. (Optional) If you defined [templates](../../../solutions/observability/incident-management/configure-case-settings.md#observability-case-settings-templates), select one to use its default field values. [preview]
+3. (Optional) If you defined [templates](../../../solutions/observability/incident-management/configure-case-settings.md#observability-case-templates), select one to use its default field values. [preview]
 4. Give the case a name, severity, and description.
 
     ::::{tip}
@@ -32,7 +32,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
 
     **For Elastic Stack v9**, You can add users only if they meet the necessary [prerequisites](../../../solutions/observability/incident-management/configure-access-to-cases.md).
 
-6. If you defined [custom fields](../../../solutions/observability/incident-management/configure-case-settings.md#observability-case-settings-custom-fields), they appear in the **Additional fields** section.
+6. If you defined [custom fields](../../../solutions/observability/incident-management/configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
 7. (Optional) Under External incident management system, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can [create one](../../../solutions/observability/incident-management/configure-case-settings.md).
 8. After you’ve completed all of the required fields, click **Create case**.
 

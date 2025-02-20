@@ -265,12 +265,12 @@ If you are currently using the Uptime monitor status with a monitor created with
 ### Uptime status check to Synthetics monitor rule [migrate-monitor-rule-synthetics-rule]
 
 
-#### Filters [_filters]
+#### Filters [monitor-status-alert-checks-filters]
 
 The KQL syntax that you used in the Uptime monitor status rule is also valid in the **Filter by** section of the Synthetics monitor status rule. The Synthetics monitor status rule also offers dropdowns for several categories for easy filtering. However, you can still use KQL syntax for these categories if you prefer.
 
 
-#### Conditions [_conditions]
+#### Conditions [monitor-status-alert-checks-conditions]
 
 ::::{note}
 If you are using the *Uptime availability condition* refer to [Uptime availability check to Synthetics availability SLI](../../../solutions/observability/incident-management/create-monitor-status-rule.md#migrate-monitor-rule-synthetics-sli).
@@ -286,9 +286,9 @@ If you’re using the Uptime status check condition, you can recreate similar ef
 | **Timeframe** | `WITHIN last` `{{number}}` `{time range unit}` (for example, `WITHIN last` `15` `minutes`) | `WITHIN THE LAST` `{{number}}` `{time range unit}` (for example, `WITHIN THE LAST` `15` `minutes`) |
 
 
-#### Actions [_actions_5]
+#### Actions [monitor-status-alert-checks-actions]
 
-The default messages for the Uptime monitor status rule and Synthetics monitor status rule are different, but you can recreate similar messages using [Synthetics monitor status rule action variables](../../../solutions/observability/incident-management/create-monitor-status-rule.md#synthetic-monitor-action-variables).
+The default messages for the Uptime monitor status rule and Synthetics monitor status rule are different, but you can recreate similar messages using [Synthetics monitor status rule action variables](../../../solutions/observability/incident-management/create-monitor-status-rule.md#observability-monitor-status-alert-action-variables).
 
 
 ### Uptime availability check to Synthetics availability SLI [migrate-monitor-rule-synthetics-sli]
@@ -296,12 +296,12 @@ The default messages for the Uptime monitor status rule and Synthetics monitor s
 SLOs allow you to set clear, measurable targets for your service performance, based on factors like availability. The [Synthetics availability SLI](../../../solutions/observability/incident-management/create-an-slo.md#synthetics-availability-sli) is a service-level indicator (SLI) based on the availability of your synthetic monitors.
 
 
-#### Filters [_filters_2]
+#### Filters [monitor-status-alert-checks-filters-uptime]
 
 The KQL syntax that you used in the Uptime monitor status rule is also valid in the **Query filter** field of the Synthetics availability SLI.
 
 
-#### Conditions [_conditions_2]
+#### Conditions [monitor-status-alert-checks-conditions-uptime]
 
 Use the following Synthetics availability SLI fields to replace the Uptime monitor status rule’s availability conditions:
 
@@ -311,6 +311,6 @@ Use the following Synthetics availability SLI fields to replace the Uptime monit
 | **Timeframe** | `WITHIN THE LAST` `{{number}}` `{time range unit}` (for example, `WITHIN THE LAST` `30` `days`) | **Time window** and **Duration** fields (for example, Time window: `Rolling`, Duration: `30 days`) |
 
 
-#### Actions [_actions_6]
+#### Actions [monitor-status-alert-checks-actions-uptime]
 
 After creating a new SLO using the Synthetics availability SLI, you can use the SLO burn rate rule. For more information about configuring the rule, see [Create an SLO burn rate rule](../../../solutions/observability/incident-management/create-an-slo-burn-rate-rule.md).
