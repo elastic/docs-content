@@ -226,7 +226,6 @@ toc:
       - file: docs-content/serverless/observability-correlate-application-logs.md
       - file: docs-content/serverless/observability-discover-and-explore-logs.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
-      - file: docs-content/serverless/observability-filter-and-aggregate-logs.md
       - file: docs-content/serverless/observability-get-started.md
       - file: docs-content/serverless/observability-log-monitoring.md
       - file: docs-content/serverless/observability-monitor-datasets.md
@@ -467,7 +466,6 @@ toc:
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
       - file: observability-docs/observability/logs-checklist.md
-      - file: observability-docs/observability/logs-filter-and-aggregate.md
       - file: observability-docs/observability/logs-parse.md
       - file: observability-docs/observability/logs-plaintext.md
       - file: observability-docs/observability/logs-stream.md
