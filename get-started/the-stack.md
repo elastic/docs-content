@@ -73,7 +73,7 @@ Use {{kib}} to query and visualize the data that’s stored in {{es}}. Or, use t
 $$$stack-components-kibana$$$
 
 {{kib}}
-:   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](/get-started/the-stack.md).
+:   {{kib}} is the tool to harness your {{es}} data and to manage the {{stack}}. Use it to analyze and visualize the data that’s stored in {{es}}. {{kib}} is also the home for the Search, Observability and Security solutions. [Learn more about {{kib}}](/explore-analyze/index.md).
 
 $$$stack-components-elasticsearch-clients$$$
 
