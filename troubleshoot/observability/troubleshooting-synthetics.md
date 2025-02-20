@@ -18,9 +18,9 @@ For debugging synthetic tests locally, you can set an environment variable, `DEB
 
 
 ### Monitors stopped running after upgrading to 8.8.0 or above [synthetics-troubleshooting-missing-api-key]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 Synthetic monitors will stop running if you have gone through this workflow:
 
@@ -128,9 +128,9 @@ There are a few ways to fix this:
 ::::
 
 ### You do not have permission to use Elastic managed locations [synthetics-troubleshooting-public-locations-disabled]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 If you try to create or edit a monitor hosted on Elastic’s global managed infrastructure but see a note that you do not have permission to use Elastic managed locations, an administrator has restricted the use of public locations.
 

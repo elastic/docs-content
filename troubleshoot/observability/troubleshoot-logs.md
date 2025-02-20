@@ -63,9 +63,9 @@ You need to either:
 
 
 ### Failed to create API key [logs-troubleshooting-API-key-failed]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 If you don’t have the privileges to create `savedObjects` in {{kib}}, you’ll see the following error message:
 
