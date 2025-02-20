@@ -1,7 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-gcp-snapshotting.html
-  
 applies:
   ece: all
 ---

@@ -1,9 +1,4 @@
 ---
-mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-restore-snapshot.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-restore-across-clusters.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-across-clusters.html
-
 applies:
   stack: all
   hosted: all
@@ -13,43 +8,16 @@ applies:
 
 # Restore a snapshot
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/343
-
-% Scope notes: Merge the articles, highlight the differences for the deployment types.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-restore-across-clusters.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-restore-across-clusters.md
-%      Notes: 3 children
-
-$$$delete-restore$$$
-
-$$$rename-on-restore$$$
-
-$$$restore-create-file-realm-user$$$
-
-$$$restore-different-cluster$$$
-
-$$$restore-entire-cluster$$$
-
-$$$restore-index-data-stream$$$
-
-$$$troubleshoot-restore$$$
-
 This guide shows you how to restore a snapshot. Snapshots are a convenient way to store a copy of your data outside of a cluster. You can restore a snapshot to recover indices and data streams after deletion or a hardware failure. You can also use snapshots to transfer data between clusters.
 
 In this guide, you’ll learn how to:
 
-- Get a list of available snapshots
-- Restore an index or data stream from a snapshot
-- Restore a feature state
-- Restore an entire cluster
-- Monitor the restore operation
-- Cancel an ongoing restore
+- [Get a list of available snapshots](#get-a-list-of-available-snapshots)
+- [Restore an index or data stream from a snapshot](#restore-an-index-or-data-stream)
+- [Restore a feature state](#restore-feature-state)
+- [Restore an entire cluster](#restore-entire-cluster)
+- [Monitor the restore operation](#monitor-restore)
+- [Cancel an ongoing restore](#cancel-restore)
 
 This guide also provides tips for [restoring to another cluster](#restore-different-cluster) and [troubleshooting common restore errors](#troubleshoot-restore).
 
@@ -79,8 +47,8 @@ When restoring data from a snapshot, keep the following in mind:
 - You can restore only a specific backing index from a data stream. However, the restore operation doesn’t add the restored backing index to any existing data stream.
 
 ## Get a list of available snapshots
-To view a list of available snapshots in Kibana:
-1. Go to **Stack Management > Snapshot and Restore**.
+
+To view a list of available snapshots in Kibana, go to **Stack Management > Snapshot and Restore**.
 
 You can also use the get repository API and the get snapshot API to find snapshots that are available to restore. First, use the get repository API to fetch a list of registered snapshot repositories.
 
@@ -205,7 +173,7 @@ When you restore a feature state, {{es}} closes and overwrites the feature’s e
 
 
 ::::{warning}
-Restoring the `security` feature state overwrites system indices used for authentication. If you use {{ess}}, ensure you have access to the {{ess}} Console before restoring the `security` feature state. If you run {{es}} on your own hardware, [create a superuser in the file realm](../../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-create-file-realm-user) to ensure you’ll still be able to access your cluster.
+Restoring the `security` feature state overwrites system indices used for authentication. If you use {{ech}}, ensure you have access to the {{ech}} Console before restoring the `security` feature state. If you run {{es}} on your own hardware, [create a superuser in the file realm](../../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-create-file-realm-user) to ensure you’ll still be able to access your cluster.
 ::::
 
 
@@ -226,6 +194,10 @@ POST _snapshot/my_repository/my_snapshot_2099.05.06/_restore
 ## Restore an entire cluster [restore-entire-cluster]
 
 In some cases, you need to restore an entire cluster from a snapshot, including the cluster state and all [feature states](../../../deploy-manage/tools/snapshot-and-restore.md#feature-state). These cases should be rare, such as in the event of a catastrophic failure.
+
+::::{important}
+Restoring an entire cluster, including the cluster state and all feature states, requires that the snapshot being restored was originally created with both the cluster state and feature states included.
+::::
 
 Restoring an entire cluster involves deleting important system indices, including those used for authentication. Consider whether you can restore specific indices or data streams instead.
 

@@ -1,8 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restore-snapshots-into-new-deployment.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-restore-snapshots-into-new-deployment.html
-
 applies:
   hosted: all
   ece: all

@@ -1,33 +1,10 @@
 ---
 navigation_title: "Elastic Cloud Hosted"
-mapped_urls:
-  - https://www.elastic.co/guide/en/cloud/current/ec-custom-repository.html
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-custom-repository.html
-
 applies:
   hosted: all
 ---
 
 # Manage snapshot repositories in Elastic Cloud Hosted
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-custom-repository.md
-%      Notes: 3 children
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-custom-repository.md
-%      Notes: redirects only
-
-=======
-
-⚠️ **This page is a work in progress.** ⚠️
-
-The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/cloud/cloud/ec-custom-repository.md](/raw-migrated-files/cloud/cloud/ec-custom-repository.md)
-* [/raw-migrated-files/cloud/cloud-heroku/ech-custom-repository.md](/raw-migrated-files/cloud/cloud-heroku/ech-custom-repository.md)
-
 
 Snapshot repositories allow you to back up and restore your Elasticsearch data efficiently. In Elastic Cloud Hosted, repositories are automatically registered and managed within your deployment, ensuring data security, long-term archiving, and seamless recovery.
 
@@ -61,11 +38,11 @@ When working with snapshot repositories in Elastic Cloud Hosted, keep the follow
 
 ## Elastic Cloud Hosted snapshot repository types [ess-repo-types]
 
-[Elastic Cloud Hosted deployments](https://cloud.elastic.co/registration?page=docs&placement=docs-body) automatically register the [`found-snapshots`](../snapshot-and-restore.md) repository. {{ess}} uses this repository and the `cloud-snapshot-policy` to take periodic snapshots of your cluster. You can also use the `found-snapshots` repository for your own [{{slm-init}} policies](create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
+[Elastic Cloud Hosted deployments](https://cloud.elastic.co/registration?page=docs&placement=docs-body) automatically register the [`found-snapshots`](../snapshot-and-restore.md) repository. {{ech}} uses this repository and the `cloud-snapshot-policy` to take periodic snapshots of your cluster. You can also use the `found-snapshots` repository for your own [{{slm-init}} policies](create-snapshots.md#automate-snapshots-slm) or to store searchable snapshots.
 
 The `found-snapshots` repository is specific to each deployment. However, you can restore snapshots from another deployment’s `found-snapshots` repository if the deployments are under the same account and in the same region. See the Cloud [Snapshot and restore](../snapshot-and-restore.md) documentation to learn more.
 
-{{ess}} deployments also support the following repository types:
+{{ech}} deployments also support the following repository types:
 
 * [Azure](ec-azure-snapshotting.md)
 * [Google Cloud Storage](ec-gcs-snapshotting.md)

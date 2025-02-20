@@ -1,49 +1,12 @@
 ---
-mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-restore.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-restoring-snapshots.html
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-snapshot-restore.html
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restoring-snapshots.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-snapshots.html
-
 applies:
   stack: all
   hosted: all
   ece: all
-  eck: all
-  
+  eck: all 
 ---
 
 # Snapshot and restore
-
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/343
-
-% Scope notes: Merge all articles to be relevant for all deployment types.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/snapshot-restore.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-snapshot-restore.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-restoring-snapshots.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-snapshot-restore.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-restoring-snapshots.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-snapshots.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$snapshot-repository-contents$$$
-
-$$$feature-state$$$
-
-$$$snapshot-restore-version-compatibility$$$
-
-$$$snapshots-shard-allocation$$$
-
-$$$fn-archive$$$
 
 A snapshot is a backup of a running Elasticsearch cluster. You can use snapshots to:
 
@@ -128,7 +91,7 @@ Snapshots don’t contain or back up:
 - Node configuration files
 - [Security configuration files](/deploy-manage/security.md)
 
-### Feature states
+### Feature states [feature-states]
 
 A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **Elasticsearch security** or **Kibana**.
 

@@ -1,7 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-aws-custom-repository.html
-  
 applies:
   hosted: all
 ---

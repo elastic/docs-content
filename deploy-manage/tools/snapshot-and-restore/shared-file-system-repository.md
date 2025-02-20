@@ -1,7 +1,4 @@
----
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-filesystem-repository.html
-  
+--- 
 applies:
   stack: all
 ---
@@ -9,7 +6,7 @@ applies:
 # Shared file system repository [snapshots-filesystem-repository]
 
 ::::{note} 
-This repository type is only available if you run {{es}} on your own hardware. If you use {{ess}}, see [{{ess}} repository types](self-managed.md).
+This repository type is only available if you run {{es}} on your own hardware. See [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md) for other deployment methods.
 ::::
 
 

@@ -1,7 +1,4 @@
----
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html
-  
+--- 
 applies:
   stack: all
 ---
@@ -10,7 +7,9 @@ applies:
 
 You can use AWS S3 as a repository for [Snapshot/Restore](../snapshot-and-restore.md).
 
-**If you are looking for a hosted solution of Elasticsearch on AWS, please visit [https://www.elastic.co/cloud/.**](https://www.elastic.co/cloud/.**)
+::::{note} 
+If you are looking for a hosted solution of Elasticsearch on AWS, please visit [https://www.elastic.co/cloud/](https://www.elastic.co/cloud/).
+::::
 
 See [this video](https://www.youtube.com/watch?v=ACqfyzWf-xs) for a walkthrough of connecting an AWS S3 repository.
 

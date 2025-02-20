@@ -1,9 +1,5 @@
 ---
 navigation_title: "Elastic Cloud Enterprise"
-
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-repositories.html
-
 applies:
   ece: all
 ---
@@ -32,7 +28,7 @@ To configure Microsoft Azure Storage as a snapshot repository, refer to [Snapsho
 
 For more details about how snapshots are used with Elasticsearch, check [Snapshot and Restore](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html). You can also review the official documentation for these storage repository options:
 
-* [Amazon S3 documentation](http://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.md)
+* [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)
 * [Microsoft Azure storage documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account)
 * [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/)
 

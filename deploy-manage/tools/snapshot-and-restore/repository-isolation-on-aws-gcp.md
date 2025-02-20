@@ -1,7 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-repository-aws-gcp-migration.html
-
 applies:
   hosted: all
 ---

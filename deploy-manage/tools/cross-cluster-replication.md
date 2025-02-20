@@ -1,7 +1,4 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html
-
 applies:
   stack: all
   hosted: all
