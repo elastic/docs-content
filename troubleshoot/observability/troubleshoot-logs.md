@@ -38,7 +38,7 @@ You need to either:
 * Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](../../raw-migrated-files/docs-content/serverless/observability-stream-log-files.md#observability-stream-log-files-step-3-configure-the-agent) for more on manually updating the configuration and adding the API key.
 ::::
 
-::::{tab-item} {{stack}} 9.0.0+
+::::{tab-item} {{stack}}
 If you don’t have the required privileges to create an API key, you’ll see the following error message:
 
 ```plaintext
