@@ -87,7 +87,7 @@ You can also register a repository using the [Create snapshot repository API](ht
 
 When you register a snapshot repository, {{es}} automatically verifies that the repository is available and functional on all master and data nodes.
 
-To disable this verification, set the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)'s `verify` query parameter to `false`. You can’t disable repository verification in {{kib}}.
+To disable this verification during repository creation, set the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)'s `verify` query parameter to `false`. You can’t disable repository verification in {{kib}}.
 
 ```console
 PUT _snapshot/my_unverified_backup?verify=false
