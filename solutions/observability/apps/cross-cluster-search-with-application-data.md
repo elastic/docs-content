@@ -20,7 +20,7 @@ If you’re using the Hosted {{ess}}, see [Enable cross-cluster search](../../..
 
 To add remote clusters directly in {{kib}}, find `Remote Clusters` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). All you need is a name for the remote cluster and the seed node(s). Remember the names of your remote clusters, you’ll need them in step two. See [managing remote clusters](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md) for detailed information on the setup process.
 
-Alternatively, you can [configure remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#configuring-remote-clusters) in {{es}}'s `elasticsearch.yml` file.
+Alternatively, you can [configure remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) in {{es}}'s `elasticsearch.yml` file.
 
 **Step 2. Edit the default Applications UI {{data-sources}}.**
 
