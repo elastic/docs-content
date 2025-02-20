@@ -23,8 +23,8 @@ This article summarizes the features and functionality you need to be aware of b
 The following steps will help you determine if {{agent}} can support your use case:
 
 1. Determine if the integrations you need are supported and Generally Available (GA) on {{agent}}. To find out if an integration is GA, see the [{{integrations}} quick reference table](https://docs.elastic.co/en/integrations/all_integrations).
-2. If the integration is available, check [Supported outputs](../../../manage-data/ingest/tools.md#supported-outputs-beats-and-agent) to see whether the required output is also supported.
-3. Review [Capabilities comparison](../../../manage-data/ingest/tools.md#additional-capabilities-beats-and-agent) to determine if any features required by your deployment are supported. {{agent}} should support most of the features available on {{beats}} and is updated for each release.
+2. If the integration is available, check [Supported outputs](#supported-outputs-beats-and-agent) to see whether the required output is also supported.
+3. Review [Capabilities comparison](#additional-capabilities-beats-and-agent) to determine if any features required by your deployment are supported. {{agent}} should support most of the features available on {{beats}} and is updated for each release.
 
 If you are satisfied with all three steps, then {{agent}} is suitable for your deployment. However, if any steps fail your assessment, you should continue using {{beats}}, and review future updates or contact us in the [discuss forum](https://discuss.elastic.co/).
 
@@ -67,7 +67,7 @@ The following table shows the outputs supported by the {{agent}} in 9.0.0-beta1:
 | [Project paths](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuration-path.md) | {{agent}} configures these paths to provide a simpler and more streamlinedconfiguration experience. |
 | [External configuration file loading](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-configuration-reloading.md) | Config is distributed via policy. |
 | [Live reloading](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/_live_reloading.md) | Related to the config file reload. |
-| [Outputs](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuring-output.md) | Configured through {{fleet}}. See [Supported outputs](../../../manage-data/ingest/tools.md#supported-outputs-beats-and-agent). |
+| [Outputs](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuring-output.md) | Configured through {{fleet}}. See [Supported outputs](#supported-outputs-beats-and-agent). |
 | [SSL](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuration-ssl.md) | Supported |
 | [{{ilm-cap}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/ilm.md) | Enabled by default although the Agent uses [data streams](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md). |
 | [{{es}} index template loading](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuration-template.md) | No longer applicable |

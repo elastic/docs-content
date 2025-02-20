@@ -102,7 +102,7 @@ The `msmarco-passagetest2019-top1000` dataset was not utilized to train the mode
 ::::
 
 
-Download the file and upload it to your cluster using the [File Uploader](../../../manage-data/ingest/tools/upload-data-files.md) in the UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [File Uploader](../../../manage-data/ingest/upload-data-files.md) in the UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ### Ingest the data through the {{infer}} ingest pipeline [reindexing-data-elser]

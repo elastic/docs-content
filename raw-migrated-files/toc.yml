@@ -192,7 +192,6 @@ toc:
   - file: docs-content/serverless/index.md
     children:
       - file: docs-content/serverless/_cloud_native_vulnerability_management_dashboard.md
-      - file: docs-content/serverless/action-connectors.md
       - file: docs-content/serverless/ai-assistant-knowledge-base.md
       - file: docs-content/serverless/application-and-service-monitoring.md
       - file: docs-content/serverless/attack-discovery.md
@@ -451,7 +450,6 @@ toc:
   - file: ingest-docs/ingest-overview/index.md
   - file: kibana/kibana/index.md
     children:
-      - file: kibana/kibana/action-types.md
       - file: kibana/kibana/apm-settings-kb.md
       - file: kibana/kibana/connect-to-elasticsearch.md
       - file: kibana/kibana/console-kibana.md

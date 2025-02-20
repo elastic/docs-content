@@ -191,9 +191,9 @@ Refer to [SLO API calls](https://www.elastic.co/docs/api/doc/kibana/v8/operation
 
 
 ## Upgrade from beta to GA [slo-troubleshoot-beta]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 Starting in version 8.12.0, SLOs are generally available (GA). If you’re upgrading from a beta version of SLOs (available in 8.11.0 and earlier), you must migrate your SLO definitions to a new format. Otherwise SLOs won’t show up.
 
