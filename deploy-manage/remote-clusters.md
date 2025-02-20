@@ -1,10 +1,11 @@
 ---
-applies:
-  stack:
-  ece:
-  eck:
-  hosted:
-  self:
+applies_to:
+  stack: ga
+  deployment:
+    ece: ga
+    eck: ga
+    ess: ga
+    self: ga
   serverless: unavailable
 ---
 

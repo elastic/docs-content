@@ -1,7 +1,8 @@
 ---
-applies:
-  hosted:
-  self:
+applies_to:
+  deployment:
+    ess: ga
+    self: ga
 navigation_title: With a self-managed cluster
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-self-managed.html

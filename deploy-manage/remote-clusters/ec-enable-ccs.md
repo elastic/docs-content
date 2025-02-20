@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted:
+applies_to:
+  deployment:
+    ess: ga
 navigation_title: Elastic Cloud Hosted
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html

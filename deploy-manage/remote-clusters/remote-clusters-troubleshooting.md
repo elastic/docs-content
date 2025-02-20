@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    self: ga
 navigation_title: "Troubleshooting"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-troubleshooting.html

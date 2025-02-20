@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted:
+applies_to:
+  deployment:
+    ess: ga
 navigation_title: With a different {{ecloud}} organization
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-other-ess.html

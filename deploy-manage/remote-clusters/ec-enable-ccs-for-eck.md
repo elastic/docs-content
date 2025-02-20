@@ -1,4 +1,8 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
+    eck: ga
 navigation_title: With {{eck}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs-for-eck.html

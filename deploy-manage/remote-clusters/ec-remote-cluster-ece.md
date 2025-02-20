@@ -1,7 +1,8 @@
 ---
-applies:
-  hosted:
-  ece:
+applies_to:
+  deployment:
+    ess: ga
+    ece: ga
 navigation_title: With {{ece}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html
