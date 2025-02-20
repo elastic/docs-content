@@ -218,7 +218,6 @@ toc:
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/observability-add-logs-service-name.md
       - file: docs-content/serverless/observability-ai-assistant.md
       - file: docs-content/serverless/observability-apm-act-on-data.md
       - file: docs-content/serverless/observability-apm-agents-elastic-apm-agents.md
@@ -458,7 +457,6 @@ toc:
       - file: logstash/logstash/ts-logstash.md
   - file: observability-docs/observability/index.md
     children:
-      - file: observability-docs/observability/add-logs-service-name.md
       - file: observability-docs/observability/apm-act-on-data.md
       - file: observability-docs/observability/apm-agents.md
       - file: observability-docs/observability/apm-getting-started-apm-server.md
