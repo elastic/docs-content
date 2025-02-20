@@ -1,5 +1,5 @@
 ---
-navigation_title: Connect using Cloud ID
+navigation_title: Connect to your deployment using Cloud ID
 applies_to:
   deployment:
     ece: all
