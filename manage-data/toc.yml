@@ -70,7 +70,6 @@ toc:
           - file: ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md
       - file: ingest/ingest-reference-architectures.md
         children:
-          - file: ingest/ingest-reference-architectures/use-case-arch.md
           - file: ingest/ingest-reference-architectures/agent-to-es.md
             children:
               - file: ingest/ingest-reference-architectures/agent-installed.md
