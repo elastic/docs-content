@@ -36,7 +36,7 @@ These permissions are required to install the ECK operator in a Kubernetes clust
 | `RoleBinding or ClusterRoleBinding` | `rbac.authorization.k8s.io` | no | Binding between the operators role and the operators service account. Depending on the installation type (global/restricted), either global (ClusterRoleBinding) or namespaced (RoleBinding) resource is needed. |
 | `ConfigMap` | `core` | yes | Configuration parameters of the Operator. They can be specified directly in the StatefulSet (or Deployment) resource instead. |
 | `Namespace` | `core` | yes | Namespace where the operator will run. It can be a pre-existing namespace as well. |
-| `ValidatingWebhookConfiguration` | `admissionregistration.k8s.io` | yes | Validating webhook installation. It provides fast feedback for the user directly as a APIServer response. A subset of these validations is also run by the operator itself, but the results are only available through operator logs and Kubernetes events. Check [docs](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-webhook.html) for more. |
+| `ValidatingWebhookConfiguration` | `admissionregistration.k8s.io` | yes | Validating webhook installation. It provides fast feedback for the user directly as a APIServer response. A subset of these validations is also run by the operator itself, but the results are only available through operator logs and Kubernetes events. Check [docs](/deploy-manage/deploy/cloud-on-k8s/configure-validating-webhook.md) for more. |
 | `Secret` | `core` | yes | Secret containing the validating webhook’s endpoint CA certificate. |
 | `Service` | `core` | yes | Service for validating webhook endpoint. |
 
@@ -59,9 +59,9 @@ These permissions are needed by the Service Account that ECK operator runs as.
 | `StatefulSet` | `apps` | no | Deploying Elasticsearch |
 | `Deployment` | `apps` | no | Deploying Kibana, APM Server, EnterpriseSearch, Maps, Beats or Elastic Agent. |
 | `DaemonSet` | `apps` | no | Deploying Beats or Elastic Agent. |
-| `PodDisruptionBudget` | `policy` | no | Ensuring update safety for Elasticsearch. Check [docs](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-pod-disruption-budget.html) to learn more. |
+| `PodDisruptionBudget` | `policy` | no | Ensuring update safety for Elasticsearch. Check [docs](/deploy-manage/deploy/cloud-on-k8s/pod-disruption-budget.md) to learn more. |
 | `StorageClass` | `storage.k8s.io` | yes | Validating storage expansion support. Check [docs](volume-claim-templates.md#k8s-volume-claim-templates-update) to learn more. |
-| `coreauthorization.k8s.io` | `SubjectAccessReview` | yes | Controlling access between referenced resources. Check [docs](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-restrict-cross-namespace-associations.html) to learn more. |
+| `coreauthorization.k8s.io` | `SubjectAccessReview` | yes | Controlling access between referenced resources. Check [docs](/deploy-manage/deploy/cloud-on-k8s/restrict-cross-namespace-resource-associations.md) to learn more. |
 
 And all permissions that the [Using ECK-managed resources](#k8s-eck-permissions-using) chapter specifies.
 

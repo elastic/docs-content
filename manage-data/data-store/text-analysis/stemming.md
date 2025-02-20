@@ -41,10 +41,10 @@ However, most algorithmic stemmers only alter the existing text of a word. This 
 
 The following token filters use algorithmic stemming:
 
-* [`stemmer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html), which provides algorithmic stemming for several languages, some with additional variants.
-* [`kstem`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-kstem-tokenfilter.html), a stemmer for English that combines algorithmic stemming with a built-in dictionary.
-* [`porter_stem`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-porterstem-tokenfilter.html), our recommended algorithmic stemmer for English.
-* [`snowball`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-snowball-tokenfilter.html), which uses [Snowball](https://snowballstem.org/)-based stemming rules for several languages.
+* [`stemmer`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-stemmer-tokenfilter.md), which provides algorithmic stemming for several languages, some with additional variants.
+* [`kstem`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-kstem-tokenfilter.md), a stemmer for English that combines algorithmic stemming with a built-in dictionary.
+* [`porter_stem`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-porterstem-tokenfilter.md), our recommended algorithmic stemmer for English.
+* [`snowball`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-snowball-tokenfilter.md), which uses [Snowball](https://snowballstem.org/)-based stemming rules for several languages.
 
 
 ## Dictionary stemmers [dictionary-stemmers]
@@ -65,10 +65,10 @@ In practice, algorithmic stemmers typically outperform dictionary stemmers. This
 * **Dictionary quality**<br> A dictionary stemmer is only as good as its dictionary. To work well, these dictionaries must include a significant number of words, be updated regularly, and change with language trends. Often, by the time a dictionary has been made available, it’s incomplete and some of its entries are already outdated.
 * **Size and performance**<br> Dictionary stemmers must load all words, prefixes, and suffixes from its dictionary into memory. This can use a significant amount of RAM. Low-quality dictionaries may also be less efficient with prefix and suffix removal, which can slow the stemming process significantly.
 
-You can use the [`hunspell`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-hunspell-tokenfilter.html) token filter to perform dictionary stemming.
+You can use the [`hunspell`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-hunspell-tokenfilter.md) token filter to perform dictionary stemming.
 
 ::::{tip} 
-If available, we recommend trying an algorithmic stemmer for your language before using the [`hunspell`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-hunspell-tokenfilter.html) token filter.
+If available, we recommend trying an algorithmic stemmer for your language before using the [`hunspell`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-hunspell-tokenfilter.md) token filter.
 
 ::::
 
@@ -80,10 +80,10 @@ Sometimes stemming can produce shared root words that are spelled similarly but 
 
 To prevent this and better control stemming, you can use the following token filters:
 
-* [`stemmer_override`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-override-tokenfilter.html), which lets you define rules for stemming specific tokens.
-* [`keyword_marker`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-keyword-marker-tokenfilter.html), which marks specified tokens as keywords. Keyword tokens are not stemmed by subsequent stemmer token filters.
-* [`conditional`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-condition-tokenfilter.html), which can be used to mark tokens as keywords, similar to the `keyword_marker` filter.
+* [`stemmer_override`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-stemmer-override-tokenfilter.md), which lets you define rules for stemming specific tokens.
+* [`keyword_marker`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-keyword-marker-tokenfilter.md), which marks specified tokens as keywords. Keyword tokens are not stemmed by subsequent stemmer token filters.
+* [`conditional`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-condition-tokenfilter.md), which can be used to mark tokens as keywords, similar to the `keyword_marker` filter.
 
-For built-in [language analyzers](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html), you also can use the [`stem_exclusion`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html#_excluding_words_from_stemming) parameter to specify a list of words that won’t be stemmed.
+For built-in [language analyzers](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-lang-analyzer.md), you also can use the [`stem_exclusion`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-lang-analyzer.md#_excluding_words_from_stemming) parameter to specify a list of words that won’t be stemmed.
 
 

@@ -17,7 +17,7 @@ Create, edit, clone, and delete your index templates in the **Index Templates** 
 :class: screenshot
 :::
 
-In {{serverless-full}}, the default **logs** template uses the logsDB index mode to create a [logs data stream](../index-types/logs-data-stream.md).
+In {{serverless-full}}, the default **logs** template uses the logsDB index mode to create a [logs data stream](../data-streams/logs-data-stream.md).
 
 If you don’t have any templates, you can create one using the **Create template** wizard.
 
@@ -52,7 +52,7 @@ In this tutorial, you’ll create an index template and use it to configure two 
     :::
 
 2. Define index settings. These are optional. For this tutorial, leave this section blank.
-3. Define a mapping that contains an [object](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) field named `geo` with a child [`geo_point`](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) field named `coordinates`:
+3. Define a mapping that contains an [object](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md) field named `geo` with a child [`geo_point`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) field named `coordinates`:
 
     :::{image} ../../../images/elasticsearch-reference-management-index-templates-mappings.png
     :alt: Mapped fields page

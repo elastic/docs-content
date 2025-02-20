@@ -1,5 +1,6 @@
 ---
 mapped_urls:
+  - https://www.elastic.co/guide/en/cloud/current/index.html
   - https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html
   - https://www.elastic.co/guide/en/cloud/current/ec-prepare-production.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-getting-started.html
@@ -49,3 +50,11 @@ $$$faq-what$$$
 $$$faq-where$$$
 
 $$$faq-x-pack$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-getting-started.md](/raw-migrated-files/cloud/cloud/ec-getting-started.md)
+* [/raw-migrated-files/cloud/cloud/ec-prepare-production.md](/raw-migrated-files/cloud/cloud/ec-prepare-production.md)
+* [/raw-migrated-files/cloud/cloud/ec-faq-getting-started.md](/raw-migrated-files/cloud/cloud/ec-faq-getting-started.md)
+* [/raw-migrated-files/cloud/cloud/ec-about.md](/raw-migrated-files/cloud/cloud/ec-about.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-configure.md](/raw-migrated-files/cloud/cloud-heroku/ech-configure.md)

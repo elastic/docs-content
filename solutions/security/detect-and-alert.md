@@ -28,7 +28,7 @@ Use the detection engine to create and manage rules and view the alerts these ru
 :class: screenshot
 :::
 
-In addition to creating [your own rules](/solutions/security/detect-and-alert/create-detection-rule.md), enable [Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) to immediately start detecting suspicious activity. For detailed information on all the prebuilt rules, see the [*Prebuilt rule reference*](https://www.elastic.co/guide/en/security/current/prebuilt-rules.html) section. Once the prebuilt rules are loaded and running, [*Tune detection rules*](/solutions/security/detect-and-alert/tune-detection-rules.md) and [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) explain how to modify the rules to reduce false positives and get a better set of actionable alerts. You can also use exceptions and value lists when creating or modifying your own rules.
+In addition to creating [your own rules](/solutions/security/detect-and-alert/create-detection-rule.md), enable [Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#load-prebuilt-rules) to immediately start detecting suspicious activity. For detailed information on all the prebuilt rules, see the [*Prebuilt rule reference*](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules.md) section. Once the prebuilt rules are loaded and running, [*Tune detection rules*](/solutions/security/detect-and-alert/tune-detection-rules.md) and [Add and manage exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md) explain how to modify the rules to reduce false positives and get a better set of actionable alerts. You can also use exceptions and value lists when creating or modifying your own rules.
 
 There are several special prebuilt rules you need to know about:
 
@@ -141,5 +141,5 @@ Depending on your privileges and whether detection system indices have already b
 
 ## Using logsdb index mode [detections-logsdb-index-mode]
 
-To learn how your rules and alerts are affected by using the [logsdb index mode](/manage-data/data-store/index-types/logs-data-stream.md), refer to [*Using logsdb index mode with {{elastic-sec}}*](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md).
+To learn how your rules and alerts are affected by using the [logsdb index mode](/manage-data/data-store/data-streams/logs-data-stream.md), refer to [*Using logsdb index mode with {{elastic-sec}}*](/solutions/security/detect-and-alert/using-logsdb-index-mode-with-elastic-security.md).
 

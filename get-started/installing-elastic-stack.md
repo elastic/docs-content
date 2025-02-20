@@ -29,12 +29,12 @@ For more information on supported network configurations, refer to [{{es}} Inges
 
 Install the Elastic Stack products you want to use in the following order:
 
-1. [Elasticsearch]({{ref}}/install-elasticsearch.html)
-2. [Kibana]({{kibana-ref}}/install.html) 
-3. [Logstash]({{logstash-ref}}/installing-logstash.html)
-4. [Elastic Agent]({{fleet-guide}}/elastic-agent-installation.html) or [Beats]({{beats-ref}}/getting-started.html)
-5. [APM]({{apm-guide-ref}}/apm-quick-start.html)
-6. [Elasticsearch Hadoop]({{hadoop-ref}}/install.html)
+1. [Elasticsearch](/deploy-manage/deploy/self-managed/installing-elasticsearch.md)
+2. [Kibana](/deploy-manage/deploy/self-managed/install-kibana.md) 
+3. [Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/installing-logstash.md)
+4. [Elastic Agent](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) or [Beats](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md)
+5. [APM](https://www.elastic.co/guide/en/apm/guide/current/apm-quick-start.html)
+6. [Elasticsearch Hadoop](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/ingestion-tools/elasticsearch-hadoop/installation.md)
 
 Installing in this order ensures that the components each product depends on are in place.
 

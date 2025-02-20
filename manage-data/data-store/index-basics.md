@@ -12,7 +12,7 @@ This content applies to: [![Elasticsearch](/images/serverless-es-badge.svg "")](
 An index is a fundamental unit of storage in {{es}}. It is a collection of documents uniquely identified by a name or an [alias](/manage-data/data-store/aliases.md). This unique name is important because it’s used to target the index in search queries and other operations.
 
 ::::{tip} 
-A closely related concept is a [data stream](/manage-data/data-store/index-types/data-streams.md). This index abstraction is optimized for append-only timestamped data, and is made up of hidden, auto-generated backing indices. If you’re working with timestamped data, we recommend the [Elastic Observability](https://www.elastic.co/guide/en/observability/current) solution for additional tools and optimized content.
+A closely related concept is a [data stream](/manage-data/data-store/data-streams.md). This index abstraction is optimized for append-only timestamped data, and is made up of hidden, auto-generated backing indices. If you’re working with timestamped data, we recommend the [Elastic Observability](https://www.elastic.co/guide/en/observability/current) solution for additional tools and optimized content.
 ::::
 
 ## Index components
@@ -52,7 +52,7 @@ A simple {{es}} document might look like this:
 
 ### Metadata fields [elasticsearch-intro-documents-fields-data-metadata] 
 
-An indexed document contains data and metadata. [Metadata fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html) are system fields that store information about the documents. In {{es}}, metadata fields are prefixed with an underscore. For example, the following fields are metadata fields:
+An indexed document contains data and metadata. [Metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system fields that store information about the documents. In {{es}}, metadata fields are prefixed with an underscore. For example, the following fields are metadata fields:
 
 * `_index`: The name of the index where the document is stored.
 * `_id`: The document’s ID. IDs must be unique per index.
@@ -60,7 +60,7 @@ An indexed document contains data and metadata. [Metadata fields](https://www.el
 
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings] 
 
-Each index has a [mapping](/manage-data/data-store/mapping.md) or schema for how the fields in your documents are indexed. A mapping defines the [data type](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html) for each field, how the field should be indexed, and how it should be stored.
+Each index has a [mapping](/manage-data/data-store/mapping.md) or schema for how the fields in your documents are indexed. A mapping defines the [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
 
 ## Index management
 
@@ -77,14 +77,14 @@ Investigate your indices and perform operations from the **Indices** view.
 :class: screenshot
 :::
 
-* To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html).
-* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-follow.html), a [rollup index](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-get-rollup-index-caps.html), or [frozen](https://www.elastic.co/guide/en/elasticsearch/reference/current/unfreeze-index-api.html).
-* To drill down into the index [mappings](/manage-data/data-store/mapping.md), [settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
+* To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
+* To drill down into the index [mappings](/manage-data/data-store/mapping.md), [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 * To create new indices, use the **Create index** wizard.
 
 ### Manage data streams
 
-A [data stream](/manage-data/data-store/index-types/data-streams.md) lets you store append-only time series data across multiple indices while giving you a single named resource for requests. 
+A [data stream](/manage-data/data-store/data-streams.md) lets you store append-only time series data across multiple indices while giving you a single named resource for requests. 
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.
 
@@ -132,7 +132,7 @@ Create, edit, clone, and delete your component templates in the **Component Temp
 
 ### Manage enrich policies
 
-An [enrich policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-enriching-data.html#enrich-policy) is a set of configuration options used to add the right enrich data to the right incoming documents.
+An [enrich policy](/manage-data/ingest/transform-enrich/data-enrichment.md#enrich-policy) is a set of configuration options used to add the right enrich data to the right incoming documents.
 
 Add data from your existing indices to incoming documents using the **Enrich Policies** view.
 

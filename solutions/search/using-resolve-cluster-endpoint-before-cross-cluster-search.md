@@ -10,7 +10,7 @@ applies:
 
 You may want to exclude a cluster or index from a search when:
 
-1. A remote cluster could not be connected to and is configured with `skip_unavailable`=`false`. Executing a {{ccs}} under those conditions will cause [the entire search to fail](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#cross-cluster-search-failures).
+1. A remote cluster could not be connected to and is configured with `skip_unavailable`=`false`. Executing a {{ccs}} under those conditions will cause [the entire search to fail](/solutions/search/cross-cluster-search.md#cross-cluster-search-failures).
 2. A cluster has no matching indices, aliases or data streams for the index expression (or your user does not have permissions to search them). For example, suppose your index expression is `logs*,remote1:logs*` and the `remote1` cluster has no indices, aliases or data streams that match `logs*`. In that case, that cluster will return no results from that cluster if you include it in a {{ccs}}.
 3. The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the "error" field in the `_resolve/cluster` response will be present. (This is also where security/permission errors will be shown.)
 4. A remote cluster is an older version that does not support the feature you want to use in your search.

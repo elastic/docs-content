@@ -7,7 +7,7 @@ mapped_pages:
 
 # Requests routing to Elasticsearch nodes [k8s-traffic-splitting]
 
-The default Kubernetes service created by ECK, named `<cluster_name>-es-http`, is configured to include all the Elasticsearch nodes in that cluster. This configuration is good to get started and is adequate for most use cases. However, if you are operating an Elasticsearch cluster with [different node types](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html) and want control over which nodes handle which types of traffic, you should create additional Kubernetes services yourself.
+The default Kubernetes service created by ECK, named `<cluster_name>-es-http`, is configured to include all the Elasticsearch nodes in that cluster. This configuration is good to get started and is adequate for most use cases. However, if you are operating an Elasticsearch cluster with [different node types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md) and want control over which nodes handle which types of traffic, you should create additional Kubernetes services yourself.
 
 As an alternative, you can use features provided by third-party software such as service meshes and ingress controllers to achieve more advanced traffic management configurations. Check the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/recipes) in the ECK source repository for a few examples.
 

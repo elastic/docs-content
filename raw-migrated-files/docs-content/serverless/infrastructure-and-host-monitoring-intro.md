@@ -11,7 +11,7 @@ Explore the topics in this section to learn how to observe and monitor hosts and
 | --- | --- |
 | [Analyze infrastructure and host metrics](../../../solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) | Visualize infrastructure metrics to help diagnose problematic spikes, identify high resource utilization, automatically discover and track pods, and unify your metrics with other observability data. |
 | [Troubleshooting](../../../troubleshoot/observability/troubleshooting-infrastructure-monitoring.md) | Troubleshoot common issues on your own or ask for help. |
-| [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html) | Learn about the key metrics displayed in the Infrastructure UI and how they are calculated. |
+| [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference-serverless.md) | Learn about the key metrics displayed in the Infrastructure UI and how they are calculated. |
 
 
 

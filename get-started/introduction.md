@@ -100,7 +100,7 @@ Don’t worry if you have hundreds of dashboards that need to be tagged. Use [**
 
 ## Secure {{kib}} [intro-kibana-Security]
 
-{{kib}} offers a range of security features for you to control who has access to what. [Security is enabled automatically](../deploy-manage/security/security-certificates-keys.md) when you enroll {{kib}} with a secured {{es}} cluster. For a description of all available configuration options, refer to [Security settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html).
+{{kib}} offers a range of security features for you to control who has access to what. [Security is enabled automatically](../deploy-manage/security/security-certificates-keys.md) when you enroll {{kib}} with a secured {{es}} cluster. For a description of all available configuration options, refer to [Security settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md).
 
 
 ### Log in [_log_in]

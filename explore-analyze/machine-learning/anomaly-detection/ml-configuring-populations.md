@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/master/ml-configuring-populations.html
 ---
@@ -22,7 +22,7 @@ Population analysis is resource-efficient and scales well, enabling the analysis
 
 ## Creating population jobs [creating-population-jobs]
 
-1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](https://www.elastic.co/guide/en/kibana/current/kibana-concepts-analysts.html#_finding_your_apps_and_objects).
+1. In {{kib}}, navigate to **Jobs**. To open **Jobs**, find **{{ml-app}} > Anomaly Detection** in the main menu, or use the [global search field](/explore-analyze/query-filter/filtering.md#_finding_your_apps_and_objects).
 2. Click **Create job**, select the {{data-source}} you want to analyze.
 3. Select the **Population** wizard from the list.
 4. Choose a population field - it’s the `clientip` field in this example - and the metric you want to use for the analysis - `Mean(bytes)` in this example.

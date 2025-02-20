@@ -51,13 +51,13 @@ The following pages detail installing and managing the {{agent}} in different mo
 
     Install an {{agent}} and use {{fleet}} in {{kib}} to define, configure, and manage your agents in a central location.
 
-    Refer to [install {{fleet}}-managed {{agent}}](https://www.elastic.co/guide/en/fleet/current/install-fleet-managed-elastic-agent.html).
+    Refer to [install {{fleet}}-managed {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md).
 
 * **{{agent}} in a containerized environment**
 
     Run an {{agent}} inside of a container—either with {{fleet-server}} or standalone.
 
-    Refer to [install {{agent}} in a containerized environment](https://www.elastic.co/guide/en/fleet/current/install-elastic-agents-in-containers.html).
+    Refer to [install {{agent}} in a containerized environment](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents-in-containers.md).
 
 
 
@@ -65,9 +65,9 @@ The following pages detail installing and managing the {{agent}} in different mo
 
 {{filebeat}} is a lightweight shipper for forwarding and centralizing log data. Installed as a service on your servers, {{filebeat}} monitors the log files or locations that you specify, collects log events, and forwards them either to [{{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current) or [Logstash](https://www.elastic.co/guide/en/logstash/current) for indexing.
 
-* [{{filebeat}} overview](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html): general information on {{filebeat}} and how it works.
-* [{{filebeat}} quick start](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html): basic installation instructions to get you started.
-* [Set up and run {{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/setting-up-and-running.html): information on how to install, set up, and run {{filebeat}}.
+* [{{filebeat}} overview](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-overview.md): general information on {{filebeat}} and how it works.
+* [{{filebeat}} quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md): basic installation instructions to get you started.
+* [Set up and run {{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/setting-up-running.md): information on how to install, set up, and run {{filebeat}}.
 
 
 ## Parse and organize your logs [logs-configure-data-checklist] 
@@ -76,7 +76,7 @@ To get started parsing and organizing your logs, refer to [Parse and organize lo
 
 The following resources provide information on important concepts related to parsing and organizing your logs:
 
-* [Data streams](../../../manage-data/data-store/index-types/data-streams.md): Efficiently store append-only time series data in multiple backing indices partitioned by time and size.
+* [Data streams](../../../manage-data/data-store/data-streams.md): Efficiently store append-only time series data in multiple backing indices partitioned by time and size.
 * [Data views](../../../explore-analyze/find-and-organize/data-views.md): Query log entries from the data streams of specific datasets or namespaces.
 * [Index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md): Configure the built-in logs policy based on your application’s performance, resilience, and retention requirements.
 * [Ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md): Parse and transform log entries into a suitable format before indexing.

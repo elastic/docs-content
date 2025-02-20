@@ -1,6 +1,6 @@
 # Secure settings [secure-settings]
 
-Some settings are sensitive, and relying on filesystem permissions to protect their values is not sufficient. For this use case, {{es}} provides a keystore and the [`elasticsearch-keystore` tool](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-keystore.html) to manage the settings in the keystore.
+Some settings are sensitive, and relying on filesystem permissions to protect their values is not sufficient. For this use case, {{es}} provides a keystore and the [`elasticsearch-keystore` tool](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) to manage the settings in the keystore.
 
 ::::{important} 
 Only some settings are designed to be read from the keystore. Adding unsupported settings to the keystore causes the validation in the `_nodes/reload_secure_settings` API to fail and if not addressed, will cause {{es}} to fail to start. To see whether a setting is supported in the keystore, look for a "Secure" qualifier in the setting reference.
@@ -37,13 +37,13 @@ When changing multiple **reloadable** secure settings, modify all of them on eac
 There are reloadable secure settings for:
 
 * [The Azure repository plugin](../../../deploy-manage/tools/snapshot-and-restore/azure-repository.md)
-* [The EC2 discovery plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/discovery-ec2-usage.html#_configuring_ec2_discovery)
+* [The EC2 discovery plugin](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/discovery-ec2-usage.md#_configuring_ec2_discovery)
 * [The GCS repository plugin](../../../deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
 * [The S3 repository plugin](../../../deploy-manage/tools/snapshot-and-restore/s3-repository.md)
-* [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html)
-* [{{watcher}} settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html)
-* [JWT realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-jwt-settings)
-* [Active Directory realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings)
-* [LDAP realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings)
+* [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md)
+* [{{watcher}} settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md)
+* [JWT realm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-jwt-settings)
+* [Active Directory realm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings)
+* [LDAP realm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)
 * [Remote cluster credentials for the API key based security model](../../../deploy-manage/remote-clusters/remote-clusters-settings.md#remote-cluster-credentials-setting)
 

@@ -41,7 +41,7 @@ To this end, when you create indices for search use cases, (including web crawle
 
 This pipeline is called `search-default-ingestion`. While it is a "managed" pipeline (meaning it should not be tampered with), you can view its details via the Kibana UI or the Elasticsearch API. You can also [read more about its contents below](#ingest-pipeline-search-details-generic-reference).
 
-You can control whether you run some of these processors. While all features are enabled by default, they are eligible for opt-out. For [Elastic crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) and [connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html). , you can opt out (or back in) per index, and your choices are saved. For API indices, you can opt out (or back in) by including specific fields in your documents. [See below for details](#ingest-pipeline-search-pipeline-settings-using-the-api).
+You can control whether you run some of these processors. While all features are enabled by default, they are eligible for opt-out. For [Elastic crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) and [connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md). , you can opt out (or back in) per index, and your choices are saved. For API indices, you can opt out (or back in) by including specific fields in your documents. [See below for details](#ingest-pipeline-search-pipeline-settings-using-the-api).
 
 At the deployment level, you can change the default settings for all new indices. This will not effect existing indices.
 
@@ -111,12 +111,12 @@ This pipeline is a "managed" pipeline. That means that it is not intended to be 
 
 #### Processors [ingest-pipeline-search-details-generic-reference-processors]
 
-1. `attachment` - this uses the [Attachment](https://www.elastic.co/guide/en/elasticsearch/reference/current/attachment.html) processor to convert any binary data stored in a document’s `_attachment` field to a nested object of plain text and metadata.
-2. `set_body` - this uses the [Set](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html) processor to copy any plain text extracted from the previous step and persist it on the document in the `body` field.
-3. `remove_replacement_chars` - this uses the [Gsub](https://www.elastic.co/guide/en/elasticsearch/reference/current/gsub-processor.html) processor to remove characters like "�" from the `body` field.
-4. `remove_extra_whitespace` - this uses the [Gsub](https://www.elastic.co/guide/en/elasticsearch/reference/current/gsub-processor.html) processor to replace consecutive whitespace characters with single spaces in the `body` field. While not perfect for every use case (see below for how to disable), this can ensure that search experiences display more content and highlighting and less empty space for your search results.
-5. `trim` - this uses the [Trim](https://www.elastic.co/guide/en/elasticsearch/reference/current/trim-processor.html) processor to remove any remaining leading or trailing whitespace from the `body` field.
-6. `remove_meta_fields` - this final step of the pipeline uses the [Remove](https://www.elastic.co/guide/en/elasticsearch/reference/current/remove-processor.html) processor to remove special fields that may have been used elsewhere in the pipeline, whether as temporary storage or as control flow parameters.
+1. `attachment` - this uses the [Attachment](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/attachment.md) processor to convert any binary data stored in a document’s `_attachment` field to a nested object of plain text and metadata.
+2. `set_body` - this uses the [Set](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/set-processor.md) processor to copy any plain text extracted from the previous step and persist it on the document in the `body` field.
+3. `remove_replacement_chars` - this uses the [Gsub](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/gsub-processor.md) processor to remove characters like "�" from the `body` field.
+4. `remove_extra_whitespace` - this uses the [Gsub](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/gsub-processor.md) processor to replace consecutive whitespace characters with single spaces in the `body` field. While not perfect for every use case (see below for how to disable), this can ensure that search experiences display more content and highlighting and less empty space for your search results.
+5. `trim` - this uses the [Trim](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/trim-processor.md) processor to remove any remaining leading or trailing whitespace from the `body` field.
+6. `remove_meta_fields` - this final step of the pipeline uses the [Remove](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/remove-processor.md) processor to remove special fields that may have been used elsewhere in the pipeline, whether as temporary storage or as control flow parameters.
 
 
 #### Control flow parameters [ingest-pipeline-search-details-generic-reference-params]
@@ -161,8 +161,8 @@ This pipeline is a "managed" pipeline. That means that it is not intended to be 
 
 In addition to the processors inherited from the [`search-default-ingestion` pipeline](#ingest-pipeline-search-details-generic-reference), the index-specific pipeline also defines:
 
-* `index_ml_inference_pipeline` - this uses the [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/pipeline-processor.html) processor to run the `<index-name>@ml-inference` pipeline. This processor will only be run if the source document includes a `_run_ml_inference` field with the value `true`.
-* `index_custom_pipeline` - this uses the [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/pipeline-processor.html) processor to run the `<index-name>@custom` pipeline.
+* `index_ml_inference_pipeline` - this uses the [Pipeline](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/pipeline-processor.md) processor to run the `<index-name>@ml-inference` pipeline. This processor will only be run if the source document includes a `_run_ml_inference` field with the value `true`.
+* `index_custom_pipeline` - this uses the [Pipeline](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/pipeline-processor.md) processor to run the `<index-name>@custom` pipeline.
 
 
 ##### Control flow parameters [ingest-pipeline-search-details-specific-reference-params]

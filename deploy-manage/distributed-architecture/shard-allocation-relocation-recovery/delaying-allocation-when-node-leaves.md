@@ -13,7 +13,7 @@ When a node leaves the cluster for whatever reason, intentional or otherwise, th
 
 These actions are intended to protect the cluster against data loss by ensuring that every shard is fully replicated as soon as possible.
 
-Even though we throttle concurrent recoveries both at the [node level](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html) and at the [cluster level](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-shard-allocation-settings), this shard-shuffle can still put a lot of extra load on the cluster which may not be necessary if the missing node is likely to return soon. Imagine this scenario:
+Even though we throttle concurrent recoveries both at the [node level](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md) and at the [cluster level](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-settings), this shard-shuffle can still put a lot of extra load on the cluster which may not be necessary if the missing node is likely to return soon. Imagine this scenario:
 
 * Node 5 loses network connectivity.
 * The master promotes a replica shard to primary for each primary that was on Node 5.

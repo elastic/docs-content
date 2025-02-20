@@ -51,7 +51,7 @@ You can also search and filter the table based on affected resources, such as in
 :alt: {{es}} Health page with details and troubleshooting
 :::
 
-For each issue you can either use a troubleshooting link or get a suggestion to contact support, in case you need help. The [troubleshooting documentation](../../../troubleshoot/elasticsearch/elasticsearch-reference.md) for {{es}} provides more details on specific errors.
+For each issue you can either use a troubleshooting link or get a suggestion to contact support, in case you need help. The [troubleshooting documentation](../../../troubleshoot/elasticsearch/elasticsearch.md) for {{es}} provides more details on specific errors.
 
 
 ## {{es}} cluster performance [ech-es-cluster-performance]

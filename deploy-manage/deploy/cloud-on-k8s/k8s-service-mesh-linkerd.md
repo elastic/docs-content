@@ -42,7 +42,7 @@ kubectl annotate namespace elastic-stack linkerd.io/inject=enabled
 
 Any Elasticsearch, Kibana, or APM Server resources deployed to a namespace with the above annotation will automatically join the mesh.
 
-Alternatively, if you only want specific resources to join the mesh, add the `linkerd.io/inject: enabled` annotation to the `podTemplate` (check [API documentation](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-api-reference.html)) of the resource as follows:
+Alternatively, if you only want specific resources to join the mesh, add the `linkerd.io/inject: enabled` annotation to the `podTemplate` (check [API documentation](asciidocalypse://docs/cloud-on-k8s/docs/reference/cloud/cloud-on-k8s/k8s-api-reference.md)) of the resource as follows:
 
 ```yaml
 podTemplate:

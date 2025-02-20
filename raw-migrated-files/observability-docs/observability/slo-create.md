@@ -6,7 +6,7 @@ navigation_title: "Create an SLO"
 
 
 ::::{important}
-To create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+To create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 
@@ -23,7 +23,7 @@ From here, complete the following steps:
 3. [Describe your SLO](../../../solutions/observability/incident-management/create-an-slo.md#slo-describe).
 
 ::::{note}
-For SLOs to function, the cluster must include one or more nodes with both `ingest` and `transform` [roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles). The roles can exist on the same node or be distributed across separate nodes. On ESS deployments (Elastic Cloud), this is handled by the hot nodes, which serve as both `ingest` and `transform` nodes.
+For SLOs to function, the cluster must include one or more nodes with both `ingest` and `transform` [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles). The roles can exist on the same node or be distributed across separate nodes. On ESS deployments (Elastic Cloud), this is handled by the hot nodes, which serve as both `ingest` and `transform` nodes.
 
 ::::
 
