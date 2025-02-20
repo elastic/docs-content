@@ -1,10 +1,8 @@
 # Run {{es}} [elasticsearch-intro-deploy]
 
-To use {{es}}, you need a running instance of the {{es}} service. You can deploy {{es}} in various ways.
-
 **Quick start option**
 
-* [**Local development**](../../../solutions/search/get-started.md): Get started quickly with a minimal local Docker setup for development and testing.
+* [**Local development**](../../../solutions/search/get-started.md): Get started quickly with {{es}} and {{kib}} for local development and testing.
 
 **Hosted options**
 
