@@ -224,7 +224,6 @@ toc:
       - file: docs-content/serverless/observability-apm-get-started.md
       - file: docs-content/serverless/observability-apm-traces.md
       - file: docs-content/serverless/observability-correlate-application-logs.md
-      - file: docs-content/serverless/observability-discover-and-explore-logs.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
       - file: docs-content/serverless/observability-get-started.md
       - file: docs-content/serverless/observability-log-monitoring.md
@@ -461,7 +460,6 @@ toc:
       - file: observability-docs/observability/apm-traces.md
       - file: observability-docs/observability/application-and-service-monitoring.md
       - file: observability-docs/observability/application-logs.md
-      - file: observability-docs/observability/explore-logs.md
       - file: observability-docs/observability/incident-management.md
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
