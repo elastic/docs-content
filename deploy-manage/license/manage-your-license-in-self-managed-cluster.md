@@ -1,9 +1,12 @@
 ---
+navigation_title: "Self-managed cluster"
+applies_to:
+  self:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/managing-licenses.html
 ---
 
-# Manage your license in self-managed cluster [managing-licenses]
+# Manage your license in a self-managed cluster [managing-licenses]
 
 By default, new installations have a Basic license that never expires. For the full list of features available at the Free and Open Basic subscription level, refer to {{subscriptions}}.
 

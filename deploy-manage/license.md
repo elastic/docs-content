@@ -3,9 +3,18 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-licensing.html
 ---
 
-# Manage your license [ec-licensing]
+# Manage your license  
 
-For more information on what is available with different subscription levels, check [Elasticsearch Service Subscriptions](https://www.elastic.co/elasticsearch/service/pricing). You are entitled to use all of the features in Elasticsearch Service that match your subscription level. Please use them to your heart’s content.
+Your Elastic license determines which features are available. Use the topics in this section to manage your license in your environment:  
 
-Your subscription determines [which features are available](https://www.elastic.co/subscriptions/cloud). For example, machine learning requires a Platinum or Private subscription and is not available if you upgrade to a Gold subscription. Similarly, SAML Single Sign-On requires an Enterprise subscription.
+- [{{ece}}](/deploy-manage/license/manage-your-license-in-ece.md)  
+- [{{eck}}](/deploy-manage/license/manage-your-license-in-eck.md)  
+- [Self-managed cluster](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md)  
 
+## Additional resources  
+
+Explore these resources for details on subscriptions and features:
+
+- [{{stack}} subscriptions](https://www.elastic.co/subscriptions)  
+- [{{ecloud}} features](https://www.elastic.co/subscriptions/cloud)  
+- [{{ecloud}} pricing](https://www.elastic.co/pricing)  
