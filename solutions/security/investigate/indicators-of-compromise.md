@@ -9,7 +9,7 @@ mapped_urls:
 The Indicators page collects data from enabled threat intelligence feeds and provides a centralized view of indicators, also known as indicators of compromise (IoCs). This topic helps you set up the Indicators page and explains how to work with IoCs.
 
 ::::{admonition} Requirements
-* In {{stack}} 9.0.0+, the Indicators page is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
+* In {{stack}}, the Indicators page is an [Enterprise subscription](https://www.elastic.co/pricing) feature.
 * In serverless, the Indicators page requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md)
 * You must have *one* of the following installed on the hosts you want to monitor:
 
