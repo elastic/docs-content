@@ -241,7 +241,6 @@ toc:
       - file: docs-content/serverless/observability-parse-log-data.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-send-application-logs.md
-      - file: docs-content/serverless/observability-slos.md
       - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/observability-triage-slo-burn-rate-breaches.md
       - file: docs-content/serverless/observability-triage-threshold-breaches.md
@@ -500,7 +499,6 @@ toc:
       - file: observability-docs/observability/monitor-status-alert.md
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
-      - file: observability-docs/observability/slo.md
       - file: observability-docs/observability/triage-slo-burn-rate-breaches.md
       - file: observability-docs/observability/triage-threshold-breaches.md
       - file: observability-docs/observability/view-infrastructure-metrics.md
