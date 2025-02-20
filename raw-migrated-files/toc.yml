@@ -226,7 +226,6 @@ toc:
       - file: docs-content/serverless/observability-apm-agents-elastic-apm-agents.md
       - file: docs-content/serverless/observability-apm-get-started.md
       - file: docs-content/serverless/observability-apm-traces.md
-      - file: docs-content/serverless/observability-case-settings.md
       - file: docs-content/serverless/observability-configure-intra-settings.md
       - file: docs-content/serverless/observability-correlate-application-logs.md
       - file: docs-content/serverless/observability-create-a-new-case.md
@@ -515,7 +514,6 @@ toc:
       - file: observability-docs/observability/logs-plaintext.md
       - file: observability-docs/observability/logs-send-application.md
       - file: observability-docs/observability/logs-stream.md
-      - file: observability-docs/observability/manage-cases-settings.md
       - file: observability-docs/observability/manage-cases.md
       - file: observability-docs/observability/monitor-datasets.md
       - file: observability-docs/observability/monitor-infrastructure-and-hosts.md
