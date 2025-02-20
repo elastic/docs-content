@@ -478,7 +478,7 @@ DELETE _data_stream/logs-my_app-default
 ## Restore to a different cluster [restore-different-cluster]
 
 ::::{tip}
-{{ess}} can help you restore snapshots from other deployments. See [Work with snapshots](../../../deploy-manage/tools/snapshot-and-restore.md).
+{{ech}} and {{ece}} can help you restore snapshots from other deployments. Refer to [](./ece-restore-across-clusters.md) for more information.
 ::::
 
 
