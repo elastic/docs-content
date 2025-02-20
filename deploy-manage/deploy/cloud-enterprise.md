@@ -33,7 +33,7 @@ This section covers the following tasks:
   - [](./cloud-enterprise/customize-deployment.md)
   - Use the deployment [Cloud ID](./cloud-enterprise/find-cloud-id.md) and [Endpoint URLs](./cloud-enterprise/find-endpoint-url.md) for clients connection
 
-* Learn how to use the multiple [](./cloud-enterprise/tools-apis.md) available
+* Learn about [](./cloud-enterprise/tools-apis.md) that you can use with ECE
 
 Other sections of the documentation also include important tasks related to ECE:
 
