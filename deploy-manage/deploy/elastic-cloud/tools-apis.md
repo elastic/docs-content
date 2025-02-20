@@ -49,7 +49,7 @@ You can use the [{{ecloud}} API](https://www.elastic.co/docs/api/doc/cloud/) to 
 
 The following APIs allow you to interact with your {{es}} cluster, its data, and the features available to you in your hosted deployment or serverless project.
 
-Note that some [restrictions](../deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using the these APIs on {{ecloud}}.
+Note that some [restrictions](/deploy-manage/deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using the these APIs on {{ecloud}}.
 
 :::::{tab-set}
 :group: serverless-hosted
