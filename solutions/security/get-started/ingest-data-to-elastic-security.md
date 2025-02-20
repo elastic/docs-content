@@ -12,7 +12,7 @@ To ingest data, you can use:
 * The {{agent}} with other integrations, which are available in the [Elastic Package Registry (EPR)](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html#package-registry-intro). To install an integration that works with {{elastic-sec}}, select **Add integrations** in the toolbar on most pages. On the **Integrations** page, select the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
 * **{{beats}}** shippers installed for each system you want to monitor.
 * The {{agent}} to send data from Splunk to {{elastic-sec}}. See [Get started with data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md).
-* Third-party collectors configured to ship ECS-compliant data. [{{elastic-sec}} ECS field reference](https://www.elastic.co/guide/en/serverless/current/security-siem-field-reference.html) provides a list of ECS fields used in {{elastic-sec}}.
+* Third-party collectors configured to ship ECS-compliant data. [{{elastic-sec}} ECS field reference](https://www.elastic.co/guide/en/security/current/security-siem-field-reference.html) provides a list of ECS fields used in {{elastic-sec}}.
 
 ::::{important}
 If you use a third-party collector to ship data to {{elastic-sec}}, you must map its fields to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Additionally, you must add its index to the {{elastic-sec}} indices (update the **`securitySolution:defaultIndex`** [advanced setting](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices).

@@ -61,7 +61,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 
 All of the default index patterns match [{{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/beats-reference.html) and [{{agent}}](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
-You can add or remove any indices and index patterns as required. In {{Serverless}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}, there is no limit.} For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
+You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}, there is no limit.} For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
 ::::{note}
 If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cloud logs are excluded from all queries in the {{security-app}} by default. This is to avoid adding data from cloud monitoring to the app.
