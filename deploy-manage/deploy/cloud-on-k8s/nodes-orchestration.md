@@ -127,7 +127,7 @@ Depending on how the NodeSets are updated, ECK handles the Kubernetes resource r
 
 * The specification of an existing NodeSet is updated. For example, the Elasticsearch configuration, or the PodTemplate resources requirements.
 
-    ECK performs a rolling upgrade of the corresponding Elasticsearch nodes. It follows the [Elasticsearch rolling upgrade best practices](https://www.elastic.co/guide/en/elastic-stack/current/upgrading-elasticsearch.html) to update the underlying Pods while maintaining the availability of the Elasticsearch cluster where possible. In most cases, the process simply involves restarting Elasticsearch nodes one-by-one. Note that some cluster topologies may be impossible to deploy without making the cluster unavailable (check [Limitations](#k8s-orchestration-limitations) ).
+    ECK performs a rolling upgrade of the corresponding Elasticsearch nodes. It follows the [Elasticsearch rolling upgrade best practices](/deploy-manage/upgrade/deployment-or-cluster.md) to update the underlying Pods while maintaining the availability of the Elasticsearch cluster where possible. In most cases, the process simply involves restarting Elasticsearch nodes one-by-one. Note that some cluster topologies may be impossible to deploy without making the cluster unavailable (check [Limitations](#k8s-orchestration-limitations) ).
 
 * An existing NodeSet is renamed.
 
@@ -152,7 +152,7 @@ Due to relying on Kubernetes primitives such as StatefulSets, the ECK orchestrat
     * Clusters containing indices with no replicas
 
 
-If an {{es}} node holds the only copy of a shard, this shard becomes unavailable while the node is upgraded. To ensure [high availability](https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design.html) it is recommended to configure clusters with three master nodes, more than one node per [data tier](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html) and at least one replica per index.
+If an {{es}} node holds the only copy of a shard, this shard becomes unavailable while the node is upgraded. To ensure [high availability](/deploy-manage/production-guidance/availability-and-resilience.md) it is recommended to configure clusters with three master nodes, more than one node per [data tier](/manage-data/lifecycle/data-tiers.md) and at least one replica per index.
 
 * Elasticsearch Pods may stay `Pending` during a rolling upgrade if the Kubernetes scheduler cannot re-schedule them back. This is especially important when using local PersistentVolumes. If the Kubernetes node bound to a local PersistentVolume does not have enough capacity to host an upgraded Pod which was temporarily removed, that Pod will stay `Pending`.
 * Rolling upgrades can only make progress if the Elasticsearch cluster health is green. There are exceptions to this rule if the cluster health is yellow and if the following conditions are satisfied:
@@ -176,7 +176,7 @@ Advanced users may force an upgrade by manually deleting Pods themselves. The de
 Operations that reduce the number of nodes in the cluster cannot make progress without user intervention, if the Elasticsearch index replica settings are incompatible with the intended downscale. Specifically, if the Elasticsearch index settings demand a higher number of shard copies than data nodes in the cluster after the downscale operation, ECK cannot migrate the data away from the node about to be removed. You can address this in the following ways:
 
 * Adjust the Elasticsearch [index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) to a number of replicas that allow the desired node removal.
-* Use [`auto_expand_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-settings) to automatically adjust the replicas to the number of data nodes in the cluster.
+* Use [`auto_expand_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-settings) to automatically adjust the replicas to the number of data nodes in the cluster.
 
 
 ## Advanced control during rolling upgrades [k8s-advanced-upgrade-control]

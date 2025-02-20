@@ -39,8 +39,8 @@ To grant access via IP, use [this list of egress IPs](https://manifest.synthetic
 
 Start by setting up {{fleet-server}} and {{agent}}:
 
-* **Set up {{fleet-server}}**: If you are using {{ecloud}}, {{fleet-server}} will already be provided and you can skip this step. To learn more, refer to [Set up {{fleet-server}}](https://www.elastic.co/guide/en/fleet/current/fleet-server.html).
-* **Create an agent policy**: For more information on agent policies and creating them, refer to [{{agent}} policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#create-a-policy).
+* **Set up {{fleet-server}}**: If you are using {{ecloud}}, {{fleet-server}} will already be provided and you can skip this step. To learn more, refer to [Set up {{fleet-server}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md).
+* **Create an agent policy**: For more information on agent policies and creating them, refer to [{{agent}} policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy).
 
 ::::{important}
 A {{private-location}} should be set up against an agent policy that runs on a single {{agent}}. The {{agent}} must be **enrolled in Fleet** ({{private-location}}s cannot be set up using **standalone** {{agents}}). Do *not* run the same agent policy on multiple agents being used for {{private-location}}s, as you may end up with duplicate or missing tests. {{private-location}}s do not currently load balance tests across multiple {{agents}}. See [Scaling {{private-location}}s](../../../solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-scaling) for information on increasing the capacity within a {{private-location}}.
@@ -68,9 +68,9 @@ To pull the Docker image run:
 docker pull docker.elastic.co/elastic-agent/elastic-agent-complete:8.16.1
 ```
 
-Then enroll and run an {{agent}}. You’ll need an enrollment token and the URL of the {{fleet-server}}. You can use the default enrollment token for your policy or create new policies and [enrollment tokens](https://www.elastic.co/guide/en/fleet/current/fleet-enrollment-tokens.html) as needed.
+Then enroll and run an {{agent}}. You’ll need an enrollment token and the URL of the {{fleet-server}}. You can use the default enrollment token for your policy or create new policies and [enrollment tokens](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-enrollment-tokens.md) as needed.
 
-For more information on running {{agent}} with Docker, refer to [Run {{agent}} in a container](https://www.elastic.co/guide/en/fleet/current/elastic-agent-container.html).
+For more information on running {{agent}} with Docker, refer to [Run {{agent}} in a container](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-container.md).
 
 ```sh
 docker run \
@@ -89,7 +89,7 @@ The `elastic-agent-complete` Docker image requires additional capabilities to op
 
 
 ::::{note}
-You may need to set other environment variables. Learn how in [{{agent}} environment variables guide](https://www.elastic.co/guide/en/fleet/current/agent-environment-variables.html).
+You may need to set other environment variables. Learn how in [{{agent}} environment variables guide](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-environment-variables.md).
 
 ::::
 

@@ -7,7 +7,7 @@ mapped_pages:
 
 This example demonstrates how to use the Elasticsearch Service RESTful API to create a deployment with autoscaling enabled.
 
-The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](ec-autoscaling-example.md). For more information about using the Elasticsearch Service API in general, check [RESTful API](https://www.elastic.co/guide/en/cloud/current/ec-restful-api.html).
+The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](ec-autoscaling-example.md). For more information about using the Elasticsearch Service API in general, check [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-restful.md).
 
 
 ## Requirements [ec_requirements] 

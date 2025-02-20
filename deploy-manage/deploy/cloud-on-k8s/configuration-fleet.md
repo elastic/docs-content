@@ -9,7 +9,7 @@ mapped_pages:
 
 {{fleet}}-managed {{agents}} must connect to {{fleet-server}} to receive their configurations. You can deploy {{fleet-server}} instances using ECKs Agent CRD with the appropriate configuration, as shown in [Fleet mode and Fleet Server](#k8s-elastic-agent-fleet-configuration-fleet-mode-and-fleet-server).
 
-To know more about {{fleet}} architecture and related components, check the {{fleet}} [documentation](https://www.elastic.co/guide/en/fleet/current/fleet-server.html).
+To know more about {{fleet}} architecture and related components, check the {{fleet}} [documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md).
 
 ## {{fleet}} mode and {{fleet-server}} [k8s-elastic-agent-fleet-configuration-fleet-mode-and-fleet-server]
 
@@ -240,7 +240,7 @@ spec:
 ...
 ```
 
-Please note that the environment variables related to policy selection mentioned in the {{agent}} [docs](https://www.elastic.co/guide/en/fleet/current/agent-environment-variables.html) like `FLEET_SERVER_POLICY_ID` will be managed by the ECK operator.
+Please note that the environment variables related to policy selection mentioned in the {{agent}} [docs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-environment-variables.md) like `FLEET_SERVER_POLICY_ID` will be managed by the ECK operator.
 
 
 ## Running as a non-root user [k8s-elastic-agent-running-as-a-non-root-user]

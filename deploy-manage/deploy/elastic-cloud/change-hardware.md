@@ -5,7 +5,7 @@ mapped_pages:
 
 # Change hardware [ec-change-hardware-for-a-specific-resource]
 
-The virtual hardware on which Elastic stack deployments run is defined by instance configurations. To learn more about what an instance configuration is, refer to [Instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations).
+The virtual hardware on which Elastic stack deployments run is defined by instance configurations. To learn more about what an instance configuration is, refer to [Instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations).
 
 When a deployment is created, each Elasticsearch tier and stateless resource (e.g., Kibana) gets an instance configuration assigned to it, based on the hardware profile used. The combination of instance configurations defined within each hardware profile is designed to provide the best possible outcome for each use case. Therefore, it is not advisable to use instance configurations that are not specified on the hardware profile, except in specific situations in which we may need to migrate an Elasticsearch tier or stateless resource to a different hardware type. An example of such a scenario is when a cloud provider stops supporting a hardware type in a specific region.
 
@@ -20,7 +20,7 @@ Prerequisites:
 
 Follow these steps to migrate to a different instance configuration, replacing the default `$EC_API_KEY` value with your actual API key:
 
-1. From the  [list of instance configurations available for each region](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html), select the target instance configuration you want to migrate to.
+1. From the  [list of instance configurations available for each region](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md), select the target instance configuration you want to migrate to.
 2. Get the deployment update payload from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) **Edit** page, by selecting **Equivalent API request**, and store it in a file called `migrate_instance_configuration.json`.
 
     Example payload containing relevant data for migrating the hot Elasticsearch tier:
@@ -78,6 +78,6 @@ Having an instance configuration mismatch between the deployment and the hardwar
 
 ## Deprecated instance configurations (ICs) and deployment templates (DTs) [ec-deprecated-icdt]
 
-A list of deprecated and valid ICs/DTs can be found on the [Available regions, deployment templates and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) page, as well as through the API, using `hide_deprecated` to return valid ICs/DTs. For example, to return valid ICs/DTs the following request can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&hide_deprecated=true`. To list only the deprecated ones, this can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&metadata=legacy:true`.
+A list of deprecated and valid ICs/DTs can be found on the [Available regions, deployment templates and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) page, as well as through the API, using `hide_deprecated` to return valid ICs/DTs. For example, to return valid ICs/DTs the following request can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&hide_deprecated=true`. To list only the deprecated ones, this can be used: `https://api.elastic-cloud.com/api/v1/deployments/templates?region=us-west-2&metadata=legacy:true`.
 
 If a deprecated IC/DT is already in use, it can continue to be used. However, creating or migrating to a deprecated IC/DT is no longer possible and will result in a plan failing. In order to migrate to a valid IC/DT, navigate to the **Edit hardware profile** option in the Cloud UI or use the [Deployment API](https://www.elastic.co/docs/api/doc/cloud/operation/operation-migrate-deployment-template).

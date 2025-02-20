@@ -11,7 +11,7 @@ Unfortunately, sometimes things do not go as expected and your elasticsearch-had
 
 ### `EsHadoopNoNodesLeftException` [_eshadoopnonodesleftexception] 
 
-Test that {{es}} is reacheable from the Spark/Hadoop cluster where the job is running. Your machine might reach it but that is not where the actual code will be running. If ES is accessible, minimize the number of tasks and their bulk size; if {{es}} is overloaded, it will keep falling behind, GC will kick in and eventually its nodes will become unresponsive causing clients to think the machines have died. See the [*Performance considerations*](https://www.elastic.co/guide/en/elasticsearch/hadoop/current/performance.html) section for more details.
+Test that {{es}} is reacheable from the Spark/Hadoop cluster where the job is running. Your machine might reach it but that is not where the actual code will be running. If ES is accessible, minimize the number of tasks and their bulk size; if {{es}} is overloaded, it will keep falling behind, GC will kick in and eventually its nodes will become unresponsive causing clients to think the machines have died. See the [*Performance considerations*](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/ingestion-tools/elasticsearch-hadoop/performance-considerations.md) section for more details.
 
 
 ### Test your network [_test_your_network] 
@@ -53,7 +53,7 @@ While logging helps with bugs and errors, for runtime behavior we strongly recom
 
 ### Increase logging [_increase_logging] 
 
-Logging gives you a lot of insight into what is going on. Hadoop, Spark and {{es}} have extensive logging mechanisms as [does](https://www.elastic.co/guide/en/elasticsearch/hadoop/current/logging.html) elasticsearch-hadoop however use that judiciously: too much logging can hide the actual issue so again, do it in small increments.
+Logging gives you a lot of insight into what is going on. Hadoop, Spark and {{es}} have extensive logging mechanisms as [does](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/ingestion-tools/elasticsearch-hadoop/logging.md) elasticsearch-hadoop however use that judiciously: too much logging can hide the actual issue so again, do it in small increments.
 
 
 ### Measure, do not assume [_measure_do_not_assume] 

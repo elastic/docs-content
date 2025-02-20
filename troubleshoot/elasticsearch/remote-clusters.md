@@ -49,9 +49,9 @@ The API should return `"connected" : true`. When using [API key authentication](
 
 When using API key authentication, cross-cluster traffic happens on the remote cluster interface, instead of the transport interface. The remote cluster interface is not enabled by default. This means a node is not ready to accept incoming cross-cluster requests by default, while it is ready to send outgoing cross-cluster requests. Ensure you’ve enabled the remote cluster server on every node of the remote cluster. In `elasticsearch.yml`:
 
-* Set [`remote_cluster_server.enabled`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote-cluster-network-settings) to `true`.
-* Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
-* Optionally, configure the remote server port using [`remote_cluster.port`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote_cluster.port) (defaults to `9443`).
+* Set [`remote_cluster_server.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
+* Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
+* Optionally, configure the remote server port using [`remote_cluster.port`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (defaults to `9443`).
 
 
 
@@ -108,7 +108,7 @@ Note that with some network configurations it could take minutes or hours for th
 #### Resolution [_resolution_2]
 
 * Ensure that the network between the clusters is as reliable as possible.
-* Ensure that the network is configured to permit [Long-lived idle connections](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections).
+* Ensure that the network is configured to permit [Long-lived idle connections](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections).
 * Ensure that the network is configured to detect faulty connections quickly. In particular, you must enable and fully support TCP keepalives, and set a short [retransmission timeout](../../deploy-manage/deploy/self-managed/system-config-tcpretries.md).
 * On Linux systems, execute `ss -tonie` to verify the details of the configuration of each network connection between the clusters.
 * If the problems persist, capture network packets at both ends of the connection and analyse the traffic to look for delays and lost messages.

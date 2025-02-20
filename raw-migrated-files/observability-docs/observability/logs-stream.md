@@ -201,7 +201,7 @@ inputs:
 Next, set the values for these fields:
 
 * `hosts` – Copy the {{es}} endpoint from **Help menu (![help icon](../../../images/observability-help-icon.png "")) → Connection details**. For example, `https://my-deployment.es.us-central1.gcp.cloud.es.io:443`.
-* `api-key` – Use an API key to grant the agent access to {{es}}. To create an API key for your agent, refer to the [Create API keys for standalone agents](https://www.elastic.co/guide/en/fleet/current/grant-access-to-elasticsearch.html#create-api-key-standalone-agent) documentation.
+* `api-key` – Use an API key to grant the agent access to {{es}}. To create an API key for your agent, refer to the [Create API keys for standalone agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/grant-access-to-elasticsearch.md#create-api-key-standalone-agent) documentation.
 
     ::::{note}
     The API key format should be `<id>:<key>`. Make sure you selected **Beats** when you created your API key. Base64 encoded API keys are not currently supported in this configuration.
@@ -358,7 +358,7 @@ If you’re not seeing your log files in {{kib}}, verify the following in the `e
 * The path to your logs file under `paths` is correct.
 * Your API key is in `<id>:<key>` format. If not, your API key may be in an unsupported format, and you’ll need to create an API key in **Beats** format.
 
-If you’re still running into issues, see [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](https://www.elastic.co/guide/en/fleet/current/elastic-agent-configuration.html).
+If you’re still running into issues, see [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/configure-standalone-elastic-agents.md).
 
 
 ## Next steps [logs-stream-next-steps]

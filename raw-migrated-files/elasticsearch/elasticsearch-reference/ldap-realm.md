@@ -29,7 +29,7 @@ To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to use
 
 2. To configure an `ldap` realm with user search:
 
-    1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the `url` and `order` of the LDAP server, and set `user_search.base_dn` to the container DN where the users are searched for. See [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
+    1. Add a realm configuration to `elasticsearch.yml` under the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the `url` and `order` of the LDAP server, and set `user_search.base_dn` to the container DN where the users are searched for. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
 
         For example, the following snippet shows an LDAP realm configured with a user search:
 
@@ -66,7 +66,7 @@ To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to use
 
 3. To configure an `ldap` realm with user DN templates:
 
-    1. Add a realm configuration to `elasticsearch.yml` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the `url` and `order` of the LDAP server, and specify at least one template with the `user_dn_templates` option. See [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
+    1. Add a realm configuration to `elasticsearch.yml` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the `url` and `order` of the LDAP server, and specify at least one template with the `user_dn_templates` option. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an `ldap` realm.
 
         For example, the following snippet shows an LDAP realm configured with user DN templates:
 
@@ -95,7 +95,7 @@ To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to use
 
 4. (Optional) Configure how the {{security-features}} interact with multiple LDAP servers.
 
-    The `load_balance.type` setting can be used at the realm level. The {{es}} {{security-features}} support both failover and load balancing modes of operation. See [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings).
+    The `load_balance.type` setting can be used at the realm level. The {{es}} {{security-features}} support both failover and load balancing modes of operation. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).
 
 5. (Optional) To protect passwords, [encrypt communications between {{es}} and the LDAP server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#tls-ldap).
 6. Restart {{es}}.
@@ -195,7 +195,7 @@ Additional fields can be included in the user’s metadata by configuring the `m
 
 The `load_balance.type` setting can be used at the realm level to configure how the {{security-features}} should interact with multiple LDAP servers. The {{security-features}} support both failover and load balancing modes of operation.
 
-See [Load balancing and failover](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#load-balancing).
+See [Load balancing and failover](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#load-balancing).
 
 
 ## Encrypting communications between {{es}} and LDAP [tls-ldap]
@@ -221,7 +221,7 @@ For more information, see [LDAP user authentication](../../../deploy-manage/user
 
     In the example above, the CA certificate must be PEM encoded.
 
-    PKCS#12 and JKS files are also supported - see the description of `ssl.truststore.path` in [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings).
+    PKCS#12 and JKS files are also supported - see the description of `ssl.truststore.path` in [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).
 
     ::::{note} 
     You can also specify the individual server certificates rather than the CA certificate, but this is only recommended if you have a single LDAP server or the certificates are self-signed.

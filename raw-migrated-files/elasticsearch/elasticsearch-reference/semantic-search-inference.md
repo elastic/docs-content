@@ -315,7 +315,7 @@ PUT _inference/text_embedding/alibabacloud_ai_search_embeddings <1>
 
 ## Create the index mapping [infer-service-mappings]
 
-The mapping of the destination index - the index that contains the embeddings that the model will create based on your input text - must be created. The destination index must have a field with the [`dense_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) field type for most models and the [`sparse_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) field type for the sparse vector models like in the case of the `elasticsearch` service to index the output of the used model.
+The mapping of the destination index - the index that contains the embeddings that the model will create based on your input text - must be created. The destination index must have a field with the [`dense_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) field type for most models and the [`sparse_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) field type for the sparse vector models like in the case of the `elasticsearch` service to index the output of the used model.
 
 :::::::{tab-set}
 
@@ -592,7 +592,7 @@ PUT alibabacloud-ai-search-embeddings
 
 ## Create an ingest pipeline with an inference processor [infer-service-inference-ingest-pipeline]
 
-Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) and use the model you created above to infer against the data that is being ingested in the pipeline.
+Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) and use the model you created above to infer against the data that is being ingested in the pipeline.
 
 :::::::{tab-set}
 
@@ -824,7 +824,7 @@ In this step, you load the data that you later use in the {{infer}} ingest pipel
 
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
-Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/tools/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ## Ingest the data through the {{infer}} ingest pipeline [reindexing-data-infer]

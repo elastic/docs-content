@@ -21,7 +21,7 @@ To make certain audit events include the request body, configure the following s
 xpack.security.audit.logfile.events.emit_request_body: true
 ```
 
-You can apply this setting through [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), as described in [](./configuring-audit-logs.md). Alternatively, you can modify `elasticsearch.yml` in all nodes and restart for the changes to take effect.
+You can apply this setting through [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), as described in [](./configuring-audit-logs.md). Alternatively, you can modify `elasticsearch.yml` in all nodes and restart for the changes to take effect.
 
 ::::{important} 
 No filtering is performed when auditing, so sensitive data might be audited in plain text when audit events include the request body. Also, the request body can contain malicious content that can break a parser consuming the audit logs.
@@ -38,7 +38,7 @@ Not all events contain the `request.body` attribute, even when the above setting
 * `run_as_denied` 
 * `anonymous_access_denied`
 
-The `request.body` attribute is printed on the coordinating node only (the node that handles the REST request). Most of these event types are [not included by default](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html#xpack-sa-lf-events-include).
+The `request.body` attribute is printed on the coordinating node only (the node that handles the REST request). Most of these event types are [not included by default](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md#xpack-sa-lf-events-include).
 
 A good practical piece of advice is to add `authentication_success` to the event types that are audited (add it to the list in the `xpack.security.audit.logfile.events.include`), as this event type is not audited by default.
 

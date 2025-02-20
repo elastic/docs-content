@@ -180,8 +180,8 @@ reporting_user:
 
 To automatically generate reports with {{watcher}}, you must configure {{watcher}} to trust the {{kib}} server certificate.
 
-1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [Getting started with security](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-cluster.html).
-2. Configure TLS/SSL encryption for the {{kib}} server. For more information, see [*Encrypt TLS communications in {{kib}}*](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http).
+1. Enable {{stack-security-features}} on your {{es}} cluster. For more information, see [Getting started with security](/deploy-manage/security.md).
+2. Configure TLS/SSL encryption for the {{kib}} server. For more information, see [*Encrypt TLS communications in {{kib}}*](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 3. Specify the {{kib}} server CA certificate chain in `elasticsearch.yml`:
 
     If you are using your own CA to sign the {{kib}} server certificate, then you need to specify the CA certificate chain in {{es}} to properly establish trust in TLS connections between {{watcher}} and {{kib}}. If your CA certificate chain is contained in a PKCS #12 trust store, specify it like so:
@@ -198,7 +198,7 @@ To automatically generate reports with {{watcher}}, you must configure {{watcher
     xpack.http.ssl.certificate_authorities: ["/path/to/your/cacert1.pem", "/path/to/your/cacert2.pem"]
     ```
 
-    For more information, see [the {{watcher}} HTTP TLS/SSL Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#ssl-notification-settings).
+    For more information, see [the {{watcher}} HTTP TLS/SSL Settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#ssl-notification-settings).
 
 4. Add one or more users who have access to the {{report-features}}.
 
@@ -240,5 +240,5 @@ If using PNG/PDF {{report-features}} in a production environment, it is preferre
 
 ## Ensure {{es}} allows built-in templates [reporting-elasticsearch-configuration]
 
-Reporting relies on {{es}} to install a mapping template for the data stream that stores reports. Ensure that {{es}} allows built-in templates to be installed by keeping the `stack.templates.enabled` setting at the default value of `true`. For more information, see [Index management settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-management-settings.html#stack-templates-enabled).
+Reporting relies on {{es}} to install a mapping template for the data stream that stores reports. Ensure that {{es}} allows built-in templates to be installed by keeping the `stack.templates.enabled` setting at the default value of `true`. For more information, see [Index management settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-management-settings.md#stack-templates-enabled).
 

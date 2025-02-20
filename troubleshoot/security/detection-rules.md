@@ -53,7 +53,7 @@ If you receive the following rule failure: `"An error occurred during rule execu
 ::::{dropdown} Indicator match rules are failing because the `maxClauseCount` limit is too low
 :name: IM-rule-heap-memory
 
-If you receive the following rule failure: `Bulk Indexing of signals failed: index: ".index-name" reason: "maxClauseCount is set to 1024" type: "too_many_clauses"`, this indicates that the limit for the total number of clauses that a query tree can have is too low. To update your maximum clause count, [increase the size of your {{es}} JVM heap memory](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-heap-size). 1 GB of {{es}} JVM heap size or more is sufficient.
+If you receive the following rule failure: `Bulk Indexing of signals failed: index: ".index-name" reason: "maxClauseCount is set to 1024" type: "too_many_clauses"`, this indicates that the limit for the total number of clauses that a query tree can have is too low. To update your maximum clause count, [increase the size of your {{es}} JVM heap memory](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size). 1 GB of {{es}} JVM heap size or more is sufficient.
 ::::
 
 
@@ -182,10 +182,9 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 
 
 ### Troubleshoot missing alerts for {{ml}} jobs [ml-job-compatibility]
-:::{applies_to}
-:serverless: unavailable
-:::
-% doesn't apply to serverless 
+```yaml {applies_to}
+stack: all
+```
 
 
 {{ml-cap}} detection rules use {{ml}} jobs that have dependencies on data fields populated by the {{beats}} and {{agent}} integrations. In {{stack}} version 8.3, new {{ml}} jobs (prefixed with `v3`) were released to operate on the ECS fields available at that time.

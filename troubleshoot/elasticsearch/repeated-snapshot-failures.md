@@ -8,7 +8,7 @@ mapped_pages:
 
 Repeated snapshot failures are usually an indicator of a problem with your deployment. Continuous failures of automated snapshots can leave a deployment without recovery options in cases of data loss or outages.
 
-Elasticsearch keeps track of the number of repeated failures when executing automated snapshots. If an automated snapshot fails too many times without a successful execution, the health API will report a warning. The number of repeated failures before reporting a warning is controlled by the [`slm.health.failed_snapshot_warn_threshold`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-settings.html#slm-health-failed-snapshot-warn-threshold) setting.
+Elasticsearch keeps track of the number of repeated failures when executing automated snapshots. If an automated snapshot fails too many times without a successful execution, the health API will report a warning. The number of repeated failures before reporting a warning is controlled by the [`slm.health.failed_snapshot_warn_threshold`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-health-failed-snapshot-warn-threshold) setting.
 
 In the event that an automated {{slm}} policy execution is experiencing repeated failures, follow these steps to get more information about the problem:
 
@@ -91,7 +91,7 @@ In order to check the status of failing {{slm}} policies we need to go to Kibana
     4. Error details containing the reason for the snapshot failure.
 
 
-    Snapshots can fail for a variety reasons. If the failures are due to configuration errors, consult the documentation for the repository that the automated snapshots are using. Refer to the [guide on managing repositories in ECE](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-repositories.html) if you are using such a deployment.
+    Snapshots can fail for a variety reasons. If the failures are due to configuration errors, consult the documentation for the repository that the automated snapshots are using. Refer to the [guide on managing repositories in ECE](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) if you are using such a deployment.
 
 
 One common failure scenario is repository corruption. This occurs most often when multiple instances of {{es}} write to the same repository location. There is a [separate troubleshooting guide](diagnosing-corrupted-repositories.md) to fix this problem.
@@ -167,6 +167,6 @@ In the event that snapshots are failing for other reasons check the logs on the 
 
 :::::::
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::

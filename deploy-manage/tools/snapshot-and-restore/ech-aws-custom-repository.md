@@ -55,7 +55,7 @@ You can use the Elasticsearch Add-On for Heroku Keystore to store the credential
     * `s3.client.secondary.access_key`
     * `s3.client.secondary.secret_key`
 
-5. Perform a cluster restart to [reload the secure settings](https://www.elastic.co/guide/en/cloud/current/ec-configuring-keystore.html#ec-add-secret-values).
+5. Perform a cluster restart to [reload the secure settings](/deploy-manage/security/secure-settings.md#ec-add-secret-values).
 
 
 ## Create the repository [ech-create-aws-repository]

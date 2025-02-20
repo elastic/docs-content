@@ -30,7 +30,7 @@ Reindex from a remote cluster
     For {{ech}}, if your cluster is self-managed with a self-signed certificate, you can follow this [step-by-step migration guide](migrate/migrate-from-a-self-managed-cluster-with-a-self-signed-certificate-using-remote-reindex.md).
 
 Restore from a snapshot
-:   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an Elasticsearch version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html#snapshot-restore-version-compatibility) for details). If you have not already done so, you will need to [set up snapshots for your old cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html) using a repository that can be accessed from the new cluster.
+:   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an Elasticsearch version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility) for details). If you have not already done so, you will need to [set up snapshots for your old cluster](/deploy-manage/tools/snapshot-and-restore/self-managed.md) using a repository that can be accessed from the new cluster.
 
 Migrating internal {{es}} indices
 :   For {{ech}} and Elasticsearch Add-On for Heroku, if you are migrating internal {{es}} indices from another cluster, specifically the `.kibana` index or the `.security` index, there are two options:
@@ -39,7 +39,7 @@ Migrating internal {{es}} indices
     * Check [Migrating internal indices](migrate/migrate-internal-indices.md) to restore the internal {{es}} indices from a snapshot.
 
 ::::{warning}
-Before you migrate your {{es}} data, [define your index mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html) on the new cluster. Index mappings are unable to migrate during reindex operations.
+Before you migrate your {{es}} data, [define your index mappings](/manage-data/data-store/mapping.md) on the new cluster. Index mappings are unable to migrate during reindex operations.
 ::::
 
 ### Index from the source [ec-index-source]

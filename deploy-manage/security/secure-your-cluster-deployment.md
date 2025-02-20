@@ -39,6 +39,8 @@ $$$install-stack-demo-secure-transport$$$
 
 $$$install-stack-demo-secure-view-data$$$
 
+$$$security-configure-settings$$$
+
 **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/es-security-principles.md)
