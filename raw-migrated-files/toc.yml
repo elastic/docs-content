@@ -223,7 +223,6 @@ toc:
       - file: docs-content/serverless/observability-apm-agents-elastic-apm-agents.md
       - file: docs-content/serverless/observability-apm-get-started.md
       - file: docs-content/serverless/observability-apm-traces.md
-      - file: docs-content/serverless/observability-correlate-application-logs.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
       - file: docs-content/serverless/observability-get-started.md
       - file: docs-content/serverless/observability-log-monitoring.md
@@ -457,7 +456,6 @@ toc:
       - file: observability-docs/observability/apm-getting-started-apm-server.md
       - file: observability-docs/observability/apm-traces.md
       - file: observability-docs/observability/application-and-service-monitoring.md
-      - file: observability-docs/observability/application-logs.md
       - file: observability-docs/observability/incident-management.md
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
