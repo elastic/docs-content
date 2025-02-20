@@ -10,7 +10,7 @@ The following deployment settings are available:
 
 ## Cloud provider [ec_cloud_provider] 
 
-Selects a cloud platform where your {{es}} clusters and {{kib}} instances will be hosted. Elasticsearch Service currently supports Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure.
+Selects a cloud platform where your {{es}} clusters and {{kib}} instances will be hosted. {{ech}} currently supports Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure.
 
 
 ## Region [ec_region] 
@@ -27,7 +27,7 @@ You can select your cloud platform and region only when you create a new deploym
 
 Elastic Cloud deploys Elastic Stack components into a *hardware profile* which provides a unique blend of storage, memory and vCPU. This gives you more flexibility to choose the hardware profile that best fits for your use case. For example, *Compute Optimized* deploys Elasticsearch on virtual hardware that provides high [vCPU](../../monitor/monitoring-data/ec-vcpu-boost-instance.md) which can help search-heavy use cases return queries quickly.
 
-Under the covers, hardware profiles leverage virtualized instances from a cloud provider, such as Amazon Web Services, Google Compute Platform, and Microsoft Azure. You don’t interact with the cloud provider directly, but we do document what we use for your reference. To learn more, check [Elasticsearch Service Hardware](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html).
+Under the covers, hardware profiles leverage virtualized instances from a cloud provider, such as Amazon Web Services, Google Compute Platform, and Microsoft Azure. You don’t interact with the cloud provider directly, but we do document what we use for your reference. To learn more, check [{{ech}} Hardware](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html).
 
 The components of the Elastic Stack that we support as part of a deployment are called *instances* and include:
 
@@ -49,9 +49,9 @@ Elastic Agent, Beats, and Logstash are components of the Elastic Stack that are 
 
 Elastic Stack uses a versions code that is constructed of three numbers separated by dots: the leftmost number is the number of the major release, the middle number is the number of the minor release and the rightmost number is the number of the maintenance release (e.g., 8.3.2 means major release 8, minor release 3 and maintenance release 2).
 
-You might sometimes notice additional versions listed in the user interface beyond the versions we currently support and maintain, such as [release candidate builds](available-stack-versions.md#ec-release-builds) and older versions. If a version is listed in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
+You might sometimes notice additional versions listed in the user interface beyond the versions we currently support and maintain, such as [release candidate builds](available-stack-versions.md#ec-release-builds) and older versions. If a version is listed in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
 
-To learn about how we support {{es}} versions in Elasticsearch Service, check [Version Policy](available-stack-versions.md).
+To learn about how we support {{es}} versions in {{ech}}, check [Version Policy](available-stack-versions.md).
 
 You can always upgrade {{es}} versions, but you cannot downgrade. To learn more about upgrading versions of {{es}} and best practices for major version upgrades, check [Version Upgrades](../../upgrade/deployment-or-cluster.md).
 
@@ -63,5 +63,5 @@ To create a deployment from a snapshot, select the snapshot source. You need to 
 
 ## Name [ec_name] 
 
-This setting allows you to assign a more human-friendly name to your cluster which will be used for future reference in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body). Common choices are dev, prod, test, or something more domain specific.
+This setting allows you to assign a more human-friendly name to your cluster which will be used for future reference in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body). Common choices are dev, prod, test, or something more domain specific.
 

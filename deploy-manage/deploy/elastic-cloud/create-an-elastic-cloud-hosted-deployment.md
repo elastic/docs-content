@@ -8,13 +8,13 @@ mapped_pages:
 An Elastic Cloud deployment includes Elastic Stack components such as Elasticsearch, Kibana, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
 
 ::::{note}
-To explore Elasticsearch Service and its solutions, create your first deployment by following one of these [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html). If you are instead interested in serverless Elastic Cloud, check the [serverless documentation](https://docs.elastic.co/serverless).
+To explore {{ecloud}} and its solutions, create your first deployment by following one of these [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html). If you are instead interested in serverless Elastic Cloud, check the [serverless documentation](https://docs.elastic.co/serverless).
 ::::
 
 
 You can also create a deployment using the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). This can be an interesting alternative for more advanced needs, such as for [creating a deployment encrypted with your own key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md).
 
-1. Log in to your [cloud.elastic.co](https://cloud.elastic.co/login) account and select **Create deployment** from the Elasticsearch Service main page:
+1. Log in to your [cloud.elastic.co](https://cloud.elastic.co/login) account and select **Create deployment** from the {{ecloud}} main page:
 
     :::{image} ../../../images/cloud-ec-login-first-deployment.png
     :alt: Log in to create a deployment

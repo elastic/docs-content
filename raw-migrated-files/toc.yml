@@ -147,7 +147,6 @@ toc:
       - file: cloud/cloud/ec-faq-getting-started.md
       - file: cloud/cloud/ec-faq-technical.md
       - file: cloud/cloud/ec-get-help.md
-      - file: cloud/cloud/ec-getting-started-existing-email.md
       - file: cloud/cloud/ec-getting-started-node-js.md
       - file: cloud/cloud/ec-getting-started-python.md
       - file: cloud/cloud/ec-getting-started-search-use-cases-beats-logstash.md

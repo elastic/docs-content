@@ -11,7 +11,7 @@ You might want to change the configuration of your deployment to:
 * Increase or decrease capacity by changing the amount of reserved memory and storage for different parts of your deployment.
 
     ::::{note} 
-    During the free trial, Elasticsearch Service deployments are restricted to a limited size. You can increase the size of your deployments when your trial is converted to a paid subscription.
+    During the free trial, {{ech}} deployments are restricted to a limited size. You can increase the size of your deployments when your trial is converted to a paid subscription.
     ::::
 
 * Enable [autoscaling](../../autoscaling.md) so that the available resources for deployment components, such as data tiers and machine learning nodes, adjust automatically as the demands on them change over time.
@@ -19,7 +19,7 @@ You might want to change the configuration of your deployment to:
 * Upgrade to new versions of {{es}}. You can upgrade from one major version to another, such as from 6.8.23 to 7.17.27, or from one minor version to another, such as 6.1 to 6.2. You can’t downgrade versions.
 * Change what plugins are available on your {{es}} cluster.
 
-With the exception of major version upgrades for Elastic Stack products, Elasticsearch Service can perform configuration changes without having to interrupt your deployment. You can continue searching and indexing. The changes can also be done in bulk. For example: in one action, you can add more memory, upgrade, adjust the number of {{es}} plugins and adjust the number of availability zones.
+With the exception of major version upgrades for Elastic Stack products, {{ecloud}} can perform configuration changes without having to interrupt your deployment. You can continue searching and indexing. The changes can also be done in bulk. For example: in one action, you can add more memory, upgrade, adjust the number of {{es}} plugins and adjust the number of availability zones.
 
 We perform all of these changes by creating instances with the new configurations that join your existing deployment before removing the old ones. For example: if you are changing your {{es}} cluster configuration, we create new {{es}} nodes, recover your indexes, and start routing requests to the new nodes. Only when all new {{es}} nodes are ready, do we bring down the old ones.
 
@@ -32,8 +32,8 @@ If you use a Platform-as-a-Service provider like Heroku, the administration cons
 
 To change your deployment:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
 
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 

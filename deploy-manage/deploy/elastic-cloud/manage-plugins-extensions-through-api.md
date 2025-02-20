@@ -5,7 +5,7 @@ mapped_pages:
 
 # Manage plugins and extensions through the API [ec-plugins-guide]
 
-This guide provides a full list of tasks for managing [plugins and extensions](add-plugins-extensions.md) in Elasticsearch Service, using the API.
+This guide provides a full list of tasks for managing [plugins and extensions](add-plugins-extensions.md) in {{ecloud}}, using the API.
 
 * [Create an extension](#ec-extension-guide-create)
 * [Add an extension to a deployment plan](#ec-extension-guide-add-plan)
