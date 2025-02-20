@@ -125,7 +125,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Define which {{es}} indices or data view the rule searches for alerts.
     2. Use the filter and query fields to create the criteria used for detecting alerts.
 
-        The following example (based on the prebuilt rule [Volume Shadow Copy Deleted or Resized via VssAdmin](https://www.elastic.co/guide/en/security/current/prebuilt-rule-0-14-2-volume-shadow-copy-deleted-or-resized-via-vssadmin.html)) detects when the `vssadmin delete shadows` Windows command is executed:
+        The following example (based on the prebuilt rule [Volume Shadow Copy Deleted or Resized via VssAdmin](asciidocalypse://docs/security-docs/docs/reference/security/prebuilt-rules-downloadable-updates/prebuilt-rule-0-14-2-volume-shadow-copy-deleted-or-resized-via-vssadmin.md)) detects when the `vssadmin delete shadows` Windows command is executed:
 
         * **Index patterns**: `winlogbeat-*`
 
