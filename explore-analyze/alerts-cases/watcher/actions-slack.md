@@ -153,7 +153,7 @@ You can no longer configure Slack accounts using `elasticsearch.yml` settings. P
 
 ::::
 
-You can specify defaults for the [Slack notification attributes](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#slack-account-attributes):
+You can specify defaults for the [Slack notification attributes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#slack-account-attributes):
 
 ```yaml
 xpack.notification.slack:

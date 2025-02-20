@@ -74,7 +74,7 @@ PUT /my-index-000001/_doc/1
 }
 ```
 
-1. In this example, string fields are mapped as `keyword` fields to support aggregation. If you want both a full text (`text`) and a keyword (`keyword`) version of the same field, use multi-fields. For more information, see [fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html).
+1. In this example, string fields are mapped as `keyword` fields to support aggregation. If you want both a full text (`text`) and a keyword (`keyword`) version of the same field, use multi-fields. For more information, see [fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md).
 
 
 $$$ml-configuring-transform1$$$
@@ -380,7 +380,7 @@ PUT _ml/anomaly_detectors/test3
 GET _ml/datafeeds/datafeed-test3/_preview
 ```
 
-In {{es}}, location data can be stored in `geo_point` fields but this data type is not supported natively in {{ml}} analytics. This example of a runtime field transforms the data into an appropriate format. For more information, see [Geographic functions](https://www.elastic.co/guide/en/machine-learning/current/ml-geo-functions.html).
+In {{es}}, location data can be stored in `geo_point` fields but this data type is not supported natively in {{ml}} analytics. This example of a runtime field transforms the data into an appropriate format. For more information, see [Geographic functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-geo-functions.md).
 
 The preview {{dfeed}} API returns the following results, which show that `41.44` and `90.5` have been combined into "41.44,90.5":
 

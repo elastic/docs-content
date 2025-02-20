@@ -28,7 +28,7 @@ mapped_urls:
 
 **Elasticsearch Query Language ({{esql}})** is a piped query language for filtering, transforming, and analyzing data. 
 
-You can author {{esql}} queries to find specific events, perform statistical analysis, and generate visualizations. It supports a wide range of [commands, functions and operators](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html) to perform various data operations, such as filtering, aggregation, time-series analysis, and more. Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
+You can author {{esql}} queries to find specific events, perform statistical analysis, and generate visualizations. It supports a wide range of [commands, functions and operators](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md) to perform various data operations, such as filtering, aggregation, time-series analysis, and more. Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
 
 ::::{note}
 **{{esql}}'s compute architecture**
@@ -52,10 +52,10 @@ You can use it:
 ## Next steps
 
 Find more details about {{esql}} in the following documentation pages:
-- [{{esql}} reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-language.html): 
-  - Reference documentation for the [{{esql}} syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-syntax.html), [commands](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html), and [functions and operators](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html).
-  - Information about working with [metadata fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-metadata-fields.html) and [multivalued fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-multivalued-fields.html). 
-  - Guidance for [data processing with DISSECT and GROK](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-process-data-with-dissect-and-grok.html) and [data enrichment with ENRICH](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html).
+- [{{esql}} reference](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql.md): 
+  - Reference documentation for the [{{esql}} syntax](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-syntax.md), [commands](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md), and [functions and operators](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md).
+  - Information about working with [metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-metadata-fields.md) and [multivalued fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-multivalued-fields.md). 
+  - Guidance for [data processing with DISSECT and GROK](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-process-data-with-dissect-grok.md) and [data enrichment with ENRICH](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md).
 
 - Using {{esql}}:
   - An overview of using the [`_query` API endpoint](/explore-analyze/query-filter/languages/esql-rest.md).
@@ -64,7 +64,7 @@ Find more details about {{esql}} in the following documentation pages:
   - [Using {{esql}} across clusters](/explore-analyze/query-filter/languages/esql-cross-clusters.md).
   - [Task management](/explore-analyze/query-filter/languages/esql-task-management.md).
 
-- [Limitations](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-limitations.html): The current limitations of {{esql}}.
+- [Limitations](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/limitations.md): The current limitations of {{esql}}.
 
 - [Examples](/explore-analyze/query-filter/languages/esql.md): A few examples of what you can do with {{esql}}.
 

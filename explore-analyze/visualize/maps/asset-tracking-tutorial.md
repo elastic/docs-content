@@ -32,7 +32,7 @@ When you complete this tutorial, you’ll have a map that looks like this:
 
 * If you don’t already have {{kib}}, sign up for [a free Elastic Cloud trial](https://www.elastic.co/cloud/elasticsearch-service/signup?baymax=docs-body&elektra=docs) and create a hosted deployment. When creating it, download the deployment credentials.
 * Obtain an API key for [TriMet web services](https://developer.trimet.org/) at [https://developer.trimet.org/appid/registration/](https://developer.trimet.org/appid/registration/).
-* [Fleet](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) is enabled on your cluster, and one or more [{{agent}}s](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html) is enrolled.
+* [Fleet](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
 
 
 ## Part 1: Ingest the Portland public transport data [_part_1_ingest_the_portland_public_transport_data]
@@ -725,7 +725,7 @@ For this example, you will set the rule to check every minute. However, when run
 
 16. Click **Save**.
 
-The **TriMet Alerts connector** is added to the **{{connectors-ui}}** page. For more information on common connectors, refer to the [Slack](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html) and [Email](https://www.elastic.co/guide/en/kibana/current/email-action-type.html) connectors.
+The **TriMet Alerts connector** is added to the **{{connectors-ui}}** page. For more information on common connectors, refer to the [Slack](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md) and [Email](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md) connectors.
 
 
 ### Step 3. View alerts in real time [_step_3_view_alerts_in_real_time]

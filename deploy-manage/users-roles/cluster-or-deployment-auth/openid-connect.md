@@ -68,6 +68,8 @@ $$$oidc-user-metadata$$$
 
 $$$oidc-user-properties$$$
 
+$$$oidc-claims-mapping$$$
+
 **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-realm.md)

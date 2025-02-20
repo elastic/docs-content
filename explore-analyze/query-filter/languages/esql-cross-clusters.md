@@ -22,17 +22,17 @@ With {{esql}}, you can execute a single query across multiple clusters.
 
 ## Prerequisites [esql-ccs-prerequisites]
 
-* {{ccs-cap}} requires remote clusters. To set up remote clusters on {{ess}}, see [configure remote clusters on {{ess}}](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html). If you run {{es}} on your own hardware, see [*Remote clusters*](../../../deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires remote clusters. To set up remote clusters on {{ess}}, see [configure remote clusters on {{ess}}](/deploy-manage/remote-clusters/ec-enable-ccs.md). If you run {{es}} on your own hardware, see [*Remote clusters*](../../../deploy-manage/remote-clusters.md).
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](../../../solutions/search/cross-cluster-search.md#ccs-supported-configurations).
 
 * For full {{ccs}} capabilities, the local and remote cluster must be on the same [subscription level](https://www.elastic.co/subscriptions).
 * The local coordinating node must have the [`remote_cluster_client`](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#remote-node) node role.
-* If you use [sniff mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#sniff-mode), the local coordinating node must be able to connect to seed and gateway nodes on the remote cluster.
+* If you use [sniff mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode), the local coordinating node must be able to connect to seed and gateway nodes on the remote cluster.
 
     We recommend using gateway nodes capable of serving as coordinating nodes. The seed nodes can be a subset of these gateway nodes.
 
-* If you use [proxy mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
+* If you use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
 * {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. See [Configure privileges for {{ccs}}](../../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccs) and [*Remote clusters*](../../../deploy-manage/remote-clusters.md).
 
 
@@ -361,7 +361,7 @@ Which returns:
 
 ## Enrich across clusters [ccq-enrich]
 
-Enrich in {{esql}} across clusters operates similarly to [local enrich](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich). If the enrich policy and its enrich indices are consistent across all clusters, simply write the enrich command as you would without remote clusters. In this default mode, {{esql}} can execute the enrich command on either the local cluster or the remote clusters, aiming to minimize computation or inter-cluster data transfer. Ensuring that the policy exists with consistent data on both the local cluster and the remote clusters is critical for ES|QL to produce a consistent query result.
+Enrich in {{esql}} across clusters operates similarly to [local enrich](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-enrich). If the enrich policy and its enrich indices are consistent across all clusters, simply write the enrich command as you would without remote clusters. In this default mode, {{esql}} can execute the enrich command on either the local cluster or the remote clusters, aiming to minimize computation or inter-cluster data transfer. Ensuring that the policy exists with consistent data on both the local cluster and the remote clusters is critical for ES|QL to produce a consistent query result.
 
 ::::{tip}
 Enrich in {{esql}} across clusters using the API key based security model was introduced in version **8.15.0**. Cross cluster API keys created in versions prior to 8.15.0 will need to replaced or updated to use the new required permissions. Refer to the example in the [API key authentication](#esql-ccs-security-model-api-key) section.
@@ -417,7 +417,7 @@ FROM my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001
 | LIMIT 10
 ```
 
-A `_remote` enrich cannot be executed after a [stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-stats-by) command. The following example would result in an error:
+A `_remote` enrich cannot be executed after a [stats](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-stats-by) command. The following example would result in an error:
 
 ```esql
 FROM my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001

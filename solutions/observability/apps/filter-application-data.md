@@ -34,12 +34,12 @@ The environment selector is a global filter for `service.environment`. It allows
 
 Service environments are defined when configuring your APM agents. It’s vital to be consistent when naming environments in your APM agents. To learn how to configure service environments, see the specific APM agent documentation:
 
-* **Go:** [`ELASTIC_APM_ENVIRONMENT`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-environment)
+* **Go:** [`ELASTIC_APM_ENVIRONMENT`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-environment)
 * **iOS agent:** *Not yet supported*
-* **Java:** [`environment`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-environment)
-* **.NET:** [`Environment`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-environment)
-* **Node.js:** [`environment`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#environment)
-* **PHP:** [`environment`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-environment)
-* **Python:** [`environment`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-environment)
-* **Ruby:** [`environment`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-environment)
-* **Real User Monitoring:** [`environment`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/configuration.html#environment)
+* **Java:** [`environment`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-environment)
+* **.NET:** [`Environment`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-core.md#config-environment)
+* **Node.js:** [`environment`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#environment)
+* **PHP:** [`environment`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-environment)
+* **Python:** [`environment`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-environment)
+* **Ruby:** [`environment`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-environment)
+* **Real User Monitoring:** [`environment`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/configuration.md#environment)

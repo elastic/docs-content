@@ -5,7 +5,7 @@ You have a number of options for getting data into Elasticsearch, referred to as
 $$$ec-ingest-methods$$$
 
 General content
-:   Index content like HTML pages, catalogs and other files. Send data directly to Elasticseach from your application using an Elastic language client. Otherwise use Elastic content [connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html) or the Elastic [web crawler](https://github.com/elastic/crawler).
+:   Index content like HTML pages, catalogs and other files. Send data directly to Elasticseach from your application using an Elastic language client. Otherwise use Elastic content [connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md) or the Elastic [web crawler](https://github.com/elastic/crawler).
 
 Timestamped data
 :   The preferred way to index timestamped data is to use Elastic Agent. Elastic Agent is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. Each Elastic Agent based integration includes default ingestion rules, dashboards, and visualizations to start analyzing your data right away. Fleet Management enables you to centrally manage all of your deployed Elastic Agents from Kibana.
@@ -42,25 +42,25 @@ This diagram focuses on *timestamped* data.
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em"><tspan x="857.135" y="938.568">Process data using </tspan><tspan x="896.422" y="955.568"> and forward it with </tspan><tspan x="982.377" y="972.568">.</tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="842.526" y="913.568">Use Logstash plugins
 </tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="986.813" y="938.568"><a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html">filter </a></tspan><tspan x="849.076" y="955.568"><a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html">plugins</a></tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="887.767" y="972.568"><a href="https://www.elastic.co/guide/en/logstash/current/output-plugins.html">output plugins</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="986.813" y="938.568"><a href="asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/filter-plugins.md">filter </a></tspan><tspan x="849.076" y="955.568"><a href="asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/filter-plugins.md">plugins</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="887.767" y="972.568"><a href="asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/output-plugins.md">output plugins</a></tspan></text>
 <rect x="558" y="877" width="238" height="118" rx="7" fill="white" stroke="#D3DAE6" stroke-width="2" stroke-linejoin="round"/>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em"><tspan x="577.482" y="947.068">Use </tspan><tspan x="697.302" y="947.068"> with Elastic </tspan><tspan x="625.942" y="964.068">Agent or Beats.</tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="596.887" y="922.068">Use runtime fields
 </tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="607.259" y="947.068"><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime.html">runtime fields</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="607.259" y="947.068"><a href="/manage-data/data-store/mapping/runtime-fields.md">runtime fields</a></tspan></text>
 <rect x="298" y="877" width="238" height="118" rx="7" fill="white" stroke="#D3DAE6" stroke-width="2" stroke-linejoin="round"/>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em"><tspan x="335.796" y="947.068">Use a pipeline for </tspan><tspan x="405.358" y="964.068"> or </tspan><tspan x="464.202" y="964.068">.</tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="328.002" y="922.068">Use ingest pipelines
 </tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="455.083" y="947.068"><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html#pipelines-for-fleet-elastic-agent">Elastic </a></tspan><tspan x="365.942" y="964.068"><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html#pipelines-for-fleet-elastic-agent">Agent</a></tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="426.796" y="964.068"><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html#pipelines-for-beats">Beats</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="455.083" y="947.068"><a href="/manage-data/ingest/transform-enrich/ingest-pipelines.md#pipelines-for-fleet-elastic-agent">Elastic </a></tspan><tspan x="365.942" y="964.068"><a href="/manage-data/ingest/transform-enrich/ingest-pipelines.md#pipelines-for-fleet-elastic-agent">Agent</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="426.796" y="964.068"><a href="/manage-data/ingest/transform-enrich/ingest-pipelines.md#pipelines-for-beats">Beats</a></tspan></text>
 <rect x="37.9995" y="877" width="238" height="118" rx="7" fill="white" stroke="#D3DAE6" stroke-width="2" stroke-linejoin="round"/>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em"><tspan x="57.9741" y="938.568">For Elastic Agent integrations, </tspan><tspan x="64.0308" y="955.568">use an </tspan><tspan x="220.957" y="955.568">. For </tspan><tspan x="59.0747" y="972.568">Beats, use a </tspan><tspan x="251.069" y="972.568">.</tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="88.2251" y="913.568">Use processors
 </tspan></text>
 <text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="143.704" y="972.568"><a href="{{filebeat-ref}}/filtering-and-enhancing-data.html">Beats processor</a></tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="111.582" y="955.568"><a href="https://www.elastic.co/guide/en/fleet/current/elastic-agent-processor-configuration.html">Agent processor</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="111.582" y="955.568"><a href="asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-processors.md">Agent processor</a></tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="811.555" y="820.591">something
 </tspan><tspan x="834.004" y="837.591">else</tspan></text>
 <path d="M573 722V731.5C573 738.127 578.372 743.5 585 743.5L836.139 743.5C842.766 743.5 848.139 748.873 848.139 755.5L848.139 805" stroke="#017D73" stroke-width="2"/>
@@ -81,8 +81,8 @@ This diagram focuses on *timestamped* data.
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em"><tspan x="908.639" y="666.068"> using one (or more) </tspan><tspan x="977.846" y="683.068">.</tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="877.655" y="641.068">Use Logstash
 </tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="833.238" y="666.068"><a href="https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html">Get started</a></tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="893.299" y="683.068"><a href="https://www.elastic.co/guide/en/logstash/current/input-plugins.html">input plugins</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="833.238" y="666.068"><a href="asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/getting-started-with-logstash.md">Get started</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="893.299" y="683.068"><a href="asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/input-plugins.md">input plugins</a></tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="844.086" y="352.591">no</tspan></text>
 <path d="M773 325L773 337C773 343.627 778.372 349 785 349L838 349" stroke="#BD271E" stroke-width="2"/>
 <path d="M934.707 587.707C934.316 588.098 933.683 588.098 933.293 587.707L926.929 581.343C926.538 580.953 926.538 580.319 926.929 579.929C927.319 579.538 927.952 579.538 928.343 579.929L934 585.586L939.657 579.929C940.047 579.538 940.68 579.538 941.071 579.929C941.461 580.319 941.461 580.953 941.071 581.343L934.707 587.707ZM933 587L933 361L935 361L935 587L933 587ZM922 350L869 350L869 348L922 348L922 350ZM933 361C933 354.925 928.075 350 922 350L922 348C929.18 348 935 353.82 935 361L933 361Z" fill="#BD271E"/>
@@ -93,14 +93,14 @@ This diagram focuses on *timestamped* data.
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em"><tspan x="527.305" y="467.068"> with the </tspan><tspan x="642.094" y="467.068"> </tspan><tspan x="529.958" y="484.068">Beat.</tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="491.725" y="442.068">Set up Beats
 </tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="451.905" y="467.068"><a href="https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html">Get started</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="451.905" y="467.068"><a href="asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md">Get started</a></tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em"><tspan x="589.007" y="467.068">relevant</tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="602.407" y="361.639">yes</tspan></text>
 <path d="M681.5 325L681.5 345.476C681.5 352.104 676.127 357.476 669.5 357.476L631 357.476" stroke="#017D73" stroke-width="2"/>
 <path d="M546.293 391.707C546.683 392.098 547.316 392.098 547.707 391.707L554.071 385.343C554.461 384.953 554.461 384.319 554.071 383.929C553.68 383.538 553.047 383.538 552.656 383.929L547 389.586L541.343 383.929C540.952 383.538 540.319 383.538 539.929 383.929C539.538 384.319 539.538 384.953 539.929 385.343L546.293 391.707ZM547 370.524L546 370.524L547 370.524ZM548 391L548 370.524L546 370.524L546 391L548 391ZM559 359.524L597.5 359.524L597.5 357.524L559 357.524L559 359.524ZM548 370.524C548 364.449 552.925 359.524 559 359.524L559 357.524C551.82 357.524 546 363.344 546 370.524L548 370.524Z" fill="#017D73"/>
 <rect x="608" y="199" width="238" height="118" rx="7" fill="#D3DAE6" fill-opacity="0.5" stroke="#69707D" stroke-width="2" stroke-linejoin="round"/>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em"><tspan x="621.09" y="280.068">Look for your data source in the </tspan><tspan x="624.248" y="297.068">list of </tspan><tspan x="701.973" y="297.068"> and their modules.</tspan></text>
-<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="664.566" y="297.068"><a href="https://www.elastic.co/guide/en/beats/libbeat/current/beats-reference.html">Beats</a></tspan></text>
+<text fill="#006BB4" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="14" letter-spacing="0em" text-decoration="underline"><tspan x="664.566" y="297.068"><a href="asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md">Beats</a></tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="751.839" y="233.068">Beats </tspan><tspan x="647.39" y="255.068">module</tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="651.081" y="233.068">Is a Beat or </tspan><tspan x="713.149" y="255.068"> available?
 </tspan></text>
@@ -143,16 +143,16 @@ One reason for preprocessing your data is to control the structure of the data t
 
 ### Data integrity [ec-data-integrity]
 
-Logstash boosts data resiliency for important data that you don’t want to lose. Logstash offers an on-disk [persistent queue (PQ)](https://www.elastic.co/guide/en/logstash/current/persistent-queues.html) that absorbs bursts of events without an external buffering mechanism. It attempts to deliver messages stored in the PQ until delivery succeeds at least once.
+Logstash boosts data resiliency for important data that you don’t want to lose. Logstash offers an on-disk [persistent queue (PQ)](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/persistent-queues.md) that absorbs bursts of events without an external buffering mechanism. It attempts to deliver messages stored in the PQ until delivery succeeds at least once.
 
-The Logstash [dead letter queue (DLQ)](https://www.elastic.co/guide/en/logstash/current/dead-letter-queues.html) provides on-disk storage for events that Logstash can’t process, giving you a chance to evaluate them. You can use the dead_letter_queue input plugin to easily reprocess DLQ events.
+The Logstash [dead letter queue (DLQ)](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/dead-letter-queues.md) provides on-disk storage for events that Logstash can’t process, giving you a chance to evaluate them. You can use the dead_letter_queue input plugin to easily reprocess DLQ events.
 
 
 ### Data flow [ec-data-flow]
 
 If you need to collect data from multiple Beats or Elastic Agents, consider using Logstash as a proxy. Logstash can receive data from multiple endpoints, even on different networks, and send the data on to Elasticsearch through a single firewall rule. You get more security for less work than if you set up individual rules for each endpoint.
 
-Logstash can send to multiple [outputs](https://www.elastic.co/guide/en/logstash/current/output-plugins.html) from a single pipeline to help you get the most value from your data.
+Logstash can send to multiple [outputs](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/output-plugins.md) from a single pipeline to help you get the most value from your data.
 
 
 ## Where to go from here [ec-data-ingest-where-to-go]
@@ -162,11 +162,11 @@ We have guides and many hands-on tutorials to help get you started with ingestin
 
 ### Ingest data for Elastic solutions [ec-ingest-solutions]
 
-[Get started with Elastic Observability](https://www.elastic.co/guide/en/observability/current/observability-get-started.html)
-:   Use Elastic Observability to gain deeper insight into the behavior of your applications and systems. Follow our guides to ingest various data types, such as [logs and metrics](https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html), [traces and APM](https://www.elastic.co/guide/en/observability/current/apm-getting-started-apm-server.html), and [data from Splunk](https://www.elastic.co/guide/en/observability/current/splunk-get-started.html). There are also several [tutorials](https://www.elastic.co/guide/en/observability/current/observability-tutorials.html) to choose from.
+[Get started with Elastic Observability](/solutions/observability/get-started.md)
+:   Use Elastic Observability to gain deeper insight into the behavior of your applications and systems. Follow our guides to ingest various data types, such as [logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md), [traces and APM](/solutions/observability/apps/get-started-with-apm.md), and [data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md). There are also several [tutorials](https://www.elastic.co/guide/en/observability/current/observability-tutorials.html) to choose from.
 
-[Add data to Elastic Security](https://www.elastic.co/guide/en/security/current/ingest-data.html)
-:   Use Elastic Security to quickly detect, investigate, and respond to threats and vulnerabilities across your environment. You can use {{agent}} to ingest data into the [{{elastic-defend}} integration](https://www.elastic.co/guide/en/security/current/install-endpoint.html), or with many other [{{integrations}}](https://docs.elastic.co/en/integrations) that work together with {{elastic-sec}}. You can also [ingest data from Splunk](https://www.elastic.co/guide/en/observability/current/splunk-get-started.html) or from various third party collectors that ship [ECS compliant security data](https://www.elastic.co/guide/en/security/current/siem-field-reference.html).
+[Add data to Elastic Security](/solutions/security/get-started/ingest-data-to-elastic-security.md)
+:   Use Elastic Security to quickly detect, investigate, and respond to threats and vulnerabilities across your environment. You can use {{agent}} to ingest data into the [{{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md), or with many other [{{integrations}}](https://docs.elastic.co/en/integrations) that work together with {{elastic-sec}}. You can also [ingest data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md) or from various third party collectors that ship [ECS compliant security data](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md).
 
 
 ### Ingest data with Elastic Agent, Beats, and Logstash [ec-ingest-timestamped]
@@ -179,10 +179,10 @@ For users who want to build their own solution, we can help you get started inge
 [Beats and Elastic Agent comparison](../../../manage-data/ingest/tools.md)
 :   {{beats}} and {{agent}} can both send data to {{es}} either directly or via {{ls}}. You can use this guide to determine which of these primary ingest tools best matches your use case.
 
-[Introduction to Fleet management](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html)
+[Introduction to Fleet management](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md)
 :   {{fleet}} provides a web-based UI in Kibana for centrally managing Elastic Agents and their policies.
 
-[{{ls}} introduction](https://www.elastic.co/guide/en/logstash/current/introduction.html)
+[{{ls}} introduction](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md)
 :   Use {{ls}} to dynamically unify data from disparate sources and normalize the data into destinations of your choice.
 
 
@@ -191,7 +191,7 @@ For users who want to build their own solution, we can help you get started inge
 [Add data with the web crawler](https://github.com/elastic/crawler)
 :   Use the web crawler to programmatically discover, extract, and index searchable content from websites and knowledge bases.
 
-[Add data with connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html)
+[Add data with connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md)
 :   Sync data from an original data source to an {{es}} index. Connectors enable you to create searchable, read-only replicas of your data sources.
 
 
@@ -206,13 +206,13 @@ For users who want to build their own solution, we can help you get started inge
 
 ### Manipulate and pre-process your data [ec-ingest-manipulate]
 
-[Ingest pipelines](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html)
+[Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 :   {{es}} ingest pipelines let you perform common transformations on your data before indexing.
 
-[{{agent}} processors](https://www.elastic.co/guide/en/fleet/current/elastic-agent-processor-configuration.html)
+[{{agent}} processors](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-processors.md)
 :   Use the {{agent}} lightweight processors to parse, filter, transform, and enrich data at the source.
 
-[Creating a {{ls}} pipeline](https://www.elastic.co/guide/en/logstash/current/configuration.html)
+[Creating a {{ls}} pipeline](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/creating-logstash-pipeline.md)
 :   Create a {{ls}} pipeline by stringing together plugins—​inputs, outputs, filters, and sometimes codecs—​in order to process your data during ingestion.
 
 

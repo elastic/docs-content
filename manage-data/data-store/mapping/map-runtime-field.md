@@ -8,7 +8,7 @@ mapped_pages:
 You map runtime fields by adding a `runtime` section under the mapping definition and defining [a Painless script](../../../explore-analyze/scripting/modules-scripting-using.md). This script has access to the entire context of a document, including the original `_source` via `params._source` and any mapped fields plus their values. At query time, the script runs and generates values for each scripted field that is required for the query.
 
 ::::{admonition} Emitting runtime field values
-When defining a Painless script to use with runtime fields, you must include the [`emit` method](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-runtime-fields-context.html) to emit calculated values.
+When defining a Painless script to use with runtime fields, you must include the [`emit` method](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-runtime-fields-context.md) to emit calculated values.
 
 ::::
 
@@ -46,7 +46,7 @@ The `runtime` section can be any of these data types:
 * `long`
 * [`lookup`](retrieve-runtime-field.md#lookup-runtime-fields)
 
-Runtime fields with a `type` of `date` can accept the [`format`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html) parameter exactly as the `date` field type.
+Runtime fields with a `type` of `date` can accept the [`format`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md) parameter exactly as the `date` field type.
 
 Runtime fields with a `type` of `lookup` allow retrieving fields from related indices. See [`retrieve fields from related indices`](retrieve-runtime-field.md#lookup-runtime-fields).
 
@@ -85,7 +85,7 @@ PUT my-index-000001/
 
 When no script is provided, {{es}} implicitly looks in `_source` at query time for a field with the same name as the runtime field, and returns a value if one exists. If a field with the same name doesn’t exist, the response doesn’t include any values for that runtime field.
 
-In most cases, retrieve field values through [`doc_values`](https://www.elastic.co/guide/en/elasticsearch/reference/current/doc-values.html) whenever possible. Accessing `doc_values` with a runtime field is faster than retrieving values from `_source` because of how data is loaded from Lucene.
+In most cases, retrieve field values through [`doc_values`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/doc-values.md) whenever possible. Accessing `doc_values` with a runtime field is faster than retrieving values from `_source` because of how data is loaded from Lucene.
 
 However, there are cases where retrieving fields from `_source` is necessary. For example, `text` fields do not have `doc_values` available by default, so you have to retrieve values from `_source`. In other instances, you might choose to disable `doc_values` on a specific field.
 

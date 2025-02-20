@@ -5,7 +5,7 @@ mapped_pages:
 
 # Mapping explosion [mapping-explosion]
 
-{{es}}'s search and [{{kib}}'s discover](../../explore-analyze/discover.md) Javascript rendering are dependent on the search’s backing indices total amount of [mapped fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html), of all mapping depths. When this total amount is too high or is exponentially climbing, we refer to it as experiencing mapping explosion. Field counts going this high are uncommon and usually suggest an upstream document formatting issue as [shown in this blog](https://www.elastic.co/blog/found-crash-elasticsearch#mapping-explosion).
+{{es}}'s search and [{{kib}}'s discover](../../explore-analyze/discover.md) Javascript rendering are dependent on the search’s backing indices total amount of [mapped fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md), of all mapping depths. When this total amount is too high or is exponentially climbing, we refer to it as experiencing mapping explosion. Field counts going this high are uncommon and usually suggest an upstream document formatting issue as [shown in this blog](https://www.elastic.co/blog/found-crash-elasticsearch#mapping-explosion).
 
 Mapping explosion may surface as the following performance symptoms:
 
@@ -20,15 +20,15 @@ Mapping explosion may surface as the following performance symptoms:
 
 ## Prevent or prepare [prevent]
 
-[Mappings](../../manage-data/data-store/mapping.md) cannot be field-reduced once initialized. {{es}} indices default to [dynamic mappings](../../manage-data/data-store/mapping.md) which doesn’t normally cause problems unless it’s combined with overriding [`index.mapping.total_fields.limit`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html). The default `1000` limit is considered generous, though overriding to `10000` doesn’t cause noticeable impact depending on use case. However, to give a bad example, overriding to `100000` and this limit being hit by mapping totals would usually have strong performance implications.
+[Mappings](../../manage-data/data-store/mapping.md) cannot be field-reduced once initialized. {{es}} indices default to [dynamic mappings](../../manage-data/data-store/mapping.md) which doesn’t normally cause problems unless it’s combined with overriding [`index.mapping.total_fields.limit`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/mapping-limit-settings.md). The default `1000` limit is considered generous, though overriding to `10000` doesn’t cause noticeable impact depending on use case. However, to give a bad example, overriding to `100000` and this limit being hit by mapping totals would usually have strong performance implications.
 
 If your index mapped fields expect to contain a large, arbitrary set of keys, you may instead consider:
 
-* Setting [`index.mapping.total_fields.ignore_dynamic_beyond_limit`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html) to `true`. Instead of rejecting documents that exceed the field limit, this will ignore dynamic fields once the limit is reached.
-* Using the [flattened](https://www.elastic.co/guide/en/elasticsearch/reference/current/flattened.html) data type. Please note, however, that flattened objects is [not fully supported in {{kib}}](https://github.com/elastic/kibana/issues/25820) yet. For example, this could apply to sub-mappings like { `host.name` , `host.os`, `host.version` }. Desired fields are still accessed by [runtime fields](../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md).
+* Setting [`index.mapping.total_fields.ignore_dynamic_beyond_limit`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/mapping-limit-settings.md) to `true`. Instead of rejecting documents that exceed the field limit, this will ignore dynamic fields once the limit is reached.
+* Using the [flattened](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/flattened.md) data type. Please note, however, that flattened objects is [not fully supported in {{kib}}](https://github.com/elastic/kibana/issues/25820) yet. For example, this could apply to sub-mappings like { `host.name` , `host.os`, `host.version` }. Desired fields are still accessed by [runtime fields](../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md).
 * Disable [dynamic mappings](../../manage-data/data-store/mapping.md). This cannot effect current index mapping, but can apply going forward via an [index template](../../manage-data/data-store/templates.md).
 
-Modifying to the [nested](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) data type would not resolve the core issue.
+Modifying to the [nested](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/nested.md) data type would not resolve the core issue.
 
 
 ## Check for issue [check]
@@ -54,9 +54,9 @@ Mapping explosions also covers when an individual index field totals are within 
 
 However, though less common, it is possible to only experience mapping explosions on the combination of backing indices. For example, if a [data stream](../../manage-data/data-store/data-streams.md)'s backing indices are all at field total limit but each contain unique fields from one another.
 
-This situation most easily surfaces by adding a [data view](../../explore-analyze/find-and-organize/data-views.md) and checking its **Fields** tab for its total fields count. This statistic does tells you overall fields and not only where [`index:true`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-index.html), but serves as a good baseline.
+This situation most easily surfaces by adding a [data view](../../explore-analyze/find-and-organize/data-views.md) and checking its **Fields** tab for its total fields count. This statistic does tells you overall fields and not only where [`index:true`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-index.md), but serves as a good baseline.
 
-If your issue only surfaces via a [data view](../../explore-analyze/find-and-organize/data-views.md), you may consider this menu’s **Field filters** if you’re not using [multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). Alternatively, you may consider a more targeted index pattern or using a negative pattern to filter-out problematic indices. For example, if `logs-*` has too high a field count because of problematic backing indices `logs-lotsOfFields-*`, then you could update to either `logs-*,-logs-lotsOfFields-*` or `logs-iMeantThisAnyway-*`.
+If your issue only surfaces via a [data view](../../explore-analyze/find-and-organize/data-views.md), you may consider this menu’s **Field filters** if you’re not using [multi-fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). Alternatively, you may consider a more targeted index pattern or using a negative pattern to filter-out problematic indices. For example, if `logs-*` has too high a field count because of problematic backing indices `logs-lotsOfFields-*`, then you could update to either `logs-*,-logs-lotsOfFields-*` or `logs-iMeantThisAnyway-*`.
 
 
 ## Resolve [resolve]
@@ -66,6 +66,6 @@ Mapping explosion is not easily resolved, so it is better prevented via the abov
 * Disable [dynamic mappings](../../manage-data/data-store/mapping.md).
 * [Reindex](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) into an index with a corrected mapping, either via [index template](../../manage-data/data-store/templates.md) or [explicitly set](../../manage-data/data-store/mapping.md).
 * If index is unneeded and/or historical, consider [deleting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
-* [Export](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elasticsearch.html) and [re-import](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html) data into a mapping-corrected index after [pruning](https://www.elastic.co/guide/en/logstash/current/plugins-filters-prune.html) problematic fields via Logstash.
+* [Export](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elasticsearch.md) and [re-import](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md) data into a mapping-corrected index after [pruning](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-prune.md) problematic fields via Logstash.
 
 [Splitting index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split) would not resolve the core issue.

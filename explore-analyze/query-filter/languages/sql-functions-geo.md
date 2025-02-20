@@ -17,7 +17,7 @@ The geo functions work with geometries stored in `geo_point`, `geo_shape` and `s
 
 ## Limitations [_limitations_4]
 
-[`geo_point`](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html), [`geo_shape`](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html) and [`shape`](https://www.elastic.co/guide/en/elasticsearch/reference/current/shape.html) and types are represented in SQL as geometry and can be used interchangeably with the following exceptions:
+[`geo_point`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md), [`geo_shape`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md) and [`shape`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/shape.md) and types are represented in SQL as geometry and can be used interchangeably with the following exceptions:
 
 * `geo_shape` and `shape` fields don’t have doc values, therefore these fields cannot be used for filtering, grouping or sorting.
 * `geo_points` fields are indexed and have doc values by default, however only latitude and longitude are stored and indexed with some loss of precision from the original values (4.190951585769653E-8 for the latitude and 8.381903171539307E-8 for longitude). The altitude component is accepted but not stored in doc values nor indexed. Therefore calling `ST_Z` function in the filtering, grouping or sorting will return `null`.

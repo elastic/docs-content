@@ -21,7 +21,7 @@ This guide shows you how to use {{esql}} in Kibana. To follow along with the que
 
 ## Enable or disable {{esql}} [esql-kibana-enable]
 
-{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html).
+{{esql}} is enabled by default in {{kib}}. It can be disabled using the `enableESQL` setting from the [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
 
 This will hide the {{esql}} user interface from various applications. However, users will be able to access existing {{esql}} artifacts like saved searches and visualizations.
 
@@ -39,9 +39,9 @@ After switching to {{esql}} mode, the query bar shows a sample query. For exampl
 from kibana_sample_data_logs | limit 10
 ```
 
-Every query starts with a [source command](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html). In this query, the source command is [`FROM`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
+Every query starts with a [source command](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md). In this query, the source command is [`FROM`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-from). `FROM` retrieves data from data streams, indices, or aliases. In this example, the data is retrieved from `kibana_sample_data_logs`.
 
-A source command can be followed by one or more [processing commands](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html). In this query, the processing command is [`LIMIT`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-limit). `LIMIT` limits the number of rows that are retrieved.
+A source command can be followed by one or more [processing commands](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md). In this query, the processing command is [`LIMIT`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-limit). `LIMIT` limits the number of rows that are retrieved.
 
 ::::{tip}
 Click the **ES|QL help** button to open the in-product reference documentation for all commands and functions or to get recommended queries that will help you get started.
@@ -129,7 +129,7 @@ the 10,000 row limit only applies to the number of rows that are retrieved by th
 ::::
 
 
-Each row shows two columns for the example query: a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-keep) command:
+Each row shows two columns for the example query: a column with the `@timestamp` field and a column with the full document. To display specific fields from the documents, use the [`KEEP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-keep) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -151,7 +151,7 @@ The maximum number of columns in Discover is 50. If a query returns more than 50
 
 ### Sorting [_sorting]
 
-To sort on one of the columns, click the column name you want to sort on and select the sort order. Note that this performs client-side sorting. It only sorts the rows that were retrieved by the query, which may not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-sort) command:
+To sort on one of the columns, click the column name you want to sort on and select the sort order. Note that this performs client-side sorting. It only sorts the rows that were retrieved by the query, which may not be the full dataset because of the (implicit) limit. To sort the full data set, use the [`SORT`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-sort) command:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -179,7 +179,7 @@ FROM my_index
 | WHERE custom_timestamp >= ?_tstart AND custom_timestamp < ?_tend
 ```
 
-You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-bucket) function to create auto-incrementing time buckets in {{esql}} [visualizations](#esql-kibana-visualizations). For example:
+You can also use the `?_tstart` and `?_tend` parameters with the [`BUCKET`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-bucket) function to create auto-incrementing time buckets in {{esql}} [visualizations](#esql-kibana-visualizations). For example:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -191,7 +191,7 @@ This example uses `50` buckets, which is the maximum number of buckets.
 
 #### WHERE command [_where_command]
 
-You can also limit the time range using the [`WHERE`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-where) command and the [`NOW`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
+You can also limit the time range using the [`WHERE`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-where) command and the [`NOW`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-now) function. For example, if the timestamp field is called `timestamp`, to query the last 15 minutes of data:
 
 ```esql
 FROM kibana_sample_data_logs
@@ -254,7 +254,7 @@ You can also edit the {{esql}} visualization from here. Click the options button
 
 ## Create an enrich policy [esql-kibana-enrich]
 
-The {{esql}} [`ENRICH`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-enrich) command enables you to [enrich](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-enrich-data.html#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
+The {{esql}} [`ENRICH`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-enrich) command enables you to [enrich](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md) your query dataset with fields from another dataset. Before you can use `ENRICH`, you need to [create and execute an enrich policy](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md#esql-set-up-enrich-policy). If a policy exists, it will be suggested by auto-complete. If not, click **Click to create** to create one.
 
 :::{image} ../../../images/elasticsearch-reference-esql-kibana-enrich-autocomplete.png
 :alt: esql kibana enrich autocomplete
@@ -296,8 +296,8 @@ You can use {{esql}} queries to create alerts. From Discover, click **Alerts** a
 
 ## Limitations [esql-kibana-limitations]
 
-* The user interface to filter data is not enabled when Discover is in {{esql}} mode. To filter data, write a query that uses the [`WHERE`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-where) command instead.
+* The user interface to filter data is not enabled when Discover is in {{esql}} mode. To filter data, write a query that uses the [`WHERE`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-where) command instead.
 * Discover shows no more than 10,000 rows. This limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Queries and aggregations run on the full data set.
 * Discover shows no more than 50 columns. If a query returns more than 50 columns, Discover only shows the first 50.
 * CSV export from Discover shows no more than 10,000 rows. This limit only applies to the number of rows that are retrieved by the query and displayed in Discover. Queries and aggregations run on the full data set.
-* Querying many indices at once without any filters can cause an error in kibana which looks like `[esql] > Unexpected error from Elasticsearch: The content length (536885793) is bigger than the maximum allowed string (536870888)`. The response from {{esql}} is too long. Use [`DROP`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-drop) or [`KEEP`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-keep) to limit the number of fields returned.
+* Querying many indices at once without any filters can cause an error in kibana which looks like `[esql] > Unexpected error from Elasticsearch: The content length (536885793) is bigger than the maximum allowed string (536870888)`. The response from {{esql}} is too long. Use [`DROP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-drop) or [`KEEP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-keep) to limit the number of fields returned.

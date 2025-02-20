@@ -45,7 +45,7 @@ Further papers cited in the C++ code:
 
 ## What are the input features used by the model? [faq-features]
 
-All input features are specified by the user, for example, using [diverse statistical functions](https://www.elastic.co/guide/en/machine-learning/current/ml-functions.html) like count or mean over the data of interest.
+All input features are specified by the user, for example, using [diverse statistical functions](/explore-analyze/machine-learning/anomaly-detection/ml-functions.md) like count or mean over the data of interest.
 
 ## Does the data used by the model only include customers' data? [faq-data]
 

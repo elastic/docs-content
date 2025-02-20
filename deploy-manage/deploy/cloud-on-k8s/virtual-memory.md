@@ -11,9 +11,9 @@ By default, Elasticsearch uses memory mapping (`mmap`) to efficiently access ind
 
 The kernel setting `vm.max_map_count=262144` can be set on the host directly, by a dedicated init container which must be privileged, or a dedicated Daemonset.
 
-For more information, check the Elasticsearch documentation on [Virtual memory](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html).
+For more information, check the Elasticsearch documentation on [Virtual memory](/deploy-manage/deploy/self-managed/vm-max-map-count.md).
 
-Optionally, you can select a different type of file system implementation for the storage. For possible options, check the [store module documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-store.html).
+Optionally, you can select a different type of file system implementation for the storage. For possible options, check the [store module documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-store-settings.md).
 
 ```yaml
 spec:

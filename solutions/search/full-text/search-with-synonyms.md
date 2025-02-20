@@ -11,7 +11,7 @@ applies:
 
 $$$ece-add-custom-bundle-example-synonyms$$$
 ::::{note}
-Learn about [adding custom synonym bundles](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html#ece-add-custom-bundle-example-synonyms) to your Elastic Cloud Enterprise deployment.
+Learn about [adding custom synonym bundles](/solutions/search/full-text/search-with-synonyms.md#ece-add-custom-bundle-example-synonyms) to your Elastic Cloud Enterprise deployment.
 ::::
 
 
@@ -137,10 +137,10 @@ An index with invalid synonym rules cannot be reopened, making it inoperable whe
 ::::
 
 
-{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html) to include synonyms:
+{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/token-filter-reference.md) to include synonyms:
 
-* [Synonym graph](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html): It is recommended to use it, as it can correctly handle multi-word synonyms ("hurriedly", "in a hurry").
-* [Synonym](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html): Not recommended if you need to use multi-word synonyms.
+* [Synonym graph](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-synonym-graph-tokenfilter.md): It is recommended to use it, as it can correctly handle multi-word synonyms ("hurriedly", "in a hurry").
+* [Synonym](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
 
 Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
 

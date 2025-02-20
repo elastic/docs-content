@@ -118,7 +118,7 @@ To focus your data on a specific time range, add the time filter.
 2. Click **Display**
 3. To use the date time field from the sample data, enter `order_date` in the **Column** field, then click **Set**.
 
-% image doesn't exist (also broken in asciidoc https://www.elastic.co/guide/en/kibana/current/canvas-tutorial.html#_show_how_your_data_changes_over_time)
+% image doesn't exist (also broken in asciidoc /explore-analyze/visualize/canvas/canvas-tutorial.md#_show_how_your_data_changes_over_time)
 
 % :::{image} ../../../images/kibana-canvas_tutorialCustomTimeFilter_7.17.0.png
 % :alt: Custom time filter added to the workpad
@@ -136,6 +136,6 @@ Now that you know the basics, you’re ready to explore on your own.
 
 Here are some things to try:
 
-* Play with the [sample Canvas workpads](https://www.elastic.co/guide/en/kibana/current/get-started.html).
+* Play with the [sample Canvas workpads](/explore-analyze/index.md).
 * Build presentations of your own data with [workpads](../canvas.md#create-workpads).
 * Deep dive into the [expression language and functions](canvas-function-reference.md) that drive **Canvas**.

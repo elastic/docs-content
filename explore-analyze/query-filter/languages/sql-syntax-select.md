@@ -133,7 +133,7 @@ SELECT * FROM "emp" LIMIT 1;
 1953-09-02T00:00:00Z|10001          |Georgi         |M              |1986-06-26T00:00:00.000Z|2              |Facello        |Georgi Facello |57305
 ```
 
-The name can be a [pattern](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) pointing to multiple indices (likely requiring quoting as mentioned above) with the restriction that **all** resolved concrete tables have **exact mapping**.
+The name can be a [pattern](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) pointing to multiple indices (likely requiring quoting as mentioned above) with the restriction that **all** resolved concrete tables have **exact mapping**.
 
 ```sql
 SELECT emp_no FROM "e*p" LIMIT 1;
@@ -507,7 +507,7 @@ Ordering by aggregation is possible for up to **10000** entries for memory consu
 When doing full-text queries in the `WHERE` clause, results can be returned based on their [score](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/relevance-intro.html) or *relevance* to the given query.
 
 ::::{note}
-When doing multiple text queries in the `WHERE` clause then, their scores will be combined using the same rules as {{es}}'s [bool query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html).
+When doing multiple text queries in the `WHERE` clause then, their scores will be combined using the same rules as {{es}}'s [bool query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md).
 ::::
 
 

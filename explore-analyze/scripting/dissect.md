@@ -55,7 +55,7 @@ Now that you have a dissect pattern, how do you test and use it?
 
 ## Test dissect patterns with Painless [dissect-patterns-test]
 
-You can incorporate dissect patterns into Painless scripts to extract data. To test your script, use either the [field contexts](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html#painless-execute-runtime-field-context) of the Painless execute API or create a runtime field that includes the script. Runtime fields offer greater flexibility and accept multiple documents, but the Painless execute API is a great option if you don’t have write access on a cluster where you’re testing a script.
+You can incorporate dissect patterns into Painless scripts to extract data. To test your script, use either the [field contexts](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-api-examples.md#painless-execute-runtime-field-context) of the Painless execute API or create a runtime field that includes the script. Runtime fields offer greater flexibility and accept multiple documents, but the Painless execute API is a great option if you don’t have write access on a cluster where you’re testing a script.
 
 For example, test your dissect pattern with the Painless execute API by including your Painless script and a single document that matches your data. Start by indexing the `message` field as a `wildcard` data type:
 
