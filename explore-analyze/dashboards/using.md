@@ -36,7 +36,7 @@ Use filter pills to focus in on the specific data you want.
 
 You can interact with some panel visualizations to explore specific data more in depth. Upon clicking, filter pills are added and applied to the entire dashboard, so that surrounding panels and visualizations also reflect your browsing.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt93fcc34395a310d4/6750e7e9b09fe993fbc0824a/add-filter-pills-8.17.gif
+:::{image} ../../images/add-filter-pills-8.17.gif
 :alt: Browsing a chart creates a filter dynamically
 :::
 
@@ -143,7 +143,7 @@ Filter the data within a specified range of time.
 4. To animate the data changes over time, click ![The icon to clear all specified values in the Range slider](../../images/kibana-dashboard_timeSliderControl_animate_8.5.0.png "").
 5. To clear the specified values, click ![The icon to clear all specified values in the Range slider](../../images/kibana-dashboard_controlsClearSelections_8.3.0.png "").
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt672f3aaadf9ea5a6/6750dd6c2452f972af0a88b4/dashboard_timeslidercontrol_8.17.0.gif
+:::{image} ../../images/dashboard_timeslidercontrol_8.17.0.gif
 :alt: Time slider control
 :class: screenshot
 :::

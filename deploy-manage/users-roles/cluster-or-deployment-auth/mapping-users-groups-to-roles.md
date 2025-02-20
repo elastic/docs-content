@@ -26,3 +26,9 @@ $$$ldap-role-mapping$$$
 $$$mapping-roles-api$$$
 
 $$$mapping-roles-rule-field$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/mapping-roles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/mapping-roles.md)
+* [/raw-migrated-files/kibana/kibana/role-mappings.md](/raw-migrated-files/kibana/kibana/role-mappings.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/role-mapping-resources.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/role-mapping-resources.md)

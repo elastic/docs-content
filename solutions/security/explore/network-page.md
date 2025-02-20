@@ -6,13 +6,6 @@ mapped_urls:
 
 # Network page
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/network-page-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-network-page-overview.md
-
 The Network page provides key network activity metrics in an interactive map, and network event tables that enable interaction with Timeline. You can drag and drop items of interest from the Network view to Timeline for further investigation.
 
 :::{image} ../../../images/security-network-ui.png
@@ -26,7 +19,7 @@ The Network page provides key network activity metrics in an interactive map, an
 The map provides an interactive visual overview of your network traffic. Hover over source and destination points to show more information, such as host names and IP addresses.
 
 ::::{note}
-To access the interactive map, you need either `Read` or `All` privileges for `Maps` (**Kibana Privileges** → **Analytics** → **Maps**). To learn more about map setup, refer to [Configure network map data](/solutions/security/explore/configure-network-map-data.md).
+To access the interactive map in {{stack}} 9.0.0+, you need either `Read` or `All` privileges for `Maps` (**Kibana Privileges** → **Analytics** → **Maps**). In serverless, you must have the appropriate user role. To learn more about map setup, refer to [Configure network map data](/solutions/security/explore/configure-network-map-data.md).
 ::::
 
 

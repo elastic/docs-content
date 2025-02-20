@@ -113,7 +113,7 @@ If your data uses the [date nanosecond data type](https://www.elastic.co/guide/e
 
 ### Data streams as destination indices are not supported [transform-data-streams-destination]
 
-{{transforms-cap}} update data in the destination index which requires writing into the destination. [Data streams](../../manage-data/data-store/index-types/data-streams.md) are designed to be append-only, which means you cannot send update or delete requests directly to a data stream. For this reason, data streams are not supported as destination indices for {{transforms}}.
+{{transforms-cap}} update data in the destination index which requires writing into the destination. [Data streams](../../manage-data/data-store/data-streams.md) are designed to be append-only, which means you cannot send update or delete requests directly to a data stream. For this reason, data streams are not supported as destination indices for {{transforms}}.
 
 ### ILM as destination index may cause duplicated documents [transform-ilm-destination]
 

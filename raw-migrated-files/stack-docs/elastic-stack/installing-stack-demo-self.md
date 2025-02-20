@@ -276,7 +276,7 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
     Note the following tips about enrollment tokens:
 
     1. An enrollment token has a lifespan of 30 minutes. In case the `elasticsearch-reconfigure-node` command returns an `Invalid enrollment token` error, try generating a new token.
-    2. Be sure not to confuse an [{{es}} enrollment token](../../../deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#_enroll_nodes_in_an_existing_cluster_3) (for enrolling {{es}} nodes in an existing cluster) with a [{{kib}} enrollment token](../../../deploy-manage/maintenance/start-stop-services/start-stop-kibana.md#_run_kibana_from_the_command_line) (to enroll your {{kib}} instance with {{es}}, as described in the next section). These two tokens are not interchangeable.
+    2. Be sure not to confuse an [{{es}} enrollment token](../../../deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) (for enrolling {{es}} nodes in an existing cluster) with a [{{kib}} enrollment token](../../../deploy-manage/maintenance/start-stop-services/start-stop-kibana.md#run-kibana-from-command-line) (to enroll your {{kib}} instance with {{es}}, as described in the next section). These two tokens are not interchangeable.
 
     ::::
 

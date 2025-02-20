@@ -198,7 +198,7 @@ node.roles: [ data_content ]
 
 Hot data nodes are part of the hot tier. The hot tier is the {{es}} entry point for time series data and holds your most-recent, most-frequently-searched time series data. Nodes in the hot tier need to be fast for both reads and writes, which requires more hardware resources and faster storage (SSDs). For resiliency, indices in the hot tier should be configured to use one or more replicas.
 
-The hot tier is required. New indices that are part of a [data stream](../../../manage-data/data-store/index-types/data-streams.md) are automatically allocated to the hot tier.
+The hot tier is required. New indices that are part of a [data stream](../../../manage-data/data-store/data-streams.md) are automatically allocated to the hot tier.
 
 To create a dedicated hot node, set:
 

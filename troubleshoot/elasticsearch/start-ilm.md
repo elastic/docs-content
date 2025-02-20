@@ -2,6 +2,7 @@
 navigation_title: Lifecycle management
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-ilm.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-slm.html
 ---
 
 % TODO reframe how-to stuff as troubleshooting content
