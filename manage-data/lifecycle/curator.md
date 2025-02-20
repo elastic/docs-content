@@ -1,18 +1,9 @@
 ---
-mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/client/curator/current/about.html
-  - https://www.elastic.co/guide/en/elasticsearch/client/curator/current/ilm.html
+navigation_title: Curator
 ---
 
-# Curator
+# Elasticsearch Curator
 
-% What needs to be done: Refine
+Similar to {{ilm-cap}} ({{ilm-init}}), Elasticsearch Curator can help you manage index lifecycles. **If {{ilm-init}} provides the functionality to manage your index lifecycle and you have at least a Basic license, use {{ilm-init}} instead of Curator.** Many {{stack}} components use {{ilm-init}} by default.
 
-% GitHub issue: docs-projects#378
-
-% Scope notes: Write a brief intro and link to the relevant reference content.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/curator/elasticsearch-client-curator/about.md
-% - [ ] ./raw-migrated-files/curator/elasticsearch-client-curator/ilm.md
+If you're looking for additional functionality for managing your index lifecycle, you can read more about how Elasticsearch Curator may help in [Curator index management](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html).

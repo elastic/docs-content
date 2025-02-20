@@ -4,14 +4,16 @@ on:
   push:
     branches:
       - main
-  pull_request: ~
+  pull_request_target: ~
 
 jobs:
   preview:
     uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
     with:
       continue-on-error: false
-      strict: false
+      strict: true
     permissions:
+      deployments: write
+      id-token: write
       contents: read
       pull-requests: read

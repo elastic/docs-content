@@ -19,13 +19,13 @@ To close cases when they are sent to an external system, select **Automatically 
 
 If you are using an external incident management system, you can integrate Elastic Observability cases with that system using *connectors*. These third-party systems are supported:
 
-* {sn-itsm}
-* {sn-sir}
+* {{sn-itsm}}
+* {{sn-sir}}
 * {{jira}} (including {{jira}} Service Desk)
-* {ibm-r}
-* {swimlane}
+* {{ibm-r}}
+* {{swimlane}}
 * TheHive
-* {webhook-cm}
+* {{webhook-cm}}
 
 ::::{important}
 To send cases to external systems, you need the appropriate license, and your role must have the **Cases** {{kib}} privilege as a user. For more details, refer to [Configure access to cases](../../../solutions/observability/incident-management/configure-access-to-cases.md).

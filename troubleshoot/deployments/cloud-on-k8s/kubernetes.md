@@ -1,9 +1,18 @@
 ---
+navigation_title: "Elastic Cloud on Kubernetes"
+applies:
+  eck: all  
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-troubleshooting.html
 ---
 
-# Kubernetes [k8s-troubleshooting]
+# Troubleshoot Elastic Cloud on Kubernetes [k8s-troubleshooting]
+
+:::{admonition} WIP
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working on restructuring this section. It currently reflects a legacy product-centric structure.
+:::
 
 * [*Common problems*](common-problems.md)
 * [*Troubleshooting methods*](troubleshooting-methods.md)

@@ -16,7 +16,7 @@ On this page, you’ll find information on:
 
 ## Inspecting data in {{kib}} [profiling-inspecting-data-in-kibana]
 
-To open **Universal Profiling**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To open **Universal Profiling**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 Under **Universal Profiling**, click **Stacktraces** to open the [stacktraces view](#profiling-stacktraces-intro).
 
@@ -161,7 +161,7 @@ The functions view presents an ordered list of functions that Universal Profilin
 
 ## Filtering [profiling-filtering-intro]
 
-In all of the Universal Profiling views, the search bar accepts a filter in the {{kib}} Query Language ({{kibana-ref}}/kuery-query.html[KQL]).
+In all of the Universal Profiling views, the search bar accepts a filter in the {{kib}} Query Language (https://www.elastic.co/guide/en/kibana/current/kuery-query.html[KQL]).
 
 Most notably, you may want to filter on:
 

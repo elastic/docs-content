@@ -1,9 +1,10 @@
 ---
+navigation_title: "Alerts"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 ---
 
-# Alerts [alerting-troubleshooting]
+# Troubleshoot {{kib}} alerts [alerting-troubleshooting]
 
 Alerting provides many options for diagnosing problems with rules and connectors.
 
@@ -199,7 +200,7 @@ This approach should be used only temporarily as a last resort to restore functi
 
 ## Limitations [alerting-limitations]
 
-The following limitations and known problems apply to the 9.0.0-beta1 release of the {{kib}} {alert-features}:
+The following limitations and known problems apply to the 9.0.0-beta1 release of the {{kib}} {{alert-features}}:
 
 
 ### Alert visibility [_alert_visibility]

@@ -1,9 +1,10 @@
 ---
+navigation_title: "Migration and upgrades"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/resolve-migrations-failures.html
 ---
 
-# Migration failures [resolve-migrations-failures]
+# Troubleshoot {{kib}} migration and upgrades [resolve-migrations-failures]
 
 Migrating {{kib}} primarily involves migrating saved object documents to be compatible with the new version.
 
@@ -156,7 +157,7 @@ If the cluster exceeded the low watermark for disk usage, the output should cont
 "The node is above the low watermark cluster setting [cluster.routing.allocation.disk.watermark.low=85%], using more disk space than the maximum allowed [85.0%], actual free: [11.692661332965082%]"
 ```
 
-Refer to the {{es}} guide for how to [fix common cluster issues](https://www.elastic.co/guide/en/elasticsearch/reference/current/disk-usage-exceeded.html).
+Refer to the {{es}} guide for how to [fix common cluster issues](https://www.elastic.co/guide/en/elasticsearch/reference/current/fix-watermark-errors.html).
 
 If routing allocation is the issue, the `_cluster/allocation/explain` API will return an entry similar to this:
 

@@ -14,3 +14,10 @@ mapped_urls:
 
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-activity-page.md
 % - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-activity-page.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-activity-page.md](/raw-migrated-files/cloud/cloud/ec-activity-page.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-activity-page.md](/raw-migrated-files/cloud/cloud-heroku/ech-activity-page.md)

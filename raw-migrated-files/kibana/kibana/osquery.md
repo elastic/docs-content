@@ -24,7 +24,7 @@ To use **Osquery Manager**, you must be assigned to a role with the following pr
 
 To inspect hosts, run a query against one or more agents or policies, then view the results.
 
-1. Go to **Osquery** using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to **Osquery** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the **Live queries** view, click **New live query**.
 3. Choose to run a single query or a query pack.
 4. Select one or more agents or groups to query. Start typing in the search field, and you’ll get suggestions for agents by name, ID, platform, and policy.
@@ -220,7 +220,7 @@ A set of saved queries are included with the integration and available to run as
 
 ## Map result fields to ECS [osquery-map-fields]
 
-When you save queries or add queries to a pack, you can optionally map Osquery results or static values to fields in the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) (ECS). This standardizes your Osquery data for use across detections, machine learning, and any other areas that rely on ECS-compliant data. When the query is run, the results include the original `osquery.<fields>` and the mapped ECS fields. For example, if you update a query to map `osquery.name` to `user.name`, the query results include both fields.
+When you save queries or add queries to a pack, you can optionally map Osquery results or static values to fields in the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html) (ECS). This standardizes your Osquery data for use across detections, machine learning, and any other areas that rely on ECS-compliant data. When the query is run, the results include the original `osquery.<fields>` and the mapped ECS fields. For example, if you update a query to map `osquery.name` to `user.name`, the query results include both fields.
 
 1. Edit saved queries or queries in a pack to map fields:
 
@@ -238,7 +238,7 @@ When you save queries or add queries to a pack, you can optionally map Osquery r
 
 ::::{note}
 * Some ECS fields are restricted and cannot be mapped. These are not available in the ECS dropdown.
-* Some ECS fields are restricted to a set of allowed values, like [event.category](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-event.html#field-event-category). Use the [ECS Field Reference](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-field-reference.html) for help when mapping fields.
+* Some ECS fields are restricted to a set of allowed values, like [event.category](https://www.elastic.co/guide/en/ecs/current/ecs-event.html#field-event-category). Use the [ECS Field Reference](https://www.elastic.co/guide/en/ecs/current/ecs-field-reference.html) for help when mapping fields.
 * Osquery date fields have a variety of data types (including integer, text, or bigint). When mapping an Osquery date field to an ECS date field, you might need to use SQL operators in the query to get an {{es}}-compatible [date](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) type.
 
 ::::

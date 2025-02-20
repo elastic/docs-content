@@ -14,9 +14,9 @@ To ingest data, you can use:
 * Third-party collectors configured to ship ECS-compliant data. [{{elastic-sec}} ECS field reference](https://www.elastic.co/guide/en/serverless/current/security-siem-field-reference.html) provides a list of ECS fields used in {{elastic-sec}}.
 
 ::::{important}
-If you use a third-party collector to ship data to {{elastic-sec}}, you must map its fields to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}). Additionally, you must add its index to the {{elastic-sec}} indices (update the **`securitySolution:defaultIndex`** [advanced setting](../../../solutions/security/get-started/configure-advanced-settings.md#update-sec-indices)).
+If you use a third-party collector to ship data to {{elastic-sec}}, you must map its fields to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Additionally, you must add its index to the {{elastic-sec}} indices (update the **`securitySolution:defaultIndex`** [advanced setting](../../../solutions/security/get-started/configure-advanced-settings.md#update-sec-indices)).
 
-{{elastic-sec}} uses the [`host.name`](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-host.html) ECS field as the primary key for identifying hosts.
+{{elastic-sec}} uses the [`host.name`](https://www.elastic.co/guide/en/ecs/current/ecs-host.html) ECS field as the primary key for identifying hosts.
 
 ::::
 

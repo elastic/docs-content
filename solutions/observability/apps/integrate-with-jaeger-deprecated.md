@@ -50,13 +50,13 @@ The APM integration serves Jaeger gRPC over the same host and port as the Elasti
 
 ::::::{tab-item} Elasticsearch Service
 1. Log into [{{ecloud}}](https://cloud.elastic.co?page=docs&placement=docs-body) and select your deployment.
-2. In {{kib}}, find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+2. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. Select **Elastic APM**. If the integration is already installed, under the polices tab, select **Actions*** > ***Edit integration**. If the integration has not been installed, select **Add Elastic APM**. Copy the URL. If you’re using Agent authorization, copy the Secret token as well.
 4. Configure the APM Integration as a collector for your Jaeger agents.
 
     As of this writing, the Jaeger agent binary offers the following CLI flags, which can be used to enable TLS, output to {{ecloud}}, and set the APM Integration secret token:
 
-    ```terminal
+    ```bash
     --reporter.grpc.tls.enabled=true
     --reporter.grpc.host-port=<apm-url:443>
     --agent.tags="elastic-apm-auth=Bearer <secret-token>"
@@ -69,11 +69,11 @@ For the equivalent environment variables, change all letters to upper-case and r
 ::::::
 
 ::::::{tab-item} Self-managed
-1. Configure the APM Integration as a collector for your Jaeger agents. In {{kib}}, find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Select **Elastic APM***. If the integration is already installed, under the polices tab, select ***Actions*** > ***Edit integration**. If the integration has not been installed, select **Add Elastic APM**. Copy the Host. If you’re using Agent authorization, copy the Secret token as well.
+1. Configure the APM Integration as a collector for your Jaeger agents. In {{kib}}, find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Select **Elastic APM***. If the integration is already installed, under the polices tab, select ***Actions*** > ***Edit integration**. If the integration has not been installed, select **Add Elastic APM**. Copy the Host. If you’re using Agent authorization, copy the Secret token as well.
 
     As of this writing, the Jaeger agent binary offers the `--reporter.grpc.host-port` CLI flag. Use this to define the host and port that the APM Integration is listening on:
 
-    ```terminal
+    ```bash
     --reporter.grpc.host-port=<apm-endpoint:8200>
     ```
 
@@ -81,7 +81,7 @@ For the equivalent environment variables, change all letters to upper-case and r
 
     When TLS is enabled for the APM Integration, Jaeger agents must also enable TLS communication:
 
-    ```terminal
+    ```bash
     --reporter.grpc.tls.enabled=true
     ```
 
@@ -89,7 +89,7 @@ For the equivalent environment variables, change all letters to upper-case and r
 
     A secret token or API key can be used to ensure only authorized Jaeger agents can send data to the APM Integration. When enabled, use an agent level tag to authorize Jaeger agent communication with the APM Server:
 
-    ```terminal
+    ```bash
     --agent.tags="elastic-apm-auth=Bearer <secret-token>"
     ```
 

@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/vega.html
 ---
@@ -12,7 +15,7 @@ mapped_pages:
 Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
 * Aggregations that use `nested` or `parent/child` mapping
-* Aggregations without a {data-source}
+* Aggregations without a {{data-source}}
 * Queries that use custom time filters
 * Complex calculations
 * Extracted data from _source instead of aggregations
@@ -43,7 +46,7 @@ As you edit the specs, work in small steps, and frequently save your work. Small
 
 Before starting, add the eCommerce sample data that you’ll use in your spec, then create the dashboard.
 
-1. [Install the eCommerce sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, click **Create dashboard**.
 
@@ -84,7 +87,7 @@ To create the stacked area chart, add the aggregations.
 To check your work, open and use the [**Console**](../query-filter/tools/console.md) on a separate browser tab.
 
 1. Open {{kib}} on a new tab.
-2. Go to the **Developer tools** page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+2. Go to the **Developer tools** page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 3. On the **Console** editor, enter the aggregation, then click **Click to send request**:
 
 ```js
@@ -1116,7 +1119,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 {{kib}} has extended Vega and Vega-Lite with extensions that support:
 
 * Automatic sizing
-* Default theme to match {kib}
+* Default theme to match {{kib}}
 * Writing {{es}} queries using the time range and filters from dashboards
 * [preview] Using the Elastic Map Service in Vega maps
 * Additional tooltip styling
@@ -1448,7 +1451,7 @@ Use the contextual **Inspect** tool to gain insights into different elements.
 
 ##### Inspect {{es}} requests [inspect-elasticsearch-requests]
 
-**Vega** uses the [{{es}} search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
+**Vega** uses the [{{es}} search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) to get documents and aggregation results from {{es}}. To troubleshoot these requests, click **Inspect**, which shows the most recent requests. In case your specification has more than one request, you can switch between the views using the **View** dropdown.
 
 :::{image} ../../images/kibana-vega_tutorial_inspect_requests.png
 :alt: vega tutorial inspect requests

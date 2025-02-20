@@ -16,7 +16,7 @@ This guide introduces you to three of {{kib}}'s security features: spaces, roles
 
 Do you have multiple teams using {{kib}}? Do you want a “playground” to experiment with new visualizations or rules? If so, then [{{kib}} Spaces](../../manage-spaces.md) can help.
 
-Think of a space as another instance of {{kib}}. A space allows you to organize your [dashboards](../../../explore-analyze/dashboards.md), [rules](../../../explore-analyze/alerts-cases/alerts.md), [machine learning jobs](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md), and much more into their own categories. For example, you might have a Marketing space for your marketeers to track the results of their campaigns, and an Engineering space for your developers to [monitor application performance](https://www.elastic.co/guide/en/apm/guide/current/apm-overview.html).
+Think of a space as another instance of {{kib}}. A space allows you to organize your [dashboards](../../../explore-analyze/dashboards.md), [rules](../../../explore-analyze/alerts-cases/alerts.md), [machine learning jobs](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md), and much more into their own categories. For example, you might have a Marketing space for your marketeers to track the results of their campaigns, and an Engineering space for your developers to [monitor application performance](/solutions/observability/apps/application-performance-monitoring-apm.md).
 
 The assets you create in one space are isolated from other spaces, so when you enter a space, you only see the assets that belong to that space.
 
@@ -55,7 +55,7 @@ Let’s work through an example together. Consider a marketing analyst who wants
 
 Create a Marketing space for your marketing analysts to use.
 
-1. Go to the **Spaces** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Spaces** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create a space**.
 3. Give this space a unique name. For example: `Marketing`.
 4. Click **Create space**.
@@ -78,7 +78,7 @@ To effectively use dashboards, create a role that describes the privileges you w
 
 To create the role:
 
-1. Go to the **Roles** management page using the navigation menu or the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click **Create role**.
 3. Give this role a unique name. For example: `marketing_dashboards_role`.
 4. For this example, you want to store all marketing data in the `acme-marketing-*` set of indices. To grant this access, locate the **Index privileges** section and enter:

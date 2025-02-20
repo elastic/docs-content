@@ -46,8 +46,6 @@ apm-server.auth.api_key.limit: 50 <2>
 1. Enables API keys
 2. Restricts the number of unique API keys that {{es}} allows each minute. This value should be the number of unique API keys configured in your monitored services.
 
-
-All other configuration options are described in [API keys]().
 ::::::
 
 :::::::
@@ -92,7 +90,7 @@ Assign the newly created `apm_agent_key_role` role to any user that wishes to cr
 
 The Applications UI has a built-in workflow that you can use to easily create and view {{apm-agent}} API keys. Only API keys created in the Applications UI will show up here.
 
-Using a superuser account, or a user with the role created in the previous step, In {{kib}}, find **Applications** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Go to **Settings** → **Agent keys**. Enter a name for your API key and select at least one privilege.
+Using a superuser account, or a user with the role created in the previous step, In {{kib}}, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Agent keys**. Enter a name for your API key and select at least one privilege.
 
 For example, to create an API key that can be used to ingest APM events and read agent central configuration, select `config_agent:read` and `event:write`.
 
@@ -114,7 +112,7 @@ You can now apply your newly created API keys in the configuration of each of yo
 * **iOS**: [`withApiKey`](https://www.elastic.co/guide/en/apm/agent/swift/current/configuration.html#withApiKey)
 * **Java agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-api-key)
 * **Node.js agent**: [`apiKey`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#api-key)
-* **PHP agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/configuration-reference.html#config-api-key)
+* **PHP agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-api-key)
 * **Python agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-api-key)
 * **Ruby agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-api-key)
 
@@ -241,11 +239,11 @@ A full list of `apikey` subcommands and flags is available in the [API key comma
 
 ### {{es}} API key workflow [apm-create-api-key-workflow-es]
 
-It is also possible to create API keys using the {{es}} [create API key API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html).
+It is also possible to create API keys using the {{es}} [create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key).
 
 This example creates an API key named `java-002`:
 
-```kibana
+```bash
 POST /_security/api_key
 {
   "name": "java-002", <1>
@@ -286,7 +284,7 @@ The `credential` string, which is what agents use to communicate with APM Server
 echo -n GnrUT3QB7yZbSNxKET6d:RhHKisTmQ1aPCHC_TPwOvw | base64
 ```
 
-You can verify your API key has been base64-encoded correctly with the [Authenticate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html):
+You can verify your API key has been base64-encoded correctly with the [Authenticate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate):
 
 ```sh
 curl -H "Authorization: ApiKey R0gzRWIzUUI3eVpiU054S3pYSy06bXQyQWl4TlZUeEcyUjd4cUZDS0NlUQ==" localhost:9200/_security/_authenticate

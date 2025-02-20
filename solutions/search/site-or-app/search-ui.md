@@ -1,13 +1,13 @@
 ---
-navigation_title: "What is Search UI?"
+navigation_title: "Search UI"
 mapped_pages:
   - https://www.elastic.co/guide/en/search-ui/current/overview.html
+applies:
+  stack:
+  serverless:
 ---
 
-
-
-# Search UI [overview]
-
+# What is Search UI? [overview]
 
 A JavaScript library for the fast development of modern, engaging search experiences with [Elastic](https://www.elastic.co/). Get up and running quickly without re-inventing the wheel.
 
@@ -20,6 +20,9 @@ A JavaScript library for the fast development of modern, engaging search experie
 * **Smart URLs** - Searches, paging, filtering, and more, are captured in the URL for direct result linking.
 * **Flexible front-end** - Not just for React. Use with any JavaScript library, even vanilla JavaScript.
 * **Flexible back-end** - Use it with Elasticsearch, Elastic Enterprise Search, or any other search API.
+:::{important}
+Enterprise Search is not available in {{stack}} 9.0+.
+:::
 
 
 ## Live demos 👀 [overview-live-demos]

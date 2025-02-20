@@ -46,3 +46,16 @@ $$$csp-strict$$$
 $$$ec-appsearch-settings$$$
 
 $$$ec-es-elasticsearch-settings$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-add-user-settings.md](/raw-migrated-files/cloud/cloud/ec-add-user-settings.md)
+* [/raw-migrated-files/cloud/cloud/ec-editing-user-settings.md](/raw-migrated-files/cloud/cloud/ec-editing-user-settings.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-add-user-settings.md](/raw-migrated-files/cloud/cloud-heroku/ech-add-user-settings.md)
+* [/raw-migrated-files/cloud/cloud/ec-manage-kibana-settings.md](/raw-migrated-files/cloud/cloud/ec-manage-kibana-settings.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-manage-kibana-settings.md](/raw-migrated-files/cloud/cloud-heroku/ech-manage-kibana-settings.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-editing-user-settings.md](/raw-migrated-files/cloud/cloud-heroku/ech-editing-user-settings.md)
+* [/raw-migrated-files/cloud/cloud/ec-manage-apm-settings.md](/raw-migrated-files/cloud/cloud/ec-manage-apm-settings.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-manage-apm-settings.md](/raw-migrated-files/cloud/cloud-heroku/ech-manage-apm-settings.md)
+* [/raw-migrated-files/cloud/cloud/ec-manage-appsearch-settings.md](/raw-migrated-files/cloud/cloud/ec-manage-appsearch-settings.md)
+* [/raw-migrated-files/cloud/cloud/ec-manage-enterprise-search-settings.md](/raw-migrated-files/cloud/cloud/ec-manage-enterprise-search-settings.md)

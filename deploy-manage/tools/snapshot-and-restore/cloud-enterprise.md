@@ -99,9 +99,6 @@ To edit a snapshot repository configuration from your Elastic Cloud Enterprise i
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. From the **Platform** menu, select **Repositories**.
 3. Select **Edit** to modify a snapshot repository configuration.
-
-    For available options that you can change, check [Add Snapshot Repository Configurations]().
-
 4. Select **Save**.
 
 
@@ -136,7 +133,7 @@ You might need to update existing Elasticsearch clusters to use a different snap
 To change the snapshot repository for an existing Elasticsearch cluster:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. Optional: If you need to use a repository that is not yet listed, [add a snapshot repository configuration]() first.
+2. Optional: If you need to use a repository that is not yet listed, add a snapshot repository configuration first.
 3. From the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.

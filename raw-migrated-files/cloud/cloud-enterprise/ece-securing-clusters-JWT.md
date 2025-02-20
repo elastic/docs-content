@@ -1,6 +1,6 @@
 # Secure your clusters with JWT [ece-securing-clusters-JWT]
 
-These steps show how you can secure your Elasticsearch clusters, and Enterprise Search instances in a deployment by using a JSON Web Token (JWT) realm for authentication.
+These steps show how you can secure your Elasticsearch clusters instances in a deployment by using a JSON Web Token (JWT) realm for authentication.
 
 ::::{note}
 The JWT credentials are valid against the deployment, not the ECE platform. You can configure [role-based access control](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md) for the platform separately.

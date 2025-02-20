@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-web-server-data.html
 ---
@@ -14,14 +17,12 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 :class: screenshot
 :::
 
-Before you begin, you should be familiar with the [*{{kib}} concepts*](../overview/kibana-quickstart.md).
-
 
 ## Add the data and create the dashboard [add-the-data-and-create-the-dashboard]
 
 Add the sample web logs data, and create and set up the dashboard.
 
-1. [Install the web logs sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. [Install the web logs sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. Click **Create dashboard**.
 4. Set the [time filter](../query-filter/filtering.md) to **Last 90 days**.
@@ -50,7 +51,7 @@ To create the visualizations in this tutorial, you’ll use the following fields
 
 Click a field name to view more details, such as its top values and distribution.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt25c7a05e0f5daaa3/671966b9b1d3dd705a2ae650/tutorial-field-more-info.gif
+:::{image} ../../images/tutorial-field-more-info.gif
 :alt: Clicking a field name to view more details
 :class: screenshot
 :width: 50%

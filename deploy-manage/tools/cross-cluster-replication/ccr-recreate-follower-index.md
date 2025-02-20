@@ -27,7 +27,7 @@ In the side navigation, choose **Index Management**. Select the follower index f
 You can then [recreate the follower index](ccr-getting-started-follower-index.md) to restart the replication process.
 
 ::::{dropdown} Use the API
-Use the [pause follow API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-pause-follow.html) to pause the replication process. Then, close the follower index and recreate it. For example:
+Use the [pause follow API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-pause-follow) to pause the replication process. Then, close the follower index and recreate it. For example:
 
 ```console
 POST /follower_index/_ccr/pause_follow

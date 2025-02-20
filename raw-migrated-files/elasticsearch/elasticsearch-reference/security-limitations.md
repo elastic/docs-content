@@ -37,10 +37,10 @@ When a user’s role enables document or [field level security](../../../deploy-
 
 * The user cannot perform operations that effectively make contents accessible under another name, including actions from the following APIs:
 
-    * [Clone index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-clone-index.html)
-    * [Shrink index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-shrink-index.html)
-    * [Split index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-split-index.html)
-    * [Aliases API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html)
+    * [Clone index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-clone)
+    * [Shrink index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-shrink)
+    * [Split index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-split)
+    * [Aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases)
 
 * The request cache is disabled for search requests if either of the following are true:
 
@@ -61,7 +61,7 @@ When a user’s role enables [document level security](../../../deploy-manage/us
 
 * If suggesters are specified and document level security is enabled, the specified suggesters are ignored.
 * A search request cannot be profiled if document level security is enabled.
-* The [terms enum API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html) does not return terms if document level security is enabled.
+* The [terms enum API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-terms-enum) does not return terms if document level security is enabled.
 * The [`multi_match`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) query does not support specifying fields using wildcards.
 
 ::::{note} 
@@ -84,7 +84,7 @@ The [LDAP Realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/l
 
 ## Resource sharing check for users and API keys [can-access-resources-check] 
 
-The result of [async search](https://www.elastic.co/guide/en/elasticsearch/reference/current/async-search.html) and [scroll](https://www.elastic.co/guide/en/elasticsearch/reference/current/scroll-api.html) requests can be retrieved later by the same user or API key that submitted the initial request. The verification process involves comparing the username, authentication realm type, and (for realms other than file or native) realm name. If you used an API key to submit the request, only that key can retrieve the results. This logic also has a few limitations:
+The result of [async search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit) and [scroll](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll) requests can be retrieved later by the same user or API key that submitted the initial request. The verification process involves comparing the username, authentication realm type, and (for realms other than file or native) realm name. If you used an API key to submit the request, only that key can retrieve the results. This logic also has a few limitations:
 
 * Two different realms can have the same name on different nodes. This is not a recommended way to configure realms, therefore the resource sharing check does not attempt to detect this inconsistency.
 * Realms can be renamed. This can cause inconsistency for the resource sharing check when you submit an async search or scroll then rename the realm and try to retrieve the results. Hence, changing realm names should be handled with care since it can cause complications for more than just the resource sharing check.

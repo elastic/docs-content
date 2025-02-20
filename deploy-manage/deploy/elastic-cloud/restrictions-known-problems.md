@@ -15,7 +15,6 @@ When using Elasticsearch Service, there are some limitations you should be aware
 * [Kibana](#ec-restrictions-kibana)
 * [APM Agent central configuration with Private Link or traffic filters](#ec-restrictions-apm-traffic-filters)
 * [Fleet with Private Link or traffic filters](#ec-restrictions-fleet-traffic-filters)
-* [Enterprise Search in Kibana](#ec-restrictions-enterprise-search-kibana-integration-traffic-filters)
 * [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
@@ -75,9 +74,9 @@ Watcher encryption Key Setup is not supported.
 
 Changing the default throttle period is not possible. You can specify a throttle period per watch, however.
 
-Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](../../../explore-analyze/alerts-cases/watcher.md#ec-cloud-email-service-limits)
+Watcher comes preconfigured with a directly usable email account provided by Elastic. However, this account can’t be reconfigured and is subject to some limitations. For more information on the limits of the Elastic mail server, check the [cloud email service limits](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#cloud-email-service-limits)
 
-Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher.md#ec-watcher-custom-mail-server)
+Alternatively, a custom mail server can be configured as described in [Configuring a custom mail server](../../../explore-analyze/alerts-cases/watcher/enable-watcher.md#watcher-custom-mail-server)
 
 
 ## Private Link and SSO to Kibana URLs [ec-restrictions-traffic-filters-kibana-sso]
@@ -110,20 +109,13 @@ If you are using APM 7.9.0 or older:
 * You cannot use Fleet 7.13.x if your deployment is secured by [traffic filters](../../security/traffic-filtering.md). Fleet 7.14.0 and later works with traffic filters (both Private Link and IP filters).
 * If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has [traffic filters](../../security/traffic-filtering.md) enabled is not currently supported.
 
-
-## Enterprise Search in Kibana [ec-restrictions-enterprise-search-kibana-integration-traffic-filters]
-
-Enterprise Search’s management interface in Kibana does not work with traffic filters with 8.3.1 and older, it will return an `Insufficient permissions` (403 Forbidden) error. In Kibana 8.3.2, 8.4.0 and higher, the Enterprise Search management interface works with traffic filters.
-
-
 ## Restoring a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
 
-Kibana and Enterprise Search do not currently support restoring a snapshot of their indices across Elastic Cloud deployments.
+Kibana does not currently support restoring a snapshot of their indices across Elastic Cloud deployments.
 
 * [Kibana uses encryption keys](https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html#security-configure-settings) in various places, ranging from encrypting data in some areas of reporting, alerts, actions, connector tokens, ingest outputs used in Fleet and Synthetics monitoring to user sessions.
-* [Enterprise Search uses encryption keys](https://www.elastic.co/guide/en/enterprise-search/current/encryption-keys.html) when storing content source synchronization credentials, API tokens and other sensitive information.
-* Currently, there is not a way to retrieve the values of Kibana and Enterprise Search encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, Kibana and Enterprise Search will not be able to decrypt the data required for some Kibana and Enterprise Search features to function properly in the target deployment.
-* If you have already restored a snapshot across deployments and now have broken Kibana saved objects or Enterprise Search features in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
+* Currently, there is not a way to retrieve the values of Kibana encryption keys, or set them in the target deployment before restoring a snapshot. As a result, once a snapshot is restored, Kibana will not be able to decrypt the data required for some features to function properly in the target deployment.
+* If you have already restored a snapshot across deployments and now have broken Kibana saved objects in the target deployment, you will have to recreate all broken configurations and objects, or create a new setup in the target deployment instead of using snapshot restore.
 
 A snapshot taken using the default `found-snapshots` repository can only be restored to deployments in the same region. If you need to restore snapshots across regions, create the destination deployment, connect to the [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md), and then [restore from a snapshot](../../tools/snapshot-and-restore/restore-snapshot.md).
 
@@ -153,4 +145,4 @@ To make a seamless migration, after restoring from a snapshot there are some add
 
 ## Repository Analysis API is unavailable in Elastic Cloud [ec-repository-analyis-unavailable]
 
-* The Elasticsearch [Repository analysis API](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+* The Elasticsearch [Repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.

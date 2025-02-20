@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-ecommerce-data.html
 ---
@@ -14,14 +17,12 @@ When you’re done, you’ll have a complete overview of the sample web logs dat
 :class: screenshot
 :::
 
-Before you begin, you should be familiar with the [*{{kib}} concepts*](../overview/kibana-quickstart.md).
-
 
 ## Add the data and create the dashboard [add-the-data-and-create-the-dashboard-advanced]
 
 Add the sample eCommerce data, and create and set up the dashboard.
 
-1. [Install the eCommerce sample data set](../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+1. [Install the eCommerce sample data set](../index.md#gs-get-data-into-kibana).
 2. Go to **Dashboards**.
 3. On the **Dashboards** page, click **Create dashboard**.
 
@@ -109,7 +110,7 @@ To copy a function, you drag it to the **Add or drag-and-drop a field** area wit
 
 1. Drag the **95th** field to **Add or drag-and-drop a field** for **Vertical axis**.
 
-   :::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8fb6969daa820faf/6700642c363a96bb08f48bee/drag-and-drop-a-field-8.16.0.gif
+   :::{image} ../../images/drag-and-drop-a-field-8.16.0.gif
    :alt: Easily duplicate the items with drag and drop
    :class: screenshot
    :::

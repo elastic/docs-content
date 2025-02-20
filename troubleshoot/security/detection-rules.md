@@ -98,7 +98,7 @@ A field can have type conflicts *and* be unmapped in specified indices.
 
 ### Fields with conflicting types [fields-with-conflicting-types]
 
-Type conflicts occur when a field is mapped to different types across multiple indices. To resolve this issue, you can create new indices with matching field type mappings and [reindex your data](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html). Otherwise, use the information about a field’s type mappings to ensure you’re entering compatible field values when defining exception conditions.
+Type conflicts occur when a field is mapped to different types across multiple indices. To resolve this issue, you can create new indices with matching field type mappings and [reindex your data](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex). Otherwise, use the information about a field’s type mappings to ensure you’re entering compatible field values when defining exception conditions.
 
 In the following example, the selected field has been defined as different types across five indices.
 
@@ -182,10 +182,9 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 
 
 ### Troubleshoot missing alerts for {{ml}} jobs [ml-job-compatibility]
-:::{applies}
-:serverless: unavailable
-:::
-% doesn't apply to serverless 
+```yaml {applies_to}
+stack: all
+```
 
 
 {{ml-cap}} detection rules use {{ml}} jobs that have dependencies on data fields populated by the {{beats}} and {{agent}} integrations. In {{stack}} version 8.3, new {{ml}} jobs (prefixed with `v3`) were released to operate on the ECS fields available at that time.

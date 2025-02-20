@@ -33,13 +33,13 @@ $$$ece-python-logs-send-ess$$$
 
 $$$ece-python-logs-view-kibana$$$
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elasticsearch Service deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](https://www.elastic.co/guide/en/ecs-logging/overview/{{ecs-logging}}/intro.html).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elasticsearch Service deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](https://www.elastic.co/guide/en/ecs-logging/overview/current/intro.html).
 
 *Time required: 1 hour*
 
 ## Prerequisites [ec_prerequisites_2]
 
-To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](https://www.elastic.co/guide/en/ecs-logging/python/{{ecs-logging-python}}/installation.html) for the Python logging library.
+To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](https://www.elastic.co/guide/en/ecs-logging/python/current/installation.html) for the Python logging library.
 
 To install *ecs-logging-python*, run:
 
@@ -140,7 +140,7 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsible format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 
-    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-field-reference.html) for the full list of available fields.
+    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](https://www.elastic.co/guide/en/ecs/current/ecs-field-reference.html) for the full list of available fields.
 
 2. Let’s give the Python script a test run. Open a terminal instance in the location where you saved *elvis.py* and run the following:
 
@@ -446,5 +446,5 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 2. As your final step, remember to stop Filebeat and the Python script. Enter *CTRL + C* in both your Filebeat terminal and in your `elvis.py` terminal.
 
-You now know how to monitor log files from a Python application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md#ec-ingest-methods) to learn all about all about ingesting data.
+You now know how to monitor log files from a Python application, deliver the log event data securely into an {{ech}} or {{ece}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about all about ingesting data.
 

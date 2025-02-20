@@ -8,7 +8,7 @@ The **Hosts** page provides a metrics-driven view of your infrastructure backed 
 * View historical data to rule out false alerts and identify root causes.
 * Filter and search the data to focus on the hosts you care about the most.
 
-To open **Hosts**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To open **Hosts**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/observability-hosts.png
 :alt: Screenshot of the Hosts page
@@ -247,7 +247,7 @@ The **Logs** tab displays logs relating to the host that you have selected. By d
 |     |     |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-base.html)base field, `message`, is used. |
+| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-base.html)base field, `message`, is used. |
 
 You can customize the logs view by adding a column for an arbitrary field you would like to filter by. For more information, refer to [Customize Stream](../../../solutions/observability/logs/configure-data-sources.md#customize-stream-page). To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Logs**.
 

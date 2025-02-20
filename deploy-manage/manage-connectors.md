@@ -19,3 +19,8 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/docs-content/serverless/action-connectors.md
 
 $$$connector-management$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/kibana/kibana/action-types.md](/raw-migrated-files/kibana/kibana/action-types.md)
+* [/raw-migrated-files/docs-content/serverless/action-connectors.md](/raw-migrated-files/docs-content/serverless/action-connectors.md)

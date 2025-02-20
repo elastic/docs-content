@@ -1,4 +1,6 @@
 ---
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-configuration.html
 ---
@@ -90,7 +92,7 @@ spec:
 * `xpack.fleet.agents.elasticsearch.hosts` must point to the {{es}} cluster where {{agents}} should send data. For ECK-managed {{es}} clusters ECK creates a Service accessible through `https://ES_RESOURCE_NAME-es-http.ES_RESOURCE_NAMESPACE.svc:9200` URL, where `ES_RESOURCE_NAME` is the name of {{es}} resource and `ES_RESOURCE_NAMESPACE` is the namespace it was deployed within. See [Storing local state in host path volume](configuration-examples-standalone.md#k8s_storing_local_state_in_host_path_volume) for details on adjusting this field when running agent as non-root as it becomes required.
 * `xpack.fleet.agents.fleet_server.hosts` must point to {{fleet-server}} that {{agents}} should connect to. For ECK-managed {{fleet-server}} instances, ECK creates a Service accessible through `https://FS_RESOURCE_NAME-agent-http.FS_RESOURCE_NAMESPACE.svc:8220` URL, where `FS_RESOURCE_NAME` is the name of {{agent}} resource with {{fleet-server}} enabled and `FS_RESOURCE_NAMESPACE` is the namespace it was deployed in.
 * `xpack.fleet.packages` are required packages to enable {{fleet-server}} and {{agents}} to enroll.
-* `xpack.fleet.agentPolicies` policies are needed for {{fleet-server}} and {{agents}} to enroll to, check {{fleet-guide}}/agent-policy.html for more information.
+* `xpack.fleet.agentPolicies` policies are needed for {{fleet-server}} and {{agents}} to enroll to, check https://www.elastic.co/guide/en/fleet/current/agent-policy.html for more information.
 
 
 ## Set referenced resources [k8s-elastic-agent-fleet-configuration-setting-referenced-resources]
@@ -216,12 +218,12 @@ roleRef:
 
 ## Deploy {{agent}} in secured clusters [k8s-elastic-agent-fleet-configuration-deploying-in-secured-clusters]
 
-To deploy {{agent}} in clusters with the Pod Security Policy admission controller enabled, or in [OpenShift](k8s-openshift-agent.md) clusters, you might need to grant additional permissions to the Service Account used by the {{agent}} Pods. Those Service Accounts must be bound to a Role or ClusterRole that has `use` permission for the required Pod Security Policy or Security Context Constraints. Different {{agent}} {integrations} might require different settings set in their PSP/[SCC](k8s-openshift-agent.md).
+To deploy {{agent}} in clusters with the Pod Security Policy admission controller enabled, or in [OpenShift](k8s-openshift-agent.md) clusters, you might need to grant additional permissions to the Service Account used by the {{agent}} Pods. Those Service Accounts must be bound to a Role or ClusterRole that has `use` permission for the required Pod Security Policy or Security Context Constraints. Different {{agent}} {{integrations}} might require different settings set in their PSP/[SCC](k8s-openshift-agent.md).
 
 
 ## Customize {{fleet-server}} Service [k8s-elastic-agent-fleet-configuration-customize-fleet-server-service]
 
-By default, ECK creates a Service for {{fleet-server}} that {{agents}} can connect through. You can customize it using the `http` configuration element. Check more information on how to [make changes](accessing-services.md) to the Service and [customize](tls-certificates.md) the TLS configuration.
+By default, ECK creates a Service for {{fleet-server}} that {{agents}} can connect through. You can customize it using the `http` configuration element. Check more information on how to [make changes](accessing-services.md) to the Service and [customize](/deploy-manage/security/secure-http-communications.md) the TLS configuration.
 
 
 ## Control {{fleet}} policy selection [k8s-elastic-agent-control-fleet-policy-selection]

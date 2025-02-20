@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/data-views.html
   - https://www.elastic.co/guide/en/serverless/current/data-views.html
@@ -28,7 +31,7 @@ $$$management-cross-cluster-search$$$
 $$$data-views-read-only-access$$$
 
 
-By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/index-types/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
+By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
 In certain apps, you can also query your {{es}} data using [{{esql}}](../query-filter/languages/esql.md). With {{esql}}, data views aren't required.
@@ -86,7 +89,7 @@ Want to explore your data or create a visualization without saving it as a data 
 
 A temporary {{data-source}} remains in your space until you change apps, or until you save it.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte3a4f3994c44c0cc/637eb0c95834861044c21a25/ad-hoc-data-view.gif
+:::{image} ../../images/ad-hoc-data-view.gif
 :alt: how to create an ad-hoc data view
 :class: screenshot
 :::
@@ -98,7 +101,7 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 
 
 ### Use {{data-sources}} with rolled up data [rollup-data-view]
-::::{applies}
+::::{applies_to}
 :serverless: unavailable
 :stack: deprecated
 ::::
@@ -106,7 +109,7 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 ::::{admonition}
 :class: warning
 
-Rollups are deprecated. Use [downsampling](../../manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups are deprecated. Use [downsampling](../../manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 
@@ -116,11 +119,11 @@ A {{data-source}} can match one rollup index.  For a combination rollup {{data-s
 rollup_logstash,kibana_sample_data_logs
 ```
 
-For an example, refer to [Create and visualize rolled up data](../../manage-data/lifecycle/rollup.md#rollup-data-tutorial).
+For an example, refer to [Create and visualize rolled up data](/manage-data/lifecycle/rollup/getting-started-kibana.md#rollup-data-tutorial).
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]
-::::{applies}
+::::{applies_to}
 :serverless: unavailable
 :stack: ga
 ::::
@@ -175,7 +178,7 @@ Deleting a {{data-source}} breaks all visualizations, saved Discover sessions, a
 ::::
 
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Find the {{data-source}} that you want to delete, and then click ![Delete icon](../../images/kibana-delete.png "") in the **Actions** column.
 
 
@@ -213,7 +216,7 @@ For detailed information on how to use runtime fields with {{es}}, refer to [Run
 
 To add runtime fields to your data views, open the data view you want to change, then define the field values by emitting a single value using the [Painless scripting language](../../explore-analyze/scripting/modules-scripting-painless.md). You can also add runtime fields in [**Discover**](../../explore-analyze/discover/discover-get-started.md#add-field-in-discover) and [**Lens**](../../explore-analyze/visualize/lens.md#change-the-fields).
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that you want to add the runtime field to, then click **Add field**.
 3. Enter the field **Name**, then select the **Type**.
 4. Select **Set custom label**, then enter the label you want to display where the data view is used, such as **Discover**.
@@ -229,7 +232,7 @@ To add runtime fields to your data views, open the data view you want to change,
 
 #### Runtime field examples [runtime-field-examples]
 
-Try the runtime field examples on your own using the [**Sample web logs**](../../explore-analyze/overview/kibana-quickstart.md#gs-get-data-into-kibana) data.
+Try the runtime field examples on your own using the [**Sample web logs**](../../explore-analyze/index.md#gs-get-data-into-kibana) data.
 
 
 #### Return a keyword value [simple-hello-world-example]
@@ -315,7 +318,7 @@ else {
 
 Edit the settings for runtime fields, or remove runtime fields from data views.
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the runtime field you want to manage, then open the runtime field edit options or delete the runtime field.
 
 
@@ -450,7 +453,7 @@ The ability to create new scripted fields has been removed from the **Data Views
 ::::
 
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the data view that contains the scripted field you want to manage.
 3. Select the **Scripted fields** tab, then open the scripted field edit options or delete the scripted field.
 
@@ -466,7 +469,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 
 {{kib}} uses the same field types as {{es}}, however, some {{es}} field types are unsupported in {{kib}}. To customize how {{kib}} displays data fields, use the formatting options.
 
-1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../get-started/the-stack.md#kibana-navigation-search).
+1. Go to the **Data Views** management page using the navigation menu or the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Click the data view that contains the field you want to change.
 3. Find the field, then open the edit options (![Data field edit icon](../../images/kibana-edit_icon.png "")).
 4. Select **Set custom label**, then enter a **Custom label** for the field.

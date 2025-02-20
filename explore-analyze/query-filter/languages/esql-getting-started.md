@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "Getting started"
 ---
 
@@ -71,7 +74,7 @@ In {{kib}}, you can use Console or Discover to run {{esql}} queries:
 ::::::{tab-item} Console
 To get started with {{esql}} in Console, open the main menu and select **Dev Tools**.
 
-The general structure of an [{{esql}} query API](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-query-api.html) request is:
+The general structure of an [{{esql}} query API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-esql) request is:
 
 ```txt
 POST /_query?format=txt
@@ -117,7 +120,7 @@ You can adjust the editor’s height by dragging its bottom border to your likin
 Each {{esql}} query starts with a [source command](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-source-commands). A source command produces a table, typically with data from {{es}}.
 
 :::{image} ../../../images/elasticsearch-reference-source-command.svg
-:alt: A source command producing a table from {es}
+:alt: A source command producing a table from {{es}}
 :::
 
 The [`FROM`](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-from) source command returns a table with documents from a data stream, index, or alias. Each row in the resulting table represents a document. This query returns up to 1000 documents from the `sample_data` index:

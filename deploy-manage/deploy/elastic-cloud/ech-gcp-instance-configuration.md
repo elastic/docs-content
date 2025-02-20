@@ -47,7 +47,7 @@ The benefits of the new configurations are multifold:
 2. The existing family types have been extended in terms of disk capacity which translates to a more cost effective infrastructure which in some cases can save up to 80% when calculating cost by disk capacity.
 3. There are now more instance types to choose from in the hot tier.  Rather than the traditional “highio” and “highcpu”, there are now four options to cover the hot data tier which allows to optimize cost/performance further.
 
-In addition to data nodes for storage and search, Elasticsearch nodes also have machine learning nodes, master nodes, and coordinating nodes. These auxiliary node types along with application nodes such as APM servers, Kibana, and Enterprise search have also been upgraded to the new N2 instance types. Both auxiliary node and application node configurations are based on Elasticsearch data node configuration types shown in the previous table.
+In addition to data nodes for storage and search, Elasticsearch nodes also have machine learning nodes, master nodes, and coordinating nodes. These auxiliary node types along with application nodes such as APM servers and Kibana instances have also been upgraded to the new N2 instance types. Both auxiliary node and application node configurations are based on Elasticsearch data node configuration types shown in the previous table.
 
 | New config name | Notes |
 | --- | --- |
@@ -58,8 +58,6 @@ In addition to data nodes for storage and search, Elasticsearch nodes also have 
 | gcp.kibana.n2.68x32x45 | Kibana nodes have been upgraded two steps up as well, to use 4x the CPU as they had when based on “highmem”. This ensures a more performant Kibana and helps with some client side aggregation, as well as responsive UI. |
 | gcp.apm.n2.68x32x45 | Same upgrade for APM. Will now use 4x the CPU. |
 | gcp.integrationsserver.n2.68x32x45 | Same upgrade for Integrations Server. Will now use 4x the CPU. |
-| gcp.enterprisesearch.n2.68x32x45 | Same upgrade for Enterprise Search application servers. Will now use 4x the CPU. |
-
 
 ## Selecting the right configuration for you [ech-gcp-configuration-choose]
 

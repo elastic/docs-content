@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "E5"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-e5.html
@@ -22,7 +25,7 @@ Enabling trained model autoscaling for your E5 deployment is recommended. Refer 
 
 ## Download and deploy E5 [download-deploy-e5]
 
-The easiest and recommended way to download and deploy E5 is to use the [{{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html).
+The easiest and recommended way to download and deploy E5 is to use the [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 1. In {{kib}}, navigate to the **Dev Console**.
 2. Create an {{infer}} endpoint with the `elasticsearch` service by running the following API request:
@@ -57,7 +60,7 @@ For most cases, the preferred version is the **Intel and Linux optimized** model
 
 #### Using the Trained Models page [trained-model-e5]
 
-1. In {{kib}}, navigate to **{{ml-app}}** > **Trained Models** from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects). E5 can be found in the list of trained models. There are two versions available: one portable version which runs on any hardware and one version which is optimized for Intel® silicon. You can see which model is recommended to use based on your hardware configuration.
+1. In {{kib}}, navigate to **{{ml-app}}** > **Trained Models** from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md). E5 can be found in the list of trained models. There are two versions available: one portable version which runs on any hardware and one version which is optimized for Intel® silicon. You can see which model is recommended to use based on your hardware configuration.
 2. Click the **Add trained model** button. Select the E5 model version you want to use in the opening modal window. The model that is recommended for you based on your hardware configuration is highlighted. Click **Download**. You can check the download status on the **Notifications** page.
 
     :::{image} ../../../images/machine-learning-ml-nlp-e5-download.png
@@ -88,7 +91,7 @@ Alternatively, you can download and deploy the E5 model to an {{infer}} pipeline
 1. In {{kib}}, navigate to **Search** > **Indices**.
 2. Select the index from the list that has an {{infer}} pipeline in which you want to use E5.
 3. Navigate to the **Pipelines** tab.
-4. Under **{{ml-app}} {infer-cap} Pipelines**, click the **Deploy** button in the **Improve your results with E5** section to begin downloading the E5 model. This may take a few minutes depending on your network.
+4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button in the **Improve your results with E5** section to begin downloading the E5 model. This may take a few minutes depending on your network.
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-e5-es.png
     :alt: Deploying E5 in Elasticsearch
@@ -124,7 +127,7 @@ PUT _ml/trained_models/.multilingual-e5-small
 
     The API call automatically initiates the model download if the model is not downloaded yet.
 
-3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-trained-model-deployment.html) with a delpoyment ID:
+3. Deploy the model by using the [start trained model deployment API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-trained-model-deployment) with a delpoyment ID:
 
 ```console
 POST _ml/trained_models/.multilingual-e5-small/deployment/_start?deployment_id=for_search
@@ -143,7 +146,7 @@ If you want to install E5 in an air-gapped environment, you have the following o
 
 For the `multilingual-e5-small` model, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/multilingual-e5-small.metadata.json
 https://ml-models.elastic.co/multilingual-e5-small.pt
 https://ml-models.elastic.co/multilingual-e5-small.vocab.json
@@ -151,7 +154,7 @@ https://ml-models.elastic.co/multilingual-e5-small.vocab.json
 
 For the optimized version, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.metadata.json
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.pt
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.vocab.json
@@ -171,7 +174,7 @@ For a file-based access, follow these steps:
 
 4. Repeat step 2 and step 3 on all master-eligible nodes.
 5. [Restart](../../../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling) the master-eligible nodes one by one.
-6. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects) in {{kib}}. E5 can be found in the list of trained models.
+6. Navigate to the **Trained Models** page from the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md) in {{kib}}. E5 can be found in the list of trained models.
 7. Click the **Add trained model** button, select the E5 model version you downloaded in step 1 and want to deploy and click **Download**. The selected model will be downloaded from the model directory where you put in step 2.
 8. After the download is finished, start the deployment by clicking the **Start deployment** button.
 9. Provide a deployment ID, select the priority, and set the number of allocations and threads per allocation values.

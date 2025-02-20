@@ -4,11 +4,12 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-behavioral-detections.html
 ---
 
-# Advanced behavioral detections
+# Advanced behavioral detections [advanced-behavioral-detections]
 
-% What needs to be done: Lift-and-shift
+Elastic’s {{ml}} capabilities and advanced correlation, scoring, and visualization techniques can help you identify potential behavioral threats that may be associated with security incidents.
 
-% Use migrated content from existing pages that map to this page:
+Advanced behavioral detections includes two key capabilities:
 
-% - [ ] ./raw-migrated-files/security-docs/security/advanced-behavioral-detections.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-advanced-behavioral-detections.md
+* [Anomaly detection](anomaly-detection.md)
+* [Behavioral detection use cases](behavioral-detection-use-cases.md)
+

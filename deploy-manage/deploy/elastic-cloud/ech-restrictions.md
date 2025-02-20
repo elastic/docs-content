@@ -89,6 +89,10 @@ If you are using APM 7.9.0 or older:
 
 ## Enterprise Search in Kibana [ech-restrictions-enterprise-search-kibana-integration-traffic-filters]
 
+:::{important}
+Enterprise Search is not available in {{stack}} 9.0+.
+:::
+
 Enterprise Search’s management interface in Kibana does not work with traffic filters with 8.3.1 and older, it will return an `Insufficient permissions` (403 Forbidden) error. In Kibana 8.3.2, 8.4.0 and higher, the Enterprise Search management interface works with traffic filters.
 
 
@@ -129,4 +133,4 @@ To make a seamless migration, after restoring from a snapshot there are some add
 
 ## Repository Analysis API is unavailable in Elastic Cloud [ech-repository-analyis-unavailable]
 
-* The Elasticsearch [Repository analysis API](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.
+* The Elasticsearch [Repository analysis API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) is not available in {{ecloud}} due to deployments defaulting to having [operator privileges](../../users-roles/cluster-or-deployment-auth/operator-privileges.md) enabled that prevent non-operator privileged users from using it along with a number of other APIs.

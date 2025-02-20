@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-functions-datetime.html
 ---
@@ -591,7 +594,7 @@ SELECT DATE_PARSE('07/04/2020', 'dd/MM/yyyy') AS "date";
 ```
 
 ::::{note} 
-The resulting `date` will have the time zone specified by the user through the [`time_zone`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html#sql-search-api-time-zone)/[`timezone`](sql-jdbc.md#jdbc-cfg-timezone) REST/driver parameters with no conversion applied.
+The resulting `date` will have the time zone specified by the user through the [`time_zone`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)/[`timezone`](sql-jdbc.md#jdbc-cfg-timezone) REST/driver parameters with no conversion applied.
 
 ```sql
 {
@@ -696,7 +699,7 @@ SELECT DATETIME_PARSE('10:20:30 07/04/2020 Europe/Berlin', 'HH:mm:ss dd/MM/yyyy 
 ```
 
 ::::{note} 
-If timezone is not specified in the datetime string expression and the parsing pattern, the resulting `datetime` will have the time zone specified by the user through the [`time_zone`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html#sql-search-api-time-zone)/[`timezone`](sql-jdbc.md#jdbc-cfg-timezone) REST/driver parameters with no conversion applied.
+If timezone is not specified in the datetime string expression and the parsing pattern, the resulting `datetime` will have the time zone specified by the user through the [`time_zone`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)/[`timezone`](sql-jdbc.md#jdbc-cfg-timezone) REST/driver parameters with no conversion applied.
 
 ```sql
 {
@@ -753,7 +756,7 @@ SELECT TIME_PARSE('10:20:30-01:00', 'HH:mm:ssXXX') AS "time";
 ```
 
 ::::{note} 
-If timezone is not specified in the time string expression and the parsing pattern, the resulting `time` will have the offset of the time zone specified by the user through the [`time_zone`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html#sql-search-api-time-zone)/[`timezone`](sql-jdbc.md#jdbc-cfg-timezone) REST/driver parameters at the Unix epoch date (`1970-01-01`) with no conversion applied.
+If timezone is not specified in the time string expression and the parsing pattern, the resulting `time` will have the offset of the time zone specified by the user through the [`time_zone`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-query)/[`timezone`](sql-jdbc.md#jdbc-cfg-timezone) REST/driver parameters at the Unix epoch date (`1970-01-01`) with no conversion applied.
 
 ```sql
 {
@@ -1516,7 +1519,7 @@ EXTRACT(
 
 **Output**: integer
 
-**Description**: Extract fields from a date/datetime by specifying the name of a [datetime function](). The following
+**Description**: Extract fields from a date/datetime by specifying the name of a datetime function. The following
 
 ```sql
 SELECT EXTRACT(DAY_OF_YEAR FROM CAST('2018-02-19T10:23:27Z' AS TIMESTAMP)) AS day;

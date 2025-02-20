@@ -166,14 +166,14 @@ To reinstall the assets for a specific integration, you can use the {{fleet}} UI
 
 Alternatively, you can use the {{fleet}} API using the package name and version. This needs to be run against the {{kib}} API and not the {{es}} API to be successful. To reinstall package assets, execute the following call with the `force` parameter in the body:
 
-```kibana
+```bash
 POST api/fleet/epm/packages/[package name]/[package version]
 { "force": true }
 ```
 
 So, for example, to reinstall the system v1.0.0 package, POST:
 
-```kibana
+```bash
 POST api/fleet/epm/packages/system/1.0.0
 { "force": true }
 ```

@@ -36,7 +36,7 @@ For more on defining processors, refer to [define processors](https://www.elasti
 
 For logs that with an existing field being used to represent the service name, map that field to the `service.name` field using the [alias field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/field-alias.html). Follow these steps to update your mapping:
 
-1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. To open **Index Management**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Index Templates**.
 3. Search for the index template you want to update.
 4. From the **Actions** menu for that template, select **Edit**.
@@ -52,5 +52,5 @@ For more ways to add a field to your mapping, refer to [add a field to an existi
 
 The {{stack}} provides additional ways to process your data:
 
-* **{{ref}}/ingest.html[Ingest pipelines]:** convert data to ECS, normalize field data, or enrich incoming data.
-* **{{logstash-ref}}/introduction.html[Logstash]:** enrich your data using input, output, and filter plugins.
+* **https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html[Ingest pipelines]:** convert data to ECS, normalize field data, or enrich incoming data.
+* **https://www.elastic.co/guide/en/logstash/current/introduction.html[Logstash]:** enrich your data using input, output, and filter plugins.

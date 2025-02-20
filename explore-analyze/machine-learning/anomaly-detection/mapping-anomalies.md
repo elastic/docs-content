@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/mapping-anomalies.html
 ---
@@ -11,25 +14,25 @@ If your data includes vector layers that are defined in the [{{ems}} ({{ems-init
 
 If you want to view choropleth maps in **{{data-viz}}** or {{anomaly-job}} results, you must have fields that contain valid vector layers (such as [country codes](https://maps.elastic.co/#file/world_countries) or [postal codes](https://maps.elastic.co/#file/usa_zip_codes)).
 
-This example uses the sample web logs data set. For more information, see [Add the sample data](../../overview/kibana-quickstart.md#gs-get-data-into-kibana).
+This example uses the sample web logs data set. For more information, see [Add the sample data](../../index.md#gs-get-data-into-kibana).
 
 ## Explore your data [visualize-vector-layers]
 
 If you have fields that contain valid vector layers, you can use the **{{data-viz}}** in the **{{ml-app}}** app to see a choropleth map, in which each area is colored based on its document count. For example:
 
 :::{image} ../../../images/machine-learning-weblogs-data-visualizer-choropleth.png
-:alt: A screenshot of a field that contains vector layer values in {data-viz}
+:alt: A screenshot of a field that contains vector layer values in {{data-viz}}
 :class: screenshot
 :::
 
 ## Create an {{anomaly-job}} [mapping-anomalies-jobs]
 
-To create an {{anomaly-job}} in {{kib}}, click **Create job** on the **{{ml-cap}} > {{anomaly-detect-cap}}** page and select an appropriate job wizard. Alternatively, use the [create {{anomaly-jobs}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html).
+To create an {{anomaly-job}} in {{kib}}, click **Create job** on the **{{ml-cap}} > {{anomaly-detect-cap}}** page and select an appropriate job wizard. Alternatively, use the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
 
 For example, use the multi-metric job wizard to create a job that analyzes the sample web logs data set to detect anomalous behavior in the sum of the data transferred (`bytes` values) for each destination country (`geo.dest` values):
 
 :::{image} ../../../images/machine-learning-weblogs-multimetric-wizard-vector.png
-:alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {kib}
+:alt: A screenshot of creating an {{anomaly-job}} using the web logs data in {{kib}}
 :class: screenshot
 :::
 

@@ -9,7 +9,7 @@ The **Metrics Explorer** page enables you to create time-series visualizations b
 
 Additionally, for detailed analyses of your metrics, you can annotate and save visualizations for your custom dashboards by using the [Time Series Visual Builder (TSVB)](https://www.elastic.co/guide/en/kibana/current/legacy-editors.html#tsvb-panel) within {{kib}}.
 
-To open **Metrics Explorer**, find **Infrastructure** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+To open **Metrics Explorer**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/observability-metrics-explorer.png
 :alt: Metrics Explorer

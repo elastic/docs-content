@@ -37,7 +37,7 @@ The steps, information, and authentication method required to configure CCS and 
 
     * [From another deployment of your Elasticsearch Service organization](ec-remote-cluster-same-ess.md)
     * [From a deployment of another Elasticsearch Service organization](ec-remote-cluster-other-ess.md)
-    * [From an ECE deployment](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-enable-ccs.html)
+    * [From an ECE deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html)
     * [From a self-managed cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html)
 
 
@@ -47,12 +47,6 @@ The steps, information, and authentication method required to configure CCS and 
 If your deployment was created before February 2021, CCR won’t be enabled by default and you won’t find the Remote Clusters UI in Kibana even though your deployment meets all the [criteria](#ec-ccs-ccr-prerequisites).
 
 To enable these features, go to the **Security** page of your deployment and under **Trust management** select **Enable CCR**.
-
-::::{note}
-CCR is not supported for indices used by Enterprise Search.
-::::
-
-
 
 ## Remote clusters and traffic filtering [ec-ccs-ccr-traffic-filtering]
 

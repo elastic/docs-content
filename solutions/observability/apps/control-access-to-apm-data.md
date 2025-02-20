@@ -19,7 +19,7 @@ This guide will explain how to separate your staging and production data. This c
 This guide assumes that you:
 
 * Are sending both staging and production APM data to an {{es}} cluster.
-* Have configured the `environment` variable in your APM agent configurations. This variable sets the `service.environment` field in APM documents. You should have documents where `service.environment: production` and `service.environment: staging`. If this field is empty, see [service environment filter](filter-application-data.md#environment-selector) to learn how to set this value.
+* Have configured the `environment` variable in your APM agent configurations. This variable sets the `service.environment` field in APM documents. You should have documents where `service.environment: production` and `service.environment: staging`. If this field is empty, see [service environment filter](filter-application-data.md#apm-filter-your-data-service-environment-filter) to learn how to set this value.
 
 
 ### Step 1: Create filtered aliases [_step_1_create_filtered_aliases]
@@ -49,7 +49,7 @@ To separate `staging` and `production` APM data, we’d need to create six filte
 
 The `production-<event>-apm` aliases will contain a filter that only provides access to documents where the `service.environment` is `production`. Similarly, the `staging-<event>-apm` aliases will contain a filter that only provides access to documents where the `service.environment` is `staging`.
 
-To create these six filtered aliases, use the {{es}} [Aliases API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html). In {{kib}}, open **Dev Tools** and run the following POST requests.
+To create these six filtered aliases, use the {{es}} [Aliases API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases). In {{kib}}, open **Dev Tools** and run the following POST requests.
 
 ::::{dropdown} `traces-apm*` production alias example
 ```console
@@ -234,7 +234,7 @@ POST /_aliases?pretty
 
 ### Step 2: Create {{kib}} spaces [_step_2_create_kib_spaces]
 
-Next, you’ll need to create a {{kib}} space for each service environment. To open **Spaces**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). To create a new space, click **Create a space**. For this guide, we’ve created two Kibana spaces, one named `production` and one named `staging`.
+Next, you’ll need to create a {{kib}} space for each service environment. To open **Spaces**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). To create a new space, click **Create a space**. For this guide, we’ve created two Kibana spaces, one named `production` and one named `staging`.
 
 See [Kibana spaces](../../../deploy-manage/manage-spaces.md) for more information on creating a space.
 
@@ -255,7 +255,7 @@ Open the Applications UI and navigate to **Settings** → **Indices**. Use the t
 
 ### Step 4: Create {{kib}} access roles [_step_4_create_kib_access_roles]
 
-To open **Roles**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). Click **Create role**.
+To open **Roles**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Click **Create role**.
 
 You’ll need to create two roles: one for `staging` users (we’ll call this role `staging_apm_viewer`) and one for `production` users (we’ll call this role `production_apm_viewer`).
 
@@ -271,7 +271,7 @@ Using the table below, assign each role the following privileges:
 :class: screenshot
 :::
 
-Alternatively, you can use the {{es}} [Create or update roles API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html):
+Alternatively, you can use the {{es}} [Create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role):
 
 ::::{dropdown} Create a `production_apm_viewer` role
 This request creates a `production_apm_viewer` role:
@@ -350,7 +350,7 @@ The last thing to do is assign users to the newly created roles above. Users wil
 
 For information on how to create users and assign them roles with the {{kib}} UI, see [Securing access to Kibana](../../../deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
 
-Alternatively, you can use the {{es}} [Create or update users API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-user.html).
+Alternatively, you can use the {{es}} [Create or update users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user).
 
 This example creates a new user and assigns them the `production_apm_viewer` role created in the previous step. This user will only have access to the production space and data with a `service.environment` of `production`. Remember to change the `password`, `full_name`, and `email` fields.
 

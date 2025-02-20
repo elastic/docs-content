@@ -1,9 +1,10 @@
 ---
+navigation_title: "Container engines"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-containers.html
 ---
 
-# Troubleshooting container engines [ece-troubleshooting-containers]
+# Troubleshoot container engines [ece-troubleshooting-containers]
 
 This article describes how to troubleshoot container engine services in Elastic Cloud Enterprise. We refer to [Docker](https://www.docker.com/) by default, as it’s the most common container engine, but these steps are also valid for [Podman](https://podman.io/). You can simply replace `docker` in the commands  with `podman` as needed.
 
@@ -38,7 +39,7 @@ This should indicate an issue with the {{es}} configuration rather than any Dock
 
 While troubleshooting `unhealthy` {{ece}} system containers (name prefix `frc-`), *some* may be restarted while others should not.
 
-{{ece}}'s [runners](https://www.elastic.co/guide/en/cloud-enterprise/current/get-runners.html) will automatically create or restart missing system containers. If you’re attempting to permanently remove a system container by removing its role from the host, you’d instead [update runner roles](https://www.elastic.co/guide/en/cloud-enterprise/current/set-runner-roles.html). If eligible system containers return to an `unhealthy` status after restart, we recommend reviewing their start-up Docker [`logs`](https://docs.docker.com/reference/cli/docker/container/logs/).
+{{ece}}'s [runners](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-get-runners) will automatically create or restart missing system containers. If you’re attempting to permanently remove a system container by removing its role from the host, you’d instead [update runner roles](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-runner-roles). If eligible system containers return to an `unhealthy` status after restart, we recommend reviewing their start-up Docker [`logs`](https://docs.docker.com/reference/cli/docker/container/logs/).
 
 It is safe to restart the following via Docker [`stop`](https://docs.docker.com/reference/cli/docker/container/stop/) followed by Docker [`rm`](https://docs.docker.com/reference/cli/docker/container/rm/) on:
 
@@ -47,6 +48,7 @@ It is safe to restart the following via Docker [`stop`](https://docs.docker.com/
 * `frc-beats-runners-beats-runner`
 * `frc-constructors-constructor`
 * `frc-proxies-proxyv2`
+* `frc-proxies-route-server`
 
 It is safe to restart the following via Docker [`restart`](https://docs.docker.com/reference/cli/docker/container/restart/):
 

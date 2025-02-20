@@ -1,3 +1,8 @@
+---
+applies:
+  stack:
+  serverless:
+---
 # Search approaches
 
 To deliver relevant search results, you need to choose the right search approach for your data and use case.

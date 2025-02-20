@@ -12,7 +12,7 @@ When indexing time series data like logs or metrics, you can’t write to a sing
 * Shift older, less frequently accessed data to less expensive *cold* nodes,
 * Delete data according to your retention policies by removing entire indices.
 
-We recommend using [data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html) to manage time series data. Data streams automatically track the write index while keeping configuration to a minimum.
+We recommend using [data streams](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create-data-stream) to manage time series data. Data streams automatically track the write index while keeping configuration to a minimum.
 
 Each data stream requires an [index template](../../data-store/templates.md) that contains:
 
@@ -27,7 +27,7 @@ Data streams are designed for append-only data, where the data stream name can b
 * A single index designated as the *write index*. This is the active index that handles all write requests. On each rollover, the new index becomes the write index.
 
 ::::{note} 
-When an index is rolled over, the previous index’s age is updated to reflect the rollover time. This date, rather than the index’s `creation_date`, is used in {{ilm}} `min_age` phase calculations. [Learn more](../../../troubleshoot/elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md#min-age-calculation).
+When an index is rolled over, the previous index’s age is updated to reflect the rollover time. This date, rather than the index’s `creation_date`, is used in {{ilm}} `min_age` phase calculations. [Learn more](../../../troubleshoot/elasticsearch/index-lifecycle-management-errors.md#min-age-calculation).
 
 ::::
 

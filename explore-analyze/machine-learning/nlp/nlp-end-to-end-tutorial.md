@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "End-to-end tutorial"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/nlp-example.html
@@ -38,8 +41,6 @@ If your team already has an Elastic Cloud deployment, make sure it has at least 
 If your team does not have an Elastic Cloud deployment, start by signing up for a [free Elastic Cloud trial](https://cloud.elastic.co/registration). After creating an account, you’ll have an active subscription and you’ll be prompted to create your first deployment.
 
 Follow the steps to **Create** a new deployment. Make sure to add capacity to the **Machine Learning instances** under the **Advanced settings** before creating the deployment. To simplify scaling, turn on the **Autoscale this deployment** feature. If you use autoscaling, you should increase the minimum RAM for the machine learning instance. For this tutorial, we’ll need at least 2GB of RAM. For more details, refer to [Create a deployment^](../../../deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) in the Elastic Cloud documentation.
-
-Enriching documents using machine learning was introduced in Enterprise Search **8.5.0**, so be sure to use version **8.5.0 or later**.
 
 ## Clone Eland [nlp-example-clone-eland]
 
@@ -104,7 +105,7 @@ We want to run our documents through an inference processor that uses the traine
 * Choose to **Use the API** and give your index a name. It will automatically be prefixed with `search-`. For this demo, we will name the index `search-photo-comments`.
 * After clicking **Create Index**, you will be redirected to the overview page for your new index.
 
-To configure the ML inference pipeline, we need the index to have an existing field mapping so we can choose which field to analyze. This can be done via the [index mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) in the Kibana Dev Tools or simply through a cURL command:
+To configure the ML inference pipeline, we need the index to have an existing field mapping so we can choose which field to analyze. This can be done via the [index mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) in the Kibana Dev Tools or simply through a cURL command:
 
 ```js
 PUT search-photo-comments/_mapping

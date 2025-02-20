@@ -1,9 +1,12 @@
 ---
+navigation_title: "Resources and logs"
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-troubleshooting-methods.html
 ---
 
-# Troubleshooting methods [k8s-troubleshooting-methods]
+# Troubleshoot ECK resources and logs  [k8s-troubleshooting-methods]
 
 Most common issues can be identified and resolved by following these instructions:
 
@@ -319,5 +322,5 @@ kubectl annotate es quickstart eck.k8s.elastic.co/suspend-
 
 ## Capture JVM heap dumps [k8s-capture-jvm-heap-dumps]
 
-Elasticsearch and Enterprise Search are applications that run on the JVM. It can be useful to capture a heap dump to troubleshoot garbage collection issues or suspected memory leaks or to share it with Elastic. Follow the application specific instructions for [Elasticsearch](jvm-heap-dumps.md) and [Enterprise Search](../../../deploy-manage/deploy/cloud-on-k8s/troubleshooting-enterprise-search.md#k8s-enterprise-search-jvm-heap-dump).
+Elasticsearch runs on the JVM. It can be useful to capture a heap dump to troubleshoot garbage collection issues or suspected memory leaks or to share it with Elastic. Follow the specific instructions for [Elasticsearch](jvm-heap-dumps.md).
 

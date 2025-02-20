@@ -25,7 +25,7 @@ TLS certificate
 
 By default, any deployment that you or your users create trusts all other deployments in the same Elastic Cloud Enterprise environment. You can change this behavior in the Cloud UI under **Platform** > **Trust Management**, so that when a new deployment is created it does not automatically trust any other deployment. You can choose one of the following options:
 
-* Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-remote-cluster-same-ece.html#ece_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
+* Trust all my deployments - All of your organization’s deployments created while this option is selected already trust each other. If you keep this option, that includes any deployments you’ll create in the future. You can directly jump to [Connect to the remote cluster](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-same-ece.html#ece_connect_to_the_remote_cluster) to finalize the CCS or CCR configuration.
 * Trust no deployment - New deployments won’t trust any other deployment when they are created. You can instead configure trust individually for each of them in their security settings, as described in the next section.
 
 :::{image} ../../images/cloud-enterprise-ce-environment-trust-management.png
@@ -105,7 +105,7 @@ The `account_id` above represents the only account in an ECE environment, and th
 ::::::
 
 ::::::{tab-item} API key
-API key authentication enables a local cluster to authenticate itself with a remote cluster via a [cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key and grants access, based on the API key’s privileges.
+API key authentication enables a local cluster to authenticate itself with a remote cluster via a [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key). The API key needs to be created by an administrator of the remote cluster. The local cluster is configured to provide this API key on each request to the remote cluster. The remote cluster verifies the API key and grants access, based on the API key’s privileges.
 
 All cross-cluster requests from the local cluster are bound by the API key’s privileges, regardless of local users associated with the requests. For example, if the API key only allows read access to `my-index` on the remote cluster, even a superuser from the local cluster is limited by this constraint. This mechanism enables the remote cluster’s administrator to have full control over who can access what data with cross-cluster search and/or cross-cluster replication. The remote cluster’s administrator can be confident that no access is possible beyond what is explicitly assigned to the API key.
 
@@ -121,7 +121,7 @@ If you run into any issues, refer to [Troubleshooting](remote-clusters-troublesh
 
 ### Create a cross-cluster API key on the remote deployment [ece_create_a_cross_cluster_api_key_on_the_remote_deployment]
 
-* On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) or [Kibana](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
+* On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [Kibana](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
 * Copy the encoded key (`encoded` in the response) to a safe location. You will need it in the next step.
 
 
@@ -198,7 +198,7 @@ This configuration of remote clusters uses the [Proxy mode](https://www.elastic.
 
 ### Using the Elasticsearch API [ece_using_the_elasticsearch_api]
 
-To configure a deployment as a remote cluster, use the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html). Configure the following fields:
+To configure a deployment as a remote cluster, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). Configure the following fields:
 
 * `mode`: `proxy`
 * `proxy_address`: This value can be found on the **Security** page of the Elastic Cloud Enterprise deployment you want to use as a remote. Also, using the API, this value can be obtained from the {{es}} resource info, concatenating the field `metadata.endpoint` and port `9300` using a semicolon.
@@ -304,7 +304,7 @@ curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:
 ```
 
 ::::{note}
-The response includes just the remote clusters from the same ECE environment. In order to obtain the whole list of remote clusters, use Kibana or the {{es}} API [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-remote-info.html) directly.
+The response includes just the remote clusters from the same ECE environment. In order to obtain the whole list of remote clusters, use Kibana or the {{es}} API [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) directly.
 ::::
 
 

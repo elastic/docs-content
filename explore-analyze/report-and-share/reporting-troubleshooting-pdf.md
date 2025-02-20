@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 navigation_title: "PDF/PNG"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/reporting-troubleshooting-pdf.html
@@ -12,7 +15,7 @@ mapped_pages:
 ::::{note}
 We recommend using PNG/PDF reports to export moderate amounts of data only. The feature enables a high-level export capability, but it’s not intended for bulk export. If you need to export several pages of image data, consider using multiple report jobs to export a small number of pages at a time. If the screenshot of exported dashboard contains a large number of pixels, consider splitting the large dashboard into smaller artifacts to use less memory and CPU resources.
 
-For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](../../deploy-manage/deploy/self-managed/install-with-docker.md) or using [Elastic Cloud](../overview/kibana-quickstart.md#set-up-on-cloud).
+For the most reliable configuration of PDF/PNG {{report-features}}, consider installing {{kib}} using [Docker](../../deploy-manage/deploy/self-managed/install-with-docker.md) or using [Elastic Cloud](https://cloud.elastic.co).
 
 ::::
 
@@ -84,7 +87,7 @@ The Puppeteer logs are very verbose and could possibly contain sensitive informa
 
 ## System requirements [reporting-troubleshooting-system-requirements]
 
-In Elastic Cloud, the {{kib}} instances that most configurations provide by default is for 1GB of RAM for the instance. That is enough for {{kib}} {report-features} when the visualization or dashboard is relatively simple, such as a single pie chart or a dashboard with a few visualizations. However, certain visualization types incur more load than others. For example, a TSVB panel has a lot of network requests to render.
+In Elastic Cloud, the {{kib}} instances that most configurations provide by default is for 1GB of RAM for the instance. That is enough for {{kib}} {{report-features}} when the visualization or dashboard is relatively simple, such as a single pie chart or a dashboard with a few visualizations. However, certain visualization types incur more load than others. For example, a TSVB panel has a lot of network requests to render.
 
 If the {{kib}} instance doesn’t have enough memory to run the report, the report fails with an error such as `Error: Page crashed!`. In this case, try increasing the memory for the {{kib}} instance to 2GB.
 

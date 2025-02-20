@@ -156,7 +156,7 @@ To add a role assignment to your app:
 
 ## Step 3: Configure the Azure OpenAI integration [azure-openai-configure-integration]
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. In the query bar, search for **Azure OpenAI** and select the Azure OpenAI integration card.
 3. Click **Add Azure OpenAI**.
 4. Under Integration settings, configure the integration name and optionally add a description.
@@ -251,7 +251,7 @@ Now that your log and metric data is streaming to {{es}}, you can view them in {
 
 The Elastic Azure OpenAI integration comes with a built-in overview dashboard to visualize your log and metric data. To view the integration dashboards:
 
-1. Find **Dashboards** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Dashboards** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Search for **Azure OpenAI**.
 3. Select the `[Azure OpenAI] Overview` dashboard.
 
@@ -264,7 +264,7 @@ For more on dashboards and visualization, refer to the [Dashboards and visualiza
 
 ### View logs and metrics with Discover [azure-openai-discover]
 
-Find **Discover** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). From the data view drop-down, select either `logs-*` or `metrics-*` to view specific data. You can also create data views if, for example, you wanted to view both `logs-*` and `metrics-*` simultaneously.
+Find **Discover** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the data view drop-down, select either `logs-*` or `metrics-*` to view specific data. You can also create data views if, for example, you wanted to view both `logs-*` and `metrics-*` simultaneously.
 
 ![screenshot of the Discover data view dropdown](../../../images/observability-discover-data-view-menu.png "")
 
@@ -280,7 +280,7 @@ For more on using Discover and creating data views, refer to the [Discover](../.
 
 ### View logs with Logs Explorer [azure-openai-logs-explorer]
 
-To view Azure OpenAI logs, open {{kib}} and go to **Logs Explorer** (find `Logs Explorer` in the [global search field](../../../get-started/the-stack.md#kibana-navigation-search)). With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
+To view Azure OpenAI logs, open {{kib}} and go to **Logs Explorer** (find `Logs Explorer` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)). With **Logs Explorer**, you can quickly search and filter your log data, get information about the structure of log fields, and display your findings in a visualization.
 
 :::{image} ../../../images/observability-log-explorer.png
 :alt: screenshot of the logs explorer main page
@@ -310,7 +310,7 @@ For this tutorial, we’ll be using an [example Python application](https://gith
 
 To start collecting APM data for your Azure OpenAI applications, gather the OpenTelemetry OTLP exporter endpoint and authentication header from your {{ecloud}} instance:
 
-1. Find **Integrations** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the **APM** integration.
 3. Scroll down to **APM Agents** and select the **OpenTelemetry** tab.
 4. Make note of the configuration values for the following configuration settings:

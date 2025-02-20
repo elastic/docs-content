@@ -287,7 +287,7 @@ You cannot map roles in the JWT realm using the `role_mapping.yml` file.
 
 ### Authorizing with the role mapping API [jwt-authorization-role-mapping]
 
-You can use the [create or update role mappings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) to define role mappings that determine which roles should be assigned to each user based on their username, groups, or other metadata.
+You can use the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) to define role mappings that determine which roles should be assigned to each user based on their username, groups, or other metadata.
 
 ```console
 PUT /_security/role_mapping/jwt1_users?refresh=true
@@ -329,7 +329,7 @@ The following example shows how you define delegation authorization in the `elas
 xpack.security.authc.realms.jwt.jwt2.authorization_realms: file1,native1,ldap1,ad1
 ```
 
-You can then use the [create or update role mappings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html) to map roles to the authorizing realm. The following example maps roles in the `native1` realm for the `principalname1` JWT principal.
+You can then use the [create or update role mappings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) to map roles to the authorizing realm. The following example maps roles in the `native1` realm for the `principalname1` JWT principal.
 
 ```console
 PUT /_security/role_mapping/native1_users?refresh=true
@@ -377,7 +377,7 @@ POST /_security/role_mapping/jwt_user1?refresh=true
 }
 ```
 
-After mapping the roles, you can make an [authenticated call](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-authenticate.html) to {{es}} using a JWT and include the `ES-Client-Authentication` header:
+After mapping the roles, you can make an [authenticated call](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) to {{es}} using a JWT and include the `ES-Client-Authentication` header:
 
 $$$jwt-auth-shared-secret-scheme-example$$$
 

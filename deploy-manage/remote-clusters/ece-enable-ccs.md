@@ -13,7 +13,7 @@ These remote clusters could be:
 
 * Another {{es}} cluster of your ECE installation
 * An {{es}} cluster in a remote ECE installation
-* An {{es}} cluster hosted on {ecloud}
+* An {{es}} cluster hosted on {{ecloud}}
 * Any other self-managed {{es}} cluster
 
 
@@ -52,11 +52,6 @@ The steps, information, and authentication method required to configure CCS and 
 If your deployment was created before ECE version `2.9.0`, CCR won’t be enabled by default and you won’t find the Remote Clusters UI in Kibana even though your deployment meets all the [criteria](#ece-ccs-ccr-prerequisites).
 
 To enable these features, go to the **Security** page of your deployment and under **Trust management** select **Enable CCR**.
-
-::::{note}
-CCR is not supported for indices used by Enterprise Search.
-::::
-
 
 
 ## Remote clusters and traffic filtering [ece-ccs-ccr-traffic-filtering]

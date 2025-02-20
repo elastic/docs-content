@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-cases.html
 ---
@@ -13,7 +16,7 @@ Open a new case to keep track of issues and share their details with colleagues.
 
 1. Go to **Management > {{stack-manage-app}} > Cases**, then click **Create case**.
    :::{image} ../../../images/kibana-cases-create.png
-   :alt: Create a case in {stack-manage-app}
+   :alt: Create a case in {{stack-manage-app}}
    :class: screenshot
    :::
 

@@ -1,4 +1,7 @@
 ---
+applies:
+  stack:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-inference.html
 ---
@@ -14,7 +17,7 @@ After you [deploy a trained model in your cluster](ml-nlp-deploy-models.md), you
 
 ## Add an {{infer}} processor to an ingest pipeline [ml-nlp-inference-processor]
 
-In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../overview/kibana-quickstart.md#_finding_your_apps_and_objects).
+In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **Ingest Pipelines**. To open **Ingest Pipelines**, find **{{stack-manage-app}}** in the main menu, or use the [global search field](../../find-and-organize/find-apps-and-objects.md).
 
 :::{image} ../../../images/machine-learning-ml-nlp-pipeline-lang.png
 :alt: Creating a pipeline in the Stack Management app
@@ -142,7 +145,7 @@ POST lang-test/_doc?pipeline=my-lang-pipeline
 }
 ```
 
-You can also use NLP pipelines when you are reindexing documents to a new destination. For example, since the [sample web logs data set](../../overview/kibana-quickstart.md#gs-get-data-into-kibana) contain a `message` text field, you can reindex it with your {{lang-ident}} pipeline:
+You can also use NLP pipelines when you are reindexing documents to a new destination. For example, since the [sample web logs data set](../../index.md#gs-get-data-into-kibana) contain a `message` text field, you can reindex it with your {{lang-ident}} pipeline:
 
 ```console
 POST _reindex
@@ -188,7 +191,7 @@ To learn more about ingest pipelines and all of the other processors that you ca
 
 If you encounter problems while using your trained model in an ingest pipeline, check the following possible causes:
 
-1. The trained model is not deployed in your cluster. You can view its status in **{{ml-app}}** > **Model Management** or use the [get trained models statistics API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html). Unless you are using the built-in `lang_ident_model_1` model, you must ensure your model is successfully deployed. Refer to [Deploy the model in your cluster](ml-nlp-deploy-model.md).
+1. The trained model is not deployed in your cluster. You can view its status in **{{ml-app}}** > **Model Management** or use the [get trained models statistics API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models-stats). Unless you are using the built-in `lang_ident_model_1` model, you must ensure your model is successfully deployed. Refer to [Deploy the model in your cluster](ml-nlp-deploy-model.md).
 2. The default input field name expected by your trained model is not present in your source document. Use the **Field Map** option in your {{infer}} processor to set the appropriate field name.
 3. There are too many requests. If you are using bulk ingest, reduce the number of documents in the bulk request. If you are reindexing, use the `size` parameter to decrease the number of documents processed in each batch.
 

@@ -2,6 +2,9 @@
 navigation_title: "Hybrid search with `semantic_text`"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text-hybrid-search.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Hybrid search with `semantic_text` [semantic-text-hybrid-search]
@@ -24,7 +27,7 @@ PUT semantic-embeddings
   "mappings": {
     "properties": {
       "semantic_text": { <1>
-        "type": "semantic_text",
+        "type": "semantic_text"
       },
       "content": { <2>
         "type": "text",
@@ -41,7 +44,7 @@ PUT semantic-embeddings
 
 
 ::::{note}
-If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
+If you want to run a search on indices that were populated by web crawlers or connectors, you have to [update the index mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping) for these indices to include the `semantic_text` field. Once the mapping is updated, you’ll need to run a full web crawl or a full connector sync. This ensures that all existing documents are reprocessed and updated with the new semantic embeddings, enabling hybrid search on the updated data.
 
 ::::
 
@@ -53,7 +56,7 @@ In this step, you load the data that you later use to create embeddings from.
 
 Use the `msmarco-passagetest2019-top1000` data set, which is a subset of the MS MARCO Passage Ranking data set. It consists of 200 queries, each accompanied by a list of relevant text passages. All unique passages, along with their IDs, have been extracted from that data set and compiled into a [tsv file](https://github.com/elastic/stack-docs/blob/main/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv).
 
-Download the file and upload it to your cluster using the [Data Visualizer](../../manage-data/ingest.md#upload-data-kibana) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [Data Visualizer](../../manage-data/ingest/tools/upload-data-files.md) in the {{ml-app}} UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ## Reindex the data for hybrid search [hybrid-search-reindex-data]

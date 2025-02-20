@@ -1,9 +1,10 @@
 ---
+navigation_title: Certificate verification with curl on Mac
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/trb-security-maccurl.html
 ---
 
-# Certificate verification fails for curl on Mac [trb-security-maccurl]
+# Troubleshoot failed certificate verification with curl on Mac [trb-security-maccurl]
 
 **Symptoms:**
 

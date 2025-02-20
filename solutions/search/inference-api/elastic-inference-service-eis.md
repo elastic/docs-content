@@ -1,15 +1,17 @@
 ---
+navigation_title: "Elastic Inference Service"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-service-elastic.html
+applies:
+  stack:
+  serverless:
 ---
 
 # Elastic Inference Service (EIS) [infer-service-elastic]
 
-::::{admonition} New API reference
-For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
-
-::::
-
+:::{tip} Inference API reference  
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `elastic` service.
 

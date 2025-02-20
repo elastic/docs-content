@@ -1,6 +1,6 @@
 # Ingest logs from a Python application using Filebeat [ece-getting-started-search-use-cases-python-logs]
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elastic Cloud Enterprise deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](https://www.elastic.co/guide/en/ecs-logging/overview/{{ecs-logging}}/intro.html).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elastic Cloud Enterprise deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](https://www.elastic.co/guide/en/ecs-logging/overview/current/intro.html).
 
 You are going to learn how to:
 
@@ -14,7 +14,7 @@ You are going to learn how to:
 
 ## Prerequisites [ece_prerequisites_2]
 
-To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](https://www.elastic.co/guide/en/ecs-logging/python/{{ecs-logging-python}}/installation.html) for the Python logging library.
+To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](https://www.elastic.co/guide/en/ecs-logging/python/current/installation.html) for the Python logging library.
 
 To install *ecs-logging-python*, run:
 
@@ -99,7 +99,7 @@ In this step, you’ll create a Python script that generates logs in JSON format
 
     Having your logs written in a JSON format with ECS fields allows for easy parsing and analysis, and for standardization with other applications. A standard, easily parsible format becomes increasingly important as the volume and type of data captured in your logs expands over time.
 
-    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-field-reference.html) for the full list of available fields.
+    Together with the standard fields included for each log entry is an extra *http.request.body.content* field. This extra field is there just to give you some additional, interesting data to work with, and also to demonstrate how you can add optional fields to your log data. Check the [ECS Field Reference](https://www.elastic.co/guide/en/ecs/current/ecs-field-reference.html) for the full list of available fields.
 
 2. Let’s give the Python script a test run. Open a terminal instance in the location where you saved *elvis.py* and run the following:
 

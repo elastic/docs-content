@@ -87,7 +87,7 @@ PUT _snapshot/my_gcs_repository
 }
 ```
 
-The `credentials_file` settings are [reloadable](../../security/secure-settings.md#reloadable-secure-settings). You can define these settings before the node is started, or call the [Nodes reload secure settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) after the settings are defined to apply them to a running node.
+The `credentials_file` settings are [reloadable](../../security/secure-settings.md#reloadable-secure-settings). You can define these settings before the node is started, or call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) after the settings are defined to apply them to a running node.
 
 After you reload the settings, the internal `gcs` clients, which are used to transfer the snapshot contents, utilize the latest settings from the keystore.
 
@@ -123,7 +123,7 @@ bin/elasticsearch-keystore add-file gcs.client.default.credentials_file /path/se
 
 The following are the available client settings. Those that must be stored in the keystore are marked as `Secure`.
 
-`credentials_file` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`credentials_file` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The service account file that is used to authenticate to the Google Cloud Storage service.
 
 `endpoint`

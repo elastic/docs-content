@@ -21,7 +21,6 @@ To learn how to collect monitoring data, refer to:
 
 * [Monitoring {{kib}}](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md)
 * [Monitoring {{ls}}](https://www.elastic.co/guide/en/logstash/current/configuring-logstash.html)
-* [Monitoring {{ents}}](https://www.elastic.co/guide/en/enterprise-search/current/monitoring.html)
 * Monitoring {{beats}}:
 
     * [{{auditbeat}}](https://www.elastic.co/guide/en/beats/auditbeat/current/monitoring.html)
@@ -31,6 +30,6 @@ To learn how to collect monitoring data, refer to:
     * [{{packetbeat}}](https://www.elastic.co/guide/en/beats/packetbeat/current/monitoring.html)
     * [{{winlogbeat}}](https://www.elastic.co/guide/en/beats/winlogbeat/current/monitoring.html)
 
-* [Monitoring APM Server](https://www.elastic.co/guide/en/apm/guide/current/monitor-apm.html)
+* [Monitoring APM Server](/solutions/observability/apps/monitor-apm-server.md)
 * [Monitoring {{agent}}s](https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](https://www.elastic.co/guide/en/fleet/current/elastic-agent-monitoring-configuration.html)
 

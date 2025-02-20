@@ -59,9 +59,9 @@ If you use a separate monitoring cluster to store the monitoring data, it is str
 
     If the Elastic {{security-features}} are enabled, log in.
 
-7. Go to the **Stack Monitoring** page using the [global search field](../../../get-started/the-stack.md#kibana-navigation-search).
+7. Go to the **Stack Monitoring** page using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
-    If data collection is disabled, you are prompted to turn on data collection. If {{es}} {security-features} are enabled, you must have `manage` cluster privileges to turn on data collection.
+    If data collection is disabled, you are prompted to turn on data collection. If {{es}} {{security-features}} are enabled, you must have `manage` cluster privileges to turn on data collection.
 
     ::::{note}
     If you are using a separate monitoring cluster, you do not need to turn on data collection. The dashboards appear when there is data in the monitoring cluster.

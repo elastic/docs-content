@@ -4,7 +4,7 @@
 
 The **Data Set Quality** page provides an overview of your log, metric, trace, and synthetic data sets. Use this information to get an idea of your overall data set quality and find data sets that contain incorrectly parsed documents.
 
-To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search). By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
+To open **Data Set Quality**, find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). By default, the page only shows log data sets. To see other data set types, select them from the **Type** menu.
 
 :::{image} ../../../images/observability-data-set-quality-overview.png
 :alt: Screen capture of the data set overview
