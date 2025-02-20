@@ -3,10 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-repository-aws-gcp-migration.html
 
 applies:
-  stack: all
   hosted: all
-  ece: all
-  eck: all
 ---
 
 # Repository isolation on AWS and GCP [ec-snapshot-repository-aws-gcp-migration]
