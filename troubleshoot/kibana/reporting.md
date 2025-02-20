@@ -46,9 +46,9 @@ These messages alone don’t indicate a problem. They show normal events that ha
 There are two primary causes for a "Max attempts reached" error:
 
 * You’re creating a PDF of a visualization or dashboard that spans a large amount of data and Kibana is hitting the `xpack.reporting.queue.timeout`
-* Kibana is hosted behind a reverse-proxy, and the [Kibana server settings](https://www.elastic.co/guide/en/kibana/current/reporting-settings-kb.html#reporting-kibana-server-settings) are not configured correctly
+* Kibana is hosted behind a reverse-proxy, and the [Kibana server settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#reporting-kibana-server-settings) are not configured correctly
 
-Create a Markdown visualization and then create a PDF report. If this succeeds, increase the `xpack.reporting.queue.timeout` setting. If the PDF report fails with "Max attempts reached," check your [Kibana server settings](https://www.elastic.co/guide/en/kibana/current/reporting-settings-kb.html#reporting-kibana-server-settings).
+Create a Markdown visualization and then create a PDF report. If this succeeds, increase the `xpack.reporting.queue.timeout` setting. If the PDF report fails with "Max attempts reached," check your [Kibana server settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#reporting-kibana-server-settings).
 
 
 ## Verbose logging [reporting-troubleshooting-verbose-logs] 

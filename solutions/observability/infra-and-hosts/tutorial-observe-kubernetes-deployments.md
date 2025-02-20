@@ -58,7 +58,7 @@ The default deployments include processors, when needed, for enriching events wi
 :alt: Metadata processors for cloud
 :::
 
-For more on these processors, refer to the [`add_cloud_metadata`](https://www.elastic.co/guide/en/fleet/current/add-cloud-metadata-processor.html) and [`add_host_metadata`](https://www.elastic.co/guide/en/fleet/current/add_host_metadata-processor.html) documentation.
+For more on these processors, refer to the [`add_cloud_metadata`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add_host_metadata-processor.md) documentation.
 
 By default, the Kubernetes integration enriches logs and metrics with valuable metadata.
 
@@ -419,7 +419,7 @@ Provide the following information to collect Kubernetes events metrics:
 
 Collecting and parsing Kubernetes container logs is on by default. Containers running within Kubernetes pods publish logs to stdout or stderr. These logs are written to a location known to kubelet. The container parser is enabled by default. You can enable additional parsers in **advanced settings**.
 
-Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](https://www.elastic.co/guide/en/fleet/current/kubernetes-provider.html) docs for more on configuring the provider.
+Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
 
 Refer to [Kubernetes container logs](https://docs.elastic.co/en/integrations/kubernetes/container-logs) for more on collecting container logs.
 
@@ -464,7 +464,7 @@ After configuring your integration, you need to download and update your manifes
 
 After downloading the manifest, open it and update the `ES_USERNAME` and `ES_PASSWORD` environment variables in the DaemonSet to match your {{es}} credentials.
 
-You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](https://www.elastic.co/guide/en/fleet/current/elastic-agent-kubernetes-autodiscovery.html) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
+You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
 
 Once you are ready to deploy your {{agent}}:
 
@@ -481,7 +481,7 @@ Once you are ready to deploy your {{agent}}:
     ```
 
 
-Refer to [Debug standalone Elastic Agents](https://www.elastic.co/guide/en/fleet/current/debug-standalone-agents.html) if you run into any issues with configuring or installing your {{agent}}.
+Refer to [Debug standalone Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
 
 
 ## Part 3: Explore logs and metrics [monitor-kubernetes-explore]
@@ -644,9 +644,9 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/go/current/supported-tech.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html)
-* [Detailed guide to instrumenting Go source code](https://www.elastic.co/guide/en/apm/agent/go/current/getting-started.html)
+* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
+* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} Java
@@ -726,13 +726,13 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/java/current/supported-technologies-details.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/java/current/configuration.html)
+* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md)
 ::::::
 
 ::::::{tab-item} .NET
 ::::{note}
-These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup.html) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
+These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
 ::::
 
 
@@ -806,8 +806,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/current/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/dotnet/current/configuration.html)
+* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -851,8 +851,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/current/supported-technologies.html)
-* [Configuring the agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/advanced-setup.html)
+* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md)
+* [Configuring the agent](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/advanced-setup.md)
 ::::::
 
 ::::::{tab-item} PHP
@@ -878,7 +878,7 @@ To use the APK package (Alpine):
 apk add --allow-untrusted <package-file>.apk
 ```
 
-If you can’t find your distribution, you can install the agent by [building it from the source](https://www.elastic.co/guide/en/apm/agent/php/current/setup.html).
+If you can’t find your distribution, you can install the agent by [building it from the source](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/set-up-apm-php-agent.md).
 
 **Configure the agent**
 
@@ -904,8 +904,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/php/current/supported-technologies.html)
-* [Configuration](https://www.elastic.co/guide/en/apm/agent/php/current/configuration.html)
+* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md)
+* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
 ::::::
 
 ::::::{tab-item} Python
@@ -966,8 +966,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/current/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
+* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -1029,8 +1029,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](https://www.elastic.co/guide/en/apm/agent/ruby/current/supported-technologies.html)
-* [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html)
+* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
 ::::::
 
 :::::::

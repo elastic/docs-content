@@ -20,7 +20,7 @@ If you already looked at the [Elasticsearch on ECK](elasticsearch-configuration.
 
 ## Elastic Maps Server configuration [k8s-maps-configuration]
 
-You can add any valid Elastic Maps Server setting as documented on the [product](https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html#elastic-maps-server-configuration) page to the `spec.config` section.
+You can add any valid Elastic Maps Server setting as documented on the [product](/explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server-configuration) page to the `spec.config` section.
 
 The following example demonstrates how to set the log level to `debug`:
 

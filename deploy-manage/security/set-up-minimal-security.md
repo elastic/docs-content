@@ -61,7 +61,7 @@ You only need to set passwords for the `elastic` and `kibana_system` users when 
     ./bin/elasticsearch
     ```
 
-2. On any node in your cluster, open another terminal window and set the password for the `elastic` built-in user by running the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) utility. This command resets the password to an auto-generated value.
+2. On any node in your cluster, open another terminal window and set the password for the `elastic` built-in user by running the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) utility. This command resets the password to an auto-generated value.
 
     ```shell
     ./bin/elasticsearch-reset-password -u elastic

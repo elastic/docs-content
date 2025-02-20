@@ -73,15 +73,15 @@ In progress snapshot or restore jobs will not be preempted by a **reload** of th
 
 ## Client settings [repository-azure-client-settings]
 
-The following list describes the available client settings. Those that must be stored in the keystore are marked as ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings)); the other settings must be stored in the `elasticsearch.yml` file. The default `CLIENT_NAME` is `default` but you may configure a client with a different name and specify that client by name when registering a repository.
+The following list describes the available client settings. Those that must be stored in the keystore are marked as ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings)); the other settings must be stored in the `elasticsearch.yml` file. The default `CLIENT_NAME` is `default` but you may configure a client with a different name and specify that client by name when registering a repository.
 
-`azure.client.CLIENT_NAME.account` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.account` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The Azure account name, which is used by the repository’s internal Azure client. This setting is required for all clients.
 
 `azure.client.CLIENT_NAME.endpoint_suffix`
 :   The Azure endpoint suffix to connect to. The default value is `core.windows.net`.
 
-`azure.client.CLIENT_NAME.key` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.key` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The Azure secret key, which is used by the repository’s internal Azure client. Alternatively, use `sas_token`.
 
 `azure.client.CLIENT_NAME.max_retries`
@@ -96,11 +96,11 @@ The following list describes the available client settings. Those that must be s
 `azure.client.CLIENT_NAME.proxy.type`
 :   Register a proxy type for the client. Supported values are `direct`, `http`, and `socks`. For example: `azure.client.default.proxy.type: http`. When `proxy.type` is set to `http` or `socks`, `proxy.host` and `proxy.port` must also be provided. The default value is `direct`.
 
-`azure.client.CLIENT_NAME.sas_token` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`azure.client.CLIENT_NAME.sas_token` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   A shared access signatures (SAS) token, which the repository’s internal Azure client uses for authentication. The SAS token must have read (r), write (w), list (l), and delete (d) permissions for the repository base path and all its contents. These permissions must be granted for the blob service (b) and apply to resource types service (s), container (c), and object (o). Alternatively, use `key`.
 
 `azure.client.CLIENT_NAME.timeout`
-:   The client side timeout for any single request to Azure, as a [time unit](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units). For example, a value of `5s` specifies a 5 second timeout. There is no default value, which means that {{es}} uses the [default value](https://azure.github.io/azure-storage-java/com/microsoft/azure/storage/RequestOptions.md#setTimeoutIntervalInMs(java.lang.Integer)) set by the Azure client.
+:   The client side timeout for any single request to Azure, as a [time unit](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units). For example, a value of `5s` specifies a 5 second timeout. There is no default value, which means that {{es}} uses the [default value](https://azure.github.io/azure-storage-java/com/microsoft/azure/storage/RequestOptions.md#setTimeoutIntervalInMs(java.lang.Integer)) set by the Azure client.
 
 `azure.client.CLIENT_NAME.endpoint`
 :   The Azure endpoint to connect to. It must include the protocol used to connect to Azure.
@@ -156,16 +156,16 @@ PUT _snapshot/my_backup
 
 
 `chunk_size`
-:   Big files can be broken down into multiple smaller blobs in the blob store during snapshotting. It is not recommended to change this value from its default unless there is an explicit reason for limiting the size of blobs in the repository. Setting a value lower than the default can result in an increased number of API calls to the Azure blob store during snapshot create as well as restore operations compared to using the default value and thus make both operations slower as well as more costly. Specify the chunk size as a [byte unit](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units), for example: `10MB`, `5KB`, `500B`. Defaults to the maximum size of a blob in the Azure blob store which is `5TB`.
+:   Big files can be broken down into multiple smaller blobs in the blob store during snapshotting. It is not recommended to change this value from its default unless there is an explicit reason for limiting the size of blobs in the repository. Setting a value lower than the default can result in an increased number of API calls to the Azure blob store during snapshot create as well as restore operations compared to using the default value and thus make both operations slower as well as more costly. Specify the chunk size as a [byte unit](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units), for example: `10MB`, `5KB`, `500B`. Defaults to the maximum size of a blob in the Azure blob store which is `5TB`.
 
 `compress`
 :   When set to `true` metadata files are stored in compressed format. This setting doesn’t affect index files that are already compressed by default. Defaults to `true`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `readonly`
 :   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.

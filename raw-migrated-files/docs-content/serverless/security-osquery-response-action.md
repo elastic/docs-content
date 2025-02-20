@@ -12,7 +12,7 @@ Osquery Response Actions allow you to add live queries to custom query rules so 
 
 * Osquery Response Actions require the Endpoint Protection Complete [project feature](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * The [Osquery manager integration](../../../solutions/security/investigate/manage-integration.md) must be installed.
-* {{agent}}'s [status](https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+* {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
 * You must have the appropriate user role to use this feature.
 * You can only add Osquery Response Actions to custom query rules.
 

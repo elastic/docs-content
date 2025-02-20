@@ -36,13 +36,13 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 
 
 ::::{tip}
-Make sure you check the complete [guide to setting up LDAP with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/ldap-realm.html).
+Make sure you check the complete [guide to setting up LDAP with Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md).
 ::::
 
 
 ### To configure LDAP using Elastic Stack configuration policy with user search: [k8s_to_configure_ldap_using_elastic_stack_configuration_policy_with_user_search]
 
-1. Add a realm configuration to the `config` field under `elasticsearch` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the URL of the LDAP server and the order of the LDAP realm compared to other configured security realms. You also have to set `user_search.base_dn` to the container DN where the users are searched for. Refer to [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings) for all of the options you can set for an LDAP realm. For example, the following snippet shows an LDAP realm configured with a user search:
+1. Add a realm configuration to the `config` field under `elasticsearch` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the URL of the LDAP server and the order of the LDAP realm compared to other configured security realms. You also have to set `user_search.base_dn` to the container DN where the users are searched for. Refer to [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an LDAP realm. For example, the following snippet shows an LDAP realm configured with a user search:
 
     ```yaml
     elasticsearch:
@@ -135,7 +135,7 @@ spec:
 
 ### To configure an LDAP realm with user DN templates: [k8s_to_configure_an_ldap_realm_with_user_dn_templates]
 
-Add a realm configuration to `elasticsearch.yml` in the xpack.security.authc.realms.ldap namespace. At a minimum, you must specify the url and order of the LDAP server, and specify at least one template with the user_dn_templates option. Check [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings)  for all of the options you can set for an ldap realm.
+Add a realm configuration to `elasticsearch.yml` in the xpack.security.authc.realms.ldap namespace. At a minimum, you must specify the url and order of the LDAP server, and specify at least one template with the user_dn_templates option. Check [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)  for all of the options you can set for an ldap realm.
 
 For example, the following snippet shows an LDAP realm configured with user DN templates:
 
@@ -205,7 +205,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 
 
 ::::{tip}
-Make sure you check the complete [guide to setting up OpenID Connect with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html).
+Make sure you check the complete [guide to setting up OpenID Connect with Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md).
 ::::
 
 
@@ -386,7 +386,7 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 
 
 ::::{tip}
-Make sure you check the complete [guide to setting up JWT with Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/jwt-auth-realm.html).
+Make sure you check the complete [guide to setting up JWT with Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/jwt.md).
 ::::
 
 

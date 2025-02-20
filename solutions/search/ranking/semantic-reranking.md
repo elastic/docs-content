@@ -39,7 +39,7 @@ Semantic re-ranking enables a variety of use cases:
 * **Semantic retrieval results re-ranking**
 
     * Improves results from semantic retrievers using ELSER sparse vector embeddings or dense vector embeddings by using more powerful models.
-    * Adds a refinement layer on top of hybrid retrieval with [reciprocal rank fusion (RRF)](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html).
+    * Adds a refinement layer on top of hybrid retrieval with [reciprocal rank fusion (RRF)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md).
 
 * **General applications**
 
@@ -95,7 +95,7 @@ To use semantic re-ranking in {{es}}, you need to:
     1. Use the [Elastic Rerank](../inference-api/elasticsearch-inference-integration.md#inference-example-elastic-reranker) cross-encoder model via the inference API’s {{es}} service.
     2. Use the [Cohere Rerank inference endpoint](../inference-api/cohere-inference-integration.md) to create a `rerank` endpoint.
     3. Use the [Google Vertex AI inference endpoint](../inference-api/google-vertex-ai-inference-integration.md) to create a `rerank` endpoint.
-    4. Upload a model to {{es}} from Hugging Face with [Eland](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](../inference-api/elasticsearch-inference-integration.md#inference-example-eland) with the `rerank` endpoint type.
+    4. Upload a model to {{es}} from Hugging Face with [Eland](asciidocalypse://docs/eland/docs/reference/elasticsearch/elasticsearch-client-eland/machine-learning.md#ml-nlp-pytorch). You’ll need to use the `text_similarity` NLP task type when loading the model using Eland. Then set up an [{{es}} service inference endpoint](../inference-api/elasticsearch-inference-integration.md#inference-example-eland) with the `rerank` endpoint type.
 
         Refer to [the Elastic NLP model reference](../../../explore-analyze/machine-learning/nlp/ml-nlp-model-ref.md#ml-nlp-model-ref-text-similarity) for a list of third party text similarity models supported by {{es}} for semantic re-ranking.
 

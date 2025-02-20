@@ -13,7 +13,7 @@ To activate the Logs Stream app, refer to [Activate Logs Stream](logs-stream.md#
 ::::
 
 
-Specify the source configuration for logs in the [Logs settings](https://www.elastic.co/guide/en/kibana/current/logs-ui-settings-kb.html) in the [{{kib}} configuration file](../../../deploy-manage/deploy/self-managed/configure.md). By default, the configuration uses the index patterns stored in the {{kib}} log sources advanced setting to query the data. The configuration also defines the default columns displayed in the logs stream.
+Specify the source configuration for logs in the [Logs settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/logs-settings.md) in the [{{kib}} configuration file](../../../deploy-manage/deploy/self-managed/configure.md). By default, the configuration uses the index patterns stored in the {{kib}} log sources advanced setting to query the data. The configuration also defines the default columns displayed in the logs stream.
 
 If your logs have custom index patterns, use non-default field settings, or contain parsed fields that you want to expose as individual columns, you can override the default configuration settings.
 
@@ -46,7 +46,7 @@ By default, the **Stream** page within the {{logs-app}} displays the following c
 |     |     |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-base.html)base field, `message`, is used. |
+| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-base.md)base field, `message`, is used. |
 
 1. To add a new column to the logs stream, select **Settings > Add column**.
 2. In the list of available fields, select the field you want to add. To filter the field list by that name, you can start typing a field name in the search box.

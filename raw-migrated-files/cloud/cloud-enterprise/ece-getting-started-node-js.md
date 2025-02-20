@@ -158,7 +158,7 @@ async function run() {
 run().catch(console.log)
 ```
 
-When using the [client.index](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#_index) API, the request automatically creates the `game-of-thrones` index if it doesn’t already exist, as well as document IDs for each indexed document if they are not explicitly specified.
+When using the [client.index](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/api-reference.md#_index) API, the request automatically creates the `game-of-thrones` index if it doesn’t already exist, as well as document IDs for each indexed document if they are not explicitly specified.
 
 
 ## Search and modify data [ece_search_and_modify_data]
@@ -205,7 +205,7 @@ async function update() {
 update().catch(console.log)
 ```
 
-This [more comprehensive list of API examples](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/examples.html) includes bulk operations, checking the existence of documents, updating by query, deleting, scrolling, and SQL queries. To learn more, check the complete [API reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html).
+This [more comprehensive list of API examples](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/examples.md) includes bulk operations, checking the existence of documents, updating by query, deleting, scrolling, and SQL queries. To learn more, check the complete [API reference](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/api-reference.md).
 
 
 ## Switch to API key authentication [ece_switch_to_api_key_authentication]
@@ -294,5 +294,5 @@ Schema
 :   When the example code was run an index mapping was created automatically. The field types were selected by {{es}} based on the content seen when the first record was ingested, and updated as new fields appeared in the data. It would be more efficient to specify the fields and field types in advance to optimize performance. Refer to the Elastic Common Schema documentation and Field Type documentation when you are designing the schema for your production use cases.
 
 Ingest
-:   For more advanced scenarios, this [bulk ingestion](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/bulk_examples.html) reference gives an example of the `bulk` API that makes it possible to perform multiple operations in a single call. This bulk example also explicitly specifies document IDs. If you have a lot of documents to index, using bulk to batch document operations is significantly faster than submitting requests individually.
+:   For more advanced scenarios, this [bulk ingestion](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/bulk_examples.md) reference gives an example of the `bulk` API that makes it possible to perform multiple operations in a single call. This bulk example also explicitly specifies document IDs. If you have a lot of documents to index, using bulk to batch document operations is significantly faster than submitting requests individually.
 

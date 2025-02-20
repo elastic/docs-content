@@ -5,7 +5,7 @@ These steps show how you can secure your {{es}} clusters and Kibana instances wi
 
 ## Before you begin [ece_before_you_begin_18]
 
-To learn more about how securing {{es}} clusters with Active Directory works, check [Active Directory user authentication](https://www.elastic.co/guide/en/elasticsearch/reference/current/active-directory-realm.html).
+To learn more about how securing {{es}} clusters with Active Directory works, check [Active Directory user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md).
 
 ::::{note}
 The AD credentials are valid against the deployment, not the ECE platform. You can configure [role-based access control](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md) for the platform separately.
@@ -94,7 +94,7 @@ You can choose to configure an Active Directory realm using a bind user. When yo
 
 If your LDAP server uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate. These steps are required only if TLS is enabled and the Active Directory controller is using self-signed certificates.
 
-You’ll prepare a custom bundle that contains your certificate [in the same way that you would on {{ess}}](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html). Custom bundles are extracted in the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
+You’ll prepare a custom bundle that contains your certificate [in the same way that you would on {{ess}}](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). Custom bundles are extracted in the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
 
 ```sh
 $ tree .
@@ -177,7 +177,7 @@ If the keystore is also password protected (which isn’t typical for keystores 
 
 ## Mapping Active Directory groups to roles [ece-securing-clusters-ad-role-mapping]
 
-You have two ways of mapping Active Directory groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). If for some reason this is not possible, you can use a [role mapping file](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html) to specify the mappings instead.
+You have two ways of mapping Active Directory groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). If for some reason this is not possible, you can use a [role mapping file](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) to specify the mappings instead.
 
 ::::{important}
 Only Active Directory security groups are supported. You cannot map distribution groups to roles.
@@ -261,7 +261,7 @@ Let’s assume that you want all your users that authenticate through AD and are
     - cn=my-users, dc=example, dc=com
     ```
 
-2. Prepare the custom bundle ZIP file `mappings.zip`, that contains the `role-mappings.yml` file [in the same way that you would on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html).
+2. Prepare the custom bundle ZIP file `mappings.zip`, that contains the `role-mappings.yml` file [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 3. Custom bundles get unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
 
     ```sh

@@ -5,7 +5,7 @@ These steps show how you can secure your {{es}} clusters and Kibana instances wi
 
 ## Before you begin [ece_before_you_begin_17]
 
-To learn more about how securing {{es}} clusters with LDAP works, check [LDAP user authentication](https://www.elastic.co/guide/en/elasticsearch/reference/current/ldap-realm.html).
+To learn more about how securing {{es}} clusters with LDAP works, check [LDAP user authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md).
 
 ::::{note}
 The LDAP credentials are valid against the deployment, not the ECE platform. You can configure [role-based access control](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md) for the platform separately.
@@ -95,7 +95,7 @@ You must apply the user settings to each [deployment template](../../../deploy-m
 
 3. (Optional) Encrypt communications between the deployment and the LDAP Server. If your LDAP server uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate.
 
-    1. Prepare the custom bundle ZIP file `ldapcert.zip`, that contains the CA certificate file (for example `ca.crt`) [in the same way that you would on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html).
+    1. Prepare the custom bundle ZIP file `ldapcert.zip`, that contains the CA certificate file (for example `ca.crt`) [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
     2. Custom bundles are unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
 
         ```sh
@@ -175,7 +175,7 @@ If your CA certificate is available as a `JKS` or `PKCS#12` keystore, you can up
 
 ## Mapping LDAP groups to roles [ece-securing-clusters-ldap-role-mapping]
 
-You have two ways of mapping LDAP groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). If for some reason this is not possible, you can use a [role mapping file](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html) to specify the mappings instead.
+You have two ways of mapping LDAP groups to roles for your users. The preferred one is to use the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). If for some reason this is not possible, you can use a [role mapping file](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) to specify the mappings instead.
 
 
 ### Using the Role Mapping API [ece_using_the_role_mapping_api]
@@ -254,7 +254,7 @@ Let’s assume that you want all your users that authenticate through LDAP and a
       - cn=my-users, ou=groups, o=services, dc=example, dc=com
     ```
 
-2. Prepare the custom bundle ZIP file `mappings.zip`, that contains the `role-mappings.yml` file [in the same way that you would on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html).
+2. Prepare the custom bundle ZIP file `mappings.zip`, that contains the `role-mappings.yml` file [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 3. Custom bundles are unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure within the bundle ZIP file itself. For example:
 
     ```sh

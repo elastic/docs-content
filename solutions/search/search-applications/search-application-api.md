@@ -166,7 +166,7 @@ When you actually perform a search with no parameters, it will execute the under
 POST _application/search_application/my_search_application/_search
 ```
 
-Searching with the `query_string` and/or `default_field` parameters will perform a [`query_string`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html) query.
+Searching with the `query_string` and/or `default_field` parameters will perform a [`query_string`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-query-string-query.md) query.
 
 ::::{warning}
 The default template is subject to change in future versions of the Search Applications feature.
@@ -284,7 +284,7 @@ The `text_fields` parameters can be overridden with new/different fields and boo
 
 ### Text search + ELSER with RRF [search-application-api-rrf-template]
 
-This example supports the [reciprocal rank fusion (RRF)]](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) method for combining BM25 and [ELSER](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) searches. Reciprocal Rank Fusion consistently improves the combined results of different search algorithms. It outperforms all other ranking algorithms, and often surpasses the best individual results, without calibration.
+This example supports the [reciprocal rank fusion (RRF)]](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) method for combining BM25 and [ELSER](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) searches. Reciprocal Rank Fusion consistently improves the combined results of different search algorithms. It outperforms all other ranking algorithms, and often surpasses the best individual results, without calibration.
 
 ```console
 PUT _application/search_application/my-search-app
@@ -516,10 +516,10 @@ POST _application/search_application/my_search_application/_search
 Text search results and ELSER search results are expected to have significantly different scores in some cases, which makes ranking challenging. To find the best search result mix for your dataset, we suggest experimenting with the boost values provided in the example template:
 
 * `text_query_boost` to boost the BM25 query as a whole
-* [`boost`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_boosting) fields to boost individual text search fields
+* [`boost`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-query-string-query.md#_boosting) fields to boost individual text search fields
 * [`min_score`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-min_score) parameter to omit significantly low confidence results
 
-The above boosts should be sufficient for many use cases, but there are cases when adding a [rescore](https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html#rescore) query or [index boost](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multiple-indices.html#index-boost) to your template may be beneficial. Remember to update your search application to use the new template using the [put search application command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put).
+The above boosts should be sufficient for many use cases, but there are cases when adding a [rescore](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/filter-search-results.md#rescore) query or [index boost](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/search-multiple-data-streams-indices.md#index-boost) to your template may be beneficial. Remember to update your search application to use the new template using the [put search application command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put).
 
 ::::
 

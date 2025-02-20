@@ -9,7 +9,7 @@ The estimation of expected additional data is based on past indexing that occurr
 ## Configuration settings [autoscaling-proactive-storage-decider-settings]
 
 `forecast_window`
-:   (Optional, [time value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units)) The window of time to use for forecasting. Defaults to 30 minutes.
+:   (Optional, [time value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units)) The window of time to use for forecasting. Defaults to 30 minutes.
 
 
 ## {{api-examples-title}} [autoscaling-proactive-storage-decider-examples]

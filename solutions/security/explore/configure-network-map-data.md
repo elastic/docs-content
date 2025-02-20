@@ -33,7 +33,7 @@ For example, to display data that is stored in indices matching the index patter
 
 ## Add geoIP data [geoip-data]
 
-When the ECS [source.geo.location and destination.geo.location](https://www.elastic.co/guide/en/ecs/current/ecs-geo.html) fields are mapped, network data is displayed on the map.
+When the ECS [source.geo.location and destination.geo.location](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-geo.md) fields are mapped, network data is displayed on the map.
 
 If you use Beats, configure a geoIP processor to add data to the relevant fields:
 
@@ -129,5 +129,5 @@ If you want to add your network’s internal IP addresses to the map, define geo
 
 
 ::::{tip}
-You can also enrich your data with other [host fields](https://www.elastic.co/guide/en/beats/packetbeat/current/add-host-metadata.html).
+You can also enrich your data with other [host fields](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/add-host-metadata.md).
 ::::
