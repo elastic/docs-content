@@ -121,11 +121,3 @@ To add an alert to an existing case:
 
 1. Select **Add to existing case**.
 2. Select the case where you will attach the alert. A confirmation message displays.
-
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/observability-docs/observability/view-observability-alerts.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-view-alerts.md
