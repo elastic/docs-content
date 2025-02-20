@@ -221,7 +221,6 @@ toc:
       - file: docs-content/serverless/intro.md
       - file: docs-content/serverless/observability-add-logs-service-name.md
       - file: docs-content/serverless/observability-ai-assistant.md
-      - file: docs-content/serverless/observability-alerting.md
       - file: docs-content/serverless/observability-analyze-hosts.md
       - file: docs-content/serverless/observability-apm-act-on-data.md
       - file: docs-content/serverless/observability-apm-agents-elastic-apm-agents.md
@@ -501,7 +500,6 @@ toc:
       - file: observability-docs/observability/application-logs.md
       - file: observability-docs/observability/configure-settings.md
       - file: observability-docs/observability/create-alerts-rules.md
-      - file: observability-docs/observability/create-alerts.md
       - file: observability-docs/observability/create-cases.md
       - file: observability-docs/observability/custom-threshold-alert.md
       - file: observability-docs/observability/explore-logs.md
