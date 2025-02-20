@@ -14,8 +14,8 @@ To properly deploy {{elastic-defend}} without a Mobile Device Management (MDM) p
 
 ## Minimum system requirements [_minimum_system_requirements]
 
-| Requirement | Value |
-| --- | --- |
-| **CPU** | Under 2% |
-| **Disk space** | 1 GB |
-| **Resident set size (RSS) memory** | 500 MB |
+| Requirement                        | Value    |
+| ---------------------------------- | -------- |
+| **CPU**                            | Under 2% |
+| **Disk space**                     | 1 GB     |
+| **Resident set size (RSS) memory** | 500 MB   |
