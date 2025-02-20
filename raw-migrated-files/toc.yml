@@ -40,7 +40,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-create-deployment.md
       - file: cloud/cloud-enterprise/ece-delete-deployment.md
       - file: cloud/cloud-enterprise/ece-find.md
-      - file: cloud/cloud-enterprise/ece-generate-roles-token.md
       - file: cloud/cloud-enterprise/ece-getting-started-node-js.md
       - file: cloud/cloud-enterprise/ece-getting-started-python.md
       - file: cloud/cloud-enterprise/ece-getting-started-search-use-cases-beats-logstash.md
@@ -60,7 +59,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-restful-api-examples-configuring-keystore.md
       - file: cloud/cloud-enterprise/ece-restore-across-clusters.md
       - file: cloud/cloud-enterprise/ece-restore-deployment.md
-      - file: cloud/cloud-enterprise/ece-revoke-roles-token.md
       - file: cloud/cloud-enterprise/ece-secure-clusters-kerberos.md
       - file: cloud/cloud-enterprise/ece-secure-clusters-oidc.md
       - file: cloud/cloud-enterprise/ece-securing-clusters-ad.md
