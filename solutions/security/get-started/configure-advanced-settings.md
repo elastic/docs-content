@@ -4,34 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
 ---
 
-# Configure advanced settings
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/advanced-settings.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-advanced-settings.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$update-sec-indices$$$
-
-$$$exclude-cold-frozen-data-rule-executions$$$
-
-$$$exclude-cold-frozen-tiers$$$
-
-$$$ip-reputation-links$$$
-
-$$$manage-alert-tags$$$
-
-$$$max-notes-alerts-events$$$
-
-$$$show-related-integrations$$$
-
-$$$update-threat-intel-indices$$$
-
-$$$visualizations-in-flyout$$$
+# Configure advanced settings [security-advanced-settings]
 
 The advanced settings determine:
 
@@ -59,8 +32,6 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 ## Access advanced settings [security-advanced-settings-access-advanced-settings]
 
-% The advanced settings are located in a different place in Serverless. See line 27 in the raw migrated Serverless file for more info. Also remember to annotate the Serverless and ESS content appropriately. 
-
 To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
 
 :::{image} ../../../images/security-solution-advanced-settings.png
@@ -70,6 +41,8 @@ To access advanced settings, go to **Stack Management** → **Advanced Settings*
 
 
 ## Update default Elastic Security indices [update-sec-indices]
+
+The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices.
 
 The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices:
 
@@ -105,7 +78,7 @@ If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cl
 
 The `securitySolution:defaultThreatIndex` advanced setting specifies threat intelligence indices that {{elastic-sec}} features query for ingested threat indicators. This setting affects features that query threat intelligence indices, such as the Threat Intelligence view on the Overview page, indicator match rules, and the alert enrichment query.
 
-% The max limit of threat intel indices is different in the Serverless docs -- not sure why. See line 80 in the raw migrated Serverless file for more info. If add the Serverless content, remember to annotate the Serverless and ESS content appropriately. 
+
 
 You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
 
