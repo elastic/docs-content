@@ -92,7 +92,7 @@ To delete a token:
     }
     ```
 
-2. Use the token ID to delete the tokens you no longer need, here `4c8990df-1fb7-4820-b868-6bc9e8860814`:
+2. Use the token ID to delete the tokens you no longer need: `4c8990df-1fb7-4820-b868-6bc9e8860814`:
 
     ```sh
     curl -XDELETE -u USER:PASSWORD  'https://localhost:12443/api/v1/platform/configuration/security/enrollment-tokens/4c8990df-1fb7-4820-b868-6bc9e8860814'
