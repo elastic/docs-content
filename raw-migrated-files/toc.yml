@@ -229,7 +229,6 @@ toc:
       - file: docs-content/serverless/observability-configure-intra-settings.md
       - file: docs-content/serverless/observability-correlate-application-logs.md
       - file: docs-content/serverless/observability-create-a-new-case.md
-      - file: docs-content/serverless/observability-create-custom-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-failed-transaction-rate-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-latency-threshold-alert-rule.md
       - file: docs-content/serverless/observability-create-manage-rules.md
@@ -491,7 +490,6 @@ toc:
       - file: observability-docs/observability/application-logs.md
       - file: observability-docs/observability/configure-settings.md
       - file: observability-docs/observability/create-alerts-rules.md
-      - file: observability-docs/observability/custom-threshold-alert.md
       - file: observability-docs/observability/explore-logs.md
       - file: observability-docs/observability/handle-no-results-found-message.md
       - file: observability-docs/observability/incident-management.md
