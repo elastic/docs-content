@@ -53,4 +53,4 @@ For information about other deployment options, refer to [](../deploy.md).
 
 ## Supported versions [ece-supported-versions]
 
-Refer to [Elastic Support Matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information about supported Operating Systems, Docker, and Podman versions.
+Refer to the [Elastic Support Matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise) for more information about supported Operating Systems, Docker, and Podman versions.
