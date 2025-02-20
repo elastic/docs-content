@@ -254,7 +254,7 @@ PUT _ingest/pipeline/filebeat* <1>
 4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}` is required. `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 
-Refer to [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#logs-stream-parse) for more on using ingest pipelines to parse your log data.
+Refer to [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields) for more on using ingest pipelines to parse your log data.
 
 After creating your pipeline, specify the pipeline for filebeat in the `filebeat.yml` file:
 
