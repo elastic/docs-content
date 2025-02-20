@@ -1,7 +1,7 @@
 project: 'Troubleshoot'
 toc:
   - file: index.md
-  - file: elasticsearch/elasticsearch-reference.md
+  - file: elasticsearch/elasticsearch.md
     children:
       - file: elasticsearch/clusters.md
         children:
@@ -18,7 +18,7 @@ toc:
               - file: elasticsearch/hotspotting.md
           - file: elasticsearch/troubleshooting-unstable-cluster.md
           - file: elasticsearch/troubleshooting-unbalanced-cluster.md
-          - file: elasticsearch/elasticsearch-reference/remote-clusters.md
+          - file: elasticsearch/remote-clusters.md
           - file: elasticsearch/diagnose-unassigned-shards.md
           - file: elasticsearch/troubleshooting-shards-capacity-issues.md
       - file: elasticsearch/data.md
@@ -50,8 +50,8 @@ toc:
           - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
       - file: elasticsearch/start-ilm.md
-      - file: elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md
-      - file: elasticsearch/elasticsearch-reference/security.md
+      - file: elasticsearch/index-lifecycle-management-errors.md
+      - file: elasticsearch/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md
           - file: elasticsearch/security/security-trb-roles.md

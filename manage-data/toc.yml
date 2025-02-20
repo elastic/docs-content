@@ -4,7 +4,6 @@ toc:
   - file: data-store.md
     children:
       - file: data-store/index-basics.md
-      - file: data-store/index-types.md
       - file: data-store/data-streams.md
         children:
           - file: data-store/data-streams/set-up-data-stream.md
@@ -19,7 +18,7 @@ toc:
               - file: data-store/data-streams/run-downsampling-manually.md
               - file: data-store/data-streams/run-downsampling-using-data-stream-lifecycle.md
               - file: data-store/data-streams/reindex-tsds.md
-              - file: data-store/data-streams/logs-data-stream.md
+          - file: data-store/data-streams/logs-data-stream.md
       - file: data-store/mapping.md
         children:
           - file: data-store/mapping/dynamic-mapping.md
@@ -53,7 +52,7 @@ toc:
       - file: data-store/templates.md
         children:
           - file: data-store/templates/simulate-multi-component-templates.md
-          - file: data-store/templates/config-ignoremissingcomponenttemplates.md
+          - file: data-store/templates/ignore-missing-component-templates.md
           - file: data-store/templates/index-template-management.md
       - file: data-store/aliases.md
       - file: data-store/manage-data-from-the-command-line.md
@@ -71,7 +70,6 @@ toc:
           - file: ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md
       - file: ingest/ingest-reference-architectures.md
         children:
-          - file: ingest/ingest-reference-architectures/use-case-arch.md
           - file: ingest/ingest-reference-architectures/agent-to-es.md
             children:
               - file: ingest/ingest-reference-architectures/agent-installed.md

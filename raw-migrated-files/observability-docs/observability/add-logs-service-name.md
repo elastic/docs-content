@@ -52,5 +52,5 @@ For more ways to add a field to your mapping, refer to [add a field to an existi
 
 The {{stack}} provides additional ways to process your data:
 
-* **{{ref}}/ingest.html[Ingest pipelines]:** convert data to ECS, normalize field data, or enrich incoming data.
-* **{{logstash-ref}}/introduction.html[Logstash]:** enrich your data using input, output, and filter plugins.
+* **https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html[Ingest pipelines]:** convert data to ECS, normalize field data, or enrich incoming data.
+* **https://www.elastic.co/guide/en/logstash/current/introduction.html[Logstash]:** enrich your data using input, output, and filter plugins.

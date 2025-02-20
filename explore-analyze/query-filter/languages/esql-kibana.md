@@ -76,7 +76,7 @@ FROM kibana_sample_data_logs
 
 You can do that using the **Add line breaks on pipes** button from the query editor’s footer.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/bltd5554518309e10f6/672d153cfeb8f9d479ebcc6e/esql-line-breakdown.gif
+:::{image} ../../../images/esql-line-breakdown.gif
 :alt: Automatic line breaks for ES|QL queries
 :::
 

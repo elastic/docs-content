@@ -24,3 +24,8 @@ $$$tls-ldap$$$
 $$$mapping-roles-ldap$$$
 
 $$$ldap-user-metadata$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/ldap-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/ldap-realm.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-securing-clusters-ldap.md](/raw-migrated-files/cloud/cloud-enterprise/ece-securing-clusters-ldap.md)

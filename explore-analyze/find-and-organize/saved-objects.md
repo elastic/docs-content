@@ -126,7 +126,7 @@ However, saved objects can only be imported into the same version, a newer minor
 | 7.8.1 | 9.0.0 | No |
 
 ## Saved Object IDs [saved-object-ids]
-::::{applies}
+::::{applies_to}
 :stack:
 ::::
 

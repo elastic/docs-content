@@ -28,8 +28,6 @@ The APM secret token can no longer be reset from the {{ecloud}} UI. Check [Secre
 
 This example demonstrates how to use the {{ecloud}} RESTful API to create a deployment with Integrations Server enabled.
 
-For more information on how to manage Integrations Server from the UI, check [Manage your Integrations Server]()
-
 
 #### Requirements [ec_requirements_2]
 

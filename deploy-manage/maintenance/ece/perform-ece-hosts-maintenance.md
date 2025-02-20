@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-perform-host-maintenance.html
+applies_to:
+  deployment:
+     ece:
 ---
 
 # Perform ECE hosts maintenance [ece-perform-host-maintenance]
@@ -20,21 +23,18 @@ You can perform these maintenance actions on the hosts in your ECE installation 
 
 Which method you choose depends on how invasive your host maintenance needs to be. If your host maintenance could affect ECE, use the destructive method that first deletes the host from your installation. These methods include a step that moves any hosted Elasticsearch clusters and Kibana instances off the affected hosts and are generally considered safe, provided that your ECE installation still has sufficient resources available to operate after the host has been removed.
 
-
-## By disabling the Docker daemon [ece-perform-host-maintenance-docker-disable] 
+## By disabling the Docker daemon [ece-perform-host-maintenance-docker-disable]
 
 This method lets you perform maintenance actions on hosts without first removing the associated host from your Elastic Cloud Enterprise installation. It works by disabling the Docker daemon. The host remains a part of your ECE installation throughout these steps but will be offline and the resources it provides will not be available.
 
 To perform host maintenance:
 
 1. Recommended: If the host holds the allocator role and you have enough spare capacity:
-
-    1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
-    2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available Elasticsearch clusters and ensures that other clusters without high availability remain available.
-
-    ::::{important} 
-    Skipping Step 1 will affect the availability of clusters with nodes on the allocator.
-    ::::
+   1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
+   2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available Elasticsearch clusters and ensures that other clusters without high availability remain available.
+   ::::{important}
+   Skipping Step 1 will affect the availability of clusters with nodes on the allocator.
+   ::::
 
 2. Disable the Docker daemon:
 
@@ -69,21 +69,18 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, it is fully functional again and can be used as before.
 
-
-## By deleting the host (destructive) [ece-perform-host-maintenance-delete-runner] 
+## By deleting the host (destructive) [ece-perform-host-maintenance-delete-runner]
 
 This method lets you perform potentially destructive maintenance actions on hosts. It works by deleting the associated host, which removes the host from your Elastic Cloud Enterprise installation. To add the host to your ECE installation again after host maintenance is complete, you must reinstall ECE.
 
 To perform host maintenance:
 
 1. If the host holds the allocator role:
-
-    1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
-    2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available clusters and ensures that other clusters without high availability remain available.
-
-    ::::{important} 
-    Do not skip this step or you will affect the availability of clusters with nodes on the allocator. You are in the process of removing the host from your installation and whatever ECE artifacts are stored on it will be lost.
-    ::::
+   1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
+   2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available clusters and ensures that other clusters without high availability remain available.
+      ::::{important}
+      Do not skip this step or you will affect the availability of clusters with nodes on the allocator. You are in the process of removing the host from your installation and whatever ECE artifacts are stored on it will be lost.
+      ::::
 
 2. [Delete the host from your ECE installation](delete-ece-hosts.md).
 3. Perform the maintenance on your host, such as enabling encryption of data at rest.
@@ -92,8 +89,7 @@ To perform host maintenance:
 
 After the host shows a green status in the Cloud UI, the host is part of your ECE installation again and can be used as before.
 
-
-## By shutting down the host (less destructive) [ece-perform-host-maintenance-shutdown-host] 
+## By shutting down the host (less destructive) [ece-perform-host-maintenance-shutdown-host]
 
 This method lets you perform potentially destructive maintenance actions on hosts. It works by temporarily shutting down an ECE host, e.g. for data center moves or planned power outages. It is offered as an non-guaranteed and less destructive alternative to fully [deleting a host](#ece-perform-host-maintenance-delete-runner) from your ECE installation.
 
@@ -101,13 +97,11 @@ To shut down the host:
 
 1. Disable traffic from load balancers.
 2. Shut down all allocators:
-
-    1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
-    2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available clusters and ensures that other clusters without high availability remain available.
-
-    ::::{important} 
-    Do not skip this step or you will affect the availability of clusters with nodes on the allocator. You are in the process of removing the host from your installation and whatever ECE artifacts are stored on it will be lost.
-    ::::
+   1. [Enable maintenance mode](enable-maintenance-mode.md) on the allocator.
+   2. [Move all nodes off the allocator](move-nodes-instances-from-allocators.md) and to other allocators in your installation. Moving all nodes lets you retain the same level of redundancy for highly available clusters and ensures that other clusters without high availability remain available.
+      ::::{important}
+      Do not skip this step or you will affect the availability of clusters with nodes on the allocator. You are in the process of removing the host from your installation and whatever ECE artifacts are stored on it will be lost.
+      ::::
 
 3. Shut down all non-director hosts.
 4. Shut down directors.
@@ -123,4 +117,3 @@ After performing maintenance, start up the host:
 
 3. Start all remaining hosts.
 4. Re-enable traffic from load balancers.
-
