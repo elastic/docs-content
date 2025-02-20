@@ -129,7 +129,7 @@ By default, {{kib}} requires an internet connection to download integration pack
 
 ## Does {{agent}} download anything from the Internet? [does-agent-download-anything-from-internet]
 
-* In version 7.10 and later, a fully capable artifact can be installed with no connection to the Elastic download site. However, if it is in use, the {{elastic-defend}} process is instructed to attempt to download newer released versions of the integration-specific artifacts it uses. Some of those are, for example, the malware model, trusted applications artifact, exceptions list artifact, and others. {{elastic-endpoint}} will continue to protect the host even if it’s unable to download updates. However, it won’t receive updates to protections until {{agent}} is upgraded to a new version. For more information, refer to the [{{elastic-sec}} documentation](https://www.elastic.co/guide/en/security/current/index.html).
+* In version 7.10 and later, a fully capable artifact can be installed with no connection to the Elastic download site. However, if it is in use, the {{elastic-defend}} process is instructed to attempt to download newer released versions of the integration-specific artifacts it uses. Some of those are, for example, the malware model, trusted applications artifact, exceptions list artifact, and others. {{elastic-endpoint}} will continue to protect the host even if it’s unable to download updates. However, it won’t receive updates to protections until {{agent}} is upgraded to a new version. For more information, refer to the [{{elastic-sec}} documentation](/solutions/security.md).
 * {{agent}} requires internet access to download artifacts for binary upgrades. In air-gapped environments, you can host your own artifact registry. For more information, refer to [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md).
 
 
@@ -142,7 +142,7 @@ For example, standalone {{beats}} use modules and require you to run a setup com
 
 ## What is the {{elastic-defend}} integration in {{fleet}}? [what-is-the-endpoint-package]
 
-The {{elastic-defend}} integration provides protection on your {{agent}} controlled host. The integration monitors your host for security-related events, allowing for investigation of security data through the {{security-app}} in {{kib}}. The {{elastic-defend}} integration is managed by {{agent}} in the same way as other integrations. Try it out! For more information, refer to the [{{elastic-sec}} documentation](https://www.elastic.co/guide/en/security/current/index.html).
+The {{elastic-defend}} integration provides protection on your {{agent}} controlled host. The integration monitors your host for security-related events, allowing for investigation of security data through the {{security-app}} in {{kib}}. The {{elastic-defend}} integration is managed by {{agent}} in the same way as other integrations. Try it out! For more information, refer to the [{{elastic-sec}} documentation](/solutions/security.md).
 
 
 ## How are communications secured between {{elastic-sec}} and {{agent}}? [how-are-security-to-agent-communications-secured]

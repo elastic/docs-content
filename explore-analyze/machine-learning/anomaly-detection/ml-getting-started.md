@@ -17,7 +17,7 @@ Ready to take {{anomaly-detect}} for a test drive? Follow this tutorial to:
 
 At the end of this tutorial, you should have a good idea of what {{ml}} is and will hopefully be inspired to use it to detect anomalies in your own data.
 
-Need more context? Check out the [{{es}} introduction](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html) to learn the lingo and understand the basics of how {{es}} works.
+Need more context? Check out the [{{es}} introduction](/get-started/index.md) to learn the lingo and understand the basics of how {{es}} works.
 
 ## Try it out [get-started-prereqs]
 

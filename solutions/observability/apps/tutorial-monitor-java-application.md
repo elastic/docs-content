@@ -15,7 +15,7 @@ You’ll learn how to:
 * Create a sample Java application.
 * Ingest logs using {{filebeat}} and view your logs in {{kib}}.
 * Ingest metrics using the [Metricbeat Prometheus Module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-module-prometheus.md) and view your metrics in {{kib}}.
-* Instrument your application using the [Elastic APM Java agent](https://www.elastic.co/guide/en/apm/agent/java/current/index.html).
+* Instrument your application using the [Elastic APM Java agent](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/index.md).
 * Monitor your services using {{heartbeat}} and view your uptime data in {{kib}}.
 
 
@@ -917,7 +917,7 @@ You have now learned about parsing logs in either {{beats}} or {{es}}. What if w
 
 Writing out logs as plain text works and is easy to read for humans. However, first writing them out as plain text, parsing them using the `dissect` processors, and then creating a JSON again sounds tedious and burns unneeded CPU cycles.
 
-While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/index.html). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
+While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layouts.md#JSONLayout), you can go further and use a Library called [ecs-logging-java](https://github.com/elastic/ecs-logging-java). The advantage of ECS logging is that it uses the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs/index.md). ECS defines a standard set of fields used when storing event data in {{es}}, such as logs and metrics.
 
 1. Instead of writing our logging standard, use an existing one. Let’s add the logging dependency to our Javalin application.
 

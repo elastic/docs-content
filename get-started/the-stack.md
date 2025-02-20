@@ -2,6 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/stack-components.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html
+  - https://www.elastic.co/guide/en/kibana/current/index.html
   - https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html
 ---
 
@@ -63,7 +64,7 @@ $$$stack-components-logstash$$$
 $$$stack-components-elasticsearch$$$
 
 {{es}}
-:   {{es}} is the distributed search and analytics engine at the heart of the {{stack}}. It provides near real-time search and analytics for all types of data. Whether you have structured or unstructured text, numerical data, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches. {{es}} provides a REST API that enables you to store data in {{es}} and retrieve it. The REST API also provides access to {{es}}'s search and analytics capabilities. [Learn more about {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html).
+:   {{es}} is the distributed search and analytics engine at the heart of the {{stack}}. It provides near real-time search and analytics for all types of data. Whether you have structured or unstructured text, numerical data, or geospatial data, {{es}} can efficiently store and index it in a way that supports fast searches. {{es}} provides a REST API that enables you to store data in {{es}} and retrieve it. The REST API also provides access to {{es}}'s search and analytics capabilities. [Learn more about {{es}}](/get-started/index.md).
 
 
 ### Consume [_consume]
