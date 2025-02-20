@@ -467,7 +467,6 @@ toc:
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
       - file: observability-docs/observability/logs-checklist.md
-      - file: observability-docs/observability/logs-ecs-application.md
       - file: observability-docs/observability/logs-filter-and-aggregate.md
       - file: observability-docs/observability/logs-parse.md
       - file: observability-docs/observability/logs-plaintext.md
