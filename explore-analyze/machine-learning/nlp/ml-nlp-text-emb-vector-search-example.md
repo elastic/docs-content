@@ -103,7 +103,7 @@ In this step, you load the data that you later use in an ingest pipeline to get 
 
 The data set `msmarco-passagetest2019-top1000` is a subset of the MS MARCO Passage Ranking data set used in the testing stage of the 2019 TREC Deep Learning Track. It contains 200 queries and for each query a list of relevant text passages extracted by a simple information retrieval (IR) system. From that data set, all unique passages with their IDs have been extracted and put into a [tsv file](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv), totaling 182469 passages. In the following, this file is used as the example data set.
 
-Upload the file by using the [Data Visualizer](../../../manage-data/ingest/tools/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
+Upload the file by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
 
 :::{image} ../../../images/machine-learning-ml-nlp-text-emb-data.png
 :alt: Importing the data

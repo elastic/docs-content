@@ -91,6 +91,7 @@ toc:
               - file: ingest/ingest-reference-architectures/agent-es-airgapped.md
               - file: ingest/ingest-reference-architectures/agent-ls-airgapped.md
       - file: ingest/sample-data.md
+      - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
         children:
           - file: ingest/transform-enrich/ingest-pipelines-serverless.md
@@ -106,8 +107,6 @@ toc:
               - file: ingest/transform-enrich/example-enrich-data-by-matching-value-to-range.md
           - file: ingest/transform-enrich/index-mapping-text-analysis.md
       - file: ingest/tools.md
-        children:
-          - file: ingest/tools/upload-data-files.md
   - file: lifecycle.md
     children:
       - file: lifecycle/data-tiers.md

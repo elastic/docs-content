@@ -109,7 +109,7 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
 
     * [{{es}} API](ingest-for-search.md)
     * [Connector clients](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-integrations-connector-client.html)
-    * [File Uploader](../../manage-data/ingest/tools/upload-data-files.md)
+    * [File Uploader](../../manage-data/ingest/upload-data-files.md)
     * [{{beats}}](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-beats.html)
     * [{{ls}}](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-logstash.html)
     * [Elastic Open Web Crawler](https://github.com/elastic/crawler)
