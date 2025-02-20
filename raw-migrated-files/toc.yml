@@ -445,7 +445,6 @@ toc:
       - file: elasticsearch-hadoop/elasticsearch-hadoop/doc-sections.md
   - file: elasticsearch/elasticsearch-reference/index.md
     children:
-      - file: elasticsearch/elasticsearch-reference/active-directory-realm.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-deciders.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-fixed-decider.md
       - file: elasticsearch/elasticsearch-reference/autoscaling-frozen-existence-decider.md

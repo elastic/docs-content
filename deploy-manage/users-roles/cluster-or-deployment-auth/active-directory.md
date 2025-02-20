@@ -29,7 +29,7 @@ The Active Directory realm authenticates users using an LDAP bind request. After
 
 To integrate with Active Directory, you configure an `active_directory` realm and map Active Directory groups to user roles in {{es}}.
 
-## Step 1: Add a new realm configuration ad-realm-configuration
+## Step 1: Add a new realm configuration [ad-realm-configuration]
 
 1. Add a realm configuration of type `active_directory` to `elasticsearch.yml` under the `xpack.security.authc.realms.active_directory` namespace. At a minimum, you must specify the Active Directory `domain_name` and `order`.
 
@@ -98,10 +98,6 @@ To integrate with Active Directory, you configure an `active_directory` realm an
 
   ::::
 
-  ::::{note}
-  If your Domain Controller is configured to use LDAP over TLS and it uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate. Refer to [using self-signed certificates](#ece-ad-configuration-encrypt-communications).
-  ::::
-
   ::::{important} 
   When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
   ::::
@@ -110,7 +106,12 @@ To integrate with Active Directory, you configure an `active_directory` realm an
 
     The `load_balance.type` setting can be used at the realm level. Two modes of operation are supported: failover and load balancing. See [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings).
 
-3. (Optional) To protect passwords, [encrypt communications between {{es}} and the Active Directory server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#tls-active-directory).
+3. (Optional) To protect passwords, [encrypt communications](/deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#tls-active-directory) between {{es}} and the Active Directory server.
+
+    * **For self-managed clusters and {{eck}} deployments**, clients and nodes that connect using SSL/TLS to the Active Directory server need to have the Active Directory server’s certificate or the server’s root CA certificate installed in their keystore or trust store.
+
+    * **For {{ece}} and {{ech}} deployments**, if your Domain Controller is configured to use LDAP over TLS and it uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate.
+
 4. Restart {{es}}.
 
 
@@ -233,7 +234,7 @@ POST /_security/role_mapping/ldap-superuser <1>
 ### Example: Using a role mapping file [ece_using_the_role_mapping_files_2]
 
 :::{tip} 
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
 :::
 
 ```sh
@@ -291,11 +292,17 @@ To protect the user credentials that are sent for authentication, you should enc
 
 Clients and nodes that connect using SSL/TLS to the Active Directory server need to have the Active Directory server’s certificate or the server’s root CA certificate installed in their keystore or truststore.
 
-If you're using {{ece}} or {{ech}}, then these steps are required only if TLS is enabled and the Active Directory controller is using self-signed certificates.
+If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+
+If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
 
 :::{tip} 
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+
+If you're using {{ece}} or {{ech}}, then these steps are required only if TLS is enabled and the Active Directory controller is using self-signed certificates.
 :::
+
+:::{note}
+
 
 The following example demonstrates how to trust a CA certificate (`cacert.pem`), which is located within the configuration directory.
 
