@@ -228,7 +228,6 @@ toc:
       - file: docs-content/serverless/observability-get-started.md
       - file: docs-content/serverless/observability-log-monitoring.md
       - file: docs-content/serverless/observability-monitor-datasets.md
-      - file: docs-content/serverless/observability-parse-log-data.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
       - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/project-and-management-settings.md
@@ -464,7 +463,6 @@ toc:
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
       - file: observability-docs/observability/logs-checklist.md
-      - file: observability-docs/observability/logs-parse.md
       - file: observability-docs/observability/logs-plaintext.md
       - file: observability-docs/observability/logs-stream.md
       - file: observability-docs/observability/monitor-datasets.md
