@@ -46,7 +46,7 @@ To restore built-in snapshots across clusters, there are two options:
 * [Restore snapshot into a new deployment](ece-restore-snapshots-into-new-deployment.md)
 * [Restore snapshot into an existing deployment](ece-restore-snapshots-into-existing-deployment.md)
 
-When restoring snapshots across clusters, we create a new repository called `\_clone_{{clusterIdPrefix}}`, which persists until manually deleted. If the repository is still in use, for example by mounted searchable snapshots, it can’t be removed.
+When restoring snapshots across clusters on {{ech}} or {{ece}}, the platform creates a new repository called `\_clone_{{clusterIdPrefix}}`, which persists until manually deleted. If the repository is still in use, for example by mounted searchable snapshots, it can’t be removed.
 
 ::::{warning} 
 When restoring from a deployment that’s using searchable snapshots, refer to [Restore snapshots containing searchable snapshots indices across clusters](ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters.md).
