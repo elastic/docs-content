@@ -14,18 +14,16 @@ This page provides a high-level introduction to {{ece}} (ECE), including its [](
 Try one of the [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html) to discover the core concepts of the Elastic Stack and understand how Elastic can help you.
 ::::
 
-### What is ECE?
-
 ECE evolves from the Elastic hosted Cloud SaaS offering into a standalone product. You can deploy ECE on public or private clouds, virtual machines, or your own premises.
 
-### Why ECE?
+With {{ece}}, you can:
 
 * Host your regulated or sensitive data on your internal network.
 * Reuse your existing investment in on-premise infrastructure and reduce total cost.
 * Maximize the hardware utilization for the various clusters.
 * Centralize the management of multiple Elastic deployments across teams or geographies.
 
-### ECE features
+## ECE features
 
 - **Automated Scaling & Orchestration** – Handles cluster provisioning, scaling, and upgrades automatically.
 - **High Availability & Resilience** – Ensures uptime through multiple Availability Zones, data replication, and automated restore and snapshot.
@@ -37,7 +35,7 @@ ECE evolves from the Elastic hosted Cloud SaaS offering into a standalone produc
 
 Check the [glossary](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
 
-### Use cases
+## Use cases
 
 - Organizations that need full control over their Elastic Stack while benefiting from cloud-like automation.
 - Enterprises managing multiple Elasticsearch clusters across different teams or environments.
