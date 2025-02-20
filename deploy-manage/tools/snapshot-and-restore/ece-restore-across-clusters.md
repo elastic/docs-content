@@ -1,7 +1,8 @@
 ---
-applies:
-  hosted: all
-  ece: all
+applies_to:
+  deployment:
+    ess: 
+    ece: 
 ---
 
 # Restore a snapshot across clusters [ece-restore-across-clusters]

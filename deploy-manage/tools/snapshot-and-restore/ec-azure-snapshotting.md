@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Configure a snapshot repository using Azure Blob storage [ec-azure-snapshotting]

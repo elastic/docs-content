@@ -3,11 +3,12 @@ navigation_title: "Bi-directional disaster recovery"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-disaster-recovery-bi-directional-tutorial.html
 
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 

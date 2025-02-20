@@ -2,11 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow-create.html
 
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Create auto-follow patterns [ccr-auto-follow-create]

@@ -1,8 +1,9 @@
 ---
 navigation_title: "Elastic Cloud on Kubernetes"
-applies:
-  eck: all
 
+applies_to:
+  deployment:
+    eck: 
 ---
 
 # Manage snapshot repositories in Elastic Cloud on Kubernetes [k8s-snapshots]

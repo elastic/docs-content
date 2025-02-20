@@ -2,11 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-auto-follow.html
 
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Create an auto-follow pattern to replicate time series indices [ccr-getting-started-auto-follow]

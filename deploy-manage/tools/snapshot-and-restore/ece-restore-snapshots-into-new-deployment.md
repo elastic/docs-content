@@ -1,7 +1,8 @@
 ---
-applies:
-  hosted: all
-  ece: all
+applies_to:
+  deployment:
+    ess: 
+    ece: 
 ---
 
 # Restore snapshot into a new deployment [ece-restore-snapshots-into-new-deployment]

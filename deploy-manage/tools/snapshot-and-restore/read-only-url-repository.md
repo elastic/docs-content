@@ -1,6 +1,7 @@
 ---
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: 
 ---
 
 # Read-only URL repository [snapshots-read-only-repository]

@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]

@@ -1,6 +1,7 @@
 --- 
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: 
 ---
 
 # Shared file system repository [snapshots-filesystem-repository]

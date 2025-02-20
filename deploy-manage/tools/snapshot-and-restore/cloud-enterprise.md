@@ -1,7 +1,9 @@
 ---
 navigation_title: "Elastic Cloud Enterprise"
-applies:
-  ece: all
+
+applies_to:
+  deployment:
+    ece: 
 ---
 
 # Manage snapshot repositories in Elastic Cloud Enterprise [ece-manage-repositories]
@@ -14,9 +16,9 @@ When a repository is assigned to a deployment, a snapshot is taken every 30 minu
 
 Elastic Cloud Enterprise installations support the following {{es}} snapshot repository types:
 
-* [Azure](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html)
-* [Google Cloud Storage](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html)
-* [AWS S3](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html)
+* [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md), including [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 ::::{note}
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by {{es}}.
@@ -26,7 +28,7 @@ To configure Google Cloud Storage (GCS) as a snapshot repository, you must use [
 
 To configure Microsoft Azure Storage as a snapshot repository, refer to [Snapshotting to Azure Storage](azure-storage-repository.md).
 
-For more details about how snapshots are used with Elasticsearch, check [Snapshot and Restore](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html). You can also review the official documentation for these storage repository options:
+For more details about how snapshots are used with Elasticsearch, check [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
 
 * [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)
 * [Microsoft Azure storage documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account)
@@ -35,62 +37,6 @@ For more details about how snapshots are used with Elasticsearch, check [Snapsho
 ::::{tip}
 If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.  We suggest that you use [Minio](https://www.minio.io/). For our installation notes, check [Snapshotting to Minio On-Premise Storage](minio-on-premise-repository.md).
 ::::
-
-
-
-## Add snapshot repository configurations [ece-manage-repositories-add]
-
-Before any snapshot or restore operation can be performed for Elasticsearch clusters, at least one snapshot repository configuration needs to be added to your Elastic Cloud Enterprise installation.
-
-To add a snapshot repository:
-
-1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. From the **Platform** menu, select **Repositories**.
-3. Select **Add Repository** to add an existing repository.
-4. Provide a name for the repository configuration.
-
-    ECE Snapshot Repository names are now required to meet the same standards as S3 buckets. Refer to the official AWS documentation on [Bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.md).
-
-5. Select one of the supported repository types and specify the necessary settings:
-
-    * Amazon S3 configuration:
-
-        All repository options must be specified, as there are no default values.
-
-        Region
-        :   The region where the bucket is located.
-
-        Bucket
-        :   The name of the bucket to be used for snapshots.
-
-        Access key
-        :   The access key to use for authentication.
-
-        Secret key
-        :   The secret key to use for authentication.
-
-    * Advanced configuration:
-
-        Used for Microsoft Azure, Google Cloud Platform, or for some Amazon S3 repositories where you need to provide additional configuration parameters not supported by the S3 repository option. Configurations must be specified in a valid JSON format. For example:
-
-        Amazon S3 (check [supported settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-s3.html#repository-s3-repository)):
-
-        ```json
-        {
-          "type": "s3",
-          "settings": {
-            "bucket": "my_bucket_name",
-            "region": "us-west"
-          }
-        }
-        ```
-
-        ::::{note}
-        Don’t set `base_path` when configuring a snapshot repository for {{ECE}}. {{ECE}} automatically generates the `base_path` for each deployment so that multiple deployments may share the same bucket.
-        ::::
-
-6. Select **Save**.
-
 
 ## Edit snapshot repository configurations [ece_edit_snapshot_repository_configurations]
 

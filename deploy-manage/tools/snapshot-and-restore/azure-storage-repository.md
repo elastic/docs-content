@@ -1,6 +1,7 @@
 ---
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: 
 ---
 
 # Azure Storage repository [ece-configure-azure-snapshotting]

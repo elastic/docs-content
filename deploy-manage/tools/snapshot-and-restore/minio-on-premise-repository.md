@@ -1,6 +1,7 @@
 ---
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: 
 ---
 
 # Minio on-premise repository [ece-configuring-minio]

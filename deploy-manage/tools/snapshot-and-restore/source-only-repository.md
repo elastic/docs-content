@@ -1,6 +1,7 @@
 ---
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: 
 ---
 
 # Source-only repository [snapshots-source-only-repository]

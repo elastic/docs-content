@@ -1,7 +1,8 @@
 ---
-applies:
-  hosted: all
-  ece: all
+applies_to:
+  deployment:
+    ess: 
+    ece: 
 ---
 
 # Restore snapshots containing searchable snapshots indices across clusters [ece-restore-snapshots-containing-searchable-snapshots-indices-across-clusters]

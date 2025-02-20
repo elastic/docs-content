@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Repository isolation on AWS and GCP [ec-snapshot-repository-aws-gcp-migration]

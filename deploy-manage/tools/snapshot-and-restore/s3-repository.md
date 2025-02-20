@@ -1,6 +1,7 @@
 --- 
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: 
 ---
 
 # S3 repository [repository-s3]

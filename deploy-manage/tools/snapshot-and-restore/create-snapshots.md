@@ -1,9 +1,10 @@
 ---
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Create snapshots [snapshots-take-snapshot]

@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Access isolation for the found-snapshots repository [ec-snapshot-repository-migration]

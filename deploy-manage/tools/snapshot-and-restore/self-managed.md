@@ -1,7 +1,9 @@
 ---
 navigation_title: "Self-managed"
-applies:
-  stack: all
+
+applies_to:
+  deployment:
+    self: 
 ---
 
 # Manage snapshot repositories in self-managed deployments [snapshots-register-repository]

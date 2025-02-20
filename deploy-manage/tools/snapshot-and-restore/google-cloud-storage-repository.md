@@ -1,6 +1,7 @@
 ---
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: 
 ---
 
 # Google Cloud Storage repository [repository-gcs]

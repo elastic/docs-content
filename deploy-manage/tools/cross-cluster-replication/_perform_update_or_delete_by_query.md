@@ -2,11 +2,12 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_perform_update_or_delete_by_query.html
 
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Perform update or delete by query [_perform_update_or_delete_by_query]

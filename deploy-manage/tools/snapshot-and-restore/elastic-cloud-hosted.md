@@ -1,7 +1,9 @@
 ---
 navigation_title: "Elastic Cloud Hosted"
-applies:
-  hosted: all
+
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Manage snapshot repositories in Elastic Cloud Hosted

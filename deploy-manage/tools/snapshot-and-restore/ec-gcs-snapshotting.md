@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Configure a snapshot repository using GCS [ec-gcs-snapshotting]

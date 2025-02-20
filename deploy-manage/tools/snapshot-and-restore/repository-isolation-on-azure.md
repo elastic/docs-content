@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Repository isolation on Azure [ec-snapshot-repository-azure-migration]
