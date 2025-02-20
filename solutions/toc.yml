@@ -370,9 +370,6 @@ toc:
       - file: observability/tools-and-apis.md
       - file: observability/unknown-bucket.md
         children:
-          - file: observability/unknown-bucket/view-monitor-status.md
-          - file: observability/unknown-bucket/monitor-aws-with-amazon-data-firehose.md
-          - file: observability/unknown-bucket/serverless-observability-limitations.md
           - file: observability/unknown-bucket/host-metrics.md
           - file: observability/unknown-bucket/container-metrics.md
           - file: observability/unknown-bucket/kubernetes-pod-metrics.md
@@ -649,7 +646,7 @@ toc:
               - file: search/rag/playground-query.md
               - file: search/rag/playground-troubleshooting.md
       - file: search/hybrid-search.md
-        children: 
+        children:
           - file: search/hybrid-semantic-text.md
       - file: search/ranking.md
         children:
