@@ -25,17 +25,17 @@ This section provides step-by-step guidance on:
   * [With your private Docker registry](./ece-install-offline-with-registry.md)
   * [Without any Docker registry](./ece-install-offline-no-registry.md)
 
-* [Configure ECE](./configure.md)
-  * [System deployments configuration]()
-  * [Configure deployment templates]()
-  * [Change endpoint URLs]()
+* [Configure ECE](./configure.md): Explore the most common tasks to configure your ECE platform.
+  * [System deployments configuration](./system-deployments-configuration.md)
+  * [Configure deployment templates](./deployment-templates.md)
+  * [Change endpoint URLs](./change-endpoint-urls.md)
 
 ## Additional topics
 
 Once ECE is deployed, you may need to configure security, manage snapshots, or perform maintenance tasks. Refer to the following sections for more details:  
 
 * [Secure your ECE installation](../../security/secure-your-elastic-cloud-enterprise-installation.md)
+* [Users and roles](../../users-roles/cloud-enterprise-orchestrator.md)
 * [Manage snapshot repositories](../../tools/snapshot-and-restore.md)
 * [Manage licenses](../../license/manage-your-license-in-ece.md)
 * [ECE platform maintenance operations](../../maintenance/ece.md)
-* [Users and roles](../../users-roles/cloud-enterprise-orchestrator.md)
