@@ -16,7 +16,7 @@ You can generate diagnostic information using this tool before you contact [Elas
 See this [this video](https://www.youtube.com/watch?v=Bb6SaqhqYHw) for a walkthrough of capturing an {{es}} diagnostic.
 
 ::::{tip}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::
 
@@ -32,7 +32,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 The Support Diagnostic tool is included as a sub-library in some Elastic deployments:
 
 * {{ece}}: Located under **{{ece}}** > **Deployment*** > ***Operations*** > ***Prepare Bundle** > **{{es}}**.
-* {{eck}}: Run as [`eck-diagnostics`](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-take-eck-dump.html).
+* {{eck}}: Run as [`eck-diagnostics`](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md).
 
 You can also directly download the `diagnostics-X.X.X-dist.zip` file for the latest Support Diagnostic release from [the `support-diagnostic` repo](https://github.com/elastic/support-diagnostics/releases/latest).
 
@@ -73,9 +73,9 @@ To capture an {{es}} diagnostic:
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
-    * `local` (default, recommended): Polls the [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html), gathers operating system info, and captures cluster and GC logs.
+    * `local` (default, recommended): Polls the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md), gathers operating system info, and captures cluster and GC logs.
     * `remote`: Establishes an ssh session to the applicable target server to pull the same information as `local`.
-    * `api`: Polls the [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html). All other data must be collected manually.
+    * `api`: Polls the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md). All other data must be collected manually.
 
     ::::
 

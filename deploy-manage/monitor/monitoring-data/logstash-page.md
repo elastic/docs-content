@@ -24,4 +24,4 @@ If you are monitoring Logstash nodes, click **Overview** in the Logstash section
 1. To view Logstash node metrics, click **Nodes**. The Nodes section shows the status of each Logstash node.
 2. Click the name of a node to view its statistics over time.
 
-For more information, refer to [Monitoring Logstash](https://www.elastic.co/guide/en/logstash/current/configuring-logstash.html).
+For more information, refer to [Monitoring Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/monitoring-logstash-legacy.md).

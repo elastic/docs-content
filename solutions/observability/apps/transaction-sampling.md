@@ -181,13 +181,13 @@ The transaction sample rate can be changed dynamically (no redeployment necessar
 
 Each agent provides a configuration value used to set the transaction sample rate. See the relevant agent’s documentation for more details:
 
-* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-transaction-sample-rate)
-* Java: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-transaction-sample-rate)
-* .NET: [`TransactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-core.html#config-transaction-sample-rate)
-* Node.js: [`transactionSampleRate`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#transaction-sample-rate)
-* PHP: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-transaction-sample-rate)
-* Python: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-transaction-sample-rate)
-* Ruby: [`transaction_sample_rate`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-transaction-sample-rate)
+* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-transaction-sample-rate)
+* Java: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-transaction-sample-rate)
+* .NET: [`TransactionSampleRate`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-core.md#config-transaction-sample-rate)
+* Node.js: [`transactionSampleRate`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#transaction-sample-rate)
+* PHP: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-transaction-sample-rate)
+* Python: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-transaction-sample-rate)
+* Ruby: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-transaction-sample-rate)
 
 
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]

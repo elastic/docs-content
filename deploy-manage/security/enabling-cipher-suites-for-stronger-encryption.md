@@ -9,7 +9,7 @@ The TLS and SSL protocols use a cipher suite that determines the strength of enc
 
 The *Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files* enable the use of additional cipher suites for Java in a separate JAR file that you need to add to your Java installation. You can download this JAR file from Oracle’s [download page](http://www.oracle.com/technetwork/java/javase/downloads/index.md). The *JCE Unlimited Strength Jurisdiction Policy Files`* are required for encryption with key lengths greater than 128 bits, such as 256-bit AES encryption.
 
-After installation, all cipher suites in the JCE are available for use but requires configuration in order to use them. To enable the use of stronger cipher suites with {{es}} {{security-features}}, configure the [`cipher_suites` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ssl-tls-settings).
+After installation, all cipher suites in the JCE are available for use but requires configuration in order to use them. To enable the use of stronger cipher suites with {{es}} {{security-features}}, configure the [`cipher_suites` parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 
 ::::{note} 
 The *JCE Unlimited Strength Jurisdiction Policy Files* must be installed on all nodes in the cluster to establish an improved level of encryption strength.

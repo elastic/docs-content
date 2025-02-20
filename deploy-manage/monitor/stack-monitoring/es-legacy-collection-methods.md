@@ -33,7 +33,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         ::::
 
 
-        For more information, see [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
     2. Set the `xpack.monitoring.collection.enabled` setting to `true` on each node in the cluster. By default, it is disabled (`false`).
 
@@ -59,7 +59,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
         Alternatively, you can enable this setting in {{kib}}. In the side navigation, click **Monitoring**. If data collection is disabled, you are prompted to turn it on.
 
-        For more information, see [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
     3. Optional: Specify which indices you want to monitor.
 
@@ -71,7 +71,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
         You can prepend `-` to explicitly exclude index names or patterns. For example, to include all indices that start with `test` except `test3`, you could specify `test*,-test3`. To include system indices such as .security and .kibana, add `.*` to the list of included names. For example `.*,test*,-test3`
 
-    4. Optional: Specify how often to collect monitoring data. The default value for the `xpack.monitoring.collection.interval` setting 10 seconds. See [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html).
+    4. Optional: Specify how often to collect monitoring data. The default value for the `xpack.monitoring.collection.interval` setting 10 seconds. See [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md).
 
 2. Identify where to store monitoring data.
 
@@ -146,7 +146,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 5. If you updated settings in the `elasticsearch.yml` files on your production cluster, restart {{es}}. See [*Stopping Elasticsearch*](../../maintenance/start-stop-services/start-stop-elasticsearch.md) and [*Starting Elasticsearch*](../../maintenance/start-stop-services/start-stop-elasticsearch.md).
 
     ::::{tip} 
-    You may want to temporarily [disable shard allocation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html) before you restart your nodes to avoid unnecessary shard reallocation during the install process.
+    You may want to temporarily [disable shard allocation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md) before you restart your nodes to avoid unnecessary shard reallocation during the install process.
     ::::
 
 6. Optional: [Configure the indices that store the monitoring data](../monitoring-data/configuring-data-streamsindices-for-monitoring.md).

@@ -8,7 +8,7 @@ applies:
 
 # Enable stack monitoring on ECK deployments [k8s-stack-monitoring]
 
-You can enable [Stack Monitoring](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html) on Elasticsearch, Kibana, Beats and Logstash to collect and ship their metrics and logs to a monitoring cluster. Although self-monitoring is possible, it is advised to use a [separate monitoring cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-overview.html).
+You can enable [Stack Monitoring](/deploy-manage/monitor.md) on Elasticsearch, Kibana, Beats and Logstash to collect and ship their metrics and logs to a monitoring cluster. Although self-monitoring is possible, it is advised to use a [separate monitoring cluster](/deploy-manage/monitor/stack-monitoring.md).
 
 To enable Stack Monitoring, simply reference the monitoring Elasticsearch cluster in the `spec.monitoring` section of their specification.
 
@@ -80,7 +80,7 @@ If Logs Stack Monitoring is configured for a Beat, and custom container argument
 ::::
 
 
-You can also enable Stack Monitoring on a single Stack component only. In case Elasticsearch is not monitored, other Stack components will not be available on the Stack Monitoring Kibana page (check [View monitoring data in Kibana](https://www.elastic.co/guide/en/kibana/current/monitoring-data.html#monitoring-data)).
+You can also enable Stack Monitoring on a single Stack component only. In case Elasticsearch is not monitored, other Stack components will not be available on the Stack Monitoring Kibana page (check [View monitoring data in Kibana](/deploy-manage/monitor/stack-monitoring/kibana-monitoring-data.md)).
 
 
 

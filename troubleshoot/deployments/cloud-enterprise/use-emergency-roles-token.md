@@ -20,7 +20,7 @@ To use the emergency token:
 3. Verify that the Cloud UI works as expected.
 4. Optional: Prevent a recurrence of the issue by enabling high availability for the administration console:
 
-    1. Repeat Step 1 to create two additional coordinators in two additional availability zones. [Examples of the installation commands](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-installation-script.html#ece-installation-script-examples) you need to run are available.
+    1. Repeat Step 1 to create two additional coordinators in two additional availability zones. [Examples of the installation commands](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-enterprise/ece-installation-script.md#ece-installation-script-examples) you need to run are available.
     2. [Change the configuration for the `admin-console-elasticsearch` and `logging-and-metrics` deployments](../../../deploy-manage/deploy/cloud-enterprise/working-with-deployments.md) to use three availability zones and resize the nodes to use at least 4 GB of RAM. This change makes sure that the clusters used by the administration console are highly available and provisioned sufficiently.
 
 

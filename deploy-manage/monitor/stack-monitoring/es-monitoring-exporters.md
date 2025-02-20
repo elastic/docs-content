@@ -39,11 +39,11 @@ When the exporters route monitoring data into the monitoring cluster, they use `
 Routing monitoring data involves indexing it into the appropriate monitoring indices. Once the data is indexed, it exists in a monitoring index that, by default, is named with a daily index pattern. For {{es}} monitoring data, this is an index that matches `.monitoring-es-6-*`. From there, the data lives inside the monitoring cluster and must be curated or cleaned up as necessary. If you do not curate the monitoring data, it eventually fills up the nodes and the cluster might fail due to lack of disk space.
 
 ::::{tip} 
-You are strongly recommended to manage the curation of indices and particularly the monitoring indices. To do so, you can take advantage of the [cleaner service](es-local-exporter.md#local-exporter-cleaner) or [Elastic Curator](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html).
+You are strongly recommended to manage the curation of indices and particularly the monitoring indices. To do so, you can take advantage of the [cleaner service](es-local-exporter.md#local-exporter-cleaner) or [Elastic Curator](asciidocalypse://docs/curator/docs/reference/elasticsearch/elasticsearch-client-curator/index.md).
 ::::
 
 
-There is also a disk watermark (known as the flood stage watermark), which protects clusters from running out of disk space. When this feature is triggered, it makes all indices (including monitoring indices) read-only until the issue is fixed and a user manually makes the index writeable again. While an active monitoring index is read-only, it will naturally fail to write (index) new data and will continuously log errors that indicate the write failure. For more information, see [Disk-based shard allocation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
+There is also a disk watermark (known as the flood stage watermark), which protects clusters from running out of disk space. When this feature is triggered, it makes all indices (including monitoring indices) read-only until the issue is fixed and a user manually makes the index writeable again. While an active monitoring index is read-only, it will naturally fail to write (index) new data and will continuously log errors that indicate the write failure. For more information, see [Disk-based shard allocation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 
 ## Default exporters [es-monitoring-default-exporter] 
@@ -75,7 +75,7 @@ Before exporters can route monitoring data, they must set up certain {{es}} reso
 
 The templates are ordinary {{es}} templates that control the default settings and mappings for the monitoring indices.
 
-By default, monitoring indices are created daily (for example, `.monitoring-es-6-2017.08.26`). You can change the default date suffix for monitoring indices with the `index.name.time_format` setting. You can use this setting to control how frequently monitoring indices are created by a specific `http` exporter. You cannot use this setting with `local` exporters. For more information, see [HTTP exporter settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#http-exporter-settings).
+By default, monitoring indices are created daily (for example, `.monitoring-es-6-2017.08.26`). You can change the default date suffix for monitoring indices with the `index.name.time_format` setting. You can use this setting to control how frequently monitoring indices are created by a specific `http` exporter. You cannot use this setting with `local` exporters. For more information, see [HTTP exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings).
 
 ::::{warning} 
 Some users create their own templates that match *all* index patterns, which therefore impact the monitoring indices that get created. It is critical that you do not disable `_source` storage for the monitoring indices. If you do, {{kib}} {{monitor-features}} do not work and you cannot visualize monitoring data for your cluster.

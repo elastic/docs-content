@@ -10,7 +10,7 @@ Elasticsearch autoscaling requires a valid Enterprise license or Enterprise tria
 ::::
 
 
-ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html) and machine learning nodes.
+ECK can leverage the [autoscaling API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-autoscaling) introduced in Elasticsearch 7.11 to adjust automatically the number of Pods and the allocated resources in a tier. Currently, autoscaling is supported for Elasticsearch [data tiers](/manage-data/lifecycle/data-tiers.md) and machine learning nodes.
 
 
 ## Enable autoscaling [k8s-enable]
@@ -159,7 +159,7 @@ spec:
           max: 512Gi
 ```
 
-You can find [a complete example in the ECK GitHub repository](https://github.com/elastic/cloud-on-k8s/blob/2.16/config/recipes/autoscaling/elasticsearch.yaml) which will also show you how to fine-tune the [autoscaling deciders](https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-deciders.html).
+You can find [a complete example in the ECK GitHub repository](https://github.com/elastic/cloud-on-k8s/blob/2.16/config/recipes/autoscaling/elasticsearch.yaml) which will also show you how to fine-tune the [autoscaling deciders](/deploy-manage/autoscaling/autoscaling-deciders.md).
 
 
 ### Change the polling interval [k8s-autoscaling-polling-interval]

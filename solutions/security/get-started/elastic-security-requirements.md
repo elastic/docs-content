@@ -24,9 +24,9 @@ The [Support Matrix](https://www.elastic.co/support/matrix) page lists officiall
 
 ## Node role requirements [node-role-requirements] 
 
-To use Elastic Security, at least one node in your Elasticsearch cluster must have the [`transform` role](https://www.elastic.co/guide/en/elasticsearch/reference/current/transform-settings.html). Nodes are automatically given this role when they’re created, so changes are not required if default role settings remain the same. This applies to on-premise and cloud deployments.
+To use Elastic Security, at least one node in your Elasticsearch cluster must have the [`transform` role](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/transforms-settings.md). Nodes are automatically given this role when they’re created, so changes are not required if default role settings remain the same. This applies to on-premise and cloud deployments.
 
-Changes might be required if your nodes have customized roles. When updating node roles, nodes are only assigned the roles you specify, and default roles are removed. If you need to reassign the `transform` role to a node, [create a dedicated transform node](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#transform-node).
+Changes might be required if your nodes have customized roles. When updating node roles, nodes are only assigned the roles you specify, and default roles are removed. If you need to reassign the `transform` role to a node, [create a dedicated transform node](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#transform-node).
 
 
 ## Space and index privileges [_space_and_index_privileges] 
@@ -77,7 +77,7 @@ All features are available as part of the free Basic plan **except**:
 The [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current) defines a common set of fields to be used for storing event data in Elasticsearch. ECS helps users normalize their event data to better analyze, visualize, and correlate the data represented in their events. {{elastic-sec}} can ingest and normalize events from any ECS-compliant data source.
 
 ::::{important} 
-{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [*Elastic Security ECS field reference*](https://www.elastic.co/guide/en/security/current/siem-field-reference.html) lists ECS fields used in {{elastic-sec}}.
+{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [*Elastic Security ECS field reference*](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
 ::::
 
 

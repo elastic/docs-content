@@ -1,6 +1,6 @@
 # Setting passwords for native and built-in users [change-passwords-native-users]
 
-After you implement security, you might need or want to change passwords for different users. You can use the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) tool or the [change passwords API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) to change passwords for native users and [built-in users](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md), such as the `elastic` or `kibana_system` users.
+After you implement security, you might need or want to change passwords for different users. You can use the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool or the [change passwords API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) to change passwords for native users and [built-in users](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md), such as the `elastic` or `kibana_system` users.
 
 For example, the following command changes the password for a user with the username `user1` to an auto-generated value, and prints the new password to the terminal:
 

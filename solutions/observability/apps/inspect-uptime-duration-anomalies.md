@@ -16,7 +16,7 @@ Create a {{ml}} job to detect anomalous monitor duration rates automatically.
 2. In the **Monitor duration** panel, click **Enable anomaly detection**.
 
     ::::{note}
-    If {{anomaly-detect}} is already enabled, click **Anomaly detection** and select to view duration anomalies directly in the [{{ml-app}} app](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results), enable an [anomaly rule](../incident-management/create-an-uptime-duration-anomaly-rule.md), or disable the {{anomaly-detect}}.
+    If {{anomaly-detect}} is already enabled, click **Anomaly detection** and select to view duration anomalies directly in the [{{ml-app}} app](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-results), enable an [anomaly rule](../incident-management/create-an-uptime-duration-anomaly-rule.md), or disable the {{anomaly-detect}}.
 
     ::::
 

@@ -106,15 +106,15 @@ Click **Create APM Agent key** and copy the Base64 encoded API key. You will nee
 
 You can now apply your newly created API keys in the configuration of each of your APM agents. See the relevant agent documentation for additional information:
 
-* **Android**: [`apiKey`](https://www.elastic.co/guide/en/apm/agent/android/current/configuration.html)
-* **Go agent**: [`ELASTIC_APM_API_KEY`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-api-key)
-* **.NET agent**: [`ApiKey`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-reporter.html#config-api-key)
-* **iOS**: [`withApiKey`](https://www.elastic.co/guide/en/apm/agent/swift/current/configuration.html#withApiKey)
-* **Java agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/java/current/config-reporter.html#config-api-key)
-* **Node.js agent**: [`apiKey`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#api-key)
-* **PHP agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-api-key)
-* **Python agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-api-key)
-* **Ruby agent**: [`api_key`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-api-key)
+* **Android**: [`apiKey`](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/configuration.md)
+* **Go agent**: [`ELASTIC_APM_API_KEY`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-api-key)
+* **.NET agent**: [`ApiKey`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-reporter.md#config-api-key)
+* **iOS**: [`withApiKey`](asciidocalypse://docs/apm-agent-ios/docs/reference/ingestion-tools/apm-agent-swift/configuration.md#withApiKey)
+* **Java agent**: [`api_key`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-reporter.md#config-api-key)
+* **Node.js agent**: [`apiKey`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#api-key)
+* **PHP agent**: [`api_key`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-api-key)
+* **Python agent**: [`api_key`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-api-key)
+* **Ruby agent**: [`api_key`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-api-key)
 
 
 ## Alternate API key creation methods [apm-configure-api-key-alternative]
