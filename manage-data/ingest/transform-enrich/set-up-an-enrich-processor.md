@@ -40,7 +40,7 @@ To begin, add documents to one or more source indices. These documents should co
 
 You can manage source indices just like regular {{es}} indices using the [document](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document) and [index](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices) APIs.
 
-You also can set up [{{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md), such as a [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md), to automatically send and index documents to your source indices. See [Getting started with {{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html).
+You also can set up [{{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md), such as a [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md), to automatically send and index documents to your source indices. See [Getting started with {{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md).
 
 
 ## Create an enrich policy [create-enrich-policy]
@@ -79,7 +79,7 @@ Once you have source indices, an enrich policy, and the related enrich index in 
 :alt: enrich processor
 :::
 
-Define an [enrich processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) and add it to an ingest pipeline using the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline).
+Define an [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) and add it to an ingest pipeline using the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline).
 
 When defining the enrich processor, you must include at least the following:
 
@@ -89,7 +89,7 @@ When defining the enrich processor, you must include at least the following:
 
 You also can use the `max_matches` option to set the number of enrich documents an incoming document can match. If set to the default of `1`, data is added to an incoming document’s target field as a JSON object. Otherwise, the data is added as an array.
 
-See [Enrich](https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-processor.html) for a full list of configuration options.
+See [Enrich](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) for a full list of configuration options.
 
 You also can add other [processors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/index.md) to your ingest pipeline.
 

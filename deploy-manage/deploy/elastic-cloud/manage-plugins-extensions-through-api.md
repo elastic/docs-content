@@ -303,7 +303,7 @@ Updating the name of an existing extension does not change its `EXTENSION_ID`.
 
 ## Update the version of an existing plugin [ec-extension-guide-update-version-plugin] 
 
-For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file.  Check [Help for plugin authors](https://www.elastic.co/guide/en/elasticsearch/plugins/current/plugin-authors.html#plugin-authors) for details. If you change the version, the associated plugin file *must* also be updated accordingly.
+For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file.  Check [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/create-elasticsearch-plugins/index.md#plugin-authors) for details. If you change the version, the associated plugin file *must* also be updated accordingly.
 
 
 ## Update the file associated to an existing extension [ec-extension-guide-update-file] 

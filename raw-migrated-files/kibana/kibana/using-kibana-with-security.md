@@ -25,7 +25,7 @@ Set an encryption key so that sessions are not invalidated. You can optionally c
     xpack.security.encryptionKey: "something_at_least_32_characters"
     ```
 
-    {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#xpack-reporting-encryptionKey) and [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#xpack-encryptedSavedObjects-encryptionKey) respectively.
+    {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#xpack-reporting-encryptionKey) and [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-encryptedSavedObjects-encryptionKey) respectively.
 
 2. Optional: [Configure {{kib}}'s session expiration settings](../../../deploy-manage/security/kibana-session-management.md).
 3. Optional: [Configure {{kib}} to authenticate to {{es}} with a client certificate](../../../deploy-manage/security/secure-cluster-communications.md).

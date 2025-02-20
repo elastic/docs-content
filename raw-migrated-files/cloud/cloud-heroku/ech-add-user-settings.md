@@ -43,13 +43,13 @@ $$$http-cors-settings$$$`http.cors.*`
 
 
 `http.compression`
-:   Support for [HTTP compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) when possible (with Accept-Encoding). Defaults to `true`.
+:   Support for [HTTP compression](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) when possible (with Accept-Encoding). Defaults to `true`.
 
 `transport.compress`
-:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for node-to-node traffic.
+:   Configures [transport compression](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) for node-to-node traffic.
 
 `transport.compression_scheme`
-:   Configures [transport compression](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for node-to-node traffic.
+:   Configures [transport compression](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) for node-to-node traffic.
 
 `repositories.url.allowed_urls`
 :   Enables explicit allowing of [read-only URL repositories](../../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md).
@@ -97,16 +97,16 @@ The following circuit breaker settings are supported:
 :   Configures [the parent circuit breaker settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#parent-circuit-breaker).
 
 `indices.breaker.fielddata.limit`
-:   Configures [the limit for the fielddata breaker](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#fielddata-circuit-breaker).
+:   Configures [the limit for the fielddata breaker](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker).
 
 `indices.breaker.fielddata.overhead`
-:   Configures [a constant that all field data estimations are multiplied with to determine a final estimation](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#fielddata-circuit-breaker).
+:   Configures [a constant that all field data estimations are multiplied with to determine a final estimation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#fielddata-circuit-breaker).
 
 `indices.breaker.request.limit`
-:   Configures [the limit for the request breaker](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#request-circuit-breaker).
+:   Configures [the limit for the request breaker](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#request-circuit-breaker).
 
 `indices.breaker.request.overhead`
-:   Configures [a constant that all request estimations are multiplied by to determine a final estimation](https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html#request-circuit-breaker).
+:   Configures [a constant that all request estimations are multiplied by to determine a final estimation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#request-circuit-breaker).
 
 
 ### Indexing pressure settings [echindexing_pressure_settings]
@@ -158,10 +158,10 @@ The following indexing pressure settings are supported:
 
 
 $$$xpack-monitoring-history-duration$$$`xpack.monitoring.history.duration`
-:   Sets the [retention duration](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#monitoring-collection-settings) beyond which the indices created by a monitoring exporter will be automatically deleted.
+:   Sets the [retention duration](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings) beyond which the indices created by a monitoring exporter will be automatically deleted.
 
 `xpack.watcher.history.cleaner_service.enabled`
-:   Controls [whether old watcher indices are automatically deleted](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#general-notification-settings).
+:   Controls [whether old watcher indices are automatically deleted](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#general-notification-settings).
 
 `xpack.http.ssl.cipher_suites`
 :   Controls the list of supported cipher suites for all outgoing TLS connections.
@@ -200,13 +200,13 @@ The following disk-based allocation settings are supported:
 :   Enable or disable [disk allocation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) decider and defaults to `true`.
 
 `cluster.routing.allocation.disk.watermark.low`
-:   Configures [disk-based shard allocation’s low watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
+:   Configures [disk-based shard allocation’s low watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 `cluster.routing.allocation.disk.watermark.high`
-:   Configures [disk-based shard allocation’s high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
+:   Configures [disk-based shard allocation’s high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 `cluster.routing.allocation.disk.watermark.flood_stage`
-:   Configures [disk-based shard allocation’s flood_stage](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation).
+:   Configures [disk-based shard allocation’s flood_stage](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 ::::{tip}
 Remember to update user settings for alerts when performing a major version upgrade.

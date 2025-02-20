@@ -89,7 +89,7 @@ Navigate to the **Discover** or **Stream** pages to check if you’ve misconfigu
 :alt: Log error in Stream page showing failed SAML authentication
 :::
 
-You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](https://www.elastic.co/guide/en/cloud/current/ec-api-console.html):
+You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md):
 
 :::{image} ../../../images/cloud-ec-ce-monitoring-api-console.png
 :alt: Elasticsearch API console showing a spurious request that fails
@@ -115,7 +115,7 @@ On top of these default alerts that write to indices you can investigate, you mi
     3. Select **Save**.
 
 2. Go to **Stack Monitoring** and select **Enter setup mode**.
-3. Edit an alert rule, such as [CPU usage](https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html#kibana-alerts-cpu-threshold):
+3. Edit an alert rule, such as [CPU usage](/deploy-manage/monitor/monitoring-data/kibana-alerts.md#kibana-alerts-cpu-threshold):
 
     1. Select one of the alert rule fields and select **CPU Usage**.
     2. Choose **Edit rule** and scroll down to the bottom of the screen to select **Slack**.
@@ -146,7 +146,7 @@ When issues come up that you need to troubleshoot, you’ll frequently start wit
 You can run this query and many others from the API consoles available via:
 
 * **Kibana** > **Dev Tools**. Check [Run Elasticsearch API requests](/explore-analyze/query-filter/tools/console.md).
-* **Elastic Cloud** > **Deployment** > **Elasticsearch** > **API Console**. Check [Access the Elasticsearch API console](https://www.elastic.co/guide/en/cloud/current/ec-api-console.html).
+* **Elastic Cloud** > **Deployment** > **Elasticsearch** > **API Console**. Check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md).
 
 You can also learn more about the queries you should run for your deployment by reading our blog [Managing and Troubleshooting Elasticsearch Memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 

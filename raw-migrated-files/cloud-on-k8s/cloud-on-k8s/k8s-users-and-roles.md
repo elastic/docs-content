@@ -94,8 +94,8 @@ If you specify the password for the `elastic` user through such a basic authenti
 
 The second option, a file realm secret, is composed of 2 entries. You can provide either one entry or both entries in each secret:
 
-* `users`: content of the `users` file. It specifies user names and password hashes, as described in the [file realm documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html).
-* `users_roles`: content of the `users_roles` file. It associates each role to a list of users, as described in the [file realm documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/file-realm.html).
+* `users`: content of the `users` file. It specifies user names and password hashes, as described in the [file realm documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).
+* `users_roles`: content of the `users_roles` file. It associates each role to a list of users, as described in the [file realm documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).
 
 If you specify multiple users with the same name in more than one secret, the last one takes precedence. If you specify multiple roles with the same name in more than one secret, a single entry per role is derived from the concatenation of its corresponding users from all secrets.
 

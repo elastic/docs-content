@@ -72,7 +72,7 @@ Finally, you must create a {{ls}} configuration pipeline that listens for incomi
     ```
 
     1. Enables indexing into {{es}} data streams.
-    2. This example assumes you’re sending data to {{ecloud}}. If you’re using a self-hosted version of {{es}}, use `hosts` instead. See [{{es}} output plugin](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html) for more information.
+    2. This example assumes you’re sending data to {{ecloud}}. If you’re using a self-hosted version of {{es}}, use `hosts` instead. See [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md) for more information.
 
 
 Here’s what your basic {{ls}} configuration file will look like when we put everything together:
@@ -326,12 +326,12 @@ To use SSL mutual authentication:
 
         For more information about these configuration options, see [SSL/TLS output settings](ssltls-output-settings.md).
 
-3. Configure {{ls}} to use SSL. In the {{ls}} config file, specify the following settings for the [{{beats}} input plugin for {{ls}}](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-beats.html):
+3. Configure {{ls}} to use SSL. In the {{ls}} config file, specify the following settings for the [{{beats}} input plugin for {{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md):
 
     * `ssl`: When set to true, enables {{ls}} to use SSL/TLS.
     * `ssl_certificate_authorities`: Configures {{ls}} to trust any certificates signed by the specified CA.
     * `ssl_certificate` and `ssl_key`: Specify the certificate and key that {{ls}} uses to authenticate with the client.
-    * `ssl_verify_mode`: Specifies whether the {{ls}} server verifies the client certificate against the CA. You need to specify either `peer` or `force_peer` to make the server ask for the certificate and validate it. If you specify `force_peer`, and APM Server doesn’t provide a certificate, the {{ls}} connection will be closed. If you choose not to use [`certutil`](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html), the certificates that you obtain must allow for both `clientAuth` and `serverAuth` if the extended key usage extension is present.
+    * `ssl_verify_mode`: Specifies whether the {{ls}} server verifies the client certificate against the CA. You need to specify either `peer` or `force_peer` to make the server ask for the certificate and validate it. If you specify `force_peer`, and APM Server doesn’t provide a certificate, the {{ls}} connection will be closed. If you choose not to use [`certutil`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md), the certificates that you obtain must allow for both `clientAuth` and `serverAuth` if the extended key usage extension is present.
 
         For example:
 
@@ -348,7 +348,7 @@ To use SSL mutual authentication:
         }
         ```
 
-        For more information about these options, see the [documentation for the {{beats}} input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-beats.html).
+        For more information about these options, see the [documentation for the {{beats}} input plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md).
 
 
 

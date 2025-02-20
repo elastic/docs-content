@@ -162,7 +162,7 @@ The following variables are specific to the {{es}} query rule:
     1. The `fields` parameter here is used to access the `day_of_week` runtime field.
 
 
-    As the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
+    As the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
 
     ```handlebars
     {{#context.hits}}

@@ -45,7 +45,7 @@ To switch to using node roles:
 
 ### Assign data nodes to a data tier [assign-data-tier] 
 
-Configure the appropriate roles for each data node to assign it to one or more data tiers: `data_hot`, `data_content`, `data_warm`, `data_cold`, or `data_frozen`. A node can also have other [roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html). By default, new nodes are configured with all roles.
+Configure the appropriate roles for each data node to assign it to one or more data tiers: `data_hot`, `data_content`, `data_warm`, `data_cold`, or `data_frozen`. A node can also have other [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md). By default, new nodes are configured with all roles.
 
 When you add a data tier to an {{ess}} deployment, one or more nodes are automatically configured with the corresponding role. To explicitly change the role of a node in an {{ess}} deployment, use the [Update deployment API](../../../deploy-manage/deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md#ec_update_a_deployment). Replace the node’s `node_type` configuration with the appropriate `node_roles`. For example, the following configuration adds the node to the hot and content tiers, and enables it to act as an ingest node, remote, and transform node.
 
@@ -95,7 +95,7 @@ To completely avoid the issues that raise when mixing the tier preference and cu
 
 ### Set a tier preference for existing indices [set-tier-preference] 
 
-{{ilm-init}} automatically transitions managed indices through the available data tiers by automatically injecting a [migrate action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-migrate.html) into each phase.
+{{ilm-init}} automatically transitions managed indices through the available data tiers by automatically injecting a [migrate action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-migrate.md) into each phase.
 
 To enable {{ilm-init}} to move an *existing* managed index through the data tiers, update the index settings to:
 

@@ -12,9 +12,9 @@ Many of these recommendations help improve search speed. With approximate kNN, t
 
 ## Reduce vector memory foot-print [_reduce_vector_memory_foot_print] 
 
-The default [`element_type`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-element-type) is `float`. But this can be automatically quantized during index time through [`quantization`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-quantization). Quantization will reduce the required memory by 4x, 8x, or as much as 32x, but it will also reduce the precision of the vectors and increase disk usage for the field (by up to 25%, 12.5%, or 3.125%, respectively). Increased disk usage is a result of {{es}} storing both the quantized and the unquantized vectors. For example, when int8 quantizing 40GB of floating point vectors an extra 10GB of data will be stored for the quantized vectors. The total disk usage amounts to 50GB, but the memory usage for fast search will be reduced to 10GB.
+The default [`element_type`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-element-type) is `float`. But this can be automatically quantized during index time through [`quantization`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization). Quantization will reduce the required memory by 4x, 8x, or as much as 32x, but it will also reduce the precision of the vectors and increase disk usage for the field (by up to 25%, 12.5%, or 3.125%, respectively). Increased disk usage is a result of {{es}} storing both the quantized and the unquantized vectors. For example, when int8 quantizing 40GB of floating point vectors an extra 10GB of data will be stored for the quantized vectors. The total disk usage amounts to 50GB, but the memory usage for fast search will be reduced to 10GB.
 
-For `float` vectors with `dim` greater than or equal to `384`, using a [`quantized`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-quantization) index is highly recommended.
+For `float` vectors with `dim` greater than or equal to `384`, using a [`quantized`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) index is highly recommended.
 
 
 ## Reduce vector dimensionality [_reduce_vector_dimensionality] 
@@ -31,9 +31,9 @@ The speed of kNN search scales linearly with the number of vector dimensions, be
 ::::
 
 
-You can disable storing `dense_vector` fields in the `_source` through the [`excludes`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#include-exclude) mapping parameter. This prevents loading and returning large vectors during search, and also cuts down on the index size. Vectors that have been omitted from `_source` can still be used in kNN search, since it relies on separate data structures to perform the search. Before using the [`excludes`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#include-exclude) parameter, make sure to review the downsides of omitting fields from `_source`.
+You can disable storing `dense_vector` fields in the `_source` through the [`excludes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#include-exclude) mapping parameter. This prevents loading and returning large vectors during search, and also cuts down on the index size. Vectors that have been omitted from `_source` can still be used in kNN search, since it relies on separate data structures to perform the search. Before using the [`excludes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#include-exclude) parameter, make sure to review the downsides of omitting fields from `_source`.
 
-Another option is to use  [synthetic `_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source).
+Another option is to use  [synthetic `_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
 
 ## Ensure data nodes have enough memory [_ensure_data_nodes_have_enough_memory] 
@@ -69,8 +69,8 @@ The following file extensions are used for the approximate kNN search: Each exte
 
 * `vex` for the HNSW graph
 * `vec` for all non-quantized vector values. This includes all element types: `float`, `byte`, and `bit`.
-* `veq` for quantized vectors indexed with [`quantization`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-quantization): `int4` or `int8`
-* `veb` for binary vectors indexed with [`quantization`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-quantization): `bbq`
+* `veq` for quantized vectors indexed with [`quantization`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `int4` or `int8`
+* `veb` for binary vectors indexed with [`quantization`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization): `bbq`
 * `vem`, `vemf`, `vemq`, and `vemb` for metadata, usually small and not a concern for preloading
 
 Generally, if you are using a quantized index, you should only preload the relevant quantized values and the HNSW graph. Preloading the raw vectors is not necessary and might be counterproductive.

@@ -34,7 +34,7 @@ For example: An instance with 4 GB of RAM, can at most accumulate four hours wor
 
 If you observe declining performance on a smaller instance over time, you might have depleted your vCPU credits. In this case, increase the size of your cluster to handle the workload with consistent performance.
 
-For more information, check [Elasticsearch Service default provider instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations).
+For more information, check [Elasticsearch Service default provider instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations).
 
 
 ## Where to check vCPU credits status? [ec_where_to_check_vcpu_credits_status]

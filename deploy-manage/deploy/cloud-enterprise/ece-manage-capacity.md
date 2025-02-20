@@ -92,11 +92,11 @@ The allocated `processors` setting originates from Elasticsearch and is responsi
 
 We rely on Elasticsearch and the `-XX:ActiveProcessorCount` JVM setting to automatically detect the allocated `processors`.
 
-In earlier versions of ECE and Elasticsearch, the [Elasticsearch processors](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html#node.processors) setting was used to configure the allocated `processors` according to the following formula:
+In earlier versions of ECE and Elasticsearch, the [Elasticsearch processors](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors) setting was used to configure the allocated `processors` according to the following formula:
 
 `Math.min(16,Math.max(2,(16*instanceCapacity*1.0/1024/64).toInt))`
 
-The following table gives an overview of the allocated `processors` that are used to calculate the Elasticsearch [thread pools](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html) based on the preceding formula:
+The following table gives an overview of the allocated `processors` that are used to calculate the Elasticsearch [thread pools](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md) based on the preceding formula:
 
 | instance size | vCPU |
 | --- | --- |

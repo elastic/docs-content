@@ -185,7 +185,7 @@ Depending on the type of model you have deployed, you can query rank features wi
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-ELSER text embeddings can be queried using a [sparse vector query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html). The sparse vector query enables you to query a [sparse vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) field, by providing the inference ID associated with the NLP model you want to use, and the query text:
+ELSER text embeddings can be queried using a [sparse vector query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-sparse-vector-query.md). The sparse vector query enables you to query a [sparse vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) field, by providing the inference ID associated with the NLP model you want to use, and the query text:
 
 ```console
 GET my-index/_search
@@ -233,7 +233,7 @@ Combining semantic and lexical search into one hybrid search request using [reci
 :::::::{tab-set}
 
 ::::::{tab-item} ELSER
-Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) to rank the top documents.
+Hybrid search between a semantic and lexical query can be achieved by using an [`rrf` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) as part of your search request. Provide a `sparse_vector` query and a full-text query as [`standard` retrievers](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever) for the `rrf` retriever. The `rrf` retriever uses [reciprocal rank fusion](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) to rank the top documents.
 
 ```console
 GET my-index/_search
@@ -271,7 +271,7 @@ GET my-index/_search
 ::::::{tab-item} Dense vector models
 Hybrid search between a semantic and lexical query can be achieved by providing:
 
-* an `rrf` retriever to rank top documents using [reciprocal rank fusion](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html)
+* an `rrf` retriever to rank top documents using [reciprocal rank fusion](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md)
 * a `standard` retriever as a child retriever with `query` clause for the full-text query
 * a `knn` retriever as a child retriever with the kNN search that queries the dense vector field
 

@@ -228,12 +228,12 @@ The example index template above sets the following component templates:
     * Sets the [`ignore_malformed`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-malformed.md) flag to `true`. When ingesting a large batch of log data, a single malformed field like an IP address can cause the entire batch to fail. When set to true, malformed fields with a mapping type that supports this flag are still processed.
 
 * `logs@custom`: a predefined component template that is not installed by default. Use this name to install a custom component template to override or extend any of the default mappings or settings.
-* `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html).
+* `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md).
 
 
 #### Create a data stream [logs-stream-create-data-stream]
 
-Create your data stream using the [data stream naming scheme](https://www.elastic.co/guide/en/fleet/current/data-streams.html#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
+Create your data stream using the [data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme). Name your data stream to match the name of your ingest pipeline, `logs-example-default` in this case. Post the example log to your data stream with this command:
 
 ```console
 POST logs-example-default/_doc
@@ -283,7 +283,7 @@ You can now use the `@timestamp` field to sort your logs by the date and time th
 Check the following common issues and solutions with timestamps:
 
 * **Timestamp failure**: If your data has inconsistent date formats, set `ignore_failure` to `true` for your date processor. This processes logs with correctly formatted dates and ignores those with issues.
-* **Incorrect timezone**: Set your timezone using the `timezone` option on the [date processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/date-processor.html).
+* **Incorrect timezone**: Set your timezone using the `timezone` option on the [date processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/date-processor.md).
 * **Incorrect timestamp format**: Your timestamp can be a Java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N. For more information on timestamp formats, refer to the [mapping date format](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md).
 
 
@@ -455,7 +455,7 @@ The results should show only the high-severity logs:
 
 Extracting the `host.ip` field lets you filter logs by host IP addresses allowing you to focus on specific hosts that you’re having issues with or find disparities between hosts.
 
-The `host.ip` field is part of the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
+The `host.ip` field is part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
 
 This section shows you how to extract the `host.ip` field from the following example logs and query based on the extracted fields:
 

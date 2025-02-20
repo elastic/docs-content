@@ -10,7 +10,7 @@ mapped_pages:
 
 Search functions should be used when performing full-text search, namely when the `MATCH` or `QUERY` predicates are being used. Outside a, so-called, search context, these functions will return default values such as `0` or `NULL`.
 
-Elasticsearch SQL optimizes all queries executed against {{es}} depending on the scoring needs. Using [`track_scores`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/sort-search-results.md#_track_scores) on the search request or [`_doc` sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html) that disables scores calculation, Elasticsearch SQL instructs {{es}} not to compute scores when these are not needed. For example, every time a `SCORE()` function is encountered in the SQL query, the scores are computed.
+Elasticsearch SQL optimizes all queries executed against {{es}} depending on the scoring needs. Using [`track_scores`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/sort-search-results.md#_track_scores) on the search request or [`_doc` sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/sort-search-results.md) that disables scores calculation, Elasticsearch SQL instructs {{es}} not to compute scores when these are not needed. For example, every time a `SCORE()` function is encountered in the SQL query, the scores are computed.
 
 ## `MATCH` [sql-functions-search-match]
 
@@ -57,7 +57,7 @@ Frank Herbert  |God Emperor of Dune|7.0029488
 ```
 
 ::::{note} 
-The `multi_match` query in {{es}} has the option of [per-field boosting](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) that gives preferential weight (in terms of scoring) to fields being searched in, using the `^` character. In the example above, the `name` field has a greater weight in the final score than the `author` field when searching for `frank dune` text in both of them.
+The `multi_match` query in {{es}} has the option of [per-field boosting](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-multi-match-query.md) that gives preferential weight (in terms of scoring) to fields being searched in, using the `^` character. In the example above, the `name` field has a greater weight in the final score than the `author` field when searching for `frank dune` text in both of them.
 ::::
 
 

@@ -24,12 +24,12 @@ PUT index
 }
 ```
 
-[`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) fields store normalization factors in the index to facilitate document scoring. If you only need matching capabilities on a `text` field but do not care about the produced scores, you can use the [`match_only_text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#match-only-text-field-type) type instead. This field type saves significant space by dropping scoring and positional information.
+[`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) fields store normalization factors in the index to facilitate document scoring. If you only need matching capabilities on a `text` field but do not care about the produced scores, you can use the [`match_only_text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#match-only-text-field-type) type instead. This field type saves significant space by dropping scoring and positional information.
 
 
 ## Don’t use default dynamic string mappings [default-dynamic-string-mapping]
 
-The default [dynamic string mappings](../../../manage-data/data-store/mapping/dynamic-mapping.md) will index string fields both as [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) and [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md). This is wasteful if you only need one of them. Typically an `id` field will only need to be indexed as a `keyword` while a `body` field will only need to be indexed as a `text` field.
+The default [dynamic string mappings](../../../manage-data/data-store/mapping/dynamic-mapping.md) will index string fields both as [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) and [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md). This is wasteful if you only need one of them. Typically an `id` field will only need to be indexed as a `keyword` while a `body` field will only need to be indexed as a `text` field.
 
 This can be disabled by either configuring explicit mappings on string fields or setting up dynamic templates that will map string fields as either `text` or `keyword`.
 

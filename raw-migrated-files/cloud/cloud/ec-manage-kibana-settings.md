@@ -64,7 +64,7 @@ If a setting is not supported by Elasticsearch Service, you will get an error me
 :   Enable brotli compression format for browser-server communications. Default: false. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
 
 `xpack.fleet.enableExperimental`
-:   Allow to configure experimental feature for Fleet. To learn more, check [Fleet settings in Kibana](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html).
+:   Allow to configure experimental feature for Fleet. To learn more, check [Fleet settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
 
 
 ### Version 8.4.0+ [ec_version_8_4_0]
@@ -564,10 +564,10 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 :   Set to `true` to enable logging event log documents from alerting to the Kibana log, in addition to being indexed into the event log index. Default: `false`.
 
 `xpack.security.session.idleTimeout`
-:   Set the session duration. The format is a string of `count` and `unit`, where unit is one of `ms`,`s`,`m`,`h`,`d`,`w`,`M`,`Y`. For example, `70ms`, `5s`, `3d`, `1Y`. To learn more, check [Security settings in Kibana](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html).
+:   Set the session duration. The format is a string of `count` and `unit`, where unit is one of `ms`,`s`,`m`,`h`,`d`,`w`,`M`,`Y`. For example, `70ms`, `5s`, `3d`, `1Y`. To learn more, check [Security settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md).
 
 `xpack.security.session.lifespan`
-:   Sets the maximum duration, also known as "absolute timeout". After this duration, the session will expire even if it is not idle. To learn more, check [Security settings in Kibana](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html).
+:   Sets the maximum duration, also known as "absolute timeout". After this duration, the session will expire even if it is not idle. To learn more, check [Security settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md).
 
 `xpack.maps.showMapVisualizationTypes`
 :   Set to `true` if you want to create new region map visualizations.
@@ -692,7 +692,7 @@ Each method has its own unique limitations which are important to understand.
 
 
 `xpack.reporting.csv.scroll.duration`
-:   Amount of [time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units) allowed before {{kib}} cleans the scroll context during a CSV export. Valid option is either `auto` or [time](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units), Defaults to `30s`.
+:   Amount of [time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units) allowed before {{kib}} cleans the scroll context during a CSV export. Valid option is either `auto` or [time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units), Defaults to `30s`.
 
 ::::{note}
 Support for the The option `auto` was included here, when the config value is set to `auto` the scroll context will be preserved for as long as is possible, before the report task is terminated due to the limits of `xpack.reporting.queue.timeout`.
@@ -757,7 +757,7 @@ Support for the The option `auto` was included here, when the config value is se
 Defaults to `true`.
 
 `xpack.reporting.csv.scroll.duration`
-:   Amount of [time](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units) allowed before {{kib}} cleans the scroll context during a CSV export.
+:   Amount of [time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units) allowed before {{kib}} cleans the scroll context during a CSV export.
 
 Defaults to `30s` (30 seconds).
 

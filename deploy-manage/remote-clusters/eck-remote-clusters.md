@@ -20,7 +20,7 @@ To create a remote cluster connection to another Elasticsearch cluster deployed 
 
 ### Security Models [k8s_security_models]
 
-ECK supports two different security models: the API key based security model, and the certificate security model. These two security models are described in the [Remote clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#remote-clusters-security-models) section of the {{es}} documentation.
+ECK supports two different security models: the API key based security model, and the certificate security model. These two security models are described in the [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#remote-clusters-security-models) section of the {{es}} documentation.
 
 
 ### Using the API key security model [k8s_using_the_api_key_security_model]
@@ -77,7 +77,7 @@ spec:
   version: 8.16.1
 ```
 
-1. This requires the sample data: [/explore-analyze/index.md#gs-get-data-into-kibana](https://www.elastic.co/guide/en/kibana/current/get-started.html#gs-get-data-into-kibana)
+1. This requires the sample data: [/explore-analyze/index.md#gs-get-data-into-kibana](/explore-analyze/index.md#gs-get-data-into-kibana)
 
 
 You can find a complete example in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/recipes/remoteclusters).

@@ -91,7 +91,7 @@ Index sorting enables you to store documents on disk in a specific order which c
 The [`_source` field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) contains the original JSON document body that was passed at index time. The `_source` field itself is not indexed (and thus is not searchable), but it is still stored in the index and incurs a storage overhead. Consider disabling `_source` to save storage space if you have a large destination index. Disabling `_source` is only possible during index creation.
 
 ::::{note}
-When the `_source` field is disabled, a number of features are not supported. Consult [Disabling the `_source` field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#disable-source-field) to understand the consequences before disabling it.
+When the `_source` field is disabled, a number of features are not supported. Consult [Disabling the `_source` field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#disable-source-field) to understand the consequences before disabling it.
 ::::
 
 ## Further reading [_further_reading]

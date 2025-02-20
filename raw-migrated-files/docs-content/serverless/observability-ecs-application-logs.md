@@ -211,7 +211,7 @@ processors:   <6>
 ::::::{tab-item} Docker
 1. Make sure your application logs to stdout/stderr.
 2. Follow the [Run {{filebeat}} on Docker](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-on-docker.md) guide.
-3. Enable [hints-based autodiscover](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover-hints.html).
+3. Enable [hints-based autodiscover](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuration-autodiscover-hints.md).
 4. Add these labels to your containers that log using ECS-compatible JSON. This will make sure the logs are parsed appropriately. In `docker-compose.yml`:
 
 ```yaml
@@ -288,7 +288,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -321,12 +321,12 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](https://www.elastic.co/guide/en/beats/filebeat/current/command-line-options.html)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](https://www.elastic.co/guide/en/beats/filebeat/current/running-with-systemd.html).
+Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-with-systemd.md).
 ::::::
 
 :::::::
@@ -350,7 +350,7 @@ To add the custom logs integration to your project:
 
     ![Screenshot of advanced options location](../../../images/serverless-custom-logs-advanced-options.png "")
 
-8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. See [processors](https://www.elastic.co/guide/en/beats/filebeat/current/filtering-and-enhancing-data.html) to learn more.
+8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. See [processors](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filtering-enhancing-data.md) to learn more.
 
     ```yaml
     processors:

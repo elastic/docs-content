@@ -18,7 +18,7 @@ You’ll need to have an existing Google Cloud account and have the appropriate 
 
 2. Save the service account key in JSON file format. You are going to use it later to configure your Elasticsearch deployment for snapshotting.
 
-For more detailed information on the JSON account service key, refer to [Using a Service Account](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html#repository-gcs-using-service-account).
+For more detailed information on the JSON account service key, refer to [Using a Service Account](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md#repository-gcs-using-service-account).
 
 
 ## Prepare a bucket [ec-prepare-gcs-bucket]

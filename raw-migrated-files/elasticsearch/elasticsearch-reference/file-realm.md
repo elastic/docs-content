@@ -64,7 +64,7 @@ A safer approach would be to apply the change on one of the nodes and have the f
     ::::
 
 
-    While it is possible to modify the `users` files directly using any standard text editor, we strongly recommend using the [*elasticsearch-users*](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool to apply the required changes.
+    While it is possible to modify the `users` files directly using any standard text editor, we strongly recommend using the [*elasticsearch-users*](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) tool to apply the required changes.
 
     ::::{important}
     As the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{es}} {{security-features}} do not deliver any mechanisms to guarantee this.
@@ -82,7 +82,7 @@ A safer approach would be to apply the change on one of the nodes and have the f
 
     Each row maps a role to a comma-separated list of all the users that are associated with that role.
 
-    You can use the [*elasticsearch-users*](https://www.elastic.co/guide/en/elasticsearch/reference/current/users-command.html) tool to update this file. You must ensure that the same changes are made on every node in the cluster.
+    You can use the [*elasticsearch-users*](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) tool to update this file. You must ensure that the same changes are made on every node in the cluster.
 
 5. (Optional) Change how often the `users` and `users_roles` files are checked.
 

@@ -67,7 +67,7 @@ For example, if you’re working with Apache log data, you can use the `%{{COMMO
 [30/Apr/2020:14:30:17 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"
 ```
 
-To extract the IP address from the `message` field, you can write a Painless script that incorporates the `%{{COMMONAPACHELOG}}` syntax. You can test this script using the [`ip` field context](https://www.elastic.co/guide/en/elasticsearch/painless/current/painless-execute-api.html#painless-runtime-ip) of the Painless execute API, but let’s use a runtime field instead.
+To extract the IP address from the `message` field, you can write a Painless script that incorporates the `%{{COMMONAPACHELOG}}` syntax. You can test this script using the [`ip` field context](asciidocalypse://docs/elasticsearch/docs/reference/scripting-languages/painless/painless-api-examples.md#painless-runtime-ip) of the Painless execute API, but let’s use a runtime field instead.
 
 Based on the sample document, index the `@timestamp` and `message` fields. To remain flexible, use `wildcard` as the field type for `message`:
 

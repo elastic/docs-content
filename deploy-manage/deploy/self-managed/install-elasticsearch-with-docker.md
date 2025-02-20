@@ -454,7 +454,7 @@ The image [exposes](https://docs.docker.com/engine/reference/builder/#/expose) T
 
 By default, {{es}} automatically sizes JVM heap based on a nodes’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and the total memory available to the node’s container. We recommend this default sizing for most production environments. If needed, you can override default sizing by manually setting JVM heap size.
 
-To manually set the heap size in production, bind mount a [JVM options](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) file under `/usr/share/elasticsearch/config/jvm.options.d` that includes your desired [heap size](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-heap-size) settings.
+To manually set the heap size in production, bind mount a [JVM options](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) file under `/usr/share/elasticsearch/config/jvm.options.d` that includes your desired [heap size](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size) settings.
 
 For testing, you can also manually set the heap size using the `ES_JAVA_OPTS` environment variable. For example, to use 1GB, use the following command.
 

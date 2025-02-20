@@ -139,20 +139,20 @@ The charts can also look odd in circumstances where there is very little data to
 | Detector functions | Function description | Supported |
 | --- | --- | --- |
 | count, high_count, low_count, non_zero_count, low_non_zero_count | [Count functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md) | yes |
-| count, high_count, low_count, non_zero_count, low_non_zero_count with summary_count_field_name that is not doc_count (model plot not enabled) | [Count functions](https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html) | yes |
-| non_zero_count with summary_count_field that is not doc_count using cardinality aggregation in datafeed config (model plot not enabled) | [Count functions](https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html) | yes |
-| distinct_count, high_distinct_count, low_distinct_count | [Count functions](https://www.elastic.co/guide/en/machine-learning/current/ml-count-functions.html) | yes |
+| count, high_count, low_count, non_zero_count, low_non_zero_count with summary_count_field_name that is not doc_count (model plot not enabled) | [Count functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md) | yes |
+| non_zero_count with summary_count_field that is not doc_count using cardinality aggregation in datafeed config (model plot not enabled) | [Count functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md) | yes |
+| distinct_count, high_distinct_count, low_distinct_count | [Count functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md) | yes |
 | mean, high_mean, low_mean | [Mean, high_mean, low_mean](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-mean) | yes |
-| min | [Min](https://www.elastic.co/guide/en/machine-learning/current/ml-metric-functions.html#ml-metric-min) | yes |
-| max | [Max](https://www.elastic.co/guide/en/machine-learning/current/ml-metric-functions.html#ml-metric-max) | yes |
-| metric | [Metric](https://www.elastic.co/guide/en/machine-learning/current/ml-metric-functions.html#ml-metric-metric) | yes |
-| median, high_median, low_median | [Median, high_median, low_median](https://www.elastic.co/guide/en/machine-learning/current/ml-metric-functions.html#ml-metric-median) | yes |
+| min | [Min](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-min) | yes |
+| max | [Max](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-max) | yes |
+| metric | [Metric](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-metric) | yes |
+| median, high_median, low_median | [Median, high_median, low_median](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-median) | yes |
 | sum, high_sum ,low_sum, non_null_sum, high_non_null_sum, low_non_null_sum | [Sum functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-sum-functions.md) | yes |
-| varp, high_varp, low_varp | [Varp, high_varp, low_varp](https://www.elastic.co/guide/en/machine-learning/current/ml-metric-functions.html#ml-metric-varp) | yes (only if model plot is enabled) |
+| varp, high_varp, low_varp | [Varp, high_varp, low_varp](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-metric-functions.md#ml-metric-varp) | yes (only if model plot is enabled) |
 | lat_long | [Lat_long](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-geo-functions.md#ml-lat-long) | no (but map is displayed in the Anomaly Explorer) |
 | info_content, high_info_content, low_info_content | [Info_content, High_info_content, Low_info_content](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-info-functions.md#ml-info-content) | yes (only if model plot is enabled) |
 | rare | [Rare](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-rare-functions.md#ml-rare) | yes |
-| freq_rare | [Freq_rare](https://www.elastic.co/guide/en/machine-learning/current/ml-rare-functions.html#ml-freq-rare) | no |
+| freq_rare | [Freq_rare](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-rare-functions.md#ml-freq-rare) | no |
 | time_of_day, time_of_week | [Time functions](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-time-functions.md) | no |
 
 ### Jobs created in {{kib}} must use {{dfeeds}} [_jobs_created_in_kib_must_use_dfeeds]
@@ -171,7 +171,7 @@ When the aggregation interval of the {{dfeed}} and the bucket span of the job do
 
 ### Calendars and filters are visible in all {{kib}} spaces [ml-space-limitations]
 
-[Spaces](../../../deploy-manage/manage-spaces.md) enable you to organize your {{anomaly-jobs}} in {{kib}} and to see only the jobs and other saved objects that belong to your space. However, this limited scope does not apply to [calendars](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-calendars) and [filters](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-run-jobs.html#ml-ad-rules); they are visible in all spaces.
+[Spaces](../../../deploy-manage/manage-spaces.md) enable you to organize your {{anomaly-jobs}} in {{kib}} and to see only the jobs and other saved objects that belong to your space. However, this limited scope does not apply to [calendars](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-calendars) and [filters](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-rules); they are visible in all spaces.
 
 ### Rollup indices are not supported in {{kib}} [ml-rollup-limitations]
 

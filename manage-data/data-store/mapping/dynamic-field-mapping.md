@@ -58,7 +58,7 @@ PUT my-index-000001/_doc/1
 GET my-index-000001/_mapping <1>
 ```
 
-1. The `create_date` field has been added as a [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) field with the [`format`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html):<br> `"yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"`.
+1. The `create_date` field has been added as a [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) field with the [`format`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md):<br> `"yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"`.
 
 
 ### Disabling date detection [_disabling_date_detection]
@@ -85,7 +85,7 @@ PUT my-index-000001/_doc/1 <1>
 
 ### Customizing detected date formats [_customizing_detected_date_formats]
 
-Alternatively, the `dynamic_date_formats` can be customized to support your own [date formats](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html):
+Alternatively, the `dynamic_date_formats` can be customized to support your own [date formats](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md):
 
 ```console
 PUT my-index-000001
@@ -206,7 +206,7 @@ PUT my-index-000001/_doc/1
 ```
 
 1. The `my_float` field is added as a [`float`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) field.
-2. The `my_integer` field is added as a [`long`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html) field.
+2. The `my_integer` field is added as a [`long`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) field.
 
 
 

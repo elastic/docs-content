@@ -54,7 +54,7 @@ Where applicable, use the following best practices as starting points for your s
 
 ### Delete indices, not documents [delete-indices-not-documents]
 
-Deleted documents aren’t immediately removed from {{es}}'s file system. Instead, {{es}} marks the document as deleted on each related shard. The marked document will continue to use resources until it’s removed during a periodic [segment merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html).
+Deleted documents aren’t immediately removed from {{es}}'s file system. Instead, {{es}} marks the document as deleted on each related shard. The marked document will continue to use resources until it’s removed during a periodic [segment merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge-scheduler-settings.md).
 
 When possible, delete entire indices instead. {{es}} can immediately remove deleted indices directly from the file system and free up resources.
 
@@ -82,7 +82,7 @@ There is no hard limit on the physical size of a shard, and each shard can in th
 
 You may be able to use larger shards depending on your network and use case, and smaller shards may be appropriate for certain use cases.
 
-If you use {{ilm-init}}, set the [rollover action](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html)'s `max_primary_shard_size` threshold to `50gb` to avoid shards larger than 50GB and `min_primary_shard_size` threshold to `10gb` to avoid shards smaller than 10GB.
+If you use {{ilm-init}}, set the [rollover action](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md)'s `max_primary_shard_size` threshold to `50gb` to avoid shards larger than 50GB and `min_primary_shard_size` threshold to `10gb` to avoid shards smaller than 10GB.
 
 To see the current size of your shards, use the [cat shards API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-shards).
 
@@ -273,7 +273,7 @@ DELETE my-index-000001
 
 ### Force merge during off-peak hours [force-merge-during-off-peak-hours]
 
-If you no longer write to an index, you can use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to [merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html) smaller segments into larger ones. This can reduce shard overhead and improve search speeds. However, force merges are resource-intensive. If possible, run the force merge during off-peak hours.
+If you no longer write to an index, you can use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to [merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge-scheduler-settings.md) smaller segments into larger ones. This can reduce shard overhead and improve search speeds. However, force merges are resource-intensive. If possible, run the force merge during off-peak hours.
 
 ```console
 POST my-index-000001/_forcemerge
@@ -311,7 +311,7 @@ Here’s how to resolve common shard-related errors.
 
 ### this action would add [x] total shards, but this cluster currently has [y]/[z] maximum shards open; [troubleshooting-max-shards-open]
 
-The [`cluster.max_shards_per_node`](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
+The [`cluster.max_shards_per_node`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-max-shards-per-node) cluster setting limits the maximum number of open shards for a cluster. This error indicates an action would exceed this limit.
 
 If you’re confident your changes won’t destabilize the cluster, you can temporarily increase the limit using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) and retry the action.
 

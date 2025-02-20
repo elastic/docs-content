@@ -98,7 +98,7 @@ If you’re using {{agent}}, do not deploy {{filebeat}} for log collection. Inst
 
 7. Configure the {{es}} module in {{filebeat}} on each node.
 
-    If the logs that you want to monitor aren’t in the default location, set the appropriate path variables in the `modules.d/elasticsearch.yml` file. See [Configure the {{es}} module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-elasticsearch.html#configuring-elasticsearch-module).
+    If the logs that you want to monitor aren’t in the default location, set the appropriate path variables in the `modules.d/elasticsearch.yml` file. See [Configure the {{es}} module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-elasticsearch.md#configuring-elasticsearch-module).
 
     ::::{important} 
     If there are JSON logs, configure the `var.paths` settings to point to them instead of the plain text logs.

@@ -38,7 +38,7 @@ Field values can be accessed from a script using [doc-values](#modules-scripting
 
 Scripts used in the [`function_score` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-function-score-query.md), in [script-based sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/sort-search-results.md), or in [aggregations](../query-filter/aggregations.md) have access to the `_score` variable which represents the current relevance score of a document.
 
-Here’s an example of using a script in a [`function_score` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html) to alter the relevance `_score` of each document:
+Here’s an example of using a script in a [`function_score` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-function-score-query.md) to alter the relevance `_score` of each document:
 
 ```console
 PUT my-index-000001/_doc/1?refresh
@@ -78,7 +78,7 @@ GET my-index-000001/_search
 
 Scripts used in a [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query have access to the `_termStats` variable which provides statistical information about the terms in the child query.
 
-In the following example, `_termStats` is used within a [`script_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html) query to retrieve the average term frequency for the terms `quick`, `brown`, and `fox` in the `text` field:
+In the following example, `_termStats` is used within a [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query to retrieve the average term frequency for the terms `quick`, `brown`, and `fox` in the `text` field:
 
 ```console
 PUT my-index-000001/_doc/1?refresh
@@ -180,7 +180,7 @@ The `doc['field']` will throw an error if `field` is missing from the mappings. 
 ::::{admonition} Doc values and `text` fields
 :class: note
 
-The `doc['field']` syntax can also be used for [analyzed `text` fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) if [`fielddata`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#fielddata-mapping-param) is enabled, but **BEWARE**: enabling fielddata on a `text` field requires loading all of the terms into the JVM heap, which can be very expensive both in terms of memory and CPU. It seldom makes sense to access `text` fields from scripts.
+The `doc['field']` syntax can also be used for [analyzed `text` fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) if [`fielddata`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#fielddata-mapping-param) is enabled, but **BEWARE**: enabling fielddata on a `text` field requires loading all of the terms into the JVM heap, which can be very expensive both in terms of memory and CPU. It seldom makes sense to access `text` fields from scripts.
 
 ::::
 
@@ -188,14 +188,14 @@ The `doc['field']` syntax can also be used for [analyzed `text` fields](https://
 
 ### The document `_source` [modules-scripting-source] 
 
-The document [`_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) can be accessed using the `_source.field_name` syntax. The `_source` is loaded as a map-of-maps, so properties within object fields can be accessed as, for example, `_source.name.first`.
+The document [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) can be accessed using the `_source.field_name` syntax. The `_source` is loaded as a map-of-maps, so properties within object fields can be accessed as, for example, `_source.name.first`.
 
 ::::{admonition} Prefer doc-values to _source
 :class: important
 
 Accessing the `_source` field is much slower than using doc-values. The _source field is optimised for returning several fields per result, while doc values are optimised for accessing the value of a specific field in many documents.
 
-It makes sense to use `_source` when generating a [script field](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#script-fields) for the top ten hits from a search result but, for other search and aggregation use cases, always prefer using doc values.
+It makes sense to use `_source` when generating a [script field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#script-fields) for the top ten hits from a search result but, for other search and aggregation use cases, always prefer using doc values.
 
 ::::
 

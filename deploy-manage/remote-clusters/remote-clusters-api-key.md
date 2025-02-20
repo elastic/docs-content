@@ -42,9 +42,9 @@ If a remote cluster is part of an {{ess}} deployment, it has a valid certificate
 
 1. Enable the remote cluster server on every node of the remote cluster. In `elasticsearch.yml`:
 
-    1. Set [`remote_cluster_server.enabled`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote-cluster-network-settings) to `true`.
-    2. Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
-    3. Optionally, configure the remote server port using [`remote_cluster.port`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote_cluster.port) (defaults to `9443`).
+    1. Set [`remote_cluster_server.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
+    2. Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
+    3. Optionally, configure the remote server port using [`remote_cluster.port`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (defaults to `9443`).
 
 2. Next, generate a certificate authority (CA) and a server certificate/key pair. On one of the nodes of the remote cluster, from the directory where {{es}} has been installed:
 
@@ -136,7 +136,7 @@ You must have the `manage` cluster privilege to connect remote clusters.
 ::::
 
 
-The local cluster uses the [remote cluster interface](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) to establish communication with remote clusters. The coordinating nodes in the local cluster establish [long-lived](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections) TCP connections with specific nodes in the remote cluster. {{es}} requires these connections to remain open, even if the connections are idle for an extended period.
+The local cluster uses the [remote cluster interface](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) to establish communication with remote clusters. The coordinating nodes in the local cluster establish [long-lived](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) TCP connections with specific nodes in the remote cluster. {{es}} requires these connections to remain open, even if the connections are idle for an extended period.
 
 To add a remote cluster from Stack Management in {{kib}}:
 
@@ -203,7 +203,7 @@ The API response indicates that the local cluster is connected to the remote clu
 
 Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to dynamically configure remote settings on every node in the cluster. The following request adds three remote clusters: `cluster_one`, `cluster_two`, and `cluster_three`.
 
-The `seeds` parameter specifies the hostname and [remote cluster port](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) (default `9443`) of a seed node in the remote cluster.
+The `seeds` parameter specifies the hostname and [remote cluster port](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) (default `9443`) of a seed node in the remote cluster.
 
 The `mode` parameter determines the configured connection mode, which defaults to [`sniff`](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode). Because `cluster_one` doesn’t specify a `mode`, it uses the default. Both `cluster_two` and `cluster_three` explicitly use different modes.
 

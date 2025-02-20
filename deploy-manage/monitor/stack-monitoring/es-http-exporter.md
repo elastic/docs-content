@@ -47,7 +47,7 @@ xpack.monitoring.exporters:
 2. An `http` exporter defined whose arbitrary name is `my_remote`. This name uniquely defines the exporter but is otherwise unused.
 3. `host` is a required setting for `http` exporters. It must specify the HTTP port rather than the transport port. The default port value is `9200`.
 4. User authentication for those using {{stack}} {{security-features}} or some other form of user authentication protecting the cluster.
-5. See [HTTP exporter settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#http-exporter-settings) for all TLS/SSL settings. If not supplied, the default node-level TLS/SSL settings are used.
+5. See [HTTP exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings) for all TLS/SSL settings. If not supplied, the default node-level TLS/SSL settings are used.
 6. Optional base path to prefix any outgoing request with in order to work with proxies.
 7. Arbitrary key/value pairs to define as headers to send with every request. The array-based key/value format sends one header per value.
 8. A mechanism for changing the date suffix used by default.
@@ -79,5 +79,5 @@ When discussing security relative to the `http` exporter, it is critical to reme
 ::::
 
 
-For more information about the configuration options for the `http` exporter, see [HTTP exporter settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#http-exporter-settings).
+For more information about the configuration options for the `http` exporter, see [HTTP exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings).
 

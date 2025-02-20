@@ -68,7 +68,7 @@ You can determine the cause of a shard recovery using the [recovery](https://www
 To control how shards are recovered, for example the resources that can be used by recovery operations, and which indices should be prioritized for recovery, you can adjust the following settings:
 
 * [Index recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md)
-* [Cluster-level shard allocation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html)
+* [Cluster-level shard allocation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md)
 * [Index-level shard allocation settings](shard-allocation-relocation-recovery/index-level-shard-allocation.md), including [delayed allocation](shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md) and [index recovery prioritization](shard-allocation-relocation-recovery/index-level-shard-allocation.md)
 
 Shard recovery operations also respect general shard allocation settings.
@@ -91,7 +91,7 @@ When a shard copy is relocated, it is created as a new shard copy on the target 
 
 ### Adjust shard relocation settings [_adjust_shard_relocation_settings]
 
-You can control how and when shard copies are relocated. For example, you can adjust the rebalancing settings that control when shard copies are relocated to balance the cluster, or the high watermark for disk-based shard allocation that can trigger relocation. These settings are part of the [cluster-level shard allocation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html).
+You can control how and when shard copies are relocated. For example, you can adjust the rebalancing settings that control when shard copies are relocated to balance the cluster, or the high watermark for disk-based shard allocation that can trigger relocation. These settings are part of the [cluster-level shard allocation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md).
 
 Shard relocation operations also respect shard allocation and recovery settings.
 

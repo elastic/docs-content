@@ -36,7 +36,7 @@ If none of these parameters are specified, the [`standard` analyzer](asciidocaly
 
 ## Specify the analyzer for a field [specify-index-field-analyzer]
 
-When mapping an index, you can use the [`analyzer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) mapping parameter to specify an analyzer for each `text` field.
+When mapping an index, you can use the [`analyzer`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/analyzer.md) mapping parameter to specify an analyzer for each `text` field.
 
 The following [create index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-create) request sets the `whitespace` analyzer as the analyzer for the `title` field.
 
@@ -89,12 +89,12 @@ If you choose to specify a separate search analyzer, we recommend you thoroughly
 
 At search time, {{es}} determines which analyzer to use by checking the following parameters in order:
 
-1. The [`analyzer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) parameter in the search query. See [Specify the search analyzer for a query](#specify-search-query-analyzer).
+1. The [`analyzer`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/analyzer.md) parameter in the search query. See [Specify the search analyzer for a query](#specify-search-query-analyzer).
 2. The [`search_analyzer`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/search-analyzer.md) mapping parameter for the field. See [Specify the search analyzer for a field](#specify-search-field-analyzer).
 3. The `analysis.analyzer.default_search` index setting. See [Specify the default search analyzer for an index](#specify-search-default-analyzer).
-4. The [`analyzer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) mapping parameter for the field. See [Specify the analyzer for a field](#specify-index-field-analyzer).
+4. The [`analyzer`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/analyzer.md) mapping parameter for the field. See [Specify the analyzer for a field](#specify-index-field-analyzer).
 
-If none of these parameters are specified, the [`standard` analyzer](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-standard-analyzer.html) is used.
+If none of these parameters are specified, the [`standard` analyzer](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-standard-analyzer.md) is used.
 
 
 ## Specify the search analyzer for a query [specify-search-query-analyzer]
@@ -120,7 +120,7 @@ GET my-index-000001/_search
 
 ## Specify the search analyzer for a field [specify-search-field-analyzer]
 
-When mapping an index, you can use the [`search_analyzer`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer.html) mapping parameter to specify a search analyzer for each `text` field.
+When mapping an index, you can use the [`search_analyzer`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/analyzer.md) mapping parameter to specify a search analyzer for each `text` field.
 
 If a search analyzer is provided, the index analyzer must also be specified using the `analyzer` parameter.
 

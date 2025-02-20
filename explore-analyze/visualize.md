@@ -33,8 +33,8 @@ $$$panels-editors$$$
 | [Change point detection](machine-learning/machine-learning-in-kibana/xpack-ml-aiops.md#change-point-detection) | Display a chart to visualize change points in your data |
 | Observability | | |
 | [SLO overview](/solutions/observability/incident-management/service-level-objectives-slos.md) | Visualize a selected SLO’s health, including name, current SLI value, target, and status |
-| [SLO Alerts](https://www.elastic.co/guide/en/observability/current/slo.html) | Visualize one or more SLO alerts, including status, rule name, duration, and reason. In addition, configure and update alerts, or create cases directly from the panel |
-| [SLO Error Budget](https://www.elastic.co/guide/en/observability/current/slo.html) | Visualize the consumption of your SLO’s error budget |
+| [SLO Alerts](/solutions/observability/incident-management/service-level-objectives-slos.md) | Visualize one or more SLO alerts, including status, rule name, duration, and reason. In addition, configure and update alerts, or create cases directly from the panel |
+| [SLO Error Budget](/solutions/observability/incident-management/service-level-objectives-slos.md) | Visualize the consumption of your SLO’s error budget |
 | Legacy | | |
 | [Log stream](https://www.elastic.co/guide/en/kibana/current/observability.html#logs-app) (deprecated) | Display a table of live streaming logs |
 | [Aggregation based](visualize/legacy-editors/aggregation-based.md) | While these panel types are still available, we recommend to use [Lens](visualize/lens.md) |

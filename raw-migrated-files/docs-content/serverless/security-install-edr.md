@@ -88,7 +88,7 @@ Before you add an {{agent}}, a {{fleet-server}} must be running. Refer to [Add a
     :class: screenshot
     :::
 
-2. Select an agent policy for the {{agent}}. You can select an existing policy, or select **Create new agent policy** to create a new one. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](https://www.elastic.co/guide/en/fleet/current/agent-policy.html).
+2. Select an agent policy for the {{agent}}. You can select an existing policy, or select **Create new agent policy** to create a new one. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md).
 
     The selected agent policy should include the integration you want to install on the hosts covered by the agent policy (in this example, {{elastic-defend}}).
 

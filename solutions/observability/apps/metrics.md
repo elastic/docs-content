@@ -26,8 +26,8 @@ Metrics are stored in metric indices.
 
 For a full list of tracked metrics, see the relevant agent documentation:
 
-* [Go](https://www.elastic.co/guide/en/apm/agent/go/current/metrics.html)
-* [Java](https://www.elastic.co/guide/en/apm/agent/java/current/metrics.html)
+* [Go](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/metrics.md)
+* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/metrics.md)
 * [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/metrics.md)
 * [Python](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/metrics.md)
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/metrics.md)

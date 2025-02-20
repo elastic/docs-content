@@ -31,7 +31,7 @@ To use [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) and [Elast
 
 **Resources**
 
-* [Install {{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html)
+* [Install {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md)
 * [Elastic Search for integrations](https://www.elastic.co/integrations/data-integrations?solution=search)
 * [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
 
@@ -51,8 +51,8 @@ With [Elastic Observability](https://www.elastic.co/observability), you can moni
 * [Monitor applications and systems with Elastic Observability](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html)
 * [Get started with logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
 
-    * [Step 1: Add the {{agent}} System integration](https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html#add-system-integration)
-    * [Step 2: Install and run {{agent}}](https://www.elastic.co/guide/en/observability/current/logs-metrics-get-started.html#add-agent-to-fleet)
+    * [Step 1: Add the {{agent}} System integration](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#add-system-integration)
+    * [Step 2: Install and run {{agent}}](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#add-agent-to-fleet)
 
 * [Observability](https://docs.elastic.co/serverless/observability/what-is-observability-serverless) on [{{serverless-full}}](https://docs.elastic.co/serverless):
 
@@ -64,7 +64,7 @@ With [Elastic Observability](https://www.elastic.co/observability), you can moni
 
 **Resources**
 
-* [Install {{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html)
+* [Install {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md)
 * [Elastic Observability integrations](https://www.elastic.co/integrations/data-integrations?solution=observability)
 
 
@@ -79,7 +79,7 @@ You can detect and respond to threats when you use [Elastic Security](https://ww
 
 **Resources**
 
-* [Install {{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html)
+* [Install {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md)
 * [Elastic Security integrations](https://www.elastic.co/integrations/data-integrations?solution=search)
 * [Elastic Security documentation](/solutions/security.md)
 
@@ -92,12 +92,12 @@ Bring your ideas and use {{es}} and the {{stack}} to store, search, and visualiz
 
 **Resources**
 
-* [Install {{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html)
+* [Install {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md)
 * [{{es}} Guide](https://www.elastic.co/guide/en/elasticsearch/reference/current)
 
     * [{{es}} document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)
     * [{{es}} language clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html)
     * [Elastic web crawler](https://www.elastic.co/web-crawler)
-    * [Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html)
+    * [Elastic connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md)
 
 * [Tutorial: Get started with vector search and generative AI](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-general-purpose.html)

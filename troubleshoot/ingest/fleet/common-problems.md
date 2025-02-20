@@ -469,7 +469,7 @@ If you’re running {{agent}} in the foreground (and not as a service) on Linux 
 If you’re using the {{elastic-defend}} integration, make sure you’re running {{agent}} under the SYSTEM account.
 
 ::::{tip}
-If you install {{agent}} as a service as described in [*Install {{agent}}s*](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html), {{agent}} runs under the SYSTEM account by default.
+If you install {{agent}} as a service as described in [*Install {{agent}}s*](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md), {{agent}} runs under the SYSTEM account by default.
 ::::
 
 
@@ -489,11 +489,11 @@ To run {{agent}} under the SYSTEM account, you can do the following:
 
 If you try to upgrade an integration policy that is several versions old, there may be substantial conflicts or configuration issues. Rather than trying to fix these problems, it might be faster to create a new policy, test it, and roll out the integration upgrade to additional hosts.
 
-After [upgrading the integration](https://www.elastic.co/guide/en/fleet/current/upgrade-integration.html):
+After [upgrading the integration](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-integration.md):
 
 1. [Create a new policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy).
-2. [Add the integration to the policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#add-integration). The newer version is automatically used.
-3. [Apply the policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#apply-a-policy) to an {{agent}}.
+2. [Add the integration to the policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#add-integration). The newer version is automatically used.
+3. [Apply the policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#apply-a-policy) to an {{agent}}.
 
     ::::{tip}
     In larger deployments, you should test integration upgrades on a sample {{agent}} before rolling out a larger upgrade initiative. Only after a small trial is deemed successful should the updated policy be rolled out all hosts.
@@ -507,7 +507,7 @@ After [upgrading the integration](https://www.elastic.co/guide/en/fleet/current/
     4. Repeat this process for each policy with the out-of-date integration.
 
         ::::{note}
-        In some instances, for example, when there are hundreds or thousands of different {{agent}}s and policies that need to be updated, this upgrade path is not feasible. In this case, update one policy and use the [Copy a policy](https://www.elastic.co/guide/en/fleet/current/agent-policy.html#copy-policy) action to apply the updated policy versions to additional policies. This method’s downside is losing the granularity of assessing the individual Integration version changes individually across policies.
+        In some instances, for example, when there are hundreds or thousands of different {{agent}}s and policies that need to be updated, this upgrade path is not feasible. In this case, update one policy and use the [Copy a policy](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md#copy-policy) action to apply the updated policy versions to additional policies. This method’s downside is losing the granularity of assessing the individual Integration version changes individually across policies.
         ::::
 
 
@@ -803,7 +803,7 @@ If the installation is correct and all resources are deployed, but data is not f
 
 * Missing cluster-level metrics (provided by `kube-state-metrics`):
 
-    As described in [Run {{agent}} Standalone on Kubernetes](https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
+    As described in [Run {{agent}} Standalone on Kubernetes](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/running-on-kubernetes-standalone.md), the {{agent}} Pod acting as `leader` is responsible for retrieving cluster-level metrics from `kube-state-metrics` and delivering them to [data streams](../../../manage-data/data-store/data-streams.md) prefixed as `metrics-kubernetes.state_<resource>`. In order to troubleshoot a situation where these metrics are not appearing:
 
     1. Determine which Pod owns the [leadership](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/kubernetes_leaderelection-provider.md) `lease` in the cluster, with:
 

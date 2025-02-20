@@ -191,7 +191,7 @@ On the local cluster, add the remote cluster using Kibana or the {{es}} API.
 5. Click **Add remote cluster** (you have already established trust in a previous step).
 
 ::::{note}
-This configuration of remote clusters uses the [Proxy mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#proxy-mode) and it requires that the allocators can communicate via http with the proxies.
+This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode) and it requires that the allocators can communicate via http with the proxies.
 ::::
 
 
@@ -235,7 +235,7 @@ This section only applies if you’re using TLS certificates as cross-cluster se
 ::::
 
 
-When the cluster to be configured as a remote is above 6.7.0 and below 7.6.0, the remote cluster must be configured using the [sniff mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#sniff-mode) with the proxy field. For each remote cluster you need to pass the following fields:
+When the cluster to be configured as a remote is above 6.7.0 and below 7.6.0, the remote cluster must be configured using the [sniff mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#sniff-mode) with the proxy field. For each remote cluster you need to pass the following fields:
 
 * **Proxy**: This value can be found on the **Security** page of the deployment you want to use as a remote under the name `Proxy Address`. Also, using the API, this can be obtained from the elasticsearch resource info, concatenating the fields `metadata.endpoint` and `metadata.ports.transport_passthrough` using a semicolon.
 * **Seeds**: This field is an array that must contain only one value, which is the `server name` that can be found on the **Security** page of the ECE deployment you want to use as a remote concatenated with `:1`. Also, using the API, this can be obtained from the {{es}} resource info, concatenating the fields `metadata.endpoint` and `1` with a semicolon.

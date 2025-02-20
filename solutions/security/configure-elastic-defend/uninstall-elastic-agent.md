@@ -49,7 +49,7 @@ If you have multiple tamper-protected {{agent}} policies, you may want to provid
 
 ## Uninstall {{elastic-endpoint}} [uninstall-endpoint]
 
-Use these commands to uninstall {{elastic-endpoint}} from a host **ONLY** if [uninstalling an {{agent}}](https://www.elastic.co/guide/en/fleet/current/uninstall-elastic-agent.html) is unsuccessful.
+Use these commands to uninstall {{elastic-endpoint}} from a host **ONLY** if [uninstalling an {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/uninstall-elastic-agent.md) is unsuccessful.
 
 Windows
 

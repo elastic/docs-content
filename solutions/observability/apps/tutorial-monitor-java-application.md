@@ -984,7 +984,7 @@ While log4j2 has a [JSONLayout](https://logging.apache.org/log4j/2.x/manual/layo
 
 A metric is considered a point in time value that can change anytime. The number of current requests can change any millisecond. You could have a spike of 1000 requests, and then everything goes back to one request. This also means that these kinds of metrics may not be accurate, and you also want to pull min/max values to get some more indication. Furthermore, this implies that you need to think about the duration of those metrics as well. Do you need those once per minute or every 10 seconds?
 
-To get a different angled view of your application, let’s ingest some metrics. In this example, we will use the [Metricbeat Prometheus Module](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-prometheus.html) to send data to {{es}}.
+To get a different angled view of your application, let’s ingest some metrics. In this example, we will use the [Metricbeat Prometheus Module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-module-prometheus.md) to send data to {{es}}.
 
 The underlying library used in our app is [micrometer.io](http://micrometer.io/), a vendor-neutral application metrics facade in combination with its [Prometheus support](http://micrometer.io/docs/registry/prometheus) to implement a pull-based model. You could use the [elastic support](http://micrometer.io/docs/registry/elastic) to achieve a push-based model. This would require users to store credential data of the {{es}} cluster in our app. This example keeps this data in the surrounding tools.
 
@@ -1236,7 +1236,7 @@ sudo chown root metricbeat.yml <1>
 sudo ./metricbeat -e
 ```
 
-1. You’ll be running Metricbeat as root, so you need to change ownership of the configuration file, or run Metricbeat with `--strict.perms=false` specified. See [Config File Ownership and Permissions](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html).
+1. You’ll be running Metricbeat as root, so you need to change ownership of the configuration file, or run Metricbeat with `--strict.perms=false` specified. See [Config File Ownership and Permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
 ::::::
 
 ::::::{tab-item} Windows
@@ -1838,7 +1838,7 @@ sudo chown root heartbeat.yml <1>
 sudo ./heartbeat -e
 ```
 
-1. You’ll be running Heartbeat as root, so you need to change ownership of the configuration file, or run Heartbeat with `--strict.perms=false` specified. See [Config File Ownership and Permissions](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html).
+1. You’ll be running Heartbeat as root, so you need to change ownership of the configuration file, or run Heartbeat with `--strict.perms=false` specified. See [Config File Ownership and Permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
 ::::::
 
 ::::::{tab-item} Linux
@@ -1847,7 +1847,7 @@ sudo chown root heartbeat.yml <1>
 sudo ./heartbeat -e
 ```
 
-1. You’ll be running Heartbeat as root, so you need to change ownership of the configuration file, or run Heartbeat with `--strict.perms=false` specified. See [Config File Ownership and Permissions](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html).
+1. You’ll be running Heartbeat as root, so you need to change ownership of the configuration file, or run Heartbeat with `--strict.perms=false` specified. See [Config File Ownership and Permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
 ::::::
 
 ::::::{tab-item} Windows

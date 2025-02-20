@@ -54,7 +54,7 @@ If you prefer the internal implementation of CSV export to use the scroll API, y
 xpack.reporting.csv.scroll.strategy: scroll
 ```
 
-For more details about CSV export settings, go to [CSV settings](https://www.elastic.co/guide/en/kibana/current/reporting-settings-kb.html#reporting-csv-settings).
+For more details about CSV export settings, go to [CSV settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#reporting-csv-settings).
 
 
 ## Socket hangups [reporting-troubleshooting-csv-socket-hangup]

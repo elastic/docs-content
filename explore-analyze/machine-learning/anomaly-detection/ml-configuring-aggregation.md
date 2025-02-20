@@ -257,7 +257,7 @@ You can also use complex nested aggregations in {{dfeeds}}.
 The next example uses the [`derivative` pipeline aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-pipeline-derivative-aggregation.md) to find the first order derivative of the counter `system.network.out.bytes` for each value of the field `beat.name`.
 
 ::::{note}
-`derivative` or other pipeline aggregations may not work within `composite` aggregations. See [composite aggregations and pipeline aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html#search-aggregations-bucket-composite-aggregation-pipeline-aggregations).
+`derivative` or other pipeline aggregations may not work within `composite` aggregations. See [composite aggregations and pipeline aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-composite-aggregation.md#search-aggregations-bucket-composite-aggregation-pipeline-aggregations).
 ::::
 
 ```js

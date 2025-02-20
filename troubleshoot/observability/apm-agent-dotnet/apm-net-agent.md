@@ -221,8 +221,8 @@ A good place to start is [All options summary](asciidocalypse://docs/apm-agent-d
 
 The most expensive operation in the agent is typically stack trace capturing. The agent, by default, only captures stack traces for spans with a duration of 5ms or more, and with a limit of 50 stack frames. If this is too much in your environment, consider disabling stack trace capturing either partially or entirely:
 
-* To disable stack trace capturing for spans, but continue to capture stack traces for errors, set the [`SpanStackTraceMinDuration` (performance)](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-stacktrace.md#config-span-stack-trace-min-duration) to `-1` and leave the [`StackTraceLimit` (performance)](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-stacktrace.html#config-stack-trace-limit) on its default.
-* To disable stack trace capturing entirely –which in most applications reduces the agent overhead dramatically– set [`StackTraceLimit` (performance)](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-stacktrace.html#config-stack-trace-limit) to `0`.
+* To disable stack trace capturing for spans, but continue to capture stack traces for errors, set the [`SpanStackTraceMinDuration` (performance)](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-stacktrace.md#config-span-stack-trace-min-duration) to `-1` and leave the [`StackTraceLimit` (performance)](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-stacktrace.md#config-stack-trace-limit) on its default.
+* To disable stack trace capturing entirely –which in most applications reduces the agent overhead dramatically– set [`StackTraceLimit` (performance)](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-stacktrace.md#config-stack-trace-limit) to `0`.
 
 
 ## The ElasticApmModule does not load or capture transactions and there are no agent logs generated on IISExpress [iisexpress-classic-pipeline]

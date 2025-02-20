@@ -141,7 +141,7 @@ To configure a Kerberos realm in {{es}}:
 
     The `username` is extracted from the ticket presented by user and usually has the format `username@REALM`. This `username` is used for mapping roles to the user. If realm setting `remove_realm_name` is set to `true`, the realm part (`@REALM`) is removed. The resulting `username` is used for role mapping.
 
-    For detailed information of available realm settings, see [Kerberos realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-kerberos-settings).
+    For detailed information of available realm settings, see [Kerberos realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
 
 5. Restart {{es}}
 6. Map Kerberos users to roles.

@@ -337,8 +337,8 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/current/supported-technologies.html)
-        * [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
+        * [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
+        * [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-ruby-panel" aria-labelledby="apm-apm-get-started-ruby-button" hidden="">

@@ -48,9 +48,9 @@ If you have the required [subscription](https://www.elastic.co/subscriptions), `
 
 If you don’t have the required [subscription](https://www.elastic.co/subscriptions), `logsdb` mode uses the original `_source` field.
 
-Before using synthetic source, make sure to review the [restrictions](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source-restrictions).
+Before using synthetic source, make sure to review the [restrictions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source-restrictions).
 
-When working with multi-value fields, the `index.mapping.synthetic_source_keep` setting controls how field values are preserved for [synthetic source](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source) reconstruction. In `logsdb`, the default value is `arrays`, which retains both duplicate values and the order of entries. However, the exact structure of array elements and objects is not necessarily retained. Preserving duplicates and ordering can be critical for some log fields, such as DNS A records, HTTP headers, and log entries that represent sequential or repeated events.
+When working with multi-value fields, the `index.mapping.synthetic_source_keep` setting controls how field values are preserved for [synthetic source](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source) reconstruction. In `logsdb`, the default value is `arrays`, which retains both duplicate values and the order of entries. However, the exact structure of array elements and objects is not necessarily retained. Preserving duplicates and ordering can be critical for some log fields, such as DNS A records, HTTP headers, and log entries that represent sequential or repeated events.
 
 
 ## Index sort settings [logsdb-sort-settings]
@@ -100,7 +100,7 @@ In benchmarks, routing optimizations reduced storage requirements by 20% compare
 To configure a routing optimization:
 
 * Include the index setting `[index.logsdb.route_on_sort_fields:true]` in the data stream configuration.
-* [Configure index sorting](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-index-sorting.html) with two or more fields, in addition to `@timestamp`.
+* [Configure index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-sorting-settings.md) with two or more fields, in addition to `@timestamp`.
 * Make sure the [`_id`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-id-field.md) field is not populated in ingested documents. It should be auto-generated instead.
 
 A custom sort configuration is required, to improve storage efficiency and to minimize hotspots from logging spikes that may route documents to a single shard. For best results, use a few sort fields that have a relatively low cardinality and don’t co-vary (for example, `host.name` and `host.id` are not optimal).
@@ -108,7 +108,7 @@ A custom sort configuration is required, to improve storage efficiency and to mi
 
 ## Specialized codecs [logsdb-specialized-codecs]
 
-By default, `logsdb` index mode uses the `best_compression` [codec](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-codec), which applies [ZSTD](https://en.wikipedia.org/wiki/Zstd) compression to stored fields. You can switch to the `default` codec for faster compression with a slightly larger storage footprint.
+By default, `logsdb` index mode uses the `best_compression` [codec](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-codec), which applies [ZSTD](https://en.wikipedia.org/wiki/Zstd) compression to stored fields. You can switch to the `default` codec for faster compression with a slightly larger storage footprint.
 
 The `logsdb` index mode also automatically applies specialized codecs for numeric doc values, in order to optimize storage usage. Numeric fields are encoded using the following sequence of codecs:
 
@@ -155,7 +155,7 @@ When automatically injected, `host.name` and `@timestamp` count toward the limit
 
 ## Fields without `doc_values` [logsdb-nodocvalue-fields]
 
-When the `logsdb` index mode uses synthetic `_source` and `doc_values` are disabled for a field in the mapping, {{es}} might set the `store` setting to `true` for that field. This ensures that the field’s data remains accessible for reconstructing the document’s source when using [synthetic source](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#synthetic-source).
+When the `logsdb` index mode uses synthetic `_source` and `doc_values` are disabled for a field in the mapping, {{es}} might set the `store` setting to `true` for that field. This ensures that the field’s data remains accessible for reconstructing the document’s source when using [synthetic source](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source).
 
 For example, this adjustment occurs with text fields when `store` is `false` and no suitable multi-field is available for reconstructing the original value.
 

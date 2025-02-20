@@ -135,7 +135,7 @@ spec:
 
 ### To configure an LDAP realm with user DN templates: [k8s_to_configure_an_ldap_realm_with_user_dn_templates]
 
-Add a realm configuration to `elasticsearch.yml` in the xpack.security.authc.realms.ldap namespace. At a minimum, you must specify the url and order of the LDAP server, and specify at least one template with the user_dn_templates option. Check [LDAP realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings)  for all of the options you can set for an ldap realm.
+Add a realm configuration to `elasticsearch.yml` in the xpack.security.authc.realms.ldap namespace. At a minimum, you must specify the url and order of the LDAP server, and specify at least one template with the user_dn_templates option. Check [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)  for all of the options you can set for an ldap realm.
 
 For example, the following snippet shows an LDAP realm configured with user DN templates:
 

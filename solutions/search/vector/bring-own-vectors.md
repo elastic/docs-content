@@ -31,7 +31,7 @@ Each document in our simple dataset will have:
 
 
 ::::{tip} 
-The `dense_vector` type automatically uses `int8_hnsw` quantization by default to reduce the memory footprint required when searching float vectors. Learn more about balancing performance and accuracy in [Dense vector quantization](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-quantization).
+The `dense_vector` type automatically uses `int8_hnsw` quantization by default to reduce the memory footprint required when searching float vectors. Learn more about balancing performance and accuracy in [Dense vector quantization](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization).
 
 ::::
 

@@ -391,7 +391,7 @@ GET kibana_sample_data_ecommerce/_search
 ::::
 
 ::::{tip}
-The [stats aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html) is more efficient than running individual min, max, avg, and sum aggregations.
+The [stats aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-stats-aggregation.md) is more efficient than running individual min, max, avg, and sum aggregations.
 
 ::::
 
@@ -421,7 +421,7 @@ GET kibana_sample_data_ecommerce/_search
 
 1. Name reflecting the business purpose of this breakdown
 2. `terms` aggregation groups documents by field values
-3. Use [`.keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) field for exact matching on text fields
+3. Use [`.keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) field for exact matching on text fields
 4. Limit to top 5 categories
 5. Order by number of orders (descending)
 
@@ -476,7 +476,7 @@ GET kibana_sample_data_ecommerce/_search
 }
 ```
 
-1. Due to Elasticsearch’s distributed architecture, when [terms aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) run across multiple shards, the doc counts may have a small margin of error. This value indicates the maximum possible error in the counts.
+1. Due to Elasticsearch’s distributed architecture, when [terms aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) run across multiple shards, the doc counts may have a small margin of error. This value indicates the maximum possible error in the counts.
 2. Count of documents in categories beyond the requested size.
 3. Array of category buckets, ordered by count.
 4. Category name.
@@ -507,7 +507,7 @@ GET kibana_sample_data_ecommerce/_search
 
 1. Descriptive name for the time-series aggregation results.
 2. The `date_histogram` aggregation groups documents into time-based buckets, similar to terms aggregation but for dates.
-3. Uses [calendar and fixed time intervals](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-datehistogram-aggregation.html#calendar_and_fixed_intervals) to handle months with different lengths. `"day"` ensures consistent daily grouping regardless of timezone.
+3. Uses [calendar and fixed time intervals](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-datehistogram-aggregation.md#calendar_and_fixed_intervals) to handle months with different lengths. `"day"` ensures consistent daily grouping regardless of timezone.
 4. Formats dates in response using [date patterns](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md) (e.g. "yyyy-MM-dd"). Refer to [date math expressions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math) for additional options.
 5. When `min_doc_count` is 0, returns buckets for days with no orders, useful for continuous time series visualization.
 

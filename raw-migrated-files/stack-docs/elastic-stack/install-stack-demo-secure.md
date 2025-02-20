@@ -686,7 +686,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
 
         The URL is the inet value that you copied from the `ifconfig` output.
 
-        For details about default port assignments, refer to [Default port assignments](https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation.
+        For details about default port assignments, refer to [Default port assignments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation.
 
     3. Click **Add host**.
 
@@ -783,7 +783,7 @@ Before proceeding to install {{agent}}, there are a few steps needed to update t
 
 ## Step 7: Install {{agent}} [install-stack-demo-secure-agent]
 
-Next, we’ll install {{agent}} on another host and use the System integration to monitor system logs and metrics. You can find additional details about these steps in [Configure SSL/TLS for self-managed Fleet Servers](https://www.elastic.co/guide/en/fleet/current/secure-connections.html).
+Next, we’ll install {{agent}} on another host and use the System integration to monitor system logs and metrics. You can find additional details about these steps in [Configure SSL/TLS for self-managed Fleet Servers](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure-connections.md).
 
 1. Log in to the host where you’d like to set up {{agent}}.
 2. Create a directory for the {{es}} certificate file:

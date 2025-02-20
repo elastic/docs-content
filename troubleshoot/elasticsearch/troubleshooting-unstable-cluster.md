@@ -66,7 +66,7 @@ If the node did not restart then you should look at the reason for its departure
 
 * `disconnected`: The connection from the master node to the removed node was closed.
 * `lagging`: The master published a cluster state update, but the removed node did not apply it within the permitted timeout. By default, this timeout is 2 minutes. Refer to [Discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
-* `followers check retry count exceeded`: The master sent a number of consecutive health checks to the removed node. These checks were rejected or timed out. By default, each health check times out after 10 seconds and {{es}} removes the node removed after three consecutively failed health checks. Refer to [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html) for information about the settings which control this mechanism.
+* `followers check retry count exceeded`: The master sent a number of consecutive health checks to the removed node. These checks were rejected or timed out. By default, each health check times out after 10 seconds and {{es}} removes the node removed after three consecutively failed health checks. Refer to [Discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
 
 ## Diagnosing `disconnected` nodes [troubleshooting-unstable-cluster-disconnected]
@@ -77,7 +77,7 @@ Nodes typically leave the cluster with reason `disconnected` when they shut down
 
 The connections from the elected master node to every other node in the cluster are particularly important. The elected master never spontaneously closes its outbound connections to other nodes. Similarly, once an inbound connection is fully established, a node never spontaneously closes it unless the node is shutting down.
 
-If you see a node unexpectedly leave the cluster with the `disconnected` reason, something other than {{es}} likely caused the connection to close. A common cause is a misconfigured firewall with an improper timeout or another policy that’s [incompatible with {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections). It could also be caused by general connectivity issues, such as packet loss due to faulty hardware or network congestion. If you’re an advanced user, configure the following loggers to get more detailed information about network exceptions:
+If you see a node unexpectedly leave the cluster with the `disconnected` reason, something other than {{es}} likely caused the connection to close. A common cause is a misconfigured firewall with an improper timeout or another policy that’s [incompatible with {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). It could also be caused by general connectivity issues, such as packet loss due to faulty hardware or network congestion. If you’re an advanced user, configure the following loggers to get more detailed information about network exceptions:
 
 ```yaml
 logger.org.elasticsearch.transport.TcpTransport: DEBUG
@@ -89,7 +89,7 @@ If these logs do not show enough information to diagnose the problem, obtain a p
 
 ## Diagnosing `lagging` nodes [troubleshooting-unstable-cluster-lagging]
 
-{{es}} needs every node to process cluster state updates reasonably quickly. If a node takes too long to process a cluster state update, it can be harmful to the cluster. The master will remove these nodes with the `lagging` reason. Refer to [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html) for information about the settings which control this mechanism.
+{{es}} needs every node to process cluster state updates reasonably quickly. If a node takes too long to process a cluster state update, it can be harmful to the cluster. The master will remove these nodes with the `lagging` reason. Refer to [Discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
 Lagging is typically caused by performance issues on the removed node. However, a node may also lag due to severe network delays. To rule out network delays, ensure that `net.ipv4.tcp_retries2` is [configured properly](../../deploy-manage/deploy/self-managed/system-config-tcpretries.md). Log messages that contain `warn threshold` may provide more information about the root cause.
 
@@ -120,7 +120,7 @@ cat lagdetector.log | sed -e 's/.*://' | base64 --decode | gzip --decompress
 
 Nodes sometimes leave the cluster with reason `follower check retry count exceeded` when they shut down, but if they rejoin the cluster without restarting then there is some other problem.
 
-{{es}} needs every node to respond to network messages successfully and reasonably quickly. If a node rejects requests or does not respond at all then it can be harmful to the cluster. If enough consecutive checks fail then the master will remove the node with reason `follower check retry count exceeded` and will indicate in the `node-left` message how many of the consecutive unsuccessful checks failed and how many of them timed out. Refer to [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html) for information about the settings which control this mechanism.
+{{es}} needs every node to respond to network messages successfully and reasonably quickly. If a node rejects requests or does not respond at all then it can be harmful to the cluster. If enough consecutive checks fail then the master will remove the node with reason `follower check retry count exceeded` and will indicate in the `node-left` message how many of the consecutive unsuccessful checks failed and how many of them timed out. Refer to [Discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) for information about the settings which control this mechanism.
 
 Timeouts and failures may be due to network delays or performance problems on the affected nodes. Ensure that `net.ipv4.tcp_retries2` is [configured properly](../../deploy-manage/deploy/self-managed/system-config-tcpretries.md) to eliminate network delays as a possible cause for this kind of instability. Log messages containing `warn threshold` may give further clues about the cause of the instability.
 
@@ -133,7 +133,7 @@ If the last check failed with an exception then the exception is reported, and t
 
     The [Nodes hot threads](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads) API sometimes yields useful information, but bear in mind that this API also requires a number of `transport_worker` and `generic` threads across all the nodes in the cluster. The API may be affected by the very problem you’re trying to diagnose. `jstack` is much more reliable since it doesn’t require any JVM threads.
 
-    The threads involved in discovery and cluster membership are mainly `transport_worker` and `cluster_coordination` threads, for which there should never be a long wait. There may also be evidence of long waits for threads in the {{es}} logs, particularly looking at warning logs from `org.elasticsearch.transport.InboundHandler`. See [Networking threading model](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#modules-network-threading-model) for more information.
+    The threads involved in discovery and cluster membership are mainly `transport_worker` and `cluster_coordination` threads, for which there should never be a long wait. There may also be evidence of long waits for threads in the {{es}} logs, particularly looking at warning logs from `org.elasticsearch.transport.InboundHandler`. See [Networking threading model](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#modules-network-threading-model) for more information.
 
 
 By default the follower checks will time out after 30s, so if node departures are unpredictable then capture stack dumps every 15s to be sure that at least one stack dump was taken at the right time.
@@ -168,7 +168,7 @@ cat shardlock.log | sed -e 's/.*://' | base64 --decode | gzip --decompress
 
 ## Diagnosing other network disconnections [troubleshooting-unstable-cluster-network]
 
-{{es}} is designed to run on a fairly reliable network. It opens a number of TCP connections between nodes and expects these connections to remain open [forever](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections). If a connection is closed then {{es}} will try and reconnect, so the occasional blip may fail some in-flight operations but should otherwise have limited impact on the cluster. In contrast, repeatedly-dropped connections will severely affect its operation.
+{{es}} is designed to run on a fairly reliable network. It opens a number of TCP connections between nodes and expects these connections to remain open [forever](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). If a connection is closed then {{es}} will try and reconnect, so the occasional blip may fail some in-flight operations but should otherwise have limited impact on the cluster. In contrast, repeatedly-dropped connections will severely affect its operation.
 
 {{es}} nodes will only actively close an outbound connection to another node if the other node leaves the cluster. See [Troubleshooting an unstable cluster](../../deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-fault-detection.md#cluster-fault-detection-troubleshooting) for further information about identifying and troubleshooting this situation. If an outbound connection closes for some other reason, nodes will log a message such as the following:
 
@@ -178,7 +178,7 @@ cat shardlock.log | sed -e 's/.*://' | base64 --decode | gzip --decompress
 
 Similarly, once an inbound connection is fully established, a node never spontaneously closes it unless the node is shutting down.
 
-Therefore if you see a node report that a connection to another node closed unexpectedly, something other than {{es}} likely caused the connection to close. A common cause is a misconfigured firewall with an improper timeout or another policy that’s [incompatible with {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections). It could also be caused by general connectivity issues, such as packet loss due to faulty hardware or network congestion. If you’re an advanced user, configure the following loggers to get more detailed information about network exceptions:
+Therefore if you see a node report that a connection to another node closed unexpectedly, something other than {{es}} likely caused the connection to close. A common cause is a misconfigured firewall with an improper timeout or another policy that’s [incompatible with {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). It could also be caused by general connectivity issues, such as packet loss due to faulty hardware or network congestion. If you’re an advanced user, configure the following loggers to get more detailed information about network exceptions:
 
 ```yaml
 logger.org.elasticsearch.transport.TcpTransport: DEBUG

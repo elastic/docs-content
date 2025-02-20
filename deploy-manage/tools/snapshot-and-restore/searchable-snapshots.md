@@ -95,7 +95,7 @@ Manually mounting snapshots captured by an Index Lifecycle Management ({{ilm-ini
 
 For optimal results, allow {{ilm-init}} to manage snapshots automatically.
 
-[Learn more about {{ilm-init}} snapshot management](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-searchable-snapshot.html).
+[Learn more about {{ilm-init}} snapshot management](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md).
 
 ::::
 
@@ -106,7 +106,7 @@ $$$searchable-snapshots-shared-cache$$$
 :   ([Static](../../deploy/self-managed/configure-elasticsearch.md#static-cluster-setting)) Disk space reserved for the shared cache of partially mounted indices. Accepts a percentage of total disk space or an absolute [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units). Defaults to `90%` of total disk space for dedicated frozen data tier nodes. Otherwise defaults to `0b`.
 
 `xpack.searchable.snapshot.shared_cache.size.max_headroom`
-:   ([Static](../../deploy/self-managed/configure-elasticsearch.md#static-cluster-setting), [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) For dedicated frozen tier nodes, the max headroom to maintain. If `xpack.searchable.snapshot.shared_cache.size` is not explicitly set, this setting defaults to `100GB`. Otherwise it defaults to `-1` (not set). You can only configure this setting if `xpack.searchable.snapshot.shared_cache.size` is set as a percentage.
+:   ([Static](../../deploy/self-managed/configure-elasticsearch.md#static-cluster-setting), [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) For dedicated frozen tier nodes, the max headroom to maintain. If `xpack.searchable.snapshot.shared_cache.size` is not explicitly set, this setting defaults to `100GB`. Otherwise it defaults to `-1` (not set). You can only configure this setting if `xpack.searchable.snapshot.shared_cache.size` is set as a percentage.
 
 To illustrate how these settings work in concert let us look at two examples when using the default values of the settings on a dedicated frozen node:
 

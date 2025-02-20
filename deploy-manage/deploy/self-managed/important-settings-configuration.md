@@ -16,7 +16,7 @@ mapped_pages:
 * [JVM heap dump path setting](#heap-dump-path)
 * [GC logging settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#gc-logging)
 * [Temporary directory settings](#es-tmpdir)
-* [JVM fatal error log setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#error-file-path)
+* [JVM fatal error log setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#error-file-path)
 * [Cluster backups](#important-settings-backups)
 
 Our [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) service configures these items automatically, making your cluster production-ready by default.
@@ -165,14 +165,14 @@ See [bootstrapping a cluster](../../distributed-architecture/discovery-cluster-f
 
 By default, {{es}} automatically sets the JVM heap size based on a node’s [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) and total memory. We recommend the default sizing for most production environments.
 
-If needed, you can override the default sizing by manually [setting the JVM heap size](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-heap-size).
+If needed, you can override the default sizing by manually [setting the JVM heap size](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-heap-size).
 
 
 ## JVM heap dump path setting [heap-dump-path]
 
 By default, {{es}} configures the JVM to dump the heap on out of memory exceptions to the default data directory. On [RPM](install-elasticsearch-with-rpm.md) and [Debian](install-elasticsearch-with-debian-package.md) packages, the data directory is `/var/lib/elasticsearch`. On [Linux and MacOS](install-elasticsearch-from-archive-on-linux-macos.md) and [Windows](install-elasticsearch-with-zip-on-windows.md) distributions, the `data` directory is located under the root of the {{es}} installation.
 
-If this path is not suitable for receiving heap dumps, modify the `-XX:HeapDumpPath=...` entry in [`jvm.options`](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-options):
+If this path is not suitable for receiving heap dumps, modify the `-XX:HeapDumpPath=...` entry in [`jvm.options`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options):
 
 * If you specify a directory, the JVM will generate a filename for the heap dump based on the PID of the running instance.
 * If you specify a fixed filename instead of a directory, the file must not exist when the JVM needs to perform a heap dump on an out of memory exception. Otherwise, the heap dump will fail.
@@ -180,7 +180,7 @@ If this path is not suitable for receiving heap dumps, modify the `-XX:HeapDumpP
 
 ## GC logging settings [_gc_logging_settings]
 
-By default, {{es}} enables garbage collection (GC) logs. These are configured in [`jvm.options`](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-options) and output to the same default location as the {{es}} logs. The default configuration rotates the logs every 64 MB and can consume up to 2 GB of disk space.
+By default, {{es}} enables garbage collection (GC) logs. These are configured in [`jvm.options`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) and output to the same default location as the {{es}} logs. The default configuration rotates the logs every 64 MB and can consume up to 2 GB of disk space.
 
 You can reconfigure JVM logging using the command line options described in [JEP 158: Unified JVM Logging](https://openjdk.java.net/jeps/158). Unless you change the default `jvm.options` file directly, the {{es}} default configuration is applied in addition to your own settings. To disable the default configuration, first disable logging by supplying the `-Xlog:disable` option, then supply your own command line options. This disables *all* JVM logging, so be sure to review the available options and enable everything that you require.
 
@@ -225,7 +225,7 @@ If you intend to run the `.tar.gz` distribution on Linux or MacOS for an extende
 
 By default, {{es}} configures the JVM to write fatal error logs to the default logging directory. On [RPM](install-elasticsearch-with-rpm.md) and [Debian](install-elasticsearch-with-debian-package.md) packages, this directory is `/var/log/elasticsearch`. On [Linux and MacOS](install-elasticsearch-from-archive-on-linux-macos.md) and [Windows](install-elasticsearch-with-zip-on-windows.md) distributions, the `logs` directory is located under the root of the {{es}} installation.
 
-These are logs produced by the JVM when it encounters a fatal error, such as a segmentation fault. If this path is not suitable for receiving logs, modify the `-XX:ErrorFile=...` entry in [`jvm.options`](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-options).
+These are logs produced by the JVM when it encounters a fatal error, such as a segmentation fault. If this path is not suitable for receiving logs, modify the `-XX:ErrorFile=...` entry in [`jvm.options`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options).
 
 
 ## Cluster backups [important-settings-backups]

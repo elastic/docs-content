@@ -182,7 +182,7 @@ sudo ./filebeat setup \
 1. Specify the Cloud ID of your Elastic Cloud Enterprise deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
 3. The four lines related to `ssl` are only needed if you are using self-signed certificates.::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html) of the filebeat.yml.
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md) of the filebeat.yml.
 ::::
 
 
@@ -388,7 +388,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
     ```
 
     1. Use the Cloud ID of your Elastic Cloud Enterprise deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-    2. the default usename is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/feature-roles.md) for information on the writer role and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Grant access to secured resources](https://www.elastic.co/guide/en/beats/filebeat/current/feature-roles.html) documentation.
+    2. the default usename is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/feature-roles.md) for information on the writer role and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/feature-roles.md) documentation.
     3. The cacert line is only needed if you are using a self-signed certificate.
 
 

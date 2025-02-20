@@ -284,7 +284,7 @@ GET /my-index-000001/_search?size=0
 }
 ```
 
-Scripts calculate field values dynamically, which adds a little overhead to the aggregation. In addition to the time spent calculating, some aggregations like [`terms`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) and [`filters`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-filters-aggregation.md) can’t use some of their optimizations with runtime fields. In total, performance costs for using a runtime field varies from aggregation to aggregation.
+Scripts calculate field values dynamically, which adds a little overhead to the aggregation. In addition to the time spent calculating, some aggregations like [`terms`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) and [`filters`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-filters-aggregation.md) can’t use some of their optimizations with runtime fields. In total, performance costs for using a runtime field varies from aggregation to aggregation.
 
 ## Aggregation caches [agg-caches]
 
@@ -294,4 +294,4 @@ For faster responses, {{es}} caches the results of frequently run aggregations i
 
 ## Limits for `long` values [limits-for-long-values]
 
-When running aggregations, {{es}} uses [`double`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) values to hold and represent numeric data. As a result, aggregations on [`long`](https://www.elastic.co/guide/en/elasticsearch/reference/current/number.html) numbers greater than `253` are approximate.
+When running aggregations, {{es}} uses [`double`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) values to hold and represent numeric data. As a result, aggregations on [`long`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) numbers greater than `253` are approximate.

@@ -43,7 +43,7 @@ This is usually a symptom of the specific usage or scaling strategy of the clust
 
 To address these issues, tweak the {{kib}} Task Manager settings or the cluster scaling strategy to better suit the unique use case.
 
-For details on the settings that can influence the performance and throughput of Task Manager, see [Task Manager Settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html).
+For details on the settings that can influence the performance and throughput of Task Manager, see [Task Manager Settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md).
 
 For detailed troubleshooting guidance, see [Troubleshooting](../../troubleshoot/kibana/task-manager.md).
 
@@ -83,9 +83,9 @@ At times, the sustainable approach might be to expand the throughput of your clu
 
 Other times it, might be preferable to increase the throughput of individual {{kib}} instances.
 
-Tweak the capacity with the [`xpack.task_manager.capacity`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) setting, which enables each {{kib}} instance to pull a higher number of tasks per interval. This setting can impact the performance of each instance as the workload will be higher.
+Tweak the capacity with the [`xpack.task_manager.capacity`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which enables each {{kib}} instance to pull a higher number of tasks per interval. This setting can impact the performance of each instance as the workload will be higher.
 
-Tweak the poll interval with the [`xpack.task_manager.poll_interval`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) setting, which enables each {{kib}} instance to pull scheduled tasks at a higher rate. This setting can impact the performance of the {{es}} cluster as the workload will be higher.
+Tweak the poll interval with the [`xpack.task_manager.poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which enables each {{kib}} instance to pull scheduled tasks at a higher rate. This setting can impact the performance of the {{es}} cluster as the workload will be higher.
 
 
 ### Choosing a scaling strategy [task-manager-choosing-scaling-strategy] 

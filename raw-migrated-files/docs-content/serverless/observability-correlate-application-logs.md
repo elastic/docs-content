@@ -87,8 +87,8 @@ Correlate your application logs with trace events to:
 Learn more about log correlation in the agent-specific ingestion guides:
 
 * [Go](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/logs.md)
-* [Java](https://www.elastic.co/guide/en/apm/agent/java/current/logs.html#log-correlation-ids)
+* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/logs.md#log-correlation-ids)
 * [.NET](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/logs.md)
 * [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/logs.md)
-* [Python](https://www.elastic.co/guide/en/apm/agent/python/current/logs.html#log-correlation-ids)
+* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/logs.md#log-correlation-ids)
 * [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/logs.md)

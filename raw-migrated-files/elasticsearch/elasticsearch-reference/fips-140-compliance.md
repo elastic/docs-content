@@ -59,14 +59,14 @@ FIPS 140-2 (via NIST Special Publication 800-132) dictates that encryption keys 
 SSLv2 and SSLv3 are not allowed by FIPS 140-2, so `SSLv2Hello` and `SSLv3` cannot be used for [`ssl.supported_protocols`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 
 ::::{note} 
-The use of TLS ciphers is mainly governed by the relevant crypto module (the FIPS Approved Security Provider that your JVM uses). All the ciphers that are configured by default in {{es}} are FIPS 140-2 compliant and as such can be used in a FIPS 140-2 JVM. See [`ssl.cipher_suites`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ssl-tls-settings).
+The use of TLS ciphers is mainly governed by the relevant crypto module (the FIPS Approved Security Provider that your JVM uses). All the ciphers that are configured by default in {{es}} are FIPS 140-2 compliant and as such can be used in a FIPS 140-2 JVM. See [`ssl.cipher_suites`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 ::::
 
 
 
 ### TLS keystores and keys [_tls_keystores_and_keys] 
 
-Keystores can be used in a number of [General TLS settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ssl-tls-settings) in order to conveniently store key and trust material. Neither `JKS`, nor `PKCS#12` keystores can be used in a FIPS 140-2 configured JVM. Avoid using these types of keystores. Your FIPS 140-2 provider may provide a compliant keystore implementation that can be used, or you can use PEM encoded files. To use PEM encoded key material, you can use the relevant `\*.key` and `*.certificate` configuration options, and for trust material you can use `*.certificate_authorities`.
+Keystores can be used in a number of [General TLS settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings) in order to conveniently store key and trust material. Neither `JKS`, nor `PKCS#12` keystores can be used in a FIPS 140-2 configured JVM. Avoid using these types of keystores. Your FIPS 140-2 provider may provide a compliant keystore implementation that can be used, or you can use PEM encoded files. To use PEM encoded key material, you can use the relevant `\*.key` and `*.certificate` configuration options, and for trust material you can use `*.certificate_authorities`.
 
 FIPS 140-2 compliance dictates that the length of the public keys used for TLS must correspond to the strength of the symmetric key algorithm in use in TLS. Depending on the value of `ssl.cipher_suites` that you select to use, the TLS keys must have corresponding length according to the following table:
 
@@ -83,14 +83,14 @@ $$$comparable-key-strength$$$
 ### Stored password hashing [_stored_password_hashing] 
 
 $$$fips-stored-password-hashing$$$
-While {{es}} offers a number of algorithms for securely hashing credentials on disk, only the `PBKDF2` based family of algorithms is compliant with FIPS 140-2 for stored password hashing. However, since `PBKDF2` is essentially a key derivation function, your JVM security provider may enforce a [112-bit key strength requirement](../../../deploy-manage/security/fips-140-2.md#keystore-fips-password). Although FIPS 140-2 does not mandate user password standards, this requirement may affect password hashing in {{es}}. To comply with this requirement, while allowing you to use passwords that satisfy your security policy, {{es}} offers [pbkdf2_stretch](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings) which is the suggested hashing algorithm when running {{es}} in FIPS 140-2 environments. `pbkdf2_stretch` performs a single round of SHA-512 on the user password before passing it to the `PBKDF2` implementation.
+While {{es}} offers a number of algorithms for securely hashing credentials on disk, only the `PBKDF2` based family of algorithms is compliant with FIPS 140-2 for stored password hashing. However, since `PBKDF2` is essentially a key derivation function, your JVM security provider may enforce a [112-bit key strength requirement](../../../deploy-manage/security/fips-140-2.md#keystore-fips-password). Although FIPS 140-2 does not mandate user password standards, this requirement may affect password hashing in {{es}}. To comply with this requirement, while allowing you to use passwords that satisfy your security policy, {{es}} offers [pbkdf2_stretch](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings) which is the suggested hashing algorithm when running {{es}} in FIPS 140-2 environments. `pbkdf2_stretch` performs a single round of SHA-512 on the user password before passing it to the `PBKDF2` implementation.
 
 ::::{note} 
 You can still use one of the plain `pbkdf2` options instead of `pbkdf2_stretch` if you have external policies and tools that can ensure all user passwords for the reserved, native, and file realms are longer than 14 bytes.
 ::::
 
 
-You must set the `xpack.security.authc.password_hashing.algorithm` setting to one of the available `pbkdf_stretch_*` values. When FIPS-140 mode is enabled, the default value for `xpack.security.authc.password_hashing.algorithm` is `pbkdf2_stretch`. See [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+You must set the `xpack.security.authc.password_hashing.algorithm` setting to one of the available `pbkdf_stretch_*` values. When FIPS-140 mode is enabled, the default value for `xpack.security.authc.password_hashing.algorithm` is `pbkdf2_stretch`. See [User cache and password hash algorithms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
 
 Password hashing configuration changes are not retroactive so the stored hashed credentials of existing users of the reserved, native, and file realms are not updated on disk. To ensure FIPS 140-2 compliance, recreate users or change their password using the [elasticsearch-user](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) CLI tool for the file realm and the [create users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user) and [change password](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password) APIs for the native and reserved realms. Other types of realms are not affected and do not require any changes.
 
@@ -100,7 +100,7 @@ Password hashing configuration changes are not retroactive so the stored hashed 
 $$$fips-cached-password-hashing$$$
 `ssha256` (salted `sha256`) is recommended for cache hashing. Though `PBKDF2` is compliant with FIPS-140-2, it is — by design — slow, and thus not generally suitable as a cache hashing algorithm. Cached credentials are never stored on disk, and salted `sha256` provides an adequate level of security for in-memory credential hashing, without imposing prohibitive performance overhead. You *may* use `PBKDF2`, however you should carefully assess performance impact first. Depending on your deployment, the overhead of `PBKDF2` could undo most of the performance gain of using a cache.
 
-Either set all `cache.hash_algo` settings to `ssha256` or leave them undefined, since `ssha256` is the default value for all `cache.hash_algo` settings. See [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+Either set all `cache.hash_algo` settings to `ssha256` or leave them undefined, since `ssha256` is the default value for all `cache.hash_algo` settings. See [User cache and password hash algorithms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
 
 The user cache will be emptied upon node restart, so any existing hashes using non-compliant algorithms will be discarded and the new ones will be created using the algorithm you have selected.
 

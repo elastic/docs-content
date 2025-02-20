@@ -88,7 +88,7 @@ However, you can update mappings under certain conditions:
 
     * Documents indexed before the mapping update will not have values for the new multi-fields until they are updated or reindexed. Documents indexed after the mapping change will automatically have values for the new multi-fields.
 
-* Some [mapping parameters](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-parameters.md) can be updated for existing fields of certain [data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html).
+* Some [mapping parameters](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-parameters.md) can be updated for existing fields of certain [data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md).
 
 
 ## Prevent mapping explosions [mapping-limit-settings]

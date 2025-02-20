@@ -56,7 +56,7 @@ Example of the possible combinations below:
 
 ## Comparison [_comparison]
 
-Date/time fields can be compared to [date math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math) expressions with the equality (`=`) and `IN` operators:
+Date/time fields can be compared to [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math) expressions with the equality (`=`) and `IN` operators:
 
 ```sql
 SELECT hire_date FROM emp WHERE hire_date = '1987-03-01||+4y/y';

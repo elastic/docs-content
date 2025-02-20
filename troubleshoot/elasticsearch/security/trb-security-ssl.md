@@ -25,7 +25,7 @@ For more information about this setting, see [Security settings](asciidocalypse:
 `java.io.StreamCorruptedException: invalid internal transport message format, got`
 :   Indicates an issue with data received on the transport interface in an unknown format. This can happen when a node with encrypted communication enabled connects to a node that has encrypted communication disabled. Please verify that all nodes are using the same setting for `xpack.security.transport.ssl.enabled`.
 
-For more information about this setting, see [Security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html).
+For more information about this setting, see [Security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md).
 
 
 `java.lang.IllegalArgumentException: empty text`
@@ -35,7 +35,7 @@ For more information about this setting, see [Security settings](https://www.ela
 xpack.security.http.ssl.enabled: true
 ```
 
-For more information about this setting, see [Security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html).
+For more information about this setting, see [Security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md).
 
 
 `ERROR: unsupported ciphers [...] were requested but cannot be used in this JVM`

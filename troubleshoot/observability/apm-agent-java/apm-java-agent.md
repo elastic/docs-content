@@ -34,7 +34,7 @@ Like many other Java agents, our agent instruments classes by injecting bytecode
 
 ## Logging [trouble-shooting-logging]
 
-There are several [logging related configuration options](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-logging.md). The most important one is [`log_level`](https://www.elastic.co/guide/en/apm/agent/java/current/config-logging.html#config-log-level).
+There are several [logging related configuration options](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-logging.md). The most important one is [`log_level`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-logging.md#config-log-level).
 
 Set the log level to `DEBUG` or even `TRACE` to get more information about the behavior of the agent.
 
@@ -114,7 +114,7 @@ Most investigations require using `DEBUG` log level, thus use `DEBUG` unless ask
 
 Here, we will refer to the agent log file as `/tmp/agent.log`, but any other location could be used.
 
-1. configure the agent with `log_level=debug` or `log_level=trace` ([doc](https://www.elastic.co/guide/en/apm/agent/java/current/config-logging.html#config-log-level)) and `log_file=/tmp/agent.log` ([doc](https://www.elastic.co/guide/en/apm/agent/java/current/config-logging.html))
+1. configure the agent with `log_level=debug` or `log_level=trace` ([doc](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-logging.md#config-log-level)) and `log_file=/tmp/agent.log` ([doc](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-logging.md))
 2. truncate the `/tmp/agent.log` file and restart the application
 3. execute a few transactions which aren’t properly captured by the agent
 4. copy the `/tmp/agent.log` file and send it back for investigation
@@ -199,13 +199,13 @@ There are two reasons why this might happen:
     Requests do not reach a servlet
     :   It’s possible to change the default transaction naming to use the URL path instead. See [`use_path_as_transaction_name` ([1.0.0])](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-http.md#config-use-path-as-transaction-name) for more information.
 
-        Unfortunately, this may create a lot of duplicate transactions if they have similar paths. For example, in `/usr/{{id}}`, where `{{id}}` is the user ID, you can end up with as many transactions as there are users. You can mitigate this by using [`url_groups` (deprecated)](https://www.elastic.co/guide/en/apm/agent/java/current/config-http.html#config-url-groups), which will allow the use of wildcards in transaction URLs.
+        Unfortunately, this may create a lot of duplicate transactions if they have similar paths. For example, in `/usr/{{id}}`, where `{{id}}` is the user ID, you can end up with as many transactions as there are users. You can mitigate this by using [`url_groups` (deprecated)](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-http.md#config-url-groups), which will allow the use of wildcards in transaction URLs.
 
 
 If the proposed fixes do not solve the problem, or if a custom name is required, transaction names can be set manually throughout the request handling flow using our API:
 
 * [`Transaction currentTransaction()`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-current-transaction) gets the current transaction.
-* [`Transaction setName(String name)`](https://www.elastic.co/guide/en/apm/agent/java/current/public-api.html#api-set-name) sets the transaction name.
+* [`Transaction setName(String name)`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-set-name) sets the transaction name.
 
 
 ### Libraries compiled against old Java versions [trouble-shooting-old-jdbc-drivers]
@@ -231,7 +231,7 @@ The correct jar file to be pointing at should be in the form of `elastic-apm-age
 
 `unable to find valid certification path to requested target` - server authentication fails. Check out [APM Server certificate authentication](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/ssl-configuration.md#ssl-server-authentication).
 
-`java.net.SocketException: Broken pipe` - one option is that client authentication fails. Check out [Agent certificate authentication](https://www.elastic.co/guide/en/apm/agent/java/current/ssl-configuration.html#ssl-client-authentication).
+`java.net.SocketException: Broken pipe` - one option is that client authentication fails. Check out [Agent certificate authentication](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/ssl-configuration.md#ssl-client-authentication).
 
 With Oracle Weblogic application server wildcard TLS certificates are not allowed by default, when this happens a message error like this is visible in agent logs: `Hostname verification failed: HostnameVerifier=weblogic.security.utils.SSLWLSHostnameVerifier`. Disabling this extra check can be done with `-Dweblogic.security.SSL.ignoreHostnameVerification=true`.
 
@@ -273,9 +273,9 @@ If you use `jlink` to create a custom runtime, make sure the following modules a
 
 In the unlikely event the agent causes disruptions to a production application, you can disable the agent while you troubleshoot.
 
-Using [dynamic configuration](https://www.elastic.co/guide/en/apm/agent/java/current/configuration.html#configuration-dynamic), you can disable the recording of events by setting [`recording`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-recording) to `false`.
+Using [dynamic configuration](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md#configuration-dynamic), you can disable the recording of events by setting [`recording`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-recording) to `false`.
 
-If that doesn’t work, you can completely disable the agent by setting [`enabled`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-enabled) to `false`. You’ll need to restart your application for this change to take effect.
+If that doesn’t work, you can completely disable the agent by setting [`enabled`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-enabled) to `false`. You’ll need to restart your application for this change to take effect.
 
 
 ## Unsupported framework versions [trouble-shooting-unsupported-framework-versions]

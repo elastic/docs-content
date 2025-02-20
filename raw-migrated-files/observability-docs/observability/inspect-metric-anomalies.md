@@ -44,7 +44,7 @@ Once you create {{ml}} jobs, you can not change the settings. You can recreate t
     To drill down and analyze the metric anomaly, select **Actions → Open in Anomaly Explorer** to view the [Anomaly Explorer in {{ml-app}}](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-results). You can also select **Actions → Show in Inventory** to view the host or Kubernetes pods Inventory page, filtered by the specific metric.
 
     ::::{note}
-    These predefined {{anomaly-jobs}} use [custom rules](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-rules). To update the rules in the [Anomaly Explorer](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results), select **actions → Configure rules**. The changes only take effect for new results. If you want to apply the changes to existing results, clone and rerun the job.
+    These predefined {{anomaly-jobs}} use [custom rules](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-rules). To update the rules in the [Anomaly Explorer](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-results), select **actions → Configure rules**. The changes only take effect for new results. If you want to apply the changes to existing results, clone and rerun the job.
 
     ::::
 
@@ -52,7 +52,7 @@ Once you create {{ml}} jobs, you can not change the settings. You can recreate t
 
 ## History chart [history-chart]
 
-On the **Inventory** page, click **Show history** to view the metric values within the selected time frame. Detected anomalies with an anomaly score equal to 50, or higher, are highlighted in red. To examine the detected anomalies, use the [Anomaly Explorer](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results).
+On the **Inventory** page, click **Show history** to view the metric values within the selected time frame. Detected anomalies with an anomaly score equal to 50, or higher, are highlighted in red. To examine the detected anomalies, use the [Anomaly Explorer](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-results).
 
 :::{image} ../../../images/observability-metrics-history-chart.png
 :alt: History

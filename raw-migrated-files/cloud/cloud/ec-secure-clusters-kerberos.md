@@ -19,7 +19,7 @@ With a custom bundle containing the Kerberos files and changes to the cluster co
     You should use these exact filenames for Elasticsearch Service to recognize the file in the bundle.
     ::::
 
-3. Edit your cluster configuration, sometimes also referred to as the deployment plan, to define Kerberos settings as described in [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/kerberos-realm.html).
+3. Edit your cluster configuration, sometimes also referred to as the deployment plan, to define Kerberos settings as described in [Elasticsearch documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
 
     ```sh
     xpack.security.authc.realms.kerberos.cloud-krb:

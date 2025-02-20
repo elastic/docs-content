@@ -66,9 +66,9 @@ To set up the AI Assistant:
 
 2. From **Project settings** → **Management** → **Connectors**, create a connector for your AI provider:
 
-    * [OpenAI](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html)
-    * [Amazon Bedrock](https://www.elastic.co/guide/en/kibana/current/bedrock-action-type.html)
-    * [Google Gemini](https://www.elastic.co/guide/en/kibana/current/gemini-action-type.html)
+    * [OpenAI](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md)
+    * [Amazon Bedrock](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md)
+    * [Google Gemini](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md)
 
 3. Authenticate communication between {{obs-serverless}} and the AI provider by providing the following information:
 
@@ -311,4 +311,4 @@ Enabling that feature can be done from the **Settings** tab of the AI Assistant 
 
 ### Token limits [token-limits]
 
-Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you are using an OpenAI connector, you can monitor token usage in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html#openai-connector-token-dashboard).
+Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you are using an OpenAI connector, you can monitor token usage in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).

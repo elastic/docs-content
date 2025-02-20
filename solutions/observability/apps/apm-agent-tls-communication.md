@@ -64,13 +64,13 @@ When the APM server uses a certificate that is not chained to a publicly-trusted
 
 We do not recommend disabling {{apm-agent}} verification of the server’s certificate, but it is possible:
 
-* **Go agent**: [`ELASTIC_APM_VERIFY_SERVER_CERT`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-verify-server-cert)
-* **.NET agent**: [`VerifyServerCert`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-reporter.html#config-verify-server-cert)
+* **Go agent**: [`ELASTIC_APM_VERIFY_SERVER_CERT`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-verify-server-cert)
+* **.NET agent**: [`VerifyServerCert`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-reporter.md#config-verify-server-cert)
 * **Java agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-reporter.md#config-verify-server-cert)
 * **PHP agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-verify-server-cert)
-* **Python agent**: [`verify_server_cert`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-verify-server-cert)
-* **Ruby agent**: [`verify_server_cert`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-verify-server-cert)
-* **Node.js agent**: [`verifyServerCert`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#validate-server-cert)
+* **Python agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-verify-server-cert)
+* **Ruby agent**: [`verify_server_cert`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-verify-server-cert)
+* **Node.js agent**: [`verifyServerCert`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#validate-server-cert)
 
 
 ## Client certificate authentication [apm-agent-client-cert] 

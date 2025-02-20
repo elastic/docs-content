@@ -56,7 +56,7 @@ curl -XPOST \
 ```
 
 1. Optional: You can specify a version for the deployment. If this field is omitted a default version is used.
-2. Required: One of the [available regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) must be provided in the request.
+2. Required: One of the [available regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) must be provided in the request.
 
 
 A `resource` field can be included in this request (check the following, manual example for the field details). When a `resource` is present, the content of the request is used instead of any default values provided by the the deployment template.
@@ -259,11 +259,11 @@ curl -XPOST \
 '
 ```
 
-1. [Available Regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html)
+1. [Available Regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md)
 2. Availability zones for the Elasticsearch cluster
-3. [Available instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html)
+3. [Available instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md)
 4. Memory allocated for each Elasticsearch node
-5. [Available templates](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html)
+5. [Available templates](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md)
 6. Availability zones for Kibana
 7. Memory allocated for Kibana
 8. Availability zones for Integrations Server

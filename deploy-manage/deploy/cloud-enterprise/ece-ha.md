@@ -35,10 +35,10 @@ $$$ece-ha-tiebreaker$$$Tiebreakers are used in distributed clusters to avoid cas
 
 When you create a cluster with nodes in two availability zones when a third zone is available, Elastic Cloud Enterprise can create a tiebreaker in the third availability zone to help establish quorum in case of loss of an availability zone. The extra tiebreaker node that helps to provide quorum does not have to be a full-fledged and expensive node, as it does not hold data. For example: By tagging allocators hosts in Elastic Cloud Enterprise, can you create a cluster with eight nodes each in zones `ece-1a` and `ece-1b`, for a total of 16 nodes, and one tiebreaker node in zone `ece-1c`. This cluster can lose any of the three availability zones whilst maintaining quorum, which means that the cluster can continue to process user requests, provided that there is sufficient capacity available when an availability zone goes down.
 
-By default, each node in an {{es}} cluster is a master-eligible node and a data node. In larger clusters, such as production clusters, it’s a good practice to split the roles, so that master nodes are not handling search or indexing work. When you create a cluster, you can specify to use dedicated [master-eligible nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#master-node), one per availability zone.
+By default, each node in an {{es}} cluster is a master-eligible node and a data node. In larger clusters, such as production clusters, it’s a good practice to split the roles, so that master nodes are not handling search or indexing work. When you create a cluster, you can specify to use dedicated [master-eligible nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#master-node), one per availability zone.
 
 ::::{warning}
-Clusters that only have two or fewer master-eligible node are not [highly available](https://www.elastic.co/guide/en/elasticsearch/reference/current/high-availability-cluster-design.html) and are at risk of data loss. You must have [at least three master-eligible nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html).
+Clusters that only have two or fewer master-eligible node are not [highly available](/deploy-manage/production-guidance/availability-and-resilience.md) and are at risk of data loss. You must have [at least three master-eligible nodes](/deploy-manage/distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md).
 ::::
 
 

@@ -320,7 +320,7 @@ GET /cooking_blog/_search
 
 
 
-Learn more about fields and per-field boosting in the [`multi_match` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html) reference.
+Learn more about fields and per-field boosting in the [`multi_match` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-multi-match-query.md) reference.
 
 ::::{dropdown} Example response
 ```console-result
@@ -465,7 +465,7 @@ Avoid using the `term` query for [`text` fields](asciidocalypse://docs/elasticse
 
 ## Step 6: Combine multiple search criteria [full-text-filter-tutorial-complex-bool] 
 
-A [`bool`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) query allows you to combine multiple query clauses to create sophisticated searches. In this tutorial scenario it’s useful for when users have complex requirements for finding recipes.
+A [`bool`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md) query allows you to combine multiple query clauses to create sophisticated searches. In this tutorial scenario it’s useful for when users have complex requirements for finding recipes.
 
 Let’s create a query that addresses the following user needs:
 
@@ -571,7 +571,7 @@ GET /cooking_blog/_search
 }
 ```
 
-1. The title contains "Spicy" and "Curry", matching our should condition. With the default [best_fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html#type-best-fields) behavior, this field contributes most to the relevance score.
+1. The title contains "Spicy" and "Curry", matching our should condition. With the default [best_fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-multi-match-query.md#type-best-fields) behavior, this field contributes most to the relevance score.
 2. While the description also contains matching terms, only the best matching field’s score is used by default.
 3. The recipe was published within the last month, satisfying our recency preference.
 4. The "Main Course" category satisfies another `should` condition.

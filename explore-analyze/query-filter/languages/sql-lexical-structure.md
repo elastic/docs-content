@@ -51,7 +51,7 @@ Another example:
 SELECT "from" FROM "<logstash-{now/d}>"
 ```
 
-The first identifier from needs to quoted as otherwise it clashes with the `FROM` key word (which is case insensitive as thus can be written as `from`) while the second identifier using {{es}} [Date math support in index and index alias names](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-date-math-index-names) would have otherwise confuse the parser.
+The first identifier from needs to quoted as otherwise it clashes with the `FROM` key word (which is case insensitive as thus can be written as `from`) while the second identifier using {{es}} [Date math support in index and index alias names](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names) would have otherwise confuse the parser.
 
 Hence why in general, **especially** when dealing with user input it is **highly** recommended to use quotes for identifiers. It adds minimal increase to your queries and in return offers clarity and disambiguation.
 

@@ -111,4 +111,4 @@ You can [contact us](https://www.elastic.co/contact) for an estimate and recomme
 
 * [{{es}} - Get ready for production](https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html)
 * [{{ess}} - Preparing a deployment for production](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
-* [Size your shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html)
+* [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)

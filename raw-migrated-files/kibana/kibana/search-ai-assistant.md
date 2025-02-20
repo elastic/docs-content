@@ -112,7 +112,7 @@ To create a connector and make its content available to the AI Assistant knowled
 
 1. **In {{kib}} UI, go to *Search → Content → Connectors* and follow the instructions to create a new connector.**
 
-    For example, if you create a [GitHub connector](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors-github.html) you must set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
+    For example, if you create a [GitHub connector](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/es-connectors-github.md) you must set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
 
     ::::{tip}
     Learn more about configuring and [using connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/connectors-ui-in-kibana.md) in the Elasticsearch documentation.

@@ -147,7 +147,7 @@ PUT _component_template/my-settings
 
 Use your component templates to create an index template. Specify:
 
-* One or more index patterns that match the data stream’s name. We recommend using our [data stream naming scheme](https://www.elastic.co/guide/en/fleet/current/data-streams.html#data-streams-naming-scheme).
+* One or more index patterns that match the data stream’s name. We recommend using our [data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
 * That the template is data stream enabled.
 * Any component templates that contain your mappings and index settings.
 * A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../templates.md#avoid-index-pattern-collisions).

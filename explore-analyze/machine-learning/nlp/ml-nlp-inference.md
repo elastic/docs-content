@@ -39,7 +39,7 @@ In {{kib}}, you can create and edit pipelines in **{{stack-manage-app}}** > **In
             }
             ```
 
-        2. You can also optionally add [classification configuration options](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html#inference-processor-classification-opt) in the **{{infer-cap}} configuration** section. For example, to include the top five language predictions:
+        2. You can also optionally add [classification configuration options](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md#inference-processor-classification-opt) in the **{{infer-cap}} configuration** section. For example, to include the top five language predictions:
 
             ```js
             {

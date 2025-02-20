@@ -524,7 +524,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}, which will
 8. Specify a name for your {{fleet-server}} host, for example `Fleet Server`.
 9. Specify the host URL where {{agents}} will reach {{fleet-server}}, for example: `http://10.128.0.203:8220`. This is the inet value that you copied from the `ifconfig` output.
 
-    Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
+    Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
 
 10. Click **Generate Fleet Server policy**. A policy is created that contains all of the configuration settings for the {{fleet-server}} instance.
 11. On the **Install Fleet Server to a centralized host** step, for this example we select the **Linux Tar** tab, but you can instead select the tab appropriate to the host operating system where you’re setting up {{fleet-server}}.

@@ -142,7 +142,7 @@ spec:
 
 ### Larger read-only assets (1 MiB+) [k8s-logstash-working-with-plugins-large-ro]
 
-Some plugins require or allow access to static read-only files that exceed the 1 MiB (mebibyte) limit imposed by ConfigMap and Secret. For example, you may need JAR files to load drivers when using a JDBC or JMS plugin, or a large [`logstash-filter-translate`](https://www.elastic.co/guide/en/logstash/current/plugins-filters-translate.html) dictionary.
+Some plugins require or allow access to static read-only files that exceed the 1 MiB (mebibyte) limit imposed by ConfigMap and Secret. For example, you may need JAR files to load drivers when using a JDBC or JMS plugin, or a large [`logstash-filter-translate`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-translate.md) dictionary.
 
 You can add files using:
 
@@ -344,12 +344,12 @@ spec:
 * They **must** specify `pipeline.workers=1` for any pipelines that use them.
 * The number of pods cannot be scaled above 1.
 
-Examples of aggregating filters include [`logstash-filter-aggregate`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-aggregate.md), [`logstash-filter-csv`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-csv.md) when `autodetect_column_names` set to `true`, and any [`logstash-filter-ruby`](https://www.elastic.co/guide/en/logstash/current/plugins-filters-ruby.html) implementations that perform aggregations.
+Examples of aggregating filters include [`logstash-filter-aggregate`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-aggregate.md), [`logstash-filter-csv`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-csv.md) when `autodetect_column_names` set to `true`, and any [`logstash-filter-ruby`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-ruby.md) implementations that perform aggregations.
 
 
 ### Input plugins: events pushed to {{ls}} [k8s-logstash-inputs-data-pushed]
 
-{{ls}} installations with inputs that enable {{ls}} to receive data should be able to scale freely and have load spread across them horizontally. These plugins include [`logstash-input-beats`](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-beats.html), [`logstash-input-elastic_agent`](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html),  [`logstash-input-tcp`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-tcp.md), and [`logstash-input-http`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-http.md).
+{{ls}} installations with inputs that enable {{ls}} to receive data should be able to scale freely and have load spread across them horizontally. These plugins include [`logstash-input-beats`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md), [`logstash-input-elastic_agent`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md),  [`logstash-input-tcp`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-tcp.md), and [`logstash-input-http`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-http.md).
 
 
 ### Input plugins: {{ls}} maintains state [k8s-logstash-inputs-local-checkpoints]
@@ -360,7 +360,7 @@ Note that plugins that retrieve data from external sources, and require some lev
 
 Input plugins that include configuration settings such as  `sincedb`, `checkpoint` or `sql_last_run_metadata` may fall into this category.
 
-Examples of these plugins include [`logstash-input-jdbc`](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-jdbc.html) (which has no automatic way to split queries across {{ls}} instances), [`logstash-input-s3`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-s3.md) (which has no way to split which buckets to read across {{ls}} instances), or [`logstash-input-file`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-file.md).
+Examples of these plugins include [`logstash-input-jdbc`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md) (which has no automatic way to split queries across {{ls}} instances), [`logstash-input-s3`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-s3.md) (which has no way to split which buckets to read across {{ls}} instances), or [`logstash-input-file`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-file.md).
 
 
 ### Input plugins: external source stores state [k8s-logstash-inputs-external-state]
@@ -369,7 +369,7 @@ Examples of these plugins include [`logstash-input-jdbc`](https://www.elastic.co
 
 For example, a {{ls}} installation that uses a [`logstash-input-kafka`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-kafka.md) plugin to retrieve data can scale the number of pods up to the number of partitions used, as a partition can have at most one consumer belonging to the same consumer group. Any pods created beyond that threshold cannot be scheduled to receive data.
 
-Examples of these plugins include [`logstash-input-kafka`](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-kafka.html), [`logstash-input-azure_event_hubs`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-azure_event_hubs.md), and [`logstash-input-kinesis`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-kinesis.md).
+Examples of these plugins include [`logstash-input-kafka`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-kafka.md), [`logstash-input-azure_event_hubs`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-azure_event_hubs.md), and [`logstash-input-kinesis`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-kinesis.md).
 
 
 
@@ -447,7 +447,7 @@ stringData:
 
 ### Elastic Agent input and Beats input plugins [k8s-logstash-plugin-considerations-agent-beats]
 
-When you use the [Elastic Agent input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html) or the [Beats input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-beats.html), set the [`ttl`](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/logstash-output.md#_ttl) value on the Agent or Beat to ensure that load is distributed appropriately.
+When you use the [Elastic Agent input](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md) or the [Beats input](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md), set the [`ttl`](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/logstash-output.md#_ttl) value on the Agent or Beat to ensure that load is distributed appropriately.
 
 
 

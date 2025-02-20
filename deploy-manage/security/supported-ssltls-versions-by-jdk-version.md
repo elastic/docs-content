@@ -95,7 +95,7 @@ jdk.tls.disabledAlgorithms=SSLv3, TLSv1, RC4, DES, MD5withRSA, \
 
 To enable your custom security policy, add a file in the [`jvm.options.d`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) directory within your {{es}} configuration directory.
 
-To enable your custom security policy, create a file named `java.security.options` within the [jvm.options.d](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-options) directory of your {{es}} configuration directory, with this content:
+To enable your custom security policy, create a file named `java.security.options` within the [jvm.options.d](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options) directory of your {{es}} configuration directory, with this content:
 
 ```text
 -Djava.security.properties=/path/to/your/es.java.security

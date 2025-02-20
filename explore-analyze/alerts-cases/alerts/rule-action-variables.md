@@ -221,7 +221,7 @@ You can enhance the values contained in Mustache variables when the Mustache tem
 
 ### Rendering objects as JSON [_rendering_objects_as_json]
 
-Some connectors (such as the [Webhook connector](https://www.elastic.co/guide/en/kibana/current/webhook-action-type.html)) expect JSON values to be passed as parameters when the connector is invoked. The following capabilities are available:
+Some connectors (such as the [Webhook connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md)) expect JSON values to be passed as parameters when the connector is invoked. The following capabilities are available:
 
 * Array values referenced in braces have a predefined rendering by Mustache as string versions of the array elements, joined with a comma (`,`). To render array values as JSON, access the `asJSON` property of the array, instead of the array directly. For example, given a Mustache variable `context.values` that has the value `[1, 4, 9]` the Mustache template `{{context.values}}` will render as `1,4,9`, and the Mustache template `{{context.values.asJSON}}` will render as `[1,4,9]`.
 * The [ParseHjson lambda](#parse-hjson-lambda) Mustache lambda makes it easier to create JSON in your templates by using [Hjson](https://hjson.github.io/), a syntax extension to JSON, rather than strict JSON.

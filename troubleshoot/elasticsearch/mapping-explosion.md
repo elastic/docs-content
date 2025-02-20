@@ -24,7 +24,7 @@ Mapping explosion may surface as the following performance symptoms:
 
 If your index mapped fields expect to contain a large, arbitrary set of keys, you may instead consider:
 
-* Setting [`index.mapping.total_fields.ignore_dynamic_beyond_limit`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html) to `true`. Instead of rejecting documents that exceed the field limit, this will ignore dynamic fields once the limit is reached.
+* Setting [`index.mapping.total_fields.ignore_dynamic_beyond_limit`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/mapping-limit-settings.md) to `true`. Instead of rejecting documents that exceed the field limit, this will ignore dynamic fields once the limit is reached.
 * Using the [flattened](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/flattened.md) data type. Please note, however, that flattened objects is [not fully supported in {{kib}}](https://github.com/elastic/kibana/issues/25820) yet. For example, this could apply to sub-mappings like { `host.name` , `host.os`, `host.version` }. Desired fields are still accessed by [runtime fields](../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md).
 * Disable [dynamic mappings](../../manage-data/data-store/mapping.md). This cannot effect current index mapping, but can apply going forward via an [index template](../../manage-data/data-store/templates.md).
 
@@ -56,7 +56,7 @@ However, though less common, it is possible to only experience mapping explosion
 
 This situation most easily surfaces by adding a [data view](../../explore-analyze/find-and-organize/data-views.md) and checking its **Fields** tab for its total fields count. This statistic does tells you overall fields and not only where [`index:true`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-index.md), but serves as a good baseline.
 
-If your issue only surfaces via a [data view](../../explore-analyze/find-and-organize/data-views.md), you may consider this menu’s **Field filters** if you’re not using [multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). Alternatively, you may consider a more targeted index pattern or using a negative pattern to filter-out problematic indices. For example, if `logs-*` has too high a field count because of problematic backing indices `logs-lotsOfFields-*`, then you could update to either `logs-*,-logs-lotsOfFields-*` or `logs-iMeantThisAnyway-*`.
+If your issue only surfaces via a [data view](../../explore-analyze/find-and-organize/data-views.md), you may consider this menu’s **Field filters** if you’re not using [multi-fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). Alternatively, you may consider a more targeted index pattern or using a negative pattern to filter-out problematic indices. For example, if `logs-*` has too high a field count because of problematic backing indices `logs-lotsOfFields-*`, then you could update to either `logs-*,-logs-lotsOfFields-*` or `logs-iMeantThisAnyway-*`.
 
 
 ## Resolve [resolve]

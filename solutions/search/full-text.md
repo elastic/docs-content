@@ -34,7 +34,7 @@ Here are some resources to help you learn more about full-text search with {{es}
 
 Learn about the core components of full-text search:
 
-* [Text fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html)
+* [Text fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md)
 * [Text analysis](full-text/text-analysis-during-search.md)
     * [Tokenizers](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/tokenizer-reference.md)
     * [Analyzers](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analyzer-reference.md)

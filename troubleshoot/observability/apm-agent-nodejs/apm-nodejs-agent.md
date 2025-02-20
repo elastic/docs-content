@@ -30,7 +30,7 @@ To capture enough information for troubleshooting, perform these steps:
 1. Start your app with "trace"-level logging. This can be done by setting the environment variable `ELASTIC_APM_LOG_LEVEL=trace` or adding `logLevel: 'trace'` to the `apm.start(options)` call (see [`logLevel`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#log-level) for details).
 2. Disable a possible custom `logger` config, because a custom logger can result in structured log data being lost. This can be done by setting the environment variable `ELASTIC_APM_LOGGER=false`.
 3. Send a few HTTP requests to some of the app endpoints and/or reproduce the issue you are seeing.
-4. Wait at least 10 seconds to allow the agent to try and connect to the APM Server (controlled by [`apiRequestTime`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#api-request-time)).
+4. Wait at least 10 seconds to allow the agent to try and connect to the APM Server (controlled by [`apiRequestTime`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#api-request-time)).
 
 For example:
 
@@ -54,7 +54,7 @@ The most common source of problems are connection issues between the agent and t
 APM Server transport error (ECONNREFUSED): connect ECONNREFUSED 127.0.0.1:8200
 ```
 
-These may indicate an issue with the agent configuration (see [`serverUrl`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#server-url), [`secretToken`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#secret-token) or [`apiKey`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#api-key)), a network problem between agent and server, or that the APM server is down or misconfigured (see [the APM server troubleshooting docs](/troubleshoot/observability/apm.md)).
+These may indicate an issue with the agent configuration (see [`serverUrl`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#server-url), [`secretToken`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#secret-token) or [`apiKey`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#api-key)), a network problem between agent and server, or that the APM server is down or misconfigured (see [the APM server troubleshooting docs](/troubleshoot/observability/apm.md)).
 
 Also look for error messages starting with `Elastic APM ...`. Some examples:
 
@@ -62,7 +62,7 @@ Also look for error messages starting with `Elastic APM ...`. Some examples:
 Elastic APM agent disabled (`active` is false)
 ```
 
-This indicates that you have likely set the `active` option or the `ELASTIC_APM_ACTIVE` environment variable to `false`. See [the `active` configuration variable docs](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#active).
+This indicates that you have likely set the `active` option or the `ELASTIC_APM_ACTIVE` environment variable to `false`. See [the `active` configuration variable docs](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#active).
 
 ```text
 Elastic APM is incorrectly configured: serverUrl "..." contains an invalid port! (allowed: 1-65535)
@@ -80,5 +80,5 @@ Make sure that the agent is **both required and started at the very top of your 
 
 In the unlikely event the agent causes disruptions to a production application, you can disable the agent while you troubleshoot.
 
-To disable the agent, set [`active`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#active) to `false`. You’ll need to restart your application for the changes to apply.
+To disable the agent, set [`active`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#active) to `false`. You’ll need to restart your application for the changes to apply.
 

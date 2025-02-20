@@ -32,7 +32,7 @@ With {{esql}}, you can execute a single query across multiple clusters.
 
     We recommend using gateway nodes capable of serving as coordinating nodes. The seed nodes can be a subset of these gateway nodes.
 
-* If you use [proxy mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
+* If you use [proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode), the local coordinating node must be able to connect to the configured `proxy_address`. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
 * {{ccs-cap}} requires different security privileges on the local cluster and remote cluster. See [Configure privileges for {{ccs}}](../../../deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-privileges-ccs) and [*Remote clusters*](../../../deploy-manage/remote-clusters.md).
 
 
@@ -417,7 +417,7 @@ FROM my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001
 | LIMIT 10
 ```
 
-A `_remote` enrich cannot be executed after a [stats](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-commands.html#esql-stats-by) command. The following example would result in an error:
+A `_remote` enrich cannot be executed after a [stats](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-stats-by) command. The following example would result in an error:
 
 ```esql
 FROM my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001

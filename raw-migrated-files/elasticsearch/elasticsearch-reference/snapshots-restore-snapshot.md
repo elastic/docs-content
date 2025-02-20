@@ -289,7 +289,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
     Use this file realm user to authenticate requests until the restore operation is complete.
 
-4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-management-settings.html#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
+4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
 
     ```console
     PUT _cluster/settings

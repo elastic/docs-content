@@ -155,7 +155,7 @@ The snapshot process runs in the background. To monitor its progress, see [Monit
 
 ### {{slm-init}} retention [slm-retention-task]
 
-{{slm-init}} snapshot retention is a cluster-level task that runs separately from a policy’s snapshot schedule. To control when the {{slm-init}} retention task runs, configure the [`slm.retention_schedule`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-settings.html#slm-retention-schedule) cluster setting.
+{{slm-init}} snapshot retention is a cluster-level task that runs separately from a policy’s snapshot schedule. To control when the {{slm-init}} retention task runs, configure the [`slm.retention_schedule`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-retention-schedule) cluster setting.
 
 ```console
 PUT _cluster/settings
@@ -184,7 +184,7 @@ A snapshot repository can safely scale to thousands of snapshots. However, to ma
 
 ## Manually create a snapshot [manually-create-snapshot]
 
-To take a snapshot without an {{slm-init}} policy, use the [create snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create). The snapshot name supports [date math](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-date-math-index-names).
+To take a snapshot without an {{slm-init}} policy, use the [create snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create). The snapshot name supports [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names).
 
 ```console
 # PUT _snapshot/my_repository/<my_snapshot_{now/d}>

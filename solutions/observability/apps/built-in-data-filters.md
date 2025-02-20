@@ -33,12 +33,12 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 
 Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](apm-agent-central-configuration.md):
 
-* Go: [`ELASTIC_APM_CAPTURE_HEADERS`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-capture-headers)
-* Java: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-capture-headers)
+* Go: [`ELASTIC_APM_CAPTURE_HEADERS`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-capture-headers)
+* Java: [`capture_headers`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-capture-headers)
 * .NET: [`CaptureHeaders`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-http.md#config-capture-headers)
-* Node.js: [`captureHeaders`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#capture-headers)
-* Python: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-capture-headers)
-* Ruby: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-capture-headers)
+* Node.js: [`captureHeaders`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#capture-headers)
+* Python: [`capture_headers`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-capture-headers)
+* Ruby: [`capture_headers`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-capture-headers)
 
 
 ## HTTP bodies [apm-filters-http-body]
@@ -47,12 +47,12 @@ By default, the body of HTTP requests is not recorded. Request bodies often cont
 
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
-* Go: [`ELASTIC_APM_CAPTURE_BODY`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-capture-body)
-* Java: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/java/current/config-core.html#config-capture-body)
-* .NET: [`CaptureBody`](https://www.elastic.co/guide/en/apm/agent/dotnet/current/config-http.html#config-capture-body)
-* Node.js: [`captureBody`](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#capture-body)
-* Python: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-capture-body)
-* Ruby: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-capture-body)
+* Go: [`ELASTIC_APM_CAPTURE_BODY`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-capture-body)
+* Java: [`capture_body`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-capture-body)
+* .NET: [`CaptureBody`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-http.md#config-capture-body)
+* Node.js: [`captureBody`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#capture-body)
+* Python: [`capture_body`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-capture-body)
+* Ruby: [`capture_body`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-capture-body)
 
 
 ## Personal data [apm-filters-personal-data]
@@ -91,5 +91,5 @@ Certain agents offer additional filtering and obfuscating options:
 
 **Agent configuration options**
 
-* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html#capture-exceptions).
+* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#capture-exceptions).
 * (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-reporter.md#config-include-process-args).

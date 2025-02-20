@@ -53,7 +53,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     There is now a separate graph for each network interface.
 
-7. Let’s visualize one of the graphs in [TSVB](https://www.elastic.co/guide/en/kibana/current/legacy-editors.html#tsvb-panel). Choose a graph, click **Actions**, and then select **Open In Visualize**.
+7. Let’s visualize one of the graphs in [TSVB](/explore-analyze/visualize/legacy-editors.md#tsvb-panel). Choose a graph, click **Actions**, and then select **Open In Visualize**.
 
     In this visualization the max of `host.network.egress.bytes` is displayed, filtered by `host.name` and `system.network.name`.
 

@@ -516,7 +516,7 @@ POST _application/search_application/my_search_application/_search
 Text search results and ELSER search results are expected to have significantly different scores in some cases, which makes ranking challenging. To find the best search result mix for your dataset, we suggest experimenting with the boost values provided in the example template:
 
 * `text_query_boost` to boost the BM25 query as a whole
-* [`boost`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_boosting) fields to boost individual text search fields
+* [`boost`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-query-string-query.md#_boosting) fields to boost individual text search fields
 * [`min_score`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-min_score) parameter to omit significantly low confidence results
 
 The above boosts should be sufficient for many use cases, but there are cases when adding a [rescore](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/filter-search-results.md#rescore) query or [index boost](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/search-multiple-data-streams-indices.md#index-boost) to your template may be beneficial. Remember to update your search application to use the new template using the [put search application command](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put).

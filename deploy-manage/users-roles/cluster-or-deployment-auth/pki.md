@@ -33,7 +33,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
     ::::
 
-2. Optional: The username is defined by the [username_pattern](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-pki-settings). If you want to use something other than the CN of the Subject DN as the username, you can specify a regex to extract the desired username. The regex is applied on the Subject DN.
+2. Optional: The username is defined by the [username_pattern](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings). If you want to use something other than the CN of the Subject DN as the username, you can specify a regex to extract the desired username. The regex is applied on the Subject DN.
 
     For example, the regex in the following configuration extracts the email address from the Subject DN:
 
@@ -70,7 +70,7 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     * The interface must *trust* the certificate that is presented by the client by configuring either the `truststore` or `certificate_authorities` paths, or by setting `verification_mode` to `none`.
     * The *protocols* supported by the interface must be compatible with those used by the client.
 
-    For an explanation of these settings, see [General TLS settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ssl-tls-settings).
+    For an explanation of these settings, see [General TLS settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 
     The relevant network interface (transport or http) must be configured to trust any certificate that is to be used within the PKI realm. However, it is possible to configure the PKI realm to trust only a *subset* of the certificates accepted by the network interface. This is useful when the SSL/TLS layer trusts clients with certificates that are signed by a different CA than the one that signs your users' certificates.
 

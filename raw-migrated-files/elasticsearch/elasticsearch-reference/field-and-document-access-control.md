@@ -117,9 +117,9 @@ Document level security doesn’t apply to write APIs. You must use unique ids f
 ::::
 
 
-The [set security user processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-node-set-security-user-processor.html) attaches user-related details (such as `username`,  `roles`, `email`, `full_name` and `metadata` ) from the current authenticated user to the current document by pre-processing the ingest. When you index data with an ingest pipeline, user details are automatically attached to the document. If the authenticating credential is an API key, the API key `id`, `name` and `metadata` (if it exists and is non-empty) are also attached to the document.
+The [set security user processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) attaches user-related details (such as `username`,  `roles`, `email`, `full_name` and `metadata` ) from the current authenticated user to the current document by pre-processing the ingest. When you index data with an ingest pipeline, user details are automatically attached to the document. If the authenticating credential is an API key, the API key `id`, `name` and `metadata` (if it exists and is non-empty) are also attached to the document.
 
-For more information see [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-node-set-security-user-processor.html)
+For more information see [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md)
 
 
 ## Field and document level security with Cross-cluster API keys [ccx-apikeys-dls-fls]

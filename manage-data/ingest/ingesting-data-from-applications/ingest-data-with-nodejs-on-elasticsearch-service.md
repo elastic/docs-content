@@ -215,7 +215,7 @@ async function update() {
 update().catch(console.log)
 ```
 
-This [more comprehensive list of API examples](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/examples.md) includes bulk operations, checking the existence of documents, updating by query, deleting, scrolling, and SQL queries. To learn more, check the complete [API reference](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html).
+This [more comprehensive list of API examples](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/examples.md) includes bulk operations, checking the existence of documents, updating by query, deleting, scrolling, and SQL queries. To learn more, check the complete [API reference](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/api-reference.md).
 
 
 ## Switch to API key authentication [ec_switch_to_api_key_authentication]

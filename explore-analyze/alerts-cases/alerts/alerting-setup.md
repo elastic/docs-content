@@ -104,7 +104,7 @@ If a rule requires certain privileges, such as index privileges, to run and a us
 
 ### Restrict actions [alerting-restricting-actions]
 
-For security reasons you may wish to limit the extent to which {{kib}} can connect to external services. You can use [Action settings](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html#action-settings) to disable certain [*Connectors*](../../../deploy-manage/manage-connectors.md) and allowlist the hostnames that {{kib}} can connect with.
+For security reasons you may wish to limit the extent to which {{kib}} can connect to external services. You can use [Action settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#action-settings) to disable certain [*Connectors*](../../../deploy-manage/manage-connectors.md) and allowlist the hostnames that {{kib}} can connect with.
 
 ## Space isolation [alerting-spaces]
 

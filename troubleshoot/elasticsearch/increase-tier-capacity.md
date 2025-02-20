@@ -71,10 +71,10 @@ Now that you know the tier, you want to increase the number of nodes in that tie
     * Find the **Availability zones** selection. If it is less than 3, you can select a higher number of availability zones for that tier.
 
 
-If it is not possible to increase the size per zone or the number of availability zones, you can reduce the number of replicas of your index data. We’ll achieve this by inspecting the [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-number-of-replicas) index setting index setting and decreasing the configured value.
+If it is not possible to increase the size per zone or the number of availability zones, you can reduce the number of replicas of your index data. We’ll achieve this by inspecting the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-number-of-replicas) index setting index setting and decreasing the configured value.
 
 1. Access {{kib}} as described above.
-2. Inspect the [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-number-of-replicas) index setting.
+2. Inspect the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-number-of-replicas) index setting.
 
     ```console
     GET /my-index-000001/_settings/index.number_of_replicas
@@ -150,9 +150,9 @@ The response will look like this:
 1. Represents a comma separated list of data tier node roles this index is allowed to be allocated on, the first one in the list being the one with the higher priority i.e. the tier the index is targeting. e.g. in this example the tier preference is `data_warm,data_hot` so the index is targeting the `warm` tier and more nodes with the `data_warm` role are needed in the {{es}} cluster.
 
 
-Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspect the [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-number-of-replicas) index setting and decrease the configured value:
+Alternatively, if adding more nodes to the {{es}} cluster is not desired, inspect the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-number-of-replicas) index setting and decrease the configured value:
 
-1. Inspect the [`index.number_of_replicas`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-number-of-replicas) index setting for the index with unassigned replica shards:
+1. Inspect the [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-number-of-replicas) index setting for the index with unassigned replica shards:
 
     ```console
     GET /my-index-000001/_settings/index.number_of_replicas

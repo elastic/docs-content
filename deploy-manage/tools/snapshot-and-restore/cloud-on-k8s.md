@@ -20,7 +20,7 @@ Support for S3, GCS and Azure repositories is bundled in Elasticsearch by defaul
 ::::
 
 
-For more information on Elasticsearch snapshots, check [Snapshot and Restore](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html) in the Elasticsearch documentation.
+For more information on Elasticsearch snapshots, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md) in the Elasticsearch documentation.
 
 ## Configuration examples [k8s_configuration_examples]
 
@@ -97,7 +97,7 @@ GCS credentials are automatically propagated into each Elasticsearch node’s ke
 
 #### Register the repository in Elasticsearch [k8s-create-repository]
 
-1. Create the GCS snapshot repository in Elasticsearch. You can either use the [Snapshot and Restore UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html) in Kibana version 7.4.0 or higher, or follow the procedure described in [Snapshot and Restore](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html):
+1. Create the GCS snapshot repository in Elasticsearch. You can either use the [Snapshot and Restore UI](/deploy-manage/tools/snapshot-and-restore.md) in Kibana version 7.4.0 or higher, or follow the procedure described in [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md):
 
     ```sh
     PUT /_snapshot/my_gcs_repository

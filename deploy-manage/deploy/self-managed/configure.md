@@ -477,7 +477,7 @@ $$$telemetry-allowChangingOptInStatus$$$ `telemetry.allowChangingOptInStatus`
 $$$settings-telemetry-optIn$$$ `telemetry.optIn`
 :   Set to `false` to stop sending any telemetry data to Elastic. Reporting your cluster statistics helps us improve your user experience. When `false`, the telemetry data is never sent to Elastic.<br>
 
-    This setting can be changed at any time in [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html). To prevent users from changing it, set [`telemetry.allowChangingOptInStatus`](#telemetry-allowChangingOptInStatus) to `false`. **Default: `true`**
+    This setting can be changed at any time in [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md). To prevent users from changing it, set [`telemetry.allowChangingOptInStatus`](#telemetry-allowChangingOptInStatus) to `false`. **Default: `true`**
 
 
 `vis_type_vega.enableExternalUrls` ![logo cloud](https://doc-icons.s3.us-east-2.amazonaws.com/logo_cloud.svg "Supported on {{ess}}")

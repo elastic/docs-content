@@ -146,13 +146,13 @@ GET index/_search
 
 ## Consider mapping identifiers as `keyword` [map-ids-as-keyword] 
 
-Not all numeric data should be mapped as a [numeric](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) field data type. {{es}} optimizes numeric fields, such as `integer` or `long`, for [`range`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) queries. However, [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) fields are better for [`term`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) and other [term-level](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/term-level-queries.md) queries.
+Not all numeric data should be mapped as a [numeric](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) field data type. {{es}} optimizes numeric fields, such as `integer` or `long`, for [`range`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) queries. However, [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) fields are better for [`term`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) and other [term-level](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/term-level-queries.md) queries.
 
 Identifiers, such as an ISBN or a product ID, are rarely used in `range` queries. However, they are often retrieved using term-level queries.
 
 Consider mapping a numeric identifier as a `keyword` if:
 
-* You don’t plan to search for the identifier data using [`range`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) queries.
+* You don’t plan to search for the identifier data using [`range`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) queries.
 * Fast retrieval is important. `term` query searches on `keyword` fields are often faster than `term` searches on numeric fields.
 
 If you’re unsure which to use, you can use a [multi-field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md) to map the data as both a `keyword` *and* a numeric data type.
@@ -274,7 +274,7 @@ Do not force-merge indices to which you are still writing, or to which you will 
 
 ## Warm up global ordinals [_warm_up_global_ordinals] 
 
-[Global ordinals](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/eager-global-ordinals.md) are a data structure that is used to optimize the performance of aggregations. They are calculated lazily and stored in the JVM heap as part of the [field data cache](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/field-data-cache-settings.md). For fields that are heavily used for bucketing aggregations, you can tell {{es}} to construct and cache the global ordinals before requests are received. This should be done carefully because it will increase heap usage and can make [refreshes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) take longer. The option can be updated dynamically on an existing mapping by setting the [eager global ordinals](https://www.elastic.co/guide/en/elasticsearch/reference/current/eager-global-ordinals.html) mapping parameter:
+[Global ordinals](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/eager-global-ordinals.md) are a data structure that is used to optimize the performance of aggregations. They are calculated lazily and stored in the JVM heap as part of the [field data cache](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/field-data-cache-settings.md). For fields that are heavily used for bucketing aggregations, you can tell {{es}} to construct and cache the global ordinals before requests are received. This should be done carefully because it will increase heap usage and can make [refreshes](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-refresh) take longer. The option can be updated dynamically on an existing mapping by setting the [eager global ordinals](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/eager-global-ordinals.md) mapping parameter:
 
 ```console
 PUT index
@@ -338,7 +338,7 @@ The [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/ma
 
 ## Faster prefix queries with `index_prefixes` [faster-prefix-queries] 
 
-The [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) field has an [`index_prefixes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/index-prefixes.md) option that indexes prefixes of all terms and is automatically leveraged by query parsers to run prefix queries. If your use-case involves running lots of prefix queries, this can speed up queries significantly.
+The [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) field has an [`index_prefixes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/index-prefixes.md) option that indexes prefixes of all terms and is automatically leveraged by query parsers to run prefix queries. If your use-case involves running lots of prefix queries, this can speed up queries significantly.
 
 
 ## Use `constant_keyword` to speed up filtering [faster-filtering-with-constant-keyword] 

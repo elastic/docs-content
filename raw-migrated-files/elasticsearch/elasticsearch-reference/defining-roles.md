@@ -170,7 +170,7 @@ The following describes the structure of a remote cluster permissions entry:
 }
 ```
 
-1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) and [regular expressions](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html). This field is required.
+1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). This field is required.
 2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
 
 

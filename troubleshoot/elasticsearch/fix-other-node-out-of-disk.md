@@ -54,7 +54,7 @@ In order to increase the disk capacity of any other node, you will need to repla
       }
     ```
 
-    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high).
+    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
 
 2. The next step is to find out the current disk usage, this will allow to calculate how much extra space is needed. In the following example, we show only a machine learning node for readability purposes:
 

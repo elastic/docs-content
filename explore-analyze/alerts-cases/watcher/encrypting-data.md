@@ -26,7 +26,7 @@ To encrypt sensitive data in {{watcher}}:
     xpack.watcher.encrypt_sensitive_data: true
     ```
 
-4. Set the [`xpack.watcher.encryption_key` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html) in the [{{es}} keystore](../../../deploy-manage/security/secure-settings.md) on each node in the cluster.
+4. Set the [`xpack.watcher.encryption_key` setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md) in the [{{es}} keystore](../../../deploy-manage/security/secure-settings.md) on each node in the cluster.
 
     For example, run the following command to import the `system_key` file on each node:
 

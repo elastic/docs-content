@@ -152,7 +152,7 @@ This time, the response includes only two hits. The value for `day_of_week` (`Su
 
 ## Retrieve fields from related indices [lookup-runtime-fields]
 
-The [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API can also be used to retrieve fields from the related indices via runtime fields with a type of `lookup`.
+The [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API can also be used to retrieve fields from the related indices via runtime fields with a type of `lookup`.
 
 ::::{note}
 Fields that are retrieved by runtime fields of type `lookup` can be used to enrich the hits in a search response. It’s not possible to query or aggregate on these fields.
@@ -203,7 +203,7 @@ POST logs/_search
 2. The target index where the lookup query executes against
 3. A field on the main index whose values are used as the input values of the lookup term query
 4. A field on the lookup index which the lookup query searches against
-5. A list of fields to retrieve from the lookup index. See the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter of a search request.
+5. A list of fields to retrieve from the lookup index. See the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter of a search request.
 
 
 The above search returns the country and city from the `ip_location` index for each ip address of the returned search hits.

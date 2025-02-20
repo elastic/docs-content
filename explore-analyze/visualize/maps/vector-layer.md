@@ -27,7 +27,7 @@ To add a vector layer to your map, click **Add layer**, then select one of the f
 :   Draw shapes on the map and index in Elasticsearch.
 
 **Documents**
-:   Points, lines, and polyons from Elasticsearch. The index must contain at least one field mapped as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html).
+:   Points, lines, and polyons from Elasticsearch. The index must contain at least one field mapped as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md).
 
     Results are limited to the `index.max_result_window` index setting, which defaults to 10000. Select the appropriate **Scaling** option for your use case.
 
@@ -43,13 +43,13 @@ To add a vector layer to your map, click **Add layer**, then select one of the f
 :   Points and lines associated with anomalies. The {{anomaly-job}} must use a `lat_long` function. Go to [Detecting anomalous locations in geographic data](../../machine-learning/anomaly-detection/geographic-anomalies.md) for an example.
 
 **Point to point**
-:   Aggregated data paths between the source and destination. The index must contain at least 2 fields mapped as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html), source and destination.
+:   Aggregated data paths between the source and destination. The index must contain at least 2 fields mapped as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md), source and destination.
 
 **Top hits per entity**
-:   The layer displays the [most relevant documents per entity](maps-top-hits-aggregation.md). The index must contain at least one field mapped as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html).
+:   The layer displays the [most relevant documents per entity](maps-top-hits-aggregation.md). The index must contain at least one field mapped as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md).
 
 **Tracks**
-:   Create lines from points. The index must contain at least one field mapped as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html).
+:   Create lines from points. The index must contain at least one field mapped as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md).
 
 **Upload Geojson**
 :   Index GeoJSON data in Elasticsearch.

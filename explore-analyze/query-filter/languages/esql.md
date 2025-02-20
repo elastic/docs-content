@@ -53,7 +53,7 @@ You can use it:
 
 Find more details about {{esql}} in the following documentation pages:
 - [{{esql}} reference](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql.md): 
-  - Reference documentation for the [{{esql}} syntax](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-syntax.md), [commands](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md), and [functions and operators](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html).
+  - Reference documentation for the [{{esql}} syntax](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-syntax.md), [commands](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md), and [functions and operators](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md).
   - Information about working with [metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-metadata-fields.md) and [multivalued fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-multivalued-fields.md). 
   - Guidance for [data processing with DISSECT and GROK](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-process-data-with-dissect-grok.md) and [data enrichment with ENRICH](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md).
 

@@ -177,7 +177,7 @@ Well done! You’ve updated the keystore for the transport layer. You can also [
 You can generate certificates for the HTTP layer using your new CA certificate and private key. Other components such as {{kib}} or any of the Elastic language clients verify this certificate when they connect to {{es}}.
 
 ::::{note} 
-If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate instead of using self-signed certificates that the `elasticsearch-certutil` tool generates.
+If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate instead of using self-signed certificates that the `elasticsearch-certutil` tool generates.
 ::::
 
 

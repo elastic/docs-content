@@ -26,7 +26,7 @@ Before you start, [take the upgrade preparation steps](../../../deploy-manage/up
         If you use {{monitor-features}}, you must re-use the data directory when you upgrade {{kib}}. Otherwise, the {{kib}} instance is assigned a new persistent UUID and becomes a new instance in the monitoring data.
         ::::
 
-    4. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, see [{{kib}} plugins](https://www.elastic.co/guide/en/kibana/current/kibana-plugins.html).
+    4. Install the appropriate versions of all your plugins for your new installation using the `kibana-plugin` script. For more information, see [{{kib}} plugins](asciidocalypse://docs/kibana/docs/reference/kibana-plugins.md).
 
 4. Start {{kib}}.
 

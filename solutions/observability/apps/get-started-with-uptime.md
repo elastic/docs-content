@@ -58,7 +58,7 @@ heartbeat.monitors:
 1. Each `monitor` gets its own ID in the {{uptime-app}} and its own schedule entry. This allows tests to be run in parallel and analyzed separately.
 
 
-Read more about configuration options in [Configure {{heartbeat}} monitors](https://www.elastic.co/guide/en/beats/heartbeat/current/configuration-heartbeat-options.html).
+Read more about configuration options in [Configure {{heartbeat}} monitors](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/configuration-heartbeat-options.md).
 
 ::::{warning}
 **Do not use {{heartbeat}} to set up a *new* `browser` monitor.** Instead, use the [{{synthetics-app}}](get-started.md).

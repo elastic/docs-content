@@ -20,13 +20,13 @@ The `custom` analyzer accepts the following parameters:
 :   Analyzer type. Accepts [built-in analyzer types](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analyzer-reference.md). For custom analyzers, use `custom` or omit this parameter.
 
 `tokenizer`
-:   A built-in or customised [tokenizer](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html). (Required)
+:   A built-in or customised [tokenizer](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/tokenizer-reference.md). (Required)
 
 `char_filter`
-:   An optional array of built-in or customised [character filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-charfilters.html).
+:   An optional array of built-in or customised [character filters](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/character-filter-reference.md).
 
 `filter`
-:   An optional array of built-in or customised [token filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html).
+:   An optional array of built-in or customised [token filters](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/token-filter-reference.md).
 
 `position_increment_gap`
 :   When indexing an array of text values, Elasticsearch inserts a fake "gap" between the last term of one value and the first term of the next value to ensure that a phrase query doesn’t match two terms from different array elements. Defaults to `100`. See [`position_increment_gap`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/position-increment-gap.md) for more.
@@ -100,7 +100,7 @@ Tokenizer
 
 
 Token Filters
-:   * [Lowercase Token Filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lowercase-tokenfilter.html)
+:   * [Lowercase Token Filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-lowercase-tokenfilter.md)
 * [Stop Token Filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-stop-tokenfilter.md), configured to use the pre-defined list of English stop words
 
 

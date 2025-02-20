@@ -28,7 +28,7 @@ Thousands separator
 Accounting notation
 :   Putting parentheses around your format like `(0.00)` will use accounting notation to show negative numbers.
 
-The display of these patterns is affected by the [advanced setting](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#kibana-general-settings) `format:number:defaultLocale`. The default locale is `en`, but some examples will specify that they are using an alternate locale.
+The display of these patterns is affected by the [advanced setting](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings) `format:number:defaultLocale`. The default locale is `en`, but some examples will specify that they are using an alternate locale.
 
 Most basic examples:
 

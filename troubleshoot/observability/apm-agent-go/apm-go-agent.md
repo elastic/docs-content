@@ -25,7 +25,7 @@ The agent does not rotate log files. Log rotation must be handled externally.
 ::::
 
 
-With logging enabled, use [`ELASTIC_APM_LOG_LEVEL`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-log-level) to increase the granularity of the agent’s logging. For example: `ELASTIC_APM_LOG_LEVEL=debug`.
+With logging enabled, use [`ELASTIC_APM_LOG_LEVEL`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-log-level) to increase the granularity of the agent’s logging. For example: `ELASTIC_APM_LOG_LEVEL=debug`.
 
 Be sure to execute a few requests to your application before posting your log files. Each request should add lines similar to these in the logs:
 
@@ -40,6 +40,6 @@ If you don’t see lines like these, it’s likely that you haven’t instrument
 
 In the unlikely event the agent causes disruptions to a production application, you can disable the agent while you troubleshoot.
 
-If you have access to [dynamic configuration](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#dynamic-configuration), you can disable the recording of events by setting [`ELASTIC_APM_RECORDING`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-recording) to `false`. When changed at runtime from a supported source, there’s no need to restart your application.
+If you have access to [dynamic configuration](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#dynamic-configuration), you can disable the recording of events by setting [`ELASTIC_APM_RECORDING`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-recording) to `false`. When changed at runtime from a supported source, there’s no need to restart your application.
 
-If that doesn’t work, or you don’t have access to dynamic configuration, you can disable the agent by setting [`ELASTIC_APM_ACTIVE`](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html#config-active) to `false`. Restart your application for the changes to apply.
+If that doesn’t work, or you don’t have access to dynamic configuration, you can disable the agent by setting [`ELASTIC_APM_ACTIVE`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-active) to `false`. Restart your application for the changes to apply.

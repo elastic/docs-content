@@ -27,7 +27,7 @@ Starting from ECK `2.6.1` and Elasticsearch `8.6.1`, Elastic Stack configuration
 * [Index templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template)
 * [Components templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template)
 * [Role mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping)
-* [Elasticsearch Configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html) (configuration settings for Elasticsearch that will go into `elasticsearch.yml`) [ECK 2.11.0]
+* [Elasticsearch Configuration](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) (configuration settings for Elasticsearch that will go into `elasticsearch.yml`) [ECK 2.11.0]
 * [Elasticsearch Secure Settings](../../security/secure-settings.md) [ECK 2.11.0]
 * [Secret Mounts](#k8s-stack-config-policy-specifics-secret-mounts) [ECK 2.11.0]
 

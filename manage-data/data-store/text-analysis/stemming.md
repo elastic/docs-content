@@ -68,7 +68,7 @@ In practice, algorithmic stemmers typically outperform dictionary stemmers. This
 You can use the [`hunspell`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-hunspell-tokenfilter.md) token filter to perform dictionary stemming.
 
 ::::{tip} 
-If available, we recommend trying an algorithmic stemmer for your language before using the [`hunspell`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-hunspell-tokenfilter.html) token filter.
+If available, we recommend trying an algorithmic stemmer for your language before using the [`hunspell`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-hunspell-tokenfilter.md) token filter.
 
 ::::
 
@@ -84,6 +84,6 @@ To prevent this and better control stemming, you can use the following token fil
 * [`keyword_marker`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-keyword-marker-tokenfilter.md), which marks specified tokens as keywords. Keyword tokens are not stemmed by subsequent stemmer token filters.
 * [`conditional`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-condition-tokenfilter.md), which can be used to mark tokens as keywords, similar to the `keyword_marker` filter.
 
-For built-in [language analyzers](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-lang-analyzer.md), you also can use the [`stem_exclusion`](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html#_excluding_words_from_stemming) parameter to specify a list of words that won’t be stemmed.
+For built-in [language analyzers](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-lang-analyzer.md), you also can use the [`stem_exclusion`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-lang-analyzer.md#_excluding_words_from_stemming) parameter to specify a list of words that won’t be stemmed.
 
 

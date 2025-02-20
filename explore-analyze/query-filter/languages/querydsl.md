@@ -78,15 +78,15 @@ $$$query-dsl-allow-expensive-queries$$$
   - Queries that need to do linear scans to identify matches:
 
     - [`script` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-query.md)
-    - queries on [numeric](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md), [date](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md), [boolean](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/boolean.md), [ip](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md), [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) fields that are not indexed but have [doc values](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/doc-values.md) enabled
+    - queries on [numeric](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md), [date](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md), [boolean](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/boolean.md), [ip](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md), [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) fields that are not indexed but have [doc values](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/doc-values.md) enabled
 
   - Queries that have a high up-front cost:
 
-    - [`fuzzy` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-fuzzy-query.md) (except on [`wildcard`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type) fields)
-    - [`regexp` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-regexp-query.md) (except on [`wildcard`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type) fields)
-    - [`prefix` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-prefix-query.md)  (except on [`wildcard`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type) fields or those without [`index_prefixes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/index-prefixes.md))
-    - [`wildcard` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-wildcard-query.md) (except on [`wildcard`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type) fields)
-    - [`range` queries](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-range-query.html) on [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) and [`keyword`](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html) fields
+    - [`fuzzy` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-fuzzy-query.md) (except on [`wildcard`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`regexp` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-regexp-query.md) (except on [`wildcard`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`prefix` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-prefix-query.md)  (except on [`wildcard`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields or those without [`index_prefixes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/index-prefixes.md))
+    - [`wildcard` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-wildcard-query.md) (except on [`wildcard`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type) fields)
+    - [`range` queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) on [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) and [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) fields
 
   - [Joining queries](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/joining-queries.md)
   - Queries that may have a high per-document cost:
@@ -142,8 +142,8 @@ Common filter applications include:
 
 Filter context applies when a query clause is passed to a `filter` parameter, such as:
 
-* `filter` or `must_not` parameters in [`bool`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html)  queries
-* `filter` parameter in [`constant_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-constant-score-query.html) queries
+* `filter` or `must_not` parameters in [`bool`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md)  queries
+* `filter` parameter in [`constant_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-constant-score-query.md) queries
 * [`filter`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-filter-aggregation.md) aggregations
 
 Filters optimize query performance and efficiency, especially for structured data queries and when combined with full-text searches.

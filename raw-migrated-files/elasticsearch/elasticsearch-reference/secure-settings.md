@@ -43,7 +43,7 @@ There are reloadable secure settings for:
 * [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md)
 * [{{watcher}} settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md)
 * [JWT realm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-jwt-settings)
-* [Active Directory realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings)
-* [LDAP realm](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ldap-settings)
+* [Active Directory realm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings)
+* [LDAP realm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)
 * [Remote cluster credentials for the API key based security model](../../../deploy-manage/remote-clusters/remote-clusters-settings.md#remote-cluster-credentials-setting)
 

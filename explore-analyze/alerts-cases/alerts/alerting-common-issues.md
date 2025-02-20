@@ -20,7 +20,7 @@ Rules with a small check interval, such as every two seconds, run later than sch
 
 Rules run as background tasks at a cadence defined by their **check interval**. When a Rule **check interval** is smaller than the Task Manager [`poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings), the rule will run late.
 
-Either tweak the [{{kib}} Task Manager settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) or increase the **check interval** of the rules in question.
+Either tweak the [{{kib}} Task Manager settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) or increase the **check interval** of the rules in question.
 
 For more details, see [Tasks with small schedule intervals run late](../../../troubleshoot/kibana/task-manager.md#task-manager-health-scheduled-tasks-small-schedule-interval-run-late).
 
@@ -76,7 +76,7 @@ and in the [details page](create-manage-rules.md#rule-details):
 :class: screenshot
 :::
 
-If you want your rules to run longer, update the `xpack.alerting.rules.run.timeout` configuration in your [Alerting settings](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html#alert-settings). You can also target a specific rule type by using `xpack.alerting.rules.run.ruleTypeOverrides`.
+If you want your rules to run longer, update the `xpack.alerting.rules.run.timeout` configuration in your [Alerting settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#alert-settings). You can also target a specific rule type by using `xpack.alerting.rules.run.ruleTypeOverrides`.
 
 Rules that consistently run longer than their [check interval](create-manage-rules.md#create-edit-rules) may produce unexpected results. If the average run duration, visible on the [details page](create-manage-rules.md#rule-details), is greater than the check interval, consider increasing the check interval.
 
@@ -244,7 +244,7 @@ This error happens when the `xpack.encryptedSavedObjects.encryptionKey` value us
 |     |     |
 | --- | --- |
 | If the value in `xpack.encryptedSavedObjects.encryptionKey` was manually changed, and the previous encryption key is still known. | Ensure any previous encryption key is included in the keys used for [decryption only](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-encryptedSavedObjects-keyRotation-decryptionOnlyKeys). |
-| If another {{kib}} instance with a different encryption key connects to the cluster. | The other {{kib}} instance might be trying to run the rule using a different encryption key than what the rule was created with. Ensure the encryption keys among all the {{kib}} instances are the same, and setting [decryption only keys](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#xpack-encryptedSavedObjects-keyRotation-decryptionOnlyKeys) for previously used encryption keys. |
+| If another {{kib}} instance with a different encryption key connects to the cluster. | The other {{kib}} instance might be trying to run the rule using a different encryption key than what the rule was created with. Ensure the encryption keys among all the {{kib}} instances are the same, and setting [decryption only keys](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-encryptedSavedObjects-keyRotation-decryptionOnlyKeys) for previously used encryption keys. |
 | If other scenarios don’t apply. | Generate a new API key for the rule. For example, in **{{stack-manage-app}} > {{rules-ui}}**, select **Update API key** from the action menu. |
 
 ## Rules stop running after upgrade [known-issue-upgrade-rule]

@@ -252,13 +252,13 @@ This example relies on:
 
 * Kubernetes nodes in each zone being labeled accordingly. `topology.kubernetes.io/zone` [is standard](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#interlude-built-in-node-labels), but any label can be used.
 * [Pod topology spread constraints](https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/) to spread the Pods across availability zones in the Kubernetes cluster.
-* Elasticsearch configured to [allocate shards based on node attributes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#allocation-awareness). Here we specified `node.attr.zone`, but any attribute name can be used. `node.attr.rack_id` is another common example.
+* Elasticsearch configured to [allocate shards based on node attributes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#allocation-awareness). Here we specified `node.attr.zone`, but any attribute name can be used. `node.attr.rack_id` is another common example.
 
 
 
 ## Hot-warm topologies [k8s-hot-warm-topologies]
 
-By combining [Elasticsearch shard allocation awareness](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#allocation-awareness) with [Kubernetes node affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature), you can set up an Elasticsearch cluster with hot-warm topology:
+By combining [Elasticsearch shard allocation awareness](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#allocation-awareness) with [Kubernetes node affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature), you can set up an Elasticsearch cluster with hot-warm topology:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1

@@ -123,7 +123,7 @@ PUT _settings
 
 ### Free up or increase disk space [fix-cluster-status-disk-space]
 
-{{es}} uses a [low disk watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#disk-based-shard-allocation) to ensure data nodes have enough disk space for incoming shards. By default, {{es}} does not allocate shards to nodes using more than 85% of disk space.
+{{es}} uses a [low disk watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) to ensure data nodes have enough disk space for incoming shards. By default, {{es}} does not allocate shards to nodes using more than 85% of disk space.
 
 To check the current disk space of your nodes, use the [cat allocation API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-allocation).
 

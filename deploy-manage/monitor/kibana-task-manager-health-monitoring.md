@@ -73,11 +73,11 @@ logging:
         level: debug
 ```
 
-These stats are logged based on the number of milliseconds set in your [`xpack.task_manager.poll_interval`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) setting, which could add substantial noise to your logs. Only enable this level of logging temporarily.
+These stats are logged based on the number of milliseconds set in your [`xpack.task_manager.poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which could add substantial noise to your logs. Only enable this level of logging temporarily.
 
 **Automatic logging**
 
-By default, the health API runs at a regular cadence, and each time it runs, it attempts to self evaluate its performance. If this self evaluation yields a potential problem, a message will log to the {{kib}} server log. In addition, the health API will look at how long tasks have waited to start (from when they were scheduled to start). If this number exceeds a configurable threshold ([`xpack.task_manager.monitored_stats_health_verbose_log.warn_delayed_task_start_in_seconds`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings)), the same message as above will log to the {{kib}} server log.
+By default, the health API runs at a regular cadence, and each time it runs, it attempts to self evaluate its performance. If this self evaluation yields a potential problem, a message will log to the {{kib}} server log. In addition, the health API will look at how long tasks have waited to start (from when they were scheduled to start). If this number exceeds a configurable threshold ([`xpack.task_manager.monitored_stats_health_verbose_log.warn_delayed_task_start_in_seconds`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings)), the same message as above will log to the {{kib}} server log.
 
 This message looks like:
 
@@ -85,7 +85,7 @@ This message looks like:
 Detected potential performance issue with Task Manager. Set 'xpack.task_manager.monitored_stats_health_verbose_log.enabled: true' in your Kibana.yml to enable debug logging`
 ```
 
-If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) to `true` in your `kibana.yml`. This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.
+If this message appears, set [`xpack.task_manager.monitored_stats_health_verbose_log.enabled`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) to `true` in your `kibana.yml`. This will start logging the health metrics at either a `warn` or `error` log level, depending on the detected severity of the potential problem.
 
 
 ## Making sense of Task Manager health stats [making-sense-of-task-manager-health-stats]

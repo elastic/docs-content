@@ -23,7 +23,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 | [Rollup Jobs](../../../manage-data/lifecycle/rollup.md) | [8.11.0] Create a job that periodically aggregates data from one or more indices, and thenrolls it into a new, compact index. Rollup indices are a good way to store months oryears of historical data in combination with your raw data. |
 | [Transforms](../../../explore-analyze/transforms.md) | Use transforms to pivot existing {{es}} indices into summarized or entity-centric indices. |
 | [Cross-Cluster Replication](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md) | Replicate indices on a remote cluster and copy them to a follower index on a local cluster.This is important fordisaster recovery. It also keeps data local for faster queries. |
-| [Remote Clusters](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html#ccr-getting-started-remote-cluster) | Manage your remote clusters for use with cross-cluster search and cross-cluster replication.You can add and remove remote clusters, and check their connectivity. |
+| [Remote Clusters](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md#ccr-getting-started-remote-cluster) | Manage your remote clusters for use with cross-cluster search and cross-cluster replication.You can add and remove remote clusters, and check their connectivity. |
 
 
 ## Alerts and Insights [manage-alerts-insights]

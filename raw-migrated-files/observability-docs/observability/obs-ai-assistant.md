@@ -81,9 +81,9 @@ To set up the AI Assistant:
 
 2. Create a connector for your AI provider. Refer to the connector documentation to learn how:
 
-    * [OpenAI](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html)
-    * [Amazon Bedrock](https://www.elastic.co/guide/en/kibana/current/bedrock-action-type.html)
-    * [Google Gemini](https://www.elastic.co/guide/en/kibana/current/gemini-action-type.html)
+    * [OpenAI](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md)
+    * [Amazon Bedrock](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/bedrock-action-type.md)
+    * [Google Gemini](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/gemini-action-type.md)
 
 3. Authenticate communication between {{observability}} and the AI provider by providing the following information:
 
@@ -147,11 +147,11 @@ The [search connectors](asciidocalypse://docs/elasticsearch/docs/reference/inges
 ::::
 
 
-[Connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html) allow you to index content from external sources thereby making it available for the AI Assistant. This can greatly improve the relevance of the AI Assistant’s responses. Data can be integrated from sources such as GitHub, Confluence, Google Drive, Jira, AWS S3, Microsoft Teams, Slack, and more.
+[Connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md) allow you to index content from external sources thereby making it available for the AI Assistant. This can greatly improve the relevance of the AI Assistant’s responses. Data can be integrated from sources such as GitHub, Confluence, Google Drive, Jira, AWS S3, Microsoft Teams, Slack, and more.
 
 UI affordances for creating and managing search connectors are available in the Search Solution in {{kib}}. You can also use the {{es}} [Connector APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-connector) to create and manage search connectors.
 
-A [self-managed](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-build-connector.html) connector service must be deployed to run connectors.
+A [self-managed](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/self-managed-connectors.md) connector service must be deployed to run connectors.
 
 By default, the AI Assistant queries all search connector indices. To override this behavior and customize which indices are queried, adjust the **Search connector index pattern** setting on the [AI Assistant Settings](../../../solutions/observability/observability-ai-assistant.md#obs-ai-settings) page. This allows precise control over which data sources are included in AI Assistant knowledge base.
 
@@ -408,4 +408,4 @@ Installing the product documentation in air gapped environments requires specifi
 
 ### Token limits [obs-ai-token-limits]
 
-Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](https://www.elastic.co/guide/en/kibana/current/openai-action-type.html#openai-connector-token-dashboard).
+Most LLMs have a set number of tokens they can manage in single a conversation. When you reach the token limit, the LLM will throw an error, and Elastic will display a "Token limit reached" error in Kibana. The exact number of tokens that the LLM can support depends on the LLM provider and model you’re using. If you use an OpenAI connector, monitor token utilization in **OpenAI Token Usage** dashboard. For more information, refer to the [OpenAI Connector documentation](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/openai-action-type.md#openai-connector-token-dashboard).

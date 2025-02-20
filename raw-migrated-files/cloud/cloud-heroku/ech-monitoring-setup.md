@@ -115,7 +115,7 @@ On top of these default alerts that write to indices you can investigate, you mi
     3. Select **Save**.
 
 2. Go to **Stack Monitoring** and select **Enter setup mode**.
-3. Edit an alert rule, such as [CPU usage](https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html#kibana-alerts-cpu-threshold):
+3. Edit an alert rule, such as [CPU usage](/deploy-manage/monitor/monitoring-data/kibana-alerts.md#kibana-alerts-cpu-threshold):
 
     1. Select one of the alert rule fields and select **CPU Usage**.
     2. Choose **Edit rule** and scroll down to the bottom of the screen to select **Slack**.

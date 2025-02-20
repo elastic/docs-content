@@ -50,7 +50,7 @@ For more information about the configuration options for the collectors, see [Mo
 
 {{es}} {{monitor-features}} also receive monitoring data from other parts of the Elastic Stack. In this way, it serves as an unscheduled monitoring data collector for the stack.
 
-By default, data collection is disabled. {{es}} monitoring data is not collected and all monitoring data from other sources such as {{kib}}, Beats, and Logstash is ignored. You must set `xpack.monitoring.collection.enabled` to `true` to enable the collection of monitoring data. See [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html).
+By default, data collection is disabled. {{es}} monitoring data is not collected and all monitoring data from other sources such as {{kib}}, Beats, and Logstash is ignored. You must set `xpack.monitoring.collection.enabled` to `true` to enable the collection of monitoring data. See [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md).
 
 Once data is received, it is forwarded to the exporters to be routed to the monitoring cluster like all monitoring data.
 

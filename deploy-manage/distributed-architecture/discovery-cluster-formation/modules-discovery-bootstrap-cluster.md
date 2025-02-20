@@ -11,7 +11,7 @@ The initial set of master-eligible nodes is defined in the [`cluster.initial_mas
 
 * The [node name](../../deploy/self-managed/important-settings-configuration.md#node-name) of the node.
 * The node’s hostname if `node.name` is not set, because `node.name` defaults to the node’s hostname. You must use either the fully-qualified hostname or the bare hostname [depending on your system configuration](#modules-discovery-bootstrap-cluster-fqdns).
-* The IP address of the node’s [transport publish address](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#modules-network-binding-publishing), if it is not possible to use the `node.name` of the node. This is normally the IP address to which [`network.host`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#common-network-settings) resolves but [this can be overridden](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#advanced-network-settings).
+* The IP address of the node’s [transport publish address](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#modules-network-binding-publishing), if it is not possible to use the `node.name` of the node. This is normally the IP address to which [`network.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#common-network-settings) resolves but [this can be overridden](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#advanced-network-settings).
 * The IP address and port of the node’s publish address, in the form `IP:PORT`, if it is not possible to use the `node.name` of the node and there are multiple nodes sharing a single IP address.
 
 Do not set `cluster.initial_master_nodes` on master-ineligible nodes.
@@ -91,7 +91,7 @@ If you intended to add a node into an existing cluster but instead bootstrapped 
 If you intended to form a new multi-node cluster but instead bootstrapped a collection of single-node clusters then you must start again:
 
 1. Shut down all the nodes.
-2. Completely wipe each node by deleting the contents of their [data folders](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#data-path).
+2. Completely wipe each node by deleting the contents of their [data folders](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#data-path).
 3. Configure `cluster.initial_master_nodes` as described above.
 4. Configure `discovery.seed_hosts` or `discovery.seed_providers` and other relevant discovery settings.
 5. Restart all the nodes and verify that they have formed a single cluster.

@@ -499,7 +499,7 @@ Now that the output is working, you are going to set up the AWS module.
 
 ## Step 9: Configure the AWS module [aws-step-nine]
 
-To collect metrics from your AWS infrastructure, we’ll use the [{{metricbeat}} AWS](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-aws.html) module. This module contains many metricsets: `billing`, `cloudwatch`, `dynamodb`, `ebs`, `ec2`, `elb`, `lambda`, and many more. Each metricset is created to help you stream and process your data. In this tutorial, we’re going to show you a few examples using the `ec2` and the `billing` metricsets.
+To collect metrics from your AWS infrastructure, we’ll use the [{{metricbeat}} AWS](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-module-aws.md) module. This module contains many metricsets: `billing`, `cloudwatch`, `dynamodb`, `ebs`, `ec2`, `elb`, `lambda`, and many more. Each metricset is created to help you stream and process your data. In this tutorial, we’re going to show you a few examples using the `ec2` and the `billing` metricsets.
 
 1. Let’s enable the AWS module in {{metricbeat}}.
 
