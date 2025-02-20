@@ -33,7 +33,7 @@ To change your deployment:
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the deployment menu, select **Edit**.
-4. Let the user interface guide you through the cluster configuration for your cluster. For a full list of the supported settings, check [What Deployment Settings Are Available?](../../../deploy-manage/deploy/elastic-cloud/ec-configure-deployment-settings.md)
+4. Let the user interface guide you through the cluster configuration for your cluster. For a full list of the supported settings, check [What Deployment Settings Are Available?](../../../deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md)
 
     If you are changing an existing deployment, you can make multiple changes to your {{es}} cluster with a single configuration update, such as changing the capacity and upgrading to a new {{es}} version in one step.
 

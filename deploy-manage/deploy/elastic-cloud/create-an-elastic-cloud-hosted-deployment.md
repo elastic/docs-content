@@ -39,7 +39,7 @@ Once you are on the **Create deployment** page, you can create the deployment wi
 
     **Region**: The cloud platform’s region your deployment will live. If you have compliance or latency requirements, you can create your deployment in any of our [supported regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/regions.md). The region should be as close as possible to the location of your data.
 
-    **Hardware profile**: This allows you to configure the underlying virtual hardware that you’ll deploy your Elastic Stack on. Each hardware profile provides a unique blend of storage, RAM and vCPU sizes. You can select a hardware profile that’s best suited for your use case. For example CPU Optimized if you have a search-heavy use case that’s bound by compute resources. For more details, check the [hardware profiles](ec-configure-deployment-settings.md#ec-hardware-profiles) section. You can also view the [virtual hardware details](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md) which powers hardware profiles. With the **Advanced settings** option, you can configure the underlying virtual hardware associated with each profile.
+    **Hardware profile**: This allows you to configure the underlying virtual hardware that you’ll deploy your Elastic Stack on. Each hardware profile provides a unique blend of storage, RAM and vCPU sizes. You can select a hardware profile that’s best suited for your use case. For example CPU Optimized if you have a search-heavy use case that’s bound by compute resources. For more details, check the [hardware profiles](ec-change-hardware-profile.md) section. You can also view the [virtual hardware details](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md) which powers hardware profiles. With the **Advanced settings** option, you can configure the underlying virtual hardware associated with each profile.
 
     **Version**: The Elastic Stack version that will get deployed. Defaults to the latest version. Our [version policy](available-stack-versions.md) describes which versions are available to deploy.
 
@@ -68,7 +68,7 @@ To make sure you’re all set for production, consider the following actions:
 
 * [Plan for your expected workloads](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md) and consider how many availability zones you’ll need.
 * [Create a deployment](/deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) on the region you need and with a hardware profile that matches your use case.
-* [Change your configuration](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment.md) by turning on autoscaling, adding high availability, or adjusting components of the Elastic Stack.
+* [Change your configuration](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) by turning on autoscaling, adding high availability, or adjusting components of the Elastic Stack.
 * [Add extensions and plugins](/deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use Elastic supported extensions or add your own custom dictionaries and scripts.
 * [Edit settings and defaults](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to fine tune the performance of specific features.
 * [Manage your deployment](/deploy-manage/deploy/elastic-cloud/manage-deployments.md) as a whole to restart, upgrade, stop routing, or delete.

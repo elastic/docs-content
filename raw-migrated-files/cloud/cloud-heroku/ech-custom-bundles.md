@@ -2,7 +2,7 @@
 
 There are several cases where you might need your own files to be made available to your {{es}} cluster’s nodes:
 
-* Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](../../../deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-elastic-cloud-hosted.md).
+* Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](../../../deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md).
 * Custom dictionaries, such as synonyms, stop words, compound words, and so on.
 * Cluster configuration files, such as an Identity Provider metadata file used when you [secure your clusters with SAML](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
