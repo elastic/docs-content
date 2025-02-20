@@ -2,6 +2,9 @@
 navigation_title: Configure a policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Configure a lifecycle policy [set-up-lifecycle-policy]

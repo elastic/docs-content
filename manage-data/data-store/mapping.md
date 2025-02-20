@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-mapper.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Mapping

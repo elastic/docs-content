@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-working-with-elasticsearch.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-working-with-elasticsearch.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Manage data from the command line
