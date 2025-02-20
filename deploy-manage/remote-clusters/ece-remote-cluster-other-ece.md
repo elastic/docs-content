@@ -51,7 +51,7 @@ Note that the environment ID and cluster IDs must be entered fully and correctly
 ::::{dropdown} **Using the API**
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/guide/en/cloud-enterprise/current/Platform_-_Configuration_-_Trust_relationships.html). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/guide/en/cloud-enterprise/current/get-trust-relationships.html):
+Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-platformconfigurationtrustrelationships). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-platformconfigurationtrustrelationships):
 
 ```sh
 curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443//api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false

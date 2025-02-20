@@ -35,7 +35,7 @@ To use {{ilm-init}}, all nodes in a cluster must run the same version. Although 
 
 * **Rollover**: Creates a new write index when the current one reaches a certain size, number of docs, or age.
 * **Shrink**: Reduces the number of primary shards in an index.
-* **Force merge**: Triggers a [force merge](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html) to reduce the number of segments in an index’s shards.
+* **Force merge**: Triggers a [force merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to reduce the number of segments in an index’s shards.
 * **Delete**: Permanently remove an index, including all of its data and metadata.
 * [And more](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/index.md)
 
