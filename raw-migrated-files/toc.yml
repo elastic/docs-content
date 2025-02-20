@@ -229,7 +229,6 @@ toc:
       - file: docs-content/serverless/observability-discover-and-explore-logs.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
       - file: docs-content/serverless/observability-filter-and-aggregate-logs.md
-      - file: docs-content/serverless/observability-get-started-with-metrics.md
       - file: docs-content/serverless/observability-get-started.md
       - file: docs-content/serverless/observability-handle-no-results-found-message.md
       - file: docs-content/serverless/observability-log-monitoring.md
@@ -479,7 +478,6 @@ toc:
       - file: observability-docs/observability/logs-checklist.md
       - file: observability-docs/observability/logs-ecs-application.md
       - file: observability-docs/observability/logs-filter-and-aggregate.md
-      - file: observability-docs/observability/logs-metrics-get-started.md
       - file: observability-docs/observability/logs-parse.md
       - file: observability-docs/observability/logs-plaintext.md
       - file: observability-docs/observability/logs-send-application.md
