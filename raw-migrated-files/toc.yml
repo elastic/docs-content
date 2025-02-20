@@ -196,7 +196,6 @@ toc:
       - file: docs-content/serverless/ai-assistant-knowledge-base.md
       - file: docs-content/serverless/application-and-service-monitoring.md
       - file: docs-content/serverless/attack-discovery.md
-      - file: docs-content/serverless/collect-data-with-aws-firehose.md
       - file: docs-content/serverless/connect-to-byo-llm.md
       - file: docs-content/serverless/cspm-required-permissions.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
@@ -220,7 +219,6 @@ toc:
       - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
-      - file: docs-content/serverless/monitor-k8s-otel-edot.md
       - file: docs-content/serverless/observability-add-logs-service-name.md
       - file: docs-content/serverless/observability-aggregationOptions.md
       - file: docs-content/serverless/observability-ai-assistant.md
@@ -257,11 +255,8 @@ toc:
       - file: docs-content/serverless/observability-monitor-status-alert.md
       - file: docs-content/serverless/observability-parse-log-data.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
-      - file: docs-content/serverless/observability-quickstarts-k8s-logs-metrics.md
-      - file: docs-content/serverless/observability-quickstarts-monitor-hosts-with-elastic-agent.md
       - file: docs-content/serverless/observability-rateAggregation.md
       - file: docs-content/serverless/observability-send-application-logs.md
-      - file: docs-content/serverless/observability-serverless-observability-overview.md
       - file: docs-content/serverless/observability-slos.md
       - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/observability-triage-slo-burn-rate-breaches.md
@@ -272,7 +267,6 @@ toc:
       - file: docs-content/serverless/project-setting-data.md
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
-      - file: docs-content/serverless/quickstart-monitor-hosts-with-otel.md
       - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-manage-notes.md
       - file: docs-content/serverless/security-advanced-settings.md
@@ -507,7 +501,6 @@ toc:
       - file: observability-docs/observability/apm-traces.md
       - file: observability-docs/observability/application-and-service-monitoring.md
       - file: observability-docs/observability/application-logs.md
-      - file: observability-docs/observability/collect-data-with-aws-firehose.md
       - file: observability-docs/observability/configure-settings.md
       - file: observability-docs/observability/create-alerts-rules.md
       - file: observability-docs/observability/create-alerts.md
@@ -532,14 +525,9 @@ toc:
       - file: observability-docs/observability/manage-cases.md
       - file: observability-docs/observability/monitor-datasets.md
       - file: observability-docs/observability/monitor-infrastructure-and-hosts.md
-      - file: observability-docs/observability/monitor-k8s-logs-metrics-with-elastic-agent.md
-      - file: observability-docs/observability/monitor-k8s-otel-edot.md
       - file: observability-docs/observability/monitor-status-alert.md
       - file: observability-docs/observability/obs-ai-assistant.md
       - file: observability-docs/observability/observability-get-started.md
-      - file: observability-docs/observability/observability-introduction.md
-      - file: observability-docs/observability/quickstart-monitor-hosts-with-elastic-agent.md
-      - file: observability-docs/observability/quickstart-monitor-hosts-with-otel.md
       - file: observability-docs/observability/rate-aggregation.md
       - file: observability-docs/observability/slo-burn-rate-alert.md
       - file: observability-docs/observability/slo-create.md
