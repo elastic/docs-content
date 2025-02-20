@@ -463,7 +463,6 @@ toc:
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
       - file: observability-docs/observability/logs-checklist.md
-      - file: observability-docs/observability/logs-plaintext.md
       - file: observability-docs/observability/logs-stream.md
       - file: observability-docs/observability/monitor-datasets.md
       - file: observability-docs/observability/obs-ai-assistant.md
