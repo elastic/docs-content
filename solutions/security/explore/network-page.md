@@ -19,7 +19,7 @@ The Network page provides key network activity metrics in an interactive map, an
 The map provides an interactive visual overview of your network traffic. Hover over source and destination points to show more information, such as host names and IP addresses.
 
 ::::{note}
-To access the interactive map in {{stack}} 9.0.0+, you need either `Read` or `All` privileges for `Maps` (**Kibana Privileges** → **Analytics** → **Maps**). In serverless, you must have the appropriate user role. To learn more about map setup, refer to [Configure network map data](/solutions/security/explore/configure-network-map-data.md).
+To access the interactive map in {{stack}}, you need either `Read` or `All` privileges for `Maps` (**Kibana Privileges** → **Analytics** → **Maps**). In serverless, you must have the appropriate user role. To learn more about map setup, refer to [Configure network map data](/solutions/security/explore/configure-network-map-data.md).
 ::::
 
 
