@@ -230,7 +230,6 @@ toc:
       - file: docs-content/serverless/observability-ecs-application-logs.md
       - file: docs-content/serverless/observability-filter-and-aggregate-logs.md
       - file: docs-content/serverless/observability-get-started.md
-      - file: docs-content/serverless/observability-handle-no-results-found-message.md
       - file: docs-content/serverless/observability-log-monitoring.md
       - file: docs-content/serverless/observability-monitor-datasets.md
       - file: docs-content/serverless/observability-parse-log-data.md
@@ -471,7 +470,6 @@ toc:
       - file: observability-docs/observability/application-and-service-monitoring.md
       - file: observability-docs/observability/application-logs.md
       - file: observability-docs/observability/explore-logs.md
-      - file: observability-docs/observability/handle-no-results-found-message.md
       - file: observability-docs/observability/incident-management.md
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/infrastructure-and-host-monitoring-intro.md
