@@ -26,9 +26,9 @@ This section describes common problems you might encounter when using APM Server
 
 
 ## No data is indexed [apm-no-data-indexed]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 If no data shows up in {{es}}, first make sure that your APM components are properly connected.
 
@@ -83,9 +83,9 @@ APM Server currently relies on {{es}} to create indices that do not exist. As a 
 :::::::
 
 ## Common SSL-related problems [apm-common-ssl-problems]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 * [SSL client fails to connect](#apm-ssl-client-fails)
 * [x509: cannot validate certificate](#apm-cannot-validate-certificate)
@@ -134,9 +134,9 @@ A firewall is refusing the connection. Check if a firewall is blocking the traff
 
 
 ## I/O Timeout [apm-io-timeout]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 I/O Timeouts can occur when your timeout settings across the stack are not configured correctly, especially when using a load balancer.
 
@@ -177,17 +177,17 @@ In the agent logs, you won’t see a sign of failures as the APM server asynchro
 
 
 ## Tail-based sampling causing high system memory usage and high disk IO [apm-tail-based-sampling-memory-disk-io]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 Tail-based sampling requires minimal memory to run, and there should not be a noticeable increase in RSS memory usage. However, since tail-based sampling writes data to disk, it is possible to see a significant increase in OS page cache memory usage due to disk IO. If you see a drop in throughput and excessive disk activity after enabling tail-based sampling, please ensure that there is enough memory headroom in the system for OS page cache to perform disk IO efficiently.
 
 
 ## Too many unique transaction names [troubleshooting-too-many-transactions]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 Transaction names are defined in each APM agent; when an APM agent supports a framework, it includes logic for naming the transactions that the framework creates. In some cases though, like when using an APM agent’s API to create custom transactions, it is up to the user to define a pattern for transaction naming. When transactions are named incorrectly, each unique URL can be associated with a unique transaction group—causing an explosion in the number of transaction groups per service, and leading to inaccuracies in the Applications UI.
 
@@ -231,9 +231,9 @@ If your problem is occurring in a different APM agent, the tips above still appl
 
 
 ## Unknown route [troubleshooting-unknown-route]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 The [transaction overview](../../../solutions/observability/apps/transactions-2.md) will only display helpful information when the transactions in your services are named correctly. If you’re seeing "GET unknown route" or "unknown route" in the Applications UI, it could be a sign that something isn’t working as it should.
 
@@ -245,9 +245,9 @@ To resolve this, you’ll need to head over to the relevant [APM agent documenta
 
 
 ## Fields are not searchable [troubleshooting-fields-unsearchable]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 In Elasticsearch, index templates are used to define settings and mappings that determine how fields should be analyzed. The recommended index templates for APM come from the built-in {{es}} apm-data plugin. These templates, by default, enable and disable indexing on certain fields.
 
@@ -262,9 +262,9 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 
 
 ## Service Maps: no connection between client and server [service-map-rum-connections]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/distributed-tracing-guide.html).
 
@@ -272,9 +272,9 @@ This setting is necessary, for example, for cross-origin requests. If you have a
 
 
 ## No data shown in the infrastructure tab [troubleshooting-apm-infra-data]
-:::{applies_to}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 If you don’t see any data in the **Infrastructure** tab for a selected service in the Applications UI, there are a few possible causes and solutions.
 
@@ -292,9 +292,9 @@ For example, if the APM agent is not configured to use the correct host name, th
 
 
 ## Common response codes [observability-apm-troubleshooting-common-response-codes]
-:::{applies_to}
-:serverless: all
-:::
+```yaml {applies_to}
+serverless: all
+```
 
 
 ### HTTP 400: Data decoding error / Data validation error [bad-request]

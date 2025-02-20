@@ -182,10 +182,9 @@ For example, say an event occurred at 10:00 but wasn’t ingested into {{es}} un
 
 
 ### Troubleshoot missing alerts for {{ml}} jobs [ml-job-compatibility]
-:::{applies_to}
-:serverless: unavailable
-:::
-% doesn't apply to serverless 
+```yaml {applies_to}
+stack: all
+```
 
 
 {{ml-cap}} detection rules use {{ml}} jobs that have dependencies on data fields populated by the {{beats}} and {{agent}} integrations. In {{stack}} version 8.3, new {{ml}} jobs (prefixed with `v3`) were released to operate on the ECS fields available at that time.

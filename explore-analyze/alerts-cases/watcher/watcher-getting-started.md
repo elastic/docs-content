@@ -18,7 +18,7 @@ To set up a watch to start sending alerts:
 
 A watch [schedule](trigger-schedule.md) controls how often a watch is triggered. The watch [input](input.md) gets the data that you want to evaluate.
 
-To periodically search log data and load the results into the watch, you could use an [interval](https://www.elastic.co/guide/en/elasticsearch/reference/current/_schedule_types.html#schedule-interval) schedule and a [search](input-search.md) input. For example, the following Watch searches the `logs` index for errors every 10 seconds:
+To periodically search log data and load the results into the watch, you could use an [interval](/explore-analyze/alerts-cases/watcher/schedule-types.md#schedule-interval) schedule and a [search](input-search.md) input. For example, the following Watch searches the `logs` index for errors every 10 seconds:
 
 ```console
 PUT _watcher/watch/log_error_watch
