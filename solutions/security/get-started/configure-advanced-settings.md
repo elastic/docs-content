@@ -71,9 +71,15 @@ To access advanced settings, go to **Stack Management** → **Advanced Settings*
 
 ## Update default Elastic Security indices [update-sec-indices]
 
-% The following is slightly different in the Serverless docs -- not sure why. See lines 45-51 in the raw migrated Serverless file for more info. If add the Serverless content, remember to annotate the Serverless and ESS content appropriately. 
+The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices:
 
-The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices.
+* `apm-*-transaction*`
+* `auditbeat-*`
+* `endgame-*`
+* `filebeat-*`
+* `logs-*`
+* `packetbeat-*`
+* `winlogbeat-*`
 
 ::::{note}
 Index patterns use wildcards to specify a set of indices. For example, the `filebeat-*` index pattern means all indices starting with `filebeat-` are available in the {{security-app}}.
@@ -82,9 +88,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 
 All of the default index patterns match [{{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/beats-reference.html) and [{{agent}}](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
-% The following is slightly different in the Serverless docs -- not sure why. See line 61 in the raw migrated Serverless file for more info. If add the Serverless content, remember to annotate the Serverless and ESS content appropriately. 
-
-You can add or remove any indices and index patterns as required. For background information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
+You can add or remove any indices and index patterns as required. In {{Serverless}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}, there is no limit.} For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
 ::::{note}
 If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cloud logs are excluded from all queries in the {{security-app}} by default. This is to avoid adding data from cloud monitoring to the app.
