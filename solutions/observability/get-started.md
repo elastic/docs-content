@@ -3,9 +3,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-get-started.html
   - https://www.elastic.co/guide/en/observability/current/observability-get-started.html
   - https://www.elastic.co/guide/en/observability/current/index.html
----
 
----
 navigation_title: "Get started"
 ---
 
