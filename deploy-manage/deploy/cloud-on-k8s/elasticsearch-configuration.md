@@ -41,7 +41,7 @@ Before deploying and running ECK in production, review the basic and advanced se
 
 ## Traffic handling
 
-* [](./requests-routing-to-elasticsearch-nodes.md): Control the nodes receiving incoming traffic when using multiple `nodeSets` with different [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html).
+* [](./requests-routing-to-elasticsearch-nodes.md): Control the nodes receiving incoming traffic when using multiple `nodeSets` with different [node roles](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md).
 
 ## Other sections
 
@@ -57,6 +57,6 @@ Other sections of the documentation also include relevant configuration options 
 
 * [Autoscaling](../../autoscaling/deployments-autoscaling-on-eck.md)
 
-* [Stack monitoring](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html): Monitor your {{es}} cluster smoothly with the help of ECK.
+* [Stack monitoring](/deploy-manage/monitor/stack-monitoring/eck-stack-monitoring.md): Monitor your {{es}} cluster smoothly with the help of ECK.
 
 * [Troubleshoot](/troubleshoot/deployments/cloud-on-k8s/kubernetes.md)

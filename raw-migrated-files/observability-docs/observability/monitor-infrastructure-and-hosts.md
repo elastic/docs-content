@@ -16,4 +16,4 @@ The {{infrastructure-app}} provides a few different views of your data.
 
 By default, the {{infrastructure-app}} displays metrics from {{es}} indices that match the `metrics-*` and `metricbeat-*` index patterns. To learn how to change this behavior, refer to [Configure settings](../../../solutions/observability/infra-and-hosts/configure-settings.md).
 
-To learn more about the metrics shown in the {{infrastructure-app}}, refer to the [Metrics reference](https://www.elastic.co/guide/en/observability/current/metrics-reference.html) documentation.
+To learn more about the metrics shown in the {{infrastructure-app}}, refer to the [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference.md) documentation.

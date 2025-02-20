@@ -6,7 +6,7 @@ mapped_pages:
 
 # Troubleshoot APM PHP Agent [troubleshooting]
 
-Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! As a first step, ensure your app is compatible with the agent’s [supported technologies](https://www.elastic.co/guide/en/apm/agent/php/current/supported-technologies.html).
+Is something not working as expected? Don’t worry if you can’t figure out what the problem is; we’re here to help! As a first step, ensure your app is compatible with the agent’s [supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md).
 
 If you’re an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Other users can post in the [APM discuss forum](https://discuss.elastic.co/c/apm).
 
@@ -20,7 +20,7 @@ If you’re an existing Elastic customer with a support contract, please create 
 
 In the unlikely event the agent causes disruptions to a production application, you can disable the agent while you troubleshoot.
 
-Disable the agent by setting [`enabled`](https://www.elastic.co/guide/en/apm/agent/php/current/configuration-reference.html#config-enabled) to `false`. You’ll need to restart your application for the changes to apply.
+Disable the agent by setting [`enabled`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-enabled) to `false`. You’ll need to restart your application for the changes to apply.
 
 
 ## Disclaimer for `dev_internal_*` configuration options [dev-internal-config-disclaimer] 
@@ -40,7 +40,7 @@ Configuration option `dev_internal_backend_comm_log_verbose` can be used to enab
 | --- | --- |
 | `false` | Boolean |
 
-The log is written under `INFO` level - see [Logging](https://www.elastic.co/guide/en/apm/agent/php/current/configuration.html#configure-logging).
+The log is written under `INFO` level - see [Logging](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md#configure-logging).
 
 Also see [Disclaimer for `dev_internal_*` configuration options](#dev-internal-config-disclaimer).
 

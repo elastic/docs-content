@@ -18,13 +18,13 @@ By default, {{search-snap}} indices have no replicas. The underlying snapshot pr
 
 If a node fails and {{search-snap}} shards need to be recovered elsewhere, there is a brief window of time while {{es}} allocates the shards to other nodes where the cluster health will not be `green`. Searches that hit these shards may fail or return partial results until the shards are reallocated to healthy nodes.
 
-You typically manage {{search-snaps}} through {{ilm-init}}. The [searchable snapshots](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-searchable-snapshot.html) action automatically converts a regular index into a {{search-snap}} index when it reaches the `cold` or `frozen` phase. You can also make indices in existing snapshots searchable by manually mounting them using the [mount snapshot](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-searchable-snapshots-mount) API.
+You typically manage {{search-snaps}} through {{ilm-init}}. The [searchable snapshots](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) action automatically converts a regular index into a {{search-snap}} index when it reaches the `cold` or `frozen` phase. You can also make indices in existing snapshots searchable by manually mounting them using the [mount snapshot](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-searchable-snapshots-mount) API.
 
 To mount an index from a snapshot that contains multiple indices, we recommend creating a [clone](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-clone) of the snapshot that contains only the index you want to search, and mounting the clone. You should not delete a snapshot if it has any mounted indices, so creating a clone enables you to manage the lifecycle of the backup snapshot independently of any {{search-snaps}}. If you use {{ilm-init}} to manage your {{search-snaps}} then it will automatically look after cloning the snapshot as needed.
 
 You can control the allocation of the shards of {{search-snap}} indices using the same mechanisms as for regular indices. For example, you could use [Index-level shard allocation filtering](../../distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md) to restrict {{search-snap}} shards to a subset of your nodes.
 
-The speed of recovery of a {{search-snap}} index is limited by the repository setting `max_restore_bytes_per_sec` and the node setting `indices.recovery.max_bytes_per_sec` just like a normal restore operation. By default `max_restore_bytes_per_sec` is unlimited, but the default for `indices.recovery.max_bytes_per_sec` depends on the configuration of the node. See [Recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings).
+The speed of recovery of a {{search-snap}} index is limited by the repository setting `max_restore_bytes_per_sec` and the node setting `indices.recovery.max_bytes_per_sec` just like a normal restore operation. By default `max_restore_bytes_per_sec` is unlimited, but the default for `indices.recovery.max_bytes_per_sec` depends on the configuration of the node. See [Recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings).
 
 We recommend that you [force-merge](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) indices to a single segment per shard before taking a snapshot that will be mounted as a {{search-snap}} index. Each read from a snapshot repository takes time and costs money, and the fewer segments there are the fewer reads are needed to restore the snapshot or to respond to a search.
 
@@ -42,7 +42,7 @@ Use any of the following repository types with searchable snapshots:
 * [AWS S3](s3-repository.md)
 * [Google Cloud Storage](google-cloud-storage-repository.md)
 * [Azure Blob Storage](azure-repository.md)
-* [Hadoop Distributed File Store (HDFS)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html)
+* [Hadoop Distributed File Store (HDFS)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/repository-hdfs.md)
 * [Shared filesystems](shared-file-system-repository.md) such as NFS
 * [Read-only HTTP and HTTPS repositories](read-only-url-repository.md)
 
@@ -95,7 +95,7 @@ Manually mounting snapshots captured by an Index Lifecycle Management ({{ilm-ini
 
 For optimal results, allow {{ilm-init}} to manage snapshots automatically.
 
-[Learn more about {{ilm-init}} snapshot management](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-searchable-snapshot.html).
+[Learn more about {{ilm-init}} snapshot management](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md).
 
 ::::
 
@@ -103,10 +103,10 @@ For optimal results, allow {{ilm-init}} to manage snapshots automatically.
 $$$searchable-snapshots-shared-cache$$$
 
 `xpack.searchable.snapshot.shared_cache.size`
-:   ([Static](../../deploy/self-managed/configure-elasticsearch.md#static-cluster-setting)) Disk space reserved for the shared cache of partially mounted indices. Accepts a percentage of total disk space or an absolute [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units). Defaults to `90%` of total disk space for dedicated frozen data tier nodes. Otherwise defaults to `0b`.
+:   ([Static](../../deploy/self-managed/configure-elasticsearch.md#static-cluster-setting)) Disk space reserved for the shared cache of partially mounted indices. Accepts a percentage of total disk space or an absolute [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units). Defaults to `90%` of total disk space for dedicated frozen data tier nodes. Otherwise defaults to `0b`.
 
 `xpack.searchable.snapshot.shared_cache.size.max_headroom`
-:   ([Static](../../deploy/self-managed/configure-elasticsearch.md#static-cluster-setting), [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) For dedicated frozen tier nodes, the max headroom to maintain. If `xpack.searchable.snapshot.shared_cache.size` is not explicitly set, this setting defaults to `100GB`. Otherwise it defaults to `-1` (not set). You can only configure this setting if `xpack.searchable.snapshot.shared_cache.size` is set as a percentage.
+:   ([Static](../../deploy/self-managed/configure-elasticsearch.md#static-cluster-setting), [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) For dedicated frozen tier nodes, the max headroom to maintain. If `xpack.searchable.snapshot.shared_cache.size` is not explicitly set, this setting defaults to `100GB`. Otherwise it defaults to `-1` (not set). You can only configure this setting if `xpack.searchable.snapshot.shared_cache.size` is set as a percentage.
 
 To illustrate how these settings work in concert let us look at two examples when using the default values of the settings on a dedicated frozen node:
 

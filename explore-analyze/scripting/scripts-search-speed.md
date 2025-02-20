@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scripts-and-search-speed.html
 ---
@@ -72,7 +72,7 @@ PUT /my_test_scores/_mapping
 }
 ```
 
-Next, use an [ingest pipeline](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) containing the [script processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/script-processor.html) to calculate the sum of `math_score` and `verbal_score` and index it in the `total_score` field.
+Next, use an [ingest pipeline](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) containing the [script processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/script-processor.md) to calculate the sum of `math_score` and `verbal_score` and index it in the `total_score` field.
 
 ```console
 PUT _ingest/pipeline/my_test_scores_pipeline

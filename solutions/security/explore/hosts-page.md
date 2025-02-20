@@ -127,7 +127,7 @@ Click **Assign** to assign a criticality level to the selected host, or **Change
 
 ### Insights [host-details-insights]
 
-The **Insights** section displays [Vulnerabilities Findings](https://www.elastic.co/guide/en/security/current/vuln-management-findings.html) for the host. Click **Vulnerabilities** to expand the flyout and view this data.
+The **Insights** section displays [Vulnerabilities Findings](/solutions/security/cloud/findings-page-3.md) for the host. Click **Vulnerabilities** to expand the flyout and view this data.
 
 :::{image} ../../../images/security--host-details-insights-expanded.png
 :alt: Host details flyout with the Vulnerabilities section expanded

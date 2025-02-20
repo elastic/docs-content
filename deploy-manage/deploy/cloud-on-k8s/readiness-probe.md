@@ -45,6 +45,6 @@ Note that this requires restarting the Pods.
 
 % this feature might have disappeared, we will need to investigate this a bit more, as the link below doesn't work anymore but it does for 8.15 for example.
 
-We do not recommend overriding the default readiness probe on Elasticsearch 8.2.0 and later. ECK configures a socket based readiness probe using the Elasticsearch [readiness port feature](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#readiness-tcp-port) which is not influenced by the load on the Elasticsearch cluster.
+We do not recommend overriding the default readiness probe on Elasticsearch 8.2.0 and later. ECK configures a socket based readiness probe using the Elasticsearch [readiness port feature](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#readiness-tcp-port) which is not influenced by the load on the Elasticsearch cluster.
 
 

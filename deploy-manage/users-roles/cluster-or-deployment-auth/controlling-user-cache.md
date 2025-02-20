@@ -17,7 +17,7 @@ PKI and JWT realms do not cache user credentials, but do cache the resolved user
 ::::
 
 
-The cached user credentials are hashed in memory. By default, the {{es}} {{security-features}} use a salted `sha-256` hash algorithm. You can use a different hashing algorithm by setting the `cache.hash_algo` realm settings. See [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+The cached user credentials are hashed in memory. By default, the {{es}} {{security-features}} use a salted `sha-256` hash algorithm. You can use a different hashing algorithm by setting the `cache.hash_algo` realm settings. See [User cache and password hash algorithms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
 
 ## Evicting users from the cache [cache-eviction-api]
 

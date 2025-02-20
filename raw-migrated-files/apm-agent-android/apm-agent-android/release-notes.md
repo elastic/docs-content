@@ -5,6 +5,6 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-* [Android agent version 0.x](https://www.elastic.co/guide/en/apm/agent/android/current/release-notes-0.x.html)
+* [Android agent version 0.x](asciidocalypse://docs/apm-agent-android/docs/release-notes/apm-android-agent.md)
 
 

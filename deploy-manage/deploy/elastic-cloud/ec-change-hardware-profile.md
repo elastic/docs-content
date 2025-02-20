@@ -115,7 +115,7 @@ Replace those values with your actual API key and deployment ID in the following
                     "region":"gcp-us-central1",
         ```
 
-3. Check the [hardware profiles available](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) for the region that your deployment is in and find the template ID of the deployment hardware profile you’d like to use.
+3. Check the [hardware profiles available](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) for the region that your deployment is in and find the template ID of the deployment hardware profile you’d like to use.
 
     ::::{tip}
     If you wish to update your hardware profile to the latest version available for that same profile, locate the template ID corresponding to the `deployment_template` you retrieved at step 2, but without the version information. For example, if your deployment’s current hardware profile is `gcp-cpu-optimized-v5`, use `gcp-cpu-optimized` as a template ID to update your deployment.
@@ -143,7 +143,7 @@ Replace those values with your actual API key and deployment ID in the following
 
 ### Storage optimized [ec-profiles-storage]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. Use this profile if you are new to Elasticsearch or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+Your Elasticsearch data nodes are optimized for high I/O throughput. Use this profile if you are new to Elasticsearch or don’t need to run a more specialized workload. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -152,7 +152,7 @@ Good for most ingestion use cases with 7-10 days of data available for fast acce
 
 ### Storage optimized (dense) [ec-profiles-storage-dense]
 
-Your Elasticsearch data nodes are optimized for high I/O throughput. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+Your Elasticsearch data nodes are optimized for high I/O throughput. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -161,7 +161,7 @@ Ideal for ingestion use cases with more than 10 days of data available for fast 
 
 ### CPU optimized [ec-profiles-compute-optimized]
 
-This profile runs CPU-intensive workloads faster. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile runs CPU-intensive workloads faster. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -170,7 +170,7 @@ Consider this configuration for ingestion use cases with 1-4 days of data availa
 
 ### CPU optimized (ARM) [ec-profiles-compute-optimized-arm]
 
-This profile is similar to CPU optimized profile but is powered by AWS Graviton2 instances. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile is similar to CPU optimized profile but is powered by AWS Graviton2 instances. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -179,7 +179,7 @@ Consider this configuration for ingestion use cases with 1-4 days of data availa
 
 ### Vector search optimized (ARM) [ec-profiles-vector-search]
 
-This profile is suited for Vector search, Generative AI and Semantic search optimized workloads. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile is suited for Vector search, Generative AI and Semantic search optimized workloads. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -188,7 +188,7 @@ Optimized for applications that leverage Vector Search and/or Generative AI. Als
 
 ### General purpose [ec-profiles-general-purpose]
 
-This profile runs CPU-intensive workloads faster . You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile runs CPU-intensive workloads faster . You can find the exact storage, memory, and vCPU allotment on the [hardware details page](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 
@@ -197,7 +197,7 @@ Suitable for ingestion use cases with 5-7 days of data available for fast access
 
 ### General purpose (ARM) [ec-profiles-general-purpose-arm]
 
-This profile is similar to the General purpose profile but is powered by AWS Graviton2 instances. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html#ec-getting-started-configurations) for each cloud provider.
+This profile is similar to the General purpose profile but is powered by AWS Graviton2 instances. You can find the exact storage, memory, and vCPU allotment on the [hardware details page](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md#ec-getting-started-configurations) for each cloud provider.
 
 **Ideal use case**
 

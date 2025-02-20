@@ -93,7 +93,7 @@ You can add exceptions to a rule from the rule details page, the Alerts table, t
 
             ::::
 
-        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\\path\\*\\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#keyword-field-type), [text](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#text-field-type), or [wildcard](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type).
+        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\\path\\*\\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
 
             ::::{note}
             Some characters must be escaped with a backslash, such as `\\` for a literal backslash, `\*` for an asterisk, and `\?` for a question mark. Windows paths must be divided with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider.
@@ -156,7 +156,7 @@ Additionally, to add an Endpoint exception to an endpoint protection rule, there
 
 
 ::::{important}
-[Binary fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/binary.html) are not supported in detection rule exceptions.
+[Binary fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/binary.md) are not supported in detection rule exceptions.
 
 ::::
 

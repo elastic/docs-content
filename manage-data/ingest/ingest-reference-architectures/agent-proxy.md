@@ -39,7 +39,7 @@ Info on {{agent}} and agent integrations:
 
 Info on using a proxy server:
 
-* [Using a proxy server with {{agent}} and {{fleet}}](https://www.elastic.co/guide/en/fleet/current/fleet-agent-proxy-support.html)
+* [Using a proxy server with {{agent}} and {{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md)
 
 Info on {{es}}:
 

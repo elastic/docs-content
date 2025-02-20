@@ -15,16 +15,16 @@ mapped_urls:
 
 To ingest data, you can use:
 
-* The [{{agent}}](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) with the **{{elastic-defend}}** integration, which protects your hosts and sends logs, metrics, and endpoint security data to {{elastic-sec}}. See [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
-* The {{agent}} with integrations, which are available in the [Elastic Package Registry (EPR)](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html#package-registry-intro). To install an integration that works with {{elastic-sec}}, go to the {{kib}} Home page or navigation menu and click **Add integrations**. On the Integrations page, click the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
+* The [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) with the **{{elastic-defend}}** integration, which protects your hosts and sends logs, metrics, and endpoint security data to {{elastic-sec}}. See [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
+* The {{agent}} with integrations, which are available in the [Elastic Package Registry (EPR)](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md#package-registry-intro). To install an integration that works with {{elastic-sec}}, go to the {{kib}} Home page or navigation menu and click **Add integrations**. On the Integrations page, click the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
 * **{{beats}}** shippers installed for each system you want to monitor.
 * The {{agent}} to send data from Splunk to {{elastic-sec}}. See [Get started with data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md).
-* Third-party collectors configured to ship ECS-compliant data. [*Elastic Security ECS field reference*](https://www.elastic.co/guide/en/security/current/siem-field-reference.html) provides a list of ECS fields used in {{elastic-sec}}.
+* Third-party collectors configured to ship ECS-compliant data. [*Elastic Security ECS field reference*](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md) provides a list of ECS fields used in {{elastic-sec}}.
 
 ::::{important}
 If you use a third-party collector to ship data to {{elastic-sec}}, you must map its fields to the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current). Additionally, you must add its index to the {{elastic-sec}} indices (open the main menu, then go to **Stack Management** → **Advanced Settings** → **`securitySolution:defaultIndex`**).
 
-{{elastic-sec}} uses the [`host.name`](https://www.elastic.co/guide/en/ecs/current/ecs-host.html) ECS field as the primary key for identifying hosts.
+{{elastic-sec}} uses the [`host.name`](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-host.md) ECS field as the primary key for identifying hosts.
 
 ::::
 
@@ -71,10 +71,10 @@ On the Integrations page, you can select the **Beats only** filter to only view 
 
 To install {{beats}}, see these installation guides:
 
-* [{{filebeat}} quick start](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html)
-* [{{auditbeat}} quick start](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-installation-configuration.html)
-* [{{winlogbeat}} quick start](https://www.elastic.co/guide/en/beats/winlogbeat/current/winlogbeat-installation-configuration.html)
-* [{{packetbeat}} quick start](https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-installation-configuration.html)
+* [{{filebeat}} quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md)
+* [{{auditbeat}} quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-auditbeat/auditbeat-installation-configuration.md)
+* [{{winlogbeat}} quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-winlogbeat/winlogbeat-installation-configuration.md)
+* [{{packetbeat}} quick start](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/packetbeat-installation-configuration.md)
 
 
 ### Enable modules and configuration options [enable-beat-modules]
@@ -88,7 +88,7 @@ For a full list of security-related beat modules, [click here](https://www.elast
 
 To populate **Hosts** data, enable these modules:
 
-* [Auditbeat system module  - Linux, macOS, Windows](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-module-system.html):
+* [Auditbeat system module  - Linux, macOS, Windows](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-auditbeat/auditbeat-module-system.md):
 
     * packages
     * processes
@@ -96,30 +96,30 @@ To populate **Hosts** data, enable these modules:
     * sockets
     * users and groups
 
-* [Auditbeat auditd module - Linux kernel audit events](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-module-auditd.html)
-* [Auditbeat file integrity module - Linux, macOS, Windows](https://www.elastic.co/guide/en/beats/auditbeat/current/auditbeat-module-file_integrity.html)
-* [Filebeat system module - Linux system logs](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-system.html)
-* [Filebeat Santa module  - macOS security events](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-santa.html)
-* [Winlogbeat - Windows event logs](https://www.elastic.co/guide/en/beats/winlogbeat/current/_winlogbeat_overview.html)
+* [Auditbeat auditd module - Linux kernel audit events](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-auditbeat/auditbeat-module-auditd.md)
+* [Auditbeat file integrity module - Linux, macOS, Windows](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-auditbeat/auditbeat-module-file_integrity.md)
+* [Filebeat system module - Linux system logs](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-system.md)
+* [Filebeat Santa module  - macOS security events](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-santa.md)
+* [Winlogbeat - Windows event logs](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-winlogbeat/_winlogbeat_overview.md)
 
 To populate **Network** data, enable Packetbeat protocols and Filebeat modules:
 
-* [{{packetbeat}}](https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-overview.html)
+* [{{packetbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/packetbeat-overview.md)
 
-    * [DNS](https://www.elastic.co/guide/en/beats/packetbeat/current/packetbeat-dns-options.html)
-    * [TLS](https://www.elastic.co/guide/en/beats/packetbeat/current/configuration-tls.html)
-    * [Other supported protocols](https://www.elastic.co/guide/en/beats/packetbeat/current/configuration-protocols.html)
+    * [DNS](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/packetbeat-dns-options.md)
+    * [TLS](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/configuration-tls.md)
+    * [Other supported protocols](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/configuration-protocols.md)
 
-* [{{filebeat}}](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)
+* [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-overview.md)
 
-    * [Zeek NMS module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-zeek.html)
-    * [Suricata IDS module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-suricata.html)
-    * [Iptables/Ubiquiti module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-iptables.html)
-    * [CoreDNS module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-coredns.html)
-    * [Envoy proxy module (Kubernetes)](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-envoyproxy.html)
-    * [Palo Alto Networks firewall module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-panw.html)
-    * [Cisco ASA firewall module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-cisco.html)
-    * [AWS module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-aws.html)
-    * [CEF module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-cef.html)
+    * [Zeek NMS module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-zeek.md)
+    * [Suricata IDS module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-suricata.md)
+    * [Iptables/Ubiquiti module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-iptables.md)
+    * [CoreDNS module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-coredns.md)
+    * [Envoy proxy module (Kubernetes)](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-envoyproxy.md)
+    * [Palo Alto Networks firewall module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-panw.md)
+    * [Cisco ASA firewall module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-cisco.md)
+    * [AWS module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-aws.md)
+    * [CEF module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-cef.md)
     * [Google Cloud module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-googlecloud.html)
-    * [NetFlow module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-netflow.html)
+    * [NetFlow module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-netflow.md)

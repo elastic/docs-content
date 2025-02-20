@@ -17,13 +17,13 @@ ECS loggers reformat your application logs into ECS-compatible JSON, removing th
 
 For more information on adding an ECS logger to your application, refer to the guide for your framework:
 
-* [.NET](https://www.elastic.co/guide/en/ecs-logging/dotnet/current/setup.html)
-* Go: [zap](https://www.elastic.co/guide/en/ecs-logging/go-zap/current/setup.html)
-* [Java](https://www.elastic.co/guide/en/ecs-logging/java/current/setup.html)
-* Node.js: [morgan](https://www.elastic.co/guide/en/ecs-logging/nodejs/current/winston.html)
-* [PHP](https://www.elastic.co/guide/en/ecs-logging/php/current/setup.html)
-* [Python](https://www.elastic.co/guide/en/ecs-logging/python/current/installation.html)
-* [Ruby](https://www.elastic.co/guide/en/ecs-logging/ruby/current/setup.html)
+* [.NET](asciidocalypse://docs/ecs-dotnet/docs/reference/ecs/ecs-logging-dotnet/setup.md)
+* Go: [zap](asciidocalypse://docs/ecs-logging-go-zap/docs/reference/ecs/ecs-logging-go-zap/setup.md)
+* [Java](asciidocalypse://docs/ecs-logging-java/docs/reference/ecs/ecs-logging-java/setup.md)
+* Node.js: [morgan](asciidocalypse://docs/ecs-logging-nodejs/docs/reference/ecs/ecs-logging-nodejs/winston.md)
+* [PHP](asciidocalypse://docs/ecs-logging-php/docs/reference/ecs/ecs-logging-php/setup.md)
+* [Python](asciidocalypse://docs/ecs-logging-python/docs/reference/ecs/ecs-logging-python/installation.md)
+* [Ruby](asciidocalypse://docs/ecs-logging-ruby/docs/reference/ecs/ecs-logging-ruby/setup.md)
 
 
 ## APM agent ECS reformatting [reformatting-logs]
@@ -41,9 +41,9 @@ To set up log ECS reformatting:
 
 Log ECS reformatting is controlled by the `log_ecs_reformatting` configuration option, and is disabled by default. Refer to the guide for your framework for information on enabling:
 
-* [Java](https://www.elastic.co/guide/en/apm/agent/java/current/config-logging.html#config-log-ecs-reformatting)
-* [Ruby](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html#config-log-ecs-formatting)
-* [Python](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html#config-log_ecs_reformatting)
+* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-logging.md#config-log-ecs-reformatting)
+* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-log-ecs-formatting)
+* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-log_ecs_reformatting)
 
 
 ### Ingest logs [observability-ecs-application-logs-ingest-logs]
@@ -148,7 +148,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](https://www.elastic.co/guide/en/beats/filebeat/current/beats-api-keys.html) for more information.
+    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/beats-api-keys.md) for more information.
 
 
 
@@ -187,13 +187,13 @@ processors:   <6>
 3. {{filebeat}} adds an "error.message" and "error.type: json" key in case of JSON unmarshalling errors.
 4. {{filebeat}} will recursively de-dot keys in the decoded JSON, and expand them into a hierarchical object structure.
 5. The `service.name` (required), `service.version` (optional) and `service.environment` (optional) of the service you’re collecting logs from, used for [Log correlation](../../../solutions/observability/logs/stream-application-logs.md#observability-correlate-application-logs-log-correlation).
-6. Processors enhance your data. See [processors](https://www.elastic.co/guide/en/beats/filebeat/current/filtering-and-enhancing-data.html) to learn more.
+6. Processors enhance your data. See [processors](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filtering-enhancing-data.md) to learn more.
 ::::::
 
 ::::::{tab-item} Kubernetes
 1. Make sure your application logs to stdout/stderr.
-2. Follow the [Run {{filebeat}} on Kubernetes](https://www.elastic.co/guide/en/beats/filebeat/current/running-on-kubernetes.html) guide.
-3. Enable [hints-based autodiscover](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover-hints.html) (uncomment the corresponding section in `filebeat-kubernetes.yaml`).
+2. Follow the [Run {{filebeat}} on Kubernetes](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-on-kubernetes.md) guide.
+3. Enable [hints-based autodiscover](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuration-autodiscover-hints.md) (uncomment the corresponding section in `filebeat-kubernetes.yaml`).
 4. Add these annotations to your pods that log using ECS-compatible JSON. This will make sure the logs are parsed appropriately.
 
     ```yaml
@@ -210,8 +210,8 @@ processors:   <6>
 
 ::::::{tab-item} Docker
 1. Make sure your application logs to stdout/stderr.
-2. Follow the [Run {{filebeat}} on Docker](https://www.elastic.co/guide/en/beats/filebeat/current/running-on-docker.html) guide.
-3. Enable [hints-based autodiscover](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-autodiscover-hints.html).
+2. Follow the [Run {{filebeat}} on Docker](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-on-docker.md) guide.
+3. Enable [hints-based autodiscover](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuration-autodiscover-hints.md).
 4. Add these labels to your containers that log using ECS-compatible JSON. This will make sure the logs are parsed appropriately. In `docker-compose.yml`:
 
 ```yaml
@@ -276,7 +276,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -288,7 +288,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](https://www.elastic.co/guide/en/beats/libbeat/current/config-file-permissions.html).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -307,12 +307,12 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](https://www.elastic.co/guide/en/beats/filebeat/current/command-line-options.html)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](https://www.elastic.co/guide/en/beats/filebeat/current/running-with-systemd.html).
+Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} RPM
@@ -321,12 +321,12 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](https://www.elastic.co/guide/en/beats/filebeat/current/command-line-options.html)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](https://www.elastic.co/guide/en/beats/filebeat/current/running-with-systemd.html).
+Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-with-systemd.md).
 ::::::
 
 :::::::
@@ -350,7 +350,7 @@ To add the custom logs integration to your project:
 
     ![Screenshot of advanced options location](../../../images/serverless-custom-logs-advanced-options.png "")
 
-8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. See [processors](https://www.elastic.co/guide/en/beats/filebeat/current/filtering-and-enhancing-data.html) to learn more.
+8. In the **Processors** text box, add the following YAML configuration to add processors that enhance your data. See [processors](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filtering-enhancing-data.md) to learn more.
 
     ```yaml
     processors:

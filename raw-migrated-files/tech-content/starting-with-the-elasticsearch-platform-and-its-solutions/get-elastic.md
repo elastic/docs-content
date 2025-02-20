@@ -13,7 +13,7 @@ If you prefer to go the self-managed route, you can install the Elastic Stack on
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="407.091" y="826.545">Orchestrate your </tspan><tspan x="403.031" y="848.545">deployments with </tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em" text-decoration="underline"><tspan x="376.426" y="870.545"><a href="https://www.elastic.co/guide/en/cloud-enterprise/current/index.html">Elastic Cloud Enterprise</a></tspan></text>
 <rect x="20.0593" y="783" width="238.749" height="118" rx="7" fill="#D3DAE6" fill-opacity="0.5" stroke="#69707D" stroke-width="2" stroke-linejoin="round"/>
-<text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em" text-decoration="underline"><tspan x="36.6808" y="826.545"><a href="https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html">Install the Elastic Stack </a></tspan><tspan x="46.0499" y="848.545"><a href="https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html">distributions for your </a></tspan><tspan x="83.1486" y="870.545"><a href="https://www.elastic.co/guide/en/elastic-stack/current/installing-elastic-stack.html">environment</a></tspan></text>
+<text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em" text-decoration="underline"><tspan x="36.6808" y="826.545"><a href="/deploy-manage/deploy/self-managed/deploy-cluster.md">Install the Elastic Stack </a></tspan><tspan x="46.0499" y="848.545"><a href="/deploy-manage/deploy/self-managed/deploy-cluster.md">distributions for your </a></tspan><tspan x="83.1486" y="870.545"><a href="/deploy-manage/deploy/self-managed/deploy-cluster.md">environment</a></tspan></text>
 <rect x="704.188" y="560" width="238.749" height="118" rx="7" fill="#D3DAE6" fill-opacity="0.5" stroke="#69707D" stroke-width="2" stroke-linejoin="round"/>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="716.899" y="603.545">Deploy the Elastic Stack </tspan><tspan x="744.039" y="625.545">with </tspan></text>
 <text fill="#343741" xml:space="preserve" style="white-space: pre" font-family="Inter" font-size="18" font-weight="bold" letter-spacing="0em" text-decoration="underline"><tspan x="786.86" y="625.545"><a href="https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html">Elastic Cloud </a></tspan><tspan x="771.927" y="647.545"><a href="https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html">Kubernetes</a></tspan></text>
@@ -80,7 +80,7 @@ If you prefer to go the self-managed route, you can install the Elastic Stack on
 ## Where to go from here [_where_to_go_from_here]
 
 * [Overview of the {{stack}}](../../../get-started/the-stack.md)
-* [Adding your data](https://www.elastic.co/guide/en/cloud/current/ec-cloud-ingest-data.html)
+* [Adding your data](/manage-data/ingest.md)
 * [{{stack}} subscriptions](https://www.elastic.co/subscriptions)
 * [Elastic pricing](https://www.elastic.co/pricing/)
 

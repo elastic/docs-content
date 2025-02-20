@@ -29,7 +29,7 @@ Operator privileges provide protection for APIs and dynamic cluster settings. An
 ## Operator-only dynamic cluster settings [operator-only-dynamic-cluster-settings]
 
 * All [IP filtering](../../security/ip-traffic-filtering.md) settings
-* The following dynamic [machine learning settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html):
+* The following dynamic [machine learning settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md):
 
     * `xpack.ml.node_concurrent_job_allocations`
     * `xpack.ml.max_machine_memory_percent`
@@ -41,8 +41,8 @@ Operator privileges provide protection for APIs and dynamic cluster settings. An
     * `xpack.ml.enable_config_migration`
     * `xpack.ml.persist_results_max_retries`
 
-* The [`cluster.routing.allocation.disk.threshold_enabled` setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-disk-threshold)
-* The following [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services):
+* The [`cluster.routing.allocation.disk.threshold_enabled` setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-disk-threshold)
+* The following [recovery settings for managed services](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services):
 
     * `node.bandwidth.recovery.operator.factor`
     * `node.bandwidth.recovery.operator.factor.read`

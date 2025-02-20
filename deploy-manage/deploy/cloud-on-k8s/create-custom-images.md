@@ -7,7 +7,7 @@ mapped_pages:
 
 # Create custom images [k8s-custom-images]
 
-You can create your own custom application images (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) instead of using the base images provided by Elastic. You might want to do this to have a canonical image with all the necessary plugins pre-loaded rather than [installing them through an init container](init-containers-for-plugin-downloads.md) each time a Pod starts.  You must use the official image as the base for custom images. For example, if you want to create an Elasticsearch 8.16.1 image with the [ICU Analysis Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html), you can do the following:
+You can create your own custom application images (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) instead of using the base images provided by Elastic. You might want to do this to have a canonical image with all the necessary plugins pre-loaded rather than [installing them through an init container](init-containers-for-plugin-downloads.md) each time a Pod starts.  You must use the official image as the base for custom images. For example, if you want to create an Elasticsearch 8.16.1 image with the [ICU Analysis Plugin](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/analysis-icu.md), you can do the following:
 
 1. Create a `Dockerfile` containing:
 
@@ -49,7 +49,7 @@ If your custom images follow the naming convention adopted by the official image
 
 For more information, check the following references:
 
-* [Elasticsearch documentation on Using custom Docker images](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#_c_customized_image)
+* [Elasticsearch documentation on Using custom Docker images](/deploy-manage/deploy/self-managed/install-elasticsearch-with-docker.md#_c_customized_image)
 * [Google Container Registry](https://cloud.google.com/container-registry/docs/how-to)
 * [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/)
 * [Amazon Elastic Container Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.md)

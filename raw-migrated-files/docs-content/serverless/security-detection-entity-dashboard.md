@@ -80,7 +80,7 @@ Anomaly detection jobs identify suspicious or irregular behavior patterns. The A
 ::::{admonition} Requirements
 :class: note
 
-To display anomaly results, you must [install and run](../../../explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](https://www.elastic.co/guide/en/security/current/prebuilt-ml-jobs.html). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
+To display anomaly results, you must [install and run](../../../explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-jobs.md). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
 
 ::::
 

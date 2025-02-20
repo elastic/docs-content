@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-web-server-data.html
 ---
@@ -118,7 +118,7 @@ To increase the minimum time interval:
 1. In the layer pane, click **timestamp**.
 2. Change the **Minimum interval** to **1d**, then click **Close**.
 
-    You can increase and decrease the minimum interval, but you are unable to decrease the interval below the configured [**Advanced Settings**](https://www.elastic.co/guide/en/kibana/current/advanced-options.html).
+    You can increase and decrease the minimum interval, but you are unable to decrease the interval below the configured [**Advanced Settings**](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
 
 
 To save space on the dashboard, hide the axis labels.

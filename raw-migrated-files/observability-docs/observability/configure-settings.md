@@ -28,4 +28,4 @@ If [Spaces](../../../deploy-manage/manage-spaces.md) are enabled in your {{kib}}
 
 ## Related settings [_related_settings]
 
-You can configure additional metrics settings in the {{kib}} configuration. For more information, refer to [configuration settings](https://www.elastic.co/guide/en/kibana/current/infrastructure-ui-settings-kb.html) in the {{kib}} documentation.
+You can configure additional metrics settings in the {{kib}} configuration. For more information, refer to [configuration settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/metrics-settings.md) in the {{kib}} documentation.

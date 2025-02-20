@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Text embedding and semantic search"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
@@ -112,7 +112,7 @@ Upload the file by using the [Data Visualizer](../../../manage-data/ingest/uploa
 
 ## Add the text embedding model to an {{infer}} ingest pipeline [ex-text-emb-ingest]
 
-Process the initial data with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
+Process the initial data with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
 
 Now create an ingest pipeline either in the [{{stack-manage-app}} UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
 
