@@ -62,9 +62,8 @@ This guide also provides tips for [restoring to another cluster](#restore-differ
 - To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any cluster blocks that prevent writes. The restore operation ignores index blocks.
 - Before you restore a data stream, ensure the cluster contains a [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) with data stream enabled. To check, use [Kibana’s Index Management](/manage-data/data-store/index-types.md#index-management-manage-index-templates) feature or the get index template API:
 
-```console
-GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
-```
+  ```console
+  GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
 
 - If no such template exists, you can [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) or restore a cluster state that contains one. Without a matching index template, a data stream can’t roll over or create backing indices.
 - If your snapshot contains data from App Search or Workplace Search, ensure you’ve restored the Enterprise Search encryption key before restoring the snapshot.
