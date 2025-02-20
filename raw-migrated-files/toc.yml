@@ -228,6 +228,7 @@ toc:
       - file: docs-content/serverless/observability-log-monitoring.md
       - file: docs-content/serverless/observability-monitor-datasets.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
+      - file: docs-content/serverless/observability-stream-log-files.md
       - file: docs-content/serverless/project-and-management-settings.md
       - file: docs-content/serverless/project-setting-data.md
       - file: docs-content/serverless/project-settings-alerts.md
