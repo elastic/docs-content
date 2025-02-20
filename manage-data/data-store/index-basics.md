@@ -77,8 +77,8 @@ Investigate your indices and perform operations from the **Indices** view.
 :class: screenshot
 :::
 
-* To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html).
-* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-put-follow.html), a [rollup index](https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-get-rollup-index-caps.html), or [frozen](https://www.elastic.co/guide/en/elasticsearch/reference/current/unfreeze-index-api.html).
+* To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
+* To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
 * To drill down into the index [mappings](/manage-data/data-store/mapping.md), [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 * To create new indices, use the **Create index** wizard.
 
