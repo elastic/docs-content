@@ -114,7 +114,6 @@ To integrate with Active Directory, you configure an `active_directory` realm an
 
 4. Restart {{es}}.
 
-
 ## Step 2: Configure a bind user (Optional) [ece-ad-configuration-with-bind-user]
 
 You can choose to configure an Active Directory realm using a bind user. 
@@ -234,7 +233,7 @@ POST /_security/role_mapping/ldap-superuser <1>
 ### Example: Using a role mapping file [ece_using_the_role_mapping_files_2]
 
 :::{tip} 
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
+If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md). If you're using a self-managed cluster, then the file must be present on each node.
 :::
 
 ```sh
@@ -290,7 +289,7 @@ $$$ece-ad-configuration-encrypt-communications$$$
 
 To protect the user credentials that are sent for authentication, you should encrypt communications between {{es}} and your Active Directory server. Connecting using SSL/TLS ensures that the identity of the Active Directory server is authenticated before {{es}} transmits the user credentials and the usernames and passwords are encrypted in transit.
 
-Clients and nodes that connect using SSL/TLS to the Active Directory server need to have the Active Directory server’s certificate or the server’s root CA certificate installed in their keystore or truststore.
+Clients and nodes that connect using SSL/TLS to the Active Directory server need to have the Active Directory server’s certificate or the server’s root CA certificate installed in their keystore or trust store.
 
 If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
@@ -300,11 +299,6 @@ If you're using {{eck}}, then install it as a [custom configuration file](/deplo
 
 If you're using {{ece}} or {{ech}}, then these steps are required only if TLS is enabled and the Active Directory controller is using self-signed certificates.
 :::
-
-:::{note}
-
-
-The following example demonstrates how to trust a CA certificate (`cacert.pem`), which is located within the configuration directory.
 
 ::::{admonition} Certificate formats
 The following example uses a PEM encoded certificate. If your CA certificate is available as a `JKS` or `PKCS#12` keystore, you can reference it in the user settings. For example:
@@ -317,6 +311,8 @@ xpack.security.authc.realms.active_directory.my_ad.ssl.truststore.path:
 If the keystore is also password protected (which isn’t typical for keystores that only contain CA certificates), you can also provide the password for the keystore by adding `xpack.security.authc.realms.active_directory.my_ad.ssl.truststore.password: password` in the user settings.
 
 ::::
+
+The following example demonstrates how to trust a CA certificate (`cacert.pem`), which is located within the configuration directory.
 
 ```shell
 xpack:

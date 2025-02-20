@@ -65,7 +65,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-secure-clusters-oidc.md
       - file: cloud/cloud-enterprise/ece-securing-clusters-ad.md
       - file: cloud/cloud-enterprise/ece-securing-clusters-JWT.md
-      - file: cloud/cloud-enterprise/ece-securing-clusters-ldap.md
       - file: cloud/cloud-enterprise/ece-securing-clusters-SAML.md
       - file: cloud/cloud-enterprise/ece-securing-clusters.md
       - file: cloud/cloud-enterprise/ece-securing-ece.md
@@ -383,7 +382,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
       - file: elasticsearch/elasticsearch-reference/jwt-auth-realm.md
       - file: elasticsearch/elasticsearch-reference/kerberos-realm.md
-      - file: elasticsearch/elasticsearch-reference/ldap-realm.md
       - file: elasticsearch/elasticsearch-reference/mapping-roles.md
       - file: elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
       - file: elasticsearch/elasticsearch-reference/monitoring-overview.md
