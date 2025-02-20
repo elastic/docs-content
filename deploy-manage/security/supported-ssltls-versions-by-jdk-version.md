@@ -107,6 +107,6 @@ To enable your custom security policy, create a file named `java.security.option
 
 SSL/TLS versions can be enabled and disabled within {{es}} via the [`ssl.supported_protocols` settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ssl-tls-settings).
 
-{{es}} will only support the TLS versions that are enabled by the [underlying JDK](). If you configure `ssl.supported_procotols` to include a TLS version that is not enabled in your JDK, then it will be silently ignored.
+{{es}} will only support the TLS versions that are enabled by the underlying JDK. If you configure `ssl.supported_procotols` to include a TLS version that is not enabled in your JDK, then it will be silently ignored.
 
 Similarly, a TLS version that is enabled in your JDK, will not be used unless it is configured as one of the `ssl.supported_protocols` in {{es}}.

@@ -4,24 +4,21 @@ toc:
   - file: data-store.md
     children:
       - file: data-store/index-basics.md
-      - file: data-store/index-types.md
+      - file: data-store/data-streams.md
         children:
-          - file: data-store/index-types/data-streams.md
+          - file: data-store/data-streams/set-up-data-stream.md
+          - file: data-store/data-streams/use-data-stream.md
+          - file: data-store/data-streams/modify-data-stream.md
+          - file: data-store/data-streams/manage-data-stream.md
+          - file: data-store/data-streams/time-series-data-stream-tsds.md
             children:
-              - file: data-store/index-types/set-up-data-stream.md
-              - file: data-store/index-types/use-data-stream.md
-              - file: data-store/index-types/modify-data-stream.md
-              - file: data-store/index-types/manage-data-stream.md
-              - file: data-store/index-types/time-series-data-stream-tsds.md
-                children:
-                  - file: data-store/index-types/set-up-tsds.md
-                  - file: data-store/index-types/downsampling-time-series-data-stream.md
-                  - file: data-store/index-types/run-downsampling-with-ilm.md
-                  - file: data-store/index-types/run-downsampling-manually.md
-                  - file: data-store/index-types/run-downsampling-using-data-stream-lifecycle.md
-                  - file: data-store/index-types/reindex-tsds.md
-              - file: data-store/index-types/logs-data-stream.md
-          - file: data-store/index-types/vectordb.md
+              - file: data-store/data-streams/set-up-tsds.md
+              - file: data-store/data-streams/downsampling-time-series-data-stream.md
+              - file: data-store/data-streams/run-downsampling-with-ilm.md
+              - file: data-store/data-streams/run-downsampling-manually.md
+              - file: data-store/data-streams/run-downsampling-using-data-stream-lifecycle.md
+              - file: data-store/data-streams/reindex-tsds.md
+          - file: data-store/data-streams/logs-data-stream.md
       - file: data-store/mapping.md
         children:
           - file: data-store/mapping/dynamic-mapping.md
@@ -55,7 +52,7 @@ toc:
       - file: data-store/templates.md
         children:
           - file: data-store/templates/simulate-multi-component-templates.md
-          - file: data-store/templates/config-ignoremissingcomponenttemplates.md
+          - file: data-store/templates/ignore-missing-component-templates.md
           - file: data-store/templates/index-template-management.md
       - file: data-store/aliases.md
       - file: data-store/manage-data-from-the-command-line.md
@@ -73,7 +70,6 @@ toc:
           - file: ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md
       - file: ingest/ingest-reference-architectures.md
         children:
-          - file: ingest/ingest-reference-architectures/use-case-arch.md
           - file: ingest/ingest-reference-architectures/agent-to-es.md
             children:
               - file: ingest/ingest-reference-architectures/agent-installed.md
@@ -95,6 +91,7 @@ toc:
               - file: ingest/ingest-reference-architectures/agent-es-airgapped.md
               - file: ingest/ingest-reference-architectures/agent-ls-airgapped.md
       - file: ingest/sample-data.md
+      - file: ingest/upload-data-files.md
       - file: ingest/transform-enrich.md
         children:
           - file: ingest/transform-enrich/ingest-pipelines-serverless.md
@@ -110,8 +107,6 @@ toc:
               - file: ingest/transform-enrich/example-enrich-data-by-matching-value-to-range.md
           - file: ingest/transform-enrich/index-mapping-text-analysis.md
       - file: ingest/tools.md
-        children:
-          - file: ingest/tools/upload-data-files.md
   - file: lifecycle.md
     children:
       - file: lifecycle/data-tiers.md

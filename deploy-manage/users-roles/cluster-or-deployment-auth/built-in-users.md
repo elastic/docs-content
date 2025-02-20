@@ -31,3 +31,13 @@ mapped_urls:
 $$$set-built-in-user-passwords$$$
 
 $$$bootstrap-elastic-passwords$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/built-in-users.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/built-in-users.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-password-reset-elastic.md](/raw-migrated-files/cloud/cloud-enterprise/ece-password-reset-elastic.md)
+* [/raw-migrated-files/cloud/cloud/ec-password-reset.md](/raw-migrated-files/cloud/cloud/ec-password-reset.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-password-reset.md](/raw-migrated-files/cloud/cloud-heroku/ech-password-reset.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-rotate-credentials.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-rotate-credentials.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/change-passwords-native-users.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/change-passwords-native-users.md)

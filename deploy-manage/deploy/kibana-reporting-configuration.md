@@ -21,6 +21,8 @@ mapped_urls:
 
 $$$reporting-chromium-sandbox$$$
 
+$$$grant-user-access$$$
+
 ⚠️ **This page is a work in progress.** ⚠️
 
 The documentation team is working to combine content pulled from the following pages:

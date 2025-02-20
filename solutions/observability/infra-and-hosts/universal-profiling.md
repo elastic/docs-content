@@ -161,7 +161,7 @@ The functions view presents an ordered list of functions that Universal Profilin
 
 ## Filtering [profiling-filtering-intro]
 
-In all of the Universal Profiling views, the search bar accepts a filter in the {{kib}} Query Language ({{kibana-ref}}/kuery-query.html[KQL]).
+In all of the Universal Profiling views, the search bar accepts a filter in the {{kib}} Query Language (https://www.elastic.co/guide/en/kibana/current/kuery-query.html[KQL]).
 
 Most notably, you may want to filter on:
 

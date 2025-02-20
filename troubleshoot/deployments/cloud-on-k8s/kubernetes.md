@@ -8,6 +8,12 @@ mapped_pages:
 
 # Troubleshoot Elastic Cloud on Kubernetes [k8s-troubleshooting]
 
+:::{admonition} WIP
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working on restructuring this section. It currently reflects a legacy product-centric structure.
+:::
+
 * [*Common problems*](common-problems.md)
 * [*Troubleshooting methods*](troubleshooting-methods.md)
 * [*Run eck-diagnostics*](run-eck-diagnostics.md)

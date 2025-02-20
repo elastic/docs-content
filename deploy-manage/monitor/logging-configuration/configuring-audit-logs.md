@@ -24,7 +24,7 @@ When auditing security events, a single client request might generate multiple a
     ::::
 
 For a complete description of event details and format, refer to the following resources:
-  * [{{es}} audit events details and schema]() asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events
+  * [{{es}} audit events details and schema](asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events)
   * [{{es}} log entry output format](/deploy-manage/monitor/logging-configuration/logfile-audit-output.md#audit-log-entry-format)
 
 ### Kibana auditing configuration

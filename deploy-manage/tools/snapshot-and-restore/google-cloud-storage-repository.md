@@ -123,7 +123,7 @@ bin/elasticsearch-keystore add-file gcs.client.default.credentials_file /path/se
 
 The following are the available client settings. Those that must be stored in the keystore are marked as `Secure`.
 
-`credentials_file` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`credentials_file` ([Secure](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The service account file that is used to authenticate to the Google Cloud Storage service.
 
 `endpoint`

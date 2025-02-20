@@ -94,7 +94,7 @@ If you want to deploy the Elastic Rerank model in a restricted or closed network
 
 For the cross-platform version, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/rerank-v1.metadata.json
 https://ml-models.elastic.co/rerank-v1.pt
 https://ml-models.elastic.co/rerank-v1.vocab.json
@@ -121,7 +121,7 @@ You can use any HTTP service to deploy the model. This example uses the official
 
 4. Verify that Nginx runs properly by visiting the following URL in your browser:
 
-    ```url
+    ```text
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/rerank-v1.metadata.json
     ```
 

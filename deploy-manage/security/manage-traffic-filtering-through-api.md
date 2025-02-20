@@ -46,3 +46,8 @@ $$$ece-delete-rule-set-association-with-a-deployment$$$
 $$$ece-ip-traffic-filters-ingress-rule-set$$$
 
 $$$ece-update-a-traffic-filter-rule-set$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-traffic-filtering-through-the-api.md](/raw-migrated-files/cloud/cloud-enterprise/ece-traffic-filtering-through-the-api.md)
+* [/raw-migrated-files/cloud/cloud/ec-traffic-filtering-through-the-api.md](/raw-migrated-files/cloud/cloud/ec-traffic-filtering-through-the-api.md)

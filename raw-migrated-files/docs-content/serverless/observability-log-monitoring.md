@@ -65,7 +65,7 @@ See [install {{agent}} in containers](https://www.elastic.co/guide/en/fleet/curr
 
 The following resources provide information on configuring your logs:
 
-* [Data streams](../../../manage-data/data-store/index-types/data-streams.md): Efficiently store append-only time series data in multiple backing indices partitioned by time and size.
+* [Data streams](../../../manage-data/data-store/data-streams.md): Efficiently store append-only time series data in multiple backing indices partitioned by time and size.
 * [Data views](../../../explore-analyze/find-and-organize/data-views.md): Query log entries from the data streams of specific datasets or namespaces.
 * [Index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management/tutorial-customize-built-in-policies.md): Configure the built-in logs policy based on your application’s performance, resilience, and retention requirements.
 * [Ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md): Parse and transform log entries into a suitable format before indexing.

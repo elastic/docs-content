@@ -22,3 +22,9 @@ mapped_urls:
 $$$multiple-roles-dls-fls$$$
 
 $$$templating-role-query$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/document-level-security.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/document-level-security.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/field-level-security.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/field-level-security.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/field-and-document-access-control.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/field-and-document-access-control.md)
