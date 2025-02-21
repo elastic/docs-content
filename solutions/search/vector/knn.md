@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-knn-search.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
