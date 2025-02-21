@@ -1,6 +1,9 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Elasticsearch ingest pipelines [ingest]

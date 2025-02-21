@@ -1,20 +1,13 @@
 ---
-
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
-
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Manage snapshot repositories
-
-% What needs to be done: Write from scratch
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/343
-
-% Scope notes: Landing page for this containing links for Cloud and ECE
 
 Snapshot repositories allow you to back up and restore your Elasticsearch data efficiently. Whether you're using [{{ech}}](#elastic-cloud-hosted), [{{ece}} (ECE)](#elastic-cloud-enterprise-ece), [{{eck}} (ECK)](#elastic-cloud-on-kubernetes-eck), or managing your own [{{es}} cluster](#self-managed), configuring a snapshot repository ensures data security, long-term archiving, and seamless migration across environments.
 
@@ -48,7 +41,7 @@ Elastic Cloud Hosted deployments also support the following repository types:
 * [AWS S3](/deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
 * [Source-only](/deploy-manage/tools/snapshot-and-restore/source-only-repository.md)
 
-For more details, refer to [Managing snapshot repositories in Elastic Cloud Hosted](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
+For more details, refer to [Registering snapshot repositories in Elastic Cloud Hosted](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 
 ### Elastic Cloud Enterprise (ECE)
 
@@ -58,9 +51,10 @@ When a platform-level repository is associated with a deployment, the `found-sna
 
 Elastic Cloud Enterprise installations support the following Elasticsearch snapshot repository types:
 
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [AWS S3](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
+* [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 :::{note}
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by Elasticsearch. 

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-search-request.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Define runtime fields in a search request [runtime-search-request]

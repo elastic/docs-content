@@ -1,6 +1,10 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Cross-cluster replication [xpack-ccr]
@@ -201,7 +205,7 @@ Soft deletes must be enabled for indices that you want to use as leader indices.
 
 
 
-## Use {{ccr}} [ccr-learn-more]
+## Use cross-cluster replication [ccr-learn-more]
 
 This following sections provide more information about how to configure and use {{ccr}}:
 
@@ -211,7 +215,7 @@ This following sections provide more information about how to configure and use 
 * [Upgrading clusters](cross-cluster-replication/upgrading-clusters.md)
 
 
-## {{ccr-cap}} limitations [ccr-limitations]
+## Cross-cluster replication limitations [ccr-limitations]
 
 {{ccr-cap}} is designed to replicate user-generated indices only, and doesn’t currently replicate any of the following:
 

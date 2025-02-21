@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Index management in Kibana [index-mgmt]

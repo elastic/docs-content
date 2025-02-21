@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/static-scoring-signals.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

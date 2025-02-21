@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/migrate-index-allocation-filters.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Migrate index allocation filters to node roles [migrate-index-allocation-filters]
