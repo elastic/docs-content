@@ -11,7 +11,7 @@ Run live queries on hosts associated with alerts to learn more about your infras
 ::::{admonition} Requirements
 * The [Osquery manager integration](/solutions/security/investigate/manage-integration.md) must be installed.
 * {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
-* Your role must have the appropriate [feature privileges](/solutions/security/investigate/osquery#required_osquery-privileges) in {{stack}} or [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
+* Your role must have the appropriate [feature privileges](/solutions/security/investigate/osquery.md#required_osquery-privileges) in {{stack}} or [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 
 ::::
 
