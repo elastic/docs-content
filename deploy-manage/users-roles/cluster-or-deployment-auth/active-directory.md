@@ -65,6 +65,7 @@ If your Active Directory domain supports authentication with user-provided crede
   1. The order in which the `active_directory` realm is consulted during an authentication attempt.
   2. The primary domain in Active Directory. Binding to Active Directory fails if the domain name is not mapped in DNS.
   3. The LDAP URL pointing to the Active Directory Domain Controller that should handle authentication. If you don’t specify the URL, it defaults to `ldap:<domain_name>:389`.
+  
   :::
 
   :::{tab-item} Forest
@@ -86,18 +87,18 @@ If your Active Directory domain supports authentication with user-provided crede
               url: ldaps://dc1.ad.example.com:3269, ldaps://dc2.ad.example.com:3269 <2>
               load_balance:
                 type: "round_robin" <3>
-    ```
+  ```
 
-    1. The `domain_name` is set to the name of the root domain in the forest.
-    2. The `url` value used in this example has URLs for two different Domain Controllers, which are also Global Catalog servers. Port 3268 is the default port for unencrypted communication with the Global Catalog; port 3269 is the default port for SSL connections. The servers that are being connected to can be in any domain of the forest as long as they are also Global Catalog servers.
-    3. A load balancing setting is provided to indicate the desired behavior when choosing the server to connect to.
+  1. The `domain_name` is set to the name of the root domain in the forest.
+  2. The URLs for two different Domain Controllers, which are also Global Catalog servers. Port 3268 is the default port for unencrypted communication with the Global Catalog. Port 3269 is the default port for SSL connections. The servers that are being connected to can be in any domain of the forest as long as they are also Global Catalog servers.
+  3. A load balancing setting is provided to indicate the desired behavior when choosing the server to connect to.
 
 
-    In this configuration, users will need to use either their full User Principal Name (UPN) or their down-level logon name: 
-    * A UPN is typically a concatenation of the username with `@<DOMAIN_NAME` such as `johndoe@ad.example.com`. 
-    * The down-level logon name is the NetBIOS domain name, followed by a `\` and the username, such as `AD\johndoe`. 
-    
-      Use of down-level logon name requires a connection to the regular LDAP ports (389 or 636) in order to query the configuration container to retrieve the domain name from the NetBIOS name.
+  In this configuration, users will need to use either their full User Principal Name (UPN) or their down-level logon name: 
+  * A UPN is typically a concatenation of the username with `@<DOMAIN_NAME` such as `johndoe@ad.example.com`. 
+  * The down-level logon name is the NetBIOS domain name, followed by a `\` and the username, such as `AD\johndoe`. 
+  
+    Use of down-level logon name requires a connection to the regular LDAP ports (389 or 636) in order to query the configuration container to retrieve the domain name from the NetBIOS name.
   :::
 
   ::::
@@ -155,11 +156,11 @@ To configure a bind user:
 
 1. Configure the password for the `bind_dn` user by adding the appropriate `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md).
 
-  In self-managed deployments, when a bind user is configured, connection pooling is enabled by default. Connection pooling can be disabled using the `user_search.pool.enabled` setting.
+   In self-managed deployments, when a bind user is configured, connection pooling is enabled by default. Connection pooling can be disabled using the `user_search.pool.enabled` setting.
 
-  :::{warning}
-  In {{ech}} and {{ece}}, after you configure `secure_bind_password`, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you want to rollback the Active Directory realm configurations, you need to remove the `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` that was just added.
-  :::
+   :::{warning}
+   In {{ech}} and {{ece}}, after you configure `secure_bind_password`, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you want to rollback the Active Directory realm configurations, you need to remove the `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` that was just added.
+   :::
 
 ## Step 3: Map Active Directory users and groups to roles
 
@@ -183,25 +184,24 @@ Only Active Directory security groups are supported. You can't map distribution 
 
 ### Example: using the role mapping API
 
-```sh
-POST /_security/role_mapping/ldap-superuser <1>
+```console
+POST /_security/role_mapping/ldap-superuser
 {
 "enabled": true,
-"roles": [ "superuser" ], <2>
+"roles": [ "superuser" ], <1>
 "rules": {
 "all" : [
-{ "field": { "realm.name": "my_ad" } },<3>
-{ "field": { "groups": "cn=administrators, dc=example, dc=com" } }<4>
+{ "field": { "realm.name": "my_ad" } }, <2>
+{ "field": { "groups": "cn=administrators, dc=example, dc=com" } } <3>
     ]
 },
 "metadata": { "version": 1 }
 }
 ```
 
-1. The name of the role mapping.
-2. The name of the role we want to assign, in this case `superuser`.
-3. The name of our active_directory realm.
-4. The Distinguished Name of the Active Directory group whose members should get the `superuser` role in the deployment.
+1. The name of the role we want to assign, in this case `superuser`.
+2. The name of our active_directory realm.
+3. The Distinguished Name of the Active Directory group whose members should get the `superuser` role in the deployment.
 
 ### Example: Using a role mapping file [ece_using_the_role_mapping_files_2]
 
