@@ -189,7 +189,6 @@ toc:
     children:
       - file: docs-content/serverless/_cloud_native_vulnerability_management_dashboard.md
       - file: docs-content/serverless/ai-assistant-knowledge-base.md
-      - file: docs-content/serverless/application-and-service-monitoring.md
       - file: docs-content/serverless/cspm-required-permissions.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
       - file: docs-content/serverless/elasticsearch-dev-tools.md
