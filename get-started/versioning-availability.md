@@ -6,7 +6,7 @@ navigation_title: Versioning and availability
 
 ## Elastic Stack versioning
 
-Elasticsearch and the core components of the Elastic Stack use a semantic versioning scheme. This scheme consists of three numbers separated by periods in the form `X.Y.Z`, for example: `9.0.0`.
+{{ess}} and the core components of the Elastic Stack use a semantic versioning scheme. This scheme consists of three numbers separated by periods in the form `X.Y.Z`, for example: `9.0.0`.
 
 Each number represents a specific level of change:
 
@@ -30,7 +30,7 @@ Elastic products and features have different availability states across deployme
 Features may have different availability states between:
 
 - Elastic Stack versions (for example, 9.0, 9.1)
-- Serverless projects (Security, Elasticsearch, Observability)
+- Serverless projects (Security, {{ess}}, Observability)
 - Deployment types (and versions)
   - [Elastic Cloud Hosted](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
   - [Elastic Cloud Serverless](/deploy-manage/deploy/elastic-cloud/serverless.md)
