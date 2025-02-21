@@ -8,6 +8,7 @@ applies_to:
     ess:
     ece:
     eck:
+navigation_title: LDAP
 ---
 
 # LDAP user authentication [ldap-realm]

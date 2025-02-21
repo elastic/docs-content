@@ -61,7 +61,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-restore-across-clusters.md
       - file: cloud/cloud-enterprise/ece-restore-deployment.md
       - file: cloud/cloud-enterprise/ece-revoke-roles-token.md
-      - file: cloud/cloud-enterprise/ece-secure-clusters-kerberos.md
       - file: cloud/cloud-enterprise/ece-secure-clusters-oidc.md
       - file: cloud/cloud-enterprise/ece-securing-clusters-JWT.md
       - file: cloud/cloud-enterprise/ece-securing-clusters-SAML.md
@@ -109,7 +108,6 @@ toc:
       - file: cloud/cloud-heroku/ech-restoring-snapshots.md
       - file: cloud/cloud-heroku/ech-restrictions-monitoring.md
       - file: cloud/cloud-heroku/ech-saas-metrics-accessing.md
-      - file: cloud/cloud-heroku/ech-secure-clusters-kerberos.md
       - file: cloud/cloud-heroku/ech-secure-clusters-oidc.md
       - file: cloud/cloud-heroku/ech-securing-clusters-JWT.md
       - file: cloud/cloud-heroku/ech-securing-clusters-SAML.md

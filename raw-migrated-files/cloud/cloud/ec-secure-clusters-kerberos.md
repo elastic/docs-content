@@ -32,26 +32,5 @@ With a custom bundle containing the Kerberos files and changes to the cluster co
     The name of the realm must be `cloud-krb`, and the order must be 2: `xpack.security.authc.realms.kerberos.cloud-krb.order: 2`
     ::::
 
-4. Update Kibana in the [user settings configuration](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to use Kerberos as the authentication provider:
 
-    ```sh
-    xpack.security.authc.providers:
-      kerberos.kerberos1:
-        order: 0
-    ```
-
-    This configuration disables all other realms and only allows users to authenticate with Kerberos. If you wish to allow your native realm users to authenticate, you need to also enable the `basic` `provider` like this:
-
-    ```sh
-    xpack.security.authc.providers:
-      kerberos.kerberos1:
-        order: 0
-        description: "Log in with Kerberos" <1>
-      basic.basic1:
-        order: 1
-    ```
-
-    1. This arbitrary string defines how Kerberos login is titled in the Login Selector UI that is shown when you enable multiple authentication providers in Kibana. You can also configure the optional `icon` and `hint` settings for any authentication provider.
-
-5. Use the Kibana endpoint URL to log in.
 
