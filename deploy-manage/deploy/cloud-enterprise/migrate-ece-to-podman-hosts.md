@@ -42,7 +42,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
 1. Make sure you are running a healthy x-node ECE environment ready to be upgraded. All nodes use the Docker container runtime.
 2. Upgrade to ECE 3.3.0+ following the [Upgrade your installation](../../upgrade/orchestrator/upgrade-cloud-enterprise.md) guideline. Skip this step if your existing ECE installation already runs ECE >= 3.3.0.
 3. Follow your internal guidelines to add an additional vanilla RHEL (Note that the version must be >= 8.5, but <9), or Rocky Linux 8 or 9 VM to your environment.
-4. Verify that required traffic from the host added in step 3 is allowed to the primary ECE VM(s). Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-prereqs.html) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
+4. Verify that required traffic from the host added in step 3 is allowed to the primary ECE VM(s). Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
 
     **Example** For AWS, allowing traffic between hosts is implemented using security groups.
 
@@ -322,7 +322,7 @@ Otherwise, when the file content changes, the corresponding user is mentioned as
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
+    # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early
     vm.swappiness=1

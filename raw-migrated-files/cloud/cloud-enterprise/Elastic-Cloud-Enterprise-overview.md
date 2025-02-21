@@ -27,4 +27,4 @@ ECE evolves from the Elastic hosted Cloud SaaS offering into a standalone produc
 * Support for off-line installations.
 * Automated restore and snapshot.
 
-Check the [glossary](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
+Check the [glossary](asciidocalypse://docs/docs-content/docs/reference/glossary/index.md) to get familiar with the terminology for ECE as well as other Elastic products and solutions.

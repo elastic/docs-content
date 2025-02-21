@@ -24,9 +24,9 @@ Tasks are scheduled to run every 2 seconds, but seem to be running late.
 
 **Solution**:
 
-Task Manager polls for tasks at the cadence specified by the [`xpack.task_manager.poll_interval`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) setting, which is 3 seconds by default. This means that a task could run late if it uses a schedule that is smaller than this setting.
+Task Manager polls for tasks at the cadence specified by the [`xpack.task_manager.poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which is 3 seconds by default. This means that a task could run late if it uses a schedule that is smaller than this setting.
 
-You can adjust the [`xpack.task_manager.poll_interval`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) setting.  However, this will add additional load to both {{kib}} and {{es}} instances in the cluster, as they will perform more queries.
+You can adjust the [`xpack.task_manager.poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.  However, this will add additional load to both {{kib}} and {{es}} instances in the cluster, as they will perform more queries.
 
 
 ### Tasks run late [task-manager-health-tasks-run-late]
@@ -335,7 +335,7 @@ You can infer from this output that the {{kib}} instance only polls for work onc
 
 There are two possible reasons for such a configuration:
 
-* These settings have been configured manually, which can be resolved by reconfiguring these settings. For details, see [Task Manager Settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html).
+* These settings have been configured manually, which can be resolved by reconfiguring these settings. For details, see [Task Manager Settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md).
 * {{kib}} has reduced its own throughput in reaction to excessive load on the {{es}} cluster.
 
     Task Manager is equipped with a reactive self-healing mechanism in response to an increase in load related errors in {{es}}. This mechanism will increase the `poll_interval` setting (reducing the rate at which it queries {{es}}), and decrease the `max_workers` (reducing the amount of operations it executes against {{es}}). Once the error rate reduces, these settings are incrementally dialed up again, returning them to the configured settings.

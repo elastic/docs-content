@@ -31,14 +31,14 @@ Examples
 Info on configuring {{agent}}:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-output-configuration.html)
+* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
 
 For info on {{ls}} for enriching data, check out these sections in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
 
-* [{{ls}} {{agent}} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
-* [{{ls}} plugins for enriching data](https://www.elastic.co/guide/en/logstash/current/lookup-enrichment.html)
-* [Logstash filter plugins](https://www.elastic.co/guide/en/logstash/current/filter-plugins.html)
-* [{{ls}} {{es}} output](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html)
+* [{{ls}} {{agent}} input](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md)
+* [{{ls}} plugins for enriching data](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/lookup-enrichment.md)
+* [Logstash filter plugins](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/filter-plugins.md)
+* [{{ls}} {{es}} output](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 

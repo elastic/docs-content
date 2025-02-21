@@ -16,7 +16,7 @@ This section covers the following topics:
 
 ## Use APM Agent central configuration [k8s-apm-agent-central-configuration]
 
-[APM Agent configuration management](https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html) [7.5.1] allows you to configure your APM Agents centrally from the Kibana APM app. To use this feature, the APM Server needs to be configured with connection details of the Kibana instance. If Kibana is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
+[APM Agent configuration management](/solutions/observability/apps/apm-agent-central-configuration.md) [7.5.1] allows you to configure your APM Agents centrally from the Kibana APM app. To use this feature, the APM Server needs to be configured with connection details of the Kibana instance. If Kibana is managed by ECK, you can simply add a `kibanaRef` attribute to the APM Server specification:
 
 ```yaml
 cat <<EOF | kubectl apply -f -

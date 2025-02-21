@@ -10,7 +10,7 @@ The {{stack-security-features}} authenticate users by using realms and one or mo
 The {{security-features}} provide the following built-in token-based authentication services, which are listed in the order they are consulted:
 
 *service-accounts*
-:   The [service accounts](service-accounts.md) use either the [create service account token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token) or the [elasticsearch-service-tokens](https://www.elastic.co/guide/en/elasticsearch/reference/current/service-tokens-command.html) CLI tool to generate service account tokens.
+:   The [service accounts](service-accounts.md) use either the [create service account token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token) or the [elasticsearch-service-tokens](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool to generate service account tokens.
 
 To use a service account token, include the generated token value in a request with an `Authorization: Bearer` header:
 

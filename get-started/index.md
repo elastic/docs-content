@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro.html
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
+  - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/index.html
 ---
 
 # Get started [elasticsearch-intro-what-is-es]

@@ -17,7 +17,7 @@ The {{uptime-app}} is for viewing result data from lightweight monitors running 
 
 For browser-based monitors, a richer management and reporting experience, and more capabilities such as triaging and responding to alerts, use the [{{synthetics-app}}](synthetic-monitoring.md) instead of the {{uptime-app}}.
 
-Note that the {{uptime-app}} is hidden from the interface when there is no recent {{heartbeat}} data. To see the app, you may need to turn on the **Always show legacy Uptime app** setting (`observability:enableLegacyUptimeApp`) under {{kib}} Advanced Settings. To learn how, refer to [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html).
+Note that the {{uptime-app}} is hidden from the interface when there is no recent {{heartbeat}} data. To see the app, you may need to turn on the **Always show legacy Uptime app** setting (`observability:enableLegacyUptimeApp`) under {{kib}} Advanced Settings. To learn how, refer to [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
 
 ::::
 

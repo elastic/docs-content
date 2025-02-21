@@ -27,7 +27,7 @@ After you have created a new deployment, you should enable shipping logs and met
 
 5. Select **Save**.
 
-Optionally, turn on [audit logging](https://www.elastic.co/guide/en/elasticsearch/reference/current/auditing-settings.html) to capture security-related events, such as authentication failures, refused connections, and data-access events through the proxy. To turn on audit logging, [edit your deployment’s elasticsearch.yml file](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to add these lines:
+Optionally, turn on [audit logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md) to capture security-related events, such as authentication failures, refused connections, and data-access events through the proxy. To turn on audit logging, [edit your deployment’s elasticsearch.yml file](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to add these lines:
 
 ```sh
 xpack.security.audit.enabled: true
@@ -40,7 +40,7 @@ The last two lines are commented out for now but left there as placeholders to e
 
 ## View your deployment health [ec_view_your_deployment_health]
 
-From the monitoring deployment, you can now view your deployment’s health in Kibana using [Stack Monitoring](https://www.elastic.co/guide/en/kibana/current/xpack-monitoring.html):
+From the monitoring deployment, you can now view your deployment’s health in Kibana using [Stack Monitoring](/deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md):
 
 1. Select the **Kibana** link for your monitoring deployment.
 2. From the app menu or the search bar, open **Stack Monitoring**.
@@ -50,7 +50,7 @@ From the monitoring deployment, you can now view your deployment’s health in K
     ::::
 
 
-To learn more about what [Elasticsearch monitoring metrics](https://www.elastic.co/guide/en/kibana/current/elasticsearch-metrics.html) are available, take a look at the different tabs. For example:
+To learn more about what [Elasticsearch monitoring metrics](/deploy-manage/monitor/monitoring-data/elasticsearch-metrics.md) are available, take a look at the different tabs. For example:
 
 * The **Overview** tab includes information about the search and indexing performance of Elasticsearch and also provides log entries.
 * The **Nodes** tab can help you monitor cluster CPU performance, JVM strain, and free disk space.
@@ -70,13 +70,13 @@ Some [performance metrics](../../../deploy-manage/monitor/monitoring-data/ec-saa
 
 If you suspect a performance issue, you can use your monitoring deployment to investigate what is going in Kibana:
 
-* Through **Observability** > **Logs** > **Stream**: This page shows errors in real-time and is part of the same logs Elastic Support reviews when a deployment experiences issues. Check [Tail log files](https://www.elastic.co/guide/en/observability/current/tail-logs.html).
-* Through **Discover**: This page is a good option for investigating widespread historical patterns. Check [Discover](https://www.elastic.co/guide/en/kibana/current/discover.html).
+* Through **Observability** > **Logs** > **Stream**: This page shows errors in real-time and is part of the same logs Elastic Support reviews when a deployment experiences issues. Check [Tail log files](/solutions/observability/logs/logs-stream.md).
+* Through **Discover**: This page is a good option for investigating widespread historical patterns. Check [Discover](/explore-analyze/discover.md).
 
     Discover requires a quick setup in Kibana:
 
     1. Go to **Stack Management** > **Data Views** (formerly *Index Patterns*).
-    2. Create a [data view](https://www.elastic.co/guide/en/kibana/current/data-views.html) for `elastic-cloud-logs*` and set **Timestamp field** to `@timestamp`:
+    2. Create a [data view](/explore-analyze/find-and-organize/data-views.md) for `elastic-cloud-logs*` and set **Timestamp field** to `@timestamp`:
 
         :::{image} ../../../images/cloud-ec-ce-monitoring-logs.png
         :alt: Create data view example in Kibana
@@ -89,7 +89,7 @@ Navigate to the **Discover** or **Stream** pages to check if you’ve misconfigu
 :alt: Log error in Stream page showing failed SAML authentication
 :::
 
-You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](https://www.elastic.co/guide/en/cloud/current/ec-api-console.html):
+You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md):
 
 :::{image} ../../../images/cloud-ec-ce-monitoring-api-console.png
 :alt: Elasticsearch API console showing a spurious request that fails
@@ -104,18 +104,18 @@ You will get this request reported as a new log. Audit logs do not currently rep
 
 ## Get notified [ec_get_notified]
 
-You should take advantage of the default [Elastic Stack monitoring alerts](https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html) that are available out-of-the-box. You don’t have to do anything other than enable shipping logs and metrics to have them made available to you (which you did earlier on).
+You should take advantage of the default [Elastic Stack monitoring alerts](/deploy-manage/monitor/monitoring-data/kibana-alerts.md) that are available out-of-the-box. You don’t have to do anything other than enable shipping logs and metrics to have them made available to you (which you did earlier on).
 
-On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](https://www.elastic.co/guide/en/kibana/current/action-types.html) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
+On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana.md) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
 
 1. Go to **Stack Management** > **Rules and Connectors** > **Connectors** and create your Slack connector:
 
     1. Select **Slack**.
-    2. [Create a Slack Webhook URL](https://www.elastic.co/guide/en/kibana/current/slack-action-type.html#configuring-slack) and paste it into the **Webhook URL** field.
+    2. [Create a Slack Webhook URL](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md#configuring-slack) and paste it into the **Webhook URL** field.
     3. Select **Save**.
 
 2. Go to **Stack Monitoring** and select **Enter setup mode**.
-3. Edit an alert rule, such as [CPU usage](https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html#kibana-alerts-cpu-threshold):
+3. Edit an alert rule, such as [CPU usage](/deploy-manage/monitor/monitoring-data/kibana-alerts.md#kibana-alerts-cpu-threshold):
 
     1. Select one of the alert rule fields and select **CPU Usage**.
     2. Choose **Edit rule** and scroll down to the bottom of the screen to select **Slack**.
@@ -145,8 +145,8 @@ When issues come up that you need to troubleshoot, you’ll frequently start wit
 
 You can run this query and many others from the API consoles available via:
 
-* **Kibana** > **Dev Tools**. Check [Run Elasticsearch API requests](https://www.elastic.co/guide/en/kibana/current/console-kibana.html).
-* **Elastic Cloud** > **Deployment** > **Elasticsearch** > **API Console**. Check [Access the Elasticsearch API console](https://www.elastic.co/guide/en/cloud/current/ec-api-console.html).
+* **Kibana** > **Dev Tools**. Check [Run Elasticsearch API requests](/explore-analyze/query-filter/tools/console.md).
+* **Elastic Cloud** > **Deployment** > **Elasticsearch** > **API Console**. Check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md).
 
 You can also learn more about the queries you should run for your deployment by reading our blog [Managing and Troubleshooting Elasticsearch Memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 

@@ -64,7 +64,7 @@ xpack.security.authc.token.enabled: true
 
 SAML authentication is enabled by configuring a SAML realm within the authentication chain for {{es}}.
 
-This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [Security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html). For example, [SAML realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-settings), [SAML realm signing settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-signing-settings), [SAML realm encryption settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-encryption-settings), [SAML realm SSL settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-ssl-settings). This guide will walk you through the most common settings.
+This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [Security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md). For example, [SAML realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings), [SAML realm signing settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-signing-settings), [SAML realm encryption settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-encryption-settings), [SAML realm SSL settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-ssl-settings). This guide will walk you through the most common settings.
 
 Create a realm by adding the following to your `elasticsearch.yml` configuration file. Each configuration value is explained below.
 
@@ -151,7 +151,7 @@ In general, {{es}} expects that the configured value for an attribute will be a 
 :   This uses the SAML `NameID` value (all leading and trailing whitespace removed), but only if the NameID format is `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`. A SAML `NameID` element has an optional `Format` attribute that indicates the semantics of the provided name. It is common for IdPs to be configured with "transient" NameIDs that present a new identifier for each session. Since it is rarely useful to use a transient NameID as part of an attribute mapping, the "nameid:persistent" attribute name can be used as a safety mechanism that will cause an error if you attempt to map from a `NameID` that does not have a persistent value.
 
 ::::{note}
-Identity Providers can be either statically configured to release a `NameID` with a specific format, or they can be configured to try to conform with the requirements of the SP. The SP declares its requirements as part of the Authentication Request, using an element which is called the `NameIDPolicy`. If this is needed, you can set the relevant [settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-settings) named `nameid_format` in order to request that the IdP releases a `NameID` with a specific format.
+Identity Providers can be either statically configured to release a `NameID` with a specific format, or they can be configured to try to conform with the requirements of the SP. The SP declares its requirements as part of the Authentication Request, using an element which is called the `NameIDPolicy`. If this is needed, you can set the relevant [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings) named `nameid_format` in order to request that the IdP releases a `NameID` with a specific format.
 ::::
 
 
@@ -235,7 +235,7 @@ It is sometimes necessary for a SAML SP to be able to impose specific restrictio
 
 In short, the SAML SP defines a set of Authentication Context Class Reference values, which describe the restrictions to be imposed on the IdP, and sends these in the Authentication Request. The IdP attempts to grant these restrictions. If it cannot grant them, the authentication attempt fails. If the user is successfully authenticated, the Authentication Statement of the SAML Response contains an indication of the restrictions that were satisfied.
 
-You can define the Authentication Context Class Reference values by using the `req_authn_context_class_ref` option in the SAML realm configuration. See [SAML realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-saml-settings).
+You can define the Authentication Context Class Reference values by using the `req_authn_context_class_ref` option in the SAML realm configuration. See [SAML realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-saml-settings).
 
 {{es}} supports only the `exact` comparison method for the Authentication Context. When it receives the Authentication Response from the IdP, {{es}} examines the value of the Authentication Context Class Reference that is part of the Authentication Statement of the SAML Assertion. If it matches one of the requested values, the authentication is considered successful. Otherwise, the authentication attempt fails.
 
@@ -308,7 +308,7 @@ Encryption certificates are rarely needed, but the Elastic Stack supports them f
 
 {{es}} supports certificates and keys in either PEM, PKCS#12 or JKS format. Some Identity Providers are more restrictive in the formats they support, and will require you to provide the certificates as a file in a particular format. You should consult the documentation for your IdP to determine what formats they support. Since PEM format is the most commonly supported format, the examples below will generate certificates in that format.
 
-Using the [`elasticsearch-certutil` tool](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html), you can generate a signing certificate with the following command:
+Using the [`elasticsearch-certutil` tool](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md), you can generate a signing certificate with the following command:
 
 ```sh
 bin/elasticsearch-certutil cert --self-signed --pem --days 1100 --name saml-sign --out saml-sign.zip
@@ -400,7 +400,7 @@ If you wish to use **PKCS#12 formatted** files or a **Java Keystore** for SAML e
 
 Some Identity Providers support importing a metadata file from the Service Provider. This will automatically configure many of the integration options between the IdP and the SP.
 
-The {{stack}} supports generating such a metadata file using the [`bin/elasticsearch-saml-metadata` command](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-metadata.html) or the [SAML service provider metadata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-service-provider-metadata).
+The {{stack}} supports generating such a metadata file using the [`bin/elasticsearch-saml-metadata` command](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/saml-metadata.md) or the [SAML service provider metadata API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-service-provider-metadata).
 
 You can generate the SAML metadata by issuing the API request to {{es}} and store it as an XML file using tools like `jq`. For example, the following command generates the metadata for the SAML realm `realm1` and saves it to a `metadata.xml` file:
 

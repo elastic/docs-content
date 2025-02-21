@@ -3,7 +3,7 @@
 Elasticsearch Add-On for Heroku supports most of the standard Kibana and X-Pack settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
-Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](https://www.elastic.co/guide/en/kibana/current/settings.html).
+Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 ::::
 
 
@@ -43,55 +43,55 @@ If a setting is not supported by Elasticsearch Add-On for Heroku, you will get a
 ### Version 8.9.0+ [echversion_8_9_0]
 
 `xpack.fleet.createArtifactsBulkBatchSize`
-:   Allow to configure batch size for creating and updating Fleet user artifacts.  Examples include creation of Trusted Applications and Endpoint Exceptions in Security.  To learn more, check [Fleet settings in Kibana](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html).
+:   Allow to configure batch size for creating and updating Fleet user artifacts.  Examples include creation of Trusted Applications and Endpoint Exceptions in Security.  To learn more, check [Fleet settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
 
 `xpack.securitySolution.maxUploadResponseActionFileBytes`
-:   Allow to configure the max file upload size for use with the Upload File Repsonse action available with the Defend Integration.  To learn more, check [Endpoint Response actions](https://www.elastic.co/guide/en/security/current/response-actions.html).
+:   Allow to configure the max file upload size for use with the Upload File Repsonse action available with the Defend Integration.  To learn more, check [Endpoint Response actions](/solutions/security/endpoint-response-actions.md).
 
 
 ### Version 8.7.0+ [echversion_8_7_0]
 
 `xpack.security.session.concurrentSessions.maxSessions`
-:   Set the maximum number of sessions each user is allowed to have active in {{kib}}. By default, no limit is applied. If set, the value of this option should be an integer between 1 and 1000. When the limit is exceeded, the oldest session is automatically invalidated. To learn more, check [Session management](https://www.elastic.co/guide/en/kibana/current/xpack-security-session-management.html#session-max-sessions).
+:   Set the maximum number of sessions each user is allowed to have active in {{kib}}. By default, no limit is applied. If set, the value of this option should be an integer between 1 and 1000. When the limit is exceeded, the oldest session is automatically invalidated. To learn more, check [Session management](/deploy-manage/security/kibana-session-management.md#session-max-sessions).
 
 `server.securityResponseHeaders.crossOriginOpenerPolicy`
-:   Controls whether the [`Cross-Origin-Opener-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-crossOriginOpenerPolicy).
+:   Controls whether the [`Cross-Origin-Opener-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-crossOriginOpenerPolicy).
 
 
 ### Version 8.6.0+ [echversion_8_6_0]
 
 `server.compression.brotli.enabled`
-:   Enable brotli compression format for browser-server communications. Default: false. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Enable brotli compression format for browser-server communications. Default: false. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `xpack.fleet.enableExperimental`
-:   Allow to configure experimental feature for Fleet. To learn more, check [Fleet settings in Kibana](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html).
+:   Allow to configure experimental feature for Fleet. To learn more, check [Fleet settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
 
 
 ### Version 8.4.0+ [echversion_8_4_0]
 
 `migrations.discardUnknownObjects`
-:   Discard saved objects with unknown types during a migration. Must be set to the target version, e.g.: `8.4.0`. Default: undefined. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Discard saved objects with unknown types during a migration. Must be set to the target version, e.g.: `8.4.0`. Default: undefined. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `migrations.discardCorruptObjects`
-:   Discard corrupt saved objects, as well as those that cause transform errors during a migration. Must be set to the target version, e.g.: `8.4.0`. Default: undefined. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Discard corrupt saved objects, as well as those that cause transform errors during a migration. Must be set to the target version, e.g.: `8.4.0`. Default: undefined. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 
 ### Version 8.3.0+ [echversion_8_3_0]
 
 `elasticsearch.compression`
-:   Enable compression for communications with Elasticsearch. Default: false. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Enable compression for communications with Elasticsearch. Default: false. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 
 ### Version 8.2.0+ [echversion_8_2_0]
 
 `elasticsearch.maxSockets`
-:   The maximum number of sockets that can be used for communications with Elasticsearch. Default: Infinity. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   The maximum number of sockets that can be used for communications with Elasticsearch. Default: Infinity. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 
 ### Version 8.1.0+ [echversion_8_1_0]
 
 `execution_context.enabled`
-:   Propagate request-specific metadata to Elasticsearch server by way of the `x-opaque-id` header. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Propagate request-specific metadata to Elasticsearch server by way of the `x-opaque-id` header. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 
 ### Supported versions before 8.x [echsupported_versions_before_8_x]
@@ -106,34 +106,34 @@ If a setting is not supported by Elasticsearch Add-On for Heroku, you will get a
 ### All supported versions [echall_supported_versions_2]
 
 `migrations.maxBatchSizeBytes`
-:   Defines the maximum payload size for indexing batches of saved objects during upgrade migrations. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Defines the maximum payload size for indexing batches of saved objects during upgrade migrations. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `server.maxPayload`
-:   The maximum payload size in bytes for incoming server requests. Default: 1048576. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-maxPayload).
+:   The maximum payload size in bytes for incoming server requests. Default: 1048576. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-maxPayload).
 
 `server.securityResponseHeaders.strictTransportSecurity`
-:   Controls whether the [`Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-strictTransportSecurity).
+:   Controls whether the [`Strict-Transport-Security`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-strictTransportSecurity).
 
 `server.securityResponseHeaders.xContentTypeOptions`
-:   Controls whether the [`X-Content-Type-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-xContentTypeOptions).
+:   Controls whether the [`X-Content-Type-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options) header is used in all responses to the client from the Kibana server. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-xContentTypeOptions).
 
 `server.securityResponseHeaders.referrerPolicy`
-:   Controls whether the [`Referrer-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-referrerPolicy).
+:   Controls whether the [`Referrer-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy) header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-referrerPolicy).
 
 `server.securityResponseHeaders.permissionsPolicy`
-:   Controls whether the `Permissions-Policy` header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-permissionsPolicy).
+:   Controls whether the `Permissions-Policy` header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-permissionsPolicy).
 
 `server.securityResponseHeaders.permissionsPolicyReportOnly`
-:   Controls whether the `Permissions-Policy-Report-Only` header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-permissionsPolicy).
+:   Controls whether the `Permissions-Policy-Report-Only` header is used in all responses to the client from the Kibana server. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-permissionsPolicy).
 
 `server.securityResponseHeaders.disableEmbedding`
-:   Controls whether the [`Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) and [`X-Frame-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options) headers are configured to disable embedding Kibana in other webpages using iframes. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-disableEmbedding).
+:   Controls whether the [`Content-Security-Policy`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) and [`X-Frame-Options`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options) headers are configured to disable embedding Kibana in other webpages using iframes. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-disableEmbedding).
 
 `data.autocomplete.valueSuggestions.timeout`
-:   Specifies the time in milliseconds to wait for autocomplete suggestions from Elasticsearch. The default is 1000. Allowed values are between 1 and 1200000. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Specifies the time in milliseconds to wait for autocomplete suggestions from Elasticsearch. The default is 1000. Allowed values are between 1 and 1200000. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `data.autocomplete.valueSuggestions.terminateAfter`
-:   Specifies the max number of documents loaded by each shard to generate autocomplete suggestions. The default is 100000. Allowed values are between 1 and 10000000. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Specifies the max number of documents loaded by each shard to generate autocomplete suggestions. The default is 100000. Allowed values are between 1 and 10000000. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `map.tilemap.options.attribution`
 :   Adds the map attribution string.
@@ -154,7 +154,7 @@ If a setting is not supported by Elasticsearch Add-On for Heroku, you will get a
 :   Specifies the locale for all strings, dates, and number formats that can be localized. Defaults to `en` (English).
 
 `migrations.batchSize`
-:   Defines the number of documents migrated at a time during saved object upgrade migrations. To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html).
+:   Defines the number of documents migrated at a time during saved object upgrade migrations. To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
 
 `server.defaultRoute`
 :   Specifies the default route when opening Kibana. You can use this setting to modify the landing page when opening Kibana.
@@ -224,7 +224,7 @@ If a setting is not supported by Elasticsearch Add-On for Heroku, you will get a
 
 If you are using SAML to secure your clusters, these settings are supported in Elasticsearch Add-On for Heroku.
 
-To learn more, refer to [configuring Kibana to use SAML](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-configure-kibana).
+To learn more, refer to [configuring Kibana to use SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana).
 
 #### Version 8.0.0+ [echversion_8_0_0]
 
@@ -299,17 +299,17 @@ If you are using OpenID Connect to secure your clusters, these settings are supp
 `xpack.security.authc.oidc.realm`
 :   Specifies which OpenID Connect realm in Elasticsearch should be used.
 
-To learn more, check [configuring Kibana to use OpenID Connect](https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html).
+To learn more, check [configuring Kibana to use OpenID Connect](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md).
 
 
 ### Anonymous authentication [echanonymous_authentication]
 
-If you want to allow anonymous authentication in Kibana, these settings are supported in Elasticsearch Add-On for Heroku. To learn more on how to enable anonymous access, check [Enabling anonymous access](https://www.elastic.co/guide/en/elasticsearch/reference/current/anonymous-access.html) and [Configuring Kibana to use anonymous authentication](https://www.elastic.co/guide/en/kibana/current/kibana-authentication.html#anonymous-authentication).
+If you want to allow anonymous authentication in Kibana, these settings are supported in Elasticsearch Add-On for Heroku. To learn more on how to enable anonymous access, check [Enabling anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md) and [Configuring Kibana to use anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#anonymous-authentication).
 
 #### Supported versions before 8.0.0 [echsupported_versions_before_8_0_0]
 
 `xpack.security.sessionTimeout`
-:   Specifies the session duration in milliseconds. Allows a value between 15000 (15 seconds) and 86400000 (1 day). To learn more, check [Security settings in Kibana](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html). Deprecated in versions 7.6+ and removed in versions 8.0+.
+:   Specifies the session duration in milliseconds. Allows a value between 15000 (15 seconds) and 86400000 (1 day). To learn more, check [Security settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md). Deprecated in versions 7.6+ and removed in versions 8.0+.
 
 
 #### All supported versions [echall_supported_versions_4]
@@ -474,7 +474,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 :   Sets the size of the ephemeral queue. Defaults to `10`.
 
 `xpack.actions.customHostSettings`
-:   An array of objects, one per host, containing the SSL/TLS settings used when executing connectors which make HTTPS and SMTP connections to the host servers.  For details about using this setting, check [Alerting and action settings in Kibana](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html).
+:   An array of objects, one per host, containing the SSL/TLS settings used when executing connectors which make HTTPS and SMTP connections to the host servers.  For details about using this setting, check [Alerting and action settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md).
 
 `xpack.actions.ssl.proxyVerificationMode`
 :   Controls the verification of the proxy server certificate that hosted-ems receives when making an outbound SSL/TLS connection to the host server. Valid values are `full`, `certificate`, and `none`. Use `full` to perform hostname verification, `certificate` to skip hostname verification, and `none` to skip verification. Default: `full`.
@@ -564,10 +564,10 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 :   Set to `true` to enable logging event log documents from alerting to the Kibana log, in addition to being indexed into the event log index. Default: `false`.
 
 `xpack.security.session.idleTimeout`
-:   Set the session duration. The format is a string of `count` and `unit`, where unit is one of `ms`,`s`,`m`,`h`,`d`,`w`,`M`,`Y`. For example, `70ms`, `5s`, `3d`, `1Y`. To learn more, check [Security settings in Kibana](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html).
+:   Set the session duration. The format is a string of `count` and `unit`, where unit is one of `ms`,`s`,`m`,`h`,`d`,`w`,`M`,`Y`. For example, `70ms`, `5s`, `3d`, `1Y`. To learn more, check [Security settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md).
 
 `xpack.security.session.lifespan`
-:   Sets the maximum duration, also known as "absolute timeout". After this duration, the session will expire even if it is not idle. To learn more, check [Security settings in Kibana](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html).
+:   Sets the maximum duration, also known as "absolute timeout". After this duration, the session will expire even if it is not idle. To learn more, check [Security settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md).
 
 `xpack.maps.showMapVisualizationTypes`
 :   Set to `true` if you want to create new region map visualizations.
@@ -588,7 +588,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 :   When enabled, specifies the email address to receive cluster alert notifications.
 
 `xpack.monitoring.kibana.collection.interval`
-:   Controls [how often data samples are collected](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#monitoring-collection-settings).
+:   Controls [how often data samples are collected](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#monitoring-collection-settings).
 
 `xpack.monitoring.min_interval_seconds`
 :   Specifies the minimum number of seconds that a time bucket in a chart can represent. If you modify the `xpack.monitoring.kibana.collection.interval`, use the same value in this setting.
@@ -599,7 +599,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 `xpack.ml.enabled`
 :   Set to true (default) to enable machine learning.
 
-    If set to `false` in `kibana.yml`, the machine learning icon is hidden in this Kibana instance. If `xpack.ml.enabled` is set to `true` in `elasticsearch.yml`, however, you can still use the machine learning APIs. To disable machine learning entirely, check the [Elasticsearch Machine Learning Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html).
+    If set to `false` in `kibana.yml`, the machine learning icon is hidden in this Kibana instance. If `xpack.ml.enabled` is set to `true` in `elasticsearch.yml`, however, you can still use the machine learning APIs. To disable machine learning entirely, check the [Elasticsearch Machine Learning Settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md).
 
 
 #### Content security policy configuration [echcontent_security_policy_configuration]
@@ -635,7 +635,7 @@ This setting is not available in versions 8.0.0 through 8.2.0. As such, this set
 :   Add sources for the [Content Security Policy `form-action` directive](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/form-action) in reporting mode.
 
 $$$csp-strict$$$ `csp.strict`
-:   Blocks Kibana access to any browser that does not enforce even rudimentary CSP rules. In practice, this disables support for older, less safe browsers like Internet Explorer. **Default: `true`** To learn more, check [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html)].
+:   Blocks Kibana access to any browser that does not enforce even rudimentary CSP rules. In practice, this disables support for older, less safe browsers like Internet Explorer. **Default: `true`** To learn more, check [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md)].
 
 `csp.warnLegacyBrowsers`
 :   Shows a warning message after loading Kibana to any browser that does not enforce even rudimentary CSP rules, though Kibana is still accessible. This configuration is effectively ignored when [`csp.strict`](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#csp-strict) is enabled. **Default: `true`**
@@ -650,7 +650,7 @@ $$$csp-strict$$$ `csp.strict`
 #### Permissions policy configuration [echpermissions_policy_configuration]
 
 `permissionsPolicy.report_to`
-:   Add sources for the permissions policy `report-to` directive. To learn more, see [Configure Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html#server-securityResponseHeaders-permissionsPolicy)
+:   Add sources for the permissions policy `report-to` directive. To learn more, see [Configure Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-permissionsPolicy)
 
 
 #### Banner settings [echbanner_settings]
@@ -692,7 +692,7 @@ Each method has its own unique limitations which are important to understand.
 
 
 `xpack.reporting.csv.scroll.duration`
-:   Amount of [time](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units) allowed before {{kib}} cleans the scroll context during a CSV export. Valid option is either `auto` or [time](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units), Defaults to `30s`.
+:   Amount of [time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units) allowed before {{kib}} cleans the scroll context during a CSV export. Valid option is either `auto` or [time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units), Defaults to `30s`.
 
 ::::{note}
 Support for the The option `auto` was included here, when the config value is set to `auto` the scroll context will be preserved for as long as is possible, before the report task is terminated due to the limits of `xpack.reporting.queue.timeout`.
@@ -757,7 +757,7 @@ Support for the The option `auto` was included here, when the config value is se
 Defaults to `true`.
 
 `xpack.reporting.csv.scroll.duration`
-:   Amount of [time](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units) allowed before {{kib}} cleans the scroll context during a CSV export.
+:   Amount of [time](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units) allowed before {{kib}} cleans the scroll context during a CSV export.
 
 Defaults to `30s` (30 seconds).
 
@@ -929,7 +929,7 @@ The following APM settings are supported in Kibana:
 `xpack.apm.ui.maxTraceItems`
 :   Maximum number of child items displayed when viewing trace details.
 
-    Defaults to `1000`.  Any positive value is valid. To learn more, check [APM settings in Kibana](https://www.elastic.co/guide/en/kibana/current/apm-settings-kb.html).
+    Defaults to `1000`.  Any positive value is valid. To learn more, check [APM settings in Kibana](asciidocalypse://docs/kibana/docs/reference/configuration-reference/apm-settings.md).
 
 
 `xpack.apm.ui.enabled`

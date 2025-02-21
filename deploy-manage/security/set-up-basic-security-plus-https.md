@@ -201,11 +201,11 @@ After making these changes, you must always access {{kib}} via HTTPS. For exampl
 
 ## Configure {{beats}} security [configure-beats-security]
 
-{{beats}} are open source data shippers that you install as agents on your servers to send operational data to {{es}}. Each Beat is a separately installable product. The following steps cover configuring security for {{metricbeat}}. Follow these steps for each [additional Beat](https://www.elastic.co/guide/en/beats/libbeat/current/getting-started.html) you want to configure security for.
+{{beats}} are open source data shippers that you install as agents on your servers to send operational data to {{es}}. Each Beat is a separately installable product. The following steps cover configuring security for {{metricbeat}}. Follow these steps for each [additional Beat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md) you want to configure security for.
 
 ### Prerequisites [_prerequisites_13]
 
-[Install {{metricbeat}}](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html) using your preferred method.
+[Install {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-installation-configuration.md) using your preferred method.
 
 ::::{important}
 You cannot connect to the {{stack}} or configure assets for {{metricbeat}} before completing the following steps.
@@ -269,7 +269,7 @@ To send monitoring data securely, create a monitoring user and grant it the nece
 
 You can use the built-in `beats_system` user, if it’s available in your environment. Because the built-in users are not available in {{ecloud}}, these instructions create a user that is explicitly used for monitoring {{metricbeat}}.
 
-1. If you’re using the built-in `beats_system` user, on any node in your cluster, run the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) utility to set the password for that user:
+1. If you’re using the built-in `beats_system` user, on any node in your cluster, run the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) utility to set the password for that user:
 
     This command resets the password for the `beats_system` user to an auto-generated value.
 
@@ -441,7 +441,7 @@ In production environments, we strongly recommend using a separate cluster (refe
        verification_mode: "certificate"
     ```
 
-    1. Configuring SSL is required when monitoring a node with encrypted traffic. See [Configure SSL for {{metricbeat}}](https://www.elastic.co/guide/en/beats/metricbeat/current/configuration-ssl.html).`hosts`
+    1. Configuring SSL is required when monitoring a node with encrypted traffic. See [Configure SSL for {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/configuration-ssl.md).`hosts`
     :   Specifies the host where your {{es}} cluster is running. Ensure that you include `https` in the URL.
 
     `username`

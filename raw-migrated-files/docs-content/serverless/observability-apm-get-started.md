@@ -81,14 +81,14 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         Instrumentation is the process of extending your application’s code to report trace data to Elastic APM. Go applications must be instrumented manually at the source code level. To instrument your applications, use one of the following approaches:
 
-        * [Built-in instrumentation modules](https://www.elastic.co/guide/en/apm/agent/go/current/builtin-modules.html).
-        * [Custom instrumentation](https://www.elastic.co/guide/en/apm/agent/go/current/custom-instrumentation.html) and context propagation with the Go Agent API.
+        * [Built-in instrumentation modules](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/builtin-modules.md).
+        * [Custom instrumentation](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/custom-instrumentation.md) and context propagation with the Go Agent API.
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](https://www.elastic.co/guide/en/apm/agent/go/current/supported-tech.html)
-        * [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html)
-        * [Detailed guide to instrumenting Go source code](https://www.elastic.co/guide/en/apm/agent/go/current/getting-started.html)
+        * [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md)
+        * [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
+        * [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/set-up-apm-go-agent.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-java-panel" aria-labelledby="apm-apm-get-started-java-button" hidden="">
@@ -118,25 +118,25 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
         java -javaagent:/path/to/elastic-apm-agent-<version>.jar -Delastic.apm.service_name=my-cool-service -Delastic.apm.application_packages=org.example,org.another.example -Delastic.apm.server_url=http://127.0.0.1:8200 -jar my-application.jar
         ```
 
-        Refer to [Manual setup with `-javaagent` flag](https://www.elastic.co/guide/en/apm/agent/java/current/setup-javaagent.html) to learn more.
+        Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/setup-javaagent.md) to learn more.
 
         **Alternate setup methods**
 
-        * **Automatic setup with `apm-agent-attach-cli.jar`** Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-cli.html) for more information on this setup method.
-        * **Programmatic API setup to self-attach** Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](https://www.elastic.co/guide/en/apm/agent/java/current/setup-attach-api.html) for more information on this setup method.
+        * **Automatic setup with `apm-agent-attach-cli.jar`** Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/setup-attach-cli.md) for more information on this setup method.
+        * **Programmatic API setup to self-attach** Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/setup-attach-api.md) for more information on this setup method.
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-net-panel" aria-labelledby="apm-apm-get-started-net-button" hidden="">
         **Set up the {{apm-agent}}**
 
-        * **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup-auto-instrumentation.html).
-        * **NuGet packages**: The agent ships as a set of [NuGet packages](https://www.elastic.co/guide/en/apm/agent/dotnet/current/packages.html) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
-        * **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](https://www.elastic.co/guide/en/apm/agent/dotnet/current/setup-dotnet-net-core.html) for more details.
+        * **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/setup-auto-instrumentation.md).
+        * **NuGet packages**: The agent ships as a set of [NuGet packages](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/nuget-packages.md) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
+        * **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/setup-dotnet-net-core.md) for more details.
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](https://www.elastic.co/guide/en/apm/agent/dotnet/current/supported-technologies.html)
-        * [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/dotnet/current/configuration.html)
+        * [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/supported-technologies.md)
+        * [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-nodejs-panel" aria-labelledby="apm-apm-get-started-nodejs-button" hidden="">
@@ -175,9 +175,9 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](https://www.elastic.co/guide/en/apm/agent/nodejs/current/supported-technologies.html)
-        * [Babel/ES Modules](https://www.elastic.co/guide/en/apm/agent/nodejs/current/advanced-setup.html)
-        * [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuring-the-agent.html)
+        * [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md)
+        * [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/advanced-setup.md)
+        * [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuring-agent.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-php-panel" aria-labelledby="apm-apm-get-started-php-button" hidden="">
@@ -247,12 +247,12 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](https://www.elastic.co/guide/en/apm/agent/php/current/supported-technologies.html)
-        * [Configuration](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
+        * [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md)
+        * [Configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-python-panel" aria-labelledby="apm-apm-get-started-python-button" hidden="">
-        Django and Flask are two of several frameworks that the Elastic APM Python Agent supports. For a complete list of supported technologies, refer to the [Elastic APM Python Agent documentation](https://www.elastic.co/guide/en/apm/agent/python/current/supported-technologies.html).
+        Django and Flask are two of several frameworks that the Elastic APM Python Agent supports. For a complete list of supported technologies, refer to the [Elastic APM Python Agent documentation](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md).
 
         *Django*
 
@@ -337,8 +337,8 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](https://www.elastic.co/guide/en/apm/agent/python/current/supported-technologies.html)
-        * [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
+        * [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
+        * [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-ruby-panel" aria-labelledby="apm-apm-get-started-ruby-button" hidden="">
@@ -412,8 +412,8 @@ To send APM data to Elastic, you must install an APM agent and configure it to s
 
         **Learn more in the {{apm-agent}} reference**
 
-        * [Supported technologies](https://www.elastic.co/guide/en/apm/agent/ruby/current/supported-technologies.html)
-        * [Advanced configuration](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html)
+        * [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/supported-technologies.md)
+        * [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
 
           </div>
           <div tabindex="0" role="tabpanel" id="apm-apm-get-started-opentelemetry-panel" aria-labelledby="apm-apm-get-started-opentelemetry-button" hidden="">

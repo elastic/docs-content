@@ -8,9 +8,9 @@ Serverless projects use the core components of the {{stack}}, such as {{es}} and
 
 Elastic provides three serverless solutions available on {{ecloud}}:
 
-* **https://www.elastic.co/guide/en/serverless/current/what-is-elasticsearch-serverless.html[{{es-serverless}}]**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
-* **https://www.elastic.co/guide/en/serverless/current/what-is-observability-serverless.html[{{obs-serverless}}]**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
-* **https://www.elastic.co/guide/en/serverless/current/what-is-security-serverless.html[{{sec-serverless}}]**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
+* **/solutions/search.md[{{es-serverless}}]**: Build powerful applications and search experiences using a rich ecosystem of vector search capabilities, APIs, and libraries.
+* **/solutions/observability.md[{{obs-serverless}}]**: Monitor your own platforms and services using powerful machine learning and analytics tools with your logs, metrics, traces, and APM data.
+* **/solutions/security/elastic-security-serverless.md[{{sec-serverless}}]**: Detect, investigate, and respond to threats with SIEM, endpoint protection, and AI-powered analytics capabilities.
 
 [Learn more about {{serverless-full}} in our blog](https://www.elastic.co/blog/elastic-cloud-serverless).
 
@@ -32,7 +32,7 @@ Elastic provides three serverless solutions available on {{ecloud}}:
 
 ## Differences between serverless projects and hosted deployments on {{ecloud}} [general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
 
-You can run [hosted deployments](https://www.elastic.co/guide/en/cloud/current/ec-getting-started.html) of the {{stack}} on {{ecloud}}. These hosted deployments provide more provisioning and advanced configuration options.
+You can run [hosted deployments](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md) of the {{stack}} on {{ecloud}}. These hosted deployments provide more provisioning and advanced configuration options.
 
 |     |     |     |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Migration paths between hosted deployments and serverless projects are currently
 
 **How can I move data to or from serverless projects?**
 
-We are working on data migration tools! In the interim, [use Logstash](https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-through-logstash.html) with Elasticsearch input and output plugins to move data to and from serverless projects.
+We are working on data migration tools! In the interim, [use Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md) with Elasticsearch input and output plugins to move data to and from serverless projects.
 
 **How does serverless ensure compatibility between software versions?**
 
