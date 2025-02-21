@@ -29,7 +29,7 @@ This guide also provides tips for [restoring to another cluster](#restore-differ
 - You can only restore a snapshot to a running cluster with an elected [master node](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be registered and available to the cluster.
 - The snapshot and cluster versions must be compatible. See [Snapshot compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-compatibility).
 - To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any cluster blocks that prevent writes. The restore operation ignores index blocks.
-- Before you restore a data stream, ensure the cluster contains a [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) with data stream enabled. To check, use [Kibana’s Index Management](/manage-data/data-store/index-types.md#index-management-manage-index-templates) feature or the get index template API:
+- Before you restore a data stream, ensure the cluster contains a [matching index template](/manage-data/use-case-use-elasticsearch-to-manage-time-series-data.md#create-ts-index-template) with data stream enabled. To check, use [Kibana’s Index Management](/manage-data/data-store/index-basics.md#index-management-manage-index-templates) feature or the get index template API:
 
   ```console
   GET _index_template/*?filter_path=index_templates.name,index_templates.index_template.index_patterns,index_templates.index_template.data_stream
@@ -62,7 +62,7 @@ Then use the get snapshot API to get a list of snapshots in a specific repositor
 GET _snapshot/my_repository/*?verbose=false
 ```
 
-## Restore an index or data stream
+## Restore an index or data stream [restore-index-data-stream]
 
 You can restore a snapshot using Kibana’s Snapshot and Restore feature or the restore snapshot API.
 
@@ -73,7 +73,7 @@ If you’re restoring data to a pre-existing cluster, use one of the following m
 - [Delete and restore](#delete-and-restore)
 - [Rename on restore](#rename-on-restore)
 
-### Delete and restore
+### Delete and restore [delete-restore]
 
 The simplest way to avoid conflicts is to delete an existing index or data stream before restoring it. To prevent the accidental re-creation of the index or data stream, we recommend you temporarily stop all indexing until the restore operation is complete.
 

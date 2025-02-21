@@ -92,7 +92,7 @@ Snapshots don’t contain or back up:
 - Node configuration files
 - [Security configuration files](/deploy-manage/security.md)
 
-### Feature states [feature-states]
+### Feature states [feature-state]
 
 A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **Elasticsearch security** or **Kibana**.
 
@@ -110,7 +110,7 @@ Snapshots are **automatically deduplicated** to save storage space and reduce ne
 
 Each snapshot is **logically independent**. When you delete a snapshot, Elasticsearch only deletes the segments used exclusively by that snapshot. Elasticsearch doesn’t delete segments used by other snapshots in the repository.
 
-### Snapshots and shard allocation
+### Snapshots and shard allocation [snapshots-shard-allocation]
 
 A snapshot copies segments from an index’s primary shards. When you start a snapshot, Elasticsearch immediately starts copying the segments of any available primary shards. If a shard is starting or relocating, Elasticsearch will wait for these processes to complete before copying the shard’s segments. If one or more primary shards aren’t available, the snapshot attempt fails.
 
@@ -124,7 +124,7 @@ A snapshot doesn’t represent a cluster at a precise point in time. Instead, ea
 
 To restore a snapshot to a cluster, the versions for the snapshot, cluster, and any restored indices must be compatible.
 
-### Snapshot version compatibility
+### Snapshot version compatibility [snapshot-restore-version-compatibility]
 
 You can’t restore a snapshot to an earlier version of Elasticsearch. For example, you can’t restore a snapshot taken in 7.6.0 to a cluster running 7.5.0.
 
