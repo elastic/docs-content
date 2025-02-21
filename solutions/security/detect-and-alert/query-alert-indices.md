@@ -13,7 +13,7 @@ mapped_urls:
 % - [x] ./raw-migrated-files/security-docs/security/query-alert-indices.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/security-query-alert-indices.md
 
-This page explains how you should query alert indices, for example, when building rule queries, custom dashboards, or visualizations. For more information about alert event field definitions, review the [Alert schema](https://www.elastic.co/guide/en/security/current/alert-schema.html).
+This page explains how you should query alert indices, for example, when building rule queries, custom dashboards, or visualizations. For more information about alert event field definitions, review the [Alert schema](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/alert-schema.md).
 
 
 ## Alert index aliases [_alert_index_aliases] 

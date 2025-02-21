@@ -18,7 +18,7 @@ You can combine these features to deploy a production-grade Elasticsearch cluste
 
 ## Define Elasticsearch nodes roles [k8s-define-elasticsearch-nodes-roles]
 
-You can configure Elasticsearch nodes with [one or multiple roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html).
+You can configure Elasticsearch nodes with [one or multiple roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md).
 
 ::::{tip}
 You can use [YAML anchors](https://yaml.org/spec/1.2/spec.md#id2765878) to declare the configuration change once and reuse it across all the node sets.
@@ -197,7 +197,7 @@ This example restricts Elasticsearch nodes so they are only scheduled on Kuberne
 
 ## Topology spread constraints and availability zone awareness [k8s-availability-zone-awareness]
 
-Starting with ECK 2.0 the operator can make Kubernetes Node labels available as Pod annotations. It can be used to make information, such as logical failure domains, available in a running Pod. Combined with [Elasticsearch shard allocation awareness](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#allocation-awareness) and [Kubernetes topology spread constraints](https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/), you can create an availability zone-aware Elasticsearch cluster.
+Starting with ECK 2.0 the operator can make Kubernetes Node labels available as Pod annotations. It can be used to make information, such as logical failure domains, available in a running Pod. Combined with [Elasticsearch shard allocation awareness](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#allocation-awareness) and [Kubernetes topology spread constraints](https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/), you can create an availability zone-aware Elasticsearch cluster.
 
 ### Exposing Kubernetes node topology labels in Pods [k8s-availability-zone-awareness-downward-api]
 
@@ -252,13 +252,13 @@ This example relies on:
 
 * Kubernetes nodes in each zone being labeled accordingly. `topology.kubernetes.io/zone` [is standard](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#interlude-built-in-node-labels), but any label can be used.
 * [Pod topology spread constraints](https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/) to spread the Pods across availability zones in the Kubernetes cluster.
-* Elasticsearch configured to [allocate shards based on node attributes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#allocation-awareness). Here we specified `node.attr.zone`, but any attribute name can be used. `node.attr.rack_id` is another common example.
+* Elasticsearch configured to [allocate shards based on node attributes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#allocation-awareness). Here we specified `node.attr.zone`, but any attribute name can be used. `node.attr.rack_id` is another common example.
 
 
 
 ## Hot-warm topologies [k8s-hot-warm-topologies]
 
-By combining [Elasticsearch shard allocation awareness](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#allocation-awareness) with [Kubernetes node affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature), you can set up an Elasticsearch cluster with hot-warm topology:
+By combining [Elasticsearch shard allocation awareness](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#allocation-awareness) with [Kubernetes node affinity](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature), you can set up an Elasticsearch cluster with hot-warm topology:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
@@ -344,6 +344,6 @@ This example uses [Local Persistent Volumes](https://kubernetes.io/docs/concepts
 ::::
 
 
-Finally, set up [Index Lifecycle Management](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-lifecycle-management.html) policies on your indices, [optimizing for hot-warm architectures](https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management).
+Finally, set up [Index Lifecycle Management](/manage-data/lifecycle/index-lifecycle-management.md) policies on your indices, [optimizing for hot-warm architectures](https://www.elastic.co/blog/implementing-hot-warm-cold-in-elasticsearch-with-index-lifecycle-management).
 
 

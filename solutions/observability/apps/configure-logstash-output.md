@@ -49,7 +49,7 @@ To enable the {{ls}} output in APM Server, edit the `apm-server.yml` file to:
 
 Finally, you must create a {{ls}} configuration pipeline that listens for incoming APM Server connections and indexes received events into {{es}}.
 
-1. Use the [Elastic Agent input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html) to configure {{ls}} to receive events from the APM Server. A minimal `input` config might look like this:
+1. Use the [Elastic Agent input plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md) to configure {{ls}} to receive events from the APM Server. A minimal `input` config might look like this:
 
     ```json
     input {
@@ -59,7 +59,7 @@ Finally, you must create a {{ls}} configuration pipeline that listens for incomi
     }
     ```
 
-2. Use the [{{es}} output plugin](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html) to send events to {{es}} for indexing. A minimal `output` config might look like this:
+2. Use the [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md) to send events to {{es}} for indexing. A minimal `output` config might look like this:
 
     ```json
     output {
@@ -72,7 +72,7 @@ Finally, you must create a {{ls}} configuration pipeline that listens for incomi
     ```
 
     1. Enables indexing into {{es}} data streams.
-    2. This example assumes you’re sending data to {{ecloud}}. If you’re using a self-hosted version of {{es}}, use `hosts` instead. See [{{es}} output plugin](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html) for more information.
+    2. This example assumes you’re sending data to {{ecloud}}. If you’re using a self-hosted version of {{es}}, use `hosts` instead. See [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md) for more information.
 
 
 Here’s what your basic {{ls}} configuration file will look like when we put everything together:
@@ -96,7 +96,7 @@ output {
 
 ## Accessing the @metadata field [_accessing_the_metadata_field]
 
-Every event sent to {{ls}} contains a special field called [`@metadata`](https://www.elastic.co/guide/en/logstash/current/event-dependent-configuration.html#metadata) that you can use in {{ls}} for conditionals, filtering, indexing and more. APM Server sends the following `@metadata` to {{ls}}:
+Every event sent to {{ls}} contains a special field called [`@metadata`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/event-dependent-configuration.md#metadata) that you can use in {{ls}} for conditionals, filtering, indexing and more. APM Server sends the following `@metadata` to {{ls}}:
 
 ```json
 {
@@ -118,7 +118,7 @@ As an example, you might want to use {{ls}} to route all `metrics` events to the
 
 However, if when you combine all `metrics` events there are events that have the `data_stream.dataset` field set to different values, indexing will fail with a message stating that the field does not accept any other values. For example, the error might say something like `failed to parse field [data_stream.dataset] of type [constant_keyword]` or `[constant_keyword] field [data_stream.dataset] only accepts values that are equal to the value defined in the mappings`. This is because the `data_stream.dataset` field’s mapping is set to `constant_keyword`, which expects all values of the fields in the index to be the same.
 
-To prevent losing data due to failed indexing, add a [Logstash mutate filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html) to update the value of `data_stream.dataset`. Then, you can send all metrics events to one custom metrics data stream:
+To prevent losing data due to failed indexing, add a [Logstash mutate filter](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-mutate.md) to update the value of `data_stream.dataset`. Then, you can send all metrics events to one custom metrics data stream:
 
 ```json
 filter {
@@ -142,7 +142,7 @@ output {
 1. Only apply this output if the data is being sent from the APM Server.
 2. Determine if the event type is `metrics`.
 3. Add a Logstash mutate filter to update the value of `data_stream.dataset`.
-4. In this example, `cloud_id` and `cloud_auth` are stored as [environment variables](https://www.elastic.co/guide/en/logstash/current/environment-variables.html).
+4. In this example, `cloud_id` and `cloud_auth` are stored as [environment variables](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/environment-variables.md).
 
 
 
@@ -252,7 +252,7 @@ This parameter’s value will be assigned to the `metadata.beat` field. It can t
 
 #### `ssl` [_ssl_2]
 
-Configuration options for SSL parameters like the root CA for {{ls}} connections. See [SSL/TLS output settings](ssltls-output-settings.md) for more information. To use SSL, you must also configure the [{{beats}} input plugin for {{ls}}](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-beats.html) to use SSL/TLS.
+Configuration options for SSL parameters like the root CA for {{ls}} connections. See [SSL/TLS output settings](ssltls-output-settings.md) for more information. To use SSL, you must also configure the [{{beats}} input plugin for {{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md) to use SSL/TLS.
 
 
 #### `timeout` [_timeout_2]
@@ -306,7 +306,7 @@ To use SSL mutual authentication:
 1. Create a certificate authority (CA) and use it to sign the certificates that you plan to use for APM Server and {{ls}}. Creating a correct SSL/TLS infrastructure is outside the scope of this document. There are many online resources available that describe how to create certificates.
 
     ::::{tip}
-    If you are using {{security-features}}, you can use the [`elasticsearch-certutil` tool](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html) to generate certificates.
+    If you are using {{security-features}}, you can use the [`elasticsearch-certutil` tool](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md) to generate certificates.
     ::::
 
 2. Configure APM Server to use SSL. In the `apm-server.yml` config file, specify the following settings under `ssl`:
@@ -326,12 +326,12 @@ To use SSL mutual authentication:
 
         For more information about these configuration options, see [SSL/TLS output settings](ssltls-output-settings.md).
 
-3. Configure {{ls}} to use SSL. In the {{ls}} config file, specify the following settings for the [{{beats}} input plugin for {{ls}}](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-beats.html):
+3. Configure {{ls}} to use SSL. In the {{ls}} config file, specify the following settings for the [{{beats}} input plugin for {{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md):
 
     * `ssl`: When set to true, enables {{ls}} to use SSL/TLS.
     * `ssl_certificate_authorities`: Configures {{ls}} to trust any certificates signed by the specified CA.
     * `ssl_certificate` and `ssl_key`: Specify the certificate and key that {{ls}} uses to authenticate with the client.
-    * `ssl_verify_mode`: Specifies whether the {{ls}} server verifies the client certificate against the CA. You need to specify either `peer` or `force_peer` to make the server ask for the certificate and validate it. If you specify `force_peer`, and APM Server doesn’t provide a certificate, the {{ls}} connection will be closed. If you choose not to use [`certutil`](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html), the certificates that you obtain must allow for both `clientAuth` and `serverAuth` if the extended key usage extension is present.
+    * `ssl_verify_mode`: Specifies whether the {{ls}} server verifies the client certificate against the CA. You need to specify either `peer` or `force_peer` to make the server ask for the certificate and validate it. If you specify `force_peer`, and APM Server doesn’t provide a certificate, the {{ls}} connection will be closed. If you choose not to use [`certutil`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md), the certificates that you obtain must allow for both `clientAuth` and `serverAuth` if the extended key usage extension is present.
 
         For example:
 
@@ -348,7 +348,7 @@ To use SSL mutual authentication:
         }
         ```
 
-        For more information about these options, see the [documentation for the {{beats}} input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-beats.html).
+        For more information about these options, see the [documentation for the {{beats}} input plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md).
 
 
 

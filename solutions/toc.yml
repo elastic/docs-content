@@ -328,6 +328,7 @@ toc:
               - file: observability/logs/logs-stream.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/add-service-name-to-logs.md
+          - file: observability/logs/logs-index-template-reference.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -370,14 +371,10 @@ toc:
       - file: observability/tools-and-apis.md
       - file: observability/unknown-bucket.md
         children:
-          - file: observability/unknown-bucket/view-monitor-status.md
-          - file: observability/unknown-bucket/monitor-aws-with-amazon-data-firehose.md
-          - file: observability/unknown-bucket/serverless-observability-limitations.md
           - file: observability/unknown-bucket/host-metrics.md
           - file: observability/unknown-bucket/container-metrics.md
           - file: observability/unknown-bucket/kubernetes-pod-metrics.md
           - file: observability/unknown-bucket/aws-metrics.md
-          - file: observability/unknown-bucket/logs-index-template-reference.md
   - file: security.md
     children:
       - file: security/elastic-security-serverless.md
@@ -649,7 +646,7 @@ toc:
               - file: search/rag/playground-query.md
               - file: search/rag/playground-troubleshooting.md
       - file: search/hybrid-search.md
-        children: 
+        children:
           - file: search/hybrid-semantic-text.md
       - file: search/ranking.md
         children:

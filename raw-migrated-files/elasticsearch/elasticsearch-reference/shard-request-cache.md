@@ -4,12 +4,12 @@ When a search request is run against an index or against many indices, each invo
 
 The shard-level request cache module caches the local results on each shard. This allows frequently used (and potentially heavy) search requests to return results almost instantly. The requests cache is a very good fit for the logging use case, where only the most recent index is being actively updated — results from older indices will be served directly from the cache.
 
-You can control the size and expiration of the cache at the node level using the [shard request cache settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache-settings.html).
+You can control the size and expiration of the cache at the node level using the [shard request cache settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/shard-request-cache-settings.md).
 
 ::::{important} 
 By default, the requests cache will only cache the results of search requests where `size=0`, so it will not cache `hits`, but it will cache `hits.total`,  [aggregations](../../../explore-analyze/query-filter/aggregations.md), and [suggestions](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html).
 
-Most queries that use `now` (see [Date Math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math)) cannot be cached.
+Most queries that use `now` (see [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math)) cannot be cached.
 
 Scripted queries that use the API calls which are non-deterministic, such as `Math.random()` or `new Date()` are not cached.
 

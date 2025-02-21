@@ -7,7 +7,7 @@ You cannot use the Kerberos realm to authenticate on the transport network layer
 ::::
 
 
-To authenticate users with Kerberos, you need to configure a Kerberos realm and map users to roles. For more information on realm settings, see [Kerberos realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-kerberos-settings).
+To authenticate users with Kerberos, you need to configure a Kerberos realm and map users to roles. For more information on realm settings, see [Kerberos realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
 
 ## Key concepts [kerberos-terms]
 
@@ -98,7 +98,7 @@ To configure a Kerberos realm in {{es}}:
 
 1. Configure the JVM to find the Kerberos configuration file.
 
-    {{es}} uses Java GSS and JAAS Krb5LoginModule to support Kerberos authentication using a Simple and Protected GSSAPI Negotiation Mechanism (SPNEGO) mechanism. The Kerberos configuration file (`krb5.conf`) provides information such as the default realm, the Key Distribution Center (KDC), and other configuration details required for Kerberos authentication. When the JVM needs some configuration properties, it tries to find those values by locating and loading this file. The JVM system property to configure the file path is `java.security.krb5.conf`. To configure JVM system properties see [Set JVM options](https://www.elastic.co/guide/en/elasticsearch/reference/current/advanced-configuration.html#set-jvm-options). If this system property is not specified, Java tries to locate the file based on the conventions.
+    {{es}} uses Java GSS and JAAS Krb5LoginModule to support Kerberos authentication using a Simple and Protected GSSAPI Negotiation Mechanism (SPNEGO) mechanism. The Kerberos configuration file (`krb5.conf`) provides information such as the default realm, the Key Distribution Center (KDC), and other configuration details required for Kerberos authentication. When the JVM needs some configuration properties, it tries to find those values by locating and loading this file. The JVM system property to configure the file path is `java.security.krb5.conf`. To configure JVM system properties see [Set JVM options](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options). If this system property is not specified, Java tries to locate the file based on the conventions.
 
     ::::{tip} 
     It is recommended that this system property be configured for {{es}}. The method for setting this property depends on your Kerberos infrastructure. Refer to your Kerberos documentation for more details.
@@ -141,7 +141,7 @@ To configure a Kerberos realm in {{es}}:
 
     The `username` is extracted from the ticket presented by user and usually has the format `username@REALM`. This `username` is used for mapping roles to the user. If realm setting `remove_realm_name` is set to `true`, the realm part (`@REALM`) is removed. The resulting `username` is used for role mapping.
 
-    For detailed information of available realm settings, see [Kerberos realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-kerberos-settings).
+    For detailed information of available realm settings, see [Kerberos realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
 
 5. Restart {{es}}
 6. Map Kerberos users to roles.

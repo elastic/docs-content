@@ -1,6 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/reference-architectures/current/reference-architectures-overview.html
+  - https://www.elastic.co/guide/en/reference-architectures/current/index.html
 applies:
   stack: all
   hosted: all
@@ -14,14 +15,14 @@ Elasticsearch reference architectures are blueprints for deploying Elasticsearch
 
 These architectures are designed by architects and engineers to provide standardized, proven solutions that help you to follow best practices when deploying {{es}}.
 
-::::{tip} 
+::::{tip}
 These architectures are specific to deploying Elastic on {{ech}}, {{eck}}, {{ece}}, or deploying a self-managed instance. If you are using {{serverless-full}}, your {{es}} clusters are autoscaled and fully managed by Elastic. To learn about all of the deployment options, refer to the [Deploy and manage overview](/deploy-manage/index.md).
 ::::
 
 
 These reference architectures are recommendations and should be adapted to fit your specific environment and needs. Each solution can vary based on the unique requirements and conditions of your deployment. In these architectures we discuss about how to deploy cluster components. For information about designing ingest architectures to feed content into your cluster, refer to [Ingest architectures](../manage-data/ingest/ingest-reference-architectures.md).
 
-## Architectures [reference-architectures-time-series] 
+## Architectures [reference-architectures-time-series]
 
 |     |     |
 | --- | --- |

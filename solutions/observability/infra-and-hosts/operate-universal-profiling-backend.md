@@ -74,7 +74,7 @@ Avoid using debug logs in production, as they can be very verbose and impact bac
 
 Logs are formatted as "key=value" pairs, and {{es}} and {{kib}} can automatically parse them into fields.
 
-A log collector, such as Filebeat, can collect and send logs to {{es}} for indexing and analysis. Depending on how it’s installed, a Filebeat input of type `journald` (for OS packages), `log` (for binaries), or `container` can be used to process the logs. Refer to the [filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/configuring-howto-filebeat.html) for more information.
+A log collector, such as Filebeat, can collect and send logs to {{es}} for indexing and analysis. Depending on how it’s installed, a Filebeat input of type `journald` (for OS packages), `log` (for binaries), or `container` can be used to process the logs. Refer to the [filebeat documentation](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuring-howto-filebeat.md) for more information.
 
 
 ### Metrics [profiling-self-managed-ops-monitoring-metrics]

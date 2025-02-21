@@ -32,7 +32,7 @@ Maps uses the [{{es}} vector tile search API](https://www.elastic.co/docs/api/do
 
 ### Data view not listed when adding layer [_data_view_not_listed_when_adding_layer]
 
-* Verify your geospatial data is correctly mapped as [geo_point](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-point.html) or [geo_shape](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html).
+* Verify your geospatial data is correctly mapped as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md).
 
     * Run `GET myIndexName/_field_caps?fields=myGeoFieldName` in [Console](../../explore-analyze/query-filter/tools/console.md), replacing `myIndexName` and `myGeoFieldName` with your index and geospatial field name.
     * Ensure response specifies `type` as `geo_point` or `geo_shape`.

@@ -32,7 +32,7 @@ $$$mapping-explicit$$$
 
 Mapping is the process of defining how a document and the fields it contains are stored and indexed.
 
-Each document is a collection of fields, which each have their own [data type](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html). When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes [metadata fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-fields.html), like the `_source` field, which customize how a document’s associated metadata is handled.
+Each document is a collection of fields, which each have their own [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes [metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/document-metadata-fields.md), like the `_source` field, which customize how a document’s associated metadata is handled.
 
 Depending on where you are in your data journey, use *dynamic mapping* and *explicit mapping* to define your data. For example, you can explicitly map fields where you don’t want to use the defaults, or to gain greater control over which fields are created. Then you can allow {{es}} to dynamically map other fields. Using a combination of dynamic and explicit mapping on the same index is especially useful when you have a mix of known and unknown fields in your data.
 
@@ -42,7 +42,7 @@ Before 7.0.0, the mapping definition included a type name. {{es}} 7.0.0 and late
 
 ## Dynamic mapping [mapping-dynamic] 
 
-When you use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically detects the data types of fields in your documents and creates mappings for you. If you index additional documents with new fields, {{es}} will add these fields automatically. You can add fields to the top-level mapping, and to inner [`object`](https://www.elastic.co/guide/en/elasticsearch/reference/current/object.html) and [`nested`](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html) fields. Dynamic mapping helps you get started quickly, but might yield suboptimal results for your specific use case due to automatic field type inference.
+When you use [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md), {{es}} automatically detects the data types of fields in your documents and creates mappings for you. If you index additional documents with new fields, {{es}} will add these fields automatically. You can add fields to the top-level mapping, and to inner [`object`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md) and [`nested`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/nested.md) fields. Dynamic mapping helps you get started quickly, but might yield suboptimal results for your specific use case due to automatic field type inference.
 
 Use [dynamic templates](/manage-data/data-store/mapping/dynamic-templates.md) to define custom mappings that are applied to dynamically added fields based on the matching condition. 
 
@@ -55,7 +55,7 @@ Defining your own mappings enables you to:
 * Define which string fields should be treated as full-text fields.
 * Define which fields contain numbers, dates, or geolocations.
 * Use data types that cannot be automatically detected (such as `geo_point` and `geo_shape`.)
-* Choose date value [formats](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-date-format.html), including custom date formats.
+* Choose date value [formats](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-date-format.md), including custom date formats.
 * Create custom rules to control the mapping for [dynamically added fields](/manage-data/data-store/mapping/dynamic-mapping.md).
 * Optimize fields for partial matching.
 * Perform language-specific text analysis.
@@ -84,11 +84,11 @@ In most cases, you can’t change mappings for fields that are already mapped. T
 However, you can update mappings under certain conditions:
 
 * You can add new fields to an existing mapping at any time, dynamically or explicitly.
-* You can add new [multi-fields](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html) for existing fields.
+* You can add new [multi-fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md) for existing fields.
 
     * Documents indexed before the mapping update will not have values for the new multi-fields until they are updated or reindexed. Documents indexed after the mapping change will automatically have values for the new multi-fields.
 
-* Some [mapping parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html) can be updated for existing fields of certain [data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html).
+* Some [mapping parameters](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-parameters.md) can be updated for existing fields of certain [data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md).
 
 
 ## Prevent mapping explosions [mapping-limit-settings]
@@ -97,4 +97,4 @@ Defining too many fields in an index can lead to a mapping explosion, which can 
 
 Consider a situation where every new document inserted introduces new fields, such as with [dynamic mapping](/manage-data/data-store/mapping/dynamic-mapping.md). Each new field is added to the index mapping, which can become a problem as the mapping grows.
 
-Use the [mapping limit settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-settings-limit.html) to limit the number of field mappings (created manually or dynamically) and prevent documents from causing a mapping explosion.
+Use the [mapping limit settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/mapping-limit-settings.md) to limit the number of field mappings (created manually or dynamically) and prevent documents from causing a mapping explosion.

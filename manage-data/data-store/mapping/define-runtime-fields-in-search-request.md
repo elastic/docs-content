@@ -71,7 +71,7 @@ PUT my-index-000001/_mapping
 
 Runtime fields take precedence over fields defined with the same name in the index mappings. This flexibility allows you to shadow existing fields and calculate a different value, without modifying the field itself. If you made a mistake in your index mapping, you can use runtime fields to calculate values that [override values](override-field-values-at-query-time.md) in the mapping during the search request.
 
-Now, you can easily run an [average aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-avg-aggregation.html) on the `measures.start` and `measures.end` fields:
+Now, you can easily run an [average aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-avg-aggregation.md) on the `measures.start` and `measures.end` fields:
 
 ```console
 GET my-index-000001/_search
@@ -106,7 +106,7 @@ The response includes the aggregation results without changing the values for th
 }
 ```
 
-Further, you can define a runtime field as part of a search query that calculates a value, and then run a [stats aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html) on that field *in the same query*.
+Further, you can define a runtime field as part of a search query that calculates a value, and then run a [stats aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-stats-aggregation.md) on that field *in the same query*.
 
 The `duration` runtime field doesn’t exist in the index mapping, but we can still search and aggregate on that field. The following query returns the calculated value for the `duration` field and runs a stats aggregation to compute statistics over numeric values extracted from the aggregated documents.
 

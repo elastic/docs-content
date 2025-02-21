@@ -28,7 +28,11 @@ To configure Google Cloud Storage (GCS) as a snapshot repository, you must use [
 
 To configure Microsoft Azure Storage as a snapshot repository, refer to [Snapshotting to Azure Storage](azure-storage-repository.md).
 
+<<<<<<< HEAD
 For more details about how snapshots are used with Elasticsearch, check [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
+=======
+For more details about how snapshots are used with Elasticsearch, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
+>>>>>>> 0491a1f86c6b651663641c0c8b292a85dfcdcc6a
 
 * [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)
 * [Microsoft Azure storage documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account)
@@ -37,6 +41,16 @@ For more details about how snapshots are used with Elasticsearch, check [Snapsho
 ::::{tip}
 If you are installing ECE without internet access (commonly called an offline or air-gapped installation), you will need to use an on-premise storage service.  We suggest that you use [Minio](https://www.minio.io/). For our installation notes, check [Snapshotting to Minio On-Premise Storage](minio-on-premise-repository.md).
 ::::
+
+
+## Add snapshot repository configurations [ece-manage-repositories-add]
+
+The following guides provide instructions on adding a snapshot repository in ECE for all supported types:
+
+* [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
+* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
+* [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
 
 ## Edit snapshot repository configurations [ece_edit_snapshot_repository_configurations]
 

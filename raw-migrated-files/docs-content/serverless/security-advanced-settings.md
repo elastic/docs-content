@@ -27,7 +27,7 @@ Modifying advanced settings can affect performance and cause problems that are d
 To access advanced settings, go to **Project Settings** → **Management*** → ***Advanced Settings**, then scroll down to **Security Solution** settings.
 
 ::::{tip}
-For more information on non-Security settings, refer to [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html). Some settings might not be available in serverless projects.
+For more information on non-Security settings, refer to [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md). Some settings might not be available in serverless projects.
 
 ::::
 
@@ -56,7 +56,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 ::::
 
 
-All of the default index patterns match [{{beats}}](https://www.elastic.co/guide/en/beats/libbeat/current/beats-reference.html) and [{{agent}}](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
+All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md) and [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
 You can add or remove any indices and index patterns as required, with a maximum of 50 items in the comma-delimited list. For background information on {{es}} indices, refer to [Data in: documents and indices](../../../manage-data/data-store/index-basics.md).
 
@@ -67,7 +67,7 @@ If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cl
 
 
 ::::{important}
-{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [{{elastic-sec}} ECS field reference](https://www.elastic.co/guide/en/serverless/current/security-siem-field-reference.html) lists ECS fields used in {{elastic-sec}}.
+{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [{{elastic-sec}} ECS field reference](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
 
 ::::
 
@@ -137,7 +137,7 @@ These settings determine the default time interval and refresh rate {{elastic-se
 * `securitySolution:refreshIntervalDefaults`: Default refresh rate
 
 ::::{note}
-Refer to [Date Math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html) for information about the syntax. The UI [time filter](../../../explore-analyze/query-filter/filtering.md) overrides the default values.
+Refer to [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md) for information about the syntax. The UI [time filter](../../../explore-analyze/query-filter/filtering.md) overrides the default values.
 
 ::::
 

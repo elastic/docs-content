@@ -28,4 +28,4 @@ When managing larger numbers of synthetic monitors, use tags to keep them organi
 
 ## Create custom dashboards [synthetics-custom-dashboards]
 
-If we don't provide a UI for your exact needs, you can use [dashboards](../../../explore-analyze/dashboards.md) to build custom visualizations. For a complete accounting of fields used by the Synthetics UI, refer to [{{heartbeat}}'s exported fields](https://www.elastic.co/guide/en/beats/heartbeat/current/exported-fields.html).
+If we don't provide a UI for your exact needs, you can use [dashboards](../../../explore-analyze/dashboards.md) to build custom visualizations. For a complete accounting of fields used by the Synthetics UI, refer to [{{heartbeat}}'s exported fields](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/exported-fields.md).
