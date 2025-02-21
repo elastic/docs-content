@@ -18,7 +18,7 @@ Continue with this guide for instructions on manual configuration.
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 To follow the steps in this guide, you need an {{stack}} deployment that includes:
