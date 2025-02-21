@@ -1,10 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
-navigation_title: "{{ess}} and {{kib}}"
 ---
 
-# {{ess}} and {{kib}} [introduction]
+# {{es}} and {{kib}} [introduction]
 
 ## What is {{es}}?
 
