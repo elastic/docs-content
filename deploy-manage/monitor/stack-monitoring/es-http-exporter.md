@@ -17,9 +17,9 @@ If you have previously configured legacy collection methods, you should migrate 
 
 The `http` exporter is the preferred exporter in the {{es}} {{monitor-features}} because it enables the use of a separate monitoring cluster. As a secondary benefit, it avoids using a production cluster node as a coordinating node for indexing monitoring data because all requests are HTTP requests to the monitoring cluster.
 
-The `http` exporter uses the low-level {{es}} REST Client, which enables it to send its data to any {{es}} cluster it can access through the network. Its requests make use of the [`filter_path`](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#common-options-response-filtering) parameter to reduce bandwidth whenever possible, which helps to ensure that communications between the production and monitoring clusters are as lightweight as possible.
+The `http` exporter uses the low-level {{es}} REST Client, which enables it to send its data to any {{es}} cluster it can access through the network. Its requests make use of the [`filter_path`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) parameter to reduce bandwidth whenever possible, which helps to ensure that communications between the production and monitoring clusters are as lightweight as possible.
 
-The `http` exporter supports a number of settings that control how it communicates over HTTP to remote clusters. In most cases, it is not necessary to explicitly configure these settings. For detailed descriptions, see [Monitoring settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html).
+The `http` exporter supports a number of settings that control how it communicates over HTTP to remote clusters. In most cases, it is not necessary to explicitly configure these settings. For detailed descriptions, see [Monitoring settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md).
 
 ```yaml
 xpack.monitoring.exporters:
@@ -47,7 +47,7 @@ xpack.monitoring.exporters:
 2. An `http` exporter defined whose arbitrary name is `my_remote`. This name uniquely defines the exporter but is otherwise unused.
 3. `host` is a required setting for `http` exporters. It must specify the HTTP port rather than the transport port. The default port value is `9200`.
 4. User authentication for those using {{stack}} {{security-features}} or some other form of user authentication protecting the cluster.
-5. See [HTTP exporter settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#http-exporter-settings) for all TLS/SSL settings. If not supplied, the default node-level TLS/SSL settings are used.
+5. See [HTTP exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings) for all TLS/SSL settings. If not supplied, the default node-level TLS/SSL settings are used.
 6. Optional base path to prefix any outgoing request with in order to work with proxies.
 7. Arbitrary key/value pairs to define as headers to send with every request. The array-based key/value format sends one header per value.
 8. A mechanism for changing the date suffix used by default.
@@ -79,5 +79,5 @@ When discussing security relative to the `http` exporter, it is critical to reme
 ::::
 
 
-For more information about the configuration options for the `http` exporter, see [HTTP exporter settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#http-exporter-settings).
+For more information about the configuration options for the `http` exporter, see [HTTP exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings).
 

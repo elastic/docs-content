@@ -23,7 +23,7 @@ Osquery Response Actions allow you to add live queries to custom query rules so 
 ::::{admonition} Requirements
 * Osquery Response Actions require a [Platinum or Enterprise subscription](https://www.elastic.co/pricing).
 * The [Osquery manager integration](/solutions/security/investigate/manage-integration.md) must be installed.
-* {{agent}}'s [status](https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+* {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
 * Your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
 * You can only add Osquery Response Actions to custom query rules.
 

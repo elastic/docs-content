@@ -8,7 +8,7 @@ mapped_pages:
 
 # Deploy an Elasticsearch cluster [k8s-deploy-elasticsearch]
 
-To deploy a simple [{{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html) cluster specification, with one {{es}} node:
+To deploy a simple [{{es}}](/solutions/search/get-started.md) cluster specification, with one {{es}} node:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -43,7 +43,7 @@ The cluster that you deployed in this quickstart guide only allocates a persiste
 ::::
 
 
-For a full description of each `CustomResourceDefinition` (CRD), refer to the [*API Reference*](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-api-reference.html) or view the CRD files in the [project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/crds). You can also retrieve information about a CRD from the cluster. For example, describe the {{es}} CRD specification with [`describe`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/):
+For a full description of each `CustomResourceDefinition` (CRD), refer to the [*API Reference*](asciidocalypse://docs/cloud-on-k8s/docs/reference/cloud/cloud-on-k8s/k8s-api-reference.md) or view the CRD files in the [project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/crds). You can also retrieve information about a CRD from the cluster. For example, describe the {{es}} CRD specification with [`describe`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/):
 
 ```sh
 kubectl describe crd elasticsearch
@@ -107,7 +107,7 @@ NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 quickstart-es-http   ClusterIP   10.15.251.145   <none>        9200/TCP   34m
 ```
 
-In order to make requests to the [{{es}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-apis.html):
+In order to make requests to the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md):
 
 1. Get the credentials.
 

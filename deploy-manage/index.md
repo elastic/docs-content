@@ -6,6 +6,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
   - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
+  - https://www.elastic.co/guide/en/elastic-stack/current/index.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-deployments.html
   - https://www.elastic.co/guide/en/kibana/current/management.html
 ---

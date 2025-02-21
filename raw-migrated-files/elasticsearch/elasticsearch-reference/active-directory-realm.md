@@ -21,7 +21,7 @@ To integrate with Active Directory, you configure an `active_directory` realm an
 
 1. Add a realm configuration of type `active_directory` to `elasticsearch.yml` under the `xpack.security.authc.realms.active_directory` namespace. At a minimum, you must specify the Active Directory `domain_name` and `order`.
 
-    See [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings) for all of the options you can set for an `active_directory` realm.
+    See [Active Directory realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings) for all of the options you can set for an `active_directory` realm.
 
     ::::{note} 
     Binding to Active Directory fails if the domain name is not mapped in DNS. If DNS is not being provided by a Windows DNS server, add a mapping for the domain in the local `/etc/hosts` file.
@@ -81,7 +81,7 @@ To integrate with Active Directory, you configure an `active_directory` realm an
 
 3. (Optional) Configure how {{es}} should interact with multiple Active Directory servers.
 
-    The `load_balance.type` setting can be used at the realm level. Two modes of operation are supported: failover and load balancing. See [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings).
+    The `load_balance.type` setting can be used at the realm level. Two modes of operation are supported: failover and load balancing. See [Active Directory realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings).
 
 4. (Optional) To protect passwords, [encrypt communications between {{es}} and the Active Directory server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md#tls-active-directory).
 5. Restart {{es}}.
@@ -208,7 +208,7 @@ Additional metadata can be extracted from the Active Directory server by configu
 
 The `load_balance.type` setting can be used at the realm level to configure how the {{security-features}} should interact with multiple Active Directory servers. Two modes of operation are supported: failover and load balancing.
 
-See [Load balancing and failover](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#load-balancing).
+See [Load balancing and failover](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#load-balancing).
 
 
 ## Encrypting communications between {{es}} and Active Directory [tls-active-directory]
@@ -239,7 +239,7 @@ Clients and nodes that connect via SSL/TLS to the Active Directory server need t
 
     The CA cert must be a PEM encoded certificate.
 
-    For more information about these settings, see [Active Directory realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-ad-settings).
+    For more information about these settings, see [Active Directory realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings).
 
 4. Restart {{es}}.
 

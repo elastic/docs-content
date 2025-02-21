@@ -55,7 +55,7 @@ To go to **Spaces**, find **Stack Management** in the navigation menu or use the
 The maximum number of spaces that you can have differs by deployment type: 
 
 * **Serverless projects:** Maximum of 100 spaces.
-* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the full list of Space settings in [this document](https://www.elastic.co/guide/en/kibana/current/spaces-settings-kb.html).
+* **{{stack}} deployments:** Controlled by the `xpack.spaces.maxSpaces` setting. Default is 1000. View the full list of Space settings in [this document](asciidocalypse://docs/kibana/docs/reference/configuration-reference/spaces-settings.md).
 
 To create a space: 
 
@@ -147,7 +147,7 @@ serverless: unavailable
 
 You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object as they enter each space.
 
-To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
+To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
 
 :::{image} ../images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page

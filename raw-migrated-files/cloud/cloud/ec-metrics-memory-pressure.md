@@ -35,15 +35,15 @@ By understanding and adjusting the way your data is indexed, retained, and searc
 
 ### Sharding strategy [ec_sharding_strategy]
 
-{{es}} indices are divided into shards. Understanding shards is important when tuning {{es}}. Check [Size your shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/size-your-shards.html) in the {{es}} documentation to learn more.
+{{es}} indices are divided into shards. Understanding shards is important when tuning {{es}}. Check [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md) in the {{es}} documentation to learn more.
 
 
 ### Data retention [ec_data_retention]
 
-The total amount of data being searched affects search performance. Check the tutorial [Automate rollover with index lifecycle management](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started-index-lifecycle-management.html) (ILM) to automate data retention policies.
+The total amount of data being searched affects search performance. Check the tutorial [Automate rollover with index lifecycle management](/manage-data/lifecycle/index-lifecycle-management/tutorial-automate-rollover.md) (ILM) to automate data retention policies.
 
 
 ### Tune for search speed [ec_tune_for_search_speed]
 
-The documentation [Tune for search speed](https://www.elastic.co/guide/en/elasticsearch/reference/current/tune-for-search-speed.html) provides details on how to analyze queries, optimize field types, minimize the fields searched, and more.
+The documentation [Tune for search speed](/deploy-manage/production-guidance/optimize-performance/search-speed.md) provides details on how to analyze queries, optimize field types, minimize the fields searched, and more.
 

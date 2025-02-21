@@ -48,7 +48,7 @@ If you have an App Search instance, after specifying a new deployment domain nam
 
 
 ::::{note}
-The built-in Proxy Certificate only validates against the default endpoint format described on this page. Once you change it, it is necessary to upload a new Proxy Certificate as described in [Manage security certificates](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-certificates.html). For test only, clients can be configured with hostname verification disabled until the new certificate is uploaded.
+The built-in Proxy Certificate only validates against the default endpoint format described on this page. Once you change it, it is necessary to upload a new Proxy Certificate as described in [Manage security certificates](/deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md). For test only, clients can be configured with hostname verification disabled until the new certificate is uploaded.
 ::::
 
 

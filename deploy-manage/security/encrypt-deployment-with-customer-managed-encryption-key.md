@@ -35,7 +35,7 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
 
 ::::::{tab-item} AWS
 * Have permissions on AWS KMS to [create a symmetric AWS KMS key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.md#symmetric-cmks) and to configure AWS IAM roles.
-* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) supported by Elastic Cloud.
+* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
 ::::::
 
 ::::::{tab-item} Azure
@@ -46,11 +46,11 @@ When a deployment encrypted with a customer-managed key is deleted or terminated
     * Permissions to [assign roles in your Key Vault using Access control (IAM)](https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#prerequisites). This is required to grant the service principal access to your key.
 
 * The Azure Key Vault where the RSA key will be stored must have [purge protection](https://learn.microsoft.com/en-us/azure/key-vault/general/soft-delete-overview#purge-protection) enabled to support the encryption of snapshots.
-* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) supported by Elastic Cloud.
+* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
 ::::::
 
 ::::::{tab-item} Google Cloud
-* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html) supported by Elastic Cloud.
+* Consider the cloud regions where you need your deployment to live. Refer to the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) supported by Elastic Cloud.
 * Have the following permissions in Google Cloud KMS:
 
     * Permissions to [create a KMS key](https://cloud.google.com/kms/docs/create-key) on a key ring in the same region as your deployment. If you don’t have a key ring in the same region, or want to store the key in its own key ring, then you also need permissions to [create a key ring](https://cloud.google.com/kms/docs/create-key-ring).
@@ -169,8 +169,8 @@ Provide your key identifier without the key version identifier so Elastic Cloud 
 
     * using the API:
 
-        * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html).
-        * [Get a valid Elastic Cloud API key](https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
+        * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
+        * [Get a valid Elastic Cloud API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
         * Get the ARN of the symmetric AWS KMS key or of its alias. Use an alias if you are planning to do manual key rotations as specified in the [AWS documentation](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.md).
         * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
 
@@ -243,9 +243,9 @@ After you have created the service principal and granted it the necessary permis
 
 * Using the API:
 
-    * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html).
+    * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
 
-        * [Get a valid Elastic Cloud API key](https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
+        * [Get a valid Elastic Cloud API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
         * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
 
             ```bash
@@ -322,9 +322,9 @@ After you have granted the Elastic principals the necessary roles, you can finis
 
 * Using the API:
 
-    * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html).
+    * Choose a **cloud region** and a **deployment template** (also called hardware profile) for your deployment from the [list of available regions, deployment templates, and instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
 
-        * [Get a valid Elastic Cloud API key](https://www.elastic.co/guide/en/cloud/current/ec-api-authentication.html) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
+        * [Get a valid Elastic Cloud API key](/deploy-manage/api-keys/elastic-cloud-api-keys.md) with the **Organization owner** role or the **Admin** role on deployments. These roles allow you to create new deployments.
         * Use these parameters to create a new deployment with the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). For example:
 
             ```bash

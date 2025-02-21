@@ -40,7 +40,7 @@ If you want to use your own certificate, the required configuration is identical
 
 ## Disable TLS [k8s-kibana-http-disable-tls]
 
-You can disable the generation of the self-signed certificate and hence [disable TLS](https://www.elastic.co/guide/en/kibana/current/using-kibana-with-security.html). This is not recommended outside of testing clusters.
+You can disable the generation of the self-signed certificate and hence [disable TLS](/deploy-manage/security/secure-your-cluster-deployment.md). This is not recommended outside of testing clusters.
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1

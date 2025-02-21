@@ -76,13 +76,13 @@ To create a new connector:
 2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **{{hive}}**, or **{{webhook-cm}}**.
 3. Enter your required settings. For connector configuration details, refer to:
 
-    * [{{sn-itsm}} connector](https://www.elastic.co/guide/en/kibana/current/servicenow-action-type.html)
-    * [{{sn-sir}} connector](https://www.elastic.co/guide/en/kibana/current/servicenow-sir-action-type.html)
-    * [{{jira}} connector](https://www.elastic.co/guide/en/kibana/current/jira-action-type.html)
-    * [{{ibm-r}} connector](https://www.elastic.co/guide/en/kibana/current/resilient-action-type.html)
-    * [{{swimlane}} connector](https://www.elastic.co/guide/en/kibana/current/swimlane-action-type.html)
-    * [{{hive}} connector](https://www.elastic.co/guide/en/kibana/current/thehive-action-type.html)
-    * [{{webhook-cm}} connector](https://www.elastic.co/guide/en/kibana/current/cases-webhook-action-type.html)
+    * [{{sn-itsm}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md)
+    * [{{sn-sir}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md)
+    * [{{jira}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md)
+    * [{{ibm-r}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md)
+    * [{{swimlane}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md)
+    * [{{hive}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/thehive-action-type.md)
+    * [{{webhook-cm}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-webhook-action-type.md)
 
 
 To change the settings of an existing connector:

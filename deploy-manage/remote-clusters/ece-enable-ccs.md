@@ -5,9 +5,9 @@ mapped_pages:
 
 # Enable cross-cluster search and cross-cluster replication [ece-enable-ccs]
 
-[Cross-cluster search (CCS)](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html) allows you to configure multiple remote clusters across different locations and to enable federated search queries across all of the configured remote clusters.
+[Cross-cluster search (CCS)](/solutions/search/cross-cluster-search.md) allows you to configure multiple remote clusters across different locations and to enable federated search queries across all of the configured remote clusters.
 
-[Cross-cluster replication (CCR)](https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html) allows you to replicate indices across multiple remote clusters regardless of where they’re located. This provides tremendous benefit in scenarios of disaster recovery or data locality.
+[Cross-cluster replication (CCR)](/deploy-manage/tools/cross-cluster-replication.md) allows you to replicate indices across multiple remote clusters regardless of where they’re located. This provides tremendous benefit in scenarios of disaster recovery or data locality.
 
 These remote clusters could be:
 
@@ -21,7 +21,7 @@ These remote clusters could be:
 
 To use CCS or CCR, your environment must meet the following criteria:
 
-* Local and remote clusters must be in compatible versions. Review the [{{es}} version compatibility](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-cert.html#remote-clusters-prerequisites-cert) table.
+* Local and remote clusters must be in compatible versions. Review the [{{es}} version compatibility](/deploy-manage/remote-clusters/remote-clusters-cert.md#remote-clusters-prerequisites-cert) table.
 
     * System deployments cannot be used as remote clusters or have remote clusters.
 
@@ -42,8 +42,8 @@ The steps, information, and authentication method required to configure CCS and 
 
     * [From another deployment of the same Elastic Cloud Enterprise environment](ece-remote-cluster-same-ece.md)
     * [From a deployment of another Elastic Cloud Enterprise environment](ece-remote-cluster-other-ece.md)
-    * [From an {{ess}} deployment](https://www.elastic.co/guide/en/cloud/current/ec-remote-cluster-ece.html)
-    * [From a self-managed cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html)
+    * [From an {{ess}} deployment](/deploy-manage/remote-clusters/ec-remote-cluster-ece.md)
+    * [From a self-managed cluster](/deploy-manage/remote-clusters/remote-clusters-self-managed.md)
 
 
 

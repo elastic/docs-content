@@ -213,5 +213,5 @@ ECK automatically configures secure connections between all components. {{fleet}
     kubectl logs -f elastic-agent-quickstart-agent-xbcxr
     ```
 
-4. Configure the policy used by {{agents}}. Check [{{agent}} policies](https://www.elastic.co/guide/en/fleet/current/agent-policy.html) for more details.
+4. Configure the policy used by {{agents}}. Check [{{agent}} policies](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md) for more details.
 

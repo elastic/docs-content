@@ -12,7 +12,7 @@ The instructions in this section describe how to connect the operator and manage
 These instructions have been tested with Istio 1.6.1. Older or newer versions of Istio might require additional configuration steps not documented here.
 
 ::::{warning}
-Some Elastic Stack features such as [Kibana alerting and actions](https://www.elastic.co/guide/en/kibana/current/alerting-getting-started.html#alerting-getting-started) rely on the Elasticsearch API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the Elasticsearch resource and enable `PERMISSIVE` mode for the Elasticsearch service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with Elastic Stack features requiring TLS to be enabled for the Elasticsearch HTTP layer.
+Some Elastic Stack features such as [Kibana alerting and actions](/explore-analyze/alerts-cases.md) rely on the Elasticsearch API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the Elasticsearch resource and enable `PERMISSIVE` mode for the Elasticsearch service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with Elastic Stack features requiring TLS to be enabled for the Elasticsearch HTTP layer.
 ::::
 
 

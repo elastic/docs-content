@@ -212,8 +212,8 @@ Expand this section to access the following pages:
 
 The Assets section allows you to manage the following features:
 
-* [{{fleet}}](https://www.elastic.co/guide/en/fleet/current/manage-agents-in-fleet.html)
-* [{{integrations}}](https://www.elastic.co/guide/en/fleet/current/integrations.html)
+* [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-elastic-agents-in-fleet.md)
+* [{{integrations}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-integrations.md)
 * [Endpoint protection](../../../solutions/security/manage-elastic-defend.md)
 
     * [Endpoints](../../../solutions/security/manage-elastic-defend/endpoints.md): View and manage hosts running {{elastic-defend}}.
