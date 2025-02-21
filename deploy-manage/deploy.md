@@ -46,7 +46,7 @@ If you want to focus on using Elastic products rather than managing infrastructu
 - **Serverless**: Zero operational overhead, automatic scaling and updates, latest features
 - **Cloud hosted**: Balance of control and managed operations, choice of resources and regions
 
-#### Self-managed options
+#### Self-hosted options
 
 If you need to run Elastic on your infrastructure, choose between a fully self-managed deployment or using an orchestrator:
 
@@ -97,7 +97,7 @@ Learn more about [versioning and availability](/get-started/versioning-availabil
 
 - **Serverless**: Pay for what you use
 - **Cloud hosted**: Subscription-based with resource allocation
-- **Self-managed options**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
+- **Self-hosted options**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
 
 :::::{tip}
 For a detailed comparison of features and capabilities across deployment types, see the [Deployment comparison reference](./deploy/deployment-comparison.md).
