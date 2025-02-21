@@ -5,16 +5,10 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/osquery.html
 ---
 
-# Osquery
-
-% What needs to be done: Refine
-
-% Scope notes: Align serverless/stateful + combine with Kibana Osquery intro page
+# Osquery [osquery]
 
 % Use migrated content from existing pages that map to this page:
 
-% - [x] ./raw-migrated-files/security-docs/security/use-osquery.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-query-operating-systems.md
 % - [ ] ./raw-migrated-files/kibana/kibana/osquery.md
 
 [Osquery](https://osquery.io) is an open source tool that lets you query operating systems like a database, providing you with visibility into your infrastructure and operating systems. Using basic SQL commands, you can ask questions about devices, such as servers, Docker containers, and computers running Linux, macOS, or Windows. The [extensive schema](https://osquery.io/schema) helps with a variety of use cases, including vulnerability detection, compliance monitoring, incident investigations, and more.
@@ -26,7 +20,7 @@ With Osquery, you can:
 * View a history of past queries and their results
 * Save queries and build a library of queries for specific use cases
 
-To use Osquery, you must add the [Osquery manager integration](/solutions/security/investigate/manage-integration.md) to an {{agent}} policy. After completing that step, you can use the Osquery features that are available in your solution. 
+To use Osquery, you must add the [Osquery manager integration](manage-integration.md) to an {{agent}} policy. After completing that step, you can use the Osquery features that are available in your solution. 
 
 % The following Osquery features are available from {{elastic-sec}}:
 
@@ -52,7 +46,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 4. Select one or more agents or groups to query. Start typing in the search field, and you’ll get suggestions for agents by name, ID, platform, and policy.
 5. Specify the query or pack to run:
 
-    * **Query**: Select a saved query or enter a new one in the text box. After you enter the query, you can expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](../../../solutions/security/investigate/osquery.md#osquery-map-fields) included in the results from the live query (optional).
+    * **Query**: Select a saved query or enter a new one in the text box. After you enter the query, you can expand the **Advanced** section to set a timeout period for the query, and view or set [mapped ECS fields](#osquery-map-fields)  included in the results from the live query (optional).
 
         ::::{note}
         Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
@@ -61,7 +55,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
     * **Pack**: Select from available query packs. After you select a pack, all of the queries in the pack are displayed.
 
         ::::{tip}
-        Refer to [prebuilt packs](../../../solutions/security/investigate/osquery.md#osquery-prebuilt-packs) to learn about using and managing Elastic prebuilt packs.
+        Refer to [prebuilt packs](#osquery-prebuilt-packs) to learn about using and managing Elastic prebuilt packs.
         ::::
 
 
@@ -91,7 +85,7 @@ To inspect hosts, run a query against one or more agents or policies, then view 
 The **Live queries history** section on the **Live queries** tab shows a log of queries run over the last 30 days. From the Live queries table, you can:
 
 * Click the run icon (![Right-pointing triangle](../../../images/kibana-play-icon.png "")) to rerun a single query or a query pack.
-* Click the table icon (![Table icon](../../../images/kibana-table-icon.png "")) to examine the [results](../../../solutions/security/investigate/osquery.md#osquery-results) for a single query or a query pack. From the results table, you can also find the query [status](../../../solutions/security/investigate/osquery.md#osquery-status).
+* Click the table icon (![Table icon](../../../images/kibana-table-icon.png "")) to examine the [results](#osquery-results) for a single query or a query pack. From the results table, you can also find the query [status](#osquery-status).
 
     :::{image} ../../../images/kibana-live-query-check-results.png
     :alt: Results of OSquery
@@ -102,7 +96,7 @@ The **Live queries history** section on the **Live queries** tab shows a log of 
 
 ## Schedule queries with packs [osquery-schedule-query]
 
-A pack is a set of grouped queries that perform similar functions or address common use cases. [Prebuilt Elastic packs](../../../solutions/security/investigate/osquery.md#osquery-prebuilt-packs) are available to download and can help you get started using the Osquery integration.
+A pack is a set of grouped queries that perform similar functions or address common use cases. [Prebuilt Elastic packs](#osquery-prebuilt-packs) are available to download and can help you get started using the Osquery integration.
 
 You can also create a custom pack with one or more queries. For example, when creating custom packs, you might create one pack that checks for IT compliance-type issues, and another pack that monitors for evidence of malware.
 
@@ -114,7 +108,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
 4. Schedule the pack to be deployed on specified agent policies (**Policy**) or on all agent policies (**Global**).
 
     ::::{tip}
-    Pack deployment details are stored within the [Osquery configuration](../../../solutions/security/investigate/manage-integration.md#osquery-custom-config). The `shard` field value is the percentage of agents in the policy using the pack.
+    Pack deployment details are stored within the [Osquery configuration](/solutions/security/investigate/manage-integration.md#osquery-custom-config). The `shard` field value is the percentage of agents in the policy using the pack.
     ::::
 
 
@@ -130,7 +124,7 @@ You can run packs as live queries or schedule packs to run for one or more agent
 
 5. If you’re creating a new pack, add queries to schedule:
 
-    * Click **Add query** and then add a saved query or enter a new query. Each query must include a unique query ID and the interval at which it should run. Optionally, set the minimum Osquery version and platform, specify a timeout period, or [map ECS fields](../../../solutions/security/investigate/osquery.md#osquery-map-fields). When you add a saved query to a pack, this adds a copy of the query. A connection is not maintained between saved queries and packs.
+    * Click **Add query** and then add a saved query or enter a new query. Each query must include a unique query ID and the interval at which it should run. Optionally, set the minimum Osquery version and platform, specify a timeout period, or [map ECS fields](#osquery-map-fields). When you add a saved query to a pack, this adds a copy of the query. A connection is not maintained between saved queries and packs.
 
         ::::{note}
         Overwriting the query’s default timeout period allows you to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
@@ -172,7 +166,7 @@ Once you save a query, you can only edit it from the **Saved queries** tab:
     * A brief description.
     * The SQL query (required). Osquery supports multi-line queries.
     * A timeout period (optional). Increase the query’s default timeout period to support queries that require more time to complete. The default and minimum supported value for the **Timeout** field is `60`. The maximum supported value is `900`.
-    * The [ECS fields](../../../solutions/security/investigate/osquery.md#osquery-map-fields) to populate when the query is run (optional). These fields are also copied in when you add this query to a pack.
+    * The [ECS fields](#osquery-map-fields) to populate when the query is run (optional). These fields are also copied in when you add this query to a pack.
     * The defaults to set when you add the query to a pack.
 
         * The frequency to run the query.

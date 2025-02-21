@@ -1,7 +1,5 @@
 # Osquery [osquery]
 
-% Am porting all of this introductory content over to the Security Osquery page. 
-
 [Osquery](https://osquery.io) is an open source tool that lets you query operating systems like a database, providing you with visibility into your infrastructure and operating systems. Using basic SQL commands, you can ask questions about devices, such as servers, Docker containers, and computers running Linux, macOS, or Windows. The [extensive schema](https://osquery.io/schema) helps with a variety of use cases, including vulnerability detection, compliance monitoring, incident investigations, and more.
 
 With Osquery in {{kib}}, you can:
