@@ -3,6 +3,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/documents-indices.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#view-edit-indices
   - https://www.elastic.co/guide/en/serverless/current/index-management.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Index basics

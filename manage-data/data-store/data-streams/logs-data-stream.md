@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/logs-data-stream.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Logs data stream [logs-data-stream]

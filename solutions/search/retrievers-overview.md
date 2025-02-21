@@ -1,7 +1,7 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/retrievers-overview.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
