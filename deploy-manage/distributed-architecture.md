@@ -3,6 +3,16 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_data_store_architecture.html
 ---
 
+% Update the overview so Kibana is represented too.
+
+% Clarify which topics are relevant for which deployment types (see note from elastic.co/guide/en/elasticsearch/reference/current/nodes-shards.html)
+
+% Explain the role of orchestrators on the Clusters, nodes, and shards page, link up.
+
+% Split the kibana tasks management topic so it's concepts only - guidance goes to design guidance section.
+
+% Discovery and cluster formation content (7 pages): add introductory note to specify that the endpoints/settings are possibly for self-managed only, and review the content.
+
 # Distributed architecture [_data_store_architecture]
 
 {{es}} is a distributed document store. Instead of storing information as rows of columnar data, {{es}} stores complex data structures that have been serialized as JSON documents. When you have multiple {{es}} nodes in a cluster, stored documents are distributed across the cluster and can be accessed immediately from any node.
