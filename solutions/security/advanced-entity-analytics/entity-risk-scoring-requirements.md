@@ -6,18 +6,19 @@ mapped_urls:
 
 # Entity risk scoring requirements
 
-To use entity risk scoring, asset criticality, and entity store in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In serverless, you need the appropriate user roles or a custom role with the right privileges.
-
-In {{stack}}, these features require a [Platinum subscription](https://www.elastic.co/pricing) or higher. In serverless, they require the Security Analytics Complete [project feature](deploy-manage/deploy/elastic-cloud/project-settings.md).
-
 This page covers the requirements and guidelines for using the entity risk scoring, asset criticality, and entity store features, as well as their known limitations.
+
+To use these features in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In serverless, you need the appropriate user roles or a custom role with the right privileges.
+
+In {{stack}}, these features require a [Platinum subscription](https://www.elastic.co/pricing) or higher. In serverless, they require the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 
 ## Entity risk scoring [_entity_risk_scoring]
 
-In {{stack}}, to turn on the risk scoring engine, you need the appropriate [privileges](#_privileges).
+To turn on the risk scoring engine, you need the following:
 
-In serverless, to turn on the risk scoring engine, you need either the appropriate [predefined Security user role](#ers_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges).
+* In {{stack}}, you need the appropriate [privileges](#_privileges).
+* In serverless, you need either the appropriate [predefined Security user role](#ers_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges).
 
 
 ### Privileges [_privileges]
@@ -52,9 +53,10 @@ Follow these guidelines to ensure clusters have adequate memory to handle data v
 
 ## Asset criticality [_asset_criticality]
 
-In {{stack}}, to use asset criticality, you need the appropriate [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
+To use asset criticality, you need the following:
 
-In serverless, to use asset criticality, you need you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2).
+* In {{stack}}, you need the appropriate [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
+* In serverless, you need either the appropriate [predefined Security user role](#ac_roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_2) for the `.asset-criticality.asset-criticality-<space-id>` index.
 
 ### Privileges [_privileges_2]
 
