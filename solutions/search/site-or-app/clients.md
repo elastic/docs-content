@@ -32,12 +32,3 @@ In addition to official clients, the Elastic community has contributed libraries
 ::::{tip} 
 Learn how to [connect to your {{es}} endpoint](/solutions/search/search-connection-details.md).
 ::::
-
-
-
-
-
-
-
-
-
