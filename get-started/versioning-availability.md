@@ -20,7 +20,7 @@ It's important to understand this versioning system, for compatibility and [upgr
 
 Elastic products and features have different availability states across deployment types:
 
-- **Generally Available**: Feature is production-ready
+- **Generally Available**: Feature is production-ready (default if not specified)
 - **Beta**: Feature is complete but may have limitations
 - **Preview**: Feature is in early development
 - **Coming**: Feature is announced for a future release
