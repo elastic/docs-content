@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/enrich-setup.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Set up an enrich processor [enrich-setup]

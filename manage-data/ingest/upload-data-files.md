@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-ingest-data-file-upload.html
   - https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html#upload-data-kibana
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Upload data files [upload-data-kibana]

@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # The Elasticsearch data store

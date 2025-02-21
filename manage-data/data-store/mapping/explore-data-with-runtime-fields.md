@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-examples.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Explore your data with runtime fields [runtime-examples]
