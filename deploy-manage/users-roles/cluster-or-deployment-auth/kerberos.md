@@ -67,16 +67,13 @@ In Kerberos, users authenticate with an authentication service and later with a 
 
 ### Prerequisites [kerberos-realm-prereq]
 
-* Deploy Kerberos.
+Before you set up a Kerbberos realm, you must have the Kerberos infrastructure set up in your environment.
 
-    You must have the Kerberos infrastructure set up in your environment.
+::::{note} 
+Kerberos requires a lot of external services to function properly, such as time synchronization between all machines and working forward and reverse DNS mappings in your domain. Refer to your Kerberos documentation for more details.
+::::
 
-    ::::{note} 
-    Kerberos requires a lot of external services to function properly, such as time synchronization between all machines and working forward and reverse DNS mappings in your domain. Refer to your Kerberos documentation for more details.
-    ::::
-
-
-    These instructions do not cover setting up and configuring your Kerberos deployment. Where examples are provided, they pertain to an MIT Kerberos V5 deployment. For more information, see [MIT Kerberos documentation](http://web.mit.edu/kerberos/www/index.md)
+These instructions do not cover setting up and configuring your Kerberos deployment. Where examples are provided, they pertain to an MIT Kerberos V5 deployment. For more information, see [MIT Kerberos documentation](http://web.mit.edu/kerberos/www/index.md)
 
 If you're using a self-managed cluster, then perform the following additional steps: 
 
@@ -112,7 +109,7 @@ To configure a Kerberos realm in {{es}}:
 {{es}} uses Java GSS framework support for Kerberos authentication. To support Kerberos authentication, {{es}} needs the following files:
 
    * `krb5.conf`: The Kerberos configuration file (`krb5.conf`) provides information such as the default realm, the Key Distribution Center (KDC), and other configuration details required for Kerberos authentication. For more information, see [krb5.conf](https://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/krb5_conf.html).
-   * **A keytab**: A keytab is a file that stores pairs of principals and encryption keys. {{es}} uses the keys from the keytab to decrypt the tickets presented by the user. You must create a keytab for {{es}} by using the tools provided by your Kerberos implementation. For example, some tools that create keytabs are `ktpass.exe` on Windows and `kadmin` for MIT Kerberos.
+   * `keytab`: A keytab is a file that stores pairs of principals and encryption keys. {{es}} uses the keys from the keytab to decrypt the tickets presented by the user. You must create a keytab for {{es}} by using the tools provided by your Kerberos implementation. For example, some tools that create keytabs are `ktpass.exe` on Windows and `kadmin` for MIT Kerberos.
   
 The configuration requirements depend on your Kerberos setup. Refer to your Kerberos documentation to configure the `krb5.conf` file.
 
@@ -191,18 +188,51 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
 ::::{tab-item} ECK
 
-% TODO: jvm setup 
-% podTemplate with a mount that shadows /usr/share/elasticsearch/config/jvm.options.d/
-% set `java.security.krb5.conf`
-% 1. Configure the JVM to find the Kerberos configuration file.
-   
-% {{es}} uses Java GSS and JAAS Krb5LoginModule to support Kerberos authentication using a Simple and Protected GSSAPI Negotiation (SPNEGO) mechanism. When the JVM needs some configuration properties, it tries to find those values by locating and loading the `krb5.conf` file. The JVM system property to configure the file path is `java.security.krb5.conf`. If this system property is not specified, Java tries to locate the file based on the conventions.
-
 1. Install your `krb5.conf` and `keytab` files as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). 
 
-2. Edit your cluster configuration to define your Kerberos settings:
+2. Configure the JVM to find the Kerberos configuration file.
+   
+   {{es}} uses Java GSS and JAAS Krb5LoginModule to support Kerberos authentication using a Simple and Protected GSSAPI Negotiation (SPNEGO) mechanism. When the JVM needs some configuration properties, it tries to find those values by locating and loading the `krb5.conf` file. The JVM system property to configure the file path is `java.security.krb5.conf`. If this system property is not specified, Java tries to locate the file based on the conventions.
 
-    ```sh
+   To provide JVM setting overrides to your cluster:
+
+   1. Create a new ConfigMap. The source file should contain a key named `java.security.krb5.conf` pointing to your configuration file:
+   
+    ```
+    kubectl create configmap jvm-options --from-file=opts
+    ```
+
+   2. Reference the ConfigMap in your [cluster specification](/deploy-manage/deploy/cloud-on-k8s/update-deployments.md):
+
+        ```yaml
+        apiVersion: elasticsearch.k8s.elastic.co/v1
+        kind: Elasticsearch
+        metadata:
+        name: test-cluster 
+        spec:
+        version: 8.17.0
+        nodeSets:
+        - name: default
+            count: 3
+            config:
+            # this allows ES to run on nodes even if their vm.max_map_count has not been increased, at a performance cost
+            node.store.allow_mmap: false
+            podTemplate:
+            spec:
+                containers:
+                - name: elasticsearch
+                volumeMounts:
+                - name: jvm-opts
+                    mountPath: /usr/share/elasticsearch/config/jvm.options.d 
+                volumes:
+                - name: jvm-opts
+                configMap:
+                    name: jvm-options
+        ```
+
+3. Edit your cluster configuration to define your Kerberos settings:
+
+    ```yaml
     xpack.security.authc.realms.kerberos.cloud-krb:
        order: 2
        keytab.path: es.keytab
