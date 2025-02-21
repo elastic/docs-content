@@ -53,7 +53,7 @@ Regular Timeline filter
 
 
 Template filter
-:   :::{image} ../../../images/security-timeline-template-filter.png
+:::{image} ../../../images/security-timeline-template-filter.png
 :alt: timeline template filter
 :class: screenshot
 :::
@@ -74,7 +74,7 @@ To enable the filter, either specify a value or change it to a field’s existin
 1. Choose one of the following:
 
     * Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Next, select the **Templates** tab, then click **Create new Timeline template**.
-    * Go to the Timeline bar (which is at the bottom of most pages), click the ![Click the add new button](../../../images/security-add-new-timeline-button.png "") button, then click **Create new Timeline template**.
+    * Go to the Timeline bar (which is at the bottom of most pages), click the ![Click the add new button](../../../images/security-add-new-timeline-button.png "title =20x20") button, then click **Create new Timeline template**.
     * From an open Timeline  or Timeline template, click **New** → **New Timeline template**.
 
 2. To add filters, click **Add field**, and then select the required option:

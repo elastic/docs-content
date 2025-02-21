@@ -14,8 +14,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 Osquery Response Actions allow you to add live queries to custom query rules so you can automatically collect data on systems the rule is monitoring. Use this data to support your alert triage and investigation efforts.
 
 ::::{admonition} Requirements
-* In {{stack}}, Osquery Response Actions require a [Platinum or Enterprise subscription](https://www.elastic.co/pricing).
-* In {{serverless-short}}, Osquery Response Actions require the Endpoint Protection Complete [project feature](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* Ensure you have the appropriate [{{stack}}](https://www.elastic.co/pricing) subscription or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 * The [Osquery manager integration](manage-integration.md) must be installed. 
 * {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
 * Your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
