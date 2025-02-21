@@ -1,6 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-auto-follow.html
+
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Manage auto-follow patterns [ccr-auto-follow]

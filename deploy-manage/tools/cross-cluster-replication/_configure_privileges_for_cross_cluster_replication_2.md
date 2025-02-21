@@ -1,6 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_configure_privileges_for_cross_cluster_replication_2.html
+
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Configure privileges for cross-cluster replication [_configure_privileges_for_ccr_2]

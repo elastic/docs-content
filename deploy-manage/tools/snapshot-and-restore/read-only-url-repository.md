@@ -1,12 +1,13 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-read-only-repository.html
+applies_to:
+  deployment:
+    self: 
 ---
 
 # Read-only URL repository [snapshots-read-only-repository]
 
 ::::{note} 
-This repository type is only available if you run {{es}} on your own hardware. If you use {{ess}}, see [{{ess}} repository types](self-managed.md#ess-repo-types).
+This repository type is only available if you run {{es}} on your own hardware. If you use {{ech}}, see [{{ech}} repository types](self-managed.md).
 ::::
 
 
