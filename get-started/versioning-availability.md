@@ -30,7 +30,7 @@ Elastic products and features have different availability states across deployme
 Features may have different availability states between:
 
 - Elastic Stack versions (for example, 9.0, 9.1)
-- Serverless projects (Security, {{ess}}, Observability)
+- Serverless projects (Security, {{es}}, Observability)
 - Deployment types (and versions)
   - [Elastic Cloud Hosted](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
   - [Elastic Cloud Serverless](/deploy-manage/deploy/elastic-cloud/serverless.md)
