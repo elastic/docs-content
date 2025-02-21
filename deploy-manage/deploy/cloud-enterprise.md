@@ -1,6 +1,7 @@
 ---
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # Elastic Cloud Enterprise [Elastic-Cloud-Enterprise-overview]
@@ -20,45 +21,29 @@ With {{ece}}, you can:
 * Maximize the hardware utilization for the various clusters.
 * Centralize the management of multiple Elastic deployments across teams or geographies.
 
-Refer to [](./cloud-enterprise/ece-architecture.md) and [Containerized design](./cloud-enterprise/ece-containerization.md) for details about the ECE platform architecture and technologies used.
+Refer to [](./cloud-enterprise/ece-architecture.md) for details about the ECE platform architecture and the technologies used.
 
 ## ECE features
 
-- **Automated Scaling & Orchestration**: Handles cluster provisioning, scaling, and upgrades automatically.
-- **High Availability & Resilience**: Ensures uptime through multiple Availability Zones, data replication, and automated restore and snapshot.
-- **Centralized Monitoring & Logging**: Provides insights into cluster performance, resource usage, and logs.
-- **Single Sign-On (SSO) & Role-Based Access Control (RBAC)**: Allows organizations to manage access and security policies.
-- **API & UI Management**: Offers a web interface and API to create and manage clusters easily.
+- **Automated scaling & orchestration**: Handles cluster provisioning, scaling, and upgrades automatically.
+- **High availability & resilience**: Ensures uptime through multiple Availability Zones, data replication, and automated restore and snapshot.
+- **Centralized monitoring & logging**: Provides insights into cluster performance, resource usage, and logs.
+- **Single Sign-On (SSO) & role-based access aontrol (RBAC)**: Allows organizations to manage access and security policies.
+- **API & UI management**: Offers a web interface and API to create and manage clusters easily.
 - **Air-gapped installations**: Support for off-line installations.
-- **Microservices**: All services are containerized through Docker. Refer to [](./ece-containerization.md) for more details.
-
-## ECE features
-
-* All services are containerized through Docker.
-* High Availability through multiple Availability Zones.
-* Deployment state coordination using ZooKeeper.
-* Easy access for admins through the Cloud UI and API.
-* Support for off-line installations.
-* Automated restore and snapshot.
+- **Microservices architecture**: All services are containerized through Docker.
 
 Check the [glossary](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html) to get familiar with the terminology for ECE as well as other Elastic products and solutions.
-
-% delete or keep. this wasn't part of the original content
-%### Use cases
-%
-%- Organizations that need full control over their Elastic Stack while benefiting from cloud-like automation.
-%- Enterprises managing multiple Elasticsearch clusters across different teams or environments.
-%- Businesses looking for a self-hosted alternative to Elastic Cloud with centralized administration.
 
 ## Section overview
 
 This section focuses on deploying ECE and orchestrating and configuring {{es}} clusters, also referred to as `deployments`.
 
-In ECE, a deployment is a managed {{stack}} environment that provides users with an {{es}} cluster along with supporting components such as {{kib}} and other optional services like APM and Fleet.
+In ECE, a deployment is a managed {{stack}} environment that provides users with an {{es}} cluster along with supporting components such as {{kib}} and other optional services like APM and {{fleet}}.
 
 This section covers the following tasks:
 
-* [Deploy ECE](./cloud-enterprise/deploy-an-orchestrator.md)
+* [Deploy ECE orchestrator](./cloud-enterprise/deploy-an-orchestrator.md)
     - [Prepare the environment](./cloud-enterprise/prepare-environment.md)
     - [Install ECE](./cloud-enterprise/install.md)
     - [Air gapped installations](./cloud-enterprise/air-gapped-install.md)
@@ -73,12 +58,15 @@ This section covers the following tasks:
 
 Other sections of the documentation also include important tasks related to ECE:
 
-* [Secure your ECE installation](../security/secure-your-elastic-cloud-enterprise-installation.md)
-* [Users and roles](../users-roles/cloud-enterprise-orchestrator.md)
-* [Secure your deployments](../security/secure-your-cluster-deployment.md)
-* [Manage snapshot repositories](../tools/snapshot-and-restore.md)
-* [Manage licenses](../license/manage-your-license-in-ece.md)
-* [ECE platform maintenance operations](../maintenance/ece.md)
+* Platform security and management:
+  * [Secure your ECE installation](../security/secure-your-elastic-cloud-enterprise-installation.md)
+  * [Users and roles](../users-roles/cloud-enterprise-orchestrator.md)
+  * [ECE platform maintenance operations](../maintenance/ece.md)
+  * [Manage licenses](../license/manage-your-license-in-ece.md)
+
+* Deployments security and management:
+  * [Secure your deployments](../security/secure-your-cluster-deployment.md)
+  * [Manage snapshot repositories](../tools/snapshot-and-restore.md)
 
 ## How ECE differs from Elastic Cloud and other orchestrators
 

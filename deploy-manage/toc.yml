@@ -120,10 +120,7 @@ toc:
           - file: deploy/elastic-cloud/restrictions-known-problems.md
       - file: deploy/cloud-enterprise.md
         children:
-          - file: deploy/cloud-enterprise/ece-overview.md
-            children:
-              - file: deploy/cloud-enterprise/ece-architecture.md
-              - file: deploy/cloud-enterprise/ece-containerization.md
+          - file: deploy/cloud-enterprise/ece-architecture.md
           - file: deploy/cloud-enterprise/deploy-an-orchestrator.md
             children:
               - file: deploy/cloud-enterprise/prepare-environment.md

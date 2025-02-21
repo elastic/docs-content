@@ -1,6 +1,7 @@
 ---
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 ---
 # Deploy an orchestrator
 
@@ -32,10 +33,20 @@ This section provides step-by-step guidance on:
 
 ## Additional topics
 
-Once ECE is deployed, you may need to configure security, manage snapshots, or perform maintenance tasks. Refer to the following sections for more details:  
+After deploying ECE platform, you may need to configure your own proxy certificates, security, snapshot repositories, or perform maintenance tasks. Refer to the following sections for more details:  
 
 * [Secure your ECE installation](../../security/secure-your-elastic-cloud-enterprise-installation.md)
 * [Users and roles](../../users-roles/cloud-enterprise-orchestrator.md)
 * [Manage snapshot repositories](../../tools/snapshot-and-restore.md)
 * [Manage licenses](../../license/manage-your-license-in-ece.md)
 * [ECE platform maintenance operations](../../maintenance/ece.md)
+
+To start orchestrating your {{es}} clusters, refer to [](./working-with-deployments.md).
+
+## Advanced tasks
+
+The following tasks are only needed on certain circumstances:
+
+* Migrate ECE to Podman hosts
+* Migrate ECE on Podman hosts to SELinux enforce
+* Change allocator disconnect timeout

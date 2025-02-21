@@ -1,12 +1,15 @@
 ---
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configuring-ece.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-ece.html
 ---
 
 # Configure ECE [ece-configuring-ece]
+
+⚠️ **This page is a work in progress.** ⚠️
 
 Now that you have Elastic Cloud Enterprise up and running, take a look at some of the additional features that you can configure:
 
