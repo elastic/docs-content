@@ -15,7 +15,7 @@ applies_to:
 ## System requirements [_system_requirements]
 
 * [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agents}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
-* The [**Osquery Manager**](https://docs.elastic.co/en/integrations/osquery_manager) integration has been added and configured for an agent policy through {{fleet}}. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
+* The [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager) integration has been added and configured for an agent policy through {{fleet}}. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
 
 ::::{note}
 * The original [Filebeat Osquery module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-osquery.md) and the [Osquery](https://docs.elastic.co/en/integrations/osquery) integration collect logs from self-managed Osquery deployments. The **Osquery Manager** integration manages Osquery deployments and supports running and scheduling queries from {{kib}}.
@@ -27,7 +27,7 @@ applies_to:
 
 ## Customize Osquery sub-feature privileges [_customize_osquery_sub_feature_privileges]
 
-Depending on your [subscription level](https://www.elastic.co/subscriptions), you can further customize the sub-feature privileges for **Osquery Manager**. These include options to grant specific access for running live queries, running saved queries, saving queries, and scheduling packs. For example, you can create roles for users who can only run live or saved queries, but who cannot save or schedule queries. This is useful for teams who need in-depth and detailed control.
+Depending on your [subscription level](https://www.elastic.co/pricing) or  [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can further customize the sub-feature privileges for **Osquery Manager**. These include options to grant specific access for running live queries, running saved queries, saving queries, and scheduling packs. For example, you can create roles for users who can only run live or saved queries, but who cannot save or schedule queries. This is useful for teams who need in-depth and detailed control.
 
 
 ## Customize Osquery configuration [osquery-custom-config]
