@@ -1,49 +1,13 @@
 ---
-mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-snapshot-restore.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-restoring-snapshots.html
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-snapshot-restore.html
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restoring-snapshots.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-snapshots.html
-
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
-  
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Snapshot and restore
-
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/343
-
-% Scope notes: Merge all articles to be relevant for all deployment types.
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/snapshot-restore.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-snapshot-restore.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-restoring-snapshots.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-snapshot-restore.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-restoring-snapshots.md
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-snapshots.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$snapshot-repository-contents$$$
-
-$$$feature-state$$$
-
-$$$snapshot-restore-version-compatibility$$$
-
-$$$snapshots-shard-allocation$$$
-
-$$$fn-archive$$$
 
 A snapshot is a backup of a running Elasticsearch cluster. You can use snapshots to:
 
@@ -56,8 +20,8 @@ A snapshot is a backup of a running Elasticsearch cluster. You can use snapshots
 
 Elasticsearch stores snapshots in an off-cluster storage location called a **snapshot repository**. Before you can take or restore snapshots, you must [register a snapshot repository](snapshot-and-restore/self-managed.md#manage-snapshot-repos) on the cluster. Elasticsearch supports different repository types depending on your deployment type:
 
-* [**Elasticsearch Service repository types**](/deploy-manage/tools/snapshot-and-restore/self-managed.md#ess-repo-types)
-* [**Self-managed repository types**](/deploy-manage/tools/snapshot-and-restore/self-managed.md#self-managed-repo-types)
+* [**Elastic Cloud Hosted repository types**](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md)
+* [**Self-managed repository types**](/deploy-manage/tools/snapshot-and-restore/self-managed.md)
 
 After you register a snapshot repository, you can use [snapshot lifecycle management (SLM)](snapshot-and-restore/create-snapshots.md#automate-snapshots-slm) to automatically take and manage snapshots. You can then [restore a snapshot](snapshot-and-restore/restore-snapshot.md) to recover or transfer its data.
 
@@ -117,7 +81,7 @@ By default, a snapshot of a cluster contains the cluster state, all regular data
 - [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 - [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md)
 - [Stored scripts](/explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts)
-- For snapshots taken after 7.12.0, [feature states](#feature-states)
+- For snapshots taken after 7.12.0, [feature states](#feature-state)
 
 You can also take snapshots of only specific data streams or indices in the cluster. A snapshot that includes a data stream or index automatically includes its aliases. When you restore a snapshot, you can choose whether to restore these aliases.
 
@@ -128,7 +92,7 @@ Snapshots don’t contain or back up:
 - Node configuration files
 - [Security configuration files](/deploy-manage/security.md)
 
-### Feature states
+### Feature states [feature-state]
 
 A **feature state** contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as **Elasticsearch security** or **Kibana**.
 
@@ -146,7 +110,7 @@ Snapshots are **automatically deduplicated** to save storage space and reduce ne
 
 Each snapshot is **logically independent**. When you delete a snapshot, Elasticsearch only deletes the segments used exclusively by that snapshot. Elasticsearch doesn’t delete segments used by other snapshots in the repository.
 
-### Snapshots and shard allocation
+### Snapshots and shard allocation [snapshots-shard-allocation]
 
 A snapshot copies segments from an index’s primary shards. When you start a snapshot, Elasticsearch immediately starts copying the segments of any available primary shards. If a shard is starting or relocating, Elasticsearch will wait for these processes to complete before copying the shard’s segments. If one or more primary shards aren’t available, the snapshot attempt fails.
 
@@ -160,7 +124,7 @@ A snapshot doesn’t represent a cluster at a precise point in time. Instead, ea
 
 To restore a snapshot to a cluster, the versions for the snapshot, cluster, and any restored indices must be compatible.
 
-### Snapshot version compatibility
+### Snapshot version compatibility [snapshot-restore-version-compatibility]
 
 You can’t restore a snapshot to an earlier version of Elasticsearch. For example, you can’t restore a snapshot taken in 7.6.0 to a cluster running 7.5.0.
 
@@ -195,7 +159,7 @@ Reindexing from remote can take significantly longer than restoring a snapshot. 
 
 A copy of the data directories of a cluster’s nodes does not work as a backup because it is not a consistent representation of their contents at a single point in time. You cannot fix this by shutting down nodes while making the copies, nor by taking atomic filesystem-level snapshots, because Elasticsearch has consistency requirements that span the whole cluster. You must use the built-in snapshot functionality for cluster backups.
 
-### Repository contents
+### Repository contents [snapshot-repository-contents]
 
 **Don’t modify anything within the repository or run processes that might interfere with its contents.** If something other than Elasticsearch modifies the contents of the repository then future snapshot or restore operations may fail, reporting corruption or other data inconsistencies, or may appear to succeed having silently lost some of your data.
 

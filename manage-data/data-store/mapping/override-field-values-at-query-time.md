@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-override-values.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Override field values at query time [runtime-override-values]

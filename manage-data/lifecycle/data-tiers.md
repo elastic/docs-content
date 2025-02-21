@@ -3,6 +3,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-disable-data-tier.html
   - https://www.elastic.co/guide/en/cloud/current/ec-disable-data-tier.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Data tiers

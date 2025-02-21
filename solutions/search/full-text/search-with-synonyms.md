@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-synonyms.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

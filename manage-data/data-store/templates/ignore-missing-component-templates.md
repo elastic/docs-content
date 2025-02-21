@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ignore_missing_component_templates.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_usage_example.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Ignore missing component templates
