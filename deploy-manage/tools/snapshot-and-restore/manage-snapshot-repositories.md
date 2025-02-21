@@ -53,7 +53,7 @@ Elastic Cloud Enterprise installations support the following Elasticsearch snaps
 
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [AWS S3](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository)
 
 :::{note}
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by Elasticsearch. 
