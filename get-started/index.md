@@ -19,10 +19,10 @@ Refer to our [customer success stories](https://www.elastic.co/customers/success
 
 ## First steps
 
-Depending on your experience with Elastic, you might want to start with one of these resources:
+Get started by learning about:
 
-- Learn about [{{es}} and {{kib}}](introduction.md), the core components of the Elastic Stack.
-  - Learn about [the stack](/get-started/the-stack.md) to understand the relationship between core and optional components of an Elastic deployment.
-- Learn about the [out-of-the-box solutions and use cases](/solutions/index.md) that Elastic supports.
-- Learn how to [deploy Elastic](./deployment-options.md) for your use case.
-- Understand how [versioning and availability](./versioning-availability.md) work with Elastic deployments.
+- [{{es}} and {{kib}}](introduction.md), the core components of the {{{stack}}}.
+  - [The stack](/get-started/the-stack.md) to understand the relationship between core and optional components of an Elastic deployment.
+- [The out-of-the-box solutions and use cases](/solutions/index.md) that Elastic supports.
+- [Deploying Elastic](./deployment-options.md) for your use case.
+- [Versioning and availability](./versioning-availability.md) in Elastic deployments.
