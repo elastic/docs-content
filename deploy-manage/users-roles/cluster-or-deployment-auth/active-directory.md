@@ -333,3 +333,7 @@ For more information about these settings, see [Active Directory realm settings]
 ::::{note} 
 By default, when you configure {{es}} to connect to Active Directory using SSL/TLS, it attempts to verify the hostname or IP address specified with the `url` attribute in the realm configuration with the values in the certificate. If the values in the certificate and realm configuration do not match, {{es}} does not allow a connection to the Active Directory server. This is done to protect against man-in-the-middle attacks. If necessary, you can disable this behavior by setting the `ssl.verification_mode` property to `certificate`.
 ::::
+
+### Using {{kib}} with Active Directory [ad-realm-kibana]
+
+The Active Directory security realm uses the {{kib}}-provided [basic authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication#basic-authentication) login form. Basic authentication is enabled by default.

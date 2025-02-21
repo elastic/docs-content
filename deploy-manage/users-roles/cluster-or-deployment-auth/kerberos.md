@@ -202,7 +202,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
     You should use these exact filenames for {{ecloud}} to recognize the file in the bundle.
     ::::
 
-2. Edit your cluster configuration, sometimes also referred to as the deployment plan, to define Kerberos settings as described in [Elasticsearch documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
+2. Edit your cluster configuration, sometimes also referred to as the deployment plan, to define  your Kerberos settings:
 
     ```sh
     xpack.security.authc.realms.kerberos.cloud-krb:
@@ -210,13 +210,17 @@ For detailed information of available realm settings, see [Kerberos realm settin
        keytab.path: es.keytab
        remove_realm_name: false
     ```
+
+    ::::{important}
+    The name of the realm must be `cloud-krb`, and the order must be 2: `xpack.security.authc.realms.kerberos.cloud-krb.order: 2`
+    ::::
 ::::
 
 ::::{tab-item} ECK
 
 1. Install your `krb5.conf` and `keytab` files as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md). 
 
-2. Edit your cluster configuration, sometimes also referred to as the deployment plan, to define Kerberos settings as described in [Elasticsearch documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
+2. Edit your cluster configuration to define your Kerberos settings:
 
     ```sh
     xpack.security.authc.realms.kerberos.cloud-krb:
@@ -258,7 +262,7 @@ POST /_security/role_mapping/kerbrolemapping
 In case you want to support Kerberos cross realm authentication, you may need to map roles based on the Kerberos realm name. For such scenarios, the following additional user metadata can be used for role mapping: 
 
 - `kerberos_realm`: The Kerberos realm name. 
-- `kerberos_user_principal_name` The user principal name from the Kerberos ticket.
+- `kerberos_user_principal_name`: The user principal name from the Kerberos ticket.
 
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
@@ -268,4 +272,4 @@ The Kerberos realm supports [authorization realms](/deploy-manage/users-roles/cl
 
 ### Configure Kibana for Kerberos [kerberos-realm-kibana]
 
-If you want to use Kerberos to authenticate using your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [kerberos single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#kerberos)
+If you want to use Kerberos to authenticate using your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [Kerberos single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#kerberos)
