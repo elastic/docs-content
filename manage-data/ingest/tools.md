@@ -6,6 +6,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/project-setting-data.html
   - https://www.elastic.co/customer-success/data-ingestion
   - https://github.com/elastic/ingest-docs/pull/1373
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Ingest tools overview

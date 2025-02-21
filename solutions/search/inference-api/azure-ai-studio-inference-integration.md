@@ -2,7 +2,7 @@
 navigation_title: "Azure AI Studio"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-azure-ai-studio.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

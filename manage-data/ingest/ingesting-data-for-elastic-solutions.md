@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-for-solutions.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Ingesting data for Elastic solutions [ingest-for-solutions]

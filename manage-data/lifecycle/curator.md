@@ -1,5 +1,8 @@
 ---
 navigation_title: Curator
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Elasticsearch Curator

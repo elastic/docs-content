@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/logstash-pipelines.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Logstash pipelines [logstash-pipelines]

@@ -195,7 +195,6 @@ toc:
       - file: docs-content/serverless/connect-to-byo-llm.md
       - file: docs-content/serverless/cspm-required-permissions.md
       - file: docs-content/serverless/detections-logsdb-index-mode-impact.md
-      - file: docs-content/serverless/elasticsearch-clients.md
       - file: docs-content/serverless/elasticsearch-dev-tools.md
       - file: docs-content/serverless/elasticsearch-differences.md
       - file: docs-content/serverless/elasticsearch-explore-your-data.md
