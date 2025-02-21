@@ -13,8 +13,6 @@ The topics in this section provides information about the architecture of {{es}}
 * [Node roles](distributed-architecture/clusters-nodes-shards/node-roles.md): Learn about the different roles that nodes can have in an {{es}} cluster.
 * [Reading and writing documents](distributed-architecture/reading-and-writing-documents.md): Learn how {{es}} replicates read and write operations across shards and shard copies.
 * [Shard allocation, relocation, and recovery](distributed-architecture/shard-allocation-relocation-recovery.md): Learn how {{es}} allocates and balances shards across nodes.
-
-    * [Shard allocation awareness](distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md): Learn how to use custom node attributes to distribute shards across different racks or availability zones.
-
+  * [Shard allocation awareness](distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md): Learn how to use custom node attributes to distribute shards across different racks or availability zones.
 * [Shard request cache](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md): Learn how {{es}} caches search requests to improve performance.
 
