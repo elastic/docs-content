@@ -166,7 +166,6 @@ toc:
       - file: cloud/cloud/ec-restore-across-clusters.md
       - file: cloud/cloud/ec-restoring-snapshots.md
       - file: cloud/cloud/ec-saas-metrics-accessing.md
-      - file: cloud/cloud/ec-secure-clusters-kerberos.md
       - file: cloud/cloud/ec-secure-clusters-oidc.md
       - file: cloud/cloud/ec-securing-clusters-JWT.md
       - file: cloud/cloud/ec-securing-clusters-oidc-op.md
@@ -378,7 +377,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
       - file: elasticsearch/elasticsearch-reference/jwt-auth-realm.md
-      - file: elasticsearch/elasticsearch-reference/kerberos-realm.md
       - file: elasticsearch/elasticsearch-reference/mapping-roles.md
       - file: elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
       - file: elasticsearch/elasticsearch-reference/monitoring-overview.md

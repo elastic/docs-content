@@ -15,26 +15,6 @@ applies_to:
 
 # Kerberos authentication [kerberos-realm]
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/347
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-secure-clusters-kerberos.md
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/kerberos-realm.md
-
-⚠️ **This page is a work in progress.** ⚠️
-
-The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/cloud/cloud/ec-secure-clusters-kerberos.md](/raw-migrated-files/cloud/cloud/ec-secure-clusters-kerberos.md)
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/kerberos-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/kerberos-realm.md)
-
-=====
-
-
-
 You can configure the {{stack}} {{security-features}} to support Kerberos V5 authentication, an industry standard protocol to authenticate users in {{es}}.
 
 ::::{note} 
@@ -270,6 +250,6 @@ For more information, see [Mapping users and groups to roles](/deploy-manage/use
 The Kerberos realm supports [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) as an alternative to role mapping.
 ::::
 
-### Configure Kibana for Kerberos [kerberos-realm-kibana]
+## Use Kerberos authentication for {{kib}} [kerberos-realm-kibana]
 
-If you want to use Kerberos to authenticate using your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [Kerberos single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#kerberos)
+If you want to use Kerberos to authenticate using your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [Kerberos single sign-on](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#kerberos).
