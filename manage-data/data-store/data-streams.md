@@ -3,11 +3,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-data-streams
   - https://www.elastic.co/guide/en/serverless/current/index-management.html#index-management-manage-data-streams
-
-applies:
-  stack: all
-  serverless: all
-  hosted: all
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Data streams [data-streams]

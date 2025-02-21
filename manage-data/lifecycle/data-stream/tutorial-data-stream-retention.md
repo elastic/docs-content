@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tutorial-manage-data-stream-retention.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Tutorial: Data stream retention [tutorial-manage-data-stream-retention]

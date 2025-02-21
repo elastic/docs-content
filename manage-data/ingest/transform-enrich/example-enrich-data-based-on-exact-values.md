@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/match-enrich-policy-type.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Example: Enrich your data based on exact values [match-enrich-policy-type]
