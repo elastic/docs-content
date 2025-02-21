@@ -4,6 +4,13 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-securing-clusters-JWT.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/jwt-auth-realm.html
+applies_to:
+  deployment:
+    self:
+    ess:
+    ece:
+    eck:
+navigation_title: "JWT"
 ---
 
 # JWT authentication [jwt-auth-realm]
@@ -12,10 +19,10 @@ mapped_urls:
 
 When a JWT realm is used to authenticate with {{es}}, a distinction is made between the client that is connecting to {{es}}, and the user on whose behalf the request should run. The JWT authenticates the user, and a separate credential authenticates the client.
 
-The JWT realm supports two token types, `id_token` (the default) and `access_token`. They are designed to work for the following two scenarios, respectively:
+The JWT realm supports two token types, `id_token` (the default) and `access_token`:
 
-1. `id_token`: An application authenticates and identifies a user with an authentication flow, e.g. OpenID Connect (OIDC), and then accesses {{es}} on behalf of the authenticated user using a JSON Web Token (JWT) conforming to OIDC ID Token specification. ({{stack}} 8.2+)
-2. `access_token`: An application accesses {{es}} using its own identity, encoded as a JWT, e.g. The application authenticates itself to a central identity platform using an OAuth2 Client Credentials Flow and then uses the resulting JWT-based access token to connect to {{es}}. ({{stack}} 8.7+)
+1. `id_token`: An application authenticates and identifies a user with an authentication flow, e.g. OpenID Connect (OIDC), and then accesses {{es}} on behalf of the authenticated user using a JSON Web Token (JWT) conforming to OIDC ID Token specification. This option is available in deployments using {{stack}} 8.2+.
+2. `access_token`: An application accesses {{es}} using its own identity, encoded as a JWT, e.g. The application authenticates itself to a central identity platform using an OAuth2 Client Credentials Flow and then uses the resulting JWT-based access token to connect to {{es}}. This option is available in deployments using {{stack}} 8.7+.
 
 ::::{note}
 A single JWT realm can only work with a single token type. To handle both token types, you must configure at least two JWT realms. You should choose the token type carefully based on the use case because it impacts on how validations are performed.
@@ -71,151 +78,114 @@ The JWT realm has a few mandatory settings, plus optional settings that are desc
 Client authentication is enabled by default for the JWT realms. Disabling client authentication is possible, but strongly discouraged.
 ::::
 
-:::::{tab-set}
-
-::::{tab-item} ID tokens
-
-The following example includes the most common settings, which are not intended for every use case:
-
-```yaml
-xpack.security.authc.realms.jwt.jwt1:
-  order: 3
-  token_type: id_token
-  client_authentication.type: shared_secret
-  allowed_issuer: "https://issuer.example.com/jwt/"
-  allowed_audiences: [ "8fb85eba-979c-496c-8ae2-a57fde3f12d0" ]
-  allowed_signature_algorithms: [RS256,HS256]
-  pkc_jwkset_path: jwt/jwkset.json
-  claims.principal: sub
-```
-
-`order`
-:   Specifies a realm `order` of `3`, which indicates the order in which the configured realm is checked when authenticating a user. Realms are consulted in ascending order, where the realm with the lowest order value is consulted first.
-
-`token_type`
-:   Instructs the realm to treat and validate incoming JWTs as ID Tokens (`id_token`).
-
-`client_authentication.type`
-:   Specifies the client authentication type as `shared_secret`, which means that the client is authenticated using an HTTP request header that must match a pre-configured secret value. The client must provide this shared secret with every request in the `ES-Client-Authentication` header and using the `SharedSecret` scheme. The header value must be a case-sensitive match to the realm’s `client_authentication.shared_secret`.
-
-`allowed_issuer`
-:   Sets a verifiable identifier for your JWT issuer. This value is typically a URL, UUID, or some other case-sensitive string value.
-
-`allowed_audiences`
-:   Specifies a list of JWT audiences that the realm will allow. These values are typically URLs, UUIDs, or other case-sensitive string values.
-
-`allowed_signature_algorithms`
-:   Indicates that {{es}} should use the `RS256` or `HS256` signature algorithms to verify the signature of the JWT from the JWT issuer.
-
-`pkc_jwkset_path`
-:   The file name or URL to a JSON Web Key Set (JWKS) with the public key material that the JWT Realm uses for verifying token signatures. A value is considered a file name if it does not begin with `https`. The file name is resolved relative to the {{es}} configuration directory. If a URL is provided, then it must begin with `https://` (`http://` is not supported). {{es}} automatically caches the JWK set and will attempt to refresh the JWK set upon signature verification failure, as this might indicate that the JWT Provider has rotated the signing keys.
-
-`claims.principal`
-:   The name of the JWT claim that contains the user’s principal (username).
-
-::::
-
-::::{tab-item} Access tokens
-The following is an example snippet for configuring a JWT realm for handling access tokens:
-
-```yaml
-xpack.security.authc.realms.jwt.jwt2:
-  order: 4
-  token_type: access_token
-  client_authentication.type: shared_secret
-  allowed_issuer: "https://issuer.example.com/jwt/"
-  allowed_subjects: [ "123456-compute@admin.example.com" ]
-  allowed_subject_patterns: [ "wild*@developer?.example.com", "/[a-z]+<1-10>\\@dev\\.example\\.com/"]
-  allowed_audiences: [ "elasticsearch" ]
-  required_claims:
-    token_use: access
-    version: ["1.0", "2.0"]
-  allowed_signature_algorithms: [RS256,HS256]
-  pkc_jwkset_path: "https://idp-42.example.com/.well-known/configuration"
-  fallback_claims.sub: client_id
-  fallback_claims.aud: scope
-  claims.principal: sub
-```
-
-`token_type`
-:   Instructs the realm to treat and validate incoming JWTs as access tokens (`access_token`).
-
-`allowed_subjects`
-:   Specifies a list of JWT subjects that the realm will allow. These values are typically URLs, UUIDs, or other case-sensitive string values.
-
-`allowed_subject_patterns`
-:   Analogous to `allowed_subjects` but it accepts a list of [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md) and wildcards for the allowed JWT subjects. Wildcards use the `*` and `?` special characters (which are escaped by `\`) to mean "any string" and "any single character" respectively, for example "a?\**", matches "a1*" and "ab*whatever", but not "a", "abc", or "abc*" (in Java strings `\` must itself be escaped by another `\`). [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md) must be enclosed between `/`, for example "/https?://[^/]+/?/" matches any http or https URL with no path component (matches "https://elastic.co/" but not "https://elastic.co/guide").
-
-:::{note}
-At least one of the `allowed_subjects` or `allowed_subject_patterns` settings must be specified (and be non-empty) when `token_type` is `access_token`.
-:::
-
-
-:::{note}
-When both `allowed_subjects` and `allowed_subject_patterns` settings are specified an incoming JWT’s `sub` claim is accepted if it matches any of the two lists.
-:::
-
-
-`required_claims`
-:   Specifies a list of key/value pairs for additional verifications to be performed against a JWT. The values are either a string or an array of strings.
-
-`fallback_claims.sub`
-:   The name of the JWT claim to extract the subject information if the `sub` claim does not exist. This setting is only available when `token_type` is `access_token`. The fallback is applied everywhere the `sub` claim is used. In the above snippet, it means the `claims.principal` will also fallback to `client_id` if `sub` does not exist.
-
-`fallback_claims.aud`
-:   The name of the JWT claim to extract the audiences information if the `aud` claim does not exist. This setting is only available when `token_type` is `access_token`. The fallback is applied everywhere the `aud` claim is used.
-::::
-:::::
-
-
-Add secure settings to the {{es}} keystore:
-
-* The `shared_secret` value for `client_authentication.type` (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret1`)
-* The HMAC keys for `allowed_signature_algorithms` (`xpack.security.authc.realms.jwt.jwt1.hmac_jwkset`)
-
-
-::::{note}
-Using the JWKS is preferred. However, you can add an HMAC key in string format using `xpack.security.authc.realms.jwt.jwt1.hmac_key`. This format is compatible with HMAC UTF-8 keys, but only supports a single key with no attributes. You can only use one HMAC format (either `hmac_jwkset` or `hmac_key`) at a time.
-::::
+1. Configure the realm using your preferred token type: 
 
   :::::{tab-set}
 
-  ::::{tab-item} ECH and ECE
+  ::::{tab-item} ID tokens
 
-  1. From the **Deployments** page, select your deployment.
+  The following example includes the most common settings, which are not intended for every use case:
 
-      Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
+  ```yaml
+  xpack.security.authc.realms.jwt.jwt1:
+    order: 3
+    token_type: id_token
+    client_authentication.type: shared_secret
+    allowed_issuer: "https://issuer.example.com/jwt/"
+    allowed_audiences: [ "8fb85eba-979c-496c-8ae2-a57fde3f12d0" ]
+    allowed_signature_algorithms: [RS256,HS256]
+    pkc_jwkset_path: jwt/jwkset.json
+    claims.principal: sub
+  ```
 
-  2. From your deployment menu, select **Security**.
-  3. Under the **{{es}} keystore** section, select **Add settings**.
-  4. On the **Create setting** window, select the secret **Type** to be `Secret String`.
-  5. Add the required settings.
+  `order`
+  :   Specifies a realm `order` of `3`, which indicates the order in which the configured realm is checked when authenticating a user. Realms are consulted in ascending order, where the realm with the lowest order value is consulted first.
+
+  `token_type`
+  :   Instructs the realm to treat and validate incoming JWTs as ID Tokens (`id_token`).
+
+  `client_authentication.type`
+  :   Specifies the client authentication type as `shared_secret`, which means that the client is authenticated using an HTTP request header that must match a pre-configured secret value. The client must provide this shared secret with every request in the `ES-Client-Authentication` header and using the `SharedSecret` scheme. The header value must be a case-sensitive match to the realm’s `client_authentication.shared_secret`.
+
+  `allowed_issuer`
+  :   Sets a verifiable identifier for your JWT issuer. This value is typically a URL, UUID, or some other case-sensitive string value.
+
+  `allowed_audiences`
+  :   Specifies a list of JWT audiences that the realm will allow. These values are typically URLs, UUIDs, or other case-sensitive string values.
+
+  `allowed_signature_algorithms`
+  :   Indicates that {{es}} should use the `RS256` or `HS256` signature algorithms to verify the signature of the JWT from the JWT issuer.
+
+  `pkc_jwkset_path`
+  :   The file name or URL to a JSON Web Key Set (JWKS) with the public key material that the JWT Realm uses for verifying token signatures. A value is considered a file name if it does not begin with `https`. The file name is resolved relative to the {{es}} configuration directory. If a URL is provided, then it must begin with `https://` (`http://` is not supported). {{es}} automatically caches the JWK set and will attempt to refresh the JWK set upon signature verification failure, as this might indicate that the JWT Provider has rotated the signing keys.
+
+  `claims.principal`
+  :   The name of the JWT claim that contains the user’s principal (username).
+
   ::::
 
-  ::::{tab-item} ECK
-  [Create a secure setting](/deploy-manage/security/secure-settings.md) for the required settings using Kubernetes secrets.
+  ::::{tab-item} Access tokens
+  The following is an example snippet for configuring a JWT realm for handling access tokens:
 
-  ::::
+  ```yaml
+  xpack.security.authc.realms.jwt.jwt2:
+    order: 4
+    token_type: access_token
+    client_authentication.type: shared_secret
+    allowed_issuer: "https://issuer.example.com/jwt/"
+    allowed_subjects: [ "123456-compute@admin.example.com" ]
+    allowed_subject_patterns: [ "wild*@developer?.example.com", "/[a-z]+<1-10>\\@dev\\.example\\.com/"]
+    allowed_audiences: [ "elasticsearch" ]
+    required_claims:
+      token_use: access
+      version: ["1.0", "2.0"]
+    allowed_signature_algorithms: [RS256,HS256]
+    pkc_jwkset_path: "https://idp-42.example.com/.well-known/configuration"
+    fallback_claims.sub: client_id
+    fallback_claims.aud: scope
+    claims.principal: sub
+  ```
 
-  ::::{tab-item} Self-managed
+  `token_type`
+  :   Instructs the realm to treat and validate incoming JWTs as access tokens (`access_token`).
 
-  Use the [`elasticsearch-keystore`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool to store values for secure settings in the {{es}} keystore.
+  `allowed_subjects`
+  :   Specifies a list of JWT subjects that the realm will allow. These values are typically URLs, UUIDs, or other case-sensitive string values.
 
-   1. Store the `shared_secret` value for `client_authentication.type`:
+  `allowed_subject_patterns`
+  :   Analogous to `allowed_subjects` but it accepts a list of [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md) and wildcards for the allowed JWT subjects. Wildcards use the `*` and `?` special characters (which are escaped by `\`) to mean "any string" and "any single character" respectively, for example "a?\**", matches "a1*" and "ab*whatever", but not "a", "abc", or "abc*" (in Java strings `\` must itself be escaped by another `\`). [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md) must be enclosed between `/`, for example "/https?://[^/]+/?/" matches any http or https URL with no path component (matches "https://elastic.co/" but not "https://elastic.co/guide").
 
-      ```shell
-      bin/elasticsearch-keystore add xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret
-      ```
+  At least one of the `allowed_subjects` or `allowed_subject_patterns` settings must be specified (and be non-empty) when `token_type` is `access_token`.
 
-   2. Store the HMAC keys for `allowed_signature_algorithms`, which use the HMAC SHA-256 algorithm `HS256` in the example:
+  When both `allowed_subjects` and `allowed_subject_patterns` settings are specified an incoming JWT’s `sub` claim is accepted if it matches any of the two lists.
 
-      ```shell
-      bin/elasticsearch-keystore add-file xpack.security.authc.realms.jwt.jwt1.hmac_jwkset <path> <1>
-      ```
+  `required_claims`
+  :   Specifies a list of key/value pairs for additional verifications to be performed against a JWT. The values are either a string or an array of strings.
 
-      1. Path to a JWKS, which is a resource for a set of JSON-encoded secret keys. The file can be removed after you load the contents into the {{es}} keystore.
+  `fallback_claims.sub`
+  :   The name of the JWT claim to extract the subject information if the `sub` claim does not exist. This setting is only available when `token_type` is `access_token`. The fallback is applied everywhere the `sub` claim is used. In the above snippet, it means the `claims.principal` will also fallback to `client_id` if `sub` does not exist.
+
+  `fallback_claims.aud`
+  :   The name of the JWT claim to extract the audiences information if the `aud` claim does not exist. This setting is only available when `token_type` is `access_token`. The fallback is applied everywhere the `aud` claim is used.
   ::::
   :::::
+
+2. Add secure settings [to the {{es}} keystore](/deploy-manage/security/secure-settings.md):
+
+   * The `shared_secret` value for `client_authentication.type` 
+  
+      (`xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret1`)
+   * The HMAC keys for `allowed_signature_algorithms` 
+  
+      (`xpack.security.authc.realms.jwt.jwt1.hmac_jwkset`)
+  
+      This setting can be a path to a JWKS, which is a resource for a set of JSON-encoded secret keys. The file can be removed after you load the contents into the {{es}} keystore.
+
+
+  :::{note}
+  Using the JWKS is preferred. However, you can add an HMAC key in string format using `xpack.security.authc.realms.jwt.jwt1.hmac_key`. This format is compatible with HMAC UTF-8 keys, but only supports a single key with no attributes. You can only use one HMAC format (either `hmac_jwkset` or `hmac_key`) at a time.
+  :::
+
 
 ## JWT encoding and validation [jwt-validation]
 

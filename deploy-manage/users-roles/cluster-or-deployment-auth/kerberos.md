@@ -65,9 +65,9 @@ Kerberos is used to protect services and uses a ticket-based authentication prot
 
 In Kerberos, users authenticate with an authentication service and later with a ticket granting service to generate a TGT (ticket-granting ticket). This ticket is then presented to the service for authentication. Refer to your Kerberos installation documentation for more information about obtaining TGT. {{es}} clients must first obtain a TGT then initiate the process of authenticating with {{es}}.
 
-### Before you begin [kerberos-realm-prereq]
+### Prerequisites [kerberos-realm-prereq]
 
-1. Deploy Kerberos.
+* Deploy Kerberos.
 
     You must have the Kerberos infrastructure set up in your environment.
 
@@ -80,18 +80,7 @@ In Kerberos, users authenticate with an authentication service and later with a 
 
 If you're using a self-managed cluster, then perform the following additional steps: 
 
-1. Configure Java GSS.
-
-    {{es}} uses Java GSS framework support for Kerberos authentication. To support Kerberos authentication, {{es}} needs the following files:
-
-    * `krb5.conf`, a Kerberos configuration file
-    * A `keytab` file that contains credentials for the {{es}} service principal
-
-    The configuration requirements depend on your Kerberos setup. Refer to your Kerberos documentation to configure the `krb5.conf` file.
-
-    For more information on Java GSS, see [Java GSS Kerberos requirements](https://docs.oracle.com/javase/10/security/kerberos-requirements1.htm)
-
-2. Enable TLS for HTTP.
+* Enable TLS for HTTP.
 
     If your {{es}} cluster is operating in production mode, you must configure the HTTP interface to use SSL/TLS before you can enable Kerberos authentication. For more information, see [Encrypt HTTP client communications for {{es}}](../../../deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
 
@@ -101,7 +90,7 @@ If you're using a self-managed cluster, then perform the following additional st
 
     {{ech}}, {{ece}}, and {{eck}} have TLS enabled by default.
 
-3. Enable the token service.
+* Enable the token service.
 
     The {{es}} Kerberos implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your `elasticsearch.yml` file:
 
@@ -120,10 +109,14 @@ To configure a Kerberos realm in {{es}}:
 
 #### Prepare Kerberos config files
 
-Prepare the following resources: 
+{{es}} uses Java GSS framework support for Kerberos authentication. To support Kerberos authentication, {{es}} needs the following files:
 
    * `krb5.conf`: The Kerberos configuration file (`krb5.conf`) provides information such as the default realm, the Key Distribution Center (KDC), and other configuration details required for Kerberos authentication. For more information, see [krb5.conf](https://web.mit.edu/kerberos/krb5-latest/doc/admin/conf_files/krb5_conf.html).
    * **A keytab**: A keytab is a file that stores pairs of principals and encryption keys. {{es}} uses the keys from the keytab to decrypt the tickets presented by the user. You must create a keytab for {{es}} by using the tools provided by your Kerberos implementation. For example, some tools that create keytabs are `ktpass.exe` on Windows and `kadmin` for MIT Kerberos.
+  
+The configuration requirements depend on your Kerberos setup. Refer to your Kerberos documentation to configure the `krb5.conf` file.
+
+For more information on Java GSS, see [Java GSS Kerberos requirements](https://docs.oracle.com/javase/10/security/kerberos-requirements1.htm).
 
 #### Configure {{es}}
 
@@ -198,7 +191,14 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
 ::::{tab-item} ECK
 
-1. Install your `krb5.conf` and `keytab` files as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md). 
+% TODO: jvm setup 
+% podTemplate with a mount that shadows /usr/share/elasticsearch/config/jvm.options.d/
+% set `java.security.krb5.conf`
+% 1. Configure the JVM to find the Kerberos configuration file.
+   
+% {{es}} uses Java GSS and JAAS Krb5LoginModule to support Kerberos authentication using a Simple and Protected GSSAPI Negotiation (SPNEGO) mechanism. When the JVM needs some configuration properties, it tries to find those values by locating and loading the `krb5.conf` file. The JVM system property to configure the file path is `java.security.krb5.conf`. If this system property is not specified, Java tries to locate the file based on the conventions.
+
+1. Install your `krb5.conf` and `keytab` files as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). 
 
 2. Edit your cluster configuration to define your Kerberos settings:
 

@@ -29,6 +29,10 @@ The Active Directory realm authenticates users using an LDAP bind request. After
 
 To integrate with Active Directory, you configure an `active_directory` realm and map Active Directory groups to user roles in {{es}}.
 
+:::{tip}
+If your Active Directory domain supports authentication with user-provided credentials, then you don't need to configure a `bind_dn`. [Learn more](#ece-ad-configuration-with-bind-user).
+:::
+
 ## Step 1: Add a new realm configuration [ad-realm-configuration]
 
 1. Add a realm configuration of type `active_directory` to `elasticsearch.yml` under the `xpack.security.authc.realms.active_directory` namespace. At a minimum, you must specify the Active Directory `domain_name` and `order`.
@@ -149,44 +153,13 @@ To configure a bind user:
 
     1. The user to run as for all Active Directory search requests.
 
-1. Configure the password for the `bind_dn` user by adding the appropriate `secure_bind_password` setting to the {{es}} keystore:
+1. Configure the password for the `bind_dn` user by adding the appropriate `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md).
 
+  In self-managed deployments, when a bind user is configured, connection pooling is enabled by default. Connection pooling can be disabled using the `user_search.pool.enabled` setting.
 
-  :::::{tab-set}
-  :group: cloud-eck-self
-
-  ::::{tab-item} ECH and ECE
-  :sync: cloud
-
-  1. From the **Deployments** page, select your deployment.
-
-      Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-
-  2. From your deployment menu, select **Security**.
-  3. Under the **{{es}} keystore** section, select **Add settings**.
-  4. On the **Create setting** window, select the secret **Type** to be `Secret String`.
-  5. Set the **Setting name** to `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` and add the password for the `bind_dn` user in the `secret` field.
-
-      :::{warning}
-      After you configure `secure_bind_password`, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you wish to rollback the Active Directory realm related configuration effort, you need to remove the `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` that was just added by clicking **Remove** by the setting name under `Existing Keystores`.
-      :::
-  ::::
-
-  ::::{tab-item} ECK
-  [Create a secure setting](/deploy-manage/security/secure-settings.md) for the `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` setting using Kubernetes secrets.
-
-  ::::
-
-  ::::{tab-item} Self-managed
-
-  ```shell
-  bin/elasticsearch-keystore add  \
-  xpack.security.authc.realms.active_directory.my_ad.secure_bind_password
-  ```
-
-  When a bind user is configured, connection pooling is enabled by default. Connection pooling can be disabled using the `user_search.pool.enabled` setting.
-  ::::
-  :::::
+  :::{warning}
+  In {{ech}} and {{ece}}, after you configure `secure_bind_password`, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you want to rollback the Active Directory realm configurations, you need to remove the `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` that was just added.
+  :::
 
 ## Step 3: Map Active Directory users and groups to roles
 
@@ -233,7 +206,7 @@ POST /_security/role_mapping/ldap-superuser <1>
 ### Example: Using a role mapping file [ece_using_the_role_mapping_files_2]
 
 :::{tip} 
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md). If you're using a self-managed cluster, then the file must be present on each node.
+If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). If you're using a self-managed cluster, then the file must be present on each node.
 :::
 
 ```sh
@@ -293,7 +266,7 @@ Clients and nodes that connect using SSL/TLS to the Active Directory server need
 
 If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
-If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
+If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 :::{tip} 
 

@@ -74,53 +74,22 @@ To configure an `ldap` realm with user search:
     In {{ece}}, you must apply the user settings to each [deployment template](/deploy-manage/deploy/cloud-enterprise/configure-deployment-templates.md).
     ::::
 
-2. Configure the password for the `bind_dn` user by adding the appropriate `secure_bind_password` setting to the {{es}} keystore:
+2. Configure the password for the `bind_dn` user by adding the `xpack.security.authc.realms.ldap.<ldap1>.secure_bind_password` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md).
 
-  :::::{tab-set}
-  :group: cloud-eck-self
+  :::{warning}
+  In {{ech}} and {{ece}}, after you configure `secure_bind_password`, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you want to rollback the Active Directory realm configurations, you need to remove the `xpack.security.authc.realms.ldap.<ldap1>.secure_bind_password` that was just added.
+  :::
 
-  ::::{tab-item} ECH and ECE
-  :sync: cloud
-
-  1. From the **Deployments** page, select your deployment.
-
-      Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
-
-  2. From your deployment menu, select **Security**.
-  3. Under the **{{es}} keystore** section, select **Add settings**.
-  4. On the **Create setting** window, select the secret **Type** to be `Secret String`.
-  5. Set the **Setting name** to `xpack.security.authc.realms.ldap.<ldap1>.secure_bind_password` and add the password for the `bind_dn` user in the `secret` field.
-
-      :::{warning}
-      After you configure `secure_bind_password`, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you wish to rollback the Active Directory realm related configuration effort, you need to remove the `xpack.security.authc.realms.ldap.<ldap1>.secure_bind_password` that was just added by clicking **Remove** by the setting name under `Existing Keystores`.
-      :::
-  ::::
-
-  ::::{tab-item} ECK
-  [Create a secure setting](/deploy-manage/security/secure-settings.md) for the `xpack.security.authc.realms.ldap.<ldap1>.secure_bind_password` setting using Kubernetes secrets.
-
-  ::::
-
-  ::::{tab-item} Self-managed
-
-  ```shell
-  bin/elasticsearch-keystore add  \
-  xpack.security.authc.realms.ldap.ldap1.secure_bind_password
-  ```
-
-  ::::
-  :::::
-
-3. (Optional) Configure how the {{security-features}} interact with multiple LDAP servers.
+1. (Optional) Configure how the {{security-features}} interact with multiple LDAP servers.
 
     The `load_balance.type` setting can be used at the realm level. The {{es}} {{security-features}} support both failover and load balancing modes of operation. See [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings).
 
-4. (Optional) To protect passwords, [encrypt communications between {{es}} and the LDAP server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#tls-ldap).
+2. (Optional) To protect passwords, [encrypt communications between {{es}} and the LDAP server](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#tls-ldap).
    
     * **For self-managed clusters and {{eck}} deployments**, clients and nodes that connect using SSL/TLS to the Active Directory server need to have the Active Directory server’s certificate or the server’s root CA certificate installed in their keystore or trust store.
 
     * **For {{ece}} and {{ech}} deployments**, if your Domain Controller is configured to use LDAP over TLS and it uses a self-signed certificate or a certificate that is signed by your organization’s CA, you need to enable the deployment to trust this certificate.
-5. Restart {{es}}.
+3. Restart {{es}}.
 
 ### Set up LDAP with user DN templates
 
@@ -214,7 +183,7 @@ POST /_security/role_mapping/ldap-superuser <1>
 ### Example: Using a role mapping file
 
 :::{tip} 
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md). If you're using a self-managed cluster, then the file must be present on each node.
+If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). If you're using a self-managed cluster, then the file must be present on each node.
 :::
 
 ```yaml
@@ -292,7 +261,7 @@ To protect the user credentials that are sent for authentication in an LDAP real
 
 If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
-If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
+If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 :::{tip} 
 
