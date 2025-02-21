@@ -64,9 +64,9 @@ To restore internal indices from a snapshot, the procedure is a bit different fr
     
     :::{tab-item} Elasticsearch Add-On for Heroku
     First, add the authentication information for the repository to the Elasticsearch Add-On for Heroku keystore, following the steps for your cloud provider:
-    * [AWS S3](../../deploy-manage/tools/snapshot-and-restore/ech-aws-custom-repository.md#ech-snapshot-secrets-keystore)
-    * [Google Cloud Storage](../../deploy-manage/tools/snapshot-and-restore/ech-gcs-snapshotting.md#ech-configure-gcs-keystore)
-    * [Azure Blog storage](../../deploy-manage/tools/snapshot-and-restore/ech-azure-snapshotting.md#ech-configure-azure-keystore)
+    * [AWS S3](../../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
+    * [Google Cloud Storage](../../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)
+    * [Azure Blog storage](../../deploy-manage/tools/snapshot-and-restore/ec-azure-snapshotting.md)
 
     Next, register a read-only repository. Open an {{es}} [API console](../../explore-analyze/query-filter/tools/console.md) and run the [Read-only URL repository](../../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md) API call.
 

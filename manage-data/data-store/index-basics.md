@@ -103,7 +103,7 @@ In {{es-serverless}}, indices matching the `logs-*-*` pattern use the logsDB ind
 * To modify the data retention value, select an index, open the **Manage**  menu, and click **Edit data retention**.
 * To view more information about a data stream, such as its generation or its current index lifecycle policy, click the stream's name. From this view, you can navigate to **Discover** to further explore data within the data stream.
 
-### Manage index templates
+### Manage index templates [index-management-manage-index-templates]
 
 An [index template](/manage-data/data-store/templates.md) is a way to tell {{es}} how to configure an index when it is created. 
 
