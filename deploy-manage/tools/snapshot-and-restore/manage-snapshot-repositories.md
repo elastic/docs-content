@@ -51,7 +51,7 @@ When a platform-level repository is associated with a deployment, the `found-sna
 
 Elastic Cloud Enterprise installations support the following Elasticsearch snapshot repository types:
 
-* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository)
+* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md)
 * [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
 * [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
 * [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
