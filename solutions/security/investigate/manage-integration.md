@@ -94,7 +94,7 @@ The [Osquery version](https://github.com/osquery/osquery/releases) available on 
 
 ## Debug issues [_debug_issues]
 
-If you encounter issues with **Osquery Manager**, find the relevant logs for {{elastic-agent}} and Osquerybeat in the agent directory. Refer to the [{fleet} Installation layout](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/installation-layout.md) to find the log file location for your OS.
+If you encounter issues with **Osquery Manager**, find the relevant logs for {{elastic-agent}} and Osquerybeat in the agent directory. Refer to the [Fleet Installation layout](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/installation-layout.md) to find the log file location for your OS.
 
 ```ts
 ../data/elastic-agent-*/logs/elastic-agent-json.log-*
@@ -105,6 +105,6 @@ To get more details in the logs, change the agent logging level to debug:
 
 1. Go to **{{fleet}}** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the agent that you want to debug.
-3. On the **Logs*** tab, change the ***Agent logging level*** to ***debug***, and then click ***Apply changes**.
+3. On the **Logs** tab, change the ***Agent logging level*** to ***debug***, and then click ***Apply changes**.
 
     `agent.logging.level` is updated in `fleet.yml`, and the logging level is changed to `debug`.

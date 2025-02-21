@@ -26,7 +26,7 @@ Results for single queries appear on the **Results** tab. When you run a query, 
 
 ### Query pack results [review-pack-osquery-results]
 
-Results for each query in the pack appear in the **Results** tab. Click the expand icon (![Click markdown icon](../../../images/security-pack-expand-button-osquery.png "")) at the far right of each query row to display query results. The number of agents that were queried and their responses are shown for each query. Agent responses are color-coded. Green is `Successful`, `Not yet responded` (pending) is gray, and `Failed` is red.
+Results for each query in the pack appear in the **Results** tab. Click the expand icon (![Click markdown icon](../../../images/security-pack-expand-button-osquery.png "title =20x20")) at the far right of each query row to display query results. The number of agents that were queried and their responses are shown for each query. Agent responses are color-coded. Green is `Successful`, `Not yet responded` (pending) is gray, and `Failed` is red.
 
 :::{image} ../../../images/security-pack-query-results.png
 :alt: Shows query results

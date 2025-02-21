@@ -99,7 +99,7 @@ You can also create a custom pack with one or more queries. For example, when cr
 You can run packs as live queries or schedule packs to run for one or more agent policies. When scheduled, queries in the pack are run at the set intervals for all agents in those policies.
 
 1. Click the **Packs** tab.
-2. Click **Add pack*** to create a new pack, or click the name of an existing pack, then ***Edit** to add queries to an existing pack.
+2. Click **Add pack** to create a new pack, or click the name of an existing pack, then **Edit** to add queries to an existing pack.
 3. Provide a name for the pack. The short description is optional.
 4. Schedule the pack to be deployed on specified agent policies (**Policy**) or on all agent policies (**Global**).
 
@@ -236,10 +236,10 @@ When you save queries or add queries to a pack, you can optionally map Osquery r
 
 1. Edit saved queries or queries in a pack to map fields:
 
-    * For **Saved queries**: Open the **Saved queries** tab, and then click the edit icon for the query that you want to map.
-    * For **packs**: Open the **Packs** tab, edit a pack, and then click the edit icon for the query that you want to map.
+    * For saved queries: Open the **Saved queries** tab, and then click the edit icon for the query that you want to map.
+    * For packs: Open the **Packs** tab, edit a pack, and then click the edit icon for the query that you want to map.
 
-2. In the **ECS mapping*** section, select an ***ECS field** to map.
+2. In the **ECS mapping** section, select an ***ECS field** to map.
 3. In the **Value** column, use the dropdown on the left to choose what type of value to map to the ECS field:
 
     * **Osquery value**: Select an Osquery field. The fields available are based on the SQL query entered, and only include fields that the query returns. When the query runs, the ECS field is set dynamically to the value of the Osquery field selected.
