@@ -1,4 +1,6 @@
 ---
+navigation_title: "AWS S3 repository"
+
 applies_to:
   deployment:
     eck: 
