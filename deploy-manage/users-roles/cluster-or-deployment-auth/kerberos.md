@@ -188,7 +188,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
 ::::{tab-item} ECK
 
-1. Install your `krb5.conf` and `keytab` files as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). 
+1. Install your `krb5.conf` and `keytab` files as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). 
 
 2. Configure the JVM to find the Kerberos configuration file.
    

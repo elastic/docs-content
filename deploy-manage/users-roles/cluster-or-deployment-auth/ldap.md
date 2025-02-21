@@ -183,7 +183,7 @@ POST /_security/role_mapping/ldap-superuser <1>
 ### Example: Using a role mapping file
 
 :::{tip} 
-If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). If you're using a self-managed cluster, then the file must be present on each node.
+If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). If you're using a self-managed cluster, then the file must be present on each node.
 :::
 
 ```yaml
@@ -261,7 +261,7 @@ To protect the user credentials that are sent for authentication in an LDAP real
 
 If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
-If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 :::{tip} 
 
@@ -304,6 +304,6 @@ By default, when you configure {{es}} to connect to an LDAP server using SSL/TLS
 
 ### Using {{kib}} with LDAP [ldap-realm-kibana]
 
-The LDAP security realm uses the {{kib}}-provided [basic authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication#basic-authentication) login form. Basic authentication is enabled by default.
+The LDAP security realm uses the {{kib}}-provided [basic authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#basic-authentication) login form. Basic authentication is enabled by default.
 
-You can also use LDAP with [token authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication#token-authentication) in Kibana.
+You can also use LDAP with [token authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#token-authentication) in Kibana.
