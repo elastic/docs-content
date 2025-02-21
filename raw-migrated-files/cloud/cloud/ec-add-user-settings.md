@@ -114,7 +114,7 @@ The following circuit breaker settings are supported:
 The following indexing pressure settings are supported:
 
 `indexing_pressure.memory.limit`
-:   Configures [the indexing pressure settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/indexing-pressure-settings.md#indexing-pressure-settings).
+:   Configures [the indexing pressure settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/pressure.md).
 
 
 ### X-Pack [ec_x_pack]

@@ -5,7 +5,7 @@ mapped_pages:
 
 # Virtual memory [vm-max-map-count]
 
-Elasticsearch uses a [`mmapfs`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-store-settings.md#mmapfs) directory by default to store its indices. The default operating system limits on mmap counts is likely to be too low, which may result in out of memory exceptions.
+Elasticsearch uses a [`mmapfs`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/store.md#mmapfs) directory by default to store its indices. The default operating system limits on mmap counts is likely to be too low, which may result in out of memory exceptions.
 
 On Linux, you can increase the limits by running the following command as `root`:
 

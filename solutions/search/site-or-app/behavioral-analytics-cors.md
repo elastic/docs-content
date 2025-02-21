@@ -2,7 +2,7 @@
 navigation_title: "Set up CORs"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/behavioral-analytics-cors.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

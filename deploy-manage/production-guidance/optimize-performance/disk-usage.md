@@ -68,7 +68,7 @@ The [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch
 
 ## Use `best_compression` [best-compression]
 
-The `_source` and stored fields can easily take a non negligible amount of disk space. They can be compressed more aggressively by using the `best_compression` [codec](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-codec).
+The `_source` and stored fields can easily take a non negligible amount of disk space. They can be compressed more aggressively by using the `best_compression` [codec](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-codec).
 
 
 ## Force merge [_force_merge]
@@ -97,7 +97,7 @@ The type that you pick for [numeric data](asciidocalypse://docs/elasticsearch/do
 
 When Elasticsearch stores `_source`, it compresses multiple documents at once in order to improve the overall compression ratio. For instance it is very common that documents share the same field names, and quite common that they share some field values, especially on fields that have a low cardinality or a [zipfian](https://en.wikipedia.org/wiki/Zipf%27s_law) distribution.
 
-By default documents are compressed together in the order that they are added to the index. If you enabled [index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-sorting-settings.md) then instead they are compressed in sorted order. Sorting documents with similar structure, fields, and values together should improve the compression ratio.
+By default documents are compressed together in the order that they are added to the index. If you enabled [index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/sorting.md) then instead they are compressed in sorted order. Sorting documents with similar structure, fields, and values together should improve the compression ratio.
 
 
 ## Put fields in the same order in documents [_put_fields_in_the_same_order_in_documents]

@@ -23,7 +23,7 @@ This guide also provides tips for [restoring to another cluster](../../../deploy
 
 * You can only restore a snapshot to a running cluster with an elected [master node](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be [registered](../../../deploy-manage/tools/snapshot-and-restore/self-managed.md) and available to the cluster.
 * The snapshot and cluster versions must be compatible. See [Snapshot compatibility](../../../deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility).
-* To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) that prevent writes. The restore operation ignores [index blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block-settings.md).
+* To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) that prevent writes. The restore operation ignores [index blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md).
 * Before you restore a data stream, ensure the cluster contains a [matching index template](../../../manage-data/data-store/data-streams/set-up-data-stream.md#create-index-template) with data stream enabled. To check, use {{kib}}'s [**Index Management**](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [get index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-index-template):
 
     ```console
@@ -466,7 +466,7 @@ Before you start a restore operation, ensure the new cluster has enough capacity
 
 * Add nodes or upgrade your hardware to increase capacity.
 * Restore fewer indices and data streams.
-* Reduce the [number of replicas](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-number-of-replicas) for restored indices.
+* Reduce the [number of replicas](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) for restored indices.
 
     For example, the following restore snapshot API request uses the `index_settings` option to set `index.number_of_replicas` to `1`.
 

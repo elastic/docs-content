@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-get-started.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
