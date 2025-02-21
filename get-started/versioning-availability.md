@@ -6,7 +6,7 @@ navigation_title: Versioning and availability
 
 ## Elastic Stack versioning
 
-Elasticsearch and the core components of the Elastic Stack use a semantic versioning scheme. This consists of three numbers separated by periods in the: `X.Y.Z`.
+Elasticsearch and the core components of the Elastic Stack use a semantic versioning scheme. This scheme consists of three numbers separated by periods in the form `X.Y.Z`, for example: `9.0.0`.
 
 Each number represents a specific level of change:
 
