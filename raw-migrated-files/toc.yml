@@ -292,7 +292,6 @@ toc:
       - file: docs-content/serverless/security-machine-learning.md
       - file: docs-content/serverless/security-ml-requirements.md
       - file: docs-content/serverless/security-osquery-placeholder-fields.md
-      - file: docs-content/serverless/security-osquery-response-action.md
       - file: docs-content/serverless/security-overview-dashboard.md
       - file: docs-content/serverless/security-policies-page.md
       - file: docs-content/serverless/security-posture-faq.md
