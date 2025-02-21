@@ -304,7 +304,7 @@ To learn more, check [configuring Kibana to use OpenID Connect](/deploy-manage/u
 
 ### Anonymous authentication [echanonymous_authentication]
 
-If you want to allow anonymous authentication in Kibana, these settings are supported in Elasticsearch Add-On for Heroku. To learn more on how to enable anonymous access, check [Enabling anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md) and [Configuring Kibana to use anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#anonymous-authentication).
+If you want to allow anonymous authentication in Kibana, these settings are supported in Elasticsearch Add-On for Heroku. To learn more on how to enable anonymous access, check [Enabling anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md) and [Configuring Kibana to use anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication).
 
 #### Supported versions before 8.0.0 [echsupported_versions_before_8_0_0]
 

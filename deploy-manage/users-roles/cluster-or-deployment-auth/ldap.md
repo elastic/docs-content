@@ -96,7 +96,7 @@ To configure an `ldap` realm with user search:
   ::::
 
   ::::{tab-item} ECK
-  [Create a secure setting](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-es-secure-settings) for the `xpack.security.authc.realms.ldap.<ldap1>.secure_bind_password` setting using Kubernetes secrets.
+  [Create a secure setting](/deploy-manage/security/secure-settings.md) for the `xpack.security.authc.realms.ldap.<ldap1>.secure_bind_password` setting using Kubernetes secrets.
 
   ::::
 
@@ -248,7 +248,7 @@ xpack:
               verification_mode: certificate
               certificate_authorities: ["/app/config/cacerts/ca.crt"]
             files:
-              role_mapping: "/app/config/mappings/role-mappings.yml" <1>
+              role_mapping: "/app/config/mappings/role-mappings.yml"
 ```
 
 ## User metadata in LDAP realms [ldap-user-metadata]

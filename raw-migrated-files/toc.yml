@@ -63,7 +63,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-revoke-roles-token.md
       - file: cloud/cloud-enterprise/ece-secure-clusters-kerberos.md
       - file: cloud/cloud-enterprise/ece-secure-clusters-oidc.md
-      - file: cloud/cloud-enterprise/ece-securing-clusters-ad.md
       - file: cloud/cloud-enterprise/ece-securing-clusters-JWT.md
       - file: cloud/cloud-enterprise/ece-securing-clusters-SAML.md
       - file: cloud/cloud-enterprise/ece-securing-clusters.md

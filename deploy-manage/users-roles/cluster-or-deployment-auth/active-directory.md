@@ -173,7 +173,7 @@ To configure a bind user:
   ::::
 
   ::::{tab-item} ECK
-  [Create a secure setting](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-es-secure-settings) for the `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` setting using Kubernetes secrets.
+  [Create a secure setting](/deploy-manage/security/secure-settings.md) for the `xpack.security.authc.realms.active_directory.<my_ad>.secure_bind_password` setting using Kubernetes secrets.
 
   ::::
 
@@ -253,7 +253,7 @@ xpack:
           my_ad:
             order: 2
             domain_name: ad.example.com
-            url: ldaps://ad.example.com:636 <1>
+            url: ldaps://ad.example.com:636
             bind_dn: es_svc_user@ad.example.com
             ssl:
               certificate_authorities: ["/app/config/cacerts/ca.crt"]
