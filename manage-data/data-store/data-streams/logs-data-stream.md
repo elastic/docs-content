@@ -68,7 +68,7 @@ In `logsdb` index mode, indices are sorted by the fields `host.name` and `@times
 
 * To prioritize the latest data, `host.name` is sorted in ascending order and `@timestamp` is sorted in descending order.
 
-You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, see [*Index Sorting*](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-sorting-settings.md).
+You can override the default sort settings by manually configuring `index.sort.field` and `index.sort.order`. For more details, see [*Index Sorting*](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/sorting.md).
 
 To modify the sort configuration of an existing data stream, update the data stream’s component templates, and then perform or wait for a [rollover](../data-streams.md#data-streams-rollover).
 
@@ -86,7 +86,7 @@ To avoid mapping conflicts, consider these options:
 
 * **Adjust mappings:** Check your existing mappings to ensure that `host.name` is mapped as a keyword.
 * **Change sorting:** If needed, you can remove `host.name` from the sort settings and use a different set of fields. Sorting by `@timestamp` can be a good fallback.
-* **Switch to a different [index mode](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-mode-setting)**: If resolving `host.name` mapping conflicts is not feasible, you can choose not to use `logsdb` mode.
+* **Switch to a different [index mode](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-mode-setting)**: If resolving `host.name` mapping conflicts is not feasible, you can choose not to use `logsdb` mode.
 
 ::::{important}
 On existing data streams, `logsdb` mode is applied on [rollover](../data-streams.md#data-streams-rollover) (automatic or manual).
@@ -103,7 +103,7 @@ In benchmarks, routing optimizations reduced storage requirements by 20% compare
 To configure a routing optimization:
 
 * Include the index setting `[index.logsdb.route_on_sort_fields:true]` in the data stream configuration.
-* [Configure index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-sorting-settings.md) with two or more fields, in addition to `@timestamp`.
+* [Configure index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/sorting.md) with two or more fields, in addition to `@timestamp`.
 * Make sure the [`_id`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-id-field.md) field is not populated in ingested documents. It should be auto-generated instead.
 
 A custom sort configuration is required, to improve storage efficiency and to minimize hotspots from logging spikes that may route documents to a single shard. For best results, use a few sort fields that have a relatively low cardinality and don’t co-vary (for example, `host.name` and `host.id` are not optimal).
@@ -111,7 +111,7 @@ A custom sort configuration is required, to improve storage efficiency and to mi
 
 ## Specialized codecs [logsdb-specialized-codecs]
 
-By default, `logsdb` index mode uses the `best_compression` [codec](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-codec), which applies [ZSTD](https://en.wikipedia.org/wiki/Zstd) compression to stored fields. You can switch to the `default` codec for faster compression with a slightly larger storage footprint.
+By default, `logsdb` index mode uses the `best_compression` [codec](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-codec), which applies [ZSTD](https://en.wikipedia.org/wiki/Zstd) compression to stored fields. You can switch to the `default` codec for faster compression with a slightly larger storage footprint.
 
 The `logsdb` index mode also automatically applies specialized codecs for numeric doc values, in order to optimize storage usage. Numeric fields are encoded using the following sequence of codecs:
 

@@ -26,7 +26,7 @@ Refer to [Test an analyzer](../../../manage-data/data-store/text-analysis/test-a
 
 * **Relevance scoring**: Results are ranked by how relevant they are to the given query. The relevance score of each document is represented by a positive floating-point number called the `_score`. The higher the `_score`, the more relevant the document.
 
-    The default [similarity algorithm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/similarity-settings.md) {{es}} uses for calculating relevance scores is [Okapi BM25](https://en.wikipedia.org/wiki/Okapi_BM25), a variation of the [TF-IDF algorithm](https://en.wikipedia.org/wiki/Tf–idf). BM25 calculates relevance scores based on term frequency, document frequency, and document length. Refer to this [technical blog post](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables) for a deep dive into BM25.
+    The default [similarity algorithm](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/similarity.md) {{es}} uses for calculating relevance scores is [Okapi BM25](https://en.wikipedia.org/wiki/Okapi_BM25), a variation of the [TF-IDF algorithm](https://en.wikipedia.org/wiki/Tf–idf). BM25 calculates relevance scores based on term frequency, document frequency, and document length. Refer to this [technical blog post](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables) for a deep dive into BM25.
 
 * **Full-text search query**: Query text is analyzed [the same way as the indexed text](../../../manage-data/data-store/text-analysis/index-search-analysis.md), and the resulting tokens are used to search the inverted index.
 
