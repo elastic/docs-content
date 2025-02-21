@@ -284,7 +284,7 @@ You can map LDAP groups to roles in the following ways:
 
 * Using the role mappings page in {{kib}}.
 * Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). 
-* Delegating authorization to another realm.
+* By delegating authorization [to another realm](#jwt-authorization-delegation).
   
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 

@@ -162,7 +162,6 @@ toc:
       - file: cloud/cloud/ec-restoring-snapshots.md
       - file: cloud/cloud/ec-saas-metrics-accessing.md
       - file: cloud/cloud/ec-secure-clusters-oidc.md
-      - file: cloud/cloud/ec-securing-clusters-oidc-op.md
       - file: cloud/cloud/ec-securing-clusters-saml-azure.md
       - file: cloud/cloud/ec-securing-clusters-SAML.md
       - file: cloud/cloud/ec-security.md

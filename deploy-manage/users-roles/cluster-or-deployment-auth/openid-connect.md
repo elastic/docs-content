@@ -6,7 +6,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-secure-clusters-oidc.html
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-oidc-op.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-oidc.html
-navigation_title: OIDC
+navigation_title: OpenID Connect
 applies_to:
   deployment:
     self:
@@ -18,63 +18,44 @@ applies_to:
 # OpenID Connect authentication [oidc-realm]
 
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-secure-clusters-oidc.md
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-securing-clusters-oidc-op.md
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
-$$$ec-securing-oidc-azure$$$
-
-$$$ec-oidc-client-secret$$$
-
-$$$ec-oidc-user-settings$$$
-
-$$$ec-securing-oidc-google$$$
-
-$$$ec-securing-oidc-okta$$$
-
-$$$ec-summary-and-references$$$
-
-$$$ece-oidc-client-secret$$$
-
-$$$ece-oidc-user-settings$$$
-
-$$$ech-oidc-client-secret$$$
-
-$$$ech-oidc-user-settings$$$
-
 **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-realm.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-realm.md)
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-guide.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-guide.md)
 * [/raw-migrated-files/cloud/cloud/ec-secure-clusters-oidc.md](/raw-migrated-files/cloud/cloud/ec-secure-clusters-oidc.md)
-* [/raw-migrated-files/cloud/cloud/ec-securing-clusters-oidc-op.md](/raw-migrated-files/cloud/cloud/ec-securing-clusters-oidc-op.md)
 
 ==============
 
 The OpenID Connect realm enables {{es}} to serve as an OpenID Connect Relying Party (RP) and provides single sign-on (SSO) support in {{kib}}.
 
-It is specifically designed to support authentication via an interactive web browser, so it does not operate as a standard authentication realm. Instead, there are {{kib}} and {{es}} {{security-features}} that work together to enable interactive OpenID Connect sessions.
+It is specifically designed to support authentication using an interactive web browser, so it does not operate as a standard authentication realm. Instead, there are {{kib}} and {{es}} {{security-features}} that work together to enable interactive OpenID Connect sessions.
 
-This means that the OpenID Connect realm is not suitable for use by standard REST clients. If you configure an OpenID Connect realm for use in {{kib}}, you should also configure another realm, such as the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) in your authentication chain.
+This means that the OpenID Connect realm is not suitable for use by standard REST clients. If you configure an OpenID Connect realm for use in {{kib}}, you should also configure another realm, such as the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md), in your authentication chain.
 
-In order to simplify the process of configuring OpenID Connect authentication within the {{stack}}, there is a step-by-step guide: [Configuring single sign-on to the {{stack}} using OpenID Connect](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md).
+Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the OpenID Connect REST APIs to authenticate the users to {{es}} with OpenID Connect, refer to [OpenID Connect without {{kib}}](#oidc-without-kibana).
 
-This guide assumes that you have an OpenID Connect Provider where the {{stack}} Relying Party will be registered.
+For a detailed description of how to implement OpenID Connect with various OpenID Connect Providers (OPs), refer to [Set up OpenID Connect with Azure, Google, or Okta](/deploy-manage/users-roles/cluster-or-deployment-auth/oidc-examples.md).
 
 ::::{note} 
-The OpenID Connect realm support in {{kib}} is designed with the expectation that it will be the primary authentication method for the users of that {{kib}} instance. The [Configuring {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-configure-kibana) section describes what this entails and how you can set it up to support other realms if necessary.
+OpenID Connect realm support in {{kib}} is designed with the expectation that it will be the primary authentication method for the users of that {{kib}} instance. The [Configuring {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-configure-kibana) section describes what this entails and how you can set it up to support other realms if necessary.
 ::::
 
 ## The OpenID Connect Provider [oidc-guide-op]
 
 The OpenID Connect Provider (OP) is the entity in OpenID Connect that is responsible for authenticating the user and for granting the necessary tokens with the authentication and user information to be consumed by the Relying Parties.
 
-In order for the Elastic Stack to be able to use your OpenID Connect Provider for authentication, a trust relationship needs to be established between the OP and the RP. In the OpenID Connect Provider, this means registering the RP as a client. OpenID Connect defines a dynamic client registration protocol but this is usually geared towards real-time client registration and not the trust establishment process for cross security domain single sign on. All OPs will also allow for the manual registration of an RP as a client, via a user interface or (less often) via the consumption of a metadata document.
+In order for the {{stack}} to be able to use your OpenID Connect Provider for authentication, a trust relationship needs to be established between the OP and the RP. In the OpenID Connect Provider, this means registering the RP as a client. OpenID Connect defines a dynamic client registration protocol but this is usually geared towards real-time client registration and not the trust establishment process for cross security domain single sign on. All OPs will also allow for the manual registration of an RP as a client, via a user interface or (less often) via the consumption of a metadata document.
 
-The process for registering the Elastic Stack RP will be different from OP to OP and following the provider’s relevant documentation is prudent. The information for the RP that you commonly need to provide for registration are the following:
+The process for registering the {{stack}} RP will be different from OP to OP, so you should follow your provider's documentation. The information for the RP that you commonly need to provide for registration are the following:
 
-* `Relying Party Name`: An arbitrary identifier for the relying party. Neither the specification nor the Elastic Stack implementation impose any constraints on this value.
-* `Redirect URI`: This is the URI where the OP will redirect the user’s browser after authentication. The appropriate value for this will depend on your setup and whether or not {{kib}} sits behind a proxy or load balancer. It will typically be `${kibana-url}/api/security/oidc/callback` (for the authorization code flow) or `${kibana-url}/api/security/oidc/implicit` (for the implicit flow) where *${kibana-url}* is the base URL for your {{kib}} instance. You might also see this called `Callback URI`.
+* `Relying Party Name`: An arbitrary identifier for the relying party. There are no constraints on this value, either from the specification or the {{stack}} implementation.
+* `Redirect URI`: The URI where the OP will redirect the user’s browser after authentication, sometimes referred to as a `Callback URI`. The appropriate value for this will depend on your setup, and whether or not {{kib}} sits behind a proxy or load balancer. 
+  
+  It will typically be `${kibana-url}/api/security/oidc/callback` (for the authorization code flow) or `${kibana-url}/api/security/oidc/implicit` (for the implicit flow) where *${kibana-url}* is the base URL for your {{kib}} instance. 
+
+  If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
 
 At the end of the registration process, the OP will assign a Client Identifier and a Client Secret for the RP ({{stack}}) to use. Note these two values as they will be used in the {{es}} configuration.
 
@@ -106,57 +87,58 @@ If you're using a self-managed cluster, then perform the following additional st
 
     {{ech}}, {{ece}}, and {{eck}} have TLS enabled by default.
 
-## Step 1: Create an OpenID Connect realm [oidc-create-realm]
+## Create an OpenID Connect realm [oidc-create-realm]
 
 OpenID Connect based authentication is enabled by configuring the appropriate realm within the authentication chain for {{es}}.
 
 This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [OpenID Connect realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings). This guide will explore the most common settings.
 
-1. Create an OpenID Connect (the realm type is `oidc`) realm in your `elasticsearch.yml` file similar to what is shown below:
+1. Create an OpenID Connect (the realm type is `oidc`) realm in your `elasticsearch.yml` file similar to what is shown below.
+
+  If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
     ::::{note} 
     The values used below are meant to be an example and are not intended to apply to every use case. The details below the configuration snippet provide insights and suggestions to help you pick the proper values, depending on your OP configuration.
     ::::
 
     ```yaml
-    xpack.security.authc.realms.oidc.oidc1:
-      order: 2
+    xpack.security.authc.realms.oidc.oidc1: 
+      order: 2 
       rp.client_id: "the_client_id"
-      rp.response_type: code
-      rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
-      op.issuer: "https://op.example.org"
-      op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
-      op.token_endpoint: "https://op.example.org/oauth2/v1/token"
-      op.jwkset_path: oidc/jwkset.json
-      op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
-      op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
-      rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out"
-      claims.principal: sub
-      claims.groups: "http://example.info/claims/groups"
+      rp.response_type: code 
+      rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback" 
+      op.issuer: "https://op.example.org" 
+      op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize" 
+      op.token_endpoint: "https://op.example.org/oauth2/v1/token" 
+      op.jwkset_path: oidc/jwkset.json 
+      op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo" 
+      op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout" 
+      rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out" 
+      claims.principal: sub 
+      claims.groups: "http://example.info/claims/groups" 
     ```
 
-    :::{dropdown} Common settings
-    The configuration values used in the example above are:
+    ::::{dropdown} Common settings
 
-    xpack.security.authc.realms.oidc.oidc1
-    :   This defines a new `oidc` authentication realm named "oidc1". See [Realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) for more explanation of realms.
+    xpack.security.authc.realms.oidc.<oidc1>
+    :   The OpenID Connect realm name. The realm name can only contain alphanumeric characters, underscores, and hyphens.
 
     order
-    :   You should define a unique order on each realm in your authentication chain. It is recommended that the OpenID Connect realm be at the bottom of your authentication chain (that is, that it has the *highest* order).
+    :   The order of the OpenID Connect realm in your authentication chain. Allowed values are between `2` and 100. Set to `2` unless you plan on configuring multiple SSO realms for this cluster.
 
     rp.client_id
-    :   This, usually opaque, arbitrary string, is the Client Identifier that was assigned to the Elastic Stack RP by the OP upon registration.
+    :   The Client Identifier that was assigned to the {{stack}} RP by the OP upon registration. The value is usually an opaque, arbitrary string.
 
     rp.response_type
-    :   This is an identifier that controls which OpenID Connect authentication flow this RP supports and also which flow this RP requests the OP should follow. Supported values are
+    :   An identifier that controls which OpenID Connect authentication flow this RP supports and also which flow this RP requests the OP should follow. Supported values are:
 
-        * `code`, which means that the RP wants to use the Authorization Code flow. If your OP supports the Authorization Code flow, you should select this instead of the Implicit Flow.
-        * `id_token token` which means that the RP wants to use the Implicit flow and we also request an oAuth2 access token from the OP, that we can potentially use for follow up requests ( UserInfo ). This should be selected if the OP offers a UserInfo endpoint in its configuration, or if you know that the claims you will need to use for role mapping are not available in the ID Token.
-        * `id_token` which means that the RP wants to use the Implicit flow, but is not interested in getting an oAuth2 token too. Select this if you are certain that all necessary claims will be contained in the ID Token or if the OP doesn’t offer a User Info endpoint.
+        * `code`: The Authorization Code flow. If your OP supports the Authorization Code flow, you should select this instead of the Implicit Flow.
+        * `id_token token`: The Implicit flow, where {{es}} also requests an oAuth2 access token from the OP that can be used for followup requests (`UserInfo`). Select this option if the OP offers a `UserInfo` endpoint in its configuration, or if you know that the claims that you need to use for role mapping aren't available in the ID Token.
+        * `id_token`: The Implicit flow, without an oAuth2 token request. Select this option if all necessary claims will be contained in the ID Token, or if the OP doesn’t offer a UserInfo endpoint.
 
 
     rp.redirect_uri
-    :   The redirect URI where the OP will redirect the browser after authentication. This needs to be *exactly* the same as the one [configured with the OP upon registration](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-guide-op) and will typically be `${kibana-url}/api/security/oidc/callback` where *${kibana-url}* is the base URL for your {{kib}} instance
+    :   The redirect URI where the OP will redirect the browser after authentication. This needs to be *exactly* the same as the one [configured with the OP upon registration](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-guide-op) and will typically be `${kibana-url}/api/security/oidc/callback` where *${kibana-url}* is the base URL for your {{kib}} instance.
 
     op.issuer
     :   A verifiable Identifier for your OpenID Connect Provider. An Issuer Identifier is usually a case sensitive URL. The value for this setting should be provided by your OpenID Connect Provider.
@@ -168,25 +150,37 @@ This realm has a few mandatory settings, and a number of optional settings. The 
     :   The URL for the Token Endpoint in the OpenID Connect Provider. This is the endpoint where {{es}} will send a request to exchange the code for an ID Token. This setting is optional when you use the implicit flow. The value for this setting should be provided by your OpenID Connect Provider.
 
     op.jwkset_path
-    :   The path to a file or a URL containing a JSON Web Key Set with the key material that the OpenID Connect Provider uses for signing tokens and claims responses. If a path is set, it is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated. Your OpenID Connect Provider should provide you with this file or a URL where it is available.
+    :   The path to a file or a URL containing a JSON Web Key Set with the key material that the OpenID Connect Provider uses for signing tokens and claims responses. Your OpenID Connect Provider should provide you with this file or a URL where it is available.
+
+        If your OpenID Connect Provider doesn’t publish its JWKS at an https URL, or if you want to use a local copy, you can upload the JWKS as a file.
+
+        :::{tip} 
+        * In self-managed clusters, the specified path is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated. 
+        * If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+        :::
 
     op.userinfo_endpoint
     :   (Optional) The URL for the UserInfo Endpoint in the OpenID Connect Provider. This is the endpoint of the OP that can be queried to get further user information, if required. The value for this setting should be provided by your OpenID Connect Provider.
 
     op.endsession_endpoint
-    :   (Optional) The URL to the End Session Endpoint in the OpenID Connect Provider. This is the endpoint where the user’s browser will be redirected after local logout, if the realm is configured for RP initiated Single Logout and the OP supports it. The value for this setting should be provided by your OpenID Connect Provider.
+    :   (Optional) The URL to the End Session Endpoint in the OpenID Connect Provider. This is the endpoint where the user’s browser will be redirected after local logout, if the realm is configured for RP-initiated single logout and the OP supports it. The value for this setting should be provided by your OpenID Connect Provider.
 
     rp.post_logout_redirect_uri
-    :   (Optional) The Redirect URL where the OpenID Connect Provider should redirect the user after a successful Single Logout (assuming `op.endsession_endpoint` above is also set). This should be set to a value that will not trigger a new OpenID Connect Authentication, such as `${kibana-url}/security/logged_out`  or `${kibana-url}/login?msg=LOGGED_OUT` where *${kibana-url}* is the base URL for your {{kib}} instance.
+    :   (Optional) The Redirect URL where the OpenID Connect Provider should redirect the user after a successful single logout (assuming `op.endsession_endpoint` above is also set). This should be set to a value that will not trigger a new OpenID Connect Authentication, such as `${kibana-url}/security/logged_out`  or `${kibana-url}/login?msg=LOGGED_OUT` where *${kibana-url}* is the base URL for your {{kib}} instance.
 
     claims.principal
     :   See [Claims mapping](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-claims-mappings).
 
     claims.groups
     :   See [Claims mapping](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-claims-mappings).
-    :::
 
-2. Set the `Client Secret` that was assigned to the RP during registration in the OP.  To set the client secret, add the `xpack.security.authc.realms.oidc.oidc1.rp.client_secret` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md).
+   ::::
+
+1. Set the `Client Secret` that was assigned to the RP during registration in the OP.  To set the client secret, add the `xpack.security.authc.realms.oidc.<oidc1>.rp.client_secret` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md).
+
+:::{warning}
+In {{ech}} and {{ece}}, after you configure Client Secret, any attempt to restart the deployment will fail until you complete the rest of the configuration steps. If you want to roll back the Active Directory realm configurations, you need to remove the `xpack.security.authc.realms.oidc.oidc1.rp.client_secret` that was just added.
+:::
 
 ::::{note} 
 According to the OpenID Connect specification, the OP should also make their configuration available at a well known URL, which is the concatenation of their `Issuer` value with the `.well-known/openid-configuration` string. For example: `https://op.org.com/.well-known/openid-configuration`.
@@ -194,7 +188,7 @@ According to the OpenID Connect specification, the OP should also make their con
 That document should contain all the necessary information to configure the OpenID Connect realm in {{es}}.
 ::::
 
-## Step 2: Map claims [oidc-claims-mappings]
+## Map claims [oidc-claims-mappings]
 
 When authenticating to {{kib}} using OpenID Connect, the OP will provide information about the user in the form of **OpenID Connect Claims**. These claims can be included either in the ID Token, or be retrieved from the UserInfo endpoint of the OP. 
 
@@ -211,6 +205,14 @@ An **OpenID Connect Claim** is a piece of information asserted by the OP for the
 The RP requests specific scopes during the authentication request. If the OP Privacy Policy allows it and the authenticating user consents to it, the related claims are returned to the RP (either in the ID Token or as a UserInfo response).
 
 The list of the supported claims will vary depending on the OP you are using, but [standard claims](https://openid.net/specs/openid-connect-core-1_0.md#StandardClaims) are usually supported.
+
+### How claims appear in user metadata [oidc-user-metadata]
+
+By default, users who authenticate through OpenID Connect have additional metadata fields. These fields include every OpenID claim that is provided in the authentication response, regardless of whether it is mapped to an {{es}} user property. 
+
+For example, in the metadata field `oidc(claim_name)`, "claim_name" is the name of the claim as it was contained in the ID Token or in the User Info response. Note that these will include all the [ID Token claims](https://openid.net/specs/openid-connect-core-1_0.md#IDToken) that pertain to the authentication event, rather than the user themselves.
+
+This behavior can be disabled by adding `populate_user_metadata: false` as a setting in the OIDC realm.
 
 
 ### Map claims to user properties [oidc-claim-to-property]
@@ -246,7 +248,7 @@ To configure claims mapping:
 
 
 
-### {{es}} user properties [oidc-user-properties]
+### Mappable {{es}} user properties [oidc-user-properties]
 
 The {{es}} OpenID Connect realm can be configured to map OpenID Connect claims to the following properties on the authenticated user:
 
@@ -302,27 +304,38 @@ Small mistakes in these regular expressions can have significant security conseq
 ::::
 
 
-### Third party initiated single sign-on [third-party-login]
+## Configure third party initiated single sign-on [third-party-login]
 
-The Open ID Connect realm in {{es}} supports 3rd party initiated login as described in the [relevant specification](https://openid.net/specs/openid-connect-core-1_0.md#ThirdPartyInitiatedLogin).
+The Open ID Connect realm in {{es}} supports 3rd party initiated login as described in the [specification](https://openid.net/specs/openid-connect-core-1_0.html#ThirdPartyInitiatedLogin).
 
-This allows the OP itself or another, third party other than the RP, to initiate the authentication process while requesting the OP to be used for the authentication. Please note that the Elastic Stack RP should already be configured for this OP, in order for this process to succeed.
-
-
-### OpenID Connect Logout [oidc-logout]
-
-The OpenID Connect realm in {{es}} supports RP-Initiated Logout Functionality as described in the [relevant part of the specification](https://openid.net/specs/openid-connect-session-1_0.md#RPLogout)
-
-In this process, the OpenID Connect RP (the Elastic Stack in this case) will redirect the user’s browser to predefined URL of the OP after successfully completing a local logout. The OP can then logout the user also, depending on the configuration, and should finally redirect the user back to the RP. The `op.endsession_endpoint` in the realm configuration determines the URL in the OP that the browser will be redirected to. The `rp.post_logout_redirect_uri` setting determines the URL to redirect the user back to after the OP logs them out.
-
-When configuring `rp.post_logout_redirect_uri`, care should be taken to not point this to a URL that will trigger re-authentication of the user. For instance, when using OpenID Connect to support single sign-on to {{kib}}, this could be set to either `${kibana-url}/security/logged_out`, which will show a user-friendly message to the user or `${kibana-url}/login?msg=LOGGED_OUT` which will take the user to the login selector in {{kib}}.
+This allows the OP, or a third party other than the RP, to initiate the authentication process while requesting the OP to be used for the authentication. The {{stack}} RP should already be configured for this OP for this process to succeed.
 
 
-### OpenID Connect Realm SSL Configuration [oidc-ssl-config]
+## Configure RP-initiated logout [oidc-logout]
 
-OpenID Connect depends on TLS to provide security properties such as encryption in transit and endpoint authentication. The RP is required to establish back-channel communication with the OP in order to exchange the code for an ID Token during the Authorization code grant flow and in order to get additional user information from the UserInfo endpoint. Furthermore, if you configure `op.jwks_path` as a URL, {{es}} will need to get the OP’s signing keys from the file hosted there. As such, it is important that {{es}} can validate and trust the server certificate that the OP uses for TLS. Since the system truststore is used for the client context of outgoing https connections, if your OP is using a certificate from a trusted CA, no additional configuration is needed.
+The OpenID Connect realm in {{es}} supports RP-initiated logout functionality as described in the [specification](https://openid.net/specs/openid-connect-rpinitiated-1_0.html)
 
-However, if the issuer of your OP’s certificate is not trusted by the JVM on which {{es}} is running (e.g it uses a organization CA), then you must configure {{es}} to trust that CA. Assuming that you have the CA certificate that has signed the certificate that the OP uses for TLS stored in the /oidc/company-ca.pem` file stored in the configuration directory of {{es}}, you need to set the following property in the realm configuration:
+In this process, the OpenID Connect RP (the {{stack}} in this case) will redirect the user’s browser to predefined URL of the OP after successfully completing a local logout. The OP can then logout the user also, depending on the configuration, and should finally redirect the user back to the RP.
+
+RP-initiated logout is controlled by two settings: 
+
+* `op.endsession_endpoint`: The URL in the OP that the browser will be redirected to. 
+* `rp.post_logout_redirect_uri` The URL to redirect the user back to after the OP logs them out.
+
+When configuring `rp.post_logout_redirect_uri`, do not point to a URL that will trigger re-authentication of the user. For instance, when using OpenID Connect to support single sign-on to {{kib}}, this could be set to either `${kibana-url}/security/logged_out`, which will show a user-friendly message to the user, or `${kibana-url}/login?msg=LOGGED_OUT` which will take the user to the login selector in {{kib}}.
+
+
+## Configure SSL [oidc-ssl-config]
+
+OpenID Connect depends on TLS to provide security properties such as encryption in transit and endpoint authentication. The RP is required to establish back-channel communication with the OP in order to exchange the code for an ID Token during the Authorization code grant flow and in order to get additional user information from the `UserInfo` endpoint. If you configure `op.jwks_path` as a URL, {{es}} will need to get the OP’s signing keys from the file hosted there. As such, it is important that {{es}} can validate and trust the server certificate that the OP uses for TLS. Because the system trust store is used for the client context of outgoing https connections, if your OP is using a certificate from a trusted CA, no additional configuration is needed.
+
+However, if the issuer of your OP’s certificate is not trusted by the JVM on which {{es}} is running (e.g it uses an organization CA), then you must configure {{es}} to trust that CA. 
+
+If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+
+If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+
+The following example demonstrates how to trust a CA certificate (`/oidc/company-ca.pem`), which is located within the configuration directory.
 
 ```yaml
 xpack.security.authc.realms.oidc.oidc1:
@@ -331,34 +344,44 @@ xpack.security.authc.realms.oidc.oidc1:
   ssl.certificate_authorities: ["/oidc/company-ca.pem"]
 ```
 
+## Map OIDC users to roles [oidc-role-mappings]
 
+When a user authenticates using OpenID Connect, they are identified to the {{stack}}, but this does not automatically grant them access to perform any actions or access any data.
 
-## Configuring role mappings [oidc-role-mappings]
+Your OpenID Connect users can't do anything until they are assigned roles. You can map roles This can be done through either the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or with [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
 
-When a user authenticates using OpenID Connect, they are identified to the Elastic Stack, but this does not automatically grant them access to perform any actions or access any data.
+You can map LDAP groups to roles in the following ways: 
 
-Your OpenID Connect users cannot do anything until they are assigned roles. This can be done through either the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or with [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
+* Using the role mappings page in {{kib}}.
+* Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). 
+* By delegating authorization to another realm.
+  
+For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
 ::::{note} 
-You cannot use [role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) to grant roles to users authenticating via OpenID Connect.
+You can't use [role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) to grant roles to users authenticating via OpenID Connect.
 ::::
 
+### Example: using the role mapping API
 
-This is an example of a simple role mapping that grants the `example_role` role to any user who authenticates against the `oidc1` OpenID Connect realm:
+If you want all your users authenticating with OpenID Connect to get access to Kibana, issue the following request to Elasticsearch:
 
-```console
-PUT /_security/role_mapping/oidc-example
+```sh
+POST /_security/role_mapping/CLOUD_OIDC_TO_KIBANA_ADMIN <1>
 {
-  "roles": [ "example_role" ], <1>
-  "enabled": true,
-  "rules": {
-    "field": { "realm.name": "oidc1" }
-  }
+    "enabled": true,
+    "roles": [ "kibana_admin" ], <2>
+    "rules": { <3>
+        "field": { "realm.name": "oidc-realm-name" } <4>
+    },
+    "metadata": { "version": 1 }
 }
 ```
 
-1. The `example_role` role is **not** a builtin Elasticsearch role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-indices-priv) and [Kibana features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
-
+1. The name of the new role mapping.
+2. The role mapped to the users.
+3. The fields to match against.
+4. The name of the OpenID Connect realm. This needs to be the same value as the one used in the cluster configuration.
 
 The user properties that are mapped via the realm configuration are used to process role mapping rules, and these rules determine which roles a user is granted.
 
@@ -369,9 +392,11 @@ The user fields that are provided to the role mapping are derived from the OpenI
 * `groups`: The `groups` user property
 * `metadata`: See [User metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-metadata)
 
-For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md) and [Role mappings](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
+### Example: Role mapping API, using OpenID Claim information
 
-If your OP has the ability to provide groups or roles to RPs via tha use of an OpenID Claim, then you should map this claim to the `claims.groups` setting in the {{es}} realm (see [Mapping claims to user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-claim-to-property)), and then make use of it in a role mapping as per the example below.
+If your OP has the ability to provide groups or roles to RPs using an OpenID Claim, then you should map this claim to the `claims.groups` setting in the {{es}} realm (see [Mapping claims to user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-claim-to-property)), and then make use of it in a role mapping.
+
+For example:
 
 This mapping grants the {{es}} `finance_data` role, to any users who authenticate via the `oidc1` realm with the `finance-team` group membership.
 
@@ -387,27 +412,21 @@ PUT /_security/role_mapping/oidc-finance
 }
 ```
 
-If your users also exist in a repository that can be directly accessed by {{es}} (such as an LDAP directory) then you can use [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) instead of role mappings.
+### Delegating OIDC authorization to another realm
+
+If your users also exist in a repository that can be directly accessed by {{es}}, such as an LDAP directory, then you can use [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authorization-delegation) instead of role mappings.
 
 In this case, you perform the following steps:
 
 1. In your OpenID Connect realm, assign a claim to act as the lookup userid, by configuring the `claims.principal` setting.
-2. Create a new realm that can look up users from your local repository (e.g. an `ldap` realm)
+2. Create a new realm that can look up users from your local repository (e.g. an `ldap` realm).
 3. In your OpenID Connect realm, set `authorization_realms` to the name of the realm you created in step 2.
 
+## Configure {{kib}} [oidc-configure-kibana]
 
-## User metadata [oidc-user-metadata]
+OpenID Connect authentication in {{kib}} requires additional settings in addition to the standard {{kib}} security configuration.
 
-By default users who authenticate via OpenID Connect will have some additional metadata fields. These fields will include every OpenID Claim that is provided in the authentication response (regardless of whether it is mapped to an {{es}} user property). For example, in the metadata field `oidc(claim_name)`, "claim_name" is the name of the claim as it was contained in the ID Token or in the User Info response. Note that these will include all the [ID Token claims](https://openid.net/specs/openid-connect-core-1_0.md#IDToken) that pertain to the authentication event, rather than the user themselves.
-
-This behaviour can be disabled by adding `populate_user_metadata: false` as a setting in the oidc realm.
-
-
-## Configuring {{kib}} [oidc-configure-kibana]
-
-OpenID Connect authentication in {{kib}} requires a small number of additional settings in addition to the standard {{kib}} security configuration. The [{{kib}} security documentation](/deploy-manage/security.md) provides details on the available configuration options that you can apply.
-
-In particular, since your {{es}} nodes have been configured to use TLS on the HTTP interface, you must configure {{kib}} to use a `https` URL to connect to {{es}}, and you may need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates that {{es}} has been configured to use.
+If you're using a self-managed cluster, then, because OIDC requires {{es}} nodes to use TLS on the HTTP interface, you must configure {{kib}} to use a `https` URL to connect to {{es}}, and you may need to configure `elasticsearch.ssl.certificateAuthorities` to trust the certificates that {{es}} has been configured to use.
 
 OpenID Connect authentication in {{kib}} is subject to the following timeout settings in `kibana.yml`:
 
@@ -428,26 +447,29 @@ xpack.security.authc.providers:
 The configuration values used in the example above are:
 
 `xpack.security.authc.providers`
-:   Add `oidc` provider to instruct {{kib}} to use OpenID Connect single sign-on as the authentication method. This instructs Kibana to attempt to initiate an SSO flow everytime a user attempts to access a URL in Kibana, if the user is not already authenticated. If you also want to allow users to login with a username and password, you must enable the `basic` authentication provider too. For example:
+:   Add an `oidc` provider to instruct {{kib}} to use OpenID Connect single sign-on as the authentication method. This instructs Kibana to attempt to initiate an SSO flow every time a user attempts to access a URL in {{kib}}, if the user is not already authenticated. 
+
+`xpack.security.authc.providers.oidc.<provider-name>.realm`
+:   The name of the OpenID Connect realm in {{es}} that should handle authentication for this Kibana instance.
+
+If you also want to allow users to log in with a username and password, you must enable the `basic` authentication provider too. This will allow users that haven’t already authenticated with OpenID Connect to log in using the {{kib}} login form: 
 
 ```yaml
 xpack.security.authc.providers:
   oidc.oidc1:
     order: 0
     realm: "oidc1"
+    description: "Log in with my OpenID Connect" <1>
   basic.basic1:
     order: 1
 ```
 
-This will allow users that haven’t already authenticated with OpenID Connect to log in using the {{kib}} login form.
-
-`xpack.security.authc.providers.oidc.<provider-name>.realm`
-:   The name of the OpenID Connect realm in {{es}} that should handle authentication for this Kibana instance.
+1. This arbitrary string defines how OpenID Connect login is titled in the Login Selector UI that is shown when you enable multiple authentication providers in {{kib}}. If you have a {{kib}} instance, you can also configure the optional icon and hint settings for any authentication provider.
 
 
 ## OpenID Connect without {{kib}} [oidc-without-kibana]
 
-The OpenID Connect realm is designed to allow users to authenticate to {{kib}} and as such, most of the parts of the guide above make the assumption that {{kib}} is used. This section describes how a custom web application could use the relevant OpenID Connect REST APIs in order to authenticate the users to {{es}}, with OpenID Connect.
+The OpenID Connect realm is designed to allow users to authenticate to {{kib}}. As a result, most sections of this guide assume {{kib}} is used. This section describes how a custom web application could use the relevant OpenID Connect REST APIs to authenticate the users to {{es}} with OpenID Connect.
 
 Single sign-on realms such as OpenID Connect and SAML make use of the Token Service in {{es}} and in principle exchange a SAML or OpenID Connect Authentication response for an {{es}} access token and a refresh token. The access token is used as credentials for subsequent calls to {{es}}. The refresh token enables the user to get new {{es}} access tokens after the current one expires.
 
@@ -458,7 +480,7 @@ The {{es}} Token Service can be seen as a minimal oAuth2 authorization server an
 
 ### Register the RP with an OpenID Connect Provider [_register_the_rp_with_an_openid_connect_provider]
 
-The Relying Party ( {{es}} and the custom web app ) will need to be registered as client with the OpenID Connect Provider. Note that when registering the `Redirect URI`, it needs to be a URL in the custom web app.
+The Relying Party ({{es}} and the custom web app) will need to be registered as client with the OpenID Connect Provider. Note that when registering the `Redirect URI`, it needs to be a URL in the custom web app.
 
 
 ### OpenID Connect Realm [_openid_connect_realm]

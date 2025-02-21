@@ -627,6 +627,8 @@ toc:
                   - file: users-roles/cluster-or-deployment-auth/kerberos.md
                   - file: users-roles/cluster-or-deployment-auth/ldap.md
                   - file: users-roles/cluster-or-deployment-auth/openid-connect.md
+                    children:
+                      - file: users-roles/cluster-or-deployment-auth/oidc-examples.md
                   - file: users-roles/cluster-or-deployment-auth/saml.md
                   - file: users-roles/cluster-or-deployment-auth/pki.md
                   - file: users-roles/cluster-or-deployment-auth/custom.md
