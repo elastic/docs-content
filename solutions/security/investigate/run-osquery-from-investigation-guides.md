@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-invest-guide-run-osquery.html
 ---
 
-# Run Osquery from investigation guides
+# Run Osquery from investigation guides [security-invest-guide-run-osquery]
 
 % What needs to be done: Align serverless/stateful
 
@@ -18,7 +18,8 @@ Detection rule investigation guides suggest steps for triaging, analyzing, and r
 ::::{admonition} Requirements
 * The [Osquery manager integration](/solutions/security/investigate/manage-integration.md) must be installed.
 * {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
-* Your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
+* In {{stack}}, your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
+* In {{serverless-short, you must have the appropriate user role to use this feature.}}
 
 ::::
 
@@ -56,7 +57,7 @@ You can only add Osquery to investigation guides for custom rules because prebui
 
 
         :::{image} ../../../images/security-setup-osquery-investigation-guide.png
-        :alt: setup osquery investigation guide
+        :alt: Shows results from running a query from an investigation guide
         :class: screenshot
         :::
 
@@ -87,6 +88,6 @@ You can only add Osquery to investigation guides for custom rules because prebui
 7. Click **Save for later** to save the query for future use (optional).
 
     :::{image} ../../../images/security-run-query-investigation-guide.png
-    :alt: run query investigation guide
+    :alt: Shows results from running a query from an investigation guide
     :class: screenshot
     :::

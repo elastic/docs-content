@@ -283,7 +283,6 @@ toc:
       - file: docs-content/serverless/security-install-edr.md
       - file: docs-content/serverless/security-install-endpoint-manually.md
       - file: docs-content/serverless/security-interactive-investigation-guides.md
-      - file: docs-content/serverless/security-invest-guide-run-osquery.md
       - file: docs-content/serverless/security-isolate-host.md
       - file: docs-content/serverless/security-kspm.md
       - file: docs-content/serverless/security-linux-file-monitoring.md
