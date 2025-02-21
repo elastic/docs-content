@@ -3,6 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-osquery-integration.html
 
 navigation_title: "Osquery manager integration"
+
+applies_to:
+  stack: preview all
+  serverless: preview all
 ---
 
 # Manage the integration [manage-osquery-integration]
@@ -28,7 +32,7 @@ Depending on your [subscription level](https://www.elastic.co/subscriptions), yo
 
 ## Customize Osquery configuration [osquery-custom-config]
 
-[preview] By default, all Osquery Manager integrations share the same Osquery configuration. However, you can customize how Osquery is configured by editing the Osquery Manager integration for each agent policy you want to adjust. The custom configuration is then applied to all agents in the policy. This powerful feature allows you to configure [File Integrity Monitoring](https://osquery.readthedocs.io/en/stable/deployment/file-integrity-monitoring), [Process auditing](https://osquery.readthedocs.io/en/stable/deployment/process-auditing), and [others](https://osquery.readthedocs.io/en/stable/deployment/configuration/#configuration-specification).
+By default, all Osquery Manager integrations share the same Osquery configuration. However, you can customize how Osquery is configured by editing the Osquery Manager integration for each agent policy you want to adjust. The custom configuration is then applied to all agents in the policy. This powerful feature allows you to configure [File Integrity Monitoring](https://osquery.readthedocs.io/en/stable/deployment/file-integrity-monitoring), [Process auditing](https://osquery.readthedocs.io/en/stable/deployment/process-auditing), and [others](https://osquery.readthedocs.io/en/stable/deployment/configuration/#configuration-specification).
 
 ::::{important}
 * Take caution when editing this configuration. The changes you make are distributed to all agents in the policy.
@@ -105,6 +109,6 @@ To get more details in the logs, change the agent logging level to debug:
 
 1. Go to **{{fleet}}** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the agent that you want to debug.
-3. On the **Logs** tab, change the ***Agent logging level*** to ***debug***, and then click ***Apply changes**.
+3. On the **Logs** tab, change the **Agent logging level** to **debug**, and then click **Apply changes**.
 
     `agent.logging.level` is updated in `fleet.yml`, and the logging level is changed to `debug`.

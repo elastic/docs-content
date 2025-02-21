@@ -87,7 +87,7 @@ To add a field from the sidebar, hover over it, and click the **Add field as a c
 
 ## Use the Timeline query builder [narrow-expand]
 
-Expand the query builder by clicking the query builder button (![Qery builder button](../../../images/security-query-builder-button.png "title =20x20")) to the right of the KQL query bar. Drop in fields to build a query that filters Timeline results. The fields' relative placement specifies their logical relationships: horizontally adjacent filters use `AND`, while vertically adjacent filters use `OR`.
+Expand the query builder by clicking the query builder button (![Query builder button](../../../images/security-query-builder-button.png "title =20x20")) to the right of the KQL query bar. Drop in fields to build a query that filters Timeline results. The fields' relative placement specifies their logical relationships: horizontally adjacent filters use `AND`, while vertically adjacent filters use `OR`.
 
 ::::{tip}
 Collapse the query builder and provide more space for Timeline results by clicking the query builder button (![Query builder button](../../../images/security-query-builder-button.png "title =20x20")).

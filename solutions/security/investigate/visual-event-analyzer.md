@@ -9,7 +9,7 @@ mapped_urls:
 {{elastic-sec}} allows any event detected by {{elastic-endpoint}} to be analyzed using a process-based visual analyzer, which shows a graphical timeline of processes that led up to the alert and the events that occurred immediately after. Examining events in the visual event analyzer is useful to determine the origin of potentially malicious activity and other areas in your environment that may be compromised. It also enables security analysts to drill down into all related hosts, processes, and other events to aid in their investigations.
 
 ::::{tip}
-If you’re on {{stack}} and experiencing performance degradation, you can [exclude cold and frozen tier data](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-tiers) from analyzer queries.
+If you’re experiencing performance degradation, you can [exclude cold and frozen tier data](/solutions/security/get-started/configure-advanced-settings.md#exclude-cold-frozen-tiers) from analyzer queries. This setting is only available for the {{stack}}. 
 ::::
 
 
@@ -167,8 +167,8 @@ When you select an `event.category` pill, all the events within that category ar
 :::
 
 ::::{note}
+- You must have the appropriate [{{stack}}](https://www.elastic.co/pricing) subscription or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to examine alerts associated with events.
 - There is no limit to the number of events that can be associated with a process.
-- In {{stack}}, you need a [Platinum or Enterprise subscription](https://www.elastic.co/pricing) to examine alerts associated with events.
 ::::
 
 
