@@ -6,13 +6,6 @@ mapped_urls:
 
 # Identify, investigate, and document threats
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/attack-discovery-ai-assistant-incident-reporting.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ai-usecase-incident-reporting.md
-
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
 
 $$$use-case-incident-reporting-create-a-case-using-ai-assistant$$$
@@ -67,7 +60,7 @@ At any point in a conversation with AI Assistant, you can add data, narrative su
 
 ## Generate reports [use-case-incident-reporting-create-a-case-using-ai-assistant]
 
-From the AI Assistant dialog window, click **Add to case** (![Add to case icon](../../../images/security-icon-add-to-case.png "")) next to a message to add the information in that message to a [case](/solutions/security/investigate/cases.md). Cases help centralize relevant details in one place for easy sharing with stakeholders.
+From the AI Assistant dialog window, click **Add to case** (![Add to case icon](../../../images/security-icon-add-to-case.png "title= 70%")) next to a message to add the information in that message to a [case](/solutions/security/investigate/cases.md). Cases help centralize relevant details in one place for easy sharing with stakeholders.
 
 If you add a message that contains a discovery to a case, AI Assistant automatically adds the attack summary and all associated alerts to the case. You can also add AI Assistant messages that contain remediation steps and relevant data to the case.
 
