@@ -16,9 +16,10 @@ When a repository is assigned to a deployment, a snapshot is taken every 30 minu
 
 Elastic Cloud Enterprise installations support the following {{es}} snapshot repository types:
 
-* [Azure](/deploy-manage/tools/snapshot-and-restore/azure-storage-repository.md)
-* [Google Cloud Storage](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md)
-* [AWS S3](/deploy-manage/tools/snapshot-and-restore/ece-aws-custom-repository.md), including [Minio](/deploy-manage/tools/snapshot-and-restore/minio-on-premise-repository.md)
+* AWS S3
+* Azure Blob Storage
+* Google Cloud Storage
+* Minio S3
 
 ::::{note}
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by {{es}}.
