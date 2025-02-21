@@ -14,7 +14,7 @@ This guide shows you how to restore a snapshot. Snapshots are a convenient way t
 In this guide, you’ll learn how to:
 
 - [Get a list of available snapshots](#get-a-list-of-available-snapshots)
-- [Restore an index or data stream from a snapshot](#restore-an-index-or-data-stream)
+- [Restore an index or data stream from a snapshot](#restore-index-data-stream)
 - [Restore a feature state](#restore-feature-state)
 - [Restore an entire cluster](#restore-entire-cluster)
 - [Monitor the restore operation](#monitor-restore)
@@ -70,7 +70,7 @@ By default, a restore request attempts to restore all regular indices and regula
 
 If you’re restoring data to a pre-existing cluster, use one of the following methods to avoid conflicts with existing indices and data streams:
 
-- [Delete and restore](#delete-and-restore)
+- [Delete and restore](#delete-restore)
 - [Rename on restore](#rename-on-restore)
 
 ### Delete and restore [delete-restore]

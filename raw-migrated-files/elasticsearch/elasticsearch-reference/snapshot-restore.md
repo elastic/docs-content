@@ -109,9 +109,7 @@ Any index you restore from a snapshot must also be compatible with the current c
 | 7.2–7.17              | ❌  | ❌      | ✅      | ✅      | ✅      |
 | 8.0–8.17              | ❌  | ❌      | ❌      | ✅      | ✅      |
 
-[1] Supported with [archive indices](../../../deploy-manage/tools/snapshot-and-restore.md#fn-archive).
-
-1. Supported with [archive indices](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
+[1] Supported with [archive indices](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
 You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 7.6.0 to a cluster running 7.5.0.
 

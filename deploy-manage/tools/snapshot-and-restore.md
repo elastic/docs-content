@@ -81,7 +81,7 @@ By default, a snapshot of a cluster contains the cluster state, all regular data
 - [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 - [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md)
 - [Stored scripts](/explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts)
-- For snapshots taken after 7.12.0, [feature states](#feature-states)
+- For snapshots taken after 7.12.0, [feature states](#feature-state)
 
 You can also take snapshots of only specific data streams or indices in the cluster. A snapshot that includes a data stream or index automatically includes its aliases. When you restore a snapshot, you can choose whether to restore these aliases.
 
@@ -159,7 +159,7 @@ Reindexing from remote can take significantly longer than restoring a snapshot. 
 
 A copy of the data directories of a cluster’s nodes does not work as a backup because it is not a consistent representation of their contents at a single point in time. You cannot fix this by shutting down nodes while making the copies, nor by taking atomic filesystem-level snapshots, because Elasticsearch has consistency requirements that span the whole cluster. You must use the built-in snapshot functionality for cluster backups.
 
-### Repository contents
+### Repository contents [snapshot-repository-contents]
 
 **Don’t modify anything within the repository or run processes that might interfere with its contents.** If something other than Elasticsearch modifies the contents of the repository then future snapshot or restore operations may fail, reporting corruption or other data inconsistencies, or may appear to succeed having silently lost some of your data.
 
