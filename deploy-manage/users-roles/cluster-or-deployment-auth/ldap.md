@@ -176,7 +176,7 @@ Because users are managed externally in the LDAP server, the expectation is that
 
 The `active_directory` realm enables you to map Active Directory users to roles using their Active Directory groups or other metadata. 
 
-You have three ways of mapping LDAP groups to roles for your users: 
+You can map LDAP groups to roles in the following ways: 
 
 * Using the role mappings page in {{kib}}.
 * Using the [role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping). 
