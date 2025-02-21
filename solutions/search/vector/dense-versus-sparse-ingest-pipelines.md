@@ -2,7 +2,7 @@
 navigation_title: "Tutorial: Manual dense and sparse workflows"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-deployed-nlp-model.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
