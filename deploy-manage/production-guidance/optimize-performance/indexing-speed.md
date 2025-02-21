@@ -28,7 +28,7 @@ By default, Elasticsearch periodically refreshes indices every second, but only 
 
 This is the optimal configuration if you have no or very little search traffic (e.g. less than one search request every 5 minutes) and want to optimize for indexing speed. This behavior aims to automatically optimize bulk indexing in the default case when no searches are performed. In order to opt out of this behavior set the refresh interval explicitly.
 
-On the other hand, if your index experiences regular search requests, this default behavior means that Elasticsearch will refresh your index every 1 second. If you can afford to increase the amount of time between when a document gets indexed and when it becomes visible, increasing the [`index.refresh_interval`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-refresh-interval-setting) to a larger value, e.g. `30s`, might help improve indexing speed.
+On the other hand, if your index experiences regular search requests, this default behavior means that Elasticsearch will refresh your index every 1 second. If you can afford to increase the amount of time between when a document gets indexed and when it becomes visible, increasing the [`index.refresh_interval`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-refresh-interval-setting) to a larger value, e.g. `30s`, might help improve indexing speed.
 
 
 ## Disable replicas for initial loads [_disable_replicas_for_initial_loads] 
