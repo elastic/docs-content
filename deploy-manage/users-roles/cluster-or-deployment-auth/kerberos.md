@@ -67,7 +67,7 @@ In Kerberos, users authenticate with an authentication service and later with a 
 
 ### Prerequisites [kerberos-realm-prereq]
 
-Before you set up a Kerbberos realm, you must have the Kerberos infrastructure set up in your environment.
+Before you set up a Kerberos realm, you must have the Kerberos infrastructure set up in your environment.
 
 ::::{note} 
 Kerberos requires a lot of external services to function properly, such as time synchronization between all machines and working forward and reverse DNS mappings in your domain. Refer to your Kerberos documentation for more details.
