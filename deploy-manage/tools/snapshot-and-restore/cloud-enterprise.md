@@ -25,9 +25,6 @@ Elastic Cloud Enterprise installations support the following {{es}} snapshot rep
 No repository types other than those listed are supported in the Elastic Cloud Enterprise platform, even if they are supported by {{es}}.
 ::::
 
-To configure Google Cloud Storage (GCS) as a snapshot repository, you must use [Google Default Authentication](https://developers.google.com/identity/protocols/application-default-credentials). To learn more, check [Snapshotting to Google Cloud Storage](google-cloud-storage-gcs-repository.md).
-
-To configure Microsoft Azure Storage as a snapshot repository, refer to [Snapshotting to Azure Storage](azure-storage-repository.md).
 
 For more details about how snapshots are used with Elasticsearch, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
 
