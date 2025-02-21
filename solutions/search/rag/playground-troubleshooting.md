@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/playground-troubleshooting.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

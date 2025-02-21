@@ -684,4 +684,3 @@ toc:
       - file: search/cross-cluster-search.md
         children:
           - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
-  - file: other-use-cases.md

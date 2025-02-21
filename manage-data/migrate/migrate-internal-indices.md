@@ -3,9 +3,13 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-data-internal.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data-internal.html
 applies:
+applies_to:
+  stack: ga
+  deployment:
+    eck: unavailable 
+    ess: ga
+    ece: unavailable
   serverless: unavailable
-  hosted: all
-  ece: unavailable
 ---
 
 # Migrate internal indices

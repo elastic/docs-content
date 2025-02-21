@@ -1,6 +1,9 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-management.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Data lifecycle
