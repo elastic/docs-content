@@ -7,10 +7,6 @@ mapped_urls:
 
 # Osquery [osquery]
 
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/osquery.md
-
 [Osquery](https://osquery.io) is an open source tool that lets you query operating systems like a database, providing you with visibility into your infrastructure and operating systems. Using basic SQL commands, you can ask questions about devices, such as servers, Docker containers, and computers running Linux, macOS, or Windows. The [extensive schema](https://osquery.io/schema) helps with a variety of use cases, including vulnerability detection, compliance monitoring, incident investigations, and more.
 
 With Osquery, you can:

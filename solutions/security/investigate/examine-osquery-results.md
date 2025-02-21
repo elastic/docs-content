@@ -53,6 +53,6 @@ From the results table, you can:
 
     ::::
 
-* Click the view details icon (![View details icon](../../../images/security-view-osquery-details.png "")) to examine the query ID and statement.
+* Click the view details icon (![View details icon](../../../images/security-view-osquery-details.png "title =20x20")) to examine the query ID and statement.
 * View more information about the request, such as failures, by opening the **Status** tab.
 
