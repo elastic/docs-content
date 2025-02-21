@@ -2,6 +2,9 @@
 navigation_title: "Set up a TSDS"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-tsds.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 

@@ -3,6 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-index-management.html
   - https://www.elastic.co/guide/en/cloud/current/ec-configure-index-management.html
   - https://www.elastic.co/guide/en/cloud/current/ec-migrate-index-management.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Migrate to index lifecycle management

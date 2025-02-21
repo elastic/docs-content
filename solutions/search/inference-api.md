@@ -3,7 +3,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/inference-endpoints.html
 
 navigation_title: Inference integrations
-applies:
+applies_to:
   stack:
   serverless:
 ---

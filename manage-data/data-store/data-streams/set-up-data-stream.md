@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-a-data-stream.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Set up a data stream [set-up-a-data-stream]

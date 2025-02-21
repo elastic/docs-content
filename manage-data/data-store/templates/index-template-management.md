@@ -2,10 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-index-templates
   - https://www.elastic.co/guide/en/serverless/current/index-management.html#index-management-manage-index-templates
-applies:
-  stack: all
-  serverless: all
-  hosted: all
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Manage index templates [manage-index-templates]
