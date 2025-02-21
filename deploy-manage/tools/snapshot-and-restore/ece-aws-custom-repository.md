@@ -3,10 +3,7 @@ navigation_title: "AWS S3 repository"
 
 applies_to:
   deployment:
-    eck: 
-    ess: 
     ece: 
-    self: 
 ---
 
 # Configure a snapshot repository using AWS S3 [ece-aws-custom-repository]
