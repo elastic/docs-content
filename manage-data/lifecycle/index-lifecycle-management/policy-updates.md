@@ -2,6 +2,9 @@
 navigation_title: "Update a policy"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/update-lifecycle-policy.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Update a lifecycle policy

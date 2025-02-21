@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/range-enrich-policy-type.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Example: Enrich your data by matching a value to a range [range-enrich-policy-type]

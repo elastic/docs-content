@@ -3,10 +3,13 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrating-data.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-migrate-data2.html
-applies:
+applies_to:
+  stack: ga
+  deployment:
+    eck: unavailable 
+    ess: ga
+    ece: ga
   serverless: unavailable
-  hosted: all
-  ece: all
 ---
 
 # Migrate your {{es}} data

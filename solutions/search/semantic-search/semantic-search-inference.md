@@ -2,7 +2,7 @@
 navigation_title: "Semantic search with the {{infer}} API"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-inference.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

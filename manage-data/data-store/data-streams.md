@@ -3,11 +3,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/data-streams.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html#manage-data-streams
   - https://www.elastic.co/guide/en/serverless/current/index-management.html#index-management-manage-data-streams
-
-applies:
-  stack: all
-  serverless: all
-  hosted: all
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Data streams [data-streams]
@@ -32,7 +30,7 @@ Keep in mind that some features such as [Time Series Data Streams (TSDS)](../dat
 
 ## Backing indices [backing-indices]
 
-A data stream consists of one or more [hidden](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-hidden), auto-generated backing indices.
+A data stream consists of one or more [hidden](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-hidden), auto-generated backing indices.
 
 :::{image} ../../images/elasticsearch-reference-data-streams-diagram.svg
 :alt: data streams diagram

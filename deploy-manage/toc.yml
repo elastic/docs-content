@@ -428,22 +428,16 @@ toc:
                   - file: tools/snapshot-and-restore/source-only-repository.md
               - file: tools/snapshot-and-restore/elastic-cloud-hosted.md
                 children:
-                  - file: tools/snapshot-and-restore/ec-custom-repository.md
-                    children:
-                      - file: tools/snapshot-and-restore/ec-aws-custom-repository.md
-                      - file: tools/snapshot-and-restore/ec-gcs-snapshotting.md
-                      - file: tools/snapshot-and-restore/ec-azure-snapshotting.md
-                  - file: tools/snapshot-and-restore/ech-custom-repository.md
-                    children:
-                      - file: tools/snapshot-and-restore/ech-aws-custom-repository.md
-                      - file: tools/snapshot-and-restore/ech-gcs-snapshotting.md
-                      - file: tools/snapshot-and-restore/ech-azure-snapshotting.md
+                  - file: tools/snapshot-and-restore/ec-aws-custom-repository.md
+                  - file: tools/snapshot-and-restore/ec-gcs-snapshotting.md
+                  - file: tools/snapshot-and-restore/ec-azure-snapshotting.md
                   - file: tools/snapshot-and-restore/access-isolation-for-found-snapshots-repository.md
                     children:
                       - file: tools/snapshot-and-restore/repository-isolation-on-azure.md
                       - file: tools/snapshot-and-restore/repository-isolation-on-aws-gcp.md
               - file: tools/snapshot-and-restore/cloud-enterprise.md
                 children:
+                  - file: tools/snapshot-and-restore/ece-aws-custom-repository.md
                   - file: tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md
                   - file: tools/snapshot-and-restore/azure-storage-repository.md
                   - file: tools/snapshot-and-restore/minio-on-premise-repository.md

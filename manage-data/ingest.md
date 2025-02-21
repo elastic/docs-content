@@ -6,6 +6,9 @@ mapped_urls:
   - https://www.elastic.co/customer-success/data-ingestion
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/es-ingestion-overview.html
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-intro.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Ingestion

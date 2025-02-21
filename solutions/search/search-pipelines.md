@@ -1,5 +1,5 @@
 ---
-applies:
+applies_to:
   stack:
 ---
 
