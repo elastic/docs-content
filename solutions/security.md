@@ -1,6 +1,7 @@
 ---
 navigation_title: "Security"
 mapped_urls:
+  - https://www.elastic.co/guide/en/security/current/index.html
   - https://www.elastic.co/guide/en/security/current/es-overview.html
   - https://www.elastic.co/guide/en/serverless/current/security-overview.html
 ---
@@ -17,7 +18,7 @@ mapped_urls:
 * Integrations for collecting data from various sources
 
 
-## Learn more [siem-integration] 
+## Learn more [siem-integration]
 
 * [Get started](security/get-started.md): Learn about system requirements, workspaces, configuration, and data ingestion.
 * [{{elastic-sec}} UI overview](security/get-started/elastic-security-ui.md): Navigate {{elastic-sec}}'s various tools and interfaces.
@@ -30,7 +31,7 @@ mapped_urls:
 * [{{elastic-sec}} fields and object schemas](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/index.md): Learn how to structure data for use with {{elastic-sec}}.
 
 
-## {{es}} and {{kib}} [elastic-search-and-kibana] 
+## {{es}} and {{kib}} [elastic-search-and-kibana]
 
 {{elastic-sec}} uses {{es}} for data storage, management, and search, and {{kib}} is its main user interface. Learn more:
 
@@ -38,7 +39,7 @@ mapped_urls:
 * [{{kib}}](https://www.elastic.co/products/kibana): An open-source analytics and visualization platform designed to work with {{es}} and {{elastic-sec}}. {{kib}} allows you to search, view, analyze and visualize data stored in {{es}} indices.
 
 
-### {{elastic-endpoint}} self-protection [self-protection] 
+### {{elastic-endpoint}} self-protection [self-protection]
 
 For information about {{elastic-endpoint}}'s tamper-protection features, refer to [{{elastic-endpoint}} self-protection](security/manage-elastic-defend/elastic-endpoint-self-protection-features.md).
 

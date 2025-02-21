@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Getting started"
 ---
 

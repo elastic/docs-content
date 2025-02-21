@@ -24,7 +24,7 @@ This guide shows you how to send a log file to your Observability project using 
 
 The quickest way to get started is using the **Monitor hosts with {{agent}}** quickstart. Refer to the [quickstart documentation](../../../solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) for more information.
 
-To install and configure the {{agent}} manually, refer to [Manually install and configure the standalone {{agent}}](../../../solutions/observability/logs/stream-any-log-file.md#manually-install-agent-logs).
+To install and configure the {{agent}} manually, refer to [Manually install and configure the standalone {{agent}}](../../../solutions/observability/logs/stream-any-log-file.md).
 
 
 ## Manually install and configure the standalone {{agent}} [manually-install-agent-logs]

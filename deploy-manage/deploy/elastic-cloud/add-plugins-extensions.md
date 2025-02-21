@@ -20,7 +20,7 @@ There are two ways to add plugins to a deployment in Elasticsearch Service:
 
 Custom plugins can include the official {{es}} plugins not provided with Elasticsearch Service, any of the community-sourced plugins, or [plugins that you write yourself](asciidocalypse://docs/elasticsearch/docs/extend/create-elasticsearch-plugins/index.md). Uploading custom plugins is available only to Gold, Platinum, and Enterprise subscriptions. For more information, check [Upload custom plugins and bundles](upload-custom-plugins-bundles.md).
 
-To learn more about the official and community-sourced plugins, refer to [{{es}} Plugins and Integrations](https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html).
+To learn more about the official and community-sourced plugins, refer to [{{es}} Plugins and Integrations](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/index.md).
 
 For a detailed guide with examples of using the Elasticsearch Service API to create, get information about, update, and delete extensions and plugins, check [Managing plugins and extensions through the API](manage-plugins-extensions-through-api.md).
 

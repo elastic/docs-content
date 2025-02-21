@@ -1,5 +1,6 @@
 ---
 mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/index.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-ece.html
 ---

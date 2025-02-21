@@ -246,7 +246,7 @@ output.elasticsearch:
 
 ## Pipelines for {{fleet}} and {{agent}} [pipelines-for-fleet-elastic-agent]
 
-{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](https://www.elastic.co/guide/en/fleet/current/index.html) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
 
 Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. Refer to [Tutorial: Transform data with custom ingest pipelines](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams-pipeline-tutorial.md) to learn more.
 
