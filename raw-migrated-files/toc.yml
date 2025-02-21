@@ -235,7 +235,6 @@ toc:
       - file: docs-content/serverless/security-ai-usecase-incident-reporting.md
       - file: docs-content/serverless/security-alert-suppression.md
       - file: docs-content/serverless/security-alerts-manage.md
-      - file: docs-content/serverless/security-alerts-run-osquery.md
       - file: docs-content/serverless/security-automated-response-actions.md
       - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-behavioral-detection-use-cases.md
@@ -276,7 +275,6 @@ toc:
       - file: docs-content/serverless/security-environment-variable-capture.md
       - file: docs-content/serverless/security-ers-requirements.md
       - file: docs-content/serverless/security-event-filters.md
-      - file: docs-content/serverless/security-examine-osquery-results.md
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
       - file: docs-content/serverless/security-ingest-data.md
