@@ -29,8 +29,10 @@ To configure Google Cloud Storage (GCS) as a snapshot repository, you must use [
 
 To configure Microsoft Azure Storage as a snapshot repository, refer to [Snapshotting to Azure Storage](azure-storage-repository.md).
 
+For more details about how snapshots are used with Elasticsearch, check [Snapshot and Restore](/deploy-manage/tools/snapshot-and-restore.md). You can also review the official documentation for these storage repository options:
+
 * [Amazon S3 documentation](https://docs.aws.amazon.com/s3/)
-* [Microsoft Azure storage documentation](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account)
+* [Microsoft Azure Blob Storage documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
 * [Google Cloud Storage documentation](https://cloud.google.com/storage/docs/)
 
 ::::{tip}
