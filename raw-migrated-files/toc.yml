@@ -289,7 +289,6 @@ toc:
       - file: docs-content/serverless/security-linux-file-monitoring.md
       - file: docs-content/serverless/security-llm-connector-guides.md
       - file: docs-content/serverless/security-llm-performance-matrix.md
-      - file: docs-content/serverless/security-machine-learning.md
       - file: docs-content/serverless/security-osquery-placeholder-fields.md
       - file: docs-content/serverless/security-osquery-response-action.md
       - file: docs-content/serverless/security-overview-dashboard.md
