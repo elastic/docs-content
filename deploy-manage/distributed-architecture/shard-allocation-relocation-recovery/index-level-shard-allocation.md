@@ -28,7 +28,7 @@ The documentation team is working to combine content pulled from the following p
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/shard-allocation-filtering.md](../../../raw-migrated-files/elasticsearch/elasticsearch-reference/shard-allocation-filtering.md)
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/recovery-prioritization.md](../../../raw-migrated-files/elasticsearch/elasticsearch-reference/recovery-prioritization.md)
 
-This module provides per-index settings to control the allocation of shards to nodes:
+In Elasticsearch, per-index settings allow you to control the allocation of shards to nodes through index-level shard allocation settings. These settings enable you to specify preferences or constraints for where shards of a particular index should reside. This includes allocating shards to nodes with specific attributes or avoiding certain nodes. This level of control helps optimize resource utilization, balance load, and ensure data redundancy and availability according to your deployment's specific requirements. In addition to the content in this article, there are additional resources:
 
 * [Shard allocation filtering](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/index-level-shard-allocation.md): Controlling which shards are allocated to which nodes.
 * [Delayed allocation](../../../deploy-manage/distributed-architecture/shard-allocation-relocation-recovery/delaying-allocation-when-node-leaves.md): Delaying allocation of unassigned shards caused by a node leaving.
@@ -87,9 +87,7 @@ To filter based on a custom node attribute:
     }
     ```
 
-
-
-### Index allocation filter settings [index-allocation-settings] 
+### Index allocation filter settings [index-allocation-settings]
 
 `index.routing.allocation.include.{{attribute}}`
 :   Assign the index to a node whose `{{attribute}}` has at least one of the comma-separated values.
@@ -126,7 +124,6 @@ The index allocation settings support the following built-in attributes:
 ::::{note} 
 `_tier` filtering is based on [node](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md) roles. Only a subset of roles are [data tier](../../../manage-data/lifecycle/data-tiers.md) roles, and the generic [data role](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) will match any tier filtering.
 ::::
-
 
 You can use wildcards when specifying attribute values, for example:
 
@@ -184,4 +181,3 @@ PUT index_4/_settings
   "index.priority": 1
 }
 ```
-

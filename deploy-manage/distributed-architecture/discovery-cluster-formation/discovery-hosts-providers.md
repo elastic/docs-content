@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-hosts-providers.html
+applies_to:
+  stack:
 ---
 
 # Discovery [discovery-hosts-providers]

@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-voting.html
+applies_to:
+  stack:
 ---
 
 # Voting configurations [modules-discovery-voting]

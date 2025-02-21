@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html
+applies_to:
+  stack:
 ---
 
 # Bootstrapping a cluster [modules-discovery-bootstrap-cluster]
