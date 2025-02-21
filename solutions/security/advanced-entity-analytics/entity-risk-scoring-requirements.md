@@ -6,7 +6,9 @@ mapped_urls:
 
 # Entity risk scoring requirements
 
-To use entity risk scoring, asset criticality, and entity store, your role must have certain cluster, index, and {{kib}} privileges. These features require a [Platinum subscription](https://www.elastic.co/pricing) or higher.
+To use entity risk scoring, asset criticality, and entity store in {{stack}}, your role must have certain cluster, index, and {{kib}} privileges. In serverless, you need the appropriate user roles or a custom role with the right privileges.
+
+In {{stack}}, these features require a [Platinum subscription](https://www.elastic.co/pricing) or higher. In serverless, they require the Security Analytics Complete [project feature](deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 This page covers the requirements and guidelines for using the entity risk scoring, asset criticality, and entity store features, as well as their known limitations.
 
