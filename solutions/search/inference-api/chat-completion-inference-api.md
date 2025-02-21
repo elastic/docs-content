@@ -2,7 +2,7 @@
 navigation_title: "Chat completion"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/chat-completion-inference-api.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
