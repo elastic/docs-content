@@ -17,14 +17,11 @@ Over the course of normal operation, Elasticsearch allocates shard copies to nod
 To learn about optimizing the number and size of shards in your cluster, refer to [Size your shards](../production-guidance/optimize-performance/size-shards.md). To learn about how read and write operations are replicated across shards and shard copies, refer to [Reading and writing documents](reading-and-writing-documents.md).
 ::::
 
-
-
 ## Shard allocation [shard-allocation]
 
 Shard allocation is the process of assigning shard copies to nodes. This can happen during initial recovery, replica allocation, rebalancing, when nodes are added to or removed from the cluster, or when cluster or index settings that impact allocation are updated.
 
 By default, the primary and replica shard copies for an index can be allocated to any node in the cluster, and may be relocated to rebalance the cluster.
-
 
 ### Adjust shard allocation settings [_adjust_shard_allocation_settings]
 
@@ -32,7 +29,6 @@ You can control how shard copies are allocated using the following settings:
 
 * [Cluster-level shard allocation settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md): Use these settings to control how shard copies are allocated and balanced across the entire cluster. For example, you might want to [allocate nodes availability zones](shard-allocation-relocation-recovery/shard-allocation-awareness.md), or prevent certain nodes from being used so you can perform maintenance.
 * [Index-level shard allocation settings](shard-allocation-relocation-recovery/index-level-shard-allocation.md): Use these settings to control how the shard copies for a specific index are allocated. For example, you might want to allocate an index to a node in a specific data tier, or to an node with specific attributes.
-
 
 ### Monitor shard allocation [_monitor_shard_allocation]
 
@@ -45,7 +41,6 @@ You can use the following APIs to monitor shard allocation:
 * [cluster health](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health)
 
 [Learn more about troubleshooting unassigned shard copies and recovering your cluster health](../../troubleshoot/elasticsearch/red-yellow-cluster-status.md).
-
 
 ## Shard recovery [shard-recovery]
 
@@ -62,7 +57,6 @@ Recovery automatically occurs during the following processes:
 
 You can determine the cause of a shard recovery using the [recovery](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery) or  [cat recovery](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery) APIs.
 
-
 ### Adjust shard recovery settings [_adjust_shard_recovery_settings]
 
 To control how shards are recovered, for example the resources that can be used by recovery operations, and which indices should be prioritized for recovery, you can adjust the following settings:
@@ -73,7 +67,6 @@ To control how shards are recovered, for example the resources that can be used 
 
 Shard recovery operations also respect general shard allocation settings.
 
-
 ### Monitor shard recovery [_monitor_shard_recovery]
 
 You can use the following APIs to monitor shard allocation:
@@ -81,18 +74,14 @@ You can use the following APIs to monitor shard allocation:
 * View a list of in-progress and completed recoveries using the [cat recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-recovery)
 * View detailed information about a specific recovery using the [index recovery API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-recovery)
 
-
 ## Shard relocation [shard-relocation]
 
 Shard relocation is the process of moving shard copies from one node to another. This can happen when a node joins or leaves the cluster, or when the cluster is rebalancing.
 
 When a shard copy is relocated, it is created as a new shard copy on the target node. When the shard copy is fully allocated and recovered, the old shard copy is deleted. If the shard copy being relocated is a primary, then the new shard copy is marked as primary before the old shard copy is deleted.
 
-
 ### Adjust shard relocation settings [_adjust_shard_relocation_settings]
 
 You can control how and when shard copies are relocated. For example, you can adjust the rebalancing settings that control when shard copies are relocated to balance the cluster, or the high watermark for disk-based shard allocation that can trigger relocation. These settings are part of the [cluster-level shard allocation settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md).
 
 Shard relocation operations also respect shard allocation and recovery settings.
-
-

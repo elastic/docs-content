@@ -51,13 +51,11 @@ With delayed allocation enabled, the above scenario changes to look like this:
 This setting will not affect the promotion of replicas to primaries, nor will it affect the assignment of replicas that have not been assigned previously. In particular, delayed allocation does not come into effect after a full cluster restart. Also, in case of a master failover situation, elapsed delay time is forgotten (i.e. reset to the full initial delay).
 ::::
 
-
 ## Cancellation of shard relocation [_cancellation_of_shard_relocation]
 
 If delayed allocation times out, the master assigns the missing shards to another node which will start recovery. If the missing node rejoins the cluster, and its shards still have the same sync-id as the primary, shard relocation will be cancelled and the synced shard will be used for recovery instead.
 
 For this reason, the default `timeout` is set to just one minute: even if shard relocation begins, cancelling recovery in favour of the synced shard is cheap.
-
 
 ## Monitoring delayed unassigned shards [_monitoring_delayed_unassigned_shards]
 
@@ -68,8 +66,6 @@ GET _cluster/health <1>
 ```
 
 1. This request will return a `delayed_unassigned_shards` value.
-
-
 
 ## Removing a node permanently [_removing_a_node_permanently]
 
@@ -85,5 +81,3 @@ PUT _all/_settings
 ```
 
 You can reset the timeout as soon as the missing shards have started to recover.
-
-
