@@ -4,8 +4,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-deploy.html
 ---
 
-# Deploy
-
 % What needs to be done: Write from scratch
 
 % GitHub issue: https://github.com/elastic/docs-projects/issues/334
@@ -17,33 +15,74 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/docs-content/serverless/intro.md
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
 
+# Deploy
+
 Whether you're planning to use Elastic's pre-built solutions or Serverless projects, build your own applications with {{es}}, or analyze your data using {{kib}} tools, you'll need to deploy Elastic first.
 
 This page will help you understand your deployment options and choose the approach that best fits your needs.
 
 ## Core components
 
-Every Elastic deployment requires Elasticsearch as its core data store and search/analytics engine.
-Additionally, Kibana provides the user interface for all Elastic solutions and Serverless projects. It is required for most use cases, from data exploration to monitoring and security analysis.
+Every Elastic deployment requires {{es}} as its core data store and search/analytics engine.
+Additionally, {{kib}} provides the user interface for all Elastic solutions and Serverless projects. It is required for most use cases, from data exploration to monitoring and security analysis.
 
 Your choice of deployment type determines how you'll set up and manage these core components, plus any additional components you need.
 
-Elastic offers deployment options ranging from fully automated to fully self-managed.
-
 :::{tip}
 Learn more about the [{{stack}}](/get-started/the-stack.md) to understand the core and optional components of an Elastic deployment.
-::: 
+:::
 
-## Deployment types overview
+## Choosing your deployment type
 
 :::{include} _snippets/deployment-options-overview.md
 :::
 
-## Versioning and compatability 
+### Who manages the infrastructure?
+
+#### Managed by Elastic
+
+If you want to focus on using Elastic products rather than managing infrastructure, choose:
+
+- **Serverless**: Zero operational overhead, automatic scaling and updates, latest features
+- **Cloud hosted**: Balance of control and managed operations, choice of resources and regions
+
+#### Self-managed options
+
+If you need to run Elastic on your infrastructure, choose between a fully self-managed deployment or using an orchestrator:
+
+- **Fully self-managed**: Complete control and responsibility for your Elastic deployment
+- **With orchestration**:
+  - **Elastic Cloud on Kubernetes (ECK)**: If you need Kubernetes-native orchestration
+  - **Elastic Cloud Enterprise (ECE)**: If you need a multi-tenant orchestration platform
+
+:::::{note}
+:::{dropdown} About orchestration
+
+An orchestrator automates the deployment and management of multiple Elastic clusters, handling tasks like scaling, upgrades, and monitoring.
+
+Consider orchestration if you:
+- Need to manage multiple Elastic clusters
+- Want automated operations at scale
+- Have a Kubernetes environment (ECK)
+- Need to build a multi-tenant platform (ECE)
+
+Orchestrators manage the lifecycle of your Elastic deployments but don't change how the core products work. When using ECK or ECE:
+- You'll still use the same Elasticsearch and Kibana features and configurations
+- Most product documentation remains applicable
+- You can add other Elastic products as needed
+- The orchestrator handles operational tasks while you focus on using and configuring the products
+
+::::{tip}
+Documentation will specify when certain features or configurations are not applicable to specific deployment types.
+::::
+:::
+:::::
+
+### Versioning and compatibility 
 
 In {{serverless-full}}, you automatically get access to the latest versions of Elastic features and you don't need to manage version compatibility.
 
-All other deployment types use stack versioning, where components are tested and versioned together to ensure compatibility. ECE and ECK have their own deployment versions, in addition to stack versioning.
+With other deployment types ({{ecloud}} Hosted, ECE, and ECK), you control which {{stack}} versions you deploy and when you upgrade. The ECE and ECK orchestrators themselves also receive regular version updates, independent of the {{stack}} versions they manage.
 
 Consider this when choosing your deployment type:
 
@@ -54,42 +93,12 @@ Consider this when choosing your deployment type:
 Learn more about [versioning and availability](/get-started/versioning-availability.md). 
 :::
 
-## Choose your deployment path
-
-Your deployment choice determines how you'll set up and manage these components.
-
-### Step 1: Who manages the infrastructure?
-
-#### Managed by Elastic
-
-If you want to focus on using Elastic products rather than managing infrastructure, choose:
-
-- **Serverless**: Zero operational overhead, automatic scaling and updates, latest features
-- **Cloud hosted**: Balance of control and managed operations, choice of resources and regions
-
-#### Self-managed with your infrastructure
-
-If you need to run Elastic on your infrastructure, you have three options:
-
-- **Basic self-managed**: Direct control over all aspects of deployment
-- **Elastic Cloud on Kubernetes (ECK)**: Kubernetes-native orchestration
-- **Elastic Cloud Enterprise (ECE)**: Multi-tenant orchestration platform
-
-### Step 2: For self-managed - do you need orchestration?
-
-If you chose self-managed, consider whether you need orchestration:
-
-- **No orchestration needed**:
-  Choose basic self-managed deployment for full control and direct management
-
-- **Kubernetes environment**:
-  Use ECK for native Kubernetes orchestration and automated operations
-
-- **Multi-tenant platform**:
-  Use ECE to deploy {{ecloud}} on your own infrastructure
-
-## Cost considerations
+### Cost considerations
 
 - **Serverless**: Pay for what you use
 - **Cloud hosted**: Subscription-based with resource allocation
 - **Self-managed options**: Infrastructure costs plus operational overhead mean a higher total cost of ownership (TCO)
+
+:::::{tip}
+For a detailed comparison of features and capabilities across deployment types, see the [Deployment comparison reference](./deploy/deployment-comparison.md).
+:::::
