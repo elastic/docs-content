@@ -1,6 +1,9 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/ingest-pipelines.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Elasticsearch ingest pipelines (Serverless) [ingest-pipelines]
@@ -30,7 +33,7 @@ In **{{project-settings}} → {{manage-app}} → {{ingest-pipelines-app}}**, you
 
 To create a pipeline, click **Create pipeline → New pipeline**. For an example tutorial, see [Example: Parse logs](example-parse-logs.md).
 
-The **New pipeline from CSV** option lets you use a file with comma-separated values (CSV) to create an ingest pipeline that maps custom data to the Elastic Common Schema (ECS). Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other data sets. To get started, check [Map custom data to ECS](https://www.elastic.co/guide/en/ecs/current/ecs-converting.html).
+The **New pipeline from CSV** option lets you use a file with comma-separated values (CSV) to create an ingest pipeline that maps custom data to the Elastic Common Schema (ECS). Mapping your custom data to ECS makes the data easier to search and lets you reuse visualizations from other data sets. To get started, check [Map custom data to ECS](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-converting.md).
 
 
 ## Test pipelines [ingest-pipelines-test-pipelines]

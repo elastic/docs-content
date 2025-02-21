@@ -59,9 +59,9 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         }
         ```
 
-        For more information, see [Monitoring settings in {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings in {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
-2. Verify that `monitoring.enabled` and `monitoring.kibana.collection.enabled` are set to `true` in the `kibana.yml` file. These are the default values. For more information, see [Monitoring settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/monitoring-settings-kb.html).
+2. Verify that `monitoring.enabled` and `monitoring.kibana.collection.enabled` are set to `true` in the `kibana.yml` file. These are the default values. For more information, see [Monitoring settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/monitoring-settings.md).
 3. Identify where to send monitoring data. {{kib}} automatically sends metrics to the {{es}} cluster specified in the `elasticsearch.hosts` setting in the `kibana.yml` file. This property has a default value of `http://localhost:9200`.<br>
 
     ::::{tip}
@@ -74,7 +74,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 4. If {{security-features}} are enabled on the production cluster:
 
     1. Verify that there is a valid user ID and password in the `elasticsearch.username` and `elasticsearch.password` settings in the `kibana.yml` file. These values are used when {{kib}} sends monitoring data to the production cluster.
-    2. [Configure encryption for traffic between {{kib}} and {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup-https.html#encrypt-kibana-http).
+    2. [Configure encryption for traffic between {{kib}} and {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-kibana-http).
 
 5. [Start {{kib}}](../../maintenance/start-stop-services/start-stop-kibana.md).
 6. [View the monitoring data in {{kib}}](kibana-monitoring-data.md).

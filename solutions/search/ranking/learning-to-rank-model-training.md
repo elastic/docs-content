@@ -2,7 +2,7 @@
 navigation_title: "Deploy and manage LTR models"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/learning-to-rank-model-training.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -78,10 +78,10 @@ feature_extractors=[
 ]
 ```
 
-::::{admonition} Tern statistics as features
+::::{admonition} Term statistics as features
 :class: note
 
-It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the  [`script_score`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-script-score-query.html) query.
+It is very common for an LTR model to leverage raw term statistics as features. To extract this information, you can use the [term statistics feature](../../../explore-analyze/scripting/modules-scripting-fields.md#scripting-term-statistics) provided as part of the  [`script_score`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-script-score-query.md) query.
 
 ::::
 

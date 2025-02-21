@@ -45,7 +45,7 @@ Reducing the replicas of an index can potentially reduce search throughput and d
 ::::::{tab-item} Self-managed
 In order to estimate how many replicas need to be removed, first you need to estimate the amount of disk space that needs to be released.
 
-1. First, retrieve the relevant disk thresholds that will indicate how much space should be released. The relevant thresholds are the [high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:
+1. First, retrieve the relevant disk thresholds that will indicate how much space should be released. The relevant thresholds are the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) for all the tiers apart from the frozen one and the [frozen flood stage watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage-frozen) for the frozen tier. The following example demonstrates disk shortage in the hot tier, so we will only retrieve the high watermark:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*
@@ -72,7 +72,7 @@ In order to estimate how many replicas need to be removed, first you need to est
     }
     ```
 
-    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more on how this threshold works [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high).
+    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more on how this threshold works [here](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
 
 2. The next step is to find out the current disk usage; this will indicate how much space should be freed. For simplicity, our example has one node, but you can apply the same for every node over the relevant threshold.
 

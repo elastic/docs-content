@@ -1,6 +1,7 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-azure-snapshotting.html
+applies_to:
+  deployment:
+    ece: 
 ---
 
 # Azure Storage repository [ece-configure-azure-snapshotting]
@@ -15,7 +16,7 @@ Add your Azure Storage Container as a repository to the platform:
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Go to **Platform > Repositories** and add the following snapshot repository configuration under the advanced mode:
 
-    If needed, set additional options for configuring chunk_size, compressions, and retries. Check the [supported settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-azure.html#repository-azure-repository-settings).
+    If needed, set additional options for configuring chunk_size, compressions, and retries. Check the [supported settings](/deploy-manage/tools/snapshot-and-restore/azure-repository.md#repository-azure-repository-settings).
 
     ```json
     {

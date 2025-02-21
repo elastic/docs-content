@@ -34,7 +34,7 @@ The steps for setting up data tiers vary based on your deployment type:
 ::::::
 
 ::::::{tab-item} Self-managed
-To assign a node to a data tier, add the respective [node role](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) to the node’s `elasticsearch.yml` file. Changing an existing node’s roles requires a [rolling restart](../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
+To assign a node to a data tier, add the respective [node role](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) to the node’s `elasticsearch.yml` file. Changing an existing node’s roles requires a [rolling restart](../deploy-manage/maintenance/start-stop-services/full-cluster-restart-rolling-restart-procedures.md#restart-cluster-rolling).
 
 ```yaml
 # Content tier
@@ -94,7 +94,7 @@ Use any of the following repository types with searchable snapshots:
 * [AWS S3](../deploy-manage/tools/snapshot-and-restore/s3-repository.md)
 * [Google Cloud Storage](../deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md)
 * [Azure Blob Storage](../deploy-manage/tools/snapshot-and-restore/azure-repository.md)
-* [Hadoop Distributed File Store (HDFS)](https://www.elastic.co/guide/en/elasticsearch/plugins/current/repository-hdfs.html)
+* [Hadoop Distributed File Store (HDFS)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/repository-hdfs.md)
 * [Shared filesystems](../deploy-manage/tools/snapshot-and-restore/shared-file-system-repository.md) such as NFS
 * [Read-only HTTP and HTTPS repositories](../deploy-manage/tools/snapshot-and-restore/read-only-url-repository.md)
 
@@ -249,13 +249,13 @@ If you use a custom application, you need to set up your own data stream. A data
 
 When creating your component templates, include:
 
-* A [`date`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) or [`date_nanos`](https://www.elastic.co/guide/en/elasticsearch/reference/current/date_nanos.html) mapping for the `@timestamp` field. If you don’t specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
+* A [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md) mapping for the `@timestamp` field. If you don’t specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
 * Your lifecycle policy in the `index.lifecycle.name` index setting.
 
 ::::{tip}
 Use the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current) when mapping your fields. ECS fields integrate with several {{stack}} features by default.
 
-If you’re unsure how to map your fields, use [runtime fields](data-store/mapping/define-runtime-fields-in-search-request.md) to extract fields from [unstructured content](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#mapping-unstructured-content) at search time. For example, you can index a log message to a `wildcard` field and later extract IP addresses and other data from this field during a search.
+If you’re unsure how to map your fields, use [runtime fields](data-store/mapping/define-runtime-fields-in-search-request.md) to extract fields from [unstructured content](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#mapping-unstructured-content) at search time. For example, you can index a log message to a `wildcard` field and later extract IP addresses and other data from this field during a search.
 
 ::::
 
@@ -307,7 +307,7 @@ PUT _component_template/my-settings
 
 Use your component templates to create an index template. Specify:
 
-* One or more index patterns that match the data stream’s name. We recommend using our [data stream naming scheme](https://www.elastic.co/guide/en/fleet/current/data-streams.html#data-streams-naming-scheme).
+* One or more index patterns that match the data stream’s name. We recommend using our [data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
 * That the template is data stream enabled.
 * Any component templates that contain your mappings and index settings.
 * A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](data-store/templates.md#avoid-index-pattern-collisions).

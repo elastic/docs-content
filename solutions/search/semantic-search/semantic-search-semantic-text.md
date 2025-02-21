@@ -2,7 +2,7 @@
 navigation_title: "Semantic search with `semantic_text`"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-semantic-text.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -31,7 +31,7 @@ This tutorial uses the [`elasticsearch` service](../inference-api/elasticsearch-
 
 ## Create the index mapping [semantic-text-index-mapping]
 
-The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text.html) field type to index the output of the used inference endpoint.
+The mapping of the destination index - the index that contains the embeddings that the inference endpoint will generate based on your input text - must be created. The destination index must have a field with the [`semantic_text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/semantic-text.md) field type to index the output of the used inference endpoint.
 
 ```console
 PUT semantic-embeddings

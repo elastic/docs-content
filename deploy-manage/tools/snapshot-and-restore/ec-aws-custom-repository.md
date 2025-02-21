@@ -1,6 +1,7 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-aws-custom-repository.html
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Configure a snapshot repository using AWS S3 [ec-aws-custom-repository]
@@ -55,7 +56,7 @@ You can use the Elasticsearch Service Keystore to store the credentials to acces
     * `s3.client.secondary.access_key`
     * `s3.client.secondary.secret_key`
 
-5. Perform a cluster restart to [reload the secure settings](https://www.elastic.co/guide/en/cloud/current/ec-configuring-keystore.html#ec-add-secret-values).
+5. Perform a cluster restart to [reload the secure settings](/deploy-manage/security/secure-settings.md#ec-add-secret-values).
 
 
 ## Create the repository [ec-create-aws-repository]

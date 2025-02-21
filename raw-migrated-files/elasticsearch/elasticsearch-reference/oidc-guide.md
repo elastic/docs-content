@@ -52,7 +52,7 @@ xpack.security.authc.token.enabled: true
 
 OpenID Connect based authentication is enabled by configuring the appropriate realm within the authentication chain for {{es}}.
 
-This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [OpenID Connect realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-oidc-settings). This guide will explore the most common settings.
+This realm has a few mandatory settings, and a number of optional settings. The available settings are described in detail in [OpenID Connect realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings). This guide will explore the most common settings.
 
 Create an OpenID Connect (the realm type is `oidc`) realm in your `elasticsearch.yml` file similar to what is shown below:
 
@@ -161,7 +161,7 @@ The recommended steps for configuring OpenID Claims mapping are as follows:
 
 1. Consult your OP configuration to see what claims it might support. Note that the list provided in the OP’s metadata or in the configuration page of the OP is a list of potentially supported claims. However, for privacy reasons it might not be a complete one, or not all supported claims will be available for all authenticated users.
 2. Read through the list of [user properties](../../../deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-properties) that {{es}} supports, and decide which of them are useful to you, and can be provided by your OP in the form of claims. At a *minimum*, the `principal` user property is required.
-3. Configure your OP to "release" those claims to your {{stack}} Relying party. This process greatly varies by provider. You can use a static configuration while others will support that the RP requests the scopes that correspond to the claims to be "released" on authentication time. See [`rp.requested_scopes`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-oidc-settings) for details about how to configure the scopes to request. To ensure interoperability and minimize the errors, you should only request scopes that the OP supports, and which you intend to map to {{es}} user properties.
+3. Configure your OP to "release" those claims to your {{stack}} Relying party. This process greatly varies by provider. You can use a static configuration while others will support that the RP requests the scopes that correspond to the claims to be "released" on authentication time. See [`rp.requested_scopes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings) for details about how to configure the scopes to request. To ensure interoperability and minimize the errors, you should only request scopes that the OP supports, and which you intend to map to {{es}} user properties.
 
     ```
     NOTE: You can only map claims with values that are strings, numbers, boolean values or an array

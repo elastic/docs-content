@@ -28,7 +28,7 @@ By default, Elasticsearch periodically refreshes indices every second, but only 
 
 This is the optimal configuration if you have no or very little search traffic (e.g. less than one search request every 5 minutes) and want to optimize for indexing speed. This behavior aims to automatically optimize bulk indexing in the default case when no searches are performed. In order to opt out of this behavior set the refresh interval explicitly.
 
-On the other hand, if your index experiences regular search requests, this default behavior means that Elasticsearch will refresh your index every 1 second. If you can afford to increase the amount of time between when a document gets indexed and when it becomes visible, increasing the [`index.refresh_interval`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-refresh-interval-setting) to a larger value, e.g. `30s`, might help improve indexing speed.
+On the other hand, if your index experiences regular search requests, this default behavior means that Elasticsearch will refresh your index every 1 second. If you can afford to increase the amount of time between when a document gets indexed and when it becomes visible, increasing the [`index.refresh_interval`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-refresh-interval-setting) to a larger value, e.g. `30s`, might help improve indexing speed.
 
 
 ## Disable replicas for initial loads [_disable_replicas_for_initial_loads] 
@@ -69,7 +69,7 @@ Some remote storage performs very poorly, especially under the kind of load that
 
 ## Indexing buffer size [_indexing_buffer_size] 
 
-If your node is doing only heavy indexing, be sure [`indices.memory.index_buffer_size`](https://www.elastic.co/guide/en/elasticsearch/reference/current/indexing-buffer.html) is large enough to give at most 512 MB indexing buffer per shard doing heavy indexing (beyond that indexing performance does not typically improve). Elasticsearch takes that setting (a percentage of the java heap or an absolute byte-size), and uses it as a shared buffer across all active shards. Very active shards will naturally use this buffer more than shards that are performing lightweight indexing.
+If your node is doing only heavy indexing, be sure [`indices.memory.index_buffer_size`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/indexing-buffer-settings.md) is large enough to give at most 512 MB indexing buffer per shard doing heavy indexing (beyond that indexing performance does not typically improve). Elasticsearch takes that setting (a percentage of the java heap or an absolute byte-size), and uses it as a shared buffer across all active shards. Very active shards will naturally use this buffer more than shards that are performing lightweight indexing.
 
 The default is `10%` which is often plenty: for example, if you give the JVM 10GB of memory, it will give 1GB to the index buffer, which is enough to host two shards that are heavily indexing.
 

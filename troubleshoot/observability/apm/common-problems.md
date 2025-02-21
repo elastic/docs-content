@@ -37,7 +37,7 @@ If no data shows up in {{es}}, first make sure that your APM components are prop
 ::::::{tab-item} Fleet-managed
 **Is {{agent}} healthy?**
 
-In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html) to learn more.
+In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn more.
 
 **Is APM Server happy?**
 
@@ -163,7 +163,7 @@ The APM Server timeout can be configured by updating the [maximum duration for r
 
 ## Field limit exceeded [apm-field-limit-exceeded]
 
-When adding too many distinct tag keys on a transaction or span, you risk creating a [mapping explosion](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html#mapping-limit-settings).
+When adding too many distinct tag keys on a transaction or span, you risk creating a [mapping explosion](/manage-data/data-store/mapping.md#mapping-limit-settings).
 
 For example, you should avoid that user-specified data, like URL parameters, is used as a tag key. Likewise, using the current timestamp or a user ID as a tag key is not a good idea. However, tag **values** with a high cardinality are not a problem. Just try to keep the number of distinct tag keys at a minimum.
 
@@ -223,9 +223,9 @@ You will see this warning if your results have more than `1000` unique transacti
 
 **More information**
 
-While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](https://www.elastic.co/guide/en/apm/agent/rum-js/current/custom-transaction-name.html).
+While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/custom-transaction-name.md).
 
-The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/agent-api.html#observe) for more information.
+The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/agent-api.md#observe) for more information.
 
 If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](https://www.elastic.co/guide/en/apm/agent) to adjust how you’re naming your transactions.
 
@@ -266,7 +266,7 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 stack: all
 ```
 
-If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/distributed-tracing-guide.html).
+If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/distributed-tracing.md).
 
 This setting is necessary, for example, for cross-origin requests. If you have a basic web application that provides data via an API on `localhost:4000`, and serves HTML from `localhost:4001`, you’d need to set `distributedTracingOrigins: ['https://localhost:4000']` to ensure the origin is monitored as a part of distributed tracing. In other words, `distributedTracingOrigins` is consulted prior to the APM agent adding the distributed tracing `traceparent` header to each request.
 

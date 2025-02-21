@@ -19,5 +19,5 @@ To use {{es}}, you need a running instance of the {{es}} service. You can deploy
 **Advanced options**
 
 * [**Self-managed**](../deploy-manage/deploy/self-managed/installing-elasticsearch.md#elasticsearch-deployment-options): Install, configure, and run {{es}} on your own premises.
-* [**Elastic Cloud Enterprise**](https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html): Deploy Elastic Cloud on public or private clouds, virtual machines, or your own premises.
+* [**Elastic Cloud Enterprise**](/deploy-manage/deploy/cloud-enterprise.md): Deploy Elastic Cloud on public or private clouds, virtual machines, or your own premises.
 * [**Elastic Cloud on Kubernetes**](../deploy-manage/deploy/cloud-on-k8s.md): Deploy Elastic Cloud on Kubernetes.

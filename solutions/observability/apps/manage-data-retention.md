@@ -58,4 +58,4 @@ To find Synthetics data streams:
 
 ::::
 
-Then, you can refer to [Tutorial: Customize data retention for integrations](https://www.elastic.co/guide/en/fleet/current/data-streams-ilm-tutorial.html) to learn how to apply a custom {{ilm-init}} policy to the browser data streams.
+Then, you can refer to [Tutorial: Customize data retention for integrations](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams-ilm-tutorial.md) to learn how to apply a custom {{ilm-init}} policy to the browser data streams.

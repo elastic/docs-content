@@ -9,7 +9,7 @@ mapped_pages:
 
 
 ::::{important}
-In {{stack}}, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) present, and [SLO access](../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+In {{stack}}, to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 
@@ -64,7 +64,7 @@ It’s common for SLO problems to arise when there are underlying problems in th
 
 ### No transform or ingest nodes [slo-no-transform-ingest-node]
 
-Because SLOs depend on both [ingest pipelines](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) and [transforms](../../explore-analyze/transforms.md) to process the data, it’s essential to ensure that the cluster has nodes with the appropriate [roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles).
+Because SLOs depend on both [ingest pipelines](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) and [transforms](../../explore-analyze/transforms.md) to process the data, it’s essential to ensure that the cluster has nodes with the appropriate [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles).
 
 Ensure the cluster includes one or more nodes with both `ingest` and `transform` roles to support the data processing and transformations required for SLOs to function properly. The roles can exist on the same node or be distributed across separate nodes.
 

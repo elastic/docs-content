@@ -61,7 +61,7 @@ Not every access token is formatted as a JSON Web Token (JWT). For it to be comp
 
 To use JWT authentication, create the realm in the `elasticsearch.yml` file to configure it within the {{es}} authentication chain.
 
-The JWT realm has a few mandatory settings, plus optional settings that are described in [JWT realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-jwt-settings).
+The JWT realm has a few mandatory settings, plus optional settings that are described in [JWT realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-jwt-settings).
 
 ::::{note}
 Client authentication is enabled by default for the JWT realms. Disabling client authentication is possible, but strongly discouraged.
@@ -134,7 +134,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
     :   Specifies a list of JWT subjects that the realm will allow. These values are typically URLs, UUIDs, or other case-sensitive string values.
 
     `allowed_subject_patterns`
-    :   Analogous to `allowed_subjects` but it accepts a list of [Lucene regexp](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html) and wildcards for the allowed JWT subjects. Wildcards use the `*` and `?` special characters (which are escaped by `\`) to mean "any string" and "any single character" respectively, for example "a?\**", matches "a1*" and "ab*whatever", but not "a", "abc", or "abc*" (in Java strings `\` must itself be escaped by another `\`). [Lucene regexp](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html) must be enclosed between `/`, for example "/https?://[^/]+/?/" matches any http or https URL with no path component (matches "https://elastic.co/" but not "https://elastic.co/guide").
+    :   Analogous to `allowed_subjects` but it accepts a list of [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md) and wildcards for the allowed JWT subjects. Wildcards use the `*` and `?` special characters (which are escaped by `\`) to mean "any string" and "any single character" respectively, for example "a?\**", matches "a1*" and "ab*whatever", but not "a", "abc", or "abc*" (in Java strings `\` must itself be escaped by another `\`). [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md) must be enclosed between `/`, for example "/https?://[^/]+/?/" matches any http or https URL with no path component (matches "https://elastic.co/" but not "https://elastic.co/guide").
 
     ::::{note}
     At least one of the `allowed_subjects` or `allowed_subject_patterns` settings must be specified (and be non-empty) when `token_type` is `access_token`.
@@ -155,7 +155,7 @@ Client authentication is enabled by default for the JWT realms. Disabling client
     `fallback_claims.aud`
     :   The name of the JWT claim to extract the audiences information if the `aud` claim does not exist. This setting is only available when `token_type` is `access_token`. The fallback is applied everywhere the `aud` claim is used.
 
-2. After defining settings, use the [`elasticsearch-keystore`](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-keystore.html) tool to store values for secure settings in the {{es}} keystore.
+2. After defining settings, use the [`elasticsearch-keystore`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool to store values for secure settings in the {{es}} keystore.
 
     1. Store the `shared_secret` value for `client_authentication.type`:
 
@@ -204,7 +204,7 @@ Signature: UnnFmsoFKfNmKMsVoDQmKI_3-j95PCaKdgqqau3jPMY
 
 This example illustrates a partial decoding of a JWT. The validity period is from 2000 to 2099 (inclusive), as defined by the issue time (`iat`) and expiration time (`exp`). JWTs typically have a validity period shorter than 100 years, such as 1-2 hours or 1-7 days, not an entire human life.
 
-The signature in this example is deterministic because the header, claims, and HMAC key are fixed. JWTs typically have a `nonce` claim to make the signature non-deterministic. The supported JWT encoding is JSON Web Signature (JWS), and the JWS `Header` and `Signature` are validated using OpenID Connect ID Token validation rules. Some validation is customizable through [JWT realm settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-jwt-settings).
+The signature in this example is deterministic because the header, claims, and HMAC key are fixed. JWTs typically have a `nonce` claim to make the signature non-deterministic. The supported JWT encoding is JSON Web Signature (JWS), and the JWS `Header` and `Signature` are validated using OpenID Connect ID Token validation rules. Some validation is customizable through [JWT realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-jwt-settings).
 
 ### Header claims [jwt-validation-header]
 
@@ -433,7 +433,7 @@ Separate reload requests cannot be combined if JWT signature failures trigger:
 * PKC JWKS reloads in the same {{es}} node at different times
 
 ::::{important}
-Enabling client authentication (`client_authentication.type`) is strongly recommended. Only trusted client applications and realm-specific JWT users can trigger PKC reload attempts. Additionally, configuring the following [JWT security settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#ref-jwt-settings) is recommended:
+Enabling client authentication (`client_authentication.type`) is strongly recommended. Only trusted client applications and realm-specific JWT users can trigger PKC reload attempts. Additionally, configuring the following [JWT security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-jwt-settings) is recommended:
 
 * `allowed_audiences`
 * `allowed_clock_skew`
@@ -485,7 +485,7 @@ xpack.security.authc.realms.jwt.jwt8.client_authentication.type: shared_secret
 
 ### JWT realm secure settings [_jwt_realm_secure_settings]
 
-After defining the realm settings, use the [`elasticsearch-keystore`](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-keystore.html) tool to add the following secure settings to the {{es}} keystore. In {{ecloud}}, you define settings for the {{es}} keystore under **Security** in your deployment.
+After defining the realm settings, use the [`elasticsearch-keystore`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool to add the following secure settings to the {{es}} keystore. In {{ecloud}}, you define settings for the {{es}} keystore under **Security** in your deployment.
 
 ```yaml
 xpack.security.authc.realms.jwt.jwt8.hmac_key: hmac-oidc-key-string-for-hs256-algorithm

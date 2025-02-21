@@ -2,7 +2,7 @@
 navigation_title: "Security"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-security.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

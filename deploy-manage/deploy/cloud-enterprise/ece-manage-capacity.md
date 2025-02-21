@@ -36,7 +36,7 @@ curl -X PUT \
   -d '{"capacity":<Capacity_Value_in_MB>}'
 ```
 
-For more information on how to use API keys for authentication, check the section [Access the API from the Command Line](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-api-command-line.html).
+For more information on how to use API keys for authentication, check the section [Access the API from the Command Line](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-enterprise/ece-api-command-line.md).
 
 ::::{important} 
 Prior to ECE 3.5.0, regardless of the use of this API, the [CPU quota](#ece-alloc-cpu) used the memory specified at installation time.
@@ -88,15 +88,15 @@ Those percentages represent the upper limit of the % of the total CPU resources 
 
 In addition to the [CPU quotas](#ece-alloc-cpu), the `processors` setting also plays a relevant role.
 
-The allocated `processors` setting originates from Elasticsearch and is responsible for calculating your [thread pools](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html#node.processors). While the CPU quota defines the percentage of the total CPU resources of an allocator that are assigned to an instance, the allocated `processors` define how the thread pools are calculated in Elasticsearch, and therefore how many concurrent search and indexing requests an instance can process. In other words, the CPU ratio defines how fast a single task can be completed, while the `processors` setting defines how many different tasks can be completed at the same time.
+The allocated `processors` setting originates from Elasticsearch and is responsible for calculating your [thread pools](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors). While the CPU quota defines the percentage of the total CPU resources of an allocator that are assigned to an instance, the allocated `processors` define how the thread pools are calculated in Elasticsearch, and therefore how many concurrent search and indexing requests an instance can process. In other words, the CPU ratio defines how fast a single task can be completed, while the `processors` setting defines how many different tasks can be completed at the same time.
 
 We rely on Elasticsearch and the `-XX:ActiveProcessorCount` JVM setting to automatically detect the allocated `processors`.
 
-In earlier versions of ECE and Elasticsearch, the [Elasticsearch processors](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html#node.processors) setting was used to configure the allocated `processors` according to the following formula:
+In earlier versions of ECE and Elasticsearch, the [Elasticsearch processors](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md#node.processors) setting was used to configure the allocated `processors` according to the following formula:
 
 `Math.min(16,Math.max(2,(16*instanceCapacity*1.0/1024/64).toInt))`
 
-The following table gives an overview of the allocated `processors` that are used to calculate the Elasticsearch [thread pools](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-threadpool.html) based on the preceding formula:
+The following table gives an overview of the allocated `processors` that are used to calculate the Elasticsearch [thread pools](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/thread-pool-settings.md) based on the preceding formula:
 
 | instance size | vCPU |
 | --- | --- |

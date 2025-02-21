@@ -37,34 +37,34 @@ Each APM agent has a list of supported configurations. After selecting a Service
 Supported configurations are also tagged with the ![dynamic config](../../../images/observability-dynamic-config.svg "") badge in each APM agent’s configuration reference:
 
 Android agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/android/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/configuration.md)
 
 Go agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
 
 iOS agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/swift/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-ios/docs/reference/ingestion-tools/apm-agent-swift/configuration.md)
 
 Java agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/java/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md)
 
 .NET agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/dotnet/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
 
 Node.js agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md)
 
 PHP agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/php/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
 
 Python agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
 
 Ruby agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
 
 Real User Monitoring (RUM) agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/rum-js/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/configuration.md)
 
 
 ## APM Server configuration [_apm_server_configuration]

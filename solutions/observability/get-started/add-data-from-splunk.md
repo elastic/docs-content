@@ -57,7 +57,7 @@ The URL of the Splunk Enterprise Server must include the scheme (`http` or `http
 
 The Splunk username and password must be of a user with a role or capability to use REST API endpoints.  Administrative users have these permissions by default.
 
-SSL Configuration is available under the "Advanced options".  These may be necessary if Splunk Enterprise server uses self-signed certificates.  See [SSL Options](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-ssl.html) for valid configuration options.
+SSL Configuration is available under the "Advanced options".  These may be necessary if Splunk Enterprise server uses self-signed certificates.  See [SSL Options](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuration-ssl.md) for valid configuration options.
 
 :::{image} ../../../images/observability-kibana-fleet-third-party-rest-settings.png
 :alt: {{fleet}} showing enabling third-party REST API settings

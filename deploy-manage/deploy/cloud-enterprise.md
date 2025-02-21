@@ -2,6 +2,9 @@
 applies_to:
   deployment:
     ece: all
+mapped_urls:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/index.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/Elastic-Cloud-Enterprise-overview.html
 ---
 
 # Elastic Cloud Enterprise [Elastic-Cloud-Enterprise-overview]

@@ -23,5 +23,5 @@ There are several facets to optimizing the underlying Elasticsearch performance,
 
 ## Support [aws-firehose-troubleshooting-support]
 
-If you encounter further problems, please [contact us]](/troubleshoot/index.md#contact-us).
+If you encounter further problems, please [contact us](/troubleshoot/index.md#contact-us).
 

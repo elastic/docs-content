@@ -160,7 +160,7 @@ If the **Waiting for Logs to be shipped…​** step never completes, logs are n
 
 #### Solution [logs-troubleshooting-wait-for-logs-solution]
 
-Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](https://www.elastic.co/guide/en/fleet/current/debug-standalone-agents.html#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
+Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/debug-standalone-agents.md#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
 
 
 ## Mapping and pipeline issues [logs-common-mapping-troubleshooting]
@@ -225,7 +225,7 @@ PUT my-index-000001
 }
 ```
 
-Refer to the [`date` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) docs for more information.
+Refer to the [`date` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) docs for more information.
 
 
 ### Grok or dissect pattern mismatch [logs-mapping-troubleshooting-grok-mismatch]
@@ -239,7 +239,7 @@ Provided Grok patterns do not match field value...
 
 #### Solution [logs-mapping-troubleshooting-grok-solution]
 
-Make sure your [grok](https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html) or [dissect](https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect-processor.html) processor pattern matches your log document format.
+Make sure your [grok](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/grok-processor.md) or [dissect](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) processor pattern matches your log document format.
 
 You can build and debug grok patterns in {{kib}} using the [Grok Debugger](../../explore-analyze/query-filter/tools/grok-debugger.md). Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the global search field.
 

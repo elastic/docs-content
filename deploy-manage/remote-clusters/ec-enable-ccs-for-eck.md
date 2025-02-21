@@ -5,7 +5,7 @@ mapped_pages:
 
 # Enabling CCS/R between Elasticsearch Service and ECK [ec-enable-ccs-for-eck]
 
-These steps describe how to configure remote clusters between an {{es}} cluster in Elasticsearch Service and an {{es}} cluster running within [Elastic Cloud on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-overview.html). Once that’s done, you’ll be able to [run CCS queries from {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html) or [set up CCR](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html).
+These steps describe how to configure remote clusters between an {{es}} cluster in Elasticsearch Service and an {{es}} cluster running within [Elastic Cloud on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 
 ## Establish trust between two clusters [ec_establish_trust_between_two_clusters]
@@ -85,4 +85,4 @@ Configure the ECK cluster [using certificate based authentication](ec-remote-clu
 
 ### Elasticsearch Service cluster to ECK Cluster [ec_elasticsearch_service_cluster_to_eck_cluster]
 
-Follow the steps outlined in the [ECK documentation](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html#k8s_configure_the_remote_cluster_connection_through_the_elasticsearch_rest_api).
+Follow the steps outlined in the [ECK documentation](/deploy-manage/remote-clusters/eck-remote-clusters.md#k8s_configure_the_remote_cluster_connection_through_the_elasticsearch_rest_api).

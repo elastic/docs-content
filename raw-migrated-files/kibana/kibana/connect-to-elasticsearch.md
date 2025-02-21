@@ -21,7 +21,7 @@ A good place to start is with one of our Elastic solutions, which offer experien
 
 * **Elastic connectors and crawler.**
 
-    * Create searchable mirrors of your data in Sharepoint Online, S3, Google Drive, and many other web services using our open code [Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html).
+    * Create searchable mirrors of your data in Sharepoint Online, S3, Google Drive, and many other web services using our open code [Elastic connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md).
     * Discover, extract, and index your web content into {{es}} using the [Elastic web crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html).
 
 * **Elastic Observability.** Get logs, metrics, traces, and uptime data into the Elastic Stack. Integrations are available for popular services and platforms, such as Nginx, AWS, and MongoDB, and generic input types like log files. Refer to [Elastic Observability](../../../solutions/observability/get-started/what-is-elastic-observability.md) for more information.

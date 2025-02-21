@@ -67,7 +67,7 @@ The `elasticsearch-setup-passwords` tool is the simplest method to set the built
 bin/elasticsearch-setup-passwords interactive
 ```
 
-For more information about the command options, see [elasticsearch-setup-passwords](https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-passwords.html).
+For more information about the command options, see [elasticsearch-setup-passwords](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/setup-passwords.md).
 
 ::::{important} 
 After you set a password for the `elastic` user, the bootstrap password is no longer valid; you cannot run the `elasticsearch-setup-passwords` command a second time.
@@ -110,7 +110,7 @@ If you have upgraded from an older version of {{es}}, the `logstash_system` user
 PUT _security/user/logstash_system/_enable
 ```
 
-See [Configuring credentials for {{ls}} monitoring](https://www.elastic.co/guide/en/logstash/current/ls-security.html#ls-monitoring-user).
+See [Configuring credentials for {{ls}} monitoring](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/secure-connection.md#ls-monitoring-user).
 
 
 ## Adding built-in user passwords to Beats [add-built-in-user-beats] 
@@ -124,7 +124,7 @@ xpack.monitoring.elasticsearch.username: beats_system
 xpack.monitoring.elasticsearch.password: beatspassword
 ```
 
-For example, see [Monitoring {{metricbeat}}](https://www.elastic.co/guide/en/beats/metricbeat/current/monitoring.html).
+For example, see [Monitoring {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/monitoring.md).
 
 The `remote_monitoring_user` is used when {{metricbeat}} collects and stores monitoring data for the {{stack}}. See [*Monitoring in a production environment*](../../../deploy-manage/monitor/stack-monitoring/elasticsearch-monitoring-self-managed.md).
 

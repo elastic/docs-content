@@ -315,7 +315,7 @@ PUT _inference/text_embedding/alibabacloud_ai_search_embeddings <1>
 
 ## Create the index mapping [infer-service-mappings]
 
-The mapping of the destination index - the index that contains the embeddings that the model will create based on your input text - must be created. The destination index must have a field with the [`dense_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) field type for most models and the [`sparse_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) field type for the sparse vector models like in the case of the `elasticsearch` service to index the output of the used model.
+The mapping of the destination index - the index that contains the embeddings that the model will create based on your input text - must be created. The destination index must have a field with the [`dense_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) field type for most models and the [`sparse_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) field type for the sparse vector models like in the case of the `elasticsearch` service to index the output of the used model.
 
 :::::::{tab-set}
 
@@ -592,7 +592,7 @@ PUT alibabacloud-ai-search-embeddings
 
 ## Create an ingest pipeline with an inference processor [infer-service-inference-ingest-pipeline]
 
-Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) and use the model you created above to infer against the data that is being ingested in the pipeline.
+Create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) and use the model you created above to infer against the data that is being ingested in the pipeline.
 
 :::::::{tab-set}
 
