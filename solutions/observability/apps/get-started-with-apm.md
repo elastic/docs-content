@@ -2,9 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/apm-getting-started-apm-server.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-get-started.html
----
 
----
 navigation_title: "Get started"
 ---
 
