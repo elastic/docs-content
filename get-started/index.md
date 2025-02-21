@@ -1,5 +1,3 @@
-# Get started
-=======
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-intro-what-is-es.html
@@ -7,6 +5,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/index.html
 ---
+# Get started
 
 {{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with {{kib}}, it powers these Elastic solutions and use cases:
 
