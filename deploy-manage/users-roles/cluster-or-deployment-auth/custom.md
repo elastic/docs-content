@@ -57,11 +57,18 @@ To package your custom realm as a plugin:
 
 To use a custom realm:
 
-1. Install the realm extension on each node in the cluster. You run `bin/elasticsearch-plugin` with the `install` sub-command and specify the URL pointing to the zip file that contains the extension. For example:
+1. Install the realm extension on each node in the cluster. 
+   
+   * If you're usinga self-managed cluster, then run `bin/elasticsearch-plugin` with the `install` sub-command and specify the URL pointing to the zip file that contains the extension. For example:
 
-    ```shell
-    bin/elasticsearch-plugin install file:///<path>/my-realm-1.0.zip
-    ```
+        ```shell
+        bin/elasticsearch-plugin install file:///<path>/my-realm-1.0.zip
+        ```
+    * If you're using {{ech}}, then refer to [](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+    % * If you're using {{ece}}, then refer to []().
+    % TODO: bad mapping in solutions/search/full-text/search-with-synonyms.md
+    * If you're using {{eck}}, then refer to [](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
+
 
 2. Add a realm configuration of the appropriate realm type to `elasticsearch.yml` under the `xpack.security.authc.realms` namespace. You must define your realm within the namespace that matches the type defined by the extension. The options you can set depend on the settings exposed by the custom realm. At a minimum, you must explicitly set the `order` attribute to control the order in which the realms are consulted during authentication. You must also make sure each configured realm has a distinct `order` setting. In the event that two or more realms have the same `order`, the node will fail to start.
 
