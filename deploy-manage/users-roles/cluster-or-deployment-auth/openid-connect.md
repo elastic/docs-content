@@ -17,17 +17,6 @@ applies_to:
 
 # OpenID Connect authentication [oidc-realm]
 
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-secure-clusters-oidc.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-guide.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/oidc-guide.md)
-* [/raw-migrated-files/cloud/cloud/ec-secure-clusters-oidc.md](/raw-migrated-files/cloud/cloud/ec-secure-clusters-oidc.md)
-
-==============
-
 The OpenID Connect realm enables {{es}} to serve as an OpenID Connect Relying Party (RP) and provides single sign-on (SSO) support in {{kib}}.
 
 It is specifically designed to support authentication using an interactive web browser, so it does not operate as a standard authentication realm. Instead, there are {{kib}} and {{es}} {{security-features}} that work together to enable interactive OpenID Connect sessions.
@@ -68,9 +57,7 @@ If you're using a self-managed cluster, then perform the following additional st
 
 * Enable TLS for HTTP.
 
-    If your {{es}} cluster is operating in production mode, you must configure the HTTP interface to use SSL/TLS before you can enable Kerberos authentication. For more information, see [Encrypt HTTP client communications for {{es}}](../../../deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
-
-    This step is necessary to support Kerberos authentication through {{kib}}. It is not required for Kerberos authentication directly against the {{es}} Rest API.
+    If your {{es}} cluster is operating in production mode, you must configure the HTTP interface to use SSL/TLS before you can enable OIDC authentication. For more information, see [Encrypt HTTP client communications for {{es}}](../../../deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
 
     If you started {{es}} [with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), then TLS is already enabled for HTTP. 
 
@@ -78,12 +65,11 @@ If you're using a self-managed cluster, then perform the following additional st
 
 * Enable the token service.
 
-    The {{es}} Kerberos implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your `elasticsearch.yml` file:
+    The {{es}} OIDC implementation makes use of the {{es}} token service. If you configure TLS on the HTTP interface, this service is automatically enabled. It can be explicitly configured by adding the following setting in your `elasticsearch.yml` file:
 
     ```yaml
     xpack.security.authc.token.enabled: true
     ```
-    This step is necessary to support Kerberos authentication through {{kib}}. It is not required for Kerberos authentication directly against the {{es}} Rest API.
 
     {{ech}}, {{ece}}, and {{eck}} have TLS enabled by default.
 
