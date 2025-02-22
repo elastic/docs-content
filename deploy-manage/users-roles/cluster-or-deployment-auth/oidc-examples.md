@@ -1,11 +1,6 @@
 ---
 mapped_urls:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-realm.html
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/oidc-guide.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-secure-clusters-oidc.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-secure-clusters-oidc.html
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-oidc-op.html
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-secure-clusters-oidc.html
 navigation_title: With Azure, Google, or Okta
 applies_to:
   deployment:

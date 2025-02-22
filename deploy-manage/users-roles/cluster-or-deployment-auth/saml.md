@@ -6,7 +6,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters-SAML.html
   - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-SAML.html
   - https://www.elastic.co/guide/en/cloud/current/ec-sign-outgoing-saml-message.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-securing-clusters-saml-azure.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-securing-clusters-SAML.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/echsign-outgoing-saml-message.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-saml-authentication.html
