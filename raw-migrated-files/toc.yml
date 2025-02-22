@@ -159,7 +159,6 @@ toc:
       - file: cloud/cloud/ec-saas-metrics-accessing.md
       - file: cloud/cloud/ec-secure-clusters-oidc.md
       - file: cloud/cloud/ec-securing-clusters-saml-azure.md
-      - file: cloud/cloud/ec-securing-clusters-SAML.md
       - file: cloud/cloud/ec-security.md
       - file: cloud/cloud/ec-select-subscription-level.md
       - file: cloud/cloud/ec-service-status.md

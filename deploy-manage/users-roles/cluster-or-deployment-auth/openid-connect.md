@@ -81,7 +81,7 @@ This realm has a few mandatory settings, and a number of optional settings. The 
 
 1. Create an OpenID Connect (the realm type is `oidc`) realm in your `elasticsearch.yml` file similar to what is shown below.
 
-  If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
+    If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
     ::::{note} 
     The values used below are meant to be an example and are not intended to apply to every use case. The details below the configuration snippet provide insights and suggestions to help you pick the proper values, depending on your OP configuration.
@@ -142,7 +142,8 @@ This realm has a few mandatory settings, and a number of optional settings. The 
 
         :::{tip} 
         * In self-managed clusters, the specified path is resolved relative to the {{es}} config directory. {{es}} will automatically monitor this file for changes and will reload the configuration whenever it is updated. 
-        * If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+        * If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. 
+        * If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
         :::
 
     op.userinfo_endpoint
@@ -210,7 +211,7 @@ To configure claims mapping:
 1. Using your OP configuration, identify the claims that it might support. 
    
    The list provided in the OP’s metadata or in the configuration page of the OP is a list of potentially supported claims. However, for privacy reasons it might not be a complete one, or not all supported claims will be available for all authenticated users.
-2. Review the list of [user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-properties) that {{es}} supports, and decide which of them are useful to you, and can be provided by your OP in the form of claims. At a minimum, the `principal` user property is required.
+2. Review the list of [user properties](#oidc-user-properties) that {{es}} supports, and decide which of them are useful to you, and can be provided by your OP in the form of claims. At a minimum, the `principal` user property is required.
 3. Configure your OP to "release" those claims to your {{stack}} Relying Party. This process greatly varies by provider. You can use a static configuration while others will support that the RP requests the scopes that correspond to the claims to be "released" on authentication time. See [`rp.requested_scopes`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-oidc-settings) for details about how to configure the scopes to request. To ensure interoperability and minimize the errors, you should only request scopes that the OP supports, and that you intend to map to {{es}} user properties.
 
     :::{note}
@@ -319,7 +320,7 @@ However, if the issuer of your OP’s certificate is not trusted by the JVM on w
 
 If you're using {{ech}} or {{ece}}, then you must [upload your certificate as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
 
-If you're using {{eck}}, then install it as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
+If you're using {{eck}}, then install the certificate as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 
 The following example demonstrates how to trust a CA certificate (`/oidc/company-ca.pem`), which is located within the configuration directory.
 
@@ -345,7 +346,7 @@ You can map LDAP groups to roles in the following ways:
 For more information, see [Mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
 ::::{note} 
-You can't use [role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) to grant roles to users authenticating via OpenID Connect.
+You can't use [role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) to grant roles to users authenticating using OpenID Connect.
 ::::
 
 ### Example: using the role mapping API
@@ -369,6 +370,8 @@ POST /_security/role_mapping/CLOUD_OIDC_TO_KIBANA_ADMIN <1>
 3. The fields to match against.
 4. The name of the OpenID Connect realm. This needs to be the same value as the one used in the cluster configuration.
 
+### Example: Role mapping API, using OpenID Claim information
+
 The user properties that are mapped via the realm configuration are used to process role mapping rules, and these rules determine which roles a user is granted.
 
 The user fields that are provided to the role mapping are derived from the OpenID Connect claims as follows:
@@ -378,7 +381,6 @@ The user fields that are provided to the role mapping are derived from the OpenI
 * `groups`: The `groups` user property
 * `metadata`: See [User metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-user-metadata)
 
-### Example: Role mapping API, using OpenID Claim information
 
 If your OP has the ability to provide groups or roles to RPs using an OpenID Claim, then you should map this claim to the `claims.groups` setting in the {{es}} realm (see [Mapping claims to user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md#oidc-claim-to-property)), and then make use of it in a role mapping.
 
@@ -421,6 +423,12 @@ OpenID Connect authentication in {{kib}} is subject to the following timeout set
 
 You may want to adjust these timeouts based on your security requirements.
 
+### Add the OIDC provider to {{kib}}
+
+::::{tip}
+You can configure multiple authentication providers in {{kib}} and let users choose the provider they want to use. For more information, check [the {{kib}} authentication documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
+::::
+
 The three additional settings that are required for OpenID Connect support are shown below:
 
 ```yaml
@@ -437,6 +445,8 @@ The configuration values used in the example above are:
 
 `xpack.security.authc.providers.oidc.<provider-name>.realm`
 :   The name of the OpenID Connect realm in {{es}} that should handle authentication for this Kibana instance.
+
+### Supporting OIDC and basic authentication in {{kib}}
 
 If you also want to allow users to log in with a username and password, you must enable the `basic` authentication provider too. This will allow users that haven’t already authenticated with OpenID Connect to log in using the {{kib}} login form: 
 
