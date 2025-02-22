@@ -2,6 +2,7 @@
 navigation_title: Configure a policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html
 applies_to:
   stack: ga
   serverless: ga

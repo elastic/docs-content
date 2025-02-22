@@ -8,13 +8,13 @@ Minor version upgrades, upgrades from 8.17 to 9.0.0-beta1, and cluster configura
 
 If you use a separate [monitoring deployment](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md), you should upgrade the monitoring deployment before the production deployment. In general, the monitoring deployment and the deployments being monitored should be running the same version of the Elastic Stack. A monitoring deployment cannot monitor production deployments running newer versions of the stack. If necessary, the monitoring deployment can monitor production deployments running the latest release of the previous major version.
 
-::::{important} 
+::::{important}
 Although it’s simple to upgrade an Elastic Cloud deployment, the new version might include breaking changes that affect your application. Make sure you review the deprecation logs, make any necessary changes, and test against the new version before upgrading your production deployment.
 ::::
 
 
 Upgrade Assistant
-:   Prior to upgrading, Elastic Cloud checks the deprecation API to retrieve information about the cluster, node, and index-level settings that need to be removed or changed. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. Use the [Upgrade Assistant](https://www.elastic.co/guide/en/kibana/8.17/upgrade-assistant.html) in 8.17 to identify and resolve issues and reindex any indices created before 7.0.
+:   Prior to upgrading, Elastic Cloud checks the deprecation API to retrieve information about the cluster, node, and index-level settings that need to be removed or changed. If there are any issues that would prevent a successful upgrade, the upgrade is blocked. Use the [Upgrade Assistant](https://www.elastic.co/guide/en/kibana/8.x/upgrade-assistant.html) in 8.17 to identify and resolve issues and reindex any indices created before 7.0.
 
 Snapshots
 :   To keep your data safe during the upgrade process, a snapshot is taken automatically before any changes are made to your cluster. After a major version upgrade is complete and a snapshot of the upgraded cluster is available, all snapshots taken with the previous major version of {{es}} are stored in the snapshot repository.
@@ -27,7 +27,7 @@ Snapshots
 Breaking changes
 :   Major version upgrades can include breaking changes that require you to take additional steps to ensure that your applications behave as expected after the upgrade. Make sure you test against the new version before upgrading existing deployments.
 
-    Review the [*Breaking changes*](https://www.elastic.co/guide/en/elastic-stack/current/elastic-stack-breaking-changes.html) and upgrade your code to work with 9.0.0-beta1.
+    Review the [*Breaking changes*](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/index.md) and upgrade your code to work with 9.0.0-beta1.
 
 
 Known issues
@@ -43,7 +43,7 @@ Security realm settings
 
 
 
-## Perform the upgrade [perform-cloud-upgrade] 
+## Perform the upgrade [perform-cloud-upgrade]
 
 Log in to your Elastic Cloud environment:
 
@@ -230,13 +230,13 @@ To upgrade a deployment:
 2. Select version 9.0.0-beta1.
 3. Click **Upgrade** and then **Confirm upgrade**. The new configuration takes a few minutes to create.
 
-    ::::{note} 
+    ::::{note}
     If any incompatibilities are detected when you attempt to upgrade to 9.0.0-beta1, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. After resolving the issues, return to the deployments page and restart the upgrade.
     ::::
 
 
 
-## Upgrading {{es}} clients and ingest components [upgrading-clients-ingest] 
+## Upgrading {{es}} clients and ingest components [upgrading-clients-ingest]
 
 Once you have upgraded from 8.17, you need to update your {{es}} clients and ingest components in the following order:
 
@@ -246,7 +246,7 @@ Once you have upgraded from 8.17, you need to update your {{es}} clients and ing
 4. {{agent}}: [upgrade instructions](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
 
 
-## Reindex to upgrade [upgrading-reindex] 
+## Reindex to upgrade [upgrading-reindex]
 
 If you are running a pre-8.x version, you might need to perform multiple upgrades or a full-cluster restart to get to 8.17 to prepare to upgrade to 9.0.0-beta1.
 

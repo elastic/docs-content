@@ -1,7 +1,9 @@
 ---
+mapped_pages:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html
 applies_to:
   deployment:
-    self: 
+    self:
 ---
 
 # Google Cloud Storage repository [repository-gcs]

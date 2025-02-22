@@ -12,7 +12,7 @@ The following APM agent key APIs are available:
 * [Create agent key](#apm-create-agent-key) to create an APM agent key
 
 
-### How to use APM APIs [use-agent-key-api] 
+### How to use APM APIs [use-agent-key-api]
 
 ::::{dropdown} Expand for required headers, privileges, and usage details
 Interact with APM APIs using cURL or another API tool. All APM APIs are Kibana APIs, not Elasticsearch APIs; because of this, the Kibana dev tools console cannot be used to interact with APM APIs.
@@ -46,14 +46,14 @@ For all APM APIs, you must use a request header. Supported headers are `Authoriz
 Create an APM agent API key. Specify API key privileges in the request body at creation time.
 
 
-#### Privileges [apm-create-agent-key-privileges] 
+#### Privileges [apm-create-agent-key-privileges]
 
 The user creating an APM agent API key must have at least the `manage_own_api_key` cluster privilege and the APM application-level privileges that it wishes to grant.
 
 
-##### Example role [_example_role] 
+##### Example role [_example_role]
 
-The example below uses the Kibana [role management API](https://www.elastic.co/guide/en/kibana/current/role-management-api.html) to create a role named `apm_agent_key_user`. Create and assign this role to a user that wishes to create APM agent API keys.
+The example below uses the Kibana [role management API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to create a role named `apm_agent_key_user`. Create and assign this role to a user that wishes to create APM agent API keys.
 
 ```js
 POST /_security/role/apm_agent_key_user
@@ -75,12 +75,12 @@ POST /_security/role/apm_agent_key_user
 ```
 
 
-#### Request [apm-create-agent-key-req] 
+#### Request [apm-create-agent-key-req]
 
 `POST /api/apm/agent_keys`
 
 
-#### Request body [apm-create-agent-key-req-body] 
+#### Request body [apm-create-agent-key-req-body]
 
 `name`
 :   (required, string) Name of the APM agent key.
@@ -93,7 +93,7 @@ POST /_security/role/apm_agent_key_user
 
 
 
-#### Example [apm-agent-key-create-example] 
+#### Example [apm-agent-key-create-example]
 
 ```bash
 POST /api/apm/agent_keys
@@ -104,7 +104,7 @@ POST /api/apm/agent_keys
 ```
 
 
-#### Response body [apm-agent-key-create-body] 
+#### Response body [apm-agent-key-create-body]
 
 ```js
 {

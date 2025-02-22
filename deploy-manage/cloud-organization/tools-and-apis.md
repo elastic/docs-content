@@ -26,7 +26,7 @@ Elasticsearch APIs
 Kibana APIs
 :   Many Kibana features can be accessed through these APIs, including Kibana objects, patterns, and dashboards, as well as user roles and user sessions. You can use these APIs to configure alerts and actions, and to access health details for the Kibana Task Manager.
 
-    The Kibana APIs cannot be accessed directly from the Elasticsearch Service console; you need to use `curl` or another HTTP tool to connect. Check the [Kibana API reference documentation](https://www.elastic.co/guide/en/kibana/current/api.html) to learn about using the APIs and for details about all available endpoints.
+    The Kibana APIs cannot be accessed directly from the Elasticsearch Service console; you need to use `curl` or another HTTP tool to connect. Check the [Kibana API reference documentation](https://www.elastic.co/docs/api/doc/kibana/ to learn about using the APIs and for details about all available endpoints.
 
     Some [restrictions](../deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-kibana) apply when using these APIs with an Elasticsearch Service Kibana instance as compared to an on-prem installation.
 
@@ -38,7 +38,7 @@ Other Products
     * [App Search API Reference](https://www.elastic.co/guide/en/app-search/current/api-reference.html)
     * [Elastic Security APIs](https://www.elastic.co/guide/en/security/current/security-apis.html)
     * [Fleet APIs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md)
-    * [Logstash APIs](https://www.elastic.co/guide/en/logstash/current/monitoring-logstash.html)
+    * [Logstash APIs](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/monitoring-logstash.md)
     * [Workplace Search API Reference](https://www.elastic.co/guide/en/workplace-search/current/workplace-search-api-overview.html)
 
 

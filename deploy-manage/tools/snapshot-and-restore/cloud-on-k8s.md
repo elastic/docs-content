@@ -3,7 +3,7 @@ navigation_title: "Elastic Cloud on Kubernetes"
 
 applies_to:
   deployment:
-    eck: 
+    eck:
 ---
 
 # Manage snapshot repositories in Elastic Cloud on Kubernetes [k8s-snapshots]
@@ -168,7 +168,7 @@ Follow the instructions in the [GKE documentation](https://cloud.google.com/kube
 
 ### Use AWS IAM roles for service accounts (IRSA) [k8s-iam-service-accounts]
 
-The AWS IAM roles for service accounts feature allows you to give Elasticsearch restricted access to a S3 bucket without having to expose and store AWS credentials directly in Elasticsearch. This requires you to run the ECK operator on Amazon’s EKS offering and an [Elasticsearch cluster running at least version 8.1](https://www.elastic.co/guide/en/elasticsearch/reference/8.1/repository-s3.html#iam-kubernetes-service-accounts).
+The AWS IAM roles for service accounts feature allows you to give Elasticsearch restricted access to a S3 bucket without having to expose and store AWS credentials directly in Elasticsearch. This requires you to run the ECK operator on Amazon’s EKS offering and an [Elasticsearch cluster running at least version 8.1](/deploy-manage/tools/snapshot-and-restore/s3-repository.md#iam-kubernetes-service-accounts).
 
 Follow [the AWS documentation](https://aws.amazon.com/premiumsupport/knowledge-center/eks-restrict-s3-bucket/) to set this feature up. Specifically you need to:
 

@@ -98,7 +98,7 @@ Task Manager provides a visible status which can be used to diagnose issues and 
 
 When a rule is created, a task is created, scheduled to run at the interval specified. For example, when a rule is created and configured to check every 5 minutes, then the underlying task will be expected to run every 5 minutes. In practice, after each time the rule runs, the task is scheduled to run again in 5 minutes, rather than being scheduled to run every 5 minutes indefinitely.
 
-If you use the [alerting APIs](https://www.elastic.co/guide/en/kibana/current/alerting-apis.html), such as the get rule API or find rules API, you’ll get an object that contains rule details:
+If you use the [alerting APIs](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-alerting), such as the get rule API or find rules API, you’ll get an object that contains rule details:
 
 ```txt
 {

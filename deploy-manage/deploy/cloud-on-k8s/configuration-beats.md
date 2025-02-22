@@ -89,7 +89,7 @@ ECK supports the deployment of the following Beats:
 * [Heartbeat](https://www.elastic.co/beats/heartbeat)
 * [Auditbeat](https://www.elastic.co/beats/auditbeat)
 * [Packetbeat](https://www.elastic.co/beats/packetbeat)
-* [Journalbeat](https://www.elastic.co/guide/en/beats/journalbeat/current/index.html)
+* [Journalbeat](https://www.elastic.co/guide/en/beats/journalbeat/7.15/journalbeat-overview.html)
 
 For each Beat you want to deploy, you can specify the `type` and `version` elements. ECK creates a new user in Elasticsearch with a minimal set of appropriate roles and permissions to enable the use of all Beats features.
 

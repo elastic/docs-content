@@ -165,7 +165,7 @@ If a setting is not supported by Elasticsearch Add-On for Heroku, you will get a
 #### Map settings [echmap_settings]
 
 `map.regionmap:`
-:   Specifies additional vector layers for use in [Region Map](https://www.elastic.co/guide/en/kibana/7.5/visualize-maps.html#region-map) visualizations. Each layer object points to an external vector file that contains a geojson FeatureCollection. The file must use the [WGS84 coordinate reference system](https://en.wikipedia.org/wiki/World_Geodetic_System) and only include polygons. If the file is hosted on a separate domain from Kibana, the server needs to be CORS-enabled so Kibana can download the file. The following example shows a valid regionmap configuration.
+:   Specifies additional vector layers for use in [Region Map](/explore-analyze/visualize/maps/maps-getting-started.md) visualizations. Each layer object points to an external vector file that contains a geojson FeatureCollection. The file must use the [WGS84 coordinate reference system](https://en.wikipedia.org/wiki/World_Geodetic_System) and only include polygons. If the file is hosted on a separate domain from Kibana, the server needs to be CORS-enabled so Kibana can download the file. The following example shows a valid regionmap configuration.
 
     ```yaml
     map.regionmap:

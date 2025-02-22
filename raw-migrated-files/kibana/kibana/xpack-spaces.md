@@ -44,7 +44,7 @@ You can have up to 1,000 spaces by default. The maximum number of spaces can be 
 
 You can edit all of the space settings you just defined at any time, except for the URL identifier.
 
-{{kib}} also has an [API](https://www.elastic.co/guide/en/kibana/current/spaces-api.html) if you prefer to create spaces programmatically.
+{{kib}} also has an [API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-spaces) if you prefer to create spaces programmatically.
 
 
 ## Define access to a space [spaces-control-user-access]

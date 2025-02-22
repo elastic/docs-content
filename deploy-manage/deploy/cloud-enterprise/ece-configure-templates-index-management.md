@@ -14,7 +14,7 @@ In a template that creates a hot-warm architecture, you can use index curation t
 
 Configuring index management is part of the larger task of [creating deployment templates](ece-configuring-ece-create-templates.md) or editing them. The choices you make here determine which index management methods are available to your users when they create deployments.
 
-You should configure all index management methods that you want your users to be able to choose from when they create their deployments from your template. You can configure index curation, index lifecycle management, or both. If you are not sure which index management methods to configure, take a look at how your users are asked to [configure index management](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html) when they customize their deployments.
+You should configure all index management methods that you want your users to be able to choose from when they create their deployments from your template. You can configure index curation, index lifecycle management, or both. If you are not sure which index management methods to configure, take a look at how your users are asked to [configure index management](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) when they customize their deployments.
 
 
 ## Steps [ece_steps_2]

@@ -48,7 +48,7 @@ You can initiate a trial only if a trial has not been previously activated.
 ::::
 
 
-At the end of the trial period, the Platinum and Enterprise features operate in a [degraded mode](https://www.elastic.co/guide/en/elastic-stack-overview/current/license-expiration.html). You can revert to a Basic license, extend the trial, or purchase an Enterprise subscription.
+At the end of the trial period, the Platinum and Enterprise features operate in a [degraded mode](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md). You can revert to a Basic license, extend the trial, or purchase an Enterprise subscription.
 
 
 ## Add a license [k8s-add-license]

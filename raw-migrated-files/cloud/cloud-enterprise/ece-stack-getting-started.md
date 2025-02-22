@@ -47,7 +47,7 @@ Of course, you can choose to follow your own path and use Elastic components ava
 
 * Try one of our solutions by following our [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html).
 * [Create a deployment](../../../deploy-manage/deploy/cloud-enterprise/create-deployment.md) - Get up and running very quickly. Select your desired configuration and let Elastic deploy Elasticsearch, Kibana, and the Elastic products that you need for you. In a deployment, everything works together, everything runs on hardware that is optimized for your use case.
-* [Connect your data to your deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-cloud-ingest-data.html) - Ingest and index the data you want, from a variety of sources, and take action on it.
+* [Connect your data to your deployment](/manage-data/ingest.md) - Ingest and index the data you want, from a variety of sources, and take action on it.
 
 **And then?**
 

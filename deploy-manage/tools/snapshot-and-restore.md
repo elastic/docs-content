@@ -1,10 +1,10 @@
 ---
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Snapshot and restore
@@ -60,7 +60,7 @@ Use **Kibana** to manage your snapshots. In Kibana, you can:
 
 In **Elastic Cloud Enterprise**, you can also [restore snapshots](snapshot-and-restore/restore-snapshot.md) across clusters.
 ::::
-  
+
 ::::{dropdown} Elastic Cloud on Kubernetes (ECK)
 On Elastic Cloud on Kubernetes, you must manually configure snapshot repositories. The system does not create **Snapshot Lifecycle Management (SLM) policies** or **automatic snapshots** by default.
 
@@ -75,9 +75,9 @@ Snapshots back up only open indices. If you close an index, it is not included i
 
 By default, a snapshot of a cluster contains the cluster state, all regular data streams, and all regular indices. The cluster state includes:
 
-- [Persistent cluster settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#cluster-setting-types) 
+- [Persistent cluster settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#cluster-setting-types)
 - [Index templates](/manage-data/data-store/templates.md)
-- [Legacy index templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.17/indices-templates-v1.html)
+- [Legacy index templates](https://www.elastic.co/guide/en/elasticsearch/reference/8.x/indices-templates-v1.html)
 - [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 - [ILM policies](/manage-data/lifecycle/index-lifecycle-management.md)
 - [Stored scripts](/explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts)
@@ -147,7 +147,7 @@ You can’t restore an index to an earlier version of Elasticsearch. For example
 
 A compatible snapshot can contain indices created in an older incompatible version. For example, a snapshot of a 7.17 cluster can contain an index created in 6.8. Restoring the 6.8 index to an 8.17 cluster fails unless you can use the [archive functionality](/deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). Keep this in mind if you take a snapshot before upgrading a cluster.
 
-As a workaround, you can first restore the index to another cluster running the latest version of Elasticsearch that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/guide/en/elasticsearch/reference/8.17/docs-reindex.html#reindex-from-remote) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) is enabled.
+As a workaround, you can first restore the index to another cluster running the latest version of Elasticsearch that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) is enabled.
 
 Reindexing from remote can take significantly longer than restoring a snapshot. Before you start, test the reindex from remote process with a subset of the data to estimate your time requirements.
 

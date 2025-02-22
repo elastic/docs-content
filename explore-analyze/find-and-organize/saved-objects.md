@@ -168,7 +168,7 @@ If you import a saved object using the "Check for existing objects" option, {{ki
 For example, you have a saved object in an `export.ndjson` file, and you set up a brand new {{kib}} instance. You attempt to import the saved object using the "Check for existing objects" and "Automatically overwrite conflicts" options. The first time you import the saved object, {{kib}} will create a new object with the same ID (step 4 above). If you import it again, {{kib}} will find that object and overwrite it (step 1 above). If you then create a *different* space and import it there, {{kib}} will create a new object with a random ID (step 3 above). Finally, if you import it into the second space again, {{kib}} will find the second object with a matching origin and overwrite it (step 2 above).
 
 ::::{warning}
-When you import a saved object and it is created with a different ID, if 1. it contains weak links to other saved objects (such as a dashboard with a Markdown URL to navigate to another dashboard) and 2. the object’s ID has changed (step 3 above), those weak links will be broken. For more information, refer to [the changelog](https://www.elastic.co/guide/en/kibana/8.0/release-notes-8.0.0.html#known-issue-8.0.0).
+When you import a saved object and it is created with a different ID, if 1. it contains weak links to other saved objects (such as a dashboard with a Markdown URL to navigate to another dashboard) and 2. the object’s ID has changed (step 3 above), those weak links will be broken. For more information, refer to [the changelog](asciidocalypse://docs/kibana/docs/release-notes/known-issues/kibana.md).
 ::::
 
 
@@ -178,7 +178,7 @@ When you import a saved object and it is created with a different ID, if 1. it c
 If you are using the saved objects APIs directly, you should be aware of these changes:
 
 ::::{warning}
-Some of the saved objects APIs are deprecated since version 8.7.0. For more information, refer to the [API docs](https://www.elastic.co/guide/en/kibana/current/saved-objects-api.html)
+Some of the saved objects APIs are deprecated since version 8.7.0. For more information, refer to the [API docs](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-saved-objects)
 ::::
 
 

@@ -856,6 +856,6 @@ To learn more about your rule’s {{es}} queries, preview its results and do the
     * The actual {{es}} queries that the rule submits to indices containing events that are used during the rule execution
 
         ::::{tip}
-        Run the queries in [Console](https://www.elastic.co/guide/en/serverless/current/devtools-run-api-requests-in-the-console.html) to determine if your rule is retrieving the expected data. For example, to test your rule’s exceptions, run the rule’s {{es}} queries, which will also contain exceptions added to the rule. If your rule’s exceptions are working as intended, the query will not return events that should be ignored.
+        Run the queries in [Console](/explore-analyze/query-filter/tools/console.md) to determine if your rule is retrieving the expected data. For example, to test your rule’s exceptions, run the rule’s {{es}} queries, which will also contain exceptions added to the rule. If your rule’s exceptions are working as intended, the query will not return events that should be ignored.
 
         ::::

@@ -486,11 +486,11 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/filebeat/master/command-line-options.html)). To specify flags, start Filebeat in the foreground.
+If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/command-line-options.md)). To specify flags, start Filebeat in the foreground.
 ::::
 
 
-Also see [Filebeat and systemd](https://www.elastic.co/guide/en/beats/filebeat/master/running-with-systemd.html).
+Also see [Filebeat and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} RPM
@@ -499,11 +499,11 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/filebeat/master/command-line-options.html)). To specify flags, start Filebeat in the foreground.
+If you use an `init.d` script to start Filebeat, you can’t specify command line flags (see [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/command-line-options.md)). To specify flags, start Filebeat in the foreground.
 ::::
 
 
-Also see [Filebeat and systemd](https://www.elastic.co/guide/en/beats/filebeat/master/running-with-systemd.html).
+Also see [Filebeat and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} MacOS
@@ -1201,11 +1201,11 @@ sudo service metricbeat start
 ```
 
 ::::{note}
-If you use an `init.d` script to start Metricbeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/metricbeat/master/command-line-options.html)). To specify flags, start Metricbeat in the foreground.
+If you use an `init.d` script to start Metricbeat, you can’t specify command line flags (see [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/command-line-options.md)). To specify flags, start Metricbeat in the foreground.
 ::::
 
 
-Also see [Metricbeat and systemd](https://www.elastic.co/guide/en/beats/metricbeat/master/running-with-systemd.html).
+Also see [Metricbeat and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} RPM
@@ -1214,11 +1214,11 @@ sudo service metricbeat start
 ```
 
 ::::{note}
-If you use an `init.d` script to start Metricbeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/metricbeat/master/command-line-options.html)). To specify flags, start Metricbeat in the foreground.
+If you use an `init.d` script to start Metricbeat, you can’t specify command line flags (see [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/command-line-options.md)). To specify flags, start Metricbeat in the foreground.
 ::::
 
 
-Also see [Metricbeat and systemd](https://www.elastic.co/guide/en/beats/metricbeat/master/running-with-systemd.html).
+Also see [Metricbeat and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} MacOS
@@ -1405,7 +1405,7 @@ This is a Spring Boot application. The `UserProfileController.showProfile()` met
 
 The Java {{apm-agent}} can instrument specific frameworks automatically. Spring and Spring Boot are supported well, and the above data was created by adding the agent to the Spring Boot application; there is no configuration necessary.
 
-There are currently agents for Go, .NET, Node, Python, Ruby, and the browser (RUM). Agents keep getting added so you may want to check the [APM agent documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
+There are currently agents for Go, .NET, Node, Python, Ruby, and the browser (RUM). Agents keep getting added so you may want to check the [APM agent documentation](/solutions/observability/apps/elastic-apm-agents.md).
 
 
 ### Add the {{apm-agent}} to your code [_add_the_apm_agent_to_your_code]
@@ -1812,11 +1812,11 @@ sudo service heartbeat start
 ```
 
 ::::{note}
-If you use an `init.d` script to start Heartbeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/heartbeat/master/command-line-options.html)). To specify flags, start Heartbeat in the foreground.
+If you use an `init.d` script to start Heartbeat, you can’t specify command line flags (see [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/command-line-options.md)). To specify flags, start Heartbeat in the foreground.
 ::::
 
 
-Also see [Heartbeat and systemd](https://www.elastic.co/guide/en/beats/heartbeat/master/running-with-systemd.html).
+Also see [Heartbeat and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} RPM
@@ -1825,11 +1825,11 @@ sudo service heartbeat start
 ```
 
 ::::{note}
-If you use an `init.d` script to start Heartbeat, you can’t specify command line flags (see [Command reference](https://www.elastic.co/guide/en/beats/heartbeat/master/command-line-options.html)). To specify flags, start Heartbeat in the foreground.
+If you use an `init.d` script to start Heartbeat, you can’t specify command line flags (see [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/command-line-options.md)). To specify flags, start Heartbeat in the foreground.
 ::::
 
 
-Also see [Heartbeat and systemd](https://www.elastic.co/guide/en/beats/heartbeat/master/running-with-systemd.html).
+Also see [Heartbeat and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} MacOS

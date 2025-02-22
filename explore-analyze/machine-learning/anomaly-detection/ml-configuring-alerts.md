@@ -4,6 +4,7 @@ applies_to:
   serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-configuring-alerts.html
+  - https://www.elastic.co/guide/en/machine-learning/current/creating-anomaly-alert-rules.html
 ---
 
 # Generating alerts for anomaly detection jobs [ml-configuring-alerts]

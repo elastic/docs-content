@@ -229,7 +229,7 @@ Each case has a universally unique identifier (UUID) that you can copy and share
 
 ## Export and import cases [cases-export-import]
 
-Cases can be [exported](../../../solutions/security/investigate/open-manage-cases.md#cases-export) and [imported](../../../solutions/security/investigate/open-manage-cases.md#cases-import) as saved objects using the Saved Objects [project settings](https://www.elastic.co/guide/en/serverless/current/security-project-settings.html) UI.
+Cases can be [exported](../../../solutions/security/investigate/open-manage-cases.md#cases-export) and [imported](../../../solutions/security/investigate/open-manage-cases.md#cases-import) as saved objects using the Saved Objects [project settings](/deploy-manage/deploy/elastic-cloud/project-settings.md) UI.
 
 ::::{important}
 Before importing Lens visualizations, Timelines, or alerts, ensure their data is present. Without it, they won’t work after being imported.

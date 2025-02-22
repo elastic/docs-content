@@ -29,7 +29,7 @@ Elastic Cloud Enterprise installs those cluster licenses with an approximately 3
 When the Elastic Cloud Enterprise license expires, and consequently the cluster license that’s currently installed for all managed clusters since it has the same expiration date, the following takes place:
 
 * **Users cannot create new clusters or modify existing clusters**: They can only delete them. These clusters are still fully accessible for the client though.
-* **X-Pack features are degraded**: For the details about what functionality will be reduced when cluster license expires, read more about the [Elastic Stack license expiration](https://www.elastic.co/guide/en/elastic-stack-overview/current/license-expiration.html).
+* **X-Pack features are degraded**: For the details about what functionality will be reduced when cluster license expires, read more about the [Elastic Stack license expiration](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md).
 
 
 ## Download a license [ece_download_a_license]

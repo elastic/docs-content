@@ -51,7 +51,7 @@ With [Elastic Observability](https://www.elastic.co/observability), you can moni
 
 **Guides for popular Observability use cases**
 
-* [Monitor applications and systems with Elastic Observability](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html)
+* [Monitor applications and systems with Elastic Observability](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md)
 * [Get started with logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
 
     * [Step 1: Add the {{agent}} System integration](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#add-system-integration)

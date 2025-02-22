@@ -170,4 +170,4 @@ By default the operator manages a private CA and generates a self-signed certifi
 
 This behavior and the relevant configuration is identical to what is done for Elasticsearch and Kibana. Check [Setting up your own certificate](/deploy-manage/security/secure-http-communications.md) for more information on how to use your own certificate to configure the TLS endpoint of the APM Server.
 
-For more details on how to configure the APM agents to work with custom certificates, check the [APM agents documentation](https://www.elastic.co/guide/en/apm/agent/index.html).
+For more details on how to configure the APM agents to work with custom certificates, check the [APM agents documentation](/solutions/observability/apps/elastic-apm-agents.md).

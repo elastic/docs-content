@@ -29,7 +29,7 @@ Kibana
 
 APM
 
-* [APM Release Notes](https://www.elastic.co/guide/en/apm/guide/current/release-notes.html)
+* [APM Release Notes](asciidocalypse://docs/docs-content/docs/release-notes/elastic-apm.md)
 
 Enterprise Search
 

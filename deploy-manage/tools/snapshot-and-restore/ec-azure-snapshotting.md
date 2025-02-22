@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    ess: 
+    ess:
 ---
 
 # Configure a snapshot repository using Azure Blob storage [ec-azure-snapshotting]
@@ -18,7 +18,7 @@ Follow the Microsoft documentation to [set up an Azure storage account](https://
 
 For deployments with **Elastic Stack version 7.17 and earlier**, you’ll need to enable the `repository-azure` plugin to use the Azure repository type. On the Azure platform, the plugin is enabled by default. If your deployment is on AWS or GCP, follow these steps to enable the `repository-azure` plugin:
 
-1. Refer to [Azure Repository Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/7.17/repository-azure.html) to download the version of the plugin that matches your Elastic Stack version.
+1. Refer to [Azure Repository Plugin](/deploy-manage/tools/snapshot-and-restore/azure-repository.md) to download the version of the plugin that matches your Elastic Stack version.
 2. Upload the plugin to your deployment:
 
     1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).

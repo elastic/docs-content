@@ -62,11 +62,11 @@ RESTful API with JSON over HTTP and HTTPS
     To make this `curl` command work with your cluster, you need to replace the endpoint URL with your own.
 
 
-::::{tip} 
+::::{tip}
 If you created a cluster on Elasticsearch 5.0 or later or if you already enabled the security features, you must include authentication details with the -u parameter. For example: `curl -u elastic:W0UN0Rh9WX8eKeN69grVk3bX https://85943ce00a934471cb971009e73d2d39.us-east-1.aws.found.io:9243`. You can check [Get existing ECE security certificates](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) for how to get the CA certificate (`elastic-ece-ca-cert.pem` in this example) and use it to connect to the Elasticsearch cluster.
 ::::
 
 ## Ingest methods
 
-There are several ways to connect to Elasticsearch, perform searches, insert data, and more.  See the [ingesting data](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-cloud-ingest-data.html) documentation.
+There are several ways to connect to Elasticsearch, perform searches, insert data, and more.  See the [ingesting data](/manage-data/ingest.md) documentation.
 

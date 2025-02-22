@@ -67,9 +67,9 @@ To run a {{kib}} diagnostic:
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
-    * `kibana-local` (default, recommended): Polls the [{{kib}} API](https://www.elastic.co/guide/en/kibana/current/api.html), gathers operating system info, and captures cluster and garbage collection (GC) logs.
+    * `kibana-local` (default, recommended): Polls the [{{kib}} API](https://www.elastic.co/docs/api/doc/kibana/, gathers operating system info, and captures cluster and garbage collection (GC) logs.
     * `kibana-remote`: Establishes an SSH session to the applicable target server to pull the same information as `kibana-local`.
-    * `kibana-api`: Polls the [{{kib}} API](https://www.elastic.co/guide/en/kibana/current/api.html). All other data must be collected manually.
+    * `kibana-api`: Polls the [{{kib}} API](https://www.elastic.co/docs/api/doc/kibana/. All other data must be collected manually.
 
     ::::
 

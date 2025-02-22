@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    ess: 
+    ess:
 ---
 
 # Configure a snapshot repository using GCS [ec-gcs-snapshotting]
@@ -31,7 +31,7 @@ Follow the Google Cloud Storage documentation to [create a GCS bucket](https://c
 
 For deployments with **Elastic Stack version 7.17 and earlier**, you’ll need to enable the `repository-gcs` plugin to use the Google Cloud Storage repository type. On Google Cloud Platform, the plugin is enabled by default. If your deployment is on AWS or Azure, follow these steps to enable the `repository-gcs` plugin:
 
-1. Refer to [Google Cloud Storage Repository Plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/7.17/repository-gcs.html) to download the version of the plugin that matches your Elastic Stack version.
+1. Refer to [Google Cloud Storage Repository Plugin](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md) to download the version of the plugin that matches your Elastic Stack version.
 2. Upload the plugin to your deployment:
 
     1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).

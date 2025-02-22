@@ -14,7 +14,7 @@ When upgrading the version of an existing cluster, either a minor or major upgra
 
 If you are upgrading to version 6.7 and later, minor or major upgrades to highly available deployments require little to no downtime as a rolling upgrade is performed.
 
-Major version upgrades sometimes require other changes due to breaking changes or discontinued features. For example, some special considerations apply when [upgrading to Elasticsearch 5.0](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-upgrading-v5.html). Our recommended approach for major version upgrades is to create a new deployment with the latest major version you want to upgrade to, reindex everything and make sure index requests are temporarily sent to both clusters. With the new cluster ready, tested, and working, you can then remove the old deployment.
+Major version upgrades sometimes require other changes due to breaking changes or discontinued features. For example, some special considerations apply when [upgrading to Elasticsearch 5.0](https://www.elastic.co/guide/en/cloud-enterprise/3.7/ece-upgrading-v5.html). Our recommended approach for major version upgrades is to create a new deployment with the latest major version you want to upgrade to, reindex everything and make sure index requests are temporarily sent to both clusters. With the new cluster ready, tested, and working, you can then remove the old deployment.
 
 If you are upgrading to version 6.6 and earlier, major upgrades require a full cluster restart to complete the upgrade process.
 
@@ -25,9 +25,9 @@ Patch releases also require no downtime when upgrading highly available deployme
 
 When upgrading from one recent major Elasticsearch version to the next, we recommend that you prepare ahead of time to make the process go smoothly. To learn more, see:
 
-* [Upgrade to Elasticsearch 7.x](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-upgrading-v7.html)
-* [Upgrade to Elasticsearch 6.x](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-upgrading-v6.html)
-* [Upgrade to Elasticsearch 5.x](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-upgrading-v5.html)
+* [Upgrade to Elasticsearch 7.x](https://www.elastic.co/guide/en/cloud-enterprise/3.7/ece-upgrading-v7.html)
+* [Upgrade to Elasticsearch 6.x](https://www.elastic.co/guide/en/cloud-enterprise/3.7/ece-upgrading-v6.html)
+* [Upgrade to Elasticsearch 5.x](https://www.elastic.co/guide/en/cloud-enterprise/3.7/ece-upgrading-v5.html)
 
 
 ## Perform the upgrade [ece_perform_the_upgrade]

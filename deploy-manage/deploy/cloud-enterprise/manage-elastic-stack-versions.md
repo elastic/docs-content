@@ -15,7 +15,7 @@ Elastic Cloud Enterprise ships with a number of different versions of the Elasti
 New or updated versions of the Elastic Stack must be prepared to work with Elastic Cloud Enterprise and are provided as packs that you can download.
 
 ::::{important}
-Elasticsearch 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on Elastic Cloud Enterprise with ILM rather than index curation. Check [migrate to index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md) for existing clusters, and [configure index management](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html) for new clusters.
+Elasticsearch 7.8 and later comes with Index Lifecycle Management (ILM) always enabled. Before upgrading to 7.8 or later, to avoid any unpredictable behavior it is important to configure hot-warm clusters on Elastic Cloud Enterprise with ILM rather than index curation. Check [migrate to index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md) for existing clusters, and [configure index management](/manage-data/lifecycle/index-lifecycle-management/configure-lifecycle-policy.md) for new clusters.
 ::::
 
 

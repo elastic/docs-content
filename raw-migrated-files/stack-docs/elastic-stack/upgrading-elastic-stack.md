@@ -15,7 +15,7 @@ Upgrading from a release candidate build, such as 8.0.0-rc1 or 8.0.0-rc2, is not
 
 1. Review the breaking changes for each product you use and make the necessary changes so your code is compatible with 9.0.0-beta1:
 
-    * [APM breaking changes](https://www.elastic.co/guide/en/observability/current/apm-breaking.html)
+    * [APM breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-apm.md)
     * [{{beats}} breaking changes](asciidocalypse://docs/beats/docs/release-notes/breaking-changes/beats.md)
     * [{{es}} migration guide](asciidocalypse://docs/elasticsearch/docs/release-notes/breaking-changes/elasticsearch.md)
     * [{{elastic-sec}} release notes](https://www.elastic.co/guide/en/security/current/release-notes.html)
@@ -61,11 +61,11 @@ You can view your remote clusters from **Stack Management > Remote Clusters**.
 ::::
 
 
-1. Use the [Upgrade Assistant](https://www.elastic.co/guide/en/kibana/8.17/upgrade-assistant.html) to prepare for your upgrade from 8.17 to 9.0.0-beta1. The **Upgrade Assistant** identifies deprecated settings and guides you through resolving issues and reindexing indices created before 7.0. Make sure you have a current snapshot before making configuration changes or reindexing.
+1. Use the [Upgrade Assistant](https://www.elastic.co/guide/en/kibana/8.x/upgrade-assistant.html) to prepare for your upgrade from 8.17 to 9.0.0-beta1. The **Upgrade Assistant** identifies deprecated settings and guides you through resolving issues and reindexing indices created before 7.0. Make sure you have a current snapshot before making configuration changes or reindexing.
 
     **You must resolve all critical issues before proceeding with the upgrade.**
 
-2. Review the deprecation logs from the **Upgrade Assistant** to determine if your applications are using features that are not supported or behave differently in 8.x. See the [breaking changes](https://www.elastic.co/guide/en/elastic-stack/current/elastic-stack-breaking-changes.html) for more information about changes in 9.0.0-beta1 that could affect your application.
+2. Review the deprecation logs from the **Upgrade Assistant** to determine if your applications are using features that are not supported or behave differently in 8.x. See the [breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/index.md) for more information about changes in 9.0.0-beta1 that could affect your application.
 
     ::::{important}
     Make sure you check the breaking changes for each minor 8.x release up to 9.0.0-beta1.

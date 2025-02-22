@@ -56,7 +56,7 @@ If you see requests coming through the APM Server but they are not accepted (a r
 
 **Instrumentation gaps**
 
-APM agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](https://www.elastic.co/guide/en/apm/agent/index.html) for details on what is automatically instrumented.
+APM agents provide auto-instrumentation for many popular frameworks and libraries. If the {{apm-agent}} is not auto-instrumenting something that you were expecting, data won’t be sent to the {{stack}}. Reference the relevant [{{apm-agent}} documentation](/solutions/observability/apps/elastic-apm-agents.md) for details on what is automatically instrumented.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -75,7 +75,7 @@ If no requests are logged, it might be that SSL is [misconfigured](#apm-ssl-clie
 
 If you see requests coming through the APM Server but they are not accepted (response code other than `202`), consider the response code to narrow down the possible causes (see sections below).
 
-Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](https://www.elastic.co/guide/en/apm/agent/index.html) for details on what is automatically instrumented.
+Another reason for data not showing up is that the agent is not auto-instrumenting something you were expecting, check the [agent documentation](/solutions/observability/apps/elastic-apm-agents.md) for details on what is automatically instrumented.
 
 APM Server currently relies on {{es}} to create indices that do not exist. As a result, {{es}} must be configured to allow [automatic index creation](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for APM indices.
 ::::::
@@ -202,7 +202,7 @@ https://www.elastic.co/blog/say-heya-to-the-elastic-search-awards
 https://www.elastic.co/blog/and-the-winner-of-the-elasticon-2018-training-subscription-drawing-is
 
 // Documentation
-https://www.elastic.co/guide/en/elastic-stack/current/index.html
+/deploy-manage/index.md
 https://www.elastic.co/guide/en/apm/get-started/current/index.html
 https://www.elastic.co/guide/en/infrastructure/guide/current/index.html
 ```

@@ -1,7 +1,7 @@
 ---
 applies_to:
   deployment:
-    ece: 
+    ece:
 ---
 
 # Minio on-premise repository [ece-configuring-minio]
@@ -125,7 +125,7 @@ For Elasticsearch versions 6.0 and later, after selecting the repository, you al
 s3.client.default.endpoint: "<your Minio endpoint>:9000"
 s3.client.default.protocol: http
 ```
-Check the [Elasticsearch S3 plugin details](https://www.elastic.co/guide/en/elasticsearch/plugins/6.8/repository-s3-client.html) for more information.
+Check the [Elasticsearch S3 plugin details](/deploy-manage/tools/snapshot-and-restore/s3-repository.md) for more information.
 
 
 ## Upgrade from 5.x to 6.x Elasticsearch clusters [ece-upgrade-minio]
