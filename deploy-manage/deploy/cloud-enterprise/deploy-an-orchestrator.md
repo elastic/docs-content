@@ -15,7 +15,7 @@ This section focuses on deploying the ECE orchestrator. If you want to deploy {{
 
 This section provides step-by-step guidance on:
 
-* [Prepare the environment](./prepare-environment.md): Follow the hardware, software, and networking prerequisites before the installation, and check the list of supported Operating Systems.
+* [Prepare the environment](./prepare-environment.md): Follow the hardware, software, and networking prerequisites before the installation. 
 
 * [Install ECE](./install.md): Identify the deployment scenario that best fits your needs, choose an installation method, and complete the setup.
   * [Install ECE on a public cloud](./install-ece-on-public-cloud.md)
@@ -29,11 +29,12 @@ This section provides step-by-step guidance on:
 * [Configure ECE](./configure.md): Explore the most common tasks to configure your ECE platform.
   * [System deployments configuration](./system-deployments-configuration.md)
   * [Configure deployment templates](./deployment-templates.md)
-  * [Change endpoint URLs](./change-endpoint-urls.md)
+  * [Configure endpoint URLs](./change-endpoint-urls.md)
+  * [Manage {{stack}} versions](./manage-elastic-stack-versions.md)
 
 ## Additional topics
 
-After deploying ECE platform, you may need to configure your own proxy certificates, security, snapshot repositories, or perform maintenance tasks. Refer to the following sections for more details:  
+After deploying ECE platform, you may need to configure your own proxy certificates, security, snapshot repositories, or perform maintenance tasks. Refer to the following sections for more details:
 
 * [Secure your ECE installation](../../security/secure-your-elastic-cloud-enterprise-installation.md)
 * [Users and roles](../../users-roles/cloud-enterprise-orchestrator.md)
@@ -47,6 +48,6 @@ To start orchestrating your {{es}} clusters, refer to [](./working-with-deployme
 
 The following tasks are only needed on certain circumstances:
 
-* Migrate ECE to Podman hosts
-* Migrate ECE on Podman hosts to SELinux enforce
-* Change allocator disconnect timeout
+* [Migrate ECE to Podman hosts](./migrate-ece-to-podman-hosts.md)
+* [Migrate ECE on Podman hosts to SELinux enforce](./migrate-ece-on-podman-hosts-to-selinux-enforce.md)
+* [Change allocator disconnect timeout](./change-allocator-disconnect-timeout.md)

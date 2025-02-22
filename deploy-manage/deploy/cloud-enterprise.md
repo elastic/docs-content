@@ -11,10 +11,6 @@ mapped_urls:
 
 {{ece}} (ECE) is an Elastic self-managed solution for deploying, orchestrating, and managing {{es}} clusters at scale. It provides a centralized platform that allows organizations to run {{es}}, {{kib}}, and other {{stack}} components across multiple machines.
 
-::::{tip}
-If you are looking for a solution to orchestrate and manage {{es}} clusters natively on Kubernetes, consider using [Elastic Cloud on Kubernetes (ECK)](./cloud-on-k8s.md) instead of ECE. ECK enables you to orchestrate Elastic Stack applications seamlessly on Kubernetes, leveraging it as the underlying platform for deployment, scaling, and lifecycle management.
-::::
-
 ECE evolves from the Elastic hosted Cloud SaaS offering into a standalone product. You can deploy ECE on public or private clouds, virtual machines, or your own premises.
 
 With {{ece}}, you can:
@@ -71,13 +67,7 @@ Other sections of the documentation also include important tasks related to ECE:
   * [Secure your deployments](../security/secure-your-cluster-deployment.md)
   * [Manage snapshot repositories](../tools/snapshot-and-restore.md)
 
-## How ECE differs from Elastic Cloud and other orchestrators
-
-For information about other deployment options, refer to [](../deploy.md).
-
-% - **Elastic Cloud** (hosted by Elastic) is fully managed and runs on AWS, GCP, and Azure.
-% - **ECE** is for organizations that **want to self-host and manage their own Elastic Stack** deployments across their infrastructure.
-% - **ECK** is for organizations that want to run on Kubernetes.
+To learn about other deployment options, refer to [](../deploy.md).
 
 ## Supported versions [ece-supported-versions]
 
