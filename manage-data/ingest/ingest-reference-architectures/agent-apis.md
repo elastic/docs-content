@@ -25,5 +25,5 @@ Examples
 * Enable the integration and set up {{agent}}.
 * Create a collector VM/container and run {{agent}} and the integration to scrape the external API. Or, set up the external API to push data to the {{agent}} running the integration.
 
-For details and next steps, check out the [{{agent}} integrations](https://docs.elastic.co/en/integrations) docs for your data source.
+For details and next steps, check out the [{{agent}} integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) docs for your data source.
 

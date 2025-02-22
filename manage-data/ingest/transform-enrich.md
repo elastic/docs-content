@@ -8,7 +8,7 @@ applies_to:
 
 # Transform and enrich data [ingest-addl-proc]
 
-% You can start with {{agent}} and Elastic [integrations](https://docs.elastic.co/en/integrations), and still take advantage of additional processing options if you need them.
+% You can start with {{agent}} and Elastic [integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md), and still take advantage of additional processing options if you need them.
 
 For many use cases you'll want to enhance your data as it's being ingested into {{es}}. Your goal might be to filter out unwanted parts of the data before it gets indexed. Another goal might be to reshape the data, such as to process incoming log files to conform to a standard format.
 
@@ -27,7 +27,7 @@ Finally, to help ensure optimal query results, you may want to customize how tex
 :   When you define a pipeline, you can configure one or more processors to operate on the incoming data. A typical use case is to transform specific strings to lowercase, or to sort the elements of incoming arrays into a given order. This section describes:
 * How to create, view, edit, and delete an ingest pipeline
 * How to set up processors to transform the data
-* How to test a pipeline before putting it into production. 
+* How to test a pipeline before putting it into production.
 
 :   You can try out the [Parse logs](transform-enrich/example-parse-logs.md) example which shows you how to set up in ingest pipeline to transform incoming server logs into a standard format.
 
@@ -39,7 +39,7 @@ Finally, to help ensure optimal query results, you may want to customize how tex
 :   If you're ingesting using {{agent}} with Elastic {{integrations}}, you can use the {{ls}} [`elastic_integration filter`](https://www.elastic.co/guide/en/logstash/current/) and other [{{ls}} filters](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/filter-plugins.md) to [extend Elastic integrations](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/using-logstash-with-elastic-integrations.md) by transforming data before it goes to {{es}}.
 
 Index mapping
-:   Index mapping lets you control the structure that incoming data has within an {{es}} index. You can define all of the fields that are included in the index and their respective data types. For example, you can set fields for dates, numbers, or geolocations, and define the fields to have specific formats. 
+:   Index mapping lets you control the structure that incoming data has within an {{es}} index. You can define all of the fields that are included in the index and their respective data types. For example, you can set fields for dates, numbers, or geolocations, and define the fields to have specific formats.
 
 :   Ingested data can be mapped dynamically, where {{es}} adds all fields automatically based on the detected data types, or explicitly, where {{es}} maps the incoming data to fields based on your custom rules.
 
@@ -50,4 +50,4 @@ Index mapping
 Text analysis
 :   Like index mapping, text analysis is another form of data transformation that runs on data as it's being ingested. This process analyzes incoming, unstructured text and organizes it in a way to ensure that all relevant documents are matched for a given text query, and not just exact string matches.
 
-:   Refer to the [Text analysis](../data-store/text-analysis.md) pages to learn how to configure an analyzer to run on incoming text. You can opt to use one of several built-in analyzers, or create a custom analyzer for specific use cases. 
+:   Refer to the [Text analysis](../data-store/text-analysis.md) pages to learn how to configure an analyzer to run on incoming text. You can opt to use one of several built-in analyzers, or create a custom analyzer for specific use cases.

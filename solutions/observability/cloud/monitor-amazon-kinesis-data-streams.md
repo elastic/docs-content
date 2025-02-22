@@ -11,7 +11,7 @@ mapped_pages:
 
 [Amazon Kinesis Data Streams](https://aws.amazon.com/kinesis/data-streams/) is a real-time data streaming service that you can use to capture, process, and store large amounts of data from a variety of sources, including websites, mobile applications, IoT devices, and more.
 
-Amazon Kinesis Data Streams and Amazon CloudWatch are integrated so that you can collect and monitor CloudWatch metrics for your Kinesis data streams, such as tracking shard usage and recording related operations for each Kinesis data stream. The Elastic [Amazon Kinesis Data Stream integration](https://docs.elastic.co/en/integrations/aws/kinesis) collects metrics from Amazon CloudWatch using {{agent}}.
+Amazon Kinesis Data Streams and Amazon CloudWatch are integrated so that you can collect and monitor CloudWatch metrics for your Kinesis data streams, such as tracking shard usage and recording related operations for each Kinesis data stream. The Elastic [Amazon Kinesis Data Stream integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/kinesis.md) collects metrics from Amazon CloudWatch using {{agent}}.
 
 By default, Kinesis Data Streams sends stream-level (basic level) metrics to CloudWatch every minute automatically. There is also shard-level data (enhanced level) that is sent to CloudWatch every minute and incurs an additional cost per stream. To get shard-level data, you must specifically enable it for each stream by using the AWS Kinesis `enable-enhanced-monitoring` API. For example
 
@@ -24,7 +24,7 @@ For more details, refer to the [EnableEnhancedMonitoring](https://docs.aws.amazo
 
 ## Get started [get-started-kinesis]
 
-To collect Kinesis data stream metrics from Amazon CloudWatch, you typically need to install the Elastic [Amazon Kinesis Data Stream integration](https://docs.elastic.co/en/integrations/aws/kinesis) and deploy an {{agent}}.
+To collect Kinesis data stream metrics from Amazon CloudWatch, you typically need to install the Elastic [Amazon Kinesis Data Stream integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/kinesis.md) and deploy an {{agent}}.
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
@@ -76,7 +76,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 ## Metrics to watch [metrics-to-watch-kinesis]
 
-This section lists the key metrics that you should watch, organized by category. For a full description of fields exported by the integration, refer to the [Amazon Kinesis Data Stream integration](https://docs.elastic.co/en/integrations/aws/kinesis) docs.
+This section lists the key metrics that you should watch, organized by category. For a full description of fields exported by the integration, refer to the [Amazon Kinesis Data Stream integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/kinesis.md) docs.
 
 * GetRecords
 

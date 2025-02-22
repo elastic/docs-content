@@ -648,7 +648,7 @@ In versions 8.9 and above, an {{agent}} upgrade may fail when the upgrader canâ€
 
 ## {{agents}} are unable to connect after removing the {{fleet-server}} integration [fleet-server-integration-removed]
 
-When you use {{fleet}}-managed {{agent}}, at least one {{agent}} needs to be running the [{{fleet-server}} integration](https://docs.elastic.co/integrations/fleet_server). In case the policy containing this integration is accidentally removed from {{agent}}, all other agents will not be able to be managed. However, the {{agents}} will continue to send data to their configured output.
+When you use {{fleet}}-managed {{agent}}, at least one {{agent}} needs to be running the [{{fleet-server}} integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/fleet_server.md). In case the policy containing this integration is accidentally removed from {{agent}}, all other agents will not be able to be managed. However, the {{agents}} will continue to send data to their configured output.
 
 There are two approaches to fixing this issue, depending on whether or not the the {{agent}} that was running the {{fleet-server}} integration is still installed and healthy (but is now running another policy).
 

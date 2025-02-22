@@ -93,7 +93,7 @@ If using the example configuration file above, you must replace several values:
 
 ### (Optional) Set up performance monitoring for your reverse proxy [_optional_set_up_performance_monitoring_for_your_reverse_proxy]
 
-You can use Elastic’s [Nginx integration](https://docs.elastic.co/en/integrations/nginx) to monitor performance and populate monitoring dashboards in the {{security-app}}.
+You can use Elastic’s [Nginx integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/nginx.md) to monitor performance and populate monitoring dashboards in the {{security-app}}.
 
 
 ## Configure LM Studio and download a model [_configure_lm_studio_and_download_a_model]
@@ -182,7 +182,7 @@ Refer to the following video to see how to load a model using LM Studio’s GUI.
 
 ## (Optional) Collect logs using Elastic’s Custom Logs integration [_optional_collect_logs_using_elastics_custom_logs_integration]
 
-You can monitor the performance of the host running LM Studio using Elastic’s [Custom Logs integration](https://docs.elastic.co/en/integrations/log). This can also help with troubleshooting. Note that the default path for LM Studio logs is `/tmp/lmstudio-server-log.txt`, as in the following screenshot:
+You can monitor the performance of the host running LM Studio using Elastic’s [Custom Logs integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/log.md). This can also help with troubleshooting. Note that the default path for LM Studio logs is `/tmp/lmstudio-server-log.txt`, as in the following screenshot:
 
 :::{image} ../../../images/serverless-lms-custom-logs-config.png
 :alt: The configuration window for the custom logs integration

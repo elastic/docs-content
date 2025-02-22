@@ -25,7 +25,7 @@ Integrations offer advantages beyond easier data collection—​advantages such
 Info on {{agent}} and agent integrations:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [{{agent}} integrations](https://docs.elastic.co/en/integrations)
+* [{{agent}} integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md)
 
 Info on {{es}}:
 

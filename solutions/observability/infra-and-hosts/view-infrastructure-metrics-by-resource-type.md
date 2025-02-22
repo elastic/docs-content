@@ -207,7 +207,7 @@ To learn more about roles, refer to [Assign user roles and privileges](../../../
 
 
 ::::{important}
-You must have an active [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration.
+You must have an active [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery_manager.html.md) integration.
 
 ::::
 

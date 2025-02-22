@@ -23,7 +23,7 @@ Examples
 
 Before you implement this approach, check to see if an {{agent}} integration exists and, if so, use it instead:
 
-* [{{agent}} integrations](https://docs.elastic.co/en/integrations)
+* [{{agent}} integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md)
 
 Info on {{ls}} and {{ls}} input and output plugins:
 

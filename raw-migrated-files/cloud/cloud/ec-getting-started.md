@@ -15,7 +15,7 @@ Elasticsearch Service allows you to manage one or more instances of the Elastic 
 A *deployment* helps you manage an Elasticsearch cluster and instances of other Elastic products, like Kibana or APM instances, in one place. Spin up, scale, upgrade, and delete your Elastic Stack products without having to manage each one separately. In a deployment, everything works together.
 
 ::::{note}
-If you are instead interested in serverless Elastic Cloud, check the [serverless documentation](https://docs.elastic.co/serverless).
+If you are instead interested in serverless Elastic Cloud, check the [serverless documentation](/deploy-manage/deploy/elastic-cloud/serverless.md).
 ::::
 
 

@@ -75,4 +75,4 @@ For example, a typical workflow for sending CloudTrail logs to Firehose would be
 
 We also added support for sending CloudWatch monitoring metrics to Elastic using Firehose. For example, you can configure metrics ingestion by creating a metric stream through CloudWatch. You can select an existing Firehose stream by choosing the option **Custom setup with Firehose**. For more information, refer to the AWS documentation [about the custom setup with Firehose](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-setup-datalake.md).
 
-For more information on Amazon Data Firehose, you can also check the [Amazon Data Firehose Integrations documentation](https://docs.elastic.co/integrations/awsfirehose).
+For more information on Amazon Data Firehose, you can also check the [Amazon Data Firehose Integrations documentation](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/awsfirehose.md).

@@ -5,7 +5,7 @@ Behavioral detection identifies potential internal and external threats based on
 The behavioral detection feature is built on {{elastic-sec}}'s foundational SIEM detection capabilities, leveraging {{ml}} algorithms to enable proactive threat detection and hunting.
 
 
-## Elastic integrations for behavioral detection use cases [security-behavioral-detection-use-cases-elastic-integrations-for-behavioral-detection-use-cases] 
+## Elastic integrations for behavioral detection use cases [security-behavioral-detection-use-cases-elastic-integrations-for-behavioral-detection-use-cases]
 
 Behavioral detection integrations provide a convenient way to enable behavioral detection capabilities. They streamline the deployment of components that implement behavioral detection, such as data ingestion, transforms, rules, {{ml}} jobs, and scripts.
 
@@ -20,11 +20,11 @@ Behavioral detection integrations provide a convenient way to enable behavioral 
 
 Here’s a list of integrations for various behavioral detection use cases:
 
-* [Data Exfiltration Detection](https://docs.elastic.co/en/integrations/ded)
-* [Domain Generation Algorithm Detection](https://docs.elastic.co/en/integrations/dga)
-* [Lateral Movement Detection](https://docs.elastic.co/en/integrations/lmd)
-* [Living off the Land Attack Detection](https://docs.elastic.co/en/integrations/problemchild)
-* [Network Beaconing Identification](https://docs.elastic.co/en/integrations/beaconing)
+* [Data Exfiltration Detection](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/ded.md)
+* [Domain Generation Algorithm Detection](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/dga.md)
+* [Lateral Movement Detection](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/lmd.md)
+* [Living off the Land Attack Detection](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/problemchild.md)
+* [Network Beaconing Identification](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/beaconing.md)
 
 To learn more about {{ml}} jobs enabled by these integrations, refer to [Prebuilt job reference](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-jobs.md).
 

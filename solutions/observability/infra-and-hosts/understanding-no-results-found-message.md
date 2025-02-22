@@ -18,7 +18,7 @@ For example, if you’re only observing Windows hosts, the *load* metric is not 
 
 This could be for any of these reasons:
 
-* The integration that collects the missing metrics is not installed. For example, to collect metrics from your host system, you can use the [System integration](https://docs.elastic.co/en/integrations/system). To fix the problem, install the integration and configure it to send the missing metrics.
+* The integration that collects the missing metrics is not installed. For example, to collect metrics from your host system, you can use the [System integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/system.md). To fix the problem, install the integration and configure it to send the missing metrics.
 
     ::::{tip}
     Follow one of our quickstarts under **Observability** → **Add data** → **Collect and analyze logs** to make sure the correct integrations are installed and all required metrics are collected.

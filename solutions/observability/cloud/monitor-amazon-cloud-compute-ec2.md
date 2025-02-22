@@ -13,7 +13,7 @@ mapped_pages:
 
 Amazon EC2 instances can be run in various locations. The location is composed of AWS Regions and Availability Zones (AZ). AZs are distinct locations that are insulated from failures to other AZs, but provide lower latency network connectivity. Each region is geographically dispersed and can consist of one or more AZs.
 
-Like most AWS services, Amazon EC2 sends its metrics to Amazon CloudWatch. The Elastic [Amazon EC2 integration](https://docs.elastic.co/en/integrations/aws/ec2) collects metrics from Amazon CloudWatch using {{agent}}.
+Like most AWS services, Amazon EC2 sends its metrics to Amazon CloudWatch. The Elastic [Amazon EC2 integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/ec2.md) collects metrics from Amazon CloudWatch using {{agent}}.
 
 CloudWatch, by default, uses basic monitoring that publishes metrics at five-minute intervals. You can enable detailed monitoring to increase that resolution to one-minute, at an additional cost. To learn how to enable detailed monitoring, refer to the [Amazon EC2 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.md).
 
@@ -22,7 +22,7 @@ CloudWatch does not expose metrics related to EC2 instance memory. You can insta
 
 ## Get started [get-started-ec2]
 
-To collect EC2 metrics, you typically need to install the Elastic [Amazon EC2 integration](https://docs.elastic.co/en/integrations/aws/ec2) and deploy an {{agent}}.
+To collect EC2 metrics, you typically need to install the Elastic [Amazon EC2 integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/ec2.md) and deploy an {{agent}}.
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
@@ -76,7 +76,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 Amazon EC2 provides a large selection of instance types. Monitoring key metrics about your instances is a cost-effective way to determine whether to upgrade, change, or downsize your instances.
 
-This section lists the key metrics that you should watch, organized by category. For a full description of exported fields, refer to the [Amazon EC2 integration docs](https://docs.elastic.co/en/integrations/aws/ec2).
+This section lists the key metrics that you should watch, organized by category. For a full description of exported fields, refer to the [Amazon EC2 integration docs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/ec2.md).
 
 
 ### CPU utilization [_cpu_utilization]
@@ -112,7 +112,7 @@ For valuable, long-term data, use more durable data storage, such as Amazon EBS.
 
 CloudWatch EC2 disk I/O metrics only collect data from instance store volumes.
 
-CloudWatch EC2 namespace does offer a set of Amazon EBS disk I/O metrics, but these are only available for instances built on the Nitro System. For all other instance types, disk I/O for EBS volumes must be monitored via the Elastic [Amazon EBS integration](https://docs.elastic.co/en/integrations/aws/ebs).
+CloudWatch EC2 namespace does offer a set of Amazon EBS disk I/O metrics, but these are only available for instances built on the Nitro System. For all other instance types, disk I/O for EBS volumes must be monitored via the Elastic [Amazon EBS integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/ebs.md).
 
 Here are the key disk I/O metrics you should monitor and what to look for:
 

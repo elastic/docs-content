@@ -293,7 +293,7 @@ To learn more about roles, refer to [Assign user roles and privileges](../../../
 
 
 ::::{important}
-You must have an active [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager.html) integration.
+You must have an active [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery_manager.html.md) integration.
 
 ::::
 
@@ -381,7 +381,7 @@ This missing data can be hard to spot at first glance. The green boxes outline r
 
 In the Hosts view, you might see a question mark icon (![Question mark icon](../../../images/serverless-questionInCircle.svg "")) before a host name with a tooltip note stating that the host has been detected by APM.
 
-When a host is detected by APM, but is not collecting full metrics (for example, through the [system integration](https://www.elastic.co/docs/current/integrations/system)), it will be listed as a host with the partial metrics collected by APM.
+When a host is detected by APM, but is not collecting full metrics (for example, through the [system integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/system.md)), it will be listed as a host with the partial metrics collected by APM.
 
 
 ### I don’t recognize a host name and I see a question mark icon next to it [observability-analyze-hosts-i-dont-recognize-a-host-name-and-i-see-a-question-mark-icon-next-to-it]

@@ -101,7 +101,7 @@ Refer to the documentation of your favorite OpenTelemetry agent or SDK for more 
 
 Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](../../../solutions/observability/apps/configure-output.md), tail-based sampling is *not* supported.
 
-Tail-based sampling is *not* compatible with [{{serverless-full}}](https://docs.elastic.co/serverless).
+Tail-based sampling is *not* compatible with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md).
 
 ::::
 

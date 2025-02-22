@@ -9,10 +9,10 @@ mapped_pages:
 ## System requirements [_system_requirements]
 
 * [Fleet](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
-* The [**Osquery Manager**](https://docs.elastic.co/en/integrations/osquery_manager) integration has been added and configured for an agent policy through Fleet. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
+* The [**Osquery Manager**](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery_manager.md) integration has been added and configured for an agent policy through Fleet. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
 
 ::::{note}
-* The original [Filebeat Osquery module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-osquery.md) and the [Osquery](https://docs.elastic.co/en/integrations/osquery) integration collect logs from self-managed Osquery deployments. The **Osquery Manager** integration manages Osquery deployments and supports running and scheduling queries from {{kib}}.
+* The original [Filebeat Osquery module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-osquery.md) and the [Osquery](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery.md) integration collect logs from self-managed Osquery deployments. The **Osquery Manager** integration manages Osquery deployments and supports running and scheduling queries from {{kib}}.
 * **Osquery Manager** cannot be integrated with an Elastic Agent in standalone mode.
 
 ::::

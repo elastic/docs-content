@@ -44,10 +44,10 @@ The best approach for ingesting data is the *simplest option* that *meets your n
 In most cases, the *simplest option* for ingesting time series data is using {{agent}} paired with an Elastic integration.
 
 * Install [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) on the computer(s) from which you want to collect data.
-* Add the [Elastic integration](https://docs.elastic.co/en/integrations) for the data source to your deployment.
+* Add the [Elastic integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) for the data source to your deployment.
 
 Integrations are available for many popular platforms and services, and are a good place to start for ingesting data into Elastic solutions—​Observability, Security, and Search—​or your own search application.
 
-Check out the [Integration quick reference](https://docs.elastic.co/en/integrations/all_integrations) to search for available integrations. If you don’t find an integration for your data source or if you need additional processing to extend the integration, we still have you covered. Refer to [Transform and enrich data](ingest/transform-enrich.md) to learn more.
+Check out the [Integration quick reference](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/all_integrations.md) to search for available integrations. If you don’t find an integration for your data source or if you need additional processing to extend the integration, we still have you covered. Refer to [Transform and enrich data](ingest/transform-enrich.md) to learn more.
 
 ::::

@@ -3,7 +3,7 @@
 An Elastic Cloud deployment includes Elastic Stack components such as Elasticsearch, Kibana, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
 
 ::::{note}
-To explore Elastic Cloud Enterprise and its solutions, create your first deployment by following one of these [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html). If you are instead interested in serverless Elastic Cloud, check the [serverless documentation](https://docs.elastic.co/serverless).
+To explore Elastic Cloud Enterprise and its solutions, create your first deployment by following one of these [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html). If you are instead interested in serverless Elastic Cloud, check the [serverless documentation](/deploy-manage/deploy/elastic-cloud/serverless.md).
 ::::
 
 

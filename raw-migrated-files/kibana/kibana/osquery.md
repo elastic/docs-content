@@ -253,7 +253,7 @@ In addition to the Osquery schema, the Elastic-provided version of Osquery also 
 * `host_groups`
 * `host_processes`
 
-When querying these tables, the expectation is that the `/etc/passwd`, `/etc/group`, and `/proc` are available in the container under `/hostfs` as: `/hostfs/etc/passwd`, `/hostfs/etc/group`, and `/hostfs/proc`. For information about the fields available in these tables, see the [exported fields](https://docs.elastic.co/en/integrations/osquery_manager#exported-fields) reference.
+When querying these tables, the expectation is that the `/etc/passwd`, `/etc/group`, and `/proc` are available in the container under `/hostfs` as: `/hostfs/etc/passwd`, `/hostfs/etc/group`, and `/hostfs/proc`. For information about the fields available in these tables, see the [exported fields](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery_manager.md#osquery_manager-exported-fields) reference.
 
 
 ## Osquery status [osquery-status]
@@ -275,7 +275,7 @@ If an agent is offline, the request status remains **pending** as {{kib}} retrie
 
 ## Osquery results [osquery-results]
 
-When you run live or scheduled queries, the results are automatically stored in an {{es}} index, so that you can search, analyze, and visualize this data in {{kib}}. For a list of the Osquery fields that can be returned in query results, refer to [exported fields](https://docs.elastic.co/en/integrations/osquery_manager#exported-fields). Query results can also include ECS fields, if the query has a defined ECS mapping.
+When you run live or scheduled queries, the results are automatically stored in an {{es}} index, so that you can search, analyze, and visualize this data in {{kib}}. For a list of the Osquery fields that can be returned in query results, refer to [exported fields](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery_manager.md#osquery_manager-exported-fields). Query results can also include ECS fields, if the query has a defined ECS mapping.
 
 Osquery responses include the following information:
 

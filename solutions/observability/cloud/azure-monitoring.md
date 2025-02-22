@@ -17,7 +17,7 @@ Learn how to use the Elastic Observability solution to observe and monitor a bro
 * [Monitor Microsoft Azure with {{beats}}](monitor-microsoft-azure-with-beats.md)
 * [Monitor Microsoft Azure with the Azure Native ISV Service](monitor-microsoft-azure-with-azure-native-isv-service.md)
 
-For a full list of supported Azure integrations, check the [Elastic Integrations docs](https://docs.elastic.co/en/integrations).
+For a full list of supported Azure integrations, check the [Elastic Integrations docs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md).
 
 
 

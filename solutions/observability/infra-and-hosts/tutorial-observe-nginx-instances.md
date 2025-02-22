@@ -11,7 +11,7 @@ mapped_pages:
 ::::
 
 
-Use the [nginx Elastic integration](https://docs.elastic.co/en/integrations/nginx) and the {{agent}} to collect valuable metrics and logs from your nginx instances. Then, use built-in dashboards and tools like Logs Explorer in {{kib}} to visualize and monitor your nginx data from one place. This data provides valuable insight into your nginx instances—for example:
+Use the [nginx Elastic integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/nginx.md) and the {{agent}} to collect valuable metrics and logs from your nginx instances. Then, use built-in dashboards and tools like Logs Explorer in {{kib}} to visualize and monitor your nginx data from one place. This data provides valuable insight into your nginx instances—for example:
 
 * A spike in error logs for a certain resource may mean you have a deleted resource that is still needed.
 * Access logs can show when a service’s peak times are, and, from this, when it might be best to perform things like maintenance.
@@ -249,7 +249,7 @@ The **Nginx access and error logs** dashboard shows your access logs over time, 
 
 ## Step 5: Find anomalies in your nginx access logs [monitor-nginx-ml]
 
-Use the [nginx Elastic integration](https://docs.elastic.co/en/integrations/nginx) machine learning (ML) module to help find unusual activity in your nginx access logs. Monitoring anomalies in your access logs helps you detect:
+Use the [nginx Elastic integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/nginx.md) machine learning (ML) module to help find unusual activity in your nginx access logs. Monitoring anomalies in your access logs helps you detect:
 
 * security threats
 * network issues
@@ -279,7 +279,7 @@ Unusual visitor rates (`visitor_rate_nginx`)
 :   Uses the [`non_zero_count`](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-nonzero-count) function to detect abnormal visitor rates. High visitor rates could indicate something malicious like a DDoS attack. Low visitor rates could indicate issues with access to the server.
 
 ::::{note}
-These anomaly detection jobs are available when you have data that matches the query specified in the ML module manifest. Users not following this tutorial can refer to [nginx integration ML modules](https://docs.elastic.co/en/integrations/nginx#ml-modules) for more about the ML module manifest.
+These anomaly detection jobs are available when you have data that matches the query specified in the ML module manifest. Users not following this tutorial can refer to [nginx integration ML modules](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/nginx.md#nginx-ml-modules) for more about the ML module manifest.
 ::::
 
 

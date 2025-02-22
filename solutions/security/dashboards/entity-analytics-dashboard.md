@@ -138,7 +138,7 @@ Entity data from different sources appears in the **Entities** section based on 
 * When you first enable the entity store, only data stored in the last 24 hours is processed. After that, data is processed continuously.
 * Observed events from the {{elastic-sec}} default data view are processed in near real-time.
 * Entity Analytics data, such as entity risk scores and asset criticality (including bulk asset criticality upload), is also processed in near real-time.
-* The availability of entities extracted from Entity Analytics integrations depends on the specific integration. Refer to [Active Directory Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_ad), [Microsoft Entra ID Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_entra_id), and [Okta Entity Analytics](https://docs.elastic.co/en/integrations/entityanalytics_okta) for more details.
+* The availability of entities extracted from Entity Analytics integrations depends on the specific integration. Refer to [Active Directory Entity Analytics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/entityanalytics_ad.md), [Microsoft Entra ID Entity Analytics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/entityanalytics_entra_id.md), and [Okta Entity Analytics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/entityanalytics_okta.md) for more details.
 
 Interact with the table to filter data and view more details:
 

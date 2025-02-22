@@ -42,7 +42,7 @@ Install a threat intelligence integration to add indicators to the Indicators pa
 3. Select a threat intelligence integration, then complete the integration’s guided installation.
 
     ::::{note}
-    For more information about available fields, go to the [Elastic integration documentation](https://docs.elastic.co/integrations) and search for a specific threat intelligence integration.
+    For more information about available fields, go to the [Elastic integration documentation](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) and search for a specific threat intelligence integration.
     ::::
 
 4. Return to the Indicators page in {{elastic-sec}}. Refresh the page if indicator data isn’t displaying.

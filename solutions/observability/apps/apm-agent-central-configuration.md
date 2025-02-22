@@ -10,7 +10,7 @@ mapped_pages:
 
 
 ::::{note}
-APM agent central configuration is *not* compatible with [{{serverless-full}}](https://docs.elastic.co/serverless).
+APM agent central configuration is *not* compatible with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md).
 
 ::::
 

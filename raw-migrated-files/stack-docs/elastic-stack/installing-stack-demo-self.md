@@ -571,7 +571,7 @@ Next, you’ll install {{agent}} on another host and use the System integration 
 6. Open the **Settings** tab.
 7. Reopen the **Agents** tab and select **Add agent**. The **Add agent** flyout opens.
 8. In the flyout, choose a policy name, for example `Demo Agent Policy`.
-9. Leave **Collect system logs and metrics** enabled. This will add the [System integration](https://docs.elastic.co/integrations/system) to the {{agent}} policy.
+9. Leave **Collect system logs and metrics** enabled. This will add the [System integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/system.md) to the {{agent}} policy.
 10. Click **Create policy**.
 11. For the **Enroll in Fleet?** step, leave **Enroll in Fleet** selected.
 12. On the **Install Elastic Agent on your host** step, for this example we select the **Linux Tar** tab, but you can instead select the tab appropriate to the host operating system where you’re setting up {{fleet-server}}.

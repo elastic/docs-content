@@ -16,9 +16,9 @@ Data and analytics are stored in {{es}} indices, for advanced analysis and visua
 Even if you don’t use Elastic for search, you can use these tools to collect analytics from your application/website.
 
 
-## Availability and prerequisites [behavioral-analytics-overview-prerequisites] 
+## Availability and prerequisites [behavioral-analytics-overview-prerequisites]
 
-::::{note} 
+::::{note}
 Behavioral Analytics is a **beta feature**. Beta features are subject to change and are not covered by the support SLA of general release (GA) features. Elastic plans to promote this feature to GA in a future release.
 
 ::::
@@ -38,7 +38,7 @@ Analytics are also available to **self-managed** deployments that satisfy subscr
 Your Elastic deployment must include the {{es}} and {{kib}}services.
 
 
-## Documentation [behavioral-analytics-overview-docs] 
+## Documentation [behavioral-analytics-overview-docs]
 
 The following documentation is available in the {{es}} docs:
 
@@ -55,7 +55,7 @@ Additional documentation is available in the following places:
     * Read the [JavaScript tracker README](https://github.com/elastic/behavioral-analytics-tracker/blob/main/packages/javascript-tracker/README.md).
     * Read the [Browser tracker README](https://github.com/elastic/behavioral-analytics-tracker/blob/main/packages/browser-tracker/README.md).
 
-* The Search UI documentation contains information about the [Search UI Analytics Plugin](https://docs.elastic.co/search-ui/api/core/plugins/analytics-plugin).
+* The Search UI documentation contains information about the [Search UI Analytics Plugin](asciidocalypse://docs/search-ui/docs/api-core-plugins-analytics-plugin.md).
 * Behavioral Analytics uses a number of [APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-analytics) to manage analytics collections.
 
 ::::{admonition} GDPR compliance

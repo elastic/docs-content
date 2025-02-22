@@ -22,7 +22,7 @@ This article summarizes the features and functionality you need to be aware of b
 
 The following steps will help you determine if {{agent}} can support your use case:
 
-1. Determine if the integrations you need are supported and Generally Available (GA) on {{agent}}. To find out if an integration is GA, see the [{{integrations}} quick reference table](https://docs.elastic.co/en/integrations/all_integrations).
+1. Determine if the integrations you need are supported and Generally Available (GA) on {{agent}}. To find out if an integration is GA, see the [{{integrations}} quick reference table](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/all_integrations.md).
 2. If the integration is available, check [Supported outputs](#supported-outputs-beats-and-agent) to see whether the required output is also supported.
 3. Review [Capabilities comparison](#additional-capabilities-beats-and-agent) to determine if any features required by your deployment are supported. {{agent}} should support most of the features available on {{beats}} and is updated for each release.
 
@@ -33,7 +33,7 @@ If you are satisfied with all three steps, then {{agent}} is suitable for your d
 
 For {{agent}}s that are centrally managed by {{fleet}}, data collection is further simplified and defined by integrations. In this model, the decision on the inputs is driven by the integration you want to collect data from. The complexity of configuration details of various inputs is driven centrally by {{fleet}} and specifically by the integrations.
 
-To find out if an integration is GA, see the [{{integrations}} quick reference table](https://docs.elastic.co/en/integrations/all_integrations).
+To find out if an integration is GA, see the [{{integrations}} quick reference table](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/all_integrations.md).
 
 
 ## Supported outputs [supported-outputs-beats-and-agent]

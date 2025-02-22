@@ -8,22 +8,22 @@ applies_to:
 
 # Ingesting data for Elastic solutions [ingest-for-solutions]
 
-Elastic solutions—​Security, Observability, and Search—​are loaded with features and functionality to help you get value and insights from your data. [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) and [Elastic integrations](https://docs.elastic.co/en/integrations) can help, and are the best place to start.
+Elastic solutions—​Security, Observability, and Search—​are loaded with features and functionality to help you get value and insights from your data. [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) and [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) can help, and are the best place to start.
 
 When you use integrations with solutions, you have an integrated experience that offers easier implementation and decreases the time it takes to get insights and value from your data.
 
 ::::{admonition} High-level overview
-To use [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) and [Elastic integrations](https://docs.elastic.co/en/integrations) with Elastic solutions:
+To use [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) and [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) with Elastic solutions:
 
 1. Create an [{{ecloud}}](https://www.elastic.co/cloud) deployment for your solution. If you don’t have an {{ecloud}} account, you can sign up for a [free trial](https://cloud.elastic.co/registration) to get started.
-2. Add the [Elastic integration](https://docs.elastic.co/en/integrations) for your data source to the deployment.
+2. Add the [Elastic integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) for your data source to the deployment.
 3. [Install {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) on the systems whose data you want to collect.
 
 ::::
 
 
 ::::{note}
-[Elastic serverless](https://docs.elastic.co/serverless) makes using solutions even easier. Sign up for a [free trial](https://docs.elastic.co/serverless/general/sign-up-trial), and check it out.
+[Elastic serverless](/deploy-manage/deploy/elastic-cloud/serverless.md) makes using solutions even easier. Sign up for a [free trial](/deploy-manage/deploy/elastic-cloud/create-an-organization.md), and check it out.
 ::::
 
 
@@ -57,10 +57,10 @@ With [Elastic Observability](https://www.elastic.co/observability), you can moni
     * [Step 1: Add the {{agent}} System integration](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#add-system-integration)
     * [Step 2: Install and run {{agent}}](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md#add-agent-to-fleet)
 
-* [Observability](https://docs.elastic.co/serverless/observability/what-is-observability-serverless) on [{{serverless-full}}](https://docs.elastic.co/serverless):
+* [Observability](/solutions/observability.md) on [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md):
 
-    * [Monitor hosts with {{agent}} ({{serverless-short}})](https://docs.elastic.co/serverless/observability/quickstarts/monitor-hosts-with-elastic-agent)
-    * [Monitor your K8s cluster with {{agent}} ({{serverless-short}})](https://docs.elastic.co/serverless/observability/quickstarts/k8s-logs-metrics)
+    * [Monitor hosts with {{agent}} ({{serverless-short}})](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md)
+    * [Monitor your K8s cluster with {{agent}} ({{serverless-short}})](/solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md)
 
 * [Use OpenTelemetry with APM](../../solutions/observability/apps/use-opentelemetry-with-apm.md)
 

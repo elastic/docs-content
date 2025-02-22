@@ -11,7 +11,7 @@ mapped_pages:
 
 [Amazon Simple Storage Service (S3)](https://aws.amazon.com/s3/) is a highly available object storage service that provides durability, security, and scalability. To store data, you create one or more buckets that contain objects. An object consists of a file and optional metadata that describes the file. For each bucket, you can control access to it.
 
-Like most AWS services, Amazon S3 and Amazon CloudWatch are integrated so you can collect, view, and analyze CloudWatch metrics for your S3 buckets to help understand and improve the performance of applications that use Amazon S3. The Elastic [Amazon S3 integration](https://docs.elastic.co/en/integrations/aws/s3) collects metrics from Amazon CloudWatch using {{agent}}.
+Like most AWS services, Amazon S3 and Amazon CloudWatch are integrated so you can collect, view, and analyze CloudWatch metrics for your S3 buckets to help understand and improve the performance of applications that use Amazon S3. The Elastic [Amazon S3 integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/s3.md) collects metrics from Amazon CloudWatch using {{agent}}.
 
 With the Amazon S3 integration, you can collect these S3 metrics from CloudWatch:
 
@@ -23,7 +23,7 @@ With the Amazon S3 integration, you can collect these S3 metrics from CloudWatch
 
 If you plan to collect request metrics, enable them for the S3 buckets you want to monitor. To learn how, refer to the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/configure-request-metrics-bucket.md).
 
-To collect S3 metrics, you typically need to install the Elastic [Amazon S3 integration](https://docs.elastic.co/en/integrations/aws/s3) and deploy an {{agent}} locally or on an EC2 instance.
+To collect S3 metrics, you typically need to install the Elastic [Amazon S3 integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/s3.md) and deploy an {{agent}} locally or on an EC2 instance.
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
@@ -75,7 +75,7 @@ For more information {{agent}} and integrations, refer to the [{{fleet}} and {{a
 
 ## Metrics to watch [_metrics_to_watch_2]
 
-Here are the key metrics that you should watch, organized by category. For a full list of fields exported by the integration, refer to the [Amazon S3 integration](https://docs.elastic.co/en/integrations/aws/s3) docs.
+Here are the key metrics that you should watch, organized by category. For a full list of fields exported by the integration, refer to the [Amazon S3 integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/s3.md) docs.
 
 * Daily storage metrics for buckets
 

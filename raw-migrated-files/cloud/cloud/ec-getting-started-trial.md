@@ -20,7 +20,7 @@ A deployment lets you explore Elastic solutions for Search, Observability, and S
 
 Serverless projects package Elastic Stack features by type of solution: Elasticsearch, Observability, and Security. When you create a project, you select the project type applicable to your use case, so only the relevant and impactful applications and features are easily accessible to you.
 
-To learn more about serverless Elastic Cloud, check [our serverless documentation](https://docs.elastic.co/serverless).
+To learn more about serverless Elastic Cloud, check [our serverless documentation](/deploy-manage/deploy/elastic-cloud/serverless.md).
 
 ::::{tip}
 During the trial period, you are limited to one active hosted deployment and one active serverless project at a time. When you subscribe, you can create additional deployments and projects.
@@ -45,7 +45,7 @@ During the free 14 day trial, Elastic provides access to one hosted deployment a
 * Search Power is limited to 100. This setting only exists in Elasticsearch projects.
 * Search Boost Window is limited to 7 days. This setting only exists in Elasticsearch projects.
 
-Find more details in [our serverless documentation](https://docs.elastic.co/serverless).
+Find more details in [our serverless documentation](/deploy-manage/deploy/elastic-cloud/serverless.md).
 
 **How to remove restrictions?**
 
@@ -69,7 +69,7 @@ Start by checking out some common approaches for [moving data into Elastic Cloud
 If you’re interested in consolidated billing, you’ll want to [subscribe from a Marketplace](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md). This skips over your trial period and connect your Marketplace email to your [unique Elastic account](../../../cloud-account/update-your-email-address.md).
 
 ::::{note}
-[Serverless projects](https://docs.elastic.co/serverless) are only available for AWS Marketplace. Support for GCP Marketplace and Azure Marketplace will be added in the near future.
+[Serverless projects](/deploy-manage/deploy/elastic-cloud/serverless.md) are only available for AWS Marketplace. Support for GCP Marketplace and Azure Marketplace will be added in the near future.
 ::::
 
 
