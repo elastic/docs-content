@@ -35,7 +35,7 @@ Most searches hit multiple shards. Each shard runs the search on a single CPU th
 
 Every index and every shard requires some memory and CPU resources. In most cases, a small set of large shards uses fewer resources than many small shards.
 
-Segments play a big role in a shard’s resource usage. Most shards contain several segments, which store its index data. {{es}} keeps some segment metadata in heap memory so it can be quickly retrieved for searches. As a shard grows, its segments are [merged](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge-scheduler-settings.md) into fewer, larger segments. This decreases the number of segments, which means less metadata is kept in heap memory.
+Segments play a big role in a shard’s resource usage. Most shards contain several segments, which store its index data. {{es}} keeps some segment metadata in heap memory so it can be quickly retrieved for searches. As a shard grows, its segments are [merged](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge.md) into fewer, larger segments. This decreases the number of segments, which means less metadata is kept in heap memory.
 
 Every mapped field also carries some overhead in terms of memory usage and disk space. By default {{es}} will automatically create a mapping for every field in every document it indexes, but you can switch off this behaviour to [take control of your mappings](../../../manage-data/data-store/mapping/explicit-mapping.md).
 
@@ -54,7 +54,7 @@ Where applicable, use the following best practices as starting points for your s
 
 ### Delete indices, not documents [delete-indices-not-documents]
 
-Deleted documents aren’t immediately removed from {{es}}'s file system. Instead, {{es}} marks the document as deleted on each related shard. The marked document will continue to use resources until it’s removed during a periodic [segment merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge-scheduler-settings.md).
+Deleted documents aren’t immediately removed from {{es}}'s file system. Instead, {{es}} marks the document as deleted on each related shard. The marked document will continue to use resources until it’s removed during a periodic [segment merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge.md).
 
 When possible, delete entire indices instead. {{es}} can immediately remove deleted indices directly from the file system and free up resources.
 
@@ -67,7 +67,7 @@ One advantage of this setup is [automatic rollover](../../../manage-data/lifecyc
 
 {{ilm-init}} also makes it easy to change your sharding strategy over time:
 
-* **Want to decrease the shard count for new indices?**<br> Change the [`index.number_of_shards`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-number-of-shards) setting in the data stream’s [matching index template](../../../manage-data/data-store/data-streams/modify-data-stream.md#data-streams-change-mappings-and-settings).
+* **Want to decrease the shard count for new indices?**<br> Change the [`index.number_of_shards`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-number-of-shards) setting in the data stream’s [matching index template](../../../manage-data/data-store/data-streams/modify-data-stream.md#data-streams-change-mappings-and-settings).
 * **Want larger shards or fewer backing indices?**<br> Increase your {{ilm-init}} policy’s [rollover threshold](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md).
 * **Need indices that span shorter intervals?**<br> Offset the increased shard count by deleting older indices sooner. You can do this by lowering the `min_age` threshold for your policy’s [delete phase](../../../manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
@@ -273,7 +273,7 @@ DELETE my-index-000001
 
 ### Force merge during off-peak hours [force-merge-during-off-peak-hours]
 
-If you no longer write to an index, you can use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to [merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge-scheduler-settings.md) smaller segments into larger ones. This can reduce shard overhead and improve search speeds. However, force merges are resource-intensive. If possible, run the force merge during off-peak hours.
+If you no longer write to an index, you can use the [force merge API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge) to [merge](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge.md) smaller segments into larger ones. This can reduce shard overhead and improve search speeds. However, force merges are resource-intensive. If possible, run the force merge during off-peak hours.
 
 ```console
 POST my-index-000001/_forcemerge

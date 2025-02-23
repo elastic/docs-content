@@ -177,7 +177,6 @@ toc:
                       - file: observability/apps/elastic-apm-agent-configuration-api.md
                       - file: observability/apps/opentelemetry-intake-api.md
                       - file: observability/apps/jaeger-event-intake.md
-                  - file: observability/apps/common-problems.md
                   - file: observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md
                   - file: observability/apps/apm-server-response-codes.md
                   - file: observability/apps/processing-performance.md
@@ -369,12 +368,6 @@ toc:
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
       - file: observability/tools-and-apis.md
-      - file: observability/unknown-bucket.md
-        children:
-          - file: observability/unknown-bucket/host-metrics.md
-          - file: observability/unknown-bucket/container-metrics.md
-          - file: observability/unknown-bucket/kubernetes-pod-metrics.md
-          - file: observability/unknown-bucket/aws-metrics.md
   - file: security.md
     children:
       - file: security/elastic-security-serverless.md

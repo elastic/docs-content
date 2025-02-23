@@ -100,19 +100,16 @@ This documentation is for {{es}} version 9.0.0-beta1, which is not yet released.
 
 Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt will fail.
 
-|     |     |
-| --- | --- |
-|  | Cluster version |
-| Index creation version | 6.8 | 7.0–7.1 | 7.2–8.17 | 8.0–8.2 | 8.3-9.0 |
-| 5.0–5.6 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "")[[1]](../../../deploy-manage/tools/snapshot-and-restore.md#fn-archive) |
-| 6.0–6.7 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "")[[1]](../../../deploy-manage/tools/snapshot-and-restore.md#fn-archive) |
-| 6.8 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "")[[1]](../../../deploy-manage/tools/snapshot-and-restore.md#fn-archive) |
-| 7.0–7.1 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 7.2–8.17 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.0–9.0 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
+| Index creation version | 6.8 | 7.0–7.1 | 7.2–7.17 | 8.0–8.2 | 8.3–8.17 |
+|------------------------|-----|---------|---------|---------|---------|
+| 5.0–5.6               | ✅  | ❌      | ❌      | ❌      | ✅ [1]  |
+| 6.0–6.7               | ✅  | ✅      | ✅      | ❌      | ✅ [1]  |
+| 6.8                   | ✅  | ❌      | ✅      | ❌      | ✅ [1]  |
+| 7.0–7.1               | ❌  | ✅      | ✅      | ✅      | ✅      |
+| 7.2–7.17              | ❌  | ❌      | ✅      | ✅      | ✅      |
+| 8.0–8.17              | ❌  | ❌      | ❌      | ✅      | ✅      |
 
-$$$fn-archive$$$
-1. Supported with [archive indices](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
+[1] Supported with [archive indices](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
 You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 7.6.0 to a cluster running 7.5.0.
 

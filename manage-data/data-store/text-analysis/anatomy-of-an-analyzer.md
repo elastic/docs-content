@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer-anatomy.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Anatomy of an analyzer [analyzer-anatomy]
