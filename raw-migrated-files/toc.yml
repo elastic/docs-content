@@ -237,8 +237,6 @@ toc:
       - file: docs-content/serverless/security-benchmark-rules.md
       - file: docs-content/serverless/security-blocklist.md
       - file: docs-content/serverless/security-building-block-rules.md
-      - file: docs-content/serverless/security-cases-overview.md
-      - file: docs-content/serverless/security-cases-settings.md
       - file: docs-content/serverless/security-cloud-native-security-overview.md
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash-cspm.md
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash-kspm.md
