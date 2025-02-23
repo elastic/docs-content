@@ -6,19 +6,6 @@ mapped_urls:
 
 # Notes [security-add-manage-notes]
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/add-manage-notes.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-add-manage-notes.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$manage-notes$$$
-
-$$$notes-alerts-events$$$
-
 Incorporate notes into your investigative workflows to coordinate responses, conduct threat hunting, and share investigative findings. You can attach notes to alerts, events, and Timelines and manage them from the **Notes** page.
 
 ::::{note}

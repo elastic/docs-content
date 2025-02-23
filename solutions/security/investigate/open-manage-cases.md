@@ -6,35 +6,6 @@ mapped_urls:
 
 # Open and manage cases [security-cases-open-manage]
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cases-open-manage.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cases-open-manage.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cases-ui-open$$$
-
-$$$cases-add-files$$$
-
-$$$cases-add-observables$$$
-
-$$$cases-copy-case-uuid$$$
-
-$$$cases-examine-alerts$$$
-
-$$$cases-export$$$
-
-$$$cases-import$$$
-
-$$$cases-lens-visualization$$$
-
-$$$cases-manage-comments$$$
-
-$$$cases-summary$$$
-
 You can create and manage cases using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
 
 
