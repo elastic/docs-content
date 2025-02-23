@@ -36,11 +36,11 @@ Check the [glossary](https://www.elastic.co/guide/en/elastic-stack-glossary/curr
 
 ## Section overview
 
-This section focuses on deploying ECE and orchestrating and configuring {{es}} clusters, also referred to as `deployments`.
+This section focuses on deploying the ECE platform, as well as orchestrating and configuring {{es}} clusters, referred to as deployments.
 
 In ECE, a deployment is a managed {{stack}} environment that provides users with an {{es}} cluster along with supporting components such as {{kib}} and other optional services like APM and {{fleet}}.
 
-This section covers the following tasks:
+The section covers the following tasks:
 
 * [Deploy ECE orchestrator](./cloud-enterprise/deploy-an-orchestrator.md)
     - [Prepare the environment](./cloud-enterprise/prepare-environment.md)
@@ -55,7 +55,7 @@ This section covers the following tasks:
 
 * Learn about [](./cloud-enterprise/tools-apis.md) that you can use with ECE
 
-Other sections of the documentation also include important tasks related to ECE:
+Other sections of the documentation provide guidance on additional important tasks related to ECE:
 
 * Platform security and management:
   * [Secure your ECE installation](../security/secure-your-elastic-cloud-enterprise-installation.md)
