@@ -291,7 +291,6 @@ toc:
       - file: docs-content/serverless/security-policies-page.md
       - file: docs-content/serverless/security-posture-faq.md
       - file: docs-content/serverless/security-posture-management.md
-      - file: docs-content/serverless/security-prebuilt-rules-management.md
       - file: docs-content/serverless/security-query-alert-indices.md
       - file: docs-content/serverless/security-query-operating-systems.md
       - file: docs-content/serverless/security-reduce-notifications-alerts.md
@@ -301,7 +300,6 @@ toc:
       - file: docs-content/serverless/security-response-actions.md
       - file: docs-content/serverless/security-rule-monitoring-dashboard.md
       - file: docs-content/serverless/security-rules-coverage.md
-      - file: docs-content/serverless/security-rules-ui-management.md
       - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-session-view.md
       - file: docs-content/serverless/security-third-party-actions.md

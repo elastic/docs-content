@@ -2,26 +2,12 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/security/current/prebuilt-rules-management.html
   - https://www.elastic.co/guide/en/serverless/current/security-prebuilt-rules-management.html
+
+navigation_title: "Use Elastic prebuilt rules"
+
 ---
 
-# Install and manage Elastic prebuilt rules
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/prebuilt-rules-management.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-prebuilt-rules-management.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$load-prebuilt-rules$$$
-
-$$$prebuilt-rule-tags$$$
-
-$$$select-all-prebuilt-rules$$$
-
-$$$update-prebuilt-rules$$$
+# Install and manage Elastic prebuilt rules [security-prebuilt-rules-management]
 
 Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-rules.md), keep them updated, and make sure they have the data needed to run successfully.
 
@@ -30,6 +16,8 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](a
 * [Select and duplicate all prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#select-all-prebuilt-rules)
 * [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules)
 * [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites)
+
+% The third item in this note might need to be revised.
 
 ::::{note}
 * Most prebuilt rules don’t start running by default. You can use the **Install and enable** option to start running rules as you install them, or first install the rules, then enable them manually. After installation, only a few prebuilt rules will be enabled by default, such as the Endpoint Security rule.

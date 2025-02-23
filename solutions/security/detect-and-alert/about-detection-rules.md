@@ -3,8 +3,6 @@ mapped_urls:
   - https://www.elastic.co/guide/en/security/current/about-rules.html
   - https://www.elastic.co/guide/en/serverless/current/security-about-rules.html
 
-navigation_title: "Rules"
-
 ---
 
 # About detection rules [security-about-rules]
