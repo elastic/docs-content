@@ -18,7 +18,7 @@ New to Elastic {{observability}}? Discover more about our observability features
 Learn about key features available to help you get value from your observability data:
 
 * [What is Elastic {{observability}}?](../../solutions/observability/get-started/what-is-elastic-observability.md)
-* [What’s new in Elastic Stack v9.0](https://www.elastic.co/guide/en/observability/current/whats-new.html)
+* [What’s new in Elastic Stack](https://www.elastic.co/guide/en/observability/current/whats-new.html)
 * [{{obs-serverless}} billing dimensions](../../deploy-manage/cloud-organization/billing/elastic-observability-billing-dimensions.md)
 
 
@@ -74,7 +74,7 @@ Ready to dig into more features of Elastic Observability? See these guides:
 * [Create an alert](../../solutions/observability/incident-management/alerting.md)
 * [Create a service-level objective (SLO)](../../solutions/observability/incident-management/create-an-slo.md)
 
-## Related content for Elastic Stack v9.0 [_related_content]
+## Related content for Elastic Stack [_related_content]
 
 * [Starting with the {{es}} Platform and its Solutions](/get-started/index.md) for new users
 * [Adding data to {{es}}](../../manage-data/ingest.md) for other ways to ingest data

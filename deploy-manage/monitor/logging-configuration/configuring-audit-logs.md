@@ -24,7 +24,7 @@ When auditing security events, a single client request might generate multiple a
     ::::
 
 For a complete description of event details and format, refer to the following resources:
-  * [{{es}} audit events details and schema](asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events)
+  * [{{es}} audit events details and schema](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events.md)
   * [{{es}} log entry output format](/deploy-manage/monitor/logging-configuration/logfile-audit-output.md#audit-log-entry-format)
 
 ### Kibana auditing configuration
@@ -38,7 +38,7 @@ In self-managed systems, you can optionally configure audit logs location, and f
 To configure {{kib}} settings, follow the same [procedure](./enabling-audit-logs.md#enable-audit-logging-procedure) as when enabling {{kib}} audit logs, but apply the relevant settings instead.
 ::::
 
-For a complete description of auditing event details, such as `category`, `type`, or `action`, refer to [{{kib}} audit events](https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html#xpack-security-ecs-audit-logging).
+For a complete description of auditing event details, such as `category`, `type`, or `action`, refer to [{{kib}} audit events](asciidocalypse://docs/kibana/docs/reference/kibana-audit-events.md).
 
 ### General recommendations
 

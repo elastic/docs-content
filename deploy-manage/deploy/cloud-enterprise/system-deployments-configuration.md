@@ -47,7 +47,7 @@ ECE lets you manage snapshot repositories, so that you can back up and restore y
 
 As mentioned earlier, the `logging-and-metrics` cluster stores important information about your environment logs and metrics. There are also additional configurations provided out-of-the-box, such as data views (formerly *index patterns*), visualizations, and dashboards, that will require running an external script to recreate if you do not have a snapshot to restore from. We recommend that you also back up the `logging-and-metrics` cluster, though it is up to you to decide if that information should be available to be restored.
 
-To configure snapshot repositories, check [Add snapshot repository configurations](../../tools/snapshot-and-restore/cloud-enterprise.md#ece-manage-repositories-add).
+To configure snapshot repositories, check [Add snapshot repository configurations](../../tools/snapshot-and-restore/cloud-enterprise.md).
 
 
 ### Sizing [ece_sizing] 

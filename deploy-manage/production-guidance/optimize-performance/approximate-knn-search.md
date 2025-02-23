@@ -78,7 +78,7 @@ Generally, if you are using a quantized index, you should only preload the relev
 
 ## Reduce the number of index segments [_reduce_the_number_of_index_segments] 
 
-{{es}} shards are composed of segments, which are internal storage elements in the index. For approximate kNN search, {{es}} stores the vector values of each segment as a separate HNSW graph, so kNN search must check each segment. The recent parallelization of kNN search made it much faster to search across multiple segments, but still kNN search can be up to several times faster if there are fewer segments. By default, {{es}} periodically merges smaller segments into larger ones through a background [merge process](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge-scheduler-settings.md). If this isn’t sufficient, you can take explicit steps to reduce the number of index segments.
+{{es}} shards are composed of segments, which are internal storage elements in the index. For approximate kNN search, {{es}} stores the vector values of each segment as a separate HNSW graph, so kNN search must check each segment. The recent parallelization of kNN search made it much faster to search across multiple segments, but still kNN search can be up to several times faster if there are fewer segments. By default, {{es}} periodically merges smaller segments into larger ones through a background [merge process](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/merge.md). If this isn’t sufficient, you can take explicit steps to reduce the number of index segments.
 
 
 ### Increase maximum segment size [_increase_maximum_segment_size] 
@@ -90,8 +90,8 @@ Generally, if you are using a quantized index, you should only preload the relev
 
 A common pattern is to first perform an initial bulk upload, then make an index available for searches. Instead of force merging, you can adjust the index settings to encourage {{es}} to create larger initial segments:
 
-* Ensure there are no searches during the bulk upload and disable [`index.refresh_interval`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-refresh-interval-setting) by setting it to `-1`. This prevents refresh operations and avoids creating extra segments.
-* Give {{es}} a large indexing buffer so it can accept more documents before flushing. By default, the [`indices.memory.index_buffer_size`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/indexing-buffer-settings.md) is set to 10% of the heap size. With a substantial heap size like 32GB, this is often enough. To allow the full indexing buffer to be used, you should also increase the limit [`index.translog.flush_threshold_size`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/translog-settings.md).
+* Ensure there are no searches during the bulk upload and disable [`index.refresh_interval`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-refresh-interval-setting) by setting it to `-1`. This prevents refresh operations and avoids creating extra segments.
+* Give {{es}} a large indexing buffer so it can accept more documents before flushing. By default, the [`indices.memory.index_buffer_size`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/indexing-buffer-settings.md) is set to 10% of the heap size. With a substantial heap size like 32GB, this is often enough. To allow the full indexing buffer to be used, you should also increase the limit [`index.translog.flush_threshold_size`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/translog.md).
 
 
 ## Avoid heavy indexing during searches [_avoid_heavy_indexing_during_searches] 
@@ -103,7 +103,7 @@ When possible, it’s best to avoid heavy indexing during approximate kNN search
 
 ## Avoid page cache thrashing by using modest readahead values on Linux [_avoid_page_cache_thrashing_by_using_modest_readahead_values_on_linux_2] 
 
-Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-store-settings.md#file-system)).
+Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/store.md#file-system)).
 
 Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing Elasticsearch [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
 

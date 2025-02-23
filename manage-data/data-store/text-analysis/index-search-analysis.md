@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-index-search-time.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Index and search analysis [analysis-index-search-time]

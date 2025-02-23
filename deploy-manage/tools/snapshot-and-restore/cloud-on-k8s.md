@@ -1,14 +1,14 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-snapshots.html
+navigation_title: "Elastic Cloud on Kubernetes"
+
+applies_to:
+  deployment:
+    eck: 
 ---
 
-# Elastic Cloud on Kubernetes [k8s-snapshots]
+# Manage snapshot repositories in Elastic Cloud on Kubernetes [k8s-snapshots]
 
-::::{note}
-Snapshots are essential for recovering Elasticsearch indices in case of accidental deletion or for migrating data between clusters.
-::::
-
+Snapshots allow you to back up and restore Elasticsearch indices, helping protect data from accidental deletion and enabling migration between clusters. In Elastic Cloud on Kubernetes (ECK), you can register snapshot repositories and configure snapshot lifecycle policies to automate backups.
 
 To set up automated snapshots for Elasticsearch on Kubernetes you have to:
 
