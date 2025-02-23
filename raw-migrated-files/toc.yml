@@ -219,7 +219,6 @@ toc:
       - file: docs-content/serverless/project-setting-data.md
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
-      - file: docs-content/serverless/security-about-rules.md
       - file: docs-content/serverless/security-add-manage-notes.md
       - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-agent-tamper-protection.md
@@ -237,7 +236,6 @@ toc:
       - file: docs-content/serverless/security-benchmark-rules-kspm.md
       - file: docs-content/serverless/security-benchmark-rules.md
       - file: docs-content/serverless/security-blocklist.md
-      - file: docs-content/serverless/security-building-block-rules.md
       - file: docs-content/serverless/security-cases-open-manage.md
       - file: docs-content/serverless/security-cases-overview.md
       - file: docs-content/serverless/security-cases-requirements.md
@@ -303,11 +301,9 @@ toc:
       - file: docs-content/serverless/security-response-actions.md
       - file: docs-content/serverless/security-rule-monitoring-dashboard.md
       - file: docs-content/serverless/security-rules-coverage.md
-      - file: docs-content/serverless/security-rules-create.md
       - file: docs-content/serverless/security-rules-ui-management.md
       - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-session-view.md
-      - file: docs-content/serverless/security-signals-to-cases.md
       - file: docs-content/serverless/security-third-party-actions.md
       - file: docs-content/serverless/security-timeline-templates-ui.md
       - file: docs-content/serverless/security-timelines-ui.md
