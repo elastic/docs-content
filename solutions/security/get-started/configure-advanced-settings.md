@@ -63,7 +63,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 
 All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md) and [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
-You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}, there is no limit. For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
+You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}}, there is no limit. For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
 ::::{note}
 If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cloud logs are excluded from all queries in the {{security-app}} by default. This is to avoid adding data from cloud monitoring to the app.
@@ -148,7 +148,7 @@ Refer to [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elastics
 
 ## Display reputation links on IP detail pages [ip-reputation-links]
 
-On IP details pages (**Security** → **Network** → IP address), links to external sites for verifying the IP address’s reputation are displayed. By default, links to these sites are listed: [TALOS](https://talosintelligence.com/) and [VIRUSTOTAL](https://www.virustotal.com/).
+On IP details pages (**Security** → **Network** → **IP address**), links to external sites for verifying the IP address’s reputation are displayed. By default, links to these sites are listed: [TALOS](https://talosintelligence.com/) and [VIRUSTOTAL](https://www.virustotal.com/).
 
 The `securitySolution:ipReputationLinks` field determines which IP reputation sites are listed. To modify the listed sites, edit the field’s JSON array. These fields must be defined in each array element:
 
