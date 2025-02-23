@@ -97,7 +97,7 @@ Collapse the query builder and provide more space for Timeline results by clicki
 
 ## Edit existing filters [pivot]
 
-%consider changing the anchor text for this section. It's not very descriptive atm.
+% Consider changing the anchor text for this section. It's not very descriptive atm.
 
 Click a filter to access additional operations such as **Add filter**, **Clear all**, **Load saved query**, and more:
 
