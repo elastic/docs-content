@@ -5,6 +5,7 @@ mapped_urls:
 applies_to:
   deployment:
     eck:
+navigation_title: ECK
 ---
 
 # Built-in users in {{eck}} 

@@ -1,7 +1,13 @@
 ---
+applies_to:
+  deployment:
+    ess:
+    ece:
+    eck:
+    self:
 ---
 
-## Built-in users
+# Built-in users
 
 The {{stack-security-features}} provide built-in user credentials to help you get up and running. This includes the `elastic` user.
 

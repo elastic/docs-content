@@ -4,6 +4,7 @@ mapped_urls:
 applies_to:
   deployment:
     self:
+navigation_title: "Self-managed"
 ---
 
 # Built-in users in self-managed clusters [built-in-users]
