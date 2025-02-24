@@ -62,7 +62,7 @@ deployment:
 {{ech}}, {{ece}}, and {{eck}} manage the `elastic` user differently:
 
 * [Manage the `elastic` user password in {{ech}} or {{ece}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md)
-* Manage the `elastic` user password in {{eck}}
+* [Manage the `elastic` user password in {{eck}}](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-eck.md)
 ```
 
 When you install {{es}}, if the `elastic` user does not already have a password, it uses a default bootstrap password. The bootstrap password is a transient password that enables you to run the tools that set all the built-in user passwords.
