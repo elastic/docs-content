@@ -3,11 +3,12 @@ navigation_title: "Cluster or deployment"
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters.html
   - https://www.elastic.co/guide/en/cloud/current/ec-security.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Cluster or deployment users

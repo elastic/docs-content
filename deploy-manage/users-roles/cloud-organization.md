@@ -2,9 +2,10 @@
 navigation_title: "Cloud organization"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations.html
-applies:
-  serverless: all
-  hosted: all
+applies_to:
+  deployment:
+      serverless: all
+      ess: all
 ---
 
 # Cloud organization users [ec-organizations]

@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-native-users.html
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # Native users [ece-add-native-users]

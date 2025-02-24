@@ -1,7 +1,7 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/custom-roles.html
-applies:
+applies_to:
   serverless: all
 ---
 

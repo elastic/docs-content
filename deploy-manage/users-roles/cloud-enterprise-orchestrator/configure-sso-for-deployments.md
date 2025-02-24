@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deployment-sso.html
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # Configure SSO for deployments [ece-deployment-sso]

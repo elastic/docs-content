@@ -2,9 +2,10 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saml-sso-entra.html
 navigation_title: "Microsoft Entra ID"
-applies:
-  hosted: all
-  serverless: all
+applies_to:
+  deployment:
+    ess: all
+    serverless: all
 ---
 
 # Register {{ecloud}} SAML in Microsoft Entra ID [ec-saml-sso-entra]

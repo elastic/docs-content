@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-system-passwords.html
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # Manage system passwords[ece-manage-system-passwords]

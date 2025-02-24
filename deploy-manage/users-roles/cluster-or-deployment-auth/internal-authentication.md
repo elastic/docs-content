@@ -1,9 +1,10 @@
 ---
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Internal authentication

@@ -2,9 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-user-privileges.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
-applies:
-  hosted: all
-  serverless: all
+applies_to:
+  deployment:
+    ess: all
+    serverless: all
 ---
 
 # User roles and privileges [ec-user-privileges]

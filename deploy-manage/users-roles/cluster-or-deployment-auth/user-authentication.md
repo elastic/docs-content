@@ -2,11 +2,12 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/setting-up-authentication.html
   - https://www.elastic.co/guide/en/kibana/current/kibana-authentication.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # User authentication

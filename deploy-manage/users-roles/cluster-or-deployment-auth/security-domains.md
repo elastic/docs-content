@@ -1,11 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-domain.html
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Security domains [security-domain]
