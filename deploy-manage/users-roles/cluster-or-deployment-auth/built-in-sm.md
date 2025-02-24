@@ -14,6 +14,10 @@ After you implement security, you might need or want to change passwords for dif
 * The [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool
 * The [change passwords API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password)
 
+:::{{tip}}
+This topic describes resetting passwords after the initial bootstrap password is reset. To learn about the users that are used to communicate between {{stack}} components, and about managing bootstrap passwords for built-in users, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md). 
+:::
+
 ## Using {{kib}}
 
 Elastic enables you to easily manage users in {{kib}} on the **Stack Management > Security > Users** page. From this page, you can create users, edit users, assign roles to users, and change user passwords. You can also deactivate or delete existing users.

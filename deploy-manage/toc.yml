@@ -637,12 +637,13 @@ toc:
                       - file: users-roles/cluster-or-deployment-auth/saml-entra.md
                   - file: users-roles/cluster-or-deployment-auth/pki.md
                   - file: users-roles/cluster-or-deployment-auth/custom.md
-              - file: users-roles/cluster-or-deployment-auth/built-in-overview.md
-                children:
-                  - file: users-roles/cluster-or-deployment-auth/built-in-users.md
-                  - file: users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md
-                  - file: users-roles/cluster-or-deployment-auth/built-in-eck.md
+              - file: users-roles/cluster-or-deployment-auth/built-in-users.md
+                children: 
                   - file: users-roles/cluster-or-deployment-auth/built-in-sm.md
+              - file: users-roles/cluster-or-deployment-auth/orchestrator-managed-users-overview.md
+                children:
+                  - file: users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md
+                  - file: users-roles/cluster-or-deployment-auth/managed-credentials-eck.md
               - file: users-roles/cluster-or-deployment-auth/kibana-authentication.md
               - file: users-roles/cluster-or-deployment-auth/access-agreement.md
               - file: users-roles/cluster-or-deployment-auth/anonymous-access.md

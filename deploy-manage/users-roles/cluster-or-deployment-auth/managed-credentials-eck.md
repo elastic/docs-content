@@ -5,10 +5,10 @@ mapped_urls:
 applies_to:
   deployment:
     eck:
-navigation_title: ECK
+navigation_title: ECK managed credentials
 ---
 
-# Built-in users in {{eck}} 
+# {{eck}} managed credentials
 
 When deploying an {{stack}} application, the operator generates a set of credentials essential for the operation of that application. For example, these generated credentials include the default `elastic` user for {{es}} and the security token for APM Server.
 

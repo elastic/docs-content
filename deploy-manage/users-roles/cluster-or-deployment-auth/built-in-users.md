@@ -4,7 +4,7 @@ mapped_urls:
 applies_to:
   deployment:
     self:
-navigation_title: "Self-managed"
+navigation_title: "Built-in users (elastic user)"
 ---
 
 # Built-in users in self-managed clusters [built-in-users]
@@ -59,10 +59,7 @@ deployment:
 ```
 
 ```{{tip}}
-{{ech}}, {{ece}}, and {{eck}} manage the `elastic` user differently:
-
-* Manage the `elastic` user password in {{ech}} or {{ece}}
-* Manage the `elastic` user password in {{eck}}
+{{ech}}, {{ece}}, and {{eck}} manage the `elastic` user differently. [Learn more](/deploy-manage/users-roles/cluster-or-deployment-auth/orchestrator-managed-users-overview.md).
 ```
 
 When you install {{es}}, if the `elastic` user does not already have a password, it uses a default bootstrap password. The bootstrap password is a transient password that enables you to run the tools that set all the built-in user passwords.
@@ -88,10 +85,7 @@ You must set the passwords for all built-in users. You can set or reset password
 If you want to reset built-in user passwords after initial setup, refer to [Set passwords for native and built-in users in self-managed clusters](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-sm.md).
 
 ```{{tip}}
-{{ech}}, {{ece}}, and {{eck}} manage the `elastic` user differently:
-
-* [Manage the `elastic` user password in {{ech}} or {{ece}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md)
-* [Manage the `elastic` user password in {{eck}}](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-eck.md)
+{{ech}}, {{ece}}, and {{eck}} manage the `elastic` user differently. [Learn more](/deploy-manage/users-roles/cluster-or-deployment-auth/orchestrator-managed-users-overview.md).
 ```
 
 ### Using `elasticsearch-setup-passwords`
