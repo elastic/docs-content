@@ -24,7 +24,7 @@ In this tutorial, you’ll learn how to:
 
 ## Before you begin [aws-elastic-firehose-before-you-begin]
 
-Create a deployment in AWS regions (including gov cloud) using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment in AWS regions (including gov cloud) using. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-step-one]
@@ -50,8 +50,8 @@ For advanced use cases, source records can be transformed by invoking a custom L
 
 1. From the **Destination settings** panel, specify the following settings:
 
-    * **Elastic endpoint URL**: Enter the Elastic endpoint URL of your Elasticsearch cluster. To find the Elasticsearch endpoint, go to the Elastic Cloud console and select **Connection details**. Here is an example of how it looks like: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`.
-    * **API key**: Enter the encoded Elastic API key. To create an API key, go to the Elastic Cloud console, select **Connection details** and click **Create and manage API keys**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least "auto_configure" & "write" permissions for the indices you will be using with this delivery stream.
+    * **Elastic endpoint URL**: Enter the Elastic endpoint URL of your Elasticsearch cluster. To find the Elasticsearch endpoint, go to the {{ecloud}} Console and select **Connection details**. Here is an example of how it looks like: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`.
+    * **API key**: Enter the encoded Elastic API key. To create an API key, go to the {{ecloud}} Console, select **Connection details** and click **Create and manage API keys**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least "auto_configure" & "write" permissions for the indices you will be using with this delivery stream.
     * **Content encoding**: For a better network efficiency, leave content encoding set to GZIP.
     * **Retry duration**: Determines how long Firehose continues retrying the request in the event of an error. A duration of 60-300s should be suitable for most use cases.
     * **Parameters**:

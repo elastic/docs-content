@@ -59,7 +59,7 @@ Some AWS services need additional manual configuration to properly ingest logs a
 ::::
 
 
-Data collection with AWS Firehose is supported on ESS deployments in AWS, Azure and GCP.
+Data collection with AWS Firehose is supported on {{ech}} deployments in AWS, Azure and GCP.
 
 
 ## Prerequisites [_prerequisites_5]
@@ -70,7 +70,7 @@ Data collection with AWS Firehose is supported on ESS deployments in AWS, Azure 
 :::{tab-item} Elastic Stack
 :sync: stack
 
-* A deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+* An [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 * A user with the `superuser` [built-in role](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) or the privileges required to onboard data.
 
     ::::{dropdown} Expand to view required privileges
