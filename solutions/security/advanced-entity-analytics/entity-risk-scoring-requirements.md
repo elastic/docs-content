@@ -86,10 +86,12 @@ To use asset criticality, you need the following:
 
 ## Entity store [_entity_store]
 
+To turn on the entity store, you need the following:
+
+* In {{stack}}, you need the appropriate [privileges](#_privileges_3).
+* In serverless, you need either the Admin role or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with the right [privileges](#_privileges_3).
 
 ### Privileges [_privileges_3]
-
-To enable the entity store, you need the following privileges:
 
 #### Cluster
 
@@ -108,6 +110,3 @@ To enable the entity store, you need the following privileges:
 #### {{kib}}
 
 **All** for the **Security** and **Saved Objects Management** features 
-
-
-% pending info about user roles / custom role privileges needed for entity store in serverless
