@@ -188,7 +188,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
 ::::{tab-item} ECK
 
-1. Install your `krb5.conf` and `keytab` files as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). 
+1. Install your `krb5.conf` and `keytab` files as a [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). Mount them in a sub-directory of the main config directory, for example `/usr/share/elasticsearch/config/kerberos`, and use a `Secret` instead of a `ConfigMap` to store the information.
 
 2. Configure the JVM to find the Kerberos configuration file.
    
@@ -196,10 +196,11 @@ For detailed information of available realm settings, see [Kerberos realm settin
 
    To provide JVM setting overrides to your cluster:
 
-   1. Create a new ConfigMap. The source file should contain a key named `java.security.krb5.conf` pointing to your configuration file:
+   1. Create a new ConfigMap with a valid JVM options file as the key. The source file should be a JVM `.options` file containing the JVM system property `-Djava.security.krb5.conf=/usr/share/elasticsearch/config/kerberos/krb5.conf`, assuming the `krb5.conf` file was mounted on `/usr/share/elasticsearch/config/kerberos` in the previous step.
    
     ```
-    kubectl create configmap jvm-options --from-file=opts
+    # create a configmap with a key named override.options and the content of your local file
+    kubectl create configmap jvm-options --from-file=override.options=<your-local-file>
     ```
 
    2. Reference the ConfigMap in your [cluster specification](/deploy-manage/deploy/cloud-on-k8s/update-deployments.md):
@@ -221,13 +222,18 @@ For detailed information of available realm settings, see [Kerberos realm settin
             spec:
                 containers:
                 - name: elasticsearch
-                volumeMounts:
-                - name: jvm-opts
-                    mountPath: /usr/share/elasticsearch/config/jvm.options.d 
-                volumes:
-                - name: jvm-opts
-                configMap:
-                    name: jvm-options
+                  volumeMounts:
+                    - name: jvm-opts
+                      mountPath: /usr/share/elasticsearch/config/jvm.options.d
+                    - name: krb5
+                      mountPath: /usr/share/elasticsearch/config/kerberos
+               volumes:
+               - name: jvm-opts
+                 configMap:
+                   name: jvm-options
+               - name: krb5
+                 secret:
+                   name: kerberos-secret
         ```
 
 3. Edit your cluster configuration to define your Kerberos settings:
@@ -235,7 +241,7 @@ For detailed information of available realm settings, see [Kerberos realm settin
     ```yaml
     xpack.security.authc.realms.kerberos.cloud-krb:
        order: 2
-       keytab.path: es.keytab
+       keytab.path: kerberos/keytab
        remove_realm_name: false
     ```
 ::::
