@@ -152,7 +152,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
 ## Setting up OpenID Connect with Google [ec-securing-oidc-google]
 
-Follow these steps to configure OpenID Connect single sign-on on in {{ec}} with a Google OP.
+Follow these steps to configure OpenID Connect single sign-on on in {{es}} with a Google OP.
 
 For more information about OpenID connect in Google, refer to [Google OpenID Connect documentation](https://developers.google.com/identity/protocols/oauth2/openid-connect).
 

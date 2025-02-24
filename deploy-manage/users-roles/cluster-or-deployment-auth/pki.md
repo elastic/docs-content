@@ -216,4 +216,4 @@ PUT /_security/role_mapping/direct_pki_only
 
 ## Use PKI authentication for {{kib}} [pki-realm-kibana]
 
-If you want to use PKI authentication to authenticate using your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [{{kib}} authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication#pki-authentication).
+If you want to use PKI authentication to authenticate using your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [{{kib}} authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#pki-authentication).
