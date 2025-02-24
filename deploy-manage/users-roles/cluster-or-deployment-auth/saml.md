@@ -27,7 +27,7 @@ The {{security-features}} provide this support using the Web Browser SSO profile
 
 This means that the SAML realm is not suitable for use by standard REST clients. If you configure a SAML realm for use in {{kib}}, you should also configure another realm, such as the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) in your authentication chain.
 
-Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the OpenID Connect REST APIs to authenticate the users to {{es}} with SAML, refer to [SAML without {{kib}}](#saml-without-kibana). 
+Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the OpenID Connect REST APIs to authenticate the users to {{es}} with SAML, refer to [SAML without {{kib}}](#saml-no-kibana). 
 
 The SAML support in {{kib}} is designed with the expectation that it will be the primary (or sole) authentication method for users of that {{kib}} instance. After you enable SAML authentication in {{kib}}, it will affect all users who try to login. The [Configuring {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana) section provides more detail about how this works.
 
@@ -746,7 +746,7 @@ Single sign-on realms such as OpenID Connect and SAML make use of the Token Serv
 
 ### SAML realm [saml-no-kibana-realm]
 
-You must create a SAML realm and configure it accordingly in {{es}}. See [Configure {{es}} for SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-elasticsearch-authentication)
+You must create a SAML realm and configure it accordingly in {{es}}. See [Configure {{es}} for SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm)
 
 
 ### Service Account user for accessing the APIs [saml-no-kibana-user]

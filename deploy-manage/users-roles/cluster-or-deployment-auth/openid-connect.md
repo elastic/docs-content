@@ -219,7 +219,7 @@ To configure claims mapping:
 
 4. Configure the OpenID Connect realm in {{es}} to associate the [{{es}} user properties](#oidc-user-properties) to the name of the claims that your OP will release. 
    
-   The [sample configuration](oidc-create-realm) configures the `principal` and `groups` user properties as follows:
+   The [sample configuration](#oidc-create-realm) configures the `principal` and `groups` user properties as follows:
 
    * `claims.principal: sub`: Instructs {{es}} to look for the OpenID Connect claim named `sub` in the ID Token that the OP issued for the user (or in the UserInfo response) and assign the value of this claim to the `principal` user property. 
    
@@ -401,7 +401,7 @@ PUT /_security/role_mapping/oidc-finance
 
 ### Delegating OIDC authorization to another realm
 
-If your users also exist in a repository that can be directly accessed by {{es}}, such as an LDAP directory, then you can use [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authorization-delegation) instead of role mappings.
+If your users also exist in a repository that can be directly accessed by {{es}}, such as an LDAP directory, then you can use [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authorization-delegation.md) instead of role mappings.
 
 In this case, you perform the following steps:
 

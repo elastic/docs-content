@@ -18,8 +18,7 @@ This page explains how to implement OIDC, from the OAuth client credentials gene
 * [Google](#ec-securing-oidc-google)
 * [Okta](#ec-securing-oidc-okta)
 
-For further detail about configuring OIDC, check our [list of references](#ec-summary-and-references) at the end of this article.
-
+For further detail about configuring OIDC, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md)
 
 ## Setting up OpenID Connect with Azure [ec-securing-oidc-azure]
 

@@ -59,7 +59,7 @@ Begin the provider profile by adding the general settings:
 
 ## Map SAML attributes to user properties [ece-saml-attributes]
 
-The SAML assertion about a user usually includes attribute names and values that can be used for role mapping. The configuration in this section allows to configure a mapping between these SAML attribute values and [{{es}} user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-elasticsearch-authentication).
+The SAML assertion about a user usually includes attribute names and values that can be used for role mapping. The configuration in this section allows to configure a mapping between these SAML attribute values and [{{es}} user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-es-user-properties).
 
 When the attributes have been mapped to user properties such as `groups`, these can then be used to configure  [role mappings](#ece-saml-role-mapping). Mapping the `principal` user property is required and the `groups` property is recommended for a minimum configuration.
 
