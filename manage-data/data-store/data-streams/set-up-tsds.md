@@ -105,7 +105,7 @@ To setup a TSDS create an index template with the following details:
 
     * Set `index.mode` setting to `time_series`.
     * Your lifecycle policy in the `index.lifecycle.name` index setting.
-    * Optional: Other index settings, such as [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-number-of-replicas), for your TSDS’s backing indices.
+    * Optional: Other index settings, such as [`index.number_of_replicas`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas), for your TSDS’s backing indices.
 
 * A priority higher than `200` to avoid collisions with built-in templates. See [Avoid index pattern collisions](../templates.md#avoid-index-pattern-collisions).
 * Optional: Component templates containing your mappings and other index settings.

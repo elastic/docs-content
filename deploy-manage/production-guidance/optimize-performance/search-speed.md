@@ -13,7 +13,7 @@ Elasticsearch heavily relies on the filesystem cache in order to make search fas
 
 ## Avoid page cache thrashing by using modest readahead values on Linux [_avoid_page_cache_thrashing_by_using_modest_readahead_values_on_linux] 
 
-Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-store-settings.md#file-system)).
+Search can cause a lot of randomized read I/O. When the underlying block device has a high readahead value, there may be a lot of unnecessary read I/O done, especially when files are accessed using memory mapping (see [storage types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/store.md#file-system)).
 
 Most Linux distributions use a sensible readahead value of `128KiB` for a single plain device, however, when using software raid, LVM or dm-crypt the resulting block device (backing Elasticsearch [path.data](../../deploy/self-managed/important-settings-configuration.md#path-settings)) may end up having a very large readahead value (in the range of several MiB). This usually results in severe page (filesystem) cache thrashing adversely affecting search (or [update](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document)) performance.
 
@@ -303,7 +303,7 @@ Loading data into the filesystem cache eagerly on too many indices or too many f
 
 ## Use index sorting to speed up conjunctions [_use_index_sorting_to_speed_up_conjunctions] 
 
-[Index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-sorting-settings.md) can be useful in order to make conjunctions faster at the cost of slightly slower indexing. Read more about it in the [index sorting documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules-index-sorting-conjunctions.md).
+[Index sorting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/sorting.md) can be useful in order to make conjunctions faster at the cost of slightly slower indexing. Read more about it in the [index sorting documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/sorting-conjunctions.md).
 
 
 ## Use `preference` to optimize cache utilization [preference-cache-optimization] 

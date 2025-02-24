@@ -35,7 +35,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
 * To show details and perform operations such as close, forcemerge, and flush, click the index name.  To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
-* To drill down into the index [mappings](../../data-store/mapping.md), [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
+* To drill down into the index [mappings](../../data-store/mapping.md), [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 
     :::{image} ../../../images/elasticsearch-reference-management_index_details.png
     :alt: Index Management UI
