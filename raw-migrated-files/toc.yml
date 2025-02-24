@@ -349,7 +349,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/defining-roles.md
       - file: elasticsearch/elasticsearch-reference/document-level-security.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
-      - file: elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
       - file: elasticsearch/elasticsearch-reference/field-and-document-access-control.md
