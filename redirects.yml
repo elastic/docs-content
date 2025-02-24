@@ -1,2 +1,3 @@
 redirects:
   'get-started/installing-elastic-stack.md': '!deploy-manage/deploy/self-managed.md'
+  'solutions/search/site-or-app/behavioral-analytics.md':
