@@ -9,36 +9,36 @@ applies_to:
 
 # Chat completion inference API [chat-completion-inference-api]
 
-:::{tip} Inference API reference  
-Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::{tip} Inference API reference
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.
 :::
 
 Streams a chat completion response.
 
-::::{important} 
-The {{infer}} APIs enable you to use certain services, such as built-in {{ml}} models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the {{infer}} APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the {{infer}} APIs to use these models or if you want to use non-NLP models, use the [*{{ml-cap}} trained model APIs*](https://www.elastic.co/guide/en/elasticsearch/reference/master/ml-df-trained-models-apis.html).
+::::{important}
+The {{infer}} APIs enable you to use certain services, such as built-in {{ml}} models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the {{infer}} APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the {{infer}} APIs to use these models or if you want to use non-NLP models, use the [*{{ml-cap}} trained model APIs*](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ml-trained-model).
 ::::
 
 
 
-## {{api-request-title}} [chat-completion-inference-api-request] 
+## {{api-request-title}} [chat-completion-inference-api-request]
 
 `POST /_inference/<inference_id>/_unified`
 
 `POST /_inference/chat_completion/<inference_id>/_unified`
 
 
-## {{api-prereq-title}} [chat-completion-inference-api-prereqs] 
+## {{api-prereq-title}} [chat-completion-inference-api-prereqs]
 
-* Requires the `monitor_inference` [cluster privilege](https://www.elastic.co/guide/en/elasticsearch/reference/master/security-privileges.html#privileges-list-cluster) (the built-in `inference_admin` and `inference_user` roles grant this privilege)
+* Requires the `monitor_inference` [cluster privilege](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/security-privileges.md#privileges-list-cluster) (the built-in `inference_admin` and `inference_user` roles grant this privilege)
 * You must use a client that supports streaming.
 
 
-## {{api-description-title}} [chat-completion-inference-api-desc] 
+## {{api-description-title}} [chat-completion-inference-api-desc]
 
 The chat completion {{infer}} API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation. It only works with the `chat_completion` task type for `openai` and `elastic` {{infer}} services.
 
-::::{note} 
+::::{note}
 * The `chat_completion` task type is only available within the _unified API and only supports streaming.
 * The Chat completion {{infer}} API and the Stream {{infer}} API differ in their response structure and capabilities. The Chat completion {{infer}} API provides more comprehensive customization options through more fields and function calling support. If you use the `openai` service or the `elastic` service, use the Chat completion {{infer}} API.
 
@@ -46,7 +46,7 @@ The chat completion {{infer}} API enables real-time responses for chat completio
 
 
 
-## {{api-path-parms-title}} [chat-completion-inference-api-path-params] 
+## {{api-path-parms-title}} [chat-completion-inference-api-path-params]
 
 `<inference_id>`
 :   (Required, string) The unique identifier of the {{infer}} endpoint.
@@ -55,7 +55,7 @@ The chat completion {{infer}} API enables real-time responses for chat completio
 :   (Optional, string) The type of {{infer}} task that the model performs. If included, this must be set to the value `chat_completion`.
 
 
-## {{api-request-body-title}} [chat-completion-inference-api-request-body] 
+## {{api-request-body-title}} [chat-completion-inference-api-request-body]
 
 `messages`
 :   (Required, array of objects) A list of objects representing the conversation. Requests should generally only add new messages from the user (role `user`). The other message roles (`assistant`, `system`, or `tool`) should generally only be copied from the response to a previous completion request, such that the messages array is built up throughout a conversation.
@@ -392,7 +392,7 @@ The chat completion {{infer}} API enables real-time responses for chat completio
 :   (Optional, float) Nucleus sampling, an alternative to sampling with temperature.
 
 
-## {{api-examples-title}} [chat-completion-inference-api-example] 
+## {{api-examples-title}} [chat-completion-inference-api-example]
 
 The following example performs a chat completion on the example question with streaming.
 

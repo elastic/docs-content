@@ -85,7 +85,7 @@ You won’t be able to view this API key again. If needed you'll need to generat
 
 The UI provides ready-to-use code examples for ingesting data via the REST API. Choose your preferred tool for making these requests:
 
-* [Console](https://www.elastic.co/guide/en/serverless/current/devtools-run-api-requests-in-the-console.html) in your project’s UI
+* [Console](/explore-analyze/query-filter/tools/console.md) in your project’s UI
 * Python
 * JavaScript
 * cURL
@@ -119,4 +119,4 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
 ## Next steps [elasticsearch-next-steps]
 
 * Once you’ve added data to your {{es-serverless}} project, you can use [Playground](rag/playground.md) to test and tweak {{es}} queries and chat with your data, using GenAI.
-* You can also try our hands-on [quick start tutorials](https://www.elastic.co/guide/en/elasticsearch/reference/current/quickstart.html#quickstart-list) in the core {{es}} documentation.
+* You can also try our hands-on [quick start tutorials](/solutions/search/get-started.md) in the core {{es}} documentation.

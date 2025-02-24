@@ -9,19 +9,19 @@ applies_to:
 
 # JinaAI inference integration [infer-service-jinaai]
 
-:::{tip} Inference API reference  
-Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::{tip} Inference API reference
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.
 :::
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `jinaai` service.
 
 
-## {{api-request-title}} [infer-service-jinaai-api-request] 
+## {{api-request-title}} [infer-service-jinaai-api-request]
 
 `PUT /_inference/<task_type>/<inference_id>`
 
 
-## {{api-path-parms-title}} [infer-service-jinaai-api-path-params] 
+## {{api-path-parms-title}} [infer-service-jinaai-api-path-params]
 
 `<inference_id>`
 :   (Required, string) The unique identifier of the {{infer}} endpoint.
@@ -36,10 +36,10 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `jinaai` ser
 
 
 
-## {{api-request-body-title}} [infer-service-jinaai-api-request-body] 
+## {{api-request-body-title}} [infer-service-jinaai-api-request-body]
 
 `chunking_settings`
-:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/guide/en/elasticsearch/reference/master/inference-apis.html#infer-chunking-config) to learn more about chunking.
+:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference#infer-chunking-config) to learn more about chunking.
 
     `max_chunk_size`
     :   (Optional, integer) Specifies the maximum size of a chunk in words. Defaults to `250`. This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).
@@ -65,8 +65,8 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `jinaai` ser
     `api_key`
     :   (Required, string) A valid API key for your JinaAI account. You can find it at [https://jina.ai/embeddings/](https://jina.ai/embeddings/).
 
-        ::::{important} 
-        You need to provide the API key only once, during the {{infer}} model creation. The [Get {{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/master/get-inference-api.html) does not retrieve your API key. After creating the {{infer}} model, you cannot change the associated API key. If you want to use a different API key, delete the {{infer}} model and recreate it with the same name and the updated API key.
+        ::::{important}
+        You need to provide the API key only once, during the {{infer}} model creation. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not retrieve your API key. After creating the {{infer}} model, you cannot change the associated API key. If you want to use a different API key, delete the {{infer}} model and recreate it with the same name and the updated API key.
         ::::
 
 
@@ -125,7 +125,7 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `jinaai` ser
 
 
 
-## JinaAI service examples [inference-example-jinaai] 
+## JinaAI service examples [inference-example-jinaai]
 
 The following examples demonstrate how to create {{infer}} endpoints for `text_embeddings` and `rerank` tasks using the JinaAI service and use them in search requests.
 

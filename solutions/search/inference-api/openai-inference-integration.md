@@ -9,8 +9,8 @@ applies_to:
 
 # OpenAI inference integration [infer-service-openai]
 
-:::{tip} Inference API reference  
-Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::{tip} Inference API reference
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.
 :::
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `openai` service.
@@ -39,7 +39,7 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `openai` ser
 ::::{note}
 The `chat_completion` task type only supports streaming and only through the `_unified` API.
 
-For more information on how to use the `chat_completion` task type, please refer to the [chat completion documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/chat-completion-inference-api.html).
+For more information on how to use the `chat_completion` task type, please refer to the [chat completion documentation](/solutions/search/inference-api/chat-completion-inference-api.md).
 
 ::::
 

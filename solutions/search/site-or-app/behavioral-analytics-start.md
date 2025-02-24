@@ -20,9 +20,9 @@ Using behavioral analytics is a three-step process:
 3. **Analyze** the data collected.
 
 
-## Collections [behavioral-analytics-start-collections] 
+## Collections [behavioral-analytics-start-collections]
 
-::::{note} 
+::::{note}
 This guide focuses on using the Behavioral Analytics UI in {{kib}} to create and manage collections. You can also use the [Behavioral Analytics APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-analytics) to create, list, and delete collections, as well as post events to a collection.
 
 ::::
@@ -44,9 +44,9 @@ This means that once you integrate analytics into your application or website, y
 Once you’ve created a collection, you need to complete your UI integration.
 
 
-## UI integration [behavioral-analytics-start-ui-integration] 
+## UI integration [behavioral-analytics-start-ui-integration]
 
-::::{note} 
+::::{note}
 Detailed integration instructions are provided in the {{kib}} UI. Find these in the **Integrate** tab under **Search > Behavioral Analytics >** *<your-collection>*.
 
 ::::
@@ -57,12 +57,12 @@ Choose *one* of the following integration options:
 * [Option 1: Browser tracker](#behavioral-analytics-start-ui-integration-js-embed)
 * [Option 2: JavaScript tracker](#behavioral-analytics-start-ui-integration-js-client)
 
-Once embedded, users of the [Search UI](https://docs.elastic.co/search-ui/getting-started) JavaScript library can use the following integration for simplified event shipping:
+Once embedded, users of the [Search UI](asciidocalypse://docs/search-ui/docs/basic-usage.md) JavaScript library can use the following integration for simplified event shipping:
 
 * [Search UI integration](#behavioral-analytics-start-ui-integration-search-ui)
 
 
-### Option 1: Browser tracker [behavioral-analytics-start-ui-integration-js-embed] 
+### Option 1: Browser tracker [behavioral-analytics-start-ui-integration-js-embed]
 
 Add a JavaScript snippet to your website or application source files, using the [Browser tracker](https://github.com/elastic/behavioral-analytics-tracker/blob/main/packages/browser-tracker/README.md).
 
@@ -95,7 +95,7 @@ Instructions for getting started are available in the {{kib}} UI.
 3. Track search events, like result clicks and searches, by using the `trackSearch` or `trackSearchClick` methods.
 
 
-### Option 2: JavaScript tracker [behavioral-analytics-start-ui-integration-js-client] 
+### Option 2: JavaScript tracker [behavioral-analytics-start-ui-integration-js-client]
 
 The JavaScript client is available as an [NPM package](https://www.npmjs.com/package/@elastic/behavioral-analytics-javascript-tracker). We recommend this approach if your application bundles JavaScript from NPM packages. This is a good option for Node apps (server-side apps). Analytics will be bundled with your app.
 
@@ -141,7 +141,7 @@ Instructions for getting started are also available in the {{kib}} UI.
 
 Once integrated, you should be able to see page view events within the **Explorer** tab.
 
-::::{tip} 
+::::{tip}
 **Session-based sampling**
 
 You don’t always want all sessions to be sent to your Elastic cluster. You can introduce session-based sampling by adding a sampling parameter to the `createTracker` method.
@@ -161,22 +161,22 @@ createTracker({
 
 
 
-## Search UI integration [behavioral-analytics-start-ui-integration-search-ui] 
+## Search UI integration [behavioral-analytics-start-ui-integration-search-ui]
 
-[Search UI](https://docs.elastic.co/search-ui) is a JavaScript library for building search experiences. Use the [Search UI analytics plugin](https://www.npmjs.com/package/@elastic/search-ui-analytics-plugin) available on NPM to integrate behavioral analytics with Search UI.
+[Search UI](asciidocalypse://docs/search-ui/docs/index.md) is a JavaScript library for building search experiences. Use the [Search UI analytics plugin](https://www.npmjs.com/package/@elastic/search-ui-analytics-plugin) available on NPM to integrate behavioral analytics with Search UI.
 
 This integration enables you to dispatch events from Search UI to the behavioral analytics client. The advantage of this integration is that you don’t need to set up custom events. Events fired by Search UI are dispatched automatically.
 
 To use this integration, follow these steps:
 
 1. Embed Behavioral Analytics into your site using [Option 1: Browser tracker](#behavioral-analytics-start-ui-integration-js-embed) **or** the [Option 2: JavaScript tracker](#behavioral-analytics-start-ui-integration-js-client).
-2. Install the [`@elastic/search-ui-analytics-plugin`](https://www.npmjs.com/package/@elastic/search-ui-analytics-plugin) by importing it into your app.
+2. Install the [`@elastic/search-ui-analytics-plugin`](asciidocalypse://docs/search-ui/docs/api-core-plugins-analytics-plugin.md) by importing it into your app.
 3. Add the plugin to your Search UI configuration.
 
-See the [Search UI analytics plugin documentation](https://docs.elastic.co/search-ui/api/core/plugins/analytics-plugin) for details.
+See the [Search UI analytics plugin documentation](asciidocalypse://docs/search-ui/docs/api-core-plugins-analytics-plugin.md) for details.
 
 
-## Next steps [behavioral-analytics-start-next-steps] 
+## Next steps [behavioral-analytics-start-next-steps]
 
 * Refer to the [analytics API reference](behavioral-analytics-api.md).
 

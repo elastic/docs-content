@@ -14,12 +14,12 @@ applies_to:
 This page outlines all the APIs available for behavioral analytics and links to their documentation.
 
 
-## Behavioral Analytics REST APIs [behavioral-analytics-api-es-rest] 
+## Behavioral Analytics REST APIs [behavioral-analytics-api-es-rest]
 
 Behavioral Analytics relies on a number of {{es}} APIs to manage analytics collections. Refer to the [API documentation](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-analytics) for the details.
 
 
-## Behavioral Analytics Clients [behavioral-analytics-api-clients] 
+## Behavioral Analytics Clients [behavioral-analytics-api-clients]
 
 Behavioral Analytics integrates onto your website using one of our JavaScript clients:
 
@@ -33,14 +33,14 @@ Behavioral Analytics integrates onto your website using one of our JavaScript cl
 
 
 
-## Search UI integration [behavioral-analytics-api-search-ui] 
+## Search UI integration [behavioral-analytics-api-search-ui]
 
 To simplify the integration of Behavioral Analytics into your website, we provide a Search UI integration. This integration automatically sends Behavioral Analytics events to your collection as your customer interacts with your search experience.
 
-Refer to the [Search UI analytics plugin documentation](https://docs.elastic.co/search-ui/api/core/plugins/analytics-plugin).
+Refer to the [Search UI analytics plugin documentation](asciidocalypse://docs/search-ui/docs/api-core-plugins-analytics-plugin.md).
 
 
-## Searchkit integration [behavioral-analytics-api-searchkit] 
+## Searchkit integration [behavioral-analytics-api-searchkit]
 
 Behavioral Analytics also integrates with [Searchkit](https://www.searchkit.co), an open source library for building UIs on top of {{es}}.
 
