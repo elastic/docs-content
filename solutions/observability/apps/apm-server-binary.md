@@ -815,7 +815,7 @@ docker run -d \
 ```
 
 1. Substitute your {{es}} hosts and ports.
-2. If you are using the hosted {{ess}} in {{ecloud}}, replace the `-E output.elasticsearch.hosts` line with the Cloud ID and elastic password using the syntax shown earlier.
+2. If you are using {{ech}}, replace the `-E output.elasticsearch.hosts` line with the Cloud ID and elastic password using the syntax shown earlier.
 
 
 

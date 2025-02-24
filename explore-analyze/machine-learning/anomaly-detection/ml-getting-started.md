@@ -23,7 +23,7 @@ Need more context? Check out the [{{es}} introduction](/get-started/index.md) to
 
 1. Before you can play with the {{ml-features}}, you must install {{es}} and {{kib}}. {{es}} stores the data and the analysis results. {{kib}} provides a helpful user interface for creating and viewing jobs.
    ::::{tip}
-   You can run {{es}} and {{kib}} on your own hardware, or use our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service) on {{ecloud}}. The {{ess}} is available on both AWS and GCP. [Try out the {{ess}} for free](https://www.elastic.co/cloud/elasticsearch-service/signup).
+   You can run {{es}} and {{kib}} on your own hardware or on [{{ecloud}}](https://www.elastic.co/cloud/). [Try out {{ecloud}} for free](https://cloud.elastic.co/registration?elektra=en-ess-sign-up-page).
    ::::
 
 2. Verify that your environment is set up properly to use the {{ml-features}}. If the {{es}} {{security-features}} are enabled, to complete this tutorial you need a user that has authority to manage {{anomaly-jobs}}. See [Setup and security](../setting-up-machine-learning.md).

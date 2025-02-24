@@ -108,7 +108,7 @@ This tab allows configuration for the following items:
 
 * Cloud ID
 
-  The *Cloud ID* is a string that simplifies the configuration when connecting to Elastic’s Cloud {{ess}}; it is obtained from within the Cloud console of each {{es}} cluster and encodes the connection parameters to that cluster.
+  The *Cloud ID* is a string that simplifies the configuration when connecting to {{ecloud}}. It encodes the connection parameters to that cluster. You can obtain it from from your deployment's details in the {{ecloud}} Console.
 
   ::::{note}
   When this field is provisioned, the *Hostname*, *Port* and the security settings are provisioned as well and their respective inputs disabled.
