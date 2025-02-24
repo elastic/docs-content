@@ -9,7 +9,7 @@ applies_to:
     self: 
 ---
 
-# Access agreement [xpack-security-access-agreement]
+# {{kib}} access agreement [xpack-security-access-agreement]
 
 Access agreement is a [subscription feature](https://www.elastic.co/subscriptions) that requires users to acknowledge and accept an agreement before accessing {{kib}}. The agreement text supports Markdown format and can be specified using the `xpack.security.authc.providers.<provider-type>.<provider-name>.accessAgreement.message` setting.
 

@@ -210,6 +210,23 @@ stringData:
   roles: kibana_admin,ingest_admin  # optional, not part of kubernetes.io/basic-auth
 ```
 
+You can make this file available to {{eck}} by adding it as a file realm secret:
+
+```yaml
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: elasticsearch-sample
+spec:
+  version: 8.16.1
+  auth:
+    fileRealm:
+    - secretName: secret-basic-auth
+  nodeSets:
+  - name: default
+    count: 1
+```
+
 ::::{note}
 If you specify the password for the `elastic` user through a basic authentication secret, then the secret holding the password described in [](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) will not be created by the operator.
 ::::
