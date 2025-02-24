@@ -63,7 +63,7 @@ You can configure a `native` realm in the `xpack.security.authc.realms.native` n
 
 ## Manage native users using {{kib}} [managing-native-users]
 
-The Elastic enables you to easily manage users in {{kib}} on the **Stack Management > Security > Users** page. From this page, you can create users, edit users, assign roles to users, and change user passwords. You can also deactivate or delete existing users.
+Elastic enables you to easily manage users in {{kib}} on the **Stack Management > Security > Users** page. From this page, you can create users, edit users, assign roles to users, and change user passwords. You can also deactivate or delete existing users.
 
 ### Example: Create a user [_create_a_user]
 

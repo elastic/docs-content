@@ -55,8 +55,6 @@ By default, the bootstrap password is derived from a randomized `keystore.seed` 
 After you [set passwords for the built-in users](../../../deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md#set-built-in-user-passwords), in particular for the `elastic` user, there is no further use for the bootstrap password.
 ::::
 
-
-
 ## Setting built-in user passwords [set-built-in-user-passwords] 
 
 You must set the passwords for all built-in users.
