@@ -660,13 +660,6 @@ toc:
         children:
           - file: search/site-or-app/clients.md
           - file: search/site-or-app/search-ui.md
-          - file: search/site-or-app/behavioral-analytics.md
-            children:
-              - file: search/site-or-app/behavioral-analytics-start.md
-              - file: search/site-or-app/behavioral-analytics-cors.md
-              - file: search/site-or-app/behavioral-analytics-event.md
-              - file: search/site-or-app/behavioral-analytics-event-reference.md
-              - file: search/site-or-app/behavioral-analytics-api.md
           - file: search/search-applications.md
             children:
               - file: search/search-applications/search-application-api.md
