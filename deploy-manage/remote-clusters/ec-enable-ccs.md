@@ -27,7 +27,7 @@ To use CCS or CCR, your deployments must meet the following criteria:
   :::{include} _snippets/remote-cluster-certificate-compatibility.md
   :::
 
-* If your deployment was created before February 2021, the Remote clusters page in {{kib}} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
+* If your deployment was created before February 2021, the **Remote clusters** page in {{kib}} must be enabled manually from the **Security** page of your deployment, by selecting **Enable CCR** under **Trust management**.
 
 ## Set up remote clusters with {{ech}}
 
@@ -45,8 +45,8 @@ The steps, information, and authentication method required to configure CCS and 
 
     * [From another deployment of your {{ecloud}} organization](ec-remote-cluster-same-ess.md)
     * [From a deployment of another {{ecloud}} organization](ec-remote-cluster-other-ess.md)
-    * [From an ECE deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html)
-    * [From a self-managed cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html)
+    * [From an ECE deployment](ece-remote-cluster-ece-ess.md)
+    * [From a self-managed cluster](remote-clusters-self-managed.md)
     * [From an ECK environment](ec-enable-ccs-for-eck.md)
 
 
