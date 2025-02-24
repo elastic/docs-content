@@ -30,7 +30,7 @@ Keep in mind that some features such as [Time Series Data Streams (TSDS)](../dat
 
 ## Backing indices [backing-indices]
 
-A data stream consists of one or more [hidden](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-hidden), auto-generated backing indices.
+A data stream consists of one or more [hidden](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-hidden), auto-generated backing indices.
 
 :::{image} ../../images/elasticsearch-reference-data-streams-diagram.svg
 :alt: data streams diagram

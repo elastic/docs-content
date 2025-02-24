@@ -397,8 +397,7 @@ Validation for this test fails because the certificate is not valid for the spec
 curl: (51) SSL: certificate verification failed (result: 5)
 ```
 
-See the [troubleshooting docs](common-problems.md#apm-ssl-client-fails) for info about resolving this issue.
-
+See the [troubleshooting docs](../../../troubleshoot/observability/apm/common-problems.md#apm-ssl-client-fails) for info about resolving this issue.
 
 ### Test the APM Server to {{ls}} connection [_test_the_apm_server_to_ls_connection]
 
@@ -408,5 +407,5 @@ If you have APM Server running as a service, first stop the service. Then test y
 apm-server -c apm-server.yml -e -v
 ```
 
-Any errors will be printed to the console. See the [troubleshooting docs](common-problems.md#apm-ssl-client-fails) for info about resolving common errors.
+Any errors will be printed to the console. See the [troubleshooting docs](../../../troubleshoot/observability/apm/common-problems.md#apm-ssl-client-fails) for info about resolving common errors.
 

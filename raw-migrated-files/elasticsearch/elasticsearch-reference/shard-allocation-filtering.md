@@ -84,7 +84,7 @@ The index allocation settings support the following built-in attributes:
 :   Match nodes by node id
 
 `_tier`
-:   Match nodes by the node’s [data tier](../../../manage-data/lifecycle/data-tiers.md) role. For more details see [data tier allocation filtering](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation-settings.md)
+:   Match nodes by the node’s [data tier](../../../manage-data/lifecycle/data-tiers.md) role. For more details see [data tier allocation filtering](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation.md)
 
 ::::{note} 
 `_tier` filtering is based on [node](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md) roles. Only a subset of roles are [data tier](../../../manage-data/lifecycle/data-tiers.md) roles, and the generic [data role](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#data-node-role) will match any tier filtering.

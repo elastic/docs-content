@@ -211,7 +211,7 @@ To troubleshoot queries in {{kib}}, select **Inspect** in the toolbar. Next, sel
 
 ## Check index settings [troubleshooting-searches-settings]
 
-[Index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings) can influence search results. For example, the `index.query.default_field` setting, which determines the field that is queried when a query specifies no explicit field. Use the [get index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) to retrieve the settings for an index:
+[Index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md) can influence search results. For example, the `index.query.default_field` setting, which determines the field that is queried when a query specifies no explicit field. Use the [get index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) to retrieve the settings for an index:
 
 ```console
 GET /my-index-000001/_settings
@@ -224,7 +224,7 @@ For static settings, you need to create a new index with the correct settings. N
 
 ## Find slow queries [troubleshooting-slow-searches]
 
-[Slow logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log-settings.md) can help pinpoint slow performing search requests. Enabling [audit logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the `elasticsearch.yml` configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
+[Slow logs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log.md) can help pinpoint slow performing search requests. Enabling [audit logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md) on top can help determine query source. Add the following settings to the `elasticsearch.yml` configuration file to trace queries. The resulting logging is verbose, so disable these settings when not troubleshooting.
 
 ```yaml
 xpack.security.audit.enabled: true

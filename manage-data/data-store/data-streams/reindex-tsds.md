@@ -267,5 +267,5 @@ POST /k9s/_rollover/
 
 This creates a new backing index with the updated index settings. The destination data stream is now ready to accept new documents.
 
-Note that the initial backing index can still accept documents within the range of timestamps derived from the source data stream. If this is not desired, mark it as [read-only](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block-settings.md#index-blocks-read-only) explicitly.
+Note that the initial backing index can still accept documents within the range of timestamps derived from the source data stream. If this is not desired, mark it as [read-only](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md#index-blocks-read-only) explicitly.
 

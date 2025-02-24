@@ -13,7 +13,7 @@ Create a `synthetics.config.js` or `synthetics.config.ts` file in the root of th
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 ```ts
 import type { SyntheticsConfig } from '@elastic/synthetics';
