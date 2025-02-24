@@ -31,7 +31,7 @@ $$$management-cross-cluster-search$$$
 $$$data-views-read-only-access$$$
 
 
-By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
+By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](elasticsearch://docs/reference/elasticsearch/mapping-reference/field-alias.md). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
 In certain apps, you can also query your {{es}} data using [{{esql}}](../query-filter/languages/esql.md). With {{esql}}, data views aren't required.
@@ -476,7 +476,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 5. Select **Set format**, then enter the **Format** for the field.
 
 ::::{note}
-For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
+For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](elasticsearch://docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
 ::::
 
 
@@ -613,7 +613,7 @@ Numeric fields support **Bytes**, **Color**, **Duration**, **Histogram**, **Numb
 
 The **Bytes**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
 
-The **Histogram** formatter is used only for the [histogram field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
+The **Histogram** formatter is used only for the [histogram field type](elasticsearch://docs/reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
 
 You can specify the following types to the `Url` field formatter:
 

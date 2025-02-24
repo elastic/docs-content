@@ -6,7 +6,7 @@ mapped_pages:
 
 # Troubleshoot monitoring [monitoring-troubleshooting]
 
-Use the information in this section to troubleshoot common problems and find answers for frequently asked questions. See also [Troubleshooting monitoring in {{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/monitoring-troubleshooting.md).
+Use the information in this section to troubleshoot common problems and find answers for frequently asked questions. See also [Troubleshooting monitoring in {{ls}}](logstash://docs/reference/ingestion-tools/logstash/monitoring-troubleshooting.md).
 
 For issues that you cannot fix yourself … we’re here to help. If you are an existing Elastic customer with a support contract, please create a ticket in the [Elastic Support portal](https://support.elastic.co/customers/s/login/). Or post in the [Elastic forum](https://discuss.elastic.co/).
 
@@ -26,9 +26,9 @@ For issues that you cannot fix yourself … we’re here to help. If you are an 
 
 In some cases, you can also retrieve this information via APIs:
 
-* For Beat instances, use the HTTP endpoint to retrieve the `uuid` property. For example, refer to [Configure an HTTP endpoint for {{filebeat}} metrics](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/http-endpoint.md).
+* For Beat instances, use the HTTP endpoint to retrieve the `uuid` property. For example, refer to [Configure an HTTP endpoint for {{filebeat}} metrics](beats://docs/reference/ingestion-tools/beats-filebeat/http-endpoint.md).
 * For {{kib}} instances, use the [status endpoint](/troubleshoot/kibana/access.md) to retrieve the `uuid` property.
-* For {{ls}} nodes, use the [monitoring APIs root resource](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/monitoring-logstash.md) to retrieve the `id` property.
+* For {{ls}} nodes, use the [monitoring APIs root resource](logstash://docs/reference/ingestion-tools/logstash/monitoring-logstash.md) to retrieve the `id` property.
 
 ::::{tip} 
 When you install {{es}}, {{ls}}, {{kib}}, APM Server, or Beats, their `path.data` directory should be non-existent or empty; do not copy this directory from other installations.

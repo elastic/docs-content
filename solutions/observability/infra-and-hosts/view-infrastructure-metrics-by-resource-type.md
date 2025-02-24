@@ -15,7 +15,7 @@ To open **Infrastructure inventory**, find **Infrastructure** in the main menu o
 :class: screenshot
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference-serverless.md).
+To learn more about the metrics shown on this page, refer to the [Metrics reference](docs-content://docs/reference/data-analysis/observability/metrics-reference-serverless.md).
 
 ::::{admonition} Don’t see any metrics?
 :class: note
@@ -163,7 +163,7 @@ The **Logs** tab displays logs relating to the host that you have selected. By d
 |  |  |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document. The content of this field depends on the type of log message. If no special log message type is detected, the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-base.md) base field, `message`, is used. |
+| **Message** | The message extracted from the document. The content of this field depends on the type of log message. If no special log message type is detected, the [Elastic Common Schema (ECS)](ecs://docs/reference/ecs/ecs-base.md) base field, `message`, is used. |
 
 To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Logs**.
 
@@ -207,7 +207,7 @@ To learn more about roles, refer to [Assign user roles and privileges](../../../
 
 
 ::::{important}
-You must have an active [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery_manager.html.md) integration.
+You must have an active [{{agent}}](docs-content://docs/reference/ingestion-tools/fleet/install-elastic-agents.md) with an assigned agent policy that includes the [Osquery Manager](integration-docs://docs/reference/ingestion-tools/integrations/osquery_manager.html.md) integration.
 
 ::::
 
@@ -316,7 +316,7 @@ The **Logs** tab displays logs relating to the container that you have selected.
 |  |  |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document. The content of this field depends on the type of log message. If no special log message type is detected, the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-base.md) base field, `message`, is used. |
+| **Message** | The message extracted from the document. The content of this field depends on the type of log message. If no special log message type is detected, the [Elastic Common Schema (ECS)](ecs://docs/reference/ecs/ecs-base.md) base field, `message`, is used. |
 
 To view the logs in the {{logs-app}} for a detailed analysis, click **Open in Logs**.
 

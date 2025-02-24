@@ -22,7 +22,7 @@ You’ll learn how to:
 * Visualize your data in {{kib}}.
 
 ::::{note}
-For more use cases, check the [AWS integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws.md).
+For more use cases, check the [AWS integrations](integration-docs://docs/reference/ingestion-tools/integrations/aws.md).
 ::::
 
 
@@ -126,7 +126,7 @@ To add the integration:
     If you don’t see options for configuring the integration, you’re probably in a workflow designed for new deployments. Follow the steps, then return to this tutorial when you’re ready to configure the integration.
     ::::
 
-5. Specify the AWS credentials required to connect to AWS and read log files. In this tutorial, we use an AWS access key ID and secret, but there are a few other ways to provide AWS credentials. To learn more, refer to the [AWS integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws.md) documentation. The account you specify must have at least the following privileges:
+5. Specify the AWS credentials required to connect to AWS and read log files. In this tutorial, we use an AWS access key ID and secret, but there are a few other ways to provide AWS credentials. To learn more, refer to the [AWS integration](integration-docs://docs/reference/ingestion-tools/integrations/aws.md) documentation. The account you specify must have at least the following privileges:
 
     ```yaml
     {

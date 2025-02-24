@@ -275,7 +275,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
         }
         ```
 
-3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) tool.
+3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](elasticsearch://docs/reference/elasticsearch/command-line-tools/users-command.md) tool.
 
     For example, the following command creates a user named `restore_user`.
 
@@ -285,7 +285,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
     Use this file realm user to authenticate requests until the restore operation is complete.
 
-4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
+4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](elasticsearch://docs/reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
 
     ```console
     PUT _cluster/settings
@@ -462,7 +462,7 @@ Before you start a restore operation, ensure the new cluster has enough capacity
 
 * Add nodes or upgrade your hardware to increase capacity.
 * Restore fewer indices and data streams.
-* Reduce the [number of replicas](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) for restored indices.
+* Reduce the [number of replicas](elasticsearch://docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) for restored indices.
 
     For example, the following restore snapshot API request uses the `index_settings` option to set `index.number_of_replicas` to `1`.
 

@@ -228,7 +228,7 @@ To export and import detection rules:
 
 ## Confirm rule prerequisites [rule-prerequisites]
 
-Many detection rules are designed to work with specific [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) and data fields. These prerequisites are identified in **Related integrations** and **Required fields*** on a rule’s details page (***Rules*** → ***Detection rules (SIEM)**, then click a rule’s name). **Related integrations** also displays each integration’s installation status and includes links for installing and configuring the listed integrations.
+Many detection rules are designed to work with specific [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md) and data fields. These prerequisites are identified in **Related integrations** and **Required fields*** on a rule’s details page (***Rules*** → ***Detection rules (SIEM)**, then click a rule’s name). **Related integrations** also displays each integration’s installation status and includes links for installing and configuring the listed integrations.
 
 Additionally, the **Setup guide** section provides guidance on setting up the rule’s requirements.
 

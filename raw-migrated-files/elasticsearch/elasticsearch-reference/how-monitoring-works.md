@@ -20,16 +20,16 @@ To learn how to collect monitoring data, refer to:
     * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md): Uses internal exporters to gather metrics. Not recommended. If you have previously configured legacy collection methods, you should migrate to using {{agent}} or {{metricbeat}}.
 
 * [Monitoring {{kib}}](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md)
-* [Monitoring {{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/monitoring-logstash-legacy.md)
+* [Monitoring {{ls}}](logstash://docs/reference/ingestion-tools/logstash/monitoring-logstash-legacy.md)
 * Monitoring {{beats}}:
 
-    * [{{auditbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-auditbeat/monitoring.md)
-    * [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/monitoring.md)
-    * [{{heartbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/monitoring.md)
-    * [{{metricbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/monitoring.md)
-    * [{{packetbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/monitoring.md)
-    * [{{winlogbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-winlogbeat/monitoring.md)
+    * [{{auditbeat}}](beats://docs/reference/ingestion-tools/beats-auditbeat/monitoring.md)
+    * [{{filebeat}}](beats://docs/reference/ingestion-tools/beats-filebeat/monitoring.md)
+    * [{{heartbeat}}](beats://docs/reference/ingestion-tools/beats-heartbeat/monitoring.md)
+    * [{{metricbeat}}](beats://docs/reference/ingestion-tools/beats-metricbeat/monitoring.md)
+    * [{{packetbeat}}](beats://docs/reference/ingestion-tools/beats-packetbeat/monitoring.md)
+    * [{{winlogbeat}}](beats://docs/reference/ingestion-tools/beats-winlogbeat/monitoring.md)
 
 * [Monitoring APM Server](/solutions/observability/apps/monitor-apm-server.md)
-* [Monitoring {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
+* [Monitoring {{agent}}s](docs-content://docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) {{fleet}}-managed agents) or [Configure monitoring for standalone {{agent}}s](docs-content://docs/reference/ingestion-tools/fleet/elastic-agent-monitoring-configuration.md)
 

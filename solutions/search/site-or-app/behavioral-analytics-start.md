@@ -57,7 +57,7 @@ Choose *one* of the following integration options:
 * [Option 1: Browser tracker](#behavioral-analytics-start-ui-integration-js-embed)
 * [Option 2: JavaScript tracker](#behavioral-analytics-start-ui-integration-js-client)
 
-Once embedded, users of the [Search UI](asciidocalypse://docs/search-ui/docs/basic-usage.md) JavaScript library can use the following integration for simplified event shipping:
+Once embedded, users of the [Search UI](search-ui://docs/basic-usage.md) JavaScript library can use the following integration for simplified event shipping:
 
 * [Search UI integration](#behavioral-analytics-start-ui-integration-search-ui)
 
@@ -163,17 +163,17 @@ createTracker({
 
 ## Search UI integration [behavioral-analytics-start-ui-integration-search-ui]
 
-[Search UI](asciidocalypse://docs/search-ui/docs/index.md) is a JavaScript library for building search experiences. Use the [Search UI analytics plugin](https://www.npmjs.com/package/@elastic/search-ui-analytics-plugin) available on NPM to integrate behavioral analytics with Search UI.
+[Search UI](search-ui://docs/index.md) is a JavaScript library for building search experiences. Use the [Search UI analytics plugin](https://www.npmjs.com/package/@elastic/search-ui-analytics-plugin) available on NPM to integrate behavioral analytics with Search UI.
 
 This integration enables you to dispatch events from Search UI to the behavioral analytics client. The advantage of this integration is that you don’t need to set up custom events. Events fired by Search UI are dispatched automatically.
 
 To use this integration, follow these steps:
 
 1. Embed Behavioral Analytics into your site using [Option 1: Browser tracker](#behavioral-analytics-start-ui-integration-js-embed) **or** the [Option 2: JavaScript tracker](#behavioral-analytics-start-ui-integration-js-client).
-2. Install the [`@elastic/search-ui-analytics-plugin`](asciidocalypse://docs/search-ui/docs/api-core-plugins-analytics-plugin.md) by importing it into your app.
+2. Install the [`@elastic/search-ui-analytics-plugin`](search-ui://docs/api-core-plugins-analytics-plugin.md) by importing it into your app.
 3. Add the plugin to your Search UI configuration.
 
-See the [Search UI analytics plugin documentation](asciidocalypse://docs/search-ui/docs/api-core-plugins-analytics-plugin.md) for details.
+See the [Search UI analytics plugin documentation](search-ui://docs/api-core-plugins-analytics-plugin.md) for details.
 
 
 ## Next steps [behavioral-analytics-start-next-steps]

@@ -16,7 +16,7 @@ This upgrade guide is for the standalone method of running APM Server. Only use 
 
 Follow these steps to upgrade:
 
-1. Review the APM [release notes](asciidocalypse://docs/docs-content/docs/release-notes/apm.md), [breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-apm.md), and {{observability}} [What’s new](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-observability.md) content.
+1. Review the APM [release notes](docs-content://docs/release-notes/apm.md), [breaking changes](docs-content://docs/release-notes/breaking-changes/elastic-apm.md), and {{observability}} [What’s new](docs-content://docs/release-notes/breaking-changes/elastic-observability.md) content.
 2. Upgrade {{ecloud}} to 9.0.0-beta1, See [Upgrade versions](../../../deploy-manage/upgrade/deployment-or-cluster.md) for instructions.
 3. (Optional) Upgrade to the APM integration. Got time for one more upgrade? See [Switch to the Elastic APM integration](switch-to-elastic-apm-integration.md).
 

@@ -108,10 +108,10 @@ If you’re already familiar with Elasticsearch, you can jump right into setting
 2. Ingest your data. Elasticsearch provides several methods for ingesting data:
 
     * [{{es}} API](ingest-for-search.md)
-    * [Connector clients](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md)
+    * [Connector clients](elasticsearch://docs/reference/ingestion-tools/search-connectors/index.md)
     * [File Uploader](/manage-data/ingest/upload-data-files.md)
-    * [{{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md)
-    * [{{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md)
+    * [{{beats}}](beats://docs/reference/ingestion-tools/index.md)
+    * [{{ls}}](logstash://docs/reference/ingestion-tools/logstash/index.md)
     * [Elastic Open Web Crawler](https://github.com/elastic/crawler)
 
 

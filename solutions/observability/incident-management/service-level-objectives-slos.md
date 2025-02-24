@@ -8,7 +8,7 @@ mapped_urls:
 % Stateful only for the following admon.
 
 ::::{important}
-**For Elastic Stack v9,** to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
+**For Elastic Stack v9,** to create and manage SLOs, you need an [appropriate license](https://www.elastic.co/subscriptions), an {{es}} cluster with both `transform` and `ingest` [node roles](elasticsearch://docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) present, and [SLO access](../../../solutions/observability/incident-management/configure-service-level-objective-slo-access.md) must be configured.
 
 ::::
 

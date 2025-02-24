@@ -44,7 +44,7 @@ The {{kib}} server can instruct browsers to enable additional security controls 
 
 2. Disable embedding.
 
-    Use [`disableEmbedding`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-disableEmbedding) to ensure that {{kib}} cannot be embedded in other websites. To configure this in your `kibana.yml`:
+    Use [`disableEmbedding`](kibana://docs/reference/configuration-reference/general-settings.md#server-securityResponseHeaders-disableEmbedding) to ensure that {{kib}} cannot be embedded in other websites. To configure this in your `kibana.yml`:
 
     ```js
     server.securityResponseHeaders.disableEmbedding: true

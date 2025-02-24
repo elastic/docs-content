@@ -5,7 +5,7 @@ mapped_pages:
 
 # Get started with dashboards [observability-dashboards]
 
-Elastic provides a wide range of pre-built dashboards for visualizing observability data from a variety of sources. These dashboards are loaded automatically when you install [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md).
+Elastic provides a wide range of pre-built dashboards for visualizing observability data from a variety of sources. These dashboards are loaded automatically when you install [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md).
 
 You can also create new dashboards and visualizations based on your data views to get a full picture of your data.
 

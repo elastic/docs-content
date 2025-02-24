@@ -35,7 +35,7 @@ $$$stack-components-agent$$$
 
     {{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
 
-    [Learn more about {{fleet}} and {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+    [Learn more about {{fleet}} and {{agent}}](docs-content://docs/reference/ingestion-tools/fleet/index.md).
 
 
 $$$stack-components-apm$$$
@@ -46,7 +46,7 @@ APM
 $$$stack-components-beats$$$
 
 {{beats}}
-:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md).
+:   {{beats}} are data shippers that you install as agents on your servers to send operational data to {{es}}. {{beats}} are available for many standard observability data scenarios, including audit data, log files and journals, cloud data, availability, metrics, network traffic, and Windows event logs. [Learn more about {{beats}}](beats://docs/reference/ingestion-tools/index.md).
 
 $$$stack-components-ingest-pipelines$$$
 
@@ -56,7 +56,7 @@ $$$stack-components-ingest-pipelines$$$
 $$$stack-components-logstash$$$
 
 {{ls}}
-:   {{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md).
+:   {{ls}} is a data collection engine with real-time pipelining capabilities. It can dynamically unify data from disparate sources and normalize the data into destinations of your choice. {{ls}} supports a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process. [Learn more about {{ls}}](logstash://docs/reference/ingestion-tools/logstash/index.md).
 
 
 ### Store [_store]

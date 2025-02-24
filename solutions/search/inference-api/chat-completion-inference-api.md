@@ -30,7 +30,7 @@ The {{infer}} APIs enable you to use certain services, such as built-in {{ml}} m
 
 ## {{api-prereq-title}} [chat-completion-inference-api-prereqs]
 
-* Requires the `monitor_inference` [cluster privilege](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/security-privileges.md#privileges-list-cluster) (the built-in `inference_admin` and `inference_user` roles grant this privilege)
+* Requires the `monitor_inference` [cluster privilege](elasticsearch://docs/reference/elasticsearch/security-privileges.md#privileges-list-cluster) (the built-in `inference_admin` and `inference_user` roles grant this privilege)
 * You must use a client that supports streaming.
 
 

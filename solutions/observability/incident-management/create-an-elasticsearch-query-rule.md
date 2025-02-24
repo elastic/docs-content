@@ -65,7 +65,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
     :   Specify how to calculate the value that is compared to the threshold. The value is calculated by aggregating a numeric field within the time window. The aggregation options are: `count`, `average`, `sum`, `min`, and `max`. When using `count` the document count is used and an aggregation field is not necessary.
 
     Over or Grouped Over
-    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
+    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](elasticsearch://docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](elasticsearch://docs/reference/data-analysis/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
 
     Threshold
     :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
@@ -110,25 +110,25 @@ For each action, you must choose a connector, which provides connection informat
 :::::{dropdown} Connector types
 Connectors provide a central place to store connection information for services and integrations with third party systems. The following connectors are available when defining actions for alerting rules:
 
-* [Cases](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md)
-* [D3 Security](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/d3security-action-type.md)
-* [Email](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md)
-* [{{ibm-r}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md)
-* [Index](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/index-action-type.md)
-* [Jira](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md)
-* [Microsoft Teams](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/teams-action-type.md)
-* [Observability AI Assistant](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/obs-ai-assistant-action-type.md)
-* [{{opsgenie}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/opsgenie-action-type.md)
-* [PagerDuty](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pagerduty-action-type.md)
-* [Server log](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/server-log-action-type.md)
-* [{{sn-itom}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-itom-action-type.md)
-* [{{sn-itsm}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md)
-* [{{sn-sir}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md)
-* [Slack](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md)
-* [{{swimlane}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md)
-* [Torq](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/torq-action-type.md)
-* [{{webhook}}](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/webhook-action-type.md)
-* [xMatters](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/xmatters-action-type.md)
+* [Cases](kibana://docs/reference/connectors-kibana/cases-action-type.md)
+* [D3 Security](kibana://docs/reference/connectors-kibana/d3security-action-type.md)
+* [Email](kibana://docs/reference/connectors-kibana/email-action-type.md)
+* [{{ibm-r}}](kibana://docs/reference/connectors-kibana/resilient-action-type.md)
+* [Index](kibana://docs/reference/connectors-kibana/index-action-type.md)
+* [Jira](kibana://docs/reference/connectors-kibana/jira-action-type.md)
+* [Microsoft Teams](kibana://docs/reference/connectors-kibana/teams-action-type.md)
+* [Observability AI Assistant](kibana://docs/reference/connectors-kibana/obs-ai-assistant-action-type.md)
+* [{{opsgenie}}](kibana://docs/reference/connectors-kibana/opsgenie-action-type.md)
+* [PagerDuty](kibana://docs/reference/connectors-kibana/pagerduty-action-type.md)
+* [Server log](kibana://docs/reference/connectors-kibana/server-log-action-type.md)
+* [{{sn-itom}}](kibana://docs/reference/connectors-kibana/servicenow-itom-action-type.md)
+* [{{sn-itsm}}](kibana://docs/reference/connectors-kibana/servicenow-action-type.md)
+* [{{sn-sir}}](kibana://docs/reference/connectors-kibana/servicenow-sir-action-type.md)
+* [Slack](kibana://docs/reference/connectors-kibana/slack-action-type.md)
+* [{{swimlane}}](kibana://docs/reference/connectors-kibana/swimlane-action-type.md)
+* [Torq](kibana://docs/reference/connectors-kibana/torq-action-type.md)
+* [{{webhook}}](kibana://docs/reference/connectors-kibana/webhook-action-type.md)
+* [xMatters](kibana://docs/reference/connectors-kibana/xmatters-action-type.md)
 
 ::::{note}
 Some connector types are paid commercial features, while others are free. For a comparison of the Elastic subscription levels, go to [the subscription page](https://www.elastic.co/subscriptions).
@@ -193,7 +193,7 @@ The following variables are specific to this rule type. You can also specify [va
     {{/context.hits}}
     ```
 
-    The documents returned by `context.hits` include the [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) field. If the {{es}} query search API’s [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
+    The documents returned by `context.hits` include the [`_source`](elasticsearch://docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) field. If the {{es}} query search API’s [`fields`](elasticsearch://docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
 
     ```txt
     {{#context.hits}}
@@ -205,7 +205,7 @@ The following variables are specific to this rule type. You can also specify [va
     1. The `fields` parameter here is used to access the `day_of_week` runtime field.
 
 
-    As the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
+    As the [`fields`](elasticsearch://docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
 
     ```txt
     {{#context.hits}}

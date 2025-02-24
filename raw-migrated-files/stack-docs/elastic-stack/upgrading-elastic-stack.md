@@ -15,14 +15,14 @@ Upgrading from a release candidate build, such as 8.0.0-rc1 or 8.0.0-rc2, is not
 
 1. Review the breaking changes for each product you use and make the necessary changes so your code is compatible with 9.0.0-beta1:
 
-    * [APM breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-apm.md)
-    * [{{beats}} breaking changes](asciidocalypse://docs/beats/docs/release-notes/breaking-changes/beats.md)
-    * [{{es}} migration guide](asciidocalypse://docs/elasticsearch/docs/release-notes/breaking-changes/elasticsearch.md)
+    * [APM breaking changes](docs-content://docs/release-notes/breaking-changes/elastic-apm.md)
+    * [{{beats}} breaking changes](beats://docs/release-notes/breaking-changes/beats.md)
+    * [{{es}} migration guide](elasticsearch://docs/release-notes/breaking-changes/elasticsearch.md)
     * [{{elastic-sec}} release notes](https://www.elastic.co/guide/en/security/current/release-notes.html)
     * [{{ents}} release notes](https://www.elastic.co/guide/en/enterprise-search/current/changelog.html)
-    * [{{fleet}} and {{agent}} release notes](asciidocalypse://docs/docs-content/docs/release-notes/fleet.md)
-    * [{{kib}} release notes](asciidocalypse://docs/kibana/docs/release-notes/kibana.md)
-    * [{{ls}} breaking changes](asciidocalypse://docs/logstash/docs/release-notes/breaking-changes/logstash.md)
+    * [{{fleet}} and {{agent}} release notes](docs-content://docs/release-notes/fleet.md)
+    * [{{kib}} release notes](kibana://docs/release-notes/kibana.md)
+    * [{{ls}} breaking changes](logstash://docs/release-notes/breaking-changes/logstash.md)
 
     ::::{important}
     * Make sure you check the breaking changes for each minor release up to 9.0.0-beta1.
@@ -65,7 +65,7 @@ You can view your remote clusters from **Stack Management > Remote Clusters**.
 
     **You must resolve all critical issues before proceeding with the upgrade.**
 
-2. Review the deprecation logs from the **Upgrade Assistant** to determine if your applications are using features that are not supported or behave differently in 8.x. See the [breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/index.md) for more information about changes in 9.0.0-beta1 that could affect your application.
+2. Review the deprecation logs from the **Upgrade Assistant** to determine if your applications are using features that are not supported or behave differently in 8.x. See the [breaking changes](docs-content://docs/release-notes/breaking-changes/index.md) for more information about changes in 9.0.0-beta1 that could affect your application.
 
     ::::{important}
     Make sure you check the breaking changes for each minor 8.x release up to 9.0.0-beta1.
@@ -74,7 +74,7 @@ You can view your remote clusters from **Stack Management > Remote Clusters**.
 3. Make the recommended changes to ensure that your applications continue to operate as expected after the upgrade.
 
     ::::{note}
-    As a temporary solution, you can submit requests to 9.x using the 8.x syntax with the REST API compatibility mode. While this enables you to submit requests that use the old syntax, it does not guarantee the same behavior. REST API compatibility should be a bridge to smooth out the upgrade process, not a long term strategy. For more information, see [REST API compatibility](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/compatibility.md).
+    As a temporary solution, you can submit requests to 9.x using the 8.x syntax with the REST API compatibility mode. While this enables you to submit requests that use the old syntax, it does not guarantee the same behavior. REST API compatibility should be a bridge to smooth out the upgrade process, not a long term strategy. For more information, see [REST API compatibility](elasticsearch://docs/reference/elasticsearch/rest-apis/compatibility.md).
     ::::
 
 4. If you use any {{es}} plugins, make sure there is a version of each plugin that is compatible with {{es}} version 9.0.0-beta1.

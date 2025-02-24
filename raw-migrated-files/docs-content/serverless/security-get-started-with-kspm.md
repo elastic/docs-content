@@ -38,7 +38,7 @@ The instructions differ depending on whether you’re installing on EKS or on un
 
 1. Find **Cloud Security Posture** in the navigation menu or use the global search field.
 2. Click **Add a KSPM integration**.
-3. Read the integration’s description to understand how it works. Then, click [*Add Kubernetes Security Posture Management*](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/cloud_security_posture.md).
+3. Read the integration’s description to understand how it works. Then, click [*Add Kubernetes Security Posture Management*](integration-docs://docs/reference/ingestion-tools/integrations/cloud_security_posture.md).
 4. Name your integration. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
 5. Select **EKS** from the **Kubernetes Deployment** menu. A new section for AWS credentials will appear.
 
@@ -243,7 +243,7 @@ To install the integration on unmanaged clusters:
 
 1. Find **Connectors** in the navigation menu or use the global search field.
 2. Click **Add a KSPM integration**.
-3. Read the integration’s description to understand how it works. Then, click [*Add Kubernetes Security Posture Management*](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/cloud_security_posture.md).
+3. Read the integration’s description to understand how it works. Then, click [*Add Kubernetes Security Posture Management*](integration-docs://docs/reference/ingestion-tools/integrations/cloud_security_posture.md).
 4. Name your integration. Use a name that matches the purpose or team of the cluster(s) you want to monitor, for example, `IT-dev-k8s-clusters`.
 5. Select **Unmanaged Kubernetes** from the **Kubernetes Deployment** menu.
 6. If you want to monitor Kubernetes clusters that aren’t yet enrolled in {{fleet}}, select **New Hosts** when choosing the {{agent}} policy.

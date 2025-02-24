@@ -153,7 +153,7 @@ The Elasticsearch cluster needs to be configured to use the OpenID Connect realm
 
 4. Optional: If your OpenID Connect Provider doesn’t publish its JWKS at an https URL, or if you want to use a local copy, you can upload the JWKS as a file.
 
-    1. Prepare a ZIP file with a [custom bundle](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains your OpenID Connect Provider’s JWKS file (`op_jwks.json`) inside of an `oidc` folder.
+    1. Prepare a ZIP file with a [custom bundle](elasticsearch://docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains your OpenID Connect Provider’s JWKS file (`op_jwks.json`) inside of an `oidc` folder.
 
         This bundle allows all Elasticsearch containers to access the metadata file.
 
@@ -203,7 +203,7 @@ OpenID Connect depends on TLS to provider security properties such as encryption
 
 However, if your OP uses a certificate that is issued for instance, by a CA used only in your Organization, you must configure Elastic Cloud Enterprise to trust that CA.
 
-1. Prepare a ZIP file with a [custom bundle](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains the CA certificate (`company-ca.pem`) that signed the certificate your OpenID Connect Provider uses for TLS inside of an `oidc-tls` folder
+1. Prepare a ZIP file with a [custom bundle](elasticsearch://docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains the CA certificate (`company-ca.pem`) that signed the certificate your OpenID Connect Provider uses for TLS inside of an `oidc-tls` folder
 2. Update your Elasticsearch cluster configuration using the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md) to use the bundle you prepared in the previous step. You need to modify the `user_bundles` JSON attribute similar to the following example snippet:
 
     ```sh

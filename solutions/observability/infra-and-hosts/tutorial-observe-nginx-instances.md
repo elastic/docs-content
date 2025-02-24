@@ -11,7 +11,7 @@ mapped_pages:
 ::::
 
 
-Use the [nginx Elastic integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/nginx.md) and the {{agent}} to collect valuable metrics and logs from your nginx instances. Then, use built-in dashboards and tools like Logs Explorer in {{kib}} to visualize and monitor your nginx data from one place. This data provides valuable insight into your nginx instances—for example:
+Use the [nginx Elastic integration](integration-docs://docs/reference/ingestion-tools/integrations/nginx.md) and the {{agent}} to collect valuable metrics and logs from your nginx instances. Then, use built-in dashboards and tools like Logs Explorer in {{kib}} to visualize and monitor your nginx data from one place. This data provides valuable insight into your nginx instances—for example:
 
 * A spike in error logs for a certain resource may mean you have a deleted resource that is still needed.
 * Access logs can show when a service’s peak times are, and, from this, when it might be best to perform things like maintenance.
@@ -249,7 +249,7 @@ The **Nginx access and error logs** dashboard shows your access logs over time, 
 
 ## Step 5: Find anomalies in your nginx access logs [monitor-nginx-ml]
 
-Use the [nginx Elastic integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/nginx.md) machine learning (ML) module to help find unusual activity in your nginx access logs. Monitoring anomalies in your access logs helps you detect:
+Use the [nginx Elastic integration](integration-docs://docs/reference/ingestion-tools/integrations/nginx.md) machine learning (ML) module to help find unusual activity in your nginx access logs. Monitoring anomalies in your access logs helps you detect:
 
 * security threats
 * network issues
@@ -264,22 +264,22 @@ The nginx ML module provides the following anomaly detection jobs:
 $$$horizontal$$$
 
 Low request rates (`low_request_rate_nginx`)
-:   Uses the [`low_count`](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-count) function to detect abnormally low request rates. Abnormally low request rates might indicate that network issues or other issues are preventing requests from reaching the server.
+:   Uses the [`low_count`](docs-content://docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-count) function to detect abnormally low request rates. Abnormally low request rates might indicate that network issues or other issues are preventing requests from reaching the server.
 
 Unusual source IPs - high request rates (`source_ip_request_rate_nginx`)
-:   Uses the [`hight_count`](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-count) function to detect abnormally high request rates from individual IP addresses. Many requests from a single IP or small group of IPs might indicate something malicious like a distributed denial of service (DDoS) attack where a large number of requests are sent to overwhelm the server and make it unavailable to users.
+:   Uses the [`hight_count`](docs-content://docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-count) function to detect abnormally high request rates from individual IP addresses. Many requests from a single IP or small group of IPs might indicate something malicious like a distributed denial of service (DDoS) attack where a large number of requests are sent to overwhelm the server and make it unavailable to users.
 
 Unusual source IPs - high distinct count of URLs (`source_ip_url_count_nginx`)
-:   Uses the [`high_distinct_count`](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-distinct-count) function to detect individual IP addresses accessing abnormally high numbers of unique URLs. A single IP accessing many unique URLs might indicate something malicious like web scraping or an attempt to find sensitive data or vulnerabilities.
+:   Uses the [`high_distinct_count`](docs-content://docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-distinct-count) function to detect individual IP addresses accessing abnormally high numbers of unique URLs. A single IP accessing many unique URLs might indicate something malicious like web scraping or an attempt to find sensitive data or vulnerabilities.
 
 Unusual status code rates (`status_code_rate_nginx`)
-:   Uses the [`count`](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-count) function to detect abnormal error status code rates. A high rate of status codes could indicate problems with broken links, bad URLs, or unauthorized access attempts. A high rate of status codes could also point to server issues like limited resources or bugs in your code.
+:   Uses the [`count`](docs-content://docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-count) function to detect abnormal error status code rates. A high rate of status codes could indicate problems with broken links, bad URLs, or unauthorized access attempts. A high rate of status codes could also point to server issues like limited resources or bugs in your code.
 
 Unusual visitor rates (`visitor_rate_nginx`)
-:   Uses the [`non_zero_count`](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-nonzero-count) function to detect abnormal visitor rates. High visitor rates could indicate something malicious like a DDoS attack. Low visitor rates could indicate issues with access to the server.
+:   Uses the [`non_zero_count`](docs-content://docs/reference/data-analysis/machine-learning/ml-count-functions.md#ml-nonzero-count) function to detect abnormal visitor rates. High visitor rates could indicate something malicious like a DDoS attack. Low visitor rates could indicate issues with access to the server.
 
 ::::{note}
-These anomaly detection jobs are available when you have data that matches the query specified in the ML module manifest. Users not following this tutorial can refer to [nginx integration ML modules](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/nginx.md#nginx-ml-modules) for more about the ML module manifest.
+These anomaly detection jobs are available when you have data that matches the query specified in the ML module manifest. Users not following this tutorial can refer to [nginx integration ML modules](integration-docs://docs/reference/ingestion-tools/integrations/nginx.md#nginx-ml-modules) for more about the ML module manifest.
 ::::
 
 

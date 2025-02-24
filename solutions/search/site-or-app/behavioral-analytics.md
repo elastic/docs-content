@@ -55,7 +55,7 @@ Additional documentation is available in the following places:
     * Read the [JavaScript tracker README](https://github.com/elastic/behavioral-analytics-tracker/blob/main/packages/javascript-tracker/README.md).
     * Read the [Browser tracker README](https://github.com/elastic/behavioral-analytics-tracker/blob/main/packages/browser-tracker/README.md).
 
-* The Search UI documentation contains information about the [Search UI Analytics Plugin](asciidocalypse://docs/search-ui/docs/api-core-plugins-analytics-plugin.md).
+* The Search UI documentation contains information about the [Search UI Analytics Plugin](search-ui://docs/api-core-plugins-analytics-plugin.md).
 * Behavioral Analytics uses a number of [APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-analytics) to manage analytics collections.
 
 ::::{admonition} GDPR compliance

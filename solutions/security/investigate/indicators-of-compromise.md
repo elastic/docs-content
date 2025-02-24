@@ -13,8 +13,8 @@ The Indicators page collects data from enabled threat intelligence feeds and pro
 * In serverless, the Indicators page requires the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md)
 * You must have *one* of the following installed on the hosts you want to monitor:
 
-    * **{{agent}}** - Install a [{{fleet}}-managed {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md) and ensure the agent’s status is `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
-    * **{{filebeat}}** - Install [{{filebeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md) version 8.x or later. Earlier {{filebeat}} versions are incompatible with ECS and will prevent indicator data from displaying in the Indicators table.
+    * **{{agent}}** - Install a [{{fleet}}-managed {{agent}}](docs-content://docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md) and ensure the agent’s status is `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
+    * **{{filebeat}}** - Install [{{filebeat}}](beats://docs/reference/ingestion-tools/beats-filebeat/filebeat-installation-configuration.md) version 8.x or later. Earlier {{filebeat}} versions are incompatible with ECS and will prevent indicator data from displaying in the Indicators table.
 
 
 ::::
@@ -42,7 +42,7 @@ Install a threat intelligence integration to add indicators to the Indicators pa
 3. Select a threat intelligence integration, then complete the integration’s guided installation.
 
     ::::{note}
-    For more information about available fields, go to the [Elastic integration documentation](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) and search for a specific threat intelligence integration.
+    For more information about available fields, go to the [Elastic integration documentation](integration-docs://docs/reference/ingestion-tools/integrations/index.md) and search for a specific threat intelligence integration.
     ::::
 
 4. Return to the Indicators page in {{elastic-sec}}. Refresh the page if indicator data isn’t displaying.

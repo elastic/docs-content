@@ -15,7 +15,7 @@ mapped_urls:
 
 In order to enrich your {{elastic-sec}} workflows with third-party cloud security posture data collected by AWS Security Hub:
 
-* Follow the steps to [set up the AWS Security Hub integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/securityhub.md).
+* Follow the steps to [set up the AWS Security Hub integration](integration-docs://docs/reference/ingestion-tools/integrations/aws/securityhub.md).
 * Make sure the integration version is at least 2.31.1.
 * Ensure you have `read` privileges for the `security_solution-*.misconfiguration_latest` index.
 * While configuring the AWS Security Hub integration, turn on **Collect AWS Security Hub Findings from AWS**. We recommend you also set the **Initial Interval** value to `2160h` (equivalent to 90 days) to ingest existing logs.

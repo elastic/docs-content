@@ -63,13 +63,13 @@ After creating a connector, you can set your cases to [automatically close](../.
 
 3. Enter your required settings. For connector configuration details, refer to:
 
-    * [{{ibm-r}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/resilient-action-type.md)
-    * [{{jira}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/jira-action-type.md)
-    * [{{sn-itsm}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-action-type.md)
-    * [{{sn-sir}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/servicenow-sir-action-type.md)
-    * [{{swimlane}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/swimlane-action-type.md)
-    * [TheHive connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/thehive-action-type.md)
-    * [{{webhook-cm}} connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-webhook-action-type.md)
+    * [{{ibm-r}} connector](kibana://docs/reference/connectors-kibana/resilient-action-type.md)
+    * [{{jira}} connector](kibana://docs/reference/connectors-kibana/jira-action-type.md)
+    * [{{sn-itsm}} connector](kibana://docs/reference/connectors-kibana/servicenow-action-type.md)
+    * [{{sn-sir}} connector](kibana://docs/reference/connectors-kibana/servicenow-sir-action-type.md)
+    * [{{swimlane}} connector](kibana://docs/reference/connectors-kibana/swimlane-action-type.md)
+    * [TheHive connector](kibana://docs/reference/connectors-kibana/thehive-action-type.md)
+    * [{{webhook-cm}} connector](kibana://docs/reference/connectors-kibana/cases-webhook-action-type.md)
 
 4. Click **Save**.
 

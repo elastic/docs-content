@@ -149,7 +149,7 @@ After you upgrade, or if you set up a new {{kib}} instance using version 8.x or 
 
 #### Accessing saved objects using old URLs [saved-object-ids-impact-when-using-legacy-urls]
 
-When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](asciidocalypse://docs/kibana/docs/extend/contribute-to-kibana/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
+When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](kibana://docs/extend/contribute-to-kibana/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
 
 
 #### Importing and copying saved objects [saved-object-ids-impact-when-using-import-and-copy]
@@ -168,7 +168,7 @@ If you import a saved object using the "Check for existing objects" option, {{ki
 For example, you have a saved object in an `export.ndjson` file, and you set up a brand new {{kib}} instance. You attempt to import the saved object using the "Check for existing objects" and "Automatically overwrite conflicts" options. The first time you import the saved object, {{kib}} will create a new object with the same ID (step 4 above). If you import it again, {{kib}} will find that object and overwrite it (step 1 above). If you then create a *different* space and import it there, {{kib}} will create a new object with a random ID (step 3 above). Finally, if you import it into the second space again, {{kib}} will find the second object with a matching origin and overwrite it (step 2 above).
 
 ::::{warning}
-When you import a saved object and it is created with a different ID, if 1. it contains weak links to other saved objects (such as a dashboard with a Markdown URL to navigate to another dashboard) and 2. the object’s ID has changed (step 3 above), those weak links will be broken. For more information, refer to [the changelog](asciidocalypse://docs/kibana/docs/release-notes/known-issues/kibana.md).
+When you import a saved object and it is created with a different ID, if 1. it contains weak links to other saved objects (such as a dashboard with a Markdown URL to navigate to another dashboard) and 2. the object’s ID has changed (step 3 above), those weak links will be broken. For more information, refer to [the changelog](kibana://docs/release-notes/known-issues/kibana.md).
 ::::
 
 

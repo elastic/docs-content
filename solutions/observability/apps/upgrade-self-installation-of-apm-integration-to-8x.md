@@ -18,7 +18,7 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 ## Prerequisites [_prerequisites_9]
 
 1. Prior to upgrading to version 9.0.0-beta1, {{es}}, and {{kib}} must be upgraded to version 7.17. To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html)
-2. Review the APM [release notes](asciidocalypse://docs/docs-content/docs/release-notes/apm.md), [breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-apm.md), and {{observability}} [What’s new](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-observability.md) content.
+2. Review the APM [release notes](docs-content://docs/release-notes/apm.md), [breaking changes](docs-content://docs/release-notes/breaking-changes/elastic-apm.md), and {{observability}} [What’s new](docs-content://docs/release-notes/breaking-changes/elastic-observability.md) content.
 
 
 ## Upgrade steps [_upgrade_steps_2]
@@ -33,4 +33,4 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
     2. Under **Agents**, click **Upgrade available** to see a list of agents that you can upgrade.
     3. Choose **Upgrade agent** from the **Actions** menu next to the agent you want to upgrade. The **Upgrade agent** option is grayed out when an upgrade is unavailable, or the {{kib}} version is lower than the agent version.
 
-    For more details, or for bulk upgrade instructions, see [Upgrade {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
+    For more details, or for bulk upgrade instructions, see [Upgrade {{agent}}](docs-content://docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)

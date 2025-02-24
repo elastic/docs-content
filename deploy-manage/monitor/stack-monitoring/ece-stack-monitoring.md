@@ -54,7 +54,7 @@ When you enable monitoring in Elastic Cloud Enterprise, your monitoring indices 
 ### Sending monitoring data to itself (self monitoring) [ece-logging-and-monitoring-retention-self-monitoring]
 
 $$$ece-logging-and-monitoring-retention-7$$$
-When you enable self-monitoring in Elastic Cloud Enterprise, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. Monitoring data is retained for three days by default or as specified by the [`xpack.monitoring.history.duration` user setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/elastic-cloud-hosted-elasticsearch-settings.md#xpack-monitoring-history-duration).
+When you enable self-monitoring in Elastic Cloud Enterprise, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. Monitoring data is retained for three days by default or as specified by the [`xpack.monitoring.history.duration` user setting](elasticsearch://docs/reference/elasticsearch/configuration-reference/elastic-cloud-hosted-elasticsearch-settings.md#xpack-monitoring-history-duration).
 
 To retain monitoring indices as is without deleting them automatically, you must disable the [cleaner service](es-local-exporter.md#local-exporter-cleaner) by adding a disabled local exporter in your cluster settings.
 
@@ -181,7 +181,7 @@ When shipping logs to a monitoring deployment there are more logging features av
 #### For {{es}}: [ece-extra-logging-features-elasticsearch]
 
 * [Audit logging](../logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
-* [Slow query and index logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
+* [Slow query and index logging](elasticsearch://docs/reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
 After you’ve enabled log delivery on your deployment, you can [add the Elasticsearch user settings](../../deploy/cloud-enterprise/edit-stack-settings.md) to enable these features.

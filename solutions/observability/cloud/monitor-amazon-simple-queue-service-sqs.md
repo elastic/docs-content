@@ -15,12 +15,12 @@ AWS SQS and Amazon CloudWatch are integrated and therefore, you can collect, vie
 
 You can view and analyze the queue’s metrics from the Amazon SQS console, the CloudWatch console, the AWS CLI, or by using the CloudWatch API.
 
-The Elastic [Amazon SQS integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/sqs.md) collects metrics from Amazon CloudWatch using {{agent}}.
+The Elastic [Amazon SQS integration](integration-docs://docs/reference/ingestion-tools/integrations/aws/sqs.md) collects metrics from Amazon CloudWatch using {{agent}}.
 
 
 ## Get started [get-started-sqs]
 
-To collect SQS metrics, you typically need to install the Elastic [Amazon SQS integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/sqs.md) and deploy an {{agent}} locally or on an EC2 instance.
+To collect SQS metrics, you typically need to install the Elastic [Amazon SQS integration](integration-docs://docs/reference/ingestion-tools/integrations/aws/sqs.md) and deploy an {{agent}} locally or on an EC2 instance.
 
 Expand the **quick guide** to learn how, or skip to the next section if your data is already in {{es}}.
 
@@ -49,7 +49,7 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 
 9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.
 
-For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+For more information {{agent}} and integrations, refer to the [{{fleet}} and {{agent}} documentation](docs-content://docs/reference/ingestion-tools/fleet/index.md).
 
 ::::
 
@@ -72,7 +72,7 @@ For example, to see an overview of your SQS metrics in {{kib}}, go to the **Dash
 
 ## Metrics to watch [_metrics_to_watch_3]
 
-Here are the key metrics that you should watch, organized by category. For a full list of fields exported by the integration, refer to the [Amazon SQS integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws/sqs.md) docs.
+Here are the key metrics that you should watch, organized by category. For a full list of fields exported by the integration, refer to the [Amazon SQS integration](integration-docs://docs/reference/ingestion-tools/integrations/aws/sqs.md) docs.
 
 * messages
 

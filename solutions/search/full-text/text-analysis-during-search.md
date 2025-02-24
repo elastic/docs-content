@@ -13,7 +13,7 @@ applies_to:
 
 ## When to configure text analysis [when-to-configure-analysis] 
 
-{{es}} performs text analysis when indexing or searching [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) fields.
+{{es}} performs text analysis when indexing or searching [`text`](elasticsearch://docs/reference/elasticsearch/mapping-reference/text.md) fields.
 
 If your index doesn’t contain `text` fields, no further setup is needed; you can skip the pages in this section.
 
@@ -32,9 +32,9 @@ Learn more about text analysis in the **Manage Data** section of the documentati
 * [Overview](../../../manage-data/data-store/text-analysis.md)
 * [Concepts](../../../manage-data/data-store/text-analysis/concepts.md)
 * [*Configure text analysis*](../../../manage-data/data-store/text-analysis/configure-text-analysis.md)
-* [*Built-in analyzer reference*](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analyzer-reference.md)
-* [*Tokenizer reference*](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/tokenizer-reference.md)
-* [*Token filter reference*](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/token-filter-reference.md)
-* [*Character filters reference*](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/character-filter-reference.md)
-* [*Normalizers*](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/normalizers.md)
+* [*Built-in analyzer reference*](elasticsearch://docs/reference/data-analysis/text-analysis/analyzer-reference.md)
+* [*Tokenizer reference*](elasticsearch://docs/reference/data-analysis/text-analysis/tokenizer-reference.md)
+* [*Token filter reference*](elasticsearch://docs/reference/data-analysis/text-analysis/token-filter-reference.md)
+* [*Character filters reference*](elasticsearch://docs/reference/data-analysis/text-analysis/character-filter-reference.md)
+* [*Normalizers*](elasticsearch://docs/reference/data-analysis/text-analysis/normalizers.md)
 

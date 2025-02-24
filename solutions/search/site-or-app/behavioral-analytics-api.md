@@ -37,7 +37,7 @@ Behavioral Analytics integrates onto your website using one of our JavaScript cl
 
 To simplify the integration of Behavioral Analytics into your website, we provide a Search UI integration. This integration automatically sends Behavioral Analytics events to your collection as your customer interacts with your search experience.
 
-Refer to the [Search UI analytics plugin documentation](asciidocalypse://docs/search-ui/docs/api-core-plugins-analytics-plugin.md).
+Refer to the [Search UI analytics plugin documentation](search-ui://docs/api-core-plugins-analytics-plugin.md).
 
 
 ## Searchkit integration [behavioral-analytics-api-searchkit]

@@ -18,7 +18,7 @@ Learn how to use the Elastic Observability solution to observe and monitor a bro
 * [Monitor {{aws}} with Amazon Data Firehose](monitor-amazon-web-services-aws-with-amazon-data-firehose.md)
 * [Monitor {{aws}} with Elastic Serverless Forwarder](monitor-amazon-web-services-aws-with-elastic-serverless-forwarder.md)
 
-For a full list of supported AWS integrations, check the [Elastic Integrations docs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md).
+For a full list of supported AWS integrations, check the [Elastic Integrations docs](integration-docs://docs/reference/ingestion-tools/integrations/index.md).
 
 
 

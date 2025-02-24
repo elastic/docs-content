@@ -117,7 +117,7 @@ stringData:
     user:jacknich
 ```
 
-You can populate the content of both `users` and `users_roles` using the [elasticsearch-users](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) tool.
+You can populate the content of both `users` and `users_roles` using the [elasticsearch-users](elasticsearch://docs/reference/elasticsearch/command-line-tools/users-command.md) tool.
 
 For example, invoking the tool in a Docker container:
 

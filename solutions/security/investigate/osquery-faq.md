@@ -35,7 +35,7 @@ Osquery Manager does not currently support [Osquery extensions](https://osquery.
 
 ## Can I  do File Integrity Monitoring (FIM)? [osquery-fim]
 
-Yes, you can set up [Osquery FIM](https://osquery.readthedocs.io/en/stable/deployment/file-integrity-monitoring/) using the Advanced configuration option for Osquery Manager (see [Customize Osquery configuration](manage-integration.md#osquery-custom-config)). However, Elastic also provides a [File Integrity Monitoring](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/fim.md) integration for Elastic Agent, which might prove to be easier to configure than the current options available for Osquery Manager.
+Yes, you can set up [Osquery FIM](https://osquery.readthedocs.io/en/stable/deployment/file-integrity-monitoring/) using the Advanced configuration option for Osquery Manager (see [Customize Osquery configuration](manage-integration.md#osquery-custom-config)). However, Elastic also provides a [File Integrity Monitoring](integration-docs://docs/reference/ingestion-tools/integrations/fim.md) integration for Elastic Agent, which might prove to be easier to configure than the current options available for Osquery Manager.
 
 
 ## Where can I get help with osquery syntax? [osquery-syntax]
@@ -45,7 +45,7 @@ Osquery uses a superset of SQLite for queries. To get started with osquery SQL, 
 
 ## How often is Osquery updated for Osquery Manager? [osquery-updates]
 
-When a new [version of Osquery is released](https://github.com/osquery/osquery/releases), it is included in a subsequent Elastic Agent release and applied when the agent is upgraded. After that, when running queries from Osquery Manager in {{kib}}, the updated Osquery version is used. Refer to the Fleet and Elastic Agent Guide for help with [upgrading Fleet-managed Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
+When a new [version of Osquery is released](https://github.com/osquery/osquery/releases), it is included in a subsequent Elastic Agent release and applied when the agent is upgraded. After that, when running queries from Osquery Manager in {{kib}}, the updated Osquery version is used. Refer to the Fleet and Elastic Agent Guide for help with [upgrading Fleet-managed Elastic Agents](docs-content://docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
 
 To check what Osquery version is installed on an Elastic Agent, you can run `SELECT version FROM osquery_info;` as a live query in {{kib}}. The `version` in the response is the Osquery version installed on the agent.
 

@@ -31,7 +31,7 @@ The Elastic Azure OpenAI integration captures audit logs and request and respons
 * Audit logs provide a range of information related to the use and management of Azure OpenAI services.
 * Request and response logs provide information about each request made to the service and the corresponding response provided by the service.
 
-For more on the fields ingested from audit and request and response logs, refer to the [Azure OpenAI integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/azure_openai.md#azure_openai-settings) documentation.
+For more on the fields ingested from audit and request and response logs, refer to the [Azure OpenAI integration](integration-docs://docs/reference/ingestion-tools/integrations/azure_openai.md#azure_openai-settings) documentation.
 
 Before {{agent}} can collect your logs and send them to {{kib}}, complete the following steps in the [Azure portal](https://portal.azure.com/):
 
@@ -268,7 +268,7 @@ Find **Discover** in the main menu or use the [global search field](/explore-ana
 
 ![screenshot of the Discover data view dropdown](../../../images/observability-discover-data-view-menu.png "")
 
-From here, filter your data and dive deeper into individual logs to find information and troubleshoot issues. For a list of Azure OpenAI fields you may want to filter by, refer to the [Azure OpenAI integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/azure_openai.md#azure_openai-settings) docs.
+From here, filter your data and dive deeper into individual logs to find information and troubleshoot issues. For a list of Azure OpenAI fields you may want to filter by, refer to the [Azure OpenAI integration](integration-docs://docs/reference/ingestion-tools/integrations/azure_openai.md#azure_openai-settings) docs.
 
 :::{image} ../../../images/observability-azure-openai-discover.png
 :alt: screenshot of the discover main page
@@ -291,7 +291,7 @@ From **Logs Explorer**, you can select the Azure OpenAI integration from the dat
 
 ![screenshot of the logs explorer data selector](../../../images/observability-azure-open-ai-data-selector.png "")
 
-From here, filter your log data and dive deeper into individual logs to find information and troubleshoot issues. For a list of Azure OpenAI fields you may want to filter by, refer to the [Azure OpenAI integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/azure_openai.md#azure_openai-settings) documentation.
+From here, filter your log data and dive deeper into individual logs to find information and troubleshoot issues. For a list of Azure OpenAI fields you may want to filter by, refer to the [Azure OpenAI integration](integration-docs://docs/reference/ingestion-tools/integrations/azure_openai.md#azure_openai-settings) documentation.
 
 For more on Logs Explorer, refer to:
 

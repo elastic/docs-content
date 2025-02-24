@@ -189,7 +189,7 @@ The resulting permission is equal to:
 ```
 
 ::::{note} 
-Field-level security should not be set on [`alias`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
+Field-level security should not be set on [`alias`](elasticsearch://docs/reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
 ::::
 
 

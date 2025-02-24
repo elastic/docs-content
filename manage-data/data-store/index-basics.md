@@ -55,7 +55,7 @@ A simple {{es}} document might look like this:
 
 ### Metadata fields [elasticsearch-intro-documents-fields-data-metadata]
 
-An indexed document contains data and metadata. [Metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system fields that store information about the documents. In {{es}}, metadata fields are prefixed with an underscore. For example, the following fields are metadata fields:
+An indexed document contains data and metadata. [Metadata fields](elasticsearch://docs/reference/elasticsearch/mapping-reference/document-metadata-fields.md) are system fields that store information about the documents. In {{es}}, metadata fields are prefixed with an underscore. For example, the following fields are metadata fields:
 
 * `_index`: The name of the index where the document is stored.
 * `_id`: The document’s ID. IDs must be unique per index.
@@ -63,7 +63,7 @@ An indexed document contains data and metadata. [Metadata fields](asciidocalypse
 
 ### Mappings and data types [elasticsearch-intro-documents-fields-mappings]
 
-Each index has a [mapping](/manage-data/data-store/mapping.md) or schema for how the fields in your documents are indexed. A mapping defines the [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
+Each index has a [mapping](/manage-data/data-store/mapping.md) or schema for how the fields in your documents are indexed. A mapping defines the [data type](elasticsearch://docs/reference/elasticsearch/mapping-reference/field-data-types.md) for each field, how the field should be indexed, and how it should be stored.
 
 ## Index management
 
@@ -82,7 +82,7 @@ Investigate your indices and perform operations from the **Indices** view.
 
 * To show details and perform operations, click the index name. To perform operations on multiple indices, select their checkboxes and then open the **Manage** menu. For more information on managing indices, refer to [Index APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
 * To filter the list of indices, use the search bar or click a badge. Badges indicate if an index is a [follower index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow), a [rollup index](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps), or [frozen](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-unfreeze).
-* To drill down into the index [mappings](/manage-data/data-store/mapping.md), [settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
+* To drill down into the index [mappings](/manage-data/data-store/mapping.md), [settings](elasticsearch://docs/reference/elasticsearch/index-settings/index.md), and statistics, click an index name. From this view, you can navigate to **Discover** to further explore the documents in the index.
 * To create new indices, use the **Create index** wizard.
 
 ### Manage data streams

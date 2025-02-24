@@ -58,7 +58,7 @@ The default deployments include processors, when needed, for enriching events wi
 :alt: Metadata processors for cloud
 :::
 
-For more on these processors, refer to the [`add_cloud_metadata`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add_host_metadata-processor.md) documentation.
+For more on these processors, refer to the [`add_cloud_metadata`](docs-content://docs/reference/ingestion-tools/fleet/add-cloud-metadata-processor.md) and [`add_host_metadata`](docs-content://docs/reference/ingestion-tools/fleet/add_host_metadata-processor.md) documentation.
 
 By default, the Kubernetes integration enriches logs and metrics with valuable metadata.
 
@@ -79,7 +79,7 @@ Before you can monitor Kubernetes, you need the following:
 
 ## Part 1: Add and Configure the Kubernetes integration [monitor-kubernetes-integration]
 
-To start collecting logs and metrics from your Kubernetes clusters, first add the [Kubernetes integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes.md) to your policy and configure the metrics and logs you want to collect.
+To start collecting logs and metrics from your Kubernetes clusters, first add the [Kubernetes integration](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes.md) to your policy and configure the metrics and logs you want to collect.
 
 
 ### Step 1: Add the Kubernetes integration to your deployment [monitor-k8s-add-integration]
@@ -137,19 +137,19 @@ Collecting metrics from the kubelet API is on by default. Kubelet is an agent th
 
 ::::{dropdown} Expand to see available metrics from the kubelet API
 **Container metrics**
-:   Monitor the overall resource usage, performance, and status at the container level. Learn more at [kubelet container metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-container).
+:   Monitor the overall resource usage, performance, and status at the container level. Learn more at [kubelet container metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-container).
 
 **Node metrics**
-:   Monitor the overall resource usage, performance, and status at the node level. Learn more at [kubelet node metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-node).
+:   Monitor the overall resource usage, performance, and status at the node level. Learn more at [kubelet node metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-node).
 
 **Pod metrics**
-:   Monitor the overall resource usage, performance, and status at the pod level. Learn more at [kubelet pod metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-pod).
+:   Monitor the overall resource usage, performance, and status at the pod level. Learn more at [kubelet pod metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-pod).
 
 **System metrics**
-:   Monitor the overall resource usage, performance, and status of your system containers. Learn more at [kubelet system metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-system).
+:   Monitor the overall resource usage, performance, and status of your system containers. Learn more at [kubelet system metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-system).
 
 **Volume metrics**
-:   Monitor the storage usage and capacity of your persistent volumes. Learn more at [kubelet volume metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-system).
+:   Monitor the storage usage and capacity of your persistent volumes. Learn more at [kubelet volume metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-system).
 
 ::::
 
@@ -207,49 +207,49 @@ With the Kubernetes integration, you can collect a number of metrics using the `
 
 ::::{dropdown} Expand to see available metrics from `kube-state-metrics`
 **Container metrics**
-:   Monitor Container performance to ensure efficiency and stability in pods. Learn more at [`kube-state-metrics` container metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_container).
+:   Monitor Container performance to ensure efficiency and stability in pods. Learn more at [`kube-state-metrics` container metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_container).
 
 **CronJob metrics**
-:   Monitor CronJob performance and ensure they’re running reliably and efficiently. Learn more at [`kube-state-metrics` CronJob metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_cronjob).
+:   Monitor CronJob performance and ensure they’re running reliably and efficiently. Learn more at [`kube-state-metrics` CronJob metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_cronjob).
 
 **Kubernetes DaemonSet metrics**
-:   Monitor DaemonSet health and distribution. Learn more at [`kube-state-metrics` DaemonSet metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_daemonset).
+:   Monitor DaemonSet health and distribution. Learn more at [`kube-state-metrics` DaemonSet metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_daemonset).
 
 **Kubernetes Deployment metrics**
-:   Monitor deployment status and configuration. Learn more at [`kube-state-metrics` deployment metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_deployment).
+:   Monitor deployment status and configuration. Learn more at [`kube-state-metrics` deployment metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_deployment).
 
 **Kubernetes Job metrics**
-:   Monitor job completion statuses and execution. Learn more at [`kube-state-metrics` job metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_job).
+:   Monitor job completion statuses and execution. Learn more at [`kube-state-metrics` job metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_job).
 
 **Kubernetes Namespace metrics**
-:   Monitor namespace active and terminating statuses. Learn more at [`kube-state-metrics` namespace metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_namespace).
+:   Monitor namespace active and terminating statuses. Learn more at [`kube-state-metrics` namespace metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_namespace).
 
 **Kubernetes Node metrics**
-:   Monitor node health and resource usage. Learn more at [`kube-state-metrics` node metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_node).
+:   Monitor node health and resource usage. Learn more at [`kube-state-metrics` node metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_node).
 
 **Kubernetes PersistentVolume metrics**
-:   Monitor PersistentVolume size, status, and storage configuration. Learn more at [`kube-state-metrics` PersistentVolume metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_persistentvolume).
+:   Monitor PersistentVolume size, status, and storage configuration. Learn more at [`kube-state-metrics` PersistentVolume metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_persistentvolume).
 
 **Kubernetes PersistentVolumeClaim metrics**
-:   Monitor PersistentVolumeClaim phases, classes, and storage requests. Learn more at [`kube-state-metrics` PersistentVolumeClaim metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_persistentvolumeclaim).
+:   Monitor PersistentVolumeClaim phases, classes, and storage requests. Learn more at [`kube-state-metrics` PersistentVolumeClaim metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_persistentvolumeclaim).
 
 **Kubernetes Pod metrics**
-:   Monitor pod health and performance. Learn more at [`kube-state-metrics` pod metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_pod).
+:   Monitor pod health and performance. Learn more at [`kube-state-metrics` pod metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_pod).
 
 **Kubernetes ReplicaSet metrics**
-:   Monitor ReplicaSets status and the number of replicas in your ReplicaSets. Learn more at [`kube-state-metrics` ReplicaSet metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_replicaset).
+:   Monitor ReplicaSets status and the number of replicas in your ReplicaSets. Learn more at [`kube-state-metrics` ReplicaSet metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_replicaset).
 
 **Kubernetes ResourceQuota metrics**
-:   Monitor resource limits and current usage. Learn more at [`kube-state-metrics` ResourceQuota metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_resourcequota).
+:   Monitor resource limits and current usage. Learn more at [`kube-state-metrics` ResourceQuota metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_resourcequota).
 
 **Kubernetes Service metrics**
-:   Monitor service configuration, accessibility, and network integration. Learn more at [`kube-state-metrics` service metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_service).
+:   Monitor service configuration, accessibility, and network integration. Learn more at [`kube-state-metrics` service metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_service).
 
 **Kubernetes StatefulSet metrics**
-:   Monitor StatefulSet configuration, status, and scaling. Learn more at [`kube-state-metrics` StatefulSet metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_statefulset).
+:   Monitor StatefulSet configuration, status, and scaling. Learn more at [`kube-state-metrics` StatefulSet metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_statefulset).
 
 **Kubernetes StorageClass metrics**
-:   Monitor how storage is provisioned and allocated. Learn more at [`kube-state-metrics` StorageClass metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_storageclass).
+:   Monitor how storage is provisioned and allocated. Learn more at [`kube-state-metrics` StorageClass metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_storageclass).
 
 ::::
 
@@ -302,7 +302,7 @@ add_resource_metadata:
 
 Collecting metrics from the `kube-apiserver` is on by default. The `kube-apiserver` sets up and validates pods, services, and other API objects. These metrics provide insight into the API server’s performance, workload, and health.
 
-Refer to [`kube-apiserver` metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-apiserver.md) for more on the metrics collected.
+Refer to [`kube-apiserver` metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-apiserver.md) for more on the metrics collected.
 
 
 #### Configure Kubernetes API server options [monitor-k8s-apiserver-configure]
@@ -329,7 +329,7 @@ Provide the following information to collect `kube-apiserver` metrics:
 
 The `kube-proxy` runs on each node and maintains network rules. Collecting metrics from the `kube-proxy` is on by default. These metrics provide insight into the proxy’s networking activity, performance, and resource usage.
 
-Refer to [`kube-proxy` metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-proxy.md) for more on the metrics collected.
+Refer to [`kube-proxy` metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-proxy.md) for more on the metrics collected.
 
 
 #### Configure Kubernetes proxy options [monitor-k8s-proxy-configure]
@@ -347,7 +347,7 @@ Provide the following information to collect Kubernetes Proxy metrics:
 
 The kube-scheduler assigns new pods with no node assignment to the most appropriate node. Turn this option on to get metrics from the kube-scheduler. These metrics provide insight on the performance, resource usage, and health of the `kube-scheduler`.
 
-Refer to [`kube-scheduler` metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-scheduler.md) for more on the metrics collected.
+Refer to [`kube-scheduler` metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-scheduler.md) for more on the metrics collected.
 
 
 #### Configure Kubernetes scheduler options [monitor-k8s-scheduler-configure]
@@ -371,7 +371,7 @@ Provide the following information to collect Kubernetes scheduler metrics:
 
 The `kube-controller-manager` regulates the state of the clusters. Turn this option on to get metrics from the `kube-controller-manager`. These metrics provide insight on the performance, resource usage, and health of the kube-controller-manager.
 
-Refer to [`kube-controller-manager` metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-controller-manager.md) for more on the metrics collected.
+Refer to [`kube-controller-manager` metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/kube-controller-manager.md) for more on the metrics collected.
 
 
 #### Configure Kubernetes controller-manager options [monitor-k8s-controller-configure]
@@ -395,7 +395,7 @@ Provide the following information to collect `kube-controller-manager` metrics:
 
 Event metrics give you an overall view of what’s happening in a cluster. These metrics help you understand what’s happening in your cluster and improve reliability and stability. Collecting Kubernetes events from the Kubernetes API server is on by default.
 
-Refer to [events metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/events.md) for more on the metrics collected.
+Refer to [events metrics](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/events.md) for more on the metrics collected.
 
 
 #### Configure events from the Kubernetes API server [monitor-k8s-api-events-configure]
@@ -419,9 +419,9 @@ Provide the following information to collect Kubernetes events metrics:
 
 Collecting and parsing Kubernetes container logs is on by default. Containers running within Kubernetes pods publish logs to stdout or stderr. These logs are written to a location known to kubelet. The container parser is enabled by default. You can enable additional parsers in **advanced settings**.
 
-Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
+Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](docs-content://docs/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
 
-Refer to [Kubernetes container logs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/container-logs.md) for more on collecting container logs.
+Refer to [Kubernetes container logs](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/container-logs.md) for more on collecting container logs.
 
 
 #### Configure Kubernetes container logs [monitor-k8s-container-log-configure]
@@ -444,7 +444,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Turn this option on to collect audit logs. Kubernetes audit logs record requests that come to the Kubernetes API from internal and external components. These logs help you understand cluster behavior and debug issues.
 
-Refer to [Kubernetes audit logs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/audit-logs.md) for more on collecting audit logs.
+Refer to [Kubernetes audit logs](integration-docs://docs/reference/ingestion-tools/integrations/kubernetes/audit-logs.md) for more on collecting audit logs.
 
 
 ## Part 2: Configure and install the standalone {{agent}} [monitor-k8s-update-agent-config]
@@ -464,7 +464,7 @@ After configuring your integration, you need to download and update your manifes
 
 After downloading the manifest, open it and update the `ES_USERNAME` and `ES_PASSWORD` environment variables in the DaemonSet to match your {{es}} credentials.
 
-You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
+You can also further modify the manifest to fit your needs. For example, you might want to enable autodiscovery to automatically discover container logs. Refer to the [autodiscovery docs](docs-content://docs/reference/ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md) in the {{fleet}} guide for more on enabling autodiscovery in your manifest.
 
 Once you are ready to deploy your {{agent}}:
 
@@ -481,7 +481,7 @@ Once you are ready to deploy your {{agent}}:
     ```
 
 
-Refer to [Debug standalone Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
+Refer to [Debug standalone Elastic Agents](docs-content://docs/reference/ingestion-tools/fleet/debug-standalone-agents.md) if you run into any issues with configuring or installing your {{agent}}.
 
 
 ## Part 3: Explore logs and metrics [monitor-kubernetes-explore]
@@ -644,9 +644,9 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
-* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/set-up-apm-go-agent.md)
+* [Supported technologies](apm-agent-go://docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md)
+* [Advanced configuration](apm-agent-go://docs/reference/ingestion-tools/apm-agent-go/configuration.md)
+* [Detailed guide to instrumenting Go source code](apm-agent-go://docs/reference/ingestion-tools/apm-agent-go/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} Java
@@ -726,13 +726,13 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md)
+* [Supported technologies](apm-agent-java://docs/reference/ingestion-tools/apm-agent-java/supported-technologies.md)
+* [Advanced configuration](apm-agent-java://docs/reference/ingestion-tools/apm-agent-java/configuration.md)
 ::::::
 
 ::::::{tab-item} .NET
 ::::{note}
-These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
+These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](apm-agent-dotnet://docs/reference/ingestion-tools/apm-agent-dotnet/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
 ::::
 
 
@@ -806,8 +806,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
+* [Supported technologies](apm-agent-dotnet://docs/reference/ingestion-tools/apm-agent-dotnet/supported-technologies.md)
+* [Advanced configuration](apm-agent-dotnet://docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -851,8 +851,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md)
-* [Configuring the agent](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/advanced-setup.md)
+* [Supported technologies](apm-agent-nodejs://docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md)
+* [Configuring the agent](apm-agent-nodejs://docs/reference/ingestion-tools/apm-agent-nodejs/advanced-setup.md)
 ::::::
 
 ::::::{tab-item} PHP
@@ -878,7 +878,7 @@ To use the APK package (Alpine):
 apk add --allow-untrusted <package-file>.apk
 ```
 
-If you can’t find your distribution, you can install the agent by [building it from the source](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/set-up-apm-php-agent.md).
+If you can’t find your distribution, you can install the agent by [building it from the source](apm-agent-php://docs/reference/ingestion-tools/apm-agent-php/set-up-apm-php-agent.md).
 
 **Configure the agent**
 
@@ -904,8 +904,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
+* [Supported technologies](apm-agent-php://docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md)
+* [Configuration](apm-agent-php://docs/reference/ingestion-tools/apm-agent-php/configuration.md)
 ::::::
 
 ::::::{tab-item} Python
@@ -966,8 +966,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
+* [Supported technologies](apm-agent-python://docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
+* [Advanced configuration](apm-agent-python://docs/reference/ingestion-tools/apm-agent-python/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -1029,8 +1029,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
+* [Supported technologies](apm-agent-ruby://docs/reference/ingestion-tools/apm-agent-ruby/supported-technologies.md)
+* [Advanced configuration](apm-agent-ruby://docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
 ::::::
 
 :::::::

@@ -15,7 +15,7 @@ mapped_urls:
 
 In order to enrich your {{elastic-sec}} workflows with third-party cloud security posture and vulnerability data collected by Wiz:
 
-* Follow the steps to [set up the Wiz integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/wiz.md).
+* Follow the steps to [set up the Wiz integration](integration-docs://docs/reference/ingestion-tools/integrations/wiz.md).
 * Make sure the integration version is at least 2.0.1.
 * Ensure you have `read` privileges for the following indices: `security_solution-*.misconfiguration_latest`, `security_solution-*.vulnerability_latest`.
 * While configuring the Wiz integration, turn on **Cloud Configuration Finding logs** and **Vulnerability logs**. We recommend you also set the **Initial Interval** values for both settings to `2160h` (equivalent to 90 days) to ingest existing logs.

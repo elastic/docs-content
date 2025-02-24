@@ -30,7 +30,7 @@ Elastic offer tools designed to ingest specific types of general content. The co
 * To index **documents** directly into {{es}}, use the {{es}} [document APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-document).
 * To send **application data** directly to {{es}}, use an [{{es}} language client](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 * To index **web page content**, use the Elastic [web crawler](https://www.elastic.co/web-crawler).
-* To sync **data from third-party sources**, use [connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md). A connector syncs content from an original data source to an {{es}} index. Using connectors you can create *searchable*, read-only replicas of your data sources.
+* To sync **data from third-party sources**, use [connectors](elasticsearch://docs/reference/ingestion-tools/search-connectors/index.md). A connector syncs content from an original data source to an {{es}} index. Using connectors you can create *searchable*, read-only replicas of your data sources.
 * To index **single files** for testing in a non-production environment, use the {{kib}} [file uploader](ingest/upload-data-files.md).
 
 If you would like to try things out before you add your own data, try using our [sample data](ingest/sample-data.md).
@@ -44,10 +44,10 @@ The best approach for ingesting data is the *simplest option* that *meets your n
 In most cases, the *simplest option* for ingesting time series data is using {{agent}} paired with an Elastic integration.
 
 * Install [Elastic Agent](https://www.elastic.co/guide/en/fleet/current) on the computer(s) from which you want to collect data.
-* Add the [Elastic integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) for the data source to your deployment.
+* Add the [Elastic integration](integration-docs://docs/reference/ingestion-tools/integrations/index.md) for the data source to your deployment.
 
 Integrations are available for many popular platforms and services, and are a good place to start for ingesting data into Elastic solutions—​Observability, Security, and Search—​or your own search application.
 
-Check out the [Integration quick reference](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/all_integrations.md) to search for available integrations. If you don’t find an integration for your data source or if you need additional processing to extend the integration, we still have you covered. Refer to [Transform and enrich data](ingest/transform-enrich.md) to learn more.
+Check out the [Integration quick reference](integration-docs://docs/reference/ingestion-tools/integrations/all_integrations.md) to search for available integrations. If you don’t find an integration for your data source or if you need additional processing to extend the integration, we still have you covered. Refer to [Transform and enrich data](ingest/transform-enrich.md) to learn more.
 
 ::::

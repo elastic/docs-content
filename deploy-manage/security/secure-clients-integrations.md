@@ -9,18 +9,18 @@ You will need to update the configuration for several [clients](httprest-clients
 
 The {{es}} {{security-features}} enable you to secure your {{es}} cluster. But {{es}} itself is only one product within the {{stack}}. It is often the case that other products in the {{stack}} are connected to the cluster and therefore need to be secured as well, or at least communicate with the cluster in a secured way:
 
-* [Apache Hadoop](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/ingestion-tools/elasticsearch-hadoop/security.md)
-* [Auditbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-auditbeat/securing-auditbeat.md)
-* [Filebeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/securing-filebeat.md)
-* [{{fleet}} & {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure.md)
-* [Heartbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/securing-heartbeat.md)
+* [Apache Hadoop](elasticsearch-hadoop://docs/reference/ingestion-tools/elasticsearch-hadoop/security.md)
+* [Auditbeat](beats://docs/reference/ingestion-tools/beats-auditbeat/securing-auditbeat.md)
+* [Filebeat](beats://docs/reference/ingestion-tools/beats-filebeat/securing-filebeat.md)
+* [{{fleet}} & {{agent}}](docs-content://docs/reference/ingestion-tools/fleet/secure.md)
+* [Heartbeat](beats://docs/reference/ingestion-tools/beats-heartbeat/securing-heartbeat.md)
 * [{{kib}}](../security.md)
-* [Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/secure-connection.md)
-* [Metricbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/securing-metricbeat.md)
+* [Logstash](logstash://docs/reference/ingestion-tools/logstash/secure-connection.md)
+* [Metricbeat](beats://docs/reference/ingestion-tools/beats-metricbeat/securing-metricbeat.md)
 * [Monitoring and security](../monitor.md)
-* [Packetbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/securing-packetbeat.md)
+* [Packetbeat](beats://docs/reference/ingestion-tools/beats-packetbeat/securing-packetbeat.md)
 * [Reporting](../../explore-analyze/report-and-share.md)
-* [Winlogbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-winlogbeat/securing-winlogbeat.md)
+* [Winlogbeat](beats://docs/reference/ingestion-tools/beats-winlogbeat/securing-winlogbeat.md)
 
 
 

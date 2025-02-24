@@ -35,11 +35,11 @@ Currently {{agent}} is not able to present a certificate for connectivity to {{f
 Info on {{agent}} and agent integrations:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [{{agent}} integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md)
+* [{{agent}} integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md)
 
 Info on using a proxy server:
 
-* [Using a proxy server with {{agent}} and {{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md)
+* [Using a proxy server with {{agent}} and {{fleet}}](docs-content://docs/reference/ingestion-tools/fleet/fleet-agent-proxy-support.md)
 
 Info on {{es}}:
 

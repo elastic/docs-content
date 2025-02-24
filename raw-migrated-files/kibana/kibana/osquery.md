@@ -175,7 +175,7 @@ The prebuilt Osquery packs are included with the integration and can be optional
 
 You can modify the scheduled agent policies for a prebuilt pack, but you cannot edit queries in the pack. To edit the queries, you must first create a copy of the pack.
 
-For information about the prebuilt packs that are available, refer to [*Prebuilt packs reference*](asciidocalypse://docs/kibana/docs/reference/osquery-manager-prebuilt-packs.md).
+For information about the prebuilt packs that are available, refer to [*Prebuilt packs reference*](kibana://docs/reference/osquery-manager-prebuilt-packs.md).
 
 
 #### Load and activate prebuilt Elastic packs [load-prebuilt-packs]
@@ -220,7 +220,7 @@ A set of saved queries are included with the integration and available to run as
 
 ## Map result fields to ECS [osquery-map-fields]
 
-When you save queries or add queries to a pack, you can optionally map Osquery results or static values to fields in the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) (ECS). This standardizes your Osquery data for use across detections, machine learning, and any other areas that rely on ECS-compliant data. When the query is run, the results include the original `osquery.<fields>` and the mapped ECS fields. For example, if you update a query to map `osquery.name` to `user.name`, the query results include both fields.
+When you save queries or add queries to a pack, you can optionally map Osquery results or static values to fields in the [Elastic Common Schema](ecs://docs/reference/ecs/index.md) (ECS). This standardizes your Osquery data for use across detections, machine learning, and any other areas that rely on ECS-compliant data. When the query is run, the results include the original `osquery.<fields>` and the mapped ECS fields. For example, if you update a query to map `osquery.name` to `user.name`, the query results include both fields.
 
 1. Edit saved queries or queries in a pack to map fields:
 
@@ -238,8 +238,8 @@ When you save queries or add queries to a pack, you can optionally map Osquery r
 
 ::::{note}
 * Some ECS fields are restricted and cannot be mapped. These are not available in the ECS dropdown.
-* Some ECS fields are restricted to a set of allowed values, like [event.category](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-event.md#field-event-category). Use the [ECS Field Reference](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-field-reference.md) for help when mapping fields.
-* Osquery date fields have a variety of data types (including integer, text, or bigint). When mapping an Osquery date field to an ECS date field, you might need to use SQL operators in the query to get an {{es}}-compatible [date](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) type.
+* Some ECS fields are restricted to a set of allowed values, like [event.category](ecs://docs/reference/ecs/ecs-event.md#field-event-category). Use the [ECS Field Reference](ecs://docs/reference/ecs/ecs-field-reference.md) for help when mapping fields.
+* Osquery date fields have a variety of data types (including integer, text, or bigint). When mapping an Osquery date field to an ECS date field, you might need to use SQL operators in the query to get an {{es}}-compatible [date](elasticsearch://docs/reference/elasticsearch/mapping-reference/date.md) type.
 
 ::::
 
@@ -253,7 +253,7 @@ In addition to the Osquery schema, the Elastic-provided version of Osquery also 
 * `host_groups`
 * `host_processes`
 
-When querying these tables, the expectation is that the `/etc/passwd`, `/etc/group`, and `/proc` are available in the container under `/hostfs` as: `/hostfs/etc/passwd`, `/hostfs/etc/group`, and `/hostfs/proc`. For information about the fields available in these tables, see the [exported fields](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery_manager.md#osquery_manager-exported-fields) reference.
+When querying these tables, the expectation is that the `/etc/passwd`, `/etc/group`, and `/proc` are available in the container under `/hostfs` as: `/hostfs/etc/passwd`, `/hostfs/etc/group`, and `/hostfs/proc`. For information about the fields available in these tables, see the [exported fields](integration-docs://docs/reference/ingestion-tools/integrations/osquery_manager.md#osquery_manager-exported-fields) reference.
 
 
 ## Osquery status [osquery-status]
@@ -275,7 +275,7 @@ If an agent is offline, the request status remains **pending** as {{kib}} retrie
 
 ## Osquery results [osquery-results]
 
-When you run live or scheduled queries, the results are automatically stored in an {{es}} index, so that you can search, analyze, and visualize this data in {{kib}}. For a list of the Osquery fields that can be returned in query results, refer to [exported fields](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/osquery_manager.md#osquery_manager-exported-fields). Query results can also include ECS fields, if the query has a defined ECS mapping.
+When you run live or scheduled queries, the results are automatically stored in an {{es}} index, so that you can search, analyze, and visualize this data in {{kib}}. For a list of the Osquery fields that can be returned in query results, refer to [exported fields](integration-docs://docs/reference/ingestion-tools/integrations/osquery_manager.md#osquery_manager-exported-fields). Query results can also include ECS fields, if the query has a defined ECS mapping.
 
 Osquery responses include the following information:
 

@@ -9,7 +9,7 @@ mapped_pages:
 
 ## Enable HTTPS [k8s-logstash-https]
 
-Access to the [Logstash Monitoring APIs](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/monitoring-logstash.md#monitoring-api-security) use HTTPS by default - the operator will set the values  `api.ssl.enabled: true`, `api.ssl.keystore.path` and `api.ssl.keystore.password`.
+Access to the [Logstash Monitoring APIs](logstash://docs/reference/ingestion-tools/logstash/monitoring-logstash.md#monitoring-api-security) use HTTPS by default - the operator will set the values  `api.ssl.enabled: true`, `api.ssl.keystore.path` and `api.ssl.keystore.password`.
 
 You can further secure the {{ls}} Monitoring APIs by requiring HTTP Basic authentication by setting `api.auth.type: basic`, and providing the relevant credentials `api.auth.basic.username` and `api.auth.basic.password`:
 
@@ -44,7 +44,7 @@ spec:
 
 1. Store the username and password in a Secret.
 2. Map the username and password to the environment variables of the Pod.
-3. At Logstash startup, `${API_USERNAME}` and `${API_PASSWORD}` are replaced by the value of environment variables. Check [using environment variables](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/environment-variables.md) for more details.
+3. At Logstash startup, `${API_USERNAME}` and `${API_PASSWORD}` are replaced by the value of environment variables. Check [using environment variables](logstash://docs/reference/ingestion-tools/logstash/environment-variables.md) for more details.
 
 
 An alternative is to set up [keystore](advanced-configuration-logstash.md#k8s-logstash-keystore) to resolve `${API_USERNAME}` and `${API_PASSWORD}`

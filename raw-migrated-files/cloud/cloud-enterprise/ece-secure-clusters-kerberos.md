@@ -18,7 +18,7 @@ The steps in this section require an understanding of Kerberos. To learn more ab
 With a custom bundle containing the Kerberos files and changes to the cluster configuration, you can enforce user authentication through the Kerberos protocol.
 
 1. Create or use an existing deployment that includes a Kibana instance.
-2. Create a [custom bundle](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
+2. Create a [custom bundle](elasticsearch://docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md) that contains your `krb5.conf` and `keytab` files, and add it to your cluster.
 
     ::::{tip}
     You should use these exact filenames for Elastic Cloud Enterprise to recognize the file in the bundle.

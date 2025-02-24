@@ -36,7 +36,7 @@ To ensure optimal performance, follow these recommendations for sizing individua
 
 For large datasets that exceed the recommended maximum size for a single index, consider splitting your data across smaller indices and using an alias to search them collectively.
 
-These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) in the core {{es}} docs for more information.
+These recommendations do not apply to indices using better binary quantization (BBQ). Refer to [vector quantization](elasticsearch://docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization) in the core {{es}} docs for more information.
 
 
 ## API availability [elasticsearch-differences-serverless-apis-availability]
@@ -88,7 +88,7 @@ When attempting to use an unavailable API, you’ll receive a clear error messag
 
 ## Settings availability [elasticsearch-differences-serverless-settings-availability]
 
-In {{es-serverless}}, you can only configure [index-level settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md). Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
+In {{es-serverless}}, you can only configure [index-level settings](elasticsearch://docs/reference/elasticsearch/index-settings/index.md). Cluster-level settings and node-level settings are not required by end users and the `elasticsearch.yml` file is fully managed by Elastic.
 
 Available settings
 :   **Index-level settings**: Settings that control how {{es}} documents are processed, stored, and searched are available to end users. These include:
@@ -152,7 +152,7 @@ The following {{es-serverless}} project-specific features are planned for future
 
 * Managed Search connectors
 
-    You can use [self-managed Search connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/self-managed-connectors.md) in the meantime.
+    You can use [self-managed Search connectors](elasticsearch://docs/reference/ingestion-tools/search-connectors/self-managed-connectors.md) in the meantime.
 
 
 
@@ -161,5 +161,5 @@ The following {{es-serverless}} project-specific features are planned for future
 The following features are not available in {{es-serverless}} and are not planned for future support:
 
 * [Custom plugins and bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md)
-* [{{es}} for Apache Hadoop](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/ingestion-tools/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md)
-* [Scripted metric aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md)
+* [{{es}} for Apache Hadoop](elasticsearch-hadoop://docs/reference/ingestion-tools/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md)
+* [Scripted metric aggregations](elasticsearch://docs/reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md)

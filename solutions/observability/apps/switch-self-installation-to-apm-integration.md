@@ -20,15 +20,15 @@ mapped_pages:
 
 The {{stack}} ({{es}} and {{kib}}) must be upgraded to version 7.14 or higher. See the [{{stack}} Installation and Upgrade Guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for guidance.
 
-Review the APM [release notes](asciidocalypse://docs/docs-content/docs/release-notes/apm.md), [breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-apm.md), and {{observability}} [What’s new](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-observability.md) content for important changes between your current APM version and this one.
+Review the APM [release notes](docs-content://docs/release-notes/apm.md), [breaking changes](docs-content://docs/release-notes/breaking-changes/elastic-apm.md), and {{observability}} [What’s new](docs-content://docs/release-notes/breaking-changes/elastic-observability.md) content for important changes between your current APM version and this one.
 
 
 ## Add a {{fleet}} Server [apm-integration-upgrade-2]
 
-{{fleet}} Server is a component of the {{stack}} used to centrally manage {{agent}}s. The APM integration requires a {{fleet}} Server to be running and accessible to your hosts. Add a {{fleet}} Server by following [this guide](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/deployment-models.md).
+{{fleet}} Server is a component of the {{stack}} used to centrally manage {{agent}}s. The APM integration requires a {{fleet}} Server to be running and accessible to your hosts. Add a {{fleet}} Server by following [this guide](docs-content://docs/reference/ingestion-tools/fleet/deployment-models.md).
 
 ::::{tip}
-If you’re upgrading a self-managed deployment of the {{stack}}, you’ll need to enable [{{es}} security](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md) and the [API key service](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md).
+If you’re upgrading a self-managed deployment of the {{stack}}, you’ll need to enable [{{es}} security](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md) and the [API key service](elasticsearch://docs/reference/elasticsearch/configuration-reference/security-settings.md).
 ::::
 
 
@@ -44,7 +44,7 @@ It’s possible to install the Elastic APM integration on the same {{agent}} tha
 ::::
 
 
-The {{fleet}}-managed {{agent}} will run the Elastic APM integration on your edge nodes, next to your applications. To install a {{fleet}}-managed {{agent}}, follow [this guide](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md).
+The {{fleet}}-managed {{agent}} will run the Elastic APM integration on your edge nodes, next to your applications. To install a {{fleet}}-managed {{agent}}, follow [this guide](docs-content://docs/reference/ingestion-tools/fleet/install-fleet-managed-elastic-agent.md).
 
 
 ## Add the APM integration [apm-integration-upgrade-4]

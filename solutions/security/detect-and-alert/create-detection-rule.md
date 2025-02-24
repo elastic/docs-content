@@ -108,7 +108,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     Because {{ml}} rules generate alerts from anomalies, which don’t contain source event fields, you can only use anomaly fields when configuring alert suppression.
     ::::
 
-5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -153,7 +153,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -196,7 +196,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -212,10 +212,10 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 4. To create an event correlation rule using EQL, select **Event Correlation**, then:
 
     1. Define which {{es}} indices or data view the rule searches when querying for events.
-    2. Write an [EQL query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md) that searches for matching events or a series of matching events.
+    2. Write an [EQL query](elasticsearch://docs/reference/query-languages/eql-syntax.md) that searches for matching events or a series of matching events.
 
         ::::{tip}
-        To find events that are missing in a sequence, use the [missing events](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-missing-events) syntax.
+        To find events that are missing in a sequence, use the [missing events](elasticsearch://docs/reference/query-languages/eql-syntax.md#eql-missing-events) syntax.
         ::::
 
 
@@ -251,7 +251,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
 
 5. (Optional) Click the EQL settings icon (![EQL settings icon](../../../images/security-eql-settings-icon.png "")) to configure additional fields used by [EQL search](/explore-analyze/query-filter/languages/eql.md#specify-a-timestamp-or-event-category-field):
 
-    * **Event category field**: Contains the event classification, such as `process`, `file`, or `network`. This field is typically mapped as a field type in the [keyword family](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md). Defaults to the `event.category` ECS field.
+    * **Event category field**: Contains the event classification, such as `process`, `file`, or `network`. This field is typically mapped as a field type in the [keyword family](elasticsearch://docs/reference/elasticsearch/mapping-reference/keyword.md). Defaults to the `event.category` ECS field.
     * **Tiebreaker field**: Sets a secondary field for sorting events (in ascending, lexicographic order) if they have the same timestamp.
     * **Timestamp field**: Contains the event timestamp used for sorting a sequence of events. This is different from the **Timestamp override** advanced setting, which is used for querying events within a range. Defaults to the `@timestamp` ECS field.
 
@@ -261,7 +261,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-8. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+8. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -295,7 +295,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     3. **Indicator index patterns**: The indicator index patterns containing field values for which you want to generate alerts. This field is automatically populated with indices specified in the `securitySolution:defaultThreatIndex` advanced setting. For more information, see [Update default Elastic Security threat intelligence indices](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices).
 
         ::::{important}
-        Data in indicator indices must be [ECS compatible](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md), and so it must contain a `@timestamp` field.
+        Data in indicator indices must be [ECS compatible](docs-content://docs/reference/security/fields-and-object-schemas/siem-field-reference.md), and so it must contain a `@timestamp` field.
         ::::
 
     4. **Indicator index query**: The query and filters used to filter the fields from the indicator index patterns. The default query `@timestamp > "now-30d/d"` searches specified indicator indices for indicators ingested during the past 30 days and rounds the start time down to the nearest day (resolves to UTC `00:00:00`).
@@ -330,7 +330,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -396,7 +396,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -429,7 +429,7 @@ To create an {{esql}} rule:
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -444,7 +444,7 @@ To create an {{esql}} rule:
 
 #### Aggregating query [esql-agg-query]
 
-Aggregating queries use [`STATS...BY`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md#esql-agg-functions) functions to aggregate source event data. Alerts generated by a rule with an aggregating query only contain the fields that the {{esql}} query returns and any new fields that the query creates.
+Aggregating queries use [`STATS...BY`](elasticsearch://docs/reference/query-languages/esql-functions-operators.md#esql-agg-functions) functions to aggregate source event data. Alerts generated by a rule with an aggregating query only contain the fields that the {{esql}} query returns and any new fields that the query creates.
 
 ::::{note}
 A *new field* is a field that doesn’t exist in the query’s source index and is instead created when the rule runs. You can access new fields in the details of any alerts that are generated by the rule. For example, if you use the `STATS...BY` function to create a column with aggregated values, the column is created when the rule runs and is added as a new field to any alerts that are generated by the rule.
@@ -476,7 +476,7 @@ Rules that use aggregating queries might create duplicate alerts. This can happe
 Non-aggregating queries don’t use `STATS...BY` functions and don’t aggregate source event data. Alerts generated by a non-aggregating query contain source event fields that the query returns, new fields the query creates, and all other fields in the source event document.
 
 ::::{note}
-A *new field* is a field that doesn’t exist in the query’s source index and is instead created when the rule runs. You can access new fields in the details of any alerts that are generated by the rule. For example, if you use the [`EVAL`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-eval) command to append new columns with calculated values, the columns are created when the rule runs, and are added as new fields to any alerts generated by the rule.
+A *new field* is a field that doesn’t exist in the query’s source index and is instead created when the rule runs. You can access new fields in the details of any alerts that are generated by the rule. For example, if you use the [`EVAL`](elasticsearch://docs/reference/query-languages/esql-commands.md#esql-eval) command to append new columns with calculated values, the columns are created when the rule runs, and are added as new fields to any alerts generated by the rule.
 ::::
 
 
@@ -505,7 +505,7 @@ FROM logs-* METADATA _id, _index, _version
 
 When those metadata fields are provided, unique alert IDs are created for each alert generated by the query.
 
-When developing the query, make sure you don’t [`DROP`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-drop) or filter out the `_id`, `_index`, or `_version` metadata fields.
+When developing the query, make sure you don’t [`DROP`](elasticsearch://docs/reference/query-languages/esql-commands.md#esql-drop) or filter out the `_id`, `_index`, or `_version` metadata fields.
 
 Here is an example of a query that fails to deduplicate alerts. It uses the `DROP` command to omit the `_id` property from the results table:
 
@@ -530,11 +530,11 @@ FROM logs-* METADATA _id, _index, _version
 
 When writing your query, consider the following:
 
-* The [`LIMIT`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-limit) command specifies the maximum number of rows an {{esql}} query returns and the maximum number of alerts created per rule execution. Similarly, a detection rule’s **Max alerts per run** setting specifies the maximum number of alerts it can create every time it runs.
+* The [`LIMIT`](elasticsearch://docs/reference/query-languages/esql-commands.md#esql-limit) command specifies the maximum number of rows an {{esql}} query returns and the maximum number of alerts created per rule execution. Similarly, a detection rule’s **Max alerts per run** setting specifies the maximum number of alerts it can create every time it runs.
 
     If the `LIMIT` value and **Max alerts per run** value are different, the rule uses the lower value to determine the maximum number of alerts the rule generates.
 
-* When writing an aggregating query, use the [`STATS...BY`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-stats-by) command with fields that you want to search and filter for after alerts are created. For example, using the `host.name`, `user.name`, `process.name` fields with the `BY` operator of the `STATS...BY` command returns these fields in alert documents, and allows you to search and filter for them from the Alerts table.
+* When writing an aggregating query, use the [`STATS...BY`](elasticsearch://docs/reference/query-languages/esql-commands.md#esql-stats-by) command with fields that you want to search and filter for after alerts are created. For example, using the `host.name`, `user.name`, `process.name` fields with the `BY` operator of the `STATS...BY` command returns these fields in alert documents, and allows you to search and filter for them from the Alerts table.
 * When configuring alert suppression on a non-aggregating query, we recommend sorting results by ascending `@timestamp` order. Doing so ensures that alerts are properly suppressed, especially if the number of alerts generated is higher than the **Max alerts per run** value.
 
 
@@ -624,7 +624,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
     11. **Max alerts per run** (optional): Specify the maximum number of alerts the rule can create each time it runs. Default is 100.
 
         ::::{note}
-        This setting can be superseded by the [{{kib}} configuration setting](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#alert-settings) `xpack.alerting.rules.run.alerts.max`, which determines the maximum alerts generated by *any* rule in the {{kib}} alerting framework. For example, if `xpack.alerting.rules.run.alerts.max` is set to `1000`, the rule can generate no more than 1000 alerts even if **Max alerts per run** is set higher.
+        This setting can be superseded by the [{{kib}} configuration setting](kibana://docs/reference/configuration-reference/alerting-settings.md#alert-settings) `xpack.alerting.rules.run.alerts.max`, which determines the maximum alerts generated by *any* rule in the {{kib}} alerting framework. For example, if `xpack.alerting.rules.run.alerts.max` is set to `1000`, the rule can generate no more than 1000 alerts even if **Max alerts per run** is set higher.
         ::::
 
     12. **Indicator prefix override**: Define the location of indicator data within the structure of indicator documents. When the indicator match rule executes, it queries specified indicator indices and references this setting to locate fields with indicator data. This data is used to enrich indicator match alerts with metadata about matched threat indicators. The default value for this setting is `threat.indicator`.
@@ -644,7 +644,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
         If the selected field is unavailable, the rule query will use the `@timestamp` field instead. In the case that you don’t want to use the `@timestamp` field because you know your data source has an inaccurate `@timestamp` value, we recommend selecting the **Do not use @timestamp as a fallback timestamp field** option instead. This will ensure that the rule query ignores the `@timestamp` field entirely.
 
         ::::{tip}
-        The [Microsoft](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-microsoft.md) and [Google Workspace](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-google_workspace.md) {{filebeat}} modules have an `event.ingested` timestamp field that can be used instead of the default `@timestamp` field.
+        The [Microsoft](beats://docs/reference/ingestion-tools/beats-filebeat/filebeat-module-microsoft.md) and [Google Workspace](beats://docs/reference/ingestion-tools/beats-filebeat/filebeat-module-google_workspace.md) {{filebeat}} modules have an `event.ingested` timestamp field that can be used instead of the default `@timestamp` field.
         ::::
 
 2. Click **Continue**. The **Schedule rule** pane is displayed.
@@ -693,7 +693,7 @@ To use {{kib}} actions for alert notifications, you need the [appropriate licens
     ::::{note}
     Each action type requires a connector. Connectors store the information required to send the notification from the external system. You can configure connectors while creating the rule or in **{{stack-manage-app}}** → **{{connectors-ui}}**. For more information, see [Action and connector types](/deploy-manage/manage-connectors.md).
 
-    Some connectors that perform actions require less configuration. For example, you do not need to set the action frequency or variables for the [Cases connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md)
+    Some connectors that perform actions require less configuration. For example, you do not need to set the action frequency or variables for the [Cases connector](kibana://docs/reference/connectors-kibana/cases-action-type.md)
 
     ::::
 

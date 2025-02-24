@@ -138,7 +138,7 @@ Entity data from different sources appears in the **Entities** section based on 
 * When you first enable the entity store, only data stored in the last 24 hours is processed. After that, data is processed continuously.
 * Observed events from the {{elastic-sec}} default data view are processed in near real-time.
 * Entity Analytics data, such as entity risk scores and asset criticality (including bulk asset criticality upload), is also processed in near real-time.
-* The availability of entities extracted from Entity Analytics integrations depends on the specific integration. Refer to [Active Directory Entity Analytics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/entityanalytics_ad.md), [Microsoft Entra ID Entity Analytics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/entityanalytics_entra_id.md), and [Okta Entity Analytics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/entityanalytics_okta.md) for more details.
+* The availability of entities extracted from Entity Analytics integrations depends on the specific integration. Refer to [Active Directory Entity Analytics](integration-docs://docs/reference/ingestion-tools/integrations/entityanalytics_ad.md), [Microsoft Entra ID Entity Analytics](integration-docs://docs/reference/ingestion-tools/integrations/entityanalytics_entra_id.md), and [Okta Entity Analytics](integration-docs://docs/reference/ingestion-tools/integrations/entityanalytics_okta.md) for more details.
 
 Interact with the table to filter data and view more details:
 
@@ -153,7 +153,7 @@ Interact with the table to filter data and view more details:
 Anomaly detection jobs identify suspicious or irregular behavior patterns. The Anomalies table displays the total number of anomalies identified by these prebuilt {{ml}} jobs (named in the **Anomaly name** column).
 
 ::::{admonition} Requirements
-To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-jobs.md). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
+To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](docs-content://docs/reference/security/prebuilt-jobs.md). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
 
 ::::
 

@@ -39,12 +39,12 @@ To learn more about the features that are supported by Elasticsearch Service, ch
 The following restrictions apply when using APIs in Elasticsearch Service:
 
 Elasticsearch Service API
-:   The Elasticsearch Service API is subject to a restriction on the volume of API requests that can be submitted per user, per second. Check [Rate limiting](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-rate-limiting.md) for details.
+:   The Elasticsearch Service API is subject to a restriction on the volume of API requests that can be submitted per user, per second. Check [Rate limiting](cloud://docs/reference/cloud/cloud-hosted/ec-api-rate-limiting.md) for details.
 
 $$$ec-restrictions-apis-elasticsearch$$$
 
 Elasticsearch APIs
-:   The Elasticsearch APIs do not natively enforce rate limiting. However, all requests to the Elasticsearch cluster are subject to Elasticsearch configuration settings, such as the [network HTTP setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) `http:max_content_length` which restricts the maximum size of an HTTP request body. This setting has a default value of 100MB, hence restricting API request payloads to that size. This setting is not currently configurable in Elasticsearch Service. For a list of which Elasticsearch settings are supported on Cloud, check [Add Elasticsearch user settings](edit-stack-settings.md). To learn about using the Elasticsearch APIs in Elasticsearch Service, check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md). And, for full details about the Elasticsearch APIs and their endpoints, check the [Elasticsearch API reference documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md).
+:   The Elasticsearch APIs do not natively enforce rate limiting. However, all requests to the Elasticsearch cluster are subject to Elasticsearch configuration settings, such as the [network HTTP setting](elasticsearch://docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) `http:max_content_length` which restricts the maximum size of an HTTP request body. This setting has a default value of 100MB, hence restricting API request payloads to that size. This setting is not currently configurable in Elasticsearch Service. For a list of which Elasticsearch settings are supported on Cloud, check [Add Elasticsearch user settings](edit-stack-settings.md). To learn about using the Elasticsearch APIs in Elasticsearch Service, check [Access the Elasticsearch API console](cloud://docs/reference/cloud/cloud-hosted/ec-api-console.md). And, for full details about the Elasticsearch APIs and their endpoints, check the [Elasticsearch API reference documentation](elasticsearch://docs/reference/elasticsearch/rest-apis/index.md).
 
 $$$ec-restrictions-apis-kibana$$$
 
@@ -93,7 +93,7 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 ## Kibana [ec-restrictions-kibana]
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
-* Running an external Kibana in parallel to Elasticsearch Service’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as Elasticsearch Service does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Running an external Kibana in parallel to Elasticsearch Service’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](kibana://docs/reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as Elasticsearch Service does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
 
 ## APM Agent central configuration with PrivateLink or traffic filters [ec-restrictions-apm-traffic-filters]
@@ -128,7 +128,7 @@ There are situations where you may need or want to move your installed {{agents}
 
 In {{ecloud}}, you can migrate your {{agents}} by taking a snapshot of your source deployment, and restoring it on a target deployment.
 
-To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/migrate-elastic-agent.md) for details.
+To make a seamless migration, after restoring from a snapshot there are some additional steps required, such as updating settings and resetting the agent policy. Check [Migrate Elastic Agents](docs-content://docs/reference/ingestion-tools/fleet/migrate-elastic-agent.md) for details.
 
 
 ## Regions and Availability Zones [ec-regions-and-availability-zone]

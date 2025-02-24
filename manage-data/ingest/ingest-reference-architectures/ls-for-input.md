@@ -23,14 +23,14 @@ Examples
 
 Before you implement this approach, check to see if an {{agent}} integration exists and, if so, use it instead:
 
-* [{{agent}} integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md)
+* [{{agent}} integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md)
 
 Info on {{ls}} and {{ls}} input and output plugins:
 
 * [{{ls}} plugin support matrix](https://www.elastic.co/support/matrix#logstash_plugins)
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{ls}} input plugins](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/input-plugins.md)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
+* [{{ls}} input plugins](logstash://docs/reference/ingestion-tools/logstash/input-plugins.md)
+* [{{es}} output plugin](logstash://docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
 
 Info on {{es}} and ingest pipelines:
 

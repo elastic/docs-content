@@ -27,5 +27,5 @@ Examples
 * Enable the integration and set up {{agent}}.
 * Launch discover/dashboard to explore.
 
-For details and next steps, check out the [{{agent}} integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md) docs for your data source.
+For details and next steps, check out the [{{agent}} integrations](integration-docs://docs/reference/ingestion-tools/integrations/index.md) docs for your data source.
 

@@ -24,12 +24,12 @@ Example
 Info on configuring {{agent}}:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
+* [Configuring outputs for {{agent}}](docs-content://docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
 
 Info on {{ls}} and {{ls}} plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
+* [{{es}} output plugin](logstash://docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 

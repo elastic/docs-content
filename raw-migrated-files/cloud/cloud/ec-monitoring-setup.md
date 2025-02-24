@@ -27,7 +27,7 @@ After you have created a new deployment, you should enable shipping logs and met
 
 5. Select **Save**.
 
-Optionally, turn on [audit logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md) to capture security-related events, such as authentication failures, refused connections, and data-access events through the proxy. To turn on audit logging, [edit your deployment’s elasticsearch.yml file](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to add these lines:
+Optionally, turn on [audit logging](elasticsearch://docs/reference/elasticsearch/configuration-reference/auding-settings.md) to capture security-related events, such as authentication failures, refused connections, and data-access events through the proxy. To turn on audit logging, [edit your deployment’s elasticsearch.yml file](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to add these lines:
 
 ```sh
 xpack.security.audit.enabled: true
@@ -89,7 +89,7 @@ Navigate to the **Discover** or **Stream** pages to check if you’ve misconfigu
 :alt: Log error in Stream page showing failed SAML authentication
 :::
 
-You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md):
+You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](cloud://docs/reference/cloud/cloud-hosted/ec-api-console.md):
 
 :::{image} ../../../images/cloud-ec-ce-monitoring-api-console.png
 :alt: Elasticsearch API console showing a spurious request that fails
@@ -106,12 +106,12 @@ You will get this request reported as a new log. Audit logs do not currently rep
 
 You should take advantage of the default [Elastic Stack monitoring alerts](/deploy-manage/monitor/monitoring-data/kibana-alerts.md) that are available out-of-the-box. You don’t have to do anything other than enable shipping logs and metrics to have them made available to you (which you did earlier on).
 
-On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](asciidocalypse://docs/kibana/docs/reference/connectors-kibana.md) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
+On top of these default alerts that write to indices you can investigate, you might want to add some custom actions, such as a [connector](kibana://docs/reference/connectors-kibana.md) for Slack notifications. To set up these notifications, you first configure a Slack connector and then append it to the default alerts and actions. From Kibana:
 
 1. Go to **Stack Management** > **Rules and Connectors** > **Connectors** and create your Slack connector:
 
     1. Select **Slack**.
-    2. [Create a Slack Webhook URL](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/slack-action-type.md#configuring-slack) and paste it into the **Webhook URL** field.
+    2. [Create a Slack Webhook URL](kibana://docs/reference/connectors-kibana/slack-action-type.md#configuring-slack) and paste it into the **Webhook URL** field.
     3. Select **Save**.
 
 2. Go to **Stack Monitoring** and select **Enter setup mode**.
@@ -146,7 +146,7 @@ When issues come up that you need to troubleshoot, you’ll frequently start wit
 You can run this query and many others from the API consoles available via:
 
 * **Kibana** > **Dev Tools**. Check [Run Elasticsearch API requests](/explore-analyze/query-filter/tools/console.md).
-* **Elastic Cloud** > **Deployment** > **Elasticsearch** > **API Console**. Check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md).
+* **Elastic Cloud** > **Deployment** > **Elasticsearch** > **API Console**. Check [Access the Elasticsearch API console](cloud://docs/reference/cloud/cloud-hosted/ec-api-console.md).
 
 You can also learn more about the queries you should run for your deployment by reading our blog [Managing and Troubleshooting Elasticsearch Memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 

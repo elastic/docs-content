@@ -26,7 +26,7 @@ If you manage your own Elasticsearch cluster, you can use the following built-in
 
 Other repository types are available through official plugins:
 
-* [Hadoop Distributed File System (HDFS)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/repository-hdfs.md)
+* [Hadoop Distributed File System (HDFS)](elasticsearch://docs/reference/elasticsearch-plugins/repository-hdfs.md)
 
 ### Elastic Cloud Hosted
 
