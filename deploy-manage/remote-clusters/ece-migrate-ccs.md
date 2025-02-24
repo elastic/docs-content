@@ -4,6 +4,7 @@ applies_to:
     ece: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-migrate-ccs.html
+navigation_title: "Migrate the CCS deployment template"
 ---
 
 # Migrate the cross-cluster search deployment template [ece-migrate-ccs]

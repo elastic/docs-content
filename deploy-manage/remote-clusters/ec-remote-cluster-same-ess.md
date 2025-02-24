@@ -33,20 +33,20 @@ On the local cluster side, not every local user needs to access every piece of d
 If you run into any issues, refer to [Troubleshooting](remote-clusters-troubleshooting.md).
 
 
-#### Prerequisites and limitations [ec_prerequisites_and_limitations]
+### Prerequisites and limitations [ec_prerequisites_and_limitations]
 
 * The local and remote deployments must be on {{stack}} 8.14 or later.
 * API key authentication can’t be used in combination with traffic filters.
 * Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
 
 
-#### Create a cross-cluster API key on the remote deployment [ec_create_a_cross_cluster_api_key_on_the_remote_deployment]
+### Create a cross-cluster API key on the remote deployment [ec_create_a_cross_cluster_api_key_on_the_remote_deployment]
 
 * On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [{{kib}}](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
 * Copy the encoded key (`encoded` in the response) to a safe location. You will need it in the next step.
 
 
-#### Add the cross-cluster API key to the keystore of the local deployment [ec_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment]
+### Add the cross-cluster API key to the keystore of the local deployment [ec_add_the_cross_cluster_api_key_to_the_keystore_of_the_local_deployment]
 
 The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
 
@@ -76,7 +76,7 @@ If you later need to update the remote connection with different permissions, yo
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
-#### Set the default trust with other clusters in the same {{ecloud}} organization [ec_set_the_default_trust_with_other_clusters_in_the_same_elasticsearch_service_organization]
+### Set the default trust with other clusters in the same {{ecloud}} organization [ec_set_the_default_trust_with_other_clusters_in_the_same_elasticsearch_service_organization]
 
 By default, any deployment that you create trusts all other deployments in the same organization. You can change this behavior in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) under **Features** > **Trust**, so that when a new deployment is created it does not automatically trust any other deployment. You can choose one of the following options:
 
@@ -96,7 +96,7 @@ By default, any deployment that you create trusts all other deployments in the s
 
 
 
-#### Specify the deployments trusted to be used as remote clusters [ec_specify_the_deployments_trusted_to_be_used_as_remote_clusters]
+### Specify the deployments trusted to be used as remote clusters [ec_specify_the_deployments_trusted_to_be_used_as_remote_clusters]
 
 If your organization’s deployments already trust each other by default, you can skip this section. If that’s not the case, follow these steps to configure which are the specific deployments that should be trusted.
 
