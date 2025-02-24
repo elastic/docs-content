@@ -22,7 +22,7 @@ To add a remote cluster using TLS certificate authentication:
 3. [Connect to a remote cluster](#remote-clusters-connect-cert)
 4. [Configure roles and users for remote clusters](#remote-clusters-privileges-cert)
 
-If you run into any issues, refer to [Troubleshooting](remote-clusters-troubleshooting.md).
+If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
 ## Prerequisites [remote-clusters-prerequisites-cert]
 

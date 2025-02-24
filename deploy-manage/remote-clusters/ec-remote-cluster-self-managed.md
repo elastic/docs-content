@@ -31,7 +31,7 @@ All cross-cluster requests from the local cluster are bound by the API key’s p
 
 On the local cluster side, not every local user needs to access every piece of data allowed by the API key. An administrator of the local cluster can further configure additional permission constraints on local users so each user only gets access to the necessary remote data. Note it is only possible to further reduce the permissions allowed by the API key for individual local users. It is impossible to increase the permissions to go beyond what is allowed by the API key.
 
-If you run into any issues, refer to [Troubleshooting](remote-clusters-troubleshooting.md).
+If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
 
 #### Prerequisites and limitations [ec_prerequisites_and_limitations_4]
@@ -239,7 +239,7 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       :::
 
       ::::{note}
-      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.m).
+      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
       ::::
 
 4. Click **Next**.

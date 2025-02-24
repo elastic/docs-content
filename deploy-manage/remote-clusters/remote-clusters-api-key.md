@@ -25,7 +25,7 @@ To add a remote cluster using API key authentication:
 3. [Connect to a remote cluster](#remote-clusters-connect-api-key)
 4. [Configure roles and users](#remote-clusters-privileges-api-key)
 
-If you run into any issues, refer to [Troubleshooting](remote-clusters-troubleshooting.md).
+If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
 ## Prerequisites [remote-clusters-prerequisites-api-key]
 

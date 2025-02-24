@@ -28,7 +28,7 @@ For these reasons, you may prefer to migrate a remote cluster in-place, by follo
 5. [Resume cross-cluster operations](#remote-clusters-migration-resume)
 6. [Disable certificate based authentication and authorization](#remote-clusters-migration-disable-cert)
 
-If you run into any issues, refer to [Troubleshooting](remote-clusters-troubleshooting.md).
+If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
 ## Prerequisites [remote-clusters-migration-prerequisites]
 
