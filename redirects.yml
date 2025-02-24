@@ -1,7 +1,2 @@
 redirects:
-  'get-started/installing-elastic-stack.md': 'deploy-manage/deploy/self-managed.md'
-  anchors:
-    'install-elastic-stack-for-elastic-cloud':
-    'install-order-elastic-stack':
-    'network-requirements':
-    'installing-elastic-stack':
+  'get-started/installing-elastic-stack.md': '!deploy-manage/deploy/self-managed.md'
