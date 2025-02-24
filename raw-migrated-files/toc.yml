@@ -320,7 +320,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/bootstrap-checks-xpack.md
       - file: elasticsearch/elasticsearch-reference/bootstrap-checks.md
       - file: elasticsearch/elasticsearch-reference/built-in-roles.md
-      - file: elasticsearch/elasticsearch-reference/built-in-users.md
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
