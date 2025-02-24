@@ -188,8 +188,6 @@ toc:
       - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
       - file: docs-content/serverless/observability-ai-assistant.md
-      - file: docs-content/serverless/observability-apm-act-on-data.md
-      - file: docs-content/serverless/observability-apm-agents-elastic-apm-agents.md
       - file: docs-content/serverless/observability-apm-get-started.md
       - file: docs-content/serverless/observability-ecs-application-logs.md
       - file: docs-content/serverless/observability-plaintext-application-logs.md
@@ -326,7 +324,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/defining-roles.md
       - file: elasticsearch/elasticsearch-reference/document-level-security.md
       - file: elasticsearch/elasticsearch-reference/documents-indices.md
-      - file: elasticsearch/elasticsearch-reference/elasticsearch-intro-deploy.md
       - file: elasticsearch/elasticsearch-reference/es-security-principles.md
       - file: elasticsearch/elasticsearch-reference/esql-using.md
       - file: elasticsearch/elasticsearch-reference/field-and-document-access-control.md
@@ -402,9 +399,6 @@ toc:
       - file: logstash/logstash/ts-logstash.md
   - file: observability-docs/observability/index.md
     children:
-      - file: observability-docs/observability/apm-act-on-data.md
-      - file: observability-docs/observability/apm-agents.md
-      - file: observability-docs/observability/apm-getting-started-apm-server.md
       - file: observability-docs/observability/index.md
       - file: observability-docs/observability/obs-ai-assistant.md
   - file: security-docs/security/index.md

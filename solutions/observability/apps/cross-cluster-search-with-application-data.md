@@ -16,7 +16,7 @@ Elastic APM utilizes {{es}}'s cross-cluster search functionality. Cross-cluster 
 
 **Step 1. Set up remote clusters.**
 
-If you’re using the Hosted {{ess}}, see [Enable cross-cluster search](../../../deploy-manage/remote-clusters/ec-enable-ccs.md).
+If you’re using the {{ech}}, see [Enable cross-cluster search](../../../deploy-manage/remote-clusters/ec-enable-ccs.md).
 
 To add remote clusters directly in {{kib}}, find `Remote Clusters` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). All you need is a name for the remote cluster and the seed node(s). Remember the names of your remote clusters, you’ll need them in step two. See [managing remote clusters](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md) for detailed information on the setup process.
 

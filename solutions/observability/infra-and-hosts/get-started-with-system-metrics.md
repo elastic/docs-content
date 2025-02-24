@@ -16,7 +16,7 @@ In this guide you’ll learn how to onboard system metrics data from a machine o
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 To follow the steps in this guide, you need an {{stack}} deployment that includes:
@@ -24,9 +24,9 @@ To follow the steps in this guide, you need an {{stack}} deployment that include
 * {{es}} for storing and searching data
 * {{kib}} for visualizing and managing data
 * Kibana user with `All` privileges on {{fleet}} and Integrations. Since many Integrations assets are shared across spaces, users need the Kibana privileges in all spaces.
-* Integrations Server (included by default in every {{ess}} deployment)
+* Integrations Server (included by default in every {{ech}} deployment)
 
-To get started quickly, spin up a deployment of our hosted {{ess}}. The {{ess}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 
 :::
 
@@ -47,7 +47,7 @@ The **Admin** role or higher is required to onboard system metrics data. To lear
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 {{agent}} is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, forward data from remote services or hardware, and more. A single agent makes it easier and faster to deploy monitoring across your infrastructure. Each agent has a single policy you can update to add integrations for new data sources, security protections, and more.

@@ -547,7 +547,7 @@ Think of a latency spike — APM can help you narrow the scope of your inves
 
 Application monitoring data is streamed from your applications running in Kubernetes to APM, where it is validated, processed, and transformed into {{es}} documents.
 
-There are many ways to deploy APM when working with Kubernetes, but this guide assumes that you’re using our hosted {{ess}} on {{ecloud}}. If you haven’t done so already, enable APM in the [{{ess}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
+There are many ways to deploy APM when working with Kubernetes, but this guide assumes that you’re using an {{ech}} deployment. If you haven’t done so already, enable APM in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 If you want to manage APM yourself, there are a few alternative options:
 
