@@ -8,7 +8,7 @@ navigation_title: Reset self-managed built-in users
 ---
 # Set passwords for native and built-in users in self-managed clusters[ change-passwords-native-users]
 
-After you implement security, you might need or want to change passwords for different users. If you want to reset a password for a [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-overview.md) such as the `elastic` or `kibana_system` users, or a user in the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md), you can use the following tools:
+After you implement security, you might need or want to change passwords for different users. If you want to reset a password for a [built-in user](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md) such as the `elastic` or `kibana_system` users, or a user in the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-users.md), you can use the following tools:
 
 * The **Manage users** UI in {{kib}}
 * The [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool
