@@ -24,6 +24,7 @@ toc:
       - file: distributed-architecture/kibana-tasks-management.md
   - file: deploy.md
     children:
+      - file: deploy/deployment-comparison.md
       - file: deploy/elastic-cloud.md
         children:
           - file: deploy/elastic-cloud/create-an-organization.md

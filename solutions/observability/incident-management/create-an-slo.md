@@ -28,7 +28,7 @@ From here, complete the following steps:
 3. [Describe your SLO](../../../solutions/observability/incident-management/create-an-slo.md#slo-describe).
 
 ::::{note}
-**For Elastic Stack**, the cluster must include one or more nodes with both `ingest` and `transform` [roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles). The roles can exist on the same node or be distributed across separate nodes. On ESS deployments (Elastic Cloud), this is handled by the hot nodes, which serve as both `ingest` and `transform` nodes.
+**For Elastic Stack**, the cluster must include one or more nodes with both `ingest` and `transform` [roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles). The roles can exist on the same node or be distributed across separate nodes. On {{ech}} deployments, this is handled by the hot nodes, which serve as both `ingest` and `transform` nodes.
 
 ::::
 

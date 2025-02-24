@@ -76,7 +76,7 @@ Open a new case to keep track of security issues and share their details with co
 
 You can configure email notifications that occur when users are assigned to cases.
 
-For hosted {{kib}} on {{ess}}:
+For {{kib}} on {{ecloud}}:
 
 1. Add the email domains to the [notifications domain allowlist](/explore-analyze/alerts-cases/alerts.md).
 
