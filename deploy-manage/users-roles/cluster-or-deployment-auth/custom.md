@@ -9,9 +9,9 @@ If you are using an authentication system that is not supported out-of-the-box b
 
 ## Implementing a custom realm [implementing-custom-realm]
 
-Sample code that illustrates the structure and implementation of a custom realm is provided in [https://github.com/elastic/elasticsearch/tree/master/x-pack/qa/security-example-spi-extension](https://github.com/elastic/elasticsearch/tree/master/x-pack/qa/security-example-spi-extension). You can use this code as a starting point for creating your own realm.
+Sample code that illustrates the structure and implementation of a custom realm is provided [in the `elasticsearch` repository](https://github.com/elastic/elasticsearch/tree/master/x-pack/qa/security-example-spi-extension) on GitHub. You can use this code as a starting point for creating your own realm.
 
-To create a custom realm, you need to:
+To create a custom realm, you need to do the following:
 
 1. Extend `org.elasticsearch.xpack.security.authc.Realm` to communicate with your authentication system to authenticate users.
 2. Implement the `org.elasticsearch.xpack.security.authc.Realm.Factory` interface in a class that will be used to create the custom realm.
@@ -59,14 +59,13 @@ To use a custom realm:
 
 1. Install the realm extension on each node in the cluster. 
    
-   * If you're usinga self-managed cluster, then run `bin/elasticsearch-plugin` with the `install` sub-command and specify the URL pointing to the zip file that contains the extension. For example:
+   * If you're using a self-managed cluster, then run `bin/elasticsearch-plugin` with the `install` sub-command and specify the URL pointing to the zip file that contains the extension. For example:
 
         ```shell
         bin/elasticsearch-plugin install file:///<path>/my-realm-1.0.zip
         ```
     * If you're using {{ech}}, then refer to [](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
-    % * If you're using {{ece}}, then refer to []().
-    % TODO: bad mapping in solutions/search/full-text/search-with-synonyms.md
+    * If you're using {{ece}}, then refer to [](/deploy-manage/deploy/cloud-enterprise/add-custom-bundles-plugins.md).
     * If you're using {{eck}}, then refer to [](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md).
 
 
@@ -76,6 +75,6 @@ To use a custom realm:
     When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.
     ::::
 
-3. Restart Elasticsearch.
+3. Restart {{es}}.
 
 

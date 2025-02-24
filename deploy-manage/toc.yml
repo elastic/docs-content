@@ -215,6 +215,8 @@ toc:
               - file: deploy/cloud-enterprise/resize-deployment.md
                 children:
                   - file: deploy/cloud-enterprise/resource-overrides.md
+              - file: deploy/cloud-enterprise/add-plugins.md
+              - file: deploy/cloud-enterprise/add-custom-bundles-plugins.md
               - file: deploy/cloud-enterprise/manage-integrations-server.md
                 children:
                   - file: deploy/cloud-enterprise/switch-from-apm-to-integrations-server-payload.md
