@@ -25,7 +25,7 @@ Connect your OpenTelemetry Collector instances to Elastic {{observability}} or {
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 
@@ -159,7 +159,7 @@ Define environment variables to configure the OpenTelemetry agent or SDK and ena
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 ```bash

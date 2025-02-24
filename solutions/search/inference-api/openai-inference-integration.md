@@ -2,7 +2,7 @@
 navigation_title: "OpenAI"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-openai.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

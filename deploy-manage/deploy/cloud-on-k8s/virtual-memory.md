@@ -13,7 +13,7 @@ The kernel setting `vm.max_map_count=262144` can be set on the host directly, by
 
 For more information, check the Elasticsearch documentation on [Virtual memory](/deploy-manage/deploy/self-managed/vm-max-map-count.md).
 
-Optionally, you can select a different type of file system implementation for the storage. For possible options, check the [store module documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-store-settings.md).
+Optionally, you can select a different type of file system implementation for the storage. For possible options, check the [store module documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/store.md).
 
 ```yaml
 spec:

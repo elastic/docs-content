@@ -11,7 +11,7 @@ You can use role-based access control to grant users access to secured resources
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 Typically you need the create the following separate roles:

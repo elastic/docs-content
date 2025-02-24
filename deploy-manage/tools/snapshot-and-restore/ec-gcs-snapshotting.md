@@ -1,6 +1,7 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-gcs-snapshotting.html
+applies_to:
+  deployment:
+    ess: 
 ---
 
 # Configure a snapshot repository using GCS [ec-gcs-snapshotting]

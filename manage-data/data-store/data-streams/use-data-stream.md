@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/use-a-data-stream.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Use a data stream [use-a-data-stream]
