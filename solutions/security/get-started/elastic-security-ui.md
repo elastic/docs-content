@@ -6,23 +6,13 @@ mapped_urls:
 
 # Elastic Security UI
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/es-ui-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ui.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$inline-actions$$$
 
 The {{security-app}} is a highly interactive workspace designed for security analysts that provides a clear overview of events and alerts from your environment. You can use the interactive UI to drill down into areas of interest.
 
 
 ## Search [search-overview]
 
-Filter for alerts, events, processes, and other important security data by entering **https://www.elastic.co/guide/en/kibana/current/kuery-query.html[{{kib}} Query Language (KQL)]** queries in the search bar, which appears at the top of each page throughout the app. A date/time filter set to `Today` is enabled by default, but can be changed to any time range.
+Filter for alerts, events, processes, and other important security data by entering [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) queries in the search bar, which appears at the top of each page throughout the app. A date/time filter set to `Today` is enabled by default, but can be changed to any time range.
 
 :::{image} ../../../images/security-search-bar.png
 :alt: search bar
@@ -94,10 +84,24 @@ Inline actions include the following (some actions are unavailable in some conte
 
 The {{security-app}} contains the following pages that enable analysts to view, analyze, and manage security data.
 
+### Discover [security-ui-discover]
+
+Use the [Discover](/explore-analyze/discover.md) UI to filter your data or learn about its structure.
+
 
 ### Dashboards [_dashboards]
 
-Expand this section to access the Overview, Detection & Response, Kubernetes, Cloud Security Posture, Cloud Native Vulnerability Management, Entity Analytics, and Data Quality dashboards, which provide interactive visualizations that summarize your data. You can also create and view custom dashboards. Refer to [Dashboards](/solutions/security/dashboards.md) for more information.
+Expand this section to access the following dashboards, which provide interactive visualizations that summarize your data:
+
+- Overview
+- Detection & Response
+- Kubernetes (in {{stack}})
+- Cloud Security Posture
+- Cloud Native Vulnerability Management
+- Entity Analytics
+- Data Quality.
+
+You can also create and view custom dashboards. Refer to [Dashboards](/solutions/security/dashboards.md) for more information.
 
 :::{image} ../../../images/security-dashboards-landing-page.png
 :alt: The dashboards landing page
@@ -168,20 +172,23 @@ Open and track security issues. Refer to [*Cases*](/solutions/security/investiga
 :class: screenshot
 :::
 
+### Investigations [security-ui-investigations]
 
-### Timelines [_timelines]
+Expand this section to access the following pages:
 
-Investigate alerts and complex threats — such as lateral movement — in your network. Timelines are interactive and allow you to share your findings with other team members. Refer to [*Timeline*](/solutions/security/investigate/timeline.md) to learn more.
+* [Timelines](../investigate/timeline.md): Investigate alerts and complex threats — such as lateral movement — in your network. Timelines are interactive and allow you to share your findings with other team members.
 
-:::{image} ../../../images/security-timeline-ui.png
-:alt: Timeline page
-:class: screenshot
-:::
+    :::{image} ../../../images/serverless--events-timeline-ui.png
+    :alt: Timeline page
+    :class: screenshot
+    :::
 
-::::{tip}
-Click the **Timeline** button at the bottom of the {{security-app}} to start an investigation.
-::::
+    ::::{tip}
+    Click the **Timeline** button at the bottom of the {{security-app}} to start an investigation.
 
+    ::::
+
+* [Osquery](../investigate/osquery.md): Deploy Osquery with {{agent}}, then run and schedule queries.
 
 
 ### Intelligence [_intelligence]
@@ -219,31 +226,55 @@ Expand this section to access the following pages:
     :class: screenshot
     :::
 
+### Assets [security-ui-assets]
 
+The Assets section allows you to manage the following features:
+
+* [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-elastic-agents-in-fleet.md)
+* [Endpoint protection](/solutions/security/manage-elastic-defend.md)
+
+    * [Endpoints](/solutions/security/manage-elastic-defend/endpoints.md): View and manage hosts running {{elastic-defend}}.
+    * [Policies](/solutions/security/manage-elastic-defend/policies.md): View and manage {{elastic-defend}} integration policies.
+    * [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md): View and manage trusted Windows, macOS, and Linux applications.
+    * [Event filters](/solutions/security/manage-elastic-defend/event-filters.md): View and manage event filters, which allow you to filter endpoint events you don’t need to want stored in {{es}}.
+    * [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): View and manage host isolation exceptions, which specify IP addresses that can communicate with your hosts even when those hosts are blocked from your network.
+    * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): View and manage the blocklist, which allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
+    * [Response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
+
+* [Cloud security](/solutions/security/cloud.md)
+
+### {{ml-cap}} [security-ui-ml-cap]
+
+Manage {{ml}} jobs and settings. Refer to [{{ml-cap}} docs](/explore-analyze/machine-learning/anomaly-detection.md) for more information.
 
 ### Get started [_get_started]
 
 Quickly add security integrations that can ingest data and monitor your hosts.
 
+### Developer tools [security-ui-dev-tools]
 
-### Manage [_manage]
+Use additional API and analysis tools to interact with your data.
 
-Expand this section to access and manage additional security features:
 
-* [**Entity risk score**](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md): Manage entity risk scoring, and preview risky entities.
-* [**Endpoints**](/solutions/security/manage-elastic-defend/endpoints.md): View and manage hosts running {{elastic-defend}}.
-* [**Policies**](/solutions/security/manage-elastic-defend/policies.md): View and manage {{elastic-defend}} integration policies.
-* [**Trusted applications**](/solutions/security/manage-elastic-defend/trusted-applications.md): View and manage trusted Windows, macOS, and Linux applications.
-* [**Event filters**](/solutions/security/manage-elastic-defend/event-filters.md): View and manage event filters, which allow you to filter endpoint events you don’t need to want stored in {{es}}.
-* [**Host isolation exceptions**](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): View and manage host isolation exceptions, which specify IP addresses that can communicate with your hosts even when those hosts are blocked from your network.
-* [**Blocklist**](/solutions/security/manage-elastic-defend/blocklist.md): View and manage the blocklist, which allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
-* [**Response actions history**](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
-* [**Container Workload Protection**](/solutions/security/cloud/cloud-workload-protection-for-kubernetes.md): Identify and block unexpected system behavior in Kubernetes containers.
+### Management [_manage]
+```yaml {applies_to}
+stack: all
+```
 
-:::{image} ../../../images/security-manage-pg.png
-:alt: Manage page
-:class: screenshot
-:::
+Expand this section to access and manage:
+- Additional security features
+- [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
+- [{{integrations}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-integrations.md)
+
+### Project Settings
+```yaml {applies_to}
+serverless: all
+```
+
+Expand this section to access and manage:
+- Additional security features
+- [{{integrations}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-integrations.md)
+- [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project
 
 
 ## Accessibility features [timeline-accessibility-features]
