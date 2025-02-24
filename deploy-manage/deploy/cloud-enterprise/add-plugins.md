@@ -16,11 +16,11 @@ Adding plugins to a deployment is as simple as selecting it from the list of ava
 
 Additional plugins might be available. If a plugin is listed for your version of {{es}}, it can be used.
 
-You can also [create](asciidocalypse://{{es}}/docs/extend/create-{{es}}-plugins.md) and add custom plugins.
+You can also [create](asciidocalypse://elasticsearch/docs/extend/create-elasticsearch-plugins.md) and add custom plugins.
 
 To add plugins when creating a new deployment:
 
-1. [Log into the Cloud UI](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-login.html) and select **Create deployment**.
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) and select **Create deployment**.
 2. Make your initial deployment selections, then select **Customize Deployment**.
 3. Beneath the {{es}} master node, expand the **Manage plugins and settings** caret.
 4. Select the plugins you want.
@@ -30,7 +30,7 @@ The deployment spins up with the plugins installed.
 
 To add plugins to an existing deployment:
 
-1. [Log into the Cloud UI](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-login.html).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
  
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
