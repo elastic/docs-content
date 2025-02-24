@@ -24,7 +24,7 @@ In this tutorial, you’ll learn how to:
 
 ## Before you begin [aws-elastic-firehose-before-you-begin]
 
-Create a deployment in AWS regions (including gov cloud) using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment in AWS regions (including gov cloud) using. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 
 
 ## Step 1: Install AWS integration in {{kib}} [firehose-step-one]

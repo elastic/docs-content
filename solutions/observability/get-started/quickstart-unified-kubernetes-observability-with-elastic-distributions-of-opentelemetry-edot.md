@@ -31,7 +31,7 @@ For a more detailed description of the components and advanced configuration, re
 :::{tab-item} Elastic Stack
 :sync: stack
 
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. To get started quickly, try out [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 * A running Kubernetes cluster (v1.23 or newer).
 * [Kubectl](https://kubernetes.io/docs/reference/kubectl/).
 * [Helm](https://helm.sh/docs/intro/install/).

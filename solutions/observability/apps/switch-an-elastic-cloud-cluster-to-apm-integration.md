@@ -17,7 +17,7 @@ mapped_pages:
 
 ## Upgrade the {{stack}} [apm-integration-upgrade-ess-1]
 
-Use the {{ecloud}} console to upgrade the {{stack}} to version 9.0.0-beta1. See the [{{ess}} upgrade guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for details.
+Use the {{ecloud}} console to upgrade the {{stack}} to version 9.0.0-beta1. See the [Upgrade guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for details.
 
 
 ## Switch to {{agent}} [apm-integration-upgrade-ess-2]

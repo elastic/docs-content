@@ -144,7 +144,7 @@ Looking for privileges and roles needed to use central configuration from the Ap
 ### Publish monitoring data [apm-privileges-to-publish-monitoring-write]
 
 ::::{important}
-**{{ecloud}} users:** This section does not apply to our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service). Monitoring on {{ecloud}} is enabled by clicking the **Enable** button in the **Monitoring** panel.
+**{{ecloud}} users:** This section does not apply to [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service). Monitoring on {{ecloud}} is enabled by clicking the **Enable** button in the **Monitoring** panel.
 
 ::::
 
