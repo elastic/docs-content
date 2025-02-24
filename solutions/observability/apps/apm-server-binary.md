@@ -36,7 +36,20 @@ To download and install APM Server, use the commands below that work with your s
 $$$apm-deb$$$
 **deb:**
 
-Version 9.0.0 of APM Server has not yet been released.
+ifeval::["{release-state}"=="unreleased"]
+
+Version {apm_server_version} of APM Server has not yet been released.
+
+endif::[]
+
+ifeval::["{release-state}"!="unreleased"]
+
+["source","sh",subs="attributes"]
+```shell
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{apm_server_version}-amd64.deb
+sudo dpkg -i apm-server-{apm_server_version}-amd64.deb
+```
+endif::[]
 
 $$$apm-rpm$$$
 **RPM:**
