@@ -168,6 +168,7 @@ The following features are not available in {es-serverless} and are not planned 
 * https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html[Custom plugins and bundles]
 * https://www.elastic.co/guide/en/elasticsearch/hadoop/current/reference.html[{es} for Apache Hadoop]
 * {ref}/search-aggregations-metrics-scripted-metric-aggregation.html[Scripted metric aggregations]
-* Managed web crawler: You can use the [self-managed web crawler](https://github.com/elastic/crawler) instead.
-* Managed Search connectors: You can use [self-managed Search connectors](/elasticsearch/docs/reference/ingestion-tools/search-connectors/self-managed-connectors.md) instead.
+* Managed web crawler: You can use the https://github.com/elastic/crawler[self-managed web crawler] instead.
+* Managed Search connectors: You can use {ref}/es-build-connector.html[self-managed Search connectors] instead.
+
 
