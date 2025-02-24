@@ -61,7 +61,7 @@ deployment:
 ```{{tip}}
 {{ech}}, {{ece}}, and {{eck}} manage the `elastic` user differently:
 
-* Manage the `elastic` user password in {{ech}} or {{ece}}
+* [Manage the `elastic` user password in {{ech}} or {{ece}}](/deploy-manage/users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md)
 * Manage the `elastic` user password in {{eck}}
 ```
 
