@@ -31,11 +31,6 @@ The navigation menu contains direct links and expandable groups, identified by t
 * Click a group’s icon (![Group icon](../../../images/security-group-icon.png "")) to open its flyout menu, which displays links to related pages within that group. Click a link in the flyout to navigate to its landing page.
 * Click the **Collapse side navigation** icon (![Side menu collapse icon](../../../images/security-side-button.png "")) to collapse and expand the main navigation menu.
 
-:::{image} ../../../images/security-nav-overview.gif
-:alt: Overview of the navigation menu
-:class: screenshot
-:::
-
 
 ## Visualization actions [visualization-actions]
 
@@ -43,6 +38,7 @@ Many {{elastic-sec}} histograms, graphs, and tables display an **Inspect** butto
 
 :::{image} ../../../images/security-inspect-icon-context.png
 :alt: Inspect icon
+:width: 400px
 :class: screenshot
 :::
 
@@ -50,6 +46,7 @@ Other visualizations display an options menu (![Three-dot menu icon](../../../im
 
 :::{image} ../../../images/security-viz-options-menu-open.png
 :alt: Options menu opened
+:width: 500px
 :class: screenshot
 :::
 
@@ -60,6 +57,7 @@ Throughout the {{security-app}}, you can hover over many data fields and values 
 
 :::{image} ../../../images/security-inline-actions-menu.png
 :alt: Inline additional actions menu
+:width: 500px
 :class: screenshot
 :::
 
@@ -67,6 +65,7 @@ In some visualizations, these actions are available in the legend by clicking a 
 
 :::{image} ../../../images/security-inline-actions-legend.png
 :alt: Actions in a visualization legend
+:width: 650px
 :class: screenshot
 :::
 
@@ -103,85 +102,40 @@ Expand this section to access the following dashboards, which provide interactiv
 
 You can also create and view custom dashboards. Refer to [Dashboards](/solutions/security/dashboards.md) for more information.
 
-:::{image} ../../../images/security-dashboards-landing-page.png
-:alt: The dashboards landing page
-:class: screenshot
-:::
-
 
 ### Rules [_rules]
 
 Expand this section to access the following pages:
 
-* [**Rules**](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
+* [Rules](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
 
-    :::{image} ../../../images/security-all-rules.png
-    :alt: Rules page
-    :class: screenshot
-    :::
+* [Benchmarks](/solutions/security/cloud/benchmarks-2.md): View, set up, or configure cloud security benchmarks.
 
-* [**Benchmarks**](/solutions/security/cloud/benchmarks-2.md): View, set up, or configure cloud security benchmarks.
+* [Shared Exception Lists](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
 
-    :::{image} ../../../images/security-benchmark-rules.png
-    :alt: Benchmark Integrations page
-    :class: screenshot
-    :::
-
-* [**Shared Exception Lists**](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
-
-    :::{image} ../../../images/security-rule-exceptions-page.png
-    :alt: Shared Exception Lists page
-    :class: screenshot
-    :::
-
-* [**MITRE ATT&CK® coverage**](/solutions/security/detect-and-alert/mitre-attandckr-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
-
-    :::{image} ../../../images/security-rules-coverage.png
-    :alt: MITRE ATT&CK® coverage page
-    :class: screenshot
-    :::
-
+* [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attandckr-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
 
 
 ### Alerts [_alerts]
 
 View and manage alerts to monitor activity within your network. Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
-:::{image} ../../../images/security-alert-page.png
-:alt: alert page
-:class: screenshot
-:::
-
 
 ### Findings [_findings]
 
 Identify misconfigurations and vulnerabilities in your cloud infrastructure. For setup instructions, refer to [Cloud Security Posture Management](/solutions/security/cloud/cloud-security-posture-management.md), [Kubernetes Security Posture Management](/solutions/security/cloud/kubernetes-security-posture-management.md), or [Cloud Native Vulnerability Management](/solutions/security/cloud/cloud-native-vulnerability-management.md).
 
-:::{image} ../../../images/security-findings-page.png
-:alt: Findings page
-:class: screenshot
-:::
-
 
 ### Cases [_cases]
 
-Open and track security issues. Refer to [*Cases*](/solutions/security/investigate/cases.md) to learn more.
+Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
 
-:::{image} ../../../images/security-cases-home-page.png
-:alt: Cases page
-:class: screenshot
-:::
 
 ### Investigations [security-ui-investigations]
 
 Expand this section to access the following pages:
 
 * [Timelines](../investigate/timeline.md): Investigate alerts and complex threats — such as lateral movement — in your network. Timelines are interactive and allow you to share your findings with other team members.
-
-    :::{image} ../../../images/serverless--events-timeline-ui.png
-    :alt: Timeline page
-    :class: screenshot
-    :::
 
     ::::{tip}
     Click the **Timeline** button at the bottom of the {{security-app}} to start an investigation.
@@ -193,38 +147,19 @@ Expand this section to access the following pages:
 
 ### Intelligence [_intelligence]
 
-The Intelligence section contains the Indicators page, which collects data from enabled threat intelligence feeds and provides a centralized view of indicators of compromise (IoCs). Refer to [*Indicators of compromise*](/troubleshoot/security/indicators-of-compromise.md) to learn more.
-
-:::{image} ../../../images/security-indicators-table.png
-:alt: Indicators page
-:class: screenshot
-:::
+The Intelligence section contains the Indicators page, which collects data from enabled threat intelligence feeds and provides a centralized view of indicators of compromise (IoCs). Refer to [Indicators of compromise](/troubleshoot/security/indicators-of-compromise.md) to learn more.
 
 
 ### Explore [_explore]
 
 Expand this section to access the following pages:
 
-* [**Hosts**](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
+* [Hosts](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
 
-    :::{image} ../../../images/security-hosts-ov-pg.png
-    :alt: Hosts page
-    :class: screenshot
-    :::
+* [Network](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
 
-* [**Network**](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
+* [Users](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
 
-    :::{image} ../../../images/security-network-ui.png
-    :alt: Network page
-    :class: screenshot
-    :::
-
-* [**Users**](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
-
-    :::{image} ../../../images/security-users-page.png
-    :alt: Users page
-    :class: screenshot
-    :::
 
 ### Assets [security-ui-assets]
 
@@ -290,6 +225,7 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 
 :::{image} ../../../images/security-timeline-accessiblity-keyboard-focus.gif
 :alt: timeline accessiblity keyboard focus
+:width: 650px
 :class: screenshot
 :::
 
@@ -297,6 +233,7 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 
 :::{image} ../../../images/security-timeline-accessiblity-keyboard-focus-hotkeys.gif
 :alt: timeline accessiblity keyboard focus hotkeys
+:width: 500px
 :class: screenshot
 :::
 
@@ -323,6 +260,7 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 
 :::{image} ../../../images/security-timeline-accessiblity-directional-arrows.gif
 :alt: timeline accessiblity directional arrows
+:width: 500px
 :class: screenshot
 :::
 
@@ -330,6 +268,7 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 
 :::{image} ../../../images/security-timeline-accessiblity-tab-keys.gif
 :alt: timeline accessiblity tab keys
+:width: 400px
 :class: screenshot
 :::
 
