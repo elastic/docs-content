@@ -6,13 +6,6 @@ mapped_urls:
 
 # Connect to Google Vertex
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/connect-to-vertex.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-connect-to-google-vertex.md
-
 This page provides step-by-step instructions for setting up a Google Vertex AI connector for the first time. This connector type enables you to leverage Vertex AI’s large language models (LLMs) within {{elastic-sec}}. You’ll first need to enable Vertex AI, then generate an API key, and finally configure the connector in your {{elastic-sec}} project.
 
 ::::{important}
@@ -26,20 +19,9 @@ Before continuing, you should have an active project in one of Google Vertex AI�
 1. Log in to the GCP console and navigate to **Vertex AI → Vertex AI Studio → Overview**.
 2. If you’re new to Vertex AI, the **Get started with Vertex AI Studio** popup appears. Click **Vertex AI API**, then click **ENABLE**.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/vFhtbiCZiKhvdZGy2FjyeT.jpg"
-  data-uuid="vFhtbiCZiKhvdZGy2FjyeT"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![vertex-configure-api-video](https://play.vidyard.com/vFhtbiCZiKhvdZGy2FjyeT.jpg)](https://videos.elastic.co/watch/vFhtbiCZiKhvdZGy2FjyeT?)
 
 
 ::::{note}
@@ -57,21 +39,9 @@ For more information about enabling the Vertex AI API, refer to [Google’s docu
 5. Under **Select a role**, select **Vertex AI User**, then click **CONTINUE**.
 6. Click **Done**.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/tmresYYiags2w2nTv3Gac8.jpg"
-  data-uuid="tmresYYiags2w2nTv3Gac8"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
-
+[![vertex-create-account-video](https://play.vidyard.com/tmresYYiags2w2nTv3Gac8.jpg)](https://videos.elastic.co/watch/tmresYYiags2w2nTv3Gac8?)
 
 
 ## Generate an API key [_generate_an_api_key]
@@ -81,21 +51,9 @@ The following video demonstrates these steps.
 3. Go to the **KEYS** tab, click **ADD KEY**, then select **Create new key**.
 4. Select **JSON**, then click **CREATE** to download the key. Keep it somewhere secure.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/hrcy3F9AodwhJcV1i2yqbG.jpg"
-  data-uuid="hrcy3F9AodwhJcV1i2yqbG"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
-
+[![vertex-create-apikey-video](https://play.vidyard.com/hrcy3F9AodwhJcV1i2yqbG.jpg)](https://videos.elastic.co/watch/hrcy3F9AodwhJcV1i2yqbG?)
 
 
 ## Configure the Google Gemini connector [_configure_the_google_gemini_connector]
@@ -111,17 +69,6 @@ Finally, configure the connector in your Elastic deployment:
 7. Under **Authentication**, enter your API key.
 8. Click **Save**.
 
-The following video demonstrates these steps.
+The following video demonstrates these steps (click to watch).
 
-::::{admonition}
-<script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-<img
-  style="width: 100%; margin: auto; display: block;"
-  class="vidyard-player-embed"
-  src="https://play.vidyard.com/8L2WPm2HKN1cH872Gs5uvL.jpg"
-  data-uuid="8L2WPm2HKN1cH872Gs5uvL"
-  data-v="4"
-  data-type="inline"
-/>
-</br>
-::::
+[![vertex-create-apikey-video](https://play.vidyard.com/8L2WPm2HKN1cH872Gs5uvL.jpg)](https://videos.elastic.co/watch/8L2WPm2HKN1cH872Gs5uvL?)
