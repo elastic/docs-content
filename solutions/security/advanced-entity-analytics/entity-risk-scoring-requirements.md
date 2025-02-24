@@ -23,9 +23,18 @@ To turn on the risk scoring engine, you need the following:
 
 ### Privileges [_privileges]
 
-| Cluster | Index | {{kib}} |
-| --- | --- | --- |
-| - `manage_index_templates`<br>- `manage_transform`<br> | `all` privilege for `risk-score.risk-score-*` | **Read** for the **Security** feature |
+#### Cluster
+
+- `manage_index_templates`
+- `manage_transform`
+
+#### Index
+
+`All` privilege for `risk-score.risk-score-*`
+
+#### {{kib}}
+
+**Read** for the **Security** feature
 
 ### Predefined roles [ers_roles]
 
@@ -82,8 +91,23 @@ To use asset criticality, you need the following:
 
 To enable the entity store, you need the following privileges:
 
-| Cluster | Index | {{kib}} |
-| --- | --- | --- |
-| - `manage_enrich`<br>- `manage_index_templates`<br>- `manage_ingest_pipelines`<br>- `manage_transform`<br> | - `read` and `view_index_metadata` for `.asset-criticality.asset-criticality-*`<br>- `read` and `manage` for `risk-score.risk-score-*`<br>- `read` and `manage` for `.entities.v1.latest.*`<br>- `read` and `view_index_metadata` for all {{elastic-sec}} indices<br> | **All** for the **Security** and **Saved Objects Management** features |
+#### Cluster
+
+- `manage_enrich`
+- `manage_index_templates`
+- `manage_ingest_pipelines`
+- `manage_transform`
+
+#### Index
+
+- `read` and `view_index_metadata` for `.asset-criticality.asset-criticality-*`
+- `read` and `manage` for `risk-score.risk-score-*`
+- `read` and `manage` for `.entities.v1.latest.*`
+- `read` and `view_index_metadata` for all {{elastic-sec}} indices
+
+#### {{kib}}
+
+**All** for the **Security** and **Saved Objects Management** features 
+
 
 % pending info about user roles / custom role privileges needed for entity store in serverless
