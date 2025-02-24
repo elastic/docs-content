@@ -3,55 +3,55 @@
 
 This reference provides detailed comparisons of features and capabilities across Elastic's deployment options: self-managed deployments, Elastic Cloud Hosted, and Serverless. For a high-level overview of deployment types and guidance on choosing between them, see the [overview](../deploy.md).
 
-## Security features
+## Security
 
 | Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
-| Custom security configurations | Yes | Limited | No |
-| Authentication realms and custom roles | Yes | Yes | No |
-| Audit logging | Yes | Yes | No |
+| [Security configurations](/deploy-manage/security.md) | Full control | Limited control | Limited control |
+| [Authentication realms](/deploy-manage/users-roles.md) | Available | Available | Available, through Elastic Cloud only |
+| [Custom roles](/deploy-manage/users-roles.md) | Available | Available | Available |
+| [Audit logging](/deploy-manage/monitor/logging-configuration/configuring-audit-logs.md) | Available | Available | No |
 
-## Management features
-
-| Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
-|-------------------|-------------|--------------------------------|-------------------------|
-| Full control over configuration | Yes | Limited | No |
-| Infrastructure flexibility | Yes | No | No |
-| Autoscaling | No | Yes | Yes |
-| Data tiers management | No | Yes | No |
-| Snapshot management | No | Yes | No |
-| High availability and disaster recovery | Yes | Yes | Yes |
-| Multi-cloud support | No | Yes | Yes |
-| Shard management and replicas | Yes | Yes | No |
-
-## Monitoring features
+## Infrastructure and cluster management
 
 | Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
-| Watcher | Yes | Yes | No |
+| Hosting | Any infrastructure | Elastic Cloud through AWS, Azure, or GCP | Elastic Cloud through AWS or Azure |
+| Hardware configuration | Full control | Limited control | Managed by Elastic |
+| Autoscaling | No | Available | Automatic |
+| Data tiers management | Through ILM policies | Available | No data tiers |
+| Snapshot management | Custom | Available | Managed by Elastic |
+| High availability and disaster recovery | Available | Available | Managed by Elastic |
+| Shard management and replicas | Available | Available | Managed by Elastic |
 
-## Data lifecycle features
-
-| Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
-|-------------------|-------------|--------------------------------|-------------------------|
-| Index lifecycle management (ILM) | Yes | Yes | No (uses data streams) |
-| Data tiers management | No | Yes | No |
-| Snapshot management | No | Yes | No |
-
-## Integration features
+## Monitoring
 
 | Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
-| Custom plugins | Yes | No | No |
-| Self-managed connectors | Yes | No | Limited |
-| Elasticsearch-Hadoop integration | Yes | Yes | No |
-| Cross cluster search (CCS) | Yes | Yes | No |
-| Cross cluster replication | Yes | Yes | Yes |
+| [Deployment health monitoring](/deploy-manage/monitor.md) | Monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
+| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or Kibana alerts | Watcher or Kibana alerts | Alerts |
+
+## Data lifecycle
+
+| Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
+|-------------------|-------------|--------------------------------|-------------------------|
+| [Data lifecycle management](/manage-data/lifecycle.md) | ILM | ILM and data tiers | Data stream lifecycle |
+| [Snapshot management](/deploy-manage/tools/snapshot-and-restore.md) | Custom | Available | Managed by Elastic |
+
+## Integrations and extensions
+
+| Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
+|-------------------|-------------|--------------------------------|-------------------------|
+| Custom plugins and bundles | Available | Available | No |
+| Self-managed connectors | Available | Limited | Limited |
+| Elasticsearch-Hadoop integration | Available | Available | No |
+| Cross cluster search (CCS) | Available | Available | No |
+| Cross cluster replication | Available | Available | No |
 
 ## Development and testing features
 
 | Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
-| Advanced testing and development | Yes | No | No |
-| Java (JVM) customization | Yes | No | No |
+| Advanced testing and development | Available | No | No |
+| Java (JVM) customization | Available | No | No |
 
