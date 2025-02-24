@@ -237,7 +237,7 @@ Setting up {{metricbeat}} is an admin-level task that requires extra privileges.
 
 ### Configure {{metricbeat}} output [_configure_metricbeat_output_2]
 
-Next, you are going to configure {{metricbeat}} output to {{ess}}.
+Next, you are going to configure {{metricbeat}} output to {{ecloud}}.
 
 1. Use the {{metricbeat}} keystore to store [secure settings](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/keystore.md). Store the Cloud ID in the keystore.
 
@@ -246,7 +246,7 @@ Next, you are going to configure {{metricbeat}} output to {{ess}}.
     echo -n "<Your Deployment Cloud ID>" | ./metricbeat keystore add CLOUD_ID --stdin
     ```
 
-2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
+2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ecloud}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
 
     ```console
     POST /_security/api_key
@@ -283,7 +283,7 @@ Next, you are going to configure {{metricbeat}} output to {{ess}}.
     ./metricbeat keystore list
     ```
 
-5. To configure {{metricbeat}} to output to {{ess}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
+5. To configure {{metricbeat}} to output to {{ecloud}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
 
     ```yaml
     cloud.id: ${CLOUD_ID}

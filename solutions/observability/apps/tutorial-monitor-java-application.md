@@ -21,7 +21,7 @@ You’ll learn how to:
 
 ## Before you begin [_before_you_begin]
 
-Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, {{kib}} for visualizing and managing your data, and an APM server. If you do not want to follow all those steps listed here and take a look at the final java code, check out the [observability-contrib GitHub repository](https://github.com/elastic/observability-contrib/tree/main/monitor-java-app) for the sample application.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, {{kib}} for visualizing and managing your data, and an APM server. If you do not want to follow all those steps listed here and take a look at the final java code, check out the [observability-contrib GitHub repository](https://github.com/elastic/observability-contrib/tree/main/monitor-java-app) for the sample application.
 
 
 ## Step 1: Create a Java application [_step_1_create_a_java_application]
@@ -323,7 +323,7 @@ Depending on the application traffic and whether it happens outside of the appli
 
 ### Create an ISO8601 timestamp [_create_an_iso8601_timestamp]
 
-Before ingesting logs into {{ess}}, create an ISO8601 timestamp by editing the `log4j2.xml` file.
+Before ingesting logs into {{ech}}, create an ISO8601 timestamp by editing the `log4j2.xml` file.
 
 ::::{note}
 Creating an ISO8601 timestamp removes the need to do any calculation for timestamps when ingesting logs, as this is a unique point in time, including the timezone. Having a timezone becomes more important once you are running across data centers while trying to follow data streams.
@@ -410,7 +410,7 @@ Version 9.0.0-beta1 of Filebeat has not yet been released.
     echo -n "<Your Cloud ID>" | ./filebeat keystore add CLOUD_ID --stdin
     ```
 
-    To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{ess}}.
+    To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{ecloud}}.
 
 2. Log into {{kib}} user (you can do so from the Cloud Console without typing in any permissions) and select **Management** → **{{dev-tools-app}}**. Send the following request:
 

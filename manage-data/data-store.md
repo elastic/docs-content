@@ -6,7 +6,7 @@ applies_to:
   serverless: ga
 ---
 
-# The Elasticsearch data store
+# The Elasticsearch data store [elasticsearch-intro-what-is-es]
 
 [{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene.
 

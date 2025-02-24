@@ -22,7 +22,7 @@ With {{esql}}, you can execute a single query across multiple clusters.
 
 ## Prerequisites [esql-ccs-prerequisites]
 
-* {{ccs-cap}} requires remote clusters. To set up remote clusters on {{ess}}, see [configure remote clusters on {{ess}}](/deploy-manage/remote-clusters/ec-enable-ccs.md). If you run {{es}} on your own hardware, see [*Remote clusters*](../../../deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [*Remote clusters*](../../../deploy-manage/remote-clusters.md).
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](../../../solutions/search/cross-cluster-search.md#ccs-supported-configurations).
 
