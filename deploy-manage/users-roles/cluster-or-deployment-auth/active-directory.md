@@ -16,7 +16,7 @@ navigation_title: "Active Directory"
 You can configure {{stack}} {{security-features}} to communicate with Active Directory to authenticate users.
 
 :::{{tip}}
-This topic describes implementing Active Directory at the cluster or deployment level, for the purposes of authenticating with {{es}}. 
+This topic describes implementing Active Directory at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}. 
 
 You can also configure an {{ece}} installation to use an Active Directory to authenticate users. [Learn more](/deploy-manage/users-roles/cloud-enterprise-orchestrator/active-directory.md).
 :::

@@ -22,7 +22,7 @@ For further detail about configuring OIDC, refer to [](/deploy-manage/users-role
 
 ## Setting up OpenID Connect with Azure [ec-securing-oidc-azure]
 
-Follow these steps to configure OpenID Connect single sign-on on Elasticsearch Service with an Azure OP.
+Follow these steps to configure OpenID Connect single sign-on on in {{es}} with an Azure OP.
 
 For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 and OpenID documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-protocols).
 
@@ -38,7 +38,11 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
         2. Enter a **Name** for your application, for example `ec-oauth2`.
         3. Select a **Supported Account Type** according to your preferences.
-        4. Set the **Redirect URI** as `KIBANA_ENDPOINT_URL/api/security/oidc/callback`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
+        4. Set the **Redirect URI**. 
+            
+            It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance. 
+
+            If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
         5. Select **Register**.
         6. Confirm that your new **Application (client) ID** appears in the app details.
 
@@ -95,7 +99,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
     * `<Application (client) ID>` is your Client ID, available in the application details on Azure.
     * `<Directory (tenant) ID>` is your Directory ID, available in the application details on Azure.
-    * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    * `KIBANA_ENDPOINT_URL` is your Kibana endpoint.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
 
@@ -148,7 +152,7 @@ For more information about OpenID connect in Azure, refer to [Azure OAuth 2.0 an
 
 ## Setting up OpenID Connect with Google [ec-securing-oidc-google]
 
-Follow these steps to configure OpenID Connect single sign-on on Elasticsearch Service with a Google OP.
+Follow these steps to configure OpenID Connect single sign-on on in {{ec}} with a Google OP.
 
 For more information about OpenID connect in Google, refer to [Google OpenID Connect documentation](https://developers.google.com/identity/protocols/oauth2/openid-connect).
 
@@ -168,7 +172,11 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
 
         2. For **Application Type** choose `Web application`.
         3. Choose a **Name** for your OAuth 2 client, for example `ec-oauth2`.
-        4. Add an **Authorized redirect URI**. The URI should be defined as `KIBANA_ENDPOINT_URL/api/security/oidc/callback`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
+        4. Add an **Authorized redirect URI**.
+    
+            It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance. 
+
+            If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
         5. Select **Create** and copy your client ID and your client secret for later use.
 
 2. Add your client secret [to the {{es}} keystore](/deploy-manage/security/secure-settings.md).
@@ -192,7 +200,7 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
                 rp.client_id: "YOUR_CLIENT_ID"
                 rp.response_type: "code"
                 rp.requested_scopes: ["openid", "email"]
-                rp.redirect_uri: "KIBANA_ENDPOINT_URL/api/security/oidc/callback"
+                rp.redirect_uri: "<KIBANA_ENDPOINT_URL>/api/security/oidc/callback"
                 op.issuer: "https://accounts.google.com"
                 op.authorization_endpoint: "https://accounts.google.com/o/oauth2/v2/auth"
                 op.token_endpoint: "https://oauth2.googleapis.com/token"
@@ -205,13 +213,17 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
     Where:
 
     * `YOUR_CLIENT_ID` is your Client ID.
-    * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    * `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback` is your Kibana endpoint. 
+  
+        It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`, where `<KIBANA_ENDPOINT_URL>` is the base URL for your {{kib}} instance. 
+
+        If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
 
     If you're using {{ece}} or {{ech}}, and you're using machine learning or a deployment with hot-warm architecture, you must include this configuration in the user settings section for each node type.
 
-4. Create a role mapping.
+1. Create a role mapping.
 
     The following role mapping for OIDC restricts access to a specific user `(firstname.lastname)` based on the `claim_patterns.principal` email address. This prevents other users on the same domain from having access to your deployment. You can remove the rule or adjust it at your convenience.
 
@@ -244,7 +256,7 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
 
     If you use an email in the `claim_patterns.principal`, you won’t need to add the domain in the role_mapping (for example, `firstname.lastname@your_domain.tld` should be `firstname.lastname`).
 
-5. Configure Kibana with the OIDC realm. [Update your Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
+2. Configure Kibana with the OIDC realm. [Update your Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
     ```sh
     xpack.security.authc.providers:
@@ -258,7 +270,7 @@ For more information about OpenID connect in Google, refer to [Google OpenID Con
 
 ## Setting up OpenID Connect with Okta [ec-securing-oidc-okta]
 
-Follow these steps to configure OpenID Connect single sign-on on Elasticsearch Service with an Okta OP.
+Follow these steps to configure OpenID Connect single sign-on on for {{es}} with an Okta OP.
 
 For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 documentation](https://developer.okta.com/docs/guides/implement-oauth-for-okta/create-oauth-app/).
 
@@ -274,8 +286,12 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
 
         2. For the **Platform** page settings, select **Web** then **Next**.
         3. In the **Application settings** choose a **Name** for your application, for example `Kibana OIDC`.
-        4. Set the **Base URI** to `KIBANA_ENDPOINT_URL`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
-        5. Set the **Login redirect URI** as `KIBANA_ENDPOINT_URL/api/security/oidc/callback`.
+        4. Set the **Base URI** to `KIBANA_ENDPOINT_URL`. 
+        5. Set the **Login redirect URI**.  
+            
+            It will typically be `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
+
+            If you're using {{ech}}, then set this value to `<KIBANA_ENDPOINT_URL>/api/security/oidc/callback`.
         6. Set the **Logout redirect URI** as `KIBANA_ENDPOINT_URL/logged_out`.
         7. Choose **Done** and copy your client ID and client secret values for later use.
 

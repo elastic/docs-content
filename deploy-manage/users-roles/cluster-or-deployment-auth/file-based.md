@@ -19,7 +19,7 @@ You can configure only one file realm on {{es}} nodes.
 
 ::::{important}
 * In self-managed deployments, as the administrator of the cluster, it is your responsibility to ensure the same users are defined on every node in the cluster. The {{stack}} {{security-features}} do not deliver any mechanism to guarantee this. 
-* You can't add or manage users in the `file` realm using the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security), orusing the {{kib}} **Management > Security > Users** page.
+* You can't add or manage users in the `file` realm using the [user APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security), or using the {{kib}} **Management > Security > Users** page.
 ::::
 
 ## Configure a file realm [file-realm-configuration]

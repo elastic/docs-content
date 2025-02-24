@@ -18,7 +18,7 @@ You can configure the {{stack}} {{security-features}} to communicate with a Ligh
 To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to user roles.
 
 :::{{tip}}
-This topic describes implementing LDAP at the cluster or deployment level, for the purposes of authenticating with {{es}}. 
+This topic describes implementing LDAP at the cluster or deployment level, for the purposes of authenticating with {{es}} and {{kib}}. 
 
 You can also configure an {{ece}} installation to use an LDAP server to authenticate users. [Learn more](/deploy-manage/users-roles/cloud-enterprise-orchestrator/ldap.md).
 :::

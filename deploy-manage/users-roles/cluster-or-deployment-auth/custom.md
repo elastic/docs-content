@@ -4,6 +4,9 @@ mapped_pages:
 applies_to:
   deployment:
     ece:
+    ess:
+    eck:
+    self:
 ---
 
 # Custom realms

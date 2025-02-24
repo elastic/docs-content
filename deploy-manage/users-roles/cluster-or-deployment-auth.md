@@ -17,7 +17,7 @@ To prevent unauthorized access to your Elastic resources, you need a way to iden
 
 In this section, you’ll learn how to set up authentication and authorization at the cluster or deployment level, and learn about the underlying security technologies that Elasticsearch uses to authenticate and authorize requests internally and across services.
 
-This section only covers direct access to and communications with an Elasticsearch cluster - sometimes known as a deployment. To learn about managing access to your {{ecloud}} organization or {{ece}} orchestrator, or to learn how to use single sign-on to access a cluster using your {{ecloud}} credentials, refer to [Manage users and roles](/deploy-manage/users-roles.md).
+This section only covers direct access to and communications with an {{es}} cluster - sometimes known as a deployment - as well as the related {{kib}} instance. To learn about managing access to your {{ecloud}} organization or {{ece}} orchestrator, or to learn how to use single sign-on to access a cluster using your {{ecloud}} credentials, refer to [Manage users and roles](/deploy-manage/users-roles.md).
 
 ## Quickstart
 

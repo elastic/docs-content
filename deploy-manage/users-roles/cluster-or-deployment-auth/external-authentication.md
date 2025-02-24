@@ -17,6 +17,10 @@ If the authentication provider that you want to use is not currently supported, 
 
 In this section, you'll learn how to configure different types of external realms, and use them to grant access to Elastic resources.
 
+:::{{tip}}
+For many external realms, you need to perform extra steps to use the realm to log in to {{kib}}. [Learn more](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md).
+:::
+
 ## Available external realms
 
 {{es}} provides the following built-in external realms:

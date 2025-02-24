@@ -55,7 +55,7 @@ You can also manage members of your organization using the [{{ecloud}} API](http
 
 :::{dropdown} Get information about your organization
 
-Get information about your Elasticsearch Service organization.
+Get information about your {{ecloud}} organization.
 
 ```sh
 curl -XGET \
@@ -66,7 +66,7 @@ curl -XGET \
 
 :::{dropdown} Invite members to your organization
 
-Invite members to your Elasticsearch Service organization.
+Invite members to your {{ecloud}} organization.
 
 ```sh
 curl -XPOST \
@@ -86,7 +86,7 @@ curl -XPOST \
 
 :::{dropdown} View pending invitations to your organization
 
-View pending invitations to your Elasticsearch Service organization.
+View pending invitations to your {{ecloud}} organization.
 
 ```sh
 curl -XGET \
@@ -97,7 +97,7 @@ curl -XGET \
 
 :::{dropdown} View members in your organization
 
-View members in your Elasticsearch Service organization.
+View members in your {{ecloud}} organization.
 
 ```sh
 curl -XGET \
@@ -108,7 +108,7 @@ curl -XGET \
 
 :::{dropdown} Remove members from your organization
 
-Remove members from your Elasticsearch Service organization.
+Remove members from your {{ecloud}} organization.
 
 ```sh
 curl -XDELETE \
