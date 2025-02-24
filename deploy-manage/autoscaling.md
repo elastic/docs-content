@@ -52,12 +52,12 @@ Autoscaling is not supported on Debian 8.
 
 Autoscaling helps you to more easily manage your deployments by adjusting their available resources automatically, and currently supports scaling for both data and machine learning nodes, or machine learning nodes only. Check the following sections to learn more:
 
-* [Overview](ec-autoscaling-intro)
-* [When does autoscaling occur?](ec-autoscaling-factors)
-* [Notifications](ec-autoscaling-notifications)
-* [Restrictions and limitations](ec-autoscaling-restrictions)
-* [Enable or disable autoscaling](ec-autoscaling-enable)
-* [Update your autoscaling settings](ec-autoscaling-update)
+* [Overview](#ec-autoscaling-intro)
+* [When does autoscaling occur?](#ec-autoscaling-factors)
+* [Notifications](#ec-autoscaling-notifications)
+* [Restrictions and limitations](#ec-autoscaling-restrictions)
+* [Enable or disable autoscaling](#ec-autoscaling-enable)
+* [Update your autoscaling settings](#ec-autoscaling-update)
 
 ::::{tab-set}
 
@@ -145,7 +145,7 @@ $$$ece-autoscaling-restrictions$$$$$$ech-autoscaling-restrictions$$$The followin
 
 :::{tab-item} {{ecloud}}
 * Trial deployments cannot be configured to autoscale beyond the normal Trial deployment size limits. The maximum size per zone is increased automatically from the Trial limit when you convert to a paid subscription.
-* ELSER deployments do not scale automatically. For more information, refer to [ELSER](../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md).
+* ELSER deployments do not scale automatically. For more information, refer to [ELSER](../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md).
 :::
 
 :::{tab-item} {{ece}}
@@ -167,7 +167,7 @@ $$$ece-autoscaling-enable$$$$$$ech-autoscaling-enable$$$To enable or disable aut
 :::
 
 :::{tab-item} {{ece}}
-[Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md)
+[Cloud UI](../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md)
 :::
 
 :::{tab-item} {{ech}}
@@ -201,7 +201,7 @@ $$$ece-autoscaling-update$$$$$$ech-autoscaling-update$$$Each autoscaling setting
 :::
 
 :::{tab-item} {{ece}}
-[Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md)
+[Cloud UI](../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md)
 :::
 
 :::{tab-item} {{ech}}
