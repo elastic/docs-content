@@ -225,7 +225,7 @@ Resume any persistent tasks that you stopped earlier. Tasks should be restarted 
 ## Disable certificate based authentication and authorization [remote-clusters-migration-disable-cert]
 
 ::::{note} 
-Only proceed with this step if the migration has been proved successful on the local cluster. If the migration is unsuccessful, either [find out what the problem is and attempt to fix it](remote-clusters-troubleshooting.md) or [roll back](#remote-clusters-migration-rollback).
+Only proceed with this step if the migration has been proved successful on the local cluster. If the migration is unsuccessful, either [find out what the problem is and attempt to fix it](/troubleshoot/elasticsearch/remote-clusters.md) or [roll back](#remote-clusters-migration-rollback).
 ::::
 
 
