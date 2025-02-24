@@ -6,16 +6,12 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-autoscaling.html
 ---
 
-% !!!!!!ECH, EC, ECE
-% TODO:
-% - fix {cloud-only} note at the top
-
 # Autoscaling
 
 % NOTE Whole section is only XPACK autoscaling
 
 ::::{note} 
-{cloud-only}
+{{cloud-only}}
 ::::
 
 The autoscaling feature enables an operator to configure tiers of nodes that self-monitor whether or not they need to scale based on an operator-defined policy. Then, via the autoscaling API, an Elasticsearch cluster can report whether or not it needs additional resources to meet the policy. For example, an operator could define a policy that a warm tier should scale on available disk space. Elasticsearch would monitor and forecast the available disk space in the warm tier, and if the forecast is such that the cluster will soon not be able to allocate existing and future shard copies due to disk space, then the autoscaling API would report that the cluster needs to scale due to disk space. It remains the responsibility of the operator to add the additional resources that the cluster signals it requires.
@@ -44,49 +40,6 @@ Autoscaling is not supported on Debian 8.
 %      Notes: 2 children
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-
-
-$$$ec-autoscaling-factors$$$
-
-$$$ec-autoscaling-notifications$$$
-
-$$$ec-autoscaling-restrictions$$$
-
-$$$ec-autoscaling-enable$$$
-
-$$$ec-autoscaling-update$$$
-
-
-
-
-
-
-$$$ece-autoscaling-factors$$$
-
-$$$ece-autoscaling-notifications$$$
-
-$$$ece-autoscaling-restrictions$$$
-
-$$$ece-autoscaling-enable$$$
-
-$$$ece-autoscaling-update$$$
-
-
-
-
-
-
-$$$ech-autoscaling-factors$$$
-
-$$$ech-autoscaling-notifications$$$
-
-$$$ech-autoscaling-restrictions$$$
-
-$$$ech-autoscaling-enable$$$
-
-$$$ech-autoscaling-update$$$
 
 % **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 
@@ -99,34 +52,31 @@ $$$ech-autoscaling-update$$$
 
 Autoscaling helps you to more easily manage your deployments by adjusting their available resources automatically, and currently supports scaling for both data and machine learning nodes, or machine learning nodes only. Check the following sections to learn more:
 
-* [Overview](TODO)
-* [When does autoscaling occur?](TODO)
-* [Notifications](TODO)
-* [Restrictions and limitations](TODO)
-* [Enable or disable autoscaling](TODO)
-* [Update your autoscaling settings](TODO)
+* [Overview](ec-autoscaling-intro)
+* [When does autoscaling occur?](ec-autoscaling-factors)
+* [Notifications](ec-autoscaling-notifications)
+* [Restrictions and limitations](ec-autoscaling-restrictions)
+* [Enable or disable autoscaling](ec-autoscaling-enable)
+* [Update your autoscaling settings](ec-autoscaling-update)
 
 ::::{tab-set}
 
 :::{tab-item} {{ecloud}}
-You can also have a look at our [autoscaling example](TODO), as well as a sample request to [create an autoscaled deployment through the API](ece-autoscaling-api-example.md).
+You can also have a look at our [autoscaling example](./autoscaling/ec-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/ec-autoscaling-api-example.md).
 :::
 
 :::{tab-item} {{ece}}
-You can also have a look at our [autoscaling example](TODO), as well as a sample request to [create an autoscaled deployment through the API](ece-autoscaling-api-example.md).
+You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/ece-autoscaling-api-example.md).
 :::
 
 :::{tab-item} {{ech}}
-You can also have a look at our [autoscaling example](TODO).
+You can also have a look at our [autoscaling example](./autoscaling/ech-autoscaling-example.md).
 :::
 
 ::::
 
-## Overview [autoscaling-int]
-$$$ec-autoscaling-intro$$$
-$$$ece-autoscaling-intro$$$
-$$$ech-autoscaling-intro$$$
-When you first create a deployment it can be challenging to determine the amount of storage your data nodes will require. The same is relevant for the amount of memory and CPU that you want to allocate to your machine learning nodes. It can become even more challenging to predict these requirements for weeks or months into the future. In an ideal scenario, these resources should be sized to both ensure efficient performance and resiliency, and to avoid excess costs. Autoscaling can help with this balance by adjusting the resources available to a deployment automatically as loads change over time, reducing the need for monitoring and manual intervention.
+## Overview [ec-autoscaling-intro]
+$$$ece-autoscaling-intro$$$$$$ech-autoscaling-intro$$$When you first create a deployment it can be challenging to determine the amount of storage your data nodes will require. The same is relevant for the amount of memory and CPU that you want to allocate to your machine learning nodes. It can become even more challenging to predict these requirements for weeks or months into the future. In an ideal scenario, these resources should be sized to both ensure efficient performance and resiliency, and to avoid excess costs. Autoscaling can help with this balance by adjusting the resources available to a deployment automatically as loads change over time, reducing the need for monitoring and manual intervention.
 
 ::::{note}
 Autoscaling is enabled for the Machine Learning tier by default for new deployments.
@@ -136,8 +86,8 @@ Currently, autoscaling behavior is as follows:
 
 * **Data tiers**
 
-    * Each Elasticsearch [data tier](TODO) scales upward based on the amount of available storage. When we detect more storage is needed, autoscaling will scale up each data tier independently to ensure you can continue and ingest more data to your hot and content tier, or move data to the warm, cold, or frozen data tiers.
-    * In addition to scaling up existing data tiers, a new data tier will be automatically added when necessary, based on your [index lifecycle management policies](TODO).
+    * Each Elasticsearch [data tier](../manage-data/lifecycle/data-tiers.md) scales upward based on the amount of available storage. When we detect more storage is needed, autoscaling will scale up each data tier independently to ensure you can continue and ingest more data to your hot and content tier, or move data to the warm, cold, or frozen data tiers.
+    * In addition to scaling up existing data tiers, a new data tier will be automatically added when necessary, based on your [index lifecycle management policies](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-index-management.html).
     * To control the maximum size of each data tier and ensure it will not scale above a certain size, you can use the maximum size per zone field.
     * Autoscaling based on memory or CPU, as well as autoscaling downward, is not currently supported. In case you want to adjust the size of your data tier to add more memory or CPU, or in case you deleted data and want to scale it down, you can set the current size per zone of each data tier manually.
 
@@ -153,9 +103,9 @@ Currently, autoscaling behavior is as follows:
 For any Elasticsearch component the number of availability zones is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
 ::::
 
-## When does autoscaling occur?
+## When does autoscaling occur?[ec-autoscaling-factors]
 
-Several factors determine when data tiers or machine learning nodes are scaled.
+$$$ece-autoscaling-factors$$$$$$ech-autoscaling-factors$$$Several factors determine when data tiers or machine learning nodes are scaled.
 
 For a data tier, an autoscaling event can be triggered in the following cases:
 
@@ -165,12 +115,12 @@ When past behavior on a hot tier indicates that the influx of data can increase 
 
 * Through ILM  policies. For example, if a deployment has only hot nodes and autoscaling is enabled, it automatically creates warm or cold nodes, if an ILM policy is trying to move data from hot to warm or cold nodes.
 
-On machine learning nodes, scaling is determined by an estimate of the memory and CPU requirements for the currently configured jobs and trained models. When a new machine learning job tries to start, it looks for a node with adequate native memory and CPU capacity. If one cannot be found, it stays in an `opening` state. If this waiting job exceeds the queueing limit set in the machine learning decider, a scale up is requested. Conversely, as machine learning jobs run, their memory and CPU usage might decrease or other running jobs might finish or close. In this case, if the duration of decreased resource usage exceeds the set value for `down_scale_delay`, a scale down is requested. Check [Machine learning decider](../deploy-manage/autoscaling/autoscaling-deciders.md) for more detail. To learn more about machine learning jobs in general, check [Create anomaly detection jobs](TODO).
+On machine learning nodes, scaling is determined by an estimate of the memory and CPU requirements for the currently configured jobs and trained models. When a new machine learning job tries to start, it looks for a node with adequate native memory and CPU capacity. If one cannot be found, it stays in an `opening` state. If this waiting job exceeds the queueing limit set in the machine learning decider, a scale up is requested. Conversely, as machine learning jobs run, their memory and CPU usage might decrease or other running jobs might finish or close. In this case, if the duration of decreased resource usage exceeds the set value for `down_scale_delay`, a scale down is requested. Check [Machine learning decider](../deploy-manage/autoscaling/autoscaling-deciders.md) for more detail. To learn more about machine learning jobs in general, check [Create anomaly detection jobs](../explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-create-job)
 
 On a highly available deployment, autoscaling events are always applied to instances in each availability zone simultaneously, to ensure consistency.
 
-## Notifications
-
+## Notifications[ec-autoscaling-notifications]
+$$$ece-autoscaling-notifications$$$$$$ech-autoscaling-notifications$$$
 ::::{tab-set}
 
 :::{tab-item} {{ecloud}} and {{ech}}
@@ -180,14 +130,14 @@ In the event that a data tier or machine learning node scales up to its maximum 
 :::{tab-item} {{ece}}
 In the event that a data tier or machine learning node scales up to its maximum possible size, a notice appears on the deployment overview page prompting you to adjust your autoscaling settings in order to ensure optimal performance.
 
-A warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](TODO).
+A warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../explore-analyze/alerts-cases/watcher.md)
 :::
 
 ::::
 
-## Restrictions and limitations
+## Restrictions and limitations[ec-autoscaling-restrictions]
 
-The following are known limitations and restrictions with autoscaling:
+$$$ece-autoscaling-restrictions$$$$$$ech-autoscaling-restrictions$$$The following are known limitations and restrictions with autoscaling:
 
 * Autoscaling will not run if the cluster is unhealthy or if the last Elasticsearch plan failed.
 
@@ -204,9 +154,9 @@ The following are known limitations and restrictions with autoscaling:
 
 ::::
 
-## Enable or disable autoscaling
+## Enable or disable autoscaling[ec-autoscaling-enable]
 
-To enable or disable autoscaling on a deployment:
+$$$ece-autoscaling-enable$$$$$$ech-autoscaling-enable$$$To enable or disable autoscaling on a deployment:
 
 1. **Log in** to the console.
 
@@ -234,13 +184,13 @@ To enable or disable autoscaling on a deployment:
 4. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
 5. Select **Confirm** to have the autoscaling change and any other settings take effect. All plan changes are shown on the Deployment **Activity** page.
 
-When autoscaling has been enabled, the autoscaled nodes resize according to the [autoscaling settings](TODO). Current sizes are shown on the deployment overview page.
+When autoscaling has been enabled, the autoscaled nodes resize according to the [autoscaling settings](../deploy-manage/autoscaling.md#ec-autoscaling-update). Current sizes are shown on the deployment overview page.
 
 When autoscaling has been disabled, you need to adjust the size of data tiers and machine learning nodes manually.
 
-## Update your autoscaling settings
+## Update your autoscaling settings[ec-autoscaling-update]
 
-Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
+$$$ece-autoscaling-update$$$$$$ech-autoscaling-update$$$Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
 
 1. **Log in** to the console.
 
@@ -275,8 +225,6 @@ Each autoscaling setting is configured with a default value. You can adjust thes
 
     1. Use the dropdown box to set the **Minimum size per zone** and **Maximum size per zone** to the smallest and largest amount of resources, respectively, that should be allocated to the nodes automatically. The resources allocated to machine learning will not exceed these values. If you set these two settings to the same value, the machine learning node will remain fixed at that size.
     2. Select **Save** to apply the changes to your deployment.
-
-You can also view our [example](TODO) of how the autoscaling settings work.
 
 % ECE NOTE
 ::::{note} - {{ece}}
