@@ -23,7 +23,7 @@ The steps for setting up data tiers vary based on your deployment type:
 :::::::{tab-set}
 
 ::::::{tab-item} Elasticsearch Service
-1. Log in to the [{{ess}} Console](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Add or select your deployment from the {{ess}} home page or the deployments page.
 3. From your deployment menu, select **Edit deployment**.
 4. To enable a data tier, click **Add capacity**.
