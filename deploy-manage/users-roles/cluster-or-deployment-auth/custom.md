@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/custom-realms.html
+applies_to:
+  deployment:
+    ece:
 ---
 
 # Custom realms
