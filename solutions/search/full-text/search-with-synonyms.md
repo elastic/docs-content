@@ -11,7 +11,7 @@ applies_to:
 
 $$$ece-add-custom-bundle-example-synonyms$$$
 ::::{note}
-Learn about [adding custom synonym bundles](/solutions/search/full-text/search-with-synonyms.md#ece-add-custom-bundle-example-synonyms) to your Elastic Cloud Enterprise deployment.
+Learn about [adding custom synonym bundles](/solutions/search/full-text/search-with-synonyms.md#ece-add-custom-bundle-example-synonyms) to your {{ece}} deployment.
 ::::
 
 
