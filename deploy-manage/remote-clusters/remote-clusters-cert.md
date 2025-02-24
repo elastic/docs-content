@@ -253,7 +253,7 @@ The following requests use the [create or update roles API](https://www.elastic.
 The {{ccr}} user requires different cluster and index privileges on the remote cluster and local cluster. Use the following requests to create separate roles on the local and remote clusters, and then create a user with the required roles.
 
 
-##### Remote cluster [_remote_cluster]
+#### Remote cluster [_remote_cluster]
 
 On the remote cluster that contains the leader index, the {{ccr}} role requires the `read_ccr` cluster privilege, and `monitor` and `read` privileges on the leader index.
 
@@ -290,7 +290,7 @@ POST /_security/role/remote-replication
 ```
 
 
-##### Local cluster [_local_cluster]
+#### Local cluster [_local_cluster]
 
 On the local cluster that contains the follower index, the `remote-replication` role requires the `manage_ccr` cluster privilege, and `monitor`, `read`, `write`, and `manage_follow_index` privileges on the follower index.
 
@@ -341,7 +341,7 @@ You can then [configure {{ccr}}](../tools/cross-cluster-replication/set-up-cross
 The {{ccs}} user requires different cluster and index privileges on the remote cluster and local cluster. The following requests create separate roles on the local and remote clusters, and then create a user with the required roles.
 
 
-##### Remote cluster [_remote_cluster_2]
+#### Remote cluster [_remote_cluster_2]
 
 On the remote cluster, the {{ccs}} role requires the `read` and `read_cross_cluster` privileges for the target indices.
 
@@ -375,7 +375,7 @@ POST /_security/role/remote-search
 ```
 
 
-##### Local cluster [_local_cluster_2]
+#### Local cluster [_local_cluster_2]
 
 On the local cluster, which is the cluster used to initiate cross cluster search, a user only needs the `remote-search` role. The role privileges can be empty.
 
@@ -418,7 +418,7 @@ To grant users read access on the remote data streams and indices, you must crea
 For example, you might be actively indexing {{ls}} data on a local cluster and and periodically offload older time-based indices to an archive on your remote cluster. You want to search across both clusters, so you must enable {{kib}} users on both clusters.
 
 
-##### Local cluster [_local_cluster_3]
+#### Local cluster [_local_cluster_3]
 
 On the local cluster, create a `logstash-reader` role that grants `read` and `view_index_metadata` privileges on the local `logstash-*` indices.
 
@@ -458,7 +458,7 @@ PUT /_security/user/cross-cluster-kibana
 ```
 
 
-##### Remote cluster [_remote_cluster_3]
+#### Remote cluster [_remote_cluster_3]
 
 On the remote cluster, create a `logstash-reader` role that grants the `read_cross_cluster` privilege and `read` and `view_index_metadata` privileges for the `logstash-*` indices.
 

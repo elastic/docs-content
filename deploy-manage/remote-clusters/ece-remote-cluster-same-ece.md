@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ece: ga
-navigation_title: Within the same {{ece}} environment
+navigation_title: Within the same ECE environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-same-ece.html
 ---

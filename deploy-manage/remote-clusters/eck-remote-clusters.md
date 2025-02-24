@@ -22,7 +22,7 @@ The remote clusters feature requires a valid Enterprise license or Enterprise tr
 
 To create a remote cluster connection to another {{es}} cluster deployed within the same Kubernetes cluster, specify the `remoteClusters` attribute in your {{es}} spec.
 
-### Security Models [k8s_security_models]
+### Security models [k8s_security_models]
 
 Before you start, consider the security model that you would prefer to use for authenticating remote connections between clusters, and follow the corresponding steps.
 

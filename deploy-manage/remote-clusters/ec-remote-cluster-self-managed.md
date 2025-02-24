@@ -34,20 +34,20 @@ On the local cluster side, not every local user needs to access every piece of d
 If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
 
-#### Prerequisites and limitations [ec_prerequisites_and_limitations_4]
+### Prerequisites and limitations [ec_prerequisites_and_limitations_4]
 
 * The local and remote deployments must be on {{stack}} 8.14 or later.
 * API key authentication can’t be used in combination with traffic filters.
 * Contrary to the certificate security model, the API key security model does not require that both local and remote clusters trust each other.
 
 
-#### Create a cross-cluster API key on the remote deployment [ec_create_a_cross_cluster_api_key_on_the_remote_deployment_4]
+### Create a cross-cluster API key on the remote deployment [ec_create_a_cross_cluster_api_key_on_the_remote_deployment_4]
 
 * On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [{{kib}}](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
 * Copy the encoded key (`encoded` in the response) to a safe location. You will need it in the next step.
 
 
-#### Configure the local deployment [ec_configure_the_local_deployment_2]
+### Configure the local deployment [ec_configure_the_local_deployment_2]
 
 The API key created previously will be used by the local deployment to authenticate with the corresponding set of permissions to the remote deployment. For that, you need to add the API key to the local deployment’s keystore.
 
@@ -116,7 +116,7 @@ If you later need to update the remote connection with different permissions, yo
 ::::::
 
 ::::::{tab-item} TLS certificate (deprecated)
-#### Specify the deployments trusted to be used as remote clusters [ec-trust-self-managed]
+### Specify the deployments trusted to be used as remote clusters [ec-trust-self-managed]
 
 A deployment can be configured to trust all or specific deployments in any environment:
 
@@ -176,7 +176,7 @@ Generate new node certificates for an entire cluster using the file input mode o
 ::::
 
 
-::::{dropdown} **Using the API**
+::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
 In order to trust a cluster whose nodes present certificates with the subject names: "CN = node1.example.com", "CN = node2.example.com" and "CN = node3.example.com" in a self-managed environment, you could update the trust settings with an additional direct trust relationship like this:

@@ -78,7 +78,7 @@ The first step is to establish trust between the two clusters.
 
 
 
-## Setup CCS/R [ece_setup_ccsr]
+## Set up CCS/R [ece_setup_ccsr]
 
 Now that trust has been established, you can set up CCS/R from the ECK cluster to the {{ece}} cluster or from the {{ece}} cluster to the ECK cluster.
 

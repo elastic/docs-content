@@ -2,7 +2,7 @@
 applies_to:
   deployment:
     ece: ga
-navigation_title: With a different {{ece}} environment
+navigation_title: With a different ECE environment
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-remote-cluster-other-ece.html
 ---
