@@ -11,7 +11,7 @@ mapped_pages:
 
 This section provides solutions to common questions and problems, and processing and performance guidance.
 
-* [Common problems](../../solutions/observability/apps/common-problems.md)
+* [Common problems](/troubleshoot/observability/apm/common-problems.md)
 * [What happens when APM Server or {{es}} is down?](../../solutions/observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md)
 * [APM Server response codes](../../solutions/observability/apps/apm-server-response-codes.md)
 * [Processing and performance](../../solutions/observability/apps/processing-performance.md)

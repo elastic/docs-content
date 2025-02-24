@@ -1,6 +1,6 @@
 ---
 navigation_title: "Add search to your app"
-applies:
+applies_to:
   stack:
   serverless:
 ---

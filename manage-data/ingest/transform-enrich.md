@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-addl-proc.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Transform and enrich data [ingest-addl-proc]

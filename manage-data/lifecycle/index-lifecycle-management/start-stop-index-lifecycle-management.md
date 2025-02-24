@@ -2,6 +2,9 @@
 navigation_title: Start and stop {{ilm-init}}
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/start-stop-ilm.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Start and stop index lifecycle management [start-stop-ilm]

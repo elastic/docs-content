@@ -5,53 +5,26 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html
   - https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/index.html
 ---
+# Get started
 
-# Get started [elasticsearch-intro-what-is-es]
+## Overview
 
-[{{es}}](https://github.com/elastic/elasticsearch/) is a distributed search and analytics engine, scalable data store, and vector database built on Apache Lucene. It’s optimized for speed and relevance on production-scale workloads. Use {{es}} to search, index, store, and analyze data of all shapes and sizes in near real time.
+{{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with {{kib}}, it powers these Elastic solutions and use cases:
 
-{{es}} is the heart of the [Elastic Stack](the-stack.md). Combined with [{{kib}}](https://www.elastic.co/kibana), it powers these Elastic solutions:
+* [Observability](/solutions/observability.md)
+* [Security](/solutions/security.md)
+* [Search](/solutions/search.md)
 
-* [Observability](https://www.elastic.co/observability)
-* [Search](https://www.elastic.co/enterprise-search)
-* [Security](https://www.elastic.co/security)
+:::{tip}
+Refer to our [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples of how Elastic is used in real-world scenarios.
+:::
 
-Explore the full list of [{{es}} features](https://www.elastic.co/elasticsearch/features) on the product webpage.
+## Next steps
 
-::::{admonition} What is the Elastic Stack?
-:name: elasticsearch-intro-elastic-stack
+Get started by learning about:
 
-{{es}} is the core component of the Elastic Stack, a suite of products for collecting, storing, searching, and visualizing data. [Learn more about the Elastic Stack](the-stack.md).
-
-::::
-
-
-
-## Use cases [elasticsearch-intro-use-cases]
-
-You can use {{es}} for a wide and growing range of use cases. Here are a few examples:
-
-**Observability**
-
-* **Logs, metrics, and traces**: Collect, store, and analyze logs, metrics, and traces from applications, systems, and services.
-* **Application performance monitoring (APM)**: Monitor and analyze the performance of business-critical software applications.
-* **Real user monitoring (RUM)**: Monitor, quantify, and analyze user interactions with web applications.
-* **OpenTelemetry**: Reuse your existing instrumentation to send telemetry data to the Elastic Stack using the OpenTelemetry standard.
-
-**Search**
-
-* **Full-text search**: Build a fast, relevant full-text search solution using inverted indexes, tokenization, and text analysis.
-* **Vector database**: Store and search vectorized data, and create vector embeddings with built-in and third-party natural language processing (NLP) models.
-* **Semantic search**: Understand the intent and contextual meaning behind search queries using tools like synonyms, dense vector embeddings, and learned sparse query-document expansion.
-* **Hybrid search**: Combine full-text search with vector search using state-of-the-art ranking algorithms.
-* **Build search experiences**: Add hybrid search capabilities to apps or websites, or build enterprise search engines over your organization’s internal data sources.
-* **Retrieval augmented generation (RAG)**: Use {{es}} as a retrieval engine to supplement generative AI models with more relevant, up-to-date, or proprietary data for a range of use cases.
-* **Geospatial search**: Search for locations and calculate spatial relationships using geospatial queries.
-
-**Security**
-
-* **Security information and event management (SIEM)**: Collect, store, and analyze security data from applications, systems, and services.
-* **Endpoint security**: Monitor and analyze endpoint security data.
-* **Threat hunting**: Search and analyze data to detect and respond to security threats.
-
-This is just a sample of search, observability, and security use cases enabled by {{es}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
+- [{{es}} and {{kib}}](introduction.md), the core components of the {{stack}}.
+  - [The stack](/get-started/the-stack.md) to understand the relationship between core and optional components of an Elastic deployment.
+- [The out-of-the-box solutions and use cases](/solutions/index.md) that Elastic supports.
+- [Deploying Elastic](./deployment-options.md) for your use case.
+- [Versioning and availability](./versioning-availability.md) in Elastic deployments.

@@ -60,7 +60,7 @@ Don’t modify anything within the data directory or run processes that might in
 ::::
 
 
-Elasticsearch offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/path-settings.md#multiple-data-paths).
+Elasticsearch offers a deprecated setting that allows you to specify multiple paths in `path.data`. To learn about this setting, and how to migrate away from it, refer to [Multiple data paths](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/path.md#multiple-data-paths).
 
 
 ## Cluster name setting [_cluster_name_setting]

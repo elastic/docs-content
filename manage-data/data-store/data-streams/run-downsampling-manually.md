@@ -2,6 +2,9 @@
 navigation_title: "Run downsampling manually"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/downsampling-manual.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 

@@ -30,7 +30,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
 
     **For Observability serverless projects**, you can add users who are assigned the Editor user role (or a more permissive role) for the project.
 
-    **For Elastic Stack v9**, You can add users only if they meet the necessary [prerequisites](../../../solutions/observability/incident-management/configure-access-to-cases.md).
+    **For Elastic Stack**, You can add users only if they meet the necessary [prerequisites](../../../solutions/observability/incident-management/configure-access-to-cases.md).
 
 6. If you defined [custom fields](../../../solutions/observability/incident-management/configure-case-settings.md#case-custom-fields), they appear in the **Additional fields** section.
 7. (Optional) Under External incident management system, you can select a connector to send cases to an external system. If you’ve created any connectors previously, they will be listed here. If there are no connectors listed, you can [create one](../../../solutions/observability/incident-management/configure-case-settings.md).

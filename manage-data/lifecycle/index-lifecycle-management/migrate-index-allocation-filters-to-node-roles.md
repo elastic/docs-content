@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/migrate-index-allocation-filters.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Migrate index allocation filters to node roles [migrate-index-allocation-filters]
@@ -100,7 +103,7 @@ To completely avoid the issues that raise when mixing the tier preference and cu
 To enable {{ilm-init}} to move an *existing* managed index through the data tiers, update the index settings to:
 
 1. Remove the custom allocation filter by setting it to `null`.
-2. Set the [tier preference](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation-settings.md#tier-preference-allocation-filter).
+2. Set the [tier preference](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter).
 
 For example, if your old template set the `data` attribute to `hot` to allocate shards to the hot tier, set the `data` attribute to `null` and set the `_tier_preference` to `data_hot`.
 
