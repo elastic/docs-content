@@ -16,7 +16,7 @@ mapped_urls:
 To ingest data, you can use:
 
 * The [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) with the **{{elastic-defend}}** integration, which protects your hosts and sends logs, metrics, and endpoint security data to {{elastic-sec}}. See [Install {{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
-* The {{agent}} with integrations, which are available in the [Elastic Package Registry (EPR)](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md#package-registry-intro). To install an integration that works with {{elastic-sec}}, go to the {{kib}} Home page or navigation menu and click **Add integrations**. On the Integrations page, click the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](https://docs.elastic.co/en/integrations).
+* The {{agent}} with integrations, which are available in the [Elastic Package Registry (EPR)](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md#package-registry-intro). To install an integration that works with {{elastic-sec}}, go to the {{kib}} Home page or navigation menu and click **Add integrations**. On the Integrations page, click the **Security** category filter, then select an integration to view the installation instructions. For more information on integrations, refer to [{{integrations}}](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md).
 * **{{beats}}** shippers installed for each system you want to monitor.
 * The {{agent}} to send data from Splunk to {{elastic-sec}}. See [Get started with data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md).
 * Third-party collectors configured to ship ECS-compliant data. [*Elastic Security ECS field reference*](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md) provides a list of ECS fields used in {{elastic-sec}}.
@@ -121,5 +121,5 @@ To populate **Network** data, enable Packetbeat protocols and Filebeat modules:
     * [Cisco ASA firewall module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-cisco.md)
     * [AWS module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-aws.md)
     * [CEF module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-cef.md)
-    * [Google Cloud module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-googlecloud.html)
+    * [Google Cloud module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-gcp.md)
     * [NetFlow module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-netflow.md)

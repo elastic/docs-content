@@ -47,7 +47,7 @@ Expand a section below for your endpoint security system:
         * EU-1: `https://api.eu-1.crowdstrike.com`
         * US-GOV-1: `https://api.laggar.gcw.crowdstrike.com`
 
-2. **Install the CrowdStrike integration and {{agent}}.** Elastic’s [CrowdStrike integration](https://docs.elastic.co/en/integrations/crowdstrike) collects and ingests logs into {{elastic-sec}}.
+2. **Install the CrowdStrike integration and {{agent}}.** Elastic’s [CrowdStrike integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/crowdstrike.md) collects and ingests logs into {{elastic-sec}}.
 
     1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **CrowdStrike**, then select **Add CrowdStrike**.
     2. Configure the integration with an **Integration name** and optional **Description**.
@@ -80,7 +80,7 @@ Expand a section below for your endpoint security system:
 
     4. Click **Save**.
 
-4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** (Optional) Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md) to generate {{elastic-sec}} alerts based on CrowdStrike events and data. The [CrowdStrike integration docs](https://docs.elastic.co/en/integrations/crowdstrike) list the available ingested logs and fields you can use to build a rule query.
+4. **Create and enable detection rules to generate {{elastic-sec}} alerts.** (Optional) Create [detection rules](/solutions/security/detect-and-alert/create-detection-rule.md) to generate {{elastic-sec}} alerts based on CrowdStrike events and data. The [CrowdStrike integration docs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/crowdstrike.md) list the available ingested logs and fields you can use to build a rule query.
 
     This gives you visibility into CrowdStrike without needing to leave {{elastic-sec}}. You can perform supported endpoint response actions directly from alerts that a rule creates, by using the **Take action** menu in the alert details flyout.
 
@@ -94,14 +94,14 @@ Expand a section below for your endpoint security system:
     * Microsoft Defender for Endpoint Fleet integration policy: Permission to read alert data (`Windows Defender ATP: Alert.Read.All`).
     * Microsoft Defender for Endpoint connector: Permission to read machine information as well as isolate and release a machine (`Windows Defender ATP: Machine.Isolate and Machine.Read.All`).
 
-    Refer to the [Microsoft Defender for Endpoint integration documentation](https://docs.elastic.co/en/integrations/microsoft_defender_endpoint) or [Microsoft’s documentation](https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp) for details on creating a new Azure application.
+    Refer to the [Microsoft Defender for Endpoint integration documentation](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/microsoft_defender_endpoint.md) or [Microsoft’s documentation](https://learn.microsoft.com/en-us/defender-endpoint/api/exposed-apis-create-app-webapp) for details on creating a new Azure application.
 
     After you create the applications, take note of the client ID, client secret, and tenant ID for each one; you’ll need them in later steps when you configure Elastic Security components to access Microsoft Defender for Endpoint.
 
-2. **Install the Microsoft Defender for Endpoint integration and {{agent}}.** Elastic’s [Microsoft Defender for Endpoint integration](https://docs.elastic.co/en/integrations/microsoft_defender_endpoint) collects and ingests logs into {{elastic-sec}}.
+2. **Install the Microsoft Defender for Endpoint integration and {{agent}}.** Elastic’s [Microsoft Defender for Endpoint integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/microsoft_defender_endpoint.md) collects and ingests logs into {{elastic-sec}}.
 
     ::::{note}
-    You can also set up the [Microsoft M365 Defender integration](https://docs.elastic.co/en/integrations/m365_defender) as an alternative or additional data source.
+    You can also set up the [Microsoft M365 Defender integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/m365_defender.md) as an alternative or additional data source.
     ::::
 
 
@@ -155,9 +155,9 @@ Expand a section below for your endpoint security system:
     * SentinelOne integration: Permission to read SentinelOne data.
     * SentinelOne connector: Permission to read SentinelOne data and perform actions on enrolled hosts (for example, isolating and releasing an endpoint).
 
-    Refer to the [SentinelOne integration docs](https://docs.elastic.co/en/integrations/sentinel_one) or SentinelOne’s docs for details on generating API tokens.
+    Refer to the [SentinelOne integration docs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/sentinel_one.md) or SentinelOne’s docs for details on generating API tokens.
 
-2. **Install the SentinelOne integration and {{agent}}.** Elastic’s [SentinelOne integration](https://docs.elastic.co/en/integrations/sentinel_one) collects and ingests logs into {{elastic-sec}}.
+2. **Install the SentinelOne integration and {{agent}}.** Elastic’s [SentinelOne integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/sentinel_one.md) collects and ingests logs into {{elastic-sec}}.
 
     1. Find **Integrations** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), search for and select **SentinelOne**, then select **Add SentinelOne**.
     2. Configure the integration with an **Integration name** and optional **Description**.

@@ -108,7 +108,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     Because {{ml}} rules generate alerts from anomalies, which don’t contain source event fields, you can only use anomaly fields when configuring alert suppression.
     ::::
 
-5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+5. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -153,7 +153,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -196,7 +196,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -261,7 +261,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-8. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+8. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -330,7 +330,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -396,7 +396,7 @@ You uploaded a value list of known ransomware domains, and you want to be notifi
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
@@ -429,7 +429,7 @@ To create an {{esql}} rule:
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
     2. Enter the field’s data type.
 
-6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](https://docs.elastic.co/en/integrations). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
+6. (Optional) Add **Related integrations** to associate the rule with one or more [Elastic integrations](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/index.md). This indicates the rule’s dependency on specific integrations and the data they generate, and allows users to confirm each integration’s [installation status](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites) when viewing the rule.
 
     1. Click **Add integration**, then select an integration from the list. You can also start typing an integration’s name to find it faster.
     2. Enter the version of the integration you want to associate with the rule, using [semantic versioning](https://semver.org). For version ranges, you must use tilde or caret syntax. For example, `~1.2.3` is from 1.2.3 to any patch version less than 1.3.0, and `^1.2.3` is from 1.2.3 to any minor and patch version less than 2.0.0.
