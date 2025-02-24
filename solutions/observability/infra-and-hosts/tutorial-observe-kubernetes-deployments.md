@@ -28,7 +28,7 @@ This guide describes how to use Elastic {{observability}} to observe all layers 
 * Centralize the data in the {{stack}}
 * Explore the data in real-time using tailored dashboards and {{observability}} UIs
 
-This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html).
+This guide describes how to deploy Elastic monitoring agents as DaemonSets using the {{agent}} manifest files. For other deployment options, see the Kubernetes operator and custom resource definitions from [{{ecloud}} on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md).
 
 
 ## Monitoring architecture [kubernetes-monitoring-architecture]
@@ -79,7 +79,7 @@ Before you can monitor Kubernetes, you need the following:
 
 ## Part 1: Add and Configure the Kubernetes integration [monitor-kubernetes-integration]
 
-To start collecting logs and metrics from your Kubernetes clusters, first add the [Kubernetes integration](https://docs.elastic.co/en/integrations/kubernetes) to your policy and configure the metrics and logs you want to collect.
+To start collecting logs and metrics from your Kubernetes clusters, first add the [Kubernetes integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes.md) to your policy and configure the metrics and logs you want to collect.
 
 
 ### Step 1: Add the Kubernetes integration to your deployment [monitor-k8s-add-integration]
@@ -137,19 +137,19 @@ Collecting metrics from the kubelet API is on by default. Kubelet is an agent th
 
 ::::{dropdown} Expand to see available metrics from the kubelet API
 **Container metrics**
-:   Monitor the overall resource usage, performance, and status at the container level. Learn more at [kubelet container metrics](https://docs.elastic.co/en/integrations/kubernetes/kubelet#container).
+:   Monitor the overall resource usage, performance, and status at the container level. Learn more at [kubelet container metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-container).
 
 **Node metrics**
-:   Monitor the overall resource usage, performance, and status at the node level. Learn more at [kubelet node metrics](https://docs.elastic.co/en/integrations/kubernetes/kubelet#node).
+:   Monitor the overall resource usage, performance, and status at the node level. Learn more at [kubelet node metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-node).
 
 **Pod metrics**
-:   Monitor the overall resource usage, performance, and status at the pod level. Learn more at [kubelet pod metrics](https://docs.elastic.co/en/integrations/kubernetes/kubelet#pod).
+:   Monitor the overall resource usage, performance, and status at the pod level. Learn more at [kubelet pod metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-pod).
 
 **System metrics**
-:   Monitor the overall resource usage, performance, and status of your system containers. Learn more at [kubelet system metrics](https://docs.elastic.co/en/integrations/kubernetes/kubelet#system).
+:   Monitor the overall resource usage, performance, and status of your system containers. Learn more at [kubelet system metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-system).
 
 **Volume metrics**
-:   Monitor the storage usage and capacity of your persistent volumes. Learn more at [kubelet volume metrics](https://docs.elastic.co/en/integrations/kubernetes/kubelet#system).
+:   Monitor the storage usage and capacity of your persistent volumes. Learn more at [kubelet volume metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kubelet.md#kubernetes/kubelet-system).
 
 ::::
 
@@ -207,49 +207,49 @@ With the Kubernetes integration, you can collect a number of metrics using the `
 
 ::::{dropdown} Expand to see available metrics from `kube-state-metrics`
 **Container metrics**
-:   Monitor Container performance to ensure efficiency and stability in pods. Learn more at [`kube-state-metrics` container metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_container).
+:   Monitor Container performance to ensure efficiency and stability in pods. Learn more at [`kube-state-metrics` container metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_container).
 
 **CronJob metrics**
-:   Monitor CronJob performance and ensure they’re running reliably and efficiently. Learn more at [`kube-state-metrics` CronJob metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_cronjob).
+:   Monitor CronJob performance and ensure they’re running reliably and efficiently. Learn more at [`kube-state-metrics` CronJob metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_cronjob).
 
 **Kubernetes DaemonSet metrics**
-:   Monitor DaemonSet health and distribution. Learn more at [`kube-state-metrics` DaemonSet metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_daemonset).
+:   Monitor DaemonSet health and distribution. Learn more at [`kube-state-metrics` DaemonSet metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_daemonset).
 
 **Kubernetes Deployment metrics**
-:   Monitor deployment status and configuration. Learn more at [`kube-state-metrics` deployment metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_deployment).
+:   Monitor deployment status and configuration. Learn more at [`kube-state-metrics` deployment metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_deployment).
 
 **Kubernetes Job metrics**
-:   Monitor job completion statuses and execution. Learn more at [`kube-state-metrics` job metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_job).
+:   Monitor job completion statuses and execution. Learn more at [`kube-state-metrics` job metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_job).
 
 **Kubernetes Namespace metrics**
-:   Monitor namespace active and terminating statuses. Learn more at [`kube-state-metrics` namespace metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_namespace).
+:   Monitor namespace active and terminating statuses. Learn more at [`kube-state-metrics` namespace metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_namespace).
 
 **Kubernetes Node metrics**
-:   Monitor node health and resource usage. Learn more at [`kube-state-metrics` node metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_node).
+:   Monitor node health and resource usage. Learn more at [`kube-state-metrics` node metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_node).
 
 **Kubernetes PersistentVolume metrics**
-:   Monitor PersistentVolume size, status, and storage configuration. Learn more at [`kube-state-metrics` PersistentVolume metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_persistentvolume).
+:   Monitor PersistentVolume size, status, and storage configuration. Learn more at [`kube-state-metrics` PersistentVolume metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_persistentvolume).
 
 **Kubernetes PersistentVolumeClaim metrics**
-:   Monitor PersistentVolumeClaim phases, classes, and storage requests. Learn more at [`kube-state-metrics` PersistentVolumeClaim metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_persistentvolumeclaim).
+:   Monitor PersistentVolumeClaim phases, classes, and storage requests. Learn more at [`kube-state-metrics` PersistentVolumeClaim metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_persistentvolumeclaim).
 
 **Kubernetes Pod metrics**
-:   Monitor pod health and performance. Learn more at [`kube-state-metrics` pod metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_pod).
+:   Monitor pod health and performance. Learn more at [`kube-state-metrics` pod metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_pod).
 
 **Kubernetes ReplicaSet metrics**
-:   Monitor ReplicaSets status and the number of replicas in your ReplicaSets. Learn more at [`kube-state-metrics` ReplicaSet metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_replicaset).
+:   Monitor ReplicaSets status and the number of replicas in your ReplicaSets. Learn more at [`kube-state-metrics` ReplicaSet metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_replicaset).
 
 **Kubernetes ResourceQuota metrics**
-:   Monitor resource limits and current usage. Learn more at [`kube-state-metrics` ResourceQuota metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_resourcequota).
+:   Monitor resource limits and current usage. Learn more at [`kube-state-metrics` ResourceQuota metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_resourcequota).
 
 **Kubernetes Service metrics**
-:   Monitor service configuration, accessibility, and network integration. Learn more at [`kube-state-metrics` service metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_service).
+:   Monitor service configuration, accessibility, and network integration. Learn more at [`kube-state-metrics` service metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_service).
 
 **Kubernetes StatefulSet metrics**
-:   Monitor StatefulSet configuration, status, and scaling. Learn more at [`kube-state-metrics` StatefulSet metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_statefulset).
+:   Monitor StatefulSet configuration, status, and scaling. Learn more at [`kube-state-metrics` StatefulSet metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_statefulset).
 
 **Kubernetes StorageClass metrics**
-:   Monitor how storage is provisioned and allocated. Learn more at [`kube-state-metrics` StorageClass metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-state-metrics#state_storageclass).
+:   Monitor how storage is provisioned and allocated. Learn more at [`kube-state-metrics` StorageClass metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-state-metrics.md#kubernetes/kube-state-metrics-state_storageclass).
 
 ::::
 
@@ -302,7 +302,7 @@ add_resource_metadata:
 
 Collecting metrics from the `kube-apiserver` is on by default. The `kube-apiserver` sets up and validates pods, services, and other API objects. These metrics provide insight into the API server’s performance, workload, and health.
 
-Refer to [`kube-apiserver` metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-apiserver) for more on the metrics collected.
+Refer to [`kube-apiserver` metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-apiserver.md) for more on the metrics collected.
 
 
 #### Configure Kubernetes API server options [monitor-k8s-apiserver-configure]
@@ -329,7 +329,7 @@ Provide the following information to collect `kube-apiserver` metrics:
 
 The `kube-proxy` runs on each node and maintains network rules. Collecting metrics from the `kube-proxy` is on by default. These metrics provide insight into the proxy’s networking activity, performance, and resource usage.
 
-Refer to [`kube-proxy` metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-proxy) for more on the metrics collected.
+Refer to [`kube-proxy` metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-proxy.md) for more on the metrics collected.
 
 
 #### Configure Kubernetes proxy options [monitor-k8s-proxy-configure]
@@ -347,7 +347,7 @@ Provide the following information to collect Kubernetes Proxy metrics:
 
 The kube-scheduler assigns new pods with no node assignment to the most appropriate node. Turn this option on to get metrics from the kube-scheduler. These metrics provide insight on the performance, resource usage, and health of the `kube-scheduler`.
 
-Refer to [`kube-scheduler` metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-scheduler) for more on the metrics collected.
+Refer to [`kube-scheduler` metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-scheduler.md) for more on the metrics collected.
 
 
 #### Configure Kubernetes scheduler options [monitor-k8s-scheduler-configure]
@@ -371,7 +371,7 @@ Provide the following information to collect Kubernetes scheduler metrics:
 
 The `kube-controller-manager` regulates the state of the clusters. Turn this option on to get metrics from the `kube-controller-manager`. These metrics provide insight on the performance, resource usage, and health of the kube-controller-manager.
 
-Refer to [`kube-controller-manager` metrics](https://docs.elastic.co/en/integrations/kubernetes/kube-controller-manager) for more on the metrics collected.
+Refer to [`kube-controller-manager` metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/kube-controller-manager.md) for more on the metrics collected.
 
 
 #### Configure Kubernetes controller-manager options [monitor-k8s-controller-configure]
@@ -395,7 +395,7 @@ Provide the following information to collect `kube-controller-manager` metrics:
 
 Event metrics give you an overall view of what’s happening in a cluster. These metrics help you understand what’s happening in your cluster and improve reliability and stability. Collecting Kubernetes events from the Kubernetes API server is on by default.
 
-Refer to [events metrics](https://docs.elastic.co/en/integrations/kubernetes/events) for more on the metrics collected.
+Refer to [events metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/events.md) for more on the metrics collected.
 
 
 #### Configure events from the Kubernetes API server [monitor-k8s-api-events-configure]
@@ -421,7 +421,7 @@ Collecting and parsing Kubernetes container logs is on by default. Containers ru
 
 Metadata enrichment is also enabled by default, and is based on the Kubernetes provider. Use the `add_resource_metadata` block of the Kubernetes provider to configure it. Refer to the [Kubernetes provider](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/kubernetes-provider.md) docs for more on configuring the provider.
 
-Refer to [Kubernetes container logs](https://docs.elastic.co/en/integrations/kubernetes/container-logs) for more on collecting container logs.
+Refer to [Kubernetes container logs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/container-logs.md) for more on collecting container logs.
 
 
 #### Configure Kubernetes container logs [monitor-k8s-container-log-configure]
@@ -444,7 +444,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 
 Turn this option on to collect audit logs. Kubernetes audit logs record requests that come to the Kubernetes API from internal and external components. These logs help you understand cluster behavior and debug issues.
 
-Refer to [Kubernetes audit logs](https://docs.elastic.co/en/integrations/kubernetes/audit-logs) for more on collecting audit logs.
+Refer to [Kubernetes audit logs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/kubernetes/audit-logs.md) for more on collecting audit logs.
 
 
 ## Part 2: Configure and install the standalone {{agent}} [monitor-k8s-update-agent-config]

@@ -6,7 +6,7 @@ mapped_pages:
 # RUM source map API [apm-rum-sourcemap-api]
 
 ::::{important} 
-This endpoint is only compatible with the [APM integration for Elastic Agent](https://www.elastic.co/guide/en/apm/guide/current/index.html).
+This endpoint is only compatible with the [APM integration for Elastic Agent](/solutions/observability/apps.md).
 ::::
 
 

@@ -7,9 +7,9 @@ mapped_pages:
 
 This guide explains the upgrade process for version 9.0.0-beta1. For a detailed look at what’s new, see:
 
-* [What’s new in {{observability}}](https://www.elastic.co/guide/en/observability/current/whats-new.html)
-* [What’s new in {{kib}}](https://www.elastic.co/guide/en/kibana/current/whats-new.html)
-* [{{es}} release highlights](https://www.elastic.co/guide/en/elasticsearch/reference/current/release-highlights.html)
+* [What’s new in {{observability}}](asciidocalypse://docs/docs-content/docs/release-notes/observability.md)
+* [What’s new in {{kib}}](asciidocalypse://docs/kibana/docs/release-notes/kibana.md)
+* [{{es}} release highlights](asciidocalypse://docs/elasticsearch/docs/release-notes/elasticsearch.md)
 
 
 ## Notable APM changes [_notable_apm_changes]
@@ -18,7 +18,7 @@ This guide explains the upgrade process for version 9.0.0-beta1. For a detailed 
 * APM Server now only writes to well-defined data streams; writing to classic indices is no longer supported.
 * APM Server has a new {{es}} output implementation with defaults that should be sufficient for most use cases.
 
-As a result of the above changes, a number of index management and index tuning configuration variables have been removed. See the APM [release notes](asciidocalypse://docs/docs-content/docs/release-notes/apm.md), [breaking changes](https://www.elastic.co/guide/en/observability/current/apm-breaking.html) for full details.
+As a result of the above changes, a number of index management and index tuning configuration variables have been removed. See the APM [release notes](asciidocalypse://docs/docs-content/docs/release-notes/apm.md), [breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-apm.md) for full details.
 
 
 ## Find your upgrade guide [_find_your_upgrade_guide]

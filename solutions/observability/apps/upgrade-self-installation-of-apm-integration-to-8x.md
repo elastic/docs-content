@@ -18,7 +18,7 @@ This upgrade guide is for the Elastic APM integration. Only use this guide if bo
 ## Prerequisites [_prerequisites_9]
 
 1. Prior to upgrading to version 9.0.0-beta1, {{es}}, and {{kib}} must be upgraded to version 7.17. To upgrade {{es}} and {{kib}}, see the [{{stack}} Installation and Upgrade Guide](https://www.elastic.co/guide/en/elastic-stack/7.17/upgrading-elastic-stack.html)
-2. Review the APM [release notes](asciidocalypse://docs/docs-content/docs/release-notes/apm.md), [breaking changes](https://www.elastic.co/guide/en/observability/current/apm-breaking.html), and {{observability}} [What’s new](https://www.elastic.co/guide/en/observability/current/whats-new.html) content.
+2. Review the APM [release notes](asciidocalypse://docs/docs-content/docs/release-notes/apm.md), [breaking changes](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-apm.md), and {{observability}} [What’s new](asciidocalypse://docs/docs-content/docs/release-notes/breaking-changes/elastic-observability.md) content.
 
 
 ## Upgrade steps [_upgrade_steps_2]

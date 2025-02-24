@@ -29,7 +29,7 @@ Make sure the deployment is on AWS, because the Firehose delivery stream connect
 
 * An AWS account with permissions to pull the necessary data from AWS.
 * VPC flow logs enabled for the VPC where the application is deployed and configured to send data to Kinesis Data Firehose.
-* A [three-tier web architecture in AWS](https://github.com/aws-samples/aws-three-tier-web-architecture-workshop), which can ingest metrics from [several AWS services](https://docs.elastic.co/integrations/aws).
+* A [three-tier web architecture in AWS](https://github.com/aws-samples/aws-three-tier-web-architecture-workshop), which can ingest metrics from [several AWS services](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws.md).
 
 
 ## Use Elastic Analytics Discover to manually analyze data [aws-firehose-discover]

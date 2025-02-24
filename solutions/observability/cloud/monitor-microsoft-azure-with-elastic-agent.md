@@ -6,7 +6,7 @@ mapped_pages:
 # Monitor Microsoft Azure with Elastic Agent [monitor-azure-elastic-agent]
 
 ::::{admonition}
-**New to Elastic?** Follow the steps in our [getting started guide](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
+**New to Elastic?** Follow the steps in our [getting started guide](/solutions/observability/get-started/quickstart-monitor-hosts-with-elastic-agent.md) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
 
 **Using the native Azure integration from the marketplace?** Refer to [Monitor Microsoft Azure with the Azure Native ISV Service](monitor-microsoft-azure-with-azure-native-isv-service.md).
 
@@ -99,7 +99,7 @@ To add the integration:
     If you don’t see options for configuring the integration, you’re probably in a workflow designed for new deployments. Follow the steps, then return to this tutorial when you’re ready to configure the integration.
     ::::
 
-5. Specify values for all the required fields. For more information about these settings, refer to the [Azure Billing Metrics](https://docs.elastic.co/en/integrations/azure_billing) documentation.
+5. Specify values for all the required fields. For more information about these settings, refer to the [Azure Billing Metrics](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/azure_billing.md) documentation.
 
     **Client ID**
     :   The Application (client) ID that you copied earlier when you created the service principal.
@@ -247,7 +247,7 @@ To add the integration:
 2. In the query bar, search for **Azure activity logs** and select the Azure activity logs integration to see more details about it.
 3. Click **Add Azure activity logs**.
 4. Under Integration settings, configure the integration name and optionally add a description.
-5. Specify values for all the required fields. For more information about these settings, refer to the [Azure activity logs](https://docs.elastic.co/en/integrations/azure/activitylogs) documentation.
+5. Specify values for all the required fields. For more information about these settings, refer to the [Azure activity logs](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/azure/activitylogs.md) documentation.
 
     **Eventhub**
     :   The name of the event hub you created earlier.

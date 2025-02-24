@@ -10,7 +10,7 @@ mapped_pages:
 
 
 ::::{note}
-Kibana custom roles are *not* compatible with [{{serverless-full}}](https://docs.elastic.co/serverless).
+Kibana custom roles are *not* compatible with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md).
 
 ::::
 

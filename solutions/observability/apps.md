@@ -2,7 +2,8 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/application-and-service-monitoring.html
   - https://www.elastic.co/guide/en/observability/current/application-and-service-monitoring.html
-
+  - https://www.elastic.co/guide/en/apm/guide/current/index.html
+  - https://www.elastic.co/guide/en/apm/server/current/index.html
 navigation_title: "Applications and services"
 ---
 

@@ -22,7 +22,7 @@ In this quickstart guide, you’ll learn how to monitor your hosts using the Ela
 :::{tab-item} Elastic Stack
 :sync: stack
 
-* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](https://docs.elastic.co/serverless/quickstart-monitor-hosts-with-otel.html).
+* An {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. This quickstart is available for all Elastic deployment models. The quickest way to get started with this quickstart is using a trial project on [Elastic serverless](/solutions/observability/get-started/quickstart-monitor-hosts-with-opentelemetry.md).
 * This quickstart is only available for Linux and MacOS systems.
 * A user with the **Admin** role or higher—required to onboard system logs and metrics. To learn more, refer to [User roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md).
 * Root privileges on the host—required to run the OpenTelemetry collector because of these components:

@@ -55,7 +55,7 @@ This approach requires minimal configuration as the CloudFormation template crea
 
 
 ::::{important}
-Some AWS services need additional manual configuration to properly ingest logs and metrics. For more information, check the [AWS integration](https://www.elastic.co/docs/current/integrations/aws) documentation.
+Some AWS services need additional manual configuration to properly ingest logs and metrics. For more information, check the [AWS integration](asciidocalypse://docs/integration-docs/docs/reference/ingestion-tools/integrations/aws.md) documentation.
 ::::
 
 

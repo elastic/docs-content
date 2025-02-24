@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/apm-agents.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-elastic-apm-agents.html
-
+  - https://www.elastic.co/guide/en/apm/agent/index.html
 navigation_title: "APM agents"
 ---
 

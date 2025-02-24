@@ -56,7 +56,7 @@ API keys can only have the same or lower access rights than the user that create
 
 The user creating an {{apm-agent}} API key must have at least the `manage_own_api_key` cluster privilege and the APM application-level privileges that it wishes to grant. In addition, when creating an API key from the Applications UI, you’ll need the appropriate {{kib}} Space and Feature privileges.
 
-The example below uses the {{kib}} [role management API](https://www.elastic.co/guide/en/kibana/current/role-management-api.html) to create a role named `apm_agent_key_role`.
+The example below uses the {{kib}} [role management API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-roles) to create a role named `apm_agent_key_role`.
 
 ```js
 POST /_security/role/apm_agent_key_role
