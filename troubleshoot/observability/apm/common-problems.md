@@ -26,9 +26,9 @@ This section describes common problems you might encounter when using APM Server
 
 
 ## No data is indexed [apm-no-data-indexed]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 If no data shows up in {{es}}, first make sure that your APM components are properly connected.
 
@@ -37,7 +37,7 @@ If no data shows up in {{es}}, first make sure that your APM components are prop
 ::::::{tab-item} Fleet-managed
 **Is {{agent}} healthy?**
 
-In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html) to learn more.
+In {{kib}} open **{{fleet}}** and find the host that is running the APM integration; confirm that its status is **Healthy**. If it isn’t, check the {{agent}} logs to diagnose potential causes. See [Monitor {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn more.
 
 **Is APM Server happy?**
 
@@ -83,9 +83,9 @@ APM Server currently relies on {{es}} to create indices that do not exist. As a 
 :::::::
 
 ## Common SSL-related problems [apm-common-ssl-problems]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 * [SSL client fails to connect](#apm-ssl-client-fails)
 * [x509: cannot validate certificate](#apm-cannot-validate-certificate)
@@ -134,9 +134,9 @@ A firewall is refusing the connection. Check if a firewall is blocking the traff
 
 
 ## I/O Timeout [apm-io-timeout]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 I/O Timeouts can occur when your timeout settings across the stack are not configured correctly, especially when using a load balancer.
 
@@ -163,7 +163,7 @@ The APM Server timeout can be configured by updating the [maximum duration for r
 
 ## Field limit exceeded [apm-field-limit-exceeded]
 
-When adding too many distinct tag keys on a transaction or span, you risk creating a [mapping explosion](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html#mapping-limit-settings).
+When adding too many distinct tag keys on a transaction or span, you risk creating a [mapping explosion](/manage-data/data-store/mapping.md#mapping-limit-settings).
 
 For example, you should avoid that user-specified data, like URL parameters, is used as a tag key. Likewise, using the current timestamp or a user ID as a tag key is not a good idea. However, tag **values** with a high cardinality are not a problem. Just try to keep the number of distinct tag keys at a minimum.
 
@@ -177,17 +177,17 @@ In the agent logs, you won’t see a sign of failures as the APM server asynchro
 
 
 ## Tail-based sampling causing high system memory usage and high disk IO [apm-tail-based-sampling-memory-disk-io]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 Tail-based sampling requires minimal memory to run, and there should not be a noticeable increase in RSS memory usage. However, since tail-based sampling writes data to disk, it is possible to see a significant increase in OS page cache memory usage due to disk IO. If you see a drop in throughput and excessive disk activity after enabling tail-based sampling, please ensure that there is enough memory headroom in the system for OS page cache to perform disk IO efficiently.
 
 
 ## Too many unique transaction names [troubleshooting-too-many-transactions]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 Transaction names are defined in each APM agent; when an APM agent supports a framework, it includes logic for naming the transactions that the framework creates. In some cases though, like when using an APM agent’s API to create custom transactions, it is up to the user to define a pattern for transaction naming. When transactions are named incorrectly, each unique URL can be associated with a unique transaction group—causing an explosion in the number of transaction groups per service, and leading to inaccuracies in the Applications UI.
 
@@ -223,17 +223,17 @@ You will see this warning if your results have more than `1000` unique transacti
 
 **More information**
 
-While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](https://www.elastic.co/guide/en/apm/agent/rum-js/current/custom-transaction-name.html).
+While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/custom-transaction-name.md).
 
-The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/agent-api.html#observe) for more information.
+The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/agent-api.md#observe) for more information.
 
 If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](https://www.elastic.co/guide/en/apm/agent) to adjust how you’re naming your transactions.
 
 
 ## Unknown route [troubleshooting-unknown-route]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 The [transaction overview](../../../solutions/observability/apps/transactions-2.md) will only display helpful information when the transactions in your services are named correctly. If you’re seeing "GET unknown route" or "unknown route" in the Applications UI, it could be a sign that something isn’t working as it should.
 
@@ -245,9 +245,9 @@ To resolve this, you’ll need to head over to the relevant [APM agent documenta
 
 
 ## Fields are not searchable [troubleshooting-fields-unsearchable]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 In Elasticsearch, index templates are used to define settings and mappings that determine how fields should be analyzed. The recommended index templates for APM come from the built-in {{es}} apm-data plugin. These templates, by default, enable and disable indexing on certain fields.
 
@@ -262,19 +262,19 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 
 
 ## Service Maps: no connection between client and server [service-map-rum-connections]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
-If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](https://www.elastic.co/guide/en/apm/agent/rum-js/current/distributed-tracing-guide.html).
+If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/distributed-tracing.md).
 
 This setting is necessary, for example, for cross-origin requests. If you have a basic web application that provides data via an API on `localhost:4000`, and serves HTML from `localhost:4001`, you’d need to set `distributedTracingOrigins: ['https://localhost:4000']` to ensure the origin is monitored as a part of distributed tracing. In other words, `distributedTracingOrigins` is consulted prior to the APM agent adding the distributed tracing `traceparent` header to each request.
 
 
 ## No data shown in the infrastructure tab [troubleshooting-apm-infra-data]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 If you don’t see any data in the **Infrastructure** tab for a selected service in the Applications UI, there are a few possible causes and solutions.
 
@@ -292,9 +292,9 @@ For example, if the APM agent is not configured to use the correct host name, th
 
 
 ## Common response codes [observability-apm-troubleshooting-common-response-codes]
-:::{applies}
-:serverless: all
-:::
+```yaml {applies_to}
+serverless: all
+```
 
 
 ### HTTP 400: Data decoding error / Data validation error [bad-request]

@@ -1,0 +1,2 @@
+redirects:
+  'get-started/installing-elastic-stack.md': '!deploy-manage/deploy/self-managed.md'

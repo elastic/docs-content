@@ -1,11 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-recreate-follower-index.html
+
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Recreate a follower index [ccr-recreate-follower-index]
 
-When a document is updated or deleted, the underlying operation is retained in the Lucene index for a period of time defined by the [`index.soft_deletes.retention_lease.period`](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#ccr-index-soft-deletes-retention-period) parameter. You configure this setting on the [leader index](../cross-cluster-replication.md#ccr-leader-requirements).
+When a document is updated or deleted, the underlying operation is retained in the Lucene index for a period of time defined by the [`index.soft_deletes.retention_lease.period`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#ccr-index-soft-deletes-retention-period) parameter. You configure this setting on the [leader index](../cross-cluster-replication.md#ccr-leader-requirements).
 
 When a follower index starts, it acquires a retention lease from the leader index. This lease informs the leader that it should not allow a soft delete to be pruned until either the follower indicates that it has received the operation, or until the lease expires.
 

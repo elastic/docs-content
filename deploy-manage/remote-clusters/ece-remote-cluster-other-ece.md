@@ -146,14 +146,14 @@ Now, deployments in those environments will be able to configure trust with depl
     * Specific deployments - Specify which of the existing deployments you want to trust in the ECE environment. The full {{es}} cluster ID must be entered for each remote cluster. The {{es}} `Cluster ID` can be found in the deployment overview page under **Applications**.
 
 6. Select **Create trust** to complete the configuration.
-7. Configure the corresponding deployments of the ECE environment to [trust this deployment](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs.html). You will only be able to connect 2 deployments successfully when both of them trust each other.
+7. Configure the corresponding deployments of the ECE environment to [trust this deployment](/deploy-manage/remote-clusters/ece-enable-ccs.md). You will only be able to connect 2 deployments successfully when both of them trust each other.
 
 Note that the environment ID and cluster IDs must be entered fully and correctly. For security reasons, no verification of the IDs is possible. If cross-environment trust does not appear to be working, double-checking the IDs is a good place to start.
 
 ::::{dropdown} Using the API
 You can update a deployment using the appropriate trust settings for the {{es}} payload.
 
-Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/guide/en/cloud-enterprise/current/Platform_-_Configuration_-_Trust_relationships.html). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/guide/en/cloud-enterprise/current/get-trust-relationships.html):
+Establishing the trust between the two {{ece}} environments can be done using the [trust relationships API](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-platformconfigurationtrustrelationships). For example, the list of trusted environments can be obtained calling the [list trust relationships endpoint](https://www.elastic.co/docs/api/doc/cloud-enterprise/group/endpoint-platformconfigurationtrustrelationships):
 
 ```sh
 curl -k -X GET -H "Authorization: ApiKey $ECE_API_KEY" https://COORDINATOR_HOST:12443//api/v1/regions/ece-region/platform/configuration/trust-relationships?include_certificate=false
@@ -230,14 +230,14 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       :::
 
       ::::{note}
-      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-endpoints.html).
+      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
       ::::
 
 4. Click **Next**.
 5. Click **Add remote cluster** (you have already established trust in a previous step).
 
 ::::{note}
-This configuration of remote clusters uses the [Proxy mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#proxy-mode) and it requires that the allocators can communicate via http with the proxies.
+This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode) and it requires that the allocators can communicate via http with the proxies.
 ::::
 
 
@@ -306,7 +306,7 @@ curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $EC
 Note the following when using the {{ece}} RESTful API:
 
 1. A cluster alias must contain only letters, numbers, dashes (-), or underscores (_).
-2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#skip-unavailable-clusters).
+2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](/solutions/search/cross-cluster-search.md#skip-unavailable-clusters).
 3. When remote clusters are already configured for a deployment, the `PUT` request replaces the existing configuration with the new configuration passed. Passing an empty array of resources will remove all remote clusters.
 
 The following API request retrieves the remote clusters configuration:

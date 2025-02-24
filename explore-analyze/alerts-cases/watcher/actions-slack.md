@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Slack action"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-slack.html
@@ -153,7 +153,7 @@ You can no longer configure Slack accounts using `elasticsearch.yml` settings. P
 
 ::::
 
-You can specify defaults for the [Slack notification attributes](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#slack-account-attributes):
+You can specify defaults for the [Slack notification attributes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#slack-account-attributes):
 
 ```yaml
 xpack.notification.slack:
@@ -174,7 +174,7 @@ xpack.notification.slack:
 
 To notify multiple channels, create a webhook URL for each channel in Slack and multiple Slack accounts in {{es}} (one for each webhook URL).
 
-If you configure multiple Slack accounts, you either need to configure a default account or specify which account the notification should be sent with in the [`slack`]() action.
+If you configure multiple Slack accounts, you either need to configure a default account or specify which account the notification should be sent with in the `slack` action.
 
 ```yaml
 xpack.notification.slack:

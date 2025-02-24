@@ -8,7 +8,7 @@ mapped_urls:
 
 Shared exception lists allow you to group exceptions together and then apply them to multiple rules. Use the Shared Exception Lists page to set up shared exception lists.
 
-% The following note is only applicable to ESS and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
+% The following note is only applicable to {{ech}} and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
 
 % ::::{note}
 % Exception lists created in 8.5 and earlier become shared exception lists in 8.6 or later. You can access all shared exception % lists from the Shared Exception Lists page.
@@ -60,7 +60,7 @@ Add exception items:
 
             ::::
 
-        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\path\*\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#keyword-field-type), [text](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#text-field-type), or [wildcard](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html#wildcard-field-type).
+        * `matches` | `does not match` — Allows you to use wildcards in **Value**, such as `C:\path\*\app.exe`. Available wildcards are `?` (match one character) and `*` (match zero or more characters). The selected **Field** data type must be [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#keyword-field-type), [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type), or [wildcard](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#wildcard-field-type).
 
             ::::{important}
             Using wildcards can impact performance. To create a more efficient exception using wildcards, use multiple conditions and make them as specific as possible. For example, adding conditions using `process.name` or `file.name` can help limit the scope of wildcard matching.
@@ -142,7 +142,7 @@ If no attribute is selected, the app searches the list name by default.
 
 You can edit, export, import, duplicate, and delete shared exception lists from the Shared Exception Lists page.
 
-% The following note is only applicable to ESS and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
+% The following note is only applicable to {{ech}} and is only relevant for users who are upgrading from 8.5 -> 8.6 or later. Might need to add this to the [8.6.x upgrade docs](https://www.elastic.co/guide/en/security/8.6/upgrade-intro.html) later.
 
 % ::::{note}
 % Exception lists created in 8.5 and earlier become shared exception lists in 8.6 or later. You can access all shared exception lists from the Shared Exception Lists page.

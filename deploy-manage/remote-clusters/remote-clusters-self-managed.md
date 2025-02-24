@@ -39,7 +39,7 @@ Sniff mode
     The *gateway nodes* selection depends on the following criteria:
 
     * **version**: Remote nodes must be compatible with the cluster they are registered to.
-    * **role**: By default, any non-[master-eligible](https://www.elastic.co/guide/en/elasticsearch/reference/current/node-roles-overview.html#master-node-role) node can act as a gateway node. Dedicated master nodes are never selected as gateway nodes.
+    * **role**: By default, any non-[master-eligible](/deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role) node can act as a gateway node. Dedicated master nodes are never selected as gateway nodes.
     * **attributes**: You can define the gateway nodes for a cluster by setting [`cluster.remote.node.attr.gateway`](remote-clusters-settings.md#cluster-remote-node-attr) to `true`. However, such nodes still have to satisfy the two above requirements.
 
 

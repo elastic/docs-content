@@ -2,7 +2,7 @@
 navigation_title: "Semantic search with ELSER (ingest pipelines)"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-search-elser.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -32,12 +32,12 @@ Only the first 512 extracted tokens per field are considered during semantic sea
 To perform semantic search by using ELSER, you must have the NLP model deployed in your cluster. Refer to the [ELSER documentation](/explore-analyze/machine-learning/nlp/ml-nlp-elser.md) to learn how to download and deploy the model.
 
 ::::{note}
-The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in Elasticsearch Service if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
+The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
 ### Create the index mapping [elser-mappings]
 
-First, the mapping of the destination index - the index that contains the tokens that the model created based on your text - must be created. The destination index must have a field with the [`sparse_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) or [`rank_features`](https://www.elastic.co/guide/en/elasticsearch/reference/current/rank-features.html) field type to index the ELSER output.
+First, the mapping of the destination index - the index that contains the tokens that the model created based on your text - must be created. The destination index must have a field with the [`sparse_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) or [`rank_features`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/rank-features.md) field type to index the ELSER output.
 
 ::::{note}
 ELSER output must be ingested into a field with the `sparse_vector` or `rank_features` field type. Otherwise, {{es}} interprets the token-weight pairs as a massive amount of fields in a document. If you get an error similar to this: `"Limit of total fields [1000] has been exceeded while adding new fields"` then the ELSER output field is not mapped properly and it has a field type different than `sparse_vector` or `rank_features`.
@@ -66,7 +66,7 @@ PUT my-index
 4. The field type which is text in this example.
 
 
-To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](/manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html) to use ELSER to infer against the data that is being ingested in the pipeline.
+To learn how to optimize space, refer to the [Saving disk space by excluding the ELSER tokens from document source](/manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) to use ELSER to infer against the data that is being ingested in the pipeline.
 
 ```console
 PUT _ingest/pipeline/elser-v2-test
@@ -102,7 +102,7 @@ The `msmarco-passagetest2019-top1000` dataset was not utilized to train the mode
 ::::
 
 
-Download the file and upload it to your cluster using the [File Uploader](../../../manage-data/ingest/tools/upload-data-files.md) in the UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
+Download the file and upload it to your cluster using the [File Uploader](../../../manage-data/ingest/upload-data-files.md) in the UI. After your data is analyzed, click **Override settings**. Under **Edit field names***, assign `id` to the first column and `content` to the second. Click ***Apply***, then ***Import**. Name the index `test-data`, and click **Import**. After the upload is complete, you will see an index named `test-data` with 182,469 documents.
 
 
 ### Ingest the data through the {{infer}} ingest pipeline [reindexing-data-elser]
@@ -143,7 +143,7 @@ POST _tasks/<task_id>/_cancel
 
 ### Semantic search by using the `sparse_vector` query [text-expansion-query]
 
-To perform semantic search, use the [`sparse_vector` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html), and provide the query text and the inference ID associated with your ELSER model. The example below uses the query text "How to avoid muscle soreness after running?", the `content_embedding` field contains the generated ELSER output:
+To perform semantic search, use the [`sparse_vector` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-sparse-vector-query.md), and provide the query text and the inference ID associated with your ELSER model. The example below uses the query text "How to avoid muscle soreness after running?", the `content_embedding` field contains the generated ELSER output:
 
 ```console
 GET my-index/_search
@@ -200,7 +200,7 @@ The result is the top 10 documents that are closest in meaning to your query tex
 
 ### Combining semantic search with other queries [text-expansion-compound-query]
 
-You can combine [`sparse_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html) with other queries in a [compound query](https://www.elastic.co/guide/en/elasticsearch/reference/current/compound-queries.html). For example, use a filter clause in a [Boolean](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-bool-query.html) or a full text query with the same (or different) query text as the `sparse_vector` query. This enables you to combine the search results from both queries.
+You can combine [`sparse_vector`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-sparse-vector-query.md) with other queries in a [compound query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/compound-queries.md). For example, use a filter clause in a [Boolean](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-bool-query.md) or a full text query with the same (or different) query text as the `sparse_vector` query. This enables you to combine the search results from both queries.
 
 The search hits from the `sparse_vector` query tend to score higher than other {{es}} queries. Those scores can be regularized by increasing or decreasing the relevance scores of each query by using the `boost` parameter. Recall on the `sparse_vector` query can be high where there is a long tail of less relevant results. Use the `min_score` parameter to prune those less relevant documents.
 
@@ -243,10 +243,10 @@ GET my-index/_search
 
 ### Saving disk space by excluding the ELSER tokens from document source [save-space]
 
-The tokens generated by ELSER must be indexed for use in the [sparse_vector query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-sparse-vector-query.html). However, it is not necessary to retain those terms in the document source. You can save disk space by using the [source exclude](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#include-exclude) mapping to remove the ELSER terms from the document source.
+The tokens generated by ELSER must be indexed for use in the [sparse_vector query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-sparse-vector-query.md). However, it is not necessary to retain those terms in the document source. You can save disk space by using the [source exclude](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#include-exclude) mapping to remove the ELSER terms from the document source.
 
 ::::{warning}
-Reindex uses the document source to populate the destination index. **Once the ELSER terms have been excluded from the source, they cannot be recovered through reindexing.** Excluding the tokens from the source is a space-saving optimization that should only be applied if you are certain that reindexing will not be required in the future! It’s important to carefully consider this trade-off and make sure that excluding the ELSER terms from the source aligns with your specific requirements and use case. Review the [Disabling the `_source` field](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#disable-source-field) and [Including / Excluding fields from `_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html#include-exclude) sections carefully to learn more about the possible consequences of excluding the tokens from the `_source`.
+Reindex uses the document source to populate the destination index. **Once the ELSER terms have been excluded from the source, they cannot be recovered through reindexing.** Excluding the tokens from the source is a space-saving optimization that should only be applied if you are certain that reindexing will not be required in the future! It’s important to carefully consider this trade-off and make sure that excluding the ELSER terms from the source aligns with your specific requirements and use case. Review the [Disabling the `_source` field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#disable-source-field) and [Including / Excluding fields from `_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#include-exclude) sections carefully to learn more about the possible consequences of excluding the tokens from the `_source`.
 ::::
 
 

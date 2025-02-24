@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "E5"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-e5.html
@@ -146,7 +146,7 @@ If you want to install E5 in an air-gapped environment, you have the following o
 
 For the `multilingual-e5-small` model, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/multilingual-e5-small.metadata.json
 https://ml-models.elastic.co/multilingual-e5-small.pt
 https://ml-models.elastic.co/multilingual-e5-small.vocab.json
@@ -154,7 +154,7 @@ https://ml-models.elastic.co/multilingual-e5-small.vocab.json
 
 For the optimized version, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.metadata.json
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.pt
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.vocab.json

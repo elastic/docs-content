@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -546,7 +546,7 @@ POST _render/template
 
 ## Search template examples with Mustache [search-template-with-mustache-examples]
 
-The mustache templating language defines various tag types you can use within templates. The following sections describe some of these tag types and provide examples of using them in {{es}} [search templates]().
+The mustache templating language defines various tag types you can use within templates. The following sections describe some of these tag types and provide examples of using them in {{es}} search templates.
 
 
 ### Mustache variables [search-template-mustache-variable] 

@@ -1,4 +1,7 @@
 ---
+navigation_title: Applying updates
+applies:
+  eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-update-deployment.html
 ---
@@ -26,6 +29,3 @@ EOF
 ```
 
 ECK will automatically schedule the requested update. Changes can be monitored with the [ECK operator logs](install-using-yaml-manifest-quickstart.md), [`events`](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/event-v1/), and applicable product’s [pod `logs`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_logs/). These will either report successful application of changes or provide context for further troubleshooting. Kindly note, Kubernetes restricts some changes, for example refer to [Updating Volume Claims](volume-claim-templates.md#k8s-volume-claim-templates-update).
-
-This completes our quickstart guide for deploying an {{es}} cluster and {{kib}} instance with our ECK operator. We recommend continuing to [Orchestrating Elastic Stack applications](configure-deployments.md) for more configuration options
-

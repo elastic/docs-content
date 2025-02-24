@@ -38,7 +38,7 @@ The elected master node is the only node to set up resources for the `local` exp
 
 One benefit of the `local` exporter is that it lives within the cluster and therefore no extra configuration is required when the cluster is secured with {{stack}} {{security-features}}. All operations, including indexing operations, that occur from a `local` exporter make use of the internal transport mechanisms within {{es}}. This behavior enables the exporter to be used without providing any user credentials when {{security-features}} are enabled.
 
-For more information about the configuration options for the `local` exporter, see [Local exporter settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-settings.html#local-exporter-settings).
+For more information about the configuration options for the `local` exporter, see [Local exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#local-exporter-settings).
 
 ## Cleaner service [local-exporter-cleaner]
 

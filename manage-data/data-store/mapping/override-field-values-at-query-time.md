@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-override-values.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Override field values at query time [runtime-override-values]
@@ -83,7 +86,7 @@ The response includes indexed values for documents matching model number `HG537P
 
 The following request defines a runtime field where the script evaluates the `model_number` field where the value is `HG537PU`. For each match, the script multiplies the value for the `voltage` field by `1.7`.
 
-Using the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API, you can retrieve the value that the script calculates for the `measures.voltage` field for documents matching the search request:
+Using the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API, you can retrieve the value that the script calculates for the `measures.voltage` field for documents matching the search request:
 
 ```console
 POST my-index-000001/_search

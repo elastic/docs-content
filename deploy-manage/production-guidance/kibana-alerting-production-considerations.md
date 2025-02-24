@@ -27,7 +27,7 @@ For more details on Task Manager, see [Running background tasks](../distributed-
 ::::{important} 
 Rule and action tasks can run late or at an inconsistent schedule. This is typically a symptom of the specific usage of the cluster in question.
 
-You can address such issues by tweaking the [Task Manager settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) or scaling the deployment to better suit your use case.
+You can address such issues by tweaking the [Task Manager settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) or scaling the deployment to better suit your use case.
 
 For detailed guidance, see [Alerting Troubleshooting](../../explore-analyze/alerts-cases/alerts/alerting-troubleshooting.md).
 
@@ -63,7 +63,7 @@ For more information on data stream lifecycle management, see: [Data stream life
 
 ## Circuit breakers [alerting-circuit-breakers] 
 
-There are several scenarios where running alerting rules and actions can start to negatively impact the overall health of a {{kib}} instance either by clogging up Task Manager throughput or by consuming so much CPU/memory that other operations cannot complete in a reasonable amount of time. There are several [configurable](https://www.elastic.co/guide/en/kibana/current/alert-action-settings-kb.html#alert-settings) circuit breakers to help minimize these effects.
+There are several scenarios where running alerting rules and actions can start to negatively impact the overall health of a {{kib}} instance either by clogging up Task Manager throughput or by consuming so much CPU/memory that other operations cannot complete in a reasonable amount of time. There are several [configurable](asciidocalypse://docs/kibana/docs/reference/configuration-reference/alerting-settings.md#alert-settings) circuit breakers to help minimize these effects.
 
 
 ### Rules with very short intervals [_rules_with_very_short_intervals] 

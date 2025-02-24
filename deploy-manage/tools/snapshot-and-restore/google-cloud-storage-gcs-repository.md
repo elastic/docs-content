@@ -1,12 +1,12 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-gcp-snapshotting.html
+applies_to:
+  deployment:
+    ece: 
 ---
 
 # Google Cloud Storage (GCS) repository [ece-configure-gcp-snapshotting]
 
-Snapshots to GCS are supported using an [advanced repository configuration](cloud-enterprise.md#ece-manage-repositories-add) and service account credentials that can administer your GCS bucket.
-
+Snapshots to GCS are supported using an [advanced repository configuration](cloud-enterprise.md) and service account credentials that can administer your GCS bucket.
 
 ## Set up your service account credentials [ece_set_up_your_service_account_credentials]
 
@@ -26,7 +26,7 @@ Add your Google Cloud Storage bucket as a repository to the platform:
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Go to **Platform > Repositories** and add the following snapshot repository configuration under the advanced mode:
 
-    Repository GCS (check: [supported settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html#repository-gcs-repository))
+    Repository GCS (check: [supported settings](/deploy-manage/tools/snapshot-and-restore/google-cloud-storage-repository.md#repository-gcs-repository))
 
     ```json
     {

@@ -34,11 +34,11 @@ You need permission to manage API keys
 
 You need to either:
 
-* Ask an administrator to update your user role to at least **Developer** by going to the user icon on the header bar and opening **Organization** → **Members**. Read more about user roles in [Assign user roles and privileges](../../raw-migrated-files/docs-content/serverless/general-manage-organization.md#general-assign-user-roles). After your use role is updated, restart the onboarding flow.
+* Ask an administrator to update your user role to at least **Developer** by going to the user icon on the header bar and opening **Organization** → **Members**. Read more about user roles in [](/deploy-manage/users-roles/cloud-organization/user-roles.md). After your use role is updated, restart the onboarding flow.
 * Get an API key from an administrator and manually add the API to the {{agent}} configuration. See [Configure the {{agent}}](../../raw-migrated-files/docs-content/serverless/observability-stream-log-files.md#observability-stream-log-files-step-3-configure-the-agent) for more on manually updating the configuration and adding the API key.
 ::::
 
-::::{tab-item} {{stack}} 9.0.0+
+::::{tab-item} {{stack}}
 If you don’t have the required privileges to create an API key, you’ll see the following error message:
 
 ```plaintext
@@ -63,9 +63,9 @@ You need to either:
 
 
 ### Failed to create API key [logs-troubleshooting-API-key-failed]
-:::{applies}
-:stack: all
-:::
+```yaml {applies_to}
+stack: all
+```
 
 If you don’t have the privileges to create `savedObjects` in {{kib}}, you’ll see the following error message:
 
@@ -160,7 +160,7 @@ If the **Waiting for Logs to be shipped…​** step never completes, logs are n
 
 #### Solution [logs-troubleshooting-wait-for-logs-solution]
 
-Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](https://www.elastic.co/guide/en/fleet/current/debug-standalone-agents.html#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
+Inspect the {{agent}} logs for errors. See the [Debug standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/debug-standalone-agents.md#inspect-standalone-agent-logs) documentation for more on finding errors in {{agent}} logs.
 
 
 ## Mapping and pipeline issues [logs-common-mapping-troubleshooting]
@@ -225,7 +225,7 @@ PUT my-index-000001
 }
 ```
 
-Refer to the [`date` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/date.html) docs for more information.
+Refer to the [`date` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) docs for more information.
 
 
 ### Grok or dissect pattern mismatch [logs-mapping-troubleshooting-grok-mismatch]
@@ -239,7 +239,7 @@ Provided Grok patterns do not match field value...
 
 #### Solution [logs-mapping-troubleshooting-grok-solution]
 
-Make sure your [grok](https://www.elastic.co/guide/en/elasticsearch/reference/current/grok-processor.html) or [dissect](https://www.elastic.co/guide/en/elasticsearch/reference/current/dissect-processor.html) processor pattern matches your log document format.
+Make sure your [grok](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/grok-processor.md) or [dissect](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) processor pattern matches your log document format.
 
 You can build and debug grok patterns in {{kib}} using the [Grok Debugger](../../explore-analyze/query-filter/tools/grok-debugger.md). Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the global search field.
 

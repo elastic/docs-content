@@ -17,3 +17,10 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/kibana/kibana/setup.md
 %      Notes: 5 child docs, all needed
 % - [ ] ./raw-migrated-files/kibana/kibana/install.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/kibana/kibana/setup.md](/raw-migrated-files/kibana/kibana/setup.md)
+* [/raw-migrated-files/kibana/kibana/install.md](/raw-migrated-files/kibana/kibana/install.md)

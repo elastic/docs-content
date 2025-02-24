@@ -8,7 +8,7 @@ Elastic Stack SSO requires a valid Enterprise license or Enterprise trial licens
 
 
 ::::{tip}
-Make sure you check the complete [Configuring SAML single sign-on on the Elastic Stack](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html) guide before setting up SAML SSO for Kibana and Elasticsearch deployments managed by ECK.
+Make sure you check the complete [Configuring SAML single sign-on on the Elastic Stack](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md) guide before setting up SAML SSO for Kibana and Elasticsearch deployments managed by ECK.
 ::::
 
 
@@ -25,7 +25,7 @@ The `sp.*` SAML settings must point to Kibana endpoints that are accessible from
 ::::
 
 
-Check Elastic [Stack SAML documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-guide-idp) for more information on `idp.*` and `sp.*` settings.
+Check Elastic [Stack SAML documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-guide-idp) for more information on `idp.*` and `sp.*` settings.
 
 Make sure not to disable Elasticsearch’s file realm set by ECK, as ECK relies on the file realm for its operation. Set the `order` setting of the SAML realm to a greater value than the `order` value set for the file and native realms, which is by default -100 and -99 respectively. We recommend setting the priority of SAML realms to be lower than other realms, as shown in the next example.
 
@@ -90,7 +90,7 @@ spec:
 ```
 
 ::::{note}
-To configure Elasticsearch for signing messages and/or for encrypted messages, keys and certificates should be mounted from a Kubernetes secret similar to how the SAML metadata file is mounted in the previous example. Passphrases, if needed, should be added to Elasticsearch’s keystore using ECK’s Secure Settings feature. For more information, check [the Secure Settings documentation](../../../deploy-manage/security/secure-settings.md) and [the Encryption and signing section](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-enc-sign) in the Stack SAML guide.
+To configure Elasticsearch for signing messages and/or for encrypted messages, keys and certificates should be mounted from a Kubernetes secret similar to how the SAML metadata file is mounted in the previous example. Passphrases, if needed, should be added to Elasticsearch’s keystore using ECK’s Secure Settings feature. For more information, check [the Secure Settings documentation](../../../deploy-manage/security/secure-settings.md) and [the Encryption and signing section](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-enc-sign) in the Stack SAML guide.
 ::::
 
 
@@ -100,7 +100,7 @@ To configure Elasticsearch for signing messages and/or for encrypted messages, k
 To enable SAML authentication in Kibana, you have to add SAML as an authentication provider and specify the SAML realm that you used in your Elasticsearch configuration.
 
 ::::{tip}
-You can configure multiple authentication providers in Kibana and let users choose the provider they want to use. For more information, check [the Kibana authentication documentation](https://www.elastic.co/guide/en/kibana/current/kibana-authentication.html).
+You can configure multiple authentication providers in Kibana and let users choose the provider they want to use. For more information, check [the Kibana authentication documentation](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
 ::::
 
 
@@ -124,7 +124,7 @@ spec:
 ```
 
 ::::{important}
-Your SAML users cannot login to Kibana until they are assigned roles. For more information, refer to [the Configuring role mapping section](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-role-mapping) in the Stack SAML guide.
+Your SAML users cannot login to Kibana until they are assigned roles. For more information, refer to [the Configuring role mapping section](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-role-mapping) in the Stack SAML guide.
 ::::
 
 
@@ -132,9 +132,9 @@ Your SAML users cannot login to Kibana until they are assigned roles. For more i
 
 ## Generating Service Provider metadata [k8s_generating_service_provider_metadata]
 
-The Elastic Stack supports generating service provider metadata, that can be imported to the identity provider, and configure many of the integration options between the identity provider and the service provider, automatically. For more information, check [the Generating SP metadata section](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-guide-stack.html#saml-sp-metadata) in the Stack SAML guide.
+The Elastic Stack supports generating service provider metadata, that can be imported to the identity provider, and configure many of the integration options between the identity provider and the service provider, automatically. For more information, check [the Generating SP metadata section](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-sp-metadata) in the Stack SAML guide.
 
-To generate the Service Provider metadata using [the elasticsearch-saml-metadata command](https://www.elastic.co/guide/en/elasticsearch/reference/current/saml-metadata.html), you will have to run the command using `kubectl`, and then copy the generated metadata file to your local machine. For example:
+To generate the Service Provider metadata using [the elasticsearch-saml-metadata command](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/saml-metadata.md), you will have to run the command using `kubectl`, and then copy the generated metadata file to your local machine. For example:
 
 ```sh
 # Create metadata

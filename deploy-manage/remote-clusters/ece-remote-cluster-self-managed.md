@@ -135,8 +135,8 @@ A deployment can be configured to trust all or specific deployments in any envir
 6. Select **Create trust** to complete the configuration.
 7. Configure the self-managed cluster to trust this deployment, so that both deployments are configured to trust each other:
 
-    * Download the Certificate Authority used to sign the certificates of your deployment nodes (it can be found in the **Security** page of your deployment)
-    * Trust this CA either using the [setting](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html) `xpack.security.transport.ssl.certificate_authorities` in `elasticsearch.yml` or by [adding it to the trust store](../security/different-ca.md).
+   * Download the Certificate Authority used to sign the certificates of your deployment nodes (it can be found in the Security page of your deployment)
+   * Trust this CA either using the [setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md) `xpack.security.transport.ssl.certificate_authorities` in `elasticsearch.yml` or by [adding it to the trust store](../security/different-ca.md).
 
 8. Generate certificates with an `otherName` attribute using the {{es}} certutil. Create a file called `instances.yaml` with all the details of the nodes in your on-premise cluster like below. The `dns` and `ip` settings are optional, but `cn` is mandatory for use with the `trust_restrictions` path setting in the next step. Next, run `./bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12 -in instances.yaml` to create new certificates for all the nodes at once. You can then copy the resulting files into each node.
 
@@ -237,14 +237,14 @@ On the local cluster, add the remote cluster using {{kib}} or the {{es}} API.
       :::
 
       ::::{note}
-      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-endpoints.html).
+      If you’re having issues establishing the connection and the remote cluster is part of an {{ece}} environment with a private certificate, make sure that the proxy address and server name match with the the certificate information. For more information, refer to [Administering endpoints in {{ece}}](/deploy-manage/deploy/cloud-enterprise/change-endpoint-urls.md).
       ::::
 
 4. Click **Next**.
 5. Click **Add remote cluster** (you have already established trust in a previous step).
 
 ::::{note}
-This configuration of remote clusters uses the [Proxy mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html#proxy-mode) and it requires that the allocators can communicate via http with the proxies.
+This configuration of remote clusters uses the [Proxy mode](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#proxy-mode) and it requires that the allocators can communicate via http with the proxies.
 ::::
 
 
@@ -313,7 +313,7 @@ curl -k -H 'Content-Type: application/json' -X PUT -H "Authorization: ApiKey $EC
 Note the following when using the {{ece}} RESTful API:
 
 1. A cluster alias must contain only letters, numbers, dashes (-), or underscores (_).
-2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#skip-unavailable-clusters).
+2. To learn about skipping disconnected clusters, refer to the [{{es}} documentation](/solutions/search/cross-cluster-search.md#skip-unavailable-clusters).
 3. When remote clusters are already configured for a deployment, the `PUT` request replaces the existing configuration with the new configuration passed. Passing an empty array of resources will remove all remote clusters.
 
 The following API request retrieves the remote clusters configuration:

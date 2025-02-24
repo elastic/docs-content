@@ -17,7 +17,7 @@ mapped_pages:
 
 ## Upgrade the {{stack}} [apm-integration-upgrade-ess-1]
 
-Use the {{ecloud}} console to upgrade the {{stack}} to version 9.0.0-beta1. See the [{{ess}} upgrade guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for details.
+Use the {{ecloud}} Console to upgrade the {{stack}} to version 9.0.0-beta1. See the [Upgrade guide](../../../deploy-manage/upgrade/deployment-or-cluster.md) for details.
 
 
 ## Switch to {{agent}} [apm-integration-upgrade-ess-2]
@@ -53,7 +53,7 @@ In {{kib}}, navigate to **Management** > **Fleet***. Select the ***Elastic Cloud
 
 Certain {{es}} output configuration options are not available with the APM integration. To ensure data is not lost, you can scale APM and {{fleet}} up and out. APM’s capacity to process events increases with the instance memory size.
 
-Go to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body), select your deployment and click **Edit**. Here you can edit the number and size of each availability zone.
+Go to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select your deployment and click **Edit**. Here you can edit the number and size of each availability zone.
 
 :::{image} ../../../images/observability-scale-apm.png
 :alt: scale APM

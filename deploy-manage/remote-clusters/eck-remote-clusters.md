@@ -9,7 +9,7 @@ mapped_pages:
 
 # Remote clusters with {{eck}} [k8s-remote-clusters]
 
-The [remote clusters module](https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters.html) in {{es}} enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
+The [remote clusters module](/deploy-manage/remote-clusters.md) in Elasticsearch enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
 
 When using remote cluster connections with ECK, the setup process depends on where the remote cluster is deployed.
 
@@ -87,7 +87,7 @@ spec:
   version: 8.16.1
 ```
 
-1. This requires the sample data: [https://www.elastic.co/guide/en/kibana/current/get-started.html#gs-get-data-into-kibana](https://www.elastic.co/guide/en/kibana/current/get-started.html#gs-get-data-into-kibana)
+1. This requires the sample data: [/explore-analyze/index.md#gs-get-data-into-kibana](/explore-analyze/index.md#gs-get-data-into-kibana)
 
 
 You can find a complete example in the [recipes directory](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/recipes/remoteclusters).
@@ -148,7 +148,7 @@ kubectl get secret cluster-one-es-transport-certs-public \
 -o go-template='{{index .data "ca.crt" | base64decode}}' > remote.ca.crt
 ```
 
-You then need to configure the CA as one of the trusted CAs in `cluster-two`. If that cluster is hosted outside of Kubernetes, take the CA certificate that you have just extracted and add it to the list of CAs in [`xpack.security.transport.ssl.certificate_authorities`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#_pem_encoded_files_3).
+You then need to configure the CA as one of the trusted CAs in `cluster-two`. If that cluster is hosted outside of Kubernetes, take the CA certificate that you have just extracted and add it to the list of CAs in [`xpack.security.transport.ssl.certificate_authorities`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#_pem_encoded_files_3).
 
 ::::{note}
 Beware of copying the source Secret as-is into a different namespace. Check [Common Problems: Owner References](../../troubleshoot/deployments/cloud-on-k8s/common-problems.md#k8s-common-problems-owner-refs) for more information.
