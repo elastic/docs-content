@@ -29,7 +29,7 @@ The following built-in users are available:
 
     Anyone who can log in as the `elastic` user has direct read-only access to restricted indices, such as `.security`. This user also has the ability to manage security and create roles with unlimited privileges.
 
-`XF`
+`kibana_system`
 :   The user Kibana uses to connect and communicate with {{es}}.
 
 `logstash_system`
