@@ -15,13 +15,21 @@ navigation_title: LDAP
 
 You can configure the {{stack}} {{security-features}} to communicate with a Lightweight Directory Access Protocol (LDAP) server to authenticate users. See [Configuring an LDAP realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md#ldap-realm-configuration).
 
+To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to user roles.
+
+:::{{tip}}
+This topic describes implementing LDAP at the cluster or deployment level, for the purposes of authenticating with {{es}}. 
+
+You can also configure an {{ece}} installation to use an LDAP server to authenticate users. [Learn more](/deploy-manage/users-roles/cloud-enterprise-orchestrator/ldap.md).
+:::
+
+## How it works
+
 LDAP stores users and groups hierarchically, similar to the way folders are grouped in a file system. An LDAP directory’s hierarchy is built from containers such as the *organizational unit* (`ou`), *organization* (`o`), and *domain component* (`dc`).
 
 The path to an entry is a *Distinguished Name* (DN) that uniquely identifies a user or group. User and group names typically have attributes such as a *common name* (`cn`) or *unique ID* (`uid`). A DN is specified as a string, for example  `"cn=admin,dc=example,dc=com"` (white spaces are ignored).
 
 The `ldap` realm supports two modes of operation, a user search mode and a mode with specific templates for user DNs.
-
-To integrate with LDAP, you configure an `ldap` realm and map LDAP groups to user roles.
 
 ::::{important} 
 When you configure realms in `elasticsearch.yml`, only the realms you specify are used for authentication. If you also want to use the `native` or `file` realms, you must include them in the realm chain.

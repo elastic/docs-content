@@ -19,6 +19,16 @@ The easiest way to manage and authenticate users is with the internal `native` r
 
 In self-managed {{es}} clusters, you can also reset passwords for users in the native realm [using the command line](#reset-pw-cmd-line).
 
+:::{{tip}}
+This topic describes using the native realm at the cluster or deployment level, for the purposes of authenticating with {{es}}. 
+
+You can also manage and authenticate users natively at the following levels:
+
+* For an [{{ece}} installation](/deploy-manage/users-roles/cloud-enterprise-orchestrator/native-user-authentication.md).
+* For an [{{ecloud}} organization](/deploy-manage/users-roles/cloud-organization/manage-users.md).
+:::
+
+
 ## Configure a native realm [native-realm-configuration]
 
 The native realm is available and enabled by default. You can disable it explicitly with the following setting.
