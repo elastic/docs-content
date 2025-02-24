@@ -29,7 +29,7 @@ To upgrade from version 8.10 or later, you need to:
 1. Perform a stack upgrade in {{ecloud}}
 
 
-### Perform a stack upgrade in the {{ecloud}} console [profiling-upgrade-in-cloud]
+### Perform a stack upgrade in the {{ecloud}} Console [profiling-upgrade-in-cloud]
 
 To perform a stack upgrade in {{ecloud}}:
 

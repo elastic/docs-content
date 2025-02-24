@@ -1,8 +1,7 @@
 project: 'Get started'
 toc:
   - file: index.md
+  - file: introduction.md
   - file: the-stack.md
-    children:
-      - file: introduction.md
-      - file: installing-elastic-stack.md
   - file: deployment-options.md
+  - file: versioning-availability.md
