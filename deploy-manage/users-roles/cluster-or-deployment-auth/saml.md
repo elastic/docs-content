@@ -21,34 +21,17 @@ applies_to:
 
 # SAML authentication [saml-realm]
 
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+The {{stack}} supports SAML single-sign-on (SSO) into {{kib}}, using {{es}} as a backend service. 
 
-* [/raw-migrated-files/cloud/cloud/ec-securing-clusters-saml-azure.md](/raw-migrated-files/cloud/cloud/ec-securing-clusters-saml-azure.md)
-
-=====
-
-The {{stack}} {{security-features}} support user authentication using SAML single sign-on (SSO). The {{security-features}} provide this support using the Web Browser SSO profile of the SAML 2.0 protocol.
-
-This protocol is specifically designed to support authentication via an interactive web browser, so it does not operate as a standard authentication realm. Instead, there are {{kib}} and {{es}} {{security-features}} that work together to enable interactive SAML sessions.
+The {{security-features}} provide this support using the Web Browser SSO profile of the SAML 2.0 protocol. This protocol is specifically designed to support authentication using an interactive web browser, so it does not operate as a standard authentication realm. Instead, there are {{kib}} and {{es}} {{security-features}} that work together to enable interactive SAML sessions.
 
 This means that the SAML realm is not suitable for use by standard REST clients. If you configure a SAML realm for use in {{kib}}, you should also configure another realm, such as the [native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) in your authentication chain.
 
-Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the OpenID Connect REST APIs to authenticate the users to {{es}} with SAML, refer to [SAML without {{kib}}](#saml-without-kibana).
+Because this feature is designed with {{kib}} in mind, most sections of this guide assume {{kib}} is used. To learn how a custom web application could use the OpenID Connect REST APIs to authenticate the users to {{es}} with SAML, refer to [SAML without {{kib}}](#saml-without-kibana). 
 
+The SAML support in {{kib}} is designed with the expectation that it will be the primary (or sole) authentication method for users of that {{kib}} instance. After you enable SAML authentication in {{kib}}, it will affect all users who try to login. The [Configuring {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana) section provides more detail about how this works.
 
-=====
-
-The {{stack}} supports SAML single-sign-on (SSO) into {{kib}}, using {{es}} as a backend service. In SAML terminology, the {{stack}} is operating as a *Service Provider*.
-
-The other component that is needed to enable SAML single-sign-on is the *Identity Provider*, which is a service that handles your credentials and performs that actual authentication of users.
-
-If you are interested in configuring SSO into {{kib}}, then you will need to provide {{es}} with information about your *Identity Provider*, and you will need to register the {{stack}} as a known *Service Provider* within that Identity Provider. There are also a few configuration changes that are required in {{kib}} to activate the SAML authentication provider.
-
-For a detailed walk-through of how to implement SAML authentication for Kibana with Azure AD as an identity provider, refer to our guide [Set up SAML with Microsoft Entra ID](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
-
-::::{note}
-The SAML support in {{kib}} is designed on the expectation that it will be the primary (or sole) authentication method for users of that {{kib}} instance. Once you enable SAML authentication in {{kib}} it will affect all users who try to login. The [Configuring {{kib}}](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana) section provides more detail about how this works.
-::::
+For a detailed walk-through of how to implement SAML authentication for {{kib}} with Microsoft Entra ID as an identity provider, refer to our guide [Set up SAML with Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
 
 To configure SAML, you need to perform the following steps:
 
@@ -63,37 +46,54 @@ Additional steps outlined in this document are optional.
 {{stack}} SSO is a [subscription feature](https://www.elastic.co/subscriptions).
 ::::
 
-## The identity provider [saml-guide-idp]
+::::{tip}
+This topic describes implementing SAML SSO at the deployment or cluster level, for the purposes of authenticating with a {{kib}} instance. 
 
-The {{stack}} supports the SAML 2.0 **Web Browser SSO** and **Single Logout** profiles, and can integrate with any Identity Provider (IdP) that supports at least the SAML 2.0 **Web Browser SSO** profile. It has been tested with a number of popular IdP implementations, such as [Microsoft Active Directory Federation Services (ADFS)](https://www.elastic.co/blog/how-to-configure-elasticsearch-saml-authentication-with-adfs), [Azure Active Directory (AAD)](https://www.elastic.co/blog/saml-based-single-sign-on-with-elasticsearch-and-azure-active-directory), and [Okta](https://www.elastic.co/blog/how-to-set-up-okta-saml-login-kibana-elastic-cloud).
+Depending on your deployment type, you can also configure SSO for the following use cases:
 
-This guide assumes that you have an existing IdP and want to add {{kib}} as a Service Provider.
+* If you're using {{ech}} or {{serverless-full}}, then you can configure SAML SSO [at the organization level](/deploy-manage/users-roles/cloud-organization/configure-saml-authentication.md). SAML SSO configured at this level can be used to control access to both the {{ecloud}} Console and to specific {{ech}} deployments and {{serverless-full}} projects. [Learn more about deployment-level vs. organization-level SSO](/deploy-manage/users-roles/cloud-organization.md#organization-deployment-sso).
+* If you're using {{ece}}, then you can configure SAML [at the installation level](/deploy-manage/users-roles/cloud-enterprise-orchestrator/saml.md), and then configure [SSO](/deploy-manage/users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md) for deployments.
+::::
 
-The {{stack}} uses a standard XML-formatted SAML *metadata* document, which defines the capabilities and features of your IdP. You should be able to download or generate such a document within your IdP administration interface.
+## Identity provider requirements [saml-guide-idp]
 
-Download the IdP metadata document and store it within the `config` directory on each {{es}} node. For the purposes of this guide, we will assume that you are storing it as `config/saml/idp-metadata.xml`.
+In SAML terminology, the {{stack}} is operating as a *Service Provider*.
 
-The IdP will have been assigned an identifier (*EntityID* in SAML terminology) which is most commonly expressed in *Uniform Resource Identifier* (URI) form. Your admin interface may tell you what this is, or you might need to read the metadata document to find it - look for the `entityID` attribute on the `EntityDescriptor` element.
+The other component that is needed to enable SAML single-sign-on is the *Identity Provider*, which is a service that handles your credentials and performs that actual authentication of users. 
 
-Most IdPs will provide an appropriate metadata file with all the features that the {{stack}} requires, and should only require the configuration steps described below. For completeness sake, the minimum requirements that the {{stack}} has for the IdP’s metadata are:
+If you are interested in configuring SSO into {{kib}}, then you need to provide {{es}} with information about your *Identity Provider*, and you will need to register the {{stack}} as a known *Service Provider* within that Identity Provider. There are also a few configuration changes that are required in {{kib}} to activate the SAML authentication provider.
 
-* An `<EntityDescriptor>` with an `entityID` that matches the {{es}} [configuration](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm)
+### Supported IdPs
+
+The {{stack}} supports the SAML 2.0 Web Browser SSO and Single Logout profiles, and can integrate with any Identity Provider (IdP) that supports at least the SAML 2.0 Web Browser SSO profile. It has been tested with a number of popular IdP implementations, such as [Microsoft Active Directory Federation Services (ADFS)](https://www.elastic.co/blog/how-to-configure-elasticsearch-saml-authentication-with-adfs), [Microsoft Entra ID](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md), and [Okta](https://www.elastic.co/blog/how-to-set-up-okta-saml-login-kibana-elastic-cloud).
+
+### Required IdP information
+
+The {{stack}} accepts a standard XML-formatted SAML *metadata* document, which defines the capabilities and features of your IdP. You should be able to download or generate such a document within your IdP administration interface. You can pass this IdP document as a URL, or download it and make the file available to {{es}} For more information, see [`idp.metadata.path`](#idp-metadata-path).
+
+The IdP will have been assigned an identifier or *EntityID*, which is most commonly expressed in *Uniform Resource Identifier* (URI) form. Your admin interface might tell you what this is, or you might need to read the metadata document to find it - look for the `entityID` attribute on the `EntityDescriptor` element.
+
+Most IdPs will provide an appropriate metadata file with all the features that the {{stack}} requires, and should only require the configuration steps described below. The minimum requirements that the {{stack}} has for the IdP’s metadata are:
+
+* An `<EntityDescriptor>` with an `entityID` that matches the {{es}} [configuration](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm)
 * An `<IDPSSODescriptor>` that supports the SAML 2.0 protocol (`urn:oasis:names:tc:SAML:2.0:protocol`).
 * At least one `<KeyDescriptor>` that is configured for *signing* (that is, it has `use="signing"` or leaves the `use` unspecified)
 * A `<SingleSignOnService>` with binding of HTTP-Redirect (`urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`)
-* If you want to support [Single Logout](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-logout), a `<SingleLogoutService>` with binding of HTTP-Redirect (`urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`)
+* If you want to support [Single Logout](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-logout), a `<SingleLogoutService>` with binding of HTTP-Redirect (`urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect`)
 
-The {{stack}} requires that all messages from the IdP are signed. For authentication `<Response>` messages, the signature may be applied to either the response itself, or to the individual assertions. For `<LogoutRequest>` messages, the message itself must be signed, and the signature should be provided as a URL parameter, as required by the HTTP-Redirect binding.
+### Signing requirements
+
+The {{stack}} requires that all messages from the IdP are signed. For authentication `<Response>` messages, the signature can be applied to either the response itself, or to the individual assertions. For `<LogoutRequest>` messages, the message itself must be signed, and the signature should be provided as a URL parameter, as required by the `HTTP-Redirect` binding.
 
 ## Prerequisites
 
-Before you set up SAML single-sign on, you must have a SAML IdP configured.
+Before you set up SAML single-sign on, you must have a [SAML IdP](#saml-guide-idp) configured.
 
 If you're using a self-managed cluster, then perform the following additional steps: 
 
 * Enable TLS for HTTP.
 
-    If your {{es}} cluster is operating in production mode, you must configure the HTTP interface to use SSL/TLS before you can enable SAML authentication. For more information, see [Encrypt HTTP client communications for {{es}}](../../../deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
+    If your {{es}} cluster is operating in production mode, you must configure the HTTP interface to use SSL/TLS before you can enable SAML authentication. For more information, see [Encrypt HTTP client communications for {{es}}](/deploy-manage/security/set-up-basic-security-plus-https.md#encrypt-http-communication).
 
     If you started {{es}} [with security enabled](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), then TLS is already enabled for HTTP. 
 
@@ -140,7 +140,7 @@ xpack.security.authc.realms.saml.saml1:
 ::::{dropdown} Common settings
 
 xpack.security.authc.realms.saml.saml1
-:   Defines a new `saml` authentication realm named "saml1". See [Realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) for more explanation of realms.
+:   Defines a new `saml` authentication realm named "saml1". See [Realms](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md) for more explanation of realms.
 
 order
 :   The order of the realm within the realm chain. Realms with a lower order have highest priority and are consulted first. We recommend giving password-based realms such as file, native, LDAP, and Active Directory the lowest order (highest priority), followed by SSO realms such as SAML and OpenID Connect. If you have multiple realms of the same type, give the most frequently accessed realm the lowest order to have it consulted first.
@@ -148,7 +148,7 @@ order
   If you're using {{eck}}, then make sure not to disable Elasticsearch’s file realm set by ECK, as ECK relies on the file realm for its operation. Set the `order` setting of the SAML realm to a greater value than the `order` value set for the file and native realms, which is by default -100 and -99 respectively.
 
 idp.metadata.path
-:   The path to the metadata file for your Identity Provider. The metadata file path can either be a path, or an HTTPS URL. 
+:   $$$idp-metadata-path$$$ The path to the metadata file for your Identity Provider. The metadata file path can either be a path, or an HTTPS URL. 
 
     :::{tip} 
     If you want to pass a file path, then review the following: 
@@ -257,7 +257,7 @@ principal
 :   *(Required)* This is the *username* that will be applied to a user that authenticates against this realm. The `principal` appears in places such as the {{es}} audit logs.
 
 groups
-:   *(Recommended)* If you want to use your IdP’s concept of groups or roles as the basis for a user’s {{es}} privileges, you should map them with this attribute. The `groups` are passed directly to your [role mapping rules](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-role-mapping).
+:   *(Recommended)* If you want to use your IdP’s concept of groups or roles as the basis for a user’s {{es}} privileges, you should map them with this attribute. The `groups` are passed directly to your [role mapping rules](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-role-mapping).
 
     :::{note}
     Some IdPs are configured to send the `groups` list as a single value, comma-separated string. To map this SAML attribute to the `attributes.groups` setting in the {{es}} realm, you can configure a string delimiter using the `attribute_delimiters.group` setting.<br><br>For example, splitting the SAML attribute value `engineering,elasticsearch-admins,employees` on a delimiter value of `,` will result in `engineering`, `elasticsearch-admins`, and `employees` as the list of groups for the user.
@@ -420,7 +420,8 @@ By default, {{es}} will sign *all* outgoing SAML messages if a signing key has b
 * If you're using {{eck}}, then install the files as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 :::
 
-#### PEM-formatted keys
+::::{tab-set}
+:::{tab-item} PEM formatted keys
 
 If you want to use **PEM formatted** keys and certificates for signing, then you should configure the following settings on the SAML realm:
 
@@ -433,8 +434,8 @@ If you want to use **PEM formatted** keys and certificates for signing, then you
 `signing.secure_key_passphrase`
 :   The passphrase for the key, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
 
-#### Other keys
-
+:::
+:::{tab-item} PKCS#12 or Java Keystore
 If you want to use **PKCS#12 formatted** files or a **Java Keystore** for signing, then you should configure the following settings on the SAML realm:
 
 `signing.keystore.path`
@@ -445,6 +446,8 @@ If you want to use **PKCS#12 formatted** files or a **Java Keystore** for signin
 
 `signing.keystore.secure_password`
 :   The passphrase for the keystore, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
+:::
+::::
 
 #### Sign only certain message types
 
@@ -481,7 +484,8 @@ If an `Assertion` contains both encrypted and plain-text attributes, then failur
 * If you're using {{eck}}, then install the files as [custom configuration files](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret).
 :::
 
-#### PEM-formatted keys
+::::{tab-set}
+:::{tab-item} PEM-formatted keys
 
 If you want to use **PEM formatted** keys and certificates for SAML encryption, then you should configure the following settings on the SAML realm:
 
@@ -494,7 +498,8 @@ If you want to use **PEM formatted** keys and certificates for SAML encryption, 
 `encryption.secure_key_passphrase`
 :   The passphrase for the key, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
 
-#### Other keys
+:::
+:::{tab-item} PKCS#12 or Java Keystore
 
 If you want to use **PKCS#12 formatted** files or a **Java Keystore** for SAML encryption, then you should configure the following settings on the SAML realm:
 
@@ -506,6 +511,9 @@ If you want to use **PKCS#12 formatted** files or a **Java Keystore** for SAML e
 
 `encryption.keystore.secure_password`
 :   The passphrase for the keystore, if the file is encrypted. This is a secure setting that must be uploaded to your [{{es}} keystore](/deploy-manage/security/secure-settings.md).
+
+:::
+::::
 
 ## Generate SAML metadata for the Service Provider [saml-sp-metadata]
 
@@ -556,7 +564,7 @@ kubectl cp elasticsearch-sample-es-default-0:/usr/share/elasticsearch/saml-elast
 
 When a user authenticates using SAML, they are identified to the {{stack}}, but this does not automatically grant them access to perform any actions or access any data.
 
-Your SAML users cannot do anything until they are assigned roles. This can be done through either the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or with [authorization realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
+Your SAML users cannot do anything until they are assigned roles. This can be done through either the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping) or with [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms).
 
 You can map SAML users to roles in the following ways: 
 
@@ -565,7 +573,7 @@ You can map SAML users to roles in the following ways:
 * By delegating authorization to another realm.
 
 ::::{note}
-You can't use [role mapping files](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) to grant roles to users authenticating using SAML.
+You can't use [role mapping files](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file) to grant roles to users authenticating using SAML.
 ::::
 
 ### Example: Using the role mapping API 
@@ -583,7 +591,7 @@ PUT /_security/role_mapping/saml-example
 }
 ```
 
-1. The `example_role` role is **not** a builtin Elasticsearch role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-indices-priv) and [Kibana features](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
+1. The `example_role` role is **not** a builtin Elasticsearch role. This example assumes that you have created a custom role of your own, with appropriate access to your [data streams, indices,](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-indices-priv) and [Kibana features](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md#kibana-feature-privileges).
 
 ### Example: Role mapping API, using SAML attributes
 
@@ -594,7 +602,7 @@ The user fields that are provided to the role mapping are derived from the SAML 
 * `username`: The `principal` attribute
 * `dn`: The `dn` attribute
 * `groups`: The `groups` attribute
-* `metadata`: See [User metadata](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-user-metadata)
+* `metadata`: See [User metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-user-metadata)
 
 If your IdP has the ability to provide groups or roles to Service Providers, then you should map this SAML attribute to the `attributes.groups` setting in the {{es}} realm, and then make use of it in a role mapping.
 
@@ -618,7 +626,7 @@ PUT /_security/role_mapping/saml-finance
 
 ### Delegating SAML authorization to another realm
 
-If your users also exist in a repository that can be directly accessed by {{es}} (such as an LDAP directory) then you can use [authorization realms](../../../deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) instead of role mappings.
+If your users also exist in a repository that can be directly accessed by {{es}} (such as an LDAP directory) then you can use [authorization realms](/deploy-manage/users-roles/cluster-or-deployment-auth/realm-chains.md#authorization_realms) instead of role mappings.
 
 In this case, you perform the following steps: 
 
@@ -634,8 +642,8 @@ If you're using a self-managed cluster, then, because OIDC requires {{es}} nodes
 
 SAML authentication in {{kib}} is subject to the following timeout settings in `kibana.yml`:
 
-* [`xpack.security.session.idleTimeout`](../../../deploy-manage/security/kibana-session-management.md#session-idle-timeout)
-* [`xpack.security.session.lifespan`](../../../deploy-manage/security/kibana-session-management.md#session-lifespan)
+* [`xpack.security.session.idleTimeout`](/deploy-manage/security/kibana-session-management.md#session-idle-timeout)
+* [`xpack.security.session.lifespan`](/deploy-manage/security/kibana-session-management.md#session-lifespan)
 
 You may want to adjust these timeouts based on your security requirements.
 
@@ -660,7 +668,7 @@ The configuration values used in the example above are:
 :   Add `saml` provider to instruct {{kib}} to use SAML SSO as the authentication method.
 
 `xpack.security.authc.providers.saml.<provider-name>.realm`
-:   Set this to the name of the SAML realm that you have used in your [Elasticsearch realm configuration](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm), for instance: `saml1`
+:   Set this to the name of the SAML realm that you have used in your [Elasticsearch realm configuration](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-create-realm), for instance: `saml1`
 
 ### Supporting SAML and basic authentication in {{kib}} [saml-kibana-basic]
 
@@ -719,7 +727,7 @@ xpack.security.authc.realms.saml.saml_eng:
   attributes.principal: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
 ```
 
-It is possible to have one or more {{kib}} instances that use SAML, while other instances use basic authentication against another realm type (e.g. [Native](../../../deploy-manage/users-roles/cluster-or-deployment-auth/native.md) or [LDAP](../../../deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md)).
+It is possible to have one or more {{kib}} instances that use SAML, while other instances use basic authentication against another realm type (e.g. [Native](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md) or [LDAP](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md)).
 
 ## Troubleshooting SAML realm configuration [saml-troubleshooting]
 
@@ -731,15 +739,14 @@ The SAML 2.0 specification offers a lot of options and flexibility for the imple
 The SAML realm in {{es}} is designed to allow users to authenticate to {{kib}} and as such, most of the parts of the guide above make the assumption that {{kib}} is used. This section describes how a custom web application could use the relevant SAML REST APIs in order to authenticate the users to {{es}} with SAML.
 
 ::::{note}
-This section assumes that the reader is familiar with the SAML 2.0 standard and more specifically with the SAML 2.0 Web Browser Single Sign On profile.
+This section assumes that you are familiar with the SAML 2.0 standard and more specifically with the SAML 2.0 Web Browser Single Sign On profile.
 ::::
-
 
 Single sign-on realms such as OpenID Connect and SAML make use of the Token Service in {{es}} and in principle exchange a SAML or OpenID Connect Authentication response for an {{es}} access token and a refresh token. The access token is used as credentials for subsequent calls to {{es}}. The refresh token enables the user to get new {{es}} access tokens after the current one expires.
 
 ### SAML realm [saml-no-kibana-realm]
 
-You must create a SAML realm and configure it accordingly in {{es}}. See [Configure {{es}} for SAML authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-elasticsearch-authentication)
+You must create a SAML realm and configure it accordingly in {{es}}. See [Configure {{es}} for SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-elasticsearch-authentication)
 
 
 ### Service Account user for accessing the APIs [saml-no-kibana-user]
@@ -790,12 +797,12 @@ On a high level, the custom web application would need to perform the following 
 
     Elasticsearch will validate this and if all is correct will respond with an access token that can be used as a `Bearer` token for subsequent requests. It also supplies a refresh token that can be later used to refresh the given access token as described in [get token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token).
 
-4. The response to calling `/_security/saml/authenticate` will contain only the username of the authenticated user. If you need to get the values for the SAML Attributes that were contained in the SAML Response for that user, you can call the Authenticate API `/_security/_authenticate/` using the access token as a `Bearer` token and the SAML attribute values will be contained in the response as part of the [User metadata](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-user-metadata).
+4. The response to calling `/_security/saml/authenticate` will contain only the username of the authenticated user. If you need to get the values for the SAML Attributes that were contained in the SAML Response for that user, you can call the Authenticate API `/_security/_authenticate/` using the access token as a `Bearer` token and the SAML attribute values will be contained in the response as part of the [User metadata](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-user-metadata).
 
 
 ### Handling the IdP-initiated authentication flow [saml-no-kibana-idp-init-sso]
 
-{{es}} can also handle the IdP-initiated Single Sign On flow of the SAML 2 Web Browser SSO profile. In this case the authentication starts with an unsolicited authentication response from the SAML Identity Provider. The difference with the [SP initiated SSO](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-no-kibana-sp-init-sso) is that the web application needs to handle requests to the `sp.acs` that will not come as responses to previous redirections. As such, it will not have a session for the user already, and it will not have any stored values for the `id` parameter. The request to the `_security/saml/authenticate` API will look like the one below in this case:
+{{es}} can also handle the IdP-initiated Single Sign On flow of the SAML 2 Web Browser SSO profile. In this case the authentication starts with an unsolicited authentication response from the SAML Identity Provider. The difference with the [SP initiated SSO](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-no-kibana-sp-init-sso) is that the web application needs to handle requests to the `sp.acs` that will not come as responses to previous redirections. As such, it will not have a session for the user already, and it will not have any stored values for the `id` parameter. The request to the `_security/saml/authenticate` API will look like the one below in this case:
 
 ```console
 POST /_security/saml/authenticate
@@ -818,7 +825,7 @@ POST /_security/saml/authenticate
     }
     ```
 
-    If the SAML realm is configured accordingly and the IdP supports it (see [SAML logout](../../../deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-logout)), this request will trigger a SAML SP-initiated Single Logout. In this case, the response will include a `redirect` parameter indicating where the user needs to be redirected at the IdP in order to complete the logout.
+    If the SAML realm is configured accordingly and the IdP supports it (see [SAML logout](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-logout)), this request will trigger a SAML SP-initiated Single Logout. In this case, the response will include a `redirect` parameter indicating where the user needs to be redirected at the IdP in order to complete the logout.
 
 2. Alternatively, the IdP might initiate the Single Logout flow at some point. In order to handle this, the Logout URL (`sp.logout`) needs to be handled by the custom web app. The query part of the URL that the user will be redirected to will contain a SAML Logout request and this query part needs to be relayed to {{es}} using the [SAML invalidate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-invalidate)
 

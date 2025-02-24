@@ -9,6 +9,10 @@ applies:
 
 You can configure {{ece}} to delegate authentication of users to a Security Assertion Markup Language (SAML) authentication provider. {{ece}} supports the SAML 2.0 Web Browser Single Sign On Profile only, and this requires the use of a web browser. Due to this, SAML profiles should not be used for standard API clients. The security deployment acts as a SAML 2.0 compliant *service provider*.
 
+:::{{tip}}
+This topic describes implementing SAML SSO at the {{ece}} installation level. If you want to control access to a specific deployment, then refer to [SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+:::
+
 To set up SAML authentication, perform the following steps:
 
 1. Specify the [general SAML settings](#ece-saml-general-settings).
