@@ -174,7 +174,7 @@ The transaction sample rate can be changed dynamically (no redeployment necessar
 
 ### {{kib}} API configuration [_kib_api_configuration]
 
-{{apm-agent}} configuration exposes an API that can be used to programmatically change your agents' sampling rate. An example is provided in the [Agent configuration API reference](../../../solutions/observability/apps/agent-configuration-api.md).
+{{apm-agent}} configuration exposes an API that can be used to programmatically change your agents' sampling rate. For examples, refer to the [Agent configuration API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-agent-configuration).
 
 
 ### {{apm-agent}} configuration [_apm_agent_configuration]

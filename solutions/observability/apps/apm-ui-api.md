@@ -1,13 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-app-api.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # APM UI API [apm-app-api]
 
 Some Applications UI features are provided via a REST API:
 
-* [Agent Configuration API](agent-configuration-api.md)
+* Agent Configuration API ([{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-agent-configuration) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-agent-configuration))
 * [Annotation API](annotation-api.md)
 * [RUM source map API](rum-source-map-api.md)
 * [APM agent Key API](apm-agent-key-api.md)
