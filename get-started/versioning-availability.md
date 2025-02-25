@@ -18,13 +18,13 @@ It's important to understand this versioning system, for compatibility and [upgr
 
 ## Understanding availability in the docs
 
-Elastic products and features have different availability states across deployment types and lifecycle stages. Our documentation uses special badges to help you quickly identify where and when features are available for your specific environment.
+Elastic products and features have different availability states across deployment types and lifecycle stages. Our documentation uses badges to help you quickly identify where and when features are available for your specific environment.
 
 ### What the badges mean
 
 Each badge provides up to three key pieces of information:
 
-- **Deployment type**: The environment where the feature is available (Stack, ECE, ECK, etc.)
+- **Deployment type**: The environment where the feature is available (Stack, Serverless ECE, ECK, etc.)
 - **Lifecycle state**: The development or support status of the feature (GA, Beta, etc.)
 - **Version**: The specific version the lifecycle state applies to
 
@@ -47,19 +47,21 @@ Badges can appear in two places:
 
 ### Where feature availability may differ
 
-Features may have different lifecycle states between:
+Features may have different states between:
 
 - **[Elastic Stack](the-stack.md)** versions (e.g., 9.0, 9.1)
-- **Serverless projects**:
-  - Security
-  - Elasticsearch
-  - Observability
-- **Deployment types**:
+- **Deployment types** (and deployment versions)
   - [Elastic Cloud Hosted](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
   - [Elastic Cloud Serverless](/deploy-manage/deploy/elastic-cloud/serverless.md)
   - [Self-managed deployments](/deploy-manage/deploy/self-managed.md)
   - [Elastic Cloud Enterprise (ECE)](/deploy-manage/deploy/cloud-enterprise.md)
+    - ECE deployment versions (for example, 4.0.0)
   - [Elastic Cloud on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md)
+    - ECK deployment versions (for example, 3.0.0)
+- **Serverless project types**
+  - Security
+  - Elasticsearch
+  - Observability
 
 ### How to read the badges
 
@@ -72,7 +74,7 @@ stack: ga 9.1
 ```
 - **Deployment type**: Elastic Stack
 - **Version**: 9.1
-- **Lifecycle**: Generally Available (GA)
+- **Lifecycle**: Generally Available (GA) — default state
 
 #### Example #2: Serverless-only feature with project differences
 
@@ -83,7 +85,7 @@ serverless:
 ```
 - **Deployment type**: Serverless 
 - **Lifecycle**: 
-  - Beta for Security porjects
+  - Beta for Security projects
   - Generally Available for Elasticsearch projects
 
 #### Example #3: Discontinued feature on one deployment type
