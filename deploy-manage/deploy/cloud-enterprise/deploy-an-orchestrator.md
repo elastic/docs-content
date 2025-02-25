@@ -37,6 +37,7 @@ This section provides step-by-step guidance on:
 After deploying the ECE platform, you may need to configure custom proxy certificates, manage snapshot repositories, or perform maintenance operations, among other tasks. Refer to the following sections for more details:
 
 * [Secure your ECE installation](../../security/secure-your-elastic-cloud-enterprise-installation.md)
+*[](/deploy-manage/security/secure-your-cluster-deployment.md)
 * [Users and roles](../../users-roles/cloud-enterprise-orchestrator.md)
 * [Manage snapshot repositories](../../tools/snapshot-and-restore.md)
 * [Manage licenses](../../license/manage-your-license-in-ece.md)
