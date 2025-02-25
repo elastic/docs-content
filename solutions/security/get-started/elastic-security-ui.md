@@ -116,7 +116,7 @@ Expand this section to access the following pages:
     :class: screenshot
     :::
 
-* [**Benchmarks**](/solutions/security/cloud/benchmarks-2.md): View, set up, or configure cloud security benchmarks.
+* [**Benchmarks**](/solutions/security/cloud/benchmarks.md): View, set up, or configure cloud security benchmarks.
 
     :::{image} ../../../images/security-benchmark-rules.png
     :alt: Benchmark Integrations page

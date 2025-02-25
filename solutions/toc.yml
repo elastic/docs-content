@@ -492,7 +492,7 @@ toc:
             children:
               - file: security/cloud/get-started-with-kspm.md
               - file: security/cloud/findings-page-2.md
-              - file: security/cloud/benchmarks-2.md
+              - file: security/cloud/benchmarks.md
               - file: security/cloud/cloud-security-posture-dashboard-2.md
               - file: security/cloud/frequently-asked-questions-faq-2.md
           - file: security/cloud/cloud-native-vulnerability-management.md

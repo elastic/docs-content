@@ -15,7 +15,7 @@ mapped_urls:
 % - [x] ./raw-migrated-files/security-docs/security/cspm-posture-dashboard.md
 % - [ ] ./raw-migrated-files/docs-content/serverless/security-cloud-posture-dashboard-dash-cspm.md
 
-The Cloud Security Posture dashboard summarizes your cloud infrastructure’s overall performance against [security guidelines](/solutions/security/cloud/benchmarks-2.md) defined by the Center for Internet Security (CIS). To get started monitoring your security posture, refer to [Get started with Cloud Security Posture Management](/solutions/security/cloud/get-started-with-cspm-for-aws.md) or [Get started with Kubernetes Security Posture Management](/solutions/security/cloud/get-started-with-kspm.md).
+The Cloud Security Posture dashboard summarizes your cloud infrastructure’s overall performance against [security guidelines](/solutions/security/cloud/benchmarks.md) defined by the Center for Internet Security (CIS). To get started monitoring your security posture, refer to [Get started with Cloud Security Posture Management](/solutions/security/cloud/get-started-with-cspm-for-aws.md) or [Get started with Kubernetes Security Posture Management](/solutions/security/cloud/get-started-with-kspm.md).
 
 :::{image} ../../../images/security-cloud-sec-dashboard.png
 :alt: The cloud Security dashboard
