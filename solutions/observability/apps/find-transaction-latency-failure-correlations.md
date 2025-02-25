@@ -20,7 +20,8 @@ To find correlations:
 Select a service on the **Services** page in the Applications UI then select a transaction group from the **Transactions** tab.
 
 ::::{note}
-Queries within the Applications UI are also applied to the correlations.
+Active queries *are* applied to correlations.
+
 ::::
 
 :::

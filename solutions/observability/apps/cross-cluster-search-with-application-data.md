@@ -2,6 +2,8 @@
 navigation_title: "Cross-cluster search"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-cross-cluster-search.html
+applies_to:
+  stack: all
 ---
 
 
