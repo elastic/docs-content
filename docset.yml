@@ -12,6 +12,9 @@ toc:
   - toc: deploy-manage
   - toc: cloud-account
   - toc: troubleshoot
+  - toc: release-notes
+  - toc: reference
+  - toc: extend
   - toc: raw-migrated-files
 
 subs:

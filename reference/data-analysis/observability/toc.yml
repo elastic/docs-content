@@ -1,0 +1,8 @@
+toc:
+  - file: index.md
+  - file: metrics-reference-serverless.md
+    children:
+      - file: observability-host-metrics-serverless.md
+      - file: observability-container-metrics-serverless.md
+      - file: observability-kubernetes-pod-metrics-serverless.md
+      - file: observability-aws-metrics-serverless.md

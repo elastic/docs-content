@@ -1,0 +1,22 @@
+project: 'Security Elastic Defend reference'
+toc:
+  - file: index.md
+  - file: elastic-endpoint-deploy-reqs.md
+  - file: install-endpoint.md
+    children:
+      - file: deploy-elastic-endpoint.md
+      - file: deploy-elastic-endpoint-ven.md
+      - file: deploy-with-mdm.md
+      - file: agent-tamper-protection.md
+  - file: endpoint-management-req.md
+  - file: configure-endpoint-integration-policy.md
+    children:
+      - file: artifact-control.md
+      - file: endpoint-diagnostic-data.md
+      - file: self-healing-rollback.md
+      - file: linux-file-monitoring.md
+      - file: endpoint-data-volume.md
+      - file: create-defend-policy-api.md
+  - file: offline-endpoint.md
+  - file: uninstall-agent.md
+  

@@ -1,0 +1,49 @@
+toc:
+  - file: overview/index.md
+    children:
+    - file: security/index.md
+      children:
+        - toc: reference/security/elastic-defend
+        - toc: reference/security/security/elastic-defend
+    - toc: reference/observability
+    - file: search/search.md
+    - file: elasticsearch.md
+      children:
+        - file: elasticsearch/clients/index.md
+    - file: ingestion-tools.md
+      children:
+        - toc: reference/ingestion-tools/fleet
+        - file: ingestion-tools/observability/apm.md
+          children:
+            - file: ingestion-tools/observability/apm-settings.md
+            - file: ingestion-tools/cloud/apm-settings.md
+            - file: ingestion-tools/cloud-enterprise/apm-settings.md
+            - file: ingestion-tools/apm/apm-agents.md
+    - file: ecs.md
+    - file: data-analysis/index.md
+      children:
+        - file: data-analysis/machine-learning/supplied-anomaly-detection-configurations.md
+          children:
+            - file: data-analysis/machine-learning/ootb-ml-jobs-apache.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-apm.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-auditbeat.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-logs-ui.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-metricbeat.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-metrics-ui.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-nginx.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-siem.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-uptime.md
+        - file: data-analysis/machine-learning/machine-learning-functions.md
+          children:
+            - file: data-analysis/machine-learning/ml-count-functions.md
+            - file: data-analysis/machine-learning/ml-geo-functions.md
+            - file: data-analysis/machine-learning/ml-info-functions.md
+            - file: data-analysis/machine-learning/ml-metric-functions.md
+            - file: data-analysis/machine-learning/ml-rare-functions.md
+            - file: data-analysis/machine-learning/ml-sum-functions.md
+            - file: data-analysis/machine-learning/ml-time-functions.md
+        - toc: reference/data-analysis/observability
+        - file: data-analysis/kibana/canvas-functions.md
+          children:
+            - file: data-analysis/kibana/tinymath-functions.md
+    - file: glossary/index.md
