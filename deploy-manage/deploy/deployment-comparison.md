@@ -45,8 +45,8 @@ This reference provides detailed comparisons of features and capabilities across
 | Custom plugins and bundles | Available | Available | No |
 | Self-managed connectors | Available | Limited | Limited |
 | Elasticsearch-Hadoop integration | Available | Available | No |
-| Cross cluster search (CCS) | Available | Available | No |
-| Cross cluster replication | Available | Available | No |
+| Cross cluster search (CCS) | Available | Available | [Planned](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-planned) |
+| Cross cluster replication | Available | Available | [Planned](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-feature-planned) |
 
 ## Development and testing features
 
