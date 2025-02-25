@@ -51,15 +51,26 @@ To set up a filter, follow these steps:
 
 The following connectors are available with AutoOps:
 
-* [PagerDuty integration](#ec-autoops-pagerduty-integration)
-* [Slack integration](#ec-autoops-slack-integration)
-* [VictorOps integration](#ec-autoops-victorops-integration)
-* [Opsgenie integration](#ec-autoops-opsgenie-integration)
-* [Microsoft Teams Configuration integration](#ec-autoops-ms-configuration-integration)
-* [Webhook integration](#ec-autoops-webhook-integration)
+* [Email](#email)
+* [PagerDuty](#ec-autoops-pagerduty)
+* [Slack](#ec-autoops-slack)
+* [VictorOps](#ec-autoops-victorops)
+* [Opsgenie](#ec-autoops-opsgenie)
+* [Microsoft Teams Configuration](#ec-autoops-ms-configuration)
+* [Webhook](#ec-autoops-webhook)
 
+### Email [email]
 
-### PagerDuty integration [ec-autoops-pagerduty-integration]
+To set up notifications via email, follow these steps:
+
+1. Add a new **Email** connector.
+2. Add a list of emails.
+   You can add up to 40 emails for a single email connector, and opt in to get alerts also when events close.
+4. To receive notifications, scroll down the **Notification** page and click **Add**.
+5. Fill in the filter details.
+6. Select the events that you want to send to this connector.
+
+### PagerDuty [ec-autoops-pagerduty]
 
 The PagerDuty integration consists of the following parts:
 
@@ -76,7 +87,7 @@ The PagerDuty integration consists of the following parts:
 4. Select the events that should be sent to this output.
 
 
-### Slack integration [ec-autoops-slack-integration]
+### Slack [ec-autoops-slack]
 
 To set up a webhook to send AutoOps notifications to a Slack channel, go through the following steps.
 
@@ -92,7 +103,7 @@ To set up a webhook to send AutoOps notifications to a Slack channel, go through
 10. Add the webhook URL when creating the endpoint.
 
 
-### VictorOps integration [ec-autoops-victorops-integration]
+### VictorOps [ec-autoops-victorops]
 
 The VictorOps integration consists of the following parts:
 
@@ -109,7 +120,7 @@ The VictorOps integration consists of the following parts:
 4. Select the events that should be sent to this output.
 
 
-### Opsgenie integration [ec-autoops-opsgenie-integration]
+### Opsgenie [ec-autoops-opsgenie]
 
 The Opsgenie integration consists of the following parts:
 
@@ -131,7 +142,7 @@ The Opsgenie integration consists of the following parts:
 6. Select events that should be sent to this output.
 
 
-### Microsoft Teams Configuration integration [ec-autoops-ms-configuration-integration]
+### Microsoft Teams Configuration [ec-autoops-ms-configuration]
 
 To create an incoming webhook on your Microsoft Teams, follow [these instructions](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook).
 
@@ -145,7 +156,7 @@ Save the URL displayed during the creation of the incoming webhook, as you will 
 4. Select events that should be sent to this output.
 
 
-### Webhook integration [ec-autoops-webhook-integration]
+### Webhook [ec-autoops-webhook]
 
 A webhook enables an application to provide other applications with real-time information. A webhook is a user-defined HTTP callback (HTTP POST), which is triggered by specific events.
 
@@ -181,8 +192,6 @@ A webhook enables an application to provide other applications with real-time in
 ::::{note}
 When the Endpoint settings have been completed, continue to set up the notification filter to define which events you’d like to be notified about.
 ::::
-
-
 
 ## Notifications report [ec-notification-report]
 

@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-change-hardware-profile.html
 ---
 
 # Change hardware profiles [ec-change-hardware-profile]
 
-Deployment [hardware profiles](ec-configure-deployment-settings.md#ec-hardware-profiles) deploy the Elastic Stack on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU.
+Deployment hardware profiles deploy the Elastic Stack on virtual hardware. Each hardware profile has a different blend of storage, RAM, and vCPU.
 
 Elastic Cloud regularly introduces new hardware profiles to provide:
 
@@ -27,6 +30,7 @@ Note that if there’s no indication that a newer version is available, that mea
 
     :::{image} ../../../images/cloud-ec-new-hardware-profile-version.png
     :alt: Badge indicating new hardware profile version
+    :width: 50%
     :::
 
 2. Preview the changes for the new hardware profile version.

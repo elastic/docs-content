@@ -4,21 +4,14 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-alerts-run-osquery.html
 ---
 
-# Run Osquery from alerts
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/alerts-run-osquery.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-alerts-run-osquery.md
+# Run Osquery from alerts [security-alerts-run-osquery]
 
 Run live queries on hosts associated with alerts to learn more about your infrastructure and operating systems. For example, with Osquery, you can search your system for indicators of compromise that might have contributed to the alert. You can then use this data to inform your investigation and alert triage efforts.
 
 ::::{admonition} Requirements
 * The [Osquery manager integration](/solutions/security/investigate/manage-integration.md) must be installed.
 * {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
-* Your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
+* Your role must have the appropriate [feature privileges](/solutions/security/investigate/osquery.md#required_osquery-privileges) in {{stack}} or [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}.
 
 ::::
 
@@ -58,7 +51,7 @@ To run Osquery from an alert:
 
 
         :::{image} ../../../images/security-setup-query.png
-        :alt: setup query
+        :alt: Shows how to set up a single query
         :class: screenshot
         :::
 
