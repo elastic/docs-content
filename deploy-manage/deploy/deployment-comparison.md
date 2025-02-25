@@ -35,7 +35,7 @@ This reference provides detailed comparisons of features and capabilities across
 
 | Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
-| [Data lifecycle management](/manage-data/lifecycle.md) | ILM | ILM and data tiers | Data stream lifecycle |
+| [Data lifecycle management](/manage-data/lifecycle.md) | ILM | ILM and data tiers | Data stream lifecycle ([why?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-features-replaced)) |
 | [Snapshot management](/deploy-manage/tools/snapshot-and-restore.md) | Custom | Available | Managed by Elastic |
 
 ## Integrations and extensions
