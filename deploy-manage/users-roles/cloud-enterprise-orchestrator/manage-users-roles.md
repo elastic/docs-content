@@ -1,15 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-rbac.html
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # Manage users and roles [ece-configure-rbac]
 
-:::{image} ../../../images/cloud-enterprise-ece-rbac-intro.png
-:alt: User groups
-:::
-
-Role-based access control (RBAC) provides a way to add multiple users and restrict their access to specific platform resources. In addition to the system `admin` and `readonly` users, you can utilize pre-built roles to control access to platform operations, deployment assets, or API calls.
+Role-based access control (RBAC) provides a way to add multiple users and restrict their access to specific platform resources. In addition to the system `admin` and `readonly` users, you can create additional users and assign pre-built roles to control access to platform operations, deployment assets, or API calls.
 
 Implementing RBAC in your environment benefits you in several ways:
 
@@ -19,14 +18,17 @@ Implementing RBAC in your environment benefits you in several ways:
 * Adds multiple users by:
 
     * Creating [native users](native-user-authentication.md) locally.
-    * Integrating with third-party authentication providers like [ActiveDirectory](active-directory.md), [LDAP](ldap.md) or [SAML](saml.md).
+    * Integrating with third-party authentication providers like [Active Directory](active-directory.md), [LDAP](ldap.md) or [SAML](saml.md).
 
+::::{tip}
+This topic describes implementing RBAC at the {{ece}} installation level, which can be used to access the Cloud UI, and which can be set up to provide SSO capabilities to access deployments orchestrated by your {{ece}} installation. 
+
+If you want to manage access to each deployment individually, then refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth.md).
+::::
 
 ::::{important}
 With RBAC, interacting with API endpoints now requires a [bearer token](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/ece-api-command-line.md) or [API key](../../api-keys/elastic-cloud-enterprise-api-keys.md#ece-api-keys).
 ::::
-
-
 
 ## Before you begin [ece_before_you_begin_8]
 
@@ -50,30 +52,42 @@ Deployment viewer
 :   Can view non-system deployments, including their activity. Can prepare the diagnostic bundle, inspect the files, and download the bundle as a ZIP file.
 
 
-## Configure security deployment [ece-configure-security-deployment]
+## Step 1: Configure the security deployment [ece-configure-security-deployment]
 
-The security deployment is a system deployment that manages all of the Elastic Cloud Enterprise authentication and permissions. It is created automatically during installation.
+The security deployment is a system deployment that manages all of the {{ece}} authentication and permissions. It is created automatically during installation.
 
 ::::{important}
-We strongly recommend using three availability zones with at least 1 GB Elasticsearch nodes. You can scale up if you expect a heavy authentication workload.
+We strongly recommend using three availability zones with at least 1 GB {{es}} nodes. You can scale up if you expect a heavy authentication workload.
 ::::
 
 
-1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Go to **Deployments** a select the **security-cluster**.
-3. Configure regular snapshots of the security deployment. This is critical if you plan to create any native users.
-4. Optional: [Enable monitoring](../../monitor/stack-monitoring/ece-stack-monitoring.md) on the security deployment to a dedicated monitoring deployment.
+3. Configure regular [snapshots](/deploy-manage/tools/snapshot-and-restore/create-snapshots.md) of the security deployment. This is critical if you plan to create any native users.
+4. Optional: [Enable monitoring](/deploy-manage/monitor/stack-monitoring/ece-stack-monitoring.md) on the security deployment to a dedicated monitoring deployment.
 
-If you have authentication issues, you check out the security deployment Elasticsearch logs.
+If you have authentication issues, you check out the security deployment {{es}} [logs](/deploy-manage/monitor/logging-configuration.md).
+
+## Step 2: Set up provider profiles
+
+Configure any third-party authentication providers that you want to use.
+
+If you want to use only [native user authentication](native-user-authentication.md), then no additional configuration is required.
+
+* [Active Directory](active-directory.md)
+* [LDAP](ldap.md)
+* [SAML](saml.md)
+
+During setup, you can map users according to their properties to {{ece}} roles.
 
 
-## Change the order of provider profiles [ece-provider-order]
+## Step 3: Change the order of provider profiles [ece-provider-order]
 
-Elastic Cloud Enterprise performs authentication checks against the configured providers, in order. When a match is found, the user search stops. The roles specified by that first profile match dictate which permissions the user is granted—​regardless of what permissions might be available in another, lower-order profile.
+{{ece}} performs authentication checks against the configured providers, in order. When a match is found, the user search stops. The roles specified by that first profile match dictate which permissions the user is granted—​regardless of what permissions might be available in another, lower-order profile.
 
 To change the provider order:
 
-1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Go to **Users** and then **Authentication providers**.
 3. Use the carets to update the provider order.
 

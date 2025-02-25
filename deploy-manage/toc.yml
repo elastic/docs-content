@@ -202,6 +202,8 @@ toc:
               - file: deploy/cloud-enterprise/resize-deployment.md
                 children:
                   - file: deploy/cloud-enterprise/resource-overrides.md
+              - file: deploy/cloud-enterprise/add-plugins.md
+              - file: deploy/cloud-enterprise/add-custom-bundles-plugins.md
               - file: deploy/cloud-enterprise/manage-integrations-server.md
                 children:
                   - file: deploy/cloud-enterprise/switch-from-apm-to-integrations-server-payload.md
@@ -613,14 +615,23 @@ toc:
                   - file: users-roles/cluster-or-deployment-auth/kerberos.md
                   - file: users-roles/cluster-or-deployment-auth/ldap.md
                   - file: users-roles/cluster-or-deployment-auth/openid-connect.md
+                    children:
+                      - file: users-roles/cluster-or-deployment-auth/oidc-examples.md
                   - file: users-roles/cluster-or-deployment-auth/saml.md
+                    children:
+                      - file: users-roles/cluster-or-deployment-auth/saml-entra.md
                   - file: users-roles/cluster-or-deployment-auth/pki.md
                   - file: users-roles/cluster-or-deployment-auth/custom.md
               - file: users-roles/cluster-or-deployment-auth/built-in-users.md
-              - file: users-roles/cluster-or-deployment-auth/user-profiles.md
+                children: 
+                  - file: users-roles/cluster-or-deployment-auth/built-in-sm.md
+              - file: users-roles/cluster-or-deployment-auth/orchestrator-managed-users-overview.md
+                children:
+                  - file: users-roles/cluster-or-deployment-auth/manage-elastic-user-cloud.md
+                  - file: users-roles/cluster-or-deployment-auth/managed-credentials-eck.md
+              - file: users-roles/cluster-or-deployment-auth/kibana-authentication.md
               - file: users-roles/cluster-or-deployment-auth/access-agreement.md
               - file: users-roles/cluster-or-deployment-auth/anonymous-access.md
-              - file: users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md
               - file: users-roles/cluster-or-deployment-auth/token-based-authentication-services.md
               - file: users-roles/cluster-or-deployment-auth/service-accounts.md
               - file: users-roles/cluster-or-deployment-auth/internal-users.md
@@ -629,8 +640,10 @@ toc:
                   - file: users-roles/cluster-or-deployment-auth/configure-operator-privileges.md
                   - file: users-roles/cluster-or-deployment-auth/operator-only-functionality.md
                   - file: users-roles/cluster-or-deployment-auth/operator-privileges-for-snapshot-restore.md
+              - file: users-roles/cluster-or-deployment-auth/user-profiles.md
               - file: users-roles/cluster-or-deployment-auth/looking-up-users-without-authentication.md
               - file: users-roles/cluster-or-deployment-auth/controlling-user-cache.md
+              - file: users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md
           - file: users-roles/cluster-or-deployment-auth/user-roles.md
             children:
               - file: users-roles/cluster-or-deployment-auth/defining-roles.md

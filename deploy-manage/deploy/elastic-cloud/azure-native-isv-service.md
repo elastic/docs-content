@@ -179,7 +179,7 @@ $$$azure-integration-azure-user-management$$$Is the {{ecloud}} Azure Native ISV 
     :alt: Error message displayed in the {{ecloud}} console: To access the resource {resource-name}
     :::
 
-    Share deployment resources directly with other Azure users by [configuring Active Directory single sign-on with the {{es}} cluster](../../users-roles/cluster-or-deployment-auth/openid-connect.md#ec-securing-oidc-azure).
+    Share deployment resources directly with other Azure users by [configuring Active Directory single sign-on with the {{es}} cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/oidc-examples.md#ec-securing-oidc-azure).
 
 
 $$$azure-integration-azure-rbac$$$Does {{ecloud}} Azure Native ISV Service support recently introduced {{ecloud}} RBAC capability?
