@@ -1,6 +1,7 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-uninstalling-eck.html
+applies_to:
+  deployment:
+    eck:
 ---
 
 # Uninstall Elastic Cloud on Kubernetes [k8s-uninstalling-eck]
