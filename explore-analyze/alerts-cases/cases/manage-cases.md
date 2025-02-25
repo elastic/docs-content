@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-cases.html
 ---
@@ -37,7 +37,7 @@ Open a new case to keep track of issues and share their details with colleagues.
 
 You can configure email notifications that occur when users are assigned to cases.
 
-For hosted {{kib}} on {{ess}}:
+For {{kib}} on {{ecloud}}:
 
 1. Add the email domains to the [notifications domain allowlist](../alerts.md).
 

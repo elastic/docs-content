@@ -2,7 +2,8 @@
 navigation_title: "Search UI"
 mapped_pages:
   - https://www.elastic.co/guide/en/search-ui/current/overview.html
-applies:
+  - https://www.elastic.co/guide/en/search-ui/current/index.html
+applies_to:
   stack:
   serverless:
 ---

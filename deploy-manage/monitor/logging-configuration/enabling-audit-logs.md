@@ -126,7 +126,6 @@ spec:
   nodeSets:
   - name: default
     config:
-      # https://www.elastic.co/guide/en/elasticsearch/reference/current/enable-audit-logging.html
       xpack.security.audit.enabled: true
 ---
 apiVersion: kibana.k8s.elastic.co/v1
@@ -142,7 +141,6 @@ spec:
       - name: monitoring
         namespace: observability
   config:
-    # https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html
     xpack.security.audit.enabled: true
 ```
 

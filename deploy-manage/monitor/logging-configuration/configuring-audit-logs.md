@@ -20,11 +20,11 @@ When auditing security events, a single client request might generate multiple a
   * [{{es}} ignore policies settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md#audit-event-ignore-policies): Use ignore policies for fine-grained control over which audit events are printed to the log file.
 
     ::::{tip}
-    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are dynamic. This means you can configure them using the [cluster update settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying `elasticsearch.yml`. 
+    In {{es}}, all auditing settings except `xpack.security.audit.enabled` are dynamic. This means you can configure them using the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings), allowing changes to take effect immediately without requiring a restart. This approach is faster and more convenient than modifying `elasticsearch.yml`. 
     ::::
 
 For a complete description of event details and format, refer to the following resources:
-  * [{{es}} audit events details and schema](asciidocalypse://elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events)
+  * [{{es}} audit events details and schema](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/elasticsearch-audit-events.md)
   * [{{es}} log entry output format](/deploy-manage/monitor/logging-configuration/logfile-audit-output.md#audit-log-entry-format)
 
 ### Kibana auditing configuration
@@ -38,7 +38,7 @@ In self-managed systems, you can optionally configure audit logs location, and f
 To configure {{kib}} settings, follow the same [procedure](./enabling-audit-logs.md#enable-audit-logging-procedure) as when enabling {{kib}} audit logs, but apply the relevant settings instead.
 ::::
 
-For a complete description of auditing event details, such as `category`, `type`, or `action`, refer to [{{kib}} audit events](https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html#xpack-security-ecs-audit-logging).
+For a complete description of auditing event details, such as `category`, `type`, or `action`, refer to [{{kib}} audit events](asciidocalypse://docs/kibana/docs/reference/kibana-audit-events.md).
 
 ### General recommendations
 

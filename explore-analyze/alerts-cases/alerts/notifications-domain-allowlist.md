@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations-notifications-domain-allowlist.html
 ---
@@ -24,7 +24,7 @@ Changes to the allowlist do not take effect immediately. After saving your chang
 
 ### Using the UI [using-the-ui]
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Select a deployment.
 3. From your deployment menu, go to the **Edit** page.
 4. Select **Save**.

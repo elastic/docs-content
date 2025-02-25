@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-search-limitations.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Rollup search limitations [rollup-search-limitations]

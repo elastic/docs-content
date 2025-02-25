@@ -1,6 +1,9 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Elasticsearch ingest pipelines [ingest]
@@ -225,12 +228,12 @@ POST _reindex
 
 ## Set a default pipeline [set-default-pipeline]
 
-Use the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-default-pipeline) index setting to set a default pipeline. {{es}} applies this pipeline to indexing requests if no `pipeline` parameter is specified.
+Use the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) index setting to set a default pipeline. {{es}} applies this pipeline to indexing requests if no `pipeline` parameter is specified.
 
 
 ## Set a final pipeline [set-final-pipeline]
 
-Use the [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-final-pipeline) index setting to set a final pipeline. {{es}} applies this pipeline after the request or default pipeline, even if neither is specified.
+Use the [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting to set a final pipeline. {{es}} applies this pipeline after the request or default pipeline, even if neither is specified.
 
 
 ## Pipelines for {{beats}} [pipelines-for-beats]
@@ -246,7 +249,7 @@ output.elasticsearch:
 
 ## Pipelines for {{fleet}} and {{agent}} [pipelines-for-fleet-elastic-agent]
 
-{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](https://www.elastic.co/guide/en/fleet/current/index.html) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
+{{agent}} integrations ship with default ingest pipelines that preprocess and enrich data before indexing. [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) applies these pipelines using [index templates](../../data-store/templates.md) that include [pipeline index settings](ingest-pipelines.md#set-default-pipeline). {{es}} matches these templates to your {{fleet}} data streams based on the [stream’s naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
 
 Each default integration pipeline calls a nonexistent, unversioned `*@custom` ingest pipeline. If unaltered, this pipeline call has no effect on your data. However, you can modify this call to create custom pipelines for integrations that persist across upgrades. Refer to [Tutorial: Transform data with custom ingest pipelines](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams-pipeline-tutorial.md) to learn more.
 
@@ -267,7 +270,7 @@ $$$pipeline-custom-logs-index-template$$$
     }
     ```
 
-2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-default-pipeline) or [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
+2. Create an [index template](../../data-store/templates.md) that includes your pipeline in the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Ensure the template is [data stream enabled](../../data-store/data-streams/set-up-data-stream.md#create-index-template). The template’s index pattern should match `logs-<dataset-name>-*`.
 
     You can create this template using {{kib}}'s [**Index Management**](../../lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
@@ -342,7 +345,7 @@ $$$pipeline-custom-logs-configuration$$$
 
 **{{agent}} standalone**
 
-If you run {{agent}} standalone, you can apply pipelines using an [index template](../../data-store/templates.md) that includes the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-default-pipeline) or [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-final-pipeline) index setting. Alternatively, you can specify the `pipeline` policy setting in your `elastic-agent.yml` configuration. See [Install standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md).
+If you run {{agent}} standalone, you can apply pipelines using an [index template](../../data-store/templates.md) that includes the [`index.default_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-default-pipeline) or [`index.final_pipeline`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#index-final-pipeline) index setting. Alternatively, you can specify the `pipeline` policy setting in your `elastic-agent.yml` configuration. See [Install standalone {{agent}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md).
 
 
 ## Pipelines for search indices [pipelines-in-enterprise-search]

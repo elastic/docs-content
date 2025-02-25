@@ -24,6 +24,7 @@ toc:
       - file: distributed-architecture/kibana-tasks-management.md
   - file: deploy.md
     children:
+      - file: deploy/deployment-comparison.md
       - file: deploy/elastic-cloud.md
         children:
           - file: deploy/elastic-cloud/create-an-organization.md
@@ -111,22 +112,21 @@ toc:
       - file: deploy/cloud-enterprise.md
         children:
           - file: deploy/cloud-enterprise/ece-architecture.md
-          - file: deploy/cloud-enterprise/ece-containerization.md
-          - file: deploy/cloud-enterprise/prepare-environment.md
-            children:
-              - file: deploy/cloud-enterprise/ece-hardware-prereq.md
-              - file: deploy/cloud-enterprise/ece-software-prereq.md
-              - file: deploy/cloud-enterprise/ece-sysconfig.md
-              - file: deploy/cloud-enterprise/ece-networking-prereq.md
-              - file: deploy/cloud-enterprise/ece-ha.md
-              - file: deploy/cloud-enterprise/ece-roles.md
-              - file: deploy/cloud-enterprise/ece-load-balancers.md
-              - file: deploy/cloud-enterprise/ece-users-permissions.md
-              - file: deploy/cloud-enterprise/ece-jvm.md
-              - file: deploy/cloud-enterprise/ece-wildcard-dns.md
-              - file: deploy/cloud-enterprise/ece-manage-capacity.md
           - file: deploy/cloud-enterprise/deploy-an-orchestrator.md
             children:
+              - file: deploy/cloud-enterprise/prepare-environment.md
+                children:
+                  - file: deploy/cloud-enterprise/ece-hardware-prereq.md
+                  - file: deploy/cloud-enterprise/ece-software-prereq.md
+                  - file: deploy/cloud-enterprise/ece-sysconfig.md
+                  - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-ha.md
+                  - file: deploy/cloud-enterprise/ece-roles.md
+                  - file: deploy/cloud-enterprise/ece-load-balancers.md
+                  - file: deploy/cloud-enterprise/ece-users-permissions.md
+                  - file: deploy/cloud-enterprise/ece-jvm.md
+                  - file: deploy/cloud-enterprise/ece-wildcard-dns.md
+                  - file: deploy/cloud-enterprise/ece-manage-capacity.md
               - file: deploy/cloud-enterprise/install.md
                 children:
                   - file: deploy/cloud-enterprise/identify-deployment-scenario.md
@@ -418,22 +418,16 @@ toc:
                   - file: tools/snapshot-and-restore/source-only-repository.md
               - file: tools/snapshot-and-restore/elastic-cloud-hosted.md
                 children:
-                  - file: tools/snapshot-and-restore/ec-custom-repository.md
-                    children:
-                      - file: tools/snapshot-and-restore/ec-aws-custom-repository.md
-                      - file: tools/snapshot-and-restore/ec-gcs-snapshotting.md
-                      - file: tools/snapshot-and-restore/ec-azure-snapshotting.md
-                  - file: tools/snapshot-and-restore/ech-custom-repository.md
-                    children:
-                      - file: tools/snapshot-and-restore/ech-aws-custom-repository.md
-                      - file: tools/snapshot-and-restore/ech-gcs-snapshotting.md
-                      - file: tools/snapshot-and-restore/ech-azure-snapshotting.md
+                  - file: tools/snapshot-and-restore/ec-aws-custom-repository.md
+                  - file: tools/snapshot-and-restore/ec-gcs-snapshotting.md
+                  - file: tools/snapshot-and-restore/ec-azure-snapshotting.md
                   - file: tools/snapshot-and-restore/access-isolation-for-found-snapshots-repository.md
                     children:
                       - file: tools/snapshot-and-restore/repository-isolation-on-azure.md
                       - file: tools/snapshot-and-restore/repository-isolation-on-aws-gcp.md
               - file: tools/snapshot-and-restore/cloud-enterprise.md
                 children:
+                  - file: tools/snapshot-and-restore/ece-aws-custom-repository.md
                   - file: tools/snapshot-and-restore/google-cloud-storage-gcs-repository.md
                   - file: tools/snapshot-and-restore/azure-storage-repository.md
                   - file: tools/snapshot-and-restore/minio-on-premise-repository.md
@@ -532,7 +526,6 @@ toc:
           - file: remote-clusters/remote-clusters-cert.md
           - file: remote-clusters/remote-clusters-migrate.md
           - file: remote-clusters/remote-clusters-settings.md
-          - file: remote-clusters/remote-clusters-troubleshooting.md
       - file: remote-clusters/eck-remote-clusters.md
   - file: security.md
     children:

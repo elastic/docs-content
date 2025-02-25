@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/example-using-index-lifecycle-policy.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Tutorial: Customize built-in policies

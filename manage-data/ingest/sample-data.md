@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/sample-data.html
   - https://www.elastic.co/guide/en/kibana/current/connect-to-elasticsearch.html#_add_sample_data
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Sample data

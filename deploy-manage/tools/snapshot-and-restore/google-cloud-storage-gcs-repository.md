@@ -1,12 +1,12 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-gcp-snapshotting.html
+applies_to:
+  deployment:
+    ece: 
 ---
 
 # Google Cloud Storage (GCS) repository [ece-configure-gcp-snapshotting]
 
-Snapshots to GCS are supported using an [advanced repository configuration](cloud-enterprise.md#ece-manage-repositories-add) and service account credentials that can administer your GCS bucket.
-
+Snapshots to GCS are supported using an [advanced repository configuration](cloud-enterprise.md) and service account credentials that can administer your GCS bucket.
 
 ## Set up your service account credentials [ece_set_up_your_service_account_credentials]
 

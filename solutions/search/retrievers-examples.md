@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/retrievers-examples.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrievers_examples.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -88,7 +88,7 @@ POST /retrievers_example/_doc/4
 POST /retrievers_example/_doc/5
 {
  "vector": [0.11, 0.65, 0.47],
- "text": "Learn how to spin up a deployment of our hosted Elasticsearch Service and use Elastic Observability to gain deeper insight into the behavior of your applications and systems.",
+ "text": "Learn how to spin up a deployment on Elastic Cloud and use Elastic Observability to gain deeper insight into the behavior of your applications and systems.",
  "year": 2024,
  "topic": ["documentation", "observability", "elastic"],
  "timestamp": "2025-01-01T12:10:30"
@@ -1271,7 +1271,7 @@ The output of which, albeit a bit verbose, will provide all the necessary info t
 
 ## Example: Rerank results of an RRF retriever [retrievers-examples-text-similarity-reranker-on-top-of-rrf]
 
-To demonstrate the full functionality of retrievers, the following examples also require access to a [semantic reranking model](/solutions/search/ranking/semantic-reranking.md) set up using the [Elastic inference APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html).
+To demonstrate the full functionality of retrievers, the following examples also require access to a [semantic reranking model](/solutions/search/ranking/semantic-reranking.md) set up using the [Elastic inference APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 In this example we’ll set up a reranking service and use it with the `text_similarity_reranker` retriever to rerank our top results.
 

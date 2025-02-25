@@ -17,7 +17,7 @@ Most options in this section are supported by all APM Server deployment methods.
 ::::
 
 
-The [Real User Monitoring (RUM) agent](https://www.elastic.co/guide/en/apm/agent/rum-js/current/index.html) captures user interactions with clients such as web browsers. These interactions are sent as events to the APM Server. Because the RUM agent runs on the client side, the connection between agent and server is unauthenticated. As a security precaution, RUM is therefore disabled by default.
+The [Real User Monitoring (RUM) agent](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/index.md) captures user interactions with clients such as web browsers. These interactions are sent as events to the APM Server. Because the RUM agent runs on the client side, the connection between agent and server is unauthenticated. As a security precaution, RUM is therefore disabled by default.
 
 :::::::{tab-set}
 
