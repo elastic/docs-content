@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-integrations-server.html
 ---
@@ -20,13 +23,13 @@ From the deployment **Integrations Server** page you can also:
 * Fully remove the Integrations Server, delete it from the disk, and stop the charges.
 
 ::::{important}
-The APM secret token can no longer be reset from the Elasticsearch Service UI. Check [Secret token](/solutions/observability/apps/secret-token.md) for instructions on managing a secret token. Note that resetting the token disrupts your APM service and restarts the server. When the server restarts, you’ll need to update all of your agents with the new token.
+The APM secret token can no longer be reset from the {{ecloud}} UI. Check [Secret token](/solutions/observability/apps/secret-token.md) for instructions on managing a secret token. Note that resetting the token disrupts your APM service and restarts the server. When the server restarts, you’ll need to update all of your agents with the new token.
 ::::
 
 
 ## Enable Integrations Server through the API [ec-integrations-server-api-example]
 
-This example demonstrates how to use the Elasticsearch Service RESTful API to create a deployment with Integrations Server enabled.
+This example demonstrates how to use the {{ecloud}} RESTful API to create a deployment with Integrations Server enabled.
 
 
 #### Requirements [ec_requirements_2]

@@ -58,4 +58,4 @@ Cutting-edge releases do not remain available forever. Once the GA version of El
 
 ## Version Policy and Product End of Life [ech-version-policy-eol]
 
-For Elasticsearch Service, we follow the [Elastic Version Maintenance and Support Policy](https://www.elastic.co/support/eol), which defines the support and maintenance policy of the Elastic Stack.
+For {{ecloud}}, we follow the [Elastic Version Maintenance and Support Policy](https://www.elastic.co/support/eol), which defines the support and maintenance policy of the Elastic Stack.

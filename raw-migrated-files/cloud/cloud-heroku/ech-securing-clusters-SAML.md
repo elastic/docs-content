@@ -142,7 +142,7 @@ curl -X GET -H "Content-Type: application/json" -u user_name:password https://<e
 
         This bundle allows all Elasticsearch containers to access the metadata file.
 
-    2. Update your Elasticsearch cluster on the [deployments page](../../../deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-elastic-cloud-hosted.md) to use the bundle you prepared in the previous step.
+    2. Update your Elasticsearch cluster on the [deployments page](../../../deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use the bundle you prepared in the previous step.
 
 
         Custom bundles are unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure in the ZIP file. Make sure to save the file location where custom bundles get unzipped, as you will need it in the next step.

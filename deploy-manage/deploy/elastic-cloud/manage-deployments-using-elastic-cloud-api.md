@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-crud.html
 ---
@@ -10,7 +13,7 @@ The following examples demonstrate Create, Read, Update and Delete operations on
 
 ## Listing your deployments [ec_listing_your_deployments]
 
-List the details about all of your Elasticsearch Service deployments.
+List the details about all of your {{ech}} deployments.
 
 ```sh
 curl \
@@ -271,14 +274,14 @@ curl -XPOST \
 
 
 ::::{tip}
-You can get the payload easily from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) **Create Deployment** page, customize the regions, zones, memory allocated for each components, and then select **Equivalent API request**.
+You can get the payload easily from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) **Create Deployment** page, customize the regions, zones, memory allocated for each components, and then select **Equivalent API request**.
 ::::
 
 
 
 ## Using the API to create deployment with non EOL versions [ec_using_the_api_to_create_deployment_with_non_eol_versions]
 
-You are able to create deployments with *non* [End-of-life (EOL) versions](available-stack-versions.md#ec-version-policy-eol) via API, which are not selectable in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) UI. You can simply replace the version number in the above example.
+You are able to create deployments with *non* [End-of-life (EOL) versions](available-stack-versions.md#ec-version-policy-eol) via API, which are not selectable in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) UI. You can simply replace the version number in the above example.
 
 
 ## Update a deployment [ec_update_a_deployment]
@@ -343,7 +346,7 @@ curl -XPUT \
 
 
 ::::{tip}
-You can get the payload easily from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) deployment **Edit** page, customize the zone count, memory allocated for each components, and then select **Equivalent API request**.
+You can get the payload easily from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) deployment **Edit** page, customize the zone count, memory allocated for each components, and then select **Equivalent API request**.
 ::::
 
 
