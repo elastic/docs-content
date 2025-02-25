@@ -44,7 +44,7 @@ Configure the Client Secret that was assigned to the PR by the OP during registr
 
 This is a sensitive setting, it won’t be stored in plaintext in the cluster configuration but rather as a secure setting. In order to do so, follow these steps:
 
-1. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
 
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 

@@ -210,7 +210,7 @@ function changeTabs(e) {
 :::::::{tab-set}
 
 ::::::{tab-item} Elasticsearch Service
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co/?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/?page=docs&placement=docs-body).
 2. Select your deployment on the home page in the {{ess}} card or go to the deployments page.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.

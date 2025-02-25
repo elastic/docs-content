@@ -80,7 +80,7 @@ The following are known limitations and restrictions with autoscaling:
 
 To enable or disable autoscaling on a deployment:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Deployments** page, select your deployment.
 
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
@@ -98,7 +98,7 @@ When autoscaling has been disabled, you need to adjust the size of data tiers an
 
 Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Deployments** page, select your deployment.
 
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.

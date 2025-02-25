@@ -63,7 +63,7 @@ This frequently-asked-questions list helps you with common questions while you g
 
 
     $$$faq-x-pack$$$Is my Elasticsearch cluster protected by X-Pack?
-    :   Yes, X-Pack security features offer the full power to protect your Elasticsearch Service deployment with basic authentication and role-based access control.
+    :   Yes, X-Pack security features offer the full power to protect your {{ech}} deployment with basic authentication and role-based access control.
 
     $$$faq-limit$$$Is there a limit on the number of documents or indexes I can have in my cluster?
     :   No. We do not enforce any artificial limit on the number of indexes or documents you can store in your cluster.

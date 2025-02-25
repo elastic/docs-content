@@ -60,7 +60,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
 2. Configure Elasticsearch and Kibana for SAML:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. [Update your Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
         ```sh
@@ -79,7 +79,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
         * `<Application_ID>`` is your Application ID, available in the application details in Azure.
         * `<Tenant_ID>`` is your Tenant ID, available in the tenant overview page in Azure.
-        * `<Kibana_Endpoint_URL>` is your Kibana endpoint, available from the Elasticsearch Service console. Ensure this is the same value that you set for `Identifier (Entity ID)` in the earlier Azure AD configuration step.
+        * `<Kibana_Endpoint_URL>` is your Kibana endpoint, available from the {{ecloud}} Console. Ensure this is the same value that you set for `Identifier (Entity ID)` in the earlier Azure AD configuration step.
 
             Note that for `idp.metadata.path` we’ve shown the format to construct the URL, but this should be identical to the `App Federation Metadata URL` setting that you made a note of in the previous step.
 
@@ -87,7 +87,7 @@ Follow these steps to configure SAML with Microsoft Entra ID as an identity prov
 
     3. Next, configure Kibana in order to enable SAML authentication:
 
-        1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+        1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
         2. [Update your Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
             ```yaml

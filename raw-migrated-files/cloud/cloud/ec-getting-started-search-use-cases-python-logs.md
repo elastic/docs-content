@@ -1,6 +1,6 @@
 # Ingest logs from a Python application using Filebeat [ec-getting-started-search-use-cases-python-logs]
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elasticsearch Service deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/ecs/ecs-logging-overview/intro.md).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/ecs/ecs-logging-overview/intro.md).
 
 You are going to learn how to:
 
@@ -247,9 +247,9 @@ Beginning with Elastic Stack version 8.0, Kibana *index patterns* have been rena
 
 **Optional: Use an API key to authenticate**
 
-For additional security, instead of using basic authentication you can generate an Elasticsearch API key through the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), and then configure Filebeat to use the new key to connect securely to the Elasticsearch Service deployment.
+For additional security, instead of using basic authentication you can generate an Elasticsearch API key through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), and then configure Filebeat to use the new key to connect securely to the {{ech}} deployment.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Select the deployment name and go to **☰** > **Management** > **Dev Tools**.
 3. Enter the following request:
 
@@ -408,5 +408,5 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 2. As your final step, remember to stop Filebeat and the Python script. Enter *CTRL + C* in both your Filebeat terminal and in your `elvis.py` terminal.
 
-You now know how to monitor log files from a Python application, deliver the log event data securely into an Elasticsearch Service deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about working in Elasticsearch Service.
+You now know how to monitor log files from a Python application, deliver the log event data securely into an {{ech}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about working in Elasticsearch Service.
 

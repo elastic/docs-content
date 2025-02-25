@@ -17,7 +17,7 @@ With the release of the new Support Portal, even if you have an existing account
 There are three ways you can get to the portal:
 
 * Go directly to the Support Portal: [http://support.elastic.co](http://support.elastic.co)
-* From the Elasticsearch Service Console: Go to the [Support page](https://cloud.elastic.co/support?page=docs&placement=docs-body) or select the support icon, that looks like a life preserver, on any page in the console.
+* From the {{ecloud}} Console: Go to the [Support page](https://cloud.elastic.co/support?page=docs&placement=docs-body) or select the support icon, that looks like a life preserver, on any page in the console.
 * Contact us by email: `support@elastic.co`
 
     If you contact us by email, please use the email address that you registered with, so that we can help you more quickly. If you are using a distribution list as your registered email, you can also register a second email address with us. Just open a case to let us know the name and email address you would like to be added.
@@ -25,7 +25,7 @@ There are three ways you can get to the portal:
 
 When opening a case, there are a few things you can do to get help faster:
 
-* Include the deployment ID that you want help with, especially if you have several deployments. The deployment ID can be found on the overview page for your cluster in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+* Include the deployment ID that you want help with, especially if you have several deployments. The deployment ID can be found on the overview page for your cluster in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 * Describe the problem. Include any relevant details, including error messages you encountered, dates and times when the problem occurred, or anything else you think might be helpful.
 * Upload any pertinent files.
 
@@ -35,7 +35,7 @@ When opening a case, there are a few things you can do to get help faster:
 Support is governed by the [Elasticsearch Service Standard Terms of Service](https://www.elastic.co/legal/terms-of-service/cloud). The level of support you can expect to receive applies to your Elasticsearch Service environment only and depends on your subscription level:
 
 Elasticsearch Service Standard subscriptions
-:   Support is provided by email or through the Elastic Support Portal. The main focus of support is to ensure your Elasticsearch Service deployment shows a green status and is available. There is no guaranteed initial or ongoing response time, but we do strive to engage on every issue within three business days. We do not offer weekend coverage, so we respond Monday through Friday only. To learn more, check [Working with Elastic Support Elasticsearch Service Standard](https://www.elastic.co/support/welcome/cloud).
+:   Support is provided by email or through the Elastic Support Portal. The main focus of support is to ensure your {{ech}} deployment shows a green status and is available. There is no guaranteed initial or ongoing response time, but we do strive to engage on every issue within three business days. We do not offer weekend coverage, so we respond Monday through Friday only. To learn more, check [Working with Elastic Support Elasticsearch Service Standard](https://www.elastic.co/support/welcome/cloud).
 
 Elasticsearch Service Gold and Platinum subscriptions
 :   Support is handled by email or through the Elastic Support Portal. Provides guaranteed response times for support issues, better support coverage hours, and support contacts at Elastic. Also includes support for how-to and development questions. The exact support coverage depends on whether you are a Gold or Platinum customer. To learn more, check [Elasticsearch Service Premium Support Services Policy](https://www.elastic.co/legal/support_policy/cloud_premium).

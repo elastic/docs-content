@@ -1,6 +1,6 @@
 # Ingest data from a relational database into Elasticsearch Service [ec-getting-started-search-use-cases-db-logstash]
 
-This guide explains how to ingest data from a relational database into Elasticsearch Service through [Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md), using the Logstash [JDBC input plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an Elasticsearch Service deployment.
+This guide explains how to ingest data from a relational database into Elasticsearch Service through [Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md), using the Logstash [JDBC input plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} deployment.
 
 The code and methods presented here have been tested with MySQL. They should work with other relational databases.
 
@@ -287,7 +287,7 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
     }
     ```
 
-    1. Use the Cloud ID of your Elasticsearch Service deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+    1. Use the Cloud ID of your {{ech}} deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
     2. the default username is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check [Configuring security in Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/secure-connection.md) for information on roles and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Configuring security in Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/secure-connection.md) documentation.
 
 
@@ -299,9 +299,9 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
     api_key
     :   If you choose to use an API key to authenticate (as discussed in the next step), you can provide it here.
 
-3. **Optional**: For additional security, you can generate an Elasticsearch API key through the Elasticsearch Service console and configure Logstash to use the new key to connect securely to Elasticsearch Service.
+3. **Optional**: For additional security, you can generate an Elasticsearch API key through the {{ecloud}} Console and configure Logstash to use the new key to connect securely to Elasticsearch Service.
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. Select the deployment name and go to **☰** > **Management** > **Dev Tools**.
     3. Enter the following:
 
@@ -375,9 +375,9 @@ In this section, we configure Logstash to send the MySQL data to Elasticsearch. 
     bin/logstash -f jdbc.conf
     ```
 
-6. Logstash outputs the MySQL data to your Elasticsearch Service deployment. Let’s take a look in Kibana and verify that data:
+6. Logstash outputs the MySQL data to your {{ech}} deployment. Let’s take a look in Kibana and verify that data:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. Select the deployment and go to **☰** > **Management** > **Dev Tools**
     3. Copy and paste the following API GET request into the Console pane, and then click **▶**. This queries all records in the new `rdbms_idx` index.
 

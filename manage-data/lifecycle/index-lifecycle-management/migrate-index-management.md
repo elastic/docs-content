@@ -26,7 +26,7 @@ To configure ILM Migration in the console:
 ::::{tab-set}
 
 :::{tab-item} {{ech}}
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. From the **Deployments** page, select your deployment.
 
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.

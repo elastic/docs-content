@@ -15,10 +15,10 @@ The following tutorials demonstrate how you can use the Elasticsearch language c
 :   Get data from a relational database into Elasticsearch Service using the Logstash JDBC input plugin. Logstash can be used as an efficient way to copy records and to receive updates from a relational database as changes happen, and then send the new data to a deployment.
 
 [Ingest logs from a Python application using Filebeat](../../../manage-data/ingest/ingesting-data-from-applications/ingest-logs-from-python-application-using-filebeat.md)
-:   Get logs from a Python application and deliver them securely into an Elasticsearch Service deployment. You’ll set up Filebeat to monitor an ECS-formatted log file, and then view real-time visualizations of the log events in Kibana as they occur.
+:   Get logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor an ECS-formatted log file, and then view real-time visualizations of the log events in Kibana as they occur.
 
 [Ingest logs from a Node.js web application using Filebeat](../../../manage-data/ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md)
-:   Get HTTP request logs from a Node.js web application and deliver them securely into an Elasticsearch Service deployment. You’ll set up Filebeat to monitor an ECS-formatted log file and then view real-time visualizations of the log events as HTTP requests occur on your Node.js web server.
+:   Get HTTP request logs from a Node.js web application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor an ECS-formatted log file and then view real-time visualizations of the log events as HTTP requests occur on your Node.js web server.
 
 ::::{tip} 
 You can use [Elasticsearch ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) to preprocess incoming data. This enables you to optimize how your data is indexed, and simplifies tasks such as extracting error codes from a log file and mapping geographic locations to IP addresses.

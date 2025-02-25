@@ -1,13 +1,13 @@
 # Access performance metrics [ec-saas-metrics-accessing]
 
-Cluster performance metrics are available directly in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body). The graphs on this page include a subset of Elasticsearch Service-specific performance metrics.
+Cluster performance metrics are available directly in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body). The graphs on this page include a subset of Elasticsearch Service-specific performance metrics.
 
 For advanced views or production monitoring, [enable logging and monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). The monitoring application provides more advanced views for Elasticsearch and JVM metrics, and includes a configurable retention period.
 
 To access cluster performance metrics:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
 
     On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list. For example, you might want to select **Is unhealthy** and **Has master problems** to get a short list of deployments that need attention.
 

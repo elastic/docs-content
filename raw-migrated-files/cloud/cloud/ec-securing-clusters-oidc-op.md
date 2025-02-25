@@ -25,7 +25,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
         2. Enter a **Name** for your application, for example `ec-oauth2`.
         3. Select a **Supported Account Type** according to your preferences.
-        4. Set the **Redirect URI** as `KIBANA_ENDPOINT_URL/api/security/oidc/callback`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
+        4. Set the **Redirect URI** as `KIBANA_ENDPOINT_URL/api/security/oidc/callback`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
         5. Select **Register**.
         6. Confirm that your new **Application (client) ID** appears in the app details.
 
@@ -63,7 +63,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     To configure Elasticsearch for OIDC:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. [Update your Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
         ```sh
@@ -93,7 +93,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
         * `<Application (client) ID>` is your Client ID, available in the application details on Azure.
         * `<Directory (tenant) ID>` is your Directory ID, available in the application details on Azure.
-        * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+        * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
         * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
 
@@ -136,7 +136,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     The next step is to configure Kibana, in order to initiate the OpenID authentication:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. [Update your Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
         ```sh
@@ -171,7 +171,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
         2. For **Application Type** choose `Web application`.
         3. Choose a **Name** for your OAuth 2 client, for example `ec-oauth2`.
-        4. Add an **Authorized redirect URI**. The URI should be defined as `KIBANA_ENDPOINT_URL/api/security/oidc/callback`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
+        4. Add an **Authorized redirect URI**. The URI should be defined as `KIBANA_ENDPOINT_URL/api/security/oidc/callback`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
         5. Select **Create** and copy your client ID and your client secret for later use.
 
 2. Add your client secret to the Elasticsearch keystore:
@@ -192,7 +192,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     To configure Elasticsearch for OIDC:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. [Update your Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
         ```sh
@@ -219,7 +219,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
         Where:
 
         * `YOUR_CLIENT_ID` is your Client ID.
-        * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+        * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
         * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
 
@@ -262,7 +262,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     The next step is to configure Kibana, in order to initiate the OpenID authentication:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. [Update your Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
         ```sh
@@ -293,7 +293,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
         2. For the **Platform** page settings, select **Web** then **Next**.
         3. In the **Application settings** choose a **Name** for your application, for example `Kibana OIDC`.
-        4. Set the **Base URI** to `KIBANA_ENDPOINT_URL`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
+        4. Set the **Base URI** to `KIBANA_ENDPOINT_URL`. You can retrieve your `KIBANA_ENDPOINT_URL` by opening the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and selecting the Kibana **Copy endpoint** link in your deployment details.
         5. Set the **Login redirect URI** as `KIBANA_ENDPOINT_URL/api/security/oidc/callback`.
         6. Set the **Logout redirect URI** as `KIBANA_ENDPOINT_URL/logged_out`.
         7. Choose **Done** and copy your client ID and client secret values for later use.
@@ -316,7 +316,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     To configure Elasticsearch for OIDC:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. [Update your Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
         ```sh
@@ -344,7 +344,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
         Where:
 
         * `YOUR_CLIENT_ID` is the Client ID that you set up in the previous steps.
-        * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+        * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
         * `YOUR_OKTA_DOMAIN` is the URL of your Okta domain shown on your Okta dashboard.
         * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 
@@ -388,7 +388,7 @@ Follow these steps to configure OpenID Connect single sign-on on Elasticsearch S
 
     The next step is to configure Kibana, in order to initiate the OpenID authentication:
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. [Update your Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) with the following configuration:
 
         ```sh

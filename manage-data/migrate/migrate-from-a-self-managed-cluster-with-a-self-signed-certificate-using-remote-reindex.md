@@ -44,7 +44,7 @@ To upload your file, follow the steps in the section [Add your extension](../../
 
 ## Step 3: Create a new deployment on Elasticsearch Service [ec-remote-reindex-step3]
 
-From the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) create a new deployment. This will be the `Destination` cluster.
+From the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) create a new deployment. This will be the `Destination` cluster.
 
 ::::{note}
 The `Destination` cluster should be the same or newer version as the `Source` cluster. If you already have a cluster available, you can skip this step.

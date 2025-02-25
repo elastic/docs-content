@@ -49,7 +49,7 @@ Knowing how to scale your deployment is critical, especially when unexpected wor
 Scaling with Elasticsearch Service is easy:
 
 * Turn on [deployment autoscaling](../../../deploy-manage/autoscaling.md) to let Elasticsearch Service manage your deployments by adjusting their available resources automatically.
-* Or, if you prefer manual control, log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), select your deployment, select **Edit deployment** from the **Actions** dropdown, and either increase the number of zones or the size per zone.
+* Or, if you prefer manual control, log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select your deployment, select **Edit deployment** from the **Actions** dropdown, and either increase the number of zones or the size per zone.
 
 ::::{warning} 
 Increasing the number of zones should not be used to add more resources. The concept of zones is meant for High Availability (2 zones) and Fault Tolerance (3 zones), but neither will work if the cluster relies on the resources from those zones to be operational. The recommendation is to scale up the resources within a single zone until the cluster can take the full load (add some buffer to be prepared for a peak of requests), then scale out by adding additional zones depending on your requirements: 2 zones for High Availability, 3 zones for Fault Tolerance.

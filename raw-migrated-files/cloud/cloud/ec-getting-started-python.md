@@ -315,7 +315,7 @@ POST /_security/api_key
 }
 ```
 
-Edit the `example.ini` file you created earlier and add the `id` and `api_key` you just created. You should also remove the lines for `user` and `password` you added earlier after you have tested the `api_key`, and consider changing the `elastic` password using the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+Edit the `example.ini` file you created earlier and add the `id` and `api_key` you just created. You should also remove the lines for `user` and `password` you added earlier after you have tested the `api_key`, and consider changing the `elastic` password using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 ```sh
 [DEFAULT]
