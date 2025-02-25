@@ -13,8 +13,8 @@ Uninstalling Elasticsearch can become necessary for several reasons. You might e
 
 Each deployment type uses a different uninstallation process. Refer to the guide that matches your setup:
 
-* [Uninstall Elastic Cloud Enterprise](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise)
-* [Uninstall Elastic Cloud on Kubernetes](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes)
-* [Uninstall a self-managed cluster](/deploy-manage/uninstall/uninstall-a-self-managed-cluster)
-* [Delete a cloud deployment](/deploy-manage/uninstall/delete-a-cloud-deployment)
+* [Uninstall Elastic Cloud Enterprise](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md)
+* [Uninstall Elastic Cloud on Kubernetes](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md)
+* [Uninstall a self-managed cluster](/deploy-manage/uninstall/uninstall-a-self-managed-cluster.md)
+* [Delete a cloud deployment](/deploy-manage/uninstall/delete-a-cloud-deployment.md)
 
