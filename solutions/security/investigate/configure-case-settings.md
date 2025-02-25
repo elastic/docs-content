@@ -6,7 +6,8 @@ mapped_urls:
 
 # Configure case settings [security-cases-settings]
 
-To change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types. In the {{stack}}, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**. In {{serverless-short}}, you can access case settings in an {{elastic-sec}} project, go to **Cases** → **Settings**.
+This page explains how to change case closure options, add custom fields, templates, and connectors for external incident management systems, and create custom observable types. 
+First, find **Cases** in the navigation menu or search for `Security/Cases` by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Settings**. In {{serverless-short}}, you can access case settings in an {{elastic-sec}} project, go to **Cases** → **Settings**.
 
 :::{image} ../../../images/security-cases-settings.png
 :alt: Shows the case settings page
