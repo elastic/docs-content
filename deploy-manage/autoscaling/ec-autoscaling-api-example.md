@@ -3,12 +3,11 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling-api-example.html
 ---
 
-# Autoscaling through the API [ec-autoscaling-api-example]
+# {{ecloud}} autoscaling through the API [ec-autoscaling-api-example]
 
 This example demonstrates how to use the {{ecloud}} RESTful API to create a deployment with autoscaling enabled.
 
 The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](ec-autoscaling-example.md). For more information about using the {{ecloud}} API in general, check [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md).
-
 
 ## Requirements [ec_requirements] 
 

@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-autoscaling-example.html
 ---
 
-# Autoscaling example [ece-autoscaling-example]
+# {{ece}} autoscaling example [ece-autoscaling-example]
 
 To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample Elastic Cloud Enterprise deployment.
 
