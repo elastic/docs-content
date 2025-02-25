@@ -110,7 +110,7 @@ There are a few things that can help you make sure that your production deployme
 
 **Secure your environment**
 
-Control which users and services can access your deployments by [securing your environment](/deploy-manage/users-roles/cluster-or-deployment-auth.md). Add authentication mechanisms, configure [traffic filtering](/deploy-manage/security/traffic-filtering.md) for private link, encrypt your deployment data and snapshots at rest [with your own key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md), manage trust with Elasticsearch clusters from other environments, and more.
+Control which users and services can access your deployments by [securing your environment](/deploy-manage/security/secure-your-cluster-deployment.md). [Add authentication mechanisms](/deploy-manage/users-roles.md), configure [traffic filtering](/deploy-manage/security/traffic-filtering.md) for private link, encrypt your deployment data and snapshots at rest [with your own key](/deploy-manage/security/encrypt-deployment-with-customer-managed-encryption-key.md), [manage trust](/deploy-manage/remote-clusters.md) with {{es}} clusters from other environments, and more.
 
 **Monitor your deployments and keep them healthy**
 
