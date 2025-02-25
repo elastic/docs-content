@@ -3,16 +3,16 @@ toc:
     children:
     - file: security/index.md
       children:
-        - toc: reference/security/elastic-defend
-        - toc: reference/security/security/elastic-defend
-    - toc: reference/observability
+        - toc: security/elastic-defend
+        - toc: security/security/elastic-defend
+    - toc: observability
     - file: search/search.md
     - file: elasticsearch.md
       children:
         - file: elasticsearch/clients/index.md
     - file: ingestion-tools.md
       children:
-        - toc: reference/ingestion-tools/fleet
+        - toc: ingestion-tools/fleet
         - file: ingestion-tools/observability/apm.md
           children:
             - file: ingestion-tools/observability/apm-settings.md
@@ -42,7 +42,7 @@ toc:
             - file: data-analysis/machine-learning/ml-rare-functions.md
             - file: data-analysis/machine-learning/ml-sum-functions.md
             - file: data-analysis/machine-learning/ml-time-functions.md
-        - toc: reference/data-analysis/observability
+        - toc: data-analysis/observability
         - file: data-analysis/kibana/canvas-functions.md
           children:
             - file: data-analysis/kibana/tinymath-functions.md
