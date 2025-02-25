@@ -16,13 +16,11 @@ Each number represents a specific level of change:
 
 It's important to understand this versioning system, for compatibility and [upgrade](/deploy-manage/upgrade.md) planning.
 
-## Understanding availability in the docs
+## Availability of features
 
-Elastic products and features have different availability states across deployment types and lifecycle stages. Our documentation uses badges to help you quickly identify where and when features are available for your specific environment.
+Elastic products and features have different availability states across deployment types and lifecycle stages.
 
-### What the badges mean
-
-Each badge provides up to three key pieces of information:
+Features may have different availability states between:
 
 - **Deployment type**: The environment where the feature is available (Stack, Serverless, ECE, ECK, etc.)
 - **Lifecycle state**: The development or support status of the feature (GA, Beta, etc.)
@@ -38,12 +36,6 @@ Each badge provides up to three key pieces of information:
 | **Coming** | Feature announced for a future release |
 | **Discontinued** | Feature is being phased out |
 | **Unavailable** | Feature is not supported in this deployment type or version |
-
-### Badge context
-
-Badges can appear in two places:
-1. **Page headers**: Shows the overall availability across all deployment types
-2. **Section headers**: Indicates specific availability for content in that section
 
 ### Where feature availability may differ
 
@@ -62,6 +54,20 @@ Features may have different states between:
   - Security
   - Elasticsearch
   - Observability
+
+### Important tips when reading the docs
+
+- Always check feature lifecycle state for your specific deployment type and version
+- Pay attention to Elastic Stack version requirements
+- Note that Serverless features may vary by project type
+
+### Availability badges in the docs
+
+Our documentation uses badges to help you quickly identify where and when features are available for your specific environment.
+
+Badges can appear in two places:
+1. **Page headers**: Shows the overall availability across all deployment types
+2. **Section headers**: Indicates specific availability for content in that section
 
 ### How to read the badges
 
@@ -97,13 +103,6 @@ deployment:
 - **Deployment type**: Elastic Cloud Enterprise
 - **Lifecycle**: Discontinued
 - **Version**: 9.2.0
-
-### Important tips when reading documentation
-
-- Always check feature lifecycle state for your specific deployment type and version
-- Pay attention to Elastic Stack version requirements
-- Note that Serverless features may vary by project type
-- Features without badges are generally available for all deployment types and versions
 
 :::{tip}
 For contributors and those interested in the technical details, see the [Elastic docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/) for more information on how these badges are implemented.
