@@ -28,7 +28,7 @@ Add any custom metadata, index settings, or mappings.
 
 ### Index settings [apm-custom-index-template-index-settings]
 
-In the **Index settings** step, you can specify custom [index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings). For example, you could:
+In the **Index settings** step, you can specify custom [index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md). For example, you could:
 
 * Customize the index lifecycle policy applied to a data stream. See [custom index lifecycle policies](index-lifecycle-management.md#apm-data-streams-custom-policy) for a walk-through.
 * Change the number of [shards](../../../deploy-manage/index.md) per index. Specify the number of primary shards:

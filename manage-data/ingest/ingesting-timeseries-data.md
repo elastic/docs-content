@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/ingest-overview/current/ingest-tools.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Ingesting time series data [ingest-tools]

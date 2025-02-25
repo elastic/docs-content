@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/retrievers-examples.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrievers_examples.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -88,7 +88,7 @@ POST /retrievers_example/_doc/4
 POST /retrievers_example/_doc/5
 {
  "vector": [0.11, 0.65, 0.47],
- "text": "Learn how to spin up a deployment of our hosted Elasticsearch Service and use Elastic Observability to gain deeper insight into the behavior of your applications and systems.",
+ "text": "Learn how to spin up a deployment on Elastic Cloud and use Elastic Observability to gain deeper insight into the behavior of your applications and systems.",
  "year": 2024,
  "topic": ["documentation", "observability", "elastic"],
  "timestamp": "2025-01-01T12:10:30"

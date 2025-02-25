@@ -1,3 +1,9 @@
+---
+applies_to:
+  stack: ga
+  serverless: ga
+---
+
 # Manage a data stream [index-management-manage-data-streams]
 
 Investigate your data streams and address lifecycle management needs in the **Data Streams** view.

@@ -36,7 +36,7 @@ To find Synthetics data streams:
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 1. Navigate to [{{kib}} index management](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md).

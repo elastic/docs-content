@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -31,7 +31,7 @@ The following APIs support {{ccs}}:
 
 ## Prerequisites [_prerequisites]
 
-* {{ccs-cap}} requires remote clusters. To set up remote clusters on {{ess}}, see [configure remote clusters on {{ess}}](/deploy-manage/remote-clusters/ec-enable-ccs.md). If you run {{es}} on your own hardware, see [*Remote clusters*](../../deploy-manage/remote-clusters.md).
+* {{ccs-cap}} requires remote clusters. To set up remote clusters, see [*Remote clusters*](../../deploy-manage/remote-clusters.md).
 
     To ensure your remote cluster configuration supports {{ccs}}, see [Supported {{ccs}} configurations](#ccs-supported-configurations).
 

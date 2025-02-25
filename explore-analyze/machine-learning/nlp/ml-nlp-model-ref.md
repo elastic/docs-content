@@ -10,7 +10,7 @@ mapped_pages:
 # Compatible third party models [ml-nlp-model-ref]
 
 ::::{note}
-The minimum dedicated ML node size for deploying and using the {{nlp}} models is 16 GB in Elasticsearch Service if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
+The minimum dedicated ML node size for deploying and using the {{nlp}} models is 16 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
 The {{stack-ml-features}} support transformer models that conform to the standard BERT model interface and use the WordPiece tokenization algorithm.

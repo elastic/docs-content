@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-understanding-groups.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Understanding groups [rollup-understanding-groups]

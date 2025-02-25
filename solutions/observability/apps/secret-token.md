@@ -27,7 +27,7 @@ Secret tokens are not applicable for the RUM Agent, as there is no way to preven
 ## Create a secret token [apm-create-secret-token]
 
 ::::{note}
-{{ess}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} console under **Deployments** — **APM & Fleet**.
+{{ech}} and {{ece}} deployments provision a secret token when the deployment is created. The secret token can be found and reset in the {{ecloud}} Console under **Deployments** — **APM & Fleet**.
 ::::
 
 

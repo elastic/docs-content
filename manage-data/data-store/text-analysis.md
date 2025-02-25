@@ -3,6 +3,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-overview.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-analysis.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Text analysis

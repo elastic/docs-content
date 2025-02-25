@@ -284,7 +284,7 @@ Generate a Time-based One-Time Password (TOTP) for multifactor authentication (M
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 ```sh

@@ -89,7 +89,7 @@ For each checkpoint, entities are identified that have changed since the last ti
 
 The page `size` is defined by `max_page_search_size` which is also used to define the number of buckets returned by the composite aggregation search. The default value is 500, the minimum is 10.
 
-The index setting [`index.max_terms_count`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#dynamic-index-settings) defines the maximum number of terms that can be used in a terms query. The default value is 65536. If `max_page_search_size` exceeds `index.max_terms_count` the {{transform}} will fail.
+The index setting [`index.max_terms_count`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-settings) defines the maximum number of terms that can be used in a terms query. The default value is 65536. If `max_page_search_size` exceeds `index.max_terms_count` the {{transform}} will fail.
 
 Using smaller values for `max_page_search_size` may result in a longer duration for the {{transform}} checkpoint to complete.
 

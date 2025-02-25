@@ -91,7 +91,7 @@ Project API keys are used to push {{project-monitors}} remotely from a CLI or CD
 In the **Project API keys** tab, you can generate project API keys to use with your projects. Learn more about using API keys in [Use {{project-monitors-cap}}](../../../solutions/observability/apps/create-monitors-with-project-monitors.md).
 
 ::::{important}
-In an Elastic Stack v9 deployment, to create a Project API key you must be logged into {{kib}} as a user with the privileges described in [Writer role](../../../solutions/observability/apps/writer-role.md).
+**In an Elastic Stack deployment**, to create a Project API key you must be logged into {{kib}} as a user with the privileges described in [Writer role](../../../solutions/observability/apps/writer-role.md).
 
 In a serverless project, to create a Project API key you must be logged in as a user with [Editor](../../../solutions/observability/apps/grant-users-access-to-secured-resources.md) access.
 

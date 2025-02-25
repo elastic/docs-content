@@ -23,8 +23,8 @@ Elastic Observability allows you to deploy and manage logs at a petabyte scale, 
 
 You can send logs data to your project in different ways depending on your needs:
 
-* {agent}
-* {filebeat}
+* {{agent}}
+* {{filebeat}}
 
 When choosing between {{agent}} and {{filebeat}}, consider the different features and functionalities between the two options. See [{{beats}} and {{agent}} capabilities](../../manage-data/ingest/tools.md) for more information on which option best fits your situation.
 

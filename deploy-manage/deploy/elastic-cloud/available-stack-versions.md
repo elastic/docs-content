@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-version-policy.html
 ---
 
 # Available stack versions [ec-version-policy]
 
-This section describes our version policy for Elasticsearch Service, including:
+This section describes our version policy for {{ech}}, including:
 
 * [What Elastic Stack versions are available](#ec-version-policy-available)
 * [When we make new Elastic Stack versions available](#ec-version-policy-new)
@@ -18,7 +21,7 @@ This section describes our version policy for Elasticsearch Service, including:
 
 Elastic Stack uses a versions code that is constructed of three numbers separated by dots: the leftmost number is the number of the major release, the middle number is the number of the minor release and the rightmost number is the number of the maintenance release (e.g., 8.3.2 means major release 8, minor release 3 and maintenance release 2).
 
-You might sometimes notice additional versions listed in the user interface beyond the versions we currently support and maintain, such as [release candidate builds](#ec-release-builds) and older versions. If a version is listed in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
+You might sometimes notice additional versions listed in the user interface beyond the versions we currently support and maintain, such as [release candidate builds](#ec-release-builds) and older versions. If a version is listed in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), it can be deployed.
 
 
 ## New Elastic Stack versions [ec-version-policy-new]
@@ -44,7 +47,7 @@ A forced upgrade or restart might become necessary in a situation that:
 
 ## Release candidates and cutting-edge releases [ec-release-builds]
 
-Interested in kicking the tires of Elasticsearch releases at the cutting edge? We sometimes make release candidate builds and other cutting-edge releases available in Elasticsearch Service for you to try out.
+Interested in kicking the tires of Elasticsearch releases at the cutting edge? We sometimes make release candidate builds and other cutting-edge releases available in {{ecloud}} for you to try out.
 
 ::::{warning}
 Remember that cutting-edge releases are used to test new function fully. These releases might still have issues and might be less stable than the GA version. There’s also no guaranteed upgrade path to the GA version when it becomes available.
@@ -58,4 +61,4 @@ Cutting-edge releases do not remain available forever. Once the GA version of El
 
 ## Version Policy and Product End of Life [ec-version-policy-eol]
 
-For Elasticsearch Service, we follow the [Elastic Version Maintenance and Support Policy](https://www.elastic.co/support/eol), which defines the support and maintenance policy of the Elastic Stack.
+For {{ecloud}}, we follow the [Elastic Version Maintenance and Support Policy](https://www.elastic.co/support/eol), which defines the support and maintenance policy of the Elastic Stack.

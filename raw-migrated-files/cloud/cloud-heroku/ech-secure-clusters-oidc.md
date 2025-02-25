@@ -152,7 +152,7 @@ The Elasticsearch cluster needs to be configured to use the OpenID Connect realm
 
         This bundle allows all Elasticsearch containers to access the metadata file.
 
-    2. Update your Elasticsearch cluster on the [deployments page](../../../deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-elastic-cloud-hosted.md) to use the bundle you prepared in the previous step.
+    2. Update your Elasticsearch cluster on the [deployments page](../../../deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use the bundle you prepared in the previous step.
 
 
         Custom bundles are unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure in the ZIP file. Make sure to save the file location where custom bundles get unzipped, as you will need it in the next step.
@@ -190,7 +190,7 @@ OpenID Connect depends on TLS to provider security properties such as encryption
 However, if your OP uses a certificate that is issued for instance, by a CA used only in your Organization, you must configure Elasticsearch Add-On for Heroku to trust that CA.
 
 1. Prepare a ZIP file with a [custom bundle](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) that contains the CA certificate (`company-ca.pem`) that signed the certificate your OpenID Connect Provider uses for TLS inside of an `oidc-tls` folder
-2. Update your Elasticsearch cluster on the [deployments page](../../../deploy-manage/deploy/elastic-cloud/add-plugins-provided-with-elastic-cloud-hosted.md) to use the bundle you prepared in the previous step.
+2. Update your Elasticsearch cluster on the [deployments page](../../../deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md) to use the bundle you prepared in the previous step.
 
 
     Custom bundles are unzipped under the path `/app/config/BUNDLE_DIRECTORY_STRUCTURE`, where `BUNDLE_DIRECTORY_STRUCTURE` is the directory structure in the ZIP file. Make sure to save the file location where custom bundles get unzipped, as you will need it in the next step.
