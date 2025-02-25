@@ -267,7 +267,6 @@ toc:
       - file: docs-content/serverless/security-detections-requirements.md
       - file: docs-content/serverless/security-endpoint-management-req.md
       - file: docs-content/serverless/security-endpoints-page.md
-      - file: docs-content/serverless/security-environment-variable-capture.md
       - file: docs-content/serverless/security-ers-requirements.md
       - file: docs-content/serverless/security-event-filters.md
       - file: docs-content/serverless/security-examine-osquery-results.md
@@ -318,10 +317,8 @@ toc:
       - file: docs-content/serverless/security-view-alert-details.md
       - file: docs-content/serverless/security-visual-event-analyzer.md
       - file: docs-content/serverless/security-visualize-alerts.md
-      - file: docs-content/serverless/security-vuln-management-dashboard-dash.md
       - file: docs-content/serverless/security-vuln-management-faq.md
       - file: docs-content/serverless/security-vuln-management-get-started.md
-      - file: docs-content/serverless/security-vuln-management-overview.md
       - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
