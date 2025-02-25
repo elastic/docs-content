@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku AWS default provider instance configurations [ech-default-aws-configurations]
 
-Following are the preferred instance types / machine configurations, storage types, disk to memory ratios, and virtual CPU to RAM ratios for all instance configurations available on {{ess}} and provided by AWS.
+Following are the preferred instance types / machine configurations, storage types, disk to memory ratios, and virtual CPU to RAM ratios for all instance configurations available on {{ech}} and provided by AWS.
 
 | Instance configuration | Preferred Instance Type or Machine Configuration1 | Storage Type1 | Disk:Memory Ratio2 | vCPU/RAM Ratio |
 | --- | --- | --- | --- | --- |
@@ -27,7 +27,7 @@ Following are the preferred instance types / machine configurations, storage typ
 
 ## Additional instances [ech-aws-additional-instances] 
 
-Following are the preferred instance type / configuration and virtual CPU to RAM ratios for additional instance configurations available on {{ess}} and provided by AWS.
+Following are the preferred instance type / configuration and virtual CPU to RAM ratios for additional instance configurations available on {{ech}} and provided by AWS.
 
 | Instance configuration | Preferred Instance Type or Machine Configuration1 | vCPU/RAM Ratio |
 | --- | --- | --- |

@@ -31,33 +31,28 @@ toc:
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
                 children:
+                  - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
+                  - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md
+                  - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
                   - file: deploy/elastic-cloud/aws-marketplace.md
-                    children:
-                      - file: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
-                  - file: deploy/elastic-cloud/azure-native-isv-service.md
-                    children:
-                      - file: deploy/elastic-cloud/azure-marketplace-pricing.md
-                  - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
-                    children:
-                      - file: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
+                  - file: deploy/elastic-cloud/azure-native-isv-service.md                    
+                  - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md                  
                   - file: deploy/elastic-cloud/heroku.md
                     children:
-                      - file: deploy/elastic-cloud/ech-getting-started.md
+                      - file: deploy/elastic-cloud/ech-getting-started-installing.md
                         children:
-                          - file: deploy/elastic-cloud/ech-getting-started-installing.md
-                            children:
-                              - file: deploy/elastic-cloud/ech-getting-started-installing-version.md
-                              - file: deploy/elastic-cloud/ech-getting-started-removing.md
-                          - file: deploy/elastic-cloud/ech-migrating.md
-                          - file: deploy/elastic-cloud/ech-getting-started-accessing.md
-                            children:
-                              - file: deploy/elastic-cloud/ech-access-kibana.md
-                          - file: deploy/elastic-cloud/ech-working-with-elasticsearch.md
-                          - file: deploy/elastic-cloud/ech-api-console.md
-                          - file: deploy/elastic-cloud/ech-getting-started-next-steps.md
-                          - file: deploy/elastic-cloud/ech-migrate-data2.md
-                            children:
-                              - file: deploy/elastic-cloud/ech-migrate-data-internal.md
+                          - file: deploy/elastic-cloud/ech-getting-started-installing-version.md
+                          - file: deploy/elastic-cloud/ech-getting-started-removing.md
+                      - file: deploy/elastic-cloud/ech-migrating.md
+                      - file: deploy/elastic-cloud/ech-getting-started-accessing.md
+                        children:
+                          - file: deploy/elastic-cloud/ech-access-kibana.md
+                      - file: deploy/elastic-cloud/ech-working-with-elasticsearch.md
+                      - file: deploy/elastic-cloud/ech-api-console.md
+                      - file: deploy/elastic-cloud/ech-getting-started-next-steps.md
+                      - file: deploy/elastic-cloud/ech-migrate-data2.md
+                        children:
+                          - file: deploy/elastic-cloud/ech-migrate-data-internal.md
                       - file: deploy/elastic-cloud/ech-about.md
                         children:
                           - file: deploy/elastic-cloud/ech-licensing.md
@@ -94,19 +89,11 @@ toc:
                 children:
                   - file: deploy/elastic-cloud/configure.md
                     children:
-                      - file: deploy/elastic-cloud/ec-customize-deployment.md
-                        children:
-                          - file: deploy/elastic-cloud/ec-configure-deployment-settings.md
-                          - file: deploy/elastic-cloud/ec-change-hardware-profile.md
-                          - file: deploy/elastic-cloud/ec-customize-deployment-components.md
-                      - file: deploy/elastic-cloud/ech-configure-settings.md
-                        children:
-                          - file: deploy/elastic-cloud/ech-configure-deployment-settings.md
-                          - file: deploy/elastic-cloud/ech-customize-deployment-components.md
+                      - file: deploy/elastic-cloud/ec-change-hardware-profile.md
+                      - file: deploy/elastic-cloud/ec-customize-deployment-components.md
                       - file: deploy/elastic-cloud/edit-stack-settings.md
                       - file: deploy/elastic-cloud/add-plugins-extensions.md
                         children:
-                          - file: deploy/elastic-cloud/add-plugins-provided-with-elastic-cloud-hosted.md
                           - file: deploy/elastic-cloud/upload-custom-plugins-bundles.md
                           - file: deploy/elastic-cloud/manage-plugins-extensions-through-api.md
                       - file: deploy/elastic-cloud/custom-endpoint-aliases.md
@@ -122,22 +109,21 @@ toc:
       - file: deploy/cloud-enterprise.md
         children:
           - file: deploy/cloud-enterprise/ece-architecture.md
-          - file: deploy/cloud-enterprise/ece-containerization.md
-          - file: deploy/cloud-enterprise/prepare-environment.md
-            children:
-              - file: deploy/cloud-enterprise/ece-hardware-prereq.md
-              - file: deploy/cloud-enterprise/ece-software-prereq.md
-              - file: deploy/cloud-enterprise/ece-sysconfig.md
-              - file: deploy/cloud-enterprise/ece-networking-prereq.md
-              - file: deploy/cloud-enterprise/ece-ha.md
-              - file: deploy/cloud-enterprise/ece-roles.md
-              - file: deploy/cloud-enterprise/ece-load-balancers.md
-              - file: deploy/cloud-enterprise/ece-users-permissions.md
-              - file: deploy/cloud-enterprise/ece-jvm.md
-              - file: deploy/cloud-enterprise/ece-wildcard-dns.md
-              - file: deploy/cloud-enterprise/ece-manage-capacity.md
           - file: deploy/cloud-enterprise/deploy-an-orchestrator.md
             children:
+              - file: deploy/cloud-enterprise/prepare-environment.md
+                children:
+                  - file: deploy/cloud-enterprise/ece-hardware-prereq.md
+                  - file: deploy/cloud-enterprise/ece-software-prereq.md
+                  - file: deploy/cloud-enterprise/ece-sysconfig.md
+                  - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-ha.md
+                  - file: deploy/cloud-enterprise/ece-roles.md
+                  - file: deploy/cloud-enterprise/ece-load-balancers.md
+                  - file: deploy/cloud-enterprise/ece-users-permissions.md
+                  - file: deploy/cloud-enterprise/ece-jvm.md
+                  - file: deploy/cloud-enterprise/ece-wildcard-dns.md
+                  - file: deploy/cloud-enterprise/ece-manage-capacity.md
               - file: deploy/cloud-enterprise/install.md
                 children:
                   - file: deploy/cloud-enterprise/identify-deployment-scenario.md
@@ -539,7 +525,6 @@ toc:
           - file: remote-clusters/remote-clusters-cert.md
           - file: remote-clusters/remote-clusters-migrate.md
           - file: remote-clusters/remote-clusters-settings.md
-          - file: remote-clusters/remote-clusters-troubleshooting.md
       - file: remote-clusters/eck-remote-clusters.md
   - file: security.md
     children:
