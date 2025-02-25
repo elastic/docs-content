@@ -499,7 +499,7 @@ toc:
             children:
               - file: security/cloud/get-started-with-cnvm.md
               - file: security/cloud/findings-page-3.md
-              - file: security/cloud/cloud-native-vulnerability-management-dashboard.md
+              - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
               - file: security/cloud/frequently-asked-questions-faq-3.md
           - file: security/cloud/cloud-workload-protection-for-kubernetes.md
             children:

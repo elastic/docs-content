@@ -187,7 +187,6 @@ toc:
       - file: cloud/cloud/ec-upgrade-deployment.md
   - file: docs-content/serverless/index.md
     children:
-      - file: docs-content/serverless/_cloud_native_vulnerability_management_dashboard.md
       - file: docs-content/serverless/ai-assistant-knowledge-base.md
       - file: docs-content/serverless/attack-discovery.md
       - file: docs-content/serverless/connect-to-byo-llm.md
