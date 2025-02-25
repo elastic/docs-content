@@ -13,12 +13,9 @@ mapped_pages:
 
 An Elastic Cloud deployment includes Elastic Stack components such as Elasticsearch, Kibana, and other features, allowing you to store, search, and analyze your data. You can spin up a proof-of-concept deployment to learn more about what Elastic can do for you.
 
-::::{note}
-To explore {{ecloud}} and its solutions, create your first deployment by following one of these [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html). If you are instead interested in serverless Elastic Cloud, check the [serverless documentation](https://docs.elastic.co/serverless).
-::::
-
-
+:::{note}
 You can also create a deployment using the [Elastic Cloud API](https://www.elastic.co/docs/api/doc/cloud/group/endpoint-deployments). This can be an interesting alternative for more advanced needs, such as for [creating a deployment encrypted with your own key](../../security/encrypt-deployment-with-customer-managed-encryption-key.md).
+:::
 
 1. Log in to your [cloud.elastic.co](https://cloud.elastic.co/login) account and select **Create deployment** from the {{ecloud}} main page:
 
@@ -26,13 +23,15 @@ You can also create a deployment using the [Elastic Cloud API](https://www.elast
     :alt: Log in to create a deployment
     :::
 
+1. Select a solution view for your deployment. Solution views define the navigation and set of features that will be first available in your deployment. You can change it later, or [create different spaces](/deploy-manage/manage-spaces.md) with different solution views within your deployment. 
 
-Once you are on the **Create deployment** page, you can create the deployment with the defaults assigned, where you can edit the basic settings, or configure more advanced settings.
+    To learn more about what each solution offers, check [Elasticsearch](/solutions/search/get-started.md), [Observability](/solutions/observability/get-started.md), and [Security](/solutions/security/get-started.md).
 
 1. From the main **Settings**, you can change the cloud provider and region that host your deployment, the stack version, and the hardware profile, or restore data from another deployment (**Restore snapshot data**):
 
     :::{image} ../../../images/cloud-ec-create-deployment.png
     :alt: Create deployment
+    :width: 50%
     :::
 
     **Cloud provider**: The cloud platform where you’ll deploy your deployment. We support: Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. You do not need to provide your own keys.

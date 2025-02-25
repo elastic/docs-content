@@ -31,15 +31,12 @@ toc:
             children:
               - file: deploy/elastic-cloud/subscribe-from-marketplace.md
                 children:
+                  - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
+                  - hidden: deploy/elastic-cloud/azure-marketplace-pricing.md
+                  - hidden: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
                   - file: deploy/elastic-cloud/aws-marketplace.md
-                    children:
-                      - file: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-aws-marketplace.md
-                  - file: deploy/elastic-cloud/azure-native-isv-service.md
-                    children:
-                      - file: deploy/elastic-cloud/azure-marketplace-pricing.md
-                  - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md
-                    children:
-                      - file: deploy/elastic-cloud/create-monthly-pay-as-you-go-subscription-on-gcp-marketplace.md
+                  - file: deploy/elastic-cloud/azure-native-isv-service.md                    
+                  - file: deploy/elastic-cloud/google-cloud-platform-marketplace.md                  
                   - file: deploy/elastic-cloud/heroku.md
                     children:
                       - file: deploy/elastic-cloud/ech-getting-started-installing.md

@@ -9,17 +9,29 @@ mapped_pages:
 
 # Elastic Cloud [intro]
 
-{{ecloud}} allows you to manage [hosted deployments](elastic-cloud/cloud-hosted.md) of the {{stack}} and [serverless projects](elastic-cloud/serverless.md) for your Observability, Security, and Search use cases. 
+{{ecloud}} allows you to centrally manage [hosted deployments](elastic-cloud/cloud-hosted.md) of the {{stack}} and [serverless projects](elastic-cloud/serverless.md) for your Observability, Security, and Search use cases. 
 
 These hosted deployments and serverless projects are hosted on Elastic Cloud, through the cloud provider and regions of your choice, and are tied to your organization account.
 
-{{ecloud}} is a service managed by Elastic. You can check its operational status at any time from [status.elastic.co](https://status.elastic.co/).
+You can check the operational status of {{ecloud}} at any time from [status.elastic.co](https://status.elastic.co/).
 
 ## Sign up
 
 You can get started by creating an {{ecloud}} organization on [cloud.elastic.co](https://cloud.elastic.co/registration).
 
 For more details on the available sign up options and trial information, go to [](elastic-cloud/create-an-organization.md).
+
+## Benefits of {{ecloud}}
+
+Some of the unique benefits of {{ecloud}} include:
+
+- Regular updates and improvements automatically deployed or made available.
+- Built-in security, including encryption at rest.
+- Central management of billing and licensing.
+- Built-in tools for monitoring and scaling your {{ecloud}} resources.
+- Central management of users, roles, and authentication, including integration with SSO providers.
+
+For more information, refer to [](/deploy-manage/cloud-organization.md).
 
 ## Differences between serverless projects and hosted deployments[general-what-is-serverless-elastic-differences-between-serverless-projects-and-hosted-deployments-on-ecloud]
 
@@ -43,3 +55,5 @@ You can have multiple hosted deployments and serverless projects in the same {{e
 ## APIs
 
 {{ecloud}} offers APIs to manage your organization and its resources. Check the [{{ecloud}}](https://www.elastic.co/docs/api/doc/cloud/) and [{{ecloud}} serverless](https://www.elastic.co/docs/api/doc/elastic-cloud-serverless/) APIs.
+
+More tools are available for you to make the most of your {{ecloud}} organization and {{es}}. Refer to [](/deploy-manage/deploy/elastic-cloud/tools-apis.md).
