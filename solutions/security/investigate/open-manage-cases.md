@@ -4,36 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-cases-open-manage.html
 ---
 
-# Open and manage cases
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cases-open-manage.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cases-open-manage.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$cases-ui-open$$$
-
-$$$cases-add-files$$$
-
-$$$cases-add-observables$$$
-
-$$$cases-copy-case-uuid$$$
-
-$$$cases-examine-alerts$$$
-
-$$$cases-export$$$
-
-$$$cases-import$$$
-
-$$$cases-lens-visualization$$$
-
-$$$cases-manage-comments$$$
-
-$$$cases-summary$$$
+# Open and manage cases [security-cases-open-manage]
 
 You can create and manage cases using the UI or the [cases API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-cases).
 
@@ -52,7 +23,7 @@ Open a new case to keep track of security issues and share their details with co
 
 
     ::::{tip}
-    You can insert a Timeline link in the case description by clicking the Timeline icon (![Timeline icon](../../../images/security-add-timeline-button.png "")).
+    You can insert a Timeline link in the case description by clicking the Timeline icon (![Timeline icon](../../../images/security-add-timeline-button.png "title =20x20")).
     ::::
 
 4. Optionally, add a category, assignees and relevant tags. You can add users only if they meet the necessary [prerequisites](/solutions/security/investigate/cases-requirements.md).
@@ -71,6 +42,7 @@ Open a new case to keep track of security issues and share their details with co
 :class: screenshot
 :::
 
+% This wasn't in the Serverless docs. Might be an ESS-only feature.
 
 ## Add email notifications [cases-ui-notifications]
 
@@ -112,7 +84,7 @@ To explore a case, click on its name. You can then:
 * [Add and manage comments](/solutions/security/investigate/open-manage-cases.md#cases-manage-comments)
 
     ::::{tip}
-    Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](../../../images/security-markdown-icon.png "")) in the bottom right of the comment.
+    Comments can contain Markdown. For syntax help, click the Markdown icon (![Click markdown icon](../../../images/security-markdown-icon.png "title =20x20")) in the bottom right of the comment.
     ::::
 
 * Examine [alerts](/solutions/security/investigate/open-manage-cases.md#cases-examine-alerts) and [indicators](/solutions/security/investigate/indicators-of-compromise.md#review-indicator-in-case) attached to the case
@@ -180,6 +152,13 @@ To upload files to a case, click the **Files** tab:
 
 You can set file types and sizes by configuring your [{{kib}} case settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/cases-settings.md).
 
+% The following note was grabbed from the Serverless docs. Check if this is Serverless only or if it's for both.
+
+::::{note}
+There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
+
+::::
+
 To download or delete the file, or copy the file hash to your clipboard, open the **Actions** menu (**…**). The available hash functions are MD5, SHA-1, and SHA-256.
 
 When you add a file, a comment is added to the case activity log. To view an image, click its name in the activity or file list.
@@ -230,7 +209,7 @@ After a visualization has been added to a case, you can modify or interact with 
 ### Add observables [cases-add-observables]
 
 ::::{admonition} Requirements
-To use observables, you must have a [Platinum subscription](https://www.elastic.co/pricing) or higher.
+Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ::::
 
@@ -288,7 +267,7 @@ Before importing Lens visualizations, Timelines, or alerts into a space, ensure 
 
 ### Export a case [cases-export]
 
-Use the **Export** option to move cases between different Kibana instances. When you export a case, the following data is exported to a newline-delimited JSON (`.ndjson`) file:
+Use the **Export** option to move cases between different {{elastic-sec}} instances. When you export a case, the following data is exported to a newline-delimited JSON (`.ndjson`) file:
 
 * Case details
 * User actions
@@ -299,7 +278,7 @@ Use the **Export** option to move cases between different Kibana instances. When
 ::::{note}
 The following attachments are *not* exported:
 
-* **Case files**: Case files are not exported. However, they are accessible in **{{stack-manage-app}} > Files** to download and re-add.
+* **Case files**: Case files are not exported. However, they are accessible from **Files** (find **Files** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)) to download and re-add.
 * **Alerts**: Alerts attached to cases are not exported. You must re-add them after importing cases.
 
 ::::
@@ -336,7 +315,7 @@ To import a case:
     ::::{important}
     Be mindful of the following:
 
-    * If the imported case had connectors attached to it, you’ll be prompted to re-authenticate the connectors. To do so, click **Go to connectors** on the **Import saved objects** flyout and complete the necessary steps. Alternatively, open the main menu, then go to **{{stack-manage-app}} → {{connectors-ui}}** to access connectors.
+    * If the imported case had connectors attached to it, you’ll be prompted to re-authenticate the connectors. To do so, click **Go to connectors** on the **Import saved objects** flyout and complete the necessary steps. You can also access connectors from the **{{connectors-ui}}** page (find **{{connectors-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
