@@ -41,7 +41,7 @@ The new configuration naming convention aligns with the [data tiers](/manage-dat
 | aws.es.datawarm.i3en, aws.es.datacold.i3en | These configurations maintain the same type of VM configuration as used in the previous config (“aws.data.highstorage.i3en”) but will have a new name (and billing SKU) that is consistent with the new naming. |
 | aws.es.datafrozen.i3en | This configuration maintains the same type of VM configuration as defined for (“aws.es.datacold.i3en”) config. |
 
-For a detailed price list, check the [Elastic Cloud price list](https://cloud.elastic.co/deployment-pricing-table?provider=aws). For a detailed specification of the new configurations, check [Elasticsearch Service default provider instance configurations](ech-default-aws-configurations.md).
+For a detailed price list, check the [Elastic Cloud price list](https://cloud.elastic.co/deployment-pricing-table?provider=aws). For a detailed specification of the new configurations, check [{{ecloud}} default provider instance configurations](ech-default-aws-configurations.md).
 
 The benefits of the new configurations are multifold:
 
