@@ -95,7 +95,7 @@ This issue affects some OpenJDK-derived JVM versions (Adoptium, OpenJDK, and Azu
 
 **Work around**
 
-* Use the [bundled JDK](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/getting-started-with-logstash.md#ls-jvm) included with Logstash
+* Use the [bundled JDK](asciidocalypse://docs/logstash/docs/reference/getting-started-with-logstash.md#ls-jvm) included with Logstash
 * Or, try adding this value to the `jvm.options` file, and restarting Logstash
 
     ```sh
@@ -183,7 +183,7 @@ Symptoms of persistent queue problems include {{ls}} or one or more pipelines no
 message=>"java.io.IOException: Page file size is too small to hold elements"
 ```
 
-See the [troubleshooting information](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/persistent-queues.md#troubleshooting-pqs) in the persistent queue section for more information on remediating problems with persistent queues.
+See the [troubleshooting information](asciidocalypse://docs/logstash/docs/reference/persistent-queues.md#troubleshooting-pqs) in the persistent queue section for more information on remediating problems with persistent queues.
 
 
 ## Data ingestion [ts-ingest]
@@ -216,7 +216,7 @@ pool size = 16, active threads = 16, queued tasks = 200, completed tasks =
 
 ## Performance [ts-performance]
 
-For general performance tuning tips and guidelines, see [*Performance tuning*](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/performance-tuning.md).
+For general performance tuning tips and guidelines, see [*Performance tuning*](asciidocalypse://docs/logstash/docs/reference/performance-tuning.md).
 
 
 ## Troubleshooting a pipeline [ts-pipeline]

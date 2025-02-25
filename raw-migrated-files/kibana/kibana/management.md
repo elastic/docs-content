@@ -10,7 +10,7 @@ Access to individual features is governed by {{es}} and {{kib}} privileges. Cons
 |     |     |
 | --- | --- |
 | [Ingest Pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) | Create and manage ingest pipelines that let you perform common transformationsand enrichments on your data. |
-| [Logstash Pipelines](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/logstash-centralized-pipeline-management.md) | Create, edit, and delete your Logstash pipeline configurations. |
+| [Logstash Pipelines](asciidocalypse://docs/logstash/docs/reference/logstash-centralized-pipeline-management.md) | Create, edit, and delete your Logstash pipeline configurations. |
 
 
 ## Data [manage-data]

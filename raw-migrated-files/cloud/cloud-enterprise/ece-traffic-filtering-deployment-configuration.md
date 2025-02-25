@@ -101,7 +101,7 @@ Follow the instructions that match your use case:
 
 ## Troubleshooting [ece-traffic-filter-troubleshooting]
 
-This section offers suggestions on how to troubleshoot your traffic filters. Before you start make sure you check the [Limitations and known problems](asciidocalypse://docs/cloud/docs/release-notes/known-issues/cloud-enterprise.md).
+This section offers suggestions on how to troubleshoot your traffic filters. Before you start make sure you check the [Limitations and known problems](asciidocalypse://docs/cloud/docs/release-notes/cloud-enterprise/known-issues.md).
 
 
 ### Review the rule sets associated with a deployment [ece-review-rule-sets]

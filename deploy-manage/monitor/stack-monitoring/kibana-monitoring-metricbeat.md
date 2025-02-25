@@ -64,7 +64,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
         For more information, see [Monitoring settings in {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
-4. [Install {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-installation-configuration.md) on the same server as {{kib}}.
+4. [Install {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md) on the same server as {{kib}}.
 5. Enable the {{kib}} {{xpack}} module in {{metricbeat}}.<br>
 
     For example, to enable the default configuration in the `modules.d` directory, run the following command:
@@ -73,7 +73,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     metricbeat modules enable kibana-xpack
     ```
 
-    For more information, see [Specify which modules to run](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/configuration-metricbeat.md) and [{{kib}} module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-module-kibana.md).
+    For more information, see [Specify which modules to run](asciidocalypse://docs/beats/docs/reference/metricbeat/configuration-metricbeat.md) and [{{kib}} module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-kibana.md).
 
 6. Configure the {{kib}} {{xpack}} module in {{metricbeat}}.<br>
 
@@ -100,7 +100,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
 
 7. Optional: Disable the system module in {{metricbeat}}.
 
-    By default, the [system module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-module-system.md) is enabled. The information it collects, however, is not shown on the **Monitoring** page in {{kib}}. Unless you want to use that information for other purposes, run the following command:
+    By default, the [system module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-system.md) is enabled. The information it collects, however, is not shown on the **Monitoring** page in {{kib}}. Unless you want to use that information for other purposes, run the following command:
 
     ```sh
     metricbeat modules disable system
@@ -141,8 +141,8 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
     1. Create a user on the monitoring cluster that has the `remote_monitoring_agent` [built-in role](../../users-roles/cluster-or-deployment-auth/built-in-roles.md). Alternatively, use the `remote_monitoring_user` [built-in user](../../users-roles/cluster-or-deployment-auth/built-in-users.md).
     2. Add the `username` and `password` settings to the {{es}} output information in the {{metricbeat}} configuration file.
 
-    For more information about these configuration options, see [Configure the {{es}} output](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/elasticsearch-output.md).
+    For more information about these configuration options, see [Configure the {{es}} output](asciidocalypse://docs/beats/docs/reference/metricbeat/elasticsearch-output.md).
 
-9. [Start {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-starting.md).
+9. [Start {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-starting.md).
 10. [View the monitoring data in {{kib}}](/deploy-manage/monitor/monitoring-data.md).
 

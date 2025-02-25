@@ -223,9 +223,9 @@ You will see this warning if your results have more than `1000` unique transacti
 
 **More information**
 
-While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/custom-transaction-name.md).
+While this can happen with any APM agent, it typically occurs with the RUM agent. For more information on how to correctly set `transaction.name` in the RUM agent, see [custom initial page load transaction names](asciidocalypse://docs/apm-agent-rum-js/docs/reference/custom-transaction-name.md).
 
-The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/agent-api.md#observe) for more information.
+The RUM agent can also set the `transaction.name` when observing for transaction events. See [`apm.observe()`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#observe) for more information.
 
 If your problem is occurring in a different APM agent, the tips above still apply. See the relevant [Agent API documentation](https://www.elastic.co/guide/en/apm/agent) to adjust how you’re naming your transactions.
 
@@ -266,7 +266,7 @@ As an example, some APM agents store cookie values in `http.request.cookies`. Si
 stack: all
 ```
 
-If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/distributed-tracing.md).
+If the service map is not showing an expected connection between the client and server, it’s likely because you haven’t configured [`distributedTracingOrigins`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/distributed-tracing.md).
 
 This setting is necessary, for example, for cross-origin requests. If you have a basic web application that provides data via an API on `localhost:4000`, and serves HTML from `localhost:4001`, you’d need to set `distributedTracingOrigins: ['https://localhost:4000']` to ensure the origin is monitored as a part of distributed tracing. In other words, `distributedTracingOrigins` is consulted prior to the APM agent adding the distributed tracing `traceparent` header to each request.
 

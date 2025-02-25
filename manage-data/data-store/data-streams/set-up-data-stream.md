@@ -21,7 +21,7 @@ You can also [convert an index alias to a data stream](#convert-index-alias-to-d
 ::::{important}
 If you use {{fleet}}, {{agent}}, or {{ls}}, skip this tutorial. They all set up data streams for you.
 
-For {{fleet}} and {{agent}}, check out this [data streams documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md). For {{ls}}, check out the [data streams settings](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
+For {{fleet}} and {{agent}}, check out this [data streams documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md). For {{ls}}, check out the [data streams settings](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md#plugins-outputs-elasticsearch-data_stream) for the `elasticsearch output` plugin.
 
 ::::
 
