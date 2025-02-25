@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-api-key.html
 ---
@@ -22,19 +25,19 @@ To add a remote cluster using API key authentication:
 3. [Connect to a remote cluster](#remote-clusters-connect-api-key)
 4. [Configure roles and users](#remote-clusters-privileges-api-key)
 
-If you run into any issues, refer to [Troubleshooting](remote-clusters-troubleshooting.md).
+If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
 ## Prerequisites [remote-clusters-prerequisites-api-key]
 
 * The {{es}} security features need to be enabled on both clusters, on every node. Security is enabled by default. If it’s disabled, set `xpack.security.enabled` to `true` in `elasticsearch.yml`. Refer to [General security settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings).
-* The nodes of the local and remote clusters must be on version 8.10 or later.
+* The nodes of the local and remote clusters must be on {{stack}} 8.14 or later.
 * The local and remote clusters must have an appropriate license. For more information, refer to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions).
 
 
 ## Establish trust with a remote cluster [remote-clusters-security-api-key]
 
 ::::{note}
-If a remote cluster is part of an {{ess}} deployment, it has a valid certificate by default. You can therefore skip steps related to certificates in these instructions.
+If a remote cluster is part of an {{ech}} deployment, it has a valid certificate by default. You can therefore skip steps related to certificates in these instructions.
 ::::
 
 
@@ -99,7 +102,7 @@ If a remote cluster is part of an {{ess}} deployment, it has a valid certificate
         When prompted, enter the `CERT_PASSWORD` from the earlier step.
 
 4. Restart the remote cluster.
-5. On the remote cluster, generate a cross-cluster API key that provides access to the indices you want to use for {{ccs}} or {{ccr}}. You can use the [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API or [Kibana](../api-keys/elasticsearch-api-keys.md).
+5. On the remote cluster, generate a cross-cluster API key that provides access to the indices you want to use for {{ccs}} or {{ccr}}. You can use the [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API or [{{kib}}](../api-keys/elasticsearch-api-keys.md).
 6. Copy the encoded key (`encoded` in the response) to a safe location. You will need it to connect to the remote cluster later.
 
 
