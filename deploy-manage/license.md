@@ -5,7 +5,14 @@ mapped_pages:
 
 # Manage your license  
 
-Your Elastic license determines which features are available. For a comprehensive comparison of the available subscription levels, see [Elastic subscriptions](https://www.elastic.co/subscriptions).
+Your Elastic license determines which features are available and what level of support you receive. 
+
+Depending on your deployment type, licenses and subscriptions are applied at different levels:
+
+* For {{ece}}, {{ecloud}}, and {{eck}}: Licenses and subscriptions are controlled at the orchestrator or organization level, and apply to all related deployments.
+* For self-managed {{es}}: Licenses are controlled at the cluster level, and apply only to a single cluster.
+
+For a comprehensive comparison of the available subscription levels, see [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 Use the topics in this section to manage your license or start a trial:  
 
