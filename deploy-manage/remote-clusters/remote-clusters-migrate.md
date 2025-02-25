@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    self: ga
 navigation_title: "Migrate from certificate to API key authentication"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-migrate.html
@@ -25,11 +28,11 @@ For these reasons, you may prefer to migrate a remote cluster in-place, by follo
 5. [Resume cross-cluster operations](#remote-clusters-migration-resume)
 6. [Disable certificate based authentication and authorization](#remote-clusters-migration-disable-cert)
 
-If you run into any issues, refer to [Troubleshooting](remote-clusters-troubleshooting.md).
+If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
 ## Prerequisites [remote-clusters-migration-prerequisites]
 
-* The nodes of the local and remote clusters must be on version 8.10 or later.
+* The nodes of the local and remote clusters must be on {{stack}} 8.14 or later.
 * The local and remote clusters must have an appropriate license. For more information, refer to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions).
 
 
@@ -96,7 +99,7 @@ On the remote cluster:
         When prompted, enter the `CERT_PASSWORD` from the earlier step.
 
 4. Restart the remote cluster.
-5. On the remote cluster, generate a cross-cluster API key that provides access to the indices you want to use for {{ccs}} or {{ccr}}. You can use the [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API or [Kibana](../api-keys/elasticsearch-api-keys.md).
+5. On the remote cluster, generate a cross-cluster API key that provides access to the indices you want to use for {{ccs}} or {{ccr}}. You can use the [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API or [{{kib}}](../api-keys/elasticsearch-api-keys.md).
 6. Copy the encoded key (`encoded` in the response) to a safe location. You will need it to connect to the remote cluster later.
 
 
@@ -222,7 +225,7 @@ Resume any persistent tasks that you stopped earlier. Tasks should be restarted 
 ## Disable certificate based authentication and authorization [remote-clusters-migration-disable-cert]
 
 ::::{note} 
-Only proceed with this step if the migration has been proved successful on the local cluster. If the migration is unsuccessful, either [find out what the problem is and attempt to fix it](remote-clusters-troubleshooting.md) or [roll back](#remote-clusters-migration-rollback).
+Only proceed with this step if the migration has been proved successful on the local cluster. If the migration is unsuccessful, either [find out what the problem is and attempt to fix it](/troubleshoot/elasticsearch/remote-clusters.md) or [roll back](#remote-clusters-migration-rollback).
 ::::
 
 

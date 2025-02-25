@@ -116,7 +116,7 @@ Cluster performance metrics are shown per node and are color-coded to indicate w
 
 For clusters that suffer out-of-memory failures, it can be difficult to determine whether the clusters are in a completely healthy state afterwards. For this reason, Elasticsearch Add-On for Heroku automatically reboots clusters that suffer out-of-memory failures.
 
-You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../../deploy-manage/deploy/elastic-cloud/ech-customize-deployment-components.md#ech-cluster-size) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
+You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../../deploy-manage/deploy/elastic-cloud/configure.md) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
 
 
 

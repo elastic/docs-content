@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-osquery-integration.html
+
+navigation_title: "Osquery manager integration"
+
+applies_to:
+  stack: preview all
+  serverless: preview all
 ---
 
 # Manage the integration [manage-osquery-integration]
@@ -8,12 +14,12 @@ mapped_pages:
 
 ## System requirements [_system_requirements]
 
-* [Fleet](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
-* The [**Osquery Manager**](https://docs.elastic.co/en/integrations/osquery_manager) integration has been added and configured for an agent policy through Fleet. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
+* [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) is enabled on your cluster, and one or more [{{agents}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md) is enrolled.
+* The [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager) integration has been added and configured for an agent policy through {{fleet}}. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
 
 ::::{note}
 * The original [Filebeat Osquery module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-osquery.md) and the [Osquery](https://docs.elastic.co/en/integrations/osquery) integration collect logs from self-managed Osquery deployments. The **Osquery Manager** integration manages Osquery deployments and supports running and scheduling queries from {{kib}}.
-* **Osquery Manager** cannot be integrated with an Elastic Agent in standalone mode.
+* **Osquery Manager** cannot be integrated with an {{agent}} in standalone mode.
 
 ::::
 
@@ -21,12 +27,12 @@ mapped_pages:
 
 ## Customize Osquery sub-feature privileges [_customize_osquery_sub_feature_privileges]
 
-Depending on your [subscription level](https://www.elastic.co/subscriptions), you can further customize the sub-feature privileges for **Osquery Manager**. These include options to grant specific access for running live queries, running saved queries, saving queries, and scheduling packs. For example, you can create roles for users who can only run live or saved queries, but who cannot save or schedule queries. This is useful for teams who need in-depth and detailed control.
+Depending on your [subscription level](https://www.elastic.co/pricing) or  [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md), you can further customize the sub-feature privileges for **Osquery Manager**. These include options to grant specific access for running live queries, running saved queries, saving queries, and scheduling packs. For example, you can create roles for users who can only run live or saved queries, but who cannot save or schedule queries. This is useful for teams who need in-depth and detailed control.
 
 
 ## Customize Osquery configuration [osquery-custom-config]
 
-[preview] By default, all Osquery Manager integrations share the same osquery configuration. However, you can customize how Osquery is configured by editing the Osquery Manager integration for each agent policy you want to adjust. The custom configuration is then applied to all agents in the policy. This powerful feature allows you to configure [File Integrity Monitoring](https://osquery.readthedocs.io/en/stable/deployment/file-integrity-monitoring), [Process auditing](https://osquery.readthedocs.io/en/stable/deployment/process-auditing), and [others](https://osquery.readthedocs.io/en/stable/deployment/configuration/#configuration-specification).
+By default, all Osquery Manager integrations share the same Osquery configuration. However, you can customize how Osquery is configured by editing the Osquery Manager integration for each agent policy you want to adjust. The custom configuration is then applied to all agents in the policy. This powerful feature allows you to configure [File Integrity Monitoring](https://osquery.readthedocs.io/en/stable/deployment/file-integrity-monitoring), [Process auditing](https://osquery.readthedocs.io/en/stable/deployment/process-auditing), and [others](https://osquery.readthedocs.io/en/stable/deployment/configuration/#configuration-specification).
 
 ::::{important}
 * Take caution when editing this configuration. The changes you make are distributed to all agents in the policy.
@@ -87,7 +93,7 @@ For each agent policy where you want to allow `curl` table queries, edit the Osq
 
 ## Upgrade Osquery versions [_upgrade_osquery_versions]
 
-The [Osquery version](https://github.com/osquery/osquery/releases) available on an Elastic Agent is associated to the version of Osquery Beat on the Agent. To get the latest version of Osquery Beat, [upgrade your Elastic Agent](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
+The [Osquery version](https://github.com/osquery/osquery/releases) available on an {{agent}} is associated to the version of Osquery Beat on the Agent. To get the latest version of Osquery Beat, [upgrade your {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
 
 
 ## Debug issues [_debug_issues]
@@ -101,8 +107,8 @@ If you encounter issues with **Osquery Manager**, find the relevant logs for {{e
 
 To get more details in the logs, change the agent logging level to debug:
 
-1. Go to **Fleet** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+1. Go to **{{fleet}}** using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select the agent that you want to debug.
-3. On the **Logs*** tab, change the ***Agent logging level*** to ***debug***, and then click ***Apply changes**.
+3. On the **Logs** tab, change the **Agent logging level** to **debug**, and then click **Apply changes**.
 
     `agent.logging.level` is updated in `fleet.yml`, and the logging level is changed to `debug`.

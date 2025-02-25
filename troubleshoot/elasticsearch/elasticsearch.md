@@ -64,7 +64,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 * [Troubleshooting searches](troubleshooting-searches.md)
 * [Troubleshooting shards capacity](troubleshooting-shards-capacity-issues.md)
 * [Troubleshooting an unbalanced cluster](troubleshooting-unbalanced-cluster.md)
-* [Troubleshooting remote clusters](../../deploy-manage/remote-clusters/remote-clusters-troubleshooting.md)
+* [Troubleshooting remote clusters](/troubleshoot/elasticsearch/remote-clusters.md)
 
 
 ## Contact us [troubleshooting-contact-support]

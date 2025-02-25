@@ -1,30 +1,36 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-restrictions.html
 ---
 
 # Restrictions and known problems [ec-restrictions]
 
-When using Elasticsearch Service, there are some limitations you should be aware of:
+When using {{ecloud}}, there are some limitations you should be aware of:
 
 * [Security](#ec-restrictions-security)
 * [APIs](#ec-restrictions-apis)
 * [Transport client](#ec-restrictions-transport-client)
 * [Elasticsearch and Kibana plugins](#ec-restrictions-plugins)
 * [Watcher](#ec-restrictions-watcher)
+* [Private Link and SSO to Kibana URLs](#ec-restrictions-traffic-filters-kibana-sso)
+* [PDF report generation using Alerts or Watcher webhooks](#ec-restrictions-traffic-filters-watcher)
 * [Kibana](#ec-restrictions-kibana)
-* [APM Agent central configuration with Private Link or traffic filters](#ec-restrictions-apm-traffic-filters)
+% * [APM Agent central configuration with Private Link or traffic filters](#ec-restrictions-apm-traffic-filters)
 * [Fleet with Private Link or traffic filters](#ec-restrictions-fleet-traffic-filters)
 * [Restoring a snapshot across deployments](#ec-snapshot-restore-enterprise-search-kibana-across-deployments)
 * [Migrate Fleet-managed {{agents}} across deployments by restoring a snapshot](#ec-migrate-elastic-agent)
 * [Regions and Availability Zones](#ec-regions-and-availability-zone)
-* [Known problems](#ec-known-problems)
+% * [Known problems](#ec-known-problems)
 
 For limitations related to logging and monitoring, check the [Restrictions and limitations](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-restrictions-monitoring) section of the logging and monitoring page.
 
-Occasionally, we also publish information about [Known problems](#ec-known-problems) with our Elasticsearch Service or the Elastic Stack.
+% Occasionally, we also publish information about [Known problems](#ec-known-problems) with our {{ecloud}} or the Elastic Stack.
 
-To learn more about the features that are supported by Elasticsearch Service, check [Elastic Cloud Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
+To learn more about the features that are supported by {{ecloud}}, check [Elastic Cloud Subscriptions](https://www.elastic.co/cloud/elasticsearch-service/subscriptions?page=docs&placement=docs-body).
 
 
 ## Security [ec-restrictions-security]
@@ -36,36 +42,36 @@ To learn more about the features that are supported by Elasticsearch Service, ch
 
 ## APIs [ec-restrictions-apis]
 
-The following restrictions apply when using APIs in Elasticsearch Service:
+The following restrictions apply when using APIs in {{ecloud}}:
 
-Elasticsearch Service API
-:   The Elasticsearch Service API is subject to a restriction on the volume of API requests that can be submitted per user, per second. Check [Rate limiting](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-rate-limiting.md) for details.
+{{ecloud}} API
+:   The {{ecloud}} API is subject to a restriction on the volume of API requests that can be submitted per user, per second. Check [Rate limiting](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-rate-limiting.md) for details.
 
 $$$ec-restrictions-apis-elasticsearch$$$
 
 Elasticsearch APIs
-:   The Elasticsearch APIs do not natively enforce rate limiting. However, all requests to the Elasticsearch cluster are subject to Elasticsearch configuration settings, such as the [network HTTP setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) `http:max_content_length` which restricts the maximum size of an HTTP request body. This setting has a default value of 100MB, hence restricting API request payloads to that size. This setting is not currently configurable in Elasticsearch Service. For a list of which Elasticsearch settings are supported on Cloud, check [Add Elasticsearch user settings](edit-stack-settings.md). To learn about using the Elasticsearch APIs in Elasticsearch Service, check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md). And, for full details about the Elasticsearch APIs and their endpoints, check the [Elasticsearch API reference documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md).
+:   The Elasticsearch APIs do not natively enforce rate limiting. However, all requests to the Elasticsearch cluster are subject to Elasticsearch configuration settings, such as the [network HTTP setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#http-settings) `http:max_content_length` which restricts the maximum size of an HTTP request body. This setting has a default value of 100MB, hence restricting API request payloads to that size. This setting is not currently configurable in {{ecloud}}. For a list of which Elasticsearch settings are supported on Cloud, check [Add Elasticsearch user settings](edit-stack-settings.md). To learn about using the Elasticsearch APIs in {{ecloud}}, check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md). And, for full details about the Elasticsearch APIs and their endpoints, check the [Elasticsearch API reference documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md).
 
 $$$ec-restrictions-apis-kibana$$$
 
 Kibana APIs
-:   There are no rate limits restricting your use of the Kibana APIs. However, Kibana features are affected by the [Kibana configuration settings](../self-managed/configure.md), not all of which are supported in Elasticsearch Service. For a list of what settings are currently supported, check [Add Kibana user settings](edit-stack-settings.md). For all details about using the Kibana APIs, check the [Kibana API reference documentation](https://www.elastic.co/guide/en/kibana/current/api.html).
+:   There are no rate limits restricting your use of the Kibana APIs. However, Kibana features are affected by the [Kibana configuration settings](../self-managed/configure.md), not all of which are supported in {{ecloud}}. For a list of what settings are currently supported, check [Add Kibana user settings](edit-stack-settings.md). For all details about using the Kibana APIs, check the [Kibana API reference documentation](https://www.elastic.co/guide/en/kibana/current/api.html).
 
 
 ## Transport client [ec-restrictions-transport-client]
 
-* The transport client is not considered thread safe in a cloud environment. We recommend that you use the Java REST client instead. This restriction relates to the fact that your deployments hosted on Elasticsearch Service are behind proxies, which prevent the transport client from communicating directly with Elasticsearch clusters.
+* The transport client is not considered thread safe in a cloud environment. We recommend that you use the Java REST client instead. This restriction relates to the fact that your deployments hosted on {{ecloud}} are behind proxies, which prevent the transport client from communicating directly with Elasticsearch clusters.
 * The transport client is not supported over [private link connections](../../security/aws-privatelink-traffic-filters.md). Use the Java REST client instead, or connect over the public internet.
-* The transport client does not work with Elasticsearch clusters at version 7.6 and later that are hosted on Cloud. Transport client continues to work with Elasticsearch clusters at version 7.5 and earlier. Note that the transport client was deprecated with version 7.0 and will be removed with 8.0.
+% * The transport client does not work with Elasticsearch clusters at version 7.6 and later that are hosted on Cloud. Transport client continues to work with Elasticsearch clusters at version 7.5 and earlier. Note that the transport client was deprecated with version 7.0 and will be removed with 8.0.
 
 
 ## Elasticsearch and Kibana plugins [ec-restrictions-plugins]
 
 * Kibana plugins are not supported.
 * Elasticsearch plugins, are not enabled by default for security purposes. Please reach out to support if you would like to enable Elasticsearch plugins support on your account.
-* Some Elasticsearch plugins do not apply to Elasticsearch Service. For example, you won’t ever need to change discovery, as Elasticsearch Service handles how nodes discover one another.
-* In Elasticsearch 5.0 and later, site plugins are no longer supported. This change does not affect the site plugins Elasticsearch Service might provide out of the box, such as Kopf or Head, since these site plugins are serviced by our proxies and not Elasticsearch itself.
-* In Elasticsearch 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html) if you want more detailed information or perform index management actions.
+* Some Elasticsearch plugins do not apply to {{ecloud}}. For example, you won’t ever need to change discovery, as {{ecloud}} handles how nodes discover one another.
+% * In Elasticsearch 5.0 and later, site plugins are no longer supported. This change does not affect the site plugins {{ecloud}} might provide out of the box, such as Kopf or Head, since these site plugins are serviced by our proxies and not Elasticsearch itself.
+% * In Elasticsearch 5.0 and later, site plugins such as Kopf and Paramedic are no longer provided. We recommend that you use our [cluster performance metrics](../../monitor/stack-monitoring.md), [X-Pack monitoring features](../../monitor/stack-monitoring.md) and Kibana’s (6.3+) [Index Management UI](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-mgmt.html) if you want more detailed information or perform index management actions.
 
 
 ## Watcher [ec-restrictions-watcher]
@@ -93,20 +99,20 @@ Currently you can’t use SSO to login directly from {{ecloud}} into Kibana endp
 ## Kibana [ec-restrictions-kibana]
 
 * The maximum size of a single {{kib}} instance is 8GB. This means, {{kib}} instances can be scaled up to 8GB before they are scaled out. For example, when creating a deployment with a {{kib}} instance of size 16GB, then 2x8GB instances are created. If you face performance issues with {{kib}} PNG or PDF reports, the recommendations are to create multiple, smaller dashboards to export the data, or to use a third party browser extension for exporting the dashboard in the format you need.
-* Running an external Kibana in parallel to Elasticsearch Service’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as Elasticsearch Service does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
+* Running an external Kibana in parallel to {{ecloud}}’s Kibana instances may cause errors, for example [`Unable to decrypt attribute`](../../../explore-analyze/alerts-cases/alerts/alerting-common-issues.md#rule-cannot-decrypt-api-key), due to a mismatched [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-encrypted-saved-objects-settings) as {{ecloud}} does not [allow users to set](edit-stack-settings.md) nor expose this value. While workarounds are possible, this is not officially supported nor generally recommended.
 
 
-## APM Agent central configuration with PrivateLink or traffic filters [ec-restrictions-apm-traffic-filters]
+% ## APM Agent central configuration with PrivateLink or traffic filters [ec-restrictions-apm-traffic-filters]
 
-If you are using APM 7.9.0 or older:
+% If you are using APM 7.9.0 or older:
 
-* You cannot use [APM Agent central configuration](/solutions/observability/apps/apm-agent-central-configuration.md) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
-* If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
+% * You cannot use [APM Agent central configuration](/solutions/observability/apps/apm-agent-central-configuration.md) if your deployment is secured by [traffic filters](../../security/traffic-filtering.md).
+% * If you access your APM deployment over [PrivateLink](../../security/aws-privatelink-traffic-filters.md), to use APM Agent central configuration you need to allow access to the APM deployment over public internet.
 
 
 ## Fleet with PrivateLink or traffic filters [ec-restrictions-fleet-traffic-filters]
 
-* You cannot use Fleet 7.13.x if your deployment is secured by [traffic filters](../../security/traffic-filtering.md). Fleet 7.14.0 and later works with traffic filters (both Private Link and IP filters).
+% * You cannot use Fleet 7.13.x if your deployment is secured by [traffic filters](../../security/traffic-filtering.md). Fleet 7.14.0 and later works with traffic filters (both Private Link and IP filters).
 * If you are using Fleet 8.12+, using a remote {{es}} output with a target cluster that has [traffic filters](../../security/traffic-filtering.md) enabled is not currently supported.
 
 ## Restoring a snapshot across deployments [ec-snapshot-restore-enterprise-search-kibana-across-deployments]
@@ -137,10 +143,10 @@ To make a seamless migration, after restoring from a snapshot there are some add
 * The AWS `eu-central-2` region is limited to two availability zones for CPU Optimized (ARM) Hardware profile ES data node and warm/cold tier. Deployment creation with three availability zones for Elasticsearch data nodes for hot (for CPU Optimized (ARM) profile), warm and cold tiers is not possible. This includes scaling an existing deployment with one or two AZs to three availability zones. The workaround is to use a different AWS region that allows three availability zones, or to scale existing nodes up within the two availability zones.
 
 
-## Known problems [ec-known-problems]
+% ## Known problems [ec-known-problems]
 
-* There is a known problem affecting clusters with versions 7.7.0 and 7.7.1 due to [a bug in Elasticsearch](https://github.com/elastic/elasticsearch/issues/56739). Although rare, this bug can prevent you from running plans. If this occurs we recommend that you retry the plan, and if that fails please contact support to get your plan through. Because of this bug we recommend you to upgrade to version 7.8 and higher, where the problem has already been addressed.
-* A known issue can prevent direct rolling upgrades from Elasticsearch version 5.6.10 to version 6.3.0. As a workaround, we have removed version 6.3.0 from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) for new cluster deployments and for upgrading existing ones. If you are affected by this issue, check [Rolling upgrades from 5.6.x to 6.3.0 fails with "java.lang.IllegalStateException: commit doesn’t contain history uuid"](https://elastic.my.salesforce.com/articles/Support_Article/Rolling-upgrades-to-6-3-0-from-5-x-fails-with-java-lang-IllegalStateException-commit-doesn-t-contain-history-uuid?popup=false&id=kA0610000005JFG) in our Elastic Support Portal. If these steps do not work or you do not have access to the Support Portal, you can contact `support@elastic.co`.
+% * There is a known problem affecting clusters with versions 7.7.0 and 7.7.1 due to [a bug in Elasticsearch](https://github.com/elastic/elasticsearch/issues/56739). Although rare, this bug can prevent you from running plans. If this occurs we recommend that you retry the plan, and if that fails please contact support to get your plan through. Because of this bug we recommend you to upgrade to version 7.8 and higher, where the problem has already been addressed.
+% * A known issue can prevent direct rolling upgrades from Elasticsearch version 5.6.10 to version 6.3.0. As a workaround, we have removed version 6.3.0 from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) for new cluster deployments and for upgrading existing ones. If you are affected by this issue, check [Rolling upgrades from 5.6.x to 6.3.0 fails with "java.lang.IllegalStateException: commit doesn’t contain history uuid"](https://elastic.my.salesforce.com/articles/Support_Article/Rolling-upgrades-to-6-3-0-from-5-x-fails-with-java-lang-IllegalStateException-commit-doesn-t-contain-history-uuid?popup=false&id=kA0610000005JFG) in our Elastic Support Portal. If these steps do not work or you do not have access to the Support Portal, you can contact `support@elastic.co`.
 
 
 ## Repository Analysis API is unavailable in Elastic Cloud [ec-repository-analyis-unavailable]

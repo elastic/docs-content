@@ -356,15 +356,15 @@ toc:
                 children:
                   - file: observability/incident-management/triage-slo-burn-rate-breaches.md
                   - file: observability/incident-management/triage-threshold-breaches.md
-              - file: observability/incident-management/cases.md
-                children:
-                  - file: observability/incident-management/configure-access-to-cases.md
-                  - file: observability/incident-management/create-manage-cases.md
-                  - file: observability/incident-management/configure-case-settings.md
-              - file: observability/incident-management/service-level-objectives-slos.md
-                children:
-                  - file: observability/incident-management/configure-service-level-objective-slo-access.md
-                  - file: observability/incident-management/create-an-slo.md
+          - file: observability/incident-management/cases.md
+            children:
+              - file: observability/incident-management/configure-access-to-cases.md
+              - file: observability/incident-management/create-manage-cases.md
+              - file: observability/incident-management/configure-case-settings.md
+          - file: observability/incident-management/service-level-objectives-slos.md
+            children:
+              - file: observability/incident-management/configure-service-level-objective-slo-access.md
+              - file: observability/incident-management/create-an-slo.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
       - file: observability/tools-and-apis.md
