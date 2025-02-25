@@ -5,9 +5,9 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
-  ece: all
-  eck: all
-  stack: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 <!-- This doc needs to be moved somewhere else, it's not specific about self-managed, it's about Stack Monitoring in general -->

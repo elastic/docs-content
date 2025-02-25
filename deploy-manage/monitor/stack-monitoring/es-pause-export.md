@@ -5,7 +5,7 @@ applies_to:
   deployment:
     self: deprecated 7.16.0
 ---
-% is this accurate
+
 
 # Pausing data collection [pause-export]
 

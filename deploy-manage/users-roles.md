@@ -5,10 +5,10 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
+    ece: all
+    eck: all
+    self: all
   serverless: all
-  ece: all
-  eck: all
-  stack: all
 ---
 
 # Manage users and roles
