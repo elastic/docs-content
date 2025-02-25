@@ -7,7 +7,7 @@ mapped_urls:
 applies_to:
   deployment:
     self: all
-    hosted: all
+    ess: all
     ece: all
     eck: all
 navigation_title: "Native"
