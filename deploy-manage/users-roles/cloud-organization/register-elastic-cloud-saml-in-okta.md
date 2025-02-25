@@ -5,7 +5,7 @@ navigation_title: Okta
 applies_to:
   deployment:
     ess: all
-    serverless: all
+  serverless: all
 ---
 
 # Register {{ecloud}} SAML in Okta [ec-saml-sso-okta]

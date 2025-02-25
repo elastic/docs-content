@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-cluster-health-notifications.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
 ---
 
 % NEEDS MERGING WITH kibana-alerts.md

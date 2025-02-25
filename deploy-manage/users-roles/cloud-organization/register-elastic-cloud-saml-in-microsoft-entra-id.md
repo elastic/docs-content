@@ -5,7 +5,7 @@ navigation_title: "Microsoft Entra ID"
 applies_to:
   deployment:
     ess: all
-    serverless: all
+  serverless: all
 ---
 
 # Register {{ecloud}} SAML in Microsoft Entra ID [ec-saml-sso-entra]
