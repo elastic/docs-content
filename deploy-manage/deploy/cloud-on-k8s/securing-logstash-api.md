@@ -44,7 +44,7 @@ spec:
 
 1. Store the username and password in a Secret.
 2. Map the username and password to the environment variables of the Pod.
-3. At Logstash startup, `${API_USERNAME}` and `${API_PASSWORD}` are replaced by the value of environment variables. Check [using environment variables](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/environment-variables.md) for more details.
+3. At Logstash startup, `${API_USERNAME}` and `${API_PASSWORD}` are replaced by the value of environment variables. Check [using environment variables](asciidocalypse://docs/logstash/docs/reference/environment-variables.md) for more details.
 
 
 An alternative is to set up [keystore](advanced-configuration-logstash.md#k8s-logstash-keystore) to resolve `${API_USERNAME}` and `${API_PASSWORD}`

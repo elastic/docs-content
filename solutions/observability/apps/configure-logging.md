@@ -106,7 +106,7 @@ To see which selectors are available, run APM Server in debug mode (set `logging
 ::::
 
 
-To configure multiple selectors, use the following [YAML list syntax](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-format.md):
+To configure multiple selectors, use the following [YAML list syntax](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-format.md):
 
 ```yaml
 logging.selectors: [ harvester, input ]

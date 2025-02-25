@@ -13,7 +13,7 @@ Resetting the `elastic` user password does not interfere with Marketplace integr
 
 
 ::::{note}
-The `elastic` user should be not be used unless you have no other way to access your deployment. [Create API keys for ingesting data](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/beats-api-keys.md), and create user accounts with [appropriate roles for user access](../../../deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
+The `elastic` user should be not be used unless you have no other way to access your deployment. [Create API keys for ingesting data](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md), and create user accounts with [appropriate roles for user access](../../../deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
 ::::
 
 

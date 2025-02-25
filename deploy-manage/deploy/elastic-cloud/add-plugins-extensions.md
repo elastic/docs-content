@@ -22,7 +22,7 @@ There are two ways to add plugins to a hosted deployment in {{ecloud}}:
 * [Enable one of the official plugins already available in {{ecloud}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud/ec-adding-elastic-plugins.md).
 * [Upload a custom plugin and then enable it per deployment](upload-custom-plugins-bundles.md).
 
-Custom plugins can include the official {{es}} plugins not provided with {{ecloud}}, any of the community-sourced plugins, or [plugins that you write yourself](asciidocalypse://docs/elasticsearch/docs/extend/create-elasticsearch-plugins/index.md). Uploading custom plugins is available only to Gold, Platinum, and Enterprise subscriptions. For more information, check [Upload custom plugins and bundles](upload-custom-plugins-bundles.md).
+Custom plugins can include the official {{es}} plugins not provided with {{ecloud}}, any of the community-sourced plugins, or [plugins that you write yourself](asciidocalypse://docs/elasticsearch/docs/extend/index.md). Uploading custom plugins is available only to Gold, Platinum, and Enterprise subscriptions. For more information, check [Upload custom plugins and bundles](upload-custom-plugins-bundles.md).
 
 To learn more about the official and community-sourced plugins, refer to [{{es}} Plugins and Integrations](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/index.md).
 

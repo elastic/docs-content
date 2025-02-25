@@ -143,7 +143,7 @@ $$$azure-integration-pricing$$$What is the pricing for this offer?
 
 
 $$$azure-integration-regions$$$Which Azure regions are supported?
-:   Here is the [list of available Azure regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions) supported in {{ecloud}}.
+:   Here is the [list of available Azure regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions) supported in {{ecloud}}.
 
 $$$azure-integration-subscription-levels$$$Which {{ecloud}} subscription levels are available?
 :   The subscription defaults to the Enterprise subscription, granting immediate access to advanced {{stack}} features like machine learning, and premium support response time SLAs. {{ecloud}} offers a number of different [subscription levels](https://elastic.co/pricing).
@@ -239,8 +239,8 @@ $$$azure-integration-cli-api$$$What other methods are available to deploy {{es}}
     * **Deploy using {{ecloud}}**
 
         * The {{ecloud}} [console](https://cloud.elastic.co?page=docs&placement=docs-body)
-        * The {{ecloud}} [REST API](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-restful.md)
-        * The {{ecloud}} [command line tool](asciidocalypse://docs/ecctl/docs/reference/cloud/ecctl/index.md)
+        * The {{ecloud}} [REST API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md)
+        * The {{ecloud}} [command line tool](asciidocalypse://docs/ecctl/docs/reference/index.md)
         * The {{ecloud}} [Terraform provider](https://registry.terraform.io/providers/elastic/ec/latest/docs)
 
             Note that when you use any of the {{ecloud}} methods, the {{es}} deployment will not be available in Azure.
@@ -327,7 +327,7 @@ $$$azure-integration-modify-deployment$$$How can I modify my {{ecloud}} deployme
     * [Add or remove custom plugins](add-plugins-extensions.md).
     * [Configure IP filtering](../../security/traffic-filtering.md).
     * [Monitor your {{ecloud}} deployment](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to ensure it remains healthy.
-    * Add or remove API keys to use the [REST API](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-restful.md).
+    * Add or remove API keys to use the [REST API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md).
     * [And more](cloud-hosted.md)
 
 
@@ -384,7 +384,7 @@ Note that following restrictions for logging:
 
 * Only logs from non-compute Azure services are ingested as part of the configuration detailed in this document. Logs from compute services, such as Virtual Machines, into the {{stack}} will be added in a future release.
 
-* The Azure services must be in one of the [supported regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions). All regions will be supported in the future.
+* The Azure services must be in one of the [supported regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions). All regions will be supported in the future.
 
 ::::
 
@@ -501,7 +501,7 @@ $$$azure-integration-failed-sso$$$I can’t SSO into my {{ecloud}} deployment.
 
 
 $$$azure-integration-cant-see-deployment$$$I see some deployments in the {{ecloud}} console but not in the Azure Portal.
-:   Elastic Deployments created using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), the [{{es}} Service API](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-restful.md), or the [{{ecloud}} Terraform provider](https://registry.terraform.io/providers/elastic/ec/latest/docs) are only visible through the {{ecloud}} Console. To have the necessary metadata to be visible in the Azure Portal, {{ecloud}} deployments need to be created in Microsoft Azure.
+:   Elastic Deployments created using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), the [{{es}} Service API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md), or the [{{ecloud}} Terraform provider](https://registry.terraform.io/providers/elastic/ec/latest/docs) are only visible through the {{ecloud}} Console. To have the necessary metadata to be visible in the Azure Portal, {{ecloud}} deployments need to be created in Microsoft Azure.
 
 ::::{note}
 Mimicking this metadata by manually adding tags to an {{ecloud}} deployment will not work around this limitation. Instead, it will prevent you from being able to delete the deployment using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).

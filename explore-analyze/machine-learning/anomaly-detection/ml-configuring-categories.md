@@ -84,7 +84,7 @@ Another advanced option is the `categorization_filters` property, which can cont
 
 ## Per-partition categorization [ml-per-partition-categorization]
 
-If you enable per-partition categorization, categories are determined independently for each partition. For example, if your data includes messages from multiple types of logs from different applications, you can use a field like the ECS [`event.dataset` field](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-event.md) as the `partition_field_name` and categorize the messages for each type of log separately.
+If you enable per-partition categorization, categories are determined independently for each partition. For example, if your data includes messages from multiple types of logs from different applications, you can use a field like the ECS [`event.dataset` field](asciidocalypse://docs/ecs/docs/reference/ecs-event.md) as the `partition_field_name` and categorize the messages for each type of log separately.
 
 If your job has multiple detectors, every detector that uses the `mlcategory` keyword must also define a `partition_field_name`. You must use the same `partition_field_name` value in all of these detectors. Otherwise, when you create or update a job and enable per-partition categorization, it fails.
 
