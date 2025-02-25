@@ -10,7 +10,7 @@ Value lists hold multiple values of the same Elasticsearch data type, such as IP
 
 Value lists are lists of items with the same {{es}} [data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md). You can create value lists with these types:
 
-* `Keywords` (many [ECS fields](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-field-reference.md) are keywords)
+* `Keywords` (many [ECS fields](asciidocalypse://docs/ecs/docs/reference/ecs-field-reference.md) are keywords)
 * `IP Addresses`
 * `IP Ranges`
 * `Text`

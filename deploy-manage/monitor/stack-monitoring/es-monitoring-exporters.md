@@ -39,7 +39,7 @@ When the exporters route monitoring data into the monitoring cluster, they use `
 Routing monitoring data involves indexing it into the appropriate monitoring indices. Once the data is indexed, it exists in a monitoring index that, by default, is named with a daily index pattern. For {{es}} monitoring data, this is an index that matches `.monitoring-es-6-*`. From there, the data lives inside the monitoring cluster and must be curated or cleaned up as necessary. If you do not curate the monitoring data, it eventually fills up the nodes and the cluster might fail due to lack of disk space.
 
 ::::{tip} 
-You are strongly recommended to manage the curation of indices and particularly the monitoring indices. To do so, you can take advantage of the [cleaner service](es-local-exporter.md#local-exporter-cleaner) or [Elastic Curator](asciidocalypse://docs/curator/docs/reference/elasticsearch/elasticsearch-client-curator/index.md).
+You are strongly recommended to manage the curation of indices and particularly the monitoring indices. To do so, you can take advantage of the [cleaner service](es-local-exporter.md#local-exporter-cleaner) or [Elastic Curator](asciidocalypse://docs/curator/docs/reference/index.md).
 ::::
 
 

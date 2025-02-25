@@ -89,7 +89,7 @@ Navigate to the **Discover** or **Stream** pages to check if you’ve misconfigu
 :alt: Log error in Stream page showing failed SAML authentication
 :::
 
-You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md):
+You can also use this page to test how problematic proxy traffic requests show up in audit logs. To illustrate, create a spurious test request from the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md):
 
 :::{image} ../../../images/cloud-ec-ce-monitoring-api-console.png
 :alt: Elasticsearch API console showing a spurious request that fails
@@ -146,7 +146,7 @@ When issues come up that you need to troubleshoot, you’ll frequently start wit
 You can run this query and many others from the API consoles available via:
 
 * **Kibana** > **Dev Tools**. Check [Run Elasticsearch API requests](/explore-analyze/query-filter/tools/console.md).
-* **Elastic Cloud** > **Deployment** > **Elasticsearch** > **API Console**. Check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md).
+* **Elastic Cloud** > **Deployment** > **Elasticsearch** > **API Console**. Check [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md).
 
 You can also learn more about the queries you should run for your deployment by reading our blog [Managing and Troubleshooting Elasticsearch Memory](https://www.elastic.co/blog/managing-and-troubleshooting-elasticsearch-memory).
 

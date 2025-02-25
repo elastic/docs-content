@@ -43,7 +43,7 @@ The cluster that you deployed in this quickstart guide only allocates a persiste
 ::::
 
 
-For a full description of each `CustomResourceDefinition` (CRD), refer to the [*API Reference*](asciidocalypse://docs/cloud-on-k8s/docs/reference/cloud/cloud-on-k8s/k8s-api-reference.md) or view the CRD files in the [project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/crds). You can also retrieve information about a CRD from the cluster. For example, describe the {{es}} CRD specification with [`describe`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/):
+For a full description of each `CustomResourceDefinition` (CRD), refer to the [*API Reference*](asciidocalypse://docs/cloud-on-k8s/docs/reference/k8s-api-reference.md) or view the CRD files in the [project repository](https://github.com/elastic/cloud-on-k8s/tree/2.16/config/crds). You can also retrieve information about a CRD from the cluster. For example, describe the {{es}} CRD specification with [`describe`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/):
 
 ```sh
 kubectl describe crd elasticsearch

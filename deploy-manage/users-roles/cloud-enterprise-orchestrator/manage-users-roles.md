@@ -27,12 +27,12 @@ If you want to manage access to each deployment individually, then refer to [](/
 ::::
 
 ::::{important}
-With RBAC, interacting with API endpoints now requires a [bearer token](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-enterprise/ece-api-command-line.md) or [API key](../../api-keys/elastic-cloud-enterprise-api-keys.md#ece-api-keys).
+With RBAC, interacting with API endpoints now requires a [bearer token](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/ece-api-command-line.md) or [API key](../../api-keys/elastic-cloud-enterprise-api-keys.md#ece-api-keys).
 ::::
 
 ## Before you begin [ece_before_you_begin_8]
 
-To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](asciidocalypse://docs/cloud/docs/release-notes/known-issues/cloud-enterprise.md).
+To prepare for RBAC, you should review the Elastic Cloud Enterprise [limitations and known issues](asciidocalypse://docs/cloud/docs/release-notes/cloud-enterprise/known-issues.md).
 
 
 ## Available roles and permissions [ece-user-role-permissions]

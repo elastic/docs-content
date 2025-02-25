@@ -24,21 +24,21 @@ The default list of sanitized fields attempts to target common field names for d
 
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
-* Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-sanitize-field-names)
-* Java: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-sanitize-field-names)
-* .NET: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-core.md#config-sanitize-field-names)
-* Node.js: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#sanitize-field-names)
-* Python: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-sanitize-field-names)
-* Ruby: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-sanitize-field-names)
+* Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-sanitize-field-names)
+* Java: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-sanitize-field-names)
+* .NET: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-sanitize-field-names)
+* Node.js: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#sanitize-field-names)
+* Python: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-sanitize-field-names)
+* Ruby: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-sanitize-field-names)
 
 Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](apm-agent-central-configuration.md):
 
-* Go: [`ELASTIC_APM_CAPTURE_HEADERS`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-capture-headers)
-* Java: [`capture_headers`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-capture-headers)
-* .NET: [`CaptureHeaders`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-http.md#config-capture-headers)
-* Node.js: [`captureHeaders`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#capture-headers)
-* Python: [`capture_headers`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-capture-headers)
-* Ruby: [`capture_headers`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-capture-headers)
+* Go: [`ELASTIC_APM_CAPTURE_HEADERS`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-capture-headers)
+* Java: [`capture_headers`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-headers)
+* .NET: [`CaptureHeaders`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-http.md#config-capture-headers)
+* Node.js: [`captureHeaders`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-headers)
+* Python: [`capture_headers`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-headers)
+* Ruby: [`capture_headers`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-headers)
 
 
 ## HTTP bodies [apm-filters-http-body]
@@ -47,12 +47,12 @@ By default, the body of HTTP requests is not recorded. Request bodies often cont
 
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
-* Go: [`ELASTIC_APM_CAPTURE_BODY`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-capture-body)
-* Java: [`capture_body`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-capture-body)
-* .NET: [`CaptureBody`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-http.md#config-capture-body)
-* Node.js: [`captureBody`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#capture-body)
-* Python: [`capture_body`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-capture-body)
-* Ruby: [`capture_body`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-capture-body)
+* Go: [`ELASTIC_APM_CAPTURE_BODY`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-capture-body)
+* Java: [`capture_body`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-body)
+* .NET: [`CaptureBody`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-http.md#config-capture-body)
+* Node.js: [`captureBody`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-body)
+* Python: [`capture_body`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-body)
+* Ruby: [`capture_body`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-body)
 
 
 ## Personal data [apm-filters-personal-data]
@@ -67,7 +67,7 @@ The capturing of this data can be turned off by setting **Capture personal data*
 
 ## Real user monitoring data [apm-filters-real-user-data]
 
-Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/configuration.md#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
+Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
 
 | Disable | Configuration value |
 | --- | --- |
@@ -91,5 +91,5 @@ Certain agents offer additional filtering and obfuscating options:
 
 **Agent configuration options**
 
-* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#capture-exceptions).
-* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-reporter.md#config-include-process-args).
+* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-exceptions).
+* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-include-process-args).

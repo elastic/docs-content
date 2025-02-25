@@ -165,10 +165,7 @@ toc:
                 children:
                   - file: observability/apps/apm-ui-api.md
                     children:
-                      - file: observability/apps/agent-configuration-api.md
-                      - file: observability/apps/annotation-api.md
                       - file: observability/apps/rum-source-map-api.md
-                      - file: observability/apps/apm-agent-key-api.md
                       - file: observability/apps/managed-intake-service-event-api.md
                   - file: observability/apps/apm-server-api.md
                     children:
