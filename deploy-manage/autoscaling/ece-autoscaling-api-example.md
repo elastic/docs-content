@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-autoscaling-api-example.html
 ---
 
-# Autoscaling through the API [ece-autoscaling-api-example]
+# {{ece}} autoscaling through the API [ece-autoscaling-api-example]
 
 This example demonstrates how to use the Elastic Cloud Enterprise RESTful API to create a deployment with autoscaling enabled.
 

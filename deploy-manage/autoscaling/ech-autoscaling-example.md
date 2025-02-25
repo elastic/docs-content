@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-autoscaling-example.html
 ---
 
-# Autoscaling example [ech-autoscaling-example]
+# {{ech}} autoscaling example [ech-autoscaling-example]
 
 To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample Elasticsearch Add-On for Heroku deployment.
 

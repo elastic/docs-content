@@ -8,8 +8,6 @@ mapped_urls:
 
 # Autoscaling
 
-% NOTE Whole section is only XPACK autoscaling
-
 ::::{note} 
 {{cloud-only}}
 ::::
@@ -39,14 +37,6 @@ Autoscaling is not supported on Debian 8.
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md
 %      Notes: 2 children
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md
-
-
-% **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
-
-% * [/raw-migrated-files/cloud/cloud-heroku/ech-autoscaling.md](/raw-migrated-files/cloud/cloud-heroku/ech-autoscaling.md)
-% * [/raw-migrated-files/cloud/cloud/ec-autoscaling.md](/raw-migrated-files/cloud/cloud/ec-autoscaling.md)
-% * [/raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md](/raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md)
-% * [/raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md)
 
 % --------------
 

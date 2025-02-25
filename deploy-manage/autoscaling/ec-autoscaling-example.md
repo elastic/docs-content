@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling-example.html
 ---
 
-# Autoscaling example [ec-autoscaling-example]
+# {{ecloud}} autoscaling example [ec-autoscaling-example]
 
 To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample {{ech}} deployment.
 
