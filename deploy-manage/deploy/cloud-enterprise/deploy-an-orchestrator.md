@@ -17,7 +17,7 @@ This section provides step-by-step guidance on:
 
 * [Prepare the environment](./prepare-environment.md): Follow the hardware, software, and networking prerequisites before the installation. 
 
-* [Install ECE](./install.md): Identify the deployment scenario that best fits your needs, choose an installation method, and complete the setup.
+* [Install ECE orchestrator](./install.md): Identify the deployment scenario that best fits your needs, choose an installation method, and complete the setup.
   * [Install ECE on a public cloud](./install-ece-on-public-cloud.md)
   * [Install ECE on your own premises](./install-ece-on-own-premises.md)
   * [Alternative: install ECE with Ansible](./alternative-install-ece-with-ansible.md)
@@ -36,8 +36,8 @@ This section provides step-by-step guidance on:
 
 After deploying the ECE platform, you may need to configure custom proxy certificates, manage snapshot repositories, or perform maintenance operations, among other tasks. Refer to the following sections for more details:
 
-* [Secure your ECE installation](../../security/secure-your-elastic-cloud-enterprise-installation.md)
-*[](/deploy-manage/security/secure-your-cluster-deployment.md)
+* [Security considerations](../../security/secure-your-elastic-cloud-enterprise-installation.md)
+* [Secure your deployments](/deploy-manage/security/secure-your-cluster-deployment.md)
 * [Users and roles](../../users-roles/cloud-enterprise-orchestrator.md)
 * [Manage snapshot repositories](../../tools/snapshot-and-restore.md)
 * [Manage licenses](../../license/manage-your-license-in-ece.md)

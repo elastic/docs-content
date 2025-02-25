@@ -1,9 +1,12 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-small-cloud.html
 ---
 
-# Deploy a small installation cloud [ece-install-small-cloud]
+# Deploy a small installation [ece-install-small-cloud]
 
 The type of installation is recommended for development, test, and small-scale use cases. You need:
 

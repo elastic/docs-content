@@ -1,9 +1,12 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-large-cloud.html
 ---
 
-# Deploy a large installation cloud [ece-install-large-cloud]
+# Deploy a large installation [ece-install-large-cloud]
 
 This type of installation is recommended for deployments with significant overall search and indexing throughput. You need:
 

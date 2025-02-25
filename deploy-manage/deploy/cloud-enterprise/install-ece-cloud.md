@@ -1,9 +1,12 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-cloud.html
 ---
 
-# Install ECE cloud [ece-install-cloud]
+# Install ECE on a public cloud [ece-install-cloud]
 
 Choose the Elastic Cloud Enterprise deployment scenario that best fits your business needs:
 
@@ -12,7 +15,6 @@ Choose the Elastic Cloud Enterprise deployment scenario that best fits your busi
 * [Deploy a large installation](deploy-large-installation-cloud.md): For deployments with significant overall search and indexing throughput.
 * [Deploy using Podman](fresh-installation-of-ece-using-podman-hosts-cloud.md): Fresh installation of ECE using Podman hosts.
 
-
-
+For installations using Podman instead of Docker, refer to [](./fresh-installation-of-ece-using-podman-hosts-cloud.md)
 
 

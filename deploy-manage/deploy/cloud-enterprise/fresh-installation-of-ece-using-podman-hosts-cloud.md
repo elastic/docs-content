@@ -1,6 +1,10 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-using-podman-cloud.html
+navigation_title: Podman considerations
 ---
 
 # Fresh installation of ECE using Podman hosts cloud [ece-install-using-podman-cloud]

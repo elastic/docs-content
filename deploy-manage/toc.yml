@@ -130,10 +130,10 @@ toc:
                   - file: deploy/cloud-enterprise/ece-software-prereq.md
                   - file: deploy/cloud-enterprise/ece-sysconfig.md
                   - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-ha.md
                   - file: deploy/cloud-enterprise/ece-roles.md
                   - file: deploy/cloud-enterprise/ece-load-balancers.md
-                  - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-jvm.md
                   - file: deploy/cloud-enterprise/ece-wildcard-dns.md
                   - file: deploy/cloud-enterprise/ece-manage-capacity.md

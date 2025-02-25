@@ -1,9 +1,12 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-medium-cloud.html
 ---
 
-# Deploy a medium installation cloud [ece-install-medium-cloud]
+# Deploy a medium installation [ece-install-medium-cloud]
 
 This type of installation is recommended for many production setups. You need:
 
