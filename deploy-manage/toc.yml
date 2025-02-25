@@ -122,22 +122,21 @@ toc:
       - file: deploy/cloud-enterprise.md
         children:
           - file: deploy/cloud-enterprise/ece-architecture.md
-          - file: deploy/cloud-enterprise/ece-containerization.md
-          - file: deploy/cloud-enterprise/prepare-environment.md
-            children:
-              - file: deploy/cloud-enterprise/ece-hardware-prereq.md
-              - file: deploy/cloud-enterprise/ece-software-prereq.md
-              - file: deploy/cloud-enterprise/ece-sysconfig.md
-              - file: deploy/cloud-enterprise/ece-networking-prereq.md
-              - file: deploy/cloud-enterprise/ece-ha.md
-              - file: deploy/cloud-enterprise/ece-roles.md
-              - file: deploy/cloud-enterprise/ece-load-balancers.md
-              - file: deploy/cloud-enterprise/ece-users-permissions.md
-              - file: deploy/cloud-enterprise/ece-jvm.md
-              - file: deploy/cloud-enterprise/ece-wildcard-dns.md
-              - file: deploy/cloud-enterprise/ece-manage-capacity.md
           - file: deploy/cloud-enterprise/deploy-an-orchestrator.md
             children:
+              - file: deploy/cloud-enterprise/prepare-environment.md
+                children:
+                  - file: deploy/cloud-enterprise/ece-hardware-prereq.md
+                  - file: deploy/cloud-enterprise/ece-software-prereq.md
+                  - file: deploy/cloud-enterprise/ece-sysconfig.md
+                  - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-ha.md
+                  - file: deploy/cloud-enterprise/ece-roles.md
+                  - file: deploy/cloud-enterprise/ece-load-balancers.md
+                  - file: deploy/cloud-enterprise/ece-users-permissions.md
+                  - file: deploy/cloud-enterprise/ece-jvm.md
+                  - file: deploy/cloud-enterprise/ece-wildcard-dns.md
+                  - file: deploy/cloud-enterprise/ece-manage-capacity.md
               - file: deploy/cloud-enterprise/install.md
                 children:
                   - file: deploy/cloud-enterprise/identify-deployment-scenario.md
