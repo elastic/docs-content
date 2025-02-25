@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/user-lookup.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck:
+    self:
 ---
 
 # Looking up users without authentication [user-lookup]
@@ -31,7 +37,7 @@ If you want to use a realm only for user lookup and prevent users from authentic
 ::::
 
 
-The user lookup feature is an internal capability that is used to implement the `run-as` and delegated authorization features - there are no APIs for user lookup. If you wish to test your user lookup configuration, then you can do this with `run_as`. Use the [Authenticate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) API, authenticate as a `superuser` (e.g. the builtin `elastic` user) and specify the [`es-security-runas-user` request header](submitting-requests-on-behalf-of-other-users.md).
+The user lookup feature is an internal capability that is used to implement the `run_as` and delegated authorization features - there are no APIs for user lookup. If you want to test your user lookup configuration, then you can do this with `run_as`. Use the [Authenticate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate) API, authenticate as a `superuser` (e.g. the builtin `elastic` user) and specify the [`es-security-runas-user` request header](submitting-requests-on-behalf-of-other-users.md).
 
 ::::{note} 
 The [Get users](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user) API and [User profiles](user-profiles.md) feature are alternative ways to retrieve information about a {{stack}} user. Those APIs are not related to the user lookup feature.

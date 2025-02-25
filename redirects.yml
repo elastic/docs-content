@@ -1,3 +1,8 @@
 redirects:
   'get-started/installing-elastic-stack.md': '!deploy-manage/deploy/self-managed.md'
   'deploy-manage/deploy/elastic-cloud/ec-configure-deployment-settings.md': '!deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md'
+  'deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md':
+    anchors:
+      'anonymous-authentication':
+      'basic-authentication':
+      'http-authentication':

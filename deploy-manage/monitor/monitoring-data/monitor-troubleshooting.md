@@ -2,8 +2,9 @@
 navigation_title: "Troubleshooting"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/monitor-troubleshooting.html
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: all
 ---
 
 % this page probably needs to be moved

@@ -3,11 +3,12 @@ navigation_title: "Cluster or deployment"
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-securing-clusters.html
   - https://www.elastic.co/guide/en/cloud/current/ec-security.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Cluster or deployment users
@@ -16,11 +17,11 @@ To prevent unauthorized access to your Elastic resources, you need a way to iden
 
 In this section, you’ll learn how to set up authentication and authorization at the cluster or deployment level, and learn about the underlying security technologies that Elasticsearch uses to authenticate and authorize requests internally and across services.
 
-This section only covers direct access to and communications with an Elasticsearch cluster - sometimes known as a deployment. To learn about managing access to your {{ecloud}} organization or {{ece}} orchestrator, or to learn how to use single sign-on to access a cluster using your {{ecloud}} credentials, refer to [Manage users and roles](/deploy-manage/users-roles.md).
+This section only covers direct access to and communications with an {{es}} cluster - sometimes known as a deployment - as well as the related {{kib}} instance. To learn about managing access to your {{ecloud}} organization or {{ece}} orchestrator, or to learn how to use single sign-on to access a cluster using your {{ecloud}} credentials, refer to [Manage users and roles](/deploy-manage/users-roles.md).
 
 ## Quickstart
 
-If you plan to use native Elasticsearch user and role management, then [follow our quickstart](/deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md) to learn how to set up basic authentication and authorization features.
+If you plan to use native Elasticsearch user and role management, then [follow our quickstart](/deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md) to learn how to set up basic authentication and authorization features, including [spaces](/deploy-manage/manage-spaces.md), [roles](/deploy-manage/users-roles/cluster-or-deployment-auth/user-roles.md), and [native users](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md).
 
 ### User authentication
 

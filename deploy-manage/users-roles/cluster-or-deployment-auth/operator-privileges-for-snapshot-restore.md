@@ -1,12 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/operator-only-snapshot-and-restore.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
 ---
 
 # Operator privileges for snapshot and restore [operator-only-snapshot-and-restore]
 
-::::{note} 
-{cloud-only}
+::::{admonition} Indirect use only
+This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
 
 
@@ -18,7 +23,7 @@ Restoring snapshot data associated with operator-only functionality could be pro
 2. Even when the infrastructure code can correct the values immediately after a restore, there will always be a short period of time when the cluster could be in an inconsistent state.
 3. The infrastructure code prefers to configure operator-only functionality from a single place, that is to say, through API calls.
 
-Therefore, [**when the operator privileges feature is enabled**](configure-operator-privileges.md), snapshot data that is associated with any operator-only functionality is **not** restored.
+Therefore, [when the operator privileges feature is enabled](configure-operator-privileges.md), snapshot data that is associated with any operator-only functionality is **not** restored.
 
 ::::{note} 
 That information is still included when taking a snapshot so that all data is always preserved.

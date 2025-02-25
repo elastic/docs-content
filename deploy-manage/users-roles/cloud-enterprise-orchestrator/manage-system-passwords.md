@@ -1,11 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-system-passwords.html
+applies_to:
+  deployment:
+    ece: all
 ---
 
-# Manage system passwords [ece-manage-system-passwords]
+# Manage system passwords[ece-manage-system-passwords]
 
-At the end of the Elastic Cloud Enterprise installation process on the first host, you are provided with the URL and user credentials for the administration console users `admin` and `readonly`. You use this information to log into the Cloud UI. Both users can access all parts of the Cloud UI, but only the `admin` user can make changes. We recommend that you keep this information secure.
+At the end of the {{ece}} installation process on the first host, you are provided with the URL and user credentials for the administration console users `admin` and `readonly`. You use this information to log into the Cloud UI. Both users can access all parts of the Cloud UI, but only the `admin` user can make changes. We recommend that you keep this information secure.
 
 
 ## Retrieve user passwords [ece-retrieve-passwords]
@@ -33,7 +36,7 @@ You  access the Cloud UI on port 12400 or port 12443 at IP address of the first 
 
 You might need to reset the Cloud UI passwords for one of the following reasons:
 
-* To change the passwords for the `admin` and `readonly` users after installing Elastic Cloud Enterprise or periodically as part of your standard operating procedures.
+* To change the passwords for the `admin` and `readonly` users after installing {{ece}} or periodically as part of your standard operating procedures.
 * To reset passwords if you think they might have become compromised.
 
 The passwords for these users are stored in `/mnt/data/elastic/bootstrap-state/bootstrap-secrets.json` along with other secrets (unless you specified a different host storage path).

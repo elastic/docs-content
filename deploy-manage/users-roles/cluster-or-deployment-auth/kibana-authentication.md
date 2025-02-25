@@ -1,24 +1,29 @@
 ---
-navigation_title: "Authentication"
+navigation_title: "Kibana authentication"
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
+    self: 
 ---
 
 # Authentication in {{kib}} [kibana-authentication]
 
+After you configure an authentication method in {{es}}, you can configure an authentication mechanism to log in to {{kib}}.
 
 {{kib}} supports the following authentication mechanisms:
 
-* [Multiple authentication providers](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#multiple-authentication-providers)
-* [Basic authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#basic-authentication)
-* [Token authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#token-authentication)
-* [Public key infrastructure (PKI) authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#pki-authentication)
-* [SAML single sign-on](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#saml)
-* [OpenID Connect single sign-on](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#oidc)
-* [Kerberos single sign-on](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#kerberos)
-* [Anonymous authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#anonymous-authentication)
-* [HTTP authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#http-authentication)
-* [Embedded content authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#embedded-content-authentication)
-
-For an introduction to {{kib}}'s security features, including the login process, refer to [*Securing access to {{kib}}*](../../../deploy-manage/users-roles/cluster-or-deployment-auth/quickstart.md).
+* [Multiple authentication providers](#multiple-authentication-providers)
+* [Basic authentication](#basic-authentication)
+* [Token authentication](#token-authentication)
+* [Public key infrastructure (PKI) authentication](#pki-authentication)
+* [SAML single sign-on](#saml)
+* [OpenID Connect single sign-on](#oidc)
+* [Kerberos single sign-on](#kerberos)
+* [Anonymous authentication](#anonymous-authentication)
+* [HTTP authentication](#http-authentication)
+* [Embedded content authentication](#embedded-content-authentication)
 
 ## Multiple authentication providers [multiple-authentication-providers]
 
@@ -76,28 +81,23 @@ If you have multiple authentication providers configured, you can use the `auth_
 
 ## Basic authentication [basic-authentication]
 
-To successfully log in to {{kib}}, basic authentication requires a username and password. Basic authentication is enabled by default, and is based on the Native, LDAP, or Active Directory security realm that is provided by {{es}}. The basic authentication provider uses a {{kib}} provided login form, and supports authentication using the `Authorization` request header `Basic` scheme.
+To successfully log in to {{kib}}, basic authentication requires a username and password. Basic authentication is enabled by default, and is based on the [Native](native.md), [LDAP](ldap.md), or [Active Directory](active-directory.md) security realm that is provided by {{es}}. The basic authentication provider uses a {{kib}} provided login form, and supports authentication using the `Authorization` request header `Basic` scheme.
 
 ::::{note}
 You can configure only one Basic provider per {{kib}} instance.
 ::::
 
-
-For more information about basic authentication and built-in users, see [User authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md).
-
-
 ## Token authentication [token-authentication]
 
-Token authentication is a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in using the same {{kib}} provided login form as basic authentication, and is based on the Native security realm or LDAP security realm that is provided by {{es}}. The token authentication provider is built on {{es}} token APIs.
+Token authentication is a [subscription feature](https://www.elastic.co/subscriptions). This allows users to log in using the same {{kib}} provided login form as basic authentication, and is based on the [Native](native.md) or [LDAP](ldap.md) security realm that is provided by {{es}}. The token authentication provider is built on {{es}} token APIs.
 
-Prior to configuring {{kib}}, ensure token support is enabled in {{es}}. See the [{{es}} token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token) documentation for more information.
-
-To enable the token authentication provider in {{kib}}, set the following value in your `kibana.yml`:
+Prior to configuring {{kib}}, ensure that token support is enabled in {{es}}. See the [{{es}} token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token) documentation for more information.
 
 ::::{note}
-You can configure only one Token provider per {{kib}} instance.
+You can configure only one token provider per {{kib}} instance.
 ::::
 
+To enable the token authentication provider in {{kib}}, set the following value in your `kibana.yml`:
 
 ```yaml
 xpack.security.authc.providers:
@@ -105,7 +105,7 @@ xpack.security.authc.providers:
     order: 0
 ```
 
-Switching to the token authentication provider from basic one will make {{kib}} to reject requests from applications like `curl` that usually use `Authorization` request header with the `Basic` scheme for authentication. If you still want to support such applications you’ll have to either switch to using `Bearer` scheme with the tokens [created by {{es}} token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token) or add `Basic` scheme to the list of supported schemes for the [HTTP authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#http-authentication).
+Switching to the token authentication provider from the basic one will make {{kib}} to reject requests from applications like `curl` that usually use `Authorization` request header with the `Basic` scheme for authentication. If you still want to support such applications, you’ll have to either switch to using `Bearer` scheme with the tokens [created by {{es}} token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token), or add the `Basic` scheme to the list of supported schemes for the [HTTP authentication](#http-authentication).
 
 
 ## Public key infrastructure (PKI) authentication [pki-authentication]
@@ -134,6 +134,8 @@ xpack.security.authc.providers:
   pki.pki1:
     order: 0
 ```
+
+If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced. If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). If you're using a self-managed cluster, then the file must be present on each node.
 
 ::::{note}
 Trusted CAs can also be specified in a PKCS #12 keystore bundled with your {{kib}} server certificate/key using `server.ssl.keystore.path` or in a separate trust store using `server.ssl.truststore.path`.
@@ -200,12 +202,12 @@ xpack.security.authc.providers:
 
 Basic authentication is supported *only* if the `basic` authentication provider is explicitly declared in `xpack.security.authc.providers` setting, in addition to `saml`.
 
-To support basic authentication for the applications like `curl` or when the `Authorization: Basic base64(username:password)` HTTP header is included in the request (for example, by reverse proxy), add `Basic` scheme to the list of supported schemes for the [HTTP authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#http-authentication).
+To support basic authentication for the applications like `curl` or when the `Authorization: Basic base64(username:password)` HTTP header is included in the request (for example, by reverse proxy), add `Basic` scheme to the list of supported schemes for the [HTTP authentication](#http-authentication).
 
 
 ## OpenID Connect single sign-on [oidc]
 
-OpenID Connect (OIDC) authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). Similar to SAML, authentication with OIDC allows users to log in to {{kib}} using an OIDC Provider such as Google, or Okta. OIDC should also be configured in {{es}}. For more details, see [Configuring single sign-on to the {{stack}} using OpenID Connect](../../../deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md).
+OpenID Connect (OIDC) authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). Similar to SAML, authentication with OIDC allows users to log in to {{kib}} using an OIDC Provider such as Google, or Okta. OIDC should also be configured in {{es}}. For more details, see [Configuring single sign-on to the {{stack}} using OpenID Connect](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md).
 
 Enable OIDC authentication by specifying which OIDC realm in {{es}} to use:
 
@@ -249,12 +251,12 @@ xpack.security.authc.providers:
 
 Basic authentication is supported *only* if the `basic` authentication provider is explicitly declared in `xpack.security.authc.providers` setting, in addition to `oidc`.
 
-To support basic authentication for the applications like `curl` or when the `Authorization: Basic base64(username:password)` HTTP header is included in the request (for example, by reverse proxy), add `Basic` scheme to the list of supported schemes for the [HTTP authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#http-authentication).
+To support basic authentication for the applications like `curl` or when the `Authorization: Basic base64(username:password)` HTTP header is included in the request (for example, by reverse proxy), add `Basic` scheme to the list of supported schemes for the [HTTP authentication](#http-authentication).
 
 
 ### Single sign-on provider details [_single_sign_on_provider_details]
 
-The following sections apply both to [SAML single sign-on](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#saml) and [OpenID Connect single sign-on](../../../deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#oidc)
+The following sections apply both to [SAML single sign-on](#saml) and [OpenID Connect single sign-on](#oidc).
 
 
 #### Access and refresh tokens [_access_and_refresh_tokens]
@@ -275,7 +277,7 @@ During logout, both the {{kib}} session and {{es}} access/refresh token pair are
 
 ## Kerberos single sign-on [kerberos]
 
-Kerberos authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). Make sure that Kerberos is enabled and configured in {{es}} before setting it up in {{kib}}. See [Kerberos authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
+Kerberos authentication is part of single sign-on (SSO), a [subscription feature](https://www.elastic.co/subscriptions). Make sure that Kerberos is enabled and configured in {{es}} before setting it up in {{kib}}. See [Kerberos authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md).
 
 Next, to enable Kerberos in {{kib}}, you will need to enable the Kerberos authentication provider in the `kibana.yml` configuration file, as follows:
 
@@ -306,7 +308,6 @@ xpack.security.authc.providers:
 ::::
 
 
-
 ## Anonymous authentication [anonymous-authentication]
 
 ::::{important}
@@ -324,7 +325,7 @@ You can configure only one anonymous authentication provider per {{kib}} instanc
 ::::
 
 
-You must have a user account that can authenticate to {{es}} using a username and password, for instance from the Native or LDAP security realms, so that you can use these credentials to impersonate the anonymous users. Here is how your `kibana.yml` might look:
+You must have a user account that can authenticate to {{es}} using a username and password, for instance from the [Native](native.md) or [LDAP](ldap.md) security realms, so that you can use these credentials to impersonate the anonymous users. Here is how your `kibana.yml` might look:
 
 ```yaml
 xpack.security.authc.providers:
@@ -361,9 +362,9 @@ For information on how to embed, refer to [Embed {{kib}} content in a web page](
 
 #### Anonymous access session [anonymous-access-session]
 
-{{kib}} maintains a separate [session](../../../deploy-manage/security/kibana-session-management.md) for every anonymous user, as it does for all other authentication mechanisms.
+{{kib}} maintains a separate [session](/deploy-manage/security/kibana-session-management.md) for every anonymous user, as it does for all other authentication mechanisms.
 
-You can configure [session idle timeout](../../../deploy-manage/security/kibana-session-management.md#session-idle-timeout) and [session lifespan](../../../deploy-manage/security/kibana-session-management.md#session-lifespan) for anonymous sessions the same as you do for any other session with the exception that idle timeout is explicitly disabled for anonymous sessions by default. The global [`xpack.security.session.idleTimeout`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-session-and-cookie-settings) setting doesn’t affect anonymous sessions. To change the idle timeout for anonymous sessions, you must configure the provider-level [`xpack.security.authc.providers.anonymous.<provider-name>.session.idleTimeout`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#anonymous-authentication-provider-settings) setting.
+You can configure [session idle timeout](/deploy-manage/security/kibana-session-management.md#session-idle-timeout) and [session lifespan](/deploy-manage/security/kibana-session-management.md#session-lifespan) for anonymous sessions the same as you do for any other session with the exception that idle timeout is explicitly disabled for anonymous sessions by default. The global [`xpack.security.session.idleTimeout`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#security-session-and-cookie-settings) setting doesn’t affect anonymous sessions. To change the idle timeout for anonymous sessions, you must configure the provider-level [`xpack.security.authc.providers.anonymous.<provider-name>.session.idleTimeout`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#anonymous-authentication-provider-settings) setting.
 
 
 ## HTTP authentication [http-authentication]
@@ -384,7 +385,7 @@ API keys are intended for programmatic access to {{kib}} and {{es}}. Do not use 
 ::::
 
 
-By default {{kib}} supports [`ApiKey`](../../../deploy-manage/api-keys/elasticsearch-api-keys.md) authentication scheme *and* any scheme supported by the currently enabled authentication provider. For example, `Basic` authentication scheme is automatically supported when basic authentication provider is enabled, or `Bearer` scheme when any of the token based authentication providers is enabled (Token, SAML, OpenID Connect, PKI or Kerberos). But it’s also possible to add support for any other authentication scheme in the `kibana.yml` configuration file, as follows:
+By default {{kib}} supports [`ApiKey`](/deploy-manage/api-keys/elasticsearch-api-keys.md) authentication scheme *and* any scheme supported by the currently enabled authentication provider. For example, `Basic` authentication scheme is automatically supported when basic authentication provider is enabled, or `Bearer` scheme when any of the token based authentication providers is enabled (Token, SAML, OpenID Connect, PKI or Kerberos). But it’s also possible to add support for any other authentication scheme in the `kibana.yml` configuration file, as follows:
 
 ::::{note}
 Don’t forget to explicitly specify the default `apikey` and `bearer` schemes when you just want to add a new one to the list.
@@ -433,5 +434,3 @@ To make this iframe leverage anonymous access automatically, you will need to mo
 
 
 For more information, refer to [Embed code](../../../explore-analyze/report-and-share.md#embed-code).
-
-

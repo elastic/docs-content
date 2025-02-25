@@ -2,8 +2,9 @@
 navigation_title: "Elastic Cloud on Kubernetes (ECK)"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-monitoring.html
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 ---
 
 # Enable stack monitoring on ECK deployments [k8s-stack-monitoring]
