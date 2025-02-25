@@ -1,6 +1,7 @@
 ---
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   ece: all
   eck: all
   stack: all

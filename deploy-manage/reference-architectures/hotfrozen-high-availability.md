@@ -1,11 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/reference-architectures/current/hot-frozen-architecture.html
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    self: all
+    ess: all
+    ece: all
+    eck: all
 ---
 
 # Hot/Frozen - High Availability [hot-frozen-architecture]

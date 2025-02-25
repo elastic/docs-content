@@ -2,8 +2,9 @@
 navigation_title: Elasticsearch audit events ignore policies
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/audit-log-ignore-policy.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   ece: all
   eck: all
   stack: all

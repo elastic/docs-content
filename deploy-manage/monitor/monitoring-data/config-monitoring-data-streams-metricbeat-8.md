@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/config-monitoring-data-streams-metricbeat-8.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   ece: all
   eck: all
   stack: all

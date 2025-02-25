@@ -2,8 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-memory-pressure.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-memory-pressure.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   ece: all
 ---
 

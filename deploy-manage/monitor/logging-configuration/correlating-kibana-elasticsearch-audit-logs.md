@@ -2,8 +2,9 @@
 navigation_title: Correlate audit events
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-security-audit-logging.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   ece: all
   eck: all
   stack: all

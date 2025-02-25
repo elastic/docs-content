@@ -2,9 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-monitoring.html
-applies:
+applies_to:
+  deployment:
+    ess: all
   serverless: all
-  hosted: all
   ece: all
   eck: all
   stack: all

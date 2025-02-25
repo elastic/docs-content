@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-alerts.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   ece: all
   eck: all
   stack: all
