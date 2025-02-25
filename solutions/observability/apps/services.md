@@ -29,16 +29,14 @@ Want to monitor service logs without instrumenting all your services? Learn abou
 
 ## Service groups [service-groups]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
-For Observability serverless projects, the **Editor** role or higher is required to create and manage service groups. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+For Observability Serverless projects, the **Editor** role or higher is required to create and manage service groups. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
 
-::::{admonition} Service grouping is in beta
-:class: important
+::::{important}
 
 The Service grouping functionality is in beta and is subject to change. The design and code is less mature than official generally available features and is being provided as-is with no warranties.
 

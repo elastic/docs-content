@@ -11,7 +11,7 @@ mapped_urls:
 
 ::::{note}
 
-**For Observability serverless projects**, the **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability Serverless projects**, the **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 

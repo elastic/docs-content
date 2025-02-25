@@ -19,6 +19,9 @@ You can adjust Application settings to fine-tune your experience in the Applicat
 
 
 ## General settings [observability-apm-kibana-settings-general-settings]
+```{applies_to}
+stack: ga 9.1
+```
 
 To change APM settings, select **Settings** from any **Applications** page. The following settings are available.
 
