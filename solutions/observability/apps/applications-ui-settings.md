@@ -9,8 +9,7 @@ navigation_title: "Settings"
 # Applications UI settings [observability-apm-kibana-settings]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 The **Editor** role or higher is required to modify settings. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

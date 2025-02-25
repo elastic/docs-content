@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/apm-services.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-services.html
+applies_to:
+  stack: all
+  serverless: all
 ---
 
 # Services [apm-services]
@@ -51,35 +54,12 @@ Group services together to build meaningful views that remove noise, simplify in
 
 To create a service group:
 
-::::{tab-set}
-:group: stack-serverless
-
-:::{tab-item} Elastic Stack
-:sync: stack
-
 1. To open **Service inventory**, find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Switch to **Service groups**.
 3. Click **Create group**.
 4. Specify a name, color, and description.
 5. Click **Select services**.
 6. Specify a [{{kib}} Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) query to filter services by one or more of the following dimensions: `agent.name`, `service.name`, `service.language.name`, `service.environment`, `labels.<xyz>`. Services that match the query within the last 24 hours will be assigned to the group.
-
-:::
-
-:::{tab-item} Serverless
-:sync: serverless
-
-1. In your {{obs-serverless}} project, go to **Applications** → **Service Inventory**.
-2. Switch to **Service groups**.
-3. Click **Create group**.
-4. Specify a name, color, and description.
-5. Click **Select services**.
-6. Specify a [Kibana Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) query to filter services by one or more of the following dimensions: `agent.name`, `service.name`, `service.language.name`, `service.environment`, `labels.<xyz>`. Services that match the query within the last 24 hours will be assigned to the group.
-
-:::
-
-::::
-
 
 ### Examples [apm-services-examples]
 

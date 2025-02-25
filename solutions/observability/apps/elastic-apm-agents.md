@@ -9,8 +9,7 @@ navigation_title: "APM agents"
 # Elastic APM agents [observability-apm-agents-elastic-apm-agents]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Admin** role or higher is required to use APM agents. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

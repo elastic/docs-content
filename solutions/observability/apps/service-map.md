@@ -27,6 +27,7 @@ Customize what the service map displays using either the query bar or the enviro
 
 If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the ***Errors** or **Metrics** overview.
 
+
 :::{image} ../../../images/observability-service-maps-java.png
 :alt: Example view of service maps in the Applications UI in Kibana
 :class: screenshot
@@ -74,4 +75,4 @@ Service Maps are supported for the following APM agent versions:
 | PHP agent | ≥ v1.2.0 |
 | Python agent | ≥ v5.5.0 |
 | Ruby agent | ≥ v3.6.0 |
-| Real User Monitoring (RUM) agent | ≥ v4.7.0 |
+| Real User Monitoring (RUM) agent (**Elastic Stack only**)| ≥ v4.7.0 |

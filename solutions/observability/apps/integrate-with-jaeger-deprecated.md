@@ -2,6 +2,8 @@
 navigation_title: "Jaeger (deprecated)"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-jaeger-integration.html
+applies_to:
+  stack: all
 ---
 
 

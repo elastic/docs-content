@@ -29,8 +29,7 @@ If your usage pattern *has* changed, the dependency view can quickly show you wh
 
 ## Operations [dependencies-operations]
 
-::::{admonition} Dependency operations is in beta
-:class: important
+::::{Warning}
 
 The Dependency operations functionality is in beta and is subject to change. The design and code is less mature than official generally available features and is being provided as-is with no warranties.
 

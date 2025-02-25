@@ -173,7 +173,9 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
      com.mycompany.checkout.CheckoutServiceServer
 ```
 
-1. [preview] The OpenTelemetry logs intake via APM Server is currently in technical preview.`OTEL_RESOURCE_ATTRIBUTES`
+1. [preview] The OpenTelemetry logs intake via APM Server is currently in technical preview.
+
+`OTEL_RESOURCE_ATTRIBUTES`
 :   Fields that describe the service and the environment that the service runs in. See [resource attributes](../../../solutions/observability/apps/resource-atrributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
@@ -213,7 +215,9 @@ java -javaagent:/path/to/opentelemetry-javaagent-all.jar \
      com.mycompany.checkout.CheckoutServiceServer
 ```
 
-1. [preview]  The OpenTelemetry logs intake via Elastic is currently in technical preview.`OTEL_RESOURCE_ATTRIBUTES`
+1. [preview]  The OpenTelemetry logs intake via Elastic is currently in technical preview.
+
+`OTEL_RESOURCE_ATTRIBUTES`
 :   Fields that describe the service and the environment that the service runs in. See [resource attributes](../../../solutions/observability/apps/resource-atrributes.md) for more information.
 
 `OTEL_EXPORTER_OTLP_ENDPOINT`
