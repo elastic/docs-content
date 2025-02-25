@@ -31,7 +31,7 @@ Pay careful attention to the next metric fields:
 * `beats_stats.output.elasticsearch.bulk_requests.completed` that represents the number of already completed bulk requests;
 * `beats_stats.metrics.output.elasticsearch.indexers.active` that represents the number of active bulk indexers that are concurrently processing batches;
 
-See [{{metricbeat}} documentation](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/exported-fields-beat.md) for the full list of exported metric fields.
+See [{{metricbeat}} documentation](asciidocalypse://docs/beats/docs/reference/metricbeat/exported-fields-beat.md) for the full list of exported metric fields.
 
 One likely cause of excessive indexing pressure or rejected requests is undersized {{es}}. To mitigate this, follow the guidance in [Rejected requests](../../elasticsearch/rejected-requests.md).
 

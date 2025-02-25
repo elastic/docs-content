@@ -45,7 +45,7 @@ For complete capture of all or specific Windows security events, consider the [C
 
 Drivers are registered in the system as system services. You can capture this with Windows event ID 4697 using the [Custom Windows Event Logs](https://docs.elastic.co/en/integrations/winlog) integration.
 
-Also consider capturing Windows event ID 6 using {{winlogbeat}}'s [Sysmon module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-winlogbeat/winlogbeat-module-sysmon.md).
+Also consider capturing Windows event ID 6 using {{winlogbeat}}'s [Sysmon module](asciidocalypse://docs/beats/docs/reference/winlogbeat/winlogbeat-module-sysmon.md).
 
 
 ## System configuration file creation, modification, and deletion [_system_configuration_file_creation_modification_and_deletion] 

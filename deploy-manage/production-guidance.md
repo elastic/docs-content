@@ -12,7 +12,7 @@ This section provides some best practices for managing your data to help you set
 
 * Build a [data architecture](/manage-data/lifecycle/data-tiers.md) that best fits your needs. Your Elasticsearch Service deployment comes with default hot tier {{es}} nodes that store your most frequently accessed data. Based on your own access and retention policies, you can add warm, cold, frozen data tiers, and automated deletion of old data.
 * Make your data [highly available](/deploy-manage/tools.md) for production environments or otherwise critical data stores, and take regular [backup snapshots](tools/snapshot-and-restore.md).
-* Normalize event data to better analyze, visualize, and correlate your events by adopting the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-getting-started.md) (ECS). Elastic integrations use ECS out-of-the-box. If you are writing your own integrations, ECS is recommended.
+* Normalize event data to better analyze, visualize, and correlate your events by adopting the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs-getting-started.md) (ECS). Elastic integrations use ECS out-of-the-box. If you are writing your own integrations, ECS is recommended.
 
 
 ## Optimize data storage and retention [ec_optimize_data_storage_and_retention]

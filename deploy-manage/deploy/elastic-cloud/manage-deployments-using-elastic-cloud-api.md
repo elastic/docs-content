@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-deployment-crud.html
 ---
@@ -10,7 +13,7 @@ The following examples demonstrate Create, Read, Update and Delete operations on
 
 ## Listing your deployments [ec_listing_your_deployments]
 
-List the details about all of your Elasticsearch Service deployments.
+List the details about all of your {{ech}} deployments.
 
 ```sh
 curl \
@@ -40,7 +43,7 @@ When you create a new deployment through the API, you have two options:
 
 ### Create a deployment using default values [ec-api-examples-deployment-simple]
 
-This example requires minimal information in the API payload, and creates a deployment with default settings and a default name. You just need to specify one of the [available deployment templates](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) in your API request header and the deployment is created using default settings from that template.
+This example requires minimal information in the API payload, and creates a deployment with default settings and a default name. You just need to specify one of the [available deployment templates](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md) in your API request header and the deployment is created using default settings from that template.
 
 ```sh
 curl -XPOST \
@@ -56,7 +59,7 @@ curl -XPOST \
 ```
 
 1. Optional: You can specify a version for the deployment. If this field is omitted a default version is used.
-2. Required: One of the [available regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md) must be provided in the request.
+2. Required: One of the [available regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md) must be provided in the request.
 
 
 A `resource` field can be included in this request (check the following, manual example for the field details). When a `resource` is present, the content of the request is used instead of any default values provided by the the deployment template.
@@ -259,11 +262,11 @@ curl -XPOST \
 '
 ```
 
-1. [Available Regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md)
+1. [Available Regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md)
 2. Availability zones for the Elasticsearch cluster
-3. [Available instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md)
+3. [Available instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md)
 4. Memory allocated for each Elasticsearch node
-5. [Available templates](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md)
+5. [Available templates](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md)
 6. Availability zones for Kibana
 7. Memory allocated for Kibana
 8. Availability zones for Integrations Server
@@ -271,14 +274,14 @@ curl -XPOST \
 
 
 ::::{tip}
-You can get the payload easily from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) **Create Deployment** page, customize the regions, zones, memory allocated for each components, and then select **Equivalent API request**.
+You can get the payload easily from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) **Create Deployment** page, customize the regions, zones, memory allocated for each components, and then select **Equivalent API request**.
 ::::
 
 
 
 ## Using the API to create deployment with non EOL versions [ec_using_the_api_to_create_deployment_with_non_eol_versions]
 
-You are able to create deployments with *non* [End-of-life (EOL) versions](available-stack-versions.md#ec-version-policy-eol) via API, which are not selectable in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) UI. You can simply replace the version number in the above example.
+You are able to create deployments with *non* [End-of-life (EOL) versions](available-stack-versions.md#ec-version-policy-eol) via API, which are not selectable in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) UI. You can simply replace the version number in the above example.
 
 
 ## Update a deployment [ec_update_a_deployment]
@@ -343,7 +346,7 @@ curl -XPUT \
 
 
 ::::{tip}
-You can get the payload easily from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) deployment **Edit** page, customize the zone count, memory allocated for each components, and then select **Equivalent API request**.
+You can get the payload easily from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) deployment **Edit** page, customize the zone count, memory allocated for each components, and then select **Equivalent API request**.
 ::::
 
 

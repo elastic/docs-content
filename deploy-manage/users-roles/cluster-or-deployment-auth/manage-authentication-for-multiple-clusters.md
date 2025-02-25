@@ -1,46 +1,38 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-auth-config-using-stack-config-policy.html
+applies_to:
+  deployment:
+    eck:
 ---
 
 # Manage authentication for multiple clusters [k8s-auth-config-using-stack-config-policy]
 
 ::::{warning}
-We have identified an issue with Elasticsearch 8.15.1 and 8.15.2 that prevents security role mappings configured via Stack configuration policies to work correctly. Avoid these versions and upgrade to 8.16.0 to remedy this issue if you are affected.
+An issue with {{stack}} 8.15.1 and 8.15.2 prevents security role mappings configured through {{stack}} configuration policies to work correctly. Avoid these versions and upgrade to 8.16.0 to remedy this issue if you are affected.
 ::::
-
 
 ::::{note}
 This requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses.
 ::::
 
 
-ECK `2.11.0` extends the functionality of [Elastic Stack configuration policies](../../deploy/cloud-on-k8s/elastic-stack-configuration-policies.md) so that it becomes possible to configure Elasticsearch security realms for more than one Elastic stack at once. The authentication will apply to all Elasticsearch clusters and Kibana instances managed by the Elastic Stack configuration policy.
+In {{eck}}, you can use {{stack}} configuration policies to configure {{es}} security realms for more than one cluster at once. The authentication will apply to all {{es}} clusters and {{kib}} instances managed by the {{stack}} configuration policy.
 
 Examples for configuring some of the authentication methods can be found below:
 
-* [LDAP authentication using Elastic Stack configuration policy](#k8s-ldap-using-stack-config-policy)
-* [OpenID Connect authentication using Elastic Stack configuration policy](#k8s-oidc-stack-config-policy)
-* [JWT authentication using Elastic Stack configuration policy](#k8s-jwt-stack-config-policy)
+* [LDAP authentication using {{stack}} configuration policy](#k8s-ldap-using-stack-config-policy)
+* [OpenID Connect authentication using {{stack}} configuration policy](#k8s-oidc-stack-config-policy)
+* [JWT authentication using {{stack}} configuration policy](#k8s-jwt-stack-config-policy)
 
-## LDAP using Elastic stack configuration policy [k8s-ldap-using-stack-config-policy]
-
-::::{warning}
-We have identified an issue with Elasticsearch 8.15.1 and 8.15.2 that prevents security role mappings configured via Stack configuration policies to work correctly. Avoid these versions and upgrade to 8.16.0 to remedy this issue if you are affected.
-::::
-
-
-::::{note}
-This requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses.
-::::
-
+## LDAP using {{stack}} configuration policy [k8s-ldap-using-stack-config-policy]
 
 ::::{tip}
-Make sure you check the complete [guide to setting up LDAP with Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md).
+Make sure you check the complete [guide to setting up LDAP with {{es}}](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md).
 ::::
 
 
-### To configure LDAP using Elastic Stack configuration policy with user search: [k8s_to_configure_ldap_using_elastic_stack_configuration_policy_with_user_search]
+### Configure LDAP using {{stack}} configuration policy with user search[k8s_to_configure_ldap_using_elastic_stack_configuration_policy_with_user_search]
 
 1. Add a realm configuration to the `config` field under `elasticsearch` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the URL of the LDAP server and the order of the LDAP realm compared to other configured security realms. You also have to set `user_search.base_dn` to the container DN where the users are searched for. Refer to [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an LDAP realm. For example, the following snippet shows an LDAP realm configured with a user search:
 
@@ -61,7 +53,7 @@ Make sure you check the complete [guide to setting up LDAP with Elasticsearch](/
               unmapped_groups_as_roles: false
     ```
 
-2. The password for the `bind_dn` user should be configured by adding the appropriate `secure_bind_password` setting to the Elasticsearch keystore. This can be done using the Elastic Stack configuration policy by following the below steps:
+2. The password for the `bind_dn` user should be configured by adding the appropriate `secure_bind_password` setting to the [{{es}} keystore](/deploy-manage/security/secure-settings.md). This can be done using the {{stack}} configuration policy by following the below steps:
 
     1. Create a secret that has the `secure_bind_password` in the same namespace as the operator
 
@@ -69,7 +61,7 @@ Make sure you check the complete [guide to setting up LDAP with Elasticsearch](/
           kubectl create secret generic ldap-secret --from-literal=xpack.security.authc.realms.ldap.ldap1.secure_bind_password=<password>
         ```
 
-    2. Add the secret name to the `secureSettings` field under `elasticsearch` in the Elastic Stack configuration policy
+    2. Add the secret name to the `secureSettings` field under `elasticsearch` in the {{stack}} configuration policy
 
         ```yaml
           spec:
@@ -81,7 +73,7 @@ Make sure you check the complete [guide to setting up LDAP with Elasticsearch](/
               - secretName: ldap-secret
         ```
 
-3. Map LDAP groups to roles. In the below example, LDAP users get the Elasticsearch `superuser` role. `dn: "cn=users,dc=example,dc=org"` is the LDAP distinguished name (DN) of the users group.
+3. Map LDAP groups to roles. In the below example, LDAP users get the {{es}} `superuser` role. `dn: "cn=users,dc=example,dc=org"` is the LDAP distinguished name (DN) of the users group.
 
     ```yaml
     securityRoleMappings:
@@ -95,7 +87,7 @@ Make sure you check the complete [guide to setting up LDAP with Elasticsearch](/
     ```
 
 
-Simple full example Elastic Stack config policy to configure LDAP realm with user search
+Example {{stack}} config policy to configure LDAP realm with user search:
 
 ```yaml
 apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
@@ -133,7 +125,7 @@ spec:
 ```
 
 
-### To configure an LDAP realm with user DN templates: [k8s_to_configure_an_ldap_realm_with_user_dn_templates]
+### Configure an LDAP realm with user DN templates[k8s_to_configure_an_ldap_realm_with_user_dn_templates]
 
 Add a realm configuration to `elasticsearch.yml` in the xpack.security.authc.realms.ldap namespace. At a minimum, you must specify the url and order of the LDAP server, and specify at least one template with the user_dn_templates option. Check [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)  for all of the options you can set for an ldap realm.
 
@@ -155,7 +147,7 @@ xpack:
             unmapped_groups_as_roles: false
 ```
 
-Example Elastic Stack config policy to configure LDAP realm with user DN templates:
+Example {{stack}} config policy to configure LDAP realm with user DN templates:
 
 ```yaml
 apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
@@ -192,26 +184,16 @@ The `bind_dn` setting is not used in template mode. All LDAP operations run as t
 
 
 
-## OIDC using Elastic stack configuration policy [k8s-oidc-stack-config-policy]
-
-::::{warning}
-We have identified an issue with Elasticsearch 8.15.1 and 8.15.2 that prevents security role mappings configured via Stack configuration policies to work correctly. Avoid these versions and upgrade to 8.16.0 to remedy this issue if you are affected.
-::::
-
-
-::::{note}
-This requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses.
-::::
-
+## OIDC using {{stack}} configuration policy [k8s-oidc-stack-config-policy]
 
 ::::{tip}
-Make sure you check the complete [guide to setting up OpenID Connect with Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md).
+Make sure you check the complete [guide to setting up OpenID Connect with {{es}}](/deploy-manage/users-roles/cluster-or-deployment-auth/openid-connect.md).
 ::::
 
 
-Configuring OpenID Connect using Elastic Stack configuration policy
+Configuring OpenID Connect using {{stack}} configuration policy
 
-1. Add OIDC realm to the `elasticsearch.yml` file using the `config` field under `elasticsearch` in the Elastic Stack configuration policy, also enable token service.
+1. Add OIDC realm to the `elasticsearch.yml` file using the `config` field under `elasticsearch` in the {{stack}} configuration policy, also enable token service.
 
     ::::{note}
     Below snippet is an example of using Google as OpenID provider, the values will change depending on the provider being used.
@@ -242,7 +224,7 @@ Configuring OpenID Connect using Elastic Stack configuration policy
                        claim_patterns.principal: "^([^@]+)@elastic\\.co$"
     ```
 
-2. Another piece of configuration of the OpenID Connect realm is to set the Client Secret that was assigned to the Relying Parties (RP) during registration in the OpenID Connect Provider (OP). This is a secure setting and as such is not defined in the realm configuration in `elasticsearch.yml` but added to the Elasticsearch keystore. To set this up using Elastic Stack configuration policy, use the following steps.
+2. Another piece of configuration of the OpenID Connect realm is to set the Client Secret that was assigned to the Relying Parties (RP) during registration in the OpenID Connect Provider (OP). This is a secure setting and as such is not defined in the realm configuration in `elasticsearch.yml` but added to the {{es}} keystore. To set this up using {{stack}} configuration policy, use the following steps.
 
     1. Create a secret in the operator namespace that has the Client Secret
 
@@ -258,7 +240,7 @@ Configuring OpenID Connect using Elastic Stack configuration policy
             - secretName: oidc-client-secret
         ```
 
-3. When a user authenticates using OpenID Connect, they are identified to the Elastic Stack, but this does not automatically grant them access to perform any actions or access any data. Your OpenID Connect users cannot do anything until they are assigned roles. Roles can be assigned by adding role mappings to the Elastic Stack configuration policy. The below example is giving a specific user access as a superuser to Elasticsearch, if you want to assign roles to all users authenticating with OIDC, you can remove the username field.
+3. When a user authenticates using OpenID Connect, they are identified to the {{stack}}, but this does not automatically grant them access to perform any actions or access any data. Your OpenID Connect users cannot do anything until they are assigned roles. Roles can be assigned by adding role mappings to the {{stack}} configuration policy. The below example is giving a specific user access as a superuser to {{es}}, if you want to assign roles to all users authenticating with OIDC, you can remove the username field.
 
     ```yaml
     elasticsearch:
@@ -274,7 +256,7 @@ Configuring OpenID Connect using Elastic Stack configuration policy
             enabled: true
     ```
 
-4. Update Kibana to use OpenID Connect as the authentication provider:
+4. Update {{kib}} to use OpenID Connect as the authentication provider:
 
     ```yaml
     kibana:
@@ -287,7 +269,7 @@ Configuring OpenID Connect using Elastic Stack configuration policy
     ```
 
 
-Example full Elastic Stack configuration policy to configure oidc
+Example full {{stack}} configuration policy to configure OIDC:
 
 ```yaml
 apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1
@@ -341,9 +323,11 @@ spec:
           order: 1
 ```
 
-1. The Kibana URL should be an environment variable that should be configured on the Elasticsearch Clusters managed by the Elastic Stack Configuration policy. This can be done by adding an environment variable to the pod template in the Elasticsearch CR.```yaml
+1. The {{kib}} URL should be an environment variable that should be configured on the {{es}} Clusters managed by the {{stack}} Configuration policy. This can be done by adding an environment variable to the pod template in the {{es}} CR.
+
+```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: Elasticsearch
+kind: {{es}}
 metadata:
   name: quickstart
   namespace: kvalliy
@@ -368,31 +352,19 @@ spec:
 
 
 ::::{note}
-The OpenID Connect Provider (OP) should have support to configure multiple Redirect URLs, so that the same `rp.client_id` and `client_secret` can be used for all the Elasticsearch clusters managed by the Elastic Stack configuration policy.
+The OpenID Connect Provider (OP) should have support to configure multiple Redirect URLs, so that the same `rp.client_id` and `client_secret` can be used for all the {{es}} clusters managed by the {{stack}} configuration policy.
 ::::
 
-
-
-## JWT using Elastic Stack configuration policy [k8s-jwt-stack-config-policy]
-
-::::{warning}
-We have identified an issue with Elasticsearch 8.15.1 and 8.15.2 that prevents security role mappings configured via Stack configuration policies to work correctly. Avoid these versions and upgrade to 8.16.0 to remedy this issue if you are affected.
-::::
-
-
-::::{note}
-This requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../../license/manage-your-license-in-eck.md) for more details about managing licenses.
-::::
-
+## JWT using {{stack}} configuration policy [k8s-jwt-stack-config-policy]
 
 ::::{tip}
-Make sure you check the complete [guide to setting up JWT with Elasticsearch](/deploy-manage/users-roles/cluster-or-deployment-auth/jwt.md).
+Make sure you check the complete [guide to setting up JWT with {{es}}](/deploy-manage/users-roles/cluster-or-deployment-auth/jwt.md).
 ::::
 
 
-Configuring JWT with Elastic Stack configuration policy
+Configuring JWT with {{stack}} configuration policy
 
-1. Add your JWT realm to the `elasticsearch.yml` file using the `config` field under `elasticsearch` in the Elastic Stack configuration policy
+1. Add your JWT realm to the `elasticsearch.yml` file using the `config` field under `elasticsearch` in the {{stack}} configuration policy
 
     ```yaml
     elasticsearch:
@@ -409,7 +381,7 @@ Configuring JWT with Elastic Stack configuration policy
              claims.principal: sub
     ```
 
-2. Add the `shared_secret` setting that will be used for client authentication to the Elasticsearch keystore.
+2. Add the `shared_secret` setting that will be used for client authentication to the {{es}} keystore.
 
     1. Create a secret in the operator namespace containing the shared secret
 
@@ -417,7 +389,7 @@ Configuring JWT with Elastic Stack configuration policy
         kubectl create secret generic shared-secret --from-literal=xpack.security.authc.realms.jwt.jwt1.client_authentication.shared_secret=<sharedsecret>
         ```
 
-    2. Add the secret name to the `secureSettings` field under `elasticsearch` in the Elastic Stack configuration policy
+    2. Add the secret name to the `secureSettings` field under `elasticsearch` in the {{stack}} configuration policy
 
         ```yaml
           elasticsearch:
@@ -425,7 +397,7 @@ Configuring JWT with Elastic Stack configuration policy
         :   - secretName: shared-secret
         ```
 
-3. Add an additional volume to the Elasticsearch pods that contain the JSON Web Keys, it should be mounted to the path that is configured for the `xpack.security.authc.realms.jwt.jwt1.pkc_jwkset_path` config. The file path is resolved relative to the Elasticsearch configuration directory.
+3. Add an additional volume to the {{es}} pods that contain the JSON Web Keys, it should be mounted to the path that is configured for the `xpack.security.authc.realms.jwt.jwt1.pkc_jwkset_path` config. The file path is resolved relative to the {{es}} configuration directory.
 
     1. Create a secret in the operator namespace that has the jwk set
 
@@ -433,7 +405,7 @@ Configuring JWT with Elastic Stack configuration policy
         kubectl create secret generic jwks-secret --from-file=jwkset.json
         ```
 
-    2. Add the secret name and mountpath to the `secretMounts` field under `elasticsearch` in the Elastic Stack configuration policy
+    2. Add the secret name and mountpath to the `secretMounts` field under `elasticsearch` in the {{stack}} configuration policy
 
         ```yaml
         secretMounts:
@@ -441,7 +413,7 @@ Configuring JWT with Elastic Stack configuration policy
               mountPath: "/usr/share/elasticsearch/config/jwks"
         ```
 
-4. You can use the `securityRoleMappings` field under `elasticsearch` in the Elastic Stack configuration policy to define role mappings that determine which roles should be assigned to each user based on their username, groups, or other metadata.
+4. You can use the `securityRoleMappings` field under `elasticsearch` in the {{stack}} configuration policy to define role mappings that determine which roles should be assigned to each user based on their username, groups, or other metadata.
 
     ```yaml
     securityRoleMappings:
@@ -455,7 +427,7 @@ Configuring JWT with Elastic Stack configuration policy
     ```
 
 
-The following example demonstrates how an Elastic Stack configuration policy can be used to configure a JWT realm:
+The following example demonstrates how an {{stack}} configuration policy can be used to configure a JWT realm:
 
 ```yaml
 apiVersion: stackconfigpolicy.k8s.elastic.co/v1alpha1

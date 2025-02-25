@@ -27,14 +27,14 @@ Avoid defining too many user-specified labels. Defining too many unique fields i
 
 ### Agent API reference [_agent_api_reference] 
 
-* Go: [`SetLabel`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#context-set-label)
-* Java: [`setLabel`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-transaction-add-tag)
-* .NET: [`SetLabel`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#api-transaction-set-label)
-* Node.js: [`setLabel`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-add-labels)
-* PHP: [`Transaction` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/public-api.md#api-transaction-interface-set-label) | [`Span` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/public-api.md#api-span-interface-set-label)
-* Python: [`elasticapm.label()`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/api-reference.md#api-label)
-* Ruby:  [`set_label`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-set-label)
-* Rum: [`addLabels`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/agent-api.md#apm-add-labels)
+* Go: [`SetLabel`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#context-set-label)
+* Java: [`setLabel`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-add-tag)
+* .NET: [`SetLabel`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#api-transaction-set-label)
+* Node.js: [`setLabel`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-add-labels)
+* PHP: [`Transaction` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-transaction-interface-set-label) | [`Span` `setLabel`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-span-interface-set-label)
+* Python: [`elasticapm.label()`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#api-label)
+* Ruby:  [`set_label`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-label)
+* Rum: [`addLabels`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#apm-add-labels)
 
 
 ## Custom context [apm-data-model-custom] 
@@ -56,15 +56,15 @@ Setting a circular object, a large object, or a non JSON serializable object can
 
 ### Agent API reference [_agent_api_reference_2] 
 
-* Go: [`SetCustom`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#context-set-custom)
+* Go: [`SetCustom`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#context-set-custom)
 * iOS: *coming soon*
-* Java: [`addCustomContext`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-transaction-add-custom-context)
+* Java: [`addCustomContext`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-add-custom-context)
 * .NET: *coming soon*
-* Node.js: [`setCustomContext`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-set-custom-context)
+* Node.js: [`setCustomContext`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-set-custom-context)
 * PHP: *coming soon*
-* Python: [`set_custom_context`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/api-reference.md#api-set-custom-context)
-* Ruby: [`set_custom_context`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-set-custom-context)
-* Rum: [`setCustomContext`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/agent-api.md#apm-set-custom-context)
+* Python: [`set_custom_context`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#api-set-custom-context)
+* Ruby: [`set_custom_context`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-custom-context)
+* Rum: [`setCustomContext`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#apm-set-custom-context)
 
 
 ## User context [apm-data-model-user] 
@@ -79,13 +79,13 @@ User context adds **indexed** user information to transactions and errors. Index
 
 ### Agent API reference [_agent_api_reference_3] 
 
-* Go: [`SetUsername`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#context-set-user-email)
+* Go: [`SetUsername`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#context-set-user-email)
 * iOS: *coming soon*
-* Java: [`setUser`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-transaction-set-user)
+* Java: [`setUser`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-set-user)
 * .NET *coming soon*
-* Node.js: [`setUserContext`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-set-user-context)
+* Node.js: [`setUserContext`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-set-user-context)
 * PHP: *coming soon*
-* Python: [`set_user_context`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/api-reference.md#api-set-user-context)
-* Ruby: [`set_user`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-set-user)
-* Rum: [`setUserContext`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/agent-api.md#apm-set-user-context)
+* Python: [`set_user_context`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#api-set-user-context)
+* Ruby: [`set_user`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-set-user)
+* Rum: [`setUserContext`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/agent-api.md#apm-set-user-context)
 

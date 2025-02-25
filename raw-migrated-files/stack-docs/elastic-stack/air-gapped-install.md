@@ -78,12 +78,12 @@ Specifically:
 
 #### 1.3. {{beats}} [air-gapped-beats]
 
-Elastic {{beats}} are light-weight data shippers. They do not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{beats}} documentation](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md).
+Elastic {{beats}} are light-weight data shippers. They do not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{beats}} documentation](asciidocalypse://docs/beats/docs/reference/index.md).
 
 
 #### 1.4. {{ls}} [air-gapped-logstash]
 
-{{ls}} is a versatile data shipping and processing application. It does not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{ls}} documentation](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md).
+{{ls}} is a versatile data shipping and processing application. It does not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{ls}} documentation](asciidocalypse://docs/logstash/docs/reference/index.md).
 
 
 #### 1.5. {{agent}} [air-gapped-elastic-agent]
@@ -151,7 +151,7 @@ Air-gapped setup of this component is, essentially, identical to the setup of th
 Some {{ml}} features, like natural language processing (NLP), require you to deploy trained models. To learn about deploying {{ml}} models in an air-gapped environment, refer to:
 
 * [Deploy ELSER in an air-gapped environment](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install).
-* [Install trained models in an air-gapped environment with Eland](asciidocalypse://docs/eland/docs/reference/elasticsearch/elasticsearch-client-eland/machine-learning.md#ml-nlp-pytorch-air-gapped).
+* [Install trained models in an air-gapped environment with Eland](asciidocalypse://docs/eland/docs/reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
 
 
 #### 1.13 {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]

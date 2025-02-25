@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-nodes-view.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
 ---
 
 # Nodes [ec-autoops-nodes-view]

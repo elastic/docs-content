@@ -115,4 +115,4 @@ If you also want to copy the {{dfanalytics-job}} to the new cluster, you can exp
 
 ## Importing an external model to the {{stack}} [import-external-model-to-es]
 
-It is possible to import a model to your {{es}} cluster even if the model is not trained by Elastic {{dfanalytics}}. Eland supports [importing models](asciidocalypse://docs/eland/docs/reference/elasticsearch/elasticsearch-client-eland/machine-learning.md) directly through its APIs. Please refer to the latest [Eland documentation](https://eland.readthedocs.io/en/latest/index.md) for more information on supported model types and other details of using Eland to import models with.
+It is possible to import a model to your {{es}} cluster even if the model is not trained by Elastic {{dfanalytics}}. Eland supports [importing models](asciidocalypse://docs/eland/docs/reference/machine-learning.md) directly through its APIs. Please refer to the latest [Eland documentation](https://eland.readthedocs.io/en/latest/index.md) for more information on supported model types and other details of using Eland to import models with.

@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku Azure instance configurations [ech-azure-instance-configuration]
 
-Azure [Ddv4](https://docs.microsoft.com/en-us/azure/virtual-machines/ddv4-ddsv4-series/), [Edsv4](https://docs.microsoft.com/en-us/azure/virtual-machines/edv4-edsv4-series/), [Fsv2](https://docs.microsoft.com/en-us/azure/virtual-machines/fsv2-series/), and [Lsv3](https://docs.microsoft.com/en-us/azure/virtual-machines/lsv3-series/) virtual machines (VM) are now available for Elastic Cloud deployments in all supported [Azure Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions). These VMs provide additional combinations of compute, memory, and disk configurations to better fit your use-cases to optimize performance and cost.
+Azure [Ddv4](https://docs.microsoft.com/en-us/azure/virtual-machines/ddv4-ddsv4-series/), [Edsv4](https://docs.microsoft.com/en-us/azure/virtual-machines/edv4-edsv4-series/), [Fsv2](https://docs.microsoft.com/en-us/azure/virtual-machines/fsv2-series/), and [Lsv3](https://docs.microsoft.com/en-us/azure/virtual-machines/lsv3-series/) virtual machines (VM) are now available for Elastic Cloud deployments in all supported [Azure Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions). These VMs provide additional combinations of compute, memory, and disk configurations to better fit your use-cases to optimize performance and cost.
 
 To learn about the Azure specific configurations, check:
 
@@ -37,7 +37,7 @@ The new configuration naming convention aligns with the [data tiers](/manage-dat
 | azure.es.datawarm.edsv4, azure.es.datacold.edsv4 | This is a new configuration that replaces “azure.data.highstorage.e16sv3” config but provides more disk space. |
 | azure.es.datafrozen.edsv4 | This is a new configuration that replaces “azure.es.datafrozen.lsv2” or “azure.es.datafrozen.esv3” config but provides more disk space. |
 
-For a detailed price list, check the [Elastic Cloud price list](https://cloud.elastic.co/deployment-pricing-table?provider=azure). For a detailed specification of the new configurations, check [Elasticsearch Service default Azure instance configurations](ech-default-azure-configurations.md).
+For a detailed price list, check the [Elastic Cloud price list](https://cloud.elastic.co/deployment-pricing-table?provider=azure). For a detailed specification of the new configurations, check [{{ecloud}} default Azure instance configurations](ech-default-azure-configurations.md).
 
 The benefits of the new configurations are multifold:
 

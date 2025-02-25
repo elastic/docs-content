@@ -15,7 +15,7 @@ Check the Release Notes to get the recent updates for each product.
 
 Elasticsearch
 
-* [Elasticsearch 8.x Release Notes](asciidocalypse://docs/elasticsearch/docs/release-notes/elasticsearch.md)
+* [Elasticsearch 8.x Release Notes](asciidocalypse://docs/elasticsearch/docs/release-notes/index.md)
 * [Elasticsearch 7.x Release Notes](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/es-release-notes.html)
 * [Elasticsearch 6.x Release Notes](https://www.elastic.co/guide/en/elasticsearch/reference/6.8/es-release-notes.html)
 * [Elasticsearch 5.x Release Notes](https://www.elastic.co/guide/en/elasticsearch/reference/5.6/es-release-notes.html)

@@ -4,20 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-add-manage-notes.html
 ---
 
-# Notes
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/add-manage-notes.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-add-manage-notes.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$manage-notes$$$
-
-$$$notes-alerts-events$$$
+# Notes [security-add-manage-notes]
 
 Incorporate notes into your investigative workflows to coordinate responses, conduct threat hunting, and share investigative findings. You can attach notes to alerts, events, and Timelines and manage them from the **Notes** page.
 
@@ -29,7 +16,7 @@ Configure the `securitySolution:maxUnassociatedNotes` [advanced setting](/soluti
 
 ## View and add notes to alerts and events [notes-alerts-events]
 
-Open the alert or event details flyout to access the **Notes** tab, where you can view existing notes and add new ones. To quickly open the tab, click the **Add note** action (![Add note action](../../../images/security-create-note-icon.png "")) in the Alerts or Events table. Then, enter a note into the text box, and click **Add note** to create it.
+Open the alert or event details flyout to access the **Notes** tab, where you can view existing notes and add new ones. To quickly open the tab, click the **Add note** action (![Add note action](../../../images/security-create-note-icon.png "title =20x20")) in the Alerts or Events table. Then, enter a note into the text box, and click **Add note** to create it.
 
 After notes are created, the **Add note** icon displays a notification dot. In the details flyout for alerts, the alert summary in the right panel also shows how many notes are attached to the alert.
 
@@ -64,8 +51,8 @@ Use the **Notes** page to view and interact with all existing notes. To access t
 * Filter notes by the user who created them or by the object they’re attached to (notes can be attached to alerts, events, or Timelines)
 * Examine the contents of a note (click the text in the **Note content** column)
 * Delete one or more notes
-* Examine the alert or event that a note is attached to (click the **Expand alert/event details** ![Preview alert or event action](../../../images/security-notes-page-document-details.png "") icon)
-* Open the Timeline that the note is attached to (click the **Open saved timeline** ![Open Timeline action](../../../images/security-notes-page-timeline-details.png "") icon)
+* Examine the alert or event that a note is attached to (click the **Expand alert/event details** ![Preview alert or event action](../../../images/security-notes-page-document-details.png "title =20x20") icon)
+* Open the Timeline that the note is attached to (click the **Open saved timeline** ![Open Timeline action](../../../images/security-notes-page-timeline-details.png "title =20x20") icon)
 
 :::{image} ../../../images/security-notes-management-page.png
 :alt: Notes management page

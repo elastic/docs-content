@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/logging.html
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: all
 ---
 
 # Elasticsearch log4j configuration [logging]
