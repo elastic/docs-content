@@ -11,7 +11,7 @@ applies_to:
 Some Applications UI features are provided via a REST API:
 
 * Agent Configuration API ([{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-agent-configuration) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-agent-configuration))
-* [Annotation API](annotation-api.md)
+* Annotation API ([{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-annotations) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-annotations))
 * [RUM source map API](rum-source-map-api.md)
 * [APM agent Key API](apm-agent-key-api.md)
 
