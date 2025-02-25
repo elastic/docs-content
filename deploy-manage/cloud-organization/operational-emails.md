@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-operational-emails.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
 ---
 
 # Operational emails [ec-operational-emails]

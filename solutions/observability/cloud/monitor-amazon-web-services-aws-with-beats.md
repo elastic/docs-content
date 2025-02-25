@@ -568,7 +568,7 @@ You can now start {{metricbeat}}:
 
 ## Step 10: Visualize metrics [aws-step-ten]
 
-Now that the metrics are being streamed to {{es}} we can visualize them in {{kib}}. To open **Infrastructure inventory**, find **Infrastructure*** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Make sure to show the ***AWS** source and the **EC2 Instances**:
+Now that the metrics are being streamed to {{es}} we can visualize them in {{kib}}. To open **Infrastructure inventory**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Make sure to show the **AWS** source and the **EC2 Instances**:
 
 :::{image} ../../../images/observability-EC2-instances.png
 :alt: Your EC2 Infrastructure

@@ -2,12 +2,13 @@
 navigation_title: "Users and roles"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/project-settings-access.html
-applies:
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
   serverless: all
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
 ---
 
 # Manage users and roles
