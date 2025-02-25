@@ -37,7 +37,7 @@ Open a new case to keep track of issues and share the details with colleagues. T
 8. After you’ve completed all of the required fields, click **Create case**.
 
 ::::{tip}
-You can also create a case from an alert or add an alert to an existing case. From the **Alerts** page, click the **More options*** ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon and choose either ***Add to existing case** or **Create new case**, and select or complete the details as required.
+You can also create a case from an alert or add an alert to an existing case. From the **Alerts** page, click the **More options** ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon and choose either **Add to existing case** or **Create new case**, and select or complete the details as required.
 
 ::::
 
