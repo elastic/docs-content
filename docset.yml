@@ -18,6 +18,8 @@ cross_links:
   - elasticsearch-ruby
   - elasticsearch-js
   - ecs
+  - ecs-logging
+  - search-ui
   - cloud-on-k8s
 
 toc:
