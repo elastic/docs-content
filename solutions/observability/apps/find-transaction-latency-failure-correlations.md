@@ -14,7 +14,7 @@ To find correlations:
 ::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} Elastic Stack v9
+:::{tab-item} Elastic Stack
 :sync: stack
 
 Select a service on the **Services** page in the Applications UI then select a transaction group from the **Transactions** tab.

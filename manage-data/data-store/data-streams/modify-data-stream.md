@@ -23,7 +23,7 @@ If you later need to change the mappings or settings for a data stream, you have
 * [Change a static index setting for a data stream](../data-streams/modify-data-stream.md#change-static-index-setting-for-a-data-stream)
 
 ::::{tip}
-If your changes include modifications to existing field mappings or [static index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings), a reindex is often required to apply the changes to a data stream’s backing indices. If you are already performing a reindex, you can use the same process to add new field mappings and change [dynamic index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings). See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
+If your changes include modifications to existing field mappings or [static index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md), a reindex is often required to apply the changes to a data stream’s backing indices. If you are already performing a reindex, you can use the same process to add new field mappings and change [dynamic index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md). See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 ::::
 
 
@@ -173,7 +173,7 @@ If you need to change the mapping of an existing field, create a new data stream
 
 ### Change a dynamic index setting for a data stream [change-dynamic-index-setting-for-a-data-stream]
 
-To change a [dynamic index setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings) for a data stream, follow these steps:
+To change a [dynamic index setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md) for a data stream, follow these steps:
 
 1. Update the index template used by the data stream. This ensures the setting is applied to future backing indices created for the stream.
 
@@ -219,7 +219,7 @@ To change the `index.lifecycle.name` setting, first use the [remove policy API](
 
 ### Change a static index setting for a data stream [change-static-index-setting-for-a-data-stream]
 
-[Static index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md#index-modules-settings) can only be set when a backing index is created. You cannot update static index settings using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
+[Static index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md) can only be set when a backing index is created. You cannot update static index settings using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
 
 To apply a new static setting to future backing indices, update the index template used by the data stream. The setting is automatically applied to any backing index created after the update.
 

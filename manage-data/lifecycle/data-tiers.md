@@ -436,7 +436,7 @@ We recommend you use [dedicated nodes](/deploy-manage/distributed-architecture/c
 
 ## Data tier index allocation [data-tier-allocation]
 
-The [`index.routing.allocation.include._tier_preference`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation-settings.md#tier-preference-allocation-filter) setting determines which tier the index should be allocated to.
+The [`index.routing.allocation.include._tier_preference`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/data-tier-allocation.md#tier-preference-allocation-filter) setting determines which tier the index should be allocated to.
 
 When you create an index, by default {{es}} sets the `_tier_preference` to `data_content` to automatically allocate the index shards to the content tier.
 

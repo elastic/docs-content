@@ -108,7 +108,7 @@ If the estimated model memory limit for an {{anomaly-job}} is greater than the m
   * Add bigger {{ml}} nodes to the cluster, or
   * Accept that the job will hit its memory limit and will not necessarily find all the anomalies it could otherwise find.
 
-If you are using {{ece}} or the hosted Elasticsearch Service on Elastic Cloud, `xpack.ml.max_model_memory_limit` is set to prevent you from creating jobs that cannot be allocated to any {{ml}} nodes in the cluster. If you find that you cannot increase `model_memory_limit` for your {{ml}} jobs, the solution is to increase the size of the {{ml}} nodes in your cluster.
+If you are using {{ece}} or {{ech}}, `xpack.ml.max_model_memory_limit` is set to prevent you from creating jobs that cannot be allocated to any {{ml}} nodes in the cluster. If you find that you cannot increase `model_memory_limit` for your {{ml}} jobs, the solution is to increase the size of the {{ml}} nodes in your cluster.
 
 ### Dedicated indices [ml-ad-dedicated-indices]
 

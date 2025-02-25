@@ -31,7 +31,7 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 
 * You can only take a snapshot from a running cluster with an elected [master node](../../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role).
 * A snapshot repository must be [registered](self-managed.md) and available to the cluster.
-* The cluster’s global metadata must be readable. To include an index in a snapshot, the index and its metadata must also be readable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) or [index blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block-settings.md) that prevent read access.
+* The cluster’s global metadata must be readable. To include an index in a snapshot, the index and its metadata must also be readable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) or [index blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md) that prevent read access.
 
 
 ## Considerations [create-snapshot-considerations]
