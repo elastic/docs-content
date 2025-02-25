@@ -1,26 +1,36 @@
 ---
+applies_to:
+  deployment:
+    eck: ga
+navigation_title: Elastic Cloud on Kubernetes
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-remote-clusters.html
 ---
 
-# ECK remote clusters [k8s-remote-clusters]
+# Remote clusters with {{eck}} [k8s-remote-clusters]
 
-The [remote clusters module](/deploy-manage/remote-clusters/remote-clusters-self-managed.md) in Elasticsearch enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
+The [remote clusters module](/deploy-manage/remote-clusters.md) in Elasticsearch enables you to establish uni-directional connections to a remote cluster. This functionality is used in cross-cluster replication and cross-cluster search.
 
 When using remote cluster connections with ECK, the setup process depends on where the remote cluster is deployed.
 
-## Connect from an Elasticsearch cluster running in the same Kubernetes cluster [k8s-remote-clusters-connect-internal]
+## Connect from an {{es}} cluster running in the same Kubernetes cluster [k8s-remote-clusters-connect-internal]
 
 ::::{note}
 The remote clusters feature requires a valid Enterprise license or Enterprise trial license. Check [the license documentation](../license/manage-your-license-in-eck.md) for more details about managing licenses.
 ::::
 
 
-To create a remote cluster connection to another Elasticsearch cluster deployed within the same Kubernetes cluster, specify the `remoteClusters` attribute in your Elasticsearch spec.
+To create a remote cluster connection to another {{es}} cluster deployed within the same Kubernetes cluster, specify the `remoteClusters` attribute in your {{es}} spec.
 
-### Security Models [k8s_security_models]
+### Security models [k8s_security_models]
 
-ECK supports two different security models: the API key based security model, and the certificate security model. These two security models are described in the [Remote clusters](/deploy-manage/remote-clusters/remote-clusters-self-managed.md#remote-clusters-security-models) section of the {{es}} documentation.
+Before you start, consider the security model that you would prefer to use for authenticating remote connections between clusters, and follow the corresponding steps.
+
+API key
+:   For deployments based on {{stack}} 8.14 or later, you can use an API key to authenticate and authorize cross-cluster operations to a remote cluster. This model offers administrators of both the local and the remote deployment fine-grained access controls.
+
+TLS certificate (deprecated in {{stack}} 9.0.0)
+:   This model uses mutual TLS authentication for cross-cluster operations. User authentication is performed on the local cluster and a user’s role names are passed to the remote cluster. A superuser on the local deployment gains total read access to the remote deployment, so it is only suitable for deployments that are in the same security domain.
 
 
 ### Using the API key security model [k8s_using_the_api_key_security_model]
@@ -29,7 +39,7 @@ To enable the API key security model you must first enable the remote cluster se
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: Elasticsearch
+kind: {{es}}
 metadata:
   name: cluster-two
   namespace: ns-two
@@ -47,13 +57,13 @@ Enabling the remote cluster server triggers a restart of the {{es}} cluster.
 ::::
 
 
-Once the remote cluster server is enabled and started on the remote cluster you can configure the Elasticsearch reference on the local cluster to include the desired permissions for cross-cluster search, and cross-cluster replication.
+Once the remote cluster server is enabled and started on the remote cluster you can configure the {{es}} reference on the local cluster to include the desired permissions for cross-cluster search, and cross-cluster replication.
 
-Permissions have to be included under the `apiKey` field. The API model of the Elasticsearch resource is compatible with the [{{es}} Cross-Cluster API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) model. Fine-grained permissions can therefore be configured in both the `search` and `replication` fields:
+Permissions have to be included under the `apiKey` field. The API model of the {{es}} resource is compatible with the [{{es}} Cross-Cluster API key API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) model. Fine-grained permissions can therefore be configured in both the `search` and `replication` fields:
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: Elasticsearch
+kind: {{es}}
 metadata:
   name: cluster-one
   namespace: ns-one
@@ -89,7 +99,7 @@ The following example describes how to configure `cluster-two` as a remote clust
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: Elasticsearch
+kind: {{es}}
 metadata:
   name: cluster-one
   namespace: ns-one
@@ -110,17 +120,17 @@ spec:
 
 
 
-## Connect from an Elasticsearch cluster running outside the Kubernetes cluster [k8s-remote-clusters-connect-external]
+## Connect from an {{es}} cluster running outside the Kubernetes cluster [k8s-remote-clusters-connect-external]
 
 ::::{note}
-While it is technically possible to configure remote cluster connections using older versions of Elasticsearch, this guide only covers the setup for Elasticsearch 7.6 and later. The setup process is significantly simplified in Elasticsearch 7.6 due to improved support for the indirection of Kubernetes services.
+While it is technically possible to configure remote cluster connections using older versions of {{es}}, this guide only covers the setup for {{es}} 7.6 and later. The setup process is significantly simplified in {{es}} 7.6 due to improved support for the indirection of Kubernetes services.
 ::::
 
 
-You can configure a remote cluster connection to an ECK-managed Elasticsearch cluster from another cluster running outside the Kubernetes cluster as follows:
+You can configure a remote cluster connection to an ECK-managed {{es}} cluster from another cluster running outside the Kubernetes cluster as follows:
 
 1. Make sure that both clusters trust each other’s certificate authority.
-2. Configure the remote cluster connection through the Elasticsearch REST API.
+2. Configure the remote cluster connection through the {{es}} REST API.
 
 Consider the following example:
 
@@ -131,7 +141,7 @@ To configure `cluster-one` as a remote cluster in `cluster-two`:
 
 ### Make sure both clusters trust each other’s certificate authority [k8s_make_sure_both_clusters_trust_each_others_certificate_authority]
 
-The certificate authority (CA) used by ECK to issue certificates for the Elasticsearch transport layer is stored in a secret named `<cluster_name>-es-transport-certs-public`. Extract the certificate for `cluster-one` as follows:
+The certificate authority (CA) used by ECK to issue certificates for the {{es}} transport layer is stored in a secret named `<cluster_name>-es-transport-certs-public`. Extract the certificate for `cluster-one` as follows:
 
 ```sh
 kubectl get secret cluster-one-es-transport-certs-public \
@@ -162,7 +172,7 @@ If `cluster-two` is also managed by an ECK instance, proceed as follows:
 
     ```yaml
     apiVersion: elasticsearch.k8s.elastic.co/v1
-    kind: Elasticsearch
+    kind: {{es}}
     metadata:
       name: cluster-two
     spec:
@@ -179,13 +189,13 @@ If `cluster-two` is also managed by an ECK instance, proceed as follows:
 3. Repeat steps 1 and 2 to add the CA of `cluster-two` to `cluster-one` as well.
 
 
-### Configure the remote cluster connection through the Elasticsearch REST API [k8s_configure_the_remote_cluster_connection_through_the_elasticsearch_rest_api]
+### Configure the remote cluster connection through the {{es}} REST API [k8s_configure_the_remote_cluster_connection_through_the_elasticsearch_rest_api]
 
 Expose the transport layer of `cluster-one`.
 
 ```yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
-kind: Elasticsearch
+kind: {{es}}
 metadata:
   name: cluster-one
 spec:
@@ -198,7 +208,7 @@ spec:
 1. On cloud providers which support external load balancers, setting the type field to LoadBalancer provisions a load balancer for your Service. Alternatively, expose the service through one of the Kubernetes Ingress controllers that support TCP services.
 
 
-Finally, configure `cluster-one` as a remote cluster in `cluster-two` using the Elasticsearch REST API:
+Finally, configure `cluster-one` as a remote cluster in `cluster-two` using the {{es}} REST API:
 
 ```sh
 PUT _cluster/settings

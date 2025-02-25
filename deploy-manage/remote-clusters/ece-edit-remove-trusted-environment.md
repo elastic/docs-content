@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-edit-remove-trusted-environment.html
 ---
@@ -12,7 +15,7 @@ From a deployment’s **Security** page, you can manage trusted environments tha
 * You want to remove or update the access level granted by a cross-cluster API key.
 
 
-## Remove a trusted environment [ece_remove_a_trusted_environment]
+## Remove a certificate-based trusted environment [ece_remove_a_trusted_environment]
 
 By removing a trusted environment, this deployment will no longer be able to establish remote connections using certificate trust to clusters of that environment. The remote environment will also no longer be able to connect to this deployment using certificate trust.
 
@@ -25,11 +28,11 @@ With this method, you can only remove trusted environments relying exclusively o
 2. In the list of trusted environments, locate the one you want to remove.
 3. Remove it using the corresponding `delete` icon.
 
-    :::{image} ../../images/cloud-enterprise-delete-trust-environment.png
-    :alt: button for deleting a trusted environment
-    :::
+   :::{image} ../../images/cloud-enterprise-delete-trust-environment.png
+   :alt: button for deleting a trusted environment
+   :::
 
-4. In Kibana, go to **Stack Management** > **Remote Clusters**.
+4. In {{kib}}, go to **Stack Management** > **Remote Clusters**.
 5. In the list of existing remote clusters, delete the ones corresponding to the trusted environment you removed earlier.
 
 
@@ -39,14 +42,14 @@ With this method, you can only remove trusted environments relying exclusively o
 2. In the list of trusted environments, locate the one you want to edit.
 3. Open its details by selecting the `Edit` icon.
 
-    :::{image} ../../images/cloud-enterprise-edit-trust-environment.png
-    :alt: button for editing a trusted environment
-    :::
+   :::{image} ../../images/cloud-enterprise-edit-trust-environment.png
+   :alt: button for editing a trusted environment
+   :::
 
 4. Edit the trust configuration for that environment:
 
-    * From the **Trust level** tab, you can add or remove trusted deployments.
-    * From the **Environment settings** tab, you can manage the certificates and the label of the environment.
+   * From the **Trust level** tab, you can add or remove trusted deployments.
+   * From the **Environment settings** tab, you can manage the certificates and the label of the environment.
 
 5. Save your changes.
 
@@ -56,28 +59,26 @@ With this method, you can only remove trusted environments relying exclusively o
 This section describes the steps to change the API key used for an existing remote connection. For example, if the previous key expired and you need to rotate it with a new one.
 
 ::::{note}
-If you need to update the permissions granted by a cross-cluster API key for a remote connection, you only need to update the privileges granted by the API key directly in Kibana.
+If you need to update the permissions granted by a cross-cluster API key for a remote connection, you only need to update the privileges granted by the API key directly in {{kib}}.
 ::::
 
 
-1. On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [Kibana](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key with the appropriate permissions. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
+1. On the deployment you will use as remote, use the [{{es}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) or [{{kib}}](../api-keys/elasticsearch-api-keys.md) to create a cross-cluster API key with the appropriate permissions. Configure it with access to the indices you want to use for {{ccs}} or {{ccr}}.
 2. Copy the encoded key (`encoded` in the response) to a safe location. You will need it in the next steps.
 3. Go to the **Security** page of the local deployment and locate the **Remote connections** section.
 4. Locate the API key currently used for connecting to the remote cluster, copy its current alias, and delete it.
 5. Add the new API key by selecting **Add an API key**.
 
-    * For the **Setting name**, enter the same alias that was used for the previous key.
+   * For the **Setting name**, enter the same alias that was used for the previous key.
 
-        ::::{note}
-        If you use a different alias, you also need to re-create the remote cluster in Kibana with a **Name** that matches the new alias.
-        ::::
+     ::::{note}
+     If you use a different alias, you also need to re-create the remote cluster in {{kib}} with a **Name** that matches the new alias.
+     ::::
 
-    * For the **Secret**, paste the encoded cross-cluster API key.
+   * For the **Secret**, paste the encoded cross-cluster API key, then click **Add** to save the API key to the keystore.
 
-        1. Click **Add** to save the API key to the keystore.
+6. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart {{es}}**.<br>
 
-6. Restart the local deployment to reload the keystore with its new setting. To do that, go to the deployment’s main page (named after your deployment’s name), locate the **Actions** menu, and select **Restart Elasticsearch**.<br>
-
-    ::::{note}
-    If the local deployment runs on version 8.13 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
-    ::::
+   ::::{note}
+   If the local deployment runs on version 8.14 or greater, you no longer need to perform this step because the keystore is reloaded automatically with the new API keys.
+   ::::

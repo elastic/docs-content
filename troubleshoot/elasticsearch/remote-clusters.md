@@ -2,6 +2,9 @@
 navigation_title: Remote clusters
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-troubleshooting.html
+applies_to:
+  deployment:
+    self: ga
 ---
 
 
@@ -83,7 +86,7 @@ org.elasticsearch.transport.ConnectTransportException: [][192.168.0.42:9443] **c
 #### Resolution [_resolution]
 
 * Check the host and port for the remote cluster are correct.
-* Ensure the [remote cluster server is enabled](../../deploy-manage/remote-clusters/remote-clusters-troubleshooting.md#remote-clusters-troubleshooting-enable-server) on the remote cluster.
+* Ensure the [remote cluster server is enabled](#remote-clusters-troubleshooting-enable-server) on the remote cluster.
 * Ensure no firewall is blocking the communication.
 
 

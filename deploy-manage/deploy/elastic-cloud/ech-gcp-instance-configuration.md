@@ -39,7 +39,7 @@ The new configuration naming convention aligns with the [data tiers](/manage-dat
 | gcp.es.datawarm.n2.68x10x190, gcp.es.datacold.n2.68x10x190 | These configurations replace “highstorage”, which is based on N1 with 1:160 RAM:disk and similar RAM:CPU ratios. |
 | gcp.es.datafrozen.n2.68x10x95 | This configuration replaces the (short lived) gcp.es.datafrozen.n2d.64x8x95 configuration we used for the frozen cache tier. n2d was based on the AMC epyc processor but we found that the Intel-based configuration provides a slightly better cost/performance ratio. We also tweaked the RAM/CPU ratios to align to other configurations and benchmarks. |
 
-For a detailed price list, check the [Elastic Cloud deployment pricing table](https://cloud.elastic.co/deployment-pricing-table?provider=gcp). For a detailed specification of the new configurations, check [Elasticsearch Service default GCP instance configurations](ech-default-gcp-configurations.md).
+For a detailed price list, check the [Elastic Cloud deployment pricing table](https://cloud.elastic.co/deployment-pricing-table?provider=gcp). For a detailed specification of the new configurations, check [{{ecloud}} default GCP instance configurations](ech-default-gcp-configurations.md).
 
 The benefits of the new configurations are multifold:
 

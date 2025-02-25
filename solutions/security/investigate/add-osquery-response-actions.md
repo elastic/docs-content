@@ -4,14 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-osquery-response-action.html
 ---
 
-# Add Osquery Response Actions
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/osquery-response-action.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-osquery-response-action.md
+# Add Osquery Response Actions [security-osquery-response-action]
 
 ::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
@@ -21,8 +14,8 @@ This functionality is in technical preview and may be changed or removed in a fu
 Osquery Response Actions allow you to add live queries to custom query rules so you can automatically collect data on systems the rule is monitoring. Use this data to support your alert triage and investigation efforts.
 
 ::::{admonition} Requirements
-* Osquery Response Actions require a [Platinum or Enterprise subscription](https://www.elastic.co/pricing).
-* The [Osquery manager integration](/solutions/security/investigate/manage-integration.md) must be installed.
+* Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
+* The [Osquery manager integration](manage-integration.md) must be installed. 
 * {{agent}}'s [status](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) must be `Healthy`. Refer to [{{fleet}} Troubleshooting](/troubleshoot/ingest/fleet/common-problems.md) if it isn’t.
 * Your role must have [Osquery feature privileges](/solutions/security/investigate/osquery.md).
 * You can only add Osquery Response Actions to custom query rules.
@@ -102,6 +95,6 @@ Refer to [Examine Osquery results](/solutions/security/investigate/examine-osque
 
 
 :::{image} ../../../images/security-osquery-results-tab.png
-:alt: osquery results tab
+:alt: Shows how to set up a single query
 :class: screenshot
 :::
