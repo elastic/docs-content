@@ -1,7 +1,20 @@
+---
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
+---
+
 # Uninstall
 
-% What needs to be done: Write from scratch
+Uninstalling Elasticsearch can become necessary for several reasons. You might encounter issues during installation that you can't resolve, decommission a host, or want to start fresh with a clean installation.
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/362
+Each deployment type uses a different uninstallation process. Refer to the guide that matches your setup:
 
-⚠️ **This page is a work in progress.** ⚠️
+* [Uninstall Elastic Cloud Enterprise](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise)
+* [Uninstall Elastic Cloud on Kubernetes](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes)
+* [Uninstall a self-managed cluster](/deploy-manage/uninstall/uninstall-a-self-managed-cluster)
+* [Delete a cloud deployment](/deploy-manage/uninstall/delete-a-cloud-deployment)
+

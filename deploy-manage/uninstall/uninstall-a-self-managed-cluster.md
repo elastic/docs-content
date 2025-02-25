@@ -1,7 +1,11 @@
+---
+applies_to:
+  deployment:
+    self: 
+---
+
 # Uninstall a self-managed cluster
 
-% What needs to be done: Write from scratch
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/362
-
-⚠️ **This page is a work in progress.** ⚠️
+:::{note}
+You can uninstall self-managed clusters, but detailed step-by-step instructions are not currently available.
+:::

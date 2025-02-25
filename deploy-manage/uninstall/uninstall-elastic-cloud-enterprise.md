@@ -10,7 +10,7 @@ You might need to remove Elastic Cloud Enterprise for one of the following reaso
 * If the installation process does not complete successfully and you cannot troubleshoot the issue.
 * If you are de-provisioning a host and want to remove the installed Elastic Cloud Enterprise software.
 
-You remove Elastic Cloud Enterprise by removing all containers on the host:
+You can remove Elastic Cloud Enterprise by removing all containers on the host:
 
 * If using Docker
 
