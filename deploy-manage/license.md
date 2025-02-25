@@ -1,5 +1,11 @@
 ---
 applies_to:
+  deployment:
+    ece:
+    ech:
+    ess:
+    self:
+  serverless:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-licensing.html
 ---
