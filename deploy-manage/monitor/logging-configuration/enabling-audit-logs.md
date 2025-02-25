@@ -5,11 +5,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-auditing.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_audit_logging.html
   - https://www.elastic.co/guide/en/cloud/current/ec-enable-logging-and-monitoring.html#ec-enable-audit-logs
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
   serverless: unavailable
 ---
 

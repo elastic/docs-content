@@ -5,7 +5,7 @@ mapped_urls:
 applies_to:
   deployment:
     ess: all
-    serverless: all
+  serverless: all
 ---
 
 # User roles and privileges [ec-user-privileges]

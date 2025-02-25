@@ -5,8 +5,8 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-api-organizations.html
 applies_to:
   deployment:
-      serverless: all
-      ess: all
+    ess: all
+  serverless: all
 ---
 
 # Manage users

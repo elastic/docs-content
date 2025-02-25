@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/logging-configuration.html
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: all
 ---
 
 % this might not be valid for all deployment types. needs review.

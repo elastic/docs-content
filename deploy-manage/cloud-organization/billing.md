@@ -2,9 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-billing.html
-applies:
+applies_to:
+  deployment:
+    ess: all
   serverless: all
-  hosted: all
 ---
 
 # Billing

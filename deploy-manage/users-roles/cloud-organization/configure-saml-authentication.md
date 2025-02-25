@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
-    serverless: all
+  serverless: all
 ---
 
 # Configure {{ecloud}} SAML single sign-on [ec-saml-sso]
