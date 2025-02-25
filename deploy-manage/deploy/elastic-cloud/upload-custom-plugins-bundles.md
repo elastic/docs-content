@@ -9,27 +9,6 @@ mapped_urls:
 
 # Upload custom plugins and bundles
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-custom-bundles.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-custom-bundles.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ec-add-your-plugin$$$
-
-$$$ec-update-bundles-and-plugins$$$
-
-$$$ec-update-bundles$$$
-
-$$$ech-add-your-plugin$$$
-
-$$$ech-update-bundles-and-plugins$$$
-
-$$$ech-update-bundles$$$
-
 There are several cases where you might need your own files to be made available to your {{es}} cluster’s nodes:
 
 * Your own custom plugins, or third-party plugins that are not amongst the [officially available plugins](../../../deploy-manage/deploy/elastic-cloud/add-plugins-extensions.md).

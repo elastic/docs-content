@@ -10,13 +10,6 @@ mapped_urls:
 
 # Configure
 
-% What needs to be done: Refine
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-customize-deployment.md
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-configure-settings.md
-
 You might want to change the configuration of your deployment to:
 
 * Add features, such as machine learning or APM (application performance monitoring).
