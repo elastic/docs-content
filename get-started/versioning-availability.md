@@ -24,7 +24,7 @@ Elastic products and features have different availability states across deployme
 
 Each badge provides up to three key pieces of information:
 
-- **Deployment type**: The environment where the feature is available (Stack, Serverless ECE, ECK, etc.)
+- **Deployment type**: The environment where the feature is available (Stack, Serverless, ECE, ECK, etc.)
 - **Lifecycle state**: The development or support status of the feature (GA, Beta, etc.)
 - **Version**: The specific version the lifecycle state applies to
 
