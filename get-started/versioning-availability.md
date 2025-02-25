@@ -98,11 +98,11 @@ serverless:
 
 ```yaml {applies_to}
 deployment:
-  ece: discontinued 9.2.0
+  ece: discontinued 4.1.0
 ```
 - **Deployment type**: Elastic Cloud Enterprise
 - **Lifecycle**: Discontinued
-- **Version**: 9.2.0
+- **Version**: 4.1.0
 
 :::{tip}
 For contributors and those interested in the technical details, see the [Elastic docs syntax guide](https://elastic.github.io/docs-builder/syntax/applies/) for more information on how these badges are implemented.
