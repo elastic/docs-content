@@ -4,9 +4,9 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
-  ece: all
-  eck: all
-  stack: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Configuring indices created by Metricbeat 7 or internal collection [config-monitoring-indices-metricbeat-7-internal-collection]

@@ -6,9 +6,9 @@ mapped_urls:
 applies_to:
   deployment:
     ess: all
-  ece: all
-  eck: all
-  stack: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Stack Monitoring

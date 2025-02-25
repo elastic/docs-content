@@ -4,9 +4,9 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
-  ece: all
-  eck: all
-  stack: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Configuring data streams created by Elastic Agent [config-monitoring-data-streams-elastic-agent]

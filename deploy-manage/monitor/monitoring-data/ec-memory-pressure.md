@@ -5,7 +5,7 @@ mapped_pages:
 applies_to:
   deployment:
     ess: all
-  ece: all
+    ece: all
 ---
 
 # JVM memory pressure indicator [ec-memory-pressure]
