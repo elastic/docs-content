@@ -315,7 +315,7 @@ To import a case:
     ::::{important}
     Be mindful of the following:
 
-    * If the imported case had connectors attached to it, you’ll be prompted to re-authenticate the connectors. To do so, click **Go to connectors** on the **Import saved objects** flyout and complete the necessary steps. You can also access connectors from the **{{connectors-ui}}** page (find **{{connectors-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+    * If the imported case had connectors attached to it, you’ll be prompted to re-authenticate the connectors. To do so, click **Go to connectors** on the **Import saved objects** flyout and complete the necessary steps. You can also access connectors from the **{{connectors-ui}}** page (find **{{connectors-ui}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
     * If the imported case had attached alerts, verify that the alerts' source documents exist in the environment. Case features that interact with alerts (such as the Alert details flyout and rule details page) rely on the alerts' source documents to function.
 
     ::::
