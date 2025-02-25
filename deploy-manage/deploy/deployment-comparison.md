@@ -29,7 +29,7 @@ This reference provides detailed comparisons of features and capabilities across
 | Feature/capability | Self-managed | Elastic Cloud Hosted | Serverless |
 |-------------------|-------------|--------------------------------|-------------------------|
 | [Deployment health monitoring](/deploy-manage/monitor.md) | Monitoring cluster | AutoOps or monitoring cluster | Managed by Elastic |
-| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or Kibana alerts | Watcher or Kibana alerts | Alerts |
+| [Alerting](/explore-analyze/alerts-cases.md) | Watcher or Kibana alerts | Watcher or Kibana alerts | Alerts ([why?](/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings.md#elasticsearch-differences-serverless-features-replaced)) |
 
 ## Data lifecycle
 
