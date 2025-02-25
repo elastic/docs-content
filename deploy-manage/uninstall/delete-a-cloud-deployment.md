@@ -15,7 +15,7 @@ When deployments are deleted, we erase all data on disk, including snapshots. Sn
 ::::
 
 ::::{tip} 
-If you want to keep the snapshot for future purposes even after the deployment deletion, you should [use a custom snapshot repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted).
+If you want to keep the snapshot for future purposes even after the deployment deletion, you should [use a custom snapshot repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 ::::
 
 Billing restarts as soon as the deployment is restored.
