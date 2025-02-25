@@ -1,4 +1,5 @@
 ---
+applies_to:
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-licensing.html
 ---
@@ -9,20 +10,17 @@ Your Elastic license determines which features are available and what level of s
 
 Depending on your deployment type, licenses and subscriptions are applied at different levels:
 
-* For {{ece}}, {{ecloud}}, and {{eck}}: Licenses and subscriptions are controlled at the orchestrator or organization level, and apply to all related deployments.
-* For self-managed {{es}}: Licenses are controlled at the cluster level, and apply only to a single cluster.
+* **{{ecloud}}, {{ece}}, and {{eck}}:** Licenses and subscriptions are controlled at the orchestrator or organization level, and apply to all related deployments.
+* **Self-managed {{es}}:** Licenses are controlled at the cluster level, and apply only to a single cluster.
 
 For a comprehensive comparison of the available subscription levels, see [Elastic subscriptions](https://www.elastic.co/subscriptions).
 
 Use the topics in this section to manage your license or start a trial:  
 
+- [{{ecloud}} and {{serverless-full}}](/deploy-manage/cloud-organization/billing/manage-subscription.md)
 - [{{ece}}](/deploy-manage/license/manage-your-license-in-ece.md)  
 - [{{eck}}](/deploy-manage/license/manage-your-license-in-eck.md)  
 - [Self-managed cluster](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md)  
-
-## Licensing APIs
-
-You can also manage your license or start a trial using the [licensing APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-license).
 
 ## Additional resources  
 
