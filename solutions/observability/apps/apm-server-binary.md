@@ -53,16 +53,16 @@ $$$apm-linux$$$
 **Other Linux:**
 
 ```shell
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{apm_server_version}-linux-x86_64.tar.gz
-tar xzvf apm-server-{apm_server_version}-linux-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
+tar xzvf apm-server-{{apm_server_version}}-linux-x86_64.tar.gz
 ```
 
 $$$apm-mac$$$
 **Mac:**
 
 ```shell
-curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{apm_server_version}-darwin-x86_64.tar.gz
-tar xzvf apm-server-{apm_server_version}-darwin-x86_64.tar.gz
+curl -L -O https://artifacts.elastic.co/downloads/apm-server/apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
+tar xzvf apm-server-{{apm_server_version}}-darwin-x86_64.tar.gz
 ```
 
 $$$apm-installing-on-windows$$$
