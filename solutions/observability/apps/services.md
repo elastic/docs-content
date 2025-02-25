@@ -11,7 +11,7 @@ applies_to:
 
 The **Services** inventory provides a quick, high-level overview of the health and general performance of all instrumented services.
 
-To help surface potential issues, services are sorted by their health status: **critical** → **warning** → ***healthy** → **unknown**. Health status is powered by [machine learning](../../../solutions/observability/apps/integrate-with-machine-learning.md) and requires anomaly detection to be enabled.
+To help surface potential issues, services are sorted by their health status: **critical** → **warning** → **healthy** → **unknown**. Health status is powered by [machine learning](../../../solutions/observability/apps/integrate-with-machine-learning.md) and requires anomaly detection to be enabled.
 
 In addition to health status, active alerts for each service are prominently displayed in the service inventory table. Selecting an active alert badge brings you to the [**Alerts**](../../../solutions/observability/apps/create-apm-rules-alerts.md) tab where you can learn more about the active alert and take action.
 

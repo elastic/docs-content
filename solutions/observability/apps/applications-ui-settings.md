@@ -69,6 +69,6 @@ APM indices are {{kib}} Spaces-aware; Changes to APM index settings will only ap
 
 **APM Labs** allows you to easily try out new features that are technical preview.
 
-To enable APM labs, go to **Applications** → **Settings*** → ***General settings*** and toggle ***Enable labs button in APM**. Select **Save changes** and refresh the page.
+To enable APM labs, go to **Applications** → **Settings** → **General settings** and toggle **Enable labs button in APM**. Select **Save changes** and refresh the page.
 
 After enabling **APM Labs** select **Labs** in the toolbar to see the technical preview features available to try out.
