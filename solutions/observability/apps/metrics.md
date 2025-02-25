@@ -1162,7 +1162,7 @@ Note that all the below limits may change in the future with further improvement
     * For service-summary metrics, there is no additional limit.
 
 
-In the above, a service is defined as a combination of `service.name`, `service.environment`, `service.language.name` and `agent.name`.
+In the previous metrics, a service is defined as a combination of `service.name`, `service.environment`, `service.language.name` and `agent.name`.
 
 
 ### Overflows [_overflows]
