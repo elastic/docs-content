@@ -23,7 +23,7 @@ For a comprehensive comparison of the available subscription levels, see [Elasti
 
 Use the topics in this section to manage your license or start a trial:  
 
-- [{{ecloud}} and {{serverless-full}}](/deploy-manage/cloud-organization/billing/manage-subscription.md)
+- [{{ecloud}}](/deploy-manage/cloud-organization/billing/manage-subscription.md): Applies to both {{ech}} deployments and {{serverless-full}} projects in your Cloud organization
 - [{{ece}}](/deploy-manage/license/manage-your-license-in-ece.md)  
 - [{{eck}}](/deploy-manage/license/manage-your-license-in-eck.md)  
 - [Self-managed cluster](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md)  
