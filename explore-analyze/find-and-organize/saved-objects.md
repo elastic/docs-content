@@ -149,7 +149,7 @@ After you upgrade, or if you set up a new {{kib}} instance using version 8.x or 
 
 #### Accessing saved objects using old URLs [saved-object-ids-impact-when-using-legacy-urls]
 
-When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](asciidocalypse://docs/kibana/docs/extend/contribute-to-kibana/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
+When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](asciidocalypse://docs/kibana/docs/extend/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
 
 
 #### Importing and copying saved objects [saved-object-ids-impact-when-using-import-and-copy]

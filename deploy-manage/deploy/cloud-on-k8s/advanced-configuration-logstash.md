@@ -36,7 +36,7 @@ spec:
 
 You can specify sensitive settings with Kubernetes secrets. ECK automatically injects these settings into the keystore before it starts Logstash. The ECK operator continues to watch the secrets for changes and will restart Logstash Pods when it detects a change.
 
-The Logstash Keystore can be password protected by setting an environment variable called `LOGSTASH_KEYSTORE_PASS`. Check out [Logstash Keystore](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/keystore.md#keystore-password) documentation for details.
+The Logstash Keystore can be password protected by setting an environment variable called `LOGSTASH_KEYSTORE_PASS`. Check out [Logstash Keystore](asciidocalypse://docs/logstash/docs/reference/keystore.md#keystore-password) documentation for details.
 
 ```yaml
 apiVersion: v1

@@ -13,7 +13,7 @@ The issue typically stems from one or more causes:
 To address the issue, observe the [Plugin flow rates](https://www.elastic.co/guide/en/logstash/current/node-stats-api.html#plugin-flow-rates) from the [Node Stats API](https://www.elastic.co/guide/en/logstash/current/node-stats-api.html), and identify which plugins have the highest `worker_utilization`. This will tell you which plugins are spending the most of the pipeline’s worker resources.
 
 * If the offending plugin connects to a downstream service or another pipeline that is exerting back-pressure, the issue needs to be addressed in the downstream service or pipeline.
-* If the offending plugin connects to a downstream service with high network latency, throughput for the pipeline may be improved by [allocating more worker resources to the pipeline](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/tuning-logstash.md#tuning-logstash-settings).
+* If the offending plugin connects to a downstream service with high network latency, throughput for the pipeline may be improved by [allocating more worker resources to the pipeline](asciidocalypse://docs/logstash/docs/reference/tuning-logstash.md#tuning-logstash-settings).
 * If the offending plugin is a computation-heavy filter such as `grok` or `kv`, its configuration may need to be tuned to eliminate wasted computation.
 
 ## $$$blocked-5m$$$Blocked Pipeline (5 minutes) [health-report-pipeline-flow-worker-utilization-diagnosis-blocked-5m]

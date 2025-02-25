@@ -10,7 +10,7 @@ applies:
 
 # Configuring indices created by Metricbeat 7 or internal collection [config-monitoring-indices-metricbeat-7-internal-collection]
 
-When monitoring [using {{metricbeat}} 7](../stack-monitoring/collecting-monitoring-data-with-metricbeat.md) or [internal collection](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/monitoring-internal-collection.md), data is stored in a set of indices called either:
+When monitoring [using {{metricbeat}} 7](../stack-monitoring/collecting-monitoring-data-with-metricbeat.md) or [internal collection](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring-internal-collection.md), data is stored in a set of indices called either:
 
 * `.monitoring-{{product}}-7-mb-{{date}}`, when using {{metricbeat}} 7.
 * `.monitoring-{{product}}-7-{{date}}`, when using internal collection.

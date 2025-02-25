@@ -174,20 +174,20 @@ The transaction sample rate can be changed dynamically (no redeployment necessar
 
 ### {{kib}} API configuration [_kib_api_configuration]
 
-{{apm-agent}} configuration exposes an API that can be used to programmatically change your agents' sampling rate. An example is provided in the [Agent configuration API reference](../../../solutions/observability/apps/agent-configuration-api.md).
+{{apm-agent}} configuration exposes an API that can be used to programmatically change your agents' sampling rate. For examples, refer to the [Agent configuration API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-agent-configuration).
 
 
 ### {{apm-agent}} configuration [_apm_agent_configuration]
 
 Each agent provides a configuration value used to set the transaction sample rate. See the relevant agent’s documentation for more details:
 
-* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-transaction-sample-rate)
-* Java: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-core.md#config-transaction-sample-rate)
-* .NET: [`TransactionSampleRate`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-core.md#config-transaction-sample-rate)
-* Node.js: [`transactionSampleRate`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#transaction-sample-rate)
-* PHP: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-transaction-sample-rate)
-* Python: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-transaction-sample-rate)
-* Ruby: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-transaction-sample-rate)
+* Go: [`ELASTIC_APM_TRANSACTION_SAMPLE_RATE`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-transaction-sample-rate)
+* Java: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-transaction-sample-rate)
+* .NET: [`TransactionSampleRate`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-transaction-sample-rate)
+* Node.js: [`transactionSampleRate`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#transaction-sample-rate)
+* PHP: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-transaction-sample-rate)
+* Python: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-transaction-sample-rate)
+* Ruby: [`transaction_sample_rate`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-transaction-sample-rate)
 
 
 ## Configure tail-based sampling [apm-configure-tail-based-sampling]

@@ -34,12 +34,12 @@ Spans are grouped in transactions—by default, one for each incoming HTTP reque
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Java agent reference](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/index.md) for full documentation, including:
+See the [Java agent reference](asciidocalypse://docs/apm-agent-java/docs/reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/set-up-apm-java-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/tracing-apis.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/supported-technologies.md)
+* [Set up](asciidocalypse://docs/apm-agent-java/docs/reference/set-up-apm-java-agent.md)
+* [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
+* [API reference](asciidocalypse://docs/apm-agent-java/docs/reference/tracing-apis.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -60,12 +60,12 @@ These events, called Transactions and Spans, are sent to Elastic, where they're 
 
 If you’re ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Node.js agent reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/index.md) for full documentation, including:
+See the [Node.js agent reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/set-up.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/advanced-setup.md)
-* [API reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/api.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
+* [Set up](asciidocalypse://docs/apm-agent-nodejs/docs/reference/set-up.md)
+* [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
+* [API reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/api.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -90,12 +90,12 @@ In addition to APM and error data, the Python agent also collects system and app
 
 If you’re ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Python agent reference](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/index.md) for full documentation, including:
+See the [Python agent reference](asciidocalypse://docs/apm-agent-python/docs/reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/set-up-apm-python-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/api-reference.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
+* [Set up](asciidocalypse://docs/apm-agent-python/docs/reference/set-up-apm-python-agent.md)
+* [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
+* [API reference](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -116,12 +116,12 @@ These events, called Transactions and Spans, are sent to Elastic, where they're 
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Ruby agent reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/index.md) for full documentation, including:
+See the [Ruby agent reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/set-up-apm-ruby-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
+* [Set up](asciidocalypse://docs/apm-agent-ruby/docs/reference/set-up-apm-ruby-agent.md)
+* [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
+* [API reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -148,12 +148,12 @@ In addition to capturing events like those mentioned here, the agent also collec
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [Go agent reference](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/index.md) for full documentation, including:
+See the [Go agent reference](asciidocalypse://docs/apm-agent-go/docs/reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/set-up-apm-go-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/supported-technologies.md)
+* [Set up](asciidocalypse://docs/apm-agent-go/docs/reference/set-up-apm-go-agent.md)
+* [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
+* [API reference](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -172,12 +172,12 @@ The Agent automatically registers callback methods for built-in Diagnostic Sourc
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [.NET agent reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/index.md) for full documentation, including:
+See the [.NET agent reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/set-up-apm-net-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/supported-technologies.md)
+* [Set up](asciidocalypse://docs/apm-agent-dotnet/docs/reference/set-up-apm-net-agent.md)
+* [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
+* [API reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
@@ -194,12 +194,12 @@ The Elastic APM PHP agent measures application performance and tracks errors. Th
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [PHP agent reference](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/index.md)  for full documentation, including:
+See the [PHP agent reference](asciidocalypse://docs/apm-agent-php/docs/reference/index.md)  for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/set-up-apm-php-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/public-api.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
+* [Set up](asciidocalypse://docs/apm-agent-php/docs/reference/set-up-apm-php-agent.md)
+* [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
+* [API reference](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.

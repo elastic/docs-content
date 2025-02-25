@@ -7,7 +7,7 @@ mapped_pages:
 
 # Logstash plugins [k8s-logstash-plugins]
 
-The power of {{ls}} is in the plugins--[inputs](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/input-plugins.md), [outputs](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/output-plugins.md), [filters,]((asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/filter-plugins.md) and [codecs](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/codec-plugins.md).
+The power of {{ls}} is in the plugins--[inputs](asciidocalypse://docs/logstash/docs/reference/input-plugins.md), [outputs](asciidocalypse://docs/logstash/docs/reference/output-plugins.md), [filters,]((asciidocalypse://docs/logstash/docs/reference/filter-plugins.md) and [codecs](asciidocalypse://docs/logstash/docs/reference/codec-plugins.md).
 
 In {{ls}} on ECK, you can use the same plugins that you use for other {{ls}} instances—​including Elastic-supported, community-supported, and custom plugins. However, you may have other factors to consider, such as how you configure your {{k8s}} resources, how you specify additional resources, and how you scale your {{ls}} installation.
 
@@ -89,7 +89,7 @@ spec:
 
 **Static read-only files**
 
-Some plugins require or allow access to small static read-only files. You can use these for a variety of reasons. Examples include adding custom `grok` patterns for [`logstash-filter-grok`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-grok.md) to use for lookup, source code for [`logstash-filter-ruby`], a dictionary for [`logstash-filter-translate`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-translate.md) or the location of a SQL statement for [`logstash-input-jdbc`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md). Make these files available to the {{ls}} resource in your manifest.
+Some plugins require or allow access to small static read-only files. You can use these for a variety of reasons. Examples include adding custom `grok` patterns for [`logstash-filter-grok`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-grok.md) to use for lookup, source code for [`logstash-filter-ruby`], a dictionary for [`logstash-filter-translate`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-translate.md) or the location of a SQL statement for [`logstash-input-jdbc`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-jdbc.md). Make these files available to the {{ls}} resource in your manifest.
 
 ::::{tip}
 In the plugin documentation, these plugin settings are typically identified by `path` or an `array` of `paths`.
@@ -98,7 +98,7 @@ In the plugin documentation, these plugin settings are typically identified by `
 
 To use these in your manifest, create a ConfigMap or Secret representing the asset, a Volume in your `podTemplate.spec` containing the ConfigMap or Secret, and mount that Volume with a VolumeMount in your `podTemplateSpec.container` section of your {{ls}} resource.
 
-This example illustrates configuring a ConfigMap from a ruby source file, and including it in a [`logstash-filter-ruby`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-ruby.md) plugin.
+This example illustrates configuring a ConfigMap from a ruby source file, and including it in a [`logstash-filter-ruby`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-ruby.md) plugin.
 
 First, create the ConfigMap.
 
@@ -142,7 +142,7 @@ spec:
 
 ### Larger read-only assets (1 MiB+) [k8s-logstash-working-with-plugins-large-ro]
 
-Some plugins require or allow access to static read-only files that exceed the 1 MiB (mebibyte) limit imposed by ConfigMap and Secret. For example, you may need JAR files to load drivers when using a JDBC or JMS plugin, or a large [`logstash-filter-translate`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-translate.md) dictionary.
+Some plugins require or allow access to static read-only files that exceed the 1 MiB (mebibyte) limit imposed by ConfigMap and Secret. For example, you may need JAR files to load drivers when using a JDBC or JMS plugin, or a large [`logstash-filter-translate`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-translate.md) dictionary.
 
 You can add files using:
 
@@ -238,7 +238,7 @@ After you build and deploy the custom image, include it in the {{ls}} manifest. 
 
 ### Writable storage [k8s-logstash-working-with-plugins-writable]
 
-Some {{ls}} plugins need access to writable storage. This could be for checkpointing to keep track of events already processed, a place to temporarily write events before sending a batch of events, or just to actually write events to disk in the case of [`logstash-output-file`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-file.md).
+Some {{ls}} plugins need access to writable storage. This could be for checkpointing to keep track of events already processed, a place to temporarily write events before sending a batch of events, or just to actually write events to disk in the case of [`logstash-output-file`](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-file.md).
 
 {{ls}} on ECK by default supplies a small 1.5 GiB (gibibyte) default persistent volume to each pod. This volume is called `logstash-data` and is located at `/usr/logstash/data`, and is typically the default location for most plugin use cases. This volume is stable across restarts of {{ls}} pods and is suitable for many use cases.
 
@@ -332,7 +332,7 @@ spec:
 
 ::::{admonition} Horizontal scaling for {{ls}} plugins
 * Not all {{ls}} deployments can be scaled horizontally by increasing the number of {{ls}} Pods defined in the {{ls}} resource. Depending on the types of plugins in a {{ls}} installation, increasing the number of pods may cause data duplication, data loss, incorrect data, or may waste resources with pods unable to be utilized correctly.
-* The ability of a {{ls}} installation to scale horizontally is bound by its most restrictive plugin(s). Even if all pipelines are using [`logstash-input-elastic_agent`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md) or [`logstash-input-beats`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md) which should enable full horizontal scaling, introducing a more restrictive input or filter plugin forces the restrictions for pod scaling associated with that plugin.
+* The ability of a {{ls}} installation to scale horizontally is bound by its most restrictive plugin(s). Even if all pipelines are using [`logstash-input-elastic_agent`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-elastic_agent.md) or [`logstash-input-beats`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-beats.md) which should enable full horizontal scaling, introducing a more restrictive input or filter plugin forces the restrictions for pod scaling associated with that plugin.
 
 ::::
 
@@ -344,12 +344,12 @@ spec:
 * They **must** specify `pipeline.workers=1` for any pipelines that use them.
 * The number of pods cannot be scaled above 1.
 
-Examples of aggregating filters include [`logstash-filter-aggregate`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-aggregate.md), [`logstash-filter-csv`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-csv.md) when `autodetect_column_names` set to `true`, and any [`logstash-filter-ruby`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-ruby.md) implementations that perform aggregations.
+Examples of aggregating filters include [`logstash-filter-aggregate`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-aggregate.md), [`logstash-filter-csv`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-csv.md) when `autodetect_column_names` set to `true`, and any [`logstash-filter-ruby`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-ruby.md) implementations that perform aggregations.
 
 
 ### Input plugins: events pushed to {{ls}} [k8s-logstash-inputs-data-pushed]
 
-{{ls}} installations with inputs that enable {{ls}} to receive data should be able to scale freely and have load spread across them horizontally. These plugins include [`logstash-input-beats`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md), [`logstash-input-elastic_agent`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md),  [`logstash-input-tcp`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-tcp.md), and [`logstash-input-http`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-http.md).
+{{ls}} installations with inputs that enable {{ls}} to receive data should be able to scale freely and have load spread across them horizontally. These plugins include [`logstash-input-beats`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-beats.md), [`logstash-input-elastic_agent`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-elastic_agent.md),  [`logstash-input-tcp`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-tcp.md), and [`logstash-input-http`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-http.md).
 
 
 ### Input plugins: {{ls}} maintains state [k8s-logstash-inputs-local-checkpoints]
@@ -360,16 +360,16 @@ Note that plugins that retrieve data from external sources, and require some lev
 
 Input plugins that include configuration settings such as  `sincedb`, `checkpoint` or `sql_last_run_metadata` may fall into this category.
 
-Examples of these plugins include [`logstash-input-jdbc`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-jdbc.md) (which has no automatic way to split queries across {{ls}} instances), [`logstash-input-s3`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-s3.md) (which has no way to split which buckets to read across {{ls}} instances), or [`logstash-input-file`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-file.md).
+Examples of these plugins include [`logstash-input-jdbc`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-jdbc.md) (which has no automatic way to split queries across {{ls}} instances), [`logstash-input-s3`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-s3.md) (which has no way to split which buckets to read across {{ls}} instances), or [`logstash-input-file`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-file.md).
 
 
 ### Input plugins: external source stores state [k8s-logstash-inputs-external-state]
 
 {{ls}} installations that use input plugins that retrieve data from an external source, and **rely on the external source to store state** can scale based on the parameters of the external source.
 
-For example, a {{ls}} installation that uses a [`logstash-input-kafka`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-kafka.md) plugin to retrieve data can scale the number of pods up to the number of partitions used, as a partition can have at most one consumer belonging to the same consumer group. Any pods created beyond that threshold cannot be scheduled to receive data.
+For example, a {{ls}} installation that uses a [`logstash-input-kafka`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-kafka.md) plugin to retrieve data can scale the number of pods up to the number of partitions used, as a partition can have at most one consumer belonging to the same consumer group. Any pods created beyond that threshold cannot be scheduled to receive data.
 
-Examples of these plugins include [`logstash-input-kafka`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-kafka.md), [`logstash-input-azure_event_hubs`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-azure_event_hubs.md), and [`logstash-input-kinesis`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-kinesis.md).
+Examples of these plugins include [`logstash-input-kafka`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-kafka.md), [`logstash-input-azure_event_hubs`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-azure_event_hubs.md), and [`logstash-input-kinesis`](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-kinesis.md).
 
 
 
@@ -389,12 +389,12 @@ Use these guidelines *in addition* to the general guidelines provided in [Scalin
 
 ### {{ls}} integration plugin [k8s-logstash-plugin-considerations-ls-integration]
 
-When your pipeline uses the [`Logstash integration`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-integrations-logstash.md) plugin, add `keepalive=>false` to the [logstash-output](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-logstash.md) definition to ensure that load balancing works correctly rather than keeping affinity to the same pod.
+When your pipeline uses the [`Logstash integration`](asciidocalypse://docs/logstash/docs/reference/plugins-integrations-logstash.md) plugin, add `keepalive=>false` to the [logstash-output](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-logstash.md) definition to ensure that load balancing works correctly rather than keeping affinity to the same pod.
 
 
 ### Elasticsearch output plugin [k8s-logstash-plugin-considerations-es-output]
 
-The [`elasticsearch output`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md) plugin requires certain roles to be configured in order to enable {{ls}} to communicate with {{es}}.
+The [`elasticsearch output`](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md) plugin requires certain roles to be configured in order to enable {{ls}} to communicate with {{es}}.
 
 You can customize roles in {{es}}. Check out [creating custom roles](../../users-roles/cluster-or-deployment-auth/native.md)
 
@@ -418,7 +418,7 @@ stringData:
 
 ### Elastic_integration filter plugin [k8s-logstash-plugin-considerations-integration-filter]
 
-The [`elastic_integration filter`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-elastic_integration.md) plugin allows the use of [`ElasticsearchRef`](configuration-logstash.md#k8s-logstash-esref) and environment variables.
+The [`elastic_integration filter`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-elastic_integration.md) plugin allows the use of [`ElasticsearchRef`](configuration-logstash.md#k8s-logstash-esref) and environment variables.
 
 ```json
   elastic_integration {
@@ -447,7 +447,7 @@ stringData:
 
 ### Elastic Agent input and Beats input plugins [k8s-logstash-plugin-considerations-agent-beats]
 
-When you use the [Elastic Agent input](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md) or the [Beats input](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-beats.md), set the [`ttl`](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/logstash-output.md#_ttl) value on the Agent or Beat to ensure that load is distributed appropriately.
+When you use the [Elastic Agent input](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-elastic_agent.md) or the [Beats input](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-beats.md), set the [`ttl`](asciidocalypse://docs/beats/docs/reference/filebeat/logstash-output.md#_ttl) value on the Agent or Beat to ensure that load is distributed appropriately.
 
 
 
@@ -455,7 +455,7 @@ When you use the [Elastic Agent input](asciidocalypse://docs/logstash/docs/refer
 
 If you need plugins in addition to those included in the standard {{ls}} distribution, you can add them. Create a custom Docker image that includes the installed plugins, using the `bin/logstash-plugin install` utility to add more plugins to the image so that they can be used by {{ls}} pods.
 
-This sample Dockerfile installs the [`logstash-filter-tld`](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-filters-tld.md) plugin to the official {{ls}} Docker image:
+This sample Dockerfile installs the [`logstash-filter-tld`](asciidocalypse://docs/logstash/docs/reference/plugins-filters-tld.md) plugin to the official {{ls}} Docker image:
 
 ```shell
 FROM docker.elastic.co/logstash/logstash:8.16.1

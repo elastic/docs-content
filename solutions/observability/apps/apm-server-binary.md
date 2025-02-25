@@ -201,7 +201,7 @@ All that’s left is to compile and run your application. That’s it!
 
 **Learn more in the agent reference**
 
-Read more in the [APM Android Agent Reference](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/index.md).
+Read more in the [APM Android Agent Reference](asciidocalypse://docs/apm-agent-android/docs/reference/index.md).
 ::::::
 
 ::::::{tab-item} Go
@@ -234,14 +234,14 @@ export ELASTIC_APM_SECRET_TOKEN=
 
 Instrumentation is the process of extending your application’s code to report trace data to Elastic APM. Go applications must be instrumented manually at the source code level. To instrument your applications, use one of the following approaches:
 
-* [Built-in instrumentation modules](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/builtin-modules.md).
-* [Custom instrumentation](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/custom-instrumentation.md) and context propagation with the Go Agent API.
+* [Built-in instrumentation modules](asciidocalypse://docs/apm-agent-go/docs/reference/builtin-modules.md).
+* [Custom instrumentation](asciidocalypse://docs/apm-agent-go/docs/reference/custom-instrumentation.md) and context propagation with the Go Agent API.
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
-* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/set-up-apm-go-agent.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
+* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} iOS
@@ -329,7 +329,7 @@ var config = AgentConfigBuilder()
 
 **Learn more in the agent reference**
 
-Read more in the [APM iOS Agent Reference](asciidocalypse://docs/apm-agent-ios/docs/reference/ingestion-tools/apm-agent-swift/index.md).
+Read more in the [APM iOS Agent Reference](asciidocalypse://docs/apm-agent-ios/docs/reference/index.md).
 ::::::
 
 ::::::{tab-item} Java
@@ -359,12 +359,12 @@ Different application servers have different ways of setting the `-javaagent` fl
 java -javaagent:/path/to/elastic-apm-agent-<version>.jar -Delastic.apm.service_name=my-cool-service -Delastic.apm.application_packages=org.example,org.another.example -Delastic.apm.server_url=http://127.0.0.1:8200 -jar my-application.jar
 ```
 
-Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/setup-javaagent.md) to learn more.
+Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-java/docs/reference/setup-javaagent.md) to learn more.
 
 **Alternate setup methods**
 
-* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/setup-attach-cli.md) for more information on this setup method.
-* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/setup-attach-api.md) for more information on this setup method.
+* **Automatic setup with `apm-agent-attach-cli.jar`**<br> Automatically set up the agent without needing to alter the configuration of your JVM or application server. This method requires no changes to application code or JVM options, and allows attaching to a running JVM. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-cli.md) for more information on this setup method.
+* **Programmatic API setup to self-attach**<br> Set up the agent with a one-line code change and an extra `apm-agent-attach` dependency. This method requires no changes to JVM options, and the agent artifact is embedded within the packaged application binary. Refer to the [Java agent documentation](asciidocalypse://docs/apm-agent-java/docs/reference/setup-attach-api.md) for more information on this setup method.
 ::::::
 
 ::::::{tab-item} .NET
@@ -372,14 +372,14 @@ Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-j
 
 The .NET agent can be added to an application in a few different ways:
 
-* **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/setup-auto-instrumentation.md).
-* **NuGet packages**: The agent ships as a set of [NuGet packages](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/nuget-packages.md) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
-* **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/setup-dotnet-net-core.md) for more details.
+* **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](asciidocalypse://docs/apm-agent-dotnet/docs/reference/setup-auto-instrumentation.md).
+* **NuGet packages**: The agent ships as a set of [NuGet packages](asciidocalypse://docs/apm-agent-dotnet/docs/reference/nuget-packages.md) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
+* **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](asciidocalypse://docs/apm-agent-dotnet/docs/reference/setup-dotnet-net-core.md) for more details.
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -421,9 +421,9 @@ The agent will now monitor the performance of your application and record any un
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md)
-* [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/advanced-setup.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuring-agent.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
+* [Babel/ES Modules](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuring-agent.md)
 ::::::
 
 ::::::{tab-item} PHP
@@ -492,8 +492,8 @@ elastic_apm.bootstrap_php_part_file=<repo root>/agent/php/bootstrap_php_part.php
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
+* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Python
@@ -576,8 +576,8 @@ apm = ElasticAPM(app)
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -653,8 +653,8 @@ server_url: 'http://localhost:8200'
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} RUM
@@ -725,8 +725,8 @@ const apm = initApm({
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-rum-js/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} OpenTelemetry

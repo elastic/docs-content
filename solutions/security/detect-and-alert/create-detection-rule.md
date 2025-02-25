@@ -644,7 +644,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
         If the selected field is unavailable, the rule query will use the `@timestamp` field instead. In the case that you don’t want to use the `@timestamp` field because you know your data source has an inaccurate `@timestamp` value, we recommend selecting the **Do not use @timestamp as a fallback timestamp field** option instead. This will ensure that the rule query ignores the `@timestamp` field entirely.
 
         ::::{tip}
-        The [Microsoft](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-microsoft.md) and [Google Workspace](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-google_workspace.md) {{filebeat}} modules have an `event.ingested` timestamp field that can be used instead of the default `@timestamp` field.
+        The [Microsoft](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-microsoft.md) and [Google Workspace](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-google_workspace.md) {{filebeat}} modules have an `event.ingested` timestamp field that can be used instead of the default `@timestamp` field.
         ::::
 
 2. Click **Continue**. The **Schedule rule** pane is displayed.
