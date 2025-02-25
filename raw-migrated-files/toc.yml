@@ -255,7 +255,6 @@ toc:
       - file: docs-content/serverless/security-data-quality-dash.md
       - file: docs-content/serverless/security-data-views-in-sec.md
       - file: docs-content/serverless/security-detection-engine-overview.md
-      - file: docs-content/serverless/security-detection-entity-dashboard.md
       - file: docs-content/serverless/security-detection-response-dashboard.md
       - file: docs-content/serverless/security-detections-requirements.md
       - file: docs-content/serverless/security-endpoint-management-req.md
