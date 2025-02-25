@@ -4,13 +4,12 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-investigate-events.html
 ---
 
-# Investigation tools
+# Investigation tools [security-investigate-events]
 
-% What needs to be done: Lift-and-shift
+The following are tools for investigating security events and tracking security issues directly in the {{security-app}}.
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/investigations-tools.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-investigate-events.md
-
-The following sections describe tools for investigating security events and tracking security issues directly in the {{security-app}}.
+* [**Cases**](investigate/cases.md): Track investigation details about security issues.
+* [**Timelines**](investigate/timeline.md): Workspace for investigations and threat hunting.
+* [**Osquery**](investigate/osquery.md): Run live and scheduled queries on operating systems.
+* [**Intelligence**](../../troubleshoot/security/indicators-of-compromise.md): Indicators of compromise used for threat intelligence.
+* [**Notes**](investigate/notes.md): Use notes to coordinate responses, conduct threat hunting, and share investigative findings.
