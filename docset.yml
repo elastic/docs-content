@@ -3,6 +3,21 @@ exclude:
   - 'README.md'
 cross_links:
   - asciidocalypse
+  - kibana
+  - integration-docs
+  - integrations
+  - logstash
+  - elasticsearch
+  - cloud
+  - beats
+  - go-elasticsearch
+  - elasticsearch-java
+  - elasticsearch-net
+  - elasticsearch-php
+  - elasticsearch-py
+  - elasticsearch-ruby
+  - elasticsearch-js
+
 toc:
   - file: index.md
   - toc: get-started
