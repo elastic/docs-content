@@ -7,7 +7,7 @@ mapped_pages:
 
 After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts (some features require a Platinum or Enterprise license). If needed, you can update the integration policy to configure protection settings, event collection, antivirus settings, trusted applications, event filters, host isolation exceptions, and blocked applications to meet your organization’s security needs.
 
-You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](docs-content://get-started/the-stack.md#kibana-navigation-search), then follow the steps for [adding the {{elastic-defend}} integration](/reference/security/elastic-defend/install-endpoint.md#add-security-integration).
+You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](/get-started/the-stack.md#kibana-navigation-search), then follow the steps for [adding the {{elastic-defend}} integration](/reference/security/elastic-defend/install-endpoint.md#add-security-integration).
 
 ::::{admonition} Requirements
 You must have the **{{elastic-defend}} Policy Management : All** [privilege](/reference/security/elastic-defend/endpoint-management-req.md) to configure an integration policy.
@@ -22,7 +22,7 @@ In addition to configuring an {{elastic-defend}} policy through the {{elastic-se
 
 To configure an integration policy:
 
-1. Find **Policies** in the navigation menu or by using the [global search field](docs-content://get-started/the-stack.md#kibana-navigation-search).
+1. Find **Policies** in the navigation menu or by using the [global search field](/get-started/the-stack.md#kibana-navigation-search).
 2. Select the integration policy you want to configure. The integration policy configuration page appears.
 3. On the **Policy settings** tab, review and configure the following settings as appropriate:
 
@@ -36,7 +36,7 @@ To configure an integration policy:
     * [Advanced policy settings (optional)](#adv-policy-settings)
     * [Save the general policy settings](#save-policy)
 
-4. Click the **Trusted applications**, **Event filters***, ***Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [*Trusted applications*](docs-content://solutions/security/manage-elastic-defend/trusted-applications.md), [*Event filters*](docs-content://solutions/security/manage-elastic-defend/event-filters.md), [*Host isolation exceptions*](docs-content://solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [*Blocklist*](docs-content://solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
+4. Click the **Trusted applications**, **Event filters***, ***Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [*Trusted applications*](/solutions/security/manage-elastic-defend/trusted-applications.md), [*Event filters*](/solutions/security/manage-elastic-defend/event-filters.md), [*Host isolation exceptions*](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [*Blocklist*](/solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
 
     * Expand and view an artifact — Click the arrow next to its name.
     * View an artifact’s details — Click the actions menu (**…​**), then select **View full details**.
@@ -44,7 +44,7 @@ To configure an integration policy:
     * Assign an existing artifact (Platinum or Enterprise subscription) — Click **Assign *x* to policy**, then select an item from the flyout. This view lists any existing artifacts that aren’t already assigned to the current policy.
 
     ::::{note}
-    You can’t create a new endpoint policy artifact while configuring an integration policy. To create a new artifact, go to its main page in the {{security-app}} (for example, to create a new trusted application, find **Trusted applications** in the navigation menu or by using the [global search field](docs-content://get-started/the-stack.md#kibana-navigation-search)).
+    You can’t create a new endpoint policy artifact while configuring an integration policy. To create a new artifact, go to its main page in the {{security-app}} (for example, to create a new trusted application, find **Trusted applications** in the navigation menu or by using the [global search field](/get-started/the-stack.md#kibana-navigation-search)).
     ::::
 
 5. Click the **Protection updates** tab to configure how {{elastic-defend}} receives updates from Elastic with the latest threat detections, malware models, and other protection artifacts. Refer to [Configure updates for protection artifacts](/reference/security/elastic-defend/artifact-control.md) for more information.
@@ -52,7 +52,7 @@ To configure an integration policy:
 
 ## Malware protection [malware-protection]
 
-{{elastic-defend}} malware prevention detects and stops malicious attacks by using a [machine learning model](docs-content://solutions/security/detect-and-alert.md#machine-learning-model) that looks for static attributes to determine if a file is malicious or benign.
+{{elastic-defend}} malware prevention detects and stops malicious attacks by using a [machine learning model](/solutions/security/detect-and-alert.md#machine-learning-model) that looks for static attributes to determine if a file is malicious or benign.
 
 By default, malware protection is enabled on Windows, macOS, and Linux hosts. To disable malware protection, turn off the **Malware protections** toggle.
 
@@ -63,7 +63,7 @@ Malware protection levels are:
 
 These additional options are available for malware protection:
 
-* **Blocklist**: Enable or disable the [blocklist](docs-content://solutions/security/manage-elastic-defend/blocklist.md) for all hosts associated with this {{elastic-defend}} policy. The blocklist allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
+* **Blocklist**: Enable or disable the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md) for all hosts associated with this {{elastic-defend}} policy. The blocklist allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
 * **Scan files upon modification**: By default, {{elastic-defend}} scans files every time they’re modified, which can be resource-intensive on hosts where files are frequently modified, such as servers and developer machines. Turn off this option to only scan files when they’re executed. {{elastic-defend}} will continue to identify malware as it attempts to run, providing a robust level of protection while improving endpoint performance.
 
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
@@ -81,7 +81,7 @@ Platinum and Enterprise customers can customize these notifications using the `E
 
 ### Manage quarantined files [manage-quarantined-files]
 
-When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [*Blocklist*](docs-content://solutions/security/manage-elastic-defend/blocklist.md)). Specifically {{elastic-defend}} will remove the file from its current location, encrypt it with the encryption key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
+When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [*Blocklist*](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically {{elastic-defend}} will remove the file from its current location, encrypt it with the encryption key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
 
 The quarantine folder location varies by operating system:
 
@@ -90,9 +90,9 @@ The quarantine folder location varies by operating system:
 * Windows - {{elastic-defend}} versions 8.5 and later: `[DriveLetter:]\.equarantine`, unless the files are from the `C:` drive. These files are moved to `C:\Program Files\Elastic\Endpoint\state\.equarantine`.
 * Windows - {{elastic-defend}} versions 8.4 and earlier: `[DriveLetter:]\.equarantine`, for any drive
 
-To restore a quarantined file to its original state and location, [add an exception](docs-content://solutions/security/detect-and-alert/add-manage-exceptions.md) to the rule that identified the file as malicious. If the exception would’ve stopped the rule from identifying the file as malicious, {{elastic-defend}} restores the file.
+To restore a quarantined file to its original state and location, [add an exception](/solutions/security/detect-and-alert/add-manage-exceptions.md) to the rule that identified the file as malicious. If the exception would’ve stopped the rule from identifying the file as malicious, {{elastic-defend}} restores the file.
 
-You can access a quarantined file by using the `get-file` [response action command](docs-content://solutions/security/endpoint-response-actions.md#response-action-commands) in the response console. To do this, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter. This action doesn’t restore the file to its original location, so you will need to do this manually.
+You can access a quarantined file by using the `get-file` [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the response console. To do this, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter. This action doesn’t restore the file to its original location, so you will need to do this manually.
 
 ::::{note}
 Response actions and the response console UI are [Enterprise subscription](https://www.elastic.co/pricing) features.

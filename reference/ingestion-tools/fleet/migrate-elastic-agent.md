@@ -16,7 +16,7 @@ This guide takes you through the steps to migrate your {{agent}}s by snapshottin
 
 ## Take a snapshot of the source cluster [migrate-elastic-agent-take-snapshot]
 
-Refer to the full [Snapshot and restore](docs-content://deploy-manage/tools/snapshot-and-restore.md) documentation for full details. In short, to create a new snapshot in an {{ecloud}} deployment:
+Refer to the full [Snapshot and restore](/deploy-manage/tools/snapshot-and-restore.md) documentation for full details. In short, to create a new snapshot in an {{ecloud}} deployment:
 
 1. In {{kib}}, open the main menu, then click **Manage this deployment**.
 2. In the deployment menu, select **Snapshots**.

@@ -19,7 +19,7 @@ mapped_pages:
 
   :::{tab-item} Self-managed
 
-  To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](docs-content://deploy-manage/deploy/self-managed/deploy-cluster.md).
+  To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/deploy-cluster.md).
   :::
 
   ::::
@@ -208,7 +208,7 @@ If you’d like to run {{agent}} on Kubernetes on a read-only file system, you c
     :class: screenshot
     :::
 
-3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](docs-content://explore-analyze/find-and-organize/data-views.md) for them.
+3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](/explore-analyze/find-and-organize/data-views.md) for them.
 4. To view predefined dashboards, either select **Analytics→Dashboard** or [install assets through an integration](/reference/ingestion-tools/fleet/view-integration-assets.md).
 
 

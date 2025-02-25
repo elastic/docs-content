@@ -30,7 +30,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 
 ## Add the {{elastic-defend}} integration [add-security-integration]
 
-1. Find **Integrations** in the navigation menu or by using the [global search field](docs-content://get-started/the-stack.md#kibana-navigation-search).
+1. Find **Integrations** in the navigation menu or by using the [global search field](/get-started/the-stack.md#kibana-navigation-search).
 
     :::{image} ../../../images/security-endpoint-cloud-sec-integrations-page.png
     :alt: Search result for "{{elastic-defend}}" on the Integrations page.
@@ -56,7 +56,7 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
     |     |     |
     | --- | --- |
     | **Traditional Endpoint presets** | All traditional endpoint presets *except **Data Collection*** have these preventions enabled by default: malware, ransomware, memory threat, malicious behavior, and credential theft. Each preset collects the following events:<br><br>* **Data Collection:** All events; no preventions<br>* **Next-Generation Antivirus (NGAV):** Process events; all preventions<br>* **Essential EDR (Endpoint Detection & Response):** Process, Network, File events; all preventions<br>* **Complete EDR (Endpoint Detection & Response):** All events; all preventions<br> |
-    | **Cloud Workloads presets** | Both cloud workload presets are intended for monitoring cloud-based Linux hosts. Therefore, [session data](docs-content://solutions/security/investigate/session-view.md) collection, which enriches process events, is enabled by default. They both have all preventions disabled by default, and collect process, network, and file events.<br><br>* **All events:** Includes data from automated sessions.<br>* **Interactive only:** Filters out data from non-interactive sessions by creating an [event filter](docs-content://solutions/security/manage-elastic-defend/event-filters.md).<br> |
+    | **Cloud Workloads presets** | Both cloud workload presets are intended for monitoring cloud-based Linux hosts. Therefore, [session data](/solutions/security/investigate/session-view.md) collection, which enriches process events, is enabled by default. They both have all preventions disabled by default, and collect process, network, and file events.<br><br>* **All events:** Includes data from automated sessions.<br>* **Interactive only:** Filters out data from non-interactive sessions by creating an [event filter](/solutions/security/manage-elastic-defend/event-filters.md).<br> |
 
 6. Enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](/reference/ingestion-tools/fleet/agent-policy.md).
 7. When you’re ready, click **Save and continue**.
@@ -92,7 +92,7 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
 
 ### Add the {{agent}} [enroll-agent]
 
-1. If you’re in the process of installing an {{agent}} integration (such as {{elastic-defend}}), the **Add agent** UI opens automatically. Otherwise, find **{{fleet}}*** in the navigation menu or by using the [global search field](docs-content://get-started/the-stack.md#kibana-navigation-search), and select ***Agents** → **Add agent**.
+1. If you’re in the process of installing an {{agent}} integration (such as {{elastic-defend}}), the **Add agent** UI opens automatically. Otherwise, find **{{fleet}}*** in the navigation menu or by using the [global search field](/get-started/the-stack.md#kibana-navigation-search), and select ***Agents** → **Add agent**.
 
     :::{image} ../../../images/security-endpoint-cloud-sec-add-agent.png
     :alt: Add agent flyout on the Fleet page.

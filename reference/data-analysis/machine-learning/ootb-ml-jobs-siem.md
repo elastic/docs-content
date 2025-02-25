@@ -5,7 +5,7 @@ mapped_pages:
 
 # Security {{anomaly-detect}} configurations [ootb-ml-jobs-siem]
 
-These {{anomaly-jobs}} automatically detect file system and network anomalies on your hosts. They appear in the **Anomaly Detection** interface of the {{security-app}} in {{kib}} when you have data that matches their configuration. For more information, refer to [Anomaly detection with machine learning](docs-content://solutions/security/advanced-entity-analytics/anomaly-detection.md).
+These {{anomaly-jobs}} automatically detect file system and network anomalies on your hosts. They appear in the **Anomaly Detection** interface of the {{security-app}} in {{kib}} when you have data that matches their configuration. For more information, refer to [Anomaly detection with machine learning](/solutions/security/advanced-entity-analytics/anomaly-detection.md).
 
 
 ## Security: Authentication [security-authentication]

@@ -12,9 +12,9 @@ These tutorials explain how to apply a custom {{ilm-init}} policy to an integrat
 
 For certain features you’ll need to use a slightly different procedure to manage the index lifecycle:
 
-* APM: For verions 8.15 and later, refer to [Index lifecycle management](docs-content://solutions/observability/apps/index-lifecycle-management.md).
-* Synthetic monitoring: Refer to [Manage data retention](docs-content://solutions/observability/apps/manage-data-retention.md).
-* Universal Profiling: Refer to [Universal Profiling index life cycle management](docs-content://solutions/observability/infra-and-hosts/universal-profiling-index-life-cycle-management.md).
+* APM: For verions 8.15 and later, refer to [Index lifecycle management](/solutions/observability/apps/index-lifecycle-management.md).
+* Synthetic monitoring: Refer to [Manage data retention](/solutions/observability/apps/manage-data-retention.md).
+* Universal Profiling: Refer to [Universal Profiling index life cycle management](/solutions/observability/infra-and-hosts/universal-profiling-index-life-cycle-management.md).
 
 
 ## Identify your scenario [data-streams-scenarios]

@@ -30,5 +30,5 @@ You can use the following language clients with {{es-serverless}}:
 * [Ruby](elasticsearch-ruby://docs/reference/getting-started.md)
 
 ::::{tip}
-Learn how to [connect to your {{es-serverless}} endpoint](docs-content://solutions/search/serverless-elasticsearch-get-started.md).
+Learn how to [connect to your {{es-serverless}} endpoint](/solutions/search/serverless-elasticsearch-get-started.md).
 ::::

@@ -5,7 +5,7 @@ mapped_pages:
 
 # Metrics {{anomaly-detect}} configurations [ootb-ml-jobs-metrics-ui]
 
-These {{anomaly-jobs}} can be created in the [{{infrastructure-app}}](docs-content://solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) in {{kib}}. For more information about their usage, refer to [Inspect metric anomalies](docs-content://solutions/observability/infra-and-hosts/detect-metric-anomalies.md).
+These {{anomaly-jobs}} can be created in the [{{infrastructure-app}}](/solutions/observability/infra-and-hosts/analyze-infrastructure-host-metrics.md) in {{kib}}. For more information about their usage, refer to [Inspect metric anomalies](/solutions/observability/infra-and-hosts/detect-metric-anomalies.md).
 
 
 ## Metrics hosts [metrics-ui-hosts]

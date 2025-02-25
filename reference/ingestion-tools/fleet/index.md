@@ -29,7 +29,7 @@ Using {{fleet}} and {{agent}} {{serverless-full}}? Please note these [restrictio
 :::
 
 :::{tip}
-Looking for a general guide that explores all of your options for ingesting data? Check out [Adding data to Elasticsearch](docs-content://manage-data/ingest.md).
+Looking for a general guide that explores all of your options for ingesting data? Check out [Adding data to Elasticsearch](/manage-data/ingest.md).
 :::
 
 ## {{integrations}}
@@ -131,7 +131,7 @@ All communication between the {{fleet}} UI and {{fleet-server}} happens through 
 
 ## {{agent}} self-protection [agent-self-protection]
 
-On macOS and Windows, when the {{elastic-defend}} integration is added to the agent policy, {{elastic-endpoint}} can prevent malware from executing on the host. For more information, refer to [{{elastic-endpoint}} self-protection](docs-content://solutions/security/manage-elastic-defend/elastic-endpoint-self-protection-features.md).
+On macOS and Windows, when the {{elastic-defend}} integration is added to the agent policy, {{elastic-endpoint}} can prevent malware from executing on the host. For more information, refer to [{{elastic-endpoint}} self-protection](/solutions/security/manage-elastic-defend/elastic-endpoint-self-protection-features.md).
 
 ## Data streams make index management easier [data-streams-intro]
 
@@ -141,5 +141,5 @@ The data collected by {{agent}} is stored in indices that are more granular than
 
 Want to get up and running with {{fleet}} and {{agent}} quickly? Read our getting started guides:
 
-* [Get started with logs and metrics](docs-content://solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
-* [Get started with APM](docs-content://solutions/observability/apps/get-started-with-apm.md)
+* [Get started with logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md)
+* [Get started with APM](/solutions/observability/apps/get-started-with-apm.md)

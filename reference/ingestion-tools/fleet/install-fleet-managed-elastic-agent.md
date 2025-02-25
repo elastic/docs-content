@@ -16,7 +16,7 @@ mapped_pages:
 
 To get up and running quickly, read one of our end-to-end guides:
 
-* New to Elastic? Read our solution [Getting started guides](docs-content://get-started/index.md).
+* New to Elastic? Read our solution [Getting started guides](/get-started/index.md).
 * Want to add data to an existing cluster or deployment? Read our [*Quick starts*](/reference/ingestion-tools/fleet/index.md).
 
 Looking for upgrade info? Refer to [Upgrade {{agent}}s](/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
@@ -75,7 +75,7 @@ After about a minute, the agent will enroll in {{fleet}}, download the configura
 
 **Notes:**
 
-* If you encounter an "x509: certificate signed by unknown authority" error, you might be trying to enroll in a {{fleet-server}} that uses self-signed certs. To fix this problem in a non-production environment, pass the `--insecure` flag. For more information, refer to the [troubleshooting guide](docs-content://troubleshoot/ingest/fleet/common-problems.md#agent-enrollment-certs).
+* If you encounter an "x509: certificate signed by unknown authority" error, you might be trying to enroll in a {{fleet-server}} that uses self-signed certs. To fix this problem in a non-production environment, pass the `--insecure` flag. For more information, refer to the [troubleshooting guide](/troubleshoot/ingest/fleet/common-problems.md#agent-enrollment-certs).
 * Optionally, you can use the `--tag` flag to specify a comma-separated list of tags to apply to the enrolled {{agent}}. For more information, refer to [Filter list of Agents by tags](/reference/ingestion-tools/fleet/filter-agent-list-by-tags.md).
 * Refer to [Installation layout](/reference/ingestion-tools/fleet/installation-layout.md) for the location of installed {{agent}} files.
 * Because {{agent}} is installed as an auto-starting service, it will restart automatically if the system is rebooted.
@@ -95,6 +95,6 @@ If the status hangs at Enrolling, make sure the `elastic-agent` process is runni
 If you run into problems:
 
 * Check the {{agent}} logs. If you use the default policy, agent logs and metrics are collected automatically unless you change the default settings. For more information, refer to [Monitor {{agent}} in {{fleet}}](/reference/ingestion-tools/fleet/monitor-elastic-agent.md).
-* Refer to the [troubleshooting guide](docs-content://troubleshoot/ingest/fleet/common-problems.md).
+* Refer to the [troubleshooting guide](/troubleshoot/ingest/fleet/common-problems.md).
 
 For information about managing {{agent}} in {{fleet}}, refer to [Centrally manage {{agent}}s in {{fleet}}](/reference/ingestion-tools/fleet/manage-elastic-agents-in-fleet.md).

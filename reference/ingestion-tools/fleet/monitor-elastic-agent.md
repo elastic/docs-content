@@ -135,7 +135,7 @@ On the **Logs** tab you can filter, search, and explore the agent logs:
 
 * Change the log level to filter the view by log levels. Want to see debugging logs? Refer to [Change the logging level](#change-logging-level).
 * Change the time range to view historical logs.
-* Click **Open in Logs** to tail agent log files in real time. For more information about logging, refer to [Tail log files](docs-content://solutions/observability/logs/logs-stream.md).
+* Click **Open in Logs** to tail agent log files in real time. For more information about logging, refer to [Tail log files](/solutions/observability/logs/logs-stream.md).
 
 
 ## Change the logging level [change-logging-level]
@@ -234,7 +234,7 @@ To do so, follow the steps in [Remote {{es}} output](/reference/ingestion-tools/
 
 ## Enable alerts and ML jobs based on {{fleet}} and {{agent}} status [fleet-alerting]
 
-You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](docs-content://explore-analyze/alerts-cases.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
+You can access the health status of {{fleet}}-managed {{agents}} and other {{fleet}} settings through internal {{fleet}} indices. This enables you to leverage various applications within the {{stack}} that can be triggered by the provided information. For instance, you can now create alerts and machine learning (ML) jobs based on these specific fields. Refer to the [Alerting documentation](/explore-analyze/alerts-cases.md) or see the [example](#fleet-alerting-example) on this page to learn how to define rules that can trigger actions when certain conditions are met.
 
 This functionality allows you to effectively track an agent’s status, and identify scenarios where it has gone offline, is experiencing health issues, or is facing challenges related to input or output.
 

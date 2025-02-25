@@ -63,7 +63,7 @@ Note that for the following integrations, when the integration is updated automa
 
 * [Elastic APM](integration-docs://docs/reference/apm.md)
 * [Cloud Security Posture Management](integration-docs://docs/reference/cloud_security_posture.md#cloud_security_posture-cloud-security-posture-management-cspm)
-* [Elastic Synthetics](docs-content://solutions/observability/apps/synthetic-monitoring.md)
+* [Elastic Synthetics](/solutions/observability/apps/synthetic-monitoring.md)
 
 For integrations that support the option to auto-upgrade the integration policy, when this option is selected (the default), {{fleet}} automatically upgrades your policies when a new version of the integration is available. If there are conflicts during the upgrade, your integration policies will not be upgraded, and you’ll need to [upgrade integration policies manually](#upgrade-integration-policies-manually).
 
@@ -104,7 +104,7 @@ If you can’t upgrade integration policies when you upgrade the integration, up
 3. Make any required configuration changes and, if necessary, resolve conflicts. For more information, refer to [Resolve conflicts](#resolve-conflicts).
 4. Repeat this process for each policy with an out-of-date integration.
 
-Too many conflicts to resolve? Refer to the [troubleshooting docs](docs-content://troubleshoot/ingest/fleet/common-problems.md#upgrading-integration-too-many-conflicts) for manual steps.
+Too many conflicts to resolve? Refer to the [troubleshooting docs](/troubleshoot/ingest/fleet/common-problems.md#upgrading-integration-too-many-conflicts) for manual steps.
 
 
 ## Resolve conflicts [resolve-conflicts]

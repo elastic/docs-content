@@ -21,7 +21,7 @@ To learn how to run {{agent}}s in a containerized environment, see:
 * [Run {{agent}} Standalone on Kubernetes](/reference/ingestion-tools/fleet/running-on-kubernetes-standalone.md)
 * [Scaling {{agent}} on {{k8s}}](/reference/ingestion-tools/fleet/scaling-on-kubernetes.md)
 * [Using a custom ingest pipeline with the {{k8s}} Integration](/reference/ingestion-tools/fleet/ingest-pipeline-kubernetes.md)
-* [Run {{agent}} on ECK](docs-content://deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
+* [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 
 
 

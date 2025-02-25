@@ -22,7 +22,7 @@ You can run {{fleet}} API requests through the {{kib}} Console.
     ```
 
 
-For more detail about using the {{kib}} Console refer to [Run API requests](docs-content://explore-analyze/query-filter/tools/console.md).
+For more detail about using the {{kib}} Console refer to [Run API requests](/explore-analyze/query-filter/tools/console.md).
 
 
 ## Authentication [authentication]

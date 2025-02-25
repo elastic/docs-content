@@ -21,7 +21,7 @@ Note that it’s currently not possible to have multiple versions of the same in
 ::::{admonition} Current limitations with integrations and {{kib}} spaces
 :class: important
 
-{{agent}} integration assets can be installed only on a single {{kib}} [space](docs-content://deploy-manage/manage-spaces.md). If you want to access assets in a different space, you can [copy them](docs-content://explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space). However, many integrations include markdown panels with dynamically generated links to other dashboards. When assets are copied between spaces, these links may not behave as expected and can result in a 404 `Dashboard not found` error. Refer to known issue [#175072](https://github.com/elastic/kibana/issues/175072) for details.
+{{agent}} integration assets can be installed only on a single {{kib}} [space](/deploy-manage/manage-spaces.md). If you want to access assets in a different space, you can [copy them](/explore-analyze/find-and-organize/saved-objects.md#managing-saved-objects-copy-to-space). However, many integrations include markdown panels with dynamically generated links to other dashboards. When assets are copied between spaces, these links may not behave as expected and can result in a 404 `Dashboard not found` error. Refer to known issue [#175072](https://github.com/elastic/kibana/issues/175072) for details.
 
 These limitations and future plans for {{fleet}}'s integrations support in multi-space environments are currently being discussed in [#175831](https://github.com/elastic/kibana/issues/175831). Feedback is very welcome. For now, we recommend reviewing the specific integration documentation for any space-related considerations.
 

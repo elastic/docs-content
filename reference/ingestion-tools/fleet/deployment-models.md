@@ -12,10 +12,10 @@ For an overview of {{fleet-server}}, including details about how it communicates
 The requirements for setting up {{fleet-server}} differ, depending on your particular deployment model:
 
 {{serverless-full}}
-:   In a [{{serverless-short}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md) environment, {{fleet-server}} is offered as a service, it is configured and scaled automatically without the need for any user intervention.
+:   In a [{{serverless-short}}](/deploy-manage/deploy/elastic-cloud/serverless.md) environment, {{fleet-server}} is offered as a service, it is configured and scaled automatically without the need for any user intervention.
 
 {{ess}}
-:   If you’re running {{es}} and {{kib}} hosted on [{{ess}}](docs-content://deploy-manage/deploy/elastic-cloud/cloud-hosted.md), no extra setup is required unless you want to scale your deployment. {{ess}} runs a hosted version of {{integrations-server}} that includes {{fleet-server}}. For details about this deployment model, refer to [Deploy on {{ecloud}}](/reference/ingestion-tools/fleet/add-fleet-server-cloud.md).
+:   If you’re running {{es}} and {{kib}} hosted on [{{ess}}](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md), no extra setup is required unless you want to scale your deployment. {{ess}} runs a hosted version of {{integrations-server}} that includes {{fleet-server}}. For details about this deployment model, refer to [Deploy on {{ecloud}}](/reference/ingestion-tools/fleet/add-fleet-server-cloud.md).
 
 {{ess}} with {{fleet-server}} on-premise
 :   When you use a hosted {{ess}} deployment you may still choose to run {{fleet-server}} on-premise. For details about this deployment model and set up instructions, refer to [Deploy {{fleet-server}} on-premises and {{es}} on Cloud](/reference/ingestion-tools/fleet/add-fleet-server-mixed.md).
@@ -24,7 +24,7 @@ Docker and Kubernetes
 :   You can deploy {{fleet}}-managed {{agent}} in Docker or on Kubernetes. Refer to [Run {{agent}} in a container](/reference/ingestion-tools/fleet/elastic-agent-container.md) or  [Run {{agent}} on Kubernetes managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-kubernetes-managed-by-fleet.md) for all of the configuration instructions. For a Kubernetes install we also have a [Helm chart](/reference/ingestion-tools/fleet/install-on-kubernetes-using-helm.md) available to simplify the installation. Details for configuring {{fleet-server}} are included with the {{agent}} install steps.
 
 {{eck}}
-:   You can deploy {{fleet}}-managed {{agent}} in an {{ecloud}} Kubernetes environment that provides configuration and management capabilities for the full {{stack}}. For details, refer to [Run {{fleet}}-managed {{agent}} on ECK](docs-content://deploy-manage/deploy/cloud-on-k8s/fleet-managed-elastic-agent.md).
+:   You can deploy {{fleet}}-managed {{agent}} in an {{ecloud}} Kubernetes environment that provides configuration and management capabilities for the full {{stack}}. For details, refer to [Run {{fleet}}-managed {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/fleet-managed-elastic-agent.md).
 
 Self-managed
 :   For self-managed deployments, you must install and host {{fleet-server}} yourself. For details about this deployment model and set up instructions, refer to [Deploy on-premises and self-managed](/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md).

@@ -7,10 +7,10 @@ mapped_pages:
 
 Runtime fields are fields that you can add to documents after you’ve ingested your data. For example, you could combine two fields and treat them as one, or perform calculations on existing data and use the result as a separate field. Runtime fields are evaluated when a query is run.
 
-You can create a runtime field and add it to your detection alerts or events from any page that lists alerts or events in a data grid table, such as **Alerts**, **Timelines**, **Hosts**, and **Users**. Once created, the new field is added to the current [data view](docs-content://solutions/security/get-started/data-views-elastic-security.md) and becomes available to all {{elastic-sec}} alerts and events in the data view.
+You can create a runtime field and add it to your detection alerts or events from any page that lists alerts or events in a data grid table, such as **Alerts**, **Timelines**, **Hosts**, and **Users**. Once created, the new field is added to the current [data view](/solutions/security/get-started/data-views-elastic-security.md) and becomes available to all {{elastic-sec}} alerts and events in the data view.
 
 ::::{note}
-Runtime fields can impact performance because they’re evaluated each time a query runs. Refer to [Runtime fields](docs-content://manage-data/data-store/mapping/runtime-fields.md) for more information.
+Runtime fields can impact performance because they’re evaluated each time a query runs. Refer to [Runtime fields](/manage-data/data-store/mapping/runtime-fields.md) for more information.
 ::::
 
 
@@ -35,7 +35,7 @@ To create a runtime field:
 
 3. Enter a **Name** for the new field.
 4. Select a **Type** for the field’s data type.
-5. Turn on the **Set value** toggle and enter a [Painless script](docs-content://explore-analyze/scripting/modules-scripting-painless.md) to define the field’s value. The script must match the selected **Type**. For more on adding fields and Painless scripting examples, refer to [Explore your data with runtime fields](docs-content://explore-analyze/find-and-organize/data-views.md#runtime-fields).
+5. Turn on the **Set value** toggle and enter a [Painless script](/explore-analyze/scripting/modules-scripting-painless.md) to define the field’s value. The script must match the selected **Type**. For more on adding fields and Painless scripting examples, refer to [Explore your data with runtime fields](/explore-analyze/find-and-organize/data-views.md#runtime-fields).
 6. Use the **Preview** to help you build the script so it returns the expected field value.
 7. Configure other field settings as needed.
 

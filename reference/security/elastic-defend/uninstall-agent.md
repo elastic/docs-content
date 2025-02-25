@@ -7,7 +7,7 @@ mapped_pages:
 
 To uninstall {{agent}} from a host, run the `uninstall` command from the directory where it’s running. Refer to the [{{fleet}} and {{agent}} documentation](/reference/ingestion-tools/fleet/uninstall-elastic-agent.md) for more information.
 
-If [Agent tamper protection](/reference/security/elastic-defend/agent-tamper-protection.md) is enabled on the Agent policy for the host, you’ll need to include the uninstall token in the command, using the `--uninstall-token` flag. You can [find the uninstall token](/reference/security/elastic-defend/agent-tamper-protection.md#fleet-uninstall-tokens) on the Agent policy. Alternatively, find **{{fleet}}** in the navigation menu or by using the [global search field](docs-content://get-started/the-stack.md#kibana-navigation-search), and select **Uninstall tokens**.
+If [Agent tamper protection](/reference/security/elastic-defend/agent-tamper-protection.md) is enabled on the Agent policy for the host, you’ll need to include the uninstall token in the command, using the `--uninstall-token` flag. You can [find the uninstall token](/reference/security/elastic-defend/agent-tamper-protection.md#fleet-uninstall-tokens) on the Agent policy. Alternatively, find **{{fleet}}** in the navigation menu or by using the [global search field](/get-started/the-stack.md#kibana-navigation-search), and select **Uninstall tokens**.
 
 For example, to uninstall {{agent}} on a macOS or Linux host:
 

@@ -28,7 +28,7 @@ When enabled, {{agent}} and {{elastic-endpoint}} can only be uninstalled on the 
 
 You can enable Agent tamper protection by configuring the {{agent}} policy.
 
-1. Find **{{fleet}}** in the navigation menu or by using the [global search field](docs-content://get-started/the-stack.md#kibana-navigation-search).
+1. Find **{{fleet}}** in the navigation menu or by using the [global search field](/get-started/the-stack.md#kibana-navigation-search).
 2. Select **Agent policies**, then select the Agent policy you want to configure.
 3. Select the **Settings** tab on the policy details page.
 4. In the **Agent tamper protection** section, turn on the **Prevent agent tampering** setting.

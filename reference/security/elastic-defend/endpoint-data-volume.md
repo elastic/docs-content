@@ -36,7 +36,7 @@ Each setting has several OS-specific variants, represented by `[linux|mac|window
 :   Enter `true` to include all `host.*` event data. Default: `false`
 
 ::::{note}
-Users should take note of how a lack of some `host.*` information may affect their [event filters](docs-content://solutions/security/manage-elastic-defend/event-filters.md) or [Endpoint alert exceptions](docs-content://solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions).
+Users should take note of how a lack of some `host.*` information may affect their [event filters](/solutions/security/manage-elastic-defend/event-filters.md) or [Endpoint alert exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions).
 ::::
 
 
@@ -52,14 +52,14 @@ Users should take note of how a lack of some `host.*` information may affect the
 :   Enter `false` to disable merging of network events. Default: `true`
 
 ::::{note}
-Merged events can affect the results of [event filters](docs-content://solutions/security/manage-elastic-defend/event-filters.md). Notably, for merged events, `event.action` is an array containing all actions merged into the single event, such as `event.action=[fork, exec, end]`. In that example, if your event filter omits all fork events (`event.action : fork`), it will also filter out all merged events that include a `fork` action. To prevent such issues, you’ll need to modify your event filters accordingly, or set the `[linux|mac|windows].advanced.events.aggregate_process` and `[linux|mac|windows].advanced.events.aggregate_network` advanced settings to `false` to prevent {{elastic-endpoint}} from merging events.
+Merged events can affect the results of [event filters](/solutions/security/manage-elastic-defend/event-filters.md). Notably, for merged events, `event.action` is an array containing all actions merged into the single event, such as `event.action=[fork, exec, end]`. In that example, if your event filter omits all fork events (`event.action : fork`), it will also filter out all merged events that include a `fork` action. To prevent such issues, you’ll need to modify your event filters accordingly, or set the `[linux|mac|windows].advanced.events.aggregate_process` and `[linux|mac|windows].advanced.events.aggregate_network` advanced settings to `false` to prevent {{elastic-endpoint}} from merging events.
 ::::
 
 
 
 ## MD5 and SHA-1 hashes [md5-sha1-hashes]
 
-[8.18] {{elastic-endpoint}} does not report MD5 and SHA-1 hashes in event data by default. These will still be reported if any [trusted applications](docs-content://solutions/security/manage-elastic-defend/trusted-applications.md), [blocklist entries](docs-content://solutions/security/manage-elastic-defend/blocklist.md), [event filters](docs-content://solutions/security/manage-elastic-defend/event-filters.md), or [Endpoint exceptions](docs-content://solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) require them. To include these hashes in all event data, use these advanced settings:
+[8.18] {{elastic-endpoint}} does not report MD5 and SHA-1 hashes in event data by default. These will still be reported if any [trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md), [blocklist entries](/solutions/security/manage-elastic-defend/blocklist.md), [event filters](/solutions/security/manage-elastic-defend/event-filters.md), or [Endpoint exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md#endpoint-rule-exceptions) require them. To include these hashes in all event data, use these advanced settings:
 
 `[linux|mac|windows].advanced.events.hash.md5`
 :   Enter `true` to compute and include MD5 hashes for processes and libraries in events. Default: `false`

@@ -14,7 +14,7 @@ Additional AWS charges for GetMetricData API requests are generated using this m
 
 ## Monitor EC2 instances [monitor-ec2-instances]
 
-To analyze EC2 instance metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](docs-content://solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+To analyze EC2 instance metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 |  |  |
 | --- | --- |
@@ -27,7 +27,7 @@ To analyze EC2 instance metrics, you can select view filters based on the follow
 
 ## Monitor S3 buckets [monitor-s3-buckets]
 
-To analyze S3 bucket metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](docs-content://solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+To analyze S3 bucket metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 |  |  |
 | --- | --- |
@@ -40,7 +40,7 @@ To analyze S3 bucket metrics, you can select view filters based on the following
 
 ## Monitor SQS queues [monitor-sqs-queues]
 
-To analyze SQS queue metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](docs-content://solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+To analyze SQS queue metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 |  |  |
 | --- | --- |
@@ -53,7 +53,7 @@ To analyze SQS queue metrics, you can select view filters based on the following
 
 ## Monitor RDS databases [monitor-rds-databases]
 
-To analyze RDS database metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](docs-content://solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+To analyze RDS database metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 |  |  |
 | --- | --- |

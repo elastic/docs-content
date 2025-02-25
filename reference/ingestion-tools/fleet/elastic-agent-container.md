@@ -5,7 +5,7 @@ mapped_pages:
 
 # Run Elastic Agent in a container [elastic-agent-container]
 
-You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](docs-content://deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
+You can run {{agent}} inside a container — either with {{fleet-server}} or standalone. Docker images for all versions of {{agent}} are available from the [Elastic Docker registry](https://www.docker.elastic.co/r/elastic-agent/elastic-agent). If you are running in Kubernetes, refer to [run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md).
 
 Note that running {{elastic-agent}} in a container is supported only in Linux environments. For this reason we don’t currently provide {{agent}} container images for Windows.
 
@@ -27,14 +27,14 @@ Considerations:
    :::
 
    :::{tab-item} Self-managed
-   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](docs-content://deploy-manage/deploy/self-managed/deploy-cluster.md).
+   To install and run {{es}} and {{kib}}, see [Installing the {{stack}}](/deploy-manage/deploy/self-managed/deploy-cluster.md).
    :::
 
    ::::
 
 ## Step 1: Pull the image [_step_1_pull_the_image]
 
-There are two images for Elastic Agent, elastic-agent and elastic-agent-complete. The elastic-agent image contains all the binaries for running Beats, while the elastic-agent-complete image contains these binaries plus additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](docs-content://solutions/observability/apps/get-started.md) for more information.
+There are two images for Elastic Agent, elastic-agent and elastic-agent-complete. The elastic-agent image contains all the binaries for running Beats, while the elastic-agent-complete image contains these binaries plus additional dependencies to run browser monitors through Elastic Synthetics. Refer to [Synthetic monitoring via Elastic Agent and Fleet](/solutions/observability/apps/get-started.md) for more information.
 
 Run the `docker pull` command against the Elastic Docker registry:
 
@@ -116,7 +116,7 @@ docker run \
 1. Set to 1 to enroll the {{agent}} into {{fleet-server}}.
 2. URL to enroll the {{fleet-server}} into. You can find it in {{kib}}. Select **Management → {{fleet}} → Fleet Settings**, and copy the {{fleet-server}} host URL.
 3. The token to use for enrollment. Close the flyout panel and select **Enrollment tokens**. Find the Agent policy you want to enroll {{agent}} into, and display and copy the secret token. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/ingestion-tools/fleet/create-policy-no-ui.md).
-4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](docs-content://solutions/observability/apps/get-started.md) for more information.
+4. If you want to run **elastic-agent-complete** image, replace `elastic-agent` to `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
 
 Refer to [Environment variables](/reference/ingestion-tools/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -140,7 +140,7 @@ docker run \
 3. The {{fleet}} service token. [Generate one in the {{fleet}} UI](/reference/ingestion-tools/fleet/fleet-enrollment-tokens.md#create-fleet-enrollment-tokens) if you don’t have one already.
 4. ID of the {{fleet-server}} policy. We recommend only having one fleet-server policy. To learn how to create a policy, refer to [Create an agent policy without using the UI](/reference/ingestion-tools/fleet/create-policy-no-ui.md).
 5. publish container port 8220 to host.
-6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](docs-content://solutions/observability/apps/get-started.md) for more information.
+6. If you want to run the **elastic-agent-complete** image, replace `elastic-agent` with `elastic-agent-complete`. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
 
 Refer to [Environment variables](/reference/ingestion-tools/fleet/agent-environment-variables.md) for all available options.
 :::
@@ -202,7 +202,7 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
     :class: screenshot
     :::
 
-3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](docs-content://explore-analyze/find-and-organize/data-views.md) for them.
+3. To view data flowing in, go to **Analytics → Discover** and select the index `metrics-*`, or even more specific, `metrics-kubernetes.*`. If you can’t see these indexes, [create a data view](/explore-analyze/find-and-organize/data-views.md) for them.
 4. To view predefined dashboards, either select **Analytics→Dashboard** or [install assets through an integration](/reference/ingestion-tools/fleet/view-integration-assets.md).
 
 
@@ -224,7 +224,7 @@ services:
       - FLEET_URL=<fleet-server-url>
 ```
 
-1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](docs-content://solutions/observability/apps/get-started.md) for more information.
+1. Switch `elastic-agent` to `elastic-agent-complete` if you intend to use the complete version. Use the `elastic-agent` user instead of root to run Synthetics Browser tests. Synthetic tests cannot run under the root user. Refer to [Synthetics {{fleet}} Quickstart](/solutions/observability/apps/get-started.md) for more information.
 2. Synthetic browser monitors require this set to `elastic-agent`.
 
 

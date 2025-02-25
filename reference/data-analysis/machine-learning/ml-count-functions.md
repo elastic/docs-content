@@ -110,7 +110,7 @@ PUT _ml/anomaly_detectors/example4
 }
 ```
 
-If you are analyzing an aggregated `events_per_min` field, do not use a sum function (for example, `sum(events_per_min)`). Instead, use the count function and the `summary_count_field_name` property. For more information, see [Aggregating data for faster performance](docs-content://explore-analyze/machine-learning/anomaly-detection/ml-configuring-aggregation.md).
+If you are analyzing an aggregated `events_per_min` field, do not use a sum function (for example, `sum(events_per_min)`). Instead, use the count function and the `summary_count_field_name` property. For more information, see [Aggregating data for faster performance](/explore-analyze/machine-learning/anomaly-detection/ml-configuring-aggregation.md).
 
 
 ## Non_zero_count, high_non_zero_count, low_non_zero_count [ml-nonzero-count]

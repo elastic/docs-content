@@ -15,7 +15,7 @@ A bug has been found that causes {{elastic-defend}} response actions to stop wor
 
 
 ::::{note}
-Using a remote {{es}} output with a target cluster that has [traffic filters](docs-content://deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
+Using a remote {{es}} output with a target cluster that has [traffic filters](/deploy-manage/security/traffic-filtering.md) enabled is not currently supported.
 ::::
 
 

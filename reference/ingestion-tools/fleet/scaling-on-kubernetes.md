@@ -13,7 +13,7 @@ For more information on how to deploy {{agent}} on {{k8s}}, please review these 
 
 ### Observability at scale [_observability_at_scale]
 
-This document summarizes some key factors and best practices for using [Elastic {{observability}}](docs-content://solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md) to monitor {{k8s}} infrastructure at scale. Users need to consider different parameters and adjust {{stack}} accordingly. These elements are affected as the size of {{k8s}} cluster increases:
+This document summarizes some key factors and best practices for using [Elastic {{observability}}](/solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md) to monitor {{k8s}} infrastructure at scale. Users need to consider different parameters and adjust {{stack}} accordingly. These elements are affected as the size of {{k8s}} cluster increases:
 
 * The amount of metrics being collected from several {{k8s}} endpoints
 * The {{agent}}'s resources to cope with the high CPU and Memory needs for the internal processing
@@ -171,7 +171,7 @@ Setting this to `false` is recommended for large scale setups where the `host.ip
 
 #### Elastic Stack configuration [_elastic_stack_configuration]
 
-The configuration of Elastic Stack needs to be taken under consideration in large scale deployments. In case of Elastic Cloud deployments the choice of the deployment [{{ecloud}} hardware profile](docs-content://deploy-manage/deploy/elastic-cloud/ec-configure-deployment-settings.md#ec-hardware-profiles) is important.
+The configuration of Elastic Stack needs to be taken under consideration in large scale deployments. In case of Elastic Cloud deployments the choice of the deployment [{{ecloud}} hardware profile](/deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md) is important.
 
 For heavy processing and big ingestion rate needs, the `CPU-optimised` profile is proposed.
 
@@ -285,11 +285,11 @@ For example, in a cluster with 798 pods, then 798 docs should be depicted in blo
 
 #### Define if {{es}} is the bottleneck of ingestion [_define_if_es_is_the_bottleneck_of_ingestion]
 
-In some cases maybe the {{es}} can not cope with the rate of data that are trying to be ingested. In order to verify the resource utilisation, installation of an [{{stack}} monitoring cluster](docs-content://deploy-manage/monitor/stack-monitoring.md) is advised.
+In some cases maybe the {{es}} can not cope with the rate of data that are trying to be ingested. In order to verify the resource utilisation, installation of an [{{stack}} monitoring cluster](/deploy-manage/monitor/stack-monitoring.md) is advised.
 
 Additionally, in {{ecloud}} deployments you can navigate to **Manage Deployment > Deployments > Monitoring > Performance**. Corresponding dashboards for `CPU Usage`, `Index Response Times` and `Memory Pressure` can reveal possible problems and suggest vertical scaling of {{stack}} resources.
 
 ## Relevant links [_relevant_links]
 
-* [Monitor {{k8s}} Infrastructure](docs-content://solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md)
+* [Monitor {{k8s}} Infrastructure](/solutions/observability/get-started/quickstart-monitor-kubernetes-cluster-with-elastic-agent.md)
 * [Blog: Managing your {{k8s}} cluster with Elastic {{observability}}](https://www.elastic.co/blog/kubernetes-cluster-metrics-logs-monitoring)

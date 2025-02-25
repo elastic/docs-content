@@ -5,7 +5,7 @@ mapped_pages:
 
 # Configuring Kubernetes metadata enrichment on Elastic Agent [configuring-kubernetes-metadata]
 
-Kubernetes [metadata](docs-content://solutions/observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md#beats-metadata) refer to contextual information extracted from Kubernetes resources. Metadata information enrich metrics and logs collected from a Kubernetes cluster, enabling deeper insights into Kubernetes environments.
+Kubernetes [metadata](/solutions/observability/infra-and-hosts/tutorial-observe-kubernetes-deployments.md#beats-metadata) refer to contextual information extracted from Kubernetes resources. Metadata information enrich metrics and logs collected from a Kubernetes cluster, enabling deeper insights into Kubernetes environments.
 
 When the {{agent}}'s policy includes the [{{k8s}} Integration](integration-docs://docs/reference/kubernetes.md) which configures the collection of Kubernetes related metrics and container logs, the mechanisms used for the metadata enrichment are:
 

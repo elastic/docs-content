@@ -19,10 +19,10 @@ Our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service?page=doc
 
 ## Prerequisites [prereqs]
 
-Configure security and generate certificates for the {{stack}}. For more information about securing the {{stack}}, refer to [Configure security for the {{stack}}](docs-content://deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+Configure security and generate certificates for the {{stack}}. For more information about securing the {{stack}}, refer to [Configure security for the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 
 ::::{important}
-{{agent}}s require a PEM-formatted CA certificate to send encrypted data to {{es}}. If you followed the steps in [Configure security for the {{stack}}](docs-content://deploy-manage/deploy/self-managed/installing-elasticsearch.md), your certificate will be in a p12 file. To convert it, use OpenSSL:
+{{agent}}s require a PEM-formatted CA certificate to send encrypted data to {{es}}. If you followed the steps in [Configure security for the {{stack}}](/deploy-manage/deploy/self-managed/installing-elasticsearch.md), your certificate will be in a p12 file. To convert it, use OpenSSL:
 
 ```shell
 openssl pkcs12 -in path.p12 -out cert.crt -clcerts -nokeys
@@ -111,7 +111,7 @@ To encrypt traffic between {{agent}}s, {{fleet-server}}, and {{es}}:
     4. Specify either a CA certificate or CA fingerprint to connect securely {{es}}:
 
 
-* If you have a valid HEX encoded SHA-256 CA trusted fingerprint from root CA, specify it in the **Elasticsearch CA trusted fingerprint** field. To learn more, refer to the [{{es}} security documentation](docs-content://deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+* If you have a valid HEX encoded SHA-256 CA trusted fingerprint from root CA, specify it in the **Elasticsearch CA trusted fingerprint** field. To learn more, refer to the [{{es}} security documentation](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 * Otherwise, under **Advanced YAML configuration**, set `ssl.certificate_authorities` and specify the CA certificate to use to connect to {{es}}. You can specify a list of file paths (if the files are available), or embed a certificate directly in the YAML configuration. If you specify file paths, the certificates must be available on the hosts running the {{agent}}s.
 
     File path example:

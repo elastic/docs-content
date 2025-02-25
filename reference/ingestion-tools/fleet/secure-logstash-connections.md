@@ -12,7 +12,7 @@ To send data from {{agent}} to {{ls}} securely, you need to configure Transport 
 
 * Make sure your [subscription level](https://www.elastic.co/subscriptions) supports output to {{ls}}.
 * On Windows, add port 8220 for {{fleet-server}} and 5044 for {{ls}} to the inbound port rules in Windows Advanced Firewall.
-* If you are connecting to a self-managed {{es}} cluster, you need the CA certificate that was used to sign the certificates for the HTTP layer of {{es}} cluster. For more information, refer to the [{{es}} security docs](docs-content://deploy-manage/deploy/self-managed/installing-elasticsearch.md).
+* If you are connecting to a self-managed {{es}} cluster, you need the CA certificate that was used to sign the certificates for the HTTP layer of {{es}} cluster. For more information, refer to the [{{es}} security docs](/deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 
 
 ## Generate custom certificates and private keys [generate-logstash-certs]

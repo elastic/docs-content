@@ -13,7 +13,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 The Elastic Entity Model consists of:
 
 * a data model and related entity indices
-* an Entity Discovery Framework, which consists of [transforms](docs-content://explore-analyze/transforms.md) and [Ingest pipelines](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) that read from signal indices and write data to entity indices
+* an Entity Discovery Framework, which consists of [transforms](/explore-analyze/transforms.md) and [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) that read from signal indices and write data to entity indices
 * a set of management APIs that empower entity-centric Elastic solution features and workflows
 
 In the context of Elastic Observability, an *entity* is an object of interest that can be associated with produced telemetry and identified as unique. Note that this definition is intentionally closely aligned to the work of the [OpenTelemetry Entities SIG](https://github.com/open-telemetry/oteps/blob/main/text/entities/0256-entities-data-model.md#data-model). Examples of entities include (but are not limited to) services, hosts, and containers.
@@ -21,7 +21,7 @@ In the context of Elastic Observability, an *entity* is an object of interest th
 The concept of an entity is important as a means to unify observability signals based on the underlying entity that the signals describe.
 
 ::::{note}
-* The Elastic Entity Model currently supports the [new Inventory experience](docs-content://solutions/observability/apps/inventory.md) limited to service, host, and container entities.
+* The Elastic Entity Model currently supports the [new Inventory experience](/solutions/observability/apps/inventory.md) limited to service, host, and container entities.
 * During Technical Preview, Entity Discovery Framework components are not enabled by default.
 
 ::::
@@ -30,7 +30,7 @@ The concept of an entity is important as a means to unify observability signals 
 
 ## Enable the Elastic Entity Model [_enable_the_elastic_entity_model]
 
-You can enable the Elastic Entity Model from the new [Inventory](docs-content://solutions/observability/apps/inventory.md). If already enabled, you will not be prompted to enable the Elastic Entity Model.
+You can enable the Elastic Entity Model from the new [Inventory](/solutions/observability/apps/inventory.md). If already enabled, you will not be prompted to enable the Elastic Entity Model.
 
 The following {{es}} privileges are required:
 
@@ -58,5 +58,5 @@ The following {{es}} privileges are required to delete {{es}} resources:
 
 ## Limitations [elastic-entity-model-limitations]
 
-* [Cross-cluster search (CCS)](docs-content://solutions/search/cross-cluster-search.md) is not supported. EEM cannot leverage data stored on a remote cluster.
+* [Cross-cluster search (CCS)](/solutions/search/cross-cluster-search.md) is not supported. EEM cannot leverage data stored on a remote cluster.
 * Services are only detected from documents where `service.name` is detected in index patterns that match either `logs-*` or `apm-*`.

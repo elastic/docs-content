@@ -39,7 +39,7 @@ Note the following current restrictions for running {{agent}} in `unprivileged` 
 
     * The `sudo` option is still required for the `elastic-agent install` command. Only `root` can install new services. The installed service will not run as the root user.
 
-* Using `sudo` without specifying an alternate non-root user with `sudo -u` in a command may result in [an error](docs-content://troubleshoot/ingest/fleet/common-problems.md#agent-sudo-error) due to the agent not having the required privileges.
+* Using `sudo` without specifying an alternate non-root user with `sudo -u` in a command may result in [an error](/troubleshoot/ingest/fleet/common-problems.md#agent-sudo-error) due to the agent not having the required privileges.
 * Using `sudo -u elastic-agent-user` will run commands as the user running the {{agent}} service and will always work.
 * For files that allow users in the `elastic-agent` group access, using an alternate user that has been added to that group will also work. There are still some commands that are only accessible to the `elastic-agent-user` that runs the service.
 

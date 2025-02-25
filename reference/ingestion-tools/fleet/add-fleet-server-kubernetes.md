@@ -6,9 +6,9 @@ mapped_pages:
 # Deploy Fleet Server on Kubernetes [add-fleet-server-kubernetes]
 
 ::::{note}
-If your {{stack}} is orchestrated by [ECK](docs-content://deploy-manage/deploy/cloud-on-k8s.md), we recommend to deploy the {{fleet-server}} through the operator. That simplifies the process, as the operator automatically handles most of the resources configuration and setup steps.
+If your {{stack}} is orchestrated by [ECK](/deploy-manage/deploy/cloud-on-k8s.md), we recommend to deploy the {{fleet-server}} through the operator. That simplifies the process, as the operator automatically handles most of the resources configuration and setup steps.
 
-Refer to [Run Fleet-managed {{agent}} on ECK](docs-content://deploy-manage/deploy/cloud-on-k8s/fleet-managed-elastic-agent.md) for more information.
+Refer to [Run Fleet-managed {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/fleet-managed-elastic-agent.md) for more information.
 
 ::::
 

@@ -202,7 +202,7 @@ curl -s https://artifacts.security.elastic.co/downloads/endpoint/manifest/artifa
 
 Replace `https://artifacts.security.elastic.co` in the command above with your local mirror server to validate that the artifacts are served correctly.
 
-After updating the {{elastic-endpoint}} configuration to read from the mirror server, use {{kib}}'s [Discover view](docs-content://explore-analyze/discover.md) to search the `metrics-*` data view for `endpoint.policy` response documents, then check the installed version (`Endpoint.policy.applied.artifacts.global.version`) and compare with the output from the command above:
+After updating the {{elastic-endpoint}} configuration to read from the mirror server, use {{kib}}'s [Discover view](/explore-analyze/discover.md) to search the `metrics-*` data view for `endpoint.policy` response documents, then check the installed version (`Endpoint.policy.applied.artifacts.global.version`) and compare with the output from the command above:
 
 :::{image} ../../../images/security-offline-endpoint-version-discover.png
 :alt: Searching for `endpoint.policy` in Discover

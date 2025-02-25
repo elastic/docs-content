@@ -17,6 +17,8 @@ cross_links:
   - elasticsearch-py
   - elasticsearch-ruby
   - elasticsearch-js
+  - ecs
+  - cloud-on-k8s
 
 toc:
   - file: index.md

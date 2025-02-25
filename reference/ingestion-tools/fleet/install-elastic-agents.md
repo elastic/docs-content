@@ -51,13 +51,13 @@ You have a few options for installing and managing an {{agent}}:
 
     * [Run {{agent}} Standalone on Kubernetes](/reference/ingestion-tools/fleet/running-on-kubernetes-standalone.md)
     * [Scaling {{agent}} on {{k8s}}](/reference/ingestion-tools/fleet/scaling-on-kubernetes.md)
-    * [Run {{agent}} on ECK](docs-content://deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
+    * [Run {{agent}} on ECK](/deploy-manage/deploy/cloud-on-k8s/standalone-elastic-agent.md) — for {{eck}} users
 
 
 ::::{admonition} Restrictions in {{serverless-short}}
 :class: important
 
-If you are using {{agent}} with [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ess}} and self-managed {{es}}:
+If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ess}} and self-managed {{es}}:
 
 * The number of {{agents}} that may be connected to an {{serverless-full}} project is limited to 10 thousand.
 * The minimum supported version of {{agent}} supported for use with {{serverless-full}} is 8.11.0.

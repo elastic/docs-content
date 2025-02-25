@@ -38,7 +38,7 @@ To deploy a self-managed {{fleet-server}} on-premises to work with a hosted {{es
     * Requires additional wildcard domains and certificates (which normally only cover `*.cname`, not `*.*.cname`). This enables us to provide the URL for {{fleet-server}} of `https://.fleet.`.
     * The deployment template must contain an {{integrations-server}} node.
 
-    For more information about hosting {{fleet-server}} on {{ece}}, refer to [Manage your {{integrations-server}}](docs-content://deploy-manage/deploy/cloud-enterprise/manage-integrations-server.md).
+    For more information about hosting {{fleet-server}} on {{ece}}, refer to [Manage your {{integrations-server}}](/deploy-manage/deploy/cloud-enterprise/manage-integrations-server.md).
 
 
 

@@ -9,7 +9,7 @@ mapped_pages:
 
 {{fleet}} provides support for several advanced features around its data streams, including:
 
-* [Time series data streams (TSDS)](docs-content://manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
+* [Time series data streams (TSDS)](/manage-data/data-store/data-streams/time-series-data-stream-tsds.md)
 * [Synthetic `_source`](elasticsearch://docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source)
 
 These features can be enabled and disabled for {{fleet}}-managed data streams by using the index template API and a few key settings. Note that in versions 8.17.0 and later, Synthetic `_source` requires an Enterprise license.
@@ -19,7 +19,7 @@ If you are already making use of `@custom` component templates for ingest or ret
 ::::
 
 
-We recommended using [{{kib}} Dev Tools](docs-content://explore-analyze/query-filter/tools.md) to run the following requests. Replace `<NAME>` with the name of a given integration data stream. For example specifying `metrics-nginx.stubstatus` results in making a PUT request to `_component_template/metrics-nginx.stubstatus@custom`. Use the index management interface to explore what integration data streams are available to you.
+We recommended using [{{kib}} Dev Tools](/explore-analyze/query-filter/tools.md) to run the following requests. Replace `<NAME>` with the name of a given integration data stream. For example specifying `metrics-nginx.stubstatus` results in making a PUT request to `_component_template/metrics-nginx.stubstatus@custom`. Use the index management interface to explore what integration data streams are available to you.
 
 Once you’ve executed a given request below, you also need to execute a data stream rollover to ensure any incoming data is ingested with your new settings immediately. For example:
 

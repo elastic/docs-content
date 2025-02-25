@@ -61,7 +61,7 @@ After successfully loading the ElasticEndpoint system extension, an additional m
 :class: screenshot
 :::
 
-Click **Allow** to enable content filtering for the ElasticEndpoint system extension. Without this approval, {{elastic-endpoint}} cannot receive network events and, therefore, cannot enable network-related features such as [host isolation](docs-content://solutions/security/endpoint-response-actions/isolate-host.md).
+Click **Allow** to enable content filtering for the ElasticEndpoint system extension. Without this approval, {{elastic-endpoint}} cannot receive network events and, therefore, cannot enable network-related features such as [host isolation](/solutions/security/endpoint-response-actions/isolate-host.md).
 
 
 ## Enable Full Disk Access for {{elastic-endpoint}} [enable-fda-endpoint-ven]

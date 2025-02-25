@@ -61,14 +61,14 @@ All data streams, and the pre-built dashboards that they ship with, are viewable
 :::
 
 ::::{tip}
-If you’re familiar with the concept of indices, you can think of each data stream as a separate index in {{es}}. Under the hood though, things are a bit more complex. All of the juicy details are available in [{{es}} Data streams](docs-content://manage-data/data-store/data-streams.md).
+If you’re familiar with the concept of indices, you can think of each data stream as a separate index in {{es}}. Under the hood though, things are a bit more complex. All of the juicy details are available in [{{es}} Data streams](/manage-data/data-store/data-streams.md).
 ::::
 
 
 
 ## {{data-sources-cap}} [data-streams-data-view]
 
-When searching your data in {{kib}}, you can use a [{{data-source}}](docs-content://explore-analyze/find-and-organize/data-views.md) to search across all or some of your data streams.
+When searching your data in {{kib}}, you can use a [{{data-source}}](/explore-analyze/find-and-organize/data-views.md) to search across all or some of your data streams.
 
 
 ## Index templates [data-streams-index-templates]
@@ -101,7 +101,7 @@ You can edit a `@custom` component template to customize your {{es}} indices:
 5. Search for the name of the data stream’s custom component template and click the edit icon.
 6. Add any custom index settings, metadata, or mappings. For example, you may want to:
 
-    * Customize the index lifecycle policy applied to a data stream. See [Configure a custom index lifecycle policy](docs-content://solutions/observability/apps/index-lifecycle-management.md#apm-data-streams-custom-policy) in the APM Guide for a walk-through.
+    * Customize the index lifecycle policy applied to a data stream. See [Configure a custom index lifecycle policy](/solutions/observability/apps/index-lifecycle-management.md#apm-data-streams-custom-policy) in the APM Guide for a walk-through.
 
         Specify lifecycle name in the **index settings**:
 
@@ -115,7 +115,7 @@ You can edit a `@custom` component template to customize your {{es}} indices:
         }
         ```
 
-    * Change the number of [replicas](docs-content://deploy-manage/distributed-architecture/reading-and-writing-documents.md) per index. Specify the number of replica shards in the **index settings**:
+    * Change the number of [replicas](/deploy-manage/distributed-architecture/reading-and-writing-documents.md) per index. Specify the number of replica shards in the **index settings**:
 
         ```json
         {
@@ -131,7 +131,7 @@ Changes to component templates are not applied retroactively to existing indices
 
 ## Index lifecycle management ({{ilm-init}}) [data-streams-ilm]
 
-Use the [index lifecycle management](docs-content://manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) feature in {{es}} to manage your {{agent}} data stream indices as they age. For example, create a new index after a certain period of time, or delete stale indices to enforce data retention standards.
+Use the [index lifecycle management](/manage-data/lifecycle/index-lifecycle-management.md) ({{ilm-init}}) feature in {{es}} to manage your {{agent}} data stream indices as they age. For example, create a new index after a certain period of time, or delete stale indices to enforce data retention standards.
 
 Installed integrations may have one or many associated data streams—​each with an associated {{ilm-init}} policy. By default, these data streams use an {{ilm-init}} policy that matches their data type. For example, the data stream `metrics-system.logs-*`, uses the metrics {{ilm-init}} policy as defined in the `metrics-system.logs` index template.
 
@@ -140,7 +140,7 @@ Want to customize your index lifecycle management? See [Tutorials: Customize dat
 
 ## Ingest pipelines [data-streams-pipelines]
 
-{{agent}} integration data streams ship with a default [ingest pipeline](docs-content://manage-data/ingest/transform-enrich/ingest-pipelines.md) that preprocesses and enriches data before indexing. The default pipeline should not be directly edited as changes can easily break the functionality of the integration.
+{{agent}} integration data streams ship with a default [ingest pipeline](/manage-data/ingest/transform-enrich/ingest-pipelines.md) that preprocesses and enriches data before indexing. The default pipeline should not be directly edited as changes can easily break the functionality of the integration.
 
 Starting in version 8.4, all default ingest pipelines call a non-existent and non-versioned "`@custom`" ingest pipeline. If left uncreated, this pipeline has no effect on your data. However, if added to a data stream and customized, this pipeline can be used for custom data processing, adding fields, sanitizing data, and more.
 

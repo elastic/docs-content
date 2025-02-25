@@ -401,4 +401,4 @@ After you set an unenrollment timeout, any inactive agents are unenrolled automa
 
 A single instance of {{fleet}} supports a maximum of 1000 {{agent}} policies. If more policies are configured, UI performance might be impacted. The maximum number of policies is not affected by the number of spaces in which the policies are used.
 
-If you are using {{agent}} with [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.
+If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), the maximum supported number of {{agent}} policies is 500.

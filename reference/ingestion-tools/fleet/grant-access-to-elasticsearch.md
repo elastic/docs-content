@@ -26,7 +26,7 @@ You can set API keys to expire at a certain time, and you can explicitly invalid
 
 For security reasons, we recommend using a unique API key per {{agent}}. You can create as many API keys per user as necessary.
 
-If you are using [{{serverless-full}}](docs-content://deploy-manage/deploy/elastic-cloud/serverless.md), API key authentication is required.
+If you are using [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), API key authentication is required.
 
 To create an API key for {{agent}}:
 
@@ -89,7 +89,7 @@ To create an API key for {{agent}}:
     1. The format of this key is `<id>:<key>`. Base64 encoded API keys are not currently supported in this configuration.
 
 
-For more information about creating API keys in {{kib}}, see [API Keys](docs-content://deploy-manage/api-keys/elasticsearch-api-keys.md).
+For more information about creating API keys in {{kib}}, see [API Keys](/deploy-manage/api-keys/elasticsearch-api-keys.md).
 
 
 ## Create a standalone agent role [create-role-standalone-agent]
@@ -114,7 +114,7 @@ Although it’s recommended that you use an API key instead of a username and pa
         :class: screenshot
         :::
 
-5. Create the role and assign it to a user. For more information about creating roles, refer to [{{kib}} role management](docs-content://deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+5. Create the role and assign it to a user. For more information about creating roles, refer to [{{kib}} role management](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 6. To use these credentials, set the username and password in the `elastic-agent.yml` file:
 
     ```yaml

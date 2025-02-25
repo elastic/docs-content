@@ -283,12 +283,12 @@ These aliases must be added to both the index template and existing indices.
 
 Note that custom dashboards will show duplicated data until you remove {{beats}} from your hosts.
 
-For more information, see the [Aliases documentation](docs-content://manage-data/data-store/aliases.md).
+For more information, see the [Aliases documentation](/manage-data/data-store/aliases.md).
 
 
 ## Migrate index lifecycle policies [_migrate_index_lifecycle_policies]
 
-{{ilm-cap}} ({{ilm}}) policies in {{es}} enable you to manage indices according to your performance, resiliency, and retention requirements. To learn more about {{ilm}}, refer to the [{{ilm}} documentation](docs-content://manage-data/lifecycle/index-lifecycle-management.md).
+{{ilm-cap}} ({{ilm}}) policies in {{es}} enable you to manage indices according to your performance, resiliency, and retention requirements. To learn more about {{ilm}}, refer to the [{{ilm}} documentation](/manage-data/lifecycle/index-lifecycle-management.md).
 
 {{ilm}} is configured by default in {{beats}} (version 7.0 and later) and in {{agent}} (all versions). To view the index lifecycle policies defined in {{es}}, go to **Management > Index Lifecycle Policies**.
 

@@ -5,7 +5,7 @@ mapped_pages:
 
 # Logs {{anomaly-detect}} configurations [ootb-ml-jobs-logs-ui]
 
-These {{anomaly-jobs}} appear by default in the [{{logs-app}}](docs-content://solutions/observability/logs/explore-logs.md) in {{kib}}. For more information about their usage, refer to [Categorize log entries](docs-content://solutions/observability/logs/categorize-log-entries.md) and [Inspect log anomalies](docs-content://solutions/observability/logs/inspect-log-anomalies.md).
+These {{anomaly-jobs}} appear by default in the [{{logs-app}}](/solutions/observability/logs/explore-logs.md) in {{kib}}. For more information about their usage, refer to [Categorize log entries](/solutions/observability/logs/categorize-log-entries.md) and [Inspect log anomalies](/solutions/observability/logs/inspect-log-anomalies.md).
 
 
 ## Log analysis [logs-ui-analysis]

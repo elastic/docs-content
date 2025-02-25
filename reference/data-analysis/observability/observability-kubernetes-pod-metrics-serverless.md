@@ -5,7 +5,7 @@ mapped_pages:
 
 # Kubernetes pod metrics [observability-kubernetes-pod-metrics]
 
-To analyze Kubernetes pod metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](docs-content://solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
+To analyze Kubernetes pod metrics, you can select view filters based on the following predefined metrics, or you can add [custom metrics](/solutions/observability/infra-and-hosts/view-infrastructure-metrics-by-resource-type.md#custom-metrics).
 
 |  |  |
 | --- | --- |
