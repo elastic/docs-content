@@ -32,6 +32,9 @@ Stack trace collection settings are managed in each APM agent. You can enable an
 % Stateful only after this?
 
 ## Delete data [delete_data]
+```{applies_to}
+stack: all
+```
 
 You might want to only keep data for a defined time period. This might mean deleting old documents periodically, deleting data collected for specific services or customers, or deleting specific indices.
 
@@ -75,6 +78,9 @@ To open **Index Management**, find **Stack Management*** in the main menu or use
 
 
 ## Update existing data [apm-update-data]
+```{applies_to}
+stack: all
+```
 
 You might want to update documents that are already indexed. For example, if you your service name was set incorrectly.
 
