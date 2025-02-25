@@ -7,7 +7,7 @@ applies_to:
 
 # APM agent authorization [apm-agent-auth]
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
 
 Most options in this section are supported by all APM Server deployment methods.
