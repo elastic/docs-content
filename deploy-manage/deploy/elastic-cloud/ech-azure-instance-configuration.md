@@ -37,7 +37,7 @@ The new configuration naming convention aligns with the [data tiers](/manage-dat
 | azure.es.datawarm.edsv4, azure.es.datacold.edsv4 | This is a new configuration that replaces “azure.data.highstorage.e16sv3” config but provides more disk space. |
 | azure.es.datafrozen.edsv4 | This is a new configuration that replaces “azure.es.datafrozen.lsv2” or “azure.es.datafrozen.esv3” config but provides more disk space. |
 
-For a detailed price list, check the [Elastic Cloud price list](https://cloud.elastic.co/deployment-pricing-table?provider=azure). For a detailed specification of the new configurations, check [Elasticsearch Service default Azure instance configurations](ech-default-azure-configurations.md).
+For a detailed price list, check the [Elastic Cloud price list](https://cloud.elastic.co/deployment-pricing-table?provider=azure). For a detailed specification of the new configurations, check [{{ecloud}} default Azure instance configurations](ech-default-azure-configurations.md).
 
 The benefits of the new configurations are multifold:
 

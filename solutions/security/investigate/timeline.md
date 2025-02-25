@@ -4,26 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-timelines-ui.html
 ---
 
-# Timeline
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/timelines-ui.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-timelines-ui.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$esql-in-timeline$$$
-
-$$$add-remove-timeline-fields$$$
-
-$$$import-export-timelines$$$
-
-$$$narrow-expand$$$
-
-$$$pivot$$$
+# Timeline [security-timelines-ui]
 
 Use Timeline as your workspace for investigations and threat hunting. You can add alerts from multiple indices to a Timeline to facilitate advanced investigations.
 
@@ -42,19 +23,19 @@ In addition to Timelines, you can create and attach Timeline templates to [detec
 To make a new Timeline, choose one of the following:
 
 * Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then click **Create new Timeline**.
-* Go to the Timeline bar (which is at the bottom of most pages), click the ![Click the add new button](../../../images/security-add-new-timeline-button.png "") button, then click **Create new Timeline template**.
+* Go to the Timeline bar (which is at the bottom of most pages), click the ![Add new button](../../../images/security-add-new-timeline-button.png "title =20x20") button, then click **Create new Timeline template**.
 * From an open Timeline or Timeline template, click **New** → **New Timeline**.
 
 To open an existing Timeline, choose one of the following:
 
 * Go to the Timelines page, then click a Timeline’s title.
-* Go to the Timeline bar, click the ![Click the add new button](../../../images/security-add-new-timeline-button.png "") button, then click **Open Timeline**.
-* From an open Timeline  or Timeline template, click **Open**, then select a Timeline.
+* Go to the Timeline bar, click the ![Add new button](../../../images/security-add-new-timeline-button.png "title =20x20") button, then click **Open Timeline**.
+* From an open Timeline or Timeline template, click **Open**, then select the appropriate Timeline.
 
-To avoid losing your changes, save the Timeline before moving to a different {{security-app}} page. If you change an existing Timeline, you can use the **Save as new timeline** toggle to make a new copy of the Timeline without overwriting the original one.
+To avoid losing your changes, you must save the Timeline before moving to a different {{security-app}} page. If you change an existing Timeline, you can use the **Save as new timeline** toggle to make a new copy of the Timeline without overwriting the original one.
 
 ::::{tip}
-Click the star icon (![Click the favorite icon](../../../images/security-favorite-icon.png "")) to favorite your Timeline and quickly find it later.
+Click the star icon (![Favorite icon](../../../images/security-favorite-icon.png "title =20x20")) to favorite your Timeline and quickly find it later.
 ::::
 
 
@@ -71,7 +52,7 @@ To further inspect an event or detection alert, click the **View details** butto
 
 ## Configure Timeline event context and display [conf-timeline-display]
 
-Many types of events automatically appear in preconfigured views that provide relevant contextual information, called **Event renderers**. All event renderers are turned off by default. To turn them on, use the **Event renderers** toggle at the top of the results pane. To only turn on specific event renderers, click the gear (![The customize event renderer button](../../../images/security-customize-event-renderers.png "")) icon next to the toggle, and select the ones you want enabled. Close the **Customize event renderers** pane when you’re done. Your changes are automatically applied to Timeline.
+Many types of events automatically appear in preconfigured views that provide relevant contextual information, called **Event renderers**. All event renderers are turned off by default. To turn them on, use the **Event renderers** toggle at the top of the results pane. To only turn on specific event renderers, click the gear (![Customize event renderer button](../../../images/security-customize-event-renderers.png "title =20x20")) icon next to the toggle, and select the ones you want enabled. Close the **Customize event renderers** pane when you’re done. Your changes are automatically applied to Timeline.
 
 :::{image} ../../../images/security-timeline-ui-renderer.png
 :alt: example timeline with the event renderer highlighted
@@ -83,10 +64,10 @@ The example above displays the Flow event renderer, which highlights the movemen
 You can also modify a Timeline’s display in other ways:
 
 * [Add and remove fields](/solutions/security/investigate/timeline.md#add-remove-timeline-fields) from Timeline
-* Create [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) and display them in Timeline
+* Create [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) and display them in the Timeline
 * Reorder and resize columns
 * Copy a column name or values to a clipboard
-* Change how the name, value, and description of a field are displayed in Timeline
+* Change how the name, value, or description of a field are displayed in Timeline
 * View the Timeline in full screen mode
 * Add or delete [notes](/solutions/security/investigate/notes.md) attached to alerts, events, or Timeline
 * Pin interesting events to the Timeline
@@ -96,7 +77,7 @@ You can also modify a Timeline’s display in other ways:
 
 The Timeline table shows fields that are available for alerts and events in the selected data view. You can modify the table to display fields that interest you. Use the sidebar to search for specific fields or scroll through it to find fields of interest. Fields that you select display as columns in the table.
 
-To add a field from the sidebar, hover over it, and click the **Add field as a column** button (![The button that lets you to add a field as a column](../../../images/security-add-field-button.png "")), or drag and drop the field into the table. To remove a field, hover over it, and click the **Remove field as a column** button (![The button that lets you to remove a field as a column](../../../images/security-remove-field-button.png "")).
+To add a field from the sidebar, hover over it, and click the **Add field as a column** button (![Add a field as a column button](../../../images/security-add-field-button.png "title =20x20")), or drag and drop the field into the table. To remove a field, hover over it, and click the **Remove field as a column** button (![Remove a field as a column button](../../../images/security-remove-field-button.png "title =20x20")).
 
 :::{image} ../../../images/security-timeline-sidebar.png
 :alt: Shows the sidebar that allows you to configure the columns that display in Timeline
@@ -106,15 +87,17 @@ To add a field from the sidebar, hover over it, and click the **Add field as a c
 
 ## Use the Timeline query builder [narrow-expand]
 
-Expand the query builder by clicking the query builder button (![Click the query builder button](../../../images/security-query-builder-button.png "")) to the right of the KQL query bar. Drop in fields to build a query that filters Timeline results. The fields' relative placement specifies their logical relationships: horizontally adjacent filters use `AND`, while vertically adjacent filters use `OR`.
+Expand the query builder by clicking the query builder button (![Query builder button](../../../images/security-query-builder-button.png "title =20x20")) to the right of the KQL query bar. Drop in fields to build a query that filters Timeline results. The fields' relative placement specifies their logical relationships: horizontally adjacent filters use `AND`, while vertically adjacent filters use `OR`.
 
 ::::{tip}
-Collapse the query builder to provide more space for Timeline results by clicking the query builder button (![Click the query builder button](../../../images/security-query-builder-button.png "")).
+Collapse the query builder and provide more space for Timeline results by clicking the query builder button (![Query builder button](../../../images/security-query-builder-button.png "title =20x20")).
 ::::
 
 
 
 ## Edit existing filters [pivot]
+
+% Consider changing the anchor text for this section. It's not very descriptive atm.
 
 Click a filter to access additional operations such as **Add filter**, **Clear all**, **Load saved query**, and more:
 
@@ -181,7 +164,7 @@ To learn more about cases, refer to [Cases](/solutions/security/investigate/case
 
 You can view, duplicate, export, delete, and create templates from existing Timelines:
 
-1. Go to **Timelines**.
+1. Find **Timelines** in the navigation menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). 
 2. Click the **All actions** menu in the desired row, then select an action:
 
     * **Create template from timeline** (refer to [Timeline templates](/solutions/security/investigate/timeline-templates.md))
@@ -204,7 +187,7 @@ You can export and import Timelines, which enables you to share Timelines from o
 
 To export Timelines:
 
-* Find **Timelines** in the main menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+* Find **Timelines** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 * Either click the **All actions** menu in the relevant row and select **Export selected**, or select multiple Timelines and then click **Bulk actions** → **Export selected**.
 
 To import Timelines:
@@ -274,11 +257,11 @@ You can use {{esql}} in Timeline by opening the **{{esql}}** tab. From there, yo
 ::::
 
 
-* Click the help icon (![Click the ES|QL reference button](../../../images/security-esql-help-ref-button.png "")) on the far right side of the query editor to open the in-product reference documentation for all {{esql}} commands and functions.
+* Click the help icon (![ES|QL reference button](../../../images/security-esql-help-ref-button.png "title =20x20")) on the far right side of the query editor to open the in-product reference documentation for all {{esql}} commands and functions.
 * Visualize query results using [Discover](/explore-analyze/discover.md) functionality.
 
 :::{image} ../../../images/security-esql-tab.png
-:alt: a Timeline's ES|QL tab
+:alt: Example of the ES|QL tab in Timeline
 :class: screenshot
 :::
 

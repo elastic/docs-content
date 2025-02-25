@@ -1,11 +1,16 @@
 ---
+applies_to:
+  deployment:
+    ece: ga
+    eck: ga
+navigation_title: With {{eck}}
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-ccs-for-eck.html
 ---
 
-# Enabling CCS/R between Elastic Cloud Enterprise and ECK [ece-enable-ccs-for-eck]
+# Remote clusters between {{ece}} and ECK [ece-enable-ccs-for-eck]
 
-These steps describe how to configure remote clusters between an {{es}} cluster in Elastic Cloud Enterprise and an {{es}} cluster running within [Elastic Cloud on Kubernetes (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
+These steps describe how to configure remote clusters between an {{es}} cluster in {{ece}} and an {{es}} cluster running within [{{eck}} (ECK)](/deploy-manage/deploy/cloud-on-k8s.md). Once that’s done, you’ll be able to [run CCS queries from {{es}}](/solutions/search/cross-cluster-search.md) or [set up CCR](/deploy-manage/tools/cross-cluster-replication/set-up-cross-cluster-replication.md).
 
 
 ## Establish trust between two clusters [ece_establish_trust_between_two_clusters]
@@ -13,7 +18,7 @@ These steps describe how to configure remote clusters between an {{es}} cluster 
 The first step is to establish trust between the two clusters.
 
 
-### Establish trust in the Elastic Cloud Enterprise cluster [ece_establish_trust_in_the_elastic_cloud_enterprise_cluster]
+### Establish trust in the {{ece}} cluster [ece_establish_trust_in_the_elastic_cloud_enterprise_cluster]
 
 1. Save the ECK CA certificate to a file. For a cluster named `quickstart`, run:
 
@@ -22,7 +27,7 @@ The first step is to establish trust between the two clusters.
     ```
 
 
-1. Update the trust settings for the Elastic Cloud Enterprise deployment. Follow the steps provided in [Access clusters of a self-managed environment](ece-remote-cluster-self-managed.md), and specifically the first three steps in **Specify the deployments trusted to be used as remote clusters** using TLS certificate as security model.
+1. Update the trust settings for the {{ece}} deployment. Follow the steps provided in [Access clusters of a self-managed environment](ece-remote-cluster-self-managed.md), and specifically the first three steps in **Specify the deployments trusted to be used as remote clusters** using TLS certificate as security model.
 
     * Use the certificate file saved in the first step.
     * Select the {{ecloud}} pattern and enter `default.es.local` for the `Scope ID`.
@@ -32,7 +37,7 @@ The first step is to establish trust between the two clusters.
 
 ### Establish trust in the ECK cluster [ece_establish_trust_in_the_eck_cluster]
 
-1. Upload the Elastic Cloud Enterprise certificate (that you downloaded in the last step of the previous section) as a Kubernetes secret.
+1. Upload the {{ece}} certificate (that you downloaded in the last step of the previous section) as a Kubernetes secret.
 
     ```sh
     kubectl create secret generic ce-aws-cert --from-file=<path to certificate file>
@@ -73,16 +78,16 @@ The first step is to establish trust between the two clusters.
 
 
 
-## Setup CCS/R [ece_setup_ccsr]
+## Set up CCS/R [ece_setup_ccsr]
 
-Now that trust has been established, you can set up CCS/R from the ECK cluster to the Elastic Cloud Enterprise cluster or from the Elastic Cloud Enterprise cluster to the ECK cluster.
+Now that trust has been established, you can set up CCS/R from the ECK cluster to the {{ece}} cluster or from the {{ece}} cluster to the ECK cluster.
 
 
-### ECK Cluster to Elastic Cloud Enterprise cluster [ece_eck_cluster_to_elastic_cloud_enterprise_cluster]
+### ECK Cluster to {{ece}} cluster [ece_eck_cluster_to_elastic_cloud_enterprise_cluster]
 
 Configure the ECK cluster [using certificate based authentication](ece-remote-cluster-self-managed.md).
 
 
-### Elastic Cloud Enterprise cluster to ECK Cluster [ece_elastic_cloud_enterprise_cluster_to_eck_cluster]
+### {{ece}} cluster to ECK Cluster [ece_elastic_cloud_enterprise_cluster_to_eck_cluster]
 
 Follow the steps outlined in the [ECK documentation](/deploy-manage/remote-clusters/eck-remote-clusters.md#k8s_configure_the_remote_cluster_connection_through_the_elasticsearch_rest_api).
