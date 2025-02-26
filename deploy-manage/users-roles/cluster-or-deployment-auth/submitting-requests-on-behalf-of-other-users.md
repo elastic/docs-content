@@ -63,7 +63,7 @@ After a user successfully authenticates to {{es}}, an authorization process dete
 
 Consider an admin role and an analyst role. The admin role has higher privileges, but might also want to submit requests as another user to test and verify their permissions.
 
-First, we’ll create an admin role named `my_admin_role`. This role has `manage` [privileges](elasticsearch-privileges.md) on the entire cluster, and on a subset of indices. This role also contains the `run_as` privilege, which enables any user with this role to submit requests on behalf of the specified `analyst_user`.
+First, we’ll create an admin role named `my_admin_role`. This role has `manage` [privileges](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/security-privileges.md) on the entire cluster, and on a subset of indices. This role also contains the `run_as` privilege, which enables any user with this role to submit requests on behalf of the specified `analyst_user`.
 
 ```console
 POST /_security/role/my_admin_role?refresh=true
