@@ -41,9 +41,10 @@ For each of the following sub-feature privileges, select the type of access you 
 | **Host Isolation** | Allow users to [isolate and release hosts](/solutions/security/endpoint-response-actions/isolate-host.md). |
 | **Process Operations** | Perform host process-related [response actions](/solutions/security/endpoint-response-actions.md), including `processes`, `kill-process`, and `suspend-process`. |
 | **File Operations** | Perform file-related [response actions](/solutions/security/endpoint-response-actions.md) in the response console. |
-| **Execute Operations** | Perform shell commands and script-related [response actions](/solutions/security/endpoint-response-actions.md) in the response console.<br><br>::::{warning} <br>The commands are run on the host using the same user account running the {{elastic-defend}} integration, which normally has full control over the system. Only grant this feature privilege to {{elastic-sec}} users who require this level of access.<br>::::<br><br> |
+| **Execute Operations** | Perform shell commands and script-related [response actions](/solutions/security/endpoint-response-actions.md) in the response console.<br><br>The commands are run on the host using the same user account running the {{elastic-defend}} integration, which normally has full control over the system. Only grant this feature privilege to {{elastic-sec}} users who require this level of access. |
 | **Scan Operations** | Perform folder scan [response actions](/solutions/security/endpoint-response-actions.md) in the response console. |
 
+% The paragraph starting with "The commands are run ..." was in a warning admonition. Since admonitions inside tables aren't supported yet, converted this into plain text.
 
 ## Upgrade considerations [_upgrade_considerations]
 ```yaml {applies_to}
