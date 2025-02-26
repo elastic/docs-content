@@ -9,7 +9,7 @@ Review the changes, fixes, and more to Elastic Cloud Serverless.
 
 For serverless API changes, refer to [APIs Changelog](https://www.elastic.co/docs/api/changes).
 
-For serverless changes in Cloud Console, check out [Elastic Cloud Hosted release notes](cloud://docs/release-notes/cloud-hosted/index.md).
+For serverless changes in Cloud Console, check out [Elastic Cloud Hosted release notes](asciidocalypse://docs/release-notes/cloud-hosted/index.md).
 
 % Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
 
