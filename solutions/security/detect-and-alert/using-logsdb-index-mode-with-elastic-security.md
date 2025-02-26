@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/detections-logsdb-index-mode-impact.html
 ---
 
-# Using logsdb index mode with Elastic Security
+# Using logsdb index mode with Elastic Security [detections-logsdb-index-mode-impact]
 
 ::::{note} 
 To use the [synthetic `_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md#synthetic-source) feature, you must have the appropriate subscription. Refer to the subscription page for [Elastic Cloud](https://www.elastic.co/subscriptions/cloud) and [Elastic Stack/self-managed](https://www.elastic.co/subscriptions) for the breakdown of available features and their associated subscription tiers.

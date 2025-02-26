@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-interactive-investigation-guides.html
 ---
 
-# Launch Timeline from investigation guides
+# Launch Timeline from investigation guides [security-interactive-investigation-guides]
 
 Detection rule investigation guides suggest steps for triaging, analyzing, and responding to potential security issues. For custom rules, you can create an interactive investigation guide that includes buttons for launching runtime queries in [Timeline](/solutions/security/investigate/timeline.md), using alert data and hard-coded literal values. This allows you to start detailed Timeline investigations directly from an alert using relevant data.
 
