@@ -96,15 +96,22 @@ The `names` parameter accepts wildcard and regular expressions that may refer to
 * Wildcard (default): Simple wildcard matching where `*` is a placeholder for zero or more characters, `?` is a placeholder for a single character and `\` may be used as an escape character.
 * Regular Expressions: A more powerful syntax for matching more complex patterns. This regular expression is based on Lucene’s regexp automaton syntax. To enable this syntax, it must be wrapped within a pair of forward slashes (`/`). Any pattern starting with `/` and not ending with `/` is considered to be malformed.
 
-```yaml
-"foo-bar":               # match the literal `foo-bar`
-"foo-*":                 # match anything beginning with "foo-"
-"logstash-201?-*":       # ? matches any one character
-"/.*-201[0-9]-.*/":      # use a regex to match anything containing 2010-2019
-"/foo":                  # syntax error - missing final /
+```js
+"foo-bar": <1>
+"foo-*": <2>
+"logstash-201?-*": <3>
+"/.*-201[0-9]-.*/": <4>
+"/foo": <5>
 ```
-
+1. Match the literal `foo-bar`
+2. Match anything beginning with "foo-"
+3. `?` matches any one character
+4. Use a regex to match anything containing 2010-2019
+5. syntax error - missing final `/`
 ::::
+
+
+
 
 
 
