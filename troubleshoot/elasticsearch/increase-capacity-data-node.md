@@ -8,11 +8,11 @@ mapped_pages:
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 In order to increase the disk capacity of the data nodes in your cluster:
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Elasticsearch Service** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
+2. On the **Hosted deployments** panel, click the gear under the `Manage deployment` column that corresponds to the name of your deployment.
 3. If autoscaling is available but not enabled, please enable it. You can do this by clicking the button `Enable autoscaling` on a banner like the one below:
 
     :::{image} ../../images/elasticsearch-reference-autoscaling_banner.png

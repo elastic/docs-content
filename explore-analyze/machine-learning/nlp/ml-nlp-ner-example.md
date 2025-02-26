@@ -43,7 +43,7 @@ docker run -it --rm docker.elastic.co/eland/eland \
       --start
 ```
 
-You need to provide an administrator username and its password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the deployments page on your Cloud website.
+You need to provide an administrator username and its password and replace the `$CLOUD_ID` with the ID of your Cloud deployment. This Cloud ID can be copied from the **Deployments** page on your Cloud website.
 
 Since the `--start` option is used at the end of the Eland import command, {{es}} deploys the model ready to use. If you have multiple models and want to select which model to deploy, you can use the **{{ml-app}} > Model Management** user interface in {{kib}} to manage the starting and stopping of models.
 

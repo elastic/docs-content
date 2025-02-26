@@ -5,7 +5,7 @@ The [autoscaling](../../../deploy-manage/autoscaling.md) {{ml}} decider (`ml`) c
 The {{ml}} decider is enabled for policies governing `ml` nodes.
 
 ::::{note} 
-For {{ml}} jobs to open when the cluster is not appropriately scaled, set `xpack.ml.max_lazy_ml_nodes` to the largest number of possible {{ml}} nodes (refer to [Advanced machine learning settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md#advanced-ml-settings) for more information). In {{ess}}, this is automatically set.
+For {{ml}} jobs to open when the cluster is not appropriately scaled, set `xpack.ml.max_lazy_ml_nodes` to the largest number of possible {{ml}} nodes (refer to [Advanced machine learning settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md#advanced-ml-settings) for more information). In {{ech}}, this is automatically set.
 ::::
 
 

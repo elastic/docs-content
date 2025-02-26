@@ -40,7 +40,7 @@ $$$ece-db-logstash-pipeline$$$
 
 $$$ece-db-logstash-prerequisites$$$
 
-This guide explains how to ingest data from a relational database into {{ess}} through [{{ls}}](asciidocalypse://docs/logstash/docs/reference/index.md), using the Logstash [JDBC input plugin](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} or {{ece}} deployment.
+This guide explains how to ingest data from a relational database into {{ecloud}} through [{{ls}}](asciidocalypse://docs/logstash/docs/reference/index.md), using the Logstash [JDBC input plugin](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-jdbc.md). It demonstrates how Logstash can be used to efficiently copy records and to receive updates from a relational database, and then send them into {{es}} in an {{ech}} or {{ece}} deployment.
 
 The code and methods presented here have been tested with MySQL. They should work with other relational databases.
 
@@ -98,7 +98,7 @@ The Logstash JDBC input plugin does not include any database connection drivers.
 
 ## Prepare a source MySQL database [ec-db-logstash-database]
 
-Let’s look at a simple database from which you’ll import data and send it to a {{ech}} or {{ece}} deployment. This example uses a MySQL database with timestamped records. The timestamps enable you to determine easily what’s changed in the database since the most recent data transfer.
+Let’s look at a simple database from which you’ll import data and send it to an {{ech}} or {{ece}} deployment. This example uses a MySQL database with timestamped records. The timestamps enable you to determine easily what’s changed in the database since the most recent data transfer.
 
 
 ### Consider the database structure and design [ec-db-logstash-database-structure]
