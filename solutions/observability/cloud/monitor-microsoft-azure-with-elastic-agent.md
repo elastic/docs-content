@@ -5,7 +5,7 @@ mapped_pages:
 
 # Monitor Microsoft Azure with Elastic Agent [monitor-azure-elastic-agent]
 
-::::{admonition}
+::::{note}
 **New to Elastic?** Follow the steps in our [getting started guide](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-observability.html) instead of the steps described here. Return to this tutorial after you’ve learned the basics.
 
 **Using the native Azure integration from the marketplace?** Refer to [Monitor Microsoft Azure with the Azure Native ISV Service](monitor-microsoft-azure-with-azure-native-isv-service.md).
@@ -195,7 +195,7 @@ To create an Azure event hub:
 7. Click **Review + create**, and then click **Create** to deploy the resource.
 8. Make a note of the namespace and event hub name because you will need them later.
 
-:::::{admonition}
+:::::{note}
 **When do I need more than one event hub?**
 
 Typically you create an event hub for each service you want to monitor. For example, imagine that you want to collect activity logs from the Azure Monitor service plus signin and audit logs from the Active Directory service. Rather than sending all logs to a single event hub, you create an event hub for each service:
