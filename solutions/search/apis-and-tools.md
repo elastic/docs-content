@@ -66,7 +66,7 @@ Use [Playground](rag/playground.md) to combine your {{es}} data with the power o
 
 ### Search UI
 
-[Elastic Search UI](./site-or-app/search-ui) is a library of JavaScript and React tools for building search experiences, optimized for use with {{es}}.
+[Elastic Search UI](./site-or-app/search-ui.md) is a library of JavaScript and React tools for building search experiences, optimized for use with {{es}}.
 
 :::{tip}
 Check out the Elasticsearch Labs [blog](https://www.elastic.co/search-labs) to learn how to use Elastic to build advanced search experiences including generative AI, embedding models, reranking capabilities and more.
