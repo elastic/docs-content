@@ -206,7 +206,6 @@ toc:
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash-kspm.md
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash.md
       - file: docs-content/serverless/security-cloud-workload-protection.md
-      - file: docs-content/serverless/security-configure-endpoint-integration-policy.md
       - file: docs-content/serverless/security-connect-to-azure-openai.md
       - file: docs-content/serverless/security-connect-to-bedrock.md
       - file: docs-content/serverless/security-connect-to-google-vertex.md
