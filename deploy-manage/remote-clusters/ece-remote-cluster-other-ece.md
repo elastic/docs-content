@@ -52,7 +52,7 @@ The steps to follow depend on whether the Certificate Authority (CA) of the remo
 
 ::::{dropdown} The CA is public
 1. [Log into the Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -80,7 +80,7 @@ If you later need to update the remote connection with different permissions, yo
 
 ::::{dropdown} The CA is private
 1. [Log into the Cloud UI](../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

@@ -22,8 +22,8 @@ Considerations:
 
    ::::{tab-set}
 
-   :::{tab-item} Elasticsearch Service
-   To get started quickly, spin up a deployment of our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service). The {{ess}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+   :::{tab-item} {{ech}}
+   To get started quickly, spin up an [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service) deployment. {{ech}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
    :::
 
    :::{tab-item} Self-managed
@@ -184,7 +184,7 @@ You can also add `type=tmpfs` to the mount parameter (`--mount type=tmpfs,destin
 
    ::::{tab-set}
 
-   :::{tab-item} Elasticsearch Service
+   :::{tab-item} {{ech}}
    1. [Log in](https://cloud.elastic.co/) to your {{ecloud}} account.
    2. Navigate to the {{kib}} endpoint in your deployment.
    :::

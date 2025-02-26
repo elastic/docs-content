@@ -38,7 +38,7 @@ To complete this tutorial, you’ll need:
 
 * An {{es}} cluster with hot and warm data tiers.
 
-    * {{ess}}: Elastic Stack deployments on {{ess}} include a hot tier by default. To add a warm tier, edit your deployment and click **Add capacity** for the warm data tier.
+    * {{ech}}: Elastic Stack deployments on {{ecloud}} include a hot tier by default. To add a warm tier, edit your deployment and click **Add capacity** for the warm data tier.
 
         :::{image} ../../../images/elasticsearch-reference-tutorial-ilm-ess-add-warm-data-tier.png
         :alt: Add a warm data tier to your deployment

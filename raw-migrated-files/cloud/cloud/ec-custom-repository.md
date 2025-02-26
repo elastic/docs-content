@@ -2,7 +2,7 @@
 
 Specify your own repositories to snapshot to and restore from. This can be useful, for example, to do long-term archiving of old indexes, restore snapshots across Elastic Cloud accounts, or to be certain you have an exit strategy, should you need to move away from our service.
 
-Elasticsearch Service supports these repositories:
+{{ech}} supports these repositories:
 
 * [Amazon Web Services (AWS)](../../../deploy-manage/tools/snapshot-and-restore/ec-aws-custom-repository.md)
 * [Google Cloud Storage (GCS)](../../../deploy-manage/tools/snapshot-and-restore/ec-gcs-snapshotting.md)

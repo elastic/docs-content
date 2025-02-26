@@ -4,10 +4,10 @@ The deployment **Activity** page gives you a convenient way to follow all config
 
 To view the activity for a deployment:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Deployments** page, select your deployment.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. In your deployment menu, select **Activity**.
 4. You can:
@@ -30,7 +30,7 @@ Summary
 :   A summary of what change was applied, when the change was performed, and how long it took.
 
 Applied by
-:   The user who submitted the configuration change. `System` indicates configuration changes initiated automatically by the Elasticsearch Service platform.
+:   The user who submitted the configuration change. `System` indicates configuration changes initiated automatically by the {{ecloud}} platform.
 
 Actions
 :   Select **Details** for an expanded view of each step in the configuration change, including the start time, end time, and duration. You can select **Reapply** to re-run the configuration change.

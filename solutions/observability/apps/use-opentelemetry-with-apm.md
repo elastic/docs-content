@@ -1,16 +1,15 @@
 ---
+navigation_title: "OpenTelemetry"
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry.html
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html
-
-navigation_title: "OpenTelemetry"
 ---
 
 # Use OpenTelemetry with APM [apm-open-telemetry]
 
 
 ::::{note}
-For a complete overview of using OpenTelemetry with Elastic, explore** [**Elastic Distributions of OpenTelemetry**](https://github.com/elastic/opentelemetry).
+For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](https://github.com/elastic/opentelemetry).
 
 ::::
 

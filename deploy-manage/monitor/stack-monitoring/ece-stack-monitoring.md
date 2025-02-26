@@ -124,7 +124,7 @@ Elastic Cloud Enterprise manages the installation and configuration of the monit
 To enable monitoring on your deployment:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -155,7 +155,7 @@ Enabling logs and monitoring requires some extra resource on a deployment. For p
 With monitoring enabled for your deployment, you can access the [logs](https://www.elastic.co/guide/en/kibana/current/observability.html) and [stack monitoring](../monitoring-data/visualizing-monitoring-data.md) through Kibana.
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -223,7 +223,7 @@ With logging and monitoring enabled for a deployment, metrics are collected for 
 Audit logs are useful for tracking security events on your {{es}} and/or {{kib}} clusters. To enable {{es}} audit logs on your deployment:
 
 1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

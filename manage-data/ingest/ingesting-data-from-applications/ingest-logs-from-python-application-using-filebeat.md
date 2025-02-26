@@ -33,7 +33,7 @@ $$$ece-python-logs-send-ess$$$
 
 $$$ece-python-logs-view-kibana$$$
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elasticsearch Service deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md).
 
 *Time required: 1 hour*
 

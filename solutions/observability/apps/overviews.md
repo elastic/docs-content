@@ -16,7 +16,11 @@ For a quick, high-level overview of the health and performance of your applicati
 * [Dependencies](../../../solutions/observability/apps/dependencies.md)
 * [Service Map](../../../solutions/observability/apps/service-map.md)
 
-% Stateful for mobile service?
+
+## View an individual service [apm-ui-individual-service]
+```{applies_to}
+stack: all
+```
 
 View an individual service:
 

@@ -5,7 +5,7 @@ mapped_pages:
 
 # Data streams [apm-data-streams]
 
-::::{admonition}
+::::{note}
 {{agent}} uses data streams to store append-only time series data across multiple indices. Data streams are well-suited for logs, metrics, traces, and other continuously generated data, and offer a host of benefits over other indexing strategies:
 
 * Reduced number of fields per index

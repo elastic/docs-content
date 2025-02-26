@@ -9,7 +9,7 @@ mapped_pages:
 
 You have a smaller {{es}} cluster and you’ve noticed that performance seems to have declined recently. The response time during searches seems to have gone up, and overall the system just doesn’t seem to perform quite as well as it used to. You have already looked at the cluster performance metrics and have confirmed that both index and search response times have increased steadily and remained higher than before. So what explains the performance degradation?
 
-When you look in the **Cluster Performance Metrics** section of the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), you get the following metrics:
+When you look in the **Cluster Performance Metrics** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), you get the following metrics:
 
 :::{image} /images/cloud-metrics-credits.png
 :alt: CPU usage versus CPU credits over time

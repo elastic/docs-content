@@ -10,7 +10,7 @@ applies_to:
 
 # JVM memory pressure indicator [ec-memory-pressure]
 
-In addition to the more detailed [cluster performance metrics](../stack-monitoring.md), the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) also includes a JVM memory pressure indicator for each node in your cluster. This indicator can help you to determine when you need to upgrade to a larger cluster.
+In addition to the more detailed [cluster performance metrics](../stack-monitoring.md), the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) also includes a JVM memory pressure indicator for each node in your cluster. This indicator can help you to determine when you need to upgrade to a larger cluster.
 
 The percentage number used in the JVM memory pressure indicator is actually the fill rate of the old generation pool. For a detailed explanation of why this metric is used, check [Understanding Memory Pressure](https://www.elastic.co/blog/found-understanding-memory-pressure-indicator/).
 

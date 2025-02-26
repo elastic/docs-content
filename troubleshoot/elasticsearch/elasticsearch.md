@@ -74,7 +74,7 @@ If none of these guides relate to your issue, or you need further assistance, th
 * If you have an active subscription, you have several options:
 
     * Go directly to the [Support Portal](http://support.elastic.co)
-    * From the {{ess}} Console, go to the [Support page](https://cloud.elastic.co/support?page=docs&placement=docs-body), or select the support icon that looks like a life preserver on any page.
+    * From the {{ecloud}} Console, go to the [Support page](https://cloud.elastic.co/support?page=docs&placement=docs-body), or select the support icon that looks like a life preserver on any page.
     * Contact us by email: `support@elastic.co`
 
         ::::{tip}
