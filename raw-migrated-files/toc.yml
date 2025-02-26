@@ -250,7 +250,6 @@ toc:
       - file: docs-content/serverless/security-rules-coverage.md
       - file: docs-content/serverless/security-rules-create.md
       - file: docs-content/serverless/security-rules-ui-management.md
-      - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-signals-to-cases.md
       - file: docs-content/serverless/security-third-party-actions.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md

@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-configure-endpoint-integration-policy.html
 ---
 
-# Configure an integration policy for Elastic Defend
+# Configure an integration policy for {{elastic-defend}}
 
 After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts. If needed, you can update the integration policy to configure protection settings, event collection, antivirus settings, trusted applications, event filters, host isolation exceptions, and blocked applications to meet your organization’s security needs.
 
