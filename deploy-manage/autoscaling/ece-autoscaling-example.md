@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-autoscaling-example.html
+applies_to:
+  deployment:
+    ece: ga
+    ess: ga
 ---
 
-# {{ece}} autoscaling example [ece-autoscaling-example]
+# Autoscaling example [ece-autoscaling-example]
+$$$ec-autoscaling-example$$$
 
-To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample Elastic Cloud Enterprise deployment.
+To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample Elastic Cloud Enterprise or {{ech}} deployment.
 
 1. Enable autoscaling:
 
@@ -28,6 +33,10 @@ To help you better understand the available autoscaling settings, this example d
         The fault tolerance for the data tier is set to 2 availability zones.
 
         :::{image} ../../images/cloud-enterprise-ec-ce-autoscaling-data-summary2.png
+        :alt: A screenshot showing sizing information for the autoscaled data tier
+        :::
+
+        :::{image} ../../images/cloud-ec-ce-autoscaling-data-summary2.png
         :alt: A screenshot showing sizing information for the autoscaled data tier
         :::
 
