@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-standalone-monitor-nginx.html
 ---
 
-# Example: Use standalone Elastic Agent with Elasticsearch Service to monitor nginx [example-standalone-monitor-nginx]
+# Example: Use standalone Elastic Agent with {{ech}} to monitor nginx [example-standalone-monitor-nginx]
 
 This guide walks you through a simple monitoring scenario so you can learn the basics of setting up standalone {{agent}}, using it to work with {{ess}} and an Elastic integration.
 

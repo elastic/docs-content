@@ -46,7 +46,7 @@ For a full list of settings that are supported for your S3 bucket, refer to [S3 
 
 ## Store your secrets in the keystore [ec-snapshot-secrets-keystore]
 
-You can use the Elasticsearch Service Keystore to store the credentials to access your AWS account.
+You can use the {{es}} keystore to store the credentials to access your AWS account.
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Navigate to the **Security** page of the deployment you wish to configure.

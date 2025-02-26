@@ -72,7 +72,7 @@ In the normal course of using your {{ech}} deployments, health warnings and erro
 Health warning messages
 :   Health warning messages will sometimes appear on the main page for one of your deployments, as well as on the **Logs and metrics** page.
 
-    A single warning is rarely cause for concern, as often it just reflects ongoing, routine maintenance activity occurring on the Elasticsearch Service platform.
+    A single warning is rarely cause for concern, as often it just reflects ongoing, routine maintenance activity occurring on {{ecloud}}.
 
 
 Configuration change failures

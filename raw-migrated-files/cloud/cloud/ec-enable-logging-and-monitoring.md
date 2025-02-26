@@ -7,15 +7,15 @@ The deployment logging and monitoring feature lets you monitor your deployment i
 
 Monitoring consists of two components:
 
-* A monitoring and logging agent that is installed on each node in your deployment. The agents collect and index metrics to {{es}}, either on the same deployment or by sending logs and metrics to an external monitoring deployment. Elasticsearch Service manages the installation and configuration of the monitoring agent for you, and you should not modify any of the settings.
+* A monitoring and logging agent that is installed on each node in your deployment. The agents collect and index metrics to {{es}}, either on the same deployment or by sending logs and metrics to an external monitoring deployment. {{ech}} manages the installation and configuration of the monitoring agent for you, and you should not modify any of the settings.
 * The stack monitoring application in Kibana that visualizes the monitoring metrics through a dashboard and the logs application that allows you to search and analyze deployment logs.
 
-The steps in this section cover only the enablement of the monitoring and logging features in Elasticsearch Service. For more information on how to use the monitoring features, refer to [Monitor a cluster](../../../deploy-manage/monitor.md).
+The steps in this section cover only the enablement of the monitoring and logging features in {{ech}}. For more information on how to use the monitoring features, refer to [Monitor a cluster](../../../deploy-manage/monitor.md).
 
 
 ### Before you begin [ec-logging-and-monitoring-limitations] 
 
-Some limitations apply when you use monitoring on Elasticsearch Service. To learn more, check the monitoring [restrictions and limitations](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-restrictions-monitoring).
+Some limitations apply when you use monitoring on {{ech}}. To learn more, check the monitoring [restrictions and limitations](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-restrictions-monitoring).
 
 
 ### Monitoring for production use [ec-logging-and-monitoring-production] 
@@ -40,13 +40,13 @@ Logs and metrics that get sent to a dedicated monitoring {{es}} deployment [may 
 
 #### Stack versions 8.0 and above [ec-logging-and-monitoring-retention-8] 
 
-When you enable monitoring in Elasticsearch Service, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. The retention period is configured in the `.monitoring-8-ilm-policy` index lifecycle policy. To view or edit the policy open {{kib}} **Stack management > Data > Index Lifecycle Policies**.
+When you enable monitoring in {{ech}}, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. The retention period is configured in the `.monitoring-8-ilm-policy` index lifecycle policy. To view or edit the policy open {{kib}} **Stack management > Data > Index Lifecycle Policies**.
 
 
 ### Sending monitoring data to itself (self monitoring) [ec-logging-and-monitoring-retention-self-monitoring] 
 
 $$$ec-logging-and-monitoring-retention-7$$$
-When you enable self-monitoring in Elasticsearch Service, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. Monitoring data is retained for three days by default or as specified by the [`xpack.monitoring.history.duration` user setting](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#xpack-monitoring-history-duration).
+When you enable self-monitoring in {{ech}}, your monitoring indices are retained for a certain period by default. After the retention period has passed, the monitoring indices are deleted automatically. Monitoring data is retained for three days by default or as specified by the [`xpack.monitoring.history.duration` user setting](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#xpack-monitoring-history-duration).
 
 To retain monitoring indices as is without deleting them automatically, you must disable the [cleaner service](../../../deploy-manage/monitor/stack-monitoring/es-local-exporter.md#local-exporter-cleaner) by adding a disabled local exporter in your cluster settings.
 
@@ -69,7 +69,7 @@ PUT /_cluster/settings
 
 When [monitoring for production use](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-logging-and-monitoring-production), where you configure your deployments **to send monitoring data to a dedicated monitoring deployment** for indexing, this retention period does not apply. Monitoring indices on a dedicated monitoring deployment are retained until you remove them. There are three options open to you:
 
-* To enable the automatic deletion of monitoring indices from dedicated monitoring deployments, [enable monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-enable-logging-and-monitoring-steps) on your dedicated monitoring deployment in Elasticsearch Service to send monitoring data to itself. When an {{es}} deployment sends monitoring data to itself, all monitoring indices are deleted automatically after the retention period, regardless of the origin of the monitoring data.
+* To enable the automatic deletion of monitoring indices from dedicated monitoring deployments, [enable monitoring](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md#ec-enable-logging-and-monitoring-steps) on your dedicated monitoring deployment in {{ech}} to send monitoring data to itself. When an {{es}} deployment sends monitoring data to itself, all monitoring indices are deleted automatically after the retention period, regardless of the origin of the monitoring data.
 * Alternatively, you can enable the cleaner service on the monitoring deployment by creating a local exporter. You can define the retention period at the same time.
 
     For example
@@ -110,7 +110,7 @@ When sending monitoring data to a deployment, you can configure [Index Lifecycle
 
 ### Enable logging and monitoring [ec-enable-logging-and-monitoring-steps] 
 
-Elasticsearch Service manages the installation and configuration of the monitoring agent for you. When you enable monitoring on a deployment, you are configuring where the monitoring agent for your current deployment should send its logs and metrics.
+{{ech}} manages the installation and configuration of the monitoring agent for you. When you enable monitoring on a deployment, you are configuring where the monitoring agent for your current deployment should send its logs and metrics.
 
 To enable monitoring on your deployment:
 

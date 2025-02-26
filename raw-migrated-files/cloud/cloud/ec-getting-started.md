@@ -1,4 +1,4 @@
-# Introducing Elasticsearch Service [ec-getting-started]
+# Introducing {{ech}} [ec-getting-started]
 
 ::::{note}
 Are you just discovering Elastic or are unfamiliar with the core concepts of the Elastic Stack? Would you like to be guided through the very first steps and understand how Elastic can help you? Try one of our [getting started guides](https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current/getting-started-guides.html) first.
@@ -6,11 +6,11 @@ Are you just discovering Elastic or are unfamiliar with the core concepts of the
 
 
 
-## What is Elasticsearch Service? [ec_what_is_elasticsearch_service]
+## What is {{ech}}? [ec_what_is_elasticsearch_service]
 
 **The Elastic Stack, managed through {{ecloud}} deployments.**
 
-Elasticsearch Service allows you to manage one or more instances of the Elastic Stack through **deployments**. These deployments are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
+{{ech}} allows you to manage one or more instances of the Elastic Stack through **deployments**. These deployments are hosted on {{ecloud}}, through the cloud provider and regions of your choice, and are tied to your organization account.
 
 A *deployment* helps you manage an Elasticsearch cluster and instances of other Elastic products, like Kibana or APM instances, in one place. Spin up, scale, upgrade, and delete your Elastic Stack products without having to manage each one separately. In a deployment, everything works together.
 
@@ -44,7 +44,7 @@ These solutions help you accomplish your use cases: Ingest data into the deploym
 Of course, you can choose to follow your own path and use Elastic components available in your deployment to ingest, visualize, and analyze your data independently from solutions.
 
 
-## How to operate Elasticsearch Service? [ec_how_to_operate_elasticsearch_service]
+## How to operate {{ech}}? [ec_how_to_operate_elasticsearch_service]
 
 **Where to start?**
 
@@ -68,10 +68,10 @@ Control which users and services can access your deployments by [securing your e
 
 **Monitor your deployments and keep them healthy**
 
-Elasticsearch Service provides several ways to monitor your deployments, anticipate and prevent issues, or fix them when they occur. Check [Monitoring your deployment](../../../deploy-manage/monitor/stack-monitoring.md) to get more details.
+{{ech}} provides several ways to monitor your deployments, anticipate and prevent issues, or fix them when they occur. Check [Monitoring your deployment](../../../deploy-manage/monitor/stack-monitoring.md) to get more details.
 
 **And then?**
 
-Now is the time for you to work with your data. The content of the Elasticsearch Service section helps you get your environment up and ready to handle your data the way you need. You can always adjust your deployments and their configuration as your usage evolves over time.
+Now is the time for you to work with your data. The content of the {{ecloud}} section helps you get your environment up and ready to handle your data the way you need. You can always adjust your deployments and their configuration as your usage evolves over time.
 
 To get the most out of the solutions that the Elastic Stack offers, [log in to {{ecloud}}](https://cloud.elastic.co) or [browse the documentation](https://www.elastic.co/docs).

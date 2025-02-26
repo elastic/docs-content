@@ -16,13 +16,13 @@ In order to fix this follow the next steps:
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 In order to get the shards assigned we’ll need to increase the number of shards that can be collocated on a node. We’ll achieve this by inspecting the configuration for the `index.routing.allocation.total_shards_per_node` [index setting](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) and increasing the configured value for the indices that have shards unassigned.
 
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Elasticsearch Service** panel, click the name of your deployment.
+2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
     If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).

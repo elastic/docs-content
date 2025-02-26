@@ -1,8 +1,8 @@
 # Azure Private Link traffic filters [ec-traffic-filtering-vnet]
 
-Traffic filtering, to allow only Azure Private Link connections, is one of the security layers available in Elasticsearch Service. It allows you to limit how your deployments can be accessed.
+Traffic filtering, to allow only Azure Private Link connections, is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed.
 
-Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in Elasticsearch Service.
+Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in {{ecloud}}.
 
 ::::{note}
 Azure Private Link filtering is supported only for Azure regions.

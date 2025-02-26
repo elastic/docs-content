@@ -209,7 +209,7 @@ function changeTabs(e) {
 </script>
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/?page=docs&placement=docs-body).
 2. Select your deployment on the home page in the {{ess}} card or go to the deployments page.
 

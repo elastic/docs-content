@@ -1,6 +1,6 @@
 # Plan for production [ec-planning]
 
-Elasticsearch Service supports a wide range of configurations. With such flexibility comes great freedom, but also the first rule of deployment planning: Your deployment needs to be matched to the workloads that you plan to run on your {{es}} clusters and {{kib}} instances. Specifically, this means two things:
+{{ech}} supports a wide range of configurations. With such flexibility comes great freedom, but also the first rule of deployment planning: Your deployment needs to be matched to the workloads that you plan to run on your {{es}} clusters and {{kib}} instances. Specifically, this means two things:
 
 * [Does your data need to be highly available?](../../../deploy-manage/production-guidance/plan-for-production-elastic-cloud.md#ec-ha)
 * [Do you know when to scale?](../../../deploy-manage/production-guidance/plan-for-production-elastic-cloud.md#ec-workloads)
@@ -8,7 +8,7 @@ Elasticsearch Service supports a wide range of configurations. With such flexibi
 
 ## Does your data need to be highly available? [ec-ha] 
 
-With Elasticsearch Service, your deployment can be spread across as many as three separate availability zones, each hosted in its own, separate data center. Why this matters:
+With {{ech}}, your deployment can be spread across as many as three separate availability zones, each hosted in its own, separate data center. Why this matters:
 
 * Data centers can have issues with availability. Internet outages, earthquakes, floods, or other events could affect the availability of a single data center. With a single availability zone, you have a single point of failure that can bring down your deployment.
 * Multiple availability zones help your deployment remain available. This includes your {{es}} cluster, provided that your cluster is sized so that it can sustain your workload on the remaining data centers and that your indices are configured to have at least one replica.
@@ -46,9 +46,9 @@ Clusters that only have one master node are not highly available and are at risk
 
 Knowing how to scale your deployment is critical, especially when unexpected workloads hits. Don’t forget to [check your performance metrics](../../../deploy-manage/monitor/monitoring-data/ec-saas-metrics-accessing.md) to make sure your deployments are healthy and can cope with your workloads.
 
-Scaling with Elasticsearch Service is easy:
+Scaling with {{ech}} is easy:
 
-* Turn on [deployment autoscaling](../../../deploy-manage/autoscaling.md) to let Elasticsearch Service manage your deployments by adjusting their available resources automatically.
+* Turn on [deployment autoscaling](../../../deploy-manage/autoscaling.md) to let {{ecloud}} manage your deployments by adjusting their available resources automatically.
 * Or, if you prefer manual control, log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), select your deployment, select **Edit deployment** from the **Actions** dropdown, and either increase the number of zones or the size per zone.
 
 ::::{warning} 

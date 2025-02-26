@@ -33,14 +33,14 @@ To add user settings:
 6. Select **Save changes**.
 
 ::::{note}
-If a setting is not supported by Elasticsearch Service, you will get an error message when you try to save.
+If a setting is not supported by {{ech}}, you will get an error message when you try to save.
 ::::
 
 
 
 ## Supported standalone APM settings (legacy) [ec-apm-settings]
 
-Elasticsearch Service supports the following setting when running APM in standalone mode (legacy).
+{{ech}} supports the following setting when running APM in standalone mode (legacy).
 
 ::::{tip}
 Some settings that could break your cluster if set incorrectly are blocklisted. The following settings are generally safe in cloud environments. For detailed information about APM settings, check the [APM documentation](/solutions/observability/apps/configure-apm-server.md).

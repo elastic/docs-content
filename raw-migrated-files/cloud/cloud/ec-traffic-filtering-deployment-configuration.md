@@ -1,8 +1,8 @@
 # Traffic Filtering [ec-traffic-filtering-deployment-configuration]
 
-Traffic filtering is one of the security layers available in Elasticsearch Service. It allows you to limit how your deployments can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to *only* the sources that you trust.
+Traffic filtering is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to *only* the sources that you trust.
 
-Elasticsearch Service supports the following traffic sources:
+{{ecloud}} supports the following traffic sources:
 
 * [IP addresses and Classless Inter-Domain Routing (CIDR) masks](../../../deploy-manage/security/ip-traffic-filtering.md), e.g. `82.102.25.74` or `199.226.244.0/24`.
 * [AWS Virtual Private Clouds (VPCs) over AWS PrivateLink](../../../deploy-manage/security/aws-privatelink-traffic-filters.md), supported only in AWS regions.
@@ -44,7 +44,7 @@ By default, all your deployments are accessible over the public internet. They a
 Once you associate at least one traffic filter with a deployment, traffic that does not match any rules (for this deployment) is denied.
 
 ::::{note} 
-This only applies to external traffic. Internal traffic is managed by Elasticsearch Service. For example, Kibana can connect to Elasticsearch, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
+This only applies to external traffic. Internal traffic is managed by {{ecloud}}. For example, Kibana can connect to Elasticsearch, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
 ::::
 
 
@@ -83,7 +83,7 @@ Jane creates a deployment. At this point the deployment is accessible over inter
 
 Jane wants to restrict access to the deployment so that only the traffic originating from Jane’s VPC is allowed.
 
-* They create a Traffic Filter *Private Link Endpoint* rule set, thus registering their VPC with Elasticsearch Service.
+* They create a Traffic Filter *Private Link Endpoint* rule set, thus registering their VPC with {{ecloud}}.
 * They associate this rule set with the deployment.
 * At this point, their deployment is only accessible over PrivateLink from Jane’s VPC. This does not affect other security layers, so Jane’s users need to authenticate with username+password.
 * The deployment is no longer accessible over the public internet endpoint.

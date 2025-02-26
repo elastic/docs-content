@@ -46,11 +46,7 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 **Health check**
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. From the Elasticsearch Service panel, click the **Quick link** icon corresponding to the deployment that you want to manage.
-
-    :::{image} /images/cloud-ec-quick-link-to-deployment.png
-    :alt: Quick link to the deployment page
-    :::
+2. Click the **Manage** link corresponding to the deployment that you want to manage.
 
 3. On your deployment page, scroll down to **Instances** and check if the disk allocation for your {{es}} instance is over 90%.
 

@@ -1,11 +1,11 @@
 # Edit {{es}} user settings [ec-add-user-settings]
 
-Change how {{es}} runs by providing your own user settings. Elasticsearch Service appends these settings to each node’s `elasticsearch.yml` configuration file.
+Change how {{es}} runs by providing your own user settings. {{ech}} appends these settings to each node’s `elasticsearch.yml` configuration file.
 
-Elasticsearch Service automatically rejects `elasticsearch.yml` settings that could break your cluster. For a list of supported settings, check [Supported {{es}} settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ec-es-elasticsearch-settings).
+{{ech}} automatically rejects `elasticsearch.yml` settings that could break your cluster. For a list of supported settings, check [Supported {{es}} settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md#ec-es-elasticsearch-settings).
 
 ::::{warning}
-You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, Elasticsearch Service doesn’t reject unsafe setting changes made using this API. Use with caution.
+You can also update [dynamic cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting) using {{es}}'s [update cluster settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings). However, {{ech}} doesn’t reject unsafe setting changes made using this API. Use with caution.
 ::::
 
 
@@ -28,7 +28,7 @@ In some cases, you may get a warning saying "User settings are different across 
 
 ## Supported {{es}} settings [ec-es-elasticsearch-settings]
 
-Elasticsearch Service supports the following `elasticsearch.yml` settings.
+{{ech}} supports the following `elasticsearch.yml` settings.
 
 ### General settings [ec_general_settings]
 

@@ -1,7 +1,7 @@
 # Upgrade versions [ec-upgrade-deployment]
 
 ::::{important} 
-Beginning with Elastic Stack version 8.0, instructions for upgrading your Elasticsearch Service stack version can be found in [Upgrading on Elastic Cloud](../../../deploy-manage/upgrade/deployment-or-cluster.md). The following instructions apply for upgrading to Elastic Stack versions 7.x and previous.
+Beginning with Elastic Stack version 8.0, instructions for upgrading {{ech}} deployments can be found in [Upgrading on Elastic Cloud](../../../deploy-manage/upgrade/deployment-or-cluster.md). The following instructions apply for upgrading to Elastic Stack versions 7.x and previous.
 ::::
 
 
@@ -39,7 +39,7 @@ To successfully replace and override a plugin which is being upgraded, the `name
 
 ## Perform the upgrade [ec_perform_the_upgrade] 
 
-To upgrade a cluster in Elasticsearch Service:
+To upgrade a cluster in {{ech}}:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.

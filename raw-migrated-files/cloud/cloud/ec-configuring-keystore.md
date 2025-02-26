@@ -1,6 +1,6 @@
 # Secure your settings [ec-configuring-keystore]
 
-Some of the settings that you configure in Elasticsearch Service are sensitive, such as passwords, and relying on file system permissions to protect these settings is insufficient. To protect your sensitive settings, use the Elasticsearch keystore. With the Elasticsearch keystore, you can add a key and its secret value, then use the key in place of the secret value when you configure your sensitive settings.
+Some of the settings that you configure in {{ech}} are sensitive, such as passwords, and relying on file system permissions to protect these settings is insufficient. To protect your sensitive settings, use the Elasticsearch keystore. With the Elasticsearch keystore, you can add a key and its secret value, then use the key in place of the secret value when you configure your sensitive settings.
 
 There are three types of secrets that you can use:
 

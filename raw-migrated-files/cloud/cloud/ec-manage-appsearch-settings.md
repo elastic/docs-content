@@ -20,14 +20,14 @@ To add user settings:
 6. Select **Save changes**.
 
 ::::{note} 
-If a setting is not supported by Elasticsearch Service, you get an error message when you try to save.
+If a setting is not supported by {{ech}}, you get an error message when you try to save.
 ::::
 
 
 
 ## Supported App Search settings [ec-appsearch-settings] 
 
-Elasticsearch Service supports the following App Search settings.
+{{ech}} supports the following App Search settings.
 
 `app_search.auth.source`
 :   The origin of authenticated App Search users. Options are `standard`, `elasticsearch-native`, and `elasticsearch-saml`.

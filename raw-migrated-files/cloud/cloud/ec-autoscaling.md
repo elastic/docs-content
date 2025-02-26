@@ -40,7 +40,7 @@ Currently, autoscaling behavior is as follows:
 
 
 ::::{note}
-For any Elasticsearch Service Elasticsearch component the number of availability zones is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
+The number of availability zones for each component of your {{ech}} deployments is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
 ::::
 
 

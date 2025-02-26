@@ -18,9 +18,9 @@ Most Elastic resources can be accessed and managed through RESTful APIs. While t
 Elasticsearch APIs
 :   This set of APIs allows you to interact directly with the Elasticsearch nodes in your deployment. You can ingest data, run search queries, check the health of your clusters, manage snapshots, and more.
 
-    To use these APIs in Elasticsearch Service read our topic [Access the Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md), and to learn about all of the available endpoints check the [Elasticsearch API reference documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md).
+    To use these APIs on {{ecloud}} read our topic [Access the API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md), and to learn about all of the available endpoints check the [Elasticsearch API reference documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md).
 
-    Some [restrictions](../deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using the Elasticsearch APIs in Elasticsearch Service.
+    Some [restrictions](../deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-elasticsearch) apply when using the Elasticsearch APIs on {{ecloud}}.
 
 
 Kibana APIs
@@ -28,7 +28,7 @@ Kibana APIs
 
     The Kibana APIs cannot be accessed directly from the {{ecloud}} Console; you need to use `curl` or another HTTP tool to connect. Check the [Kibana API reference documentation](https://www.elastic.co/guide/en/kibana/current/api.html) to learn about using the APIs and for details about all available endpoints.
 
-    Some [restrictions](../deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-kibana) apply when using these APIs with an Elasticsearch Service Kibana instance as compared to an on-prem installation.
+    Some [restrictions](../deploy/elastic-cloud/restrictions-known-problems.md#ec-restrictions-apis-kibana) apply when using these APIs with Kibana on {{ecloud}} as compared to an on-prem installation.
 
 
 Other Products

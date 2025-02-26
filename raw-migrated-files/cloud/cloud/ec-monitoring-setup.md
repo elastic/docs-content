@@ -9,7 +9,7 @@ These steps are helpful to set yourself up for success by making monitoring read
 
 As you manage, monitor, and troubleshoot your deployment, make sure you have an understanding of the [shared responsibilities](https://www.elastic.co/cloud/shared-responsibility) between Elastic and yourself, so you know what you need to do to keep your deployments running smoothly.
 
-You may also consider subscribing to incident notices reported on the Elasticsearch Service [status page](https://status.elastic.co).
+You may also consider subscribing to incident notices reported on the {{ecloud}} [status page](https://status.elastic.co).
 
 
 ## Enable logs and metrics [ec_enable_logs_and_metrics]

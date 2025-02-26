@@ -87,7 +87,7 @@ Bundles
         └── MyGeoLite2-City.mmdb
     ```
 
-    Note that the extension must be `-(City|Country|ASN).mmdb`, and it must be a different name than the original file name `GeoLite2-City.mmdb` which already exists in Elasticsearch Service. To use this bundle, you can refer it in the GeoIP ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file`.
+    Note that the extension must be `-(City|Country|ASN).mmdb`, and it must be a different name than the original file name `GeoLite2-City.mmdb` which already exists in {{ech}}. To use this bundle, you can refer it in the GeoIP ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file`.
 
 
 

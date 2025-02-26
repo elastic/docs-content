@@ -1,19 +1,19 @@
-# Ingest data from Beats to Elasticsearch Service with {{ls}} as a proxy [ec-getting-started-search-use-cases-beats-logstash]
+# Ingest data from Beats to {{ech}} with {{ls}} as a proxy [ec-getting-started-search-use-cases-beats-logstash]
 
-This guide explains how to ingest data from Filebeat and Metricbeat to {{ls}} as an intermediary, and then send that data to Elasticsearch Service. Using {{ls}} as a proxy limits your Elastic stack traffic through a single, external-facing firewall exception or rule. Consider the following features of this type of setup:
+This guide explains how to ingest data from Filebeat and Metricbeat to {{ls}} as an intermediary, and then send that data to {{ech}}. Using {{ls}} as a proxy limits your Elastic stack traffic through a single, external-facing firewall exception or rule. Consider the following features of this type of setup:
 
-* You can send multiple instances of Beats data through your local network’s demilitarized zone (DMZ) to {{ls}}. {{ls}} then acts as a proxy through your firewall to send the Beats data to Elasticsearch Service, as shown in the following diagram:
+* You can send multiple instances of Beats data through your local network’s demilitarized zone (DMZ) to {{ls}}. {{ls}} then acts as a proxy through your firewall to send the Beats data to {{ech}}, as shown in the following diagram:
 
     ![A diagram showing data from multiple Beats into Logstash](../../../images/cloud-ec-logstash-beats-dataflow.png "")
 
-* This proxying reduces the firewall exceptions or rules necessary for Beats to communicate with Elasticsearch Service. It’s common to have many Beats dispersed across a network, each installed close to the data that it monitors, and each Beat individually communicating with an {{ech}} deployment. Multiple Beats support multiple servers. Rather than configure each Beat to send its data directly to Elasticsearch Service, you can use {{ls}} to proxy this traffic through one firewall exception or rule.
+* This proxying reduces the firewall exceptions or rules necessary for Beats to communicate with {{ech}}. It’s common to have many Beats dispersed across a network, each installed close to the data that it monitors, and each Beat individually communicating with an {{ech}} deployment. Multiple Beats support multiple servers. Rather than configure each Beat to send its data directly to {{ech}}, you can use {{ls}} to proxy this traffic through one firewall exception or rule.
 * This setup is not suitable in simple scenarios when there is only one or a couple of Beats in use. {{ls}} makes the most sense for proxying when there are many Beats.
 
 The configuration in this example makes use of the System module, available for both Filebeat and Metricbeat. Filebeat’s System sends server system log details (that is, login success/failures, sudo *superuser do* command usage, and other key usage details). Metricbeat’s System module sends memory, CPU, disk, and other server usage metrics.
 
 In the following sections you are going to learn how to:
 
-1. [Get Elasticsearch Service](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-beats-to-elasticsearch-service-with-logstash-as-proxy.md#ec-beats-logstash-trial)
+1. [Get {{ech}}](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-beats-to-elasticsearch-service-with-logstash-as-proxy.md#ec-beats-logstash-trial)
 2. [Connect securely](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-beats-to-elasticsearch-service-with-logstash-as-proxy.md#ec-beats-logstash-connect-securely)
 3. [Set up {{ls}}](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-beats-to-elasticsearch-service-with-logstash-as-proxy.md#ec-beats-logstash-logstash)
 4. [Set up Metricbeat](../../../manage-data/ingest/ingesting-data-from-applications/ingest-data-from-beats-to-elasticsearch-service-with-logstash-as-proxy.md#ec-beats-logstash-metricbeat)
@@ -27,7 +27,7 @@ In the following sections you are going to learn how to:
 *Time required: 1 hour*
 
 
-## Get Elasticsearch Service [ec-beats-logstash-trial]
+## Get {{ech}} [ec-beats-logstash-trial]
 
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -36,14 +36,14 @@ In the following sections you are going to learn how to:
 5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
+Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 
 ## Connect securely [ec-beats-logstash-connect-securely]
 
-When connecting to Elasticsearch Service you can use a Cloud ID to specify the connection details. You must pass the Cloud ID that you can find in the cloud console.  Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+When connecting to {{ech}} you can use a Cloud ID to specify the connection details. You must pass the Cloud ID that you can find in the cloud console.  Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 
-To connect to, stream data to, and issue queries with Elasticsearch Service, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+To connect to, stream data to, and issue queries with {{ech}}, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 
 ## Set up {{ls}} [ec-beats-logstash-logstash]
@@ -394,10 +394,10 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
 
     * *cloud_id*: This is the ID that uniquely identifies your {{ech}} deployment.
     * *ssl*: This should be set to `true` so that Secure Socket Layer (SSL) certificates are used for secure communication between {{ls}} and your {{ech}} deployment.
-    * *ilm_enabled*: Enables and disables Elasticsearch Service [index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md).
+    * *ilm_enabled*: Enables and disables {{ech}} [index lifecycle management](../../../manage-data/lifecycle/index-lifecycle-management.md).
     * *api_key*: If you choose to use an API key to authenticate (as discussed in the next step), you can provide it here.
 
-3. **Optional**: For additional security, you can generate an {{es}} API key through the {{ecloud}} Console and configure {{ls}} to use the new key to connect securely to the Elasticsearch Service.
+3. **Optional**: For additional security, you can generate an {{es}} API key through the {{ecloud}} Console and configure {{ls}} to use the new key to connect securely to {{ecloud}}.
 
     1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. Select the deployment and go to **☰** > **Management** > **Dev Tools**.
@@ -467,7 +467,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
     ./filebeat -c filebeat.yml
     ```
 
-7. {{ls}} now outputs the Filebeat and Metricbeat data to your Elasticsearch Service instance.
+7. {{ls}} now outputs the Filebeat and Metricbeat data to your {{ech}} instance.
 
 ::::{note}
 In this guide, you manually launch each of the Elastic stack applications through the command line interface. In production, you may prefer to configure {{ls}}, Metricbeat, and Filebeat to run as System Services. Check the following pages for the steps to configure each application to run as a service:
@@ -482,7 +482,7 @@ In this guide, you manually launch each of the Elastic stack applications throug
 
 ## View data in Kibana [ec-beats-logstash-view-kibana]
 
-In this section, you log into Elasticsearch Service, open Kibana, and view the Kibana dashboards populated with our Metricbeat and Filebeat data.
+In this section, you log into {{ech}}, open Kibana, and view the Kibana dashboards populated with our Metricbeat and Filebeat data.
 
 **View the Metricbeat dashboard**
 

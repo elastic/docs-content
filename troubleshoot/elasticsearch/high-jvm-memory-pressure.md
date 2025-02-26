@@ -20,7 +20,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 From your deployment menu, click **Elasticsearch**. Under **Instances**, each instance displays a **JVM memory pressure** indicator. When the JVM memory pressure reaches 75%, the indicator turns red.
 
 You can also use the [nodes stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-stats) to calculate the current JVM memory pressure for each node.

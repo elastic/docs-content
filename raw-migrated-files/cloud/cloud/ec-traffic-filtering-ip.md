@@ -1,11 +1,11 @@
 # IP traffic filters [ec-traffic-filtering-ip]
 
-Traffic filtering, by IP address or CIDR block, is one of the security layers available in Elasticsearch Service. It allows you to limit how your deployments can be accessed. We have two types of filters available for filtering by IP address or CIDR block: Ingress/Inbound and Egress/Outbound (Beta, API only).
+Traffic filtering, by IP address or CIDR block, is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed. We have two types of filters available for filtering by IP address or CIDR block: Ingress/Inbound and Egress/Outbound (Beta, API only).
 
 * **Ingress or inbound IP filters** - These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the {{ecloud}} Console.
 * **Egress or outbound IP filters** - These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is in beta and is currently only available through the [Traffic Filtering API](../../../deploy-manage/security/manage-traffic-filtering-through-api.md).
 
-Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in Elasticsearch Service.
+Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in {{ecloud}}.
 
 Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console.
 
