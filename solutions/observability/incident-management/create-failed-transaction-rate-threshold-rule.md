@@ -9,8 +9,7 @@ navigation_title: "Failed transaction rate threshold"
 # Create a failed transaction rate threshold rule [observability-create-failed-transaction-rate-threshold-alert-rule]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create failed transaction rate threshold rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -36,7 +35,7 @@ To create your failed transaction rate threshold rule:
 2. Select **Manage Rules** from the **Alerts** page, and select **Create rule**.
 3. Enter a **Name** for your rule, and any optional **Tags** for more granular reporting (leave blank if unsure).
 4. Select the **Failed transaction rate threshold** rule type from the APM use case.
-5. Select the appropriate **Service**, **Type***, **Environment** and **Name** (or leave **ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
+5. Select the appropriate **Service**, **Type**, **Environment** and **Name** (or leave **ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
 6. Enter a fail rate in the **Is Above** (defaults to 30%).
 7. Define the period to be assessed in **For the last** (defaults to last 5 minutes).
 8. Choose how to **Group alerts by**. Every unique value will create an alert.
@@ -165,7 +164,7 @@ This guide will create an alert for an error group ID based on the following cri
 * Check every 1 minute
 * Send the alert via email to the site reliability team
 
-From any page in **Applications**, select **Alerts and rules*** → ***Create threshold rule** → **Failed transaction rate**. Change the name of the alert (if you wish), but do not edit the tags.
+From any page in **Applications**, select **Alerts and rules** → **Create threshold rule** → **Failed transaction rate**. Change the name of the alert (if you wish), but do not edit the tags.
 
 Based on the criteria above, define the following rule details:
 

@@ -113,8 +113,8 @@ When the script is done, you’ll see a message like "{{agent}} is configured an
 
 There might be a slight delay before logs and other data are ingested.
 
-::::{admonition} Need to scan your host again?
-:class: note
+::::{note}
+**Need to scan your host again?**
 
 The auto-detection script (`auto_detect.sh`) is downloaded to the directory where you ran the installation command. You can re-run the script on the same host to detect additional logs. The script will scan the host and reconfigure {{agent}} with any additional logs that are found. If the script misses any custom logs, you can add them manually by entering `n` after the script has finished scanning the host.
 

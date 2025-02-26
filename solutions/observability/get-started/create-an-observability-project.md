@@ -9,8 +9,7 @@ mapped_pages:
 # Create an observability project [observability-create-an-observability-project]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 The **Admin** role or higher is required to create projects. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 
