@@ -4,6 +4,11 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-autoscaling.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-autoscaling.html
+applies_to:
+  deployment:
+    ece: ga
+    ess: ga
+    eck: ga
 ---
 
 # Autoscaling
@@ -22,24 +27,6 @@ Autoscaling supports the scale-up and scale-down of dedicated {{ml}} nodes. Auto
 Autoscaling is not supported on Debian 8.
 ::::
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/344
-
-% Scope notes: Creating a new landing page and subheadings/pages for different deployment types. Merge content when appropriate
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-autoscaling.md
-%      Notes: 1 child
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-autoscaling.md
-%      Notes: 2 children
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md
-%      Notes: 2 children
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md
-
-% --------------
-
 Autoscaling helps you to more easily manage your deployments by adjusting their available resources automatically, and currently supports scaling for both data and machine learning nodes, or machine learning nodes only. Check the following sections to learn more:
 
 * [Overview](#ec-autoscaling-intro)
@@ -51,16 +38,16 @@ Autoscaling helps you to more easily manage your deployments by adjusting their 
 
 ::::{tab-set}
 
-:::{tab-item} {{ecloud}}
-You can also have a look at our [autoscaling example](./autoscaling/ec-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/ec-autoscaling-api-example.md).
+:::{tab-item} {{ech}}
+You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/ec-autoscaling-api-example.md).
 :::
 
 :::{tab-item} {{ece}}
 You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/ece-autoscaling-api-example.md).
 :::
 
-:::{tab-item} {{ech}}
-You can also have a look at our [autoscaling example](./autoscaling/ech-autoscaling-example.md).
+:::{tab-item} {{ecloud}} - Heroku
+You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md).
 :::
 
 ::::
@@ -113,7 +100,7 @@ On a highly available deployment, autoscaling events are always applied to insta
 $$$ece-autoscaling-notifications$$$$$$ech-autoscaling-notifications$$$
 ::::{tab-set}
 
-:::{tab-item} {{ecloud}} and {{ech}}
+:::{tab-item} {{ech}} and {{ecloud}} - Heroku
 In the event that a data tier or machine learning node scales up to its maximum possible size, you’ll receive an email, and a notice also appears on the deployment overview page prompting you to adjust your autoscaling settings to ensure optimal performance.
 :::
 
@@ -133,7 +120,7 @@ $$$ece-autoscaling-restrictions$$$$$$ech-autoscaling-restrictions$$$The followin
 
 ::::{tab-set}
 
-:::{tab-item} {{ecloud}}
+:::{tab-item} {{ech}}
 * Trial deployments cannot be configured to autoscale beyond the normal Trial deployment size limits. The maximum size per zone is increased automatically from the Trial limit when you convert to a paid subscription.
 * ELSER deployments do not scale automatically. For more information, refer to [ELSER](../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md).
 :::
@@ -152,7 +139,7 @@ $$$ece-autoscaling-enable$$$$$$ech-autoscaling-enable$$$To enable or disable aut
 
 ::::{tab-set}
 
-:::{tab-item} {{ecloud}}
+:::{tab-item} {{ech}}
 [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body)
 :::
 
@@ -160,7 +147,7 @@ $$$ece-autoscaling-enable$$$$$$ech-autoscaling-enable$$$To enable or disable aut
 [Cloud UI](../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md)
 :::
 
-:::{tab-item} {{ech}}
+:::{tab-item} {{ecloud}} -  Heroku
 [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body)
 :::
 ::::
@@ -186,7 +173,7 @@ $$$ece-autoscaling-update$$$$$$ech-autoscaling-update$$$Each autoscaling setting
 
 ::::{tab-set}
 
-:::{tab-item} {{ecloud}}
+:::{tab-item} {{ech}}
 [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body)
 :::
 
@@ -194,7 +181,7 @@ $$$ece-autoscaling-update$$$$$$ech-autoscaling-update$$$Each autoscaling setting
 [Cloud UI](../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md)
 :::
 
-:::{tab-item} {{ech}}
+:::{tab-item} {{ecloud}} - Heroku
 [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body)
 :::
 ::::

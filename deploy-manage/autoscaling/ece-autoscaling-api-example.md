@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-autoscaling-api-example.html
+applies_to:
+  deployment:
+    ece: ga
 ---
 
 # {{ece}} autoscaling through the API [ece-autoscaling-api-example]

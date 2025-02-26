@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stateless-autoscaling.html
+applies_to:
+  deployment:
+    eck: ga
 ---
 
 # Autoscaling stateless applications on ECK [k8s-stateless-autoscaling]

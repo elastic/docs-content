@@ -469,11 +469,9 @@ toc:
               - file: tools/cross-cluster-replication/_perform_update_or_delete_by_query.md
   - file: autoscaling.md
     children:
-      - file: autoscaling/ec-autoscaling-example.md
-      - file: autoscaling/ec-autoscaling-api-example.md
       - file: autoscaling/ece-autoscaling-example.md
+      - file: autoscaling/ec-autoscaling-api-example.md
       - file: autoscaling/ece-autoscaling-api-example.md
-      - file: autoscaling/ech-autoscaling-example.md
       - file: autoscaling/autoscaling-stateless-applications-on-eck.md
       - file: autoscaling/deployments-autoscaling-on-eck.md
       - file: autoscaling/autoscaling-deciders.md

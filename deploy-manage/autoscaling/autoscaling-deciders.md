@@ -8,6 +8,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-frozen-existence-decider.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-machine-learning-decider.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/autoscaling-fixed-decider.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Autoscaling deciders [autoscaling-deciders]

@@ -2,6 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/general-ml-nlp-auto-scale.html
   - https://www.elastic.co/guide/en/serverless/current/general-ml-nlp-auto-scale.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Trained model autoscaling
