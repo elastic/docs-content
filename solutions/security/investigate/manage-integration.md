@@ -18,7 +18,7 @@ applies_to:
 * The [Osquery Manager](https://docs.elastic.co/en/integrations/osquery_manager) integration has been added and configured for an agent policy through {{fleet}}. This integration supports x64 architecture on Windows, MacOS, and Linux platforms, and ARM64 architecture on Linux.
 
 ::::{note}
-* The original [Filebeat Osquery module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-osquery.md) and the [Osquery](https://docs.elastic.co/en/integrations/osquery) integration collect logs from self-managed Osquery deployments. The **Osquery Manager** integration manages Osquery deployments and supports running and scheduling queries from {{kib}}.
+* The original [Filebeat Osquery module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-osquery.md) and the [Osquery](https://docs.elastic.co/en/integrations/osquery) integration collect logs from self-managed Osquery deployments. The **Osquery Manager** integration manages Osquery deployments and supports running and scheduling queries from {{kib}}.
 * **Osquery Manager** cannot be integrated with an {{agent}} in standalone mode.
 
 ::::

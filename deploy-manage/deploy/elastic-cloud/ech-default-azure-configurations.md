@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku Azure default provider instance configurations [ech-default-azure-configurations]
 
-Following are the preferred instance types / machine configurations, storage types, disk to memory ratios, and virtual CPU to RAM ratios for all instance configurations available on {{ess}} and provided by Azure.
+Following are the preferred instance types / machine configurations, storage types, disk to memory ratios, and virtual CPU to RAM ratios for all instance configurations available on {{ech}} and provided by Azure.
 
 | Instance configuration | Preferred Instance Type or Machine Configuration1 | Storage Type1 | Disk:Memory Ratio2 | vCPU/RAM Ratio |
 | --- | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ Following are the preferred instance types / machine configurations, storage typ
 
 ## Additional instances [ech-additional-instances] 
 
-Following are the preferred instance type / configuration and virtual CPU to RAM ratios for additional instance configurations available on {{ess}} and provided by Azure.
+Following are the preferred instance type / configuration and virtual CPU to RAM ratios for additional instance configurations available on {{ech}} and provided by Azure.
 
 | Instance configuration | Preferred Instance Type or Machine Configuration1 | vCPU/RAM Ratio |
 | --- | --- | --- |

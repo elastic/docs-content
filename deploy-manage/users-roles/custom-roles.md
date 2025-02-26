@@ -1,13 +1,13 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/custom-roles.html
-applies:
+applies_to:
   serverless: all
 ---
 
 This content applies to: [![Elasticsearch](../../images/serverless-es-badge.svg "")](../../solutions/search.md) [![Security](../../images/serverless-sec-badge.svg "")](../../solutions/security/elastic-security-serverless.md)
 
-# Project custom roles [custom-roles]
+# Serverless project custom roles [custom-roles]
 
 Built-in [organization-level roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_organization_level_roles) and [instance access roles](/deploy-manage/users-roles/cloud-organization/user-roles.md#ec_instance_access_roles) are great for getting started with {{serverless-full}}, and for system administrators who do not need more restrictive access.
 

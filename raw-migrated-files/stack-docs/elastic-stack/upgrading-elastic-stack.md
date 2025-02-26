@@ -16,8 +16,8 @@ Upgrading from a release candidate build, such as 8.0.0-rc1 or 8.0.0-rc2, is not
 1. Review the breaking changes for each product you use and make the necessary changes so your code is compatible with 9.0.0-beta1:
 
     * [APM breaking changes](https://www.elastic.co/guide/en/observability/current/apm-breaking.html)
-    * [{{beats}} breaking changes](asciidocalypse://docs/beats/docs/release-notes/breaking-changes/beats.md)
-    * [{{es}} migration guide](asciidocalypse://docs/elasticsearch/docs/release-notes/breaking-changes/elasticsearch.md)
+    * [{{beats}} breaking changes](asciidocalypse://docs/beats/docs/release-notes/breaking-changes.md)
+    * [{{es}} migration guide](asciidocalypse://docs/elasticsearch/docs/release-notes/breaking-changes.md)
     * [{{elastic-sec}} release notes](https://www.elastic.co/guide/en/security/current/release-notes.html)
     * [{{ents}} release notes](https://www.elastic.co/guide/en/enterprise-search/current/changelog.html)
     * [{{fleet}} and {{agent}} release notes](asciidocalypse://docs/docs-content/docs/release-notes/fleet.md)

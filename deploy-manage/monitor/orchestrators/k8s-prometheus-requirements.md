@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-prometheus-requirements.html
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 ---
 
 # Prometheus requirements [k8s-prometheus-requirements]

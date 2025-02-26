@@ -1,32 +1,41 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-create-saml-profiles.html
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # SAML [ece-create-saml-profiles]
 
-You can configure Elastic Cloud Enterprise to delegate authentication of users to a Security Assertion Markup Language (SAML) authentication provider. Elastic Cloud Enterprise supports the SAML 2.0 Web Browser Single Sign On Profile only and this requires the use of a web browser. Due to this, SAML profiles should not be used for standard API clients. The security deployment acts as a SAML 2.0 compliant *service provider*.
+You can configure {{ece}} to delegate authentication of users to a Security Assertion Markup Language (SAML) authentication provider. {{ece}} supports the SAML 2.0 Web Browser Single Sign On Profile only, and this requires the use of a web browser. Due to this, SAML profiles should not be used for standard API clients. The security deployment acts as a SAML 2.0 compliant *service provider*.
 
-There are several sections to the profile:
+:::{{tip}}
+This topic describes implementing SAML SSO at the {{ece}} installation level. If you want to control access to a specific deployment, then refer to [SAML authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md).
+:::
 
-* Specify the [general SAML settings](#ece-saml-general-settings).
-* Specify the necessary [attribute mappings](#ece-saml-attributes)
-* Create [role mappings](#ece-saml-role-mapping), either to all users that match the profile or assign roles to specific attribute values.
-* Add any [custom configuration](#ece-saml-custom-configuration) advanced settings to the YAML file. For example, if you need to ignore the SSL check for the SSL certificate of the Domain Controller in a testing environment, you might add `ssl.verification_mode: none`. Note that all entries added should omit `xpack.security.authc.realms.saml.$realm_id` prefix, as ECE will insert this itself and automatically account for any differences in format across Elasticsearch versions.
-* Optional: Prepare the [trusted SSL certificate bundle](#ece-saml-ssl-certificates).
-* Sign the [outgoing SAML messages](#ece-configure-saml-signing-certificates).
-* [Encrypt SAML messages](#ece-encrypt-saml).
+To set up SAML authentication, perform the following steps:
 
-$$$ece-saml-general-settings$$$Begin the provider profile by adding the general settings:
+1. Specify the [general SAML settings](#ece-saml-general-settings).
+2. Specify the necessary [attribute mappings](#ece-saml-attributes)
+3. Create [role mappings](#ece-saml-role-mapping), either to all users that match the profile or assign roles to specific attribute values.
+4. Add any [custom configuration](#ece-saml-custom-configuration) advanced settings to the YAML file.
+5. Optional: Prepare the [trusted SSL certificate bundle](#ece-saml-ssl-certificates).
+6. Sign the [outgoing SAML messages](#ece-configure-saml-signing-certificates).
+7. [Encrypt SAML messages](#ece-encrypt-saml).
 
-1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
+## Add the general settings [ece-saml-general-settings]
+
+Begin the provider profile by adding the general settings:
+
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Go to **Users** and then **Authentication providers**.
 3. From the **Add provider** drop-down menu, select **SAML**.
 4. Provide a unique profile name. This name becomes the realm ID, with any spaces replaced by hyphens.
 
     The name can be changed, but the realm ID cannot. The realm ID becomes part of the [certificate bundle](#ece-saml-ssl-certificates).
 
-5. Enter the Assertion Consumer Service URL endpoint within Elastic Cloud Enterprise that receives the SAML assertion.
+5. Enter the Assertion Consumer Service URL endpoint within {{ece}} that receives the SAML assertion.
 
     Example: `https://HOSTNAME_OR_IP_ADDRESS:12443/api/v1/users/auth/saml/_callback`
 
@@ -38,7 +47,7 @@ $$$ece-saml-general-settings$$$Begin the provider profile by adding the general 
 
     Example: `urn:example:idp`
 
-8. Enter the URI for the SAML **service provider entity ID** that represents Elastic Cloud Enterprise. The only restriction is that this is a valid URI, but the common practice is to use the domain name where the Service Provider is available.
+8. Enter the URI for the SAML **service provider entity ID** that represents {{ece}}. The only restriction is that this is a valid URI, but the common practice is to use the domain name where the Service Provider is available.
 
     Example: `http://SECURITY_DEPLOYMENT_IP:12443`
 
@@ -48,21 +57,30 @@ $$$ece-saml-general-settings$$$Begin the provider profile by adding the general 
 
 
 
-## Map SAML attributes to User Properties [ece-saml-attributes]
+## Map SAML attributes to user properties [ece-saml-attributes]
 
-The SAML assertion about a user usually includes attribute names and values that can be used for role mapping. The configuration in this section allows to configure a mapping between these SAML attribute values and [Elasticsearch user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-elasticsearch-authentication). When the attributes have been mapped to user properties such as `groups`, these can then be used to configure  [role mappings](#ece-saml-role-mapping). Mapping the `principal` user property is required and the `groups` property is recommended for a minimum configuration.
+The SAML assertion about a user usually includes attribute names and values that can be used for role mapping. The configuration in this section allows to configure a mapping between these SAML attribute values and [{{es}} user properties](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-es-user-properties).
 
-Note that some additional attention must be paid to the `principal` user property. Although the SAML specification does not have many restrictions on the type of value that is mapped, ECE requires that the mapped value is also a valid Elasticsearch native realm identifier. Specifically, this means the mapped identifier should not contain any commas or slashes, and should be otherwise URL friendly.
+When the attributes have been mapped to user properties such as `groups`, these can then be used to configure  [role mappings](#ece-saml-role-mapping). Mapping the `principal` user property is required and the `groups` property is recommended for a minimum configuration.
+
+:::{note}
+Although the SAML specification does not have many restrictions on the type of value that is mapped to the `principal` user property, ECE requires that the mapped value is also a valid {{es}} native realm identifier. 
+
+This means the mapped identifier should not contain any commas or slashes, and should be otherwise URL friendly.
+:::
 
 
 ## Create role mappings [ece-saml-role-mapping]
 
-When a user is authenticated, the role mapping assigns them roles in Elastic Cloud Enterprise. You can assign roles by:
+When a user is authenticated, the role mapping assigns them roles in {{ece}}.
 
-* Assigning all authenticated users a single role, select one of the **Default roles**.
-* Assigning roles according to the user properties (such as `dn`, `groups`, `username`), use the **Add role mapping rule** fields.
+To assign all authenticated users a single role, select one of the **Default roles**.
 
-In the following example, you have configured the Elasticsearch user property `groups` to map to the SAML attribute with name `SAML_Roles` and you want only users whose SAML assertion contains the `SAML_Roles` attribute with value `p_viewer` to get the `Platform viewer` role in Elastic Cloud Enterprise.
+To assign roles according to the user properties (such as `dn`, `groups`, `username`), use the **Add role mapping rule** fields.
+
+For a list of roles, refer to [Available roles and permissions](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md#ece-user-role-permissions).
+
+In the following example, you have configured the {{es}} user property `groups` to map to the SAML attribute with name `SAML_Roles` and you want only users whose SAML assertion contains the `SAML_Roles` attribute with value `p_viewer` to get the `Platform viewer` role in {{ece}}.
 
 To complete the role mapping:
 
@@ -75,17 +93,23 @@ To complete the role mapping:
 
 ## Custom configuration [ece-saml-custom-configuration]
 
-You can add any additional settings to the **Advanced configuration** YAML file.
+You can add any additional settings to the **Advanced configuration** YAML file. 
+
+For example, if you need to ignore the SSL check for the SSL certificate of the domain controller in a testing environment, you might add `ssl.verification_mode: none`.
+
+:::{note}
+All entries added should omit the `xpack.security.authc.realms.ldap.$realm_id` prefix, as ECE will insert this itself and automatically account for any differences in format across {{es}} versions.
+:::
 
 You can also enable some other options:
 
-* **Use single logout (SLO)** makes sure that when a user logs out of Elastic Cloud Enterprise, they will also be redirected to the SAML Identity Provider so that they can logout there and subsequently logout from all of the other SAML sessions they might have with other SAML Service Providers.
+* **Use single logout (SLO)** makes sure that when a user logs out of {{ece}}, they will also be redirected to the SAML Identity Provider so that they can logout there and subsequently log out from all of the other SAML sessions they might have with other SAML Service Providers.
 * **Enable force authentication** means that the Identity Provider must re-authenticate the user for each new session, even if the user has an existing, authenticated session with the Identity Provider.
 
 
-## Prepare SAML SSL certificates [ece-saml-ssl-certificates]
+## Prepare SAML SSL certificates (Optional) [ece-saml-ssl-certificates]
 
-Though optional, you can add one or more certificate authorities (CAs) to validate the SSL/TLS certificate of the server that is hosting the metadata file. This might be useful when the Identity Provider uses a certificate for TLS that is signed by an organization specific Certification Authority, that is not trusted by default by Elastic Cloud Enterprise.
+You can add one or more certificate authorities (CAs) to validate the SSL/TLS certificate of the server that is hosting the metadata file. This might be useful when the Identity Provider uses a certificate for TLS that is signed by an organization specific Certification Authority, that is not trusted by default by {{ece}}.
 
 1. Expand the **Advanced settings**.
 2. Provide the **SSL certificate URL** to the ZIP file.
@@ -98,7 +122,7 @@ Though optional, you can add one or more certificate authorities (CAs) to valida
 
 ## Configure SAML signing certificates [ece-configure-saml-signing-certificates]
 
-Elastic Cloud Enterprise can be configured to sign all outgoing SAML messages. Signing the outgoing messages provides assurance that the messages are coming from the expected service.
+{{ece}} can be configured to sign all outgoing SAML messages. Signing the outgoing messages provides assurance that the messages are coming from the expected service.
 
 1. Provide the **Signing certificate URL** to the ZIP file with the private key and certificate.
 
@@ -110,7 +134,7 @@ Elastic Cloud Enterprise can be configured to sign all outgoing SAML messages. S
 
 ## Configure for the encryption of SAML messages [ece-encrypt-saml]
 
-If your environment requires SAML messages to be encrypted communications, Elastic Cloud Enterprise can be configured with an encryption certificate and key pair. When the Identity Provider uses the public key in this certificate to encrypt the SAML Response ( or parts of it ), Elastic Cloud Enterprise will use the corresponding key to decrypt the message.
+If your environment requires SAML messages to be encrypted communications, {{ece}} can be configured with an encryption certificate and key pair. When the Identity Provider uses the public key in this certificate to encrypt the SAML Response ( or parts of it ), {{ece}} will use the corresponding key to decrypt the message.
 
 1. Provide the **Encryption certificate URL** to the ZIP file with the private key and certificate.
 

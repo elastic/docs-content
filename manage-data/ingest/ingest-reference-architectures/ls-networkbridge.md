@@ -29,7 +29,7 @@ Info on configuring {{agent}}:
 Info on {{ls}} and {{ls}} plugins:
 
 * [{{ls}} Reference](https://www.elastic.co/guide/en/logstash/current)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
+* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
 
 Info on {{es}}:
 

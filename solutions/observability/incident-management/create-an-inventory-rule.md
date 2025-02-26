@@ -22,7 +22,7 @@ Based on the resources listed on the **Infrastructure inventory** page within th
 Additionally, each rule can be defined using multiple conditions that combine metrics and thresholds to create precise notifications and reduce false positives.
 
 1. To access this page, go to **{{observability}}** → **Infrastructure**.
-2. On the **Infrastructure inventory** page or the **Metrics Explorer*** page, click ***Alerts and rules** → **Infrastructure**.
+2. On the **Infrastructure inventory** page or the **Metrics Explorer** page, click **Alerts and rules** → **Infrastructure**.
 3. Select **Create inventory rule**.
 
 ::::{tip}
