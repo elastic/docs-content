@@ -37,39 +37,39 @@ Each APM agent has a list of supported configurations. After selecting a Service
 Supported configurations are also tagged with the ![dynamic config](../../../images/observability-dynamic-config.svg "") badge in each APM agent’s configuration reference:
 
 Android agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/android/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-android/docs/reference/configuration.md)
 
 Go agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/go/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
 
 iOS agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/swift/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md)
 
 Java agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/java/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
 
 .NET agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/dotnet/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
 
 Node.js agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/nodejs/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md)
 
 PHP agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/php/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
 
 Python agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/python/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
 
 Ruby agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/ruby/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
 
 Real User Monitoring (RUM) agent
-:   [Configuration reference](https://www.elastic.co/guide/en/apm/agent/rum-js/current/configuration.html)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md)
 
 
 ## APM Server configuration [_apm_server_configuration]
 
 For most users, APM agent configuration should work out-of-the-box. If you run into trouble, it may be because you’re not using the {{es}} output, or because your {{es}} credentials don’t have sufficient privileges.
 
-See [configure APM agent configuration](https://www.elastic.co/guide/en/apm/guide/current/configure-agent-config.html) to learn how to configure APM Server to avoid these problems.
+See [configure APM agent configuration](/solutions/observability/apps/configure-apm-agent-central-configuration.md) to learn how to configure APM Server to avoid these problems.
 

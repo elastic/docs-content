@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "{{es}} query"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rule-type-es-query.html
@@ -52,7 +52,7 @@ When you create an {{es}} query rule, your choice of query type affects the info
     :   Specify how to calculate the value that is compared to the threshold. The value is calculated by aggregating a numeric field within the time window. The aggregation options are: `count`, `average`, `sum`, `min`, and `max`. When using `count` the document count is used and an aggregation field is not necessary.
 
     Over or Grouped Over
-    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html) or [multi terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-multi-terms-aggregation.html); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
+    :   Specify whether the aggregation is applied over all documents or split into groups using up to four grouping fields. If you choose to use grouping, it’s a [terms](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) or [multi terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-multi-terms-aggregation.md); an alert will be created for each unique set of values when it meets the condition. To limit the number of alerts on high cardinality fields, you must specify the number of groups to check against the threshold. Only the top groups are checked.
 
     Threshold
     :   Defines a threshold value and a comparison operator  (`is above`, `is above or equals`, `is below`, `is below or equals`, or `is between`). The value calculated by the aggregation is compared to this threshold.
@@ -114,7 +114,7 @@ You can further refine the conditions under which actions run by specifying that
 
 When you create a rule in {{kib}}, it provides an example message that is appropriate for each action. For example, the following message is provided for server log connector actions that run for each alert:
 
-```mustache
+```handlebars
 Elasticsearch query rule '{{rule.name}}' is active:
 
 - Value: {{context.value}}
@@ -141,7 +141,7 @@ The following variables are specific to the {{es}} query rule:
 `context.hits`
 :   (array of objects) The most recent documents that matched the query. Using the [Mustache](https://mustache.github.io/) template array syntax, you can iterate over these hits to get values from the {{es}} documents into your actions. For example, the message in an email connector action might contain:
 
-    ```mustache
+    ```handlebars
     Elasticsearch query rule '{{rule.name}}' is active:
 
     {{#context.hits}}
@@ -150,9 +150,9 @@ The following variables are specific to the {{es}} query rule:
     {{/context.hits}}
     ```
 
-    The documents returned by `context.hits` include the [`_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) field. If the {{es}} query search API’s [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
+    The documents returned by `context.hits` include the [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) field. If the {{es}} query search API’s [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param) parameter is used, documents will also return the `fields` field, which can be used to access any runtime fields defined by the [`runtime_mappings`](../../../manage-data/data-store/mapping/define-runtime-fields-in-search-request.md) parameter. For example:
 
-    ```mustache
+    ```handlebars
     {{#context.hits}}
     timestamp: {{_source.@timestamp}}
     day of the week: {{fields.day_of_week}} <1>
@@ -162,9 +162,9 @@ The following variables are specific to the {{es}} query rule:
     1. The `fields` parameter here is used to access the `day_of_week` runtime field.
 
 
-    As the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
+    As the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-response) response always returns an array of values for each field, the [Mustache](https://mustache.github.io/) template array syntax is used to iterate over these values in your actions. For example:
 
-    ```mustache
+    ```handlebars
     {{#context.hits}}
     Labels:
     {{#fields.labels}}

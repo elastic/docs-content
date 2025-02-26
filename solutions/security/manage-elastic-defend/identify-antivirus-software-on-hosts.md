@@ -20,7 +20,7 @@ After you’ve installed {{elastic-defend}} on one or more hosts, you can use **
 ::::{admonition} Requirements
 To use this feature, you need:
 
-* A Security Analytics Complete [subscription](https://www.elastic.co/pricing/serverless-security).
+* In serverless, a Security Analytics Complete [subscription](https://www.elastic.co/pricing/serverless-security).
 * The **Endpoint Insights: Read** or **Endpoint Insights: All** security sub-feature privilege.
 * A working [LLM connector](../ai/set-up-connectors-for-large-language-models-llm.md) for AI Assistant.
 

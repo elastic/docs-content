@@ -11,7 +11,7 @@ To find which Elasticsearch versions and plugins are currently available, you ca
 
 For example: Install the add-on version 6.8.23 and include the phonetic analysis plugin for  MY_APP:
 
-```term
+```bash
 heroku addons:create foundelasticsearch --elasticsearch-version 6.8.23 --plugins analysis-phonetic --app MY_APP
 ```
 

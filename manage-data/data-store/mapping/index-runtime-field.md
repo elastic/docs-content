@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-indexed.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Index a runtime field [runtime-indexed]
@@ -82,7 +85,7 @@ PUT my-index-000001/_mapping
 }
 ```
 
-You retrieve the calculated values using the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API:
+You retrieve the calculated values using the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API:
 
 ```console
 GET my-index-000001/_search
@@ -154,7 +157,7 @@ POST my-index-000001/_bulk?refresh=true
 { "timestamp": 1516297294000, "temperature": 202, "voltage": 4.0, "node": "c"}
 ```
 
-You can now retrieve calculated values in a search query, and find documents based on precise values. The following range query returns all documents where the calculated `voltage_corrected` is greater than or equal to `16`, but less than or equal to `20`. Again, use the [`fields`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-fields.html) parameter on the `_search` API to retrieve the fields you want:
+You can now retrieve calculated values in a search query, and find documents based on precise values. The following range query returns all documents where the calculated `voltage_corrected` is greater than or equal to `16`, but less than or equal to `20`. Again, use the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API to retrieve the fields you want:
 
 ```console
 POST my-index-000001/_search

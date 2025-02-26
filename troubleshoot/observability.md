@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/troubleshooting.html
 ---
 
-# Troubleshoot observability [troubleshooting]
+# Troubleshoot Observability [troubleshooting]
 
 Learn how to troubleshoot common issues on your own or ask for help.
 

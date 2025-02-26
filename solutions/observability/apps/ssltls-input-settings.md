@@ -18,7 +18,7 @@ These settings apply to SSL/TLS communication between the APM Server and APM Age
 :::::::{tab-set}
 
 ::::::{tab-item} Fleet-managed
-Enable TLS in the APM integration settings and use the [SSL/TLS input settings]() to set the path to the server certificate and key.
+Enable TLS in the APM integration settings and use the SSL/TLS input settings to set the path to the server certificate and key.
 ::::::
 
 ::::::{tab-item} APM Server binary
@@ -29,8 +29,6 @@ apm-server.ssl.enabled: true
 apm-server.ssl.certificate: "/path/to/apm-server.crt"
 apm-server.ssl.key: "/path/to/apm-server.key"
 ```
-
-A full list of configuration options is available in [SSL/TLS input settings]().
 
 ::::{tip}
 If APM agents are authenticating themselves using a certificate that cannot be authenticated through known CAs (e.g. self signed certificates), use the `ssl.certificate_authorities` to set a custom CA. This will automatically modify the `ssl.client_authentication` configuration to require authentication.
@@ -150,7 +148,7 @@ The list of curve types for ECDHE (Elliptic Curve Diffie-Hellman ephemeral key e
 
 ## List of root certificates for verifying client certificates [_list_of_root_certificates_for_verifying_client_certificates]
 
-The list of root certificates for verifying client certificates. If `certificate_authorities` is empty or not set, the trusted certificate authorities of the host system are used. If `certificate_authorities` is set, `client_authentication` will be automatically set to `required`. Sending client certificates is currently only supported by the RUM agent through the browser, the Java agent (see [Agent certificate authentication](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/ssl-configuration.html)), and the Jaeger agent.
+The list of root certificates for verifying client certificates. If `certificate_authorities` is empty or not set, the trusted certificate authorities of the host system are used. If `certificate_authorities` is set, `client_authentication` will be automatically set to `required`. Sending client certificates is currently only supported by the RUM agent through the browser, the Java agent (see [Agent certificate authentication](asciidocalypse://docs/apm-agent-java/docs/reference/ssl-configuration.md)), and the Jaeger agent.
 
 |     |     |
 | --- | --- |
@@ -160,7 +158,7 @@ The list of root certificates for verifying client certificates. If `certificate
 
 ## Client authentication [_client_authentication]
 
-This configures what types of client authentication are supported. The valid options are `none`, `optional`, and `required`. The default is `none`. If `certificate_authorities` has been specified, this setting will automatically change to `required`. This option only needs to be configured when the agent is expected to provide a client certificate. Sending client certificates is currently only supported by the RUM agent through the browser, the Java agent (see [Agent certificate authentication](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/ssl-configuration.html)), and the Jaeger agent.
+This configures what types of client authentication are supported. The valid options are `none`, `optional`, and `required`. The default is `none`. If `certificate_authorities` has been specified, this setting will automatically change to `required`. This option only needs to be configured when the agent is expected to provide a client certificate. Sending client certificates is currently only supported by the RUM agent through the browser, the Java agent (see [Agent certificate authentication](asciidocalypse://docs/apm-agent-java/docs/reference/ssl-configuration.md)), and the Jaeger agent.
 
 * `none` - Disables client authentication.
 * `optional` - When a client certificate is given, the server will verify it.

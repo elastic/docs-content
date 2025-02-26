@@ -11,7 +11,7 @@ TLS requires X.509 certificates to authenticate the communicating parties and pe
 
 In a standard TLS configuration, the server presents a signed certificate to authenticate itself to the client. In a mutual TLS configuration, the client also presents a signed certificate to authenticate itself to the server.
 
-{{es}} {security-features} are enabled on your cluster by default, so each request that {{kib}} (the client) makes to {{es}} (the server) is authenticated. Most requests made by end users through {{kib}} to {{es}} are authenticated by using the credentials of the logged-in user.
+{{es}} {{security-features}} are enabled on your cluster by default, so each request that {{kib}} (the client) makes to {{es}} (the server) is authenticated. Most requests made by end users through {{kib}} to {{es}} are authenticated by using the credentials of the logged-in user.
 
 To [enroll {{kib}} with an {{es}} cluster](../../../deploy-manage/security/security-certificates-keys.md#stack-start-with-security), you pass a generated enrollment token. This token configures {{kib}} to authenticate with {{es}} using a [service account token](../../../deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts.md#service-accounts-tokens). {{kib}} also supports mutual TLS authentication with {{es}} via a [Public Key Infrastructure (PKI) realm](../../../deploy-manage/users-roles/cluster-or-deployment-auth/pki.md). With this setup, {{es}} needs to verify the signature on the {{kib}} client certificate, and it also needs to map the client certificate’s distinguished name (DN) to the appropriate `kibana_system` role.
 
@@ -34,7 +34,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
     ::::
 
 
-    You may choose to generate a client certificate and private key using the [`elasticsearch-certutil`](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html) tool. If you followed the {{es}} documentation for [generating the certificates authority](../../../deploy-manage/security/set-up-basic-security.md#generate-certificates), then you already have a certificate authority (CA) to sign the {{es}} server certificate. You may choose to use the same CA to sign the {{kib}} client certificate. For example:
+    You may choose to generate a client certificate and private key using the [`elasticsearch-certutil`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md) tool. If you followed the {{es}} documentation for [generating the certificates authority](../../../deploy-manage/security/set-up-basic-security.md#generate-certificates), then you already have a certificate authority (CA) to sign the {{es}} server certificate. You may choose to use the same CA to sign the {{kib}} client certificate. For example:
 
     ```sh
     bin/elasticsearch-certutil cert -ca elastic-stack-ca.p12 -name kibana-client -dns <your_kibana_hostname>
@@ -124,5 +124,5 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
 9. Restart {{kib}}.
 
-These steps enable {{kib}} to authenticate to {{es}} using a certificate. However, end users will only be able to authenticate to {{kib}} with a username and password. To allow end users to authenticate to {{kib}} using a client certificate, see [{{kib}} PKI authentication](kibana-authentication.md#pki-authentication).
+These steps enable {{kib}} to authenticate to {{es}} using a certificate. However, end users will only be able to authenticate to {{kib}} with a username and password. To allow end users to authenticate to {{kib}} using a client certificate, see [{{kib}} PKI authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#pki-authentication).
 

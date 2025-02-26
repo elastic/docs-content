@@ -58,3 +58,18 @@ $$$prepare-to-upgrade-8x$$$
 $$$rolling-upgrades$$$
 
 $$$upgrading-reindex$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/kibana/kibana/upgrade.md](/raw-migrated-files/kibana/kibana/upgrade.md)
+* [/raw-migrated-files/kibana/kibana/upgrade-migrations-rolling-back.md](/raw-migrated-files/kibana/kibana/upgrade-migrations-rolling-back.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/upgrading-elasticsearch.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-elasticsearch.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/upgrading-kibana.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-kibana.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-upgrade-deployment.md](/raw-migrated-files/cloud/cloud-enterprise/ece-upgrade-deployment.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-upgrade-deployment.md](/raw-migrated-files/cloud/cloud-heroku/ech-upgrade-deployment.md)
+* [/raw-migrated-files/cloud/cloud/ec-upgrade-deployment.md](/raw-migrated-files/cloud/cloud/ec-upgrade-deployment.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md](/raw-migrated-files/stack-docs/elastic-stack/upgrade-elastic-stack-for-elastic-cloud.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack-on-prem.md](/raw-migrated-files/stack-docs/elastic-stack/upgrading-elastic-stack-on-prem.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-orchestration.md)

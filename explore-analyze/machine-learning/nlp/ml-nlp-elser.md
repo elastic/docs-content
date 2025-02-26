@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "ELSER"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-elser.html
@@ -21,7 +21,7 @@ While ELSER V2 is generally available, ELSER V1 is in [preview] and will remain 
 
 ## Tokens - not synonyms [elser-tokens]
 
-ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](https://www.elastic.co/guide/en/elasticsearch/reference/current/sparse-vector.html) (or [rank features](https://www.elastic.co/guide/en/elasticsearch/reference/current/rank-features.html)) field type is used to store the terms and weights at index time, and to search against later.
+ELSER expands the indexed and searched passages into collections of terms that are learned to co-occur frequently within a diverse set of training data. The terms that the text is expanded into by the model *are not* synonyms for the search terms; they are learned associations capturing relevance. These expanded terms are weighted as some of them are more significant than others. Then the {{es}} [sparse vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) (or [rank features](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/rank-features.md)) field type is used to store the terms and weights at index time, and to search against later.
 
 This approach provides a more understandable search experience compared to vector embeddings. However, attempting to directly interpret the tokens and weights can be misleading, as the expansion essentially results in a vector in a very high-dimensional space. Consequently, certain tokens, especially those with low weight, contain information that is intertwined with other low-weight tokens in the representation. In this regard, they function similarly to a dense vector representation, making it challenging to separate their individual contributions. This complexity can potentially lead to misinterpretations if not carefully considered during analysis.
 
@@ -30,7 +30,7 @@ This approach provides a more understandable search experience compared to vecto
 To use ELSER, you must have the [appropriate subscription](https://www.elastic.co/subscriptions) level for semantic search or the trial period activated.
 
 ::::{note}
-The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in Elasticsearch Service if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
+The minimum dedicated ML node size for deploying and using the ELSER model is 4 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
 Enabling trained model autoscaling for your ELSER deployment is recommended. Refer to [*Trained model autoscaling*](ml-nlp-auto-scale.md) to learn more.
@@ -123,7 +123,7 @@ Alternatively, you can download and deploy ELSER to an {{infer}} pipeline using 
 1. In {{kib}}, navigate to **Search** > **Indices**.
 2. Select the index from the list that has an {{infer}} pipeline in which you want to use ELSER.
 3. Navigate to the **Pipelines** tab.
-4. Under **{{ml-app}} {infer-cap} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
+4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button to begin downloading the ELSER model. This may take a few minutes depending on your network.
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-elser-v2-es.png
     :alt: Deploying ELSER in Elasticsearch
@@ -172,13 +172,13 @@ POST _ml/trained_models/.elser_model_2/deployment/_start?deployment_id=for_searc
 If you want to deploy ELSER in a restricted or closed network, you have two options:
 
 * create your own HTTP/HTTPS endpoint with the model artifacts on it,
-* put the model artifacts into a directory inside the config directory on all [master-eligible nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#master-node).
+* put the model artifacts into a directory inside the config directory on all [master-eligible nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#master-node).
 
 ### Model artifact files [elser-model-artifacts]
 
 For the cross-platform verison, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/elser_model_2.metadata.json
 https://ml-models.elastic.co/elser_model_2.pt
 https://ml-models.elastic.co/elser_model_2.vocab.json
@@ -186,7 +186,7 @@ https://ml-models.elastic.co/elser_model_2.vocab.json
 
 For the optimized version, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.metadata.json
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.pt
 https://ml-models.elastic.co/elser_model_2_linux-x86_64.vocab.json
@@ -213,7 +213,7 @@ You can use any HTTP service to deploy ELSER. This example uses the official Ngi
 
 4. Verify that Nginx runs properly by visiting the following URL in your browser:
 
-    ```url
+    ```text
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/elser_model_2.metadata.json
     ```
 
@@ -284,7 +284,7 @@ To learn more about ELSER performance, refer to the [Benchmark information](#els
 
 ## Pre-cleaning input text [pre-cleaning]
 
-The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/htmlstrip-processor.html) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
+The quality of the input text significantly affects the quality of the embeddings. To achieve the best results, it’s recommended to clean the input text before generating embeddings. The exact preprocessing you may need to do heavily depends on your text. For example, if your text contains HTML tags, use the [HTML strip processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/htmlstrip-processor.md) in an ingest pipeline to remove unnecessary elements. Always review and clean your input text before ingestion to eliminate any irrelevant entities that might affect the results.
 
 ## Recommendations for using ELSER [elser-recommendations]
 

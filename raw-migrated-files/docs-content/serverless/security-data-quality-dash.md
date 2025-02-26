@@ -5,7 +5,7 @@ navigation_title: "Data Quality"
 # Data Quality dashboard [security-data-quality-dash]
 
 
-The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html) (ECS). Successful [mapping](../../../manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}}.
+The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md) (ECS). Successful [mapping](../../../manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}}.
 
 :::{image} ../../../images/serverless--dashboards-data-qual-dash.png
 :alt: The Data Quality dashboard
@@ -25,8 +25,8 @@ Use the Data Quality dashboard to:
 To use the Data Quality dashboard, you need the appropriate user role with the following privileges for each index you want to check:
 
 * `monitor` or `manage`
-* `view_index_metadata` or `manage` (required for the [Get mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html))
-* `read` (required for the [Search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html))
+* `view_index_metadata` or `manage` (required for the [Get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping))
+* `read` (required for the [Search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search))
 
 ::::
 
@@ -70,7 +70,7 @@ After an index is checked, a `Pass` or `Fail` status appears. `Fail` indicates m
 The index check flyout provides more information about the status of fields in that index. Each of its tabs describe fields grouped by mapping status.
 
 ::::{note}
-Fields in the Same family category have the correct search behavior, but might have different storage or performance characteristics (for example, you can index strings to both text and keyword fields). To learn more, refer to [Field data types](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html).
+Fields in the Same family category have the correct search behavior, but might have different storage or performance characteristics (for example, you can index strings to both text and keyword fields). To learn more, refer to [Field data types](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md).
 
 ::::
 

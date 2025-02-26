@@ -10,7 +10,7 @@ Distributed systems like {{es}} are designed to keep working even if some of the
 There is a limit to how small a resilient cluster can be. All {{es}} clusters require the following components to function:
 
 * One [elected master node](../distributed-architecture/discovery-cluster-formation/modules-discovery-quorums.md)
-* At least one node for each [role](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html)
+* At least one node for each [role](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md)
 * At least one copy of every [shard](../../deploy-manage/index.md)
 
 A resilient cluster requires redundancy for every required cluster component. This means a resilient cluster must have the following components:

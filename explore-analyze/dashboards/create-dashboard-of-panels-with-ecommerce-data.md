@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/create-a-dashboard-of-panels-with-ecommerce-data.html
 ---
@@ -37,7 +37,7 @@ Open the visualization editor, then make sure the correct fields appear.
 
 ## Create visualizations with custom time intervals [custom-time-interval]
 
-When you create visualizations with time series data, you can use the default time interval or increase and decrease the interval. For performance reasons, the visualization editor allows you to choose the minimum time interval, but not the exact time interval. The interval limit is controlled by the [`histogram:maxBars`](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#histogram-maxbars) setting and [time range](../query-filter/filtering.md).
+When you create visualizations with time series data, you can use the default time interval or increase and decrease the interval. For performance reasons, the visualization editor allows you to choose the minimum time interval, but not the exact time interval. The interval limit is controlled by the [`histogram:maxBars`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#histogram-maxbars) setting and [time range](../query-filter/filtering.md).
 
 To analyze the data with a custom time interval, create a bar chart that shows you how many orders were made at your store every hour:
 
@@ -110,7 +110,7 @@ To copy a function, you drag it to the **Add or drag-and-drop a field** area wit
 
 1. Drag the **95th** field to **Add or drag-and-drop a field** for **Vertical axis**.
 
-   :::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt8fb6969daa820faf/6700642c363a96bb08f48bee/drag-and-drop-a-field-8.16.0.gif
+   :::{image} ../../images/drag-and-drop-a-field-8.16.0.gif
    :alt: Easily duplicate the items with drag and drop
    :class: screenshot
    :::

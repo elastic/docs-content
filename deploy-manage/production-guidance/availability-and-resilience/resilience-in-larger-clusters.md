@@ -9,7 +9,7 @@ It’s not unusual for nodes to share common infrastructure, such as network int
 
 {{es}} expects node-to-node connections to be reliable, have low latency, and have adequate bandwidth. Many {{es}} tasks require multiple round-trips between nodes. A slow or unreliable interconnect may have a significant effect on the performance and stability of your cluster.
 
-For example, a few milliseconds of latency added to each round-trip can quickly accumulate into a noticeable performance penalty. An unreliable network may have frequent network partitions. {{es}} will automatically recover from a network partition as quickly as it can but your cluster may be partly unavailable during a partition and will need to spend time and resources to [resynchronize any missing data](../../distributed-architecture/shard-allocation-relocation-recovery.md#shard-recovery) and [rebalance](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#shards-rebalancing-settings) itself once the partition heals. Recovering from a failure may involve copying a large amount of data between nodes so the recovery time is often determined by the available bandwidth.
+For example, a few milliseconds of latency added to each round-trip can quickly accumulate into a noticeable performance penalty. An unreliable network may have frequent network partitions. {{es}} will automatically recover from a network partition as quickly as it can but your cluster may be partly unavailable during a partition and will need to spend time and resources to [resynchronize any missing data](../../distributed-architecture/shard-allocation-relocation-recovery.md#shard-recovery) and [rebalance](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#shards-rebalancing-settings) itself once the partition heals. Recovering from a failure may involve copying a large amount of data between nodes so the recovery time is often determined by the available bandwidth.
 
 If you’ve divided your cluster into zones, the network connections within each zone are typically of higher quality than the connections between the zones. Ensure the network connections between zones are of sufficiently high quality. You will see the best results by locating all your zones within a single data center with each zone having its own independent power supply and other supporting infrastructure. You can also *stretch* your cluster across nearby data centers as long as the network interconnection between each pair of data centers is good enough.
 
@@ -51,7 +51,7 @@ As always, your indices should have at least one replica in case a node fails, u
 
 The cluster will be resilient to the loss of any zone as long as:
 
-* The [cluster health status](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) is `green`.
+* The [cluster health status](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-health) is `green`.
 * There are at least two zones containing data nodes.
 * Every index that is not a [searchable snapshot index](../../tools/snapshot-and-restore/searchable-snapshots.md) has at least one replica of each shard, in addition to the primary.
 * [Shard allocation awareness](../../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) is configured to avoid concentrating all copies of a shard within a single zone.

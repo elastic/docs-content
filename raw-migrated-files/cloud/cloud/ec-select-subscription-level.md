@@ -35,16 +35,16 @@ This overview shows you:
 You can [change your subscription level](../../../deploy-manage/cloud-organization/billing/manage-subscription.md) to the recommended level, or stop using the features that belong to a higher level. In the following list, you can find the features we are tracking and the relevant instructions to remove them from your deployments:
 
 `Machine learning`
-:   Edit your deployment to disable [machine learning](https://www.elastic.co/guide/en/machine-learning/current/ml-ad-overview.html).
+:   Edit your deployment to disable [machine learning](/explore-analyze/machine-learning/anomaly-detection.md).
 
 `Searchable snapshots`
 :   Edit your deployment index management policies to disable the frozen tier that is using [searchable snapshots](../../../deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md), or set up your cold tier to not mount indices from a searchable snapshot.
 
 `JDBC/ODBC clients`
-:   Make sure that there are no applications that use the SQL [JDBC](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-jdbc.html) or [ODBC](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-odbc.html) clients.
+:   Make sure that there are no applications that use the SQL [JDBC](/explore-analyze/query-filter/languages/sql-jdbc.md) or [ODBC](/explore-analyze/query-filter/languages/sql-odbc.md) clients.
 
 `Field-level or document-level security`
-:   Remove any user role configurations based on field or document access [through the API](https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html) or the Kibana Roles page.
+:   Remove any user role configurations based on field or document access [through the API](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) or the Kibana Roles page.
 
 ::::{note}
 After you have made your changes to the deployment, it can take up to one hour to clear the notification banner.

@@ -23,3 +23,8 @@ $$$elasticsearch-manage-project-search-ai-lake-settings$$$
 $$$elasticsearch-manage-project-search-power-settings$$$
 
 $$$project-features-add-ons$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/docs-content/serverless/project-and-management-settings.md](/raw-migrated-files/docs-content/serverless/project-and-management-settings.md)
+* [/raw-migrated-files/docs-content/serverless/elasticsearch-manage-project.md](/raw-migrated-files/docs-content/serverless/elasticsearch-manage-project.md)

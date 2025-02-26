@@ -1,8 +1,9 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-ecu.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   serverless: all
 ---
 

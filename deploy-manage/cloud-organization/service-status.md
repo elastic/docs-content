@@ -4,8 +4,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec_subscribe_to_individual_regionscomponents.html
   - https://www.elastic.co/guide/en/cloud/current/ec_service_status_api.html
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-status.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   serverless: all
 ---
 

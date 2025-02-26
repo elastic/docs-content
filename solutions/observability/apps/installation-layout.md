@@ -22,7 +22,7 @@ View the installation layout and default paths for both Fleet-managed APM Server
 :   Main {{agent}} configuration
 
 `/Library/Elastic/Agent/fleet.enc`
-:   Main {{agent}} {fleet} encrypted configuration
+:   Main {{agent}} {{fleet}} encrypted configuration
 
 `/Library/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
 :   Log files for {{agent}} and {{beats}} shippers <sup class="footnote" id="_footnote_lognumbering">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>
@@ -41,7 +41,7 @@ You can install {{agent}} in a custom base path other than `/Library`.  When ins
 :   Main {{agent}} configuration
 
 `/opt/Elastic/Agent/fleet.enc`
-:   Main {{agent}} {fleet} encrypted configuration
+:   Main {{agent}} {{fleet}} encrypted configuration
 
 `/opt/Elastic/Agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
 :   Log files for {{agent}} and {{beats}} shippers <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>
@@ -60,7 +60,7 @@ You can install {{agent}} in a custom base path other than `/opt`.  When install
 :   Main {{agent}} configuration
 
 `C:\Program Files\Elastic\Agent\fleet.enc`
-:   Main {{agent}} {fleet} encrypted configuration
+:   Main {{agent}} {{fleet}} encrypted configuration
 
 `C:\Program Files\Elastic\Agent\data\elastic-agent-*\logs\elastic-agent.ndjson`
 :   Log files for {{agent}} and {{beats}} shippers <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>
@@ -76,7 +76,7 @@ You can install {{agent}} in a custom base path other than `C:\Program Files`.  
 :   Main {{agent}} configuration
 
 `/etc/elastic-agent/fleet.enc`
-:   Main {{agent}} {fleet} encrypted configuration
+:   Main {{agent}} {{fleet}} encrypted configuration
 
 `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
 :   Log files for {{agent}} and {{beats}} shippers <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>
@@ -93,7 +93,7 @@ You can install {{agent}} in a custom base path other than `C:\Program Files`.  
 :   Main {{agent}} configuration
 
 `/etc/elastic-agent/fleet.enc`
-:   Main {{agent}} {fleet} encrypted configuration
+:   Main {{agent}} {{fleet}} encrypted configuration
 
 `/var/lib/elastic-agent/data/elastic-agent-*/logs/elastic-agent.ndjson`
 :   Log files for {{agent}} and {{beats}} shippers <sup class="footnoteref">[<a class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>

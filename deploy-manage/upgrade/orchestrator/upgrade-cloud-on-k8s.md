@@ -66,7 +66,7 @@ If you are using ECK through an OLM-managed distribution channel like [operatorh
 
 ### Upgrading from ECK 1.9 or earlier [k8s_upgrading_from_eck_1_9_or_earlier]
 
-Operator Lifecycle Manager (OLM) and OpenShift OperatorHub users that run with automatic upgrades enabled, are advised to set the `set-default-security-context` [operator flag](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-operator-config.html) explicitly before upgrading to ECK 2.0 or later. If not set, ECK can fail to [auto-detect](https://github.com/elastic/cloud-on-k8s/issues/5061) the correct security context configuration and Elasticsearch Pods may not be allowed to run.
+Operator Lifecycle Manager (OLM) and OpenShift OperatorHub users that run with automatic upgrades enabled, are advised to set the `set-default-security-context` [operator flag](/deploy-manage/deploy/cloud-on-k8s/configure-eck.md) explicitly before upgrading to ECK 2.0 or later. If not set, ECK can fail to [auto-detect](https://github.com/elastic/cloud-on-k8s/issues/5061) the correct security context configuration and Elasticsearch Pods may not be allowed to run.
 
 
 ### Upgrading from ECK 2.0 or later [k8s_upgrading_from_eck_2_0_or_later]

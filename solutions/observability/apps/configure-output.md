@@ -11,7 +11,7 @@ mapped_pages:
 
 Output configuration options.
 
-* [{{ess}}](configure-output-for-elasticsearch-service-on-elastic-cloud.md)
+* [{{ech}}](configure-output-for-elasticsearch-service-on-elastic-cloud.md)
 * [{{es}}](configure-elasticsearch-output.md)
 * [{{ls}}](configure-logstash-output.md)
 * [Kafka](configure-kafka-output.md)

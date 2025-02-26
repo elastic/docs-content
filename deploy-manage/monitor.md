@@ -2,12 +2,13 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitor-elasticsearch-cluster.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-monitoring.html
-applies:
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
   serverless: all
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
 ---
 
 # Monitoring
@@ -23,3 +24,10 @@ applies:
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
 %      Notes: Existing articles about monitoring: Elasticsearch, Cloud, Cloud-enterprise, Cloud on Kubernetes, Kibana books Might need a new landing page
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md)

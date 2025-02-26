@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-restart-deployment.html
+applies_to:
+  deployment:
+     ece:
 ---
 
 # Restart an ECE deployment [ece-restart-deployment]
@@ -15,4 +18,3 @@ To restart a running or a stopped deployment:
 3. In the **Deployment Management** section, select **Restart** and follow the steps to restart a deployment.
 
 You can also edit the configuration of the deployment before restarting it.
-

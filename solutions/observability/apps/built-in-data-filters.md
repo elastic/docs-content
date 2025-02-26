@@ -24,21 +24,21 @@ The default list of sanitized fields attempts to target common field names for d
 
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
-* Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-sanitize-field-names)
-* Java: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-sanitize-field-names)
-* .NET: [`sanitizeFieldNames`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-core.html#config-sanitize-field-names)
-* Node.js: [`sanitizeFieldNames`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#sanitize-field-names)
-* Python: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-sanitize-field-names)
-* Ruby: [`sanitize_field_names`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-sanitize-field-names)
+* Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-sanitize-field-names)
+* Java: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-sanitize-field-names)
+* .NET: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-sanitize-field-names)
+* Node.js: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#sanitize-field-names)
+* Python: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-sanitize-field-names)
+* Ruby: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-sanitize-field-names)
 
 Alternatively, you can completely disable the capturing of HTTP headers. This setting also supports [Central configuration](apm-agent-central-configuration.md):
 
-* Go: [`ELASTIC_APM_CAPTURE_HEADERS`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-capture-headers)
-* Java: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-capture-headers)
-* .NET: [`CaptureHeaders`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-http.html#config-capture-headers)
-* Node.js: [`captureHeaders`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#capture-headers)
-* Python: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-capture-headers)
-* Ruby: [`capture_headers`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-capture-headers)
+* Go: [`ELASTIC_APM_CAPTURE_HEADERS`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-capture-headers)
+* Java: [`capture_headers`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-headers)
+* .NET: [`CaptureHeaders`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-http.md#config-capture-headers)
+* Node.js: [`captureHeaders`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-headers)
+* Python: [`capture_headers`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-headers)
+* Ruby: [`capture_headers`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-headers)
 
 
 ## HTTP bodies [apm-filters-http-body]
@@ -47,19 +47,19 @@ By default, the body of HTTP requests is not recorded. Request bodies often cont
 
 This setting supports [Central configuration](apm-agent-central-configuration.md), which means the list of sanitized fields can be updated without needing to redeploy your services:
 
-* Go: [`ELASTIC_APM_CAPTURE_BODY`](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/configuration.html#config-capture-body)
-* Java: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-core.html#config-capture-body)
-* .NET: [`CaptureBody`](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/config-http.html#config-capture-body)
-* Node.js: [`captureBody`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#capture-body)
-* Python: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/configuration.html#config-capture-body)
-* Ruby: [`capture_body`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/configuration.html#config-capture-body)
+* Go: [`ELASTIC_APM_CAPTURE_BODY`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-capture-body)
+* Java: [`capture_body`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-body)
+* .NET: [`CaptureBody`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-http.md#config-capture-body)
+* Node.js: [`captureBody`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-body)
+* Python: [`capture_body`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-body)
+* Ruby: [`capture_body`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-body)
 
 
 ## Personal data [apm-filters-personal-data]
 
 By default, the APM Server captures some personal data associated with trace events:
 
-* `client.ip`: The client’s IP address. Typically derived from the HTTP headers of incoming requests. `client.ip` is also used in conjunction with the [`geoip` processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html) to assign geographical information to trace events. To learn more about how `client.ip` is derived, see [Deriving an incoming request’s `client.ip` address](anonymous-authentication.md#apm-derive-client-ip).
+* `client.ip`: The client’s IP address. Typically derived from the HTTP headers of incoming requests. `client.ip` is also used in conjunction with the [`geoip` processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md) to assign geographical information to trace events. To learn more about how `client.ip` is derived, see [Deriving an incoming request’s `client.ip` address](anonymous-authentication.md#apm-derive-client-ip).
 * `user_agent`: User agent data, including the client operating system, device name, vendor, and version.
 
 The capturing of this data can be turned off by setting **Capture personal data** to `false`.
@@ -67,7 +67,7 @@ The capturing of this data can be turned off by setting **Capture personal data*
 
 ## Real user monitoring data [apm-filters-real-user-data]
 
-Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/configuration.html#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
+Protecting user data is important. For that reason, individual RUM instrumentations can be disabled in the RUM agent with the [`disableInstrumentations`](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md#disable-instrumentations) configuration variable. Disabled instrumentations produce no spans or transactions.
 
 | Disable | Configuration value |
 | --- | --- |
@@ -91,5 +91,5 @@ Certain agents offer additional filtering and obfuscating options:
 
 **Agent configuration options**
 
-* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/configuration.html#capture-exceptions).
-* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/config-reporter.html#config-include-process-args).
+* (Node.js) Remove errors raised by the server-side process: disable with [captureExceptions](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-exceptions).
+* (Java) Remove process arguments from transactions: disabled by default with [`include_process_args`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-include-process-args).

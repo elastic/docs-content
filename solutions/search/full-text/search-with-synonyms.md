@@ -1,8 +1,7 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-synonyms.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -11,7 +10,7 @@ applies:
 
 $$$ece-add-custom-bundle-example-synonyms$$$
 ::::{note}
-Learn about [adding custom synonym bundles](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html#ece-add-custom-bundle-example-synonyms) to your Elastic Cloud Enterprise deployment.
+Learn about [adding custom synonym bundles](/solutions/search/full-text/search-with-synonyms.md#ece-add-custom-bundle-example-synonyms) to your {{ece}} deployment.
 ::::
 
 
@@ -50,7 +49,7 @@ Your synonyms sets need to be stored in {{es}} so your analyzers can refer to th
 
 ### Synonyms API [synonyms-store-synonyms-api]
 
-You can use the [synonyms APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/synonyms-apis.html) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets.
+You can use the [synonyms APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-synonyms) to manage synonyms sets. This is the most flexible approach, as it allows to dynamically define and modify synonyms sets.
 
 Changes in your synonyms sets will automatically reload the associated analyzers.
 
@@ -59,7 +58,7 @@ Changes in your synonyms sets will automatically reload the associated analyzers
 
 You can store your synonyms set in a file.
 
-A synonyms set file needs to be uploaded to all your cluster nodes, and be located in the configuration directory for your {{es}} distribution. If you’re using {{ess}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+A synonyms set file needs to be uploaded to all your cluster nodes, and be located in the configuration directory for your {{es}} distribution. If you’re using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
 An example synonyms file:
 
@@ -99,7 +98,7 @@ foo => foo bar, baz
 
 To update an existing synonyms set, upload new files to your cluster. Synonyms set files must be kept in sync on every cluster node.
 
-When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-reload-analyzers.html)
+When a synonyms set is updated, search analyzers that use it need to be refreshed using the [reload search analyzers API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers)
 
 This manual syncing and reloading makes this approach less flexible than using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api).
 
@@ -137,17 +136,17 @@ An index with invalid synonym rules cannot be reopened, making it inoperable whe
 ::::
 
 
-{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html) to include synonyms:
+{{es}} uses synonyms as part of the [analysis process](../../../manage-data/data-store/text-analysis.md). You can use two types of [token filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/token-filter-reference.md) to include synonyms:
 
-* [Synonym graph](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html): It is recommended to use it, as it can correctly handle multi-word synonyms ("hurriedly", "in a hurry").
-* [Synonym](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html): Not recommended if you need to use multi-word synonyms.
+* [Synonym graph](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-synonym-graph-tokenfilter.md): It is recommended to use it, as it can correctly handle multi-word synonyms ("hurriedly", "in a hurry").
+* [Synonym](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md): Not recommended if you need to use multi-word synonyms.
 
 Check each synonym token filter documentation for configuration details and instructions on adding it to an analyzer.
 
 
 ### Test your analyzer [synonyms-test-analyzer]
 
-You can test an analyzer configuration without modifying your index settings. Use the [analyze API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-analyze.html) to test your analyzer chain:
+You can test an analyzer configuration without modifying your index settings. Use the [analyze API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-analyze) to test your analyzer chain:
 
 ```console
 GET /_analyze
@@ -171,8 +170,8 @@ Analyzers can be applied at [index time or search time](../../../manage-data/dat
 
 You need to decide when to apply your synonyms:
 
-* Index time: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html).
-* Search time: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn’t require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-reload-analyzers.html) when you make changes to your synonyms.
+* Index time: Synonyms are applied when the documents are indexed into {{es}}. This is a less flexible alternative, as changes to your synonyms require [reindexing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex).
+* Search time: Synonyms are applied when a search is executed. This is a more flexible approach, which doesn’t require reindexing. If token filters are configured with `"updateable": true`, search analyzers can be [reloaded](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-reload-search-analyzers) when you make changes to your synonyms.
 
 Synonyms sets created using the [synonyms API](../../../solutions/search/full-text/search-with-synonyms.md#synonyms-store-synonyms-api) can only be used at search time.
 

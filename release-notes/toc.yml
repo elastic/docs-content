@@ -1,0 +1,33 @@
+toc:
+  - file: index.md
+    children:
+      - file: known-issues/index.md
+        children:
+          - file: known-issues/fleet.md
+          - file: known-issues/observability.md
+            children:
+              - file: known-issues/apm.md
+          - file: known-issues/security.md
+          - file: known-issues/search-ui.md
+          - file: known-issues/serverless.md
+      - file: breaking-changes/index.md
+        children:
+          - file: breaking-changes/fleet-elastic-agent.md
+          - file: breaking-changes/elastic-observability.md
+            children:
+              - file: breaking-changes/elastic-apm.md
+          - file: breaking-changes/elastic-security.md
+      - file: deprecations/index.md
+        children:
+          - file: deprecations/fleet-elastic-agent.md
+          - file: deprecations/elastic-cloud-serverless.md
+          - file: deprecations/elastic-observability.md
+            children:
+              - file: deprecations/elastic-apm.md
+          - file: deprecations/elastic-security.md
+      - file: fleet-elastic-agent.md
+      - file: elastic-cloud-serverless.md
+      - file: elastic-observability.md
+        children:
+          - file: elastic-apm.md
+      - file: elastic-security.md

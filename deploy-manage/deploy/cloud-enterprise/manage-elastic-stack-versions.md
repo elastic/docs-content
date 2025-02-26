@@ -22,6 +22,10 @@ Elasticsearch 7.8 and later comes with Index Lifecycle Management (ILM) always e
 
 ## Most recent Elastic Stack packs [ece_most_recent_elastic_stack_packs]
 
+:::{important}
+Enterprise Search is not available in versions 9.0+.
+:::
+
 The following are the most recently released Elastic Stack packs for version 8.x, 7.x, and 6.x, respectively:
 
 $$$ece-elastic-stack-stackpacks-recent$$$
@@ -344,7 +348,7 @@ You can add new Elastic Stack packs to your installation through the Cloud UI, t
 
 To add a new Elastic Stack pack from the Cloud UI:
 
-1. Download the [Elastic Stack version]() that you want.
+1. Download the Elastic Stack version that you want.
 2. [Log into the Cloud UI](log-into-cloud-ui.md).
 3. From the **Platform** menu, select **Elastic Stack**.
 4. Select **Upload Elastic Stack pack**.

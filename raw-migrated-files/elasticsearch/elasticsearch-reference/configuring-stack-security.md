@@ -34,7 +34,7 @@ There are [some cases](../../../deploy-manage/security/security-certificates-key
 2. Copy the generated `elastic` password and enrollment token. These credentials are only shown when you start {{es}} for the first time.
 
     ::::{note}
-    If you need to reset the password for the `elastic` user or other built-in users, run the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) tool. To generate new enrollment tokens for {{kib}} or {{es}} nodes, run the [`elasticsearch-create-enrollment-token`](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-enrollment-token.html) tool. These tools are available in the {{es}} `bin` directory.
+    If you need to reset the password for the `elastic` user or other built-in users, run the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool. To generate new enrollment tokens for {{kib}} or {{es}} nodes, run the [`elasticsearch-create-enrollment-token`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool. These tools are available in the {{es}} `bin` directory.
 
     ::::
 
@@ -85,11 +85,11 @@ When {{es}} starts for the first time, the security auto-configuration process b
 
 Before enrolling a new node, additional actions such as binding to an address other than `localhost` or satisfying bootstrap checks are typically necessary in production clusters. During that time, an auto-generated enrollment token could expire, which is why enrollment tokens aren’t generated automatically.
 
-Additionally, only nodes on the same host can join the cluster without additional configuration. If you want nodes from another host to join your cluster, you need to set `transport.host` to a [supported value](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#network-interface-values) (such as uncommenting the suggested value of `0.0.0.0`), or an IP address that’s bound to an interface where other hosts can reach it. Refer to [transport settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#transport-settings) for more information.
+Additionally, only nodes on the same host can join the cluster without additional configuration. If you want nodes from another host to join your cluster, you need to set `transport.host` to a [supported value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values) (such as uncommenting the suggested value of `0.0.0.0`), or an IP address that’s bound to an interface where other hosts can reach it. Refer to [transport settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings) for more information.
 
 To enroll new nodes in your cluster, create an enrollment token with the `elasticsearch-create-enrollment-token` tool on any existing node in your cluster. You can then start a new node with the `--enrollment-token` parameter so that it joins an existing cluster.
 
-1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the [`elasticsearch-create-enrollment-token`](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-enrollment-token.html) tool to generate an enrollment token for your new nodes.
+1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the [`elasticsearch-create-enrollment-token`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool to generate an enrollment token for your new nodes.
 
     ```sh
     bin/elasticsearch-create-enrollment-token -s node
@@ -172,7 +172,7 @@ When you install {{es}}, the following certificates and keys are generated in th
 `transport.p12`
 :   Keystore that contains the key and certificate for the transport layer for all the nodes in your cluster.
 
-`http.p12` and `transport.p12` are password-protected PKCS#12 keystores. {{es}} stores the passwords for these keystores as [secure settings](../../../deploy-manage/security/secure-settings.md). To retrieve the passwords so that you can inspect or change the keystore contents, use the [`bin/elasticsearch-keystore`](https://www.elastic.co/guide/en/elasticsearch/reference/current/elasticsearch-keystore.html) tool.
+`http.p12` and `transport.p12` are password-protected PKCS#12 keystores. {{es}} stores the passwords for these keystores as [secure settings](../../../deploy-manage/security/secure-settings.md). To retrieve the passwords so that you can inspect or change the keystore contents, use the [`bin/elasticsearch-keystore`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/elasticsearch-keystore.md) tool.
 
 Use the following command to retrieve the password for `http.p12`:
 
@@ -223,11 +223,11 @@ The {{es}} configuration directory isn’t writable
 
 The following settings are incompatible with security auto configuration. If any of these settings exist, the node startup process skips configuring security automatically and the node starts normally.
 
-* [`node.roles`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles) is set to a value where the node can’t be elected as `master`, or if the node can’t hold data
-* [`xpack.security.autoconfiguration.enabled`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#general-security-settings) is set to `false`
-* [`xpack.security.enabled`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#general-security-settings) has a value set
-* Any of the [`xpack.security.transport.ssl.*`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#transport-tls-ssl-settings) or [`xpack.security.http.ssl.*`](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#http-tls-ssl-settings) settings have a value set in the `elasticsearch.yml` configuration file or in the `elasticsearch.keystore`
-* Any of the `discovery.type`, `discovery.seed_hosts`, or `cluster.initial_master_nodes` [discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html) have a value set
+* [`node.roles`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#node-roles) is set to a value where the node can’t be elected as `master`, or if the node can’t hold data
+* [`xpack.security.autoconfiguration.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) is set to `false`
+* [`xpack.security.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#general-security-settings) has a value set
+* Any of the [`xpack.security.transport.ssl.*`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#transport-tls-ssl-settings) or [`xpack.security.http.ssl.*`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#http-tls-ssl-settings) settings have a value set in the `elasticsearch.yml` configuration file or in the `elasticsearch.keystore`
+* Any of the `discovery.type`, `discovery.seed_hosts`, or `cluster.initial_master_nodes` [discovery and cluster formation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md) have a value set
 
     ::::{note}
     Exceptions are when `discovery.type` is set to `single-node`, or when `cluster.initial_master_nodes` exists but contains only the name of the current node.

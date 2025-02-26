@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Text embedding and semantic search"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-text-emb-vector-search-example.html
@@ -103,7 +103,7 @@ In this step, you load the data that you later use in an ingest pipeline to get 
 
 The data set `msmarco-passagetest2019-top1000` is a subset of the MS MARCO Passage Ranking data set used in the testing stage of the 2019 TREC Deep Learning Track. It contains 200 queries and for each query a list of relevant text passages extracted by a simple information retrieval (IR) system. From that data set, all unique passages with their IDs have been extracted and put into a [tsv file](https://github.com/elastic/stack-docs/blob/8.5/docs/en/stack/ml/nlp/data/msmarco-passagetest2019-unique.tsv), totaling 182469 passages. In the following, this file is used as the example data set.
 
-Upload the file by using the [Data Visualizer](../../../manage-data/ingest/tools/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
+Upload the file by using the [Data Visualizer](../../../manage-data/ingest/upload-data-files.md). Name the first column `id` and the second one `text`. The index name is `collection`. After the upload is done, you can see an index named `collection` with 182469 documents.
 
 :::{image} ../../../images/machine-learning-ml-nlp-text-emb-data.png
 :alt: Importing the data
@@ -112,7 +112,7 @@ Upload the file by using the [Data Visualizer](../../../manage-data/ingest/tools
 
 ## Add the text embedding model to an {{infer}} ingest pipeline [ex-text-emb-ingest]
 
-Process the initial data with an [{{infer}} processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-processor.html). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
+Process the initial data with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md). It adds an embedding for each passage. For this, create a text embedding ingest pipeline and then reindex the initial data with this pipeline.
 
 Now create an ingest pipeline either in the [{{stack-manage-app}} UI](ml-nlp-inference.md#ml-nlp-inference-processor) or by using the API:
 

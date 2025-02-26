@@ -26,7 +26,7 @@ To resize a deployment:
     :   If the initial deployment you created uses only one availability zone, it is not fault tolerant. On a production system, enable [high availability](ece-ha.md) by changing your deployment to use at least two availability zones, three for mission-critical deployments. The number of instances comes from the number of zones and the type of template. Having more nodes or instances lets you scale out horizontally by adding more processing capacity to your deployment.
 
         ::::{warning} 
-        Deployments that use only one availability zone are not highly available and are at risk of data loss, if you do not [configure an external snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md#ece-manage-repositories-add) to enable regular backups. To safeguard against data loss, you must use at least two data centers and configure an external repository for backups.
+        Deployments that use only one availability zone are not highly available and are at risk of data loss, if you do not [configure an external snapshot repository](../../tools/snapshot-and-restore/cloud-enterprise.md) to enable regular backups. To safeguard against data loss, you must use at least two data centers and configure an external repository for backups.
         ::::
 
 

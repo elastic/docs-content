@@ -37,3 +37,8 @@ $$$ech-find-your-endpoint$$$
 $$$ech-private-link-service-names-aliases$$$
 
 $$$ech-remove-association-traffic-filter-private-link-rule-set$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-traffic-filtering-vpc.md](/raw-migrated-files/cloud/cloud/ec-traffic-filtering-vpc.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-vpc.md](/raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-vpc.md)

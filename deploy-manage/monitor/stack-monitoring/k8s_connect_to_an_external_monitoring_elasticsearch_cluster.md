@@ -2,8 +2,9 @@
 navigation_title: "Connect to an external cluster"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_connect_to_an_external_monitoring_elasticsearch_cluster.html
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 ---
 
 # Connect to an external monitoring Elasticsearch cluster [k8s_connect_to_an_external_monitoring_elasticsearch_cluster]

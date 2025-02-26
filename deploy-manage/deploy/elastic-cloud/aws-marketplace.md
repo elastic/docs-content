@@ -1,27 +1,31 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-billing-aws.html
 ---
 
 # AWS Marketplace [ec-billing-aws]
 
-7-Day Free Trial Sign-Up: On the [Elasticsearch Service AWS marketplace page](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), click **View purchase options**, sign into your AWS account, then start using Elastic Cloud.
+7-Day Free Trial Sign-Up: On the [{{ecloud}} AWS marketplace page](https://aws.amazon.com/marketplace/pp/prodview-voru33wi6xs7k), click **View purchase options**, sign into your AWS account, then start using Elastic Cloud.
 
 ::::{tip}
 The free trial includes provisioning of a single deployment and you are not charged for the first 7 days. Billing starts automatically after the 7-day trial period ends. Get started today!
 ::::
 
 
-You can subscribe to Elasticsearch Service directly from the AWS Marketplace. You then have the convenience of viewing your Elasticsearch Service subscription as part of your AWS bill, and you do not have to supply any additional billing information to Elastic.
+You can subscribe to {{ecloud}} directly from the AWS Marketplace. You then have the convenience of viewing your {{ecloud}} subscription as part of your AWS bill, and you do not have to supply any additional billing information to Elastic.
 
-Some differences exist when you subscribe to Elasticsearch Service through the AWS Marketplace:
+Some differences exist when you subscribe to {{ecloud}} through the AWS Marketplace:
 
 * Billing starts automatically after the 7-day trial period.
-* Previous Elasticsearch Service accounts cannot be converted to use the AWS Marketplace. If you already have an account, you must use a different email address when you sign up for a subscription through the AWS Marketplace.
+* Previous {{ecloud}} accounts cannot be converted to use the AWS Marketplace. If you already have an account, you must use a different email address when you sign up for a subscription through the AWS Marketplace.
 * Pricing is based on the AWS region, the size of your deployment, as well as some other parameters such as data transfer out, data transfer internode, snapshot storage, and snapshot APIs. For more details, check [Billing Dimensions](../../cloud-organization/billing/cloud-hosted-deployment-billing-dimensions.md).
-* The consolidated charges for your Elasticsearch Service subscription display in the AWS Marketplace billing console. It can take a day or two before new charges show up.
+* The consolidated charges for your {{ecloud}} subscription display in the AWS Marketplace billing console. It can take a day or two before new charges show up.
 * Regardless of where your deployment is hosted (visible in the Elastic Cloud console), the AWS Marketplace charges for all AWS regions are metered in US East (Northern Virginia). As a result, US East (Northern Virginia) is listed as the region in the AWS Marketplace console.
-* To get a detailed breakdown of your charges by deployment or by product, open the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and go to **Account & Billing** > **Usage**.
+* To get a detailed breakdown of your charges by deployment or by product, open the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and go to **Account & Billing** > **Usage**.
 * To end your trial or unsubscribe from the service, delete your deployment(s).
 * Elastic provides different [subscription levels](https://www.elastic.co/subscriptions/cloud). During your 7-day trial you will automatically have an Enterprise level subscription. After the trial you can choose the subscription level.
 
@@ -31,14 +35,14 @@ Some differences exist when you subscribe to Elasticsearch Service through the A
 Note the following items before you subscribe:
 
 * You cannot use an email address that already has an Elastic Cloud account. If you want to use the same account email address with AWS Marketplace billing, you must first change the email address on your existing account before setting up your new AWS Marketplace subscription. For instructions on how to change your email address in Elastic Cloud, check [update your email address](../../../cloud-account/update-your-email-address.md).
-* If you want to manage deployments on the existing Elasticsearch Service account with your AWS MP billing account, you must migrate your deployments over to the new MP billing account. To migrate, use a [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) to take a snapshot and then restore that snapshot to a new deployment under your AWS Marketplace account.
+* If you want to manage deployments on the existing {{ecloud}} account with your AWS MP billing account, you must migrate your deployments over to the new MP billing account. To migrate, use a [custom repository](../../tools/snapshot-and-restore/elastic-cloud-hosted.md) to take a snapshot and then restore that snapshot to a new deployment under your AWS Marketplace account.
 
 
-## Subscribe to Elasticsearch Service through the AWS Marketplace [ec_subscribe_to_elasticsearch_service_through_the_aws_marketplace]
+## Subscribe to {{ecloud}} through the AWS Marketplace [ec_subscribe_to_elasticsearch_service_through_the_aws_marketplace]
 
-To subscribe to Elasticsearch Service through the AWS Marketplace:
+To subscribe to {{ecloud}} through the AWS Marketplace:
 
-1. Go to [Elasticsearch Service on the AWS Marketplace](https://aws.amazon.com/marketplace/pp/B01N6YCISK) and click **View purchase options**.
+1. Go to [{{ecloud}} on the AWS Marketplace](https://aws.amazon.com/marketplace/pp/B01N6YCISK) and click **View purchase options**.
 2. Click **Subscribe** and then **Set Up Your Account** to continue.
 3. Follow the steps displayed to complete the signup process.
 

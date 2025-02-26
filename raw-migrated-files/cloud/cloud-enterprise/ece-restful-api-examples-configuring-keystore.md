@@ -9,7 +9,7 @@ To configure the keystore, you must meet the minimum criteria:
 
 * To access the RESTful API for Elastic Cloud Enterprise, you must use your Elastic Cloud Enterprise credentials.
 
-To learn more about the Elasticsearch keystore, refer to the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html).
+To learn more about the Elasticsearch keystore, refer to the [Elasticsearch documentation](/deploy-manage/security/secure-settings.md).
 
 
 ## Steps [ece_steps_9]

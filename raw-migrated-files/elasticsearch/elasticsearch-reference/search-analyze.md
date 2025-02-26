@@ -37,10 +37,10 @@ The [`_search` endpoint](../../../solutions/search/querying-for-search.md) accep
 Query DSL support a wide range of search techniques, including the following:
 
 * [**Full-text search**](../../../solutions/search/full-text.md): Search text that has been analyzed and indexed to support phrase or proximity queries, fuzzy matches, and more.
-* [**Keyword search**](https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html): Search for exact matches using `keyword` fields.
+* [**Keyword search**](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md): Search for exact matches using `keyword` fields.
 * [**Semantic search**](../../../solutions/search/semantic-search/semantic-search-semantic-text.md): Search `semantic_text` fields using dense or sparse vector search on embeddings generated in your {{es}} cluster.
 * [**Vector search**](../../../solutions/search/vector/knn.md): Search for similar dense vectors using the kNN algorithm for embeddings generated outside of {{es}}.
-* [**Geospatial search**](https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-queries.html): Search for locations and calculate spatial relationships using geospatial queries.
+* [**Geospatial search**](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/geo-queries.md): Search for locations and calculate spatial relationships using geospatial queries.
 
 Learn about the full range of queries supported by [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md).
 
@@ -55,11 +55,11 @@ Because aggregations leverage the same data structures used for search, they are
 
 The folowing aggregation types are available:
 
-* [Metric](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics.html): Calculate metrics, such as a sum or average, from field values.
-* [Bucket](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket.html): Group documents into buckets based on field values, ranges, or other criteria.
-* [Pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline.html): Run aggregations on the results of other aggregations.
+* [Metric](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/metrics.md): Calculate metrics, such as a sum or average, from field values.
+* [Bucket](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/bucket.md): Group documents into buckets based on field values, ranges, or other criteria.
+* [Pipeline](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/pipeline.md): Run aggregations on the results of other aggregations.
 
-Run aggregations by specifying the [search API](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)'s `aggs` parameter. Learn more in [Run an aggregation](../../../explore-analyze/query-filter/aggregations.md#run-an-agg).
+Run aggregations by specifying the [search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)'s `aggs` parameter. Learn more in [Run an aggregation](../../../explore-analyze/query-filter/aggregations.md#run-an-agg).
 
 
 ### {{esql}} [search-analyze-data-esql]
@@ -70,7 +70,7 @@ The [`_query` endpoint](../../../explore-analyze/query-filter/languages/esql-res
 
 Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
 
-It comes with a comprehensive set of [functions and operators](https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-functions-operators.html) for working with data and has robust integration with {{kib}}'s Discover, dashboards and visualizations.
+It comes with a comprehensive set of [functions and operators](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md) for working with data and has robust integration with {{kib}}'s Discover, dashboards and visualizations.
 
 Learn more in [Getting started with {{esql}}](../../../solutions/search/get-started.md), or try [our training course](https://www.elastic.co/training/introduction-to-esql).
 
@@ -81,9 +81,9 @@ The following table summarizes all available {{es}} query languages, to help you
 
 | Name | Description | Use cases | API endpoint |
 | --- | --- | --- | --- |
-| [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md) | The primary query language for {{es}}. A powerful and flexible JSON-style language that enables complex queries. | Full-text search, semantic search, keyword search, filtering, aggregations, and more. | [`_search`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html) |
+| [Query DSL](../../../explore-analyze/query-filter/languages/querydsl.md) | The primary query language for {{es}}. A powerful and flexible JSON-style language that enables complex queries. | Full-text search, semantic search, keyword search, filtering, aggregations, and more. | [`_search`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search) |
 | [{{esql}}](../../../explore-analyze/query-filter/languages/esql.md) | Introduced in **8.11**, the Elasticsearch Query Language ({{esql}}) is a piped query language language for filtering, transforming, and analyzing data. | Initially tailored towards working with time series data like logs and metrics.Robust integration with {{kib}} for querying, visualizing, and analyzing data.Does not yet support full-text search. | [`_query`](../../../explore-analyze/query-filter/languages/esql-rest.md) |
-| [EQL](../../../explore-analyze/query-filter/languages/eql.md) | Event Query Language (EQL) is a query language for event-based time series data. Data must contain the `@timestamp` field to use EQL. | Designed for the threat hunting security use case. | [`_eql`](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-apis.html) |
-| [Elasticsearch SQL](../../../explore-analyze/query-filter/languages/sql.md) | Allows native, real-time SQL-like querying against {{es}} data. JDBC and ODBC drivers are available for integration with business intelligence (BI) tools. | Enables users familiar with SQL to query {{es}} data using familiar syntax for BI and reporting. | [`_sql`](https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-apis.html) |
+| [EQL](../../../explore-analyze/query-filter/languages/eql.md) | Event Query Language (EQL) is a query language for event-based time series data. Data must contain the `@timestamp` field to use EQL. | Designed for the threat hunting security use case. | [`_eql`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-eql) |
+| [Elasticsearch SQL](../../../explore-analyze/query-filter/languages/sql.md) | Allows native, real-time SQL-like querying against {{es}} data. JDBC and ODBC drivers are available for integration with business intelligence (BI) tools. | Enables users familiar with SQL to query {{es}} data using familiar syntax for BI and reporting. | [`_sql`](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-sql) |
 | [Kibana Query Language (KQL)](../../../explore-analyze/query-filter/languages/kql.md) | {{kib}} Query Language (KQL) is a text-based query language for filtering data when you access it through the {{kib}} UI. | Use KQL to filter documents where a value for a field exists, matches a given value, or is within a given range. | N/A |
 

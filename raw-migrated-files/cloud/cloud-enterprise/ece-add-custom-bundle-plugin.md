@@ -85,7 +85,7 @@ Custom plugins can include the official Elasticsearch plugins not provided with 
 
 This example adds a custom LDAP bundle for deployment level role-based access control (RBAC). To set platform level RBAC, check [Configure RBAC](../../../deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md).
 
-1. Prepare a custom bundle as a ZIP file that contains your keystore file with the private key and certificate inside of a `truststore` folder [in the same way that you would on Elastic Cloud](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html). This bundle allows all Elasticsearch containers to access the same keystore file through your `ssl.truststore` settings.
+1. Prepare a custom bundle as a ZIP file that contains your keystore file with the private key and certificate inside of a `truststore` folder [in the same way that you would on Elastic Cloud](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md). This bundle allows all Elasticsearch containers to access the same keystore file through your `ssl.truststore` settings.
 2. In the [advanced configuration editor](../../../deploy-manage/deploy/cloud-enterprise/advanced-cluster-configuration.md), update your new Elasticsearch cluster with the custom bundle you have just created. Modify the `user_bundles` JSON attribute of **each** Elasticsearch instance type as shown in the following example:
 
     ```sh
@@ -353,7 +353,7 @@ You do not need to do this step if you are using default filename and password (
             }
     ```
 
-4. To use this bundle, you can refer it in the [GeoIP processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html) of an ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file` such as:
+4. To use this bundle, you can refer it in the [GeoIP processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md) of an ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file` such as:
 
     ```sh
     ...

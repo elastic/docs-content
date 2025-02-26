@@ -4,11 +4,11 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-cases.html
 ---
 
-# Cases
+# Cases [observability-cases]
 
-% What needs to be done: Align serverless/stateful
+Collect and share information about observability issues by creating a case. Cases allow you to track key investigation details, add assignees and tags to your cases, set their severity and status, and add alerts, comments, and visualizations. You can also send cases to third-party systems by [configuring external connectors](../../../solutions/observability/incident-management/configure-case-settings.md).
 
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/observability-docs/observability/create-cases.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-cases.md
+:::{image} ../../../images/observability-cases.png
+:alt: Cases page
+:class: screenshot
+:::

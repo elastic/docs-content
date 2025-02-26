@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-monitoring-ece.html
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # ECE platform monitoring [ece-monitoring-ece]

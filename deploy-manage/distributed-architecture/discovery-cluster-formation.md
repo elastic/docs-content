@@ -30,7 +30,7 @@ The following processes and settings are part of discovery and cluster formation
 [Cluster fault detection](discovery-cluster-formation/cluster-fault-detection.md)
 :   {{es}} performs health checks to detect and remove faulty nodes.
 
-[Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
+[Settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/discovery-cluster-formation-settings.md)
 :   There are settings that enable users to influence the discovery, cluster formation, master election and fault detection processes.
 
 

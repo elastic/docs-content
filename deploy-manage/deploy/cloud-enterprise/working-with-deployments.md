@@ -22,3 +22,12 @@ mapped_urls:
 %      Notes: another redirect
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-monitoring-deployments.md
 %      Notes: mostly redirect
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-stack-getting-started.md](/raw-migrated-files/cloud/cloud-enterprise/ece-stack-getting-started.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md](/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-change-deployment.md](/raw-migrated-files/cloud/cloud-enterprise/ece-change-deployment.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-monitoring-deployments.md](/raw-migrated-files/cloud/cloud-enterprise/ece-monitoring-deployments.md)

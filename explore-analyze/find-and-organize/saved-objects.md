@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/saved-objects.html
   - https://www.elastic.co/guide/en/kibana/current/managing-saved-objects.html
@@ -126,7 +126,7 @@ However, saved objects can only be imported into the same version, a newer minor
 | 7.8.1 | 9.0.0 | No |
 
 ## Saved Object IDs [saved-object-ids]
-::::{applies}
+::::{applies_to}
 :stack:
 ::::
 
@@ -149,7 +149,7 @@ After you upgrade, or if you set up a new {{kib}} instance using version 8.x or 
 
 #### Accessing saved objects using old URLs [saved-object-ids-impact-when-using-legacy-urls]
 
-When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](https://www.elastic.co/guide/en/kibana/current/legacy-url-aliases.html). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
+When you upgrade {{kib}} and saved object IDs change, the "deep link" URLs to access those saved objects will also change. To reduce the impact, each existing URL is preserved with a special [legacy URL alias](asciidocalypse://docs/kibana/docs/extend/legacy-url-aliases.md). This means that if you use a bookmark for a saved object ID that was changed, you’ll be redirected to the new URL for that saved object.
 
 
 #### Importing and copying saved objects [saved-object-ids-impact-when-using-import-and-copy]

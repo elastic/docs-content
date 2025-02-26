@@ -38,7 +38,7 @@ The value specified in the field rule can be one of the following types:
 | --- | --- | --- |
 | Simple String | Exactly matches the provided value. | `"esadmin"` |
 | Wildcard String | Matches the provided value using a wildcard. | `"*,dc=example,dc=com"` |
-| Regular Expression | Matches the provided value using a                       [Lucene regexp](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html). | `"/.*-admin[0-9]*/"` |
+| Regular Expression | Matches the provided value using a                       [Lucene regexp](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). | `"/.*-admin[0-9]*/"` |
 | Number | Matches an equivalent numerical value. | `7` |
 | Null | Matches a null or missing value. | `null` |
 | Array | Tests each element in the array in                      accordance with the above definitions.                      If *any* of elements match, the match is successful. | `["admin", "operator"]` |
@@ -49,7 +49,7 @@ The value specified in the field rule can be one of the following types:
 The *user object* against which rules are evaluated has the following fields:
 
 `username`
-:   (string) The username by which the {{es}} {security-features} knows this user. For example, `"username": "jsmith"`.
+:   (string) The username by which the {{es}} {{security-features}} knows this user. For example, `"username": "jsmith"`.
 
 `dn`
 :   (string) The *Distinguished Name* of the user. For example, `"dn": "cn=jsmith,ou=users,dc=example,dc=com",`.

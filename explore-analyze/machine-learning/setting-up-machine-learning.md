@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Setup and security"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/setup.html
@@ -11,11 +11,11 @@ mapped_pages:
 
 ## Requirements overview [requirements-overview]
 
-To use the {{stack}} {ml-features}, you must have:
+To use the {{stack}} {{ml-features}}, you must have:
 
 * the [appropriate subscription](https://www.elastic.co/subscriptions) level or the free trial period activated
-* `xpack.ml.enabled` set to its default value of `true` on every node in the cluster (refer to [{{ml-cap}} settings in {{es}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html))
-* `ml` value defined in the list of `node.roles` on the [{{ml}} nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#ml-node)
+* `xpack.ml.enabled` set to its default value of `true` on every node in the cluster (refer to [{{ml-cap}} settings in {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/machine-learning-settings.md))
+* `ml` value defined in the list of `node.roles` on the [{{ml}} nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#ml-node)
 * {{ml}} features visible in the {{kib}} space
 * security privileges assigned to the user that:
 
@@ -23,7 +23,7 @@ To use the {{stack}} {ml-features}, you must have:
   * grant access to source and destination indices.
 
 ::::{tip}
-The fastest way to get started with {{ml-features}} is to [start a free 14-day trial of {{ess}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) in the cloud.
+The fastest way to get started with {{ml-features}} is to [start a free 14-day trial of {{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 ::::
 
 ## Security privileges [setup-privileges]
@@ -69,7 +69,7 @@ Granting `All` or `Read` {{kib}} feature privilege for {{ml-app}} will also gran
 In {{kib}}, the {{ml-features}} must be visible in your [space](../../deploy-manage/manage-spaces.md#spaces-control-feature-visibility). To manage which features are visible in your space, go to **{{stack-manage-app}}** > **{{kib}}** > **Spaces** or use the [global search field](../find-and-organize/find-apps-and-objects.md) to locate **Spaces** directly.
 
 :::{image} ../../images/machine-learning-spaces.jpg
-:alt: Manage spaces in {kib}
+:alt: Manage spaces in {{kib}}
 :class: screenshot
 :::
 

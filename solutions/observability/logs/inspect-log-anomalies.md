@@ -15,7 +15,7 @@ When the {{anomaly-detect}} features of {{ml}} are enabled, you can use the **Lo
 You can also view log anomalies directly in the [{{ml-app}} app](../../../explore-analyze/machine-learning/machine-learning-in-kibana/xpack-ml-anomalies.md).
 
 ::::{note}
-This feature makes use of {{ml}} {anomaly-jobs}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
+This feature makes use of {{ml}} {{anomaly-jobs}}. To set up jobs, you must have `all` {{kib}} feature privileges for **{{ml-app}}**. Users that have full or read-only access to {{ml-features}} within a {{kib}} space can view the results of *all* {{anomaly-jobs}} that are visible in that space, even if they do not have access to the source indices of those jobs. You must carefully consider who is given access to {{ml-features}}; {{anomaly-job}} results may propagate field values that contain sensitive information from the source indices to the results. For more details, refer to [Set up {{ml-features}}](../../../explore-analyze/machine-learning/setting-up-machine-learning.md).
 ::::
 
 
@@ -33,7 +33,7 @@ Create a {{ml}} job to detect anomalous log entry rates automatically.
 
 ## Anomalies chart [anomalies-chart]
 
-The Anomalies chart shows an overall, color-coded visualization of the log entry rate, partitioned according to the value of the Elastic Common Schema (ECS) [`event.dataset`](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-event.html) field. This chart helps you quickly spot increases or decreases in each partition’s log rate.
+The Anomalies chart shows an overall, color-coded visualization of the log entry rate, partitioned according to the value of the Elastic Common Schema (ECS) [`event.dataset`](asciidocalypse://docs/ecs/docs/reference/ecs-event.md) field. This chart helps you quickly spot increases or decreases in each partition’s log rate.
 
 If you have a lot of log partitions, use the following to filter your data:
 
@@ -57,4 +57,4 @@ The level of anomaly detected in a time period is color-coded, from red, orange,
 
 To help you further drill down into a potential anomaly, you can view an anomaly chart for each partition. Anomaly scores range from 0 (no anomalies) to 100 (critical).
 
-To analyze the anomalies in more detail, click **View anomaly in {{ml}}**, which opens the [Anomaly Explorer in {{ml-app}}](https://www.elastic.co/guide/en/machine-learning/current/ml-getting-started.html#sample-data-results).
+To analyze the anomalies in more detail, click **View anomaly in {{ml}}**, which opens the [Anomaly Explorer in {{ml-app}}](/explore-analyze/machine-learning/anomaly-detection/ml-getting-started.md#sample-data-results).

@@ -58,7 +58,7 @@ For more information about connecting to threat intelligence sources, visit [Ena
 ::::
 
 
-:::{image} ../../../images/serverless--getting-started-threat-intelligence-view.png
+:::{image} ../../../images/getting-started-threat-intelligence-view.png
 :alt: Threat Intelligence view on the Overview dashboard
 :class: screenshot
 :::

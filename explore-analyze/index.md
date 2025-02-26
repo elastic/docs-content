@@ -1,11 +1,12 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-explore-your-data.html
   - https://www.elastic.co/guide/en/kibana/current/introduction.html#visualize-and-analyze
   - https://www.elastic.co/guide/en/kibana/current/get-started.html
+  - https://www.elastic.co/guide/en/kibana/current/accessibility.html
 ---
 
 # Explore and analyze

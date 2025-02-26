@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data.html
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-search-your-data-the-search-api.html
 navigation_title: Build search queries
-applies:
+applies_to:
   stack:
   serverless:
 ---

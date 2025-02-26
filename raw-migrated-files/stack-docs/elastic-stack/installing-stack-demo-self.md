@@ -149,7 +149,7 @@ Before moving ahead to configure additional {{es}} nodes, you’ll need to updat
     ```
 
     ::::{tip}
-    You can find details about the `network.host` and `transport.host` settings in the {{es}} [Networking](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) documentation.
+    You can find details about the `network.host` and `transport.host` settings in the {{es}} [Networking](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
     ::::
 
 6. Save your changes and close the editor.
@@ -276,7 +276,7 @@ To set up a second {{es}} node, the initial steps are similar to those that you 
     Note the following tips about enrollment tokens:
 
     1. An enrollment token has a lifespan of 30 minutes. In case the `elasticsearch-reconfigure-node` command returns an `Invalid enrollment token` error, try generating a new token.
-    2. Be sure not to confuse an [{{es}} enrollment token](../../../deploy-manage/maintenance/start-stop-services/start-stop-elasticsearch.md#_enroll_nodes_in_an_existing_cluster_3) (for enrolling {{es}} nodes in an existing cluster) with a [{{kib}} enrollment token](../../../deploy-manage/maintenance/start-stop-services/start-stop-kibana.md#_run_kibana_from_the_command_line) (to enroll your {{kib}} instance with {{es}}, as described in the next section). These two tokens are not interchangeable.
+    2. Be sure not to confuse an [{{es}} enrollment token](../../../deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md) (for enrolling {{es}} nodes in an existing cluster) with a [{{kib}} enrollment token](../../../deploy-manage/maintenance/start-stop-services/start-stop-kibana.md#run-kibana-from-command-line) (to enroll your {{kib}} instance with {{es}}, as described in the next section). These two tokens are not interchangeable.
 
     ::::
 
@@ -463,7 +463,7 @@ As with {{es}}, you can use RPM to install {{kib}} on another host. You can find
 
 17. In the `status` command output, a URL is shown with:
 
-    * A host address to access {kib}
+    * A host address to access {{kib}}
     * A six digit verification code
 
         For example:
@@ -502,7 +502,7 @@ After new security certificates are configured any {{agent}}s would need to be r
 
 ## Step 7: Install {{fleet-server}} [install-stack-self-fleet-server]
 
-Now that {{kib}} is up and running, you can install {{fleet-server}}, which will manage the {{agent}} that you’ll set up in a later step. If you need more detail about these steps, refer to [Deploy on-premises and self-managed](https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html) in the {{fleet}} and {{agent}} Guide.
+Now that {{kib}} is up and running, you can install {{fleet-server}}, which will manage the {{agent}} that you’ll set up in a later step. If you need more detail about these steps, refer to [Deploy on-premises and self-managed](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md) in the {{fleet}} and {{agent}} Guide.
 
 1. Log in to the host where you’d like to set up {{fleet-server}}.
 2. Create a working directory for the installation package:
@@ -524,7 +524,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}, which will
 8. Specify a name for your {{fleet-server}} host, for example `Fleet Server`.
 9. Specify the host URL where {{agents}} will reach {{fleet-server}}, for example: `http://10.128.0.203:8220`. This is the inet value that you copied from the `ifconfig` output.
 
-    Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
+    Be sure to include the port number. Port `8220` is the default used by {{fleet-server}} in an on-premises environment. Refer to [Default port assignments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation for a list of port assignments.
 
 10. Click **Generate Fleet Server policy**. A policy is created that contains all of the configuration settings for the {{fleet-server}} instance.
 11. On the **Install Fleet Server to a centralized host** step, for this example we select the **Linux Tar** tab, but you can instead select the tab appropriate to the host operating system where you’re setting up {{fleet-server}}.
@@ -540,7 +540,7 @@ Now that {{kib}} is up and running, you can install {{fleet-server}}, which will
     3. Change into the directory containing the install binaries.
     4. Install {{fleet-server}}.
 
-        If you’d like to learn about the install command options, refer to [`elastic-agent install`](https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html#elastic-agent-install-command) in the {{agent}} command reference.
+        If you’d like to learn about the install command options, refer to [`elastic-agent install`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
 
 13. At the prompt, enter `Y` to install {{agent}} and run it as a service. Wait for the installation to complete.
 14. In the {{kib}} **Add a Fleet Server** flyout, wait for confirmation that {{fleet-server}} has connected.

@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-configuration-examples.html
 ---
 
 # Configuration examples [k8s-elastic-agent-configuration-examples]
 
-This section contains manifests that illustrate common use cases, and can be your starting point in exploring Elastic Agent deployed with ECK. These manifests are self-contained and work out-of-the-box on any non-secured Kubernetes cluster. They all contain a three-node Elasticsearch cluster and a single Kibana instance. Add the corresponding integration package to Kibana to install the dashboards, visualizations and other assets for each of these examples as described in [the Elastic Agent documentation](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html).
+This section contains manifests that illustrate common use cases, and can be your starting point in exploring Elastic Agent deployed with ECK. These manifests are self-contained and work out-of-the-box on any non-secured Kubernetes cluster. They all contain a three-node Elasticsearch cluster and a single Kibana instance. Add the corresponding integration package to Kibana to install the dashboards, visualizations and other assets for each of these examples as described in [the Elastic Agent documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md).
 
 ::::{warning}
 The examples in this section are for illustration purposes only and should not be considered to be production-ready. Some of these examples use the `node.store.allow_mmap: false` setting which has performance implications and should be tuned for production workloads, as described in [Virtual memory](virtual-memory.md).

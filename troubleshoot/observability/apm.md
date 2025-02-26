@@ -11,7 +11,7 @@ mapped_pages:
 
 This section provides solutions to common questions and problems, and processing and performance guidance.
 
-* [Common problems](../../solutions/observability/apps/common-problems.md)
+* [Common problems](/troubleshoot/observability/apm/common-problems.md)
 * [What happens when APM Server or {{es}} is down?](../../solutions/observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md)
 * [APM Server response codes](../../solutions/observability/apps/apm-server-response-codes.md)
 * [Processing and performance](../../solutions/observability/apps/processing-performance.md)
@@ -26,16 +26,16 @@ For additional help with other APM components, see the links below.
 {{agent}}, the Applications UI, and each {{apm-agent}} has its own troubleshooting guide:
 
 * [**{{fleet}} and {{agent}}** troubleshooting](../ingest/fleet/fleet-elastic-agent.md)
-* [**Android agent** FAQ](https://www.elastic.co/guide/en/apm/agent/android/current/faq.html)
-* [**.NET agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/troubleshooting.html)
-* [**Go agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}/troubleshooting.html)
-* [**iOS agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/swift/{{apm-ios-branch}}/troubleshooting.html)
-* [**Java agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}/trouble-shooting.html)
-* [**Node.js agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/troubleshooting.html)
-* [**PHP agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}/troubleshooting.html)
-* [**Python agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/troubleshooting.html)
-* [**Ruby agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/debugging.html)
-* [**RUM agent** troubleshooting](https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}/troubleshooting.html)
+* [**Android agent** FAQ](asciidocalypse://docs/apm-agent-android/docs/reference/faq.md)
+* [**.NET agent** troubleshooting](/troubleshoot/observability/apm-agent-dotnet/apm-net-agent.md)
+* [**Go agent** troubleshooting](/troubleshoot/observability/apm-agent-go/apm-go-agent.md)
+* [**iOS agent** troubleshooting](/troubleshoot/observability/apm-agent-swift/apm-ios-agent.md)
+* [**Java agent** troubleshooting](/troubleshoot/observability/apm-agent-java/apm-java-agent.md)
+* [**Node.js agent** troubleshooting](/troubleshoot/observability/apm-agent-nodejs/apm-nodejs-agent.md)
+* [**PHP agent** troubleshooting](/troubleshoot/observability/apm-agent-php/apm-php-agent.md)
+* [**Python agent** troubleshooting](/troubleshoot/observability/apm-agent-python/apm-python-agent.md)
+* [**Ruby agent** troubleshooting](/troubleshoot/observability/apm-agent-ruby/apm-ruby-agent.md)
+* [**RUM agent** troubleshooting](/troubleshoot/observability/apm-agent-rum-js/apm-real-user-monitoring-javascript-agent.md)
 
 
 ## Elastic Support [apm-elastic-support]

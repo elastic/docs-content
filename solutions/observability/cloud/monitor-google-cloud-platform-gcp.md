@@ -23,14 +23,14 @@ If you don’t want to provision VM and install data shippers due to process and
 You’ll learn how to:
 
 * Set up a GCP Service Account.
-* Ingest metrics using the [{{metricbeat}} Google Cloud Platform module](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-gcp.html) and view those metrics in {{kib}}.
+* Ingest metrics using the [{{metricbeat}} Google Cloud Platform module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-gcp.md) and view those metrics in {{kib}}.
 * Export GCP audit logs through Pub/Sub topics.
-* Ingest logs using the [{{filebeat}} Google Cloud module](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-gcp.html) and view those logs in {{kib}}.
+* Ingest logs using the [{{filebeat}} Google Cloud module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-gcp.md) and view those logs in {{kib}}.
 
 
 ## Before you begin [_before_you_begin_2]
 
-Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 
 
 ## Step 1: Setup a Service Account [_step_1_setup_a_service_account]
@@ -151,7 +151,7 @@ Version 9.0.0-beta1 of Metricbeat has not yet been released.
 
 
 ::::{important}
-Setting up {{metricbeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](https://www.elastic.co/guide/en/beats/metricbeat/current/privileges-to-setup-beats.html), and a more restrictive role for event publishing (which you will do next).
+Setting up {{metricbeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](asciidocalypse://docs/beats/docs/reference/metricbeat/privileges-to-setup-beats.md), and a more restrictive role for event publishing (which you will do next).
 
 ::::
 
@@ -159,16 +159,16 @@ Setting up {{metricbeat}} is an admin-level task that requires extra privileges.
 
 ### Configure {{metricbeat}} output [_configure_metricbeat_output_3]
 
-Next, you are going to configure {{metricbeat}} output to {{ess}}.
+Next, you are going to configure {{metricbeat}} output to {{ecloud}}.
 
-1. Use the {{metricbeat}} keystore to store [secure settings](https://www.elastic.co/guide/en/beats/metricbeat/current/keystore.html). Store the Cloud ID in the keystore.
+1. Use the {{metricbeat}} keystore to store [secure settings](asciidocalypse://docs/beats/docs/reference/metricbeat/keystore.md). Store the Cloud ID in the keystore.
 
     ```bash
     ./metricbeat keystore create
     echo -n "<Your Deployment Cloud ID>" | ./metricbeat keystore add CLOUD_ID --stdin
     ```
 
-2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
+2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ecloud}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
 
     ```console
     POST /_security/api_key
@@ -205,7 +205,7 @@ Next, you are going to configure {{metricbeat}} output to {{ess}}.
     ./metricbeat keystore list
     ```
 
-5. To configure {{metricbeat}} to output to {{ess}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
+5. To configure {{metricbeat}} to output to {{ecloud}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
 
     ```yaml
     cloud.id: ${CLOUD_ID}
@@ -225,10 +225,10 @@ Now that the output is working, you are going to set up the input (GCP).
 
 ## Step 3: Configure {{metricbeat}} Google Cloud Platform module [_step_3_configure_metricbeat_google_cloud_platform_module]
 
-To collect metrics from Google Cloud Platform, use the [Google Cloud Platform](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-gcp.html) module. This module periodically fetches monitoring metrics from Google Cloud Platform using [Stackdriver Monitoring API](https://cloud.google.com/monitoring/api/metrics_gcp) for Google Cloud Platform services.
+To collect metrics from Google Cloud Platform, use the [Google Cloud Platform](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-gcp.md) module. This module periodically fetches monitoring metrics from Google Cloud Platform using [Stackdriver Monitoring API](https://cloud.google.com/monitoring/api/metrics_gcp) for Google Cloud Platform services.
 
 ::::{warning}
-Extra GCP charges on Stackdriver Monitoring API requests may be generated by this module. Please see [rough estimation of the number of API calls](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-gcp.html#gcp-api-requests) for more details.
+Extra GCP charges on Stackdriver Monitoring API requests may be generated by this module. Please see [rough estimation of the number of API calls](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-gcp.md#gcp-api-requests) for more details.
 
 ::::
 
@@ -322,7 +322,7 @@ Version 9.0.0-beta1 of Filebeat has not yet been released.
 
 
 ::::{important}
-Setting up {{filebeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](https://www.elastic.co/guide/en/beats/filebeat/current/privileges-to-setup-beats.html) and a more restrictive role for event publishing (which you will do next).
+Setting up {{filebeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](asciidocalypse://docs/beats/docs/reference/filebeat/privileges-to-setup-beats.md) and a more restrictive role for event publishing (which you will do next).
 
 ::::
 
@@ -330,16 +330,16 @@ Setting up {{filebeat}} is an admin-level task that requires extra privileges. A
 
 #### Configure {{filebeat}} output [_configure_filebeat_output_2]
 
-Next, you are going to configure {{filebeat}} output to {{ess}}.
+Next, you are going to configure {{filebeat}} output to {{ecloud}}.
 
-1. Use the {{filebeat}} keystore to store [secure settings](https://www.elastic.co/guide/en/beats/filebeat/current/keystore.html). Store the Cloud ID in the keystore.
+1. Use the {{filebeat}} keystore to store [secure settings](asciidocalypse://docs/beats/docs/reference/filebeat/keystore.md). Store the Cloud ID in the keystore.
 
     ```bash
     ./filebeat keystore create
     echo -n "<Your Deployment Cloud ID>" | ./filebeat keystore add CLOUD_ID --stdin
     ```
 
-2. To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Send the following request:
+2. To store logs in {{es}} with minimal permissions, create an API key to send data from {{filebeat}} to {{ecloud}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Send the following request:
 
     ```console
     POST /_security/api_key
@@ -364,7 +364,7 @@ Next, you are going to configure {{filebeat}} output to {{ess}}.
     }
     ```
 
-    1. {{filebeat}} needs extra cluster permissions to publish logs, which differs from the {{metricbeat}} configuration. You can find more details [here](https://www.elastic.co/guide/en/beats/filebeat/current/feature-roles.html).
+    1. {{filebeat}} needs extra cluster permissions to publish logs, which differs from the {{metricbeat}} configuration. You can find more details [here](asciidocalypse://docs/beats/docs/reference/filebeat/feature-roles.md).
 
 3. The response contains an `api_key` and an `id` field, which can be stored in the {{filebeat}} keystore in the following format: `id:api_key`.
 
@@ -383,7 +383,7 @@ Next, you are going to configure {{filebeat}} output to {{ess}}.
     ./filebeat keystore list
     ```
 
-5. To configure {{filebeat}} to output to {{ess}}, edit the `filebeat.yml` configuration file. Add the following lines to the end of the file.
+5. To configure {{filebeat}} to output to {{ecloud}}, edit the `filebeat.yml` configuration file. Add the following lines to the end of the file.
 
     ```yaml
     cloud.id: ${CLOUD_ID}
@@ -403,7 +403,7 @@ Now that the output is working, you are going to set up the input (GCP).
 
 ## Step 5: Configure {{filebeat}} Google Cloud module [_step_5_configure_filebeat_google_cloud_module]
 
-To collect logs from Google Cloud Platform, use the [Google Cloud Platform](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-module-gcp.html) module. This module periodically fetches logs that have been exported from Stackdriver to a Google Pub/Sub topic sink. There are three available filesets: `audit`, `vpcflow`, `firewall`. This tutorial covers the `audit` fileset.
+To collect logs from Google Cloud Platform, use the [Google Cloud Platform](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-gcp.md) module. This module periodically fetches logs that have been exported from Stackdriver to a Google Pub/Sub topic sink. There are three available filesets: `audit`, `vpcflow`, `firewall`. This tutorial covers the `audit` fileset.
 
 1. Go to the **Logs Router** page to configure GCP to export logs to a Pub/Sub topic. Use the search bar to find the page:
 

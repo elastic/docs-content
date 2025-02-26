@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-playground.html
   - https://www.elastic.co/guide/en/kibana/current/playground.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -146,8 +146,8 @@ If you need to update a connector, or add a new one, click the 🔧 **Manage** b
 There are many options for ingesting data into {{es}}, including:
 
 * The [Elastic crawler](https://www.elastic.co/guide/en/enterprise-search/current/crawler.html) for web content (**NOTE**: Not yet available in *Serverless*)
-* [Elastic connectors](https://www.elastic.co/guide/en/elasticsearch/reference/current/es-connectors.html) for data synced from third-party sources
-* The {{es}} [Bulk API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) for JSON documents
+* [Elastic connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md) for data synced from third-party sources
+* The {{es}} [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) for JSON documents
 
     ::::{dropdown} **Expand** for example
     To add a few documents to an index called `books` run the following in Dev Tools Console:

@@ -22,3 +22,8 @@ mapped_urls:
 $$$enabling-autoscaling-in-kibana-adaptive-resources$$$
 
 $$$enabling-autoscaling-through-apis-adaptive-allocations$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/docs-content/serverless/general-ml-nlp-auto-scale.md](/raw-migrated-files/docs-content/serverless/general-ml-nlp-auto-scale.md)
+* [/raw-migrated-files/docs-content/serverless/general-ml-nlp-auto-scale.md](/raw-migrated-files/docs-content/serverless/general-ml-nlp-auto-scale.md)

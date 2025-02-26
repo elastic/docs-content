@@ -31,6 +31,10 @@ To learn more about adding the stack pack to ECE, check [Manage Elastic Stack Ve
 
 ## Most recent Elastic Stack packs and Docker images [ece-recent-download-list]
 
+:::{important}
+Enterprise Search is not available in versions 9.0+.
+:::
+
 | Required downloads | Minimum required ECE version |
 | --- | --- |
 | [Elasticsearch, Kibana, APM, and Enterprise Search stack pack: 8.17.1](https://download.elastic.co/cloud-enterprise/versions/8.17.1.zip) | ECE 3.0.0<br>(+ Docker 20.10.10+ required for 8.16+) |

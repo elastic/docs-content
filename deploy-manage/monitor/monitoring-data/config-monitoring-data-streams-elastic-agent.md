@@ -1,11 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/config-monitoring-data-streams-elastic-agent.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Configuring data streams created by Elastic Agent [config-monitoring-data-streams-elastic-agent]
@@ -22,9 +23,9 @@ To change the settings of each data stream, edit the `metrics-{{product}}.stack_
 
 You can also use the {{es}} API:
 
-* Retrieve the component template using the [get component template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-component-templates.html).
+* Retrieve the component template using the [get component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-get-component-template).
 * Edit the component template.
-* Store the updated component template using the [update component template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html).
+* Store the updated component template using the [update component template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template).
 
-After changing the component template, the updated settings are only applied to the data stream’s new backing indices. [Roll over the data stream](../../../manage-data/data-store/index-types/use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the updated settings to the data stream’s write index.
+After changing the component template, the updated settings are only applied to the data stream’s new backing indices. [Roll over the data stream](../../../manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the updated settings to the data stream’s write index.
 

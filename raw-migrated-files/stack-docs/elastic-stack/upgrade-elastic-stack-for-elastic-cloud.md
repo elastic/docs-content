@@ -21,7 +21,7 @@ Snapshots
 
     From version 8.3, snapshots are generally available as simple archives. Use the [archive functionality](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md) to search snapshots as old as version 5.0 without the need of an old {{es}} cluster. This ensures that data you store in {{es}} doesn’t have an end of life and is still accessible when you upgrade, without requiring a reindex process.
 
-    On {{ece}}, you need to [configure a snapshot repository](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-manage-repositories.html) to enable snapshots.
+    On {{ece}}, you need to [configure a snapshot repository](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) to enable snapshots.
 
 
 Breaking changes
@@ -217,7 +217,7 @@ function changeTabs(e) {
 ::::::
 
 ::::::{tab-item} Elastic Cloud Enterprise
-1. [Log into the Cloud UI](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-login.html)
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md)
 2. On the deployments page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
@@ -240,10 +240,10 @@ To upgrade a deployment:
 
 Once you have upgraded from 8.17, you need to update your {{es}} clients and ingest components in the following order:
 
-1. Java API Client: [dependency configuration](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/installation.html#maven)
-2. Logstash: [upgrade instructions](https://www.elastic.co/guide/en/logstash/current/upgrading-logstash.html)
-3. Beats: [upgrade instructions](https://www.elastic.co/guide/en/beats/libbeat/current/upgrading.html)
-4. {{agent}}: [upgrade instructions](https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html)
+1. Java API Client: [dependency configuration](asciidocalypse://docs/elasticsearch-java/docs/reference/installation.md#maven)
+2. Logstash: [upgrade instructions](asciidocalypse://docs/logstash/docs/reference/upgrading-logstash.md)
+3. Beats: [upgrade instructions](asciidocalypse://docs/beats/docs/reference/libbeat/upgrading.md)
+4. {{agent}}: [upgrade instructions](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
 
 
 ## Reindex to upgrade [upgrading-reindex] 
@@ -253,7 +253,7 @@ If you are running a pre-8.x version, you might need to perform multiple upgrade
 Alternatively, you can create a new 9.0.0-beta1 deployment and reindex from remote:
 
 1. Provision an additional deployment running 9.0.0-beta1.
-2. Reindex your data into the new {{es}} cluster using [reindex from remote](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-from-remote) and temporarily send new index requests to both clusters.
+2. Reindex your data into the new {{es}} cluster using [reindex from remote](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) and temporarily send new index requests to both clusters.
 3. Verify that the new cluster performs as expected, fix any problems, and then permanently swap in the new cluster.
 4. Delete the old deployment. On Elastic Cloud, you are billed only for the time that the new deployment runs in parallel with your old deployment. Usage is billed on an hourly basis.
 

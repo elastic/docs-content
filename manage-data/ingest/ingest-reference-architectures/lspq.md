@@ -10,7 +10,7 @@ mapped_pages:
 :::
 
 Ingest model
-:   {{agent}} to {{ls}} persistent queue to {es}
+:   {{agent}} to {{ls}} persistent queue to {{es}}
 
 Use when
 :   Your data flow may encounter network issues, bursts of events, and/or downstream unavailability and you need the ability to buffer the data before ingestion.
@@ -21,16 +21,16 @@ Use when
 Info on configuring {{agent}}:
 
 * [Fleet and Elastic Agent Guide](https://www.elastic.co/guide/en/fleet/current)
-* [Configuring outputs for {{agent}}](https://www.elastic.co/guide/en/fleet/current/elastic-agent-output-configuration.html)
+* [Configuring outputs for {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elastic-agent-output-configuration.md)
 
 For info on {{ls}} plugins:
 
-* [{{agent}} input](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-elastic_agent.html)
-* [{{es}} output plugin](https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html)
+* [{{agent}} input](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
 
 For info on using {{ls}} for buffering and data resiliency, check out this section in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
 
-* [{{ls}} Persistent Queues (PQ)](https://www.elastic.co/guide/en/logstash/current/persistent-queues.html)
+* [{{ls}} Persistent Queues (PQ)](asciidocalypse://docs/logstash/docs/reference/persistent-queues.md)
 
 Info on {{es}}:
 

@@ -1,0 +1,281 @@
+toc:
+  - file: overview/index.md
+    children:
+    - file: security/index.md
+      children:
+        - file: security/elastic-defend/index.md
+        - file: security/elastic-defend/elastic-endpoint-deploy-reqs.md
+        - file: security/elastic-defend/install-endpoint.md
+          children:
+            - file: security/elastic-defend/deploy-elastic-endpoint.md
+            - file: security/elastic-defend/deploy-elastic-endpoint-ven.md
+            - file: security/elastic-defend/deploy-with-mdm.md
+            - file: security/elastic-defend/agent-tamper-protection.md
+        - file: security/elastic-defend/endpoint-management-req.md
+        - file: security/elastic-defend/configure-endpoint-integration-policy.md
+          children:
+            - file: security/elastic-defend/artifact-control.md
+            - file: security/elastic-defend/endpoint-diagnostic-data.md
+            - file: security/elastic-defend/self-healing-rollback.md
+            - file: security/elastic-defend/linux-file-monitoring.md
+            - file: security/elastic-defend/endpoint-data-volume.md
+            - file: security/elastic-defend/create-defend-policy-api.md
+        - file: security/elastic-defend/offline-endpoint.md
+        - file: security/elastic-defend/uninstall-agent.md
+        - file: security/fields-and-object-schemas/index.md
+        - file: security/fields-and-object-schemas/runtime-fields.md
+        - file: security/fields-and-object-schemas/siem-field-reference.md
+        - file: security/fields-and-object-schemas/timeline-object-schema.md
+        - file: security/fields-and-object-schemas/alert-schema.md  
+    - file: observability/index.md
+    - file: observability/fields-and-object-schemas.md
+      children:
+        - file: observability/fields-and-object-schemas/logs-app-fields.md
+        - file: observability/fields-and-object-schemas/metrics-app-fields.md
+    - file: observability/elastic-entity-model.md
+    - file: observability/serverless/infrastructure-app-fields.md
+    - file: search/search.md
+    - file: elasticsearch.md
+      children:
+        - file: elasticsearch/clients/index.md
+    - file: ingestion-tools.md
+      children:
+        - file: ingestion-tools/fleet/index.md
+        - file: ingestion-tools/fleet/fleet-agent-serverless-restrictions.md
+        - file: ingestion-tools/fleet/migrate-from-beats-to-elastic-agent.md
+          children:
+            - file: ingestion-tools/fleet/migrate-auditbeat-to-agent.md
+        - file: ingestion-tools/fleet/deployment-models.md
+          children:
+            - file: ingestion-tools/fleet/fleet-server.md
+            - file: ingestion-tools/fleet/add-fleet-server-cloud.md
+            - file: ingestion-tools/fleet/add-fleet-server-on-prem.md
+            - file: ingestion-tools/fleet/add-fleet-server-mixed.md
+            - file: ingestion-tools/fleet/add-fleet-server-kubernetes.md
+            - file: ingestion-tools/fleet/fleet-server-scalability.md
+            - file: ingestion-tools/fleet/fleet-server-secrets.md
+              children:
+                - file: ingestion-tools/fleet/secret-files-guide.md
+            - file: ingestion-tools/fleet/fleet-server-monitoring.md
+        - file: ingestion-tools/fleet/install-elastic-agents.md
+          children:
+            - file: ingestion-tools/fleet/install-fleet-managed-elastic-agent.md
+            - file: ingestion-tools/fleet/install-standalone-elastic-agent.md
+              children:
+                - file: ingestion-tools/fleet/upgrade-standalone.md
+            - file: ingestion-tools/fleet/install-elastic-agents-in-containers.md
+              children:
+                - file: ingestion-tools/fleet/elastic-agent-container.md
+                - file: ingestion-tools/fleet/running-on-kubernetes-managed-by-fleet.md
+                - file: ingestion-tools/fleet/install-on-kubernetes-using-helm.md
+                - file: ingestion-tools/fleet/example-kubernetes-standalone-agent-helm.md
+                - file: ingestion-tools/fleet/example-kubernetes-fleet-managed-agent-helm.md
+                - file: ingestion-tools/fleet/advanced-kubernetes-managed-by-fleet.md
+                - file: ingestion-tools/fleet/configuring-kubernetes-metadata.md
+                - file: ingestion-tools/fleet/running-on-gke-managed-by-fleet.md
+                - file: ingestion-tools/fleet/running-on-eks-managed-by-fleet.md
+                - file: ingestion-tools/fleet/running-on-aks-managed-by-fleet.md
+                - file: ingestion-tools/fleet/running-on-kubernetes-standalone.md
+                - file: ingestion-tools/fleet/scaling-on-kubernetes.md
+                - file: ingestion-tools/fleet/ingest-pipeline-kubernetes.md
+                - file: ingestion-tools/fleet/agent-environment-variables.md
+            - file: ingestion-tools/fleet/otel-agent.md
+            - file: ingestion-tools/fleet/elastic-agent-unprivileged.md
+            - file: ingestion-tools/fleet/install-agent-msi.md
+            - file: ingestion-tools/fleet/installation-layout.md
+            - file: ingestion-tools/fleet/air-gapped.md
+            - file: ingestion-tools/fleet/fleet-agent-proxy-support.md
+              children:
+                - file: ingestion-tools/fleet/elastic-agent-proxy-config.md
+                - file: ingestion-tools/fleet/host-proxy-env-vars.md
+                - file: ingestion-tools/fleet/fleet-agent-proxy-managed.md
+                - file: ingestion-tools/fleet/fleet-agent-proxy-standalone.md
+                - file: ingestion-tools/fleet/epr-proxy-setting.md
+            - file: ingestion-tools/fleet/uninstall-elastic-agent.md
+            - file: ingestion-tools/fleet/start-stop-elastic-agent.md
+            - file: ingestion-tools/fleet/_agent_configuration_encryption.md
+        - file: ingestion-tools/fleet/secure.md
+          children:
+            - file: ingestion-tools/fleet/secure-connections.md
+            - file: ingestion-tools/fleet/certificates-rotation.md
+            - file: ingestion-tools/fleet/mutual-tls.md
+            - file: ingestion-tools/fleet/tls-overview.md
+            - file: ingestion-tools/fleet/secure-logstash-connections.md
+        - file: ingestion-tools/fleet/manage-elastic-agents-in-fleet.md
+          children:
+            - file: ingestion-tools/fleet/fleet-settings.md
+              children:
+                - file: ingestion-tools/fleet/es-output-settings.md
+                - file: ingestion-tools/fleet/ls-output-settings.md
+                - file: ingestion-tools/fleet/kafka-output-settings.md
+                - file: ingestion-tools/fleet/remote-elasticsearch-output.md
+                - file: ingestion-tools/fleet/fleet-settings-changing-outputs.md
+            - file: ingestion-tools/fleet/manage-agents.md
+              children:
+                - file: ingestion-tools/fleet/unenroll-elastic-agent.md
+                - file: ingestion-tools/fleet/set-inactivity-timeout.md
+                - file: ingestion-tools/fleet/upgrade-elastic-agent.md
+                - file: ingestion-tools/fleet/migrate-elastic-agent.md
+                - file: ingestion-tools/fleet/monitor-elastic-agent.md
+                - file: ingestion-tools/fleet/agent-health-status.md
+                - file: ingestion-tools/fleet/filter-agent-list-by-tags.md
+            - file: ingestion-tools/fleet/agent-policy.md
+              children:
+                - file: ingestion-tools/fleet/create-policy-no-ui.md
+                - file: ingestion-tools/fleet/enable-custom-policy-settings.md
+                - file: ingestion-tools/fleet/fleet-agent-environment-variables.md
+            - file: ingestion-tools/fleet/fleet-roles-privileges.md
+            - file: ingestion-tools/fleet/fleet-enrollment-tokens.md
+            - file: ingestion-tools/fleet/fleet-api-docs.md
+        - file: ingestion-tools/fleet/configure-standalone-elastic-agents.md
+          children:
+            - file: ingestion-tools/fleet/create-standalone-agent-policy.md
+            - file: ingestion-tools/fleet/structure-config-file.md
+            - file: ingestion-tools/fleet/elastic-agent-input-configuration.md
+              children:
+                - file: ingestion-tools/fleet/elastic-agent-simplified-input-configuration.md
+                - file: ingestion-tools/fleet/elastic-agent-inputs-list.md
+                - file: ingestion-tools/fleet/dynamic-input-configuration.md
+            - file: ingestion-tools/fleet/providers.md
+              children:
+                - file: ingestion-tools/fleet/local-provider.md
+                - file: ingestion-tools/fleet/agent-provider.md
+                - file: ingestion-tools/fleet/host-provider.md
+                - file: ingestion-tools/fleet/env-provider.md
+                - file: ingestion-tools/fleet/kubernetes_secrets-provider.md
+                - file: ingestion-tools/fleet/kubernetes_leaderelection-provider.md
+                - file: ingestion-tools/fleet/local-dynamic-provider.md
+                - file: ingestion-tools/fleet/docker-provider.md
+                - file: ingestion-tools/fleet/kubernetes-provider.md
+            - file: ingestion-tools/fleet/elastic-agent-output-configuration.md
+              children:
+                - file: ingestion-tools/fleet/elasticsearch-output.md
+                - file: ingestion-tools/fleet/kafka-output.md
+                - file: ingestion-tools/fleet/logstash-output.md
+            - file: ingestion-tools/fleet/elastic-agent-ssl-configuration.md
+            - file: ingestion-tools/fleet/elastic-agent-standalone-logging-config.md
+            - file: ingestion-tools/fleet/elastic-agent-standalone-feature-flags.md
+            - file: ingestion-tools/fleet/elastic-agent-standalone-download.md
+            - file: ingestion-tools/fleet/config-file-examples.md
+              children:
+                - file: ingestion-tools/fleet/config-file-example-apache.md
+                - file: ingestion-tools/fleet/config-file-example-nginx.md
+            - file: ingestion-tools/fleet/grant-access-to-elasticsearch.md
+            - file: ingestion-tools/fleet/example-standalone-monitor-nginx-serverless.md
+            - file: ingestion-tools/fleet/example-standalone-monitor-nginx.md
+            - file: ingestion-tools/fleet/debug-standalone-agents.md
+            - file: ingestion-tools/fleet/elastic-agent-kubernetes-autodiscovery.md
+              children:
+                - file: ingestion-tools/fleet/conditions-based-autodiscover.md
+                - file: ingestion-tools/fleet/hints-annotations-autodiscovery.md
+            - file: ingestion-tools/fleet/elastic-agent-monitoring-configuration.md
+            - file: ingestion-tools/fleet/elastic-agent-reference-yaml.md
+        - file: ingestion-tools/fleet/manage-integrations.md
+          children:
+            - file: ingestion-tools/fleet/package-signatures.md
+            - file: ingestion-tools/fleet/add-integration-to-policy.md
+            - file: ingestion-tools/fleet/view-integration-policies.md
+            - file: ingestion-tools/fleet/edit-delete-integration-policy.md
+            - file: ingestion-tools/fleet/install-uninstall-integration-assets.md
+            - file: ingestion-tools/fleet/view-integration-assets.md
+            - file: ingestion-tools/fleet/integration-level-outputs.md
+            - file: ingestion-tools/fleet/upgrade-integration.md
+            - file: ingestion-tools/fleet/managed-integrations-content.md
+            - file: ingestion-tools/fleet/integrations-assets-best-practices.md
+            - file: ingestion-tools/fleet/data-streams.md
+              children:
+                - file: ingestion-tools/fleet/data-streams-ilm-tutorial.md
+                - file: ingestion-tools/fleet/data-streams-scenario1.md
+                - file: ingestion-tools/fleet/data-streams-scenario2.md
+                - file: ingestion-tools/fleet/data-streams-scenario3.md
+                - file: ingestion-tools/fleet/data-streams-pipeline-tutorial.md
+                - file: ingestion-tools/fleet/data-streams-advanced-features.md
+        - file: ingestion-tools/fleet/agent-command-reference.md
+        - file: ingestion-tools/fleet/agent-processors.md
+          children:
+            - file: ingestion-tools/fleet/processor-syntax.md
+            - file: ingestion-tools/fleet/add-cloud-metadata-processor.md
+            - file: ingestion-tools/fleet/add_cloudfoundry_metadata-processor.md
+            - file: ingestion-tools/fleet/add_docker_metadata-processor.md
+            - file: ingestion-tools/fleet/add_fields-processor.md
+            - file: ingestion-tools/fleet/add_host_metadata-processor.md
+            - file: ingestion-tools/fleet/add_id-processor.md
+            - file: ingestion-tools/fleet/add_kubernetes_metadata-processor.md
+            - file: ingestion-tools/fleet/add_labels-processor.md
+            - file: ingestion-tools/fleet/add_locale-processor.md
+            - file: ingestion-tools/fleet/add_network_direction-processor.md
+            - file: ingestion-tools/fleet/add_nomad_metadata-processor.md
+            - file: ingestion-tools/fleet/add_observer_metadata-processor.md
+            - file: ingestion-tools/fleet/add_process_metadata-processor.md
+            - file: ingestion-tools/fleet/add_tags-processor.md
+            - file: ingestion-tools/fleet/community_id-processor.md
+            - file: ingestion-tools/fleet/convert-processor.md
+            - file: ingestion-tools/fleet/copy_fields-processor.md
+            - file: ingestion-tools/fleet/decode_base64_field-processor.md
+            - file: ingestion-tools/fleet/decode_cef-processor.md
+            - file: ingestion-tools/fleet/decode_csv_fields-processor.md
+            - file: ingestion-tools/fleet/decode_duration-processor.md
+            - file: ingestion-tools/fleet/decode-json-fields.md
+            - file: ingestion-tools/fleet/decode_xml-processor.md
+            - file: ingestion-tools/fleet/decode_xml_wineventlog-processor.md
+            - file: ingestion-tools/fleet/decompress_gzip_field-processor.md
+            - file: ingestion-tools/fleet/detect_mime_type-processor.md
+            - file: ingestion-tools/fleet/dissect-processor.md
+            - file: ingestion-tools/fleet/dns-processor.md
+            - file: ingestion-tools/fleet/drop_event-processor.md
+            - file: ingestion-tools/fleet/drop_fields-processor.md
+            - file: ingestion-tools/fleet/extract_array-processor.md
+            - file: ingestion-tools/fleet/fingerprint-processor.md
+            - file: ingestion-tools/fleet/include_fields-processor.md
+            - file: ingestion-tools/fleet/move_fields-processor.md
+            - file: ingestion-tools/fleet/processor-parse-aws-vpc-flow-log.md
+            - file: ingestion-tools/fleet/rate_limit-processor.md
+            - file: ingestion-tools/fleet/registered_domain-processor.md
+            - file: ingestion-tools/fleet/rename-processor.md
+            - file: ingestion-tools/fleet/replace-fields.md
+            - file: ingestion-tools/fleet/script-processor.md
+            - file: ingestion-tools/fleet/syslog-processor.md
+            - file: ingestion-tools/fleet/timestamp-processor.md
+            - file: ingestion-tools/fleet/translate_sid-processor.md
+            - file: ingestion-tools/fleet/truncate_fields-processor.md
+            - file: ingestion-tools/fleet/urldecode-processor.md
+        - file: ingestion-tools/observability/apm.md
+          children:
+            - file: ingestion-tools/observability/apm-settings.md
+            - file: ingestion-tools/cloud/apm-settings.md
+            - file: ingestion-tools/cloud-enterprise/apm-settings.md
+            - file: ingestion-tools/apm/apm-agents.md
+    - file: ecs.md
+    - file: data-analysis/index.md
+      children:
+        - file: data-analysis/machine-learning/supplied-anomaly-detection-configurations.md
+          children:
+            - file: data-analysis/machine-learning/ootb-ml-jobs-apache.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-apm.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-auditbeat.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-logs-ui.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-metricbeat.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-metrics-ui.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-nginx.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-siem.md
+            - file: data-analysis/machine-learning/ootb-ml-jobs-uptime.md
+        - file: data-analysis/machine-learning/machine-learning-functions.md
+          children:
+            - file: data-analysis/machine-learning/ml-count-functions.md
+            - file: data-analysis/machine-learning/ml-geo-functions.md
+            - file: data-analysis/machine-learning/ml-info-functions.md
+            - file: data-analysis/machine-learning/ml-metric-functions.md
+            - file: data-analysis/machine-learning/ml-rare-functions.md
+            - file: data-analysis/machine-learning/ml-sum-functions.md
+            - file: data-analysis/machine-learning/ml-time-functions.md
+        - file: data-analysis/observability/index.md
+        - file: data-analysis/observability/metrics-reference-serverless.md
+          children:
+            - file: data-analysis/observability/observability-host-metrics-serverless.md
+            - file: data-analysis/observability/observability-container-metrics-serverless.md
+            - file: data-analysis/observability/observability-kubernetes-pod-metrics-serverless.md
+            - file: data-analysis/observability/observability-aws-metrics-serverless.md
+        - file: data-analysis/kibana/canvas-functions.md
+          children:
+            - file: data-analysis/kibana/tinymath-functions.md
+    - file: glossary/index.md

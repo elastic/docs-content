@@ -1,5 +1,5 @@
 ---
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -115,7 +115,7 @@ The response includes metadata that {{es}} generates for the document, including
 
 ### Add multiple documents [getting-started-add-multiple-documents]
 
-Use the [`_bulk` endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html) to add multiple documents in one request. Bulk data must be formatted as newline-delimited JSON (NDJSON).
+Use the [`_bulk` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk) to add multiple documents in one request. Bulk data must be formatted as newline-delimited JSON (NDJSON).
 
 ```console
 POST /_bulk
@@ -252,7 +252,7 @@ POST /books/_doc
 1. The new field.
 
 
-View the mapping for the `books` index with the [Get mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html). The new field `language` has been added to the mapping with a `text` data type.
+View the mapping for the `books` index with the [Get mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping). The new field `language` has been added to the mapping with a `text` data type.
 
 ```console
 GET /books/_mapping
@@ -309,7 +309,7 @@ GET /books/_mapping
 
 ### Define explicit mapping [getting-started-explicit-mapping]
 
-Create an index named `my-explicit-mappings-books` with explicit mappings. Pass each field’s properties as a JSON object. This object should contain the [field data type](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html) and any additional [mapping parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-params.html).
+Create an index named `my-explicit-mappings-books` with explicit mappings. Pass each field’s properties as a JSON object. This object should contain the [field data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md) and any additional [mapping parameters](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-parameters.md).
 
 ```console
 PUT /my-explicit-mappings-books
@@ -345,7 +345,7 @@ PUT /my-explicit-mappings-books
 
 ### Combine dynamic and explicit mappings [getting-started-combined-mapping]
 
-Explicit mappings are defined at index creation, and documents must conform to these mappings. You can also use the [Update mapping API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html). When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping.
+Explicit mappings are defined at index creation, and documents must conform to these mappings. You can also use the [Update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). When an index has the `dynamic` flag set to `true`, you can add new fields to documents without updating the mapping.
 
 This allows you to combine explicit and dynamic mappings. Learn more about [managing and updating mappings](../../manage-data/data-store/mapping.md#mapping-manage-update).
 
@@ -400,7 +400,7 @@ GET books/_search
 
 1. The `took` field indicates the time in milliseconds for {{es}} to execute the search
 2. The `timed_out` field indicates whether the search timed out
-3. The `_shards` field contains information about the number of [shards](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html) that the search was executed on and the number that succeeded
+3. The `_shards` field contains information about the number of [shards](asciidocalypse://docs/docs-content/docs/reference/glossary/index.md) that the search was executed on and the number that succeeded
 4. The `hits` object contains the search results
 5. The `total` object provides information about the total number of matching documents
 6. The `max_score` field indicates the highest relevance score among all matching documents
@@ -416,7 +416,7 @@ GET books/_search
 
 ### `match` query [getting-started-match-query]
 
-You can use the [`match` query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
+You can use the [`match` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
 
 Run the following command to search the `books` index for documents containing `brave` in the `name` field:
 
@@ -474,7 +474,7 @@ GET books/_search
 
 ## Step 5: Delete your indices (optional) [getting-started-delete-indices]
 
-When following along with examples, you might want to delete an index to start from scratch. You can delete indices using the [Delete index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+When following along with examples, you might want to delete an index to start from scratch. You can delete indices using the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 
 For example, run the following command to delete the indices created in this tutorial:
 

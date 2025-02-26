@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 ---
   
 # Aggregation-based [add-aggregation-based-visualization-panels]

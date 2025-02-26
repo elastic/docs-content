@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Jira action"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/actions-jira.html
@@ -108,7 +108,7 @@ xpack.notification.jira:
 It is strongly advised to use Basic Authentication with secured HTTPS protocol only.
 ::::
 
-You can also specify defaults for the [Jira issues](https://www.elastic.co/guide/en/elasticsearch/reference/current/notification-settings.html#jira-account-attributes):
+You can also specify defaults for the [Jira issues](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#jira-account-attributes):
 
 ```yaml
 xpack.notification.jira:

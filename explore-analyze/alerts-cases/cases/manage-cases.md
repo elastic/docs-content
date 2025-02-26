@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/manage-cases.html
 ---
@@ -16,7 +16,7 @@ Open a new case to keep track of issues and share their details with colleagues.
 
 1. Go to **Management > {{stack-manage-app}} > Cases**, then click **Create case**.
    :::{image} ../../../images/kibana-cases-create.png
-   :alt: Create a case in {stack-manage-app}
+   :alt: Create a case in {{stack-manage-app}}
    :class: screenshot
    :::
 
@@ -31,13 +31,13 @@ Open a new case to keep track of issues and share their details with colleagues.
 6. For the **External incident management system**, select a connector. For more information, refer to [External incident management systems](manage-cases-settings.md#case-connectors).
 7. After you’ve completed all of the required fields, click **Create case**.
 
-[preview] Alternatively, you can configure your rules to automatically create cases by using [case actions](https://www.elastic.co/guide/en/kibana/current/cases-action-type.html). By default, the rule adds all of the alerts within a specified time window to a single case. You can optionally choose a field to group the alerts and create separate cases for each group. You can also choose whether you want the rule to reopen cases or open new ones when the time window elapses.
+[preview] Alternatively, you can configure your rules to automatically create cases by using [case actions](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/cases-action-type.md). By default, the rule adds all of the alerts within a specified time window to a single case. You can optionally choose a field to group the alerts and create separate cases for each group. You can also choose whether you want the rule to reopen cases or open new ones when the time window elapses.
 
 ## Add email notifications [add-case-notifications]
 
 You can configure email notifications that occur when users are assigned to cases.
 
-For hosted {{kib}} on {{ess}}:
+For {{kib}} on {{ecloud}}:
 
 1. Add the email domains to the [notifications domain allowlist](../alerts.md).
 
@@ -47,7 +47,7 @@ For self-managed {{kib}}:
 
 1. Create a preconfigured email connector.
    ::::{note}
-   At this time, email notifications support only preconfigured connectors, which are defined in the `kibana.yml` file. For examples, refer to [Email connectors](https://www.elastic.co/guide/en/kibana/current/pre-configured-connectors.html#preconfigured-email-configuration) and [Configure email accounts for well-known services](https://www.elastic.co/guide/en/kibana/current/email-action-type.html#configuring-email).
+   At this time, email notifications support only preconfigured connectors, which are defined in the `kibana.yml` file. For examples, refer to [Email connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md#preconfigured-email-configuration) and [Configure email accounts for well-known services](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/email-action-type.md#configuring-email).
    ::::
 
 2. Set the `notifications.connectors.default.email` {{kib}} setting in kibana.yml to the name of your email connector.

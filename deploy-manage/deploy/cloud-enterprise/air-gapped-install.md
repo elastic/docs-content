@@ -17,3 +17,10 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md
 % - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-install-offline.md
 %      Notes: 3 child docs
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md](/raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-install-offline.md](/raw-migrated-files/cloud/cloud-enterprise/ece-install-offline.md)

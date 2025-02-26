@@ -7,7 +7,7 @@ mapped_pages:
 
 The **Metrics Explorer** page enables you to create time-series visualizations based on aggregation of your metrics, chart them against related metrics, and break them down per the field of your choice. You can group and create visualizations of metrics for one or more resources that you are monitoring.
 
-Additionally, for detailed analyses of your metrics, you can annotate and save visualizations for your custom dashboards by using the [Time Series Visual Builder (TSVB)](https://www.elastic.co/guide/en/kibana/current/legacy-editors.html#tsvb-panel) within {{kib}}.
+Additionally, for detailed analyses of your metrics, you can annotate and save visualizations for your custom dashboards by using the [Time Series Visual Builder (TSVB)](/explore-analyze/visualize/legacy-editors/tsvb.md) within {{kib}}.
 
 To open **Metrics Explorer**, find **Infrastructure** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 
@@ -16,7 +16,7 @@ To open **Metrics Explorer**, find **Infrastructure** in the main menu or use th
 :class: screenshot
 :::
 
-To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/observability/current/metrics-reference.html) documentation.
+To learn more about the metrics shown on this page, refer to the [Metrics reference](asciidocalypse://docs/docs-content/docs/reference/data-analysis/observability/metrics-reference.md) documentation.
 
 ::::{tip}
 If there are no metrics to display, {{kib}} prompts you to add a metrics integration. Click **Add a metrics integration** to get started. If you want to add more data in the future, click **Add data** from any page in the {{infrastructure-app}}.
@@ -53,7 +53,7 @@ As an example, let’s view the system load metrics for hosts we’re currently 
 
     There is now a separate graph for each network interface.
 
-7. Let’s visualize one of the graphs in [TSVB](https://www.elastic.co/guide/en/kibana/current/legacy-editors.html#tsvb-panel). Choose a graph, click **Actions**, and then select **Open In Visualize**.
+7. Let’s visualize one of the graphs in [TSVB](/explore-analyze/visualize/legacy-editors/tsvb.md). Choose a graph, click **Actions**, and then select **Open In Visualize**.
 
     In this visualization the max of `host.network.egress.bytes` is displayed, filtered by `host.name` and `system.network.name`.
 

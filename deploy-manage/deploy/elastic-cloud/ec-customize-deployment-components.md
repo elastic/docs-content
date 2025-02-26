@@ -1,9 +1,13 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-customize-deployment-components.html
+  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-customize-deployment-components.html
 ---
 
-# How can I customize the components of my deployment? [ec-customize-deployment-components]
+# Customize deployment components [ec-customize-deployment-components]
 
 When you create or edit an existing deployment, you can fine-tune the capacity, add extensions, and select additional features.
 
@@ -15,7 +19,7 @@ Autoscaling reduces some of the manual effort required to manage a deployment by
 
 ## {{es}} [ec-cluster-size]
 
-Depending upon how much data you have and what queries you plan to run, you need to select a cluster size that fits your needs. There is no silver bullet for deciding how much memory you need other than simply testing it. The [cluster performance metrics](../../monitor/stack-monitoring.md) in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) can tell you if your cluster is sized appropriately. You can also [enable deployment monitoring](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) for more detailed performance metrics. Fortunately, you can change the amount of memory allocated to the cluster later without any downtime for HA deployments.
+Depending upon how much data you have and what queries you plan to run, you need to select a cluster size that fits your needs. There is no silver bullet for deciding how much memory you need other than simply testing it. The [cluster performance metrics](../../monitor/stack-monitoring.md) in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) can tell you if your cluster is sized appropriately. You can also [enable deployment monitoring](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) for more detailed performance metrics. Fortunately, you can change the amount of memory allocated to the cluster later without any downtime for HA deployments.
 
 To change a cluster’s topology, from deployment management, select **Edit deployment** from the **Actions** dropdown. Next, select a storage and RAM setting from the **Size per zone** drop-down list, and save your changes. When downsizing the cluster, make sure to have enough resources to handle the current load, otherwise your cluster will be under stress.
 
@@ -53,7 +57,7 @@ High availability is achieved by running a cluster with replicas in multiple dat
 Running in two data centers or availability zones is our default high availability configuration. It provides reasonably high protection against infrastructure failures and intermittent network problems. You might want three data centers if you need even higher fault tolerance. Just one zone might be sufficient, if the cluster is mainly used for testing or development.
 
 ::::{important}
-Some [regions](https://www.elastic.co/guide/en/cloud/current/ec-reference-regions.html) might have only two availability zones.
+Some [regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/regions.md) might have only two availability zones.
 ::::
 
 
@@ -66,7 +70,7 @@ The node capacity you choose is per data center. The reason for this is that the
 
 ## Sharding [ec_sharding]
 
-You can review your {{es}} shard activity from Elasticsearch Service. At the bottom of the {{es}} page, you can hover over each part of the shard visualization for specific numbers.
+You can review your {{es}} shard activity from the {{ecloud}} Console. When viewing a hosted deployment details, at the bottom of the {{es}} page, you can hover over each part of the shard visualization for specific numbers.
 
 :::{image} ../../../images/cloud-ec-shard-activity.gif
 :alt: Shard activity
@@ -82,7 +86,7 @@ Here, you can configure user settings, extensions, and system settings  (older v
 
 ### User settings [ec-user-settings]
 
-Set specific configuration parameters to change how {{es}} and other Elastic products run. User settings are appended to the appropriate YAML configuration file, but not all settings are supported in Elasticsearch Service.
+Set specific configuration parameters to change how {{es}} and other Elastic products run. User settings are appended to the appropriate YAML configuration file, but not all settings are supported in {{ech}} deployments.
 
 For more information, refer to [Edit your user settings](edit-stack-settings.md).
 
@@ -120,14 +124,6 @@ In production systems, you might need to control what {{es}} data users can acce
 {{integrations-server}} connects observability and security data from Elastic Agents and APM to Elasticsearch. An {{integrations-server}} instance is created automatically as part of every deployment.
 
 Refer to [Manage your Integrations Server](manage-integrations-server.md) to learn more.
-
-
-## {{ents}} [ec_ents]
-
-{{ents}} enables you to add modern search to your application or connect and unify content across your workplace. An {{ents}} instance is created automatically as part of every deployment.
-
-Refer to [Enable Enterprise Search](https://www.elastic.co/guide/en/cloud/current/ec-enable-enterprise-search.html) to learn more.
-
 
 ## Security [ec_security]
 

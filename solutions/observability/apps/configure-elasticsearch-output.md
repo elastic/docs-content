@@ -12,7 +12,7 @@ mapped_pages:
 ::::{admonition}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
-This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html).
+This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elasticsearch-output.md).
 
 ::::
 
@@ -292,5 +292,4 @@ Authentication is specified in the APM Server configuration file:
 
 More information on sending data to a secured cluster is available in the configuration reference:
 
-* [{{es}}]()
 * [SSL/TLS output settings](ssltls-output-settings.md)

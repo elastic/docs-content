@@ -39,3 +39,11 @@ $$$roles-indices-priv$$$
 $$$roles-management-ui$$$
 
 $$$roles-management-api$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/defining-roles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/defining-roles.md)
+* [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/defining-roles.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/defining-roles.md)
+* [/raw-migrated-files/kibana/kibana/tutorial-secure-access-to-kibana.md](/raw-migrated-files/kibana/kibana/tutorial-secure-access-to-kibana.md)
+* [/raw-migrated-files/kibana/kibana/kibana-role-management.md](/raw-migrated-files/kibana/kibana/kibana-role-management.md)

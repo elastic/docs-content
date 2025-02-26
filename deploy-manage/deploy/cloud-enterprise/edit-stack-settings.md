@@ -30,3 +30,12 @@ $$$ece-edit-apm-fleet-tls$$$
 
 $$$ece-edit-apm-standalone-settings-ece$$$
 
+
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-enterprise/editing-user-settings.md](/raw-migrated-files/cloud/cloud-enterprise/editing-user-settings.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-add-user-settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece-add-user-settings.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-manage-kibana-settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece-manage-kibana-settings.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-manage-apm-settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece-manage-apm-settings.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md](/raw-migrated-files/cloud/cloud-enterprise/ece-manage-enterprise-search-settings.md)

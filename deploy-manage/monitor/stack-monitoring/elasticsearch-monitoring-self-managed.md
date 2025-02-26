@@ -3,8 +3,9 @@ navigation_title: "Elasticsearch self-managed"
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/monitoring-production.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-monitoring.html
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: all
 ---
 
 # Elasticsearch monitoring self-managed
@@ -17,3 +18,10 @@ applies:
 
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-production.md
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md
+
+⚠️ **This page is a work in progress.** ⚠️
+
+The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-production.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/monitoring-production.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/secure-monitoring.md)

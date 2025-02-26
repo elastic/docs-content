@@ -1,16 +1,22 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/anonymous-access.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
+    self: 
 ---
 
 # Anonymous access [anonymous-access]
 
 ::::{tip} 
-To embed {{kib}} dashboards or grant access to {{kib}} without requiring credentials, use {{kib}}'s [anonymous authentication](user-authentication.md#anonymous-authentication) feature instead.
+To embed {{kib}} dashboards or grant access to {{kib}} without requiring credentials, use {{kib}}'s [anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md) feature instead.
 ::::
 
 
-Incoming requests are considered to be *anonymous* if no authentication token can be extracted from the incoming request. By default, anonymous requests are rejected and an authentication error is returned (status code `401`).
+Incoming requests to {{es}} are considered to be *anonymous* if no authentication token can be extracted from the incoming request. By default, anonymous requests are rejected and an authentication error is returned (status code `401`).
 
 To enable anonymous access, you assign one or more roles to anonymous users in the `elasticsearch.yml` configuration file. For example, the following configuration assigns anonymous users `role1` and `role2`:
 

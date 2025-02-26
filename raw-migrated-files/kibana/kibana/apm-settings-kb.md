@@ -25,7 +25,7 @@ Starting in version 8.2.0, APM indices are {{kib}} Spaces-aware; Changes to APM 
 If you’d like to change any of the default values, copy and paste the relevant settings into your `kibana.yml` configuration file. Changing these settings may disable features of the APM App.
 
 ::::{tip}
-More settings are available in the [Observability advanced settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#observability-advanced-settings).
+More settings are available in the [Observability advanced settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#observability-advanced-settings).
 ::::
 
 

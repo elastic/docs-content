@@ -19,13 +19,13 @@ When a user is not authorized to view data in an index (such as an {{es}} index)
 
 Set an encryption key so that sessions are not invalidated. You can optionally configure additional security settings and authentication.
 
-1. Set the `xpack.security.encryptionKey` property in the `kibana.yml` configuration file. You can use any text string that is 32 characters or longer as the encryption key. Refer to [`xpack.security.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#xpack-security-encryptionKey).
+1. Set the `xpack.security.encryptionKey` property in the `kibana.yml` configuration file. You can use any text string that is 32 characters or longer as the encryption key. Refer to [`xpack.security.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-security-encryptionKey).
 
     ```yaml
     xpack.security.encryptionKey: "something_at_least_32_characters"
     ```
 
-    {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/reporting-settings-kb.html#xpack-reporting-encryptionKey) and [`xpack.encryptedSavedObjects.encryptionKey`](https://www.elastic.co/guide/en/kibana/current/security-settings-kb.html#xpack-encryptedSavedObjects-encryptionKey) respectively.
+    {{kib}}'s reporting and saved objects features also have encryption key settings. Refer to [`xpack.reporting.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md#xpack-reporting-encryptionKey) and [`xpack.encryptedSavedObjects.encryptionKey`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/security-settings.md#xpack-encryptedSavedObjects-encryptionKey) respectively.
 
 2. Optional: [Configure {{kib}}'s session expiration settings](../../../deploy-manage/security/kibana-session-management.md).
 3. Optional: [Configure {{kib}} to authenticate to {{es}} with a client certificate](../../../deploy-manage/security/secure-cluster-communications.md).
@@ -39,14 +39,14 @@ Configure roles for your {{kib}} users to control what data those users can acce
 1. Temporarily log in to {{kib}} using the built-in `elastic` superuser so you can create new users and assign roles. If you are running {{kib}} locally, go to `https://localhost:5601` to view the login page.
 
     ::::{note} 
-    The password for the built-in `elastic` user is generated as part of the security configuration process on {{es}}. If you need to reset the password for the `elastic` user or other built-in users, run the [`elasticsearch-reset-password`](https://www.elastic.co/guide/en/elasticsearch/reference/current/reset-password.html) tool.
+    The password for the built-in `elastic` user is generated as part of the security configuration process on {{es}}. If you need to reset the password for the `elastic` user or other built-in users, run the [`elasticsearch-reset-password`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/reset-password.md) tool.
     ::::
 
 2. $$$kibana-roles$$$Create roles and users to grant access to {{kib}}.
 
     To manage privileges in {{kib}}, go to the **Roles** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). The built-in `kibana_admin` role will grant access to {{kib}} with administrator privileges. Alternatively, you can create additional roles that grant limited access to {{kib}}.
 
-    If you’re using the default native realm with Basic Authentication, go to the **Users** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to create users and assign roles, or use the {{es}} [user management APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-user-apis). For example, the following creates a user named `jacknich` and assigns it the `kibana_admin` role:
+    If you’re using the default native realm with Basic Authentication, go to the **Users** management page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md) to create users and assign roles, or use the {{es}} [user management APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security). For example, the following creates a user named `jacknich` and assigns it the `kibana_admin` role:
 
     ```console
     POST /_security/user/jacknich

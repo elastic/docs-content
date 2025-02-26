@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Index threshold"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/rule-type-index-threshold.html
@@ -18,7 +18,7 @@ In **{{stack-manage-app}}** > **{{rules-ui}}**, click **Create rule**. Select th
 When you create an index threshold rule, you must define the conditions for the rule to detect. For example:
 
 :::{image} ../../../images/kibana-rule-types-index-threshold-conditions.png
-:alt: Defining index threshold rule conditions in {kib}
+:alt: Defining index threshold rule conditions in {{kib}}
 :class: screenshot
 :::
 
@@ -83,7 +83,7 @@ The following action variables are specific to the index threshold rule. You can
 
 ## Example [_example]
 
-In this example, you will use the {{kib}} [sample weblog data set](https://www.elastic.co/guide/en/kibana/current/get-started.html) to set up and tune the conditions on an index threshold rule. For this example, you want to detect when any of the top four sites serve more than 420,000 bytes over a 24 hour period.
+In this example, you will use the {{kib}} [sample weblog data set](/explore-analyze/index.md) to set up and tune the conditions on an index threshold rule. For this example, you want to detect when any of the top four sites serve more than 420,000 bytes over a 24 hour period.
 
 1. Go to **{{stack-manage-app}} > {{rules-ui}}** and click **Create rule**.
 2. Select the **Index threshold** rule type.

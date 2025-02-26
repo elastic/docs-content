@@ -61,7 +61,7 @@ To enable multifactor authentication using an authenticator app, you must verify
 
 You can remove a multifactor authentication method after it’s added by clicking **Remove**.
 
-Before you remove an authentication method, you must set up an alternate method. If you can’t use any of your configured authentication methods — for example, if your device is lost or stolen — then [contact support](../troubleshoot/troubleshoot/index.md).
+Before you remove an authentication method, you must set up an alternate method. If you can’t use any of your configured authentication methods — for example, if your device is lost or stolen — then [contact support](../troubleshoot/index.md).
 
 
 ## Frequently asked questions [ec-account-security-mfa-faq]

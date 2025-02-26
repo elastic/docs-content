@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-logstash-securing-api.html
 ---
@@ -42,7 +45,7 @@ spec:
 
 1. Store the username and password in a Secret.
 2. Map the username and password to the environment variables of the Pod.
-3. At Logstash startup, `${API_USERNAME}` and `${API_PASSWORD}` are replaced by the value of environment variables. Check [using environment variables](https://www.elastic.co/guide/en/logstash/current/environment-variables.html) for more details.
+3. At Logstash startup, `${API_USERNAME}` and `${API_PASSWORD}` are replaced by the value of environment variables. Check [using environment variables](asciidocalypse://docs/logstash/docs/reference/environment-variables.md) for more details.
 
 
 An alternative is to set up [keystore](advanced-configuration-logstash.md#k8s-logstash-keystore) to resolve `${API_USERNAME}` and `${API_PASSWORD}`

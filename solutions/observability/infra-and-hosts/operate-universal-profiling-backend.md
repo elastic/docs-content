@@ -74,7 +74,7 @@ Avoid using debug logs in production, as they can be very verbose and impact bac
 
 Logs are formatted as "key=value" pairs, and {{es}} and {{kib}} can automatically parse them into fields.
 
-A log collector, such as Filebeat, can collect and send logs to {{es}} for indexing and analysis. Depending on how it’s installed, a Filebeat input of type `journald` (for OS packages), `log` (for binaries), or `container` can be used to process the logs. Refer to the [filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/configuring-howto-filebeat.html) for more information.
+A log collector, such as Filebeat, can collect and send logs to {{es}} for indexing and analysis. Depending on how it’s installed, a Filebeat input of type `journald` (for OS packages), `log` (for binaries), or `container` can be used to process the logs. Refer to the [filebeat documentation](asciidocalypse://docs/beats/docs/reference/filebeat/configuring-howto-filebeat.md) for more information.
 
 
 ### Metrics [profiling-self-managed-ops-monitoring-metrics]
@@ -313,12 +313,12 @@ Follow these steps to enable TLS connection from collector/symbolizer to Elastic
 
 1. Create secrets with the TLS key pairs (omit the `ca.pem` field if you are not using a self-signed CA):
 
-    ```terminal
+    ```bash
     kubectl -n universal-profiling create secret generic pf-collector-tls-certificate --from-file=tls.key=/path/to/key.pem \
     --from-file=tls.cert=/path/to/cert.pem --from-file=ca.pem=/path/to/ca.crt
     ```
 
-    ```terminal
+    ```bash
     kubectl -n universal-profiling create secret generic pf-symbolizer-tls-certificate --from-file=tls.key=/path/to/key.pem \
     --from-file=tls.cert=/path/to/cert.pem --from-file=ca.pem=/path/to/ca.crt
     ```

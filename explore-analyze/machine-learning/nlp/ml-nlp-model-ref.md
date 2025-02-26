@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Compatible third party models"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-model-ref.html
@@ -10,7 +10,7 @@ mapped_pages:
 # Compatible third party models [ml-nlp-model-ref]
 
 ::::{note}
-The minimum dedicated ML node size for deploying and using the {{nlp}} models is 16 GB in Elasticsearch Service if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
+The minimum dedicated ML node size for deploying and using the {{nlp}} models is 16 GB in {{ech}} if [deployment autoscaling](../../../deploy-manage/autoscaling.md) is turned off. Turning on autoscaling is recommended because it allows your deployment to dynamically adjust resources based on demand. Better performance can be achieved by using more allocations or more threads per allocation, which requires bigger ML nodes. Autoscaling provides bigger nodes when required. If autoscaling is turned off, you must provide suitably sized nodes yourself.
 ::::
 
 The {{stack-ml-features}} support transformer models that conform to the standard BERT model interface and use the WordPiece tokenization algorithm.
@@ -70,7 +70,7 @@ Sparse embedding models should be configured with the `text_expansion` task type
 
 Text Embedding models are designed to work with specific scoring functions for calculating the similarity between the embeddings they produce. Examples of typical scoring functions are: `cosine`, `dot product` and `euclidean distance` (also known as `l2_norm`).
 
-The embeddings produced by these models should be indexed in {{es}} using the [dense vector field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) with an appropriate [similarity function](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-params) chosen for the model.
+The embeddings produced by these models should be indexed in {{es}} using the [dense vector field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) with an appropriate [similarity function](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-params) chosen for the model.
 
 To find similar embeddings in {{es}} use the efficient [Approximate k-nearest neighbor (kNN)](../../../solutions/search/vector/knn.md#approximate-knn) search API with a text embedding as the query vector. Approximate kNN search uses the similarity function defined in the dense vector field mapping is used to calculate the relevance. For the best results the function must be one of the suitable similarity functions for the model.
 

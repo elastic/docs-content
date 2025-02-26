@@ -56,3 +56,9 @@ $$$install-stack-self-overview$$$
 $$$install-stack-self-prereqs$$$
 
 $$$install-stack-self-view-data$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/install-elasticsearch.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/install-elasticsearch.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/configuring-stack-security.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/configuring-stack-security.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/installing-stack-demo-self.md](/raw-migrated-files/stack-docs/elastic-stack/installing-stack-demo-self.md)

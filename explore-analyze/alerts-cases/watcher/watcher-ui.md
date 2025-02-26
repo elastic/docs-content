@@ -1,3 +1,9 @@
+---
+applies_to:
+  stack: ga
+  serverless: ga
+---
+
 # Watcher UI [watcher-ui]
 
 Go to the **Watcher** page using the navigation menu or the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). With this UI, you can:
@@ -32,7 +38,7 @@ If you are creating a threshold watch, you must also have the `view_index_metada
 
 A threshold alert is one of the most common types of watches that you can create. This alert periodically checks when your data is above, below, equals, or is in between a certain threshold within a given time interval.
 
-The following example walks you through creating a threshold alert. The alert is triggered when the maximum total CPU usage on a machine goes above a certain percentage. The example uses [Metricbeat](https://www.elastic.co/products/beats/metricbeat) to collect metrics from your systems and services. [Learn more](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html) on how to install and get started with Metricbeat.
+The following example walks you through creating a threshold alert. The alert is triggered when the maximum total CPU usage on a machine goes above a certain percentage. The example uses [Metricbeat](https://www.elastic.co/products/beats/metricbeat) to collect metrics from your systems and services. [Learn more](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md) on how to install and get started with Metricbeat.
 
 ### Define the watch input and schedule [_define_the_watch_input_and_schedule]
 
@@ -129,7 +135,7 @@ On the Watch overview page, click **Create** and choose **Create advanced watch*
 
 The **Simulate** tab allows you to override parts of the watch, and then run a simulation. Be aware of these implementation details on overrides:
 
-* Trigger overrides use [date math](https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#date-math).
+* Trigger overrides use [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math).
 * Input overrides accepts a JSON blob.
 * Condition overrides indicates if you want to force the condition to always be `true`.
 * Action overrides support [multiple options](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch).

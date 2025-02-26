@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-fleet-configuration-examples.html
 ---
@@ -12,16 +15,16 @@ The examples in this section are for illustration purposes only and should not b
 ::::
 
 
-## System and {{k8s}} {integrations} [k8s_system_and_k8s_integrations]
+## System and {{k8s}} {{integrations}} [k8s_system_and_k8s_integrations]
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/elastic-agent/fleet-kubernetes-integration.yaml
 ```
 
-Deploys {{agent}} as a DaemonSet in {{fleet}} mode with System and {{k8s}} {integrations} enabled. System integration collects syslog logs, auth logs and system metrics (for CPU, I/O, filesystem, memory, network, process and others). {{k8s}} {integrations} collects API server, Container, Event, Node, Pod, Volume and system metrics.
+Deploys {{agent}} as a DaemonSet in {{fleet}} mode with System and {{k8s}} {{integrations}} enabled. System integration collects syslog logs, auth logs and system metrics (for CPU, I/O, filesystem, memory, network, process and others). {{k8s}} {{integrations}} collects API server, Container, Event, Node, Pod, Volume and system metrics.
 
 
-## System and {{k8s}} {integrations} running as non-root [k8s_system_and_k8s_integrations_running_as_non_root]
+## System and {{k8s}} {{integrations}} running as non-root [k8s_system_and_k8s_integrations_running_as_non_root]
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/elastic-agent/fleet-kubernetes-integration-nonroot.yaml
@@ -59,4 +62,4 @@ Deploys single instance {{agent}} Deployment in {{fleet}} mode with APM integrat
 kubectl apply -f https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.16/config/recipes/elastic-agent/synthetic-monitoring.yaml
 ```
 
-Deploys an {{fleet}}-enrolled {{agent}} that can be used as for [Synthetic monitoring](https://www.elastic.co/guide/en/observability/current/monitor-uptime-synthetics.html). This {{agent}} uses the `elastic-agent-complete` image. The agent policy still needs to be [registered as private location](https://www.elastic.co/guide/en/observability/current/synthetics-private-location.html#synthetics-private-location-add) in {{kib}}.
+Deploys an {{fleet}}-enrolled {{agent}} that can be used as for [Synthetic monitoring](/solutions/observability/apps/synthetic-monitoring.md). This {{agent}} uses the `elastic-agent-complete` image. The agent policy still needs to be [registered as private location](/solutions/observability/apps/monitor-resources-on-private-networks.md#synthetics-private-location-add) in {{kib}}.

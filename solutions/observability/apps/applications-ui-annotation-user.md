@@ -10,7 +10,7 @@ mapped_pages:
 
 
 ::::{note} 
-By default, the `viewer` and `editor` built-in roles provide read access to Observability annotations. You only need to create an annotation user to write to the annotations index ([`xpack.observability.annotations.index`](https://www.elastic.co/guide/en/kibana/current/apm-settings-kb.html)).
+By default, the `viewer` and `editor` built-in roles provide read access to Observability annotations. You only need to create an annotation user to write to the annotations index ([`xpack.observability.annotations.index`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/apm-settings.md)).
 ::::
 
 
@@ -26,7 +26,7 @@ View deployment annotations in the Applications UI.
     | Index | `read` on `{{ANNOTATION_INDEX}}`1 | Read-only access to the observability annotation index |
     | Index | `view_index_metadata` on `{{ANNOTATION_INDEX}}`1 | Read-only access to observability annotation index metadata |
 
-    1 `{{ANNOTATION_INDEX}}` should be the index name you’ve defined in [`xpack.observability.annotations.index`](https://www.elastic.co/guide/en/kibana/current/apm-settings-kb.html).
+    1 `{{ANNOTATION_INDEX}}` should be the index name you’ve defined in [`xpack.observability.annotations.index`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/apm-settings.md).
 
 2. Assign the `annotation_user` created previously, and the roles and privileges necessary to create a [full](apm-reader-user.md#apm-app-reader-full) or [partial](apm-reader-user.md#apm-app-reader-partial) APM reader to any users that need to view annotations in the Applications UI
 

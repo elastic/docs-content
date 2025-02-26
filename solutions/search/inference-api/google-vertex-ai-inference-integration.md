@@ -2,18 +2,16 @@
 navigation_title: "Google Vertex AI"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-google-vertex-ai.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
 
 # Google Vertex AI inference integration [infer-service-google-vertex-ai]
 
-::::{admonition} New API reference
-For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
-
-::::
-
+:::{tip} Inference API reference  
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `googlevertexai` service.
 
@@ -41,7 +39,7 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `googleverte
 ## {{api-request-body-title}} [infer-service-google-vertex-ai-api-request-body] 
 
 `chunking_settings`
-:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html#infer-chunking-config) to learn more about chunking.
+:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) to learn more about chunking.
 
     `max_chunk_size`
     :   (Optional, integer) Specifies the maximum size of a chunk in words. Defaults to `250`. This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).

@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 ---
   
 # TSVB [tsvb-panel]
@@ -37,14 +37,14 @@ When you use only {{data-sources}}, you are able to:
 ::::{important}
 :name: tsvb-index-patterns-mode
 
-Creating **TSVB** visualizations with an {{es}} index string is deprecated and will be removed in a future release. By default, you create **TSVB** visualizations with only {{data-sources}}. To use an {{es}} index string, contact your administrator, or go to [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html) and set `metrics:allowStringIndices` to `true`.
+Creating **TSVB** visualizations with an {{es}} index string is deprecated and will be removed in a future release. By default, you create **TSVB** visualizations with only {{data-sources}}. To use an {{es}} index string, contact your administrator, or go to [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md) and set `metrics:allowStringIndices` to `true`.
 ::::
 
 
 1. On the dashboard, click **Select type**, then select **TSVB**.
 2. In **TSVB**, click **Panel options**, then specify the **Data** settings.
 3. Open the **Data view mode** options next to the **Data view** dropdown.
-4. Select **Use only {{kib}} {data-sources}**.
+4. Select **Use only {{kib}} {{data-sources}}**.
 5. From the **Data view** dropdown, select the {{data-source}}, then select the **Time field** and **Interval**.
 6. Select a **Drop last bucket** option.
 

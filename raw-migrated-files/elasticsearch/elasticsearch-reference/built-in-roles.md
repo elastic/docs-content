@@ -26,7 +26,7 @@ $$$built-in-roles-editor$$$ `editor`
     ::::{note}
     * This role provides read access to any index that is not prefixed with a dot.
     * This role automatically grants full access to new {{kib}} features as soon as they are released.
-    * Some {{kib}} features may also require creation or write access to data indices. {{ml-cap}} {dfanalytics-jobs} is an example. For such features those privileges must be defined in a separate role.
+    * Some {{kib}} features may also require creation or write access to data indices. {{ml-cap}} {{dfanalytics-jobs}} is an example. For such features those privileges must be defined in a separate role.
 
     ::::
 
@@ -69,7 +69,7 @@ $$$built-in-roles-logstash-admin$$$ `logstash_admin`
 :   Grants access to the `.logstash*` indices for managing configurations, and grants necessary access for logstash-specific APIs exposed by the logstash x-pack plugin.
 
 $$$built-in-roles-logstash-system$$$ `logstash_system`
-:   Grants access necessary for the Logstash system user to send system-level data (such as monitoring) to {{es}}. For more information, see [Configuring Security in Logstash](https://www.elastic.co/guide/en/logstash/current/ls-security.html).
+:   Grants access necessary for the Logstash system user to send system-level data (such as monitoring) to {{es}}. For more information, see [Configuring Security in Logstash](asciidocalypse://docs/logstash/docs/reference/secure-connection.md).
 
     ::::{note}
     * This role should not be assigned to users as the granted permissions may change between releases.

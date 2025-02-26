@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-node-configuration.html
 ---
@@ -31,5 +34,5 @@ spec:
       node.roles: ["data", "ingest", "ml", "transform"]
 ```
 
-For more information on Elasticsearch settings, check [Configuring Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html).
+For more information on Elasticsearch settings, check [Configuring Elasticsearch](/deploy-manage/deploy/self-managed/configure-elasticsearch.md).
 

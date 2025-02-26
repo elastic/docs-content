@@ -4,21 +4,51 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry-collect-metrics.html
 ---
 
-# Collect metrics
+# Collect metrics [apm-open-telemetry-collect-metrics]
 
-% What needs to be done: Align serverless/stateful
+::::{important}
+When collecting metrics, please note that the [`DoubleValueRecorder`](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/DoubleValueRecorder.md) and [`LongValueRecorder`](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/LongValueObserver.md) metrics are not yet supported.
+::::
 
-% Use migrated content from existing pages that map to this page:
 
-% - [ ] ./raw-migrated-files/observability-docs/observability/apm-open-telemetry-collect-metrics.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-apm-agents-opentelemetry-collect-metrics.md
+Here’s an example of how to capture business metrics from a Java application.
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+```java
+// initialize metric
+Meter meter = GlobalMetricsProvider.getMeter("my-frontend");
+DoubleCounter orderValueCounter = meter.doubleCounterBuilder("order_value").build();
 
-$$$apm-open-telemetry-verify-metrics$$$
+public void createOrder(HttpServletRequest request) {
 
-$$$apm-open-telemetry-visualize$$$
+   // create order in the database
+   ...
+   // increment business metrics for monitoring
+   orderValueCounter.add(orderPrice);
+}
+```
 
-$$$open-telemetry-verify-metrics$$$
+See the [Open Telemetry Metrics API](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md) for more information.
 
-$$$open-telemetry-visualize$$$
+
+## Verify OpenTelemetry metrics data [apm-open-telemetry-verify-metrics]
+
+Use **Discover** to validate that metrics are successfully reported to {{kib}}.
+
+1. Open your Observability instance.
+2. Find **Discover** in the main menu or use the [global search field](../../../get-started/the-stack.md#kibana-navigation-search), and select the **Logs Explorer** tab.
+3. Click **All logs** → **Data Views** then select **APM**.
+4. Filter the data to only show documents with metrics: `processor.name :"metric"`
+5. Narrow your search with a known OpenTelemetry field. For example, if you have an `order_value` field, add `order_value: *` to your search to return only OpenTelemetry metrics documents.
+
+
+## Visualize in {{kib}} [apm-open-telemetry-visualize]
+
+Use **Lens** to create visualizations for OpenTelemetry metrics. Lens enables you to build visualizations by dragging and dropping data fields. It makes smart visualization suggestions for your data, allowing you to switch between visualization types.
+
+To get started with a new Lens visualization:
+
+1. Go to **Visualizations**.
+2. Click **Create new visualization**.
+3. Select **Lens**.
+
+For more information on using Lens, refer to the [Lens documentation](../../../explore-analyze/visualize/lens.md).

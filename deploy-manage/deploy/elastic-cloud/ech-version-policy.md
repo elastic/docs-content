@@ -25,7 +25,7 @@ You might sometimes notice additional versions listed in the user interface beyo
 
 Whenever a new Elastic Stack version is released, we do our best to provide the new version on our hosted service at the same time. We send you an email and add a notice to the console, recommending an upgrade. You’ll need to decide whether to upgrade to the new version with new features and bug fixes or to stay with a version you know works for you a while longer.
 
-There can be [breaking changes](https://www.elastic.co/guide/en/elasticsearch/reference/current/breaking-changes.html) in some new versions of Elasticsearch that break what used to work in older versions. Before upgrading, you’ll want to check if the new version introduces any changes that might affect your applications. A breaking change might be a function that was previously deprecated and that has been removed in the latest version, for example. If you have an application that depends on the removed function, the application will need to be updated to continue working with the new version of Elasticsearch.
+There can be [breaking changes](asciidocalypse://docs/elasticsearch/docs/release-notes/breaking-changes.md) in some new versions of Elasticsearch that break what used to work in older versions. Before upgrading, you’ll want to check if the new version introduces any changes that might affect your applications. A breaking change might be a function that was previously deprecated and that has been removed in the latest version, for example. If you have an application that depends on the removed function, the application will need to be updated to continue working with the new version of Elasticsearch.
 
 To learn more about upgrading to newer versions of the Elastic Stack on our hosted service, check [Upgrade Versions](../../upgrade/deployment-or-cluster.md).
 
@@ -58,4 +58,4 @@ Cutting-edge releases do not remain available forever. Once the GA version of El
 
 ## Version Policy and Product End of Life [ech-version-policy-eol]
 
-For Elasticsearch Service, we follow the [Elastic Version Maintenance and Support Policy](https://www.elastic.co/support/eol), which defines the support and maintenance policy of the Elastic Stack.
+For {{ecloud}}, we follow the [Elastic Version Maintenance and Support Policy](https://www.elastic.co/support/eol), which defines the support and maintenance policy of the Elastic Stack.

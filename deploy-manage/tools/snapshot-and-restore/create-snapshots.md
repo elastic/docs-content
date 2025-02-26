@@ -1,6 +1,10 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-take-snapshot.html
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 # Create snapshots [snapshots-take-snapshot]
@@ -27,7 +31,7 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 
 * You can only take a snapshot from a running cluster with an elected [master node](../../distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role).
 * A snapshot repository must be [registered](self-managed.md) and available to the cluster.
-* The cluster’s global metadata must be readable. To include an index in a snapshot, the index and its metadata must also be readable. Ensure there aren’t any [cluster blocks](https://www.elastic.co/guide/en/elasticsearch/reference/current/misc-cluster-settings.html#cluster-read-only) or [index blocks](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-blocks.html) that prevent read access.
+* The cluster’s global metadata must be readable. To include an index in a snapshot, the index and its metadata must also be readable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) or [index blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md) that prevent read access.
 
 
 ## Considerations [create-snapshot-considerations]
@@ -37,7 +41,7 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 * Each snapshot is logically independent. You can delete a snapshot without affecting other snapshots.
 * Taking a snapshot can temporarily pause shard allocations. See [Snapshots and shard allocation](../snapshot-and-restore.md#snapshots-shard-allocation).
 * Taking a snapshot doesn’t block indexing or other requests. However, the snapshot won’t include changes made after the snapshot process starts.
-* You can take multiple snapshots at the same time. The [`snapshot.max_concurrent_operations`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-settings.html#snapshot-max-concurrent-ops) cluster setting limits the maximum number of concurrent snapshot operations.
+* You can take multiple snapshots at the same time. The [`snapshot.max_concurrent_operations`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#snapshot-max-concurrent-ops) cluster setting limits the maximum number of concurrent snapshot operations.
 * If you include a data stream in a snapshot, the snapshot also includes the stream’s backing indices and metadata.
 
     You can also include only specific backing indices in a snapshot. However, the snapshot won’t include the data stream’s metadata or its other backing indices.
@@ -50,14 +54,12 @@ The guide also provides tips for creating dedicated cluster state snapshots and 
 {{slm-cap}} ({{slm-init}}) is the easiest way to regularly back up a cluster. An {{slm-init}} policy automatically takes snapshots on a preset schedule. The policy can also delete snapshots based on retention rules you define.
 
 ::::{tip}
-{{ess}} deployments automatically include the `cloud-snapshot-policy` {{slm-init}} policy. {{ess}} uses this policy to take periodic snapshots of your cluster. For more information, see the [{{ess}} snapshot documentation](../snapshot-and-restore.md).
+Elastic Cloud Hosted deployments automatically include the `cloud-snapshot-policy` {{slm-init}} policy. Elastic Cloud Hosted uses this policy to take periodic snapshots of your cluster. For more information, see the [Manage snapshot repositories in Elastic Cloud Hosted documentation](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 ::::
-
-
 
 ### {{slm-init}} security [slm-security]
 
-The following [cluster privileges](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) control access to the {{slm-init}} actions when {{es}} {security-features} are enabled:
+The following [cluster privileges](../../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster) control access to the {{slm-init}} actions when {{es}} {{security-features}} are enabled:
 
 `manage_slm`
 :   Allows a user to perform all {{slm-init}} actions, including creating and updating policies and starting and stopping {{slm-init}}.
@@ -109,7 +111,7 @@ POST _security/role/slm-read-only
 
 To manage {{slm-init}} in {{kib}}, go to the main menu and click **Stack Management** > **Snapshot and Restore*** > ***Policies**. To create a policy, click **Create policy**.
 
-You can also manage {{slm-init}} using the [{{slm-init}} APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-lifecycle-management-api.html). To create a policy, use the [create {{slm-init}} policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html).
+You can also manage {{slm-init}} using the [{{slm-init}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-slm). To create a policy, use the [create {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle).
 
 The following request creates a policy that backs up the cluster state, all data streams, and all indices daily at 1:30 a.m. UTC.
 
@@ -131,8 +133,8 @@ PUT _slm/policy/nightly-snapshots
 }
 ```
 
-1. When to take snapshots, written in [Cron syntax](https://www.elastic.co/guide/en/elasticsearch/reference/current/_schedule_types.html#schedule-cron).
-2. Snapshot name. Supports [date math](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-date-math-index-names). To prevent naming conflicts, the policy also appends a UUID to each snapshot name.
+1. When to take snapshots, written in [Cron syntax](/explore-analyze/alerts-cases/watcher/schedule-types.md#schedule-cron).
+2. Snapshot name. Supports [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names). To prevent naming conflicts, the policy also appends a UUID to each snapshot name.
 3. [Registered snapshot repository](self-managed.md) used to store the policy’s snapshots.
 4. Data streams and indices to include in the policy’s snapshots.
 5. If `true`, the policy’s snapshots include the cluster state. This also includes all feature states by default. To only include specific feature states, see [Back up a specific feature state](#back-up-specific-feature-state).
@@ -144,7 +146,7 @@ PUT _slm/policy/nightly-snapshots
 
 You can manually run an {{slm-init}} policy to immediately create a snapshot. This is useful for testing a new policy or taking a snapshot before an upgrade. Manually running a policy doesn’t affect its snapshot schedule.
 
-To run a policy in {{kib}}, go to the **Policies** page and click the run icon under the **Actions** column. You can also use the [execute {{slm-init}} policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-execute-lifecycle.html).
+To run a policy in {{kib}}, go to the **Policies** page and click the run icon under the **Actions** column. You can also use the [execute {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-execute-lifecycle).
 
 ```console
 POST _slm/policy/nightly-snapshots/_execute
@@ -155,7 +157,7 @@ The snapshot process runs in the background. To monitor its progress, see [Monit
 
 ### {{slm-init}} retention [slm-retention-task]
 
-{{slm-init}} snapshot retention is a cluster-level task that runs separately from a policy’s snapshot schedule. To control when the {{slm-init}} retention task runs, configure the [`slm.retention_schedule`](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-settings.html#slm-retention-schedule) cluster setting.
+{{slm-init}} snapshot retention is a cluster-level task that runs separately from a policy’s snapshot schedule. To control when the {{slm-init}} retention task runs, configure the [`slm.retention_schedule`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/snapshot-restore-settings.md#slm-retention-schedule) cluster setting.
 
 ```console
 PUT _cluster/settings
@@ -166,7 +168,7 @@ PUT _cluster/settings
 }
 ```
 
-To immediately run the retention task, use the [execute {{slm-init}} retention policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-execute-retention.html).
+To immediately run the retention task, use the [execute {{slm-init}} retention policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-execute-retention).
 
 ```console
 POST _slm/_execute_retention
@@ -184,7 +186,7 @@ A snapshot repository can safely scale to thousands of snapshots. However, to ma
 
 ## Manually create a snapshot [manually-create-snapshot]
 
-To take a snapshot without an {{slm-init}} policy, use the [create snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/create-snapshot-api.html). The snapshot name supports [date math](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-date-math-index-names).
+To take a snapshot without an {{slm-init}} policy, use the [create snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create). The snapshot name supports [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-date-math-index-names).
 
 ```console
 # PUT _snapshot/my_repository/<my_snapshot_{now/d}>
@@ -197,18 +199,18 @@ Depending on its size, a snapshot can take a while to complete. By default, the 
 PUT _snapshot/my_repository/my_snapshot?wait_for_completion=true
 ```
 
-You can also clone an existing snapshot using [clone snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/clone-snapshot-api.html).
+You can also clone an existing snapshot using [clone snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-clone).
 
 
 ## Monitor a snapshot [monitor-snapshot]
 
-To monitor any currently running snapshots, use the [get snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-api.html) with the `_current` request path parameter.
+To monitor any currently running snapshots, use the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get) with the `_current` request path parameter.
 
 ```console
 GET _snapshot/my_repository/_current
 ```
 
-To get a complete breakdown of each shard participating in any currently running snapshots, use the [get snapshot status API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-api.html).
+To get a complete breakdown of each shard participating in any currently running snapshots, use the [get snapshot status API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get).
 
 ```console
 GET _snapshot/_status
@@ -217,13 +219,13 @@ GET _snapshot/_status
 
 ### Check {{slm-init}} history [check-slm-history]
 
-To get more information about a cluster’s {{slm-init}} execution history, including stats for each {{slm-init}} policy, use the [get {{slm-init}} stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-get-stats.html). The API also returns information about the cluster’s snapshot retention task history.
+To get more information about a cluster’s {{slm-init}} execution history, including stats for each {{slm-init}} policy, use the [get {{slm-init}} stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-stats). The API also returns information about the cluster’s snapshot retention task history.
 
 ```console
 GET _slm/stats
 ```
 
-To get information about a specific {{slm-init}} policy’s execution history, use the [get {{slm-init}} policy API](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-get-policy.html). The response includes:
+To get information about a specific {{slm-init}} policy’s execution history, use the [get {{slm-init}} policy API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-get-lifecycle). The response includes:
 
 * The next scheduled policy execution.
 * The last time the policy successfully started the snapshot process, if applicable. A successful start doesn’t guarantee the snapshot completed.
@@ -236,7 +238,7 @@ GET _slm/policy/nightly-snapshots
 
 ## Delete or cancel a snapshot [delete-snapshot]
 
-To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the trash icon under the **Actions** column. You can also use the [delete snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-snapshot-api.html).
+To delete a snapshot in {{kib}}, go to the **Snapshots** page and click the trash icon under the **Actions** column. You can also use the [delete snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-delete).
 
 ```console
 DELETE _snapshot/my_repository/my_snapshot_2099.05.06
@@ -261,7 +263,7 @@ By default, a snapshot that includes the cluster state also includes all [featur
 
 You can also configure a snapshot to only include specific feature states, regardless of the cluster state.
 
-To get a list of available features, use the [get features API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-features-api.html).
+To get a list of available features, use the [get features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
 
 ```console
 GET _features
@@ -315,7 +317,7 @@ PUT _slm/policy/nightly-snapshots
 }
 ```
 
-Any index or data stream that’s part of the feature state will display in a snapshot’s contents. For example, if you back up the `security` feature state, the `security-*` system indices display in the [get snapshot API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-api.html)'s response under both `indices` and `feature_states`.
+Any index or data stream that’s part of the feature state will display in a snapshot’s contents. For example, if you back up the `security` feature state, the `security-*` system indices display in the [get snapshot API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get)'s response under both `indices` and `feature_states`.
 
 
 ## Dedicated cluster state snapshots [cluster-state-snapshots]

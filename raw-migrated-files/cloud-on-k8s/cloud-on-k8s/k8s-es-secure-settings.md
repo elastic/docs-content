@@ -1,6 +1,6 @@
 # Secure settings [k8s-es-secure-settings]
 
-You can specify [secure settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html) with [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/). The secrets should contain a key-value pair for each secure setting you want to add. ECK automatically injects these settings into the keystore on each Elasticsearch node before it starts Elasticsearch. The ECK operator continues to watch the secrets for changes and will update the Elasticsearch keystore when it detects a change.
+You can specify [secure settings](/deploy-manage/security/secure-settings.md) with [Kubernetes secrets](https://kubernetes.io/docs/concepts/configuration/secret/). The secrets should contain a key-value pair for each secure setting you want to add. ECK automatically injects these settings into the keystore on each Elasticsearch node before it starts Elasticsearch. The ECK operator continues to watch the secrets for changes and will update the Elasticsearch keystore when it detects a change.
 
 ## Basic usage [k8s_basic_usage]
 

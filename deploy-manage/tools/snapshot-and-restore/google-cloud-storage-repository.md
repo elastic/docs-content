@@ -1,6 +1,7 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/repository-gcs.html
+applies_to:
+  deployment:
+    self: 
 ---
 
 # Google Cloud Storage repository [repository-gcs]
@@ -87,7 +88,7 @@ PUT _snapshot/my_gcs_repository
 }
 ```
 
-The `credentials_file` settings are [reloadable](../../security/secure-settings.md#reloadable-secure-settings). You can define these settings before the node is started, or call the [Nodes reload secure settings API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-reload-secure-settings.html) after the settings are defined to apply them to a running node.
+The `credentials_file` settings are [reloadable](../../security/secure-settings.md#reloadable-secure-settings). You can define these settings before the node is started, or call the [Nodes reload secure settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-reload-secure-settings) after the settings are defined to apply them to a running node.
 
 After you reload the settings, the internal `gcs` clients, which are used to transfer the snapshot contents, utilize the latest settings from the keystore.
 
@@ -123,7 +124,7 @@ bin/elasticsearch-keystore add-file gcs.client.default.credentials_file /path/se
 
 The following are the available client settings. Those that must be stored in the keystore are marked as `Secure`.
 
-`credentials_file` ({{ref}}/secure-settings.html[Secure], [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
+`credentials_file` ([Secure](/deploy-manage/security/secure-settings.md), [reloadable](../../security/secure-settings.md#reloadable-secure-settings))
 :   The service account file that is used to authenticate to the Google Cloud Storage service.
 
 `endpoint`
@@ -191,10 +192,10 @@ The following settings are supported:
 :   When set to `true` metadata files are stored in compressed format. This setting doesn’t affect index files that are already compressed by default. Defaults to `true`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `readonly`
 :   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.

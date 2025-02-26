@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/controlling-user-cache.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck:
+    self:
 ---
 
 # Controlling the user cache [controlling-user-cache]
@@ -17,11 +23,11 @@ PKI and JWT realms do not cache user credentials, but do cache the resolved user
 ::::
 
 
-The cached user credentials are hashed in memory. By default, the {{es}} {security-features} use a salted `sha-256` hash algorithm. You can use a different hashing algorithm by setting the `cache.hash_algo` realm settings. See [User cache and password hash algorithms](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-settings.html#hashing-settings).
+The cached user credentials are hashed in memory. By default, the {{es}} {{security-features}} use a salted `sha-256` hash algorithm. You can use a different hashing algorithm by setting the `cache.hash_algo` realm settings. See [User cache and password hash algorithms](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#hashing-settings).
 
 ## Evicting users from the cache [cache-eviction-api]
 
-You can use the [clear cache API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-cache.html) to force the eviction of cached users . For example, the following request evicts all users from the `ad1` realm:
+You can use the [clear cache API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-clear-cached-realms) to force the eviction of cached users . For example, the following request evicts all users from the `ad1` realm:
 
 ```js
 $ curl -XPOST 'http://localhost:9200/_security/realm/ad1/_clear_cache'

@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/search-ai-assistant.html
   - https://www.elastic.co/guide/en/observability/current/obs-ai-assistant.html

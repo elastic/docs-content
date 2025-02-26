@@ -38,7 +38,7 @@ To restore internal indices from a snapshot, the procedure is a bit different fr
           "snapshot": "scheduled-1527616008-instance-0000000004",
     ```
 
-3. To restore internal Elasticsearch indices, you need to register the snapshot repository in `read-only` mode. To do so, first add the authentication information for the repository to the Elasticsearch Add-On for Heroku keystore, following the steps for [AWS S3](../../tools/snapshot-and-restore/ech-aws-custom-repository.md#ech-snapshot-secrets-keystore), [Google Cloud Storage](../../tools/snapshot-and-restore/ech-gcs-snapshotting.md#ech-configure-gcs-keystore), or [Azure Blog storage](../../tools/snapshot-and-restore/ech-azure-snapshotting.md#ech-configure-azure-keystore).
+3. To restore internal Elasticsearch indices, you need to register the snapshot repository in `read-only` mode. To do so, first add the authentication information for the repository to the Elasticsearch Add-On for Heroku keystore, following the steps for [AWS S3](../../tools/snapshot-and-restore/ec-aws-custom-repository.md), [Google Cloud Storage](../../tools/snapshot-and-restore/ec-gcs-snapshotting.md), or [Azure Blog storage](../../tools/snapshot-and-restore/ec-azure-snapshotting.md).
 4. To register a read-only repository, open the Elasticsearch [API console](ech-api-console.md) or the Kibana [Dev Tools page](../../../explore-analyze/query-filter/tools.md) and run the [Read-only URL repository](../../tools/snapshot-and-restore/read-only-url-repository.md) API call.
 5. Once the repository has been registered and verified, you are ready to restore the internal indices to your new cluster, either all at once or individually.
 

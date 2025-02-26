@@ -1,7 +1,14 @@
 ---
-navigation_title: "Set up {{ccr}}"
+navigation_title: "Set up cross-cluster replication"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-getting-started-tutorial.html
+
+applies_to:
+  deployment:
+    eck: 
+    ess: 
+    ece: 
+    self: 
 ---
 
 
@@ -23,7 +30,7 @@ In this guide, you’ll learn how to:
 You can manually create follower indices to replicate specific indices on a remote cluster, or configure auto-follow patterns to replicate rolling time series indices.
 
 ::::{tip}
-If you want to replicate data across clusters in the cloud, you can [configure remote clusters on {{ess}}](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html). Then, you can [search across clusters](../../../solutions/search/cross-cluster-search.md) and set up {{ccr}}.
+If you want to replicate data across clusters in the cloud, you can [configure remote clusters on {{ess}}](/deploy-manage/remote-clusters/ec-enable-ccs.md). Then, you can [search across clusters](../../../solutions/search/cross-cluster-search.md) and set up {{ccr}}.
 ::::
 
 

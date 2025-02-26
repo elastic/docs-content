@@ -45,7 +45,7 @@ Osquery uses a superset of SQLite for queries. To get started with osquery SQL, 
 
 ## How often is Osquery updated for Osquery Manager? [osquery-updates] 
 
-When a new [version of Osquery is released](https://github.com/osquery/osquery/releases), it is included in a subsequent Elastic Agent release and applied when the agent is upgraded. After that, when running queries from Osquery Manager in {{kib}}, the updated Osquery version is used. Refer to the Fleet and Elastic Agent Guide for help with [upgrading Fleet-managed Elastic Agents](https://www.elastic.co/guide/en/fleet/current/upgrade-elastic-agent.html).
+When a new [version of Osquery is released](https://github.com/osquery/osquery/releases), it is included in a subsequent Elastic Agent release and applied when the agent is upgraded. After that, when running queries from Osquery Manager in {{kib}}, the updated Osquery version is used. Refer to the Fleet and Elastic Agent Guide for help with [upgrading Fleet-managed Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md).
 
 To check what Osquery version is installed on an Elastic Agent, you can run `SELECT version FROM osquery_info;` as a live query in {{kib}}. The `version` in the response is the Osquery version installed on the agent.
 

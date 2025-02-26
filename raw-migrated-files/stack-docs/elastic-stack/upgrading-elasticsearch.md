@@ -14,7 +14,7 @@ To upgrade a cluster:
 
 1. **Disable shard allocation**.
 
-    When you shut down a data node, the allocation process waits for `index.unassigned.node_left.delayed_timeout` (by default, one minute) before starting to replicate the shards on that node to other nodes in the cluster, which can involve a lot of I/O. Since the node is shortly going to be restarted, this I/O is unnecessary. You can avoid racing the clock by [disabling allocation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-enable) of replicas before shutting down [data nodes](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#data-node):
+    When you shut down a data node, the allocation process waits for `index.unassigned.node_left.delayed_timeout` (by default, one minute) before starting to replicate the shards on that node to other nodes in the cluster, which can involve a lot of I/O. Since the node is shortly going to be restarted, this I/O is unnecessary. You can avoid racing the clock by [disabling allocation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-allocation-enable) of replicas before shutting down [data nodes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#data-node):
 
     ```console
     PUT _cluster/settings
@@ -27,7 +27,7 @@ To upgrade a cluster:
 
 2. **Stop non-essential indexing and perform a flush.** (Optional)
 
-    While you can continue indexing during the upgrade, shard recovery is much faster if you temporarily stop non-essential indexing and perform a [flush](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-flush.html).
+    While you can continue indexing during the upgrade, shard recovery is much faster if you temporarily stop non-essential indexing and perform a [flush](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-flush).
 
     ```console
     POST /_flush
@@ -42,7 +42,7 @@ To upgrade a cluster:
     ::::
 
 
-    * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-set-upgrade-mode.html):
+    * Temporarily halt the tasks associated with your {{ml}} jobs and {{dfeeds}} and prevent new jobs from opening by using the [set upgrade mode API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-set-upgrade-mode):
 
         ```console
         POST _ml/set_upgrade_mode?enabled=true
@@ -176,7 +176,7 @@ To upgrade a cluster:
     POST _ml/set_upgrade_mode?enabled=false
     ```
 
-    If you closed all {{ml}} jobs before the upgrade, open the jobs and start the datafeeds from {{kib}} or with the [open jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html) and [start datafeed](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html) APIs.
+    If you closed all {{ml}} jobs before the upgrade, open the jobs and start the datafeeds from {{kib}} or with the [open jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job) and [start datafeed](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-start-datafeed) APIs.
 
 
 

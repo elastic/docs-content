@@ -23,7 +23,7 @@ You’ll learn how to:
 * Create an {{es}} resource in the Azure portal.
 * Ingest Azure platform logs using the native integration and view those logs in {{kib}}.
 * Ingest logs and metrics from your virtual machines and view those logs and infrastructure metrics in {{kib}}.
-* Ingest other metrics (such as billing) using the [{{metricbeat}} Azure module](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-azure.html) and view those metrics in {{kib}}.
+* Ingest other metrics (such as billing) using the [{{metricbeat}} Azure module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-azure.md) and view those metrics in {{kib}}.
 
 
 ## Step 1: Create an {{es}} resource in the Azure portal [azure-step-one]
@@ -61,7 +61,7 @@ Microsoft Azure allows you to find, deploy, and manage {{es}} from within the Az
 1. To single sign-on directly into Elastic, select your Azure account.
 2. To see if there is any available data, click **Observability**. There should be no data yet, but next, you will ingest logs.
 
-    ![{{kib}} {observability} page (no data)](../../../images/observability-monitor-azure-kibana-observability-page-empty.png "")
+    ![{{kib}} {{observability}} page (no data)](../../../images/observability-monitor-azure-kibana-observability-page-empty.png "")
 
 
 
@@ -229,7 +229,7 @@ Version 9.0.0-beta1 of Metricbeat has not yet been released.
 
 
 ::::{important}
-Setting up {{metricbeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](https://www.elastic.co/guide/en/beats/metricbeat/current/privileges-to-setup-beats.html), and a more restrictive role for event publishing (which you will do next).
+Setting up {{metricbeat}} is an admin-level task that requires extra privileges. As a best practice, [use an administrator role to set up](asciidocalypse://docs/beats/docs/reference/metricbeat/privileges-to-setup-beats.md), and a more restrictive role for event publishing (which you will do next).
 
 ::::
 
@@ -237,16 +237,16 @@ Setting up {{metricbeat}} is an admin-level task that requires extra privileges.
 
 ### Configure {{metricbeat}} output [_configure_metricbeat_output_2]
 
-Next, you are going to configure {{metricbeat}} output to {{ess}}.
+Next, you are going to configure {{metricbeat}} output to {{ecloud}}.
 
-1. Use the {{metricbeat}} keystore to store [secure settings](https://www.elastic.co/guide/en/beats/metricbeat/current/keystore.html). Store the Cloud ID in the keystore.
+1. Use the {{metricbeat}} keystore to store [secure settings](asciidocalypse://docs/beats/docs/reference/metricbeat/keystore.md). Store the Cloud ID in the keystore.
 
     ```bash
     ./metricbeat keystore create
     echo -n "<Your Deployment Cloud ID>" | ./metricbeat keystore add CLOUD_ID --stdin
     ```
 
-2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ess}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
+2. To store metrics in {{es}} with minimal permissions, create an API key to send data from {{metricbeat}} to {{ecloud}}. Log into {{kib}} (you can do so from the Cloud Console without typing in any permissions) and find `Dev Tools` in the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). From the **Console**, send the following request:
 
     ```console
     POST /_security/api_key
@@ -283,7 +283,7 @@ Next, you are going to configure {{metricbeat}} output to {{ess}}.
     ./metricbeat keystore list
     ```
 
-5. To configure {{metricbeat}} to output to {{ess}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
+5. To configure {{metricbeat}} to output to {{ecloud}}, edit the `metricbeat.yml` configuration file. Add the following lines to the end of the file.
 
     ```yaml
     cloud.id: ${CLOUD_ID}
@@ -303,10 +303,10 @@ Now that the output is working, you are going to set up the input (Azure).
 
 ### Configure {{metricbeat}} Azure module [_configure_metricbeat_azure_module]
 
-To collect metrics from Microsoft Azure, use the [{{metricbeat}} Azure module](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-azure.html). This module periodically fetches monitoring metrics from Microsoft Azure using the [Azure Monitor REST API](https://docs.microsoft.com/en-us/rest/api/monitor/).
+To collect metrics from Microsoft Azure, use the [{{metricbeat}} Azure module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-azure.md). This module periodically fetches monitoring metrics from Microsoft Azure using the [Azure Monitor REST API](https://docs.microsoft.com/en-us/rest/api/monitor/).
 
 ::::{warning}
-Extra Azure charges on metric queries my be generated by this module. Please see [additional notes about metrics and costs](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-module-azure.html#azure-api-cost) for more details.
+Extra Azure charges on metric queries my be generated by this module. Please see [additional notes about metrics and costs](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-azure.md#azure-api-cost) for more details.
 
 ::::
 

@@ -25,7 +25,7 @@ Reindex from a remote cluster
 :   The new cluster must be the same size as your old one, or larger, to accommodate the data. Depending on your security settings for your old cluster, you might need to temporarily allow TCP traffic on port 9243 for this procedure.
 
 Restore from a snapshot
-:   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an Elasticsearch version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html#snapshot-restore-version-compatibility) for details). If you have not already done so, you will need to [set up snapshots for your old cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-register-repository.html) using a repository that can be accessed from the new cluster.
+:   The new cluster must be the same size as your old one, or larger, to accommodate the data. The new cluster must also be an Elasticsearch version that is compatible with the old cluster (check [Elasticsearch snapshot version compatibility](/deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility) for details). If you have not already done so, you will need to [set up snapshots for your old cluster](/deploy-manage/tools/snapshot-and-restore/self-managed.md) using a repository that can be accessed from the new cluster.
 
 Migrating internal Elasticsearch indices
 :   If you are migrating internal Elasticsearch indices from another cluster, specifically the `.kibana` index or the `.security` index, there are two options:
@@ -35,7 +35,7 @@ Migrating internal Elasticsearch indices
 
 
 ::::{warning}
-Before you migrate your Elasticsearch data, [define your index mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html) on the new cluster. Index mappings are unable to migrate during reindex operations.
+Before you migrate your Elasticsearch data, [define your index mappings](/manage-data/data-store/mapping.md) on the new cluster. Index mappings are unable to migrate during reindex operations.
 ::::
 
 
@@ -134,7 +134,7 @@ If you cannot connect to a remote index for whatever reason, such as if it’s i
     }
     ```
 
-3. From the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) of the **new** Elasticsearch cluster, add the snapshot repository. For details, check our guidelines for [Amazon Web Services (AWS) Storage](../../tools/snapshot-and-restore/ech-aws-custom-repository.md), [Google Cloud Storage (GCS)](../../tools/snapshot-and-restore/ech-gcs-snapshotting.md), or [Azure Blob Storage](../../tools/snapshot-and-restore/ech-azure-snapshotting.md).
+3. From the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body) of the **new** Elasticsearch cluster, add the snapshot repository. For details, check our guidelines for [Amazon Web Services (AWS) Storage](../../tools/snapshot-and-restore/ec-aws-custom-repository.md), [Google Cloud Storage (GCS)](../../tools/snapshot-and-restore/ec-gcs-snapshotting.md), or [Azure Blob Storage](../../tools/snapshot-and-restore/ec-azure-snapshotting.md).
 
     ::::{important}
     If you’re migrating [searchable snapshots](../../tools/snapshot-and-restore/searchable-snapshots.md), the repository name must be identical in the source and destination clusters.

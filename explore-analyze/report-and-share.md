@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/reporting-getting-started.html
 ---
@@ -56,9 +56,9 @@ When sharing an object with unsaved changes, you get a temporary link that might
 
 To access the object shared with the link, users need to authenticate.
 
-Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
+Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt49f2b5a80ec89a34/66b9e919af508f4ac182c194/share-dashboard.gif
+:::{image} ../images/share-dashboard.gif
 :alt: getting a shareable link for a dashboard
 :::
 
@@ -132,7 +132,7 @@ To work around the limitations, use filters to create multiple smaller reports, 
 
 For more information on using Elasticsearch APIs directly, see [Scroll API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll), [Point in time API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time), [ES|QL](/explore-analyze/query-filter/languages/esql-rest.md) or [SQL](/explore-analyze/query-filter/languages/sql-rest-format.md#_csv) with CSV response data format. We recommend that you use an official Elastic language client: details for each programming language library that Elastic provides are in the [{{es}} Client documentation](https://www.elastic.co/guide/en/elasticsearch/client/index.html).
 
-[Reporting parameters](https://www.elastic.co/guide/en/kibana/current/reporting-settings-kb.html) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
+[Reporting parameters](asciidocalypse://docs/kibana/docs/reference/configuration-reference/reporting-settings.md) can be adjusted to overcome some of these limiting scenarios. Results are dependent on data size, availability, and latency factors and are not guaranteed.
 
 
 ### PNG/PDF report limitations [pdf-limitations]

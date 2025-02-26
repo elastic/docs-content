@@ -23,7 +23,7 @@ Learn more about [designing resilient clusters](../../production-guidance/availa
 
 To enable shard allocation awareness:
 
-1. Specify the location of each node with a [custom node attribute](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#custom-node-attributes). For example, if you want Elasticsearch to distribute shards across different racks, you might use an awareness attribute called `rack_id`.
+1. Specify the location of each node with a [custom node attribute](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md#custom-node-attributes). For example, if you want Elasticsearch to distribute shards across different racks, you might use an awareness attribute called `rack_id`.
 
     You can set custom attributes in two ways:
 
@@ -48,7 +48,7 @@ To enable shard allocation awareness:
     1. Specify multiple attributes as a comma-separated list.
 
 
-    You can also use the [cluster-update-settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) API to set or update a cluster’s awareness attributes:
+    You can also use the [cluster-update-settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) API to set or update a cluster’s awareness attributes:
 
     ```console
     PUT /_cluster/settings

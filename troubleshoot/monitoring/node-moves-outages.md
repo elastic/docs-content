@@ -1,9 +1,10 @@
 ---
+navigation_title: "Node moves and outages"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-deployment-node-move.html
 ---
 
-# Node moves and outages [ec-deployment-node-move]
+# Troubleshoot node moves and outages [ec-deployment-node-move]
 
 To ensure that your nodes are located on healthy hosts, we vacate nodes to perform routine system maintenance or to remove a host with hardware issues from service.
 

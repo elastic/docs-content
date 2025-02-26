@@ -13,7 +13,6 @@ The components of the Elastic Stack that we support as part of a deployment are 
 * Machine Learning (ML) nodes
 * Kibana instances
 * APM and Fleet instances
-* Enterprise Search instances
 
 Elastic Cloud Enterprise comes with some deployment templates already built in, but you can [create new deployment templates](ece-configuring-ece-create-templates.md) to address a particular use case you might have. To make the most out of your hardware, we also recommend that you [configure deployment templates](configure-deployment-templates.md), so that ECE knows where to deploy components of the Elastic Stack.
 
@@ -33,15 +32,11 @@ The deployment templates available are:
 
 * **Cross-cluster search template**
 
-    This template manages remote connections for running Elasticsearch queries across multiple deployments and indices. These federated searches make it possible to break up large deployments into smaller, more resilient Elasticsearch clusters. You can organize deployments by departments or projects for example, but still have the ability to aggregate query results and get visibility into your Elastic Cloud Enterprise infrastructure. You can add remote connections either when you create your deployment or when you customize it. To know more about cross-cluster search, check [Enable cross-cluster search](https://www.elastic.co/guide/en/cloud/current/ec-enable-ccs.html).
+    This template manages remote connections for running Elasticsearch queries across multiple deployments and indices. These federated searches make it possible to break up large deployments into smaller, more resilient Elasticsearch clusters. You can organize deployments by departments or projects for example, but still have the ability to aggregate query results and get visibility into your Elastic Cloud Enterprise infrastructure. You can add remote connections either when you create your deployment or when you customize it. To know more about cross-cluster search, check [Enable cross-cluster search](/deploy-manage/remote-clusters/ec-enable-ccs.md).
 
 * **Elastic Security template**
 
     Use this template to prevent, collect, detect, and respond to threats for unified protection across your infrastructure. Check the [**Elastic Security**](../../../solutions/security.md) documentation for more information.
-
-* **Elastic Enterprise Search template**
-
-    Default deployment template for Elastic Enterprise Search. Check the [**Enterprise Search**](https://www.elastic.co/guide/en/enterprise-search/current/index.html) documentation for more information.
 
 * **Elastic Observability template**
 

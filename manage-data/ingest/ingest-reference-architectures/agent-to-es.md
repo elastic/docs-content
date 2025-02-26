@@ -10,7 +10,7 @@ To ingest data into {{es}}, use the *simplest option that meets your needs* and 
 Integrations offer advantages beyond easier data collection—​advantages such as dashboards, central agent management, and easy enablement of [Elastic solutions](https://www.elastic.co/products/), such as Security and Observability.
 
 :::{image} ../../../images/ingest-ea-es.png
-:alt: Image showing {{agent}} collecting data and sending to {es}
+:alt: Image showing {{agent}} collecting data and sending to {{es}}
 :::
 
 

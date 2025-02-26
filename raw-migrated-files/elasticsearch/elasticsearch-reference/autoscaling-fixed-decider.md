@@ -15,10 +15,10 @@ The [autoscaling](../../../deploy-manage/autoscaling.md) `fixed` decider respond
 ## Configuration settings [_configuration_settings]
 
 `storage`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Required amount of node-level storage. Defaults to `-1` (disabled).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level storage. Defaults to `-1` (disabled).
 
 `memory`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Required amount of node-level memory. Defaults to `-1` (disabled).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level memory. Defaults to `-1` (disabled).
 
 `processors`
 :   (Optional, float) Required number of processors. Defaults to disabled.

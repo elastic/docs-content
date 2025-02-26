@@ -78,3 +78,9 @@ $$$air-gapped-agent-integration-configure-yml$$$
 $$$air-gapped-agent-integration-configure-fleet-api$$$
 
 $$$air-gapped-kibana-product-documentation$$$
+
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md](/raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-install-offline.md](/raw-migrated-files/cloud/cloud-enterprise/ece-install-offline.md)
