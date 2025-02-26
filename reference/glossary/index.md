@@ -134,7 +134,7 @@ $$$glossary-connector$$$ connector
 $$$glossary-console$$$ Console
 :   In {{kib}}, a tool for interacting with the {{es}} REST API. You can send requests to {{es}}, view responses, view API documentation, and get your request history. See [Console](/explore-analyze/query-filter/tools/console.md).
 
-    In {{ess}}, provides web-based access to manage your {{ecloud}} deployments.
+    In {{ecloud}}, provides web-based access to manage your {{ecloud}} deployments.
 
 
 $$$glossary-constructor$$$ constructor
@@ -257,8 +257,8 @@ $$$glossary-elastic-security-indices$$$ {{elastic-sec}} indices
 $$$glossary-elastic-stack$$$ {{stack}}
 :   Also known as the *ELK Stack*, the {{stack}} is the combination of various Elastic products that integrate for a scalable and flexible way to manage your data.
 
-$$$glossary-elasticsearch-service$$$ {{ess}}
-:   The official hosted {{stack}} offering, from the makers of {{es}}. Available as a software-as-a-service (SaaS) offering on different cloud platforms, such as AWS, GCP, and Microsoft Azure.
+$$$glossary-elasticsearch-service$$$ Elasticsearch Service
+:   The former name of {{ech}}, which is the official hosted {{stack}} offering, from the makers of {{es}}. Available as a software-as-a-service (SaaS) offering on different cloud platforms, such as AWS, GCP, and Microsoft Azure.
 
 $$$glossary-element$$$ element
 :   A [Canvas](/reference/glossary/index.md#glossary-canvas) workpad object that displays an image, text, or visualization.

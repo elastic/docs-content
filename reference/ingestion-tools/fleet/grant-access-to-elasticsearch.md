@@ -18,7 +18,7 @@ If you’re using {{fleet}}, refer to [{{fleet}} enrollment tokens](/reference/i
 ## Create API keys for standalone agents [create-api-key-standalone-agent]
 
 ::::{note}
-API keys are sent as plain-text, so they only provide security when used in combination with Transport Layer Security (TLS). Our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body) on {{ecloud}} provides secure, encrypted connections out of the box! For self-managed {{es}} clusters, refer to [Public Key Infrastructure (PKI) certificates](/reference/ingestion-tools/fleet/elasticsearch-output.md#output-elasticsearch-pki-certs-authentication-settings).
+API keys are sent as plain-text, so they only provide security when used in combination with Transport Layer Security (TLS). [{{ecloud}}](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body) provides secure, encrypted connections out of the box! For self-managed {{es}} clusters, refer to [Public Key Infrastructure (PKI) certificates](/reference/ingestion-tools/fleet/elasticsearch-output.md#output-elasticsearch-pki-certs-authentication-settings).
 ::::
 
 

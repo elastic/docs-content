@@ -30,7 +30,7 @@ The steps for setting up data tiers vary based on your deployment type:
 
 **Enable autoscaling**
 
-[Autoscaling](../deploy-manage/autoscaling.md) automatically adjusts your deployment’s capacity to meet your storage needs. To enable autoscaling, select **Autoscale this deployment** on the **Edit deployment** page. Autoscaling is only available for {{ess}}.
+[Autoscaling](../deploy-manage/autoscaling.md) automatically adjusts your deployment’s capacity to meet your storage needs. To enable autoscaling, select **Autoscale this deployment** on the **Edit deployment** page. Autoscaling is only available for {{ech}}.
 ::::::
 
 ::::::{tab-item} Self-managed
@@ -77,7 +77,7 @@ To use {{search-snaps}}, you must register a supported snapshot repository. The 
 :::::::{tab-set}
 
 ::::::{tab-item} {{ech}}
-When you create a cluster, {{ess}} automatically registers a default [`found-snapshots`](../deploy-manage/tools/snapshot-and-restore.md) repository. This repository supports {{search-snaps}}.
+When you create a cluster, {{ech}} automatically registers a default [`found-snapshots`](../deploy-manage/tools/snapshot-and-restore.md) repository. This repository supports {{search-snaps}}.
 
 The `found-snapshots` repository is specific to your cluster. To use another cluster’s default repository, refer to the Cloud [Snapshot and restore](../deploy-manage/tools/snapshot-and-restore.md) documentation.
 

@@ -55,10 +55,10 @@ The {{stack}} is used for a wide and growing range of use cases. Here are a few 
 - **Semantic search**: Understand the intent and contextual meaning behind search queries using tools like synonyms, dense vector embeddings, and learned sparse query-document expansion.
 - **Hybrid search**: Combine full-text search with vector search using state-of-the-art ranking algorithms.
 - **Build search experiences**: Add hybrid search capabilities to apps or websites, or build enterprise search engines over your organization’s internal data sources.
-- **Retrieval augmented generation (RAG)**: Use {{ess}} as a retrieval engine to supplement generative AI models with more relevant, up-to-date, or proprietary data for a range of use cases.
+- **Retrieval augmented generation (RAG)**: Use {{ecloud}} as a retrieval engine to supplement generative AI models with more relevant, up-to-date, or proprietary data for a range of use cases.
 - **Geospatial search**: Search for locations and calculate spatial relationships using geospatial queries.
 
-This is just a sample of search, observability, and security use cases enabled by {{ess}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
+This is just a sample of search, observability, and security use cases enabled by {{ecloud}}. Refer to Elastic [customer success stories](https://www.elastic.co/customers/success-stories) for concrete examples across a range of industries.
 
 % TODO: cleanup these links, consolidate with Explore and analyze
 

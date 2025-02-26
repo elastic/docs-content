@@ -4,7 +4,7 @@ Once you are [prepared to upgrade](../../../deploy-manage/upgrade/deployment-or-
 
 Minor version upgrades, upgrades from 8.17 to 9.0.0-beta1, and cluster configuration changes can be performed with no downtime. Elastic Cloud only supports upgrades to released versions. Preview releases and master snapshots are not supported.
 
-{{ess}} and {{ece}} do not support the ability to upgrade to or from release candidate builds, such as 8.0.0-rc1.
+{{ech}} and {{ece}} do not support the ability to upgrade to or from release candidate builds, such as 8.0.0-rc1.
 
 If you use a separate [monitoring deployment](../../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md), you should upgrade the monitoring deployment before the production deployment. In general, the monitoring deployment and the deployments being monitored should be running the same version of the Elastic Stack. A monitoring deployment cannot monitor production deployments running newer versions of the stack. If necessary, the monitoring deployment can monitor production deployments running the latest release of the previous major version.
 
@@ -211,7 +211,7 @@ function changeTabs(e) {
 
 ::::::{tab-item} {{ech}}
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/?page=docs&placement=docs-body).
-2. Select your deployment on the home page in the {{ess}} card or go to the deployments page.
+2. Select your deployment on the home page in the **Hosted deployments** card or go to the deployments page.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 ::::::
