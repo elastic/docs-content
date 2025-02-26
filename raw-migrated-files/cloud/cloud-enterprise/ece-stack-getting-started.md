@@ -32,6 +32,10 @@ Building a rich search experience, gaining actionable insight into your environm
 :alt: Elastic Stack components and solutions with Enterprise Search
 :::
 
+:::{important}
+Enterprise Search is not available in {{stack}} 9.0+.
+:::
+
 These solutions help you accomplish your use cases: Ingest data into the deployment and set up specific capabilities of the Elastic Stack.
 
 Of course, you can choose to follow your own path and use Elastic components available in your deployment to ingest, visualize, and analyze your data independently from solutions.

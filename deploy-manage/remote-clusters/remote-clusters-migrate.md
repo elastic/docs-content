@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    self: ga
 navigation_title: "Migrate from certificate to API key authentication"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-migrate.html
@@ -25,11 +28,11 @@ For these reasons, you may prefer to migrate a remote cluster in-place, by follo
 5. [Resume cross-cluster operations](#remote-clusters-migration-resume)
 6. [Disable certificate based authentication and authorization](#remote-clusters-migration-disable-cert)
 
-If you run into any issues, refer to [Troubleshooting](remote-clusters-troubleshooting.md).
+If you run into any issues, refer to [Troubleshooting](/troubleshoot/elasticsearch/remote-clusters.md).
 
 ## Prerequisites [remote-clusters-migration-prerequisites]
 
-* The nodes of the local and remote clusters must be on version 8.10 or later.
+* The nodes of the local and remote clusters must be on {{stack}} 8.14 or later.
 * The local and remote clusters must have an appropriate license. For more information, refer to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions).
 
 
@@ -39,9 +42,9 @@ On the remote cluster:
 
 1. Enable the remote cluster server on every node of the remote cluster. In `elasticsearch.yml`:
 
-    1. Set [`remote_cluster_server.enabled`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote-cluster-network-settings) to `true`.
-    2. Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
-    3. Optionally, configure the remote server port using [`remote_cluster.port`](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#remote_cluster.port) (defaults to `9443`).
+    1. Set [`remote_cluster_server.enabled`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings) to `true`.
+    2. Configure the bind and publish address for remote cluster server traffic, for example using [`remote_cluster.host`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote-cluster-network-settings). Without configuring the address, remote cluster traffic may be bound to the local interface, and remote clusters running on other machines can’t connect.
+    3. Optionally, configure the remote server port using [`remote_cluster.port`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#remote_cluster.port) (defaults to `9443`).
 
 2. Next, generate a certificate authority (CA) and a server certificate/key pair. On one of the nodes of the remote cluster, from the directory where {{es}} has been installed:
 
@@ -75,7 +78,7 @@ On the remote cluster:
     4. If the remote cluster has multiple nodes, you can either:
 
         * create a single wildcard certificate for all nodes;
-        * or, create separate certificates for each node either manually or in batch with the [silent mode](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html#certutil-silent).
+        * or, create separate certificates for each node either manually or in batch with the [silent mode](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-silent).
 
 3. On every node of the remote cluster:
 
@@ -96,7 +99,7 @@ On the remote cluster:
         When prompted, enter the `CERT_PASSWORD` from the earlier step.
 
 4. Restart the remote cluster.
-5. On the remote cluster, generate a cross-cluster API key that provides access to the indices you want to use for {{ccs}} or {{ccr}}. You can use the [Create Cross-Cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html) API or [Kibana](../api-keys/elasticsearch-api-keys.md).
+5. On the remote cluster, generate a cross-cluster API key that provides access to the indices you want to use for {{ccs}} or {{ccr}}. You can use the [Create Cross-Cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key) API or [{{kib}}](../api-keys/elasticsearch-api-keys.md).
 6. Copy the encoded key (`encoded` in the response) to a safe location. You will need it to connect to the remote cluster later.
 
 
@@ -104,10 +107,10 @@ On the remote cluster:
 
 On the local cluster, stop any persistent tasks that refer to the remote cluster:
 
-* Use the [Stop {{transforms}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html) API to stop any transforms.
-* Use the [Close jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-close-job.html) API to close any anomaly detection jobs.
-* Use the [Pause auto-follow pattern](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-pause-auto-follow-pattern.html) API to pause any auto-follow {{ccr}}.
-* Use the [Pause follower](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-pause-follow.html) API to pause any manual {{ccr}} or existing indices that were created from the auto-follow pattern.
+* Use the [Stop {{transforms}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform) API to stop any transforms.
+* Use the [Close jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-close-job) API to close any anomaly detection jobs.
+* Use the [Pause auto-follow pattern](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-pause-auto-follow-pattern) API to pause any auto-follow {{ccr}}.
+* Use the [Pause follower](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-pause-follow) API to pause any manual {{ccr}} or existing indices that were created from the auto-follow pattern.
 
 
 ## Reconnect to the remote cluster [remote-clusters-migration-reconnect]
@@ -180,7 +183,7 @@ On the local cluster:
     1. Update the `cluster.remote` settings in `elasticsearch.yml` on each node of the local cluster. Change the port into the remote cluster port, which defaults to `9443`.
     2. Restart the local cluster to load changes to the keystore and settings.
 
-7. Use the [remote cluster info API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-remote-info.html) to verify that the local cluster has successfully connected to the remote cluster:
+7. Use the [remote cluster info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) to verify that the local cluster has successfully connected to the remote cluster:
 
     ```console
     GET /_remote/info
@@ -213,16 +216,16 @@ On the local cluster:
 
 Resume any persistent tasks that you stopped earlier. Tasks should be restarted by the same user or API key that created the task before the migration. Ensure the roles of this user or API key have been updated with the required `remote_indices` or `remote_cluster` privileges. For users, tasks capture the caller’s credentials when started and run in that user’s security context. For API keys, restarting a task will update the task with the updated API key.
 
-* Use the [Start {{transform}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html) API to start any transforms.
-* Use the [Open jobs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html) API to open any anomaly detection jobs.
-* Use the [Resume follower](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-post-resume-follow.html) API to resume any auto-follow {{ccr}}.
-* Use the [Resume auto-follow pattern](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-resume-auto-follow-pattern.html) API to resume any manual {{ccr}} or existing indices that were created from the auto-follow pattern.
+* Use the [Start {{transform}}](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform) API to start any transforms.
+* Use the [Open jobs](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-open-job) API to open any anomaly detection jobs.
+* Use the [Resume follower](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-resume-follow) API to resume any auto-follow {{ccr}}.
+* Use the [Resume auto-follow pattern](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-resume-auto-follow-pattern) API to resume any manual {{ccr}} or existing indices that were created from the auto-follow pattern.
 
 
 ## Disable certificate based authentication and authorization [remote-clusters-migration-disable-cert]
 
 ::::{note} 
-Only proceed with this step if the migration has been proved successful on the local cluster. If the migration is unsuccessful, either [find out what the problem is and attempt to fix it](remote-clusters-troubleshooting.md) or [roll back](#remote-clusters-migration-rollback).
+Only proceed with this step if the migration has been proved successful on the local cluster. If the migration is unsuccessful, either [find out what the problem is and attempt to fix it](/troubleshoot/elasticsearch/remote-clusters.md) or [roll back](#remote-clusters-migration-rollback).
 ::::
 
 
@@ -247,7 +250,7 @@ If you need to roll back, follow these steps on the local cluster:
 4. On each node, remove the `remote_cluster_client.ssl.*` settings from `elasticsearch.yml`.
 5. Restart the local cluster to apply changes to the keystore and `elasticsearch.yml`.
 6. On the local cluster, apply the original remote cluster settings. If the remote cluster connection has been configured statically (using the `elasticsearch.yml` file), restart the cluster.
-7. Use the [remote cluster info API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-remote-info.html) to verify that the local cluster has connected to the remote cluster. The response should have `"connected": true` and not have `"cluster_credentials": "::es_redacted::"`.
+7. Use the [remote cluster info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-remote-info) to verify that the local cluster has connected to the remote cluster. The response should have `"connected": true` and not have `"cluster_credentials": "::es_redacted::"`.
 8. Restart any persistent tasks that you’ve stopped earlier.
 
 

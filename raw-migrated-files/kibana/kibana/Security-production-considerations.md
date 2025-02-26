@@ -15,9 +15,9 @@ You should use SSL/TLS encryption to ensure that traffic between browsers and th
 encrypt-kibana-http
 
 
-## Use {{stack}} {security-features} [configuring-kibana-shield]
+## Use {{stack}} {{security-features}} [configuring-kibana-shield]
 
-You can use {{stack}} {security-features} to control what {{es}} data users can access through {{kib}}.
+You can use {{stack}} {{security-features}} to control what {{es}} data users can access through {{kib}}.
 
 When {{security-features}} are enabled, {{kib}} users have to log in. They must have a role granting [{{kib}} privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md) and access to the indices that they will be working with in {{kib}}.
 

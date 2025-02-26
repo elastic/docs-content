@@ -25,7 +25,7 @@ By default, a snapshot of a cluster contains the cluster state, all regular data
 
 * [Persistent cluster settings](../../../deploy-manage/deploy/self-managed/configure-elasticsearch.md#cluster-setting-types)
 * [Index templates](../../../manage-data/data-store/templates.md)
-* [Legacy index templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-templates-v1.html)
+* [Legacy index templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-template)
 * [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md)
 * [{{ilm-init}} policies](../../../manage-data/lifecycle/index-lifecycle-management.md)
 * [Stored scripts](../../../explore-analyze/scripting/modules-scripting-using.md#script-stored-scripts)
@@ -51,11 +51,11 @@ When restoring a data stream, if the target cluster does not have an index templ
 A feature state contains the indices and data streams used to store configurations, history, and other data for an Elastic feature, such as {{es}} security or {{kib}}.
 
 ::::{tip}
-To retrieve a list of feature states, use the [Features API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-features-api.html).
+To retrieve a list of feature states, use the [Features API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-features-get-features).
 ::::
 
 
-A feature state typically includes one or more [system indices or system data streams](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#system-indices). It may also include regular indices and data streams used by the feature. For example, a feature state may include a regular index that contains the feature’s execution history. Storing this history in a regular index lets you more easily search it.
+A feature state typically includes one or more [system indices or system data streams](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#system-indices). It may also include regular indices and data streams used by the feature. For example, a feature state may include a regular index that contains the feature’s execution history. Storing this history in a regular index lets you more easily search it.
 
 In {{es}} 8.0 and later versions, feature states are the only way to back up and restore system indices and system data streams.
 
@@ -100,25 +100,22 @@ This documentation is for {{es}} version 9.0.0-beta1, which is not yet released.
 
 Any index you restore from a snapshot must also be compatible with the current cluster’s version. If you try to restore an index created in an incompatible version, the restore attempt will fail.
 
-|     |     |
-| --- | --- |
-|  | Cluster version |
-| Index creation version | 6.8 | 7.0–7.1 | 7.2–8.17 | 8.0–8.2 | 8.3-9.0 |
-| 5.0–5.6 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "")[[1]](../../../deploy-manage/tools/snapshot-and-restore.md#fn-archive) |
-| 6.0–6.7 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "")[[1]](../../../deploy-manage/tools/snapshot-and-restore.md#fn-archive) |
-| 6.8 | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "")[[1]](../../../deploy-manage/tools/snapshot-and-restore.md#fn-archive) |
-| 7.0–7.1 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 7.2–8.17 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
-| 8.0–9.0 | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![No](https://doc-icons.s3.us-east-2.amazonaws.com/icon-no.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") | ![Yes](https://doc-icons.s3.us-east-2.amazonaws.com/icon-yes.png "") |
+| Index creation version | 6.8 | 7.0–7.1 | 7.2–7.17 | 8.0–8.2 | 8.3–8.17 |
+|------------------------|-----|---------|---------|---------|---------|
+| 5.0–5.6               | ✅  | ❌      | ❌      | ❌      | ✅ [1]  |
+| 6.0–6.7               | ✅  | ✅      | ✅      | ❌      | ✅ [1]  |
+| 6.8                   | ✅  | ❌      | ✅      | ❌      | ✅ [1]  |
+| 7.0–7.1               | ❌  | ✅      | ✅      | ✅      | ✅      |
+| 7.2–7.17              | ❌  | ❌      | ✅      | ✅      | ✅      |
+| 8.0–8.17              | ❌  | ❌      | ❌      | ✅      | ✅      |
 
-$$$fn-archive$$$
-1. Supported with [archive indices](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
+[1] Supported with [archive indices](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md).
 
 You can’t restore an index to an earlier version of {{es}}. For example, you can’t restore an index created in 7.6.0 to a cluster running 7.5.0.
 
 A compatible snapshot can contain indices created in an older incompatible version. For example, a snapshot of a 8.17 cluster can contain an index created in 6.8. Restoring the 6.8 index to an 9.0 cluster fails unless you can use the [archive functionality](../../../deploy-manage/upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md). Keep this in mind if you take a snapshot before upgrading a cluster.
 
-As a workaround, you can first restore the index to another cluster running the latest version of {{es}} that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#reindex-from-remote) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) is enabled.
+As a workaround, you can first restore the index to another cluster running the latest version of {{es}} that’s compatible with both the index and your current cluster. You can then use [reindex-from-remote](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) to rebuild the index on your current cluster. Reindex from remote is only possible if the index’s [`_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) is enabled.
 
 Reindexing from remote can take significantly longer than restoring a snapshot. Before you start, test the reindex from remote process with a subset of the data to estimate your time requirements.
 

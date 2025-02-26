@@ -5,7 +5,7 @@ mapped_pages:
 
 # Updating certificates [update-node-certs]
 
-You might need to update your TLS certificates if your current node certificates expire soon, you’re adding new nodes to your secured cluster, or a security breach has broken the trust of your certificate chain. Use the [SSL certificate](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html) API to check when your certificates are expiring.
+You might need to update your TLS certificates if your current node certificates expire soon, you’re adding new nodes to your secured cluster, or a security breach has broken the trust of your certificate chain. Use the [SSL certificate](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) API to check when your certificates are expiring.
 
 In instances where you have access to the original Certificate Authority (CA) key and certificate that you used to sign your existing node certificates (and where you can still trust your CA), you can [use that CA to sign the new certificates](same-ca.md).
 

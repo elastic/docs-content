@@ -6,6 +6,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/scalability.html
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-technical.html
   - https://www.elastic.co/guide/en/elastic-stack/current/overview.html
+  - https://www.elastic.co/guide/en/elastic-stack/current/index.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-administering-deployments.html
   - https://www.elastic.co/guide/en/kibana/current/management.html
 ---
@@ -47,3 +48,16 @@ $$$faq-ip-sniffing$$$
 $$$faq-encryption-at-rest$$$
 
 $$$faq-static-ip-elastic-cloud$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+% Doesn't exist
+% * [/raw-migrated-files/kibana/kibana/introduction.md](/raw-migrated-files/kibana/kibana/introduction.md)
+
+* [/raw-migrated-files/kibana/kibana/setup.md](/raw-migrated-files/kibana/kibana/setup.md)
+* [/raw-migrated-files/tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md](/raw-migrated-files/tech-content/starting-with-the-elasticsearch-platform-and-its-solutions/get-elastic.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/scalability.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/scalability.md)
+* [/raw-migrated-files/cloud/cloud/ec-faq-technical.md](/raw-migrated-files/cloud/cloud/ec-faq-technical.md)
+* [/raw-migrated-files/stack-docs/elastic-stack/overview.md](/raw-migrated-files/stack-docs/elastic-stack/overview.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md](/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md)
+* [/raw-migrated-files/kibana/kibana/management.md](/raw-migrated-files/kibana/kibana/management.md)

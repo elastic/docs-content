@@ -1,6 +1,27 @@
 project: 'Elastic documentation'
 exclude:
   - 'README.md'
+cross_links:
+  - asciidocalypse
+  - kibana
+  - integration-docs
+  - integrations
+  - logstash
+  - elasticsearch
+  - cloud
+  - beats
+  - go-elasticsearch
+  - elasticsearch-java
+  - elasticsearch-net
+  - elasticsearch-php
+  - elasticsearch-py
+  - elasticsearch-ruby
+  - elasticsearch-js
+  - ecs
+  - ecs-logging
+  - search-ui
+  - cloud-on-k8s
+
 toc:
   - file: index.md
   - toc: get-started
@@ -10,6 +31,9 @@ toc:
   - toc: deploy-manage
   - toc: cloud-account
   - toc: troubleshoot
+  - toc: release-notes
+  - toc: reference
+  - toc: extend
   - toc: raw-migrated-files
 
 subs:
@@ -60,7 +84,7 @@ subs:
   apm-lambda-ref:   "https://www.elastic.co/guide/en/apm/lambda/current"
   apm-attacher-ref:   "https://www.elastic.co/guide/en/apm/attacher/current"
   docker-logging-ref:   "https://www.elastic.co/guide/en/beats/loggingplugin/current"
-  esf-ref:   "https://www.elastic.co/guide/en/esf/{{esf_version}}"
+  esf-ref:   "https://www.elastic.co/guide/en/esf/current"
   kinesis-firehose-ref:   "https://www.elastic.co/guide/en/kinesis/{{kinesis_version}}"
   estc-welcome-current:   "https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current"
   estc-welcome:   "https://www.elastic.co/guide/en/starting-with-the-elasticsearch-platform-and-its-solutions/current"
@@ -106,17 +130,17 @@ subs:
   security-guide-all:   "https://www.elastic.co/guide/en/security"
   endpoint-guide:   "https://www.elastic.co/guide/en/endpoint/current"
   sql-odbc:   "https://www.elastic.co/guide/en/elasticsearch/sql-odbc/current"
-  ecs-ref:   "https://www.elastic.co/guide/en/ecs/{{ecs_version}}"
-  ecs-logging-ref:   "https://www.elastic.co/guide/en/ecs-logging/overview/{{ecs-logging}}"
-  ecs-logging-go-logrus-ref:   "https://www.elastic.co/guide/en/ecs-logging/go-logrus/{{ecs-logging-go-logrus}}"
-  ecs-logging-go-zap-ref:   "https://www.elastic.co/guide/en/ecs-logging/go-zap/{{ecs-logging-go-zap}}"
-  ecs-logging-go-zerolog-ref:   "https://www.elastic.co/guide/en/ecs-logging/go-zap/{{ecs-logging-go-zerolog}}"
-  ecs-logging-java-ref:   "https://www.elastic.co/guide/en/ecs-logging/java/{{ecs-logging-java}}"
-  ecs-logging-dotnet-ref:   "https://www.elastic.co/guide/en/ecs-logging/dotnet/{{ecs-logging-dotnet}}"
-  ecs-logging-nodejs-ref:   "https://www.elastic.co/guide/en/ecs-logging/nodejs/{{ecs-logging-nodejs}}"
-  ecs-logging-php-ref:   "https://www.elastic.co/guide/en/ecs-logging/php/{{ecs-logging-php}}"
-  ecs-logging-python-ref:   "https://www.elastic.co/guide/en/ecs-logging/python/{{ecs-logging-python}}"
-  ecs-logging-ruby-ref:   "https://www.elastic.co/guide/en/ecs-logging/ruby/{{ecs-logging-ruby}}"
+  ecs-ref:   "https://www.elastic.co/guide/en/ecs/current"
+  ecs-logging-ref:   "https://www.elastic.co/guide/en/ecs-logging/overview/current"
+  ecs-logging-go-logrus-ref:   "https://www.elastic.co/guide/en/ecs-logging/go-logrus/current"
+  ecs-logging-go-zap-ref:   "https://www.elastic.co/guide/en/ecs-logging/go-zap/current"
+  ecs-logging-go-zerolog-ref:   "https://www.elastic.co/guide/en/ecs-logging/go-zap/current"
+  ecs-logging-java-ref:   "https://www.elastic.co/guide/en/ecs-logging/java/current"
+  ecs-logging-dotnet-ref:   "https://www.elastic.co/guide/en/ecs-logging/dotnet/current"
+  ecs-logging-nodejs-ref:   "https://www.elastic.co/guide/en/ecs-logging/nodejs/current"
+  ecs-logging-php-ref:   "https://www.elastic.co/guide/en/ecs-logging/php/current"
+  ecs-logging-python-ref:   "https://www.elastic.co/guide/en/ecs-logging/python/current"
+  ecs-logging-ruby-ref:   "https://www.elastic.co/guide/en/ecs-logging/ruby/current"
   ml-docs:   "https://www.elastic.co/guide/en/machine-learning/current"
   eland-docs:   "https://www.elastic.co/guide/en/elasticsearch/client/eland/current"
   eql-ref:   "https://eql.readthedocs.io/en/latest/query-guide"
@@ -142,15 +166,15 @@ subs:
   integrations-devguide:   "https://www.elastic.co/guide/en/integrations-developer/current"
   time-units:   "https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units"
   byte-units:   "https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units"
-  apm-py-ref-v:   "https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}"
-  apm-node-ref-v:   "https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}"
-  apm-rum-ref-v:   "https://www.elastic.co/guide/en/apm/agent/rum-js/{{apm-rum-branch}}"
-  apm-ruby-ref-v:   "https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}"
-  apm-java-ref-v:   "https://www.elastic.co/guide/en/apm/agent/java/{{apm-java-branch}}"
-  apm-go-ref-v:   "https://www.elastic.co/guide/en/apm/agent/go/{{apm-go-branch}}"
-  apm-ios-ref-v:   "https://www.elastic.co/guide/en/apm/agent/swift/{{apm-ios-branch}}"
-  apm-dotnet-ref-v:   "https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}"
-  apm-php-ref-v:   "https://www.elastic.co/guide/en/apm/agent/php/{{apm-php-branch}}"
+  apm-py-ref-v:   "https://www.elastic.co/guide/en/apm/agent/python/current"
+  apm-node-ref-v:   "https://www.elastic.co/guide/en/apm/agent/nodejs/current"
+  apm-rum-ref-v:   "https://www.elastic.co/guide/en/apm/agent/rum-js/current"
+  apm-ruby-ref-v:   "https://www.elastic.co/guide/en/apm/agent/ruby/current"
+  apm-java-ref-v:   "https://www.elastic.co/guide/en/apm/agent/java/current"
+  apm-go-ref-v:   "https://www.elastic.co/guide/en/apm/agent/go/current"
+  apm-ios-ref-v:   "https://www.elastic.co/guide/en/apm/agent/swift/current"
+  apm-dotnet-ref-v:   "https://www.elastic.co/guide/en/apm/agent/dotnet/current"
+  apm-php-ref-v:   "https://www.elastic.co/guide/en/apm/agent/php/current"
   ecloud:   "Elastic Cloud"
   esf:   "Elastic Serverless Forwarder"
   ess:   "Elasticsearch Service"
@@ -172,7 +196,7 @@ subs:
   ess-console:   "https://cloud.elastic.co?page=docs&placement=docs-body"
   ess-console-name:   "Elasticsearch Service Console"
   ess-deployments:   "https://cloud.elastic.co/deployments?page=docs&placement=docs-body"
-  ece-ref:   "https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}"
+  ece-ref:   "https://www.elastic.co/guide/en/cloud-enterprise/current"
   eck-ref:   "https://www.elastic.co/guide/en/cloud-on-k8s/current"
   ess-leadin:   "You can run Elasticsearch on your own hardware or use our hosted Elasticsearch Service that is available on AWS, GCP, and Azure. https://cloud.elastic.co/registration{ess-utm-params}[Try the Elasticsearch Service for free]."
   ess-leadin-short:   "Our hosted Elasticsearch Service is available on AWS, GCP, and Azure, and you can https://cloud.elastic.co/registration{ess-utm-params}[try it for free]."
@@ -494,188 +518,3 @@ subs:
   icon-bug:   "pass:[<span class=\"eui-icon icon-bug\"></span>]"
   icon-checkInCircleFilled:   "pass:[<span class=\"eui-icon icon-checkInCircleFilled\"></span>]"
   icon-warningFilled:   "pass:[<span class=\"eui-icon icon-warningFilled\"></span>]"
-
-external_hosts:
-  - 50.10
-  - aka.ms
-  - aliyun.com
-  - amazon.com
-  - amazonaws.com
-  - amp.dev
-  - android.com
-  - ansible.com
-  - anthropic.com
-  - apache.org
-  - apple.com
-  - arxiv.org
-  - atlassian.com
-  - azure.com
-  - bouncycastle.org
-  - cbor.io
-  - census.gov
-  - cert-manager.io
-  - chromium.org
-  - cisa.gov
-  - cisecurity.org
-  - cmu.edu
-  - cncf.io
-  - co.
-  - codesandbox.io
-  - cohere.com
-  - columbia.edu
-  - concourse-ci.org
-  - contentstack.io
-  - curl.se
-  - dbeaver.io
-  - dbvis.com
-  - deque.com
-  - die.net
-  - digitalocean.com
-  - direnv.net
-  - dnschecker.org
-  - docker.com
-  - dso.mil
-  - eicar.org
-  - ela.st
-  - elastic-cloud.com
-  - elasticsearch.org
-  - elstc.co
-  - epsg.org
-  - example.com
-  - falco.org
-  - freedesktop.org
-  - gdal.org
-  - gin-gonic.com
-  - git-lfs.com
-  - github.io
-  - githubusercontent.com
-  - go.dev
-  - godoc.org
-  - golang.org
-  - google.com
-  - google.dev
-  - googleapis.com
-  - googleblog.com
-  - gorillatoolkit.org
-  - gradle.org
-  - handlebarsjs.com
-  - haxx.se
-  - helm.io
-  - helm.sh
-  - heroku.com
-  - huggingface.co
-  - ibm.com
-  - ietf.org
-  - ijmlc.org
-  - istio.io
-  - jaegertracing.io
-  - java.net
-  - javadoc.io
-  - javalin.io
-  - jenkins.io
-  - jina.ai
-  - json.org
-  - kernel.org
-  - kubernetes.io
-  - letsencrypt.org
-  - linkerd.io
-  - lmstudio.ai
-  - loft.sh
-  - man7.org
-  - mariadb.org
-  - markdownguide.org
-  - maven.org
-  - maxmind.com
-  - metacpan.org
-  - micrometer.io
-  - microsoft.com
-  - microstrategy.com
-  - min.io
-  - minio.io
-  - mistral.ai
-  - mit.edu
-  - mitre.org
-  - momentjs.com
-  - mozilla.org
-  - mvnrepository.com
-  - mysql.com
-  - navattic.com
-  - nginx.com
-  - nginx.org
-  - ngrok.com
-  - nist.gov
-  - nlog-project.org
-  - nodejs.dev
-  - nodejs.org
-  - npmjs.com
-  - ntp.org
-  - nuget.org
-  - numeraljs.com
-  - oasis-open.org
-  - office.com
-  - okta.com
-  - openai.com
-  - openebs.io
-  - opengroup.org
-  - openid.net
-  - openjdk.org
-  - openmaptiles.org
-  - openpolicyagent.org
-  - openshift.com
-  - openssl.org
-  - openstreetmap.org
-  - opentelemetry.io
-  - openweathermap.org
-  - operatorhub.io
-  - oracle.com
-  - osquery.io
-  - outlook.com
-  - owasp.org
-  - pagerduty.com
-  - palletsprojects.com
-  - pastebin.com
-  - playwright.dev
-  - podman.io
-  - postgresql.org
-  - pypi.org
-  - python.org
-  - qlik.com
-  - readthedocs.io
-  - recurly.com
-  - redhat.com
-  - rust-lang.org
-  - salesforce.com
-  - scikit-learn.org
-  - sdkman.io
-  - searchkit.co
-  - semver.org
-  - serilog.net
-  - sigstore.dev
-  - slack.com
-  - snowballstem.org
-  - sonatype.org
-  - sourceforge.net
-  - sourcemaps.info
-  - spring.io
-  - sql-workbench.eu
-  - stackexchange.com
-  - stunnel.org
-  - swiftype.com
-  - tableau.com
-  - talosintelligence.com
-  - telerik.com
-  - terraform.io
-  - trimet.org
-  - umd.edu
-  - urlencoder.org
-  - vaultproject.io
-  - victorops.com
-  - virustotal.com
-  - w3.org
-  - web.dev
-  - webhook.site
-  - wikipedia.org
-  - wolfi.dev
-  - wttr.in
-  - yaml.org
-  - youtube.com

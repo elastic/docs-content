@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elastic APM events intake API [apm-api-events]
 
-::::{note} 
+::::{note}
 Most users do not need to interact directly with the events intake API.
 ::::
 
@@ -24,7 +24,7 @@ With NDJSON, agents can open an HTTP POST request and use chunked encoding to st
 See the [APM data model](learn-about-application-data-types.md) to learn more about the different types of events.
 
 
-### Endpoints [apm-api-events-endpoint] 
+### Endpoints [apm-api-events-endpoint]
 
 APM Server exposes the following endpoints for Elastic APM agent data intake:
 
@@ -35,7 +35,7 @@ APM Server exposes the following endpoints for Elastic APM agent data intake:
 | RUM event intake (v3) | `/intake/v3/rum/events` |
 
 
-### Request [apm-api-events-example] 
+### Request [apm-api-events-example]
 
 Send an `HTTP POST` request to the APM Server `intake/v2/events` endpoint:
 
@@ -49,7 +49,7 @@ From version `8.5.0` onwards, the APM Server supports asynchronous processing of
 http(s)://{hostname}:{port}/intake/v2/events?async=true
 ```
 
-::::{note} 
+::::{note}
 Since asynchronous processing defers some of the event processing to the background and takes place after the client has closed the request, some errors can’t be communicated back to the client and are logged by the APM Server. Furthermore, asynchronous processing requests will only be scheduled if the APM Server can service the incoming request, requests that cannot be serviced will receive an internal error `503` "queue is full" error.
 ::::
 
@@ -61,14 +61,14 @@ http(s)://{hostname}:{port}/intake/v3/rum/events
 ```
 
 
-### Response [apm-api-events-response] 
+### Response [apm-api-events-response]
 
 On success, the server will respond with a 202 Accepted status code and no body.
 
 Keep in mind that events can succeed and fail independently of each other. Only if all events succeed does the server respond with a 202.
 
 
-### Errors [apm-api-events-errors] 
+### Errors [apm-api-events-errors]
 
 There are two types of errors that the APM Server may return to an agent:
 
@@ -110,7 +110,7 @@ An example error response might look something like this:
 If you’re developing an agent, these errors can be useful for debugging.
 
 
-### Event API Schemas [apm-api-events-schema-definition] 
+### Event API Schemas [apm-api-events-schema-definition]
 
 The APM Server uses a collection of JSON Schemas for validating requests to the intake API:
 
@@ -127,7 +127,7 @@ Every new connection to the APM Server starts with a `metadata` stanza. This pro
 
 Rather than send this metadata information from the agent multiple times, the APM Server hangs on to this information and applies it to other objects in the stream as necessary.
 
-::::{tip} 
+::::{tip}
 Metadata is stored under `context` when viewing documents in {{es}}.
 ::::
 
@@ -136,7 +136,7 @@ Metadata is stored under `context` when viewing documents in {{es}}.
 * [Metadata Schema](#apm-api-metadata-schema)
 
 
-#### Kubernetes data [apm-api-kubernetes-data] 
+#### Kubernetes data [apm-api-kubernetes-data]
 
 APM agents automatically read Kubernetes data and send it to the APM Server. In most instances, agents are able to read this data from inside the container. If this is not the case, or if you wish to override this data, you can set environment variables for the agents to read. These environment variable are set via the Kubernetes [Downward API](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/#use-pod-fields-as-values-for-environment-variables). Here’s how you would add the environment variables to your Kubernetes pod spec:
 
@@ -169,7 +169,7 @@ The table below maps these environment variables to the APM metadata event field
 | `KUBERNETES_POD_UID` | system.kubernetes.pod.uid |
 
 
-#### Metadata Schema [apm-api-metadata-schema] 
+#### Metadata Schema [apm-api-metadata-schema]
 
 APM Server uses JSON Schema to validate requests. The specification for metadata is defined on [GitHub](https://github.com/elastic/apm-server/blob/9.0/docs/spec/v2/metadata.json) and included below:
 
@@ -757,7 +757,7 @@ APM Server uses JSON Schema to validate requests. The specification for metadata
 Transactions are events corresponding to an incoming request or similar task occurring in a monitored service.
 
 
-#### Transaction Schema [apm-api-transaction-schema] 
+#### Transaction Schema [apm-api-transaction-schema]
 
 APM Server uses JSON Schema to validate requests. The specification for transactions is defined on [GitHub](https://github.com/elastic/apm-server/blob/9.0/docs/spec/v2/transaction.json) and included below:
 
@@ -1901,7 +1901,7 @@ APM Server uses JSON Schema to validate requests. The specification for transact
 Spans are events captured by an agent occurring in a monitored service.
 
 
-#### Span Schema [apm-api-span-schema] 
+#### Span Schema [apm-api-span-schema]
 
 APM Server uses JSON Schema to validate requests. The specification for spans is defined on [GitHub](https://github.com/elastic/apm-server/blob/9.0/docs/spec/v2/span.json) and included below:
 
@@ -2820,7 +2820,7 @@ APM Server uses JSON Schema to validate requests. The specification for spans is
 An error or a logged error message captured by an agent occurring in a monitored service.
 
 
-#### Error Schema [apm-api-error-schema] 
+#### Error Schema [apm-api-error-schema]
 
 APM Server uses JSON Schema to validate requests. The specification for errors is defined on [GitHub](https://github.com/elastic/apm-server/blob/9.0/docs/spec/v2/error.json) and included below:
 
@@ -4126,7 +4126,7 @@ APM Server uses JSON Schema to validate requests. The specification for errors i
 Metrics contain application metric data captured by an {{apm-agent}}.
 
 
-#### Metric Schema [apm-api-metricset-schema] 
+#### Metric Schema [apm-api-metricset-schema]
 
 APM Server uses JSON Schema to validate requests. The specification for metrics is defined on [GitHub](https://github.com/elastic/apm-server/blob/9.0/docs/spec/v2/metricset.json) and included below:
 

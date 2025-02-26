@@ -5,7 +5,7 @@ mapped_pages:
 
 # TCP retransmission timeout [system-config-tcpretries]
 
-Each pair of {{es}} nodes communicates via a number of TCP connections which [remain open](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections) until one of the nodes shuts down or communication between the nodes is disrupted by a failure in the underlying infrastructure.
+Each pair of {{es}} nodes communicates via a number of TCP connections which [remain open](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) until one of the nodes shuts down or communication between the nodes is disrupted by a failure in the underlying infrastructure.
 
 TCP provides reliable communication over occasionally unreliable networks by hiding temporary network disruptions from the communicating applications. Your operating system will retransmit any lost messages a number of times before informing the sender of any problem. {{es}} must wait while the retransmissions are happening and can only react once the operating system decides to give up. Users must therefore also wait for a sequence of retransmissions to complete.
 
@@ -30,6 +30,6 @@ This setting applies to all TCP connections and will affect the reliability of c
 
 {{es}} also implements its own internal health checks with timeouts that are much shorter than the default retransmission timeout on Linux. Since these are application-level health checks their timeouts must allow for application-level effects such as garbage collection pauses. You should not reduce any timeouts related to these application-level health checks.
 
-You must also ensure your network infrastructure does not interfere with the long-lived connections between nodes, [even if those connections appear to be idle](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html#long-lived-connections). Devices which drop connections when they reach a certain age are a common source of problems to {{es}} clusters, and must not be used.
+You must also ensure your network infrastructure does not interfere with the long-lived connections between nodes, [even if those connections appear to be idle](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections). Devices which drop connections when they reach a certain age are a common source of problems to {{es}} clusters, and must not be used.
 
 

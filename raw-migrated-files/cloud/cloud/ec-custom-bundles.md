@@ -76,7 +76,7 @@ Bundles
 
     The dictionary `synonyms.txt` can be used as `synonyms.txt` or using the full path `/app/config/synonyms.txt` in the `synonyms_path` of the `synonym-filter`.
 
-    To learn more about analyzing with synonyms, check [Synonym token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
+    To learn more about analyzing with synonyms, check [Synonym token filter](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/text-analysis/analysis-synonym-tokenfilter.md) and [Formatting Synonyms](https://www.elastic.co/guide/en/elasticsearch/guide/2.x/synonym-formats.html).
 
     **GeoIP database bundle**
 

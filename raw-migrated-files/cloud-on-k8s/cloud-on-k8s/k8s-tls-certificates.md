@@ -86,7 +86,7 @@ spec:
 
 ## Disable TLS [k8s-disable-tls]
 
-You can explicitly disable TLS for Kibana, APM Server, Enterprise Search and the HTTP layer of Elasticsearch.
+You can explicitly disable TLS for Kibana, APM Server, and the HTTP layer of Elasticsearch.
 
 ```yaml
 spec:

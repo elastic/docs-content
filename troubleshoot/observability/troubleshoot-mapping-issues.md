@@ -23,7 +23,7 @@ It is necessary to stop all {{heartbeat}}/{{elastic-agent}} instances that are t
 
 To ensure the mapping is applied to all {{heartbeat}} data going forward, delete all the {{heartbeat}} indices that match the pattern the {{uptime-app}} will use.
 
-There are multiple ways to achieve this. You can read about performing this using the [Index Management UI](../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) or with the [Delete index API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html).
+There are multiple ways to achieve this. You can read about performing this using the [Index Management UI](../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md) or with the [Delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete).
 
 If using {{elastic-agent}} you will want to fix any issues with custom data stream mappings. We encourage the use of {{fleet}} to eliminate this issue.
 
@@ -36,7 +36,7 @@ The below command will cause {{heartbeat}} to perform its setup processes and re
 ./heartbeat setup -e
 ```
 
-For more information on how to use this command, or if you’re using DEB, RPM, or Windows, see the [{{heartbeat}} quickstart guide](https://www.elastic.co/guide/en/beats/heartbeat/current/heartbeat-installation-configuration.html).
+For more information on how to use this command, or if you’re using DEB, RPM, or Windows, see the [{{heartbeat}} quickstart guide](asciidocalypse://docs/beats/docs/reference/heartbeat/heartbeat-installation-configuration.md).
 
 This command performs the necessary startup tasks and ensures that your indices have the appropriate mapping going forward.
 

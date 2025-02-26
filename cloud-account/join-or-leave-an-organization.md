@@ -35,7 +35,7 @@ If you already belong to an organization, and you want to join a new one you wil
 
 Alternatively, for Elastic Cloud Hosted deployments, there's a possibility to migrate your deployments to the new organization through back up and restore operations. In such case:
 
-1. [Back up your deployments to any private repository](/deploy-manage/tools/snapshot-and-restore/ec-custom-repository.md) so that you can restore them to your new organization. 
+1. [Back up your deployments to any private repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md) so that you can restore them to your new organization. 
 2. Leave your current organization.
 3. Ask the administrator to invite you to the organization you want to join.
 4. Accept the invitation that you will get by email.

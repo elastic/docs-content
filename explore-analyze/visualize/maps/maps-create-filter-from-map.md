@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/maps-create-filter-from-map.html
 ---
@@ -35,7 +35,7 @@ A spatial filter narrows search results to documents that either intersect with,
 Spatial filters have the following properties:
 
 * **Geometry label** enables you to provide a meaningful name for your spatial filter.
-* **Spatial relation** determines the [spatial relation operator](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-geo-shape-query.html#geo-shape-spatial-relations) to use at search time.
+* **Spatial relation** determines the [spatial relation operator](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-geo-shape-query.md#geo-shape-spatial-relations) to use at search time.
 * **Action** specifies whether to apply the filter to the current view or to a drilldown action.
 
 ::::{note}

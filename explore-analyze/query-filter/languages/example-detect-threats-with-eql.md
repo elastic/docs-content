@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-ex-threat-detection.html
 ---
@@ -21,11 +21,11 @@ One common variant of regsvr32 misuse is a [Squiblydoo attack](https://attack.mi
 
 ## Setup [eql-ex-threat-detection-setup] 
 
-This tutorial uses a test dataset from [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team) that includes events imitating a Squiblydoo attack. The data has been mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/{{ecs_version}}) fields.
+This tutorial uses a test dataset from [Atomic Red Team](https://github.com/redcanaryco/atomic-red-team) that includes events imitating a Squiblydoo attack. The data has been mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current) fields.
 
 To get started:
 
-1. Create an [index template](../../../manage-data/data-store/templates.md) with [data stream enabled](../../../manage-data/data-store/index-types/set-up-data-stream.md#create-index-template):
+1. Create an [index template](../../../manage-data/data-store/templates.md) with [data stream enabled](../../../manage-data/data-store/data-streams/set-up-data-stream.md#create-index-template):
 
     ```console
     PUT /_index_template/my-data-stream-template
@@ -207,7 +207,7 @@ The query matches an event, confirming `scrobj.dll` was loaded.
 
 ## Determine the likelihood of success [eql-ex-detemine-likelihood-of-success] 
 
-In many cases, attackers use malicious scripts to connect to remote servers or download other files. Use an [EQL sequence query](https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences) to check for the following series of events:
+In many cases, attackers use malicious scripts to connect to remote servers or download other files. Use an [EQL sequence query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-sequences) to check for the following series of events:
 
 1. A `regsvr32.exe` process
 2. A load of the `scrobj.dll` library by the same process

@@ -12,11 +12,10 @@ Some components of the {{stack}} require additional configuration and local depe
     * [1.6. {{fleet-server}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-fleet)
     * [1.7. Elastic APM](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-apm)
     * [1.8. {{ems}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-maps-service)
-    * [1.9. {{ents}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-enterprise-search)
-    * [1.10. {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry)
-    * [1.11. {{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry)
-    * [1.12. Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository)
-    * [1.13 {{ml-cap}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-machine-learning)
+    * [1.9. {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry)
+    * [1.10. {{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry)
+    * [1.11. Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository)
+    * [1.12 {{ml-cap}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-machine-learning)
 
 
 * [2. Kubernetes & OpenShift Install](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kubernetes-and-openshift)
@@ -40,7 +39,7 @@ Some components of the {{stack}} require additional configuration and local depe
 
         * [D.2.1. Using the {{kib}} UI](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-kibana)
         * [D.2.2. Using the `kibana.yml` config file](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-yml)
-        * [D.2.3. Using the {{kib}} {fleet} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api)
+        * [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api)
 
 
 ::::{note}
@@ -60,7 +59,7 @@ Air-gapped install of {{es}} may require additional steps in order to access som
 
 Specifically:
 
-* To be able to use the GeoIP processor, refer to [the GeoIP processor documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/geoip-processor.html#manually-update-geoip-databases) for instructions on downloading and deploying the required databases.
+* To be able to use the GeoIP processor, refer to [the GeoIP processor documentation](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md#manually-update-geoip-databases) for instructions on downloading and deploying the required databases.
 * Refer to [{{ml-cap}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-machine-learning) for instructions on deploying the Elastic Learned Sparse EncodeR (ELSER) natural language processing (NLP) model and other trained {{ml}} models.
 
 
@@ -73,28 +72,27 @@ Specifically:
 * To be able to use {{kib}} mapping visualizations, you need to set up and configure the [Elastic Maps Service](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-maps-service).
 * To be able to use {{kib}} sample data, install or update hundreds of prebuilt alert rules, and explore available data integrations, you need to set up and configure the [{{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry).
 * To provide detection rule updates for {{endpoint-sec}} agents, you need to set up and configure the [Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository).
-* To access {{ents}} capabilities (in addition to the general search capabilities of {{es}}), you need to set up and configure [{{ents}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-enterprise-search).
 * To access the APM integration, you need to set up and configure [Elastic APM](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-apm).
 * To install and use the Elastic documentation for {{kib}} AI assistants, you need to set up and configure the [Elastic product documentation for {{kib}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana-product-documentation).
 
 
 #### 1.3. {{beats}} [air-gapped-beats]
 
-Elastic {{beats}} are light-weight data shippers. They do not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{beats}} documentation](https://www.elastic.co/guide/en/beats/libbeat/current/beats-reference.html).
+Elastic {{beats}} are light-weight data shippers. They do not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{beats}} documentation](asciidocalypse://docs/beats/docs/reference/index.md).
 
 
 #### 1.4. {{ls}} [air-gapped-logstash]
 
-{{ls}} is a versatile data shipping and processing application. It does not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{ls}} documentation](https://www.elastic.co/guide/en/logstash/current/introduction.html).
+{{ls}} is a versatile data shipping and processing application. It does not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{ls}} documentation](asciidocalypse://docs/logstash/docs/reference/index.md).
 
 
 #### 1.5. {{agent}} [air-gapped-elastic-agent]
 
 Air-gapped install of {{agent}} depends on the [{{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry) and the [{{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry) for most use-cases. The agent itself is fairly lightweight and installs dependencies only as required by its configuration. In terms of connections to these dependencies, {{agents}} need to be able to connect to the {{artifact-registry}} directly, but {{package-registry}} connections are handled through [{{kib}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-kibana).
 
-Additionally, if the {{agent}} {elastic-defend} integration is used, then access to the [Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository) is necessary in order to deploy updates for some of the detection and prevention capabilities.
+Additionally, if the {{agent}} {{elastic-defend}} integration is used, then access to the [Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository) is necessary in order to deploy updates for some of the detection and prevention capabilities.
 
-To learn more about install and configuration, refer to the [{{agent}} install documentation](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](https://www.elastic.co/guide/en/fleet/current/air-gapped.html).
+To learn more about install and configuration, refer to the [{{agent}} install documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md).
 
 To get a better understanding of how to work with {{agent}} configuration settings and policies, refer to [Appendix D - Agent Integration Guide](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-guide).
 
@@ -103,15 +101,15 @@ To get a better understanding of how to work with {{agent}} configuration settin
 
 {{fleet-server}} is a required middleware component for any scalable deployment of the {{agent}}. The air-gapped dependencies of {{fleet-server}} are the same as those of the [{{agent}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-agent).
 
-To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} set up documentation](https://www.elastic.co/guide/en/fleet/current/fleet-server.html).
+To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} set up documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md).
 
 
 #### 1.7. Elastic APM [air-gapped-elastic-apm]
 
 Air-gapped setup of the APM server is possible in two ways:
 
-* By setting up one of the {{agent}} deployments with an APM integration, as described in [Switch a self-installation to the APM integration](https://www.elastic.co/guide/en/apm/guide/current/apm-integration-upgrade-steps.html).
-* Or, by installing a standalone Elastic APM Server, as described in the [APM configuration documentation](https://www.elastic.co/guide/en/apm/guide/current/configuring-howto-apm-server.html).
+* By setting up one of the {{agent}} deployments with an APM integration, as described in [Switch a self-installation to the APM integration](/solutions/observability/apps/switch-self-installation-to-apm-integration.md).
+* Or, by installing a standalone Elastic APM Server, as described in the [APM configuration documentation](/solutions/observability/apps/configure-apm-server.md).
 
 
 #### 1.8. {{ems}} [air-gapped-elastic-maps-service]
@@ -119,14 +117,9 @@ Air-gapped setup of the APM server is possible in two ways:
 Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-connect-to-ems.md) in the {{kib}} documentation to learn how to configure your firewall to connect to {{ems}}, host it locally, or disable it completely.
 
 
-#### 1.9. {{ents}} [air-gapped-enterprise-search]
+#### 1.9. {{package-registry}} [air-gapped-elastic-package-registry]
 
-Detailed install and configuration instructions are available in the [{{ents}} install documentation](https://www.elastic.co/guide/en/enterprise-search/current/installation.html).
-
-
-#### 1.10. {{package-registry}} [air-gapped-elastic-package-registry]
-
-Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](https://www.elastic.co/guide/en/fleet/current/air-gapped.html) page in the {{fleet}} and {{agent}} Guide.
+Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
 
 Refer to [Appendix A - {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry-example) for additional setup examples.
 
@@ -136,9 +129,9 @@ Besides setting up the EPR service, you also need to [configure {{kib}}](../../.
 
 
 
-#### 1.11. {{artifact-registry}} [air-gapped-elastic-artifact-registry]
+#### 1.10. {{artifact-registry}} [air-gapped-elastic-artifact-registry]
 
-Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](https://www.elastic.co/guide/en/fleet/current/air-gapped.html#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
+Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
 
 Refer to [Appendix B - {{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry-example) for additional setup examples.
 
@@ -148,22 +141,22 @@ When setting up own web server, such as NGINX, to function as the {{artifact-reg
 
 
 
-#### 1.12. Elastic Endpoint Artifact Repository [air-gapped-elastic-endpoint-artifact-repository]
+#### 1.11. Elastic Endpoint Artifact Repository [air-gapped-elastic-endpoint-artifact-repository]
 
 Air-gapped setup of this component is, essentially, identical to the setup of the [{{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry) except that different artifacts are served. To learn more, refer to [Configure offline endpoints and air-gapped environments](../../../solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md) in the Elastic Security guide.
 
 
-#### 1.13 {{ml-cap}} [air-gapped-machine-learning]
+#### 1.12 {{ml-cap}} [air-gapped-machine-learning]
 
 Some {{ml}} features, like natural language processing (NLP), require you to deploy trained models. To learn about deploying {{ml}} models in an air-gapped environment, refer to:
 
 * [Deploy ELSER in an air-gapped environment](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install).
-* [Install trained models in an air-gapped environment with Eland](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html#ml-nlp-pytorch-air-gapped).
+* [Install trained models in an air-gapped environment with Eland](asciidocalypse://docs/eland/docs/reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
 
 
-#### 1.14 {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
+#### 1.13 {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
 
-Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](https://www.elastic.co/guide/en/kibana/current/ai-assistant-settings-kb.html).
+Detailed install and configuration instructions are available in the [{{kib}} AI Assistants settings documentation](asciidocalypse://docs/kibana/docs/reference/configuration-reference/ai-assistant-settings.md).
 
 
 ### 2. Kubernetes & OpenShift Install [air-gapped-kubernetes-and-openshift]
@@ -186,7 +179,7 @@ The main requirements are:
 
 #### 2.2. Elastic Package Registry [air-gapped-k8s-os-elastic-package-registry]
 
-The container image can be downloaded from the official Elastic Docker repository, as described in the {{fleet}} and {{elastic-agent}} [air-gapped environments](https://www.elastic.co/guide/en/fleet/current/air-gapped.html) documentation.
+The container image can be downloaded from the official Elastic Docker repository, as described in the {{fleet}} and {{elastic-agent}} [air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) documentation.
 
 This container would, ideally, run as a Kubernetes deployment. Refer to [Appendix C - EPR Kubernetes Deployment](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-epr-kubernetes-example) for examples.
 
@@ -208,7 +201,7 @@ Besides the public [Elastic container repository](https://www.docker.elastic.co)
 
 #### 3.0 {{ece}} [air-gapped-ece]
 
-To install {{ece}} in an air-gapped environment you’ll need to host your own [1.10. {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry). Refer to the [ECE offline install instructions](https://www.elastic.co/guide/en/cloud-enterprise/{{ece-version-link}}/ece-install-offline.html) for details.
+To install {{ece}} in an air-gapped environment you’ll need to host your own [1.10. {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry). Refer to the [ECE offline install instructions](/deploy-manage/deploy/cloud-enterprise/air-gapped-install.md) for details.
 
 
 ### Appendix A - {{package-registry}} [air-gapped-elastic-package-registry-example]
@@ -480,7 +473,7 @@ There are three ways to configure {{agent}} integrations:
 
 * [D.2.1. Using the {{kib}} UI](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-kibana)
 * [D.2.2. Using the `kibana.yml` config file](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-yml)
-* [D.2.3. Using the {{kib}} {fleet} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api)
+* [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api)
 
 
 #### D.2.1. Using the {{kib}} UI [air-gapped-agent-integration-configure-kibana]
@@ -501,7 +494,7 @@ Agent policies and integration settings can be managed using the {{kib}} UI. For
 
 **Good option for:** Declarative configuration and users who need reproducible and automated deployments.
 
-**Example:** [Fleet settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html)
+**Example:** [Fleet settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md)
 
 ::::{note}
 This documentation is still under development; there may be gaps around building custom agent policies.
@@ -514,26 +507,26 @@ You can have {{kib}} create {{agent}} policies on your behalf by adding appropri
 :   Takes a list of all integration package names and versions that {{kib}} should download from the {{package-registry}} (EPR). This is done because {{agents}} themselves do not directly fetch packages from the EPR.
 
 `xpack.fleet.agentPolicies`
-:   Takes a list of {{agent}} policies in the format expected by the [{{kib}} {fleet} HTTP API](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html). Refer to the setting in [Preconfiguration settings](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html#_preconfiguration_settings_for_advanced_use_cases) for the format. See also [D.2.3. Using the {{kib}} {fleet} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api).
+:   Takes a list of {{agent}} policies in the format expected by the [{{kib}} {{fleet}} HTTP API](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md). Refer to the setting in [Preconfiguration settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) for the format. See also [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api).
 
 `xpack.fleet.registryUrl`
 :   Takes a URL of the {{package-registry}} that can be reached by the {{kib}} server. Enable this setting only when deploying in an air-gapped environment.
 
 Other settings
-:   You can add other, more discretionary settings for {{fleet}}, {{agents}}, & policies. Refer to [Fleet settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/fleet-settings-kb.html).
+:   You can add other, more discretionary settings for {{fleet}}, {{agents}}, & policies. Refer to [Fleet settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md).
 
 
-#### D.2.3. Using the {{kib}} {fleet} API [air-gapped-agent-integration-configure-fleet-api]
+#### D.2.3. Using the {{kib}} {{fleet}} API [air-gapped-agent-integration-configure-fleet-api]
 
 **Best option for**: Declarative configuration and users who need reproducible and automated deployments in even the trickiest of environments.
 
 **Example:** See the following.
 
-It is possible to use custom scripts that call the {{kib}} {fleet} API to create or update policies without restarting {{kib}}, and also allowing for custom error handling and update logic.
+It is possible to use custom scripts that call the {{kib}} {{fleet}} API to create or update policies without restarting {{kib}}, and also allowing for custom error handling and update logic.
 
-At this time, you can refer to the the [{{kib}} {fleet} HTTP API](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html) documentation, however additional resources from public code repositories should be consulted to capture the full set of configuration options available for a given integration. Specifically, many integrations have configuration options such as `inputs` and `data_streams` that are unique.
+At this time, you can refer to the the [{{kib}} {{fleet}} HTTP API](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md) documentation, however additional resources from public code repositories should be consulted to capture the full set of configuration options available for a given integration. Specifically, many integrations have configuration options such as `inputs` and `data_streams` that are unique.
 
-In particular, the `*.yml.hbs` templates should be consulted to determine which `vars` are available for configuring a particular integration using the {{kib}} {fleet} API.
+In particular, the `*.yml.hbs` templates should be consulted to determine which `vars` are available for configuring a particular integration using the {{kib}} {{fleet}} API.
 
 * For most Integrations, refer to the README and `*.yml.hbs` files in the appropriate directory in the [elastic/integrations repository](https://github.com/elastic/integrations/tree/main/packages).
 * For the APM integration, refer to the README and `*.yml.hbs` files in the [elastic/apm-server repository](https://github.com/elastic/apm-server/tree/main/apmpackage/apm/agent).

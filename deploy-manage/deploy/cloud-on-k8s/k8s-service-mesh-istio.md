@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-service-mesh-istio.html
 ---
@@ -10,7 +13,7 @@ The instructions in this section describe how to connect the operator and manage
 These instructions have been tested with Istio 1.6.1. Older or newer versions of Istio might require additional configuration steps not documented here.
 
 ::::{warning}
-Some Elastic Stack features such as [Kibana alerting and actions](https://www.elastic.co/guide/en/kibana/current/alerting-getting-started.html#alerting-getting-started) rely on the Elasticsearch API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the Elasticsearch resource and enable `PERMISSIVE` mode for the Elasticsearch service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with Elastic Stack features requiring TLS to be enabled for the Elasticsearch HTTP layer.
+Some Elastic Stack features such as [Kibana alerting and actions](/explore-analyze/alerts-cases.md) rely on the Elasticsearch API keys feature which requires TLS to be enabled at the application level. If you want to use these features, you should not disable the self-signed certificate on the Elasticsearch resource and enable `PERMISSIVE` mode for the Elasticsearch service through a `DestinationRule` or `PeerAuthentication` resource. Strict mTLS mode is currently not compatible with Elastic Stack features requiring TLS to be enabled for the Elasticsearch HTTP layer.
 ::::
 
 
@@ -33,8 +36,8 @@ The operator itself must be connected to the service mesh to deploy and manage E
 2. Install ECK:
 
     ```sh
-    kubectl create -f https://download.elastic.co/downloads/eck/2.16.1/crds.yaml
-    kubectl apply -f https://download.elastic.co/downloads/eck/2.16.1/operator.yaml
+    kubectl create -f https://download.elastic.co/downloads/eck/{{eck_version}}/crds.yaml
+    kubectl apply -f https://download.elastic.co/downloads/eck/{{eck_version}}/operator.yaml
     ```
 
 3. Check the configuration and make sure the installation has been successful:
@@ -61,7 +64,7 @@ spec:
 
 As the default `failurePolicy` of the webhook is `Ignore`, the operator continues to function even if the above annotations are not present. The downside is that you are still able to submit an invalid manifest using `kubectl` without receiving any immediate feedback.
 
-ECK has a fallback validation mechanism that reports validation failures as events associated with the relevant resource (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash) that must be manually discovered by running `kubectl describe`. For example, to find the validation errors in an Elasticsearch resource named `quickstart`, you can run `kubectl describe elasticsearch quickstart`.
+ECK has a fallback validation mechanism that reports validation failures as events associated with the relevant resource (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) that must be manually discovered by running `kubectl describe`. For example, to find the validation errors in an Elasticsearch resource named `quickstart`, you can run `kubectl describe elasticsearch quickstart`.
 
 
 ## Connect Elastic Stack applications to the Istio service mesh [k8s-service-mesh-istio-stack-connection]

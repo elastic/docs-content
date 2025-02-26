@@ -8,7 +8,7 @@ mapped_pages:
 ::::{admonition}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
-These configuration options are only relevant to APM Server binary users. Fleet-managed users should see the [Fleet output settings](https://www.elastic.co/guide/en/fleet/current/fleet-settings.html).
+These configuration options are only relevant to APM Server binary users. Fleet-managed users should see the [Fleet output settings](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-settings.md).
 
 ::::
 

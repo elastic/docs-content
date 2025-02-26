@@ -1,12 +1,10 @@
 ---
-navigation_title: "Troubleshooting"
+navigation_title: "Task Manager"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/task-manager-troubleshooting.html
 ---
 
-
-
-# Task manager [task-manager-troubleshooting]
+# Troubleshoot {{kib}} Task Manager [task-manager-troubleshooting]
 
 
 Task Manager is used by a wide range of services in {{kib}}, such as [Alerting](../../deploy-manage/production-guidance/kibana-alerting-production-considerations.md), Actions, Reporting, and Telemetry. Unexpected behavior in these services might be a downstream issue originating in Task Manager.
@@ -26,9 +24,9 @@ Tasks are scheduled to run every 2 seconds, but seem to be running late.
 
 **Solution**:
 
-Task Manager polls for tasks at the cadence specified by the [`xpack.task_manager.poll_interval`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) setting, which is 3 seconds by default. This means that a task could run late if it uses a schedule that is smaller than this setting.
+Task Manager polls for tasks at the cadence specified by the [`xpack.task_manager.poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting, which is 3 seconds by default. This means that a task could run late if it uses a schedule that is smaller than this setting.
 
-You can adjust the [`xpack.task_manager.poll_interval`](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html#task-manager-settings) setting.  However, this will add additional load to both {{kib}} and {{es}} instances in the cluster, as they will perform more queries.
+You can adjust the [`xpack.task_manager.poll_interval`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md#task-manager-settings) setting.  However, this will add additional load to both {{kib}} and {{es}} instances in the cluster, as they will perform more queries.
 
 
 ### Tasks run late [task-manager-health-tasks-run-late]
@@ -81,7 +79,7 @@ By analyzing the different sections of the output, you can evaluate different th
 
 Retrieve the latest monitored health stats of a {{kib}} instance Task Manager:
 
-```kibana
+```bash
 $ curl -X GET api/task_manager/_health
 ```
 
@@ -337,7 +335,7 @@ You can infer from this output that the {{kib}} instance only polls for work onc
 
 There are two possible reasons for such a configuration:
 
-* These settings have been configured manually, which can be resolved by reconfiguring these settings. For details, see [Task Manager Settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html).
+* These settings have been configured manually, which can be resolved by reconfiguring these settings. For details, see [Task Manager Settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md).
 * {{kib}} has reduced its own throughput in reaction to excessive load on the {{es}} cluster.
 
     Task Manager is equipped with a reactive self-healing mechanism in response to an increase in load related errors in {{es}}. This mechanism will increase the `poll_interval` setting (reducing the rate at which it queries {{es}}), and decrease the `max_workers` (reducing the amount of operations it executes against {{es}}). Once the error rate reduces, these settings are incrementally dialed up again, returning them to the configured settings.
@@ -924,7 +922,7 @@ For details on scaling Task Manager, see [Scaling guidance](../../deploy-manage/
 Tasks are not running, and the server logs contain the following error message:
 
 ```txt
-[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in {es}
+[warning][plugins][taskManager] Task Manager cannot operate when inline scripts are disabled in {{es}}
 ```
 
 **Solution**:

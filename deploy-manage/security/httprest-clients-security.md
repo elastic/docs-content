@@ -5,7 +5,7 @@ mapped_pages:
 
 # HTTP/REST clients and security [http-clients]
 
-The {{es}} {security-features} work with standard HTTP [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) headers to authenticate users. Since Elasticsearch is stateless, this header must be sent with every request:
+The {{es}} {{security-features}} work with standard HTTP [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) headers to authenticate users. Since Elasticsearch is stateless, this header must be sent with every request:
 
 ```shell
 Authorization: Basic <TOKEN> <1>
@@ -70,11 +70,11 @@ es-secondary-authorization: ApiKey <TOKEN> <1>
 
 For more information about using {{security-features}} with the language specific clients, refer to:
 
-* [Java](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/_basic_authentication.html)
-* [JavaScript](https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/client-connecting.html)
-* [.NET](https://www.elastic.co/guide/en/elasticsearch/client/net-api/current/configuration.html)
+* [Java](asciidocalypse://docs/elasticsearch-java/docs/reference/_basic_authentication.md)
+* [JavaScript](asciidocalypse://docs/elasticsearch-js/docs/reference/connecting.md)
+* [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/configuration.md)
 * [Perl](https://metacpan.org/pod/Search::Elasticsearch::Cxn::HTTPTiny#CONFIGURATION)
-* [PHP](https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/connecting.html)
+* [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/connecting.md)
 * [Python](https://elasticsearch-py.readthedocs.io/en/master/#ssl-and-authentication)
 * [Ruby](https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-transport#authentication)
 

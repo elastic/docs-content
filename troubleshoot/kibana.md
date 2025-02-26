@@ -1,16 +1,22 @@
 ---
+navigation_title: "Kibana"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting.html
 ---
 
-# Kibana [kibana-troubleshooting]
+# Troubleshoot Kibana [kibana-troubleshooting]
 
-{{kib}} provides the following tools for debugging issues:
+Use the topics in this section to troubleshoot issues with {{kib}}:
 
-* [Using {{kib}} server logs](kibana/using-kibana-server-logs.md)
-* [Trace {{es}} query to the origin in {{kib}}](kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md)
-* [Capture {{kib}} diagnostic](kibana/capturing-diagnostics.md)
-
-
-
-
+* [](/troubleshoot/kibana/using-kibana-server-logs.md)
+* [](/troubleshoot/kibana/access.md)
+* [](/troubleshoot/kibana/error-server-not-ready.md)
+* [](/troubleshoot/kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md)
+* [](/troubleshoot/kibana/monitoring.md)
+* [](/troubleshoot/kibana/alerts.md)
+* [](/troubleshoot/kibana/reporting.md)
+* [](/troubleshoot/kibana/task-manager.md)
+* [](/troubleshoot/kibana/maps.md)
+* [](/troubleshoot/kibana/graph.md)
+* [](/troubleshoot/kibana/migration-failures.md)
+* [](/troubleshoot/kibana/capturing-diagnostics.md)

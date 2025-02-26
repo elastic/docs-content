@@ -1,21 +1,22 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/config-monitoring-indices-metricbeat-7-internal-collection.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Configuring indices created by Metricbeat 7 or internal collection [config-monitoring-indices-metricbeat-7-internal-collection]
 
-When monitoring [using {{metricbeat}} 7](../stack-monitoring/collecting-monitoring-data-with-metricbeat.md) or [internal collection](https://www.elastic.co/guide/en/beats/filebeat/current/monitoring-internal-collection.html), data is stored in a set of indices called either:
+When monitoring [using {{metricbeat}} 7](../stack-monitoring/collecting-monitoring-data-with-metricbeat.md) or [internal collection](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring-internal-collection.md), data is stored in a set of indices called either:
 
 * `.monitoring-{{product}}-7-mb-{{date}}`, when using {{metricbeat}} 7.
 * `.monitoring-{{product}}-7-{{date}}`, when using internal collection.
 
-The settings and mappings for these indices are determined by [legacy index templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-templates-v1.html) named `.monitoring-{{product}}`. You can retrieve these templates in {{kib}} by navigating to **Stack Management** > **Index Management** > **Index Templates**, or by using the {{es}} `_template` API:
+The settings and mappings for these indices are determined by [legacy index templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-template) named `.monitoring-{{product}}`. You can retrieve these templates in {{kib}} by navigating to **Stack Management** > **Index Management** > **Index Templates**, or by using the {{es}} `_template` API:
 
 ```console
 GET /_template/.monitoring-*

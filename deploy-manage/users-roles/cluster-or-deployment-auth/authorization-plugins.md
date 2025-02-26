@@ -5,7 +5,7 @@ mapped_pages:
 
 # Authorization plugins [custom-roles-authorization]
 
-If you need to retrieve user roles from a system not supported out-of-the-box or if the authorization system that is provided by the {{es}} {security-features} does not meet your needs, a SPI loaded security extension can be implemented to customize role retrieval and/or the authorization system. The SPI loaded security extension is part of an ordinary elasticsearch plugin.
+If you need to retrieve user roles from a system not supported out-of-the-box or if the authorization system that is provided by the {{es}} {{security-features}} does not meet your needs, a SPI loaded security extension can be implemented to customize role retrieval and/or the authorization system. The SPI loaded security extension is part of an ordinary elasticsearch plugin.
 
 ## Implementing a custom roles provider [implementing-custom-roles-provider]
 
@@ -60,7 +60,7 @@ In order to register the security extension for your custom roles provider or au
 
 1. Implement a plugin class that extends `org.elasticsearch.plugins.Plugin`
 2. Create a build configuration file for the plugin; Gradle is our recommendation.
-3. Create a `plugin-descriptor.properties` file as described in [Help for plugin authors](https://www.elastic.co/guide/en/elasticsearch/plugins/current/plugin-authors.html).
+3. Create a `plugin-descriptor.properties` file as described in [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/index.md).
 4. Create a `META-INF/services/org.elasticsearch.xpack.core.security.SecurityExtension` descriptor file for the extension that contains the fully qualified class name of your `org.elasticsearch.xpack.core.security.SecurityExtension` implementation
 5. Bundle all in a single zip file.
 

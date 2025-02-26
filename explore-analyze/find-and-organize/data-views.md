@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_urls:
   - https://www.elastic.co/guide/en/kibana/current/data-views.html
   - https://www.elastic.co/guide/en/serverless/current/data-views.html
@@ -31,7 +31,7 @@ $$$management-cross-cluster-search$$$
 $$$data-views-read-only-access$$$
 
 
-By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/index-types/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
+By default, analytics features such as Discover require a {{data-source}} to access the {{es}} data that you want to explore. A {{data-source}} can point to one or more indices, [data streams](../../manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html). For example, a {{data-source}} can point to your log data from yesterday, or all indices that contain your data.
 
 ::::{note}
 In certain apps, you can also query your {{es}} data using [{{esql}}](../query-filter/languages/esql.md). With {{esql}}, data views aren't required.
@@ -89,7 +89,7 @@ Want to explore your data or create a visualization without saving it as a data 
 
 A temporary {{data-source}} remains in your space until you change apps, or until you save it.
 
-:::{image} https://images.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blte3a4f3994c44c0cc/637eb0c95834861044c21a25/ad-hoc-data-view.gif
+:::{image} ../../images/ad-hoc-data-view.gif
 :alt: how to create an ad-hoc data view
 :class: screenshot
 :::
@@ -101,7 +101,7 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 
 
 ### Use {{data-sources}} with rolled up data [rollup-data-view]
-::::{applies}
+::::{applies_to}
 :serverless: unavailable
 :stack: deprecated
 ::::
@@ -109,7 +109,7 @@ Temporary {{data-sources}} are not available in the **Management** menu.
 ::::{admonition}
 :class: warning
 
-Rollups are deprecated. Use [downsampling](../../manage-data/data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups are deprecated. Use [downsampling](../../manage-data/data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 
@@ -119,11 +119,11 @@ A {{data-source}} can match one rollup index.  For a combination rollup {{data-s
 rollup_logstash,kibana_sample_data_logs
 ```
 
-For an example, refer to [Create and visualize rolled up data](../../manage-data/lifecycle/rollup.md#rollup-data-tutorial).
+For an example, refer to [Create and visualize rolled up data](/manage-data/lifecycle/rollup/getting-started-kibana.md#rollup-data-tutorial).
 
 
 ### Use {{data-sources}} with {{ccs}} [management-cross-cluster-search]
-::::{applies}
+::::{applies_to}
 :serverless: unavailable
 :stack: ga
 ::::
@@ -476,7 +476,7 @@ Built-in validation is unsupported for scripted fields. When your scripts contai
 5. Select **Set format**, then enter the **Format** for the field.
 
 ::::{note}
-For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
+For numeric fields the default field formatters are based on the `meta.unit` field. The unit is associated with a [time unit](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#time-units), percent, or  byte. The convention for percents is to use value 1 to mean 100%.
 ::::
 
 
@@ -613,7 +613,7 @@ Numeric fields support **Bytes**, **Color**, **Duration**, **Histogram**, **Numb
 
 The **Bytes**, **Number**, and **Percentage** formatters enable you to choose the display formats of numbers in the field using the [Elastic numeral pattern](../../explore-analyze/numeral-formatting.md) syntax that {{kib}} maintains.
 
-The **Histogram** formatter is used only for the [histogram field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/histogram.html). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
+The **Histogram** formatter is used only for the [histogram field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/histogram.md). When you use the **Histogram** formatter, you can apply the **Bytes**, **Number**, or **Percentage** format to aggregated data.
 
 You can specify the following types to the `Url` field formatter:
 

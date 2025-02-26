@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-faq-billing.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   serverless: all
 ---
 
@@ -68,7 +69,7 @@ $$$faq-payment$$$What are the available payment methods on {{ecloud}}?
 :   For month-to-month payments only credit cards are accepted. We also allow payments by bank transfer for annual subscriptions.
 
 $$$faq-contact$$$Who can I contact for more information?
-:   If you have any further questions about your credit card statement, billing, or receipts, please send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/troubleshoot/index.md) using the *Billing issue* category.
+:   If you have any further questions about your credit card statement, billing, or receipts, please send an email to `ar@elastic.co` or open a [Support case](../../../troubleshoot/index.md) using the *Billing issue* category.
 
 $$$faq-charge$$$Why is my credit card charged?
 :   If you are on a monthly plan, the charge is a recurring fee for using {{ecloud}}. The fee is normally charged at the start of each month, but it can also be charged at other times during the month. If a charge is unsuccessful, we will try to charge your card again at a later date.
@@ -86,17 +87,16 @@ $$$faq-chargednotusing$$$Why am I being charged if I don’t use any of my deplo
 :   Even if you have no activity on your account and you haven’t logged into the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), your active deployments still incur costs that we need to charge you for. To avoid being charged for active but unused deployments, you can simply delete them. Your account will stay active with no charges, and you can always spin up more capacity when you need it.
 
 $$$faq-deleteaccount$$$How can I delete my {{ecloud}} account?
-:   To have your account removed, you can contact support through the {{ecloud}} [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) or use one of these [alternative contact methods](../../../troubleshoot/troubleshoot/index.md). For details about our data erasure policy, check [Privacy Rights and Choices](https://www.elastic.co/legal/privacy-statement#privacy-rights-and-choices?page=docs&placement=docs-body) in our General Privacy Statement.
+:   To have your account removed, you can contact support through the {{ecloud}} [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) or use one of these [alternative contact methods](../../../troubleshoot/index.md). For details about our data erasure policy, check [Privacy Rights and Choices](https://www.elastic.co/legal/privacy-statement#privacy-rights-and-choices?page=docs&placement=docs-body) in our General Privacy Statement.
 
 $$$faq-refund$$$Can I get a refund?
-:   Charges are non-refundable, but once you delete a deployment we’ll stop charging you for that deployment immediately. You only pay for what you use and you can stop using the service at any time. For any special considerations warranting a potential refund, please use the {{ecloud}} Console [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) to open a support case and select *Billing issue* as the category. To ensure quick processing, be sure to provide detail about the reasons for the refund request as well as other matters pertaining to the issue. For other ways to open a Support case, check [Contact us](../../../troubleshoot/troubleshoot/index.md).
+:   Charges are non-refundable, but once you delete a deployment we’ll stop charging you for that deployment immediately. You only pay for what you use and you can stop using the service at any time. For any special considerations warranting a potential refund, please use the {{ecloud}} Console [Support form](https://cloud.elastic.co/support?page=docs&placement=docs-body) to open a support case and select *Billing issue* as the category. To ensure quick processing, be sure to provide detail about the reasons for the refund request as well as other matters pertaining to the issue. For other ways to open a Support case, check [Contact us](../../../troubleshoot/index.md).
 
 $$$faq-included$$$What is included in my paid {{ech}} deployment?
 :   All subscription tiers for {{ech}} include the following free allowance:
 
     * Free 1GB RAM Kibana instance
     * Free 1GB RAM Machine Learning node
-    * Free 2GB RAM Enterprise Search instance
     * Free 1GB RAM APM server
     * A free allowance for [data transfer and snapshot storage costs](#faq-dts)
 
@@ -109,7 +109,7 @@ $$$faq-dts$$$What are the data transfer and storage charges and how can I contro
 $$$faq-taxes$$$What taxes will be applied on my invoice?
 :   Customers within the United States, and US territories, will be billed from Elasticsearch Inc., based out of the United States. The US Sales Tax rate will be based on the SaaS tax rates in the local jurisdiction (state/county/city) of the billing address of your subscription.
 
-    Customers outside the United States, will be billed from Elasticsearch BV, based out of the Netherlands. Customers with a billing address in countries with applicable EU VAT will have VAT applied based on their country and status as a business or private customer. Elastic collects VAT Numbers associated with EU VAT to determine your status as a business (B2B) or private / non-business customer (B2C), as this is a key factor to determine Elastic’s liability to charge VAT on your subscription. To update your VAT Number follow the instructions provided in [Add your billing details](https://www.elastic.co/guide/en/cloud/current/ec-billing-details.html). Customers located in countries without EU VAT will not be applied VAT on their invoices.
+    Customers outside the United States, will be billed from Elasticsearch BV, based out of the Netherlands. Customers with a billing address in countries with applicable EU VAT will have VAT applied based on their country and status as a business or private customer. Elastic collects VAT Numbers associated with EU VAT to determine your status as a business (B2B) or private / non-business customer (B2C), as this is a key factor to determine Elastic’s liability to charge VAT on your subscription. To update your VAT Number follow the instructions provided in [Add your billing details](/deploy-manage/cloud-organization/billing/add-billing-details.md). Customers located in countries without EU VAT will not be applied VAT on their invoices.
 
 
 

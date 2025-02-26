@@ -1,14 +1,14 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-dfa-concepts.html
 ---
 
 # Advanced concepts [ml-dfa-concepts]
 
-This section explains the more complex concepts of the Elastic {{ml}} {dfanalytics} feature.
+This section explains the more complex concepts of the Elastic {{ml}} {{dfanalytics}} feature.
 
 * [How {{dfanalytics-jobs}} work](ml-dfa-phases.md)
 * [Working with {{dfanalytics}} at scale](ml-dfa-scale.md)

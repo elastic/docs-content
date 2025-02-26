@@ -11,7 +11,7 @@ Universal Profiling provides the following ways to manage how your data is store
 * [Probabilistic profiling](configure-probabilistic-profiling.md) mode uses representative samples of profiling data to reduce storage needs even further.
 
 ::::{important} 
-Additional storage efficiencies provided by [Synthetic `_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) are available to users with an [appropriate license](https://www.elastic.co/subscriptions).
+Additional storage efficiencies provided by [Synthetic `_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) are available to users with an [appropriate license](https://www.elastic.co/subscriptions).
 
 ::::
 

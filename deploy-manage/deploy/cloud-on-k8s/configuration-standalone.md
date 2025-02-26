@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-elastic-agent-configuration.html
 ---
@@ -105,7 +108,7 @@ stringData:
             period: 10s
 ```
 
-You can use the Fleet application in Kibana to generate the configuration for Elastic Agent, even when running in standalone mode. Check the [Elastic Agent standalone](https://www.elastic.co/guide/en/fleet/current/install-standalone-elastic-agent.html) documentation. Adding the corresponding integration package to Kibana also adds the related dashboards and visualizations.
+You can use the Fleet application in Kibana to generate the configuration for Elastic Agent, even when running in standalone mode. Check the [Elastic Agent standalone](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-standalone-elastic-agent.md) documentation. Adding the corresponding integration package to Kibana also adds the related dashboards and visualizations.
 
 
 ## Use multiple Elastic Agent outputs [k8s-elastic-agent-multi-output]

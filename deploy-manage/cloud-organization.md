@@ -1,9 +1,10 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations.html
-applies:
+applies_to:
+  deployment:
+    ess: all
   serverless: all
-  hosted: all
 ---
 
 # Manage your Cloud organization [ec-organizations]

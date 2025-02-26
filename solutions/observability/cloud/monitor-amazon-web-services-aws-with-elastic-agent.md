@@ -31,7 +31,7 @@ First you’ll focus on monitoring logs, then you’ll add metrics after you’v
 
 ## Before you begin [aws-elastic-agent-before-you-begin]
 
-Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 
 In this tutorial, we assume that:
 

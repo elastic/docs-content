@@ -1,4 +1,5 @@
 ---
+navigation_title: "Zookeeper quorum"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-troubleshooting-zookeeper-quorum.html
 ---

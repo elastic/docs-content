@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-maps-advanced-configuration.html
 ---
@@ -18,7 +21,7 @@ If you already looked at the [Elasticsearch on ECK](elasticsearch-configuration.
 
 ## Elastic Maps Server configuration [k8s-maps-configuration]
 
-You can add any valid Elastic Maps Server setting as documented on the [product](https://www.elastic.co/guide/en/kibana/current/maps-connect-to-ems.html#elastic-maps-server-configuration) page to the `spec.config` section.
+You can add any valid Elastic Maps Server setting as documented on the [product](/explore-analyze/visualize/maps/maps-connect-to-ems.md#elastic-maps-server-configuration) page to the `spec.config` section.
 
 The following example demonstrates how to set the log level to `debug`:
 
@@ -55,7 +58,7 @@ stringData:
     logging.level: debug
 ```
 
-Refer to [Set compute resources for Kibana, Enterprise Search, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for adjusting compute resources for Elastic Maps Server.
+Refer to [Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash](manage-compute-resources.md#k8s-compute-resources-kibana-and-apm) for adjusting compute resources for Elastic Maps Server.
 
 
 ## Scale out an Elastic Maps Server deployment [k8s-maps-scaling]

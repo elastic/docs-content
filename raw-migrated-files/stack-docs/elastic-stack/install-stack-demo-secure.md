@@ -40,7 +40,7 @@ In a production environment you would typically use the CA certificate from your
     sudo systemctl stop elasticsearch.service
     ```
 
-2. Generate a CA certificate using the provided certificate utility, `elasticsearch-certutil`. Note that the location of the utility depends on the installation method you used to install {{es}}. Refer to [elasticsearch-certutil](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html) for the command details and to [Update security certificates with a different CA](../../../deploy-manage/security/different-ca.md) for details about the procedure as a whole.
+2. Generate a CA certificate using the provided certificate utility, `elasticsearch-certutil`. Note that the location of the utility depends on the installation method you used to install {{es}}. Refer to [elasticsearch-certutil](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md) for the command details and to [Update security certificates with a different CA](../../../deploy-manage/security/different-ca.md) for details about the procedure as a whole.
 
     Run the following command. When prompted, specify a unique name for the output file, such as `elastic-stack-ca.zip`:
 
@@ -626,7 +626,7 @@ Congratulations! You’ve successfully updated the SSL certificates between {{es
 
 Now that {{kib}} is up and running, you can proceed to install {{fleet-server}}, which will manage the {{agent}} that we’ll set up in a later step.
 
-If you’d like to learn more about these steps, refer to [Deploy on-premises and self-managed](https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html) in the {{fleet}} and {{agent}} Guide. You can find detailed steps to generate and configure certificates in [Configure SSL/TLS for self-managed Fleet Servers](https://www.elastic.co/guide/en/fleet/current/secure-connections.html).
+If you’d like to learn more about these steps, refer to [Deploy on-premises and self-managed](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md) in the {{fleet}} and {{agent}} Guide. You can find detailed steps to generate and configure certificates in [Configure SSL/TLS for self-managed Fleet Servers](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure-connections.md).
 
 1. Log in to the first {{es}} node and use the certificate utility to generate a certificate bundle for {{fleet-server}}. In the command, replace `<DNS name>` and `IP address` with the name and IP address of your {{fleet-server}} host:
 
@@ -686,7 +686,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
 
         The URL is the inet value that you copied from the `ifconfig` output.
 
-        For details about default port assignments, refer to [Default port assignments](https://www.elastic.co/guide/en/fleet/current/add-fleet-server-on-prem.html#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation.
+        For details about default port assignments, refer to [Default port assignments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/add-fleet-server-on-prem.md#default-port-assignments-on-prem) in the on-premises {{fleet-server}} install documentation.
 
     3. Click **Add host**.
 
@@ -733,7 +733,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
           --fleet-server-port=8220
         ```
 
-        For details about all of the install command options, refer to [`elastic-agent install`](https://www.elastic.co/guide/en/fleet/current/elastic-agent-cmd-options.html#elastic-agent-install-command) in the {{agent}} command reference.
+        For details about all of the install command options, refer to [`elastic-agent install`](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-command-reference.md#elastic-agent-install-command) in the {{agent}} command reference.
 
 19. After you’ve made the required updates, run the `elastic-agent install` command to install {{fleet-server}}.
 
@@ -744,7 +744,7 @@ If you’d like to learn more about these steps, refer to [Deploy on-premises an
     ```
 
     ::::{tip}
-    Wondering why the command refers to {{agent}} rather than {{fleet-server}}? {{fleet-server}} is actually a subprocess that runs inside {{agent}} with a special {{fleet-server}} policy. Refer to [What is {{fleet-server}}](https://www.elastic.co/guide/en/fleet/current/fleet-server.html) to learn more.
+    Wondering why the command refers to {{agent}} rather than {{fleet-server}}? {{fleet-server}} is actually a subprocess that runs inside {{agent}} with a special {{fleet-server}} policy. Refer to [What is {{fleet-server}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md) to learn more.
     ::::
 
 20. Return to the {{kib}} **Add a Fleet Server** flyout and wait for confirmation that {{fleet-server}} has connected.
@@ -783,7 +783,7 @@ Before proceeding to install {{agent}}, there are a few steps needed to update t
 
 ## Step 7: Install {{agent}} [install-stack-demo-secure-agent]
 
-Next, we’ll install {{agent}} on another host and use the System integration to monitor system logs and metrics. You can find additional details about these steps in [Configure SSL/TLS for self-managed Fleet Servers](https://www.elastic.co/guide/en/fleet/current/secure-connections.html).
+Next, we’ll install {{agent}} on another host and use the System integration to monitor system logs and metrics. You can find additional details about these steps in [Configure SSL/TLS for self-managed Fleet Servers](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure-connections.md).
 
 1. Log in to the host where you’d like to set up {{agent}}.
 2. Create a directory for the {{es}} certificate file:

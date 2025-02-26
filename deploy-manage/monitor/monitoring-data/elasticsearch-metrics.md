@@ -2,11 +2,12 @@
 navigation_title: "{{es}} Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/elasticsearch-metrics.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 
@@ -105,9 +106,9 @@ To view {{ccr}} metrics, click **CCR**. For each follower index on the cluster, 
 
 * **Error**: Any exceptions returned for the most recent document in the selected time period.
 
-If you select a follower index, you can view the same information for each shard. For more information on the properties used to calculate these metrics, refer to the [get follower stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-stats.html) documentation.
+If you select a follower index, you can view the same information for each shard. For more information on the properties used to calculate these metrics, refer to the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats) documentation.
 
-If you select a shard, you can see graphs for the fetch and operation delays. You can also see advanced information, which contains additional stats from the [get follower stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/ccr-get-follow-stats.html).
+If you select a shard, you can see graphs for the fetch and operation delays. You can also see advanced information, which contains additional stats from the [get follower stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ccr-follow-stats).
 
 Learn more about [{{ccr-cap}}](../../tools/cross-cluster-replication.md).
 
@@ -119,5 +120,5 @@ If you use {{filebeat}} to collect log data from your cluster, you can see its r
 If you click **Logs**, you can see the most recent logs for the cluster.
 
 ::::{tip}
-By default, up to 10 log entries are shown. You can show up to 50 log entries by changing the [`monitoring.ui.elasticsearch.logFetchCount` setting](https://www.elastic.co/guide/en/kibana/current/monitoring-settings-kb.html#monitoring-ui-settings). If you changed the default name of filebeat indices, you also need to update `monitoring.ui.logs.index` accordingly.
+By default, up to 10 log entries are shown. You can show up to 50 log entries by changing the [`monitoring.ui.elasticsearch.logFetchCount` setting](asciidocalypse://docs/kibana/docs/reference/configuration-reference/monitoring-settings.md#monitoring-ui-settings). If you changed the default name of filebeat indices, you also need to update `monitoring.ui.logs.index` accordingly.
 ::::

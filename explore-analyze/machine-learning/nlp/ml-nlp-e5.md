@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "E5"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-e5.html
@@ -91,7 +91,7 @@ Alternatively, you can download and deploy the E5 model to an {{infer}} pipeline
 1. In {{kib}}, navigate to **Search** > **Indices**.
 2. Select the index from the list that has an {{infer}} pipeline in which you want to use E5.
 3. Navigate to the **Pipelines** tab.
-4. Under **{{ml-app}} {infer-cap} Pipelines**, click the **Deploy** button in the **Improve your results with E5** section to begin downloading the E5 model. This may take a few minutes depending on your network.
+4. Under **{{ml-app}} {{infer-cap}} Pipelines**, click the **Deploy** button in the **Improve your results with E5** section to begin downloading the E5 model. This may take a few minutes depending on your network.
 
     :::{image} ../../../images/machine-learning-ml-nlp-deploy-e5-es.png
     :alt: Deploying E5 in Elasticsearch
@@ -146,7 +146,7 @@ If you want to install E5 in an air-gapped environment, you have the following o
 
 For the `multilingual-e5-small` model, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/multilingual-e5-small.metadata.json
 https://ml-models.elastic.co/multilingual-e5-small.pt
 https://ml-models.elastic.co/multilingual-e5-small.vocab.json
@@ -154,7 +154,7 @@ https://ml-models.elastic.co/multilingual-e5-small.vocab.json
 
 For the optimized version, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.metadata.json
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.pt
 https://ml-models.elastic.co/multilingual-e5-small_linux-x86_64.vocab.json

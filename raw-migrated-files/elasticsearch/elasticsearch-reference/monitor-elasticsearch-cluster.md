@@ -1,6 +1,6 @@
 # Monitor a cluster [monitor-elasticsearch-cluster]
 
-The {{stack}} {monitor-features} provide a way to keep a pulse on the health and performance of your {{es}} cluster.
+The {{stack}} {{monitor-features}} provide a way to keep a pulse on the health and performance of your {{es}} cluster.
 
 * [Overview](../../../deploy-manage/monitor/stack-monitoring.md)
 * [How it works](../../../deploy-manage/monitor/stack-monitoring.md)

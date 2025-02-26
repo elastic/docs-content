@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_how_it_works.html
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 ---
 
 # How it works [k8s_how_it_works]

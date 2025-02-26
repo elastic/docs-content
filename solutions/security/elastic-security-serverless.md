@@ -1,12 +1,10 @@
 ---
-navigation_title: "Elastic Security"
+navigation_title: "Elastic Security Serverless"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/what-is-security-serverless.html
 ---
 
-
-
-# Elastic Security Serverless [what-is-security-serverless]
+# {{sec-serverless}} [what-is-security-serverless]
 
 
 {{elastic-sec}} combines threat detection analytics, cloud native security, and endpoint protection in a single solution, so you can quickly detect, investigate, and respond to threats and vulnerabilities across your environment.

@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: "Feature processors"
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-feature-processors.html

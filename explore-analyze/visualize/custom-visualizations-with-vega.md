@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/vega.html
 ---
@@ -15,7 +15,7 @@ mapped_pages:
 Use **Vega** or **Vega-Lite** when you want to create visualizations with:
 
 * Aggregations that use `nested` or `parent/child` mapping
-* Aggregations without a {data-source}
+* Aggregations without a {{data-source}}
 * Queries that use custom time filters
 * Complex calculations
 * Extracted data from _source instead of aggregations
@@ -116,7 +116,7 @@ POST kibana_sample_data_ecommerce/_search
 }
 ```
 
-Add the [terms aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html), then click **Click to send request**:
+Add the [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md), then click **Click to send request**:
 
 ```js
 POST kibana_sample_data_ecommerce/_search
@@ -1119,7 +1119,7 @@ Learn more about {{kib}} extension, additional **Vega** resources, and examples.
 {{kib}} has extended Vega and Vega-Lite with extensions that support:
 
 * Automatic sizing
-* Default theme to match {kib}
+* Default theme to match {{kib}}
 * Writing {{es}} queries using the time range and filters from dashboards
 * [preview] Using the Elastic Map Service in Vega maps
 * Additional tooltip styling

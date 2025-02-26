@@ -165,10 +165,6 @@ toc:
                 children:
                   - file: observability/apps/apm-ui-api.md
                     children:
-                      - file: observability/apps/agent-configuration-api.md
-                      - file: observability/apps/annotation-api.md
-                      - file: observability/apps/rum-source-map-api.md
-                      - file: observability/apps/apm-agent-key-api.md
                       - file: observability/apps/managed-intake-service-event-api.md
                   - file: observability/apps/apm-server-api.md
                     children:
@@ -177,7 +173,6 @@ toc:
                       - file: observability/apps/elastic-apm-agent-configuration-api.md
                       - file: observability/apps/opentelemetry-intake-api.md
                       - file: observability/apps/jaeger-event-intake.md
-                  - file: observability/apps/common-problems.md
                   - file: observability/apps/what-happens-when-apm-server-elasticsearch-is-down.md
                   - file: observability/apps/apm-server-response-codes.md
                   - file: observability/apps/processing-performance.md
@@ -328,6 +323,7 @@ toc:
               - file: observability/logs/logs-stream.md
           - file: observability/logs/run-pattern-analysis-on-log-data.md
           - file: observability/logs/add-service-name-to-logs.md
+          - file: observability/logs/logs-index-template-reference.md
       - file: observability/incident-management.md
         children:
           - file: observability/incident-management/alerting.md
@@ -356,28 +352,18 @@ toc:
                 children:
                   - file: observability/incident-management/triage-slo-burn-rate-breaches.md
                   - file: observability/incident-management/triage-threshold-breaches.md
-              - file: observability/incident-management/cases.md
-                children:
-                  - file: observability/incident-management/configure-access-to-cases.md
-                  - file: observability/incident-management/create-manage-cases.md
-                  - file: observability/incident-management/configure-case-settings.md
-              - file: observability/incident-management/service-level-objectives-slos.md
-                children:
-                  - file: observability/incident-management/configure-service-level-objective-slo-access.md
-                  - file: observability/incident-management/create-an-slo.md
+          - file: observability/incident-management/cases.md
+            children:
+              - file: observability/incident-management/configure-access-to-cases.md
+              - file: observability/incident-management/create-manage-cases.md
+              - file: observability/incident-management/configure-case-settings.md
+          - file: observability/incident-management/service-level-objectives-slos.md
+            children:
+              - file: observability/incident-management/configure-service-level-objective-slo-access.md
+              - file: observability/incident-management/create-an-slo.md
       - file: observability/data-set-quality-monitoring.md
       - file: observability/observability-ai-assistant.md
       - file: observability/tools-and-apis.md
-      - file: observability/unknown-bucket.md
-        children:
-          - file: observability/unknown-bucket/view-monitor-status.md
-          - file: observability/unknown-bucket/monitor-aws-with-amazon-data-firehose.md
-          - file: observability/unknown-bucket/serverless-observability-limitations.md
-          - file: observability/unknown-bucket/host-metrics.md
-          - file: observability/unknown-bucket/container-metrics.md
-          - file: observability/unknown-bucket/kubernetes-pod-metrics.md
-          - file: observability/unknown-bucket/aws-metrics.md
-          - file: observability/unknown-bucket/logs-index-template-reference.md
   - file: security.md
     children:
       - file: security/elastic-security-serverless.md
@@ -580,7 +566,7 @@ toc:
               - file: security/advanced-entity-analytics/optimizing-anomaly-results.md
               - file: security/advanced-entity-analytics/behavioral-detection-use-cases.md
       - file: security/asset-management.md
-      - file: security/apis-and-tools.md
+      - file: security/apis.md
   - file: search.md
     children:
       - file: search/get-started.md
@@ -649,7 +635,7 @@ toc:
               - file: search/rag/playground-query.md
               - file: search/rag/playground-troubleshooting.md
       - file: search/hybrid-search.md
-        children: 
+        children:
           - file: search/hybrid-semantic-text.md
       - file: search/ranking.md
         children:
@@ -670,13 +656,6 @@ toc:
         children:
           - file: search/site-or-app/clients.md
           - file: search/site-or-app/search-ui.md
-          - file: search/site-or-app/behavioral-analytics.md
-            children:
-              - file: search/site-or-app/behavioral-analytics-start.md
-              - file: search/site-or-app/behavioral-analytics-cors.md
-              - file: search/site-or-app/behavioral-analytics-event.md
-              - file: search/site-or-app/behavioral-analytics-event-reference.md
-              - file: search/site-or-app/behavioral-analytics-api.md
           - file: search/search-applications.md
             children:
               - file: search/search-applications/search-application-api.md
@@ -687,4 +666,3 @@ toc:
       - file: search/cross-cluster-search.md
         children:
           - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
-  - file: other-use-cases.md

@@ -18,7 +18,7 @@ For self-hosted installations, refer to [Upgrade Universal Profiling in self-hos
 
 To upgrade from all versions earlier than 8.10 (GA), you need to:
 
-1. Perform a stack upgrade in {ecloud}
+1. Perform a stack upgrade in {{ecloud}}
 2. Stop profiling data ingestion
 3. Delete existing profiling data
 4. Setup Universal Profiling from scratch
@@ -26,10 +26,10 @@ To upgrade from all versions earlier than 8.10 (GA), you need to:
 
 To upgrade from version 8.10 or later, you need to:
 
-1. Perform a stack upgrade in {ecloud}
+1. Perform a stack upgrade in {{ecloud}}
 
 
-### Perform a stack upgrade in the {{ecloud}} console [profiling-upgrade-in-cloud]
+### Perform a stack upgrade in the {{ecloud}} Console [profiling-upgrade-in-cloud]
 
 To perform a stack upgrade in {{ecloud}}:
 

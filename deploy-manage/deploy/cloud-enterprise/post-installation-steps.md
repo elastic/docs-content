@@ -8,7 +8,7 @@ mapped_pages:
 After your Elastic Cloud Enterprise installation is up, some additional steps might be required:
 
 * Add your own load balancer. Load balancers are user supplied and we do not currently provide configuration steps for you.
-* [Add more capacity](../../maintenance/ece/scale-out-installation.md) to your Elastic Cloud Enterprise installation, [resize your deployment](resize-deployment.md), [upgrade to a newer Elasticsearch version](../../upgrade/deployment-or-cluster.md), and [add some plugins](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-plugins.html).
+* [Add more capacity](../../maintenance/ece/scale-out-installation.md) to your Elastic Cloud Enterprise installation, [resize your deployment](resize-deployment.md), [upgrade to a newer Elasticsearch version](../../upgrade/deployment-or-cluster.md), and [add some plugins](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/cloud-enterprise/ece-add-plugins.md).
 * [Configure ECE system deployments](system-deployments-configuration.md) to ensure a highly available and resilient setup.
 * [Configure ECE for deployment templates](configure-deployment-templates.md) to indicate what kind of hardware you have available for Elastic Stack deployments.
 * [Install your security certificates](../../security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md) to enable TLS/SSL authentication for secure connections over HTTPS.

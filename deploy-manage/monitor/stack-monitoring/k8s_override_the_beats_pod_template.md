@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_override_the_beats_pod_template.html
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 ---
 
 # Override the Beats Pod Template [k8s_override_the_beats_pod_template]

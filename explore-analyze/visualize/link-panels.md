@@ -1,14 +1,14 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/dashboard-links.html
 ---
 
 # Link panels [dashboard-links]
 
-You can use **Links** panels to create links to other dashboards or external websites. When creating links to other dashboards, you have the option to carry the time range, query, and filters to apply over to the linked dashboard. Links to external websites follow the [`externalUrl.policy`](https://www.elastic.co/guide/en/kibana/current/url-drilldown-settings-kb.html#external-URL-policy) settings. **Links** panels support vertical and horizontal layouts and may be saved to the **Library** for use in other dashboards.
+You can use **Links** panels to create links to other dashboards or external websites. When creating links to other dashboards, you have the option to carry the time range, query, and filters to apply over to the linked dashboard. Links to external websites follow the [`externalUrl.policy`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/url-drilldown-settings.md#external-URL-policy) settings. **Links** panels support vertical and horizontal layouts and may be saved to the **Library** for use in other dashboards.
 
 :::{image} ../../images/kibana-dashboard_links_panel.png
 :alt: A screenshot displaying the new links panel

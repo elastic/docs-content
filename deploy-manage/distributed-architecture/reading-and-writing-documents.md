@@ -17,7 +17,7 @@ This purpose of this section is to give a high level overview of the Elasticsear
 
 ## Basic write model [basic-write-model]
 
-Every indexing operation in Elasticsearch is first resolved to a replication group using [routing](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-routing), typically based on the document ID. Once the replication group has been determined, the operation is forwarded internally to the current *primary shard* of the group. This stage of indexing is referred to as the *coordinating stage*.
+Every indexing operation in Elasticsearch is first resolved to a replication group using [routing](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create), typically based on the document ID. Once the replication group has been determined, the operation is forwarded internally to the current *primary shard* of the group. This stage of indexing is referred to as the *coordinating stage*.
 
 :::{image} ../../images/elasticsearch-reference-data_processing_flow.png
 :alt: An example of a basic write model.
@@ -41,7 +41,7 @@ These indexing stages (coordinating, primary, and replica) are sequential. To en
 
 Many things can go wrong during indexing — disks can get corrupted, nodes can be disconnected from each other, or some configuration mistake could cause an operation to fail on a replica despite it being successful on the primary. These are infrequent but the primary has to respond to them.
 
-In the case that the primary itself fails, the node hosting the primary will send a message to the master about it. The indexing operation will wait (up to 1 minute, by [default](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#dynamic-index-settings)) for the master to promote one of the replicas to be a new primary. The operation will then be forwarded to the new primary for processing. Note that the master also monitors the health of the nodes and may decide to proactively demote a primary. This typically happens when the node holding the primary is isolated from the cluster by a networking issue. See [here](#demoted-primary) for more details.
+In the case that the primary itself fails, the node hosting the primary will send a message to the master about it. The indexing operation will wait (up to 1 minute, by [default](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md)) for the master to promote one of the replicas to be a new primary. The operation will then be forwarded to the new primary for processing. Note that the master also monitors the health of the nodes and may decide to proactively demote a primary. This typically happens when the node holding the primary is isolated from the cluster by a networking issue. See [here](#demoted-primary) for more details.
 
 Once the operation has been successfully performed on the primary, the primary has to deal with potential failures when executing it on the replica shards. This may be caused by an actual failure on the replica or due to a network issue preventing the operation from reaching the replica (or preventing the replica from responding). All of these share the same end result: a replica which is part of the in-sync replica set misses an operation that is about to be acknowledged. In order to avoid violating the invariant, the primary sends a message to the master requesting that the problematic shard be removed from the in-sync replica set. Only once removal of the shard has been acknowledged by the master does the primary acknowledge the operation. Note that the master will also instruct another node to start building a new shard copy in order to restore the system to a healthy state.
 
@@ -49,7 +49,7 @@ $$$demoted-primary$$$
 While forwarding an operation to the replicas, the primary will use the replicas to validate that it is still the active primary. If the primary has been isolated due to a network partition (or a long GC) it may continue to process incoming indexing operations before realising that it has been demoted. Operations that come from a stale primary will be rejected by the replicas. When the primary receives a response from the replica rejecting its request because it is no longer the primary then it will reach out to the master and will learn that it has been replaced. The operation is then routed to the new primary.
 
 ::::{admonition} What happens if there are no replicas?
-This is a valid scenario that can happen due to index configuration or simply because all the replicas have failed. In that case the primary is processing operations without any external validation, which may seem problematic. On the other hand, the primary cannot fail other shards on its own but request the master to do so on its behalf. This means that the master knows that the primary is the only single good copy. We are therefore guaranteed that the master will not promote any other (out-of-date) shard copy to be a new primary and that any operation indexed into the primary will not be lost. Of course, since at that point we are running with only single copy of the data, physical hardware issues can cause data loss. See [Active shards](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-wait-for-active-shards) for some mitigation options.
+This is a valid scenario that can happen due to index configuration or simply because all the replicas have failed. In that case the primary is processing operations without any external validation, which may seem problematic. On the other hand, the primary cannot fail other shards on its own but request the master to do so on its behalf. This means that the master knows that the primary is the only single good copy. We are therefore guaranteed that the master will not promote any other (out-of-date) shard copy to be a new primary and that any operation indexed into the primary will not be lost. Of course, since at that point we are running with only single copy of the data, physical hardware issues can cause data loss. See [Active shards](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for some mitigation options.
 
 ::::
 
@@ -62,7 +62,7 @@ Reads in Elasticsearch can be very lightweight lookups by ID or a heavy search r
 When a read request is received by a node, that node is responsible for forwarding it to the nodes that hold the relevant shards, collating the responses, and responding to the client. We call that node the *coordinating node* for that request. The basic flow is as follows:
 
 1. Resolve the read requests to the relevant shards. Note that since most searches will be sent to one or more indices, they typically need to read from multiple shards, each representing a different subset of the data.
-2. Select an active copy of each relevant shard, from the shard replication group. This can be either the primary or a replica. By default, {{es}} uses [adaptive replica selection](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-shard-routing.html#search-adaptive-replica) to select the shard copies.
+2. Select an active copy of each relevant shard, from the shard replication group. This can be either the primary or a replica. By default, {{es}} uses [adaptive replica selection](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/search-shard-routing.md#search-adaptive-replica) to select the shard copies.
 3. Send shard level read requests to the selected copies.
 4. Combine the results and respond. Note that in the case of get by ID look up, only one shard is relevant and this step can be skipped.
 
@@ -73,9 +73,9 @@ When a shard fails to respond to a read request, the coordinating node sends the
 
 To ensure fast responses, the following APIs will respond with partial results if one or more shards fail:
 
-* [Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html)
-* [Multi Search](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html)
-* [Multi Get](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-get.html)
+* [Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search)
+* [Multi Search](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch)
+* [Multi Get](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-mget)
 
 Responses containing partial results still provide a `200 OK` HTTP status code. Shard failures are indicated by the `timed_out` and `_shards` fields of the response header.
 

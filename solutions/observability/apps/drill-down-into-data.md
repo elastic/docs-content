@@ -2,13 +2,18 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/observability/current/apm-ui-drill-down.html
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-ui-drill-down.html
+
+navigation_title: "Drill down into data"
 ---
 
-# Drill down into data
+# Drill down into application data [apm-ui-drill-down]
 
-% What needs to be done: Align serverless/stateful
 
-% Use migrated content from existing pages that map to this page:
+Notice something awry? Select a service or trace and dive deeper with:
 
-% - [ ] ./raw-migrated-files/observability-docs/observability/apm-ui-drill-down.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-apm-ui-drill-down.md
+* [Transactions](../../../solutions/observability/apps/transactions-2.md)
+* [Trace sample timeline](../../../solutions/observability/apps/trace-sample-timeline.md)
+* [Errors](../../../solutions/observability/apps/errors-2.md)
+* [Metrics](../../../solutions/observability/apps/metrics-2.md)
+* [Infrastructure](../../../solutions/observability/apps/infrastructure.md)
+* [Logs](../../../solutions/observability/apps/logs.md)

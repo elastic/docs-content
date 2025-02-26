@@ -46,7 +46,7 @@ Elasticsearch Add-On for Heroku Gold and Platinum subscriptions
 :   Support is handled by email or through the Elastic Support Portal. Provides guaranteed response times for support issues, better support coverage hours, and support contacts at Elastic. Also includes support for how-to and development questions. The exact support coverage depends on whether you are a Gold or Platinum customer. To learn more, check [Elasticsearch Add-On for Heroku Premium Support Services Policy](https://www.elastic.co/legal/support_policy/cloud_premium).
 
 ::::{note}
-If you are in free trial, you are also eligible to get the Elasticsearch Service Standard level support for as long as the trial is active.
+If you are in free trial, you are also eligible to get the {{ecloud}} Standard level support for as long as the trial is active.
 ::::
 
 

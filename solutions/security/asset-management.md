@@ -7,7 +7,7 @@ mapped_pages:
 
 The **Assets** page allows you to manage the following features:
 
-* [{{fleet}}](https://www.elastic.co/guide/en/fleet/current/manage-agents-in-fleet.html)
-* [{{integrations}}](https://www.elastic.co/guide/en/fleet/current/integrations.html)
+* [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-elastic-agents-in-fleet.md)
+* [{{integrations}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-integrations.md)
 * [Endpoint protection](manage-elastic-defend.md)
 * [Cloud security](cloud.md)

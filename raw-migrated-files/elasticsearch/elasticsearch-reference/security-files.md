@@ -1,6 +1,6 @@
 # Security files [security-files]
 
-The {{es}} {security-features} use the following files:
+The {{es}} {{security-features}} use the following files:
 
 * `ES_PATH_CONF/roles.yml` defines the roles in use on the cluster. See [Defining roles](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 * `ES_PATH_CONF/elasticsearch-users` defines the users and their hashed passwords for the `file` realm. See [File-based user authentication](../../../deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md).

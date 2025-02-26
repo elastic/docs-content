@@ -2,8 +2,9 @@
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-saas-metrics-accessing.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-saas-metrics-accessing.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
 ---
 
 # Access performance metrics [ec-saas-metrics-accessing]
@@ -98,7 +99,7 @@ Performance correlates directly with resources assigned to your cluster, and man
 
 It is not uncommon for performance issues on Elasticsearch Service to be caused by an undersized cluster that cannot cope with the workload it is being asked to handle. If your cluster performance metrics often shows high CPU usage or excessive memory pressure, consider increasing the size of your cluster soon to improve performance. This is especially true for clusters that regularly reach 100% of CPU usage or that suffer out-of-memory failures; it is better to resize your cluster early when it is not yet maxed out than to have to resize a cluster that is already overwhelmed. [Changing the configuration of your cluster](../../deploy/elastic-cloud/configure.md) may add some overhead if data needs to be migrated to the new nodes, which can increase the load on a cluster further and delay configuration changes.
 
-To help diagnose high CPU usage you can also use the Elasticsearch [nodes hot threads API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-hot-threads.html), which identifies the threads on each node that have the highest CPU usage or that have been executing for a longer than normal period of time.
+To help diagnose high CPU usage you can also use the Elasticsearch [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads), which identifies the threads on each node that have the highest CPU usage or that have been executing for a longer than normal period of time.
 
 ::::{tip}
 Got an overwhelmed cluster that needs to be upsized? [Try enabling maintenance mode first](../../maintenance/ece/start-stop-routing-requests.md). It will likely help with configuration changes.

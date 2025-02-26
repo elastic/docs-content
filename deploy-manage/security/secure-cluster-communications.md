@@ -23,3 +23,11 @@ mapped_urls:
 $$$generate-certificates$$$
 
 $$$encrypt-internode-communication$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+% Doesn't exist
+% * [/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-security.md](/raw-migrated-files/cloud-on-k8s/cloud-on-k8s/k8s-security.md)
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/security-basic-setup.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/security-basic-setup.md)
+* [/raw-migrated-files/kibana/kibana/elasticsearch-mutual-tls.md](/raw-migrated-files/kibana/kibana/elasticsearch-mutual-tls.md)

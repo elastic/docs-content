@@ -12,7 +12,7 @@ This action will destroy all associated data and cannot be undone.
 
 To remove the add-on from MY_APP using the Heroku CLI:
 
-```term
+```bash
 heroku addons:destroy foundelasticsearch --app MY_APP
 
  ▸    WARNING: Destructive Action

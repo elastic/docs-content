@@ -20,7 +20,7 @@ The `kibana_admin` role or equivalent is required to manage **Spaces**.
 ## Create a space [spaces-managing]
 
 $$$spaces-control-feature-visibility$$$
-You can have up to 1,000 spaces by default. The maximum number of spaces can be configured by the `xpack.spaces.maxSpaces` setting (refer to [Spaces settings in {{kib}}](https://www.elastic.co/guide/en/kibana/current/spaces-settings-kb.html)).
+You can have up to 1,000 spaces by default. The maximum number of spaces can be configured by the `xpack.spaces.maxSpaces` setting (refer to [Spaces settings in {{kib}}](asciidocalypse://docs/kibana/docs/reference/configuration-reference/spaces-settings.md)).
 
 1. Select **Create space** and provide a name, description, and URL identifier.
 
@@ -73,7 +73,7 @@ To move saved objects between spaces, you can [copy objects](/explore-analyze/fi
 
 You can create a custom experience for users by configuring the {{kib}} landing page on a per-space basis. The landing page can route users to a specific dashboard, application, or saved object as they enter each space.
 
-To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
+To configure the landing page, use the default route setting in [Stack Management > {{kib}} > Advanced settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings). For example, you might set the default route to `/app/dashboards`.
 
 :::{image} ../../../images/kibana-spaces-configure-landing-page.png
 :alt: Configure space-level landing page

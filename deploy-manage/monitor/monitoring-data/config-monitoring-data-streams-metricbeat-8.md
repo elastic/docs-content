@@ -1,11 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/config-monitoring-data-streams-metricbeat-8.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Configuring data streams created by Metricbeat 8 [config-monitoring-data-streams-metricbeat-8]
@@ -32,14 +33,14 @@ You can clone index templates in {{kib}}:
 
 You can also use the {{es}} API:
 
-* Retrieve the index template using the [get index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-template.html).
+* Retrieve the index template using the [get index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-index-template).
 * Edit the index template: set the template `priority` to `500`, and specify the settings you want to change in the `settings` section.
-* Store the updated index template under a different name, for example `custom_monitoring`, using the [create index template API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html).
+* Store the updated index template under a different name, for example `custom_monitoring`, using the [create index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template).
 
 ::::{note} 
 {{metricbeat}} 8 uses [composable templates](../../../manage-data/data-store/templates.md), rather than legacy templates.
 ::::
 
 
-After changing the index template, the updated settings are only applied to the data stream’s new backing indices. [Roll over the data stream](../../../manage-data/data-store/index-types/use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the updated settings to the data stream’s write index.
+After changing the index template, the updated settings are only applied to the data stream’s new backing indices. [Roll over the data stream](../../../manage-data/data-store/data-streams/use-data-stream.md#manually-roll-over-a-data-stream) to immediately apply the updated settings to the data stream’s write index.
 

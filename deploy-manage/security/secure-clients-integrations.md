@@ -7,20 +7,20 @@ mapped_pages:
 
 You will need to update the configuration for several [clients](httprest-clients-security.md) to work with a secured {{es}} cluster.
 
-The {{es}} {security-features} enable you to secure your {{es}} cluster. But {{es}} itself is only one product within the {{stack}}. It is often the case that other products in the {{stack}} are connected to the cluster and therefore need to be secured as well, or at least communicate with the cluster in a secured way:
+The {{es}} {{security-features}} enable you to secure your {{es}} cluster. But {{es}} itself is only one product within the {{stack}}. It is often the case that other products in the {{stack}} are connected to the cluster and therefore need to be secured as well, or at least communicate with the cluster in a secured way:
 
-* [Apache Hadoop](https://www.elastic.co/guide/en/elasticsearch/reference/current/hadoop.html)
-* [Auditbeat](https://www.elastic.co/guide/en/beats/auditbeat/current/securing-auditbeat.html)
-* [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/current/securing-filebeat.html)
-* [{{fleet}} & {{agent}}](https://www.elastic.co/guide/en/fleet/current/secure.html)
-* [Heartbeat](https://www.elastic.co/guide/en/beats/heartbeat/current/securing-heartbeat.html)
+* [Apache Hadoop](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/security.md)
+* [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/securing-auditbeat.md)
+* [Filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/securing-filebeat.md)
+* [{{fleet}} & {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure.md)
+* [Heartbeat](asciidocalypse://docs/beats/docs/reference/heartbeat/securing-heartbeat.md)
 * [{{kib}}](../security.md)
-* [Logstash](https://www.elastic.co/guide/en/logstash/current/ls-security.html)
-* [Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/current/securing-metricbeat.html)
+* [Logstash](asciidocalypse://docs/logstash/docs/reference/secure-connection.md)
+* [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/securing-metricbeat.md)
 * [Monitoring and security](../monitor.md)
-* [Packetbeat](https://www.elastic.co/guide/en/beats/packetbeat/current/securing-packetbeat.html)
+* [Packetbeat](asciidocalypse://docs/beats/docs/reference/packetbeat/securing-packetbeat.md)
 * [Reporting](../../explore-analyze/report-and-share.md)
-* [Winlogbeat](https://www.elastic.co/guide/en/beats/winlogbeat/current/securing-winlogbeat.html)
+* [Winlogbeat](asciidocalypse://docs/beats/docs/reference/winlogbeat/securing-winlogbeat.md)
 
 
 

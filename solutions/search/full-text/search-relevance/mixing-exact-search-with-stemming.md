@@ -1,14 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mixing-exact-search-with-stemming.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
 
 # Mixing exact search with stemming [mixing-exact-search-with-stemming]
 
-When building a search application, stemming is often a must as it is desirable for a query on `skiing` to match documents that contain `ski` or `skis`. But what if a user wants to search for `skiing` specifically? The typical way to do this would be to use a [multi-field](https://www.elastic.co/guide/en/elasticsearch/reference/current/multi-fields.html) in order to have the same content indexed in two different ways:
+When building a search application, stemming is often a must as it is desirable for a query on `skiing` to match documents that contain `ski` or `skis`. But what if a user wants to search for `skiing` specifically? The typical way to do this would be to use a [multi-field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md) in order to have the same content indexed in two different ways:
 
 ```console
 PUT index

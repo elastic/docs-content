@@ -6,11 +6,11 @@ mapped_pages:
 # Elastic Agent to Elasticsearch: APIs for collection [agent-apis]
 
 :::{image} ../../../images/ingest-ea-apis.png
-:alt: Image showing {{agent}} collecting data using APIs and sending to {es}
+:alt: Image showing {{agent}} collecting data using APIs and sending to {{es}}
 :::
 
 Ingest model
-:   Control path: {{agent}} to {{fleet}} to {{es}}<br> Data path: {{agent}} running on a user-managed host to collect data about the external infrastructure through APIs, and then forwarding to {es}
+:   Control path: {{agent}} to {{fleet}} to {{es}}<br> Data path: {{agent}} running on a user-managed host to collect data about the external infrastructure through APIs, and then forwarding to {{es}}
 
 Use when
 :   An {{agent}} integration exists for software components that expose APIs for data collection

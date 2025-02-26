@@ -1,4 +1,8 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
+  serverless: preview
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-azure-marketplace-native.html
 ---
@@ -34,7 +38,7 @@ Note the following terms:
 
 * **Azure Marketplace SaaS ID**: This is a unique identifier that’s generated one time by Microsoft Commercial Marketplace when a user creates their first Elastic resource (deployment) using the Microsoft Azure (Portal, API, SDK, or Terraform). This is mapped to a User ID and Azure Subscription ID
 * **{{ecloud}} organization**: An [organization](../../users-roles/cloud-organization.md) is the foundational construct under which everything in {{ecloud}} is grouped and managed. An organization is created as a step during the creation of your first Elastic resource (deployment), whether that’s done through Microsoft Azure (Portal, API, SDK, or Terraform). The initial member of the {{ecloud}} organization can then invite other users.
-* **Elastic resource (deployment)**: An {{ecloud}} deployment helps you manage an {{es}} cluster and instances of other Elastic products in one place. You can work with Elastic deployments from within the Azure ecosystem. Multiple users in the {{ecloud}} organization can create different deployments from different Azure subscriptions. They can also create deployments from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+* **Elastic resource (deployment)**: An {{ecloud}} deployment helps you manage an {{es}} cluster and instances of other Elastic products in one place. You can work with Elastic deployments from within the Azure ecosystem. Multiple users in the {{ecloud}} organization can create different deployments from different Azure subscriptions. They can also create deployments from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 The following diagram shows the mapping between Microsoft Azure IDs, {{ecloud}} organization IDs, and your Elastic resources (deployments).
 
@@ -139,7 +143,7 @@ $$$azure-integration-pricing$$$What is the pricing for this offer?
 
 
 $$$azure-integration-regions$$$Which Azure regions are supported?
-:   Here is the [list of available Azure regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html#ec-azure_regions) supported in {{ecloud}}.
+:   Here is the [list of available Azure regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions) supported in {{ecloud}}.
 
 $$$azure-integration-subscription-levels$$$Which {{ecloud}} subscription levels are available?
 :   The subscription defaults to the Enterprise subscription, granting immediate access to advanced {{stack}} features like machine learning, and premium support response time SLAs. {{ecloud}} offers a number of different [subscription levels](https://elastic.co/pricing).
@@ -169,13 +173,13 @@ $$$azure-integration-existing-email$$$Can I subscribe using an email address fro
 $$$azure-integration-azure-user-management$$$Is the {{ecloud}} Azure Native ISV Service connected with Azure user management?
 :   No. Elastic is not currently integrated with Azure user management. Azure users who deploy {{es}} on Azure view and manage their own cluster through the Cloud console. Other Azure users in the same tenant cannot access clusters through the Cloud console other than those that they themselves created.
 
-    When trying to access resources such as {{es}}, {{kib}}, {{ents}}, or APM in a deployment that was created by another Azure user, the following error is shown:
+    When trying to access resources such as {{es}}, {{kib}}, or APM in a deployment that was created by another Azure user, the following error is shown:
 
     :::{image} ../../../images/cloud-ec-marketplace-azure026.png
     :alt: Error message displayed in the {{ecloud}} console: To access the resource {resource-name}
     :::
 
-    Share deployment resources directly with other Azure users by [configuring Active Directory single sign-on with the {{es}} cluster](../../users-roles/cluster-or-deployment-auth/openid-connect.md#ec-securing-oidc-azure).
+    Share deployment resources directly with other Azure users by [configuring Active Directory single sign-on with the {{es}} cluster](/deploy-manage/users-roles/cluster-or-deployment-auth/oidc-examples.md#ec-securing-oidc-azure).
 
 
 $$$azure-integration-azure-rbac$$$Does {{ecloud}} Azure Native ISV Service support recently introduced {{ecloud}} RBAC capability?
@@ -185,11 +189,11 @@ $$$azure-integration-prior-cloud-account$$$I already have an {{ecloud}} account,
 :   Yes. If you already have an {{ecloud}} account with the same email address as your Azure account you may need to contact `support@elastic.co`.
 
 $$$azure-integration-convert-trial$$$Can I sign up for an {{ecloud}} trial account and then convert to the {{ecloud}} Azure Native ISV Service?
-:   Yes. You can start a [free Elasticsearch Service trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and then convert your account over to Azure. There are a few requirements:
+:   Yes. You can start a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body) and then convert your account over to Azure. There are a few requirements:
 
     * Make sure when creating deployments in the trial account you specify Azure as the cloud provider.
     * To convert your trial to the Azure marketplace you need to create a deployment in the Azure console. Just delete the new deployment if you don’t need it. After you create the new deployment your marketplace subscription is ready.
-    * Any deployments created during your trial won’t show up in the Azure console, since they weren’t created in Azure, but they are still accessible through the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and you are billed for their usage.
+    * Any deployments created during your trial won’t show up in the Azure console, since they weren’t created in Azure, but they are still accessible through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and you are billed for their usage.
 
 
 $$$azure-integration-azure-tenant$$$Does {{es}} get deployed into my tenant in Azure?
@@ -235,8 +239,8 @@ $$$azure-integration-cli-api$$$What other methods are available to deploy {{es}}
     * **Deploy using {{ecloud}}**
 
         * The {{ecloud}} [console](https://cloud.elastic.co?page=docs&placement=docs-body)
-        * The {{ecloud}} [REST API](https://www.elastic.co/guide/en/cloud/current/ec-restful-api.html)
-        * The {{ecloud}} [command line tool](https://www.elastic.co/guide/en/ecctl/current/index.html)
+        * The {{ecloud}} [REST API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md)
+        * The {{ecloud}} [command line tool](asciidocalypse://docs/ecctl/docs/reference/index.md)
         * The {{ecloud}} [Terraform provider](https://registry.terraform.io/providers/elastic/ec/latest/docs)
 
             Note that when you use any of the {{ecloud}} methods, the {{es}} deployment will not be available in Azure.
@@ -253,7 +257,7 @@ $$$azure-integration-migrate$$$How do I migrate my data from the classic Azure m
     6. In the new {{es}} resource, follow the steps in [Restore from a snapshot](../../../manage-data/migrate.md#ec-restore-snapshots) to register the custom snapshot repository from Step 1.
     7. In the same set of steps, restore the snapshot data from the snapshot repository that you registered.
     8. Confirm the data has moved successfully into your new {{es}} resource on Azure.
-    9. To remove the old Azure subscription and the old deployments, go to the [Azure SaaS page](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.SaaS%2Fresources) and unsubscribe from the `{{ecloud}} ({{es}})` marketplace subscription. This action triggers the existing deployments termination.
+    9. To remove the old Azure subscription and the old deployments, go to the [Azure SaaS page](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.SaaS%2Fresources) and unsubscribe from the {{ecloud}} ({{es}}) marketplace subscription. This action triggers the existing deployments termination.
 
 
 $$$azure-integration-no-inbox$$$Can I invite users to my organization, even if they cannot receive emails?
@@ -272,7 +276,7 @@ $$$azure-integration-billing-elastic-costs$$$Why can’t I see Elastic resources
 :   The costs associated with Elastic resources (deployments) are reported under unassigned in the Azure Portal. Refer to [Understand your Azure external services charges](https://learn.microsoft.com/en-us/azure/cost-management-billing/understand/understand-azure-marketplace-charges) in the Microsoft Documentation to understand Elastic resources/deployments costs. For granular Elastic resources costs, refer to [Monitor and analyze your acccount usage](../../cloud-organization/billing/monitor-analyze-usage.md).
 
 $$$azure-integration-billing-deployments$$$Why don’t I see my individual Elastic resources (deployments) in the Azure Marketplace Invoice?
-:   The way Azure Marketplace Billing Integration works today, the costs for Elastic resources (deployments) are reported for an {{ecloud}} organization as a single line item, reported against the Marketplace SaaS ID. This includes the Elastic deployments created using the Azure Portal, API, SDK, or CLI, and also the Elastic deployments created directly from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) in the respective {{ecloud}} organization. For granular Elastic resources costs refer to [Monitor and analyze your acccount usage](../../cloud-organization/billing/monitor-analyze-usage.md). As well, for more detail refer to [Integrated billing](#ec-azure-integration-billing-summary).
+:   The way Azure Marketplace Billing Integration works today, the costs for Elastic resources (deployments) are reported for an {{ecloud}} organization as a single line item, reported against the Marketplace SaaS ID. This includes the Elastic deployments created using the Azure Portal, API, SDK, or CLI, and also the Elastic deployments created directly from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) in the respective {{ecloud}} organization. For granular Elastic resources costs refer to [Monitor and analyze your acccount usage](../../cloud-organization/billing/monitor-analyze-usage.md). As well, for more detail refer to [Integrated billing](#ec-azure-integration-billing-summary).
 
     :::{image} ../../../images/cloud-ec-azure-billing-example.png
     :alt: Example billing report in the {{ecloud}} console
@@ -298,10 +302,8 @@ $$$azure-integration-whats-included$$$What is included in my {{ecloud}} deployme
 :   Each {{ecloud}} deployment includes:
 
     * An {{es}} cluster
-    * A {{kib}} instance which provides data visualization and a front-end for the {stack}
+    * A {{kib}} instance which provides data visualization and a front-end for the {{stack}}
     * An APM server that allows you to easily collect application traces
-    * An {{ents}} instance that allows you to easily build a search experience with an intuitive interface
-
 
 $$$azure-integration-how-to-access$$$How can I access my {{ecloud}} deployment?
 :   Navigate to the deployment overview page in Azure:
@@ -320,12 +322,12 @@ $$$azure-integration-modify-deployment$$$How can I modify my {{ecloud}} deployme
 
     * [Re-size](ec-customize-deployment-components.md) to increase or decrease the amount of RAM, CPU, and storage available to your deployment, or to add additional availability zones.
     * [Upgrade](../../upgrade/deployment-or-cluster.md) your deployment to a new {{stack}} version.
-    * Enable or disable individual {{stack}} components such as APM, Machine Learning, and {{ents}}.
+    * Enable or disable individual {{stack}} components such as APM and Machine Learning.
     * [Update {{stack}} user settings](edit-stack-settings.md) in the component YML files.
     * [Add or remove custom plugins](add-plugins-extensions.md).
     * [Configure IP filtering](../../security/traffic-filtering.md).
     * [Monitor your {{ecloud}} deployment](../../monitor/stack-monitoring/elastic-cloud-stack-monitoring.md) to ensure it remains healthy.
-    * Add or remove API keys to use the [REST API](https://www.elastic.co/guide/en/cloud/current/ec-restful-api.html).
+    * Add or remove API keys to use the [REST API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md).
     * [And more](cloud-hosted.md)
 
 
@@ -382,7 +384,7 @@ Note that following restrictions for logging:
 
 * Only logs from non-compute Azure services are ingested as part of the configuration detailed in this document. Logs from compute services, such as Virtual Machines, into the {{stack}} will be added in a future release.
 
-* The Azure services must be in one of the [supported regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html#ec-azure_regions). All regions will be supported in the future.
+* The Azure services must be in one of the [supported regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions). All regions will be supported in the future.
 
 ::::
 
@@ -428,7 +430,7 @@ $$$azure-integration-vm-extensions$$$How can I monitor my Azure virtual machines
 
     **Managing the Elastic Agent VM extension**
 
-    Once installed on the virtual machine, you can manage Elastic Agent either from Fleet or locally on the host where it’s installed. We recommend managing the VM extension through Fleet, because it makes handling and upgrading the agents considerably easier. For more information on the Elastic Agent, check [Manage your Elastic Agents](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html).
+    Once installed on the virtual machine, you can manage Elastic Agent either from Fleet or locally on the host where it’s installed. We recommend managing the VM extension through Fleet, because it makes handling and upgrading the agents considerably easier. For more information on the Elastic Agent, check [Manage your Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md).
 
     **Operating system compatibility matrix**
 
@@ -478,7 +480,7 @@ $$$azure-integration-deployment-failed-traffic-filter$$$My {{ecloud}} deployment
 
     Follow these steps to resolve the problem:
 
-    1. Login to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Login to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. Go to the [Traffic filters page](https://cloud.elastic.co/deployment-features/traffic-filters).
     3. Edit the traffic filter and disable the **Include by default** option.
 
@@ -499,10 +501,10 @@ $$$azure-integration-failed-sso$$$I can’t SSO into my {{ecloud}} deployment.
 
 
 $$$azure-integration-cant-see-deployment$$$I see some deployments in the {{ecloud}} console but not in the Azure Portal.
-:   Elastic Deployments created using the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), the [{{es}} Service API](https://www.elastic.co/guide/en/cloud/current/ec-restful-api.html), or the [{{ecloud}} Terraform provider](https://registry.terraform.io/providers/elastic/ec/latest/docs) are only visible through the {{ecloud}} Console. To have the necessary metadata to be visible in the Azure Portal, {{ecloud}} deployments need to be created in Microsoft Azure.
+:   Elastic Deployments created using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), the [{{es}} Service API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md), or the [{{ecloud}} Terraform provider](https://registry.terraform.io/providers/elastic/ec/latest/docs) are only visible through the {{ecloud}} Console. To have the necessary metadata to be visible in the Azure Portal, {{ecloud}} deployments need to be created in Microsoft Azure.
 
 ::::{note}
-Mimicking this metadata by manually adding tags to an {{ecloud}} deployment will not work around this limitation. Instead, it will prevent you from being able to delete the deployment using the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+Mimicking this metadata by manually adding tags to an {{ecloud}} deployment will not work around this limitation. Instead, it will prevent you from being able to delete the deployment using the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 ::::
 
 

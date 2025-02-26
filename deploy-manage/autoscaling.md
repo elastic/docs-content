@@ -61,3 +61,10 @@ $$$ech-autoscaling-restrictions$$$
 $$$ech-autoscaling-enable$$$
 
 $$$ech-autoscaling-update$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-heroku/ech-autoscaling.md](/raw-migrated-files/cloud/cloud-heroku/ech-autoscaling.md)
+* [/raw-migrated-files/cloud/cloud/ec-autoscaling.md](/raw-migrated-files/cloud/cloud/ec-autoscaling.md)
+* [/raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md](/raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md)

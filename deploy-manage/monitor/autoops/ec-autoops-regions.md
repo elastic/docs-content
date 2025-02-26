@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-autoops-regions.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
 ---
 
 # AutoOps regions [ec-autoops-regions]
@@ -16,6 +17,7 @@ AutoOps is currently available in the following regions:
 | AWS | us-east-1 | US East (N. Virginia) |  |
 | AWS | us-west-2 | Oregon |  |
 | AWS | eu-west-1 | Ireland |  |
+| AWS | ap-southeast-1 |  Singapore | |
 
 ::::{note} 
 Currently, a limited number of AWS regions are available. More regions for AWS, Azure and GCP will be added in the future. Also, AutoOps is currently not available for GovCloud customers.

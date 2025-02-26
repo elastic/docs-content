@@ -20,7 +20,7 @@ Create a RHEL 8 (the version must be >= 8.5, but <9), RHEL 9, Rocky Linux 8, or 
 
 * For RHEL 8, follow your internal guidelines to add a vanilla RHEL 8 VM to your environment. Note that the version must be >= 8.5, but <9.
 
-Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-prereqs.html) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
+Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) and [Google Cloud Platform (GCP)](/deploy-manage/deploy/cloud-enterprise/prepare-environment.md) guidelines for a list of ports that need to be open. The technical configuration highly depends on the underlying infrastructure.
 
 **Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
@@ -283,7 +283,7 @@ Verify that required traffic is allowed. Check the [Networking prerequisites](ec
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
+    # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early
     vm.swappiness=1

@@ -2,17 +2,16 @@
 navigation_title: "Alibaba Cloud AI Search"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-alibabacloud-ai-search.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
 
 # AlibabaCloud AI Search inference integration [infer-service-alibabacloud-ai-search]
 
-::::{admonition} New API reference
-For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
-
-::::
+:::{tip} Inference API reference  
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::  
 
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `alibabacloud-ai-search` service.
@@ -43,7 +42,7 @@ Creates an {{infer}} endpoint to perform an {{infer}} task with the `alibabaclou
 ## {{api-request-body-title}} [infer-service-alibabacloud-ai-search-api-request-body] 
 
 `chunking_settings`
-:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html#infer-chunking-config) to learn more about chunking.
+:   (Optional, object) Chunking configuration object. Refer to [Configuring chunking](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) to learn more about chunking.
 
     `max_chunk_size`
     :   (Optional, integer) Specifies the maximum size of a chunk in words. Defaults to `250`. This value cannot be higher than `300` or lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).

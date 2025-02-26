@@ -5,7 +5,7 @@ mapped_pages:
 
 # Create an Elastic Defend policy using API [create-defend-policy-api]
 
-In addition to [configuring an {{elastic-defend}} policy](configure-an-integration-policy-for-elastic-defend.md) through the {{elastic-sec}} UI, you can create and customize an {{elastic-defend}} policy through the API. This is a three-step process involving the [{{fleet}} API](https://www.elastic.co/guide/en/fleet/current/fleet-api-docs.html). You can repeat steps 2 and 3 to make more modifications to the {{elastic-defend}} policy.
+In addition to [configuring an {{elastic-defend}} policy](configure-an-integration-policy-for-elastic-defend.md) through the {{elastic-sec}} UI, you can create and customize an {{elastic-defend}} policy through the API. This is a three-step process involving the [{{fleet}} API](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md). You can repeat steps 2 and 3 to make more modifications to the {{elastic-defend}} policy.
 
 ::::{admonition} Requirements
 You must have the **{{elastic-defend}} Policy Management: All** [privilege](elastic-defend-feature-privileges.md) to configure an integration policy.

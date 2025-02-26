@@ -5,9 +5,6 @@ From the Elasticsearch Service console you can customize Elasticsearch, Kibana, 
 * [Dictate the behavior of Elasticsearch and its security features](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
 * [Manage Kibana’s settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
 * [Tune your APM Server](../../../solutions/observability/apps/configure-apm-server.md).
-* [Configure App Search](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
-* [Configure Enterprise Search](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
-
 
 
 

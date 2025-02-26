@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rollup-search-limitations.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Rollup search limitations [rollup-search-limitations]
@@ -8,7 +11,7 @@ mapped_pages:
 ::::{admonition} Deprecated in 8.11.0.
 :class: warning
 
-Rollups will be removed in a future version. Please [migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/index-types/downsampling-time-series-data-stream.md) instead.
+Rollups will be removed in a future version. Please [migrate](migrating-from-rollup-to-downsampling.md) to [downsampling](../../data-store/data-streams/downsampling-time-series-data-stream.md) instead.
 ::::
 
 

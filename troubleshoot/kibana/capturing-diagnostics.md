@@ -1,12 +1,12 @@
 ---
-navigation_title: "Capture diagnostics"
+navigation_title: "Diagnostics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-diagnostic.html
 ---
 
 
 
-# Capturing diagnostics [kibana-diagnostic]
+# Capture {{kib}} diagnostics [kibana-diagnostic]
 
 
 The {{kib}} [Support Diagnostic](https://github.com/elastic/support-diagnostics) tool captures a point-in-time snapshot of {{kib}} and its Task Manager health. It works on {{kib}} versions 7.11.0 and above.
@@ -26,7 +26,7 @@ You can generate diagnostic information using this tool before you contact [Elas
 The Support Diagnostic tool is included out-of-the-box as a sub-library in:
 
 * {{ece}} - Find the tool under **{{ece}}*** > ***Deployment*** > ***Operations*** > ***Prepare Bundle*** > ***{{kib}}**.
-* {{eck}} - Run the tool with [`eck-diagnostics`](https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-take-eck-dump.html).
+* {{eck}} - Run the tool with [`eck-diagnostics`](/troubleshoot/deployments/cloud-on-k8s/run-eck-diagnostics.md).
 
 You can also get the latest version of the tool by downloading the `diagnostics-X.X.X-dist.zip` file from [the `support-diagnostic` repo](https://github.com/elastic/support-diagnostics/releases/latest).
 
@@ -63,8 +63,7 @@ To run a {{kib}} diagnostic:
     sudo .\diagnostics.bat --type kibana-local --host localhost --port 5601 -u elastic -p --bypassDiagVerify --ssl --noVerify
     ```
 
-    ::::{admonition} Script execution modes
-    :class: tip
+    ::::{tip}
 
     You can execute the script in three [modes](https://github.com/elastic/support-diagnostics#diagnostic-types):
 
@@ -109,4 +108,4 @@ The following are common errors that you might encounter when running the diagno
 
 * `{{kib}} Server is not Ready yet`
 
-    This indicates issues with {{kib}}'s dependencies blocking full start-up. To investigate, check [Troubleshoot {{kib}} UI error](../../deploy-manage/deploy/self-managed/access.md#not-ready).
+    This indicates issues with {{kib}}'s dependencies blocking full start-up. To investigate, check [Error: {{kib}}} server is not ready yet](/troubleshoot/kibana/error-server-not-ready.md).

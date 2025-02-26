@@ -5,12 +5,12 @@ navigation_title: "Overview"
 # Monitoring overview [monitoring-overview]
 
 
-When you monitor a cluster, you collect data from the {{es}} nodes, {{ls}} nodes, {{kib}} instances, {{ents}}, APM Server, and Beats in your cluster. You can also collect logs.
+When you monitor a cluster, you collect data from the {{es}} nodes, {{ls}} nodes, {{kib}} instances, APM Server, and Beats in your cluster. You can also collect logs.
 
 All of the monitoring metrics are stored in {{es}}, which enables you to easily visualize the data in {{kib}}. By default, the monitoring metrics are stored in local indices.
 
 ::::{admonition}
-If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](https://www.elastic.co/guide/en/cloud/current/ec-autoops.html).
+If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
 
 ::::
 

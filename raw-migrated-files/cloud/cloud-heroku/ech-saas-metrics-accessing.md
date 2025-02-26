@@ -85,7 +85,7 @@ Performance correlates directly with resources assigned to your cluster, and man
 
 It is not uncommon for performance issues on Elasticsearch Add-On for Heroku to be caused by an undersized cluster that cannot cope with the workload it is being asked to handle. If your cluster performance metrics often shows high CPU usage or excessive memory pressure, consider increasing the size of your cluster soon to improve performance. This is especially true for clusters that regularly reach 100% of CPU usage or that suffer out-of-memory failures; it is better to resize your cluster early when it is not yet maxed out than to have to resize a cluster that is already overwhelmed. [Changing the configuration of your cluster](../../../deploy-manage/deploy/elastic-cloud/cloud-hosted.md) may add some overhead if data needs to be migrated to the new nodes, which can increase the load on a cluster further and delay configuration changes.
 
-To help diagnose high CPU usage you can also use the Elasticsearch [nodes hot threads API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-hot-threads.html), which identifies the threads on each node that have the highest CPU usage or that have been executing for a longer than normal period of time.
+To help diagnose high CPU usage you can also use the Elasticsearch [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads), which identifies the threads on each node that have the highest CPU usage or that have been executing for a longer than normal period of time.
 
 ::::{tip}
 Got an overwhelmed cluster that needs to be upsized? [Try enabling maintenance mode first](https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v5.html#ech-maintenance-mode-routing). It will likely help with configuration changes.
@@ -116,7 +116,7 @@ Cluster performance metrics are shown per node and are color-coded to indicate w
 
 For clusters that suffer out-of-memory failures, it can be difficult to determine whether the clusters are in a completely healthy state afterwards. For this reason, Elasticsearch Add-On for Heroku automatically reboots clusters that suffer out-of-memory failures.
 
-You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../../deploy-manage/deploy/elastic-cloud/ech-customize-deployment-components.md#ech-cluster-size) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
+You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../../deploy-manage/deploy/elastic-cloud/configure.md) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
 
 
 

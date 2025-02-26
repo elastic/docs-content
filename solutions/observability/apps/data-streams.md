@@ -13,7 +13,7 @@ mapped_pages:
 * Flexible naming scheme
 * Fewer ingest permissions required
 
-See the [{{fleet}} and {{agent}} Guide](https://www.elastic.co/guide/en/fleet/current/data-streams.html) to learn more.
+See the [{{fleet}} and {{agent}} Guide](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md) to learn more.
 
 ::::
 
@@ -60,7 +60,7 @@ Metrics
 
 
         ::::{important}
-        Additional storage efficiencies provided by [Synthetic `_source`](https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-source-field.html) are available to users with an [appropriate license](https://www.elastic.co/subscriptions).
+        Additional storage efficiencies provided by [Synthetic `_source`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-source-field.md) are available to users with an [appropriate license](https://www.elastic.co/subscriptions).
 
         ::::
 
@@ -75,7 +75,7 @@ Logs
 
 ## APM data stream rerouting [apm-data-stream-rerouting]
 
-APM supports rerouting APM data to user-defined APM data stream names other than the defaults. This can be achieved by using a [`reroute` processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/reroute-processor.html) in ingest pipelines to set the data stream dataset or namespace. The benefit of separating APM data streams is that custom retention and security policies can be used.
+APM supports rerouting APM data to user-defined APM data stream names other than the defaults. This can be achieved by using a [`reroute` processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/reroute-processor.md) in ingest pipelines to set the data stream dataset or namespace. The benefit of separating APM data streams is that custom retention and security policies can be used.
 
 For example, consider traces that would originally be indexed to `traces-apm-default`. To set the data stream namespace from the trace’s `service.environment` and fallback to a static string `"default"`, create an ingest pipeline named `traces-apm@custom` which will be used automatically:
 

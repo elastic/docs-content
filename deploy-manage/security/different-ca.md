@@ -97,7 +97,7 @@ The following examples use PKCS#12 files, but the same steps apply to JKS keysto
 Now that your CA truststore is updated, use your new CA certificate to sign a certificate for your nodes.
 
 ::::{note} 
-If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate.
+If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate.
 ::::
 
 
@@ -140,7 +140,7 @@ If your organization has its own CA, you’ll need to [generate Certificate Sign
     ```
 
 5. Start the node where you updated the keystore.
-6. $$$verify-keystore-newca$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html) to verify that {{es}} loaded the new keystore.
+6. $$$verify-keystore-newca$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates
@@ -177,7 +177,7 @@ Well done! You’ve updated the keystore for the transport layer. You can also [
 You can generate certificates for the HTTP layer using your new CA certificate and private key. Other components such as {{kib}} or any of the Elastic language clients verify this certificate when they connect to {{es}}.
 
 ::::{note} 
-If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](https://www.elastic.co/guide/en/elasticsearch/reference/current/certutil.html#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate instead of using self-signed certificates that the `elasticsearch-certutil` tool generates.
+If your organization has its own CA, you’ll need to [generate Certificate Signing Requests (CSRs)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md#certutil-csr). CSRs contain information that your CA uses to generate and sign a security certificate instead of using self-signed certificates that the `elasticsearch-certutil` tool generates.
 ::::
 
 
@@ -264,13 +264,13 @@ This process is different for each client, so refer to your client’s documenta
 
 9. Start the node where you updated the keystore.
 
-    Use the [cat nodes API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-nodes.html) to confirm that the node joined the cluster:
+    Use the [cat nodes API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes) to confirm that the node joined the cluster:
 
     ```console
     GET _cat/nodes
     ```
 
-10. $$$verify-keystore-http-newca$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-ssl.html) to verify that {{es}} loaded the new keystore.
+10. $$$verify-keystore-http-newca$$$(Optional) Use the [SSL certificate API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ssl-certificates) to verify that {{es}} loaded the new keystore.
 
     ```console
     GET /_ssl/certificates

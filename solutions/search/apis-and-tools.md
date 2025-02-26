@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/elasticsearch-dev-tools.html
   - https://www.elastic.co/guide/en/enterprise-search/current/search-ui.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

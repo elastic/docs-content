@@ -11,7 +11,7 @@ jobs:
     uses: elastic/docs-builder/.github/workflows/preview-build.yml@main
     with:
       continue-on-error: false
-      strict: false
+      strict: true
     permissions:
       deployments: write
       id-token: write

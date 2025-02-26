@@ -4,17 +4,39 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-rule-exceptions.html
 ---
 
-# Rule exceptions
+# Rule exceptions [detections-ui-exceptions]
 
-% What needs to be done: Lift-and-shift
+You can associate rule exceptions with detection and endpoint rules to prevent trusted processes and network activity from generating unnecessary alerts, therefore, reducing the number of false positives.
 
-% Use migrated content from existing pages that map to this page:
+When creating exceptions, you can assign them to [individual rules](#rule-exceptions-intro) or to [multiple rules](#shared-exception-list-intro).
 
-% - [ ] ./raw-migrated-files/security-docs/security/detections-ui-exceptions.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-rule-exceptions.md
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+## Exceptions for individual rules [rule-exceptions-intro]
 
-$$$rule-exceptions-intro$$$
+Exceptions, also referred to as *exception items*, contain the source event conditions that determine when alerts shouldn’t be generated.
 
-$$$shared-exception-list-intro$$$
+You can create exceptions that apply exclusively to a single rule. These types of exceptions can’t be used by other rules, and you must manage them from the rule’s details page. To learn more about creating and managing single-rule exceptions, refer to [Add and manage exceptions](add-manage-exceptions.md).
+
+:::{image} ../../../images/security-exception-item-example.png
+:alt: An exception item
+:class: screenshot
+:::
+
+::::{note}
+You can also use [value lists](create-manage-value-lists.md) to define exceptions for detection rules. Value lists allow you to match an exception against a list of possible values.
+::::
+
+
+
+## Exceptions shared among multiple rules [shared-exception-list-intro]
+
+If you want an exception to apply to multiple rules, you can add an exception to a shared exception list. Shared exception lists allow you to group exceptions together and then associate them with multiple rules. Refer to [Create and manage shared exception lists](create-manage-shared-exception-lists.md) to learn more.
+
+:::{image} ../../../images/security-rule-exceptions-page.png
+:alt: Shared Exception Lists page
+:class: screenshot
+:::
+
+
+
+

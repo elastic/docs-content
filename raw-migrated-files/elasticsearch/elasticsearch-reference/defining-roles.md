@@ -23,8 +23,8 @@ A role is defined by the following JSON structure:
 5. A list of application privilege entries. This field is optional.
 6. A list of indices permissions entries for [remote clusters configured with the API key based model](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md). This field is optional (missing `remote_indices` privileges effectively mean no index level permissions for any API key based remote clusters).
 7. A list of cluster permissions entries for [remote clusters configured with the API key based model](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md). This field is optional (missing `remote_cluster` privileges effectively means no additional cluster permissions for any API key based remote clusters).
-8. Metadata field associated with the role, such as `metadata.app_tag`. Metadata is internally indexed as a [flattened](https://www.elastic.co/guide/en/elasticsearch/reference/current/flattened.html) field type. This means that all sub-fields act like `keyword` fields when querying and sorting. Metadata values can be simple values, but also lists and maps. This field is optional.
-9. A string value with the description text of the role. The maximum length of it is `1000` chars. The field is internally indexed as a [text](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html#text-field-type) field type (with default values for all parameters). This field is optional.
+8. Metadata field associated with the role, such as `metadata.app_tag`. Metadata is internally indexed as a [flattened](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/flattened.md) field type. This means that all sub-fields act like `keyword` fields when querying and sorting. Metadata values can be simple values, but also lists and maps. This field is optional.
+9. A string value with the description text of the role. The maximum length of it is `1000` chars. The field is internally indexed as a [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type) field type (with default values for all parameters). This field is optional.
 
 
 ::::{note}
@@ -113,17 +113,17 @@ The following describes the structure of an application privileges entry:
 
 1. The name of the application.
 2. The list of the names of the application privileges to grant to this role.
-3. The resources to which those privileges apply. These are handled in the same way as index name pattern in `indices` permissions. These resources do not have any special meaning to the {{es}} {security-features}.
+3. The resources to which those privileges apply. These are handled in the same way as index name pattern in `indices` permissions. These resources do not have any special meaning to the {{es}} {{security-features}}.
 
 
-For details about the validation rules for these fields, see the [add application privileges API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-privileges.html).
+For details about the validation rules for these fields, see the [add application privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-privileges).
 
-A role may refer to application privileges that do not exist - that is, they have not yet been defined through the add application privileges API (or they were defined, but have since been deleted). In this case, the privilege has no effect, and will not grant any actions in the [has privileges API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-has-privileges.html).
+A role may refer to application privileges that do not exist - that is, they have not yet been defined through the add application privileges API (or they were defined, but have since been deleted). In this case, the privilege has no effect, and will not grant any actions in the [has privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-has-privileges).
 
 
 ## Remote indices privileges [roles-remote-indices-priv]
 
-For [remote clusters configured with the API key based model](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md), remote indices privileges can be used to specify desired indices privileges for matching remote clusters. The final effective index privileges will be an intersection of the remote indices privileges and the [cross-cluster API key](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-cross-cluster-api-key.html)'s indices privileges.
+For [remote clusters configured with the API key based model](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md), remote indices privileges can be used to specify desired indices privileges for matching remote clusters. The final effective index privileges will be an intersection of the remote indices privileges and the [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key)'s indices privileges.
 
 ::::{note}
 Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model.
@@ -143,7 +143,7 @@ The remote indices privileges entry has an extra mandatory `clusters` field comp
 }
 ```
 
-1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) and [regular expressions](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html). This field is required.
+1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). This field is required.
 2. A list of data streams, indices, and aliases to which the permissions in this entry apply. Supports wildcards (`*`).
 3. The index level privileges the owners of the role have on the associated data streams and indices specified in the `names` argument.
 4. Specification for document fields the owners of the role have read access to. See [Setting up field and document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for details.
@@ -170,8 +170,8 @@ The following describes the structure of a remote cluster permissions entry:
 }
 ```
 
-1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#api-multi-index) and [regular expressions](https://www.elastic.co/guide/en/elasticsearch/reference/current/regexp-syntax.html). This field is required.
-2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-builtin-privileges.html#security-api-get-builtin-privileges-request) can be used to determine which privileges are allowed here. This field is required.
+1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). This field is required.
+2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
 
 
 
@@ -220,7 +220,7 @@ You can manage users and roles easily in {{kib}}. To manage roles, log in to {{k
 
 ## Role management API [roles-management-api]
 
-The *Role Management APIs* enable you to add, update, remove and retrieve roles dynamically. When you use the APIs to manage roles in the `native` realm, the roles are stored in an internal {{es}} index. For more information and examples, see [Roles](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api.html#security-role-apis).
+The *Role Management APIs* enable you to add, update, remove and retrieve roles dynamically. When you use the APIs to manage roles in the `native` realm, the roles are stored in an internal {{es}} index. For more information and examples, see [Roles](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
 
 
 ## File-based role management [roles-management-file]

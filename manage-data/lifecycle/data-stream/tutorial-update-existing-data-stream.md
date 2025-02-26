@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/tutorial-manage-existing-data-stream.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Tutorial: Update existing data stream [tutorial-manage-existing-data-stream]

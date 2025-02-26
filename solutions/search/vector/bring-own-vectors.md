@@ -2,7 +2,7 @@
 navigation_title: "Bring your own dense vectors"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/bring-your-own-vectors.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -27,11 +27,11 @@ Each document in our simple dataset will have:
 * A review: stored in a `review_text` field
 * An embedding of that review: stored in a `review_vector` field
 
-    * The `review_vector` field is defined as a [`dense_vector`](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html) data type.
+    * The `review_vector` field is defined as a [`dense_vector`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) data type.
 
 
 ::::{tip} 
-The `dense_vector` type automatically uses `int8_hnsw` quantization by default to reduce the memory footprint required when searching float vectors. Learn more about balancing performance and accuracy in [Dense vector quantization](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html#dense-vector-quantization).
+The `dense_vector` type automatically uses `int8_hnsw` quantization by default to reduce the memory footprint required when searching float vectors. Learn more about balancing performance and accuracy in [Dense vector quantization](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md#dense-vector-quantization).
 
 ::::
 
@@ -82,7 +82,7 @@ PUT /amazon-reviews/_doc/1
 
 ### Bulk index multiple documents [_bulk_index_multiple_documents] 
 
-In a production scenario, you’ll want to index many documents at once using the [`_bulk` endpoint](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html).
+In a production scenario, you’ll want to index many documents at once using the [`_bulk` endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk).
 
 Here’s an example of indexing multiple documents in a single `_bulk` request.
 
@@ -101,7 +101,7 @@ POST /_bulk
 
 ## Step 3: Search documents with embeddings [bring-your-own-vectors-search-documents] 
 
-Now you can query these document vectors using a [`knn` retriever](https://www.elastic.co/guide/en/elasticsearch/reference/current/retriever.html#knn-retriever). `knn` is a type of vector search, which finds the `k` most similar documents to a query vector. Here we’re simply using a raw vector for the query text, for demonstration purposes.
+Now you can query these document vectors using a [`knn` retriever](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search#operation-search-body-application-json-retriever). `knn` is a type of vector search, which finds the `k` most similar documents to a query vector. Here we’re simply using a raw vector for the query text, for demonstration purposes.
 
 ```console
 POST /amazon-reviews/_search
@@ -127,7 +127,7 @@ POST /amazon-reviews/_search
 
 In this simple example, we’re sending a raw vector for the query text. In a real-world scenario you won’t know the query text ahead of time. You’ll need to generate query vectors, on the fly, using the same embedding model that generated the document vectors.
 
-For this you’ll need to deploy a text embedding model in {{es}} and use the [`query_vector_builder` parameter](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-knn-query.html#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
+For this you’ll need to deploy a text embedding model in {{es}} and use the [`query_vector_builder` parameter](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-knn-query.md#knn-query-top-level-parameters). Alternatively, you can generate vectors client-side and send them directly with the search request.
 
 Learn how to [use a deployed text embedding model](dense-versus-sparse-ingest-pipelines.md) for semantic search.
 

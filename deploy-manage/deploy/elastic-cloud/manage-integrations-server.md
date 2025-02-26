@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-manage-integrations-server.html
 ---
 
 # Manage your Integrations server [ec-manage-integrations-server]
 
-For deployments that are version 8.0 and later, you have the option to add a combined [Application Performance Monitoring (APM) Server](https://www.elastic.co/guide/en/apm/guide/current/apm-overview.html) and [Fleet Server](https://www.elastic.co/guide/en/fleet/current/fleet-overview.html) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the Elasticsearch cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
+For deployments that are version 8.0 and later, you have the option to add a combined [Application Performance Monitoring (APM) Server](/solutions/observability/apps/application-performance-monitoring-apm.md) and [Fleet Server](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) to your deployment. APM allows you to monitor software services and applications in real time, turning that data into documents stored in the Elasticsearch cluster. Fleet allows you to centrally manage Elastic Agents on many hosts.
 
 As part of provisioning, the APM Server and Fleet Server are already configured to work with Elasticsearch and Kibana. At the end of provisioning, you are shown the secret token to configure communication between the APM Server and the backend [APM Agents](https://www.elastic.co/guide/en/apm/agent/index.html). The APM Agents get deployed within your services and applications.
 
@@ -20,15 +23,13 @@ From the deployment **Integrations Server** page you can also:
 * Fully remove the Integrations Server, delete it from the disk, and stop the charges.
 
 ::::{important}
-The APM secret token can no longer be reset from the Elasticsearch Service UI. Check [Secret token](https://www.elastic.co/guide/en/apm/guide/current/secret-token.html) for instructions on managing a secret token. Note that resetting the token disrupts your APM service and restarts the server. When the server restarts, you’ll need to update all of your agents with the new token.
+The APM secret token can no longer be reset from the {{ecloud}} UI. Check [Secret token](/solutions/observability/apps/secret-token.md) for instructions on managing a secret token. Note that resetting the token disrupts your APM service and restarts the server. When the server restarts, you’ll need to update all of your agents with the new token.
 ::::
 
 
 ## Enable Integrations Server through the API [ec-integrations-server-api-example]
 
-This example demonstrates how to use the Elasticsearch Service RESTful API to create a deployment with Integrations Server enabled.
-
-For more information on how to manage Integrations Server from the UI, check [Manage your Integrations Server]()
+This example demonstrates how to use the {{ecloud}} RESTful API to create a deployment with Integrations Server enabled.
 
 
 #### Requirements [ec_requirements_2]

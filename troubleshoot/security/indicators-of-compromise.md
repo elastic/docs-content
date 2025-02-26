@@ -1,26 +1,25 @@
 ---
+navigation_title: "Indicators of compromise"
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/indicators-of-compromise.html
   - https://www.elastic.co/guide/en/serverless/current/security-indicators-of-compromise.html
 ---
 
-# Indicators of compromise
 
-% What needs to be done: Refine
+# Troubleshoot indicators of compromise [troubleshoot-indicators-page]
 
-% Scope notes: Pull out the troubleshooting section into its own topic, and leave the rest of the content in its current place
+If indicator data is not appearing in the Indicators table after you installed a threat intelligence integration:
 
-% Use migrated content from existing pages that map to this page:
+* Verify that the index storing indicator documents is included in the [default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices) (`securitySolution:defaultIndex`). The index storing indicator documents will differ based on the way you’re collecting indicator data:
 
-% - [ ] ./raw-migrated-files/security-docs/security/indicators-of-compromise.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-indicators-of-compromise.md
+    * **{{agent}} integrations** - `logs_ti*`
+    * **{{filebeat}} integrations** - `filebeat-*`
+
+* Ensure the indicator data you’re ingesting is mapped to [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current).
+
+::::{note}
+These troubleshooting steps also apply to the [Threat Intelligence view](/solutions/security/get-started/enable-threat-intelligence-integrations.md).
+::::
+
 
 % Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$review-indicator-in-case$$$
-
-$$$ti-indicators$$$
-
-$$$troubleshoot-indicators-page$$$
-
-$$$examine-indicator-details$$$

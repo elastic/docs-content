@@ -47,7 +47,7 @@ Kibana is provided in the following package formats:
 
 
 ::::{important} 
-If your Elasticsearch installation is protected by [{{stack-security-features}}](https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-cluster.html) see [Configuring security in {{kib}}](../../../deploy-manage/security.md) for additional setup instructions.
+If your Elasticsearch installation is protected by [{{stack-security-features}}](/deploy-manage/security.md) see [Configuring security in {{kib}}](../../../deploy-manage/security.md) for additional setup instructions.
 ::::
 
 

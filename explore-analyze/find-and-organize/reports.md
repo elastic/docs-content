@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/reports.html
 ---
@@ -15,7 +15,7 @@ For example, in **Discover**, you can create and download comma-separated values
 To view and manage reports, go to **Management** > **Reporting**.
 
 :::{image} ../../images/serverless-reports-management.png
-:alt: {reports-app}
+:alt: {{reports-app}}
 :class: screenshot
 :::
 

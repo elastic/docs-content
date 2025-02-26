@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-managing-compute-resources.html
 ---
 
 # Manage compute resources [k8s-managing-compute-resources]
 
-To help the Kubernetes scheduler correctly place Pods in available Kubernetes nodes and ensure quality of service (QoS), it is recommended to specify the CPU and memory requirements for objects managed by the operator (Elasticsearch, Kibana, APM Server, Enterprise Search, Beats, Elastic Agent, Elastic Maps Server, and Logstash). In Kubernetes, `requests` defines the minimum amount of resources that must be available for a Pod to be scheduled; `limits` defines the maximum amount of resources that a Pod is allowed to consume. For more information about how Kubernetes uses these concepts, check [Managing Compute Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
+To help the Kubernetes scheduler correctly place Pods in available Kubernetes nodes and ensure quality of service (QoS), it is recommended to specify the CPU and memory requirements for objects managed by the operator (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash). In Kubernetes, `requests` defines the minimum amount of resources that must be available for a Pod to be scheduled; `limits` defines the maximum amount of resources that a Pod is allowed to consume. For more information about how Kubernetes uses these concepts, check [Managing Compute Resources for Containers](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/).
 
 ::::{note}
 The operator applies default requests and limits for memory and CPU. They may be suitable for experimenting with the Elastic Stack, however it is recommended to reevaluate these values for production use cases.
@@ -102,7 +105,7 @@ A [known Kubernetes issue](https://github.com/kubernetes/kubernetes/issues/51135
 
 
 
-### Set compute resources for Kibana, Enterprise Search, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
+### Set compute resources for Kibana, Elastic Maps Server, APM Server and Logstash [k8s-compute-resources-kibana-and-apm]
 
 ```yaml
 apiVersion: kibana.k8s.elastic.co/v1
@@ -285,7 +288,6 @@ If `resources` is not defined in the specification of an object, then the operat
 | Beat | `300Mi` | `300Mi` |
 | Elastic Agent | `400Mi` | `400Mi` |
 | Elastic Maps Server | `200Mi` | `200Mi` |
-| Enterprise Search | `4Gi` | `4Gi` |
 | Logstash | `2Gi` | `2Gi` |
 
 If the Kubernetes cluster is configured with [LimitRanges](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/) that enforce a minimum memory constraint, they could interfere with the operator defaults and cause object creation to fail.

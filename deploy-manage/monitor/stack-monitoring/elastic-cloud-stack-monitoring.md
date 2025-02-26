@@ -7,8 +7,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-enable-logging-and-monitoring.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-monitoring-setup.html
   - https://www.elastic.co/guide/en/cloud-heroku/current/ech-restrictions-monitoring.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
 ---
 
 # Stack Monitoring on Elastic Cloud deployments
@@ -58,3 +59,12 @@ $$$ech-health-best-practices$$$
 $$$ech-logging-and-monitoring-production$$$
 
 $$$ech-logging-and-monitoring-retention$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud-heroku/ech-monitoring.md](/raw-migrated-files/cloud/cloud-heroku/ech-monitoring.md)
+* [/raw-migrated-files/cloud/cloud/ec-monitoring-setup.md](/raw-migrated-files/cloud/cloud/ec-monitoring-setup.md)
+* [/raw-migrated-files/cloud/cloud/ec-enable-logging-and-monitoring.md](/raw-migrated-files/cloud/cloud/ec-enable-logging-and-monitoring.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-enable-logging-and-monitoring.md](/raw-migrated-files/cloud/cloud-heroku/ech-enable-logging-and-monitoring.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-monitoring-setup.md](/raw-migrated-files/cloud/cloud-heroku/ech-monitoring-setup.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-restrictions-monitoring.md](/raw-migrated-files/cloud/cloud-heroku/ech-restrictions-monitoring.md)

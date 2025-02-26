@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-nlp-rerank.html
 ---
@@ -94,7 +94,7 @@ If you want to deploy the Elastic Rerank model in a restricted or closed network
 
 For the cross-platform version, you need the following files in your system:
 
-```url
+```text
 https://ml-models.elastic.co/rerank-v1.metadata.json
 https://ml-models.elastic.co/rerank-v1.pt
 https://ml-models.elastic.co/rerank-v1.vocab.json
@@ -121,7 +121,7 @@ You can use any HTTP service to deploy the model. This example uses the official
 
 4. Verify that Nginx runs properly by visiting the following URL in your browser:
 
-    ```url
+    ```text
     http://{IP_ADDRESS_OR_HOSTNAME}:8080/rerank-v1.metadata.json
     ```
 
@@ -166,7 +166,7 @@ For a file-based access, follow these steps:
 * English language only
 * Maximum context window of 512 tokens
 
-    When using the [`semantic_text` field type](https://www.elastic.co/guide/en/elasticsearch/reference/current/semantic-text.html), text is divided into chunks. By default, each chunk contains 250 words (approximately 400 tokens). Be cautious when increasing the chunk size - if the combined length of your query and chunk text exceeds 512 tokens, the model won’t have access to the full content.
+    When using the [`semantic_text` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/semantic-text.md), text is divided into chunks. By default, each chunk contains 250 words (approximately 400 tokens). Be cautious when increasing the chunk size - if the combined length of your query and chunk text exceeds 512 tokens, the model won’t have access to the full content.
 
     When the combined inputs exceed the 512 token limit, a balanced truncation strategy is used. If both the query and input text are longer than 255 tokens each then both are truncated, otherwise the longest is truncated.
 

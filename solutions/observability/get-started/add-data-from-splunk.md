@@ -29,9 +29,9 @@ To follow the steps in this guide, you need an {{stack}} deployment that include
 * {{es}} for storing and searching data
 * {{kib}} for visualizing and managing data
 * Kibana user with `All` privileges on {{fleet}} and Integrations. Since many Integrations assets are shared across spaces, users need the Kibana privileges in all spaces.
-* Integrations Server (included by default in every {{ess}} deployment)
+* Integrations Server (included by default in every {{ech}} deployment)
 
-To get started quickly, spin up a deployment of our hosted {{ess}}. The {{ess}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 
 
 ## Step 1: Add integration [splunk-step-one]
@@ -57,7 +57,7 @@ The URL of the Splunk Enterprise Server must include the scheme (`http` or `http
 
 The Splunk username and password must be of a user with a role or capability to use REST API endpoints.  Administrative users have these permissions by default.
 
-SSL Configuration is available under the "Advanced options".  These may be necessary if Splunk Enterprise server uses self-signed certificates.  See [SSL Options](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-ssl.html) for valid configuration options.
+SSL Configuration is available under the "Advanced options".  These may be necessary if Splunk Enterprise server uses self-signed certificates.  See [SSL Options](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-ssl.md) for valid configuration options.
 
 :::{image} ../../../images/observability-kibana-fleet-third-party-rest-settings.png
 :alt: {{fleet}} showing enabling third-party REST API settings

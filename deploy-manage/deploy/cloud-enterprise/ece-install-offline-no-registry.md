@@ -24,7 +24,7 @@ To perform an offline installation without a private Docker registry, you have t
     For example, for Elastic Cloud Enterprise 3.8.1 and the Elastic Stack versions it shipped with, you need:
 
     * Elastic Cloud Enterprise 3.8.1
-    * Elasticsearch 8.17.1, Kibana 8.17.1, APM 8.17.1, and Enterprise Search 8.17.1
+    * Elasticsearch 8.17.1, Kibana 8.17.1, and APM 8.17.1
 
 2. Create .tar files of the images:
 

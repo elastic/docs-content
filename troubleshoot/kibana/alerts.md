@@ -1,9 +1,10 @@
 ---
+navigation_title: "Alerts"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/alerting-troubleshooting.html
 ---
 
-# Alerts [alerting-troubleshooting]
+# Troubleshoot {{kib}} alerts [alerting-troubleshooting]
 
 Alerting provides many options for diagnosing problems with rules and connectors.
 
@@ -183,7 +184,7 @@ In addition to the above methods, refer to the following approaches and common i
 
 ### Temporarily throttle all tasks [alerting-kibana-throttle]
 
-If cluster performance becomes degraded from excessive or expensive rules and {{kib}} is sluggish or unresponsive, you can temporarily reduce load to the Task Manager by updating its [settings](https://www.elastic.co/guide/en/kibana/current/task-manager-settings-kb.html):
+If cluster performance becomes degraded from excessive or expensive rules and {{kib}} is sluggish or unresponsive, you can temporarily reduce load to the Task Manager by updating its [settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/task-manager-settings.md):
 
 ```txt
 xpack.task_manager.capacity: 5
@@ -199,7 +200,7 @@ This approach should be used only temporarily as a last resort to restore functi
 
 ## Limitations [alerting-limitations]
 
-The following limitations and known problems apply to the 9.0.0-beta1 release of the {{kib}} {alert-features}:
+The following limitations and known problems apply to the 9.0.0-beta1 release of the {{kib}} {{alert-features}}:
 
 
 ### Alert visibility [_alert_visibility]

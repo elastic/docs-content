@@ -1,12 +1,12 @@
 ---
-navigation_title: "{{ess}}"
+navigation_title: "{{ech}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configure-cloud-id.html
 ---
 
 
 
-# Configure the output for Elasticsearch Service on Elastic Cloud [apm-configure-cloud-id]
+# Configure the output for {{ech}} [apm-configure-cloud-id]
 
 
 ::::{admonition}
@@ -18,11 +18,11 @@ This documentation only applies to APM Server binary users.
 
 
 ::::{note}
-This page refers to using a separate instance of APM Server with an existing [{{ess}} deployment](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body). If you want to use APM on {{ess}}, see: [Create your deployment](../../../deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) and [Add APM user settings](configure-apm-server.md).
+This page refers to using a separate instance of APM Server with an existing [{{ech}} deployment](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body). If you want to use APM on {{ech}}, see: [Create your deployment](../../../deploy-manage/deploy/elastic-cloud/create-an-elastic-cloud-hosted-deployment.md) and [Add APM user settings](configure-apm-server.md).
 ::::
 
 
-APM Server comes with two settings that simplify the output configuration when used together with [{{ess}}](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body). When defined, these setting overwrite settings from other parts in the configuration.
+APM Server comes with two settings that simplify the output configuration when used together with [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body). When defined, these setting overwrite settings from other parts in the configuration.
 
 Example:
 
@@ -40,7 +40,7 @@ apm-server -e -E cloud.id="<cloud-id>" -E cloud.auth="<cloud.auth>"
 
 ## `cloud.id` [_cloud_id]
 
-The Cloud ID, which can be found in the {{ess}} web console, is used by APM Server to resolve the {{es}} and {{kib}} URLs. This setting overwrites the `output.elasticsearch.hosts` and `setup.kibana.host` settings.
+The Cloud ID, which can be found in the {{ecloud}} Console, is used by APM Server to resolve the {{es}} and {{kib}} URLs. This setting overwrites the `output.elasticsearch.hosts` and `setup.kibana.host` settings.
 
 
 ## `cloud.auth` [_cloud_auth]

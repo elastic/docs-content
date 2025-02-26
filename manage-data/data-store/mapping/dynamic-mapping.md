@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/dynamic-mapping.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Dynamic mapping [dynamic-mapping]

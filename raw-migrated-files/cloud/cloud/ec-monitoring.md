@@ -8,7 +8,7 @@ If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your
 
 Keeping on top of the health of your deployments is a key part of the [shared responsibilities](https://www.elastic.co/cloud/shared-responsibility) between Elastic and yourself. Elastic Cloud provides out of the box tools for monitoring the health of your deployment and resolving health issues when they arise. If you are ready to set up a deployment for production use cases, make sure you check the recommendations and best practices for [production readiness](../../../deploy-manage/production-guidance/plan-for-production-elastic-cloud.md).
 
-A deployment on Elastic Cloud is a combination of an Elasticsearch cluster, a Kibana instance and potentially an APM server instance, an Enterprise Search Server instance and an Integration Server instance. The health of an Elastic Cloud deployment comprises the health of the various components that are part of the deployment.
+A deployment on Elastic Cloud is a combination of an Elasticsearch cluster, a Kibana instance and potentially an APM server instance, and an Integration Server instance. The health of an Elastic Cloud deployment comprises the health of the various components that are part of the deployment.
 
 The most important of these is the {{es}} cluster, because it is the heart of the system for searching and indexing data.
 
@@ -57,7 +57,7 @@ You can also search and filter the table based on affected resources, such as in
 :alt: {{es}} Health page with details and troubleshooting
 :::
 
-For each issue you can either use a troubleshooting link or get a suggestion to contact support, in case you need help. The [troubleshooting documentation](../../../troubleshoot/elasticsearch/elasticsearch-reference.md) for {{es}} provides more details on specific errors.
+For each issue you can either use a troubleshooting link or get a suggestion to contact support, in case you need help. The [troubleshooting documentation](../../../troubleshoot/elasticsearch/elasticsearch.md) for {{es}} provides more details on specific errors.
 
 
 ## {{es}} cluster performance [ec-es-cluster-performance]
@@ -96,7 +96,7 @@ In a production environment, we highly recommend storing your logs and metrics i
 
 ## Dedicated logs and metrics [ec-es-health-dedicated]
 
-In a production environment, it’s important set up dedicated health monitoring in order to retain the logs and metrics that can be used to troubleshoot any health issues in your deployments. In the event of that you need to [contact our support team](../../../troubleshoot/troubleshoot/index.md), they can use the retained data to help diagnose any problems that you may encounter.
+In a production environment, it’s important set up dedicated health monitoring in order to retain the logs and metrics that can be used to troubleshoot any health issues in your deployments. In the event of that you need to [contact our support team](../../../troubleshoot/index.md), they can use the retained data to help diagnose any problems that you may encounter.
 
 You have the option of sending logs and metrics to a separate, specialized monitoring deployment, which ensures that they’re available in the event of a deployment outage. The monitoring deployment also gives you access to Kibana’s stack monitoring features, through which you can view health and performance data for all of your deployment resources.
 

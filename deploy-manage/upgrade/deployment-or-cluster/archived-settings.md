@@ -14,13 +14,13 @@ Archived settings start with the `archived.` prefix.
 
 ## Archived cluster settings [archived-cluster-settings] 
 
-Use the following [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) request to check for archived cluster settings. If the request returns an empty object (`{ }`), there are no archived cluster settings.
+Use the following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) request to check for archived cluster settings. If the request returns an empty object (`{ }`), there are no archived cluster settings.
 
 ```console
 GET _cluster/settings?flat_settings=true&filter_path=persistent.archived*
 ```
 
-To remove any archived cluster settings, use the following [cluster update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-update-settings.html) request.
+To remove any archived cluster settings, use the following [cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) request.
 
 ```console
 PUT _cluster/settings
@@ -43,13 +43,13 @@ Before you upgrade, remove any unsupported index settings from index and compone
 
 Archived index settings don’t affect an index’s configuration or most index operations, such as indexing or search. However, you’ll need to remove them before you can configure other settings for the index, such as `index.hidden`.
 
-Use the following [get index settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-settings.html) request to get a list indices with archived settings. If the request returns an empty object (`{ }`), there are no archived index settings.
+Use the following [get index settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-settings) request to get a list indices with archived settings. If the request returns an empty object (`{ }`), there are no archived index settings.
 
 ```console
 GET */_settings?flat_settings=true&filter_path=**.settings.archived*
 ```
 
-To remove any archived index settings, use the following [indices update settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html) request.
+To remove any archived index settings, use the following [indices update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings) request.
 
 ```console
 PUT /my-index/_settings

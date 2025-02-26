@@ -37,3 +37,8 @@ $$$ech-psc-associate-traffic-filter-psc-rule-set$$$
 $$$ech-psc-create-traffic-filter-psc-rule-set$$$
 
 $$$ech-psc-remove-association-psc-rule-set$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/cloud/cloud/ec-traffic-filtering-psc.md](/raw-migrated-files/cloud/cloud/ec-traffic-filtering-psc.md)
+* [/raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-psc.md](/raw-migrated-files/cloud/cloud-heroku/ech-traffic-filtering-psc.md)

@@ -24,7 +24,7 @@ $$$outputs-serverless-restrictions$$$
 The path to get to the {{fleet}} application in {{kib}} differs across projects:
 
 * In {{ess}} deployments, navigate to **Management > Fleet**.
-* In {{serverless-short}} {observability} projects, navigate to **Project settings > Fleet**.
+* In {{serverless-short}} {{observability}} projects, navigate to **Project settings > Fleet**.
 * In {{serverless-short}} Security projects, navigate to **Assets > Fleet**.
 
 
@@ -32,5 +32,5 @@ The path to get to the {{fleet}} application in {{kib}} differs across projects:
 
 Note the following restrictions with using {{fleet-server}} on {{serverless-short}}:
 
-* On-premises {{fleet-server}} is not currently available for use in a {{serverless-short}} environment. We recommend using the hosted {{fleet-server}} that is included and configured automatically in {{serverless-short}} {observability} and Security projects.
+* On-premises {{fleet-server}} is not currently available for use in a {{serverless-short}} environment. We recommend using the hosted {{fleet-server}} that is included and configured automatically in {{serverless-short}} {{observability}} and Security projects.
 * On {{serverless-short}}, you can configure {{fleet-server}} to use a proxy, with the restriction that the {{fleet-server}} host URL is fixed. Any new {{fleet-server}} hosts must use the default {{fleet-server}} host URL.

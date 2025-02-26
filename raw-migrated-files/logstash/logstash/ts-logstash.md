@@ -78,7 +78,7 @@ This issue affects some OpenJDK-derived JVM versions (Adoptium, OpenJDK, and Azu
 
 **Work around**
 
-* Use the [bundled JDK](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html#ls-jvm) included with Logstash
+* Use the [bundled JDK](asciidocalypse://docs/logstash/docs/reference/getting-started-with-logstash.md#ls-jvm) included with Logstash
 * Or, try adding this value to the `jvm.options` file, and restarting Logstash
 
     ```sh
@@ -166,7 +166,7 @@ Symptoms of persistent queue problems include {{ls}} or one or more pipelines no
 message=>"java.io.IOException: Page file size is too small to hold elements"
 ```
 
-See the [troubleshooting information](https://www.elastic.co/guide/en/logstash/current/persistent-queues.html#troubleshooting-pqs) in the persistent queue section for more information on remediating problems with persistent queues.
+See the [troubleshooting information](asciidocalypse://docs/logstash/docs/reference/persistent-queues.md#troubleshooting-pqs) in the persistent queue section for more information on remediating problems with persistent queues.
 
 
 ## Data ingestion [ts-ingest]
@@ -179,7 +179,7 @@ A `429` message indicates that an application is busy handling other requests. F
 
 Check {{es}} to see if it needs attention.
 
-* [Cluster stats API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-stats.html)
+* [Cluster stats API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-stats)
 * [Monitor a cluster](../../../deploy-manage/monitor.md)
 
 **Sample error**
@@ -199,7 +199,7 @@ pool size = 16, active threads = 16, queued tasks = 200, completed tasks =
 
 ## Performance [ts-performance]
 
-For general performance tuning tips and guidelines, see [*Performance tuning*](https://www.elastic.co/guide/en/logstash/current/performance-tuning.html).
+For general performance tuning tips and guidelines, see [*Performance tuning*](asciidocalypse://docs/logstash/docs/reference/performance-tuning.md).
 
 
 ## Troubleshooting a pipeline [ts-pipeline]

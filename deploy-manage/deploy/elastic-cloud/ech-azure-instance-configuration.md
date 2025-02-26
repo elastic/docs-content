@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku Azure instance configurations [ech-azure-instance-configuration]
 
-Azure [Ddv4](https://docs.microsoft.com/en-us/azure/virtual-machines/ddv4-ddsv4-series/), [Edsv4](https://docs.microsoft.com/en-us/azure/virtual-machines/edv4-edsv4-series/), [Fsv2](https://docs.microsoft.com/en-us/azure/virtual-machines/fsv2-series/), and [Lsv3](https://docs.microsoft.com/en-us/azure/virtual-machines/lsv3-series/) virtual machines (VM) are now available for Elastic Cloud deployments in all supported [Azure Cloud regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html#ec-azure_regions). These VMs provide additional combinations of compute, memory, and disk configurations to better fit your use-cases to optimize performance and cost.
+Azure [Ddv4](https://docs.microsoft.com/en-us/azure/virtual-machines/ddv4-ddsv4-series/), [Edsv4](https://docs.microsoft.com/en-us/azure/virtual-machines/edv4-edsv4-series/), [Fsv2](https://docs.microsoft.com/en-us/azure/virtual-machines/fsv2-series/), and [Lsv3](https://docs.microsoft.com/en-us/azure/virtual-machines/lsv3-series/) virtual machines (VM) are now available for Elastic Cloud deployments in all supported [Azure Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-azure_regions). These VMs provide additional combinations of compute, memory, and disk configurations to better fit your use-cases to optimize performance and cost.
 
 To learn about the Azure specific configurations, check:
 
@@ -26,7 +26,7 @@ For example, Instance ID / SKU: `azure.es.datahot.ddv4`
 | `\*.es.datahot.*` | Denotes that this configuration is an Elasticsearch (`es`) cluster component that serves as a data node for hot content. Other options may be `datawarm`, `datacold`, `datafrozen` for data nodes, and `kibana`, `master`, and so on for other components. |
 | `*.ddv4` | Denotes that this configuration is running on the Azure Ddv4 VM series. |
 
-The new configuration naming convention aligns with the [data tiers](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html) intended for each configuration type, replacing prior naming conventions of “highio”, “highcpu”, and so on. The following table details the new configurations for data nodes and compares them with prior naming conventions where applicable.
+The new configuration naming convention aligns with the [data tiers](/manage-data/lifecycle/data-tiers.md) intended for each configuration type, replacing prior naming conventions of “highio”, “highcpu”, and so on. The following table details the new configurations for data nodes and compares them with prior naming conventions where applicable.
 
 | New config name | Notes |
 | --- | --- |
@@ -37,7 +37,7 @@ The new configuration naming convention aligns with the [data tiers](https://www
 | azure.es.datawarm.edsv4, azure.es.datacold.edsv4 | This is a new configuration that replaces “azure.data.highstorage.e16sv3” config but provides more disk space. |
 | azure.es.datafrozen.edsv4 | This is a new configuration that replaces “azure.es.datafrozen.lsv2” or “azure.es.datafrozen.esv3” config but provides more disk space. |
 
-For a detailed price list, check the [Elastic Cloud price list](https://cloud.elastic.co/deployment-pricing-table?provider=azure). For a detailed specification of the new configurations, check [Elasticsearch Service default Azure instance configurations](ech-default-azure-configurations.md).
+For a detailed price list, check the [Elastic Cloud price list](https://cloud.elastic.co/deployment-pricing-table?provider=azure). For a detailed specification of the new configurations, check [{{ecloud}} default Azure instance configurations](ech-default-azure-configurations.md).
 
 The benefits of the new configurations are multifold:
 

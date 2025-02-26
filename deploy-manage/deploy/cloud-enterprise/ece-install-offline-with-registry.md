@@ -32,6 +32,10 @@ Installing ECE on multiple hosts with your own registry server is simpler, becau
     * Elastic Cloud Enterprise 3.8.1
     * Elasticsearch 8.17.1, Kibana 8.17.1, APM 8.17.1, and Enterprise Search 8.17.1
 
+    :::{important}
+       Enterprise Search is not available in versions 9.0+.
+    :::
+
 3. Tag the Docker images with your private registry, where `REGISTRY` is `my.private.repo:5000`, for example:
 
     ```sh

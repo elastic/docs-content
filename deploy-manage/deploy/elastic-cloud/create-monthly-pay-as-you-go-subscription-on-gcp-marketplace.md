@@ -1,4 +1,8 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
+  serverless: unavailable
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-gcp-marketplace-conversion.html
 ---

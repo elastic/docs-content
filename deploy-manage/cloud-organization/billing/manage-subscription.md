@@ -3,8 +3,9 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/general-check-subscription.html
   - https://www.elastic.co/guide/en/cloud/current/ec-subscription-overview.html
   - https://www.elastic.co/guide/en/cloud/current/ec-select-subscription-level.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   serverless: all
 ---
 
@@ -39,7 +40,7 @@ To change your subscription level:
 
 ### Feature usage notifications [ec_feature_usage_notifications]
 
-:::{applies}
+:::{applies_to}
 :hosted: all
 :::
 

@@ -1,9 +1,10 @@
 ---
+navigation_title: "Removing containers"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-uninstall.html
 ---
 
-# Remove Elastic Cloud Enterprise [ece-uninstall]
+# Remove Elastic Cloud Enterprise containers  [ece-uninstall]
 
 You might need to remove Elastic Cloud Enterprise for one of the following reasons:
 
@@ -14,22 +15,17 @@ You remove Elastic Cloud Enterprise by removing all containers on the host:
 
 * If using Docker
 
-::::{admonition} 
+
 ```sh
 docker rm -f frc-runners-runner frc-allocators-allocator $(docker ps -a -q); sudo rm -rf /mnt/data/elastic/ && docker ps -a
 ```
 
-::::
-
 
 * If using Podman
 
-::::{admonition} 
 ```sh
 sudo podman rm -f frc-runners-runner frc-allocators-allocator $(sudo podman ps -a -q); sudo rm -rf /mnt/data/elastic && sudo podman ps -a
 ```
-
-::::
 
 
 If you plan to reinstall Elastic Cloud Enterprise on the host, make sure you [delete the host](../../../deploy-manage/maintenance/ece/delete-ece-hosts.md) from the Cloud UI first. Reinstallation can fail if the host is still associated with your old Elastic Cloud Enterprise installation.

@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/log-settings-examples.html
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: all
 ---
 
 # Examples [log-settings-examples]
@@ -29,7 +30,7 @@ logging:
 
 ## Log in JSON format [log-in-json-ECS-example]
 
-Log the default log format to JSON layout instead of pattern (the default). With `json` layout, log messages will be formatted as JSON strings in [ECS format](https://www.elastic.co/guide/en/ecs/current/ecs-reference.html) that includes a timestamp, log level, logger, message text and any other metadata that may be associated with the log message itself.
+Log the default log format to JSON layout instead of pattern (the default). With `json` layout, log messages will be formatted as JSON strings in [ECS format](asciidocalypse://docs/ecs/docs/reference/index.md) that includes a timestamp, log level, logger, message text and any other metadata that may be associated with the log message itself.
 
 ```yaml
 logging:

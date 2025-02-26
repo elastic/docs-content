@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-transport-settings.html
 ---
 
 # Transport settings [k8s-transport-settings]
 
-The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) for details. For customization options of the HTTP layer, check [Services](accessing-services.md) and [TLS certificates](tls-certificates.md).
+The transport module in Elasticsearch is used for internal communication between nodes within the cluster as well as communication between remote clusters. Check the [Elasticsearch documentation](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) for details. For customization options of the HTTP layer, check [Services](accessing-services.md) and [TLS certificates](/deploy-manage/security/secure-http-communications.md).
 
 ## Customize the Transport Service [k8s_customize_the_transport_service]
 
@@ -29,10 +32,9 @@ When you change the `clusterIP` setting of the service, ECK deletes and re-creat
 ::::
 
 
-
 ## Configure a custom Certificate Authority [k8s-transport-ca]
 
-Elasticsearch uses X.509 certificates to establish encrypted and authenticated connections across nodes in the cluster. By default, ECK creates a self-signed CA certificate to issue a certificate [for each node in the cluster](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-basic-setup.html#encrypt-internode-communication).
+Elasticsearch uses X.509 certificates to establish encrypted and authenticated connections across nodes in the cluster. By default, ECK creates a self-signed CA certificate to issue a certificate [for each node in the cluster](/deploy-manage/security/set-up-basic-security.md#encrypt-internode-communication).
 
 You can use a Kubernetes secret to provide your own CA instead of the self-signed certificate that ECK will then use to create node certificates for transport connections. The CA certificate must be stored in the secret under `ca.crt` and the private key must be stored under `ca.key`.
 
@@ -119,8 +121,6 @@ spec:
 2. The example assumes that a `ClusterIssuer` by the name of `ca-cluster-issuer` exists and a PEM encoded version of the CA certificate is available in a ConfigMap (in the example named `trust`).  The CA certificate must be in a file called `ca.crt` inside the ConfigMap in the same namespace as the Elasticsearch resource.
 3. If the remote cluster server is enabled, then the DNS names must also include both:* The DNS name for the related Kubernetes `Service`: `<cluster-name>-es-remote-cluster.${POD_NAMESPACE}.svc`
 * The Pod DNS name: `${POD_NAME}.<cluster-name>-es-<nodeset-name>.${POD_NAMESPACE}.svc`
-
-
 
 The following manifest is only provided to illustrate how these certificates can be configured in principle, using the trust-manager Bundle resource and cert-manager provisioned certificates:
 

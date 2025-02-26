@@ -172,8 +172,8 @@ When shipping logs to a monitoring deployment there are more logging features av
 
 #### For {{es}}: [ec-extra-logging-features-elasticsearch] 
 
-* [Audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-elasticsearch-audit-logs.md) - logs security-related events on your deployment
-* [Slow query and index logging](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html) - helps find and debug slow queries and indexing
+* [Audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
+* [Slow query and index logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/slow-log.md) - helps find and debug slow queries and indexing
 * Verbose logging - helps debug stack issues by increasing component logs
 
 After you’ve enabled log delivery on your deployment, you can [add the Elasticsearch user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to enable these features.
@@ -181,7 +181,7 @@ After you’ve enabled log delivery on your deployment, you can [add the Elastic
 
 #### For Kibana: [ec-extra-logging-features-kibana] 
 
-* [Audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-kibana-audit-logs.md) - logs security-related events on your deployment
+* [Audit logging](../../../deploy-manage/monitor/logging-configuration/enabling-audit-logs.md) - logs security-related events on your deployment
 
 After you’ve enabled log delivery on your deployment, you can [add the Kibana user settings](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to enable this feature.
 
@@ -189,20 +189,6 @@ After you’ve enabled log delivery on your deployment, you can [add the Kibana 
 ### Other components [ec-extra-logging-features-enterprise-search] 
 
 Enabling log collection also supports collecting and indexing the following types of logs from other components in your deployments:
-
-**Enterprise Search**
-
-* connectors.log*
-* crawler.log*
-* filebeat*
-* app-server.log*
-* system.log*
-* worker.log*
-* kibana.log*
-
-**App Search**
-
-* app-search*.log
 
 **APM**
 
@@ -220,10 +206,11 @@ Check the respective product documentation for more information about the loggin
 
 ## Metrics features [ec-extra-metrics-features] 
 
-With logging and monitoring enabled for a deployment, metrics are collected for Elasticsearch, Kibana, Enterprise Search, and APM with Fleet Server.
+With logging and monitoring enabled for a deployment, metrics are collected for Elasticsearch, Kibana, and APM with Fleet Server.
 
 
 #### Enabling Elasticsearch/Kibana audit logs on your deployment [ec-enable-audit-logs] 
+% Added by eedugon to audit logging in deploy and manage -> monitoring -> logging section
 
 Audit logs are useful for tracking security events on your {{es}} and/or {{kib}} clusters. To enable {{es}} audit logs on your deployment:
 

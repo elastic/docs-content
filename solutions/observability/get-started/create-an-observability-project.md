@@ -4,7 +4,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/observability-create-an-observability-project.html
 ---
 
-
+% Serverless only
 
 # Create an observability project [observability-create-an-observability-project]
 

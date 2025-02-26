@@ -2,7 +2,7 @@
 navigation_title: "Serverless billing dimensions"
 mapped_pages:
   - https://www.elastic.co/guide/en/serverless/current/general-serverless-billing.html
-applies:
+applies_to:
   serverless: all
 ---
 

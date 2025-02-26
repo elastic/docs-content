@@ -14,7 +14,6 @@ The [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application
 
 * Kibana
 * APM Server
-* Enterprise Search
 * Elastic Maps Server
 
 These resources expose the `scale` subresource which can be used by the Horizontal Pod Autoscaler controller to automatically adjust the number of replicas according to the CPU load or any other custom or external metric. This example shows how to create an `HorizontalPodAutoscaler` resource to adjust the replicas of a Kibana deployment according to the CPU load:

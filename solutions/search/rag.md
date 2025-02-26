@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrieval_augmented_generation.html
-applies:
+applies_to:
   stack:
   serverless:
 ---

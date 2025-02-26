@@ -1,14 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/configure-operator-privileges.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
 ---
 
 # Configure operator privileges [configure-operator-privileges]
 
-::::{note} 
-{cloud-only}
+::::{admonition} Indirect use only
+This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
-
 
 Before you can use operator privileges, you must [enable the feature](#enable-operator-privileges) on all nodes in the cluster and [designate operator users](#designate-operator-users).
 

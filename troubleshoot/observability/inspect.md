@@ -8,7 +8,7 @@ mapped_pages:
 The **Inspect** view in {{kib}} allows you to view information about all requests that were made to collect the data displayed on the current page.
 
 :::{image} ../../images/observability-inspect-flyout.png
-:alt: Inspector flyout in the {uptime-app}
+:alt: Inspector flyout in the {{uptime-app}}
 :class: screenshot
 :::
 
@@ -25,7 +25,7 @@ Inspecting requests is available for the following UIs:
 
 To enable inspect across apps:
 
-1. Go to {{kib}}'s [Advanced Settings](https://www.elastic.co/guide/en/kibana/current/advanced-options.html).
+1. Go to {{kib}}'s [Advanced Settings](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md).
 2. Find the **Observability** section.
 3. Turn on the **Inspect ES queries** option.
 4. Click **Save changes**.

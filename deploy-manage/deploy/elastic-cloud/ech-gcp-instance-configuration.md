@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku GCP instance configurations [ech-gcp-instance-configuration]
 
-Google Compute Engine (GCE) N2 general purpose VM types are now available for Elastic Cloud deployments in all supported [Google Cloud regions](https://www.elastic.co/guide/en/cloud/current/ec-regions-templates-instances.html#ec-gcp_regions). [N2](https://cloud.google.com/compute/docs/machine-types) VMs have a better mix of vCPU, RAM, and internal disk, and are up to 50% more cost effective when compared to N1 VM types. In addition to N2, we also provide N2D VMs across the Google Cloud regions.
+Google Compute Engine (GCE) N2 general purpose VM types are now available for Elastic Cloud deployments in all supported [Google Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-gcp_regions). [N2](https://cloud.google.com/compute/docs/machine-types) VMs have a better mix of vCPU, RAM, and internal disk, and are up to 50% more cost effective when compared to N1 VM types. In addition to N2, we also provide N2D VMs across the Google Cloud regions.
 
 To learn about the GCE specific configurations, check:
 
@@ -27,7 +27,7 @@ For example, Instance ID / SKU: `gcp.es.datahot.n2.68x10x45`
 | `\*.n2.*` | Denotes that this configuration is running on the GCP N2 family. |
 | `*.68x10x45` | Denotes the resource configuration, delimited by “x”.<br>* The first argument (`68`) denotes the total gross RAM capacity of the instance. Normally we use 4GB of that for utilities and therefore this configuration has a “usable RAM” of 64GB.<br>* The second argument (`10`) denotes the number of vCPUs allocated to the entire machine.<br>* The third argument denotes the ratio of RAM to storage capacity as in 1:X. In this case, for each 1GB of RAM, you will have 45 GB of disk to store Elasticsearch data. |
 
-The new configuration naming convention aligns with the [data tiers](https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html) intended for each configuration type, replacing prior naming conventions of “highio”, “highcpu”, and so on. The following table details the new configurations for data nodes and compares them with prior naming conventions where applicable.
+The new configuration naming convention aligns with the [data tiers](/manage-data/lifecycle/data-tiers.md) intended for each configuration type, replacing prior naming conventions of “highio”, “highcpu”, and so on. The following table details the new configurations for data nodes and compares them with prior naming conventions where applicable.
 
 | New config name | Notes |
 | --- | --- |
@@ -39,7 +39,7 @@ The new configuration naming convention aligns with the [data tiers](https://www
 | gcp.es.datawarm.n2.68x10x190, gcp.es.datacold.n2.68x10x190 | These configurations replace “highstorage”, which is based on N1 with 1:160 RAM:disk and similar RAM:CPU ratios. |
 | gcp.es.datafrozen.n2.68x10x95 | This configuration replaces the (short lived) gcp.es.datafrozen.n2d.64x8x95 configuration we used for the frozen cache tier. n2d was based on the AMC epyc processor but we found that the Intel-based configuration provides a slightly better cost/performance ratio. We also tweaked the RAM/CPU ratios to align to other configurations and benchmarks. |
 
-For a detailed price list, check the [Elastic Cloud deployment pricing table](https://cloud.elastic.co/deployment-pricing-table?provider=gcp). For a detailed specification of the new configurations, check [Elasticsearch Service default GCP instance configurations](ech-default-gcp-configurations.md).
+For a detailed price list, check the [Elastic Cloud deployment pricing table](https://cloud.elastic.co/deployment-pricing-table?provider=gcp). For a detailed specification of the new configurations, check [{{ecloud}} default GCP instance configurations](ech-default-gcp-configurations.md).
 
 The benefits of the new configurations are multifold:
 
@@ -47,7 +47,7 @@ The benefits of the new configurations are multifold:
 2. The existing family types have been extended in terms of disk capacity which translates to a more cost effective infrastructure which in some cases can save up to 80% when calculating cost by disk capacity.
 3. There are now more instance types to choose from in the hot tier.  Rather than the traditional “highio” and “highcpu”, there are now four options to cover the hot data tier which allows to optimize cost/performance further.
 
-In addition to data nodes for storage and search, Elasticsearch nodes also have machine learning nodes, master nodes, and coordinating nodes. These auxiliary node types along with application nodes such as APM servers, Kibana, and Enterprise search have also been upgraded to the new N2 instance types. Both auxiliary node and application node configurations are based on Elasticsearch data node configuration types shown in the previous table.
+In addition to data nodes for storage and search, Elasticsearch nodes also have machine learning nodes, master nodes, and coordinating nodes. These auxiliary node types along with application nodes such as APM servers and Kibana instances have also been upgraded to the new N2 instance types. Both auxiliary node and application node configurations are based on Elasticsearch data node configuration types shown in the previous table.
 
 | New config name | Notes |
 | --- | --- |
@@ -58,8 +58,6 @@ In addition to data nodes for storage and search, Elasticsearch nodes also have 
 | gcp.kibana.n2.68x32x45 | Kibana nodes have been upgraded two steps up as well, to use 4x the CPU as they had when based on “highmem”. This ensures a more performant Kibana and helps with some client side aggregation, as well as responsive UI. |
 | gcp.apm.n2.68x32x45 | Same upgrade for APM. Will now use 4x the CPU. |
 | gcp.integrationsserver.n2.68x32x45 | Same upgrade for Integrations Server. Will now use 4x the CPU. |
-| gcp.enterprisesearch.n2.68x32x45 | Same upgrade for Enterprise Search application servers. Will now use 4x the CPU. |
-
 
 ## Selecting the right configuration for you [ech-gcp-configuration-choose]
 

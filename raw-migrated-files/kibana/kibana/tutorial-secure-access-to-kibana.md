@@ -11,7 +11,7 @@ This guide introduces you to three of {{kib}}'s security features: spaces, roles
 
 Do you have multiple teams using {{kib}}? Do you want a “playground” to experiment with new visualizations or rules? If so, then [{{kib}} Spaces](../../../deploy-manage/manage-spaces.md) can help.
 
-Think of a space as another instance of {{kib}}. A space allows you to organize your [dashboards](../../../explore-analyze/dashboards.md), [rules](../../../explore-analyze/alerts-cases.md), [machine learning jobs](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md), and much more into their own categories. For example, you might have a Marketing space for your marketeers to track the results of their campaigns, and an Engineering space for your developers to [monitor application performance](https://www.elastic.co/guide/en/apm/guide/current/apm-overview.html).
+Think of a space as another instance of {{kib}}. A space allows you to organize your [dashboards](../../../explore-analyze/dashboards.md), [rules](../../../explore-analyze/alerts-cases.md), [machine learning jobs](../../../explore-analyze/machine-learning/machine-learning-in-kibana.md), and much more into their own categories. For example, you might have a Marketing space for your marketeers to track the results of their campaigns, and an Engineering space for your developers to [monitor application performance](/solutions/observability/apps/application-performance-monitoring-apm.md).
 
 The assets you create in one space are isolated from other spaces, so when you enter a space, you only see the assets that belong to that space.
 

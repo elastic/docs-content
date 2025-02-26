@@ -9,7 +9,7 @@ mapped_pages:
 # Monitor Amazon Web Services (AWS) with Elastic Serverless Forwarder [monitor-aws-esf]
 
 
-The Elastic Serverless Forwarder (ESF) is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to Elastic. Elastic Serverless Forwarder is published in the AWS Serverless Application Repository (SAR). For more information on ESF, check the [Elastic Serverless Forwarder Guide](https://www.elastic.co/guide/en/esf/{{esf_version}}/aws-elastic-serverless-forwarder.html).
+The Elastic Serverless Forwarder (ESF) is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to Elastic. Elastic Serverless Forwarder is published in the AWS Serverless Application Repository (SAR). For more information on ESF, check the [Elastic Serverless Forwarder Guide](asciidocalypse://docs/elastic-serverless-forwarder/docs/reference/index.md).
 
 
 ## What you’ll learn [aws-esf-what-you-learn]
@@ -18,13 +18,13 @@ In this tutorial, you’ll learn how to:
 
 * Enable AWS VPC flow logs to be sent to your S3 bucket
 * Create an SQS queue and notifications for VPC flow logs
-* Install and configure the Elastic AWS integration from {kib}
+* Install and configure the Elastic AWS integration from {{kib}}
 * Visualize and analyze AWS logs in the Elastic Stack
 
 
 ## Before you begin [aws-esf-prerequisites]
 
-Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. Elastic Serverless Forwarder works with Elastic Stack 7.17 and later. You also need an AWS account with permissions to pull the necessary data from AWS.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. Elastic Serverless Forwarder works with Elastic Stack 7.17 and later. You also need an AWS account with permissions to pull the necessary data from AWS.
 
 
 ## Step 1: Create an S3 Bucket to store VPC flow logs [esf-step-one]

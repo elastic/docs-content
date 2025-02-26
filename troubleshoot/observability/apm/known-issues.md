@@ -110,8 +110,8 @@ There are three ways to fix this error:
 
 1. Find broken rules
 
-   :::::{admonition}
-   To identify rules in this exact state, you can use the [find rules endpoint](https://www.elastic.co/guide/en/kibana/current/find-rules-api.html) and search for the APM anomaly rule type as well as this exact error message indicating that the rule is in the broken state. We will also use the `fields` parameter to specify only the fields required when making the update request later.
+   :::::{{tip}
+   To identify rules in this exact state, you can use the [find rules endpoint](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting) and search for the APM anomaly rule type as well as this exact error message indicating that the rule is in the broken state. We will also use the `fields` parameter to specify only the fields required when making the update request later.
 
     * `search_fields=alertTypeId`
     * `search=apm.anomaly`
@@ -162,7 +162,7 @@ There are three ways to fix this error:
 
 2. Prepare the update JSON doc(s)
 
-   ::::{admonition}
+   ::::{tip}
    For each broken rule found, create a JSON rule document with what was returned from the API in the previous step. You will need to make two changes to each document:
 
     1. Remove the `id` key but keep the value connected to this document (e.g. rename the file to `{{id}}.json`). **The `id` cannot be sent as part of the request body for the PUT request, but you will need it for the URL path.**
@@ -187,8 +187,8 @@ There are three ways to fix this error:
 
 3. Update each rule using the `PUT /api/alerting/rule/{{id}}` API
 
-   ::::{admonition}
-   For each rule, submit a PUT request to the [update rule endpoint](https://www.elastic.co/guide/en/kibana/current/update-rule-api.html) using that rule’s ID and its stored update document from the previous step. For example, assuming the first broken rule’s ID is `046c0d4f`:
+   ::::{tip}
+   For each rule, submit a PUT request to the [update rule endpoint](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-alerting) using that rule’s ID and its stored update document from the previous step. For example, assuming the first broken rule’s ID is `046c0d4f`:
 
     ```shell
     curl -u "$KIBANA_USER":"$KIBANA_PASSWORD" -XPUT "$KIBANA_URL/api/alerting/rule/046c0d4f" -H 'Content-Type: application/json' -H 'kbn-xsrf: rule-update' -d @046c0d4f.json

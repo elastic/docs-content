@@ -1,14 +1,18 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/operator-privileges.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
 ---
 
 # Operator privileges [operator-privileges]
 
-::::{note} 
-{cloud-only}
+::::{admonition} Indirect use only
+This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
-
 
 With a typical {{es}} deployment, people who administer the cluster also operate the cluster at the infrastructure level. User authorization based on [role-based access control (RBAC)](user-roles.md) is effective and reliable for this environment. However, in more managed environments, such as [{{ess}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body), there is a distinction between the operator of the cluster infrastructure and the administrator of the cluster.
 

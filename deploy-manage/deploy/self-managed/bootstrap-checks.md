@@ -25,3 +25,8 @@ $$$dev-vs-prod-mode$$$
 $$$bootstrap-checks-tls$$$
 
 $$$single-node-discovery$$$
+
+**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
+
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/bootstrap-checks.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/bootstrap-checks.md)
+* [/raw-migrated-files/elasticsearch/elasticsearch-reference/bootstrap-checks-xpack.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/bootstrap-checks-xpack.md)

@@ -6,11 +6,11 @@ mapped_pages:
 # Elastic Agent to Elasticsearch: Agent installed [agent-installed]
 
 :::{image} ../../../images/ingest-ea-agent-installed.png
-:alt: Image showing {{agent}} collecting data and sending to {es}
+:alt: Image showing {{agent}} collecting data and sending to {{es}}
 :::
 
 Ingest model
-:   Control path: {{agent}} to {{fleet}} to {{es}}<br> Data path: {{agent}} to {es}
+:   Control path: {{agent}} to {{fleet}} to {{es}}<br> Data path: {{agent}} to {{es}}
 
 Use when
 :   An {{agent}} integration exists in the {{kib}} integrations UI for the software you want to monitor, observe, and protect.

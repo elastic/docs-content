@@ -4,11 +4,33 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-infrastructure.html
 ---
 
-# Infrastructure
+# Infrastructure [observability-apm-infrastructure]
 
-% What needs to be done: Align serverless/stateful
+::::{admonition} Applications UI Infrastructure is in beta
+:class: important
 
-% Use migrated content from existing pages that map to this page:
+The Applications UI Infrastructure functionality is in beta and is subject to change. The design and code is less mature than official generally available features and is being provided as-is with no warranties.
 
-% - [ ] ./raw-migrated-files/observability-docs/observability/apm-infrastructure.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/observability-apm-infrastructure.md
+::::
+
+
+The **Infrastructure** tab provides information about the containers, pods, and hosts that the selected service is linked to.
+
+* **Pods**: Uses the `kubernetes.pod.name` from the [APM metrics data streams](../../../solutions/observability/apps/metrics.md).
+* **Containers**: Uses the `container.id` from the [APM metrics data streams](../../../solutions/observability/apps/metrics.md).
+* **Hosts**: If the application is containerized—​if the APM metrics documents include `container.id`-- the `host.name` is used from the infrastructure data streams (filtered by `container.id`). If not, `host.hostname` is used from the APM metrics data streams.
+
+
+:::{image} ../../../images/serverless-infra.png
+:alt: Example view of the Infrastructure tab in the Applications UI
+:class: screenshot
+:::
+
+IT ops and software reliability engineers (SREs) can use this tab to quickly find a service’s underlying infrastructure resources when debugging a problem. Knowing what infrastructure is related to a service allows you to remediate issues by restarting, killing hanging instances, changing configuration, rolling back deployments, scaling up, scaling out, and so on.
+
+::::{admonition} Why is the infrastructure tab empty?
+:class: tip
+
+If there is no data in the Application UI’s infrastructure tab for a selected service, you can read more about why this happens and how to fix it in the [troubleshooting docs](../../../troubleshoot/observability/apm/common-problems.md#troubleshooting-apm-infra-data).
+
+::::

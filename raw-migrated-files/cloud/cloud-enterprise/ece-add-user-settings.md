@@ -3,7 +3,7 @@
 Change how Elasticsearch runs by providing your own user settings. User settings are appended to the `elasticsearch.yml` configuration file for your cluster and provide custom configuration options. Elastic Cloud Enterprise supports many of the user settings for the version of Elasticsearch that your cluster is running.
 
 ::::{tip}
-Some settings that could break your cluster if set incorrectly are blocked, such as certain zen discovery and security settings. For examples of a few of the settings that are generally safe in cloud environments, check [Additional Examples of Supported User Settings](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-change-user-settings-examples.html) and  [Editing Your User Settings](https://www.elastic.co/guide/en/cloud/current/ec-editing-user-settings.html) that can be enabled on our Elastic Cloud hosted offering.
+Some settings that could break your cluster if set incorrectly are blocked, such as certain zen discovery and security settings. For examples of a few of the settings that are generally safe in cloud environments, check [Additional Examples of Supported User Settings](https://www.elastic.co/guide/en/cloud-enterprise/current/ece-change-user-settings-examples.html) and  [Editing Your User Settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) that can be enabled on our Elastic Cloud hosted offering.
 ::::
 
 

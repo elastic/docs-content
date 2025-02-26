@@ -2,7 +2,8 @@
 navigation_title: "Search UI"
 mapped_pages:
   - https://www.elastic.co/guide/en/search-ui/current/overview.html
-applies:
+  - https://www.elastic.co/guide/en/search-ui/current/index.html
+applies_to:
   stack:
   serverless:
 ---
@@ -20,6 +21,9 @@ A JavaScript library for the fast development of modern, engaging search experie
 * **Smart URLs** - Searches, paging, filtering, and more, are captured in the URL for direct result linking.
 * **Flexible front-end** - Not just for React. Use with any JavaScript library, even vanilla JavaScript.
 * **Flexible back-end** - Use it with Elasticsearch, Elastic Enterprise Search, or any other search API.
+:::{important}
+Enterprise Search is not available in {{stack}} 9.0+.
+:::
 
 
 ## Live demos 👀 [overview-live-demos]
@@ -56,9 +60,9 @@ yarn add @elastic/search-ui @elastic/react-search-ui @elastic/react-search-ui-vi
 
 Get started quickly with Search UI and your favorite Elastic product by following one of the tutorials below:
 
-* [Elasticsearch](https://www.elastic.co/guide/en/search-ui/current/tutorials-elasticsearch.html)
-* [Elastic App Search (⚠️ DEPRECATED)](https://www.elastic.co/guide/en/search-ui/current/tutorials-app-search.html)
-* [Elastic Workplace Search (⚠️ DEPRECATED)](https://www.elastic.co/guide/en/search-ui/current/tutorials-workplace-search.html)
+* [Elasticsearch](asciidocalypse://docs/search-ui/docs/tutorials-elasticsearch.md)
+* [Elastic App Search (⚠️ DEPRECATED)](asciidocalypse://docs/search-ui/docs/tutorials-app-search.md)
+* [Elastic Workplace Search (⚠️ DEPRECATED)](asciidocalypse://docs/search-ui/docs/tutorials-workplace-search.md)
 
 
 ## Use Cases 🛠️ [overview-use-cases]
@@ -66,7 +70,7 @@ Get started quickly with Search UI and your favorite Elastic product by followin
 
 ### Ecommerce [overview-ecommerce]
 
-Search UI works great in the ecommerce use-case. Check out our [ecommerce guide](https://www.elastic.co/guide/en/search-ui/current/solutions-ecommerce.html) that includes demo and code examples, as well as general guidance for ecommerce search.
+Search UI works great in the ecommerce use-case. Check out our [ecommerce guide](asciidocalypse://docs/search-ui/docs/ecommerce.md) that includes demo and code examples, as well as general guidance for ecommerce search.
 
 
 ## FAQ 🔮 [overview-faq]
@@ -83,14 +87,14 @@ Search UI is "headless". You can use vanilla JavaScript or write support for it 
 
 You can!
 
-Read the [Custom Styles and Layout Guide](https://www.elastic.co/guide/en/search-ui/current/guides-customizing-styles-and-html.html) to learn more, or check out the [Seattle Indies Expo Demo](https://github.com/elastic/seattle-indies-expo-search).
+Read the [Custom Styles and Layout Guide](asciidocalypse://docs/search-ui/docs/basic-usage.md) to learn more, or check out the [Seattle Indies Expo Demo](https://github.com/elastic/seattle-indies-expo-search).
 
 
 ### Can I build my own Components? [overview-can-i-build-my-own-components]
 
 Yes! Absolutely.
 
-Check out the [Build Your Own Component Guide](https://www.elastic.co/guide/en/search-ui/current/guides-creating-your-own-components.html).
+Check out the [Build Your Own Component Guide](asciidocalypse://docs/search-ui/docs/guides-creating-own-components.md).
 
 
 ### Does Search UI only work with App Search? [overview-does-search-ui-only-work-with-app-search]
@@ -99,12 +103,12 @@ Nope! We do have two first party connectors: Site Search and App Search.
 
 But Search UI is headless. You can use *any* Search API.
 
-Read the [Building a custom connector](https://www.elastic.co/guide/en/search-ui/current/guides-building-a-custom-connector.html) to learn more about building your own connector for your API.
+Read the [Building a custom connector](asciidocalypse://docs/search-ui/docs/guides-building-custom-connector.md) to learn more about building your own connector for your API.
 
 
 ### How do I use this with Elasticsearch? [overview-how-do-i-use-this-with-elasticsearch]
 
-Read the [Elasticsearch Connector](https://www.elastic.co/guide/en/search-ui/current/api-connectors-elasticsearch.html) docs.
+Read the [Elasticsearch Connector](asciidocalypse://docs/search-ui/docs/api-connectors-elasticsearch.md) docs.
 
 
 ### Where do I report issues with the Search UI? [overview-where-do-i-report-issues-with-the-search-ui]

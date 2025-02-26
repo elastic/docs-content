@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-index-search-time.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Index and search analysis [analysis-index-search-time]
@@ -8,13 +11,12 @@ mapped_pages:
 Text analysis occurs at two times:
 
 Index time
-:   When a document is indexed, any [`text`](https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html) field values are analyzed.
+:   When a document is indexed, any [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) field values are analyzed.
 
 Search time
-:   When running a [full-text search](https://www.elastic.co/guide/en/elasticsearch/reference/current/full-text-queries.html) on a `text` field, the query string (the text the user is searching for) is analyzed.
+:   When running a [full-text search](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/full-text-queries.md) on a `text` field, the query string (the text the user is searching for) is analyzed. Search time is also called *query time*.
 
-    Search time is also called *query time*.
-
+    For more details on text analysis at search time, refer to [Text analysis during search](/solutions/search/full-text/text-analysis-during-search.md).
 
 The analyzer, or set of analysis rules, used at each time is called the *index analyzer* or *search analyzer* respectively.
 
@@ -22,7 +24,7 @@ The analyzer, or set of analysis rules, used at each time is called the *index a
 
 In most cases, the same analyzer should be used at index and search time. This ensures the values and query strings for a field are changed into the same form of tokens. In turn, this ensures the tokens match as expected during a search.
 
-::::{dropdown} **Example**
+::::{dropdown} Example
 A document is indexed with the following value in a `text` field:
 
 ```text
@@ -79,7 +81,7 @@ While less common, it sometimes makes sense to use different analyzers at index 
 
 Generally, a separate search analyzer should only be specified when using the same form of tokens for field values and query strings would create unexpected or irrelevant search matches.
 
-::::{dropdown} **Example**
+::::{dropdown} Example
 :name: different-analyzer-ex
 
 {{es}} is used to create a search engine that matches only words that start with a provided prefix. For instance, a search for `tr` should return `tram` or `trope`—but never `taxi` or `bat`.

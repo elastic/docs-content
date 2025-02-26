@@ -10,7 +10,7 @@ mapped_pages:
 
 
 ::::{note} 
-Fleet-managed users should see [View {{agent}} logs](https://www.elastic.co/guide/en/fleet/current/monitor-elastic-agent.html) to learn how to view logs and change the logging level of {{agent}}.
+Fleet-managed users should see [View {{agent}} logs](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/monitor-elastic-agent.md) to learn how to view logs and change the logging level of {{agent}}.
 ::::
 
 

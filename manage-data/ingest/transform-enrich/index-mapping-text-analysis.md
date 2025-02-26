@@ -1,3 +1,9 @@
+---
+applies_to:
+  stack: ga
+  serverless: ga
+---
+
 # Index mapping and text analysis
 
 As part of planning how your incoming data might be transformed and enriched as it is ingested, you may want to customize how the data should be organized inside {{es}} and how text fields should be analyzed.

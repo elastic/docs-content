@@ -27,17 +27,17 @@ This frequently-asked-questions list helps you with common questions while you g
     $$$faq-trial$$$Can I try Elasticsearch Service for free?
     :   Yes, sign up for a 14-day free trial. The trial starts the moment a cluster is created.
 
-        During the free trial period get access to a deployment to explore Elastic solutions for Enterprise Search, Observability, Security, or the latest version of the Elastic Stack.
+        During the free trial period get access to a deployment to explore Elastic solutions for Search, Observability, Security, or the latest version of the Elastic Stack.
 
 
     $$$faq-config$$$What if I need to change the size of my {{es}} cluster at a later time?
     :   Scale your clusters both up and down from the user console, whenever you like. The resizing of the cluster is transparently done in the background, and highly available clusters are resized without any downtime. If you scale your cluster down, make sure that the downsized cluster can handle your {{es}} memory requirements. Read more about sizing and memory in [Sizing {{es}}](https://www.elastic.co/blog/found-sizing-elasticsearch).
 
     $$$faq-subscriptions$$$Do you offer support?
-    :   Yes, all subscription levels for Elasticsearch Service include support, handled by email or through the Elastic Support Portal. Different subscription levels include different levels of support. For the Standard subscription level, there is no service-level agreement (SLA) on support response times. Gold and Platinum subscription levels include an SLA on response times to tickets and dedicated resources. To learn more, check [Getting Help](../../../troubleshoot/troubleshoot/index.md).
+    :   Yes, all subscription levels for Elasticsearch Service include support, handled by email or through the Elastic Support Portal. Different subscription levels include different levels of support. For the Standard subscription level, there is no service-level agreement (SLA) on support response times. Gold and Platinum subscription levels include an SLA on response times to tickets and dedicated resources. To learn more, check [Getting Help](../../../troubleshoot/index.md).
 
     $$$faq-where$$$Where is Elasticsearch Service hosted?
-    :   We host our {{es}} clusters on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. Check out which [regions we support](https://www.elastic.co/guide/en/cloud/current/ec-reference-regions.html) and what [hardware we use](https://www.elastic.co/guide/en/cloud/current/ec-reference-hardware.html). New data centers are added all the time.
+    :   We host our {{es}} clusters on Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure. Check out which [regions we support](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/regions.md) and what [hardware we use](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/hardware.md). New data centers are added all the time.
 
     $$$faq-vs-aws$$$What is the difference between Elasticsearch Service and the Amazon {{es}} Service?
     :   Elasticsearch Service is the only hosted and managed {{es}} service built, managed, and supported by the company behind {{es}}, {{kib}}, {{beats}}, and {{ls}}. With Elasticsearch Service, you always get the latest versions of the software. Our service is built on best practices and years of experience hosting and managing thousands of {{es}} clusters in the Cloud and on premise. For more information, check the following Amazon and Elastic {{es}} Service [comparison page](https://www.elastic.co/aws-elasticsearch-service).

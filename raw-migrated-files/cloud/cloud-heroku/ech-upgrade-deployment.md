@@ -30,7 +30,7 @@ When upgrading from one recent major Elasticsearch version to the next, we recom
 * [Upgrade to Elasticsearch 5.x](https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v5.html)
 
 ::::{warning} 
-If you have a custom plugin installed, you must [update the plugin](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ech-update-bundles-and-plugins) so that it matches the Elasticsearch version that you are upgrading to. When the custom plugin does not match the Elasticsearch version, the upgrade fails.
+If you have a custom plugin installed, you must [update the plugin](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) so that it matches the Elasticsearch version that you are upgrading to. When the custom plugin does not match the Elasticsearch version, the upgrade fails.
 ::::
 
 

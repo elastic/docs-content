@@ -29,7 +29,7 @@ A cluster is eligible as a destination for a built-in snapshot restore if it mee
 ::::
 
 
-The list of available snapshots can be found in the [`found-snapshots` repository](../../../deploy-manage/tools/snapshot-and-restore/self-managed.md#ess-repo-types).
+The list of available snapshots can be found in the [`found-snapshots` repository](../../../deploy-manage/tools/snapshot-and-restore/self-managed.md).
 
 To restore built-in snapshots across clusters, there are two options:
 

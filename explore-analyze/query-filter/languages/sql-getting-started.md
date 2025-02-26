@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: Getting started
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-getting-started.html
@@ -47,7 +47,7 @@ $ ./bin/elasticsearch-sql-cli
 
 From there you can run the same query:
 
-```sqlcli
+```sql
 sql> SELECT * FROM library WHERE release_date < '2000-01-01';
     author     |     name      |  page_count   | release_date
 ---------------+---------------+---------------+------------------------

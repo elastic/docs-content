@@ -1,22 +1,27 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-create-ldap-profiles.html
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # LDAP [ece-create-ldap-profiles]
 
-If you use a Lightweight Directory Access Protocol (LDAP) server to authenticate users, you can specify the servers, parameters, and the search modes that Elastic Cloud Enterprise uses to locate user credentials. There are several sections to the profile:
+If you use a Lightweight Directory Access Protocol (LDAP) server to authenticate users, you can specify the servers, parameters, and the search modes that {{ece}} uses to locate user credentials. To set up LDAP authentication, perform the following steps:
 
-* Specify the [general LDAP settings](#ece-ldap-general-settings).
-* Optional: Prepare the [trusted CA certificates](#ece-prepare-ldap-certificates).
-* Supply the [bind credentials](#ece-supply-ldap-bind-credentials).
-* Select the [search mode and group search](#ece-ldap-search-mode) settings.
-* Create [role mappings](#ece-ldap-role-mapping), either to all users that match the profile or assign roles to specific groups.
-* Add any [custom configuration](#ece-ldap-custom-configuration) advanced settings to the YAML file.
+1. Specify the [general LDAP settings](#ece-ldap-general-settings).
+2. Optional: Prepare the [trusted CA certificates](#ece-prepare-ldap-certificates).
+3. Supply the [bind credentials](#ece-supply-ldap-bind-credentials).
+4. Select the [search mode and group search](#ece-ldap-search-mode) settings.
+5. Create [role mappings](#ece-ldap-role-mapping), either to all users that match the profile, or assign roles to specific groups.
+6. Add any [custom configuration](#ece-ldap-custom-configuration) advanced settings to the YAML file.
 
-$$$ece-ldap-general-settings$$$Begin the provider profile by adding the general settings:
+## Add the general settings [ece-ldap-general-settings]
 
-1. [Log into the Cloud UI](../../deploy/cloud-enterprise/log-into-cloud-ui.md).
+Begin the provider profile by adding the general settings:
+
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. Go to **Users** and then **Authentication providers**.
 3. From the **Add provider** drop-down menu, select **LDAP**.
 4. Provide a unique profile name. This name becomes the realm ID, with any spaces replaced by hyphens.
@@ -43,9 +48,9 @@ $$$ece-ldap-general-settings$$$Begin the provider profile by adding the general 
 
 
 
-## Prepare certificates [ece-prepare-ldap-certificates] 
+## Prepare certificates (optional)[ece-prepare-ldap-certificates] 
 
-Though optional, you can add one or more certificate authorities (CAs) to validate the server certificate that the Domain Controller uses for SSL/TLS. Connecting through SSL/TLS ensures that the identity of the AD server is authenticated before Elastic Cloud Enterprise transmits the user credentials and that the contents of the connection are encrypted.
+You can add one or more certificate authorities (CAs) to validate the server certificate that the Domain Controller uses for SSL/TLS. Connecting through SSL/TLS ensures that the identity of the AD server is authenticated before {{ece}} transmits the user credentials and that the contents of the connection are encrypted.
 
 1. Provide the URL to the ZIP file that contains a keystore with the CA certificate(s).
 
@@ -91,7 +96,7 @@ To configure the template search:
 
 ## Configure the group search settings [ece-ldap-search-groups] 
 
-You can configure how Elastic Cloud Enterprise searches for groups in the LDAP Server
+You can configure how {{ece}} searches for groups in the LDAP Server.
 
 To configure the group search:
 
@@ -111,16 +116,22 @@ To configure the group search:
 
 ## Create role mappings [ece-ldap-role-mapping] 
 
-When a user is authenticated, the role mapping assigns them roles in Elastic Cloud Enterprise.
+When a user is authenticated, the role mapping assigns them roles in {{ece}}.
 
 To assign all authenticated users a single role, select one of the **Default roles**.
 
 To assign roles according to the **User DN** of the user or **Group DN** of the group they belong to, use the **Add role mapping rule** fields.
 
+For a list of roles, refer to [Available roles and permissions](/deploy-manage/users-roles/cloud-enterprise-orchestrator/manage-users-roles.md#ece-user-role-permissions).
+
 
 ## Custom configuration [ece-ldap-custom-configuration] 
 
-You can add any additional settings to the **Advanced configuration** YAML file. For example, if you need to ignore the SSL check in a testing environment, you might add `ssl.verification_mode: none`. Note that all entries added should omit `xpack.security.authc.realms.ldap.$realm_id` prefix, as ECE will insert this itself and automatically account for any differences in format across Elasticsearch versions.
+You can add any additional settings to the **Advanced configuration** YAML file. For example, if you need to ignore the SSL check in a testing environment, you might add `ssl.verification_mode: none`. 
+
+:::{note}
+All entries added should omit the `xpack.security.authc.realms.ldap.$realm_id` prefix, as ECE will insert this itself and automatically account for any differences in format across {{es}} versions.
+:::
 
 ::::{important} 
 API keys created by LDAP users are not automatically deleted or disabled when the user is deleted or disabled in LDAP. When you delete a user in LDAP, make sure to also remove the user’s API key or delete the user in ECE.

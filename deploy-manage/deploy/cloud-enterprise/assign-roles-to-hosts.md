@@ -30,7 +30,7 @@ Once the `director` role is assigned to a runner, the Zookeeper service starts o
 
 Each role is associated with a set of Docker containers that provide the specific functionality.
 
-There are some additional roles shown in the Cloud UI, such as the [beats-runner](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html#glossary-beats-runner) and [services-forwarder](https://www.elastic.co/guide/en/elastic-stack-glossary/current/terms.html#glossary-services-forwarder) roles, that are required by Elastic Cloud Enterprise and that you cannot modify.
+There are some additional roles shown in the Cloud UI, such as the [beats-runner](asciidocalypse://docs/docs-content/docs/reference/glossary/index.md#glossary-beats-runner) and [services-forwarder](asciidocalypse://docs/docs-content/docs/reference/glossary/index.md#glossary-services-forwarder) roles, that are required by Elastic Cloud Enterprise and that you cannot modify.
 
 To assign roles to hosts:
 

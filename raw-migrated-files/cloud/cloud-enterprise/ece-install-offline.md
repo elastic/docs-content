@@ -10,7 +10,7 @@ Installing ECE on hosts without internet access is commonly referred to as an *o
 
 * Be part of the `docker` group to run the installation script. You should not install Elastic Cloud Enterprise as the `root` user.
 * Set up your [wildcard DNS record](../../../deploy-manage/deploy/cloud-enterprise/ece-wildcard-dns.md).
-* Set up and run a local copy of the Elastic Package Repository, otherwise your deployments with APM server and Elastic agent won’t work. Refer to the [Running EPR in airgapped environments](https://www.elastic.co/guide/en/fleet/current/air-gapped.html#air-gapped-diy-epr) documentation.
+* Set up and run a local copy of the Elastic Package Repository, otherwise your deployments with APM server and Elastic agent won’t work. Refer to the [Running EPR in airgapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md#air-gapped-diy-epr) documentation.
 * Deployment End-of-life (EOL) information relies on the connection to [https://www.elastic.co/support/eol.json](https://www.elastic.co/support/eol.json). If EOL information is updated, Elastic may require you to reconnect to [https://www.elastic.co/support/eol.json](https://www.elastic.co/support/eol.json) over the Internet to get this information reflected.
 
 When you are ready to install ECE, you can proceed:

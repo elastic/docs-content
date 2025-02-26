@@ -8,7 +8,7 @@ mapped_pages:
 
 # Fix master nodes out of disk [fix-master-node-out-of-disk]
 
-{{es}} is using master nodes to coordinate the cluster. If the master or any master eligible nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API](https://www.elastic.co/guide/en/elasticsearch/reference/current/health-api.html) reports that your master node is out of space you need to increase the disk capacity of your master nodes.
+{{es}} is using master nodes to coordinate the cluster. If the master or any master eligible nodes are running out of space, you need to ensure that they have enough disk space to function. If the [health API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report) reports that your master node is out of space you need to increase the disk capacity of your master nodes.
 
 :::::::{tab-set}
 
@@ -28,7 +28,7 @@ mapped_pages:
 ::::::{tab-item} Self-managed
 In order to increase the disk capacity of a master node, you will need to replace **all** the master nodes with master nodes of higher disk capacity.
 
-1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high) and can be retrieved via the following command:
+1. First, retrieve the disk threshold that will indicate how much disk space is needed. The relevant threshold is the [high watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high) and can be retrieved via the following command:
 
     ```console
     GET _cluster/settings?include_defaults&filter_path=*.cluster.routing.allocation.disk.watermark.high*
@@ -54,7 +54,7 @@ In order to increase the disk capacity of a master node, you will need to replac
       }
     ```
 
-    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-watermark-high).
+    The above means that in order to resolve the disk shortage we need to either drop our disk usage below the 90% or have more than 150GB available, read more how this threshold works [here](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high).
 
 2. The next step is to find out the current disk usage, this will allow to calculate how much extra space is needed. In the following example, we show only the master nodes for readability purposes:
 

@@ -2,7 +2,7 @@
 
 To upgrade from 7.16.0 or earlier to 9.0.0-beta1, **you must first upgrade to 8.17**, which enables you to use the **Upgrade Assistant** to [prepare for the upgrade](../../../deploy-manage/upgrade/deployment-or-cluster.md#prepare-to-upgrade). Before you upgrade, you must resolve all critical issues identified by the **Upgrade Assistant**.
 
-In addition, we recommend to carefully review the [list of breaking changes and deprecations](https://www.elastic.co/guide/en/kibana/current/breaking-changes-summary.html) and to take any necessary actions to mitigate their impact on the upgrade. You can enable the [deprecated APIs debug logs config](https://www.elastic.co/guide/en/kibana/current/logging-settings.html#enable-http-debug-logs) to get information about calls to deprecated APIs.
+In addition, we recommend to carefully review the [list of breaking changes and deprecations](asciidocalypse://docs/kibana/docs/release-notes/breaking-changes/kibana.md) and to take any necessary actions to mitigate their impact on the upgrade. You can enable the [deprecated APIs debug logs config](asciidocalypse://docs/kibana/docs/reference/configuration-reference/logging-settings.md#enable-http-debug-logs) to get information about calls to deprecated APIs.
 
 Rolling upgrades are unsupported in {{kib}}. To upgrade, you must shut down all {{kib}} instances, install the new software, and restart {{kib}}. Upgrading while older {{kib}} instances are running can cause data loss or upgrade failures.
 

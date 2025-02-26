@@ -18,7 +18,7 @@ You’ll learn how to:
 
 ## Before you begin [_before_you_begin_3]
 
-Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 
 
 ## Step 1: Install the GCP integration [_step_1_install_the_gcp_integration]
@@ -114,7 +114,7 @@ After creating a Pub/Sub topic and subscription, go to the **Dataflow Jobs** pag
 To create a job, click **Create Job From Template**. Set **Job name** as `auditlogs-stream` and select `Pub/Sub to Elasticsearch` from the **Dataflow template** dropdown menu:
 
 :::{image} ../../../images/observability-monitor-gcp-dataflow-pub-sub-elasticsearch.png
-:alt: GCP Dataflow Pub/Sub to {es}
+:alt: GCP Dataflow Pub/Sub to {{es}}
 :::
 
 Before running the job, fill in required parameters:

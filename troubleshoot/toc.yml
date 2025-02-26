@@ -1,7 +1,7 @@
 project: 'Troubleshoot'
 toc:
-  - file: troubleshoot/index.md
-  - file: elasticsearch/elasticsearch-reference.md
+  - file: index.md
+  - file: elasticsearch/elasticsearch.md
     children:
       - file: elasticsearch/clusters.md
         children:
@@ -18,7 +18,7 @@ toc:
               - file: elasticsearch/hotspotting.md
           - file: elasticsearch/troubleshooting-unstable-cluster.md
           - file: elasticsearch/troubleshooting-unbalanced-cluster.md
-          - file: elasticsearch/elasticsearch-reference/remote-clusters.md
+          - file: elasticsearch/remote-clusters.md
           - file: elasticsearch/diagnose-unassigned-shards.md
           - file: elasticsearch/troubleshooting-shards-capacity-issues.md
       - file: elasticsearch/data.md
@@ -49,13 +49,9 @@ toc:
               - file: elasticsearch/diagnosing-invalid-repositories.md
           - file: elasticsearch/repeated-snapshot-failures.md
       - file: elasticsearch/troubleshooting-searches.md
-
-      - file: elasticsearch/lifecycle-management.md
-        children: 
-        - file: elasticsearch/start-ilm.md
-        - file: elasticsearch/start-slm.md
-        - file: elasticsearch/elasticsearch-reference/index-lifecycle-management-errors.md
-      - file: elasticsearch/elasticsearch-reference/security.md
+      - file: elasticsearch/start-ilm.md
+      - file: elasticsearch/index-lifecycle-management-errors.md
+      - file: elasticsearch/security.md
         children:
           - file: elasticsearch/security/security-trb-settings.md
           - file: elasticsearch/security/security-trb-roles.md
@@ -100,76 +96,17 @@ toc:
   - file: kibana.md
     children:
       - file: kibana/using-kibana-server-logs.md
-      - file: kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md
-      - file: kibana/capturing-diagnostics.md
       - file: kibana/access.md
       - file: kibana/error-server-not-ready.md
-      - file: kibana/migration-failures.md
+      - file: kibana/trace-elasticsearch-query-to-the-origin-in-kibana.md
+      - file: kibana/monitoring.md
+      - file: kibana/alerts.md
+      - file: kibana/reporting.md
       - file: kibana/task-manager.md
       - file: kibana/maps.md
-      - file: kibana/reporting.md
       - file: kibana/graph.md
-      - file: kibana/alerts.md
-      - file: kibana/monitoring.md
-  - file: deployments.md
-    children:
-      - file: deployments/serverless.md
-      - file: deployments/elastic-cloud.md
-        children:
-          - file: deployments/elastic-cloud/monitoring.md
-      - file: deployments/cloud-enterprise/cloud-enterprise.md
-        children:
-          - file: deployments/cloud-enterprise/common-issues.md
-          - file: deployments/cloud-enterprise/use-emergency-roles-token.md
-          - file: deployments/cloud-enterprise/remove-cloud-enterprise.md
-          - file: deployments/cloud-enterprise/verify-zookeeper-sync-status.md
-          - file: deployments/cloud-enterprise/rebuilding-broken-zookeeper-quorum.md
-          - file: deployments/cloud-enterprise/troubleshooting-container-engines.md
-          - file: deployments/cloud-enterprise/run-ece-diagnostics-tool.md
-          - file: deployments/cloud-enterprise/ask-for-help.md
-          - file: deployments/cloud-enterprise/finding-deployments-finding-problems.md
-          - file: deployments/cloud-enterprise/heap-dumps.md
-          - file: deployments/cloud-enterprise/thread-dumps.md
-      - file: deployments/cloud-on-k8s/kubernetes.md
-        children:
-          - file: deployments/cloud-on-k8s/common-problems.md
-          - file: deployments/cloud-on-k8s/troubleshooting-methods.md
-          - file: deployments/cloud-on-k8s/run-eck-diagnostics.md
-          - file: deployments/cloud-on-k8s/jvm-heap-dumps.md
-      - file: deployments/esf/elastic-serverless-forwarder.md
-  - file: monitoring/cloud.md
-    children:
-      - file: monitoring/autoops.md
-      - file: monitoring/unavailable-nodes.md
-      - file: monitoring/unavailable-shards.md
-      - file: monitoring/performance.md
-      - file: monitoring/high-memory-pressure.md
-      - file: monitoring/high-availability.md
-      - file: monitoring/cluster-response-time.md
-      - file: monitoring/node-moves-outages.md
-      - file: monitoring/deployment-health-warnings.md
-      - file: monitoring/node-bootlooping.md
-  - file: ingest.md
-    children:
-      # - file: ingest/enterprise-search/crawls.md
-      - file: ingest/logstash.md
-        children:
-          - file: ingest/logstash/plugins.md
-            children:
-              - file: ingest/logstash/kafka.md
-              - file: ingest/logstash/azure-event-hub.md
-          - file: ingest/logstash/health-report-pipelines.md
-      - file: ingest/fleet/fleet-elastic-agent.md
-        children:
-          - file: ingest/fleet/common-problems.md
-          - file: ingest/fleet/frequently-asked-questions.md
-      - file: ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md
-  - file: security.md
-    children:
-      - file: security/detection-rules.md
-      - file: security/elastic-defend.md
-      - file: security/indicators-of-compromise.md
-      - file: security/agentless-integrations.md
+      - file: kibana/migration-failures.md
+      - file: kibana/capturing-diagnostics.md
   - file: observability.md
     children:
       - file: observability/explore-data.md
@@ -206,3 +143,60 @@ toc:
         children:
           - file: observability/troubleshooting-infrastructure-monitoring/understanding-no-results-found-message.md
       - file: observability/troubleshoot-service-level-objectives-slos.md
+  - file: security.md
+    children:
+      - file: security/detection-rules.md
+      - file: security/elastic-defend.md
+      - file: security/indicators-of-compromise.md
+      - file: security/agentless-integrations.md
+  - file: ingest.md
+    children:
+      # - file: ingest/enterprise-search/crawls.md
+      - file: ingest/logstash.md
+        children:
+          - file: ingest/logstash/plugins.md
+            children:
+              - file: ingest/logstash/kafka.md
+              - file: ingest/logstash/azure-event-hub.md
+          - file: ingest/logstash/health-report-pipelines.md
+          - file: ingest/logstash/contribute.md
+      - file: ingest/fleet/fleet-elastic-agent.md
+        children:
+          - file: ingest/fleet/common-problems.md
+          - file: ingest/fleet/frequently-asked-questions.md
+      - file: ingest/beats-loggingplugin/elastic-logging-plugin-for-docker.md      
+  - file: deployments/elastic-cloud.md
+    children:
+      - file: deployments/serverless.md
+        children:
+          - file: deployments/serverless-status.md
+          - file: deployments/esf/elastic-serverless-forwarder.md
+      - file: deployments/elastic-cloud/sso.md
+      - file: monitoring/unavailable-nodes.md
+      - file: monitoring/unavailable-shards.md
+      - file: monitoring/performance.md
+        children:
+          - file: monitoring/high-memory-pressure.md
+          - file: monitoring/high-availability.md
+          - file: monitoring/cluster-response-time.md
+      - file: monitoring/node-moves-outages.md
+      - file: monitoring/deployment-health-warnings.md
+      - file: monitoring/node-bootlooping.md
+  - file: deployments/cloud-enterprise/cloud-enterprise.md
+    children:
+      - file: deployments/cloud-enterprise/common-issues.md
+      - file: deployments/cloud-enterprise/use-emergency-roles-token.md
+      - file: deployments/cloud-enterprise/remove-cloud-enterprise.md
+      - file: deployments/cloud-enterprise/troubleshooting-container-engines.md
+      - file: deployments/cloud-enterprise/verify-zookeeper-sync-status.md
+      - file: deployments/cloud-enterprise/rebuilding-broken-zookeeper-quorum.md
+      - file: deployments/cloud-enterprise/run-ece-diagnostics-tool.md
+      - file: deployments/cloud-enterprise/heap-dumps.md
+      - file: deployments/cloud-enterprise/thread-dumps.md
+      - file: deployments/cloud-enterprise/ask-for-help.md
+  - file: deployments/cloud-on-k8s/kubernetes.md
+    children:
+      - file: deployments/cloud-on-k8s/common-problems.md
+      - file: deployments/cloud-on-k8s/troubleshooting-methods.md
+      - file: deployments/cloud-on-k8s/run-eck-diagnostics.md
+      - file: deployments/cloud-on-k8s/jvm-heap-dumps.md

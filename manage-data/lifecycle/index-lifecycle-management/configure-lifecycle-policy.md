@@ -1,6 +1,10 @@
 ---
+navigation_title: Configure a policy
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Configure a lifecycle policy [set-up-lifecycle-policy]
@@ -14,9 +18,8 @@ To use a policy to manage an index that doesn’t roll over, you can specify a l
 {{ilm-init}} policies are stored in the global cluster state and can be included in snapshots by setting `include_global_state` to `true` when you [take the snapshot](../../../deploy-manage/tools/snapshot-and-restore/create-snapshots.md). When the snapshot is restored, all of the policies in the global state are restored and any local policies with the same names are overwritten.
 
 ::::{important}
-When you enable {{ilm}} for {{beats}} or the {{ls}} {es} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
+When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
 ::::
-
 
 
 ## Create lifecycle policy [ilm-create-policy]
@@ -71,7 +74,7 @@ The rollover action implicitly always rolls over a data stream or alias if one o
 To use a policy that triggers the rollover action, you need to configure the policy in the index template used to create each new index. You specify the name of the policy and the alias used to reference the rolling indices.
 
 ::::{tip}
-An `index.lifecycle.rollover_alias` setting is only required if using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/index-types/data-streams.md).
+An `index.lifecycle.rollover_alias` setting is only required if using {{ilm}} with an alias. It is unnecessary when using [Data Streams](../../data-store/data-streams.md).
 ::::
 
 
@@ -108,10 +111,10 @@ PUT _index_template/my_template
 
 ### Create an initial managed index [create-initial-index]
 
-When you set up policies for your own rolling indices, if you are not using the recommended [data streams](../../data-store/index-types/data-streams.md), you need to manually create the first index managed by a policy and designate it as the write index.
+When you set up policies for your own rolling indices, if you are not using the recommended [data streams](../../data-store/data-streams.md), you need to manually create the first index managed by a policy and designate it as the write index.
 
 ::::{important}
-When you enable {{ilm}} for {{beats}} or the {{ls}} {es} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
+When you enable {{ilm}} for {{beats}} or the {{ls}} {{es}} output plugin, the necessary policies and configuration changes are applied automatically. You can modify the default policies, but you do not need to explicitly configure a policy or bootstrap an initial index.
 ::::
 
 
@@ -202,7 +205,7 @@ To switch an index’s lifecycle policy, follow these steps:
 
 2. The remove policy API removes all {{ilm-init}} metadata from the index and doesn’t consider the index’s lifecycle status. This can leave indices in an undesired state.
 
-    For example, the [`forcemerge`](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-forcemerge.html) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
+    For example, the [`forcemerge`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-forcemerge.md) action temporarily closes an index before reopening it. Removing an index’s {{ilm-init}} policy during a `forcemerge` can leave the index closed indefinitely.
 
     After policy removal, use the [get index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get) to check an index’s state . Target a data stream or alias to get the state of all its indices.
 

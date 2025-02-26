@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/machine-learning/current/ml-trained-models.html
 ---
@@ -23,7 +23,7 @@ Alternatively, you can use APIs like [get trained models](https://www.elastic.co
 2. Find the model you want to deploy in the list and click **Deploy model** in the **Actions** menu.
 
 :::{image} ../../../images/machine-learning-ml-dfa-trained-models-ui.png
-:alt: The trained models UI in {kib}
+:alt: The trained models UI in {{kib}}
 :class: screenshot
 :::
 
@@ -106,7 +106,7 @@ A few observations:
 
 ::::{note}
 
-* Models exported from the [get trained models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) are limited in size by the [http.max_content_length](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html) global configuration value in {{es}}. The default value is `100mb` and may need to be increased depending on the size of model being exported.
+* Models exported from the [get trained models API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-get-trained-models) are limited in size by the [http.max_content_length](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) global configuration value in {{es}}. The default value is `100mb` and may need to be increased depending on the size of model being exported.
 * Connection timeouts can occur, for example, when model sizes are very large or your cluster is under load. If needed, you can increase [timeout configurations](https://ec.haxx.se/usingcurl/usingcurl-timeouts) for `curl` (for example, `curl --max-time 600`) or your client of choice.
 
 ::::
@@ -115,4 +115,4 @@ If you also want to copy the {{dfanalytics-job}} to the new cluster, you can exp
 
 ## Importing an external model to the {{stack}} [import-external-model-to-es]
 
-It is possible to import a model to your {{es}} cluster even if the model is not trained by Elastic {{dfanalytics}}. Eland supports [importing models](https://www.elastic.co/guide/en/elasticsearch/client/eland/current/machine-learning.html) directly through its APIs. Please refer to the latest [Eland documentation](https://eland.readthedocs.io/en/latest/index.md) for more information on supported model types and other details of using Eland to import models with.
+It is possible to import a model to your {{es}} cluster even if the model is not trained by Elastic {{dfanalytics}}. Eland supports [importing models](asciidocalypse://docs/eland/docs/reference/machine-learning.md) directly through its APIs. Please refer to the latest [Eland documentation](https://eland.readthedocs.io/en/latest/index.md) for more information on supported model types and other details of using Eland to import models with.

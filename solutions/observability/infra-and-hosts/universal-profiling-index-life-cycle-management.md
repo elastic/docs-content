@@ -26,7 +26,7 @@ The following table lists the default thresholds for rollover and delete:
 | after 30 days or 50 GB | after 30 days | after 60 days |
 
 ::::{note}
-The [rollover condition blocks phase transitions](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html#_rollover_condition_blocks_phase_transition) which means that indices are kept 30 days **after** rollover on the hot tier.
+The [rollover condition blocks phase transitions](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover.md#_rollover_condition_blocks_phase_transition) which means that indices are kept 30 days **after** rollover on the hot tier.
 ::::
 
 
@@ -129,7 +129,7 @@ If the custom policy is already applied, the result should include the following
 }
 ```
 
-If the result is empty, the custom {{ilm-init}} policy is not yet in use. New {{ilm-init}} policies only take effect when new indices are created, so either wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-rollover-index.html):
+If the result is empty, the custom {{ilm-init}} policy is not yet in use. New {{ilm-init}} policies only take effect when new indices are created, so either wait for a rollover to occur (usually after 30 days or when the index size reaches 50 GB), or force a rollover using the [{{es}} rollover API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover):
 
 ```bash
 POST /profiling-events-5pow01/_rollover/

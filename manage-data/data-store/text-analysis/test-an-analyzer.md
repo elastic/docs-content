@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/test-analyzer.html
+applies_to:
+  stack: ga
+  serverless: ga
 ---
 
 # Test an analyzer [test-analyzer]

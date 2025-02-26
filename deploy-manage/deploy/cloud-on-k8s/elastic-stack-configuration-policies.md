@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-config-policy.html
 ---
@@ -17,21 +20,21 @@ This requires a valid Enterprise license or Enterprise trial license. Check [the
 
 Starting from ECK `2.6.1` and Elasticsearch `8.6.1`, Elastic Stack configuration policies allow you to configure the following settings for Elasticsearch:
 
-* [Cluster Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html#dynamic-cluster-setting)
-* [Snapshot Repositories](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html)
-* [Snapshot Lifecycle Policies](https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-put-policy.html)
-* [Ingest pipelines](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html)
-* [Index Lifecycle Policies](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-put-lifecycle.html)
-* [Index templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-template.html)
-* [Components templates](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html)
-* [Role mappings](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role-mapping.html)
-* [Elasticsearch Configuration](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html) (configuration settings for Elasticsearch that will go into `elasticsearch.yml`) [ECK 2.11.0]
+* [Cluster Settings](/deploy-manage/deploy/self-managed/configure-elasticsearch.md#dynamic-cluster-setting)
+* [Snapshot Repositories](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository)
+* [Snapshot Lifecycle Policies](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-put-lifecycle)
+* [Ingest pipelines](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline)
+* [Index Lifecycle Policies](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-put-lifecycle)
+* [Index templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-index-template)
+* [Components templates](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-component-template)
+* [Role mappings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping)
+* [Elasticsearch Configuration](/deploy-manage/deploy/self-managed/configure-elasticsearch.md) (configuration settings for Elasticsearch that will go into `elasticsearch.yml`) [ECK 2.11.0]
 * [Elasticsearch Secure Settings](../../security/secure-settings.md) [ECK 2.11.0]
 * [Secret Mounts](#k8s-stack-config-policy-specifics-secret-mounts) [ECK 2.11.0]
 
 Additionally with ECK `2.11.0` it is possible to configure Kibana as well using Elastic Stack configuration policies, the following settings can be configured for Kibana:
 
-* [Kibana Configuration](https://www.elastic.co/guide/en/kibana/current/settings.html) (configuration settings for Kibana that will go into `kibana.yml`)
+* [Kibana Configuration](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md) (configuration settings for Kibana that will go into `kibana.yml`)
 * [Kibana Secure Settings](k8s-kibana-secure-settings.md)
 
 A policy can be applied to one or more Elasticsearch clusters or Kibana instances in any namespace managed by the ECK operator. Configuration policy settings applied by the ECK operator are immutable through the Elasticsearch REST API. It is currently not allowed to configure an Elasticsearch cluster or Kibana instance with more than one policy.

@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-customize-pods.html
 ---
@@ -56,7 +59,7 @@ spec:
 ```
 
 ::::{note} 
-Configuration for other Elastic stack applications, like APM Server, Enterprise Search or Beats, is identical to the Kibana configuration except for the `apiVersion` and `kind` fields.
+Configuration for other Elastic stack applications, like APM Server, or Beats, is identical to the Kibana configuration except for the `apiVersion` and `kind` fields.
 ::::
 
 

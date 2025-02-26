@@ -1,11 +1,12 @@
 ---
+navigation_title: "Server logs"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-troubleshooting-kibana-server-logs.html
 ---
 
 # Using Kibana server logs [kibana-troubleshooting-kibana-server-logs]
 
-{{kib}} Logs is a great way to see what’s going on in your application and to debug performance issues. Navigating through a large number of generated logs can be overwhelming, and following are some techniques that you can use to optimize the process.
+{{kib}} Logs help you see what's going on in your application and debug performance issues. Navigating through a large number of generated logs can be overwhelming, and following are some techniques that you can use to optimize the process.
 
 Start by defining a problem area that you are interested in. For example, you might be interested in seeing how a particular {{kib}} Plugin is performing, so no need to gather logs for all of {{kib}}. Or you might want to focus on a particular feature, such as requests from the {{kib}} server to the {{es}} server. Depending on your needs, you can configure {{kib}} to generate logs for a specific feature.
 
@@ -40,24 +41,24 @@ logging.loggers:
 ```
 
 ::::{warning}
-Kibana’s `file` appender is configured to produce logs in [ECS JSON](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) format. It’s the only format that includes the meta information necessary for [log correlation](https://www.elastic.co/guide/en/apm/agent/nodejs/current/log-correlation.html) out-of-the-box.
+Kibana’s `file` appender is configured to produce logs in [ECS JSON](asciidocalypse://docs/ecs/docs/reference/index.md) format. It’s the only format that includes the meta information necessary for [log correlation](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md) out-of-the-box.
 ::::
 
 
-The next step is to define what [observability tools](https://www.elastic.co/observability) are available. For a better experience, set up an [Observability integration](https://www.elastic.co/guide/en/apm/get-started/current/observability-integrations.html) provided by Elastic to debug your application with the [APM UI.](#debugging-logs-apm-ui) To debug something quickly without setting up additional tooling, you can work with [the plain {{kib}} logs.](#plain-kibana-logs)
+The next step is to define what [observability tools](https://www.elastic.co/observability) are available. For a better experience, set up an [Observability integration](/solutions/observability/logs/stream-application-logs.md) provided by Elastic to debug your application with the [APM UI.](#debugging-logs-apm-ui) To debug something quickly without setting up additional tooling, you can work with [the plain {{kib}} logs.](#plain-kibana-logs)
 
 ## APM UI [debugging-logs-apm-ui]
 
-**Prerequisites** {{kib}} logs are configured to be in [ECS JSON](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) format to include tracing identifiers.
+**Prerequisites** {{kib}} logs are configured to be in [ECS JSON](asciidocalypse://docs/ecs/docs/reference/index.md) format to include tracing identifiers.
 
-To debug {{kib}} with the APM UI, you must set up the APM infrastructure. You can find instructions for the setup process [on the Observability integrations page](https://www.elastic.co/guide/en/apm/get-started/current/observability-integrations.html).
+To debug {{kib}} with the APM UI, you must set up the APM infrastructure. You can find instructions for the setup process [on the Observability integrations page](/solutions/observability/logs/stream-application-logs.md).
 
 Once you set up the APM infrastructure, you can enable the APM agent and put {{kib}} under load to collect APM events. To analyze the collected metrics and logs, use the APM UI as demonstrated [in the docs](../../solutions/observability/apps/transactions-2.md#transaction-trace-sample).
 
 
 ## Plain {{kib}} logs [plain-kibana-logs]
 
-**Prerequisites** {{kib}} logs are configured to be in [ECS JSON](https://www.elastic.co/guide/en/ecs/{{ecs_version}}/ecs-reference.html) format to include tracing identifiers.
+**Prerequisites** {{kib}} logs are configured to be in [ECS JSON](asciidocalypse://docs/ecs/docs/reference/index.md) format to include tracing identifiers.
 
 Open {{kib}} Logs and search for an operation you are interested in. For example, suppose you want to investigate the response times for queries to the `/internal/telemetry/clusters/_stats` {{kib}} endpoint. Open Kibana Logs and search for the HTTP server response for the endpoint. It looks similar to the following (some fields are omitted for brevity).
 
@@ -70,6 +71,6 @@ Open {{kib}} Logs and search for an operation you are interested in. For example
 }
 ```
 
-You are interested in the [trace.id](https://www.elastic.co/guide/en/ecs/current/ecs-tracing.html#field-trace-id) field, which is a unique identifier of a trace. The `trace.id` provides a way to group multiple events, like transactions, which belong together. You can search for `"trace":{"id":"9b99131a6f66587971ef085ef97dfd07"}` to get all the logs that belong to the same trace. This enables you to see how many {{es}} requests were triggered during the `9b99131a6f66587971ef085ef97dfd07` trace, what they looked like, what {{es}} endpoints were hit, and so on.
+You are interested in the [trace.id](asciidocalypse://docs/ecs/docs/reference/ecs-tracing.md#field-trace-id) field, which is a unique identifier of a trace. The `trace.id` provides a way to group multiple events, like transactions, which belong together. You can search for `"trace":{"id":"9b99131a6f66587971ef085ef97dfd07"}` to get all the logs that belong to the same trace. This enables you to see how many {{es}} requests were triggered during the `9b99131a6f66587971ef085ef97dfd07` trace, what they looked like, what {{es}} endpoints were hit, and so on.
 
 

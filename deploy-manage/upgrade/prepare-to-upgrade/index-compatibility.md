@@ -29,7 +29,7 @@ To upgrade to 9.0.0-beta1 from 7.16 or an earlier version, **you must first upgr
 
 ## REST API compatibility [upgrade-rest-api-compatibility]
 
-[REST API compatibility](https://www.elastic.co/guide/en/elasticsearch/reference/current/rest-api-compatibility.html) is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
+[REST API compatibility](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/compatibility.md) is a per-request opt-in feature that can help REST clients mitigate non-compatible (breaking) changes to the REST API.
 
 
 ## FIPS Compliance and Java 17 [upgrade-fips-java17]

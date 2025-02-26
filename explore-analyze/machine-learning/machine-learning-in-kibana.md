@@ -1,7 +1,7 @@
 ---
-applies:
-  stack:
-  serverless:
+applies_to:
+  stack: ga
+  serverless: ga
 navigation_title: ML in Kibana
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/xpack-ml.html
@@ -35,7 +35,7 @@ File formats supported up to 60 MB:
 * Rich Text (RTF)
 * Open Document Format (ODF)
 
-The **{{data-viz}}** identifies the file format and field mappings, and you can import the data into an {{es}} index. To change the default file size limit, see [`fileUpload:maxFileSize`](https://www.elastic.co/guide/en/kibana/current/advanced-options.html#kibana-general-settings) in advanced settings.
+The **{{data-viz}}** identifies the file format and field mappings, and you can import the data into an {{es}} index. To change the default file size limit, see [`fileUpload:maxFileSize`](asciidocalypse://docs/kibana/docs/reference/advanced-settings.md#kibana-general-settings) in advanced settings.
 
 If {{stack-security-features}} are enabled, users must have the necessary privileges to use {{ml-features}}. Refer to [Set up {{ml-features}}](setting-up-machine-learning.md#setup-privileges).
 
@@ -52,7 +52,7 @@ This functionality is in technical preview and may be changed or removed in a fu
 You can find the data drift view in **{{ml-app}}** > **{{data-viz}}** in {{kib}} or by using the [global search field](../../explore-analyze/find-and-organize/find-apps-and-objects.md). The data drift view shows you the differences in each field for two different time ranges in a given {{data-source}}. The view helps you to visualize the changes in your data over time and enables you to understand its behavior better.
 
 :::{image} ../../images/kibana-ml-data-drift.png
-:alt: Data drift view in {kib}
+:alt: Data drift view in {{kib}}
 :class: screenshot
 :::
 

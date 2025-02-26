@@ -369,6 +369,8 @@ toc:
           - file: alerts-cases/watcher/trigger.md
             children:
               - file: alerts-cases/watcher/trigger-schedule.md
+              - file: alerts-cases/watcher/throttling.md
+              - file: alerts-cases/watcher/schedule-types.md
           - file: alerts-cases/watcher/condition.md
             children:
               - file: alerts-cases/watcher/condition-always.md

@@ -9,7 +9,7 @@ APM Server performance depends on a number of factors: memory and CPU available,
 
 We tested several scenarios to help you understand how to size the APM Server so that it can keep up with the load that your Elastic APM agents are sending:
 
-* Using the *CPU Optimized* hardware template on AWS, GCP and Azure on {{ecloud}} with the following instances (for more details see [Hardware Profiles](../../../deploy-manage/deploy/elastic-cloud/ec-configure-deployment-settings.md#ec-hardware-profiles)):
+* Using the *CPU Optimized* hardware template on AWS, GCP and Azure on {{ecloud}} with the following instances (for more details see [Hardware Profiles](../../../deploy-manage/deploy/elastic-cloud/ec-change-hardware-profile.md)):
 
     * AWS: c6gd
     * Azure: fsv2

@@ -12,7 +12,7 @@ The *cluster state* is an internal data structure which keeps track of a variety
 * Index metadata, including the mapping and settings for each index
 * The location and status of every shard copy in the cluster
 
-The elected master node ensures that every node in the cluster has a copy of the same cluster state. The [cluster state API](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-state.html) lets you retrieve a representation of this internal state for debugging or diagnostic purposes.
+The elected master node ensures that every node in the cluster has a copy of the same cluster state. The [cluster state API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-state) lets you retrieve a representation of this internal state for debugging or diagnostic purposes.
 
 ## Publishing the cluster state [cluster-state-publishing]
 
@@ -34,7 +34,7 @@ The performance characteristics of cluster state updates are a function of the s
 
 ## Dangling indices [dangling-index]
 
-When a node joins the cluster, if it finds any shards stored in its local data directory that do not already exist in the cluster state, it will consider those shards to belong to a "dangling" index. You can list, import or delete dangling indices using the [Dangling indices API](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices.html#dangling-indices-api).
+When a node joins the cluster, if it finds any shards stored in its local data directory that do not already exist in the cluster state, it will consider those shards to belong to a "dangling" index. You can list, import or delete dangling indices using the [Dangling indices API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-indices).
 
 ::::{note} 
 The API cannot offer any guarantees as to whether the imported data truly represents the latest state of the data when the index was still part of the cluster.

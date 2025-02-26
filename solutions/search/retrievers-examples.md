@@ -2,7 +2,7 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/master/retrievers-examples.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/_retrievers_examples.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -88,7 +88,7 @@ POST /retrievers_example/_doc/4
 POST /retrievers_example/_doc/5
 {
  "vector": [0.11, 0.65, 0.47],
- "text": "Learn how to spin up a deployment of our hosted Elasticsearch Service and use Elastic Observability to gain deeper insight into the behavior of your applications and systems.",
+ "text": "Learn how to spin up a deployment on Elastic Cloud and use Elastic Observability to gain deeper insight into the behavior of your applications and systems.",
  "year": 2024,
  "topic": ["documentation", "observability", "elastic"],
  "timestamp": "2025-01-01T12:10:30"
@@ -401,8 +401,7 @@ Which would return the following results:
 
 ## Example: Grouping results by year with `collapse` [retrievers-examples-collapsing-retriever-results]
 
-In our result set, we have many documents with the same `year` value. We can clean this up using the `collapse` parameter with our retriever. This, as with the standard 
-% [collapse](/raw-migrated-files/elasticsearch/elasticsearch-reference/collapse-search-results.md) feature,
+In our result set, we have many documents with the same `year` value. We can clean this up using the `collapse` parameter with our retriever. This, as with the standard [collapse](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/collapse-search-results.md) feature,
 enables grouping results by any field and returns only the highest-scoring document from each group. In this example we’ll collapse our results based on the `year` field.
 
 ```console
@@ -552,9 +551,7 @@ This returns the following response with collapsed results.
 
 ## Example: Highlighting results based on nested sub-retrievers [retrievers-examples-highlighting-retriever-results]
 
-Highlighting is now also available for nested sub-retrievers matches. For example, consider the same `rrf` retriever as above, with a `knn` and `standard` retriever as its sub-retrievers. We can specify a `highlight` section,
-% TODO URL as defined in the [highlighting](/raw-migrated-files/elasticsearch/elasticsearch-reference/highlighting.md) documentation, 
-and compute highlights for the top results.
+Highlighting is now also available for nested sub-retrievers matches. For example, consider the same `rrf` retriever as above, with a `knn` and `standard` retriever as its sub-retrievers. We can specify a `highlight` section, as defined in the [highlighting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/highlighting.md) documentation, and compute highlights for the top results.
 
 ```console
 GET /retrievers_example/_search
@@ -751,9 +748,7 @@ POST /retrievers_example_nested/_doc/3
 POST /retrievers_example_nested/_refresh
 ```
 
-Now we can run an `rrf` retriever query and also compute inner hits
-% TODO URL [inner hits](/raw-migrated-files/elasticsearch/elasticsearch-reference/inner-hits.md)
-for the `nested_field.nested_vector` field, based on the `knn` query specified.
+Now we can run an `rrf` retriever query and also compute [inner hits](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits.md) for the `nested_field.nested_vector` field, based on the `knn` query specified.
 
 ```console
 GET /retrievers_example_nested/_search
@@ -1276,10 +1271,7 @@ The output of which, albeit a bit verbose, will provide all the necessary info t
 
 ## Example: Rerank results of an RRF retriever [retrievers-examples-text-similarity-reranker-on-top-of-rrf]
 
-To demonstrate the full functionality of retrievers, the following examples also require access to a semantic reranking model
-% TODO URL  [semantic reranking model](/raw-migrated-files/elasticsearch/elasticsearch-reference/semantic-reranking.md#semantic-reranking-models)
-set up using the inference APIs.
-% [Elastic inference APIs](/raw-migrated-files/elasticsearch/elasticsearch-reference/inference-apis.md).
+To demonstrate the full functionality of retrievers, the following examples also require access to a [semantic reranking model](/solutions/search/ranking/semantic-reranking.md) set up using the [Elastic inference APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
 
 In this example we’ll set up a reranking service and use it with the `text_similarity_reranker` retriever to rerank our top results.
 

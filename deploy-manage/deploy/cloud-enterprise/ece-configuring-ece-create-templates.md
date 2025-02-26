@@ -399,7 +399,7 @@ Before you start creating your own deployment templates, you should have: [tagge
 
 
 ::::{note}
-When specifying `node_roles` in the Elasticsearch plan of the deployment template, the template must contain all resource types and all Elasticsearch tiers. The deployment template must contain exactly one entry for each resource type. It must have one Elasticsearch, one Kibana, one APM, and one Enterprise Search. On top of that, it must also include all supported Elasticsearch tiers in the Elasticsearch plan. The supported tiers are identified by the IDs `hot_content`, `warm`, `cold`, `frozen`, `master`, `coordinating` and `ml`.
+When specifying `node_roles` in the Elasticsearch plan of the deployment template, the template must contain all resource types and all Elasticsearch tiers. The deployment template must contain exactly one entry for each resource type. It must have one Elasticsearch, one Kibana, and one APM. On top of that, it must also include all supported Elasticsearch tiers in the Elasticsearch plan. The supported tiers are identified by the IDs `hot_content`, `warm`, `cold`, `frozen`, `master`, `coordinating` and `ml`.
 ::::
 
 

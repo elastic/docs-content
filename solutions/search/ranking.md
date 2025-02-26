@@ -1,7 +1,7 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/re-ranking-overview.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
@@ -35,7 +35,7 @@ Vector search involves transforming data into dense or sparse vector embeddings 
 
 #### Hybrid techniques [re-ranking-ranking-overview-hybrid] 
 
-Hybrid search techniques combine results from full-text and vector search pipelines. {{es}} enables combining lexical matching (BM25) and vector search scores using the [Reciprocal Rank Fusion (RRF)](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html) algorithm.
+Hybrid search techniques combine results from full-text and vector search pipelines. {{es}} enables combining lexical matching (BM25) and vector search scores using the [Reciprocal Rank Fusion (RRF)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md) algorithm.
 
 
 ### Re-ranking [re-ranking-overview-second-stage] 
@@ -45,7 +45,7 @@ When using the following advanced re-ranking pipelines, first-stage retrieval me
 
 #### Semantic re-ranking [re-ranking-overview-semantic] 
 
-[*Semantic re-ranking*](ranking/semantic-reranking.md) uses machine learning models to reorder search results based on their semantic similarity to a query. Models can be hosted directly in your {{es}} cluster, or you can use [inference endpoints](https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-apis.html) to call models provided by third-party services. Semantic re-ranking enables out-of-the-box semantic search capabilities on existing full-text search indices.
+[*Semantic re-ranking*](ranking/semantic-reranking.md) uses machine learning models to reorder search results based on their semantic similarity to a query. Models can be hosted directly in your {{es}} cluster, or you can use [inference endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) to call models provided by third-party services. Semantic re-ranking enables out-of-the-box semantic search capabilities on existing full-text search indices.
 
 
 #### Learning to Rank (LTR) [re-ranking-overview-ltr] 

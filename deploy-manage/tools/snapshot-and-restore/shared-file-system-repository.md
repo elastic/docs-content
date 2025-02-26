@@ -1,12 +1,13 @@
----
-mapped_pages:
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/snapshots-filesystem-repository.html
+--- 
+applies_to:
+  deployment:
+    self: 
 ---
 
 # Shared file system repository [snapshots-filesystem-repository]
 
 ::::{note} 
-This repository type is only available if you run {{es}} on your own hardware. If you use {{ess}}, see [{{ess}} repository types](self-managed.md#ess-repo-types).
+This repository type is only available if you run {{es}} on your own hardware. See [Manage snapshot repositories](/deploy-manage/tools/snapshot-and-restore/manage-snapshot-repositories.md) for other deployment methods.
 ::::
 
 
@@ -28,7 +29,7 @@ path:
     - /mount/long_term_backups
 ```
 
-After restarting each node, use {{kib}} or the [create snapshot repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html) to register the repository. When registering the repository, specify the file system’s path:
+After restarting each node, use {{kib}} or the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository) to register the repository. When registering the repository, specify the file system’s path:
 
 ```console
 PUT _snapshot/my_fs_backup
@@ -87,7 +88,7 @@ path:
 2. UNC path
 
 
-After restarting each node, use {{kib}} or the [create snapshot repository API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-snapshot-repo-api.html) to register the repository. When registering the repository, specify the file system’s path:
+After restarting each node, use {{kib}} or the [create snapshot repository API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create-repository) to register the repository. When registering the repository, specify the file system’s path:
 
 ```console
 PUT _snapshot/my_fs_backup
@@ -136,7 +137,7 @@ PUT _snapshot/my_fs_backup
 ## Repository settings [filesystem-repository-settings]
 
 `chunk_size`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum size of files in snapshots. In snapshots, files larger than this are broken down into chunks of this size or smaller. Defaults to `null` (unlimited file size).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum size of files in snapshots. In snapshots, files larger than this are broken down into chunks of this size or smaller. Defaults to `null` (unlimited file size).
 
 `compress`
 :   (Optional, Boolean) If `true`, metadata files, such as index mappings and settings, are compressed in snapshots. Data files are not compressed. Defaults to `true`.
@@ -148,10 +149,10 @@ PUT _snapshot/my_fs_backup
 :   (Optional, integer) Maximum number of snapshots the repository can contain. Defaults to `Integer.MAX_VALUE`, which is `2^31-1` or `2147483647`.
 
 `max_restore_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot restore rate per node. Defaults to unlimited. Note that restores are also throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `max_snapshot_bytes_per_sec`
-:   (Optional, [byte value](https://www.elastic.co/guide/en/elasticsearch/reference/current/api-conventions.html#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/recovery.html).
+:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Maximum snapshot creation rate per node. Defaults to `40mb` per second. Note that if the [recovery settings for managed services](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md#recovery-settings-for-managed-services) are set, then it defaults to unlimited, and the rate is additionally throttled through [recovery settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md).
 
 `readonly`
 :   (Optional, Boolean) If `true`, the repository is read-only. The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
@@ -171,7 +172,7 @@ PUT _snapshot/my_fs_backup
 
 {{es}} interacts with a shared file system repository using the file system abstraction in your operating system. This means that every {{es}} node must be able to perform operations within the repository path such as creating, opening, and renaming files, and creating and listing directories, and operations performed by one node must be visible to other nodes as soon as they complete.
 
-Check for common misconfigurations using the [Verify snapshot repository](https://www.elastic.co/guide/en/elasticsearch/reference/current/verify-snapshot-repo-api.html) API and the [Repository analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/repo-analysis-api.html) API. When the repository is properly configured, these APIs will complete successfully. If the verify repository or repository analysis APIs report a problem then you will be able to reproduce this problem outside {{es}} by performing similar operations on the file system directly.
+Check for common misconfigurations using the [Verify snapshot repository](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-verify-repository) API and the [Repository analysis](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-repository-analyze) API. When the repository is properly configured, these APIs will complete successfully. If the verify repository or repository analysis APIs report a problem then you will be able to reproduce this problem outside {{es}} by performing similar operations on the file system directly.
 
 If the verify repository or repository analysis APIs fail with an error indicating insufficient permissions then adjust the configuration of the repository within your operating system to give {{es}} an appropriate level of access. To reproduce such problems directly, perform the same operations as {{es}} in the same security context as the one in which {{es}} is running. For example, on Linux, use a command such as `su` to switch to the user as which {{es}} runs.
 

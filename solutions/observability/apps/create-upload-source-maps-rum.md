@@ -91,7 +91,7 @@ When uploading a source map, ensure that RUM support is enabled in the APM integ
 ::::
 
 
-{{kib}} exposes a [source map endpoint](rum-source-map-api.md) for uploading source maps. Source maps can be uploaded as a string, or as a file upload.
+{{kib}} exposes a source map endpoint for uploading source maps. Source maps can be uploaded as a string, or as a file upload.
 
 Let’s look at two different ways to upload a source map: curl and a custom application. Each example includes the four fields necessary for APM Server to later map minified code to its source:
 
@@ -120,9 +120,7 @@ curl -X POST "http://localhost:5601/api/apm/sourcemaps" \
 ```
 
 1. This example uses the version from `package.json`
-2. The API key used here needs to have appropriate [privileges](rum-source-map-api.md)
-
-
+2. The API key used here needs to have appropriate privileges. Refer to the [{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-sourcemaps) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-sourcemaps) API documentation.
 
 ### Upload via a custom app [apm-source-map-custom-app]
 

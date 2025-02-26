@@ -2,18 +2,16 @@
 navigation_title: "Watsonx"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/infer-service-watsonx-ai.html
-applies:
+applies_to:
   stack:
   serverless:
 ---
 
 # Watsonx inference integration [infer-service-watsonx-ai]
 
-::::{admonition} New API reference
-For the most up-to-date API details, refer to [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference).
-
-::::
-
+:::{tip} Inference API reference  
+Refer to the [{{infer-cap}} APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-inference) for further information.  
+:::
 
 Creates an {{infer}} endpoint to perform an {{infer}} task with the `watsonxai` service.
 
@@ -53,7 +51,7 @@ You need an [IBM Cloud® Databases for Elasticsearch deployment](https://cloud.i
     :   (Required, string) A valid API key of your Watsonx account. You can find your Watsonx API keys or you can create a new one [on the API keys page](https://cloud.ibm.com/iam/apikeys).
 
         ::::{important} 
-        You need to provide the API key only once, during the {{infer}} model creation. The [Get {{infer}} API](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-inference-api.html) does not retrieve your API key. After creating the {{infer}} model, you cannot change the associated API key. If you want to use a different API key, delete the {{infer}} model and recreate it with the same name and the updated API key.
+        You need to provide the API key only once, during the {{infer}} model creation. The [Get {{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-get) does not retrieve your API key. After creating the {{infer}} model, you cannot change the associated API key. If you want to use a different API key, delete the {{infer}} model and recreate it with the same name and the updated API key.
         ::::
 
 

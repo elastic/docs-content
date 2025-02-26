@@ -34,10 +34,10 @@ Features of this approach:
 
 Refer to the relevant agent’s documentation for more information and examples:
 
-* .NET: [Filter API](https://www.elastic.co/guide/en/apm/agent/dotnet/{{apm-dotnet-branch}}/public-api.html#filter-api).
-* Node.js: [`addFilter()`](https://www.elastic.co/guide/en/apm/agent/nodejs/{{apm-node-branch}}/agent-api.html#apm-add-filter).
-* Python: [custom processors](https://www.elastic.co/guide/en/apm/agent/python/{{apm-py-branch}}/sanitizing-data.html).
-* Ruby: [`add_filter()`](https://www.elastic.co/guide/en/apm/agent/ruby/{{apm-ruby-branch}}/api.html#api-agent-add-filter).
+* .NET: [Filter API](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#filter-api).
+* Node.js: [`addFilter()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-add-filter).
+* Python: [custom processors](asciidocalypse://docs/apm-agent-python/docs/reference/sanitizing-data.md).
+* Ruby: [`add_filter()`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-add-filter).
 
 
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial] 
@@ -51,13 +51,13 @@ Say you decide to [capture HTTP request bodies](built-in-data-filters.md#apm-fil
 }
 ```
 
-To obfuscate the passwords stored in the request body, you can use a series of [ingest processors](https://www.elastic.co/guide/en/elasticsearch/reference/current/processors.html).
+To obfuscate the passwords stored in the request body, you can use a series of [ingest processors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/index.md).
 
 
 ### Create a pipeline [_create_a_pipeline] 
 
 ::::{tip} 
-This tutorial uses the [Ingest APIs](https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-apis.html), but it’s also possible to create a pipeline using the UI. In Kibana, go to **Stack Management** → **Ingest Pipelines** → **Create pipeline** → **New pipeline** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
+This tutorial uses the [Ingest APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-ingest), but it’s also possible to create a pipeline using the UI. In Kibana, go to **Stack Management** → **Ingest Pipelines** → **Create pipeline** → **New pipeline** or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 ::::
 
 
@@ -78,7 +78,7 @@ To start, create a pipeline with a simple description and an empty array of proc
 
 #### Add a JSON processor [_add_a_json_processor] 
 
-Add your first processor to the processors array. Because the agent captures the request body as a string, use the [JSON processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/json-processor.html) to convert the original field value into a structured JSON object. Save this JSON object in a new field:
+Add your first processor to the processors array. Because the agent captures the request body as a string, use the [JSON processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/json-processor.md) to convert the original field value into a structured JSON object. Save this JSON object in a new field:
 
 ```json
 {
@@ -93,7 +93,7 @@ Add your first processor to the processors array. Because the agent captures the
 
 #### Add a set processor [_add_a_set_processor] 
 
-If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `password` with the [set processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/set-processor.html), by setting the value of `body.original_json.password` to `"redacted"`:
+If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `password` with the [set processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/set-processor.md), by setting the value of `body.original_json.password` to `"redacted"`:
 
 ```json
 {
@@ -108,7 +108,7 @@ If `body.original_json` is not `null`, i.e., it exists, we’ll redact the `pass
 
 #### Add a convert processor [_add_a_convert_processor] 
 
-Use the [convert processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/convert-processor.html) to convert the JSON value of `body.original_json` to a string and set it as the `body.original` value:
+Use the [convert processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/convert-processor.md) to convert the JSON value of `body.original_json` to a string and set it as the `body.original` value:
 
 ```json
 {
@@ -125,7 +125,7 @@ Use the [convert processor](https://www.elastic.co/guide/en/elasticsearch/refere
 
 #### Add a remove processor [_add_a_remove_processor] 
 
-Finally, use the [remove processor](https://www.elastic.co/guide/en/elasticsearch/reference/current/remove-processor.html) to remove the `body.original_json` field:
+Finally, use the [remove processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/remove-processor.md) to remove the `body.original_json` field:
 
 ```json
 {
@@ -140,7 +140,7 @@ Finally, use the [remove processor](https://www.elastic.co/guide/en/elasticsearc
 
 #### Register the pipeline [_register_the_pipeline] 
 
-Then put it all together, and use the [create or update pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html) to register the new pipeline in {{es}}. Name the pipeline `apm_redacted_body_password`:
+Then put it all together, and use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to register the new pipeline in {{es}}. Name the pipeline `apm_redacted_body_password`:
 
 ```console
 PUT _ingest/pipeline/apm_redacted_body_password
@@ -184,7 +184,7 @@ PUT _ingest/pipeline/apm_redacted_body_password
 
 ### Test the pipeline [_test_the_pipeline] 
 
-Prior to enabling this new pipeline, you can test it with the [simulate pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/simulate-pipeline-api.html). This API allows you to run multiple documents through a pipeline to ensure it is working correctly.
+Prior to enabling this new pipeline, you can test it with the [simulate pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-simulate). This API allows you to run multiple documents through a pipeline to ensure it is working correctly.
 
 The request below simulates running three different documents through the pipeline:
 
@@ -295,7 +295,7 @@ The final step in this process is to call the newly created `apm_redacted_body_p
 
 To match a custom ingest pipeline with a data stream, follow the `<type>-<dataset>@custom` template, or replace `-namespace` with `@custom` in the table above. For example, to target application traces, you’d create a pipeline named `traces-apm@custom`.
 
-Use the [create or update pipeline API](https://www.elastic.co/guide/en/elasticsearch/reference/current/put-pipeline-api.html) to register the new pipeline in {{es}}. Name the pipeline `traces-apm@custom`:
+Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to register the new pipeline in {{es}}. Name the pipeline `traces-apm@custom`:
 
 ```console
 PUT _ingest/pipeline/traces-apm@custom
