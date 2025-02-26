@@ -211,14 +211,14 @@ function changeTabs(e) {
 
 ::::::{tab-item} {{ech}}
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co/?page=docs&placement=docs-body).
-2. Select your deployment on the home page in the **Hosted deployments** card or go to the deployments page.
+2. Select your deployment on the home page in the **Hosted deployments** card or go to the **Deployments** page.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 ::::::
 
 ::::::{tab-item} Elastic Cloud Enterprise
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md)
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 ::::::
@@ -231,7 +231,7 @@ To upgrade a deployment:
 3. Click **Upgrade** and then **Confirm upgrade**. The new configuration takes a few minutes to create.
 
     ::::{note} 
-    If any incompatibilities are detected when you attempt to upgrade to 9.0.0-beta1, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. After resolving the issues, return to the deployments page and restart the upgrade.
+    If any incompatibilities are detected when you attempt to upgrade to 9.0.0-beta1, the UI provides a link to the Upgrade Assistant, which checks for deprecated settings in your cluster and indices and helps you resolve them. After resolving the issues, return to the **Deployments** page and restart the upgrade.
     ::::
 
 

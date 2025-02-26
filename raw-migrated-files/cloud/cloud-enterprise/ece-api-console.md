@@ -10,7 +10,7 @@ API console is intended for admin purposes. Avoid running normal workload like i
 You are unable to make Elastic Cloud Enterprise platform changes from the Elasticsearch API. If you want to work with the platform, check the [Elastic Cloud Enterprise RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/restful-api.md).
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
