@@ -28,7 +28,7 @@ The data tiers that you use, and the way that you use them, depends on the data�
 * [Frozen tier](/manage-data/lifecycle/data-tiers.md#frozen-tier) nodes hold time series data that is accessed rarely and never updated. The frozen tier stores [partially mounted indices](/deploy-manage/tools/snapshot-and-restore/searchable-snapshots.md#partially-mounted) of [{{search-snaps}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-lifecycle-actions/ilm-searchable-snapshot.md) exclusively. This extends the storage capacity even further — by up to 20 times compared to the warm tier.
 
 ::::{tip}
-The performance of an {{es}} node is often limited by the performance of the underlying storage and hardware profile. For example hardware profiles, refer to Elastic Cloud’s [instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/hardware.md). Review our recommendations for optimizing your storage for [indexing](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) and [search](/deploy-manage/production-guidance/optimize-performance/search-speed.md#search-use-faster-hardware).
+The performance of an {{es}} node is often limited by the performance of the underlying storage and hardware profile. For example hardware profiles, refer to Elastic Cloud’s [instance configurations](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/hardware.md). Review our recommendations for optimizing your storage for [indexing](/deploy-manage/production-guidance/optimize-performance/indexing-speed.md#indexing-use-faster-hardware) and [search](/deploy-manage/production-guidance/optimize-performance/search-speed.md#search-use-faster-hardware).
 ::::
 
 ::::{important}
@@ -137,10 +137,10 @@ To make sure that all data can be migrated from the data tier you want to disabl
 
     ::::{tab-item} {{ech}}
 
-    1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     2. From the **Deployments** page, select your deployment.
 
-        On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+        On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
     3. Filter the list of instances by the Data tier you want to disable.
 

@@ -2,8 +2,9 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-account-usage.html
   - https://www.elastic.co/guide/en/serverless/current/general-monitor-usage.html
-applies:
-  hosted: all
+applies_to:
+  deployment:
+    ess: all
   serverless: all
 ---
 

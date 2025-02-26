@@ -1,7 +1,8 @@
 ---
-applies:
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    ece: all
+    eck: all
 ---
 
 # Monitoring Orchestrators

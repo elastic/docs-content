@@ -5,7 +5,7 @@ mapped_pages:
 
 # Autoscaling example [ec-autoscaling-example]
 
-To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample Elasticsearch Service deployment.
+To help you better understand the available autoscaling settings, this example describes a typical autoscaling workflow on sample {{ech}} deployment.
 
 1. Enable autoscaling:
 

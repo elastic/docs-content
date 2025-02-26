@@ -14,13 +14,13 @@ In order to fix this follow the next steps:
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 One way to get the replica shards assigned is to add an availability zone. This will increase the number of data nodes in the {{es}} cluster so that the replica shards can be assigned. This can be done by editing your deployment. But first you need to discover which tier an index is targeting for assignment. Do this using {{kib}}.
 
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Elasticsearch Service** panel, click the name of your deployment.
+2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
     If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).

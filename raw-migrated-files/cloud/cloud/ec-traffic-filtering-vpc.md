@@ -1,8 +1,8 @@
 # AWS PrivateLink traffic filters [ec-traffic-filtering-vpc]
 
-Traffic filtering, to only AWS PrivateLink connections, is one of the security layers available in Elasticsearch Service. It allows you to limit how your deployments can be accessed.
+Traffic filtering, to only AWS PrivateLink connections, is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed.
 
-Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in Elasticsearch Service.
+Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in {{ecloud}}.
 
 ::::{note}
 PrivateLink filtering is supported only for AWS regions. AWS does not support cross-region PrivateLink connections. Your PrivateLink endpoint needs to be in the same region as your target deployments. Additional details can be found in the [AWS VPCE Documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.md#vpce-interface-limitations). AWS interface VPC endpoints get created in availability zones (AZ). In some regions, our VPC endpoint *service* is not present in all the possible AZs that a region offers. You can only choose AZs that are common on both sides. As the *names* of AZs (for example `us-east-1a`) differ between AWS accounts, the following list of AWS regions shows the *ID* (e.g. `use1-az4`) of each available AZ for the service. Check [interface endpoint availability zone considerations](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.md#vpce-interface-availability-zones) for more details.
@@ -187,8 +187,8 @@ Having trouble finding your VPC endpoint ID? You can find it in the AWS console.
 
 Once you know your VPC endpoint ID you can create a private link traffic filter rule set.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. Select **Create filter**.
 5. Select **Private link endpoint**.
@@ -248,8 +248,8 @@ The settings `xpack.fleet.agents.fleet_server.hosts` and `xpack.fleet.outputs` t
 
 You can edit a rule set name or to change the VPC endpoint ID.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. Find the rule set you want to edit.
 5. Select the **Edit** icon.

@@ -46,7 +46,7 @@ With a Superuser account, complete the following steps:
 
 You can now update settings that were removed during the upgrade. See [Configure APM Server](configure-apm-server.md) for a reference of all available settings.
 
-In {{kib}}, navigate to **Management** > **Fleet***. Select the ***Elastic Cloud Agent Policy***. Next to the ***Elastic APM*** integration, select ***Actions** > **Edit integration**.
+In {{kib}}, navigate to **Management** > **Fleet**. Select the **Elastic Cloud Agent Policy**. Next to the **Elastic APM** integration, select **Actions** > **Edit integration**.
 
 
 ## Scale APM and {{fleet}} [apm-integration-upgrade-ess-4]

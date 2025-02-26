@@ -62,7 +62,7 @@ If you have multiple servers with metrics data, repeat the following steps to co
 
 **About Metricbeat modules**
 
-Metricbeat has [many modules](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-modules.md) available that collect common metrics. You can [configure additional modules](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/configuration-metricbeat.md) as needed. For this example we’re using Metricbeat’s default configuration, which has the [System module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/metricbeat-module-system.md) enabled. The System module allows you to monitor servers with the default set of metrics: *cpu*, *load*, *memory*, *network*, *process*, *process_summary*, *socket_summary*, *filesystem*, *fsstat*, and *uptime*.
+Metricbeat has [many modules](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-modules.md) available that collect common metrics. You can [configure additional modules](asciidocalypse://docs/beats/docs/reference/metricbeat/configuration-metricbeat.md) as needed. For this example we’re using Metricbeat’s default configuration, which has the [System module](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-module-system.md) enabled. The System module allows you to monitor servers with the default set of metrics: *cpu*, *load*, *memory*, *network*, *process*, *process_summary*, *socket_summary*, *filesystem*, *fsstat*, and *uptime*.
 
 **Load the Metricbeat Kibana dashboards**
 
@@ -89,7 +89,7 @@ sudo ./metricbeat setup \
 1. Specify the Cloud ID of your Elastic Cloud Enterprise deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
 3. The four lines related to `ssl` are only used when you have a self signed certificate for your Elastic Cloud Enterprise proxy.  If needed, specify the full path to the PEM formatted root cetificate (Root CA) used for the Elastic Cloud Enterprise proxy.  You can retrieve the certificate chain from your ECE system by following the instructions in [Get existing ECE security certificates](../../../deploy-manage/security/secure-your-elastic-cloud-enterprise-installation/manage-security-certificates.md#ece-existing-security-certificates).  Save the final certificate in the chain to a file. In this command example, the file is named `elastic-ece-ca-cert.pem`.::::{important}
-Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md) of the metricbeat.yml.
+Depending on variables including the installation location, environment and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md) of the metricbeat.yml.
 
 You might encounter similar permissions hurdles as you work through multiple sections of this document. These permission requirements are there for a good reason, a security safeguard to prevent unauthorized access and modification of key Elastic files.
 
@@ -138,7 +138,7 @@ The next step is to configure Filebeat to send operational data to Logstash. As 
 
 **Enable the Filebeat system module**
 
-Filebeat has [many modules](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-modules.md) available that collect common log types. You can [configure additional modules](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/configuration-filebeat-modules.md) as needed. For this example we’re using Filebeat’s [System module](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-module-system.md). This module reads in the various system log files (with information including login successes or failures, sudo command usage, and other key usage details) based on the detected operating system. For this example, a Linux-based OS is used and Filebeat ingests logs from the */var/log/* folder. It’s important to verify that Filebeat is given permission to access your logs folder through standard file and folder permissions.
+Filebeat has [many modules](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-modules.md) available that collect common log types. You can [configure additional modules](asciidocalypse://docs/beats/docs/reference/filebeat/configuration-filebeat-modules.md) as needed. For this example we’re using Filebeat’s [System module](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-module-system.md). This module reads in the various system log files (with information including login successes or failures, sudo command usage, and other key usage details) based on the detected operating system. For this example, a Linux-based OS is used and Filebeat ingests logs from the */var/log/* folder. It’s important to verify that Filebeat is given permission to access your logs folder through standard file and folder permissions.
 
 1. Go to *<localpath>/filebeat-<version>/modules.d/* where *<localpath>* is the directory where Filebeat is installed.
 2. Filebeat requires at least one fileset to be enabled. In file *<localpath>/filebeat-<version>/modules.d/system.yml.disabled*, under both `syslog` and `auth` set `enabled` to `true`:
@@ -182,7 +182,7 @@ sudo ./filebeat setup \
 1. Specify the Cloud ID of your Elastic Cloud Enterprise deployment. You can include or omit the `<Deploymentname>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 2. Specify the username and password provided to you when creating the deployment. Make sure to keep the colon between *<username>* and *<password>*.
 3. The four lines related to `ssl` are only needed if you are using self-signed certificates.::::{important}
-Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md) of the filebeat.yml.
+Depending on variables including the installation location, environment, and local permissions, you might need to [change the ownership](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md) of the filebeat.yml.
 ::::
 
 
@@ -245,7 +245,7 @@ Now the Filebeat and Metricbeat are set up, let’s configure a {{ls}} pipeline 
     1. {{ls}} listens for Beats input on the default port of 5044. Only one line is needed to do this. {{ls}} can handle input from many Beats of the same and also of varying types (Metricbeat, Filebeat, and others).
     2. This sends output to the standard output, which displays through your command line interface. This plugin enables you to verify the data before you send it to {{es}}, in a later step.
 
-3. Save the new *beats.conf* file in your Logstash folder. To learn more about the file format and options, check [{{ls}} Configuration Examples](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/config-examples.md).
+3. Save the new *beats.conf* file in your Logstash folder. To learn more about the file format and options, check [{{ls}} Configuration Examples](asciidocalypse://docs/logstash/docs/reference/config-examples.md).
 
 
 ## Output {{ls}} data to stdout [ece-beats-logstash-stdout]
@@ -388,7 +388,7 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
     ```
 
     1. Use the Cloud ID of your Elastic Cloud Enterprise deployment. You can include or omit the `<DeploymentName>:` prefix at the beginning of the Cloud ID. Both versions work fine. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
-    2. the default usename is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/feature-roles.md) for information on the writer role and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/feature-roles.md) documentation.
+    2. the default usename is `elastic`.  It is not recommended to use the `elastic` account for ingesting data as this is a superuser.  We recommend using a user with reduced permissions, or an API Key with permissions specific to the indices or data streams that will be written to.  Check the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/filebeat/feature-roles.md) for information on the writer role and API Keys. Use the password provided when you created the deployment if using the `elastic` user, or the password used when creating a new ingest user with the roles specified in the [Grant access to secured resources](asciidocalypse://docs/beats/docs/reference/filebeat/feature-roles.md) documentation.
     3. The cacert line is only needed if you are using a self-signed certificate.
 
 
@@ -481,9 +481,9 @@ In this section, you configure {{ls}} to send the Metricbeat and Filebeat data t
 ::::{note}
 In this guide, you manually launch each of the Elastic stack applications through the command line interface. In production, you may prefer to configure {{ls}}, Metricbeat, and Filebeat to run as System Services. Check the following pages for the steps to configure each application to run as a service:
 
-* [Running {{ls}} as a service on Debian or RPM](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/running-logstash.md)
-* [Metricbeat and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/running-with-systemd.md)
-* [Start filebeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/filebeat-starting.md)
+* [Running {{ls}} as a service on Debian or RPM](asciidocalypse://docs/logstash/docs/reference/running-logstash.md)
+* [Metricbeat and systemd](asciidocalypse://docs/beats/docs/reference/metricbeat/running-with-systemd.md)
+* [Start filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-starting.md)
 
 ::::
 

@@ -62,7 +62,7 @@ In {{es}} 8.0 and later versions, feature states are the only way to back up and
 
 ## How snapshots work [how-snapshots-work]
 
-Snapshots are automatically deduplicated to save storage space and reduce network transfer costs. To back up an index, a snapshot makes a copy of the index’s [segments](../../../solutions/search/search-approaches/near-real-time-search.md) and stores them in the snapshot repository. Since segments are immutable, the snapshot only needs to copy any new segments created since the repository’s last snapshot.
+Snapshots are automatically deduplicated to save storage space and reduce network transfer costs. To back up an index, a snapshot makes a copy of the index’s [segments](../../../manage-data/data-store/near-real-time-search.md) and stores them in the snapshot repository. Since segments are immutable, the snapshot only needs to copy any new segments created since the repository’s last snapshot.
 
 Each snapshot is also logically independent. When you delete a snapshot, {{es}} only deletes the segments used exclusively by that snapshot. {{es}} doesn’t delete segments used by other snapshots in the repository.
 

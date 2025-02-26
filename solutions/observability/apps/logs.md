@@ -24,6 +24,9 @@ Logs displayed on this page are filtered on `service.name`
 ::::
 
 ## Integrate with logging frameworks [apm-logs-correlation]
+```{applies_to}
+stack: all
+```
 
 Elastic APM integrates with popular logging frameworks, making it easy to correlate your logs and traces. This enables you to:
 

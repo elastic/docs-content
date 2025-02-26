@@ -34,10 +34,10 @@ Features of this approach:
 
 Refer to the relevant agent’s documentation for more information and examples:
 
-* .NET: [Filter API](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#filter-api).
-* Node.js: [`addFilter()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-add-filter).
-* Python: [custom processors](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/sanitizing-data.md).
-* Ruby: [`add_filter()`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-add-filter).
+* .NET: [Filter API](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#filter-api).
+* Node.js: [`addFilter()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-add-filter).
+* Python: [custom processors](asciidocalypse://docs/apm-agent-python/docs/reference/sanitizing-data.md).
+* Ruby: [`add_filter()`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-add-filter).
 
 
 ## Tutorial: Use an ingest pipeline to redact sensitive information [apm-filters-ingest-pipeline-tutorial] 

@@ -36,7 +36,7 @@ If your issue is not addressed here, then [contact Elastic support for help](/tr
 
 ## Analyze unassigned shards using the {{es}} API [ec-analyze_shards_with-api]
 
-You can retrieve information about the status of your cluster, indices, and shards using the {{es}} API. To access the API you can either use the [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md), or the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-console.md). If you have your own way to run the {{es}} API, check [How to access the API](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-api-access.md). This section shows you how to:
+You can retrieve information about the status of your cluster, indices, and shards using the {{es}} API. To access the API you can either use the [Kibana Dev Tools Console](/explore-analyze/query-filter/tools/console.md), or the [Elasticsearch API console](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-console.md). If you have your own way to run the {{es}} API, check [How to access the API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-access.md). This section shows you how to:
 
 * [Check cluster health](/troubleshoot/monitoring/unavailable-shards.md#ec-check-cluster-health)
 * [Check unhealthy indices](/troubleshoot/monitoring/unavailable-shards.md#ec-check-unhealthy-indices)

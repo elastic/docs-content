@@ -9,9 +9,9 @@ mapped_pages:
 
 % TODO: Edit edit edit
 
-You created a new cluster in Elasticsearch Service that uses three availability zones and index replicas, because you want to use the [cluster for production](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md#ec-ha). It’s a mission-critical deployment and you need it to be able to handle user requests at all times. Your cluster has been up and running for some time and it seems to handle its workload well. But is this cluster really highly available, given its current workload?
+You created a new {{ech}} deployment that uses three availability zones and index replicas, because you want to use the [cluster for production](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md#ec-ha). It’s a mission-critical deployment and you need it to be able to handle user requests at all times. Your cluster has been up and running for some time and it seems to handle its workload well. But is this cluster really highly available, given its current workload?
 
-To answer this question, let’s take a look at CPU usage in the **Cluster Performance Metrics** section in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body):
+To answer this question, let’s take a look at CPU usage in the **Cluster Performance Metrics** section in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body):
 
 :::{image} /images/cloud-metrics-cpu.png
 :alt: CPU usage over time

@@ -50,9 +50,9 @@ By default {{private-location}}s are configured to allow two simultaneous browse
 ::::
 
 
-## Connect to the {{stack}} or your Observability serverless project [synthetics-private-location-connect]
+## Connect to the {{stack}} or your Observability Serverless project [synthetics-private-location-connect]
 
-After setting up {{fleet}}, you’ll connect {{fleet}} to the {{stack}} or your Observability serverless project and enroll an {{agent}} in {{fleet}}.
+After setting up {{fleet}}, you’ll connect {{fleet}} to the {{stack}} or your Observability Serverless project and enroll an {{agent}} in {{fleet}}.
 
 Elastic provides Docker images that you can use to run {{fleet}} and an {{agent}} more easily. For monitors running on {{private-location}}s, you *must* use the `elastic-agent-complete` Docker image to create a self-hosted {{agent}} node. The standard {{ecloud}} or self-hosted {{agent}} will not work.
 
