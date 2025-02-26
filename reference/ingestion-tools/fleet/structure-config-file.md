@@ -7,7 +7,7 @@ mapped_pages:
 
 The `elastic-agent.yml` policy file contains all of the settings that determine how {{agent}} runs. The most important and commonly used settings are described here, including input and output options, providers used for variables and conditional output, security settings, logging options, enabling of special features, and specifications for {{agent}} upgrades.
 
-An `elastic-agent.yml` file is modular: You can combine input, output, and all other settings to enable the [{{integrations}}](integration-docs://docs/reference/index.md) to use with {{agent}}. Refer to [Create a standalone {{agent}} policy](/reference/ingestion-tools/fleet/create-standalone-agent-policy.md) for the steps to download the settings to use as a starting point, and then refer to the following examples to learn about the available settings:
+An `elastic-agent.yml` file is modular: You can combine input, output, and all other settings to enable the [{{integrations}}](asciidocalypse://docs/reference/index.md) to use with {{agent}}. Refer to [Create a standalone {{agent}} policy](/reference/ingestion-tools/fleet/create-standalone-agent-policy.md) for the steps to download the settings to use as a starting point, and then refer to the following examples to learn about the available settings:
 
 * [Config file examples](/reference/ingestion-tools/fleet/config-file-examples.md)
 * [Use standalone {{agent}} to monitor nginx](/reference/ingestion-tools/fleet/example-standalone-monitor-nginx.md).

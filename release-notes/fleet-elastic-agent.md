@@ -10,7 +10,7 @@ Review the changes, fixes, and more in each version of Fleet and Elastic Agent.
 
 To check for security updates, go to [Security announcements for the Elastic stack](https://discuss.elastic.co/c/announcements/security-announcements/31).
 
-Elastic Agent integrates and manages Beats for data collection, and Beats changes may impact Elastic Agent functionality. To check for Elastic Agent changes in Beats, go to [{{beats}} release notes](beats://docs/release-notes/index.md).
+Elastic Agent integrates and manages Beats for data collection, and Beats changes may impact Elastic Agent functionality. To check for Elastic Agent changes in Beats, go to [{{beats}} release notes](asciidocalypse://docs/release-notes/index.md).
 
 % Release notes include only features, enhancements, and fixes. Add breaking changes, deprecations, and known issues to the applicable release notes sections.
 % For each new version section, include the Fleet and Elastic Agent and Kibana changes.

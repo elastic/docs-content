@@ -134,7 +134,7 @@ A {{fleet-server}} is an {{agent}} that is enrolled in a {{fleet-server}} policy
 ### {{fleet}} preparations [add-fleet-server-kubernetes-preparations]
 
 ::::{tip}
-If you already have a {{fleet}} policy with the {{fleet-server}} integration, you know its ID, and you know how to generate an [{{es}} service token](elasticsearch://docs/reference/elasticsearch/command-line-tools/service-tokens-command.md) for the {{fleet-server}}, skip directly to [{{fleet-server}} installation](#add-fleet-server-kubernetes-install).
+If you already have a {{fleet}} policy with the {{fleet-server}} integration, you know its ID, and you know how to generate an [{{es}} service token](asciidocalypse://docs/reference/elasticsearch/command-line-tools/service-tokens-command.md) for the {{fleet-server}}, skip directly to [{{fleet-server}} installation](#add-fleet-server-kubernetes-install).
 
 Also note that the `service token` required by the {{fleet-server}} is different from the `enrollment tokens` used by {{agent}}s to enroll to {{fleet}}.
 
@@ -204,7 +204,7 @@ Also note that the `service token` required by the {{fleet-server}} is different
 To deploy {{fleet-server}} on Kubernetes and enroll it into {{fleet}} you need the following details:
 
 * **Policy ID** of the {{fleet}} policy configured with the {{fleet-server}} integration.
-* **Service token**, that you can generate following the [{{fleet}} preparations](#add-fleet-server-kubernetes-preparations) or manually using the [{{es}}-service-tokens command](elasticsearch://docs/reference/elasticsearch/command-line-tools/service-tokens-command.md).
+* **Service token**, that you can generate following the [{{fleet}} preparations](#add-fleet-server-kubernetes-preparations) or manually using the [{{es}}-service-tokens command](asciidocalypse://docs/reference/elasticsearch/command-line-tools/service-tokens-command.md).
 * **{{es}} endpoint URL**, configured in both the {{es}} output associated to the policy and in the Fleet Server as an environment variable.
 * **{{es}} CA certificate file**, configured in both the {{es}} output associated to the policy and in the Fleet Server.
 * {{fleet-server}} **certificate and key** (for **Production** deployment mode only).

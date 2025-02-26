@@ -39,7 +39,7 @@ mapped_pages:
     ```
 
     ::::{warning}
-    On managed Kubernetes solutions, such as AKS, GKE or EKS, {{agent}} does not have the required permissions to collect metrics from [Kubernetes control plane](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) components, like `kube-scheduler` and `kube-controller-manager`. Audit logs are only available on Kubernetes control plane nodes as well, and hence cannot be collected by {{agent}}. Refer [here](integration-docs://docs/reference/kubernetes.md#kubernetes-scheduler-and-controllermanager) to find more information. For more information about specific cloud providers, refer to [Run {{agent}} on Azure AKS managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-aks-managed-by-fleet.md), [Run {{agent}} on GKE managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-gke-managed-by-fleet.md) and [Run {{agent}} on Amazon EKS managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-eks-managed-by-fleet.md)
+    On managed Kubernetes solutions, such as AKS, GKE or EKS, {{agent}} does not have the required permissions to collect metrics from [Kubernetes control plane](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) components, like `kube-scheduler` and `kube-controller-manager`. Audit logs are only available on Kubernetes control plane nodes as well, and hence cannot be collected by {{agent}}. Refer [here](asciidocalypse://docs/reference/kubernetes.md#kubernetes-scheduler-and-controllermanager) to find more information. For more information about specific cloud providers, refer to [Run {{agent}} on Azure AKS managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-aks-managed-by-fleet.md), [Run {{agent}} on GKE managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-gke-managed-by-fleet.md) and [Run {{agent}} on Amazon EKS managed by {{fleet}}](/reference/ingestion-tools/fleet/running-on-eks-managed-by-fleet.md)
     ::::
 
 
@@ -78,7 +78,7 @@ The size and the number of nodes in a Kubernetes cluster can be large at times, 
 
 ### Step 2: Configure {{agent}} policy [_step_2_configure_agent_policy]
 
-The {{agent}} needs to be assigned to a policy to enable the proper inputs. To achieve Kubernetes observability, the policy needs to include the Kubernetes integration. Refer to [Create a policy](/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy) and [Add an integration to a policy](/reference/ingestion-tools/fleet/agent-policy.md#add-integration) to learn how to configure the [Kubernetes integration](integration-docs://docs/reference/kubernetes.md).
+The {{agent}} needs to be assigned to a policy to enable the proper inputs. To achieve Kubernetes observability, the policy needs to include the Kubernetes integration. Refer to [Create a policy](/reference/ingestion-tools/fleet/agent-policy.md#create-a-policy) and [Add an integration to a policy](/reference/ingestion-tools/fleet/agent-policy.md#add-integration) to learn how to configure the [Kubernetes integration](asciidocalypse://docs/reference/kubernetes.md).
 
 
 ### Step 3: Enroll {{agent}} to the policy [_step_3_enroll_agent_to_the_policy]
