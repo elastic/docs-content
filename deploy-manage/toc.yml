@@ -790,8 +790,8 @@ toc:
       - file: cloud-organization/tools-and-apis.md
   - file: license.md
     children:
-      - file: license/manage-your-license-in-eck.md
       - file: license/manage-your-license-in-ece.md
+      - file: license/manage-your-license-in-eck.md
       - file: license/manage-your-license-in-self-managed-cluster.md
   - file: maintenance.md
     children:
