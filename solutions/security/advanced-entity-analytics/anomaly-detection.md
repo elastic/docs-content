@@ -6,21 +6,15 @@ mapped_urls:
 
 # Anomaly detection
 
-% What needs to be done: Align serverless/stateful
 
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/machine-learning.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-machine-learning.md
-
-[{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) functionality is available when you have the appropriate subscription, are using a **{{ess-trial}}[cloud deployment]**, or are testing out a **Free Trial**. Refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for more information.
+[{{ml-cap}}](/explore-analyze/machine-learning/anomaly-detection.md) functionality is available when you have the appropriate role, subscription, are using a [cloud deployment](https://cloud.elastic.co/registration?page=docs&placement=docs-body), or are testing out a **Free Trial**. Refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for more information.
 
 You can view the details of detected anomalies within the `Anomalies` table widget shown on the Hosts, Network, and associated details pages, or even narrow to the specific date range of an anomaly from the `Max anomaly score by job` field in the overview of the details pages for hosts and IPs. These interfaces also offer the ability to drag and drop details of the anomaly to Timeline, such as the `Entity` itself, or any of the associated `Influencers`.
 
 
 ## Manage {{ml}} jobs [manage-jobs]
 
-If you have the `machine_learning_admin` role, you can use the **ML job settings** interface on the **Alerts**, **Rules**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {{ml}} jobs.
+If you have the appropriate role, you can use the **ML job settings** interface on the **Alerts**, **Rules**, and **Rule Exceptions** pages to view, start, and stop {{elastic-sec}} {{ml}} jobs.
 
 :::{image} ../../../images/security-ml-ui.png
 :alt: ML job settings UI on the Alerts page

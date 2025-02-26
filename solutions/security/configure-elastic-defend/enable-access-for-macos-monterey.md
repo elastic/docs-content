@@ -6,20 +6,6 @@ mapped_urls:
 
 # Enable access for macOS Monterey
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/deploy-elastic-endpoint.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-install-endpoint-manually.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$system-extension-endpoint$$$
-
-$$$enable-fda-endpoint$$$
-
-$$$allow-filter-content$$$
 
 To properly install and configure {{elastic-defend}} manually without a Mobile Device Management (MDM) profile, there are additional permissions that must be enabled on the host before {{elastic-endpoint}}—the installed component that performs {{elastic-defend}}'s threat monitoring and prevention—is fully functional:
 
@@ -30,7 +16,6 @@ To properly install and configure {{elastic-defend}} manually without a Mobile D
 ::::{note}
 The following permissions that need to be enabled are required after you [configure and install the {{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md), which includes [enrolling the {{agent}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md#enroll-security-agent).
 ::::
-
 
 
 ## Approve the system extension for {{elastic-endpoint}} [system-extension-endpoint]
@@ -57,16 +42,16 @@ The following message appears during installation:
     :::
 
 
-    #### Approve network content filtering for {{elastic-endpoint}} [allow-filter-content]
+## Approve network content filtering for {{elastic-endpoint}} [allow-filter-content]
 
-    After successfully loading the {{elastic-endpoint}} system extension,  an additional message appears, asking to allow {{elastic-endpoint}} to filter network content.
+After successfully loading the {{elastic-endpoint}} system extension,  an additional message appears, asking to allow {{elastic-endpoint}} to filter network content.
 
-    :::{image} ../../../images/security-filter-network-content.png
-    :alt: filter network content
-    :::
+:::{image} ../../../images/security-filter-network-content.png
+:alt: filter network content
+:::
 
 
-* Click **Allow** to enable content filtering for the {{elastic-endpoint}} system extension. Without this approval, {{elastic-endpoint}} cannot receive network events and, therefore, cannot enable network-related features such as [host isolation](/solutions/security/endpoint-response-actions/isolate-host.md).
+Click **Allow** to enable content filtering for the {{elastic-endpoint}} system extension. Without this approval, {{elastic-endpoint}} cannot receive network events and, therefore, cannot enable network-related features such as [host isolation](/solutions/security/endpoint-response-actions/isolate-host.md).
 
 
 ## Enable Full Disk Access for {{elastic-endpoint}} [enable-fda-endpoint]
@@ -74,7 +59,7 @@ The following message appears during installation:
 {{elastic-endpoint}} requires Full Disk Access to subscribe to system events via the {{elastic-defend}} framework and to protect your network from malware and other cybersecurity threats. To enable Full Disk Access on endpoints running macOS Catalina (10.15) and later, you must manually approve {{elastic-endpoint}}.
 
 ::::{note}
-The following instructions apply only to {{elastic-endpoint}} running version 8.0.0 and later. To see Full Disk Access requirements for the Endgame sensor, refer to Endgame’s documentation.
+The following instructions apply only to {{elastic-endpoint}} running version 8.0.0 and later. In {{serverless-short}}, versions 7.17.0 and earlier are not supported. To see Full Disk Access requirements for the Endgame sensor, refer to Endgame’s documentation.
 ::::
 
 
@@ -102,7 +87,7 @@ The following instructions apply only to {{elastic-endpoint}} running version 8.
     :::
 
 
-If the endpoint is running {{elastic-endpoint}} version 7.17.0 or earlier:
+In {{stack}}, if the endpoint is running {{elastic-endpoint}} version 7.17.0 or earlier:
 
 1. In the lower-left corner of the pane, click the **Lock button**, then enter your credentials to authenticate.
 2. Click the **+** button to view **Finder**.

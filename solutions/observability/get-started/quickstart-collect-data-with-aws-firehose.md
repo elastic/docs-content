@@ -148,7 +148,7 @@ The following table shows the type of data ingested by the supported AWS service
 :sync: stack
 
 1. In {{kib}}, go to the **Observability** UI and click **Add Data**.
-2. Under **What do you want to monitor?** select **Cloud***, ***AWS**, and then select **AWS Firehose**.
+2. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 
     :::{image} ../../../images/observability-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point
@@ -166,7 +166,7 @@ The following table shows the type of data ingested by the supported AWS service
 
 1. [Create a new {{obs-serverless}} project](../../../solutions/observability/get-started/create-an-observability-project.md), or open an existing one.
 2. In your {{obs-serverless}} project, go to **Add Data**.
-3. Under **What do you want to monitor?** select **Cloud***, ***AWS**, and then select **AWS Firehose**.
+3. Under **What do you want to monitor?** select **Cloud**, **AWS**, and then select **AWS Firehose**.
 
     :::{image} ../../../images/serverless-quickstart-aws-firehose-entry-point.png
     :alt: AWS Firehose entry point

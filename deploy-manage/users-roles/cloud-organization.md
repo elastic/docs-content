@@ -4,8 +4,8 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-organizations.html
 applies_to:
   deployment:
-      serverless: all
-      ess: all
+    ess: all
+  serverless: all
 ---
 
 # Cloud organization users [ec-organizations]

@@ -65,7 +65,7 @@ There are three common alert statuses:
 ::::{admonition} Flapping alerts
 :class: note
 
-The flapping state is possible only if you have enabled alert flapping detection. Go to the **Alerts** page and click **Manage Rules*** to navigate to the {{obs-serverless}} ***{{rules-app}}** page. Click **Settings** then set the look back window and threshold that are used to determine whether alerts are flapping. For example, you can specify that the alert must change status at least 6 times in the last 10 runs. If the rule has actions that run when the alert status changes, those actions are suppressed while the alert is flapping.
+The flapping state is possible only if you have enabled alert flapping detection. Go to the **Alerts** page and click **Manage Rules** to navigate to the {{obs-serverless}} **{{rules-app}}** page. Click **Settings** then set the look back window and threshold that are used to determine whether alerts are flapping. For example, you can specify that the alert must change status at least 6 times in the last 10 runs. If the rule has actions that run when the alert status changes, those actions are suppressed while the alert is flapping.
 
 ::::
 
@@ -86,7 +86,7 @@ To view the alert in the app that triggered it:
 Use the toolbar buttons in the upper-left of the alerts table to customize the columns you want displayed:
 
 * **Columns**: Reorder the columns.
-* ***x* fields sorted**: Sort the table by one or more columns.
+* **x* fields sorted**: Sort the table by one or more columns.
 * **Fields**: Select the fields to display in the table.
 
 For example, click **Fields** and choose the `Maintenance Windows` field. If an alert was affected by a maintenance window, its identifier appears in the new column. For more information about their impact on alert notifications, refer to [{{maint-windows-cap}}](../../../explore-analyze/alerts-cases/alerts/maintenance-windows.md).
