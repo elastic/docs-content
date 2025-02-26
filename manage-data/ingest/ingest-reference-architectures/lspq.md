@@ -25,12 +25,12 @@ Info on configuring {{agent}}:
 
 For info on {{ls}} plugins:
 
-* [{{agent}} input](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-inputs-elastic_agent.md)
-* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/plugins-outputs-elasticsearch.md)
+* [{{agent}} input](asciidocalypse://docs/logstash/docs/reference/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](asciidocalypse://docs/logstash/docs/reference/plugins-outputs-elasticsearch.md)
 
 For info on using {{ls}} for buffering and data resiliency, check out this section in the [Logstash Reference](https://www.elastic.co/guide/en/logstash/current):
 
-* [{{ls}} Persistent Queues (PQ)](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/persistent-queues.md)
+* [{{ls}} Persistent Queues (PQ)](asciidocalypse://docs/logstash/docs/reference/persistent-queues.md)
 
 Info on {{es}}:
 

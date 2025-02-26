@@ -5,42 +5,27 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-install-edr.html
 ---
 
-# Install Elastic Defend
+# Install the {{elastic-defend}} integration
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/install-endpoint.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-install-edr.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$add-security-integration$$$
-
-$$$enroll-agent$$$
-
-$$$enroll-security-agent$$$
 
 Like other Elastic integrations, {{elastic-defend}} is integrated into the {{agent}} using [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md). Upon configuration, the integration allows the {{agent}} to monitor events on your host and send data to the {{security-app}}.
 
 ::::{admonition} Requirements
 * {{fleet}} is required for {{elastic-defend}}.
 * To configure the {{elastic-defend}} integration on the {{agent}}, you must have permission to use {{fleet}} in {{kib}}.
-* You must have the **{{elastic-defend}} Policy Management : All** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to configure an integration policy, and the **Endpoint List** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to access the **Endpoints** page.
-
+* In {{stack}}, you must have the **{{elastic-defend}} Policy Management : All** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to configure an integration policy, and the **Endpoint List** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to access the **Endpoints** page.
+* In {{serverless-short}}, you must have the appropriate user role to configure an integration policy and access the **Endpoints** page.
 ::::
 
 
 
 ## Before you begin [security-before-you-begin]
 
-If you’re using macOS, some versions may require you to grant Full Disk Access to different kernels, system extensions, or files. Refer to [*{{elastic-defend}} requirements*](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) for more information.
+If you’re using macOS, some versions may require you to grant Full Disk Access to different kernels, system extensions, or files. Refer to [{{elastic-defend}} requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md) for more information.
 
 ::::{note}
 {{elastic-defend}} does not support deployment within an {{agent}} DaemonSet in Kubernetes.
 ::::
-
 
 
 ## Add the {{elastic-defend}} integration [add-security-integration]
@@ -70,8 +55,8 @@ If you’re using macOS, some versions may require you to grant Full Disk Access
 
     |     |     |
     | --- | --- |
-    | **Traditional Endpoint presets** | All traditional endpoint presets *except **Data Collection*** have these preventions enabled by default: malware, ransomware, memory threat, malicious behavior, and credential theft. Each preset collects the following events:<br><br>* **Data Collection:** All events; no preventions<br>* **Next-Generation Antivirus (NGAV):** Process events; all preventions<br>* **Essential EDR (Endpoint Detection & Response):** Process, Network, File events; all preventions<br>* **Complete EDR (Endpoint Detection & Response):** All events; all preventions<br> |
-    | **Cloud Workloads presets** | Both cloud workload presets are intended for monitoring cloud-based Linux hosts. Therefore, [session data](/solutions/security/investigate/session-view.md) collection, which enriches process events, is enabled by default. They both have all preventions disabled by default, and collect process, network, and file events.<br><br>* **All events:** Includes data from automated sessions.<br>* **Interactive only:** Filters out data from non-interactive sessions by creating an [event filter](/solutions/security/manage-elastic-defend/event-filters.md).<br> |
+    | **Traditional Endpoint presets** | All traditional endpoint presets *except **Data Collection*** have these preventions enabled by default: malware, ransomware, memory threat, malicious behavior, and credential theft. Each preset collects the following events:<br><br>- **Data Collection:** All events; no preventions<br>- **Next-Generation Antivirus (NGAV):** Process events; all preventions<br>- **Essential EDR (Endpoint Detection & Response):** Process, Network, File events; all preventions<br>- **Complete EDR (Endpoint Detection & Response):** All events; all preventions<br> |
+    | **Cloud Workloads presets** | Both cloud workload presets are intended for monitoring cloud-based Linux hosts. Therefore, [session data](/solutions/security/investigate/session-view.md) collection, which enriches process events, is enabled by default. They both have all preventions disabled by default, and collect process, network, and file events.<br><br>- **All events:** Includes data from automated sessions.<br>- **Interactive only:** Filters out data from non-interactive sessions by creating an [event filter](/solutions/security/manage-elastic-defend/event-filters.md).<br> |
 
 6. Enter a name for the agent policy in **New agent policy name**. If other agent policies already exist, you can click the **Existing hosts** tab and select an existing policy instead. For more details on {{agent}} configuration settings, refer to [{{agent}} policies](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-policy.md).
 7. When you’re ready, click **Save and continue**.
@@ -86,12 +71,13 @@ To enable the {{elastic-defend}} integration, you must enroll agents in the rele
 Before you add an {{agent}}, a {{fleet-server}} must be running. Refer to [Add a {{fleet-server}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/deployment-models.md).
 
 {{elastic-defend}} cannot be integrated with an {{agent}} in standalone mode.
-
 ::::
 
 
-
 ### Important information about {{fleet-server}} [fleet-server-upgrade]
+```yaml {applies_to}
+stack:
+```
 
 ::::{note}
 If you are running an {{stack}} version earlier than 7.13.0, you can skip this section.
@@ -107,7 +93,7 @@ If you have upgraded to an {{stack}} version that includes {{fleet-server}} 7.13
 
 ### Add the {{agent}} [enroll-agent]
 
-1. If you’re in the process of installing an {{agent}} integration (such as {{elastic-defend}}), the **Add agent** UI opens automatically. Otherwise, find **{{fleet}}*** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select ***Agents** → **Add agent**.
+1. If you’re in the process of installing an {{agent}} integration (such as {{elastic-defend}}), the **Add agent** UI opens automatically. Otherwise, find **{{fleet}}** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), and select **Agents** → **Add agent**.
 
     :::{image} ../../../images/security-endpoint-cloud-sec-add-agent.png
     :alt: Add agent flyout on the Fleet page.

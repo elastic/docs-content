@@ -1,7 +1,8 @@
 ---
 navigation_title: Elastic Stack Helm chart
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-stack-helm-chart.html
 ---

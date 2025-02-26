@@ -68,15 +68,15 @@ To store monitoring data in a separate cluster:
     * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
     * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
 
-3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/monitoring-logstash-legacy.md).
+3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](asciidocalypse://docs/logstash/docs/reference/monitoring-logstash-legacy.md).
 4. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
 
-    * [Auditbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-auditbeat/monitoring.md)
-    * [Filebeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/monitoring.md)
-    * [Heartbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-heartbeat/monitoring.md)
-    * [Metricbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-metricbeat/monitoring.md)
-    * [Packetbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-packetbeat/monitoring.md)
-    * [Winlogbeat](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-winlogbeat/monitoring.md)
+    * [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
+    * [Filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/monitoring.md)
+    * [Heartbeat](asciidocalypse://docs/beats/docs/reference/heartbeat/monitoring.md)
+    * [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/monitoring.md)
+    * [Packetbeat](asciidocalypse://docs/beats/docs/reference/packetbeat/monitoring.md)
+    * [Winlogbeat](asciidocalypse://docs/beats/docs/reference/winlogbeat/monitoring.md)
 
 5. (Optional) [Configure APM Server monitoring](/solutions/observability/apps/monitor-apm-server.md)
 6. (Optional) Configure {{kib}} to collect data and send it to the monitoring cluster:

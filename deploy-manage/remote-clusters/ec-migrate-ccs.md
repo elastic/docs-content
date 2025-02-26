@@ -23,7 +23,7 @@ You can use a PUT request to update your deployment, changing both the deploymen
 
 1. First, choose the new template you want to use and obtain its ID. This template ID can be obtained from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) **Create Deployment** page by selecting **Equivalent API request** and inspecting the result for the field `deployment_template`. For example, we are going to use the "Storage optimized" deployment template, and in our GCP region the id is `gcp-storage-optimized-v5`.
 
-   You can also find the template in the [list of templates available for each region](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
+   You can also find the template in the [list of templates available for each region](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md).
 
    :::{image} ../../images/cloud-ec-migrate-deployment-template(2).png
    :alt: Deployment Template ID

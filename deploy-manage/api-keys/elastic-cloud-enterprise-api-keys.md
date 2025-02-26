@@ -70,5 +70,5 @@ To create a bearer token:
     { "token": "eyJ0eXa...<very long string>...MgBmsw4s" }
     ```
 
-2. Specify the bearer token in the Authentication header of your API requests. To learn more, check [accessing the API from the command line](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-enterprise/ece-api-command-line.md).
+2. Specify the bearer token in the Authentication header of your API requests. To learn more, check [accessing the API from the command line](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/ece-api-command-line.md).
 

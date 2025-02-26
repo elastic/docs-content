@@ -17,7 +17,7 @@ mapped_urls:
 
 $$$data-quality-dash-check-indices$$$
 
-The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) (ECS). Successful [mapping](/manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}} and {{kib}}.
+The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md) (ECS). Successful [mapping](/manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}} and {{kib}}.
 
 :::{image} ../../../images/security-data-qual-dash.png
 :alt: The Data Quality dashboard

@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-integrations-server-apm-switch.html
 ---
 
 # Switch from APM to Integrations Server payload [ec-integrations-server-apm-switch]
 
-This example shows how to use the Elasticsearch Service RESTful API to switch from using [APM & Fleet Server](#ec-manage-apm-and-fleet) to [Integrations Server](manage-integrations-server.md).
+This example shows how to use the {{ecloud}} RESTful API to switch from using [APM & Fleet Server](#ec-manage-apm-and-fleet) to [Integrations Server](manage-integrations-server.md).
 
 
 ### Requirements [ec_requirements_3]
