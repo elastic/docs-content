@@ -1,4 +1,5 @@
 ---
+navigation_title: "{{eck}}"
 applies_to:
   deployment:
     eck: all
@@ -6,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-licensing.html
 ---
 
-# Manage your license in ECK [k8s-licensing]
+# Manage your license in {{eck}} [k8s-licensing]
 
 When you install the default distribution of ECK, you receive a Basic license. Any Elastic stack application you manage through ECK will also be Basic licensed. Go to [https://www.elastic.co/subscriptions](https://www.elastic.co/subscriptions) to check which features are included in the Basic license for free.
 

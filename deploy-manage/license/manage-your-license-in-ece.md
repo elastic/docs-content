@@ -1,9 +1,12 @@
 ---
+navigation_title: "{{ece}}"
+applies_to:
+  ece: 
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-license.html
 ---
 
-# Manage your license in ECE [ece-add-license]
+# Manage your license in {{ece}} [ece-add-license]
 
 The use of Elastic Cloud Enterprise requires a valid license, which you can obtain from Elastic and add to your installation following the steps described in this document. When you first install ECE we automatically activate ECE with a trial license that is valid for 30 days.
 
