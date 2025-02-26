@@ -1,15 +1,14 @@
 ---
-navigation_title: "Identify deployment details for APM agents"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-explorer.html
+applies_to:
+  stack: all
 ---
-
-
 
 # APM Agent explorer [apm-agent-explorer]
 
 
-::::{warning}
+::::{important}
 This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
 ::::
 

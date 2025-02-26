@@ -11,7 +11,7 @@ Refer to the [Configuration settings reference](https://www.elastic.co/guide/en/
 To add user settings:
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

@@ -97,7 +97,7 @@ While you can search for phrases in the `message` field, you can’t use this fi
 * **message** (`Disk usage exceeds 90%.`): You can search for phrases or words in the message field.
 
 ::::{note}
-These fields are part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md). The ECS defines a common set of fields that you can use across Elastic when storing data, including log and metric data.
+These fields are part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md). The ECS defines a common set of fields that you can use across Elastic when storing data, including log and metric data.
 
 ::::
 
@@ -240,14 +240,14 @@ The previous command sets the following values for your index template:
 
 The example index template above sets the following component templates:
 
-* `logs@mappings`: general mappings for log data streams that include disabling automatic date detection from `string` fields and specifying mappings for [`data_stream` ECS fields](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-data_stream.md).
+* `logs@mappings`: general mappings for log data streams that include disabling automatic date detection from `string` fields and specifying mappings for [`data_stream` ECS fields](asciidocalypse://docs/ecs/docs/reference/ecs-data_stream.md).
 * `logs@settings`: general settings for log data streams including the following:
 
     * The default lifecycle policy that rolls over when the primary shard reaches 50 GB or after 30 days.
     * The default pipeline uses the ingest timestamp if there is no specified `@timestamp` and places a hook for the `logs@custom` pipeline. If a `logs@custom` pipeline is installed, it’s applied to logs ingested into this data stream.
     * Sets the [`ignore_malformed`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-malformed.md) flag to `true`. When ingesting a large batch of log data, a single malformed field like an IP address can cause the entire batch to fail. When set to true, malformed fields with a mapping type that supports this flag are still processed.
     * `logs@custom`: a predefined component template that is not installed by default. Use this name to install a custom component template to override or extend any of the default mappings or settings.
-    * `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md).
+    * `ecs@mappings`: dynamic templates that automatically ensure your data stream mappings comply with the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md).
 
 
 
@@ -476,7 +476,7 @@ The results should show only the high-severity logs:
 
 Extracting the `host.ip` field lets you filter logs by host IP addresses allowing you to focus on specific hosts that you’re having issues with or find disparities between hosts.
 
-The `host.ip` field is part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
+The `host.ip` field is part of the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md). Through the ECS, the `host.ip` field is mapped as an [`ip` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ip.md). `ip` field types allow range queries so you can find logs with IP addresses in a specific range. You can also query `ip` field types using Classless Inter-Domain Routing (CIDR) notation to find logs from a particular network or subnet.
 
 This section shows you how to extract the `host.ip` field from the following example logs and query based on the extracted fields:
 

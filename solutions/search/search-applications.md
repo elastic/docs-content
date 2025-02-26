@@ -3,11 +3,9 @@ navigation_title: "Search Applications"
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-application-overview.html
 applies_to:
-  stack:
-  serverless:
+  stack: beta
+  serverless: beta
 ---
-
-
 
 # Search applications [search-application-overview]
 
@@ -32,13 +30,14 @@ The Search Applications feature was introduced in Elastic version **8.8.0**.
 
 ::::{note} 
 Search Applications is a beta feature. Beta features are subject to change and are not covered by the support SLA of general release (GA) features. Elastic plans to promote this feature to GA in a future release.
-
 ::::
 
 
-This feature is available to all **Elastic Cloud** deployments.
+This feature is available to all **{{ech}}** deployments.
 
 This feature is also available to **self-managed** deployments when Elastic subscription requirements are satisfied. View the requirements for this feature under the **Elastic Search** section of the [Elastic Stack subscriptions](https://www.elastic.co/subscriptions) page.
+
+For Serverless users, this is an API-only feature. You can create and manage search applications using the [Search Application APIs](https://www.elastic.co/docs/api/doc/elasticsearch-serverless/group/endpoint-search_application).
 
 Your deployment must include the {{es}} and {{kib}} services.
 
@@ -56,6 +55,10 @@ Search Applications use [search templates](search-templates.md) to simplify the 
 
 
 ### Option 1: Get started in the UI [search-application-overview-get-started-ui] 
+
+```{applies_to}
+serverless: unavailable
+```
 
 You can create build, and manage your search applications directly in the {{kib}} UI under **Search**. Make sure you have at least one {{es}} index to work with on your deployment. The indices underlying your search application are searched together, similar to how an [alias](../../manage-data/data-store/aliases.md) searches over multiple indices.
 

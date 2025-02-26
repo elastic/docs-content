@@ -46,7 +46,7 @@ By default, the **Stream** page within the {{logs-app}} displays the following c
 |     |     |
 | --- | --- |
 | **Timestamp** | The timestamp of the log entry from the `timestamp` field. |
-| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-base.md)base field, `message`, is used. |
+| **Message** | The message extracted from the document.The content of this field depends on the type of log message.If no special log message type is detected, the [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs-base.md)base field, `message`, is used. |
 
 1. To add a new column to the logs stream, select **Settings > Add column**.
 2. In the list of available fields, select the field you want to add. To filter the field list by that name, you can start typing a field name in the search box.

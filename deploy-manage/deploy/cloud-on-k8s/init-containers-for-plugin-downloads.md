@@ -1,6 +1,7 @@
 ---
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-init-containers-plugin-downloads.html
 ---

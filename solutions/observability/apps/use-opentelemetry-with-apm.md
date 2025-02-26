@@ -1,16 +1,15 @@
 ---
+navigation_title: "OpenTelemetry"
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/observability-apm-agents-opentelemetry.html
   - https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html
-
-navigation_title: "OpenTelemetry"
 ---
 
 # Use OpenTelemetry with APM [apm-open-telemetry]
 
 
 ::::{note}
-For a complete overview of using OpenTelemetry with Elastic, explore** [**Elastic Distributions of OpenTelemetry**](https://github.com/elastic/opentelemetry).
+For a complete overview of using OpenTelemetry with Elastic, explore [**Elastic Distributions of OpenTelemetry**](https://github.com/elastic/opentelemetry).
 
 ::::
 
@@ -73,10 +72,10 @@ However, not all features of the OpenTelemetry API are supported when using this
 
 Find more details about how to use an OpenTelemetry API or SDK with an Elastic APM agent and which OpenTelemetry API features are supported in the APM agent documentation:
 
-* [**APM Java agent →**](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/opentelemetry-bridge.md)
-* [**APM .NET agent →**](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/opentelemetry-bridge.md)
-* [**APM Node.js agent →**](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/opentelemetry-bridge.md)
-* [**APM Python agent →**](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/opentelemetry-api-bridge.md)
+* [**APM Java agent →**](asciidocalypse://docs/apm-agent-java/docs/reference/opentelemetry-bridge.md)
+* [**APM .NET agent →**](asciidocalypse://docs/apm-agent-dotnet/docs/reference/opentelemetry-bridge.md)
+* [**APM Node.js agent →**](asciidocalypse://docs/apm-agent-nodejs/docs/reference/opentelemetry-bridge.md)
+* [**APM Python agent →**](asciidocalypse://docs/apm-agent-python/docs/reference/opentelemetry-api-bridge.md)
 
 
 ## Upstream OpenTelemetry Collector and language SDKs [apm-otel-upstream]

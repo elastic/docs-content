@@ -1,7 +1,8 @@
 ---
 navigation_title: Air gapped environments
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/air-gapped-install.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-air-gapped.html

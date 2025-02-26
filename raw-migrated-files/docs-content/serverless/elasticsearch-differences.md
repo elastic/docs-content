@@ -147,7 +147,7 @@ The following features are planned for future support in all {{serverless-full}}
 The following features are not available in {{es-serverless}} and are not planned for future support:
 
 * [Custom plugins and bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md)
-* [{{es}} for Apache Hadoop](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/ingestion-tools/elasticsearch-hadoop/elasticsearch-for-apache-hadoop.md)
+* [{{es}} for Apache Hadoop](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/elasticsearch-for-apache-hadoop.md)
 * [Scripted metric aggregations](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-scripted-metric-aggregation.md)
 * Managed web crawler: You can use the [self-managed web crawler](https://github.com/elastic/crawler) instead.
 * Managed Search connectors: You can use [self-managed Search connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/self-managed-connectors.md) instead.

@@ -25,7 +25,7 @@ You can create a latency threshold rule to alert you when the latency of a speci
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create a latency threshold rule directly from any page within **Applications***. Click the ***Alerts and rules*** button, and select ***Create threshold rule*** and then ***Latency***. When you create a rule this way, the ***Name** and **Tags** fields will be prepopulated but you can still change these.
+These steps show how to use the **Alerts** UI. You can also create a latency threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Latency**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 ::::
 
@@ -36,7 +36,7 @@ To create your latency threshold rule:
 2. Select **Manage Rules** from the **Alerts** page, and select **Create rule**.
 3. Enter a **Name** for your rule, and any optional **Tags** for more granular reporting (leave blank if unsure).
 4. Select the **Latency threshold** rule type from the APM use case.
-5. Select the appropriate **Service**, **Type***, ***Environment*** and ***Name*** (or leave ***ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
+5. Select the appropriate **Service**, **Type**, **Environment** and **Name** (or leave **ALL** to include all options). Alternatively, you can select **Use KQL Filter** and enter a KQL expression to limit the scope of your rule.
 6. Define the threshold and period:
 
     * **When**: Choose between `Average`, `95th percentile`, or `99th percentile`.
@@ -169,7 +169,7 @@ This guide will create an alert for an error group ID based on the following cri
 * Check every 1 minute
 * Send the alert via email to the site reliability team
 
-From any page in **Applications**, select **Alerts and rules*** → ***Create threshold rule** → **Latency threshold**. Change the name of the alert (if you wish), but do not edit the tags.
+From any page in **Applications**, select **Alerts and rules** → **Create threshold rule** → **Latency threshold**. Change the name of the alert (if you wish), but do not edit the tags.
 
 Based on the criteria above, define the following rule details:
 

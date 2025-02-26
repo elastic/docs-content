@@ -46,7 +46,7 @@ Expand the **quick guide** to learn how, or skip to the next section if your dat
 7. Click **Save and continue**. This step takes a minute or two to complete. When it’s done, you’ll have an agent policy that contains an integration policy for the configuration you just specified. If an {{agent}} is already assigned to the policy, you’re done. Otherwise, you need to deploy an {{agent}}.
 8. To deploy an {{agent}}:
 
-    1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent*** flyout. If you accidentally close the popup or the flyout doesn’t open, go to ***{{fleet}} → Agents**, then click **Add agent** to access the flyout.
+    1. In the popup, click **Add {{agent}} to your hosts** to open the **Add agent** flyout. If you accidentally close the popup or the flyout doesn’t open, go to **{{fleet}} → Agents**, then click **Add agent** to access the flyout.
     2. Follow the steps in the **Add agent** flyout to download, install, and enroll the {{agent}}.
 
 9. When incoming data is confirmed—​after a minute or two—​click **View assets** to access the dashboards.

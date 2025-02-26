@@ -25,7 +25,7 @@ You can create a failed transaction rate threshold rule to alert you when the ra
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create a failed transaction rate threshold rule directly from any page within **Applications***. Click the ***Alerts and rules*** button, and select ***Create threshold rule*** and then ***Failed transaction rate***. When you create a rule this way, the ***Name** and **Tags** fields will be prepopulated but you can still change these.
+These steps show how to use the **Alerts** UI. You can also create a failed transaction rate threshold rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create threshold rule** and then **Failed transaction rate**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 ::::
 

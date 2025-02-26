@@ -41,7 +41,7 @@ Use **Discover** to validate that metrics are successfully reported to {{kib}}.
 5. Narrow your search with a known OpenTelemetry field. For example, if you have an `order_value` field, add `order_value: *` to your search to return only OpenTelemetry metrics documents.
 
 
-## Visualize in {{kib}} [apm-open-telemetry-visualize]
+## Visualize your metrics[apm-open-telemetry-visualize]
 
 Use **Lens** to create visualizations for OpenTelemetry metrics. Lens enables you to build visualizations by dragging and dropping data fields. It makes smart visualization suggestions for your data, allowing you to switch between visualization types.
 

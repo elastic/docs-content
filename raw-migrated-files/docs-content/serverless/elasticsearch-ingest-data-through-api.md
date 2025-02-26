@@ -1,6 +1,6 @@
 # Ingest data through API [elasticsearch-ingest-data-through-api]
 
-The {{es}} APIs enable you to ingest data through code. You can use the APIs of one of the [language clients](../../../solutions/search/site-or-app/clients.md) or the {{es}} HTTP APIs. The examples on this page use the HTTP APIs to demonstrate how ingesting works in {{es}} through APIs. If you want to ingest timestamped data or have a more complex ingestion use case, check out [Beats](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md) or [Logstash](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md).
+The {{es}} APIs enable you to ingest data through code. You can use the APIs of one of the [language clients](../../../solutions/search/site-or-app/clients.md) or the {{es}} HTTP APIs. The examples on this page use the HTTP APIs to demonstrate how ingesting works in {{es}} through APIs. If you want to ingest timestamped data or have a more complex ingestion use case, check out [Beats](asciidocalypse://docs/beats/docs/reference/index.md) or [Logstash](asciidocalypse://docs/logstash/docs/reference/index.md).
 
 
 ## Using the bulk API [elasticsearch-ingest-data-through-api-using-the-bulk-api]

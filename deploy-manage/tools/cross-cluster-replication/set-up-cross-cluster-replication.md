@@ -30,7 +30,7 @@ In this guide, you’ll learn how to:
 You can manually create follower indices to replicate specific indices on a remote cluster, or configure auto-follow patterns to replicate rolling time series indices.
 
 ::::{tip}
-If you want to replicate data across clusters in the cloud, you can [configure remote clusters on {{ess}}](/deploy-manage/remote-clusters/ec-enable-ccs.md). Then, you can [search across clusters](../../../solutions/search/cross-cluster-search.md) and set up {{ccr}}.
+If you want to replicate data across clusters in the cloud, you can [configure remote clusters on {{{ecloud}}](/deploy-manage/remote-clusters/ec-enable-ccs.md). Then, you can [search across clusters](../../../solutions/search/cross-cluster-search.md) and set up {{ccr}}.
 ::::
 
 

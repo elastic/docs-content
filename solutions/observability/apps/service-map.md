@@ -25,7 +25,8 @@ Select the **Service Map** tab to get started. By default, all instrumented serv
 
 Customize what the service map displays using either the query bar or the environment selector. The query bar enables you to use [advanced queries](../../../solutions/observability/apps/use-advanced-queries-on-application-data.md) to customize the service map based on your needs. The environment selector allows you to narrow displayed results to a specific environment. This can be useful if you have two or more services, in separate environments, but with the same name. Use the environment drop-down to only see the data you’re interested in, like `dev` or `production`.
 
-If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the ***Errors** or **Metrics** overview.
+If there’s a specific service that interests you, select that service to highlight its connections. Click **Focus map** to refocus the map on the selected service and lock the connection highlighting. Click the **Transactions** tab to jump to the Transaction overview for the selected service. You can also use the tabs at the top of the page to easily jump to the **Errors** or **Metrics** overview.
+
 
 :::{image} ../../../images/observability-service-maps-java.png
 :alt: Example view of service maps in the Applications UI in Kibana
@@ -74,4 +75,4 @@ Service Maps are supported for the following APM agent versions:
 | PHP agent | ≥ v1.2.0 |
 | Python agent | ≥ v5.5.0 |
 | Ruby agent | ≥ v3.6.0 |
-| Real User Monitoring (RUM) agent | ≥ v4.7.0 |
+| Real User Monitoring (RUM) agent (**Elastic Stack only**)| ≥ v4.7.0 |

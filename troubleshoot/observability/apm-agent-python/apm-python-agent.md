@@ -23,7 +23,7 @@ Before you try anything else, go through the following sections to ensure that t
 
 Most frameworks support a debug mode. Generally, this mode is intended for non-production environments and provides detailed error messages and logging of potentially sensitive data. Because of these security issues, the agent will not collect traces if the app is in debug mode by default.
 
-You can override this behavior with the [`DEBUG`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-debug) configuration.
+You can override this behavior with the [`DEBUG`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-debug) configuration.
 
 Note that configuration of the agent should occur before creation of any `ElasticAPM` objects:
 
@@ -45,12 +45,12 @@ python3 -m pip install psutil
 
 ### Credential issues [apm-server-credentials] 
 
-In order for the agent to send data to the APM Server, it may need an [`API_KEY`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-api-key) or a [`SECRET_TOKEN`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-secret-token). Double check your APM Server settings and make sure that your credentials are configured correctly. Additionally, check that [`SERVER_URL`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-server-url) is correct.
+In order for the agent to send data to the APM Server, it may need an [`API_KEY`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-api-key) or a [`SECRET_TOKEN`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-secret-token). Double check your APM Server settings and make sure that your credentials are configured correctly. Additionally, check that [`SERVER_URL`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-server-url) is correct.
 
 
 ## Django `check` and `test` [django-test] 
 
-When used with Django, the agent provides two management commands to help debug common issues. Head over to the [Django troubleshooting section](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/django-support.md#django-troubleshooting) for more information.
+When used with Django, the agent provides two management commands to help debug common issues. Head over to the [Django troubleshooting section](asciidocalypse://docs/apm-agent-python/docs/reference/django-support.md#django-troubleshooting) for more information.
 
 
 ## Agent logging [agent-logging] 
@@ -126,7 +126,7 @@ See the [python logging docs](https://docs.python.org/3/library/logging.md) for 
 
 In the unlikely event the agent causes disruptions to a production application, you can disable the agent while you troubleshoot.
 
-If you have access to [dynamic configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#dynamic-configuration), you can disable the recording of events by setting [`recording`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-recording) to `false`. When changed at runtime from a supported source, there’s no need to restart your application.
+If you have access to [dynamic configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#dynamic-configuration), you can disable the recording of events by setting [`recording`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-recording) to `false`. When changed at runtime from a supported source, there’s no need to restart your application.
 
-If that doesn’t work, or you don’t have access to dynamic configuration, you can disable the agent by setting [`enabled`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-enabled) to `false`. You’ll need to restart your application for the changes to take effect.
+If that doesn’t work, or you don’t have access to dynamic configuration, you can disable the agent by setting [`enabled`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-enabled) to `false`. You’ll need to restart your application for the changes to take effect.
 

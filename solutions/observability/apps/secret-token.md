@@ -59,22 +59,22 @@ apm-server.auth.secret_token: <secret-token>
 
 Each Elastic {{apm-agent}} has a configuration option to set the value of the secret token:
 
-* **Android agent**: [`secretToken`](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/configuration.md)
-* **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-secret-token)
-* **iOS agent**: [`secretToken`](asciidocalypse://docs/apm-agent-ios/docs/reference/ingestion-tools/apm-agent-swift/configuration.md#secretToken)
-* **Java agent**: [`secret_token`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-reporter.md#config-secret-token)
-* **.NET agent**: [`ELASTIC_APM_SECRET_TOKEN`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-reporter.md#config-secret-token)
-* **Node.js agent**: [`Secret Token`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#secret-token)
-* **PHP agent**: [`secret_token`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-secret-token)
-* **Python agent**: [`secret_token`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md#config-secret-token)
-* **Ruby agent**: [`secret_token`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-secret-token)
+* **Android agent**: [`secretToken`](asciidocalypse://docs/apm-agent-android/docs/reference/configuration.md)
+* **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-secret-token)
+* **iOS agent**: [`secretToken`](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md#secretToken)
+* **Java agent**: [`secret_token`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-secret-token)
+* **.NET agent**: [`ELASTIC_APM_SECRET_TOKEN`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-reporter.md#config-secret-token)
+* **Node.js agent**: [`Secret Token`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#secret-token)
+* **PHP agent**: [`secret_token`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-secret-token)
+* **Python agent**: [`secret_token`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-secret-token)
+* **Ruby agent**: [`secret_token`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-secret-token)
 
 In addition to setting the secret token, ensure the configured server URL uses `HTTPS` instead of `HTTP`:
 
-* **Go agent**: [`ELASTIC_APM_SERVER_URL`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md#config-server-url)
-* **Java agent**: [`server_urls`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/config-reporter.md#config-server-urls)
-* **.NET agent**: [`ServerUrl`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/config-reporter.md#config-server-url)
-* **Node.js agent**: [`serverUrl`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md#server-url)
-* **PHP agent**: [`server_url`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration-reference.md#config-server-url)
+* **Go agent**: [`ELASTIC_APM_SERVER_URL`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-server-url)
+* **Java agent**: [`server_urls`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-server-urls)
+* **.NET agent**: [`ServerUrl`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-reporter.md#config-server-url)
+* **Node.js agent**: [`serverUrl`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#server-url)
+* **PHP agent**: [`server_url`](asciidocalypse://docs/apm-agent-php/docs/reference/configuration-reference.md#config-server-url)
 * **Python agent**: [`server_url`](https://www.elastic.co/guide/en/apm/agent/python/current/)
-* **Ruby agent**: [`server_url`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-server-url)
+* **Ruby agent**: [`server_url`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-server-url)

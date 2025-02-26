@@ -1,11 +1,16 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/user-profile.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
 ---
 
 # User profiles [user-profile]
 
-::::{note} 
+::::{admonition} Indirect use only
 The user profile feature is designed only for use by {{kib}} and Elastic’s {{observability}}, and {{elastic-sec}} solutions. Individual users and external applications should not call this API directly. Elastic reserves the right to change or remove this feature in future releases without prior notice.
 ::::
 
