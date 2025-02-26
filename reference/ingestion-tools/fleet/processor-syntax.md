@@ -55,7 +55,7 @@ Each condition receives a field to compare. You can specify multiple fields unde
 
 For each field, you can specify a simple field name or a nested map, for example `dns.question.name`.
 
-Refer to the [integrations documentation](integration-docs://docs/reference/index.md) for a list of all fields created by a specific integration.
+Refer to the [integrations documentation](asciidocalypse://docs/reference/index.md) for a list of all fields created by a specific integration.
 
 The supported conditions are:
 

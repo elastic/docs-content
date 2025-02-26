@@ -9,7 +9,7 @@ mapped_pages:
 The Timeline schema lists all the JSON fields and objects required to create a Timeline or a Timeline template using the Create Timeline API.
 
 ::::{important}
-All column, dropzone, and filter fields must be [ECS fields](ecs://docs/reference/index.md).
+All column, dropzone, and filter fields must be [ECS fields](asciidocalypse://docs/reference/index.md).
 ::::
 
 
@@ -114,11 +114,11 @@ This screenshot maps the Timeline UI components to their JSON objects:
 
 | Name | Type | Description |
 | --- | --- | --- |
-| `exists` | String | [Exists term query](elasticsearch://docs/reference/query-languages/query-dsl-exists-query.md) for thespecified field (`null` when undefined). For example, `{"field":"user.name"}`. |
-| `meta` | meta | Filter details:<br><br>* `alias` (string): UI filter name.<br>* `disabled` (boolean): Indicates if the filter is disabled.<br>* `key`(string): Field name or unique string ID.<br>* `negate` (boolean): Indicates if the filter query clause uses `NOT` logic.<br>* `params` (string): Value of `phrase` filter types.<br>* `type` (string): Type of filter. For example, `exists` and `range`. For more information about filtering, see [Query DSL](elasticsearch://docs/reference/query-languages/querydsl.md).<br> |
-| `match_all` | String | [Match all term query](elasticsearch://docs/reference/query-languages/query-dsl-match-all-query.md)for the specified field (`null` when undefined). |
-| `query` | String | [DSL query](elasticsearch://docs/reference/query-languages/querydsl.md) (`null` when undefined). Forexample, `{"match_phrase":{"ecs.version":"1.4.0"}}`. |
-| `range` | String | [Range query](elasticsearch://docs/reference/query-languages/query-dsl-range-query.md) (`null` whenundefined). For example, `{"@timestamp":{"gte":"now-1d","lt":"now"}}"`. |
+| `exists` | String | [Exists term query](asciidocalypse://docs/reference/query-languages/query-dsl-exists-query.md) for thespecified field (`null` when undefined). For example, `{"field":"user.name"}`. |
+| `meta` | meta | Filter details:<br><br>* `alias` (string): UI filter name.<br>* `disabled` (boolean): Indicates if the filter is disabled.<br>* `key`(string): Field name or unique string ID.<br>* `negate` (boolean): Indicates if the filter query clause uses `NOT` logic.<br>* `params` (string): Value of `phrase` filter types.<br>* `type` (string): Type of filter. For example, `exists` and `range`. For more information about filtering, see [Query DSL](asciidocalypse://docs/reference/query-languages/querydsl.md).<br> |
+| `match_all` | String | [Match all term query](asciidocalypse://docs/reference/query-languages/query-dsl-match-all-query.md)for the specified field (`null` when undefined). |
+| `query` | String | [DSL query](asciidocalypse://docs/reference/query-languages/querydsl.md) (`null` when undefined). Forexample, `{"match_phrase":{"ecs.version":"1.4.0"}}`. |
+| `range` | String | [Range query](asciidocalypse://docs/reference/query-languages/query-dsl-range-query.md) (`null` whenundefined). For example, `{"@timestamp":{"gte":"now-1d","lt":"now"}}"`. |
 
 
 ## globalNotes object [globalNotes-obj]

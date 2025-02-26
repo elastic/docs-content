@@ -34,7 +34,7 @@ Looking for a general guide that explores all of your options for ingesting data
 
 ## {{integrations}}
 
-[{{integrations}}](integration-docs://docs/reference/index.md) provide an easy way to connect Elastic to external services and systems, and quickly get insights or take action. They can collect new sources of data, and they often ship with out-of-the-box assets like dashboards, visualizations, and pipelines to extract structured fields out of logs and events. This makes it easier to get insights within seconds. Integrations are available for popular services and platforms like Nginx or AWS, as well as many generic input types like log files.
+[{{integrations}}](asciidocalypse://docs/reference/index.md) provide an easy way to connect Elastic to external services and systems, and quickly get insights or take action. They can collect new sources of data, and they often ship with out-of-the-box assets like dashboards, visualizations, and pipelines to extract structured fields out of logs and events. This makes it easier to get insights within seconds. Integrations are available for popular services and platforms like Nginx or AWS, as well as many generic input types like log files.
 
 {{kib}} provides a web-based UI to add and manage integrations. You can browse a unified view of available integrations that shows both {{agent}} and {{beats}} integrations.
 

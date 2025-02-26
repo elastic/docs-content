@@ -62,7 +62,7 @@ To filter the list of agents by status, click the **Status** dropdown and select
 :class: screenshot
 :::
 
-For advanced filtering, use the search bar to create structured queries using [{{kib}} Query Language](elasticsearch://docs/reference/query-languages/kql.md). For example, enter `local_metadata.os.family : "darwin"` to see only agents running on macOS.
+For advanced filtering, use the search bar to create structured queries using [{{kib}} Query Language](asciidocalypse://docs/reference/query-languages/kql.md). For example, enter `local_metadata.os.family : "darwin"` to see only agents running on macOS.
 
 You can also sort the list of agents by host, last activity time, or version, by clicking on the table headings for those fields.
 
@@ -125,7 +125,7 @@ When {{fleet}} reports an agent status like `Offline` or `Unhealthy`, you might 
 
 On the **Logs** tab you can filter, search, and explore the agent logs:
 
-* Use the search bar to create structured queries using [{{kib}} Query Language](elasticsearch://docs/reference/query-languages/kql.md).
+* Use the search bar to create structured queries using [{{kib}} Query Language](asciidocalypse://docs/reference/query-languages/kql.md).
 * Choose one or more datasets to show logs for specific programs, such as {{filebeat}} or {{fleet-server}}.
 
     :::{image} images/kibana-fleet-datasets.png
