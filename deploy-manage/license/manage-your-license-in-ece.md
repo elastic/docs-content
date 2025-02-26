@@ -27,7 +27,7 @@ If you have a license from 2018 or earlier, you might receive a warning that you
 
 Elastic Cloud Enterprise Licenses contains two types of licenses - the actual license for Elastic Cloud Enterprise that is validated to enable Elastic Cloud Enterprise features and the *cluster licenses*, which Elastic Cloud Enterprise installs into the individual clusters.
 
-Elastic Cloud Enterprise installs those cluster licenses with an approximately 3 month window, and updates the cluster licenses automatically as they get within a month of expiration. This is the same system that we use for our Elasticsearch Service on Cloud.
+Elastic Cloud Enterprise installs those cluster licenses with an approximately 3 month window, and updates the cluster licenses automatically as they get within a month of expiration.
 
 When the Elastic Cloud Enterprise license expires, and consequently the cluster license that’s currently installed for all managed clusters since it has the same expiration date, the following takes place:
 

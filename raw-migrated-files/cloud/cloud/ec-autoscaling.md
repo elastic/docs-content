@@ -40,7 +40,7 @@ Currently, autoscaling behavior is as follows:
 
 
 ::::{note}
-For any Elasticsearch Service Elasticsearch component the number of availability zones is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
+The number of availability zones for each component of your {{ech}} deployments is not affected by autoscaling. You can always set the number of availability zones manually and the autoscaling mechanism will add or remove capacity per availability zone.
 ::::
 
 
@@ -80,10 +80,10 @@ The following are known limitations and restrictions with autoscaling:
 
 To enable or disable autoscaling on a deployment:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Deployments** page, select your deployment.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. In your deployment menu, select **Edit**.
 4. Select desired autoscaling configuration for this deployment using **Enable Autoscaling for:** dropdown menu.
@@ -98,10 +98,10 @@ When autoscaling has been disabled, you need to adjust the size of data tiers an
 
 Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Deployments** page, select your deployment.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. In your deployment menu, select **Edit**.
 4. To update a data tier:

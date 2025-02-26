@@ -1,8 +1,8 @@
 # Azure Private Link traffic filters [ec-traffic-filtering-vnet]
 
-Traffic filtering, to allow only Azure Private Link connections, is one of the security layers available in Elasticsearch Service. It allows you to limit how your deployments can be accessed.
+Traffic filtering, to allow only Azure Private Link connections, is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed.
 
-Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in Elasticsearch Service.
+Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in {{ecloud}}.
 
 ::::{note}
 Azure Private Link filtering is supported only for Azure regions.
@@ -282,5 +282,5 @@ This means your deployment on Elastic Cloud can be in a different region than th
     1. Create your Private Endpoint using the service alias for region 2 in the region 1 VNET (let’s call this VNET1).
     2. Create a Private Hosted Zone for region 2, and associate it with VNET1 similar to the step [Create a Private Link endpoint and DNS](../../../deploy-manage/security/azure-private-link-traffic-filters.md#ec-private-link-azure-dns). Note that you are creating these resources in region 1, VNET1.
 
-2. [Create a traffic filter rule set](../../../deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-create-traffic-filter-private-link-rule-set) and [Associate the rule set](../../../deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) through the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body), just as you would for any deployment.
+2. [Create a traffic filter rule set](../../../deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-create-traffic-filter-private-link-rule-set) and [Associate the rule set](../../../deploy-manage/security/aws-privatelink-traffic-filters.md#ec-associate-traffic-filter-private-link-rule-set) through the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body), just as you would for any deployment.
 3. [Test the connection](../../../deploy-manage/security/azure-private-link-traffic-filters.md#ec-azure-access-the-deployment-over-private-link) from a VM or client in region 1 to your Private Link endpoint, and it should be able to connect to your Elasticsearch cluster hosted in region 2.

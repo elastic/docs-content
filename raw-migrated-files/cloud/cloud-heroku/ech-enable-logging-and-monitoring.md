@@ -115,7 +115,7 @@ Elasticsearch Add-On for Heroku manages the installation and configuration of th
 To enable monitoring on your deployment:
 
 1. Log in to the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
@@ -146,7 +146,7 @@ Enabling logs and monitoring requires some extra resource on a deployment. For p
 With monitoring enabled for your deployment, you can access the [logs](https://www.elastic.co/guide/en/kibana/current/observability.html) and [stack monitoring](../../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) through Kibana.
 
 1. Log in to the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
@@ -214,7 +214,7 @@ With logging and monitoring enabled for a deployment, metrics are collected for 
 Audit logs are useful for tracking security events on your {{es}} and/or {{kib}} clusters. To enable {{es}} audit logs on your deployment:
 
 1. Log in to the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 

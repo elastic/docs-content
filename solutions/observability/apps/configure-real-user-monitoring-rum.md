@@ -2,6 +2,8 @@
 navigation_title: "Real User Monitoring (RUM)"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-rum.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Configure Real User Monitoring (RUM) [apm-configuration-rum]
 
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
 
 Most options in this section are supported by all APM Server deployment methods.

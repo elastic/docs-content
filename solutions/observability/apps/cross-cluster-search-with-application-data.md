@@ -2,6 +2,8 @@
 navigation_title: "Cross-cluster search"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-cross-cluster-search.html
+applies_to:
+  stack: all
 ---
 
 
@@ -35,8 +37,7 @@ There are two ways to edit the default {{data-source}}:
 * In the Applications UI — Find **Applications** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). Go to **Settings** → **Indices** and change all `xpack.apm.indices.*` values to include remote clusters.
 * In `kibana.yml` — Update the [`xpack.apm.indices.*`](asciidocalypse://docs/kibana/docs/reference/configuration-reference/apm-settings.md) configuration values to include remote clusters.
 
-::::{admonition} Exclude data tiers from search
-:class: tip
+::::{tip}
 
 In a cross-cluster search (CCS) environment, it’s possible for different clusters to serve different data tiers in responses. If one of the requested clusters responds slowly, it can cause a timeout at the proxy after 320 seconds. This results in 502 Bad Gateway server error responses presented as failure toast messages in the UI, and no data loaded.
 

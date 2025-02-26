@@ -194,7 +194,6 @@ subs:
   ess-trial:   "https://cloud.elastic.co/registration?page=docs&placement=docs-body"
   ess-product:   "https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body"
   ess-console:   "https://cloud.elastic.co?page=docs&placement=docs-body"
-  ess-console-name:   "Elasticsearch Service Console"
   ess-deployments:   "https://cloud.elastic.co/deployments?page=docs&placement=docs-body"
   ece-ref:   "https://www.elastic.co/guide/en/cloud-enterprise/current"
   eck-ref:   "https://www.elastic.co/guide/en/cloud-on-k8s/current"

@@ -1,6 +1,6 @@
 # Securing your deployment [ec-security]
 
-The security of Elasticsearch Service is described on the [{{ecloud}} security](https://www.elastic.co/cloud/security) page. In addition to the security provided by {{ecloud}}, you can take the following steps to secure your deployments:
+The security of {{ech}} is described on the [{{ecloud}} security](https://www.elastic.co/cloud/security) page. In addition to the security provided by {{ecloud}}, you can take the following steps to secure your deployments:
 
 * Prevent unauthorized access with password protection and role-based access control:
 
@@ -14,7 +14,7 @@ The security of Elasticsearch Service is described on the [{{ecloud}} security](
 * Block unwanted traffic with [traffic filter](../../../deploy-manage/security/traffic-filtering.md).
 * Secure your settings with the Elasticsearch [keystore](../../../deploy-manage/security/secure-settings.md).
 
-In addition, we also enable encryption at rest (EAR) by default. Elasticsearch Service supports EAR for both the data stored in your clusters and the snapshots we take for backup, on all cloud platforms and across all regions.
+In addition, we also enable encryption at rest (EAR) by default. {{ech}} supports EAR for both the data stored in your clusters and the snapshots we take for backup, on all cloud platforms and across all regions.
 
 
 ## Should I use organization-level or deployment-level SSO? [ec_should_i_use_organization_level_or_deployment_level_sso] 

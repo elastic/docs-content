@@ -2,6 +2,8 @@
 navigation_title: "APM agent central configuration"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configure-agent-config.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Configure APM agent central configuration [apm-configure-agent-config]
 
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
 
 APM agent central configuration is supported by all APM Server deployment methods, but some options are only supported for APM Server binary users.

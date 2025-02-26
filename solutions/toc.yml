@@ -644,6 +644,9 @@ toc:
             children:
               - file: search/ranking/learning-to-rank-model-training.md
               - file: search/ranking/learning-to-rank-search-usage.md
+      - file: search/cross-cluster-search.md
+        children:
+          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md
       - file: search/querying-for-search.md
         children:
           - file: search/the-search-api.md
@@ -662,7 +665,3 @@ toc:
               - file: search/search-applications/search-application-security.md
               - file: search/search-applications/search-application-client.md
       - file: search/apis-and-tools.md
-      - file: search/search-approaches/near-real-time-search.md
-      - file: search/cross-cluster-search.md
-        children:
-          - file: search/using-resolve-cluster-endpoint-before-cross-cluster-search.md

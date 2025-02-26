@@ -9,16 +9,16 @@ applies_to:
 
 # Access performance metrics [ec-saas-metrics-accessing]
 
-Cluster performance metrics are available directly in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body). The graphs on this page include a subset of Elasticsearch Service-specific performance metrics.
+Cluster performance metrics are available directly in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body). The graphs on this page include a subset of {{ech}}-specific performance metrics.
 
 For advanced views or production monitoring, [enable logging and monitoring](../stack-monitoring/elastic-cloud-stack-monitoring.md). The monitoring application provides more advanced views for Elasticsearch and JVM metrics, and includes a configurable retention period.
 
 To access cluster performance metrics:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list. For example, you might want to select **Is unhealthy** and **Has master problems** to get a short list of deployments that need attention.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list. For example, you might want to select **Is unhealthy** and **Has master problems** to get a short list of deployments that need attention.
 
 3. From your deployment menu, go to the **Performance** page.
 
@@ -31,7 +31,7 @@ The following metrics are available:
 :alt: Graph showing CPU usage
 :::
 
-Shows the maximum usage of the CPU resources assigned to your Elasticsearch cluster, as a percentage. CPU resources are relative to the size of your cluster, so that a cluster with 32GB of RAM gets assigned twice as many CPU resources as a cluster with 16GB of RAM. All clusters are guaranteed their share of CPU resources, as Elasticsearch Service infrastructure does not overcommit any resources. CPU credits permit boosting the performance of smaller clusters temporarily, so that CPU usage can exceed 100%.
+Shows the maximum usage of the CPU resources assigned to your Elasticsearch cluster, as a percentage. CPU resources are relative to the size of your cluster, so that a cluster with 32GB of RAM gets assigned twice as many CPU resources as a cluster with 16GB of RAM. All clusters are guaranteed their share of CPU resources, as {{ech}} infrastructure does not overcommit any resources. CPU credits permit boosting the performance of smaller clusters temporarily, so that CPU usage can exceed 100%.
 
 ::::{tip}
 This chart reports the maximum CPU values over the sampling period. [Logs and Metrics](../stack-monitoring/elastic-cloud-stack-monitoring.md) ingested into [Stack Monitoring](visualizing-monitoring-data.md)'s "CPU Usage" instead reflects the average CPU over the sampling period. Therefore, you should not expect the two graphs to look exactly the same. When investigating [CPU-related performance issues](../../../troubleshoot/monitoring/performance.md), you should default to [Stack Monitoring](visualizing-monitoring-data.md).
@@ -97,7 +97,7 @@ Indicates the overhead involved in JVM garbage collection to reclaim memory.
 
 Performance correlates directly with resources assigned to your cluster, and many of these metrics will show some sort of correlation with each other when you are trying to determine the cause of a performance issue. Take a look at some of the scenarios included in this section to learn how you can determine the cause of performance issues.
 
-It is not uncommon for performance issues on Elasticsearch Service to be caused by an undersized cluster that cannot cope with the workload it is being asked to handle. If your cluster performance metrics often shows high CPU usage or excessive memory pressure, consider increasing the size of your cluster soon to improve performance. This is especially true for clusters that regularly reach 100% of CPU usage or that suffer out-of-memory failures; it is better to resize your cluster early when it is not yet maxed out than to have to resize a cluster that is already overwhelmed. [Changing the configuration of your cluster](../../deploy/elastic-cloud/configure.md) may add some overhead if data needs to be migrated to the new nodes, which can increase the load on a cluster further and delay configuration changes.
+It is not uncommon for performance issues on {{ech}} to be caused by an undersized cluster that cannot cope with the workload it is being asked to handle. If your cluster performance metrics often shows high CPU usage or excessive memory pressure, consider increasing the size of your cluster soon to improve performance. This is especially true for clusters that regularly reach 100% of CPU usage or that suffer out-of-memory failures; it is better to resize your cluster early when it is not yet maxed out than to have to resize a cluster that is already overwhelmed. [Changing the configuration of your cluster](../../deploy/elastic-cloud/configure.md) may add some overhead if data needs to be migrated to the new nodes, which can increase the load on a cluster further and delay configuration changes.
 
 To help diagnose high CPU usage you can also use the Elasticsearch [nodes hot threads API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-nodes-hot-threads), which identifies the threads on each node that have the highest CPU usage or that have been executing for a longer than normal period of time.
 
@@ -128,7 +128,7 @@ Cluster performance metrics are shown per node and are color-coded to indicate w
 
 ## Cluster restarts after out-of-memory failures [ec_cluster_restarts_after_out_of_memory_failures]
 
-For clusters that suffer out-of-memory failures, it can be difficult to determine whether the clusters are in a completely healthy state afterwards. For this reason, Elasticsearch Service automatically reboots clusters that suffer out-of-memory failures.
+For clusters that suffer out-of-memory failures, it can be difficult to determine whether the clusters are in a completely healthy state afterwards. For this reason, {{ech}} automatically reboots clusters that suffer out-of-memory failures.
 
 You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../deploy/elastic-cloud/ec-customize-deployment-components.md#ec-cluster-size) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
 

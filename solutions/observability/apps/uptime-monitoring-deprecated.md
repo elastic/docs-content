@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/uptime-intro.html
+applies_to:
+  stack: all
 ---
 
 # Uptime monitoring (deprecated) [uptime-intro]

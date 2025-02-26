@@ -10,7 +10,7 @@ Multiple {{es}} deployments are writing to the same snapshot repository. {{es}} 
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 Fixing the corrupted repository will entail making changes in multiple deployments that write to the same snapshot repository. Only one deployment must be writing to a repository. The deployment that will keep writing to the repository will be called the "primary" deployment (the current cluster), and the other one(s) where we’ll mark the repository read-only as the "secondary" deployments.
 
 First mark the repository as read-only on the secondary deployments:
@@ -18,7 +18,7 @@ First mark the repository as read-only on the secondary deployments:
 **Use {{kib}}**
 
 1. Log in to the [{{ecloud}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the **Elasticsearch Service** panel, click the name of your deployment.
+2. On the **Hosted deployments** panel, click the name of your deployment.
 
     ::::{note}
     If the name of your deployment is disabled your {{kib}} instances might be unhealthy, in which case please contact [Elastic Support](https://support.elastic.co). If your deployment doesn’t include {{kib}}, all you need to do is [enable it first](../../deploy-manage/deploy/elastic-cloud/access-kibana.md).

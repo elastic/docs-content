@@ -87,7 +87,7 @@ Bundles
         └── MyGeoLite2-City.mmdb
     ```
 
-    Note that the extension must be `-(City|Country|ASN).mmdb`, and it must be a different name than the original file name `GeoLite2-City.mmdb` which already exists in Elasticsearch Service. To use this bundle, you can refer it in the GeoIP ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file`.
+    Note that the extension must be `-(City|Country|ASN).mmdb`, and it must be a different name than the original file name `GeoLite2-City.mmdb` which already exists in {{ech}}. To use this bundle, you can refer it in the GeoIP ingest pipeline as `MyGeoLite2-City.mmdb` under `database_file`.
 
 
 
@@ -95,8 +95,8 @@ Bundles
 
 You must upload your files before you can apply them to your cluster configuration:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 3. Under **Features**, select **Extensions**.
 4. Select **Upload extension**.
 5. Complete the extension fields, including the {{es}} version.
@@ -123,10 +123,10 @@ Refer to [Managing plugins and extensions through the API](../../../deploy-manag
 
 After uploading your files, you can select to enable them when creating a new {{es}} deployment. For existing deployments, you must update your deployment configuration to use the new files:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From the **Actions** dropdown, select **Edit deployment**.
 4. Select **Manage user settings and extensions**.
@@ -155,9 +155,9 @@ To update an extension with a new file version,
 1. Prepare a new plugin or bundle.
 2. On the **Extensions** page, [upload a new extension](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ec-add-your-plugin).
 3. Make your new files available by uploading them.
-4. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+4. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 5. From the **Actions** dropdown, select **Edit deployment**.
 6. Select **Manage user settings and extensions**.
