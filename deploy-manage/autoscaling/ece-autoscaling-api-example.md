@@ -7,7 +7,7 @@ mapped_pages:
 
 This example demonstrates how to use the Elastic Cloud Enterprise RESTful API to create a deployment with autoscaling enabled.
 
-The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](ece-autoscaling-example.md). For more information about using the Elastic Cloud Enterprise API in general, check [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-enterprise/restful-api.md).
+The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](ece-autoscaling-example.md). For more information about using the Elastic Cloud Enterprise API in general, check [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/restful-api.md).
 
 
 ## Requirements [ece_requirements_3] 

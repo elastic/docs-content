@@ -4,23 +4,12 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-session-view.html
 ---
 
-# Session view
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/session-view.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-session-view.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$enable-session-view$$$
+# Session View [security-session-view]
 
 Session View is an investigation tool that allows you to examine Linux process data organized in a tree-like structure according to the Linux logical event model, with processes organized by parentage and time of execution. It displays events in a highly readable format that is inspired by the terminal. This makes it a powerful tool for monitoring and investigating session activity on your Linux infrastructure and understanding user and service behavior.
 
 ::::{admonition} Requirements
-* Session View requires an [Enterprise subscription](https://www.elastic.co/pricing).
+Ensure you have the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md).
 
 ::::
 
@@ -56,7 +45,7 @@ Session View can only display data that was collected by {{elastic-defend}} when
 
 ## Open Session View [open-session-view]
 
-Session View is accessible from the **Hosts**, **Alerts***, and ***Timelines** pages, as well as the alert details flyout and the **Kubernetes** dashboard. Events and sessions that you can investigate in Session View have a rectangular **Open Session View** button in the **Actions** column. For example:
+Session View is accessible from the **Hosts**, **Alerts**, and **Timelines** pages, as well as the alert details flyout and the **Kubernetes** dashboard. Events and sessions that you can investigate in Session View have a rectangular **Open Session View** button in the **Actions** column. For example:
 
 * On the Alerts page, scroll down to view the Alerts table. Look for alerts that have the **Open Session View** button in the **Actions** column:
 

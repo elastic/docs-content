@@ -2,11 +2,12 @@
 navigation_title: "{{kib}} Metrics"
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/kibana-page.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 

@@ -5,7 +5,7 @@ mapped_pages:
 
 # Elasticsearch Add-On for Heroku GCP instance configurations [ech-gcp-instance-configuration]
 
-Google Compute Engine (GCE) N2 general purpose VM types are now available for Elastic Cloud deployments in all supported [Google Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md#ec-gcp_regions). [N2](https://cloud.google.com/compute/docs/machine-types) VMs have a better mix of vCPU, RAM, and internal disk, and are up to 50% more cost effective when compared to N1 VM types. In addition to N2, we also provide N2D VMs across the Google Cloud regions.
+Google Compute Engine (GCE) N2 general purpose VM types are now available for Elastic Cloud deployments in all supported [Google Cloud regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md#ec-gcp_regions). [N2](https://cloud.google.com/compute/docs/machine-types) VMs have a better mix of vCPU, RAM, and internal disk, and are up to 50% more cost effective when compared to N1 VM types. In addition to N2, we also provide N2D VMs across the Google Cloud regions.
 
 To learn about the GCE specific configurations, check:
 
@@ -39,7 +39,7 @@ The new configuration naming convention aligns with the [data tiers](/manage-dat
 | gcp.es.datawarm.n2.68x10x190, gcp.es.datacold.n2.68x10x190 | These configurations replace “highstorage”, which is based on N1 with 1:160 RAM:disk and similar RAM:CPU ratios. |
 | gcp.es.datafrozen.n2.68x10x95 | This configuration replaces the (short lived) gcp.es.datafrozen.n2d.64x8x95 configuration we used for the frozen cache tier. n2d was based on the AMC epyc processor but we found that the Intel-based configuration provides a slightly better cost/performance ratio. We also tweaked the RAM/CPU ratios to align to other configurations and benchmarks. |
 
-For a detailed price list, check the [Elastic Cloud deployment pricing table](https://cloud.elastic.co/deployment-pricing-table?provider=gcp). For a detailed specification of the new configurations, check [Elasticsearch Service default GCP instance configurations](ech-default-gcp-configurations.md).
+For a detailed price list, check the [Elastic Cloud deployment pricing table](https://cloud.elastic.co/deployment-pricing-table?provider=gcp). For a detailed specification of the new configurations, check [{{ecloud}} default GCP instance configurations](ech-default-gcp-configurations.md).
 
 The benefits of the new configurations are multifold:
 

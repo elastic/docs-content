@@ -28,7 +28,7 @@ To learn more about the features that are supported by Elasticsearch Add-On for 
 
 ## Elasticsearch Add-On for Heroku [ech-restrictions-heroku]
 
-Not all features of our Elasticsearch Service are available to Heroku users. Specifically, you cannot create additional deployments or use different deployment templates.
+Not all features of {{ecloud}} are available to Heroku users. Specifically, you cannot create additional deployments or use different deployment templates.
 
 Generally, if a feature is shown as available in the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body), you can use it.
 
