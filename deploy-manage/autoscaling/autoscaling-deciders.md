@@ -12,7 +12,7 @@ mapped_urls:
 
 # Autoscaling deciders [autoscaling-deciders]
 
-% Description TODO
+Autoscaling in Elasticsearch enables dynamic resource allocation based on predefined policies. A key component of this mechanism is autoscaling deciders, which independently assess resource requirements and determine when scaling actions are necessary. Deciders analyze various factors, such as storage usage, indexing rates, and machine learning workloads, to ensure clusters maintain optimal performance without manual intervention.
 
 [Reactive storage decider](#autoscaling-reactive-storage-decider)
 :   Estimates required storage capacity of current data set. Available for policies governing data nodes.
