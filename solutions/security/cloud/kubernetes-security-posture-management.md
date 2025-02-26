@@ -53,9 +53,9 @@ To identify and remediate failed failed findings:
 3. Click a failed finding. The findings flyout opens.
 4. Follow the steps under **Remediation** to correct the misconfiguration.
 
-    ::::{note} 
-    Remediation steps typically include commands for you to execute. These sometimes contain placeholder values that you must replace before execution.
-    ::::
+   ::::{note} 
+   Remediation steps typically include commands for you to execute. These sometimes contain placeholder values that you must replace before execution.
+   ::::
 
 
 

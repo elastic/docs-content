@@ -232,7 +232,6 @@ toc:
       - file: docs-content/serverless/security-automated-response-actions.md
       - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-behavioral-detection-use-cases.md
-      - file: docs-content/serverless/security-benchmark-rules-kspm.md
       - file: docs-content/serverless/security-benchmark-rules.md
       - file: docs-content/serverless/security-blocklist.md
       - file: docs-content/serverless/security-building-block-rules.md
@@ -249,9 +248,6 @@ toc:
       - file: docs-content/serverless/security-connect-to-bedrock.md
       - file: docs-content/serverless/security-connect-to-google-vertex.md
       - file: docs-content/serverless/security-connect-to-openai.md
-      - file: docs-content/serverless/security-cspm-get-started-azure.md
-      - file: docs-content/serverless/security-cspm-get-started-gcp.md
-      - file: docs-content/serverless/security-cspm-get-started.md
       - file: docs-content/serverless/security-dashboards-overview.md
       - file: docs-content/serverless/security-data-quality-dash.md
       - file: docs-content/serverless/security-data-views-in-sec.md
@@ -264,7 +260,6 @@ toc:
       - file: docs-content/serverless/security-ers-requirements.md
       - file: docs-content/serverless/security-event-filters.md
       - file: docs-content/serverless/security-examine-osquery-results.md
-      - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
       - file: docs-content/serverless/security-ingest-data.md
       - file: docs-content/serverless/security-install-edr.md
@@ -273,7 +268,6 @@ toc:
       - file: docs-content/serverless/security-invest-guide-run-osquery.md
       - file: docs-content/serverless/security-investigate-events.md
       - file: docs-content/serverless/security-isolate-host.md
-      - file: docs-content/serverless/security-kspm.md
       - file: docs-content/serverless/security-linux-file-monitoring.md
       - file: docs-content/serverless/security-llm-connector-guides.md
       - file: docs-content/serverless/security-llm-performance-matrix.md
@@ -311,7 +305,6 @@ toc:
       - file: docs-content/serverless/security-visual-event-analyzer.md
       - file: docs-content/serverless/security-visualize-alerts.md
       - file: docs-content/serverless/security-vuln-management-faq.md
-      - file: docs-content/serverless/security-vuln-management-get-started.md
       - file: docs-content/serverless/spaces.md
       - file: docs-content/serverless/what-is-observability-serverless.md
   - file: elasticsearch-hadoop/elasticsearch-hadoop/index.md
