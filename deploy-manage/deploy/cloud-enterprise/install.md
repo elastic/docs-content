@@ -17,9 +17,14 @@ You can deploy ECE on public or private clouds, virtual machines, or on-premises
 * Google Cloud Platform (GCP)
 * Microsoft Azure
 
+::::{tip}
+If you already have an ECE platform up and running, and you want to add hosts to your installation, refer to [](./install-ece-on-additional-hosts.md).
+::::
+
 ::::{note} 
 In these pages we frequently refer to [Docker](https://www.docker.com/), as its currently the most common container engine, but these instructions are generally valid for [Podman](https://podman.io/) as well, with `podman` replacing `docker` in commands as appropriate.
 ::::
+
 
 ## Prerequisites
 

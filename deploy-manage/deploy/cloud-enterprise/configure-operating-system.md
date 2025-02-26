@@ -7,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-os-onprem.html
 ---
 
-# Configure your operating system cloud [ece-configure-os]
+# Configure your operating system [ece-configure-os]
 
 Before installing Elastic Cloud Enterprise, you have to prepare your hosts with one of the following Linux distributions:
 

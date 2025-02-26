@@ -20,7 +20,7 @@ After your Elastic Cloud Enterprise installation is up, some additional steps mi
   If you intend to use [custom endpoint aliases](./enable-custom-endpoint-aliases.md) functionality, ensure you add the necessary Subject Alternative Name (SAN) entries to the proxy certificate.
   ::::
 
-* Optionally, if you want the deployment endpoint links and Single-sign on to work with your domain name, configure it as the **deployment domain name** in the Platform → Settings section of the [Cloud UI](./log-into-cloud-ui.md). The domain name is used to generate the endpoint URLs and must align with your Proxy certificate and DNS record.
+* Optionally, if you want the deployment endpoint links and Single-sign on to work with your domain name, configure it as the **deployment domain name** in the Platform → Settings section of the [Cloud UI](./log-into-cloud-ui.md). The domain name is used to generate the endpoint URLs and must align with your proxy certificate and DNS record.
 
   ::::{tip}
   For example, if your proxy certificate is signed for `*.elastic-cloud-enterprise.example.com` and you have a wildcard DNS register pointing `*.elastic-cloud-enterprise.example.com` to your load balancer, you should configure `elastic-cloud-enterprise.example.com` as the **deployment domain name** in Platform → Settings. Refer to [](./change-endpoint-urls.md) for more details.
