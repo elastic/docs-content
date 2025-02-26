@@ -37,34 +37,34 @@ Each APM agent has a list of supported configurations. After selecting a Service
 Supported configurations are also tagged with the ![dynamic config](../../../images/observability-dynamic-config.svg "") badge in each APM agent’s configuration reference:
 
 Android agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-android/docs/reference/ingestion-tools/apm-agent-android/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-android/docs/reference/configuration.md)
 
 Go agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
 
 iOS agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-ios/docs/reference/ingestion-tools/apm-agent-swift/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md)
 
 Java agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
 
 .NET agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
 
 Node.js agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md)
 
 PHP agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
 
 Python agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
 
 Ruby agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
 
 Real User Monitoring (RUM) agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/configuration.md)
+:   [Configuration reference](asciidocalypse://docs/apm-agent-rum-js/docs/reference/configuration.md)
 
 
 ## APM Server configuration [_apm_server_configuration]

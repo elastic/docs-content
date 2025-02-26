@@ -56,7 +56,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 ::::
 
 
-All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/ingestion-tools/index.md) and [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
+All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md) and [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
 You can add or remove any indices and index patterns as required, with a maximum of 50 items in the comma-delimited list. For background information on {{es}} indices, refer to [Data in: documents and indices](../../../manage-data/data-store/index-basics.md).
 

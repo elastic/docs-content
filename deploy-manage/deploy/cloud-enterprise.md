@@ -27,7 +27,7 @@ Refer to [](./cloud-enterprise/ece-architecture.md) for details about the ECE pl
 - **Automated scaling & orchestration**: Handles cluster provisioning, scaling, and upgrades automatically.
 - **High availability & resilience**: Ensures uptime through multiple Availability Zones, data replication, and automated restore and snapshot.
 - **Centralized monitoring & logging**: Provides insights into cluster performance, resource usage, and logs.
-- **Single Sign-On (SSO) & role-based access aontrol (RBAC)**: Allows organizations to manage access and security policies.
+- **Single Sign-On (SSO) & role-based access control (RBAC)**: Allows organizations to manage access and security policies.
 - **API & UI management**: Offers a web interface and API to create and manage clusters easily.
 - **Air-gapped installations**: Support for off-line installations.
 - **Microservices architecture**: All services are containerized through Docker.

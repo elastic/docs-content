@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/kibana/current/_cli_configuration.html
-applies:
-  stack: all
+applies_to:
+  deployment:
+    self: all
 ---
 
 # Cli configuration [_cli_configuration]

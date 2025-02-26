@@ -31,5 +31,5 @@ Before you start, [take the upgrade preparation steps](../../../deploy-manage/up
 4. Start {{kib}}.
 
 ::::{important}
-{{kib}} has a new logging system in 8.0 and the log formats have changed. For additional information, see [Logging configuration changes](asciidocalypse://docs/kibana/docs/extend/contribute-to-kibana/logging-config-changes.md).
+{{kib}} has a new logging system in 8.0 and the log formats have changed. For additional information, see [Logging configuration changes](asciidocalypse://docs/kibana/docs/extend/logging-config-changes.md).
 ::::

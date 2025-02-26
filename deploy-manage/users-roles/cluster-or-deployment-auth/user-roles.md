@@ -1,11 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/authorization.html
-applies:
-  hosted: all
-  ece: all
-  eck: all
-  stack: all
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # User roles [authorization]
@@ -83,7 +84,7 @@ The method for assigning roles to users varies depending on which realms you use
 
 The {{security-features}} also provide an attribute-based access control (ABAC) mechanism, which enables you to use attributes to restrict access to documents in search queries and aggregations. For example, you can assign attributes to users and documents, then implement an access policy in a role definition. Users with that role can read a specific document only if they have all the required attributes.
 
-For more information, see [Document-level attribute-based access control with X-Pack 6.1](https://www.elastic.co/blog/attribute-based-access-control-with-xpack).
+For more information, see [Document-level attribute-based access control with {{es}}](https://www.elastic.co/blog/attribute-based-access-control-elasticsearch).
 
 
 
