@@ -224,7 +224,6 @@ toc:
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
       - file: docs-content/serverless/security-ingest-data.md
-      - file: docs-content/serverless/security-interactive-investigation-guides.md
       - file: docs-content/serverless/security-isolate-host.md
       - file: docs-content/serverless/security-kspm.md
       - file: docs-content/serverless/security-linux-file-monitoring.md

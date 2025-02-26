@@ -6,25 +6,7 @@ mapped_urls:
 
 # Launch Timeline from investigation guides
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/interactive-investigation-guides.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-interactive-investigation-guides.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$add-ig-actions-rule$$$
-
-$$$query-button-syntax$$$
-
 Detection rule investigation guides suggest steps for triaging, analyzing, and responding to potential security issues. For custom rules, you can create an interactive investigation guide that includes buttons for launching runtime queries in [Timeline](/solutions/security/investigate/timeline.md), using alert data and hard-coded literal values. This allows you to start detailed Timeline investigations directly from an alert using relevant data.
-
-::::{important}
-Interactive investigation guides are compatible between {{stack}} versions 8.7.0 and later. Query buttons created in 8.6.x use different syntax and won’t render correctly in later versions, and vice versa.
-::::
-
 
 :::{image} ../../../images/security-ig-alert-flyout.png
 :alt: Alert details flyout with interactive investigation guide
@@ -62,7 +44,7 @@ You can configure an interactive investigation guide when you [create a new rule
     :class: screenshot
     :::
 
-2. Place the editor cursor where you want to add the query button in the investigation guide, then select the Investigate icon (![Investigate icon](../../../images/security-ig-investigate-icon.png "")) in the toolbar. The **Add investigation query** builder form appears.
+2. Place the editor cursor where you want to add the query button in the investigation guide, then select the Investigate icon (![Investigate icon](../../../images/security-ig-investigate-icon.png "title =20x20")) in the toolbar. The **Add investigation query** builder form appears.
 
     :::{image} ../../../images/security-ig-investigation-query-builder.png
     :alt: Add investigation guide UI
@@ -102,11 +84,11 @@ The following syntax defines a query button in an interactive investigation guid
 | `!{investigate{ }}` | The container object holding all the query button’s configuration attributes. |
 | `label` | Identifying text on the button. |
 | `description` | Additional text included with the button. |
-| `providers` | A two-level nested array that defines the query to run in Timeline. Similar to the structure of queries in Timeline, items in the outer level are joined by an `OR` relationship, and items in the inner level are joined by an `AND` relationship.<br><br>Each item in `providers` corresponds to a filter created in the query builder UI and is defined by these attributes:<br><br>* `field`: The name of the field to query.<br>* `excluded`: Whether the query result is excluded (such as **is not one of**) or included (**is one of**).<br>* `queryType`: The query type used to filter events, based on the filter’s operator. For example, `phrase` or `range`.<br>* `value`: The value to search for. Either a hard-coded literal value, or the name of an alert field (in double curly brackets) whose value you want to use as a query parameter.<br>* `valueType`: The data type of `value`, such as `string` or `boolean`.<br> |
+| `providers` | A two-level nested array that defines the query to run in Timeline. Similar to the structure of queries in Timeline, items in the outer level are joined by an `OR` relationship, and items in the inner level are joined by an `AND` relationship.<br><br>Each item in `providers` corresponds to a filter created in the query builder UI and is defined by these attributes:<br><br> - `field`: The name of the field to query.<br> - `excluded`: Whether the query result is excluded (such as **is not one of**) or included (**is one of**).<br> - `queryType`: The query type used to filter events, based on the filter’s operator. For example, `phrase` or `range`.<br> - `value`: The value to search for. Either a hard-coded literal value, or the name of an alert field (in double curly brackets) whose value you want to use as a query parameter.<br> - `valueType`: The data type of `value`, such as `string` or `boolean`.<br> |
 | `relativeFrom`, `relativeTo` | (Optional) The start and end, respectively, of the relative time range for the query. Times are relative to the alert’s creation time, represented as `now` in [date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math) format. For example, selecting **Last 15 minutes** in the query builder form creates the syntax `"relativeFrom": "now-15m", "relativeTo": "now"`. |
 
 ::::{note}
-Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon (![Error icon](../../../images/security-ig-error-icon.png "")) displays below the Markdown editor if there are any syntax errors.
+Some characters must be escaped with a backslash, such as `\"` for a quotation mark and `\\` for a literal backslash. Divide Windows paths with double backslashes (for example, `C:\\Windows\\explorer.exe`), and paths that already include double backslashes might require four backslashes for each divider. A clickable error icon (![Error icon](../../../images/security-ig-error-icon.png "title =20x20")) displays below the Markdown editor if there are any syntax errors.
 ::::
 
 
