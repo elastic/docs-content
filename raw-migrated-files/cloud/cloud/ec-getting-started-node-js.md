@@ -1,17 +1,17 @@
-# Ingest data with Node.js on Elasticsearch Service [ec-getting-started-node-js]
+# Ingest data with Node.js on {{ech}} [ec-getting-started-node-js]
 
 This guide tells you how to get started with:
 
-* Securely connecting to Elasticsearch Service with Node.js
+* Securely connecting to {{ech}} with Node.js
 * Ingesting data into your deployment from your application
-* Searching and modifying your data on Elasticsearch Service
+* Searching and modifying your data on {{ech}}
 
 If you are an Node.js application programmer who is new to the Elastic Stack, this content helps you get started more easily.
 
 *Time required: 45 minutes*
 
 
-## Get Elasticsearch Service [ec_get_elasticsearch_service]
+## Get {{ech}} [ec_get_elasticsearch_service]
 
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -20,7 +20,7 @@ If you are an Node.js application programmer who is new to the Elastic Stack, th
 5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
+Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 
 ## Set up your application [ec_set_up_your_application]
@@ -73,9 +73,9 @@ The example here shows what the `config` package expects. You need to update `co
 
 ## About connecting securely [ec_about_connecting_securely]
 
-When connecting to Elasticsearch Service use a Cloud ID to specify the connection details. You must pass the Cloud ID that is found in {{kib}} or the cloud console.
+When connecting to {{ech}} use a Cloud ID to specify the connection details. You must pass the Cloud ID that is found in {{kib}} or the cloud console.
 
-To connect to, stream data to, and issue queries with Elasticsearch Service, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+To connect to, stream data to, and issue queries with {{ech}}, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 
 ### Basic authentication [ec_basic_authentication]
@@ -278,13 +278,13 @@ Check [Create API key API](https://www.elastic.co/docs/api/doc/elasticsearch/ope
 ### Best practices [ec_best_practices]
 
 Security
-:   When connecting to Elasticsearch Service, the client automatically enables both request and response compression by default, since it yields significant throughput improvements. Moreover, the client also sets the SSL option `secureProtocol` to `TLSv1_2_method` unless specified otherwise. You can still override this option by configuring it.
+:   When connecting to {{ech}}, the client automatically enables both request and response compression by default, since it yields significant throughput improvements. Moreover, the client also sets the SSL option `secureProtocol` to `TLSv1_2_method` unless specified otherwise. You can still override this option by configuring it.
 
-    Do not enable sniffing when using Elasticsearch Service, since the nodes are behind a load balancer. Elasticsearch Service takes care of everything for you. Take a look at [Elasticsearch sniffing best practices: What, when, why, how](https://www.elastic.co/blog/elasticsearch-sniffing-best-practices-what-when-why-how) if you want to know more.
+    Do not enable sniffing when using {{ech}}, since the nodes are behind a load balancer. {{ech}} takes care of everything for you. Take a look at [Elasticsearch sniffing best practices: What, when, why, how](https://www.elastic.co/blog/elasticsearch-sniffing-best-practices-what-when-why-how) if you want to know more.
 
 
 Connections
-:   If your application connecting to Elasticsearch Service runs under the Java security manager, you should at least disable the caching of positive hostname resolutions. To learn more, check the [Java API Client documentation](asciidocalypse://docs/elasticsearch-java/docs/reference/_others.md).
+:   If your application connecting to {{ech}} runs under the Java security manager, you should at least disable the caching of positive hostname resolutions. To learn more, check the [Java API Client documentation](asciidocalypse://docs/elasticsearch-java/docs/reference/_others.md).
 
 Schema
 :   When the example code was run an index mapping was created automatically. The field types were selected by {{es}} based on the content seen when the first record was ingested, and updated as new fields appeared in the data. It would be more efficient to specify the fields and field types in advance to optimize performance. Refer to the Elastic Common Schema documentation and Field Type documentation when you are designing the schema for your production use cases.

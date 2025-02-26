@@ -330,7 +330,7 @@ For more information about OpenID connect in Okta, refer to [Okta OAuth 2.0 docu
     Where:
 
     * `YOUR_CLIENT_ID` is the Client ID that you set up in the previous steps.
-    * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+    * `KIBANA_ENDPOINT_URL` is your Kibana endpoint, available from the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
     * `YOUR_OKTA_DOMAIN` is the URL of your Okta domain shown on your Okta dashboard.
     * `YOUR_DOMAIN` and `TLD` in the `claim_patterns.principal` regular expression are your organization email domain and top level domain.
 

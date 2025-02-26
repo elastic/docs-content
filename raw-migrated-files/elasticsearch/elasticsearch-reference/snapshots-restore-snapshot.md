@@ -182,7 +182,7 @@ When you restore a feature state, {{es}} closes and overwrites the feature’s e
 
 
 ::::{warning}
-Restoring the `security` feature state overwrites system indices used for authentication. If you use {{ess}}, ensure you have access to the {{ess}} Console before restoring the `security` feature state. If you run {{es}} on your own hardware, [create a superuser in the file realm](../../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-create-file-realm-user) to ensure you’ll still be able to access your cluster.
+Restoring the `security` feature state overwrites system indices used for authentication. If you use {{ech}}, ensure you have access to the {{ecloud}} Console before restoring the `security` feature state. If you run {{es}} on your own hardware, [create a superuser in the file realm](../../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md#restore-create-file-realm-user) to ensure you’ll still be able to access your cluster.
 ::::
 
 
@@ -454,7 +454,7 @@ DELETE _data_stream/logs-my_app-default
 ## Restore to a different cluster [restore-different-cluster]
 
 ::::{tip}
-{{ess}} can help you restore snapshots from other deployments. See [Work with snapshots](../../../deploy-manage/tools/snapshot-and-restore.md).
+{{ech}} can help you restore snapshots from other deployments. See [Work with snapshots](../../../deploy-manage/tools/snapshot-and-restore.md).
 ::::
 
 

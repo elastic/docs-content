@@ -6,30 +6,11 @@ mapped_urls:
 
 # Entity Analytics dashboard
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/detection-entity-dashboard.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-detection-entity-dashboard.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$entity-entities$$$
-
-$$$entity-anomalies$$$
-
-$$$entity-host-risk-scores$$$
-
-$$$entity-kpis$$$
-
-$$$entity-user-risk-scores$$$
 
 The Entity Analytics dashboard provides a centralized view of emerging insider threats - including host risk, user risk, and anomalies from within your network. Use it to triage, investigate, and respond to these emerging threats.
 
 ::::{admonition} Requirements
-A [Platinum subscription](https://www.elastic.co/pricing/) or higher is required.
-
+In {{stack}}, a [Platinum subscription](https://www.elastic.co/pricing/) or higher is required.
 ::::
 
 
@@ -75,14 +56,13 @@ Interact with the table to filter data, view more details, and take action:
 * Click **View all** in the upper-right to display all user risk information on the Users page.
 * Click the number link in the **Alerts** column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "")) to launch Timeline with a query that includes the associated user name value.
 
-For more information about user risk scores, refer to [*Entity risk scoring*](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
+For more information about user risk scores, refer to [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
 
 ## Host Risk Scores [entity-host-risk-scores]
 
 ::::{admonition} Requirements
 To display host risk scores, you must [turn on the risk scoring engine](/solutions/security/advanced-entity-analytics/turn-on-risk-scoring-engine.md).
-
 ::::
 
 
@@ -101,19 +81,14 @@ Interact with the table to filter data, view more details, and take action:
 * Click **View all** in the upper-right to display all host risk information on the Hosts page.
 * Click the number link in the **Alerts** column to view the alerts on the Alerts page. Hover over the number and select **Investigate in timeline** (![Investigate in timeline icon](../../../images/security-timeline-button-osquery.png "")) to launch Timeline with a query that includes the associated host name value.
 
-For more information about host risk scores, refer to [*Entity risk scoring*](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
+For more information about host risk scores, refer to [Entity risk scoring](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md).
 
 
 ## Entities [entity-entities]
 
-::::{warning}
-This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-::::
-
 
 ::::{admonition} Requirements
 To display the **Entities** section, you must [enable the entity store](/solutions/security/advanced-entity-analytics/entity-store.md#enable-entity-store).
-
 ::::
 
 
@@ -154,7 +129,6 @@ Anomaly detection jobs identify suspicious or irregular behavior patterns. The A
 
 ::::{admonition} Requirements
 To display anomaly results, you must [install and run](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md) one or more [prebuilt anomaly detection jobs](asciidocalypse://docs/docs-content/docs/reference/security/prebuilt-jobs.md). You cannot add custom anomaly detection jobs to the Entity Analytics dashboard.
-
 ::::
 
 

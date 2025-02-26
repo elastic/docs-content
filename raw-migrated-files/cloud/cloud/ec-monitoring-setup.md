@@ -9,7 +9,7 @@ These steps are helpful to set yourself up for success by making monitoring read
 
 As you manage, monitor, and troubleshoot your deployment, make sure you have an understanding of the [shared responsibilities](https://www.elastic.co/cloud/shared-responsibility) between Elastic and yourself, so you know what you need to do to keep your deployments running smoothly.
 
-You may also consider subscribing to incident notices reported on the Elasticsearch Service [status page](https://status.elastic.co).
+You may also consider subscribing to incident notices reported on the {{ecloud}} [status page](https://status.elastic.co).
 
 
 ## Enable logs and metrics [ec_enable_logs_and_metrics]
@@ -59,7 +59,7 @@ To learn more about what [Elasticsearch monitoring metrics](/deploy-manage/monit
 :alt: Node tab in Kibana under Stack Monitoring
 :::
 
-Some [performance metrics](../../../deploy-manage/monitor/monitoring-data/ec-saas-metrics-accessing.md) are also available directly in the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and don’t require looking at your monitoring deployment. If you’re ever in a rush to determine if there is a performance problem, you can get a quick overview by going to the **Performance** page from your deployment menu:
+Some [performance metrics](../../../deploy-manage/monitor/monitoring-data/ec-saas-metrics-accessing.md) are also available directly in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and don’t require looking at your monitoring deployment. If you’re ever in a rush to determine if there is a performance problem, you can get a quick overview by going to the **Performance** page from your deployment menu:
 
 :::{image} ../../../images/cloud-ec-ce-monitoring-performance.png
 :alt: Performance page of the Elastic Cloud console

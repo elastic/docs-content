@@ -1,11 +1,11 @@
 # Ingest logs from a Node.js web application using Filebeat [ec-getting-started-search-use-cases-node-logs]
 
-This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an Elasticsearch Service deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in Kibana as requests are made to the Node.js server. While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md#_get_started).
+This guide demonstrates how to ingest logs from a Node.js web application and deliver them securely into an {{ech}} deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in Kibana as requests are made to the Node.js server. While Node.js is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md#_get_started).
 
 This guide presents:
 
 1. [Prerequisites](../../../manage-data/ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md#ec-node-logs-prerequisites)
-2. [Get Elasticsearch Service](../../../manage-data/ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md#ec-node-logs-trial)
+2. [Get {{ech}}](../../../manage-data/ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md#ec-node-logs-trial)
 3. [Connect securely](../../../manage-data/ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md#ec-node-logs-connect-securely)
 4. [Create a Node.js web application with logging](../../../manage-data/ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md#ec-node-logs-create-server-script)
 5. [Create a Node.js HTTP request application](../../../manage-data/ingest/ingesting-data-from-applications/ingest-logs-from-nodejs-web-application-using-filebeat.md#ec-node-logs-create-request-script)
@@ -47,7 +47,7 @@ For the three following packages, you can create a working directory to install 
 
 
 
-## Get Elasticsearch Service [ec-node-logs-trial]
+## Get {{ech}} [ec-node-logs-trial]
 
 1. [Get a free trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 2. Log into [Elastic Cloud](https://cloud.elastic.co?page=docs&placement=docs-body).
@@ -56,14 +56,14 @@ For the three following packages, you can create a working directory to install 
 5. Select **Create deployment** and save your Elastic deployment credentials. You need these credentials later on.
 6. When the deployment is ready, click **Continue** and a page of **Setup guides** is displayed. To continue to the deployment homepage click **I’d like to do something else**.
 
-Prefer not to subscribe to yet another service? You can also get Elasticsearch Service through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
+Prefer not to subscribe to yet another service? You can also get {{ech}} through [AWS, Azure, and GCP marketplaces](../../../deploy-manage/deploy/elastic-cloud/subscribe-from-marketplace.md).
 
 
 ## Connect securely [ec-node-logs-connect-securely]
 
-When connecting to Elasticsearch Service you can use a Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
+When connecting to {{ech}} you can use a Cloud ID to specify the connection details. Find your Cloud ID by going to the {{kib}} main menu and selecting Management > Integrations, and then selecting View deployment details.
 
-To connect to, stream data to, and issue queries with Elasticsearch Service, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
+To connect to, stream data to, and issue queries with {{ech}}, you need to think about authentication. Two authentication mechanisms are supported, *API key* and *basic authentication*. Here, to get you started quickly, we’ll show you how to use basic authentication, but you can also generate API keys as shown later on. API keys are safer and preferred for production environments.
 
 
 ## Create a Node.js web application with logging [ec-node-logs-create-server-script]
@@ -227,13 +227,13 @@ In this step, you’ll create a Node.js application that sends HTTP requests to 
 
 ## Set up Filebeat [ec-node-logs-filebeat]
 
-Filebeat offers a straightforward, easy to configure way to monitor your Node.js log files and port the log data into Elasticsearch Service.
+Filebeat offers a straightforward, easy to configure way to monitor your Node.js log files and port the log data into {{ech}}.
 
 **Get Filebeat**
 
 [Download Filebeat](https://www.elastic.co/downloads/beats/filebeat) and unpack it on the local server from which you want to collect data.
 
-**Configure Filebeat to access Elasticsearch Service**
+**Configure Filebeat to access {{ech}}**
 
 In *<localpath>/filebeat-<version>/* (where *<localpath>* is the directory where Filebeat is installed and *<version>* is the Filebeat version number), open the *filebeat.yml* configuration file for editing.
 
@@ -351,9 +351,9 @@ The Filebeat data view is now available in Elasticsearch. To verify:
 
 **Optional: Use an API key to authenticate**
 
-For additional security, instead of using basic authentication you can generate an Elasticsearch API key through the Elasticsearch Service console, and then configure Filebeat to use the new key to connect securely to the Elasticsearch Service deployment.
+For additional security, instead of using basic authentication you can generate an Elasticsearch API key through the {{ecloud}} Console, and then configure Filebeat to use the new key to connect securely to the {{ech}} deployment.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Select the deployment name and go to **☰** > **Management** > **Dev Tools**.
 3. Enter the following request:
 
@@ -452,9 +452,9 @@ node webrequests.js
 
 Let the script run for a few minutes and maybe brew up a quick coffee or tea ☕ . After that, make sure that the *log.json* file is generated as expected and is populated with several log entries.
 
-**Verify the log entries in Elasticsearch Service**
+**Verify the log entries in {{ech}}**
 
-The next step is to confirm that the log data has successfully found it’s way into Elasticsearch Service.
+The next step is to confirm that the log data has successfully found it’s way into {{ech}}.
 
 1. [Login to Kibana](../../../deploy-manage/deploy/elastic-cloud/access-kibana.md).
 2. Open the {{kib}} main menu and select **Management** > **{{kib}}** > **Data views**.
@@ -517,5 +517,5 @@ You can add titles to the visualizations, resize and position them as you like, 
 
 2. As your final step, remember to stop Filebeat, the Node.js web server, and the client. Enter *CTRL + C* in the terminal window for each application to stop them.
 
-You now know how to monitor log files from a Node.js web application, deliver the log event data securely into an Elasticsearch Service deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about working in Elasticsearch Service.
+You now know how to monitor log files from a Node.js web application, deliver the log event data securely into an {{ech}} deployment, and then visualize the results in Kibana in real time. Consult the [Filebeat documentation](asciidocalypse://docs/beats/docs/reference/filebeat/filebeat-overview.md) to learn more about the ingestion and processing options available for your data. You can also explore our [documentation](../../../manage-data/ingest.md) to learn all about working in {{ech}}.
 
