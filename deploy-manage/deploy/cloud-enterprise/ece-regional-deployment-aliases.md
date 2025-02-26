@@ -99,5 +99,5 @@ While the `TransportClient` is deprecated, your custom endpoint aliases still wo
     ```
 
 
-For more information on configuring the `TransportClient`, see [Configure the Java Transport Client](asciidocalypse://docs/elasticsearch-java/docs/reference/elasticsearch/elasticsearch-client-java-api-client/index.md).
+For more information on configuring the `TransportClient`, see [Configure the Java Transport Client](asciidocalypse://docs/elasticsearch-java/docs/reference/index.md).
 

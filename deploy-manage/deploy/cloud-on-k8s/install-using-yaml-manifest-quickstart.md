@@ -3,8 +3,9 @@ navigation_title: YAML manifests
 mapped_urls:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-install-yaml-manifests.html
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-deploy-eck.html
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 ---
 
 # Install ECK using the YAML manifests [k8s-install-yaml-manifests]

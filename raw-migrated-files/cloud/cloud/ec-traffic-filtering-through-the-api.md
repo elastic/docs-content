@@ -52,7 +52,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 ```
 
 `region`
-:   The region is always the same region as the deployment you want to associate with a traffic filter rule set. For details, check the [list of available regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
+:   The region is always the same region as the deployment you want to associate with a traffic filter rule set. For details, check the [list of available regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md).
 
 `type`
 :   The type of the rule set. In the JSON object, we use `ip` for the ingress IP traffic filter. Currently, we support `ip`, `egress_firewall`, `vpce` (AWS Private Link), `azure_private_endpoint` and `gcp_private_service_connect_endpoint`. These are described in further detail below.

@@ -99,7 +99,7 @@ Sending services must add the `traceparent` header to outgoing requests.
 ::::::
 
 ::::::{tab-item} Go
-1. Start a transaction with [`StartTransaction`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#tracer-api-start-transaction) or a span with [`StartSpan`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#transaction-start-span).
+1. Start a transaction with [`StartTransaction`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#tracer-api-start-transaction) or a span with [`StartSpan`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#transaction-start-span).
 2. Get the active `TraceContext`.
 3. Send the `TraceContext` to the receiving service.
 
@@ -152,8 +152,8 @@ span.end()
 ::::::
 
 ::::::{tab-item} Java
-1. Start a transaction with [`startTransaction`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-start-transaction), or a span with [`startSpan`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-span-start-span).
-2. Inject the `traceparent` header into the request object with [`injectTraceHeaders`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-transaction-inject-trace-headers)
+1. Start a transaction with [`startTransaction`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-start-transaction), or a span with [`startSpan`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-span-start-span).
+2. Inject the `traceparent` header into the request object with [`injectTraceHeaders`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-inject-trace-headers)
 3. make network request
 
 Example of manually instrumenting an RPC framework:
@@ -182,7 +182,7 @@ public Response onOutgoingRequest(Request request) throws Exception {
 ::::::
 
 ::::::{tab-item} .NET
-1. Serialize the distributed tracing context of the active transaction or span with [`CurrentTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#api-current-transaction) or [`CurrentSpan`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#api-current-span).
+1. Serialize the distributed tracing context of the active transaction or span with [`CurrentTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#api-current-transaction) or [`CurrentSpan`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#api-current-span).
 2. Send the serialized context the receiving service.
 
 Example:
@@ -196,8 +196,8 @@ string outgoingDistributedTracingData =
 ::::::
 
 ::::::{tab-item} Node.js
-1. Start a transaction with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-start-transaction), or a span with [`apm.startSpan()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-start-span).
-2. Get the serialized `traceparent` string of the started transaction/span with [`currentTraceparent`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-current-traceparent).
+1. Start a transaction with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-transaction), or a span with [`apm.startSpan()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-span).
+2. Get the serialized `traceparent` string of the started transaction/span with [`currentTraceparent`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-current-traceparent).
 3. Encode the `traceparent` and send it to the receiving service inside your regular request.
 
 Example using raw UDP to communicate between two services, A and B:
@@ -227,7 +227,7 @@ $distDataAsString = ElasticApm::getSerializedCurrentDistributedTracingData(); <1
 ::::::
 
 ::::::{tab-item} Python
-1. Start a transaction with [`begin_transaction()`](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/api-reference.md#client-api-begin-transaction).
+1. Start a transaction with [`begin_transaction()`](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#client-api-begin-transaction).
 2. Get the `trace_parent` of the active transaction.
 3. Send the `trace_parent` to the receiving service.
 
@@ -246,7 +246,7 @@ elasticapm.get_trace_parent_header('new-transaction') <2>
 ::::::
 
 ::::::{tab-item} Ruby
-1. Start a span with [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-with_span).
+1. Start a span with [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_span).
 2. Get the active `TraceContext`.
 3. Send the `TraceContext` to the receiving service.
 
@@ -275,7 +275,7 @@ Receiving services must parse the incoming `traceparent` header, and start a new
 
 ::::::{tab-item} Go
 1. Parse the incoming `TraceContext` with [`ParseTraceparentHeader`](https://pkg.go.dev/go.elastic.co/apm/module/apmhttp/v2#ParseTraceparentHeader) or [`ParseTracestateHeader`](https://pkg.go.dev/go.elastic.co/apm/module/apmhttp/v2#ParseTracestateHeader).
-2. Start a new transaction or span as a child of the incoming transaction with [`StartTransactionOptions`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#tracer-api-start-transaction-options) or [`StartSpanOptions`](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/api-documentation.md#transaction-start-span-options).
+2. Start a new transaction or span as a child of the incoming transaction with [`StartTransactionOptions`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#tracer-api-start-transaction-options) or [`StartSpanOptions`](asciidocalypse://docs/apm-agent-go/docs/reference/api-documentation.md#transaction-start-span-options).
 
 Example:
 
@@ -301,8 +301,8 @@ transaction := apm.DefaultTracer().StartTransactionOptions("GET /", "request", o
 ::::::
 
 ::::::{tab-item} Java
-1. Create a transaction as a child of the incoming transaction with [`startTransactionWithRemoteParent()`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-transaction-inject-trace-headers).
-2. Start and name the transaction with [`activate()`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-transaction-activate) and [`setName()`](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/public-api.md#api-set-name).
+1. Create a transaction as a child of the incoming transaction with [`startTransactionWithRemoteParent()`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-inject-trace-headers).
+2. Start and name the transaction with [`activate()`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-transaction-activate) and [`setName()`](asciidocalypse://docs/apm-agent-java/docs/reference/public-api.md#api-set-name).
 
 Example:
 
@@ -333,7 +333,7 @@ public Response onIncomingRequest(Request request) throws Exception {
 ::::::
 
 ::::::{tab-item} .NET
-Deserialize the incoming distributed tracing context, and pass it to any of the [`StartTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#api-start-transaction) or [`CaptureTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/public-api.md#convenient-capture-transaction) APIs — all of which have an optional `DistributedTracingData` parameter. This will create a new transaction or span as a child of the incoming trace context.
+Deserialize the incoming distributed tracing context, and pass it to any of the [`StartTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#api-start-transaction) or [`CaptureTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#convenient-capture-transaction) APIs — all of which have an optional `DistributedTracingData` parameter. This will create a new transaction or span as a child of the incoming trace context.
 
 Example starting a new transaction:
 
@@ -345,7 +345,7 @@ var transaction2 = Agent.Tracer.StartTransaction("Transaction2", "TestTransactio
 
 ::::::{tab-item} Node.js
 1. Decode and store the `traceparent` in the receiving service.
-2. Pass in the `traceparent` as the `childOf` option to manually start a new transaction as a child of the received `traceparent` with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/agent-api.md#apm-start-transaction).
+2. Pass in the `traceparent` as the `childOf` option to manually start a new transaction as a child of the received `traceparent` with [`apm.startTransaction()`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/agent-api.md#apm-start-transaction).
 
 Example receiving a `traceparent` over raw UDP:
 
@@ -360,7 +360,7 @@ agent.startTransaction('my-service-b-transaction', { childOf: traceparent }) <2>
 
 ::::::{tab-item} PHP
 1. Receive the distributed tracing data on the server side.
-2. Begin a new transaction using the agent’s public API. For example, use [`ElasticApm::beginCurrentTransaction`](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/public-api.md#api-elasticapm-class-begin-current-transaction) and pass the received distributed tracing data (serialized as string) as a parameter. This will create a new transaction as a child of the incoming trace context.
+2. Begin a new transaction using the agent’s public API. For example, use [`ElasticApm::beginCurrentTransaction`](asciidocalypse://docs/apm-agent-php/docs/reference/public-api.md#api-elasticapm-class-begin-current-transaction) and pass the received distributed tracing data (serialized as string) as a parameter. This will create a new transaction as a child of the incoming trace context.
 3. Don’t forget to eventually end the transaction on the server side.
 
 Example:
@@ -397,12 +397,12 @@ client.begin_transaction('processors', trace_parent=parent) <2>
 
 
 ::::{tip}
-See the [`TraceParent` API](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/api-reference.md#traceparent-api) for additional examples.
+See the [`TraceParent` API](asciidocalypse://docs/apm-agent-python/docs/reference/api-reference.md#traceparent-api) for additional examples.
 ::::
 ::::::
 
 ::::::{tab-item} Ruby
-Start a new transaction or span as a child of the incoming transaction or span with [`with_transaction`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-with_transaction) or [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/api-reference.md#api-agent-with_span).
+Start a new transaction or span as a child of the incoming transaction or span with [`with_transaction`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_transaction) or [`with_span`](asciidocalypse://docs/apm-agent-ruby/docs/reference/api-reference.md#api-agent-with_span).
 
 Example:
 
@@ -429,4 +429,4 @@ end
 
 Some additional setup may be required to correlate requests correctly with the Real User Monitoring (RUM) agent.
 
-See the [RUM distributed tracing guide](asciidocalypse://docs/apm-agent-rum-js/docs/reference/ingestion-tools/apm-agent-rum-js/distributed-tracing.md) for information on enabling cross-origin requests, setting up server configuration, and working with dynamically-generated HTML.
+See the [RUM distributed tracing guide](asciidocalypse://docs/apm-agent-rum-js/docs/reference/distributed-tracing.md) for information on enabling cross-origin requests, setting up server configuration, and working with dynamically-generated HTML.

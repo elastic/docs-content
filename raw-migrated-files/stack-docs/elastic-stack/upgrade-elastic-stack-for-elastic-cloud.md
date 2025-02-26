@@ -240,9 +240,9 @@ To upgrade a deployment:
 
 Once you have upgraded from 8.17, you need to update your {{es}} clients and ingest components in the following order:
 
-1. Java API Client: [dependency configuration](asciidocalypse://docs/elasticsearch-java/docs/reference/elasticsearch/elasticsearch-client-java-api-client/installation.md#maven)
-2. Logstash: [upgrade instructions](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/upgrading-logstash.md)
-3. Beats: [upgrade instructions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/upgrading.md)
+1. Java API Client: [dependency configuration](asciidocalypse://docs/elasticsearch-java/docs/reference/installation.md#maven)
+2. Logstash: [upgrade instructions](asciidocalypse://docs/logstash/docs/reference/upgrading-logstash.md)
+3. Beats: [upgrade instructions](asciidocalypse://docs/beats/docs/reference/libbeat/upgrading.md)
 4. {{agent}}: [upgrade instructions](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/upgrade-elastic-agent.md)
 
 

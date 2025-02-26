@@ -124,5 +124,5 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
 9. Restart {{kib}}.
 
-These steps enable {{kib}} to authenticate to {{es}} using a certificate. However, end users will only be able to authenticate to {{kib}} with a username and password. To allow end users to authenticate to {{kib}} using a client certificate, see [{{kib}} PKI authentication](kibana-authentication.md#pki-authentication).
+These steps enable {{kib}} to authenticate to {{es}} using a certificate. However, end users will only be able to authenticate to {{kib}} with a username and password. To allow end users to authenticate to {{kib}} using a client certificate, see [{{kib}} PKI authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#pki-authentication).
 

@@ -3,9 +3,10 @@ mapped_urls:
   - https://www.elastic.co/guide/en/cloud/current/ec-invite-users.html
   - https://www.elastic.co/guide/en/serverless/current/general-manage-organization.html
   - https://www.elastic.co/guide/en/cloud/current/ec-api-organizations.html
-applies:
+applies_to:
+  deployment:
+    ess: all
   serverless: all
-  hosted: all
 ---
 
 # Manage users
