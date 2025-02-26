@@ -6,7 +6,7 @@ applies_to:
     ess: ga
 ---
 
-# {{ecloud}} autoscaling through the API [ec-autoscaling-api-example]
+# {{ech}} autoscaling through the API [ec-autoscaling-api-example]
 
 This example demonstrates how to use the {{ecloud}} RESTful API to create a deployment with autoscaling enabled.
 
