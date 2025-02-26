@@ -8,6 +8,7 @@ applies_to:
     eck:
     ess:
     self:
+navigation_title: Map users and groups to roles
 ---
 
 # Map external users and groups to roles [mapping-roles]
