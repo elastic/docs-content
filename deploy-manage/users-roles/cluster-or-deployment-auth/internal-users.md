@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/internal-users.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
+    self: 
 ---
 
 # Internal users [internal-users]

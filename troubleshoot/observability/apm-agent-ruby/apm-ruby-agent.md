@@ -35,7 +35,7 @@ Things to consider:
 
 In the unlikely event the agent causes disruptions to a production application, you can disable the agent while you troubleshoot.
 
-If you have access to [dynamic configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#dynamic-configuration), you can disable the recording of events by setting [`recording`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-recording) to `false`. When changed at runtime from a supported source, there’s no need to restart your application.
+If you have access to [dynamic configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#dynamic-configuration), you can disable the recording of events by setting [`recording`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-recording) to `false`. When changed at runtime from a supported source, there’s no need to restart your application.
 
-If that doesn’t work, or you don’t have access to dynamic configuration, you can disable the agent by setting [`enabled`](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md#config-enabled) to `false`. You’ll need to restart your application for the changes to apply.
+If that doesn’t work, or you don’t have access to dynamic configuration, you can disable the agent by setting [`enabled`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-enabled) to `false`. You’ll need to restart your application for the changes to apply.
 

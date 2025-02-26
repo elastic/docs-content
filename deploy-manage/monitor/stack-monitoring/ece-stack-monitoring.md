@@ -2,8 +2,9 @@
 navigation_title: "Elastic Cloud Enterprise (ECE)"
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-enable-logging-and-monitoring.html
-applies:
-  ece: all
+applies_to:
+  deployment:
+    ece: all
 ---
 
 # Enable stack monitoring on ECE deployments [ece-enable-logging-and-monitoring]

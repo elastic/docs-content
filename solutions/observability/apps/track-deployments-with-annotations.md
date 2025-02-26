@@ -26,7 +26,7 @@ By default, automatic deployment annotations are enabled. This means APM will cr
 
 Alternatively, you can explicitly create deployment annotations with our annotation API. The API can integrate into your CI/CD pipeline, so that each time you deploy, a POST request is sent to the annotation API endpoint.
 
-Refer to the [annotation API](../../../solutions/observability/apps/annotation-api.md) reference for more information.
+Refer to the [annotation API reference](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-annotations) for more information.
 
 ::::{note}
 If custom annotations have been created for the selected time period, any derived annotations, i.e., those created automatically when `service.version` changes, will not be shown.

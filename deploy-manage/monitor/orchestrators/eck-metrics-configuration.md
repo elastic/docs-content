@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-configure-operator-metrics.html
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 ---
 
 # ECK metrics configuration [k8s-configure-operator-metrics]

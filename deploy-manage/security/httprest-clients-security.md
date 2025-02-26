@@ -70,11 +70,11 @@ es-secondary-authorization: ApiKey <TOKEN> <1>
 
 For more information about using {{security-features}} with the language specific clients, refer to:
 
-* [Java](asciidocalypse://docs/elasticsearch-java/docs/reference/elasticsearch/elasticsearch-client-java-api-client/_basic_authentication.md)
-* [JavaScript](asciidocalypse://docs/elasticsearch-js/docs/reference/elasticsearch/elasticsearch-client-javascript-api/connecting.md)
-* [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/elasticsearch/elasticsearch-client-net-api/configuration.md)
+* [Java](asciidocalypse://docs/elasticsearch-java/docs/reference/_basic_authentication.md)
+* [JavaScript](asciidocalypse://docs/elasticsearch-js/docs/reference/connecting.md)
+* [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/configuration.md)
 * [Perl](https://metacpan.org/pod/Search::Elasticsearch::Cxn::HTTPTiny#CONFIGURATION)
-* [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/elasticsearch/elasticsearch-client-php-api/connecting.md)
+* [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/connecting.md)
 * [Python](https://elasticsearch-py.readthedocs.io/en/master/#ssl-and-authentication)
 * [Ruby](https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-transport#authentication)
 

@@ -116,7 +116,7 @@ output.elasticsearch:
     }
     ```
 
-    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/beats-api-keys.md) for more information.
+    Refer to [Grant access using API keys](asciidocalypse://docs/beats/docs/reference/filebeat/beats-api-keys.md) for more information.
 
 
 
@@ -200,7 +200,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -212,7 +212,7 @@ sudo ./filebeat -e
 ```
 
 ::::{note}
-You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-libbeat/config-file-permissions.md).
+You’ll be running {{filebeat}} as root, so you need to change ownership of the configuration file and any configurations enabled in the `modules.d` directory, or run {{filebeat}} with `--strict.perms=false` specified. Refer to [Config file ownership and permissions](asciidocalypse://docs/beats/docs/reference/libbeat/config-file-permissions.md).
 
 ::::
 ::::::
@@ -231,12 +231,12 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-with-systemd.md).
+Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/filebeat/running-with-systemd.md).
 ::::::
 
 ::::::{tab-item} RPM
@@ -245,19 +245,19 @@ sudo service filebeat start
 ```
 
 ::::{note}
-If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
+If you use an init.d script to start {{filebeat}}, you can’t specify command line flags (refer to [Command reference](asciidocalypse://docs/beats/docs/reference/filebeat/command-line-options.md)). To specify flags, start {{filebeat}} in the foreground.
 
 ::::
 
 
-Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/ingestion-tools/beats-filebeat/running-with-systemd.md).
+Also, refer to [{{filebeat}} and systemd](asciidocalypse://docs/beats/docs/reference/filebeat/running-with-systemd.md).
 ::::::
 
 :::::::
 
 #### Step 5: Parse logs with an ingest pipeline [observability-plaintext-application-logs-step-5-parse-logs-with-an-ingest-pipeline]
 
-Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md)-compatible fields.
+Use an ingest pipeline to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md)-compatible fields.
 
 Create an ingest pipeline with a [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured ECS fields from your log messages. In your project, go to **Developer Tools** and use a command similar to the following example:
 
@@ -279,7 +279,7 @@ PUT _ingest/pipeline/filebeat*  <1>
 1. `_ingest/pipeline/filebeat*`: The name of the pipeline. Update the pipeline name to match the name of your data stream. For more information, refer to [Data stream naming scheme](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/data-streams.md#data-streams-naming-scheme).
 2. `processors.dissect`: Adds a [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
 3. `field`: The field you’re extracting data from, `message` in this case.
-4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
+4. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 
 Refer to [Extract structured fields](../../../solutions/observability/logs/parse-route-logs.md#observability-parse-log-data-extract-structured-fields) for more on using ingest pipelines to parse your log data.
@@ -338,7 +338,7 @@ You can add additional settings to the integration under **Custom log file** by 
 
 #### Step 2: Add an ingest pipeline to your integration [observability-plaintext-application-logs-step-2-add-an-ingest-pipeline-to-your-integration]
 
-To aggregate or search for information in plaintext logs, use an ingest pipeline with your integration to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/ecs/index.md)-compatible fields.
+To aggregate or search for information in plaintext logs, use an ingest pipeline with your integration to parse the contents of your logs into structured, [Elastic Common Schema (ECS)](asciidocalypse://docs/ecs/docs/reference/index.md)-compatible fields.
 
 1. From the custom logs integration, select **Integration policies** tab.
 2. Select the integration policy you created in the previous section.
@@ -364,7 +364,7 @@ To aggregate or search for information in plaintext logs, use an ingest pipeline
 
     1. `processors.dissect`: Adds a [dissect processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) to extract structured fields from your log message.
     2. `field`: The field you’re extracting data from, `message` in this case.
-    3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
+    3. `pattern`: The pattern of the elements in your log data. The pattern varies depending on your log format. `%{@timestamp}`, `%{log.level}`, `%{host.ip}`, and `%{{message}}` are common [ECS](asciidocalypse://docs/ecs/docs/reference/index.md) fields. This pattern would match a log file in this format: `2023-11-07T09:39:01.012Z ERROR 192.168.1.110 Server hardware failure detected.`
 
 6. Click **Create pipeline**.
 7. Save and deploy your integration.
@@ -385,12 +385,12 @@ Log correlation works on two levels:
 
 Learn about correlating plaintext logs in the agent-specific ingestion guides:
 
-* [Go](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/logs.md)
-* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/logs.md#log-correlation-ids)
-* [.NET](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/logs.md)
-* [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/logs.md)
-* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/logs.md#log-correlation-ids)
-* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/logs.md)
+* [Go](asciidocalypse://docs/apm-agent-go/docs/reference/logs.md)
+* [Java](asciidocalypse://docs/apm-agent-java/docs/reference/logs.md#log-correlation-ids)
+* [.NET](asciidocalypse://docs/apm-agent-dotnet/docs/reference/logs.md)
+* [Node.js](asciidocalypse://docs/apm-agent-nodejs/docs/reference/logs.md)
+* [Python](asciidocalypse://docs/apm-agent-python/docs/reference/logs.md#log-correlation-ids)
+* [Ruby](asciidocalypse://docs/apm-agent-ruby/docs/reference/logs.md)
 
 
 ## View logs [observability-plaintext-application-logs-view-logs]
