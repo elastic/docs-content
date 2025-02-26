@@ -36,10 +36,6 @@ To help you better understand the available autoscaling settings, this example d
         :alt: A screenshot showing sizing information for the autoscaled data tier
         :::
 
-        :::{image} ../../images/cloud-ec-ce-autoscaling-data-summary2.png
-        :alt: A screenshot showing sizing information for the autoscaled data tier
-        :::
-
     2. Use the dropdown boxes to adjust the current and/or the maximum size of the data tier. Capacity will be added to the hot content and data tier when required, based on its past and present storage usage, until it reaches the maximum size per zone. Any scaling events are applied simultaneously across availability zones. In this example, the tier has plenty of room to scale relative to its current size, and it will not scale above the maximum size setting. There is no minimum size setting since downward scaling is currently not supported on data tiers.
 
 3. View and adjust autoscaling settings on a machine learning instance:
