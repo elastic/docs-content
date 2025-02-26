@@ -63,7 +63,8 @@ Uploaded files are also accessible under **Project settings** → **Management**
 
 You can add images and text, CSV, JSON, PDF, or ZIP files. For the complete list, check [`mime_types.ts`](https://github.com/elastic/kibana/blob/main/x-pack/plugins/cases/common/constants/mime_types.ts).
 
-::::{note} File size limits
+::::{note}
+**File size limits**
 
 There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
 

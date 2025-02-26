@@ -16,7 +16,8 @@ The **Editor** role or higher is required to create anomaly detection rules. To 
 ::::
 
 
-::::{important} Anomaly detection alerting is in beta
+::::{important} 
+**Anomaly detection alerting is in beta**
 
 The Anomaly detection alerting functionality is in beta and is subject to change. The design and code is less mature than official generally available features and is being provided as-is with no warranties.
 

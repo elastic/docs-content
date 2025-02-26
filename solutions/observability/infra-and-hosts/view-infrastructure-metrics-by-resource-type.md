@@ -17,7 +17,8 @@ To open **Infrastructure inventory**, find **Infrastructure** in the main menu o
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html).
 
-::::{note} Don’t see any metrics?
+::::{note}
+**Don’t see any metrics?**
 
 If you haven’t added data yet, click **Add data** to search for and install an Elastic integration.
 
@@ -243,7 +244,8 @@ When you select **Docker containers**, the **Infrastructure inventory** page dis
 
 Without leaving the **Infrastructure inventory** page, you can view enhanced metrics relating to each container running in your infrastructure.
 
-::::{note} Why do some containers report 0% or null (-) values in the waffle map?
+::::{note}
+**Why do some containers report 0% or null (-) values in the waffle map?**
 
 The waffle map shows *all* monitored containers, including containerd, provided that the data collected from the container has the `container.id` field. However, the waffle map currently only displays metrics for Docker fields. This display problem will be resolved in a future release.
 

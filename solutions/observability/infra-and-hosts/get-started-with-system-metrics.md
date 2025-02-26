@@ -113,7 +113,8 @@ The **Add agent** flyout has two options: **Enroll in {{fleet}}** and **Run stan
 
 Notice that you can also configure the integration to collect logs.
 
-::::{note} What if {{agent}} is already running on my host?
+::::{note}
+** What if {{agent}} is already running on my host?**
 
 Do not try to deploy a second {{agent}} to the same system. You have a couple options:
 

@@ -25,7 +25,8 @@ To open **Hosts**, find **Infrastructure** in the main menu or use the [global s
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html) documentation.
 
-::::{note} Don’t see any metrics?
+::::{note}
+**Don’t see any metrics?**
 
 If you haven’t added data yet, click **Add data** to search for and install an Elastic integration.
 
@@ -124,7 +125,8 @@ From the **Actions** menu, you can choose to:
 
 To see alerts for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
 
-::::{note} Why are alerts missing from the Hosts page?
+::::{note}
+**Why are alerts missing from the Hosts page?**
 
 If your rules are triggering alerts that don’t appear on the **Hosts** page, edit the rules and make sure they are correctly configured to associate the host name with the alert:
 
