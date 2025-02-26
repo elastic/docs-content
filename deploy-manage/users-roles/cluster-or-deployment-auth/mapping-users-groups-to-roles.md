@@ -2,7 +2,12 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-roles.html
   - https://www.elastic.co/guide/en/kibana/current/role-mappings.html
-  - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-mapping-resources.html
+applies_to:
+  deployment:
+    ece:
+    eck:
+    ess:
+    self:
 ---
 
 # Map external users and groups to roles [mapping-roles]
@@ -45,6 +50,9 @@ It’s possible for a single user to have some roles that were mapped through th
 
 You can define and manage role mappings through the [add role mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping).
 
+To learn about the properties that you can include in a role mapping resource, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/role-mapping-resources.md).
+
+Refer to [Realm-specific details](#_realm_specific_details) for examples of mapping roles using the API.
 
 ## The role mapping UI [role-mapping-ui]
 
@@ -102,6 +110,10 @@ You can't view, edit, or remove any roles that are defined in the role mapping f
 ### Add a role mapping file
 
 To use file based role mappings, you must configure the mappings in a YAML file.
+
+To learn about the properties that you can include in a role mapping resource, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/role-mapping-resources.md).
+
+Refer to [Realm-specific details](#_realm_specific_details) for examples of mapping roles using the role mapping file.
 
 :::{tip} 
 If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.

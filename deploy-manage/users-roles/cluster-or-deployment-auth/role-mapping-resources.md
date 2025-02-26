@@ -1,4 +1,16 @@
-# Role mapping resources [role-mapping-resources]
+---
+mapped_urls:
+  - https://www.elastic.co/guide/en/elasticsearch/reference/current/role-mapping-resources.html
+navigation_title: "Role mapping properties"
+applies_to:
+  deployment:
+    ece:
+    eck:
+    ess:
+    self:
+---
+
+# Role mapping resource properties [role-mapping-resources]
 
 A role mapping resource has the following properties:
 
