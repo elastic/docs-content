@@ -6,18 +6,6 @@ mapped_urls:
 
 # Behavioral detection use cases
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/behavioral-detection-use-cases.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-behavioral-detection-use-cases.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$ml-integrations$$$
-
-$$$security-behavioral-detection-use-cases-elastic-integrations-for-behavioral-detection-use-cases$$$
 
 Behavioral detection identifies potential internal and external threats based on user and host activity. It uses a threat-centric approach to flag suspicious activity by analyzing patterns, anomalies, and context enrichment.
 
@@ -29,7 +17,8 @@ The behavioral detection feature is built on {{elastic-sec}}'s foundational SIEM
 Behavioral detection integrations provide a convenient way to enable behavioral detection capabilities. They streamline the deployment of components that implement behavioral detection, such as data ingestion, transforms, rules, {{ml}} jobs, and scripts.
 
 ::::{admonition} Requirements
-* Behavioral detection integrations require a [Platinum subscription](https://www.elastic.co/pricing) or higher.
+* In {{stack}}, behavioral detection integrations require a [Platinum subscription](https://www.elastic.co/pricing) or higher.
+* In serverless, behavioral detection integrations require the Security Analytics Complete [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 * To learn more about the requirements for using {{ml}} jobs, refer to [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md).
 
 ::::
