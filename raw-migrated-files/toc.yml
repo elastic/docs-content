@@ -184,7 +184,6 @@ toc:
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/security-about-rules.md
-      - file: docs-content/serverless/security-add-manage-notes.md
       - file: docs-content/serverless/security-ai-assistant-esql-queries.md
       - file: docs-content/serverless/security-ai-assistant.md
       - file: docs-content/serverless/security-ai-for-security.md
