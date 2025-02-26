@@ -2,9 +2,9 @@
 
 Snapshots are an efficient way to ensure that your Elasticsearch indices can be recovered in the event of an accidental deletion, or to migrate data across deployments.
 
-The information here is specific to managing repositories and snapshots in Elasticsearch Service. We also support the Elasticsearch snapshot and restore API to back up your data. For details, consult the [Snapshot and Restore documentation](../../../deploy-manage/tools/snapshot-and-restore.md).
+The information here is specific to managing repositories and snapshots in {{ech}}. We also support the Elasticsearch snapshot and restore API to back up your data. For details, consult the [Snapshot and Restore documentation](../../../deploy-manage/tools/snapshot-and-restore.md).
 
-When you create a cluster in Elasticsearch Service, a default repository called `found-snapshots` is automatically added to the cluster. This repository is specific to that cluster: the deployment ID is part of the repository’s `base_path`, i.e., `/snapshots/[cluster-id]`.
+When you create a cluster in {{ech}}, a default repository called `found-snapshots` is automatically added to the cluster. This repository is specific to that cluster: the deployment ID is part of the repository’s `base_path`, i.e., `/snapshots/[cluster-id]`.
 
 ::::{important} 
 Do not disable or delete the default `cloud-snapshot-policy` SLM policy, and do not change the default `found-snapshots` repository defined in that policy. These actions are not supported.

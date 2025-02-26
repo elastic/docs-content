@@ -13,7 +13,7 @@ For a summary of flow by which TLS is established between components using eithe
 * [On-premise deployments](#mutual-tls-on-premise)
 * [{{fleet-server}} on {{ecloud}}](#mutual-tls-cloud)
 * [{{fleet-server}} on {{ecloud}} using a proxy](#mutual-tls-cloud-proxy)
-* [{{fleet-server}} on-premise and Hosted Elasticsearch Service](#mutual-tls-on-premise-hosted-es)
+* [{{fleet-server}} on-premise and {{ech}}](#mutual-tls-on-premise-hosted-es)
 
 
 ## Overview [mutual-tls-overview]
@@ -157,20 +157,20 @@ During {{agent}} installation on premise use the following options:
 | `--elastic-agent-cert-key-passphrase` | The path to the file that contains the passphrase for the mutual TLS private key that {{agent}} will use to connect to {{fleet-server}} |
 
 
-## {{fleet-server}} on-premise and Hosted Elasticsearch Service [mutual-tls-on-premise-hosted-es]
+## {{fleet-server}} on-premise and {{ech}} [mutual-tls-on-premise-hosted-es]
 
 In some scenarios you may want to deploy {{fleet-server}} on your own premises. In this case, you’re able to provide your own certificates and certificate authority to enable mTLS between {{fleet-server}} and {{agent}}.
 
 However, as with the [{{fleet-server}} on {{ecloud}}](#mutual-tls-cloud) use case, the data plane TLS connections terminate at the {{ecloud}} boundary. {{ecloud}} is not a multi-tenanted service and therefore can’t provide per-user certificates.
 
 :::{image} images/mutual-tls-fs-onprem.png
-:alt: Diagram of mutual TLS with Fleet Server on premise and hosted Elasticsearch Service deployment model
+:alt: Diagram of mutual TLS with Fleet Server on premise and {{ech}} deployment model
 :::
 
 Similar to the {{fleet-server}} on {{ecloud}} use case, a secure proxy can be placed in such an environment to terminate the TLS connections and satisfy the mTLS requirements.
 
 :::{image} images/mutual-tls-fs-onprem-proxy.png
-:alt: Diagram of mutual TLS with Fleet Server on premise and hosted Elasticsearch Service deployment model with a proxy
+:alt: Diagram of mutual TLS with Fleet Server on premise and {{ech}} deployment model with a proxy
 :::
 
 

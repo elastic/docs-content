@@ -9,7 +9,7 @@ mapped_pages:
 
 Your {{es}} cluster is humming along nicely with good performance until you suddenly notice that response times increase substantially, for both index response times and search response times. The cluster is slow to respond for about 10 minutes, after which performance returns to a normal level.
 
-Initially, you think that perhaps memory pressure is to blame, because you already know that [high memory pressure can cause performance issues](/troubleshoot/monitoring/high-memory-pressure.md). You look at the **Cluster Performance Metrics** section of the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body) and, after some zooming in to the right time frame, you get these metrics:
+Initially, you think that perhaps memory pressure is to blame, because you already know that [high memory pressure can cause performance issues](/troubleshoot/monitoring/high-memory-pressure.md). You look at the **Cluster Performance Metrics** section of the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body) and, after some zooming in to the right time frame, you get these metrics:
 
 :::{image} /images/cloud-metrics-response-times.png
 :alt: Cluster performance metrics

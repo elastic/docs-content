@@ -57,7 +57,7 @@ You have a few options for installing and managing an {{agent}}:
 ::::{admonition} Restrictions in {{serverless-short}}
 :class: important
 
-If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ess}} and self-managed {{es}}:
+If you are using {{agent}} with [{{serverless-full}}](/deploy-manage/deploy/elastic-cloud/serverless.md), note these differences from use with {{ech}} and self-managed {{es}}:
 
 * The number of {{agents}} that may be connected to an {{serverless-full}} project is limited to 10 thousand.
 * The minimum supported version of {{agent}} supported for use with {{serverless-full}} is 8.11.0.

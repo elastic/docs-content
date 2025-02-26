@@ -1,13 +1,13 @@
 # IP traffic filters [ec-traffic-filtering-ip]
 
-Traffic filtering, by IP address or CIDR block, is one of the security layers available in Elasticsearch Service. It allows you to limit how your deployments can be accessed. We have two types of filters available for filtering by IP address or CIDR block: Ingress/Inbound and Egress/Outbound (Beta, API only).
+Traffic filtering, by IP address or CIDR block, is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed. We have two types of filters available for filtering by IP address or CIDR block: Ingress/Inbound and Egress/Outbound (Beta, API only).
 
-* **Ingress or inbound IP filters** - These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the Elasticsearch Service console.
+* **Ingress or inbound IP filters** - These restrict access to your deployments from a set of IP addresses or CIDR blocks. These filters are available through the {{ecloud}} Console.
 * **Egress or outbound IP filters** - These restrict the set of IP addresses or CIDR blocks accessible from your deployment. These might be used to restrict access to a certain region or service. This feature is in beta and is currently only available through the [Traffic Filtering API](../../../deploy-manage/security/manage-traffic-filtering-through-api.md).
 
-Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in Elasticsearch Service.
+Read more about [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) for the general concepts behind traffic filtering in {{ecloud}}.
 
-Follow the step described here to set up ingress or inbound IP filters through the Elasticsearch Service console.
+Follow the step described here to set up ingress or inbound IP filters through the {{ecloud}} Console.
 
 
 ## Create an IP filter rule set [ec-create-traffic-filter-ip-rule-set] 
@@ -16,8 +16,8 @@ You can combine any rules into a set, so we recommend that you group rules accor
 
 To create a rule set:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. Select **Create filter**.
 5. Select **IP filtering rule set**.
@@ -60,8 +60,8 @@ If you want to remove any traffic restrictions from a deployment or delete a rul
 
 You can edit a rule set name or change the allowed traffic sources using IPv4, or a range of addresses with CIDR.
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. Find the rule set you want to edit.
 5. Select the **Edit** icon.

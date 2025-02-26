@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/fleet/current/example-standalone-monitor-nginx.html
 ---
 
-# Example: Use standalone Elastic Agent with Elasticsearch Service to monitor nginx [example-standalone-monitor-nginx]
+# Example: Use standalone Elastic Agent with {{ech}} to monitor nginx [example-standalone-monitor-nginx]
 
-This guide walks you through a simple monitoring scenario so you can learn the basics of setting up standalone {{agent}}, using it to work with {{ess}} and an Elastic integration.
+This guide walks you through a simple monitoring scenario so you can learn the basics of setting up standalone {{agent}}, using it to work with {{ech}} and an Elastic integration.
 
 Following these steps, you’ll deploy the {{stack}}, install a standalone {{agent}} on a host to monitor an nginx web server instance, and access visualizations based on the collected logs.
 
@@ -54,7 +54,7 @@ If you’ve already signed up for a trial deployment you can skip this step.
 ::::
 
 
-Now that your web server is running, let’s get set up to monitor it in {{ecloud}}. An {{ecloud}} {{ess}} deployment offers you all of the features of the {{stack}} as a hosted service. To test drive your first deployment, sign up for a free {{ecloud}} trial:
+Now that your web server is running, let’s get set up to monitor it in {{ecloud}}. An {{ech}} deployment offers you all of the features of the {{stack}} as a hosted service. To test drive your first deployment, sign up for a free {{ecloud}} trial:
 
 1. Go to our [{{ecloud}} Trial](https://cloud.elastic.co/registration?elektra=guide-welcome-cta) page.
 2. Enter your email address and a password.

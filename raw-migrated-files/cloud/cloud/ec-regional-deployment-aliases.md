@@ -1,6 +1,6 @@
 # Custom endpoint aliases [ec-regional-deployment-aliases]
 
-Custom aliases for your deployment endpoints on Elasticsearch Service allow you to have predictable, human-readable URLs that can be shared easily. An alias is unique to only one deployment within a region.
+Custom aliases for your deployment endpoints on {{ech}} allow you to have predictable, human-readable URLs that can be shared easily. An alias is unique to only one deployment within a region.
 
 
 ## Create a custom endpoint alias for a deployment [ec-create-regional-deployment-alias] 

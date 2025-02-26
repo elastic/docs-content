@@ -32,7 +32,7 @@ For {{stack}} versions 8.4 and later, the deployment **Health** page provides de
 
 To view the health for a deployment:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Deployments** page, select your deployment.
 3. In your deployment menu, select **Health**.
 
@@ -67,12 +67,12 @@ The deployment **Health** page does not include information on cluster performan
 
 ## Health warnings [ec-es-health-warnings]
 
-In the normal course of using your Elasticsearch Service deployments, health warnings and errors might appear from time to time. Following are the most common scenarios and methods to resolve them.
+In the normal course of using your {{ech}} deployments, health warnings and errors might appear from time to time. Following are the most common scenarios and methods to resolve them.
 
 Health warning messages
 :   Health warning messages will sometimes appear on the main page for one of your deployments, as well as on the **Logs and metrics** page.
 
-    A single warning is rarely cause for concern, as often it just reflects ongoing, routine maintenance activity occurring on the Elasticsearch Service platform.
+    A single warning is rarely cause for concern, as often it just reflects ongoing, routine maintenance activity occurring on {{ecloud}}.
 
 
 Configuration change failures
@@ -128,5 +128,5 @@ We’ve compiled some guidelines to help you ensure the health of your deploymen
 :   Learn about the common causes of increased query response times and decreased performance in your deployment.
 
 [Why did my node move to a different host?](../../../troubleshoot/monitoring/node-moves-outages.md)
-:   Learn about why we may, from time to time, relocate your Elasticsearch Service deployments across hosts.
+:   Learn about why we may, from time to time, relocate your {{ech}} deployments across hosts.
 

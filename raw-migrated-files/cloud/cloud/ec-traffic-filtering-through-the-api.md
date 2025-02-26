@@ -1,6 +1,6 @@
 # Manage traffic filtering through the API [ec-traffic-filtering-through-the-api]
 
-This example demonstrates how to use the Elasticsearch Service RESTful API to manage different types of traffic filters. We cover the following examples:
+This example demonstrates how to use the {{ecloud}} RESTful API to manage different types of traffic filters. We cover the following examples:
 
 * [Create a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-create-a-traffic-filter-rule-set)
 
@@ -15,7 +15,7 @@ This example demonstrates how to use the Elasticsearch Service RESTful API to ma
 * [Delete a rule set association with a deployment](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-delete-rule-set-association-with-a-deployment)
 * [Delete a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-delete-a-rule-set)
 
-Read through the main [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) page to learn about the general concepts behind filtering access to your Elasticsearch Service deployments.
+Read through the main [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) page to learn about the general concepts behind filtering access to your {{ech}} deployments.
 
 
 ## Create a traffic filter rule set [ec-create-a-traffic-filter-rule-set] 

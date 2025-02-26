@@ -89,7 +89,7 @@ In some cases, settings may accidentally be added to the keystore that should ha
 
 ## Expired custom plugins or bundles [ec-config-change-errors-expired-bundle-extension]
 
-During the process of applying a configuration change, Elasticsearch Service checks to determine if any [uploaded custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) are expired.
+During the process of applying a configuration change, {{ecloud}} checks to determine if any [uploaded custom plugins or bundles](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) are expired.
 
 Problematic plugins produce oscillating {{es}} start-up logs like the following:
 
