@@ -9,7 +9,7 @@ applies_to:
 
 # Uninstall
 
-Uninstalling Elasticsearch can become necessary for several reasons. You might encounter issues during installation that you can't resolve, decommission a host, or want to start fresh with a clean installation.
+Uninstalling {{es}}, or deleting a deployment, can become necessary for several reasons. You might encounter issues during installation that you can't resolve, decommission a host, or want to start fresh with a clean installation.
 
 Each deployment type uses a different uninstallation process. Refer to the guide that matches your setup:
 
