@@ -245,7 +245,6 @@ toc:
       - file: docs-content/serverless/security-trusted-applications.md
       - file: docs-content/serverless/security-tune-detection-signals.md
       - file: docs-content/serverless/security-view-alert-details.md
-      - file: docs-content/serverless/security-visualize-alerts.md
       - file: docs-content/serverless/security-vuln-management-dashboard-dash.md
       - file: docs-content/serverless/security-vuln-management-faq.md
       - file: docs-content/serverless/security-vuln-management-get-started.md

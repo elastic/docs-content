@@ -4,14 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-visualize-alerts.html
 ---
 
-# Visualize detection alerts
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/visualize-alerts.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-visualize-alerts.md
+# Visualize detection alerts [security-visualize-alerts]
 
 Visualize and group detection alerts by specific parameters in the visualization section of the Alerts page.
 
@@ -32,14 +25,14 @@ Some view types don’t have the **Group by top** option. You can also leave **G
 ::::
 
 
-To reset a view to default settings, hover over it and click the options menu (![Settings menu icon](../../../images/security-three-dot-icon.png "")) that appears, then select **Reset group by fields**.
+To reset a view to default settings, hover over it and click the options menu (![More actions](../../../images/security-three-dot-icon.png "title =20x20")) that appears, then select **Reset group by fields**.
 
 ::::{tip}
 The options menu also lets you inspect the visualization’s queries. For the trend and counts views, you can add the visualization to a new or existing case, or open it in Lens.
 ::::
 
 
-Click the collapse icon (![Collapse icon](../../../images/security-collapse-icon-horiz-down.png "")) to minimize the visualization section and display a summary of key information instead.
+Click the collapse icon (![Collapse icon](../../../images/security-collapse-icon-horiz-down.png "title =20x20")) to minimize the visualization section and display a summary of key information instead.
 
 :::{image} ../../../images/security-alert-page-viz-collapsed.png
 :alt: Alerts page with visualizations section collapsed
@@ -47,7 +40,7 @@ Click the collapse icon (![Collapse icon](../../../images/security-collapse-icon
 :::
 
 
-## Summary [_summary]
+## Summary [security-visualize-alerts-summary]
 
 On the Alerts page, the summary visualization displays by default and shows how alerts are distributed across these indicators:
 
@@ -63,7 +56,7 @@ You can hover and click on elements within the summary — such as severity leve
 :::
 
 
-## Trend [_trend]
+## Trend [security-visualize-alerts-trend]
 
 The trend view shows the occurrence of alerts over time. By default, it groups alerts by detection rule name (`kibana.alert.rule.name`).
 
@@ -78,7 +71,7 @@ The **Group by top** menu is unavailable for the trend view.
 :::
 
 
-## Counts [_counts]
+## Counts [security-visualize-alerts-counts]
 
 The counts view shows the count of alerts in each group. By default, it groups alerts first by detection rule name (`kibana.alert.rule.name`), then by host name (`host.name`).
 
@@ -88,7 +81,7 @@ The counts view shows the count of alerts in each group. By default, it groups a
 :::
 
 
-## Treemap [_treemap]
+## Treemap [security-visualize-alerts-treemap]
 
 The treemap view shows the distribution of alerts as nested, proportionally-sized tiles. This view can help you quickly pinpoint the most prevalent and critical alerts.
 
