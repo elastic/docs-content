@@ -98,7 +98,7 @@ The Logstash JDBC input plugin does not include any database connection drivers.
 
 ## Prepare a source MySQL database [ec-db-logstash-database]
 
-Let’s look at a simple database from which you’ll import data and send it to a {{ech}} or {{ece}} deployment. This example uses a MySQL database with timestamped records. The timestamps enable you to determine easily what’s changed in the database since the most recent data transfer.
+Let’s look at a simple database from which you’ll import data and send it to an {{ech}} or {{ece}} deployment. This example uses a MySQL database with timestamped records. The timestamps enable you to determine easily what’s changed in the database since the most recent data transfer.
 
 
 ### Consider the database structure and design [ec-db-logstash-database-structure]

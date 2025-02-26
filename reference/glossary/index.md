@@ -65,7 +65,7 @@ $$$glossary-auto-follow-pattern$$$ auto-follow pattern
 :   [Index pattern](/reference/glossary/index.md#glossary-index-pattern) that automatically configures new [indices](/reference/glossary/index.md#glossary-index) as [follower indices](/reference/glossary/index.md#glossary-follower-index) for [{{ccr}}](/reference/glossary/index.md#glossary-ccr). See [Manage auto-follow patterns](/deploy-manage/tools/cross-cluster-replication/manage-auto-follow-patterns.md).
 
 $$$glossary-zone$$$ availability zone
-:   Contains resources available to a {{ece}} installation that are isolated from other availability zones to safeguard against failure. Could be a rack, a server zone or some other logical constraint that creates a failure boundary. In a highly available cluster, the nodes of a cluster are spread across two or three availability zones to ensure that the cluster can survive the failure of an entire availability zone. Also see [Fault Tolerance (High Availability)](/deploy-manage/deploy/cloud-enterprise/ece-ha.md).
+:   Contains resources available to an {{ece}} installation that are isolated from other availability zones to safeguard against failure. Could be a rack, a server zone or some other logical constraint that creates a failure boundary. In a highly available cluster, the nodes of a cluster are spread across two or three availability zones to ensure that the cluster can survive the failure of an entire availability zone. Also see [Fault Tolerance (High Availability)](/deploy-manage/deploy/cloud-enterprise/ece-ha.md).
 
 
 ## B [b-glos]
