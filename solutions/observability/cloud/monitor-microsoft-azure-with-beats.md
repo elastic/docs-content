@@ -5,7 +5,7 @@ mapped_pages:
 
 # Monitor Microsoft Azure with Beats [monitor-azure]
 
-::::{admonition}
+::::{note}
 **Are you sure you want to use {{beats}}?**
 
 {{agent}} is the recommended way to monitor Azure if you want to manage your agents centrally in {{fleet}}. To learn how to use {{agent}}, refer to [Monitor Microsoft Azure with {{agent}}](monitor-microsoft-azure-with-elastic-agent.md).
