@@ -15,9 +15,9 @@ ECE uses default JVM heap sizes for services that work for testing. Make sure to
 
 When you install ECE specify the recommended JVM heap sizes with `--memory-settings JVM_SETTINGS` parameter, based on the use cases as described below:
 
-* [Deploy a small installation](deploy-small-installation-onprem.md): For development, test, and small-scale use cases.
-* [Deploy a medium installation](deploy-medium-installation-onprem.md): For many production setups.
-* [Deploy a large installation](deploy-large-installation-onprem.md): For deployments with significant overall search and indexing throughput.
+* [Deploy a small installation](deploy-small-installation.md): For development, test, and small-scale use cases.
+* [Deploy a medium installation](deploy-medium-installation.md): For many production setups.
+* [Deploy a large installation](deploy-large-installation.md): For deployments with significant overall search and indexing throughput.
 
 Other JVM heap sizes can be left at their defaults.
 

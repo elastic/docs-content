@@ -4,9 +4,10 @@ applies_to:
     ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-small-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-small-onprem.html
 ---
 
-# Deploy a small installation [ece-install-small-cloud]
+# Deploy a small installation [ece-install-small]
 
 The type of installation is recommended for development, test, and small-scale use cases. You need:
 
@@ -70,4 +71,4 @@ For production environments, you must define the memory settings for each role, 
 4. [Change the deployment configuration for the `admin-console-elasticsearch`, `logging-and-metrics`, and `security` clusters](working-with-deployments.md) to use three availability zones and resize the nodes to use at least 4 GB of RAM. This change makes sure that the clusters used by the administration console are highly available and provisioned sufficiently.
 5. [Log into the Cloud UI](log-into-cloud-ui.md) to provision your deployment.
 
-If necessary, you can scale and deploy a [medium installation](deploy-medium-installation-cloud.md).
+If necessary, you can scale and deploy a [medium installation](deploy-medium-installation.md).

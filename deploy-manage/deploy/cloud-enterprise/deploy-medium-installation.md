@@ -3,10 +3,11 @@ applies_to:
   deployment:
     ece: all
 mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-medium-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-medium-onprem.html
 ---
 
-# Deploy a medium installation onprem [ece-install-medium-onprem]
+# Deploy a medium installation [ece-install-medium]
 
 This type of installation is recommended for many production setups. You need:
 
@@ -19,7 +20,7 @@ This type of installation is recommended for many production setups. You need:
 :::
 
 
-## Before you start [ece_before_you_start_5]
+## Before you start [ece_before_you_start_2]
 
 * Monitor the load on proxies and make sure the volume of user requests routed by the proxies does not affect the resources available to the ECE management services.
 * Note that the medium-sized Elastic Cloud Enterprise installation separates the allocator from the director and coordinator roles (ECE management services) and the proxy roles.
@@ -41,7 +42,7 @@ For production environments, you must define the memory settings for each role, 
 
 
 
-## Installation steps [ece_installation_steps_5]
+## Installation steps [ece_installation_steps_2]
 
 1. Install Elastic Cloud Enterprise on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation, but you will remove some of its roles in a later step.
 

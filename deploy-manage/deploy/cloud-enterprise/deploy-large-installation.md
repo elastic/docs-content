@@ -3,10 +3,11 @@ applies_to:
   deployment:
     ece: all
 mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-large-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-large-onprem.html
 ---
 
-# Deploy a large installation onprem [ece-install-large-onprem]
+# Deploy a large installation [ece-install-large]
 
 This type of installation is recommended for deployments with significant overall search and indexing throughput. You need:
 
@@ -25,7 +26,7 @@ This type of installation is recommended for deployments with significant overal
 :::
 
 
-## Before you start [ece_before_you_start_6]
+## Before you start [ece_before_you_start_3]
 
 Note that the large-sized Elastic Cloud Enterprise installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
 
@@ -46,7 +47,7 @@ For production environments, you must define the memory settings for each role, 
 
 
 
-## Installation steps [ece_installation_steps_6]
+## Installation steps [ece_installation_steps_3]
 
 1. Install Elastic Cloud Enterprise on the first host to start a new installation with your first availability zone. This first host holds all roles to help bootstrap the rest of the installation, but you will remove some of its roles in a later step.
 

@@ -17,14 +17,19 @@ This section provides step-by-step guidance on:
 
 * [Prepare the environment](./prepare-environment.md): Follow the hardware, software, and networking prerequisites before the installation. 
 
+% Add here post-installation steps, configure OS, choose type of installation.
+
 * [Install ECE orchestrator](./install.md): Identify the deployment scenario that best fits your needs, choose an installation method, and complete the setup.
-  * [Install ECE on a public cloud](./install-ece-on-public-cloud.md)
-  * [Install ECE on your own premises](./install-ece-on-own-premises.md)
+  * [](./configure-operating-system.md)
+  * [Install ECE on a public cloud](./install.md)
+  * [Install ECE on your own premises](./install.md)
   * [Alternative: install ECE with Ansible](./alternative-install-ece-with-ansible.md)
 
 * [Air-gapped installations](./air-gapped-install.md): Review the different options for air-gapped environments.
   * [With your private Docker registry](./ece-install-offline-with-registry.md)
   * [Without any Docker registry](./ece-install-offline-no-registry.md)
+
+* [Post-installation tasks](./post-installation-steps.md)
 
 * [Configure ECE](./configure.md): Explore the most common tasks to configure your ECE platform.
   * [System deployments configuration](./system-deployments-configuration.md)
