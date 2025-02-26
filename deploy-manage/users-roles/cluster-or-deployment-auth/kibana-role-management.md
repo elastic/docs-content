@@ -10,7 +10,7 @@ applies_to:
 navigation_title: Using Kibana
 ---
 
-# {{kib}} role management [kibana-role-management]
+# Role management using {{kib}} [kibana-role-management]
 
 Roles are a collection of privileges that allow you to perform actions in {{kib}} and {{es}}. Users are not directly granted privileges, but are instead assigned one or more roles that describe the desired level of access. When you assign a user multiple roles, the user receives a union of the roles’ privileges. This means that you cannot reduce the privileges of a user by assigning them an additional role. You must instead remove or edit one of their existing roles.
 
@@ -25,7 +25,6 @@ The `manage_security` [cluster privilege](asciidocalypse://docs/elasticsearch/do
 Cluster privileges grant access to monitoring and management features in {{es}}. They also enable [Stack Management](/deploy-manage/index.md) capabilities in {{kib}}.
 
 Refer to [cluster privileges](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/security-privileges.md#privileges-list-cluster) for a complete description of available options.
-
 
 ## Index privileges [adding_index_privileges]
 
