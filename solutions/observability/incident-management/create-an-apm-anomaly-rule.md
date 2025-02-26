@@ -13,7 +13,7 @@ To use the APM Anomaly rule, you have to enable [machine learning](../../../solu
 
 ::::
 
-::::{note} Required role
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create anomaly rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

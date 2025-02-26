@@ -6,7 +6,7 @@ mapped_urls:
 
 # Configure settings [observability-configure-intra-settings]
 
-::::{note} Required role
+::::{note}
 
 The **Editor** role or higher is required to configure settings. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

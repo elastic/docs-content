@@ -9,7 +9,7 @@ navigation_title: "Custom threshold"
 # Create a custom threshold rule [observability-create-custom-threshold-alert-rule]
 
 
-::::{note} Required role
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

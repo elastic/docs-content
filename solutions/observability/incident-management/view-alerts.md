@@ -6,7 +6,7 @@ mapped_urls:
 
 # View alerts [observability-view-alerts]
 
-::::{note} Required role
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to perform this task. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

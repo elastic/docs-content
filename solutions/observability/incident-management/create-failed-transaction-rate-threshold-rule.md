@@ -9,7 +9,7 @@ navigation_title: "Failed transaction rate threshold"
 # Create a failed transaction rate threshold rule [observability-create-failed-transaction-rate-threshold-alert-rule]
 
 
-::::{note} Required role
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create failed transaction rate threshold rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

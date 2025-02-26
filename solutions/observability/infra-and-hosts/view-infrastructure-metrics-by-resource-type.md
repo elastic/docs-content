@@ -191,7 +191,7 @@ To drill down and analyze the metric anomaly, select **Actions** → **Open in A
 
 :::::{dropdown} Osquery
 
-::::{note} Required role
+::::{note}
 
 **For Observability serverless projects**, one of the following roles is required to use Osquery.
 

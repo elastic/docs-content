@@ -9,7 +9,7 @@ navigation_title: "Error count threshold"
 # Create an error count threshold rule [observability-create-error-count-threshold-alert-rule]
 
 
-::::{note} Required role
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create error count threshold rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 

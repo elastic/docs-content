@@ -6,7 +6,7 @@ mapped_urls:
 
 # Create and manage cases [observability-create-a-new-case]
 
-::::{note} Required role
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create and manage cases. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
