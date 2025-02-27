@@ -17,7 +17,7 @@ Different Elastic environments require different uninstallation steps. Choose th
 
 * Uninstall an orchestrator:
   * [Uninstall an {{ece}} host](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md)
-  * [Uninstall {{eck}}](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md)
+  * [Uninstall {{eck}} operator](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md)
 
 * Delete an orchestrated deployment:
   * [{{ech}} deployments](/deploy-manage/uninstall/delete-a-cloud-deployment.md#elastic-cloud-hosted)
