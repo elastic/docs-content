@@ -95,7 +95,7 @@ For more information, refer to [Using a proxy server with {{agent}} and {{fleet}
 ## Host your own {{package-registry}} [air-gapped-diy-epr]
 
 ::::{note}
-The {{package-registry}} packages include signatures used in [package verification](/reference/ingestion-tools/fleet/package-signatures.md). By default, {{fleet}} uses the Elastic public GPG key to verify package signatures. If you ever need to change this GPG key, use the `xpack.fleet.packageVerification.gpgKeyPath` setting in `kibana.yml`. For more information, refer to [{{fleet}} settings](kibana://docs/reference/configuration-reference/fleet-settings.md).
+The {{package-registry}} packages include signatures used in [package verification](/reference/ingestion-tools/fleet/package-signatures.md). By default, {{fleet}} uses the Elastic public GPG key to verify package signatures. If you ever need to change this GPG key, use the `xpack.fleet.packageVerification.gpgKeyPath` setting in `kibana.yml`. For more information, refer to [{{fleet}} settings](asciidocalypse://docs/reference/configuration-reference/fleet-settings.md).
 ::::
 
 

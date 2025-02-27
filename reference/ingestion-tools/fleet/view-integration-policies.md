@@ -7,7 +7,7 @@ mapped_pages:
 # View {{agent}} integration policies [view-integration-policies]
 
 
-An integration policy is created when you add an [integration](integration-docs://docs/reference/index.md) to an {{agent}} policy.
+An integration policy is created when you add an [integration](asciidocalypse://docs/reference/index.md) to an {{agent}} policy.
 
 To view details about all the integration policies for a specific integration:
 

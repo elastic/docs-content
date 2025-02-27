@@ -155,9 +155,9 @@ output {
 
 To learn more about the {{ls}} configuration, refer to:
 
-* [{{agent}} input plugin](logstash://docs/reference/plugins-inputs-elastic_agent.md)
-* [{{es}} output plugin](logstash://docs/reference/plugins-outputs-elasticsearch.md)
-* [Secure your connection to {{es}}](logstash://docs/reference/secure-connection.md)
+* [{{agent}} input plugin](asciidocalypse://docs/reference/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](asciidocalypse://docs/reference/plugins-outputs-elasticsearch.md)
+* [Secure your connection to {{es}}](asciidocalypse://docs/reference/secure-connection.md)
 
 When you’re done configuring the pipeline, restart {{ls}}:
 

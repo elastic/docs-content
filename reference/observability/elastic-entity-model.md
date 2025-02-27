@@ -40,7 +40,7 @@ The following {{es}} privileges are required:
 | **Cluster privileges** | `manage_transform`, `manage_ingest_pipelines`, `manage_index_templates` |
 | **Application privileges** | application: `kibana-.kibana`, privileges: [`saved_object:entity-definition/*`, `saved_object:entity-discovery-api-key/*`], resources: [*] |
 
-For more information, refer to [Security privileges](elasticsearch://docs/reference/elasticsearch/security-privileges.md) in the {{es}} documentation.
+For more information, refer to [Security privileges](asciidocalypse://docs/reference/elasticsearch/security-privileges.md) in the {{es}} documentation.
 
 
 ## Disable the Elastic Entity Model [_disable_the_elastic_entity_model]

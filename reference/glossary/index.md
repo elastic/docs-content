@@ -15,7 +15,7 @@ $$$glossary-metadata$$$ @metadata
 ## A [a-glos]
 
 $$$glossary-action$$$ action
-:   1. The rule-specific response that occurs when an alerting rule fires. A rule can have multiple actions. See [Connectors and actions](kibana://docs/reference/connectors-kibana.md).
+:   1. The rule-specific response that occurs when an alerting rule fires. A rule can have multiple actions. See [Connectors and actions](asciidocalypse://docs/reference/connectors-kibana.md).
 2. In {{elastic-sec}}, actions send notifications via other systems when a detection alert is created, such as email, Slack, PagerDuty, and {{webhook}}.
 
 
@@ -23,7 +23,7 @@ $$$glossary-admin-console$$$ administration console
 :   A component of {{ece}} that provides the API server for the [Cloud UI](/reference/glossary/index.md#glossary-cloud-ui). Also syncs cluster and allocator data from ZooKeeper to {{es}}.
 
 $$$glossary-advanced-settings$$$ Advanced Settings
-:   Enables you to control the appearance and behavior of {{kib}} by setting the date format, default index, and other attributes. Part of {{kib}} Stack Management. See [Advanced Settings](kibana://docs/reference/advanced-settings.md).
+:   Enables you to control the appearance and behavior of {{kib}} by setting the date format, default index, and other attributes. Part of {{kib}} Stack Management. See [Advanced Settings](asciidocalypse://docs/reference/advanced-settings.md).
 
 $$$glossary-agent-policy$$$ Agent policy
 :   A collection of inputs and settings that defines the data to be collected by {{agent}}. An agent policy can be applied to a single agent or shared by a group of agents; this makes it easier to manage many agents at scale. See [{{agent}} policies](/reference/ingestion-tools/fleet/agent-policy.md).
@@ -120,7 +120,7 @@ $$$glossary-cold-tier$$$ cold tier
 :   [Data tier](/reference/glossary/index.md#glossary-data-tier) that contains [nodes](/reference/glossary/index.md#glossary-node) that hold time series data that is accessed occasionally and not normally updated. See [Data tiers](/manage-data/lifecycle/data-tiers.md).
 
 $$$glossary-component-template$$$ component template
-:   Building block for creating [index templates](/reference/glossary/index.md#glossary-index-template). A component template can specify [mappings](/reference/glossary/index.md#glossary-mapping), [index settings](elasticsearch://docs/reference/elasticsearch/index-settings/index.md), and [aliases](/reference/glossary/index.md#glossary-alias). See [index templates](/manage-data/data-store/templates.md).
+:   Building block for creating [index templates](/reference/glossary/index.md#glossary-index-template). A component template can specify [mappings](/reference/glossary/index.md#glossary-mapping), [index settings](asciidocalypse://docs/reference/elasticsearch/index-settings/index.md), and [aliases](/reference/glossary/index.md#glossary-alias). See [index templates](/manage-data/data-store/templates.md).
 
 $$$glossary-condition$$$ condition
 :   Specifies the circumstances that must be met to trigger an alerting [rule](/reference/glossary/index.md#glossary-rule).
@@ -129,7 +129,7 @@ $$$glossary-conditional$$$ conditional
 :   A control flow that executes certain actions based on whether a statement (also called a condition) is true or false. {{ls}} supports `if`, `else if`, and `else` statements. You can use conditional statements to apply filters and send events to a specific output based on conditions that you specify.
 
 $$$glossary-connector$$$ connector
-:   A configuration that enables integration with an external system (the destination for an action). See [Connectors and actions](kibana://docs/reference/connectors-kibana.md).
+:   A configuration that enables integration with an external system (the destination for an action). See [Connectors and actions](asciidocalypse://docs/reference/connectors-kibana.md).
 
 $$$glossary-console$$$ Console
 :   In {{kib}}, a tool for interacting with the {{es}} REST API. You can send requests to {{es}}, view responses, view API documentation, and get your request history. See [Console](/explore-analyze/query-filter/tools/console.md).
@@ -180,7 +180,7 @@ $$$glossary-data-stream$$$ data stream
 :   A named resource used to manage [time series data](/reference/glossary/index.md#glossary-time-series-data). A data stream stores data across multiple backing [indices](/reference/glossary/index.md#glossary-index). See [Data streams](/manage-data/data-store/data-streams.md).
 
 $$$glossary-data-tier$$$ data tier
-:   Collection of [nodes](/reference/glossary/index.md#glossary-node) with the same [data role](elasticsearch://docs/reference/elasticsearch/configuration-reference/node-settings.md) that typically share the same hardware profile. Data tiers include the [content tier](/reference/glossary/index.md#glossary-content-tier), [hot tier](/reference/glossary/index.md#glossary-hot-tier), [warm tier](/reference/glossary/index.md#glossary-warm-tier), [cold tier](/reference/glossary/index.md#glossary-cold-tier), and [frozen tier](/reference/glossary/index.md#glossary-frozen-tier). See [Data tiers](/manage-data/lifecycle/data-tiers.md).
+:   Collection of [nodes](/reference/glossary/index.md#glossary-node) with the same [data role](asciidocalypse://docs/reference/elasticsearch/configuration-reference/node-settings.md) that typically share the same hardware profile. Data tiers include the [content tier](/reference/glossary/index.md#glossary-content-tier), [hot tier](/reference/glossary/index.md#glossary-hot-tier), [warm tier](/reference/glossary/index.md#glossary-warm-tier), [cold tier](/reference/glossary/index.md#glossary-cold-tier), and [frozen tier](/reference/glossary/index.md#glossary-frozen-tier). See [Data tiers](/manage-data/lifecycle/data-tiers.md).
 
 $$$glossary-data-view$$$ data view
 :   An object that enables you to select the data that you want to use in {{kib}} and define the properties of the fields. A data view can point to one or more [data streams](/reference/glossary/index.md#glossary-data-stream), [indices](/reference/glossary/index.md#glossary-index), or [aliases](/reference/glossary/index.md#glossary-alias). For example, a data view can point to your log data from yesterday, or all indices that contain your data.
@@ -318,7 +318,7 @@ $$$glossary-fleet$$$ Fleet
 :   Fleet provides a way to centrally manage {{agent}}s at scale. There are two parts: The Fleet app in {{kib}} provides a web-based UI to add and remotely manage agents, while the {{fleet-server}} provides the backend service that manages agents. See [{{agent}} overview](/reference/ingestion-tools/fleet/index.md).
 
 $$$glossary-flush$$$ flush
-:   Writes data from the [transaction log](elasticsearch://docs/reference/elasticsearch/index-settings/translog.md) to disk for permanent storage.
+:   Writes data from the [transaction log](asciidocalypse://docs/reference/elasticsearch/index-settings/translog.md) to disk for permanent storage.
 
 $$$glossary-follower-index$$$ follower index
 :   Target [index](/reference/glossary/index.md#glossary-index) for [{{ccr}}](/reference/glossary/index.md#glossary-ccr). A follower index exists in a [local cluster](/reference/glossary/index.md#glossary-local-cluster) and replicates a [leader index](/reference/glossary/index.md#glossary-leader-index). See [{{ccr-cap}}](/deploy-manage/tools/cross-cluster-replication.md).
@@ -345,10 +345,10 @@ $$$glossary-gem$$$ gem
 :   A self-contained package of code that's hosted on [RubyGems.org](https://rubygems.org). {{ls}} [plugins](/reference/glossary/index.md#glossary-plugin) are packaged as Ruby Gems. You can use the {{ls}} [plugin manager](/reference/glossary/index.md#glossary-plugin-manager) to manage {{ls}} gems.
 
 $$$glossary-geo-point$$$ geo-point
-:   A field type in {{es}}. A geo-point field accepts latitude-longitude pairs for storing point locations. The latitude-longitude format can be from a string, geohash, array, well-known text, or object. See [geo-point](elasticsearch://docs/reference/elasticsearch/mapping-reference/geo-point.md).
+:   A field type in {{es}}. A geo-point field accepts latitude-longitude pairs for storing point locations. The latitude-longitude format can be from a string, geohash, array, well-known text, or object. See [geo-point](asciidocalypse://docs/reference/elasticsearch/mapping-reference/geo-point.md).
 
 $$$glossary-geo-shape$$$ geo-shape
-:   A field type in {{es}}. A geo-shape field accepts arbitrary geographic primitives, like polygons, lines, or rectangles (and more). You can populate a geo-shape field from GeoJSON or well-known text. See [geo-shape](elasticsearch://docs/reference/elasticsearch/mapping-reference/geo-shape.md).
+:   A field type in {{es}}. A geo-shape field accepts arbitrary geographic primitives, like polygons, lines, or rectangles (and more). You can populate a geo-shape field from GeoJSON or well-known text. See [geo-shape](asciidocalypse://docs/reference/elasticsearch/mapping-reference/geo-shape.md).
 
 $$$glossary-geojson$$$ GeoJSON
 :   A format for representing geospatial data. GeoJSON is also a file-type, commonly used in the **Maps** application to upload a file of geospatial data. See [GeoJSON data](/explore-analyze/visualize/maps/indexing-geojson-data-tutorial.md).
@@ -369,7 +369,7 @@ $$$glossary-heat-map$$$ heat map
 :   A layer type in the **Maps** application. Heat maps cluster locations to show higher (or lower) densities. Heat maps describe a visualization with color-coded cells or regions to analyze patterns across multiple dimensions. See [Heat map layer](/explore-analyze/visualize/maps/heatmap-layer.md).
 
 $$$glossary-hidden-index$$$ hidden data stream or index
-:   [Data stream](/reference/glossary/index.md#glossary-data-stream) or [index](/reference/glossary/index.md#glossary-index) excluded from most [index patterns](/reference/glossary/index.md#glossary-index-pattern) by default. See [Hidden data streams and indices](elasticsearch://docs/reference/elasticsearch/rest-apis/api-conventions.md#multi-hidden).
+:   [Data stream](/reference/glossary/index.md#glossary-data-stream) or [index](/reference/glossary/index.md#glossary-index) excluded from most [index patterns](/reference/glossary/index.md#glossary-index-pattern) by default. See [Hidden data streams and indices](asciidocalypse://docs/reference/elasticsearch/rest-apis/api-conventions.md#multi-hidden).
 
 $$$glossary-host-runner$$$ host runner (runner)
 :   In {{ece}}, a local control agent that runs on all hosts, used to deploy local containers based on role definitions. Ensures that containers assigned to the host exist and are able to run, and creates or recreates the containers if necessary.
@@ -387,7 +387,7 @@ $$$glossary-hot-tier$$$ hot tier
 ## I [i-glos]
 
 $$$glossary-id$$$ ID
-:   Identifier for a [document](/reference/glossary/index.md#glossary-document). Document IDs must be unique within an [index](/reference/glossary/index.md#glossary-index). See the [`_id` field](elasticsearch://docs/reference/elasticsearch/mapping-reference/mapping-id-field.md).
+:   Identifier for a [document](/reference/glossary/index.md#glossary-document). Document IDs must be unique within an [index](/reference/glossary/index.md#glossary-index). See the [`_id` field](asciidocalypse://docs/reference/elasticsearch/mapping-reference/mapping-id-field.md).
 
 $$$glossary-index-lifecycle-policy$$$ index lifecycle policy
 :   Specifies how an [index](/reference/glossary/index.md#glossary-index) moves between phases in the [index lifecycle](/reference/glossary/index.md#glossary-index-lifecycle) and what actions to perform during each phase. See [Index lifecycle](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
@@ -396,10 +396,10 @@ $$$glossary-index-lifecycle$$$ index lifecycle
 :   Five phases an [index](/reference/glossary/index.md#glossary-index) can transition through: [hot](/reference/glossary/index.md#glossary-hot-phase), [warm](/reference/glossary/index.md#glossary-warm-phase), [cold](/reference/glossary/index.md#glossary-cold-phase), [frozen](/reference/glossary/index.md#glossary-frozen-phase), and [delete](/reference/glossary/index.md#glossary-delete-phase). See [Index lifecycle](/manage-data/lifecycle/index-lifecycle-management/index-lifecycle.md).
 
 $$$glossary-index-pattern$$$ index pattern
-:   In {{es}}, a string containing a wildcard (`*`) pattern that can match multiple [data streams](/reference/glossary/index.md#glossary-data-stream), [indices](/reference/glossary/index.md#glossary-index), or [aliases](/reference/glossary/index.md#glossary-alias). See [Multi-target syntax](elasticsearch://docs/reference/elasticsearch/rest-apis/api-conventions.md).
+:   In {{es}}, a string containing a wildcard (`*`) pattern that can match multiple [data streams](/reference/glossary/index.md#glossary-data-stream), [indices](/reference/glossary/index.md#glossary-index), or [aliases](/reference/glossary/index.md#glossary-alias). See [Multi-target syntax](asciidocalypse://docs/reference/elasticsearch/rest-apis/api-conventions.md).
 
 $$$glossary-index-template$$$ index template
-:   Automatically configures the [mappings](/reference/glossary/index.md#glossary-mapping), [index settings](elasticsearch://docs/reference/elasticsearch/index-settings/index.md), and [aliases](/reference/glossary/index.md#glossary-alias) of new [indices](/reference/glossary/index.md#glossary-index) that match its [index pattern](/reference/glossary/index.md#glossary-index-pattern). You can also use index templates to create [data streams](/reference/glossary/index.md#glossary-data-stream). See [Index templates](/manage-data/data-store/templates.md).
+:   Automatically configures the [mappings](/reference/glossary/index.md#glossary-mapping), [index settings](asciidocalypse://docs/reference/elasticsearch/index-settings/index.md), and [aliases](/reference/glossary/index.md#glossary-alias) of new [indices](/reference/glossary/index.md#glossary-index) that match its [index pattern](/reference/glossary/index.md#glossary-index-pattern). You can also use index templates to create [data streams](/reference/glossary/index.md#glossary-data-stream). See [Index templates](/manage-data/data-store/templates.md).
 
 $$$glossary-index$$$ index
 :   1. Collection of JSON [documents](/reference/glossary/index.md#glossary-document). See [Documents and indices](/manage-data/data-store/index-basics.md).
@@ -491,7 +491,7 @@ $$$glossary-lucene$$$ Lucene query syntax
 ## M [m-glos]
 
 $$$glossary-ml-nodes$$$ machine learning node
-:   A {{ml}} node is a node that has `xpack.ml.enabled` set to `true` and `ml` in `node.roles`. If you want to use {{ml-features}}, there must be at least one {{ml}} node in your cluster. See [Machine learning nodes](elasticsearch://docs/reference/elasticsearch/configuration-reference/node-settings.md#ml-node).
+:   A {{ml}} node is a node that has `xpack.ml.enabled` set to `true` and `ml` in `node.roles`. If you want to use {{ml-features}}, there must be at least one {{ml}} node in your cluster. See [Machine learning nodes](asciidocalypse://docs/reference/elasticsearch/configuration-reference/node-settings.md#ml-node).
 
 $$$glossary-map$$$ map
 :   A representation of geographic data using symbols and labels. See [Maps](/explore-analyze/visualize/maps.md).
@@ -518,7 +518,7 @@ $$$glossary-monitor$$$ monitor
 :   A network endpoint which is monitored to track the performance and availability of applications and services.
 
 $$$glossary-multi-field$$$ multi-field
-:   A [field](/reference/glossary/index.md#glossary-field) that's [mapped](/reference/glossary/index.md#glossary-mapping) in multiple ways. See the [`fields` mapping parameter](elasticsearch://docs/reference/elasticsearch/mapping-reference/multi-fields.md).
+:   A [field](/reference/glossary/index.md#glossary-field) that's [mapped](/reference/glossary/index.md#glossary-mapping) in multiple ways. See the [`fields` mapping parameter](asciidocalypse://docs/reference/elasticsearch/mapping-reference/multi-fields.md).
 
 $$$glossary-multifactor$$$ multifactor authentication (MFA)
 :   A security process that requires you to provide two or more verification methods to gain access to web-based user interfaces.
@@ -637,7 +637,7 @@ $$$glossary-rollup$$$ rollup
 :   Summarizes high-granularity data into a more compressed format to maintain access to historical data in a cost-effective way. See [Roll up your data](/manage-data/lifecycle/rollup.md).
 
 $$$glossary-routing$$$ routing
-:   Process of sending and retrieving data from a specific [primary shard](/reference/glossary/index.md#glossary-primary-shard). {{es}} uses a hashed routing value to choose this shard. You can provide a routing value in [indexing](/reference/glossary/index.md#glossary-index) and search requests to take advantage of caching. See the [`_routing` field](elasticsearch://docs/reference/elasticsearch/mapping-reference/mapping-routing-field.md).
+:   Process of sending and retrieving data from a specific [primary shard](/reference/glossary/index.md#glossary-primary-shard). {{es}} uses a hashed routing value to choose this shard. You can provide a routing value in [indexing](/reference/glossary/index.md#glossary-index) and search requests to take advantage of caching. See the [`_routing` field](asciidocalypse://docs/reference/elasticsearch/mapping-reference/mapping-routing-field.md).
 
 $$$glossary-rule$$$ rule
 :   A set of [conditions](/reference/glossary/index.md#glossary-condition), schedules, and [actions](/reference/glossary/index.md#glossary-action) that enable notifications. See [{{rules-ui}}](/reference/glossary/index.md#glossary-rules).
@@ -706,7 +706,7 @@ $$$glossary-solution$$$ solution
 :   In {{ecloud}}, deployments with specialized [templates](/reference/glossary/index.md#glossary-deployment-template) that are pre-configured with sensible defaults and settings for common use cases.
 
 $$$glossary-source_field$$$ source field
-:   Original JSON object provided during [indexing](/reference/glossary/index.md#glossary-index). See the [`_source` field](elasticsearch://docs/reference/elasticsearch/mapping-reference/mapping-source-field.md).
+:   Original JSON object provided during [indexing](/reference/glossary/index.md#glossary-index). See the [`_source` field](asciidocalypse://docs/reference/elasticsearch/mapping-reference/mapping-source-field.md).
 
 $$$glossary-space$$$ space
 :   A place for organizing [dashboards](/reference/glossary/index.md#glossary-dashboard), [visualizations](/reference/glossary/index.md#glossary-visualization), and other [saved objects](/reference/glossary/index.md#glossary-saved-object) by category. For example, you might have different spaces for each team, use case, or individual. See [Spaces](/deploy-manage/manage-spaces.md).

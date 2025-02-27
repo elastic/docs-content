@@ -13,8 +13,7 @@ To use the APM Anomaly rule, you have to enable [machine learning](../../../solu
 
 ::::
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create anomaly rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -29,7 +28,7 @@ You can create an anomaly rule to alert you when either the latency, throughput,
 :::
 
 ::::{tip}
-These steps show how to use the **Alerts** UI. You can also create an anomaly rule directly from any page within **Applications***. Click the ***Alerts and rules*** button, and select ***Create anomaly rule***. When you create a rule this way, the ***Name** and **Tags** fields will be prepopulated but you can still change these.
+These steps show how to use the **Alerts** UI. You can also create an anomaly rule directly from any page within **Applications**. Click the **Alerts and rules** button, and select **Create anomaly rule**. When you create a rule this way, the **Name** and **Tags** fields will be prepopulated but you can still change these.
 
 ::::
 
@@ -40,7 +39,7 @@ To create your anomaly rule:
 2. Select **Manage Rules** from the **Alerts** page, and select **Create rule**.
 3. Enter a **Name** for your rule, and any optional **Tags** for more granular reporting (leave blank if unsure).
 4. Select the **APM Anomaly** rule type.
-5. Select the appropriate **Service**, **Type***, and ***Environment** (or leave **ALL** to include all options).
+5. Select the appropriate **Service**, **Type**, and **Environment** (or leave **ALL** to include all options).
 6. Select the desired severity (critical, major, minor, warning) from **Has anomaly with severity**.
 7. Define the interval to check the rule (for example, check every 1 minute).
 8. (Optional) Set up **Actions**.
