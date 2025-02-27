@@ -5,16 +5,26 @@ applies_to:
     ess: 
     ece: 
     self: 
+  serverless:
 ---
 
 # Uninstall
 
-Uninstalling {{es}}, or deleting a deployment, can become necessary for several reasons. You might encounter issues during installation that you can't resolve, decommission a host, or want to start fresh with a clean installation.
+Uninstalling Elastic components, such as **{{es}} clusters, deployments, or orchestrators**, may be necessary for several reasons. You might encounter installation issues that can't be resolved, need to decommission a host, or want to start fresh with a clean setup.
 
-Each deployment type uses a different uninstallation process. Refer to the guide that matches your setup:
+Different Elastic environments require different uninstallation steps. Choose the guide that matches your setup:
 
-* [Uninstall {{ece}}](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md)
-* [Uninstall {{eck}}](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md)
-* [Uninstall a self-managed cluster](/deploy-manage/uninstall/uninstall-a-self-managed-cluster.md)
-* [Delete a cloud deployment](/deploy-manage/uninstall/delete-a-cloud-deployment.md)
+* Uninstall an orchestrator:
+  * [Uninstall {{ece}}](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md)
+  * [Uninstall {{eck}}](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md)
+
+* Delete a cloud deployment:
+  * [Delete a cloud deployment](/deploy-manage/uninstall/delete-a-cloud-deployment.md)
+    * [{{ech}} deployments](/deploy-manage/uninstall/delete-a-cloud-deployment.md#elastic-cloud-hosted)
+    * [Serverless projects](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless)
+    * [{{ece}} deployments](/deploy-manage/uninstall/delete-a-cloud-deployment.md#ece)
+
+:::{note}
+You can uninstall self-managed clusters, but detailed step-by-step instructions are not currently available.
+:::
 
