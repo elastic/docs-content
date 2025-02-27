@@ -34,6 +34,6 @@ During installation, the system generates secrets that are placed into the `/mnt
 ::::
 
 ::::{warning}
-If the {{ece}} host to uninstall has the allocator role and running instances from orchestrated deployments, the containers will be deleted and the instances will appear unhealthy in the deployments page. In this case, it's recommended to [vacate the {{ece}} host](/deploy-manage/maintenance/ece/move-nodes-instances-from-allocators) before uninstalling {{ece}}.
+If the {{ece}} host to uninstall has the allocator role and running instances from orchestrated deployments, the containers will be deleted and the instances will appear unhealthy in the deployments page. In this case, it's recommended to [vacate the {{ece}} host](/deploy-manage/maintenance/ece/move-nodes-instances-from-allocators.md) before uninstalling {{ece}}.
 ::::
 

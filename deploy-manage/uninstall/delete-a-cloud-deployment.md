@@ -10,11 +10,11 @@ applies_to:
 
 This page provides instructions for deleting a cloud deployment and outlines key considerations before proceeding.
 
-## {{ech}}
+## {{ech}} [elastic-cloud-hosted]
 
 To delete an {{ech}} deployment, 
 
-1. Log in to the [{{ess-console-name}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the deployment overview page, select **Actions**, then select **Delete deployment** and confirm the deletion.
 
 When you delete your deployment, billing stops immediately rounding up to the nearest hour.
@@ -33,7 +33,7 @@ Billing restarts as soon as the deployment is restored.
 
 To delete a severless project,
 
-1. Log in to the [{{ess-console-name}}](https://cloud.elastic.co?page=docs&placement=docs-body).
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Find your project on the home page in the **Serverless Projects** card and select **Manage** to access it directly. Or, select **Serverless Projects** to go to the projects page to view all of your projects.
 3. Select **Actions**, then select **Delete project** and confirm the deletion.
 
@@ -48,7 +48,7 @@ All data is lost. Billing for usage is by the hour and any outstanding charges f
 
 To delete an {{ece}} deployment,
 
-1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
@@ -64,11 +64,11 @@ Deleting a deployment cannot be undone.
 
 ::::{{tab-item}} Terminate a deployment
 
-Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](../../../deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the Elasticsearch cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
+Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the Elasticsearch cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
 
 To terminate an {{ece}} deployment,
 
-1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
@@ -79,11 +79,11 @@ To terminate an {{ece}} deployment,
 
 ::::{{tab-item}} Restore a deployment
 
-You can restore a deployment that was previously terminated to its original configuration. Note that the data that was in the deployment is not restored, since it is deleted as part of the termination process. If you have a snapshot, you can [restore it](../../../deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to recover the Elasticsearch indices.
+You can restore a deployment that was previously terminated to its original configuration. Note that the data that was in the deployment is not restored, since it is deleted as part of the termination process. If you have a snapshot, you can [restore it](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to recover the Elasticsearch indices.
 
 To restore a terminated deployment,
 
-1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
+1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 3. In the **Deployment Management** section, select **Restore** and then acknowledge the confirmation message.
