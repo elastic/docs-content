@@ -7,7 +7,7 @@ For advanced views or production monitoring, [enable logging and monitoring](../
 To access cluster performance metrics:
 
 1. Log in to the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list. For example, you might want to select **Is unhealthy** and **Has master problems** to get a short list of deployments that need attention.
 
@@ -116,7 +116,7 @@ Cluster performance metrics are shown per node and are color-coded to indicate w
 
 For clusters that suffer out-of-memory failures, it can be difficult to determine whether the clusters are in a completely healthy state afterwards. For this reason, Elasticsearch Add-On for Heroku automatically reboots clusters that suffer out-of-memory failures.
 
-You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../../deploy-manage/deploy/elastic-cloud/ech-customize-deployment-components.md#ech-cluster-size) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
+You will receive an email notification to let you know that a restart occurred. For repeated alerts, the emails are aggregated so that you do not receive an excessive number of notifications. Either [resizing your cluster to reduce memory pressure](../../../deploy-manage/deploy/elastic-cloud/configure.md) or reducing the workload that a cluster is being asked to handle can help avoid these cluster restarts.
 
 
 

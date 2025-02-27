@@ -19,9 +19,6 @@ To find correlations:
 
 Select a service on the **Services** page in the Applications UI then select a transaction group from the **Transactions** tab.
 
-::::{note}
-Queries within the Applications UI are also applied to the correlations.
-::::
 
 :::
 
@@ -33,13 +30,12 @@ Queries within the Applications UI are also applied to the correlations.
 3. Select the **Transactions** tab.
 4. Select a transaction group in the **Transactions** table.
 
-::::{note}
-Active queries *are* applied to correlations.
+:::
 
 ::::
 
-:::
-
+:::: {note}
+Active queries *are* applied to correlations.
 ::::
 
 
@@ -68,7 +64,7 @@ In this example screenshot, there are transactions that are skewed to the right 
 
 ## Find failed transaction correlations [correlations-error-rate]
 
-The correlations on the **Failed transaction correlations** tab help you discover which attributes are most influential in distinguishing between transaction failures and successes. In this context, the success or failure of a transaction is determined by its [event.outcome](asciidocalypse://docs/ecs/docs/reference/ecs/ecs-event.md#field-event-outcome) value. For example, APM agents set the `event.outcome` to `failure` when an HTTP transaction returns a `5xx` status code.
+The correlations on the **Failed transaction correlations** tab help you discover which attributes are most influential in distinguishing between transaction failures and successes. In this context, the success or failure of a transaction is determined by its [event.outcome](asciidocalypse://docs/ecs/docs/reference/ecs-event.md#field-event-outcome) value. For example, APM agents set the `event.outcome` to `failure` when an HTTP transaction returns a `5xx` status code.
 
 The chart highlights the failed transactions in the overall latency distribution for the transaction group. If there are attributes that have a statistically significant correlation with failed transactions, they are listed in a table. The table is sorted by scores, which are mapped to high, medium, or low impact levels. Attributes with high impact levels are more likely to contribute to failed transactions. By default, the attribute with the highest score is added to the chart. To see a different attribute in the chart, select its row in the table.
 

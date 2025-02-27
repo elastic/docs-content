@@ -56,7 +56,7 @@ When sharing an object with unsaved changes, you get a temporary link that might
 
 To access the object shared with the link, users need to authenticate.
 
-Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
+Anonymous users can also access the link if you have configured [Anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication) and your anonymous service account has privileges to access what you want to share.
 
 :::{image} ../images/share-dashboard.gif
 :alt: getting a shareable link for a dashboard

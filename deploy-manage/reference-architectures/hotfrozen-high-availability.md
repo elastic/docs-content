@@ -1,11 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/reference-architectures/current/hot-frozen-architecture.html
-applies:
-  stack: all
-  hosted: all
-  ece: all
-  eck: all
+applies_to:
+  deployment:
+    self: all
+    ess: all
+    ece: all
+    eck: all
 ---
 
 # Hot/Frozen - High Availability [hot-frozen-architecture]
@@ -48,14 +49,14 @@ We use an Availability Zone (AZ) concept in the architecture above. When running
 
 The diagram illustrates an {{es}} cluster deployed across 3 availability zones (AZ). For production we recommend a minimum of 2 availability zones and 3 availability zones for mission critical applications. See [Plan for production](/deploy-manage/production-guidance/plan-for-production-elastic-cloud.md) for more details. A cluster that is running in {{ecloud}} that has data nodes in only two AZs will create a third master-eligible node in a third AZ. High availability cannot be achieved without three zones for any distributed computing technology.
 
-The number of data nodes shown for each tier (hot and frozen) is illustrative and would be scaled up depending on ingest volume and retention period. Hot nodes contain both primary and replica shards. By default, primary and replica shards are always guaranteed to be in different availability zones in {{ess}}, but when self-deploying [shard allocation awareness](../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) would need to be configured. Frozen nodes act as a large high-speed cache and retrieve data from the snapshot store as needed.
+The number of data nodes shown for each tier (hot and frozen) is illustrative and would be scaled up depending on ingest volume and retention period. Hot nodes contain both primary and replica shards. By default, primary and replica shards are always guaranteed to be in different availability zones in {{ech}}, but when self-deploying [shard allocation awareness](../distributed-architecture/shard-allocation-relocation-recovery/shard-allocation-awareness.md) would need to be configured. Frozen nodes act as a large high-speed cache and retrieve data from the snapshot store as needed.
 
 Machine learning nodes are optional but highly recommended for large scale time series use cases since the amount of data quickly becomes too difficult to analyze. Applying techniques such as machine learning based anomaly detection or Search AI with large language models helps to dramatically speed up problem identification and resolution.
 
 
 ## Recommended hardware specifications [hot-frozen-hardware]
 
-With {{ech}}, you can deploy clusters in AWS, Azure, and Google Cloud. Available hardware types and configurations vary across all three cloud providers but each provides instance types that meet our recommendations for the node types used in this architecture. For more details on these instance types, see our documentation on {{ech}} hardware for [AWS](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/aws-default.md), [Azure](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/azure-default.md), and [GCP](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/gcp-default-provider.md). The **Physical** column below is guidance, based on the cloud node types, when self-deploying {{es}} in your own data center.
+With {{ech}}, you can deploy clusters in AWS, Azure, and Google Cloud. Available hardware types and configurations vary across all three cloud providers but each provides instance types that meet our recommendations for the node types used in this architecture. For more details on these instance types, see our documentation on {{ech}} hardware for [AWS](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/aws-default.md), [Azure](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/azure-default.md), and [GCP](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/gcp-default-provider.md). The **Physical** column below is guidance, based on the cloud node types, when self-deploying {{es}} in your own data center.
 
 In the links provided above, Elastic has performance tested hardware for each of the cloud providers to find the optimal hardware for each node type. We use ratios to represent the best mix of CPU, RAM, and disk for each type. In some cases the CPU to RAM ratio is key, in others the disk to memory ratio and type of disk is critical. Significantly deviating from these ratios may seem like a way to save on hardware costs, but may result in an {{es}} cluster that does not scale and perform well.
 
@@ -92,7 +93,7 @@ This table shows our specific recommendations for nodes in a Hot/Frozen architec
 
 **Kibana:**
 
-* If self-deploying outside of {{ess}}, ensure that {{kib}} is configured for [high availability](/deploy-manage/production-guidance/kibana-in-production-environments.md#high-availability).
+* If self-deploying outside of {{ech}}, ensure that {{kib}} is configured for [high availability](/deploy-manage/production-guidance/kibana-in-production-environments.md#high-availability).
 
 
 ## How many nodes of each do you need? [hot-frozen-estimate]
@@ -110,5 +111,5 @@ You can [contact us](https://www.elastic.co/contact) for an estimate and recomme
 ## Resources and references [hot-frozen-resources]
 
 * [{{es}} - Get ready for production](/deploy-manage/production-guidance/getting-ready-for-production-elasticsearch.md)
-* [{{ess}} - Preparing a deployment for production](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
+* [{{ech}} - Preparing a deployment for production](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md)
 * [Size your shards](/deploy-manage/production-guidance/optimize-performance/size-shards.md)

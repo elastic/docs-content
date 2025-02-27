@@ -9,7 +9,7 @@ mapped_pages:
 # Monitor Amazon Web Services (AWS) with Elastic Serverless Forwarder [monitor-aws-esf]
 
 
-The Elastic Serverless Forwarder (ESF) is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to Elastic. Elastic Serverless Forwarder is published in the AWS Serverless Application Repository (SAR). For more information on ESF, check the [Elastic Serverless Forwarder Guide](asciidocalypse://docs/elastic-serverless-forwarder/docs/reference/ingestion-tools/esf/index.md).
+The Elastic Serverless Forwarder (ESF) is an Amazon Web Services (AWS) Lambda function that ships logs from your AWS environment to Elastic. Elastic Serverless Forwarder is published in the AWS Serverless Application Repository (SAR). For more information on ESF, check the [Elastic Serverless Forwarder Guide](asciidocalypse://docs/elastic-serverless-forwarder/docs/reference/index.md).
 
 
 ## What you’ll learn [aws-esf-what-you-learn]
@@ -24,7 +24,7 @@ In this tutorial, you’ll learn how to:
 
 ## Before you begin [aws-esf-prerequisites]
 
-Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. Elastic Serverless Forwarder works with Elastic Stack 7.17 and later. You also need an AWS account with permissions to pull the necessary data from AWS.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data. Elastic Serverless Forwarder works with Elastic Stack 7.17 and later. You also need an AWS account with permissions to pull the necessary data from AWS.
 
 
 ## Step 1: Create an S3 Bucket to store VPC flow logs [esf-step-one]

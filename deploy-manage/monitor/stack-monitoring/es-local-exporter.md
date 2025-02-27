@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/local-exporter.html
-applies:
-  stack: deprecated 7.16.0
+applies_to:
+  deployment:
+    self: deprecated 7.16.0
 ---
 
 # Local exporters [local-exporter]

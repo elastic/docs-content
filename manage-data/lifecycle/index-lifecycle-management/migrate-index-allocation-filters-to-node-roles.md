@@ -15,12 +15,12 @@ While we recommend relying on automatic data tier allocation to manage your data
 ::::
 
 
-{{ess}} and {{ece}} can perform the migration automatically. For self-managed deployments, you need to manually update your configuration, ILM policies, and indices to switch to node roles.
+{{ech}} and {{ece}} can perform the migration automatically. For self-managed deployments, you need to manually update your configuration, ILM policies, and indices to switch to node roles.
 
 
-## Automatically migrate to node roles on {{ess}} or {{ece}} [cloud-migrate-to-node-roles] 
+## Automatically migrate to node roles on {{ech}} or {{ece}} [cloud-migrate-to-node-roles] 
 
-If you are using node attributes from the default deployment template in {{ess}} or {{ece}}, you will be prompted to switch to node roles when you:
+If you are using node attributes from the default deployment template in {{ech}} or {{ece}}, you will be prompted to switch to node roles when you:
 
 * Upgrade to {{es}} 7.10 or higher
 * Deploy a warm, cold, or frozen data tier
@@ -50,7 +50,7 @@ To switch to using node roles:
 
 Configure the appropriate roles for each data node to assign it to one or more data tiers: `data_hot`, `data_content`, `data_warm`, `data_cold`, or `data_frozen`. A node can also have other [roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md). By default, new nodes are configured with all roles.
 
-When you add a data tier to an {{ess}} deployment, one or more nodes are automatically configured with the corresponding role. To explicitly change the role of a node in an {{ess}} deployment, use the [Update deployment API](../../../deploy-manage/deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md#ec_update_a_deployment). Replace the node’s `node_type` configuration with the appropriate `node_roles`. For example, the following configuration adds the node to the hot and content tiers, and enables it to act as an ingest node, remote, and transform node.
+When you add a data tier to an {{ech}} deployment, one or more nodes are automatically configured with the corresponding role. To explicitly change the role of a node in an {{ech}} deployment, use the [Update deployment API](../../../deploy-manage/deploy/elastic-cloud/manage-deployments-using-elastic-cloud-api.md#ec_update_a_deployment). Replace the node’s `node_type` configuration with the appropriate `node_roles`. For example, the following configuration adds the node to the hot and content tiers, and enables it to act as an ingest node, remote, and transform node.
 
 ```yaml
 "node_roles": [
@@ -85,7 +85,7 @@ The policy must specify the corresponding phase for each data tier in your archi
 
 When you create a data stream, its first backing index is now automatically assigned to `data_hot` nodes. Similarly, when you directly create an index, it is automatically assigned to `data_content` nodes.
 
-On {{ess}} deployments, remove the `cloud-hot-warm-allocation-0` index template that set the hot shard allocation attribute on all indices.
+On {{ech}} deployments, remove the `cloud-hot-warm-allocation-0` index template that set the hot shard allocation attribute on all indices.
 
 ```console
 DELETE _template/.cloud-hot-warm-allocation-0

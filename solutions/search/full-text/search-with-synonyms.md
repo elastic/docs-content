@@ -1,7 +1,6 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-synonyms.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-add-custom-bundle-plugin.html
 applies_to:
   stack:
   serverless:
@@ -11,7 +10,7 @@ applies_to:
 
 $$$ece-add-custom-bundle-example-synonyms$$$
 ::::{note}
-Learn about [adding custom synonym bundles](/solutions/search/full-text/search-with-synonyms.md#ece-add-custom-bundle-example-synonyms) to your Elastic Cloud Enterprise deployment.
+Learn about [adding custom synonym bundles](/solutions/search/full-text/search-with-synonyms.md#ece-add-custom-bundle-example-synonyms) to your {{ece}} deployment.
 ::::
 
 
@@ -59,7 +58,7 @@ Changes in your synonyms sets will automatically reload the associated analyzers
 
 You can store your synonyms set in a file.
 
-A synonyms set file needs to be uploaded to all your cluster nodes, and be located in the configuration directory for your {{es}} distribution. If you’re using {{ess}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
+A synonyms set file needs to be uploaded to all your cluster nodes, and be located in the configuration directory for your {{es}} distribution. If you’re using {{ech}}, you can upload synonyms files using [custom bundles](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md).
 
 An example synonyms file:
 

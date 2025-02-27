@@ -1,7 +1,7 @@
 # Installing Elasticsearch [install-elasticsearch]
 
 
-## Hosted Elasticsearch Service [hosted-elasticsearch-service]
+## {{ecloud}} [hosted-elasticsearch-service]
 
 {{ecloud}} offers all of the features of {{es}}, {{kib}}, and  Elastic’s {{observability}}, and {{elastic-sec}} solutions as a hosted service available on AWS, GCP, and Azure.
 

@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
+    self: 
 ---
 
 # Service accounts [service-accounts]
@@ -47,7 +53,7 @@ Service tokens can be backed by either the `.security` index (recommended) or th
 You must create a service token to use a service account. You can create a service token using either:
 
 * The [create service account token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token), which saves the new service token in the `.security` index and returns the bearer token in the HTTP response.
-* The [elasticsearch-service-tokens](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool, which saves the new service token in the `$ES_HOME/config/service_tokens` file and outputs the bearer token to your terminal
+* Self-managed and {{eck}} deployments only: The [elasticsearch-service-tokens](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool, which saves the new service token in the `$ES_HOME/config/service_tokens` file and outputs the bearer token to your terminal
 
 We recommend that you create service tokens via the REST API rather than the CLI. The API stores service tokens within the `.security` index which means that the tokens are available for authentication on all nodes, and will be backed up within cluster snapshots. The use of the CLI is intended for cases where there is an external orchestration process (such as [{{ece}}](https://www.elastic.co/guide/en/cloud-enterprise/current) or [{{eck}}](https://www.elastic.co/guide/en/cloud-on-k8s/current)) that will manage the creation and distribution of the `service_tokens` file.
 

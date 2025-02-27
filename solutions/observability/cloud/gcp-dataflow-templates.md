@@ -18,7 +18,7 @@ You’ll learn how to:
 
 ## Before you begin [_before_you_begin_3]
 
-Create a deployment using our hosted {{ess}} on [{{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body). The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
+Create an [{{ech}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) deployment. The deployment includes an {{es}} cluster for storing and searching your data, and {{kib}} for visualizing and managing your data.
 
 
 ## Step 1: Install the GCP integration [_step_1_install_the_gcp_integration]
@@ -40,7 +40,7 @@ You’ll start with installing the Elastic GCP integration to add pre-built dash
 
 4. Click **Save integration**.
 
-:::::{admonition}
+:::::{note}
 This tutorial assumes the Elastic cluster is already running. To continue, you’ll need your **Cloud ID** and an **API Key**.
 
 To find the Cloud ID of your [deployment](https://cloud.elastic.co/deployments), go to the deployment’s **Overview** page.

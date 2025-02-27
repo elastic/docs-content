@@ -5,7 +5,7 @@ navigation_title: "Data Quality"
 # Data Quality dashboard [security-data-quality-dash]
 
 
-The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/ecs/index.md) (ECS). Successful [mapping](../../../manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}}.
+The Data Quality dashboard shows you whether your data is correctly mapped to the [Elastic Common Schema](asciidocalypse://docs/ecs/docs/reference/index.md) (ECS). Successful [mapping](../../../manage-data/data-store/mapping.md) enables you to search, visualize, and interact with your data throughout {{elastic-sec}}.
 
 :::{image} ../../../images/serverless--dashboards-data-qual-dash.png
 :alt: The Data Quality dashboard

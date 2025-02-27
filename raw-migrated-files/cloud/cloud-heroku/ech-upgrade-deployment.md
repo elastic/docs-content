@@ -30,7 +30,7 @@ When upgrading from one recent major Elasticsearch version to the next, we recom
 * [Upgrade to Elasticsearch 5.x](https://www.elastic.co/guide/en/cloud-heroku/current/ech-upgrading-v5.html)
 
 ::::{warning} 
-If you have a custom plugin installed, you must [update the plugin](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md#ech-update-bundles-and-plugins) so that it matches the Elasticsearch version that you are upgrading to. When the custom plugin does not match the Elasticsearch version, the upgrade fails.
+If you have a custom plugin installed, you must [update the plugin](../../../deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) so that it matches the Elasticsearch version that you are upgrading to. When the custom plugin does not match the Elasticsearch version, the upgrade fails.
 ::::
 
 
@@ -42,7 +42,7 @@ To successfully replace and override a plugin which is being upgraded, the `name
 To upgrade a cluster in Elasticsearch Add-On for Heroku:
 
 1. Log in to the [Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
@@ -56,7 +56,7 @@ To upgrade a cluster in Elasticsearch Add-On for Heroku:
 7. If you are upgrading to version 6.6 and earlier, major upgrades require a full cluster restart to complete the upgrade process.
 8. If you had Kibana enabled, the UI will prompt you to also upgrade Kibana. The Kibana upgrade takes place separately from the Elasticsearch version upgrade and needs to be triggered manually:
 
-    1. On the deployments page, select your deployment.
+    1. On the **Deployments** page, select your deployment.
     2. From your deployment menu, select **Kibana**.
     3. If the button is available, select **Upgrade Kibana**. If the button is not available, Kibana does not need to be upgraded further.
     4. Confirm the upgrade.

@@ -3,6 +3,25 @@ exclude:
   - 'README.md'
 cross_links:
   - asciidocalypse
+  - kibana
+  - integration-docs
+  - integrations
+  - logstash
+  - elasticsearch
+  - cloud
+  - beats
+  - go-elasticsearch
+  - elasticsearch-java
+  - elasticsearch-net
+  - elasticsearch-php
+  - elasticsearch-py
+  - elasticsearch-ruby
+  - elasticsearch-js
+  - ecs
+  - ecs-logging
+  - search-ui
+  - cloud-on-k8s
+
 toc:
   - file: index.md
   - toc: get-started
@@ -12,6 +31,9 @@ toc:
   - toc: deploy-manage
   - toc: cloud-account
   - toc: troubleshoot
+  - toc: release-notes
+  - toc: reference
+  - toc: extend
   - toc: raw-migrated-files
 
 subs:
@@ -172,7 +194,6 @@ subs:
   ess-trial:   "https://cloud.elastic.co/registration?page=docs&placement=docs-body"
   ess-product:   "https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body"
   ess-console:   "https://cloud.elastic.co?page=docs&placement=docs-body"
-  ess-console-name:   "Elasticsearch Service Console"
   ess-deployments:   "https://cloud.elastic.co/deployments?page=docs&placement=docs-body"
   ece-ref:   "https://www.elastic.co/guide/en/cloud-enterprise/current"
   eck-ref:   "https://www.elastic.co/guide/en/cloud-on-k8s/current"

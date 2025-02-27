@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ess: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud/current/ec-plugins-guide.html
 ---
 
 # Manage plugins and extensions through the API [ec-plugins-guide]
 
-This guide provides a full list of tasks for managing [plugins and extensions](add-plugins-extensions.md) in Elasticsearch Service, using the API.
+This guide provides a full list of tasks for managing [plugins and extensions](add-plugins-extensions.md) in {{ecloud}}, using the API.
 
 * [Create an extension](#ec-extension-guide-create)
 * [Add an extension to a deployment plan](#ec-extension-guide-add-plan)
@@ -33,7 +36,7 @@ For plugins larger than 200MB the download URL option **must** be used. Plugins 
 
 These two examples are for the `plugin` extension type. For bundles, change `extension_type` to `bundle`.
 
-For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/create-elasticsearch-plugins/index.md#plugin-authors) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an Elasticsearch plugin; otherwise the plugin will be rejected by the API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
+For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file. Check [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/index.md#plugin-authors) for details. For plugins larger than 5GB, the `plugin-descriptor.properties` file needs to be at the top of the archive. This ensures that the our verification process is able to detect that it is an Elasticsearch plugin; otherwise the plugin will be rejected by the API. This order can be achieved by specifying at time of creating the ZIP file: `zip -r name-of-plugin.zip plugin-descriptor.properties *`.
 
 For bundles, we recommend setting `version` using wildcard notation that matches the major version of the Elasticsearch deployment. For example, if Elasticsearch is on version 8.4.3, simply set `8.*` as the version. The value `8.*` means that the bundle is compatible with all 8.x versions of Elasticsearch.
 
@@ -303,7 +306,7 @@ Updating the name of an existing extension does not change its `EXTENSION_ID`.
 
 ## Update the version of an existing plugin [ec-extension-guide-update-version-plugin] 
 
-For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file.  Check [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/create-elasticsearch-plugins/index.md#plugin-authors) for details. If you change the version, the associated plugin file *must* also be updated accordingly.
+For plugins, `version` must match (exactly) the `elasticsearch.version` field defined in the plugin’s `plugin-descriptor.properties` file.  Check [Help for plugin authors](asciidocalypse://docs/elasticsearch/docs/extend/index.md#plugin-authors) for details. If you change the version, the associated plugin file *must* also be updated accordingly.
 
 
 ## Update the file associated to an existing extension [ec-extension-guide-update-file] 
