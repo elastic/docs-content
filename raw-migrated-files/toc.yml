@@ -184,7 +184,6 @@ toc:
       - file: docs-content/serverless/project-settings-alerts.md
       - file: docs-content/serverless/project-settings-content.md
       - file: docs-content/serverless/security-about-rules.md
-      - file: docs-content/serverless/security-advanced-settings.md
       - file: docs-content/serverless/security-ai-assistant-esql-queries.md
       - file: docs-content/serverless/security-ai-assistant.md
       - file: docs-content/serverless/security-ai-for-security.md
@@ -216,7 +215,6 @@ toc:
       - file: docs-content/serverless/security-cspm.md
       - file: docs-content/serverless/security-dashboards-overview.md
       - file: docs-content/serverless/security-data-quality-dash.md
-      - file: docs-content/serverless/security-data-views-in-sec.md
       - file: docs-content/serverless/security-detection-engine-overview.md
       - file: docs-content/serverless/security-detection-response-dashboard.md
       - file: docs-content/serverless/security-detections-requirements.md
@@ -225,7 +223,6 @@ toc:
       - file: docs-content/serverless/security-event-filters.md
       - file: docs-content/serverless/security-get-started-with-kspm.md
       - file: docs-content/serverless/security-host-isolation-exceptions.md
-      - file: docs-content/serverless/security-ingest-data.md
       - file: docs-content/serverless/security-interactive-investigation-guides.md
       - file: docs-content/serverless/security-isolate-host.md
       - file: docs-content/serverless/security-kspm.md
