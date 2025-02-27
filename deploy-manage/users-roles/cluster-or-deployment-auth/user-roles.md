@@ -75,11 +75,11 @@ The way that you assign roles to users depends on your authentication realm:
 
 * [Native realm](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md): 
   * Using {{es}} API [`_security` endpoints](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security)
-  * [In {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/native#managing-native-users), using the **Stack Management > Security > Users** page
+  * [In {{kib}}](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users), using the **Stack Management > Security > Users** page
 * [File realm](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md): 
   * Using a [`user_roles` file](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#k8s-basic)
   * In ECK: As part of a [basic authentication secret](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md#k8s-basic)
-* [External realms](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication): By [mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
+* [External realms](/deploy-manage/users-roles/cluster-or-deployment-auth/external-authentication.md): By [mapping users and groups to roles](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md)
 
 ### Advanced topics
 

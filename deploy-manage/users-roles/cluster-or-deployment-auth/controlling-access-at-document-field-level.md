@@ -26,7 +26,7 @@ Document and field level security is currently meant to operate with read-only p
 
 A role can define both field and document level permissions on a per-index basis. A role that doesn’t specify field level permissions grants access to ALL fields. Similarly, a role that doesn’t specify document level permissions grants access to ALL documents in the index.
 
-On this page, you'll learn how to implement [document level security](#document-level-security) and [field level security](#field-level-security-field-level-security). 
+On this page, you'll learn how to implement [document level security](#document-level-security) and [field level security](#field-level-security). 
 
 You'll also learn the following: 
 * How [multiple roles with document and field level security](#multiple-roles-dls-fls) interact

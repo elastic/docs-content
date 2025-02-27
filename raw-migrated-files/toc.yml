@@ -20,7 +20,6 @@ toc:
       - file: cloud-on-k8s/cloud-on-k8s/k8s-securing-stack.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-tls-certificates.md
       - file: cloud-on-k8s/cloud-on-k8s/k8s-upgrading-stack.md
-      - file: cloud-on-k8s/cloud-on-k8s/k8s-users-and-roles.md
   - file: cloud/cloud-enterprise/index.md
     children:
       - file: cloud/cloud-enterprise/ece_re_running_the_ece_upgrade.md
@@ -280,7 +279,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/autoscaling-reactive-storage-decider.md
       - file: elasticsearch/elasticsearch-reference/bootstrap-checks-xpack.md
       - file: elasticsearch/elasticsearch-reference/bootstrap-checks.md
-      - file: elasticsearch/elasticsearch-reference/built-in-roles.md
       - file: elasticsearch/elasticsearch-reference/change-passwords-native-users.md
       - file: elasticsearch/elasticsearch-reference/configuring-stack-security.md
       - file: elasticsearch/elasticsearch-reference/data-management.md
@@ -297,12 +295,10 @@ toc:
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
-      - file: elasticsearch/elasticsearch-reference/mapping-roles.md
       - file: elasticsearch/elasticsearch-reference/monitor-elasticsearch-cluster.md
       - file: elasticsearch/elasticsearch-reference/monitoring-overview.md
       - file: elasticsearch/elasticsearch-reference/monitoring-production.md
       - file: elasticsearch/elasticsearch-reference/recovery-prioritization.md
-      - file: elasticsearch/elasticsearch-reference/role-mapping-resources.md
       - file: elasticsearch/elasticsearch-reference/scalability.md
       - file: elasticsearch/elasticsearch-reference/search-analyze.md
       - file: elasticsearch/elasticsearch-reference/search-with-synonyms.md
@@ -338,7 +334,6 @@ toc:
       - file: kibana/kibana/logging-settings.md
       - file: kibana/kibana/management.md
       - file: kibana/kibana/reporting-production-considerations.md
-      - file: kibana/kibana/role-mappings.md
       - file: kibana/kibana/search-ai-assistant.md
       - file: kibana/kibana/secure-reporting.md
       - file: kibana/kibana/secure-settings.md
@@ -349,7 +344,6 @@ toc:
       - file: kibana/kibana/upgrade-migrations-rolling-back.md
       - file: kibana/kibana/upgrade.md
       - file: kibana/kibana/using-kibana-with-security.md
-      - file: kibana/kibana/xpack-security-authorization.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
       - file: kibana/kibana/xpack-security.md
       - file: kibana/kibana/xpack-spaces.md
