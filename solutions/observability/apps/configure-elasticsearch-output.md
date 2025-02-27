@@ -2,6 +2,8 @@
 navigation_title: "{{es}}"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-elasticsearch-output.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Configure the Elasticsearch output [apm-elasticsearch-output]
 
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
 This documentation only applies to APM Server binary users. Fleet-managed users should see [Configure the {{es}} output](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/elasticsearch-output.md).

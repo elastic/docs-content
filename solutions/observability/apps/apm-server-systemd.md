@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-running-with-systemd.html
+applies_to:
+  stack: all
 ---
 
 # APM Server and systemd [apm-running-with-systemd]
 
-::::{important} 
+::::{important}
 These commands only apply to the APM Server binary installation method. Fleet-managed users should see [Start and stop {{agent}}s on edge hosts](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/start-stop-elastic-agent.md).
 ::::
 
@@ -15,7 +17,7 @@ The DEB and RPM packages include a service unit for Linux systems with systemd. 
 We recommend that the apm-server process is run as a non-root user. Therefore, that is the default setup for APM Server’s DEB package and RPM installation.
 
 
-## Start and stop APM Server [_start_and_stop_apm_server] 
+## Start and stop APM Server [_start_and_stop_apm_server]
 
 Use `systemctl` to start or stop APM Server:
 
@@ -38,7 +40,7 @@ sudo systemctl disable apm-server
 ```
 
 
-## APM Server status and logs [_apm_server_status_and_logs] 
+## APM Server status and logs [_apm_server_status_and_logs]
 
 To get the service status, use `systemctl`:
 
@@ -53,7 +55,7 @@ journalctl -u apm-server.service
 ```
 
 
-## Customize systemd unit for APM Server [_customize_systemd_unit_for_apm_server] 
+## Customize systemd unit for APM Server [_customize_systemd_unit_for_apm_server]
 
 The systemd service unit file includes environment variables that you can override to change the default options.
 
@@ -63,7 +65,7 @@ The systemd service unit file includes environment variables that you can overri
 | `BEAT_CONFIG_OPTS` | Flags for configuration file path | ``-c /etc/apm-server/apm-server.yml`` |
 | `BEAT_PATH_OPTS` | Other paths | ``-path.home /usr/share/apm-server -path.config /etc/apm-server -path.data /var/lib/apm-server -path.logs /var/log/apm-server`` |
 
-::::{note} 
+::::{note}
 You can use `BEAT_LOG_OPTS` to set debug selectors for logging. However, to configure logging behavior, set the logging options described in [Configure logging](configure-logging.md).
 ::::
 
@@ -84,13 +86,13 @@ systemctl daemon-reload
 systemctl restart apm-server
 ```
 
-::::{note} 
+::::{note}
 It is recommended that you use a configuration management tool to include drop-in unit files. If you need to add a drop-in manually, use `systemctl edit apm-server.service`.
 ::::
 
 
 
-#### Configuration file ownership [apm-config-file-ownership] 
+#### Configuration file ownership [apm-config-file-ownership]
 
 On systems with POSIX file permissions, the APM Server configuration file is subject to ownership and file permission checks. These checks prevent unauthorized users from providing or modifying configurations that are run by APM Server.
 
@@ -118,7 +120,7 @@ can only be writable by the owner but the permissions are "-rw-rw-r--"
 To correct this problem, use `chmod go-w /etc/apm-server/apm-server.yml` to remove write privileges from anyone other than the owner.
 
 
-##### Disabling strict permission checks [_disabling_strict_permission_checks] 
+##### Disabling strict permission checks [_disabling_strict_permission_checks]
 
 You can disable strict permission checks from the command line by using `--strict.perms=false`, but we strongly encourage you to leave the checks enabled.
 

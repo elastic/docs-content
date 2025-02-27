@@ -19,9 +19,6 @@ To find correlations:
 
 Select a service on the **Services** page in the Applications UI then select a transaction group from the **Transactions** tab.
 
-::::{note}
-Queries within the Applications UI are also applied to the correlations.
-::::
 
 :::
 
@@ -33,13 +30,12 @@ Queries within the Applications UI are also applied to the correlations.
 3. Select the **Transactions** tab.
 4. Select a transaction group in the **Transactions** table.
 
-::::{note}
-Active queries *are* applied to correlations.
+:::
 
 ::::
 
-:::
-
+:::: {note}
+Active queries *are* applied to correlations.
 ::::
 
 

@@ -311,4 +311,4 @@ Congratulations! You have successfully set up monitoring for nginx using standal
 ## What’s next? [_whats_next]
 
 * Learn more about [{{fleet}} and {{agent}}](/reference/ingestion-tools/fleet/index.md).
-* Learn more about [{{integrations}}](integration-docs://docs/reference/index.md).
+* Learn more about [{{integrations}}](asciidocalypse://docs/reference/index.md).

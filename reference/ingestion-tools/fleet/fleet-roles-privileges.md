@@ -36,7 +36,7 @@ To create a new role with full access to use and manage {{fleet}} and Integratio
 2. In the **Security** section, select **Roles**.
 3. Select **Create role**.
 4. Specify a name for the role.
-5. Leave the {{es}} settings at their defaults, or refer to [Security privileges](elasticsearch://docs/reference/elasticsearch/security-privileges.md) for descriptions of the available settings.
+5. Leave the {{es}} settings at their defaults, or refer to [Security privileges](asciidocalypse://docs/reference/elasticsearch/security-privileges.md) for descriptions of the available settings.
 6. In the {{kib}} section, select **Add Kibana privilege**.
 7. In the **Spaces** menu, select *** All Spaces**. Since many Integrations assets are shared across spaces, the users needs the {{kib}} privileges in all spaces.
 8. Expand the **Management** section.

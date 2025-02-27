@@ -2,18 +2,13 @@
 navigation_title: "Centrally configure APM agents in Kibana"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-agent-configuration.html
+applies_to:
+  stack: all
 ---
 
 
 
 # APM agent central configuration [apm-agent-configuration]
-
-
-::::{note}
-APM agent central configuration is *not* compatible with [{{serverless-full}}](https://docs.elastic.co/serverless).
-
-::::
-
 
 APM Agent configuration allows you to fine-tune your APM agent configuration from within the Applications UI. Changes are automatically propagated to your APM agents, so there’s no need to redeploy.
 

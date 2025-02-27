@@ -80,4 +80,4 @@ xpack.fleet.agentPolicies:
             enabled: false
 ```
 
-For more information about preconfiguration settings, refer to the [{{kib}} documentation](kibana://docs/reference/configuration-reference/fleet-settings.md).
+For more information about preconfiguration settings, refer to the [{{kib}} documentation](asciidocalypse://docs/reference/configuration-reference/fleet-settings.md).

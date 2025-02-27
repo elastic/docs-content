@@ -76,7 +76,7 @@ inputs: <7>
 9. For available input types, refer to [{{agent}} inputs](/reference/ingestion-tools/fleet/elastic-agent-inputs-list.md).
 10. Learn about [Data streams](/reference/ingestion-tools/fleet/data-streams.md) for time series data.
 11. Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{{user-defined-unique-id}}-apache.access` or `{{user-defined-unique-id}}-apache.error`) is a recommended practice, but any unique ID will work.
-12. Refer to [Logs](integration-docs://docs/reference/apache.md#apache-logs) in the Apache HTTP Server integration documentation for the logs available to ingest and exported fields.
+12. Refer to [Logs](asciidocalypse://docs/reference/apache.md#apache-logs) in the Apache HTTP Server integration documentation for the logs available to ingest and exported fields.
 13. Path to the log files to be monitored.
 
 
@@ -128,7 +128,7 @@ inputs: <7>
 9. Learn about [Data streams](/reference/ingestion-tools/fleet/data-streams.md) for time series data.
 10. Specify a unique ID for each individual input stream. Naming the ID by appending the associated `data_stream` dataset (for example `{{user-defined-unique-id}}-apache.status`) is a recommended practice, but any unique ID will work.
 11. A user-defined dataset. You can specify anything that makes sense to signify the source of the data.
-12. Refer to [Metrics](integration-docs://docs/reference/apache.md#apache-metrics) in the Apache HTTP Server integration documentation for the type of metrics collected and exported fields.
+12. Refer to [Metrics](asciidocalypse://docs/reference/apache.md#apache-metrics) in the Apache HTTP Server integration documentation for the type of metrics collected and exported fields.
 
 
 

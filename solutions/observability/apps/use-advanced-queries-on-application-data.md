@@ -28,7 +28,7 @@ To learn more about the {{kib}} query language capabilities, see the [Kibana Que
 ::::
 
 
-### Applications UI queries [apm-app-queries]
+### APM queries [apm-app-queries]
 
 APM queries can be handy for removing noise from your data in the [Services](../../../solutions/observability/apps/services.md), [Transactions](../../../solutions/observability/apps/transactions-2.md), [Errors](../../../solutions/observability/apps/errors-2.md), [Metrics](../../../solutions/observability/apps/metrics-2.md), and [Traces](../../../solutions/observability/apps/traces-2.md) views.
 

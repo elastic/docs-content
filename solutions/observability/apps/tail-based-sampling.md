@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-tail-based-samling-config.html
+applies_to:
+  stack: all
 ---
 
 # Tail-based sampling [apm-tail-based-samling-config]
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
 
 Most options on this page are supported by all APM Server deployment methods when writing to {{es}}. If you are using a different [output](configure-output.md), tail-based sampling is *not* supported.
@@ -86,9 +88,13 @@ Policies map trace events to a sample rate. Each policy must specify a sample ra
 
 The amount of storage space allocated for trace events matching tail sampling policies. Caution: Setting this limit higher than the allowed space may cause APM Server to become unhealthy.
 
-If the configured storage limit is insufficient, it logs "configured storage limit reached". The event will bypass sampling and will always be indexed when storage limit is reached.
+A value of `0GB` (or equivalent) does not set a concrete limit, but rather allows the APM Server to align its disk usage with the disk size. APM server uses up to 80% of the disk size limit on the disk where the local tail-based sampling database is located. The last 20% of disk will not be used by APM Server. It is the recommended value as it automatically scales with the disk size.
 
-Default: `3GB`. (text)
+If this is not desired, a concrete `GB` value can be set for the maximum amount of disk used for tail-based sampling.
+
+If the configured storage limit is insufficient, it logs "configured limit reached". The event will bypass sampling and will always be indexed when storage limit is reached.
+
+Default: `0GB`. (text)
 
 |     |     |
 | --- | --- |

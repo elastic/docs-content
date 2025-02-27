@@ -2,6 +2,8 @@
 navigation_title: "Redis"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-redis-output.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Configure the Redis output [apm-redis-output]
 
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
 The Redis output is not yet supported by {{fleet}}-managed APM Server.

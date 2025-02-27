@@ -8,7 +8,7 @@ mapped_pages:
 By default, {{elastic-defend}} streams diagnostic data to your cluster, which Elastic uses to tune protection features. You can stop producing this diagnostic data by configuring the advanced settings in the {{elastic-defend}} integration policy.
 
 ::::{note}
-{{kib}} also collects usage telemetry, which includes {{elastic-defend}} diagnostic data. You can modify telemetry preferences in [Advanced Settings](kibana://docs/reference/configuration-reference/telemetry-settings.md).
+{{kib}} also collects usage telemetry, which includes {{elastic-defend}} diagnostic data. You can modify telemetry preferences in [Advanced Settings](asciidocalypse://docs/reference/configuration-reference/telemetry-settings.md).
 ::::
 
 

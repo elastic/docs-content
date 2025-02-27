@@ -34,6 +34,9 @@ The [OpenTelemetry Collector exporter for Elastic](https://github.com/open-telem
 % Statefull only for tail-based sampling?
 
 ## OpenTelemetry’s tail-based sampling [apm-open-telemetry-tbs]
+```{applies_to}
+stack: all
+```
 
 Tail-based sampling allows to make sampling decisions after all spans of a trace have been completed. This allows for more powerful and informed sampling rules.
 

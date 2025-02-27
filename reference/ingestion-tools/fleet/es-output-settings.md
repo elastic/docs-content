@@ -46,7 +46,7 @@ Specify these settings to send data over a secure connection to {{es}}. In the {
 | `compression_level` | 1 | 1 | 1 | 1 |
 | `idle_connection_timeout` | 3 | 15 | 1 | 60 |
 
-For descriptions of each setting, refer to [Advanced YAML configuration](#es-output-settings-yaml-config). For the  `queue.mem.events`, `queue.mem.flush.min_events` and `queue.mem.flush.timeout` settings, refer to the [internal queue configuration settings](beats://docs/reference/filebeat/configuring-internal-queue.md) in the {{filebeat}} documentation.
+For descriptions of each setting, refer to [Advanced YAML configuration](#es-output-settings-yaml-config). For the  `queue.mem.events`, `queue.mem.flush.min_events` and `queue.mem.flush.timeout` settings, refer to the [internal queue configuration settings](asciidocalypse://docs/reference/filebeat/configuring-internal-queue.md) in the {{filebeat}} documentation.
 
 `Balanced` represents the new default setting (out of the box behaviour). Relative to `Balanced`, `Optimized for throughput` setting will improve EPS by 4 times, `Optimized for Scale` will perform on par and `Optimized for Latency` will show a 20% degredation in EPS (Events Per Second). These relative performance numbers were calculated from a performance testbed which operates in a controlled setting ingesting a large log file.
 

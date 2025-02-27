@@ -5,7 +5,7 @@ mapped_pages:
 
 # {{auditbeat}} {{anomaly-detect}} configurations [ootb-ml-jobs-auditbeat]
 
-These {{anomaly-job}} wizards appear in {{kib}} if you use [{{auditbeat}}](beats://docs/reference/auditbeat/auditbeat.md) to audit process activity on your systems. For more details, see the {{dfeed}} and job definitions in GitHub.
+These {{anomaly-job}} wizards appear in {{kib}} if you use [{{auditbeat}}](asciidocalypse://docs/reference/auditbeat/auditbeat.md) to audit process activity on your systems. For more details, see the {{dfeed}} and job definitions in GitHub.
 
 
 ## Auditbeat docker processes [auditbeat-process-docker-ecs]
