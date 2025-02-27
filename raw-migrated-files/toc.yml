@@ -240,7 +240,6 @@ toc:
       - file: docs-content/serverless/security-third-party-actions.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
       - file: docs-content/serverless/security-trusted-applications.md
-      - file: docs-content/serverless/security-tune-detection-signals.md
       - file: docs-content/serverless/security-vuln-management-dashboard-dash.md
       - file: docs-content/serverless/security-vuln-management-faq.md
       - file: docs-content/serverless/security-vuln-management-get-started.md
