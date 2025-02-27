@@ -232,7 +232,6 @@ toc:
       - file: docs-content/serverless/security-automated-response-actions.md
       - file: docs-content/serverless/security-automatic-import.md
       - file: docs-content/serverless/security-behavioral-detection-use-cases.md
-      - file: docs-content/serverless/security-benchmark-rules.md
       - file: docs-content/serverless/security-blocklist.md
       - file: docs-content/serverless/security-building-block-rules.md
       - file: docs-content/serverless/security-cases-open-manage.md

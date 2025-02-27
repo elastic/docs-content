@@ -501,11 +501,6 @@ toc:
               - file: security/cloud/findings-page-3.md
               - file: security/dashboards/cloud-native-vulnerability-management-dashboard.md
               - file: security/cloud/cnvm-frequently-asked-questions-faq.md
-          - file: security/cloud/cloud-workload-protection-for-kubernetes.md
-            children:
-              - file: security/cloud/get-started-with-cwp-for-kubernetes.md
-              - file: security/cloud/container-workload-protection-policies.md
-              - file: security/cloud/kubernetes-dashboard.md
           - file: security/cloud/cloud-workload-protection-for-vms.md
             children:
               - file: security/cloud/capture-environment-variables.md
