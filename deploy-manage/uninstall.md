@@ -25,6 +25,6 @@ Different Elastic environments require different uninstallation steps. Choose th
   * [{{ece}} deployments](/deploy-manage/uninstall/delete-a-cloud-deployment.md#ece)
 
 :::{note}
-You can uninstall self-managed clusters, but detailed step-by-step instructions are not currently available.
+You can uninstall {{es}} nodes or {{kib}} instances on self-managed clusters, but step-by-step instructions are not currently available. For more details on the implications on removing {{es}} nodes, refer to [](/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes.md).
 :::
 
