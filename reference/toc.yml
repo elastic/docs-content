@@ -3,36 +3,39 @@ toc:
   - file: security/index.md
     children:
       - file: security/elastic-defend/index.md
-      - file: security/elastic-defend/elastic-endpoint-deploy-reqs.md
-      - file: security/elastic-defend/install-endpoint.md
         children:
-          - file: security/elastic-defend/deploy-elastic-endpoint.md
-          - file: security/elastic-defend/deploy-elastic-endpoint-ven.md
-          - file: security/elastic-defend/deploy-with-mdm.md
-          - file: security/elastic-defend/agent-tamper-protection.md
-      - file: security/elastic-defend/endpoint-management-req.md
-      - file: security/elastic-defend/configure-endpoint-integration-policy.md
-        children:
-          - file: security/elastic-defend/artifact-control.md
-          - file: security/elastic-defend/endpoint-diagnostic-data.md
-          - file: security/elastic-defend/self-healing-rollback.md
-          - file: security/elastic-defend/linux-file-monitoring.md
-          - file: security/elastic-defend/endpoint-data-volume.md
-          - file: security/elastic-defend/create-defend-policy-api.md
-      - file: security/elastic-defend/offline-endpoint.md
-      - file: security/elastic-defend/uninstall-agent.md
+          - file: security/elastic-defend/elastic-endpoint-deploy-reqs.md
+          - file: security/elastic-defend/install-endpoint.md
+            children:
+              - file: security/elastic-defend/deploy-elastic-endpoint.md
+              - file: security/elastic-defend/deploy-elastic-endpoint-ven.md
+              - file: security/elastic-defend/deploy-with-mdm.md
+              - file: security/elastic-defend/agent-tamper-protection.md
+          - file: security/elastic-defend/endpoint-management-req.md
+          - file: security/elastic-defend/configure-endpoint-integration-policy.md
+            children:
+              - file: security/elastic-defend/artifact-control.md
+              - file: security/elastic-defend/endpoint-diagnostic-data.md
+              - file: security/elastic-defend/self-healing-rollback.md
+              - file: security/elastic-defend/linux-file-monitoring.md
+              - file: security/elastic-defend/endpoint-data-volume.md
+              - file: security/elastic-defend/create-defend-policy-api.md
+          - file: security/elastic-defend/offline-endpoint.md
+          - file: security/elastic-defend/uninstall-agent.md
       - file: security/fields-and-object-schemas/index.md
-      - file: security/fields-and-object-schemas/runtime-fields.md
-      - file: security/fields-and-object-schemas/siem-field-reference.md
-      - file: security/fields-and-object-schemas/timeline-object-schema.md
-      - file: security/fields-and-object-schemas/alert-schema.md
+        children:
+          - file: security/fields-and-object-schemas/runtime-fields.md
+          - file: security/fields-and-object-schemas/siem-field-reference.md
+          - file: security/fields-and-object-schemas/timeline-object-schema.md
+          - file: security/fields-and-object-schemas/alert-schema.md
   - file: observability/index.md
-  - file: observability/fields-and-object-schemas.md
     children:
-      - file: observability/fields-and-object-schemas/logs-app-fields.md
-      - file: observability/fields-and-object-schemas/metrics-app-fields.md
-  - file: observability/elastic-entity-model.md
-  - file: observability/serverless/infrastructure-app-fields.md
+      - file: observability/fields-and-object-schemas.md
+        children:
+          - file: observability/fields-and-object-schemas/logs-app-fields.md
+          - file: observability/fields-and-object-schemas/metrics-app-fields.md
+      - file: observability/elastic-entity-model.md
+      - file: observability/serverless/infrastructure-app-fields.md
   - file: search/search.md
   - file: elasticsearch.md
     children:
