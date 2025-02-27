@@ -33,7 +33,7 @@ If you plan to reinstall {{ece}} on the host, make sure you [delete the host](..
 During installation, the system generates secrets that are placed into the `/mnt/data/elastic/bootstrap-state/bootstrap-secrets.json` secrets file, unless you passed in a different path with the --host-storage-path parameter. Keep the information in the `bootstrap-secrets.json` file secure by removing it from its default location and placing it into a secure storage location.
 ::::
 
-::::{warning}
-If the {{ece}} host to uninstall has the allocator role and running instances from orchestrated deployments, the containers will be deleted and the instances will appear unhealthy in the deployments page. In this case, it's recommended to [vacate the {{ece}} host](/deploy-manage/maintenance/ece/move-nodes-instances-from-allocators.md) before uninstalling {{ece}}.
+::::{important}
+If the ECE host you are uninstalling has the allocator role and is running instances from orchestrated deployments, all containers will be deleted, causing the instances to appear unhealthy on the Deployments page. To avoid disruptions, it is recommended to [vacate the host](/deploy-manage/maintenance/ece/move-nodes-instances-from-allocators.md) before uninstalling {{ece}}.
 ::::
 
