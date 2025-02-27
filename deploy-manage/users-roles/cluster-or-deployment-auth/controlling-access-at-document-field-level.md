@@ -9,6 +9,7 @@ applies_to:
     eck:
     ess:
     self:
+navigation_title: Control access at the document and field level
 ---
 
 # Controlling access at the document and field level [field-and-document-access-control]
