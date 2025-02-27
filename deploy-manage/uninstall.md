@@ -16,7 +16,7 @@ installation issue that can't be resolved, or start fresh with a clean setup.
 Different Elastic environments require different uninstallation steps. Choose the guide that matches your setup:
 
 * Uninstall an orchestrator:
-  * [Uninstall {{ece}}](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md)
+  * [Uninstall an {{ece}} host](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md)
   * [Uninstall {{eck}}](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md)
 
 * Delete an orchestrated deployment:
