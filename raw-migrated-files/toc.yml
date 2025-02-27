@@ -346,7 +346,6 @@ toc:
       - file: kibana/kibana/using-kibana-with-security.md
       - file: kibana/kibana/xpack-security-fips-140-2.md
       - file: kibana/kibana/xpack-security.md
-      - file: kibana/kibana/xpack-spaces.md
   - file: logstash/logstash/index.md
     children:
       - file: logstash/logstash/health-report-pipeline-flow-worker-utilization.md
