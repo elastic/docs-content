@@ -39,7 +39,7 @@ Autoscaling helps you to more easily manage your deployments by adjusting their 
 ::::{tab-set}
 
 :::{tab-item} {{ech}}
-You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/ec-autoscaling-api-example.md).
+You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/ec-hosted-autoscaling-api-example.md).
 :::
 
 :::{tab-item} {{ece}}
