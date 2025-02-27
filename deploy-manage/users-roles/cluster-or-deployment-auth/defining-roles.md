@@ -263,7 +263,7 @@ You can manage custom roles using the following methods:
 When you use the UI or APIs to manage roles, the roles are stored in an internal {{es}} index. When you use local files, the roles are only stored in those files.
 
 ### Role management UI [roles-management-ui]
-$$$defining_kib_privileges$$$
+$$$adding_kibana_privileges$$$
 
 You can manage users and roles easily in {{kib}}. 
 
