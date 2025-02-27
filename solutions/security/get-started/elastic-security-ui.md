@@ -6,23 +6,13 @@ mapped_urls:
 
 # Elastic Security UI
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/es-ui-overview.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-ui.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$inline-actions$$$
 
 The {{security-app}} is a highly interactive workspace designed for security analysts that provides a clear overview of events and alerts from your environment. You can use the interactive UI to drill down into areas of interest.
 
 
 ## Search [search-overview]
 
-Filter for alerts, events, processes, and other important security data by entering **https://www.elastic.co/guide/en/kibana/current/kuery-query.html[{{kib}} Query Language (KQL)]** queries in the search bar, which appears at the top of each page throughout the app. A date/time filter set to `Today` is enabled by default, but can be changed to any time range.
+Filter for alerts, events, processes, and other important security data by entering [{{kib}} Query Language (KQL)](/explore-analyze/query-filter/languages/kql.md) queries in the search bar, which appears at the top of each page throughout the app. A date/time filter set to `Today` is enabled by default, but can be changed to any time range.
 
 :::{image} ../../../images/security-search-bar.png
 :alt: search bar
@@ -41,11 +31,6 @@ The navigation menu contains direct links and expandable groups, identified by t
 * Click a group’s icon (![Group icon](../../../images/security-group-icon.png "")) to open its flyout menu, which displays links to related pages within that group. Click a link in the flyout to navigate to its landing page.
 * Click the **Collapse side navigation** icon (![Side menu collapse icon](../../../images/security-side-button.png "")) to collapse and expand the main navigation menu.
 
-:::{image} ../../../images/security-nav-overview.gif
-:alt: Overview of the navigation menu
-:class: screenshot
-:::
-
 
 ## Visualization actions [visualization-actions]
 
@@ -53,6 +38,7 @@ Many {{elastic-sec}} histograms, graphs, and tables display an **Inspect** butto
 
 :::{image} ../../../images/security-inspect-icon-context.png
 :alt: Inspect icon
+:width: 400px
 :class: screenshot
 :::
 
@@ -60,6 +46,7 @@ Other visualizations display an options menu (![Three-dot menu icon](../../../im
 
 :::{image} ../../../images/security-viz-options-menu-open.png
 :alt: Options menu opened
+:width: 500px
 :class: screenshot
 :::
 
@@ -70,6 +57,7 @@ Throughout the {{security-app}}, you can hover over many data fields and values 
 
 :::{image} ../../../images/security-inline-actions-menu.png
 :alt: Inline additional actions menu
+:width: 500px
 :class: screenshot
 :::
 
@@ -77,6 +65,7 @@ In some visualizations, these actions are available in the legend by clicking a 
 
 :::{image} ../../../images/security-inline-actions-legend.png
 :alt: Actions in a visualization legend
+:width: 650px
 :class: screenshot
 :::
 
@@ -94,156 +83,133 @@ Inline actions include the following (some actions are unavailable in some conte
 
 The {{security-app}} contains the following pages that enable analysts to view, analyze, and manage security data.
 
+### Discover [security-ui-discover]
+
+Use the [Discover](/explore-analyze/discover.md) UI to filter your data or learn about its structure.
+
 
 ### Dashboards [_dashboards]
 
-Expand this section to access the Overview, Detection & Response, Kubernetes, Cloud Security Posture, Cloud Native Vulnerability Management, Entity Analytics, and Data Quality dashboards, which provide interactive visualizations that summarize your data. You can also create and view custom dashboards. Refer to [Dashboards](/solutions/security/dashboards.md) for more information.
+Expand this section to access the following dashboards, which provide interactive visualizations that summarize your data:
 
-:::{image} ../../../images/security-dashboards-landing-page.png
-:alt: The dashboards landing page
-:class: screenshot
-:::
+- Overview
+- Detection & Response
+- Kubernetes (in {{stack}})
+- Cloud Security Posture
+- Cloud Native Vulnerability Management
+- Entity Analytics
+- Data Quality.
+
+You can also create and view custom dashboards. Refer to [Dashboards](/solutions/security/dashboards.md) for more information.
 
 
 ### Rules [_rules]
 
 Expand this section to access the following pages:
 
-* [**Rules**](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
+* [Rules](/solutions/security/detect-and-alert/manage-detection-rules.md): Create and manage rules to monitor suspicious events.
 
-    :::{image} ../../../images/security-all-rules.png
-    :alt: Rules page
-    :class: screenshot
-    :::
+* [Benchmarks](/solutions/security/cloud/benchmarks-2.md): View, set up, or configure cloud security benchmarks.
 
-* [**Benchmarks**](/solutions/security/cloud/benchmarks-2.md): View, set up, or configure cloud security benchmarks.
+* [Shared Exception Lists](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
 
-    :::{image} ../../../images/security-benchmark-rules.png
-    :alt: Benchmark Integrations page
-    :class: screenshot
-    :::
-
-* [**Shared Exception Lists**](/solutions/security/detect-and-alert/rule-exceptions.md#shared-exception-list-intro): View and manage rule exceptions and shared exception lists.
-
-    :::{image} ../../../images/security-rule-exceptions-page.png
-    :alt: Shared Exception Lists page
-    :class: screenshot
-    :::
-
-* [**MITRE ATT&CK® coverage**](/solutions/security/detect-and-alert/mitre-attandckr-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
-
-    :::{image} ../../../images/security-rules-coverage.png
-    :alt: MITRE ATT&CK® coverage page
-    :class: screenshot
-    :::
-
+* [MITRE ATT&CK® coverage](/solutions/security/detect-and-alert/mitre-attandckr-coverage.md): Review your coverage of MITRE ATT&CK® tactics and techniques, based on installed rules.
 
 
 ### Alerts [_alerts]
 
 View and manage alerts to monitor activity within your network. Refer to [Detections and alerts](/solutions/security/detect-and-alert.md) for more information.
 
-:::{image} ../../../images/security-alert-page.png
-:alt: alert page
-:class: screenshot
-:::
-
 
 ### Findings [_findings]
 
 Identify misconfigurations and vulnerabilities in your cloud infrastructure. For setup instructions, refer to [Cloud Security Posture Management](/solutions/security/cloud/cloud-security-posture-management.md), [Kubernetes Security Posture Management](/solutions/security/cloud/kubernetes-security-posture-management.md), or [Cloud Native Vulnerability Management](/solutions/security/cloud/cloud-native-vulnerability-management.md).
 
-:::{image} ../../../images/security-findings-page.png
-:alt: Findings page
-:class: screenshot
-:::
-
 
 ### Cases [_cases]
 
-Open and track security issues. Refer to [*Cases*](/solutions/security/investigate/cases.md) to learn more.
-
-:::{image} ../../../images/security-cases-home-page.png
-:alt: Cases page
-:class: screenshot
-:::
+Open and track security issues. Refer to [Cases](/solutions/security/investigate/cases.md) to learn more.
 
 
-### Timelines [_timelines]
+### Investigations [security-ui-investigations]
 
-Investigate alerts and complex threats — such as lateral movement — in your network. Timelines are interactive and allow you to share your findings with other team members. Refer to [*Timeline*](/solutions/security/investigate/timeline.md) to learn more.
+Expand this section to access the following pages:
 
-:::{image} ../../../images/security-timeline-ui.png
-:alt: Timeline page
-:class: screenshot
-:::
+* [Timelines](../investigate/timeline.md): Investigate alerts and complex threats — such as lateral movement — in your network. Timelines are interactive and allow you to share your findings with other team members.
 
-::::{tip}
-Click the **Timeline** button at the bottom of the {{security-app}} to start an investigation.
-::::
+    ::::{tip}
+    Click the **Timeline** button at the bottom of the {{security-app}} to start an investigation.
 
+    ::::
+
+* [Osquery](../investigate/osquery.md): Deploy Osquery with {{agent}}, then run and schedule queries.
 
 
 ### Intelligence [_intelligence]
 
-The Intelligence section contains the Indicators page, which collects data from enabled threat intelligence feeds and provides a centralized view of indicators of compromise (IoCs). Refer to [*Indicators of compromise*](/troubleshoot/security/indicators-of-compromise.md) to learn more.
-
-:::{image} ../../../images/security-indicators-table.png
-:alt: Indicators page
-:class: screenshot
-:::
+The Intelligence section contains the Indicators page, which collects data from enabled threat intelligence feeds and provides a centralized view of indicators of compromise (IoCs). Refer to [Indicators of compromise](/troubleshoot/security/indicators-of-compromise.md) to learn more.
 
 
 ### Explore [_explore]
 
 Expand this section to access the following pages:
 
-* [**Hosts**](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
+* [Hosts](/solutions/security/explore/hosts-page.md): Examine key metrics for host-related security events using graphs, charts, and interactive data tables.
 
-    :::{image} ../../../images/security-hosts-ov-pg.png
-    :alt: Hosts page
-    :class: screenshot
-    :::
+* [Network](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
 
-* [**Network**](/solutions/security/explore/network-page.md): Explore the interactive map to discover key network activity metrics and investigate network events further in Timeline.
-
-    :::{image} ../../../images/security-network-ui.png
-    :alt: Network page
-    :class: screenshot
-    :::
-
-* [**Users**](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
-
-    :::{image} ../../../images/security-users-page.png
-    :alt: Users page
-    :class: screenshot
-    :::
+* [Users](/solutions/security/explore/users-page.md): Access a comprehensive overview of user data to help you understand authentication and user behavior within your environment.
 
 
+### Assets [security-ui-assets]
+
+The Assets section allows you to manage the following features:
+
+* [{{fleet}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-elastic-agents-in-fleet.md)
+* [Endpoint protection](/solutions/security/manage-elastic-defend.md)
+
+    * [Endpoints](/solutions/security/manage-elastic-defend/endpoints.md): View and manage hosts running {{elastic-defend}}.
+    * [Policies](/solutions/security/manage-elastic-defend/policies.md): View and manage {{elastic-defend}} integration policies.
+    * [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md): View and manage trusted Windows, macOS, and Linux applications.
+    * [Event filters](/solutions/security/manage-elastic-defend/event-filters.md): View and manage event filters, which allow you to filter endpoint events you don’t need to want stored in {{es}}.
+    * [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): View and manage host isolation exceptions, which specify IP addresses that can communicate with your hosts even when those hosts are blocked from your network.
+    * [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md): View and manage the blocklist, which allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
+    * [Response actions history](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
+
+* [Cloud security](/solutions/security/cloud.md)
+
+### {{ml-cap}} [security-ui-ml-cap]
+
+Manage {{ml}} jobs and settings. Refer to [{{ml-cap}} docs](/explore-analyze/machine-learning/anomaly-detection.md) for more information.
 
 ### Get started [_get_started]
 
 Quickly add security integrations that can ingest data and monitor your hosts.
 
+### Developer tools [security-ui-dev-tools]
 
-### Manage [_manage]
+Use additional API and analysis tools to interact with your data.
 
-Expand this section to access and manage additional security features:
 
-* [**Entity risk score**](/solutions/security/advanced-entity-analytics/entity-risk-scoring.md): Manage entity risk scoring, and preview risky entities.
-* [**Endpoints**](/solutions/security/manage-elastic-defend/endpoints.md): View and manage hosts running {{elastic-defend}}.
-* [**Policies**](/solutions/security/manage-elastic-defend/policies.md): View and manage {{elastic-defend}} integration policies.
-* [**Trusted applications**](/solutions/security/manage-elastic-defend/trusted-applications.md): View and manage trusted Windows, macOS, and Linux applications.
-* [**Event filters**](/solutions/security/manage-elastic-defend/event-filters.md): View and manage event filters, which allow you to filter endpoint events you don’t need to want stored in {{es}}.
-* [**Host isolation exceptions**](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): View and manage host isolation exceptions, which specify IP addresses that can communicate with your hosts even when those hosts are blocked from your network.
-* [**Blocklist**](/solutions/security/manage-elastic-defend/blocklist.md): View and manage the blocklist, which allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
-* [**Response actions history**](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
-* [**Container Workload Protection**](/solutions/security/cloud/cloud-workload-protection-for-kubernetes.md): Identify and block unexpected system behavior in Kubernetes containers.
+### Management [_manage]
+```yaml {applies_to}
+stack: all
+```
 
-:::{image} ../../../images/security-manage-pg.png
-:alt: Manage page
-:class: screenshot
-:::
+Expand this section to access and manage:
+- Additional security features
+- [Stack monitoring](/deploy-manage/monitor/stack-monitoring.md)
+- [{{integrations}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-integrations.md)
+
+### Project Settings
+```yaml {applies_to}
+serverless: all
+```
+
+Expand this section to access and manage:
+- Additional security features
+- [{{integrations}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/manage-integrations.md)
+- [Billing](/deploy-manage/cloud-organization/billing/serverless-project-billing-dimensions.md) and [subscription](/deploy-manage/cloud-organization/billing/manage-subscription.md) options for your {{serverless-short}} project
 
 
 ## Accessibility features [timeline-accessibility-features]
@@ -259,6 +225,7 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 
 :::{image} ../../../images/security-timeline-accessiblity-keyboard-focus.gif
 :alt: timeline accessiblity keyboard focus
+:width: 650px
 :class: screenshot
 :::
 
@@ -266,6 +233,7 @@ Use your keyboard to interact with draggable elements in the Elastic Security UI
 
 :::{image} ../../../images/security-timeline-accessiblity-keyboard-focus-hotkeys.gif
 :alt: timeline accessiblity keyboard focus hotkeys
+:width: 500px
 :class: screenshot
 :::
 
@@ -292,6 +260,7 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 
 :::{image} ../../../images/security-timeline-accessiblity-directional-arrows.gif
 :alt: timeline accessiblity directional arrows
+:width: 500px
 :class: screenshot
 :::
 
@@ -299,6 +268,7 @@ Use your keyboard to navigate through rows, columns, and menu options in the Ela
 
 :::{image} ../../../images/security-timeline-accessiblity-tab-keys.gif
 :alt: timeline accessiblity tab keys
+:width: 400px
 :class: screenshot
 :::
 

@@ -28,9 +28,10 @@ For a complete walkthrough of the **Create rule** flyout panel, including detail
 
 ::::
 
-% Stateful only after this?
-
 ## Rules and alerts in the Applications UI [_rules_and_alerts_in_the_applications_ui]
+```{applies_to}
+stack: all
+```
 
 View and manage rules and alerts in the Applications UI.
 

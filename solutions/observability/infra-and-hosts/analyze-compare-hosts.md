@@ -25,8 +25,8 @@ To open **Hosts**, find **Infrastructure** in the main menu or use the [global s
 
 To learn more about the metrics shown on this page, refer to the [Metrics reference](https://www.elastic.co/guide/en/serverless/current/observability-metrics-reference.html) documentation.
 
-::::{admonition} Don’t see any metrics?
-:class: note
+::::{note}
+**Don’t see any metrics?**
 
 If you haven’t added data yet, click **Add data** to search for and install an Elastic integration.
 
@@ -125,8 +125,8 @@ From the **Actions** menu, you can choose to:
 
 To see alerts for a specific host, refer to [View host details](../../../solutions/observability/infra-and-hosts/analyze-compare-hosts.md#view-host-details).
 
-::::{admonition} Why are alerts missing from the Hosts page?
-:class: note
+::::{note}
+**Why are alerts missing from the Hosts page?**
 
 If your rules are triggering alerts that don’t appear on the **Hosts** page, edit the rules and make sure they are correctly configured to associate the host name with the alert:
 
@@ -267,7 +267,7 @@ The **Anomalies** tab displays a list of each single metric {{anomaly-detect}} j
 
 Along with the name of each anomaly job, detected anomalies with a severity score equal to 50 or higher are listed. These scores represent a severity of "warning" or higher in the selected time period. The **summary** value represents the increase between the actual value and the expected ("typical") value of the host metric in the anomaly record result.
 
-To drill down and analyze the metric anomaly, select **Actions** → **Open in Anomaly Explorer***. You can also select ***Actions** → **Show in Inventory** to view the host Inventory page, filtered by the specific metric.
+To drill down and analyze the metric anomaly, select **Actions** → **Open in Anomaly Explorer**. You can also select **Actions** → **Show in Inventory** to view the host Inventory page, filtered by the specific metric.
 
 :::{image} ../../../images/serverless-anomalies-overlay.png
 :alt: Anomalies
@@ -278,8 +278,7 @@ To drill down and analyze the metric anomaly, select **Actions** → **Open in A
 
 
 :::::{dropdown} Osquery
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, one of the following roles is required to use Osquery.
 

@@ -9,8 +9,7 @@ mapped_pages:
 # Create an Elasticsearch query rule [observability-create-elasticsearch-query-rule]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 The **Editor** role or higher is required to create Elasticsearch query rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/manage-users.md#general-assign-user-roles).
 

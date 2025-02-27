@@ -1,8 +1,8 @@
 # Traffic Filtering [ec-traffic-filtering-deployment-configuration]
 
-Traffic filtering is one of the security layers available in Elasticsearch Service. It allows you to limit how your deployments can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to *only* the sources that you trust.
+Traffic filtering is one of the security layers available in {{ecloud}}. It allows you to limit how your deployments can be accessed. Add another layer of security to your installation and deployments by restricting inbound traffic to *only* the sources that you trust.
 
-Elasticsearch Service supports the following traffic sources:
+{{ecloud}} supports the following traffic sources:
 
 * [IP addresses and Classless Inter-Domain Routing (CIDR) masks](../../../deploy-manage/security/ip-traffic-filtering.md), e.g. `82.102.25.74` or `199.226.244.0/24`.
 * [AWS Virtual Private Clouds (VPCs) over AWS PrivateLink](../../../deploy-manage/security/aws-privatelink-traffic-filters.md), supported only in AWS regions.
@@ -44,7 +44,7 @@ By default, all your deployments are accessible over the public internet. They a
 Once you associate at least one traffic filter with a deployment, traffic that does not match any rules (for this deployment) is denied.
 
 ::::{note} 
-This only applies to external traffic. Internal traffic is managed by Elasticsearch Service. For example, Kibana can connect to Elasticsearch, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
+This only applies to external traffic. Internal traffic is managed by {{ecloud}}. For example, Kibana can connect to Elasticsearch, as well as internal services which manage the deployment. Other deployments can’t connect to deployments protected by traffic filters.
 ::::
 
 
@@ -83,7 +83,7 @@ Jane creates a deployment. At this point the deployment is accessible over inter
 
 Jane wants to restrict access to the deployment so that only the traffic originating from Jane’s VPC is allowed.
 
-* They create a Traffic Filter *Private Link Endpoint* rule set, thus registering their VPC with Elasticsearch Service.
+* They create a Traffic Filter *Private Link Endpoint* rule set, thus registering their VPC with {{ecloud}}.
 * They associate this rule set with the deployment.
 * At this point, their deployment is only accessible over PrivateLink from Jane’s VPC. This does not affect other security layers, so Jane’s users need to authenticate with username+password.
 * The deployment is no longer accessible over the public internet endpoint.
@@ -120,10 +120,10 @@ This section offers suggestions on how to troubleshoot your traffic filters. Bef
 
 ### Review the rule sets associated with a deployment [ec-review-rule-sets] 
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. Select the **Security** tab on the left-hand side menu bar.
 4. Traffic filter rule sets are listed under **Traffic filters**.
@@ -135,8 +135,8 @@ On this screen you can view and remove existing filters and attach new filters.
 
 To identify which rule sets are automatically applied to new deployments in your account:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 3. Under the **Features** tab, open the **Traffic filters** page.
 4. You can find the list of traffic filter rule sets.
 5. Select each of the rule sets — **Include by default** is checked when this rule set is automatically applied to all new deployments in its region.

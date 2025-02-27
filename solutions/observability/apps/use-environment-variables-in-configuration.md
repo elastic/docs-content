@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-config-env.html
+applies_to:
+  stack: all
 ---
 
 # Use environment variables in the configuration [apm-config-env]
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
 This documentation is only relevant for APM Server binary users.

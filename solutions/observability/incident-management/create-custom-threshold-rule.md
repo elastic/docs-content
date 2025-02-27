@@ -9,8 +9,7 @@ navigation_title: "Custom threshold"
 # Create a custom threshold rule [observability-create-custom-threshold-alert-rule]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create a custom threshold rule. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -128,8 +127,8 @@ The behavior of the alert depends on whether any **group alerts by** fields are 
     * If `host-1` reports CPU usage below the threshold of 80%, the alert status is changed to recovered.
 
 
-::::{admonition} How to untrack decommissioned hosts
-:class: note
+::::{note} 
+**How to untrack decommissioned hosts**
 
 If a host (for example, `host-1`) is decommissioned, you probably no longer want to see "no data" alerts about it. To mark an alert as untracked: Go to the Alerts table, click the ![More actions](../../../images/serverless-boxesHorizontal.svg "") icon to expand the "More actions" menu, and click *Mark as untracked*.
 

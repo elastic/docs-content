@@ -143,16 +143,16 @@ One reason for preprocessing your data is to control the structure of the data t
 
 ### Data integrity [ec-data-integrity]
 
-Logstash boosts data resiliency for important data that you don’t want to lose. Logstash offers an on-disk [persistent queue (PQ)](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/persistent-queues.md) that absorbs bursts of events without an external buffering mechanism. It attempts to deliver messages stored in the PQ until delivery succeeds at least once.
+Logstash boosts data resiliency for important data that you don’t want to lose. Logstash offers an on-disk [persistent queue (PQ)](asciidocalypse://docs/logstash/docs/reference/persistent-queues.md) that absorbs bursts of events without an external buffering mechanism. It attempts to deliver messages stored in the PQ until delivery succeeds at least once.
 
-The Logstash [dead letter queue (DLQ)](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/dead-letter-queues.md) provides on-disk storage for events that Logstash can’t process, giving you a chance to evaluate them. You can use the dead_letter_queue input plugin to easily reprocess DLQ events.
+The Logstash [dead letter queue (DLQ)](asciidocalypse://docs/logstash/docs/reference/dead-letter-queues.md) provides on-disk storage for events that Logstash can’t process, giving you a chance to evaluate them. You can use the dead_letter_queue input plugin to easily reprocess DLQ events.
 
 
 ### Data flow [ec-data-flow]
 
 If you need to collect data from multiple Beats or Elastic Agents, consider using Logstash as a proxy. Logstash can receive data from multiple endpoints, even on different networks, and send the data on to Elasticsearch through a single firewall rule. You get more security for less work than if you set up individual rules for each endpoint.
 
-Logstash can send to multiple [outputs](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/output-plugins.md) from a single pipeline to help you get the most value from your data.
+Logstash can send to multiple [outputs](asciidocalypse://docs/logstash/docs/reference/output-plugins.md) from a single pipeline to help you get the most value from your data.
 
 
 ## Where to go from here [ec-data-ingest-where-to-go]
@@ -182,7 +182,7 @@ For users who want to build their own solution, we can help you get started inge
 [Introduction to Fleet management](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md)
 :   {{fleet}} provides a web-based UI in Kibana for centrally managing Elastic Agents and their policies.
 
-[{{ls}} introduction](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/index.md)
+[{{ls}} introduction](asciidocalypse://docs/logstash/docs/reference/index.md)
 :   Use {{ls}} to dynamically unify data from disparate sources and normalize the data into destinations of your choice.
 
 
@@ -212,7 +212,7 @@ For users who want to build their own solution, we can help you get started inge
 [{{agent}} processors](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-processors.md)
 :   Use the {{agent}} lightweight processors to parse, filter, transform, and enrich data at the source.
 
-[Creating a {{ls}} pipeline](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/creating-logstash-pipeline.md)
+[Creating a {{ls}} pipeline](asciidocalypse://docs/logstash/docs/reference/creating-logstash-pipeline.md)
 :   Create a {{ls}} pipeline by stringing together plugins—​inputs, outputs, filters, and sometimes codecs—​in order to process your data during ingestion.
 
 

@@ -36,7 +36,7 @@ curl -X PUT \
   -d '{"capacity":<Capacity_Value_in_MB>}'
 ```
 
-For more information on how to use API keys for authentication, check the section [Access the API from the Command Line](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-enterprise/ece-api-command-line.md).
+For more information on how to use API keys for authentication, check the section [Access the API from the Command Line](asciidocalypse://docs/cloud/docs/reference/cloud-enterprise/ece-api-command-line.md).
 
 ::::{important} 
 Prior to ECE 3.5.0, regardless of the use of this API, the [CPU quota](#ece-alloc-cpu) used the memory specified at installation time.

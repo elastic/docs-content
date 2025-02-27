@@ -144,7 +144,7 @@ Looking for privileges and roles needed to use central configuration from the Ap
 ### Publish monitoring data [apm-privileges-to-publish-monitoring-write]
 
 ::::{important}
-**{{ecloud}} users:** This section does not apply to our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service). Monitoring on {{ecloud}} is enabled by clicking the **Enable** button in the **Monitoring** panel.
+**{{ecloud}} users:** This section does not apply to [{{ech}}](https://www.elastic.co/cloud/elasticsearch-service). Monitoring on {{ecloud}} is enabled by clicking the **Enable** button in the **Monitoring** panel.
 
 ::::
 
@@ -262,4 +262,4 @@ Assign additional APM feature roles to users as needed including the [*Writer ro
 ::::
 
 
-The previous privileges should be sufficient for RUM source mapping to work properly as long as APM Server communicates with {{es}} successfully. If it fails, it may fallback to read source maps through {{kib}} if configured, which requires additional {{kib}} privileges. See [RUM source map API](rum-source-map-api.md) for more details.
+The previous privileges should be sufficient for RUM source mapping to work properly as long as APM Server communicates with {{es}} successfully. If it fails, it may fallback to read source maps through {{kib}} if configured, which requires additional {{kib}} privileges. For more details, refer to the [{{stack}}](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-apm-sourcemaps) or [{{serverless-short}}](https://www.elastic.co/docs/api/doc/serverless/group/endpoint-apm-sourcemaps) API documentation.

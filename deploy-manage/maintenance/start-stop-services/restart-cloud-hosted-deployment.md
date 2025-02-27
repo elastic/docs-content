@@ -7,9 +7,9 @@ applies_to:
      ess:
 ---
 
-# Restart a Cloud Hosted deployment
+# Restart an {{ech}} deployment
 
-You can restart your {{es}} deployment through the deployment overview UI or by using an API.
+You can restart your deployment through the deployment overview UI or by using an API.
 
 ## Restart your deployment through the deployment overview [ec-restart-deployment]
 
@@ -19,7 +19,7 @@ On the deployment overview, from the **Action** drop-down menu select **Restart 
 
 You can choose to restart without downtime or you can restart all nodes simultaneously.
 
-Note that if you are looking to restart {{es}} to clear out [deployment activity](../../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) plan failures, you may instead run a [no-op plan](../../../troubleshoot/monitoring/deployment-health-warnings.md) to re-synchronize the last successful configuration settings between Elasticsearch Service and {{es}}.
+Note that if you are looking to restart {{es}} to clear out [deployment activity](../../../deploy-manage/deploy/elastic-cloud/keep-track-of-deployment-activity.md) plan failures, you may instead run a [no-op plan](../../../troubleshoot/monitoring/deployment-health-warnings.md) to re-synchronize the last successful configuration settings between {{ech}} and {{es}}.
 
 ## Restart an {{es}} resource by using an API [ec_restart_an_elasticsearch_resource]
 
@@ -37,9 +37,9 @@ curl -XPOST \
 
 `REF_ID`  Name given to each resource type in the attribute `ref_id`. `main-elasticsearch` in the preceding example
 
-## Shut down a Elasticsearch Service deployment [ec_shut_down_a_elasticsearch_service_deployment]
+## Shut down an {{ech}} deployment [ec_shut_down_a_elasticsearch_service_deployment]
 
-Shut down a Elasticsearch Service deployment by calling the following API request:
+Shut down an {{ech}} deployment by calling the following API request:
 
 ```sh
 curl -XPOST \

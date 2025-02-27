@@ -9,14 +9,17 @@ mapped_urls:
 
 % is required role serverless only?
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
-The **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
+**For Observability Serverless projects**, the **Admin** role or higher is required to send APM data to Elastic. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
 ::::
 
+::::{note}
+
 ![documentation icon](../../../images/serverless-documentation.svg "") Want to get started quickly? See [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
+
+::::
 
 ## Language-specific options [_language_specific_options]
 
@@ -61,6 +64,6 @@ Use Elastic APM agents or an OpenTelemetry language SDK to instrument a service 
 
 Elastic also offers several tools to help you collect data from specific services:
 
-* **Kubernetes**: The Elastic APM attacher for Kubernetes simplifies the instrumentation and configuration of your application pods. Read more in the [APM attacher for Kubernetes docs](asciidocalypse://docs/apm-k8s-attacher/docs/reference/ingestion-tools/apm-attacher/index.md).
-* **AWS Lambda Functions**: Helps you monitor your AWS Lambda functions. Read more in the [APM Architecture for AWS Lambda docs](asciidocalypse://docs/apm-aws-lambda/docs/reference/ingestion-tools/apm-lambda/index.md).
+* **Kubernetes**: The Elastic APM attacher for Kubernetes simplifies the instrumentation and configuration of your application pods. Read more in the [APM attacher for Kubernetes docs](asciidocalypse://docs/apm-k8s-attacher/docs/reference/index.md).
+* **AWS Lambda Functions**: Helps you monitor your AWS Lambda functions. Read more in the [APM Architecture for AWS Lambda docs](asciidocalypse://docs/apm-aws-lambda/docs/reference/index.md).
 * [8.15.0] **Jaeger**: Helps you to switch an existing Jaeger setup from the default Jaeger backend to the {{stack}}. Read more in [Integrate with Jaeger](../../../solutions/observability/apps/integrate-with-jaeger-deprecated.md).

@@ -23,7 +23,7 @@ To use the {{stack}} {{ml-features}}, you must have:
   * grant access to source and destination indices.
 
 ::::{tip}
-The fastest way to get started with {{ml-features}} is to [start a free 14-day trial of {{ess}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body) in the cloud.
+The fastest way to get started with {{ml-features}} is to [start a free 14-day trial of {{ecloud}}](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 ::::
 
 ## Security privileges [setup-privileges]

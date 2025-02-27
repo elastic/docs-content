@@ -1,6 +1,6 @@
 # Manage traffic filtering through the API [ec-traffic-filtering-through-the-api]
 
-This example demonstrates how to use the Elasticsearch Service RESTful API to manage different types of traffic filters. We cover the following examples:
+This example demonstrates how to use the {{ecloud}} RESTful API to manage different types of traffic filters. We cover the following examples:
 
 * [Create a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-create-a-traffic-filter-rule-set)
 
@@ -15,7 +15,7 @@ This example demonstrates how to use the Elasticsearch Service RESTful API to ma
 * [Delete a rule set association with a deployment](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-delete-rule-set-association-with-a-deployment)
 * [Delete a traffic filter rule set](../../../deploy-manage/security/manage-traffic-filtering-through-api.md#ec-delete-a-rule-set)
 
-Read through the main [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) page to learn about the general concepts behind filtering access to your Elasticsearch Service deployments.
+Read through the main [Traffic Filtering](../../../deploy-manage/security/traffic-filtering.md) page to learn about the general concepts behind filtering access to your {{ech}} deployments.
 
 
 ## Create a traffic filter rule set [ec-create-a-traffic-filter-rule-set] 
@@ -52,7 +52,7 @@ https://api.elastic-cloud.com/api/v1/deployments/traffic-filter/rulesets \
 ```
 
 `region`
-:   The region is always the same region as the deployment you want to associate with a traffic filter rule set. For details, check the [list of available regions](asciidocalypse://docs/cloud/docs/reference/cloud/cloud-hosted/ec-regions-templates-instances.md).
+:   The region is always the same region as the deployment you want to associate with a traffic filter rule set. For details, check the [list of available regions](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-regions-templates-instances.md).
 
 `type`
 :   The type of the rule set. In the JSON object, we use `ip` for the ingress IP traffic filter. Currently, we support `ip`, `egress_firewall`, `vpce` (AWS Private Link), `azure_private_endpoint` and `gcp_private_service_connect_endpoint`. These are described in further detail below.

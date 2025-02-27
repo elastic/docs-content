@@ -1,12 +1,17 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/operator-only-functionality.html
+applies_to:
+  deployment:
+    ess: 
+    ece: 
+    eck: 
 ---
 
 # Operator-only functionality [operator-only-functionality]
 
-::::{note} 
-{cloud-only}
+::::{admonition} Indirect use only
+This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
 
 

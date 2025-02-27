@@ -547,7 +547,7 @@ Think of a latency spike — APM can help you narrow the scope of your inves
 
 Application monitoring data is streamed from your applications running in Kubernetes to APM, where it is validated, processed, and transformed into {{es}} documents.
 
-There are many ways to deploy APM when working with Kubernetes, but this guide assumes that you’re using our hosted {{ess}} on {{ecloud}}. If you haven’t done so already, enable APM in the [{{ess}} console](https://cloud.elastic.co?page=docs&placement=docs-body).
+There are many ways to deploy APM when working with Kubernetes, but this guide assumes that you’re using an {{ech}} deployment. If you haven’t done so already, enable APM in the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 If you want to manage APM yourself, there are a few alternative options:
 
@@ -644,9 +644,9 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/configuration.md)
-* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/ingestion-tools/apm-agent-go/set-up-apm-go-agent.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-go/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
+* [Detailed guide to instrumenting Go source code](asciidocalypse://docs/apm-agent-go/docs/reference/set-up-apm-go-agent.md)
 ::::::
 
 ::::::{tab-item} Java
@@ -726,13 +726,13 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-java/docs/reference/ingestion-tools/apm-agent-java/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-java/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} .NET
 ::::{note}
-These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
+These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](asciidocalypse://docs/apm-agent-dotnet/docs/reference/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
 ::::
 
 
@@ -806,8 +806,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/ingestion-tools/apm-agent-dotnet/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js
@@ -851,8 +851,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/supported-technologies.md)
-* [Configuring the agent](asciidocalypse://docs/apm-agent-nodejs/docs/reference/ingestion-tools/apm-agent-nodejs/advanced-setup.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-nodejs/docs/reference/supported-technologies.md)
+* [Configuring the agent](asciidocalypse://docs/apm-agent-nodejs/docs/reference/advanced-setup.md)
 ::::::
 
 ::::::{tab-item} PHP
@@ -878,7 +878,7 @@ To use the APK package (Alpine):
 apk add --allow-untrusted <package-file>.apk
 ```
 
-If you can’t find your distribution, you can install the agent by [building it from the source](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/set-up-apm-php-agent.md).
+If you can’t find your distribution, you can install the agent by [building it from the source](asciidocalypse://docs/apm-agent-php/docs/reference/set-up-apm-php-agent.md).
 
 **Configure the agent**
 
@@ -904,8 +904,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/supported-technologies.md)
-* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/ingestion-tools/apm-agent-php/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-php/docs/reference/supported-technologies.md)
+* [Configuration](asciidocalypse://docs/apm-agent-php/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Python
@@ -966,8 +966,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/ingestion-tools/apm-agent-python/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-python/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Ruby
@@ -1029,8 +1029,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/ingestion-tools/apm-agent-ruby/configuration.md)
+* [Supported technologies](asciidocalypse://docs/apm-agent-ruby/docs/reference/supported-technologies.md)
+* [Advanced configuration](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md)
 ::::::
 
 :::::::

@@ -9,8 +9,7 @@ navigation_title: "Inventory"
 # Create an inventory rule [observability-create-inventory-threshold-alert-rule]
 
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create inventory threshold rules. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -22,7 +21,7 @@ Based on the resources listed on the **Infrastructure inventory** page within th
 Additionally, each rule can be defined using multiple conditions that combine metrics and thresholds to create precise notifications and reduce false positives.
 
 1. To access this page, go to **{{observability}}** → **Infrastructure**.
-2. On the **Infrastructure inventory** page or the **Metrics Explorer*** page, click ***Alerts and rules** → **Infrastructure**.
+2. On the **Infrastructure inventory** page or the **Metrics Explorer** page, click **Alerts and rules** → **Infrastructure**.
 3. Select **Create inventory rule**.
 
 ::::{tip}

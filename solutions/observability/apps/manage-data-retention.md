@@ -49,7 +49,7 @@ To find Synthetics data streams:
 :::{tab-item} Serverless
 :sync: serverless
 
-1. Navigate to **Project settings** → **Management*** → ***Index Management** → **Data Streams**.
+1. Navigate to **Project settings** → **Management** → **Index Management** → **Data Streams**.
 2. Filter the list of data streams for those containing the term `synthetics`.
 
     1. In the UI there will be three types of browser data streams: `synthetics-browser-*`, `synthetics-browser.network-*`, and `synthetics-browser.screenshot-*`.

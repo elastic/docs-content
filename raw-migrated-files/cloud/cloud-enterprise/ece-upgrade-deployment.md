@@ -35,7 +35,7 @@ When upgrading from one recent major Elasticsearch version to the next, we recom
 To upgrade a cluster in Elastic Cloud Enterprise:
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -43,7 +43,7 @@ To upgrade a cluster in Elastic Cloud Enterprise:
 4. Select one of the available software versions. Let the user interface guide you through the steps for upgrading a deployment. When you save your changes, your deployment configuration is updated to the new version.
 
     ::::{tip}
-    You cannot downgrade after upgrading, so plan ahead to make sure that your applications still work after upgrading. For more information on changes that might affect your applications, check [Breaking changes](asciidocalypse://docs/elasticsearch/docs/release-notes/breaking-changes/elasticsearch.md).
+    You cannot downgrade after upgrading, so plan ahead to make sure that your applications still work after upgrading. For more information on changes that might affect your applications, check [Breaking changes](asciidocalypse://docs/elasticsearch/docs/release-notes/breaking-changes.md).
     ::::
 
 5. If you are upgrading to version 6.6 and earlier, major upgrades require a full cluster restart to complete the upgrade process.

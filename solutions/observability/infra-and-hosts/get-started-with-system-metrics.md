@@ -24,9 +24,9 @@ To follow the steps in this guide, you need an {{stack}} deployment that include
 * {{es}} for storing and searching data
 * {{kib}} for visualizing and managing data
 * Kibana user with `All` privileges on {{fleet}} and Integrations. Since many Integrations assets are shared across spaces, users need the Kibana privileges in all spaces.
-* Integrations Server (included by default in every {{ess}} deployment)
+* Integrations Server (included by default in every {{ech}} deployment)
 
-To get started quickly, spin up a deployment of our hosted {{ess}}. The {{ess}} is available on AWS, GCP, and Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+To get started quickly, create an {{ech}} deployment and host it on AWS, GCP, or Azure. [Try it out for free](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 
 :::
 
@@ -113,8 +113,8 @@ The **Add agent** flyout has two options: **Enroll in {{fleet}}** and **Run stan
 
 Notice that you can also configure the integration to collect logs.
 
-::::{admonition} What if {{agent}} is already running on my host?
-:class: note
+::::{note}
+** What if {{agent}} is already running on my host?**
 
 Do not try to deploy a second {{agent}} to the same system. You have a couple options:
 
