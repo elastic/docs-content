@@ -117,49 +117,34 @@ toc:
                   - file: deploy/cloud-enterprise/ece-software-prereq.md
                   - file: deploy/cloud-enterprise/ece-sysconfig.md
                   - file: deploy/cloud-enterprise/ece-networking-prereq.md
+                  - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-ha.md
                   - file: deploy/cloud-enterprise/ece-roles.md
                   - file: deploy/cloud-enterprise/ece-load-balancers.md
-                  - file: deploy/cloud-enterprise/ece-users-permissions.md
                   - file: deploy/cloud-enterprise/ece-jvm.md
                   - file: deploy/cloud-enterprise/ece-wildcard-dns.md
                   - file: deploy/cloud-enterprise/ece-manage-capacity.md
               - file: deploy/cloud-enterprise/install.md
                 children:
                   - file: deploy/cloud-enterprise/identify-deployment-scenario.md
-                  - file: deploy/cloud-enterprise/install-ece-on-public-cloud.md
+                  - file: deploy/cloud-enterprise/configure-operating-system.md
                     children:
-                      - file: deploy/cloud-enterprise/configure-operating-system-cloud.md
-                        children:
-                          - file: deploy/cloud-enterprise/configure-host-ubuntu-cloud.md
-                          - file: deploy/cloud-enterprise/configure-host-rhel-cloud.md
-                          - file: deploy/cloud-enterprise/configure-host-suse-cloud.md
-                      - file: deploy/cloud-enterprise/install-ece-cloud.md
-                        children:
-                          - file: deploy/cloud-enterprise/deploy-small-installation-cloud.md
-                          - file: deploy/cloud-enterprise/deploy-medium-installation-cloud.md
-                          - file: deploy/cloud-enterprise/deploy-large-installation-cloud.md
-                          - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts-cloud.md
-                  - file: deploy/cloud-enterprise/install-ece-on-own-premises.md
+                      - file: deploy/cloud-enterprise/configure-host-ubuntu.md
+                      - file: deploy/cloud-enterprise/configure-host-rhel.md
+                      - file: deploy/cloud-enterprise/configure-host-suse.md
+                  - file: deploy/cloud-enterprise/install-ece-procedures.md
                     children:
-                      - file: deploy/cloud-enterprise/configure-operating-system-onprem.md
-                        children:
-                          - file: deploy/cloud-enterprise/configure-host-ubuntu-onprem.md
-                          - file: deploy/cloud-enterprise/configure-host-rhel-onprem.md
-                          - file: deploy/cloud-enterprise/configure-host-suse-onprem.md
-                      - file: deploy/cloud-enterprise/install-ece-onprem.md
-                        children:
-                          - file: deploy/cloud-enterprise/deploy-small-installation-onprem.md
-                          - file: deploy/cloud-enterprise/deploy-medium-installation-onprem.md
-                          - file: deploy/cloud-enterprise/deploy-large-installation-onprem.md
-                          - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts-onprem.md
-                  - file: deploy/cloud-enterprise/alternative-install-ece-with-ansible.md
+                      - file: deploy/cloud-enterprise/deploy-small-installation.md
+                      - file: deploy/cloud-enterprise/deploy-medium-installation.md
+                      - file: deploy/cloud-enterprise/deploy-large-installation.md
+                      - file: deploy/cloud-enterprise/fresh-installation-of-ece-using-podman-hosts.md
+                      - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
                   - file: deploy/cloud-enterprise/log-into-cloud-ui.md
+                  - file: deploy/cloud-enterprise/post-installation-steps.md
                   - file: deploy/cloud-enterprise/install-ece-on-additional-hosts.md
                     children:
                       - file: deploy/cloud-enterprise/generate-roles-tokens.md
-                  - file: deploy/cloud-enterprise/migrate-ece-to-podman-hosts.md
-                  - file: deploy/cloud-enterprise/post-installation-steps.md
+                  - file: deploy/cloud-enterprise/alternative-install-ece-with-ansible.md
                   - file: deploy/cloud-enterprise/statistics-collected-by-cloud-enterprise.md
               - file: deploy/cloud-enterprise/air-gapped-install.md
                 children:

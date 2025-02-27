@@ -1,29 +1,32 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-onprem.html
 ---
 
-# Configure host RHEL onprem [ece-configure-hosts-rhel-centos-onprem]
+# Configure host RHEL cloud [ece-configure-hosts-rhel-centos]
 
 
-## Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9 [ece-setup-rhel8-podman-onprem]
+## Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9 [ece-setup-rhel8-podman]
 
 The following instructions show you how to prepare your hosts on Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9.
 
-* [Prerequisites](#ece-prerequisites-rhel8-onprem)
-* [Configure the host](#ece-configure-hosts-rhel8-podman-onprem)
+* [Prerequisites](#ece-prerequisites-rhel8)
+* [Configure the host](#ece-configure-hosts-rhel8-podman)
 
 
-### Prerequisites [ece-prerequisites-rhel8-onprem]
+### Prerequisites [ece-prerequisites-rhel8]
 
-Create a RHEL 8 (the version must be >= 8.5, but <9), RHEL 9, Rocky Linux 8, or Rocky Linux 9 instance.
+Follow your internal guidelines to create a RHEL 8 (the version must be >= 8.5), RHEL 9, Rocky Linux 8, or Rocky Linux 9 server or VM in your environment.
 
-* For RHEL 8, follow your internal guidelines to add a vanilla RHEL 8 instance to your environment. Note that the version must be >= 8.5, but <9.
+Verify that required traffic is allowed. Check the [Networking prerequisites](ece-networking-prereq.md) for a list of ports that need to be open. The technical configuration depends on the underlying infrastructure.
 
-Verify that required traffic is allowed.
+**Example:** For AWS, allowing traffic between hosts is implemented using security groups.
 
-
-### Configure the host [ece-configure-hosts-rhel8-podman-onprem]
+### Configure the host [ece-configure-hosts-rhel8-podman]
 
 1. Install the OS packages `lvm2`, `iptables`, `sysstat`, and `net-tools` by executing:
 
@@ -281,7 +284,7 @@ Verify that required traffic is allowed.
     # enable forwarding so the Docker networking works as expected
     net.ipv4.ip_forward=1
     # Decrease the maximum number of TCP retransmissions to 5 as recommended for Elasticsearch TCP retransmission timeout.
-    # See https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
+    # See /deploy-manage/deploy/self-managed/system-config-tcpretries.md
     net.ipv4.tcp_retries2=5
     # Make sure the host doesn't swap too early
     vm.swappiness=1

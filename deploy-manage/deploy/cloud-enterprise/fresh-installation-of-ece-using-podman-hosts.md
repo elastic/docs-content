@@ -1,9 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-using-podman-cloud.html
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-using-podman-onprem.html
+navigation_title: Deploy using Podman
 ---
 
-# Fresh installation of ECE using Podman hosts onprem [ece-install-using-podman-onprem]
+# Fresh installation of ECE using Podman hosts [ece-install-using-podman]
 
 This section provides guidelines and recommendations to install ECE using a Podman-based environment. The recommended approach consists of two (2) high-level steps.
 
@@ -30,7 +35,7 @@ Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Ot
 
     Use the ECE installer script together with the `--podman` flag.
 
-    Refer to the official [Install ECE online](install-ece-onprem.md) documentation to adapt the command line parameters to your environment.
+    Refer to the official [ECE installation](./install-ece-procedures.md) documentation to adapt the command line parameters to your environment.
 
     [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 
@@ -47,7 +52,7 @@ Avoid customizing the host Docker path `/mnt/data/docker` when using SELinux. Ot
 
 2. Add additional Podman hosts
 
-    Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [Install ECE online](install-ece-onprem.md) documentation to adapt the command line parameters to your environment including fetching the role token.
+    Refer to the official [Install Elastic Cloud Enterprise on an additional host](install-ece-on-additional-hosts.md) and [ECE installation](./install-ece-procedures.md) documentation to adapt the command line parameters to your environment including fetching the role token.
 
     [JVM heap sizes](ece-jvm.md) describes recommended JVM options.
 

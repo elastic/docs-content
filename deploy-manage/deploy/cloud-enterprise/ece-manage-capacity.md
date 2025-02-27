@@ -1,11 +1,14 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-manage-capacity.html
 ---
 
-# Manage your installation capacity [ece-manage-capacity]
+# Manage your allocators capacity [ece-manage-capacity]
 
-In ECE, every host is a runner. Depending on the size of your platform, runners can have [one or more roles](ece-roles.md): Coordinator, director, proxy, and allocator. While planning the capacity of your ECE installation, you have to properly size the capacity for all roles. However, the allocator role deserves particular attention, as it hosts the Elasticsearch, Kibana, and APM nodes, and the relevant services.
+In {{ece}} (ECE), every host is a runner. Depending on the size of your platform, runners can have [one or more roles](ece-roles.md): Coordinator, director, proxy, and allocator. While planning the capacity of your ECE installation, you have to properly size the capacity for all roles. However, the allocator role deserves particular attention, as it hosts the Elasticsearch, Kibana, and APM nodes, and the relevant services.
 
 This section focuses on the allocator role, and explains how to plan its capacity in terms of memory, CPU, `processors` setting, and storage.
 
@@ -69,18 +72,12 @@ Consider a 32GB deployment hosted on a 128GB allocator.
 
 If you use the default system service reservation, the CPU quota is 29%:
 
-<div class="stemblock">
-<div class="content">
-\$CPU quota = 32 / (128 * 0.85) = 29%\$
-</div>
-</div>
+* CPU quota = 32 / (128 * 0.85) = 29%
+
 If you use 12GB Allocator system service reservation, the CPU quota is 28%:
 
-<div class="stemblock">
-<div class="content">
-\$CPU quota = 32 / (128 - 12) = 28%\$
-</div>
-</div>
+* CPU quota = 32 / (128 - 12) = 28%
+
 Those percentages represent the upper limit of the % of the total CPU resources available in a given 100ms period.
 
 

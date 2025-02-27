@@ -10,7 +10,7 @@ This set of common symptoms and resolutions can help you to diagnose unexpected 
 
 ## Emergency token not spinning up the coordinator role [ece_emergency_token_not_spinning_up_the_coordinator_role]
 
-**Symptom:** You have no access to API and UI because all coordinators are lost. More than half of the director hosts are available. If you have 5 directors, 3 directors must be available. If you lost more than half of the directors, contact the support. If all directors are lost, [re-install ECE](../../../deploy-manage/deploy/cloud-enterprise/install-ece-cloud.md).
+**Symptom:** You have no access to API and UI because all coordinators are lost. More than half of the director hosts are available. If you have 5 directors, 3 directors must be available. If you lost more than half of the directors, contact the support. If all directors are lost, [re-install ECE](../../../deploy-manage/deploy/cloud-enterprise/install.md).
 
 **Resolution:** Use the emergency token provided during the installation of the genesis ECE nodes. You must explicitly specify the roles with the parameter `--roles`, for example `"coordinator,director,proxy"`. Otherwise, the host does not run any role.
 

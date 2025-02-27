@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-deploy-scenario.html
 ---
@@ -23,8 +26,7 @@ The type of deployment is recommended for development, test, and small-scale use
 * Avoid ECE installations with **spinning disks** as these are not supported when you run allocators and control plane on the same server.
 * Note that the small-size ECE installation keeps the directors and coordinators roles (ECE management services) on the same hosts as your allocators and proxies.
 
-You can proceed with this scenario and install ECE with [Ansible](alternative-install-ece-with-ansible.md), on a [public cloud](install-ece-on-public-cloud.md), or on [your own premises](install-ece-on-own-premises.md).
-
+You can proceed with this scenario and [install ECE](./install.md).
 
 ## Medium deployment [ece_medium_deployment]
 
@@ -47,8 +49,7 @@ This type of deployment is recommended for many production setups. You need:
 * Monitor the load on proxies and make sure the volume of user requests routed by the proxies does not affect the resources available to the ECE management services.
 * Note that the large-sized Elastic Cloud Enterprise installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
 
-You can proceed with this scenario and install ECE with [Ansible](alternative-install-ece-with-ansible.md), on a [public cloud](install-ece-on-public-cloud.md), or on [your own premises](install-ece-on-own-premises.md).
-
+You can proceed with this scenario and [install ECE](./install.md).
 
 ## Large deployment [ece_large_deployment]
 
@@ -70,4 +71,4 @@ This type of deployment is recommended for deployments with significant overall 
 
 Note that the large-sized Elastic Cloud Enterprise installation separates the allocator and proxy roles from the director and coordinator roles (ECE management services).
 
-You can proceed with this scenario and install ECE with [Ansible](alternative-install-ece-with-ansible.md), on a [public cloud](install-ece-on-public-cloud.md), or on [your own premises](install-ece-on-own-premises.md).
+You can proceed with this scenario and [install ECE](./install.md).

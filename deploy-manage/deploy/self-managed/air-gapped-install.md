@@ -1,7 +1,6 @@
 ---
 mapped_urls:
   - https://www.elastic.co/guide/en/elastic-stack/current/air-gapped-install.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-install-offline.html
 ---
 
 # Air gapped install
@@ -83,4 +82,3 @@ $$$air-gapped-kibana-product-documentation$$$
 **This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
 
 * [/raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md](/raw-migrated-files/stack-docs/elastic-stack/air-gapped-install.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-install-offline.md](/raw-migrated-files/cloud/cloud-enterprise/ece-install-offline.md)

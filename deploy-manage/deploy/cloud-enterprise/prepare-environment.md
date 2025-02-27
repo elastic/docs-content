@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-prereqs.html
 ---
@@ -17,6 +20,7 @@ To prepare your hosts for their ECE installation, the following prerequisites **
 
 * [Hardware prerequisites](ece-hardware-prereq.md)
 * [Software prerequisites](ece-software-prereq.md)
+* [System configuration prerequisites](ece-sysconfig.md)
 * [Networking prerequisites](ece-networking-prereq.md)
 * [Users and permissions prerequisites](ece-users-permissions.md)
 

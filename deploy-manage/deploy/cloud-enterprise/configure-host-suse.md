@@ -1,69 +1,97 @@
 ---
+applies_to:
+  deployment:
+    ece: all
 mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-ubuntu-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-cloud.html
+  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-sles12-onprem.html
 ---
 
-# Configure host Ubuntu cloud [ece-configure-hosts-ubuntu-cloud]
+# Configure host SUSE cloud [ece-configure-hosts-sles12]
 
-The following instructions show you how to prepare your hosts on 20.04 LTS (Focal Fossa) and Ubuntu 22.04 LTS (Jammy Jellyfish).
+The following instructions show you how to prepare your hosts on SLES 12 SP5 or 15.
 
-* [Install Docker 24.0](#ece-install-docker-ubuntu-cloud)
-* [Set up XFS quotas](#ece-xfs-setup-ubuntu-cloud)
-* [Update the configurations settings](#ece-update-config-ubuntu-cloud)
-* [Configure the Docker daemon options](#ece-configure-docker-daemon-ubuntu-cloud)
+* [Install Docker](#ece-install-docker-sles12)
+* [Set up XFS on SLES](#ece-xfs-setup-sles12)
+* [Update the configurations settings](#ece-update-config-sles)
+* [Configure the Docker daemon options](#ece-configure-docker-daemon-sles12)
+
+If you want to install Elastic Cloud Enterprise on your own hosts, the steps for preparing your hosts can take a bit of time. There are two ways you can approach this:
+
+* **Think like a minimalist**: [Install the correct version of Docker](#ece-install-docker-sles12) on hosts that meet the [prerequisites](prepare-environment.md) for Elastic Cloud Enterprise, then skip ahead and [install Elastic Cloud Enterprise](install.md#install-ece). Be aware that some checks during the installation can fail with this approach, which will mean doing further host preparation work before retrying the installation.
+* **Cover your bases**: If you want to make absolutely sure that your installation of Elastic Cloud Enterprise can succeed on hosts that meet the [prerequisites](prepare-environment.md), or if any of the checks during the installation failed previously, run through the full preparation steps in this section and then and [install Elastic Cloud Enterprise](install.md#install-ece). You’ll do a bit more work now, but life will be simpler later on.
+
+Regardless of which approach you take, the steps in this section need to be performed on every host that you want to use with Elastic Cloud Enterprise.
 
 
-## Install Docker [ece-install-docker-ubuntu-cloud]
-
-Install Docker LTS version 24.0 for Ubuntu 20.04 or 22.04.
+## Install Docker [ece-install-docker-sles12]
 
 ::::{important}
 Make sure to use a combination of Linux distribution and Docker version that is supported, following our official [Support matrix](https://www.elastic.co/support/matrix#elastic-cloud-enterprise). Using unsupported combinations can cause multiple issues with you ECE environment, such as failures to create system deployments, to upgrade workload deployments, proxy timeouts, and more.
 ::::
 
 
-::::{note}
-Docker 25 and higher are not compatible with ECE 3.7.
-::::
-
-
-1. Install the Docker repository dependencies:
+1. Remove Docker and previously installed podman packages (if previously installed).
 
     ```sh
-    sudo apt-get install ca-certificates curl gnupg lsb-release
+    sudo zypper remove -y docker docker-ce podman podman-remote
     ```
 
-2. Add Docker’s official GPG key:
+2. Update packages to the latest available versions
 
     ```sh
-    sudo mkdir -m 0755 -p /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo zypper refresh
+    sudo zypper update -y
     ```
 
-3. Add the stable Docker repository:
+3. Install Docker and other required packages:
+
+    * For SLES 12:
+
+        ```sh
+        sudo zypper install -y docker=24.0.7_ce-98.109.3
+        ```
+
+    * For SLES 15:
+
+        ```sh
+        sudo zypper install -y curl device-mapper lvm2 net-tools docker=24.0.7_ce-150000.198.2 net-tools
+        ```
+
+4. Disable nscd, as it interferes with Elastic’s services:
 
     ```sh
-    echo \
-      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo systemctl stop nscd
+    sudo systemctl disable nscd
     ```
 
-4. Install the correct version of the `docker-ce` package, for Ubuntu 20.04 LTS (Focal Fossa) or Ubuntu 22.04 LTS (Jammy Jellyfish):
+
+
+## Set up OS groups and user [ece_set_up_os_groups_and_user]
+
+1. If they don’t already exist, create the following OS groups:
 
     ```sh
-    sudo apt install -y docker-ce=5:24.0.* docker-ce-cli=5:24.0.* containerd.io
+     sudo groupadd elastic
+     sudo groupadd docker
+    ```
+
+2. Add the user to these groups:
+
+    ```sh
+     sudo usermod -aG elastic,docker $USER
     ```
 
 
 
-## Set up XFS quotas [ece-xfs-setup-ubuntu-cloud]
+## Set up XFS on SLES [ece-xfs-setup-sles12]
 
-XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On Ubuntu, you need to set up an XFS file system and have quotas enabled.
+XFS is required to support disk space quotas for Elasticsearch data directories. Some Linux distributions such as RHEL and Rocky Linux already provide XFS as the default file system. On SLES 12 and 15, you need to set up an XFS file system and have quotas enabled.
 
 Disk space quotas set a limit on the amount of disk space an Elasticsearch cluster node can use. Currently, quotas are calculated by a static ratio of 1:32, which means that for every 1 GB of RAM a cluster is given, a cluster node is allowed to consume 32 GB of disk space.
 
 ::::{note}
-Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, and it is not supported by Elastic Cloud Enterprise.
+Using LVM, `mdadm`, or a combination of the two for block device management is possible, but the configuration is not covered here, nor is it provided as part of supporting Elastic Cloud Enterprise.
 ::::
 
 
@@ -72,7 +100,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 ::::
 
 
-**Example:** Set up XFS on a single, pre-partitioned block device named `/dev/xvdg1`.
+**Example:** Set up XFS on a single, pre-partitioned block device named `/dev/xvdg1`. Replace `/dev/xvdg1` in the following example with the corresponding device on your host.
 
 1. Format the partition:
 
@@ -83,25 +111,24 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 2. Create the `/mnt/data/` directory as a mount point:
 
     ```sh
-    sudo install -o $USER -g $USER -d -m 700 /mnt/data
+    sudo install -o $USER -g elastic -d -m 700 /mnt/data
     ```
 
 3. Add an entry to the `/etc/fstab` file for the new XFS volume. The default filesystem path used by Elastic Cloud Enterprise is `/mnt/data`.
 
     ```sh
-    /dev/xvdg1	/mnt/data	xfs	defaults,nofail,x-systemd.automount,prjquota,pquota  0 2
+    /dev/xvdg1	/mnt/data	xfs	defaults,pquota,prjquota,x-systemd.automount  0 0
     ```
 
 4. Regenerate the mount files:
 
     ```sh
-    sudo systemctl daemon-reload
-    sudo systemctl restart local-fs.target
+    sudo mount -a
     ```
 
 
 
-## Update the configurations settings [ece-update-config-ubuntu-cloud]
+## Update the configurations settings [ece-update-config-sles]
 
 1. Stop the Docker service:
 
@@ -120,7 +147,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
     2. Update your Grub configuration:
 
         ```sh
-        sudo update-grub
+        sudo update-bootloader
         ```
 
 3. Configure kernel parameters
@@ -148,6 +175,7 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 
         ```sh
         sudo sysctl -p
+        sudo service network restart
         ```
 
 4. Adjust the system limits.
@@ -194,57 +222,56 @@ You must use XFS and have quotas enabled on all allocators, otherwise disk usage
 6. If you did not create the mount point earlier (if you did not set up XFS), create the `/mnt/data/` directory as a mount point:
 
     ```sh
-    sudo install -o $USER -g $USER -d -m 700 /mnt/data
+    sudo install -o $USER -g elastic -d -m 700 /mnt/data
     ```
 
-7. If you [set up a new device with XFS](#ece-xfs-setup-ubuntu-cloud) earlier:
+7. If you [set up a new device with XFS](#ece-xfs-setup-sles12) earlier:
 
     1. Mount the block device (change the device name if you use a different device than `/dev/xvdg1`):
 
         ```sh
-        sudo mount /dev/xvdg1 /mnt/data
+        sudo mount /dev/xvdg1
         ```
 
     2. Set the permissions on the newly mounted device:
 
         ```sh
-        sudo chown $USER:$USER /mnt/data
+        sudo chown $USER:elastic /mnt/data
         ```
 
 8. Create the `/mnt/data/docker` directory for the Docker service storage:
 
     ```sh
-    sudo install -o $USER -g $USER -d -m 700 /mnt/data/docker
+    sudo install -o $USER -g elastic -d -m 700 /mnt/data/docker
     ```
 
 
 
-## Configure the Docker daemon options [ece-configure-docker-daemon-ubuntu-cloud]
+## Configure the Docker daemon [ece-configure-docker-daemon-sles12]
 
-::::{tip}
-Docker creates a bridge IP address that can conflict with IP addresses on your internal network. To avoid an IP address conflict, change the `--bip=172.17.42.1/16` parameter in our examples to something that you know will work. If there is no conflict, you can omit the `--bip` parameter. The `--bip` parameter is internal to the host and can be set to the same IP for each host in the cluster. More information on Docker daemon options can be found in the  [dockerd command line reference](https://docs.docker.com/engine/reference/commandline/dockerd/).
-::::
+1. Edit `/etc/docker/daemon.json`, and make sure that the following configuration values are present:<br>
 
+    ```json
+    {
+      "storage-driver": "overlay2",
+      "bip":"172.17.42.1/16",
+      "icc": false,
+      "log-driver": "json-file",
+      "log-opts": {
+        "max-size": "500m",
+        "max-file": "10"
+      },
+      "data-root": "/mnt/data/docker"
+    }
+    ```
 
-::::{tip}
-You can specify `--log-opt max-size` and `--log-opt max-file` to define the Docker daemon containers log rotation.
-::::
-
-
-1. Update `/etc/systemd/system/docker.service.d/docker.conf`. If the file path and file do not exist, create them first.
+2. The user installing {{ece}} must have a User ID (UID) and Group ID (GID) of 1000 or higher. Make sure that the GID matches the ID of the `elastic`` group created earlier (likely to be 1000). You can set this using the following command:
 
     ```sh
-    [Unit]
-    Description=Docker Service
-    After=multi-user.target
-
-    [Service]
-    Environment="DOCKER_OPTS=-H unix:///run/docker.sock --data-root /mnt/data/docker --storage-driver=overlay2 --bip=172.17.42.1/16 --raw-logs --log-opt max-size=500m --log-opt max-file=10 --icc=false"
-    ExecStart=
-    ExecStart=/usr/bin/dockerd $DOCKER_OPTS
+    sudo usermod -g <elastic_group_gid> $USER
     ```
 
-2. Apply the updated Docker daemon configuration:
+3. Apply the updated Docker daemon configuration:
 
     Reload the Docker daemon configuration:
 
@@ -264,12 +291,6 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     sudo systemctl enable docker
     ```
 
-3. Enable your user to communicate with the Docker subsystem by adding it to the `docker` group:
-
-    ```sh
-    sudo usermod -aG docker $USER
-    ```
-
 4. Recommended: Tune your network settings.
 
     Create a `70-cloudenterprise.conf` file in the `/etc/sysctl.d/` file path that includes these network settings:
@@ -279,21 +300,39 @@ You can specify `--log-opt max-size` and `--log-opt max-file` to define the Dock
     net.ipv4.tcp_max_syn_backlog=65536
     net.core.somaxconn=32768
     net.core.netdev_max_backlog=32768
+    net.ipv4.tcp_keepalive_time=1800
+    net.netfilter.nf_conntrack_tcp_timeout_established=7200
+    net.netfilter.nf_conntrack_max=262140
     SETTINGS
     ```
 
-5. Pin the Docker version to ensure that the package does not get upgraded:
+    1. Ensure settings in /etc/sysctl.d/*.conf are applied on boot
 
-    ```sh
-    echo "docker-ce hold" | sudo dpkg --set-selections
-    echo "docker-ce-cli hold" | sudo dpkg --set-selections
-    echo "containerd.io hold" | sudo dpkg --set-selections
-    ```
+        ```sh
+        SCRIPT_LOCATION="/var/lib/cloud/scripts/per-boot/00-load-sysctl-settings"
+        sudo sh -c "cat << EOF > ${SCRIPT_LOCATION}
+        #!/bin/bash
 
-6. Reboot your system to ensure that all configuration changes take effect:
+        set -x
+
+        lsmod | grep ip_conntrack || modprobe ip_conntrack
+
+        sysctl --system
+        EOF
+        "
+        sudo chmod +x ${SCRIPT_LOCATION}
+        ```
+
+5. Reboot your system to ensure that all configuration changes take effect:
 
     ```sh
     sudo reboot
+    ```
+
+6. If the Docker daemon is not already running, start it:
+
+    ```sh
+    sudo systemctl start docker
     ```
 
 7. After rebooting, verify that your Docker settings persist as expected:
