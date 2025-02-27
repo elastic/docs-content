@@ -14,7 +14,7 @@ There are three types of secrets that you can use:
 Add keys and secret values to the keystore.
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 
@@ -35,7 +35,7 @@ Only some settings are designed to be read from the keystore. However, the keyst
 When your keys and secret values are no longer needed, delete them from the keystore.
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

@@ -2,6 +2,8 @@
 navigation_title: "Instrumentation"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-instrumentation.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Configure APM instrumentation [apm-configuration-instrumentation]
 
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
 Instrumentation of APM Server is not yet supported for Fleet-managed APM.

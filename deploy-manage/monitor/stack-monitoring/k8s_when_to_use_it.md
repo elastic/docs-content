@@ -1,8 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s_when_to_use_it.html
-applies:
-  eck: all
+applies_to:
+  deployment:
+    eck: all
 ---
 
 # When to use it [k8s_when_to_use_it]

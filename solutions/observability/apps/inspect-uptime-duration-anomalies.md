@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/inspect-uptime-duration-anomalies.html
+applies_to:
+  stack: all
 ---
 
 # Inspect uptime duration anomalies [inspect-uptime-duration-anomalies]

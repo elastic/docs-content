@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-domain.html
+applies_to:
+  deployment:
+    ess: all
+    ece: all
+    eck: all
+    self: all
 ---
 
 # Security domains [security-domain]
@@ -21,7 +27,7 @@ Security domains make resource sharing across realms possible by grouping those 
 
 ### Managing roles across realms [security-domain-realm-roles]
 
-{{es}} provides multiple ways to consistently apply roles across realms. For example, you can use [authorization delegation](authorization-delegation.md) to ensure that a user is assigned the same roles from multiple realms. You can also manually configure multiple realms that are backed by the same directory service. Though it’s possible to configure different [roles](user-roles.md#roles) for the same user when authenticating with different realms, it is *not* recommended.
+{{es}} provides multiple ways to consistently apply roles across realms. For example, you can use [authorization delegation](authorization-delegation.md) to ensure that a user is assigned the same roles from multiple realms. You can also manually configure multiple realms that are backed by the same directory service. Though it’s possible to configure different [roles](user-roles.md#roles) for the same user when authenticating with different realms, it is not recommended.
 
 
 
@@ -65,7 +71,7 @@ To configure a security domain:
 2. Restart {{es}}.
 
     ::::{important}
-    {{es}} can fail to start if the domain configuration is invalid, such as:
+    {{es}} can fail to start if the domain configuration is invalid. Invalid configurations include:
 
     * The same realm is configured under multiple domains.
     * Any undefined realm, synthetic realm, or the reserved realm is configured to be under a domain.

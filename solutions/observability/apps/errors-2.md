@@ -6,11 +6,6 @@ mapped_urls:
 
 # Errors [apm-errors]
 
-::::{tip}
-[Errors](/solutions/observability/apps/errors.md) are groups of exceptions with a similar exception or log message.
-::::
-
-
 *Errors* are groups of exceptions with a similar exception or log message. The **Errors** overview provides a high-level view of the exceptions that APM agents catch, or that users manually report with APM agent APIs. Like errors are grouped together to make it easy to quickly see which errors are affecting your services, and to take actions to rectify them.
 
 A service returning a 5xx code from a request handler, controller, etc., will not create an exception that an APM agent can catch, and will therefore not show up in this view.

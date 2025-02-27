@@ -5,6 +5,6 @@ This functionality is in technical preview and may be changed or removed in a fu
 ::::
 
 
-* [Android agent version 0.x](asciidocalypse://docs/apm-agent-android/docs/release-notes/apm-android-agent.md)
+* [Android agent version 0.x](asciidocalypse://docs/apm-agent-android/docs/release-notes/index.md)
 
 

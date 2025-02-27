@@ -1,6 +1,12 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/pki-realm.html
+applies_to:
+  deployment:
+    self:
+    ess:
+    ece:
+    eck:
 ---
 
 # PKI [pki-realm]
@@ -11,7 +17,7 @@ You can also use PKI certificates to authenticate to {{kib}}, however this requi
 
 ## PKI authentication for clients connecting directly to {{es}} [pki-realm-for-direct-clients]
 
-To use PKI in {{es}}, you configure a PKI realm, enable client authentication on the desired network layers (transport or http), and map the Distinguished Names (DNs) from the Subject field in the user certificates to roles. You create the mappings in a role mapping file or use the role mappings API.
+To use PKI in {{es}}, you configure a PKI realm, enable client authentication on the desired network layers (transport or http), and map the Distinguished Names (DNs) from the `Subject` field in the user certificates to roles. You create the mappings in a role mapping file or use the role mappings API.
 
 1. Add a realm configuration for a `pki` realm to `elasticsearch.yml` under the `xpack.security.authc.realms.pki` namespace. You must explicitly set the `order` attribute. See [PKI realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) for all of the options you can set for a `pki` realm.
 
@@ -54,13 +60,12 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
 
 3. Optional: If you want the same users to also be authenticated using certificates when they connect to {{kib}}, you must configure the {{es}} PKI realm to allow delegation. See [PKI authentication for clients connecting to {{kib}}](#pki-realm-for-proxied-clients).
 4. Restart {{es}} because realm configuration is not reloaded automatically. If you’re following through with the next steps, you might wish to hold the restart for last.
-5. [Enable SSL/TLS](../../security/secure-cluster-communications.md#encrypt-internode-communication).
-6. Enable client authentication on the desired network layers (transport or http).
+5. If you're using a self-managed cluster, then [enable SSL/TLS](../../security/secure-cluster-communications.md#encrypt-internode-communication).
+6. If you're using a self-managed cluster or {{eck}}, then enable client authentication on the desired network layers (transport or http). 
 
     ::::{important} 
-    To use PKI when clients connect directly to {{es}}, you must enable SSL/TLS with client authentication. That is to say, you must set   `xpack.security.transport.ssl.client_authentication` and `xpack.security.http.ssl.client_authentication` to `optional` or `required`. If the setting value is `optional`, clients without certificates can authenticate with other credentials.
+    To use PKI when clients connect directly to {{es}}, you must enable SSL/TLS with client authentication by setting `xpack.security.transport.ssl.client_authentication` and `xpack.security.http.ssl.client_authentication` to `optional` or `required`. If the setting value is `optional`, clients without certificates can authenticate with other credentials.
     ::::
-
 
     When clients connect directly to {{es}} and are not proxy-authenticated, the PKI realm relies on the TLS settings of the node’s network interface. The realm can be configured to be more restrictive than the underlying network connection. That is, it is possible to configure the node such that some connections are accepted by the network interface but then fail to be authenticated by the PKI realm. However, the reverse is not possible. The PKI realm cannot authenticate a connection that has been refused by the network interface.
 
@@ -72,34 +77,44 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
 
     For an explanation of these settings, see [General TLS settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ssl-tls-settings).
 
-    The relevant network interface (transport or http) must be configured to trust any certificate that is to be used within the PKI realm. However, it is possible to configure the PKI realm to trust only a *subset* of the certificates accepted by the network interface. This is useful when the SSL/TLS layer trusts clients with certificates that are signed by a different CA than the one that signs your users' certificates.
+7. Optional: Configure the PKI realm to trust a subset of certificates.
+   
+   The relevant network interface (transport or http) must be configured to trust any certificate that is to be used within the PKI realm. However, it is possible to configure the PKI realm to trust only a *subset* of the certificates accepted by the network interface. This is useful when the SSL/TLS layer trusts clients with certificates that are signed by a different CA than the one that signs your users' certificates.
 
-    To configure the PKI realm with its own truststore, specify the `truststore.path` option. The path must be located within the Elasticsearch configuration directory (`ES_PATH_CONF`). For example:
+     1. To configure the PKI realm with its own trust store, specify the `truststore.path` option. The path must be located within the {{es}} configuration directory (`ES_PATH_CONF`). For example:
 
-    ```yaml
-    xpack:
-      security:
-        authc:
-          realms:
-            pki:
-              pki1:
-                order: 1
-                truststore:
-                  path: "pki1_truststore.jks"
-    ```
+      ```yaml
+      xpack:
+        security:
+          authc:
+            realms:
+              pki:
+                pki1:
+                  order: 1
+                  truststore:
+                    path: "pki1_truststore.jks"
+      ```
 
-    If the truststore is password protected, the password should be configured by adding the appropriate `secure_password` setting to the {{es}} keystore. For example, the following command adds the password for the example realm above:
+      :::{tip} 
+      If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+
+      If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). 
+
+      If you're using a self-managed cluster, then the file must be present on each node.
+      :::
+
+      The `certificate_authorities` option can be used as an alternative to the `truststore.path` setting, when the certificate files are PEM formatted. The setting accepts a list. The two options are exclusive, they cannot be both used simultaneously.
+
+    2. If the trust store is password protected, the password should be configured by adding the appropriate `secure_password` setting [to the {{es}} keystore](/deploy-manage/security/secure-settings.md). For example, in a self-managed cluster, the following command adds the password for the example realm above:
 
     ```shell
     bin/elasticsearch-keystore add \
     xpack.security.authc.realms.pki.pki1.truststore.secure_password
     ```
 
-    The `certificate_authorities` option can be used as an alternative to the `truststore.path` setting, when the certificate files are PEM formatted. The setting accepts a list. The two options are exclusive, they cannot be both used simultaneously.
+8. Map roles for PKI users.
 
-7. Map roles for PKI users.
-
-    You map roles for PKI users through the [role mapping APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) or by using a file stored on each node. Both configuration options are merged together. When a user authenticates against a PKI realm, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
+    You map roles for PKI users through the [role mapping APIs](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security) or by using a file. Both configuration options are merged together. When a user authenticates against a PKI realm, the privileges for that user are the union of all privileges defined by the roles to which the user is mapped.
 
     You identify a user by the distinguished name in their certificate. For example, the following mapping configuration maps `John Doe` to the `user` role using the role mapping API:
 
@@ -127,6 +142,13 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     1. The name of a role.
     2. The distinguished name (DN) of a PKI user.
 
+    :::{tip} 
+    If you're using {{ece}} or {{ech}}, then you must [upload this file as a custom bundle](/deploy-manage/deploy/elastic-cloud/upload-custom-plugins-bundles.md) before it can be referenced.
+
+    If you're using {{eck}}, then install the file as a [custom configuration file](/deploy-manage/deploy/cloud-on-k8s/custom-configuration-files-plugins.md#use-a-volume-and-volume-mount-together-with-a-configmap-or-secret). 
+
+    If you're using a self-managed cluster, then the file must be present on each node.
+    :::
 
     The file’s path defaults to `ES_PATH_CONF/role_mapping.yml`. You can specify a different path (which must be within `ES_PATH_CONF`) by using the `files.role_mapping` realm setting (e.g. `xpack.security.authc.realms.pki.pki1.files.role_mapping`).
 
@@ -140,15 +162,13 @@ To use PKI in {{es}}, you configure a PKI realm, enable client authentication on
     The PKI realm supports [authorization realms](realm-chains.md#authorization_realms) as an alternative to role mapping.
     ::::
 
-
-
 ## PKI authentication for clients connecting to {{kib}} [pki-realm-for-proxied-clients]
 
-By default, the PKI realm relies on the node’s network interface to perform the SSL/TLS handshake and extract the client certificate. This behaviour requires that clients connect directly to {{es}} so that their SSL connection is terminated by the {{es}} node. If SSL/TLS authentication is to be performed by {{kib}}, the PKI realm must be configured to permit delegation.
+By default, the PKI realm relies on the node’s network interface to perform the SSL/TLS handshake and extract the client certificate. This behavior requires that clients connect directly to {{es}} so that their SSL connection is terminated by the {{es}} node. If SSL/TLS authentication is to be performed by {{kib}}, the PKI realm must be configured to permit delegation.
 
 Specifically, when clients presenting X.509 certificates connect to {{kib}}, {{kib}} performs the SSL/TLS authentication. {{kib}} then forwards the client’s certificate chain (by calling an {{es}} API) to have them further validated by the PKI realms that have been configured for delegation.
 
-To permit authentication delegation for a specific {{es}} PKI realm, start by configuring the realm for the usual case, as detailed in the [PKI authentication for clients connecting directly to {{es}}](#pki-realm-for-direct-clients) section. In this scenario, when you enable TLS, it is mandatory that you [encrypt HTTP client communications](../../security/secure-http-communications.md#encrypt-http-communication).
+To permit authentication delegation for a specific {{es}} PKI realm, start by [configuring the realm](#pki-realm-for-direct-clients). In this scenario, for self-managed clusters, it is mandatory that you [encrypt HTTP client communications](../../security/secure-http-communications.md#encrypt-http-communication) when you enable TLS.
 
 You must also explicitly configure a `truststore` (or, equivalently `certificate_authorities`) even though it is the same trust configuration that you have configured on the network layer. The `xpack.security.authc.token.enabled` and `delegation.enabled` settings must also be `true`. For example:
 
@@ -166,7 +186,7 @@ xpack:
               path: "pki1_truststore.jks"
 ```
 
-After you restart {{es}}, this realm can validate delegated PKI authentication. You must then [configure {{kib}} to allow PKI certificate authentication](user-authentication.md#pki-authentication).
+After you restart {{es}}, this realm can validate delegated PKI authentication. You must then [configure {{kib}} to allow PKI certificate authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#pki-authentication).
 
 A PKI realm with `delegation.enabled` still works unchanged for clients connecting directly to {{es}}. Directly authenticated users and users that are PKI authenticated by delegation to {{kib}} both follow the same [role mapping rules](mapping-users-groups-to-roles.md) or [authorization realms configurations](realm-chains.md#authorization_realms).
 
@@ -194,5 +214,6 @@ PUT /_security/role_mapping/direct_pki_only
 
 1. If this metadata field is set (that is to say, it is **not** `null`), the user has been authenticated in the delegation scenario.
 
+## Use PKI authentication for {{kib}} [pki-realm-kibana]
 
-
+If you want to use PKI authentication to authenticate using your browser and {{kib}}, you need to enable the relevant authentication provider in {{kib}} configuration. See [{{kib}} authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#pki-authentication).

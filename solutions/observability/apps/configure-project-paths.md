@@ -2,6 +2,8 @@
 navigation_title: "Project paths"
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-configuration-path.html
+applies_to:
+  stack: all
 ---
 
 
@@ -9,7 +11,7 @@ mapped_pages:
 # Configure project paths [apm-configuration-path]
 
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-no.svg "")
 
 This documentation is only relevant for APM Server binary users. Fleet-managed paths are defined in [Installation layout](installation-layout.md).

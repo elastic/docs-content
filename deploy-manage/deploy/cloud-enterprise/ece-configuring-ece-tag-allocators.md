@@ -39,7 +39,7 @@ $$$allocator-sample-tags$$$Tags are simple key-value pairs. A small sampling of 
 :   Indicates allocators that can run CPU-intensive workloads faster than others.
 
 `instanceFamily: i3`, `instanceFamily: m5`
-:   Indicates the host type, used extensively on our hosted Elasticsearch Service to identify hosts with specific hardware characteristics. If you run your own hardware on-premise and have standardized on several specific host configurations, you could use similar tags. If you are deploying ECE on another cloud platform, you could use the instance type or machine type names from your provider.
+:   Indicates the host type, used extensively on {{ech}} to identify hosts with specific hardware characteristics. If you run your own hardware on-premise and have standardized on several specific host configurations, you could use similar tags. If you are deploying ECE on another cloud platform, you could use the instance type or machine type names from your provider.
 
 Avoid tags that describe a particular use case or an Elastic Stack component you plan to run on these allocators. Examples of tags to avoid include `elasticsearch: false` or `kibana: true`. You should define the intended use at the level of instance configurations instead and tag your allocators only to describe hardware characteristics.
 

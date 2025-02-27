@@ -101,7 +101,7 @@ If you configure the same setting using multiple methods, {{es}} applies the set
 For example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting. However, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.
 
 ::::{tip} 
-If you use {{ess}}, use the [user settings](../elastic-cloud/edit-stack-settings.md) feature to configure all cluster settings. This method lets {{ess}} automatically reject unsafe settings that could break your cluster.
+If you use {{ech}}, use the [user settings](../elastic-cloud/edit-stack-settings.md) feature to configure all cluster settings. This method lets {{ech}} automatically reject unsafe settings that could break your cluster.
 
 If you run {{es}} on your own hardware, use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to configure dynamic cluster settings. Only use `elasticsearch.yml` for static cluster settings and node settings. The API doesn’t require a restart and ensures a setting’s value is the same on all nodes.
 

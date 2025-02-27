@@ -1,6 +1,8 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-storage-explorer.html
+applies_to:
+  stack: all
 ---
 
 # Storage Explorer [apm-storage-explorer]
@@ -38,7 +40,7 @@ The service statistics table provides detailed information on each service:
 * A list of **service environments**.
 * The **sampling rate**. This value is calculated by dividing the number of sampled transactions by total throughput. It might differ from the configured sampling rate for two reasons: with head-based sampling, the initial service makes the sampling decision, and with tail-based sampling, granular policies allow you to set multiple sample rates.
 * The estimated **size on disk**. This storage size includes both primary and replica shards and is calculated by prorating the total size of your indices by the service’s document count divided by the total number of documents.
-* Number of **transactions**, **spans***, ***errors**, and **metrics** — doc count and size on disk.
+* Number of **transactions**, **spans**, **errors**, and **metrics** — doc count and size on disk.
 
 :::{image} ../../../images/observability-storage-explorer-expanded.png
 :alt: APM Storage Explorer service breakdown

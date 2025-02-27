@@ -1,4 +1,7 @@
 ---
+applies_to:
+  deployment:
+    self: ga
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/remote-clusters-settings.html
 ---
@@ -20,7 +23,7 @@ The following settings apply to both [sniff mode](/deploy-manage/remote-clusters
 :   Per cluster boolean setting that allows to skip specific clusters when no nodes belonging to them are available and they are the target of a remote cluster request.
 
 ::::{important}
-In Elasticsearch 8.15, the default value for `skip_unavailable` was changed from `false` to `true`. Before Elasticsearch 8.15, if you want a cluster to be treated as optional for a {{ccs}}, then you need to set that configuration. From Elasticsearch 8.15 forward, you need to set the configuration in order to make a cluster required for the {{ccs}}. Once you upgrade the local ("querying") cluster search coordinator node (the node you send CCS requests to) to 8.15 or later, any remote clusters that do not have an explicit setting for `skip_unavailable` will immediately change over to using the new default of true. This is true regardless of whether you have upgraded the remote clusters to 8.15, as the `skip_unavailable` search behavior is entirely determined by the setting on the local cluster where you configure the remotes.
+In {{es}} 8.15, the default value for `skip_unavailable` was changed from `false` to `true`. Before {{es}} 8.15, if you want a cluster to be treated as optional for a {{ccs}}, then you need to set that configuration. From {{es}} 8.15 forward, you need to set the configuration in order to make a cluster required for the {{ccs}}. Once you upgrade the local ("querying") cluster search coordinator node (the node you send CCS requests to) to 8.15 or later, any remote clusters that do not have an explicit setting for `skip_unavailable` will immediately change over to using the new default of true. This is true regardless of whether you have upgraded the remote clusters to 8.15, as the `skip_unavailable` search behavior is entirely determined by the setting on the local cluster where you configure the remotes.
 ::::
 
 

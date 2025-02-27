@@ -35,7 +35,7 @@ To track CPU usage over time, we recommend enabling monitoring:
 
 :::::::{tab-set}
 
-::::::{tab-item} Elasticsearch Service
+::::::{tab-item} {{ech}}
 * (Recommended) Enable [logs and metrics](../../deploy-manage/monitor/stack-monitoring/elastic-cloud-stack-monitoring.md). When logs and metrics are enabled, monitoring information is visible on {{kib}}'s [Stack Monitoring](../../deploy-manage/monitor/monitoring-data/visualizing-monitoring-data.md) page.
 
     You can also enable the [CPU usage threshold alert](../../deploy-manage/monitor/monitoring-data/kibana-alerts.md) to be notified about potential issues through email.
@@ -46,7 +46,7 @@ To track CPU usage over time, we recommend enabling monitoring:
     * **CPU credits**: Your remaining CPU credits, measured in seconds of CPU time.
 
 
-{{ess}} grants [CPU credits](../../deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
+{{ech}} grants [CPU credits](../../deploy-manage/monitor/monitoring-data/ec-vcpu-boost-instance.md) per deployment to provide smaller clusters with performance boosts when needed. High CPU usage can deplete these credits, which might lead to [performance degradation](../monitoring/performance.md) and [increased cluster response times](../monitoring/cluster-response-time.md).
 ::::::
 
 ::::::{tab-item} Self-managed
