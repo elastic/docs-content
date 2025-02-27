@@ -10,8 +10,7 @@ applies_to:
 
 # Uninstall
 
-Uninstalling Elastic components, such as {{es}} clusters, deployments, or orchestrators, may be necessary for several reasons. You might need to decommission a host, scale down a self-managed cluster, recover from an 
-installation issue that can't be resolved, or start fresh with a clean setup.
+Uninstalling Elastic components, such as {{es}} clusters, deployments, or orchestrators, may be necessary for several reasons. You might need to decommission a host, scale down a self-managed cluster, recover from an installation issue that can't be resolved, or start fresh with a clean setup.
 
 Different Elastic environments require different uninstallation steps. Choose the guide that matches your setup:
 
