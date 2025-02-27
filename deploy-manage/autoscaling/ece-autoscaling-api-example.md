@@ -33,7 +33,6 @@ Note the following requirements when you run this API request:
 
 
 $$$ece-autoscaling-api-example-requirements-table$$$
-+
 
 |     |     |     |     |
 | --- | --- | --- | --- |
@@ -44,15 +43,13 @@ $$$ece-autoscaling-api-example-requirements-table$$$
 | Kibana | ✓ | ✕ | ✕ |
 | APM | ✓ | ✕ | ✕ |
 
-+
+* ✓ = Include the property.
 
-+ ✓ = Include the property.
+* ✕ = Do not include the property.
 
-+ ✕ = Do not include the property.
+* These rules match the behavior of the Elastic Cloud Enterprise user console.
 
-+ These rules match the behavior of the Elastic Cloud Enterprise user console.
-
-+ * The `elasticsearch` object must contain the property `"autoscaling_enabled": true`.
+* `*` The `elasticsearch` object must contain the property `"autoscaling_enabled": true`.
 
 
 ## API request example [ece_api_request_example] 
