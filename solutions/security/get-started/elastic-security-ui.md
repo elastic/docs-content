@@ -238,7 +238,6 @@ Expand this section to access and manage additional security features:
 * [**Host isolation exceptions**](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md): View and manage host isolation exceptions, which specify IP addresses that can communicate with your hosts even when those hosts are blocked from your network.
 * [**Blocklist**](/solutions/security/manage-elastic-defend/blocklist.md): View and manage the blocklist, which allows you to prevent specified applications from running on hosts, extending the list of processes that {{elastic-defend}} considers malicious.
 * [**Response actions history**](/solutions/security/endpoint-response-actions/response-actions-history.md): Find the history of response actions performed on hosts.
-* [**Container Workload Protection**](/solutions/security/cloud/cloud-workload-protection-for-kubernetes.md): Identify and block unexpected system behavior in Kubernetes containers.
 
 :::{image} ../../../images/security-manage-pg.png
 :alt: Manage page
