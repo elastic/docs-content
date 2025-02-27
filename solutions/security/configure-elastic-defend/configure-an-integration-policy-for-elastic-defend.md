@@ -4,42 +4,16 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-configure-endpoint-integration-policy.html
 ---
 
-# Configure an integration policy for Elastic Defend
+# Configure an integration policy for {{elastic-defend}}
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/configure-endpoint-integration-policy.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-configure-endpoint-integration-policy.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$adv-policy-settings$$$
-
-$$$attack-surface-reduction$$$
-
-$$$behavior-protection$$$
-
-$$$event-collection$$$
-
-$$$malware-protection$$$
-
-$$$memory-protection$$$
-
-$$$ransomware-protection$$$
-
-$$$register-as-antivirus$$$
-
-$$$save-policy$$$
-
-After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts (some features require a Platinum or Enterprise license). If needed, you can update the integration policy to configure protection settings, event collection, antivirus settings, trusted applications, event filters, host isolation exceptions, and blocked applications to meet your organization’s security needs.
+After the {{agent}} is installed with the {{elastic-defend}} integration, several protections features — including preventions against malware, ransomware, memory threats, and malicious behavior — are automatically enabled on protected hosts. If needed, you can update the integration policy to configure protection settings, event collection, antivirus settings, trusted applications, event filters, host isolation exceptions, and blocked applications to meet your organization’s security needs.
 
 You can also create multiple {{elastic-defend}} integration policies to maintain unique configuration profiles. To create an additional {{elastic-defend}} integration policy, find **Integrations** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md), then follow the steps for [adding the {{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md#add-security-integration).
 
 ::::{admonition} Requirements
-You must have the **{{elastic-defend}} Policy Management : All** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md) to configure an integration policy.
-
+To configure an integration policy:
+* In {{stack}}, you must have the **{{elastic-defend}} Policy Management : All** [privilege](/solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md).
+* In {{serverless-short}}, you must have the appropriate user role.
 ::::
 
 
@@ -64,12 +38,12 @@ To configure an integration policy:
     * [Advanced policy settings (optional)](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#adv-policy-settings)
     * [Save the general policy settings](/solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md#save-policy)
 
-4. Click the **Trusted applications**, **Event filters***, ***Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [*Trusted applications*](/solutions/security/manage-elastic-defend/trusted-applications.md), [*Event filters*](/solutions/security/manage-elastic-defend/event-filters.md), [*Host isolation exceptions*](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [*Blocklist*](/solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
+4. Click the **Trusted applications**, **Event filters**, **Host isolation exceptions**, and **Blocklist** tabs to review the endpoint policy artifacts assigned to this integration policy (for more information, refer to [Trusted applications](/solutions/security/manage-elastic-defend/trusted-applications.md), [Event filters](/solutions/security/manage-elastic-defend/event-filters.md), [Host isolation exceptions](/solutions/security/manage-elastic-defend/host-isolation-exceptions.md), and [Blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). On these tabs, you can:
 
-    * Expand and view an artifact — Click the arrow next to its name.
-    * View an artifact’s details — Click the actions menu (**…​**), then select **View full details**.
-    * Unassign an artifact (Platinum or Enterprise subscription) — Click the actions menu (**…​**), then select **Remove from policy**. This does not delete the artifact; this just unassigns it from the current policy.
-    * Assign an existing artifact (Platinum or Enterprise subscription) — Click **Assign *x* to policy**, then select an item from the flyout. This view lists any existing artifacts that aren’t already assigned to the current policy.
+    * Expand and view an artifact: Click the arrow next to its name.
+    * View an artifact’s details: Click the actions menu (**…​**), then select **View full details**.
+    * Unassign an artifact: Click the actions menu (**…​**), then select **Remove from policy**. This does not delete the artifact; this just unassigns it from the current policy.
+    * Assign an existing artifact: Click **Assign *x* to policy**, then select an item from the flyout. This view lists any existing artifacts that aren’t already assigned to the current policy.
 
     ::::{note}
     You can’t create a new endpoint policy artifact while configuring an integration policy. To create a new artifact, go to its main page in the {{security-app}} (for example, to create a new trusted application, find **Trusted applications** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md)).
@@ -84,6 +58,11 @@ To configure an integration policy:
 
 By default, malware protection is enabled on Windows, macOS, and Linux hosts. To disable malware protection, turn off the **Malware protections** toggle.
 
+::::{admonition} Requirements
+:class: note
+In {{serverless-short}}, malware protection requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
+
 Malware protection levels are:
 
 * **Detect**: Detects malware on the host and generates an alert. The agent will **not** block malware. You must pay attention to and analyze any malware alerts that are generated.
@@ -97,7 +76,7 @@ These additional options are available for malware protection:
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {{filename}}` syntax.
+If you have the appropriate license or project feature, you can customize these notifications using the `Elastic Security {action} {filename}` syntax.
 ::::
 
 
@@ -109,7 +88,7 @@ Platinum and Enterprise customers can customize these notifications using the `E
 
 ### Manage quarantined files [manage-quarantined-files]
 
-When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [*Blocklist*](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically {{elastic-defend}} will remove the file from its current location, encrypt it with the encryption key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
+When **Prevent** is enabled for malware protection, {{elastic-defend}} will quarantine any malicious file it finds (this includes files defined in the [blocklist](/solutions/security/manage-elastic-defend/blocklist.md)). Specifically, {{elastic-defend}} will remove the file from its current location, encrypt it with the encryption key `ELASTIC`, move it to a different folder, and rename it as a GUID string, such as `318e70c2-af9b-4c3a-939d-11410b9a112c`.
 
 The quarantine folder location varies by operating system:
 
@@ -123,16 +102,21 @@ To restore a quarantined file to its original state and location, [add an except
 You can access a quarantined file by using the `get-file` [response action command](/solutions/security/endpoint-response-actions.md#response-action-commands) in the response console. To do this, copy the path from the alert’s **Quarantined file path** field (`file.Ext.quarantine_path`), which appears under **Highlighted fields** in the alert details flyout. Then paste the value into the `--path` parameter. This action doesn’t restore the file to its original location, so you will need to do this manually.
 
 ::::{note}
-Response actions and the response console UI are [Enterprise subscription](https://www.elastic.co/pricing) features.
+* In {{stack}}, response actions and the response console UI are [Enterprise subscription](https://www.elastic.co/pricing) features.
+* In {{serverless-short}}, response actions and the response console UI are Endpoint Protection Complete [project features](/deploy-manage/deploy/elastic-cloud/project-settings.md).
 ::::
-
 
 
 ## Ransomware protection [ransomware-protection]
 
 Behavioral ransomware prevention detects and stops ransomware attacks on Windows systems by analyzing data from low-level system processes. It is effective across an array of widespread ransomware families — including those targeting the system’s master boot record.
 
-Ransomware protection is a paid feature and is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, ransomware protection will be disabled by default.
+::::{admonition} Requirements
+:class: note
+* In {{stack}}, ransomware protection is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, ransomware protection will be disabled by default.
+* In {{serverless-short}}, ransomware protection requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
+
 
 Ransomware protection levels are:
 
@@ -144,7 +128,7 @@ When ransomware protection is enabled, canary files placed in targeted locations
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {{filename}}` syntax.
+If you have the appropriate license or project feature, you can customize these notifications using the `Elastic Security {action} {filename}` syntax.
 ::::
 
 
@@ -158,7 +142,12 @@ Platinum and Enterprise customers can customize these notifications using the `E
 
 Memory threat protection detects and stops in-memory threats, such as shellcode injection, which are used to evade traditional file-based detection techniques.
 
-Memory threat protection is a paid feature and is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, memory threat protection will be disabled by default.
+:::{admonition} Requirements
+:class: note
+* In {{stack}}, memory threat protection is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, memory threat protection will be disabled by default.
+* In {{serverless-short}}, memory threat protection requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
+
 
 Memory threat protection levels are:
 
@@ -168,7 +157,7 @@ Memory threat protection levels are:
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {{rule}}` syntax.
+If you have the appropriate license or project feature, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
 ::::
 
 
@@ -182,7 +171,12 @@ Platinum and Enterprise customers can customize these notifications using the `E
 
 Malicious behavior protection detects and stops threats by monitoring the behavior of system processes for suspicious activity. Behavioral signals are much more difficult for adversaries to evade than traditional file-based detection techniques.
 
-Malicious behavior protection is a paid feature and is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, malicious behavior protection will be disabled by default.
+::::{admonition} Requirements
+:class: note
+* In {{stack}}, malicious behavior protection is enabled by default if you have a [Platinum or Enterprise license](https://www.elastic.co/pricing). If you upgrade to a Platinum or Enterprise license from Basic or Gold, malicious behavior protection will be disabled by default.
+* In {{serverless-short}}, malicious behavior protection requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
+
 
 Malicious behavior protection levels are:
 
@@ -192,14 +186,14 @@ Malicious behavior protection levels are:
 Select whether you want to use **Reputation service** for additional protection. Elastic’s reputation service leverages our extensive threat intelligence knowledge to make high confidence real-time prevention decisions. For example, reputation service can detect suspicious downloads of binaries with low or malicious reputation. Endpoints communicate with the reputation service directly at [https://cloud.security.elastic.co](https://cloud.security.elastic.co).
 
 ::::{note}
-Reputation service requires an active [Platinum or Enterprise subscription](https://www.elastic.co/pricing) and is available on cloud deployments only.
+In {{stack}}, reputation service requires an active [Platinum or Enterprise subscription](https://www.elastic.co/pricing) and is available on cloud deployments only.
 ::::
 
 
 Select **Notify user** to send a push notification in the host operating system when activity is detected or prevented. Notifications are enabled by default for the **Prevent** option.
 
 ::::{tip}
-Platinum and Enterprise customers can customize these notifications using the `Elastic Security {{action}} {{rule}}` syntax.
+If you have the appropriate license or project feature, you can customize these notifications using the `Elastic Security {action} {rule}` syntax.
 ::::
 
 
@@ -213,7 +207,12 @@ Platinum and Enterprise customers can customize these notifications using the `E
 
 This section helps you reduce vulnerabilities that attackers can target on Windows endpoints.
 
-* **Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.
+::::{admonition} Requirements
+:class: note
+In {{serverless-short}}, attack surface reduction requires the Endpoint Protection Essentials [project feature](/deploy-manage/deploy/elastic-cloud/project-settings.md).
+::::
+
+**Credential hardening**: Prevents attackers from stealing credentials stored in Windows system process memory. Turn on the toggle to remove any overly permissive access rights that aren’t required for standard interaction with the Local Security Authority Subsystem Service (LSASS). This feature enforces the principle of least privilege without interfering with benign system activity that is related to LSASS.
 
 :::{image} ../../../images/security-attack-surface-reduction.png
 :alt: Detail of attack surface reduction section.
@@ -223,7 +222,7 @@ This section helps you reduce vulnerabilities that attackers can target on Windo
 
 ## Event collection [event-collection]
 
-In the **Settings** section, select which categories of events to collect on each operating system. Most categories are collected by default, as seen below.
+In the **Settings** section, select which categories of events to collect on each operating system. Most categories are collected by default.
 
 :::{image} ../../../images/security-event-collection.png
 :alt: Detail of event collection section.

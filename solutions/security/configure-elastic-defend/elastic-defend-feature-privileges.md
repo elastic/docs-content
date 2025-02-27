@@ -4,18 +4,12 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-endpoint-management-req.html
 ---
 
-# Elastic Defend feature privileges
+# {{elastic-defend}} feature privileges
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/endpoint-management-req.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-endpoint-management-req.md
 
 You can create user roles and define privileges to manage feature access in {{elastic-sec}}. This allows you to use the principle of least privilege while managing access to {{elastic-defend}}'s features.
 
-To configure roles and privileges, find **Roles** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). For more details on using this UI, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#adding_kibana_privileges).
+To configure roles and privileges, find **Roles** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). For more details on using this UI, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#adding_kibana_privileges) for {{stack}}, or to [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) for {{serverless-short}}.
 
 ::::{note}
 {{elastic-defend}}'s feature privileges must be assigned to **All Spaces**. You can’t assign them to an individual space.
@@ -47,11 +41,15 @@ For each of the following sub-feature privileges, select the type of access you 
 | **Host Isolation** | Allow users to [isolate and release hosts](/solutions/security/endpoint-response-actions/isolate-host.md). |
 | **Process Operations** | Perform host process-related [response actions](/solutions/security/endpoint-response-actions.md), including `processes`, `kill-process`, and `suspend-process`. |
 | **File Operations** | Perform file-related [response actions](/solutions/security/endpoint-response-actions.md) in the response console. |
-| **Execute Operations** | Perform shell commands and script-related [response actions](/solutions/security/endpoint-response-actions.md) in the response console.<br><br>::::{warning} <br>The commands are run on the host using the same user account running the {{elastic-defend}} integration, which normally has full control over the system. Only grant this feature privilege to {{elastic-sec}} users who require this level of access.<br>::::<br><br> |
+| **Execute Operations** | Perform shell commands and script-related [response actions](/solutions/security/endpoint-response-actions.md) in the response console.<br><br>The commands are run on the host using the same user account running the {{elastic-defend}} integration, which normally has full control over the system. Only grant this feature privilege to {{elastic-sec}} users who require this level of access. |
 | **Scan Operations** | Perform folder scan [response actions](/solutions/security/endpoint-response-actions.md) in the response console. |
 
+% The paragraph starting with "The commands are run ..." was in a warning admonition. Since admonitions inside tables aren't supported yet, converted this into plain text.
 
 ## Upgrade considerations [_upgrade_considerations]
+```yaml {applies_to}
+stack:
+```
 
 After upgrading from {{elastic-sec}} 8.6 or earlier, existing user roles will be assigned **None** by default for any new endpoint management feature privileges, and you’ll need to explicitly assign them. However, many features previously required the built-in `superuser` role, and users who previously had this role will still have it after upgrading.
 

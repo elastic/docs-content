@@ -203,7 +203,6 @@ toc:
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash-kspm.md
       - file: docs-content/serverless/security-cloud-posture-dashboard-dash.md
       - file: docs-content/serverless/security-cloud-workload-protection.md
-      - file: docs-content/serverless/security-configure-endpoint-integration-policy.md
       - file: docs-content/serverless/security-connect-to-azure-openai.md
       - file: docs-content/serverless/security-connect-to-bedrock.md
       - file: docs-content/serverless/security-connect-to-google-vertex.md
@@ -221,7 +220,6 @@ toc:
       - file: docs-content/serverless/security-detection-engine-overview.md
       - file: docs-content/serverless/security-detection-response-dashboard.md
       - file: docs-content/serverless/security-detections-requirements.md
-      - file: docs-content/serverless/security-endpoint-management-req.md
       - file: docs-content/serverless/security-endpoints-page.md
       - file: docs-content/serverless/security-environment-variable-capture.md
       - file: docs-content/serverless/security-event-filters.md
@@ -231,7 +229,6 @@ toc:
       - file: docs-content/serverless/security-interactive-investigation-guides.md
       - file: docs-content/serverless/security-isolate-host.md
       - file: docs-content/serverless/security-kspm.md
-      - file: docs-content/serverless/security-linux-file-monitoring.md
       - file: docs-content/serverless/security-llm-connector-guides.md
       - file: docs-content/serverless/security-llm-performance-matrix.md
       - file: docs-content/serverless/security-overview-dashboard.md
@@ -249,7 +246,6 @@ toc:
       - file: docs-content/serverless/security-rules-coverage.md
       - file: docs-content/serverless/security-rules-create.md
       - file: docs-content/serverless/security-rules-ui-management.md
-      - file: docs-content/serverless/security-self-healing-rollback.md
       - file: docs-content/serverless/security-signals-to-cases.md
       - file: docs-content/serverless/security-third-party-actions.md
       - file: docs-content/serverless/security-triage-alerts-with-elastic-ai-assistant.md
