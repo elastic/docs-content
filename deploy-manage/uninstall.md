@@ -18,11 +18,10 @@ Different Elastic environments require different uninstallation steps. Choose th
   * [Uninstall {{ece}}](/deploy-manage/uninstall/uninstall-elastic-cloud-enterprise.md)
   * [Uninstall {{eck}}](/deploy-manage/uninstall/uninstall-elastic-cloud-on-kubernetes.md)
 
-* Delete a cloud deployment:
-  * [Delete a cloud deployment](/deploy-manage/uninstall/delete-a-cloud-deployment.md)
-    * [{{ech}} deployments](/deploy-manage/uninstall/delete-a-cloud-deployment.md#elastic-cloud-hosted)
-    * [Serverless projects](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless)
-    * [{{ece}} deployments](/deploy-manage/uninstall/delete-a-cloud-deployment.md#ece)
+* Delete an orchestrated deployment:
+  * [{{ech}} deployments](/deploy-manage/uninstall/delete-a-cloud-deployment.md#elastic-cloud-hosted)
+  * [Serverless projects](/deploy-manage/uninstall/delete-a-cloud-deployment.md#serverless)
+  * [{{ece}} deployments](/deploy-manage/uninstall/delete-a-cloud-deployment.md#ece)
 
 :::{note}
 You can uninstall self-managed clusters, but detailed step-by-step instructions are not currently available.
