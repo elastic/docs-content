@@ -13,6 +13,8 @@ applies_to:
 
 {{kib}} privileges grant users access to features within {{kib}}. Roles have privileges to determine whether users have write or read access.
 
+To learn how to assign privileges to a role, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+
 ## Base privileges [_base_privileges]
 
 Assigning a base privilege grants access to all {{kib}} features, such as **Discover**, **Dashboard**, **Visualize Library**, and **Canvas**.

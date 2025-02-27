@@ -1,11 +1,19 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/security-privileges.html
+applies_to:
+  deployment:
+    ece:
+    eck:
+    ess:
+    self:
 ---
 
 # Elasticsearch privileges [security-privileges]
 
 This section lists the privileges that you can assign to a role.
+
+To learn how to assign privileges to a role, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
 
 ## Cluster privileges [privileges-list-cluster]
 

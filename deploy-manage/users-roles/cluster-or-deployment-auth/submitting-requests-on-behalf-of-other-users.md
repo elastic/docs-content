@@ -170,5 +170,3 @@ This example uses the role management API, but a similar configuration can be se
     ```
 
     The `authentication_realm` and `lookup_realm` in the response both specify the `native` realm because both the `admin_user` and `analyst_user` are from that realm. If the two users are in different realms, the values for `authentication_realm` and `lookup_realm` are different (such as `pki` and `native`).
-
-
