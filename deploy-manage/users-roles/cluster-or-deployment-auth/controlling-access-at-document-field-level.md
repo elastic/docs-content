@@ -25,18 +25,24 @@ Document and field level security is currently meant to operate with read-only p
 
 A role can define both field and document level permissions on a per-index basis. A role that doesn’t specify field level permissions grants access to ALL fields. Similarly, a role that doesn’t specify document level permissions grants access to ALL documents in the index.
 
-On this page, you'll learn how to implement [document level security](#document-level-security) and [field level security](#field-level-security-field-level-security).
+On this page, you'll learn how to implement [document level security](#document-level-security) and [field level security](#field-level-security-field-level-security). 
 
 You'll also learn the following: 
 * How [multiple roles with document and field level security](#multiple-roles-dls-fls) interact
 * Considerations for using document and field level security when [searching across clusters using cross-cluster API keys](#ccx-apikeys-dls-fls).
 
+The examples on this page use the [Role management API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security). However, you can add document and field level security [anywhere you manage custom roles](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#managing-custom-roles).
 
-:::{{tip}}
-This topic explains how to apply document and field level security in {{stack}}. You can also apply document and field level security in {{serverless-full}} projects. [Learn more](/deploy-manage/users-roles/custom-roles.md#document-level-and-field-level-security).
+
+:::{{admonition}} Document and field level security in {{serverless-full}}
+This topic explains how to apply document and field level security in {{stack}}. You can also apply document and field level security in {{serverless-full}} projects. 
+
+In {{serverless-full}}, you can only manage document and field level security using the {{ecloud}} console. However, document level security is still managed using queries, and you can use the queries on this page as a guideline.
+
+[Learn more](/deploy-manage/users-roles/serverless-custom-roles.md#document-level-and-field-level-security).
 :::
 
-## Implementing document level security [document-level-security]
+## Document level security [document-level-security]
 
 You can use a query to specify the documents that each role can access. The document query is associated with a particular data stream, index, or wildcard (`*`) pattern and operates in conjunction with the privileges specified for the data streams and indices.
 
@@ -192,7 +198,7 @@ The [set security user processor](asciidocalypse://docs/elasticsearch/docs/refer
 For more information, see [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md).
 
 
-# Field level security [field-level-security]
+## Field level security [field-level-security]
 
 To enable field level security, specify the fields that each role can access as part of the indices permissions in a role definition. Field level security is thus bound to a well-defined set of data streams or indices (and potentially a set of [documents](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md)).
 

@@ -6,7 +6,7 @@ When a user’s role enables [document level security](/deploy-manage/users-role
 
 * Document level security doesn’t affect global index statistics that relevancy scoring uses. This means that scores are computed without taking the role query into account. Documents that don’t match the role query are never returned.
 * The `has_child` and `has_parent` queries aren’t supported as query parameters in the role definition. The `has_child` and `has_parent` queries can be used in the search API with document level security enabled.
-* [Date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math) expressions cannot contain `now` in [range queries with date fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md#ranges-on-dates)
+* [Date math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#date-math) expressions cannot contain `now` in [range queries with date fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md#ranges-on-dates).
 * Any query that makes remote calls to fetch query data isn’t supported, including the following queries:
 
     * `terms` query with terms lookup

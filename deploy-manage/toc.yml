@@ -594,7 +594,7 @@ toc:
               - file: users-roles/cloud-enterprise-orchestrator/ldap.md
               - file: users-roles/cloud-enterprise-orchestrator/saml.md
           - file: users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md
-      - file: users-roles/custom-roles.md
+      - file: users-roles/serverless-custom-roles.md
       - file: users-roles/cluster-or-deployment-auth.md
         children:
           - file: users-roles/cluster-or-deployment-auth/quickstart.md
