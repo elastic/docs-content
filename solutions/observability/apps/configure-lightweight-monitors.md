@@ -17,7 +17,7 @@ Lightweight monitors can be configured using either the [Synthetics UI](../../..
 
 ## Synthetics UI [synthetics-lightweight-ui]
 
-To use the UI, go to the Synthetics UI in {{kib}} or in your Observability serverless project to create and configure monitors. For step-by-step instructions, refer to [Use the Synthetics UI](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md).
+To use the UI, go to the Synthetics UI in {{kib}} or in your Observability Serverless project to create and configure monitors. For step-by-step instructions, refer to [Use the Synthetics UI](../../../solutions/observability/apps/create-monitors-in-synthetics-app.md).
 
 :::{image} ../../../images/observability-synthetics-get-started-ui-lightweight.png
 :alt: Synthetics Create monitor UI
@@ -130,7 +130,7 @@ $$$monitor-service_name$$$
 **`service.name`**
 :   Type: [string](../../../solutions/observability/apps/configure-lightweight-monitors.md#synthetics-lightweight-data-string)
 
-    APM service name for this monitor. Corresponds to the `service.name` ECS field. Set this when monitoring an app that is also using APM to enable integrations between Synthetics and APM data in Kibana or your Observability serverless project.
+    APM service name for this monitor. Corresponds to the `service.name` ECS field. Set this when monitoring an app that is also using APM to enable integrations between Synthetics and APM data in Kibana or your Observability Serverless project.
 
 
 $$$monitor-enabled$$$

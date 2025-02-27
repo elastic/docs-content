@@ -1,6 +1,6 @@
 # Sign up for Elastic Cloud [general-sign-up-trial]
 
-The following page provides information on how to sign up for an Elastic Cloud Serverless account, for information on how to sign up for hosted deployments, see [Elasticsearch Service - How do i sign up?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
+The following page provides information on how to sign up for an Elastic Cloud Serverless account, for information on how to sign up for hosted deployments, see [{{ech}} - How do i sign up?](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
 
 
 ## Trial features [general-sign-up-trial-what-is-included-in-my-trial]
@@ -11,7 +11,7 @@ Your free 14-day trial includes:
 
 A deployment lets you explore Elastic solutions for Search, Observability, and Security. Trial deployments run on the latest version of the Elastic Stack. They includes 8 GB of RAM spread out over two availability zones, and enough storage space to get you started. If you’re looking to evaluate a smaller workload, you can scale down your trial deployment. Each deployment includes Elastic features such as Maps, SIEM, machine learning, advanced security, and much more. You have some sample data sets to play with and tutorials that describe how to add your own data.
 
-To learn more about Elastic Cloud Hosted, check our [Elasticsearch Service documentation](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
+To learn more about Elastic Cloud Hosted, check our [{{ech}} documentation](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
 
 **One serverless project**
 
@@ -41,7 +41,7 @@ During the free 14 day trial, Elastic provides access to one hosted deployment a
 * Machine learning nodes are available up to 4GB RAM
 * Custom {{es}} plugins are not enabled
 
-To learn more about Elastic Cloud Hosted, check our [Elasticsearch Service documentation](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
+To learn more about Elastic Cloud Hosted, check our [{{ech}} documentation](/deploy-manage/deploy/elastic-cloud/cloud-hosted.md).
 
 **Serverless projects**
 

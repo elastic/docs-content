@@ -1,11 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/observability/current/apm-tail-based-samling-config.html
+applies_to:
+  stack: all
 ---
 
 # Tail-based sampling [apm-tail-based-samling-config]
 
-::::{admonition}
+::::{note}
 ![supported deployment methods](../../../images/observability-binary-yes-fm-yes.svg "")
 
 Most options on this page are supported by all APM Server deployment methods when writing to {{es}}. If you are using a different [output](configure-output.md), tail-based sampling is *not* supported.

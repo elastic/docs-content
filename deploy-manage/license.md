@@ -1,11 +1,35 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud/current/ec-licensing.html
+applies_to:
+  deployment:
+    ece:
+    ech:
+    ess:
+    self:
+  serverless:
 ---
 
-# Manage your license [ec-licensing]
+# Manage your license  
 
-For more information on what is available with different subscription levels, check [Elasticsearch Service Subscriptions](https://www.elastic.co/elasticsearch/service/pricing). You are entitled to use all of the features in Elasticsearch Service that match your subscription level. Please use them to your heart’s content.
+Your Elastic license determines which features are available and what level of support you receive. 
 
-Your subscription determines [which features are available](https://www.elastic.co/subscriptions/cloud). For example, machine learning requires a Platinum or Private subscription and is not available if you upgrade to a Gold subscription. Similarly, SAML Single Sign-On requires an Enterprise subscription.
+Depending on your deployment type, licenses and subscriptions are applied at different levels:
 
+* **{{ecloud}}, {{ece}}, and {{eck}}:** Licenses and subscriptions are controlled at the orchestrator or organization level, and apply to all related deployments.
+* **Self-managed {{es}}:** Licenses are controlled at the cluster level, and apply only to a single cluster.
+
+For a comprehensive comparison of the available subscription levels, see [Elastic subscriptions](https://www.elastic.co/subscriptions).
+
+Use the topics in this section to manage your license or start a trial:  
+
+- [{{ecloud}}](/deploy-manage/cloud-organization/billing/manage-subscription.md): Applies to both {{ech}} deployments and {{serverless-full}} projects in your Cloud organization
+- [{{ece}}](/deploy-manage/license/manage-your-license-in-ece.md)  
+- [{{eck}}](/deploy-manage/license/manage-your-license-in-eck.md)  
+- [Self-managed cluster](/deploy-manage/license/manage-your-license-in-self-managed-cluster.md)  
+
+## Additional resources  
+
+Explore these resources for details on subscriptions and features:
+
+- [{{stack}} subscriptions](https://www.elastic.co/subscriptions)  
+- [{{ecloud}} features](https://www.elastic.co/subscriptions/cloud)  
+- [{{ecloud}} pricing](https://www.elastic.co/pricing)  

@@ -12,7 +12,7 @@ For the install settings specific to mutual TLS, as opposed to one-way TLS, refe
 For a summary of flow by which TLS is established between components using either one-way or mutual TLS, refer to [One-way and mutual TLS certifications flow](/reference/ingestion-tools/fleet/tls-overview.md).
 
 ::::{tip}
-Our [hosted {{ess}}](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body) on {{ecloud}} provides secure, encrypted connections out of the box!
+[{{ecloud}}](https://www.elastic.co/cloud/elasticsearch-service?page=docs&placement=docs-body) provides secure, encrypted connections out of the box!
 ::::
 
 

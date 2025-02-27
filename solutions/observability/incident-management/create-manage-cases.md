@@ -6,8 +6,7 @@ mapped_urls:
 
 # Create and manage cases [observability-create-a-new-case]
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 **For Observability serverless projects**, the **Editor** role or higher is required to create and manage cases. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -64,8 +63,8 @@ Uploaded files are also accessible under **Project settings** → **Management**
 
 You can add images and text, CSV, JSON, PDF, or ZIP files. For the complete list, check [`mime_types.ts`](https://github.com/elastic/kibana/blob/main/x-pack/plugins/cases/common/constants/mime_types.ts).
 
-::::{admonition} File size limits
-:class: note
+::::{note}
+**File size limits**
 
 There is a 10 MiB size limit for images. For all other MIME types, the limit is 100 MiB.
 

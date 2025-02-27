@@ -17,7 +17,7 @@ This approach might *not* be right for you if you don’t want to manage the lif
 :alt: {{fleet-server}} on-premise and {{es}} on Cloud deployment model
 :::
 
-To deploy a self-managed {{fleet-server}} on-premises to work with a hosted {{ess}}, you need to:
+To deploy a self-managed {{fleet-server}} on-premises to work with an {{ech}} deployment, you need to:
 
 * Satisfy all [compatibility requirements](#add-fleet-server-mixed-compatibility) and [prerequisites](#add-fleet-server-mixed-prereq)
 * Create a [{{fleet-server}} policy](#fleet-server-create-policy)

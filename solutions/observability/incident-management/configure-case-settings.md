@@ -8,8 +8,7 @@ mapped_urls:
 
 % Serverless only for the following role, does stateful require a special role?
 
-::::{admonition} Required role
-:class: note
+::::{note}
 
 For Observability serverless projects, the **Editor** role or higher is required to create and edit connectors. To learn more, refer to [Assign user roles and privileges](../../../deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles).
 
@@ -54,7 +53,7 @@ After creating a connector, you can set your cases to [automatically close](../.
 ### Create a connector [new-connector-observability]
 
 1. From the **Incident management system** list, select **Add new connector**.
-2. Select the system to send cases to: **{{sn}}**, **{{jira}}***, ***{{ibm-r}}***, ***{{swimlane}}***, ***TheHive**, or **{{webhook-cm}}**.
+2. Select the system to send cases to: **{{sn}}**, **{{jira}}**, **{{ibm-r}}**, **{{swimlane}}**, **TheHive**, or **{{webhook-cm}}**.
 
     :::{image} ../../../images/serverless-observability-cases-add-connector.png
     :alt: Add a connector to send cases to an external source

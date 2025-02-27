@@ -10,7 +10,7 @@ To ensure that your nodes are located on healthy hosts, we vacate nodes to perfo
 
 All major scheduled maintenance and incidents can be found on the Elastic [status page](https://status.elastic.co/). You can subscribe to that page to be notified about updates.
 
-If events on your deployment don’t correlate to any items listed on the status page, the events are due to minor routine maintenance performed on only a subset of Elasticsearch Service deployments.
+If events on your deployment don’t correlate to any items listed on the status page, the events are due to minor routine maintenance performed on only a subset of {{ech}} deployments.
 
 **What is the impact?**
 

@@ -13,7 +13,7 @@ You can capture JVM thread dumps from deployment instances. This can help discov
 You can capture a thread dump from the deployment overview page.
 
 1. [Log into the Cloud UI](../../../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
-2. On the deployments page, select your deployment.
+2. On the **Deployments** page, select your deployment.
 
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 

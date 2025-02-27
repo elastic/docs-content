@@ -25,7 +25,7 @@ To view the activity for a deployment:
 1. Log in to the [{{ech}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the **Deployments** page, select your deployment.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. In your deployment menu, select **Activity**.
 4. You can:

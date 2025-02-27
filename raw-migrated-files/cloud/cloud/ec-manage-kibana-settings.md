@@ -1,6 +1,6 @@
 # Edit Kibana user settings [ec-manage-kibana-settings]
 
-Elasticsearch Service supports most of the standard Kibana and X-Pack settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
+{{ech}} supports most of the standard Kibana and X-Pack settings. Through a YAML editor in the console, you can append Kibana properties to the `kibana.yml` file. Your changes to the configuration file are read on startup.
 
 ::::{important}
 Be aware that some settings that could break your cluster if set incorrectly and that the syntax might change between major versions. Before upgrading, be sure to review the full list of the [latest Kibana settings and syntax](asciidocalypse://docs/kibana/docs/reference/configuration-reference/general-settings.md).
@@ -9,10 +9,10 @@ Be aware that some settings that could break your cluster if set incorrectly and
 
 To change Kibana settings:
 
-1. Log in to the [Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body).
-2. Find your deployment on the home page in the Elasticsearch Service card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the deployments page to view all of your deployments.
+1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
+2. Find your deployment on the home page in the **Hosted deployments** card and select **Manage** to access it directly. Or, select **Hosted deployments** to go to the **Deployments** page to view all of your deployments.
 
-    On the deployments page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
+    On the **Deployments** page you can narrow your deployments by name, ID, or choose from several other filters. To customize your view, use a combination of filters, or change the format from a grid to a list.
 
 3. From your deployment menu, go to the **Edit** page.
 4. In the **Kibana** section, select **Edit user settings**. (For deployments with existing user settings, you may have to expand the **Edit kibana.yml** caret instead.)
@@ -22,7 +22,7 @@ To change Kibana settings:
 Saving your changes initiates a configuration plan change that restarts Kibana automatically for you.
 
 ::::{note}
-If a setting is not supported by Elasticsearch Service, you will get an error message when you try to save.
+If a setting is not supported by {{ech}}, you will get an error message when you try to save.
 ::::
 
 
@@ -222,7 +222,7 @@ If a setting is not supported by Elasticsearch Service, you will get an error me
 
 ### SAML settings [ec_saml_settings]
 
-If you are using SAML to secure your clusters, these settings are supported in Elasticsearch Service.
+If you are using SAML to secure your clusters, these settings are supported in {{ech}}.
 
 To learn more, refer to [configuring Kibana to use SAML](/deploy-manage/users-roles/cluster-or-deployment-auth/saml.md#saml-configure-kibana).
 
@@ -285,7 +285,7 @@ The following additional setting is supported:
 
 ### OpenID Connect [ec_openid_connect]
 
-If you are using OpenID Connect to secure your clusters, these settings are supported in Elasticsearch Service.
+If you are using OpenID Connect to secure your clusters, these settings are supported in {{ech}}.
 
 `xpack.security.authc.providers.oidc.<provider-name>.order`
 :   Specifies order of the OpenID Connect authentication provider in the authentication chain.
@@ -304,7 +304,7 @@ To learn more, check [configuring Kibana to use OpenID Connect](/deploy-manage/u
 
 ### Anonymous authentication [ec_anonymous_authentication]
 
-If you want to allow anonymous authentication in Kibana, these settings are supported in Elasticsearch Service. To learn more on how to enable anonymous access, check [Enabling anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md) and [Configuring Kibana to use anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication).
+If you want to allow anonymous authentication in Kibana, these settings are supported in {{ech}}. To learn more on how to enable anonymous access, check [Enabling anonymous access](/deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md) and [Configuring Kibana to use anonymous authentication](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-authentication.md#anonymous-authentication).
 
 #### Supported versions before 8.0.0 [ec_supported_versions_before_8_0_0]
 

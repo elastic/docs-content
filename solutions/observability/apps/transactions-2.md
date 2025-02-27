@@ -17,13 +17,13 @@ A *transaction* describes an event captured by an Elastic APM agent instrumentin
 The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by span type**, and **Cold start rate** charts display information on all transactions associated with the selected service:
 
 **Latency**
-:   Response times for the service. Options include average, 95th, and 99th percentile. If there’s a weird spike that you’d like to investigate, you can simply zoom in on the graph - this will adjust the specific time range, and all of the data on the page will update accordingly.
+   Response times for the service. Options include average, 95th, and 99th percentile. If there’s a weird spike that you’d like to investigate, you can simply zoom in on the graph - this will adjust the specific time range, and all of the data on the page will update accordingly.
 
 **Throughput**
-:   Visualize response codes: `2xx`, `3xx`, `4xx`, etc. Useful for determining if more responses than usual are being served with a particular response code. Like in the latency graph, you can zoom in on anomalies to further investigate them.
+   Visualize response codes: `2xx`, `3xx`, `4xx`, etc. Useful for determining if more responses than usual are being served with a particular response code. Like in the latency graph, you can zoom in on anomalies to further investigate them.
 
 **Failed transaction rate**
-:   The failed transaction rate represents the percentage of failed transactions from the perspective of the selected service. It’s useful for visualizing unexpected increases, decreases, or irregular patterns in a service’s transactions.
+   The failed transaction rate represents the percentage of failed transactions from the perspective of the selected service. It’s useful for visualizing unexpected increases, decreases, or irregular patterns in a service’s transactions.
 
     ::::{tip}
     HTTP **transactions** from the HTTP server perspective do not consider a `4xx` status code (client error) as a failure because the failure was caused by the caller, not the HTTP server. Thus, `event.outcome=success` and there will be no increase in failed transaction rate.
@@ -36,7 +36,7 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
 
 **Time spent by span type**
-:   Visualize where your application is spending most of its time. For example, is your app spending time in external calls, database processing, or application code execution?
+   Visualize where your application is spending most of its time. For example, is your app spending time in external calls, database processing, or application code execution?
 
     The time a transaction took to complete is also recorded and displayed on the chart under the "app" label. "app" indicates that something was happening within the application, but we’re not sure exactly what. This could be a sign that the APM agent does not have auto-instrumentation for whatever was happening during that time.
 
@@ -44,7 +44,7 @@ The **Latency**, **Throughput**, **Failed transaction rate**, **Time spent by sp
 
 
 **Cold start rate**
-:   Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
+   Only applicable to serverless transactions, this chart displays the percentage of requests that trigger a cold start of a serverless function. See [Cold starts](../../../solutions/observability/apps/observe-lambda-functions.md#apm-lambda-cold-start-info) for more information.
 
 
 ## Transactions table [transactions-table]

@@ -94,9 +94,9 @@ In your {{ls}} configuration directory, open the `pipelines.yml` file and add th
   path.config: "/etc/path/to/elastic-agent-pipeline.conf"
 ```
 
-In the `elastic-agent-pipeline.conf` file, add the pipeline configuration. Note that the configuration needed for {{ess}} on {{ecloud}} is different from self-managed {{es}} clusters. If you copied the configuration shown in {{fleet}}, adjust it as needed.
+In the `elastic-agent-pipeline.conf` file, add the pipeline configuration. Note that the configuration needed for {{ech}} is different from self-managed {{es}} clusters. If you copied the configuration shown in {{fleet}}, adjust it as needed.
 
-{{ess}} example:
+{{ech}} example:
 
 ```text
 input {
@@ -122,7 +122,7 @@ output {
 
 1. Use the `cloud_id` shown on your deployment page in {{ecloud}}.
 2. In {{fleet}}, you can generate this API key when you add a {{ls}} output.
-3. {{ess}} uses standard publicly trusted certificates, so there’s no need specify other SSL settings here.
+3. {{ech}} uses standard publicly trusted certificates, so there’s no need specify other SSL settings here.
 
 
 Self-managed {{es}} cluster example:
@@ -155,9 +155,9 @@ output {
 
 To learn more about the {{ls}} configuration, refer to:
 
-* [{{agent}} input plugin](logstash://docs/reference/plugins-inputs-elastic_agent.md)
-* [{{es}} output plugin](logstash://docs/reference/plugins-outputs-elasticsearch.md)
-* [Secure your connection to {{es}}](logstash://docs/reference/secure-connection.md)
+* [{{agent}} input plugin](asciidocalypse://docs/reference/plugins-inputs-elastic_agent.md)
+* [{{es}} output plugin](asciidocalypse://docs/reference/plugins-outputs-elasticsearch.md)
+* [Secure your connection to {{es}}](asciidocalypse://docs/reference/secure-connection.md)
 
 When you’re done configuring the pipeline, restart {{ls}}:
 

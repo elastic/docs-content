@@ -95,13 +95,14 @@ Refer to the documentation of your favorite OpenTelemetry agent or SDK for more 
 % Stateful only for tail-based sampling
 
 ## Tail-based sampling [apm-tail-based-sampling]
+```{applies_to}
+stack: all
+```
 
-::::{admonition} Support for tail-based sampling
-:class: note
+::::{note}
+**Support for tail-based sampling**
 
 Tail-based sampling is only supported when writing to {{es}}. If you are using a different [output](../../../solutions/observability/apps/configure-output.md), tail-based sampling is *not* supported.
-
-Tail-based sampling is *not* compatible with [{{serverless-full}}](https://docs.elastic.co/serverless).
 
 ::::
 

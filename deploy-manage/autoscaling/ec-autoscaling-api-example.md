@@ -5,9 +5,9 @@ mapped_pages:
 
 # Autoscaling through the API [ec-autoscaling-api-example]
 
-This example demonstrates how to use the Elasticsearch Service RESTful API to create a deployment with autoscaling enabled.
+This example demonstrates how to use the {{ecloud}} RESTful API to create a deployment with autoscaling enabled.
 
-The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](ec-autoscaling-example.md). For more information about using the Elasticsearch Service API in general, check [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md).
+The example deployment has a hot data and content tier, warm data tier, cold data tier, and a machine learning node, all of which will scale within the defined parameters. To learn about the autoscaling settings, check [Deployment autoscaling](../autoscaling.md) and [Autoscaling example](ec-autoscaling-example.md). For more information about using the {{ecloud}} API in general, check [RESTful API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md).
 
 
 ## Requirements [ec_requirements] 
@@ -46,7 +46,7 @@ $$$ec-autoscaling-api-example-requirements-table$$$
 
 + ✕ = Do not include the property.
 
-+ These rules match the behavior of the Elasticsearch Service user console.
++ These rules match the behavior of the {{ecloud}} Console.
 
 + * The `elasticsearch` object must contain the property `"autoscaling_enabled": true`.
 
