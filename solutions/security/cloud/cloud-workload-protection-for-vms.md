@@ -6,12 +6,6 @@ mapped_urls:
 
 # Cloud workload protection for VMs
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/cloud-workload-protection.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-cloud-workload-protection.md
 
 Cloud workload protection helps you monitor and protect your Linux VMs. It uses the [{{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md) integration to capture cloud workload telemetry containing process, file, and network activity.
 

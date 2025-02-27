@@ -6,13 +6,6 @@ mapped_urls:
 
 # Ingest third-party cloud security data
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/ingest-third-party-cloud-security-data.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/ingest-third-party-cloud-security-data.md
-
 This section describes how to ingest cloud security data from third-party tools into {{es}}. Once ingested, this data can provide additional context and enrich your {{elastic-sec}} workflows.
 
 You can ingest both third-party cloud workload protection data and third-party security posture and vulnerability data.

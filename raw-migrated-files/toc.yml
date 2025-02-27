@@ -203,10 +203,6 @@ toc:
       - file: docs-content/serverless/general-serverless-status.md
       - file: docs-content/serverless/general-sign-up-trial.md
       - file: docs-content/serverless/index-management.md
-      - file: docs-content/serverless/ingest-aws-securityhub-data.md
-      - file: docs-content/serverless/ingest-falco.md
-      - file: docs-content/serverless/ingest-third-party-cloud-security-data.md
-      - file: docs-content/serverless/ingest-wiz-data.md
       - file: docs-content/serverless/intro.md
       - file: docs-content/serverless/observability-ai-assistant.md
       - file: docs-content/serverless/observability-apm-get-started.md
@@ -238,10 +234,6 @@ toc:
       - file: docs-content/serverless/security-cases-overview.md
       - file: docs-content/serverless/security-cases-requirements.md
       - file: docs-content/serverless/security-cases-settings.md
-      - file: docs-content/serverless/security-cloud-native-security-overview.md
-      - file: docs-content/serverless/security-cloud-posture-dashboard-dash-cspm.md
-      - file: docs-content/serverless/security-cloud-posture-dashboard-dash-kspm.md
-      - file: docs-content/serverless/security-cloud-posture-dashboard-dash.md
       - file: docs-content/serverless/security-configure-endpoint-integration-policy.md
       - file: docs-content/serverless/security-connect-to-azure-openai.md
       - file: docs-content/serverless/security-connect-to-bedrock.md
@@ -276,7 +268,6 @@ toc:
       - file: docs-content/serverless/security-osquery-response-action.md
       - file: docs-content/serverless/security-overview-dashboard.md
       - file: docs-content/serverless/security-policies-page.md
-      - file: docs-content/serverless/security-posture-management.md
       - file: docs-content/serverless/security-prebuilt-rules-management.md
       - file: docs-content/serverless/security-query-alert-indices.md
       - file: docs-content/serverless/security-query-operating-systems.md
