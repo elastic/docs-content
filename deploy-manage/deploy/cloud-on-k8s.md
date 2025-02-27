@@ -68,11 +68,13 @@ This section outlines the supported Kubernetes and Elastic Stack versions for EC
 ECK is compatible with the following Kubernetes distributions and related technologies:
 
 * Kubernetes 1.28-1.32
-* OpenShift 4.12-4.17
+* OpenShift 4.13-4.18
 * Google Kubernetes Engine (GKE), Azure Kubernetes Service (AKS), and Amazon Elastic Kubernetes Service (EKS)
 * Helm: 3.2.0+
 
 ECK should work with all conformant **installers** listed in these [FAQs](https://github.com/cncf/k8s-conformance/blob/master/faq.md#what-is-a-distribution-hosted-platform-and-an-installer). Distributions include source patches and so may not work as-is with ECK.
+
+Alpha, beta, and stable API versions follow the same [conventions used by Kubernetes](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-versioning).
 
 ### Elastic Stack compatibility
 
