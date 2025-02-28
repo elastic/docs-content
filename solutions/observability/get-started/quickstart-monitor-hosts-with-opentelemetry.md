@@ -110,9 +110,9 @@ Logs are collected from setup onward, so you won’t see logs that occurred befo
 
 Logs are collected from setup onward, so you won’t see logs that occurred before starting the EDOT Collector. The default log path is `/var/log/*`. To update the path, modify `otel.yml`.
 
-:::
-
 ::::
+
+:::::
 
 
 Under **Visualize your data**, you’ll see links to **Logs Explorer** to view your logs and **Hosts** to view your host metrics.
