@@ -20,6 +20,7 @@ cross_links:
   - ecs-logging
   - ecs-logging-go-zap
   - ecs-logging-java
+  - ecs-logging-nodejs
   - elasticsearch
   - elasticsearch-java
   - elasticsearch-js

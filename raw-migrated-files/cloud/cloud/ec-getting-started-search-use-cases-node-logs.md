@@ -33,7 +33,7 @@ For the three following packages, you can create a working directory to install 
     npm install winston
     ```
 
-* The [Elastic Common Schema (ECS) formatter](asciidocalypse://docs/ecs-logging-nodejs/docs/reference/winston.md) for the Node.js winston logger - This plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
+* The [Elastic Common Schema (ECS) formatter](ecs-logging-nodejs://reference/winston.md) for the Node.js winston logger - This plugin formats your Node.js logs into an ECS structured JSON format ideally suited for ingestion into Elasticsearch. To install the ECS winston logger, run the following command in your working directory so that the package is installed in the same location as the winston package:
 
     ```sh
     npm install @elastic/ecs-winston-format
