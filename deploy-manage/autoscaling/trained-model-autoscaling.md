@@ -17,7 +17,7 @@ There are two ways to enable autoscaling:
 * in {{kib}} by enabling adaptive resources
 
 ::::{important}
-To fully leverage model autoscaling, it is highly recommended to enable [{{es}} deployment autoscaling](../../deploy-manage/autoscaling.md).
+To fully leverage model autoscaling in {{ech}}, {{ece}}, and {{eck}}, it is highly recommended to enable [{{es}} deployment autoscaling](../../deploy-manage/autoscaling.md).
 ::::
 
 Trained model autoscaling is available for both serverless and Cloud deployments. In serverless deployments, processing power is managed differently across Search, Observability, and Security projects, which impacts their costs and resource limits.
