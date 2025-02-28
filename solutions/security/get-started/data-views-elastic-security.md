@@ -4,18 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-data-views-in-sec.html
 ---
 
-# Data views and Elastic Security
-
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/data-views-in-sec.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-data-views-in-sec.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$default-data-view-security$$$
+# {{data-sources-cap}} and {{elastic-sec}} [security-data-views-in-sec]
 
 {{data-sources-cap}} determine what data displays on {{elastic-sec}} pages with event or alert data. {{data-sources-cap}} are defined by the index patterns they include. Only data from {{es}} [indices](/manage-data/data-store/index-basics.md), [data streams](/manage-data/data-store/data-streams.md), or [index aliases](https://www.elastic.co/guide/en/elasticsearch/reference/current/alias.html) specified in the active {{data-source}} will appear.
 
@@ -25,7 +14,7 @@ Custom indices are not included in the [default {{data-source}}](/solutions/secu
 
 
 
-## Switch to another {{data-source}} [_switch_to_another_data_source]
+## Switch to another {{data-source}} [security-data-views-in-sec-switch-to-another-data-source]
 
 You can tell which {{data-source}} is active by clicking the **{{data-source-cap}}** menu at the upper right of {{elastic-sec}} pages that display event or alert data, such as Overview, Alerts, Timelines, or Hosts. To switch to another {{data-source}}, click **Choose {{data-source}}**, select one of the options, and click **Save**.
 
@@ -34,7 +23,7 @@ You can tell which {{data-source}} is active by clicking the **{{data-source-cap
 :::
 
 
-## Create or modify a {{data-source}} [_create_or_modify_a_data_source]
+## Create or modify a {{data-source}} [security-data-views-in-sec-create-or-modify-a-data-source]
 
 To learn how to modify the default **Security Default Data View**, refer to [Update default {{elastic-sec}} indices](/solutions/security/get-started/configure-advanced-settings.md#update-sec-indices).
 
@@ -61,7 +50,7 @@ The default {{data-source}} is defined by the `securitySolution:defaultIndex` se
 The first time a user visits {{elastic-sec}} within a given {{kib}} [space](/deploy-manage/manage-spaces.md), the default {{data-source}} generates in that space and becomes active.
 
 ::::{note}
-Your {{kib}} space must have **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md#spaces-control-feature-visibility) setting enabled for the default {{data-source}} to generate and become active in your space.
+In {{stack}}, your {{kib}} space must have the **Data View Management** [feature visibility](/deploy-manage/manage-spaces.md#spaces-control-feature-visibility) setting enabled for the default {{data-source}} to generate and become active in your space.
 ::::
 
 

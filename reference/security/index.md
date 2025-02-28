@@ -1,15 +1,13 @@
 # Security
 
-% TO-DO: Add links to "What is Elastic Security?"%
-
-This section of the documentation contains reference information for Elastic Security features, including:
+This section of the documentation contains reference information for [{{elastic-sec}}](/solutions/security.md) features, including:
 
 * Prebuilt rules
 * Downloadable rule updates
 * Prebuilt jobs
 * Fields and object schemas
 
-You can use these APIs to interface with Elastic Security features:
+You can use these APIs to interface with {{elastic-sec}} features:
 
 * [Detections API](https://www.elastic.co/docs/api/doc/kibana/v8/group/endpoint-security-detections-api): Manage detection rules and alerts
 * [Exceptions API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-security-exceptions-api): Create and manage rule exceptions

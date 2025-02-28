@@ -4,34 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-advanced-settings.html
 ---
 
-# Configure advanced settings
-
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/advanced-settings.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-advanced-settings.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$update-sec-indices$$$
-
-$$$exclude-cold-frozen-data-rule-executions$$$
-
-$$$exclude-cold-frozen-tiers$$$
-
-$$$ip-reputation-links$$$
-
-$$$manage-alert-tags$$$
-
-$$$max-notes-alerts-events$$$
-
-$$$show-related-integrations$$$
-
-$$$update-threat-intel-indices$$$
-
-$$$visualizations-in-flyout$$$
+# Configure advanced settings [security-advanced-settings]
 
 The advanced settings determine:
 
@@ -46,7 +19,12 @@ The advanced settings determine:
 * Whether related integrations are displayed on the Rules page tables
 * The options provided in the alert tag menu
 
-To change these settings, you need `All` privileges for the **Advanced Settings** [{{kib}} feature](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+::::{admonition} Requirements
+Your role must have the appropriate privileges to change advanced settings:
+- In {{stack}}, you must have `All` privileges for the **Advanced Settings** [{{kib}} feature](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-privileges.md).
+- In {{serverless-short}}, you need either the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](/deploy-manage/users-roles/cloud-organization/user-roles.md) with `All` privileges.
+
+::::
 
 ::::{warning}
 Modifying advanced settings can affect Kibana performance and cause problems that are difficult to diagnose. Setting a property value to a blank field reverts to the default behavior, which might not be compatible with other configuration settings. Deleting a custom setting removes it from Kibana permanently.
@@ -54,7 +32,7 @@ Modifying advanced settings can affect Kibana performance and cause problems tha
 
 
 
-## Access advanced settings [_access_advanced_settings]
+## Access advanced settings [security-advanced-settings-access-advanced-settings]
 
 To access advanced settings, go to **Stack Management** → **Advanced Settings**, then scroll down to **Security Solution** settings.
 
@@ -68,6 +46,16 @@ To access advanced settings, go to **Stack Management** → **Advanced Settings*
 
 The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices.
 
+The `securitySolution:defaultIndex` field defines which {{es}} indices the {{security-app}} uses to collect data. By default, index patterns are used to match sets of {{es}} indices:
+
+* `apm-*-transaction*`
+* `auditbeat-*`
+* `endgame-*`
+* `filebeat-*`
+* `logs-*`
+* `packetbeat-*`
+* `winlogbeat-*`
+
 ::::{note}
 Index patterns use wildcards to specify a set of indices. For example, the `filebeat-*` index pattern means all indices starting with `filebeat-` are available in the {{security-app}}.
 ::::
@@ -75,7 +63,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 
 All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md) and [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
-You can add or remove any indices and index patterns as required. For background information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
+You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}}, there is no limit. For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
 ::::{note}
 If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cloud logs are excluded from all queries in the {{security-app}} by default. This is to avoid adding data from cloud monitoring to the app.
@@ -90,7 +78,11 @@ If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cl
 
 ## Update default Elastic Security threat intelligence indices [update-threat-intel-indices]
 
-The `securitySolution:defaultThreatIndex` advanced setting specifies threat intelligence indices that {{elastic-sec}} features query for ingested threat indicators. This setting affects features that query threat intelligence indices, such as the Threat Intelligence view on the Overview page, indicator match rules, and the alert enrichment query. You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
+The `securitySolution:defaultThreatIndex` advanced setting specifies threat intelligence indices that {{elastic-sec}} features query for ingested threat indicators. This setting affects features that query threat intelligence indices, such as the Threat Intelligence view on the Overview page, indicator match rules, and the alert enrichment query.
+
+
+
+You can specify one or more threat intelligence indices; multiple indices must be separated by commas. By default, only the `logs-ti*` index pattern is specified. Do not remove or overwrite this index pattern, as it is used by {{agent}} integrations.
 
 ::::{important}
 Threat intelligence indices aren’t required to be ECS-compatible for use in indicator match rules. However, we strongly recommend compatibility if you want your alerts to be enriched with relevant threat indicator information. When searching for threat indicator data, indicator match rules use the threat indicator path specified in the **Indicator prefix override** advanced setting. Visit [Configure advanced rule settings](/solutions/security/detect-and-alert/create-detection-rule.md#rule-ui-advanced-params) for more information.
@@ -156,7 +148,7 @@ Refer to [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elastics
 
 ## Display reputation links on IP detail pages [ip-reputation-links]
 
-On IP details pages (**Security** → **Network** → IP address), links to external sites for verifying the IP address’s reputation are displayed. By default, links to these sites are listed: [TALOS](https://talosintelligence.com/) and [VIRUSTOTAL](https://www.virustotal.com/).
+On IP details pages (**Security** → **Network** → **IP address**), links to external sites for verifying the IP address’s reputation are displayed. By default, links to these sites are listed: [TALOS](https://talosintelligence.com/) and [VIRUSTOTAL](https://www.virustotal.com/).
 
 The `securitySolution:ipReputationLinks` field determines which IP reputation sites are listed. To modify the listed sites, edit the field’s JSON array. These fields must be defined in each array element:
 
