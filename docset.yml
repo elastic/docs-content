@@ -25,6 +25,7 @@ cross_links:
   - ecs-logging-python
   - ecs-logging-ruby
   - eland
+  - elastic-serverless-forwarder
   - elasticsearch
   - elasticsearch-java
   - elasticsearch-js
