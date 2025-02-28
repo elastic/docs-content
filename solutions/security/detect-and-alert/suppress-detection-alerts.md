@@ -6,14 +6,13 @@ mapped_urls:
 
 # Suppress detection alerts [security-alert-suppression]
 
-% Suppression is only in tech preview for event correlation rules (ESS and Serverless). Might need to handle the page tags differently.
 
 ::::{admonition} Requirements and notices
 * In {{stack}} alert suppression requires a [Platinum or higher subscription](https://www.elastic.co/pricing).
 * {{ml-cap}} rules have [additional requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md) for alert suppression.
+* This functionality is in technical preview for event correlation rules only and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 
 ::::
-
 
 Alert suppression allows you to reduce the number of repeated or duplicate detection alerts created by these detection rule types:
 

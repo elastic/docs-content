@@ -17,12 +17,10 @@ Follow these guidelines to start using the {{security-app}}'s [prebuilt rules](a
 * [Update Elastic prebuilt rules](/solutions/security/detect-and-alert/install-manage-elastic-prebuilt-rules.md#update-prebuilt-rules)
 * [Confirm rule prerequisites](/solutions/security/detect-and-alert/manage-detection-rules.md#rule-prerequisites)
 
-% The third item in this note might need to be revised.
-
 ::::{note}
 * Most prebuilt rules don’t start running by default. You can use the **Install and enable** option to start running rules as you install them, or first install the rules, then enable them manually. After installation, only a few prebuilt rules will be enabled by default, such as the Endpoint Security rule.
 * You can’t modify most settings on Elastic prebuilt rules. You can only edit [rule actions](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) and [add exceptions](/solutions/security/detect-and-alert/add-manage-exceptions.md). If you want to modify other settings on a prebuilt rule, you must first duplicate it, then make your changes to the duplicated rule. However, your customized rule is entirely separate from the original prebuilt rule, and will not get updates from Elastic if the prebuilt rule is updated.
-* Automatic updates of Elastic prebuilt rules are supported for the current {{elastic-sec}} version and the latest three previous minor releases. For example, if you’re on {{elastic-sec}} 8.10, you’ll be able to use the Rules UI to update your prebuilt rules until {{elastic-sec}} 8.14 is released. After that point, you can still manually download and install updated prebuilt rules, but you must upgrade to the latest {{elastic-sec}} version to receive automatic updates.
+* On {{stack}}, automatic updates of Elastic prebuilt rules are supported for the current {{elastic-sec}} version and the latest three previous minor releases. For example, if you’re on {{elastic-sec}} 9.0, you’ll be able to use the Rules UI to update your prebuilt rules until {{elastic-sec}} 9.4 is released. After that point, you can still manually download and install updated prebuilt rules, but you must upgrade to the latest {{elastic-sec}} version to receive automatic updates.
 
 ::::
 

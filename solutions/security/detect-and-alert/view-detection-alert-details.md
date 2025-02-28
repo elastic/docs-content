@@ -295,14 +295,7 @@ From the right panel, click **Correlations** to open the expanded Correlations v
 
 In the expanded view, corelation data is organized into several tables:
 
-* **Suppressed alerts**: Shows how many duplicate alerts were suppressed. This information only appears if alert suppression is enabled for the rule.
-
-% Need to update this note.
-
-    ::::{warning}
-    This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
-    ::::
-
+* **Suppressed alerts**: Shows how many duplicate alerts were suppressed. This information only appears if [alert suppression](/solutions/security/detect-and-alert/suppress-detection-alerts.md) is enabled for the rule.
 * **Related cases**: Shows cases to which the alert has been added. Click a case’s name to open its details.
 * **Alerts related by source event**: Shows alerts created by the same source event. This can help you find alerts with a shared origin and provide more context about the source event. Click the **Investigate in timeline** button to examine related alerts in Timeline.
 * **Alerts related by session**: Shows alerts generated during the same [session](/solutions/security/investigate/session-view.md). These alerts share the same session ID, which is a unique ID for tracking a given Linux session. To use this feature, you must enable the **Collect session data** setting in your {{elastic-defend}} integration policy. Refer to [Enable Session View data](/solutions/security/investigate/session-view.md#enable-session-view) for more information.

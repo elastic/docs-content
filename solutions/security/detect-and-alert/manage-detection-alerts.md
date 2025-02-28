@@ -177,9 +177,11 @@ To change an alert’s status, do one of the following:
     :class: screenshot
     :::
 
-% Might need to add an admonition here 
+* To bulk-change the status of [grouped alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#group-alerts), select the **Take actions** menu for the group, then select a status.
 
-* [beta] To bulk-change the status of [grouped alerts](/solutions/security/detect-and-alert/manage-detection-alerts.md#group-alerts), select the **Take actions** menu for the group, then select a status.
+    ::::{warning}
+    This functionality is in beta and is subject to change. The design and code is less mature than official GA features and is being provided as-is with no warranties. Beta features are not subject to the support SLA of official GA features.
+    ::::
 * In an alert’s details flyout, click **Take action** and select a status.
 
 
