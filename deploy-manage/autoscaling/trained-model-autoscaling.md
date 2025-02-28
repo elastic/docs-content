@@ -129,7 +129,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 | Medium | 1 to 2 (if threads=16) dynamically | maximum that the hardware allows (for example, 16) | 1 to 32 dynamically |
 | High | 1 to limit set in the Cloud console *, dynamically | maximum that the hardware allows (for example, 16) | 1 to limit set in the Cloud console, dynamically |
 
-* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
+\* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
 #### Adaptive resources disabled [_adaptive_resources_disabled_2]
 
