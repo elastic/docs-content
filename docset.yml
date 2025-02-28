@@ -9,6 +9,7 @@ exclude:
 cross_links:
   - apm-agent-android
   - apm-agent-dotnet
+  - curator
   - asciidocalypse
   - kibana
   - integration-docs
