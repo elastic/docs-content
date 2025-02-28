@@ -72,7 +72,7 @@ For more information about using {{security-features}} with the language specifi
 
 * [Java](elasticsearch-java://reference/_basic_authentication.md)
 * [JavaScript](elasticsearch-js://reference/connecting.md)
-* [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/configuration.md)
+* [.NET](elasticsearch-net://reference/configuration.md)
 * [Perl](https://metacpan.org/pod/Search::Elasticsearch::Cxn::HTTPTiny#CONFIGURATION)
 * [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/connecting.md)
 * [Python](https://elasticsearch-py.readthedocs.io/en/master/#ssl-and-authentication)
