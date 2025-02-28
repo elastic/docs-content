@@ -20,7 +20,7 @@ applies_to:
 - [PHP](elasticsearch-php://reference/index.md)
 - [Python](asciidocalypse://docs/elasticsearch-py/docs/reference/index.md)
   - [Eland](eland://reference/index.md) (Python client and toolkit for DataFrames and machine learning)
-- [Ruby](asciidocalypse://docs/elasticsearch-ruby/docs/reference/index.md)
+- [Ruby](elasticsearch-ruby://reference/index.md)
 - [Rust](elasticsearch-rs://reference/index.md)
 
 ## Community-contributed client libraries
