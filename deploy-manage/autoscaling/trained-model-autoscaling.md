@@ -20,7 +20,7 @@ There are two ways to enable autoscaling:
 To fully leverage model autoscaling in {{ech}}, {{ece}}, and {{eck}}, it is highly recommended to enable [{{es}} deployment autoscaling](../../deploy-manage/autoscaling.md).
 ::::
 
-Trained model autoscaling is available for both serverless and Cloud deployments. In serverless deployments, processing power is managed differently across Search, Observability, and Security projects, which impacts their costs and resource limits.
+Trained model autoscaling is available for both {{serverless-short}} and Cloud deployments. In serverless deployments, processing power is managed differently across Search, Observability, and Security projects, which impacts their costs and resource limits.
 
 Security and Observability projects are only charged for data ingestion and retention. They are not charged for processing power (VCU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
 
@@ -43,7 +43,7 @@ You can enable adaptive allocations by using:
 If the new allocations fit on the current {{ml}} nodes, they are immediately started. If more resource capacity is needed for creating new model allocations, then your {{ml}} node will be scaled up if {{ml}} autoscaling is enabled to provide enough resources for the new allocation. The number of model allocations can be scaled down to 0. They cannot be scaled up to more than 32 allocations, unless you explicitly set the maximum number of allocations to more. Adaptive allocations must be set up independently for each deployment and [{{infer}} endpoint](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-put).
 
 :::{note}
-When you create inference endpoints on Serverless using Kibana, adaptive allocations are automatically turned on, and there is no option to disable them.
+When you create inference endpoints on {{serverless-short}} using Kibana, adaptive allocations are automatically turned on, and there is no option to disable them.
 :::
 
 ### Optimizing for typical use cases [optimizing-for-typical-use-cases]
@@ -68,31 +68,31 @@ Refer to the tables in the [Model deployment resource matrix](#model-deployment-
 
 Search projects are given access to more processing resources, while Security and Observability projects have lower limits. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
 
-On Serverless, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in Kibana for Observability and Security projects.
+On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in Kibana for Observability and Security projects.
 
 ## Model deployment resource matrix [model-deployment-resource-matrix]
 
 The used resources for trained model deployments depend on three factors:
 
-* your cluster environment (Serverless, Cloud, or on-premises)
+* your cluster environment ({{serverless-short}}, Cloud, or on-premises)
 * the use case you optimize the model deployment for (ingest or search)
 * whether model autoscaling is enabled with adaptive allocations/resources to have dynamic resources, or disabled for static resources
 
 If you use {{es}} on-premises, vCPUs level ranges are derived from the `total_ml_processors` and `max_single_ml_node_processors` values. Use the [get {{ml}} info API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-info) to check these values. The following tables show you the number of allocations, threads, and vCPUs available in Cloud when adaptive resources are enabled or disabled.
 
 ::::{note}
-On Serverless, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in {{kib}} for Observability and Security projects.
+On {{serverless-short}}, adaptive allocations are automatically enabled for all project types. However, the "Adaptive resources" control is not displayed in {{kib}} for Observability and Security projects.
 ::::
 
-### Deployments in Cloud optimized for ingest [_deployments_in_cloud_optimized_for_ingest]
-```{applies_to}
-deployment:
-  ech: all
-```
+### Ingest optimized
 
 In case of ingest-optimized deployments, we maximize the number of model allocations.
 
-#### Adaptive resources enabled [_adaptive_resources_enabled]
+#### Adaptive resources enabled
+
+::::{tab-set}
+
+:::{tab-item} Cloud
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -102,7 +102,25 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
-#### Adaptive resources disabled [_adaptive_resources_disabled]
+:::
+
+:::{tab-item} {{serverless-short}}
+
+| Level | Allocations | Threads | VCUs |
+| --- | --- | --- | --- |
+| Low | 0 to 2 dynamically | 1 | 0 to 16 dynamically |
+| Medium | 1 to 32 dynamically | 1 | 8 to 256 dynamically |
+| High | 1 to 512 for Search<br> 1 to 128 for Security and Observability<br> | 1 | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
+
+:::
+
+::::
+
+#### Adaptive resources disabled
+
+::::{tab-set}
+
+:::{tab-item} Cloud
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -112,15 +130,29 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
-### Deployments in Cloud optimized for search [_deployments_in_cloud_optimized_for_search]
-```{applies_to}
-deployment:
-  ech: all
-```
+:::
+
+:::{tab-item} {{serverless-short}}
+
+| Level | Allocations | Threads | VCUs |
+| --- | --- | --- | --- |
+| Low | Exactly 2 | 1 | 16 |
+| Medium | Exactly 32 | 1 | 256 |
+| High | 512 for Search<br> No static allocations for Security and Observability<br> | 1 | 4096 for Search<br> No static allocations for Security and Observability<br> |
+
+:::
+
+::::
+
+### Search optimized
 
 In case of search-optimized deployments, we maximize the number of threads. The maximum number of threads that can be claimed depends on the hardware your architecture has.
 
-#### Adaptive resources enabled [_adaptive_resources_enabled_2]
+#### Adaptive resources enabled
+
+::::{tab-set}
+
+:::{tab-item} Cloud
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -130,7 +162,25 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
-#### Adaptive resources disabled [_adaptive_resources_disabled_2]
+:::
+
+:::{tab-item} {{serverless-short}}
+
+| Level | Allocations | Threads | VCUs |
+| --- | --- | --- | --- |
+| Low | 0 to 1 dynamically | Always 2 | 0 to 16 dynamically |
+| Medium | 1 to 2 (if threads=16), dynamically | Maximum (for example, 16) | 8 to 256 dynamically |
+| High | 1 to 32 (if threads=16), dynamically<br> 1 to 128 for Security and Observability<br> | Maximum (for example, 16) | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
+
+:::
+
+::::
+
+#### Adaptive resources disabled
+
+::::{tab-set}
+
+:::{tab-item} Cloud
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -140,51 +190,16 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 \* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
-### Deployments on serverless optimized for ingest [deployments-on-serverless-optimized-for-ingest]
-```{applies_to}
-serverless: all
-```
+:::
 
-In case of ingest-optimized deployments, we maximize the number of model allocations.
-
-
-#### Adaptive resources enabled [adaptive-resources-enabled]
-
-| Level | Allocations | Threads | VCUs |
-| --- | --- | --- | --- |
-| Low | 0 to 2 dynamically | 1 | 0 to 16 dynamically |
-| Medium | 1 to 32 dynamically | 1 | 8 to 256 dynamically |
-| High | 1 to 512 for Search<br> 1 to 128 for Security and Observability<br> | 1 | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
-
-
-#### Adaptive resources disabled (Search only) [adaptive-resources-disabled-search-only]
-
-| Level | Allocations | Threads | VCUs |
-| --- | --- | --- | --- |
-| Low | Exactly 2 | 1 | 16 |
-| Medium | Exactly 32 | 1 | 256 |
-| High | 512 for Search<br> No static allocations for Security and Observability<br> | 1 | 4096 for Search<br> No static allocations for Security and Observability<br> |
-
-
-### Deployments on serverless optimized for Search [deployments-on-serverless-optimized-for-search]
-```{applies_to}
-serverless: all
-```
-
-
-#### Adaptive resources enabled [adaptive-resources-enabled-for-search]
-
-| Level | Allocations | Threads | VCUs |
-| --- | --- | --- | --- |
-| Low | 0 to 1 dynamically | Always 2 | 0 to 16 dynamically |
-| Medium | 1 to 2 (if threads=16), dynamically | Maximum (for example, 16) | 8 to 256 dynamically |
-| High | 1 to 32 (if threads=16), dynamically<br> 1 to 128 for Security and Observability<br> | Maximum (for example, 16) | 8 to 4096 for Search<br> 8 to 1024 for Security and Observability<br> |
-
-
-#### Adaptive resources disabled [adaptive-resources-disabled-for-search]
+:::{tab-item} {{serverless-short}}
 
 | Level | Allocations | Threads | VCUs |
 | --- | --- | --- | --- |
 | Low | 1 statically | Always 2 | 16 |
 | Medium | 2 statically (if threads=16) | Maximum (for example, 16) | 256 |
 | High | 32 statically (if threads=16) for Search<br> No static allocations for Security and Observability<br> | Maximum (for example, 16) | 4096 for Search<br> No static allocations for Security and Observability<br> |
+
+:::
+
+::::
