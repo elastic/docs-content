@@ -99,7 +99,7 @@ Example response:
 To create an integration policy (also known as a package policy) and add it to an existing agent policy, call `POST /api/fleet/package_policies`.
 
 ::::{tip}
-You can use the {{fleet}} API to [Create and customize an {{elastic-defend}} policy](/reference/security/elastic-defend/create-defend-policy-api.md).
+You can use the {{fleet}} API to [Create and customize an {{elastic-defend}} policy](/solutions/security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md).
 ::::
 
 

@@ -838,5 +838,4 @@ toc:
     children:
       - file: uninstall/uninstall-elastic-cloud-enterprise.md
       - file: uninstall/uninstall-elastic-cloud-on-kubernetes.md
-      - file: uninstall/uninstall-a-self-managed-cluster.md
       - file: uninstall/delete-a-cloud-deployment.md
