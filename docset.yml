@@ -1,6 +1,11 @@
 project: 'Elastic documentation'
+
+features:
+  primary-nav: true
+
 exclude:
   - 'README.md'
+
 cross_links:
   - asciidocalypse
   - kibana
