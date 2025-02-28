@@ -16,6 +16,7 @@ cross_links:
   - curator
   - ecctl
   - ecs
+  - ecs-dotnet
   - ecs-logging
   - elasticsearch
   - elasticsearch-java
