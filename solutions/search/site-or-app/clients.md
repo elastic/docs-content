@@ -19,7 +19,7 @@ applies_to:
 - [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/index.md)
 - [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/index.md)
 - [Python](asciidocalypse://docs/elasticsearch-py/docs/reference/index.md)
-  - [Eland](asciidocalypse://docs/eland/docs/reference/index.md) (Python client and toolkit for DataFrames and machine learning)
+  - [Eland](eland://reference/index.md) (Python client and toolkit for DataFrames and machine learning)
 - [Ruby](asciidocalypse://docs/elasticsearch-ruby/docs/reference/index.md)
 - [Rust](asciidocalypse://docs/elasticsearch-rs/docs/reference/index.md)
 
@@ -29,6 +29,6 @@ In addition to official clients, the Elastic community has contributed libraries
 
 - [Community-contributed clients](asciidocalypse://docs/elasticsearch/docs/reference/community-contributed.md)
 
-::::{tip} 
+::::{tip}
 Learn how to [connect to your {{es}} endpoint](/solutions/search/search-connection-details.md).
 ::::
