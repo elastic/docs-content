@@ -22,6 +22,7 @@ cross_links:
   - ecs-logging-java
   - ecs-logging-nodejs
   - ecs-logging-php
+  - ecs-logging-python
   - elasticsearch
   - elasticsearch-java
   - elasticsearch-js

@@ -14,7 +14,7 @@ You are going to learn how to:
 
 ## Prerequisites [ece_prerequisites_2]
 
-To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](asciidocalypse://docs/ecs-logging-python/docs/reference/installation.md) for the Python logging library.
+To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](ecs-logging-python://reference/installation.md) for the Python logging library.
 
 To install *ecs-logging-python*, run:
 
