@@ -575,7 +575,7 @@ For more information about custom certificates, refer to [Configure SSL/TLS for 
 `--base-path <string>`
 :   Install {{agent}} in a location other than the [default](/reference/ingestion-tools/fleet/installation-layout.md). Specify the custom base path for the install.
 
-    The `--base-path` option is not currently supported with [{{elastic-defend}}](/reference/security/elastic-defend/install-endpoint.md).
+    The `--base-path` option is not currently supported with [{{elastic-defend}}](/solutions/security/configure-elastic-defend/install-elastic-defend.md).
 
 
 `--ca-sha256 <string>`

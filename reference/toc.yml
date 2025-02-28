@@ -2,26 +2,6 @@ toc:
   - file: index.md
   - file: security/index.md
     children:
-      - file: security/elastic-defend/index.md
-        children:
-          - file: security/elastic-defend/elastic-endpoint-deploy-reqs.md
-          - file: security/elastic-defend/install-endpoint.md
-            children:
-              - file: security/elastic-defend/deploy-elastic-endpoint.md
-              - file: security/elastic-defend/deploy-elastic-endpoint-ven.md
-              - file: security/elastic-defend/deploy-with-mdm.md
-              - file: security/elastic-defend/agent-tamper-protection.md
-          - file: security/elastic-defend/endpoint-management-req.md
-          - file: security/elastic-defend/configure-endpoint-integration-policy.md
-            children:
-              - file: security/elastic-defend/artifact-control.md
-              - file: security/elastic-defend/endpoint-diagnostic-data.md
-              - file: security/elastic-defend/self-healing-rollback.md
-              - file: security/elastic-defend/linux-file-monitoring.md
-              - file: security/elastic-defend/endpoint-data-volume.md
-              - file: security/elastic-defend/create-defend-policy-api.md
-          - file: security/elastic-defend/offline-endpoint.md
-          - file: security/elastic-defend/uninstall-agent.md
       - file: security/fields-and-object-schemas/index.md
         children:
           - file: security/fields-and-object-schemas/runtime-fields.md
