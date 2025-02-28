@@ -17,7 +17,7 @@ applies_to:
 - [Java](elasticsearch-java://reference/index.md)
 - [JavaScript](elasticsearch-js://reference/index.md)
 - [.NET](elasticsearch-net://reference/index.md)
-- [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/index.md)
+- [PHP](elasticsearch-php://reference/index.md)
 - [Python](asciidocalypse://docs/elasticsearch-py/docs/reference/index.md)
   - [Eland](eland://reference/index.md) (Python client and toolkit for DataFrames and machine learning)
 - [Ruby](asciidocalypse://docs/elasticsearch-ruby/docs/reference/index.md)
