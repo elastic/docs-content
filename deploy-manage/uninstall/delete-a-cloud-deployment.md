@@ -1,4 +1,5 @@
 ---
+navigation_title: "Delete a cloud deployment"
 applies_to:
   deployment:
     ess:
@@ -6,7 +7,7 @@ applies_to:
   serverless:
 ---
 
-# Delete a cloud deployment
+# Delete an {{ece}} or {{ech}} deployment and an {{serverless-full}} project
 
 This page provides instructions for deleting a cloud deployment and outlines key considerations before proceeding.
 
@@ -27,8 +28,6 @@ When deployments are deleted, we erase all data on disk, including snapshots. Sn
 If you want to keep the snapshot for future purposes even after the deployment deletion, you should [use a custom snapshot repository](/deploy-manage/tools/snapshot-and-restore/elastic-cloud-hosted.md).
 :::
 
-Billing restarts as soon as the deployment is restored.
-
 ## Serverless
 
 To delete a {{serverless-full}} project:
@@ -43,8 +42,7 @@ All data is lost. Billing for usage is by the hour and any outstanding charges f
 
 ## {{ece}}
 
-:::::{{tab-set}}
-::::{{tab-item}} Delete a deployment
+### Delete a deployment
 
 To delete an {{ece}} deployment:
 
@@ -60,9 +58,7 @@ To delete an {{ece}} deployment:
 Deleting a deployment cannot be undone.
 :::
 
-::::
-
-::::{{tab-item}} Terminate a deployment
+### Terminate a deployment
 
 Terminating a deployment stops all running instances and **deletes all data**. Only configuration information is saved so that you can restore the deployment in the future. If there is [a snapshot repository associated](/deploy-manage/tools/snapshot-and-restore/cloud-enterprise.md) with the Elasticsearch cluster and at least one snapshot has been taken, you can restore the cluster with the same indices later.
 
@@ -75,9 +71,8 @@ To terminate an {{ece}} deployment,
 
 3. In the **Deployment Management** section, select **Terminate deployment**.
 
-::::
 
-::::{{tab-item}} Restore a deployment
+### Restore a deployment
 
 You can restore a deployment that was previously terminated to its original configuration. Note that the data that was in the deployment is not restored, since it is deleted as part of the termination process. If you have a snapshot, you can [restore it](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to recover the {{es}} indices.
 
@@ -88,6 +83,3 @@ To restore a terminated deployment,
     Narrow the list by name, ID, or choose from several other filters. To further define the list, use a combination of filters.
 3. In the **Deployment Management** section, select **Restore** and then acknowledge the confirmation message.
 
-::::
-
-:::::
