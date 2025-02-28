@@ -127,22 +127,7 @@ In {{ece}}, the following additional limitations apply:
 
 $$$ece-autoscaling-enable$$$$$$ech-autoscaling-enable$$$To enable or disable autoscaling on a deployment:
 
-1. **Log in** to the console.
-
-::::{tab-set}
-
-:::{tab-item} {{ech}}
-[Elasticsearch Service Console](https://cloud.elastic.co?page=docs&placement=docs-body)
-:::
-
-:::{tab-item} {{ece}}
-[Cloud UI](../deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md)
-:::
-
-:::{tab-item} {{ecloud}} -  Heroku
-[Elasticsearch Add-On for Heroku console](https://cloud.elastic.co?page=docs&placement=docs-body)
-:::
-::::
+1. Log in to the ECE [Cloud UI]((/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) or  [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
 2. On the **Deployments** page, select your deployment.
 
