@@ -6,13 +6,6 @@ mapped_urls:
 
 # Detection rule monitoring dashboard
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/rule-monitoring-dashboard.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-rule-monitoring-dashboard.md
-
 The Detection rule monitoring dashboard provides visualizations to help you monitor the overall health and performance of {{elastic-sec}}'s detection rules. Consult this dashboard for a high-level view of whether your rules are running successfully and how long they’re taking to run, search data, and create alerts.
 
 :::{image} ../../../images/security-rule-monitoring-overview.png
