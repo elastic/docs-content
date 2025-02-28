@@ -65,6 +65,7 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
         3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:
 
@@ -74,17 +75,11 @@ Creating a Network Firewall is not trivial and is beyond the scope of this guide
 
 4. Set up the delivery stream by specifying the following data:
 
-    * Elastic endpoint URL
-    * API key
-    * Content encoding: gzip
-    * Retry duration: 60 (default)
-    * Parameter **es_datastream_name** = `logs-aws.firewall_logs-default`
-    * Backup settings: failed data only to S3 bucket
-
-
-::::{important}
-Verify that your **Elasticsearch endpoint URL** includes `.es.` between the **deployment name** and **region**. Example: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`
-::::
+    * Elastic endpoint URL: The URL that you copied in the previous step.
+    * API key: The API key that you created in the previous step.
+    * Content encoding: To reduce the data transfer costs, use GZIP encoding.
+    * Retry duration: A duration between 60 and 300 seconds should be suitable for most use cases.
+    * Backup settings: It is recommended to configure S3 backup for failed records. These backups can then be used to restore failed data ingestion caused by unforeseen service outages.
 
 
 The Firehose stream is ready to send logs to our Elastic Cloud deployment.
