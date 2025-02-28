@@ -33,6 +33,7 @@ cross_links:
   - elasticsearch-net
   - elasticsearch-php
   - elasticsearch-py
+  - elasticsearch-rs
   - elasticsearch-ruby
   - go-elasticsearch
   - integration-docs
