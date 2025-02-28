@@ -470,8 +470,6 @@ toc:
   - file: autoscaling.md
     children:
       - file: autoscaling/autoscaling-in-ece-and-ech.md
-      - file: autoscaling/ece-autoscaling-example.md
-      - file: autoscaling/autoscaling-api-example.md
       - file: autoscaling/autoscaling-stateless-applications-on-eck.md
       - file: autoscaling/deployments-autoscaling-on-eck.md
       - file: autoscaling/autoscaling-deciders.md
