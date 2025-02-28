@@ -87,7 +87,8 @@ On Serverless, adaptive allocations are automatically enabled for all project ty
 
 ### Deployments in Cloud optimized for ingest [_deployments_in_cloud_optimized_for_ingest]
 ```{applies_to}
-stack: {{ecloud}}
+deployment:
+  ech: all
 ```
 
 In case of ingest-optimized deployments, we maximize the number of model allocations.
