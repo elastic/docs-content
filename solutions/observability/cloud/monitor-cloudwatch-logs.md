@@ -114,6 +114,7 @@ Take note of the log group name for this Lambda function, as you will need it in
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
         3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:
 
@@ -121,14 +122,10 @@ Take note of the log group name for this Lambda function, as you will need it in
         2. Select **Open Kibana**.
         3. Expand the left-hand menu, under **Management** select **Stack management > API Keys** and click **Create API key**. If you are using an API key with **Restrict privileges**, make sure to review the Indices privileges to provide at least `auto_configure` and `write` permissions for the indices you will be using with this delivery stream.
 
-    * **Content encoding**: For a better network efficiency, leave content encoding set to GZIP.
-    * **Retry duration**: Determines how long Firehose continues retrying the request in the event of an error. A duration of 60-300s should be suitable for most use cases.
-    * **es_datastream_name**: `logs-aws.generic-default`
+    * **Content encoding**: To reduce the data transfer costs, use GZIP encoding.
+    * **Retry duration**: Determines how long Firehose continues retrying the request in the event of an error. A duration between 60 and 300 seconds should be suitable for most use cases.
 
-
-::::{important}
-Verify that your **Elasticsearch endpoint URL** includes `.es.` between the **deployment name** and **region**. Example: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`
-::::
+5. It is recommended to configure S3 backup for failed records from the **Backup settings** panel. These backups can be used to restore data losses caused by unforeseen service outages.
 
 
 The Firehose stream is now ready to send logs to your Elastic Cloud deployment.

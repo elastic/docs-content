@@ -91,6 +91,7 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
         1. Go to the [Elastic Cloud](https://cloud.elastic.co/) console
         2. Find your deployment in the **Hosted deployments** card and select **Manage**.
         3. Under **Applications** click **Copy endpoint** next to **Elasticsearch**.
+        4. Make sure the endpoint is in the following format: `https://<deployment_name>.es.<region>.<csp>.elastic-cloud.com`.
 
     * **To create the API key**:
 
@@ -102,14 +103,9 @@ You now have a CloudWatch log group with events coming from CloudTrail. For more
 
     * Elastic endpoint URL: The URL that you copied in the previous step.
     * API key: The API key that you created in the previous step.
-    * Content encoding: gzip
-    * Retry duration: 60 (default)
-    * Backup settings: failed data only to s3 bucket
-
-
-::::{important}
-Verify that your **Elasticsearch endpoint URL** includes `.es.` between the **deployment name** and **region**. Example: `https://my-deployment.es.us-east-1.aws.elastic-cloud.com`
-::::
+    * Content encoding: To reduce the data transfer costs, use GZIP encoding.
+    * Retry duration: A duration between 60 and 300 seconds should be suitable for most use cases.
+    * Backup settings: It is recommended to configure S3 backup for failed records. These backups can then be used to restore failed data ingestion caused by unforeseen service outages.
 
 
 You now have an Amazon Data Firehose delivery specified with:
