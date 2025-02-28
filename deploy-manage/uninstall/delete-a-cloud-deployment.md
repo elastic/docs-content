@@ -9,7 +9,7 @@ applies_to:
 
 # Delete an {{ece}} or {{ech}} deployment and an {{serverless-full}} project
 
-This page provides instructions for deleting a cloud deployment and outlines key considerations before proceeding.
+This page provides instructions for deleting several types of cloud deployments, and outlines key considerations before proceeding.
 
 ## {{ech}} [elastic-cloud-hosted]
 
