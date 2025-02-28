@@ -25,7 +25,7 @@ You can remove {{ece}} by removing all containers on the host:
   docker rm -f frc-runners-runner frc-allocators-allocator $(docker ps -a -q); sudo rm -rf /mnt/data/elastic/ && docker ps -a
   ```
 
-* If using Podman
+* If using Podman:
 
   ```sh
   sudo podman rm -f frc-runners-runner frc-allocators-allocator $(sudo podman ps -a -q); sudo rm -rf /mnt/data/elastic && sudo podman ps -a
