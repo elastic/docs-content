@@ -6,15 +6,6 @@ mapped_pages:
 
 # Frequently asked questions (FAQ)
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/vuln-management-faq.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-vuln-management-faq.md
-
-
-
 Frequently asked questions about the Cloud Native Vulnerability Management (CNVM) integration and features.
 
 **Which security data sources does the CNVM integration use to identify vulnerabilities?**

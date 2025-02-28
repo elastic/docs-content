@@ -32,7 +32,7 @@ This integration supports Amazon EKS and unmanaged Kubernetes clusters. For setu
 
 1. When you add a KSPM integration, it generates a Kubernetes manifest. When applied to a cluster, the manifest deploys an {{agent}} as a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset) to ensure all nodes are evaluated.
 2. Upon deployment, the integration immediately assesses the security posture of your Kubernetes resources. The evaluation process repeats every four hours.
-3. After each evaluation, the integration sends findings to {{es}}. Findings appear on the [Cloud Security Posture dashboard](/solutions/security/cloud/cloud-security-posture-dashboard-2.md) and the [findings](/solutions/security/cloud/findings-page-2.md) page.
+3. After each evaluation, the integration sends findings to {{es}}. Findings appear on the [Cloud Security Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md) and the [findings](/solutions/security/cloud/findings-page-2.md) page.
 
 
 ## Use cases [kspm-use-cases] 
@@ -48,14 +48,14 @@ The KSPM integration helps you to:
 
 To identify and remediate failed failed findings:
 
-1. Go to the [Cloud Security Posture dashboard](/solutions/security/cloud/cloud-security-posture-dashboard-2.md).
+1. Go to the [Cloud Security Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md).
 2. Click **View all failed findings**, either for an individual cluster or for all monitored clusters.
 3. Click a failed finding. The findings flyout opens.
 4. Follow the steps under **Remediation** to correct the misconfiguration.
 
-    ::::{note} 
-    Remediation steps typically include commands for you to execute. These sometimes contain placeholder values that you must replace before execution.
-    ::::
+   ::::{note} 
+   Remediation steps typically include commands for you to execute. These sometimes contain placeholder values that you must replace before execution.
+   ::::
 
 
 
@@ -72,7 +72,7 @@ To identify the Kubernetes resources generating the most failed findings:
 
 To identify risks in particular CIS sections:
 
-1. Go to the [Cloud Security Posture dashboard](/solutions/security/cloud/cloud-security-posture-dashboard-2.md).
+1. Go to the [Cloud Security Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md).
 2. In the Failed findings by CIS section widget, click the name of a CIS section to view all failed findings for that section.
 
 Alternatively:

@@ -23,10 +23,6 @@ Session View has the following features:
 * **Alerts:** Process, file, and network alerts in the context of the events which caused them.
 * **Terminal output:** Terminal output associated with each process in the session.
 
-::::{note}
-To view Linux session data from your Kubernetes infrastructure, you’ll need to set up the [Kubernetes dashboard](/solutions/security/dashboards/kubernetes-dashboard.md).
-::::
-
 
 
 ## Enable Session View data [enable-session-view]

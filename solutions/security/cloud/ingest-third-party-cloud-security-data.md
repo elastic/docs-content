@@ -6,13 +6,6 @@ mapped_urls:
 
 # Ingest third-party cloud security data
 
-% What needs to be done: Lift-and-shift
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/ingest-third-party-cloud-security-data.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/ingest-third-party-cloud-security-data.md
-
 This section describes how to ingest cloud security data from third-party tools into {{es}}. Once ingested, this data can provide additional context and enrich your {{elastic-sec}} workflows.
 
 You can ingest both third-party cloud workload protection data and third-party security posture and vulnerability data.
@@ -27,7 +20,7 @@ You can ingest third-party cloud security alerts into {{elastic-sec}} to view th
 
 ## Ingest third-party security posture and vulnerability data [_ingest_third_party_security_posture_and_vulnerability_data] 
 
-You can ingest third-party data into {{elastic-sec}} to review and investigate it alongside data collected by {{elastic-sec}}'s native cloud security integrations. Once ingested, cloud security posture and vulnerability data appears on the [Findings](/solutions/security/cloud/findings-page.md) page, on the [Cloud Posture dashboard](/solutions/security/cloud/cloud-security-posture-dashboard.md), and in the entity details flyouts for [alerts](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section), [users](/solutions/security/explore/users-page.md#user-details-flyout), and [hosts](/solutions/security/explore/hosts-page.md#host-details-flyout).
+You can ingest third-party data into {{elastic-sec}} to review and investigate it alongside data collected by {{elastic-sec}}'s native cloud security integrations. Once ingested, cloud security posture and vulnerability data appears on the [Findings](/solutions/security/cloud/findings-page.md) page, on the [Cloud Posture dashboard](/solutions/security/dashboards/cloud-security-posture-dashboard.md), and in the entity details flyouts for [alerts](/solutions/security/detect-and-alert/view-detection-alert-details.md#insights-section), [users](/solutions/security/explore/users-page.md#user-details-flyout), and [hosts](/solutions/security/explore/hosts-page.md#host-details-flyout).
 
 * Learn to [ingest cloud security posture data from AWS Security Hub](/solutions/security/cloud/ingest-aws-security-hub-data.md).
 * Learn to [ingest cloud security posture and vulnerability data from Wiz](/solutions/security/cloud/ingest-wiz-data.md).
