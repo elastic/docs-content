@@ -26,7 +26,7 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 
 * Go: [`ELASTIC_APM_SANITIZE_FIELD_NAMES`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-sanitize-field-names)
 * Java: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-sanitize-field-names)
-* .NET: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-core.md#config-sanitize-field-names)
+* .NET: [`sanitizeFieldNames`](apm-agent-dotnet://reference/config-core.md#config-sanitize-field-names)
 * Node.js: [`sanitizeFieldNames`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#sanitize-field-names)
 * Python: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-sanitize-field-names)
 * Ruby: [`sanitize_field_names`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-sanitize-field-names)
@@ -35,7 +35,7 @@ Alternatively, you can completely disable the capturing of HTTP headers. This se
 
 * Go: [`ELASTIC_APM_CAPTURE_HEADERS`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-capture-headers)
 * Java: [`capture_headers`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-headers)
-* .NET: [`CaptureHeaders`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-http.md#config-capture-headers)
+* .NET: [`CaptureHeaders`](apm-agent-dotnet://reference/config-http.md#config-capture-headers)
 * Node.js: [`captureHeaders`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-headers)
 * Python: [`capture_headers`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-headers)
 * Ruby: [`capture_headers`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-headers)
@@ -49,7 +49,7 @@ This setting supports [Central configuration](apm-agent-central-configuration.md
 
 * Go: [`ELASTIC_APM_CAPTURE_BODY`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-capture-body)
 * Java: [`capture_body`](asciidocalypse://docs/apm-agent-java/docs/reference/config-core.md#config-capture-body)
-* .NET: [`CaptureBody`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-http.md#config-capture-body)
+* .NET: [`CaptureBody`](apm-agent-dotnet://reference/config-http.md#config-capture-body)
 * Node.js: [`captureBody`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#capture-body)
 * Python: [`capture_body`](asciidocalypse://docs/apm-agent-python/docs/reference/configuration.md#config-capture-body)
 * Ruby: [`capture_body`](asciidocalypse://docs/apm-agent-ruby/docs/reference/configuration.md#config-capture-body)

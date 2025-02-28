@@ -171,12 +171,12 @@ The Agent automatically registers callback methods for built-in Diagnostic Sourc
 
 If you're ready to give Elastic APM a try, see [Get started with traces and APM](../../../solutions/observability/apps/get-started-with-apm.md).
 
-See the [.NET agent reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/index.md) for full documentation, including:
+See the [.NET agent reference](apm-agent-dotnet://reference/index.md) for full documentation, including:
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/supported-technologies.md)
-* [Set up](asciidocalypse://docs/apm-agent-dotnet/docs/reference/set-up-apm-net-agent.md)
-* [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
-* [API reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md)
+* [Supported technologies](apm-agent-dotnet://reference/supported-technologies.md)
+* [Set up](apm-agent-dotnet://reference/set-up-apm-net-agent.md)
+* [Configuration reference](apm-agent-dotnet://reference/configuration.md)
+* [API reference](apm-agent-dotnet://reference/public-api.md)
 
 ::::{important}
 Not all APM agent configuration options are compatible with Elastic Cloud serverless.
