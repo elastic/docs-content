@@ -169,7 +169,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ### Deployments on serverless optimized for Search [deployments-on-serverless-optimized-for-search]
 ```{applies_to}
-stack: {{serverless-short}}
+serverless: all
 ```
 
 
