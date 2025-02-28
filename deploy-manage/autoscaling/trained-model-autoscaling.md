@@ -143,7 +143,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ### Deployments on serverless optimized for ingest [deployments-on-serverless-optimized-for-ingest]
 ```{applies_to}
-stack: {{serverless-short}}
+serverless: all
 ```
 
 In case of ingest-optimized deployments, we maximize the number of model allocations.
