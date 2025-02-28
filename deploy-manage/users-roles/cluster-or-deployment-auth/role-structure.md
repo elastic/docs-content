@@ -147,7 +147,7 @@ Remote indices are effective for remote clusters configured with the API key bas
 ::::
 
 
-The remote indices privileges entry has an extra mandatory `clusters` field compared to an [indices privileges entry](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-indices-priv). Otherwise the two have identical structure. The following describes the structure of a remote indices permissions entry:
+The remote indices privileges entry has an extra mandatory `clusters` field compared to an [indices privileges entry](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv). Otherwise the two have identical structure. The following describes the structure of a remote indices permissions entry:
 
 ```js
 {
