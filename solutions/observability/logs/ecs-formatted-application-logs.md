@@ -29,7 +29,7 @@ For more information on adding an ECS logger to your application, refer to the g
 * Node.js: [morgan](ecs-logging-nodejs://reference/winston.md)
 * [PHP](ecs-logging-php://reference/setup.md)
 * [Python](ecs-logging-python://reference/installation.md)
-* [Ruby](asciidocalypse://docs/ecs-logging-ruby/docs/reference/setup.md)
+* [Ruby](ecs-logging-ruby://reference/setup.md)
 
 
 ## APM agent ECS reformatting [apm-agent-ecs-reformatting]
