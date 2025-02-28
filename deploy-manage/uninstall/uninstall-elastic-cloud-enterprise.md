@@ -19,7 +19,7 @@ If the {{ece}} host you are uninstalling has the allocator role and is running i
 
 You can remove {{ece}} by removing all containers on the host:
 
-* If using Docker
+* If using Docker:
 
   ```sh
   docker rm -f frc-runners-runner frc-allocators-allocator $(docker ps -a -q); sudo rm -rf /mnt/data/elastic/ && docker ps -a
