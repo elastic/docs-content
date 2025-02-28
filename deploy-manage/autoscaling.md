@@ -59,7 +59,7 @@ You can also have a look at our [autoscaling example](./autoscaling/ece-autoscal
 ::::
 
 ## Overview [ec-autoscaling-intro]
-$$$ece-autoscaling-intro$$$$$$ech-autoscaling-intro$$$When you first create a deployment it can be challenging to determine the amount of storage your data nodes will require. The same is relevant for the amount of memory and CPU that you want to allocate to your machine learning nodes. It can become even more challenging to predict these requirements for weeks or months into the future. In an ideal scenario, these resources should be sized to both ensure efficient performance and resiliency, and to avoid excess costs. Autoscaling can help with this balance by adjusting the resources available to a deployment automatically as loads change over time, reducing the need for monitoring and manual intervention.
+When you first create a deployment it can be challenging to determine the amount of storage your data nodes will require. The same is relevant for the amount of memory and CPU that you want to allocate to your machine learning nodes. It can become even more challenging to predict these requirements for weeks or months into the future. In an ideal scenario, these resources should be sized to both ensure efficient performance and resiliency, and to avoid excess costs. Autoscaling can help with this balance by adjusting the resources available to a deployment automatically as loads change over time, reducing the need for monitoring and manual intervention.
 
 ::::{note}
 Autoscaling is enabled for the Machine Learning tier by default for new deployments.
@@ -88,7 +88,7 @@ For any Elasticsearch component the number of availability zones is not affected
 
 ## When does autoscaling occur?[ec-autoscaling-factors]
 
-$$$ece-autoscaling-factors$$$$$$ech-autoscaling-factors$$$Several factors determine when data tiers or machine learning nodes are scaled.
+Several factors determine when data tiers or machine learning nodes are scaled.
 
 For a data tier, an autoscaling event can be triggered in the following cases:
 
@@ -103,14 +103,13 @@ On machine learning nodes, scaling is determined by an estimate of the memory an
 On a highly available deployment, autoscaling events are always applied to instances in each availability zone simultaneously, to ensure consistency.
 
 ## Notifications[ec-autoscaling-notifications]
-$$$ece-autoscaling-notifications$$$$$$ech-autoscaling-notifications$$$
 In the event that a data tier or machine learning node scales up to its maximum possible size, you’ll receive an email, and a notice also appears on the deployment overview page prompting you to adjust your autoscaling settings to ensure optimal performance.
 
 In {{ece}} deployments, a warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../explore-analyze/alerts-cases/watcher.md).
 
 ## Restrictions and limitations[ec-autoscaling-restrictions]
 
-$$$ece-autoscaling-restrictions$$$$$$ech-autoscaling-restrictions$$$The following are known limitations and restrictions with autoscaling:
+The following are known limitations and restrictions with autoscaling:
 
 * Autoscaling will not run if the cluster is unhealthy or if the last Elasticsearch plan failed.
 
@@ -125,7 +124,7 @@ In {{ece}}, the following additional limitations apply:
 
 ## Enable or disable autoscaling[ec-autoscaling-enable]
 
-$$$ece-autoscaling-enable$$$$$$ech-autoscaling-enable$$$To enable or disable autoscaling on a deployment:
+To enable or disable autoscaling on a deployment:
 
 1. Log in to the ECE [Cloud UI]((/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md) or  [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 
@@ -144,7 +143,7 @@ When autoscaling has been disabled, you need to adjust the size of data tiers an
 
 ## Update your autoscaling settings[ec-autoscaling-update]
 
-$$$ece-autoscaling-update$$$$$$ech-autoscaling-update$$$Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
+Each autoscaling setting is configured with a default value. You can adjust these if necessary, as follows:
 
 1. **Log in** to the console.
 
