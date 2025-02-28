@@ -27,6 +27,7 @@ cross_links:
   - eland
   - elastic-serverless-forwarder
   - elasticsearch
+  - elasticsearch-hadoop
   - elasticsearch-java
   - elasticsearch-js
   - elasticsearch-net

@@ -5,7 +5,7 @@ Once you are [prepared to upgrade](../../../deploy-manage/upgrade/deployment-or-
 1. Consider closing {{ml}} jobs before you start the upgrade process. While {{ml}} jobs can continue to run during a rolling upgrade, it increases the overhead on the cluster during the upgrade process.
 2. Upgrade the components of your Elastic Stack in the following order:
 
-    1. {{es}} Hadoop: [install instructions](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/installation.md)
+    1. {{es}} Hadoop: [install instructions](elasticsearch-hadoop://reference/installation.md)
     2. {{es}}: [upgrade instructions](../../../deploy-manage/upgrade/deployment-or-cluster.md)
     3. Kibana: [upgrade instructions](../../../deploy-manage/upgrade/deployment-or-cluster.md)
     4. Java API Client: [dependency configuration](asciidocalypse://docs/elasticsearch-java/docs/reference/installation.md#maven)
