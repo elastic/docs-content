@@ -15,7 +15,7 @@ applies_to:
 
 - [Go](asciidocalypse://docs//go-elasticsearch/docs/reference/elasticsearch/elasticsearch-client-go-api/index.md)
 - [Java](elasticsearch-java://reference/index.md)
-- [JavaScript](asciidocalypse://docs/elasticsearch-js/docs/reference/index.md)
+- [JavaScript](elasticsearch-js://reference/index.md)
 - [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/index.md)
 - [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/index.md)
 - [Python](asciidocalypse://docs/elasticsearch-py/docs/reference/index.md)
