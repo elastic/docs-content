@@ -13,8 +13,8 @@ applies_to:
 
 # Autoscaling
 
-::::{note} 
-{{cloud-only}}
+::::{admonition} Indirect use only 
+This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
 ::::
 
 The autoscaling feature allows an operator to create tiers of nodes. These nodes monitor themselves to decide if they need to scale, based on an operator-defined policy. An Elasticsearch cluster can use the autoscaling API to report if it needs more resources to meet the policy. For example, an operator could define a policy that a warm tier should scale on available disk space. Elasticsearch monitors disk space in the warm tier. If it predicts low disk space for current and future shard copies, the autoscaling API will report that the cluster needs to scale. It remains the responsibility of the operator to add the additional resources that the cluster signals it requires.
@@ -42,21 +42,8 @@ To learn more about configuring and managing autoscaling, check the following se
 * [Enable or disable autoscaling](#ec-autoscaling-enable)
 * [Update your autoscaling settings](#ec-autoscaling-update)
 
-::::{tab-set}
-
-:::{tab-item} {{ech}}
 You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/autoscaling-api-example.md).
-:::
 
-:::{tab-item} {{ece}}
-You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/autoscaling-api-example.md).
-:::
-
-:::{tab-item} {{ecloud}} - Heroku
-You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md).
-:::
-
-::::
 
 ## Overview [ec-autoscaling-intro]
 When you first create a deployment it can be challenging to determine the amount of storage your data nodes will require. The same is relevant for the amount of memory and CPU that you want to allocate to your machine learning nodes. It can become even more challenging to predict these requirements for weeks or months into the future. In an ideal scenario, these resources should be sized to both ensure efficient performance and resiliency, and to avoid excess costs. Autoscaling can help with this balance by adjusting the resources available to a deployment automatically as loads change over time, reducing the need for monitoring and manual intervention.
