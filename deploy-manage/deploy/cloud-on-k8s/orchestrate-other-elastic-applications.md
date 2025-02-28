@@ -22,7 +22,7 @@ When orchestrating any of these applications, also consider the following topics
 * [Access Elastic Stack services](accessing-services.md)
 * [Customize Pods](customize-pods.md)
 * [Manage compute resources](manage-compute-resources.md)
-* [Autoscaling stateless applications](../../autoscaling/autoscaling-stateless-applications-on-eck.md)
+* [Autoscaling stateless applications](../../autoscaling/autoscaling-in-eck.md#k8s-stateless-autoscaling)
 * [Elastic Stack configuration policies](elastic-stack-configuration-policies.md)
 * [Upgrade the Elastic Stack version](../../upgrade/deployment-or-cluster.md)
 * [Connect to external Elastic resources](connect-to-external-elastic-resources.md)
