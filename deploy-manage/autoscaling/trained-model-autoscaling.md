@@ -101,7 +101,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 | Medium | 1 to 32 dynamically | 1 | 1 to the smaller of 32 or the limit set in the Cloud console, dynamically |
 | High | 1 to limit set in the Cloud console *, dynamically | 1 | 1 to limit set in the Cloud console, dynamically |
 
-* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
+\* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
 #### Adaptive resources disabled [_adaptive_resources_disabled]
 
