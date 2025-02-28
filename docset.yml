@@ -18,6 +18,7 @@ cross_links:
   - ecs
   - ecs-dotnet
   - ecs-logging
+  - ecs-logging-go-zap
   - elasticsearch
   - elasticsearch-java
   - elasticsearch-js
