@@ -46,7 +46,7 @@ All data is lost. Billing for usage is by the hour and any outstanding charges f
 :::::{{tab-set}}
 ::::{{tab-item}} Delete a deployment
 
-To delete an {{ece}} deployment,
+To delete an {{ece}} deployment:
 
 1. [Log into the Cloud UI](/deploy-manage/deploy/cloud-enterprise/log-into-cloud-ui.md).
 2. On the **Deployments** page, select your deployment.
