@@ -29,3 +29,10 @@ Autoscaling supports:
 ::::{note} 
 Autoscaling is not supported on Debian 8.
 ::::
+
+Find instructions on setting up and managing autoscaling, including supported environments, configuration options, and examples:
+
+* [Autoscaling in {{ece}} and {{ech}}](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
+* [Autoscaling in {{eck}}](TODO)
+* [Autoscaling deciders](/deploy-manage/autoscaling/autoscaling-deciders.md)
+* [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md)
