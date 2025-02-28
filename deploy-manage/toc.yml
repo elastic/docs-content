@@ -828,9 +828,17 @@ toc:
           - file: upgrade/orchestrator/upgrade-cloud-on-k8s.md
       - file: upgrade/deployment-or-cluster.md
         children:
+          - file: upgrade/deployment-or-cluster/upgrade-on-ech.md
+          - file: upgrade/deployment-or-cluster/upgrade-on-ece.md
+          - file: upgrade/deployment-or-cluster/upgrade-on-eck.md
+          - file: upgrade/deployment-or-cluster/self-managed.md
+            children:
+              - file: upgrade/deployment-or-cluster/elasticsearch.md
+              - file: upgrade/deployment-or-cluster/kibana.md
           - file: upgrade/deployment-or-cluster/archived-settings.md
             children:
               - file: upgrade/deployment-or-cluster/reading-indices-from-older-elasticsearch-versions.md
+      - file: upgrade/ingest-components.md
       - file: upgrade/internal-upgrade-processes.md
         children:
           - file: upgrade/internal-upgrade-processes/saved-object-migrations.md
