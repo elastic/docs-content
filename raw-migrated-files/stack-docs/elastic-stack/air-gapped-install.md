@@ -151,7 +151,7 @@ Air-gapped setup of this component is, essentially, identical to the setup of th
 Some {{ml}} features, like natural language processing (NLP), require you to deploy trained models. To learn about deploying {{ml}} models in an air-gapped environment, refer to:
 
 * [Deploy ELSER in an air-gapped environment](../../../explore-analyze/machine-learning/nlp/ml-nlp-elser.md#air-gapped-install).
-* [Install trained models in an air-gapped environment with Eland](asciidocalypse://docs/eland/docs/reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
+* [Install trained models in an air-gapped environment with Eland](eland://reference/machine-learning.md#ml-nlp-pytorch-air-gapped).
 
 
 #### 1.13 {{kib}} Product documentation for AI Assistants [air-gapped-kibana-product-documentation]
