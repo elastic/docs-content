@@ -63,6 +63,7 @@ toc:
                   - file: ingestion-tools/fleet/ingest-pipeline-kubernetes.md
                   - file: ingestion-tools/fleet/agent-environment-variables.md
               - file: ingestion-tools/fleet/otel-agent.md
+              - file: ingestion-tools/fleet/otel-agent-transform.md
               - file: ingestion-tools/fleet/elastic-agent-unprivileged.md
               - file: ingestion-tools/fleet/install-agent-msi.md
               - file: ingestion-tools/fleet/installation-layout.md
