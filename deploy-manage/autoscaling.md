@@ -114,18 +114,14 @@ $$$ece-autoscaling-restrictions$$$$$$ech-autoscaling-restrictions$$$The followin
 
 * Autoscaling will not run if the cluster is unhealthy or if the last Elasticsearch plan failed.
 
-::::{tab-set}
+In {{ech}} the following additional limitations apply:
 
-:::{tab-item} {{ech}}
 * Trial deployments cannot be configured to autoscale beyond the normal Trial deployment size limits. The maximum size per zone is increased automatically from the Trial limit when you convert to a paid subscription.
 * ELSER deployments do not scale automatically. For more information, refer to [ELSER](../explore-analyze/machine-learning/nlp/ml-nlp-elser.md) and [Trained model autoscaling](../explore-analyze/machine-learning/nlp/ml-nlp-auto-scale.md).
-:::
 
-:::{tab-item} {{ece}}
+In {{ece}}, the following additional limitations apply:
+
 * In the event that an override is set for the instance size or disk quota multiplier for an instance by means of the [Instance Overrides API](https://www.elastic.co/docs/api/doc/cloud-enterprise/operation/operation-set-all-instances-settings-overrides), autoscaling will be effectively disabled. It’s recommended to avoid adjusting the instance size or disk quota multiplier for an instance that uses autoscaling, since the setting prevents autoscaling.
-:::
-
-::::
 
 ## Enable or disable autoscaling[ec-autoscaling-enable]
 
