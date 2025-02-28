@@ -12,7 +12,7 @@ This page provides instructions for deleting a cloud deployment and outlines key
 
 ## {{ech}} [elastic-cloud-hosted]
 
-To delete an {{ech}} deployment, 
+To delete an {{ech}} deployment: 
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the deployment overview page, select **Actions**, then select **Delete deployment** and confirm the deletion.
