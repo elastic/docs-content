@@ -59,7 +59,7 @@ apm-server.auth.secret_token: <secret-token>
 
 Each Elastic {{apm-agent}} has a configuration option to set the value of the secret token:
 
-* **Android agent**: [`secretToken`](asciidocalypse://docs/apm-agent-android/docs/reference/configuration.md)
+* **Android agent**: [`secretToken`](apm-agent-android://reference/configuration.md)
 * **Go agent**: [`ELASTIC_APM_SECRET_TOKEN`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-secret-token)
 * **iOS agent**: [`secretToken`](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md#secretToken)
 * **Java agent**: [`secret_token`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-secret-token)

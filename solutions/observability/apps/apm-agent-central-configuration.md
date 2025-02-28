@@ -32,7 +32,7 @@ Each APM agent has a list of supported configurations. After selecting a Service
 Supported configurations are also tagged with the ![dynamic config](../../../images/observability-dynamic-config.svg "") badge in each APM agent’s configuration reference:
 
 Android agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-android/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-android://reference/configuration.md)
 
 Go agent
 :   [Configuration reference](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md)
