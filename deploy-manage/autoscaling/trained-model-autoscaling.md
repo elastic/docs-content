@@ -25,7 +25,6 @@ Trained model autoscaling is available for both serverless and Cloud deployments
 Security and Observability projects are only charged for data ingestion and retention. They are not charged for processing power (VCU usage), which is used for more complex operations, like running advanced search models. For example, in Search projects, models such as ELSER require significant processing power to provide more accurate search results.
 
 ## Enabling autoscaling through APIs - adaptive allocations [enabling-autoscaling-through-apis-adaptive-allocations]
-$$$nlp-model-adaptive-allocations$$$
 
 Model allocations are independent units of work for NLP tasks. If you set the numbers of threads and allocations for a model manually, they remain constant even when not all the available resources are fully used or when the load on the model requires more resources. Instead of setting the number of allocations manually, you can enable adaptive allocations to set the number of allocations based on the load on the process. This can help you to manage performance and cost more easily. (Refer to the [pricing calculator](https://cloud.elastic.co/pricing) to learn more about the possible costs.)
 
@@ -54,7 +53,6 @@ You can optimize your model deployment for typical use cases, such as search and
 * If you want to optimize for search, set the number of threads to greater than `1`. Increasing the number of threads will make the search processes more performant.
 
 ## Enabling autoscaling in {{kib}} - adaptive resources [enabling-autoscaling-in-kibana-adaptive-resources]
-$$$nlp-model-adaptive-resources$$$
 
 You can enable adaptive resources for your models when starting or updating the model deployment. Adaptive resources make it possible for {{es}} to scale up or down the available resources based on the load on the process. This can help you to manage performance and cost more easily. When adaptive resources are enabled, the number of vCPUs that the model deployment uses is set automatically based on the current load. When the load is high, the number of vCPUs that the process can use is automatically increased. When the load is low, the number of vCPUs that the process can use is automatically decreased.
 
