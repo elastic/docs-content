@@ -27,11 +27,6 @@ mapped_urls:
 % - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/scalability.md
 % - [ ] ./raw-migrated-files/cloud/cloud/ec-faq-technical.md
 % - [ ] ./raw-migrated-files/stack-docs/elastic-stack/overview.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md
-%      Notes: redirect only
-% - [ ] ./raw-migrated-files/kibana/kibana/management.md
-%      Notes: redirect only
 
 $$$adding_index_privileges$$$
 
@@ -59,5 +54,27 @@ $$$faq-static-ip-elastic-cloud$$$
 * [/raw-migrated-files/elasticsearch/elasticsearch-reference/scalability.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/scalability.md)
 * [/raw-migrated-files/cloud/cloud/ec-faq-technical.md](/raw-migrated-files/cloud/cloud/ec-faq-technical.md)
 * [/raw-migrated-files/stack-docs/elastic-stack/overview.md](/raw-migrated-files/stack-docs/elastic-stack/overview.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md](/raw-migrated-files/cloud/cloud-enterprise/ece-administering-deployments.md)
-* [/raw-migrated-files/kibana/kibana/management.md](/raw-migrated-files/kibana/kibana/management.md)
+
+
+=====
+
+
+  key tasks list
+
+  * distributed architecture
+  * deploy
+  * prod guidance
+  * ref architectures
+  * backup/ha/resilience tools
+  * autoscaling
+  * remote clusters
+  * security
+  * users/roles
+  * spaces
+  * api keys
+  * monitoring
+  * cloud org mgmt
+  * license
+  * maintenance
+  * upgrade
+  * uninstall
