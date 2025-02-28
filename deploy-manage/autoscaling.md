@@ -49,7 +49,7 @@ You can also have a look at our [autoscaling example](./autoscaling/ece-autoscal
 :::
 
 :::{tab-item} {{ece}}
-You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/ece-autoscaling-api-example.md).
+You can also have a look at our [autoscaling example](./autoscaling/ece-autoscaling-example.md), as well as a sample request to [create an autoscaled deployment through the API](./autoscaling/autoscaling-api-example.md).
 :::
 
 :::{tab-item} {{ecloud}} - Heroku
