@@ -63,6 +63,7 @@ Refer to the tables in the [Model deployment resource matrix](#model-deployment-
 :::{image} ../../images/machine-learning-ml-nlp-deployment-id-elser-v2.png
 :alt: ELSER deployment with adaptive resources enabled.
 :class: screenshot
+:width: 500px
 :::
 
 Search projects are given access to more processing resources, while Security and Observability projects have lower limits. This difference is reflected in the UI configuration: Search projects have higher resource limits compared to Security and Observability projects to accommodate their more complex operations.
