@@ -470,8 +470,7 @@ toc:
   - file: autoscaling.md
     children:
       - file: autoscaling/autoscaling-in-ece-and-ech.md
-      - file: autoscaling/autoscaling-stateless-applications-on-eck.md
-      - file: autoscaling/deployments-autoscaling-on-eck.md
+      - file: autoscaling/autoscaling-in-eck.md
       - file: autoscaling/autoscaling-deciders.md
       - file: autoscaling/trained-model-autoscaling.md
   - file: remote-clusters.md
