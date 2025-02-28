@@ -7,7 +7,7 @@ applies_to:
   serverless:
 ---
 
-# Delete an {{ece}} or {{ech}} deployment and an {{serverless-full}} project
+# Delete an Enterprise or Hosted deployment or a Serverless project
 
 This page provides instructions for deleting several types of cloud deployments, and outlines key considerations before proceeding.
 
