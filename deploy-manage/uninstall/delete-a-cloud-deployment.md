@@ -79,7 +79,7 @@ To terminate an {{ece}} deployment,
 
 ::::{{tab-item}} Restore a deployment
 
-You can restore a deployment that was previously terminated to its original configuration. Note that the data that was in the deployment is not restored, since it is deleted as part of the termination process. If you have a snapshot, you can [restore it](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to recover the Elasticsearch indices.
+You can restore a deployment that was previously terminated to its original configuration. Note that the data that was in the deployment is not restored, since it is deleted as part of the termination process. If you have a snapshot, you can [restore it](/deploy-manage/tools/snapshot-and-restore/restore-snapshot.md) to recover the {{es}} indices.
 
 To restore a terminated deployment,
 
