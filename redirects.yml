@@ -19,7 +19,6 @@ redirects:
       'roles-application-priv':
       'roles-remote-indices-priv':
       'roles-remote-cluster-priv':
-      '_example_9':
 
 ## reference
   'reference/security/elastic-defend/index.md': 'solutions/security/configure-elastic-defend.md'
