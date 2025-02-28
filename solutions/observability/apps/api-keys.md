@@ -106,7 +106,7 @@ Click **Create APM Agent key** and copy the Base64 encoded API key. You will nee
 
 You can now apply your newly created API keys in the configuration of each of your APM agents. See the relevant agent documentation for additional information:
 
-* **Android**: [`apiKey`](asciidocalypse://docs/apm-agent-android/docs/reference/configuration.md)
+* **Android**: [`apiKey`](apm-agent-android://reference/configuration.md)
 * **Go agent**: [`ELASTIC_APM_API_KEY`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-api-key)
 * **.NET agent**: [`ApiKey`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-reporter.md#config-api-key)
 * **iOS**: [`withApiKey`](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md#withApiKey)
