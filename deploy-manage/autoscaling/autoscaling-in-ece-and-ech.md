@@ -16,6 +16,9 @@ applies_to:
 
 # Autoscaling in {{ece}} and {{ech}}
 
+## Overview [ec-autoscaling-intro]
+When you first create a deployment it can be challenging to determine the amount of storage your data nodes will require. The same is relevant for the amount of memory and CPU that you want to allocate to your machine learning nodes. It can become even more challenging to predict these requirements for weeks or months into the future. In an ideal scenario, these resources should be sized to both ensure efficient performance and resiliency, and to avoid excess costs. Autoscaling can help with this balance by adjusting the resources available to a deployment automatically as loads change over time, reducing the need for monitoring and manual intervention.
+
 To learn more about configuring and managing autoscaling, check the following sections:
 
 * [Overview](#ec-autoscaling-intro)
@@ -26,10 +29,6 @@ To learn more about configuring and managing autoscaling, check the following se
 * [Update your autoscaling settings](#ec-autoscaling-update)
 
 You can also have a look at our [autoscaling example](#ec-autoscaling-example), as well as a sample request to [create an autoscaled deployment through the API](#ec-autoscaling-api-example).
-
-
-## Overview [ec-autoscaling-intro]
-When you first create a deployment it can be challenging to determine the amount of storage your data nodes will require. The same is relevant for the amount of memory and CPU that you want to allocate to your machine learning nodes. It can become even more challenging to predict these requirements for weeks or months into the future. In an ideal scenario, these resources should be sized to both ensure efficient performance and resiliency, and to avoid excess costs. Autoscaling can help with this balance by adjusting the resources available to a deployment automatically as loads change over time, reducing the need for monitoring and manual intervention.
 
 ::::{note}
 Autoscaling is enabled for the Machine Learning tier by default for new deployments.
