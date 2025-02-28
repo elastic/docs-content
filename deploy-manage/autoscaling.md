@@ -104,19 +104,9 @@ On a highly available deployment, autoscaling events are always applied to insta
 
 ## Notifications[ec-autoscaling-notifications]
 $$$ece-autoscaling-notifications$$$$$$ech-autoscaling-notifications$$$
-::::{tab-set}
-
-:::{tab-item} {{ech}} and {{ecloud}} - Heroku
 In the event that a data tier or machine learning node scales up to its maximum possible size, you’ll receive an email, and a notice also appears on the deployment overview page prompting you to adjust your autoscaling settings to ensure optimal performance.
-:::
 
-:::{tab-item} {{ece}}
-In the event that a data tier or machine learning node scales up to its maximum possible size, a notice appears on the deployment overview page prompting you to adjust your autoscaling settings in order to ensure optimal performance.
-
-A warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../explore-analyze/alerts-cases/watcher.md)
-:::
-
-::::
+In {{ece}} deployments, a warning is also issued in the ECE `service-constructor` logs with the field `labels.autoscaling_notification_type` and a value of `data-tier-at-limit` (for a fully scaled data tier) or `ml-tier-at-limit` (for a fully scaled machine learning node). The warning is indexed in the `logging-and-metrics` deployment, so you can use that event to [configure an email notification](../explore-analyze/alerts-cases/watcher.md).
 
 ## Restrictions and limitations[ec-autoscaling-restrictions]
 
