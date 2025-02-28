@@ -111,7 +111,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 | Medium | the smaller of 32 or the limit set in the Cloud console, statically | 1 | 32 if available |
 | High | Maximum available set in the  Cloud console *, statically | 1 | Maximum available set in the Cloud console, statically |
 
-* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
+\* The Cloud console doesn’t directly set an allocations limit; it only sets a vCPU limit. This vCPU limit indirectly determines the number of allocations, calculated as the vCPU limit divided by the number of threads.
 
 ### Deployments in Cloud optimized for search [_deployments_in_cloud_optimized_for_search]
 ```{applies_to}
