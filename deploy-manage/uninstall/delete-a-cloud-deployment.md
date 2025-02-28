@@ -17,7 +17,7 @@ To delete an {{ech}} deployment:
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. On the deployment overview page, select **Actions**, then select **Delete deployment** and confirm the deletion.
 
-When you delete your deployment, billing stops immediately rounding up to the nearest hour.
+When you delete your deployment, billing stops immediately, rounding up to the nearest hour.
 
 :::{{warning}}
 When deployments are deleted, we erase all data on disk, including snapshots. Snapshots are retained for very a limited amount of time post deletion and we cannot guarantee that deleted deployments can be restored from snapshots for this reason. If you accidentally delete a deployment, please contact support as soon as possible to increase the likelihood of restoring your deployment.
