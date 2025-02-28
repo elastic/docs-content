@@ -21,6 +21,7 @@ cross_links:
   - ecs-logging-go-zap
   - ecs-logging-java
   - ecs-logging-nodejs
+  - ecs-logging-php
   - elasticsearch
   - elasticsearch-java
   - elasticsearch-js
