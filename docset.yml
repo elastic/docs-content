@@ -9,26 +9,27 @@ exclude:
 cross_links:
   - apm-agent-android
   - apm-agent-dotnet
-  - curator
   - asciidocalypse
-  - kibana
-  - integration-docs
-  - integrations
-  - logstash
-  - elasticsearch
-  - cloud
   - beats
-  - go-elasticsearch
+  - cloud
+  - cloud-on-k8s
+  - curator
+  - ecctl
+  - ecs
+  - ecs-logging
+  - elasticsearch
   - elasticsearch-java
+  - elasticsearch-js
   - elasticsearch-net
   - elasticsearch-php
   - elasticsearch-py
   - elasticsearch-ruby
-  - elasticsearch-js
-  - ecs
-  - ecs-logging
+  - go-elasticsearch
+  - integration-docs
+  - integrations
+  - kibana
+  - logstash
   - search-ui
-  - cloud-on-k8s
 
 toc:
   - file: index.md
