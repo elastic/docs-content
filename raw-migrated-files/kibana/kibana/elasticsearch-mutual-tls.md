@@ -79,7 +79,7 @@ If you haven’t already, start {{kib}} and connect it to {{es}} using the [enro
 
     ![Role mapping for the {{kib}} client certificate](../../../images/kibana-mutual-tls-role-mapping.png "")
 
-    For more information, see [role mappings](role-mappings.md).
+    For more information, see [](/deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md).
 
 7. Configure {{kib}} to use the client certificate and private key.
 

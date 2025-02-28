@@ -2,10 +2,10 @@
 mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/custom-roles.html
 applies_to:
-  serverless: all
+  serverless:
+    elasticsearch:
+    security:
 ---
-
-This content applies to: [![Elasticsearch](../../images/serverless-es-badge.svg "")](../../solutions/search.md) [![Security](../../images/serverless-sec-badge.svg "")](../../solutions/security/elastic-security-serverless.md)
 
 # Serverless project custom roles [custom-roles]
 
@@ -21,8 +21,13 @@ On this page, you'll learn about how to [manage custom roles in your project](#m
 
 ::::{note}
 You cannot assign [run as privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#_run_as_privilege) in {{serverless-full}} custom roles.
-
 ::::
+
+:::{{admonition}} Custom roles in {{stack}}
+This topic explains how to create custom roles in {{serverless-full}}. You can also create custom roles for {{stack}} clusters and deployments.
+
+[Learn more](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md).
+:::
 
 ## Manage custom roles
 
@@ -51,12 +56,25 @@ Each role can grant access to multiple data indices, and each index can have a d
 
 Refer to [index privileges](asciidocalypse://reference/elasticsearch/security-privileges.md#privileges-list-indices) for a complete description of available options.
 
-### Document-level and field-level security
+### Document level and field level security
 
 Document-level and field-level security affords you even more granularity when it comes to granting access to your data: 
 
-* With document-level security (DLS), you can write an {{es}} query to describe which documents this role grants access to. Add your query in the **Granted documents query** field. 
+* With document-level security (DLS), you can write an {{es}} query to describe which documents this role grants access to. Add your query in the **Granted documents query** field using [QueryDSL](/explore-analyze/query-filter/languages/querydsl.md) syntax. 
+  
+  For example, the following query grants read access only to the documents whose `department_id` equals `12`:
+
+  ```json
+  {
+    "term" : { "department_id" : 12 }
+  }
+  ```
+
 * With field-level security (FLS), you can instruct {{es}} to grant or deny access to specific fields within each document. List these fields in the **Granted fields** field.
+
+:::{{tip}}
+{{serverless-full}} and {{stack}} both use queries to specify the documents that a role can access. For additional query examples, refer to [Controlling access at the document and field level](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#document-level-security).
+:::
 
 
 ## {{kib}} privileges [custom-roles-kib-privileges]

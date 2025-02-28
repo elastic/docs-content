@@ -9,7 +9,7 @@ mapped_urls:
 
 You can create user roles and define privileges to manage feature access in {{elastic-sec}}. This allows you to use the principle of least privilege while managing access to {{elastic-defend}}'s features.
 
-To configure roles and privileges, find **Roles** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). For more details on using this UI, refer to [{{kib}} privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#adding_kibana_privileges) for {{stack}}, or to [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) for {{serverless-short}}.
+To configure roles and privileges, find **Roles** in the navigation menu or by using the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md). For more details on using this UI, refer to [](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) for {{stack}}, or to [Custom roles](/deploy-manage/users-roles/cloud-organization/user-roles.md) for {{serverless-short}}.
 
 ::::{note}
 {{elastic-defend}}'s feature privileges must be assigned to **All Spaces**. You can’t assign them to an individual space.

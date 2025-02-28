@@ -1,4 +1,13 @@
-# Defining roles [defining-roles]
+---
+applies_to:
+  deployment:
+    ece:
+    ess:
+    eck:
+    self:
+---
+
+# Role structure
 
 A role is defined by the following JSON structure:
 
@@ -16,15 +25,23 @@ A role is defined by the following JSON structure:
 }
 ```
 
-1. A list of usernames the owners of this role can [impersonate](../../../deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md).
-2. A list of cluster privileges. These privileges define the cluster level actions users with this role are able to execute. This field is optional (missing `cluster` privileges effectively mean no cluster level permissions).
+1. A list of usernames the owners of this role can [impersonate](/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users.md).
+2. A list of cluster privileges. These privileges define the cluster level actions users with this role are able to execute. 
+   
+   This field is optional (missing `cluster` privileges effectively mean no cluster level permissions).
 3. An object defining global privileges. A global privilege is a form of cluster privilege that is request sensitive. A standard cluster privilege makes authorization decisions based solely on the action being executed. A global privilege also considers the parameters included in the request. Support for global privileges is currently limited to the management of application privileges. This field is optional.
-4. A list of indices permissions entries. This field is optional (missing `indices` privileges effectively mean no index level permissions).
+4. A list of indices permissions entries.
+   
+   This field is optional (missing `indices` privileges effectively mean no index level permissions).
 5. A list of application privilege entries. This field is optional.
-6. A list of indices permissions entries for [remote clusters configured with the API key based model](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md). This field is optional (missing `remote_indices` privileges effectively mean no index level permissions for any API key based remote clusters).
-7. A list of cluster permissions entries for [remote clusters configured with the API key based model](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md). This field is optional (missing `remote_cluster` privileges effectively means no additional cluster permissions for any API key based remote clusters).
+6. A list of indices permissions entries for [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md). 
+   
+   This field is optional (missing `remote_indices` privileges effectively mean no index level permissions for any API key based remote clusters).
+7. A list of cluster permissions entries for [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md). 
+   
+   This field is optional (missing `remote_cluster` privileges effectively means no additional cluster permissions for any API key based remote clusters).
 8. Metadata field associated with the role, such as `metadata.app_tag`. Metadata is internally indexed as a [flattened](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/flattened.md) field type. This means that all sub-fields act like `keyword` fields when querying and sorting. Metadata values can be simple values, but also lists and maps. This field is optional.
-9. A string value with the description text of the role. The maximum length of it is `1000` chars. The field is internally indexed as a [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type) field type (with default values for all parameters). This field is optional.
+9.  A string value with the description text of the role. The maximum length of it is `1000` chars. The field is internally indexed as a [text](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#text-field-type) field type (with default values for all parameters). This field is optional.
 
 
 ::::{note}
@@ -50,27 +67,30 @@ The following describes the structure of an indices permissions entry:
 
 1. A list of data streams, indices, and aliases to which the permissions in this entry apply. Supports wildcards (`*`).
 2. The index level privileges the owners of the role have on the associated data streams and indices specified in the `names` argument.
-3. Specification for document fields the owners of the role have read access to. See [Setting up field and document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for details.
+3. Specification for document fields the owners of the role have read access to. See [Setting up field and document level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for details.
 4. A search query that defines the documents the owners of the role have read access to. A document within the associated data streams and indices must match this query in order for it to be accessible by the owners of the role.
 5. Restricted indices are a special category of indices that are used internally to store configuration data and should not be directly accessed. Only internal system roles should normally grant privileges over the restricted indices. **Toggling this flag is very strongly discouraged because it could effectively grant unrestricted operations on critical data, making the entire system unstable or leaking sensitive information.** If however, for administrative purposes, you need to create a role with privileges covering restricted indices, you must set this field to `true` (default is `false`), and then the `names` field will cover the restricted indices as well.
 
 
-::::{tip}
+::::{admonition} Using wildcards and regex
 The `names` parameter accepts wildcard and regular expressions that may refer to multiple data streams, indices, and aliases.
 
-* Wildcard (default) - simple wildcard matching where `*` is a placeholder for zero or more characters, `?` is a placeholder for a single character and `\` may be used as an escape character.
-* Regular Expressions - A more powerful syntax for matching more complex patterns. This regular expression is based on Lucene’s regexp automaton syntax. To enable this syntax, it must be wrapped within a pair of forward slashes (`/`). Any pattern starting with `/` and not ending with `/` is considered to be malformed.
+* Wildcard (default): Simple wildcard matching where `*` is a placeholder for zero or more characters, `?` is a placeholder for a single character and `\` may be used as an escape character.
+* Regular Expressions: A more powerful syntax for matching more complex patterns. This regular expression is based on Lucene’s regexp automaton syntax. To enable this syntax, it must be wrapped within a pair of forward slashes (`/`). Any pattern starting with `/` and not ending with `/` is considered to be malformed.
 
-```yaml
-"foo-bar":               # match the literal `foo-bar`
-"foo-*":                 # match anything beginning with "foo-"
-"logstash-201?-*":       # ? matches any one character
-"/.*-201[0-9]-.*/":      # use a regex to match anything containing 2010-2019
-"/foo":                  # syntax error - missing final /
+```js
+"foo-bar": <1>
+"foo-*": <2>
+"logstash-201?-*": <3>
+"/.*-201[0-9]-.*/": <4>
+"/foo": <5>
 ```
-
+1. Match the literal `foo-bar`
+2. Match anything beginning with "foo-"
+3. `?` matches any one character
+4. Use a regex to match anything containing 2010-2019
+5. syntax error - missing final `/`
 ::::
-
 
 
 ## Global privileges [roles-global-priv]
@@ -97,8 +117,6 @@ The following describes the structure of the global privileges entry:
 3. The privilege for the ability to write the `access` and `data` of any user profile
 4. The list of names, wildcards and regular expressions to which the write privilege is restricted to
 
-
-
 ## Application privileges [roles-application-priv]
 
 The following describes the structure of an application privileges entry:
@@ -115,7 +133,6 @@ The following describes the structure of an application privileges entry:
 2. The list of the names of the application privileges to grant to this role.
 3. The resources to which those privileges apply. These are handled in the same way as index name pattern in `indices` permissions. These resources do not have any special meaning to the {{es}} {{security-features}}.
 
-
 For details about the validation rules for these fields, see the [add application privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-privileges).
 
 A role may refer to application privileges that do not exist - that is, they have not yet been defined through the add application privileges API (or they were defined, but have since been deleted). In this case, the privilege has no effect, and will not grant any actions in the [has privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-has-privileges).
@@ -123,14 +140,14 @@ A role may refer to application privileges that do not exist - that is, they hav
 
 ## Remote indices privileges [roles-remote-indices-priv]
 
-For [remote clusters configured with the API key based model](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md), remote indices privileges can be used to specify desired indices privileges for matching remote clusters. The final effective index privileges will be an intersection of the remote indices privileges and the [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key)'s indices privileges.
+For [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md), remote indices privileges can be used to specify desired indices privileges for matching remote clusters. The final effective index privileges will be an intersection of the remote indices privileges and the [cross-cluster API key](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key)'s indices privileges.
 
 ::::{note}
 Remote indices are effective for remote clusters configured with the API key based model. They have no effect for remote clusters configured with the certificate based model.
 ::::
 
 
-The remote indices privileges entry has an extra mandatory `clusters` field compared to an [indices privileges entry](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-indices-priv). Otherwise the two have identical structure. The following describes the structure of a remote indices permissions entry:
+The remote indices privileges entry has an extra mandatory `clusters` field compared to an [indices privileges entry](/deploy-manage/users-roles/cluster-or-deployment-auth/role-structure.md#roles-indices-priv). Otherwise the two have identical structure. The following describes the structure of a remote indices permissions entry:
 
 ```js
 {
@@ -146,15 +163,14 @@ The remote indices privileges entry has an extra mandatory `clusters` field comp
 1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). This field is required.
 2. A list of data streams, indices, and aliases to which the permissions in this entry apply. Supports wildcards (`*`).
 3. The index level privileges the owners of the role have on the associated data streams and indices specified in the `names` argument.
-4. Specification for document fields the owners of the role have read access to. See [Setting up field and document level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for details.
+4. Specification for document fields the owners of the role have read access to. See [Setting up field and document level security](/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) for details.
 5. A search query that defines the documents the owners of the role have read access to. A document within the associated data streams and indices must match this query in order for it to be accessible by the owners of the role.
 6. Restricted indices are a special category of indices that are used internally to store configuration data and should not be directly accessed. Only internal system roles should normally grant privileges over the restricted indices. **Toggling this flag is very strongly discouraged because it could effectively grant unrestricted operations on critical data, making the entire system unstable or leaking sensitive information.** If however, for administrative purposes, you need to create a role with privileges covering restricted indices, you must set this field to `true` (default is `false`), and then the `names` field will cover the restricted indices as well.
 
 
-
 ## Remote cluster privileges [roles-remote-cluster-priv]
 
-For [remote clusters configured with the API key based model](../../../deploy-manage/remote-clusters/remote-clusters-api-key.md), remote cluster privileges can be used to specify additional cluster privileges for matching remote clusters.
+For [remote clusters configured with the API key based model](/deploy-manage/remote-clusters/remote-clusters-api-key.md), remote cluster privileges can be used to specify additional cluster privileges for matching remote clusters.
 
 ::::{note}
 Remote cluster privileges are only effective for remote clusters configured with the API key based model. They have no effect on remote clusters configured with the certificate based model.
@@ -171,8 +187,7 @@ The following describes the structure of a remote cluster permissions entry:
 ```
 
 1. A list of remote cluster aliases. It supports literal strings as well as [wildcards](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) and [regular expressions](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/regexp-syntax.md). This field is required.
-2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
-
+2. The cluster level privileges for the remote cluster. The allowed values here are a subset of the [cluster privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md#privileges-list-cluster). The [builtin privileges API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges) can be used to determine which privileges are allowed here. This field is required.
 
 
 ## Example [_example_9]
@@ -206,61 +221,5 @@ Based on the above definition, users owning the `clicks_admin` role can:
 * Within these document, only read the `category`, `@timestamp` and `message` fields.
 
 ::::{tip}
-For a complete list of available [cluster and indices privileges](../../../deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md)
+View a complete list of available [cluster and indices privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md).
 ::::
-
-
-There are two available mechanisms to define roles: using the *Role Management APIs* or in local files on the {{es}} nodes. You can also implement custom roles providers. If you need to integrate with another system to retrieve user roles, you can build a custom roles provider plugin. For more information, see [Customizing roles and authorization](../../../deploy-manage/users-roles/cluster-or-deployment-auth/authorization-plugins.md).
-
-
-## Role management UI [roles-management-ui]
-
-You can manage users and roles easily in {{kib}}. To manage roles, log in to {{kib}} and go to **Management / Security / Roles**.
-
-
-## Role management API [roles-management-api]
-
-The *Role Management APIs* enable you to add, update, remove and retrieve roles dynamically. When you use the APIs to manage roles in the `native` realm, the roles are stored in an internal {{es}} index. For more information and examples, see [Roles](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-security).
-
-
-## File-based role management [roles-management-file]
-
-Apart from the *Role Management APIs*, roles can also be defined in local `roles.yml` file located in `ES_PATH_CONF`. This is a YAML file where each role definition is keyed by its name.
-
-::::{important}
-If the same role name is used in the `roles.yml` file and through the *Role Management APIs*, the role found in the file will be used.
-
-::::
-
-
-While the *Role Management APIs* is the preferred mechanism to define roles, using the `roles.yml` file becomes useful if you want to define fixed roles that no one (beside an administrator having physical access to the {{es}} nodes) would be able to change. Please note however, that the `roles.yml` file is provided as a minimal administrative function and is not intended to cover and be used to define roles for all use cases.
-
-::::{important}
-You cannot view, edit, or remove any roles that are defined in `roles.yml` by using the [role management UI](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-ui) or the [role management APIs](../../../deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md#roles-management-api).
-
-::::
-
-
-::::{important}
-The `roles.yml` file is managed locally by the node and is not globally by the cluster. This means that with a typical multi-node cluster, the exact same changes need to be applied on each and every node in the cluster.
-
-A safer approach would be to apply the change on one of the nodes and have the `roles.yml` distributed/copied to all other nodes in the cluster (either manually or using a configuration management system such as Puppet or Chef).
-
-::::
-
-
-The following snippet shows an example of the `roles.yml` file configuration:
-
-```yaml
-click_admins:
-  run_as: [ 'clicks_watcher_1' ]
-  cluster: [ 'monitor' ]
-  indices:
-    - names: [ 'events-*' ]
-      privileges: [ 'read' ]
-      field_security:
-        grant: ['category', '@timestamp', 'message' ]
-      query: '{"match": {"category": "click"}}'
-```
-
-{{es}} continuously monitors the `roles.yml` file and automatically picks up and applies any changes to it.

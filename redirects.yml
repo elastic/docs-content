@@ -1,12 +1,26 @@
 redirects:
-  'solutions/search/search-approaches/near-real-time-search.md': '!manage-data/data-store/near-real-time-search.md'
+# get-started
   'get-started/installing-elastic-stack.md': '!deploy-manage/deploy/self-managed.md'
+
+# solutions
+  'solutions/search/search-approaches/near-real-time-search.md': '!manage-data/data-store/near-real-time-search.md'
+
+## deploy-manage
   'deploy-manage/deploy/elastic-cloud/ec-configure-deployment-settings.md': '!deploy-manage/deploy/elastic-cloud/ec-customize-deployment-components.md'
   'deploy-manage/users-roles/cluster-or-deployment-auth/user-authentication.md':
     anchors:
       'anonymous-authentication':
       'basic-authentication':
       'http-authentication':
+  'deploy-manage/users-roles/cluster-or-deployment-auth/defining-roles.md': 
+    anchors:
+      'roles-indices-priv':
+      'roles-global-priv':
+      'roles-application-priv':
+      'roles-remote-indices-priv':
+      'roles-remote-cluster-priv':
+
+## reference
   'reference/security/elastic-defend/index.md': 'solutions/security/configure-elastic-defend.md'
   'reference/security/elastic-defend/elastic-endpoint-deploy-reqs.md': 'solutions/security/configure-elastic-defend/elastic-defend-requirements.md'
   'reference/security/elastic-defend/install-endpoint.md': 'solutions/security/configure-elastic-defend/install-elastic-defend.md'

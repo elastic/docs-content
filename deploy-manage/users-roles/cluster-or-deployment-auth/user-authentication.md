@@ -12,16 +12,6 @@ applies_to:
 
 # User authentication
 
-% What needs to be done: Refine
-
-% GitHub issue: https://github.com/elastic/docs-projects/issues/347
-
-% Scope notes: reference ECE SSO, cloud SSO
-
-% Use migrated content from existing pages that map to this page:
-
-% - [ ] ./raw-migrated-files/kibana/kibana/kibana-authentication.md
-
 Authentication identifies an individual. To gain access to restricted resources, a user must prove their identity, using passwords, credentials, or some other means (typically referred to as authentication tokens).
 
 The {{stack}} authenticates users by identifying the users behind the requests that hit the cluster and verifying that they are who they claim to be. The authentication process is handled by one or more authentication services called [*realms*](/deploy-manage/users-roles/cluster-or-deployment-auth/authentication-realms.md).

@@ -1,6 +1,13 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html
+applies_to:
+  deployment:
+    ece:
+    eck:
+    ess:
+    self:
+navigation_title: Submit requests on behalf of other users
 ---
 
 # Submitting requests on behalf of other users [run-as-privilege]
@@ -11,12 +18,14 @@ To "run as" (impersonate) another user, the first user (the authenticating user)
 
 The `run_as` privilege essentially operates like a secondary form of [delegated authorization](realm-chains.md#authorization_realms). Delegated authorization applies to the authenticating user, and the `run_as` privilege applies to the user who is being impersonated.
 
-true
-For the authenticating user, the following realms (plus API keys) all support `run_as` delegation: `native`, `file`, Active Directory, JWT, Kerberos, LDAP and PKI.
+## Authenticating user
 
-Service tokens, the {{es}} Token Service, SAML 2.0, and OIDC 1.0 do not support `run_as` delegation.
+For the authenticating user, the following realms (plus API keys) all support `run_as` delegation: [native](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md), [file](/deploy-manage/users-roles/cluster-or-deployment-auth/file-based.md), [Active Directory](/deploy-manage/users-roles/cluster-or-deployment-auth/active-directory.md), [JWT](/deploy-manage/users-roles/cluster-or-deployment-auth/jwt.md), [Kerberos](/deploy-manage/users-roles/cluster-or-deployment-auth/kerberos.md), [LDAP](/deploy-manage/users-roles/cluster-or-deployment-auth/ldap.md), and [PKI](/deploy-manage/users-roles/cluster-or-deployment-auth/pki.md).
 
-true
+Service tokens, the {{es}} token service, SAML, and OIDC do not support `run_as` delegation.
+
+## `run_as` user
+
 {{es}} supports `run_as` for any realm that supports user lookup. Not all realms support user lookup. Refer to the list of [supported realms](looking-up-users-without-authentication.md) and ensure that the realm you wish to use is configured in a manner that supports user lookup.
 
 The `run_as` user must be retrieved from a [realm](authentication-realms.md) - it is not possible to run as a [service account](service-accounts.md), [API key](token-based-authentication-services.md#token-authentication-api-key) or [access token](token-based-authentication-services.md#token-authentication-access-token).
@@ -52,107 +61,112 @@ For example, JWT realms can authenticate external users specified in JWTs, and e
 
 ## Apply the `run_as` privilege to roles [run-as-privilege-apply]
 
-You can apply the `run_as` privilege when creating roles with the [create or update roles API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role). Users who are assigned a role that contains the `run_as` privilege inherit all privileges from their role, and can also submit requests on behalf of the indicated users.
+You can apply the `run_as` privilege when creating roles with the [role management API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role), or using the [role management UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) in {{kib}}. Users who are assigned a role that contains the `run_as` privilege inherit all privileges from their role, and can also submit requests on behalf of the indicated users.
 
 ::::{note} 
 Roles for the authenticated user and the `run_as` user are not merged. If a user authenticates without specifying the `run_as` parameter, only the authenticated user’s roles are used. If a user authenticates and their roles include the `run_as` parameter, only the `run_as` user’s roles are used.
 ::::
 
-
 After a user successfully authenticates to {{es}}, an authorization process determines whether the user behind an incoming request is allowed to run that request. If the authenticated user has the `run_as` privilege in their list of permissions and specifies the run-as header, {{es}} *discards* the authenticated user and associated roles. It then looks in each of the configured realms in the realm chain until it finds the username that’s associated with the `run_as` user, and uses those roles to execute any requests.
+
+### Example
 
 Consider an admin role and an analyst role. The admin role has higher privileges, but might also want to submit requests as another user to test and verify their permissions.
 
-First, we’ll create an admin role named `my_admin_role`. This role has `manage` [privileges](elasticsearch-privileges.md) on the entire cluster, and on a subset of indices. This role also contains the `run_as` privilege, which enables any user with this role to submit requests on behalf of the specified `analyst_user`.
+This example uses the role management API, but a similar configuration can be set up using the [Create users](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) and [Users](/deploy-manage/users-roles/cluster-or-deployment-auth/native.md#managing-native-users) pages in {{kib}}. 
 
-```console
-POST /_security/role/my_admin_role?refresh=true
-{
-  "cluster": ["manage"],
-  "indices": [
+1.  Create an admin role named `my_admin_role`. This role has `manage` [privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) on the entire cluster, and on a subset of indices. This role also contains the `run_as` privilege, which enables any user with this role to submit requests on behalf of the specified `analyst_user`.
+
+    You can set up a similar role using the [role management UI](/deploy-manage/users-roles/cluster-or-deployment-auth/kibana-role-management.md) in {{kib}} by selecting an `analyst_user` from the **Run As privileges** dropdown menu in the **Elasticsearch** section.
+
+    ```console
+    POST /_security/role/my_admin_role?refresh=true
     {
-      "names": [ "index1", "index2" ],
-      "privileges": [ "manage" ]
+      "cluster": ["manage"],
+      "indices": [
+        {
+          "names": [ "index1", "index2" ],
+          "privileges": [ "manage" ]
+        }
+      ],
+      "applications": [
+        {
+          "application": "myapp",
+          "privileges": [ "admin", "read" ],
+          "resources": [ "*" ]
+        }
+      ],
+      "run_as": [ "analyst_user" ],
+      "metadata" : {
+        "version" : 1
+      }
     }
-  ],
-  "applications": [
+    ```
+
+2. Create an analyst role named `my_analyst_role`, which has more restricted `monitor` cluster privileges and `manage` privileges on a subset of indices.
+
+    ```console
+    POST /_security/role/my_analyst_role?refresh=true
     {
-      "application": "myapp",
-      "privileges": [ "admin", "read" ],
-      "resources": [ "*" ]
+      "cluster": [ "monitor"],
+      "indices": [
+        {
+          "names": [ "index1", "index2" ],
+          "privileges": ["manage"]
+        }
+      ],
+      "applications": [
+        {
+          "application": "myapp",
+          "privileges": [ "read" ],
+          "resources": [ "*" ]
+        }
+      ],
+      "metadata" : {
+        "version" : 1
+      }
     }
-  ],
-  "run_as": [ "analyst_user" ],
-  "metadata" : {
-    "version" : 1
-  }
-}
-```
+    ```
 
-Next, we’ll create an analyst role named `my_analyst_role`, which has more restricted `monitor` cluster privileges and `manage` privileges on a subset of indices.
+3. Create an administrator user and assign them the role named `my_admin_role`, which allows this user to submit requests as the `analyst_user`.
 
-```console
-POST /_security/role/my_analyst_role?refresh=true
-{
-  "cluster": [ "monitor"],
-  "indices": [
-    {
-      "names": [ "index1", "index2" ],
-      "privileges": ["manage"]
-    }
-  ],
-  "applications": [
-    {
-      "application": "myapp",
-      "privileges": [ "read" ],
-      "resources": [ "*" ]
-    }
-  ],
-  "metadata" : {
-    "version" : 1
-  }
-}
-```
+      ```console
+      POST /_security/user/admin_user?refresh=true
+      {
+        "password": "l0ng-r4nd0m-p@ssw0rd",
+        "roles": [ "my_admin_role" ],
+        "full_name": "Eirian Zola",
+        "metadata": { "intelligence" : 7}
+      }
+      ```
 
-We’ll create an administrator user and assign them the role named `my_admin_role`, which allows this user to submit requests as the `analyst_user`.
+4. Create an analyst user and assign them the role named `my_analyst_role`.
 
-```console
-POST /_security/user/admin_user?refresh=true
-{
-  "password": "l0ng-r4nd0m-p@ssw0rd",
-  "roles": [ "my_admin_role" ],
-  "full_name": "Eirian Zola",
-  "metadata": { "intelligence" : 7}
-}
-```
+      ```console
+      POST /_security/user/analyst_user?refresh=true
+      {
+        "password": "l0nger-r4nd0mer-p@ssw0rd",
+        "roles": [ "my_analyst_role" ],
+        "full_name": "Monday Jaffe",
+        "metadata": { "innovation" : 8}
+      }
+      ```
 
-We can also create an analyst user and assign them the role named `my_analyst_role`.
+5. You can then authenticate to {{es}} as the `admin_user` or `analyst_user`. However, the `admin_user` could optionally submit requests on behalf of the `analyst_user`. 
+   
+    The following request authenticates to {{es}} with a `Basic` authorization token and submits the request as the `analyst_user`:
 
-```console
-POST /_security/user/analyst_user?refresh=true
-{
-  "password": "l0nger-r4nd0mer-p@ssw0rd",
-  "roles": [ "my_analyst_role" ],
-  "full_name": "Monday Jaffe",
-  "metadata": { "innovation" : 8}
-}
-```
+    ```sh
+    curl -s -X GET -H "Authorization: Basic YWRtaW5fdXNlcjpsMG5nLXI0bmQwbS1wQHNzdzByZA==" -H "es-security-runas-user: analyst_user" https://localhost:9200/_security/_authenticate
+    ```
 
-You can then authenticate to {{es}} as the `admin_user` or `analyst_user`. However, the `admin_user` could optionally submit requests on behalf of the `analyst_user`. The following request authenticates to {{es}} with a `Basic` authorization token and submits the request as the `analyst_user`:
+    The response indicates that the `analyst_user` submitted this request, using the `my_analyst_role` that’s assigned to that user. When the `admin_user` submitted the request, {{es}} authenticated that user, discarded their roles, and then used the roles of the `run_as` user.
 
-```sh
-curl -s -X GET -H "Authorization: Basic YWRtaW5fdXNlcjpsMG5nLXI0bmQwbS1wQHNzdzByZA==" -H "es-security-runas-user: analyst_user" https://localhost:9200/_security/_authenticate
-```
+    ```sh
+    {"username":"analyst_user","roles":["my_analyst_role"],"full_name":"Monday Jaffe","email":null,
+    "metadata":{"innovation":8},"enabled":true,"authentication_realm":{"name":"native",
+    "type":"native"},"lookup_realm":{"name":"native","type":"native"},"authentication_type":"realm"}
+    %
+    ```
 
-The response indicates that the `analyst_user` submitted this request, using the `my_analyst_role` that’s assigned to that user. When the `admin_user` submitted the request, {{es}} authenticated that user, discarded their roles, and then used the roles of the `run_as` user.
-
-```sh
-{"username":"analyst_user","roles":["my_analyst_role"],"full_name":"Monday Jaffe","email":null,
-"metadata":{"innovation":8},"enabled":true,"authentication_realm":{"name":"native",
-"type":"native"},"lookup_realm":{"name":"native","type":"native"},"authentication_type":"realm"}
-%
-```
-
-The `authentication_realm` and `lookup_realm` in the response both specify the `native` realm because both the `admin_user` and `analyst_user` are from that realm. If the two users are in different realms, the values for `authentication_realm` and `lookup_realm` are different (such as `pki` and `native`).
-
-
+    The `authentication_realm` and `lookup_realm` in the response both specify the `native` realm because both the `admin_user` and `analyst_user` are from that realm. If the two users are in different realms, the values for `authentication_realm` and `lookup_realm` are different (such as `pki` and `native`).

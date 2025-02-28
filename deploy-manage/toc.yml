@@ -594,7 +594,7 @@ toc:
               - file: users-roles/cloud-enterprise-orchestrator/ldap.md
               - file: users-roles/cloud-enterprise-orchestrator/saml.md
           - file: users-roles/cloud-enterprise-orchestrator/configure-sso-for-deployments.md
-      - file: users-roles/custom-roles.md
+      - file: users-roles/serverless-custom-roles.md
       - file: users-roles/cluster-or-deployment-auth.md
         children:
           - file: users-roles/cluster-or-deployment-auth/quickstart.md
@@ -646,14 +646,18 @@ toc:
               - file: users-roles/cluster-or-deployment-auth/manage-authentication-for-multiple-clusters.md
           - file: users-roles/cluster-or-deployment-auth/user-roles.md
             children:
+              - file: users-roles/cluster-or-deployment-auth/built-in-roles.md
               - file: users-roles/cluster-or-deployment-auth/defining-roles.md
                 children:
+                  - file: users-roles/cluster-or-deployment-auth/role-structure.md
                   - file: users-roles/cluster-or-deployment-auth/granting-privileges-for-data-streams-aliases.md
+                  - file: users-roles/cluster-or-deployment-auth/kibana-role-management.md
                   - file: users-roles/cluster-or-deployment-auth/role-restriction.md
-              - file: users-roles/cluster-or-deployment-auth/built-in-roles.md
-              - file: users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md
+              - file: users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md                  
               - file: users-roles/cluster-or-deployment-auth/kibana-privileges.md
               - file: users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md
+                children:
+                  - file: users-roles/cluster-or-deployment-auth/role-mapping-resources.md
               - file: users-roles/cluster-or-deployment-auth/authorization-delegation.md
               - file: users-roles/cluster-or-deployment-auth/authorization-plugins.md
               - file: users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md
