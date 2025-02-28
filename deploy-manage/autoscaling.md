@@ -94,7 +94,7 @@ For a data tier, an autoscaling event can be triggered in the following cases:
 
 * Based on an assessment of how shards are currently allocated, and the amount of storage and buffer space currently available.
 
-When past behavior on a hot tier indicates that the influx of data can increase significantly in the near future. Refer to [Reactive storage decider](../deploy-manage/autoscaling/autoscaling-deciders.md) and [Proactive storage decider](../deploy-manage/autoscaling/autoscaling-deciders.md) for more detail.
+* When past behavior on a hot tier indicates that the influx of data can increase significantly in the near future. Refer to [Reactive storage decider](../deploy-manage/autoscaling/autoscaling-deciders.md) and [Proactive storage decider](../deploy-manage/autoscaling/autoscaling-deciders.md) for more detail.
 
 * Through ILM  policies. For example, if a deployment has only hot nodes and autoscaling is enabled, it automatically creates warm or cold nodes, if an ILM policy is trying to move data from hot to warm or cold nodes.
 
