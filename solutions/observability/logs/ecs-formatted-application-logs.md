@@ -24,7 +24,7 @@ ECS loggers reformat your application logs into ECS-compatible JSON, removing th
 For more information on adding an ECS logger to your application, refer to the guide for your framework:
 
 * [.NET](ecs-dotnet://reference/setup.md)
-* Go: [zap](asciidocalypse://docs/ecs-logging-go-zap/docs/reference/setup.md)
+* Go: [zap](ecs-logging-go-zap://reference/setup.md)
 * [Java](asciidocalypse://docs/ecs-logging-java/docs/reference/setup.md)
 * Node.js: [morgan](asciidocalypse://docs/ecs-logging-nodejs/docs/reference/winston.md)
 * [PHP](asciidocalypse://docs/ecs-logging-php/docs/reference/setup.md)
