@@ -44,7 +44,7 @@ Java agent
 :   [Configuration reference](asciidocalypse://docs/apm-agent-java/docs/reference/configuration.md)
 
 .NET agent
-:   [Configuration reference](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
+:   [Configuration reference](apm-agent-dotnet://reference/configuration.md)
 
 Node.js agent
 :   [Configuration reference](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md)

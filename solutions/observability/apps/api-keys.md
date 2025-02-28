@@ -108,7 +108,7 @@ You can now apply your newly created API keys in the configuration of each of yo
 
 * **Android**: [`apiKey`](apm-agent-android://reference/configuration.md)
 * **Go agent**: [`ELASTIC_APM_API_KEY`](asciidocalypse://docs/apm-agent-go/docs/reference/configuration.md#config-api-key)
-* **.NET agent**: [`ApiKey`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/config-reporter.md#config-api-key)
+* **.NET agent**: [`ApiKey`](apm-agent-dotnet://reference/config-reporter.md#config-api-key)
 * **iOS**: [`withApiKey`](asciidocalypse://docs/apm-agent-ios/docs/reference/configuration.md#withApiKey)
 * **Java agent**: [`api_key`](asciidocalypse://docs/apm-agent-java/docs/reference/config-reporter.md#config-api-key)
 * **Node.js agent**: [`apiKey`](asciidocalypse://docs/apm-agent-nodejs/docs/reference/configuration.md#api-key)

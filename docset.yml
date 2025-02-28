@@ -8,6 +8,7 @@ exclude:
 
 cross_links:
   - apm-agent-android
+  - apm-agent-dotnet
   - asciidocalypse
   - kibana
   - integration-docs
