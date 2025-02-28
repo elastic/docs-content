@@ -22,7 +22,7 @@ For more information on adding an ECS logger to your application, refer to the g
 * [Java](ecs-logging-java://reference/setup.md)
 * Node.js: [morgan](ecs-logging-nodejs://reference/winston.md)
 * [PHP](ecs-logging-php://reference/setup.md)
-* [Python](asciidocalypse://docs/ecs-logging-python/docs/reference/installation.md)
+* [Python](ecs-logging-python://reference/installation.md)
 * [Ruby](asciidocalypse://docs/ecs-logging-ruby/docs/reference/setup.md)
 
 
