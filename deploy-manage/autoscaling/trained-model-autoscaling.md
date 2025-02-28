@@ -115,7 +115,8 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ### Deployments in Cloud optimized for search [_deployments_in_cloud_optimized_for_search]
 ```{applies_to}
-stack: {{ecloud}}
+deployment:
+  ech: all
 ```
 
 In case of search-optimized deployments, we maximize the number of threads. The maximum number of threads that can be claimed depends on the hardware your architecture has.
