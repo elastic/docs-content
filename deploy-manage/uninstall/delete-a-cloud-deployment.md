@@ -31,7 +31,7 @@ Billing restarts as soon as the deployment is restored.
 
 ## Serverless
 
-To delete a severless project,
+To delete a {{serverless-full}} project:
 
 1. Log in to the [{{ecloud}} Console](https://cloud.elastic.co?page=docs&placement=docs-body).
 2. Find your project on the home page in the **Serverless Projects** card and select **Manage** to access it directly. Or, select **Serverless Projects** to go to the projects page to view all of your projects.
