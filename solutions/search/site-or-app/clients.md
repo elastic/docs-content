@@ -14,7 +14,7 @@ applies_to:
 {{es}} provides official client libraries for popular programming languages. These libraries simplify the process of interacting with your {{es}} deployment.
 
 - [Go](asciidocalypse://docs//go-elasticsearch/docs/reference/elasticsearch/elasticsearch-client-go-api/index.md)
-- [Java](asciidocalypse://docs/elasticsearch-java/docs/reference/index.md)
+- [Java](elasticsearch-java://reference/index.md)
 - [JavaScript](asciidocalypse://docs/elasticsearch-js/docs/reference/index.md)
 - [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/index.md)
 - [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/index.md)
