@@ -81,7 +81,7 @@ Using Automatic Import allows users to create new third-party data integrations 
     :alt: The Automatic Import Review page showing proposed field mappings
     :::
 
-12. (Optional) After reviewing the proposed pipeline, you can fine-tune it by clicking **Edit pipeline**. Refer to the [{{elastic-sec}} ECS reference](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md) to learn more about formatting field mappings. When you’re satisfied with your changes, click **Save**.
+12. (Optional) After reviewing the proposed pipeline, you can fine-tune it by clicking **Edit pipeline**. Refer to the [{{elastic-sec}} ECS reference](/reference/security/fields-and-object-schemas/siem-field-reference.md) to learn more about formatting field mappings. When you’re satisfied with your changes, click **Save**.
 
     ::::{admonition} How to edit a CEL program
     :class: note

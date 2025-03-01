@@ -295,7 +295,7 @@ To create or edit {{ml}} rules, you must have the [appropriate license](https://
     3. **Indicator index patterns**: The indicator index patterns containing field values for which you want to generate alerts. This field is automatically populated with indices specified in the `securitySolution:defaultThreatIndex` advanced setting. For more information, see [Update default Elastic Security threat intelligence indices](/solutions/security/get-started/configure-advanced-settings.md#update-threat-intel-indices).
 
         ::::{important}
-        Data in indicator indices must be [ECS compatible](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md), and so it must contain a `@timestamp` field.
+        Data in indicator indices must be [ECS compatible](/reference/security/fields-and-object-schemas/siem-field-reference.md), and so it must contain a `@timestamp` field.
         ::::
 
     4. **Indicator index query**: The query and filters used to filter the fields from the indicator index patterns. The default query `@timestamp > "now-30d/d"` searches specified indicator indices for indicators ingested during the past 30 days and rounds the start time down to the nearest day (resolves to UTC `00:00:00`).

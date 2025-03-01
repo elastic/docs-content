@@ -166,7 +166,7 @@ We have guides and many hands-on tutorials to help get you started with ingestin
 :   Use Elastic Observability to gain deeper insight into the behavior of your applications and systems. Follow our guides to ingest various data types, such as [logs and metrics](/solutions/observability/infra-and-hosts/get-started-with-system-metrics.md), [traces and APM](/solutions/observability/apps/get-started-with-apm.md), and [data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md). There are also several [tutorials](https://www.elastic.co/guide/en/observability/current/observability-tutorials.html) to choose from.
 
 [Add data to Elastic Security](/solutions/security/get-started/ingest-data-to-elastic-security.md)
-:   Use Elastic Security to quickly detect, investigate, and respond to threats and vulnerabilities across your environment. You can use {{agent}} to ingest data into the [{{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md), or with many other [{{integrations}}](https://docs.elastic.co/en/integrations) that work together with {{elastic-sec}}. You can also [ingest data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md) or from various third party collectors that ship [ECS compliant security data](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md).
+:   Use Elastic Security to quickly detect, investigate, and respond to threats and vulnerabilities across your environment. You can use {{agent}} to ingest data into the [{{elastic-defend}} integration](/solutions/security/configure-elastic-defend/install-elastic-defend.md), or with many other [{{integrations}}](https://docs.elastic.co/en/integrations) that work together with {{elastic-sec}}. You can also [ingest data from Splunk](/solutions/observability/get-started/add-data-from-splunk.md) or from various third party collectors that ship [ECS compliant security data](/reference/security/fields-and-object-schemas/siem-field-reference.md).
 
 
 ### Ingest data with Elastic Agent, Beats, and Logstash [ec-ingest-timestamped]
@@ -179,7 +179,7 @@ For users who want to build their own solution, we can help you get started inge
 [Beats and Elastic Agent comparison](../../../manage-data/ingest/tools.md)
 :   {{beats}} and {{agent}} can both send data to {{es}} either directly or via {{ls}}. You can use this guide to determine which of these primary ingest tools best matches your use case.
 
-[Introduction to Fleet management](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md)
+[Introduction to Fleet management](/reference/ingestion-tools/fleet/index.md)
 :   {{fleet}} provides a web-based UI in Kibana for centrally managing Elastic Agents and their policies.
 
 [{{ls}} introduction](logstash://reference/index.md)
@@ -209,7 +209,7 @@ For users who want to build their own solution, we can help you get started inge
 [Ingest pipelines](/manage-data/ingest/transform-enrich/ingest-pipelines.md)
 :   {{es}} ingest pipelines let you perform common transformations on your data before indexing.
 
-[{{agent}} processors](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/agent-processors.md)
+[{{agent}} processors](/reference/ingestion-tools/fleet/agent-processors.md)
 :   Use the {{agent}} lightweight processors to parse, filter, transform, and enrich data at the source.
 
 [Creating a {{ls}} pipeline](logstash://reference/creating-logstash-pipeline.md)

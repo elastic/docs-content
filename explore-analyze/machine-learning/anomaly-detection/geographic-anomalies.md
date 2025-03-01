@@ -39,7 +39,7 @@ There are a few limitations to consider before you create this type of job:
 1. You cannot create forecasts for {{anomaly-jobs}} that contain geographic functions.
 2. You cannot add [custom rules with conditions](/explore-analyze/machine-learning/anomaly-detection/ml-ad-run-jobs.md#ml-ad-rules) to detectors that use geographic functions.
 
-If those limitations are acceptable, try creating an {{anomaly-job}} that uses the [`lat_long` function](asciidocalypse://docs/docs-content/docs/reference/data-analysis/machine-learning/ml-geo-functions.md#ml-lat-long) to analyze your own data or the sample data sets.
+If those limitations are acceptable, try creating an {{anomaly-job}} that uses the [`lat_long` function](/reference/data-analysis/machine-learning/ml-geo-functions.md#ml-lat-long) to analyze your own data or the sample data sets.
 
 To create an {{anomaly-job}} that uses the `lat_long` function, in {{kib}} you must click **Create job** on the **{{ml-cap}} > {{anomaly-detect-cap}} > Jobs** page and select the advanced job wizard. Alternatively, use the [create {{anomaly-jobs}} API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-put-job).
 

@@ -466,7 +466,7 @@ If you’re not seeing your log files in your project, verify the following in t
 * The path to your logs file under `paths` is correct.
 * Your API key is in `<id>:<key>` format. If not, your API key may be in an unsupported format, and you’ll need to create an API key in **Beats** format.
 
-If you’re still running into issues, refer to [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/configure-standalone-elastic-agents.md).
+If you’re still running into issues, refer to [{{agent}} troubleshooting](../../../troubleshoot/ingest/fleet/common-problems.md) and [Configure standalone Elastic Agents](/reference/ingestion-tools/fleet/configure-standalone-elastic-agents.md).
 
 
 ## Next steps [observability-stream-log-files-next-steps]

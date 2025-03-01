@@ -12,7 +12,7 @@ The {{es}} {{security-features}} enable you to secure your {{es}} cluster. But {
 * [Apache Hadoop](elasticsearch-hadoop://reference/security.md)
 * [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/securing-auditbeat.md)
 * [Filebeat](asciidocalypse://docs/beats/docs/reference/filebeat/securing-filebeat.md)
-* [{{fleet}} & {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure.md)
+* [{{fleet}} & {{agent}}](/reference/ingestion-tools/fleet/secure.md)
 * [Heartbeat](asciidocalypse://docs/beats/docs/reference/heartbeat/securing-heartbeat.md)
 * [{{kib}}](../security.md)
 * [Logstash](logstash://reference/secure-connection.md)

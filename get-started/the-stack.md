@@ -35,7 +35,7 @@ $$$stack-components-agent$$$
 
     {{fleet}} enables you to centrally manage {{agents}} and their policies. Use {{fleet}} to monitor the state of all your {{agents}}, manage agent policies, and upgrade {{agent}} binaries or integrations.
 
-    [Learn more about {{fleet}} and {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md).
+    [Learn more about {{fleet}} and {{agent}}](/reference/ingestion-tools/fleet/index.md).
 
 
 $$$stack-components-apm$$$

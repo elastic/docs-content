@@ -61,7 +61,7 @@ Index patterns use wildcards to specify a set of indices. For example, the `file
 ::::
 
 
-All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md) and [{{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
+All of the default index patterns match [{{beats}}](asciidocalypse://docs/beats/docs/reference/index.md) and [{{agent}}](/reference/ingestion-tools/fleet/index.md) indices. This means all data shipped via {{beats}} and the {{agent}} is automatically added to the {{security-app}}.
 
 You can add or remove any indices and index patterns as required. In {{serverless-short}}, the maximum number of items that you can include in a comma-delimited list is 50. In {{stack}}, there is no limit. For more information on {{es}} indices, refer to [Data in: documents and indices](/manage-data/data-store/index-basics.md).
 
@@ -71,7 +71,7 @@ If you leave the `-*elastic-cloud-logs-*` index pattern selected, all Elastic cl
 
 
 ::::{important}
-{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [*Elastic Security ECS field reference*](asciidocalypse://docs/docs-content/docs/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
+{{elastic-sec}} requires [ECS-compliant data](https://www.elastic.co/guide/en/ecs/current). If you use third-party data collectors to ship data to {{es}}, the data must be mapped to ECS. [*Elastic Security ECS field reference*](/reference/security/fields-and-object-schemas/siem-field-reference.md) lists ECS fields used in {{elastic-sec}}.
 ::::
 
 

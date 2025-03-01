@@ -92,7 +92,7 @@ Air-gapped install of {{agent}} depends on the [{{package-registry}}](../../../d
 
 Additionally, if the {{agent}} {{elastic-defend}} integration is used, then access to the [Elastic Endpoint Artifact Repository](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-endpoint-artifact-repository) is necessary in order to deploy updates for some of the detection and prevention capabilities.
 
-To learn more about install and configuration, refer to the [{{agent}} install documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/install-elastic-agents.md). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md).
+To learn more about install and configuration, refer to the [{{agent}} install documentation](/reference/ingestion-tools/fleet/install-elastic-agents.md). Make sure to check the requirements specific to running {{agents}} in an [air-gapped environment](/reference/ingestion-tools/fleet/air-gapped.md).
 
 To get a better understanding of how to work with {{agent}} configuration settings and policies, refer to [Appendix D - Agent Integration Guide](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-guide).
 
@@ -101,7 +101,7 @@ To get a better understanding of how to work with {{agent}} configuration settin
 
 {{fleet-server}} is a required middleware component for any scalable deployment of the {{agent}}. The air-gapped dependencies of {{fleet-server}} are the same as those of the [{{agent}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-agent).
 
-To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} set up documentation](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-server.md).
+To learn more about installing {{fleet-server}}, refer to the [{{fleet-server}} set up documentation](/reference/ingestion-tools/fleet/fleet-server.md).
 
 
 #### 1.7. Elastic APM [air-gapped-elastic-apm]
@@ -119,7 +119,7 @@ Refer to [Connect to {{ems}}](../../../explore-analyze/visualize/maps/maps-conne
 
 #### 1.9. {{package-registry}} [air-gapped-elastic-package-registry]
 
-Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
+Air-gapped install of the EPR is possible using any OCI-compatible runtime like Podman (a typical choice for RHEL-like Linux systems) or Docker. Links to the official container image and usage guide is available on the [Air-gapped environments](/reference/ingestion-tools/fleet/air-gapped.md) page in the {{fleet}} and {{agent}} Guide.
 
 Refer to [Appendix A - {{package-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-package-registry-example) for additional setup examples.
 
@@ -131,7 +131,7 @@ Besides setting up the EPR service, you also need to [configure {{kib}}](../../.
 
 #### 1.10. {{artifact-registry}} [air-gapped-elastic-artifact-registry]
 
-Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
+Air-gapped install of the {{artifact-registry}} is necessary in order to enable {{agent}} deployments to perform self-upgrades and install certain components which are needed for some of the data integrations (that is, in addition to what is also retrieved from the EPR). To learn more, refer to [Host your own artifact registry for binary downloads](/reference/ingestion-tools/fleet/air-gapped.md#host-artifact-registry) in the {{fleet}} and {{elastic-agent}} Guide.
 
 Refer to [Appendix B - {{artifact-registry}}](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-elastic-artifact-registry-example) for additional setup examples.
 
@@ -179,7 +179,7 @@ The main requirements are:
 
 #### 2.2. Elastic Package Registry [air-gapped-k8s-os-elastic-package-registry]
 
-The container image can be downloaded from the official Elastic Docker repository, as described in the {{fleet}} and {{elastic-agent}} [air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) documentation.
+The container image can be downloaded from the official Elastic Docker repository, as described in the {{fleet}} and {{elastic-agent}} [air-gapped environments](/reference/ingestion-tools/fleet/air-gapped.md) documentation.
 
 This container would, ideally, run as a Kubernetes deployment. Refer to [Appendix C - EPR Kubernetes Deployment](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-epr-kubernetes-example) for examples.
 
@@ -507,7 +507,7 @@ You can have {{kib}} create {{agent}} policies on your behalf by adding appropri
 :   Takes a list of all integration package names and versions that {{kib}} should download from the {{package-registry}} (EPR). This is done because {{agents}} themselves do not directly fetch packages from the EPR.
 
 `xpack.fleet.agentPolicies`
-:   Takes a list of {{agent}} policies in the format expected by the [{{kib}} {{fleet}} HTTP API](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md). Refer to the setting in [Preconfiguration settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) for the format. See also [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api).
+:   Takes a list of {{agent}} policies in the format expected by the [{{kib}} {{fleet}} HTTP API](/reference/ingestion-tools/fleet/fleet-api-docs.md). Refer to the setting in [Preconfiguration settings](asciidocalypse://docs/kibana/docs/reference/configuration-reference/fleet-settings.md#_preconfiguration_settings_for_advanced_use_cases) for the format. See also [D.2.3. Using the {{kib}} {{fleet}} API](../../../deploy-manage/deploy/self-managed/air-gapped-install.md#air-gapped-agent-integration-configure-fleet-api).
 
 `xpack.fleet.registryUrl`
 :   Takes a URL of the {{package-registry}} that can be reached by the {{kib}} server. Enable this setting only when deploying in an air-gapped environment.
@@ -524,7 +524,7 @@ Other settings
 
 It is possible to use custom scripts that call the {{kib}} {{fleet}} API to create or update policies without restarting {{kib}}, and also allowing for custom error handling and update logic.
 
-At this time, you can refer to the the [{{kib}} {{fleet}} HTTP API](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/fleet-api-docs.md) documentation, however additional resources from public code repositories should be consulted to capture the full set of configuration options available for a given integration. Specifically, many integrations have configuration options such as `inputs` and `data_streams` that are unique.
+At this time, you can refer to the the [{{kib}} {{fleet}} HTTP API](/reference/ingestion-tools/fleet/fleet-api-docs.md) documentation, however additional resources from public code repositories should be consulted to capture the full set of configuration options available for a given integration. Specifically, many integrations have configuration options such as `inputs` and `data_streams` that are unique.
 
 In particular, the `*.yml.hbs` templates should be consulted to determine which `vars` are available for configuring a particular integration using the {{kib}} {{fleet}} API.
 

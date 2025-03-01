@@ -41,6 +41,7 @@ cross_links:
   - kibana
   - logstash
   - search-ui
+  - security-docs
 
 toc:
   - file: index.md
