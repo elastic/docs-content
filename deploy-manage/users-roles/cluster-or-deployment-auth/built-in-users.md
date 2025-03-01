@@ -145,7 +145,7 @@ If you have upgraded from an older version of {{es}}, the `logstash_system` user
 PUT _security/user/logstash_system/_enable
 ```
 
-See [Configuring credentials for {{ls}} monitoring](asciidocalypse://docs/logstash/docs/reference/ingestion-tools/logstash/secure-connection.md#ls-monitoring-user).
+See [Configuring credentials for {{ls}} monitoring](logstash://reference/secure-connection.md#ls-monitoring-user).
 
 
 ## Adding built-in user passwords to Beats [add-built-in-user-beats]

@@ -83,7 +83,7 @@ Elastic {{beats}} are light-weight data shippers. They do not require any unique
 
 #### 1.4. {{ls}} [air-gapped-logstash]
 
-{{ls}} is a versatile data shipping and processing application. It does not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{ls}} documentation](asciidocalypse://docs/logstash/docs/reference/index.md).
+{{ls}} is a versatile data shipping and processing application. It does not require any unique setup in the air-gapped scenario. To learn more, refer to the [{{ls}} documentation](logstash://reference/index.md).
 
 
 #### 1.5. {{agent}} [air-gapped-elastic-agent]

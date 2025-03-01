@@ -22,7 +22,7 @@ Upgrading from a release candidate build, such as 8.0.0-rc1 or 8.0.0-rc2, is not
     * [{{ents}} release notes](https://www.elastic.co/guide/en/enterprise-search/current/changelog.html)
     * [{{fleet}} and {{agent}} release notes](asciidocalypse://docs/docs-content/docs/release-notes/fleet.md)
     * [{{kib}} release notes](asciidocalypse://docs/kibana/docs/release-notes/kibana.md)
-    * [{{ls}} breaking changes](asciidocalypse://docs/logstash/docs/release-notes/breaking-changes/logstash.md)
+    * [{{ls}} breaking changes](logstash://release-notes/breaking-changes.md)
 
     ::::{important}
     * Make sure you check the breaking changes for each minor release up to 9.0.0-beta1.

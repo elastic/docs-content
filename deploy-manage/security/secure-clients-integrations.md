@@ -15,7 +15,7 @@ The {{es}} {{security-features}} enable you to secure your {{es}} cluster. But {
 * [{{fleet}} & {{agent}}](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure.md)
 * [Heartbeat](asciidocalypse://docs/beats/docs/reference/heartbeat/securing-heartbeat.md)
 * [{{kib}}](../security.md)
-* [Logstash](asciidocalypse://docs/logstash/docs/reference/secure-connection.md)
+* [Logstash](logstash://reference/secure-connection.md)
 * [Metricbeat](asciidocalypse://docs/beats/docs/reference/metricbeat/securing-metricbeat.md)
 * [Monitoring and security](../monitor.md)
 * [Packetbeat](asciidocalypse://docs/beats/docs/reference/packetbeat/securing-packetbeat.md)

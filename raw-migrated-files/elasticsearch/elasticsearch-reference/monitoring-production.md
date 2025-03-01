@@ -68,7 +68,7 @@ To store monitoring data in a separate cluster:
     * [{{metricbeat}} collection methods](../../../deploy-manage/monitor/stack-monitoring/collecting-monitoring-data-with-metricbeat.md)
     * [Legacy collection methods](../../../deploy-manage/monitor/stack-monitoring/es-legacy-collection-methods.md)
 
-3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](asciidocalypse://docs/logstash/docs/reference/monitoring-logstash-legacy.md).
+3. (Optional) [Configure {{ls}} to collect data and send it to the monitoring cluster](logstash://reference/monitoring-logstash-legacy.md).
 4. (Optional) Configure the {{beats}} to collect data and send it to the monitoring cluster. Skip this step for {{beats}} that are managed by {{agent}}.
 
     * [Auditbeat](asciidocalypse://docs/beats/docs/reference/auditbeat/monitoring.md)
