@@ -45,7 +45,7 @@ You are strongly recommended to manage the curation of indices and particularly 
 ::::
 
 
-There is also a disk watermark (known as the flood stage watermark), which protects clusters from running out of disk space. When this feature is triggered, it makes all indices (including monitoring indices) read-only until the issue is fixed and a user manually makes the index writeable again. While an active monitoring index is read-only, it will naturally fail to write (index) new data and will continuously log errors that indicate the write failure. For more information, see [Disk-based shard allocation settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
+There is also a disk watermark (known as the flood stage watermark), which protects clusters from running out of disk space. When this feature is triggered, it makes all indices (including monitoring indices) read-only until the issue is fixed and a user manually makes the index writeable again. While an active monitoring index is read-only, it will naturally fail to write (index) new data and will continuously log errors that indicate the write failure. For more information, see [Disk-based shard allocation settings](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation).
 
 
 ## Default exporters [es-monitoring-default-exporter]
@@ -77,7 +77,7 @@ Before exporters can route monitoring data, they must set up certain {{es}} reso
 
 The templates are ordinary {{es}} templates that control the default settings and mappings for the monitoring indices.
 
-By default, monitoring indices are created daily (for example, `.monitoring-es-6-2017.08.26`). You can change the default date suffix for monitoring indices with the `index.name.time_format` setting. You can use this setting to control how frequently monitoring indices are created by a specific `http` exporter. You cannot use this setting with `local` exporters. For more information, see [HTTP exporter settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings).
+By default, monitoring indices are created daily (for example, `.monitoring-es-6-2017.08.26`). You can change the default date suffix for monitoring indices with the `index.name.time_format` setting. You can use this setting to control how frequently monitoring indices are created by a specific `http` exporter. You cannot use this setting with `local` exporters. For more information, see [HTTP exporter settings](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md#http-exporter-settings).
 
 ::::{warning}
 Some users create their own templates that match *all* index patterns, which therefore impact the monitoring indices that get created. It is critical that you do not disable `_source` storage for the monitoring indices. If you do, {{kib}} {{monitor-features}} do not work and you cannot visualize monitoring data for your cluster.

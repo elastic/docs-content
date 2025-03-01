@@ -62,7 +62,7 @@ In the following example, **iso2** property defines the shared key for the left 
 
 The right source uses the Kibana sample data set "Sample web logs". In this data set, the **geo.src** field contains the ISO 3166-1 alpha-2 code of the country of origin.
 
-A [terms aggregation](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) groups the sample web log documents by **geo.src** and calculates metrics for each term.
+A [terms aggregation](elasticsearch://reference/data-analysis/aggregations/search-aggregations-bucket-terms-aggregation.md) groups the sample web log documents by **geo.src** and calculates metrics for each term.
 
 The METRICS configuration defines two metric aggregations:
 

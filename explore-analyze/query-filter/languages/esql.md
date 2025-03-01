@@ -26,9 +26,9 @@ mapped_urls:
 
 ## What's {{esql}}? [_the_esql_compute_engine]
 
-**Elasticsearch Query Language ({{esql}})** is a piped query language for filtering, transforming, and analyzing data. 
+**Elasticsearch Query Language ({{esql}})** is a piped query language for filtering, transforming, and analyzing data.
 
-You can author {{esql}} queries to find specific events, perform statistical analysis, and generate visualizations. It supports a wide range of [commands, functions and operators](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md) to perform various data operations, such as filtering, aggregation, time-series analysis, and more. Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
+You can author {{esql}} queries to find specific events, perform statistical analysis, and generate visualizations. It supports a wide range of [commands, functions and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md) to perform various data operations, such as filtering, aggregation, time-series analysis, and more. Today, it supports a subset of the features available in Query DSL, but it is rapidly evolving.
 
 ::::{note}
 **{{esql}}'s compute architecture**
@@ -52,10 +52,10 @@ You can use it:
 ## Next steps
 
 Find more details about {{esql}} in the following documentation pages:
-- [{{esql}} reference](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql.md): 
-  - Reference documentation for the [{{esql}} syntax](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-syntax.md), [commands](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md), and [functions and operators](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-functions-operators.md).
-  - Information about working with [metadata fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-metadata-fields.md) and [multivalued fields](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-multivalued-fields.md). 
-  - Guidance for [data processing with DISSECT and GROK](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-process-data-with-dissect-grok.md) and [data enrichment with ENRICH](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-enrich-data.md).
+- [{{esql}} reference](elasticsearch://reference/query-languages/esql.md):
+  - Reference documentation for the [{{esql}} syntax](elasticsearch://reference/query-languages/esql/esql-syntax.md), [commands](elasticsearch://reference/query-languages/esql/esql-commands.md), and [functions and operators](elasticsearch://reference/query-languages/esql/esql-functions-operators.md).
+  - Information about working with [metadata fields](elasticsearch://reference/query-languages/esql/esql-metadata-fields.md) and [multivalued fields](elasticsearch://reference/query-languages/esql/esql-multivalued-fields.md).
+  - Guidance for [data processing with DISSECT and GROK](elasticsearch://reference/query-languages/esql/esql-process-data-with-dissect-grok.md) and [data enrichment with ENRICH](elasticsearch://reference/query-languages/esql/esql-enrich-data.md).
 
 - Using {{esql}}:
   - An overview of using the [`_query` API endpoint](/explore-analyze/query-filter/languages/esql-rest.md).
@@ -64,7 +64,7 @@ Find more details about {{esql}} in the following documentation pages:
   - [Using {{esql}} across clusters](/explore-analyze/query-filter/languages/esql-cross-clusters.md).
   - [Task management](/explore-analyze/query-filter/languages/esql-task-management.md).
 
-- [Limitations](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/limitations.md): The current limitations of {{esql}}.
+- [Limitations](elasticsearch://reference/query-languages/esql/limitations.md): The current limitations of {{esql}}.
 
 - [Examples](/explore-analyze/query-filter/languages/esql.md): A few examples of what you can do with {{esql}}.
 

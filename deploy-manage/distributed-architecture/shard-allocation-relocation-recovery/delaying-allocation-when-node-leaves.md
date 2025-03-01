@@ -13,7 +13,7 @@ When a node leaves the cluster for whatever reason, intentional or otherwise, th
 
 These actions are intended to protect the cluster against data loss by ensuring that every shard is fully replicated as soon as possible.
 
-Even though we throttle concurrent recoveries both at the [node level](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-recovery-settings.md) and at the [cluster level](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-settings), this shard-shuffle can still put a lot of extra load on the cluster which may not be necessary if the missing node is likely to return soon. Imagine this scenario:
+Even though we throttle concurrent recoveries both at the [node level](elasticsearch://reference/elasticsearch/configuration-reference/index-recovery-settings.md) and at the [cluster level](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-shard-allocation-settings), this shard-shuffle can still put a lot of extra load on the cluster which may not be necessary if the missing node is likely to return soon. Imagine this scenario:
 
 * Node 5 loses network connectivity.
 * The master promotes a replica shard to primary for each primary that was on Node 5.
@@ -47,7 +47,7 @@ With delayed allocation enabled, the above scenario changes to look like this:
 * Node 5 returns after a few minutes, before the `timeout` expires.
 * The missing replicas are re-allocated to Node 5 (and sync-flushed shards recover almost immediately).
 
-::::{note} 
+::::{note}
 This setting will not affect the promotion of replicas to primaries, nor will it affect the assignment of replicas that have not been assigned previously. In particular, delayed allocation does not come into effect after a full cluster restart. Also, in case of a master failover situation, elapsed delay time is forgotten (i.e. reset to the full initial delay).
 ::::
 

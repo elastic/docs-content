@@ -127,7 +127,7 @@ client.indices.create(
 
 ## Create the {{infer}} pipeline [cohere-es-infer-pipeline]
 
-Now you have an {{infer}} endpoint and an index ready to store embeddings. The next step is to create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) that will create the embeddings using the {{infer}} endpoint and stores them in the index.
+Now you have an {{infer}} endpoint and an index ready to store embeddings. The next step is to create an [ingest pipeline](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) with an [{{infer}} processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) that will create the embeddings using the {{infer}} endpoint and stores them in the index.
 
 ```py
 client.ingest.put_pipeline(

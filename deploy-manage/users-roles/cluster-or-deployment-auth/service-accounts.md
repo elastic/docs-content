@@ -3,10 +3,10 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/service-accounts.html
 applies_to:
   deployment:
-    ess: 
-    ece: 
-    eck: 
-    self: 
+    ess:
+    ece:
+    eck:
+    self:
 ---
 
 # Service accounts [service-accounts]
@@ -26,7 +26,7 @@ Service accounts provide flexibility over [built-in users](built-in-users.md) be
 Service accounts are not included in the response of the [get users API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user). To retrieve a service account, use the [get service accounts API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-accounts). Use the [get service account credentials API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-credentials) to retrieve all service credentials for a service account.
 
 
-## Service accounts usage [service-accounts-explanation] 
+## Service accounts usage [service-accounts-explanation]
 
 Service accounts have a [unique principal](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-accounts#security-api-get-service-accounts-path-params) that takes the format of `<namespace>/<service>`, where the `namespace` is a top-level grouping of service accounts, and `service` is the name of the service and must be unique within its namespace.
 
@@ -38,13 +38,13 @@ Service accounts are predefined in code. The following service accounts are avai
 `elastic/kibana`
 :   The service account used by {{kib}} to communicate with {{es}}.
 
-::::{important} 
+::::{important}
 Do not attempt to use service accounts for authenticating individual users. Service accounts can only be authenticated with service tokens, which are not applicable to regular users.
 ::::
 
 
 
-## Service account tokens [service-accounts-tokens] 
+## Service account tokens [service-accounts-tokens]
 
 A service account token, or service token, is a unique string that a service uses to authenticate with {{es}}. For a given service account, each token must have a unique name. Because tokens include access credentials, they should always be kept secret by whichever client is using them.
 
@@ -53,7 +53,7 @@ Service tokens can be backed by either the `.security` index (recommended) or th
 You must create a service token to use a service account. You can create a service token using either:
 
 * The [create service account token API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token), which saves the new service token in the `.security` index and returns the bearer token in the HTTP response.
-* Self-managed and {{eck}} deployments only: The [elasticsearch-service-tokens](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool, which saves the new service token in the `$ES_HOME/config/service_tokens` file and outputs the bearer token to your terminal
+* Self-managed and {{eck}} deployments only: The [elasticsearch-service-tokens](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md) CLI tool, which saves the new service token in the `$ES_HOME/config/service_tokens` file and outputs the bearer token to your terminal
 
 We recommend that you create service tokens via the REST API rather than the CLI. The API stores service tokens within the `.security` index which means that the tokens are available for authentication on all nodes, and will be backed up within cluster snapshots. The use of the CLI is intended for cases where there is an external orchestration process (such as [{{ece}}](https://www.elastic.co/guide/en/cloud-enterprise/current) or [{{eck}}](https://www.elastic.co/guide/en/cloud-on-k8s/current)) that will manage the creation and distribution of the `service_tokens` file.
 
@@ -62,9 +62,9 @@ Both of these methods (API and CLI) create a service token with a guaranteed sec
 Service tokens never expire. You must actively [delete](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-service-token) them if they are no longer needed.
 
 
-## Authenticate with service tokens [authenticate-with-service-account-token] 
+## Authenticate with service tokens [authenticate-with-service-account-token]
 
-::::{note} 
+::::{note}
 Service accounts currently do not support basic authentication.
 ::::
 

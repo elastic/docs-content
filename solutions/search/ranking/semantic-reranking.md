@@ -39,7 +39,7 @@ Semantic re-ranking enables a variety of use cases:
 * **Semantic retrieval results re-ranking**
 
     * Improves results from semantic retrievers using ELSER sparse vector embeddings or dense vector embeddings by using more powerful models.
-    * Adds a refinement layer on top of hybrid retrieval with [reciprocal rank fusion (RRF)](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md).
+    * Adds a refinement layer on top of hybrid retrieval with [reciprocal rank fusion (RRF)](elasticsearch://reference/elasticsearch/rest-apis/reciprocal-rank-fusion.md).
 
 * **General applications**
 

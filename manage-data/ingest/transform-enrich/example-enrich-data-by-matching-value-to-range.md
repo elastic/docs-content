@@ -8,7 +8,7 @@ applies_to:
 
 # Example: Enrich your data by matching a value to a range [range-enrich-policy-type]
 
-A `range` [enrich policy](data-enrichment.md#enrich-policy) uses a [`term` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) to match a number, date, or IP address in incoming documents to a range of the same type in the enrich index. Matching a range to a range is not supported.
+A `range` [enrich policy](data-enrichment.md#enrich-policy) uses a [`term` query](elasticsearch://reference/query-languages/query-dsl-term-query.md) to match a number, date, or IP address in incoming documents to a range of the same type in the enrich index. Matching a range to a range is not supported.
 
 The following example creates a `range` enrich policy that adds a descriptive network name and responsible department to incoming documents based on an IP address. It then adds the enrich policy to a processor in an ingest pipeline.
 
@@ -63,7 +63,7 @@ Use the [execute enrich policy API](https://www.elastic.co/docs/api/doc/elastics
 POST /_enrich/policy/networks-policy/_execute?wait_for_completion=false
 ```
 
-Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) that includes:
+Use the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline) to create an ingest pipeline. In the pipeline, add an [enrich processor](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) that includes:
 
 * Your enrich policy.
 * The `field` of incoming documents used to match documents from the enrich index.

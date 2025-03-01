@@ -5,7 +5,7 @@ You have a number of options for getting data into Elasticsearch, referred to as
 $$$ec-ingest-methods$$$
 
 General content
-:   Index content like HTML pages, catalogs and other files. Send data directly to Elasticseach from your application using an Elastic language client. Otherwise use Elastic content [connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md) or the Elastic [web crawler](https://github.com/elastic/crawler).
+:   Index content like HTML pages, catalogs and other files. Send data directly to Elasticseach from your application using an Elastic language client. Otherwise use Elastic content [connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md) or the Elastic [web crawler](https://github.com/elastic/crawler).
 
 Timestamped data
 :   The preferred way to index timestamped data is to use Elastic Agent. Elastic Agent is a single, unified way to add monitoring for logs, metrics, and other types of data to a host. It can also protect hosts from security threats, query data from operating systems, and forward data from remote services or hardware. Each Elastic Agent based integration includes default ingestion rules, dashboards, and visualizations to start analyzing your data right away. Fleet Management enables you to centrally manage all of your deployed Elastic Agents from Kibana.
@@ -191,7 +191,7 @@ For users who want to build their own solution, we can help you get started inge
 [Add data with the web crawler](https://github.com/elastic/crawler)
 :   Use the web crawler to programmatically discover, extract, and index searchable content from websites and knowledge bases.
 
-[Add data with connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md)
+[Add data with connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md)
 :   Sync data from an original data source to an {{es}} index. Connectors enable you to create searchable, read-only replicas of your data sources.
 
 

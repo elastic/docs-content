@@ -47,7 +47,7 @@ As Kerberos logs are often cryptic in nature and many things can go wrong as it 
 xpack.security.authc.realms.kerberos.<realm-name>.krb.debug: true
 ```
 
-For detailed information, see [Kerberos realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
+For detailed information, see [Kerberos realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-kerberos-settings).
 
 Sometimes you may need to go deeper to understand the problem during SPNEGO GSS context negotiation or look at the Kerberos message exchange. To enable Kerberos/SPNEGO debug logging on JVM, add following JVM system properties:
 
@@ -55,5 +55,5 @@ Sometimes you may need to go deeper to understand the problem during SPNEGO GSS 
 
 `-Dsun.security.spnego.debug=true`
 
-For more information about JVM system properties, see [Set JVM options](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/jvm-settings.md#set-jvm-options).
+For more information about JVM system properties, see [Set JVM options](elasticsearch://reference/elasticsearch/jvm-settings.md#set-jvm-options).
 

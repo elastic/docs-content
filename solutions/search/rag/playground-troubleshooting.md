@@ -8,13 +8,13 @@ applies_to:
 
 # Troubleshooting [playground-troubleshooting]
 
-::::{warning} 
+::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
 
 Dense vectors are not searchable
-:   Embeddings must be generated using the [inference processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/inference-processor.md) with an ML node.
+:   Embeddings must be generated using the [inference processor](elasticsearch://reference/ingestion-tools/enrich-processor/inference-processor.md) with an ML node.
 
 Context length error
 :   You’ll need to adjust the size of the context you’re sending to the model. Refer to [Optimize model context](playground-context.md).

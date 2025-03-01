@@ -34,8 +34,8 @@ Which returns:
 Douglas Adams  |The Hitchhiker's Guide to the Galaxy|180            |1979-10-12T00:00:00.000Z
 ```
 
-::::{tip} 
-A useful and less obvious usage for standard Query DSL filtering is to search documents by a specific [routing key](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/search-shard-routing.md#search-routing). Because Elasticsearch SQL does not support a `routing` parameter, one can specify a [`terms` filter for the `_routing` field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-routing-field.md) instead:
+::::{tip}
+A useful and less obvious usage for standard Query DSL filtering is to search documents by a specific [routing key](elasticsearch://reference/elasticsearch/rest-apis/search-shard-routing.md#search-routing). Because Elasticsearch SQL does not support a `routing` parameter, one can specify a [`terms` filter for the `_routing` field](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md) instead:
 
 ```console
 POST /_sql?format=txt

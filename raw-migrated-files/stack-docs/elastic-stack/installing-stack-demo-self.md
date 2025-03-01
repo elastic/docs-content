@@ -149,7 +149,7 @@ Before moving ahead to configure additional {{es}} nodes, you’ll need to updat
     ```
 
     ::::{tip}
-    You can find details about the `network.host` and `transport.host` settings in the {{es}} [Networking](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
+    You can find details about the `network.host` and `transport.host` settings in the {{es}} [Networking](elasticsearch://reference/elasticsearch/configuration-reference/networking-settings.md) documentation.
     ::::
 
 6. Save your changes and close the editor.
