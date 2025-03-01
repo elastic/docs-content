@@ -21,13 +21,13 @@ This section contains documentation for all the official Elasticsearch clients:
 
 You can use the following language clients with {{es-serverless}}:
 
-* [Go](asciidocalypse://docs/reference/getting-started-serverless.md)
-* [Java](asciidocalypse://docs/reference/getting-started-serverless.md)
-* [.NET](asciidocalypse://docs/reference/getting-started.md)
-* [Node.JS](asciidocalypse://docs/reference/getting-started.md)
-* [PHP](asciidocalypse://docs/reference/getting-started.md)
-* [Python](asciidocalypse://docs/reference/getting-started.md)
-* [Ruby](asciidocalypse://docs/reference/getting-started.md)
+* [Go](asciidocalypse://docs/go-elasticsearch/docs/reference/getting-started-serverless.md)
+* [Java](asciidocalypse://docs/elasticsearch-java/docs/reference/getting-started-serverless.md)
+* [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/getting-started.md)
+* [Node.JS](asciidocalypse://docs/elasticsearch-js/docs/reference/getting-started.md)
+* [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/getting-started.md)
+* [Python](asciidocalypse://docs/elasticsearch-py/docs/reference/getting-started.md)
+* [Ruby](asciidocalypse://docs/elasticsearch-ruby/docs/reference/getting-started.md)
 
 ::::{tip}
 Learn how to [connect to your {{es-serverless}} endpoint](/solutions/search/serverless-elasticsearch-get-started.md).
