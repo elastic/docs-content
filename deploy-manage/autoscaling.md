@@ -1,70 +1,38 @@
 ---
 mapped_urls:
-  - https://www.elastic.co/guide/en/cloud-heroku/current/ech-autoscaling.html
-  - https://www.elastic.co/guide/en/cloud/current/ec-autoscaling.html
-  - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-autoscaling.html
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-autoscaling.html
+applies_to:
+  deployment:
+    ece: ga
+    ess: ga
+    eck: ga
 ---
 
 # Autoscaling
 
-% What needs to be done: Refine
+::::{admonition} Indirect use only 
+This feature is designed for indirect use by {{ech}}, {{ece}}, and {{eck}}. Direct use is not supported.
+::::
 
-% GitHub issue: https://github.com/elastic/docs-projects/issues/344
+The autoscaling feature allows an operator to create tiers of nodes. These nodes monitor themselves to decide if they need to scale, based on an operator-defined policy. An Elasticsearch cluster can use the autoscaling API to report if it needs more resources to meet the policy. For example, an operator could define a policy that a warm tier should scale on available disk space. Elasticsearch monitors disk space in the warm tier. If it predicts low disk space for current and future shard copies, the autoscaling API will report that the cluster needs to scale. It remains the responsibility of the operator to add the additional resources that the cluster signals it requires.
 
-% Scope notes: Creating a new landing page and subheadings/pages for different deployment types. Merge content when appropriate
+:::{{tip}} - Serverless handles autoscaling for you
+By default, {{serverless-full}} automatically scales your {{es}} resources based on your usage. You don't need to enable autoscaling.
+:::
 
-% Use migrated content from existing pages that map to this page:
+A policy is composed of a list of roles and a list of deciders. The policy governs the nodes matching the roles. The deciders provide independent estimates of the capacity required. See [Autoscaling deciders](../deploy-manage/autoscaling/autoscaling-deciders.md) for details on available deciders.
 
-% - [ ] ./raw-migrated-files/cloud/cloud-heroku/ech-autoscaling.md
-%      Notes: 1 child
-% - [ ] ./raw-migrated-files/cloud/cloud/ec-autoscaling.md
-%      Notes: 2 children
-% - [ ] ./raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md
-%      Notes: 2 children
-% - [ ] ./raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md
+Autoscaling supports:
+* Scaling machine learning nodes up and down.
+* Scaling data nodes up based on storage.
 
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
+::::{note} 
+Autoscaling is not supported on Debian 8.
+::::
 
-$$$ec-autoscaling-intro$$$
+Find instructions on setting up and managing autoscaling, including supported environments, configuration options, and examples:
 
-$$$ec-autoscaling-factors$$$
-
-$$$ec-autoscaling-notifications$$$
-
-$$$ec-autoscaling-restrictions$$$
-
-$$$ec-autoscaling-enable$$$
-
-$$$ec-autoscaling-update$$$
-
-$$$ece-autoscaling-intro$$$
-
-$$$ece-autoscaling-factors$$$
-
-$$$ece-autoscaling-notifications$$$
-
-$$$ece-autoscaling-restrictions$$$
-
-$$$ece-autoscaling-enable$$$
-
-$$$ece-autoscaling-update$$$
-
-$$$ech-autoscaling-intro$$$
-
-$$$ech-autoscaling-factors$$$
-
-$$$ech-autoscaling-notifications$$$
-
-$$$ech-autoscaling-restrictions$$$
-
-$$$ech-autoscaling-enable$$$
-
-$$$ech-autoscaling-update$$$
-
-**This page is a work in progress.** The documentation team is working to combine content pulled from the following pages:
-
-* [/raw-migrated-files/cloud/cloud-heroku/ech-autoscaling.md](/raw-migrated-files/cloud/cloud-heroku/ech-autoscaling.md)
-* [/raw-migrated-files/cloud/cloud/ec-autoscaling.md](/raw-migrated-files/cloud/cloud/ec-autoscaling.md)
-* [/raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md](/raw-migrated-files/cloud/cloud-enterprise/ece-autoscaling.md)
-* [/raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md](/raw-migrated-files/elasticsearch/elasticsearch-reference/xpack-autoscaling.md)
+* [Autoscaling in {{ece}} and {{ech}}](/deploy-manage/autoscaling/autoscaling-in-ece-and-ech.md)
+* [Autoscaling in {{eck}}](/deploy-manage/autoscaling/autoscaling-in-eck.md)
+* [Autoscaling deciders](/deploy-manage/autoscaling/autoscaling-deciders.md)
+* [Trained model autoscaling](/deploy-manage/autoscaling/trained-model-autoscaling.md)
