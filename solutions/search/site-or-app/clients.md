@@ -27,7 +27,7 @@ applies_to:
 
 In addition to official clients, the Elastic community has contributed libraries for other programming languages.
 
-- [Community-contributed clients](asciidocalypse://docs/elasticsearch/docs/reference/community-contributed.md)
+- [Community-contributed clients](elasticsearch://reference/community-contributed.md)
 
 ::::{tip}
 Learn how to [connect to your {{es}} endpoint](/solutions/search/search-connection-details.md).

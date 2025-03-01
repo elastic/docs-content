@@ -43,7 +43,7 @@ The Kibana CSV export feature collects all of the data from Elasticsearch by usi
 1. Permissions to read data aliases alone will not work: the permissions are needed on the underlying indices or data streams.
 2. In cases where data shards are unavailable or time out, the export will be empty rather than returning partial data.
 
-Some users may benefit from using the [scroll API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results), an alternative to paging through the data. The behavior of this API does not have the limitations of point in time API, however it has its own limitations:
+Some users may benefit from using the [scroll API](elasticsearch://reference/elasticsearch/rest-apis/paginate-search-results.md#scroll-search-results), an alternative to paging through the data. The behavior of this API does not have the limitations of point in time API, however it has its own limitations:
 
 1. Search is limited to 500 shards at the very most.
 2. In cases where the data shards are unavailable or time out, the export may return partial data.

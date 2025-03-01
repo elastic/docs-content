@@ -1,11 +1,11 @@
 # Fixed decider [autoscaling-fixed-decider]
 
-::::{warning} 
+::::{warning}
 This functionality is in technical preview and may be changed or removed in a future release. Elastic will work to fix any issues, but features in technical preview are not subject to the support SLA of official GA features.
 ::::
 
 
-::::{warning} 
+::::{warning}
 The fixed decider is intended for testing only. Do not use this decider in production.
 ::::
 
@@ -15,10 +15,10 @@ The [autoscaling](../../../deploy-manage/autoscaling.md) `fixed` decider respond
 ## Configuration settings [_configuration_settings]
 
 `storage`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level storage. Defaults to `-1` (disabled).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level storage. Defaults to `-1` (disabled).
 
 `memory`
-:   (Optional, [byte value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level memory. Defaults to `-1` (disabled).
+:   (Optional, [byte value](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#byte-units)) Required amount of node-level memory. Defaults to `-1` (disabled).
 
 `processors`
 :   (Optional, float) Required number of processors. Defaults to disabled.

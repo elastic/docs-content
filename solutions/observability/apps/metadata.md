@@ -13,7 +13,7 @@ Metadata can enrich your events and make application performance monitoring even
 Labels add **indexed** information to transactions, spans, and errors. Indexed means the data is searchable and aggregatable in {{es}}. Add additional key-value pairs to define multiple labels.
 
 * Indexed: Yes
-* {{es}} type: [object](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md)
+* {{es}} type: [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md)
 * {{es}} field: `labels`
 * Applies to: [Transactions](transactions.md) | [Spans](spans.md) | [Errors](errors.md)
 
@@ -44,7 +44,7 @@ Custom context adds **non-indexed**, custom contextual information to transactio
 Non-indexed information is useful for providing contextual information to help you quickly debug performance issues or errors.
 
 * Indexed: No
-* {{es}} type: [object](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/object.md)
+* {{es}} type: [object](elasticsearch://reference/elasticsearch/mapping-reference/object.md)
 * {{es}} fields: `transaction.custom` | `error.custom`
 * Applies to: [Transactions](transactions.md) | [Errors](errors.md)
 
@@ -72,7 +72,7 @@ Setting a circular object, a large object, or a non JSON serializable object can
 User context adds **indexed** user information to transactions and errors. Indexed means the data is searchable and aggregatable in {{es}}.
 
 * Indexed: Yes
-* {{es}} type: [keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md)
+* {{es}} type: [keyword](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md)
 * {{es}} fields: `user.email` | `user.name` | `user.id`
 * Applies to: [Transactions](transactions.md) | [Errors](errors.md)
 

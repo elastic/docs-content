@@ -225,7 +225,7 @@ PUT my-index-000001
 }
 ```
 
-Refer to the [`date` field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) docs for more information.
+Refer to the [`date` field type](elasticsearch://reference/elasticsearch/mapping-reference/date.md) docs for more information.
 
 
 ### Grok or dissect pattern mismatch [logs-mapping-troubleshooting-grok-mismatch]
@@ -239,7 +239,7 @@ Provided Grok patterns do not match field value...
 
 #### Solution [logs-mapping-troubleshooting-grok-solution]
 
-Make sure your [grok](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/grok-processor.md) or [dissect](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) processor pattern matches your log document format.
+Make sure your [grok](elasticsearch://reference/ingestion-tools/enrich-processor/grok-processor.md) or [dissect](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) processor pattern matches your log document format.
 
 You can build and debug grok patterns in {{kib}} using the [Grok Debugger](../../explore-analyze/query-filter/tools/grok-debugger.md). Find the **Grok Debugger** by navigating to the **Developer tools** page using the navigation menu or the global search field.
 

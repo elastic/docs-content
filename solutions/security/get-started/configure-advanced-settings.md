@@ -141,7 +141,7 @@ These settings determine the default time interval and refresh rate {{elastic-se
 * `securitySolution:refreshIntervalDefaults`: Default refresh rate
 
 ::::{note}
-Refer to [Date Math](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md) for information about the syntax. The UI [time filter](/explore-analyze/query-filter/filtering.md) overrides the default values.
+Refer to [Date Math](elasticsearch://reference/elasticsearch/rest-apis/common-options.md) for information about the syntax. The UI [time filter](/explore-analyze/query-filter/filtering.md) overrides the default values.
 ::::
 
 

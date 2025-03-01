@@ -1,6 +1,6 @@
 # Run API requests with Console [console-kibana]
 
-**Console** lets you interact with [{{es}} APIs](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md) and [{{kib}} APIs](https://www.elastic.co/docs/api) from within {{kib}}.
+**Console** lets you interact with [{{es}} APIs](elasticsearch://reference/elasticsearch/rest-apis/index.md) and [{{kib}} APIs](https://www.elastic.co/docs/api) from within {{kib}}.
 
 :::{image} ../../../images/kibana-console.png
 :alt: Console

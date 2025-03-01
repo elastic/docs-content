@@ -104,18 +104,18 @@ This functionality is not available on Elastic Cloud Serverless projects.
 ::::
 
 
-You can ingest external data (GitHub issues, Markdown files, Jira tickets, text files, etc.) into {{es}} using [Search Connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md). Connectors sync third party data sources to {{es}}.
+You can ingest external data (GitHub issues, Markdown files, Jira tickets, text files, etc.) into {{es}} using [Search Connectors](elasticsearch://reference/ingestion-tools/search-connectors/index.md). Connectors sync third party data sources to {{es}}.
 
-Supported service types include [GitHub](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/es-connectors-github.md), [Slack](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/es-connectors-slack.md), [Jira](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/es-connectors-jira.md), and more. These can be Elastic managed or self-managed on your own infrastructure.
+Supported service types include [GitHub](elasticsearch://reference/ingestion-tools/search-connectors/es-connectors-github.md), [Slack](elasticsearch://reference/ingestion-tools/search-connectors/es-connectors-slack.md), [Jira](elasticsearch://reference/ingestion-tools/search-connectors/es-connectors-jira.md), and more. These can be Elastic managed or self-managed on your own infrastructure.
 
 To create a connector and make its content available to the AI Assistant knowledge base, follow these steps:
 
 1. **In {{kib}} UI, go to *Search → Content → Connectors* and follow the instructions to create a new connector.**
 
-    For example, if you create a [GitHub connector](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/es-connectors-github.md) you must set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
+    For example, if you create a [GitHub connector](elasticsearch://reference/ingestion-tools/search-connectors/es-connectors-github.md) you must set a `name`, attach it to a new or existing `index`, add your `personal access token` and include the `list of repositories` to synchronize.
 
     ::::{tip}
-    Learn more about configuring and [using connectors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/connectors-ui-in-kibana.md) in the Elasticsearch documentation.
+    Learn more about configuring and [using connectors](elasticsearch://reference/ingestion-tools/search-connectors/connectors-ui-in-kibana.md) in the Elasticsearch documentation.
     ::::
 
 2. **Create a pipeline and process the data with ELSER.**

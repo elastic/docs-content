@@ -40,7 +40,7 @@ For more on defining processors, refer to [define processors](asciidocalypse://d
 
 ## Map an existing field to the service name field [observability-add-logs-service-name-map-an-existing-field-to-the-service-name-field]
 
-For logs that with an existing field being used to represent the service name, map that field to the `service.name` field using the [alias field type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md). Follow these steps to update your mapping:
+For logs that with an existing field being used to represent the service name, map that field to the `service.name` field using the [alias field type](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md). Follow these steps to update your mapping:
 
 1. find **Stack Management** in the main menu or use the [global search field](/explore-analyze/find-and-organize/find-apps-and-objects.md).
 2. Select **Index Templates**.

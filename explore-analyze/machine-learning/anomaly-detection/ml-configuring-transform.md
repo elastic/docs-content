@@ -74,7 +74,7 @@ PUT /my-index-000001/_doc/1
 }
 ```
 
-1. In this example, string fields are mapped as `keyword` fields to support aggregation. If you want both a full text (`text`) and a keyword (`keyword`) version of the same field, use multi-fields. For more information, see [fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md).
+1. In this example, string fields are mapped as `keyword` fields to support aggregation. If you want both a full text (`text`) and a keyword (`keyword`) version of the same field, use multi-fields. For more information, see [fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md).
 
 
 $$$ml-configuring-transform1$$$

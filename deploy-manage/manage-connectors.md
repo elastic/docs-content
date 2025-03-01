@@ -12,7 +12,7 @@ applies_to:
 Connectors serve as a central place to store connection information for both Elastic and third-party systems. They enable the linking of actions to rules, which execute as background tasks on the {{kib}} server when rule conditions are met. This allows rules to route actions to various destinations such as log files, ticketing systems, and messaging tools. Different {{kib}} apps may have their own rule types, but they typically share connectors. The **{{stack-manage-app}} > {{connectors-ui}}** provides a central location to view and manage all connectors in the current space.
 
 ::::{note}
-This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for Search connectors that synchronize third-party data into {{es}}, refer to [Connector clients](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/search-connectors/index.md).
+This page is about {{kib}} connectors that integrate with services like generative AI model providers. If you’re looking for Search connectors that synchronize third-party data into {{es}}, refer to [Connector clients](elasticsearch://reference/ingestion-tools/search-connectors/index.md).
 
 ::::
 
@@ -66,7 +66,7 @@ Some connector types are paid commercial features, while others are free. For a 
 After you create a connector, it is available for use any time you set up an action in the current space.
 
 ::::{tip}
-For out-of-the-box and standardized connectors, refer to [preconfigured connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md). 
+For out-of-the-box and standardized connectors, refer to [preconfigured connectors](asciidocalypse://docs/kibana/docs/reference/connectors-kibana/pre-configured-connectors.md).
 
 You can also manage connectors as resources with the [Elasticstack provider](https://registry.terraform.io/providers/elastic/elasticstack/latest) for Terraform. For more details, refer to the [elasticstack_kibana_action_connector](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs/resources/kibana_action_connector) resource.
 

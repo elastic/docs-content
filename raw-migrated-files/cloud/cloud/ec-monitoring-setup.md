@@ -27,7 +27,7 @@ After you have created a new deployment, you should enable shipping logs and met
 
 5. Select **Save**.
 
-Optionally, turn on [audit logging](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/auding-settings.md) to capture security-related events, such as authentication failures, refused connections, and data-access events through the proxy. To turn on audit logging, [edit your deployment’s elasticsearch.yml file](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to add these lines:
+Optionally, turn on [audit logging](elasticsearch://reference/elasticsearch/configuration-reference/auding-settings.md) to capture security-related events, such as authentication failures, refused connections, and data-access events through the proxy. To turn on audit logging, [edit your deployment’s elasticsearch.yml file](../../../deploy-manage/deploy/elastic-cloud/edit-stack-settings.md) to add these lines:
 
 ```sh
 xpack.security.audit.enabled: true

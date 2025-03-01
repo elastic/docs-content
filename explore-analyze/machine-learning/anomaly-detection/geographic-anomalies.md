@@ -15,9 +15,9 @@ If your data includes geographic fields, you can use {{ml-features}} to detect a
 To run this type of {{anomaly-job}}, you must have [{{ml-features}} set up](../setting-up-machine-learning.md). You must also have time series data that contains spatial data types. In particular, you must have:
 
 * two comma-separated numbers of the form `latitude,longitude`,
-* a [`geo_point`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) field,
-* a [`geo_shape`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md) field that contains point values, or
-* a [`geo_centroid`](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-geocentroid-aggregation.md) aggregation
+* a [`geo_point`](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) field,
+* a [`geo_shape`](elasticsearch://reference/elasticsearch/mapping-reference/geo-shape.md) field that contains point values, or
+* a [`geo_centroid`](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-geocentroid-aggregation.md) aggregation
 
 The latitude and longitude must be in the range -180 to 180 and represent a point on the surface of the Earth.
 

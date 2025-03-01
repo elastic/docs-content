@@ -40,7 +40,7 @@ In a production environment you would typically use the CA certificate from your
     sudo systemctl stop elasticsearch.service
     ```
 
-2. Generate a CA certificate using the provided certificate utility, `elasticsearch-certutil`. Note that the location of the utility depends on the installation method you used to install {{es}}. Refer to [elasticsearch-certutil](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/certutil.md) for the command details and to [Update security certificates with a different CA](../../../deploy-manage/security/different-ca.md) for details about the procedure as a whole.
+2. Generate a CA certificate using the provided certificate utility, `elasticsearch-certutil`. Note that the location of the utility depends on the installation method you used to install {{es}}. Refer to [elasticsearch-certutil](elasticsearch://reference/elasticsearch/command-line-tools/certutil.md) for the command details and to [Update security certificates with a different CA](../../../deploy-manage/security/different-ca.md) for details about the procedure as a whole.
 
     Run the following command. When prompted, specify a unique name for the output file, such as `elastic-stack-ca.zip`:
 

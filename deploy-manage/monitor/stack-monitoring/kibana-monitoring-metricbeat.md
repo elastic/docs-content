@@ -63,7 +63,7 @@ To learn about monitoring in general, see [Monitor a cluster](../../monitor.md).
         }
         ```
 
-        For more information, see [Monitoring settings in {{es}}](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
+        For more information, see [Monitoring settings in {{es}}](elasticsearch://reference/elasticsearch/configuration-reference/monitoring-settings.md) and [Cluster update settings](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings).
 
 4. [Install {{metricbeat}}](asciidocalypse://docs/beats/docs/reference/metricbeat/metricbeat-installation-configuration.md) on the same server as {{kib}}.
 5. Enable the {{kib}} {{xpack}} module in {{metricbeat}}.<br>
