@@ -13,7 +13,7 @@ applies_to:
 
 {{es}} provides official client libraries for popular programming languages. These libraries simplify the process of interacting with your {{es}} deployment.
 
-- [Go](asciidocalypse://docs/go-elasticsearch/docs/reference/index.md)
+- [Go](go-elasticsearch://reference/index.md)
 - [Java](elasticsearch-java://reference/index.md)
 - [JavaScript](elasticsearch-js://reference/index.md)
 - [.NET](elasticsearch-net://reference/index.md)

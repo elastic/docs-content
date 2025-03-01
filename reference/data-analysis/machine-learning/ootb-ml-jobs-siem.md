@@ -141,16 +141,16 @@ If there are additional requirements such as installing the Windows System Monit
 
 The following Integrations use {{ml}} to analyze patterns of user and entity behavior, and help detect and alert when there is related suspicious activity in your environment.
 
-* [Data Exfiltration Detection](asciidocalypse://docs/integrations/docs/reference/ded.md)
-* [Domain Generation Algorithm Detection](asciidocalypse://docs/integrations/docs/reference/dga.md)
-* [Lateral Movement Detection](asciidocalypse://docs/integrations/docs/reference/lmd.md)
-* [Living off the Land Attack Detection](asciidocalypse://docs/integrations/docs/reference/problemchild.md)
+* [Data Exfiltration Detection](integrations://reference/ded.md)
+* [Domain Generation Algorithm Detection](integrations://reference/dga.md)
+* [Lateral Movement Detection](integrations://reference/lmd.md)
+* [Living off the Land Attack Detection](integrations://reference/problemchild.md)
 
 **Domain Generation Algorithm (DGA) Detection**
 
 {{ml-cap}} solution package to detect domain generation algorithm (DGA) activity in your network data. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](asciidocalypse://docs/integrations/docs/reference/dga.md).
+To download, refer to the [documentation](integrations://reference/dga.md).
 
 | Name | Description |
 | --- | --- |
@@ -162,7 +162,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} solution package to detect Living off the Land (LotL) attacks in your environment. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription. (Also known as ProblemChild).
 
-To download, refer to the [documentation](asciidocalypse://docs/integrations/docs/reference/problemchild.md).
+To download, refer to the [documentation](integrations://reference/problemchild.md).
 
 | Name | Description |
 | --- | --- |
@@ -179,7 +179,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} package to detect data exfiltration in your network and file data. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](asciidocalypse://docs/integrations/docs/reference/ded.md).
+To download, refer to the [documentation](integrations://reference/ded.md).
 
 | Name | Description |
 | --- | --- |
@@ -197,7 +197,7 @@ The job configurations and datafeeds can be found [here](https://github.com/elas
 
 {{ml-cap}} package to detect lateral movement based on file transfer activity and Windows RDP events. Refer to the [subscription page](https://www.elastic.co/subscriptions) to learn more about the required subscription.
 
-To download, refer to the [documentation](asciidocalypse://docs/integrations/docs/reference/lmd.md).
+To download, refer to the [documentation](integrations://reference/lmd.md).
 
 | Name | Description |
 | --- | --- |
