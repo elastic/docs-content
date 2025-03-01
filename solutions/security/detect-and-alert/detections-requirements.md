@@ -6,21 +6,6 @@ mapped_urls:
 
 # Detections requirements
 
-% What needs to be done: Align serverless/stateful
-
-% Use migrated content from existing pages that map to this page:
-
-% - [x] ./raw-migrated-files/security-docs/security/detections-permissions-section.md
-% - [ ] ./raw-migrated-files/docs-content/serverless/security-detections-requirements.md
-
-% Internal links rely on the following IDs being on this page (e.g. as a heading ID, paragraph ID, etc):
-
-$$$enable-detections-ui$$$
-
-$$$adv-list-settings$$$
-
-$$$detections-on-prem-requirements$$$
-
 To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the [appropriate license](https://www.elastic.co/subscriptions) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated.
 
 ::::{important}
@@ -32,6 +17,10 @@ Additionally, there are some [advanced settings](/solutions/security/detect-and-
 
 
 ## Configure self-managed {{stack}} deployments [detections-on-prem-requirements]
+
+```yaml {applies_to}
+stack:
+```
 
 These steps are only required for **self-managed** deployments:
 
@@ -57,29 +46,17 @@ For instructions about using {{ml}} jobs and rules, refer to [Machine learning j
 ::::
 
 
-::::{important}
-In {{stack}} version 8.0.0, the `.siem-signals-<space-id>` index was renamed to `.alerts-security.alerts-<space-id>`. Detection alert indices are created for each {{kib}} space. For the default space, the alerts index is named `.alerts-security.alerts-default`. If you’re upgrading to 8.0.0 or later, users should have privileges for the `.alerts-security.alerts-<space-id>` AND `.siem-signals-<space-id>` indices. If you’re newly installing the {{stack}}, then users do not need privileges for the `.siem-signals-<space-id>` index.
-::::
-
-
+### Custom role privileges [security-detections-requirements-custom-role-privileges]
 The following table describes the required privileges to access the Detections feature, including rules and alerts. For more information on {{kib}} privileges, refer to [Feature access based on user privileges](/deploy-manage/manage-spaces.md#spaces-control-user-access).
 
 | Action | Cluster Privileges | Index Privileges | Kibana Privileges |
 | --- | --- | --- | --- |
-| Enable detections in your space | `manage` | `manage`, `write`, `read`, and `view_index_metadata` for these system indices and data streams, where `<space-id>` is the space name:<br><br>* `.alerts-security.alerts-<space-id>`<br>* `.siem-signals-<space-id>` 1<br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br><br>1 **NOTE**: If you’re upgrading to {{stack}} 8.0.0 or later, users should have privileges for the `.alerts-security.alerts-<space-id>` AND `.siem-signals-<space-id>` indices. If you’re newly installing the {{stack}}, then users do not need privileges for the `.siem-signals-<space-id>` index.<br> | `All` for the `Security` feature |
-| Enable detections in all spaces<br>**NOTE**: To turn on detections, visit the Rules and Alerts pages for each space. | `manage` | `manage`, `write`, `read`, and `view_index_metadata` for these system indices and data streams:<br><br>* `.alerts-security.alerts-<space-id>`<br>* `.siem-signals-<space-id>` 1<br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br><br>1 **NOTE**: If you’re upgrading to {{stack}} 8.0.0 or later, users should have privileges for the `.alerts-security.alerts-<space-id>` AND `.siem-signals-<space-id>` indices. If you’re newly installing the {{stack}}, then users do not need privileges for the `.siem-signals-<space-id>` index.<br> | `All` for the `Security` feature |
-| Preview rules | N/A | `read` for these indices:<br><br>* `.preview.alerts-security.alerts-<space-id>`<br>* `.internal.preview.alerts-security.alerts-<space-id>-*`<br> | `All` for the `Security` feature |
-| Manage rules | N/A | `manage`, `write`, `read`, and `view_index_metadata` for these system indices and data streams, where `<space-id>` is the space name:<br><br>* `.alerts-security.alerts-<space-id`<br>* `.siem-signals-<space-id>`1<br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br><br>1 **NOTE**: If you’re upgrading to {{stack}} 8.0.0 or later, users should have privileges for the `.alerts-security.alerts-<space-id>` AND `.siem-signals-<space-id>` indices. If you’re newly installing the {{stack}}, then users do not need privileges for the `.siem-signals-<space-id>` index.<br> | `All` for the `Security` feature<br><br>**NOTE:** You need additional `Action and Connectors` feature privileges (**Management → Action and Connectors**) to manage rules with actions and connectors:<br><br>* To provide full access to rule actions and connectors, give your role `All` privileges. With `Read` privileges, you can edit rule actions, but will have limited capabilities to manage connectors. For example, `Read` privileges allow you to add or remove an existing connector from a rule, but does not allow you to create a new connector.<br>* To import rules with actions, you need at least `Read` privileges for the `Action and Connectors` feature. To overwrite or add new connectors, you need `All` privileges for the `Actions and Connectors` feature. To import rules without actions,  you don’t need `Actions and Connectors` privileges.<br> |
-| Manage alerts<br>**NOTE**: Allows you to manage alerts, but not modify rules. | N/A | `maintenance`, `write`, `read`, and `view_index_metadata` for these system indices and data streams, where `<space-id>` is the space name:<br><br>* `.alerts-security.alerts-<space-id>`<br>* `.internal.alerts-security.alerts-<space-id>-*`<br>* `.siem-signals-<space-id>`1<br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br><br>1 **NOTE**: If you’re upgrading to {{stack}} 8.0.0 or later, users should have privileges for the `.alerts-security.alerts-<space-id>` AND `.siem-signals-<space-id>` indices. If you’re newly installing the {{stack}}, then users do not need privileges for the `.siem-signals-<space-id>` index.<br> | `Read` for the `Security` feature |
-| Create the `.lists` and `.items` data streams in your space<br>**NOTE**: To initiate the process that creates the data streams, you must visit the Rules page for each appropriate space. | `manage` | `manage`, `write`, `read`, and `view_index_metadata` for these data streams, where `<space-id>` is the space name:<br><br>* `.lists-<space-id>`<br>* `.items-<space-id>`<br> | `All` for the `Security` and `Saved Objects Management` features |
-
-Here is an example of a user who has the Detections feature enabled in all {{kib}} spaces:
-
-:::{image} ../../../images/security-sec-admin-user.png
-:alt: Shows user with the Detections feature enabled in all Kibana spaces
-:class: screenshot
-:::
-
+| Enable detections in your space | `manage` | `manage`, `write`, `read`, and `view_index_metadata` for these system indices and data streams, where `<space-id>` is the space name:<br><br> - `.alerts-security.alerts-<space-id>`<br> - `.siem-signals-<space-id>` <br> - `.lists-<space-id>`<br> - `.items-<space-id>`<br> | `All` for the `Security` feature |
+| Enable detections in all spaces<br>**NOTE**: To turn on detections, visit the Rules and Alerts pages for each space. | `manage` | `manage`, `write`, `read`, and `view_index_metadata` for these system indices and data streams:<br><br> - `.alerts-security.alerts-<space-id>`<br> - `.siem-signals-<space-id>` <br> - `.lists-<space-id>`<br> - `.items-<space-id>`<br> | `All` for the `Security` feature |
+| Preview rules | N/A | `read` for these indices:<br><br> - `.preview.alerts-security.alerts-<space-id>`<br> - `.internal.preview.alerts-security.alerts-<space-id>-*`<br> | `All` for the `Security` feature |
+| Manage rules | N/A | `manage`, `write`, `read`, and `view_index_metadata` for these system indices and data streams, where `<space-id>` is the space name:<br><br> - `.alerts-security.alerts-<space-id`<br> - `.siem-signals-<space-id>`<br> - `.lists-<space-id>`<br> - `.items-<space-id>`<br>| `All` for the `Security` feature<br><br>**NOTE:** You need additional `Action and Connectors` feature privileges (**Management → Action and Connectors**) to manage rules with actions and connectors:<br><br> - To provide full access to rule actions and connectors, give your role `All` privileges. With `Read` privileges, you can edit rule actions, but will have limited capabilities to manage connectors. For example, `Read` privileges allow you to add or remove an existing connector from a rule, but does not allow you to create a new connector.<br> - To import rules with actions, you need at least `Read` privileges for the `Action and Connectors` feature. To overwrite or add new connectors, you need `All` privileges for the `Actions and Connectors` feature. To import rules without actions,  you don’t need `Actions and Connectors` privileges.<br> |
+| Manage alerts<br>**NOTE**: Allows you to manage alerts, but not modify rules. | N/A | `maintenance`, `write`, `read`, and `view_index_metadata` for these system indices and data streams, where `<space-id>` is the space name:<br><br> - `.alerts-security.alerts-<space-id>`<br> - `.internal.alerts-security.alerts-<space-id>-*`<br> - `.siem-signals-<space-id>`<br> - `.lists-<space-id>`<br> - `.items-<space-id>`<br>| `Read` for the `Security` feature |
+| Create the `.lists` and `.items` data streams in your space<br>**NOTE**: To initiate the process that creates the data streams, you must visit the Rules page for each appropriate space. | `manage` | `manage`, `write`, `read`, and `view_index_metadata` for these data streams, where `<space-id>` is the space name:<br><br> - `.lists-<space-id>`<br> - `.items-<space-id>`<br> | `All` for the `Security` and `Saved Objects Management` features |
 
 ### Authorization [alerting-auth-model]
 
