@@ -1,4 +1,8 @@
 ---
+applies_to:
+  stack: all
+  serverless:
+    security: all
 mapped_pages:
   - https://www.elastic.co/guide/en/security/current/alert-schema.html
   - https://www.elastic.co/guide/en/serverless/current/security-alert-schema.html
@@ -135,5 +139,5 @@ The non-ECS fields listed below are beta and subject to change.
 | `kibana.alert.url` | The shareable URL for the alert.<br>NOTE: This field appears only if you’ve set the [`server.publicBaseUrl`](asciidocalypse://docs/reference/configuration-reference/general-settings.md#server-publicBaseUrl) configuration setting in the `kibana.yml` file.<br>Type: long |
 | `kibana.alert.workflow_tags` | List of tags added to an alert.<br><br>This field can contain an array of values, for example: `["False Positive", "production"]`<br><br>Type: keyword<br> |
 | `kibana.alert.workflow_assignee_ids` | List of users assigned to an alert.<br><br>An array of unique identifiers (UIDs) for user profiles, for example: `["u_1-0CcWliOCQ9T2MrK5YDjhpxZ_AcxPKt3pwaICcnAUY_0, u_2-0CcWliOCQ9T2MrK5YDjhpxZ_AcxPKt3pwaICcnAUY_1"]`<br><br>UIDs are linked to user profiles that are automatically created when users first log into a deployment. These profiles contain names, emails, profile avatars, and other user settings.<br><br>Type: string[]<br> |
-| `kibana.alert.intended_timestamp` | Shows the alert’s estimated timestamp, had the alert been created when the source event initially occurred. The value in this field is determined by the way the rule was run:<br><br>* **Scheduled run**: Alerts created by scheduled runs have the same timestamp as the `@timestamp` field, which shows when the alert was created.<br>* **Manual run**: Alerts created by manual runs have a timestamp that falls within the time range specified for the manual run. For example, if you set a rule to manually run on event data from `10/01/2024 05:00 PM` to `10/07/2024 05:00 PM`, the `kibana.alert.intended_timestamp` value will be a date and time within that range.<br><br>Type: date<br> |
+| `kibana.alert.intended_timestamp` | Shows the alert’s estimated timestamp, had the alert been created when the source event initially occurred. The value in this field is determined by the way the rule was run:<br><br>- **Scheduled run**: Alerts created by scheduled runs have the same timestamp as the `@timestamp` field, which shows when the alert was created.<br>- **Manual run**: Alerts created by manual runs have a timestamp that falls within the time range specified for the manual run. For example, if you set a rule to manually run on event data from `10/01/2024 05:00 PM` to `10/07/2024 05:00 PM`, the `kibana.alert.intended_timestamp` value will be a date and time within that range.<br><br>Type: date<br> |
 | `kibana.alert.rule.execution.type` | Shows if an alert was created by a manual run or a scheduled run. The value can be `manual` or `scheduled`.<br><br>Type: keyword<br> |
