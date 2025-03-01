@@ -12,14 +12,14 @@ The PKI, LDAP, AD, Kerberos, OpenID Connect, JWT, and SAML realms also support [
 
 To use role mapping, you create roles and role mapping rules. Role mapping rules can be based on realm name, realm type, username, groups, other user metadata, or combinations of those values.
 
-::::{note} 
+::::{note}
 When [anonymous access](../../../deploy-manage/users-roles/cluster-or-deployment-auth/anonymous-access.md) is enabled, the roles of the anonymous user are assigned to all the other users as well.
 ::::
 
 
 If there are role-mapping rules created through the API as well as a role mapping file, the rules are combined. It’s possible for a single user to have some roles that were mapped through the API, and others assigned based on the role mapping file. You can define role-mappings via an [API](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-api) or manage them through [files](../../../deploy-manage/users-roles/cluster-or-deployment-auth/mapping-users-groups-to-roles.md#mapping-roles-file). These two sources of role-mapping are combined inside of the {{es}} {{security-features}}, so it is possible for a single user to have some roles that have been mapped through the API, and other roles that are mapped through files.
 
-::::{note} 
+::::{note}
 Users with no roles assigned will be unauthorized for any action. In other words, they may be able to authenticate, but they will have no roles. No roles means no privileges, and no privileges means no authorizations to make requests.
 ::::
 
@@ -35,7 +35,7 @@ You can define role-mappings through the [add role mapping API](https://www.elas
 
 To use file based role-mappings, you must configure the mappings in a YAML file and copy it to each node in the cluster. Tools like Puppet or Chef can help with this.
 
-By default, role mappings are stored in `ES_PATH_CONF/role_mapping.yml`, where `ES_PATH_CONF` is `ES_HOME/config` (zip/tar installations) or `/etc/elasticsearch` (package installations). To specify a different location, you configure the `files.role_mapping` setting in the [Active Directory](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings), [LDAP](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings), and [PKI](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) realm settings in `elasticsearch.yml`.
+By default, role mappings are stored in `ES_PATH_CONF/role_mapping.yml`, where `ES_PATH_CONF` is `ES_HOME/config` (zip/tar installations) or `/etc/elasticsearch` (package installations). To specify a different location, you configure the `files.role_mapping` setting in the [Active Directory](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ad-settings), [LDAP](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings), and [PKI](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-pki-settings) realm settings in `elasticsearch.yml`.
 
 Within the role mapping file, the security roles are keys and groups and users are values. The mappings can have a many-to-many relationship. When you map roles to groups, the roles of a user in that group are the combination of the roles assigned to that group and the roles assigned to that user.
 
@@ -48,7 +48,7 @@ While the *role mapping APIs* is the preferred way to manage role mappings, usin
 
 Please note however, that the `role_mapping.yml` file is provided as a minimal administrative function and is not intended to cover and be used to define roles for all use cases.
 
-::::{important} 
+::::{important}
 You cannot view, edit, or remove any roles that are defined in the role mapping files by using the role mapping APIs.
 ::::
 
@@ -57,11 +57,11 @@ You cannot view, edit, or remove any roles that are defined in the role mapping 
 ## Realm specific details [_realm_specific_details]
 
 
-#### Active Directory and LDAP realms [ldap-role-mapping] 
+#### Active Directory and LDAP realms [ldap-role-mapping]
 
 To specify users and groups in the role mappings, you use their *Distinguished Names* (DNs). A DN is a string that uniquely identifies the user or group, for example `"cn=John Doe,cn=contractors,dc=example,dc=com"`.
 
-::::{note} 
+::::{note}
 The {{es}} {{security-features}} support only Active Directory security groups. You cannot map distribution groups to roles.
 ::::
 
@@ -106,7 +106,7 @@ PUT /_security/role_mapping/basic_users
 ```
 
 
-#### PKI realms [pki-role-mapping] 
+#### PKI realms [pki-role-mapping]
 
 PKI realms support mapping users to roles, but you cannot map groups as the PKI realm has no notion of a group.
 

@@ -23,7 +23,7 @@ Users with the `viewer` role can view the Data Sets Quality summary. To view the
 ::::
 
 
-The quality of your data sets is based on the percentage of degraded documents in each data set. A degraded document in a data set contains the [`_ignored`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-ignored-field.md) property because one or more of its fields were ignored during indexing. Fields are ignored for a variety of reasons. For example, when the [`ignore_malformed`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-ignored-field.md) parameter is set to true, if a document field contains the wrong data type, the malformed field is ignored and the rest of the document is indexed.
+The quality of your data sets is based on the percentage of degraded documents in each data set. A degraded document in a data set contains the [`_ignored`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-ignored-field.md) property because one or more of its fields were ignored during indexing. Fields are ignored for a variety of reasons. For example, when the [`ignore_malformed`](elasticsearch://reference/elasticsearch/mapping-reference/mapping-ignored-field.md) parameter is set to true, if a document field contains the wrong data type, the malformed field is ignored and the rest of the document is indexed.
 
 From the data set table, you’ll find information for each data set such as its namespace, when the data set was last active, and the percentage of degraded docs. The percentage of degraded documents determines the data set’s quality according to the following scale:
 

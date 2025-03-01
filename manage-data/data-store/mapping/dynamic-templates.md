@@ -17,7 +17,7 @@ Dynamic templates allow you greater control over how {{es}} maps your data beyon
 
 Use the `{{name}}` and `{{dynamic_type}}` [template variables](#template-variables) in the mapping specification as placeholders.
 
-::::{important} 
+::::{important}
 Dynamic field mappings are only added when a field contains a concrete value. {{es}} doesn’t add a dynamic field mapping when the field contains `null` or an empty array. If the `null_value` option is used in a `dynamic_template`, it will only be applied after the first document with a concrete value for the field has been indexed.
 ::::
 
@@ -89,7 +89,7 @@ The `match_mapping_type` parameter matches fields by the data type detected by t
 
 Because JSON doesn’t distinguish a `long` from an `integer` or a `double` from a `float`, any parsed floating point number is considered a `double` JSON data type, while any parsed `integer` number is considered a `long`.
 
-::::{note} 
+::::{note}
 With dynamic mappings, {{es}} will always choose the wider data type. The one exception is `float`, which requires less storage space than `double` and is precise enough for most applications. Runtime fields do not support `float`, which is why `"dynamic":"runtime"` uses `double`.
 ::::
 
@@ -174,7 +174,7 @@ PUT my-index-000001/_doc/1
 ```
 
 1. The `my_integer` field is mapped as an `integer`.
-2. The `my_string` field is mapped as a `text`, with a `keyword` [multi-field](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md).
+2. The `my_string` field is mapped as a `text`, with a `keyword` [multi-field](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md).
 3. The `my_boolean` field is mapped as a `keyword`.
 4. The `field.count` field is mapped as a `long`.
 
@@ -359,7 +359,7 @@ PUT my-index-000001/_doc/2
 
 ## Template variables [template-variables]
 
-The `{{name}}` and `{{dynamic_type}}` placeholders are replaced in the `mapping` with the field name and detected dynamic type. The following example sets all string fields to use an [`analyzer`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/analyzer.md) with the same name as the field, and disables [`doc_values`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/doc-values.md) for all non-string fields:
+The `{{name}}` and `{{dynamic_type}}` placeholders are replaced in the `mapping` with the field name and detected dynamic type. The following example sets all string fields to use an [`analyzer`](elasticsearch://reference/elasticsearch/mapping-reference/analyzer.md) with the same name as the field, and disables [`doc_values`](elasticsearch://reference/elasticsearch/mapping-reference/doc-values.md) for all non-string fields:
 
 ```console
 PUT my-index-000001

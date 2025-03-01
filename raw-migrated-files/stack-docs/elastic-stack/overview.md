@@ -5,7 +5,7 @@ The products in the [{{stack}}](https://www.elastic.co/products) are designed to
 * [Beats master](asciidocalypse://docs/beats/docs/reference/index.md)
 * [APM master](https://www.elastic.co/guide/en/apm/guide/current/index.html)
 * [Elasticsearch master](/get-started/index.md)
-* [Elasticsearch Hadoop master](asciidocalypse://docs/elasticsearch-hadoop/docs/reference/preface.md)
+* [Elasticsearch Hadoop master](elasticsearch-hadoop://reference/index.md)
 * [Kibana master](/get-started/the-stack.md)
 * [Logstash master](asciidocalypse://docs/logstash/docs/reference/index.md)
 

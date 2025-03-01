@@ -134,7 +134,7 @@ But, if the sub-select would include a `GROUP BY` or `HAVING` or the enclosing `
 
 ## Using [`FIRST`](sql-functions-aggs.md#sql-functions-aggs-first)/[`LAST`](sql-functions-aggs.md#sql-functions-aggs-last) aggregation functions in `HAVING` clause [first-last-agg-functions-having-clause]
 
-Using `FIRST` and `LAST` in the `HAVING` clause is not supported. The same applies to [`MIN`](sql-functions-aggs.md#sql-functions-aggs-min) and [`MAX`](sql-functions-aggs.md#sql-functions-aggs-max) when their target column is of type [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) or [`unsigned_long`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/number.md) as they are internally translated to `FIRST` and `LAST`.
+Using `FIRST` and `LAST` in the `HAVING` clause is not supported. The same applies to [`MIN`](sql-functions-aggs.md#sql-functions-aggs-min) and [`MAX`](sql-functions-aggs.md#sql-functions-aggs-max) when their target column is of type [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) or [`unsigned_long`](elasticsearch://reference/elasticsearch/mapping-reference/number.md) as they are internally translated to `FIRST` and `LAST`.
 
 
 ## Using TIME data type in GROUP BY or [`HISTOGRAM`](sql-functions-grouping.md#sql-functions-grouping-histogram) [group-by-time]
@@ -167,7 +167,7 @@ By default,`geo_points` fields are indexed and have doc values. However only lat
 
 ## Retrieving using the `fields` search parameter [using-fields-api]
 
-Elasticsearch SQL retrieves column values using the [search API’s `fields` parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param). Any limitations on the `fields` parameter also apply to Elasticsearch SQL queries. For example, if `_source` is disabled for any of the returned fields or at index level, the values cannot be retrieved.
+Elasticsearch SQL retrieves column values using the [search API’s `fields` parameter](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md#search-fields-param). Any limitations on the `fields` parameter also apply to Elasticsearch SQL queries. For example, if `_source` is disabled for any of the returned fields or at index level, the values cannot be retrieved.
 
 
 ## Aggregations in the [`PIVOT`](sql-syntax-select.md#sql-syntax-pivot) clause [aggs-in-pivot]

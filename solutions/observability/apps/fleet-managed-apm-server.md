@@ -16,7 +16,7 @@ You need {{es}} for storing and searching your data, and {{kib}} for visualizing
 * Secure, encrypted connection between {{kib}} and {{es}}. For more information, see [Start the {{stack}} with security enabled](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md).
 * Internet connection for {{kib}} to download integration packages from the {{package-registry}}. Make sure the {{kib}} server can connect to `https://epr.elastic.co` on port `443`. If your environment has network traffic restrictions, there are ways to work around this requirement. See [Air-gapped environments](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/air-gapped.md) for more information.
 * {{kib}} user with `All` privileges on {{fleet}} and {{integrations}}. Since many Integrations assets are shared across spaces, users need the {{kib}} privileges in all spaces.
-* In the {{es}} configuration, the [built-in API key service](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
+* In the {{es}} configuration, the [built-in API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#api-key-service-settings) must be enabled. (`xpack.security.authc.api_key.enabled: true`)
 * In the {{kib}} configuration, the saved objects encryption key must be set. {{fleet}} requires this setting in order to save API keys and encrypt them in {{kib}}. You can either set `xpack.encryptedSavedObjects.encryptionKey` to an alphanumeric value of at least 32 characters, or run the [`kibana-encryption-keys` command](asciidocalypse://docs/kibana/docs/reference/commands/kibana-encryption-keys.md) to generate the key.
 
 **Example security settings**
@@ -85,7 +85,7 @@ You can install only a single {{agent}} per host, which means you cannot run {{f
     * Use your own {{fleet-server}} policy. You can create a new {{fleet-server}} policy or select an existing one. Alternatively you can [create a {{fleet-server}} policy without using the UI](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/create-policy-no-ui.md), and select the policy here.
     * Use your own TLS certificates to encrypt traffic between {{agent}}s and {{fleet-server}}. To learn how to generate certs, refer to [Configure SSL/TLS for self-managed {{fleet-server}}s](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/secure-connections.md).
 
-* It’s recommended you generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, see [`elasticsearch-service-tokens`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/service-tokens-command.md).
+* It’s recommended you generate a unique service token for each {{fleet-server}}. For other ways to generate service tokens, see [`elasticsearch-service-tokens`](elasticsearch://reference/elasticsearch/command-line-tools/service-tokens-command.md).
 * If you are providing your own certificates:
 
     * Before running the `install` command, make sure you replace the values in angle brackets.
@@ -270,7 +270,7 @@ All that’s left is to compile and run your application. That’s it!
 
 **Learn more in the agent reference**
 
-Read more in the [APM Android Agent Reference](asciidocalypse://docs/apm-agent-android/docs/reference/index.md).
+Read more in the [APM Android Agent Reference](apm-agent-android://reference/index.md).
 ::::::
 
 ::::::{tab-item} Go
@@ -441,14 +441,14 @@ Refer to [Manual setup with `-javaagent` flag](asciidocalypse://docs/apm-agent-j
 
 The .NET agent can be added to an application in a few different ways:
 
-* **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](asciidocalypse://docs/apm-agent-dotnet/docs/reference/setup-auto-instrumentation.md).
-* **NuGet packages**: The agent ships as a set of [NuGet packages](asciidocalypse://docs/apm-agent-dotnet/docs/reference/nuget-packages.md) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
-* **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](asciidocalypse://docs/apm-agent-dotnet/docs/reference/setup-dotnet-net-core.md) for more details.
+* **Profiler runtime instrumentation**: The agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Profiler auto instrumentation](apm-agent-dotnet://reference/setup-auto-instrumentation.md).
+* **NuGet packages**: The agent ships as a set of [NuGet packages](apm-agent-dotnet://reference/nuget-packages.md) available on [nuget.org](https://nuget.org). You can add the Agent and specific instrumentations to a .NET application by referencing one or more of these packages and following the package documentation.
+* **Host startup hook**: On .NET Core 3.0+ or .NET 5+, the agent supports auto instrumentation without any code change and without any recompilation of your projects. See [Zero code change setup on .NET Core](apm-agent-dotnet://reference/setup-dotnet-net-core.md) for more details.
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-dotnet://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-dotnet://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js

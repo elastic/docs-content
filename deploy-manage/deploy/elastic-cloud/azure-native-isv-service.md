@@ -240,7 +240,7 @@ $$$azure-integration-cli-api$$$What other methods are available to deploy {{es}}
 
         * The {{ecloud}} [console](https://cloud.elastic.co?page=docs&placement=docs-body)
         * The {{ecloud}} [REST API](asciidocalypse://docs/cloud/docs/reference/cloud-hosted/ec-api-restful.md)
-        * The {{ecloud}} [command line tool](asciidocalypse://docs/ecctl/docs/reference/index.md)
+        * The {{ecloud}} [command line tool](ecctl://reference/index.md)
         * The {{ecloud}} [Terraform provider](https://registry.terraform.io/providers/elastic/ec/latest/docs)
 
             Note that when you use any of the {{ecloud}} methods, the {{es}} deployment will not be available in Azure.

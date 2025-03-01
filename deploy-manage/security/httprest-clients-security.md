@@ -17,7 +17,7 @@ Authorization: Basic <TOKEN> <1>
 Alternatively, you can use [token-based authentication services](../users-roles/cluster-or-deployment-auth/token-based-authentication-services.md).
 
 
-## Client examples [http-clients-examples] 
+## Client examples [http-clients-examples]
 
 This example uses `curl` without basic auth to create an index:
 
@@ -45,7 +45,7 @@ curl --user rdeniro:taxidriver -XPUT 'localhost:9200/idx'
 ```
 
 
-## Secondary authorization [http-clients-secondary-authorization] 
+## Secondary authorization [http-clients-secondary-authorization]
 
 Some APIs support secondary authorization headers for situations where you want tasks to run with a different set of credentials. For example, you can send the following header in addition to the basic authentication header:
 
@@ -66,15 +66,15 @@ es-secondary-authorization: ApiKey <TOKEN> <1>
 
 
 
-## Client libraries over HTTP [http-clients-libraries] 
+## Client libraries over HTTP [http-clients-libraries]
 
 For more information about using {{security-features}} with the language specific clients, refer to:
 
-* [Java](asciidocalypse://docs/elasticsearch-java/docs/reference/_basic_authentication.md)
-* [JavaScript](asciidocalypse://docs/elasticsearch-js/docs/reference/connecting.md)
-* [.NET](asciidocalypse://docs/elasticsearch-net/docs/reference/configuration.md)
+* [Java](elasticsearch-java://reference/_basic_authentication.md)
+* [JavaScript](elasticsearch-js://reference/connecting.md)
+* [.NET](elasticsearch-net://reference/configuration.md)
 * [Perl](https://metacpan.org/pod/Search::Elasticsearch::Cxn::HTTPTiny#CONFIGURATION)
-* [PHP](asciidocalypse://docs/elasticsearch-php/docs/reference/connecting.md)
+* [PHP](elasticsearch-php://reference/connecting.md)
 * [Python](https://elasticsearch-py.readthedocs.io/en/master/#ssl-and-authentication)
 * [Ruby](https://github.com/elasticsearch/elasticsearch-ruby/tree/master/elasticsearch-transport#authentication)
 

@@ -14,19 +14,19 @@ Every `password` field that is used in your watch within an HTTP basic authentic
 
 To encrypt sensitive data in {{watcher}}:
 
-1. Use the [elasticsearch-syskeygen](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/syskeygen.md) command to create a system key file.
+1. Use the [elasticsearch-syskeygen](elasticsearch://reference/elasticsearch/command-line-tools/syskeygen.md) command to create a system key file.
 2. Copy the `system_key` file to all of the nodes in your cluster.
    ::::{important}
    The system key is a symmetric key, so the same key must be used on every node in the cluster.
    ::::
 
-3. Set the [`xpack.watcher.encrypt_sensitive_data` setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md):
+3. Set the [`xpack.watcher.encrypt_sensitive_data` setting](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md):
 
     ```sh
     xpack.watcher.encrypt_sensitive_data: true
     ```
 
-4. Set the [`xpack.watcher.encryption_key` setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md) in the [{{es}} keystore](../../../deploy-manage/security/secure-settings.md) on each node in the cluster.
+4. Set the [`xpack.watcher.encryption_key` setting](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md) in the [{{es}} keystore](../../../deploy-manage/security/secure-settings.md) on each node in the cluster.
 
     For example, run the following command to import the `system_key` file on each node:
 

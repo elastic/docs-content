@@ -8,7 +8,7 @@ applies_to:
 
 # Retrieve a runtime field [runtime-retrieving-fields]
 
-Use the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API to retrieve the values of runtime fields. Runtime fields won’t display in `_source`, but the `fields` API works for all fields, even those that were not sent as part of the original `_source`.
+Use the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API to retrieve the values of runtime fields. Runtime fields won’t display in `_source`, but the `fields` API works for all fields, even those that were not sent as part of the original `_source`.
 
 ## Define a runtime field to calculate the day of week [runtime-define-field-dayofweek]
 
@@ -155,7 +155,7 @@ This time, the response includes only two hits. The value for `day_of_week` (`Su
 
 ## Retrieve fields from related indices [lookup-runtime-fields]
 
-The [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API can also be used to retrieve fields from the related indices via runtime fields with a type of `lookup`.
+The [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter on the `_search` API can also be used to retrieve fields from the related indices via runtime fields with a type of `lookup`.
 
 ::::{note}
 Fields that are retrieved by runtime fields of type `lookup` can be used to enrich the hits in a search response. It’s not possible to query or aggregate on these fields.
@@ -202,11 +202,11 @@ POST logs/_search
 }
 ```
 
-1. Define a runtime field in the main search request with a type of `lookup` that retrieves fields from the target index using the [`term`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-term-query.md) queries.
+1. Define a runtime field in the main search request with a type of `lookup` that retrieves fields from the target index using the [`term`](elasticsearch://reference/query-languages/query-dsl-term-query.md) queries.
 2. The target index where the lookup query executes against
 3. A field on the main index whose values are used as the input values of the lookup term query
 4. A field on the lookup index which the lookup query searches against
-5. A list of fields to retrieve from the lookup index. See the [`fields`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter of a search request.
+5. A list of fields to retrieve from the lookup index. See the [`fields`](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md) parameter of a search request.
 
 
 The above search returns the country and city from the `ip_location` index for each ip address of the returned search hits.

@@ -28,7 +28,7 @@ Review the APM [release notes](asciidocalypse://docs/docs-content/docs/release-n
 {{fleet}} Server is a component of the {{stack}} used to centrally manage {{agent}}s. The APM integration requires a {{fleet}} Server to be running and accessible to your hosts. Add a {{fleet}} Server by following [this guide](asciidocalypse://docs/docs-content/docs/reference/ingestion-tools/fleet/deployment-models.md).
 
 ::::{tip}
-If you’re upgrading a self-managed deployment of the {{stack}}, you’ll need to enable [{{es}} security](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md) and the [API key service](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md).
+If you’re upgrading a self-managed deployment of the {{stack}}, you’ll need to enable [{{es}} security](../../../deploy-manage/deploy/self-managed/installing-elasticsearch.md) and the [API key service](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md).
 ::::
 
 

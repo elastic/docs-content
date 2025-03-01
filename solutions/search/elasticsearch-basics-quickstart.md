@@ -309,7 +309,7 @@ GET /books/_mapping
 
 ### Define explicit mapping [getting-started-explicit-mapping]
 
-Create an index named `my-explicit-mappings-books` with explicit mappings. Pass each field’s properties as a JSON object. This object should contain the [field data type](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-data-types.md) and any additional [mapping parameters](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-parameters.md).
+Create an index named `my-explicit-mappings-books` with explicit mappings. Pass each field’s properties as a JSON object. This object should contain the [field data type](elasticsearch://reference/elasticsearch/mapping-reference/field-data-types.md) and any additional [mapping parameters](elasticsearch://reference/elasticsearch/mapping-reference/mapping-parameters.md).
 
 ```console
 PUT /my-explicit-mappings-books
@@ -416,7 +416,7 @@ GET books/_search
 
 ### `match` query [getting-started-match-query]
 
-You can use the [`match` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
+You can use the [`match` query](elasticsearch://reference/query-languages/query-dsl-match-query.md) to search for documents that contain a specific value in a specific field. This is the standard query for full-text searches.
 
 Run the following command to search the `books` index for documents containing `brave` in the `name` field:
 

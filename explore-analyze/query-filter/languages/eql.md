@@ -18,7 +18,7 @@ Event Query Language (EQL) is a query language for event-based time series data,
 ## Advantages of EQL [eql-advantages]
 
 * **EQL lets you express relationships between events.**<br> Many query languages allow you to match single events. EQL lets you match a sequence of events across different event categories and time spans.
-* **EQL has a low learning curve.**<br> [EQL syntax](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md) looks like other common query languages, such as SQL. EQL lets you write and read queries intuitively, which makes for quick, iterative searching.
+* **EQL has a low learning curve.**<br> [EQL syntax](elasticsearch://reference/query-languages/eql-syntax.md) looks like other common query languages, such as SQL. EQL lets you write and read queries intuitively, which makes for quick, iterative searching.
 * **EQL is designed for security use cases.**<br> While you can use it for any event-based data, we created EQL for threat hunting. EQL not only supports indicator of compromise (IOC) searches but can describe activity that goes beyond IOCs.
 
 
@@ -26,7 +26,7 @@ Event Query Language (EQL) is a query language for event-based time series data,
 
 With the exception of sample queries, EQL searches require that the searched data stream or index  contains a *timestamp* field. By default, EQL uses the `@timestamp` field from the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current).
 
-EQL searches also require an *event category* field, unless you use the [`any` keyword](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-syntax-match-any-event-category) to search for  documents without an event category field. By default, EQL uses the ECS `event.category` field.
+EQL searches also require an *event category* field, unless you use the [`any` keyword](elasticsearch://reference/query-languages/eql-syntax.md#eql-syntax-match-any-event-category) to search for  documents without an event category field. By default, EQL uses the ECS `event.category` field.
 
 To use a different timestamp or event category field, see [Specify a timestamp or event category field](#specify-a-timestamp-or-event-category-field).
 
@@ -38,7 +38,7 @@ While no schema is required to use EQL, we recommend using the [ECS](https://www
 
 ## Run an EQL search [run-an-eql-search]
 
-Use the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) to run a [basic EQL query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-basic-syntax).
+Use the [EQL search API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search) to run a [basic EQL query](elasticsearch://reference/query-languages/eql-syntax.md#eql-basic-syntax).
 
 ```console
 GET /my-data-stream/_eql/search
@@ -119,7 +119,7 @@ GET /my-data-stream/_eql/search
 
 ## Search for a sequence of events [eql-search-sequence]
 
-Use EQL’s [sequence syntax](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-sequences) to search for a series of ordered events. List the event items in ascending chronological order, with the most recent event listed last:
+Use EQL’s [sequence syntax](elasticsearch://reference/query-languages/eql-syntax.md#eql-sequences) to search for a series of ordered events. List the event items in ascending chronological order, with the most recent event listed last:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -188,7 +188,7 @@ The response’s `hits.sequences` property contains the 10 most recent matching 
 }
 ```
 
-Use [`with maxspan`](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-with-maxspan-keywords) to constrain matching sequences to a timespan:
+Use [`with maxspan`](elasticsearch://reference/query-languages/eql-syntax.md#eql-with-maxspan-keywords) to constrain matching sequences to a timespan:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -201,7 +201,7 @@ GET /my-data-stream/_eql/search
 }
 ```
 
-Use `!` to match [missing events](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-missing-events): events in a sequence that do not meet a condition within a given timespan:
+Use `!` to match [missing events](elasticsearch://reference/query-languages/eql-syntax.md#eql-missing-events): events in a sequence that do not meet a condition within a given timespan:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -276,7 +276,7 @@ Missing events are indicated in the response as `missing": true`:
 }
 ```
 
-Use the [`by` keyword](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-by-keyword) to match events that share the same field values:
+Use the [`by` keyword](elasticsearch://reference/query-languages/eql-syntax.md#eql-by-keyword) to match events that share the same field values:
 
 ```console
 GET /my-data-stream/_eql/search
@@ -320,7 +320,7 @@ The `hits.sequences.join_keys` property contains the shared field values.
 }
 ```
 
-Use the [`until` keyword](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-until-keyword) to specify an expiration event for sequences. Matching sequences must end before this event.
+Use the [`until` keyword](elasticsearch://reference/query-languages/eql-syntax.md#eql-until-keyword) to specify an expiration event for sequences. Matching sequences must end before this event.
 
 ```console
 GET /my-data-stream/_eql/search
@@ -337,7 +337,7 @@ GET /my-data-stream/_eql/search
 
 ## Sample chronologically unordered events [eql-search-sample]
 
-Use EQL’s [sample syntax](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-samples) to search for events that match one or more join keys and a set of filters. Samples are similar to sequences, but do not return events in chronological order. In fact, sample queries can run on data without a timestamp. Sample queries can be useful to find correlations in events that don’t always occur in the same sequence, or that occur across long time spans.
+Use EQL’s [sample syntax](elasticsearch://reference/query-languages/eql-syntax.md#eql-samples) to search for events that match one or more join keys and a set of filters. Samples are similar to sequences, but do not return events in chronological order. In fact, sample queries can run on data without a timestamp. Sample queries can be useful to find correlations in events that don’t always occur in the same sequence, or that occur across long time spans.
 
 ::::{dropdown} Click to show the sample data used in the examples below
 ```console
@@ -553,7 +553,7 @@ POST /my-index-000003/_bulk?refresh
 ::::
 
 
-A sample query specifies at least one join key, using the [`by` keyword](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/eql-syntax.md#eql-by-keyword), and up to five filters:
+A sample query specifies at least one join key, using the [`by` keyword](elasticsearch://reference/query-languages/eql-syntax.md#eql-by-keyword), and up to five filters:
 
 ```console
 GET /my-index*/_eql/search
@@ -871,7 +871,7 @@ GET /my-index*/_eql/search
 
 By default, each hit in the search response includes the document `_source`, which is the entire JSON object that was provided when indexing the document.
 
-You can use the [`filter_path`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) query parameter to filter the API response. For example, the following search returns only the timestamp and PID from the `_source` of each matching event.
+You can use the [`filter_path`](elasticsearch://reference/elasticsearch/rest-apis/common-options.md#common-options-response-filtering) query parameter to filter the API response. For example, the following search returns only the timestamp and PID from the `_source` of each matching event.
 
 ```console
 GET /my-data-stream/_eql/search?filter_path=hits.events._source.@timestamp,hits.events._source.process.pid
@@ -909,12 +909,12 @@ The API returns the following response.
 }
 ```
 
-You can also use the `fields` parameter to retrieve and format specific fields in the response. This field is identical to the search API’s [`fields` parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
+You can also use the `fields` parameter to retrieve and format specific fields in the response. This field is identical to the search API’s [`fields` parameter](elasticsearch://reference/elasticsearch/rest-apis/retrieve-selected-fields.md).
 
 Because it consults the index mappings, the `fields` parameter provides several advantages over referencing the `_source` directly. Specifically, the `fields` parameter:
 
 * Returns each value in a standardized way that matches its mapping type
-* Accepts [multi-fields](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/multi-fields.md) and [field aliases](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md)
+* Accepts [multi-fields](elasticsearch://reference/elasticsearch/mapping-reference/multi-fields.md) and [field aliases](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md)
 * Formats dates and spatial data types
 * Retrieves [runtime field values](../../../manage-data/data-store/mapping/retrieve-runtime-field.md)
 * Returns fields calculated by a script at index time
@@ -1055,7 +1055,7 @@ GET /my-data-stream/_eql/search
 }
 ```
 
-The event category field must be mapped as a [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) family field type. The timestamp field should be mapped as a [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) field type. [`date_nanos`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md) timestamp fields are not supported. You cannot use a [`nested`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/nested.md) field or the sub-fields of a `nested` field as the timestamp or event category field.
+The event category field must be mapped as a [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) family field type. The timestamp field should be mapped as a [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) field type. [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) timestamp fields are not supported. You cannot use a [`nested`](elasticsearch://reference/elasticsearch/mapping-reference/nested.md) field or the sub-fields of a `nested` field as the timestamp or event category field.
 
 
 ## Specify a sort tiebreaker [eql-search-specify-a-sort-tiebreaker]
@@ -1286,5 +1286,5 @@ GET /cluster_one:my-data-stream,cluster_two:my-data-stream/_eql/search
 
 ## EQL circuit breaker settings [eql-circuit-breaker]
 
-The relevant circuit breaker settings can be found in the [Circuit Breakers page](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#circuit-breakers-page-eql).
+The relevant circuit breaker settings can be found in the [Circuit Breakers page](elasticsearch://reference/elasticsearch/configuration-reference/circuit-breaker-settings.md#circuit-breakers-page-eql).
 

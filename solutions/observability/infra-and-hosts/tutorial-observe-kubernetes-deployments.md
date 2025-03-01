@@ -732,7 +732,7 @@ Configure the agent using environment variables:
 
 ::::::{tab-item} .NET
 ::::{note}
-These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](asciidocalypse://docs/apm-agent-dotnet/docs/reference/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
+These instructions are for .NET Core v2.2+. All other use-cases require downloading the agent from NuGet and adding it to your application. See [set up the Agent](apm-agent-dotnet://reference/set-up-apm-net-agent.md) for full details. Once agent set-up is complete, jump to the **Configure the agent** section on this page.
 ::::
 
 
@@ -806,8 +806,8 @@ Configure the agent using environment variables:
 
 **Learn more in the agent reference**
 
-* [Supported technologies](asciidocalypse://docs/apm-agent-dotnet/docs/reference/supported-technologies.md)
-* [Advanced configuration](asciidocalypse://docs/apm-agent-dotnet/docs/reference/configuration.md)
+* [Supported technologies](apm-agent-dotnet://reference/supported-technologies.md)
+* [Advanced configuration](apm-agent-dotnet://reference/configuration.md)
 ::::::
 
 ::::::{tab-item} Node.js

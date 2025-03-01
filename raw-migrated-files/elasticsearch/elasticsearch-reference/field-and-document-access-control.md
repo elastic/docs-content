@@ -2,14 +2,14 @@
 
 You can control access to data within a data stream or index by adding field and document level security permissions to a role. [Field level security permissions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) restrict access to particular fields within a document. [Document level security permissions](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md) restrict access to particular documents.
 
-::::{note} 
+::::{note}
 Document and field level security is currently meant to operate with read-only privileged accounts. Users with document and field level security enabled for a data stream or index should not perform write operations.
 ::::
 
 
 A role can define both field and document level permissions on a per-index basis. A role that doesn’t specify field level permissions grants access to ALL fields. Similarly, a role that doesn’t specify document level permissions grants access to ALL documents in the index.
 
-::::{important} 
+::::{important}
 When assigning users multiple roles, be careful that you don’t inadvertently grant wider access than intended. Each user has a single set of field level and document level permissions per data stream or index. See [Multiple roles with document and field level security](../../../deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level.md#multiple-roles-dls-fls).
 
 ::::
@@ -25,7 +25,7 @@ Field level security takes into account each role the user has and combines all 
 
 For example, let’s say `role_a` grants access to only the `address` field of the documents in `index1`; it doesn’t specify any document restrictions. Conversely, `role_b` limits access to a subset of the documents in `index1`; it doesn’t specify any field restrictions. If you assign a user both roles, `role_a` gives the user access to all documents and `role_b` gives the user access to all fields.
 
-::::{important} 
+::::{important}
 If you need to restrict access to both documents and fields, consider splitting documents by index instead.
 
 ::::
@@ -110,16 +110,16 @@ POST /_security/role/example3
 
 ## Pre-processing documents to add security details [set-security-user-processor]
 
-To guarantee that a user reads only their own documents, it makes sense to set up document level security. In this scenario, each document must have the username or role name associated with it, so that this information can be used by the role query for document level security. This is a situation where the [set security user processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) ingest processor can help.
+To guarantee that a user reads only their own documents, it makes sense to set up document level security. In this scenario, each document must have the username or role name associated with it, so that this information can be used by the role query for document level security. This is a situation where the [set security user processor](elasticsearch://reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) ingest processor can help.
 
-::::{note} 
+::::{note}
 Document level security doesn’t apply to write APIs. You must use unique ids for each user that uses the same data stream or index, otherwise they might overwrite other users' documents. The ingest processor just adds properties for the current authenticated user to the documents that are being indexed.
 ::::
 
 
-The [set security user processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) attaches user-related details (such as `username`,  `roles`, `email`, `full_name` and `metadata` ) from the current authenticated user to the current document by pre-processing the ingest. When you index data with an ingest pipeline, user details are automatically attached to the document. If the authenticating credential is an API key, the API key `id`, `name` and `metadata` (if it exists and is non-empty) are also attached to the document.
+The [set security user processor](elasticsearch://reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md) attaches user-related details (such as `username`,  `roles`, `email`, `full_name` and `metadata` ) from the current authenticated user to the current document by pre-processing the ingest. When you index data with an ingest pipeline, user details are automatically attached to the document. If the authenticating credential is an API key, the API key `id`, `name` and `metadata` (if it exists and is non-empty) are also attached to the document.
 
-For more information see [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md)
+For more information see [Ingest pipelines](../../../manage-data/ingest/transform-enrich/ingest-pipelines.md) and [Set security user](elasticsearch://reference/ingestion-tools/enrich-processor/ingest-node-set-security-user-processor.md)
 
 
 ## Field and document level security with Cross-cluster API keys [ccx-apikeys-dls-fls]

@@ -238,7 +238,7 @@ If the script didn’t include this condition, the query would fail on any shard
 
 ### Search for documents in a specific range [runtime-examples-grok-range]
 
-You can also run a [range query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) that operates on the `timestamp` field. The following query returns any documents where the `timestamp` is greater than or equal to `2020-04-30T14:31:27-05:00`:
+You can also run a [range query](elasticsearch://reference/query-languages/query-dsl-range-query.md) that operates on the `timestamp` field. The following query returns any documents where the `timestamp` is greater than or equal to `2020-04-30T14:31:27-05:00`:
 
 ```console
 GET my-index-000001/_search
@@ -292,7 +292,7 @@ The response includes the document where the log format doesn’t match, but the
 
 ## Define a runtime field with a dissect pattern [runtime-examples-dissect]
 
-If you don’t need the power of regular expressions, you can use [dissect patterns](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/dissect-processor.md) instead of grok patterns. Dissect patterns match on fixed delimiters but are typically faster than grok.
+If you don’t need the power of regular expressions, you can use [dissect patterns](elasticsearch://reference/ingestion-tools/enrich-processor/dissect-processor.md) instead of grok patterns. Dissect patterns match on fixed delimiters but are typically faster than grok.
 
 You can use dissect to achieve the same results as parsing the Apache logs with a [grok pattern](#runtime-examples-grok). Instead of matching on a log pattern, you include the parts of the string that you want to discard. Paying special attention to the parts of the string you want to discard will help build successful dissect patterns.
 

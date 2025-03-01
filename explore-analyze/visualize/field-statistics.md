@@ -14,7 +14,7 @@ mapped_pages:
 2. Choose **Field statistics** under **Visualizations**. An ES|QL editor appears and lets you configure your query with the fields and information that you want to show.
 
    ::::{tip}
-   Check the [ES|QL reference](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql.md) to get familiar with the syntax and optimize your query.
+   Check the [ES|QL reference](elasticsearch://reference/query-languages/esql.md) to get familiar with the syntax and optimize your query.
    ::::
 
 3. When editing your query or its configuration, run the query to update the preview of the visualization.

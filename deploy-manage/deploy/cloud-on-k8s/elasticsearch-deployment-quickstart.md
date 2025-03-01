@@ -108,7 +108,7 @@ NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 quickstart-es-http   ClusterIP   10.15.251.145   <none>        9200/TCP   34m
 ```
 
-In order to make requests to the [{{es}} API](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/index.md):
+In order to make requests to the [{{es}} API](elasticsearch://reference/elasticsearch/rest-apis/index.md):
 
 1. Get the credentials.
 

@@ -193,4 +193,4 @@ PUT /_cluster/settings
 
 When upgrading, {{kib}} creates new indices requiring a small number of new shards. If the amount of open {{es}} shards approaches or exceeds the {{es}} `cluster.max_shards_per_node` setting, {{kib}} is unable to complete the upgrade. Ensure that {{kib}} is able to add at least 10 more shards by removing indices to clear up resources, or by increasing the `cluster.max_shards_per_node` setting.
 
-For more information, refer to the documentation on [total shards per node](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/total-shards-per-node.md).
+For more information, refer to the documentation on [total shards per node](elasticsearch://reference/elasticsearch/index-settings/total-shards-per-node.md).

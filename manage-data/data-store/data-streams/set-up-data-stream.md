@@ -92,13 +92,13 @@ A data stream requires a matching index template. In most cases, you compose thi
 
 When creating your component templates, include:
 
-* A [`date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/date_nanos.md) mapping for the `@timestamp` field. If you don’t specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
+* A [`date`](elasticsearch://reference/elasticsearch/mapping-reference/date.md) or [`date_nanos`](elasticsearch://reference/elasticsearch/mapping-reference/date_nanos.md) mapping for the `@timestamp` field. If you don’t specify a mapping, {{es}} maps `@timestamp` as a `date` field with default options.
 * Your lifecycle policy in the `index.lifecycle.name` index setting.
 
 ::::{tip}
 Use the [Elastic Common Schema (ECS)](https://www.elastic.co/guide/en/ecs/current) when mapping your fields. ECS fields integrate with several {{stack}} features by default.
 
-If you’re unsure how to map your fields, use [runtime fields](../mapping/define-runtime-fields-in-search-request.md) to extract fields from [unstructured content](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md#mapping-unstructured-content) at search time. For example, you can index a log message to a `wildcard` field and later extract IP addresses and other data from this field during a search.
+If you’re unsure how to map your fields, use [runtime fields](../mapping/define-runtime-fields-in-search-request.md) to extract fields from [unstructured content](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md#mapping-unstructured-content) at search time. For example, you can index a log message to a `wildcard` field and later extract IP addresses and other data from this field during a search.
 
 ::::
 

@@ -16,13 +16,13 @@ If you see a large number of script cache evictions and a rising number of compi
 
 All scripts are cached by default so that they only need to be recompiled when updates occur. By default, scripts do not have a time-based expiration. You can change this behavior by using the `script.cache.expire` setting. Use the `script.cache.max_size` setting to configure the size of the cache.
 
-::::{note} 
+::::{note}
 The size of scripts is limited to 65,535 bytes. Set the value of `script.max_size_in_bytes` to increase that soft limit. If your scripts are really large, then consider using a [native script engine](modules-scripting-engine.md).
 ::::
 
 
 
-## Improving search speed [_improving_search_speed] 
+## Improving search speed [_improving_search_speed]
 
 Scripts are incredibly useful, but can’t use {{es}}'s index structures or related optimizations. This relationship can sometimes result in slower search speeds.
 
@@ -72,7 +72,7 @@ PUT /my_test_scores/_mapping
 }
 ```
 
-Next, use an [ingest pipeline](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) containing the [script processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/script-processor.md) to calculate the sum of `math_score` and `verbal_score` and index it in the `total_score` field.
+Next, use an [ingest pipeline](../../manage-data/ingest/transform-enrich/ingest-pipelines.md) containing the [script processor](elasticsearch://reference/ingestion-tools/enrich-processor/script-processor.md) to calculate the sum of `math_score` and `verbal_score` and index it in the `total_score` field.
 
 ```console
 PUT _ingest/pipeline/my_test_scores_pipeline

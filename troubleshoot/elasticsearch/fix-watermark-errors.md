@@ -9,11 +9,11 @@ mapped_pages:
 # Watermark errors [fix-watermark-errors]
 
 
-When a data node is critically low on disk space and has reached the [flood-stage disk usage watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage), the following error is logged: `Error: disk usage exceeded flood-stage watermark, index has read-only-allow-delete block`.
+When a data node is critically low on disk space and has reached the [flood-stage disk usage watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-flood-stage), the following error is logged: `Error: disk usage exceeded flood-stage watermark, index has read-only-allow-delete block`.
 
-To prevent a full disk, when a node reaches this watermark, {{es}} [blocks writes](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md) to any index with a shard on the node. If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, this could induce {{kib}}'s `Kibana Server is not Ready yet` [error message](/troubleshoot/kibana/error-server-not-ready.md).
+To prevent a full disk, when a node reaches this watermark, {{es}} [blocks writes](elasticsearch://reference/elasticsearch/index-settings/index-block.md) to any index with a shard on the node. If the block affects related system indices, {{kib}} and other {{stack}} features may become unavailable. For example, this could induce {{kib}}'s `Kibana Server is not Ready yet` [error message](/troubleshoot/kibana/error-server-not-ready.md).
 
-{{es}} will automatically remove the write block when the affected node’s disk usage falls below the [high disk watermark](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high). To achieve this, {{es}} attempts to rebalance some of the affected node’s shards to other nodes in the same data tier.
+{{es}} will automatically remove the write block when the affected node’s disk usage falls below the [high disk watermark](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#cluster-routing-watermark-high). To achieve this, {{es}} attempts to rebalance some of the affected node’s shards to other nodes in the same data tier.
 
 ::::{tip}
 If you’re using Elastic Cloud Hosted, then you can use AutoOps to monitor your cluster. AutoOps significantly simplifies cluster management with performance recommendations, resource utilization visibility, real-time issue detection and resolution paths. For more information, refer to [Monitor with AutoOps](/deploy-manage/monitor/autoops.md).
@@ -45,7 +45,7 @@ GET _cluster/allocation/explain
 
 ## Temporary Relief [fix-watermark-errors-temporary]
 
-To immediately restore write operations, you can temporarily increase [disk watermarks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) and remove the [write block](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md).
+To immediately restore write operations, you can temporarily increase [disk watermarks](elasticsearch://reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings.md#disk-based-shard-allocation) and remove the [write block](elasticsearch://reference/elasticsearch/index-settings/index-block.md).
 
 ```console
 PUT _cluster/settings

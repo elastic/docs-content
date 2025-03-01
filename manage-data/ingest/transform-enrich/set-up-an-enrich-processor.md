@@ -20,7 +20,7 @@ To set up an enrich processor, follow these steps:
 Once you have an enrich processor set up, you can [update your enrich data](#update-enrich-data) and [update your enrich policies](#update-enrich-policies).
 
 ::::{important}
-The enrich processor performs several operations and may impact the speed of your ingest pipeline. We recommend [node roles](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/node-settings.md) co-locating ingest and data roles to minimize remote search operations.
+The enrich processor performs several operations and may impact the speed of your ingest pipeline. We recommend [node roles](elasticsearch://reference/elasticsearch/configuration-reference/node-settings.md) co-locating ingest and data roles to minimize remote search operations.
 
 We strongly recommend testing and benchmarking your enrich processors before deploying them in production.
 
@@ -68,7 +68,7 @@ Once the enrich policy is created, you need to execute it using the [execute enr
 The *enrich index* contains documents from the policy’s source indices. Enrich indices always begin with `.enrich-*`, are read-only, and are [force merged](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-forcemerge).
 
 ::::{warning}
-Enrich indices should only be used by the [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) or the [{{esql}} `ENRICH` command](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/esql-commands.md#esql-enrich). Avoid using enrich indices for other purposes.
+Enrich indices should only be used by the [enrich processor](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) or the [{{esql}} `ENRICH` command](elasticsearch://reference/query-languages/esql/esql-commands.md#esql-enrich). Avoid using enrich indices for other purposes.
 
 ::::
 
@@ -82,7 +82,7 @@ Once you have source indices, an enrich policy, and the related enrich index in 
 :alt: enrich processor
 :::
 
-Define an [enrich processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) and add it to an ingest pipeline using the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline).
+Define an [enrich processor](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) and add it to an ingest pipeline using the [create or update pipeline API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-pipeline).
 
 When defining the enrich processor, you must include at least the following:
 
@@ -92,9 +92,9 @@ When defining the enrich processor, you must include at least the following:
 
 You also can use the `max_matches` option to set the number of enrich documents an incoming document can match. If set to the default of `1`, data is added to an incoming document’s target field as a JSON object. Otherwise, the data is added as an array.
 
-See [Enrich](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/enrich-processor.md) for a full list of configuration options.
+See [Enrich](elasticsearch://reference/ingestion-tools/enrich-processor/enrich-processor.md) for a full list of configuration options.
 
-You also can add other [processors](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/index.md) to your ingest pipeline.
+You also can add other [processors](elasticsearch://reference/ingestion-tools/enrich-processor/index.md) to your ingest pipeline.
 
 
 ## Ingest and enrich documents [ingest-enrich-docs]

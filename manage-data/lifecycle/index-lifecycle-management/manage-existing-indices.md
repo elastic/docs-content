@@ -27,7 +27,7 @@ Define a separate policy for your older indices that omits the rollover action. 
 
 Keep in mind that policies applied to existing indices compare the `min_age` for each phase to the original creation date of the index, and might proceed through multiple phases immediately. If your policy performs resource-intensive operations like force merge, you don’t want to have a lot of indices performing those operations all at once when you switch over to {{ilm-init}}.
 
-You can specify different `min_age` values in the policy you use for existing indices, or set [`index.lifecycle.origination_date`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md#index-lifecycle-origination-date) to control how the index age is calculated.
+You can specify different `min_age` values in the policy you use for existing indices, or set [`index.lifecycle.origination_date`](elasticsearch://reference/elasticsearch/configuration-reference/index-lifecycle-management-settings.md#index-lifecycle-origination-date) to control how the index age is calculated.
 
 Once all pre-{{ilm-init}} indices have been aged out and removed, you can delete the policy you used to manage them.
 

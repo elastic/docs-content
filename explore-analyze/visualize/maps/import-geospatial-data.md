@@ -8,7 +8,7 @@ mapped_pages:
 
 # Import geospatial data [import-geospatial-data]
 
-To import geospatical data into the Elastic Stack, the data must be indexed as [geo_point](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/geo-shape.md). Geospatial data comes in many formats. Choose an import tool based on the format of your geospatial data.
+To import geospatical data into the Elastic Stack, the data must be indexed as [geo_point](elasticsearch://reference/elasticsearch/mapping-reference/geo-point.md) or [geo_shape](elasticsearch://reference/elasticsearch/mapping-reference/geo-shape.md). Geospatial data comes in many formats. Choose an import tool based on the format of your geospatial data.
 
 
 ## Security privileges [import-geospatial-privileges]
@@ -114,7 +114,7 @@ To draw features:
 
 ## Upload data with IP addresses [_upload_data_with_ip_addresses]
 
-The GeoIP processor adds information about the geographical location of IP addresses. See [GeoIP processor](asciidocalypse://docs/elasticsearch/docs/reference/ingestion-tools/enrich-processor/geoip-processor.md) for details. For private IP addresses, see [Enriching data with GeoIPs from internal, private IP addresses](https://www.elastic.co/blog/enriching-elasticsearch-data-geo-ips-internal-private-ip-addresses).
+The GeoIP processor adds information about the geographical location of IP addresses. See [GeoIP processor](elasticsearch://reference/ingestion-tools/enrich-processor/geoip-processor.md) for details. For private IP addresses, see [Enriching data with GeoIPs from internal, private IP addresses](https://www.elastic.co/blog/enriching-elasticsearch-data-geo-ips-internal-private-ip-addresses).
 
 
 ## Upload data with GDAL [_upload_data_with_gdal]

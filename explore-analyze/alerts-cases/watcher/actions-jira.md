@@ -108,7 +108,7 @@ xpack.notification.jira:
 It is strongly advised to use Basic Authentication with secured HTTPS protocol only.
 ::::
 
-You can also specify defaults for the [Jira issues](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/watcher-settings.md#jira-account-attributes):
+You can also specify defaults for the [Jira issues](elasticsearch://reference/elasticsearch/configuration-reference/watcher-settings.md#jira-account-attributes):
 
 ```yaml
 xpack.notification.jira:

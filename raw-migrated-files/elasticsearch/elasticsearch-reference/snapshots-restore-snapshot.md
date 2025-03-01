@@ -23,7 +23,7 @@ This guide also provides tips for [restoring to another cluster](../../../deploy
 
 * You can only restore a snapshot to a running cluster with an elected [master node](../../../deploy-manage/distributed-architecture/clusters-nodes-shards/node-roles.md#master-node-role). The snapshot’s repository must be [registered](../../../deploy-manage/tools/snapshot-and-restore/self-managed.md) and available to the cluster.
 * The snapshot and cluster versions must be compatible. See [Snapshot compatibility](../../../deploy-manage/tools/snapshot-and-restore.md#snapshot-restore-version-compatibility).
-* To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any [cluster blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) that prevent writes. The restore operation ignores [index blocks](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md).
+* To restore a snapshot, the cluster’s global metadata must be writable. Ensure there aren’t any [cluster blocks](elasticsearch://reference/elasticsearch/configuration-reference/miscellaneous-cluster-settings.md#cluster-read-only) that prevent writes. The restore operation ignores [index blocks](elasticsearch://reference/elasticsearch/index-settings/index-block.md).
 * Before you restore a data stream, ensure the cluster contains a [matching index template](../../../manage-data/data-store/data-streams/set-up-data-stream.md#create-index-template) with data stream enabled. To check, use {{kib}}'s [**Index Management**](../../../manage-data/lifecycle/index-lifecycle-management/index-management-in-kibana.md#manage-index-templates) feature or the [get index template API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-index-template):
 
     ```console
@@ -83,7 +83,7 @@ If you’re restoring data to a pre-existing cluster, use one of the following m
 The simplest way to avoid conflicts is to delete an existing index or data stream before restoring it. To prevent the accidental re-creation of the index or data stream, we recommend you temporarily stop all indexing until the restore operation is complete.
 
 ::::{warning}
-If the [`action.destructive_requires_name`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) cluster setting is `false`, don’t use the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete) to target the `*` or `.*` wildcard pattern. If you use {{es}}'s security features, this will delete system indices required for authentication. Instead, target the `*,-.*` wildcard pattern to exclude these system indices and other index names that begin with a dot (`.`).
+If the [`action.destructive_requires_name`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) cluster setting is `false`, don’t use the [delete index API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete) to target the `*` or `.*` wildcard pattern. If you use {{es}}'s security features, this will delete system indices required for authentication. Instead, target the `*,-.*` wildcard pattern to exclude these system indices and other index names that begin with a dot (`.`).
 ::::
 
 
@@ -279,7 +279,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
         }
         ```
 
-3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/users-command.md) tool.
+3. $$$restore-create-file-realm-user$$$If you use {{es}} security features, log in to a node host, navigate to the {{es}} installation directory, and add a user with the `superuser` role to the file realm using the [`elasticsearch-users`](elasticsearch://reference/elasticsearch/command-line-tools/users-command.md) tool.
 
     For example, the following command creates a user named `restore_user`.
 
@@ -289,7 +289,7 @@ If you’re restoring to a different cluster, see [Restore to a different cluste
 
     Use this file realm user to authenticate requests until the restore operation is complete.
 
-4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
+4. Use the [cluster update settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-put-settings) to set [`action.destructive_requires_name`](elasticsearch://reference/elasticsearch/configuration-reference/index-management-settings.md#action-destructive-requires-name) to `false`. This lets you delete data streams and indices using wildcards.
 
     ```console
     PUT _cluster/settings
@@ -466,7 +466,7 @@ Before you start a restore operation, ensure the new cluster has enough capacity
 
 * Add nodes or upgrade your hardware to increase capacity.
 * Restore fewer indices and data streams.
-* Reduce the [number of replicas](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) for restored indices.
+* Reduce the [number of replicas](elasticsearch://reference/elasticsearch/index-settings/index-modules.md#dynamic-index-number-of-replicas) for restored indices.
 
     For example, the following restore snapshot API request uses the `index_settings` option to set `index.number_of_replicas` to `1`.
 

@@ -23,7 +23,7 @@ If you later need to change the mappings or settings for a data stream, you have
 * [Change a static index setting for a data stream](../data-streams/modify-data-stream.md#change-static-index-setting-for-a-data-stream)
 
 ::::{tip}
-If your changes include modifications to existing field mappings or [static index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md), a reindex is often required to apply the changes to a data stream’s backing indices. If you are already performing a reindex, you can use the same process to add new field mappings and change [dynamic index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md). See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
+If your changes include modifications to existing field mappings or [static index settings](elasticsearch://reference/elasticsearch/index-settings/index.md), a reindex is often required to apply the changes to a data stream’s backing indices. If you are already performing a reindex, you can use the same process to add new field mappings and change [dynamic index settings](elasticsearch://reference/elasticsearch/index-settings/index.md). See [Use reindex to change mappings or settings](../data-streams/modify-data-stream.md#data-streams-use-reindex-to-change-mappings-settings).
 ::::
 
 
@@ -92,13 +92,13 @@ To add a mapping for a new field to a data stream, following these steps:
 
 ### Change an existing field mapping in a data stream [change-existing-field-mapping-in-a-data-stream]
 
-The documentation for each [mapping parameter](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-parameters.md) indicates whether you can update it for an existing field using the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). To update these parameters for an existing field, follow these steps:
+The documentation for each [mapping parameter](elasticsearch://reference/elasticsearch/mapping-reference/mapping-parameters.md) indicates whether you can update it for an existing field using the [update mapping API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-mapping). To update these parameters for an existing field, follow these steps:
 
 1. Update the index template used by the data stream. This ensures the updated field mapping is added to future backing indices created for the stream.
 
     For example, `my-data-stream-template` is an existing index template used by `my-data-stream`.
 
-    The following [create or update index template](../templates.md) request changes the argument for the `host.ip` field’s [`ignore_malformed`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/ignore-malformed.md) mapping parameter to `true`.
+    The following [create or update index template](../templates.md) request changes the argument for the `host.ip` field’s [`ignore_malformed`](elasticsearch://reference/elasticsearch/mapping-reference/ignore-malformed.md) mapping parameter to `true`.
 
     ```console
     PUT /_index_template/my-data-stream-template
@@ -173,7 +173,7 @@ If you need to change the mapping of an existing field, create a new data stream
 
 ### Change a dynamic index setting for a data stream [change-dynamic-index-setting-for-a-data-stream]
 
-To change a [dynamic index setting](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md) for a data stream, follow these steps:
+To change a [dynamic index setting](elasticsearch://reference/elasticsearch/index-settings/index.md) for a data stream, follow these steps:
 
 1. Update the index template used by the data stream. This ensures the setting is applied to future backing indices created for the stream.
 
@@ -219,7 +219,7 @@ To change the `index.lifecycle.name` setting, first use the [remove policy API](
 
 ### Change a static index setting for a data stream [change-static-index-setting-for-a-data-stream]
 
-[Static index settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index.md) can only be set when a backing index is created. You cannot update static index settings using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
+[Static index settings](elasticsearch://reference/elasticsearch/index-settings/index.md) can only be set when a backing index is created. You cannot update static index settings using the [update index settings API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-settings).
 
 To apply a new static setting to future backing indices, update the index template used by the data stream. The setting is automatically applied to any backing index created after the update.
 
@@ -426,7 +426,7 @@ Follow these steps:
 
     You can also use a query to reindex only a subset of documents with each request.
 
-    The following [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) request copies documents from `my-data-stream` to `new-data-stream`. The request uses a [`range` query](asciidocalypse://docs/elasticsearch/docs/reference/query-languages/query-dsl-range-query.md) to only reindex documents with a timestamp within the last week. Note the request’s `op_type` is `create`.
+    The following [reindex API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex) request copies documents from `my-data-stream` to `new-data-stream`. The request uses a [`range` query](elasticsearch://reference/query-languages/query-dsl-range-query.md) to only reindex documents with a timestamp within the last week. Note the request’s `op_type` is `create`.
 
     ```console
     POST /_reindex

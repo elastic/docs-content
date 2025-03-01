@@ -43,7 +43,7 @@ The following snippet shows a simple `index` action definition:
 | `op_type` | no | `index` | The [op_type](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) for the index operation.                                                      Must be one of either `index` or `create`. Must be `create` if                                                      `index` is a data stream. |
 | `execution_time_field` | no | - | The field that will store/index the watch execution                                                      time. |
 | `timeout` | no | 60s | The timeout for waiting for the index api call to                                                      return. If no response is returned within this time,                                                      the index action times out and fails. This setting                                                      overrides the default timeouts. |
-| `refresh` | no | - | Optional setting of the [refresh policy](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/refresh-parameter.md)                                                      for the write request |
+| `refresh` | no | - | Optional setting of the [refresh policy](elasticsearch://reference/elasticsearch/rest-apis/refresh-parameter.md)                                                      for the write request |
 
 ## Multi-document support [anatomy-actions-index-multi-doc-support]
 

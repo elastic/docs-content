@@ -316,7 +316,7 @@ Filters are only applied when using the [Query DSL](../../explore-analyze/query-
 
 ## Routing [alias-routing]
 
-Use the `routing` option to [route](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/mapping-routing-field.md) requests for an alias to a specific shard. This lets you take advantage of [shard caches](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/shard-request-cache-settings.md) to speed up searches. Data stream aliases do not support routing options.
+Use the `routing` option to [route](elasticsearch://reference/elasticsearch/mapping-reference/mapping-routing-field.md) requests for an alias to a specific shard. This lets you take advantage of [shard caches](elasticsearch://reference/elasticsearch/configuration-reference/shard-request-cache-settings.md) to speed up searches. Data stream aliases do not support routing options.
 
 ```console
 POST _aliases

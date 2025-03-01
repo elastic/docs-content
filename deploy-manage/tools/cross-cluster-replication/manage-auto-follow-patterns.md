@@ -4,18 +4,18 @@ mapped_pages:
 
 applies_to:
   deployment:
-    eck: 
-    ess: 
-    ece: 
-    self: 
+    eck:
+    ess:
+    ece:
+    self:
 ---
 
 # Manage auto-follow patterns [ccr-auto-follow]
 
 To replicate time series indices, you configure an auto-follow pattern so that each new index in the series is replicated automatically. Whenever the name of a new index on the remote cluster matches the auto-follow pattern, a corresponding follower index is added to the local cluster.
 
-::::{note} 
-Auto-follow patterns only match open indices on the remote cluster that have all primary shards started. Auto-follow patterns do not match indices that can’t be used for {{ccr-init}} such as [closed indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open) or [{{search-snaps}}](../snapshot-and-restore/searchable-snapshots.md). Avoid using an auto-follow pattern that matches indices with a [read or write block](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/index-settings/index-block.md). These blocks prevent follower indices from replicating such indices.
+::::{note}
+Auto-follow patterns only match open indices on the remote cluster that have all primary shards started. Auto-follow patterns do not match indices that can’t be used for {{ccr-init}} such as [closed indices](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-open) or [{{search-snaps}}](../snapshot-and-restore/searchable-snapshots.md). Avoid using an auto-follow pattern that matches indices with a [read or write block](elasticsearch://reference/elasticsearch/index-settings/index-block.md). These blocks prevent follower indices from replicating such indices.
 ::::
 
 

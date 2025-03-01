@@ -1,6 +1,6 @@
 # Ingest logs from a Python application using Filebeat [ece-getting-started-search-use-cases-python-logs]
 
-This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elastic Cloud Enterprise deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](asciidocalypse://docs/ecs-logging/docs/reference/intro.md).
+This guide demonstrates how to ingest logs from a Python application and deliver them securely into an Elastic Cloud Enterprise deployment. You’ll set up Filebeat to monitor a JSON-structured log file that has standard Elastic Common Schema (ECS) formatted fields, and you’ll then view real-time visualizations of the log events in {{kib}} as they occur. While Python is used for this example, this approach to monitoring log output is applicable across many client types. Check the list of [available ECS logging plugins](ecs-logging://reference/intro.md).
 
 You are going to learn how to:
 
@@ -14,7 +14,7 @@ You are going to learn how to:
 
 ## Prerequisites [ece_prerequisites_2]
 
-To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](asciidocalypse://docs/ecs-logging-python/docs/reference/installation.md) for the Python logging library.
+To complete these steps you need to have [Python](https://www.python.org/) installed on your system as well as the [Elastic Common Schema (ECS) logger](ecs-logging-python://reference/installation.md) for the Python logging library.
 
 To install *ecs-logging-python*, run:
 

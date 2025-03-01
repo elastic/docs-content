@@ -182,7 +182,7 @@ public Response onOutgoingRequest(Request request) throws Exception {
 ::::::
 
 ::::::{tab-item} .NET
-1. Serialize the distributed tracing context of the active transaction or span with [`CurrentTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#api-current-transaction) or [`CurrentSpan`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#api-current-span).
+1. Serialize the distributed tracing context of the active transaction or span with [`CurrentTransaction`](apm-agent-dotnet://reference/public-api.md#api-current-transaction) or [`CurrentSpan`](apm-agent-dotnet://reference/public-api.md#api-current-span).
 2. Send the serialized context the receiving service.
 
 Example:
@@ -333,7 +333,7 @@ public Response onIncomingRequest(Request request) throws Exception {
 ::::::
 
 ::::::{tab-item} .NET
-Deserialize the incoming distributed tracing context, and pass it to any of the [`StartTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#api-start-transaction) or [`CaptureTransaction`](asciidocalypse://docs/apm-agent-dotnet/docs/reference/public-api.md#convenient-capture-transaction) APIs — all of which have an optional `DistributedTracingData` parameter. This will create a new transaction or span as a child of the incoming trace context.
+Deserialize the incoming distributed tracing context, and pass it to any of the [`StartTransaction`](apm-agent-dotnet://reference/public-api.md#api-start-transaction) or [`CaptureTransaction`](apm-agent-dotnet://reference/public-api.md#convenient-capture-transaction) APIs — all of which have an optional `DistributedTracingData` parameter. This will create a new transaction or span as a child of the incoming trace context.
 
 Example starting a new transaction:
 

@@ -34,7 +34,7 @@ Make sure you check the complete [guide to setting up LDAP with {{es}}](/deploy-
 
 ### Configure LDAP using {{stack}} configuration policy with user search[k8s_to_configure_ldap_using_elastic_stack_configuration_policy_with_user_search]
 
-1. Add a realm configuration to the `config` field under `elasticsearch` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the URL of the LDAP server and the order of the LDAP realm compared to other configured security realms. You also have to set `user_search.base_dn` to the container DN where the users are searched for. Refer to [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an LDAP realm. For example, the following snippet shows an LDAP realm configured with a user search:
+1. Add a realm configuration to the `config` field under `elasticsearch` in the `xpack.security.authc.realms.ldap` namespace. At a minimum, you must specify the URL of the LDAP server and the order of the LDAP realm compared to other configured security realms. You also have to set `user_search.base_dn` to the container DN where the users are searched for. Refer to [LDAP realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings) for all of the options you can set for an LDAP realm. For example, the following snippet shows an LDAP realm configured with a user search:
 
     ```yaml
     elasticsearch:
@@ -127,7 +127,7 @@ spec:
 
 ### Configure an LDAP realm with user DN templates[k8s_to_configure_an_ldap_realm_with_user_dn_templates]
 
-Add a realm configuration to `elasticsearch.yml` in the xpack.security.authc.realms.ldap namespace. At a minimum, you must specify the url and order of the LDAP server, and specify at least one template with the user_dn_templates option. Check [LDAP realm settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)  for all of the options you can set for an ldap realm.
+Add a realm configuration to `elasticsearch.yml` in the xpack.security.authc.realms.ldap namespace. At a minimum, you must specify the url and order of the LDAP server, and specify at least one template with the user_dn_templates option. Check [LDAP realm settings](elasticsearch://reference/elasticsearch/configuration-reference/security-settings.md#ref-ldap-settings)  for all of the options you can set for an ldap realm.
 
 For example, the following snippet shows an LDAP realm configured with user DN templates:
 

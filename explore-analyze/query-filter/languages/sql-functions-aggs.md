@@ -11,7 +11,7 @@ mapped_pages:
 Functions for computing a *single* result from a set of input values. Elasticsearch SQL supports aggregate functions only alongside [grouping](sql-syntax-select.md#sql-syntax-group-by) (implicit or explicit).
 
 
-## General Purpose [sql-functions-aggs-general] 
+## General Purpose [sql-functions-aggs-general]
 
 ## `AVG` [sql-functions-aggs-avg]
 
@@ -243,13 +243,13 @@ F              |umant
 M              |emzi
 ```
 
-::::{note} 
+::::{note}
 `FIRST` cannot be used in a HAVING clause.
 ::::
 
 
-::::{note} 
-`FIRST` cannot be used with columns of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) unless the field is also [saved as a keyword](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#before-enabling-fielddata).
+::::{note}
+`FIRST` cannot be used with columns of type [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) unless the field is also [saved as a keyword](elasticsearch://reference/elasticsearch/mapping-reference/text.md#before-enabling-fielddata).
 ::::
 
 
@@ -364,13 +364,13 @@ F              |ldiodio
 M              |lari
 ```
 
-::::{note} 
+::::{note}
 `LAST` cannot be used in `HAVING` clause.
 ::::
 
 
-::::{note} 
-`LAST` cannot be used with columns of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) unless the field is also [`saved as a keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md#before-enabling-fielddata).
+::::{note}
+`LAST` cannot be used with columns of type [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) unless the field is also [`saved as a keyword`](elasticsearch://reference/elasticsearch/mapping-reference/text.md#before-enabling-fielddata).
 ::::
 
 
@@ -406,8 +406,8 @@ SELECT MAX(ABS(salary / -12.0)) AS max FROM emp;
 6249.916666666667
 ```
 
-::::{note} 
-`MAX` on a field of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) or [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) is translated into [`LAST/LAST_VALUE`](#sql-functions-aggs-last) and therefore, it cannot be used in `HAVING` clause.
+::::{note}
+`MAX` on a field of type [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) or [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) is translated into [`LAST/LAST_VALUE`](#sql-functions-aggs-last) and therefore, it cannot be used in `HAVING` clause.
 ::::
 
 
@@ -435,8 +435,8 @@ SELECT MIN(salary) AS min FROM emp;
 25324
 ```
 
-::::{note} 
-`MIN` on a field of type [`text`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/text.md) or [`keyword`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/keyword.md) is translated into [`FIRST/FIRST_VALUE`](#sql-functions-aggs-first) and therefore, it cannot be used in `HAVING` clause.
+::::{note}
+`MIN` on a field of type [`text`](elasticsearch://reference/elasticsearch/mapping-reference/text.md) or [`keyword`](elasticsearch://reference/elasticsearch/mapping-reference/keyword.md) is translated into [`FIRST/FIRST_VALUE`](#sql-functions-aggs-first) and therefore, it cannot be used in `HAVING` clause.
 ::::
 
 
@@ -473,7 +473,7 @@ SELECT ROUND(SUM(salary / 12.0), 1) AS sum FROM emp;
 ```
 
 
-## Statistics [sql-functions-aggs-statistics] 
+## Statistics [sql-functions-aggs-statistics]
 
 
 ## `KURTOSIS` [sql-functions-aggs-kurtosis]
@@ -501,7 +501,7 @@ SELECT MIN(salary) AS min, MAX(salary) AS max, KURTOSIS(salary) AS k FROM emp;
 25324          |74999          |2.0444718929142986
 ```
 
-::::{note} 
+::::{note}
 `KURTOSIS` cannot be used on top of scalar functions or operators but only directly on a field. So, for example, the following is not allowed and an error is returned:
 
 ```sql
@@ -560,8 +560,8 @@ PERCENTILE(
 
 1. a numeric field. If this field contains only `null` values, the function returns `null`. Otherwise, the function ignores `null` values in this field.
 2. a numeric expression (must be a constant and not based on a field). If `null`, the function returns `null`.
-3. optional string literal for the [percentile algorithm](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Possible values: `tdigest` or `hdr`. Defaults to `tdigest`.
-4. optional numeric literal that configures the [percentile algorithm](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Configures `compression` for `tdigest` or `number_of_significant_value_digits` for `hdr`. The default is the same as that of the backing algorithm.
+3. optional string literal for the [percentile algorithm](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Possible values: `tdigest` or `hdr`. Defaults to `tdigest`.
+4. optional numeric literal that configures the [percentile algorithm](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Configures `compression` for `tdigest` or `number_of_significant_value_digits` for `hdr`. The default is the same as that of the backing algorithm.
 
 
 **Output**: `double` numeric value
@@ -631,8 +631,8 @@ PERCENTILE_RANK(
 
 1. a numeric field. If this field contains only `null` values, the function returns `null`. Otherwise, the function ignores `null` values in this field.
 2. a numeric expression (must be a constant and not based on a field). If `null`, the function returns `null`.
-3. optional string literal for the [percentile algorithm](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Possible values: `tdigest` or `hdr`. Defaults to `tdigest`.
-4. optional numeric literal that configures the [percentile algorithm](asciidocalypse://docs/elasticsearch/docs/reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Configures `compression` for `tdigest` or `number_of_significant_value_digits` for `hdr`. The default is the same as that of the backing algorithm.
+3. optional string literal for the [percentile algorithm](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Possible values: `tdigest` or `hdr`. Defaults to `tdigest`.
+4. optional numeric literal that configures the [percentile algorithm](elasticsearch://reference/data-analysis/aggregations/search-aggregations-metrics-percentile-aggregation.md#search-aggregations-metrics-percentile-aggregation-approximation). Configures `compression` for `tdigest` or `number_of_significant_value_digits` for `hdr`. The default is the same as that of the backing algorithm.
 
 
 **Output**: `double` numeric value
@@ -711,7 +711,7 @@ SELECT MIN(salary) AS min, MAX(salary) AS max, SKEWNESS(salary) AS s FROM emp;
 25324          |74999          |0.2707722118423227
 ```
 
-::::{note} 
+::::{note}
 `SKEWNESS` cannot be used on top of scalar functions but only directly on a field. So, for example, the following is not allowed and an error is returned:
 
 ```sql

@@ -11,9 +11,9 @@ mapped_pages:
 Elasticsearch SQL supports two types of patterns for matching multiple indices or tables:
 
 
-## {{es}} multi-target syntax [sql-index-patterns-multi] 
+## {{es}} multi-target syntax [sql-index-patterns-multi]
 
-The {{es}} notation for enumerating, including or excluding [multi-target syntax](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) is supported *as long* as it is quoted or escaped as a table identifier.
+The {{es}} notation for enumerating, including or excluding [multi-target syntax](elasticsearch://reference/elasticsearch/rest-apis/api-conventions.md#api-multi-index) is supported *as long* as it is quoted or escaped as a table identifier.
 
 For example:
 
@@ -40,7 +40,7 @@ SELECT emp_no FROM "e*p" LIMIT 1;
 10001
 ```
 
-::::{note} 
+::::{note}
 There is the restriction that all resolved concrete tables have the exact same mapping.
 ::::
 
@@ -58,7 +58,7 @@ SELECT emp_no FROM "my*cluster:*emp" LIMIT 1;
 ```
 
 
-## SQL `LIKE` notation [sql-index-patterns-like] 
+## SQL `LIKE` notation [sql-index-patterns-like]
 
 The common `LIKE` statement (including escaping if needed) to match a wildcard pattern, based on one `_` or multiple `%` characters.
 
@@ -101,7 +101,7 @@ In a nutshell, the differences between the two type of patterns are:
 
 Which one to use, is up to you however try to stick to the same one across your queries for consistency.
 
-::::{note} 
+::::{note}
 As the query type of quoting between the two patterns is fairly similar (`"` vs `'`), Elasticsearch SQL *always* requires the keyword `LIKE` for SQL `LIKE` pattern.
 ::::
 

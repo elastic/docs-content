@@ -20,7 +20,7 @@ The [{{infer}} API](https://www.elastic.co/docs/api/doc/elasticsearch/group/endp
 
 You can **upload and manage NLP models** using the Eland client and the [{{stack}}](ml-nlp-deploy-models.md). Find the  [list of recommended and compatible models here](ml-nlp-model-ref.md). Refer to [*Examples*](ml-nlp-examples.md) to learn more about how to use {{ml}} models deployed in your cluster.
 
-You can **store embeddings in your {{es}} vector database** if you generate [dense vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/dense-vector.md) or [sparse vector](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/sparse-vector.md) model embeddings outside of {{es}}.
+You can **store embeddings in your {{es}} vector database** if you generate [dense vector](elasticsearch://reference/elasticsearch/mapping-reference/dense-vector.md) or [sparse vector](elasticsearch://reference/elasticsearch/mapping-reference/sparse-vector.md) model embeddings outside of {{es}}.
 
 ## What is NLP? [what-is-nlp]
 

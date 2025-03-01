@@ -23,7 +23,7 @@ POST /_security/role/test_role1
 
 Access to the following metadata fields is always allowed: `_id`, `_type`, `_parent`, `_routing`, `_timestamp`, `_ttl`, `_size` and `_index`. If you specify an empty list of fields, only these metadata fields are accessible.
 
-::::{note} 
+::::{note}
 Omitting the fields entry entirely disables field level security.
 ::::
 
@@ -188,8 +188,8 @@ The resulting permission is equal to:
 }
 ```
 
-::::{note} 
-Field-level security should not be set on [`alias`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
+::::{note}
+Field-level security should not be set on [`alias`](elasticsearch://reference/elasticsearch/mapping-reference/field-alias.md) fields. To secure a concrete field, its field name must be used directly.
 ::::
 
 
