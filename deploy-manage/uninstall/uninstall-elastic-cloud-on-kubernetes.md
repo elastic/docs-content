@@ -1,9 +1,12 @@
 ---
-mapped_pages:
-  - https://www.elastic.co/guide/en/cloud-on-k8s/current/k8s-uninstalling-eck.html
+applies_to:
+  deployment:
+    eck:
 ---
 
-# Uninstall Elastic Cloud on Kubernetes [k8s-uninstalling-eck]
+# Uninstall {{eck}} [k8s-uninstalling-eck]
+
+This page provides instructions for uninstalling {{eck}}, including removing all Elastic resources and the {{eck}} operator from your cluster.
 
 To uninstall the operator:
 
@@ -23,4 +26,6 @@ To uninstall the operator:
     kubectl delete -f https://download.elastic.co/downloads/eck/2.16.1/crds.yaml
     ```
 
-
+::::{warning}
+Deleting CRDs will trigger deletion of all custom resources (Elasticsearch, Kibana, APM Server, Beats, Elastic Agent, Elastic Maps Server, and Logstash) in all namespaces of the cluster, regardless of whether they are managed by a single operator or multiple operators.
+::::

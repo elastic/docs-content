@@ -7,3 +7,20 @@ redirects:
       'anonymous-authentication':
       'basic-authentication':
       'http-authentication':
+  'reference/security/elastic-defend/index.md': 'solutions/security/configure-elastic-defend.md'
+  'reference/security/elastic-defend/elastic-endpoint-deploy-reqs.md': 'solutions/security/configure-elastic-defend/elastic-defend-requirements.md'
+  'reference/security/elastic-defend/install-endpoint.md': 'solutions/security/configure-elastic-defend/install-elastic-defend.md'
+  'reference/security/elastic-defend/deploy-elastic-endpoint.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos-monterey.md'
+  'reference/security/elastic-defend/deploy-elastic-endpoint-ven.md': 'solutions/security/configure-elastic-defend/enable-access-for-macos-ventura-higher.md'
+  'reference/security/elastic-defend/deploy-with-mdm.md': 'solutions/security/configure-elastic-defend/deploy-on-macos-with-mdm.md'
+  'reference/security/elastic-defend/agent-tamper-protection.md': 'solutions/security/configure-elastic-defend/prevent-elastic-agent-uninstallation.md'
+  'reference/security/elastic-defend/endpoint-management-req.md': 'solutions/security/configure-elastic-defend/elastic-defend-feature-privileges.md'
+  'reference/security/elastic-defend/configure-endpoint-integration-policy.md': 'solutions/security/configure-elastic-defend/configure-an-integration-policy-for-elastic-defend.md'
+  'reference/security/elastic-defend/artifact-control.md': 'solutions/security/configure-elastic-defend/configure-updates-for-protection-artifacts.md'
+  'reference/security/elastic-defend/endpoint-diagnostic-data.md': 'solutions/security/configure-elastic-defend/turn-off-diagnostic-data-for-elastic-defend.md'
+  'reference/security/elastic-defend/self-healing-rollback.md': 'solutions/security/configure-elastic-defend/configure-self-healing-rollback-for-windows-endpoints.md'
+  'reference/security/elastic-defend/linux-file-monitoring.md': 'solutions/security/configure-elastic-defend/configure-linux-file-system-monitoring.md'
+  'reference/security/elastic-defend/endpoint-data-volume.md': 'solutions/security/configure-elastic-defend/configure-data-volume-for-elastic-endpoint.md'
+  'reference/security/elastic-defend/create-defend-policy-api.md': 'solutions/security/configure-elastic-defend/create-an-elastic-defend-policy-using-api.md'
+  'reference/security/elastic-defend/offline-endpoint.md': 'solutions/security/configure-elastic-defend/configure-offline-endpoints-air-gapped-environments.md'
+  'reference/security/elastic-defend/uninstall-agent.md': 'solutions/security/configure-elastic-defend/uninstall-elastic-agent.md'
