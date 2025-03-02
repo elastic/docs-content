@@ -52,7 +52,7 @@ You can create the following types of rules:
 When you create a rule, you must either specify the {{es}} index pattens for which you’d like the rule to run, or select a [data view field](/solutions/security/get-started/data-views-elastic-security.md) as the data source. If you select a data view, you can select [runtime fields](/solutions/security/get-started/create-runtime-fields-in-elastic-security.md) associated with that data view to create a query for the rule (with the exception of {{ml}} rules, which do not use queries).
 
 ::::{note}
-To access data views in {{stack}}, ensure you have the [required permissions](/explore-analyze/find-and-organize/data-views.md#data-views-read-only-access). To access them in {{serverless-short}}, you need either the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md) with the right privileges.
+To access data views in {{stack}}, you must have the [required permissions](/explore-analyze/find-and-organize/data-views.md#data-views-read-only-access). To access them in {{serverless-short}}, you must have the appropriate [predefined Security user role](/deploy-manage/users-roles/cloud-organization/user-roles.md#general-assign-user-roles) or a [custom role](../../../deploy-manage/users-roles/cloud-organization/user-roles.md) with the right privileges.
 ::::
 
 

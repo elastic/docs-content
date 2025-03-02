@@ -6,15 +6,11 @@ mapped_urls:
 
 # Detections requirements
 
-To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the [appropriate license](https://www.elastic.co/subscriptions) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated.
+To use the [Detections feature](/solutions/security/detect-and-alert.md), you first need to configure a few settings. You also need the appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md) to send [notifications](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications) when detection alerts are generated. Additionally, there are some [advanced settings](/solutions/security/detect-and-alert/detections-requirements.md#adv-list-settings) used to configure {{kib}} [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) upload limits.
 
 ::::{important}
 Several steps are **only** required for **self-managed** {{stack}} deployments. If you’re using an Elastic Cloud deployment, you only need to [enable detections](/solutions/security/detect-and-alert/detections-requirements.md#enable-detections-ui).
 ::::
-
-
-Additionally, there are some [advanced settings](/solutions/security/detect-and-alert/detections-requirements.md#adv-list-settings) used to configure {{kib}} [value list](/solutions/security/detect-and-alert/create-manage-value-lists.md) upload limits.
-
 
 ## Configure self-managed {{stack}} deployments [detections-on-prem-requirements]
 
@@ -60,6 +56,10 @@ The following table describes the required privileges to access the Detections f
 
 ### Authorization [alerting-auth-model]
 
+```yaml {applies_to}
+stack:
+```
+
 Rules, including all background detection and the actions they generate, are authorized using an [API key](/deploy-manage/api-keys/elasticsearch-api-keys.md) associated with the last user to edit the rule. Upon creating or modifying a rule, an API key is generated for that user, capturing a snapshot of their privileges. The API key is then used to run all background tasks associated with the rule including detection checks and executing actions.
 
 ::::{important}
@@ -70,6 +70,10 @@ If a rule requires certain privileges to run, such as index privileges, keep in 
 
 
 ## Configure list upload limits [adv-list-settings]
+
+```yaml {applies_to}
+stack:
+```
 
 You can set limits to the number of bytes and the buffer size used to upload [value lists](/solutions/security/detect-and-alert/create-manage-value-lists.md) to {{elastic-sec}}.
 
@@ -83,8 +87,3 @@ To set the value:
         For example, on a Kibana instance with 2 gigabytes of RAM, you can set this value up to 20000000 (20 megabytes).
 
     * `xpack.lists.importBufferSize`: Sets the buffer size used for uploading {{elastic-sec}} value lists (default `1000`). Change the value if you’re experiencing slow upload speeds or larger than wanted memory usage when uploading value lists. Set to a higher value to increase throughput at the expense of using more Kibana memory, or a lower value to decrease throughput and reduce memory usage.
-
-
-::::{note}
-For information on how to configure Elastic Cloud deployments, refer to [Add Kibana user settings](/deploy-manage/deploy/elastic-cloud/edit-stack-settings.md).
-::::

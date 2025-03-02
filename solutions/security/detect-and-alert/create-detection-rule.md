@@ -81,7 +81,8 @@ Additional configuration is required for detection rules using cross-cluster sea
 ## Create a machine learning rule [create-ml-rule]
 
 ::::{admonition} Requirements
-To create or edit {{ml}} rules, you need: * The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md)  
+To create or edit {{ml}} rules, you need: 
+* The appropriate [{{stack}} subscription](https://www.elastic.co/pricing) or [{{serverless-short}} project tier](../../../deploy-manage/deploy/elastic-cloud/project-settings.md)  
 * The [`machine_learning_admin`](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md) in {{stack}} or the appropriate [user role](/deploy-manage/users-roles/cloud-organization/user-roles.md) in {{serverless-short}}. 
 * The selected {{ml}} job to be running for the rule to function correctly
 
@@ -204,7 +205,7 @@ To create or edit {{ml}} rules, you need: * The appropriate [{{stack}} subscript
     * **Tiebreaker field**: Sets a secondary field for sorting events (in ascending, lexicographic order) if they have the same timestamp.
     * **Timestamp field**: Contains the event timestamp used for sorting a sequence of events. This is different from the **Timestamp override** advanced setting, which is used for querying events within a range. Defaults to the `@timestamp` ECS field.
 
-4. Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
+4. (Optional) Use **Suppress alerts by** to reduce the number of repeated or duplicate alerts created by the rule. Refer to [Suppress detection alerts](/solutions/security/detect-and-alert/suppress-detection-alerts.md) for more information.
 5. (Optional) Create a list of **Required fields** that the rule needs to function. This list is informational only, to help users understand the rule; it doesn’t affect how the rule actually runs.
 
     1. Click **Add required field**, then select a field from the index patterns or data view you specified for the rule. You can also start typing a field’s name to find it faster, or type in an entirely new custom field.
@@ -566,7 +567,7 @@ When configuring an {{esql}} rule’s **[Custom highlighted fields](/solutions/s
         If you select this option, you can add {{elastic-endpoint}} exceptions on the Rule details page. Additionally, all future exceptions added to [endpoint protection rules](/solutions/security/manage-elastic-defend/endpoint-protection-rules.md) will also affect this rule.
         ::::
 
-    10. **Building block** (optional): Select to create a building-block rule. By default, alerts generated from a building-block rule are not displayed in the UI. See [*About building block rules*](/solutions/security/detect-and-alert/about-building-block-rules.md) for more information.
+    10. **Building block** (optional): Select to create a building-block rule. By default, alerts generated from a building-block rule are not displayed in the UI. See [About building block rules](/solutions/security/detect-and-alert/about-building-block-rules.md) for more information.
     11. **Max alerts per run** (optional): Specify the maximum number of alerts the rule can create each time it runs. Default is 100.
 
         ::::{note}
