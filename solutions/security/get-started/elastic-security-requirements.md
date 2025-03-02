@@ -6,17 +6,21 @@ mapped_urls:
 
 # Elastic Security requirements [security-requirements-overview]
 
-%  Need to revisit these paras
-%  {{elastic-sec}} is an inbuilt part of {{kib}}. To use {{elastic-sec}}, you only need an {{stack}} deployment (an {{es}} cluster and {{kib}}).
-
-%  {{ecloud}} offers all of the features of {{es}}, {{kib}}, and {{elastic-sec}} as a hosted service available on AWS, GCP, and Azure. To get started, sign up for a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
-
-%  For information about installing and managing the {{stack}} yourself, see [Installing the {{stack}}](/get-started/the-stack.md).
-
 The [Support Matrix](https://www.elastic.co/support/matrix) page lists officially supported operating systems, platforms, and browsers on which components such as {{beats}}, {{agent}}, {{elastic-defend}}, and {{elastic-endpoint}} have been tested.
 
+## {{stack}} requirements [elastic-stack-requirements] 
 
-## Node role requirements [node-role-requirements] 
+```yaml {applies_to}
+stack:
+```
+
+{{elastic-sec}} is an inbuilt part of {{kib}}. To use {{elastic-sec}}, you only need an {{stack}} deployment (an {{es}} cluster and {{kib}}).
+
+{{ecloud}} offers all of the features of {{es}}, {{kib}}, and {{elastic-sec}} as a hosted service available on AWS, GCP, and Azure. To get started, sign up for a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
+
+For information about installing and managing the {{stack}} yourself, see [Installing the {{stack}}](/get-started/the-stack.md).
+
+### Node role requirements [node-role-requirements] 
 
 ```yaml {applies_to}
 stack:
