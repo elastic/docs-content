@@ -92,7 +92,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ::::{tab-set}
 
-:::{tab-item} Cloud
+:::{tab-item} {{stack}}
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -120,7 +120,7 @@ In case of ingest-optimized deployments, we maximize the number of model allocat
 
 ::::{tab-set}
 
-:::{tab-item} Cloud
+:::{tab-item} {{stack}}
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -152,7 +152,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ::::{tab-set}
 
-:::{tab-item} Cloud
+:::{tab-item} {{stack}}
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
@@ -180,7 +180,7 @@ In case of search-optimized deployments, we maximize the number of threads. The 
 
 ::::{tab-set}
 
-:::{tab-item} Cloud
+:::{tab-item} {{stack}}
 
 | Level | Allocations | Threads | vCPUs |
 | --- | --- | --- | --- |
