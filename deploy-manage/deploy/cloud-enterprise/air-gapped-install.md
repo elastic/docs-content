@@ -8,7 +8,7 @@ mapped_urls:
 
 # Air-gapped install [ece-install-offline]
 
-Installing ECE on hosts without internet access is commonly referred to as an *offline* or *air-gapped installation*. ECE supports two air-gapped installation methods, depending on whether a private Docker registry is available. In both cases, you must download multiple Docker images and the installation script from Elastic, and load them onto your hosts or private registry.
+Installing ECE on hosts without internet access is commonly referred to as an *offline* or *air-gapped* installation. ECE supports two air-gapped installation methods, depending on whether a private Docker registry is available. In both cases, you must download multiple Docker images and the installation script from Elastic, and load them onto your hosts or private registry.
 
 ::::{note}
     The versioning of {{es}} and {{kib}} is synchronized and versions where the major, minor, and patch levels match can be used together. Differences in build versions indicated by a dash do not affect compatibility.
