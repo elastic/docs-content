@@ -218,7 +218,6 @@ toc:
       - file: docs-content/serverless/security-detection-engine-overview.md
       - file: docs-content/serverless/security-detection-response-dashboard.md
       - file: docs-content/serverless/security-detections-requirements.md
-      - file: docs-content/serverless/security-endpoints-page.md
       - file: docs-content/serverless/security-environment-variable-capture.md
       - file: docs-content/serverless/security-event-filters.md
       - file: docs-content/serverless/security-get-started-with-kspm.md
