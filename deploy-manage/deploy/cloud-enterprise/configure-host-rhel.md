@@ -7,7 +7,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/cloud-enterprise/current/ece-configure-hosts-rhel-centos-onprem.html
 ---
 
-# Configure host RHEL cloud [ece-configure-hosts-rhel-centos]
+# Configure a RHEL host [ece-configure-hosts-rhel-centos]
 
 
 ## Red Hat Enterprise Linux 8 (RHEL 8), 9 (RHEL 9), and Rocky Linux 8 and 9 [ece-setup-rhel8-podman]
