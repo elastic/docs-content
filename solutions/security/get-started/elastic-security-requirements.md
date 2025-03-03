@@ -4,7 +4,7 @@ mapped_urls:
   - https://www.elastic.co/guide/en/serverless/current/security-requirements-overview.html
 ---
 
-# Elastic Security requirements [security-requirements-overview]
+# {{elastic-sec}} requirements [security-requirements-overview]
 
 The [Support Matrix](https://www.elastic.co/support/matrix) page lists officially supported operating systems, platforms, and browsers on which components such as {{beats}}, {{agent}}, {{elastic-defend}}, and {{elastic-endpoint}} have been tested.
 
@@ -14,7 +14,7 @@ The [Support Matrix](https://www.elastic.co/support/matrix) page lists officiall
 stack:
 ```
 
-{{elastic-sec}} is an inbuilt part of {{kib}}. To use {{elastic-sec}}, you only need an {{stack}} deployment (an {{es}} cluster and {{kib}}).
+{{elastic-sec}} is an inbuilt part of {{kib}}. To use {{elastic-sec}}, you only need an {{stack}} deployment (an {{es}} cluster and {{kib}}). Review the [Elastic Stack subscriptions](https://www.elastic.co/subscriptions) page to understand the required subscription plans for all features.
 
 {{ecloud}} offers all of the features of {{es}}, {{kib}}, and {{elastic-sec}} as a hosted service available on AWS, GCP, and Azure. To get started, sign up for a [free {{ecloud}} trial](https://cloud.elastic.co/registration?page=docs&placement=docs-body).
 
@@ -57,22 +57,6 @@ There are some additional requirements for specific features:
 * [Machine learning job and rule requirements](/solutions/security/advanced-entity-analytics/machine-learning-job-rule-requirements.md)
 * [{{elastic-defend}} requirements](/solutions/security/configure-elastic-defend/elastic-defend-requirements.md)
 * [Configure network map data](/solutions/security/explore/configure-network-map-data.md)
-
-
-## License requirements [security-license-requirements] 
-
-```yaml {applies_to}
-stack:
-```
-
-All features are available as part of the free Basic plan **except**:
-
-* [Alert notifications via external systems](/solutions/security/detect-and-alert/create-detection-rule.md#rule-notifications)
-* [{{ml-cap}} jobs and rules](/solutions/security/advanced-entity-analytics/anomaly-detection.md)
-* [Cases integration with third-party ticketing systems](/solutions/security/investigate/configure-case-settings.md#cases-ui-integrations)
-
-[Elastic Stack subscriptions](https://www.elastic.co/subscriptions) lists the required subscription plans for all features.
-
 
 ## Advanced configuration and UI options [security-requirements-overview-advanced-configuration-and-ui-options] 
 
