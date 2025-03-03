@@ -27,5 +27,5 @@ While you absolutely shouldn’t expose {{es}} directly to the internet, you als
 
 ## Implement role based access control [security-create-appropriate-users] 
 
-[Define roles](../users-roles/cluster-or-deployment-auth/defining-roles.md) for your users and [assign appropriate privileges](../users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to ensure that users have access only to the resources that they need. This process determines whether the user behind an incoming request is allowed to run that request.
+[Define roles](../users-roles/cluster-or-deployment-auth/defining-roles.md) for your users and [assign appropriate privileges](/deploy-manage/users-roles/cluster-or-deployment-auth/elasticsearch-privileges.md) to ensure that users have access only to the resources that they need. This process determines whether the user behind an incoming request is allowed to run that request.
 
