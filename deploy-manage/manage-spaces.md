@@ -40,10 +40,10 @@ The maximum number of spaces that you can have differs by deployment type:
 
 To create a space: 
 
-::::{tab-set}
+:::::{tab-set}
 :group: stack-serverless
 
-:::{tab-item} {{serverless-short}}
+::::{tab-item} {{serverless-short}}
 :sync: serverless
 
 1. Click **Create space** or select the space you want to edit.
@@ -54,9 +54,9 @@ To create a space:
 
 3. Customize the avatar of the space to your liking.
 4. Save the space.
-:::
+::::
 
-:::{tab-item} {{stack}}
+::::{tab-item} {{stack}}
 :sync: stack
 
 1. Select **Create space** and provide a name, description, and URL identifier.
@@ -70,14 +70,15 @@ To create a space:
 
 3. If you selected the **Classic** solution view, you can customize the **Feature visibility** as you need it to be for that space.
 
-   % This is hacking since proper admonition blocks are currently breaking my tabs
-   > **Note:** Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   :::{note}
+   Even when disabled in this menu, some Management features can remain visible to some users depending on their privileges. Additionally, controlling feature visibility is not a security feature. To secure access to specific features on a per-user basis, you must configure [{{kib}} Security](/deploy-manage/users-roles/cluster-or-deployment-auth/built-in-roles.md).
+   :::
 
 4. Customize the avatar of the space to your liking.
 5. Save your new space by selecting **Create space**.
-:::
-
 ::::
+
+:::::
 
 You can edit all of the space settings you just defined at any time, except for the URL identifier.
 

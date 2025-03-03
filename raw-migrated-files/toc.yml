@@ -26,7 +26,6 @@ toc:
       - file: cloud/cloud-enterprise/ece-access-kibana.md
       - file: cloud/cloud-enterprise/ece-add-custom-bundle-plugin.md
       - file: cloud/cloud-enterprise/ece-add-user-settings.md
-      - file: cloud/cloud-enterprise/ece-administering-deployments.md
       - file: cloud/cloud-enterprise/ece-api-console.md
       - file: cloud/cloud-enterprise/ece-autoscaling.md
       - file: cloud/cloud-enterprise/ece-change-deployment.md

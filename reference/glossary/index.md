@@ -286,7 +286,7 @@ $$$glossary-external-alert$$$ external alert
 ## F [f-glos]
 
 $$$glossary-feature-controls$$$ Feature Controls
-:   Enables administrators to customize which features are available in each [space](/reference/glossary/index.md#glossary-space). See [Feature Controls](/deploy-manage/manage-spaces.md#spaces-control-feature-visibility).
+:   Enables administrators to customize which features are available in each [space](/reference/glossary/index.md#glossary-space). See [](/deploy-manage/manage-spaces.md).
 
 $$$glossary-feature-importance$$$ feature importance
 :   In supervised {{ml}} methods such as {{regression}} and {{classification}}, feature importance indicates the degree to which a specific feature affects a prediction. See [{{regression-cap}} feature importance](/explore-analyze/machine-learning/data-frame-analytics/ml-dfa-regression.md#dfa-regression-feature-importance) and [{{classification-cap}} feature importance](/explore-analyze/machine-learning/data-frame-analytics/ml-dfa-classification.md#dfa-classification-feature-importance).
@@ -302,7 +302,7 @@ $$$glossary-field-reference$$$ field reference
 
 $$$glossary-field$$$ field
 :   1. Key-value pair in a [document](/reference/glossary/index.md#glossary-document). See [Mapping](/manage-data/data-store/mapping.md).
-2. In {{ls}}, this term refers to an [event](/reference/glossary/index.md#glossary-event) property. For example, each event in an apache access log has properties, such as a status code (200, 404), request path ("/", "index.html"), HTTP verb (GET, POST), client IP address, and so on. {{ls}} uses the term "fields" to refer to these properties.
+1. In {{ls}}, this term refers to an [event](/reference/glossary/index.md#glossary-event) property. For example, each event in an apache access log has properties, such as a status code (200, 404), request path ("/", "index.html"), HTTP verb (GET, POST), client IP address, and so on. {{ls}} uses the term "fields" to refer to these properties.
 
 
 $$$glossary-filter-plugin$$$ filter plugin
