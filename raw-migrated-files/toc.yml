@@ -278,7 +278,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/esql-using.md
       - file: elasticsearch/elasticsearch-reference/fips-140-compliance.md
       - file: elasticsearch/elasticsearch-reference/how-monitoring-works.md
-      - file: elasticsearch/elasticsearch-reference/index-modules-allocation.md
       - file: elasticsearch/elasticsearch-reference/index-modules-mapper.md
       - file: elasticsearch/elasticsearch-reference/install-elasticsearch.md
       - file: elasticsearch/elasticsearch-reference/ip-filtering.md
@@ -298,7 +297,6 @@ toc:
       - file: elasticsearch/elasticsearch-reference/security-limitations.md
       - file: elasticsearch/elasticsearch-reference/semantic-search-inference.md
       - file: elasticsearch/elasticsearch-reference/setup.md
-      - file: elasticsearch/elasticsearch-reference/shard-allocation-filtering.md
       - file: elasticsearch/elasticsearch-reference/shard-request-cache.md
       - file: elasticsearch/elasticsearch-reference/snapshot-restore.md
       - file: elasticsearch/elasticsearch-reference/snapshots-restore-snapshot.md
