@@ -5,7 +5,7 @@ mapped_pages:
 
 # Plugins [modules-plugins]
 
-Plugins are a way to enhance the basic Elasticsearch functionality in a custom manner. They range from adding custom mapping types, custom analyzers (in a more built in fashion), custom script engines, custom discovery and more.
+Plugins are a way to enhance the basic {{es}} functionality in a custom manner. They range from adding custom mapping types, custom analyzers (in a more built in fashion), custom script engines, custom discovery and more.
 
 For information about selecting and installing plugins, see [{{es}} Plugins and Integrations](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch-plugins/index.md).
 

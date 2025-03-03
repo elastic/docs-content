@@ -1,6 +1,9 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/executable-jna-tmpdir.html
+applies_to:
+  deployment:
+    self:
 ---
 
 # Ensure JNA temporary directory permits executables [executable-jna-tmpdir]

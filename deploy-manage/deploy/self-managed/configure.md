@@ -96,7 +96,7 @@ $$$elasticsearch-hosts$$$ `elasticsearch.hosts:`
 
 
 $$$elasticsearch-publicBaseUrl$$$ `elasticsearch.publicBaseUrl:`
-:   The URL through which Elasticsearch is publicly accessible, if any. This will be shown to users in Kibana when they need connection details for your Elasticsearch cluster.
+:   The URL through which {{es}} is publicly accessible, if any. This will be shown to users in Kibana when they need connection details for your {{es}} cluster.
 
 $$$elasticsearch-pingTimeout$$$ `elasticsearch.pingTimeout`
 :   Time in milliseconds to wait for {{es}} to respond to pings. **Default: the value of the [`elasticsearch.requestTimeout`](#elasticsearch-requestTimeout) setting**
@@ -247,10 +247,10 @@ $$$tilemap-url$$$ `map.tilemap.url` ![logo cloud](https://doc-icons.s3.us-east-2
 :   The URL to the service that {{kib}} uses as the default basemap in [maps](../../../explore-analyze/visualize/maps.md) and [vega maps](../../../explore-analyze/visualize/custom-visualizations-with-vega.md#vega-with-a-map). By default, {{kib}} sets a basemap from the [Elastic Maps Service](../../../explore-analyze/visualize/maps/maps-connect-to-ems.md), but users can point to their own Tile Map Service. For example: `"https://tiles.elastic.co/v2/default/{{z}}/{x}/{{y}}.png?elastic_tile_service_tos=agree&my_app_name=kibana"`
 
 `migrations.batchSize`
-:   Defines the number of documents migrated at a time. The higher the value, the faster the Saved Objects migration process performs at the cost of higher memory consumption. If upgrade migrations results in {{kib}} crashing with an out of memory exception or fails due to an Elasticsearch `circuit_breaking_exception`, use a smaller `batchSize` value to reduce the memory pressure. **Default: `1000`**
+:   Defines the number of documents migrated at a time. The higher the value, the faster the Saved Objects migration process performs at the cost of higher memory consumption. If upgrade migrations results in {{kib}} crashing with an out of memory exception or fails due to an {{es}} `circuit_breaking_exception`, use a smaller `batchSize` value to reduce the memory pressure. **Default: `1000`**
 
 `migrations.maxBatchSizeBytes`
-:   Defines the maximum payload size for indexing batches of upgraded saved objects to avoid migrations failing due to a 413 Request Entity Too Large response from Elasticsearch. This value should be lower than or equal to your Elasticsearch cluster’s `http.max_content_length` configuration option. **Default: `100mb`**
+:   Defines the maximum payload size for indexing batches of upgraded saved objects to avoid migrations failing due to a 413 Request Entity Too Large response from {{es}}. This value should be lower than or equal to your {{es}} cluster’s `http.max_content_length` configuration option. **Default: `100mb`**
 
 `migrations.retryAttempts`
 :   The number of times migrations retry temporary failures, such as a network timeout, 503 status code, or `snapshot_in_progress_exception`. When upgrade migrations frequently fail after exhausting all retry attempts with a message such as `Unable to complete the [...] step after 15 attempts, terminating.`, increase the setting value. **Default: `15`**
@@ -386,7 +386,7 @@ $$$server-rate-limiter-enabled$$$ `server.rateLimiter.enabled`
 
 
 $$$server-requestId-allowFromAnyIp$$$ `server.requestId.allowFromAnyIp`
-:   Sets whether or not the `X-Opaque-Id` header should be trusted from any IP address for identifying requests in logs and forwarded to Elasticsearch.
+:   Sets whether or not the `X-Opaque-Id` header should be trusted from any IP address for identifying requests in logs and forwarded to {{es}}.
 
 `server.requestId.ipAllowlist`
 :   A list of IPv4 and IPv6 address which the `X-Opaque-Id` header should be trusted from. Normally this would be set to the IP addresses of the load balancers or reverse-proxy that end users use to access Kibana. If any are set, [`server.requestId.allowFromAnyIp`](#server-requestId-allowFromAnyIp) must also be set to `false.`

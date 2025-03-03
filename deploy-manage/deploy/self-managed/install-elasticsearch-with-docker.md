@@ -3,7 +3,7 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html
 ---
 
-# Install Elasticsearch with Docker [docker]
+# Install {{es}} with Docker [docker]
 
 Docker images for {{es}} are available from the Elastic Docker registry. A list of all published Docker images and tags is available at [www.docker.elastic.co](https://www.docker.elastic.co). The source code is in [GitHub](https://github.com/elastic/elasticsearch/blob/master/distribution/docker).
 
@@ -261,7 +261,7 @@ Use Docker Compose to start a three-node {{es}} cluster with {{kib}}. Docker Com
 
     ```txt
     ...
-    # Port to expose Elasticsearch HTTP API to the host
+    # Port to expose {{es}} HTTP API to the host
     #ES_PORT=9200
     ES_PORT=127.0.0.1:9200
     ...

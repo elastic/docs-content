@@ -1,9 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config-tcpretries.html
+
 ---
 
-# TCP retransmission timeout [system-config-tcpretries]
+# Decrease the TCP retransmission timeout [system-config-tcpretries]
+
+::::{note} 
+This is only relevant for Linux.
+::::
 
 Each pair of {{es}} nodes communicates via a number of TCP connections which [remain open](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#long-lived-connections) until one of the nodes shuts down or communication between the nodes is disrupted by a failure in the underlying infrastructure.
 

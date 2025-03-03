@@ -1,9 +1,14 @@
 ---
 mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
+sub:
+  es-conf: "%ES_HOME%\\config"
+  slash: "\\"
 ---
 
-# Install Elasticsearch with .zip on Windows [zip-windows]
+# Install {{es}} with .zip on Windows [zip-windows]
+
+{{es-conf}}
 
 {{es}} can be installed on Windows using the Windows `.zip` archive. This comes with a `elasticsearch-service.bat` command which will setup {{es}} to run as a service.
 
@@ -23,10 +28,6 @@ The latest stable version of {{es}} can be found on the [Download {{es}}](https:
 
 ## Download and install the `.zip` package [install-windows]
 
-::::{warning}
-Version 9.0.0-beta1 of {{es}} has not yet been released. The archive might not be available.
-::::
-
 
 Download the `.zip` archive for {{es}} 9.0.0-beta1 from: [https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-beta1-windows-x86_64.zip](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-beta1-windows-x86_64.zip)
 
@@ -39,80 +40,9 @@ cd C:\Program Files\elasticsearch-9.0.0-beta1
 
 ## Enable automatic creation of system indices [windows-enable-indices]
 
-Some commercial features automatically create indices within {{es}}. By default, {{es}} is configured to allow automatic index creation, and no additional steps are required. However, if you have disabled automatic index creation in {{es}}, you must configure [`action.auto_create_index`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create) in `elasticsearch.yml` to allow the commercial features to create the following indices:
+:::{include} _snippets/enable-auto-indices.md
 
-```yaml
-action.auto_create_index: .monitoring*,.watches,.triggered_watches,.watcher-history*,.ml*
-```
-
-::::{important}
-If you are using [Logstash](https://www.elastic.co/products/logstash) or [Beats](https://www.elastic.co/products/beats) then you will most likely require additional index names in your `action.auto_create_index` setting, and the exact value will depend on your local configuration. If you are unsure of the correct value for your environment, you may consider setting the value to `*` which will allow automatic creation of all indices.
-
-::::
-
-
-
-## Run {{es}} from the command line [windows-running]
-
-Run the following command to start {{es}} from the command line:
-
-```sh
-.\bin\elasticsearch.bat
-```
-
-When starting {{es}} for the first time, security features are enabled and configured by default. The following security configuration occurs automatically:
-
-* Authentication and authorization are enabled, and a password is generated for the `elastic` built-in superuser.
-* Certificates and keys for TLS are generated for the transport and HTTP layer, and TLS is enabled and configured with these keys and certificates.
-* An enrollment token is generated for {{kib}}, which is valid for 30 minutes.
-
-The password for the `elastic` user and the enrollment token for {{kib}} are output to your terminal.
-
-We recommend storing the `elastic` password as an environment variable in your shell. Example:
-
-```sh
-$ELASTIC_PASSWORD = "your_password"
-```
-
-If you have password-protected the {{es}} keystore, you will be prompted to enter the keystore’s password. See [Secure settings](../../security/secure-settings.md) for more details.
-
-By default {{es}} prints its logs to the console (`STDOUT`) and to the `<cluster name>.log` file within the [logs directory](important-settings-configuration.md#path-settings). {{es}} logs some information while it is starting, but after it has finished initializing it will continue to run in the foreground and won’t log anything further until something happens that is worth recording. While {{es}} is running you can interact with it through its HTTP interface which is on port `9200` by default.
-
-To stop {{es}}, press `Ctrl-C`.
-
-
-### Enroll nodes in an existing cluster [_enroll_nodes_in_an_existing_cluster_2]
-
-When {{es}} starts for the first time, the security auto-configuration process binds the HTTP layer to `0.0.0.0`, but only binds the transport layer to localhost. This intended behavior ensures that you can start a single-node cluster with security enabled by default without any additional configuration.
-
-Before enrolling a new node, additional actions such as binding to an address other than `localhost` or satisfying bootstrap checks are typically necessary in production clusters. During that time, an auto-generated enrollment token could expire, which is why enrollment tokens aren’t generated automatically.
-
-Additionally, only nodes on the same host can join the cluster without additional configuration. If you want nodes from another host to join your cluster, you need to set `transport.host` to a [supported value](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#network-interface-values) (such as uncommenting the suggested value of `0.0.0.0`), or an IP address that’s bound to an interface where other hosts can reach it. Refer to [transport settings](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/networking-settings.md#transport-settings) for more information.
-
-To enroll new nodes in your cluster, create an enrollment token with the `elasticsearch-create-enrollment-token` tool on any existing node in your cluster. You can then start a new node with the `--enrollment-token` parameter so that it joins an existing cluster.
-
-1. In a separate terminal from where {{es}} is running, navigate to the directory where you installed {{es}} and run the [`elasticsearch-create-enrollment-token`](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/command-line-tools/create-enrollment-token.md) tool to generate an enrollment token for your new nodes.
-
-    ```sh
-    bin\elasticsearch-create-enrollment-token -s node
-    ```
-
-    Copy the enrollment token, which you’ll use to enroll new nodes with your {{es}} cluster.
-
-2. From the installation directory of your new node, start {{es}} and pass the enrollment token with the `--enrollment-token` parameter.
-
-    ```sh
-    bin\elasticsearch --enrollment-token <enrollment-token>
-    ```
-
-    {{es}} automatically generates certificates and keys in the following directory:
-
-    ```sh
-    config\certs
-    ```
-
-3. Repeat the previous step for any new nodes that you want to enroll.
-
+:::{include} _snippets/zip-windows-start.md
 
 ## Configure {{es}} on the command line [windows-configuring]
 
@@ -133,43 +63,7 @@ Values that contain spaces must be surrounded with quotes. For instance `-Epath.
 Typically, any cluster-wide settings (like `cluster.name`) should be added to the `elasticsearch.yml` config file, while any node-specific settings such as `node.name` could be specified on the command line.
 ::::
 
-
-
-## Check that Elasticsearch is running [_check_that_elasticsearch_is_running_2]
-
-You can test that your {{es}} node is running by sending an HTTPS request to port `9200` on `localhost`:
-
-```sh
-curl --cacert %ES_HOME%\config\certs\http_ca.crt -u elastic:$ELASTIC_PASSWORD https://localhost:9200 <1>
-```
-
-1. Ensure that you use `https` in your call, or the request will fail.`--cacert`
-:   Path to the generated `http_ca.crt` certificate for the HTTP layer.
-
-
-
-The call returns a response like this:
-
-```js
-{
-  "name" : "Cp8oag6",
-  "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "AT69_T_DTp-1qgIJlatQqA",
-  "version" : {
-    "number" : "9.0.0-SNAPSHOT",
-    "build_type" : "tar",
-    "build_hash" : "f27399d",
-    "build_flavor" : "default",
-    "build_date" : "2016-03-30T09:51:41.449Z",
-    "build_snapshot" : false,
-    "lucene_version" : "10.0.0",
-    "minimum_wire_compatibility_version" : "1.2.3",
-    "minimum_index_compatibility_version" : "1.2.3"
-  },
-  "tagline" : "You Know, for Search"
-}
-```
-
+:::{include} _snippets/check-es-running.md
 
 ## Install and run {{es}} as a service on Windows [windows-service]
 
@@ -255,10 +149,10 @@ The {{es}} service can be configured prior to installation by setting the follow
 :   The password for the user specified in `%SERVICE_USERNAME%`.
 
 `SERVICE_DISPLAY_NAME`
-:   The name of the service. Defaults to `{{es}} <version> %SERVICE_ID%`.
+:   The name of the service. Defaults to `Elasticsearch <version> %SERVICE_ID%`.
 
 `SERVICE_DESCRIPTION`
-:   The description of the service. Defaults to `{{es}} <version> Windows Service - https://elastic.co`.
+:   The description of the service. Defaults to `Elasticsearch <version> Windows Service - https://elastic.co`.
 
 `ES_JAVA_HOME`
 :   The installation directory of the desired JVM to run the service under.
@@ -301,49 +195,8 @@ Using the Manager GUI
 
 Most changes (like JVM settings) made through the manager GUI will require a restart of the service to take affect.
 
-
-
-## Connect clients to {{es}} [_connect_clients_to_es_2]
-
-When you start {{es}} for the first time, TLS is configured automatically for the HTTP layer. A CA certificate is generated and stored on disk at:
-
-```sh
-%ES_HOME%\config\certs\http_ca.crt
-```
-
-The hex-encoded SHA-256 fingerprint of this certificate is also output to the terminal. Any clients that connect to {{es}}, such as the [{{es}} Clients](https://www.elastic.co/guide/en/elasticsearch/client/index.html), {{beats}}, standalone {{agent}}s, and {{ls}} must validate that they trust the certificate that {{es}} uses for HTTPS. {{fleet-server}} and {{fleet}}-managed {{agent}}s are automatically configured to trust the CA certificate. Other clients can establish trust by using either the fingerprint of the CA certificate or the CA certificate itself.
-
-If the auto-configuration process already completed, you can still obtain the fingerprint of the security certificate. You can also copy the CA certificate to your machine and configure your client to use it.
-
-
-#### Use the CA fingerprint [_use_the_ca_fingerprint_2]
-
-Copy the fingerprint value that’s output to your terminal when {{es}} starts, and configure your client to use this fingerprint to establish trust when it connects to {{es}}.
-
-If the auto-configuration process already completed, you can still obtain the fingerprint of the security certificate by running the following command. The path is to the auto-generated CA certificate for the HTTP layer.
-
-```sh
-openssl x509 -fingerprint -sha256 -in config/certs/http_ca.crt
-```
-
-The command returns the security certificate, including the fingerprint. The `issuer` should be `Elasticsearch security auto-configuration HTTP CA`.
-
-```sh
-issuer= /CN=Elasticsearch security auto-configuration HTTP CA
-SHA256 Fingerprint=<fingerprint>
-```
-
-
-#### Use the CA certificate [_use_the_ca_certificate_2]
-
-If your library doesn’t support a method of validating the fingerprint, the auto-generated CA certificate is created in the following directory on each {{es}} node:
-
-```sh
-%ES_HOME%\config\certs\http_ca.crt
-```
-
-Copy the `http_ca.crt` file to your machine and configure your client to use this certificate to establish trust when it connects to {{es}}.
-
+:::{include} _snippets/connect-clients.md
+:::
 
 ## Directory layout of `.zip` archive [windows-layout]
 
@@ -367,6 +220,6 @@ This is very convenient because you don’t have to create any directories to st
 
 You now have a test {{es}} environment set up. Before you start serious development or go into production with {{es}}, you must do some additional setup:
 
-* Learn how to [configure Elasticsearch](configure-elasticsearch.md).
-* Configure [important Elasticsearch settings](important-settings-configuration.md).
+* Learn how to [configure {{es}}](configure-elasticsearch.md).
+* Configure [important {{es}} settings](important-settings-configuration.md).
 * Configure [important system settings](important-system-configuration.md).

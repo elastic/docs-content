@@ -3,11 +3,12 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
 ---
 
-# Install Elasticsearch from archive on Linux or MacOS [targz]
+# Install {{es}} from archive on Linux or MacOS [targz]
 
 {{es}} is available as a `.tar.gz` archive for Linux and MacOS.
 
-This package contains both free and subscription features. [Start a 30-day trial](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
+:::{include} _snippets/trial.md
+:::
 
 The latest stable version of {{es}} can be found on the [Download {{es}}](https://elastic.co/downloads/elasticsearch) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
 
@@ -157,7 +158,7 @@ To enroll new nodes in your cluster, create an enrollment token with the `elasti
 3. Repeat the previous step for any new nodes that you want to enroll.
 
 
-## Check that Elasticsearch is running [_check_that_elasticsearch_is_running]
+## Check that {{es}} is running [_check_that_elasticsearch_is_running]
 
 You can test that your {{es}} node is running by sending an HTTPS request to port `9200` on `localhost`:
 
@@ -197,7 +198,7 @@ Log printing to `stdout` can be disabled using the `-q` or `--quiet` option on t
 
 ## Run as a daemon [setup-installation-daemon]
 
-To run Elasticsearch as a daemon, specify `-d` on the command line, and record the process ID in a file using the `-p` option:
+To run {{es}} as a daemon, specify `-d` on the command line, and record the process ID in a file using the `-p` option:
 
 ```sh
 ./bin/elasticsearch -d -p pid
@@ -207,7 +208,7 @@ If you have password-protected the {{es}} keystore, you will be prompted to ente
 
 Log messages can be found in the `$ES_HOME/logs/` directory.
 
-To shut down Elasticsearch, kill the process ID recorded in the `pid` file:
+To shut down {{es}}, kill the process ID recorded in the `pid` file:
 
 ```sh
 pkill -F pid
@@ -327,6 +328,6 @@ bin/elasticsearch-keystore show xpack.security.transport.ssl.keystore.secure_pas
 
 You now have a test {{es}} environment set up. Before you start serious development or go into production with {{es}}, you must do some additional setup:
 
-* Learn how to [configure Elasticsearch](configure-elasticsearch.md).
-* Configure [important Elasticsearch settings](important-settings-configuration.md).
+* Learn how to [configure {{es}}](configure-elasticsearch.md).
+* Configure [important {{es}} settings](important-settings-configuration.md).
 * Configure [important system settings](important-system-configuration.md).

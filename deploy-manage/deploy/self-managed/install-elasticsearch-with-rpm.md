@@ -3,9 +3,9 @@ mapped_pages:
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
 ---
 
-# Install Elasticsearch with RPM [rpm]
+# Install {{es}} with RPM [rpm]
 
-The RPM for Elasticsearch can be [downloaded from our website](#install-rpm) or from our  [RPM repository](#rpm-repo). It can be used to install Elasticsearch on any RPM-based system such as OpenSuSE, SLES, Centos, Red Hat, and Oracle Enterprise.
+The RPM for {{es}} can be [downloaded from our website](#install-rpm) or from our  [RPM repository](#rpm-repo). It can be used to install {{es}} on any RPM-based system such as OpenSuSE, SLES, Centos, Red Hat, and Oracle Enterprise.
 
 ::::{note}
 RPM install is not supported on distributions with old versions of RPM, such as SLES 11 and CentOS 5. Please see [Install {{es}} from archive on Linux or MacOS](install-elasticsearch-from-archive-on-linux-macos.md) instead.
@@ -14,10 +14,10 @@ RPM install is not supported on distributions with old versions of RPM, such as 
 
 This package contains both free and subscription features. [Start a 30-day trial](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
 
-The latest stable version of Elasticsearch can be found on the [Download Elasticsearch](https://elastic.co/downloads/elasticsearch) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
+The latest stable version of {{es}} can be found on the [Download {{es}}](https://elastic.co/downloads/elasticsearch) page. Other versions can be found on the [Past Releases page](https://elastic.co/downloads/past-releases).
 
 ::::{note}
-Elasticsearch includes a bundled version of [OpenJDK](https://openjdk.java.net) from the JDK maintainers (GPLv2+CE). To use your own version of Java, see the [JVM version requirements](installing-elasticsearch.md#jvm-version)
+{{es}} includes a bundled version of [OpenJDK](https://openjdk.java.net) from the JDK maintainers (GPLv2+CE). To use your own version of Java, see the [JVM version requirements](installing-elasticsearch.md#jvm-version)
 ::::
 
 
@@ -26,9 +26,9 @@ For a step-by-step example of setting up the {{stack}} on your own premises, try
 ::::
 
 
-## Import the Elasticsearch GPG Key [rpm-key]
+## Import the {{es}} GPG Key [rpm-key]
 
-We sign all of our packages with the Elasticsearch Signing Key (PGP key [D88E42B4](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xD27D666CD88E42B4), available from [https://pgp.mit.edu](https://pgp.mit.edu)) with fingerprint:
+We sign all of our packages with the {{es}} Signing Key (PGP key [D88E42B4](https://pgp.mit.edu/pks/lookup?op=vindex&search=0xD27D666CD88E42B4), available from [https://pgp.mit.edu](https://pgp.mit.edu)) with fingerprint:
 
 ```
 4609 5ACC 8548 582C 1A26 99A9 D27D 666C D88E 42B4
@@ -43,7 +43,7 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 ## Installing from the RPM repository [rpm-repo]
 
 ::::{warning}
-Version 9.0.0-beta1 of Elasticsearch has not yet been released.
+Version 9.0.0-beta1 of {{es}} has not yet been released.
 ::::
 
 
@@ -53,11 +53,11 @@ Create a file called `elasticsearch.repo` in the `/etc/yum.repos.d/` directory f
 ## Download and install the RPM manually [install-rpm]
 
 ::::{warning}
-Version 9.0.0-beta1 of Elasticsearch has not yet been released. The RPM might not be available.
+Version 9.0.0-beta1 of {{es}} has not yet been released. The RPM might not be available.
 ::::
 
 
-The RPM for Elasticsearch v9.0.0-beta1 can be downloaded from the website and installed as follows:
+The RPM for {{es}} v9.0.0-beta1 can be downloaded from the website and installed as follows:
 
 ```sh
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.0-beta1-x86_64.rpm
@@ -128,25 +128,25 @@ If you are using [Logstash](https://www.elastic.co/products/logstash) or [Beats]
 
 
 
-## Running Elasticsearch with `systemd` [rpm-running-systemd]
+## Running {{es}} with `systemd` [rpm-running-systemd]
 
-To configure Elasticsearch to start automatically when the system boots up, run the following commands:
+To configure {{es}} to start automatically when the system boots up, run the following commands:
 
 ```sh
 sudo /bin/systemctl daemon-reload
 sudo /bin/systemctl enable elasticsearch.service
 ```
 
-Elasticsearch can be started and stopped as follows:
+{{es}} can be started and stopped as follows:
 
 ```sh
 sudo systemctl start elasticsearch.service
 sudo systemctl stop elasticsearch.service
 ```
 
-These commands provide no feedback as to whether Elasticsearch was started successfully or not. Instead, this information will be written in the log files located in `/var/log/elasticsearch/`.
+These commands provide no feedback as to whether {{es}} was started successfully or not. Instead, this information will be written in the log files located in `/var/log/elasticsearch/`.
 
-If you have password-protected your {{es}} keystore, you will need to provide `systemd` with the keystore password using a local file and systemd environment variables. This local file should be protected while it exists and may be safely deleted once Elasticsearch is up and running.
+If you have password-protected your {{es}} keystore, you will need to provide `systemd` with the keystore password using a local file and systemd environment variables. This local file should be protected while it exists and may be safely deleted once {{es}} is up and running.
 
 ```sh
 echo "keystore_password" > /path/to/my_pwd_file.tmp
@@ -155,7 +155,7 @@ sudo systemctl set-environment ES_KEYSTORE_PASSPHRASE_FILE=/path/to/my_pwd_file.
 sudo systemctl start elasticsearch.service
 ```
 
-By default the Elasticsearch service doesn’t log information in the `systemd` journal. To enable `journalctl` logging, the `--quiet` option must be removed from the `ExecStart` command line in the `elasticsearch.service` file.
+By default the {{es}} service doesn’t log information in the `systemd` journal. To enable `journalctl` logging, the `--quiet` option must be removed from the `ExecStart` command line in the `elasticsearch.service` file.
 
 When `systemd` logging is enabled, the logging information are available using the `journalctl` commands:
 
@@ -195,11 +195,11 @@ Versions of `systemd` prior to 238 do not support the timeout extension mechanis
 However the `systemd` logs will report that the startup timed out:
 
 ```text
-Jan 31 01:22:30 debian systemd[1]: Starting Elasticsearch...
+Jan 31 01:22:30 debian systemd[1]: Startin...
 Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Start operation timed out. Terminating.
 Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Main process exited, code=killed, status=15/TERM
 Jan 31 01:37:15 debian systemd[1]: elasticsearch.service: Failed with result 'timeout'.
-Jan 31 01:37:15 debian systemd[1]: Failed to start Elasticsearch.
+Jan 31 01:37:15 debian systemd[1]: Failed to start {{es}}.
 ```
 
 To avoid this, upgrade your `systemd` to at least version 238. You can also temporarily work around the problem by extending the `TimeoutStartSec` parameter.
@@ -208,7 +208,7 @@ To avoid this, upgrade your `systemd` to at least version 238. You can also temp
 
 
 
-## Check that Elasticsearch is running [rpm-check-running]
+## Check that {{es}} is running [rpm-check-running]
 
 You can test that your {{es}} node is running by sending an HTTPS request to port `9200` on `localhost`:
 
@@ -244,13 +244,13 @@ The call returns a response like this:
 ```
 
 
-## Configuring Elasticsearch [rpm-configuring]
+## Configuring {{es}} [rpm-configuring]
 
 The `/etc/elasticsearch` directory contains the default runtime configuration for {{es}}. The ownership of this directory and all contained files are set to `root:elasticsearch` on package installations.
 
 The `setgid` flag applies group permissions on the `/etc/elasticsearch` directory to ensure that {{es}} can read any contained files and subdirectories. All files and subdirectories inherit the `root:elasticsearch` ownership. Running commands from this directory or any subdirectories, such as the [elasticsearch-keystore tool](../../security/secure-settings.md), requires `root:elasticsearch` permissions.
 
-Elasticsearch loads its configuration from the `/etc/elasticsearch/elasticsearch.yml` file by default. The format of this config file is explained in [*Configuring {{es}}*](configure-elasticsearch.md).
+{{es}} loads its configuration from the `/etc/elasticsearch/elasticsearch.yml` file by default. The format of this config file is explained in [*Configuring {{es}}*](configure-elasticsearch.md).
 
 The RPM also has a system configuration file (`/etc/sysconfig/elasticsearch`), which allows you to set the following parameters:
 
@@ -264,7 +264,7 @@ The RPM also has a system configuration file (`/etc/sysconfig/elasticsearch`), w
 :   Any additional JVM system properties you may want to apply.
 
 `RESTART_ON_UPGRADE`
-:   Configure restart on package upgrade, defaults to `false`. This means you will have to restart your Elasticsearch instance after installing a package manually. The reason for this is to ensure, that upgrades in a cluster do not result in a continuous shard reallocation resulting in high network traffic and reducing the response times of your cluster.
+:   Configure restart on package upgrade, defaults to `false`. This means you will have to restart your {{es}} instance after installing a package manually. The reason for this is to ensure, that upgrades in a cluster do not result in a continuous shard reallocation resulting in high network traffic and reducing the response times of your cluster.
 
 ::::{note}
 Distributions that use `systemd` require that system resource limits be configured via `systemd` rather than via the `/etc/sysconfig/elasticsearch` file. See [Systemd configuration](setting-system-settings.md#systemd) for more information.
@@ -320,13 +320,13 @@ The RPM places config files, logs, and the data directory in the appropriate loc
 
 | Type | Description | Default Location | Setting |
 | --- | --- | --- | --- |
-| home | Elasticsearch home directory or `$ES_HOME` | `/usr/share/elasticsearch` |  |
+| home |{{es}} home directory or `$ES_HOME` | `/usr/share/elasticsearch` |  |
 | bin | Binary scripts including `elasticsearch` to start a node    and `elasticsearch-plugin` to install plugins | `/usr/share/elasticsearch/bin` |  |
 | conf | Configuration files including `elasticsearch.yml` | `/etc/elasticsearch` | `[ES_PATH_CONF](configure-elasticsearch.md#config-files-location)` |
 | conf | Environment variables including heap size, file descriptors. | `/etc/sysconfig/elasticsearch` |  |
 | conf | Generated TLS keys and certificates for the transport and http layer. | `/etc/elasticsearch/certs` |  |
 | data | The location of the data files of each index / shard allocated    on the node. | `/var/lib/elasticsearch` | `path.data` |
-| jdk | The bundled Java Development Kit used to run Elasticsearch. Can    be overridden by setting the `ES_JAVA_HOME` environment variable    in `/etc/sysconfig/elasticsearch`. | `/usr/share/elasticsearch/jdk` |  |
+| jdk | The bundled Java Development Kit used to run {{es}}. Can    be overridden by setting the `ES_JAVA_HOME` environment variable    in `/etc/sysconfig/elasticsearch`. | `/usr/share/elasticsearch/jdk` |  |
 | logs | Log files location. | `/var/log/elasticsearch` | `path.logs` |
 | plugins | Plugin files location. Each plugin will be contained in a subdirectory. | `/usr/share/elasticsearch/plugins` |  |
 | repo | Shared file system repository locations. Can hold multiple locations. A file system repository can be placed in to any subdirectory of any directory specified here. | Not configured | `path.repo` |
@@ -364,6 +364,6 @@ bin/elasticsearch-keystore show xpack.security.transport.ssl.keystore.secure_pas
 
 You now have a test {{es}} environment set up. Before you start serious development or go into production with {{es}}, you must do some additional setup:
 
-* Learn how to [configure Elasticsearch](configure-elasticsearch.md).
-* Configure [important Elasticsearch settings](important-settings-configuration.md).
+* Learn how to [configure {{es}}](configure-elasticsearch.md).
+* Configure [important {{es}} settings](important-settings-configuration.md).
 * Configure [important system settings](important-system-configuration.md).

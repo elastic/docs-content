@@ -1,0 +1,1 @@
+This package contains both free and subscription features. [Start a 30-day trial](asciidocalypse://docs/elasticsearch/docs/reference/elasticsearch/configuration-reference/license-settings.md) to try out all of the features.
